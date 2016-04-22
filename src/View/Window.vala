@@ -57,6 +57,7 @@ namespace Marlin.View {
         public Chrome.ViewSwitcher view_switcher;
         public Gtk.InfoBar info_bar;
         public Granite.Widgets.DynamicNotebook tabs;
+        private Gtk.Paned lside_pane;
         public Marlin.Places.Sidebar sidebar;
         public ViewContainer? current_tab = null;
         public uint window_number;
@@ -86,7 +87,8 @@ namespace Marlin.View {
             action_edit_path ();
         }
 
-        public Window (Marlin.Application app, Gdk.Screen myscreen) {
+        public Window (Marlin.Application app, Gdk.Screen myscreen, bool show_window = true) {
+
             /* Capture application window_count and active_window before they can change */
             window_number = app.window_count;
             application = app;
@@ -107,12 +109,23 @@ namespace Marlin.View {
 
             connect_signals ();
             make_bindings ();
-            show ();
+
+            if (show_window) { /* otherwise Application will size and show window */
+                if (Preferences.settings.get_boolean("maximized")) {
+                    maximize();
+                } else {
+                    resize (Preferences.settings.get_int("window-width"),
+                            Preferences.settings.get_int("window-height"));
+                }
+                show ();
+            }
         }
 
         private void build_window () {
-            var lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+            lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             lside_pane.show ();
+            /* Only show side bar in first window - (to be confirmed) */
+
             lside_pane.pack1 (sidebar, false, false);
             lside_pane.pack2 (tabs, true, false);
 
@@ -131,20 +144,30 @@ namespace Marlin.View {
             }
 
         /** Apply preferences */
-            lside_pane.position = Preferences.settings.get_int ("sidebar-width");
-            get_action ("show_sidebar").set_state (Preferences.settings.get_boolean ("show-sidebar"));
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
 
-            set_default_size (Preferences.settings.get_int("window-width"),
-                             Preferences.settings.get_int("window-height"));
+            var show_sidebar_pref = Preferences.settings.get_boolean ("show-sidebar");
+            get_action ("show_sidebar").set_state (show_sidebar_pref);
+            show_sidebar (true);
 
-            if (Preferences.settings.get_boolean("maximized"))
-                maximize();
+            if (is_first_window) {
+                window_position = Gtk.WindowPosition.CENTER;
+            } else { /* Allow new window created by tab dragging to be positioned where dropped */
+                window_position = Gtk.WindowPosition.NONE;
+            }
         }
 
         private void construct_sidebar () {
             sidebar = new Marlin.Places.Sidebar (this);
-            sidebar.show ();
+        }
+
+        public void show_sidebar (bool show = true) {
+            var show_sidebar = (get_action ("show_sidebar")).state.get_boolean ();
+            if (show && show_sidebar) {
+                lside_pane.position = Preferences.settings.get_int ("sidebar-width");
+            } else {
+                lside_pane.position = 0;
+            }
         }
 
         private void construct_notebook () {
@@ -152,6 +175,8 @@ namespace Marlin.View {
             tabs.show_tabs = true;
             tabs.allow_restoring = true;
             tabs.allow_duplication = true;
+            tabs.allow_new_window = true;
+
             this.configure_event.connect_after ((e) => {
                 tabs.set_size_request (e.width / 2, -1);
                 return false;
@@ -296,6 +321,16 @@ namespace Marlin.View {
                 add_tab (File.new_for_uri (((tab.page as ViewContainer).uri)));
             });
 
+            tabs.tab_moved.connect ((tab, x, y) => {
+                var vc = tab.page as ViewContainer;
+                ((Marlin.Application) application).create_window (vc.location, real_mode (vc.view_mode), x, y);
+                /* A crash occurs if the original tab is removed while processing the signal */
+                GLib.Idle.add (() => {
+                    remove_tab (vc);
+                    return false;
+                });
+            });
+
             sidebar.request_focus.connect (() => {
                 return !current_tab.locked_focus && !top_menu.locked_focus;
             });
@@ -306,11 +341,12 @@ namespace Marlin.View {
         }
 
         private void make_bindings () {
-            /*Preference bindings */
-            Preferences.settings.bind("show-sidebar", sidebar, "visible", SettingsBindFlags.DEFAULT);
-
-            /* keyboard shortcuts bindings */
             if (is_first_window) {
+                /*Preference bindings */
+                Preferences.settings.bind("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
+                Preferences.settings.bind("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
+
+                /* keyboard shortcuts bindings */
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Back"), 0, "go_back", 0);
@@ -444,8 +480,10 @@ namespace Marlin.View {
             tab.close ();
         }
 
-        public void add_window(File location, Marlin.ViewMode mode){
-            ((Marlin.Application) application).create_window (location, screen, real_mode (mode));
+        public void add_window (File location = File.new_for_path (Environment.get_home_dir ()),
+                                 Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
+                                 int x = -1, int y = -1) {
+            ((Marlin.Application) application).create_window (location, real_mode (mode), x, y);
         }
 
         private void undo_actions_set_insensitive () {
@@ -491,8 +529,19 @@ namespace Marlin.View {
             }
         }
 
+        private bool adding_window = false;
         private void action_new_window (GLib.SimpleAction action, GLib.Variant? param) {
-            (application as Marlin.Application).create_window ();
+            /* Limit rate of adding new windows using the keyboard */
+            if (adding_window) {
+                return;
+            } else {
+                adding_window = true;
+                add_window ();
+                GLib.Timeout.add (500, () => {
+                    adding_window = false;
+                    return false;
+                });
+            }
         }
 
         private void action_quit (GLib.SimpleAction action, GLib.Variant? param) {
@@ -680,7 +729,10 @@ namespace Marlin.View {
         private void change_state_show_sidebar (GLib.SimpleAction action) {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
-            Preferences.settings.set_boolean ("show-sidebar", state);
+            if (!state) {
+                Preferences.settings.set_int ("sidebar-width", lside_pane.position);
+            }
+            show_sidebar (state);
         }
 
         private void connect_to_server () {
@@ -789,11 +841,7 @@ namespace Marlin.View {
         }
 
         private void save_geometries () {
-            Gtk.Allocation sidebar_alloc;
-            sidebar.get_allocation (out sidebar_alloc);
-
-            if (sidebar_alloc.width > 1)
-                Preferences.settings.set_int("sidebar-width", sidebar_alloc.width);
+            save_sidebar_width ();
 
             bool is_maximized = (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED;
 
@@ -805,6 +853,14 @@ namespace Marlin.View {
             }
 
             Preferences.settings.set_boolean("maximized", is_maximized);
+        }
+
+        private void save_sidebar_width () {
+            var sw = lside_pane.get_position ();
+            var mw = Preferences.settings.get_int("minimum-sidebar-width");
+
+            sw = int.max (sw, mw);
+            Preferences.settings.set_int("sidebar-width", sw);
         }
 
         private void save_tabs () {
