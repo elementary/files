@@ -132,6 +132,10 @@ namespace PF.FileUtils {
                 new_path = new_path.replace ("///", "//");
             }
             new_path = new_path.replace("ssh:", "sftp:");
+
+            if (path == "/" && !can_browse_scheme (scheme)) {
+                new_path = "";
+            }
         }
 
         return new_path;
@@ -261,6 +265,19 @@ namespace PF.FileUtils {
                 f (old_location, new_location, null);
             }
         });
+    }
+
+    private bool can_browse_scheme (string scheme) {
+        switch (scheme) {
+            case Marlin.ROOT_FS_URI:
+            case Marlin.TRASH_URI:
+            case Marlin.NETWORK_URI:
+            case Marlin.RECENT_URI:
+            case Marlin.SMB_URI:
+                return true;
+            default:
+                return false;
+        }
     }
 }
 

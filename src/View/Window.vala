@@ -1053,7 +1053,11 @@ namespace Marlin.View {
 
         public void uri_path_change_request (string p, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
             string path = PF.FileUtils.sanitize_path (p, current_tab.location.get_path ());
-            file_path_change_request (File.new_for_commandline_arg (path), flag);
+            if (path.length > 0) {
+                file_path_change_request (File.new_for_commandline_arg (path), flag);
+            } else {
+                warning ("Cannot browse %s", p);
+            }
         }
 
         public new void grab_focus () {
