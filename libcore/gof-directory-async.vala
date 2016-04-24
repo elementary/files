@@ -249,6 +249,10 @@ public class GOF.Directory.Async : Object {
             if (e is IOError.ALREADY_MOUNTED) {
                 debug ("Already mounted %s", file.uri);
                 file.is_connected = true;
+            } else if (e is IOError.NOT_FOUND) {
+                debug ("Enclosing mount not found %s (may be remote share)", file.uri);
+                file.is_mounted = false;
+                return true;
             } else {
                 file.is_connected = false;
                 file.is_mounted = false;
