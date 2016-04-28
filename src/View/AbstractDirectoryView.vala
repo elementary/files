@@ -1691,6 +1691,7 @@ namespace FM {
 
             Gdk.drag_status (context, Gdk.DragAction.MOVE, timestamp);
             if (uri != current_uri) {
+                cancel_timeout (ref drag_enter_timer_id);
                 drop_target_file = file;
                 current_actions = Gdk.DragAction.DEFAULT;
                 current_suggested_action = Gdk.DragAction.DEFAULT;
@@ -1706,7 +1707,6 @@ namespace FM {
 
                     if (file.is_folder () && is_valid_drop_folder (file)) {
                         /* open the target folder after a short delay */
-                        cancel_timeout (ref drag_enter_timer_id);
                         drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                                      drag_enter_delay,
                                                                      () => {
