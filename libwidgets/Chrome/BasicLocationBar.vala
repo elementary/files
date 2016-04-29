@@ -24,7 +24,7 @@ namespace Marlin.View.Chrome
     public class BasicLocationBar : Gtk.Box, Locatable {
         private Navigatable bread;
         protected Gtk.Widget widget;
-
+        private int minimum_width = 100;
         private string _path;
         protected string display_path {
             set {
@@ -54,7 +54,7 @@ namespace Marlin.View.Chrome
         }
 
         public override void get_preferred_width (out int minimum_width, out int natural_width) {
-            minimum_width = -1;
+            minimum_width = this.minimum_width;
             natural_width = 3000;
         }
 
@@ -123,6 +123,8 @@ namespace Marlin.View.Chrome
 
         protected void show_breadcrumbs () {
             bread.set_breadcrumbs_path (display_path);
+            this.minimum_width = bread.get_minimum_width () + 48; /* Allow extra space for margins */
+            this.set_size_request (this.minimum_width, -1);
         }
 
         public void set_display_path (string path) {
