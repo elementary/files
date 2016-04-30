@@ -1956,7 +1956,11 @@ namespace FM {
             if (common_actions.get_action_enabled ("bookmark"))
                 menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
 
-            menu.append_section (null, builder.get_object ("show") as GLib.MenuModel);
+            var show_menu = builder.get_object ("show") as GLib.Menu;
+            if (slot.directory.is_local) {
+                show_menu.remove (1); /* Do not show "Show Remote Thumbnails" option when in local folder */
+            }
+            menu.append_section (null, show_menu);
 
             if (!in_network_root)
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
