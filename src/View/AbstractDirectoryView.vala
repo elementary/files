@@ -781,9 +781,9 @@ namespace FM {
                     file.execute (screen, null, null);
                 else if (only_one_file && default_app != null)
                     file.open_single (screen, default_app);
-                else
-                    warning ("Unable to activate this file.  Default app is %s",
-                             default_app != null ? default_app.get_name () : "null");
+                else {
+                    Marlin.MimeActions.open_glib_file_request (location, this, null);
+                }
             } else
                 warning ("Cannot open file in trash");
         }
@@ -1043,41 +1043,7 @@ namespace FM {
         private void on_selection_action_open_with_other_app () {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-
-            Gtk.DialogFlags flags = Gtk.DialogFlags.MODAL |
-                                    Gtk.DialogFlags.DESTROY_WITH_PARENT;
-
-            var dialog = new Gtk.AppChooserDialog (window, flags, file.location);
-            dialog.set_deletable (false);
-
-            var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
-            app_chooser.set_show_recommended (true);
-
-            var check_default = new Gtk.CheckButton.with_label (_("Set as default"));
-            check_default.set_active (true);
-            check_default.show ();
-
-            var action_area = dialog.get_action_area () as Gtk.ButtonBox;
-            action_area.add (check_default);
-            action_area.set_child_secondary (check_default, true);
-
-            dialog.show ();
-            int response = dialog.run ();
-
-            if (response == Gtk.ResponseType.OK) {
-                var app =dialog.get_app_info ();
-                if (check_default.get_active ()) {
-                    try {
-                        app.set_as_default_for_type (file.get_ftype ());
-                    }
-                    catch (GLib.Error error) {
-                        critical ("Could not set as default: %s", error.message);
-                    }
-                }
-                open_files_with (app, selection);
-            }
-
-            dialog.destroy ();
+            Marlin.MimeActions.open_glib_file_request (file.location, this, null);
         }
 
         private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
