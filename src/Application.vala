@@ -259,6 +259,8 @@ public class Marlin.Application : Granite.Application {
         /* Bind settings with GOFPreferences */
         Preferences.settings.bind ("show-hiddenfiles",
                                    GOF.Preferences.get_default (), "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
+        Preferences.settings.bind ("show-remote-thumbnails",
+                                   GOF.Preferences.get_default (), "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("confirm-trash",
                                    GOF.Preferences.get_default (), "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("date-format",

@@ -40,6 +40,7 @@ namespace Marlin.View {
             {"view_mode", action_view_mode, "s", "'MILLER'"},
             {"select_all", null, null, "false", change_state_select_all},
             {"show_hidden", null, null, "false", change_state_show_hidden},
+            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails},
             {"show_sidebar", null ,  null, "false", change_state_show_sidebar}
         };
 
@@ -145,6 +146,7 @@ namespace Marlin.View {
 
         /** Apply preferences */
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
+            get_action ("show_remote_thumbnails").set_state (Preferences.settings.get_boolean ("show-remote-thumbnails"));
 
             var show_sidebar_pref = Preferences.settings.get_boolean ("show-sidebar");
             get_action ("show_sidebar").set_state (show_sidebar_pref);
@@ -724,6 +726,12 @@ namespace Marlin.View {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
             Preferences.settings.set_boolean ("show-hiddenfiles", state);
+        }
+
+        public void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
+            bool state = !action.state.get_boolean ();
+            action.set_state (new GLib.Variant.boolean (state));
+            Preferences.settings.set_boolean ("show-remote-thumbnails", state);
         }
 
         private void change_state_show_sidebar (GLib.SimpleAction action) {
