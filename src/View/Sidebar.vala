@@ -97,12 +97,8 @@ namespace Marlin.Places {
         Gtk.MenuItem popupmenu_mount_item;
         Gtk.MenuItem popupmenu_unmount_item;
         Gtk.MenuItem popupmenu_eject_item;
-        Gtk.MenuItem popupmenu_rescan_item;
-        Gtk.MenuItem popupmenu_format_item;
         Gtk.MenuItem popupmenu_empty_trash_item;
         Gtk.MenuItem popupmenu_drive_property_item;
-        Gtk.MenuItem popupmenu_start_item;
-        Gtk.MenuItem popupmenu_stop_item;
 
         /* volume mounting - delayed open process */
         bool mounting = false;
