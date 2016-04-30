@@ -135,7 +135,7 @@ namespace FM {
         public override void select_path (Gtk.TreePath? path) {
             if (path != null) {
                 /* Ensure cursor follows last selection */
-                tree.set_cursor (path, null, false);
+                tree.set_cursor (path, null, false); /* This selects path but does not unselect the rest (unlike TreeView) */
                 tree.select_path (path);
             }
         }
