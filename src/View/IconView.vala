@@ -129,7 +129,7 @@ namespace FM {
         }
 
         public override void unselect_all () {
-            tree.unselect_all ();
+                tree.unselect_all ();
         }
 
         public override void select_path (Gtk.TreePath? path) {

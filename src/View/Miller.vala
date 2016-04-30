@@ -107,11 +107,6 @@ namespace Marlin.View {
             if (slot_list.length () <= 0)
                 return;
 
-            /* destroy the nested slots */
-            ((Marlin.View.Slot)(slot)).colpane.@foreach ((w) => {
-                    w.destroy ();
-            });
-
             uint n = slot.slot_number;
 
             slot_list.@foreach ((s) => {
@@ -119,6 +114,10 @@ namespace Marlin.View {
                     s.close ();
                     disconnect_slot_signals (s);
                 }
+            });
+
+            ((Marlin.View.Slot)(slot)).colpane.@foreach ((w) => {
+                w.destroy ();
             });
 
             slot_list.nth (n).next = null;
