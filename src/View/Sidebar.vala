@@ -97,12 +97,8 @@ namespace Marlin.Places {
         Gtk.MenuItem popupmenu_mount_item;
         Gtk.MenuItem popupmenu_unmount_item;
         Gtk.MenuItem popupmenu_eject_item;
-        Gtk.MenuItem popupmenu_rescan_item;
-        Gtk.MenuItem popupmenu_format_item;
         Gtk.MenuItem popupmenu_empty_trash_item;
         Gtk.MenuItem popupmenu_drive_property_item;
-        Gtk.MenuItem popupmenu_start_item;
-        Gtk.MenuItem popupmenu_stop_item;
 
         /* volume mounting - delayed open process */
         bool mounting = false;
@@ -1338,7 +1334,6 @@ namespace Marlin.Places {
                 return;
 
             popupmenu = new Gtk.Menu ();
-            popupmenu.attach_to_widget ((Gtk.Widget)this, (Gtk.MenuDetachFunc)popup_menu_detach_cb);
 
             var item = new Gtk.ImageMenuItem.with_mnemonic (_("Open"));
             var image = new Gtk.Image.from_icon_name ("document-open", Gtk.IconSize.MENU);
@@ -1424,24 +1419,6 @@ namespace Marlin.Places {
                                      Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                      Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                      event);
-        }
-
-        /* Callback used when the file list's popup menu is detached */
-        public void popup_menu_detach_cb (Gtk.Widget attach_widget, Gtk.Menu menu) {
-            popupmenu = null;
-            popupmenu_remove_item = null;
-            popupmenu_rename_item = null;
-            popupmenu_separator_item1 = null;
-            popupmenu_separator_item2 = null;
-            popupmenu_mount_item = null;
-            popupmenu_unmount_item = null;
-            popupmenu_eject_item = null;
-            popupmenu_rescan_item = null;
-            popupmenu_format_item = null;
-            popupmenu_start_item = null;
-            popupmenu_stop_item = null;
-            popupmenu_empty_trash_item = null;
-            popupmenu_drive_property_item = null;
         }
 
         /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */
