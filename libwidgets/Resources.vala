@@ -159,5 +159,4 @@ namespace Marlin {
         string pname = Marlin.protocol_to_name (p);
         return Marlin.name_to_protocol_uri (pname);
     }
-
 }

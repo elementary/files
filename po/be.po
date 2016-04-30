@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-02-29 03:05-0600\n"
-"PO-Revision-Date: 2016-03-05 17:47+0000\n"
-"Last-Translator: Minus12 <minus12@gmail.com>\n"
+"PO-Revision-Date: 2016-04-13 16:24+0000\n"
+"Last-Translator: Mikel <mishkasta@gmail.com>\n"
 "Language-Team: Belarusian <be@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Launchpad-Export-Date: 2016-03-06 05:37+0000\n"
-"X-Generator: Launchpad (build 17936)\n"
+"X-Launchpad-Export-Date: 2016-04-14 06:15+0000\n"
+"X-Generator: Launchpad (build 17990)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -313,23 +313,23 @@ msgstr "Поле Exec ня вызначана"
 
 #: ../libcore/gof-file.c:1968
 msgid "No URL field specified"
-msgstr ""
+msgstr "Поле URL ня вызначана"
 
 #: ../libcore/gof-file.c:1974
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "Нерэчаісны desktop-файл"
 
 #: ../libcore/gof-file.c:2269
 msgid "Slashes are not allowed in filenames"
-msgstr ""
+msgstr "Нельга ўжываць слэшы ў назвах файлаў"
 
 #: ../libcore/gof-file.c:2289
 msgid "Toplevel files cannot be renamed"
-msgstr ""
+msgstr "Нельга пераназваць файлы верхняга ўзроўню"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr ""
+msgstr "_Паказаць падрабязнасці"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -337,7 +337,7 @@ msgstr " (няправільны Unicode)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr ""
+msgstr "_Прапусцiць усё"
 
 #: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
@@ -349,67 +349,70 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr ""
+msgstr "_Замяніць"
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr ""
+msgstr "Замяніць _усё"
 
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr ""
+msgstr "_Аб'яднаць"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr ""
+msgstr "Аб'яднаць _усё"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "_Усё роўна скапіяваць"
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d секунда"
+msgstr[1] "%'d секунды"
+msgstr[2] "%'d секунд"
 
 #: ../libcore/marlin-file-operations.c:301
 #: ../libcore/marlin-file-operations.c:312
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d хвіліна"
+msgstr[1] "%'d хвілінаў"
 
 #: ../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d гадзіна"
+msgstr[1] "%'d гадзіны"
+msgstr[2] "%'d гадзін"
 
 #: ../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "прыблізна %'d гадзіна"
+msgstr[1] "прыблізна %'d гадзіны"
+msgstr[2] "прыблізна %'d гадзін"
 
 #: ../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "Спасылка на %s"
 
 #: ../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "Іншая спасылка на %s"
 
 #: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "%'d спасылка на %s"
 
 #: ../libcore/marlin-file-operations.c:419
 #, c-format
@@ -2118,6 +2121,7 @@ msgstr ""
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Dmitry Taranovich https://launchpad.net/~vorbissmcgregor\n"
 "  Ilya Tsimokhin https://launchpad.net/~ilyats\n"
+"  Mikel https://launchpad.net/~mishkasta\n"
 "  Minus12 https://launchpad.net/~minus12\n"
 "  Viktuk https://launchpad.net/~register885"
 

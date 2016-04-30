@@ -27,6 +27,7 @@ pkg_check_modules (DEPS REQUIRED
     sqlite3
     dbus-glib-1
     libnotify>=0.7.2
+    libcanberra>=0.30
     plank
     zeitgeist-2.0)
 

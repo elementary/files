@@ -187,7 +187,7 @@ public class GOF.Directory.Async : Object {
             return file.ensure_query_info ();
         }
         /* Must be non-local */
-        if (!is_local && !yield check_network ()) {
+        if (is_network && !yield check_network ()) {
             file.is_connected = false;
             return false;
         } else {
@@ -249,6 +249,10 @@ public class GOF.Directory.Async : Object {
             if (e is IOError.ALREADY_MOUNTED) {
                 debug ("Already mounted %s", file.uri);
                 file.is_connected = true;
+            } else if (e is IOError.NOT_FOUND) {
+                debug ("Enclosing mount not found %s (may be remote share)", file.uri);
+                file.is_mounted = false;
+                return true;
             } else {
                 file.is_connected = false;
                 file.is_mounted = false;
@@ -999,8 +1003,9 @@ public class GOF.Directory.Async : Object {
             if (cancellable.is_cancelled () || thumbs_stop)
                 break;
 
-            if (gof.info != null && gof.flags != GOF.File.ThumbState.UNKNOWN) {
-                gof.flags = GOF.File.ThumbState.READY;
+            /* Only try to load pixbuf from thumbnail if one may exist.
+             * Note: query_thumbnail_update () does not call the thumbnailer, only loads pixbuf from existing thumbnail file.*/
+            if (gof.flags != GOF.File.ThumbState.NONE) {
                 gof.pix_size = icon_size;
                 gof.query_thumbnail_update ();
             }

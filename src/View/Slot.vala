@@ -389,7 +389,7 @@ namespace Marlin.View {
                 disconnect_dir_signals ();
 
             if (dir_view != null) {
-                set_view_updates_frozen (true); /* stop signal handlers running during destruction */
+                dir_view.close ();
                 disconnect_dir_view_signals ();
             }
         }

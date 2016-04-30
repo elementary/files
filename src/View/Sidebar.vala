@@ -54,7 +54,7 @@ namespace Marlin.Places {
         GLib.Icon eject_icon;
 
         int eject_button_size = 20;
-        uint n_builtins_before;
+        uint n_builtins_before; /* Number of builtin (immovable) bookmarks before the personal bookmarks */
         string last_selected_uri;
         string slot_location;
 
@@ -97,12 +97,8 @@ namespace Marlin.Places {
         Gtk.MenuItem popupmenu_mount_item;
         Gtk.MenuItem popupmenu_unmount_item;
         Gtk.MenuItem popupmenu_eject_item;
-        Gtk.MenuItem popupmenu_rescan_item;
-        Gtk.MenuItem popupmenu_format_item;
         Gtk.MenuItem popupmenu_empty_trash_item;
         Gtk.MenuItem popupmenu_drive_property_item;
-        Gtk.MenuItem popupmenu_start_item;
-        Gtk.MenuItem popupmenu_stop_item;
 
         /* volume mounting - delayed open process */
         bool mounting = false;
@@ -397,7 +393,7 @@ namespace Marlin.Places {
                             Column.VOLUME, volume,
                             Column.MOUNT, mount,
                             Column.NAME, converted_name,
-                            Column.ICON, (GLib.Icon)pixbuf,
+                            Column.ICON, icon,
                             Column.INDEX, index,
                             Column.CAN_EJECT, show_eject_button,
                             Column.NO_EJECT, !show_eject_button,
@@ -897,6 +893,7 @@ namespace Marlin.Places {
                 this.drag_row_ref = null;
                 if (selection_data.get_target () != Gdk.Atom.NONE
                     && info == TargetType.TEXT_URI_LIST) {
+
                     string s = (string)(selection_data.get_data ());
                     drag_list = EelGFile.list_new_from_string (s);
                 } else {
@@ -947,21 +944,18 @@ namespace Marlin.Places {
                                            Gtk.TreeViewDropPosition drop_pos,
                                            uint info) {
             Marlin.PlaceType type;
-            uint position;
+            uint target_position;
             store.@get (iter,
                         Column.ROW_TYPE, out type,
-                        Column.INDEX, out position);
+                        Column.INDEX, out target_position);
 
             if (type == Marlin.PlaceType.BOOKMARK || type == Marlin.PlaceType.BUILT_IN) {
-                if (type == Marlin.PlaceType.BOOKMARK && drop_pos == Gtk.TreeViewDropPosition.BEFORE)
-                    position--;
-
                 switch (info) {
                     case TargetType.TEXT_URI_LIST:
-                        drop_drag_list (position);
+                        drop_drag_list (target_position, drop_pos);
                         return true;
                     case TargetType.GTK_TREE_MODEL_ROW:
-                        reorder_bookmarks (position);
+                        reorder_bookmarks (target_position, drop_pos);
                         return true;
                     default:
                         assert_not_reached ();
@@ -1033,7 +1027,7 @@ namespace Marlin.Places {
             return count > 0 && count <= MAX_BOOKMARKS_DROPPED;
         }
 
-        private void drop_drag_list (uint position) {
+        private void drop_drag_list (uint target_position, Gtk.TreeViewDropPosition drop_pos) {
             if (drag_list == null) {
                 warning ("dropped a null drag list");
                 return;
@@ -1045,8 +1039,17 @@ namespace Marlin.Places {
                     uris.prepend (file.get_uri ());
             });
 
-            if (uris != null)
+            if (uris != null) {
+                if (target_position > n_builtins_before) {
+                    target_position-= n_builtins_before;
+                } else {
+                    /* The target is a builtin. Always drop at start of bookmarks */
+                    target_position = 0;
+                    drop_pos = Gtk.TreeViewDropPosition.BEFORE; /* We have effectively moved target down */
+                }
+                uint position = (drop_pos == Gtk.TreeViewDropPosition.AFTER) ? ++target_position : target_position;
                 bookmarks.insert_uris (uris, position);
+            }
         }
 
         public void add_uri (string uri, string? label = null) {
@@ -1115,27 +1118,34 @@ namespace Marlin.Places {
                                             out Gtk.TreeViewDropPosition drop_position
                                             ) {
             path = null;
-            int num_rows = store.iter_n_children (null);
+            drop_position = 0;
             if (!tree_view.get_dest_row_at_pos (x, y, out path, out drop_position)) {
-                warning ("tree_view.get_dest_row_at_pos failed in sidebar");
+                return false;
+            }
+
+            if (path.get_depth () == 1) { /* On category name */
                 return false;
             }
 
             int row = (path.get_indices ()) [0];
-            if (row == 1 || row == 2) {
-                /* Hardcoded shortcuts can only be dragged into */
-                drop_position = Gtk.TreeViewDropPosition.INTO_OR_BEFORE;
-            } else if (row >= num_rows) {
-                row = num_rows - 1; /* row not used after this?? */
-                drop_position = Gtk.TreeViewDropPosition.AFTER;
-            } else if (drop_position != Gtk.TreeViewDropPosition.BEFORE
-                    && received_drag_data
-                    && drag_data_info == TargetType.GTK_TREE_MODEL_ROW)
-                /* bookmark rows are never dragged into other bookmark rows */
-                drop_position = Gtk.TreeViewDropPosition.AFTER;
+            Gtk.TreeIter? row_iter = null;
+            store.get_iter_from_string (out row_iter, row.to_string ());
+            int last_row = store.iter_n_children (row_iter) - 1;
 
-            if (path.get_depth () == 1)
+            if (row > 0) {
+                /* On a Device or Network bookmark - these can only be dropped into */
+                drop_position = Gtk.TreeViewDropPosition.INTO_OR_BEFORE;
+            } else if (row == last_row && drop_position == Gtk.TreeViewDropPosition.AFTER) {
+                /* Cannot drop after "Trash" */
                 return false;
+            } else if (received_drag_data && drag_data_info == TargetType.GTK_TREE_MODEL_ROW) {
+                /* bookmark rows are never dragged into other bookmark rows */
+                if (drop_position == Gtk.TreeViewDropPosition.INTO_OR_BEFORE) {
+                    drop_position = Gtk.TreeViewDropPosition.BEFORE;
+                } else if (drop_position == Gtk.TreeViewDropPosition.INTO_OR_AFTER) {
+                    drop_position = Gtk.TreeViewDropPosition.AFTER;
+                }
+            }
 
             return true;
         }
@@ -1200,7 +1210,7 @@ namespace Marlin.Places {
                         var location = mount.get_default_location ();
                         if (flags == Marlin.OpenFlag.NEW_WINDOW) {
                             var app = Marlin.Application.get ();
-                            app.create_window (location, window.get_screen ());
+                            app.create_window (location);
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                             window.add_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
@@ -1271,7 +1281,7 @@ namespace Marlin.Places {
         }
 
         /* Reorder the selected bookmark to the specified position */
-        private void reorder_bookmarks (uint new_position) {
+        private void reorder_bookmarks (uint target_position, Gtk.TreeViewDropPosition drop_pos) {
             if (drag_row_ref != null) {
                 Gtk.TreeIter iter;
                 store.get_iter (out iter, drag_row_ref.get_path ());
@@ -1283,15 +1293,37 @@ namespace Marlin.Places {
                 uint old_position;
                 store.@get (iter, Column.INDEX, out old_position);
 
-                if (old_position <= n_builtins_before)
-                    old_position = 0;
-                else
+                /* Positions are currently indices into the Sidebar TreeView.  We need to take account
+                 * of builtin entries like "Home" to convert these positions into indices into the personal
+                 * bookmarklist.
+                 * As we are using uints, take care not to assign negative numbers */
+                if (old_position > n_builtins_before) {
                     old_position-= n_builtins_before;
+                } else {
+                    old_position = 0;
+                }
 
-                if (old_position >= bookmarks.length ())
+                if (target_position > n_builtins_before) {
+                    target_position-= n_builtins_before;
+                } else {
+                    /* The target is a builtin. Always drop at start of bookmarks */
+                    drop_pos = Gtk.TreeViewDropPosition.BEFORE;
+                    target_position = 0;
+                }
+                /* If the row is dropped on the opposite side of the target than it starts from,
+                 * then it replaces the target position. Otherwise it takes one more or less
+                 * than the target position. */
+                uint new_position = 0;
+                if (old_position < target_position) {
+                    new_position = (drop_pos == Gtk.TreeViewDropPosition.BEFORE) ? --target_position : target_position;
+                } else if (old_position > target_position) {
+                    new_position = (drop_pos == Gtk.TreeViewDropPosition.AFTER) ? ++target_position : target_position;
+                } else {
+                    warning ("Dropping before or after self - ignore");
                     return;
+                }
 
-                bookmarks.move_item (old_position, new_position);
+                bookmarks.move_item (old_position, new_position); /* Bookmarklist will validate the positions. */
             }
         }
 
@@ -1302,7 +1334,6 @@ namespace Marlin.Places {
                 return;
 
             popupmenu = new Gtk.Menu ();
-            popupmenu.attach_to_widget ((Gtk.Widget)this, (Gtk.MenuDetachFunc)popup_menu_detach_cb);
 
             var item = new Gtk.ImageMenuItem.with_mnemonic (_("Open"));
             var image = new Gtk.Image.from_icon_name ("document-open", Gtk.IconSize.MENU);
@@ -1388,24 +1419,6 @@ namespace Marlin.Places {
                                      Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                      Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                      event);
-        }
-
-        /* Callback used when the file list's popup menu is detached */
-        public void popup_menu_detach_cb (Gtk.Widget attach_widget, Gtk.Menu menu) {
-            popupmenu = null;
-            popupmenu_remove_item = null;
-            popupmenu_rename_item = null;
-            popupmenu_separator_item1 = null;
-            popupmenu_separator_item2 = null;
-            popupmenu_mount_item = null;
-            popupmenu_unmount_item = null;
-            popupmenu_eject_item = null;
-            popupmenu_rescan_item = null;
-            popupmenu_format_item = null;
-            popupmenu_start_item = null;
-            popupmenu_stop_item = null;
-            popupmenu_empty_trash_item = null;
-            popupmenu_drive_property_item = null;
         }
 
         /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */
