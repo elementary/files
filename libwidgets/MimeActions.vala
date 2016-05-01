@@ -233,15 +233,19 @@ public class Marlin.MimeActions {
 
     public static void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
         if (app == null) {
-            Gtk.Widget? toplevel = parent != null ? parent.get_toplevel () : null;
-            var chooser = new PF.ChooseAppDialog (toplevel, file_to_open);
-            var choice = chooser.get_app_info ();
+            var choice = choose_app_for_glib_file (file_to_open, parent);
             if (choice != null) {
                 launch_glib_file_with_app (file_to_open, parent, choice);
             }
         } else {
             launch_glib_file_with_app (file_to_open, parent, app);
         }
+    }
+
+    public static AppInfo? choose_app_for_glib_file (GLib.File file_to_open, Gtk.Widget parent) {
+        Gtk.Widget? toplevel = parent != null ? parent.get_toplevel () : null;
+        var chooser = new PF.ChooseAppDialog (toplevel, file_to_open);
+        return chooser.get_app_info ();
     }
 
     private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {

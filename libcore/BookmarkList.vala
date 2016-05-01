@@ -130,6 +130,10 @@ namespace Marlin {
         }
 
         public void insert_uris (GLib.List<string> uris, uint index) {
+            if (index > list.length ()) {
+                critical ("Bookmarklist: Attempt to insert uri at out of range index");
+                return;
+            }
             uris.@foreach ((uri) => {
                 insert_item_internal (new Bookmark.from_uri (uri, null), index);
                 index++;
@@ -184,19 +188,22 @@ namespace Marlin {
         }
 
         public void move_item (uint index, uint destination) {
-            assert (index < list.length ());
-            if (destination > list.length ())
-                destination = list.length ();
-
-            if (index == destination)
+            if (index > list.length ()) {
+                critical ("Bookmarklist: Attempt to move bookmark from out of range index");
                 return;
+            }
+
+            if (destination > list.length ()) {
+                critical ("Bookmarklist: Attempt to move bookmark to out of range index");
+                return;
+            }
+
+            if (index == destination) {
+                return;
+            }
 
             unowned GLib.List<Marlin.Bookmark> link = list.nth (index);
             list.remove_link (link);
-
-            if (destination > index)
-                destination--;
-
             list.insert (link.data, (int)destination);
             save_bookmarks_file ();
         }
@@ -206,8 +213,14 @@ namespace Marlin {
         }
 
         private void insert_item_internal (Marlin.Bookmark bm, uint index) {
-            if (this.contains (bm))
+            if (this.contains (bm)) {
                 return;
+            }
+            /* Do not insert bookmark for home or filesystem root (already have builtins) */
+            var path = bm.gof_file.location.get_path ();
+            if ((path == Environment.get_home_dir () || path == Path.DIR_SEPARATOR_S)) {
+                return;
+            }
 
             list.insert (bm, (int)index);
             start_monitoring_bookmark (bm);

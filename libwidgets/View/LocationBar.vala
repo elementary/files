@@ -28,7 +28,7 @@ namespace Marlin.View.Chrome
         public bool search_mode {get; private set;}
 
         public signal void reload_request ();
-        public signal void focus_file_request (File file);
+        public signal void focus_file_request (File? file);
         public signal void escape ();
 
         public LocationBar () {
@@ -65,15 +65,13 @@ namespace Marlin.View.Chrome
         }
 
         private void on_search_results_first_match_found (GLib.File? file) {
-            if (file != null) {
-                focus_file_request (file);
-            }
+            focus_file_request (file);
         }
+
         private void on_search_results_cursor_changed (GLib.File? file) {
-            if (file != null) {
-                focus_file_request (file);
-            }
+            focus_file_request (file);
         }
+
         private void on_search_results_realize () {
             (get_toplevel () as Gtk.Window).get_group ().add_window (search_results); /*Is this necessary every popup? */
         }

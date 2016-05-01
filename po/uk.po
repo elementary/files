@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-29 03:05-0600\n"
-"PO-Revision-Date: 2016-01-05 10:24+0000\n"
+"PO-Revision-Date: 2016-04-09 10:28+0000\n"
 "Last-Translator: Bogdan Lisnenko <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-03-01 05:42+0000\n"
-"X-Generator: Launchpad (build 17925)\n"
+"X-Launchpad-Export-Date: 2016-04-10 05:35+0000\n"
+"X-Generator: Launchpad (build 17990)\n"
 "Language: uk\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1817,7 +1817,7 @@ msgstr "%u файли, "
 
 #: ../src/View/OverlayBar.vala:249
 msgid "unknown size"
-msgstr ""
+msgstr "невідомий розмір"
 
 #: ../src/View/PropertiesWindow.vala:185
 msgid "Close"
@@ -1825,7 +1825,7 @@ msgstr "Закрити"
 
 #: ../src/View/PropertiesWindow.vala:197
 msgid "Resolution:"
-msgstr ""
+msgstr "Роздільна здатність:"
 
 #: ../src/View/PropertiesWindow.vala:347 ../src/View/PropertiesWindow.vala:1614
 msgid "General"
@@ -1889,7 +1889,7 @@ msgstr "Типи Mime:"
 
 #: ../src/View/PropertiesWindow.vala:676
 msgid "loading ..."
-msgstr ""
+msgstr "завантаження ..."
 
 #: ../src/View/PropertiesWindow.vala:690 ../src/View/PropertiesWindow.vala:692
 #: ../src/View/PropertiesWindow.vala:1545
@@ -1906,7 +1906,7 @@ msgstr "Початкове розташування:"
 
 #: ../src/View/PropertiesWindow.vala:709
 msgid "Could not be determined"
-msgstr ""
+msgstr "Не можливо визначти"
 
 #: ../src/View/PropertiesWindow.vala:752 ../src/View/PropertiesWindow.vala:1543
 msgid "Info"
@@ -2017,11 +2017,11 @@ msgstr "Неможливо змонтувати теку"
 
 #: ../src/View/ViewContainer.vala:347
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Не можливо під’єднатися до сервера для цієї теки"
 
 #: ../src/View/ViewContainer.vala:349
 msgid "Unable show Folder"
-msgstr ""
+msgstr "Не можливо показати теку"
 
 #: ../src/View/ViewContainer.vala:350
 msgid "The server for this folder could not be located."
