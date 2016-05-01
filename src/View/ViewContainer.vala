@@ -148,7 +148,10 @@ namespace Marlin.View {
                 var parent_path = PF.FileUtils.get_parent_path_from_path (location.get_uri ());
                 parent = PF.FileUtils.get_file_for_path (parent_path);
             }
-            user_path_change_request (parent);
+            /* Certain parents such as ftp:// will be returned as null as they are not browsable */
+            if (parent != null) {
+                user_path_change_request (parent);
+            }
         }
 
         public void go_back (int n = 1) {

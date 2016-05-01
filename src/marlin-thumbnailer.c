@@ -537,7 +537,6 @@ marlin_thumbnailer_thumbnailer_ready (DBusGProxy        *proxy,
 
         /* remember the idle struct because we might have to remove it in finalize() */
         thumbnailer->idles = g_list_prepend (thumbnailer->idles, idle);
-
         /* call the ready idle function when we have the time */
         idle->id = g_idle_add_full (G_PRIORITY_LOW,
                                     marlin_thumbnailer_ready_idle, idle,
@@ -849,11 +848,9 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
      * processed (and awaiting to be refreshed) */
     for (lp = g_list_last (files); lp != NULL; lp = lp->prev)
     {
-        /* 1067061 - Do not thumbnail network files or unsupported files */
-        if (!gof_file_is_remote_uri_scheme(lp->data) &&
-            marlin_thumbnailer_file_is_supported (thumbnailer, lp->data)) {
-
-                 supported_files = g_list_prepend (supported_files, lp->data);
+        /* It is up to the user whether or not remote files are thumbnailed*/
+        if (marlin_thumbnailer_file_is_supported (thumbnailer, lp->data)) {
+                supported_files = g_list_prepend (supported_files, lp->data);
         } else {
             gof_file_set_thumb_state (lp->data, GOF_FILE_THUMB_STATE_NONE);
         }

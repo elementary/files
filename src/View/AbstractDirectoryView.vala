@@ -72,7 +72,8 @@ namespace FM {
             {"create_from", on_background_action_create_from, "s"},
             {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
-            {"show_hidden", null, null, "false", change_state_show_hidden}
+            {"show_hidden", null, null, "false", change_state_show_hidden},
+            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
 
         const GLib.ActionEntry [] common_entries = {
@@ -228,6 +229,7 @@ namespace FM {
         protected bool is_writable = false;
         protected bool is_loading;
         protected bool helpers_shown;
+        protected bool show_remote_thumbnails {get; set; default = false;} 
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -255,6 +257,7 @@ namespace FM {
             thumbnailer = Marlin.Thumbnailer.get ();
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
+            Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
 
             recent = ((Marlin.Application)(window.application)).get_recent_manager ();
 
@@ -328,6 +331,7 @@ namespace FM {
             get_vadjustment ().value_changed.connect_after (schedule_thumbnail_timeout);
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
+            (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
 
             model.row_deleted.connect (on_row_deleted);
@@ -349,6 +353,7 @@ namespace FM {
             insert_action_group ("common", common_actions);
 
             action_set_state (background_actions, "show_hidden", Preferences.settings.get_boolean ("show-hiddenfiles"));
+            action_set_state (background_actions, "show_remote_thumbnails", Preferences.settings.get_boolean ("show-remote-thumbnails"));
         }
 
         public void zoom_in () {
@@ -781,9 +786,9 @@ namespace FM {
                     file.execute (screen, null, null);
                 else if (only_one_file && default_app != null)
                     file.open_single (screen, default_app);
-                else
-                    warning ("Unable to activate this file.  Default app is %s",
-                             default_app != null ? default_app.get_name () : "null");
+                else {
+                    Marlin.MimeActions.open_glib_file_request (location, this, null);
+                }
             } else
                 warning ("Cannot open file in trash");
         }
@@ -1043,41 +1048,7 @@ namespace FM {
         private void on_selection_action_open_with_other_app () {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-
-            Gtk.DialogFlags flags = Gtk.DialogFlags.MODAL |
-                                    Gtk.DialogFlags.DESTROY_WITH_PARENT;
-
-            var dialog = new Gtk.AppChooserDialog (window, flags, file.location);
-            dialog.set_deletable (false);
-
-            var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
-            app_chooser.set_show_recommended (true);
-
-            var check_default = new Gtk.CheckButton.with_label (_("Set as default"));
-            check_default.set_active (true);
-            check_default.show ();
-
-            var action_area = dialog.get_action_area () as Gtk.ButtonBox;
-            action_area.add (check_default);
-            action_area.set_child_secondary (check_default, true);
-
-            dialog.show ();
-            int response = dialog.run ();
-
-            if (response == Gtk.ResponseType.OK) {
-                var app =dialog.get_app_info ();
-                if (check_default.get_active ()) {
-                    try {
-                        app.set_as_default_for_type (file.get_ftype ());
-                    }
-                    catch (GLib.Error error) {
-                        critical ("Could not set as default: %s", error.message);
-                    }
-                }
-                open_files_with (app, selection);
-            }
-
-            dialog.destroy ();
+            Marlin.MimeActions.open_glib_file_request (file.location, this, null);
         }
 
         private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1094,6 +1065,9 @@ namespace FM {
 
         private void change_state_show_hidden (GLib.SimpleAction action) {
             window.change_state_show_hidden (action);
+        }
+        private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
+            window.change_state_show_remote_thumbnails (action);
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1259,8 +1233,9 @@ namespace FM {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if (slot.directory.is_local)
+                if (slot.directory.is_local || show_remote_thumbnails) {
                     thumbnailer.queue_file (file, null, large_thumbnails);
+                }
             }
         }
 
@@ -1322,8 +1297,9 @@ namespace FM {
             model.set_property ("size", icon_size);
             change_zoom_level ();
 
-            if (get_realized () && slot.directory.is_local)
+            if (get_realized () && (slot.directory.is_local || show_remote_thumbnails)) {
                 load_thumbnails (slot.directory, zoom);
+            }
         }
 
     /** Handle Preference changes */
@@ -1341,6 +1317,14 @@ namespace FM {
                 unblock_model ();
 
             action_set_state (background_actions, "show_hidden", show);
+        }
+
+        private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            show_remote_thumbnails = (prefs as GOF.Preferences).show_remote_thumbnails;
+            action_set_state (background_actions, "show_remote_thumbnails", show_remote_thumbnails);
+            if (show_remote_thumbnails) {
+                slot.reload ();
+            }
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
@@ -1914,7 +1898,7 @@ namespace FM {
 
             if (in_recent) {
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
-                menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
+                menu.append_section (null, builder.get_object ("show") as GLib.MenuModel);
 
                 return menu as MenuModel;
             }
@@ -1945,7 +1929,11 @@ namespace FM {
                 }
             }
 
-            menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
+            var show_menu = builder.get_object ("show") as GLib.Menu;
+            if (slot.directory.is_local) {
+                show_menu.remove (1); /* Do not show "Show Remote Thumbnails" option when in local folder */
+            }
+            menu.append_section (null, show_menu);
 
             if (!in_network_root)
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
@@ -2338,8 +2326,14 @@ namespace FM {
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
-            if (slot.directory.is_loading ()) {
-                return;
+
+            assert (slot is GOF.AbstractSlot && slot.directory != null);
+
+            if (thumbnail_source_id != 0 ||
+                (!slot.directory.is_local && !show_remote_thumbnails) ||
+                (slot.directory.is_loading ())) {
+
+                    return;
             }
 
             cancel_thumbnailing (); /* cancels any existing timeout or thumbnail request */

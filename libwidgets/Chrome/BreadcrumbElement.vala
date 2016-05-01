@@ -22,42 +22,61 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
     private static const int ICON_MARGIN = 3;
     private string icon_name; /*For testing */
-    private double text_width = -1;
-    private double text_height = -1;
+    private Gdk.Pixbuf? icon = null;
+    private int icon_width;
 
     public string? text {get; private set;}
+    private double text_width;
+    private double text_height;
+
     public double offset = 0;
-    public double max_width = -1;
-    public double min_width = -1;
     public double last_height = 0;
     public double x  = 0;
-    public double width {
+
+    public double natural_width {
         get {
-            return text_width + padding.left + padding.right + last_height / 2;
+            return text_width + icon_width + 2 * ICON_MARGIN + padding.left + padding.right;
         }
     }
+    public double display_width = -1;
     public double real_width {
         get {
-            return (max_width > 0 ? max_width : text_width) +
-                    padding.left + padding.right + last_height / 2;
+            return display_width > 0 ? display_width : natural_width;
         }
     }
+
     public bool hidden = false;
     public bool display = true;
-    public bool display_text = true;
-    public string? text_displayed = null;
-
+    public bool can_shrink = true;
     public bool pressed = false;
-    private Gtk.Border padding = Gtk.Border ();
-    private Gdk.Pixbuf? icon = null;
 
-    public BreadcrumbElement (string text_) {
+    public bool text_is_displayed = true;
+    private string _text_for_display = "";
+    public string? text_for_display {
+        set {
+            _text_for_display = value;
+            update_text_width ();
+        }
+
+        get {
+            return _text_for_display;
+        }
+    }
+
+    private Gtk.Border padding = Gtk.Border ();
+    private Pango.Layout layout;
+    private Gtk.Widget widget;
+
+    public BreadcrumbElement (string text_, Gtk.Widget widget_, Gtk.StyleContext button_context) {
         text = text_;
-        text_displayed = Uri.unescape_string (text);
+        widget = widget_;
+        padding = button_context.get_padding (button_context.get_state ());
+        text_for_display = Uri.unescape_string (text);
     }
 
     public void set_icon (Gdk.Pixbuf icon_) {
         icon = icon_;
+        icon_width = icon.get_width ();
     }
     public void set_icon_name (string icon_name_) {
         icon_name = icon_name_;
@@ -75,60 +94,63 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         cr.save ();
         last_height = height;
         cr.set_source_rgb (0,0,0);
-        string? text = text_displayed ?? this.text;
-        Pango.Layout layout = widget.create_pango_layout (text ?? "");
 
-        if (icon == null) {
-            computetext_width (layout);
-        } else if (!display_text) {
-            text_width = icon.get_width () + ICON_MARGIN;
+        var width = this.real_width;
+        var iw = icon_width + 2 * ICON_MARGIN;
+        var room_for_text = text_is_displayed;
+        var room_for_icon = true;
+
+        var layout_width = (width - padding.left - padding.right);
+        if (layout_width < iw) {
+            room_for_icon = false;
+            iw = 0;
+            if (layout_width >= 0) {
+                layout.set_width (Pango.units_from_double (layout_width));
+            } else {
+                room_for_text = false;
+            }
         } else {
-            computetext_width (layout);
-            text_width += icon.get_width () + 2 * ICON_MARGIN;
+            layout_width -= iw;
+            if (layout_width >= 0) {
+                layout.set_width (Pango.units_from_double (layout_width));
+            } else {
+                room_for_text = false;
+            }
         }
-
-        layout.set_ellipsize (Pango.EllipsizeMode.MIDDLE);
-        if (max_width > 0 && min_width < 0) {
-            layout.set_width (Pango.units_from_double (max_width));
-        }
-
+        /* Erase area for drawing */
         if (offset > 0.0) {
             if (is_RTL) {
                 cr.move_to (x + height/2, y);
                 cr.line_to (x, y + height/2);
                 cr.line_to (x + height/2, y + height);
-                cr.line_to (x - text_width - padding.left, y + height);
-                cr.line_to (x - text_width - height/2 - padding.left, y + height/2);
-                cr.line_to (x - text_width - padding.left, y);
+                cr.line_to (x - width, y + height);
+                cr.line_to (x - width - height/2, y + height/2);
+                cr.line_to (x - width, y);
                 cr.close_path ();
                 cr.clip ();
             } else {
                 cr.move_to (x - height/2, y);
                 cr.line_to (x, y + height/2);
                 cr.line_to (x - height/2, y + height);
-                cr.line_to (x + text_width + padding.left, y + height);
-                cr.line_to (x + text_width + height/2 + padding.left, y + height/2);
-                cr.line_to (x + text_width + padding.left, y);
+                cr.line_to (x + width, y + height);
+                cr.line_to (x + width + height/2, y + height/2);
+                cr.line_to (x + width, y);
                 cr.close_path ();
                 cr.clip ();
             }
         }
 
-        if (pressed) {
+        if (pressed) { /* Highlight the breadcrumb */
             cr.save ();
             double base_x, left_x, right_x, arrow_right_x;
-                double text_width = max_width > 0 ? max_width : this.text_width;
-
+            base_x = x;
             if (is_RTL) {
-                base_x = x;
                 left_x = base_x + height / 2 - line_width;
-                right_x = base_x - text_width - padding.left - padding.right;
+                right_x = base_x - width;
                 arrow_right_x = right_x - height / 2;
-
             } else {
-                base_x = x;
-                left_x = base_x - height / 2 + line_width;
-                right_x = base_x + text_width + padding.left + padding.right;
+                left_x = base_x - height / 2;
+                right_x = base_x + width + line_width;
                 arrow_right_x = right_x + height / 2;
             }
             var top_y = y + padding.top - line_width;
@@ -145,57 +167,76 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.clip ();
             button_context.save ();
             button_context.set_state (Gtk.StateFlags.ACTIVE);
-            button_context.render_background (cr, left_x, y, text_width + height + padding.left + padding.right + 2 * line_width, height);
+            button_context.render_background (cr, left_x, y, width + height + 2 * line_width, height);
             button_context.render_frame (cr, 0, padding.top - line_width, widget.get_allocated_width (), height - line_width);
             button_context.restore ();
             cr.restore ();
         }
 
+        /* Draw the text and icon (if present and there is room) */
         Gdk.Pixbuf? icon_to_draw = icon;
         if (icon != null && (state & Gtk.StateFlags.BACKDROP) > 0) {
             icon_to_draw = Eel.gdk_pixbuf_lucent (icon_to_draw, 50);
         }
+
         if (is_RTL) {
             x -= padding.left;
             x += Math.sin (offset*Math.PI_2) * width;
             if (icon_to_draw == null) {
-                button_context.render_layout (cr, x - text_width,
-                                              y + height/2 - text_height/2, layout);
-            } else if (!display_text) {
-                button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon.get_width (),
-                                            y + height/2 - icon.get_height ()/2);
+                if (room_for_text) {
+                    button_context.render_layout (cr, x - width,
+                                                  y + height/2 - text_height/2, layout);
+                }
+            } else if (!text_is_displayed) {
+                if (room_for_icon) {
+                    button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon_width,
+                                                y + height/2 - icon.get_height ()/2);
+                }
             } else {
-                button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon.get_width (),
-                                            y + height/2 - icon.get_height ()/2);
-                /* text_width already includes icon_width */
-                button_context.render_layout (cr, x - text_width,
-                                              y + height/2 - text_height/2, layout);
+                if (room_for_icon) {
+                    button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon_width,
+                                                y + height/2 - icon.get_height ()/2);
+                }
+                if (room_for_text) {
+                    /* text_width already includes icon_width */
+                    button_context.render_layout (cr, x - width,
+                                                  y + height/2 - text_height/2, layout);
+                }
             }
         } else {
             x += padding.left;
             x -= Math.sin (offset*Math.PI_2) * width;
             if (icon_to_draw == null) {
-                button_context.render_layout (cr, x,
-                                              y + height/2 - text_height/2, layout);
-            } else if (!display_text) {
-                button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
-                                             y + height/2 - icon.get_height ()/2);
+                if (room_for_text) {
+                    button_context.render_layout (cr, x,
+                                                  y + height/2 - text_height/2, layout);
+                }
+            } else if (!text_is_displayed) {
+                if (room_for_icon) {
+                    button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
+                                                 y + height/2 - icon.get_height ()/2);
+                }
             } else {
-                button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
-                                             y + height/2 - icon.get_height ()/2);
-                button_context.render_layout (cr, x + icon.get_width () + 2 * ICON_MARGIN,
-                                              y + height/2 - text_height/2, layout);
+                if (room_for_icon) {
+                    button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
+                                                 y + height/2 - icon.get_height ()/2);
+                }
+                if (room_for_text) {
+                    button_context.render_layout (cr, x + iw,
+                                                  y + height/2 - text_height/2, layout);
+                }
             }
         }
 
+        /* Move to end of breadcrumb */
         if (is_RTL) {
-            x -= (padding.left + (max_width > 0 ? max_width : text_width));
+            x -= (width);
         } else {
-            x += padding.right + (max_width > 0 ? max_width : text_width);
+            x += width;
         }
 
+        /* Draw the arrow-shaped separator */
         if (is_RTL) {
-            /* Draw the separator */
             cr.save ();
             cr.translate (x + height/4, y + height / 2);
             cr.rectangle (0, -height / 2 + line_width, -height, height - 2 * line_width);
@@ -210,7 +251,6 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             button_context.restore ();
             cr.restore ();
         } else {
-            /* Draw the separator */
             cr.save ();
             cr.translate (x - height / 4, y + height / 2);
             cr.rectangle (0, -height / 2 + line_width, height, height - 2 * line_width);
@@ -226,6 +266,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.restore ();
         }
 
+        /* Move to end of separator */
         if (is_RTL) {
             x -= height / 2;
         } else {
@@ -235,9 +276,12 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         return x;
     }
 
-    private void computetext_width (Pango.Layout pango) {
+    private void update_text_width () {
+        layout = widget.create_pango_layout (_text_for_display);
+        layout.set_ellipsize (Pango.EllipsizeMode.MIDDLE);
+
         int width, height;
-        pango.get_size (out width, out height);
+        layout.get_size (out width, out height);
         this.text_width = Pango.units_to_double (width);
         this.text_height = Pango.units_to_double (height);
     }
