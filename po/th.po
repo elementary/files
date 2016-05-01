@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-02-29 03:05-0600\n"
-"PO-Revision-Date: 2016-03-07 15:57+0000\n"
-"Last-Translator: Big50000 <ictsanook@hotmail.com>\n"
+"PO-Revision-Date: 2016-04-30 11:19+0000\n"
+"Last-Translator: Rockworld <sumoisrock@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-03-08 05:42+0000\n"
-"X-Generator: Launchpad (build 17936)\n"
+"X-Launchpad-Export-Date: 2016-05-01 05:33+0000\n"
+"X-Generator: Launchpad (build 17995)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "ไม่มีอะไรอยู่ในคลิปบอร์ดที่จะแปะ"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -36,7 +36,7 @@ msgstr "FTP (แบบล็อกอิน)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -44,11 +44,11 @@ msgstr "โฟลเดอร์ใช้ร่วมของวินโดว
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "WebDAV นิรภัย (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
@@ -115,11 +115,11 @@ msgstr "ใช้ร่วมกับ (_H) :"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr ""
+msgstr "_โฟลเดอร์:"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr ""
+msgstr "รายละเอียดของผู้ใช้"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -336,19 +336,19 @@ msgstr " (รูปแบบ Unicode ที่ผิด)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr ""
+msgstr "ข้_ามทั้งหมด"
 
 #: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr ""
+msgstr "_ลองใหม่"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr ""
+msgstr "ลบทั้_งหมด"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr ""
+msgstr "_แทนที่"
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
@@ -2113,7 +2113,8 @@ msgstr ""
 "  Big50000 https://launchpad.net/~ictsanook\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Jirayu Yingthawornsuk https://launchpad.net/~jirayu"
+"  Jirayu Yingthawornsuk https://launchpad.net/~jirayu\n"
+"  Rockworld https://launchpad.net/~rockrock2222222"
 
 #: ../libwidgets/Resources.vala:80
 msgid "AFP"
