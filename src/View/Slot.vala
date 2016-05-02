@@ -203,7 +203,7 @@ namespace Marlin.View {
 
         private void on_dir_view_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
-                if (mode ==  Marlin.ViewMode.MILLER_COLUMNS)
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
                     miller_slot_request (loc, make_root); /* signal to parent MillerView */
                 else
                     user_path_change_request (loc, false, make_root); /* Handle ourselves */
