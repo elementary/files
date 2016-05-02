@@ -148,7 +148,10 @@ namespace Marlin.View {
                 var parent_path = PF.FileUtils.get_parent_path_from_path (location.get_uri ());
                 parent = PF.FileUtils.get_file_for_path (parent_path);
             }
-            user_path_change_request (parent);
+            /* Certain parents such as ftp:// will be returned as null as they are not browsable */
+            if (parent != null) {
+                user_path_change_request (parent);
+            }
         }
 
         public void go_back (int n = 1) {
@@ -397,8 +400,10 @@ namespace Marlin.View {
 
         public void set_active_state (bool is_active) {
             var aslot = get_current_slot ();
-            if (aslot != null && aslot.directory.can_load)
+            if (aslot != null) {
+                /* Since async loading it may not have been determined whether slot is loadable */
                 aslot.set_active_state (is_active);
+            }
         }
         
         public void set_frozen_state (bool is_frozen) {
@@ -406,15 +411,27 @@ namespace Marlin.View {
             if (aslot != null)
                 aslot.set_frozen_state (is_frozen);
         }
+
+        private void set_all_selected (bool select_all) {
+            var aslot = get_current_slot ();
+            if (aslot != null) {
+                aslot.set_all_selected (select_all);
+            }
+        }
         
-        public void focus_location (GLib.File loc,
+        public void focus_location (GLib.File? loc,
                                     bool no_path_change = false,
                                     bool unselect_others = false) {
 
             /* This function navigates to another folder if necessary if 
              * select_in_current_only is not set to true.
              */
-            assert (loc != null);
+
+            /* Search can generate null focus requests if no match - deselect previous search selection */
+            if (loc == null) {
+                set_all_selected (false);
+                return;
+            }
 
             if (location.equal (loc)) {
                 return;

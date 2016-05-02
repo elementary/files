@@ -343,7 +343,7 @@ static void
 gof_file_update_size (GOFFile *file)
 {
     g_free (file->format_size);
-    if (gof_file_is_folder (file))
+    if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file))
         file->format_size = g_strdup ("—");
     else
         file->format_size = g_format_size (file->size);
@@ -476,9 +476,10 @@ gof_file_update (GOFFile *file)
 
             /* read the display name from the .desktop file (will be overwritten later
              * if it's undefined here) */
-            gchar *custom_display_name = g_key_file_get_string (key_file,
+            gchar *custom_display_name = g_key_file_get_locale_string (key_file,
                                                                 G_KEY_FILE_DESKTOP_GROUP,
                                                                 G_KEY_FILE_DESKTOP_KEY_NAME,
+                                                                NULL,
                                                                 NULL);
 
             /* check if we have a display name now */
@@ -538,8 +539,9 @@ gof_file_update (GOFFile *file)
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
     /* mark the thumb flags as state none, we'll load the thumbs once the directory
      * would be loaded on a thread */
-    if (gof_file_get_thumbnail_path (file) != NULL)
-        file->flags = GOF_FILE_THUMB_STATE_NONE;
+    if (gof_file_get_thumbnail_path (file) != NULL) {
+        file->flags = GOF_FILE_THUMB_STATE_UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
+    }
 
     /* formated type */
     gof_file_update_formated_type (file);
@@ -875,12 +877,13 @@ gof_file_query_thumbnail_update (GOFFile *file)
         /* get the thumbnail path from md5 filename */
         md5_hash = g_compute_checksum_for_string (G_CHECKSUM_MD5, file->uri, -1);
         base_name = g_strdup_printf ("%s.png", md5_hash);
-        /* TODO Use $XDG_CACHE_HOME specified thumbnail directory instead of hard coding - when Tumbler does*/
+
+        /* Use $XDG_CACHE_HOME specified thumbnail directory instead of hard coding */
         if (file->pix_size <= 128) {
-            file->thumbnail_path = g_build_filename (g_get_home_dir (), ".thumbnails",
+            file->thumbnail_path = g_build_filename (g_get_user_cache_dir (), "thumbnails",
                                                      "normal", base_name, NULL);
         } else {
-            file->thumbnail_path = g_build_filename (g_get_home_dir (), ".thumbnails",
+            file->thumbnail_path = g_build_filename (g_get_user_cache_dir (), "thumbnails",
                                                      "large", base_name, NULL);
         }
         g_free (base_name);
@@ -928,6 +931,8 @@ static void gof_file_init (GOFFile *file) {
     file->icon = NULL;
     file->pix = NULL;
     file->color = 0;
+    file->width = 0;
+    file->height = 0;
 
     file->utf8_collation_key = NULL;
     file->formated_type = NULL;
@@ -943,7 +948,7 @@ static void gof_file_init (GOFFile *file) {
     file->exists = TRUE;
     file->is_connected = TRUE;
 
-    file->flags = 0;
+    file->flags = GOF_FILE_THUMB_STATE_UNKNOWN;
     file->pix_size = -1;
 
     file->target_gof = NULL;
@@ -1442,14 +1447,14 @@ gof_file_is_executable (GOFFile *file)
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
+    if (gof_file_is_desktop_file (file)) {
+        return TRUE;
+    }
+
     if (file->target_gof)
         return gof_file_is_executable (file->target_gof);
     if (file->info == NULL) {
         return FALSE;
-    }
-
-    if (gof_file_is_desktop_file (file)) {
-        return TRUE;
     }
 
     if (g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
@@ -2587,14 +2592,17 @@ gof_file_get_preview_path(GOFFile* file)
 
     if (thumbnail_path != NULL)
     {
-        thumbnail_path_split = g_strsplit(thumbnail_path, ".thumbnails/normal", -1);
-        if(g_strv_length(thumbnail_path_split) == 2)
+        /* Construct new path to large thumbnail based on $XDG_CACHE_HOME */
+        thumbnail_path_split = g_strsplit(thumbnail_path, G_DIR_SEPARATOR_S, -1);
+        uint l;
+        l = g_strv_length(thumbnail_path_split);
+        if(l > 2)
         {
-            new_thumbnail_path = g_strjoin(".thumbnails/large", thumbnail_path_split[0], thumbnail_path_split[1], NULL);
+            new_thumbnail_path = g_strjoin(G_DIR_SEPARATOR_S, g_get_user_cache_dir (), "thumbnails/large", thumbnail_path_split[l-1], NULL);
+
             if(!g_file_test(new_thumbnail_path, G_FILE_TEST_EXISTS))
             {
-                g_free(new_thumbnail_path);
-                new_thumbnail_path = NULL;
+                new_thumbnail_path = g_strdup(thumbnail_path);
             }
         }
         else

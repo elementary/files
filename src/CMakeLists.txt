@@ -27,6 +27,7 @@ pkg_check_modules (DEPS REQUIRED
     sqlite3
     dbus-glib-1
     libnotify>=0.7.2
+    libcanberra>=0.30
     plank
     zeitgeist-2.0)
 
@@ -68,7 +69,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/ListView.vala
         ZeitgeistManager.vala
         View/DiskRenderer.vala
-        View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
         View/Window.vala
@@ -127,7 +127,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
-        View/IconSpinnerRenderer.vala
         View/OverlayBar.vala
         View/PropertiesWindow.vala
         View/Browser.vala

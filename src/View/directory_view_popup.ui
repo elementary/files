@@ -62,10 +62,14 @@
         </submenu>
     </menu>
 
-    <menu id='hidden'>
+    <menu id='show'>
         <item>
             <attribute name='label' translatable='yes'>Show Hidden Files</attribute>
             <attribute name='action'>background.show_hidden</attribute>
+        </item>
+        <item>
+            <attribute name='label' translatable='yes'>Show Remote Thumbnails</attribute>
+            <attribute name='action'>background.show_remote_thumbnails</attribute>
         </item>
     </menu>
 

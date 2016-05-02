@@ -21,7 +21,6 @@ namespace Marlin.View {
     public class OverlayBar : Granite.Widgets.OverlayBar {
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
         const int STATUS_UPDATE_DELAY = 200;
-        const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff"};
         Cancellable? cancellable = null;
         bool image_size_loaded = false;
         private uint folders_count = 0;
@@ -117,10 +116,13 @@ namespace Marlin.View {
                 deep_count_timeout_id = 0;
             }
 
+            cancel_cancellable ();
+        }
+
+        private void cancel_cancellable () {
             /* if we're still collecting image info or deep counting, cancel */
             if (cancellable != null) {
                 cancellable.cancel ();
-                cancellable = null;
             }
         }
 
@@ -139,7 +141,14 @@ namespace Marlin.View {
                     else
                         scan_list (files);
 
-                    status = update_status ();
+                    /* There is a race between load_resolution and file_real_size for setting status.
+                     * On first hover, file_real_size wins.  On second hover load_resolution
+                     * wins because we remembered the resolution. So only set status with string returned by
+                     * update status if it has not already been set by load resolution.*/
+                    var s = update_status ();
+                    if (status == "") {
+                        status = s;
+                    }
                 }
             }
 
@@ -148,19 +157,27 @@ namespace Marlin.View {
 
         private string update_status () {
             string str = "";
+            status = "";
             if (goffile != null) { /* a single file is hovered or selected */
-                if (goffile.is_network_uri_scheme ()) {
+                if (goffile.is_network_uri_scheme () || goffile.is_root_network_folder ()) {
                     str = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
                     /* if we have an image, see if we can get its resolution */
-                    cancellable = new Cancellable ();
                     string? type = goffile.get_ftype ();
-                    if (type != null && type.substring (0, 6) == "image/" && !(type in SKIP_IMAGES)) {
-                        load_resolution.begin (goffile);
+
+                    if (goffile.format_size == "" ) { /* No need to keep recalculating it */
+                        goffile.format_size = format_size (PropertiesWindow.file_real_size (goffile));
                     }
                     str = "%s- %s (%s)".printf (goffile.info.get_name (),
                                                 goffile.formated_type,
-                                                format_size (PropertiesWindow.file_real_size (goffile)));
+                                                goffile.format_size);
+
+                    if (type != null && type.substring (0, 6) == "image/" &&     /* file is image and */
+                        (goffile.width > 0 ||                                     /* resolution already determined  or*/
+                        !((type in Marlin.SKIP_IMAGES) || goffile.width < 0))) { /* resolution can be determined. */
+
+                        load_resolution.begin (goffile);
+                    }
                 } else {
                     str = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
                     schedule_deep_count ();
@@ -196,12 +213,14 @@ namespace Marlin.View {
                 deep_counter = new Marlin.DeepCount (goffile.location);
                 deep_counter.finished.connect (update_status_after_deep_count);
 
-                cancellable = new Cancellable (); /* re-use existing cancellable */
+                cancel_cancellable ();
+                cancellable = new Cancellable ();
                 cancellable.cancelled.connect (() => {
                     if (deep_counter != null) {
                         deep_counter.finished.disconnect (update_status_after_deep_count);
                         deep_counter.cancel ();
                         deep_counter = null;
+                        cancellable = null;
                     }
                 });
                 deep_count_timeout_id = 0;
@@ -211,10 +230,11 @@ namespace Marlin.View {
 
         private void update_status_after_deep_count () {
             string str;
+            cancellable = null;
+
+            status = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
 
             if (deep_counter != null) {
-                status = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
-
                 if (deep_counter.dirs_count > 0) {
                     str = ngettext (_("%u sub-folder, "), _("%u sub-folders, "), deep_counter.dirs_count);
                     status += str.printf (deep_counter.dirs_count);
@@ -225,13 +245,22 @@ namespace Marlin.View {
                     status += str.printf (deep_counter.files_count);
                 }
 
-                status += format_size (deep_counter.total_size);
+                if (deep_counter.total_size == 0) {
+                    status += _("unknown size");
+                } else {
+                    status += format_size (deep_counter.total_size);
+                }
                 
-                if (deep_counter.file_not_read > 0)
-                    status += " approx - %u files not readable".printf (deep_counter.file_not_read);
-
-                status += ")";
+                if (deep_counter.file_not_read > 0) {
+                    if (deep_counter.total_size > 0) {
+                        status += " approx - %u files not readable".printf (deep_counter.file_not_read);
+                    } else {
+                        status += " %u files not readable".printf (deep_counter.file_not_read);
+                    }
+                }
             }
+
+            status += ")";
         }
 
         private void scan_list (GLib.List<GOF.File>? files) {
@@ -254,39 +283,67 @@ namespace Marlin.View {
 
         /* code is mostly ported from nautilus' src/nautilus-image-properties.c */
         private async void load_resolution (GOF.File goffile) {
+            if (goffile.width > 0) { /* resolution may already have been determined */
+                on_size_prepared (goffile.width, goffile.height);
+                return;
+            }
+
             var file = goffile.location;
             image_size_loaded = false;
 
             try {
                 stream = yield file.read_async (0, cancellable);
-                if (stream == null)
+                if (stream == null) {
                     error ("Could not read image file's size data");
+                }
+
                 loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
+                loader.size_prepared.connect (on_size_prepared);
 
-                loader.size_prepared.connect ((width, height) => {
-                    image_size_loaded = true;
-                    status = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
-                });
-
-                /* Gdk wants us to always close the loader, so we are nice to it */
-                cancellable.cancelled.connect (() => {
-                    try {
-                        loader.close ();
-                        stream.close ();
-                    } catch (Error e) {}
-                });
+                cancel_cancellable ();
+                cancellable = new Cancellable ();
 
                 yield read_image_stream (loader, stream, cancellable);
-            } catch (Error e) { debug (e.message); }
+            } catch (Error e) {
+                warning ("Error loading image resolution in OverlayBar: %s", e.message);
+            }
+            /* Gdk wants us to always close the loader, so we are nice to it */
+            try {
+                stream.close ();
+            } catch (GLib.Error e) {
+                debug ("Error closing stream in load resolution: %s", e.message);
+            }
+            try {
+                loader.close ();
+            } catch (GLib.Error e) { /* Errors expected because may not load whole image */
+                debug ("Error closing loader in load resolution: %s", e.message);
+            }
+            cancellable = null;
         }
 
+        private void on_size_prepared (int width, int height) {
+            image_size_loaded = true;
+            goffile.width = width;
+            goffile.height = height;
+            status = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
+        }
 
         private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable)
         {
             ssize_t read = 1;
-            while (!image_size_loaded  && read > 0) {
+            uint count = 0;
+            while (!image_size_loaded  && read > 0 && !cancellable.is_cancelled ()) {
                 try {
                     read = yield stream.read_async (buffer, 0, cancellable);
+                    count++;
+                    if (count > 100) {
+                        goffile.width = -1; /* Flag that resolution is not determinable so do not try again*/
+                        goffile.height = -1;
+                        /* Note that Gdk.PixbufLoader seems to leak memory with some file types. Any file type that
+                         * causes this error should be added to Marlin.SKIP_IMAGES array */     
+                        critical ("Could not determine resolution of file type %s", goffile.get_ftype ());
+                        break;
+                    }
                     loader.write (buffer);
                     
                 } catch (IOError e) {
@@ -300,7 +357,6 @@ namespace Marlin.View {
                     warning (e.message);
                 }
             }
-            cancellable.cancelled ();
         }
     }
 }

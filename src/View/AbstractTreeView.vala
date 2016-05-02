@@ -132,10 +132,19 @@ namespace FM {
 
         public override void select_path (Gtk.TreePath? path) {
             if (path != null) {
-                debug ("select path %s", path.to_string ());
+                var selection = tree.get_selection ();
+                /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
+                 * so we have to remember them and reselect afterwards */ 
+                GLib.List<Gtk.TreePath> selected_paths = null;
+                selection.selected_foreach ((m, p, i) => {
+                    selected_paths.prepend (p);
+                });
                 /* Ensure cursor follows last selection */
-                tree.set_cursor (path, null, false);
-                tree.get_selection ().select_path (path);
+                tree.set_cursor (path, null, false);  /* This selects path but unselects rest! */
+                selection.select_path (path);
+                selected_paths.@foreach ((p) => {
+                    selection.select_path (p);
+                });
             }
         }
         public override void unselect_path (Gtk.TreePath? path) {
@@ -184,11 +193,14 @@ namespace FM {
             Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
             uint zone;
-            int cx, cy, depth;
+            int x, y, cx, cy, depth;
             path = null;
 
             if (event.window != tree.get_bin_window ())
                 return ClickZone.INVALID;
+
+            x = (int)event.x;
+            y = (int)event.y;
 
             tree.get_path_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
             path = p;
@@ -198,38 +210,40 @@ namespace FM {
 
             if (p != null && c != null && c == name_column) {
                 int? x_offset = null, width = null;
-                c.cell_get_position (icon_renderer, out x_offset, out width);
+                Gdk.Rectangle area;
 
-                int expander_width = ICON_XPAD;
-                if (tree.show_expanders) {
-                    var expander_val = GLib.Value (typeof (int));
-                    tree.style_get_property ("expander-size", ref expander_val);
-                    int expander_size = expander_val.get_int () + tree.get_level_indentation () + 3;
-                    expander_width += expander_size * (depth) + zoom_level;
-                }
-                int orig_x = expander_width + x_offset;
+                tree.get_cell_area (p, c, out area);
 
-                if (cx > orig_x ) {
+                width = area.width;
+                int orig_x = area.x + ICON_XPAD;
+
+                if (x > orig_x) { /* y must be in range */
                     bool on_helper = false;
-                    /* We pass cy as orig_y as we are always within the y dimension of the icon
-                     * (otherwise we would be on a different row)
-                     */
-                    bool on_icon = is_on_icon (cx, cy, orig_x, cy, ref on_helper);
+                    bool on_icon = is_on_icon (x, y, orig_x, area.y, ref on_helper);
 
-                    if (on_helper)
+                    if (on_helper) {
                         zone = ClickZone.HELPER;
-                    else if (on_icon)
+                    } else if (on_icon) {
                         zone = ClickZone.ICON;
-                    else {
+                    } else {
                         c.cell_get_position (name_renderer, out x_offset, out width);
+                        int expander_width = ICON_XPAD;
+                        if (tree.show_expanders) {
+                            var expander_val = GLib.Value (typeof (int));
+                            tree.style_get_property ("expander-size", ref expander_val);
+                            int expander_size = expander_val.get_int () + tree.get_level_indentation () + 3;
+                            expander_width += expander_size * (depth) + zoom_level;
+                        }
                         orig_x = expander_width + x_offset;
                         if (right_margin_unselects_all && cx >= orig_x + width - 6)
                             zone = ClickZone.INVALID; /* Cause unselect all to occur on right margin */
-                        else
+                        else {
                             zone = ClickZone.NAME;
+                        }
                     }
-                } else
+                } else {
                     zone = ClickZone.EXPANDER;
+                }
             } else if (c != name_column)
                 zone = ClickZone.INVALID; /* Cause unselect all to occur on other columns*/
 
@@ -291,6 +305,14 @@ namespace FM {
                 tree.thaw_child_notify ();
                 tree_frozen = false;
             }
+        }
+
+        protected override void freeze_child_notify () {
+            tree.freeze_child_notify ();
+        }
+
+        protected override void thaw_child_notify () {
+            tree.thaw_child_notify ();
         }
     }
 }
