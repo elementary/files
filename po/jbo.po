@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-02-29 03:05-0600\n"
+"POT-Creation-Date: 2016-05-01 23:22-0500\n"
 "PO-Revision-Date: 2015-12-21 13:47+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Lojban <jbo@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-03-01 05:41+0000\n"
-"X-Generator: Launchpad (build 17925)\n"
+"X-Launchpad-Export-Date: 2016-05-02 05:38+0000\n"
+"X-Generator: Launchpad (build 17995)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -234,7 +234,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:755
+#: ../src/View/PropertiesWindow.vala:759
 msgid "Size:"
 msgstr ""
 
@@ -242,7 +242,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:558
+#: ../src/View/PropertiesWindow.vala:539
 msgid "Type:"
 msgstr ""
 
@@ -297,28 +297,28 @@ msgstr ""
 msgid "link to %s"
 msgstr ""
 
-#: ../libcore/gof-file.c:1910
+#: ../libcore/gof-file.c:1913
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr ""
 
-#: ../libcore/gof-file.c:1948
+#: ../libcore/gof-file.c:1951
 msgid "No Exec field specified"
 msgstr ""
 
-#: ../libcore/gof-file.c:1968
+#: ../libcore/gof-file.c:1971
 msgid "No URL field specified"
 msgstr ""
 
-#: ../libcore/gof-file.c:1974
+#: ../libcore/gof-file.c:1977
 msgid "Invalid desktop file"
 msgstr ""
 
-#: ../libcore/gof-file.c:2269
+#: ../libcore/gof-file.c:2272
 msgid "Slashes are not allowed in filenames"
 msgstr ""
 
-#: ../libcore/gof-file.c:2289
+#: ../libcore/gof-file.c:2292
 msgid "Toplevel files cannot be renamed"
 msgstr ""
 
@@ -529,7 +529,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2415 ../src/View/Sidebar.vala:1365
+#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1396
 msgid "Empty _Trash"
 msgstr ""
 
@@ -569,7 +569,7 @@ msgstr[1] ""
 #: ../libcore/marlin-file-operations.c:1641
 #: ../libcore/marlin-file-operations.c:1680
 #: ../libcore/marlin-file-operations.c:1757
-#: ../libcore/marlin-file-operations.c:2670
+#: ../libcore/marlin-file-operations.c:2674
 msgid "Error while deleting."
 msgstr ""
 
@@ -580,14 +580,14 @@ msgid ""
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1614
-#: ../libcore/marlin-file-operations.c:2729
-#: ../libcore/marlin-file-operations.c:3725
+#: ../libcore/marlin-file-operations.c:2733
+#: ../libcore/marlin-file-operations.c:3729
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1623
-#: ../libcore/marlin-file-operations.c:3734
+#: ../libcore/marlin-file-operations.c:3738
 msgid "_Skip files"
 msgstr ""
 
@@ -598,8 +598,8 @@ msgid ""
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1647
-#: ../libcore/marlin-file-operations.c:2768
-#: ../libcore/marlin-file-operations.c:3770
+#: ../libcore/marlin-file-operations.c:2772
+#: ../libcore/marlin-file-operations.c:3774
 msgid "There was an error reading the folder \"%B\"."
 msgstr ""
 
@@ -611,253 +611,253 @@ msgstr ""
 msgid "There was an error deleting %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1834
-#: ../libcore/marlin-file-operations.c:1846
+#: ../libcore/marlin-file-operations.c:1838
+#: ../libcore/marlin-file-operations.c:1850
 msgid "Moving files to trash"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1848
+#: ../libcore/marlin-file-operations.c:1852
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:1943
-#: ../libcore/marlin-file-operations.c:1946
-#: ../libcore/marlin-file-operations.c:1949
+#: ../libcore/marlin-file-operations.c:1947
+#: ../libcore/marlin-file-operations.c:1950
+#: ../libcore/marlin-file-operations.c:1953
 msgid "Cannot move file to trash or delete it"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1944
+#: ../libcore/marlin-file-operations.c:1948
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1947
+#: ../libcore/marlin-file-operations.c:1951
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1950
+#: ../libcore/marlin-file-operations.c:1954
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1952
+#: ../libcore/marlin-file-operations.c:1956
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1953
+#: ../libcore/marlin-file-operations.c:1957
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1957
+#: ../libcore/marlin-file-operations.c:1961
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1958
+#: ../libcore/marlin-file-operations.c:1962
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1963
+#: ../libcore/marlin-file-operations.c:1967
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2153
+#: ../libcore/marlin-file-operations.c:2157
 msgid "Trashing Files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2155
+#: ../libcore/marlin-file-operations.c:2159
 msgid "Deleting Files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2224
+#: ../libcore/marlin-file-operations.c:2228
 msgid "Unable to eject %V"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2226
+#: ../libcore/marlin-file-operations.c:2230
 msgid "Unable to unmount %V"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2405
+#: ../libcore/marlin-file-operations.c:2409
 msgid "Do you want to empty the trash before you unmount?"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2407
+#: ../libcore/marlin-file-operations.c:2411
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2413
+#: ../libcore/marlin-file-operations.c:2417
 msgid "Do _not Empty Trash"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2527
+#: ../libcore/marlin-file-operations.c:2531
 #, c-format
 msgid "Unable to mount %s"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2605
+#: ../libcore/marlin-file-operations.c:2609
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2611
+#: ../libcore/marlin-file-operations.c:2615
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2617
+#: ../libcore/marlin-file-operations.c:2621
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2623
+#: ../libcore/marlin-file-operations.c:2627
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2666
-#: ../libcore/marlin-file-operations.c:3585
-#: ../libcore/marlin-file-operations.c:3717
-#: ../libcore/marlin-file-operations.c:3762
+#: ../libcore/marlin-file-operations.c:2670
+#: ../libcore/marlin-file-operations.c:3589
+#: ../libcore/marlin-file-operations.c:3721
+#: ../libcore/marlin-file-operations.c:3766
 msgid "Error while copying."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2668
-#: ../libcore/marlin-file-operations.c:3715
-#: ../libcore/marlin-file-operations.c:3760
+#: ../libcore/marlin-file-operations.c:2672
+#: ../libcore/marlin-file-operations.c:3719
+#: ../libcore/marlin-file-operations.c:3764
 msgid "Error while moving."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2672
+#: ../libcore/marlin-file-operations.c:2676
 msgid "Error while moving files to trash."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2726
+#: ../libcore/marlin-file-operations.c:2730
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2765
+#: ../libcore/marlin-file-operations.c:2769
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2841
+#: ../libcore/marlin-file-operations.c:2845
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2844
+#: ../libcore/marlin-file-operations.c:2848
 msgid "There was an error getting information about \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2944
-#: ../libcore/marlin-file-operations.c:2986
-#: ../libcore/marlin-file-operations.c:3019
-#: ../libcore/marlin-file-operations.c:3049
+#: ../libcore/marlin-file-operations.c:2948
+#: ../libcore/marlin-file-operations.c:2990
+#: ../libcore/marlin-file-operations.c:3023
+#: ../libcore/marlin-file-operations.c:3053
 msgid "Error while copying to \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2948
+#: ../libcore/marlin-file-operations.c:2952
 msgid "You do not have permissions to access the destination folder."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2950
+#: ../libcore/marlin-file-operations.c:2954
 msgid "There was an error getting information about the destination."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2987
+#: ../libcore/marlin-file-operations.c:2991
 msgid "The destination is not a folder."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3020
+#: ../libcore/marlin-file-operations.c:3024
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3022
+#: ../libcore/marlin-file-operations.c:3026
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3050
+#: ../libcore/marlin-file-operations.c:3054
 msgid "The destination is read-only."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3111
+#: ../libcore/marlin-file-operations.c:3115
 msgid "Moving \"%B\" to \"%B\""
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3112
+#: ../libcore/marlin-file-operations.c:3116
 msgid "Copying \"%B\" to \"%B\""
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3116
+#: ../libcore/marlin-file-operations.c:3120
 msgid "Duplicating \"%B\""
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3120
+#: ../libcore/marlin-file-operations.c:3124
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3123
+#: ../libcore/marlin-file-operations.c:3127
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3130
+#: ../libcore/marlin-file-operations.c:3134
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3139
+#: ../libcore/marlin-file-operations.c:3143
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3143
+#: ../libcore/marlin-file-operations.c:3147
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3148
+#: ../libcore/marlin-file-operations.c:3152
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3199
+#: ../libcore/marlin-file-operations.c:3203
 #, c-format
 msgid "%S of %S"
 msgstr ""
@@ -866,195 +866,195 @@ msgstr ""
 #. *
 #. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
 #. 
-#: ../libcore/marlin-file-operations.c:3210
+#: ../libcore/marlin-file-operations.c:3214
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3589
+#: ../libcore/marlin-file-operations.c:3593
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3592
+#: ../libcore/marlin-file-operations.c:3596
 msgid "There was an error creating the folder \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3722
+#: ../libcore/marlin-file-operations.c:3726
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3767
+#: ../libcore/marlin-file-operations.c:3771
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3812
-#: ../libcore/marlin-file-operations.c:4518
+#: ../libcore/marlin-file-operations.c:3816
+#: ../libcore/marlin-file-operations.c:4522
 msgid "Error while moving \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3813
+#: ../libcore/marlin-file-operations.c:3817
 msgid "Could not remove the source folder."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3898
-#: ../libcore/marlin-file-operations.c:3939
-#: ../libcore/marlin-file-operations.c:4520
+#: ../libcore/marlin-file-operations.c:3902
+#: ../libcore/marlin-file-operations.c:3943
+#: ../libcore/marlin-file-operations.c:4524
 msgid "Error while copying \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3899
+#: ../libcore/marlin-file-operations.c:3903
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3940
+#: ../libcore/marlin-file-operations.c:3944
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4270
-#: ../libcore/marlin-file-operations.c:4946
+#: ../libcore/marlin-file-operations.c:4274
+#: ../libcore/marlin-file-operations.c:4950
 msgid "You cannot move a folder into itself."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4271
-#: ../libcore/marlin-file-operations.c:4947
+#: ../libcore/marlin-file-operations.c:4275
+#: ../libcore/marlin-file-operations.c:4951
 msgid "You cannot copy a folder into itself."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4272
-#: ../libcore/marlin-file-operations.c:4948
+#: ../libcore/marlin-file-operations.c:4276
+#: ../libcore/marlin-file-operations.c:4952
 msgid "The destination folder is inside the source folder."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4303
+#: ../libcore/marlin-file-operations.c:4307
 msgid "You cannot move a file over itself."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4304
+#: ../libcore/marlin-file-operations.c:4308
 msgid "You cannot copy a file over itself."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4305
+#: ../libcore/marlin-file-operations.c:4309
 msgid "The source file would be overwritten by the destination."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4522
+#: ../libcore/marlin-file-operations.c:4526
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4592
+#: ../libcore/marlin-file-operations.c:4596
 msgid "Cannot copy \"%B\" here."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4593
+#: ../libcore/marlin-file-operations.c:4597
 msgid "There was an error copying the file into %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4820
+#: ../libcore/marlin-file-operations.c:4824
 msgid "Copying Files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4846
+#: ../libcore/marlin-file-operations.c:4850
 msgid "Preparing to move to \"%B\""
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4858
+#: ../libcore/marlin-file-operations.c:4862
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:5106
+#: ../libcore/marlin-file-operations.c:5110
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5107
+#: ../libcore/marlin-file-operations.c:5111
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5369
+#: ../libcore/marlin-file-operations.c:5373
 msgid "Moving Files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5398
+#: ../libcore/marlin-file-operations.c:5402
 msgid "Creating links in \"%B\""
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5409
+#: ../libcore/marlin-file-operations.c:5413
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:5550
+#: ../libcore/marlin-file-operations.c:5554
 msgid "Error while creating link to %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5552
+#: ../libcore/marlin-file-operations.c:5556
 msgid "Symbolic links only supported for local files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5555
+#: ../libcore/marlin-file-operations.c:5559
 msgid "The target doesn't support symbolic links."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5558
+#: ../libcore/marlin-file-operations.c:5562
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5886
-#: ../libcore/marlin-file-operations.c:5889
+#: ../libcore/marlin-file-operations.c:5890
+#: ../libcore/marlin-file-operations.c:5893
 msgid "Setting permissions"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6001
+#: ../libcore/marlin-file-operations.c:6005
 msgid "Cannot copy into trash."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6002
+#: ../libcore/marlin-file-operations.c:6006
 msgid "It is not permitted to copy files into the trash"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6143
+#: ../libcore/marlin-file-operations.c:6147
 msgid "untitled folder"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6151
+#: ../libcore/marlin-file-operations.c:6155
 msgid "new file"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6322
+#: ../libcore/marlin-file-operations.c:6326
 msgid "Error while creating directory %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6324
+#: ../libcore/marlin-file-operations.c:6328
 msgid "Error while creating file %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6326
+#: ../libcore/marlin-file-operations.c:6330
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6644
+#: ../libcore/marlin-file-operations.c:6652
 msgid "Emptying the trash"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6656
+#: ../libcore/marlin-file-operations.c:6664
 msgid "Emptying Trash"
 msgstr ""
 
@@ -1458,135 +1458,131 @@ msgstr ""
 msgid "Preparing"
 msgstr ""
 
-#: ../filechooser-module/FileChooserDialog.vala:66
+#: ../filechooser-module/FileChooserDialog.vala:61
 #: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
 msgstr ""
 
-#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../filechooser-module/FileChooserDialog.vala:65
 #: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
 msgstr ""
 
-#: ../filechooser-module/FileChooserDialog.vala:82
-msgid "Create folder"
-msgstr ""
-
-#: ../src/View/Window.vala:182
+#: ../src/View/Window.vala:210
 msgid "Files isn't your default file manager."
 msgstr ""
 
-#: ../src/View/Window.vala:188
+#: ../src/View/Window.vala:216
 msgid "Set as Default"
 msgstr ""
 
-#: ../src/View/Window.vala:194
+#: ../src/View/Window.vala:222
 msgid "Ignore"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:446
+#: ../src/View/Sidebar.vala:442
 msgid "Personal"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:447
+#: ../src/View/Sidebar.vala:443
 msgid "Your common places and bookmarks"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:459 ../src/View/ViewContainer.vala:314
+#: ../src/View/Sidebar.vala:455 ../src/View/ViewContainer.vala:317
 msgid "Home"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:466
+#: ../src/View/Sidebar.vala:462
 msgid "Open your personal folder"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:481
+#: ../src/View/Sidebar.vala:477
 msgid "View the list of recently used files"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:502 ../libwidgets/Resources.vala:87
+#: ../src/View/Sidebar.vala:498 ../libwidgets/Resources.vala:87
 msgid "Trash"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:509
+#: ../src/View/Sidebar.vala:505
 msgid "Open the Trash"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:513
+#: ../src/View/Sidebar.vala:509
 msgid "Devices"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:514
+#: ../src/View/Sidebar.vala:510
 msgid "Your local partitions and devices"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:520 ../src/View/PropertiesWindow.vala:1493
-#: ../src/View/ViewContainer.vala:316 ../libwidgets/Resources.vala:90
+#: ../src/View/Sidebar.vala:516 ../src/View/PropertiesWindow.vala:1601
+#: ../src/View/ViewContainer.vala:319 ../libwidgets/Resources.vala:90
 msgid "File System"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:527
+#: ../src/View/Sidebar.vala:523
 msgid "Open the contents of the FileSystem"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:557 ../src/View/Sidebar.vala:751
+#: ../src/View/Sidebar.vala:553 ../src/View/Sidebar.vala:747
 msgid "Mount and open %s"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:638 ../libwidgets/Resources.vala:84
+#: ../src/View/Sidebar.vala:634 ../libwidgets/Resources.vala:84
 msgid "Network"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:639
+#: ../src/View/Sidebar.vala:635
 msgid "Your network places"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:669
+#: ../src/View/Sidebar.vala:665
 msgid "Entire Network"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:676
+#: ../src/View/Sidebar.vala:672
 msgid "Browse the contents of the network"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1226
+#: ../src/View/Sidebar.vala:1236
 msgid "Unable to start %s"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1307
+#: ../src/View/Sidebar.vala:1338
 msgid "Open"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1315
+#: ../src/View/Sidebar.vala:1346
 msgid "Open in New _Tab"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1321
+#: ../src/View/Sidebar.vala:1352
 msgid "Open in New _Window"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1329
+#: ../src/View/Sidebar.vala:1360
 msgid "Remove"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1337 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1368 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1346
+#: ../src/View/Sidebar.vala:1377
 msgid "_Mount"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1352
+#: ../src/View/Sidebar.vala:1383
 msgid "_Unmount"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1358
+#: ../src/View/Sidebar.vala:1389
 msgid "_Eject"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1372 ../src/View/PropertiesWindow.vala:285
-#: ../src/View/directory_view_popup.ui:95
+#: ../src/View/Sidebar.vala:1403 ../src/View/PropertiesWindow.vala:290
+#: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr ""
 
@@ -1594,11 +1590,11 @@ msgstr ""
 msgid "Filename"
 msgstr ""
 
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:139
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
 msgid "Size"
 msgstr ""
 
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:144
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
 msgid "Type"
 msgstr ""
 
@@ -1606,7 +1602,7 @@ msgstr ""
 msgid "Modified"
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:340
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:343
 msgid "This Folder Does Not Exist"
 msgstr ""
 
@@ -1629,61 +1625,56 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:555
+#: ../src/View/AbstractDirectoryView.vala:551
 msgid "Failed to preview"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1065
-#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
-msgid "Set as default"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:1538
+#: ../src/View/AbstractDirectoryView.vala:1513
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1538
+#: ../src/View/AbstractDirectoryView.vala:1513
 msgid "Invalid file name provided"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1962
+#: ../src/View/AbstractDirectoryView.vala:1948
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1976
+#: ../src/View/AbstractDirectoryView.vala:1962
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1981
+#: ../src/View/AbstractDirectoryView.vala:1967
 msgid "Open in %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1991
+#: ../src/View/AbstractDirectoryView.vala:1977
 msgid "Open in"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1993
+#: ../src/View/AbstractDirectoryView.vala:1979
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2053
+#: ../src/View/AbstractDirectoryView.vala:2039
 msgid "Other Application"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2322
+#: ../src/View/AbstractDirectoryView.vala:2308
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2690
+#: ../src/View/AbstractDirectoryView.vala:2718
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2691
+#: ../src/View/AbstractDirectoryView.vala:2719
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:187
+#: ../src/View/OverlayBar.vala:187 ../src/View/PropertiesWindow.vala:1514
 msgid "%u folders"
 msgstr ""
 
@@ -1699,7 +1690,8 @@ msgstr ""
 msgid " selected"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:195
+#: ../src/View/OverlayBar.vala:195 ../src/View/PropertiesWindow.vala:1485
+#: ../src/View/PropertiesWindow.vala:1524
 msgid "%u folder"
 msgstr ""
 
@@ -1735,211 +1727,253 @@ msgstr ""
 msgid "Resolution:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:347 ../src/View/PropertiesWindow.vala:1614
+#: ../src/View/PropertiesWindow.vala:360 ../src/View/PropertiesWindow.vala:1722
 msgid "General"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:355
+#: ../src/View/PropertiesWindow.vala:368
 msgid "More"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:380
+#: ../src/View/PropertiesWindow.vala:393
 msgid "Preview"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:419
+#: ../src/View/PropertiesWindow.vala:413
 msgid "file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:421
+#: ../src/View/PropertiesWindow.vala:415
 msgid "files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:423
+#: ../src/View/PropertiesWindow.vala:417
 msgid "Actual size could be larger, "
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:423
+#: ../src/View/PropertiesWindow.vala:417
 msgid "could not be read due to permissions or other errors."
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:442 ../src/View/PropertiesWindow.vala:456
+#: ../src/View/PropertiesWindow.vala:442 ../src/View/PropertiesWindow.vala:461
 msgid "unknown"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:528
-msgid "%u selected items"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:639
-msgid "Created:"
+#: ../src/View/PropertiesWindow.vala:544
+msgid "Contains:"
 msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:641
+msgid "Created:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:643
 msgid "Modified:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:644
+#: ../src/View/PropertiesWindow.vala:646
 msgid "Last Access:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:652
+#: ../src/View/PropertiesWindow.vala:654
 msgid "Deleted:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:657
+#: ../src/View/PropertiesWindow.vala:660
 msgid "MimeType:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:665
-msgid "MimeTypes:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:676
+#: ../src/View/PropertiesWindow.vala:668
 msgid "loading ..."
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:690 ../src/View/PropertiesWindow.vala:692
-#: ../src/View/PropertiesWindow.vala:1545
+#: ../src/View/PropertiesWindow.vala:681
+msgid "MimeTypes:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:694 ../src/View/PropertiesWindow.vala:696
+#: ../src/View/PropertiesWindow.vala:1653
 msgid "Location:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:696
+#: ../src/View/PropertiesWindow.vala:700
 msgid "Target:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:702
+#: ../src/View/PropertiesWindow.vala:706
 msgid "Origin Location:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:709
+#: ../src/View/PropertiesWindow.vala:713
 msgid "Could not be determined"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:752 ../src/View/PropertiesWindow.vala:1543
+#: ../src/View/PropertiesWindow.vala:756 ../src/View/PropertiesWindow.vala:1651
 msgid "Info"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:789
+#: ../src/View/PropertiesWindow.vala:794
 msgid "Other application..."
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:813
+#: ../src/View/PropertiesWindow.vala:818
 msgid "Open with:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:829 ../src/View/PropertiesWindow.vala:1559
+#: ../src/View/PropertiesWindow.vala:834 ../src/View/PropertiesWindow.vala:1667
 msgid "Usage"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:831
+#: ../src/View/PropertiesWindow.vala:836
 msgid "Device usage:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:839
+#: ../src/View/PropertiesWindow.vala:844
 msgid "%s free of %s (%d%% used)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:950
+#: ../src/View/PropertiesWindow.vala:955
 msgid "Read"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:954
+#: ../src/View/PropertiesWindow.vala:959
 msgid "Write"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:958
+#: ../src/View/PropertiesWindow.vala:963
 msgid "Execute"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1164
-#: ../src/View/PropertiesWindow.vala:1179
+#: ../src/View/PropertiesWindow.vala:1169
+#: ../src/View/PropertiesWindow.vala:1184
 msgid "Owner:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1170
-#: ../src/View/PropertiesWindow.vala:1184
+#: ../src/View/PropertiesWindow.vala:1175
+#: ../src/View/PropertiesWindow.vala:1189
 msgid "Group:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1189
+#: ../src/View/PropertiesWindow.vala:1194
 msgid "Everyone:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1422
-msgid "Select an application to open "
+#: ../src/View/PropertiesWindow.vala:1470
+msgid "%u subfolders and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1477
-msgid "Disk Properties"
+#: ../src/View/PropertiesWindow.vala:1472
+msgid "%u subfolders and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1552
-msgid "Format:"
+#: ../src/View/PropertiesWindow.vala:1475
+msgid "%u subfolders"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1570
-#: ../src/View/PropertiesWindow.vala:1595
-msgid "Capacity:"
+#: ../src/View/PropertiesWindow.vala:1480
+msgid "%u subfolder and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1576
-#: ../src/View/PropertiesWindow.vala:1601
-msgid "Available:"
+#: ../src/View/PropertiesWindow.vala:1482
+msgid "%u subfolder and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1582
-#: ../src/View/PropertiesWindow.vala:1607
-msgid "Used:"
+#: ../src/View/PropertiesWindow.vala:1491
+#: ../src/View/PropertiesWindow.vala:1530
+msgid "%u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1493
+#: ../src/View/PropertiesWindow.vala:1532
+msgid "%u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1509
+msgid "%u selected items (%u folders and %u files)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1511
+msgid "%u selected items (%u folders and %u file)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1519
+msgid "%u selected items (%u folder and %u files)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1521
+msgid "%u selected items (%u folder and %u file)"
 msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1585
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1660
+msgid "Format:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1678
+#: ../src/View/PropertiesWindow.vala:1703
+msgid "Capacity:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1684
+#: ../src/View/PropertiesWindow.vala:1709
+msgid "Available:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1690
+#: ../src/View/PropertiesWindow.vala:1715
+msgid "Used:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1693
 msgid "%s (%d%% used)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1598
-#: ../src/View/PropertiesWindow.vala:1604
-#: ../src/View/PropertiesWindow.vala:1610
+#: ../src/View/PropertiesWindow.vala:1706
+#: ../src/View/PropertiesWindow.vala:1712
+#: ../src/View/PropertiesWindow.vala:1718
 msgid "Unknown"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:325
+#: ../src/View/ViewContainer.vala:328
 msgid "(as Administrator)"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:341
+#: ../src/View/ViewContainer.vala:344
 msgid "You cannot create a folder here."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:343
+#: ../src/View/ViewContainer.vala:346
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:344
+#: ../src/View/ViewContainer.vala:347
 msgid "You don't have permission to view this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:346
+#: ../src/View/ViewContainer.vala:349
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:347
+#: ../src/View/ViewContainer.vala:350
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:349
+#: ../src/View/ViewContainer.vala:352
 msgid "Unable show Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:350
+#: ../src/View/ViewContainer.vala:353
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:360
+#: ../src/View/ViewContainer.vala:363
 msgid "File not Found"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:361
+#: ../src/View/ViewContainer.vala:364
 msgid "The file selected no longer exists."
 msgstr ""
 
@@ -1959,38 +1993,38 @@ msgstr ""
 msgid "Access Denied"
 msgstr ""
 
-#: ../src/Application.vala:146
+#: ../src/Application.vala:147
 msgid "Show the version of the program."
 msgstr ""
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:149
 msgid "Open uri(s) in new tab"
 msgstr ""
 
-#: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:79
+#: ../src/Application.vala:151 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr ""
 
-#: ../src/Application.vala:152
+#: ../src/Application.vala:153
 msgid "Quit Files."
 msgstr ""
 
-#: ../src/Application.vala:154
+#: ../src/Application.vala:155
 msgid "Enable debug logging"
 msgstr ""
 
-#: ../src/Application.vala:157
+#: ../src/Application.vala:158
 msgid "[URI...]"
 msgstr ""
 
-#: ../src/Application.vala:160
+#: ../src/Application.vala:161
 msgid ""
 "\n"
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
 
-#: ../src/Application.vala:187
+#: ../src/Application.vala:188
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -2065,7 +2099,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:249
+#: ../libcore/FileUtils.vala:253
 msgid "Could not rename to '%s'"
 msgstr ""
 
@@ -2081,12 +2115,12 @@ msgstr ""
 msgid "Open in Other Application…"
 msgstr ""
 
-#: ../libwidgets/View/LocationBar.vala:159
+#: ../libwidgets/View/LocationBar.vala:157
 msgid "Reload this folder"
 msgstr ""
 
-#: ../libwidgets/View/LocationBar.vala:162
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:255
+#: ../libwidgets/View/LocationBar.vala:160
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
 msgid "Enter search term or path"
 msgstr ""
 
@@ -2161,12 +2195,16 @@ msgstr ""
 msgid "View in Columns"
 msgstr ""
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:164
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
 msgid "Navigate to %s"
 msgstr ""
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:251
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:259
 msgid "Go to %s"
+msgstr ""
+
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
+msgid "Set as default"
 msgstr ""
 
 #: ../plugins/network-places/plugin.vala:27
@@ -2229,46 +2267,50 @@ msgstr ""
 msgid "Show Hidden Files"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:74
+#: ../src/View/directory_view_popup.ui:71
+msgid "Show Remote Thumbnails"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:87
+#: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:102
+#: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:109
+#: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:116
+#: ../src/View/directory_view_popup.ui:120
 msgid "Cut"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:120
+#: ../src/View/directory_view_popup.ui:124
 msgid "Copy"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:124
+#: ../src/View/directory_view_popup.ui:128
 msgid "Paste into Folder"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:131
+#: ../src/View/directory_view_popup.ui:135
 msgid "Sort by"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:134
+#: ../src/View/directory_view_popup.ui:138
 msgid "Name"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:149
+#: ../src/View/directory_view_popup.ui:153
 msgid "Date"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:156
+#: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr ""
