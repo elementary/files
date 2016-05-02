@@ -476,9 +476,10 @@ gof_file_update (GOFFile *file)
 
             /* read the display name from the .desktop file (will be overwritten later
              * if it's undefined here) */
-            gchar *custom_display_name = g_key_file_get_string (key_file,
+            gchar *custom_display_name = g_key_file_get_locale_string (key_file,
                                                                 G_KEY_FILE_DESKTOP_GROUP,
                                                                 G_KEY_FILE_DESKTOP_KEY_NAME,
+                                                                NULL,
                                                                 NULL);
 
             /* check if we have a display name now */
