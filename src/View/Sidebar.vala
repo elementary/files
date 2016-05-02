@@ -33,12 +33,10 @@ namespace Marlin.Places {
 
         private const int MAX_BOOKMARKS_DROPPED = 100;
         /* Indents */
-        private const int ROOT_INDENTATION_XPAD = 8; /* Left Indent for all rows*/
+        private const int ROOT_INDENTATION_XPAD = 4; /* Left Indent for all rows*/
         private const int ICON_XPAD = 4; /* Extra indent for sub-category rows */
-        private const int NAME_XPAD = 2; /* xpad for name text */
-        private const int EJECT_BUTTON_XPAD = 12; /* Right indent for disk space indicator and eject button */
-
-        private const uint PROP_0 = 0;
+        private const int BOOKMARK_YPAD = 1; /* Affects vertical spacing of bookmarks */
+        private const int CATEGORY_YPAD = 3; /* Affects height of category headers */
 
         private static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
 
@@ -150,55 +148,51 @@ namespace Marlin.Places {
             tree_view.set_headers_visible (false);
             tree_view.show_expanders = false;
 
-            /* Dummy column to produce a left indent */
             var col = new Gtk.TreeViewColumn ();
-            col.set_min_width (ROOT_INDENTATION_XPAD);
-            tree_view.append_column (col);
-
-            var cab = new Gtk.CellAreaBox ();
-            col = new Gtk.TreeViewColumn.with_area (cab);
-            Gtk.CellRendererText crt;
-            Gtk.CellRendererPixbuf crpb;
-
             col.max_width = -1;
             col.expand = true;
             col.spacing = 3;
 
+            var crt = new Gtk.CellRendererText (); /* Extra indent for start margin */
+            crt.xpad = ROOT_INDENTATION_XPAD;
+            crt.ypad = BOOKMARK_YPAD;
+            col.pack_start (crt, false);
+
             crt = new Gtk.CellRendererText (); /* Extra indent for sub-category rows (bookmarks)*/
             crt.xpad = ICON_XPAD;
-            crt.ypad = 0;
-            cab.pack_start (crt, false);
+            crt.ypad = BOOKMARK_YPAD;
+            col.pack_start (crt, false);
             col.set_attributes (crt, "visible", Column.NOT_CATEGORY);
 
-            crpb = new Gtk.CellRendererPixbuf (); /* Icon for bookmark or device */
+            var crpb = new Gtk.CellRendererPixbuf (); /* Icon for bookmark or device */
             crpb.follow_state = true;
             crpb.stock_size = Gtk.IconSize.MENU;
-            cab.pack_start (crpb, false);
+            crpb.ypad = BOOKMARK_YPAD;
+            col.pack_start (crpb, false);
             col.set_attributes (crpb,
                                 "gicon", Column.ICON,
                                 "visible", Column.NOT_CATEGORY);
 
-            var crd = new Marlin.CellRendererDisk (); /* Renders both bookmark name and diskspace */
+            var crd = new Marlin.CellRendererDisk (); /* Renders category & bookmark text and diskspace graphic */
             name_renderer = crd as Gtk.CellRendererText;
-            name_renderer.xpad = NAME_XPAD;
-            crd.rpad = 12;
-            name_renderer.editable = false;
-            name_renderer.editable_set = true;
             name_renderer.ellipsize = Pango.EllipsizeMode.END;
             name_renderer.ellipsize_set = true;
             name_renderer.edited.connect (edited);
             name_renderer.editing_canceled.connect (editing_canceled);
-            cab.pack_start (crd, true);
+            
+            col.pack_start (crd, true);
             col.set_attributes (crd,
                                 "text", Column.NAME,
                                 "free_space", Column.FREE_SPACE,
                                 "disk_size", Column.DISK_SIZE,
                                 "editable-set", Column.BOOKMARK);
 
+            /* renderer function sets font weight and ypadding depending on whether bookmark or category */
             col.set_cell_data_func (name_renderer, category_renderer_func);
 
             var crsp = new Gtk.CellRendererSpinner (); /* Spinner shown while ejecting */
-            cab.pack_end (crsp, false);
+            crsp.ypad = BOOKMARK_YPAD;
+            col.pack_end (crsp, false);
             col.set_attributes (crsp,
                                 "visible", Column.SHOW_SPINNER,
                                 "active", Column.SHOW_SPINNER,
@@ -209,24 +203,26 @@ namespace Marlin.Places {
             crpb.follow_state = true;
             crpb.stock_size = Gtk.IconSize.MENU;
             crpb.gicon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
-            cab.pack_start (crpb, false);
+            crpb.xpad = ICON_XPAD;
+            crpb.ypad = BOOKMARK_YPAD;
+
+            col.pack_start (crpb, false);
             col.set_attributes (crpb, "visible", Column.SHOW_EJECT);
 
             var cre = new Granite.Widgets.CellRendererExpander (); /* Expander button for categories */
             expander_renderer = cre;
             cre.is_category_expander = true;
             cre.is_expander = true;
-            cab.pack_end (cre, false);
+            cre.xpad = ICON_XPAD;
+            cre.ypad = BOOKMARK_YPAD;
+
+            col.pack_end (cre, false);
             col.set_attributes (cre, "visible", Column.IS_CATEGORY);
 
             tree_view.append_column (col);
             tree_view.tooltip_column = Column.TOOLTIP;
             tree_view.model = this.store;
 
-            /* Dummy column to produce a right indent */
-            col = new Gtk.TreeViewColumn ();
-            col.set_min_width (EJECT_BUTTON_XPAD);
-            tree_view.append_column (col);
 
         }
 
@@ -1252,11 +1248,13 @@ namespace Marlin.Places {
             var column = tree_view.get_column (0);
             name_renderer.editable = true;
             renaming = true;
-            tree_view.set_cursor_on_cell (path, column, name_renderer, true);
+
             /* Restore vertical scroll adjustment to stop tree_view scrolling to top on rename
              * For some reason, scroll to cell does not always work here
              */
             ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
+
+            tree_view.set_cursor_on_cell (path, column, name_renderer, true);
         }
 
         private void remove_selected_bookmarks () {
@@ -1541,10 +1539,10 @@ namespace Marlin.Places {
             if (is_category) {
                 crt.weight = 900;
                 crt.weight_set = true;
-                crt.height = 20;
+                crt.ypad = CATEGORY_YPAD;
             } else {
                 crt.weight_set = false;
-                crt.height = -1;
+                crt.ypad = BOOKMARK_YPAD;
             }
         }
 
