@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-05-02 05:38+0000\n"
+"X-Launchpad-Export-Date: 2016-05-03 05:33+0000\n"
 "X-Generator: Launchpad (build 17995)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -2318,9 +2318,3 @@ msgstr ""
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr ""
-
-#~ msgid "%u selected items"
-#~ msgstr "បាន​រើស​វត្ថុ %u"
-
-#~ msgid "Select an application to open "
-#~ msgstr "ជ្រើស​កម្មវិធី​មួយ ដើម្បី​បើក "

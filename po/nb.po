@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-05-02 05:38+0000\n"
+"X-Launchpad-Export-Date: 2016-05-03 05:33+0000\n"
 "X-Generator: Launchpad (build 17995)\n"
 "Language: nb\n"
 
@@ -2368,12 +2368,3 @@ msgstr "Dato"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Omvendt rekkefølge"
-
-#~ msgid "Select an application to open "
-#~ msgstr "Velg et program å åpne "
-
-#~ msgid "%u selected items"
-#~ msgstr "%u valgte elementer"
-
-#~ msgid "Create folder"
-#~ msgstr "Opprett mappe"

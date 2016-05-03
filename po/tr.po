@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-01 23:22-0500\n"
-"PO-Revision-Date: 2016-05-01 14:02+0000\n"
-"Last-Translator: Melih Güçlü <melihguclu@hotmail.com>\n"
+"PO-Revision-Date: 2016-05-02 21:12+0000\n"
+"Last-Translator: Sadık Poyraz <sadikpoyraz01@gmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-05-02 05:39+0000\n"
+"X-Launchpad-Export-Date: 2016-05-03 05:34+0000\n"
 "X-Generator: Launchpad (build 17995)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1794,7 +1794,7 @@ msgstr "bilinmeyen"
 
 #: ../src/View/PropertiesWindow.vala:544
 msgid "Contains:"
-msgstr ""
+msgstr "İçindekiler:"
 
 #: ../src/View/PropertiesWindow.vala:641
 msgid "Created:"
@@ -1893,37 +1893,37 @@ msgstr "Herkes:"
 
 #: ../src/View/PropertiesWindow.vala:1470
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u alt klasörler ve %u dosyalar"
 
 #: ../src/View/PropertiesWindow.vala:1472
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u alt klasörler ve %u dosya"
 
 #: ../src/View/PropertiesWindow.vala:1475
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u alt klasörler"
 
 #: ../src/View/PropertiesWindow.vala:1480
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u alt klasör ve %u dosyalar"
 
 #: ../src/View/PropertiesWindow.vala:1482
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u alt klasör ve %u dosya"
 
 #: ../src/View/PropertiesWindow.vala:1491
 #: ../src/View/PropertiesWindow.vala:1530
 msgid "%u files"
-msgstr ""
+msgstr "%u dosyalar"
 
 #: ../src/View/PropertiesWindow.vala:1493
 #: ../src/View/PropertiesWindow.vala:1532
 msgid "%u file"
-msgstr ""
+msgstr "%u dosya"
 
 #: ../src/View/PropertiesWindow.vala:1509
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u seçili ürünler (%u klasörler ve %u dosyalar)"
 
 #: ../src/View/PropertiesWindow.vala:1511
 msgid "%u selected items (%u folders and %u file)"
@@ -2380,12 +2380,3 @@ msgstr "Tarih"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Tersine Düzen"
-
-#~ msgid "%u selected items"
-#~ msgstr "%u seçili öğe"
-
-#~ msgid "Select an application to open "
-#~ msgstr "Açmak için uygulama seçin "
-
-#~ msgid "Create folder"
-#~ msgstr "Dizin oluştur"

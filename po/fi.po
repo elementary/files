@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-01 23:22-0500\n"
-"PO-Revision-Date: 2016-03-02 07:21+0000\n"
+"PO-Revision-Date: 2016-05-02 07:03+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-05-02 05:37+0000\n"
+"X-Launchpad-Export-Date: 2016-05-03 05:33+0000\n"
 "X-Generator: Launchpad (build 17995)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1804,7 +1804,7 @@ msgstr "tuntematon"
 
 #: ../src/View/PropertiesWindow.vala:544
 msgid "Contains:"
-msgstr ""
+msgstr "Sisältää:"
 
 #: ../src/View/PropertiesWindow.vala:641
 msgid "Created:"
@@ -1903,49 +1903,49 @@ msgstr "Kaikki:"
 
 #: ../src/View/PropertiesWindow.vala:1470
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u alikansiota ja %u tiedostoa"
 
 #: ../src/View/PropertiesWindow.vala:1472
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u alikansiota ja %u tiedoston"
 
 #: ../src/View/PropertiesWindow.vala:1475
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u alikansiota"
 
 #: ../src/View/PropertiesWindow.vala:1480
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u alikansio ja %u tiedostoa"
 
 #: ../src/View/PropertiesWindow.vala:1482
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u alikansio ja %u tiedosto"
 
 #: ../src/View/PropertiesWindow.vala:1491
 #: ../src/View/PropertiesWindow.vala:1530
 msgid "%u files"
-msgstr ""
+msgstr "%u tiedostoa"
 
 #: ../src/View/PropertiesWindow.vala:1493
 #: ../src/View/PropertiesWindow.vala:1532
 msgid "%u file"
-msgstr ""
+msgstr "%u tiedosto"
 
 #: ../src/View/PropertiesWindow.vala:1509
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u valittua kohdetta (%u kansiota ja %u tiedostoa)"
 
 #: ../src/View/PropertiesWindow.vala:1511
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u valittua kohdetta (%u kansiota ja %u tiedosto)"
 
 #: ../src/View/PropertiesWindow.vala:1519
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u valittua kohdetta (%u kansio ja %u tiedostoa)"
 
 #: ../src/View/PropertiesWindow.vala:1521
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u valittua kohdetta (%u kansio ja %u tiedosto)"
 
 #: ../src/View/PropertiesWindow.vala:1585
 msgid "Disk Properties"
@@ -2318,7 +2318,7 @@ msgstr "Näytä piilotiedostot"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Näytä etäpalvelimien osalta pikkukuvat"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
@@ -2363,12 +2363,3 @@ msgstr "Päivä"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Käänteinen järjestys"
-
-#~ msgid "%u selected items"
-#~ msgstr "%u valittua kohdetta"
-
-#~ msgid "Select an application to open "
-#~ msgstr "Valitse sovellus, jolla avataan tiedostot tyyppiä "
-
-#~ msgid "Create folder"
-#~ msgstr "Luo kansio"

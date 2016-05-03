@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-05-02 05:38+0000\n"
+"X-Launchpad-Export-Date: 2016-05-03 05:34+0000\n"
 "X-Generator: Launchpad (build 17995)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -2205,7 +2205,6 @@ msgstr ""
 "  KranisXD https://launchpad.net/~kranis-xd-239\n"
 "  Larsson https://launchpad.net/~larsson\n"
 "  Marcus Lundgren https://launchpad.net/~marcus-lundgren\n"
-"  Mathias https://launchpad.net/~mathiaslaunchpad\n"
 "  Max Malm https://launchpad.net/~benjick\n"
 "  Mikael Nyberg https://launchpad.net/~miknyb\n"
 "  Synlic https://launchpad.net/~synlic\n"
@@ -2381,12 +2380,3 @@ msgstr "Datum"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Omvänd ordning"
-
-#~ msgid "%u selected items"
-#~ msgstr "%u valda objekt"
-
-#~ msgid "Select an application to open "
-#~ msgstr "Välj ett program för att öppna "
-
-#~ msgid "Create folder"
-#~ msgstr "Skapa mapp"

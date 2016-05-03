@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2016-05-02 05:38+0000\n"
+"X-Launchpad-Export-Date: 2016-05-03 05:34+0000\n"
 "X-Generator: Launchpad (build 17995)\n"
 "Language: sl\n"
 
@@ -2456,12 +2456,3 @@ msgstr "Datumu"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Obratni vrstni red"
-
-#~ msgid "%u selected items"
-#~ msgstr "%u izbranih predmetov"
-
-#~ msgid "Select an application to open "
-#~ msgstr "Izberite aplikacijo za zagon "
-
-#~ msgid "Create folder"
-#~ msgstr "Ustvari mapo"

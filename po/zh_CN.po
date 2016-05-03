@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-05-02 05:39+0000\n"
+"X-Launchpad-Export-Date: 2016-05-03 05:34+0000\n"
 "X-Generator: Launchpad (build 17995)\n"
 "Language: \n"
 
@@ -2284,12 +2284,3 @@ msgstr "日期"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "反转排序"
-
-#~ msgid "%u selected items"
-#~ msgstr "已选择 %u 个条目"
-
-#~ msgid "Select an application to open "
-#~ msgstr "选择一个程序来打开 "
-
-#~ msgid "Create folder"
-#~ msgstr "创建文件夹"
