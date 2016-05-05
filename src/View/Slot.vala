@@ -139,10 +139,11 @@ namespace Marlin.View {
             updates_frozen = false;
         }
 
-        private void on_directory_need_reload (GOF.Directory.Async dir) {
+        private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
             if (!updates_frozen) {
                 updates_frozen = true;
                 path_changed (false);
+                original_reload_request = original_request;
                 /* ViewContainer listens to this signal takes care of updating appearance
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
@@ -165,9 +166,9 @@ namespace Marlin.View {
                 return;
             }
             reload_timeout_id = Timeout.add (50, ()=> {
-                    directory.reload ();
-                    reload_timeout_id = 0;
-                    return false;
+                directory.reload ();
+                reload_timeout_id = 0;
+                return false;
             });
         }
 
@@ -267,7 +268,9 @@ namespace Marlin.View {
         public override void reload (bool non_local_only = false) {
             if (!non_local_only || !directory.is_local) {
                 original_reload_request = true;
-                directory.need_reload (); /* Signal will propagate to any other slot showing this directory */
+                /* Propagate reload signal to any other slot showing this directory indicating it is not
+                 * the original signal */
+                directory.need_reload (false); 
             }
         }
 

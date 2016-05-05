@@ -64,7 +64,7 @@ public class GOF.Directory.Async : Object {
  
     public signal void done_loading ();
     public signal void thumbs_loaded ();
-    public signal void need_reload ();
+    public signal void need_reload (bool original_request);
 
     private uint idle_consume_changes_id = 0;
     private bool removed_from_cache;
@@ -368,8 +368,10 @@ public class GOF.Directory.Async : Object {
         vm.mount_changed.disconnect (on_mount_changed);
     }
 
-    private void on_mount_changed () {
-        need_reload ();
+    private void on_mount_changed (GLib.VolumeMonitor vm, GLib.Mount mount) {
+        if (state == State.LOADED) {
+            need_reload (true);
+        }
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
@@ -768,7 +770,7 @@ public class GOF.Directory.Async : Object {
 
             if (!value) {
                 if (list_fchanges_count >= FCHANGES_MAX) {
-                    need_reload ();
+                    need_reload (true);
                 } else if (list_fchanges_count > 0) {
                     list_fchanges.reverse ();
                     foreach (var fchange in list_fchanges) {
