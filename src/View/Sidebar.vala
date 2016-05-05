@@ -967,7 +967,7 @@ namespace Marlin.Places {
             var real_action = context.get_selected_action ();
             if (real_action == Gdk.DragAction.ASK) {
                 var actions = context.get_actions ();
-                if (drop_uri.has_prefix ("trash:///"))
+                if (drop_uri.has_prefix ("trash://"))
                     actions &= Gdk.DragAction.MOVE;
 
                 real_action = dnd_handler.drag_drop_action_ask ((Gtk.Widget)tree_view, window, actions);

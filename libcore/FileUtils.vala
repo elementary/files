@@ -283,9 +283,9 @@ namespace PF.FileUtils {
 
 namespace Marlin {
     public const string ROOT_FS_URI = "file://";
-    public const string TRASH_URI = "trash:///";
-    public const string NETWORK_URI = "network:///";
-    public const string RECENT_URI = "recent:///";
+    public const string TRASH_URI = "trash://";
+    public const string NETWORK_URI = "network://";
+    public const string RECENT_URI = "recent://";
     public const string AFP_URI = "afp://";
     public const string DAV_URI = "dav://";
     public const string DAVS_URI = "davs://";
