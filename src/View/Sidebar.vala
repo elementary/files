@@ -507,16 +507,25 @@ namespace Marlin.Places {
 
 
             /* Add Filesystem BUILTIN */
-            add_place (Marlin.PlaceType.BUILT_IN,
-                       iter,
-                       _("File System"),
-                       new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
-                       "file:///",
-                       null,
-                       null,
-                       null,
-                       0,
-                       _("Open the contents of the FileSystem"));
+            var last_iter = add_place (Marlin.PlaceType.BUILT_IN,
+                                       iter,
+                                       _("File System"),
+                                       new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
+                                       Marlin.ROOT_FS_URI,
+                                       null,
+                                       null,
+                                       null,
+                                       0,
+                                       "");
+
+            uint64 fs_capacity, fs_free;
+            get_filesystem_space (PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI), out fs_capacity, out fs_free);
+            store.@set (last_iter,
+                        Column.FREE_SPACE, fs_free,
+                        Column.DISK_SIZE, fs_capacity,
+                        Column.TOOLTIP, _("Open the contents of the FileSystem") +
+                                          "\n" +
+                                        _("%s free").printf (format_size (fs_free)));
 
             /* Add all connected drives */
             GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
@@ -558,7 +567,7 @@ namespace Marlin.Places {
                 var mount = volume.get_mount ();
                 if (mount != null) {
                     var root = mount.get_default_location ();
-                    var it = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
+                    last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                         iter,
                                         mount.get_name (),
                                         mount.get_icon (),
@@ -567,13 +576,15 @@ namespace Marlin.Places {
                                         volume,
                                         mount,
                                         0,
-                                        root.get_parse_name ());
+                                        "");
 
-                    uint64 fs_capacity, fs_free;
                     get_filesystem_space (root, out fs_capacity, out fs_free);
-                    store.@set (it,
+                    store.@set (last_iter,
                                 Column.FREE_SPACE, fs_free,
-                                Column.DISK_SIZE, fs_capacity);
+                                Column.DISK_SIZE, fs_capacity,
+                                Column.TOOLTIP, root.get_parse_name () +
+                                                "\n" +
+                                                _("%s free").printf (format_size (fs_free)));
                 } else {
                 /* see comment above in why we add an icon for an unmounted mountable volume */
                     var name = volume.get_name ();
@@ -714,13 +725,17 @@ namespace Marlin.Places {
                                            volume,
                                            mount,
                                            0,
-                                           root.get_parse_name ());
+                                           "");
 
                     uint64 fs_capacity, fs_free;
                     get_filesystem_space (root, out fs_capacity, out fs_free);
                     store.@set (last_iter,
                                 Column.FREE_SPACE, fs_free,
-                                Column.DISK_SIZE, fs_capacity);
+                                Column.DISK_SIZE, fs_capacity,
+                                Column.TOOLTIP, root.get_parse_name () +
+                                                "\n" +
+                                                _("%s free").printf (format_size (fs_free)));
+
                 } else {
                     /* Do show the unmounted volumes in the sidebar;
                     * this is so the user can mount it (in case automounting
@@ -1163,7 +1178,7 @@ namespace Marlin.Places {
             store.@get (iter, Column.URI, out uri, Column.PLUGIN_CALLBACK, out f);
 
             if (uri != null) {
-                var location = File.new_for_uri (uri);
+                var location = PF.FileUtils.get_file_for_path (uri);
                 /* Navigate to the clicked location */
                 if (flags == Marlin.OpenFlag.NEW_WINDOW) {
                     window.add_window (location, Marlin.ViewMode.CURRENT);
@@ -1533,8 +1548,11 @@ namespace Marlin.Places {
                                              Gtk.TreeIter iter) {
 
             var crt = renderer as Gtk.CellRendererText;
-            bool is_category;
-            model.@get (iter, Column.IS_CATEGORY, out is_category, -1);
+            bool is_category, show_eject_button;
+            uint64 disk_size = 0;
+            model.@get (iter, Column.IS_CATEGORY, out is_category,
+                              Column.DISK_SIZE, out disk_size,
+                              Column.SHOW_EJECT, out show_eject_button, -1);
 
             if (is_category) {
                 crt.weight = 900;
@@ -1543,6 +1561,15 @@ namespace Marlin.Places {
             } else {
                 crt.weight_set = false;
                 crt.ypad = BOOKMARK_YPAD;
+                if (disk_size > 0) {
+                    /* Make disk space graphic same length whether or not eject button displayed */
+                    var crd = renderer as Marlin.CellRendererDisk;
+                    if (!show_eject_button) {
+                        crd.rpad = eject_button_size + ICON_XPAD * 2;
+                    } else {
+                        crd.rpad = 0;
+                    }
+                }
             }
         }
 
