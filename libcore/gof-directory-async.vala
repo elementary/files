@@ -1,5 +1,6 @@
 /***
     Copyright (C) 2011 Marlin Developers
+                  2015-2016 elementary LLC (http://launchpad.net/elementary) 
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -15,6 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     Author: ammonkey <am.monkeyd@gmail.com>
+            Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
 private HashTable<GLib.File,GOF.Directory.Async> directory_cache;

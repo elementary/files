@@ -1,6 +1,6 @@
 /***
-    Copyright (C) 2007, 2011 Red Hat, Inc.
-    Copyright (C) 2013 elementary Developers
+    Copyright (c) 2007, 2011 Red Hat, Inc.
+    Copyright (c) 2013-2016 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
