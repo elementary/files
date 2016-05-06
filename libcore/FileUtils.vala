@@ -269,6 +269,7 @@ namespace PF.FileUtils {
 
     private bool can_browse_scheme (string scheme) {
         switch (scheme) {
+            case "":
             case Marlin.ROOT_FS_URI:
             case Marlin.TRASH_URI:
             case Marlin.NETWORK_URI:
