@@ -1,6 +1,6 @@
 /***
-    Copyright (C) 2012 Canonical
-    Copyright (C) 2013 Julián Unrrein <junrrein@gmail.com>
+    Copyright (c) 2012 Canonical
+    Copyright (c) 2013 Julián Unrrein <junrrein@gmail.com>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published

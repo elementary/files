@@ -1,7 +1,8 @@
 /***
-    Copyright (C) 1999, 2000 Red Hat, Inc.
-    Copyright (C) 2000, 2001 Eazel, Inc.
-    Copyright (C) 2013 Julián Unrrein <junrrein@gmail.com>
+    Copyright (c) 1999, 2000 Red Hat, Inc.
+    Copyright (c) 2000, 2001 Eazel, Inc.
+    Copyright (c) 2013 Julián Unrrein <junrrein@gmail.com>
+    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)  
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
