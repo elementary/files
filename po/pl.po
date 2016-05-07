@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-01 23:22-0500\n"
-"PO-Revision-Date: 2016-05-05 14:38+0000\n"
+"PO-Revision-Date: 2016-05-06 20:52+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,13 +16,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-05-06 04:49+0000\n"
-"X-Generator: Launchpad (build 17995)\n"
+"X-Launchpad-Export-Date: 2016-05-07 04:55+0000\n"
+"X-Generator: Launchpad (build 18025)\n"
 "Language: pl\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
-msgstr "W schowku nie znajduje się żaden element"
+msgstr "W schowku nie ma nic do wklejenia"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -42,7 +42,7 @@ msgstr "AFP (Protokół plików Apple)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "Zasób Windows"
+msgstr "Udział systemu Windows"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
@@ -54,7 +54,7 @@ msgstr "Bezpieczny WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "Nawiązywanie połączenia..."
+msgstr "Łączenie..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -72,7 +72,7 @@ msgstr "Nie można otworzyć katalogu „%s” na „%s”."
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Nie można odnaleźć serwera w „%s”"
+msgstr "Nie można odnaleźć serwera pod adresem „%s”."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
@@ -80,7 +80,7 @@ msgstr "Spróbuj ponownie"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "Proszę sprawdzić informacje o użytkowniku."
+msgstr "Sprawdź dane logowania"
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -97,7 +97,7 @@ msgstr "Łączenie z serwerem"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr "Informacje o serwerze"
+msgstr "Szczegóły serwera"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
@@ -121,7 +121,7 @@ msgstr "_Katalog:"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr "O użytkowniku"
+msgstr "Informacje o użytkowniku"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -137,7 +137,7 @@ msgstr "_Hasło:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr "_Zapamiętanie hasła"
+msgstr "_Zapamiętaj hasło"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
@@ -146,7 +146,7 @@ msgstr "Anulowano działanie"
 #: ../libcore/marlin-file-utilities.c:131
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr "Nie można ustalić pierwotnego położenia elementu „%s” "
+msgstr "Nie można określić pierwotnego położenia \"%s\" "
 
 #: ../libcore/marlin-file-utilities.c:135
 msgid "The item cannot be restored from trash"
@@ -235,7 +235,7 @@ msgstr "W katalogu „%s” znajduje się już inny plik o tej samej nazwie."
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:471
 msgid "Original file"
-msgstr "Pierwotny plik"
+msgstr "Oryginalny plik"
 
 #: ../libcore/marlin-file-conflict-dialog.c:253
 #: ../libcore/marlin-file-conflict-dialog.c:284
@@ -258,12 +258,12 @@ msgstr "Typ:"
 #: ../libcore/marlin-file-conflict-dialog.c:478
 #: ../libcore/marlin-file-conflict-dialog.c:499
 msgid "Last modified:"
-msgstr "Czas modyfikacji:"
+msgstr "Ostatnio zmodyfikowany:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:492
 msgid "Replace with"
-msgstr "Docelowy plik"
+msgstr "Zastąp używając"
 
 #: ../libcore/marlin-file-conflict-dialog.c:312
 #: ../libcore/marlin-file-conflict-dialog.c:517
@@ -1859,7 +1859,7 @@ msgstr "nieznany"
 
 #: ../src/View/PropertiesWindow.vala:544
 msgid "Contains:"
-msgstr ""
+msgstr "Zawiera:"
 
 #: ../src/View/PropertiesWindow.vala:641
 msgid "Created:"
@@ -1958,49 +1958,49 @@ msgstr "Wszyscy:"
 
 #: ../src/View/PropertiesWindow.vala:1470
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u podkatalogów i %u plików"
 
 #: ../src/View/PropertiesWindow.vala:1472
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u podkatalogów i %u plik"
 
 #: ../src/View/PropertiesWindow.vala:1475
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u podkatalogów"
 
 #: ../src/View/PropertiesWindow.vala:1480
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u podkatalog i %u plików"
 
 #: ../src/View/PropertiesWindow.vala:1482
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u podkatalog i %u plik"
 
 #: ../src/View/PropertiesWindow.vala:1491
 #: ../src/View/PropertiesWindow.vala:1530
 msgid "%u files"
-msgstr ""
+msgstr "%u plików"
 
 #: ../src/View/PropertiesWindow.vala:1493
 #: ../src/View/PropertiesWindow.vala:1532
 msgid "%u file"
-msgstr ""
+msgstr "%u plik"
 
 #: ../src/View/PropertiesWindow.vala:1509
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u zaznaczonych elementów (%u katalogów i %u plików)"
 
 #: ../src/View/PropertiesWindow.vala:1511
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u zaznaczonych elementów (%u katalogów i %u plik)"
 
 #: ../src/View/PropertiesWindow.vala:1519
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u zaznaczonych elementów (%u katalog i %u plików)"
 
 #: ../src/View/PropertiesWindow.vala:1521
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u zaznaczonych elementów (%u katalog i %u plik)"
 
 #: ../src/View/PropertiesWindow.vala:1585
 msgid "Disk Properties"
@@ -2402,7 +2402,7 @@ msgstr "Pokaż ukryte pliki"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Pokaż miniaturki w zasobie zdalnym"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
