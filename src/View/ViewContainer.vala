@@ -342,6 +342,9 @@ namespace Marlin.View {
                     else
                         content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
                                                            _("You cannot create a folder here."));
+                } else if (!slot.directory.network_available) {
+                    content = new Marlin.View.Welcome (_("The network is unavailable"),
+                                                       _("A working network is needed to reach this folder"));
                 } else if (slot.directory.permission_denied) {
                     content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
                                                        _("You don't have permission to view this folder."));

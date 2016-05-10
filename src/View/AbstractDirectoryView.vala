@@ -1266,13 +1266,18 @@ namespace FM {
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
-            is_writable = slot.directory.file.is_writable ();
+
             thaw_tree ();
 
-            if (in_recent)
-                model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-            else if (slot.directory.file.info != null) {
-                model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+            if (slot.directory.can_load) {
+                is_writable = slot.directory.file.is_writable ();
+                if (in_recent)
+                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
+                else if (slot.directory.file.info != null) {
+                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+                }
+            } else {
+                is_writable = false;
             }
 
             /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
@@ -2082,7 +2087,7 @@ namespace FM {
         }
 
         private void update_menu_actions () {
-            if (updates_frozen)
+            if (updates_frozen || !slot.directory.can_load)
                 return;
 
             unowned GLib.List<GOF.File> selection = get_files_for_action ();

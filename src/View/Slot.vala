@@ -142,12 +142,14 @@ namespace Marlin.View {
         private void on_directory_need_reload (GOF.Directory.Async dir) {
             if (!updates_frozen) {
                 updates_frozen = true;
+                dir_view.clear (); /* clear model but do not change directory */
+
                 path_changed (false);
                 /* ViewContainer listens to this signal takes care of updating appearance
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
 
-                dir_view.clear (); /* clear model but do not change directory */
+
 
                 /* Only need to initialise directory once - the slot that originally received the
                  * reload request does this */ 
@@ -165,9 +167,9 @@ namespace Marlin.View {
                 return;
             }
             reload_timeout_id = Timeout.add (50, ()=> {
-                    directory.reload ();
-                    reload_timeout_id = 0;
-                    return false;
+                directory.reload ();
+                reload_timeout_id = 0;
+                return false;
             });
         }
 
@@ -256,11 +258,12 @@ namespace Marlin.View {
             assert (loc != null);
             var old_dir = directory;
             set_up_directory (loc);
+            dir_view.change_directory (old_dir, directory);
+
             path_changed (allow_mode_change && directory.uri_contain_keypath_icons);
             /* ViewContainer listens to this signal takes care of updating appearance
              * If allow_mode_change is false View Container will not automagically
              * switch to icon view for icon folders (needed for Miller View) */
-            dir_view.change_directory (old_dir, directory);
             directory.init ();
         }
 

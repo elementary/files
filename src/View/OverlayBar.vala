@@ -80,6 +80,10 @@ namespace Marlin.View {
             if (!showbar)
                 return;
 
+            if (file == null) {
+                visible = false;
+            }
+
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
                 GLib.List<GOF.File> list = null;
                 if (file != null) {
