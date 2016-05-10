@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-01 23:22-0500\n"
-"PO-Revision-Date: 2016-05-02 21:12+0000\n"
-"Last-Translator: Sadık Poyraz <sadikpoyraz01@gmail.com>\n"
+"PO-Revision-Date: 2016-05-09 19:39+0000\n"
+"Last-Translator: Melih Güçlü <melihguclu@hotmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-05-03 05:34+0000\n"
-"X-Generator: Launchpad (build 17995)\n"
+"X-Launchpad-Export-Date: 2016-05-10 05:37+0000\n"
+"X-Generator: Launchpad (build 18025)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -879,7 +879,8 @@ msgstr[1] "%'d dosya \"%B\" konumuna kopyalanıyor"
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "%'d dosya çoğaltılıyor"
+msgstr[0] "Seçilen %'d dosya kopyalanıyor"
+msgstr[1] "Seçilen %'d dosya kopyalanıyor"
 
 #: ../libcore/marlin-file-operations.c:3203
 #, c-format
@@ -1927,15 +1928,15 @@ msgstr "%u seçili ürünler (%u klasörler ve %u dosyalar)"
 
 #: ../src/View/PropertiesWindow.vala:1511
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u seçili (% klasör ve %u dosya)"
 
 #: ../src/View/PropertiesWindow.vala:1519
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u seçili (% klasör ve %u dosya)"
 
 #: ../src/View/PropertiesWindow.vala:1521
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u seçili (%u klasör ve %u dosya)"
 
 #: ../src/View/PropertiesWindow.vala:1585
 msgid "Disk Properties"
