@@ -269,15 +269,15 @@ namespace PF.FileUtils {
 
     private bool can_browse_scheme (string scheme) {
         switch (scheme) {
-            case "":
-            case Marlin.ROOT_FS_URI:
-            case Marlin.TRASH_URI:
-            case Marlin.NETWORK_URI:
-            case Marlin.RECENT_URI:
-            case Marlin.SMB_URI:
-                return true;
-            default:
+            case Marlin.AFP_URI:
+            case Marlin.DAV_URI:
+            case Marlin.DAVS_URI:
+            case Marlin.SFTP_URI:
+            case Marlin.FTP_URI:
+            case Marlin.MTP_URI:
                 return false;
+            default:
+                return true;
         }
     }
 }
