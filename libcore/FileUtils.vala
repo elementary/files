@@ -33,7 +33,7 @@ namespace PF.FileUtils {
     public string get_parent_path_from_path (string path) {
         /* We construct the parent path rather than use File.get_parent () as the latter gives odd
          * results for some gvfs files.
-         */  
+         */
         string parent_path = construct_parent_path (path);
         if (parent_path == Marlin.FTP_URI ||
             parent_path == Marlin.SFTP_URI) {
@@ -88,6 +88,7 @@ namespace PF.FileUtils {
         if (p == null || p == "") {
             return cp ?? "";
         }
+
         string? unescaped_p = Uri.unescape_string (p, null);
         if (unescaped_p == null) {
             unescaped_p = p;
@@ -121,14 +122,18 @@ namespace PF.FileUtils {
         }
 
         path = sb.str;
+
         do {
             path = path.replace ("//", "/");
         } while (path.contains ("//"));
 
         string new_path = (scheme + path).replace("////", "///");
-
         if (new_path.length > 0) {
-            if (scheme != Marlin.ROOT_FS_URI && path != "/") {
+            /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
+            if (!scheme.has_prefix (Marlin.ROOT_FS_URI) &&
+                !scheme.has_prefix (Marlin.TRASH_URI) &&
+                !scheme.has_prefix (Marlin.RECENT_URI)) {
+
                 new_path = new_path.replace ("///", "//");
             }
             new_path = new_path.replace("ssh:", "sftp:");
@@ -176,6 +181,7 @@ namespace PF.FileUtils {
         if (Marlin.ROOT_FS_URI.has_prefix (protocol)) {
             protocol = "";
         }
+
         if (!new_path.has_prefix (Path.DIR_SEPARATOR_S)) {
             new_path = Path.DIR_SEPARATOR_S + new_path;
         }
