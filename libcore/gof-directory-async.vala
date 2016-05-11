@@ -362,10 +362,12 @@ public class GOF.Directory.Async : Object {
     private void connect_volume_monitor_signals () {
         var vm = VolumeMonitor.get();
         vm.mount_changed.connect (on_mount_changed);
+        vm.mount_added.connect (on_mount_changed);
     }
     private void disconnect_volume_monitor_signals () {
         var vm = VolumeMonitor.get();
         vm.mount_changed.disconnect (on_mount_changed);
+        vm.mount_added.disconnect (on_mount_changed);
     }
 
     private void on_mount_changed (GLib.VolumeMonitor vm, GLib.Mount mount) {

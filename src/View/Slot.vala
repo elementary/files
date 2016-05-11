@@ -143,7 +143,11 @@ namespace Marlin.View {
             if (!updates_frozen) {
                 updates_frozen = true;
                 path_changed (false);
-                original_reload_request = original_request;
+                /* if original_request false, leave original_load_request as it is (it may already be true
+                 * if reloading in response to reload button press). */  
+                if (original_request) {
+                    original_reload_request = true;
+                }
                 /* ViewContainer listens to this signal takes care of updating appearance
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
@@ -160,12 +164,13 @@ namespace Marlin.View {
         }
 
         private void schedule_reload () {
-            /* Allow time for other slots showing this directory to prepare for reload */
+            /* Allow time for other slots showing this directory to prepare for reload.
+             * Also a delay is needed when a mount is added and trash reloads. */
             if (reload_timeout_id > 0) {
                 warning ("Path change request received too rapidly");
                 return;
             }
-            reload_timeout_id = Timeout.add (50, ()=> {
+            reload_timeout_id = Timeout.add (100, ()=> {
                 directory.reload ();
                 reload_timeout_id = 0;
                 return false;
