@@ -818,7 +818,7 @@ namespace FM {
                 err_msg2 = _("Cannot identify file type to open");
             } else if (!slot.directory.can_open_files) {
                 err_msg2 = "Cannot open files with this protocol (%s)".printf (slot.directory.scheme);
-            } else if (content_type.contains ("video") || content_type.contains ("audio") && !slot.directory.can_stream_files) {
+            } else if (!slot.directory.can_stream_files && (content_type.contains ("video") || content_type.contains ("audio"))) {
                 err_msg2 = "Cannot stream from this protocol (%s)".printf (slot.directory.scheme);
             }
 
