@@ -344,7 +344,7 @@ namespace Marlin.Places {
                                                    Volume? volume,
                                                    Mount? mount,
                                                    uint index,
-                                                   string tooltip) {
+                                                   string? tooltip = null) {
             Gdk.Pixbuf? pixbuf = null;
             if (icon != null) {
                 Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, Marlin.IconSize.SMALLEST);
@@ -421,8 +421,9 @@ namespace Marlin.Places {
         }
 
         private void update_places () {
-            Gtk.TreeIter iter;
+            Gtk.TreeIter iter, last_iter;
             string mount_uri;
+            GLib.File root;
 
             this.last_selected_uri = null;
             this.n_builtins_before = 0;
@@ -507,27 +508,29 @@ namespace Marlin.Places {
 
 
             /* Add Filesystem BUILTIN */
-            add_place (Marlin.PlaceType.BUILT_IN,
-                       iter,
-                       _("File System"),
-                       new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
-                       "file:///",
-                       null,
-                       null,
-                       null,
-                       0,
-                       _("Open the contents of the FileSystem"));
+            last_iter = add_place (Marlin.PlaceType.BUILT_IN,
+                                       iter,
+                                       _("File System"),
+                                       new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM),
+                                       Marlin.ROOT_FS_URI,
+                                       null,
+                                       null,
+                                       null,
+                                       0,
+                                       null);
+
+            add_device_tooltip (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI));
 
             /* Add all connected drives */
             GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
             GLib.List<GLib.Volume> volumes;
             foreach (GLib.Drive drive in drives) {
                 volumes = drive.get_volumes ();
-                if (volumes != null)
+                if (volumes != null) {
                     add_volumes (iter, drive, volumes);
+                } else if (drive.is_media_removable () &&
+                           !drive.is_media_check_automatic ()) {
 
-                else if (drive.is_media_removable ()
-                     && !drive.is_media_check_automatic ()) {
                     /* If the drive has no mountable volumes and we cannot detect media change.. we
                      * display the drive in the sidebar so the user can manually poll the drive by
                      * right clicking and selecting "Rescan..."
@@ -546,7 +549,7 @@ namespace Marlin.Places {
                                null,
                                null,
                                0,
-                               (_("Mount and open %s")).printf (name));
+                               null);
                 }
             }
             /* add all volumes that are not associated with a drive */
@@ -557,23 +560,19 @@ namespace Marlin.Places {
 
                 var mount = volume.get_mount ();
                 if (mount != null) {
-                    var root = mount.get_default_location ();
-                    var it = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
-                                        iter,
-                                        mount.get_name (),
-                                        mount.get_icon (),
-                                        root.get_uri (),
-                                        null,
-                                        volume,
-                                        mount,
-                                        0,
-                                        root.get_parse_name ());
+                    root = mount.get_default_location ();
+                    last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
+                                           iter,
+                                           mount.get_name (),
+                                           mount.get_icon (),
+                                           root.get_uri (),
+                                           null,
+                                           volume,
+                                           mount,
+                                           0,
+                                           null);
 
-                    uint64 fs_capacity, fs_free;
-                    get_filesystem_space (root, out fs_capacity, out fs_free);
-                    store.@set (it,
-                                Column.FREE_SPACE, fs_free,
-                                Column.DISK_SIZE, fs_capacity);
+                    add_device_tooltip (last_iter, root);
                 } else {
                 /* see comment above in why we add an icon for an unmounted mountable volume */
                     var name = volume.get_name ();
@@ -600,7 +599,7 @@ namespace Marlin.Places {
                 if (volume != null)
                     continue;
 
-                var root = mount.get_default_location ();
+                root = mount.get_default_location ();
                 if (root.is_native ()) {
                     string scheme = root.get_uri_scheme ();
                     if (scheme == "archive" ) {
@@ -612,16 +611,18 @@ namespace Marlin.Places {
                     continue;
                 }
 
-                add_place (Marlin.PlaceType.MOUNTED_VOLUME,
-                           iter,
-                           mount.get_name (),
-                           mount.get_icon (),
-                           root.get_uri (),
-                           null,
-                           null,
-                           mount,
-                           0,
-                           root.get_parse_name ());
+                last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
+                                       iter,
+                                       mount.get_name (),
+                                       mount.get_icon (),
+                                       root.get_uri (),
+                                       null,
+                                       null,
+                                       mount,
+                                       0,
+                                       null);
+
+                add_device_tooltip (last_iter, root);
             }
 
             /* ADD NETWORK CATEGORY */
@@ -635,7 +636,7 @@ namespace Marlin.Places {
             /* Add network mounts */
             network_mounts.reverse ();
             foreach (Mount mount in network_mounts) {
-                var root = mount.get_default_location ();
+                root = mount.get_default_location ();
                 /* get_smb_share_from_uri will return the uri unaltered if does not have
                  * the smb scheme so we need not test.  This is required because the mount
                  * does not return the true root location of the share but the location used
@@ -643,16 +644,18 @@ namespace Marlin.Places {
                  */
                 string uri = PF.FileUtils.get_smb_share_from_uri (root.get_uri ());
 
-                add_place (Marlin.PlaceType.BUILT_IN,
-                           iter,
-                           mount.get_name (),
-                           mount.get_icon (),
-                           uri,
-                           null,
-                           null,
-                           mount,
-                           0,
-                           uri);
+                last_iter = add_place (Marlin.PlaceType.BUILT_IN,
+                                       iter,
+                                       mount.get_name (),
+                                       mount.get_icon (),
+                                       uri,
+                                       null,
+                                       null,
+                                       mount,
+                                       0,
+                                       null);
+
+                add_device_tooltip (last_iter, root);
             }
 
             /* Add Entire Network BUILTIN */
@@ -714,13 +717,9 @@ namespace Marlin.Places {
                                            volume,
                                            mount,
                                            0,
-                                           root.get_parse_name ());
+                                           null);
 
-                    uint64 fs_capacity, fs_free;
-                    get_filesystem_space (root, out fs_capacity, out fs_free);
-                    store.@set (last_iter,
-                                Column.FREE_SPACE, fs_free,
-                                Column.DISK_SIZE, fs_capacity);
+                    add_device_tooltip (last_iter, root);
                 } else {
                     /* Do show the unmounted volumes in the sidebar;
                     * this is so the user can mount it (in case automounting
@@ -740,12 +739,13 @@ namespace Marlin.Places {
                                volume,
                                null,
                                0,
-                               (_("Mount and open %s")).printf (name));
+                               null);
                 }
             }
         }
 
-        private void get_filesystem_space (GLib.File root, out uint64 fs_capacity, out uint64 fs_free) {
+        private void get_filesystem_space_and_type (GLib.File root, out uint64 fs_capacity,
+                                                    out uint64 fs_free, out string type) {
             GLib.FileInfo info;
             try {
                 info = root.query_filesystem_info ("filesystem::*", null);
@@ -756,10 +756,45 @@ namespace Marlin.Places {
             }
             fs_capacity = 0;
             fs_free = 0;
+            type = _("Unknown type");
             if (info != null) {
-                fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-                fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
+                if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE)) {
+                    fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
+                }
+                if (info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
+                    fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
+                }
+                if (info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
+                    type = info.get_attribute_as_string (FileAttribute.FILESYSTEM_TYPE);
+                }
             }
+        }
+
+        private string get_tooltip_for_device (GLib.File location, uint64 fs_capacity,
+                                               uint64 fs_free, string type) {
+            var sb = new StringBuilder ("");
+            sb.append (PF.FileUtils.sanitize_path (location.get_parse_name ()));
+            if (type != null && type != "") {
+                sb.append (" - ");
+                sb.append (type);
+            }
+            if (fs_capacity > 0) {
+                sb.append (" ");
+                sb.append (_("(%s Free of %s)").printf (format_size (fs_free), format_size (fs_capacity)));
+            }
+
+            return sb.str.replace ("&", "&amp;").replace (">", "&gt;").replace ("<", "&lt;");
+        }
+
+        private void add_device_tooltip (Gtk.TreeIter iter, GLib.File root) {
+            uint64 fs_capacity, fs_free;
+            string fs_type;
+            get_filesystem_space_and_type (root, out fs_capacity, out fs_free, out fs_type);
+            var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
+            store.@set (iter,
+                        Column.FREE_SPACE, fs_free,
+                        Column.DISK_SIZE, fs_capacity,
+                        Column.TOOLTIP, tooltip);
         }
 
 /* DRAG N DROP FUNCTIONS START */
@@ -1163,7 +1198,7 @@ namespace Marlin.Places {
             store.@get (iter, Column.URI, out uri, Column.PLUGIN_CALLBACK, out f);
 
             if (uri != null) {
-                var location = File.new_for_uri (uri);
+                var location = PF.FileUtils.get_file_for_path (uri);
                 /* Navigate to the clicked location */
                 if (flags == Marlin.OpenFlag.NEW_WINDOW) {
                     window.add_window (location, Marlin.ViewMode.CURRENT);
@@ -1533,8 +1568,11 @@ namespace Marlin.Places {
                                              Gtk.TreeIter iter) {
 
             var crt = renderer as Gtk.CellRendererText;
-            bool is_category;
-            model.@get (iter, Column.IS_CATEGORY, out is_category, -1);
+            bool is_category, show_eject_button;
+            uint64 disk_size = 0;
+            model.@get (iter, Column.IS_CATEGORY, out is_category,
+                              Column.DISK_SIZE, out disk_size,
+                              Column.SHOW_EJECT, out show_eject_button, -1);
 
             if (is_category) {
                 crt.weight = 900;
@@ -1543,6 +1581,15 @@ namespace Marlin.Places {
             } else {
                 crt.weight_set = false;
                 crt.ypad = BOOKMARK_YPAD;
+                if (disk_size > 0) {
+                    /* Make disk space graphic same length whether or not eject button displayed */
+                    var crd = renderer as Marlin.CellRendererDisk;
+                    if (!show_eject_button) {
+                        crd.rpad = eject_button_size + ICON_XPAD * 2;
+                    } else {
+                        crd.rpad = 0;
+                    }
+                }
             }
         }
 
