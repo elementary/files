@@ -1946,16 +1946,7 @@ namespace FM {
             GLib.MenuModel? app_submenu;
 
             string label = _("Invalid");
-            unowned GLib.List<unowned GOF.File> files_for_action = get_files_for_action ();
-            unowned GLib.List<unowned GOF.File> selection = null;
-
-            if (in_recent) {
-                files_for_action.@foreach ((file) => {
-                    selection.append (GOF.File.get_by_uri (file.get_display_target_uri ()));
-                });
-            } else
-                selection = files_for_action;
-
+            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
             unowned GOF.File selected_file = selection.data;
 
             if (!selected_file.is_folder () && selected_file.is_executable ()) {
@@ -1969,8 +1960,7 @@ namespace FM {
                 }
             }
 
-            // Hide open_with menu for the moment
-            (!in_recent ? app_submenu = build_submenu_open_with_applications (ref builder, selection) : app_submenu = null);
+            app_submenu = build_submenu_open_with_applications (ref builder, selection);
 
             if (app_submenu != null && app_submenu.get_n_items () > 0) {
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ())
@@ -2154,21 +2144,8 @@ namespace FM {
         }
 
         private void update_default_app (GLib.List<unowned GOF.File> selection) {
-            GLib.List<GOF.File> files = null;
-            string uri = "";
-
-            if (in_recent) {
-                selection.@foreach ((file) => {
-                    uri = file.get_display_target_uri ();
-
-                    if (uri != null)
-                        files.append (GOF.File.get_by_uri (uri));
-                });
-
-                if (files != null)
-                    default_app = Marlin.MimeActions.get_default_application_for_files (files);
-            } else
-                default_app = Marlin.MimeActions.get_default_application_for_files (selection);
+            default_app = Marlin.MimeActions.get_default_application_for_files (get_files_for_action ());
+            return;
         }
 
         private void update_paste_action_enabled (bool single_folder) {
@@ -2512,10 +2489,17 @@ namespace FM {
 
             if (selected_files == null)
                 action_files.prepend (slot.directory.file);
-            else
+            else if (in_recent) {
+                selected_files.@foreach ((file) => {
+                    var goffile = GOF.File.get_by_uri (file.get_display_target_uri ());
+                    goffile.query_update ();
+                    action_files.append (goffile);
+                });
+            } else {
                 action_files = selected_files;
-
-            return action_files;
+            }
+ 
+             return action_files;
         }
 
         protected void on_view_items_activated () {
