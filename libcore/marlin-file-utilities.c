@@ -77,7 +77,7 @@ marlin_trashed_files_get_original_directories (GList *files, GList **unhandled_f
          * (it will be restored with its parent anyway) */
         parent = g_file_get_parent(file->location);
         if (parent != NULL && strcmp (g_file_get_basename (parent), G_DIR_SEPARATOR_S) == 0) {
-            original_file = eel_g_file_get_trash_original_file (
+            original_file = pf_file_utils_get_file_for_path (
                                 g_file_info_get_attribute_byte_string (file->info,
                                                                        G_FILE_ATTRIBUTE_TRASH_ORIG_PATH));
             original_dir = NULL;
