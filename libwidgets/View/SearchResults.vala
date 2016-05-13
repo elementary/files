@@ -131,6 +131,7 @@ namespace Marlin.View.Chrome
             view.headers_visible = false;
             view.show_expanders = false;
             view.level_indentation = 12;
+            view.set_hover_selection (true);
 
             get_style_context ().add_class ("completion-popup");
 
@@ -608,7 +609,7 @@ namespace Marlin.View.Chrome
             /* Ensure device grab and ungrab are paired */
             if (!is_grabbing && device != null) {
                 Gtk.device_grab_add (this, device, true);
-                device.grab (get_window (), Gdk.GrabOwnership.WINDOW, false, Gdk.EventMask.BUTTON_PRESS_MASK
+                device.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.BUTTON_PRESS_MASK
                     | Gdk.EventMask.BUTTON_RELEASE_MASK
                     | Gdk.EventMask.POINTER_MOTION_MASK,
                     null, Gdk.CURRENT_TIME);
