@@ -516,7 +516,7 @@ namespace FM {
                             });
                         } else
                             GLib.Idle.add (() => {
-                                file.open_single (screen, null);
+                                open_file (file, screen, null);
                                 return false;
                             });
                     }
@@ -785,14 +785,50 @@ namespace FM {
                 else if (only_one_file && file.is_executable ())
                     file.execute (screen, null, null);
                 else if (only_one_file && default_app != null)
-                    file.open_single (screen, default_app);
-                else {
-                    Marlin.MimeActions.open_glib_file_request (location, this, null);
-                }
+                    open_file (file, screen, default_app);
+                else
+                    warning ("Unable to activate this file.  Default app is %s",
+                             default_app != null ? default_app.get_name () : "null");
             } else
                 warning ("Cannot open file in trash");
         }
 
+        /* Open all files through this */
+        private void open_file (GOF.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
+            if (can_open_file (file, true)) {
+                file.open_single (screen, app_info);
+            }
+        }
+
+        /* Also used by build open menu */
+        private bool can_open_file (GOF.File file, bool show_error_dialog = false) {
+            string err_msg1 = _("Cannot open this file");
+            string err_msg2 = "";
+            var content_type = file.get_ftype ();
+
+            if (content_type == null) {
+                bool result_uncertain = true;
+                content_type = ContentType.guess (file.basename, null, out result_uncertain);
+                debug ("Guessed content type to be %s from name - result_uncertain %s",
+                          content_type,
+                          result_uncertain.to_string ());
+            }
+
+            if (content_type == null) {
+                err_msg2 = _("Cannot identify file type to open");
+            } else if (!slot.directory.can_open_files) {
+                err_msg2 = "Cannot open files with this protocol (%s)".printf (slot.directory.scheme);
+            } else if (!slot.directory.can_stream_files && (content_type.contains ("video") || content_type.contains ("audio"))) {
+                err_msg2 = "Cannot stream from this protocol (%s)".printf (slot.directory.scheme);
+            }
+
+            bool success = err_msg2.length < 1;
+            if (!success && show_error_dialog) {
+                Eel.show_warning_dialog (err_msg1, err_msg2, window);
+            }
+
+            return success;
+        }
         private void trash_or_delete_files (GLib.List<GOF.File> file_list,
                                             bool delete_if_already_in_trash,
                                             bool delete_immediately) {
@@ -1233,7 +1269,7 @@ namespace FM {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if (slot.directory.is_local || show_remote_thumbnails) {
+                if (slot.directory.is_local || (show_remote_thumbnails && slot.directory.can_open_files)) {
                     thumbnailer.queue_file (file, null, large_thumbnails);
                 }
             }
@@ -1898,12 +1934,15 @@ namespace FM {
 
             if (in_recent) {
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
-                menu.append_section (null, builder.get_object ("show") as GLib.MenuModel);
+                menu.append_section (null, build_show_menu (builder));
+
 
                 return menu as MenuModel;
             }
 
-            menu.append_section (null, build_menu_open (ref builder));
+            var open_menu = build_menu_open (ref builder);
+            if (open_menu != null)
+                menu.append_section (null, open_menu);
 
             if (!in_network_root) {
                 if (common_actions.get_action_enabled ("paste_into"))
@@ -1929,11 +1968,8 @@ namespace FM {
                 }
             }
 
-            var show_menu = builder.get_object ("show") as GLib.Menu;
-            if (slot.directory.is_local) {
-                show_menu.remove (1); /* Do not show "Show Remote Thumbnails" option when in local folder */
-            }
-            menu.append_section (null, show_menu);
+
+            menu.append_section (null, build_show_menu (builder));
 
             if (!in_network_root)
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
@@ -1941,7 +1977,16 @@ namespace FM {
             return menu as MenuModel;
         }
 
-        private GLib.MenuModel build_menu_open (ref Gtk.Builder builder) {
+        private GLib.MenuModel build_show_menu (Gtk.Builder builder) {
+            var show_menu = builder.get_object ("show") as GLib.Menu;
+            if (slot.directory.is_local || !slot.directory.can_open_files) {
+                show_menu.remove (1); /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
+            }
+            return show_menu;
+        }
+
+        private GLib.MenuModel? build_menu_open (ref Gtk.Builder builder) {
+
             var menu = new GLib.Menu ();
             GLib.MenuModel? app_submenu;
 
@@ -1958,17 +2003,18 @@ namespace FM {
 
             unowned GOF.File selected_file = selection.data;
 
-            if (!selected_file.is_folder () && selected_file.is_executable ()) {
-                label = _("Run");
-                menu.append (label, "selection.open");
-            } else if (default_app != null) {
-                var app_name = default_app.get_display_name ();
-                if (app_name != "Files") {
-                    label = (_("Open in %s")).printf (app_name);
-                    menu.append (label, "selection.open_with_default");
+            if (can_open_file (selected_file)) {
+                if (!selected_file.is_folder () && selected_file.is_executable ()) {
+                    label = _("Run");
+                    menu.append (label, "selection.open");
+                } else if (default_app != null) {
+                    var app_name = default_app.get_display_name ();
+                    if (app_name != "Files") {
+                        label = (_("Open in %s")).printf (app_name);
+                        menu.append (label, "selection.open_with_default");
+                    }
                 }
             }
-
             // Hide open_with menu for the moment
             (!in_recent ? app_submenu = build_submenu_open_with_applications (ref builder, selection) : app_submenu = null);
 
@@ -1988,58 +2034,58 @@ namespace FM {
                                                                       GLib.List<GOF.File> selection) {
 
             var open_with_submenu = new GLib.Menu ();
+            open_with_apps = null;
+
             int index = -1;
 
             if (common_actions.get_action_enabled ("open_in")) {
                 open_with_submenu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
-
                 if (!selection.data.is_mountable () && !selection.data.is_root_network_folder ())
                     open_with_submenu.append_section (null, builder.get_object ("open-in-terminal") as GLib.MenuModel);
                 else
                     return open_with_submenu;
             }
 
-            open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+            if (can_open_file (selection.data)) {
+                open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+                if (selection.data.is_executable () == false) {
+                    filter_default_app_from_open_with_apps ();
+                }
+                filter_this_app_from_open_with_apps ();
 
-            if (selection.data.is_executable () == false) {
-                filter_default_app_from_open_with_apps ();
-            }
+                if (open_with_apps != null) {
+                    var apps_section = new GLib.Menu ();
+                    string last_label = "";
+                    open_with_apps.@foreach ((app) => {
+                        if (app != null && app is AppInfo) {
+                            var label = app.get_display_name ();
+                            /* The following mainly applies to Nautilus, whose display name is also "Files" */
+                            if (label == "Files") {
+                                label = app.get_executable ();
+                                label = label[0].toupper ().to_string () + label.substring (1);
+                            }
 
-            filter_this_app_from_open_with_apps ();
-
-            if (open_with_apps != null) {
-                var apps_section = new GLib.Menu ();
-                string last_label = "";
-                open_with_apps.@foreach ((app) => {
-                    if (app != null && app is AppInfo) {
-                        var label = app.get_display_name ();
-                        /* The following mainly applies to Nautilus, whose display name is also "Files" */
-                        if (label == "Files") {
-                            label = app.get_executable ();
-                            label = label[0].toupper ().to_string () + label.substring (1);
+                            /* Do not show same name twice - some apps have more than one .desktop file
+                             * with the same name (e.g. Nautilus)
+                             */
+                            if (label != last_label) {
+                                index++;
+                                apps_section.append (label, "selection.open_with_app::" + index.to_string ());
+                                last_label = label.dup ();
+                            }
                         }
+                    });
 
-                        /* Do not show same name twice - some apps have more than one .desktop file
-                         * with the same name (e.g. Nautilus)
-                         */
-                        if (label != last_label) {
-                            index++;
-                            apps_section.append (label, "selection.open_with_app::" + index.to_string ());
-                            last_label = label.dup ();
-                        }
-                    }
-                });
+                    if (index >= 0)
+                        open_with_submenu.append_section (null, apps_section);
+                }
 
-                if (index >= 0)
-                    open_with_submenu.append_section (null, apps_section);
+                if (selection.length () == 1) {
+                    var other_app_menu = new GLib.Menu ();
+                    other_app_menu.append ( _("Other Application"), "selection.open_with_other_app");
+                    open_with_submenu.append_section (null, other_app_menu);
+                }
             }
-
-            if (selection.length () == 1) {
-                var other_app_menu = new GLib.Menu ();
-                other_app_menu.append ( _("Other Application"), "selection.open_with_other_app");
-                open_with_submenu.append_section (null, other_app_menu);
-            }
-
             return open_with_submenu as GLib.MenuModel;
         }
 
@@ -2118,10 +2164,14 @@ namespace FM {
             update_select_all_action ();
             update_menu_actions_sort ();
 
+            bool can_open = can_open_file (file);
             action_set_enabled (common_actions, "open_in", only_folders);
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
             action_set_enabled (selection_actions, "view_in_location", selection_count > 0);
-            action_set_enabled (selection_actions, "open", selection_count == 1);
+            action_set_enabled (selection_actions, "open", selection_count == 1 && can_open);
+            action_set_enabled (selection_actions, "open_with_app", can_open);
+            action_set_enabled (selection_actions, "open_with_default", can_open);
+            action_set_enabled (selection_actions, "open_with_other_app", can_open);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
             action_set_enabled (selection_actions, "trash", slot.directory.has_trash_dirs);
             action_set_enabled (common_actions, "properties", can_show_properties);
@@ -2316,7 +2366,10 @@ namespace FM {
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<GOF.File> files) {
-            GOF.File.launch_files (files, get_screen (), app);
+            var screen = get_screen ();
+            foreach (GOF.File file in files) {
+                open_file (file, screen, app);
+            }
         }
 
 
@@ -2331,7 +2384,8 @@ namespace FM {
 
             if (thumbnail_source_id != 0 ||
                 (!slot.directory.is_local && !show_remote_thumbnails) ||
-                (slot.directory.is_loading ())) {
+                 !slot.directory.can_open_files ||
+                 slot.directory.is_loading ()) {
 
                     return;
             }
