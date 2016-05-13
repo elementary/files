@@ -56,7 +56,11 @@ namespace Marlin.View.Chrome
 
         private void on_search_results_file_selected (GLib.File file) {
             /* Search result widget ensures it has closed and released grab */
-            path_change_request (file.get_path ());
+            /* Returned result might be a link or a server */
+            var gof = new GOF.File (file, null);
+            gof.ensure_query_info ();
+
+            path_change_request (gof.get_target_location ().get_uri ());
         }
         private void on_search_results_file_activated (GLib.File file) {
             AppInfo? app = Marlin.MimeActions.get_default_application_for_glib_file (file);

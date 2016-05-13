@@ -30,7 +30,7 @@ namespace Marlin.View.Chrome
 
             public Match (FileInfo info, string path_string, File parent)
             {
-                Object (name: info.get_name (),
+                Object (name: info.get_display_name (),
                         mime: info.get_content_type (),
                         icon: info.get_icon (),
                         path_string: path_string,
@@ -817,6 +817,7 @@ namespace Marlin.View.Chrome
         }
 
         string ATTRIBUTES = FileAttribute.STANDARD_NAME + "," +
+                            FileAttribute.STANDARD_DISPLAY_NAME + "," +
                             FileAttribute.STANDARD_CONTENT_TYPE + "," +
                             FileAttribute.STANDARD_IS_HIDDEN + "," +
                             FileAttribute.STANDARD_TYPE + "," +
@@ -824,11 +825,13 @@ namespace Marlin.View.Chrome
 
         void visit (string term, bool include_hidden, Cancellable cancel)
         {
+
             FileEnumerator enumerator;
             var folder = directory_queue.poll ();
 
-            if (folder == null)
+            if (folder == null) {
                 return;
+            }
 
             var depth = 0;
 
@@ -840,8 +843,9 @@ namespace Marlin.View.Chrome
                 depth++;
             }
 
-            if (depth > MAX_DEPTH)
+            if ((search_current_directory_only && depth > 1) || depth > MAX_DEPTH) {
                 return;
+            }
 
             try {
                 enumerator = folder.enumerate_children (ATTRIBUTES, 0, cancel);
@@ -854,20 +858,23 @@ namespace Marlin.View.Chrome
             FileInfo info = null;
             try {
                 while (!cancel.is_cancelled () && (info = enumerator.next_file (null)) != null) {
-                    if (info.get_is_hidden () && !include_hidden)
+                    if (info.get_is_hidden () && !include_hidden) {
                         continue;
+                    }
 
                     if (info.get_file_type () == FileType.DIRECTORY && !search_current_directory_only) {
                         directory_queue.add (folder.resolve_relative_path (info.get_name ()));
                     }
 
-                    if (term_matches (term, info.get_name ()))
+                    if (term_matches (term, info.get_display_name ())) {
                         new_results.add (new Match (info, path_string, folder));
+                    }
                 }
-            } catch (Error e) {}
+            } catch (Error e) {warning ("Error enumerating in visit");}
 
-            if (new_results.size < 1)
+            if (new_results.size < 1) {
                 return;
+            }
 
             if (!cancel.is_cancelled ()) {
                 var new_count = display_count + new_results.size;
