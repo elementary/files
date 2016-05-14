@@ -46,7 +46,7 @@ public class GOF.Directory.Async : Object {
         LOADING,
         LOADED
     }
-    private State state = State.NOT_LOADED;
+    public State state {get; private set;}
 
     private HashTable<GLib.File,GOF.File> file_hash;
     public uint files_count;

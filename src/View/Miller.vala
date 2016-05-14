@@ -26,6 +26,8 @@ namespace Marlin.View {
 
         private Gtk.Box colpane;
 
+        uint scroll_to_slot_timeout_id = 0;
+
         public Gtk.ScrolledWindow scrolled_window;
         public Gtk.Adjustment hadj;
         public unowned Marlin.View.Slot? current_slot;
@@ -213,8 +215,9 @@ namespace Marlin.View {
             else
                 slot = aslot as Marlin.View.Slot;
     
-            if (scroll)
-                scroll_to_slot (slot);
+            if (scroll) {
+                schedule_scroll_to_slot (slot);
+            }
 
             if (this.current_slot == slot)
                 return;
@@ -323,14 +326,31 @@ namespace Marlin.View {
 
 /** Helper functions */
 
-        private void scroll_to_slot (GOF.AbstractSlot slot) {
-            if (!content_box.get_realized ())
-                return;
+        private void schedule_scroll_to_slot (GOF.AbstractSlot slot) {
+            if (scroll_to_slot_timeout_id > 0) {
+                GLib.Source.remove (scroll_to_slot_timeout_id);
+            }
 
-            int width = 0;
-            int previous_width = 0;
+            scroll_to_slot_timeout_id = GLib.Timeout.add (200, () => {
+                if (scroll_to_slot (slot)) {
+                    scroll_to_slot_timeout_id = 0;
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+        }
 
-            /* Calculate width up to left-hand edge of given slot */
+        private bool scroll_to_slot (GOF.AbstractSlot slot) {
+            /* Cannot accurately scroll until directory finishes loading because width will change
+             * according the length of the longest filename */ 
+            if (slot.directory.state != GOF.Directory.Async.State.LOADED) {
+                return false;
+            }
+
+            int width = 0; /* left edge of active slot */
+            int previous_width = 0; /* left edge of slot before the active slot */
+
             slot_list.@foreach ((abs) => {
                 if (abs.slot_number < slot.slot_number) {
                     previous_width = width;
@@ -338,25 +358,27 @@ namespace Marlin.View {
                 }
             });
 
-            /* previous width = left edge of slot before the active slot
-             * width = left edge of active slot */
             int page_size = (int) this.hadj.get_page_size ();
             int current_value = (int) this.hadj.get_value ();
             int new_value = current_value;
 
-            if (current_value > previous_width) /*scroll right until left hand edge of slot before the active slot is in view*/
+            if (current_value > previous_width) { /*scroll right until left hand edge of slot before the active slot is in view*/
                 new_value = previous_width;
+            }
 
             int offset = slot.slot_number < slot_list.length () -1 ? 90 : 0;
             int val = page_size - (width + slot.width + offset);
 
-            if (val < 0)  /*scroll left until right hand edge of active slot is in view*/
+            if (val < 0) {  /*scroll left until right hand edge of active slot is in view*/
                 new_value = -val;
+            }
 
-            if (slot.width + offset > page_size) /*scroll right until left hand edge of active slot is in view*/
+            if (slot.width + offset > page_size) { /*scroll right until left hand edge of active slot is in view*/
                 new_value = width;
+            }
 
             Marlin.Animation.smooth_adjustment_to (this.hadj, new_value);
+            return true;
         }
 
         public override unowned GOF.AbstractSlot? get_current_slot () {
@@ -426,6 +448,9 @@ namespace Marlin.View {
         }
 
         public override void close () {
+            if (scroll_to_slot_timeout_id > 0) {
+                GLib.Source.remove (scroll_to_slot_timeout_id);
+            }
             slot_list.@foreach ((slot) => {
                 if (slot != null)
                     slot.close ();
