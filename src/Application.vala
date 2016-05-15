@@ -1,7 +1,8 @@
 /***
-    Copyright (C) 1999, 2000 Red Hat, Inc.
-    Copyright (C) 2000, 2001 Eazel, Inc.
-    Copyright (C) 2013 Julián Unrrein <junrrein@gmail.com>
+    Copyright (c) 1999, 2000 Red Hat, Inc.
+    Copyright (c) 2000, 2001 Eazel, Inc.
+    Copyright (c) 2013 Julián Unrrein <junrrein@gmail.com>
+    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)  
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -202,15 +203,15 @@ public class Marlin.Application : Granite.Application {
             if (file != null)
                 files += (file);
         }
-
         /* Open application */
-        if (create_new_window)
-            create_window ();
-        else if (open_in_tab)
+        if (create_new_window) {
+            var win = create_window (null);
+            win.add_tab (); /* Default tab */
+        } else if (open_in_tab) {
             open_tabs (files);
-        else
+        } else {
             open_windows (files);
-
+        }
         return Posix.EXIT_SUCCESS;
     }
 
@@ -273,9 +274,9 @@ public class Marlin.Application : Granite.Application {
 
     private void open_windows (File[]? files) {
         if (files == null)
-            open_tabs (files);
+            open_tabs (null); /* open_tabs () will restore saved tabs or default tab depending on preference */ 
         else {
-            /* Open windows at each requested location. */
+            /* Open windows with tab at each requested location. */
             foreach (var file in files) {
                 create_window (file);
             }
@@ -283,10 +284,9 @@ public class Marlin.Application : Granite.Application {
     }
 
     /* All window creation should be done via this function */
-    public Marlin.View.Window? create_window (File location = File.new_for_path (Environment.get_home_dir ()),
+    public Marlin.View.Window? create_window (File? location,
                                              Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
                                              int x = -1, int y = -1) {
-
         if (this.get_windows ().length () >= MAX_WINDOWS) {
             return null;
         }
@@ -324,7 +324,7 @@ public class Marlin.Application : Granite.Application {
         this.add_window (win as Gtk.Window);
         plugins.interface_loaded (win as Gtk.Widget);
 
-        if (!win.is_first_window) { /* First window will restore tabs itself */
+        if (location != null) {
             win.add_tab (location, viewmode);
         }
 
@@ -343,7 +343,7 @@ public class Marlin.Application : Granite.Application {
         if (windows_exist ()) {
             window = (this.get_windows ()).data as Marlin.View.Window;
         } else {
-            window = create_window ();
+            window = create_window (null); /* Do not add a tab on creation */
             if (window == null) { /* Maximum number of windows reached */
                 return;
             }

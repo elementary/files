@@ -986,7 +986,7 @@ namespace Marlin.View {
                 return;
             }
 
-            var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
+            var tip_location = PF.FileUtils.get_file_for_path (unescaped_tip_uri);
             var relative_path = root_location.get_relative_path (tip_location);
             GLib.File gfile;
 
@@ -996,7 +996,7 @@ namespace Marlin.View {
 
                 foreach (string dir in dirs) {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
-                    gfile = GLib.File.new_for_uri (uri);
+                    gfile = PF.FileUtils.get_file_for_path (uri);
 
                     mwcols.add_location (gfile, mwcols.current_slot);
                 }

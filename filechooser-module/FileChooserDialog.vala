@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2015 Pantheon Developers (http://launchpad.net/elementary)
+ * Copyright (c) 2015 elementary LLC (http://launchpad.net/elementary)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public

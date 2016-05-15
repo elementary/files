@@ -480,7 +480,7 @@ namespace Marlin.View {
             return path;
         }
 
-        public void reload (bool propagate = true) {
+        public void reload () {
             var slot = get_current_slot ();
             if (slot != null)
                 slot.reload ();

@@ -1,5 +1,5 @@
 /***
-    Copyright (C) ammonkey 2011 <am.monkeyd@gmail.com>
+    Copyright (c) ammonkey 2011 <am.monkeyd@gmail.com>
 
     Marlin is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the

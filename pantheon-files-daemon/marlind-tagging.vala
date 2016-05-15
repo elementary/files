@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
- * Copyright (C) 2010 Jordi Puigdellívol <jordi@gloobus.net>
+ * Copyright (c) 2010 Jordi Puigdellívol <jordi@gloobus.net>
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License

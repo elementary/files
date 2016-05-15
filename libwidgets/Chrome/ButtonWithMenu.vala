@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2011-2013 Mathijs Henquet
+    Copyright (c) 2011-2013 Mathijs Henquet
 
     This program or library is free software; you can redistribute it
     and/or modify it under the terms of the GNU Lesser General Public

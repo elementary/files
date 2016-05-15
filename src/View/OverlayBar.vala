@@ -1,5 +1,6 @@
 /***
-    Copyright (C) 2012 ammonkey <am.monkeyd@gmail.com>
+    Copyright (c) 2012 ammonkey <am.monkeyd@gmail.com>
+                  2015-2016 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
