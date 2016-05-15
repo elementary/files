@@ -871,8 +871,6 @@ namespace FM {
 
             if (select_added_files)
                 add_gof_file_to_selection (file);
-
-            handle_free_space_change ();
         }
 
         private void handle_free_space_change () {
@@ -1252,12 +1250,13 @@ namespace FM {
         private void on_directory_file_added (GOF.Directory.Async dir, GOF.File? file) {
             if (file != null) {
                 add_file (file, dir);
+                handle_free_space_change ();
             }
         }
 
         private void on_directory_file_loaded (GOF.Directory.Async dir, GOF.File file) {
             select_added_files = false;
-            add_file (file, dir);
+            add_file (file, dir); /* no freespace change signal required */
         }
 
         private void on_directory_file_changed (GOF.Directory.Async dir, GOF.File file) {

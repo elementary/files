@@ -533,7 +533,7 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-            add_device_tooltip (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI));
+            add_device_tooltip.begin (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI));
 
             /* Add all connected drives */
             GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
@@ -586,7 +586,7 @@ namespace Marlin.Places {
                                            0,
                                            null);
 
-                    add_device_tooltip (last_iter, root);
+                    add_device_tooltip.begin (last_iter, root);
                 } else {
                 /* see comment above in why we add an icon for an unmounted mountable volume */
                     var name = volume.get_name ();
@@ -636,7 +636,7 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-                add_device_tooltip (last_iter, root);
+                add_device_tooltip.begin (last_iter, root);
             }
 
             /* ADD NETWORK CATEGORY */
@@ -669,7 +669,7 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-                add_device_tooltip (last_iter, root);
+                add_device_tooltip.begin (last_iter, root);
             }
 
             /* Add Entire Network BUILTIN */
@@ -733,7 +733,7 @@ namespace Marlin.Places {
                                            0,
                                            null);
 
-                    add_device_tooltip (last_iter, root);
+                    add_device_tooltip.begin (last_iter, root);
                 } else {
                     /* Do show the unmounted volumes in the sidebar;
                     * this is so the user can mount it (in case automounting
@@ -758,19 +758,33 @@ namespace Marlin.Places {
             }
         }
 
-        private void get_filesystem_space_and_type (GLib.File root, out uint64 fs_capacity,
+        private async void get_filesystem_space_and_type (GLib.File root, out uint64 fs_capacity,
                                                     out uint64 fs_free, out string type) {
-            GLib.FileInfo info;
-            try {
-                info = root.query_filesystem_info ("filesystem::*", null);
-            }
-            catch (GLib.Error error) {
-                warning ("Error querying root filesystem info: %s", error.message);
-                info = null;
-            }
             fs_capacity = 0;
             fs_free = 0;
-            type = _("Unknown type");
+            type = "";
+
+            string scheme = Uri.parse_scheme (root.get_uri ());
+            if ("sftp davs".contains (scheme)) {
+                return; /* Cannot get info from these protocols */
+            }
+            if ("smb afp".contains (scheme)) {
+                /* Check network is functional */
+                var net_mon = GLib.NetworkMonitor.get_default ();
+                if (!net_mon.get_network_available ()) {
+                    return;
+                }
+            }
+
+            GLib.FileInfo info;
+            try {
+                info = yield root.query_filesystem_info_async ("filesystem::*", 0, null);
+            }
+            catch (GLib.Error error) {
+                warning ("Error querying %s filesystem info: %s", root.get_uri (), error.message);
+                info = null;
+            }
+
             if (info != null) {
                 if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE)) {
                     fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
@@ -800,15 +814,24 @@ namespace Marlin.Places {
             return sb.str.replace ("&", "&amp;").replace (">", "&gt;").replace ("<", "&lt;");
         }
 
-        private void add_device_tooltip (Gtk.TreeIter iter, GLib.File root) {
+        private async void add_device_tooltip (Gtk.TreeIter iter, GLib.File root) {
+
             uint64 fs_capacity, fs_free;
             string fs_type;
-            get_filesystem_space_and_type (root, out fs_capacity, out fs_free, out fs_type);
+            var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
+
+            yield get_filesystem_space_and_type (root, out fs_capacity, out fs_free, out fs_type);
             var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
-            store.@set (iter,
-                        Column.FREE_SPACE, fs_free,
-                        Column.DISK_SIZE, fs_capacity,
-                        Column.TOOLTIP, tooltip);
+            if (rowref != null && rowref.valid ()) {
+                Gtk.TreeIter? itr = null;
+                store.get_iter (out itr, rowref.get_path ());
+                store.@set (itr,
+                            Column.FREE_SPACE, fs_free,
+                            Column.DISK_SIZE, fs_capacity,
+                            Column.TOOLTIP, tooltip);
+            } else {
+                warning ("Attempt to add tooltip for %s failed - invalid rowref", root.get_uri ());
+            }
         }
 
 /* DRAG N DROP FUNCTIONS START */
