@@ -1094,7 +1094,7 @@ namespace FM {
             else
                 location = slot.directory.file.get_target_location ();
 
-            window.sidebar.add_uri (location.get_uri (), null);
+            window.bookmark_uri (location.get_uri (), null);
         }
 
         /** Background actions */
@@ -1906,8 +1906,8 @@ namespace FM {
                 }
 
                 if (common_actions.get_action_enabled ("bookmark")) {
-                    /* Do  not offer to bookmark if the home folder is selected */
-                    if (!(file_location_is_builtin (selected_files.data))) {
+                    /* Do  not offer to bookmark if location is already bookmarked */
+                    if (window.can_bookmark_uri (selected_files.data.uri)) {
                         menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
                     }
                 }
@@ -1962,8 +1962,8 @@ namespace FM {
             }
 
             if (common_actions.get_action_enabled ("bookmark")) {
-                /* Do not insert bookmark for home or filesystem root (already have builtins) */
-                if (!(file_location_is_builtin (slot.directory.file))) {
+                /* Do  not offer to bookmark if location is already bookmarked */
+                if (window.can_bookmark_uri (slot.directory.file.uri)) {
                     menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
                 }
             }
@@ -3428,11 +3428,6 @@ namespace FM {
                 if (p != null)
                     unselect_path (p);
             }
-        }
-        /** Check whether gof_file represents the user home directory or the root filesystem **/
-        protected bool file_location_is_builtin (GOF.File gof_file) {
-            var path = gof_file.location.get_path ();
-            return (path == Environment.get_home_dir () || path == Path.DIR_SEPARATOR_S);
         }
 
         public virtual void sync_selection () {}
