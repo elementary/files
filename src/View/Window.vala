@@ -471,6 +471,14 @@ namespace Marlin.View {
             tabs.current = tab;
         }
 
+        public void bookmark_uri (string uri, string? name = null) {
+            sidebar.add_uri (uri, name);
+        }
+
+        public bool can_bookmark_uri (string uri) {
+            return !sidebar.has_place (uri);
+        }
+
         public void remove_tab (ViewContainer view_container) {
             actual_remove_tab (tabs.get_tab_by_widget (view_container as Gtk.Widget));
         }

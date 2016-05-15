@@ -421,6 +421,25 @@ namespace Marlin.Places {
             return iter;
         }
 
+        public bool has_place (string uri) {
+            bool found = false;
+
+            store.@foreach ((model, path, iter) => {
+                string u;
+                model.@get (iter, Column.URI, out u);
+                if (u == null) { /* Category entries etc have null uri, for example */
+                    return false;
+                } else if (u == uri) {
+                    found = true;
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+
+            return found;
+        }
+
         private bool recent_is_supported () {
             string [] supported;
 
@@ -1057,7 +1076,7 @@ namespace Marlin.Places {
         }
 
         private  bool can_accept_file_as_bookmark (GLib.File file) {
-            return file.query_exists (null);
+            return file.query_exists (null) && window.can_bookmark_uri (file.get_uri ());
         }
 
         private bool can_accept_files_as_bookmarks (List<GLib.File> items) {
