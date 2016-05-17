@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-14 14:20-0500\n"
-"PO-Revision-Date: 2016-05-09 19:39+0000\n"
+"PO-Revision-Date: 2016-05-16 18:35+0000\n"
 "Last-Translator: Melih Güçlü <melihguclu@hotmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-05-15 05:24+0000\n"
+"X-Launchpad-Export-Date: 2016-05-17 05:54+0000\n"
 "X-Generator: Launchpad (build 18025)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1570,7 +1570,7 @@ msgstr "Ağ içeriğine gözat"
 
 #: ../src/View/Sidebar.vala:773
 msgid "Unknown type"
-msgstr ""
+msgstr "Bilinmeyen tür"
 
 #: ../src/View/Sidebar.vala:797
 msgid "(%s Free of %s)"
@@ -1665,7 +1665,7 @@ msgstr "Önizleme hatası"
 
 #: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Bu dosya açılamıyor"
 
 #: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
@@ -2215,6 +2215,7 @@ msgstr ""
 "  Taha İbrahim https://launchpad.net/~tibayram\n"
 "  Uğurhan https://launchpad.net/~turkerugurhan\n"
 "  Yiğit Ateş https://launchpad.net/~yigitates\n"
+"  afmha https://launchpad.net/~afmhatr\n"
 "  asdasdqwdq qwd qwq https://launchpad.net/~onlycodetr-deactivatedaccount-"
 "deactivatedaccount\n"
 "  burak https://launchpad.net/~pranis1243\n"
