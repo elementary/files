@@ -1481,7 +1481,7 @@ namespace FM {
 
             drag_file_list.@foreach ((file) => {
                 sb.append (file.get_target_location ().get_uri ());
-                sb.append ("\n");
+                sb.append ("\r\n");  /* Drop onto Filezilla does not work without the "\r" */
             });
 
             selection_data.@set (selection_data.get_target (),
