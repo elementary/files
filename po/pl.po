@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-14 14:20-0500\n"
-"PO-Revision-Date: 2016-05-06 20:52+0000\n"
+"PO-Revision-Date: 2016-05-19 19:40+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-05-15 05:24+0000\n"
+"X-Launchpad-Export-Date: 2016-05-20 05:33+0000\n"
 "X-Generator: Launchpad (build 18025)\n"
 "Language: pl\n"
 
@@ -1634,11 +1634,11 @@ msgstr "Przegląda zawartość sieci"
 
 #: ../src/View/Sidebar.vala:773
 msgid "Unknown type"
-msgstr ""
+msgstr "Nieznany rodzaj"
 
 #: ../src/View/Sidebar.vala:797
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s wolne z %s)"
 
 #: ../src/View/Sidebar.vala:1281
 msgid "Unable to start %s"
@@ -1729,11 +1729,11 @@ msgstr "Błąd podglądu"
 
 #: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Nie można otworzyć tego pliku"
 
 #: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Nie można zidentyfikować rodzaju pliku do otworzenia"
 
 #: ../src/View/AbstractDirectoryView.vala:1549
 msgid "Cannot drop this file"

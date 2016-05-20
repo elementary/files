@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-14 14:20-0500\n"
-"PO-Revision-Date: 2016-04-09 10:28+0000\n"
-"Last-Translator: Bogdan Lisnenko <Unknown>\n"
+"PO-Revision-Date: 2016-05-19 17:47+0000\n"
+"Last-Translator: Alex Bereza <bereza.alex@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-05-15 05:24+0000\n"
+"X-Launchpad-Export-Date: 2016-05-20 05:33+0000\n"
 "X-Generator: Launchpad (build 18025)\n"
 "Language: uk\n"
 
@@ -1628,11 +1628,11 @@ msgstr "Перегляд вмісту мережі"
 
 #: ../src/View/Sidebar.vala:773
 msgid "Unknown type"
-msgstr ""
+msgstr "Невідомий тип"
 
 #: ../src/View/Sidebar.vala:797
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s вільно з %s)"
 
 #: ../src/View/Sidebar.vala:1281
 msgid "Unable to start %s"
@@ -1723,11 +1723,11 @@ msgstr "Помилка попереднього перегляду"
 
 #: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Не вдається відкрити цей файл"
 
 #: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Не вдається ідентифікувати тип файлу для відкриття"
 
 #: ../src/View/AbstractDirectoryView.vala:1549
 msgid "Cannot drop this file"
@@ -1861,7 +1861,7 @@ msgstr "невідомо"
 
 #: ../src/View/PropertiesWindow.vala:545
 msgid "Contains:"
-msgstr ""
+msgstr "Містить:"
 
 #: ../src/View/PropertiesWindow.vala:642
 msgid "Created:"
@@ -1960,49 +1960,49 @@ msgstr "Всі:"
 
 #: ../src/View/PropertiesWindow.vala:1471
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u вкладених тек та %u файлів"
 
 #: ../src/View/PropertiesWindow.vala:1473
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u вкладених тек та %u файл"
 
 #: ../src/View/PropertiesWindow.vala:1476
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u вкладених тек"
 
 #: ../src/View/PropertiesWindow.vala:1481
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u вкладена тека та %u файли"
 
 #: ../src/View/PropertiesWindow.vala:1483
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u вкладена тека та %u файл"
 
 #: ../src/View/PropertiesWindow.vala:1492
 #: ../src/View/PropertiesWindow.vala:1531
 msgid "%u files"
-msgstr ""
+msgstr "%u файлів"
 
 #: ../src/View/PropertiesWindow.vala:1494
 #: ../src/View/PropertiesWindow.vala:1533
 msgid "%u file"
-msgstr ""
+msgstr "%u файл"
 
 #: ../src/View/PropertiesWindow.vala:1510
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u обраних елементів (%u тек та %u файлів)"
 
 #: ../src/View/PropertiesWindow.vala:1512
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u обраних елементів (%u тек та %u файл)"
 
 #: ../src/View/PropertiesWindow.vala:1520
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u обраних елементів (%u тека та %u файлів)"
 
 #: ../src/View/PropertiesWindow.vala:1522
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u обраних елементів (%u тека та %u файл)"
 
 #: ../src/View/PropertiesWindow.vala:1586
 msgid "Disk Properties"
@@ -2248,6 +2248,7 @@ msgstr "Простий і потужний файловий менеджер"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Alex Bereza https://launchpad.net/~bereza-alex\n"
 "  Andy Karaushu https://launchpad.net/~karandriy\n"
 "  Anton https://launchpad.net/~myboxforphoto\n"
 "  Bogdan Lisnenko https://launchpad.net/~lem8r\n"
