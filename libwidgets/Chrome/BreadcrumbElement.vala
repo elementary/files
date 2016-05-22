@@ -35,7 +35,11 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
     public double natural_width {
         get {
-            return text_width + icon_width + 2 * ICON_MARGIN + padding.left + padding.right;
+            if (icon != null) {
+                return text_width + icon_width + 2 * ICON_MARGIN + padding.left + padding.right;
+            } else {
+                return text_width + padding.left + padding.right;
+            }
         }
     }
     public double display_width = -1;
@@ -96,7 +100,9 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         cr.set_source_rgb (0,0,0);
 
         var width = this.real_width;
-        var iw = icon_width + 2 * ICON_MARGIN;
+        var frame_width = width - padding.right;
+
+        var iw = icon != null ? icon_width + 2 * ICON_MARGIN : 0;
         var room_for_text = text_is_displayed;
         var room_for_icon = true;
 
@@ -123,18 +129,18 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                 cr.move_to (x + height/2, y);
                 cr.line_to (x, y + height/2);
                 cr.line_to (x + height/2, y + height);
-                cr.line_to (x - width, y + height);
-                cr.line_to (x - width - height/2, y + height/2);
-                cr.line_to (x - width, y);
+                cr.line_to (x - frame_width, y + height);
+                cr.line_to (x - frame_width - height/2, y + height/2);
+                cr.line_to (x - frame_width, y);
                 cr.close_path ();
                 cr.clip ();
             } else {
                 cr.move_to (x - height/2, y);
                 cr.line_to (x, y + height/2);
                 cr.line_to (x - height/2, y + height);
-                cr.line_to (x + width, y + height);
-                cr.line_to (x + width + height/2, y + height/2);
-                cr.line_to (x + width, y);
+                cr.line_to (x + frame_width, y + height);
+                cr.line_to (x + frame_width + height/2, y + height/2);
+                cr.line_to (x + frame_width, y);
                 cr.close_path ();
                 cr.clip ();
             }
@@ -230,9 +236,9 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
         /* Move to end of breadcrumb */
         if (is_RTL) {
-            x -= (width);
+            x -= frame_width;
         } else {
-            x += width;
+            x += frame_width;
         }
 
         /* Draw the arrow-shaped separator */
