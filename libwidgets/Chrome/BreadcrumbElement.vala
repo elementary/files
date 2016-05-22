@@ -24,13 +24,13 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
     private string icon_name; /*For testing */
     private Gdk.Pixbuf? icon = null;
     private int icon_width;
+    private int icon_half_height;
 
     public string? text {get; private set;}
     private double text_width;
-    private double text_height;
+    private double text_half_height;
 
     public double offset = 0;
-    public double last_height = 0;
     public double x  = 0;
 
     public double natural_width {
@@ -81,6 +81,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
     public void set_icon (Gdk.Pixbuf icon_) {
         icon = icon_;
         icon_width = icon.get_width ();
+        icon_half_height = icon.get_height () / 2;
     }
     public void set_icon_name (string icon_name_) {
         icon_name = icon_name_;
@@ -96,7 +97,11 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
         cr.restore ();
         cr.save ();
-        last_height = height;
+
+        var half_height = height / 2;
+        var y_half_height = y + half_height;
+        var y_height = y + height;
+
         cr.set_source_rgb (0,0,0);
 
         var width = this.real_width;
@@ -124,26 +129,27 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             }
         }
         /* Erase area for drawing */
+
         if (offset > 0.0) {
+            double x_frame_width, x_half_height, x_frame_width_half_height;
             if (is_RTL) {
-                cr.move_to (x + height/2, y);
-                cr.line_to (x, y + height/2);
-                cr.line_to (x + height/2, y + height);
-                cr.line_to (x - frame_width, y + height);
-                cr.line_to (x - frame_width - height/2, y + height/2);
-                cr.line_to (x - frame_width, y);
-                cr.close_path ();
-                cr.clip ();
+                x_frame_width = x - frame_width;
+                x_half_height = x + half_height;
+                x_frame_width_half_height = x_frame_width - half_height;
             } else {
-                cr.move_to (x - height/2, y);
-                cr.line_to (x, y + height/2);
-                cr.line_to (x - height/2, y + height);
-                cr.line_to (x + frame_width, y + height);
-                cr.line_to (x + frame_width + height/2, y + height/2);
-                cr.line_to (x + frame_width, y);
-                cr.close_path ();
-                cr.clip ();
+                x_frame_width = x + frame_width;
+                x_half_height = x - half_height;
+                x_frame_width_half_height = x_frame_width + half_height;
             }
+
+            cr.move_to (x_half_height, y);
+            cr.line_to (x, y_half_height);
+            cr.line_to (x_half_height, y_height);
+            cr.line_to (x_frame_width, y_height);
+            cr.line_to (x_frame_width_half_height, y_half_height);
+            cr.line_to (x_frame_width, y);
+            cr.close_path ();
+            cr.clip ();
         }
 
         if (pressed) { /* Highlight the breadcrumb */
@@ -151,17 +157,17 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             double base_x, left_x, right_x, arrow_right_x;
             base_x = x;
             if (is_RTL) {
-                left_x = base_x + height / 2 - line_width;
-                right_x = base_x - width;
-                arrow_right_x = right_x - height / 2;
+                left_x = base_x + half_height - line_width;
+                right_x = base_x - frame_width;
+                arrow_right_x = right_x - half_height;
             } else {
-                left_x = base_x - height / 2;
-                right_x = base_x + width + line_width;
-                arrow_right_x = right_x + height / 2;
+                left_x = base_x - half_height;
+                right_x = base_x + frame_width + line_width;
+                arrow_right_x = right_x + half_height;
             }
             var top_y = y + padding.top - line_width;
-            var bottom_y = y + height - padding.bottom + line_width;
-            var arrow_y = y + height / 2;
+            var bottom_y = y_height - padding.bottom + line_width;
+            var arrow_y = y_half_height;
             cr.move_to (left_x, top_y);
             cr.line_to (base_x, arrow_y);
             cr.line_to (left_x, bottom_y);
@@ -191,22 +197,22 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             if (icon_to_draw == null) {
                 if (room_for_text) {
                     button_context.render_layout (cr, x - width,
-                                                  y + height/2 - text_height/2, layout);
+                                                  y_half_height - text_half_height, layout);
                 }
             } else if (!text_is_displayed) {
                 if (room_for_icon) {
                     button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon_width,
-                                                y + height/2 - icon.get_height ()/2);
+                                                y_half_height - icon_half_height);
                 }
             } else {
                 if (room_for_icon) {
                     button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon_width,
-                                                y + height/2 - icon.get_height ()/2);
+                                                y_half_height - icon_half_height);
                 }
                 if (room_for_text) {
                     /* text_width already includes icon_width */
                     button_context.render_layout (cr, x - width,
-                                                  y + height/2 - text_height/2, layout);
+                                                  y_half_height - text_half_height, layout);
                 }
             }
         } else {
@@ -215,21 +221,21 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             if (icon_to_draw == null) {
                 if (room_for_text) {
                     button_context.render_layout (cr, x,
-                                                  y + height/2 - text_height/2, layout);
+                                                  y_half_height - text_half_height, layout);
                 }
             } else if (!text_is_displayed) {
                 if (room_for_icon) {
                     button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
-                                                 y + height/2 - icon.get_height ()/2);
+                                                 y_half_height - icon_half_height);
                 }
             } else {
                 if (room_for_icon) {
                     button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
-                                                 y + height/2 - icon.get_height ()/2);
+                                                 y_half_height - icon_half_height);
                 }
                 if (room_for_text) {
                     button_context.render_layout (cr, x + iw,
-                                                  y + height/2 - text_height/2, layout);
+                                                  y_half_height - text_half_height, layout);
                 }
             }
         }
@@ -244,7 +250,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         /* Draw the arrow-shaped separator */
         if (is_RTL) {
             cr.save ();
-            cr.translate (x + height/4, y + height / 2);
+            cr.translate (x + height/4, y_half_height);
             cr.rectangle (0, -height / 2 + line_width, -height, height - 2 * line_width);
             cr.clip ();
             cr.rotate (Math.PI_4);
@@ -274,9 +280,9 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
         /* Move to end of separator */
         if (is_RTL) {
-            x -= height / 2;
+            x -= half_height;
         } else {
-            x += height / 2;
+            x += half_height;
         }
 
         return x;
@@ -289,7 +295,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         int width, height;
         layout.get_size (out width, out height);
         this.text_width = Pango.units_to_double (width);
-        this.text_height = Pango.units_to_double (height);
+        this.text_half_height = Pango.units_to_double (height) / 2;
     }
 
     /** To help testing **/
