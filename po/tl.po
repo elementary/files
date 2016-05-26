@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-14 14:20-0500\n"
-"PO-Revision-Date: 2016-05-24 20:30+0000\n"
+"PO-Revision-Date: 2016-05-25 15:39+0000\n"
 "Last-Translator: yavinfour <anjelo.passionist@gmail.com>\n"
 "Language-Team: Tagalog <tl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-05-25 06:03+0000\n"
+"X-Launchpad-Export-Date: 2016-05-26 05:40+0000\n"
 "X-Generator: Launchpad (build 18053)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -635,12 +635,14 @@ msgstr[1] ""
 #: ../libcore/marlin-file-operations.c:1950
 #: ../libcore/marlin-file-operations.c:1953
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Hindi mailipat sa basura o hindi mabura ang file."
 
 #: ../libcore/marlin-file-operations.c:1948
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Hindi pupuwedeng ibasura o i-delete ang mga file na read only lang sa "
+"filesystem"
 
 #: ../libcore/marlin-file-operations.c:1951
 msgid ""
@@ -657,6 +659,8 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1956
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"Hindi mailipat ang file papunta sa basura. Subukan ba nating burahin nalang "
+"ito?"
 
 #: ../libcore/marlin-file-operations.c:1957
 msgid ""
@@ -666,13 +670,15 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1961
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Hindi mailipat papunta sa basura ang file. Burahin nalang ba?"
 
 #: ../libcore/marlin-file-operations.c:1962
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Hindi maililipat papunta sa basura ang file na ito. Hindi mo rin mabubura "
+"ito."
 
 #: ../libcore/marlin-file-operations.c:1967
 msgid ""
@@ -698,7 +704,7 @@ msgstr "Hindi mai-unmount ang %V"
 
 #: ../libcore/marlin-file-operations.c:2409
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "Gusto mo bang ubusin ang laman ng basura bago mo ito i-unmount?"
 
 #: ../libcore/marlin-file-operations.c:2411
 msgid ""
@@ -708,7 +714,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2417
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "Huwag Ubusin a_ng laman ng Basura"
 
 #: ../libcore/marlin-file-operations.c:2531
 #, c-format
@@ -932,12 +938,12 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:4274
 #: ../libcore/marlin-file-operations.c:4950
 msgid "You cannot move a folder into itself."
-msgstr ""
+msgstr "Hindi mo puwedeng ilipat ang polder sa sarili nito."
 
 #: ../libcore/marlin-file-operations.c:4275
 #: ../libcore/marlin-file-operations.c:4951
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "Hindi mo puwedeng kopyahin ang polder sa sarili nito."
 
 #: ../libcore/marlin-file-operations.c:4276
 #: ../libcore/marlin-file-operations.c:4952
@@ -946,11 +952,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4307
 msgid "You cannot move a file over itself."
-msgstr ""
+msgstr "Hindi mo puwedeng ilipat ang file sa sarili nito."
 
 #: ../libcore/marlin-file-operations.c:4308
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "Hindi mo puwedeng kopyahin ang file sa sarili nito."
 
 #: ../libcore/marlin-file-operations.c:4309
 msgid "The source file would be overwritten by the destination."
@@ -1000,7 +1006,7 @@ msgstr "Nililipat ang mga Files"
 
 #: ../libcore/marlin-file-operations.c:5402
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "Bumubuo ng mga links sa  \"%B\""
 
 #: ../libcore/marlin-file-operations.c:5413
 #, c-format
@@ -1041,7 +1047,7 @@ msgstr "Hindi pwedeng kopyahin ang mga files papunta sa basura"
 
 #: ../libcore/marlin-file-operations.c:6147
 msgid "untitled folder"
-msgstr ""
+msgstr "polder na walang pangalan"
 
 #: ../libcore/marlin-file-operations.c:6155
 msgid "new file"
@@ -1066,7 +1072,7 @@ msgstr "Tinatanggalan ng laman ang basura"
 
 #: ../libcore/marlin-file-operations.c:6664
 msgid "Emptying Trash"
-msgstr ""
+msgstr "Inuubos ang laman ng basura"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
@@ -1133,7 +1139,7 @@ msgstr "Ibalik ang '%s' sa basura"
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "Binubura ang mga link sa %d na mga aytem"
 
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
@@ -1143,22 +1149,22 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Ibalik ang orihinal na mga permiso ng mga aytem na nasa '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1330
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "Ibalik ang orihinal na mga permiso ng '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1339
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "Ibalik ang grupo ng '%s' sa '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1349
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "Ibalik ang may-ari ng '%s' sa '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
@@ -1168,7 +1174,7 @@ msgstr "Kopyahin ang  %d na mga aytem sa '%s'"
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Kopyahin mula '%s' papuntang '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1400
 #, c-format
@@ -1198,7 +1204,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1442
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Bumuo ng isang file na walang laman sa '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1449
 #, c-format
@@ -1213,12 +1219,12 @@ msgstr "Ilipat ang %d na mga aytem sa basura"
 #: ../libcore/marlin-undostack-manager.c:1463
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Ilipat ang '%s' papuntang basura"
 
 #: ../libcore/marlin-undostack-manager.c:1476
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "Ibalik mula sa basura ang '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1485
 #, c-format
@@ -1238,7 +1244,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1505
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "I-set ang mga permiso ng '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1514
 #, c-format
@@ -1622,7 +1628,7 @@ msgstr "Hindi mahanap ang polder na \"%s\""
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
-msgstr ""
+msgstr "Bumuo"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
