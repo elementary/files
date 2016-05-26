@@ -72,7 +72,7 @@ namespace Marlin.View {
         }
 
         /** Creates a new slot in the host slot hpane */
-        public void add_location (GLib.File loc, Marlin.View.Slot? host = null) {
+        public void add_location (GLib.File loc, Marlin.View.Slot? host = null, bool scroll = true, bool animate = true) {
             Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
             total_width += new_slot.width;
@@ -81,7 +81,7 @@ namespace Marlin.View {
             nest_slot_in_host_slot (new_slot, host);
             connect_slot_signals (new_slot);
             slot_list.append (new_slot);
-            new_slot.active (); /* This will set the new slot to be current_slot. Must do this before loading */
+            new_slot.active (scroll, animate); /* This will set the new slot to be current_slot. Must do this before loading */
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {
@@ -187,9 +187,9 @@ namespace Marlin.View {
             double increment = 0.0;
             increment = delta_x * 10.0;
 
-            if (increment != 0.0)
+            if (increment != 0.0) {
                 hadj.set_value (hadj.get_value () + increment);
-
+            }
             return true;
         }
 
@@ -206,8 +206,7 @@ namespace Marlin.View {
         /** Called in response to slot active signal.
          *  Should not be called directly
          **/
-        private void on_slot_active (GOF.AbstractSlot aslot, bool scroll = true) {
-
+        private void on_slot_active (GOF.AbstractSlot aslot, bool scroll = true, bool animate = true) {
             Marlin.View.Slot slot;
 
             if (!(aslot is Marlin.View.Slot))
@@ -216,7 +215,7 @@ namespace Marlin.View {
                 slot = aslot as Marlin.View.Slot;
     
             if (scroll) {
-                schedule_scroll_to_slot (slot);
+                schedule_scroll_to_slot (slot, animate);
             }
 
             if (this.current_slot == slot)
@@ -326,13 +325,13 @@ namespace Marlin.View {
 
 /** Helper functions */
 
-        private void schedule_scroll_to_slot (GOF.AbstractSlot slot) {
+        private void schedule_scroll_to_slot (Marlin.View.Slot slot, bool animate = true) {
             if (scroll_to_slot_timeout_id > 0) {
                 GLib.Source.remove (scroll_to_slot_timeout_id);
             }
 
             scroll_to_slot_timeout_id = GLib.Timeout.add (200, () => {
-                if (scroll_to_slot (slot)) {
+                if (scroll_to_slot (slot, animate)) {
                     scroll_to_slot_timeout_id = 0;
                     return false;
                 } else {
@@ -341,10 +340,10 @@ namespace Marlin.View {
             });
         }
 
-        private bool scroll_to_slot (GOF.AbstractSlot slot) {
+        private bool scroll_to_slot (Marlin.View.Slot slot, bool animate = true) {
             /* Cannot accurately scroll until directory finishes loading because width will change
              * according the length of the longest filename */ 
-            if (slot.directory.state != GOF.Directory.Async.State.LOADED) {
+            if (!scrolled_window.get_realized () || slot.directory.state != GOF.Directory.Async.State.LOADED) {
                 return false;
             }
 
@@ -377,8 +376,15 @@ namespace Marlin.View {
                 new_value = width;
             }
 
-            Marlin.Animation.smooth_adjustment_to (this.hadj, new_value);
-            return true;
+            if (animate) {
+                Marlin.Animation.smooth_adjustment_to (this.hadj, new_value);
+                return true;
+            } else { /* On startup we do not want to animate */
+                hadj.set_value (new_value);
+                /* On startup the adjustment setting is not always effective because of a race condition. If not, try later.*/
+                return hadj.get_value () == new_value;
+            }
+
         }
 
         public override unowned GOF.AbstractSlot? get_current_slot () {
@@ -390,9 +396,9 @@ namespace Marlin.View {
         }
 
 
-        public override void set_active_state (bool set_active) {
+        public override void set_active_state (bool set_active, bool animate = true) {
             if (set_active)
-                current_slot.active ();
+                current_slot.active (true, animate);
             else
                 current_slot.inactive ();
         }

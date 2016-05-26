@@ -445,7 +445,7 @@ namespace Marlin.View {
 #endif
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
-            current_tab.set_active_state (true);
+            current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
@@ -998,7 +998,7 @@ namespace Marlin.View {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = PF.FileUtils.get_file_for_path (uri);
 
-                    mwcols.add_location (gfile, mwcols.current_slot);
+                    mwcols.add_location (gfile, mwcols.current_slot, false); /* Do not scroll at this stage */
                 }
             } else {
                 warning ("Invalid tip uri for Miller View");

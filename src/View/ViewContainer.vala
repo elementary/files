@@ -227,7 +227,7 @@ namespace Marlin.View {
             aslot.path_changed.disconnect (on_slot_path_changed);
         }
 
-        private void on_slot_active (GOF.AbstractSlot aslot, bool scroll) {
+        private void on_slot_active (GOF.AbstractSlot aslot, bool scroll, bool animate) {
             plugin_directory_loaded ();
             refresh_slot_info (slot.location);
         }
@@ -394,11 +394,11 @@ namespace Marlin.View {
            return view != null ? view.get_current_slot () : null;
         }
 
-        public void set_active_state (bool is_active) {
+        public void set_active_state (bool is_active, bool animate = true) {
             var aslot = get_current_slot ();
             if (aslot != null) {
                 /* Since async loading it may not have been determined whether slot is loadable */
-                aslot.set_active_state (is_active);
+                aslot.set_active_state (is_active, animate);
             }
         }
         
