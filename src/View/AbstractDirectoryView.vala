@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 elementary Developers
+    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -72,7 +72,8 @@ namespace FM {
             {"create_from", on_background_action_create_from, "s"},
             {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
-            {"show_hidden", null, null, "false", change_state_show_hidden}
+            {"show_hidden", null, null, "false", change_state_show_hidden},
+            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
 
         const GLib.ActionEntry [] common_entries = {
@@ -159,6 +160,7 @@ namespace FM {
         /* support for generating thumbnails */
         uint thumbnail_request = 0;
         uint thumbnail_source_id = 0;
+        uint freeze_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
 
         /**TODO** Support for preview see bug #1380139 */
@@ -227,6 +229,7 @@ namespace FM {
         protected bool is_writable = false;
         protected bool is_loading;
         protected bool helpers_shown;
+        protected bool show_remote_thumbnails {get; set; default = false;} 
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -254,6 +257,7 @@ namespace FM {
             thumbnailer = Marlin.Thumbnailer.get ();
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
+            Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
 
             recent = ((Marlin.Application)(window.application)).get_recent_manager ();
 
@@ -309,6 +313,7 @@ namespace FM {
             set_shadow_type (Gtk.ShadowType.NONE);
 
             size_allocate.connect_after (on_size_allocate);
+
             button_press_event.connect (on_button_press_event);
             popup_menu.connect (on_popup_menu);
 
@@ -323,11 +328,10 @@ namespace FM {
 
             scroll_event.connect (on_scroll_event);
 
-            get_vadjustment ().value_changed.connect ((alloc) => {
-                schedule_thumbnail_timeout ();
-            });
+            get_vadjustment ().value_changed.connect_after (schedule_thumbnail_timeout);
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
+            (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
 
             model.row_deleted.connect (on_row_deleted);
@@ -349,6 +353,7 @@ namespace FM {
             insert_action_group ("common", common_actions);
 
             action_set_state (background_actions, "show_hidden", Preferences.settings.get_boolean ("show-hiddenfiles"));
+            action_set_state (background_actions, "show_remote_thumbnails", Preferences.settings.get_boolean ("show-remote-thumbnails"));
         }
 
         public void zoom_in () {
@@ -511,7 +516,7 @@ namespace FM {
                             });
                         } else
                             GLib.Idle.add (() => {
-                                file.open_single (screen, null);
+                                open_file (file, screen, null);
                                 return false;
                             });
                     }
@@ -658,13 +663,13 @@ namespace FM {
         }
 
         protected void cancel_thumbnailing () {
-            slot.directory.cancel_thumbnailing ();
-            cancel_timeout (ref thumbnail_source_id);
-
             if (thumbnail_request > 0) {
                 thumbnailer.dequeue (thumbnail_request);
                 thumbnail_request = 0;
             }
+
+            slot.directory.cancel_thumbnailing ();
+            cancel_timeout (ref thumbnail_source_id);
         }
 
         protected bool is_drag_pending () {
@@ -780,7 +785,7 @@ namespace FM {
                 else if (only_one_file && file.is_executable ())
                     file.execute (screen, null, null);
                 else if (only_one_file && default_app != null)
-                    file.open_single (screen, default_app);
+                    open_file (file, screen, default_app);
                 else
                     warning ("Unable to activate this file.  Default app is %s",
                              default_app != null ? default_app.get_name () : "null");
@@ -788,6 +793,42 @@ namespace FM {
                 warning ("Cannot open file in trash");
         }
 
+        /* Open all files through this */
+        private void open_file (GOF.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
+            if (can_open_file (file, true)) {
+                file.open_single (screen, app_info);
+            }
+        }
+
+        /* Also used by build open menu */
+        private bool can_open_file (GOF.File file, bool show_error_dialog = false) {
+            string err_msg1 = _("Cannot open this file");
+            string err_msg2 = "";
+            var content_type = file.get_ftype ();
+
+            if (content_type == null) {
+                bool result_uncertain = true;
+                content_type = ContentType.guess (file.basename, null, out result_uncertain);
+                debug ("Guessed content type to be %s from name - result_uncertain %s",
+                          content_type,
+                          result_uncertain.to_string ());
+            }
+
+            if (content_type == null) {
+                err_msg2 = _("Cannot identify file type to open");
+            } else if (!slot.directory.can_open_files) {
+                err_msg2 = "Cannot open files with this protocol (%s)".printf (slot.directory.scheme);
+            } else if (!slot.directory.can_stream_files && (content_type.contains ("video") || content_type.contains ("audio"))) {
+                err_msg2 = "Cannot stream from this protocol (%s)".printf (slot.directory.scheme);
+            }
+
+            bool success = err_msg2.length < 1;
+            if (!success && show_error_dialog) {
+                Eel.show_warning_dialog (err_msg1, err_msg2, window);
+            }
+
+            return success;
+        }
         private void trash_or_delete_files (GLib.List<GOF.File> file_list,
                                             bool delete_if_already_in_trash,
                                             bool delete_immediately) {
@@ -1043,41 +1084,7 @@ namespace FM {
         private void on_selection_action_open_with_other_app () {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-
-            Gtk.DialogFlags flags = Gtk.DialogFlags.MODAL |
-                                    Gtk.DialogFlags.DESTROY_WITH_PARENT;
-
-            var dialog = new Gtk.AppChooserDialog (window, flags, file.location);
-            dialog.set_deletable (false);
-
-            var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
-            app_chooser.set_show_recommended (true);
-
-            var check_default = new Gtk.CheckButton.with_label (_("Set as default"));
-            check_default.set_active (true);
-            check_default.show ();
-
-            var action_area = dialog.get_action_area () as Gtk.ButtonBox;
-            action_area.add (check_default);
-            action_area.set_child_secondary (check_default, true);
-
-            dialog.show ();
-            int response = dialog.run ();
-
-            if (response == Gtk.ResponseType.OK) {
-                var app =dialog.get_app_info ();
-                if (check_default.get_active ()) {
-                    try {
-                        app.set_as_default_for_type (file.get_ftype ());
-                    }
-                    catch (GLib.Error error) {
-                        critical ("Could not set as default: %s", error.message);
-                    }
-                }
-                open_files_with (app, selection);
-            }
-
-            dialog.destroy ();
+            Marlin.MimeActions.open_glib_file_request (file.location, this, null);
         }
 
         private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1087,13 +1094,16 @@ namespace FM {
             else
                 location = slot.directory.file.get_target_location ();
 
-            window.sidebar.add_uri (location.get_uri (), null);
+            window.bookmark_uri (location.get_uri (), null);
         }
 
         /** Background actions */
 
         private void change_state_show_hidden (GLib.SimpleAction action) {
             window.change_state_show_hidden (action);
+        }
+        private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
+            window.change_state_show_remote_thumbnails (action);
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1259,8 +1269,9 @@ namespace FM {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if (slot.directory.is_local)
+                if (slot.directory.is_local || (show_remote_thumbnails && slot.directory.can_open_files)) {
                     thumbnailer.queue_file (file, null, large_thumbnails);
+                }
             }
         }
 
@@ -1322,8 +1333,9 @@ namespace FM {
             model.set_property ("size", icon_size);
             change_zoom_level ();
 
-            if (get_realized () && slot.directory.is_local)
+            if (get_realized () && (slot.directory.is_local || show_remote_thumbnails)) {
                 load_thumbnails (slot.directory, zoom);
+            }
         }
 
     /** Handle Preference changes */
@@ -1341,6 +1353,14 @@ namespace FM {
                 unblock_model ();
 
             action_set_state (background_actions, "show_hidden", show);
+        }
+
+        private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            show_remote_thumbnails = (prefs as GOF.Preferences).show_remote_thumbnails;
+            action_set_state (background_actions, "show_remote_thumbnails", show_remote_thumbnails);
+            if (show_remote_thumbnails) {
+                slot.reload ();
+            }
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
@@ -1461,7 +1481,7 @@ namespace FM {
 
             drag_file_list.@foreach ((file) => {
                 sb.append (file.get_target_location ().get_uri ());
-                sb.append ("\n");
+                sb.append ("\r\n");  /* Drop onto Filezilla does not work without the "\r" */
             });
 
             selection_data.@set (selection_data.get_target (),
@@ -1691,6 +1711,7 @@ namespace FM {
 
             Gdk.drag_status (context, Gdk.DragAction.MOVE, timestamp);
             if (uri != current_uri) {
+                cancel_timeout (ref drag_enter_timer_id);
                 drop_target_file = file;
                 current_actions = Gdk.DragAction.DEFAULT;
                 current_suggested_action = Gdk.DragAction.DEFAULT;
@@ -1706,7 +1727,6 @@ namespace FM {
 
                     if (file.is_folder () && is_valid_drop_folder (file)) {
                         /* open the target folder after a short delay */
-                        cancel_timeout (ref drag_enter_timer_id);
                         drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                                      drag_enter_delay,
                                                                      () => {
@@ -1886,9 +1906,12 @@ namespace FM {
                     menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
                 }
 
-                if (common_actions.get_action_enabled ("bookmark"))
-                    menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
-
+                if (common_actions.get_action_enabled ("bookmark")) {
+                    /* Do  not offer to bookmark if location is already bookmarked */
+                    if (window.can_bookmark_uri (selected_files.data.uri)) {
+                        menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+                    }
+                }
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             }
 
@@ -1912,12 +1935,15 @@ namespace FM {
 
             if (in_recent) {
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
-                menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
+                menu.append_section (null, build_show_menu (builder));
+
 
                 return menu as MenuModel;
             }
 
-            menu.append_section (null, build_menu_open (ref builder));
+            var open_menu = build_menu_open (ref builder);
+            if (open_menu != null)
+                menu.append_section (null, open_menu);
 
             if (!in_network_root) {
                 if (common_actions.get_action_enabled ("paste_into"))
@@ -1936,10 +1962,15 @@ namespace FM {
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
             }
 
-            if (common_actions.get_action_enabled ("bookmark"))
-                menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+            if (common_actions.get_action_enabled ("bookmark")) {
+                /* Do  not offer to bookmark if location is already bookmarked */
+                if (window.can_bookmark_uri (slot.directory.file.uri)) {
+                    menu.append_section (null, builder.get_object ("bookmark") as GLib.MenuModel);
+                }
+            }
 
-            menu.append_section (null, builder.get_object ("hidden") as GLib.MenuModel);
+
+            menu.append_section (null, build_show_menu (builder));
 
             if (!in_network_root)
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
@@ -1947,36 +1978,37 @@ namespace FM {
             return menu as MenuModel;
         }
 
-        private GLib.MenuModel build_menu_open (ref Gtk.Builder builder) {
+        private GLib.MenuModel build_show_menu (Gtk.Builder builder) {
+            var show_menu = builder.get_object ("show") as GLib.Menu;
+            if (slot.directory.is_local || !slot.directory.can_open_files) {
+                show_menu.remove (1); /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
+            }
+            return show_menu;
+        }
+
+        private GLib.MenuModel? build_menu_open (ref Gtk.Builder builder) {
+
             var menu = new GLib.Menu ();
             GLib.MenuModel? app_submenu;
 
             string label = _("Invalid");
-            unowned GLib.List<unowned GOF.File> files_for_action = get_files_for_action ();
-            unowned GLib.List<unowned GOF.File> selection = null;
-
-            if (in_recent) {
-                files_for_action.@foreach ((file) => {
-                    selection.append (GOF.File.get_by_uri (file.get_display_target_uri ()));
-                });
-            } else
-                selection = files_for_action;
-
+            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
             unowned GOF.File selected_file = selection.data;
 
-            if (!selected_file.is_folder () && selected_file.is_executable ()) {
-                label = _("Run");
-                menu.append (label, "selection.open");
-            } else if (default_app != null) {
-                var app_name = default_app.get_display_name ();
-                if (app_name != "Files") {
-                    label = (_("Open in %s")).printf (app_name);
-                    menu.append (label, "selection.open_with_default");
+            if (can_open_file (selected_file)) {
+                if (!selected_file.is_folder () && selected_file.is_executable ()) {
+                    label = _("Run");
+                    menu.append (label, "selection.open");
+                } else if (default_app != null) {
+                    var app_name = default_app.get_display_name ();
+                    if (app_name != "Files") {
+                        label = (_("Open in %s")).printf (app_name);
+                        menu.append (label, "selection.open_with_default");
+                    }
                 }
             }
 
-            // Hide open_with menu for the moment
-            (!in_recent ? app_submenu = build_submenu_open_with_applications (ref builder, selection) : app_submenu = null);
+            app_submenu = build_submenu_open_with_applications (ref builder, selection);
 
             if (app_submenu != null && app_submenu.get_n_items () > 0) {
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ())
@@ -1994,58 +2026,58 @@ namespace FM {
                                                                       GLib.List<GOF.File> selection) {
 
             var open_with_submenu = new GLib.Menu ();
+            open_with_apps = null;
+
             int index = -1;
 
             if (common_actions.get_action_enabled ("open_in")) {
                 open_with_submenu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
-
                 if (!selection.data.is_mountable () && !selection.data.is_root_network_folder ())
                     open_with_submenu.append_section (null, builder.get_object ("open-in-terminal") as GLib.MenuModel);
                 else
                     return open_with_submenu;
             }
 
-            open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+            if (can_open_file (selection.data)) {
+                open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+                if (selection.data.is_executable () == false) {
+                    filter_default_app_from_open_with_apps ();
+                }
+                filter_this_app_from_open_with_apps ();
 
-            if (selection.data.is_executable () == false) {
-                filter_default_app_from_open_with_apps ();
-            }
+                if (open_with_apps != null) {
+                    var apps_section = new GLib.Menu ();
+                    string last_label = "";
+                    open_with_apps.@foreach ((app) => {
+                        if (app != null && app is AppInfo) {
+                            var label = app.get_display_name ();
+                            /* The following mainly applies to Nautilus, whose display name is also "Files" */
+                            if (label == "Files") {
+                                label = app.get_executable ();
+                                label = label[0].toupper ().to_string () + label.substring (1);
+                            }
 
-            filter_this_app_from_open_with_apps ();
-
-            if (open_with_apps != null) {
-                var apps_section = new GLib.Menu ();
-                string last_label = "";
-                open_with_apps.@foreach ((app) => {
-                    if (app != null && app is AppInfo) {
-                        var label = app.get_display_name ();
-                        /* The following mainly applies to Nautilus, whose display name is also "Files" */
-                        if (label == "Files") {
-                            label = app.get_executable ();
-                            label = label[0].toupper ().to_string () + label.substring (1);
+                            /* Do not show same name twice - some apps have more than one .desktop file
+                             * with the same name (e.g. Nautilus)
+                             */
+                            if (label != last_label) {
+                                index++;
+                                apps_section.append (label, "selection.open_with_app::" + index.to_string ());
+                                last_label = label.dup ();
+                            }
                         }
+                    });
 
-                        /* Do not show same name twice - some apps have more than one .desktop file
-                         * with the same name (e.g. Nautilus)
-                         */
-                        if (label != last_label) {
-                            index++;
-                            apps_section.append (label, "selection.open_with_app::" + index.to_string ());
-                            last_label = label.dup ();
-                        }
-                    }
-                });
+                    if (index >= 0)
+                        open_with_submenu.append_section (null, apps_section);
+                }
 
-                if (index >= 0)
-                    open_with_submenu.append_section (null, apps_section);
+                if (selection.length () == 1) {
+                    var other_app_menu = new GLib.Menu ();
+                    other_app_menu.append ( _("Other Application"), "selection.open_with_other_app");
+                    open_with_submenu.append_section (null, other_app_menu);
+                }
             }
-
-            if (selection.length () == 1) {
-                var other_app_menu = new GLib.Menu ();
-                other_app_menu.append ( _("Other Application"), "selection.open_with_other_app");
-                open_with_submenu.append_section (null, other_app_menu);
-            }
-
             return open_with_submenu as GLib.MenuModel;
         }
 
@@ -2124,10 +2156,14 @@ namespace FM {
             update_select_all_action ();
             update_menu_actions_sort ();
 
+            bool can_open = can_open_file (file);
             action_set_enabled (common_actions, "open_in", only_folders);
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
             action_set_enabled (selection_actions, "view_in_location", selection_count > 0);
-            action_set_enabled (selection_actions, "open", selection_count == 1);
+            action_set_enabled (selection_actions, "open", selection_count == 1 && can_open);
+            action_set_enabled (selection_actions, "open_with_app", can_open);
+            action_set_enabled (selection_actions, "open_with_default", can_open);
+            action_set_enabled (selection_actions, "open_with_other_app", can_open);
             action_set_enabled (selection_actions, "cut", selection_count > 0);
             action_set_enabled (selection_actions, "trash", slot.directory.has_trash_dirs);
             action_set_enabled (common_actions, "properties", can_show_properties);
@@ -2160,21 +2196,8 @@ namespace FM {
         }
 
         private void update_default_app (GLib.List<unowned GOF.File> selection) {
-            GLib.List<GOF.File> files = null;
-            string uri = "";
-
-            if (in_recent) {
-                selection.@foreach ((file) => {
-                    uri = file.get_display_target_uri ();
-
-                    if (uri != null)
-                        files.append (GOF.File.get_by_uri (uri));
-                });
-
-                if (files != null)
-                    default_app = Marlin.MimeActions.get_default_application_for_files (files);
-            } else
-                default_app = Marlin.MimeActions.get_default_application_for_files (selection);
+            default_app = Marlin.MimeActions.get_default_application_for_files (get_files_for_action ());
+            return;
         }
 
         private void update_paste_action_enabled (bool single_folder) {
@@ -2322,7 +2345,10 @@ namespace FM {
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<GOF.File> files) {
-            GOF.File.launch_files (files, get_screen (), app);
+            var screen = get_screen ();
+            foreach (GOF.File file in files) {
+                open_file (file, screen, app);
+            }
         }
 
 
@@ -2333,43 +2359,78 @@ namespace FM {
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
 
+            assert (slot is GOF.AbstractSlot && slot.directory != null);
+
             if (thumbnail_source_id != 0 ||
-                !(slot is GOF.AbstractSlot) ||
-                slot.directory == null ||
-                !slot.directory.is_local)
+                (!slot.directory.is_local && !show_remote_thumbnails) ||
+                 !slot.directory.can_open_files ||
+                 slot.directory.is_loading ()) {
 
-                return;
+                    return;
+            }
 
-            thumbnail_source_id = GLib.Timeout.add (175, () => {
-                if (!(slot is GOF.AbstractSlot) || slot.directory == null)
-                    return false;
+            cancel_thumbnailing (); /* cancels any existing timeout or thumbnail request */
 
-                if (slot.directory.is_loading ())
+            /* In order to improve performance of the Icon View when there are a large number of files,
+             * we freeze child notifications while the view is being scrolled or resized.
+             * The timeout is restarted for each scroll or size allocate event */  
+            cancel_timeout (ref freeze_source_id);
+            freeze_child_notify ();
+            freeze_source_id = Timeout.add (500, () => {
+                if (thumbnail_source_id > 0) {
                     return true;
+                }
+                thaw_child_notify ();
+                freeze_source_id = 0;
+                return false;
+            });
 
-                cancel_thumbnailing ();
-
+            /* Views with a large number of files take longer to redraw (especially IconView) so
+             * we wait longer for scrolling to stop before updating the thumbnails */ 
+            uint delay = uint.min (50 + slot.directory.files_count / 10, 500);
+            thumbnail_source_id = GLib.Timeout.add (delay, () => {
                 /* compute visible item range */
                 Gtk.TreePath start_path, end_path, path;
+                Gtk.TreePath sp, ep;
                 Gtk.TreeIter iter;
                 bool valid_iter;
                 GOF.File file;
                 GLib.List<GOF.File> visible_files = null;
+                uint actually_visible = 0;
 
                 if (get_visible_range (out start_path, out end_path)) {
+                    sp = start_path;
+                    ep = end_path;
+
+                    /* To improve performance for large folders we thumbnail files on either side of visible region
+                     * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
+                     * redraws necessary when scrolling */ 
+                    int count = 50;
+                    while (start_path.prev () && count > 0) {
+                        count--;
+                    }
+
+                    count = 50;
+                    while (count > 0) {
+                        end_path.next ();
+                        count--;
+                    }
+
                     /* iterate over the range to collect all files */
                     valid_iter = model.get_iter (out iter, start_path);
-
-                    while (valid_iter) {
+                    while (valid_iter && thumbnail_source_id > 0) {
                         file = model.file_for_iter (iter);
+                        path = model.get_path (iter);
 
                         /* Ask thumbnailer only if ThumbState UNKNOWN */
                         if (file != null && file.flags == GOF.File.ThumbState.UNKNOWN) {
                             visible_files.prepend (file);
+                            if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                actually_visible++;
+                            }
                         }
-                        /* check if we've reached the end of the visible range */
-                        path = model.get_path (iter);
 
+                        /* check if we've reached the end of the visible range */
                         if (path.compare (end_path) != 0)
                             valid_iter = get_next_visible_iter (ref iter);
                         else
@@ -2378,7 +2439,9 @@ namespace FM {
                 }
 
                 /* This is the only place that new thumbnail files are created */ 
-                if (visible_files != null) {
+                /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
+                 * and there has not been another event (which would zero the thumbnail_source_if) */
+                if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 }
                 thumbnail_source_id = 0;
@@ -2482,9 +2545,16 @@ namespace FM {
 
             if (selected_files == null)
                 action_files.prepend (slot.directory.file);
-            else
+            else if (in_recent) {
+                selected_files.@foreach ((file) => {
+                    var goffile = GOF.File.get_by_uri (file.get_display_target_uri ());
+                    goffile.query_update ();
+                    action_files.append (goffile);
+                });
+            } else {
                 action_files = selected_files;
-
+            }
+ 
             return action_files;
         }
 
@@ -2652,7 +2722,7 @@ namespace FM {
                         Gtk.TreePath? path = get_path_at_cursor ();
                         if (path != null) {
                             if (event.keyval == Gdk.Key.Right) {
-                                path.next ();
+                                path.next (); /* Does not check if path is valid */
                             } else if (event.keyval == Gdk.Key.Left) {
                                 path.prev ();
                             } else if (event.keyval == Gdk.Key.Up) {
@@ -2660,7 +2730,12 @@ namespace FM {
                             } else if (event.keyval == Gdk.Key.Down) {
                                 path = down (path);
                             }
-                            linear_select_path (path);
+
+                            Gtk.TreeIter? iter = null;
+                            /* Do not try to select invalid path */
+                            if (model.get_iter (out iter, path)) {
+                                linear_select_path (path);
+                            }
                             return true;
                         }
                     } else {
@@ -3320,6 +3395,11 @@ namespace FM {
             hover_path = null;
         }
 
+        public void close () {
+            set_updates_frozen (true); /* stop signal handlers running during destruction */
+            unselect_all ();
+        }
+
         protected bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {
             bool on_icon =  (x >= orig_x &&
                              x <= orig_x + icon_size &&
@@ -3387,6 +3467,8 @@ namespace FM {
                                                     bool scroll_to_top);
         protected abstract void freeze_tree ();
         protected abstract void thaw_tree ();
+        protected new abstract void freeze_child_notify ();
+        protected new abstract void thaw_child_notify ();
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

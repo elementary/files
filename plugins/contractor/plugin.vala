@@ -4,8 +4,8 @@
       ammonkey <am.monkeyd@gmail.com>
       Victor Martinez <victoreduardm@gmail.com>
 
-    Copyright (C) Lucas Baudin 2011 <xapantu@gmail.com>
-    Copyright (C) 2013 elementary
+    Copyright (c) Lucas Baudin 2011 <xapantu@gmail.com>
+    Copyright (c) 2013-2016 elementary LLC (http://launchpad.net/elementary)
 
     Marlin is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the

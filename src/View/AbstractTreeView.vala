@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 elementary Developers
+    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -132,10 +132,19 @@ namespace FM {
 
         public override void select_path (Gtk.TreePath? path) {
             if (path != null) {
-                debug ("select path %s", path.to_string ());
+                var selection = tree.get_selection ();
+                /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
+                 * so we have to remember them and reselect afterwards */ 
+                GLib.List<Gtk.TreePath> selected_paths = null;
+                selection.selected_foreach ((m, p, i) => {
+                    selected_paths.prepend (p);
+                });
                 /* Ensure cursor follows last selection */
-                tree.set_cursor (path, null, false);
-                tree.get_selection ().select_path (path);
+                tree.set_cursor (path, null, false);  /* This selects path but unselects rest! */
+                selection.select_path (path);
+                selected_paths.@foreach ((p) => {
+                    selection.select_path (p);
+                });
             }
         }
         public override void unselect_path (Gtk.TreePath? path) {
@@ -296,6 +305,14 @@ namespace FM {
                 tree.thaw_child_notify ();
                 tree_frozen = false;
             }
+        }
+
+        protected override void freeze_child_notify () {
+            tree.freeze_child_notify ();
+        }
+
+        protected override void thaw_child_notify () {
+            tree.thaw_child_notify ();
         }
     }
 }

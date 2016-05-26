@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 Elementary Developers
+    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -33,7 +33,7 @@ namespace PF.FileUtils {
     public string get_parent_path_from_path (string path) {
         /* We construct the parent path rather than use File.get_parent () as the latter gives odd
          * results for some gvfs files.
-         */  
+         */
         string parent_path = construct_parent_path (path);
         if (parent_path == Marlin.FTP_URI ||
             parent_path == Marlin.SFTP_URI) {
@@ -88,6 +88,7 @@ namespace PF.FileUtils {
         if (p == null || p == "") {
             return cp ?? "";
         }
+
         string? unescaped_p = Uri.unescape_string (p, null);
         if (unescaped_p == null) {
             unescaped_p = p;
@@ -121,17 +122,25 @@ namespace PF.FileUtils {
         }
 
         path = sb.str;
+
         do {
             path = path.replace ("//", "/");
         } while (path.contains ("//"));
 
         string new_path = (scheme + path).replace("////", "///");
-
         if (new_path.length > 0) {
-            if (scheme != Marlin.ROOT_FS_URI && path != "/") {
+            /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
+            if (!scheme.has_prefix (Marlin.ROOT_FS_URI) &&
+                !scheme.has_prefix (Marlin.TRASH_URI) &&
+                !scheme.has_prefix (Marlin.RECENT_URI)) {
+
                 new_path = new_path.replace ("///", "//");
             }
             new_path = new_path.replace("ssh:", "sftp:");
+
+            if (path == "/" && !can_browse_scheme (scheme)) {
+                new_path = "";
+            }
         }
 
         return new_path;
@@ -172,6 +181,7 @@ namespace PF.FileUtils {
         if (Marlin.ROOT_FS_URI.has_prefix (protocol)) {
             protocol = "";
         }
+
         if (!new_path.has_prefix (Path.DIR_SEPARATOR_S)) {
             new_path = Path.DIR_SEPARATOR_S + new_path;
         }
@@ -262,7 +272,6 @@ namespace PF.FileUtils {
             }
         });
     }
-
 
     public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr, string format = "locale") {
         switch (attr) {
@@ -367,13 +376,27 @@ namespace PF.FileUtils {
                 return dt.format (_("%A at %-I:%M %p"));
         }
     }
+
+    private bool can_browse_scheme (string scheme) {
+        switch (scheme) {
+            case Marlin.AFP_URI:
+            case Marlin.DAV_URI:
+            case Marlin.DAVS_URI:
+            case Marlin.SFTP_URI:
+            case Marlin.FTP_URI:
+            case Marlin.MTP_URI:
+                return false;
+            default:
+                return true;
+        }
+    }
 }
 
 namespace Marlin {
     public const string ROOT_FS_URI = "file://";
-    public const string TRASH_URI = "trash:///";
-    public const string NETWORK_URI = "network:///";
-    public const string RECENT_URI = "recent:///";
+    public const string TRASH_URI = "trash://";
+    public const string NETWORK_URI = "network://";
+    public const string RECENT_URI = "recent://";
     public const string AFP_URI = "afp://";
     public const string DAV_URI = "dav://";
     public const string DAVS_URI = "davs://";

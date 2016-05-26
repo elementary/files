@@ -1,7 +1,7 @@
 /***
-    Copyright (C) 2000 Eazel, Inc.
-    Copyright (C) 2011 ammonkey <am.monkeyd@gmail.com>
-    Copyright (C) 2013 elementary Developers
+    Copyright (c) 2000 Eazel, Inc.
+    Copyright (c) 2011 ammonkey <am.monkeyd@gmail.com>
+    Copyright (c) 2013-2016 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -233,15 +233,19 @@ public class Marlin.MimeActions {
 
     public static void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
         if (app == null) {
-            Gtk.Widget? toplevel = parent != null ? parent.get_toplevel () : null;
-            var chooser = new PF.ChooseAppDialog (toplevel, file_to_open);
-            var choice = chooser.get_app_info ();
+            var choice = choose_app_for_glib_file (file_to_open, parent);
             if (choice != null) {
                 launch_glib_file_with_app (file_to_open, parent, choice);
             }
         } else {
             launch_glib_file_with_app (file_to_open, parent, app);
         }
+    }
+
+    public static AppInfo? choose_app_for_glib_file (GLib.File file_to_open, Gtk.Widget parent) {
+        Gtk.Widget? toplevel = parent != null ? parent.get_toplevel () : null;
+        var chooser = new PF.ChooseAppDialog (toplevel, file_to_open);
+        return chooser.get_app_info ();
     }
 
     private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {

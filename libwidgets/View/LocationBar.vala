@@ -27,8 +27,10 @@ namespace Marlin.View.Chrome
         private GLib.File? search_location = null;
         public bool search_mode {get; private set;}
 
+        uint focus_timeout_id = 0;
+
         public signal void reload_request ();
-        public signal void focus_file_request (File file);
+        public signal void focus_file_request (File? file);
         public signal void escape ();
 
         public LocationBar () {
@@ -56,7 +58,11 @@ namespace Marlin.View.Chrome
 
         private void on_search_results_file_selected (GLib.File file) {
             /* Search result widget ensures it has closed and released grab */
-            path_change_request (file.get_path ());
+            /* Returned result might be a link or a server */
+            var gof = new GOF.File (file, null);
+            gof.ensure_query_info ();
+
+            path_change_request (gof.get_target_location ().get_uri ());
         }
         private void on_search_results_file_activated (GLib.File file) {
             AppInfo? app = Marlin.MimeActions.get_default_application_for_glib_file (file);
@@ -65,21 +71,22 @@ namespace Marlin.View.Chrome
         }
 
         private void on_search_results_first_match_found (GLib.File? file) {
-            if (file != null) {
-                focus_file_request (file);
-            }
+            focus_file_request (file);
         }
+
         private void on_search_results_cursor_changed (GLib.File? file) {
-            if (file != null) {
-                focus_file_request (file);
-            }
+            schedule_focus_file_request (file);
         }
+
         private void on_search_results_realize () {
             (get_toplevel () as Gtk.Window).get_group ().add_window (search_results); /*Is this necessary every popup? */
         }
         private void on_search_results_exit () {
             /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
+            if (focus_timeout_id > 0) {
+                GLib.Source.remove (focus_timeout_id);
+            }
             escape ();
         }
 
@@ -216,6 +223,18 @@ namespace Marlin.View.Chrome
         public void cancel () {
             cancel_search ();
             on_search_results_exit (); /* Exit navigation mode as well */
+        }
+
+        private void schedule_focus_file_request (GLib.File? file) {
+            if (focus_timeout_id > 0) {
+                GLib.Source.remove (focus_timeout_id);
+            }
+
+            focus_timeout_id = GLib.Timeout.add (300, () => {
+                focus_file_request (file);
+                focus_timeout_id = 0;
+                return false;
+            });
         }
     }
 }

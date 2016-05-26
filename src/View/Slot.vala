@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 ELementary Developers
+    Copyright (c) 2015-16 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -139,10 +139,15 @@ namespace Marlin.View {
             updates_frozen = false;
         }
 
-        private void on_directory_need_reload (GOF.Directory.Async dir) {
+        private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
             if (!updates_frozen) {
                 updates_frozen = true;
                 path_changed (false);
+                /* if original_request false, leave original_load_request as it is (it may already be true
+                 * if reloading in response to reload button press). */  
+                if (original_request) {
+                    original_reload_request = true;
+                }
                 /* ViewContainer listens to this signal takes care of updating appearance
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
@@ -159,15 +164,16 @@ namespace Marlin.View {
         }
 
         private void schedule_reload () {
-            /* Allow time for other slots showing this directory to prepare for reload */
+            /* Allow time for other slots showing this directory to prepare for reload.
+             * Also a delay is needed when a mount is added and trash reloads. */
             if (reload_timeout_id > 0) {
                 warning ("Path change request received too rapidly");
                 return;
             }
-            reload_timeout_id = Timeout.add (50, ()=> {
-                    directory.reload ();
-                    reload_timeout_id = 0;
-                    return false;
+            reload_timeout_id = Timeout.add (100, ()=> {
+                directory.reload ();
+                reload_timeout_id = 0;
+                return false;
             });
         }
 
@@ -267,7 +273,9 @@ namespace Marlin.View {
         public override void reload (bool non_local_only = false) {
             if (!non_local_only || !directory.is_local) {
                 original_reload_request = true;
-                directory.need_reload (); /* Signal will propagate to any other slot showing this directory */
+                /* Propagate reload signal to any other slot showing this directory indicating it is not
+                 * the original signal */
+                directory.need_reload (false); 
             }
         }
 
@@ -382,7 +390,7 @@ namespace Marlin.View {
                 disconnect_dir_signals ();
 
             if (dir_view != null) {
-                set_view_updates_frozen (true); /* stop signal handlers running during destruction */
+                dir_view.close ();
                 disconnect_dir_view_signals ();
             }
         }

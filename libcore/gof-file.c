@@ -476,9 +476,10 @@ gof_file_update (GOFFile *file)
 
             /* read the display name from the .desktop file (will be overwritten later
              * if it's undefined here) */
-            gchar *custom_display_name = g_key_file_get_string (key_file,
+            gchar *custom_display_name = g_key_file_get_locale_string (key_file,
                                                                 G_KEY_FILE_DESKTOP_GROUP,
                                                                 G_KEY_FILE_DESKTOP_KEY_NAME,
+                                                                NULL,
                                                                 NULL);
 
             /* check if we have a display name now */
@@ -1444,14 +1445,14 @@ gof_file_is_executable (GOFFile *file)
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
+    if (gof_file_is_desktop_file (file)) {
+        return TRUE;
+    }
+
     if (file->target_gof)
         return gof_file_is_executable (file->target_gof);
     if (file->info == NULL) {
         return FALSE;
-    }
-
-    if (gof_file_is_desktop_file (file)) {
-        return TRUE;
     }
 
     if (g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE))
@@ -2053,14 +2054,17 @@ gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info)
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
     g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
 
-    /* check if we should execute the file */
-    if (gof_file_is_executable (file))
-        return gof_file_execute (file, screen, NULL, &error);
-
     if (app_info != NULL)
         app = g_app_info_dup (app_info);
-    if (app == NULL)
-        app = gof_file_get_default_handler (file);
+
+    /* Do not run executables if an app to open them with has been supplied */
+    if (app == NULL) {
+        /* check if we should execute the file */
+        if (gof_file_is_executable (file))
+            return gof_file_execute (file, screen, NULL, &error);
+        else
+            app = gof_file_get_default_handler (file);
+    }
     if (app == NULL)
     {
         //TODO

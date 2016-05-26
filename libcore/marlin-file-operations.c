@@ -1822,6 +1822,10 @@ delete_files (CommonJob *job, GList *files, int *files_skipped)
             (*files_skipped)++;
         }
     }
+
+    PFSoundManager *sm;
+    sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
+    pf_sound_manager_play_delete_sound (sm);
 }
 
 static void
@@ -6581,6 +6585,10 @@ empty_trash_job_done (gpointer user_data)
     /* There is no job callback after emptying trash */
     marlin_undo_manager_trash_has_emptied (marlin_undo_manager_instance());
     finalize_empty_trash_job (user_data);
+
+    PFSoundManager *sm;
+    sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
+    pf_sound_manager_play_empty_trash_sound (sm);
 
     return FALSE;
 }

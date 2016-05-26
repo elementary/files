@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 elementary Developers
+    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -135,7 +135,7 @@ namespace FM {
         public override void select_path (Gtk.TreePath? path) {
             if (path != null) {
                 /* Ensure cursor follows last selection */
-                tree.set_cursor (path, null, false);
+                tree.set_cursor (path, null, false); /* This selects path but does not unselect the rest (unlike TreeView) */
                 tree.select_path (path);
             }
         }
@@ -304,6 +304,14 @@ namespace FM {
                 tree.thaw_child_notify ();
                 tree_frozen = false;
             }
+        }
+
+        protected override void freeze_child_notify () {
+            tree.freeze_child_notify ();
+        }
+
+        protected override void thaw_child_notify () {
+            tree.thaw_child_notify ();
         }
 
         protected override void linear_select_path (Gtk.TreePath path) {

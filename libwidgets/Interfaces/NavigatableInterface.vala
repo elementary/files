@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 ELementary Developers
+    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -39,5 +39,6 @@ namespace Marlin.View.Chrome {
         public abstract void set_default_action_icon_tooltip ();
 
         public abstract string get_entry_text ();
+        public abstract int get_minimum_width ();
     }
 }
