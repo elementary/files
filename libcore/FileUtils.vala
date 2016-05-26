@@ -298,12 +298,13 @@ namespace PF.FileUtils {
     }
 
     public string get_formatted_date_time (DateTime dt, string format = "locale") {
-        if (format == "locale") {
-            return dt.format ("%c");
-        } else if (format == "iso") {
-            return dt.format ("%Y-%m-%d %H:%M:%S");
-        } else {
-            return get_informal_date_time (dt);
+        switch (format) {
+            case "locale":
+                return dt.format ("%c");
+            case "ISO" :
+                return dt.format ("%Y-%m-%d %H:%M:%S");
+            default:
+                return get_informal_date_time (dt);
         }
     }
 
