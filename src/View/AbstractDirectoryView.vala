@@ -2717,6 +2717,20 @@ namespace FM {
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
 
+                    if (only_alt_pressed && event.keyval == Gdk.Key.Down) {
+                        /* Only open a single selected folder */
+                        unowned GLib.List<GOF.File> selection = get_selected_files ();
+                        if (selection != null &&
+                            selection.length () == 1 && 
+                            selection.data.is_folder ()) {
+
+                            load_location (selection.data.location);
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+
                     if (linear_select_required && selected_files.length () > 0) { /* Only true for Icon View */
                         Gtk.TreePath? path = get_path_at_cursor ();
                         if (path != null) {
