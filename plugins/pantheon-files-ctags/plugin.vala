@@ -66,9 +66,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private bool f_ignore_dir (string uri) {
         return_val_if_fail (uri != null, true);
 
-        var idir = "file:///tmp";
-        if (Posix.strncmp (uri, idir, idir.length) == 0)
+        if (uri == "file:///tmp") {
             return true;
+        }
 
         return false;
     }
@@ -121,7 +121,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
     private async void consume_unknowns_queue () {
         GOF.File gof = null;
-
         var count = unknowns.get_length ();
         debug ("unknowns queue length: %u", count);
         if (count > 10) {
@@ -221,19 +220,51 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
+    private async void rreal_update_file_info_for_recent (GOF.File file, string? target_uri) {
+        if (target_uri == null) { /* e.g. for recent:/// */
+            return;
+        }
+
+        try {
+            var rc = yield daemon.get_uri_infos (target_uri);
+
+            VariantIter iter = rc.iterator ();
+            debug ("iter n_children %d", (int) iter.n_children ());
+            assert (iter.n_children () == 1);
+            VariantIter row_iter = iter.next_value ().iterator ();
+            debug ("row_iter n_children %d", (int) row_iter.n_children ());
+
+            if (row_iter.n_children () == 3) {
+                /* Only interested in color tag in recent:// at the moment */
+                row_iter.next_value ();
+                row_iter.next_value ();
+                file.color = int.parse (row_iter.next_value ().get_string ());
+            }
+        } catch (Error err) {
+            warning ("%s", err.message);
+        }
+    }
+
     public override void update_file_info (GOF.File file) {
         return_if_fail (file != null);
         if (!ignore_dir
-            &&file != null && file.info != null
-            && (!file.is_hidden || GOF.Preferences.get_default ().pref_show_hidden_files))
-            /*&& file.ftype == "application/octet-stream")*/
-            /*if (file.ftype == "application/octet-stream")*/
-            rreal_update_file_info.begin (file);
+            && file != null && file.info != null
+            && (!file.is_hidden || GOF.Preferences.get_default ().pref_show_hidden_files)) {
+
+            /* This gets called during directory loading, before the "directory loaded" signal
+             * is received - therefore ignore_dir may not be set correctly */  
+            if (file.location.has_uri_scheme ("recent")) {
+                rreal_update_file_info_for_recent (file, file.get_display_target_uri ());
+            } else {
+                rreal_update_file_info.begin (file);
+            }
+        }
     }
 
     public override void context_menu  (Gtk.Widget? widget, GLib.List<unowned GOF.File> selected_files) {
-        if (selected_files.length () < 1 || widget == null)
+        if (selected_files.length () < 1 || widget == null || ignore_dir) {
             return;
+        }
 
         var menu = widget as Gtk.Menu;
         var color_menu_item = new ColorWidget ();
