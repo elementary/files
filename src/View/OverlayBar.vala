@@ -46,7 +46,7 @@ namespace Marlin.View {
             status = "";
             /* Swap existing child for a Box so we can add additional widget (spinner) */
             var widget = this.get_child ();
-            (this as Gtk.Container).remove (widget);
+            ((Gtk.Container)this).remove (widget);
             var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
             this.add (hbox);
             /* Put the existing child back */
@@ -118,8 +118,9 @@ namespace Marlin.View {
                         list.prepend (file);
                         real_update (list);
                     }
-                } else
+                } else {
                     real_update (null);
+                }
 
                 update_timeout_id = 0;
                 return false;
