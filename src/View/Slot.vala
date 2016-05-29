@@ -36,10 +36,10 @@ namespace Marlin.View {
             get {return ctab.window;}
         }
 
-        public string empty_message = _("This Folder Is Empty");
-        public string empty_trash_message = _("Trash Is Empty");
-        public string empty_recents_message = _("There Are No Recent Files");
-        public string denied_message = _("Access Denied");
+        private const string EMPTY_MESSAGE = _("This Folder Is Empty");
+        private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
+        private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
+        private const string DENIED_MESSAGE = _("Access Denied");
 
         public override bool locked_focus {
             get {
@@ -222,15 +222,7 @@ namespace Marlin.View {
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
             if (directory.is_empty ()) { /* No files in the file cache */
-                if (directory.permission_denied) {
-                    layout.set_markup (denied_message, -1);
-                } else if (directory.is_trash) {
-                    layout.set_markup (empty_trash_message, -1);
-                } else if (directory.is_recent) {
-                    layout.set_markup (empty_recents_message, -1);
-                } else {
-                    layout.set_markup (empty_message, -1);
-                }
+                layout.set_markup (get_empty_message (), -1);
             } else {
                 layout.set_markup (GLib.Markup.escape_text (directory.longest_file_name), -1);
             }
@@ -425,6 +417,18 @@ namespace Marlin.View {
                 Source.remove (id);
                 id = 0;
             }
+        }
+
+        public string get_empty_message () {
+            string msg = EMPTY_MESSAGE;
+            if (directory.is_recent) {
+                msg = EMPTY_RECENT_MESSAGE;
+            } else if (directory.is_trash && (uri == Marlin.TRASH_URI + Path.DIR_SEPARATOR_S)) {
+                msg = EMPTY_TRASH_MESSAGE;
+            } else if (directory.permission_denied) {
+                msg = DENIED_MESSAGE; 
+            }
+            return msg;
         }
     }
 }
