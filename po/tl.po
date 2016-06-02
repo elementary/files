@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-29 10:18-0500\n"
-"PO-Revision-Date: 2016-05-25 15:39+0000\n"
+"PO-Revision-Date: 2016-06-01 17:30+0000\n"
 "Last-Translator: yavinfour <anjelo.passionist@gmail.com>\n"
 "Language-Team: Tagalog <tl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-05-30 05:30+0000\n"
+"X-Launchpad-Export-Date: 2016-06-02 06:14+0000\n"
 "X-Generator: Launchpad (build 18053)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -36,7 +36,7 @@ msgstr "FTP (may kasamang login)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -685,6 +685,8 @@ msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Permanenteng matatanggal ang file pag binura ito."
 
 #: ../libcore/marlin-file-operations.c:2157
 msgid "Trashing Files"
@@ -725,22 +727,22 @@ msgstr "Hindi mai-mount ang %s"
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ihinahandang kopyahin ang %'d na file (%S)"
+msgstr[1] "Ihinahandang kopyahin ang mga %'d na file (%S)"
 
 #: ../libcore/marlin-file-operations.c:2615
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ihinahandang ilipat ang %'d na file (%S)"
+msgstr[1] "Ihinahandang ilipatang mga %'d na file (%S)"
 
 #: ../libcore/marlin-file-operations.c:2621
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ihinahandang burahin ang %'d na file (%S)"
+msgstr[1] "Ihinahandang burahin ang mga %'d na file (%S)"
 
 #: ../libcore/marlin-file-operations.c:2627
 #, c-format
@@ -1144,7 +1146,7 @@ msgstr "Binubura ang mga link sa %d na mga aytem"
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Burahin ang link papuntang '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
