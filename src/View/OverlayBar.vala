@@ -264,31 +264,34 @@ namespace Marlin.View {
 
             if (deep_counter != null) {
                 if (deep_counter.dirs_count > 0) {
+                    /* TRANSLATORS: %u will be substituted by the number of sub folders */
                     str = ngettext (_("%u sub-folder, "), _("%u sub-folders, "), deep_counter.dirs_count);
                     status += str.printf (deep_counter.dirs_count);
                 }
 
-                if (deep_counter.files_count > 0) {
+                if (deep_counter.files_count > 0 || deep_counter.file_not_read == 0) {
+                    /* TRANSLATORS: %u will be substituted by the number of readable files */
                     str = ngettext (_("%u file, "), _("%u files, "), deep_counter.files_count);
                     status += str.printf (deep_counter.files_count);
                 }
 
-                if (deep_counter.total_size == 0) {
-                    status += _("unknown size");
-                } else {
+                if (deep_counter.file_not_read == 0) {
                     status += format_size (deep_counter.total_size);
-                }
-
-                if (deep_counter.file_not_read > 0) {
+                    status += ")";
+                } else {
                     if (deep_counter.total_size > 0) {
-                        status += " approx - %u files not readable".printf (deep_counter.file_not_read);
+                        /* TRANSLATORS: %s will be substituted by the approximate disk space used by the folder */
+                        status += _("%s approx.").printf (format_size (deep_counter.total_size));
                     } else {
-                        status += " %u files not readable".printf (deep_counter.file_not_read);
+                        /* TRANSLATORS: 'size' refers to disk space */
+                        status += _("unknown size");
                     }
+                    status += ") ";
+                    /* TRANSLATORS: %u will be substituted by the number of unreadable files */
+                    str = ngettext (_("%u file not readable"), _("%u files not readable"), deep_counter.file_not_read);
+                    status += str.printf (deep_counter.file_not_read);
                 }
             }
-
-            status += ")";
         }
 
         private void scan_list (GLib.List<GOF.File>? files) {
