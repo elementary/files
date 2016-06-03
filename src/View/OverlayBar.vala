@@ -64,11 +64,13 @@ namespace Marlin.View {
 
         public override void get_preferred_width (out int minimum_width, out int natural_width) {
             base.get_preferred_width (out minimum_width, out natural_width);
-            /* Allow extra space for the spinner - the parent only allows for the label */
-            Gtk.Requisition spinner_min_size, spinner_natural_size;
-            spinner.get_preferred_size (out spinner_min_size, out spinner_natural_size);
-            minimum_width += spinner_min_size.width;
-            natural_width += spinner_natural_size.width;
+            /* If visible, allow extra space for the spinner - the parent only allows for the label */
+            if (spinner.is_visible ()) {
+                Gtk.Requisition spinner_min_size, spinner_natural_size;
+                spinner.get_preferred_size (out spinner_min_size, out spinner_natural_size);
+                minimum_width += spinner_min_size.width;
+                natural_width += spinner_natural_size.width;
+            }
         }
 
         public void selection_changed (GLib.List<GOF.File> files) {
@@ -95,8 +97,7 @@ namespace Marlin.View {
         }
 
         public void update_hovered (GOF.File? file) {
-            cancel ();
-            visible = false;
+            cancel (); /* This will stop and hide spinner */
 
             if (!showbar)
                 return;
@@ -139,6 +140,7 @@ namespace Marlin.View {
             }
 
             cancel_cancellable ();
+            hide_spinner ();
         }
 
         private void cancel_cancellable () {
