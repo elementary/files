@@ -2990,16 +2990,7 @@ namespace FM {
                 if (!style_context.has_class (MESSAGE_CLASS))
                     style_context.add_class (MESSAGE_CLASS);
 
-
-                if (slot.directory.permission_denied) {
-                    layout.set_markup (slot.denied_message, -1);
-                } else if (slot.directory.is_trash) {
-                    layout.set_markup (slot.empty_trash_message, -1);
-                } else if (slot.directory.is_recent) {
-                    layout.set_markup (slot.empty_recents_message, -1);
-                } else {
-                    layout.set_markup (slot.empty_message, -1);
-                }
+                layout.set_markup (slot.get_empty_message (), -1);
 
                 Pango.Rectangle? extents = null;
                 layout.get_extents (null, out extents);
