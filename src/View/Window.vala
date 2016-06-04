@@ -435,9 +435,7 @@ namespace Marlin.View {
             if (old_tab != null)
                 old_tab.set_active_state (false);
 
-            update_top_menu ();
-            /* update radio action view state */
-            update_view_mode (current_tab.view_mode);
+            /* ViewContainer will update topmenu once successfully loaded */
 #if 0
             /* sync selection - to be reimplemented if needed*/
             if (cur_slot.dir_view != null && current_tab.can_show_folder);
@@ -1017,12 +1015,10 @@ namespace Marlin.View {
             if (freeze_view_changes)
                 return;
 
-
             if (current_tab != null) {
                 top_menu.set_back_menu (current_tab.get_go_back_path_list ());
                 top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
                 update_view_mode (current_tab.view_mode);
-
             }
         }
 
