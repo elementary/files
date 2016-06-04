@@ -2717,6 +2717,20 @@ namespace FM {
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
 
+                    if (only_alt_pressed && event.keyval == Gdk.Key.Down) {
+                        /* Only open a single selected folder */
+                        unowned GLib.List<GOF.File> selection = get_selected_files ();
+                        if (selection != null &&
+                            selection.length () == 1 && 
+                            selection.data.is_folder ()) {
+
+                            load_location (selection.data.location);
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+
                     if (linear_select_required && selected_files.length () > 0) { /* Only true for Icon View */
                         Gtk.TreePath? path = get_path_at_cursor ();
                         if (path != null) {
@@ -2976,16 +2990,7 @@ namespace FM {
                 if (!style_context.has_class (MESSAGE_CLASS))
                     style_context.add_class (MESSAGE_CLASS);
 
-
-                if (slot.directory.permission_denied) {
-                    layout.set_markup (slot.denied_message, -1);
-                } else if (slot.directory.is_trash) {
-                    layout.set_markup (slot.empty_trash_message, -1);
-                } else if (slot.directory.is_recent) {
-                    layout.set_markup (slot.empty_recents_message, -1);
-                } else {
-                    layout.set_markup (slot.empty_message, -1);
-                }
+                layout.set_markup (slot.get_empty_message (), -1);
 
                 Pango.Rectangle? extents = null;
                 layout.get_extents (null, out extents);

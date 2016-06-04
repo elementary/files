@@ -605,7 +605,8 @@ marlin_icon_renderer_render (GtkCellRenderer      *cell,
     }
 
     /* check if we should render emblems as well */
-    if (G_LIKELY (priv->emblems) && priv->selection_helpers)
+    /* Still show emblems when selection helpers hidden in double click mode */
+    if (G_LIKELY (priv->emblems)) 
     {
         int position = 0;
         GList* emblems = g_list_first(priv->file->emblems_list);
