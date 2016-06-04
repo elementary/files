@@ -428,8 +428,9 @@ namespace FM {
         }
 
         protected void freeze_updates () {
+            /* As this gets called before View closes (without a corresponding unfreeze),
+             * it must not freeze the directory, which may be being used by other views */
             updates_frozen = true;
-            slot.directory.freeze_update = true;
             action_set_enabled (selection_actions, "cut", false);
             action_set_enabled (common_actions, "copy", false);
             action_set_enabled (common_actions, "paste_into", false);
@@ -439,17 +440,18 @@ namespace FM {
             clipboard.changed.disconnect (on_clipboard_changed);
             view.enter_notify_event.disconnect (on_enter_notify_event);
             view.key_press_event.disconnect (on_view_key_press_event);
-            slot.directory.block_monitor ();
         }
 
         protected void unfreeze_updates () {
             updates_frozen = false;
-            slot.directory.freeze_update = false;
             update_menu_actions ();
             size_allocate.connect (on_size_allocate);
             clipboard.changed.connect (on_clipboard_changed);
             view.enter_notify_event.connect (on_enter_notify_event);
             view.key_press_event.connect (on_view_key_press_event);
+
+            /* It should do no harm to ensure the directory is not frozen as well */
+            slot.directory.freeze_update = false;
             slot.directory.unblock_monitor ();
         }
 
