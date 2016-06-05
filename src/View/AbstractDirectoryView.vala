@@ -2852,7 +2852,14 @@ namespace FM {
                 /* cannot get file info while network disconnected */
                 if (slot.directory.is_local || NetworkMonitor.get_default ().get_network_available ()) {
                     /* cannot get file info while network disconnected. */
-                    item_hovered (file);
+                    GOF.File? target_file;
+                    if (file != null && slot.directory.is_recent) {
+                        target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
+                        target_file.ensure_query_info ();
+                    } else {
+                        target_file = file;
+                    }
+                    item_hovered (target_file);
                     hover_path = path;
                 }
             }
