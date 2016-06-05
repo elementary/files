@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-05-29 10:18-0500\n"
-"PO-Revision-Date: 2015-12-21 13:43+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-06-04 12:40+0000\n"
+"Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2016-05-30 05:30+0000\n"
-"X-Generator: Launchpad (build 18053)\n"
+"X-Launchpad-Export-Date: 2016-06-05 05:45+0000\n"
+"X-Generator: Launchpad (build 18086)\n"
 "Language: sl\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1673,7 +1673,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:816
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s prosto od %s)"
 
 #: ../src/View/Sidebar.vala:1300
 msgid "Unable to start %s"
@@ -1764,7 +1764,7 @@ msgstr "Predogleda ni bilo mogoče prikazati"
 
 #: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Te datoteke ni mogoče odpreti."
 
 #: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
@@ -1858,7 +1858,7 @@ msgstr "%u datotek, "
 
 #: ../src/View/OverlayBar.vala:250
 msgid "unknown size"
-msgstr ""
+msgstr "neznana velikost"
 
 #: ../src/View/PropertiesWindow.vala:186
 msgid "Close"
@@ -1866,7 +1866,7 @@ msgstr "Zapri"
 
 #: ../src/View/PropertiesWindow.vala:198
 msgid "Resolution:"
-msgstr ""
+msgstr "Ločljivost:"
 
 #: ../src/View/PropertiesWindow.vala:361 ../src/View/PropertiesWindow.vala:1723
 msgid "General"
@@ -1902,48 +1902,48 @@ msgstr "neznano"
 
 #: ../src/View/PropertiesWindow.vala:545
 msgid "Contains:"
-msgstr ""
+msgstr "Vsebuje:"
 
 #: ../src/View/PropertiesWindow.vala:642
 msgid "Created:"
-msgstr ""
+msgstr "Ustvarjeno:"
 
 #: ../src/View/PropertiesWindow.vala:644
 msgid "Modified:"
-msgstr ""
+msgstr "Spremenjeno:"
 
 #: ../src/View/PropertiesWindow.vala:647
 msgid "Last Access:"
-msgstr ""
+msgstr "Zadnji dostop:"
 
 #: ../src/View/PropertiesWindow.vala:655
 msgid "Deleted:"
-msgstr ""
+msgstr "Izbrisano:"
 
 #: ../src/View/PropertiesWindow.vala:661
 msgid "MimeType:"
-msgstr ""
+msgstr "MIME tip:"
 
 #: ../src/View/PropertiesWindow.vala:669
 msgid "loading ..."
-msgstr ""
+msgstr "nalagam ..."
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "MimeTypes:"
-msgstr ""
+msgstr "MIME tipi:"
 
 #: ../src/View/PropertiesWindow.vala:695 ../src/View/PropertiesWindow.vala:697
 #: ../src/View/PropertiesWindow.vala:1654
 msgid "Location:"
-msgstr ""
+msgstr "Lokacija:"
 
 #: ../src/View/PropertiesWindow.vala:701
 msgid "Target:"
-msgstr ""
+msgstr "Cilj:"
 
 #: ../src/View/PropertiesWindow.vala:707
 msgid "Origin Location:"
-msgstr ""
+msgstr "Izvorna lokacija:"
 
 #: ../src/View/PropertiesWindow.vala:714
 msgid "Could not be determined"
@@ -1988,16 +1988,16 @@ msgstr "Izvajanje"
 #: ../src/View/PropertiesWindow.vala:1170
 #: ../src/View/PropertiesWindow.vala:1185
 msgid "Owner:"
-msgstr ""
+msgstr "Lastnik:"
 
 #: ../src/View/PropertiesWindow.vala:1176
 #: ../src/View/PropertiesWindow.vala:1190
 msgid "Group:"
-msgstr ""
+msgstr "Skupina:"
 
 #: ../src/View/PropertiesWindow.vala:1195
 msgid "Everyone:"
-msgstr ""
+msgstr "Vsi:"
 
 #: ../src/View/PropertiesWindow.vala:1471
 msgid "%u subfolders and %u files"
@@ -2051,26 +2051,26 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:1661
 msgid "Format:"
-msgstr ""
+msgstr "Oblika:"
 
 #: ../src/View/PropertiesWindow.vala:1679
 #: ../src/View/PropertiesWindow.vala:1704
 msgid "Capacity:"
-msgstr ""
+msgstr "Kapaciteta:"
 
 #: ../src/View/PropertiesWindow.vala:1685
 #: ../src/View/PropertiesWindow.vala:1710
 msgid "Available:"
-msgstr ""
+msgstr "Razpoložljivo:"
 
 #: ../src/View/PropertiesWindow.vala:1691
 #: ../src/View/PropertiesWindow.vala:1716
 msgid "Used:"
-msgstr ""
+msgstr "Uporabljeno:"
 
 #: ../src/View/PropertiesWindow.vala:1694
 msgid "%s (%d%% used)"
-msgstr ""
+msgstr "%s (%d%% uporabljeno)"
 
 #: ../src/View/PropertiesWindow.vala:1707
 #: ../src/View/PropertiesWindow.vala:1713
