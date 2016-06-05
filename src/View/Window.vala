@@ -435,9 +435,7 @@ namespace Marlin.View {
             if (old_tab != null)
                 old_tab.set_active_state (false);
 
-            update_top_menu ();
-            /* update radio action view state */
-            update_view_mode (current_tab.view_mode);
+            /* ViewContainer will update topmenu once successfully loaded */
 #if 0
             /* sync selection - to be reimplemented if needed*/
             if (cur_slot.dir_view != null && current_tab.can_show_folder);
@@ -469,6 +467,14 @@ namespace Marlin.View {
 
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
+        }
+
+        public void bookmark_uri (string uri, string? name = null) {
+            sidebar.add_uri (uri, name);
+        }
+
+        public bool can_bookmark_uri (string uri) {
+            return !sidebar.has_place (uri);
         }
 
         public void remove_tab (ViewContainer view_container) {
@@ -986,7 +992,7 @@ namespace Marlin.View {
                 return;
             }
 
-            var tip_location = GLib.File.new_for_uri (unescaped_tip_uri);
+            var tip_location = PF.FileUtils.get_file_for_path (unescaped_tip_uri);
             var relative_path = root_location.get_relative_path (tip_location);
             GLib.File gfile;
 
@@ -996,7 +1002,7 @@ namespace Marlin.View {
 
                 foreach (string dir in dirs) {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
-                    gfile = GLib.File.new_for_uri (uri);
+                    gfile = PF.FileUtils.get_file_for_path (uri);
 
                     mwcols.add_location (gfile, mwcols.current_slot);
                 }
@@ -1009,12 +1015,10 @@ namespace Marlin.View {
             if (freeze_view_changes)
                 return;
 
-
             if (current_tab != null) {
                 top_menu.set_back_menu (current_tab.get_go_back_path_list ());
                 top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
                 update_view_mode (current_tab.view_mode);
-
             }
         }
 

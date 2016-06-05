@@ -66,7 +66,7 @@ public class GOF.Directory.Async : Object {
  
     public signal void done_loading ();
     public signal void thumbs_loaded ();
-    public signal void need_reload ();
+    public signal void need_reload (bool original_request);
 
     private uint idle_consume_changes_id = 0;
     private bool removed_from_cache;
@@ -81,7 +81,7 @@ public class GOF.Directory.Async : Object {
         }
     }
 
-    private string scheme;
+    public string scheme {get; private set;}
     public bool is_local {get; private set;}
     public bool is_trash {get; private set;}
     public bool is_network {get; private set;}
@@ -89,6 +89,9 @@ public class GOF.Directory.Async : Object {
     public bool has_mounts {get; private set;}
     public bool has_trash_dirs {get; private set;}
     public bool can_load {get; private set;}
+    public bool can_open_files {get; private set;}
+    public bool can_stream_files {get; private set;}
+
     private bool is_ready = false;
 
     public bool is_cancelled {
@@ -109,6 +112,8 @@ public class GOF.Directory.Async : Object {
         is_recent = (scheme == "recent");
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
+        can_open_files = !("mtp".contains (scheme));
+        can_stream_files = !("ftp sftp mtp dav davs".contains (scheme));
 
         dir_cache_lock.@lock (); /* will always have been created via call to public static functions from_file () or from_gfile () */
         directory_cache.insert (location.dup (), this);
@@ -364,14 +369,18 @@ public class GOF.Directory.Async : Object {
     private void connect_volume_monitor_signals () {
         var vm = VolumeMonitor.get();
         vm.mount_changed.connect (on_mount_changed);
+        vm.mount_added.connect (on_mount_changed);
     }
     private void disconnect_volume_monitor_signals () {
         var vm = VolumeMonitor.get();
         vm.mount_changed.disconnect (on_mount_changed);
+        vm.mount_added.disconnect (on_mount_changed);
     }
 
-    private void on_mount_changed () {
-        need_reload ();
+    private void on_mount_changed (GLib.VolumeMonitor vm, GLib.Mount mount) {
+        if (state == State.LOADED) {
+            need_reload (true);
+        }
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
@@ -770,7 +779,7 @@ public class GOF.Directory.Async : Object {
 
             if (!value) {
                 if (list_fchanges_count >= FCHANGES_MAX) {
-                    need_reload ();
+                    need_reload (true);
                 } else if (list_fchanges_count > 0) {
                     list_fchanges.reverse ();
                     foreach (var fchange in list_fchanges) {

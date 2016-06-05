@@ -122,6 +122,6 @@ namespace Marlin {
                                                   Volume? volume,
                                                   Mount? mount,
                                                   uint index,
-                                                  string tooltip) ;
+                                                  string? tooltip = null) ;
     }
 }

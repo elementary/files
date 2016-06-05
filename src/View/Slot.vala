@@ -36,10 +36,10 @@ namespace Marlin.View {
             get {return ctab.window;}
         }
 
-        public string empty_message = _("This Folder Is Empty");
-        public string empty_trash_message = _("Trash Is Empty");
-        public string empty_recents_message = _("There Are No Recent Files");
-        public string denied_message = _("Access Denied");
+        private const string EMPTY_MESSAGE = _("This Folder Is Empty");
+        private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
+        private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
+        private const string DENIED_MESSAGE = _("Access Denied");
 
         public override bool locked_focus {
             get {
@@ -139,10 +139,15 @@ namespace Marlin.View {
             updates_frozen = false;
         }
 
-        private void on_directory_need_reload (GOF.Directory.Async dir) {
+        private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
             if (!updates_frozen) {
                 updates_frozen = true;
                 path_changed (false);
+                /* if original_request false, leave original_load_request as it is (it may already be true
+                 * if reloading in response to reload button press). */  
+                if (original_request) {
+                    original_reload_request = true;
+                }
                 /* ViewContainer listens to this signal takes care of updating appearance
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
@@ -159,15 +164,16 @@ namespace Marlin.View {
         }
 
         private void schedule_reload () {
-            /* Allow time for other slots showing this directory to prepare for reload */
+            /* Allow time for other slots showing this directory to prepare for reload.
+             * Also a delay is needed when a mount is added and trash reloads. */
             if (reload_timeout_id > 0) {
                 warning ("Path change request received too rapidly");
                 return;
             }
-            reload_timeout_id = Timeout.add (50, ()=> {
-                    directory.reload ();
-                    reload_timeout_id = 0;
-                    return false;
+            reload_timeout_id = Timeout.add (100, ()=> {
+                directory.reload ();
+                reload_timeout_id = 0;
+                return false;
             });
         }
 
@@ -216,15 +222,7 @@ namespace Marlin.View {
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
             if (directory.is_empty ()) { /* No files in the file cache */
-                if (directory.permission_denied) {
-                    layout.set_markup (denied_message, -1);
-                } else if (directory.is_trash) {
-                    layout.set_markup (empty_trash_message, -1);
-                } else if (directory.is_recent) {
-                    layout.set_markup (empty_recents_message, -1);
-                } else {
-                    layout.set_markup (empty_message, -1);
-                }
+                layout.set_markup (get_empty_message (), -1);
             } else {
                 layout.set_markup (GLib.Markup.escape_text (directory.longest_file_name), -1);
             }
@@ -267,7 +265,9 @@ namespace Marlin.View {
         public override void reload (bool non_local_only = false) {
             if (!non_local_only || !directory.is_local) {
                 original_reload_request = true;
-                directory.need_reload (); /* Signal will propagate to any other slot showing this directory */
+                /* Propagate reload signal to any other slot showing this directory indicating it is not
+                 * the original signal */
+                directory.need_reload (false); 
             }
         }
 
@@ -417,6 +417,18 @@ namespace Marlin.View {
                 Source.remove (id);
                 id = 0;
             }
+        }
+
+        public string get_empty_message () {
+            string msg = EMPTY_MESSAGE;
+            if (directory.is_recent) {
+                msg = EMPTY_RECENT_MESSAGE;
+            } else if (directory.is_trash && (uri == Marlin.TRASH_URI + Path.DIR_SEPARATOR_S)) {
+                msg = EMPTY_TRASH_MESSAGE;
+            } else if (directory.permission_denied) {
+                msg = DENIED_MESSAGE; 
+            }
+            return msg;
         }
     }
 }

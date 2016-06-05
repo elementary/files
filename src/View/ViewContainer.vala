@@ -215,7 +215,7 @@ namespace Marlin.View {
             /* Slot is created inactive so we activate now since we must be the current tab
              * to have received a change mode instruction */
             set_active_state (true);
-            window.update_top_menu ();
+            /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
         private void connect_slot_signals (GOF.AbstractSlot aslot) {
@@ -228,7 +228,6 @@ namespace Marlin.View {
         }
 
         private void on_slot_active (GOF.AbstractSlot aslot, bool scroll) {
-            plugin_directory_loaded ();
             refresh_slot_info (slot.location);
         }
 
@@ -288,10 +287,8 @@ namespace Marlin.View {
         public void refresh_slot_info (GLib.File loc) {
             update_tab_name (loc);
             window.loading_uri (loc.get_uri ());
-            window.update_top_menu ();
             window.update_labels (loc.get_parse_name (), tab_name);
-            window.set_can_go_back (browser.get_can_go_back ());
-            window.set_can_go_forward (browser.get_can_go_forward ());
+            /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
         public void update_tab_name (GLib.File loc) {
@@ -371,10 +368,17 @@ namespace Marlin.View {
                 assert (view != null);
                 content = view.get_content_box ();
                 /* Only record valid folders (will also log Zeitgeist event) */
-                browser.record_uri (slot.location.get_parse_name ()); /* will ignore null changes */
+                browser.record_uri (slot.uri); /* will ignore null changes i.e reloading*/
+                window.set_can_go_forward (browser.get_can_go_forward ());
                 plugin_directory_loaded ();
+            } else {
+                /* Save previous uri but do not record current one */
+                browser.record_uri (null);
+                /* Inactivate the forward button but do not lose existing forward stack */
+                window.set_can_go_forward (false);
             }
-
+            window.set_can_go_back (browser.get_can_go_back ());
+            window.update_top_menu ();
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
 
@@ -477,7 +481,7 @@ namespace Marlin.View {
             return path;
         }
 
-        public void reload (bool propagate = true) {
+        public void reload () {
             var slot = get_current_slot ();
             if (slot != null)
                 slot.reload ();
