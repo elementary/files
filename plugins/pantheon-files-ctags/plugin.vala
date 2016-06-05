@@ -283,14 +283,29 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
     private async void set_color (GLib.List<unowned GOF.File> files, int n) throws IOError {
         Variant[] entries = null;
+        GOF.File target_file;
         foreach (unowned GOF.File file in files) {
-            file.color = n;
-            entries +=  add_entry (file);
+            if (file.location.has_uri_scheme ("recent")) {
+                target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
+            } else {
+                target_file = file;
+            }
+            target_file.color = n;
+            entries +=  add_entry (target_file);
         }
 
         if (entries != null) {
             try {
-                yield daemon.record_uris (entries, ((GOF.File) files.data).uri);
+                GOF.File first = (GOF.File) (files.data);
+                yield daemon.record_uris (entries, first.uri);
+                /* If the color of the target is set while in recent view, we have to
+                 * update the recent view to reflect this */ 
+                if (first.location.has_uri_scheme ("recent")) {
+                    foreach (GOF.File file in files) {
+                        update_file_info (file);
+                        file.changed ();
+                    }
+                }
             } catch (Error err) {
                 warning ("%s", err.message);
             }
