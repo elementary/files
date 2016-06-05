@@ -72,6 +72,8 @@ namespace Marlin.View {
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, Marlin.View.Slot? host = null) {
             Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
+            /* Notify view container of path change - will set tab to working and change pathbar */
+            path_changed (false); /* DO not allow mode change when adding a location */
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
             total_width += new_slot.width;
 
