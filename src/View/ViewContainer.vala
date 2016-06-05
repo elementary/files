@@ -185,7 +185,7 @@ namespace Marlin.View {
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
-            view.directory.init ();
+            slot.initialize_directory ();
             show_all ();
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
@@ -210,6 +210,7 @@ namespace Marlin.View {
             disconnect_slot_signals (view);
             content = null; /* Make sure old slot and directory view are destroyed */
             view = null; /* Pre-requisite for add view */
+            loading (false);
         }
         private void after_mode_change () {
             /* Slot is created inactive so we activate now since we must be the current tab
@@ -410,6 +411,11 @@ namespace Marlin.View {
             var aslot = get_current_slot ();
             if (aslot != null)
                 aslot.set_frozen_state (is_frozen);
+        }
+
+        public bool get_frozen_state () {
+            var aslot = get_current_slot ();
+            return aslot == null || slot.get_frozen_state ();
         }
 
         private void set_all_selected (bool select_all) {

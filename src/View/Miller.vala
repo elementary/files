@@ -414,6 +414,10 @@ namespace Marlin.View {
             ((Marlin.View.Slot)(current_slot)).grab_focus ();
         }
 
+        public override void initialize_directory () {
+            ((Marlin.View.Slot)(current_slot)).initialize_directory ();
+        }
+
         public override void reload (bool non_local_only = false) {
             ((Marlin.View.Slot)(current_slot)).reload (non_local_only);
         }
@@ -442,6 +446,10 @@ namespace Marlin.View {
 
         public override FileInfo? lookup_file_info (GLib.File loc) {
             return current_slot.lookup_file_info (loc);
+        }
+
+        public override bool get_frozen_state () {
+            return current_slot.get_frozen_state ();
         }
     }
 }

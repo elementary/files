@@ -2590,8 +2590,9 @@ namespace FM {
         }
 
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-            if (updates_frozen || event.is_modifier == 1)
-                return false;
+            if (updates_frozen || event.is_modifier == 1) {
+                return true;
+            }
 
             cancel_hover ();
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();

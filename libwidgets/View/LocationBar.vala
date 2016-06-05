@@ -236,5 +236,9 @@ namespace Marlin.View.Chrome
                 return false;
             });
         }
+
+        public new void set_sensitive (bool sensitive) {
+            bread.set_sensitive (sensitive);
+        }
     }
 }

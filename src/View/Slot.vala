@@ -152,7 +152,11 @@ namespace Marlin.View {
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
 
+
                 dir_view.clear (); /* clear model but do not change directory */
+                /* view and slot are unfrozen when done loading signal received */
+                set_view_updates_frozen (true); 
+                updates_frozen = true;
 
                 /* Only need to initialise directory once - the slot that originally received the
                  * reload request does this */ 
@@ -259,7 +263,19 @@ namespace Marlin.View {
              * If allow_mode_change is false View Container will not automagically
              * switch to icon view for icon folders (needed for Miller View) */
             dir_view.change_directory (old_dir, directory);
-            directory.init ();
+            initialize_directory ();
+        }
+
+        public override void initialize_directory () {
+            if (!directory.is_loading ()) {
+                /* view and slot are unfrozen when done loading signal received */
+                set_view_updates_frozen (true);
+                updates_frozen = true;
+
+                directory.init ();
+            } else {
+                critical ("Initialize directory called when is loading");
+            }
         }
 
         public override void reload (bool non_local_only = false) {
@@ -293,8 +309,6 @@ namespace Marlin.View {
 
             if (mode != Marlin.ViewMode.MILLER_COLUMNS)
                 content_box.pack_start (dir_view, true, true, 0);
-
-            set_view_updates_frozen (true);
         }
 
         public void set_view_updates_frozen (bool freeze) {
@@ -429,6 +443,10 @@ namespace Marlin.View {
                 msg = DENIED_MESSAGE; 
             }
             return msg;
+        }
+
+        public override bool get_frozen_state () {
+            return updates_frozen;
         }
     }
 }

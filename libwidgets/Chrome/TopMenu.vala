@@ -29,6 +29,7 @@ namespace Marlin.View.Chrome
         public Chrome.ButtonWithMenu button_forward;
         public Chrome.ButtonWithMenu button_back;
         public bool locked_focus {get; private set; default = false;}
+        private bool working = false;
 
         public signal void forward (int steps);
         public signal void back (int steps);  /* TODO combine using negative step */
@@ -38,6 +39,11 @@ namespace Marlin.View.Chrome
         }
         public void set_can_go_forward (bool can) {
            button_forward.set_sensitive (can);
+        }
+
+        public void set_working (bool is_working) {
+            working = is_working;
+            location_bar.set_sensitive (!is_working);
         }
 
         public signal void focus_location_request (GLib.File? location);
@@ -101,10 +107,16 @@ namespace Marlin.View.Chrome
         }
 
         public bool enter_search_mode (bool local_only, bool begins_with_only) {
+            if (working) {
+                return false;
+            }
             return location_bar.enter_search_mode (local_only, begins_with_only);
         }
 
         public bool enter_navigate_mode () {
+            if (working) {
+                return false;
+            }
             return location_bar.enter_navigate_mode ();
         }
 

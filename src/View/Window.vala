@@ -429,7 +429,7 @@ namespace Marlin.View {
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
 
-            if (current_tab == null || old_tab == current_tab || freeze_view_changes)
+            if (current_tab == null || old_tab == current_tab)
                 return;
 
             if (old_tab != null)
@@ -444,6 +444,7 @@ namespace Marlin.View {
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
             current_tab.set_active_state (true);
+            top_menu.set_working (current_tab.get_frozen_state ());
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
@@ -460,6 +461,7 @@ namespace Marlin.View {
 
             content.loading.connect ((is_loading) => {
                 tab.working = is_loading;
+                top_menu.set_working (is_loading);
             });
 
             content.update_tab_name (location);
@@ -523,6 +525,10 @@ namespace Marlin.View {
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
+            /* Do not initiate search while slot is frozen e.g. during loading */
+            if (current_tab == null || current_tab.get_frozen_state ()) {
+                return;
+            }
             string search_scope = param.get_string ();
             if (search_scope == "CURRENT_DIRECTORY_ONLY") {
                 /* Just search current directory for filenames beginning with term */
@@ -532,6 +538,9 @@ namespace Marlin.View {
             }
         }
         public void on_search_request (Gdk.EventKey event) {
+            if (current_tab == null || current_tab.get_frozen_state ()) {
+                return;
+            }
             if (top_menu.enter_search_mode (true, true)) {
                 top_menu.on_key_press_event (event);
             }
