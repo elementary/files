@@ -2555,7 +2555,7 @@ namespace FM {
             } else {
                 action_files = selected_files;
             }
- 
+
             return action_files;
         }
 
