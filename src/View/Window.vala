@@ -25,7 +25,7 @@ namespace Marlin.View {
 
     public class Window : Gtk.ApplicationWindow
     {
-        static const GLib.ActionEntry [] win_entries = {
+        const GLib.ActionEntry [] win_entries = {
             {"new_window", action_new_window},
             {"quit", action_quit},
             {"refresh", action_reload},
@@ -46,7 +46,7 @@ namespace Marlin.View {
 
         public GLib.SimpleActionGroup win_actions;
 
-        static const string [] mode_strings = {
+        const string [] mode_strings = {
             "ICON",
             "LIST",
             "MILLER"

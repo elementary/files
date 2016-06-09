@@ -20,7 +20,7 @@ namespace FM {
     public class ListView : AbstractTreeView {
 
         /* We wait two seconds after row is collapsed to unload the subdirectory */
-        static const int COLLAPSE_TO_UNLOAD_DELAY = 2;
+        const int COLLAPSE_TO_UNLOAD_DELAY = 2;
 
         static string [] column_titles = {
             _("Filename"),
