@@ -782,23 +782,28 @@ namespace FM {
                         break;
                 }
             } else if (!in_trash) {
-                if (only_one_file && file.is_root_network_folder ())
-                    load_location (location);
-                else if (only_one_file && file.is_executable ())
-                    file.execute (screen, null, null);
-                else if (only_one_file && default_app != null)
-                    open_file (file, screen, default_app);
-                else
-                    warning ("Unable to activate this file.  Default app is %s",
-                             default_app != null ? default_app.get_name () : "null");
-            } else
+                if (only_one_file) {
+                    if (file.is_root_network_folder ()) {
+                        load_location (location);
+                    } else if (file.is_executable ()) {
+                        file.execute (screen, null, null);
+                    } else {
+                        open_file (file, screen, default_app);
+                    }
+                }
+            } else {
                 warning ("Cannot open file in trash");
+            }
         }
 
         /* Open all files through this */
         private void open_file (GOF.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
             if (can_open_file (file, true)) {
-                file.open_single (screen, app_info);
+                AppInfo app = app_info;
+                if (app == null) {
+                    app = Marlin.MimeActions.choose_app_for_glib_file (file.location, this);
+                }
+                file.open_single (screen, app); /* This does not show app chooser again if app is null*/
             }
         }
 
