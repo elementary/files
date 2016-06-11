@@ -1781,7 +1781,7 @@ namespace Marlin.Places {
             disconnect_volume_monitor_signals ();
 
             if (mount == null) {
-                finish_eject_or_unmount (row_ref);
+                finish_eject_or_unmount (row_ref, false);
                 return;
             }
             /* Do not offer to empty trash every time - this can be done
@@ -1794,18 +1794,20 @@ namespace Marlin.Places {
                                                 mount_op,
                                                 null,
                                                 (obj, res) => {
+                bool success = false;
                 try {
-                    if (mount.unmount_with_operation.end (res) && can_eject) {
+                    success = mount.unmount_with_operation.end (res);
+                    if (success && can_eject) {
                         /* Eject associated volume after unmount if appropriate.
                          * Keep volume monitor disconnected */
                         do_eject (null, volume, null, row_ref);
                     } else {
-                        finish_eject_or_unmount (row_ref);
+                        finish_eject_or_unmount (row_ref, success);
                     }
                 }
                 catch (GLib.Error error) {
                     debug ("Error while unmounting");
-                    finish_eject_or_unmount (row_ref);
+                    finish_eject_or_unmount (row_ref, false);
                 }
             });
          }
@@ -1864,13 +1866,14 @@ namespace Marlin.Places {
                                                   mount_op,
                                                   null,
                                                   (obj, res) => {
+                    bool success = false;
                     try {
-                        drive.eject_with_operation.end (res);
+                        success = drive.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
                         warning ("Error ejecting drive: %s", error.message);
                     }
-                    finish_eject_or_unmount (row_ref);
+                    finish_eject_or_unmount (row_ref, success);
                 });
                 return;
             }
@@ -1881,13 +1884,14 @@ namespace Marlin.Places {
                                                    mount_op,
                                                    null,
                                                    (obj, res) => {
+                    bool success = false;
                     try {
-                        volume.eject_with_operation.end (res);
+                        success = volume.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
                         warning ("Error ejecting volume: %s", error.message);
                     }
-                    finish_eject_or_unmount (row_ref);
+                    finish_eject_or_unmount (row_ref, success);
                 });
                 return;
             }
@@ -1898,26 +1902,27 @@ namespace Marlin.Places {
                                                   mount_op,
                                                   null,
                                                   (obj, res) => {
+                    bool success = false;
                     try {
-                        mount.eject_with_operation.end (res);
+                        success = mount.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
                         warning ("Error ejecting mount: %s", error.message);
                     }
-                    finish_eject_or_unmount (row_ref);
+                    finish_eject_or_unmount (row_ref, success);
                 });
                 return;
             }
-            finish_eject_or_unmount (row_ref);
+            finish_eject_or_unmount (row_ref, false);
         }
 
-        private void finish_eject_or_unmount (Gtk.TreeRowReference? row_ref) {
+        private void finish_eject_or_unmount (Gtk.TreeRowReference? row_ref, bool success) {
             ejecting_or_unmounting = false;
             if (row_ref != null && row_ref.valid ()) {
                 Gtk.TreeIter iter;
                 if (store.get_iter (out iter, row_ref.get_path ())) {
                     store.@set (iter, Column.SHOW_SPINNER, false);
-                    store.@set (iter, Column.SHOW_EJECT, false);
+                    store.@set (iter, Column.SHOW_EJECT, !success); /* continue to show eject if did not succeed */
                 }
             }
             /* Delay reconnecting volume monitor - we do not need to respond to signals consequent on
