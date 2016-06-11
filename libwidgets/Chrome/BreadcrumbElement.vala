@@ -20,7 +20,7 @@
 
 public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
-    private static const int ICON_MARGIN = 3;
+    private const int ICON_MARGIN = 3;
     private string icon_name; /*For testing */
     private Gdk.Pixbuf? icon = null;
     private int icon_width;

@@ -428,8 +428,9 @@ namespace FM {
         }
 
         protected void freeze_updates () {
+            /* As this gets called before View closes (without a corresponding unfreeze),
+             * it must not freeze the directory, which may be being used by other views */
             updates_frozen = true;
-            slot.directory.freeze_update = true;
             action_set_enabled (selection_actions, "cut", false);
             action_set_enabled (common_actions, "copy", false);
             action_set_enabled (common_actions, "paste_into", false);
@@ -439,17 +440,18 @@ namespace FM {
             clipboard.changed.disconnect (on_clipboard_changed);
             view.enter_notify_event.disconnect (on_enter_notify_event);
             view.key_press_event.disconnect (on_view_key_press_event);
-            slot.directory.block_monitor ();
         }
 
         protected void unfreeze_updates () {
             updates_frozen = false;
-            slot.directory.freeze_update = false;
             update_menu_actions ();
             size_allocate.connect (on_size_allocate);
             clipboard.changed.connect (on_clipboard_changed);
             view.enter_notify_event.connect (on_enter_notify_event);
             view.key_press_event.connect (on_view_key_press_event);
+
+            /* It should do no harm to ensure the directory is not frozen as well */
+            slot.directory.freeze_update = false;
             slot.directory.unblock_monitor ();
         }
 
@@ -2553,7 +2555,7 @@ namespace FM {
             } else {
                 action_files = selected_files;
             }
- 
+
             return action_files;
         }
 
@@ -2717,6 +2719,20 @@ namespace FM {
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
 
+                    if (only_alt_pressed && event.keyval == Gdk.Key.Down) {
+                        /* Only open a single selected folder */
+                        unowned GLib.List<GOF.File> selection = get_selected_files ();
+                        if (selection != null &&
+                            selection.length () == 1 && 
+                            selection.data.is_folder ()) {
+
+                            load_location (selection.data.location);
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+
                     if (linear_select_required && selected_files.length () > 0) { /* Only true for Icon View */
                         Gtk.TreePath? path = get_path_at_cursor ();
                         if (path != null) {
@@ -2836,7 +2852,14 @@ namespace FM {
                 /* cannot get file info while network disconnected */
                 if (slot.directory.is_local || NetworkMonitor.get_default ().get_network_available ()) {
                     /* cannot get file info while network disconnected. */
-                    item_hovered (file);
+                    GOF.File? target_file;
+                    if (file != null && slot.directory.is_recent) {
+                        target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
+                        target_file.ensure_query_info ();
+                    } else {
+                        target_file = file;
+                    }
+                    item_hovered (target_file);
                     hover_path = path;
                 }
             }
@@ -2976,16 +2999,7 @@ namespace FM {
                 if (!style_context.has_class (MESSAGE_CLASS))
                     style_context.add_class (MESSAGE_CLASS);
 
-
-                if (slot.directory.permission_denied) {
-                    layout.set_markup (slot.denied_message, -1);
-                } else if (slot.directory.is_trash) {
-                    layout.set_markup (slot.empty_trash_message, -1);
-                } else if (slot.directory.is_recent) {
-                    layout.set_markup (slot.empty_recents_message, -1);
-                } else {
-                    layout.set_markup (slot.empty_message, -1);
-                }
+                layout.set_markup (slot.get_empty_message (), -1);
 
                 Pango.Rectangle? extents = null;
                 layout.get_extents (null, out extents);

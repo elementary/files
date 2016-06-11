@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-14 14:20-0500\n"
-"PO-Revision-Date: 2016-05-04 12:40+0000\n"
+"POT-Creation-Date: 2016-06-05 09:53-0500\n"
+"PO-Revision-Date: 2016-05-31 10:09+0000\n"
 "Last-Translator: colindemian <dengmengpc@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-05-15 05:25+0000\n"
-"X-Generator: Launchpad (build 18025)\n"
+"X-Launchpad-Export-Date: 2016-06-06 05:12+0000\n"
+"X-Generator: Launchpad (build 18086)\n"
 "Language: \n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -317,11 +317,11 @@ msgstr "没有指定 URL 字段"
 msgid "Invalid desktop file"
 msgstr "无效的桌面文件"
 
-#: ../libcore/gof-file.c:2272
+#: ../libcore/gof-file.c:2275
 msgid "Slashes are not allowed in filenames"
 msgstr "文件名中不能出现斜线"
 
-#: ../libcore/gof-file.c:2292
+#: ../libcore/gof-file.c:2295
 msgid "Toplevel files cannot be renamed"
 msgstr "无法重命名顶级文件"
 
@@ -527,7 +527,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "此分卷回收站中的所有项目将会被永久删除。"
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1443
+#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1462
 msgid "Empty _Trash"
 msgstr "清空回收站(_T)"
 
@@ -1437,108 +1437,108 @@ msgstr "设为默认"
 msgid "Ignore"
 msgstr "忽略"
 
-#: ../src/View/Sidebar.vala:453
+#: ../src/View/Sidebar.vala:472
 msgid "Personal"
 msgstr "个人"
 
-#: ../src/View/Sidebar.vala:454
+#: ../src/View/Sidebar.vala:473
 msgid "Your common places and bookmarks"
 msgstr "您的常用位置和书签"
 
-#: ../src/View/Sidebar.vala:466 ../src/View/ViewContainer.vala:317
+#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:314
 msgid "Home"
 msgstr "主页"
 
-#: ../src/View/Sidebar.vala:473
+#: ../src/View/Sidebar.vala:492
 msgid "Open your personal folder"
 msgstr "打开您的个人文件夹"
 
-#: ../src/View/Sidebar.vala:488
+#: ../src/View/Sidebar.vala:507
 msgid "View the list of recently used files"
 msgstr "查看最近使用的文件列表"
 
-#: ../src/View/Sidebar.vala:509 ../libwidgets/Resources.vala:88
+#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:88
 msgid "Trash"
 msgstr "回收站"
 
-#: ../src/View/Sidebar.vala:516
+#: ../src/View/Sidebar.vala:535
 msgid "Open the Trash"
 msgstr "打开回收站"
 
-#: ../src/View/Sidebar.vala:520
+#: ../src/View/Sidebar.vala:539
 msgid "Devices"
 msgstr "设备"
 
-#: ../src/View/Sidebar.vala:521
+#: ../src/View/Sidebar.vala:540
 msgid "Your local partitions and devices"
 msgstr "您的本地分区和设备"
 
-#: ../src/View/Sidebar.vala:527 ../src/View/PropertiesWindow.vala:1602
-#: ../src/View/ViewContainer.vala:319 ../libwidgets/Resources.vala:91
+#: ../src/View/Sidebar.vala:546 ../src/View/PropertiesWindow.vala:1602
+#: ../src/View/ViewContainer.vala:316 ../libwidgets/Resources.vala:91
 msgid "File System"
 msgstr "文件系统"
 
-#: ../src/View/Sidebar.vala:645 ../libwidgets/Resources.vala:85
+#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:85
 msgid "Network"
 msgstr "网络"
 
-#: ../src/View/Sidebar.vala:646
+#: ../src/View/Sidebar.vala:665
 msgid "Your network places"
 msgstr "您的网络位置"
 
-#: ../src/View/Sidebar.vala:678
+#: ../src/View/Sidebar.vala:697
 msgid "Entire Network"
 msgstr "整个网络"
 
-#: ../src/View/Sidebar.vala:685
+#: ../src/View/Sidebar.vala:704
 msgid "Browse the contents of the network"
 msgstr "浏览网络内容"
 
-#: ../src/View/Sidebar.vala:773
+#: ../src/View/Sidebar.vala:792
 msgid "Unknown type"
-msgstr ""
+msgstr "未知类型"
 
-#: ../src/View/Sidebar.vala:797
+#: ../src/View/Sidebar.vala:816
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s 可用， 共计 %s)"
 
-#: ../src/View/Sidebar.vala:1281
+#: ../src/View/Sidebar.vala:1300
 msgid "Unable to start %s"
 msgstr "无法启动 %s"
 
-#: ../src/View/Sidebar.vala:1385
+#: ../src/View/Sidebar.vala:1404
 msgid "Open"
 msgstr "打开"
 
-#: ../src/View/Sidebar.vala:1393
+#: ../src/View/Sidebar.vala:1412
 msgid "Open in New _Tab"
 msgstr "在新标签中打开(_T)"
 
-#: ../src/View/Sidebar.vala:1399
+#: ../src/View/Sidebar.vala:1418
 msgid "Open in New _Window"
 msgstr "在新窗口中打开(_W)"
 
-#: ../src/View/Sidebar.vala:1407
+#: ../src/View/Sidebar.vala:1426
 msgid "Remove"
 msgstr "移除"
 
-#: ../src/View/Sidebar.vala:1415 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1434 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "重命名"
 
-#: ../src/View/Sidebar.vala:1424
+#: ../src/View/Sidebar.vala:1443
 msgid "_Mount"
 msgstr "挂载(_M)"
 
-#: ../src/View/Sidebar.vala:1430
+#: ../src/View/Sidebar.vala:1449
 msgid "_Unmount"
 msgstr "卸载(_U)"
 
-#: ../src/View/Sidebar.vala:1436
+#: ../src/View/Sidebar.vala:1455
 msgid "_Eject"
 msgstr "弹出(_E)"
 
-#: ../src/View/Sidebar.vala:1450 ../src/View/PropertiesWindow.vala:291
+#: ../src/View/Sidebar.vala:1469 ../src/View/PropertiesWindow.vala:291
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "属性"
@@ -1559,7 +1559,7 @@ msgstr "类型"
 msgid "Modified"
 msgstr "已修改"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:343
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:340
 msgid "This Folder Does Not Exist"
 msgstr "此文件夹不存在"
 
@@ -1585,107 +1585,119 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractDirectoryView.vala:551
+#: ../src/View/AbstractDirectoryView.vala:553
 msgid "Failed to preview"
 msgstr "预览失败"
 
-#: ../src/View/AbstractDirectoryView.vala:805
+#: ../src/View/AbstractDirectoryView.vala:807
 msgid "Cannot open this file"
-msgstr ""
+msgstr "不能打开此文件"
 
-#: ../src/View/AbstractDirectoryView.vala:818
+#: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "不能识别文件类型并打开"
 
-#: ../src/View/AbstractDirectoryView.vala:1549
+#: ../src/View/AbstractDirectoryView.vala:1551
 msgid "Cannot drop this file"
 msgstr "无法放置此文件"
 
-#: ../src/View/AbstractDirectoryView.vala:1549
+#: ../src/View/AbstractDirectoryView.vala:1551
 msgid "Invalid file name provided"
 msgstr "提供的文件名无效"
 
-#: ../src/View/AbstractDirectoryView.vala:1993
+#: ../src/View/AbstractDirectoryView.vala:1995
 msgid "Invalid"
 msgstr "无效"
 
-#: ../src/View/AbstractDirectoryView.vala:2008
+#: ../src/View/AbstractDirectoryView.vala:2001
 msgid "Run"
 msgstr "运行"
 
-#: ../src/View/AbstractDirectoryView.vala:2013
+#: ../src/View/AbstractDirectoryView.vala:2006
 msgid "Open in %s"
 msgstr "在 %s 中打开"
 
-#: ../src/View/AbstractDirectoryView.vala:2023
+#: ../src/View/AbstractDirectoryView.vala:2016
 msgid "Open in"
 msgstr "使用其他方式打开"
 
-#: ../src/View/AbstractDirectoryView.vala:2025
+#: ../src/View/AbstractDirectoryView.vala:2018
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr "打开方式"
 
-#: ../src/View/AbstractDirectoryView.vala:2085
+#: ../src/View/AbstractDirectoryView.vala:2078
 msgid "Other Application"
 msgstr "其他应用程序"
 
-#: ../src/View/AbstractDirectoryView.vala:2358
+#: ../src/View/AbstractDirectoryView.vala:2338
 msgid "Untitled %s"
 msgstr "未命名 %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2772
+#: ../src/View/AbstractDirectoryView.vala:2773
 msgid "Cannot copy files that are in the trash"
 msgstr "无法复制回收站中的文件"
 
-#: ../src/View/AbstractDirectoryView.vala:2773
+#: ../src/View/AbstractDirectoryView.vala:2774
 msgid "Cutting the selection instead"
 msgstr "更改选中项为剪切"
 
-#: ../src/View/OverlayBar.vala:188 ../src/View/PropertiesWindow.vala:1515
+#: ../src/View/OverlayBar.vala:211 ../src/View/PropertiesWindow.vala:1515
 msgid "%u folders"
 msgstr "%u 个文件夹"
 
-#: ../src/View/OverlayBar.vala:190 ../src/View/OverlayBar.vala:198
+#: ../src/View/OverlayBar.vala:213 ../src/View/OverlayBar.vala:221
 msgid " and %u other item (%s) selected"
 msgstr " 和 %u 其他项目(%s)已被选中"
 
-#: ../src/View/OverlayBar.vala:191 ../src/View/OverlayBar.vala:199
+#: ../src/View/OverlayBar.vala:214 ../src/View/OverlayBar.vala:222
 msgid " and %u other items (%s) selected"
 msgstr " 和 %u 个其他条目 - 已选中(%s)"
 
-#: ../src/View/OverlayBar.vala:194 ../src/View/OverlayBar.vala:202
+#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
 msgid " selected"
 msgstr " 已选中"
 
-#: ../src/View/OverlayBar.vala:196 ../src/View/PropertiesWindow.vala:1486
+#: ../src/View/OverlayBar.vala:219 ../src/View/PropertiesWindow.vala:1486
 #: ../src/View/PropertiesWindow.vala:1525
 msgid "%u folder"
 msgstr "%u 个文件夹"
 
-#: ../src/View/OverlayBar.vala:204
+#: ../src/View/OverlayBar.vala:227
 msgid "%u items selected (%s)"
 msgstr "已选中 %u 个条目 (%s)"
 
-#: ../src/View/OverlayBar.vala:240
+#: ../src/View/OverlayBar.vala:268
 msgid "%u sub-folder, "
 msgstr "%u 子文件夹， "
 
-#: ../src/View/OverlayBar.vala:240
+#: ../src/View/OverlayBar.vala:268
 msgid "%u sub-folders, "
 msgstr "%u 子文件夹， "
 
-#: ../src/View/OverlayBar.vala:245
+#: ../src/View/OverlayBar.vala:274
 msgid "%u file, "
 msgstr "%u 文件， "
 
-#: ../src/View/OverlayBar.vala:245
+#: ../src/View/OverlayBar.vala:274
 msgid "%u files, "
 msgstr "%u 文件， "
 
-#: ../src/View/OverlayBar.vala:250
+#: ../src/View/OverlayBar.vala:284
+msgid "%s approx."
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:287
 msgid "unknown size"
 msgstr "未知大小"
+
+#: ../src/View/OverlayBar.vala:291
+msgid "%u file not readable"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:291
+msgid "%u files not readable"
+msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:186
 msgid "Close"
@@ -1905,43 +1917,43 @@ msgstr "%s （%d%% 已用）"
 msgid "Unknown"
 msgstr "未知"
 
-#: ../src/View/ViewContainer.vala:328
+#: ../src/View/ViewContainer.vala:325
 msgid "(as Administrator)"
 msgstr "(以管理员身份)"
 
-#: ../src/View/ViewContainer.vala:344
+#: ../src/View/ViewContainer.vala:341
 msgid "You cannot create a folder here."
 msgstr "无法在此位置新建文件夹。"
 
-#: ../src/View/ViewContainer.vala:346
+#: ../src/View/ViewContainer.vala:343
 msgid "This Folder Does Not Belong to You"
 msgstr "此文件夹不属于您"
 
-#: ../src/View/ViewContainer.vala:347
+#: ../src/View/ViewContainer.vala:344
 msgid "You don't have permission to view this folder."
 msgstr "您没有权限查看该文件夹。"
 
-#: ../src/View/ViewContainer.vala:349
+#: ../src/View/ViewContainer.vala:346
 msgid "Unable to Mount Folder"
 msgstr "无法挂载文件夹"
 
-#: ../src/View/ViewContainer.vala:350
+#: ../src/View/ViewContainer.vala:347
 msgid "Could not connect to the server for this folder."
 msgstr "无法连接到此文件夹所在服务器"
 
-#: ../src/View/ViewContainer.vala:352
+#: ../src/View/ViewContainer.vala:349
 msgid "Unable show Folder"
 msgstr "无法显示文件夹"
 
-#: ../src/View/ViewContainer.vala:353
+#: ../src/View/ViewContainer.vala:350
 msgid "The server for this folder could not be located."
 msgstr "无法定位此文件夹的位置。"
 
-#: ../src/View/ViewContainer.vala:363
+#: ../src/View/ViewContainer.vala:360
 msgid "File not Found"
 msgstr "文件未找到"
 
-#: ../src/View/ViewContainer.vala:364
+#: ../src/View/ViewContainer.vala:361
 msgid "The file selected no longer exists."
 msgstr "选中的文件已不存在。"
 
@@ -2085,24 +2097,24 @@ msgstr "在新窗口中打开"
 msgid "Open in Other Application…"
 msgstr "用其他应用程序打开..."
 
-#: ../libwidgets/View/LocationBar.vala:161
+#: ../libwidgets/View/LocationBar.vala:166
 msgid "Reload this folder"
 msgstr "重新载入此文件夹"
 
-#: ../libwidgets/View/LocationBar.vala:164
+#: ../libwidgets/View/LocationBar.vala:169
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
 msgid "Enter search term or path"
 msgstr "输入关键词或位置"
 
-#: ../libwidgets/View/SearchResults.vala:179
+#: ../libwidgets/View/SearchResults.vala:180
 msgid "In This Folder"
 msgstr "在此文件夹中"
 
-#: ../libwidgets/View/SearchResults.vala:181
+#: ../libwidgets/View/SearchResults.vala:182
 msgid "Bookmarks"
 msgstr "书签"
 
-#: ../libwidgets/View/SearchResults.vala:183
+#: ../libwidgets/View/SearchResults.vala:184
 msgid "Everywhere Else"
 msgstr "其它地方"
 
@@ -2114,6 +2126,7 @@ msgstr "一款简洁、强大的文件管理器"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Cirno https://launchpad.net/~cirno-mainasuk\n"
 "  Coiby Xu https://launchpad.net/~coiby\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Deker https://launchpad.net/~hepin1989\n"
