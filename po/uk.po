@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-05 09:53-0500\n"
-"PO-Revision-Date: 2016-05-20 12:45+0000\n"
-"Last-Translator: Alex Bereza <bereza.alex@gmail.com>\n"
+"PO-Revision-Date: 2016-06-13 20:34+0000\n"
+"Last-Translator: Roman Sytnyk <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-06-06 05:11+0000\n"
-"X-Generator: Launchpad (build 18086)\n"
+"X-Launchpad-Export-Date: 2016-06-14 06:16+0000\n"
+"X-Generator: Launchpad (build 18097)\n"
 "Language: uk\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1817,7 +1817,7 @@ msgstr "%u файли, "
 
 #: ../src/View/OverlayBar.vala:284
 msgid "%s approx."
-msgstr ""
+msgstr "приблизно %s"
 
 #: ../src/View/OverlayBar.vala:287
 msgid "unknown size"
@@ -1825,11 +1825,11 @@ msgstr "невідомий розмір"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "%u file not readable"
-msgstr ""
+msgstr "Файл %u недоступний для читання"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "%u files not readable"
-msgstr ""
+msgstr "Файли %u недоступні для читання"
 
 #: ../src/View/PropertiesWindow.vala:186
 msgid "Close"
@@ -2272,6 +2272,7 @@ msgstr ""
 "  Mykola https://launchpad.net/~mykaua\n"
 "  Nazar https://launchpad.net/~n-suhovich\n"
 "  Robert Buckswheat https://launchpad.net/~tarqinn\n"
+"  Roman Sytnyk https://launchpad.net/~roman-sytnyk\n"
 "  Sergey Hordiyenko https://launchpad.net/~phrippy2\n"
 "  Sergey Koptev https://launchpad.net/~djdante\n"
 "  Sergey Kostyuk https://launchpad.net/~ks-hot-ua\n"
@@ -2407,7 +2408,7 @@ msgstr "Показати приховані файли"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Показати Remote Thumbnails"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"

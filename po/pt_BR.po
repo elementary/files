@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-05 09:53-0500\n"
-"PO-Revision-Date: 2016-05-16 16:46+0000\n"
-"Last-Translator: Leonardo Lemos <Unknown>\n"
+"PO-Revision-Date: 2016-06-14 00:30+0000\n"
+"Last-Translator: Anderson Rodrigues <andersrodigrue@live.com>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-06-06 05:11+0000\n"
-"X-Generator: Launchpad (build 18086)\n"
+"X-Launchpad-Export-Date: 2016-06-14 06:16+0000\n"
+"X-Generator: Launchpad (build 18097)\n"
 "Language: pt_BR\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1780,7 +1780,7 @@ msgstr "%u arquivos, "
 
 #: ../src/View/OverlayBar.vala:284
 msgid "%s approx."
-msgstr ""
+msgstr "% aprox."
 
 #: ../src/View/OverlayBar.vala:287
 msgid "unknown size"
@@ -1788,11 +1788,11 @@ msgstr "tamanho desconhecido"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "%u file not readable"
-msgstr ""
+msgstr "% arquivo não legível"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "%u files not readable"
-msgstr ""
+msgstr "% arquivos não legíveis"
 
 #: ../src/View/PropertiesWindow.vala:186
 msgid "Close"
@@ -2225,6 +2225,7 @@ msgstr ""
 "  Adolfo Jayme https://launchpad.net/~fitojb\n"
 "  Alex https://launchpad.net/~asw-ijuhy\n"
 "  Aluísio Augusto Silva Gonçalves https://launchpad.net/~aluisio.asg\n"
+"  Anderson Rodrigues https://launchpad.net/~andersrodigrue\n"
 "  Arthur Bergamaschi https://launchpad.net/~arthurbergmz\n"
 "  Bruno Raphael Cabral de Mesquita https://launchpad.net/~brunoraphael\n"
 "  Cleiton Floss https://launchpad.net/~cleitonfloss\n"
@@ -2246,6 +2247,7 @@ msgstr ""
 "  Paulo Lieuthier https://launchpad.net/~paulolieuthier\n"
 "  Rafael Belenos Govannon https://launchpad.net/~belenos\n"
 "  Rafael Leandro https://launchpad.net/~crf-rafa\n"
+"  Raniel Carvalho https://launchpad.net/~raniel-carvalho\n"
 "  Renato Melo https://launchpad.net/~renatin-melo\n"
 "  Rodrigo Nunes de Castro https://launchpad.net/~rodrigondec\n"
 "  Thiago https://launchpad.net/~thiagoalves\n"

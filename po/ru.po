@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-05 09:53-0500\n"
-"PO-Revision-Date: 2016-06-07 21:40+0000\n"
+"PO-Revision-Date: 2016-06-13 07:36+0000\n"
 "Last-Translator: Maxim Taranov <png2378@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-06-08 05:46+0000\n"
+"X-Launchpad-Export-Date: 2016-06-14 06:16+0000\n"
 "X-Generator: Launchpad (build 18097)\n"
+"Language: ru\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -1844,7 +1845,7 @@ msgstr "Общие"
 
 #: ../src/View/PropertiesWindow.vala:369
 msgid "More"
-msgstr "Еще"
+msgstr "Ещё"
 
 #: ../src/View/PropertiesWindow.vala:394
 msgid "Preview"
@@ -1896,7 +1897,7 @@ msgstr "MIME-тип:"
 
 #: ../src/View/PropertiesWindow.vala:669
 msgid "loading ..."
-msgstr "загрузка..."
+msgstr "загрузка…"
 
 #: ../src/View/PropertiesWindow.vala:682
 msgid "MimeTypes:"
@@ -2054,7 +2055,7 @@ msgstr "(как Администратор)"
 
 #: ../src/View/ViewContainer.vala:341
 msgid "You cannot create a folder here."
-msgstr "Вы не можете создать здесь папку"
+msgstr "Вы не можете создать папку здесь."
 
 #: ../src/View/ViewContainer.vala:343
 msgid "This Folder Does Not Belong to You"
@@ -2118,7 +2119,7 @@ msgstr "Новом окне"
 
 #: ../src/Application.vala:154
 msgid "Quit Files."
-msgstr "Выйти"
+msgstr "Выйти."
 
 #: ../src/Application.vala:156
 msgid "Enable debug logging"
@@ -2228,7 +2229,7 @@ msgstr "Открыть в новом окне"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:458
 msgid "Open in Other Application…"
-msgstr "Открыть в другом приложении..."
+msgstr "Открыть в другом приложении…"
 
 #: ../libwidgets/View/LocationBar.vala:166
 msgid "Reload this folder"
@@ -2428,7 +2429,7 @@ msgstr "Показывать скрытые файлы"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr "Показать удаленные эскизы"
+msgstr "Показать удалённые эскизы"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
