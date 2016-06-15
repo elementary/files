@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-05 09:53-0500\n"
-"PO-Revision-Date: 2016-01-07 15:16+0000\n"
-"Last-Translator: amrit <amrit.singh.bains@live.com>\n"
+"PO-Revision-Date: 2016-06-14 13:20+0000\n"
+"Last-Translator: Ashish Saini <sainiashish08@gmail.com>\n"
 "Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-06-06 05:10+0000\n"
-"X-Generator: Launchpad (build 18086)\n"
+"X-Launchpad-Export-Date: 2016-06-15 06:13+0000\n"
+"X-Generator: Launchpad (build 18097)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
-msgstr ""
+msgstr "क्लिपबोर्ड पर कुछ पेस्ट करने के लिए नहीं है"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -28,11 +28,11 @@ msgstr "एसएसएच"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "सार्वजनिक लोगिन सहित"
+msgstr "सार्वजनिक FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "लोगिन सहित"
+msgstr "FTP (लॉगिन सहित)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
@@ -44,11 +44,11 @@ msgstr "विंडोज़ शेयर"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr "वेब-डीएवी (HTTP)"
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr "सुरक्षित वेब-डीएवी (HTTP)"
+msgstr "सुरक्षित WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
@@ -70,19 +70,19 @@ msgstr "फोल्डर \"%s\" नहीं खोल सकता है \"%
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "\"%s\" में सर्वर ढूँढा नहीं जा सकता."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "पुन: कोशिश करें"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "कृपया अपने उपयोगकर्ता विवरण की पुष्टि करें."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr ""
+msgstr "जारी रखें"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
@@ -91,11 +91,11 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr ""
+msgstr "सर्वर से संयोजन करें"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr ""
+msgstr "सर्वर विवरण"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
@@ -2166,6 +2166,7 @@ msgstr "एक सरल और शक्तिशाली फ़ाइल प�
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Ashish Saini https://launchpad.net/~sainiashish08\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Siddhant Pathak https://launchpad.net/~sid02phi\n"
 "  amrit https://launchpad.net/~amrit-singh-bains"
