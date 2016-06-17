@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2011 ammonkey <am.monkeyd@gmail.com>
- * 
+ *
  * Marlin is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * Marlin is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -401,8 +401,8 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
     return FALSE;
 }
 
-static void 
-marlin_dropbox_real_directory_loaded (MarlinPluginsBase *base, void *user_data) 
+static void
+marlin_dropbox_real_directory_loaded (MarlinPluginsBase *base, void *user_data)
 {
     /*GOFFile *file;
 
@@ -414,8 +414,8 @@ marlin_dropbox_real_directory_loaded (MarlinPluginsBase *base, void *user_data)
 
 }
 
-static void 
-marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file) 
+static void
+marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
 {
     MarlinDropbox *cvs = MARLIN_DROPBOX (base);
 
@@ -438,7 +438,7 @@ marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
         stored_filename == NULL) {
 
         if (stored_filename != NULL && cmp != 0) {
-            /* this happens when the filename changes name on a file obj 
+            /* this happens when the filename changes name on a file obj
                but changed_cb isn't called */
             g_object_weak_unref(G_OBJECT(file), (GWeakNotify) when_file_dies, cvs);
             g_hash_table_remove(cvs->obj2filename, file);
@@ -567,8 +567,8 @@ menu_item_cb(GtkWidget *item, MenuCallbackData *cb_data)
 }
 
 static void
-marlin_dropbox_parse_menu(gchar			    **options,
-                          GtkWidget		    *menu,
+marlin_dropbox_parse_menu(gchar             **options,
+                          GtkWidget         *menu,
                           MarlinPluginsBase *base,
                           GOFFile           *file)
 {
@@ -601,7 +601,7 @@ marlin_dropbox_parse_menu(gchar			    **options,
         cb_data->cvs = cvs;
         cb_data->verb = g_strdup (verb);
         cb_data->file = file;
-            
+
         g_object_weak_ref (G_OBJECT (menu), (GWeakNotify) free_menu_cb_data, cb_data);
 
         /* Deprecated ? */
@@ -663,8 +663,8 @@ get_file_items_callback(GHashTable *response, gpointer ud)
     g_async_queue_unref(reply_queue);
 }
 
-static void 
-marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *files) 
+static void
+marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *files)
 {
     MarlinDropbox *cvs = MARLIN_DROPBOX (base);
     GOFFile *file;
@@ -728,7 +728,7 @@ marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *fi
     GHashTable *context_options_response = g_async_queue_timed_pop(reply_queue, &gtv);
     g_async_queue_unref(reply_queue);
 
-    if (!context_options_response) 
+    if (!context_options_response)
         return;
 
     /*
@@ -757,7 +757,7 @@ marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *fi
 
 }
 
-static void 
+static void
 marlin_dropbox_class_init (MarlinDropboxClass *klass) {
     MarlinPluginsBaseClass *object_class = MARLIN_PLUGINS_BASE_CLASS (klass);
     //g_type_class_add_private (klass, sizeof (MarlinDropboxPrivate));
@@ -769,7 +769,7 @@ marlin_dropbox_class_init (MarlinDropboxClass *klass) {
 }
 
 
-static void 
+static void
 marlin_dropbox_init (MarlinDropbox *cvs) {
     //self->priv = MARLIN_DROPBOX_GET_PRIVATE (self);
     //self->priv = g_new0 (MarlinDropboxPrivate, 1);
@@ -808,7 +808,7 @@ marlin_dropbox_init (MarlinDropbox *cvs) {
 }
 
 
-static void 
+static void
 marlin_dropbox_finalize (MarlinPluginsBase* obj) {
     MarlinDropbox * self = MARLIN_DROPBOX (obj);
 

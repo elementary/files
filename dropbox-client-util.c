@@ -58,27 +58,27 @@ dropbox_client_util_command_parse_arg(const gchar *line, GHashTable *return_tabl
   gchar **argval;
   guint len;
   gboolean retval;
-  
+
   argval = g_strsplit(line, "\t", 0);
   len = g_strv_length(argval);
 
   /*  debug("parsed: (%d) %s", len, line); */
-  
+
   if (len > 1) {
     int i;
     gchar **vals;
-    
+
     vals = g_new(gchar *, len);
     vals[len - 1] = NULL;
-    
+
     for (i = 1; argval[i] != NULL; i++) {
       vals[i-1] = dropbox_client_util_desanitize(argval[i]);
-      
+
     }
-    
+
     g_hash_table_insert(return_table,
-			dropbox_client_util_desanitize(argval[0]),
-			vals);
+            dropbox_client_util_desanitize(argval[0]),
+            vals);
     retval = TRUE;
   }
   else {

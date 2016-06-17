@@ -162,7 +162,7 @@ static void my_g_hash_table_get_keys_helper(gpointer key,
 
 static GList *my_g_hash_table_get_keys(GHashTable *ght) {
     GList *list = NULL;
-    g_hash_table_foreach(ght, (GHFunc) 
+    g_hash_table_foreach(ght, (GHFunc)
                          my_g_hash_table_get_keys_helper, &list);
     return list;
 }
@@ -187,31 +187,31 @@ send_command_to_db(GIOChannel *chan, const gchar *command_name,
     g_assert(command_name != NULL);
 
 
-#define WRITE_OR_DIE_SANI(s,l) {					\
-    gchar *sani_s;							\
-    sani_s = dropbox_client_util_sanitize(s);				\
-    iostat = g_io_channel_write_chars(chan, sani_s,l, &bytes_trans,	\
-                                      &tmp_error);			\
-    g_free(sani_s);							\
-    if (iostat == G_IO_STATUS_ERROR ||					\
-        iostat == G_IO_STATUS_AGAIN) {					\
-        if (tmp_error != NULL) {						\
-            g_propagate_error(err, tmp_error);				\
-        }									\
-        return NULL;							\
-    }									\
+#define WRITE_OR_DIE_SANI(s,l) {                    \
+    gchar *sani_s;                          \
+    sani_s = dropbox_client_util_sanitize(s);               \
+    iostat = g_io_channel_write_chars(chan, sani_s,l, &bytes_trans, \
+                                      &tmp_error);          \
+    g_free(sani_s);                         \
+    if (iostat == G_IO_STATUS_ERROR ||                  \
+        iostat == G_IO_STATUS_AGAIN) {                  \
+        if (tmp_error != NULL) {                        \
+            g_propagate_error(err, tmp_error);              \
+        }                                   \
+        return NULL;                            \
+    }                                   \
 }
 
-#define WRITE_OR_DIE(s,l) {						\
-    iostat = g_io_channel_write_chars(chan, s,l, &bytes_trans,		\
-                                      &tmp_error);			\
-    if (iostat == G_IO_STATUS_ERROR ||					\
-        iostat == G_IO_STATUS_AGAIN) {					\
-        if (tmp_error != NULL) {						\
-            g_propagate_error(err, tmp_error);				\
-        }									\
-        return NULL;							\
-    }									\
+#define WRITE_OR_DIE(s,l) {                     \
+    iostat = g_io_channel_write_chars(chan, s,l, &bytes_trans,      \
+                                      &tmp_error);          \
+    if (iostat == G_IO_STATUS_ERROR ||                  \
+        iostat == G_IO_STATUS_AGAIN) {                  \
+        if (tmp_error != NULL) {                        \
+            g_propagate_error(err, tmp_error);              \
+        }                                   \
+        return NULL;                            \
+    }                                   \
 }
 
     /* send command to server */
@@ -281,7 +281,7 @@ else if (iostat == G_IO_STATUS_EOF) {
 
 /* if the response was okay */
 if (strncmp(line, "ok\n", 3) == 0) {
-    GHashTable *return_table = 
+    GHashTable *return_table =
         g_hash_table_new_full((GHashFunc) g_str_hash,
                               (GEqualFunc) g_str_equal,
                               (GDestroyNotify) g_free,
@@ -502,7 +502,7 @@ check_connection(GIOChannel *chan) {
     }
 
     iostat = g_io_channel_read_chars(chan, fake_buf,
-                                     sizeof(fake_buf), 
+                                     sizeof(fake_buf),
                                      &bytes_read, &tmp_error);
 
     ret = g_io_channel_set_flags(chan, flags, NULL);
@@ -539,7 +539,7 @@ end_request(DropboxCommand *dc) {
             finish_general_command(dgcr);
         }
             break;
-        default: 
+        default:
             g_assert_not_reached();
             break;
         }
@@ -613,13 +613,13 @@ dropbox_command_client_thread(DropboxCommandClient *dcc) {
                     }
 
                     if (connect(sock, (struct sockaddr *) &addr, addr_len) < 0) {
-                        /*	    debug("couldn't connect to command server after 1 second"); */
+                        /*      debug("couldn't connect to command server after 1 second"); */
                         break;
                     }
                 }
                 /* errno != EINPROGRESS */
                 else {
-                    /*	  debug("bad connection"); */
+                    /*    debug("bad connection"); */
                     break;
                 }
             }
@@ -656,10 +656,10 @@ dropbox_command_client_thread(DropboxCommandClient *dcc) {
         g_io_channel_set_close_on_unref(chan, TRUE);
         g_io_channel_set_line_term(chan, "\n", -1);
 
-#define SET_CONNECTED_STATE(s)     {			\
-    g_mutex_lock(dcc->command_connected_mutex);	\
-    dcc->command_connected = s;			\
-    g_mutex_unlock(dcc->command_connected_mutex);	\
+#define SET_CONNECTED_STATE(s)     {            \
+    g_mutex_lock(dcc->command_connected_mutex); \
+    dcc->command_connected = s;         \
+    g_mutex_unlock(dcc->command_connected_mutex);   \
 }
 
         SET_CONNECTED_STATE(TRUE);
@@ -703,7 +703,7 @@ dropbox_command_client_thread(DropboxCommandClient *dcc) {
                 do_general_command(chan, (DropboxGeneralCommand *) dc, &gerr);
             }
                 break;
-            default: 
+            default:
                 g_assert_not_reached();
                 break;
             }
@@ -711,7 +711,7 @@ dropbox_command_client_thread(DropboxCommandClient *dcc) {
             debug("done.");
 
             if (gerr != NULL) {
-                //	debug("COMMAND ERROR*****************************");
+                //  debug("COMMAND ERROR*****************************");
                 /* mark this request as never to be completed */
                 end_request(dc);
 
@@ -831,7 +831,7 @@ dropbox_command_client_start(DropboxCommandClient *dcc) {
 }
 
 /* thread safe */
-void dropbox_command_client_send_simple_command(DropboxCommandClient *dcc, 
+void dropbox_command_client_send_simple_command(DropboxCommandClient *dcc,
                                                 const char *command) {
     DropboxGeneralCommand *dgc;
 
@@ -849,7 +849,7 @@ void dropbox_command_client_send_simple_command(DropboxCommandClient *dcc,
 /* thread safe */
 /* this is the C API, there is another send_command_to_db
    that is more the actual over the wire command */
-void dropbox_command_client_send_command(DropboxCommandClient *dcc, 
+void dropbox_command_client_send_command(DropboxCommandClient *dcc,
                                          MarlinDropboxCommandResponseHandler h,
                                          gpointer ud,
                                          const char *command, ...) {

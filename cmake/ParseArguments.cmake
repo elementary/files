@@ -1,6 +1,6 @@
 ##
 # This is a helper Macro to parse optional arguments in Macros/Functions
-# It has been taken from the public CMake wiki.  
+# It has been taken from the public CMake wiki.
 # See http://www.cmake.org/Wiki/CMakeMacroParseArguments for documentation and
 # licensing.
 ##
@@ -26,9 +26,9 @@ macro(parse_arguments prefix arg_names option_names)
       set(loption_names ${option_names})
       list(FIND loption_names "${arg}" is_option)
       if(is_option GREATER -1)
-	    set(${prefix}_${arg} TRUE)
+        set(${prefix}_${arg} TRUE)
       else(is_option GREATER -1)
-	    set(current_arg_list ${current_arg_list} ${arg})
+        set(current_arg_list ${current_arg_list} ${arg})
       endif(is_option GREATER -1)
     endif(is_arg_name GREATER -1)
   endforeach(arg)

@@ -67,7 +67,7 @@ typedef GHookFunc DropboxCommandClientConnectHook;
 typedef struct {
   GMutex *command_connected_mutex;
   gboolean command_connected;
-  GAsyncQueue *command_queue; 
+  GAsyncQueue *command_queue;
   GList *ca_hooklist;
   GHookList onconnect_hooklist;
   GHookList ondisconnect_hooklist;
@@ -87,26 +87,26 @@ void
 dropbox_command_client_start(DropboxCommandClient *dcc);
 
 void dropbox_command_client_send_simple_command(DropboxCommandClient *dcc,
-						const char *command);
+                        const char *command);
 
-void dropbox_command_client_send_command(DropboxCommandClient *dcc, 
-					 MarlinDropboxCommandResponseHandler h,
-					 gpointer ud,
-					 const char *command, ...);
+void dropbox_command_client_send_command(DropboxCommandClient *dcc,
+                     MarlinDropboxCommandResponseHandler h,
+                     gpointer ud,
+                     const char *command, ...);
 void
 dropbox_command_client_add_on_connect_hook(DropboxCommandClient *dcc,
-					   DropboxCommandClientConnectHook dhcch,
-					   gpointer ud);
+                       DropboxCommandClientConnectHook dhcch,
+                       gpointer ud);
 
 void
 dropbox_command_client_add_on_disconnect_hook(DropboxCommandClient *dcc,
-					      DropboxCommandClientConnectHook dhcch,
-					      gpointer ud);
+                          DropboxCommandClientConnectHook dhcch,
+                          gpointer ud);
 
 void
 dropbox_command_client_add_connection_attempt_hook(DropboxCommandClient *dcc,
-						   DropboxCommandClientConnectionAttemptHook dhcch,
-						   gpointer ud);
+                           DropboxCommandClientConnectionAttemptHook dhcch,
+                           gpointer ud);
 
 G_END_DECLS
 
