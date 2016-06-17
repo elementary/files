@@ -229,7 +229,12 @@ namespace FM {
         protected bool is_writable = false;
         protected bool is_loading;
         protected bool helpers_shown;
-        protected bool show_remote_thumbnails {get; set; default = false;} 
+        protected bool show_remote_thumbnails {get; set; default = false;}
+        protected bool is_admin {
+            get {
+                return (uint)Posix.getuid () == 0;
+            }
+        }
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -1060,7 +1065,7 @@ namespace FM {
         }
 
         private void on_selection_action_trash (GLib.SimpleAction action, GLib.Variant? param) {
-            trash_or_delete_selected_files (false);
+            trash_or_delete_selected_files (is_admin);
         }
 
         private void on_selection_action_delete (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1904,7 +1909,7 @@ namespace FM {
 
                     menu.append_section (null, clipboard_menu);
 
-                    if (slot.directory.has_trash_dirs)
+                    if (slot.directory.has_trash_dirs && !is_admin)
                         menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
                     else
                         menu.append_section (null, builder.get_object ("delete") as GLib.MenuModel);
@@ -2641,9 +2646,9 @@ namespace FM {
 
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
-                    if (no_mods) {
-                        /* If already in trash, permanently delete the file */
-                        trash_or_delete_selected_files (in_trash);
+                    if (no_mods || is_admin) {
+                        /* If already in trash or running as root, permanently delete the file */
+                        trash_or_delete_selected_files (in_trash || is_admin);
                         return true;
                     } else if (only_shift_pressed) {
                         trash_or_delete_selected_files (true);
@@ -3363,18 +3368,20 @@ namespace FM {
             dir.file.sort_column_id = sort_column_id;
             dir.file.sort_order = sort_order;
 
-            dir.location.set_attributes_async.begin (info,
-                                               GLib.FileQueryInfoFlags.NONE,
-                                               GLib.Priority.DEFAULT,
-                                               null,
-                                               (obj, res) => {
-                try {
-                    GLib.FileInfo inf;
-                    dir.location.set_attributes_async.end (res, out inf);
-                } catch (GLib.Error e) {
-                    warning ("Could not set file attributes - %s", e.message);
-                }
-            });
+            if (!is_admin) {
+                dir.location.set_attributes_async.begin (info,
+                                                   GLib.FileQueryInfoFlags.NONE,
+                                                   GLib.Priority.DEFAULT,
+                                                   null,
+                                                   (obj, res) => {
+                    try {
+                        GLib.FileInfo inf;
+                        dir.location.set_attributes_async.end (res, out inf);
+                    } catch (GLib.Error e) {
+                        warning ("Could not set file attributes - %s", e.message);
+                    }
+                });
+            }
         }
 
         protected void cancel_timeout (ref uint id) {
