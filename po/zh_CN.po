@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-05 09:53-0500\n"
-"PO-Revision-Date: 2016-05-31 10:09+0000\n"
-"Last-Translator: colindemian <dengmengpc@gmail.com>\n"
+"PO-Revision-Date: 2016-06-17 05:08+0000\n"
+"Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-06-06 05:12+0000\n"
-"X-Generator: Launchpad (build 18086)\n"
+"X-Launchpad-Export-Date: 2016-06-17 05:37+0000\n"
+"X-Generator: Launchpad (build 18097)\n"
 "Language: \n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -88,7 +88,7 @@ msgstr "继续"
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr "连接(_O)"
+msgstr "连接"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
@@ -100,23 +100,23 @@ msgstr "服务器详情"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
-msgstr "服务器(_S)："
+msgstr "服务器："
 
 #: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
-msgstr "端口(_P)："
+msgstr "端口："
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr "类型(_T)："
+msgstr "类型："
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
-msgstr "共享(_A)："
+msgstr "共享："
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr "文件夹(_F)："
+msgstr "文件夹："
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
@@ -124,19 +124,19 @@ msgstr "用户详情"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr "域名(_D)："
+msgstr "域名："
 
 #: ../src/marlin-connect-server-dialog.c:1108
 msgid "_User name:"
-msgstr "用户名(_U)："
+msgstr "用户名："
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
-msgstr "密码(_W)："
+msgstr "密码："
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr "记住此密码(_R)"
+msgstr "记住此密码"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
@@ -268,7 +268,7 @@ msgstr "合并"
 
 #: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
-msgstr "为目标选择一个新名称(_S)"
+msgstr "为目标选择新名称"
 
 #: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
@@ -281,11 +281,11 @@ msgstr "将此操作应用到所有文件"
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr "跳过(_S)"
+msgstr "跳过"
 
 #: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
-msgstr "重命名(_N)"
+msgstr "重命名"
 
 #: ../libcore/marlin-file-conflict-dialog.c:759
 msgid "Replace"
@@ -327,7 +327,7 @@ msgstr "无法重命名顶级文件"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr "显示更多细节(_D)"
+msgstr "显示更多细节"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -335,35 +335,35 @@ msgstr " (无效的 Unicode)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr "全部跳过(_K)"
+msgstr "全部跳过"
 
 #: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr "重试(_R)"
+msgstr "重试"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "全部删除(_A)"
+msgstr "全部删除"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr "替换(_R)"
+msgstr "替换"
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr "全部替换(_A)"
+msgstr "全部替换"
 
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr "合并(_M)"
+msgstr "合并"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr "全部合并(_A)"
+msgstr "全部合并"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "强制复制(_A)"
+msgstr "强制复制"
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
@@ -529,7 +529,7 @@ msgstr "此分卷回收站中的所有项目将会被永久删除。"
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1462
 msgid "Empty _Trash"
-msgstr "清空回收站(_T)"
+msgstr "清空回收站"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -584,7 +584,7 @@ msgstr "在获取文件夹“%B”中的信息时出现了一个错误。"
 #: ../libcore/marlin-file-operations.c:1623
 #: ../libcore/marlin-file-operations.c:3738
 msgid "_Skip files"
-msgstr "跳过文件(_S)"
+msgstr "跳过文件"
 
 #: ../libcore/marlin-file-operations.c:1644
 msgid ""
@@ -696,7 +696,7 @@ msgstr "为了重新获取该卷上的剩余空间，必须清空回收站。该
 
 #: ../libcore/marlin-file-operations.c:2417
 msgid "Do _not Empty Trash"
-msgstr "不清空回收站(_N)"
+msgstr "不清空"
 
 #: ../libcore/marlin-file-operations.c:2531
 #, c-format
@@ -802,7 +802,7 @@ msgstr "目标为只读。"
 
 #: ../libcore/marlin-file-operations.c:3115
 msgid "Moving \"%B\" to \"%B\""
-msgstr "正在将“%B”移动到“%B”"
+msgstr "正在将“%B”移至“%B”"
 
 #: ../libcore/marlin-file-operations.c:3116
 msgid "Copying \"%B\" to \"%B\""
@@ -1161,7 +1161,7 @@ msgstr "移动 %d 个项目到“%s”"
 #: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr "将“%s”移动到“%s”"
+msgstr "将“%s”移至“%s”"
 
 #: ../libcore/marlin-undostack-manager.c:1435
 #, c-format
@@ -1186,7 +1186,7 @@ msgstr "移动 %d 个项目到回收站"
 #: ../libcore/marlin-undostack-manager.c:1463
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "将“%s”移动到回收站"
+msgstr "将“%s”移至回收站"
 
 #: ../libcore/marlin-undostack-manager.c:1476
 #, c-format
@@ -1335,11 +1335,11 @@ msgstr[0] "重新重命名 %d 个项目( _R )"
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
-msgstr "重新创建新文件(_R)"
+msgstr "重新创建新文件"
 
 #: ../libcore/marlin-undostack-manager.c:1673
 msgid "_Redo creation of a file from template"
-msgstr "重新从模板创建文件(_R)"
+msgstr "重新从模板创建文件"
 
 #: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
@@ -1418,12 +1418,12 @@ msgstr "正在准备"
 #: ../filechooser-module/FileChooserDialog.vala:61
 #: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
-msgstr "上一个"
+msgstr "后退"
 
 #: ../filechooser-module/FileChooserDialog.vala:65
 #: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
-msgstr "下一个"
+msgstr "前进"
 
 #: ../src/View/Window.vala:210
 msgid "Files isn't your default file manager."
@@ -1488,7 +1488,7 @@ msgstr "您的网络位置"
 
 #: ../src/View/Sidebar.vala:697
 msgid "Entire Network"
-msgstr "整个网络"
+msgstr "网络设备"
 
 #: ../src/View/Sidebar.vala:704
 msgid "Browse the contents of the network"
@@ -1512,15 +1512,15 @@ msgstr "打开"
 
 #: ../src/View/Sidebar.vala:1412
 msgid "Open in New _Tab"
-msgstr "在新标签中打开(_T)"
+msgstr "在新标签中打开"
 
 #: ../src/View/Sidebar.vala:1418
 msgid "Open in New _Window"
-msgstr "在新窗口中打开(_W)"
+msgstr "在新窗口中打开"
 
 #: ../src/View/Sidebar.vala:1426
 msgid "Remove"
-msgstr "移除"
+msgstr "删除"
 
 #: ../src/View/Sidebar.vala:1434 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
@@ -1528,15 +1528,15 @@ msgstr "重命名"
 
 #: ../src/View/Sidebar.vala:1443
 msgid "_Mount"
-msgstr "挂载(_M)"
+msgstr "挂载"
 
 #: ../src/View/Sidebar.vala:1449
 msgid "_Unmount"
-msgstr "卸载(_U)"
+msgstr "卸载"
 
 #: ../src/View/Sidebar.vala:1455
 msgid "_Eject"
-msgstr "弹出(_E)"
+msgstr "弹出"
 
 #: ../src/View/Sidebar.vala:1469 ../src/View/PropertiesWindow.vala:291
 #: ../src/View/directory_view_popup.ui:99
@@ -1685,7 +1685,7 @@ msgstr "%u 文件， "
 
 #: ../src/View/OverlayBar.vala:284
 msgid "%s approx."
-msgstr ""
+msgstr "大约 %s"
 
 #: ../src/View/OverlayBar.vala:287
 msgid "unknown size"
@@ -1693,11 +1693,11 @@ msgstr "未知大小"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u 个文件不可读"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u 个文件不可读"
 
 #: ../src/View/PropertiesWindow.vala:186
 msgid "Close"
@@ -1749,7 +1749,7 @@ msgstr "创建时间："
 
 #: ../src/View/PropertiesWindow.vala:644
 msgid "Modified:"
-msgstr "修改时间:"
+msgstr "修改时间："
 
 #: ../src/View/PropertiesWindow.vala:647
 msgid "Last Access:"
@@ -1806,7 +1806,7 @@ msgstr "用量"
 
 #: ../src/View/PropertiesWindow.vala:837
 msgid "Device usage:"
-msgstr "设备使用率："
+msgstr "使用率："
 
 #: ../src/View/PropertiesWindow.vala:845
 msgid "%s free of %s (%d%% used)"
@@ -1979,7 +1979,7 @@ msgstr "显示程序版本。"
 
 #: ../src/Application.vala:150
 msgid "Open uri(s) in new tab"
-msgstr "在新标签中打开 uri"
+msgstr "在新标签中打开 URI"
 
 #: ../src/Application.vala:152 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -2021,11 +2021,11 @@ msgstr "文件管理器"
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Window"
-msgstr "新建窗口(_W)"
+msgstr "新建窗口"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
-msgstr "新建管理员窗口(_A)"
+msgstr "新建管理员窗口"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
@@ -2099,7 +2099,7 @@ msgstr "用其他应用程序打开..."
 
 #: ../libwidgets/View/LocationBar.vala:166
 msgid "Reload this folder"
-msgstr "重新载入此文件夹"
+msgstr "重新载入"
 
 #: ../libwidgets/View/LocationBar.vala:169
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
@@ -2200,7 +2200,7 @@ msgstr "设为默认"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "连接服务器..."
+msgstr "服务器..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
@@ -2240,7 +2240,7 @@ msgstr "从历史中删除"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr "移动到回收站"
+msgstr "移至回收站"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
