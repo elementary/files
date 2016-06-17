@@ -113,6 +113,12 @@ namespace Marlin.Places {
         /* Remember path at button press */
         Gtk.TreePath? click_path = null;
 
+        bool is_admin {
+            get {
+                return (uint)Posix.getuid () == 0;
+            }
+        }
+
         public signal bool request_focus ();
         public signal void sync_needed ();
 
@@ -522,17 +528,19 @@ namespace Marlin.Places {
                 add_bookmark (iter, bm, index);
             }
 
-            /* Add trash */
-            add_place (Marlin.PlaceType.BUILT_IN,
-                       iter,
-                       _("Trash"),
-                       Marlin.TrashMonitor.get_icon (),
-                       Marlin.TRASH_URI,
-                       null,
-                       null,
-                       null,
-                       index + n_builtins_before,
-                       _("Open the Trash"));
+            if (!is_admin) {
+                /* Add trash */
+                add_place (Marlin.PlaceType.BUILT_IN,
+                           iter,
+                           _("Trash"),
+                           Marlin.TrashMonitor.get_icon (),
+                           Marlin.TRASH_URI,
+                           null,
+                           null,
+                           null,
+                           index + n_builtins_before,
+                           _("Open the Trash"));
+            }
 
             /* ADD STORAGE CATEGORY*/
             iter = add_category (Marlin.PlaceType.STORAGE_CATEGORY,
