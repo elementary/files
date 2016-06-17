@@ -43,12 +43,12 @@ typedef struct {
 } HookData;
 
 static gboolean
-try_to_connect(MarlinDropboxHookserv *hookserv);
+try_to_connect(PFDropboxHookserv *hookserv);
 
 static gboolean
 handle_hook_server_input(GIOChannel *chan,
                          GIOCondition cond,
-                         MarlinDropboxHookserv *hookserv) {
+                         PFDropboxHookserv *hookserv) {
     /*debug_enter(); */
 
     /* we have some sweet macros defined that allow us to write this
@@ -123,7 +123,7 @@ handle_hook_server_input(GIOChannel *chan,
 }
 
 static void
-watch_killer(MarlinDropboxHookserv *hookserv) {
+watch_killer(PFDropboxHookserv *hookserv) {
     debug("hook client disconnected");
 
     hookserv->connected = FALSE;
@@ -152,7 +152,7 @@ watch_killer(MarlinDropboxHookserv *hookserv) {
 }
 
 static gboolean
-try_to_connect(MarlinDropboxHookserv *hookserv) {
+try_to_connect(PFDropboxHookserv *hookserv) {
     /* create socket */
     hookserv->socket = socket(PF_UNIX, SOCK_STREAM, 0);
 
@@ -258,7 +258,7 @@ FAIL_CLEANUP:
 
 /* should only be called in glib main loop */
 /* returns a gboolean because it is a GSourceFunc */
-gboolean marlin_dropbox_hooks_force_reconnect(MarlinDropboxHookserv *hookserv) {
+gboolean pf_dropbox_hooks_force_reconnect(PFDropboxHookserv *hookserv) {
     debug_enter();
 
     if (hookserv->connected == FALSE) {
@@ -280,12 +280,12 @@ gboolean marlin_dropbox_hooks_force_reconnect(MarlinDropboxHookserv *hookserv) {
 }
 
 gboolean
-marlin_dropbox_hooks_is_connected(MarlinDropboxHookserv *hookserv) {
+pf_dropbox_hooks_is_connected(PFDropboxHookserv *hookserv) {
     return hookserv->connected;
 }
 
 void
-marlin_dropbox_hooks_setup(MarlinDropboxHookserv *hookserv) {
+pf_dropbox_hooks_setup(PFDropboxHookserv *hookserv) {
     hookserv->dispatch_table = g_hash_table_new_full((GHashFunc) g_str_hash,
                                                      (GEqualFunc) g_str_equal,
                                                      g_free, g_free);
@@ -296,7 +296,7 @@ marlin_dropbox_hooks_setup(MarlinDropboxHookserv *hookserv) {
 }
 
 void
-marlin_dropbox_hooks_add_on_disconnect_hook(MarlinDropboxHookserv *hookserv,
+pf_dropbox_hooks_add_on_disconnect_hook(PFDropboxHookserv *hookserv,
                                             DropboxHookClientConnectHook dhcch,
                                             gpointer ud) {
     GHook *newhook;
@@ -309,7 +309,7 @@ marlin_dropbox_hooks_add_on_disconnect_hook(MarlinDropboxHookserv *hookserv,
 }
 
 void
-marlin_dropbox_hooks_add_on_connect_hook(MarlinDropboxHookserv *hookserv,
+pf_dropbox_hooks_add_on_connect_hook(PFDropboxHookserv *hookserv,
                                          DropboxHookClientConnectHook dhcch,
                                          gpointer ud) {
     GHook *newhook;
@@ -321,7 +321,7 @@ marlin_dropbox_hooks_add_on_connect_hook(MarlinDropboxHookserv *hookserv,
     g_hook_append(&(hookserv->onconnect_hooklist), newhook);
 }
 
-void marlin_dropbox_hooks_add(MarlinDropboxHookserv *ndhs,
+void pf_dropbox_hooks_add(PFDropboxHookserv *ndhs,
                               const gchar *hook_name,
                               DropboxUpdateHook hook, gpointer ud) {
     HookData *hd;
@@ -332,6 +332,6 @@ void marlin_dropbox_hooks_add(MarlinDropboxHookserv *ndhs,
 }
 
 void
-marlin_dropbox_hooks_start(MarlinDropboxHookserv *hookserv) {
+pf_dropbox_hooks_start(PFDropboxHookserv *hookserv) {
     try_to_connect(hookserv);
 }

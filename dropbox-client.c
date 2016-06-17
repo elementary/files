@@ -62,7 +62,7 @@ command_on_disconnect(DropboxClient *dc) {
     dc->hook_disconnect_called = dc->command_disconnect_called = FALSE;
   }
   else {
-    marlin_dropbox_hooks_force_reconnect(&(dc->hookserv));
+    pf_dropbox_hooks_force_reconnect(&(dc->hookserv));
   }
 }
 
@@ -84,7 +84,7 @@ hook_on_disconnect(DropboxClient *dc) {
 gboolean
 dropbox_client_is_connected(DropboxClient *dc) {
   return (dropbox_command_client_is_connected(&(dc->dcc)) &&
-      marlin_dropbox_hooks_is_connected(&(dc->hookserv)));
+      pf_dropbox_hooks_is_connected(&(dc->hookserv)));
 }
 
 void
@@ -92,14 +92,14 @@ dropbox_client_force_reconnect(DropboxClient *dc) {
   if (dropbox_client_is_connected(dc) == TRUE) {
     debug("forcing client to reconnect");
     dropbox_command_client_force_reconnect(&(dc->dcc));
-    marlin_dropbox_hooks_force_reconnect(&(dc->hookserv));
+    pf_dropbox_hooks_force_reconnect(&(dc->hookserv));
   }
 }
 
 /* should only be called once on initialization */
 void
 dropbox_client_setup(DropboxClient *dc) {
-  marlin_dropbox_hooks_setup(&(dc->hookserv));
+  pf_dropbox_hooks_setup(&(dc->hookserv));
   dropbox_command_client_setup(&(dc->dcc));
 
   g_hook_list_init(&(dc->ondisconnect_hooklist), sizeof(GHook));
@@ -108,7 +108,7 @@ dropbox_client_setup(DropboxClient *dc) {
   dc->hook_disconnect_called = dc->command_disconnect_called = FALSE;
   dc->hook_connect_called = dc->command_connect_called = FALSE;
 
-  marlin_dropbox_hooks_add_on_connect_hook(&(dc->hookserv),
+  pf_dropbox_hooks_add_on_connect_hook(&(dc->hookserv),
                          (DropboxHookClientConnectHook)
                          hook_on_connect, dc);
 
@@ -116,7 +116,7 @@ dropbox_client_setup(DropboxClient *dc) {
                          (DropboxCommandClientConnectHook)
                          command_on_connect, dc);
 
-  marlin_dropbox_hooks_add_on_disconnect_hook(&(dc->hookserv),
+  pf_dropbox_hooks_add_on_disconnect_hook(&(dc->hookserv),
                         (DropboxHookClientConnectHook)
                         hook_on_disconnect, dc);
 
@@ -168,6 +168,6 @@ dropbox_client_add_connection_attempt_hook(DropboxClient *dc,
 void
 dropbox_client_start(DropboxClient *dc) {
   debug("starting connections");
-  marlin_dropbox_hooks_start(&(dc->hookserv));
+  pf_dropbox_hooks_start(&(dc->hookserv));
   dropbox_command_client_start(&(dc->dcc));
 }

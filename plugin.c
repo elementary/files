@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2011 ammonkey <am.monkeyd@gmail.com>
  *
- * Marlin is free software: you can redistribute it and/or modify it
+ * PantheonFiles is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Marlin is distributed in the hope that it will be useful, but
+ * PantheonFiles is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
@@ -21,14 +21,10 @@
 #include "g-util.h"
 #include "plugin.h"
 
-//static gpointer marlin_dropbox_parent_class = NULL;
-
-//#define MARLIN_DROPBOX_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), MARLIN_TYPE_DROPBOX, MarlinDropboxPrivate))
-
-G_DEFINE_TYPE (MarlinDropbox, marlin_dropbox, MARLIN_PLUGINS_TYPE_BASE);
+G_DEFINE_TYPE (PFDropbox, pf_dropbox, MARLIN_PLUGINS_TYPE_BASE);
 
 typedef struct {
-    MarlinDropbox   *cvs;
+    PFDropbox   *cvs;
     gchar           *verb;
     GOFFile         *file;
 } MenuCallbackData;
@@ -42,21 +38,31 @@ free_menu_cb_data (gpointer data, GObject *where_the_object_was)
     g_free (cb_data);
 }
 
-static char *db_emblems[] = {"dropbox-uptodate", "dropbox-syncing", "dropbox-unsyncable", "web", "people", "photos", "star"};
-static char *emblems[] = {"emblem-ubuntuone-synchronized", "emblem-ubuntuone-updating", "dropbox-unsyncable", "emblem-web", "emblem-people", "emblem-photos", "emblem-star"};
-//gchar *DEFAULT_EMBLEM_PATHS[2] = { EMBLEMDIR , NULL };
+static char *db_emblems[] = {"dropbox-uptodate",    \
+                             "dropbox-syncing",     \
+                             "dropbox-unsyncable",  \
+                             "dropbox-selsync",     \
+                             "dropbox-app",         \
+                             "web",                 \
+                             "people",              \
+                             "photos",              \
+                             "star"};
 
-static void marlin_dropbox_finalize (MarlinPluginsBase* obj);
+static char *emblems[] = {"process-completed-symbolic",      \
+                          "aptdaemon-upgrade",               \
+                          "process-error-symbolic",          \
+                          "aptdaemon-upgrade",               \
+                          "dropbox-app",                     \
+                          "applications-internet",           \
+                          "avatar-default",                  \
+                          "emblem-photos-symbolic",          \
+                          "emblem-favorite-symbolic"};
+
+static void pf_dropbox_finalize (MarlinPluginsBase* obj);
 
 static gpointer _g_object_ref0 (gpointer self) {
     return self ? g_object_ref (self) : NULL;
 }
-
-/*static gchar* current_path = NULL;
-  static gboolean menu_added = FALSE;
-  static GSettings* settings = NULL;
-  static GList *menus = NULL;
-  static GtkWidget *menu;*/
 
 /* probably my favorite function */
 static gchar *
@@ -94,7 +100,7 @@ reset_file(GOFFile *file) {
 }
 
 gboolean
-reset_all_files(MarlinDropbox *cvs) {
+reset_all_files(PFDropbox *cvs) {
     /* Only run this on the main loop or you'll cause problems. */
 
     /* this works because you can call a function pointer with
@@ -104,7 +110,7 @@ reset_all_files(MarlinDropbox *cvs) {
 }
 
 static void
-when_file_dies(MarlinDropbox *cvs, GOFFile *file) {
+when_file_dies(PFDropbox *cvs, GOFFile *file) {
     gchar *filename;
 
     filename = g_hash_table_lookup(cvs->obj2filename, file);
@@ -121,140 +127,20 @@ when_file_dies(MarlinDropbox *cvs, GOFFile *file) {
     g_hash_table_remove(cvs->obj2filename, file);
 }
 
-/*****/
-#if 0
-gboolean
-add_emblem_paths(GHashTable* emblem_paths_response)
-{
-    /* Only run this on the main loop or you'll cause problems. */
-    if (!emblem_paths_response)
-        return FALSE;
-
-    gchar **emblem_paths_list;
-    int i;
-
-    GtkIconTheme *theme = gtk_icon_theme_get_default();
-
-    if (emblem_paths_response &&
-        (emblem_paths_list = g_hash_table_lookup(emblem_paths_response, "path"))) {
-        for (i = 0; emblem_paths_list[i] != NULL; i++) {
-            if (emblem_paths_list[i][0])
-                gtk_icon_theme_append_search_path(theme, emblem_paths_list[i]);
-        }
-    }
-    g_hash_table_unref(emblem_paths_response);
-    return FALSE;
-}
-
-gboolean
-remove_emblem_paths(GHashTable* emblem_paths_response)
-{
-    /* Only run this on the main loop or you'll cause problems. */
-    if (!emblem_paths_response)
-        return FALSE;
-
-    gchar **emblem_paths_list = g_hash_table_lookup(emblem_paths_response, "path");
-    if (!emblem_paths_list)
-        goto exit;
-
-    // We need to remove the old paths.
-    GtkIconTheme * icon_theme = gtk_icon_theme_get_default();
-    gchar ** paths;
-    gint path_count;
-
-    gtk_icon_theme_get_search_path(icon_theme, &paths, &path_count);
-
-    gint i, j, out = 0;
-    gboolean found = FALSE;
-    for (i = 0; i < path_count; i++) {
-        gboolean keep = TRUE;
-        for (j = 0; emblem_paths_list[j] != NULL; j++) {
-            if (emblem_paths_list[j][0]) {
-                if (!g_strcmp0(paths[i], emblem_paths_list[j])) {
-                    found = TRUE;
-                    keep = FALSE;
-                    g_free(paths[i]);
-                    break;
-                }
-            }
-        }
-        if (keep) {
-            paths[out] = paths[i];
-            out++;
-        }
-    }
-
-    /* If we found one we need to reset the path to
-       accomodate the changes */
-    if (found) {
-        paths[out] = NULL; /* Clear the last one */
-        gtk_icon_theme_set_search_path(icon_theme, (const gchar **)paths, out);
-    }
-
-    g_strfreev(paths);
-exit:
-    g_hash_table_unref(emblem_paths_response);
-    return FALSE;
-}
-
-void get_emblem_paths_cb(GHashTable *emblem_paths_response, MarlinDropbox *cvs)
-{
-    if (!emblem_paths_response) {
-        emblem_paths_response = g_hash_table_new((GHashFunc) g_str_hash,
-                                                 (GEqualFunc) g_str_equal);
-        //FIXME
-        //g_hash_table_insert(emblem_paths_response, "path", DEFAULT_EMBLEM_PATHS);
-    } else {
-        /* Increase the ref so that finish_general_command doesn't delete it. */
-        g_hash_table_ref(emblem_paths_response);
-    }
-
-    g_mutex_lock(cvs->emblem_paths_mutex);
-    if (cvs->emblem_paths) {
-        g_idle_add((GSourceFunc) remove_emblem_paths, cvs->emblem_paths);
-        cvs->emblem_paths = NULL;
-    }
-    cvs->emblem_paths = emblem_paths_response;
-    g_mutex_unlock(cvs->emblem_paths_mutex);
-
-    g_idle_add((GSourceFunc) add_emblem_paths, g_hash_table_ref(emblem_paths_response));
-    g_idle_add((GSourceFunc) reset_all_files, cvs);
-}
-#endif
 
 static void
-on_connect(MarlinDropbox *cvs) {
+on_connect(PFDropbox *cvs) {
     reset_all_files(cvs);
-
-    g_message ("%s", G_STRFUNC);
-    //amtest
-    /* We don't necessarly need the original dropbox icons */
-    /*dropbox_command_client_send_command(&(cvs->dc.dcc),
-      (MarlinDropboxCommandResponseHandler) get_emblem_paths_cb,
-      cvs, "get_emblem_paths", NULL);*/
 }
 
 static void
-on_disconnect(MarlinDropbox *cvs) {
+on_disconnect(PFDropbox *cvs) {
     reset_all_files(cvs);
-
-    //FIXME
-    g_message ("%s", G_STRFUNC);
-    //amtest
-#if 0
-    g_mutex_lock(cvs->emblem_paths_mutex);
-    /* This call will free the data too. */
-    g_idle_add((GSourceFunc) remove_emblem_paths, cvs->emblem_paths);
-    cvs->emblem_paths = NULL;
-    g_mutex_unlock(cvs->emblem_paths_mutex);
-#endif
 }
 
 static void
-handle_shell_touch(GHashTable *args, MarlinDropbox *cvs) {
+handle_shell_touch(GHashTable *args, PFDropbox *cvs) {
     gchar **path;
-
-    //  debug_enter();
 
     if ((path = g_hash_table_lookup(args, "path")) != NULL &&
         path[0][0] == '/') {
@@ -292,12 +178,8 @@ translate_emblem (char *str)
 }
 
 gboolean
-marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
-
+pf_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
     char *str_emblem;
-
-    //debug_enter();
-    //NautilusOperationResult result = NAUTILUS_OPERATION_FAILED;
 
     if (!dficr->dfic->cancelled) {
         gchar **status = NULL;
@@ -311,10 +193,9 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
             int i;
             for ( i = 0; status[i] != NULL; i++) {
                 if (status[i][0]) {
-                    //g_message ("emblem %s", status[i]);
-                    if ((str_emblem = translate_emblem (status[i])) != NULL)
+                    if ((str_emblem = translate_emblem (status[i])) != NULL) {
                         gof_file_add_emblem(dficr->dfic->file, str_emblem);
-                    else
+                    } else
                         g_warning ("emblem %s not found - %s", status[i], dficr->dfic->file->uri);
                 }
             }
@@ -333,16 +214,16 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
             if (isdir &&
                 (tag = g_hash_table_lookup(dficr->folder_tag_response, "tag")) != NULL) {
                 if (strcmp("public", tag[0]) == 0) {
-                    gof_file_add_emblem(dficr->dfic->file, "emblem-web");
+                    gof_file_add_emblem(dficr->dfic->file, emblems[5]);
                 }
                 else if (strcmp("shared", tag[0]) == 0) {
-                    gof_file_add_emblem(dficr->dfic->file, "emblem-people");
+                    gof_file_add_emblem(dficr->dfic->file, emblems[6]);
                 }
                 else if (strcmp("photos", tag[0]) == 0) {
-                    gof_file_add_emblem(dficr->dfic->file, "emblem-photos");
+                    gof_file_add_emblem(dficr->dfic->file, emblems[7]);
                 }
                 else if (strcmp("sandbox", tag[0]) == 0) {
-                    gof_file_add_emblem(dficr->dfic->file, "emblem-star");
+                    gof_file_add_emblem(dficr->dfic->file, emblems[8]);
                 }
             }
 
@@ -358,28 +239,18 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
             else if (strcmp("unsyncable", status[0]) == 0) {
                 emblem_code = 3;
             }
+            else if (strcmp("selsync", status[0]) == 0) {
+                emblem_code = 4;
+            }
+            else if (strcmp("app", status[0]) == 0) {
+                emblem_code = 5;
+            }
 
             if (emblem_code > 0) {
-                /*
-                   debug("%s to %s", emblems[emblem_code-1],
-                   g_filename_from_uri(dficr->dfic->file->uri,
-                   NULL, NULL));
-                   */
-                //FIXME
-                g_message ("emblem code %d", emblem_code);
                 gof_file_add_emblem(dficr->dfic->file, emblems[emblem_code-1]);
             }
         }
     }
-
-    /* complete the info request */
-    //FIXME
-    /*if (!dropbox_use_operation_in_progress_workaround) {
-      nautilus_info_provider_update_complete_invoke(dficr->dfic->update_complete,
-      dficr->dfic->provider,
-      (NautilusOperationHandle*) dficr->dfic,
-      result);
-      }*/
 
     /* destroy the objects we created */
     if (dficr->file_status_response != NULL)
@@ -390,8 +261,6 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
         g_hash_table_unref(dficr->emblems_response);
 
     /* unref the objects we didn't create */
-    //FIXME
-    //g_closure_unref(dficr->dfic->update_complete);
     g_object_unref(dficr->dfic->file);
 
     /* now free the structs */
@@ -402,22 +271,15 @@ marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *dficr) {
 }
 
 static void
-marlin_dropbox_real_directory_loaded (MarlinPluginsBase *base, void *user_data)
+pf_dropbox_real_directory_loaded (MarlinPluginsBase *base, void *user_data)
 {
-    /*GOFFile *file;
-
-    GObject *obj = ((GObject**) user_data)[2];
-    file = g_object_ref ((GOFFile *) obj);
-    g_message ("%s : %s", G_STRFUNC, file->uri);*/
-
-    //unref file
 
 }
 
 static void
-marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
+pf_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
 {
-    MarlinDropbox *cvs = MARLIN_DROPBOX (base);
+    PFDropbox *cvs = PF_DROPBOX (base);
 
     gchar *path = NULL;
 
@@ -443,13 +305,7 @@ marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
             g_object_weak_unref(G_OBJECT(file), (GWeakNotify) when_file_dies, cvs);
             g_hash_table_remove(cvs->obj2filename, file);
             g_hash_table_remove(cvs->filename2obj, stored_filename);
-            //g_signal_handlers_disconnect_by_func(file, G_CALLBACK(changed_cb), cvs);
         }
-        //FIXME check
-        /*else if (stored_filename == NULL) {
-          g_critical ("grrrrrrrrr");
-          }*/
-        //#if 0
         else if (stored_filename == NULL) {
             GOFFile *f2;
 
@@ -463,15 +319,12 @@ marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
                    just remove the association to the older file object, it's obsolete
                    */
                 g_object_weak_unref(G_OBJECT(f2), (GWeakNotify) when_file_dies, cvs);
-                //g_signal_handlers_disconnect_by_func(f2, G_CALLBACK(changed_cb), cvs);
+
                 g_hash_table_remove(cvs->filename2obj, filename);
                 g_hash_table_remove(cvs->obj2filename, f2);
             }
         }
-        //#endif
 
-        /* too chatty */
-        /* debug("adding %s <-> 0x%p", filename, file);*/
         g_object_weak_ref(G_OBJECT(file), (GWeakNotify) when_file_dies, cvs);
         g_hash_table_insert(cvs->filename2obj, g_strdup(filename), file);
         g_hash_table_insert(cvs->obj2filename, file, g_strdup(filename));
@@ -488,25 +341,16 @@ marlin_dropbox_update_file_info (MarlinPluginsBase *base, GOFFile *file)
     dfic->cancelled = FALSE;
     dfic->provider = base;
     dfic->dc.request_type = GET_FILE_INFO;
-    //FIXME
-    //dfic->update_complete = g_closure_ref(update_complete);
     dfic->update_complete = NULL;
     dfic->file = g_object_ref(file);
 
     dropbox_command_client_request(&(cvs->dc.dcc), (DropboxCommand *) dfic);
 
-    //FIXME
-    //*handle = (NautilusOperationHandle *) dfic;
-
-    /*return dropbox_use_operation_in_progress_workaround
-      ? NAUTILUS_OPERATION_COMPLETE
-      : NAUTILUS_OPERATION_IN_PROGRESS;*/
-
     g_free (path);
 }
 
 static char from_hex(gchar ch) {
-    return isdigit(ch) ? ch - '0' : tolower(ch) - 'a' + 10;
+    return g_ascii_isdigit(ch) ? ch - '0' : g_ascii_tolower(ch) - 'a' + 10;
 }
 
 // decode in --> out, but dont fill more than n chars into out
@@ -536,7 +380,7 @@ int GhettoURLDecode(gchar* out, gchar* in, int n) {
 static void
 menu_item_cb(GtkWidget *item, MenuCallbackData *cb_data)
 {
-    MarlinDropbox *cvs = cb_data->cvs;
+    PFDropbox *cvs = cb_data->cvs;
     DropboxGeneralCommand *dcac;
 
     dcac = g_new(DropboxGeneralCommand, 1);
@@ -567,12 +411,12 @@ menu_item_cb(GtkWidget *item, MenuCallbackData *cb_data)
 }
 
 static void
-marlin_dropbox_parse_menu(gchar             **options,
+pf_dropbox_parse_menu(gchar             **options,
                           GtkWidget         *menu,
                           MarlinPluginsBase *base,
                           GOFFile           *file)
 {
-    MarlinDropbox *cvs = MARLIN_DROPBOX (base);
+    PFDropbox *cvs = PF_DROPBOX (base);
     MenuCallbackData *cb_data;
     int i;
 
@@ -593,9 +437,9 @@ marlin_dropbox_parse_menu(gchar             **options,
         GhettoURLDecode(verb, verb, strlen(verb));
         GhettoURLDecode(item_inner, item_inner, strlen(item_inner));
 
-        g_message ("menu %s", item_name);
-        g_message ("verb %s", verb);
-        g_message ("item_inner %s", item_inner);
+        g_debug ("menu %s", item_name);
+        g_debug ("verb %s", verb);
+        g_debug ("item_inner %s", item_inner);
 
         cb_data = g_new0 (MenuCallbackData, 1);
         cb_data->cvs = cvs;
@@ -664,15 +508,12 @@ get_file_items_callback(GHashTable *response, gpointer ud)
 }
 
 static void
-marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *files)
+pf_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *files)
 {
-    MarlinDropbox *cvs = MARLIN_DROPBOX (base);
+    PFDropbox *cvs = PF_DROPBOX (base);
     GOFFile *file;
     gchar *filename_un, *filename;
     int file_count;
-
-    g_message ("%s", G_STRFUNC);
-    //context_menu_new (u1, menu);
 
     cvs->selection = files;
     if ((file_count = g_list_length (cvs->selection)) != 1)
@@ -715,17 +556,17 @@ marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *fi
      */
     dropbox_command_client_request(&(cvs->dc.dcc), (DropboxCommand *) dgc);
 
-    GTimeVal gtv;
+    guint64 gtv;
 
     /*
      * 4. We have to block until it's done because nautilus expects a reply.  But we will
      * only block for 50 ms for a reply.
      */
 
-    g_get_current_time(&gtv);
-    g_time_val_add(&gtv, 50000);
+    gtv = g_get_real_time();
+    gtv  = gtv + 5000;
 
-    GHashTable *context_options_response = g_async_queue_timed_pop(reply_queue, &gtv);
+    GHashTable *context_options_response = g_async_queue_timeout_pop(reply_queue, gtv);
     g_async_queue_unref(reply_queue);
 
     if (!context_options_response)
@@ -739,16 +580,21 @@ marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *fi
     GList *toret = NULL;
 
     if (options && *options && **options)  {
-        GtkWidget *submenu, *root_item;
+        GtkWidget *submenu, *root_item, *separator;
 
-        root_item = gtk_menu_item_new_with_mnemonic (_("Dropbo_x"));
+        root_item = gtk_menu_item_new_with_label (_("Dropbox"));
         submenu = gtk_menu_new ();
         gtk_widget_show (root_item);
         gtk_menu_item_set_submenu ((GtkMenuItem *) root_item,submenu);
+
+        separator = gtk_separator_menu_item_new ();
+        gtk_widget_show (separator);
+        gtk_menu_shell_append ((GtkMenuShell*) menu, separator);
+
         gtk_menu_shell_append ((GtkMenuShell*) menu, root_item);
         plugins->menus = g_list_prepend (plugins->menus, _g_object_ref0 (root_item));
 
-        marlin_dropbox_parse_menu(options, submenu, base, file);
+        pf_dropbox_parse_menu(options, submenu, base, file);
     }
 
     g_hash_table_unref(context_options_response);
@@ -758,22 +604,18 @@ marlin_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *fi
 }
 
 static void
-marlin_dropbox_class_init (MarlinDropboxClass *klass) {
+pf_dropbox_class_init (PFDropboxClass *klass) {
     MarlinPluginsBaseClass *object_class = MARLIN_PLUGINS_BASE_CLASS (klass);
-    //g_type_class_add_private (klass, sizeof (MarlinDropboxPrivate));
 
-    object_class->finalize = marlin_dropbox_finalize;
-    object_class->directory_loaded = marlin_dropbox_real_directory_loaded;
-    object_class->update_file_info = marlin_dropbox_update_file_info;
-    object_class->context_menu = marlin_dropbox_context_menu;
+    object_class->finalize = pf_dropbox_finalize;
+    object_class->directory_loaded = pf_dropbox_real_directory_loaded;
+    object_class->update_file_info = pf_dropbox_update_file_info;
+    object_class->context_menu = pf_dropbox_context_menu;
 }
 
 
 static void
-marlin_dropbox_init (MarlinDropbox *cvs) {
-    //self->priv = MARLIN_DROPBOX_GET_PRIVATE (self);
-    //self->priv = g_new0 (MarlinDropboxPrivate, 1);
-
+pf_dropbox_init (PFDropbox *cvs) {
     cvs->filename2obj = g_hash_table_new_full((GHashFunc) g_str_hash,
                                               (GEqualFunc) g_str_equal,
                                               (GDestroyNotify) g_free,
@@ -782,16 +624,13 @@ marlin_dropbox_init (MarlinDropbox *cvs) {
                                               (GEqualFunc) g_direct_equal,
                                               (GDestroyNotify) NULL,
                                               (GDestroyNotify) g_free);
-    //amtest
-    /*cvs->emblem_paths_mutex = g_mutex_new();
-      cvs->emblem_paths = NULL;*/
 
     /* setup the connection obj*/
     dropbox_client_setup(&(cvs->dc));
 
     /* our hooks */
     /* tricky name: shell_touch signal is used for real time events too (like transfert done event) */
-    marlin_dropbox_hooks_add(&(cvs->dc.hookserv), "shell_touch",
+    pf_dropbox_hooks_add(&(cvs->dc.hookserv), "shell_touch",
                              (DropboxUpdateHook) handle_shell_touch, cvs);
 
     /* add connection handlers */
@@ -809,25 +648,25 @@ marlin_dropbox_init (MarlinDropbox *cvs) {
 
 
 static void
-marlin_dropbox_finalize (MarlinPluginsBase* obj) {
-    MarlinDropbox * self = MARLIN_DROPBOX (obj);
+pf_dropbox_finalize (MarlinPluginsBase* obj) {
+    PFDropbox * self = PF_DROPBOX (obj);
 
-    //_g_object_unref0 (self->priv->trash_monitor);
-    MARLIN_PLUGINS_BASE_CLASS (marlin_dropbox_parent_class)->finalize (obj);
+    MARLIN_PLUGINS_BASE_CLASS (pf_dropbox_parent_class)->finalize (obj);
 }
 
-MarlinDropbox* marlin_dropbox_new () {
-    MarlinDropbox *u1;
+PFDropbox* pf_dropbox_new () {
+    PFDropbox *u1;
 
-    u1 = (MarlinDropbox*) marlin_plugins_base_construct (MARLIN_TYPE_DROPBOX);
+    u1 = (PFDropbox*) marlin_plugins_base_construct (PF_TYPE_DROPBOX);
 
     return u1;
 }
 
 MarlinPluginsBase* module_init()
 {
-    MarlinDropbox* u1 = marlin_dropbox_new ();
+    PFDropbox* u1 = pf_dropbox_new ();
 
     return MARLIN_PLUGINS_BASE (u1);
 }
+
 
