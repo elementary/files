@@ -28,7 +28,7 @@ namespace Marlin.View {
     public class ViewContainer : Gtk.Overlay {
 
         public Gtk.Widget? content_item;
-        public bool can_show_folder = true;
+        public bool can_show_folder = false;
         public string label = "";
         public Marlin.View.Window window;
         public GOF.AbstractSlot? view = null;
@@ -58,6 +58,18 @@ namespace Marlin.View {
             }
         }
 
+        public bool can_go_back {
+            get {
+                return browser.get_can_go_back ();
+            }
+        }
+
+        public bool can_go_forward {
+            get {
+                return browser.get_can_go_forward ();
+            }
+        }
+
         public OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
@@ -66,6 +78,7 @@ namespace Marlin.View {
         public signal void loading (bool is_loading);
         /* To maintain compatibility with existing plugins */
         public signal void path_changed (File file);
+        public signal void active ();
 
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win) {
@@ -264,10 +277,12 @@ namespace Marlin.View {
         }
 
         private void directory_is_loading (GLib.File loc) {
-            loading (true);
             overlay_statusbar.cancel ();
             overlay_statusbar.halign = Gtk.Align.END;
             refresh_slot_info (loc);
+
+            can_show_folder = false;
+            loading (true);
         }
 
         public void plugin_directory_loaded () {
@@ -284,7 +299,7 @@ namespace Marlin.View {
             plugins.directory_loaded ((void*) data);
         }
 
-        public void refresh_slot_info (GLib.File loc) {
+        private void refresh_slot_info (GLib.File loc) {
             update_tab_name (loc);
             window.loading_uri (loc.get_uri ());
             window.update_labels (loc.get_parse_name (), tab_name);
@@ -327,12 +342,10 @@ namespace Marlin.View {
         }
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
-            loading (false);
-            can_show_folder = true;
+            can_show_folder = slot.directory.can_load;
 
             /* First deal with all cases where directory could not be loaded */
-            if (!slot.directory.can_load) {
-                can_show_folder = false;
+            if (!can_show_folder) {
                 if (!slot.directory.file.exists) {
                     if (slot.can_create)
                         content = new DirectoryNotFound (slot.directory, this);
@@ -369,16 +382,13 @@ namespace Marlin.View {
                 content = view.get_content_box ();
                 /* Only record valid folders (will also log Zeitgeist event) */
                 browser.record_uri (slot.uri); /* will ignore null changes i.e reloading*/
-                window.set_can_go_forward (browser.get_can_go_forward ());
                 plugin_directory_loaded ();
             } else {
                 /* Save previous uri but do not record current one */
                 browser.record_uri (null);
-                /* Inactivate the forward button but do not lose existing forward stack */
-                window.set_can_go_forward (false);
             }
-            window.set_can_go_back (browser.get_can_go_back ());
-            window.update_top_menu ();
+
+            loading (false); /* Will cause topmenu to update */
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
 
@@ -403,6 +413,7 @@ namespace Marlin.View {
             if (aslot != null) {
                 /* Since async loading it may not have been determined whether slot is loadable */
                 aslot.set_active_state (is_active);
+                active ();
             }
         }
         

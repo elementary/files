@@ -63,12 +63,6 @@ namespace Marlin.View {
         public ViewContainer? current_tab = null;
         public uint window_number;
 
-        public void set_can_go_forward (bool can) {
-           top_menu.set_can_go_forward (can);
-        }
-        public void set_can_go_back (bool can) {
-           top_menu.set_can_go_back (can);
-        }
         public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
         private bool freeze_view_changes = false;
@@ -449,7 +443,6 @@ namespace Marlin.View {
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             mode = real_mode (mode);
-            update_view_mode (mode);
 
             var content = new View.ViewContainer (this);
             var tab = new Granite.Widgets.Tab ("", null, content);
@@ -460,6 +453,11 @@ namespace Marlin.View {
 
             content.loading.connect ((is_loading) => {
                 tab.working = is_loading;
+                update_top_menu ();
+            });
+
+            content.active.connect (() => {
+                update_top_menu ();
             });
 
             content.update_tab_name (location);
@@ -831,13 +829,6 @@ namespace Marlin.View {
             }
         }
 
-        private void update_view_mode (Marlin.ViewMode mode) { /* Called via update topmenu */
-            GLib.SimpleAction action = get_action ("view_mode");
-            action.set_state (mode_strings [(int)mode]);
-            view_switcher.mode = mode;
-            Preferences.settings.set_enum ("default-viewmode", mode);
-        }
-
         public void quit () {
             top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
 
@@ -1011,15 +1002,22 @@ namespace Marlin.View {
             }
         }
 
-        public void update_top_menu () {
-            if (freeze_view_changes)
+        private void update_top_menu () {
+            if (freeze_view_changes || current_tab == null)
                 return;
 
-            if (current_tab != null) {
-                top_menu.set_back_menu (current_tab.get_go_back_path_list ());
-                top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
-                update_view_mode (current_tab.view_mode);
-            }
+            /* Update browser buttons */
+            top_menu.set_back_menu (current_tab.get_go_back_path_list ());
+            top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
+            top_menu.set_can_go_back (current_tab.can_go_back);
+            top_menu.set_can_go_forward (current_tab.can_show_folder && current_tab.can_go_forward);
+
+            /* Update viewmode switch, action state and settings */
+            var mode = current_tab.view_mode;
+            view_switcher.mode = mode;
+            view_switcher.sensitive = current_tab.can_show_folder;
+            get_action ("view_mode").set_state (mode_strings [(int)mode]);
+            Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
         public void update_labels (string new_path, string tab_name) {
