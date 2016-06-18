@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-05 09:53-0500\n"
-"PO-Revision-Date: 2016-06-17 05:08+0000\n"
+"PO-Revision-Date: 2016-06-17 17:27+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-06-17 05:37+0000\n"
+"X-Launchpad-Export-Date: 2016-06-18 05:57+0000\n"
 "X-Generator: Launchpad (build 18097)\n"
 "Language: \n"
 
@@ -1628,7 +1628,7 @@ msgstr "打开方式"
 
 #: ../src/View/AbstractDirectoryView.vala:2078
 msgid "Other Application"
-msgstr "其他应用程序"
+msgstr "其他应用"
 
 #: ../src/View/AbstractDirectoryView.vala:2338
 msgid "Untitled %s"
@@ -2095,7 +2095,7 @@ msgstr "在新窗口中打开"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:458
 msgid "Open in Other Application…"
-msgstr "用其他应用程序打开..."
+msgstr "用其他应用打开..."
 
 #: ../libwidgets/View/LocationBar.vala:166
 msgid "Reload this folder"
@@ -2264,7 +2264,7 @@ msgstr "显示远程缩略图"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr "新建标签页"
+msgstr "新标签"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
@@ -2304,4 +2304,4 @@ msgstr "日期"
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
-msgstr "反转排序"
+msgstr "倒序"

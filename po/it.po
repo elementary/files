@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-05 09:53-0500\n"
-"PO-Revision-Date: 2016-06-06 17:11+0000\n"
-"Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
+"PO-Revision-Date: 2016-06-17 16:14+0000\n"
+"Last-Translator: Federico Flecchia <federico.flecchia@outlook.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-06-07 05:31+0000\n"
+"X-Launchpad-Export-Date: 2016-06-18 05:57+0000\n"
 "X-Generator: Launchpad (build 18097)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1587,11 +1587,11 @@ msgstr "Esplora il contenuto della rete"
 
 #: ../src/View/Sidebar.vala:792
 msgid "Unknown type"
-msgstr ""
+msgstr "Tipo sconosciuto"
 
 #: ../src/View/Sidebar.vala:816
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s disponibile di %s)"
 
 #: ../src/View/Sidebar.vala:1300
 msgid "Unable to start %s"
@@ -1682,11 +1682,11 @@ msgstr "Impossibile visualizzare in anteprima"
 
 #: ../src/View/AbstractDirectoryView.vala:807
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Impossibile aprire questo file"
 
 #: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Impossibile identificare il tipo di file da aprire"
 
 #: ../src/View/AbstractDirectoryView.vala:1551
 msgid "Cannot drop this file"
@@ -1776,7 +1776,7 @@ msgstr "%u file, "
 
 #: ../src/View/OverlayBar.vala:284
 msgid "%s approx."
-msgstr ""
+msgstr "Circa %s."
 
 #: ../src/View/OverlayBar.vala:287
 msgid "unknown size"
@@ -1784,11 +1784,11 @@ msgstr "dimensioni sconosciute"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "%u file not readable"
-msgstr ""
+msgstr "File %u non leggibile"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "%u files not readable"
-msgstr ""
+msgstr "File %u non leggibili"
 
 #: ../src/View/PropertiesWindow.vala:186
 msgid "Close"
@@ -1832,7 +1832,7 @@ msgstr "sconosciuto"
 
 #: ../src/View/PropertiesWindow.vala:545
 msgid "Contains:"
-msgstr ""
+msgstr "Contiene:"
 
 #: ../src/View/PropertiesWindow.vala:642
 msgid "Created:"
@@ -1931,49 +1931,49 @@ msgstr "Tutti:"
 
 #: ../src/View/PropertiesWindow.vala:1471
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u sottocartelle e %u file"
 
 #: ../src/View/PropertiesWindow.vala:1473
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u sottocartelle e %u file"
 
 #: ../src/View/PropertiesWindow.vala:1476
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u sottocartelle"
 
 #: ../src/View/PropertiesWindow.vala:1481
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u sottocartella e %u file"
 
 #: ../src/View/PropertiesWindow.vala:1483
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u sottocartella e %u file"
 
 #: ../src/View/PropertiesWindow.vala:1492
 #: ../src/View/PropertiesWindow.vala:1531
 msgid "%u files"
-msgstr ""
+msgstr "%u file"
 
 #: ../src/View/PropertiesWindow.vala:1494
 #: ../src/View/PropertiesWindow.vala:1533
 msgid "%u file"
-msgstr ""
+msgstr "%u file"
 
 #: ../src/View/PropertiesWindow.vala:1510
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u elementi selezionati (%u cartelle e %u file)"
 
 #: ../src/View/PropertiesWindow.vala:1512
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u elementi selezionati (%u cartelle e %u file)"
 
 #: ../src/View/PropertiesWindow.vala:1520
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u elementi selezionati (%u cartella e %u file)"
 
 #: ../src/View/PropertiesWindow.vala:1522
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u elementi selezionati (%u cartella e %u file)"
 
 #: ../src/View/PropertiesWindow.vala:1586
 msgid "Disk Properties"
@@ -2222,6 +2222,7 @@ msgstr ""
 "  Alberto Arpaia https://launchpad.net/~albertoarpaia1959\n"
 "  Andrea https://launchpad.net/~andre95d\n"
 "  Andrea https://launchpad.net/~guaccio2209\n"
+"  Angelo https://launchpad.net/~angelo-russi96\n"
 "  Angelo Rako https://launchpad.net/~anrako\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
 "  DSAureli https://launchpad.net/~ds-aureli-deactivatedaccount\n"
@@ -2240,6 +2241,7 @@ msgstr ""
 "  Luca Marelli https://launchpad.net/~luca-mare2000\n"
 "  Mario Guerriero https://launchpad.net/~mefrio-g\n"
 "  Matteo Formenti https://launchpad.net/~matteoformenti1998\n"
+"  Mattia https://launchpad.net/~mattihappy\n"
 "  Vesnar Teach https://launchpad.net/~vesnar\n"
 "  Wonderfulheart https://launchpad.net/~wonderfulheart\n"
 "  alessandro https://launchpad.net/~pepealex98"
@@ -2366,7 +2368,7 @@ msgstr "Mostra file nascosti"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Mostra anteprime remote"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
