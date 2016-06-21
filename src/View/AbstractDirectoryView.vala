@@ -878,8 +878,6 @@ namespace FM {
 
             if (select_added_files)
                 add_gof_file_to_selection (file);
-
-            handle_free_space_change ();
         }
 
         private void handle_free_space_change () {
@@ -1259,12 +1257,13 @@ namespace FM {
         private void on_directory_file_added (GOF.Directory.Async dir, GOF.File? file) {
             if (file != null) {
                 add_file (file, dir);
+                handle_free_space_change ();
             }
         }
 
         private void on_directory_file_loaded (GOF.Directory.Async dir, GOF.File file) {
             select_added_files = false;
-            add_file (file, dir);
+            add_file (file, dir); /* no freespace change signal required */
         }
 
         private void on_directory_file_changed (GOF.Directory.Async dir, GOF.File file) {
@@ -1309,13 +1308,18 @@ namespace FM {
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
-            is_writable = slot.directory.file.is_writable ();
+
             thaw_tree ();
 
-            if (in_recent)
-                model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-            else if (slot.directory.file.info != null) {
-                model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+            if (slot.directory.can_load) {
+                is_writable = slot.directory.file.is_writable ();
+                if (in_recent)
+                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
+                else if (slot.directory.file.info != null) {
+                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+                }
+            } else {
+                is_writable = false;
             }
 
             /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
@@ -2126,7 +2130,7 @@ namespace FM {
         }
 
         private void update_menu_actions () {
-            if (updates_frozen)
+            if (updates_frozen || !slot.directory.can_load)
                 return;
 
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
