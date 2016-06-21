@@ -2138,6 +2138,7 @@ namespace FM {
             bool only_folders = selection_only_contains_folders (selection);
             bool can_rename = false;
             bool can_show_properties = false;
+            bool can_copy = false;
 
             if (!(in_recent && selection_count > 1))
                 can_show_properties = true;
@@ -2161,7 +2162,7 @@ namespace FM {
             update_paste_action_enabled (single_folder);
             update_select_all_action ();
             update_menu_actions_sort ();
-
+            can_copy = file.is_readable(); 
             bool can_open = can_open_file (file);
             action_set_enabled (common_actions, "open_in", only_folders);
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
@@ -2182,10 +2183,7 @@ namespace FM {
                                  file.is_smb_server ());
 
             action_set_enabled (common_actions, "bookmark", can_bookmark);
-
-            /**TODO** inhibit copy for unreadable files see bug #1392465*/
-
-            action_set_enabled (common_actions, "copy", !in_trash);
+            action_set_enabled (common_actions, "copy", !in_trash && can_copy);
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
         }
 
