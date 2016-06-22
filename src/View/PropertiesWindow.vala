@@ -24,7 +24,7 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
     protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Overlay file_img;
 
-    protected void pack_header_box (Gtk.Widget image, Gtk.Widget title) {
+    protected void pack_header_box (Gtk.Overlay image, Gtk.Widget title) {
         image.set_valign (Gtk.Align.CENTER);
 
         title.get_style_context ().add_class ("h2");
@@ -98,9 +98,9 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         if (value_container != null) {
             value_container.set_size_request (150, -1);
             information.attach_next_to (value_container, key_label, Gtk.PositionType.RIGHT, 3, 1);
-        }
-        else
+        } else {
             information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+        }
 
         line++;
     }
