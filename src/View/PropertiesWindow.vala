@@ -24,8 +24,9 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
     protected Gtk.Box content_vbox;
     protected Gtk.Grid header_box;
     protected Gtk.StackSwitcher stack_switcher;
+    protected Gtk.Overlay file_img;
 
-    protected void pack_header_box (Gtk.Image image, Gtk.Widget title) {
+    protected void pack_header_box (Gtk.Widget image, Gtk.Widget title) {
         image.set_valign (Gtk.Align.CENTER);
 
         title.get_style_context ().add_class ("h2");
@@ -37,58 +38,36 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         header_box.add (title);
     }
 
-    protected Gdk.Pixbuf overlay_emblems (Gdk.Pixbuf icon, List<string>? emblems_list) {
-        /* Add space around the pixbuf for emblems */
-        var icon_pix = new Gdk.Pixbuf (icon.colorspace,
-                                       icon.has_alpha,
-                                       icon.bits_per_sample,
-                                       64, 64);
+    protected Gtk.Overlay create_file_img (Gdk.Pixbuf icon, List<string>? emblems_list) {
+        var file_icon = new Gtk.Image.from_pixbuf (icon);
 
-        /* Emblems can be displayed simply by using a GEmblemedIcon but that gives no
-         * control over the size and position of the emblems so we create a composite pixbuf */
+        file_img = new Gtk.Overlay ();
+        file_img.set_size_request (48, 48);
+        file_img.add_overlay (file_icon);
 
-        icon_pix.fill (0);
-        icon.composite (icon_pix,
-                        8, 8,
-                        48, 48,
-                        8, 8,
-                        1.0, 1.0,
-                        Gdk.InterpType.NEAREST,
-                        255);
-
-        /* Composite in the emblems, if any */
-        Gdk.Pixbuf? pixbuf = null;
         if (emblems_list != null) {
-            var theme = Gtk.IconTheme.get_default ();
             int pos = 0;
-            foreach (string emblem_name in emblems_list) {
-                Gtk.IconInfo? info = theme.lookup_icon (emblem_name, 16, Gtk.IconLookupFlags.FORCE_SIZE);
-                if (info == null)
-                    continue;
+            var emblem_grid = new Gtk.Grid ();
+            emblem_grid.orientation = Gtk.Orientation.VERTICAL;
+            emblem_grid.halign = Gtk.Align.END;
+            emblem_grid.valign = Gtk.Align.END;
 
-                try {
-                    pixbuf = info.load_icon ();
-                    /* Emblems drawn in a vertical column to the right of the icon */
-                    pixbuf.composite (icon_pix,
-                                      44, 44 - pos * 17,
-                                      16, 16,
-                                      44.0, 44.0 - pos * 17.0,
-                                      1.0, 1.0,
-                                      Gdk.InterpType.NEAREST,
-                                      255);
-                    pos++;
-                }
-                catch (GLib.Error e) {
-                    warning ("Could not create emblem %s - %s", emblem_name, e.message);
-                }
-                if (pos > 3) /* Only room for 3 emblems */
+            foreach (string emblem_name in emblems_list) {
+
+                var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
+                emblem_grid.add (emblem);
+
+                pos++;
+                if (pos > 3) { /* Only room for 3 emblems */
                     break;
+                }
             }
+
+            file_img.add_overlay (emblem_grid);
         }
 
-        return icon_pix;
+        return file_img;
     }
-
 
     protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
         if (content != null) {
@@ -517,7 +496,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
     private void build_header_box (Gtk.Grid content) {
         /* create some widgets first (may be hidden by selection_size_update ()) */
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-        var file_img = new Gtk.Image.from_pixbuf (overlay_emblems (file_pix, goffile.emblems_list));
+        create_file_img (file_pix, goffile.emblems_list);
 
         spinner = new Gtk.Spinner ();
         spinner.set_hexpand (false);
@@ -1619,8 +1598,7 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
                     emblems_list.append ("emblem-readonly");
                 }
 
-                var final_pixbuf = overlay_emblems (icon_info.load_icon (), emblems_list);
-                image = new Gtk.Image.from_pixbuf (final_pixbuf);
+                create_file_img (icon_info.load_icon (), emblems_list);
             }
         } catch (Error err) {
             warning ("%s", err.message);
@@ -1629,7 +1607,7 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
         var header_label = new Gtk.Label (mount_name);
         header_label.set_halign (Gtk.Align.START);
 
-        pack_header_box (image, header_label);
+        pack_header_box (file_img, header_label);
 
         /* Build the grid holding the informations */
         var info_grid = new Gtk.Grid ();
