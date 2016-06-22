@@ -38,7 +38,7 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         header_box.add (title);
     }
 
-    protected Gtk.Overlay create_file_img (Gdk.Pixbuf icon, List<string>? emblems_list) {
+    protected Gtk.Overlay overlay_emblems (Gdk.Pixbuf icon, List<string>? emblems_list) {
         var file_icon = new Gtk.Image.from_pixbuf (icon);
 
         file_img = new Gtk.Overlay ();
@@ -496,7 +496,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
     private void build_header_box (Gtk.Grid content) {
         /* create some widgets first (may be hidden by selection_size_update ()) */
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-        create_file_img (file_pix, goffile.emblems_list);
+        overlay_emblems (file_pix, goffile.emblems_list);
 
         spinner = new Gtk.Spinner ();
         spinner.set_hexpand (false);
@@ -1582,7 +1582,6 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
         /* Build the header box */
         var theme = Gtk.IconTheme.get_default ();
         Gtk.IconInfo? icon_info = null;
-        Gtk.Image image = new Gtk.Image.from_icon_name (Marlin.ICON_FILESYSTEM, Gtk.IconSize.DIALOG);
 
         try {
             icon_info = theme.lookup_by_gicon (mount_icon, 48, Gtk.IconLookupFlags.FORCE_SIZE);
@@ -1598,7 +1597,7 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
                     emblems_list.append ("emblem-readonly");
                 }
 
-                create_file_img (icon_info.load_icon (), emblems_list);
+                overlay_emblems (icon_info.load_icon (), emblems_list);
             }
         } catch (Error err) {
             warning ("%s", err.message);
