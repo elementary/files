@@ -78,19 +78,6 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         }
     }
 
-    protected float get_alignment_float_from_align (Gtk.Align align) {
-        switch (align) {
-        case Gtk.Align.START:
-            return 0.0f;
-        case Gtk.Align.END:
-            return 1.0f;
-        case Gtk.Align.CENTER:
-            return 0.5f;
-        default:
-            return 0.0f;
-        }
-    }
-
     protected void create_head_line (Gtk.Widget head_label, Gtk.Grid information, ref int line) {
         head_label.set_halign (Gtk.Align.START);
         head_label.get_style_context ().add_class ("h4");
