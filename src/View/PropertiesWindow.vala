@@ -20,7 +20,6 @@
 
 protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
 
-    protected Gtk.SizeGroup sg;
     protected Gtk.Stack stack;
     protected Gtk.Box content_vbox;
     protected Gtk.Grid header_box;
@@ -152,9 +151,6 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         type_hint = Gdk.WindowTypeHint.DIALOG;
         border_width = 6;
         destroy_with_parent = true;
-
-        /* Set the default containers */
-        sg = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
 
         /* Header Box */
         header_box = new Gtk.Grid ();
