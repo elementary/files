@@ -635,18 +635,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         if (should_show_device_usage ()) {
             try {
                 var info = goffile.get_target_location ().query_filesystem_info ("filesystem::*");
-                if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
-                    info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
-                    uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-                    uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
-
-                    create_head_line (new Gtk.Label (_("Usage")), info_grid, ref n);
-
-                    var storagebar = new Granite.Widgets.StorageBar (fs_capacity);
-                    storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, fs_used);
-
-                    info_grid.attach (storagebar, 0, n, 4, 1);
-                }
+                create_storage_bar (info, ref n);
             } catch (Error e) {
                 warning ("error: %s", e.message);
             }

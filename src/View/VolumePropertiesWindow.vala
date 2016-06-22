@@ -95,39 +95,7 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.AbstractProperties
             create_info_line (key_label, value_label, info_grid, ref n);
         }
 
-        create_head_line (new Gtk.Label (_("Usage")), info_grid, ref n);
-
-        if (info != null &&
-            info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
-            info.has_attribute (FileAttribute.FILESYSTEM_USED)) {
-            uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-            uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
-
-            var storagebar = new Granite.Widgets.StorageBar (fs_capacity);
-            storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, fs_used);
-
-            info_grid.attach (storagebar, 0, n, 5, 1);
-        } else {
-            /* We're not able to gether the usage statistics, show an error
-             * message to let the user know. */
-            key_label = new Gtk.Label (_("Capacity:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (_("Unknown"));
-            create_info_line (key_label, value_label, info_grid, ref n);
-
-            key_label = new Gtk.Label (_("Available:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (_("Unknown"));
-            create_info_line (key_label, value_label, info_grid, ref n);
-
-            key_label = new Gtk.Label (_("Used:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (_("Unknown"));
-            create_info_line (key_label, value_label, info_grid, ref n);
-        }
+        create_storage_bar (info, ref n);
 
         show_all ();
         present ();
