@@ -339,7 +339,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
     private void build_header_box () {
         /* create some widgets first (may be hidden by selection_size_update ()) */
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-        overlay_emblems (file_pix, goffile.emblems_list);
+        var file_icon = new Gtk.Image.from_pixbuf (file_pix);
+        overlay_emblems (file_icon, goffile.emblems_list);
 
         spinner = new Gtk.Spinner ();
         spinner.halign = Gtk.Align.START;

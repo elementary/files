@@ -91,8 +91,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         layout.attach (header_title, 1, 0, 1, 1);
     }
 
-    protected void overlay_emblems (Gdk.Pixbuf icon, List<string>? emblems_list) {
-        var file_icon = new Gtk.Image.from_pixbuf (icon);
+    protected void overlay_emblems (Gtk.Image file_icon, List<string>? emblems_list) {
 
         if (emblems_list != null) {
             int pos = 0;

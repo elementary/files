@@ -52,27 +52,21 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.AbstractProperties
         }
 
         /* Build the header box */
-        var theme = Gtk.IconTheme.get_default ();
-        Gtk.IconInfo? icon_info = null;
+        var file_icon = new Gtk.Image ();
+        file_icon.set_from_gicon (mount_icon, Gtk.IconSize.DIALOG);
 
-        try {
-            icon_info = theme.lookup_by_gicon (mount_icon, 48, Gtk.IconLookupFlags.FORCE_SIZE);
+        if (file_icon != null) {
+            var emblems_list = new GLib.List<string> ();
 
-            if (icon_info != null) {
-                var emblems_list = new GLib.List<string> ();
-
-                /* Overlay the 'readonly' emblem to tell the user the disk is
-                 * mounted as RO */
-                if (info != null &&
-                    info.has_attribute (FileAttribute.FILESYSTEM_READONLY) &&
-                    info.get_attribute_boolean (FileAttribute.FILESYSTEM_READONLY)) {
-                    emblems_list.append ("emblem-readonly");
-                }
-
-                overlay_emblems (icon_info.load_icon (), emblems_list);
+            /* Overlay the 'readonly' emblem to tell the user the disk is
+             * mounted as RO */
+            if (info != null &&
+                info.has_attribute (FileAttribute.FILESYSTEM_READONLY) &&
+                info.get_attribute_boolean (FileAttribute.FILESYSTEM_READONLY)) {
+                emblems_list.append ("emblem-readonly");
             }
-        } catch (Error err) {
-            warning ("%s", err.message);
+
+            overlay_emblems (file_icon, emblems_list);
         }
 
         header_title = new Gtk.Label (mount_name);
