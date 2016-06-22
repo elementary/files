@@ -179,8 +179,6 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
             storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, fs_used);
 
             info_grid.attach (storagebar, 0, line, 4, 1);
-
-            line++;
         } else {
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
