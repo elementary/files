@@ -20,27 +20,21 @@
 
 protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
     protected Gtk.Stack stack;
-    protected Gtk.Grid header_box;
+    protected Gtk.Grid layout;
     protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Overlay file_img;
+    protected Gtk.Widget header_title;
 
-    protected void pack_header_box (Gtk.Overlay image, Gtk.Widget title) {
-        image.set_valign (Gtk.Align.CENTER);
-
-        title.get_style_context ().add_class ("h2");
-        title.hexpand = true;
-        title.margin_top = 5;
-        title.set_valign (Gtk.Align.CENTER);
-
-        header_box.add (image);
-        header_box.add (title);
+    protected void create_header_title () {
+        header_title.get_style_context ().add_class ("h2");
+        header_title.hexpand = true;
+        header_title.margin_top = 5;
+        header_title.set_valign (Gtk.Align.CENTER);
+        layout.attach (header_title, 1, 0, 1, 1);
     }
 
-    protected Gtk.Overlay overlay_emblems (Gdk.Pixbuf icon, List<string>? emblems_list) {
+    protected void overlay_emblems (Gdk.Pixbuf icon, List<string>? emblems_list) {
         var file_icon = new Gtk.Image.from_pixbuf (icon);
-
-        file_img = new Gtk.Overlay ();
-        file_img.set_size_request (48, 48);
         file_img.add_overlay (file_icon);
 
         if (emblems_list != null) {
@@ -63,8 +57,6 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
 
             file_img.add_overlay (emblem_grid);
         }
-
-        return file_img;
     }
 
     protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
@@ -116,9 +108,9 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         border_width = 6;
         destroy_with_parent = true;
 
-        /* Header Box */
-        header_box = new Gtk.Grid ();
-        header_box.column_spacing = 12;
+        file_img = new Gtk.Overlay ();
+        file_img.set_size_request (48, 48);
+        file_img.set_valign (Gtk.Align.CENTER);
 
         /* Stack */
         stack_switcher = new Gtk.StackSwitcher ();
@@ -129,14 +121,14 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         stack.margin_bottom = 12;
         stack_switcher.stack = stack;
 
-        var layout = new Gtk.Grid ();
+        layout = new Gtk.Grid ();
         layout.margin = 5;
         layout.margin_top = 0;
-        layout.orientation = Gtk.Orientation.VERTICAL;
+        layout.column_spacing = 12;
         layout.row_spacing = 12;
-        layout.add (header_box);
-        layout.add (stack_switcher);
-        layout.add (stack);
+        layout.attach (file_img, 0, 0, 1, 1);
+        layout.attach (stack_switcher, 0, 1, 2, 1);
+        layout.attach (stack, 0, 2, 2, 1);
 
         var content_area = get_content_area () as Gtk.Box;
         content_area.add (layout);
@@ -211,7 +203,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
     private Gee.Set<string>? mimes;
     private Gtk.Box info_vbox;
     private Gtk.Grid information;
-    private Gtk.Widget header_title;
     private Gtk.Label type_label;
     private Gtk.Label size_label;
     private Gtk.Label contains_label;
@@ -311,7 +302,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         cancellable = new GLib.Cancellable ();
 
         /* Header Box */
-        build_header_box (header_box);
+        build_header_box ();
 
         /* Info */
         if (info.size > 0) {
@@ -478,7 +469,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         entry.set_text (original_name);
     }
 
-    private void build_header_box (Gtk.Grid content) {
+    private void build_header_box () {
         /* create some widgets first (may be hidden by selection_size_update ()) */
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
         overlay_emblems (file_pix, goffile.emblems_list);
@@ -527,7 +518,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             header_title = entry;
         }
 
-        pack_header_box (file_img, header_title);
+        create_header_title ();
     }
 
     private string? get_common_ftype () {
@@ -1588,10 +1579,9 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
             warning ("%s", err.message);
         }
 
-        var header_label = new Gtk.Label (mount_name);
-        header_label.set_halign (Gtk.Align.START);
-
-        pack_header_box (file_img, header_label);
+        header_title = new Gtk.Label (mount_name);
+        header_title.set_halign (Gtk.Align.START);
+        create_header_title ();
 
         /* Build the grid holding the informations */
         var info_grid = new Gtk.Grid ();
