@@ -22,10 +22,6 @@
 
 public class Marlin.View.VolumePropertiesWindow : Marlin.View.AbstractPropertiesDialog {
 
-    private enum PanelType {
-        INFO,
-    }
-
     public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
         base (_("Disk Properties"), parent);
 
@@ -80,17 +76,10 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.AbstractProperties
         }
 
         header_title = new Gtk.Label (mount_name);
-        header_title.set_halign (Gtk.Align.START);
+        header_title.halign = Gtk.Align.START;
         create_header_title ();
 
-        /* Build the grid holding the informations */
-        var info_grid = new Gtk.Grid ();
-        info_grid.column_spacing = 6;
-        info_grid.row_spacing = 6;
-
-        int n = 0;
-
-        create_head_line (new Gtk.Label (_("Info")), info_grid, ref n);
+        int n = 1;
 
         var key_label = new Gtk.Label (_("Location:"));
         key_label.halign = Gtk.Align.END;
@@ -139,8 +128,6 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.AbstractProperties
             value_label = new Gtk.Label (_("Unknown"));
             create_info_line (key_label, value_label, info_grid, ref n);
         }
-
-        add_section (stack, _("General"), PanelType.INFO.to_string (), info_grid);
 
         show_all ();
         present ();

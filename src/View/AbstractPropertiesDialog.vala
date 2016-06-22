@@ -21,11 +21,18 @@
 */
 
 protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
-    protected Gtk.Stack stack;
+    protected Gtk.Grid info_grid;
     protected Gtk.Grid layout;
-    protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Overlay file_img;
+    protected Gtk.Stack stack;
+    protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Widget header_title;
+
+    protected enum PanelType {
+        INFO,
+        PERMISSIONS,
+        PREVIEW
+    }
 
     public AbstractPropertiesDialog (string _title, Gtk.Window parent) {
         title = _title;
@@ -41,13 +48,23 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         file_img.set_size_request (48, 48);
         file_img.valign = Gtk.Align.CENTER;
 
+        var info_header = new Gtk.Label (_("Info"));
+        info_header.halign = Gtk.Align.START;
+        info_header.get_style_context ().add_class ("h4");
+
+        info_grid = new Gtk.Grid ();
+        info_grid.column_spacing = 6;
+        info_grid.row_spacing = 6;
+        info_grid.attach (info_header, 0, 0, 2, 1);
+
+        stack = new Gtk.Stack ();
+        stack.margin_bottom = 12;
+        stack.add_titled (info_grid, PanelType.INFO.to_string (), _("General"));
+
         stack_switcher = new Gtk.StackSwitcher ();
         stack_switcher.halign = Gtk.Align.CENTER;
         stack_switcher.margin_top = 12;
         stack_switcher.no_show_all = true;
-
-        stack = new Gtk.Stack ();
-        stack.margin_bottom = 12;
         stack_switcher.stack = stack;
 
         layout = new Gtk.Grid ();

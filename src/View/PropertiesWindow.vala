@@ -69,15 +69,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         }
     }
 
-    private enum PanelType {
-        INFO,
-        PERMISSIONS,
-        PREVIEW
-    }
-
     private Gee.Set<string>? mimes;
-    private Gtk.Box info_vbox;
-    private Gtk.Grid information;
     private Gtk.Label type_label;
     private Gtk.Label size_label;
     private Gtk.Label contains_label;
@@ -181,9 +173,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
 
         /* Info */
         if (info.size > 0) {
-            info_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            construct_info_panel (info_vbox, info);
-            add_section (stack, _("General"), PanelType.INFO.to_string (), info_vbox);
+            construct_info_panel (info);
         }
 
         /* Permissions */
@@ -352,7 +342,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         overlay_emblems (file_pix, goffile.emblems_list);
 
         spinner = new Gtk.Spinner ();
-        spinner.set_hexpand (false);
         spinner.halign = Gtk.Align.START;
 
         size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
@@ -561,9 +550,9 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         Gtk.Widget? kw = null;
         int row = 0;
         do {
-            kw = information.get_child_at (0, row);
+            kw = info_grid.get_child_at (0, row);
             if (kw is Gtk.Label && (kw as Gtk.Label).label == resolution_key) {
-                Gtk.Widget vw = information.get_child_at (1, row);
+                Gtk.Widget vw = info_grid.get_child_at (1, row);
                 if (vw is Gtk.Label) {
                     (vw as Gtk.Label).label = resolution_value;
                     break;
@@ -572,14 +561,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
             row++;
         } while (kw != null);
     }
-    private void construct_info_panel (Gtk.Box box, Gee.LinkedList<Pair<string, string>> item_info) {
-        information = new Gtk.Grid();
-        information.column_spacing = 6;
-        information.row_spacing = 6;
-
-        int n = 0;
-
-        create_head_line (new Gtk.Label (_("Info")), information, ref n);
+    private void construct_info_panel (Gee.LinkedList<Pair<string, string>> item_info) {
+        int n = 1;
 
         /* Have to have these separate as size call is async */
         var size_key_label = new Gtk.Label (_("Size:"));
@@ -590,15 +573,15 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         size_box.add (size_label);
         size_box.add (size_warning_image);
 
-        create_info_line (size_key_label, size_label, information, ref n, size_box);
-        create_info_line (type_key_label, type_label, information, ref n);
-        create_info_line (contains_key_label, contains_label, information, ref n);
+        create_info_line (size_key_label, size_label, info_grid, ref n, size_box);
+        create_info_line (type_key_label, type_label, info_grid, ref n);
+        create_info_line (contains_key_label, contains_label, info_grid, ref n);
 
         foreach (var pair in item_info) {
             var value_label = new Gtk.Label (pair.value);
             var key_label = new Gtk.Label (pair.key);
             key_label.halign = Gtk.Align.END;
-            create_info_line (key_label, value_label, information, ref n);
+            create_info_line (key_label, value_label, info_grid, ref n);
         }
 
         /* Open with */
@@ -644,8 +627,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
             var key_label = new Gtk.Label (_("Open with:"));
             key_label.halign = Gtk.Align.END;
 
-            information.attach (key_label, 0, n, 1, 1);
-            information.attach (hcombo, 1, n, 1, 1);
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach (hcombo, 1, n, 1, 1);
         }
 
         /* Device Usage */
@@ -657,19 +640,17 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
                     uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
                     uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
 
-                    create_head_line (new Gtk.Label (_("Usage")), information, ref n);
+                    create_head_line (new Gtk.Label (_("Usage")), info_grid, ref n);
 
                     var storagebar = new Granite.Widgets.StorageBar (fs_capacity);
                     storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, fs_used);
 
-                    information.attach (storagebar, 0, n, 4, 1);
+                    info_grid.attach (storagebar, 0, n, 4, 1);
                 }
             } catch (Error e) {
                 warning ("error: %s", e.message);
             }
         }
-
-        box.pack_start (information);
     }
 
     private bool should_show_device_usage () {
