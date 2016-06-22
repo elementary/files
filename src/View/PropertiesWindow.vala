@@ -29,7 +29,7 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         header_title.get_style_context ().add_class ("h2");
         header_title.hexpand = true;
         header_title.margin_top = 5;
-        header_title.set_valign (Gtk.Align.CENTER);
+        header_title.valign = Gtk.Align.CENTER;
         layout.attach (header_title, 1, 0, 1, 1);
     }
 
