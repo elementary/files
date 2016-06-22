@@ -28,7 +28,7 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
     protected void create_header_title () {
         header_title.get_style_context ().add_class ("h2");
         header_title.hexpand = true;
-        header_title.margin_top = 5;
+        header_title.margin_top = 6;
         header_title.valign = Gtk.Align.CENTER;
         layout.attach (header_title, 1, 0, 1, 1);
     }
@@ -61,7 +61,7 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
 
     protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
         if (content != null) {
-            stack.add_titled(content, name, title);
+            stack.add_titled (content, name, title);
         }
 
         /* Only show the stack switcher when there's more than a single tab */
@@ -122,7 +122,7 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         stack_switcher.stack = stack;
 
         layout = new Gtk.Grid ();
-        layout.margin = 5;
+        layout.margin = 6;
         layout.margin_top = 0;
         layout.column_spacing = 12;
         layout.row_spacing = 6;
@@ -1101,7 +1101,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
     }
 
     private Gtk.Grid construct_perm_panel () {
-        perm_grid = new Gtk.Grid();
+        perm_grid = new Gtk.Grid ();
         perm_grid.column_spacing = 6;
         perm_grid.row_spacing = 6;
         perm_grid.halign = Gtk.Align.CENTER;
