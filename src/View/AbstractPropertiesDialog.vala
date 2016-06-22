@@ -27,6 +27,51 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     protected Gtk.Overlay file_img;
     protected Gtk.Widget header_title;
 
+    public AbstractPropertiesDialog (string _title, Gtk.Window parent) {
+        title = _title;
+        resizable = false;
+        deletable = false;
+        set_default_size (220, -1);
+        transient_for = parent;
+        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
+        border_width = 6;
+        destroy_with_parent = true;
+
+        file_img = new Gtk.Overlay ();
+        file_img.set_size_request (48, 48);
+        file_img.valign = Gtk.Align.CENTER;
+
+        stack_switcher = new Gtk.StackSwitcher ();
+        stack_switcher.halign = Gtk.Align.CENTER;
+        stack_switcher.margin_top = 12;
+        stack_switcher.no_show_all = true;
+
+        stack = new Gtk.Stack ();
+        stack.margin_bottom = 12;
+        stack_switcher.stack = stack;
+
+        layout = new Gtk.Grid ();
+        layout.margin = 6;
+        layout.margin_top = 0;
+        layout.column_spacing = 12;
+        layout.row_spacing = 6;
+        layout.attach (file_img, 0, 0, 1, 1);
+        layout.attach (stack_switcher, 0, 1, 2, 1);
+        layout.attach (stack, 0, 2, 2, 1);
+
+        var content_area = get_content_area () as Gtk.Box;
+        content_area.add (layout);
+
+        add_button (_("Close"), Gtk.ResponseType.CLOSE);
+        response.connect ((source, type) => {
+            switch (type) {
+                case Gtk.ResponseType.CLOSE:
+                    destroy ();
+                    break;
+            }
+        });
+    }
+
     protected void create_header_title () {
         header_title.get_style_context ().add_class ("h2");
         header_title.hexpand = true;
@@ -96,53 +141,5 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         }
 
         line++;
-    }
- 
-    public AbstractPropertiesDialog (string _title, Gtk.Window parent) {
-        title = _title;
-        resizable = false;
-        deletable = false;
-        set_default_size (220, -1);
-        transient_for = parent;
-        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-        type_hint = Gdk.WindowTypeHint.DIALOG;
-        border_width = 6;
-        destroy_with_parent = true;
-
-        file_img = new Gtk.Overlay ();
-        file_img.set_size_request (48, 48);
-        file_img.valign = Gtk.Align.CENTER;
-
-        /* Stack */
-        stack_switcher = new Gtk.StackSwitcher ();
-        stack_switcher.halign = Gtk.Align.CENTER;
-        stack_switcher.margin_top = 12;
-        stack_switcher.no_show_all = true;
-
-        stack = new Gtk.Stack ();
-        stack.margin_bottom = 12;
-        stack_switcher.stack = stack;
-
-        layout = new Gtk.Grid ();
-        layout.margin = 6;
-        layout.margin_top = 0;
-        layout.column_spacing = 12;
-        layout.row_spacing = 6;
-        layout.attach (file_img, 0, 0, 1, 1);
-        layout.attach (stack_switcher, 0, 1, 2, 1);
-        layout.attach (stack, 0, 2, 2, 1);
-
-        var content_area = get_content_area () as Gtk.Box;
-        content_area.add (layout);
-
-        /* Action area */
-        add_button (_("Close"), Gtk.ResponseType.CLOSE);
-        response.connect ((source, type) => {
-            switch (type) {
-                case Gtk.ResponseType.CLOSE:
-                    destroy ();
-                    break;
-            }
-        });
     }
 }
