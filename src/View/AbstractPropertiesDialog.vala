@@ -100,7 +100,6 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
             emblem_grid.valign = Gtk.Align.END;
 
             foreach (string emblem_name in emblems_list) {
-
                 var emblem = new Gtk.Image.from_icon_name (emblem_name, Gtk.IconSize.BUTTON);
                 emblem_grid.add (emblem);
 
