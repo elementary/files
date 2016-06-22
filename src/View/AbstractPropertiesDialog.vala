@@ -92,7 +92,6 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     }
 
     protected void overlay_emblems (Gtk.Image file_icon, List<string>? emblems_list) {
-
         if (emblems_list != null) {
             int pos = 0;
             var emblem_grid = new Gtk.Grid ();
