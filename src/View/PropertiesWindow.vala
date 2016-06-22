@@ -19,9 +19,7 @@
 ***/
 
 protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
-
     protected Gtk.Stack stack;
-    protected Gtk.Box content_vbox;
     protected Gtk.Grid header_box;
     protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Overlay file_img;
