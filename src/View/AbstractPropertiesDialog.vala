@@ -159,7 +159,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     }
 
     protected void create_storage_bar (GLib.FileInfo info, ref int line) {
-        var storage_header = new Gtk.Label (_("Usage"));
+        var storage_header = new Gtk.Label (_("Device Usage"));
         storage_header.halign = Gtk.Align.START;
         storage_header.get_style_context ().add_class ("h4");
         info_grid.attach (storage_header, 0, line, 1, 1);
