@@ -23,19 +23,19 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
     protected Gtk.SizeGroup sg;
     protected Gtk.Stack stack;
     protected Gtk.Box content_vbox;
-    protected Gtk.Box header_box;
+    protected Gtk.Grid header_box;
     protected Gtk.StackSwitcher stack_switcher;
 
     protected void pack_header_box (Gtk.Image image, Gtk.Widget title) {
         image.set_valign (Gtk.Align.CENTER);
 
-        header_box.pack_start (image, false, false);
-
         title.get_style_context ().add_class ("h2");
+        title.hexpand = true;
         title.margin_top = 5;
         title.set_valign (Gtk.Align.CENTER);
 
-        header_box.pack_start (title);
+        header_box.add (image);
+        header_box.add (title);
     }
 
     protected Gdk.Pixbuf overlay_emblems (Gdk.Pixbuf icon, List<string>? emblems_list) {
@@ -93,7 +93,6 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
 
     protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
         if (content != null) {
-            content.set_border_width (5);
             stack.add_titled(content, name, title);
         }
 
@@ -151,36 +150,36 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         transient_for = parent;
         window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
         type_hint = Gdk.WindowTypeHint.DIALOG;
-        border_width = 5;
+        border_width = 6;
         destroy_with_parent = true;
 
         /* Set the default containers */
-        var content_area = get_content_area ();
         sg = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
 
-        content_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        content_area.pack_start (content_vbox);
-
-        /* Adjust sizes */
-        content_vbox.margin_end = 5;
-        content_vbox.margin_start = 5;
-
         /* Header Box */
-        header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
-        content_vbox.pack_start (header_box, false, false, 0);
-        header_box.margin_bottom = 15;
-        header_box.margin_start = header_box.margin_end = 10;
+        header_box = new Gtk.Grid ();
+        header_box.column_spacing = 12;
 
         /* Stack */
         stack_switcher = new Gtk.StackSwitcher ();
-        content_vbox.pack_start (stack_switcher, false, false, 5);
         stack_switcher.halign = Gtk.Align.CENTER;
         stack_switcher.no_show_all = true;
 
         stack = new Gtk.Stack ();
-        stack.margin_bottom = 15;
+        stack.margin_bottom = 12;
         stack_switcher.stack = stack;
-        content_vbox.pack_start (stack, true, true, 0);
+
+        var layout = new Gtk.Grid ();
+        layout.margin = 5;
+        layout.margin_top = 0;
+        layout.orientation = Gtk.Orientation.VERTICAL;
+        layout.row_spacing = 12;
+        layout.add (header_box);
+        layout.add (stack_switcher);
+        layout.add (stack);
+
+        var content_area = get_content_area () as Gtk.Box;
+        content_area.add (layout);
 
         /* Action area */
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
@@ -364,11 +363,10 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         /* Permissions */
         /* Don't show permissions for uri scheme trash and archives */
         if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
-            var perm_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            construct_perm_panel (perm_vbox);
-            add_section (stack, _("More"), PanelType.PERMISSIONS.to_string (), perm_vbox);
+            construct_perm_panel ();
+            add_section (stack, _("More"), PanelType.PERMISSIONS.to_string (), perm_grid);
             if (!goffile.can_set_permissions ()) {
-                foreach (var widget in perm_vbox.get_children ())
+                foreach (var widget in perm_grid.get_children ())
                     widget.set_sensitive (false);
             }
         }
@@ -520,7 +518,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         entry.set_text (original_name);
     }
 
-    private void build_header_box (Gtk.Box content) {
+    private void build_header_box (Gtk.Grid content) {
         /* create some widgets first (may be hidden by selection_size_update ()) */
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
         var file_img = new Gtk.Image.from_pixbuf (overlay_emblems (file_pix, goffile.emblems_list));
@@ -834,16 +832,12 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
                     create_head_line (new Gtk.Label (_("Usage")), information, ref n);
 
-                    var key_label = new Gtk.Label (_("Device usage:"));
-                    key_label.halign = Gtk.Align.END;
-                    information.attach (key_label, 0, n, 1, 1);
-
                     var progressbar = new Gtk.ProgressBar ();
-                    double used =  1.0 - (double) fs_free / (double) fs_capacity;
+                    var used =  1.0 - (double) fs_free / (double) fs_capacity;
                     progressbar.set_fraction (used);
                     progressbar.set_show_text (true);
                     progressbar.set_text (_("%s free of %s (%d%% used)").printf (format_size ((int64) fs_free), format_size ((int64) fs_capacity), (int) (used * 100)));
-                    information.attach_next_to (progressbar, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                    information.attach (progressbar, 0, n, 3, 1);
                 }
             } catch (Error e) {
                 warning ("error: %s", e.message);
@@ -1158,10 +1152,11 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             file_set_attributes.begin (gof, FileAttribute.UNIX_GID, gid);
     }
 
-    private void construct_perm_panel (Gtk.Box box) {
+    private Gtk.Grid construct_perm_panel () {
         perm_grid = new Gtk.Grid();
         perm_grid.column_spacing = 6;
         perm_grid.row_spacing = 6;
+        perm_grid.halign = Gtk.Align.CENTER;
 
         Gtk.Widget key_label;
         Gtk.Widget value_label;
@@ -1171,50 +1166,48 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         key_label.halign = Gtk.Align.END;
         perm_grid.attach (key_label, 0, 1, 1, 1);
         value_label = create_owner_choice ();
-        perm_grid.attach (value_label, 1, 1, 1, 1);
+        perm_grid.attach (value_label, 1, 1, 2, 1);
 
         key_label = new Gtk.Label (_("Group:"));
         key_label.halign = Gtk.Align.END;
         perm_grid.attach (key_label, 0, 2, 1, 1);
         value_label = create_group_choice ();
-        perm_grid.attach (value_label, 1, 2, 1, 1);
+        perm_grid.attach (value_label, 1, 2, 2, 1);
 
         /* make a separator with margins */
-        key_label.margin_bottom = 7;
-        value_label.margin_bottom = 7;
+        key_label.margin_bottom = 12;
+        value_label.margin_bottom = 12;
+
         key_label = new Gtk.Label (_("Owner:"));
         key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.USER);
         perm_grid.attach (key_label, 0, 3, 1, 1);
-        perm_grid.attach (value_hlabel, 1, 3, 1, 1);
+        perm_grid.attach (value_hlabel, 1, 3, 2, 1);
         key_label = new Gtk.Label (_("Group:"));
         key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.GROUP);
         perm_grid.attach (key_label, 0, 4, 1, 1);
-        perm_grid.attach (value_hlabel, 1, 4, 1, 1);
+        perm_grid.attach (value_hlabel, 1, 4, 2, 1);
         key_label = new Gtk.Label (_("Everyone:"));
         key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.OTHER);
         perm_grid.attach (key_label, 0, 5, 1, 1);
-        perm_grid.attach (value_hlabel, 1, 5, 1, 1);
+        perm_grid.attach (value_hlabel, 1, 5, 2, 1);
 
         perm_code = new Granite.Widgets.XsEntry ();
         perm_code.set_text ("000");
         perm_code.set_max_length (3);
         perm_code.set_size_request (35, -1);
 
-        var perm_code_hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 10);
         l_perm = new Gtk.Label (goffile.get_permissions_as_string ());
-        perm_code_hbox.pack_start (l_perm, true, true, 0);
-        perm_code_hbox.pack_start (perm_code, false, false, 0);
 
-        perm_grid.attach (perm_code_hbox, 1, 6, 1, 1);
-
-        box.pack_start (perm_grid);
+        perm_grid.attach (l_perm, 1, 6, 1, 1);
+        perm_grid.attach (perm_code, 2, 6, 1, 1);
 
         update_perm_grid_toggle_states (goffile.permissions);
 
         perm_code.changed.connect (entry_changed);
+        return perm_grid;
     }
 
     private bool selection_can_set_owner () {
@@ -1696,7 +1689,6 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
 
             var progressbar = new Gtk.ProgressBar ();
             progressbar.set_fraction (used);
-            progressbar.margin_top = 6;
             info_grid.attach (progressbar, 0, n, 5, 1);
         } else {
             /* We're not able to gether the usage statistics, show an error
