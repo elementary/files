@@ -110,7 +110,7 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
 
         file_img = new Gtk.Overlay ();
         file_img.set_size_request (48, 48);
-        file_img.set_valign (Gtk.Align.CENTER);
+        file_img.valign = Gtk.Align.CENTER;
 
         /* Stack */
         stack_switcher = new Gtk.StackSwitcher ();
