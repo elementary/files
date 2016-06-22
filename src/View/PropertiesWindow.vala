@@ -315,10 +315,11 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         /* Don't show permissions for uri scheme trash and archives */
         if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
             construct_perm_panel ();
-            add_section (stack, _("More"), PanelType.PERMISSIONS.to_string (), perm_grid);
+            add_section (stack, _("Permissions"), PanelType.PERMISSIONS.to_string (), perm_grid);
             if (!goffile.can_set_permissions ()) {
-                foreach (var widget in perm_grid.get_children ())
+                foreach (var widget in perm_grid.get_children ()) {
                     widget.set_sensitive (false);
+                }
             }
         }
 
