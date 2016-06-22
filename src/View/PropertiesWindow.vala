@@ -81,7 +81,6 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
     protected void create_info_line (Gtk.Widget key_label, Gtk.Label value_label, Gtk.Grid information, ref int line, Gtk.Widget? value_container = null) {
         key_label.margin_start = 20;
         value_label.set_selectable (true);
-        value_label.set_hexpand (true);
         value_label.set_use_markup (true);
         value_label.set_can_focus (false);
         value_label.set_halign (Gtk.Align.START);
@@ -482,7 +481,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         size_warning_image.halign = Gtk.Align.START;
         size_warning_image.no_show_all = true;
         size_label = new Gtk.Label ("");
-        size_label.set_hexpand (false);
 
         type_label = new Gtk.Label ("");
         type_label.set_halign (Gtk.Align.START);
@@ -710,9 +708,9 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         size_key_label.halign = Gtk.Align.END;
 
         var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
-        size_box.pack_start (spinner, false, false);
-        size_box.pack_start (size_label, false, true);
-        size_box.pack_start (size_warning_image);
+        size_box.add (spinner);
+        size_box.add (size_label);
+        size_box.add (size_warning_image);
 
         create_info_line (size_key_label, size_label, information, ref n, size_box);
         create_info_line (type_key_label, type_label, information, ref n);
