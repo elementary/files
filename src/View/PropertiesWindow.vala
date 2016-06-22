@@ -114,6 +114,7 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         /* Stack */
         stack_switcher = new Gtk.StackSwitcher ();
         stack_switcher.halign = Gtk.Align.CENTER;
+        stack_switcher.margin_top = 12;
         stack_switcher.no_show_all = true;
 
         stack = new Gtk.Stack ();
@@ -124,7 +125,7 @@ protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
         layout.margin = 5;
         layout.margin_top = 0;
         layout.column_spacing = 12;
-        layout.row_spacing = 12;
+        layout.row_spacing = 6;
         layout.attach (file_img, 0, 0, 1, 1);
         layout.attach (stack_switcher, 0, 1, 2, 1);
         layout.attach (stack, 0, 2, 2, 1);
