@@ -63,6 +63,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         ProgressUIHandler.vala
         TextRenderer.vala
         QuicklistHandler.vala
+        View/AbstractPropertiesDialog.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
@@ -79,6 +80,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Sidebar.vala
         View/Slot.vala
         View/Miller.vala
+        View/VolumePropertiesWindow.vala
 
     PACKAGES
         gtk+-3.0
