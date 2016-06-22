@@ -1606,7 +1606,6 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
 
         if (info != null &&
             info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
-            info.has_attribute (FileAttribute.FILESYSTEM_FREE) &&
             info.has_attribute (FileAttribute.FILESYSTEM_USED)) {
             uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
             uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
