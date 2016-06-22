@@ -23,7 +23,6 @@
 protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     protected Gtk.Grid info_grid;
     protected Gtk.Grid layout;
-    protected Gtk.Overlay file_img;
     protected Gtk.Stack stack;
     protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Widget header_title;
@@ -43,10 +42,6 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
         border_width = 6;
         destroy_with_parent = true;
-
-        file_img = new Gtk.Overlay ();
-        file_img.set_size_request (48, 48);
-        file_img.valign = Gtk.Align.CENTER;
 
         var info_header = new Gtk.Label (_("Info"));
         info_header.halign = Gtk.Align.START;
@@ -72,7 +67,6 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         layout.margin_top = 0;
         layout.column_spacing = 12;
         layout.row_spacing = 6;
-        layout.attach (file_img, 0, 0, 1, 1);
         layout.attach (stack_switcher, 0, 1, 2, 1);
         layout.attach (stack, 0, 2, 2, 1);
 
@@ -99,7 +93,6 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
 
     protected void overlay_emblems (Gdk.Pixbuf icon, List<string>? emblems_list) {
         var file_icon = new Gtk.Image.from_pixbuf (icon);
-        file_img.add_overlay (file_icon);
 
         if (emblems_list != null) {
             int pos = 0;
@@ -119,8 +112,16 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
                 }
             }
 
+            var file_img = new Gtk.Overlay ();
+            file_img.set_size_request (48, 48);
+            file_img.valign = Gtk.Align.CENTER;
+            file_img.add_overlay (file_icon);
             file_img.add_overlay (emblem_grid);
+            layout.attach (file_img, 0, 0, 1, 1);
+        } else {
+            layout.attach (file_icon, 0, 0, 1, 1);
         }
+
     }
 
     protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
