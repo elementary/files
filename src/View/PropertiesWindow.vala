@@ -777,16 +777,14 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
                 if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
                     info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
                     uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-                    uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
+                    uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
 
                     create_head_line (new Gtk.Label (_("Usage")), information, ref n);
 
-                    var progressbar = new Gtk.ProgressBar ();
-                    var used =  1.0 - (double) fs_free / (double) fs_capacity;
-                    progressbar.set_fraction (used);
-                    progressbar.set_show_text (true);
-                    progressbar.set_text (_("%s free of %s (%d%% used)").printf (format_size ((int64) fs_free), format_size ((int64) fs_capacity), (int) (used * 100)));
-                    information.attach (progressbar, 0, n, 3, 1);
+                    var storagebar = new Granite.Widgets.StorageBar (fs_capacity);
+                    storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, fs_used);
+
+                    information.attach (storagebar, 0, n, 4, 1);
                 }
             } catch (Error e) {
                 warning ("error: %s", e.message);
@@ -1611,31 +1609,12 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBa
             info.has_attribute (FileAttribute.FILESYSTEM_FREE) &&
             info.has_attribute (FileAttribute.FILESYSTEM_USED)) {
             uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-            uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
             uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
-            double used =  1.0 - (double) fs_free / (double) fs_capacity;
 
-            key_label = new Gtk.Label (_("Capacity:"));
-            key_label.halign = Gtk.Align.END;
+            var storagebar = new Granite.Widgets.StorageBar (fs_capacity);
+            storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, fs_used);
 
-            value_label = new Gtk.Label (format_size ((int64)fs_capacity));
-            create_info_line (key_label, value_label, info_grid, ref n);
-
-            key_label = new Gtk.Label (_("Available:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (format_size ((int64) fs_free));
-            create_info_line (key_label, value_label, info_grid, ref n);
-
-            key_label = new Gtk.Label (_("Used:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (_("%s (%d%% used)").printf (format_size ((int64) fs_used), (int) (used * 100)));
-            create_info_line (key_label, value_label, info_grid, ref n);
-
-            var progressbar = new Gtk.ProgressBar ();
-            progressbar.set_fraction (used);
-            info_grid.attach (progressbar, 0, n, 5, 1);
+            info_grid.attach (storagebar, 0, n, 5, 1);
         } else {
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
