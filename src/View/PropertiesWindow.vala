@@ -1482,19 +1482,21 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
     /** Hide certain widgets under certain conditions **/
     private void update_widgets_state () {
-        if (uncounted_folders == 0)
+        if (uncounted_folders == 0) {
             spinner.hide ();
+        }
 
-        if (size_warning < 1)
+        if (size_warning < 1) {
             size_warning_image.hide ();
-
-        if (ftype != null) {
-            type_label.label = goffile.formated_type;
         }
 
         if (count > 1) {
             type_key_label.hide ();
             type_label.hide ();
+        } else {
+            if (ftype != null) {
+                type_label.label = goffile.formated_type;
+            }
         }
 
         if ((header_title is Gtk.Entry) && !view.is_in_recent ()) {
