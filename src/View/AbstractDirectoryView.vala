@@ -2162,7 +2162,7 @@ namespace FM {
             update_paste_action_enabled (single_folder);
             update_select_all_action ();
             update_menu_actions_sort ();
-            can_copy = file.is_readable(); 
+            can_copy = file.is_readable (); 
             bool can_open = can_open_file (file);
             action_set_enabled (common_actions, "open_in", only_folders);
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
