@@ -6,7 +6,6 @@
   <project_group>elementary</project_group>
   <project_license>GPL-3.0+</project_license>
   <name>Files</name>
-  <icon type="stock">system-file-manager</icon>
   <summary>Browse and manage files and folders</summary>
   <description>
     <p>
