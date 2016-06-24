@@ -134,24 +134,6 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
         }
     }
 
-    protected void create_head_line (Gtk.Widget head_label, Gtk.Grid information, ref int line) {
-        information.attach (head_label, 0, line, 1, 1);
-
-        line++;
-    }
-
-    protected void create_info_line (Gtk.Widget key_label, Gtk.Label value_label, Gtk.Grid information, ref int line, Gtk.Widget? value_container = null) {
-        information.attach (key_label, 0, line, 1, 1);
-        if (value_container != null) {
-            value_container.set_size_request (150, -1);
-            information.attach_next_to (value_container, key_label, Gtk.PositionType.RIGHT, 3, 1);
-        } else {
-            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-        }
-
-        line++;
-    }
-
     protected void create_storage_bar (GLib.FileInfo info, int line) {
         var storage_header = new HeaderLabel (_("Device Usage"));
         info_grid.attach (storage_header, 0, line, 1, 1);
