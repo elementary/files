@@ -218,7 +218,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
          * so call update_widgets_state in both places.
          */
         update_widgets_state ();
-        present ();
     }
 
     private uint64 total_size = 0;
@@ -350,25 +349,19 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
         size_warning_image.halign = Gtk.Align.START;
         size_warning_image.no_show_all = true;
-        size_label = new Gtk.Label ("");
+        size_label = new ValueLabel ("");
 
-        type_label = new Gtk.Label ("");
-        type_label.set_halign (Gtk.Align.START);
-        type_key_label = new Gtk.Label (_("Type:"));
-        type_key_label.halign = Gtk.Align.END;
+        type_label = new ValueLabel ("");
+        type_key_label = new KeyLabel (_("Type:"));
 
-        contains_label = new Gtk.Label ("");
-        contains_label.set_halign (Gtk.Align.START);
-        contains_key_label = new Gtk.Label (_("Contains:"));
-        contains_key_label.set_halign (Gtk.Align.END);
+        contains_label = new ValueLabel ("");
+        contains_key_label = new KeyLabel (_("Contains:"));
 
         selection_size_update (); /* Start counting first to get number of selected files and folders */
 
         /* Build header box */
         if (count > 1 || (count == 1 && !goffile.is_writable ())) {
-            var label = new Gtk.Label ("");
-            label.set_markup ("<span>" + get_selected_label (selected_folders, selected_files) + "</span>");
-            label.set_halign (Gtk.Align.START);
+            var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
             header_title = label;
         } else if (count == 1 && goffile.is_writable ()) {
             entry = new Gtk.Entry ();
@@ -635,7 +628,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if (should_show_device_usage ()) {
             try {
                 var info = goffile.get_target_location ().query_filesystem_info ("filesystem::*");
-                create_storage_bar (info, ref n);
+                create_storage_bar (info, n);
             } catch (Error e) {
                 warning ("error: %s", e.message);
             }

@@ -44,9 +44,7 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
         border_width = 6;
         destroy_with_parent = true;
 
-        var info_header = new Gtk.Label (_("Info"));
-        info_header.halign = Gtk.Align.START;
-        info_header.get_style_context ().add_class ("h4");
+        var info_header = new HeaderLabel (_("Info"));
 
         info_grid = new Gtk.Grid ();
         info_grid.column_spacing = 6;
@@ -82,6 +80,8 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
                     break;
             }
         });
+
+        present ();
     }
 
     protected void create_header_title () {
@@ -134,8 +134,6 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
     }
 
     protected void create_head_line (Gtk.Widget head_label, Gtk.Grid information, ref int line) {
-        head_label.set_halign (Gtk.Align.START);
-        head_label.get_style_context ().add_class ("h4");
         information.attach (head_label, 0, line, 1, 1);
 
         line++;
@@ -153,10 +151,8 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
         line++;
     }
 
-    protected void create_storage_bar (GLib.FileInfo info, ref int line) {
-        var storage_header = new Gtk.Label (_("Device Usage"));
-        storage_header.halign = Gtk.Align.START;
-        storage_header.get_style_context ().add_class ("h4");
+    protected void create_storage_bar (GLib.FileInfo info, int line) {
+        var storage_header = new HeaderLabel (_("Device Usage"));
         info_grid.attach (storage_header, 0, line, 1, 1);
 
         if (info != null &&
@@ -169,7 +165,7 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
             var storagebar = new Granite.Widgets.StorageBar (fs_capacity);
             storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, fs_used);
 
-            info_grid.attach (storagebar, 0, line +1, 4, 1);
+            info_grid.attach (storagebar, 0, line + 1, 4, 1);
         } else {
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
@@ -189,6 +185,13 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
             info_grid.attach (used_label, 0, line + 3, 1, 1);
             info_grid.attach (used_value, 1, line + 3, 1, 1);
         }
+    }
+}
+
+protected class HeaderLabel : Gtk.Label {
+    public HeaderLabel (string _label) {
+        halign = Gtk.Align.START;
+        get_style_context ().add_class ("h4");
     }
 }
 
