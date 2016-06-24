@@ -20,7 +20,9 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog {
+namespace Marlin.View {
+
+public class PropertiesWindow : AbstractPropertiesDialog {
     private const string resolution_key = _("Resolution:");
 
     private class Pair<F, G> {
@@ -566,8 +568,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         int n = 1;
 
         /* Have to have these separate as size call is async */
-        var size_key_label = new Gtk.Label (_("Size:"));
-        size_key_label.halign = Gtk.Align.END;
+        var size_key_label = new KeyLabel (_("Size:"));
 
         var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
         size_box.add (spinner);
@@ -579,9 +580,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         create_info_line (contains_key_label, contains_label, info_grid, ref n);
 
         foreach (var pair in item_info) {
-            var value_label = new Gtk.Label (pair.value);
-            var key_label = new Gtk.Label (pair.key);
-            key_label.halign = Gtk.Align.END;
+            var value_label = new ValueLabel (pair.value);
+            var key_label = new KeyLabel (pair.key);
             create_info_line (key_label, value_label, info_grid, ref n);
         }
 
@@ -625,8 +625,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
 
             combo.changed.connect (combo_open_with_changed);
 
-            var key_label = new Gtk.Label (_("Open with:"));
-            key_label.halign = Gtk.Align.END;
+            var key_label = new KeyLabel (_("Open with:"));
 
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach (hcombo, 1, n, 1, 1);
@@ -1365,4 +1364,5 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
             contains_label.show ();
         }
     }
+}
 }

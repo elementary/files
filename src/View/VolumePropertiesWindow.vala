@@ -20,7 +20,9 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Marlin.View.VolumePropertiesWindow : Marlin.View.AbstractPropertiesDialog {
+namespace Marlin.View {
+
+public class VolumePropertiesWindow : AbstractPropertiesDialog {
 
     public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
         base (_("Disk Properties"), parent);
@@ -75,17 +77,14 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.AbstractProperties
 
         int n = 1;
 
-        var key_label = new Gtk.Label (_("Location:"));
-        key_label.halign = Gtk.Align.END;
+        var key_label = new KeyLabel (_("Location:"));
 
-        var value_label = new Gtk.Label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
+        var value_label = new ValueLabel ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
         create_info_line (key_label, value_label, info_grid, ref n);
 
         if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
-            key_label = new Gtk.Label (_("Format:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
+            key_label = new KeyLabel (_("Format:"));
+            value_label = new ValueLabel (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
             create_info_line (key_label, value_label, info_grid, ref n);
         }
 
@@ -94,4 +93,6 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.AbstractProperties
         show_all ();
         present ();
     }
+}
+
 }
