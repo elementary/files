@@ -47,7 +47,7 @@ namespace Marlin {
 
     public const string TRANSLATORS = _("translator-credits");
 
-    public const string ICON_ABOUT_LOGO = "system-file-manager";
+    public const string ICON_APP_LOGO = "system-file-manager";
     public const string ICON_FILESYSTEM = "drive-harddisk-system";
     public const string ICON_FILESYSTEM_SYMBOLIC = "drive-harddisk-symbolic";
     public const string ICON_FOLDER = "folder";

@@ -17,41 +17,34 @@
     Authors: Alexander Larsson <alexl@redhat.com>
              Cosimo Cecchi <cosimoc@redhat.com>
              Julián Unrrein <junrrein@gmail.com>
+             Jeremy Wootten <jeremy@elementaryos.
 ***/
 
+/*** One instance of this class is owned by the application and handles UI for file transfers initiated by
+ *   of the app windows.  Feedback is provided by a dialog window which appears if a transfer takes longer than
+ *   approximately 1 second. The unity launcher is also updated if present and a notification is sent of the
+ *   completion of the operation unless it was cancelled by the user. 
+***/ 
 public class Marlin.Progress.UIHandler : Object {
 
     private Marlin.Progress.InfoManager manager = null;
-
+#if HAVE_UNITY
+    private Marlin.QuicklistHandler quicklist_handler = null;
+#endif
     private Gtk.Dialog progress_window = null;
     private Gtk.Widget window_vbox = null;
     private uint active_infos = 0;
 
-    private bool notification_supports_persistence = false;
-    private Notify.Notification progress_notification = null;
-    private Gtk.StatusIcon status_icon = null;
-#if HAVE_UNITY
-    private Marlin.QuicklistHandler quicklist_handler = null;
-#endif
+    private Gdk.Pixbuf notification_image = null;
+    private Gdk.Pixbuf cancelled_image = null;
 
     private const string ACTION_DETAILS = "details";
+    private const string TITLE = _("File Manager Operations");
+    private const string ICON_NAME = "system-file-manager";
+    private const int ICON_SIZE = 64;
+    private const string CANCELLED_ICON_NAME = "dialog-warning";
 
-    /* Our policy for showing progress notification is the following:
-     * - File operations that end within two seconds do not get notified in any way.
-     * - If no file operations are running, and one passes the two seconds
-     *   timeout, a window is displayed with the progress.
-     * - If the window is closed, we show a resident notification, or a status icon, depending on
-     *   the capabilities of the notification daemon running in the session.
-     * - If some file operations are running, and another one passes the two seconds
-     *   timeout, and the window is showing, we add it to the window directly.
-     * - In the same case, but when the window is not showing, we update the resident
-     *   notification, changing its message, or the status icon's tooltip.
-     * - When one file operation finishes, if it's not the last one, we only update the
-     *   resident notification's message, or the status icon's tooltip.
-     * - In the same case, if it's the last one, we close the resident notification,
-     *   or the status icon, and trigger a transient one.
-     * - In the same case, but the window was showing, we just hide the window.
-     */
+    private bool actions_supported = false;
 
     public UIHandler () {
         this.manager = new Marlin.Progress.InfoManager ();
@@ -60,58 +53,87 @@ public class Marlin.Progress.UIHandler : Object {
             info.started.connect (progress_info_started_cb);
         });
 
-        this.notification_supports_persistence = server_has_persistence ();
+        var theme = Gtk.IconTheme.get_default ();
+        try {
+            notification_image = theme.load_icon (ICON_NAME, ICON_SIZE, 0);
+            cancelled_image = theme.load_icon (CANCELLED_ICON_NAME, ICON_SIZE, 0);
+        } catch (GLib.Error e) {
+            warning ("ProgressUIHandler error loading notification images - %s", e.message);
+        }
+
+         var capabilities = Notify.get_server_caps ();
+
+        debug ("Notification Server capabilities");
+        foreach (string s in capabilities) {
+            debug (s);
+        }
+
+        actions_supported = capabilities.find ("actions") != null;
     }
 
-#if !VALA_0_24
-    [CCode (cheader_filename = "libnotify/notify.h", cname = "notify_get_server_caps")]
-    extern static GLib.List<string> notify_get_server_caps ();
-#endif
+    ~UIHandler () {
+        debug ("ProgressUIHandler destruct");
+        if (active_infos > 0) {
+            warning ("ProgressUIHandler destruct when infos active");
+            cancel_all ();
+        }
+    }
 
-    private bool server_has_persistence () {
-#if VALA_0_24
-        var capabilities = Notify.get_server_caps ();
-#else
-        var capabilities = notify_get_server_caps ();
-#endif
+    public void cancel_all () {
+        unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
+        foreach (var info in infos) {
+            info.cancel ();
+        }
 
-        return capabilities.find ("persistence") != null;
+    }
+
+    public uint get_active_info_count () {
+        return active_infos;
+    }
+    public unowned List<Marlin.Progress.Info> get_active_info_list () {
+        return manager.get_all_infos ();
     }
 
     private void progress_info_started_cb (Marlin.Progress.Info info) {
         var application = Marlin.Application.get ();
         application.hold ();
 
-        info.finished.connect (() => {
-            debug ("Release application");
-            application.release ();
-        });
+        if (info == null || !(info is Marlin.Progress.Info) ||
+            info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
 
-        Timeout.add_seconds (2, () => {
-            if (info.get_is_paused ())
+            return;
+        }
+
+        this.active_infos++;
+        info.finished.connect (progress_info_finished_cb);
+
+        var operation_running = false;
+        Timeout.add_full (GLib.Priority.LOW, 500, () => {
+            if (info == null || !(info is Marlin.Progress.Info) ||
+                info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
+
+                return false;
+            }
+
+            if (info.get_is_paused ()) {
                 return true;
-
-            if (!info.get_is_finished ())
-                handle_new_progress_info (info);
-
-            return false;
+            } else if (operation_running && !info.get_is_finished ()) {
+                add_progress_info_to_window (info);
+                return false;
+            } else {
+                operation_running = true;
+                return true;
+            }
         });
     }
 
-    private void handle_new_progress_info (Marlin.Progress.Info info) {
-        info.finished.connect (progress_info_finished_cb);
-
-        this.active_infos++;
-
+    private void add_progress_info_to_window (Marlin.Progress.Info info) {
         if (this.active_infos == 1) {
             /* This is the only active operation, present the window */
             add_to_window (info);
             (this.progress_window as Gtk.Window).present ();
-        } else {
-            if (this.progress_window.visible)
+        } else if (this.progress_window.visible) {
                 add_to_window (info);
-            else
-                update_notification_or_status ();
         }
 
 #if HAVE_UNITY
@@ -126,14 +148,16 @@ public class Marlin.Progress.UIHandler : Object {
         (this.window_vbox as Gtk.Box).pack_start (progress_widget, false, false, 6);
 
         progress_widget.show ();
-        if (this.progress_window.visible)
+        if (this.progress_window.visible) {
             (this.progress_window as Gtk.Window).present ();
+        }
     }
 
     private void ensure_window () {
-        if (this.progress_window != null)
+        if (this.progress_window != null) {
             return;
-
+        }
+        /* This provides an undeletable, unminimisable window in which to show the info widgets */
         this.progress_window = new Gtk.Dialog ();
         this.progress_window.resizable = false;
         this.progress_window.deletable = false;
@@ -150,31 +174,24 @@ public class Marlin.Progress.UIHandler : Object {
 
         this.progress_window.delete_event.connect ((widget, event) => {
             widget.hide ();
-            update_notification_or_status ();
             return true;
         });
     }
 
-    private void update_notification_or_status () {
-        if (this.notification_supports_persistence)
-            update_notification ();
-        else
-            update_status_icon ();
-    }
-
     private void progress_info_finished_cb (Marlin.Progress.Info info) {
-        this.active_infos--;
+        var application = Marlin.Application.get ();
+        application.release ();
 
-        if (this.active_infos > 0) {
-            if (!this.progress_window.visible)
-                update_notification_or_status ();
+        if (active_infos > 0) {
+            this.active_infos--; 
+            show_operation_complete_notification (info, active_infos < 1);
         } else {
-            if (this.progress_window.visible) {
-                progress_window.hide ();
-            } else {
-                hide_notification_or_status ();
-                show_complete_notification ();
-            }
+            warning ("Attempt to decrement zero active infos");
+        }
+
+        /* For rapid file transfers this can get called before progress window was been created */
+        if (active_infos < 1 && progress_window != null && progress_window.visible) {
+            (this.progress_window as Gtk.Window).hide ();
         }
 
 #if HAVE_UNITY
@@ -182,106 +199,30 @@ public class Marlin.Progress.UIHandler : Object {
 #endif
     }
 
-    private void hide_notification_or_status () {
-        if (this.status_icon != null)
-            this.status_icon.visible = false;
-
-        if (this.progress_notification != null) {
-            try {
-                this.progress_notification.close ();
-            } catch (Error error) {
-                warning ("There was an error when showing the notification: %s", error.message);
-            }
-
-            this.progress_notification = null;
+    private void show_operation_complete_notification (Marlin.Progress.Info info, bool all_finished) {
+        if (info.get_cancellable ().is_cancelled ()) {
+            return; /* No notification of cancellation action required */
         }
-    }
 
-    private void show_complete_notification () {
-        /* Don't display the notification if we'd be using a status icon */
-        if (!this.notification_supports_persistence)
-            return;
+        /* TRANSLATORS: %s will be replaced by the title of the file operation */
+        var result = (_("Completed %s")).printf (info.get_title ());
 
-        var complete_notification = new Notify.Notification (_("File Operations"),
-                                                             _("All file operations have been successfully completed"),
+        if (all_finished) {
+            result = result + "\n\n" + _("All file operations have ended");
+        }
+
+        var complete_notification = new Notify.Notification (TITLE,
+                                                             result,
                                                              null);
+
+        complete_notification.icon_name = Marlin.ICON_APP_LOGO;
+        complete_notification.set_app_name (Marlin.APP_TITLE);
+
         try {
             complete_notification.show ();
         } catch (Error error) {
             warning ("There was an error when showing the notification: %s", error.message);
         }
-    }
-
-    private void update_notification () {
-        ensure_notification ();
-
-        string body = ngettext ("%'d file operation active",
-                                "%'d file operations active",
-                                this.active_infos);
-
-        this.progress_notification.update (_("File Operations"),
-                                           body, "");
-
-        try {
-            this.progress_notification.show ();
-        } catch (Error error) {
-            warning ("There was an error when showing the notification: %s", error.message);
-        }
-    }
-
-    private void ensure_notification () {
-        if (this.progress_notification != null)
-            return;
-
-        this.progress_notification = new Notify.Notification (_("File Operations"),
-                                                              null, null);
-
-        this.progress_notification.set_category ("transfer");
-        this.progress_notification.set_hint ("resident", new Variant.boolean (true));
-        this.progress_notification.add_action (ACTION_DETAILS,
-                                               _("Show Details"),
-                                               (Notify.ActionCallback) notification_show_details_cb);
-    }
-
-    private void notification_show_details_cb (Notify.Notification notification,
-                                               string action_name) {
-        if (action_name != ACTION_DETAILS)
-            return;
-
-        try {
-            progress_notification.close ();
-        } catch (Error error) {
-            warning ("There was an error when closing the notification: %s", error.message);
-        }
-
-        (progress_window as Gtk.Window).present ();
-    }
-
-    private void update_status_icon () {
-        ensure_status_icon ();
-
-        string tooltip = ngettext ("%'d file operation active",
-                                   "%'d file operations active",
-                                   this.active_infos);
-
-        this.status_icon.set_tooltip_text (tooltip);
-
-        this.status_icon.visible = true;
-    }
-
-    private void ensure_status_icon () {
-        if (this.status_icon != null)
-            return;
-
-        var icon = new ThemedIcon.with_default_fallbacks ("system-file-manager-symbolic");
-        this.status_icon = new Gtk.StatusIcon.from_gicon (icon);
-
-        this.status_icon.activate.connect (() => {
-            this.status_icon.visible = false;
-            (this.progress_window as Gtk.Window).present ();
-        });
-
-        this.status_icon.visible = false;
     }
 
 #if HAVE_UNITY
@@ -419,4 +360,5 @@ public class Marlin.Progress.UIHandler : Object {
         }
     }
 #endif
+
 }

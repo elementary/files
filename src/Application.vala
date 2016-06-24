@@ -51,7 +51,7 @@ public class Marlin.Application : Granite.Application {
         this.app_copyright = Marlin.COPYRIGHT;
         this.app_years = Marlin.APP_YEARS;
         this.about_license_type = Gtk.License.GPL_3_0;
-        this.app_icon = Marlin.ICON_ABOUT_LOGO;
+        this.app_icon = Marlin.ICON_APP_LOGO;
 
         this.main_url = Marlin.LAUNCHPAD_URL;
         this.bug_url = Marlin.BUG_URL;
@@ -74,7 +74,8 @@ public class Marlin.Application : Granite.Application {
         return application_singleton;
     }
 
-    ~Application () {
+    /* Using ~Application () here does not work */
+    void before_app_exit () {
         Notify.uninit ();
     }
 
@@ -93,7 +94,9 @@ public class Marlin.Application : Granite.Application {
         });
 
         Notify.init (Config.GETTEXT_PACKAGE);
-        this.progress_handler = new Marlin.Progress.UIHandler ();
+
+        progress_handler = new Marlin.Progress.UIHandler ();
+
         this.clipboard = new Marlin.ClipboardManager.get_for_display (Gdk.Display.get_default ());
         this.thumbnailer = Marlin.Thumbnailer.get ();
         this.recent = new Gtk.RecentManager ();
@@ -112,7 +115,14 @@ public class Marlin.Application : Granite.Application {
 
         window_count = 0;
         this.window_added.connect_after (() => {window_count++;});
-        this.window_removed.connect (() => {window_count--;});
+        this.window_removed.connect (() => {
+            window_count--;
+            /* If there are active file operations, these will hold the application running */
+            if (get_windows () == null && progress_handler.get_active_info_count () == 0) {
+                /* Otherwise perform final cleanup */
+                before_app_exit ();
+            }
+        });
     }
 
     public unowned Marlin.ClipboardManager get_clipboard_manager () {
@@ -216,9 +226,10 @@ public class Marlin.Application : Granite.Application {
     }
 
     public override void quit_mainloop () {
-        debug ("Quitting mainloop");
+        warning ("Quitting mainloop");
         Marlin.IconInfo.clear_caches ();
 
+        before_app_exit ();
         base.quit_mainloop ();
     }
 
