@@ -81,6 +81,7 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
             }
         });
 
+        show_all ();
         present ();
     }
 
@@ -192,6 +193,7 @@ protected class HeaderLabel : Gtk.Label {
     public HeaderLabel (string _label) {
         halign = Gtk.Align.START;
         get_style_context ().add_class ("h4");
+        label = _label;
     }
 }
 

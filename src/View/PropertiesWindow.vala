@@ -79,7 +79,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private Gtk.Widget type_key_label;
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
-    private Gtk.Image size_warning_image;
     private int size_warning = 0;
 
     private uint timeout_perm = 0;
@@ -170,13 +169,14 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         get_info (goffile);
         cancellable = new GLib.Cancellable ();
 
-        /* Header Box */
-        build_header_box ();
-
         /* Info */
         if (info.size > 0) {
             construct_info_panel (info);
+            update_selection_size (); /* Start counting first to get number of selected files and folders */    
         }
+
+        /* Header Box */
+        build_header_box ();
 
         /* Permissions */
         /* Don't show permissions for uri scheme trash and archives */
@@ -229,10 +229,15 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         if (size_warning > 0) {
             string file_plural = _("file");
-            if (size_warning > 1)
+            if (size_warning > 1) {
                 file_plural = _("files");
-            size_warning_image.visible = true;
+            }
+            var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
+            size_warning_image.halign = Gtk.Align.START;
+            size_warning_image.hexpand = true;
             size_warning_image.tooltip_text = _("Actual size could be larger, ") + "%i %s ".printf (size_warning, file_plural) + _("could not be read due to permissions or other errors.");
+            info_grid.attach_next_to (size_warning_image, size_label, Gtk.PositionType.RIGHT, 1, 1);
+            info_grid.show_all ();
         }
 
         size_label.label = header_desc_str;
@@ -243,7 +248,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private Mutex mutex;
     private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
 
-    private void selection_size_update () {
+    private void update_selection_size () {
         total_size = 0;
         uncounted_folders = 0;
         selected_folders = 0;
@@ -251,7 +256,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         folder_count = 0;
         file_count = 0;
         size_warning = 0;
-        size_warning_image.hide ();
 
         deep_count_directories = null;
 
@@ -338,30 +342,15 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private void build_header_box () {
-        /* create some widgets first (may be hidden by selection_size_update ()) */
+        /* create some widgets first (may be hidden by update_selection_size ()) */
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
         var file_icon = new Gtk.Image.from_pixbuf (file_pix);
         overlay_emblems (file_icon, goffile.emblems_list);
 
-        spinner = new Gtk.Spinner ();
-        spinner.halign = Gtk.Align.START;
-
-        size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
-        size_warning_image.halign = Gtk.Align.START;
-        size_warning_image.no_show_all = true;
-        size_label = new ValueLabel ("");
-
-        type_label = new ValueLabel ("");
-        type_key_label = new KeyLabel (_("Type:"));
-
-        contains_label = new ValueLabel ("");
-        contains_key_label = new KeyLabel (_("Contains:"));
-
-        selection_size_update (); /* Start counting first to get number of selected files and folders */
-
         /* Build header box */
         if (count > 1 || (count == 1 && !goffile.is_writable ())) {
             var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
+            label.halign = Gtk.Align.START;
             header_title = label;
         } else if (count == 1 && goffile.is_writable ()) {
             entry = new Gtk.Entry ();
@@ -557,25 +546,37 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             row++;
         } while (kw != null);
     }
-    private void construct_info_panel (Gee.LinkedList<Pair<string, string>> item_info) {
-        int n = 1;
 
+    private void construct_info_panel (Gee.LinkedList<Pair<string, string>> item_info) {
         /* Have to have these separate as size call is async */
         var size_key_label = new KeyLabel (_("Size:"));
 
-        var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
-        size_box.add (spinner);
-        size_box.add (size_label);
-        size_box.add (size_warning_image);
+        spinner = new Gtk.Spinner ();
+        spinner.halign = Gtk.Align.START;
 
-        create_info_line (size_key_label, size_label, info_grid, ref n, size_box);
-        create_info_line (type_key_label, type_label, info_grid, ref n);
-        create_info_line (contains_key_label, contains_label, info_grid, ref n);
+        size_label = new ValueLabel ("");
 
+        type_key_label = new KeyLabel (_("Type:"));
+        type_label = new ValueLabel ("");
+
+        contains_key_label = new KeyLabel (_("Contains:"));
+        contains_label = new ValueLabel ("");
+
+        info_grid.attach (size_key_label, 0, 1, 1, 1);
+        info_grid.attach (spinner, 1, 1, 1, 1);
+        info_grid.attach (size_label, 1, 1, 1, 1);
+        info_grid.attach (type_key_label, 0, 2, 1, 1);
+        info_grid.attach (type_label, 1, 2, 3, 1);
+        info_grid.attach (contains_key_label, 0, 3, 1, 1);
+        info_grid.attach (contains_label, 1, 3, 3, 1);
+
+        int n = 4;
         foreach (var pair in item_info) {
             var value_label = new ValueLabel (pair.value);
             var key_label = new KeyLabel (pair.key);
-            create_info_line (key_label, value_label, info_grid, ref n);
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach (value_label, 1, n, 3, 1);
+            n++;
         }
 
         /* Open with */
@@ -1323,11 +1324,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     /** Hide certain widgets under certain conditions **/
     private void update_widgets_state () {
         if (uncounted_folders == 0) {
+            info_grid.remove (spinner);
             spinner.hide ();
-        }
-
-        if (size_warning < 1) {
-            size_warning_image.hide ();
         }
 
         if (count > 1) {
