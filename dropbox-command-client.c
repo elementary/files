@@ -187,31 +187,31 @@ send_command_to_db(GIOChannel *chan, const gchar *command_name,
     g_assert(command_name != NULL);
 
 
-#define WRITE_OR_DIE_SANI(s,l) {                    \
-    gchar *sani_s;                          \
-    sani_s = dropbox_client_util_sanitize(s);               \
+#define WRITE_OR_DIE_SANI(s,l) {                                    \
+    gchar *sani_s;                                                  \
+    sani_s = dropbox_client_util_sanitize(s);                       \
     iostat = g_io_channel_write_chars(chan, sani_s,l, &bytes_trans, \
-                                      &tmp_error);          \
-    g_free(sani_s);                         \
-    if (iostat == G_IO_STATUS_ERROR ||                  \
-        iostat == G_IO_STATUS_AGAIN) {                  \
-        if (tmp_error != NULL) {                        \
-            g_propagate_error(err, tmp_error);              \
-        }                                   \
-        return NULL;                            \
-    }                                   \
+                                      &tmp_error);                  \
+    g_free(sani_s);                                                 \
+    if (iostat == G_IO_STATUS_ERROR ||                              \
+        iostat == G_IO_STATUS_AGAIN) {                              \
+        if (tmp_error != NULL) {                                    \
+            g_propagate_error(err, tmp_error);                      \
+        }                                                           \
+        return NULL;                                                \
+    }                                                               \
 }
 
-#define WRITE_OR_DIE(s,l) {                     \
+#define WRITE_OR_DIE(s,l) {                                         \
     iostat = g_io_channel_write_chars(chan, s,l, &bytes_trans,      \
-                                      &tmp_error);          \
-    if (iostat == G_IO_STATUS_ERROR ||                  \
-        iostat == G_IO_STATUS_AGAIN) {                  \
-        if (tmp_error != NULL) {                        \
-            g_propagate_error(err, tmp_error);              \
-        }                                   \
-        return NULL;                            \
-    }                                   \
+                                      &tmp_error);                  \
+    if (iostat == G_IO_STATUS_ERROR ||                              \
+        iostat == G_IO_STATUS_AGAIN) {                              \
+        if (tmp_error != NULL) {                                    \
+            g_propagate_error(err, tmp_error);                      \
+        }                                                           \
+        return NULL;                                                \
+    }                                                               \
 }
 
     /* send command to server */
@@ -656,10 +656,10 @@ dropbox_command_client_thread(DropboxCommandClient *dcc) {
         g_io_channel_set_close_on_unref(chan, TRUE);
         g_io_channel_set_line_term(chan, "\n", -1);
 
-#define SET_CONNECTED_STATE(s)     {            \
-    g_mutex_lock(dcc->command_connected_mutex); \
-    dcc->command_connected = s;         \
-    g_mutex_unlock(dcc->command_connected_mutex);   \
+#define SET_CONNECTED_STATE(s)     {                    \
+    g_mutex_lock(dcc->command_connected_mutex);         \
+    dcc->command_connected = s;                         \
+    g_mutex_unlock(dcc->command_connected_mutex);       \
 }
 
         SET_CONNECTED_STATE(TRUE);
