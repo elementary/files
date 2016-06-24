@@ -25,16 +25,6 @@ namespace Marlin.View {
 public class PropertiesWindow : AbstractPropertiesDialog {
     private const string resolution_key = _("Resolution:");
 
-    private class Pair<F, G> {
-        public F key;
-        public G value;
-
-        public Pair (F key, G value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
-
     private Gee.LinkedList<Pair<string, string>> info;
     private Granite.Widgets.ImgEventBox evbox;
     private Granite.Widgets.XsEntry perm_code;
@@ -49,8 +39,76 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private GLib.List<GOF.File> files;
     private GOF.File goffile;
 
+    private uint64 total_size = 0;
+
     public FM.AbstractDirectoryView view {get; private set;}
     public Gtk.Entry entry {get; private set;}
+
+    private Mutex mutex;
+    private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
+
+    private Gee.Set<string>? mimes;
+    private Gtk.Label type_label;
+    private Gtk.Label size_label;
+    private Gtk.Label contains_label;
+    private Gtk.Label contains_key_label;
+    private Gtk.Widget type_key_label;
+    private string ftype; /* common type */
+    private Gtk.Spinner spinner;
+    private int size_warning = 0;
+
+    private uint timeout_perm = 0;
+    private GLib.Cancellable? cancellable;
+
+    private bool files_contain_a_directory;
+
+    private uint folder_count = 0; /* Count of folders current NOT including top level (selected) folders (to match OverlayBar)*/
+    private uint file_count; /* Count of files current including top level (selected) files other than folders */
+
+    private uint _uncounted_folders = 0;
+    private uint selected_folders = 0;
+    private uint selected_files = 0;
+    private signal void uncounted_folders_changed ();
+
+    private Gtk.Grid perm_grid;
+    private int owner_perm_code = 0;
+    private int group_perm_code = 0;
+    private int everyone_perm_code = 0;
+
+    private enum AppsColumn {
+        APP_INFO,
+        LABEL,
+        ICON
+    }
+
+    private enum PermissionType {
+        USER,
+        GROUP,
+        OTHER
+    }
+
+    private enum PermissionValue {
+        READ = (1<<0),
+        WRITE = (1<<1),
+        EXE = (1<<2)
+    }
+
+    private Posix.mode_t[,] vfs_perms = {
+        { Posix.S_IRUSR, Posix.S_IWUSR, Posix.S_IXUSR },
+        { Posix.S_IRGRP, Posix.S_IWGRP, Posix.S_IXGRP },
+        { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
+    };
+
+    private class Pair<F, G> {
+        public F key;
+        public G value;
+
+        public Pair (F key, G value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
     private string original_name {
         get {
             return view.original_name;
@@ -71,26 +129,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private Gee.Set<string>? mimes;
-    private Gtk.Label type_label;
-    private Gtk.Label size_label;
-    private Gtk.Label contains_label;
-    private Gtk.Label contains_key_label;
-    private Gtk.Widget type_key_label;
-    private string ftype; /* common type */
-    private Gtk.Spinner spinner;
-    private int size_warning = 0;
-
-    private uint timeout_perm = 0;
-    private GLib.Cancellable? cancellable;
-
-    private bool files_contain_a_directory;
-
-    private uint _uncounted_folders = 0;
-    private uint selected_folders = 0;
-    private uint selected_files = 0;
-    private signal void uncounted_folders_changed ();
-
     private uint uncounted_folders {
         get {
             return _uncounted_folders;
@@ -101,9 +139,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             uncounted_folders_changed ();
         }
     }
-
-    private uint folder_count = 0; /* Count of folders current NOT including top level (selected) folders (to match OverlayBar)*/
-    private uint file_count; /* Count of files current including top level (selected) files other than folders */
 
     public PropertiesWindow (GLib.List<GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         base (_("Properties"), parent);
@@ -132,10 +167,11 @@ public class PropertiesWindow : AbstractPropertiesDialog {
            GLib.List.copy() would not guarantee valid references: because it
            does a shallow copy (copying the pointer values only) the objects'
            memory may be freed even while this code is using it. */
-        foreach (GOF.File file in _files)
+        foreach (GOF.File file in _files) {
             /* prepend(G) is declared "owned G", so ref() will be called once
                on the unowned foreach value. */
             files.prepend (file);
+        }
 
         count = files.length();
 
@@ -151,19 +187,20 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         goffile = (GOF.File) files.data;
         mimes = new Gee.HashSet<string> ();
-        foreach (var gof in files)
-        {
+        foreach (var gof in files) {
             if (!(gof is GOF.File)) {
                 critical ("Properties Window constructor called with invalid file data (2)");
                 return;
             }
 
             var ftype = gof.get_ftype ();
-            if (ftype != null)
+            if (ftype != null) {
                 mimes.add (ftype);
+            }
 
-            if (gof.is_directory)
+            if (gof.is_directory) {
                 files_contain_a_directory = true;
+            }
         }
 
         get_info (goffile);
@@ -172,10 +209,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         /* Info */
         if (info.size > 0) {
             construct_info_panel (info);
-            update_selection_size (); /* Start counting first to get number of selected files and folders */    
         }
 
-        /* Header Box */
+        update_selection_size (); /* Start counting first to get number of selected files and folders */    
         build_header_box ();
 
         /* Permissions */
@@ -220,8 +256,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         update_widgets_state ();
     }
 
-    private uint64 total_size = 0;
-
     private void update_header_desc () {
         string header_desc_str;
 
@@ -244,9 +278,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         contains_label.label = get_contains_label (folder_count, file_count);
         update_widgets_state ();
     }
-
-    private Mutex mutex;
-    private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
 
     private void update_selection_size () {
         total_size = 0;
@@ -320,8 +351,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 proposed_name = new_name;
                 view.set_file_display_name (file.location, new_name, after_rename);
             }
-        } else
+        } else {
             reset_entry_text ();
+        }
+        
     }
 
     private void after_rename (GLib.File original_file, GLib.File? new_location) {
@@ -335,8 +368,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     public void reset_entry_text (string? new_name = null) {
-        if (new_name != null)
+        if (new_name != null) {
             original_name = new_name;
+        }
 
         entry.set_text (original_name);
     }
@@ -655,29 +689,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         l_read.set_use_markup (true);
         btn.add (l_read);
     }
-
-    private enum PermissionType {
-        USER,
-        GROUP,
-        OTHER
-    }
-
-    private enum PermissionValue {
-        READ = (1<<0),
-        WRITE = (1<<1),
-        EXE = (1<<2)
-    }
-
-    private Posix.mode_t[,] vfs_perms = {
-        { Posix.S_IRUSR, Posix.S_IWUSR, Posix.S_IXUSR },
-        { Posix.S_IRGRP, Posix.S_IWGRP, Posix.S_IXGRP },
-        { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
-    };
-
-    private Gtk.Grid perm_grid;
-    private int owner_perm_code = 0;
-    private int group_perm_code = 0;
-    private int everyone_perm_code = 0;
 
     private void update_perm_codes (PermissionType pt, int val, int mult) {
         switch (pt) {
@@ -1175,12 +1186,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         });
     }
 
-    private enum AppsColumn {
-        APP_INFO,
-        LABEL,
-        ICON
-    }
-
     private Icon ensure_icon (AppInfo app) {
         Icon icon = app.get_icon ();
         if (icon == null)
@@ -1324,7 +1329,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     /** Hide certain widgets under certain conditions **/
     private void update_widgets_state () {
         if (uncounted_folders == 0) {
-            info_grid.remove (spinner);
             spinner.hide ();
         }
 

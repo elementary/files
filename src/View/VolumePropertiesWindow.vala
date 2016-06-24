@@ -94,5 +94,4 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         show_all ();
     }
 }
-
 }
