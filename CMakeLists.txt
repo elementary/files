@@ -27,5 +27,5 @@ add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
 add_library(pantheon-files-dropbox SHARED
     plugin.c dropbox-client-util.c dropbox-command-client.c dropbox-client.c dropbox-hooks.c)
-target_link_libraries(pantheon-files-dropbox pantheon-files-core pantheon-files-widgets ${DROPBOX_LIBRARIES})
+target_link_libraries(pantheon-files-dropbox pantheon-files-core ${DROPBOX_LIBRARIES})
 install(TARGETS pantheon-files-dropbox DESTINATION lib/pantheon-files/plugins/)
