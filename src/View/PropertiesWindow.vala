@@ -53,6 +53,25 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
     public FM.AbstractDirectoryView view {get; private set;}
     public Gtk.Entry entry {get; private set;}
+    private string original_name {
+        get {
+            return view.original_name;
+        }
+
+        set {
+            view.original_name = value;
+        }
+    }
+
+    private string proposed_name {
+        get {
+            return view.proposed_name;
+        }
+
+        set {
+            view.proposed_name = value;
+        }
+    }
 
     private Mutex mutex;
     private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
@@ -105,26 +124,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         { Posix.S_IRGRP, Posix.S_IWGRP, Posix.S_IXGRP },
         { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
     };
-
-    private string original_name {
-        get {
-            return view.original_name;
-        }
-
-        set {
-            view.original_name = value;
-        }
-    }
-
-    private string proposed_name {
-        get {
-            return view.proposed_name;
-        }
-
-        set {
-            view.proposed_name = value;
-        }
-    }
 
     private uint uncounted_folders {
         get {
