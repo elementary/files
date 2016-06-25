@@ -762,7 +762,7 @@ namespace Marlin.View {
                 "website-label",  Marlin.LAUNCHPAD_LABEL,
                 "authors", Marlin.AUTHORS,
                 "artists", Marlin.ARTISTS,
-                "logo-icon-name", Marlin.ICON_ABOUT_LOGO,
+                "logo-icon-name", Marlin.ICON_APP_LOGO,
                 "translator-credits",  Marlin.TRANSLATORS,
                 "help", Marlin.HELP_URL,
                 "translate", Marlin.TRANSLATE_URL,
