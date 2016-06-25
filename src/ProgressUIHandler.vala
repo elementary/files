@@ -17,7 +17,7 @@
     Authors: Alexander Larsson <alexl@redhat.com>
              Cosimo Cecchi <cosimoc@redhat.com>
              Julián Unrrein <junrrein@gmail.com>
-             Jeremy Wootten <jeremy@elementaryos.
+             Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
 /*** One instance of this class is owned by the application and handles UI for file transfers initiated by
@@ -208,7 +208,7 @@ public class Marlin.Progress.UIHandler : Object {
         var result = (_("Completed %s")).printf (info.get_title ());
 
         if (all_finished) {
-            result = result + "\n\n" + _("All file operations have ended");
+            result = result + "\n" + _("All file operations have ended");
         }
 
         var complete_notification = new Notify.Notification (TITLE,
