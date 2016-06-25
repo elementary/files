@@ -970,18 +970,15 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         key_label.margin_bottom = 12;
         value_label.margin_bottom = 12;
 
-        key_label = new Gtk.Label (_("Owner:"));
-        key_label.halign = Gtk.Align.END;
+        key_label = new KeyLabel (_("Owner:"));
         value_hlabel = create_perm_choice (PermissionType.USER);
         perm_grid.attach (key_label, 0, 3, 1, 1);
         perm_grid.attach (value_hlabel, 1, 3, 2, 1);
-        key_label = new Gtk.Label (_("Group:"));
-        key_label.halign = Gtk.Align.END;
+        key_label = new KeyLabel (_("Group:"));
         value_hlabel = create_perm_choice (PermissionType.GROUP);
         perm_grid.attach (key_label, 0, 4, 1, 1);
         perm_grid.attach (value_hlabel, 1, 4, 2, 1);
-        key_label = new Gtk.Label (_("Everyone:"));
-        key_label.halign = Gtk.Align.END;
+        key_label = new KeyLabel (_("Everyone:"));
         value_hlabel = create_perm_choice (PermissionType.OTHER);
         perm_grid.attach (key_label, 0, 5, 1, 1);
         perm_grid.attach (value_hlabel, 1, 5, 2, 1);
