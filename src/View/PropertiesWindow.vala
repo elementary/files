@@ -632,6 +632,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                             AppsColumn.ICON, ensure_icon (default_app));
 
             var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
+            combo.set_active (0);
+            combo.valign = Gtk.Align.CENTER;
+
             var renderer = new Gtk.CellRendererText ();
             var pix_renderer = new Gtk.CellRendererPixbuf ();
             combo.pack_start (pix_renderer, false);
@@ -640,18 +643,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             combo.add_attribute (renderer, "text", AppsColumn.LABEL);
             combo.add_attribute (pix_renderer, "gicon", AppsColumn.ICON);
 
-            combo.set_active (0);
-            combo.set_valign (Gtk.Align.CENTER);
-
-            var hcombo = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            hcombo.pack_start (combo, false, false, 0);
-
             combo.changed.connect (combo_open_with_changed);
 
             var key_label = new KeyLabel (_("Open with:"));
 
             info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach (hcombo, 1, n, 1, 1);
+            info_grid.attach (combo, 1, n, 1, 1);
         }
 
         /* Device Usage */
