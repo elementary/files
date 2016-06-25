@@ -266,7 +266,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
             size_warning_image.halign = Gtk.Align.START;
             size_warning_image.hexpand = true;
-            size_warning_image.tooltip_text = _("Actual size could be larger, ") + "%i %s ".printf (size_warning, file_plural) + _("could not be read due to permissions or other errors.");
+            size_warning_image.tooltip_markup = _("<b>Actual Size Could Be Larger</b>") + "\n" + _("%i %s could not be read due to permissions or other errors.").printf (size_warning, file_plural);
             info_grid.attach_next_to (size_warning_image, size_label, Gtk.PositionType.RIGHT, 1, 1);
             info_grid.show_all ();
         }
