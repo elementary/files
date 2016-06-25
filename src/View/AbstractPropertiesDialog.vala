@@ -196,5 +196,4 @@ protected class ValueLabel : Gtk.Label {
         use_markup = true;
     }
 }
-
 }
