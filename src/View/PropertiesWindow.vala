@@ -25,6 +25,16 @@ namespace Marlin.View {
 public class PropertiesWindow : AbstractPropertiesDialog {
     private const string resolution_key = _("Resolution:");
 
+    private class Pair<F, G> {
+        public F key;
+        public G value;
+
+        public Pair (F key, G value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
     private Gee.LinkedList<Pair<string, string>> info;
     private Granite.Widgets.ImgEventBox evbox;
     private Granite.Widgets.XsEntry perm_code;
@@ -62,9 +72,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
     private bool files_contain_a_directory;
 
-    private uint folder_count = 0; /* Count of folders current NOT including top level (selected) folders (to match OverlayBar)*/
-    private uint file_count; /* Count of files current including top level (selected) files other than folders */
-
     private uint _uncounted_folders = 0;
     private uint selected_folders = 0;
     private uint selected_files = 0;
@@ -99,16 +106,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
     };
 
-    private class Pair<F, G> {
-        public F key;
-        public G value;
-
-        public Pair (F key, G value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
-
     private string original_name {
         get {
             return view.original_name;
@@ -139,6 +136,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             uncounted_folders_changed ();
         }
     }
+
+    private uint folder_count = 0; /* Count of folders current NOT including top level (selected) folders (to match OverlayBar)*/
+    private uint file_count; /* Count of files current including top level (selected) files other than folders */
 
     public PropertiesWindow (GLib.List<GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         base (_("Properties"), parent);
