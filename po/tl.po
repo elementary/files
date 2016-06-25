@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-29 10:18-0500\n"
-"PO-Revision-Date: 2016-06-02 16:13+0000\n"
+"POT-Creation-Date: 2016-06-21 05:28-0500\n"
+"PO-Revision-Date: 2016-06-08 22:22+0000\n"
 "Last-Translator: yavinfour <anjelo.passionist@gmail.com>\n"
 "Language-Team: Tagalog <tl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-06-03 06:10+0000\n"
-"X-Generator: Launchpad (build 18086)\n"
+"X-Launchpad-Export-Date: 2016-06-22 05:58+0000\n"
+"X-Generator: Launchpad (build 18111)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -44,11 +44,11 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Secure WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
@@ -131,7 +131,7 @@ msgstr "Pangalan ng _user"
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
-msgstr ""
+msgstr "Pass_word:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
@@ -225,7 +225,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "May isa pang file na may kaparehong pangalan na nasa \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:471
@@ -275,7 +275,7 @@ msgstr "Ibalik sa Dati"
 
 #: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "Gamitin ang aksyon na ito sa lahat ng mga file"
 
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
@@ -316,13 +316,13 @@ msgstr ""
 msgid "Invalid desktop file"
 msgstr ""
 
-#: ../libcore/gof-file.c:2275
+#: ../libcore/gof-file.c:2272
 msgid "Slashes are not allowed in filenames"
 msgstr ""
 "Hindi pwedeng gamitin ang mga slashes o ang bantas na palihis sa mga "
 "filenames"
 
-#: ../libcore/gof-file.c:2295
+#: ../libcore/gof-file.c:2292
 msgid "Toplevel files cannot be renamed"
 msgstr ""
 
@@ -535,7 +535,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Lahat ng aytem sa basura ng mount na ito ay permanenteng mabubura."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1462
+#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1485
 msgid "Empty _Trash"
 msgstr "Alisin ang laman ng Basura"
 
@@ -1486,15 +1486,15 @@ msgstr "Nakaraan"
 msgid "Next"
 msgstr "Susunod"
 
-#: ../src/View/Window.vala:210
+#: ../src/View/Window.vala:204
 msgid "Files isn't your default file manager."
 msgstr ""
 
-#: ../src/View/Window.vala:216
+#: ../src/View/Window.vala:210
 msgid "Set as Default"
 msgstr ""
 
-#: ../src/View/Window.vala:222
+#: ../src/View/Window.vala:216
 msgid "Ignore"
 msgstr "Huwag pansinin"
 
@@ -1506,7 +1506,7 @@ msgstr "Pangsarili"
 msgid "Your common places and bookmarks"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:317
+#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:329
 msgid "Home"
 msgstr "Tahanan"
 
@@ -1535,7 +1535,7 @@ msgid "Your local partitions and devices"
 msgstr ""
 
 #: ../src/View/Sidebar.vala:546 ../src/View/PropertiesWindow.vala:1602
-#: ../src/View/ViewContainer.vala:319 ../libwidgets/Resources.vala:91
+#: ../src/View/ViewContainer.vala:331 ../libwidgets/Resources.vala:91
 msgid "File System"
 msgstr ""
 
@@ -1555,51 +1555,47 @@ msgstr "Kabuuang Network"
 msgid "Browse the contents of the network"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:792
-msgid "Unknown type"
-msgstr "Hindi matukoy na uri"
-
-#: ../src/View/Sidebar.vala:816
+#: ../src/View/Sidebar.vala:830
 msgid "(%s Free of %s)"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1300
+#: ../src/View/Sidebar.vala:1323
 msgid "Unable to start %s"
 msgstr "Hindi maistart ang %s"
 
-#: ../src/View/Sidebar.vala:1404
+#: ../src/View/Sidebar.vala:1427
 msgid "Open"
 msgstr "Buksan"
 
-#: ../src/View/Sidebar.vala:1412
+#: ../src/View/Sidebar.vala:1435
 msgid "Open in New _Tab"
 msgstr "Buksan sa Bagong _Tab"
 
-#: ../src/View/Sidebar.vala:1418
+#: ../src/View/Sidebar.vala:1441
 msgid "Open in New _Window"
 msgstr "Buksan sa Bagong _Window"
 
-#: ../src/View/Sidebar.vala:1426
+#: ../src/View/Sidebar.vala:1449
 msgid "Remove"
 msgstr "Tanggalin"
 
-#: ../src/View/Sidebar.vala:1434 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1457 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Palitan ng pangalan"
 
-#: ../src/View/Sidebar.vala:1443
+#: ../src/View/Sidebar.vala:1466
 msgid "_Mount"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1449
+#: ../src/View/Sidebar.vala:1472
 msgid "_Unmount"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1455
+#: ../src/View/Sidebar.vala:1478
 msgid "_Eject"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1469 ../src/View/PropertiesWindow.vala:291
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:291
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr ""
@@ -1620,7 +1616,7 @@ msgstr "Uri"
 msgid "Modified"
 msgstr "Huling nabago"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:343
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:353
 msgid "This Folder Does Not Exist"
 msgstr "Walang Ganitong Polder"
 
@@ -1643,106 +1639,118 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:551
+#: ../src/View/AbstractDirectoryView.vala:553
 msgid "Failed to preview"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:805
+#: ../src/View/AbstractDirectoryView.vala:812
 msgid "Cannot open this file"
 msgstr "Hindi mabuksan ang file na ito"
 
-#: ../src/View/AbstractDirectoryView.vala:818
+#: ../src/View/AbstractDirectoryView.vala:825
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1549
+#: ../src/View/AbstractDirectoryView.vala:1560
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1549
+#: ../src/View/AbstractDirectoryView.vala:1560
 msgid "Invalid file name provided"
 msgstr "Hindi pupwede ang binigay na pangalan ng file"
 
-#: ../src/View/AbstractDirectoryView.vala:1993
+#: ../src/View/AbstractDirectoryView.vala:2004
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1999
+#: ../src/View/AbstractDirectoryView.vala:2010
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2004
+#: ../src/View/AbstractDirectoryView.vala:2015
 msgid "Open in %s"
 msgstr "Buksan sa %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2014
+#: ../src/View/AbstractDirectoryView.vala:2025
 msgid "Open in"
 msgstr "Buksan sa"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:2027
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr "Buksan gamit ang"
 
-#: ../src/View/AbstractDirectoryView.vala:2076
+#: ../src/View/AbstractDirectoryView.vala:2087
 msgid "Other Application"
 msgstr "Iba pang Aplikasyon"
 
-#: ../src/View/AbstractDirectoryView.vala:2336
+#: ../src/View/AbstractDirectoryView.vala:2347
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2771
+#: ../src/View/AbstractDirectoryView.vala:2782
 msgid "Cannot copy files that are in the trash"
 msgstr "Hindi pwedeng kopyahin ang mga files na nasa basura"
 
-#: ../src/View/AbstractDirectoryView.vala:2772
+#: ../src/View/AbstractDirectoryView.vala:2783
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:188 ../src/View/PropertiesWindow.vala:1515
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1515
 msgid "%u folders"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:190 ../src/View/OverlayBar.vala:198
+#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
 msgid " and %u other item (%s) selected"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:191 ../src/View/OverlayBar.vala:199
+#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
 msgid " and %u other items (%s) selected"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:194 ../src/View/OverlayBar.vala:202
+#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
 msgid " selected"
 msgstr " sa nakaselect"
 
-#: ../src/View/OverlayBar.vala:196 ../src/View/PropertiesWindow.vala:1486
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1486
 #: ../src/View/PropertiesWindow.vala:1525
 msgid "%u folder"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:204
+#: ../src/View/OverlayBar.vala:231
 msgid "%u items selected (%s)"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:240
+#: ../src/View/OverlayBar.vala:272
 msgid "%u sub-folder, "
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:240
+#: ../src/View/OverlayBar.vala:272
 msgid "%u sub-folders, "
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:245
+#: ../src/View/OverlayBar.vala:278
 msgid "%u file, "
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:245
+#: ../src/View/OverlayBar.vala:278
 msgid "%u files, "
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:250
+#: ../src/View/OverlayBar.vala:288
+msgid "%s approx."
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u file not readable"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u files not readable"
 msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:186
@@ -1963,43 +1971,51 @@ msgstr "%s (%d%% ang ginagamit)"
 msgid "Unknown"
 msgstr "Hindi matukoy"
 
-#: ../src/View/ViewContainer.vala:328
+#: ../src/View/ViewContainer.vala:340
 msgid "(as Administrator)"
 msgstr "(bilang Administrador)"
 
-#: ../src/View/ViewContainer.vala:344
+#: ../src/View/ViewContainer.vala:354
 msgid "You cannot create a folder here."
 msgstr "Hindi ka pwedeng bumuo ng polder dito"
 
-#: ../src/View/ViewContainer.vala:346
+#: ../src/View/ViewContainer.vala:356
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:357
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:359
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:347
+#: ../src/View/ViewContainer.vala:360
 msgid "You don't have permission to view this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:349
+#: ../src/View/ViewContainer.vala:362
 msgid "Unable to Mount Folder"
 msgstr "Hindi Mai-mount ang Polder"
 
-#: ../src/View/ViewContainer.vala:350
+#: ../src/View/ViewContainer.vala:363
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:352
+#: ../src/View/ViewContainer.vala:365
 msgid "Unable show Folder"
 msgstr "Hindi maipakita ang Polder"
 
-#: ../src/View/ViewContainer.vala:353
+#: ../src/View/ViewContainer.vala:366
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:363
+#: ../src/View/ViewContainer.vala:376
 msgid "File not Found"
 msgstr "Hindi makita ang File"
 
-#: ../src/View/ViewContainer.vala:364
+#: ../src/View/ViewContainer.vala:377
 msgid "The file selected no longer exists."
 msgstr "Hindi na umiiral ang naka-select na file"
 

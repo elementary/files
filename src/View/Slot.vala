@@ -142,6 +142,8 @@ namespace Marlin.View {
         private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
             if (!updates_frozen) {
                 updates_frozen = true;
+                dir_view.clear (); /* clear model but do not change directory */
+
                 path_changed (false);
                 /* if original_request false, leave original_load_request as it is (it may already be true
                  * if reloading in response to reload button press). */  
@@ -152,8 +154,6 @@ namespace Marlin.View {
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
 
-
-                dir_view.clear (); /* clear model but do not change directory */
                 /* view and slot are unfrozen when done loading signal received */
                 set_view_updates_frozen (true); 
                 updates_frozen = true;
@@ -174,6 +174,7 @@ namespace Marlin.View {
                 warning ("Path change request received too rapidly");
                 return;
             }
+
             reload_timeout_id = Timeout.add (100, ()=> {
                 directory.reload ();
                 reload_timeout_id = 0;
@@ -258,6 +259,8 @@ namespace Marlin.View {
             assert (loc != null);
             var old_dir = directory;
             set_up_directory (loc);
+            dir_view.change_directory (old_dir, directory);
+
             path_changed (allow_mode_change && directory.uri_contain_keypath_icons);
             /* ViewContainer listens to this signal takes care of updating appearance
              * If allow_mode_change is false View Container will not automagically
@@ -271,7 +274,6 @@ namespace Marlin.View {
                 /* view and slot are unfrozen when done loading signal received */
                 set_view_updates_frozen (true);
                 updates_frozen = true;
-
                 directory.init ();
             } else {
                 critical ("Initialize directory called when is loading");

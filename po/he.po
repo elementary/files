@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-29 10:18-0500\n"
+"POT-Creation-Date: 2016-06-21 05:28-0500\n"
 "PO-Revision-Date: 2015-12-21 13:47+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-05-30 05:29+0000\n"
-"X-Generator: Launchpad (build 18053)\n"
+"X-Launchpad-Export-Date: 2016-06-22 05:57+0000\n"
+"X-Generator: Launchpad (build 18111)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -318,11 +318,11 @@ msgstr "לא הוגדר שדה כתובת"
 msgid "Invalid desktop file"
 msgstr "קובץ שולחן עבודה אינו בר תוקף"
 
-#: ../libcore/gof-file.c:2275
+#: ../libcore/gof-file.c:2272
 msgid "Slashes are not allowed in filenames"
 msgstr "קו נטוי אינו בר שימוש בשמות קבצים"
 
-#: ../libcore/gof-file.c:2295
+#: ../libcore/gof-file.c:2292
 msgid "Toplevel files cannot be renamed"
 msgstr "לא ניתן לשנות שם עבור קובצי רמה ראשונה"
 
@@ -533,7 +533,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1462
+#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1485
 msgid "Empty _Trash"
 msgstr "ריקון_סל המיחזור"
 
@@ -1475,15 +1475,15 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: ../src/View/Window.vala:210
+#: ../src/View/Window.vala:204
 msgid "Files isn't your default file manager."
 msgstr "מנהל הקבצים Files  אינו  ברירת המחדל"
 
-#: ../src/View/Window.vala:216
+#: ../src/View/Window.vala:210
 msgid "Set as Default"
 msgstr ""
 
-#: ../src/View/Window.vala:222
+#: ../src/View/Window.vala:216
 msgid "Ignore"
 msgstr "התעלמות"
 
@@ -1495,7 +1495,7 @@ msgstr "הגדרות אישיות"
 msgid "Your common places and bookmarks"
 msgstr "המקומות הנפוצים שלך וסימניות"
 
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:317
+#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:329
 msgid "Home"
 msgstr "בית"
 
@@ -1524,7 +1524,7 @@ msgid "Your local partitions and devices"
 msgstr "המחיצות וההתקנים המקומיים שלך"
 
 #: ../src/View/Sidebar.vala:546 ../src/View/PropertiesWindow.vala:1602
-#: ../src/View/ViewContainer.vala:319 ../libwidgets/Resources.vala:91
+#: ../src/View/ViewContainer.vala:331 ../libwidgets/Resources.vala:91
 msgid "File System"
 msgstr "מערכת קבצים"
 
@@ -1544,51 +1544,47 @@ msgstr ""
 msgid "Browse the contents of the network"
 msgstr "עיון בתוכן הרשת"
 
-#: ../src/View/Sidebar.vala:792
-msgid "Unknown type"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:816
+#: ../src/View/Sidebar.vala:830
 msgid "(%s Free of %s)"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1300
+#: ../src/View/Sidebar.vala:1323
 msgid "Unable to start %s"
 msgstr "לא ניתן להתחיל את %s"
 
-#: ../src/View/Sidebar.vala:1404
+#: ../src/View/Sidebar.vala:1427
 msgid "Open"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1412
+#: ../src/View/Sidebar.vala:1435
 msgid "Open in New _Tab"
 msgstr "פתיחה ב_לשונית חדשה"
 
-#: ../src/View/Sidebar.vala:1418
+#: ../src/View/Sidebar.vala:1441
 msgid "Open in New _Window"
 msgstr "פתיחה ב_חלון חדש"
 
-#: ../src/View/Sidebar.vala:1426
+#: ../src/View/Sidebar.vala:1449
 msgid "Remove"
 msgstr "הסרה"
 
-#: ../src/View/Sidebar.vala:1434 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1457 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1443
+#: ../src/View/Sidebar.vala:1466
 msgid "_Mount"
 msgstr "_עיגון"
 
-#: ../src/View/Sidebar.vala:1449
+#: ../src/View/Sidebar.vala:1472
 msgid "_Unmount"
 msgstr "_ניתוק עיגון"
 
-#: ../src/View/Sidebar.vala:1455
+#: ../src/View/Sidebar.vala:1478
 msgid "_Eject"
 msgstr "_שליפה"
 
-#: ../src/View/Sidebar.vala:1469 ../src/View/PropertiesWindow.vala:291
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:291
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "מאפיינים"
@@ -1609,7 +1605,7 @@ msgstr "סוג"
 msgid "Modified"
 msgstr "מועד השינוי"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:343
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:353
 msgid "This Folder Does Not Exist"
 msgstr ""
 
@@ -1632,106 +1628,118 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:551
+#: ../src/View/AbstractDirectoryView.vala:553
 msgid "Failed to preview"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:805
+#: ../src/View/AbstractDirectoryView.vala:812
 msgid "Cannot open this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:818
+#: ../src/View/AbstractDirectoryView.vala:825
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1549
+#: ../src/View/AbstractDirectoryView.vala:1560
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1549
+#: ../src/View/AbstractDirectoryView.vala:1560
 msgid "Invalid file name provided"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1993
+#: ../src/View/AbstractDirectoryView.vala:2004
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1999
+#: ../src/View/AbstractDirectoryView.vala:2010
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2004
+#: ../src/View/AbstractDirectoryView.vala:2015
 msgid "Open in %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2014
+#: ../src/View/AbstractDirectoryView.vala:2025
 msgid "Open in"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:2027
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2076
+#: ../src/View/AbstractDirectoryView.vala:2087
 msgid "Other Application"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2336
+#: ../src/View/AbstractDirectoryView.vala:2347
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2771
+#: ../src/View/AbstractDirectoryView.vala:2782
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2772
+#: ../src/View/AbstractDirectoryView.vala:2783
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:188 ../src/View/PropertiesWindow.vala:1515
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1515
 msgid "%u folders"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:190 ../src/View/OverlayBar.vala:198
+#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
 msgid " and %u other item (%s) selected"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:191 ../src/View/OverlayBar.vala:199
+#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
 msgid " and %u other items (%s) selected"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:194 ../src/View/OverlayBar.vala:202
+#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
 msgid " selected"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:196 ../src/View/PropertiesWindow.vala:1486
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1486
 #: ../src/View/PropertiesWindow.vala:1525
 msgid "%u folder"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:204
+#: ../src/View/OverlayBar.vala:231
 msgid "%u items selected (%s)"
 msgstr "נבחרו %u פריטים (%s)"
 
-#: ../src/View/OverlayBar.vala:240
+#: ../src/View/OverlayBar.vala:272
 msgid "%u sub-folder, "
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:240
+#: ../src/View/OverlayBar.vala:272
 msgid "%u sub-folders, "
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:245
+#: ../src/View/OverlayBar.vala:278
 msgid "%u file, "
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:245
+#: ../src/View/OverlayBar.vala:278
 msgid "%u files, "
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:250
+#: ../src/View/OverlayBar.vala:288
+msgid "%s approx."
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u file not readable"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u files not readable"
 msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:186
@@ -1952,43 +1960,51 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:328
+#: ../src/View/ViewContainer.vala:340
 msgid "(as Administrator)"
 msgstr "(כמנהל)"
 
-#: ../src/View/ViewContainer.vala:344
+#: ../src/View/ViewContainer.vala:354
 msgid "You cannot create a folder here."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:346
+#: ../src/View/ViewContainer.vala:356
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:357
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:359
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:347
+#: ../src/View/ViewContainer.vala:360
 msgid "You don't have permission to view this folder."
 msgstr "אין לך הרשאה לראות תיקייה זו"
 
-#: ../src/View/ViewContainer.vala:349
+#: ../src/View/ViewContainer.vala:362
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:350
+#: ../src/View/ViewContainer.vala:363
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:352
+#: ../src/View/ViewContainer.vala:365
 msgid "Unable show Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:353
+#: ../src/View/ViewContainer.vala:366
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:363
+#: ../src/View/ViewContainer.vala:376
 msgid "File not Found"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:364
+#: ../src/View/ViewContainer.vala:377
 msgid "The file selected no longer exists."
 msgstr ""
 

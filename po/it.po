@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-05-29 10:18-0500\n"
-"PO-Revision-Date: 2016-05-15 13:01+0000\n"
-"Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
+"POT-Creation-Date: 2016-06-21 05:28-0500\n"
+"PO-Revision-Date: 2016-06-18 14:16+0000\n"
+"Last-Translator: Federico Flecchia <federico.flecchia@outlook.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-05-30 05:29+0000\n"
-"X-Generator: Launchpad (build 18053)\n"
+"X-Launchpad-Export-Date: 2016-06-22 05:57+0000\n"
+"X-Generator: Launchpad (build 18111)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -319,11 +319,11 @@ msgstr "Campo URL non specificato"
 msgid "Invalid desktop file"
 msgstr "File desktop non valido"
 
-#: ../libcore/gof-file.c:2275
+#: ../libcore/gof-file.c:2272
 msgid "Slashes are not allowed in filenames"
 msgstr "Nei nomi di file non è consentito l'uso di \"/\""
 
-#: ../libcore/gof-file.c:2295
+#: ../libcore/gof-file.c:2292
 msgid "Toplevel files cannot be renamed"
 msgstr "I file di livello principale non possono essere rinominati"
 
@@ -537,7 +537,7 @@ msgstr ""
 "Tutti gli elementi nel cestino montato verranno eliminati definitivamente."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1462
+#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1485
 msgid "Empty _Trash"
 msgstr "Svuota cestino"
 
@@ -1516,15 +1516,15 @@ msgstr "Precedente"
 msgid "Next"
 msgstr "Successivo"
 
-#: ../src/View/Window.vala:210
+#: ../src/View/Window.vala:204
 msgid "Files isn't your default file manager."
 msgstr "Files non è il tuo gestore file predefinito."
 
-#: ../src/View/Window.vala:216
+#: ../src/View/Window.vala:210
 msgid "Set as Default"
 msgstr "Imposta come predefinito"
 
-#: ../src/View/Window.vala:222
+#: ../src/View/Window.vala:216
 msgid "Ignore"
 msgstr "Ignora"
 
@@ -1536,7 +1536,7 @@ msgstr "Personali"
 msgid "Your common places and bookmarks"
 msgstr "Segnalibri e risorse"
 
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:317
+#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:329
 msgid "Home"
 msgstr "Inizio"
 
@@ -1565,7 +1565,7 @@ msgid "Your local partitions and devices"
 msgstr "Partizioni locali e dispositivi"
 
 #: ../src/View/Sidebar.vala:546 ../src/View/PropertiesWindow.vala:1602
-#: ../src/View/ViewContainer.vala:319 ../libwidgets/Resources.vala:91
+#: ../src/View/ViewContainer.vala:331 ../libwidgets/Resources.vala:91
 msgid "File System"
 msgstr "File di sistema"
 
@@ -1585,51 +1585,47 @@ msgstr "Intero network"
 msgid "Browse the contents of the network"
 msgstr "Esplora il contenuto della rete"
 
-#: ../src/View/Sidebar.vala:792
-msgid "Unknown type"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:816
+#: ../src/View/Sidebar.vala:830
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s disponibile di %s)"
 
-#: ../src/View/Sidebar.vala:1300
+#: ../src/View/Sidebar.vala:1323
 msgid "Unable to start %s"
 msgstr "Impossibile avviare «%s»"
 
-#: ../src/View/Sidebar.vala:1404
+#: ../src/View/Sidebar.vala:1427
 msgid "Open"
 msgstr "Apri"
 
-#: ../src/View/Sidebar.vala:1412
+#: ../src/View/Sidebar.vala:1435
 msgid "Open in New _Tab"
 msgstr "Apri in nuova _scheda"
 
-#: ../src/View/Sidebar.vala:1418
+#: ../src/View/Sidebar.vala:1441
 msgid "Open in New _Window"
 msgstr "Apri in nuova _finestra"
 
-#: ../src/View/Sidebar.vala:1426
+#: ../src/View/Sidebar.vala:1449
 msgid "Remove"
 msgstr "Rimuovi"
 
-#: ../src/View/Sidebar.vala:1434 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1457 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Rinomina"
 
-#: ../src/View/Sidebar.vala:1443
+#: ../src/View/Sidebar.vala:1466
 msgid "_Mount"
 msgstr "_Monta"
 
-#: ../src/View/Sidebar.vala:1449
+#: ../src/View/Sidebar.vala:1472
 msgid "_Unmount"
 msgstr "_Smonta"
 
-#: ../src/View/Sidebar.vala:1455
+#: ../src/View/Sidebar.vala:1478
 msgid "_Eject"
 msgstr "_Espelli"
 
-#: ../src/View/Sidebar.vala:1469 ../src/View/PropertiesWindow.vala:291
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:291
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Proprietà"
@@ -1650,7 +1646,7 @@ msgstr "Tipo"
 msgid "Modified"
 msgstr "Ultima modifica"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:343
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:353
 msgid "This Folder Does Not Exist"
 msgstr "Questa cartella non esiste"
 
@@ -1676,107 +1672,119 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractDirectoryView.vala:551
+#: ../src/View/AbstractDirectoryView.vala:553
 msgid "Failed to preview"
 msgstr "Impossibile visualizzare in anteprima"
 
-#: ../src/View/AbstractDirectoryView.vala:805
+#: ../src/View/AbstractDirectoryView.vala:812
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Impossibile aprire questo file"
 
-#: ../src/View/AbstractDirectoryView.vala:818
+#: ../src/View/AbstractDirectoryView.vala:825
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Impossibile identificare il tipo di file da aprire"
 
-#: ../src/View/AbstractDirectoryView.vala:1549
+#: ../src/View/AbstractDirectoryView.vala:1560
 msgid "Cannot drop this file"
 msgstr "Impossibile eliminare il file"
 
-#: ../src/View/AbstractDirectoryView.vala:1549
+#: ../src/View/AbstractDirectoryView.vala:1560
 msgid "Invalid file name provided"
 msgstr "Nome file fornito non valido"
 
-#: ../src/View/AbstractDirectoryView.vala:1993
+#: ../src/View/AbstractDirectoryView.vala:2004
 msgid "Invalid"
 msgstr "Non valido"
 
-#: ../src/View/AbstractDirectoryView.vala:1999
+#: ../src/View/AbstractDirectoryView.vala:2010
 msgid "Run"
 msgstr "Esegui"
 
-#: ../src/View/AbstractDirectoryView.vala:2004
+#: ../src/View/AbstractDirectoryView.vala:2015
 msgid "Open in %s"
 msgstr "Apri in %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2014
+#: ../src/View/AbstractDirectoryView.vala:2025
 msgid "Open in"
 msgstr "Apri con"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:2027
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr "Apri con"
 
-#: ../src/View/AbstractDirectoryView.vala:2076
+#: ../src/View/AbstractDirectoryView.vala:2087
 msgid "Other Application"
 msgstr "Altre applicazioni"
 
-#: ../src/View/AbstractDirectoryView.vala:2336
+#: ../src/View/AbstractDirectoryView.vala:2347
 msgid "Untitled %s"
 msgstr "%s senza nome"
 
-#: ../src/View/AbstractDirectoryView.vala:2771
+#: ../src/View/AbstractDirectoryView.vala:2782
 msgid "Cannot copy files that are in the trash"
 msgstr "Non è possibile copiare i file che si trovano nel cestino"
 
-#: ../src/View/AbstractDirectoryView.vala:2772
+#: ../src/View/AbstractDirectoryView.vala:2783
 msgid "Cutting the selection instead"
 msgstr "Tagliare la selezione invece"
 
-#: ../src/View/OverlayBar.vala:188 ../src/View/PropertiesWindow.vala:1515
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1515
 msgid "%u folders"
 msgstr "%u cartelle"
 
-#: ../src/View/OverlayBar.vala:190 ../src/View/OverlayBar.vala:198
+#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
 msgid " and %u other item (%s) selected"
 msgstr " e %u altro elemento (%s) selezionato"
 
-#: ../src/View/OverlayBar.vala:191 ../src/View/OverlayBar.vala:199
+#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
 msgid " and %u other items (%s) selected"
 msgstr " e altri %u oggetti (%s) selezionati"
 
-#: ../src/View/OverlayBar.vala:194 ../src/View/OverlayBar.vala:202
+#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
 msgid " selected"
 msgstr " selezionati"
 
-#: ../src/View/OverlayBar.vala:196 ../src/View/PropertiesWindow.vala:1486
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1486
 #: ../src/View/PropertiesWindow.vala:1525
 msgid "%u folder"
 msgstr "%u cartella"
 
-#: ../src/View/OverlayBar.vala:204
+#: ../src/View/OverlayBar.vala:231
 msgid "%u items selected (%s)"
 msgstr "%u oggetti selezionati (%s)"
 
-#: ../src/View/OverlayBar.vala:240
+#: ../src/View/OverlayBar.vala:272
 msgid "%u sub-folder, "
 msgstr "%u sottocartella, "
 
-#: ../src/View/OverlayBar.vala:240
+#: ../src/View/OverlayBar.vala:272
 msgid "%u sub-folders, "
 msgstr "%u sottocartelle, "
 
-#: ../src/View/OverlayBar.vala:245
+#: ../src/View/OverlayBar.vala:278
 msgid "%u file, "
 msgstr "%u file, "
 
-#: ../src/View/OverlayBar.vala:245
+#: ../src/View/OverlayBar.vala:278
 msgid "%u files, "
 msgstr "%u file, "
 
-#: ../src/View/OverlayBar.vala:250
+#: ../src/View/OverlayBar.vala:288
+msgid "%s approx."
+msgstr "Circa %s."
+
+#: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
 msgstr "dimensioni sconosciute"
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u file not readable"
+msgstr "File %u non leggibile"
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u files not readable"
+msgstr "File %u non leggibili"
 
 #: ../src/View/PropertiesWindow.vala:186
 msgid "Close"
@@ -1820,7 +1828,7 @@ msgstr "sconosciuto"
 
 #: ../src/View/PropertiesWindow.vala:545
 msgid "Contains:"
-msgstr ""
+msgstr "Contiene:"
 
 #: ../src/View/PropertiesWindow.vala:642
 msgid "Created:"
@@ -1919,49 +1927,49 @@ msgstr "Tutti:"
 
 #: ../src/View/PropertiesWindow.vala:1471
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u sottocartelle e %u file"
 
 #: ../src/View/PropertiesWindow.vala:1473
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u sottocartelle e %u file"
 
 #: ../src/View/PropertiesWindow.vala:1476
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u sottocartelle"
 
 #: ../src/View/PropertiesWindow.vala:1481
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u sottocartella e %u file"
 
 #: ../src/View/PropertiesWindow.vala:1483
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u sottocartella e %u file"
 
 #: ../src/View/PropertiesWindow.vala:1492
 #: ../src/View/PropertiesWindow.vala:1531
 msgid "%u files"
-msgstr ""
+msgstr "%u file"
 
 #: ../src/View/PropertiesWindow.vala:1494
 #: ../src/View/PropertiesWindow.vala:1533
 msgid "%u file"
-msgstr ""
+msgstr "%u file"
 
 #: ../src/View/PropertiesWindow.vala:1510
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u elementi selezionati (%u cartelle e %u file)"
 
 #: ../src/View/PropertiesWindow.vala:1512
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u elementi selezionati (%u cartelle e %u file)"
 
 #: ../src/View/PropertiesWindow.vala:1520
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u elementi selezionati (%u cartella e %u file)"
 
 #: ../src/View/PropertiesWindow.vala:1522
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u elementi selezionati (%u cartella e %u file)"
 
 #: ../src/View/PropertiesWindow.vala:1586
 msgid "Disk Properties"
@@ -1996,43 +2004,51 @@ msgstr "%s (%d%% usato)"
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: ../src/View/ViewContainer.vala:328
+#: ../src/View/ViewContainer.vala:340
 msgid "(as Administrator)"
 msgstr "(come Amministratore)"
 
-#: ../src/View/ViewContainer.vala:344
+#: ../src/View/ViewContainer.vala:354
 msgid "You cannot create a folder here."
 msgstr "Non puoi creare una cartella qui."
 
-#: ../src/View/ViewContainer.vala:346
+#: ../src/View/ViewContainer.vala:356
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:357
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:359
 msgid "This Folder Does Not Belong to You"
 msgstr "Questa cartella non ti appartiene"
 
-#: ../src/View/ViewContainer.vala:347
+#: ../src/View/ViewContainer.vala:360
 msgid "You don't have permission to view this folder."
 msgstr "Non possiedi i permessi per sfogliare questa cartella"
 
-#: ../src/View/ViewContainer.vala:349
+#: ../src/View/ViewContainer.vala:362
 msgid "Unable to Mount Folder"
 msgstr "Impossibile montare la cartella"
 
-#: ../src/View/ViewContainer.vala:350
+#: ../src/View/ViewContainer.vala:363
 msgid "Could not connect to the server for this folder."
 msgstr "Impossibile connettersi al server per questa cartella."
 
-#: ../src/View/ViewContainer.vala:352
+#: ../src/View/ViewContainer.vala:365
 msgid "Unable show Folder"
 msgstr "Impossibile mostrare cartella"
 
-#: ../src/View/ViewContainer.vala:353
+#: ../src/View/ViewContainer.vala:366
 msgid "The server for this folder could not be located."
 msgstr "Non è stato possibile individuare il server per questa cartella."
 
-#: ../src/View/ViewContainer.vala:363
+#: ../src/View/ViewContainer.vala:376
 msgid "File not Found"
 msgstr "File non trovato"
 
-#: ../src/View/ViewContainer.vala:364
+#: ../src/View/ViewContainer.vala:377
 msgid "The file selected no longer exists."
 msgstr "Il file selezionato non esiste più."
 
@@ -2210,6 +2226,7 @@ msgstr ""
 "  Alberto Arpaia https://launchpad.net/~albertoarpaia1959\n"
 "  Andrea https://launchpad.net/~andre95d\n"
 "  Andrea https://launchpad.net/~guaccio2209\n"
+"  Angelo https://launchpad.net/~angelo-russi96\n"
 "  Angelo Rako https://launchpad.net/~anrako\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
 "  DSAureli https://launchpad.net/~ds-aureli-deactivatedaccount\n"
@@ -2225,8 +2242,10 @@ msgstr ""
 "  Francesco https://launchpad.net/~fgiardo\n"
 "  Giampaolo Bozzali https://launchpad.net/~g.bozzali\n"
 "  Giancarlo Buomprisco https://launchpad.net/~carloprisco\n"
+"  Luca Marelli https://launchpad.net/~luca-mare2000\n"
 "  Mario Guerriero https://launchpad.net/~mefrio-g\n"
 "  Matteo Formenti https://launchpad.net/~matteoformenti1998\n"
+"  Mattia https://launchpad.net/~mattihappy\n"
 "  Vesnar Teach https://launchpad.net/~vesnar\n"
 "  Wonderfulheart https://launchpad.net/~wonderfulheart\n"
 "  alessandro https://launchpad.net/~pepealex98"
@@ -2353,7 +2372,7 @@ msgstr "Mostra file nascosti"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Mostra anteprime remote"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
