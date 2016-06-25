@@ -250,16 +250,15 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         show_all ();
 
-        /* There is a race condition between reaching update_header_desc () or here first
+        /* There is a race condition between reaching update_size_label () or here first
          * so call update_widgets_state in both places.
          */
         update_widgets_state ();
     }
 
-    private void update_header_desc () {
-        string header_desc_str;
-
-        header_desc_str = format_size ((int64) total_size);
+    private void update_size_label () {
+        size_label.label = format_size ((int64) total_size);
+        contains_label.label = get_contains_label (folder_count, file_count);
 
         if (size_warning > 0) {
             string file_plural = _("file");
@@ -273,10 +272,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             info_grid.attach_next_to (size_warning_image, size_label, Gtk.PositionType.RIGHT, 1, 1);
             info_grid.show_all ();
         }
-
-        size_label.label = header_desc_str;
-        contains_label.label = get_contains_label (folder_count, file_count);
-        update_widgets_state ();
     }
 
     private void update_selection_size () {
@@ -334,11 +329,11 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 if (uncounted_folders == 0) {
                     spinner.hide ();
                     spinner.stop ();
-                    update_header_desc ();
+                    update_size_label ();
                 }
             });
         } else {
-            update_header_desc ();
+            update_size_label ();
         }
     }
 
