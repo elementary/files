@@ -347,7 +347,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         } else {
             reset_entry_text ();
         }
-        
     }
 
     private void after_rename (GLib.File original_file, GLib.File? new_location) {
@@ -492,7 +491,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 if (file.width > 0) { /* resolution has already been determined */
                     resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
                 } else {
-                    resolution_value = _("loading ...");
+                    resolution_value = _("Loading…");
                     /* Async function will update info when resolution determined */
                     get_resolution.begin (file, info);
                 }
@@ -622,22 +621,21 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
             store_apps.append (out iter);
             store_apps.set (iter,
-                            AppsColumn.LABEL, _("Other application..."));
+                            AppsColumn.LABEL, _("Other Application…"));
             store_apps.prepend (out iter);
             store_apps.set (iter,
                             AppsColumn.APP_INFO, default_app,
                             AppsColumn.LABEL, default_app.get_name (),
                             AppsColumn.ICON, ensure_icon (default_app));
 
-            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
-            combo.set_active (0);
-            combo.valign = Gtk.Align.CENTER;
-
             var renderer = new Gtk.CellRendererText ();
             var pix_renderer = new Gtk.CellRendererPixbuf ();
+
+            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
+            combo.active = 0;
+            combo.valign = Gtk.Align.CENTER;
             combo.pack_start (pix_renderer, false);
             combo.pack_start (renderer, true);
-
             combo.add_attribute (renderer, "text", AppsColumn.LABEL);
             combo.add_attribute (pix_renderer, "gicon", AppsColumn.ICON);
 
