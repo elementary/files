@@ -49,8 +49,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private GLib.List<GOF.File> files;
     private GOF.File goffile;
 
-    private uint64 total_size = 0;
-
     public FM.AbstractDirectoryView view {get; private set;}
     public Gtk.Entry entry {get; private set;}
     private string original_name {
@@ -85,6 +83,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
     private int size_warning = 0;
+    private uint64 total_size = 0;
 
     private uint timeout_perm = 0;
     private GLib.Cancellable? cancellable;
