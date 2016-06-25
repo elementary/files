@@ -213,10 +213,10 @@ public class Marlin.Progress.UIHandler : Object {
 
         var complete_notification = new Notify.Notification (TITLE,
                                                              result,
-                                                             null);
+                                                             Marlin.ICON_APP_LOGO);
 
-        complete_notification.icon_name = Marlin.ICON_APP_LOGO;
-        complete_notification.set_app_name (Marlin.APP_TITLE);
+        /* Must use Config.GETTEXT_PACKAGE not Marlin.APP_NAME for notification settings to be honoured. */
+        complete_notification.set_app_name (Config.GETTEXT_PACKAGE);
 
         try {
             complete_notification.show ();
