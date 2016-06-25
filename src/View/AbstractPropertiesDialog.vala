@@ -81,7 +81,6 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
             }
         });
 
-        show_all ();
         present ();
     }
 
