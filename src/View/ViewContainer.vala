@@ -161,9 +161,10 @@ namespace Marlin.View {
                 var parent_path = PF.FileUtils.get_parent_path_from_path (location.get_uri ());
                 parent = PF.FileUtils.get_file_for_path (parent_path);
             }
+
             /* Certain parents such as ftp:// will be returned as null as they are not browsable */
             if (parent != null) {
-                user_path_change_request (parent);
+                user_path_change_request (parent, false, false);
             }
         }
 
@@ -172,7 +173,7 @@ namespace Marlin.View {
 
             if (loc != null) {
                 selected_locations.append (this.location);
-                user_path_change_request (File.new_for_commandline_arg (loc));
+                user_path_change_request (File.new_for_commandline_arg (loc), false, false);
             }
         }
 
@@ -180,7 +181,7 @@ namespace Marlin.View {
             string? loc = browser.go_forward (n);
 
             if (loc != null)
-                user_path_change_request (File.new_for_commandline_arg (loc));
+                user_path_change_request (File.new_for_commandline_arg (loc), false, false);
         }
 
         public void add_view (Marlin.ViewMode mode, GLib.File loc) {
@@ -244,11 +245,11 @@ namespace Marlin.View {
             refresh_slot_info (slot.location);
         }
 
-        private void user_path_change_request (GLib.File loc) {
+        public void user_path_change_request (GLib.File loc, bool allow_mode_change = true, bool make_root = true) {
             /* Ony call directly if it is known that a change of folder is required
              * otherwise call focus_location.
              */
-            view.user_path_change_request (loc);
+            view.user_path_change_request (loc, allow_mode_change, make_root);
         }
 
         public void new_container_request (GLib.File loc, int flag = 1) {

@@ -998,7 +998,7 @@ namespace Marlin.View {
                     mwcols.add_location (gfile, mwcols.current_slot);
                 }
             } else {
-                warning ("Invalid tip uri for Miller View");
+                warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
             }
         }
 

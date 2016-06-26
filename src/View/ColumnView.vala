@@ -94,9 +94,12 @@ namespace FM {
                 /* Do not emit alert sound on left and right cursor keys in Miller View */
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
-                    if (no_mods)
+                case Gdk.Key.BackSpace:
+                    if (no_mods) {
+                        /* Pass event to MillerView */ 
+                        slot.colpane.key_press_event (event);
                         return true;
-
+                    }
                     break;
 
                 default:
