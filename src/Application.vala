@@ -40,7 +40,7 @@ public class Marlin.Application : Granite.Application {
 
     construct {
         /* Needed by Glib.Application */
-        this.application_id = "org.pantheon.files";  //Ensures an unique instance.
+        this.application_id = Marlin.APP_ID;  //Ensures an unique instance.
         this.flags = ApplicationFlags.HANDLES_COMMAND_LINE;
 
         /* Needed by Granite.Application */

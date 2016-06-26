@@ -17,6 +17,8 @@
 ***/
 
 namespace Marlin {
+    public const string APP_ID = "org.pantheon.files";
+    public const string APP_DESKTOP = APP_ID + ".desktop";
     public const string APP_TITLE = "Files";
     public const string COPYRIGHT = APP_YEARS + " elementary LLC (http://launchpad.net/elementary)";
     public const string APP_YEARS = "2013-2016";
