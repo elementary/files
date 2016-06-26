@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-21 05:28-0500\n"
-"PO-Revision-Date: 2016-06-08 22:22+0000\n"
-"Last-Translator: yavinfour <anjelo.passionist@gmail.com>\n"
+"PO-Revision-Date: 2016-06-25 18:52+0000\n"
+"Last-Translator: Jacques Ivan Arroyo <jaksarroyo@gmail.com>\n"
 "Language-Team: Tagalog <tl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-06-22 05:58+0000\n"
+"X-Launchpad-Export-Date: 2016-06-26 05:54+0000\n"
 "X-Generator: Launchpad (build 18111)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
-msgstr "Walang laman ang clipboard para may idikit"
+msgstr "Walang laman ang clipboard para i-paste"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -40,7 +40,7 @@ msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr ""
+msgstr "I-share sa Windows"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
@@ -2186,6 +2186,7 @@ msgstr "Isang simple at makapangyarihang file manager"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Jacques Ivan Arroyo https://launchpad.net/~jaksarroyo\n"
 "  yavinfour https://launchpad.net/~anjelo.delcarmen"
 
 #: ../libwidgets/Resources.vala:81
