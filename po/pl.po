@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-21 05:28-0500\n"
-"PO-Revision-Date: 2016-06-14 18:50+0000\n"
+"PO-Revision-Date: 2016-06-26 08:49+0000\n"
 "Last-Translator: Damian Woźniak <fiszet@gmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-06-22 05:58+0000\n"
-"X-Generator: Launchpad (build 18111)\n"
+"X-Launchpad-Export-Date: 2016-06-27 06:09+0000\n"
+"X-Generator: Launchpad (build 18115)\n"
 "Language: pl\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -2061,11 +2061,11 @@ msgstr "Nie można utworzyć tutaj katalogu."
 
 #: ../src/View/ViewContainer.vala:356
 msgid "The network is unavailable"
-msgstr ""
+msgstr "Sieć jest niedostępna"
 
 #: ../src/View/ViewContainer.vala:357
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Aby uzyskać dostęp do tego katalogu wymagana jest działająca sieć."
 
 #: ../src/View/ViewContainer.vala:359
 msgid "This Folder Does Not Belong to You"
