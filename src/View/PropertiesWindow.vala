@@ -267,7 +267,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             size_warning_image.halign = Gtk.Align.START;
             size_warning_image.hexpand = true;
             size_warning_image.tooltip_markup = "<b>" + _("Actual Size Could Be Larger") + "</b>" + "\n" + _("%i %s could not be read due to permissions or other errors.").printf (size_warning, file_plural);
-            info_grid.attach_next_to (size_warning_image, size_label, Gtk.PositionType.RIGHT, 1, 1);
+            info_grid.attach_next_to (size_warning_image, size_label, Gtk.PositionType.RIGHT);
             info_grid.show_all ();
         }
     }
@@ -589,19 +589,19 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         contains_label = new ValueLabel ("");
 
         info_grid.attach (size_key_label, 0, 1, 1, 1);
-        info_grid.attach (spinner, 1, 1, 1, 1);
-        info_grid.attach (size_label, 1, 1, 1, 1);
+        info_grid.attach_next_to (spinner, size_key_label, Gtk.PositionType.RIGHT);
+        info_grid.attach_next_to (size_label, size_key_label, Gtk.PositionType.RIGHT);
         info_grid.attach (type_key_label, 0, 2, 1, 1);
-        info_grid.attach (type_label, 1, 2, 3, 1);
+        info_grid.attach_next_to (type_label, type_key_label, Gtk.PositionType.RIGHT, 3, 1);
         info_grid.attach (contains_key_label, 0, 3, 1, 1);
-        info_grid.attach (contains_label, 1, 3, 3, 1);
+        info_grid.attach_next_to (contains_label, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
 
         int n = 4;
         foreach (var pair in item_info) {
             var value_label = new ValueLabel (pair.value);
             var key_label = new KeyLabel (pair.key);
             info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach (value_label, 1, n, 3, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
         }
 
@@ -644,7 +644,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             var key_label = new KeyLabel (_("Open with:"));
 
             info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach (combo, 1, n, 1, 1);
+            info_grid.attach_next_to (combo, key_label, Gtk.PositionType.RIGHT);
         }
 
         /* Device Usage */

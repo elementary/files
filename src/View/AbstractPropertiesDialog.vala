@@ -133,16 +133,16 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
         }
     }
 
-    protected void create_storage_bar (GLib.FileInfo info, int line) {
+    protected void create_storage_bar (GLib.FileInfo file_info, int line) {
         var storage_header = new HeaderLabel (_("Device Usage"));
         info_grid.attach (storage_header, 0, line, 1, 1);
 
-        if (info != null &&
-            info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
-            info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
+        if (file_info != null &&
+            file_info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
+            file_info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
 
-            uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-            uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
+            uint64 fs_capacity = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
+            uint64 fs_used = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
 
             var storagebar = new Granite.Widgets.StorageBar (fs_capacity);
             storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, fs_used);
@@ -161,11 +161,11 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
             var used_value = new ValueLabel (_("Unknown"));
 
             info_grid.attach (capacity_label, 0, line + 1, 1, 1);
-            info_grid.attach (capacity_value, 1, line + 1, 1, 1);
+            info_grid.attach_next_to (capacity_value, capacity_label, Gtk.PositionType.RIGHT);
             info_grid.attach (available_label, 0, line + 2, 1, 1);
-            info_grid.attach (available_value, 1, line + 2, 1, 1);
+            info_grid.attach_next_to (available_value, available_label, Gtk.PositionType.RIGHT);
             info_grid.attach (used_label, 0, line + 3, 1, 1);
-            info_grid.attach (used_value, 1, line + 3, 1, 1);
+            info_grid.attach_next_to (used_value, used_label, Gtk.PositionType.RIGHT);
         }
     }
 }

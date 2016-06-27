@@ -79,14 +79,14 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         var location_value = new ValueLabel ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
 
         info_grid.attach (location_label, 0, 1, 1, 1);
-        info_grid.attach (location_value, 1, 1, 1, 1);
+        info_grid.attach_next_to (location_value, location_label, Gtk.PositionType.RIGHT);
 
         if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
             var key_label = new KeyLabel (_("Format:"));
             var value_label = new ValueLabel (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
 
             info_grid.attach (key_label, 0, 2, 1, 1);
-            info_grid.attach (value_label, 1, 2, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT);
         }
 
         create_storage_bar (info, 3);
