@@ -341,9 +341,9 @@ namespace Marlin.View {
                 dir_view.select_first_for_empty_selection ();
         }
 
-        public override void set_active_state (bool set_active) {
+        public override void set_active_state (bool set_active, bool animate = true) {
             if (set_active)
-                active ();
+                active (true, animate);
             else
                 inactive ();
         }
