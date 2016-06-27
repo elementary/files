@@ -21,6 +21,7 @@ namespace FM {
         protected new Gtk.IconView tree;
 
         public IconView (Marlin.View.Slot _slot) {
+            assert (_slot != null);
             base (_slot);
         }
 
@@ -250,9 +251,11 @@ namespace FM {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-            if (tree == null || path == null || slot.directory.permission_denied || slot.directory.is_empty ())
-                return;
+            if (tree == null || path == null || slot == null || /* slot should not be null but see lp:1595438 */
+                slot.directory.permission_denied || slot.directory.is_empty ()) {
 
+                return;
+            }
             tree.scroll_to_path (path, scroll_to_top, 0.5f, 0.5f);
         }
 

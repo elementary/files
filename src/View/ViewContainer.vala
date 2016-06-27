@@ -42,7 +42,7 @@ namespace Marlin.View {
         public string uri {
             get {
                 var slot = get_current_slot ();
-                return slot != null ? slot.uri : null;
+                return slot != null ? slot.uri : "";
             }
         }
 
@@ -54,7 +54,8 @@ namespace Marlin.View {
 
         public bool locked_focus {
             get {
-                return get_current_slot ().locked_focus;
+                var slot = get_current_slot ();
+                return slot != null ? get_current_slot ().locked_focus : false;
             }
         }
 
@@ -442,6 +443,10 @@ namespace Marlin.View {
              * select_in_current_only is not set to true.
              */
 
+            var aslot = get_current_slot ();
+            if (aslot == null) {
+                return;
+            }
             /* Search can generate null focus requests if no match - deselect previous search selection */
             if (loc == null) {
                 set_all_selected (false);
@@ -452,18 +457,18 @@ namespace Marlin.View {
                 return;
             }
 
-            FileInfo? info = get_current_slot ().lookup_file_info (loc);
+            FileInfo? info = aslot.lookup_file_info (loc);
             FileType filetype = FileType.UNKNOWN;
             if (info != null) { /* location is in the current folder */
                 filetype = info.get_file_type ();
                 if (filetype != FileType.DIRECTORY || no_path_change) {
                     if (unselect_others) {
-                        get_current_slot ().set_all_selected (false);
+                        aslot.set_all_selected (false);
                         selected_locations = null;
                     }
                     var list = new List<File> ();
                     list.prepend (loc);
-                    get_current_slot ().select_glib_files (list, loc);
+                    aslot.select_glib_files (list, loc);
                     return;
                 }
             } else if (no_path_change) { /* not in current, do not navigate to it*/
@@ -498,8 +503,9 @@ namespace Marlin.View {
 
         public void reload () {
             var slot = get_current_slot ();
-            if (slot != null)
+            if (slot != null) {
                 slot.reload ();
+            }
         }
 
         public Gee.List<string> get_go_back_path_list () {
