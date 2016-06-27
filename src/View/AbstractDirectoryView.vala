@@ -2019,7 +2019,7 @@ namespace FM {
                     menu.append (label, "selection.open");
                 } else if (default_app != null) {
                     var app_name = default_app.get_display_name ();
-                    if (app_name != "Files") {
+                    if (app_name != Marlin.APP_TITLE) {
                         label = (_("Open in %s")).printf (app_name);
                         menu.append (label, "selection.open_with_default");
                     }
