@@ -44,8 +44,8 @@ public class Marlin.Application : Granite.Application {
         this.flags = ApplicationFlags.HANDLES_COMMAND_LINE;
 
         /* Needed by Granite.Application */
-        this.program_name = Marlin.APP_TITLE;
-        this.exec_name = Marlin.APP_TITLE.down ().replace (" ", "-");
+        this.program_name = _(Marlin.APP_TITLE);
+        this.exec_name = APP_NAME;
         this.build_version = Config.VERSION;
 
         this.app_copyright = Marlin.COPYRIGHT;
@@ -61,7 +61,7 @@ public class Marlin.Application : Granite.Application {
         this.about_authors = Marlin.AUTHORS;
         this.about_documenters = { null };
         this.about_artists = Marlin.ARTISTS;
-        this.about_comments = Marlin.COMMENTS;
+        this.about_comments = _(Marlin.COMMENTS);
         this.about_translators = Marlin.TRANSLATORS;
 
         application_singleton = this;

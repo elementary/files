@@ -131,7 +131,7 @@ namespace Marlin.View {
 
             add(window_box);
 
-            title = Marlin.APP_TITLE;
+            title = _(Marlin.APP_TITLE);
             try {
                 this.icon = Gtk.IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
             } catch (Error err) {
@@ -754,7 +754,7 @@ namespace Marlin.View {
 
         protected void show_about() {
             Granite.Widgets.show_about_dialog ((Gtk.Window) this,
-                "program-name", Marlin.APP_TITLE,
+                "program-name", _(Marlin.APP_TITLE),
                 "version", Config.VERSION,
                 "copyright", Marlin.COPYRIGHT,
                 "license-type", Gtk.License.GPL_3_0,
