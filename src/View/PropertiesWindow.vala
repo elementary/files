@@ -1,200 +1,26 @@
-/***
-    Copyright (c) 2011 Marlin Developers
-                  2015-2016 elementary LLC (http://launchpad.net/elementary)
+/*
+* Copyright (c) 2011 Marlin Developers (http://launchpad.net/marlin)
+* Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/pantheon-files)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 3 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+* Boston, MA 02111-1307, USA.
+*
+* Authored by: ammonkey <am.monkeyd@gmail.com>
+*/
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-    Author: ammonkey <am.monkeyd@gmail.com>
-***/
-
-protected class Marlin.View.PropertiesWindowBase : Gtk.Dialog {
-
-    protected Gtk.SizeGroup sg;
-    protected Gtk.Stack stack;
-    protected Gtk.Box content_vbox;
-    protected Gtk.Box header_box;
-    protected Gtk.StackSwitcher stack_switcher;
-
-    protected void pack_header_box (Gtk.Image image, Gtk.Widget title) {
-        image.set_valign (Gtk.Align.CENTER);
-
-        header_box.pack_start (image, false, false);
-
-        title.get_style_context ().add_class ("h2");
-        title.margin_top = 5;
-        title.set_valign (Gtk.Align.CENTER);
-
-        header_box.pack_start (title);
-    }
-
-    protected Gdk.Pixbuf overlay_emblems (Gdk.Pixbuf icon, List<string>? emblems_list) {
-        /* Add space around the pixbuf for emblems */
-        var icon_pix = new Gdk.Pixbuf (icon.colorspace,
-                                       icon.has_alpha,
-                                       icon.bits_per_sample,
-                                       64, 64);
-
-        /* Emblems can be displayed simply by using a GEmblemedIcon but that gives no
-         * control over the size and position of the emblems so we create a composite pixbuf */
-
-        icon_pix.fill (0);
-        icon.composite (icon_pix,
-                        8, 8,
-                        48, 48,
-                        8, 8,
-                        1.0, 1.0,
-                        Gdk.InterpType.NEAREST,
-                        255);
-
-        /* Composite in the emblems, if any */
-        Gdk.Pixbuf? pixbuf = null;
-        if (emblems_list != null) {
-            var theme = Gtk.IconTheme.get_default ();
-            int pos = 0;
-            foreach (string emblem_name in emblems_list) {
-                Gtk.IconInfo? info = theme.lookup_icon (emblem_name, 16, Gtk.IconLookupFlags.FORCE_SIZE);
-                if (info == null)
-                    continue;
-
-                try {
-                    pixbuf = info.load_icon ();
-                    /* Emblems drawn in a vertical column to the right of the icon */
-                    pixbuf.composite (icon_pix,
-                                      44, 44 - pos * 17,
-                                      16, 16,
-                                      44.0, 44.0 - pos * 17.0,
-                                      1.0, 1.0,
-                                      Gdk.InterpType.NEAREST,
-                                      255);
-                    pos++;
-                }
-                catch (GLib.Error e) {
-                    warning ("Could not create emblem %s - %s", emblem_name, e.message);
-                }
-                if (pos > 3) /* Only room for 3 emblems */
-                    break;
-            }
-        }
-
-        return icon_pix;
-    }
-
-
-    protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
-        if (content != null) {
-            content.set_border_width (5);
-            stack.add_titled(content, name, title);
-        }
-
-        /* Only show the stack switcher when there's more than a single tab */
-        if (stack.get_children ().length () > 1) {
-            stack_switcher.show ();
-        }
-    }
-
-    protected float get_alignment_float_from_align (Gtk.Align align) {
-        switch (align) {
-        case Gtk.Align.START:
-            return 0.0f;
-        case Gtk.Align.END:
-            return 1.0f;
-        case Gtk.Align.CENTER:
-            return 0.5f;
-        default:
-            return 0.0f;
-        }
-    }
-
-    protected void create_head_line (Gtk.Widget head_label, Gtk.Grid information, ref int line) {
-        head_label.set_halign (Gtk.Align.START);
-        head_label.get_style_context ().add_class ("h4");
-        information.attach (head_label, 0, line, 1, 1);
-
-        line++;
-    }
-
-    protected void create_info_line (Gtk.Widget key_label, Gtk.Label value_label, Gtk.Grid information, ref int line, Gtk.Widget? value_container = null) {
-        key_label.margin_start = 20;
-        value_label.set_selectable (true);
-        value_label.set_hexpand (true);
-        value_label.set_use_markup (true);
-        value_label.set_can_focus (false);
-        value_label.set_halign (Gtk.Align.START);
-
-        information.attach (key_label, 0, line, 1, 1);
-        if (value_container != null) {
-            value_container.set_size_request (150, -1);
-            information.attach_next_to (value_container, key_label, Gtk.PositionType.RIGHT, 3, 1);
-        }
-        else
-            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-
-        line++;
-    }
- 
-    public PropertiesWindowBase (string _title, Gtk.Window parent) {
-        title = _title;
-        resizable = false;
-        deletable = false;
-        set_default_size (220, -1);
-        transient_for = parent;
-        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-        type_hint = Gdk.WindowTypeHint.DIALOG;
-        border_width = 5;
-        destroy_with_parent = true;
-
-        /* Set the default containers */
-        var content_area = get_content_area ();
-        sg = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
-
-        content_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-        content_area.pack_start (content_vbox);
-
-        /* Adjust sizes */
-        content_vbox.margin_end = 5;
-        content_vbox.margin_start = 5;
-
-        /* Header Box */
-        header_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 12);
-        content_vbox.pack_start (header_box, false, false, 0);
-        header_box.margin_bottom = 15;
-        header_box.margin_start = header_box.margin_end = 10;
-
-        /* Stack */
-        stack_switcher = new Gtk.StackSwitcher ();
-        content_vbox.pack_start (stack_switcher, false, false, 5);
-        stack_switcher.halign = Gtk.Align.CENTER;
-        stack_switcher.no_show_all = true;
-
-        stack = new Gtk.Stack ();
-        stack.margin_bottom = 15;
-        stack_switcher.stack = stack;
-        content_vbox.pack_start (stack, true, true, 0);
-
-        /* Action area */
-        add_button (_("Close"), Gtk.ResponseType.CLOSE);
-        response.connect ((source, type) => {
-            switch (type) {
-                case Gtk.ResponseType.CLOSE:
-                    destroy ();
-                    break;
-            }
-        });
-    }
-}
-
-public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
+public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog {
     private const string resolution_key = _("Resolution:");
 
     private class Pair<F, G> {
@@ -243,16 +69,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         }
     }
 
-    private enum PanelType {
-        INFO,
-        PERMISSIONS,
-        PREVIEW
-    }
-
     private Gee.Set<string>? mimes;
-    private Gtk.Box info_vbox;
-    private Gtk.Grid information;
-    private Gtk.Widget header_title;
     private Gtk.Label type_label;
     private Gtk.Label size_label;
     private Gtk.Label contains_label;
@@ -352,24 +169,22 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         cancellable = new GLib.Cancellable ();
 
         /* Header Box */
-        build_header_box (header_box);
+        build_header_box ();
 
         /* Info */
         if (info.size > 0) {
-            info_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            construct_info_panel (info_vbox, info);
-            add_section (stack, _("General"), PanelType.INFO.to_string (), info_vbox);
+            construct_info_panel (info);
         }
 
         /* Permissions */
         /* Don't show permissions for uri scheme trash and archives */
         if (!(count == 1 && !goffile.location.is_native () && !goffile.is_remote_uri_scheme ())) {
-            var perm_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            construct_perm_panel (perm_vbox);
-            add_section (stack, _("More"), PanelType.PERMISSIONS.to_string (), perm_vbox);
+            construct_perm_panel ();
+            add_section (stack, _("Permissions"), PanelType.PERMISSIONS.to_string (), perm_grid);
             if (!goffile.can_set_permissions ()) {
-                foreach (var widget in perm_vbox.get_children ())
+                foreach (var widget in perm_grid.get_children ()) {
                     widget.set_sensitive (false);
+                }
             }
         }
 
@@ -381,10 +196,11 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
              */
             Gdk.Pixbuf small_preview;
 
-            if (view.is_in_recent ())
+            if (view.is_in_recent ()) {
                 small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.NONE);
-            else
+            } else {
                 small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
+            }
 
             /* Request the creation of the large thumbnail */
             Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true);
@@ -520,20 +336,19 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         entry.set_text (original_name);
     }
 
-    private void build_header_box (Gtk.Box content) {
+    private void build_header_box () {
         /* create some widgets first (may be hidden by selection_size_update ()) */
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-        var file_img = new Gtk.Image.from_pixbuf (overlay_emblems (file_pix, goffile.emblems_list));
+        var file_icon = new Gtk.Image.from_pixbuf (file_pix);
+        overlay_emblems (file_icon, goffile.emblems_list);
 
         spinner = new Gtk.Spinner ();
-        spinner.set_hexpand (false);
         spinner.halign = Gtk.Align.START;
 
         size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
         size_warning_image.halign = Gtk.Align.START;
         size_warning_image.no_show_all = true;
         size_label = new Gtk.Label ("");
-        size_label.set_hexpand (false);
 
         type_label = new Gtk.Label ("");
         type_label.set_halign (Gtk.Align.START);
@@ -569,7 +384,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             header_title = entry;
         }
 
-        pack_header_box (file_img, header_title);
+        create_header_title ();
     }
 
     private string? get_common_ftype () {
@@ -736,9 +551,9 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         Gtk.Widget? kw = null;
         int row = 0;
         do {
-            kw = information.get_child_at (0, row);
+            kw = info_grid.get_child_at (0, row);
             if (kw is Gtk.Label && (kw as Gtk.Label).label == resolution_key) {
-                Gtk.Widget vw = information.get_child_at (1, row);
+                Gtk.Widget vw = info_grid.get_child_at (1, row);
                 if (vw is Gtk.Label) {
                     (vw as Gtk.Label).label = resolution_value;
                     break;
@@ -747,33 +562,27 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             row++;
         } while (kw != null);
     }
-    private void construct_info_panel (Gtk.Box box, Gee.LinkedList<Pair<string, string>> item_info) {
-        information = new Gtk.Grid();
-        information.column_spacing = 6;
-        information.row_spacing = 6;
-
-        int n = 0;
-
-        create_head_line (new Gtk.Label (_("Info")), information, ref n);
+    private void construct_info_panel (Gee.LinkedList<Pair<string, string>> item_info) {
+        int n = 1;
 
         /* Have to have these separate as size call is async */
         var size_key_label = new Gtk.Label (_("Size:"));
         size_key_label.halign = Gtk.Align.END;
 
         var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
-        size_box.pack_start (spinner, false, false);
-        size_box.pack_start (size_label, false, true);
-        size_box.pack_start (size_warning_image);
+        size_box.add (spinner);
+        size_box.add (size_label);
+        size_box.add (size_warning_image);
 
-        create_info_line (size_key_label, size_label, information, ref n, size_box);
-        create_info_line (type_key_label, type_label, information, ref n);
-        create_info_line (contains_key_label, contains_label, information, ref n);
+        create_info_line (size_key_label, size_label, info_grid, ref n, size_box);
+        create_info_line (type_key_label, type_label, info_grid, ref n);
+        create_info_line (contains_key_label, contains_label, info_grid, ref n);
 
         foreach (var pair in item_info) {
             var value_label = new Gtk.Label (pair.value);
             var key_label = new Gtk.Label (pair.key);
             key_label.halign = Gtk.Align.END;
-            create_info_line (key_label, value_label, information, ref n);
+            create_info_line (key_label, value_label, info_grid, ref n);
         }
 
         /* Open with */
@@ -819,38 +628,19 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             var key_label = new Gtk.Label (_("Open with:"));
             key_label.halign = Gtk.Align.END;
 
-            information.attach (key_label, 0, n, 1, 1);
-            information.attach (hcombo, 1, n, 1, 1);
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach (hcombo, 1, n, 1, 1);
         }
 
         /* Device Usage */
         if (should_show_device_usage ()) {
             try {
                 var info = goffile.get_target_location ().query_filesystem_info ("filesystem::*");
-                if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
-                    info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
-                    uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-                    uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
-
-                    create_head_line (new Gtk.Label (_("Usage")), information, ref n);
-
-                    var key_label = new Gtk.Label (_("Device usage:"));
-                    key_label.halign = Gtk.Align.END;
-                    information.attach (key_label, 0, n, 1, 1);
-
-                    var progressbar = new Gtk.ProgressBar ();
-                    double used =  1.0 - (double) fs_free / (double) fs_capacity;
-                    progressbar.set_fraction (used);
-                    progressbar.set_show_text (true);
-                    progressbar.set_text (_("%s free of %s (%d%% used)").printf (format_size ((int64) fs_free), format_size ((int64) fs_capacity), (int) (used * 100)));
-                    information.attach_next_to (progressbar, key_label, Gtk.PositionType.RIGHT, 3, 1);
-                }
+                create_storage_bar (info, ref n);
             } catch (Error e) {
                 warning ("error: %s", e.message);
             }
         }
-
-        box.pack_start (information);
     }
 
     private bool should_show_device_usage () {
@@ -1158,10 +948,11 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             file_set_attributes.begin (gof, FileAttribute.UNIX_GID, gid);
     }
 
-    private void construct_perm_panel (Gtk.Box box) {
-        perm_grid = new Gtk.Grid();
+    private Gtk.Grid construct_perm_panel () {
+        perm_grid = new Gtk.Grid ();
         perm_grid.column_spacing = 6;
         perm_grid.row_spacing = 6;
+        perm_grid.halign = Gtk.Align.CENTER;
 
         Gtk.Widget key_label;
         Gtk.Widget value_label;
@@ -1171,50 +962,48 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
         key_label.halign = Gtk.Align.END;
         perm_grid.attach (key_label, 0, 1, 1, 1);
         value_label = create_owner_choice ();
-        perm_grid.attach (value_label, 1, 1, 1, 1);
+        perm_grid.attach (value_label, 1, 1, 2, 1);
 
         key_label = new Gtk.Label (_("Group:"));
         key_label.halign = Gtk.Align.END;
         perm_grid.attach (key_label, 0, 2, 1, 1);
         value_label = create_group_choice ();
-        perm_grid.attach (value_label, 1, 2, 1, 1);
+        perm_grid.attach (value_label, 1, 2, 2, 1);
 
         /* make a separator with margins */
-        key_label.margin_bottom = 7;
-        value_label.margin_bottom = 7;
+        key_label.margin_bottom = 12;
+        value_label.margin_bottom = 12;
+
         key_label = new Gtk.Label (_("Owner:"));
         key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.USER);
         perm_grid.attach (key_label, 0, 3, 1, 1);
-        perm_grid.attach (value_hlabel, 1, 3, 1, 1);
+        perm_grid.attach (value_hlabel, 1, 3, 2, 1);
         key_label = new Gtk.Label (_("Group:"));
         key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.GROUP);
         perm_grid.attach (key_label, 0, 4, 1, 1);
-        perm_grid.attach (value_hlabel, 1, 4, 1, 1);
+        perm_grid.attach (value_hlabel, 1, 4, 2, 1);
         key_label = new Gtk.Label (_("Everyone:"));
         key_label.halign = Gtk.Align.END;
         value_hlabel = create_perm_choice (PermissionType.OTHER);
         perm_grid.attach (key_label, 0, 5, 1, 1);
-        perm_grid.attach (value_hlabel, 1, 5, 1, 1);
+        perm_grid.attach (value_hlabel, 1, 5, 2, 1);
 
         perm_code = new Granite.Widgets.XsEntry ();
         perm_code.set_text ("000");
         perm_code.set_max_length (3);
         perm_code.set_size_request (35, -1);
 
-        var perm_code_hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 10);
         l_perm = new Gtk.Label (goffile.get_permissions_as_string ());
-        perm_code_hbox.pack_start (l_perm, true, true, 0);
-        perm_code_hbox.pack_start (perm_code, false, false, 0);
 
-        perm_grid.attach (perm_code_hbox, 1, 6, 1, 1);
-
-        box.pack_start (perm_grid);
+        perm_grid.attach (l_perm, 1, 6, 1, 1);
+        perm_grid.attach (perm_code, 2, 6, 1, 1);
 
         update_perm_grid_toggle_states (goffile.permissions);
 
         perm_code.changed.connect (entry_changed);
+        return perm_grid;
     }
 
     private bool selection_can_set_owner () {
@@ -1541,19 +1330,21 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
 
     /** Hide certain widgets under certain conditions **/
     private void update_widgets_state () {
-        if (uncounted_folders == 0)
+        if (uncounted_folders == 0) {
             spinner.hide ();
+        }
 
-        if (size_warning < 1)
+        if (size_warning < 1) {
             size_warning_image.hide ();
-
-        if (ftype != null) {
-            type_label.label = goffile.formated_type;
         }
 
         if (count > 1) {
             type_key_label.hide ();
             type_label.hide ();
+        } else {
+            if (ftype != null) {
+                type_label.label = goffile.formated_type;
+            }
         }
 
         if ((header_title is Gtk.Entry) && !view.is_in_recent ()) {
@@ -1573,156 +1364,5 @@ public class Marlin.View.PropertiesWindow : Marlin.View.PropertiesWindowBase {
             contains_key_label.show ();
             contains_label.show ();
         }
-    }
-}
-
-public class Marlin.View.VolumePropertiesWindow : Marlin.View.PropertiesWindowBase {
-
-    private enum PanelType {
-        INFO,
-    }
-
-    public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
-        base (_("Disk Properties"), parent);
-
-        GLib.File mount_root;
-        string mount_name;
-        GLib.Icon mount_icon;
-
-        /* We might reach this point with mount being null, this happens when
-         * the user wants to see the properties for the 'File System' entry in
-         * the sidebar. GVfs is kind enough to not have a Mount entry for the
-         * root filesystem, so we try our best to gather enough data. */
-        if (mount != null) {
-            mount_root = mount.get_root ();
-            mount_name = mount.get_name ();
-            mount_icon = mount.get_icon ();
-        } else {
-            mount_root = GLib.File.new_for_uri ("file:///");
-            mount_name = _("File System");
-            mount_icon = new ThemedIcon.with_default_fallbacks (Marlin.ICON_FILESYSTEM);
-        }
-
-        GLib.FileInfo info = null;
-
-        try {
-            info = mount_root.query_filesystem_info ("filesystem::*");
-        } catch (Error e) {
-            warning ("error: %s", e.message);
-        }
-
-        /* Build the header box */
-        var theme = Gtk.IconTheme.get_default ();
-        Gtk.IconInfo? icon_info = null;
-        Gtk.Image image = new Gtk.Image.from_icon_name (Marlin.ICON_FILESYSTEM, Gtk.IconSize.DIALOG);
-
-        try {
-            icon_info = theme.lookup_by_gicon (mount_icon, 48, Gtk.IconLookupFlags.FORCE_SIZE);
-
-            if (icon_info != null) {
-                var emblems_list = new GLib.List<string> ();
-
-                /* Overlay the 'readonly' emblem to tell the user the disk is
-                 * mounted as RO */
-                if (info != null &&
-                    info.has_attribute (FileAttribute.FILESYSTEM_READONLY) &&
-                    info.get_attribute_boolean (FileAttribute.FILESYSTEM_READONLY)) {
-                    emblems_list.append ("emblem-readonly");
-                }
-
-                var final_pixbuf = overlay_emblems (icon_info.load_icon (), emblems_list);
-                image = new Gtk.Image.from_pixbuf (final_pixbuf);
-            }
-        } catch (Error err) {
-            warning ("%s", err.message);
-        }
-
-        var header_label = new Gtk.Label (mount_name);
-        header_label.set_halign (Gtk.Align.START);
-
-        pack_header_box (image, header_label);
-
-        /* Build the grid holding the informations */
-        var info_grid = new Gtk.Grid ();
-        info_grid.column_spacing = 6;
-        info_grid.row_spacing = 6;
-
-        int n = 0;
-
-        create_head_line (new Gtk.Label (_("Info")), info_grid, ref n);
-
-        var key_label = new Gtk.Label (_("Location:"));
-        key_label.halign = Gtk.Align.END;
-
-        var value_label = new Gtk.Label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
-        create_info_line (key_label, value_label, info_grid, ref n);
-
-        if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
-            key_label = new Gtk.Label (_("Format:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
-            create_info_line (key_label, value_label, info_grid, ref n);
-        }
-
-        create_head_line (new Gtk.Label (_("Usage")), info_grid, ref n);
-
-        if (info != null &&
-            info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
-            info.has_attribute (FileAttribute.FILESYSTEM_FREE) &&
-            info.has_attribute (FileAttribute.FILESYSTEM_USED)) {
-            uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-            uint64 fs_free = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
-            uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
-            double used =  1.0 - (double) fs_free / (double) fs_capacity;
-
-            key_label = new Gtk.Label (_("Capacity:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (format_size ((int64)fs_capacity));
-            create_info_line (key_label, value_label, info_grid, ref n);
-
-            key_label = new Gtk.Label (_("Available:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (format_size ((int64) fs_free));
-            create_info_line (key_label, value_label, info_grid, ref n);
-
-            key_label = new Gtk.Label (_("Used:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (_("%s (%d%% used)").printf (format_size ((int64) fs_used), (int) (used * 100)));
-            create_info_line (key_label, value_label, info_grid, ref n);
-
-            var progressbar = new Gtk.ProgressBar ();
-            progressbar.set_fraction (used);
-            progressbar.margin_top = 6;
-            info_grid.attach (progressbar, 0, n, 5, 1);
-        } else {
-            /* We're not able to gether the usage statistics, show an error
-             * message to let the user know. */
-            key_label = new Gtk.Label (_("Capacity:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (_("Unknown"));
-            create_info_line (key_label, value_label, info_grid, ref n);
-
-            key_label = new Gtk.Label (_("Available:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (_("Unknown"));
-            create_info_line (key_label, value_label, info_grid, ref n);
-
-            key_label = new Gtk.Label (_("Used:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (_("Unknown"));
-            create_info_line (key_label, value_label, info_grid, ref n);
-        }
-
-        add_section (stack, _("General"), PanelType.INFO.to_string (), info_grid);
-
-        show_all ();
-        present ();
     }
 }

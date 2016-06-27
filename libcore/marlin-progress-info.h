@@ -27,12 +27,13 @@
 #include <glib-object.h>
 #include <gio/gio.h>
 
-#define MARLIN_TYPE_PROGRESS_INFO         (marlin_progress_info_get_type ())
-#define MARLIN_PROGRESS_INFO(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), MARLIN_TYPE_PROGRESS_INFO, MarlinProgressInfo))
-#define MARLIN_PROGRESS_INFO_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), MARLIN_TYPE_PROGRESS_INFO, MarlinProgressInfoClass))
-#define MARLIN_IS_PROGRESS_INFO(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), MARLIN_TYPE_PROGRESS_INFO))
-#define MARLIN_IS_PROGRESS_INFO_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), MARLIN_TYPE_PROGRESS_INFO))
-#define MARLIN_PROGRESS_INFO_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), MARLIN_TYPE_PROGRESS_INFO, MarlinProgressInfoClass))
+/* Match .vapi class Marlin.Progress.Info */
+#define MARLIN_PROGRESS_TYPE_INFO         (marlin_progress_info_get_type ())
+#define MARLIN_PROGRESS_INFO(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), MARLIN_PROGRESS_TYPE_INFO, MarlinProgressInfo))
+#define MARLIN_PROGRESS_INFO_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), MARLIN_PROGRESS_TYPE_INFO, MarlinProgressInfoClass))
+#define MARLIN_PROGRESS_IS_INFO(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), MARLIN_PROGRESS_TYPE_INFO))
+#define MARLIN_PROGRESS_IS_INFO_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), MARLIN_PROGRESS_TYPE_INFO))
+#define MARLIN_PROGRESS_INFO_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), MARLIN_PROGRESS_TYPE_INFO, MarlinProgressInfoClass))
 
 typedef struct _MarlinProgressInfo      MarlinProgressInfo;
 typedef struct _MarlinProgressInfoClass MarlinProgressInfoClass;
@@ -53,6 +54,7 @@ MarlinProgressInfo *marlin_progress_info_new (void);
 
 GList *       nautilus_get_all_progress_info (void);
 
+char *        marlin_progress_info_get_title       (MarlinProgressInfo *info);
 char *        marlin_progress_info_get_status      (MarlinProgressInfo *info);
 char *        marlin_progress_info_get_details     (MarlinProgressInfo *info);
 double        marlin_progress_info_get_progress    (MarlinProgressInfo *info);

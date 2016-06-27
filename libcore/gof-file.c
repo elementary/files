@@ -2056,20 +2056,20 @@ gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info)
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
     g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
 
-    /* check if we should execute the file */
-    if (gof_file_is_executable (file))
-        return gof_file_execute (file, screen, NULL, &error);
-
     if (app_info != NULL)
         app = g_app_info_dup (app_info);
-    if (app == NULL)
-        app = gof_file_get_default_handler (file);
+
+    /* Do not run executables if an app to open them with has been supplied */
+    if (app == NULL) {
+        /* check if we should execute the file */
+        if (gof_file_is_executable (file))
+            return gof_file_execute (file, screen, NULL, &error);
+        else
+            app = gof_file_get_default_handler (file);
+    }
     if (app == NULL)
     {
-        //TODO
-        /* display the application chooser if no application is defined for this file
-         * type yet */
-        printf ("%s application show_chooser_dialog\n", G_STRFUNC);
+        /* AppChooser dialog has already been shown by Marlin.MimeActions*/
         return TRUE;
     }
 

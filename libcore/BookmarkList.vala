@@ -249,8 +249,8 @@ namespace Marlin {
                     if (contents != null) {
                         bookmark_list_from_string ((string)contents);
                         this.call_when_ready = new GOF.CallWhenReady (get_gof_file_list (), files_ready);
+                        contents_changed (); /* Call now to ensure sidebar is updated even if call_when_ready blocks */
                     }
-
                 }
                 catch (GLib.Error error) {
                     critical ("Error loadinging bookmark file %s", error.message);
@@ -268,8 +268,8 @@ namespace Marlin {
         }
 
         private void files_ready (GLib.List<GOF.File> files) {
+            /* Sidebar does not use file.info when updating display so do not signal contents changed */
             call_when_ready = null;
-            contents_changed ();
         }
 
         private void bookmark_list_from_string (string contents) {

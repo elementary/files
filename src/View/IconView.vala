@@ -129,7 +129,7 @@ namespace FM {
         }
 
         public override void unselect_all () {
-            tree.unselect_all ();
+                tree.unselect_all ();
         }
 
         public override void select_path (Gtk.TreePath? path) {
@@ -250,7 +250,7 @@ namespace FM {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-            if (tree == null || path == null || slot.directory.permission_denied)
+            if (tree == null || path == null || slot.directory.permission_denied || slot.directory.is_empty ())
                 return;
 
             tree.scroll_to_path (path, scroll_to_top, 0.5f, 0.5f);
@@ -260,7 +260,7 @@ namespace FM {
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top) {
-            scroll_to_cell(path, scroll_to_top);
+            scroll_to_cell (path, scroll_to_top);
             tree.set_cursor (path, renderer, start_editing);
         }
 

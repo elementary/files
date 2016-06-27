@@ -27,6 +27,8 @@ namespace Marlin.View.Chrome
         private GLib.File? search_location = null;
         public bool search_mode {get; private set;}
 
+        uint focus_timeout_id = 0;
+
         public signal void reload_request ();
         public signal void focus_file_request (File? file);
         public signal void escape ();
@@ -73,7 +75,7 @@ namespace Marlin.View.Chrome
         }
 
         private void on_search_results_cursor_changed (GLib.File? file) {
-            focus_file_request (file);
+            schedule_focus_file_request (file);
         }
 
         private void on_search_results_realize () {
@@ -82,6 +84,9 @@ namespace Marlin.View.Chrome
         private void on_search_results_exit () {
             /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
+            if (focus_timeout_id > 0) {
+                GLib.Source.remove (focus_timeout_id);
+            }
             escape ();
         }
 
@@ -218,6 +223,18 @@ namespace Marlin.View.Chrome
         public void cancel () {
             cancel_search ();
             on_search_results_exit (); /* Exit navigation mode as well */
+        }
+
+        private void schedule_focus_file_request (GLib.File? file) {
+            if (focus_timeout_id > 0) {
+                GLib.Source.remove (focus_timeout_id);
+            }
+
+            focus_timeout_id = GLib.Timeout.add (300, () => {
+                focus_file_request (file);
+                focus_timeout_id = 0;
+                return false;
+            });
         }
     }
 }

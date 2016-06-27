@@ -57,8 +57,6 @@ namespace Marlin.View {
             content_box.pack_start (scrolled_window);
             content_box.show_all ();
 
-            colpane.add_events (Gdk.EventMask.KEY_RELEASE_MASK);
-            colpane.key_release_event.connect (on_key_released);
             make_view ();
         }
 
@@ -100,6 +98,7 @@ namespace Marlin.View {
 
             if (host != null) {
                 truncate_list_after_slot (host);
+                host.select_gof_file (slot.file);
                 host.colpane.add (hpane1);
                 slot.directory.init ();
             } else
@@ -110,11 +109,6 @@ namespace Marlin.View {
             if (slot_list.length () <= 0)
                 return;
 
-            /* destroy the nested slots */
-            ((Marlin.View.Slot)(slot)).colpane.@foreach ((w) => {
-                    w.destroy ();
-            });
-
             uint n = slot.slot_number;
 
             slot_list.@foreach ((s) => {
@@ -122,6 +116,10 @@ namespace Marlin.View {
                     s.close ();
                     disconnect_slot_signals (s);
                 }
+            });
+
+            ((Marlin.View.Slot)(slot)).colpane.@foreach ((w) => {
+                w.destroy ();
             });
 
             slot_list.nth (n).next = null;
@@ -146,13 +144,79 @@ namespace Marlin.View {
 /** Signal handling **/
 /*********************/
 
-        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = false) {
-            /* user request always make new root */
-            var slot = slot_list.first().data;
-            assert (slot != null);
-            truncate_list_after_slot (slot); /* Sets current slot */
-            root_location = loc;
-            slot.user_path_change_request (loc, false);
+        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = false, bool make_root = false) {
+            /* Requests from history buttons, pathbar come here with make_root = false.
+             * These do not create a new root and automatic mode change for icon directories is not allowed.
+             * Requests from the sidebar have make_root = true
+             */
+            change_path (loc, make_root);
+        }
+
+        private void change_path (GLib.File loc, bool make_root) {
+            var first_slot = slot_list.first ().data;
+            string root_uri = first_slot.uri;
+            string target_uri = loc.get_uri ();
+            bool found = false;
+
+            if (!make_root && target_uri.has_prefix (root_uri) && target_uri != root_uri) {
+                /* Try to add location relative to each slot in turn, starting at end */
+                var copy_slot_list = slot_list.copy ();
+                copy_slot_list.reverse ();
+                foreach (Marlin.View.Slot s in copy_slot_list) {
+                    if (add_relative_path (s, loc)) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+
+            /* If requested location is not a child of any slot, start a new tree */
+            if (!found) {
+                truncate_list_after_slot (first_slot);
+                if (loc.get_uri () != first_slot.uri) {
+                    first_slot.user_path_change_request (loc, false, true);
+                    root_location = loc;
+                    /* Sidebar requests make_root true - first directory will be selected;
+                     * Go_up requests make_root false - previous directory will be selected
+                     */
+                    if (make_root) {
+                        first_slot.select_first_for_empty_selection ();
+                    }
+                }
+            }
+        }
+
+        private bool add_relative_path (Marlin.View.Slot root, GLib.File loc) {
+            if (root.location.get_uri () == loc.get_uri ()) {
+                truncate_list_after_slot (root);
+                return true;
+            }
+            string? relative_path = PF.FileUtils.escape_uri (root.location.get_relative_path (loc), false);
+            if (relative_path != null && relative_path.length > 0) {
+                truncate_list_after_slot (root);
+                string [] dirs = relative_path.split (Path.DIR_SEPARATOR_S);
+                string last_uri = root.uri;
+                if (last_uri.has_suffix (Path.DIR_SEPARATOR_S))
+                    last_uri = last_uri.slice (0, -1);
+
+                foreach (string d in dirs) {
+                    if (d.length > 0) {
+                        last_uri = GLib.Path.build_path (Path.DIR_SEPARATOR_S, last_uri, d);
+
+                        var last_slot = slot_list.last ().data;
+                        var file = GLib.File.new_for_uri (last_uri);
+                        var list = new List<File> ();
+                        list.prepend (file);
+                        last_slot.select_glib_files (list, file);
+                        Thread.usleep (100000);
+                        add_location (file, last_slot);
+
+                    }
+                }
+            } else {
+                return false;
+            }
+            return true;
         }
 
         private void connect_slot_signals (Slot slot) {
@@ -162,6 +226,7 @@ namespace Marlin.View {
             slot.miller_slot_request.connect (on_miller_slot_request);
             slot.size_change.connect (update_total_width);
             slot.folder_deleted.connect (on_slot_folder_deleted);
+            slot.colpane.key_press_event.connect (on_key_pressed);
             slot.path_changed.connect (on_slot_path_changed);
         }
 
@@ -172,14 +237,18 @@ namespace Marlin.View {
             slot.miller_slot_request.disconnect (on_miller_slot_request);
             slot.size_change.disconnect (update_total_width);
             slot.folder_deleted.disconnect (on_slot_folder_deleted);
+            slot.colpane.key_press_event.disconnect (on_key_pressed);
             slot.path_changed.disconnect (on_slot_path_changed);
         }
 
         private void on_miller_slot_request (Marlin.View.Slot slot, GLib.File loc, bool make_root) {
-            if (make_root)
-                user_path_change_request (loc);
-            else
+            if (make_root) {
+                /* Start a new tree with root at loc */ 
+                change_path (loc, true);
+            } else {
+                /* Just add another column to the end. */
                 add_location (loc, slot);
+            }
         }
 
         private bool on_slot_horizontal_scroll_event (double delta_x) {
@@ -253,7 +322,7 @@ namespace Marlin.View {
             }
         }
 
-        private bool on_key_released (Gtk.Widget box, Gdk.EventKey event) {
+        private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
             /* Only handle unmodified keys */
             if ((event.state & Gtk.accelerator_get_default_mod_mask ()) > 0)
                 return false;
@@ -294,23 +363,30 @@ namespace Marlin.View {
                         return true;
                     }
                     break;
+
+                case Gdk.Key.BackSpace:
+                        if (current_position > 0)
+                            truncate_list_after_slot (slot_list.nth_data (current_position - 1));
+                        else {
+                            ctab.go_up ();
+                            return true;
+                        }
+                    break;
+
+                default:
+                    break;
             }
 
             if (to_activate != null) {
                 to_activate.active ();
                 to_activate.select_first_for_empty_selection ();
-                return true;
-            } else
-                return false;
+            }
+
+            return false;
         }
 
         private void on_slot_frozen_changed (Slot slot, bool frozen) {
-            /* Ensure all slots synchronise the frozen state and
-             *  suppress key press event processing when frozen */
-            if (frozen)
-                this.colpane.key_release_event.disconnect (on_key_released);
-            else
-                this.colpane.key_release_event.connect (on_key_released);
+            /* Ensure all slots synchronise the frozen state */
 
             slot_list.@foreach ((abstract_slot) => {
                 var s = abstract_slot as Marlin.View.Slot;
