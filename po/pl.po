@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-21 05:28-0500\n"
+"POT-Creation-Date: 2016-06-27 17:41-0500\n"
 "PO-Revision-Date: 2016-06-26 08:49+0000\n"
 "Last-Translator: Damian Woźniak <fiszet@gmail.com>\n"
 "Language-Team: polski <>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-06-27 06:09+0000\n"
+"X-Launchpad-Export-Date: 2016-06-28 05:34+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 "Language: pl\n"
 
@@ -241,7 +241,7 @@ msgstr "Oryginalny plik"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:760
+#: ../src/View/PropertiesWindow.vala:569
 msgid "Size:"
 msgstr "Rozmiar:"
 
@@ -249,7 +249,7 @@ msgstr "Rozmiar:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:540
+#: ../src/View/PropertiesWindow.vala:355
 msgid "Type:"
 msgstr "Typ:"
 
@@ -1549,7 +1549,8 @@ msgstr "%a %-d %b o %-I:%M %p"
 msgid "%a %-d %b %Y at %-I:%M %p"
 msgstr "%a %-d %b %Y at %-I:%M %p"
 
-#: ../libcore/marlin-progress-info.c:187 ../libcore/marlin-progress-info.c:205
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
 msgstr "Przygotowywanie"
 
@@ -1583,7 +1584,7 @@ msgstr "Osobiste"
 msgid "Your common places and bookmarks"
 msgstr "Udostępnia często używane położenia i zakładki"
 
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:329
+#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:331
 msgid "Home"
 msgstr "Katalog użytkownika"
 
@@ -1595,7 +1596,7 @@ msgstr "Przechodzi do katalogu użytkownika"
 msgid "View the list of recently used files"
 msgstr "Zobacz listę ostatnio używanych plików"
 
-#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:88
+#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:90
 msgid "Trash"
 msgstr "Kosz"
 
@@ -1611,12 +1612,12 @@ msgstr "Nośniki"
 msgid "Your local partitions and devices"
 msgstr "Udostępnia lokalne wolumeny i nośniki"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/PropertiesWindow.vala:1602
-#: ../src/View/ViewContainer.vala:331 ../libwidgets/Resources.vala:91
+#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:42
+#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "System plików"
 
-#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:85
+#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:87
 msgid "Network"
 msgstr "Sieć"
 
@@ -1672,10 +1673,23 @@ msgstr "_Odmontuj"
 msgid "_Eject"
 msgstr "_Wysuń"
 
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:291
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:108
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Właściwości"
+
+#: ../src/View/VolumePropertiesWindow.vala:26
+msgid "Disk Properties"
+msgstr "Właściwości dysku"
+
+#: ../src/View/VolumePropertiesWindow.vala:78
+#: ../src/View/PropertiesWindow.vala:510 ../src/View/PropertiesWindow.vala:512
+msgid "Location:"
+msgstr "Położenie:"
+
+#: ../src/View/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Format:"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1693,7 +1707,7 @@ msgstr "Typ"
 msgid "Modified"
 msgstr "Czas modyfikacji"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:353
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
 msgid "This Folder Does Not Exist"
 msgstr "Katalog nie istnieje"
 
@@ -1719,64 +1733,98 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractDirectoryView.vala:553
+#: ../src/View/AbstractPropertiesDialog.vala:46
+msgid "Info"
+msgstr "Informacja"
+
+#: ../src/View/AbstractPropertiesDialog.vala:57
+msgid "General"
+msgstr "Ogólne"
+
+#: ../src/View/AbstractPropertiesDialog.vala:76
+msgid "Close"
+msgstr "Zamknij"
+
+#: ../src/View/AbstractPropertiesDialog.vala:162
+msgid "Device Usage"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:183
+msgid "Capacity:"
+msgstr "Pojemność:"
+
+#: ../src/View/AbstractPropertiesDialog.vala:186
+#: ../src/View/AbstractPropertiesDialog.vala:192
+#: ../src/View/AbstractPropertiesDialog.vala:198
+msgid "Unknown"
+msgstr "Nieznane"
+
+#: ../src/View/AbstractPropertiesDialog.vala:189
+msgid "Available:"
+msgstr "Dostępne:"
+
+#: ../src/View/AbstractPropertiesDialog.vala:195
+msgid "Used:"
+msgstr "Używane:"
+
+#: ../src/View/AbstractDirectoryView.vala:561
 msgid "Failed to preview"
 msgstr "Błąd podglądu"
 
-#: ../src/View/AbstractDirectoryView.vala:812
+#: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot open this file"
 msgstr "Nie można otworzyć tego pliku"
 
-#: ../src/View/AbstractDirectoryView.vala:825
+#: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
 msgstr "Nie można zidentyfikować rodzaju pliku do otworzenia"
 
-#: ../src/View/AbstractDirectoryView.vala:1560
+#: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
 msgstr "Nie można upuścić tego pliku"
 
-#: ../src/View/AbstractDirectoryView.vala:1560
+#: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Invalid file name provided"
 msgstr "Podano nieprawidłową nazwę pliku"
 
-#: ../src/View/AbstractDirectoryView.vala:2004
+#: ../src/View/AbstractDirectoryView.vala:2012
 msgid "Invalid"
 msgstr "Niewłaściwy"
 
-#: ../src/View/AbstractDirectoryView.vala:2010
+#: ../src/View/AbstractDirectoryView.vala:2018
 msgid "Run"
 msgstr "Uruchom"
 
-#: ../src/View/AbstractDirectoryView.vala:2015
+#: ../src/View/AbstractDirectoryView.vala:2023
 msgid "Open in %s"
 msgstr "Otwórz w %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2025
+#: ../src/View/AbstractDirectoryView.vala:2033
 msgid "Open in"
 msgstr "Otwórz w"
 
-#: ../src/View/AbstractDirectoryView.vala:2027
+#: ../src/View/AbstractDirectoryView.vala:2035
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr "Otwórz za pomocą"
 
-#: ../src/View/AbstractDirectoryView.vala:2087
+#: ../src/View/AbstractDirectoryView.vala:2095
 msgid "Other Application"
 msgstr "Inny program"
 
-#: ../src/View/AbstractDirectoryView.vala:2347
+#: ../src/View/AbstractDirectoryView.vala:2353
 msgid "Untitled %s"
 msgstr "Nienazwany %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2782
+#: ../src/View/AbstractDirectoryView.vala:2788
 msgid "Cannot copy files that are in the trash"
 msgstr "Nie można skopiować plików które są w koszu"
 
-#: ../src/View/AbstractDirectoryView.vala:2783
+#: ../src/View/AbstractDirectoryView.vala:2789
 msgid "Cutting the selection instead"
 msgstr "Wytnij wybór"
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1515
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1304
 msgid "%u folders"
 msgstr "%u katalogów"
 
@@ -1792,8 +1840,8 @@ msgstr " i %u innych elementów (%s) zaznaczono"
 msgid " selected"
 msgstr " zaznaczono"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1486
-#: ../src/View/PropertiesWindow.vala:1525
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1275
+#: ../src/View/PropertiesWindow.vala:1314
 msgid "%u folder"
 msgstr "%u katalog"
 
@@ -1833,269 +1881,205 @@ msgstr "Nie można odczytać %u pliku"
 msgid "%u files not readable"
 msgstr "Nie można odczytać %u plików"
 
-#: ../src/View/PropertiesWindow.vala:186
-msgid "Close"
-msgstr "Zamknij"
-
-#: ../src/View/PropertiesWindow.vala:198
+#: ../src/View/PropertiesWindow.vala:24
 msgid "Resolution:"
 msgstr "Rozdzielczość:"
 
-#: ../src/View/PropertiesWindow.vala:361 ../src/View/PropertiesWindow.vala:1723
-msgid "General"
-msgstr "Ogólne"
+#: ../src/View/PropertiesWindow.vala:183
+msgid "Permissions"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:369
-msgid "More"
-msgstr "Więcej"
-
-#: ../src/View/PropertiesWindow.vala:394
+#: ../src/View/PropertiesWindow.vala:210
 msgid "Preview"
 msgstr "Podgląd"
 
-#: ../src/View/PropertiesWindow.vala:414
+#: ../src/View/PropertiesWindow.vala:230
 msgid "file"
 msgstr "plik"
 
-#: ../src/View/PropertiesWindow.vala:416
+#: ../src/View/PropertiesWindow.vala:232
 msgid "files"
 msgstr "pliki"
 
-#: ../src/View/PropertiesWindow.vala:418
+#: ../src/View/PropertiesWindow.vala:234
 msgid "Actual size could be larger, "
 msgstr "Aktualny rozmiar może być większy, "
 
-#: ../src/View/PropertiesWindow.vala:418
+#: ../src/View/PropertiesWindow.vala:234
 msgid "could not be read due to permissions or other errors."
 msgstr "nie można odczytać ze względu na uprawnienia lub inne błędy"
 
-#: ../src/View/PropertiesWindow.vala:443 ../src/View/PropertiesWindow.vala:462
+#: ../src/View/PropertiesWindow.vala:259 ../src/View/PropertiesWindow.vala:278
 msgid "unknown"
 msgstr "nieznany"
 
-#: ../src/View/PropertiesWindow.vala:545
+#: ../src/View/PropertiesWindow.vala:360
 msgid "Contains:"
 msgstr "Zawiera:"
 
-#: ../src/View/PropertiesWindow.vala:642
+#: ../src/View/PropertiesWindow.vala:457
 msgid "Created:"
 msgstr "Utworzono:"
 
-#: ../src/View/PropertiesWindow.vala:644
+#: ../src/View/PropertiesWindow.vala:459
 msgid "Modified:"
 msgstr "Zmodyfikowano:"
 
-#: ../src/View/PropertiesWindow.vala:647
+#: ../src/View/PropertiesWindow.vala:462
 msgid "Last Access:"
 msgstr "Ostatni dostęp:"
 
-#: ../src/View/PropertiesWindow.vala:655
+#: ../src/View/PropertiesWindow.vala:470
 msgid "Deleted:"
 msgstr "Usunięto:"
 
-#: ../src/View/PropertiesWindow.vala:661
+#: ../src/View/PropertiesWindow.vala:476
 msgid "MimeType:"
 msgstr "Rodzaj MIME:"
 
-#: ../src/View/PropertiesWindow.vala:669
+#: ../src/View/PropertiesWindow.vala:484
 msgid "loading ..."
 msgstr "wczytywanie..."
 
-#: ../src/View/PropertiesWindow.vala:682
+#: ../src/View/PropertiesWindow.vala:497
 msgid "MimeTypes:"
 msgstr "Rodzaje MIME:"
 
-#: ../src/View/PropertiesWindow.vala:695 ../src/View/PropertiesWindow.vala:697
-#: ../src/View/PropertiesWindow.vala:1654
-msgid "Location:"
-msgstr "Położenie:"
-
-#: ../src/View/PropertiesWindow.vala:701
+#: ../src/View/PropertiesWindow.vala:516
 msgid "Target:"
 msgstr "Cel:"
 
-#: ../src/View/PropertiesWindow.vala:707
+#: ../src/View/PropertiesWindow.vala:522
 msgid "Origin Location:"
 msgstr "Pierwotne położenie:"
 
-#: ../src/View/PropertiesWindow.vala:714
+#: ../src/View/PropertiesWindow.vala:529
 msgid "Could not be determined"
 msgstr "Nie udało się ustalić"
 
-#: ../src/View/PropertiesWindow.vala:757 ../src/View/PropertiesWindow.vala:1652
-msgid "Info"
-msgstr "Informacja"
-
-#: ../src/View/PropertiesWindow.vala:795
+#: ../src/View/PropertiesWindow.vala:604
 msgid "Other application..."
 msgstr "Inny program..."
 
-#: ../src/View/PropertiesWindow.vala:819
+#: ../src/View/PropertiesWindow.vala:628
 msgid "Open with:"
 msgstr "Otwieranie za pomocą:"
 
-#: ../src/View/PropertiesWindow.vala:835 ../src/View/PropertiesWindow.vala:1668
-msgid "Usage"
-msgstr "Użycie"
-
-#: ../src/View/PropertiesWindow.vala:837
-msgid "Device usage:"
-msgstr "Użycie urządzenia:"
-
-#: ../src/View/PropertiesWindow.vala:845
-msgid "%s free of %s (%d%% used)"
-msgstr "%s wolne z %s (użyte %d%%)"
-
-#: ../src/View/PropertiesWindow.vala:956
+#: ../src/View/PropertiesWindow.vala:746
 msgid "Read"
 msgstr "Odczyt"
 
-#: ../src/View/PropertiesWindow.vala:960
+#: ../src/View/PropertiesWindow.vala:750
 msgid "Write"
 msgstr "Zapis"
 
-#: ../src/View/PropertiesWindow.vala:964
+#: ../src/View/PropertiesWindow.vala:754
 msgid "Execute"
 msgstr "Uruchom"
 
-#: ../src/View/PropertiesWindow.vala:1170
-#: ../src/View/PropertiesWindow.vala:1185
+#: ../src/View/PropertiesWindow.vala:961 ../src/View/PropertiesWindow.vala:977
 msgid "Owner:"
 msgstr "Właściciel:"
 
-#: ../src/View/PropertiesWindow.vala:1176
-#: ../src/View/PropertiesWindow.vala:1190
+#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:982
 msgid "Group:"
 msgstr "Grupa:"
 
-#: ../src/View/PropertiesWindow.vala:1195
+#: ../src/View/PropertiesWindow.vala:987
 msgid "Everyone:"
 msgstr "Wszyscy:"
 
-#: ../src/View/PropertiesWindow.vala:1471
+#: ../src/View/PropertiesWindow.vala:1260
 msgid "%u subfolders and %u files"
 msgstr "%u podkatalogów i %u plików"
 
-#: ../src/View/PropertiesWindow.vala:1473
+#: ../src/View/PropertiesWindow.vala:1262
 msgid "%u subfolders and %u file"
 msgstr "%u podkatalogów i %u plik"
 
-#: ../src/View/PropertiesWindow.vala:1476
+#: ../src/View/PropertiesWindow.vala:1265
 msgid "%u subfolders"
 msgstr "%u podkatalogów"
 
-#: ../src/View/PropertiesWindow.vala:1481
+#: ../src/View/PropertiesWindow.vala:1270
 msgid "%u subfolder and %u files"
 msgstr "%u podkatalog i %u plików"
 
-#: ../src/View/PropertiesWindow.vala:1483
+#: ../src/View/PropertiesWindow.vala:1272
 msgid "%u subfolder and %u file"
 msgstr "%u podkatalog i %u plik"
 
-#: ../src/View/PropertiesWindow.vala:1492
-#: ../src/View/PropertiesWindow.vala:1531
+#: ../src/View/PropertiesWindow.vala:1281
+#: ../src/View/PropertiesWindow.vala:1320
 msgid "%u files"
 msgstr "%u plików"
 
-#: ../src/View/PropertiesWindow.vala:1494
-#: ../src/View/PropertiesWindow.vala:1533
+#: ../src/View/PropertiesWindow.vala:1283
+#: ../src/View/PropertiesWindow.vala:1322
 msgid "%u file"
 msgstr "%u plik"
 
-#: ../src/View/PropertiesWindow.vala:1510
+#: ../src/View/PropertiesWindow.vala:1299
 msgid "%u selected items (%u folders and %u files)"
 msgstr "%u zaznaczonych elementów (%u katalogów i %u plików)"
 
-#: ../src/View/PropertiesWindow.vala:1512
+#: ../src/View/PropertiesWindow.vala:1301
 msgid "%u selected items (%u folders and %u file)"
 msgstr "%u zaznaczonych elementów (%u katalogów i %u plik)"
 
-#: ../src/View/PropertiesWindow.vala:1520
+#: ../src/View/PropertiesWindow.vala:1309
 msgid "%u selected items (%u folder and %u files)"
 msgstr "%u zaznaczonych elementów (%u katalog i %u plików)"
 
-#: ../src/View/PropertiesWindow.vala:1522
+#: ../src/View/PropertiesWindow.vala:1311
 msgid "%u selected items (%u folder and %u file)"
 msgstr "%u zaznaczonych elementów (%u katalog i %u plik)"
 
-#: ../src/View/PropertiesWindow.vala:1586
-msgid "Disk Properties"
-msgstr "Właściwości dysku"
-
-#: ../src/View/PropertiesWindow.vala:1661
-msgid "Format:"
-msgstr "Format:"
-
-#: ../src/View/PropertiesWindow.vala:1679
-#: ../src/View/PropertiesWindow.vala:1704
-msgid "Capacity:"
-msgstr "Pojemność:"
-
-#: ../src/View/PropertiesWindow.vala:1685
-#: ../src/View/PropertiesWindow.vala:1710
-msgid "Available:"
-msgstr "Dostępne:"
-
-#: ../src/View/PropertiesWindow.vala:1691
-#: ../src/View/PropertiesWindow.vala:1716
-msgid "Used:"
-msgstr "Używane:"
-
-#: ../src/View/PropertiesWindow.vala:1694
-msgid "%s (%d%% used)"
-msgstr "%s (%d%% użyto)"
-
-#: ../src/View/PropertiesWindow.vala:1707
-#: ../src/View/PropertiesWindow.vala:1713
-#: ../src/View/PropertiesWindow.vala:1719
-msgid "Unknown"
-msgstr "Nieznane"
-
-#: ../src/View/ViewContainer.vala:340
+#: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
 msgstr "(jako administrator)"
 
-#: ../src/View/ViewContainer.vala:354
+#: ../src/View/ViewContainer.vala:356
 msgid "You cannot create a folder here."
 msgstr "Nie można utworzyć tutaj katalogu."
 
-#: ../src/View/ViewContainer.vala:356
+#: ../src/View/ViewContainer.vala:358
 msgid "The network is unavailable"
 msgstr "Sieć jest niedostępna"
 
-#: ../src/View/ViewContainer.vala:357
+#: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
 msgstr "Aby uzyskać dostęp do tego katalogu wymagana jest działająca sieć."
 
-#: ../src/View/ViewContainer.vala:359
+#: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
 msgstr "Ten katalog nie należy do Ciebie"
 
-#: ../src/View/ViewContainer.vala:360
+#: ../src/View/ViewContainer.vala:362
 msgid "You don't have permission to view this folder."
 msgstr "Nie masz uprawnień do przegladania tego katalogu."
 
-#: ../src/View/ViewContainer.vala:362
+#: ../src/View/ViewContainer.vala:364
 msgid "Unable to Mount Folder"
 msgstr "Nie udało się zamontować katalogu"
 
-#: ../src/View/ViewContainer.vala:363
+#: ../src/View/ViewContainer.vala:365
 msgid "Could not connect to the server for this folder."
 msgstr "Nie udało się połączyć z serwerem do tego katalogu."
 
-#: ../src/View/ViewContainer.vala:365
+#: ../src/View/ViewContainer.vala:367
 msgid "Unable show Folder"
 msgstr "Nie udało się wyświetlić katalogu"
 
-#: ../src/View/ViewContainer.vala:366
+#: ../src/View/ViewContainer.vala:368
 msgid "The server for this folder could not be located."
 msgstr "Serwer dla tego katalogu nie mógł zostać zlokalizowany."
 
-#: ../src/View/ViewContainer.vala:376
+#: ../src/View/ViewContainer.vala:378
 msgid "File not Found"
 msgstr "Plik nie istnieje"
 
-#: ../src/View/ViewContainer.vala:377
+#: ../src/View/ViewContainer.vala:379
 msgid "The file selected no longer exists."
 msgstr "Wybrany plik nie istnieje."
 
@@ -2115,31 +2099,31 @@ msgstr "Brak ostatnio otworzonych plików"
 msgid "Access Denied"
 msgstr "Brak dostępu"
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:158
 msgid "Show the version of the program."
 msgstr "Wypisuje informacje o wersji"
 
-#: ../src/Application.vala:150
+#: ../src/Application.vala:160
 msgid "Open uri(s) in new tab"
 msgstr "Otwiera adresy URI w nowych kartach"
 
-#: ../src/Application.vala:152 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:162 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Nowe okno"
 
-#: ../src/Application.vala:154
+#: ../src/Application.vala:164
 msgid "Quit Files."
 msgstr "Opuść menedżer plików."
 
-#: ../src/Application.vala:156
+#: ../src/Application.vala:166
 msgid "Enable debug logging"
 msgstr "Wyświetla szczegółowe komunikaty diagnostyczne"
 
-#: ../src/Application.vala:159
+#: ../src/Application.vala:169
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:162
+#: ../src/Application.vala:172
 msgid ""
 "\n"
 "\n"
@@ -2149,7 +2133,7 @@ msgstr ""
 "\n"
 "Umożliwia przeglądanie systemu plików i zarządza jego zawartością"
 
-#: ../src/Application.vala:189
+#: ../src/Application.vala:199
 msgid "--quit cannot be used with URIs."
 msgstr "Nie można użyć opcji --quit z adresem URI."
 
@@ -2173,35 +2157,31 @@ msgstr "Nowe okno, jako _Administrator"
 msgid "About _Files"
 msgstr "O _Plikach"
 
-#: ../src/DesktopLauncher.vala:11
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Pliki"
 
-#: ../src/ProgressUIHandler.vala:140 ../src/ProgressUIHandler.vala:205
-#: ../src/ProgressUIHandler.vala:222 ../src/ProgressUIHandler.vala:236
+#: ../src/ProgressUIHandler.vala:42
+msgid "File Manager Operations"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:164
 msgid "File Operations"
 msgstr "Działania na plikach"
 
-#: ../src/ProgressUIHandler.vala:206
-msgid "All file operations have been successfully completed"
-msgstr "Zakończono wszystkie operacje plikowe"
+#: ../src/ProgressUIHandler.vala:208
+msgid "Completed %s"
+msgstr ""
 
-#: ../src/ProgressUIHandler.vala:218 ../src/ProgressUIHandler.vala:263
-msgid "%'d file operation active"
-msgid_plural "%'d file operations active"
-msgstr[0] "Trwa %'d operacja plikowa"
-msgstr[1] "Trwają %'d operacje plikowe"
-msgstr[2] "Trwa %'d operacji plikowych"
+#: ../src/ProgressUIHandler.vala:211
+msgid "All file operations have ended"
+msgstr ""
 
-#: ../src/ProgressUIHandler.vala:242
-msgid "Show Details"
-msgstr "Pokaż szczegóły"
-
-#: ../src/ProgressUIHandler.vala:323
+#: ../src/ProgressUIHandler.vala:264
 msgid "Show Copy Dialog"
 msgstr "Pokaż okno kopiowania"
 
-#: ../src/ProgressUIHandler.vala:335
+#: ../src/ProgressUIHandler.vala:276
 msgid "Cancel All In-progress Actions"
 msgstr "Anuluj wszystkie trwające akcje"
 
@@ -2262,11 +2242,11 @@ msgstr "Zakładki"
 msgid "Everywhere Else"
 msgstr "Wszędzie indziej"
 
-#: ../libwidgets/Resources.vala:28
+#: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
 msgstr "Prosty i potężny menedżer plików"
 
-#: ../libwidgets/Resources.vala:48
+#: ../libwidgets/Resources.vala:50
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -2304,35 +2284,35 @@ msgstr ""
 "  Łukasz Serafinowski https://launchpad.net/~lukasz-serafinowski\n"
 "  Łukasz Szeremeta https://launchpad.net/~l-szeremeta"
 
-#: ../libwidgets/Resources.vala:81
+#: ../libwidgets/Resources.vala:83
 msgid "AFP"
 msgstr "AFP"
 
-#: ../libwidgets/Resources.vala:82
+#: ../libwidgets/Resources.vala:84
 msgid "DAV"
 msgstr "DAV"
 
-#: ../libwidgets/Resources.vala:83
+#: ../libwidgets/Resources.vala:85
 msgid "DAVS"
 msgstr "DAVS"
 
-#: ../libwidgets/Resources.vala:84
+#: ../libwidgets/Resources.vala:86
 msgid "FTP"
 msgstr "FTP"
 
-#: ../libwidgets/Resources.vala:86
+#: ../libwidgets/Resources.vala:88
 msgid "SFTP"
 msgstr "SFTP"
 
-#: ../libwidgets/Resources.vala:87
+#: ../libwidgets/Resources.vala:89
 msgid "SMB"
 msgstr "SMB"
 
-#: ../libwidgets/Resources.vala:89
+#: ../libwidgets/Resources.vala:91
 msgid "Recent"
 msgstr "Ostatnie"
 
-#: ../libwidgets/Resources.vala:90
+#: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr "MTP"
 
