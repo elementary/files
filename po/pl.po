@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-27 17:41-0500\n"
-"PO-Revision-Date: 2016-06-26 08:49+0000\n"
+"PO-Revision-Date: 2016-06-28 22:51+0000\n"
 "Last-Translator: Damian Woźniak <fiszet@gmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-06-28 05:34+0000\n"
+"X-Launchpad-Export-Date: 2016-06-29 05:34+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 "Language: pl\n"
 
@@ -1747,7 +1747,7 @@ msgstr "Zamknij"
 
 #: ../src/View/AbstractPropertiesDialog.vala:162
 msgid "Device Usage"
-msgstr ""
+msgstr "Wykorzystanie urządzenia"
 
 #: ../src/View/AbstractPropertiesDialog.vala:183
 msgid "Capacity:"
@@ -1887,7 +1887,7 @@ msgstr "Rozdzielczość:"
 
 #: ../src/View/PropertiesWindow.vala:183
 msgid "Permissions"
-msgstr ""
+msgstr "Uprawnienia"
 
 #: ../src/View/PropertiesWindow.vala:210
 msgid "Preview"
@@ -2163,7 +2163,7 @@ msgstr "Pliki"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "Działania menedżera plików"
 
 #: ../src/ProgressUIHandler.vala:164
 msgid "File Operations"
@@ -2171,11 +2171,11 @@ msgstr "Działania na plikach"
 
 #: ../src/ProgressUIHandler.vala:208
 msgid "Completed %s"
-msgstr ""
+msgstr "Ukończono %s"
 
 #: ../src/ProgressUIHandler.vala:211
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Wszystkie działania na plikach zostały ukończone"
 
 #: ../src/ProgressUIHandler.vala:264
 msgid "Show Copy Dialog"

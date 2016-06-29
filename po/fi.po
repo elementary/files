@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-27 17:41-0500\n"
-"PO-Revision-Date: 2016-06-22 12:29+0000\n"
+"PO-Revision-Date: 2016-06-28 08:19+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-06-28 05:33+0000\n"
+"X-Launchpad-Export-Date: 2016-06-29 05:34+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1692,7 +1692,7 @@ msgstr "Sulje"
 
 #: ../src/View/AbstractPropertiesDialog.vala:162
 msgid "Device Usage"
-msgstr ""
+msgstr "Laitteen käyttö"
 
 #: ../src/View/AbstractPropertiesDialog.vala:183
 msgid "Capacity:"
@@ -1832,7 +1832,7 @@ msgstr "Resoluutio:"
 
 #: ../src/View/PropertiesWindow.vala:183
 msgid "Permissions"
-msgstr ""
+msgstr "Käyttöoikeudet"
 
 #: ../src/View/PropertiesWindow.vala:210
 msgid "Preview"
@@ -2108,7 +2108,7 @@ msgstr "Tiedostot"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "Tiedostonhallinnan toiminnot"
 
 #: ../src/ProgressUIHandler.vala:164
 msgid "File Operations"
@@ -2116,11 +2116,11 @@ msgstr "Tiedostotoiminnot"
 
 #: ../src/ProgressUIHandler.vala:208
 msgid "Completed %s"
-msgstr ""
+msgstr "Valmistui %s"
 
 #: ../src/ProgressUIHandler.vala:211
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Kaikki toimenpiteet ovat valmistuneet"
 
 #: ../src/ProgressUIHandler.vala:264
 msgid "Show Copy Dialog"
