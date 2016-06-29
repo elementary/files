@@ -44,10 +44,13 @@ public class Marlin.Progress.UIHandler : Object {
     private const int ICON_SIZE = 64;
     private const string CANCELLED_ICON_NAME = "dialog-warning";
 
+    private Marlin.Application application;
+
     private bool actions_supported = false;
 
-    public UIHandler () {
+    public UIHandler (Marlin.Application app) {
         this.manager = new Marlin.Progress.InfoManager ();
+        this.application = app;
 
         manager.new_progress_info.connect ((info) => {
             info.started.connect (progress_info_started_cb);
@@ -95,7 +98,6 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private void progress_info_started_cb (Marlin.Progress.Info info) {
-        var application = Marlin.Application.get ();
         application.hold ();
 
         if (info == null || !(info is Marlin.Progress.Info) ||
@@ -154,46 +156,51 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private void ensure_window () {
-        if (this.progress_window != null) {
-            return;
+        if (this.progress_window == null) {
+            /* This provides an undeletable, unminimisable window in which to show the info widgets */
+            this.progress_window = new Gtk.Dialog ();
+            this.progress_window.resizable = false;
+            this.progress_window.deletable = false;
+            this.progress_window.title = _("File Operations");
+            this.progress_window.set_wmclass ("file_progress", "Marlin");
+            this.progress_window.icon_name = "system-file-manager";
+
+            this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
+
+            this.progress_window.get_content_area ().set_border_width (10);
+            this.progress_window.get_content_area ().add (this.window_vbox);
+            this.window_vbox.show ();
+
+            this.progress_window.delete_event.connect ((widget, event) => {
+                widget.hide ();
+                return true;
+            });
         }
-        /* This provides an undeletable, unminimisable window in which to show the info widgets */
-        this.progress_window = new Gtk.Dialog ();
-        this.progress_window.resizable = false;
-        this.progress_window.deletable = false;
-        this.progress_window.title = _("File Operations");
-        this.progress_window.set_wmclass ("file_progress", "Marlin");
-        this.progress_window.icon_name = "system-file-manager";
 
-
-        this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
-
-        this.progress_window.get_content_area ().set_border_width (10);
-        this.progress_window.get_content_area ().add (this.window_vbox);
-        this.window_vbox.show ();
-
-        this.progress_window.delete_event.connect ((widget, event) => {
-            widget.hide ();
-            return true;
-        });
+        progress_window.set_transient_for (application.get_active_window ());
     }
 
     private void progress_info_finished_cb (Marlin.Progress.Info info) {
-        var application = Marlin.Application.get ();
         application.release ();
 
         if (active_infos > 0) {
-            this.active_infos--; 
-            show_operation_complete_notification (info, active_infos < 1);
+            this.active_infos--;
+            /* Only notify if application is not focussed. Add delay
+             * so that active window has time to refocus after progress window is
+             * hidden */
+            Timeout.add (100, () => {
+                if (!application.get_active_window ().has_toplevel_focus) {
+                    show_operation_complete_notification (info, active_infos < 1);
+                }
+                return false;
+            });
         } else {
             warning ("Attempt to decrement zero active infos");
         }
-
         /* For rapid file transfers this can get called before progress window was been created */
         if (active_infos < 1 && progress_window != null && progress_window.visible) {
             (this.progress_window as Gtk.Window).hide ();
         }
-
 #if HAVE_UNITY
         update_unity_launcher (info, false);
 #endif
