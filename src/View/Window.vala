@@ -131,7 +131,7 @@ namespace Marlin.View {
 
             add(window_box);
 
-            title = Marlin.APP_TITLE;
+            title = _(Marlin.APP_TITLE);
             try {
                 this.icon = Gtk.IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
             } catch (Error err) {
@@ -437,7 +437,7 @@ namespace Marlin.View {
 #endif
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
-            current_tab.set_active_state (true);
+            current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
@@ -754,7 +754,7 @@ namespace Marlin.View {
 
         protected void show_about() {
             Granite.Widgets.show_about_dialog ((Gtk.Window) this,
-                "program-name", Marlin.APP_TITLE,
+                "program-name", _(Marlin.APP_TITLE),
                 "version", Config.VERSION,
                 "copyright", Marlin.COPYRIGHT,
                 "license-type", Gtk.License.GPL_3_0,
@@ -800,19 +800,19 @@ namespace Marlin.View {
         }
 
         private bool is_marlin_mydefault_fm () {
-            bool foldertype_is_default = ("pantheon-files.desktop" == AppInfo.get_default_for_type("inode/directory", false).get_id());
+            bool foldertype_is_default = (Marlin.APP_DESKTOP == AppInfo.get_default_for_type("inode/directory", false).get_id());
 
             bool trash_uri_is_default = false;
             AppInfo? app_trash_handler = AppInfo.get_default_for_type("x-scheme-handler/trash", true);
             if (app_trash_handler != null)
-                trash_uri_is_default = ("pantheon-files.desktop" == app_trash_handler.get_id());
+                trash_uri_is_default = (Marlin.APP_DESKTOP == app_trash_handler.get_id());
 
             return foldertype_is_default && trash_uri_is_default;
         }
 
         private void make_marlin_default_fm (bool active) {
             if (active) {
-                AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("pantheon-files.desktop");
+                AppInfo marlin_app = (AppInfo) new DesktopAppInfo (Marlin.APP_DESKTOP);
 
                 if (marlin_app != null) {
                     try {
@@ -995,10 +995,10 @@ namespace Marlin.View {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = PF.FileUtils.get_file_for_path (uri);
 
-                    mwcols.add_location (gfile, mwcols.current_slot);
+                    mwcols.add_location (gfile, mwcols.current_slot, false); /* Do not scroll at this stage */
                 }
             } else {
-                warning ("Invalid tip uri for Miller View");
+                warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
             }
         }
 
