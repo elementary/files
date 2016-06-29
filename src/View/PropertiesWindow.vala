@@ -503,28 +503,28 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
     }
 
-    private void get_location (GOF.File file) {
-        if (got_common_location ()) {
-            if (view.is_in_recent ()) {
-                string original_location = file.get_display_target_uri ().replace ("%20", " ");
-                string file_name = file.get_display_name ().replace ("%20", " ");
-                string location_folder = original_location.slice (0, -(file_name.length)).replace ("%20", " ");
-                string location_name = location_folder.slice (7, -1);
+    private string location (GOF.File file) {
+        if (view.is_in_recent ()) {
+            string original_location = file.get_display_target_uri ().replace ("%20", " ");
+            string file_name = file.get_display_name ().replace ("%20", " ");
+            string location_folder = original_location.slice (0, -(file_name.length)).replace ("%20", " ");
+            string location_name = location_folder.slice (7, -1);
 
-                info.add (new Pair<string, string>(_("Location:"), "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>"));
-            } else {
-                info.add (new Pair<string, string>(_("Location:"), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
-            }
+            return "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>";
+        } else {
+            return "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>";
         }
     }
 
-    private void get_original_location (GOF.File file) {
+    private string original_location (GOF.File file) {
         /* print orig location of trashed files */
         if (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
             var trash_orig_loc = get_common_trash_orig ();
-            if (trash_orig_loc != null)
-                info.add (new Pair<string, string>(_("Origin Location:"), "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>"));
+            if (trash_orig_loc != null) {
+                return "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>";
+            }
         }
+        return _("Unknown");
     }
 
     private async void get_resolution (GOF.File goffile, Gee.LinkedList<Pair<string, string>> info) {
@@ -591,6 +591,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         info_grid.attach_next_to (contains_label, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
 
         info = new Gee.LinkedList<Pair<string, string>>();
+        int n = 4;
         if (count == 1) {
             get_time_created (file);
 
@@ -599,29 +600,48 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
 
             get_filetype (file);
-            get_location (file);
 
-            if (file.info.get_is_symlink ()) {
-                info.add (new Pair<string, string>(_("Target:"), file.info.get_symlink_target()));
+            foreach (var pair in info) {
+                var value_label = new ValueLabel (pair.value);
+                var key_label = new KeyLabel (pair.key);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                n++;
             }
-
-            if (file.is_trashed ()) {
-                get_original_location (file);
-            }           
 
         } else {
             get_filetype (file);
-            get_location (file);
 
-            if (file.is_trashed ()) {
-                get_original_location (file);
-            }  
+            foreach (var pair in info) {
+                var value_label = new ValueLabel (pair.value);
+                var key_label = new KeyLabel (pair.key);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                n++;
+            }
         }
 
-        int n = 4;
-        foreach (var pair in info) {
-            var value_label = new ValueLabel (pair.value);
-            var key_label = new KeyLabel (pair.key);
+        if (got_common_location ()) {
+            var location_key = new KeyLabel (_("Location:"));
+            var location_value = new ValueLabel (location (file));
+            location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            location_value.max_width_chars = 32;
+            info_grid.attach (location_key, 0, n, 1, 1);
+            info_grid.attach_next_to (location_value, location_key, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
+
+        if (count == 1 && file.info.get_is_symlink ()) {
+            var key_label = new KeyLabel (_("Target:"));
+            var value_label = new ValueLabel (file.info.get_symlink_target());
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
+
+        if (file.is_trashed ()) {
+            var key_label = new KeyLabel (_("Original Location:"));
+            var value_label = new ValueLabel (original_location (file));
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
