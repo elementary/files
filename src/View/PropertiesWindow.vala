@@ -183,7 +183,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return;
         }
 
-        goffile = (GOF.File) files.data;
         mimes = new Gee.HashSet<string> ();
         foreach (var gof in files) {
             if (!(gof is GOF.File)) {
@@ -201,13 +200,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         }
 
-        get_info (goffile);
+        goffile = (GOF.File) files.data;
+        construct_info_panel (goffile);
         cancellable = new GLib.Cancellable ();
-
-        /* Info */
-        if (info.size > 0) {
-            construct_info_panel (info);
-        }
 
         update_selection_size (); /* Start counting first to get number of selected files and folders */    
         build_header_box ();
@@ -457,30 +452,28 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return path;
     }
 
-    private void get_info (GOF.File file) {
-        info = new Gee.LinkedList<Pair<string, string>>();
-
+    private void get_time_created (GOF.File file) {
         /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
-        if (count == 1) {
-            var time_created = file.get_formated_time (FileAttribute.TIME_CREATED);
-            if (time_created != null)
-                info.add (new Pair<string, string>(_("Created:"), time_created));
-            if (file.formated_modified != null)
-                info.add (new Pair<string, string>(_("Modified:"), file.formated_modified));
-            var time_last_access = file.get_formated_time (FileAttribute.TIME_ACCESS);
-            if (time_last_access != null)
-                info.add (new Pair<string, string>(_("Last Access:"), time_last_access));
-            /* print deletion date if trashed file */
+        var time_created = file.get_formated_time (FileAttribute.TIME_CREATED);
+        if (time_created != null)
+            info.add (new Pair<string, string>(_("Created:"), time_created));
 
-            /**TODO** format trash deletion date string*/
+        if (file.formated_modified != null)
+            info.add (new Pair<string, string>(_("Modified:"), file.formated_modified));
 
-            if (file.is_trashed ()) {
-                var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
-                if (deletion_date != null)
-                    info.add (new Pair<string, string>(_("Deleted:"), deletion_date));
-            }
-        }
+        var time_last_access = file.get_formated_time (FileAttribute.TIME_ACCESS);
+        if (time_last_access != null)
+            info.add (new Pair<string, string>(_("Last Access:"), time_last_access));
+    }
 
+    private void get_deletion_date (GOF.File file) {
+        /**TODO** format trash deletion date string*/
+        var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
+        if (deletion_date != null)
+            info.add (new Pair<string, string>(_("Deleted:"), deletion_date));
+    }
+
+    private void get_filetype (GOF.File file) {
         ftype = get_common_ftype ();
         if (ftype != null) {
             info.add (new Pair<string, string>(_("MimeType:"), ftype));
@@ -508,8 +501,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         }
 
+    }
 
-
+    private void get_location (GOF.File file) {
         if (got_common_location ()) {
             if (view.is_in_recent ()) {
                 string original_location = file.get_display_target_uri ().replace ("%20", " ");
@@ -518,15 +512,15 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 string location_name = location_folder.slice (7, -1);
 
                 info.add (new Pair<string, string>(_("Location:"), "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>"));
-            } else
+            } else {
                 info.add (new Pair<string, string>(_("Location:"), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
+            }
         }
+    }
 
-        if (count == 1 && file.info.get_is_symlink ())
-            info.add (new Pair<string, string>(_("Target:"), file.info.get_symlink_target()));
-
+    private void get_original_location (GOF.File file) {
         /* print orig location of trashed files */
-        if (file.is_trashed () && file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
+        if (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
             var trash_orig_loc = get_common_trash_orig ();
             if (trash_orig_loc != null)
                 info.add (new Pair<string, string>(_("Origin Location:"), "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>"));
@@ -573,7 +567,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         } while (kw != null);
     }
 
-    private void construct_info_panel (Gee.LinkedList<Pair<string, string>> item_info) {
+    private void construct_info_panel (GOF.File file) {
         /* Have to have these separate as size call is async */
         var size_key_label = new KeyLabel (_("Size:"));
 
@@ -596,8 +590,36 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         info_grid.attach (contains_key_label, 0, 3, 1, 1);
         info_grid.attach_next_to (contains_label, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
 
+        info = new Gee.LinkedList<Pair<string, string>>();
+        if (count == 1) {
+            get_time_created (file);
+
+            if (file.is_trashed ()) {
+                get_deletion_date (file);
+            }
+
+            get_filetype (file);
+            get_location (file);
+
+            if (file.info.get_is_symlink ()) {
+                info.add (new Pair<string, string>(_("Target:"), file.info.get_symlink_target()));
+            }
+
+            if (file.is_trashed ()) {
+                get_original_location (file);
+            }           
+
+        } else {
+            get_filetype (file);
+            get_location (file);
+
+            if (file.is_trashed ()) {
+                get_original_location (file);
+            }  
+        }
+
         int n = 4;
-        foreach (var pair in item_info) {
+        foreach (var pair in info) {
             var value_label = new ValueLabel (pair.value);
             var key_label = new KeyLabel (pair.key);
             info_grid.attach (key_label, 0, n, 1, 1);
