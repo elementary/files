@@ -465,11 +465,13 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             info.add (new Pair<string, string>(_("Last Access:"), time_last_access));
     }
 
-    private void get_deletion_date (GOF.File file) {
+    private string deletion_date (GOF.File file) {
         /**TODO** format trash deletion date string*/
         var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
-        if (deletion_date != null)
-            info.add (new Pair<string, string>(_("Deleted:"), deletion_date));
+        if (deletion_date != null) {
+            return deletion_date;
+        }
+        return _("Unknown");
     }
 
     private string filetype (GOF.File file) {
@@ -575,14 +577,26 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         info_grid.attach (contains_key_label, 0, 3, 1, 1);
         info_grid.attach_next_to (contains_label, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
 
-        info = new Gee.LinkedList<Pair<string, string>>();
         int n = 4;
-        if (count == 1) {
-            get_time_created (file);
 
-            if (file.is_trashed ()) {
-                get_deletion_date (file);
+        if (count == 1) {
+            info = new Gee.LinkedList<Pair<string, string>>();
+            get_time_created (file);
+            foreach (var pair in info) {
+                var value_label = new ValueLabel (pair.value);
+                var key_label = new KeyLabel (pair.key);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                n++;
             }
+        }
+
+        if (count == 1 && file.is_trashed ()) {
+            var key_label = new KeyLabel (_("Deleted:"));
+            var value_label = new ValueLabel (deletion_date (file));
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
         }
 
         var ftype = filetype (file);
@@ -598,14 +612,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             resolution_value = new ValueLabel (resolution (file));
             info_grid.attach (resolution_key, 0, n, 1, 1);
             info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
-            n++;
-        }
-
-        foreach (var pair in info) {
-            var value_label = new ValueLabel (pair.value);
-            var key_label = new KeyLabel (pair.key);
-            info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
         }
 
