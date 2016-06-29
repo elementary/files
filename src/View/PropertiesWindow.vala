@@ -23,8 +23,6 @@
 namespace Marlin.View {
 
 public class PropertiesWindow : AbstractPropertiesDialog {
-    private const string resolution_key = _("Resolution:");
-
     private class Pair<F, G> {
         public F key;
         public G value;
@@ -79,7 +77,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private Gtk.Label size_label;
     private Gtk.Label contains_label;
     private Gtk.Label contains_key_label;
-    private Gtk.Widget type_key_label;
+    private KeyLabel type_key_label;
+    private ValueLabel resolution_value;
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
     private int size_warning = 0;
@@ -473,23 +472,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             info.add (new Pair<string, string>(_("Deleted:"), deletion_date));
     }
 
-    private void get_filetype (GOF.File file) {
+    private string filetype (GOF.File file) {
         ftype = get_common_ftype ();
         if (ftype != null) {
-            info.add (new Pair<string, string>(_("MimeType:"), ftype));
-            /* get image size in pixels using an asynchronous method to stop the interface blocking on
-             * large images. */
-            if ("image" in ftype) {
-                string resolution_value = "";
-                if (file.width > 0) { /* resolution has already been determined */
-                    resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
-                } else {
-                    resolution_value = _("Loading…");
-                    /* Async function will update info when resolution determined */
-                    get_resolution.begin (file, info);
-                }
-                info.add (new Pair<string, string> (resolution_key, resolution_value));
-            }
+            return ftype;
         } else {
             /* show list of mimetypes only if we got a default application in common */
             if (view.get_default_app () != null && !goffile.is_directory) {
@@ -497,10 +483,22 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 foreach (var mime in mimes) {
                     (str == null) ? str = mime : str = string.join (", ", str, mime);
                 }
-                info.add (new Pair<string, string>(_("MimeTypes:"), str));
+                return str;
             }
         }
+        return _("Unknown");
+    }
 
+    private string resolution (GOF.File file) {
+        /* get image size in pixels using an asynchronous method to stop the interface blocking on
+         * large images. */
+        if (file.width > 0) { /* resolution has already been determined */
+            return goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+        } else {
+            /* Async function will update info when resolution determined */
+            get_resolution.begin (file, info);
+            return _("Loading…");
+        }
     }
 
     private string location (GOF.File file) {
@@ -530,7 +528,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private async void get_resolution (GOF.File goffile, Gee.LinkedList<Pair<string, string>> info) {
         GLib.FileInputStream? stream = null;
         GLib.File file = goffile.location;
-        string resolution_value = _("Could not be determined");
+        string resolution = _("Could not be determined");
 
         try {
             stream = yield file.read_async (0, cancellable);
@@ -540,7 +538,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 var pixbuf = yield new Gdk.Pixbuf.from_stream_async (stream, cancellable);
                 goffile.width = pixbuf.get_width ();
                 goffile.height = pixbuf.get_height ();
-                resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+                resolution = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
             }
         } catch (Error e) {
             warning ("Error loading image resolution in PropertiesWindow: %s", e.message);
@@ -551,20 +549,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             debug ("Error closing stream in get_resolution: %s", e.message);
         }
 
-        /* Cannot be sure which row the resolution line was added to the grid so we have to search for it */
-        Gtk.Widget? kw = null;
-        int row = 0;
-        do {
-            kw = info_grid.get_child_at (0, row);
-            if (kw is Gtk.Label && (kw as Gtk.Label).label == resolution_key) {
-                Gtk.Widget vw = info_grid.get_child_at (1, row);
-                if (vw is Gtk.Label) {
-                    (vw as Gtk.Label).label = resolution_value;
-                    break;
-                }
-            }
-            row++;
-        } while (kw != null);
+        resolution_value.label = resolution;
     }
 
     private void construct_info_panel (GOF.File file) {
@@ -598,27 +583,30 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             if (file.is_trashed ()) {
                 get_deletion_date (file);
             }
+        }
 
-            get_filetype (file);
+        var ftype = filetype (file);
 
-            foreach (var pair in info) {
-                var value_label = new ValueLabel (pair.value);
-                var key_label = new KeyLabel (pair.key);
-                info_grid.attach (key_label, 0, n, 1, 1);
-                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-                n++;
-            }
+        var mimetype_key = new KeyLabel (_("Mimetype:"));
+        var mimetype_value = new ValueLabel (ftype);
+        info_grid.attach (mimetype_key, 0, n, 1, 1);
+        info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
+        n++;
 
-        } else {
-            get_filetype (file);
+        if (count == 1 && "image" in ftype) {
+            var resolution_key = new KeyLabel (_("Resolution:"));
+            resolution_value = new ValueLabel (resolution (file));
+            info_grid.attach (resolution_key, 0, n, 1, 1);
+            info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
 
-            foreach (var pair in info) {
-                var value_label = new ValueLabel (pair.value);
-                var key_label = new KeyLabel (pair.key);
-                info_grid.attach (key_label, 0, n, 1, 1);
-                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-                n++;
-            }
+        foreach (var pair in info) {
+            var value_label = new ValueLabel (pair.value);
+            var key_label = new KeyLabel (pair.key);
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
         }
 
         if (got_common_location ()) {
