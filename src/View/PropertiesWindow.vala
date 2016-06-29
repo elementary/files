@@ -33,7 +33,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private Gee.LinkedList<Pair<string, string>> info;
     private Granite.Widgets.ImgEventBox evbox;
     private Granite.Widgets.XsEntry perm_code;
     private bool perm_code_should_update = true;
@@ -451,29 +450,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return path;
     }
 
-    private void get_time_created (GOF.File file) {
-        /* localized time depending on MARLIN_PREFERENCES_DATE_FORMAT locale, iso .. */
-        var time_created = file.get_formated_time (FileAttribute.TIME_CREATED);
-        if (time_created != null)
-            info.add (new Pair<string, string>(_("Created:"), time_created));
-
-        if (file.formated_modified != null)
-            info.add (new Pair<string, string>(_("Modified:"), file.formated_modified));
-
-        var time_last_access = file.get_formated_time (FileAttribute.TIME_ACCESS);
-        if (time_last_access != null)
-            info.add (new Pair<string, string>(_("Last Access:"), time_last_access));
-    }
-
-    private string deletion_date (GOF.File file) {
-        /**TODO** format trash deletion date string*/
-        var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
-        if (deletion_date != null) {
-            return deletion_date;
-        }
-        return _("Unknown");
-    }
-
     private string filetype (GOF.File file) {
         ftype = get_common_ftype ();
         if (ftype != null) {
@@ -498,7 +474,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
         } else {
             /* Async function will update info when resolution determined */
-            get_resolution.begin (file, info);
+            get_resolution.begin (file);
             return _("Loading…");
         }
     }
@@ -527,7 +503,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return _("Unknown");
     }
 
-    private async void get_resolution (GOF.File goffile, Gee.LinkedList<Pair<string, string>> info) {
+    private async void get_resolution (GOF.File goffile) {
         GLib.FileInputStream? stream = null;
         GLib.File file = goffile.location;
         string resolution = _("Could not be determined");
@@ -580,11 +556,27 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         int n = 4;
 
         if (count == 1) {
-            info = new Gee.LinkedList<Pair<string, string>>();
-            get_time_created (file);
-            foreach (var pair in info) {
-                var value_label = new ValueLabel (pair.value);
-                var key_label = new KeyLabel (pair.key);
+            var time_created = file.get_formated_time (FileAttribute.TIME_CREATED);
+            if (time_created != null) {
+                var key_label = new KeyLabel (_("Created:"));
+                var value_label = new ValueLabel (time_created);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                n++;
+            }
+
+            if (file.formated_modified != null) {
+                var key_label = new KeyLabel (_("Modified:"));
+                var value_label = new ValueLabel (file.formated_modified);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                n++;
+            }
+
+            var time_last_access = file.get_formated_time (FileAttribute.TIME_ACCESS);
+            if (time_last_access != null) {
+                var key_label = new KeyLabel (_("Last Access:"));
+                var value_label = new ValueLabel (time_last_access);
                 info_grid.attach (key_label, 0, n, 1, 1);
                 info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 n++;
@@ -592,11 +584,14 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         if (count == 1 && file.is_trashed ()) {
-            var key_label = new KeyLabel (_("Deleted:"));
-            var value_label = new ValueLabel (deletion_date (file));
-            info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-            n++;
+            var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
+            if (deletion_date != null) {
+                var key_label = new KeyLabel (_("Deleted:"));
+                var value_label = new ValueLabel (deletion_date);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                n++;
+            }
         }
 
         var ftype = filetype (file);
