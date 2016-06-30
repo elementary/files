@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-06-27 17:41-0500\n"
+"POT-Creation-Date: 2016-06-29 12:49-0500\n"
 "PO-Revision-Date: 2015-12-21 13:45+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-06-28 05:33+0000\n"
+"X-Launchpad-Export-Date: 2016-06-30 05:43+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -238,7 +238,7 @@ msgstr "Oprindelig fil"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:569
+#: ../src/View/PropertiesWindow.vala:578
 msgid "Size:"
 msgstr "Størrelse:"
 
@@ -246,7 +246,7 @@ msgstr "Størrelse:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:355
+#: ../src/View/PropertiesWindow.vala:585
 msgid "Type:"
 msgstr "Type:"
 
@@ -1559,7 +1559,7 @@ msgstr "Enheder"
 msgid "Your local partitions and devices"
 msgstr "Dine lokale partitioner og enheder"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:42
+#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
 #: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "Filsystem"
@@ -1620,17 +1620,17 @@ msgstr "_Afmontér"
 msgid "_Eject"
 msgstr "_Skub ud"
 
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:108
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:142
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Egenskaber"
 
-#: ../src/View/VolumePropertiesWindow.vala:26
+#: ../src/View/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
 msgstr "Lager-egenskaber:"
 
 #: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:510 ../src/View/PropertiesWindow.vala:512
+#: ../src/View/PropertiesWindow.vala:520 ../src/View/PropertiesWindow.vala:522
 msgid "Location:"
 msgstr "Lokation:"
 
@@ -1680,37 +1680,37 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractPropertiesDialog.vala:46
+#: ../src/View/AbstractPropertiesDialog.vala:47
 msgid "Info"
 msgstr "Info"
 
-#: ../src/View/AbstractPropertiesDialog.vala:57
+#: ../src/View/AbstractPropertiesDialog.vala:56
 msgid "General"
 msgstr "Generelt"
 
-#: ../src/View/AbstractPropertiesDialog.vala:76
+#: ../src/View/AbstractPropertiesDialog.vala:75
 msgid "Close"
 msgstr "Luk"
 
-#: ../src/View/AbstractPropertiesDialog.vala:162
+#: ../src/View/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
 msgstr ""
 
-#: ../src/View/AbstractPropertiesDialog.vala:183
+#: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
 msgstr "Kapacitet:"
 
-#: ../src/View/AbstractPropertiesDialog.vala:186
-#: ../src/View/AbstractPropertiesDialog.vala:192
-#: ../src/View/AbstractPropertiesDialog.vala:198
+#: ../src/View/AbstractPropertiesDialog.vala:155
+#: ../src/View/AbstractPropertiesDialog.vala:158
+#: ../src/View/AbstractPropertiesDialog.vala:161
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: ../src/View/AbstractPropertiesDialog.vala:189
+#: ../src/View/AbstractPropertiesDialog.vala:157
 msgid "Available:"
 msgstr "Tilgængelig:"
 
-#: ../src/View/AbstractPropertiesDialog.vala:195
+#: ../src/View/AbstractPropertiesDialog.vala:160
 msgid "Used:"
 msgstr "I brug:"
 
@@ -1771,7 +1771,7 @@ msgstr "Kan ikke kopiere filer der er i papirkurven"
 msgid "Cutting the selection instead"
 msgstr "Klipper det markerede i stedet"
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1304
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1287
 msgid "%u folders"
 msgstr "%u mapper"
 
@@ -1787,8 +1787,8 @@ msgstr " og %u yderligere elementer (%s) er valgt"
 msgid " selected"
 msgstr " valgt"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1275
-#: ../src/View/PropertiesWindow.vala:1314
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1258
+#: ../src/View/PropertiesWindow.vala:1297
 msgid "%u folder"
 msgstr "%u mappe"
 
@@ -1828,157 +1828,157 @@ msgstr ""
 msgid "%u files not readable"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:24
+#: ../src/View/PropertiesWindow.vala:26
 msgid "Resolution:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:183
+#: ../src/View/PropertiesWindow.vala:219
 msgid "Permissions"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:210
+#: ../src/View/PropertiesWindow.vala:246
 msgid "Preview"
 msgstr "Forhåndsvisning"
 
-#: ../src/View/PropertiesWindow.vala:230
+#: ../src/View/PropertiesWindow.vala:262
 msgid "file"
 msgstr "fil"
 
-#: ../src/View/PropertiesWindow.vala:232
+#: ../src/View/PropertiesWindow.vala:264
 msgid "files"
 msgstr "filer"
 
-#: ../src/View/PropertiesWindow.vala:234
-msgid "Actual size could be larger, "
-msgstr "Den faktiske størrelse kan være større, "
+#: ../src/View/PropertiesWindow.vala:269
+msgid "Actual Size Could Be Larger"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:234
-msgid "could not be read due to permissions or other errors."
-msgstr "kunne ikke læses grundet tilladelser eller andre fejl."
+#: ../src/View/PropertiesWindow.vala:269
+msgid "%i %s could not be read due to permissions or other errors."
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:259 ../src/View/PropertiesWindow.vala:278
+#: ../src/View/PropertiesWindow.vala:288 ../src/View/PropertiesWindow.vala:307
 msgid "unknown"
 msgstr "ukendt"
 
-#: ../src/View/PropertiesWindow.vala:360
-msgid "Contains:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:457
+#: ../src/View/PropertiesWindow.vala:467
 msgid "Created:"
 msgstr "Oprettet:"
 
-#: ../src/View/PropertiesWindow.vala:459
+#: ../src/View/PropertiesWindow.vala:469
 msgid "Modified:"
 msgstr "Ændret:"
 
-#: ../src/View/PropertiesWindow.vala:462
+#: ../src/View/PropertiesWindow.vala:472
 msgid "Last Access:"
 msgstr "Sidste tilgang:"
 
-#: ../src/View/PropertiesWindow.vala:470
+#: ../src/View/PropertiesWindow.vala:480
 msgid "Deleted:"
 msgstr "Slettet"
 
-#: ../src/View/PropertiesWindow.vala:476
+#: ../src/View/PropertiesWindow.vala:486
 msgid "MimeType:"
 msgstr "MIME-type:"
 
-#: ../src/View/PropertiesWindow.vala:484
-msgid "loading ..."
+#: ../src/View/PropertiesWindow.vala:494
+msgid "Loading…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:497
+#: ../src/View/PropertiesWindow.vala:507
 msgid "MimeTypes:"
 msgstr "MIME-typer:"
 
-#: ../src/View/PropertiesWindow.vala:516
+#: ../src/View/PropertiesWindow.vala:526
 msgid "Target:"
 msgstr "Mål:"
 
-#: ../src/View/PropertiesWindow.vala:522
+#: ../src/View/PropertiesWindow.vala:532
 msgid "Origin Location:"
 msgstr "Original lokation:"
 
-#: ../src/View/PropertiesWindow.vala:529
+#: ../src/View/PropertiesWindow.vala:539
 msgid "Could not be determined"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:604
-msgid "Other application..."
-msgstr "Andet program..."
+#: ../src/View/PropertiesWindow.vala:588
+msgid "Contains:"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:628
+#: ../src/View/PropertiesWindow.vala:624
+msgid "Other Application…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:644
 msgid "Open with:"
 msgstr "Åbn med:"
 
-#: ../src/View/PropertiesWindow.vala:746
+#: ../src/View/PropertiesWindow.vala:738
 msgid "Read"
 msgstr "Læs"
 
-#: ../src/View/PropertiesWindow.vala:750
+#: ../src/View/PropertiesWindow.vala:742
 msgid "Write"
 msgstr "Skriv"
 
-#: ../src/View/PropertiesWindow.vala:754
+#: ../src/View/PropertiesWindow.vala:746
 msgid "Execute"
 msgstr "Kør"
 
-#: ../src/View/PropertiesWindow.vala:961 ../src/View/PropertiesWindow.vala:977
+#: ../src/View/PropertiesWindow.vala:953 ../src/View/PropertiesWindow.vala:969
 msgid "Owner:"
 msgstr "Ejer:"
 
-#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:982
+#: ../src/View/PropertiesWindow.vala:959 ../src/View/PropertiesWindow.vala:973
 msgid "Group:"
 msgstr "Gruppe:"
 
-#: ../src/View/PropertiesWindow.vala:987
+#: ../src/View/PropertiesWindow.vala:977
 msgid "Everyone:"
 msgstr "Alle:"
 
-#: ../src/View/PropertiesWindow.vala:1260
+#: ../src/View/PropertiesWindow.vala:1243
 msgid "%u subfolders and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1262
+#: ../src/View/PropertiesWindow.vala:1245
 msgid "%u subfolders and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1265
+#: ../src/View/PropertiesWindow.vala:1248
 msgid "%u subfolders"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1270
+#: ../src/View/PropertiesWindow.vala:1253
 msgid "%u subfolder and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1272
+#: ../src/View/PropertiesWindow.vala:1255
 msgid "%u subfolder and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1281
-#: ../src/View/PropertiesWindow.vala:1320
+#: ../src/View/PropertiesWindow.vala:1264
+#: ../src/View/PropertiesWindow.vala:1303
 msgid "%u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1283
-#: ../src/View/PropertiesWindow.vala:1322
+#: ../src/View/PropertiesWindow.vala:1266
+#: ../src/View/PropertiesWindow.vala:1305
 msgid "%u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1299
+#: ../src/View/PropertiesWindow.vala:1282
 msgid "%u selected items (%u folders and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1301
+#: ../src/View/PropertiesWindow.vala:1284
 msgid "%u selected items (%u folders and %u file)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1309
+#: ../src/View/PropertiesWindow.vala:1292
 msgid "%u selected items (%u folder and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1311
+#: ../src/View/PropertiesWindow.vala:1294
 msgid "%u selected items (%u folder and %u file)"
 msgstr ""
 
@@ -2380,3 +2380,12 @@ msgstr "Dato"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Omvendt rækkefølge"
+
+#~ msgid "Other application..."
+#~ msgstr "Andet program..."
+
+#~ msgid "Actual size could be larger, "
+#~ msgstr "Den faktiske størrelse kan være større, "
+
+#~ msgid "could not be read due to permissions or other errors."
+#~ msgstr "kunne ikke læses grundet tilladelser eller andre fejl."

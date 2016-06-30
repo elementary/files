@@ -2,21 +2,22 @@
 # Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
 # This file is distributed under the same license as the pantheon-files package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
-#
+# Indrit Bashkimi <indrit.bashkimi@gmail.com>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-06-27 17:41-0500\n"
-"PO-Revision-Date: 2016-01-04 11:17+0000\n"
+"POT-Creation-Date: 2016-06-29 12:49-0500\n"
+"PO-Revision-Date: 2016-06-30 01:57+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
-"Language-Team: Albanian <sq@li.org>\n"
+"Language-Team: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-06-28 05:32+0000\n"
+"X-Launchpad-Export-Date: 2016-06-30 05:42+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
+"Language: sq\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -234,7 +235,7 @@ msgstr "Skedari origjinar"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:569
+#: ../src/View/PropertiesWindow.vala:578
 msgid "Size:"
 msgstr "Madhësia:"
 
@@ -242,7 +243,7 @@ msgstr "Madhësia:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:355
+#: ../src/View/PropertiesWindow.vala:585
 msgid "Type:"
 msgstr "Tipi:"
 
@@ -785,7 +786,8 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2848
 msgid "There was an error getting information about \"%B\"."
-msgstr "U ndesh një gabim gjatë marrjes së informacioneve në lidhje me «%B»."
+msgstr ""
+"U ndesh një gabim gjatë marrjes së informacioneve në lidhje me \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:2948
 #: ../libcore/marlin-file-operations.c:2990
@@ -823,7 +825,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3115
 msgid "Moving \"%B\" to \"%B\""
-msgstr "Duke zhvendosur \"%B\" në \"%B\"."
+msgstr "Duke zhvendosur \"%B\" në \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3116
 msgid "Copying \"%B\" to \"%B\""
@@ -1359,8 +1361,8 @@ msgstr[1] ""
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "Përsërit kopjimin e %d elementi"
-msgstr[1] "Përsërit kopjimin e %d elementëve"
+msgstr[0] "_Përsërit kopjimin e %d elementi"
+msgstr[1] "_Përsërit kopjimin e %d elementëve"
 
 #: ../libcore/marlin-undostack-manager.c:1656
 #, c-format
@@ -1533,7 +1535,7 @@ msgstr "Pajisjet"
 msgid "Your local partitions and devices"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:42
+#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
 #: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr ""
@@ -1584,33 +1586,33 @@ msgstr "Riemëro"
 
 #: ../src/View/Sidebar.vala:1466
 msgid "_Mount"
-msgstr ""
+msgstr "_Monto"
 
 #: ../src/View/Sidebar.vala:1472
 msgid "_Unmount"
-msgstr ""
+msgstr "Çm_onto"
 
 #: ../src/View/Sidebar.vala:1478
 msgid "_Eject"
-msgstr ""
+msgstr "_Nxirr"
 
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:108
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:142
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Vetitë"
 
-#: ../src/View/VolumePropertiesWindow.vala:26
+#: ../src/View/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Vetitë e diskut"
 
 #: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:510 ../src/View/PropertiesWindow.vala:512
+#: ../src/View/PropertiesWindow.vala:520 ../src/View/PropertiesWindow.vala:522
 msgid "Location:"
-msgstr ""
+msgstr "Vendndodhja:"
 
 #: ../src/View/VolumePropertiesWindow.vala:85
 msgid "Format:"
-msgstr ""
+msgstr "Formati:"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1618,7 +1620,7 @@ msgstr "Emri i skedarit"
 
 #: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
 msgid "Size"
-msgstr "Madhësia"
+msgstr "Përmasa"
 
 #: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
 msgid "Type"
@@ -1654,39 +1656,39 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractPropertiesDialog.vala:46
+#: ../src/View/AbstractPropertiesDialog.vala:47
 msgid "Info"
 msgstr ""
 
-#: ../src/View/AbstractPropertiesDialog.vala:57
+#: ../src/View/AbstractPropertiesDialog.vala:56
 msgid "General"
 msgstr "Të përgjithshme"
 
-#: ../src/View/AbstractPropertiesDialog.vala:76
+#: ../src/View/AbstractPropertiesDialog.vala:75
 msgid "Close"
 msgstr "Mbyll"
 
-#: ../src/View/AbstractPropertiesDialog.vala:162
+#: ../src/View/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
-msgstr ""
+msgstr "Përdorimi i pajisjes"
 
-#: ../src/View/AbstractPropertiesDialog.vala:183
+#: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
-msgstr ""
+msgstr "Kapaciteti:"
 
-#: ../src/View/AbstractPropertiesDialog.vala:186
-#: ../src/View/AbstractPropertiesDialog.vala:192
-#: ../src/View/AbstractPropertiesDialog.vala:198
+#: ../src/View/AbstractPropertiesDialog.vala:155
+#: ../src/View/AbstractPropertiesDialog.vala:158
+#: ../src/View/AbstractPropertiesDialog.vala:161
 msgid "Unknown"
-msgstr ""
+msgstr "Panjohur"
 
-#: ../src/View/AbstractPropertiesDialog.vala:189
+#: ../src/View/AbstractPropertiesDialog.vala:157
 msgid "Available:"
-msgstr ""
+msgstr "Disponueshme:"
 
-#: ../src/View/AbstractPropertiesDialog.vala:195
+#: ../src/View/AbstractPropertiesDialog.vala:160
 msgid "Used:"
-msgstr ""
+msgstr "Përdorur:"
 
 #: ../src/View/AbstractDirectoryView.vala:561
 msgid "Failed to preview"
@@ -1694,7 +1696,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Ky skedar nuk mund të hapet"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
@@ -1706,11 +1708,11 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "U dha një emër skedari i pavlefshëm"
 
 #: ../src/View/AbstractDirectoryView.vala:2012
 msgid "Invalid"
-msgstr ""
+msgstr "Pavlefshëm"
 
 #: ../src/View/AbstractDirectoryView.vala:2018
 msgid "Run"
@@ -1745,7 +1747,7 @@ msgstr "Nuk mund të kopjohen skedarët që janë në kosh"
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1304
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1287
 msgid "%u folders"
 msgstr "%u dosje"
 
@@ -1759,10 +1761,10 @@ msgstr ""
 
 #: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
 msgid " selected"
-msgstr ""
+msgstr " përzgjedhur"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1275
-#: ../src/View/PropertiesWindow.vala:1314
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1258
+#: ../src/View/PropertiesWindow.vala:1297
 msgid "%u folder"
 msgstr "%u dosje"
 
@@ -1780,11 +1782,11 @@ msgstr "%u nën-dosje, "
 
 #: ../src/View/OverlayBar.vala:278
 msgid "%u file, "
-msgstr ""
+msgstr "%u skedar, "
 
 #: ../src/View/OverlayBar.vala:278
 msgid "%u files, "
-msgstr ""
+msgstr "%u skedarë, "
 
 #: ../src/View/OverlayBar.vala:288
 msgid "%s approx."
@@ -1792,167 +1794,167 @@ msgstr ""
 
 #: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
-msgstr ""
+msgstr "përmasa të panjohura"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u skedar i palexueshëm"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u skedarë të palexueshëm"
 
-#: ../src/View/PropertiesWindow.vala:24
+#: ../src/View/PropertiesWindow.vala:26
 msgid "Resolution:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:183
+#: ../src/View/PropertiesWindow.vala:219
 msgid "Permissions"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:210
+#: ../src/View/PropertiesWindow.vala:246
 msgid "Preview"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:230
+#: ../src/View/PropertiesWindow.vala:262
 msgid "file"
 msgstr "skedar"
 
-#: ../src/View/PropertiesWindow.vala:232
+#: ../src/View/PropertiesWindow.vala:264
 msgid "files"
 msgstr "skedarë"
 
-#: ../src/View/PropertiesWindow.vala:234
-msgid "Actual size could be larger, "
-msgstr "Përmasa e vërtetë mund të jetë më e madhe, "
-
-#: ../src/View/PropertiesWindow.vala:234
-msgid "could not be read due to permissions or other errors."
+#: ../src/View/PropertiesWindow.vala:269
+msgid "Actual Size Could Be Larger"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:259 ../src/View/PropertiesWindow.vala:278
+#: ../src/View/PropertiesWindow.vala:269
+msgid "%i %s could not be read due to permissions or other errors."
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:288 ../src/View/PropertiesWindow.vala:307
 msgid "unknown"
-msgstr ""
+msgstr "panjohur"
 
-#: ../src/View/PropertiesWindow.vala:360
-msgid "Contains:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:457
+#: ../src/View/PropertiesWindow.vala:467
 msgid "Created:"
-msgstr ""
+msgstr "Krijuar:"
 
-#: ../src/View/PropertiesWindow.vala:459
+#: ../src/View/PropertiesWindow.vala:469
 msgid "Modified:"
-msgstr ""
+msgstr "Ndryshuar:"
 
-#: ../src/View/PropertiesWindow.vala:462
+#: ../src/View/PropertiesWindow.vala:472
 msgid "Last Access:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:470
+#: ../src/View/PropertiesWindow.vala:480
 msgid "Deleted:"
-msgstr ""
+msgstr "Fshire:"
 
-#: ../src/View/PropertiesWindow.vala:476
+#: ../src/View/PropertiesWindow.vala:486
 msgid "MimeType:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:484
-msgid "loading ..."
+#: ../src/View/PropertiesWindow.vala:494
+msgid "Loading…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:497
+#: ../src/View/PropertiesWindow.vala:507
 msgid "MimeTypes:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:516
+#: ../src/View/PropertiesWindow.vala:526
 msgid "Target:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:522
+#: ../src/View/PropertiesWindow.vala:532
 msgid "Origin Location:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:529
+#: ../src/View/PropertiesWindow.vala:539
 msgid "Could not be determined"
+msgstr "Nuk mund të përcaktohet"
+
+#: ../src/View/PropertiesWindow.vala:588
+msgid "Contains:"
+msgstr "Përmban:"
+
+#: ../src/View/PropertiesWindow.vala:624
+msgid "Other Application…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:604
-msgid "Other application..."
-msgstr "Program tjetër..."
-
-#: ../src/View/PropertiesWindow.vala:628
+#: ../src/View/PropertiesWindow.vala:644
 msgid "Open with:"
 msgstr "Hap me:"
 
-#: ../src/View/PropertiesWindow.vala:746
+#: ../src/View/PropertiesWindow.vala:738
 msgid "Read"
 msgstr "Lexim"
 
-#: ../src/View/PropertiesWindow.vala:750
+#: ../src/View/PropertiesWindow.vala:742
 msgid "Write"
 msgstr "Shkrim"
 
-#: ../src/View/PropertiesWindow.vala:754
+#: ../src/View/PropertiesWindow.vala:746
 msgid "Execute"
 msgstr "Ekzekutim"
 
-#: ../src/View/PropertiesWindow.vala:961 ../src/View/PropertiesWindow.vala:977
+#: ../src/View/PropertiesWindow.vala:953 ../src/View/PropertiesWindow.vala:969
 msgid "Owner:"
-msgstr ""
+msgstr "Pronari:"
 
-#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:982
+#: ../src/View/PropertiesWindow.vala:959 ../src/View/PropertiesWindow.vala:973
 msgid "Group:"
-msgstr ""
+msgstr "Grupi:"
 
-#: ../src/View/PropertiesWindow.vala:987
+#: ../src/View/PropertiesWindow.vala:977
 msgid "Everyone:"
-msgstr ""
+msgstr "Kushdo:"
 
-#: ../src/View/PropertiesWindow.vala:1260
+#: ../src/View/PropertiesWindow.vala:1243
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u nëndosje dhe %u skedarë"
 
-#: ../src/View/PropertiesWindow.vala:1262
+#: ../src/View/PropertiesWindow.vala:1245
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u nëndosje dhe %u skedar"
 
-#: ../src/View/PropertiesWindow.vala:1265
+#: ../src/View/PropertiesWindow.vala:1248
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u nëndosje"
 
-#: ../src/View/PropertiesWindow.vala:1270
+#: ../src/View/PropertiesWindow.vala:1253
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u nëndosje dhe %u skedarë"
 
-#: ../src/View/PropertiesWindow.vala:1272
+#: ../src/View/PropertiesWindow.vala:1255
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u nëndosje dhe %u skedar"
 
-#: ../src/View/PropertiesWindow.vala:1281
-#: ../src/View/PropertiesWindow.vala:1320
+#: ../src/View/PropertiesWindow.vala:1264
+#: ../src/View/PropertiesWindow.vala:1303
 msgid "%u files"
-msgstr ""
+msgstr "%u skedarë"
 
-#: ../src/View/PropertiesWindow.vala:1283
-#: ../src/View/PropertiesWindow.vala:1322
+#: ../src/View/PropertiesWindow.vala:1266
+#: ../src/View/PropertiesWindow.vala:1305
 msgid "%u file"
-msgstr ""
+msgstr "%u skedar"
 
-#: ../src/View/PropertiesWindow.vala:1299
+#: ../src/View/PropertiesWindow.vala:1282
 msgid "%u selected items (%u folders and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1301
+#: ../src/View/PropertiesWindow.vala:1284
 msgid "%u selected items (%u folders and %u file)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1309
+#: ../src/View/PropertiesWindow.vala:1292
 msgid "%u selected items (%u folder and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1311
+#: ../src/View/PropertiesWindow.vala:1294
 msgid "%u selected items (%u folder and %u file)"
 msgstr ""
 
@@ -1998,7 +2000,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:378
 msgid "File not Found"
-msgstr ""
+msgstr "Skedari nuk u gjet"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The file selected no longer exists."
@@ -2014,7 +2016,7 @@ msgstr "Koshi është bosh"
 
 #: ../src/View/Slot.vala:41
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "S'ka skedarë të përdorur së fundmi"
 
 #: ../src/View/Slot.vala:42
 msgid "Access Denied"
@@ -2022,7 +2024,7 @@ msgstr ""
 
 #: ../src/Application.vala:158
 msgid "Show the version of the program."
-msgstr "Shfaq versionin e programit"
+msgstr "Shfaq versionin e programit."
 
 #: ../src/Application.vala:160
 msgid "Open uri(s) in new tab"
@@ -2097,7 +2099,7 @@ msgstr ""
 
 #: ../src/ProgressUIHandler.vala:264
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Shfaq dialogun e kopjimit"
 
 #: ../src/ProgressUIHandler.vala:276
 msgid "Cancel All In-progress Actions"
@@ -2133,11 +2135,11 @@ msgstr "Hap në një skedë të re"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:419
 msgid "Open in New Window"
-msgstr ""
+msgstr "Hap në një dritare të re"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:458
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Hap një program tjetër…"
 
 #: ../libwidgets/View/LocationBar.vala:166
 msgid "Reload this folder"
@@ -2158,7 +2160,7 @@ msgstr ""
 
 #: ../libwidgets/View/SearchResults.vala:184
 msgid "Everywhere Else"
-msgstr ""
+msgstr "Gjithkund tjetër"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2201,7 +2203,7 @@ msgstr ""
 
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
@@ -2338,3 +2340,9 @@ msgstr "Datës"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Renditje e kundërt"
+
+#~ msgid "Other application..."
+#~ msgstr "Program tjetër..."
+
+#~ msgid "Actual size could be larger, "
+#~ msgstr "Përmasa e vërtetë mund të jetë më e madhe, "

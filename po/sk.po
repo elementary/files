@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-06-27 17:41-0500\n"
+"POT-Creation-Date: 2016-06-29 12:49-0500\n"
 "PO-Revision-Date: 2016-05-14 18:52+0000\n"
 "Last-Translator: Ľubomír Hlavko <5lubo555@azet.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2016-06-28 05:34+0000\n"
+"X-Launchpad-Export-Date: 2016-06-30 05:44+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -238,7 +238,7 @@ msgstr "Pôvodný súbor"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:569
+#: ../src/View/PropertiesWindow.vala:578
 msgid "Size:"
 msgstr "Veľkosť:"
 
@@ -246,7 +246,7 @@ msgstr "Veľkosť:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:355
+#: ../src/View/PropertiesWindow.vala:585
 msgid "Type:"
 msgstr "Typ:"
 
@@ -1603,7 +1603,7 @@ msgstr "Zariadenia"
 msgid "Your local partitions and devices"
 msgstr "Vaše miestne partície a zariadenia"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:42
+#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
 #: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "Súborový systém"
@@ -1664,17 +1664,17 @@ msgstr "_Odpojiť"
 msgid "_Eject"
 msgstr "_Vysunúť"
 
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:108
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:142
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Vlastnosti"
 
-#: ../src/View/VolumePropertiesWindow.vala:26
+#: ../src/View/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
 msgstr "Nastavenia Disku"
 
 #: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:510 ../src/View/PropertiesWindow.vala:512
+#: ../src/View/PropertiesWindow.vala:520 ../src/View/PropertiesWindow.vala:522
 msgid "Location:"
 msgstr "Umiestnenie:"
 
@@ -1724,37 +1724,37 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractPropertiesDialog.vala:46
+#: ../src/View/AbstractPropertiesDialog.vala:47
 msgid "Info"
 msgstr "Podrobnosti"
 
-#: ../src/View/AbstractPropertiesDialog.vala:57
+#: ../src/View/AbstractPropertiesDialog.vala:56
 msgid "General"
 msgstr "Všeobecné"
 
-#: ../src/View/AbstractPropertiesDialog.vala:76
+#: ../src/View/AbstractPropertiesDialog.vala:75
 msgid "Close"
 msgstr "Zavrieť"
 
-#: ../src/View/AbstractPropertiesDialog.vala:162
+#: ../src/View/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
 msgstr ""
 
-#: ../src/View/AbstractPropertiesDialog.vala:183
+#: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
 msgstr "Kapacita:"
 
-#: ../src/View/AbstractPropertiesDialog.vala:186
-#: ../src/View/AbstractPropertiesDialog.vala:192
-#: ../src/View/AbstractPropertiesDialog.vala:198
+#: ../src/View/AbstractPropertiesDialog.vala:155
+#: ../src/View/AbstractPropertiesDialog.vala:158
+#: ../src/View/AbstractPropertiesDialog.vala:161
 msgid "Unknown"
 msgstr "Neznáme"
 
-#: ../src/View/AbstractPropertiesDialog.vala:189
+#: ../src/View/AbstractPropertiesDialog.vala:157
 msgid "Available:"
 msgstr "Dostupné:"
 
-#: ../src/View/AbstractPropertiesDialog.vala:195
+#: ../src/View/AbstractPropertiesDialog.vala:160
 msgid "Used:"
 msgstr "Použité"
 
@@ -1815,7 +1815,7 @@ msgstr "Nie je možné kopírovať súbory, ktoré sú v koši"
 msgid "Cutting the selection instead"
 msgstr "Vystrihnutie namiesto výberu"
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1304
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1287
 msgid "%u folders"
 msgstr "%u priečinkov"
 
@@ -1831,8 +1831,8 @@ msgstr " a %u daľšie položky (%s) vybrané"
 msgid " selected"
 msgstr " vybrané"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1275
-#: ../src/View/PropertiesWindow.vala:1314
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1258
+#: ../src/View/PropertiesWindow.vala:1297
 msgid "%u folder"
 msgstr "%u priečinok"
 
@@ -1872,157 +1872,157 @@ msgstr ""
 msgid "%u files not readable"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:24
+#: ../src/View/PropertiesWindow.vala:26
 msgid "Resolution:"
 msgstr "Rozlíšenie:"
 
-#: ../src/View/PropertiesWindow.vala:183
+#: ../src/View/PropertiesWindow.vala:219
 msgid "Permissions"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:210
+#: ../src/View/PropertiesWindow.vala:246
 msgid "Preview"
 msgstr "Náhľad"
 
-#: ../src/View/PropertiesWindow.vala:230
+#: ../src/View/PropertiesWindow.vala:262
 msgid "file"
 msgstr "súbor"
 
-#: ../src/View/PropertiesWindow.vala:232
+#: ../src/View/PropertiesWindow.vala:264
 msgid "files"
 msgstr "súbory"
 
-#: ../src/View/PropertiesWindow.vala:234
-msgid "Actual size could be larger, "
-msgstr "Aktuálna veľkosť by mala byť väčšia, "
+#: ../src/View/PropertiesWindow.vala:269
+msgid "Actual Size Could Be Larger"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:234
-msgid "could not be read due to permissions or other errors."
-msgstr "nie je možné čítanie kvôli povoleniam alebo iným chybám."
+#: ../src/View/PropertiesWindow.vala:269
+msgid "%i %s could not be read due to permissions or other errors."
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:259 ../src/View/PropertiesWindow.vala:278
+#: ../src/View/PropertiesWindow.vala:288 ../src/View/PropertiesWindow.vala:307
 msgid "unknown"
 msgstr "neznáme"
 
-#: ../src/View/PropertiesWindow.vala:360
-msgid "Contains:"
-msgstr "Obsahuje:"
-
-#: ../src/View/PropertiesWindow.vala:457
+#: ../src/View/PropertiesWindow.vala:467
 msgid "Created:"
 msgstr "Vytvorené:"
 
-#: ../src/View/PropertiesWindow.vala:459
+#: ../src/View/PropertiesWindow.vala:469
 msgid "Modified:"
 msgstr "Zmenený:"
 
-#: ../src/View/PropertiesWindow.vala:462
+#: ../src/View/PropertiesWindow.vala:472
 msgid "Last Access:"
 msgstr "Posledný prístup:"
 
-#: ../src/View/PropertiesWindow.vala:470
+#: ../src/View/PropertiesWindow.vala:480
 msgid "Deleted:"
 msgstr "Vymazané:"
 
-#: ../src/View/PropertiesWindow.vala:476
+#: ../src/View/PropertiesWindow.vala:486
 msgid "MimeType:"
 msgstr "Typ média:"
 
-#: ../src/View/PropertiesWindow.vala:484
-msgid "loading ..."
-msgstr "načíta sa..."
+#: ../src/View/PropertiesWindow.vala:494
+msgid "Loading…"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:497
+#: ../src/View/PropertiesWindow.vala:507
 msgid "MimeTypes:"
 msgstr "MimeTypy:"
 
-#: ../src/View/PropertiesWindow.vala:516
+#: ../src/View/PropertiesWindow.vala:526
 msgid "Target:"
 msgstr "Cieľ:"
 
-#: ../src/View/PropertiesWindow.vala:522
+#: ../src/View/PropertiesWindow.vala:532
 msgid "Origin Location:"
 msgstr "Pôvodne umiestnenie:"
 
-#: ../src/View/PropertiesWindow.vala:529
+#: ../src/View/PropertiesWindow.vala:539
 msgid "Could not be determined"
 msgstr "Nemôže byť stanovené"
 
-#: ../src/View/PropertiesWindow.vala:604
-msgid "Other application..."
-msgstr "Ďaľšie aplikácie"
+#: ../src/View/PropertiesWindow.vala:588
+msgid "Contains:"
+msgstr "Obsahuje:"
 
-#: ../src/View/PropertiesWindow.vala:628
+#: ../src/View/PropertiesWindow.vala:624
+msgid "Other Application…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:644
 msgid "Open with:"
 msgstr "Otvoriť s:"
 
-#: ../src/View/PropertiesWindow.vala:746
+#: ../src/View/PropertiesWindow.vala:738
 msgid "Read"
 msgstr "Čítanie"
 
-#: ../src/View/PropertiesWindow.vala:750
+#: ../src/View/PropertiesWindow.vala:742
 msgid "Write"
 msgstr "Zápis"
 
-#: ../src/View/PropertiesWindow.vala:754
+#: ../src/View/PropertiesWindow.vala:746
 msgid "Execute"
 msgstr "Spustiť"
 
-#: ../src/View/PropertiesWindow.vala:961 ../src/View/PropertiesWindow.vala:977
+#: ../src/View/PropertiesWindow.vala:953 ../src/View/PropertiesWindow.vala:969
 msgid "Owner:"
 msgstr "Vlastník:"
 
-#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:982
+#: ../src/View/PropertiesWindow.vala:959 ../src/View/PropertiesWindow.vala:973
 msgid "Group:"
 msgstr "Skupina:"
 
-#: ../src/View/PropertiesWindow.vala:987
+#: ../src/View/PropertiesWindow.vala:977
 msgid "Everyone:"
 msgstr "Každý:"
 
-#: ../src/View/PropertiesWindow.vala:1260
+#: ../src/View/PropertiesWindow.vala:1243
 msgid "%u subfolders and %u files"
 msgstr "%u podpriečinkov a %u süborov"
 
-#: ../src/View/PropertiesWindow.vala:1262
+#: ../src/View/PropertiesWindow.vala:1245
 msgid "%u subfolders and %u file"
 msgstr "%u podpriečinkov a %u súbor"
 
-#: ../src/View/PropertiesWindow.vala:1265
+#: ../src/View/PropertiesWindow.vala:1248
 msgid "%u subfolders"
 msgstr "%u podpriečinkov"
 
-#: ../src/View/PropertiesWindow.vala:1270
+#: ../src/View/PropertiesWindow.vala:1253
 msgid "%u subfolder and %u files"
 msgstr "%u podpriečinok a %u súborov"
 
-#: ../src/View/PropertiesWindow.vala:1272
+#: ../src/View/PropertiesWindow.vala:1255
 msgid "%u subfolder and %u file"
 msgstr "%u podpriečinok a %u súbor"
 
-#: ../src/View/PropertiesWindow.vala:1281
-#: ../src/View/PropertiesWindow.vala:1320
+#: ../src/View/PropertiesWindow.vala:1264
+#: ../src/View/PropertiesWindow.vala:1303
 msgid "%u files"
 msgstr "%u súborov"
 
-#: ../src/View/PropertiesWindow.vala:1283
-#: ../src/View/PropertiesWindow.vala:1322
+#: ../src/View/PropertiesWindow.vala:1266
+#: ../src/View/PropertiesWindow.vala:1305
 msgid "%u file"
 msgstr "%u súborov"
 
-#: ../src/View/PropertiesWindow.vala:1299
+#: ../src/View/PropertiesWindow.vala:1282
 msgid "%u selected items (%u folders and %u files)"
 msgstr "%u vybratých položiek (%u priečinkov a %u súborov)"
 
-#: ../src/View/PropertiesWindow.vala:1301
+#: ../src/View/PropertiesWindow.vala:1284
 msgid "%u selected items (%u folders and %u file)"
 msgstr "%u vybratých položiek (%u priečinkov and %u súbor)"
 
-#: ../src/View/PropertiesWindow.vala:1309
+#: ../src/View/PropertiesWindow.vala:1292
 msgid "%u selected items (%u folder and %u files)"
 msgstr "%u vybraných položiek (%u priečinok a %u súborov)"
 
-#: ../src/View/PropertiesWindow.vala:1311
+#: ../src/View/PropertiesWindow.vala:1294
 msgid "%u selected items (%u folder and %u file)"
 msgstr "%u vybraných položiek (%u priečinok a %u súbor)"
 
@@ -2421,3 +2421,15 @@ msgstr "Dátum"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "V obrátenom poradí"
+
+#~ msgid "Other application..."
+#~ msgstr "Ďaľšie aplikácie"
+
+#~ msgid "Actual size could be larger, "
+#~ msgstr "Aktuálna veľkosť by mala byť väčšia, "
+
+#~ msgid "could not be read due to permissions or other errors."
+#~ msgstr "nie je možné čítanie kvôli povoleniam alebo iným chybám."
+
+#~ msgid "loading ..."
+#~ msgstr "načíta sa..."
