@@ -91,6 +91,7 @@ namespace Marlin.View.Chrome
                 escape ();
             } else {
                 bread.set_entry_text (bread.get_breadcrumbs_path ());
+                enter_navigate_mode ();
             }
         }
 
