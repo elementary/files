@@ -23,15 +23,6 @@
 namespace Marlin.View {
 
 public class PropertiesWindow : AbstractPropertiesDialog {
-    private class Pair<F, G> {
-        public F key;
-        public G value;
-
-        public Pair (F key, G value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
 
     private Granite.Widgets.ImgEventBox evbox;
     private Granite.Widgets.XsEntry perm_code;
@@ -72,12 +63,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
 
     private Gee.Set<string>? mimes;
-    private Gtk.Label type_label;
-    private Gtk.Label size_label;
-    private Gtk.Label contains_label;
-    private Gtk.Label contains_key_label;
-    private KeyLabel type_key_label;
+    private ValueLabel contains_value;
     private ValueLabel resolution_value;
+    private ValueLabel size_value;
+    private ValueLabel type_value;
+    private KeyLabel contains_key_label;
+    private KeyLabel type_key_label;
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
     private int size_warning = 0;
@@ -240,16 +231,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         show_all ();
-
-        /* There is a race condition between reaching update_size_label () or here first
-         * so call update_widgets_state in both places.
-         */
         update_widgets_state ();
     }
 
-    private void update_size_label () {
-        size_label.label = format_size ((int64) total_size);
-        contains_label.label = get_contains_label (folder_count, file_count);
+    private void update_size_value () {
+        size_value.label = format_size ((int64) total_size);
+        contains_value.label = get_contains_value (folder_count, file_count);
 
         if (size_warning > 0) {
             string file_plural = _("file");
@@ -260,7 +247,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             size_warning_image.halign = Gtk.Align.START;
             size_warning_image.hexpand = true;
             size_warning_image.tooltip_markup = "<b>" + _("Actual Size Could Be Larger") + "</b>" + "\n" + _("%i %s could not be read due to permissions or other errors.").printf (size_warning, file_plural);
-            info_grid.attach_next_to (size_warning_image, size_label, Gtk.PositionType.RIGHT);
+            info_grid.attach_next_to (size_warning_image, size_value, Gtk.PositionType.RIGHT);
             info_grid.show_all ();
         }
     }
@@ -278,7 +265,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         foreach (GOF.File gof in files) {
             if (gof.is_root_network_folder ()) {
-                size_label.label = _("unknown");
+                size_value.label = _("unknown");
                 continue;
             }
             if (gof.is_directory) {
@@ -297,7 +284,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                     total_size += d.total_size;
                     size_warning = d.file_not_read;
                     if (file_count + uncounted_folders == size_warning)
-                        size_label.label = _("unknown");
+                        size_value.label = _("unknown");
 
                     folder_count += d.dirs_count;
                     file_count += d.files_count;
@@ -320,11 +307,11 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 if (uncounted_folders == 0) {
                     spinner.hide ();
                     spinner.stop ();
-                    update_size_label ();
+                    update_size_value ();
                 }
             });
         } else {
-            update_size_label ();
+            update_size_value ();
         }
     }
 
@@ -537,21 +524,21 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         spinner = new Gtk.Spinner ();
         spinner.halign = Gtk.Align.START;
 
-        size_label = new ValueLabel ("");
+        size_value = new ValueLabel ("");
 
         type_key_label = new KeyLabel (_("Type:"));
-        type_label = new ValueLabel ("");
+        type_value = new ValueLabel ("");
 
         contains_key_label = new KeyLabel (_("Contains:"));
-        contains_label = new ValueLabel ("");
+        contains_value = new ValueLabel ("");
 
         info_grid.attach (size_key_label, 0, 1, 1, 1);
         info_grid.attach_next_to (spinner, size_key_label, Gtk.PositionType.RIGHT);
-        info_grid.attach_next_to (size_label, size_key_label, Gtk.PositionType.RIGHT);
+        info_grid.attach_next_to (size_value, size_key_label, Gtk.PositionType.RIGHT);
         info_grid.attach (type_key_label, 0, 2, 1, 1);
-        info_grid.attach_next_to (type_label, type_key_label, Gtk.PositionType.RIGHT, 3, 1);
+        info_grid.attach_next_to (type_value, type_key_label, Gtk.PositionType.RIGHT, 3, 1);
         info_grid.attach (contains_key_label, 0, 3, 1, 1);
-        info_grid.attach_next_to (contains_label, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
+        info_grid.attach_next_to (contains_value, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
 
         int n = 4;
 
@@ -1265,7 +1252,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return file_size;
     }
 
-    private string get_contains_label (uint folders, uint files) {
+    private string get_contains_value (uint folders, uint files) {
         string txt = "";
         if (folders > 0) {
             if (folders > 1) {
@@ -1350,10 +1337,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         if (count > 1) {
             type_key_label.hide ();
-            type_label.hide ();
+            type_value.hide ();
         } else {
             if (ftype != null) {
-                type_label.label = goffile.formated_type;
+                type_value.label = goffile.formated_type;
             }
         }
 
@@ -1367,12 +1354,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether
          * the "contained files" counted are only in the subfolders or not.*/
         /* Only show 'contains' label when folders selected are not empty */
-        if (count > selected_folders || contains_label.get_text ().length < 1) {
+        if (count > selected_folders || contains_value.get_text ().length < 1) {
             contains_key_label.hide ();
-            contains_label.hide ();
+            contains_value.hide ();
         } else { /* Make sure it shows otherwise (may have been hidden by previous call)*/
             contains_key_label.show ();
-            contains_label.show ();
+            contains_value.show ();
         }
     }
 }
