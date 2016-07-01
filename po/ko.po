@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-29 12:49-0500\n"
-"PO-Revision-Date: 2016-06-29 23:51+0000\n"
+"PO-Revision-Date: 2016-06-30 19:08+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-06-30 05:43+0000\n"
+"X-Launchpad-Export-Date: 2016-07-01 05:53+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 "Language: ko\n"
 
@@ -615,7 +615,7 @@ msgstr "파일을 휴지통으로 보내는 중"
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "휴지통으로 파일 보내기 %'d 개 남음"
+msgstr[0] "휴지통으로 보낼 파일 %'d개 남음"
 
 #: ../libcore/marlin-file-operations.c:1947
 #: ../libcore/marlin-file-operations.c:1950
@@ -2287,15 +2287,3 @@ msgstr "날짜"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "거꾸로"
-
-#~ msgid "Other application..."
-#~ msgstr "다른 프로그램..."
-
-#~ msgid "Actual size could be larger, "
-#~ msgstr "실제 크기는 좀 더 클 수 있습니다, "
-
-#~ msgid "could not be read due to permissions or other errors."
-#~ msgstr "권한 문제나 다른 이유로 읽지 못할 수 있습니다."
-
-#~ msgid "loading ..."
-#~ msgstr "불러오는 중 ..."

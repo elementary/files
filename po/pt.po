@@ -9,19 +9,19 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-29 12:49-0500\n"
-"PO-Revision-Date: 2016-05-03 15:14+0000\n"
+"PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-06-30 05:44+0000\n"
+"X-Launchpad-Export-Date: 2016-07-01 05:54+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
-msgstr "A área de transferência não possue itens para colar"
+msgstr "A área de transferência não possui itens para colar"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -136,7 +136,7 @@ msgstr "_Senha:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr "_Recordar esta senha"
+msgstr "_Lembrar esta senha"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
@@ -1591,7 +1591,7 @@ msgstr "Explorar o conteúdo da rede"
 
 #: ../src/View/Sidebar.vala:830
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s Livres de %s)"
 
 #: ../src/View/Sidebar.vala:1323
 msgid "Unable to start %s"
@@ -1641,11 +1641,11 @@ msgstr "Propriedade do Disco"
 #: ../src/View/VolumePropertiesWindow.vala:78
 #: ../src/View/PropertiesWindow.vala:520 ../src/View/PropertiesWindow.vala:522
 msgid "Location:"
-msgstr ""
+msgstr "Localização:"
 
 #: ../src/View/VolumePropertiesWindow.vala:85
 msgid "Format:"
-msgstr ""
+msgstr "Formato:"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1703,11 +1703,11 @@ msgstr "Fechar"
 
 #: ../src/View/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
-msgstr ""
+msgstr "Utilização do Dispositivo"
 
 #: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
-msgstr ""
+msgstr "Capacidade:"
 
 #: ../src/View/AbstractPropertiesDialog.vala:155
 #: ../src/View/AbstractPropertiesDialog.vala:158
@@ -1717,11 +1717,11 @@ msgstr "Desconhecido"
 
 #: ../src/View/AbstractPropertiesDialog.vala:157
 msgid "Available:"
-msgstr ""
+msgstr "Disponível:"
 
 #: ../src/View/AbstractPropertiesDialog.vala:160
 msgid "Used:"
-msgstr ""
+msgstr "Usado:"
 
 #: ../src/View/AbstractDirectoryView.vala:561
 msgid "Failed to preview"
@@ -1729,11 +1729,11 @@ msgstr "Falha ao pré-visualizar"
 
 #: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Impossível abrir este ficheiro"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Impossível identificar tipo de ficheiro para abrir"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
@@ -1823,27 +1823,27 @@ msgstr "%u ficheiros, "
 
 #: ../src/View/OverlayBar.vala:288
 msgid "%s approx."
-msgstr ""
+msgstr "aproximadamente %s"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
-msgstr ""
+msgstr "tamanho desconhecido"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u ficheiro não pode ser lido"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u ficheiros não podme ser lidos"
 
 #: ../src/View/PropertiesWindow.vala:26
 msgid "Resolution:"
-msgstr ""
+msgstr "Resolução:"
 
 #: ../src/View/PropertiesWindow.vala:219
 msgid "Permissions"
-msgstr ""
+msgstr "Permissões"
 
 #: ../src/View/PropertiesWindow.vala:246
 msgid "Preview"
@@ -1859,11 +1859,11 @@ msgstr "ficheiros"
 
 #: ../src/View/PropertiesWindow.vala:269
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Tamanho efetivo pode ser maior"
 
 #: ../src/View/PropertiesWindow.vala:269
 msgid "%i %s could not be read due to permissions or other errors."
-msgstr ""
+msgstr "%i impossível ler %s devido a permissões ou outros erros."
 
 #: ../src/View/PropertiesWindow.vala:288 ../src/View/PropertiesWindow.vala:307
 msgid "unknown"
@@ -1871,51 +1871,51 @@ msgstr "desconhecido"
 
 #: ../src/View/PropertiesWindow.vala:467
 msgid "Created:"
-msgstr ""
+msgstr "Criado:"
 
 #: ../src/View/PropertiesWindow.vala:469
 msgid "Modified:"
-msgstr ""
+msgstr "Modificado:"
 
 #: ../src/View/PropertiesWindow.vala:472
 msgid "Last Access:"
-msgstr ""
+msgstr "Último Acesso:"
 
 #: ../src/View/PropertiesWindow.vala:480
 msgid "Deleted:"
-msgstr ""
+msgstr "Apagado:"
 
 #: ../src/View/PropertiesWindow.vala:486
 msgid "MimeType:"
-msgstr ""
+msgstr "Tipo MIME:"
 
 #: ../src/View/PropertiesWindow.vala:494
 msgid "Loading…"
-msgstr ""
+msgstr "A carregar…"
 
 #: ../src/View/PropertiesWindow.vala:507
 msgid "MimeTypes:"
-msgstr ""
+msgstr "Tipos MIME:"
 
 #: ../src/View/PropertiesWindow.vala:526
 msgid "Target:"
-msgstr ""
+msgstr "Destino:"
 
 #: ../src/View/PropertiesWindow.vala:532
 msgid "Origin Location:"
-msgstr ""
+msgstr "Origem:"
 
 #: ../src/View/PropertiesWindow.vala:539
 msgid "Could not be determined"
-msgstr ""
+msgstr "Não pode ser determinado"
 
 #: ../src/View/PropertiesWindow.vala:588
 msgid "Contains:"
-msgstr ""
+msgstr "Contém:"
 
 #: ../src/View/PropertiesWindow.vala:624
 msgid "Other Application…"
-msgstr ""
+msgstr "Outra Aplicação…"
 
 #: ../src/View/PropertiesWindow.vala:644
 msgid "Open with:"
@@ -1935,61 +1935,61 @@ msgstr "Executar"
 
 #: ../src/View/PropertiesWindow.vala:953 ../src/View/PropertiesWindow.vala:969
 msgid "Owner:"
-msgstr ""
+msgstr "Proprietário:"
 
 #: ../src/View/PropertiesWindow.vala:959 ../src/View/PropertiesWindow.vala:973
 msgid "Group:"
-msgstr ""
+msgstr "Grupo:"
 
 #: ../src/View/PropertiesWindow.vala:977
 msgid "Everyone:"
-msgstr ""
+msgstr "Todos:"
 
 #: ../src/View/PropertiesWindow.vala:1243
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u sub-diretorias e %u ficheiros"
 
 #: ../src/View/PropertiesWindow.vala:1245
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u sub-diretorias e %u ficheiro"
 
 #: ../src/View/PropertiesWindow.vala:1248
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u sub-diretorias"
 
 #: ../src/View/PropertiesWindow.vala:1253
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u sub-diretoria e %u ficheiros"
 
 #: ../src/View/PropertiesWindow.vala:1255
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u sub-diretoria e %u ficheiro"
 
 #: ../src/View/PropertiesWindow.vala:1264
 #: ../src/View/PropertiesWindow.vala:1303
 msgid "%u files"
-msgstr ""
+msgstr "%u ficheiros"
 
 #: ../src/View/PropertiesWindow.vala:1266
 #: ../src/View/PropertiesWindow.vala:1305
 msgid "%u file"
-msgstr ""
+msgstr "%u ficheiro"
 
 #: ../src/View/PropertiesWindow.vala:1282
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u itens selecionados (%u diretorias e %u ficheiros)"
 
 #: ../src/View/PropertiesWindow.vala:1284
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u itens selecionados (%u diretorias e %u ficheiro)"
 
 #: ../src/View/PropertiesWindow.vala:1292
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u itens selecionados (%u diretoria e %u ficheiros)"
 
 #: ../src/View/PropertiesWindow.vala:1294
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u itens selecionados (%u diretoria e %u ficheiros)"
 
 #: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
@@ -2001,11 +2001,11 @@ msgstr "Não pode criar uma pasta aqui."
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The network is unavailable"
-msgstr ""
+msgstr "A rede está indisponível"
 
 #: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "É necessário uma rede para aceder a esta diretoria"
 
 #: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
@@ -2021,11 +2021,11 @@ msgstr "Incapaz de Montar a Pasta"
 
 #: ../src/View/ViewContainer.vala:365
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Não é possível conetar ao servidor para esta diretoria."
 
 #: ../src/View/ViewContainer.vala:367
 msgid "Unable show Folder"
-msgstr ""
+msgstr "Impossível mostrar Diretoria"
 
 #: ../src/View/ViewContainer.vala:368
 msgid "The server for this folder could not be located."
@@ -2119,7 +2119,7 @@ msgstr "Ficheiros"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "Operações do Gestor de Ficheiros"
 
 #: ../src/ProgressUIHandler.vala:164
 msgid "File Operations"
@@ -2127,11 +2127,11 @@ msgstr "Operações de ficheiro"
 
 #: ../src/ProgressUIHandler.vala:208
 msgid "Completed %s"
-msgstr ""
+msgstr "Operação %s completa"
 
 #: ../src/ProgressUIHandler.vala:211
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Todas as operações de ficheiros terminaram"
 
 #: ../src/ProgressUIHandler.vala:264
 msgid "Show Copy Dialog"
@@ -2175,7 +2175,7 @@ msgstr "Abrir numa Nova Janela"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:458
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Abrir com outra Aplicação..."
 
 #: ../libwidgets/View/LocationBar.vala:166
 msgid "Reload this folder"
@@ -2341,7 +2341,7 @@ msgstr "Mostrar Ficheiros Ocultos"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Mostrar Miniaturas Remotas"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
@@ -2386,12 +2386,3 @@ msgstr "Data"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Ordem Inversa"
-
-#~ msgid "Other application..."
-#~ msgstr "Outra aplicação..."
-
-#~ msgid "Actual size could be larger, "
-#~ msgstr "Tamanho real pode ser maior, "
-
-#~ msgid "could not be read due to permissions or other errors."
-#~ msgstr "não foi lido devido a permissões  ou outros erros."

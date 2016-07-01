@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-29 12:49-0500\n"
-"PO-Revision-Date: 2016-05-14 18:52+0000\n"
+"PO-Revision-Date: 2016-06-30 19:08+0000\n"
 "Last-Translator: Ľubomír Hlavko <5lubo555@azet.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2016-06-30 05:44+0000\n"
+"X-Launchpad-Export-Date: 2016-07-01 05:54+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -2421,15 +2421,3 @@ msgstr "Dátum"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "V obrátenom poradí"
-
-#~ msgid "Other application..."
-#~ msgstr "Ďaľšie aplikácie"
-
-#~ msgid "Actual size could be larger, "
-#~ msgstr "Aktuálna veľkosť by mala byť väčšia, "
-
-#~ msgid "could not be read due to permissions or other errors."
-#~ msgstr "nie je možné čítanie kvôli povoleniam alebo iným chybám."
-
-#~ msgid "loading ..."
-#~ msgstr "načíta sa..."

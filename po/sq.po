@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-29 12:49-0500\n"
-"PO-Revision-Date: 2016-06-30 01:57+0000\n"
+"PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Indrit Bashkimi <indrit.bashkimi@gmail.com>\n"
 "Language-Team: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-06-30 05:42+0000\n"
+"X-Launchpad-Export-Date: 2016-07-01 05:53+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 "Language: sq\n"
 
@@ -341,7 +341,7 @@ msgstr "_Riprovo"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr ""
+msgstr "Elemino _gjithçka"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
@@ -349,7 +349,7 @@ msgstr "_Zëvendëso"
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr ""
+msgstr "Zëvendëso _gjithçka"
 
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
@@ -523,7 +523,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Të fshihen të gjithë elementët nga koshi në këtë montim?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
@@ -2340,9 +2340,3 @@ msgstr "Datës"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Renditje e kundërt"
-
-#~ msgid "Other application..."
-#~ msgstr "Program tjetër..."
-
-#~ msgid "Actual size could be larger, "
-#~ msgstr "Përmasa e vërtetë mund të jetë më e madhe, "

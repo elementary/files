@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-29 12:49-0500\n"
-"PO-Revision-Date: 2016-06-28 22:51+0000\n"
+"PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Damian Woźniak <fiszet@gmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-06-30 05:44+0000\n"
+"X-Launchpad-Export-Date: 2016-07-01 05:54+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 "Language: pl\n"
 
@@ -2451,15 +2451,3 @@ msgstr "Daty"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Odwrócona kolejność"
-
-#~ msgid "Other application..."
-#~ msgstr "Inny program..."
-
-#~ msgid "Actual size could be larger, "
-#~ msgstr "Aktualny rozmiar może być większy, "
-
-#~ msgid "could not be read due to permissions or other errors."
-#~ msgstr "nie można odczytać ze względu na uprawnienia lub inne błędy"
-
-#~ msgid "loading ..."
-#~ msgstr "wczytywanie..."

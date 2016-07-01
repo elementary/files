@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-29 12:49-0500\n"
-"PO-Revision-Date: 2016-06-29 20:31+0000\n"
-"Last-Translator: Leonardo Lemos <Unknown>\n"
+"PO-Revision-Date: 2016-06-30 19:09+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-06-30 05:45+0000\n"
+"X-Launchpad-Export-Date: 2016-07-01 05:54+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 "Language: pt_BR\n"
 
@@ -2409,15 +2409,3 @@ msgstr "Data"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Ordem inversa"
-
-#~ msgid "Other application..."
-#~ msgstr "Outro aplicativo..."
-
-#~ msgid "Actual size could be larger, "
-#~ msgstr "Tamanho atual pode ser maior, "
-
-#~ msgid "could not be read due to permissions or other errors."
-#~ msgstr "Não foi possivel ler por falta de permissão ou outros erros."
-
-#~ msgid "loading ..."
-#~ msgstr "carregando ..."

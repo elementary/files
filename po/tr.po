@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-06-29 12:49-0500\n"
-"PO-Revision-Date: 2016-06-01 20:15+0000\n"
+"PO-Revision-Date: 2016-06-30 19:07+0000\n"
 "Last-Translator: Melih Güçlü <melihguclu@hotmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-06-30 05:44+0000\n"
+"X-Launchpad-Export-Date: 2016-07-01 05:54+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -2388,15 +2388,3 @@ msgstr "Tarih"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Tersine Düzen"
-
-#~ msgid "Other application..."
-#~ msgstr "Dİğer uygulama..."
-
-#~ msgid "Actual size could be larger, "
-#~ msgstr "Gerçek boyutu daha büyük olabilir, "
-
-#~ msgid "could not be read due to permissions or other errors."
-#~ msgstr "İzinler veya diğer hatalar sebebi ile okunamıyor"
-
-#~ msgid "loading ..."
-#~ msgstr "yükleniyor..."
