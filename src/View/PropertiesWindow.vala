@@ -23,7 +23,6 @@
 namespace Marlin.View {
 
 public class PropertiesWindow : AbstractPropertiesDialog {
-
     private Granite.Widgets.ImgEventBox evbox;
     private Granite.Widgets.XsEntry perm_code;
     private bool perm_code_should_update = true;
