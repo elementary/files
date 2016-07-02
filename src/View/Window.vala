@@ -65,7 +65,7 @@ namespace Marlin.View {
 
         public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
-        private bool freeze_view_changes = false;
+        private bool restoring_tabs = false;
         private bool doing_undo_redo = false;
 
         public signal void loading_uri (string location);
@@ -238,7 +238,7 @@ namespace Marlin.View {
             top_menu.back.connect (on_go_back);
             top_menu.escape.connect (grab_focus);
             top_menu.path_change_request.connect ((loc, flag) => {
-                current_tab.set_frozen_state (false);
+                current_tab.frozen_state = false;
                 uri_path_change_request (loc, flag);
             });
             top_menu.reload_request.connect (action_reload);
@@ -246,11 +246,11 @@ namespace Marlin.View {
                 current_tab.focus_location_if_in_current_directory (loc, true);
             });
             top_menu.focus_in_event.connect (() => {
-                current_tab.set_frozen_state (true);
+                current_tab.frozen_state = true;
                 return true;
             });
             top_menu.focus_out_event.connect (() => {
-                current_tab.set_frozen_state (false);
+                current_tab.frozen_state = false;
                 return true;
             });
 
@@ -417,8 +417,9 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
-            if (freeze_view_changes)
+            if (restoring_tabs) {
                 return;
+            }
 
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
@@ -426,9 +427,9 @@ namespace Marlin.View {
             if (current_tab == null || old_tab == current_tab)
                 return;
 
-            if (old_tab != null)
+            if (old_tab != null) {
                 old_tab.set_active_state (false);
-
+            }
             /* ViewContainer will update topmenu once successfully loaded */
 #if 0
             /* sync selection - to be reimplemented if needed*/
@@ -438,7 +439,7 @@ namespace Marlin.View {
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
             current_tab.set_active_state (true);
-            top_menu.working = current_tab.get_frozen_state ();
+            top_menu.working = current_tab.frozen_state;
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
@@ -523,7 +524,7 @@ namespace Marlin.View {
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
             /* Do not initiate search while slot is frozen e.g. during loading */
-            if (current_tab == null || current_tab.get_frozen_state ()) {
+            if (current_tab == null || current_tab.frozen_state) {
                 return;
             }
             string search_scope = param.get_string ();
@@ -535,7 +536,7 @@ namespace Marlin.View {
             }
         }
         public void on_search_request (Gdk.EventKey event) {
-            if (current_tab == null || current_tab.get_frozen_state ()) {
+            if (current_tab == null || current_tab.frozen_state) {
                 return;
             }
             if (top_menu.enter_search_mode (true, true)) {
@@ -916,7 +917,7 @@ namespace Marlin.View {
 
             /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
              * as this causes all sorts of problems */
-            freeze_view_changes = true;
+            restoring_tabs = true;
 
             while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
                 if (mode < 0 || mode >= Marlin.ViewMode.INVALID || root_uri == null || root_uri == "" || tip_uri == null)
@@ -952,7 +953,7 @@ namespace Marlin.View {
                 Thread.usleep (100000);
             }
 
-            freeze_view_changes = false;
+            restoring_tabs = false;
 
             /* Don't attempt to set active tab position if no tabs were restored */
             if (tabs_added < 1)
@@ -1011,7 +1012,7 @@ namespace Marlin.View {
         }
 
         private void update_top_menu () {
-            if (freeze_view_changes || current_tab == null)
+            if (restoring_tabs || current_tab == null)
                 return;
 
             /* Update browser buttons */
@@ -1055,7 +1056,7 @@ namespace Marlin.View {
         public void file_path_change_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
             /* ViewContainer deals with non-existent or unmounted directories
              * and locations that are not directories */
-            if (freeze_view_changes) {
+            if (restoring_tabs) {
                 return;
             }
 

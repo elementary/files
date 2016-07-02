@@ -44,6 +44,9 @@ namespace GOF {
                 return false;
             }
         }
+
+        public virtual bool frozen_state {get; set; default = true;}
+
         protected Gtk.Box extra_location_widgets;
         protected Gtk.Box content_box;
         protected int slot_number;
@@ -67,8 +70,6 @@ namespace GOF {
         public abstract void initialize_directory ();
         public abstract unowned GLib.List<unowned GOF.File>? get_selected_files ();
         public abstract void set_active_state (bool set_active);
-        public abstract void set_frozen_state (bool is_frozen);
-        public abstract bool get_frozen_state ();
         public abstract unowned AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();

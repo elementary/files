@@ -33,28 +33,27 @@ namespace Marlin.View {
         public Marlin.View.Window window;
         public GOF.AbstractSlot? view = null;
         public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
+
         public GLib.File? location {
             get {
-                var slot = get_current_slot ();
                 return slot != null ? slot.location : null;
             }
         }
-        public string uri {
+        public string? uri {
             get {
-                var slot = get_current_slot ();
                 return slot != null ? slot.uri : null;
             }
         }
 
         public GOF.AbstractSlot? slot {
             get {
-                return get_current_slot ();
+                return view != null ? view.get_current_slot () : null;
             }
         }
 
         public bool locked_focus {
             get {
-                return get_current_slot ().locked_focus;
+                return slot != null && slot.locked_focus;
             }
         }
 
@@ -67,6 +66,18 @@ namespace Marlin.View {
         public bool can_go_forward {
             get {
                 return browser.get_can_go_forward ();
+            }
+        }
+
+        public bool frozen_state {
+            get {
+                return slot == null || slot.frozen_state;
+            }
+
+            set {
+                if (slot != null) {
+                    slot.frozen_state = value;
+                }
             }
         }
 
@@ -420,17 +431,6 @@ namespace Marlin.View {
                 active ();
             }
         }
-        
-        public void set_frozen_state (bool is_frozen) {
-            var aslot = get_current_slot ();
-            if (aslot != null)
-                aslot.set_frozen_state (is_frozen);
-        }
-
-        public bool get_frozen_state () {
-            var aslot = get_current_slot ();
-            return aslot == null || slot.get_frozen_state ();
-        }
 
         private void set_all_selected (bool select_all) {
             var aslot = get_current_slot ();
@@ -518,7 +518,7 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
-            set_frozen_state (false);
+            frozen_state = false;
             if (can_show_folder && view != null)
                 view.grab_focus ();
             else

@@ -26,20 +26,32 @@ namespace Marlin.View {
 
         private uint reload_timeout_id = 0;
         private uint path_change_timeout_id = 0;
+        private bool original_reload_request = false;
+        private bool has_autosized = false;
 
-        protected bool updates_frozen = false;
-        protected bool original_reload_request = false;
-        public bool has_autosized = false;
+        private const string EMPTY_MESSAGE = _("This Folder Is Empty");
+        private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
+        private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
+        private const string DENIED_MESSAGE = _("Access Denied");
+
         public bool is_active {get; protected set;}
 
         public unowned Marlin.View.Window window {
             get {return ctab.window;}
         }
 
-        private const string EMPTY_MESSAGE = _("This Folder Is Empty");
-        private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
-        private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
-        private const string DENIED_MESSAGE = _("Access Denied");
+        public override bool frozen_state {
+            set {
+                dir_view.frozen_state = value;
+                frozen_changed (value);
+            }
+
+            get {
+                return dir_view == null || dir_view.frozen_state;
+            }
+
+            default = true;
+        }
 
         public override bool locked_focus {
             get {
@@ -132,32 +144,24 @@ namespace Marlin.View {
         private void on_directory_done_loading (GOF.Directory.Async dir) {
             ctab.directory_done_loading (this);
 
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                 autosize_slot ();
+            }
 
-            set_view_updates_frozen (false);
-            updates_frozen = false;
+            frozen_state = false;
         }
 
         private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
-            if (!updates_frozen) {
-                updates_frozen = true;
+            if (!frozen_state) {
                 dir_view.clear (); /* clear model but do not change directory */
-
+                /* view and slot are unfrozen when done loading signal received */
+                frozen_state = true;
                 path_changed (false);
                 /* if original_request false, leave original_load_request as it is (it may already be true
                  * if reloading in response to reload button press). */  
                 if (original_request) {
                     original_reload_request = true;
                 }
-                /* ViewContainer listens to this signal takes care of updating appearance
-                 * If allow_mode_change is false View Container will not automagically
-                 * switch to icon view for icon folders (needed for Miller View) */
-
-                /* view and slot are unfrozen when done loading signal received */
-                set_view_updates_frozen (true); 
-                updates_frozen = true;
-
                 /* Only need to initialise directory once - the slot that originally received the
                  * reload request does this */ 
                 if (original_reload_request) {
@@ -272,8 +276,7 @@ namespace Marlin.View {
         public override void initialize_directory () {
             if (!directory.is_loading ()) {
                 /* view and slot are unfrozen when done loading signal received */
-                set_view_updates_frozen (true);
-                updates_frozen = true;
+                frozen_state = true;
                 directory.init ();
             } else {
                 critical ("Initialize directory called when is loading");
@@ -311,10 +314,6 @@ namespace Marlin.View {
 
             if (mode != Marlin.ViewMode.MILLER_COLUMNS)
                 content_box.pack_start (dir_view, true, true, 0);
-        }
-
-        public void set_view_updates_frozen (bool freeze) {
-            dir_view.set_updates_frozen (freeze);
         }
 
         public override bool set_all_selected (bool select_all) {
@@ -409,11 +408,6 @@ namespace Marlin.View {
             }
         }
 
-        public override void set_frozen_state (bool freeze) {
-            set_view_updates_frozen (freeze);
-            frozen_changed (freeze);
-        }
-
         public override FileInfo? lookup_file_info (GLib.File loc) {
             GOF.File? gof = directory.file_hash_lookup_location (loc);
             if (gof != null) {
@@ -445,10 +439,6 @@ namespace Marlin.View {
                 msg = DENIED_MESSAGE; 
             }
             return msg;
-        }
-
-        public override bool get_frozen_state () {
-            return updates_frozen;
         }
     }
 }

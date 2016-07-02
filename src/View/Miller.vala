@@ -32,6 +32,20 @@ namespace Marlin.View {
         public GLib.List<Marlin.View.Slot> slot_list = null;
         public int total_width = 0;
 
+        public override bool frozen_state {
+            set {
+                if (current_slot != null) {
+                    current_slot.frozen_state = value;
+                }
+            }
+
+            get {
+                return current_slot == null || current_slot.frozen_state;
+            }
+
+            default = true;
+        }
+
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
             base.init ();
             this.ctab = ctab;
@@ -316,7 +330,7 @@ namespace Marlin.View {
                 var s = abstract_slot as Marlin.View.Slot;
                 if (s != null) {
                     s.frozen_changed.disconnect (on_slot_frozen_changed);
-                    s.set_view_updates_frozen (frozen);
+                    s.frozen_state = frozen;
                     s.frozen_changed.connect (on_slot_frozen_changed);
                 }
             });
@@ -442,16 +456,8 @@ namespace Marlin.View {
             return ((Marlin.View.Slot)(current_slot)).set_all_selected (all);
         }
 
-        public override void set_frozen_state (bool freeze) {
-            current_slot.set_frozen_state (freeze);
-        }
-
         public override FileInfo? lookup_file_info (GLib.File loc) {
             return current_slot.lookup_file_info (loc);
-        }
-
-        public override bool get_frozen_state () {
-            return current_slot.get_frozen_state ();
         }
     }
 }
