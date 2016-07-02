@@ -178,6 +178,10 @@ namespace Marlin.View.Chrome {
             if (event.is_modifier == 1) {
                 return true;
             }
+
+            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+
             switch (event.keyval) {
                 case Gdk.Key.KP_Down:
                 case Gdk.Key.Down:
@@ -192,6 +196,17 @@ namespace Marlin.View.Chrome {
                 case Gdk.Key.Escape:
                     activate_path ("");
                     return true;
+
+                case Gdk.Key.l:
+                    if (only_control_pressed) {
+                        set_entry_text (current_dir_path);
+                        grab_focus ();
+                        return true;
+                    } else {
+                        break;
+                    }
+                default:
+                    break;
             }
             return base.key_press_event (event);
         }
