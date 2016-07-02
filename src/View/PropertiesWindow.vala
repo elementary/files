@@ -238,15 +238,11 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         contains_value.label = get_contains_value (folder_count, file_count);
 
         if (size_warning > 0) {
-            string file_plural = _("file");
-            if (size_warning > 1) {
-                file_plural = _("files");
-            }
             var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
             size_warning_image.halign = Gtk.Align.START;
             size_warning_image.hexpand = true;
-            size_warning_image.tooltip_markup = "<b>" + _("Actual Size Could Be Larger") + "</b>" + "\n" + _("%i %s could not be read due to permissions or other errors.").printf (size_warning, file_plural);
-            info_grid.attach_next_to (size_warning_image, size_value, Gtk.PositionType.RIGHT);
+            size_warning_image.tooltip_markup = "<b>" + _("Actual Size Could Be Larger") + "</b>" + "\n" + ngettext ("%i file could not be read due to permissions or other errors.", "%i files could not be read due to permissions or other errors.", (ulong) size_warning).printf (size_warning);
+            info_grid.attach_next_to (size_warning_image, size_label, Gtk.PositionType.RIGHT);
             info_grid.show_all ();
         }
     }

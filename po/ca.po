@@ -7,20 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-06-27 17:41-0500\n"
-"PO-Revision-Date: 2016-05-15 13:04+0000\n"
+"POT-Creation-Date: 2016-07-02 05:58+0400\n"
+"PO-Revision-Date: 2016-06-30 19:07+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-06-28 05:33+0000\n"
+"X-Launchpad-Export-Date: 2016-07-02 05:52+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
-
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "El porta-retalls no té res per enganxar"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -141,6 +137,30 @@ msgstr "_Recorda aquesta contrasenya"
 msgid "Operation cancelled"
 msgstr "S'ha cancel·lat l'operació"
 
+#: ../src/marlin-clipboard-manager.c:365
+msgid "There is nothing on the clipboard to paste"
+msgstr "El porta-retalls no té res per enganxar"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (Unicode no vàlid)"
+
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Avui a les %-H:%M"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Ahir a les %-H:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a, %-d de %b. a les %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d de %b de %Y a les %-H:%M"
+
 #: ../libcore/marlin-file-utilities.c:131
 #, c-format
 msgid "Could not determine original location of \"%s\" "
@@ -149,152 +169,6 @@ msgstr "No s'ha pogut determinar la ubicació original de «%s» "
 #: ../libcore/marlin-file-utilities.c:135
 msgid "The item cannot be restored from trash"
 msgstr "No es pot restaurar l'element des de la paperera"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Voleu combinar la carpeta «%s»?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"En combinar-la es demanarà confirmació abans de reemplaçar-hi cap fitxer que "
-"entri en conflicte amb els que s'estiguin copiant."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una carpeta més antiga amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una carpeta més nova amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una altra carpeta amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "En reemplaçar-la se'n suprimiran tots els fitxers."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Voleu reemplaçar la carpeta «%s»?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Ja existeix una carpeta amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Voleu reemplaçar el fitxer «%s»?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "En reemplaçar-la se sobreescriuran els continguts."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Ja existeix un fitxer més antic amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Ja existeix un fitxer més nou amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Ja existeix un altre fitxer amb el mateix nom a «%s»."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Fitxer original"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:569
-msgid "Size:"
-msgstr "Mida:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:355
-msgid "Type:"
-msgstr "Tipus:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Darrera modificació:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Reemplaça amb"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Combina"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "_Seleccioneu un nom nou per a la destinació"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Reinicia"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Aplica aquesta acció a tots els fitxers"
-
-#: ../libcore/marlin-file-conflict-dialog.c:748
-#: ../libcore/marlin-file-operations.c:199
-msgid "_Skip"
-msgstr "_Omet"
-
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "Canvia el _nom"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Substitueix"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Conflicte de fitxers"
 
 #: ../libcore/gof-file.c:366
 #, c-format
@@ -326,13 +200,399 @@ msgstr "No es permeten barres en els noms dels fitxers"
 msgid "Toplevel files cannot be renamed"
 msgstr "No es pot canviar el nom dels fitxers de nivell superior"
 
+#: ../libcore/marlin-undostack-manager.c:635
+msgid "Original location could not be determined"
+msgstr ""
+
+#: ../libcore/marlin-undostack-manager.c:636
+msgid "Open trash folder and restore manually"
+msgstr ""
+
+#: ../libcore/marlin-undostack-manager.c:1225
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Elimina els %d elements copiats"
+
+#: ../libcore/marlin-undostack-manager.c:1228
+#: ../libcore/marlin-undostack-manager.c:1238
+#: ../libcore/marlin-undostack-manager.c:1269
+#, c-format
+msgid "Delete '%s'"
+msgstr "Suprimeix «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1235
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Elimina els %d elements duplicats"
+
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Retorna %d elements a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1250
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Retorna «%s» a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1259
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Canvia el nom de «%s» a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1278
+#: ../libcore/marlin-undostack-manager.c:1473
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Restaura %d elements de la paperera"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Restaura «%s» a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1297
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Mou %d elements de nou a la paperera"
+
+#: ../libcore/marlin-undostack-manager.c:1300
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Retorna «%s» a la paperera"
+
+#: ../libcore/marlin-undostack-manager.c:1309
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Elimina els enllaços de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1312
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Suprimeix l'enllaç a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1322
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Restaura els permisos originals dels fitxers continguts a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1330
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Restaura els permisos originals de «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1339
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Restaura el grup de «%s» a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1349
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Restaura el propietari de «%s» a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1388
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Copia %d elements a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1392
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Copia «%s» a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1400
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Duplica %d elements a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1405
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Duplica «%s» a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1413
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Mou %d elements a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Mou «%s» a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1435
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Crea un fitxer nou «%s» a partir d'una plantilla "
+
+#: ../libcore/marlin-undostack-manager.c:1442
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Crea un fitxer «%s» buit"
+
+#: ../libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Crea una carpeta «%s» nova"
+
+#: ../libcore/marlin-undostack-manager.c:1457
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Mou %d elements a la paperera"
+
+#: ../libcore/marlin-undostack-manager.c:1463
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Mou «%s» a la paperera"
+
+#: ../libcore/marlin-undostack-manager.c:1476
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Restaura «%s» de la paperera"
+
+#: ../libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "Create links to %d items"
+msgstr "Crea enllaços a %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1488
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Crea un enllaç a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1497
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Estableix els permisos dels fitxers continguts a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1505
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Estableix els permisos de «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1514
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Estableix el grup de «%s» a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1524
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Estableix el propietari de «%s» a «%s»"
+
+#: ../libcore/marlin-undostack-manager.c:1556
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Desfés la còpia d'%d element"
+msgstr[1] "_Desfés la còpia de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1561
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Desfés el duplicat d'%d element"
+msgstr[1] "_Desfés el duplicat de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1566
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Desfés el moviment d'%d element"
+msgstr[1] "_Desfés el moviment de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1571
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Desfés el canvi de nom d'%d element"
+msgstr[1] "_Desfés el canvi de nom de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1575
+msgid "_Undo creation of an empty file"
+msgstr "_Desfés la creació d'un fitxer nou"
+
+#: ../libcore/marlin-undostack-manager.c:1578
+msgid "_Undo creation of a file from template"
+msgstr "_Desfés la creació d'un fitxer a partir d'una plantilla"
+
+#: ../libcore/marlin-undostack-manager.c:1582
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Desfés la creació d'%d carpeta"
+msgstr[1] "_Desfés la creació de %d carpetes"
+
+#: ../libcore/marlin-undostack-manager.c:1587
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Desfés l'enviament d'%d element a la paperera"
+msgstr[1] "_Desfés l'enviament de %d elements a la paperera"
+
+#: ../libcore/marlin-undostack-manager.c:1592
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Desfés la restauració d'%d element"
+msgstr[1] "_Desfés la restauració de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1597
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Desfés la creació d'un enllaç a %d element"
+msgstr[1] "_Desfés la creació d'enllaços a %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1602
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Desfés l'eliminació d'%d element"
+msgstr[1] "_Desfés l'eliminació de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1607
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Desfés el canvi de permisos recursiu d'%d element"
+msgstr[1] "Desfés el canvi de permisos recursiu de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1613
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Desfés el canvi de permisos d'%d element"
+msgstr[1] "Desfés el canvi de permisos de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1618
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Desfés el canvi de grup d'%d element"
+msgstr[1] "Desfés el canvi de grup de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1623
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Desfés el canvi de propietari d'%d element"
+msgstr[1] "Desfés el canvi de propietari de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1651
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Refés la còpia d'%d element"
+msgstr[1] "_Refés la còpia de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1656
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Refés la duplicació d'%d element"
+msgstr[1] "_Refés la duplicació de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1661
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Refés el moviment d'%d element"
+msgstr[1] "_Refés el moviment de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1666
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Refés el canvi de nom d'%d element"
+msgstr[1] "_Refés el canvi de nom de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1670
+msgid "_Redo creation of an empty file"
+msgstr "_Refés la creació d'un fitxer nou"
+
+#: ../libcore/marlin-undostack-manager.c:1673
+msgid "_Redo creation of a file from template"
+msgstr "_Refés la creació d'un fitxer a partir d'una plantilla"
+
+#: ../libcore/marlin-undostack-manager.c:1677
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Refés la creació d'%d carpeta"
+msgstr[1] "_Refés la creació de %d carpetes"
+
+#: ../libcore/marlin-undostack-manager.c:1682
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Refés el moviment d'%d element a la paperera"
+msgstr[1] "_Refés el moviment de %d elements a la paperera"
+
+#: ../libcore/marlin-undostack-manager.c:1687
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Refés la restauració d'%d element"
+msgstr[1] "_Refés la restauració de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1692
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Refés la creació d'un enllaç a %d element"
+msgstr[1] "_Refés la creació d'enllaços a %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1697
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Refés l'eliminació d'%d element"
+msgstr[1] "_Refés l'eliminació de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1702
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Refés el canvi de permisos recursiu d'%d element"
+msgstr[1] "Refés el canvi de permisos recursiu de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1708
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Refés el canvi de permisos d'%d element"
+msgstr[1] "Refés el canvi de permisos de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1713
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Refés el canvi de grup d'%d element"
+msgstr[1] "Refés el canvi de grup de %d elements"
+
+#: ../libcore/marlin-undostack-manager.c:1718
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Refés el canvi de propietari d'%d element"
+msgstr[1] "Refés el canvi de propietari de %d elements"
+
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "S'està preparant"
+
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
 msgstr "Mostra més _detalls"
 
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (Unicode no vàlid)"
+#: ../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-conflict-dialog.c:748
+msgid "_Skip"
+msgstr "_Omet"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -1101,406 +1361,146 @@ msgstr "S'està buidant la paperera"
 msgid "Emptying Trash"
 msgstr "S'està buidant la paperera"
 
-#: ../libcore/marlin-undostack-manager.c:635
-msgid "Original location could not be determined"
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Voleu combinar la carpeta «%s»?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:375
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
 msgstr ""
+"En combinar-la es demanarà confirmació abans de reemplaçar-hi cap fitxer que "
+"entri en conflicte amb els que s'estiguin copiant."
 
-#: ../libcore/marlin-undostack-manager.c:636
-msgid "Open trash folder and restore manually"
-msgstr ""
-
-#: ../libcore/marlin-undostack-manager.c:1225
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
-msgid "Delete %d copied items"
-msgstr "Elimina els %d elements copiats"
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una carpeta més antiga amb el mateix nom a «%s»."
 
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
-msgid "Delete '%s'"
-msgstr "Suprimeix «%s»"
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una carpeta més nova amb el mateix nom a «%s»."
 
-#: ../libcore/marlin-undostack-manager.c:1235
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:388
 #, c-format
-msgid "Delete %d duplicated items"
-msgstr "Elimina els %d elements duplicats"
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una altra carpeta amb el mateix nom a «%s»."
 
-#: ../libcore/marlin-undostack-manager.c:1246
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will remove all files in the folder."
+msgstr "En reemplaçar-la se'n suprimiran tots els fitxers."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Retorna %d elements a «%s»"
+msgid "Replace folder \"%s\"?"
+msgstr "Voleu reemplaçar la carpeta «%s»?"
 
-#: ../libcore/marlin-undostack-manager.c:1250
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Retorna «%s» a «%s»"
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Ja existeix una carpeta amb el mateix nom a «%s»."
 
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:402
 #, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Canvia el nom de «%s» a «%s»"
+msgid "Replace file \"%s\"?"
+msgstr "Voleu reemplaçar el fitxer «%s»?"
 
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:404
+msgid "Replacing it will overwrite its content."
+msgstr "En reemplaçar-la se sobreescriuran els continguts."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:408
 #, c-format
-msgid "Restore %d items from trash"
-msgstr "Restaura %d elements de la paperera"
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Ja existeix un fitxer més antic amb el mateix nom a «%s»."
 
-#: ../libcore/marlin-undostack-manager.c:1286
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:412
 #, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Restaura «%s» a «%s»"
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Ja existeix un fitxer més nou amb el mateix nom a «%s»."
 
-#: ../libcore/marlin-undostack-manager.c:1297
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
-msgid "Move %d items back to trash"
-msgstr "Mou %d elements de nou a la paperera"
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Ja existeix un altre fitxer amb el mateix nom a «%s»."
 
-#: ../libcore/marlin-undostack-manager.c:1300
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Retorna «%s» a la paperera"
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:471
+msgid "Original file"
+msgstr "Fitxer original"
 
-#: ../libcore/marlin-undostack-manager.c:1309
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Elimina els enllaços de %d elements"
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:574
+msgid "Size:"
+msgstr "Mida:"
 
-#: ../libcore/marlin-undostack-manager.c:1312
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Suprimeix l'enllaç a «%s»"
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:581
+msgid "Type:"
+msgstr "Tipus:"
 
-#: ../libcore/marlin-undostack-manager.c:1322
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Restaura els permisos originals dels fitxers continguts a «%s»"
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
+msgid "Last modified:"
+msgstr "Darrera modificació:"
 
-#: ../libcore/marlin-undostack-manager.c:1330
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Restaura els permisos originals de «%s»"
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:492
+msgid "Replace with"
+msgstr "Reemplaça amb"
 
-#: ../libcore/marlin-undostack-manager.c:1339
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Restaura el grup de «%s» a «%s»"
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:517
+msgid "Merge"
+msgstr "Combina"
 
-#: ../libcore/marlin-undostack-manager.c:1349
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Restaura el propietari de «%s» a «%s»"
+#: ../libcore/marlin-file-conflict-dialog.c:711
+msgid "_Select a new name for the destination"
+msgstr "_Seleccioneu un nom nou per a la destinació"
 
-#: ../libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Copia %d elements a «%s»"
+#: ../libcore/marlin-file-conflict-dialog.c:725
+msgid "Reset"
+msgstr "Reinicia"
 
-#: ../libcore/marlin-undostack-manager.c:1392
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Copia «%s» a «%s»"
+#: ../libcore/marlin-file-conflict-dialog.c:737
+msgid "Apply this action to all files"
+msgstr "Aplica aquesta acció a tots els fitxers"
 
-#: ../libcore/marlin-undostack-manager.c:1400
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Duplica %d elements a «%s»"
+#: ../libcore/marlin-file-conflict-dialog.c:753
+msgid "Re_name"
+msgstr "Canvia el _nom"
 
-#: ../libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Duplica «%s» a «%s»"
+#: ../libcore/marlin-file-conflict-dialog.c:759
+msgid "Replace"
+msgstr "Substitueix"
 
-#: ../libcore/marlin-undostack-manager.c:1413
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Mou %d elements a «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1417
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Mou «%s» a «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1435
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Crea un fitxer nou «%s» a partir d'una plantilla "
-
-#: ../libcore/marlin-undostack-manager.c:1442
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Crea un fitxer «%s» buit"
-
-#: ../libcore/marlin-undostack-manager.c:1449
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Crea una carpeta «%s» nova"
-
-#: ../libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Mou %d elements a la paperera"
-
-#: ../libcore/marlin-undostack-manager.c:1463
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Mou «%s» a la paperera"
-
-#: ../libcore/marlin-undostack-manager.c:1476
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Restaura «%s» de la paperera"
-
-#: ../libcore/marlin-undostack-manager.c:1485
-#, c-format
-msgid "Create links to %d items"
-msgstr "Crea enllaços a %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1488
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Crea un enllaç a «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1497
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Estableix els permisos dels fitxers continguts a «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1505
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Estableix els permisos de «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1514
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Estableix el grup de «%s» a «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1524
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Estableix el propietari de «%s» a «%s»"
-
-#: ../libcore/marlin-undostack-manager.c:1556
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Desfés la còpia d'%d element"
-msgstr[1] "_Desfés la còpia de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1561
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Desfés el duplicat d'%d element"
-msgstr[1] "_Desfés el duplicat de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1566
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Desfés el moviment d'%d element"
-msgstr[1] "_Desfés el moviment de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1571
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Desfés el canvi de nom d'%d element"
-msgstr[1] "_Desfés el canvi de nom de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1575
-msgid "_Undo creation of an empty file"
-msgstr "_Desfés la creació d'un fitxer nou"
-
-#: ../libcore/marlin-undostack-manager.c:1578
-msgid "_Undo creation of a file from template"
-msgstr "_Desfés la creació d'un fitxer a partir d'una plantilla"
-
-#: ../libcore/marlin-undostack-manager.c:1582
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Desfés la creació d'%d carpeta"
-msgstr[1] "_Desfés la creació de %d carpetes"
-
-#: ../libcore/marlin-undostack-manager.c:1587
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Desfés l'enviament d'%d element a la paperera"
-msgstr[1] "_Desfés l'enviament de %d elements a la paperera"
-
-#: ../libcore/marlin-undostack-manager.c:1592
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Desfés la restauració d'%d element"
-msgstr[1] "_Desfés la restauració de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1597
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Desfés la creació d'un enllaç a %d element"
-msgstr[1] "_Desfés la creació d'enllaços a %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1602
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Desfés l'eliminació d'%d element"
-msgstr[1] "_Desfés l'eliminació de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1607
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Desfés el canvi de permisos recursiu d'%d element"
-msgstr[1] "Desfés el canvi de permisos recursiu de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1613
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Desfés el canvi de permisos d'%d element"
-msgstr[1] "Desfés el canvi de permisos de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1618
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Desfés el canvi de grup d'%d element"
-msgstr[1] "Desfés el canvi de grup de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1623
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Desfés el canvi de propietari d'%d element"
-msgstr[1] "Desfés el canvi de propietari de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1651
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Refés la còpia d'%d element"
-msgstr[1] "_Refés la còpia de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1656
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Refés la duplicació d'%d element"
-msgstr[1] "_Refés la duplicació de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1661
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Refés el moviment d'%d element"
-msgstr[1] "_Refés el moviment de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1666
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Refés el canvi de nom d'%d element"
-msgstr[1] "_Refés el canvi de nom de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1670
-msgid "_Redo creation of an empty file"
-msgstr "_Refés la creació d'un fitxer nou"
-
-#: ../libcore/marlin-undostack-manager.c:1673
-msgid "_Redo creation of a file from template"
-msgstr "_Refés la creació d'un fitxer a partir d'una plantilla"
-
-#: ../libcore/marlin-undostack-manager.c:1677
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Refés la creació d'%d carpeta"
-msgstr[1] "_Refés la creació de %d carpetes"
-
-#: ../libcore/marlin-undostack-manager.c:1682
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Refés el moviment d'%d element a la paperera"
-msgstr[1] "_Refés el moviment de %d elements a la paperera"
-
-#: ../libcore/marlin-undostack-manager.c:1687
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Refés la restauració d'%d element"
-msgstr[1] "_Refés la restauració de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1692
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Refés la creació d'un enllaç a %d element"
-msgstr[1] "_Refés la creació d'enllaços a %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1697
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Refés l'eliminació d'%d element"
-msgstr[1] "_Refés l'eliminació de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1702
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Refés el canvi de permisos recursiu d'%d element"
-msgstr[1] "Refés el canvi de permisos recursiu de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1708
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Refés el canvi de permisos d'%d element"
-msgstr[1] "Refés el canvi de permisos de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1713
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Refés el canvi de grup d'%d element"
-msgstr[1] "Refés el canvi de grup de %d elements"
-
-#: ../libcore/marlin-undostack-manager.c:1718
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Refés el canvi de propietari d'%d element"
-msgstr[1] "Refés el canvi de propietari de %d elements"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Avui a les %-H:%M"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Ahir a les %-H:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a, %-d de %b. a les %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d de %b de %Y a les %-H:%M"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "S'està preparant"
+#: ../libcore/marlin-file-conflict-dialog.c:832
+msgid "File conflict"
+msgstr "Conflicte de fitxers"
 
 #: ../filechooser-module/FileChooserDialog.vala:61
 #: ../libwidgets/Chrome/TopMenu.vala:51
@@ -1512,17 +1512,21 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Següent"
 
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "El Fitxers no és el vostre gestor de fitxers predeterminat."
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Nom del fitxer"
 
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "Estableix com a predeterminada"
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Mida"
 
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Ignora"
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Tipus"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Modificat"
 
 #: ../src/View/Sidebar.vala:472
 msgid "Personal"
@@ -1560,8 +1564,8 @@ msgstr "Dispositius"
 msgid "Your local partitions and devices"
 msgstr "Dispositius y particions locals"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:42
-#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
+#: ../src/View/Sidebar.vala:546 ../src/View/ViewContainer.vala:333
+#: ../src/View/VolumePropertiesWindow.vala:44 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "Sistema de fitxers"
 
@@ -1621,98 +1625,329 @@ msgstr "_Desmunta"
 msgid "_Eject"
 msgstr "_Expulsa"
 
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:108
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:142
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Propietats"
 
-#: ../src/View/VolumePropertiesWindow.vala:26
-msgid "Disk Properties"
+#: ../src/View/Slot.vala:39
+msgid "This Folder Is Empty"
 msgstr ""
 
+#: ../src/View/Slot.vala:40
+msgid "Trash Is Empty"
+msgstr ""
+
+#: ../src/View/Slot.vala:41
+msgid "There Are No Recent Files"
+msgstr ""
+
+#: ../src/View/Slot.vala:42
+msgid "Access Denied"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1283
+msgid "%u folders"
+msgstr "%u carpetes"
+
+#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
+msgid " and %u other item (%s) selected"
+msgstr " i %u altre element (%s) seleccionats"
+
+#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
+msgid " and %u other items (%s) selected"
+msgstr " i %u altres elements (%s) seleccionats"
+
+#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
+msgid " selected"
+msgstr " seleccionat"
+
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1254
+#: ../src/View/PropertiesWindow.vala:1293
+msgid "%u folder"
+msgstr "%u carpeta"
+
+#: ../src/View/OverlayBar.vala:231
+msgid "%u items selected (%s)"
+msgstr "%u elements seleccionats (%s)"
+
+#: ../src/View/OverlayBar.vala:272
+msgid "%u sub-folder, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:272
+msgid "%u sub-folders, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:278
+msgid "%u file, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:278
+msgid "%u files, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:288
+msgid "%s approx."
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:291
+msgid "unknown size"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u file not readable"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u files not readable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:342
+msgid "(as Administrator)"
+msgstr "(com a Administrador)"
+
+#: ../src/View/ViewContainer.vala:355 ../src/View/DirectoryNotFound.vala:28
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:356
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:358
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:359
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:361
+msgid "This Folder Does Not Belong to You"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:362
+msgid "You don't have permission to view this folder."
+msgstr "No teniu permís per veure aquesta carpeta."
+
+#: ../src/View/ViewContainer.vala:364
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:365
+msgid "Could not connect to the server for this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:367
+msgid "Unable show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:368
+msgid "The server for this folder could not be located."
+msgstr "No s’ha trobat el servidor que allotja aquesta carpeta."
+
+#: ../src/View/ViewContainer.vala:378
+msgid "File not Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:379
+msgid "The file selected no longer exists."
+msgstr "El fitxer seleccionat ja no existeix."
+
+#: ../src/View/AbstractPropertiesDialog.vala:47
+msgid "Info"
+msgstr "Informació"
+
+#: ../src/View/AbstractPropertiesDialog.vala:56
+msgid "General"
+msgstr "General"
+
+#: ../src/View/AbstractPropertiesDialog.vala:75
+msgid "Close"
+msgstr "Tanca"
+
+#: ../src/View/AbstractPropertiesDialog.vala:137
+msgid "Device Usage"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:154
+msgid "Capacity:"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:155
+#: ../src/View/AbstractPropertiesDialog.vala:158
+#: ../src/View/AbstractPropertiesDialog.vala:161
+msgid "Unknown"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:157
+msgid "Available:"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:160
+msgid "Used:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:26
+msgid "Resolution:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:219
+msgid "Permissions"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:246
+msgid "Preview"
+msgstr "Previsualització"
+
+#: ../src/View/PropertiesWindow.vala:265
+msgid "Actual Size Could Be Larger"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:265
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/View/PropertiesWindow.vala:284 ../src/View/PropertiesWindow.vala:303
+msgid "unknown"
+msgstr "desconegut"
+
+#: ../src/View/PropertiesWindow.vala:463
+msgid "Created:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:465
+msgid "Modified:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:468
+msgid "Last Access:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:476
+msgid "Deleted:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:482
+msgid "MimeType:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:490
+msgid "Loading…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:503
+msgid "MimeTypes:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:516 ../src/View/PropertiesWindow.vala:518
 #: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:510 ../src/View/PropertiesWindow.vala:512
 msgid "Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:522
+msgid "Target:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:528
+msgid "Origin Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:535
+msgid "Could not be determined"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:584
+msgid "Contains:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:620
+msgid "Other Application…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:640
+msgid "Open with:"
+msgstr "Obre amb:"
+
+#: ../src/View/PropertiesWindow.vala:734
+msgid "Read"
+msgstr "Llegir"
+
+#: ../src/View/PropertiesWindow.vala:738
+msgid "Write"
+msgstr "Escriure"
+
+#: ../src/View/PropertiesWindow.vala:742
+msgid "Execute"
+msgstr "Execució"
+
+#: ../src/View/PropertiesWindow.vala:949 ../src/View/PropertiesWindow.vala:965
+msgid "Owner:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:955 ../src/View/PropertiesWindow.vala:969
+msgid "Group:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:973
+msgid "Everyone:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1239
+msgid "%u subfolders and %u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1241
+msgid "%u subfolders and %u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1244
+msgid "%u subfolders"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1249
+msgid "%u subfolder and %u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1251
+msgid "%u subfolder and %u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1260
+#: ../src/View/PropertiesWindow.vala:1299
+msgid "%u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1262
+#: ../src/View/PropertiesWindow.vala:1301
+msgid "%u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1278
+msgid "%u selected items (%u folders and %u files)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1280
+msgid "%u selected items (%u folders and %u file)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1288
+msgid "%u selected items (%u folder and %u files)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1290
+msgid "%u selected items (%u folder and %u file)"
+msgstr ""
+
+#: ../src/View/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
 msgstr ""
 
 #: ../src/View/VolumePropertiesWindow.vala:85
 msgid "Format:"
-msgstr ""
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Nom del fitxer"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Mida"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Tipus"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Modificat"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
-msgid "This Folder Does Not Exist"
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "No s'ha pogut trobar la carpeta «%s»."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Crea"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Crea la carpeta «%s»"
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"S'ha produït un error en crear la carpeta\n"
-"\n"
-"%s"
-
-#: ../src/View/AbstractPropertiesDialog.vala:46
-msgid "Info"
-msgstr "Informació"
-
-#: ../src/View/AbstractPropertiesDialog.vala:57
-msgid "General"
-msgstr "General"
-
-#: ../src/View/AbstractPropertiesDialog.vala:76
-msgid "Close"
-msgstr "Tanca"
-
-#: ../src/View/AbstractPropertiesDialog.vala:162
-msgid "Device Usage"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:183
-msgid "Capacity:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:186
-#: ../src/View/AbstractPropertiesDialog.vala:192
-#: ../src/View/AbstractPropertiesDialog.vala:198
-msgid "Unknown"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:189
-msgid "Available:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:195
-msgid "Used:"
 msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:561
@@ -1772,280 +2007,39 @@ msgstr "No és possible copiar els fitxers que són a la paperera."
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1304
-msgid "%u folders"
-msgstr "%u carpetes"
+#: ../src/View/Window.vala:204
+msgid "Files isn't your default file manager."
+msgstr "El Fitxers no és el vostre gestor de fitxers predeterminat."
 
-#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
-msgid " and %u other item (%s) selected"
-msgstr " i %u altre element (%s) seleccionats"
+#: ../src/View/Window.vala:210
+msgid "Set as Default"
+msgstr "Estableix com a predeterminada"
 
-#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
-msgid " and %u other items (%s) selected"
-msgstr " i %u altres elements (%s) seleccionats"
+#: ../src/View/Window.vala:216
+msgid "Ignore"
+msgstr "Ignora"
 
-#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
-msgid " selected"
-msgstr " seleccionat"
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "No s'ha pogut trobar la carpeta «%s»."
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1275
-#: ../src/View/PropertiesWindow.vala:1314
-msgid "%u folder"
-msgstr "%u carpeta"
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Crea"
 
-#: ../src/View/OverlayBar.vala:231
-msgid "%u items selected (%s)"
-msgstr "%u elements seleccionats (%s)"
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Crea la carpeta «%s»"
 
-#: ../src/View/OverlayBar.vala:272
-msgid "%u sub-folder, "
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
 msgstr ""
-
-#: ../src/View/OverlayBar.vala:272
-msgid "%u sub-folders, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:278
-msgid "%u file, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:278
-msgid "%u files, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:288
-msgid "%s approx."
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:291
-msgid "unknown size"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:295
-msgid "%u file not readable"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:295
-msgid "%u files not readable"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:24
-msgid "Resolution:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:183
-msgid "Permissions"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:210
-msgid "Preview"
-msgstr "Previsualització"
-
-#: ../src/View/PropertiesWindow.vala:230
-msgid "file"
-msgstr "fitxer"
-
-#: ../src/View/PropertiesWindow.vala:232
-msgid "files"
-msgstr "fitxers"
-
-#: ../src/View/PropertiesWindow.vala:234
-msgid "Actual size could be larger, "
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:234
-msgid "could not be read due to permissions or other errors."
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:259 ../src/View/PropertiesWindow.vala:278
-msgid "unknown"
-msgstr "desconegut"
-
-#: ../src/View/PropertiesWindow.vala:360
-msgid "Contains:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:457
-msgid "Created:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:459
-msgid "Modified:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:462
-msgid "Last Access:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:470
-msgid "Deleted:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:476
-msgid "MimeType:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:484
-msgid "loading ..."
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:497
-msgid "MimeTypes:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:516
-msgid "Target:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:522
-msgid "Origin Location:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:529
-msgid "Could not be determined"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:604
-msgid "Other application..."
-msgstr "Una altra aplicació…"
-
-#: ../src/View/PropertiesWindow.vala:628
-msgid "Open with:"
-msgstr "Obre amb:"
-
-#: ../src/View/PropertiesWindow.vala:746
-msgid "Read"
-msgstr "Llegir"
-
-#: ../src/View/PropertiesWindow.vala:750
-msgid "Write"
-msgstr "Escriure"
-
-#: ../src/View/PropertiesWindow.vala:754
-msgid "Execute"
-msgstr "Execució"
-
-#: ../src/View/PropertiesWindow.vala:961 ../src/View/PropertiesWindow.vala:977
-msgid "Owner:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:982
-msgid "Group:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:987
-msgid "Everyone:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1260
-msgid "%u subfolders and %u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1262
-msgid "%u subfolders and %u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1265
-msgid "%u subfolders"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1270
-msgid "%u subfolder and %u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1272
-msgid "%u subfolder and %u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1281
-#: ../src/View/PropertiesWindow.vala:1320
-msgid "%u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1283
-#: ../src/View/PropertiesWindow.vala:1322
-msgid "%u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1299
-msgid "%u selected items (%u folders and %u files)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1301
-msgid "%u selected items (%u folders and %u file)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1309
-msgid "%u selected items (%u folder and %u files)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1311
-msgid "%u selected items (%u folder and %u file)"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:342
-msgid "(as Administrator)"
-msgstr "(com a Administrador)"
-
-#: ../src/View/ViewContainer.vala:356
-msgid "You cannot create a folder here."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:358
-msgid "The network is unavailable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:359
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:361
-msgid "This Folder Does Not Belong to You"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:362
-msgid "You don't have permission to view this folder."
-msgstr "No teniu permís per veure aquesta carpeta."
-
-#: ../src/View/ViewContainer.vala:364
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:365
-msgid "Could not connect to the server for this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:367
-msgid "Unable show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:368
-msgid "The server for this folder could not be located."
-msgstr "No s’ha trobat el servidor que allotja aquesta carpeta."
-
-#: ../src/View/ViewContainer.vala:378
-msgid "File not Found"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:379
-msgid "The file selected no longer exists."
-msgstr "El fitxer seleccionat ja no existeix."
-
-#: ../src/View/Slot.vala:39
-msgid "This Folder Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:40
-msgid "Trash Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:41
-msgid "There Are No Recent Files"
-msgstr ""
-
-#: ../src/View/Slot.vala:42
-msgid "Access Denied"
-msgstr ""
+"S'ha produït un error en crear la carpeta\n"
+"\n"
+"%s"
 
 #: ../src/Application.vala:158
 msgid "Show the version of the program."
@@ -2157,17 +2151,9 @@ msgstr "Canceŀla"
 msgid "Could not rename to '%s'"
 msgstr ""
 
-#: ../libwidgets/View/BreadcrumbsEntry.vala:412
-msgid "Open in New Tab"
-msgstr "Obre en una pestanya nova"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:419
-msgid "Open in New Window"
-msgstr ""
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:458
-msgid "Open in Other Application…"
-msgstr ""
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
+msgid "Set as default"
+msgstr "Estableix com a predeterminada"
 
 #: ../libwidgets/View/LocationBar.vala:166
 msgid "Reload this folder"
@@ -2190,6 +2176,42 @@ msgstr "Adreces d'interès"
 msgid "Everywhere Else"
 msgstr "Qualsevol lloc"
 
+#: ../libwidgets/View/BreadcrumbsEntry.vala:412
+msgid "Open in New Tab"
+msgstr "Obre en una pestanya nova"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:419
+msgid "Open in New Window"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:458
+msgid "Open in Other Application…"
+msgstr ""
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
+msgid "Navigate to %s"
+msgstr "Navega a %s"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:259
+msgid "Go to %s"
+msgstr "Vés a %s"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Visualitza com a graella"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Visualitza com a llista"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Visualitza en columnes"
+
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr ""
+
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
 msgstr "Un administrador de fitxers simple i poderós"
@@ -2206,8 +2228,7 @@ msgstr ""
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Enrique Villarreal https://launchpad.net/~evillarreal\n"
 "  Gerard Mayans https://launchpad.net/~gerardmc-45\n"
-"  Mario Rodrigo https://launchpad.net/~capitantrueno\n"
-"  Sergio Tortosa https://launchpad.net/~sheosi"
+"  Mario Rodrigo https://launchpad.net/~capitantrueno"
 
 #: ../libwidgets/Resources.vala:83
 msgid "AFP"
@@ -2240,34 +2261,6 @@ msgstr ""
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr ""
-
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr ""
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Visualitza com a graella"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Visualitza com a llista"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "Visualitza en columnes"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
-msgid "Navigate to %s"
-msgstr "Navega a %s"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:259
-msgid "Go to %s"
-msgstr "Vés a %s"
-
-#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
-msgid "Set as default"
-msgstr "Estableix com a predeterminada"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2376,3 +2369,9 @@ msgstr "Data"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr ""
+
+#~ msgid "file"
+#~ msgstr "fitxer"
+
+#~ msgid "files"
+#~ msgstr "fitxers"
