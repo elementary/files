@@ -438,7 +438,7 @@ namespace Marlin.View {
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
             current_tab.set_active_state (true);
-            top_menu.set_working (current_tab.get_frozen_state ());
+            top_menu.working = current_tab.get_frozen_state ();
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
@@ -1017,9 +1017,9 @@ namespace Marlin.View {
             /* Update browser buttons */
             top_menu.set_back_menu (current_tab.get_go_back_path_list ());
             top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
-            top_menu.set_can_go_back (current_tab.can_go_back);
-            top_menu.set_can_go_forward (current_tab.can_show_folder && current_tab.can_go_forward);
-            top_menu.set_working (tabs.current.working);
+            top_menu.can_go_back = current_tab.can_go_back;
+            top_menu.can_go_forward = (current_tab.can_show_folder && current_tab.can_go_forward);
+            top_menu.working = tabs.current.working;
 
             /* Update viewmode switch, action state and settings */
             var mode = current_tab.view_mode;

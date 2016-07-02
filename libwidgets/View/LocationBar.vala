@@ -27,6 +27,16 @@ namespace Marlin.View.Chrome
         private GLib.File? search_location = null;
         public bool search_mode {get; private set;}
 
+        public new bool sensitive {
+            set {
+                bread.sensitive = value;
+            }
+
+            get {
+                return bread.sensitive;
+            }
+        }
+
         uint focus_timeout_id = 0;
 
         public signal void reload_request ();
@@ -42,7 +52,7 @@ namespace Marlin.View.Chrome
             show_refresh_icon ();
 
             key_press_event.connect ((event) => {
-                return bread.key_press_event (event);
+                return has_focus && bread.key_press_event (event);
             });
         }
 
@@ -173,6 +183,9 @@ namespace Marlin.View.Chrome
         }
 
         public bool enter_search_mode (bool local_only, bool begins_with_only) {
+            if (!sensitive) {
+                return false;
+            }
             search_results.set_search_current_directory_only (local_only);
             search_results.set_begins_with_only (begins_with_only);
             if (!search_mode) {
@@ -190,7 +203,7 @@ namespace Marlin.View.Chrome
         }
 
         public virtual bool enter_navigate_mode (string? current = null) {
-            if (set_focussed ()) {
+            if (sensitive && set_focussed ()) {
                 bread.grab_focus ();
                 show_navigate_icon ();
                 return true;
@@ -235,10 +248,6 @@ namespace Marlin.View.Chrome
                 focus_timeout_id = 0;
                 return false;
             });
-        }
-
-        public new void set_sensitive (bool sensitive) {
-            bread.set_sensitive (sensitive);
         }
     }
 }
