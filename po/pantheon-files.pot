@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-02 05:47+0400\n"
+"POT-Creation-Date: 2016-07-02 05:58+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1405,7 +1405,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:573
+#: ../src/View/PropertiesWindow.vala:574
 msgid "Size:"
 msgstr ""
 
@@ -1413,7 +1413,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:580
+#: ../src/View/PropertiesWindow.vala:581
 msgid "Type:"
 msgstr ""
 
@@ -1602,7 +1602,7 @@ msgstr ""
 msgid "Access Denied"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1282
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1283
 msgid "%u folders"
 msgstr ""
 
@@ -1618,8 +1618,8 @@ msgstr ""
 msgid " selected"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1253
-#: ../src/View/PropertiesWindow.vala:1292
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1254
+#: ../src/View/PropertiesWindow.vala:1293
 msgid "%u folder"
 msgstr ""
 
@@ -1757,144 +1757,144 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:264
+#: ../src/View/PropertiesWindow.vala:265
 msgid "Actual Size Could Be Larger"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:264
+#: ../src/View/PropertiesWindow.vala:265
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:283 ../src/View/PropertiesWindow.vala:302
+#: ../src/View/PropertiesWindow.vala:284 ../src/View/PropertiesWindow.vala:303
 msgid "unknown"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:462
+#: ../src/View/PropertiesWindow.vala:463
 msgid "Created:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:464
+#: ../src/View/PropertiesWindow.vala:465
 msgid "Modified:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:467
+#: ../src/View/PropertiesWindow.vala:468
 msgid "Last Access:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:475
+#: ../src/View/PropertiesWindow.vala:476
 msgid "Deleted:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:481
+#: ../src/View/PropertiesWindow.vala:482
 msgid "MimeType:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:489
+#: ../src/View/PropertiesWindow.vala:490
 msgid "Loading…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:502
+#: ../src/View/PropertiesWindow.vala:503
 msgid "MimeTypes:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:515 ../src/View/PropertiesWindow.vala:517
+#: ../src/View/PropertiesWindow.vala:516 ../src/View/PropertiesWindow.vala:518
 #: ../src/View/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:521
+#: ../src/View/PropertiesWindow.vala:522
 msgid "Target:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:527
+#: ../src/View/PropertiesWindow.vala:528
 msgid "Origin Location:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:534
+#: ../src/View/PropertiesWindow.vala:535
 msgid "Could not be determined"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:583
+#: ../src/View/PropertiesWindow.vala:584
 msgid "Contains:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:619
+#: ../src/View/PropertiesWindow.vala:620
 msgid "Other Application…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:639
+#: ../src/View/PropertiesWindow.vala:640
 msgid "Open with:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:733
+#: ../src/View/PropertiesWindow.vala:734
 msgid "Read"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:737
+#: ../src/View/PropertiesWindow.vala:738
 msgid "Write"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:741
+#: ../src/View/PropertiesWindow.vala:742
 msgid "Execute"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:948 ../src/View/PropertiesWindow.vala:964
+#: ../src/View/PropertiesWindow.vala:949 ../src/View/PropertiesWindow.vala:965
 msgid "Owner:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:954 ../src/View/PropertiesWindow.vala:968
+#: ../src/View/PropertiesWindow.vala:955 ../src/View/PropertiesWindow.vala:969
 msgid "Group:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:972
+#: ../src/View/PropertiesWindow.vala:973
 msgid "Everyone:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1238
+#: ../src/View/PropertiesWindow.vala:1239
 msgid "%u subfolders and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1240
+#: ../src/View/PropertiesWindow.vala:1241
 msgid "%u subfolders and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1243
+#: ../src/View/PropertiesWindow.vala:1244
 msgid "%u subfolders"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1248
+#: ../src/View/PropertiesWindow.vala:1249
 msgid "%u subfolder and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1250
+#: ../src/View/PropertiesWindow.vala:1251
 msgid "%u subfolder and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1259
-#: ../src/View/PropertiesWindow.vala:1298
+#: ../src/View/PropertiesWindow.vala:1260
+#: ../src/View/PropertiesWindow.vala:1299
 msgid "%u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1261
-#: ../src/View/PropertiesWindow.vala:1300
+#: ../src/View/PropertiesWindow.vala:1262
+#: ../src/View/PropertiesWindow.vala:1301
 msgid "%u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1277
+#: ../src/View/PropertiesWindow.vala:1278
 msgid "%u selected items (%u folders and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1279
+#: ../src/View/PropertiesWindow.vala:1280
 msgid "%u selected items (%u folders and %u file)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1287
+#: ../src/View/PropertiesWindow.vala:1288
 msgid "%u selected items (%u folder and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1289
+#: ../src/View/PropertiesWindow.vala:1290
 msgid "%u selected items (%u folder and %u file)"
 msgstr ""
 
