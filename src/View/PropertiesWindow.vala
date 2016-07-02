@@ -20,7 +20,9 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog {
+namespace Marlin.View {
+
+public class PropertiesWindow : AbstractPropertiesDialog {
     private const string resolution_key = _("Resolution:");
 
     private class Pair<F, G> {
@@ -69,6 +71,9 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         }
     }
 
+    private Mutex mutex;
+    private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
+
     private Gee.Set<string>? mimes;
     private Gtk.Label type_label;
     private Gtk.Label size_label;
@@ -77,8 +82,8 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
     private Gtk.Widget type_key_label;
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
-    private Gtk.Image size_warning_image;
     private int size_warning = 0;
+    private uint64 total_size = 0;
 
     private uint timeout_perm = 0;
     private GLib.Cancellable? cancellable;
@@ -89,6 +94,35 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
     private uint selected_folders = 0;
     private uint selected_files = 0;
     private signal void uncounted_folders_changed ();
+
+    private Gtk.Grid perm_grid;
+    private int owner_perm_code = 0;
+    private int group_perm_code = 0;
+    private int everyone_perm_code = 0;
+
+    private enum AppsColumn {
+        APP_INFO,
+        LABEL,
+        ICON
+    }
+
+    private enum PermissionType {
+        USER,
+        GROUP,
+        OTHER
+    }
+
+    private enum PermissionValue {
+        READ = (1<<0),
+        WRITE = (1<<1),
+        EXE = (1<<2)
+    }
+
+    private Posix.mode_t[,] vfs_perms = {
+        { Posix.S_IRUSR, Posix.S_IWUSR, Posix.S_IXUSR },
+        { Posix.S_IRGRP, Posix.S_IWGRP, Posix.S_IXGRP },
+        { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
+    };
 
     private uint uncounted_folders {
         get {
@@ -131,10 +165,11 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
            GLib.List.copy() would not guarantee valid references: because it
            does a shallow copy (copying the pointer values only) the objects'
            memory may be freed even while this code is using it. */
-        foreach (GOF.File file in _files)
+        foreach (GOF.File file in _files) {
             /* prepend(G) is declared "owned G", so ref() will be called once
                on the unowned foreach value. */
             files.prepend (file);
+        }
 
         count = files.length();
 
@@ -150,31 +185,32 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
 
         goffile = (GOF.File) files.data;
         mimes = new Gee.HashSet<string> ();
-        foreach (var gof in files)
-        {
+        foreach (var gof in files) {
             if (!(gof is GOF.File)) {
                 critical ("Properties Window constructor called with invalid file data (2)");
                 return;
             }
 
             var ftype = gof.get_ftype ();
-            if (ftype != null)
+            if (ftype != null) {
                 mimes.add (ftype);
+            }
 
-            if (gof.is_directory)
+            if (gof.is_directory) {
                 files_contain_a_directory = true;
+            }
         }
 
         get_info (goffile);
         cancellable = new GLib.Cancellable ();
 
-        /* Header Box */
-        build_header_box ();
-
         /* Info */
         if (info.size > 0) {
             construct_info_panel (info);
         }
+
+        update_selection_size (); /* Start counting first to get number of selected files and folders */
+        build_header_box ();
 
         /* Permissions */
         /* Don't show permissions for uri scheme trash and archives */
@@ -212,37 +248,27 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
 
         show_all ();
 
-        /* There is a race condition between reaching update_header_desc () or here first
+        /* There is a race condition between reaching update_size_label () or here first
          * so call update_widgets_state in both places.
          */
         update_widgets_state ();
-        present ();
     }
 
-    private uint64 total_size = 0;
-
-    private void update_header_desc () {
-        string header_desc_str;
-
-        header_desc_str = format_size ((int64) total_size);
+    private void update_size_label () {
+        size_label.label = format_size ((int64) total_size);
+        contains_label.label = get_contains_label (folder_count, file_count);
 
         if (size_warning > 0) {
-            string file_plural = _("file");
-            if (size_warning > 1)
-                file_plural = _("files");
-            size_warning_image.visible = true;
-            size_warning_image.tooltip_text = _("Actual size could be larger, ") + "%i %s ".printf (size_warning, file_plural) + _("could not be read due to permissions or other errors.");
+            var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
+            size_warning_image.halign = Gtk.Align.START;
+            size_warning_image.hexpand = true;
+            size_warning_image.tooltip_markup = "<b>" + _("Actual Size Could Be Larger") + "</b>" + "\n" + ngettext ("%i file could not be read due to permissions or other errors.", "%i files could not be read due to permissions or other errors.", (ulong) size_warning).printf (size_warning);
+            info_grid.attach_next_to (size_warning_image, size_label, Gtk.PositionType.RIGHT);
+            info_grid.show_all ();
         }
-
-        size_label.label = header_desc_str;
-        contains_label.label = get_contains_label (folder_count, file_count);
-        update_widgets_state ();
     }
 
-    private Mutex mutex;
-    private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
-
-    private void selection_size_update () {
+    private void update_selection_size () {
         total_size = 0;
         uncounted_folders = 0;
         selected_folders = 0;
@@ -250,7 +276,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         folder_count = 0;
         file_count = 0;
         size_warning = 0;
-        size_warning_image.hide ();
 
         deep_count_directories = null;
 
@@ -298,11 +323,11 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
                 if (uncounted_folders == 0) {
                     spinner.hide ();
                     spinner.stop ();
-                    update_header_desc ();
+                    update_size_label ();
                 }
             });
         } else {
-            update_header_desc ();
+            update_size_label ();
         }
     }
 
@@ -315,8 +340,9 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
                 proposed_name = new_name;
                 view.set_file_display_name (file.location, new_name, after_rename);
             }
-        } else
+        } else {
             reset_entry_text ();
+        }
     }
 
     private void after_rename (GLib.File original_file, GLib.File? new_location) {
@@ -330,43 +356,23 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
     }
 
     public void reset_entry_text (string? new_name = null) {
-        if (new_name != null)
+        if (new_name != null) {
             original_name = new_name;
+        }
 
         entry.set_text (original_name);
     }
 
     private void build_header_box () {
-        /* create some widgets first (may be hidden by selection_size_update ()) */
+        /* create some widgets first (may be hidden by update_selection_size ()) */
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
         var file_icon = new Gtk.Image.from_pixbuf (file_pix);
         overlay_emblems (file_icon, goffile.emblems_list);
 
-        spinner = new Gtk.Spinner ();
-        spinner.halign = Gtk.Align.START;
-
-        size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
-        size_warning_image.halign = Gtk.Align.START;
-        size_warning_image.no_show_all = true;
-        size_label = new Gtk.Label ("");
-
-        type_label = new Gtk.Label ("");
-        type_label.set_halign (Gtk.Align.START);
-        type_key_label = new Gtk.Label (_("Type:"));
-        type_key_label.halign = Gtk.Align.END;
-
-        contains_label = new Gtk.Label ("");
-        contains_label.set_halign (Gtk.Align.START);
-        contains_key_label = new Gtk.Label (_("Contains:"));
-        contains_key_label.set_halign (Gtk.Align.END);
-
-        selection_size_update (); /* Start counting first to get number of selected files and folders */
-
         /* Build header box */
         if (count > 1 || (count == 1 && !goffile.is_writable ())) {
-            var label = new Gtk.Label ("");
-            label.set_markup ("<span>" + get_selected_label (selected_folders, selected_files) + "</span>");
-            label.set_halign (Gtk.Align.START);
+            var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
+            label.halign = Gtk.Align.START;
             header_title = label;
         } else if (count == 1 && goffile.is_writable ()) {
             entry = new Gtk.Entry ();
@@ -481,7 +487,7 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
                 if (file.width > 0) { /* resolution has already been determined */
                     resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
                 } else {
-                    resolution_value = _("loading ...");
+                    resolution_value = _("Loading…");
                     /* Async function will update info when resolution determined */
                     get_resolution.begin (file, info);
                 }
@@ -562,27 +568,37 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
             row++;
         } while (kw != null);
     }
+
     private void construct_info_panel (Gee.LinkedList<Pair<string, string>> item_info) {
-        int n = 1;
-
         /* Have to have these separate as size call is async */
-        var size_key_label = new Gtk.Label (_("Size:"));
-        size_key_label.halign = Gtk.Align.END;
+        var size_key_label = new KeyLabel (_("Size:"));
 
-        var size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 4);
-        size_box.add (spinner);
-        size_box.add (size_label);
-        size_box.add (size_warning_image);
+        spinner = new Gtk.Spinner ();
+        spinner.halign = Gtk.Align.START;
 
-        create_info_line (size_key_label, size_label, info_grid, ref n, size_box);
-        create_info_line (type_key_label, type_label, info_grid, ref n);
-        create_info_line (contains_key_label, contains_label, info_grid, ref n);
+        size_label = new ValueLabel ("");
 
+        type_key_label = new KeyLabel (_("Type:"));
+        type_label = new ValueLabel ("");
+
+        contains_key_label = new KeyLabel (_("Contains:"));
+        contains_label = new ValueLabel ("");
+
+        info_grid.attach (size_key_label, 0, 1, 1, 1);
+        info_grid.attach_next_to (spinner, size_key_label, Gtk.PositionType.RIGHT);
+        info_grid.attach_next_to (size_label, size_key_label, Gtk.PositionType.RIGHT);
+        info_grid.attach (type_key_label, 0, 2, 1, 1);
+        info_grid.attach_next_to (type_label, type_key_label, Gtk.PositionType.RIGHT, 3, 1);
+        info_grid.attach (contains_key_label, 0, 3, 1, 1);
+        info_grid.attach_next_to (contains_label, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
+
+        int n = 4;
         foreach (var pair in item_info) {
-            var value_label = new Gtk.Label (pair.value);
-            var key_label = new Gtk.Label (pair.key);
-            key_label.halign = Gtk.Align.END;
-            create_info_line (key_label, value_label, info_grid, ref n);
+            var value_label = new ValueLabel (pair.value);
+            var key_label = new KeyLabel (pair.key);
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
         }
 
         /* Open with */
@@ -601,42 +617,37 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
             }
             store_apps.append (out iter);
             store_apps.set (iter,
-                            AppsColumn.LABEL, _("Other application..."));
+                            AppsColumn.LABEL, _("Other Application…"));
             store_apps.prepend (out iter);
             store_apps.set (iter,
                             AppsColumn.APP_INFO, default_app,
                             AppsColumn.LABEL, default_app.get_name (),
                             AppsColumn.ICON, ensure_icon (default_app));
 
-            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
             var renderer = new Gtk.CellRendererText ();
             var pix_renderer = new Gtk.CellRendererPixbuf ();
+
+            var combo = new Gtk.ComboBox.with_model ((Gtk.TreeModel) store_apps);
+            combo.active = 0;
+            combo.valign = Gtk.Align.CENTER;
             combo.pack_start (pix_renderer, false);
             combo.pack_start (renderer, true);
-
             combo.add_attribute (renderer, "text", AppsColumn.LABEL);
             combo.add_attribute (pix_renderer, "gicon", AppsColumn.ICON);
 
-            combo.set_active (0);
-            combo.set_valign (Gtk.Align.CENTER);
-
-            var hcombo = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            hcombo.pack_start (combo, false, false, 0);
-
             combo.changed.connect (combo_open_with_changed);
 
-            var key_label = new Gtk.Label (_("Open with:"));
-            key_label.halign = Gtk.Align.END;
+            var key_label = new KeyLabel (_("Open with:"));
 
             info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach (hcombo, 1, n, 1, 1);
+            info_grid.attach_next_to (combo, key_label, Gtk.PositionType.RIGHT);
         }
 
         /* Device Usage */
         if (should_show_device_usage ()) {
             try {
                 var info = goffile.get_target_location ().query_filesystem_info ("filesystem::*");
-                create_storage_bar (info, ref n);
+                create_storage_bar (info, n);
             } catch (Error e) {
                 warning ("error: %s", e.message);
             }
@@ -662,29 +673,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         l_read.set_use_markup (true);
         btn.add (l_read);
     }
-
-    private enum PermissionType {
-        USER,
-        GROUP,
-        OTHER
-    }
-
-    private enum PermissionValue {
-        READ = (1<<0),
-        WRITE = (1<<1),
-        EXE = (1<<2)
-    }
-
-    private Posix.mode_t[,] vfs_perms = {
-        { Posix.S_IRUSR, Posix.S_IWUSR, Posix.S_IXUSR },
-        { Posix.S_IRGRP, Posix.S_IWGRP, Posix.S_IXGRP },
-        { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
-    };
-
-    private Gtk.Grid perm_grid;
-    private int owner_perm_code = 0;
-    private int group_perm_code = 0;
-    private int everyone_perm_code = 0;
 
     private void update_perm_codes (PermissionType pt, int val, int mult) {
         switch (pt) {
@@ -974,18 +962,15 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         key_label.margin_bottom = 12;
         value_label.margin_bottom = 12;
 
-        key_label = new Gtk.Label (_("Owner:"));
-        key_label.halign = Gtk.Align.END;
+        key_label = new KeyLabel (_("Owner:"));
         value_hlabel = create_perm_choice (PermissionType.USER);
         perm_grid.attach (key_label, 0, 3, 1, 1);
         perm_grid.attach (value_hlabel, 1, 3, 2, 1);
-        key_label = new Gtk.Label (_("Group:"));
-        key_label.halign = Gtk.Align.END;
+        key_label = new KeyLabel (_("Group:"));
         value_hlabel = create_perm_choice (PermissionType.GROUP);
         perm_grid.attach (key_label, 0, 4, 1, 1);
         perm_grid.attach (value_hlabel, 1, 4, 2, 1);
-        key_label = new Gtk.Label (_("Everyone:"));
-        key_label.halign = Gtk.Align.END;
+        key_label = new KeyLabel (_("Everyone:"));
         value_hlabel = create_perm_choice (PermissionType.OTHER);
         perm_grid.attach (key_label, 0, 5, 1, 1);
         perm_grid.attach (value_hlabel, 1, 5, 2, 1);
@@ -1182,12 +1167,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
         });
     }
 
-    private enum AppsColumn {
-        APP_INFO,
-        LABEL,
-        ICON
-    }
-
     private Icon ensure_icon (AppInfo app) {
         Icon icon = app.get_icon ();
         if (icon == null)
@@ -1334,10 +1313,6 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
             spinner.hide ();
         }
 
-        if (size_warning < 1) {
-            size_warning_image.hide ();
-        }
-
         if (count > 1) {
             type_key_label.hide ();
             type_label.hide ();
@@ -1365,4 +1340,5 @@ public class Marlin.View.PropertiesWindow : Marlin.View.AbstractPropertiesDialog
             contains_label.show ();
         }
     }
+}
 }

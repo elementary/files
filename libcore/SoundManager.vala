@@ -38,7 +38,7 @@ namespace PF {
             ca_context = null;
             Canberra.Context.create (out ca_context);
             if (ca_context != null) {
-                ca_context.change_props (Canberra.PROP_APPLICATION_NAME, PF.Sound.APP_TITLE,
+                ca_context.change_props (Canberra.PROP_APPLICATION_NAME, _(PF.Sound.APP_TITLE),
                                          Canberra.PROP_APPLICATION_ID, PF.Sound.APP_ID,
                                          Canberra.PROP_APPLICATION_ICON_NAME, PF.Sound.APP_LOGO);
                 ca_context.open ();

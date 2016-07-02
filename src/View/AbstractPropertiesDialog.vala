@@ -19,8 +19,9 @@
 *
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
+namespace Marlin.View {
 
-protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
+protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
     protected Gtk.Grid info_grid;
     protected Gtk.Grid layout;
     protected Gtk.Stack stack;
@@ -43,9 +44,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         border_width = 6;
         destroy_with_parent = true;
 
-        var info_header = new Gtk.Label (_("Info"));
-        info_header.halign = Gtk.Align.START;
-        info_header.get_style_context ().add_class ("h4");
+        var info_header = new HeaderLabel (_("Info"));
 
         info_grid = new Gtk.Grid ();
         info_grid.column_spacing = 6;
@@ -81,6 +80,8 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
                     break;
             }
         });
+
+        present ();
     }
 
     protected void create_header_title () {
@@ -132,71 +133,66 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         }
     }
 
-    protected void create_head_line (Gtk.Widget head_label, Gtk.Grid information, ref int line) {
-        head_label.set_halign (Gtk.Align.START);
-        head_label.get_style_context ().add_class ("h4");
-        information.attach (head_label, 0, line, 1, 1);
-
-        line++;
-    }
-
-    protected void create_info_line (Gtk.Widget key_label, Gtk.Label value_label, Gtk.Grid information, ref int line, Gtk.Widget? value_container = null) {
-        key_label.margin_start = 20;
-        value_label.set_selectable (true);
-        value_label.set_use_markup (true);
-        value_label.set_can_focus (false);
-        value_label.set_halign (Gtk.Align.START);
-
-        information.attach (key_label, 0, line, 1, 1);
-        if (value_container != null) {
-            value_container.set_size_request (150, -1);
-            information.attach_next_to (value_container, key_label, Gtk.PositionType.RIGHT, 3, 1);
-        } else {
-            information.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-        }
-
-        line++;
-    }
-
-    protected void create_storage_bar (GLib.FileInfo info, ref int line) {
-        var storage_header = new Gtk.Label (_("Device Usage"));
-        storage_header.halign = Gtk.Align.START;
-        storage_header.get_style_context ().add_class ("h4");
+    protected void create_storage_bar (GLib.FileInfo file_info, int line) {
+        var storage_header = new HeaderLabel (_("Device Usage"));
         info_grid.attach (storage_header, 0, line, 1, 1);
 
-        line++;
+        if (file_info != null &&
+            file_info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
+            file_info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
 
-        if (info != null &&
-            info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
-            info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
-
-            uint64 fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
-            uint64 fs_used = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
+            uint64 fs_capacity = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
+            uint64 fs_used = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
 
             var storagebar = new Granite.Widgets.StorageBar (fs_capacity);
             storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, fs_used);
 
-            info_grid.attach (storagebar, 0, line, 4, 1);
+            info_grid.attach (storagebar, 0, line + 1, 4, 1);
         } else {
             /* We're not able to gether the usage statistics, show an error
              * message to let the user know. */
-            var key_label = new Gtk.Label (_("Capacity:"));
-            key_label.halign = Gtk.Align.END;
+            var capacity_label = new KeyLabel (_("Capacity:"));
+            var capacity_value = new ValueLabel (_("Unknown"));
 
-            var value_label = new Gtk.Label (_("Unknown"));
-            create_info_line (key_label, value_label, info_grid, ref line);
+            var available_label = new KeyLabel (_("Available:"));
+            var available_value = new ValueLabel (_("Unknown"));
 
-            key_label = new Gtk.Label (_("Available:"));
-            key_label.halign = Gtk.Align.END;
+            var used_label = new KeyLabel (_("Used:"));
+            var used_value = new ValueLabel (_("Unknown"));
 
-            value_label = new Gtk.Label (_("Unknown"));
-            create_info_line (key_label, value_label, info_grid, ref line);
-
-            key_label = new Gtk.Label (_("Used:"));
-            key_label.halign = Gtk.Align.END;
-
-            value_label = new Gtk.Label (_("Unknown"));
-            create_info_line (key_label, value_label, info_grid, ref line);
+            info_grid.attach (capacity_label, 0, line + 1, 1, 1);
+            info_grid.attach_next_to (capacity_value, capacity_label, Gtk.PositionType.RIGHT);
+            info_grid.attach (available_label, 0, line + 2, 1, 1);
+            info_grid.attach_next_to (available_value, available_label, Gtk.PositionType.RIGHT);
+            info_grid.attach (used_label, 0, line + 3, 1, 1);
+            info_grid.attach_next_to (used_value, used_label, Gtk.PositionType.RIGHT);
         }
     }
+}
+
+protected class HeaderLabel : Gtk.Label {
+    public HeaderLabel (string _label) {
+        halign = Gtk.Align.START;
+        get_style_context ().add_class ("h4");
+        label = _label;
+    }
+}
+
+protected class KeyLabel : Gtk.Label {
+    public KeyLabel (string _label) {
+        halign = Gtk.Align.END;
+        label = _label;
+        margin_start = 12;
+    }
+}
+
+protected class ValueLabel : Gtk.Label {
+    public ValueLabel (string _label) {
+        can_focus = true;
+        halign = Gtk.Align.START;
+        label = _label;
+        selectable = true;
+        use_markup = true;
+    }
+}
 }

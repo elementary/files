@@ -20,7 +20,9 @@
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Marlin.View.VolumePropertiesWindow : Marlin.View.AbstractPropertiesDialog {
+namespace Marlin.View {
+
+public class VolumePropertiesWindow : AbstractPropertiesDialog {
 
     public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
         base (_("Disk Properties"), parent);
@@ -73,25 +75,23 @@ public class Marlin.View.VolumePropertiesWindow : Marlin.View.AbstractProperties
         header_title.halign = Gtk.Align.START;
         create_header_title ();
 
-        int n = 1;
+        var location_label = new KeyLabel (_("Location:"));
+        var location_value = new ValueLabel ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
 
-        var key_label = new Gtk.Label (_("Location:"));
-        key_label.halign = Gtk.Align.END;
-
-        var value_label = new Gtk.Label ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
-        create_info_line (key_label, value_label, info_grid, ref n);
+        info_grid.attach (location_label, 0, 1, 1, 1);
+        info_grid.attach_next_to (location_value, location_label, Gtk.PositionType.RIGHT);
 
         if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
-            key_label = new Gtk.Label (_("Format:"));
-            key_label.halign = Gtk.Align.END;
+            var key_label = new KeyLabel (_("Format:"));
+            var value_label = new ValueLabel (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
 
-            value_label = new Gtk.Label (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
-            create_info_line (key_label, value_label, info_grid, ref n);
+            info_grid.attach (key_label, 0, 2, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT);
         }
 
-        create_storage_bar (info, ref n);
+        create_storage_bar (info, 3);
 
         show_all ();
-        present ();
     }
+}
 }

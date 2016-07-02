@@ -406,8 +406,16 @@ namespace FM {
         }
 
         public void select_first_for_empty_selection () {
-            if (selected_files == null)
-                set_cursor (new Gtk.TreePath.from_indices (0), false, true, true);
+            if (selected_files == null) {
+                Idle.add_full (GLib.Priority.LOW, () => {
+                    if (!tree_frozen) {
+                        set_cursor (new Gtk.TreePath.from_indices (0), false, true, true);
+                        return false;
+                    } else {
+                        return true;
+                    }
+                });
+            }
         }
         public void select_glib_files (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
             unselect_all ();
@@ -544,7 +552,7 @@ namespace FM {
             }
         }
 
-        protected void select_gof_file (GOF.File file) {
+        public void select_gof_file (GOF.File file) {
             var iter = Gtk.TreeIter ();
             if (!model.get_first_iter_for_file (file, out iter))
                 return; /* file not in model */
@@ -2000,7 +2008,7 @@ namespace FM {
                     menu.append (label, "selection.open");
                 } else if (default_app != null) {
                     var app_name = default_app.get_display_name ();
-                    if (app_name != "Files") {
+                    if (app_name != Marlin.APP_TITLE) {
                         label = (_("Open in %s")).printf (app_name);
                         menu.append (label, "selection.open_with_default");
                     }

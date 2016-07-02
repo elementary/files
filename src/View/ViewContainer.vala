@@ -39,9 +39,9 @@ namespace Marlin.View {
                 return slot != null ? slot.location : null;
             }
         }
-        public string? uri {
+        public string uri {
             get {
-                return slot != null ? slot.uri : null;
+                return slot != null ? slot.uri : "";
             }
         }
 
@@ -53,7 +53,12 @@ namespace Marlin.View {
 
         public bool locked_focus {
             get {
+//<<<<<<< TREE
                 return slot != null && slot.locked_focus;
+//=======
+//                var slot = get_current_slot ();
+//                return slot != null ? get_current_slot ().locked_focus : false;
+//>>>>>>> MERGE-SOURCE
             }
         }
 
@@ -172,9 +177,10 @@ namespace Marlin.View {
                 var parent_path = PF.FileUtils.get_parent_path_from_path (location.get_uri ());
                 parent = PF.FileUtils.get_file_for_path (parent_path);
             }
+
             /* Certain parents such as ftp:// will be returned as null as they are not browsable */
             if (parent != null) {
-                user_path_change_request (parent);
+                user_path_change_request (parent, false, false);
             }
         }
 
@@ -183,7 +189,7 @@ namespace Marlin.View {
 
             if (loc != null) {
                 selected_locations.append (this.location);
-                user_path_change_request (File.new_for_commandline_arg (loc));
+                user_path_change_request (File.new_for_commandline_arg (loc), false, false);
             }
         }
 
@@ -191,7 +197,7 @@ namespace Marlin.View {
             string? loc = browser.go_forward (n);
 
             if (loc != null)
-                user_path_change_request (File.new_for_commandline_arg (loc));
+                user_path_change_request (File.new_for_commandline_arg (loc), false, false);
         }
 
         public void add_view (Marlin.ViewMode mode, GLib.File loc) {
@@ -252,15 +258,15 @@ namespace Marlin.View {
             aslot.path_changed.disconnect (on_slot_path_changed);
         }
 
-        private void on_slot_active (GOF.AbstractSlot aslot, bool scroll) {
+        private void on_slot_active (GOF.AbstractSlot aslot, bool scroll, bool animate) {
             refresh_slot_info (slot.location);
         }
 
-        private void user_path_change_request (GLib.File loc) {
+        public void user_path_change_request (GLib.File loc, bool allow_mode_change = true, bool make_root = true) {
             /* Ony call directly if it is known that a change of folder is required
              * otherwise call focus_location.
              */
-            view.user_path_change_request (loc);
+            view.user_path_change_request (loc, allow_mode_change, make_root);
         }
 
         public void new_container_request (GLib.File loc, int flag = 1) {
@@ -423,11 +429,11 @@ namespace Marlin.View {
            return view != null ? view.get_current_slot () : null;
         }
 
-        public void set_active_state (bool is_active) {
+        public void set_active_state (bool is_active, bool animate = true) {
             var aslot = get_current_slot ();
             if (aslot != null) {
                 /* Since async loading it may not have been determined whether slot is loadable */
-                aslot.set_active_state (is_active);
+                aslot.set_active_state (is_active, animate);
                 active ();
             }
         }
@@ -447,6 +453,10 @@ namespace Marlin.View {
              * select_in_current_only is not set to true.
              */
 
+            var aslot = get_current_slot ();
+            if (aslot == null) {
+                return;
+            }
             /* Search can generate null focus requests if no match - deselect previous search selection */
             if (loc == null) {
                 set_all_selected (false);
@@ -457,18 +467,18 @@ namespace Marlin.View {
                 return;
             }
 
-            FileInfo? info = get_current_slot ().lookup_file_info (loc);
+            FileInfo? info = aslot.lookup_file_info (loc);
             FileType filetype = FileType.UNKNOWN;
             if (info != null) { /* location is in the current folder */
                 filetype = info.get_file_type ();
                 if (filetype != FileType.DIRECTORY || no_path_change) {
                     if (unselect_others) {
-                        get_current_slot ().set_all_selected (false);
+                        aslot.set_all_selected (false);
                         selected_locations = null;
                     }
                     var list = new List<File> ();
                     list.prepend (loc);
-                    get_current_slot ().select_glib_files (list, loc);
+                    aslot.select_glib_files (list, loc);
                     return;
                 }
             } else if (no_path_change) { /* not in current, do not navigate to it*/
@@ -503,8 +513,9 @@ namespace Marlin.View {
 
         public void reload () {
             var slot = get_current_slot ();
-            if (slot != null)
+            if (slot != null) {
                 slot.reload ();
+            }
         }
 
         public Gee.List<string> get_go_back_path_list () {
