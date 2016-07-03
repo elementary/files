@@ -30,7 +30,7 @@ namespace Marlin {
         public List<Marlin.LauncherEntry> launcher_entries = null;
 
         private QuicklistHandler () {
-            this.entry_add ("pantheon-files.desktop");
+            this.entry_add (Marlin.APP_DESKTOP);
 
             if (this.launcher_entries.length () == 0) {
                 error ("Couldn't find a valid Unity launcher entry.");

@@ -67,6 +67,14 @@ GENERATE_VAPI
 GENERATE_HEADER
     pantheon-files-widgets
 )
+
+configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files-widgets.h DESTINATION include/pantheon-files-widgets/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files-widgets.vapi DESTINATION share/vala/vapi)
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/pantheon-files-widgets.deps DESTINATION share/vala/vapi)
+install (FILES ${C_HEADER_FILES} DESTINATION include/pantheon-files-widgets/)
+
 add_library (${PKGNAME} SHARED ${VALA_C})
 add_dependencies (${PKGNAME} pantheon-files-core)
 

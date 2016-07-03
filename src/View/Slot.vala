@@ -142,6 +142,8 @@ namespace Marlin.View {
         private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
             if (!updates_frozen) {
                 updates_frozen = true;
+                dir_view.clear (); /* clear model but do not change directory */
+
                 path_changed (false);
                 /* if original_request false, leave original_load_request as it is (it may already be true
                  * if reloading in response to reload button press). */  
@@ -152,7 +154,7 @@ namespace Marlin.View {
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
 
-                dir_view.clear (); /* clear model but do not change directory */
+
 
                 /* Only need to initialise directory once - the slot that originally received the
                  * reload request does this */ 
@@ -170,6 +172,7 @@ namespace Marlin.View {
                 warning ("Path change request received too rapidly");
                 return;
             }
+
             reload_timeout_id = Timeout.add (100, ()=> {
                 directory.reload ();
                 reload_timeout_id = 0;
@@ -192,25 +195,27 @@ namespace Marlin.View {
                 directory.track_longest_name = true;
         }
 
+        /* This delay in passing on the path change request is necessary to prevent occasional crashes
+         * due to undiagnosed bug.
+         */  
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (path_change_timeout_id > 0) {
                 warning ("Path change request received too rapidly");
                 return;
             }
             path_change_timeout_id = GLib.Timeout.add (20, () => {
-                on_path_change_request (loc, flag, make_root);
+                on_dir_view_path_change_request (loc, flag, make_root);
                 path_change_timeout_id = 0; 
                 return false;
             });
         }
 
-        private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
+        private void on_dir_view_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
-                if (dir_view is FM.ColumnView) {
-                    miller_slot_request (loc, make_root);
-                } else {
-                    user_path_change_request (loc);
-                }
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+                    miller_slot_request (loc, make_root); /* signal to parent MillerView */
+                else
+                    user_path_change_request (loc, false, make_root); /* Handle ourselves */
             } else
                 ctab.new_container_request (loc, flag);
         }
@@ -249,16 +254,17 @@ namespace Marlin.View {
             has_autosized = true;
         }
 
+        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true, bool make_root = true) {
         /** Only this function must be used to change or reload the path **/
-        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
             assert (loc != null);
             var old_dir = directory;
             set_up_directory (loc);
+            dir_view.change_directory (old_dir, directory);
+
             path_changed (allow_mode_change && directory.uri_contain_keypath_icons);
             /* ViewContainer listens to this signal takes care of updating appearance
              * If allow_mode_change is false View Container will not automagically
              * switch to icon view for icon folders (needed for Miller View) */
-            dir_view.change_directory (old_dir, directory);
             directory.init ();
         }
 
@@ -325,14 +331,19 @@ namespace Marlin.View {
                 dir_view.select_glib_files (files, focus_location);
         }
 
+        public void select_gof_file (GOF.File gof) {
+            if (dir_view != null)
+                dir_view.select_gof_file (gof);
+        }
+
         public override void select_first_for_empty_selection () {
             if (dir_view != null)
                 dir_view.select_first_for_empty_selection ();
         }
 
-        public override void set_active_state (bool set_active) {
+        public override void set_active_state (bool set_active, bool animate = true) {
             if (set_active)
-                active ();
+                active (true, animate);
             else
                 inactive ();
         }
