@@ -47,7 +47,7 @@
    this can be cleaned up once the file_info_command isn't a special
    case anylonger
    */
-gboolean marlin_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *);
+gboolean pf_dropbox_finish_file_info_command(DropboxFileInfoCommandResponse *);
 
 typedef struct {
     DropboxCommandClient *dcc;
@@ -430,7 +430,7 @@ exit:
     dficr->folder_tag_response = folder_tag_response;
     dficr->file_status_response = file_status_response;
     dficr->emblems_response = emblems_response;
-    g_idle_add((GSourceFunc) marlin_dropbox_finish_file_info_command, dficr);
+    g_idle_add((GSourceFunc) pf_dropbox_finish_file_info_command, dficr);
 
     g_free(filename);
 
@@ -528,7 +528,7 @@ end_request(DropboxCommand *dc) {
             dficr->dfic = dfic;
             dficr->file_status_response = NULL;
             dficr->emblems_response = NULL;
-            g_idle_add((GSourceFunc) marlin_dropbox_finish_file_info_command, dficr);
+            g_idle_add((GSourceFunc) pf_dropbox_finish_file_info_command, dficr);
         }
             break;
         case GENERAL_COMMAND: {
@@ -657,9 +657,9 @@ dropbox_command_client_thread(DropboxCommandClient *dcc) {
         g_io_channel_set_line_term(chan, "\n", -1);
 
 #define SET_CONNECTED_STATE(s)     {                    \
-    g_mutex_lock(dcc->command_connected_mutex);         \
+    g_mutex_lock(&(dcc->command_connected_mutex));      \
     dcc->command_connected = s;                         \
-    g_mutex_unlock(dcc->command_connected_mutex);       \
+    g_mutex_unlock(&(dcc->command_connected_mutex));    \
 }
 
         SET_CONNECTED_STATE(TRUE);
@@ -670,12 +670,12 @@ dropbox_command_client_thread(DropboxCommandClient *dcc) {
             DropboxCommand *dc;
 
             while (1) {
-                GTimeVal gtv;
+                guint64 gtv;
 
-                g_get_current_time(&gtv);
-                g_time_val_add(&gtv, G_USEC_PER_SEC / 10);
+                gtv = g_get_real_time();
+                gtv = gtv + G_USEC_PER_SEC / 10;
                 /* get a request from nautilus */
-                dc = g_async_queue_timed_pop(dcc->command_queue, &gtv);
+                dc = g_async_queue_timeout_pop(dcc->command_queue, gtv);
                 if (dc != NULL) {
                     break;
                 }
@@ -747,9 +747,9 @@ gboolean
 dropbox_command_client_is_connected(DropboxCommandClient *dcc) {
     gboolean command_connected;
 
-    g_mutex_lock(dcc->command_connected_mutex);
+    g_mutex_lock(&(dcc->command_connected_mutex));
     command_connected = dcc->command_connected;
-    g_mutex_unlock(dcc->command_connected_mutex);
+    g_mutex_unlock(&(dcc->command_connected_mutex));
 
     return command_connected;
 }
@@ -772,7 +772,7 @@ dropbox_command_client_request(DropboxCommandClient *dcc, DropboxCommand *dc) {
 void
 dropbox_command_client_setup(DropboxCommandClient *dcc) {
     dcc->command_queue = g_async_queue_new();
-    dcc->command_connected_mutex = g_mutex_new();
+    g_mutex_init(&(dcc->command_connected_mutex));
     dcc->command_connected = FALSE;
     dcc->ca_hooklist = NULL;
 
@@ -826,8 +826,8 @@ void
 dropbox_command_client_start(DropboxCommandClient *dcc) {
     /* setup the connect to the command server */
     debug("starting command thread");
-    g_thread_create((gpointer (*)(gpointer data)) dropbox_command_client_thread,
-                    dcc, FALSE, NULL);
+    g_thread_new("pantheon-files-plugin-dropbox", (gpointer (*)(gpointer data)) dropbox_command_client_thread,
+                    dcc);
 }
 
 /* thread safe */
@@ -850,7 +850,7 @@ void dropbox_command_client_send_simple_command(DropboxCommandClient *dcc,
 /* this is the C API, there is another send_command_to_db
    that is more the actual over the wire command */
 void dropbox_command_client_send_command(DropboxCommandClient *dcc,
-                                         MarlinDropboxCommandResponseHandler h,
+                                         PFDropboxCommandResponseHandler h,
                                          gpointer ud,
                                          const char *command, ...) {
     va_list ap;

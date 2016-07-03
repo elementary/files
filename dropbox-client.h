@@ -32,7 +32,7 @@ G_BEGIN_DECLS
 
 typedef struct {
   DropboxCommandClient dcc;
-  MarlinDropboxHookserv hookserv;
+  PFDropboxHookserv hookserv;
   GHookList onconnect_hooklist;
   GHookList ondisconnect_hooklist;
   gboolean hook_connect_called;

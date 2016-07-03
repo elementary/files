@@ -24,16 +24,16 @@
 #ifndef DROPBOX_COMMAND_CLIENT_H
 #define DROPBOX_COMMAND_CLIENT_H
 
-#include <marlincore.h>
+#include <pantheon-files-core.h>
 #include <gof-file.h>
 
 G_BEGIN_DECLS
 
 /* command structs */
-typedef enum {GET_FILE_INFO, GENERAL_COMMAND} MarlinDropboxRequestType;
+typedef enum {GET_FILE_INFO, GENERAL_COMMAND} PFDropboxRequestType;
 
 typedef struct {
-  MarlinDropboxRequestType request_type;
+  PFDropboxRequestType request_type;
 } DropboxCommand;
 
 typedef struct {
@@ -51,13 +51,13 @@ typedef struct {
   GHashTable *emblems_response;
 } DropboxFileInfoCommandResponse;
 
-typedef void (*MarlinDropboxCommandResponseHandler)(GHashTable *, gpointer);
+typedef void (*PFDropboxCommandResponseHandler)(GHashTable *, gpointer);
 
 typedef struct {
   DropboxCommand dc;
   gchar *command_name;
   GHashTable *command_args;
-  MarlinDropboxCommandResponseHandler handler;
+  PFDropboxCommandResponseHandler handler;
   gpointer handler_ud;
 } DropboxGeneralCommand;
 
@@ -65,7 +65,7 @@ typedef void (*DropboxCommandClientConnectionAttemptHook)(guint, gpointer);
 typedef GHookFunc DropboxCommandClientConnectHook;
 
 typedef struct {
-  GMutex *command_connected_mutex;
+  GMutex command_connected_mutex;
   gboolean command_connected;
   GAsyncQueue *command_queue;
   GList *ca_hooklist;
@@ -90,7 +90,7 @@ void dropbox_command_client_send_simple_command(DropboxCommandClient *dcc,
                         const char *command);
 
 void dropbox_command_client_send_command(DropboxCommandClient *dcc,
-                     MarlinDropboxCommandResponseHandler h,
+                     PFDropboxCommandResponseHandler h,
                      gpointer ud,
                      const char *command, ...);
 void

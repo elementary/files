@@ -21,8 +21,8 @@
  *
  */
 
-#ifndef MARLIN_DROPBOX_HOOKS_H
-#define MARLIN_DROPBOX_HOOKS_H
+#ifndef PF_DROPBOX_HOOKS_H
+#define PF_DROPBOX_HOOKS_H
 
 #include <glib.h>
 
@@ -45,31 +45,31 @@ typedef struct {
     GHashTable *dispatch_table;
     GHookList ondisconnect_hooklist;
     GHookList onconnect_hooklist;
-} MarlinDropboxHookserv;
+} PFDropboxHookserv;
 
 void
-marlin_dropbox_hooks_setup(MarlinDropboxHookserv *);
+pf_dropbox_hooks_setup(PFDropboxHookserv *);
 
 void
-marlin_dropbox_hooks_start(MarlinDropboxHookserv *);
+pf_dropbox_hooks_start(PFDropboxHookserv *);
 
 gboolean
-marlin_dropbox_hooks_is_connected(MarlinDropboxHookserv *);
+pf_dropbox_hooks_is_connected(PFDropboxHookserv *);
 
 gboolean
-marlin_dropbox_hooks_force_reconnect(MarlinDropboxHookserv *);
+pf_dropbox_hooks_force_reconnect(PFDropboxHookserv *);
 
 void
-marlin_dropbox_hooks_add(MarlinDropboxHookserv *ndhs,
+pf_dropbox_hooks_add(PFDropboxHookserv *ndhs,
                          const gchar *hook_name,
                          DropboxUpdateHook hook, gpointer ud);
 void
-marlin_dropbox_hooks_add_on_disconnect_hook(MarlinDropboxHookserv *hookserv,
+pf_dropbox_hooks_add_on_disconnect_hook(PFDropboxHookserv *hookserv,
                                             DropboxHookClientConnectHook dhcch,
                                             gpointer ud);
 
 void
-marlin_dropbox_hooks_add_on_connect_hook(MarlinDropboxHookserv *hookserv,
+pf_dropbox_hooks_add_on_connect_hook(PFDropboxHookserv *hookserv,
                                          DropboxHookClientConnectHook dhcch,
                                          gpointer ud);
 
