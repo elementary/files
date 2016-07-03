@@ -196,6 +196,7 @@ namespace Marlin
         public signal void finished ();
         public signal void progress_changed ();
         public void cancel ();
+        public string get_title ();
         public string get_status ();
         public string get_details ();
         public double get_progress ();
@@ -281,6 +282,7 @@ namespace GOF {
         public bool is_folder();
         public bool is_symlink();
         public bool is_trashed();
+	public bool is_readable ();
         public bool is_writable ();
         public bool is_executable ();
         public bool is_mountable ();

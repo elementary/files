@@ -25,7 +25,7 @@ namespace Marlin.View {
 
     public class Window : Gtk.ApplicationWindow
     {
-        static const GLib.ActionEntry [] win_entries = {
+        const GLib.ActionEntry [] win_entries = {
             {"new_window", action_new_window},
             {"quit", action_quit},
             {"refresh", action_reload},
@@ -46,7 +46,7 @@ namespace Marlin.View {
 
         public GLib.SimpleActionGroup win_actions;
 
-        static const string [] mode_strings = {
+        const string [] mode_strings = {
             "ICON",
             "LIST",
             "MILLER"
@@ -63,12 +63,6 @@ namespace Marlin.View {
         public ViewContainer? current_tab = null;
         public uint window_number;
 
-        public void set_can_go_forward (bool can) {
-           top_menu.set_can_go_forward (can);
-        }
-        public void set_can_go_back (bool can) {
-           top_menu.set_can_go_back (can);
-        }
         public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
         private bool freeze_view_changes = false;
@@ -137,7 +131,7 @@ namespace Marlin.View {
 
             add(window_box);
 
-            title = Marlin.APP_TITLE;
+            title = _(Marlin.APP_TITLE);
             try {
                 this.icon = Gtk.IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
             } catch (Error err) {
@@ -435,9 +429,7 @@ namespace Marlin.View {
             if (old_tab != null)
                 old_tab.set_active_state (false);
 
-            update_top_menu ();
-            /* update radio action view state */
-            update_view_mode (current_tab.view_mode);
+            /* ViewContainer will update topmenu once successfully loaded */
 #if 0
             /* sync selection - to be reimplemented if needed*/
             if (cur_slot.dir_view != null && current_tab.can_show_folder);
@@ -445,13 +437,12 @@ namespace Marlin.View {
 #endif
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
-            current_tab.set_active_state (true);
+            current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             mode = real_mode (mode);
-            update_view_mode (mode);
 
             var content = new View.ViewContainer (this);
             var tab = new Granite.Widgets.Tab ("", null, content);
@@ -462,6 +453,11 @@ namespace Marlin.View {
 
             content.loading.connect ((is_loading) => {
                 tab.working = is_loading;
+                update_top_menu ();
+            });
+
+            content.active.connect (() => {
+                update_top_menu ();
             });
 
             content.update_tab_name (location);
@@ -758,7 +754,7 @@ namespace Marlin.View {
 
         protected void show_about() {
             Granite.Widgets.show_about_dialog ((Gtk.Window) this,
-                "program-name", Marlin.APP_TITLE,
+                "program-name", _(Marlin.APP_TITLE),
                 "version", Config.VERSION,
                 "copyright", Marlin.COPYRIGHT,
                 "license-type", Gtk.License.GPL_3_0,
@@ -766,7 +762,7 @@ namespace Marlin.View {
                 "website-label",  Marlin.LAUNCHPAD_LABEL,
                 "authors", Marlin.AUTHORS,
                 "artists", Marlin.ARTISTS,
-                "logo-icon-name", Marlin.ICON_ABOUT_LOGO,
+                "logo-icon-name", Marlin.ICON_APP_LOGO,
                 "translator-credits",  Marlin.TRANSLATORS,
                 "help", Marlin.HELP_URL,
                 "translate", Marlin.TRANSLATE_URL,
@@ -804,19 +800,19 @@ namespace Marlin.View {
         }
 
         private bool is_marlin_mydefault_fm () {
-            bool foldertype_is_default = ("pantheon-files.desktop" == AppInfo.get_default_for_type("inode/directory", false).get_id());
+            bool foldertype_is_default = (Marlin.APP_DESKTOP == AppInfo.get_default_for_type("inode/directory", false).get_id());
 
             bool trash_uri_is_default = false;
             AppInfo? app_trash_handler = AppInfo.get_default_for_type("x-scheme-handler/trash", true);
             if (app_trash_handler != null)
-                trash_uri_is_default = ("pantheon-files.desktop" == app_trash_handler.get_id());
+                trash_uri_is_default = (Marlin.APP_DESKTOP == app_trash_handler.get_id());
 
             return foldertype_is_default && trash_uri_is_default;
         }
 
         private void make_marlin_default_fm (bool active) {
             if (active) {
-                AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("pantheon-files.desktop");
+                AppInfo marlin_app = (AppInfo) new DesktopAppInfo (Marlin.APP_DESKTOP);
 
                 if (marlin_app != null) {
                     try {
@@ -831,13 +827,6 @@ namespace Marlin.View {
                 AppInfo.reset_type_associations ("inode/directory");
                 AppInfo.reset_type_associations ("x-scheme-handler/trash");
             }
-        }
-
-        private void update_view_mode (Marlin.ViewMode mode) { /* Called via update topmenu */
-            GLib.SimpleAction action = get_action ("view_mode");
-            action.set_state (mode_strings [(int)mode]);
-            view_switcher.mode = mode;
-            Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
         public void quit () {
@@ -1006,24 +995,29 @@ namespace Marlin.View {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = PF.FileUtils.get_file_for_path (uri);
 
-                    mwcols.add_location (gfile, mwcols.current_slot);
+                    mwcols.add_location (gfile, mwcols.current_slot, false); /* Do not scroll at this stage */
                 }
             } else {
-                warning ("Invalid tip uri for Miller View");
+                warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
             }
         }
 
-        public void update_top_menu () {
-            if (freeze_view_changes)
+        private void update_top_menu () {
+            if (freeze_view_changes || current_tab == null)
                 return;
 
+            /* Update browser buttons */
+            top_menu.set_back_menu (current_tab.get_go_back_path_list ());
+            top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
+            top_menu.set_can_go_back (current_tab.can_go_back);
+            top_menu.set_can_go_forward (current_tab.can_show_folder && current_tab.can_go_forward);
 
-            if (current_tab != null) {
-                top_menu.set_back_menu (current_tab.get_go_back_path_list ());
-                top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
-                update_view_mode (current_tab.view_mode);
-
-            }
+            /* Update viewmode switch, action state and settings */
+            var mode = current_tab.view_mode;
+            view_switcher.mode = mode;
+            view_switcher.sensitive = current_tab.can_show_folder;
+            get_action ("view_mode").set_state (mode_strings [(int)mode]);
+            Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
         public void update_labels (string new_path, string tab_name) {

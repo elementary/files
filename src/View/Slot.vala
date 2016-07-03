@@ -36,10 +36,10 @@ namespace Marlin.View {
             get {return ctab.window;}
         }
 
-        public string empty_message = _("This Folder Is Empty");
-        public string empty_trash_message = _("Trash Is Empty");
-        public string empty_recents_message = _("There Are No Recent Files");
-        public string denied_message = _("Access Denied");
+        private const string EMPTY_MESSAGE = _("This Folder Is Empty");
+        private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
+        private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
+        private const string DENIED_MESSAGE = _("Access Denied");
 
         public override bool locked_focus {
             get {
@@ -142,6 +142,8 @@ namespace Marlin.View {
         private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
             if (!updates_frozen) {
                 updates_frozen = true;
+                dir_view.clear (); /* clear model but do not change directory */
+
                 path_changed (false);
                 /* if original_request false, leave original_load_request as it is (it may already be true
                  * if reloading in response to reload button press). */  
@@ -152,7 +154,7 @@ namespace Marlin.View {
                  * If allow_mode_change is false View Container will not automagically
                  * switch to icon view for icon folders (needed for Miller View) */
 
-                dir_view.clear (); /* clear model but do not change directory */
+
 
                 /* Only need to initialise directory once - the slot that originally received the
                  * reload request does this */ 
@@ -170,6 +172,7 @@ namespace Marlin.View {
                 warning ("Path change request received too rapidly");
                 return;
             }
+
             reload_timeout_id = Timeout.add (100, ()=> {
                 directory.reload ();
                 reload_timeout_id = 0;
@@ -192,25 +195,27 @@ namespace Marlin.View {
                 directory.track_longest_name = true;
         }
 
+        /* This delay in passing on the path change request is necessary to prevent occasional crashes
+         * due to undiagnosed bug.
+         */  
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (path_change_timeout_id > 0) {
                 warning ("Path change request received too rapidly");
                 return;
             }
             path_change_timeout_id = GLib.Timeout.add (20, () => {
-                on_path_change_request (loc, flag, make_root);
+                on_dir_view_path_change_request (loc, flag, make_root);
                 path_change_timeout_id = 0; 
                 return false;
             });
         }
 
-        private void on_path_change_request (GLib.File loc, int flag, bool make_root) {
+        private void on_dir_view_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
-                if (dir_view is FM.ColumnView) {
-                    miller_slot_request (loc, make_root);
-                } else {
-                    user_path_change_request (loc);
-                }
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+                    miller_slot_request (loc, make_root); /* signal to parent MillerView */
+                else
+                    user_path_change_request (loc, false, make_root); /* Handle ourselves */
             } else
                 ctab.new_container_request (loc, flag);
         }
@@ -222,15 +227,7 @@ namespace Marlin.View {
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
             if (directory.is_empty ()) { /* No files in the file cache */
-                if (directory.permission_denied) {
-                    layout.set_markup (denied_message, -1);
-                } else if (directory.is_trash) {
-                    layout.set_markup (empty_trash_message, -1);
-                } else if (directory.is_recent) {
-                    layout.set_markup (empty_recents_message, -1);
-                } else {
-                    layout.set_markup (empty_message, -1);
-                }
+                layout.set_markup (get_empty_message (), -1);
             } else {
                 layout.set_markup (GLib.Markup.escape_text (directory.longest_file_name), -1);
             }
@@ -257,16 +254,17 @@ namespace Marlin.View {
             has_autosized = true;
         }
 
+        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true, bool make_root = true) {
         /** Only this function must be used to change or reload the path **/
-        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true) {
             assert (loc != null);
             var old_dir = directory;
             set_up_directory (loc);
+            dir_view.change_directory (old_dir, directory);
+
             path_changed (allow_mode_change && directory.uri_contain_keypath_icons);
             /* ViewContainer listens to this signal takes care of updating appearance
              * If allow_mode_change is false View Container will not automagically
              * switch to icon view for icon folders (needed for Miller View) */
-            dir_view.change_directory (old_dir, directory);
             directory.init ();
         }
 
@@ -333,14 +331,19 @@ namespace Marlin.View {
                 dir_view.select_glib_files (files, focus_location);
         }
 
+        public void select_gof_file (GOF.File gof) {
+            if (dir_view != null)
+                dir_view.select_gof_file (gof);
+        }
+
         public override void select_first_for_empty_selection () {
             if (dir_view != null)
                 dir_view.select_first_for_empty_selection ();
         }
 
-        public override void set_active_state (bool set_active) {
+        public override void set_active_state (bool set_active, bool animate = true) {
             if (set_active)
-                active ();
+                active (true, animate);
             else
                 inactive ();
         }
@@ -425,6 +428,18 @@ namespace Marlin.View {
                 Source.remove (id);
                 id = 0;
             }
+        }
+
+        public string get_empty_message () {
+            string msg = EMPTY_MESSAGE;
+            if (directory.is_recent) {
+                msg = EMPTY_RECENT_MESSAGE;
+            } else if (directory.is_trash && (uri == Marlin.TRASH_URI + Path.DIR_SEPARATOR_S)) {
+                msg = EMPTY_TRASH_MESSAGE;
+            } else if (directory.permission_denied) {
+                msg = DENIED_MESSAGE; 
+            }
+            return msg;
         }
     }
 }

@@ -2067,10 +2067,7 @@ gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info)
     }
     if (app == NULL)
     {
-        //TODO
-        /* display the application chooser if no application is defined for this file
-         * type yet */
-        printf ("%s application show_chooser_dialog\n", G_STRFUNC);
+        /* AppChooser dialog has already been shown by Marlin.MimeActions*/
         return TRUE;
     }
 

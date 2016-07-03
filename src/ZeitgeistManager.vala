@@ -17,7 +17,7 @@
 ***/
 namespace Marlin {
     public class ZeitgeistManager : Object {
-        const string FILES_ACTOR = "application://pantheon-files.desktop";
+        const string FILES_ACTOR = "application://" + Marlin.APP_DESKTOP;
         const string ATTRS = FileAttribute.STANDARD_DISPLAY_NAME + "," + FileAttribute.STANDARD_CONTENT_TYPE;
 
         public static void report_event (string uri, string interpretation) {

@@ -14,12 +14,12 @@
     with this program. If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-public static const string APP_NAME = "pantheon-files";
-public static const string TERMINAL_NAME = "pantheon-terminal";
+public const string APP_NAME = "pantheon-files";
+public const string TERMINAL_NAME = "pantheon-terminal";
 
 public static int main (string[] args) {
     /* Initiliaze gettext support */
-    Intl.setlocale (LocaleCategory.ALL, Intl.get_language_names ()[0]);
+    Intl.setlocale (LocaleCategory.ALL, "");
     Intl.textdomain (Config.GETTEXT_PACKAGE);
 
     Environment.set_application_name (APP_NAME);

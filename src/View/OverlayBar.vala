@@ -35,6 +35,7 @@ namespace Marlin.View {
         private uint update_timeout_id = 0;
         private Marlin.DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
+        private Gtk.Spinner spinner;
 
         public bool showbar = false;
 
@@ -43,12 +44,33 @@ namespace Marlin.View {
 
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             status = "";
+            /* Swap existing child for a Box so we can add additional widget (spinner) */
+            var widget = this.get_child ();
+            ((Gtk.Container)this).remove (widget);
+            var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            this.add (hbox);
+            /* Put the existing child back */
+            hbox.pack_start (widget, true, true);
+            /* Now we can add a spinner */
+            spinner = new Gtk.Spinner ();
+            hbox.pack_start (spinner, true, true);
 
             hide.connect (cancel);
         }
 
         ~OverlayBar () {
             cancel ();
+        }
+
+        public override void get_preferred_width (out int minimum_width, out int natural_width) {
+            base.get_preferred_width (out minimum_width, out natural_width);
+            /* If visible, allow extra space for the spinner - the parent only allows for the label */
+            if (spinner.is_visible ()) {
+                Gtk.Requisition spinner_min_size, spinner_natural_size;
+                spinner.get_preferred_size (out spinner_min_size, out spinner_natural_size);
+                minimum_width += spinner_min_size.width;
+                natural_width += spinner_natural_size.width;
+            }
         }
 
         public void selection_changed (GLib.List<GOF.File> files) {
@@ -75,11 +97,14 @@ namespace Marlin.View {
         }
 
         public void update_hovered (GOF.File? file) {
-            cancel ();
-            visible = false;
+            cancel (); /* This will stop and hide spinner */
 
             if (!showbar)
                 return;
+
+            if (file == null) {
+                visible = false;
+            }
 
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
                 GLib.List<GOF.File> list = null;
@@ -98,8 +123,9 @@ namespace Marlin.View {
                         list.prepend (file);
                         real_update (list);
                     }
-                } else 
+                } else {
                     real_update (null);
+                }
 
                 update_timeout_id = 0;
                 return false;
@@ -118,6 +144,7 @@ namespace Marlin.View {
             }
 
             cancel_cancellable ();
+            hide_spinner ();
         }
 
         private void cancel_cancellable () {
@@ -209,8 +236,10 @@ namespace Marlin.View {
 
         private void schedule_deep_count () {
             cancel ();
+            /* Show the spinner immediately to indicate that something will happen if hover long enough */
+            show_spinner ();
+
             deep_count_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, 1000, () => {
-                status += " (counting ...)";
                 deep_counter = new Marlin.DeepCount (goffile.location);
                 deep_counter.finished.connect (update_status_after_deep_count);
 
@@ -223,6 +252,7 @@ namespace Marlin.View {
                         deep_counter = null;
                         cancellable = null;
                     }
+                    hide_spinner ();
                 });
                 deep_count_timeout_id = 0;
                 return false;
@@ -232,36 +262,40 @@ namespace Marlin.View {
         private void update_status_after_deep_count () {
             string str;
             cancellable = null;
+            hide_spinner ();
 
             status = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
 
             if (deep_counter != null) {
                 if (deep_counter.dirs_count > 0) {
+                    /* TRANSLATORS: %u will be substituted by the number of sub folders */
                     str = ngettext (_("%u sub-folder, "), _("%u sub-folders, "), deep_counter.dirs_count);
                     status += str.printf (deep_counter.dirs_count);
                 }
 
-                if (deep_counter.files_count > 0) {
+                if (deep_counter.files_count > 0 || deep_counter.file_not_read == 0) {
+                    /* TRANSLATORS: %u will be substituted by the number of readable files */
                     str = ngettext (_("%u file, "), _("%u files, "), deep_counter.files_count);
                     status += str.printf (deep_counter.files_count);
                 }
 
-                if (deep_counter.total_size == 0) {
-                    status += _("unknown size");
-                } else {
+                if (deep_counter.file_not_read == 0) {
                     status += format_size (deep_counter.total_size);
-                }
-                
-                if (deep_counter.file_not_read > 0) {
+                    status += ")";
+                } else {
                     if (deep_counter.total_size > 0) {
-                        status += " approx - %u files not readable".printf (deep_counter.file_not_read);
+                        /* TRANSLATORS: %s will be substituted by the approximate disk space used by the folder */
+                        status += _("%s approx.").printf (format_size (deep_counter.total_size));
                     } else {
-                        status += " %u files not readable".printf (deep_counter.file_not_read);
+                        /* TRANSLATORS: 'size' refers to disk space */
+                        status += _("unknown size");
                     }
+                    status += ") ";
+                    /* TRANSLATORS: %u will be substituted by the number of unreadable files */
+                    str = ngettext (_("%u file not readable"), _("%u files not readable"), deep_counter.file_not_read);
+                    status += str.printf (deep_counter.file_not_read);
                 }
             }
-
-            status += ")";
         }
 
         private void scan_list (GLib.List<GOF.File>? files) {
@@ -269,7 +303,7 @@ namespace Marlin.View {
                 return;
 
             foreach (var gof in files) {
-                if (gof != null && gof is GOF.File) { 
+                if (gof != null && gof is GOF.File) {
                     if (gof.is_folder ()) {
                         folders_count++;
                     } else {
@@ -341,12 +375,12 @@ namespace Marlin.View {
                         goffile.width = -1; /* Flag that resolution is not determinable so do not try again*/
                         goffile.height = -1;
                         /* Note that Gdk.PixbufLoader seems to leak memory with some file types. Any file type that
-                         * causes this error should be added to Marlin.SKIP_IMAGES array */     
+                         * causes this error should be added to Marlin.SKIP_IMAGES array */
                         critical ("Could not determine resolution of file type %s", goffile.get_ftype ());
                         break;
                     }
                     loader.write (buffer);
-                    
+
                 } catch (IOError e) {
                     if (!(e is IOError.CANCELLED))
                         warning (e.message);
@@ -358,6 +392,16 @@ namespace Marlin.View {
                     warning (e.message);
                 }
             }
+        }
+
+        private void show_spinner () {
+            spinner.show ();
+            spinner.start ();
+        }
+
+        private void hide_spinner () {
+            spinner.stop ();
+            spinner.hide ();
         }
     }
 }
