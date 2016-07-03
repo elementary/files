@@ -236,6 +236,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private void update_size_value () {
         size_value.label = format_size ((int64) total_size);
         contains_value.label = get_contains_value (folder_count, file_count);
+        update_selection_usage (total_size);
 
         if (size_warning > 0) {
             var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);

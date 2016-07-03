@@ -27,6 +27,7 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
     protected Gtk.Stack stack;
     protected Gtk.StackSwitcher stack_switcher;
     protected Gtk.Widget header_title;
+    protected Granite.Widgets.StorageBar? storagebar = null;
 
     protected enum PanelType {
         INFO,
@@ -144,8 +145,7 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
             uint64 fs_capacity = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
             uint64 fs_used = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
 
-            var storagebar = new Granite.Widgets.StorageBar (fs_capacity);
-            storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.OTHER, fs_used);
+            storagebar = new Granite.Widgets.StorageBar.with_total_usage (fs_capacity, fs_used);
 
             info_grid.attach (storagebar, 0, line + 1, 4, 1);
         } else {
@@ -166,6 +166,12 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
             info_grid.attach_next_to (available_value, available_label, Gtk.PositionType.RIGHT);
             info_grid.attach (used_label, 0, line + 3, 1, 1);
             info_grid.attach_next_to (used_value, used_label, Gtk.PositionType.RIGHT);
+        }
+    }
+
+    protected void update_selection_usage (uint64 size) {
+        if (storagebar != null) {
+            storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.FILES, size);
         }
     }
 }
