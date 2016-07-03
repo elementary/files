@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-07-02 05:53+0000\n"
+"X-Launchpad-Export-Date: 2016-07-03 05:32+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -2382,9 +2382,3 @@ msgstr "Tarih"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Tersine Düzen"
-
-#~ msgid "file"
-#~ msgstr "Dosya"
-
-#~ msgid "files"
-#~ msgstr "dosyalar"

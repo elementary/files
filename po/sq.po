@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-07-02 05:51+0000\n"
+"X-Launchpad-Export-Date: 2016-07-03 05:30+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 "Language: sq\n"
 
@@ -2334,9 +2334,3 @@ msgstr "Datës"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Renditje e kundërt"
-
-#~ msgid "file"
-#~ msgstr "skedar"
-
-#~ msgid "files"
-#~ msgstr "skedarë"
