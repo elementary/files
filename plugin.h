@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2011 ammonkey <am.monkeyd@gmail.com>
- * 
+ *
  * Marlin is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
  * Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * Marlin is distributed in the hope that it will be useful, but
  * WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
@@ -40,8 +40,8 @@ typedef struct _MarlinDropboxPrivate MarlinDropboxPrivate;
 #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
 
 struct _MarlinDropbox {
-	MarlinPluginsBase parent_instance;
-	//MarlinDropboxPrivate * priv;
+    MarlinPluginsBase parent_instance;
+    //MarlinDropboxPrivate * priv;
 
     GHashTable *filename2obj;
     GHashTable *obj2filename;
@@ -53,11 +53,11 @@ struct _MarlinDropbox {
 };
 
 struct _MarlinDropboxClass {
-	MarlinPluginsBaseClass parent_class;
+    MarlinPluginsBaseClass parent_class;
 };
 
 struct _MarlinDropboxPrivate {
-	/*MarlinTrashMonitor* trash_monitor;*/
+    /*MarlinTrashMonitor* trash_monitor;*/
 };
 
 GType marlin_dropbox_get_type (void) G_GNUC_CONST;

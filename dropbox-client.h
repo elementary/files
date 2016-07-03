@@ -58,18 +58,18 @@ dropbox_client_force_reconnect(DropboxClient *dc);
 
 void
 dropbox_client_add_on_connect_hook(DropboxClient *dc,
-				   DropboxClientConnectHook dhcch,
-				   gpointer ud);
+                   DropboxClientConnectHook dhcch,
+                   gpointer ud);
 
 void
 dropbox_client_add_on_disconnect_hook(DropboxClient *dc,
-				      DropboxClientConnectHook dhcch,
-				      gpointer ud);
+                      DropboxClientConnectHook dhcch,
+                      gpointer ud);
 
 void
 dropbox_client_add_connection_attempt_hook(DropboxClient *dc,
-					   DropboxClientConnectionAttemptHook dhcch,
-					   gpointer ud);
+                       DropboxClientConnectionAttemptHook dhcch,
+                       gpointer ud);
 
 G_END_DECLS
 

@@ -30,7 +30,7 @@
 static void
 hook_on_connect(DropboxClient *dc) {
   dc->hook_connect_called = TRUE;
-  
+
   if (dc->command_connect_called) {
     debug("client connection");
     g_hook_list_invoke(&(dc->onconnect_hooklist), FALSE);
@@ -42,7 +42,7 @@ hook_on_connect(DropboxClient *dc) {
 static void
 command_on_connect(DropboxClient *dc) {
   dc->command_connect_called = TRUE;
-  
+
   if (dc->hook_connect_called) {
     debug("client connection");
     g_hook_list_invoke(&(dc->onconnect_hooklist), FALSE);
@@ -54,7 +54,7 @@ command_on_connect(DropboxClient *dc) {
 static void
 command_on_disconnect(DropboxClient *dc) {
   dc->command_disconnect_called = TRUE;
-  
+
   if (dc->hook_disconnect_called) {
     debug("client disconnect");
     g_hook_list_invoke(&(dc->ondisconnect_hooklist), FALSE);
@@ -69,7 +69,7 @@ command_on_disconnect(DropboxClient *dc) {
 static void
 hook_on_disconnect(DropboxClient *dc) {
   dc->hook_disconnect_called = TRUE;
-  
+
   if (dc->command_disconnect_called) {
     debug("client disconnect");
     g_hook_list_invoke(&(dc->ondisconnect_hooklist), FALSE);
@@ -84,7 +84,7 @@ hook_on_disconnect(DropboxClient *dc) {
 gboolean
 dropbox_client_is_connected(DropboxClient *dc) {
   return (dropbox_command_client_is_connected(&(dc->dcc)) &&
-	  marlin_dropbox_hooks_is_connected(&(dc->hookserv)));
+      marlin_dropbox_hooks_is_connected(&(dc->hookserv)));
 }
 
 void
@@ -108,60 +108,60 @@ dropbox_client_setup(DropboxClient *dc) {
   dc->hook_disconnect_called = dc->command_disconnect_called = FALSE;
   dc->hook_connect_called = dc->command_connect_called = FALSE;
 
-  marlin_dropbox_hooks_add_on_connect_hook(&(dc->hookserv), 
-					     (DropboxHookClientConnectHook)
-					     hook_on_connect, dc);
-  
+  marlin_dropbox_hooks_add_on_connect_hook(&(dc->hookserv),
+                         (DropboxHookClientConnectHook)
+                         hook_on_connect, dc);
+
   dropbox_command_client_add_on_connect_hook(&(dc->dcc),
-					     (DropboxCommandClientConnectHook)
-					     command_on_connect, dc);
-  
-  marlin_dropbox_hooks_add_on_disconnect_hook(&(dc->hookserv), 
-						(DropboxHookClientConnectHook)
-						hook_on_disconnect, dc);
-  
+                         (DropboxCommandClientConnectHook)
+                         command_on_connect, dc);
+
+  marlin_dropbox_hooks_add_on_disconnect_hook(&(dc->hookserv),
+                        (DropboxHookClientConnectHook)
+                        hook_on_disconnect, dc);
+
   dropbox_command_client_add_on_disconnect_hook(&(dc->dcc),
-						(DropboxCommandClientConnectHook)
-						command_on_disconnect, dc);
+                        (DropboxCommandClientConnectHook)
+                        command_on_disconnect, dc);
 }
 
 /* not thread safe */
 void
 dropbox_client_add_on_disconnect_hook(DropboxClient *dc,
-				      DropboxClientConnectHook dhcch,
-				      gpointer ud) {
+                      DropboxClientConnectHook dhcch,
+                      gpointer ud) {
   GHook *newhook;
-  
+
   newhook = g_hook_alloc(&(dc->ondisconnect_hooklist));
   newhook->func = dhcch;
   newhook->data = ud;
-  
+
   g_hook_append(&(dc->ondisconnect_hooklist), newhook);
 }
 
 /* not thread safe */
 void
 dropbox_client_add_on_connect_hook(DropboxClient *dc,
-				   DropboxClientConnectHook dhcch,
-				   gpointer ud) {
+                   DropboxClientConnectHook dhcch,
+                   gpointer ud) {
   GHook *newhook;
-  
+
   newhook = g_hook_alloc(&(dc->onconnect_hooklist));
   newhook->func = dhcch;
   newhook->data = ud;
-  
+
   g_hook_append(&(dc->onconnect_hooklist), newhook);
 }
 
 /* not thread safe */
 void
 dropbox_client_add_connection_attempt_hook(DropboxClient *dc,
-					   DropboxClientConnectionAttemptHook dhcch,
-					   gpointer ud) {
+                       DropboxClientConnectionAttemptHook dhcch,
+                       gpointer ud) {
   debug("shouldn't be here...");
 
   dropbox_command_client_add_connection_attempt_hook(&(dc->dcc),
-						     dhcch, ud);
+                             dhcch, ud);
 }
 
 /* should only be called once on initialization */

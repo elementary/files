@@ -242,7 +242,7 @@ FAIL_CLEANUP:
     hookserv->hhsi.line = 0;
     hookserv->hhsi.command_args = NULL;
     hookserv->hhsi.command_name = NULL;
-    hookserv->event_source = 
+    hookserv->event_source =
         g_io_add_watch_full(hookserv->chan, G_PRIORITY_DEFAULT,
                             G_IO_IN | G_IO_PRI | G_IO_ERR | G_IO_HUP | G_IO_NVAL,
                             (GIOFunc) handle_hook_server_input, hookserv,

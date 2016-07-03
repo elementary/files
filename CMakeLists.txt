@@ -18,7 +18,7 @@ pkg_check_modules(DROPBOX REQUIRED
     marlincore
     )
 set(CFLAGS
-	${DROPBOX_CFLAGS} ${DROPBOX_CFLAGS_OTHER} 
+    ${DROPBOX_CFLAGS} ${DROPBOX_CFLAGS_OTHER}
 )
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
@@ -29,3 +29,4 @@ add_library(marlin-dropbox SHARED
     plugin.c dropbox-client-util.c dropbox-command-client.c dropbox-client.c dropbox-hooks.c)
 target_link_libraries(marlin-dropbox marlincore marlinwidgets ${DROPBOX_LIBRARIES})
 install(TARGETS marlin-dropbox DESTINATION lib/pantheon-files/plugins/)
+
