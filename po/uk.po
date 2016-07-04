@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-02 05:58+0400\n"
-"PO-Revision-Date: 2016-06-30 19:08+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-07-03 06:26+0000\n"
+"Last-Translator: Roman Sytnyk <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-07-03 05:32+0000\n"
+"X-Launchpad-Export-Date: 2016-07-04 06:05+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 "Language: uk\n"
 
@@ -1849,7 +1849,7 @@ msgstr "Попередній перегляд"
 
 #: ../src/View/PropertiesWindow.vala:265
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Фактичний розмір може бути більше"
 
 #: ../src/View/PropertiesWindow.vala:265
 msgid "%i file could not be read due to permissions or other errors."
@@ -1883,7 +1883,7 @@ msgstr "Тип Mime:"
 
 #: ../src/View/PropertiesWindow.vala:490
 msgid "Loading…"
-msgstr ""
+msgstr "Завантаження…"
 
 #: ../src/View/PropertiesWindow.vala:503
 msgid "MimeTypes:"
@@ -1912,7 +1912,7 @@ msgstr "Містить:"
 
 #: ../src/View/PropertiesWindow.vala:620
 msgid "Other Application…"
-msgstr ""
+msgstr "Інший додаток..."
 
 #: ../src/View/PropertiesWindow.vala:640
 msgid "Open with:"
