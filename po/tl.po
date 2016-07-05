@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-07-02 05:58+0400\n"
+"POT-Creation-Date: 2016-07-04 08:38-0700\n"
 "PO-Revision-Date: 2016-06-30 19:11+0000\n"
 "Last-Translator: Jacques Ivan Arroyo <jaksarroyo@gmail.com>\n"
 "Language-Team: Tagalog <tl@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-07-03 05:32+0000\n"
+"X-Launchpad-Export-Date: 2016-07-05 05:54+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -141,10 +141,6 @@ msgstr "Itinigil ang operasyon"
 msgid "There is nothing on the clipboard to paste"
 msgstr "Walang laman ang clipboard para i-paste"
 
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr ""
-
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr ""
@@ -170,37 +166,10 @@ msgstr "Hindi malaman ang orihinal na lokasyon ng \"%s\" "
 msgid "The item cannot be restored from trash"
 msgstr "Hindi maibalik mula sa basura ang aytem"
 
-#: ../libcore/gof-file.c:366
-#, c-format
-msgid "link to %s"
-msgstr ""
-
-#: ../libcore/gof-file.c:1913
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Hindi maiparse ang desktop file na:  %s"
-
-#: ../libcore/gof-file.c:1951
-msgid "No Exec field specified"
-msgstr ""
-
-#: ../libcore/gof-file.c:1971
-msgid "No URL field specified"
-msgstr ""
-
-#: ../libcore/gof-file.c:1977
-msgid "Invalid desktop file"
-msgstr ""
-
-#: ../libcore/gof-file.c:2272
-msgid "Slashes are not allowed in filenames"
-msgstr ""
-"Hindi pwedeng gamitin ang mga slashes o ang bantas na palihis sa mga "
-"filenames"
-
-#: ../libcore/gof-file.c:2292
-msgid "Toplevel files cannot be renamed"
-msgstr ""
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Ihinahanda"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
@@ -581,15 +550,6 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Ihinahanda"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Ipakita ang mas marami pang _detalye"
 
 #: ../libcore/marlin-file-operations.c:199
 #: ../libcore/marlin-file-conflict-dialog.c:748
@@ -1338,6 +1298,46 @@ msgstr "Tinatanggalan ng laman ang basura"
 msgid "Emptying Trash"
 msgstr "Inuubos ang laman ng basura"
 
+#: ../libcore/gof-file.c:366
+#, c-format
+msgid "link to %s"
+msgstr ""
+
+#: ../libcore/gof-file.c:1913
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Hindi maiparse ang desktop file na:  %s"
+
+#: ../libcore/gof-file.c:1951
+msgid "No Exec field specified"
+msgstr ""
+
+#: ../libcore/gof-file.c:1971
+msgid "No URL field specified"
+msgstr ""
+
+#: ../libcore/gof-file.c:1977
+msgid "Invalid desktop file"
+msgstr ""
+
+#: ../libcore/gof-file.c:2272
+msgid "Slashes are not allowed in filenames"
+msgstr ""
+"Hindi pwedeng gamitin ang mga slashes o ang bantas na palihis sa mga "
+"filenames"
+
+#: ../libcore/gof-file.c:2292
+msgid "Toplevel files cannot be renamed"
+msgstr ""
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr ""
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Ipakita ang mas marami pang _detalye"
+
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
@@ -1424,7 +1424,7 @@ msgstr "Orihinal na file"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:574
+#: ../src/View/PropertiesWindow.vala:518
 msgid "Size:"
 msgstr "Sukat:"
 
@@ -1432,7 +1432,7 @@ msgstr "Sukat:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:581
+#: ../src/View/PropertiesWindow.vala:525
 msgid "Type:"
 msgstr "Uri:"
 
@@ -1487,6 +1487,63 @@ msgstr "Nakaraan"
 msgid "Next"
 msgstr "Susunod"
 
+#: ../src/View/AbstractDirectoryView.vala:561
+msgid "Failed to preview"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:820
+msgid "Cannot open this file"
+msgstr "Hindi mabuksan ang file na ito"
+
+#: ../src/View/AbstractDirectoryView.vala:833
+msgid "Cannot identify file type to open"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1568
+msgid "Cannot drop this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1568
+msgid "Invalid file name provided"
+msgstr "Hindi pupwede ang binigay na pangalan ng file"
+
+#: ../src/View/AbstractDirectoryView.vala:2012
+msgid "Invalid"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2018
+msgid "Run"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2023
+msgid "Open in %s"
+msgstr "Buksan sa %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2033
+msgid "Open in"
+msgstr "Buksan sa"
+
+#: ../src/View/AbstractDirectoryView.vala:2035
+#: ../libwidgets/View/BreadcrumbsEntry.vala:451
+msgid "Open with"
+msgstr "Buksan gamit ang"
+
+#: ../src/View/AbstractDirectoryView.vala:2095
+msgid "Other Application"
+msgstr "Iba pang Aplikasyon"
+
+#: ../src/View/AbstractDirectoryView.vala:2353
+msgid "Untitled %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2788
+msgid "Cannot copy files that are in the trash"
+msgstr "Hindi pwedeng kopyahin ang mga files na nasa basura"
+
+#: ../src/View/AbstractDirectoryView.vala:2789
+msgid "Cutting the selection instead"
+msgstr ""
+
 #: ../src/View/ListView.vala:26
 msgid "Filename"
 msgstr "Pangalan ng file"
@@ -1502,6 +1559,64 @@ msgstr "Uri"
 #: ../src/View/ListView.vala:29
 msgid "Modified"
 msgstr "Huling nabago"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+msgid "This Folder Does Not Exist"
+msgstr "Walang Ganitong Polder"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Hindi mahanap ang polder na \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Bumuo"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:48
+msgid "Info"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:57
+msgid "General"
+msgstr "Pangkalahatan"
+
+#: ../src/View/AbstractPropertiesDialog.vala:76
+msgid "Close"
+msgstr "Isara"
+
+#: ../src/View/AbstractPropertiesDialog.vala:138
+msgid "Device Usage"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:154
+msgid "Capacity:"
+msgstr "Kapasidad:"
+
+#: ../src/View/AbstractPropertiesDialog.vala:155
+#: ../src/View/AbstractPropertiesDialog.vala:158
+#: ../src/View/AbstractPropertiesDialog.vala:161
+#: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
+msgid "Unknown"
+msgstr "Hindi matukoy"
+
+#: ../src/View/AbstractPropertiesDialog.vala:157
+msgid "Available:"
+msgstr "Magagamit:"
+
+#: ../src/View/AbstractPropertiesDialog.vala:160
+msgid "Used:"
+msgstr "Ginagamit:"
 
 #: ../src/View/Sidebar.vala:472
 msgid "Personal"
@@ -1539,8 +1654,8 @@ msgstr "Mga Devices"
 msgid "Your local partitions and devices"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:546 ../src/View/ViewContainer.vala:333
-#: ../src/View/VolumePropertiesWindow.vala:44 ../libwidgets/Resources.vala:93
+#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
+#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr ""
 
@@ -1600,7 +1715,7 @@ msgstr ""
 msgid "_Eject"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:142
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:130
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr ""
@@ -1621,7 +1736,32 @@ msgstr ""
 msgid "Access Denied"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1283
+#: ../src/View/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/View/VolumePropertiesWindow.vala:78
+#: ../src/View/PropertiesWindow.vala:597
+msgid "Location:"
+msgstr "Lokasyon:"
+
+#: ../src/View/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr ""
+
+#: ../src/View/Window.vala:204
+msgid "Files isn't your default file manager."
+msgstr ""
+
+#: ../src/View/Window.vala:210
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:216
+msgid "Ignore"
+msgstr "Huwag pansinin"
+
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1301
 msgid "%u folders"
 msgstr ""
 
@@ -1637,8 +1777,8 @@ msgstr ""
 msgid " selected"
 msgstr " sa nakaselect"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1254
-#: ../src/View/PropertiesWindow.vala:1293
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1272
+#: ../src/View/PropertiesWindow.vala:1311
 msgid "%u folder"
 msgstr ""
 
@@ -1681,10 +1821,6 @@ msgstr ""
 #: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
 msgstr "(bilang Administrador)"
-
-#: ../src/View/ViewContainer.vala:355 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr "Walang Ganitong Polder"
 
 #: ../src/View/ViewContainer.vala:356
 msgid "You cannot create a folder here."
@@ -1730,288 +1866,197 @@ msgstr "Hindi makita ang File"
 msgid "The file selected no longer exists."
 msgstr "Hindi na umiiral ang naka-select na file"
 
-#: ../src/View/AbstractPropertiesDialog.vala:47
-msgid "Info"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:56
-msgid "General"
-msgstr "Pangkalahatan"
-
-#: ../src/View/AbstractPropertiesDialog.vala:75
-msgid "Close"
-msgstr "Isara"
-
-#: ../src/View/AbstractPropertiesDialog.vala:137
-msgid "Device Usage"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:154
-msgid "Capacity:"
-msgstr "Kapasidad:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:155
-#: ../src/View/AbstractPropertiesDialog.vala:158
-#: ../src/View/AbstractPropertiesDialog.vala:161
-msgid "Unknown"
-msgstr "Hindi matukoy"
-
-#: ../src/View/AbstractPropertiesDialog.vala:157
-msgid "Available:"
-msgstr "Magagamit:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:160
-msgid "Used:"
-msgstr "Ginagamit:"
-
-#: ../src/View/PropertiesWindow.vala:26
-msgid "Resolution:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:219
+#: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:246
+#: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:265
+#: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:265
+#: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:284 ../src/View/PropertiesWindow.vala:303
+#: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
 msgstr "hindi alam"
 
-#: ../src/View/PropertiesWindow.vala:463
-msgid "Created:"
-msgstr "Binuo noong:"
-
-#: ../src/View/PropertiesWindow.vala:465
-msgid "Modified:"
-msgstr "Nagalaw o nabago noong:"
-
-#: ../src/View/PropertiesWindow.vala:468
-msgid "Last Access:"
-msgstr "Huling Naaccess Noong:"
-
-#: ../src/View/PropertiesWindow.vala:476
-msgid "Deleted:"
-msgstr "Binura noong:"
-
-#: ../src/View/PropertiesWindow.vala:482
-msgid "MimeType:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:490
+#: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:503
-msgid "MimeTypes:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:516 ../src/View/PropertiesWindow.vala:518
-#: ../src/View/VolumePropertiesWindow.vala:78
-msgid "Location:"
-msgstr "Lokasyon:"
-
-#: ../src/View/PropertiesWindow.vala:522
-msgid "Target:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:528
-msgid "Origin Location:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:535
+#: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:584
+#: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
 msgstr "Mayroon itong:"
 
-#: ../src/View/PropertiesWindow.vala:620
+#: ../src/View/PropertiesWindow.vala:544
+msgid "Created:"
+msgstr "Binuo noong:"
+
+#: ../src/View/PropertiesWindow.vala:552
+msgid "Modified:"
+msgstr "Nagalaw o nabago noong:"
+
+#: ../src/View/PropertiesWindow.vala:561
+msgid "Last Access:"
+msgstr "Huling Naaccess Noong:"
+
+#: ../src/View/PropertiesWindow.vala:572
+msgid "Deleted:"
+msgstr "Binura noong:"
+
+#: ../src/View/PropertiesWindow.vala:582
+msgid "Mimetype:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:589
+msgid "Resolution:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:607
+msgid "Target:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:615
+msgid "Original Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:640
+#: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
 msgstr "Buksan gamit ang:"
 
-#: ../src/View/PropertiesWindow.vala:734
+#: ../src/View/PropertiesWindow.vala:752
 msgid "Read"
 msgstr "Basahin"
 
-#: ../src/View/PropertiesWindow.vala:738
+#: ../src/View/PropertiesWindow.vala:756
 msgid "Write"
 msgstr "Isulat"
 
-#: ../src/View/PropertiesWindow.vala:742
+#: ../src/View/PropertiesWindow.vala:760
 msgid "Execute"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:949 ../src/View/PropertiesWindow.vala:965
+#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:983
 msgid "Owner:"
 msgstr "May-ari:"
 
-#: ../src/View/PropertiesWindow.vala:955 ../src/View/PropertiesWindow.vala:969
+#: ../src/View/PropertiesWindow.vala:973 ../src/View/PropertiesWindow.vala:987
 msgid "Group:"
 msgstr "Grupo:"
 
-#: ../src/View/PropertiesWindow.vala:973
+#: ../src/View/PropertiesWindow.vala:991
 msgid "Everyone:"
 msgstr "Kahit sino:"
 
-#: ../src/View/PropertiesWindow.vala:1239
+#: ../src/View/PropertiesWindow.vala:1257
 msgid "%u subfolders and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1241
+#: ../src/View/PropertiesWindow.vala:1259
 msgid "%u subfolders and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1244
+#: ../src/View/PropertiesWindow.vala:1262
 msgid "%u subfolders"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1249
+#: ../src/View/PropertiesWindow.vala:1267
 msgid "%u subfolder and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1251
+#: ../src/View/PropertiesWindow.vala:1269
 msgid "%u subfolder and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1260
-#: ../src/View/PropertiesWindow.vala:1299
+#: ../src/View/PropertiesWindow.vala:1278
+#: ../src/View/PropertiesWindow.vala:1317
 msgid "%u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1262
-#: ../src/View/PropertiesWindow.vala:1301
+#: ../src/View/PropertiesWindow.vala:1280
+#: ../src/View/PropertiesWindow.vala:1319
 msgid "%u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1278
+#: ../src/View/PropertiesWindow.vala:1296
 msgid "%u selected items (%u folders and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1280
+#: ../src/View/PropertiesWindow.vala:1298
 msgid "%u selected items (%u folders and %u file)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1288
+#: ../src/View/PropertiesWindow.vala:1306
 msgid "%u selected items (%u folder and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1290
+#: ../src/View/PropertiesWindow.vala:1308
 msgid "%u selected items (%u folder and %u file)"
 msgstr ""
 
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
+#: ../src/ProgressUIHandler.vala:42
+msgid "File Manager Operations"
 msgstr ""
 
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
+#: ../src/ProgressUIHandler.vala:164
+msgid "File Operations"
+msgstr "Mga Operasyon sa File"
+
+#: ../src/ProgressUIHandler.vala:208
+msgid "Completed %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:561
-msgid "Failed to preview"
+#: ../src/ProgressUIHandler.vala:211
+msgid "All file operations have ended"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:820
-msgid "Cannot open this file"
-msgstr "Hindi mabuksan ang file na ito"
-
-#: ../src/View/AbstractDirectoryView.vala:833
-msgid "Cannot identify file type to open"
+#: ../src/ProgressUIHandler.vala:264
+msgid "Show Copy Dialog"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1568
-msgid "Cannot drop this file"
+#: ../src/ProgressUIHandler.vala:276
+msgid "Cancel All In-progress Actions"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1568
-msgid "Invalid file name provided"
-msgstr "Hindi pupwede ang binigay na pangalan ng file"
-
-#: ../src/View/AbstractDirectoryView.vala:2012
-msgid "Invalid"
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2018
-msgid "Run"
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2023
-msgid "Open in %s"
-msgstr "Buksan sa %s"
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Window"
+msgstr "Bagong _Window"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
-msgid "Open in"
-msgstr "Buksan sa"
+#: ../src/DesktopLauncher.vala:9
+msgid "New Window As _Administrator"
+msgstr "Bagong Window Bilang _Administrador"
 
-#: ../src/View/AbstractDirectoryView.vala:2035
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
-msgid "Open with"
-msgstr "Buksan gamit ang"
+#: ../src/DesktopLauncher.vala:10
+msgid "About _Files"
+msgstr "Tungkol sa mga _Files"
 
-#: ../src/View/AbstractDirectoryView.vala:2095
-msgid "Other Application"
-msgstr "Iba pang Aplikasyon"
-
-#: ../src/View/AbstractDirectoryView.vala:2353
-msgid "Untitled %s"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2788
-msgid "Cannot copy files that are in the trash"
-msgstr "Hindi pwedeng kopyahin ang mga files na nasa basura"
-
-#: ../src/View/AbstractDirectoryView.vala:2789
-msgid "Cutting the selection instead"
-msgstr ""
-
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr ""
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr ""
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Huwag pansinin"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Hindi mahanap ang polder na \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Bumuo"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Mga Files"
 
 #: ../src/Application.vala:158
 msgid "Show the version of the program."
@@ -2048,53 +2093,9 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:8
-msgid "New _Window"
-msgstr "Bagong _Window"
-
-#: ../src/DesktopLauncher.vala:9
-msgid "New Window As _Administrator"
-msgstr "Bagong Window Bilang _Administrador"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "About _Files"
-msgstr "Tungkol sa mga _Files"
-
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Mga Files"
-
-#: ../src/ProgressUIHandler.vala:42
-msgid "File Manager Operations"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:164
-msgid "File Operations"
-msgstr "Mga Operasyon sa File"
-
-#: ../src/ProgressUIHandler.vala:208
-msgid "Completed %s"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:211
-msgid "All file operations have ended"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:264
-msgid "Show Copy Dialog"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:276
-msgid "Cancel All In-progress Actions"
-msgstr ""
+#: ../libcore/FileUtils.vala:259
+msgid "Could not rename to '%s'"
+msgstr "Hindi mabago ang pangalan sa '%s'"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2116,21 +2117,8 @@ msgstr "I-link Dito"
 msgid "Cancel"
 msgstr "I-kansela"
 
-#: ../libcore/FileUtils.vala:259
-msgid "Could not rename to '%s'"
-msgstr "Hindi mabago ang pangalan sa '%s'"
-
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
-msgstr ""
-
-#: ../libwidgets/View/LocationBar.vala:166
-msgid "Reload this folder"
-msgstr "I-load muli ang polder na ito"
-
-#: ../libwidgets/View/LocationBar.vala:169
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
-msgid "Enter search term or path"
 msgstr ""
 
 #: ../libwidgets/View/SearchResults.vala:180
@@ -2144,6 +2132,15 @@ msgstr "Mga Pananda"
 #: ../libwidgets/View/SearchResults.vala:184
 msgid "Everywhere Else"
 msgstr "Kahit Saan Pa"
+
+#: ../libwidgets/View/LocationBar.vala:166
+msgid "Reload this folder"
+msgstr "I-load muli ang polder na ito"
+
+#: ../libwidgets/View/LocationBar.vala:169
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
+msgid "Enter search term or path"
+msgstr ""
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:412
 msgid "Open in New Tab"
@@ -2165,6 +2162,10 @@ msgstr ""
 msgid "Go to %s"
 msgstr ""
 
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr ""
+
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
 msgstr "Tignan bilang Grid"
@@ -2175,10 +2176,6 @@ msgstr "Tignan bilang Listahan"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr ""
-
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
 msgstr ""
 
 #: ../libwidgets/Resources.vala:30

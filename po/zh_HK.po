@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-02 05:58+0400\n"
+"POT-Creation-Date: 2016-07-04 08:38-0700\n"
 "PO-Revision-Date: 2015-12-18 20:00+0000\n"
 "Last-Translator: Launchpad Translations Administrators <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-07-03 05:32+0000\n"
+"X-Launchpad-Export-Date: 2016-07-05 05:54+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -134,10 +134,6 @@ msgstr ""
 msgid "There is nothing on the clipboard to paste"
 msgstr ""
 
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr ""
-
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr ""
@@ -163,34 +159,9 @@ msgstr ""
 msgid "The item cannot be restored from trash"
 msgstr ""
 
-#: ../libcore/gof-file.c:366
-#, c-format
-msgid "link to %s"
-msgstr ""
-
-#: ../libcore/gof-file.c:1913
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr ""
-
-#: ../libcore/gof-file.c:1951
-msgid "No Exec field specified"
-msgstr ""
-
-#: ../libcore/gof-file.c:1971
-msgid "No URL field specified"
-msgstr ""
-
-#: ../libcore/gof-file.c:1977
-msgid "Invalid desktop file"
-msgstr ""
-
-#: ../libcore/gof-file.c:2272
-msgid "Slashes are not allowed in filenames"
-msgstr ""
-
-#: ../libcore/gof-file.c:2292
-msgid "Toplevel files cannot be renamed"
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
 msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:635
@@ -572,15 +543,6 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr ""
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr ""
 
 #: ../libcore/marlin-file-operations.c:199
 #: ../libcore/marlin-file-conflict-dialog.c:748
@@ -1315,6 +1277,44 @@ msgstr ""
 msgid "Emptying Trash"
 msgstr ""
 
+#: ../libcore/gof-file.c:366
+#, c-format
+msgid "link to %s"
+msgstr ""
+
+#: ../libcore/gof-file.c:1913
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr ""
+
+#: ../libcore/gof-file.c:1951
+msgid "No Exec field specified"
+msgstr ""
+
+#: ../libcore/gof-file.c:1971
+msgid "No URL field specified"
+msgstr ""
+
+#: ../libcore/gof-file.c:1977
+msgid "Invalid desktop file"
+msgstr ""
+
+#: ../libcore/gof-file.c:2272
+msgid "Slashes are not allowed in filenames"
+msgstr ""
+
+#: ../libcore/gof-file.c:2292
+msgid "Toplevel files cannot be renamed"
+msgstr ""
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr ""
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr ""
+
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
@@ -1401,7 +1401,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:574
+#: ../src/View/PropertiesWindow.vala:518
 msgid "Size:"
 msgstr ""
 
@@ -1409,7 +1409,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:581
+#: ../src/View/PropertiesWindow.vala:525
 msgid "Type:"
 msgstr ""
 
@@ -1462,444 +1462,6 @@ msgstr ""
 #: ../filechooser-module/FileChooserDialog.vala:65
 #: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
-msgstr ""
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr ""
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr ""
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr ""
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:472
-msgid "Personal"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:473
-msgid "Your common places and bookmarks"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:331
-msgid "Home"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:492
-msgid "Open your personal folder"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:507
-msgid "View the list of recently used files"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:90
-msgid "Trash"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:535
-msgid "Open the Trash"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:539
-msgid "Devices"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:540
-msgid "Your local partitions and devices"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:546 ../src/View/ViewContainer.vala:333
-#: ../src/View/VolumePropertiesWindow.vala:44 ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:87
-msgid "Network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:665
-msgid "Your network places"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:697
-msgid "Entire Network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:704
-msgid "Browse the contents of the network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:830
-msgid "(%s Free of %s)"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1323
-msgid "Unable to start %s"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1427
-msgid "Open"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1435
-msgid "Open in New _Tab"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1441
-msgid "Open in New _Window"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1449
-msgid "Remove"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1457 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1466
-msgid "_Mount"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1472
-msgid "_Unmount"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1478
-msgid "_Eject"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:142
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr ""
-
-#: ../src/View/Slot.vala:39
-msgid "This Folder Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:40
-msgid "Trash Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:41
-msgid "There Are No Recent Files"
-msgstr ""
-
-#: ../src/View/Slot.vala:42
-msgid "Access Denied"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1283
-msgid "%u folders"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
-msgid " and %u other item (%s) selected"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
-msgid " and %u other items (%s) selected"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
-msgid " selected"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1254
-#: ../src/View/PropertiesWindow.vala:1293
-msgid "%u folder"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:231
-msgid "%u items selected (%s)"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:272
-msgid "%u sub-folder, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:272
-msgid "%u sub-folders, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:278
-msgid "%u file, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:278
-msgid "%u files, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:288
-msgid "%s approx."
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:291
-msgid "unknown size"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:295
-msgid "%u file not readable"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:295
-msgid "%u files not readable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:342
-msgid "(as Administrator)"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:355 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:356
-msgid "You cannot create a folder here."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:358
-msgid "The network is unavailable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:359
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:361
-msgid "This Folder Does Not Belong to You"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:362
-msgid "You don't have permission to view this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:364
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:365
-msgid "Could not connect to the server for this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:367
-msgid "Unable show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:368
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:378
-msgid "File not Found"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:379
-msgid "The file selected no longer exists."
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:47
-msgid "Info"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:56
-msgid "General"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:75
-msgid "Close"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:137
-msgid "Device Usage"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:154
-msgid "Capacity:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:155
-#: ../src/View/AbstractPropertiesDialog.vala:158
-#: ../src/View/AbstractPropertiesDialog.vala:161
-msgid "Unknown"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:157
-msgid "Available:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:160
-msgid "Used:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:26
-msgid "Resolution:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:219
-msgid "Permissions"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:246
-msgid "Preview"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:265
-msgid "Actual Size Could Be Larger"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:265
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/View/PropertiesWindow.vala:284 ../src/View/PropertiesWindow.vala:303
-msgid "unknown"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:463
-msgid "Created:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:465
-msgid "Modified:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:468
-msgid "Last Access:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:476
-msgid "Deleted:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:482
-msgid "MimeType:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:490
-msgid "Loading…"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:503
-msgid "MimeTypes:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:516 ../src/View/PropertiesWindow.vala:518
-#: ../src/View/VolumePropertiesWindow.vala:78
-msgid "Location:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:522
-msgid "Target:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:528
-msgid "Origin Location:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:535
-msgid "Could not be determined"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:584
-msgid "Contains:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:620
-msgid "Other Application…"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:640
-msgid "Open with:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:734
-msgid "Read"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:738
-msgid "Write"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:742
-msgid "Execute"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:949 ../src/View/PropertiesWindow.vala:965
-msgid "Owner:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:955 ../src/View/PropertiesWindow.vala:969
-msgid "Group:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:973
-msgid "Everyone:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1239
-msgid "%u subfolders and %u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1241
-msgid "%u subfolders and %u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1244
-msgid "%u subfolders"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1249
-msgid "%u subfolder and %u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1251
-msgid "%u subfolder and %u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1260
-#: ../src/View/PropertiesWindow.vala:1299
-msgid "%u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1262
-#: ../src/View/PropertiesWindow.vala:1301
-msgid "%u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1278
-msgid "%u selected items (%u folders and %u files)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1280
-msgid "%u selected items (%u folders and %u file)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1288
-msgid "%u selected items (%u folder and %u files)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1290
-msgid "%u selected items (%u folder and %u file)"
-msgstr ""
-
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr ""
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
 msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:561
@@ -1959,16 +1521,24 @@ msgstr ""
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
+#: ../src/View/ListView.vala:26
+msgid "Filename"
 msgstr ""
 
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
 msgstr ""
 
-#: ../src/View/Window.vala:216
-msgid "Ignore"
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr ""
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+msgid "This Folder Does Not Exist"
 msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:28
@@ -1988,6 +1558,481 @@ msgid ""
 "Failed to create the folder\n"
 "\n"
 "%s"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:48
+msgid "Info"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:57
+msgid "General"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:76
+msgid "Close"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:138
+msgid "Device Usage"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:154
+msgid "Capacity:"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:155
+#: ../src/View/AbstractPropertiesDialog.vala:158
+#: ../src/View/AbstractPropertiesDialog.vala:161
+#: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
+msgid "Unknown"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:157
+msgid "Available:"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:160
+msgid "Used:"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:472
+msgid "Personal"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:473
+msgid "Your common places and bookmarks"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:331
+msgid "Home"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:492
+msgid "Open your personal folder"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:507
+msgid "View the list of recently used files"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:90
+msgid "Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:535
+msgid "Open the Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:539
+msgid "Devices"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:540
+msgid "Your local partitions and devices"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
+#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:87
+msgid "Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:665
+msgid "Your network places"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:697
+msgid "Entire Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:704
+msgid "Browse the contents of the network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:830
+msgid "(%s Free of %s)"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1323
+msgid "Unable to start %s"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1427
+msgid "Open"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1435
+msgid "Open in New _Tab"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1441
+msgid "Open in New _Window"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1449
+msgid "Remove"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1457 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1466
+msgid "_Mount"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1472
+msgid "_Unmount"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1478
+msgid "_Eject"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:130
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr ""
+
+#: ../src/View/Slot.vala:39
+msgid "This Folder Is Empty"
+msgstr ""
+
+#: ../src/View/Slot.vala:40
+msgid "Trash Is Empty"
+msgstr ""
+
+#: ../src/View/Slot.vala:41
+msgid "There Are No Recent Files"
+msgstr ""
+
+#: ../src/View/Slot.vala:42
+msgid "Access Denied"
+msgstr ""
+
+#: ../src/View/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/View/VolumePropertiesWindow.vala:78
+#: ../src/View/PropertiesWindow.vala:597
+msgid "Location:"
+msgstr ""
+
+#: ../src/View/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr ""
+
+#: ../src/View/Window.vala:204
+msgid "Files isn't your default file manager."
+msgstr ""
+
+#: ../src/View/Window.vala:210
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:216
+msgid "Ignore"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1301
+msgid "%u folders"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
+msgid " and %u other item (%s) selected"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
+msgid " and %u other items (%s) selected"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
+msgid " selected"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1272
+#: ../src/View/PropertiesWindow.vala:1311
+msgid "%u folder"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:231
+msgid "%u items selected (%s)"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:272
+msgid "%u sub-folder, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:272
+msgid "%u sub-folders, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:278
+msgid "%u file, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:278
+msgid "%u files, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:288
+msgid "%s approx."
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:291
+msgid "unknown size"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u file not readable"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u files not readable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:342
+msgid "(as Administrator)"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:356
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:358
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:359
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:361
+msgid "This Folder Does Not Belong to You"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:362
+msgid "You don't have permission to view this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:364
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:365
+msgid "Could not connect to the server for this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:367
+msgid "Unable show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:368
+msgid "The server for this folder could not be located."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:378
+msgid "File not Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:379
+msgid "The file selected no longer exists."
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:202
+msgid "Permissions"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:229
+msgid "Preview"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:245
+msgid "Actual Size Could Be Larger"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:245
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
+msgid "unknown"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:461
+msgid "Loading…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:492
+msgid "Could not be determined"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:528
+msgid "Contains:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:544
+msgid "Created:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:552
+msgid "Modified:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:561
+msgid "Last Access:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:572
+msgid "Deleted:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:582
+msgid "Mimetype:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:589
+msgid "Resolution:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:607
+msgid "Target:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:615
+msgid "Original Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:638
+msgid "Other Application…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:658
+msgid "Open with:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:752
+msgid "Read"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:756
+msgid "Write"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:760
+msgid "Execute"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:983
+msgid "Owner:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:973 ../src/View/PropertiesWindow.vala:987
+msgid "Group:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:991
+msgid "Everyone:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1257
+msgid "%u subfolders and %u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1259
+msgid "%u subfolders and %u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1262
+msgid "%u subfolders"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1267
+msgid "%u subfolder and %u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1269
+msgid "%u subfolder and %u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1278
+#: ../src/View/PropertiesWindow.vala:1317
+msgid "%u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1280
+#: ../src/View/PropertiesWindow.vala:1319
+msgid "%u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1296
+msgid "%u selected items (%u folders and %u files)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1298
+msgid "%u selected items (%u folders and %u file)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1306
+msgid "%u selected items (%u folder and %u files)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1308
+msgid "%u selected items (%u folder and %u file)"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:42
+msgid "File Manager Operations"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:164
+msgid "File Operations"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:208
+msgid "Completed %s"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:211
+msgid "All file operations have ended"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:264
+msgid "Show Copy Dialog"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:276
+msgid "Cancel All In-progress Actions"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Window"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New Window As _Administrator"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:10
+msgid "About _Files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+msgid "Files"
 msgstr ""
 
 #: ../src/Application.vala:158
@@ -2025,52 +2070,8 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:8
-msgid "New _Window"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:9
-msgid "New Window As _Administrator"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:10
-msgid "About _Files"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:42
-msgid "File Manager Operations"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:164
-msgid "File Operations"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:208
-msgid "Completed %s"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:211
-msgid "All file operations have ended"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:264
-msgid "Show Copy Dialog"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:276
-msgid "Cancel All In-progress Actions"
+#: ../libcore/FileUtils.vala:259
+msgid "Could not rename to '%s'"
 msgstr ""
 
 #: ../libcore/DndHandler.vala:45
@@ -2093,21 +2094,8 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:259
-msgid "Could not rename to '%s'"
-msgstr ""
-
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
-msgstr ""
-
-#: ../libwidgets/View/LocationBar.vala:166
-msgid "Reload this folder"
-msgstr ""
-
-#: ../libwidgets/View/LocationBar.vala:169
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
-msgid "Enter search term or path"
 msgstr ""
 
 #: ../libwidgets/View/SearchResults.vala:180
@@ -2120,6 +2108,15 @@ msgstr ""
 
 #: ../libwidgets/View/SearchResults.vala:184
 msgid "Everywhere Else"
+msgstr ""
+
+#: ../libwidgets/View/LocationBar.vala:166
+msgid "Reload this folder"
+msgstr ""
+
+#: ../libwidgets/View/LocationBar.vala:169
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
+msgid "Enter search term or path"
 msgstr ""
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:412
@@ -2142,6 +2139,10 @@ msgstr ""
 msgid "Go to %s"
 msgstr ""
 
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr ""
+
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
 msgstr ""
@@ -2152,10 +2153,6 @@ msgstr ""
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr ""
-
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
 msgstr ""
 
 #: ../libwidgets/Resources.vala:30
