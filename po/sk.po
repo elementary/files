@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-06-30 19:08+0000\n"
+"PO-Revision-Date: 2016-07-05 18:46+0000\n"
 "Last-Translator: Ľubomír Hlavko <5lubo555@azet.sk>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2016-07-05 05:53+0000\n"
+"X-Launchpad-Export-Date: 2016-07-06 05:35+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1561,7 +1561,7 @@ msgstr "Nie je možné zobraziť náhľad"
 
 #: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Nieje možné otvoriť tento súbor"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
@@ -1748,7 +1748,7 @@ msgstr "Prehliadať obsah siete"
 
 #: ../src/View/Sidebar.vala:830
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s voľné z %s)"
 
 #: ../src/View/Sidebar.vala:1323
 msgid "Unable to start %s"
@@ -1875,7 +1875,7 @@ msgstr "%u súbory, "
 
 #: ../src/View/OverlayBar.vala:288
 msgid "%s approx."
-msgstr ""
+msgstr "približne %s"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
@@ -1961,7 +1961,7 @@ msgstr "neznáme"
 
 #: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
-msgstr ""
+msgstr "Načítava sa…"
 
 #: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"

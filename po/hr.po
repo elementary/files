@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-07-04 20:48+0000\n"
+"PO-Revision-Date: 2016-07-05 08:51+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-07-05 05:53+0000\n"
+"X-Launchpad-Export-Date: 2016-07-06 05:35+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1579,7 +1579,7 @@ msgstr "Pokreni"
 
 #: ../src/View/AbstractDirectoryView.vala:2023
 msgid "Open in %s"
-msgstr "Otvori u %s"
+msgstr "Otvori s %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2033
 msgid "Open in"
@@ -1588,7 +1588,7 @@ msgstr "Otvori u"
 #: ../src/View/AbstractDirectoryView.vala:2035
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
-msgstr "Otvori s"
+msgstr "Otvori s(a)"
 
 #: ../src/View/AbstractDirectoryView.vala:2095
 msgid "Other Application"
@@ -2007,7 +2007,7 @@ msgstr "Ostale aplikacije..."
 
 #: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
-msgstr "Otvori s:"
+msgstr "Otvori s(a):"
 
 #: ../src/View/PropertiesWindow.vala:752
 msgid "Read"
