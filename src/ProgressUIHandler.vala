@@ -185,9 +185,12 @@ public class Marlin.Progress.UIHandler : Object {
 
         if (active_infos > 0) {
             this.active_infos--;
-            /* Only notify if application is not focussed. Add delay
-             * so that active window has time to refocus after progress window is
-             * hidden */
+            /* Only notify if application is not focussed. Add a delay
+             * so that the active application window has time to refocus (if the application itself is focussed)
+             * after progress window dialog is hidden. We have to wait until the dialog is hidden
+             * because it steals focus from the application main window. This also means that a notification
+             * is only sent after last operation finishes and the progress window closes. 
+             * FIXME: Avoid use of a timeout by not using a dialog for progress window or otherwise.*/
             Timeout.add (100, () => {
                 if (!application.get_active_window ().has_toplevel_focus) {
                     show_operation_complete_notification (info, active_infos < 1);
