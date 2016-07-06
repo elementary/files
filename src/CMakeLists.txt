@@ -26,7 +26,6 @@ pkg_check_modules (DEPS REQUIRED
     gee-0.8
     sqlite3
     dbus-glib-1
-    libnotify>=0.7.2
     libcanberra>=0.30
     plank
     zeitgeist-2.0)
@@ -88,7 +87,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         posix
         gee-0.8
         granite
-        libnotify
         unity
         pantheon-files-core
         pantheon-files-core-C
@@ -142,7 +140,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         posix
         gee-0.8
         granite
-        libnotify
         pantheon-files-core
         pantheon-files-core-C
         pantheon-files-widgets

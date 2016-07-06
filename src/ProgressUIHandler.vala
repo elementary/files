@@ -46,8 +46,6 @@ public class Marlin.Progress.UIHandler : Object {
 
     private Marlin.Application application;
 
-    private bool actions_supported = false;
-
     public UIHandler (Marlin.Application app) {
         this.manager = new Marlin.Progress.InfoManager ();
         this.application = app;
@@ -63,15 +61,6 @@ public class Marlin.Progress.UIHandler : Object {
         } catch (GLib.Error e) {
             warning ("ProgressUIHandler error loading notification images - %s", e.message);
         }
-
-         var capabilities = Notify.get_server_caps ();
-
-        debug ("Notification Server capabilities");
-        foreach (string s in capabilities) {
-            debug (s);
-        }
-
-        actions_supported = capabilities.find ("actions") != null;
     }
 
     ~UIHandler () {
@@ -221,18 +210,10 @@ public class Marlin.Progress.UIHandler : Object {
             result = result + "\n" + _("All file operations have ended");
         }
 
-        var complete_notification = new Notify.Notification (TITLE,
-                                                             result,
-                                                             Marlin.ICON_APP_LOGO);
-
-        /* Must use Config.GETTEXT_PACKAGE not Marlin.APP_NAME for notification settings to be honoured. */
-        complete_notification.set_app_name (Config.GETTEXT_PACKAGE);
-
-        try {
-            complete_notification.show ();
-        } catch (Error error) {
-            warning ("There was an error when showing the notification: %s", error.message);
-        }
+        var complete_notification = new GLib.Notification (TITLE);
+        complete_notification.set_body (result);
+        complete_notification.set_icon (new GLib.ThemedIcon (Marlin.ICON_APP_LOGO));
+        application.send_notification ("Pantheon Files Operation", complete_notification);
     }
 
 #if HAVE_UNITY
