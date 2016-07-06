@@ -95,7 +95,7 @@ public class Marlin.Application : Granite.Application {
 
         Notify.init (Config.GETTEXT_PACKAGE);
 
-        progress_handler = new Marlin.Progress.UIHandler ();
+        progress_handler = new Marlin.Progress.UIHandler (this);
 
         this.clipboard = new Marlin.ClipboardManager.get_for_display (Gdk.Display.get_default ());
         this.thumbnailer = Marlin.Thumbnailer.get ();
