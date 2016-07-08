@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-07-05 08:51+0000\n"
+"PO-Revision-Date: 2016-07-07 15:22+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-07-06 05:35+0000\n"
+"X-Launchpad-Export-Date: 2016-07-08 05:33+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -777,8 +777,8 @@ msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
-"Sve stavke u svim direktorijima smeća, uključujući one na montiranim "
-"vanjskim uređajima, bit će trajno obrisane."
+"Sve stavke u svim mapama smeća, uključujući one na montiranim vanjskim "
+"uređajima, bit će trajno obrisane."
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
@@ -1350,7 +1350,7 @@ msgstr "Greška pri stvaranju datoteke %B."
 #: ../libcore/marlin-file-operations.c:6330
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Pojavila se greška pri stvaranju direktorija u %F."
+msgstr "Pojavila se greška pri stvaranju mape u %F."
 
 #: ../libcore/marlin-file-operations.c:6652
 msgid "Emptying the trash"
@@ -1579,7 +1579,7 @@ msgstr "Pokreni"
 
 #: ../src/View/AbstractDirectoryView.vala:2023
 msgid "Open in %s"
-msgstr "Otvori s %s"
+msgstr "Otvori s(a) %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2033
 msgid "Open in"
@@ -1588,11 +1588,11 @@ msgstr "Otvori u"
 #: ../src/View/AbstractDirectoryView.vala:2035
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
-msgstr "Otvori s(a)"
+msgstr "Otvori s"
 
 #: ../src/View/AbstractDirectoryView.vala:2095
 msgid "Other Application"
-msgstr "Druga aplikacija"
+msgstr "Drugom aplikacijom"
 
 #: ../src/View/AbstractDirectoryView.vala:2353
 msgid "Untitled %s"
@@ -1734,7 +1734,7 @@ msgstr "Vaše mrežne lokacije"
 
 #: ../src/View/Sidebar.vala:697
 msgid "Entire Network"
-msgstr "Cjelokupna mreža"
+msgstr "Mrežne lokacije"
 
 #: ../src/View/Sidebar.vala:704
 msgid "Browse the contents of the network"
@@ -2137,7 +2137,7 @@ msgstr "Ovori uri(e) u novoj kartici"
 
 #: ../src/Application.vala:162 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Novi prozor"
+msgstr "Novom prozoru"
 
 #: ../src/Application.vala:164
 msgid "Quit Files."
@@ -2368,11 +2368,11 @@ msgstr "Prikaži udaljene minijature"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr "Nova kartica"
+msgstr "Novoj kartici"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
-msgstr "Terminal"
+msgstr "Terminalu"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
@@ -2400,11 +2400,11 @@ msgstr "Razvrstaj po"
 
 #: ../src/View/directory_view_popup.ui:138
 msgid "Name"
-msgstr "Nazivu"
+msgstr "Naziv"
 
 #: ../src/View/directory_view_popup.ui:153
 msgid "Date"
-msgstr "Datumu"
+msgstr "Datum"
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
