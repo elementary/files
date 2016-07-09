@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-07-07 15:22+0000\n"
+"PO-Revision-Date: 2016-07-08 17:34+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-07-08 05:33+0000\n"
+"X-Launchpad-Export-Date: 2016-07-09 06:16+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -144,19 +144,19 @@ msgstr "Nema ništa u međuspremniku za zalijepiti"
 
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
-msgstr "Danas u %-I:%M %p"
+msgstr "Danas u %-H:%M:%S"
 
 #: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
-msgstr "Jučer u %-I:%M %p"
+msgstr "Jučer u %-H:%M:%S"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b u %-I:%M %p"
+msgstr "%a %-d %b u %-H:%M:%S"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y u %-I:%M %p"
+msgstr "%a %-d %b %Y u %-H:%M:%S"
 
 #: ../libcore/marlin-file-utilities.c:131
 #, c-format
