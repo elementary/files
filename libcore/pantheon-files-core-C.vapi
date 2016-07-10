@@ -73,6 +73,11 @@ namespace Marlin {
     public delegate void CopyCallback (GLib.HashTable<GLib.File, void*>? debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
+
+    [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
+    namespace Dialogs {
+        public void show_error (void* widget_or_screen_or_null_pointer, GLib.Error? error, string format_string, ...);
+    }
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -240,6 +245,7 @@ namespace GOF {
         public signal void changed ();
         public signal void info_available ();
         public signal void icon_changed ();
+        public signal void destroy ();
 
         public const string GIO_DEFAULT_ATTRIBUTES;
 

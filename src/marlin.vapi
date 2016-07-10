@@ -32,19 +32,6 @@ namespace Marlin {
         }
     }
 
-    [CCode (cprefix = "MarlinClipboardManager", lower_case_cprefix = "marlin_clipboard_manager_", cheader_filename = "marlin-clipboard-manager.h")]
-
-        public class ClipboardManager : GLib.Object {
-            public ClipboardManager.get_for_display (Gdk.Display display);
-            public bool get_can_paste ();
-            public bool has_cutted_files (GOF.File file);
-            public bool has_file (GOF.File file);
-            public void copy_files (GLib.List files);
-            public void cut_files (GLib.List files);
-            public void paste_files (GLib.File target, Gtk.Widget widget, GLib.Callback? new_file_closure);
-            public signal void changed ();
-        }
-
     [CCode (cheader_filename = "marlin-file-utilities.h")]
     public void get_rename_region (string filename, out int start_offset, out int end_offset, bool select_all);
 
