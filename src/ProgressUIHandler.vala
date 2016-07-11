@@ -289,17 +289,6 @@ public class Marlin.Progress.UIHandler : Object {
             unity_lentry.progress_visible = false;
             unity_lentry.progress = 0.0;
             show_unity_quicklist (marlin_lentry, false);
-
-            Cancellable pc = info.get_cancellable ();
-
-            if (!pc.is_cancelled ()) {
-                unity_lentry.urgent = true;
-
-                Timeout.add_seconds (2, () => {
-                    unity_lentry.urgent = false;
-                    return false;
-                });
-            }
         }
     }
 
