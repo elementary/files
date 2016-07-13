@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-07-02 20:16+0000\n"
+"PO-Revision-Date: 2016-07-12 15:32+0000\n"
 "Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-07-05 05:53+0000\n"
+"X-Launchpad-Export-Date: 2016-07-13 05:32+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1915,7 +1915,10 @@ msgstr "La dimensione reale potrebbe essere maggiore"
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"Il file %i non può essere letto a causa di privilegi limitati o altri errori."
 msgstr[1] ""
+"I file %i non possono essere letti a causa di privilegi limitati o altri "
+"errori."
 
 #: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
@@ -1951,7 +1954,7 @@ msgstr "Data eliminazione:"
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "Tipo MIME:"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
@@ -1963,7 +1966,7 @@ msgstr "Obiettivo:"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Original Location:"
-msgstr ""
+msgstr "Posizione originale:"
 
 #: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
