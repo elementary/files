@@ -81,13 +81,18 @@ namespace Marlin.View.Chrome
         private void on_search_results_realize () {
             (get_toplevel () as Gtk.Window).get_group ().add_window (search_results); /*Is this necessary every popup? */
         }
-        private void on_search_results_exit () {
+        private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
             }
-            escape ();
+            if (exit_navigate) {
+                escape ();
+            } else {
+                bread.set_entry_text (bread.get_breadcrumbs_path ());
+                enter_navigate_mode ();
+            }
         }
 
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
