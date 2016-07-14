@@ -49,7 +49,9 @@ namespace Marlin {
     }
 
     public enum IconSize {
+        EMBLEM = 16,
         SMALLEST = 16,
+        LARGE_EMBLEM = 24,
         SMALLER = 24,
         SMALL = 32,
         NORMAL = 48,
