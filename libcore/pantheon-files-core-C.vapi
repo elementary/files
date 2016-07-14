@@ -135,6 +135,8 @@ namespace Eel {
     [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
     public Gdk.Pixbuf create_colorized_pixbuf (Gdk.Pixbuf source_pixbuf, Gdk.RGBA color);
     [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
+    public Gdk.Pixbuf create_darkened_pixbuf (Gdk.Pixbuf source_pixbuf, int saturation, int darken);
+    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
     public Gdk.Pixbuf gdk_pixbuf_lucent (Gdk.Pixbuf source_pixbuf, int percent);
 }
 
