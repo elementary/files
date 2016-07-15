@@ -65,6 +65,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         QuicklistHandler.vala
         ClipboardManager.vala
         IconRenderer.vala
+        Thumbnailer.vala
         View/AbstractPropertiesDialog.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
@@ -123,6 +124,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         TextRenderer.vala
         ClipboardManager.vala
         IconRenderer.vala
+        Thumbnailer.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
@@ -166,7 +168,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 add_executable (${CMAKE_PROJECT_NAME}
-    marlin-thumbnailer.c
+    #~ marlin-thumbnailer.c
     marlin-connect-server-dialog.c
     ${VALA_C} )
 
