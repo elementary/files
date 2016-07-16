@@ -78,12 +78,8 @@ namespace Marlin {
 
         public abstract async uint queue (string[] uris, string[] mime_types, string flavor,
                                           string scheduler, uint handle_to_unqueue) throws IOError;
-//~         public abstract async bool queue (string[] uris, string[] mime_types, string flavor,
-//~                                           string scheduler, uint handle_to_unqueue, out uint handle) throws IOError;
         public abstract async void dequeue (uint handle) throws IOError;
         public abstract void get_supported (out string[] uri_schemes, out string[] mime_types) throws IOError;
-//~         public abstract async get_schedulers (out string[] schedulers) throws IOError;
-//~         public abstract async get_flavors (out string[] flavors) throws IOError;
     }
 
     public class Thumbnailer : GLib.Object {
@@ -98,33 +94,30 @@ namespace Marlin {
             uint id;
             IdleType type;
             string[] uris;
-//~             void* request;
         }
 
-//~         struct Item {
-//~             GOF.File file;
-//~             string mime_hint;
-//~         }
 
-        private static ThumbnailerDaemon proxy;
         private static Thumbnailer? instance;
+        private static Mutex thumbnailer_lock;
+        private static GLib.HashTable<uint, uint> request_handle_mapping;
+        private static GLib.HashTable<uint, uint> handle_request_mapping;
+        private static GLib.List<Idle?> idles;
 
-        private Mutex thumbnailer_lock;
-
+        private ThumbnailerDaemon proxy;
         private string [] supported_schemes = null;
         private string [] supported_types = null;
 
-        private GLib.HashTable<uint, uint> handle_request_mapping;
-        private GLib.HashTable<uint, uint> request_handle_mapping;
-//~         private GLib.HashTable<uint, uint> request_call_mapping;
-
-        private GLib.List<Idle?> idles;
-
         private uint last_request = 0;
 
-        public bool has_proxy = false;
-
         private Thumbnailer () {
+            if (request_handle_mapping == null) {
+                request_handle_mapping = new GLib.HashTable<uint, uint>.full (direct_hash, direct_equal, null, null);
+                handle_request_mapping = new GLib.HashTable<uint, uint>.full (direct_hash, direct_equal, null,null);
+                thumbnailer_lock = Mutex ();
+            }
+        }
+
+        private void init () {
             if (proxy == null) {
                 try {
                     proxy = GLib.Bus.get_proxy_sync (GLib.BusType.SESSION,
@@ -137,18 +130,12 @@ namespace Marlin {
                     return;
                 }
 
-                request_handle_mapping = new GLib.HashTable<uint, uint> (direct_hash, direct_equal); /* use default direct comparison functions */
-                handle_request_mapping = new GLib.HashTable<uint, uint> (direct_hash, direct_equal); /* use default direct comparison functions */
-
-                proxy.started.connect (on_proxy_started);
-                proxy.finished.connect (on_proxy_finished);
-                proxy.ready.connect (on_proxy_ready);
-                proxy.error.connect (on_proxy_error);
-
-                thumbnailer_lock = Mutex ();
-
-                assert (request_handle_mapping != null);
-                message ("NEW THUMBNAILER");
+                if (proxy != null) {
+                    proxy.started.connect (on_proxy_started);
+                    proxy.finished.connect (on_proxy_finished);
+                    proxy.ready.connect (on_proxy_ready);
+                    proxy.error.connect (on_proxy_error);
+                }
             }
         }
 
@@ -161,26 +148,26 @@ namespace Marlin {
         }
 
         public new static Thumbnailer? @get () {
-            if (instance == null || !instance.has_proxy) {
+            if (instance == null) {
                 instance =  new Thumbnailer ();
+                instance.init ();
             }
             return instance;
         }
 
-        public bool queue_file (GOF.File file, out uint request, bool large) {
+        public bool queue_file (GOF.File file, out int request, bool large) {
             GLib.List<GOF.File> files = null;
             files.append (file);
-            uint this_request = 0;
+            int this_request;
             bool success = queue_files (files, out this_request, large);
             request = this_request;
             return success;
         }
 
-        public bool queue_files (GLib.List<GOF.File> files, out uint request, bool large) {
-message ("queue files");
-            request = 0;
+        public bool queue_files (GLib.List<GOF.File> files, out int request, bool large) {
+            request = -1;
+
             if (proxy == null) {
-message ("no proxy");
                 return false;
             }
 
@@ -193,13 +180,11 @@ message ("no proxy");
                     file.flags = GOF.File.ThumbState.LOADING;
                     file_count++;
                 } else {
-message ("%s not supported", file.uri);
                     file.flags = GOF.File.ThumbState.NONE;
                 }
             }
 
             if (file_count == 0) {
-message ("no supported files");
                 return false;
             }
 
@@ -210,63 +195,48 @@ message ("no supported files");
 
             uint index = 0;
             foreach (var file in supported_files) {
-message ("adding uri %s", file.uri);
                 uris[index] = file.uri;
-message ("adding ftype %s", file.get_ftype ());
                 mime_hints[index] = file.get_ftype ();
                 index++;
             }
-//~             uris[index] = null;
-//~             mime_hints[index] = null;
 
-            var this_request = ++last_request;
+            uint this_request = ++last_request;
             var flavor = large ? "large" : "normal";
             var scheduler = "foreground";
-message ("begin queue call");
-            assert (request_handle_mapping != null);
             proxy.queue.begin (uris, mime_hints, flavor, scheduler, 0, (obj, res) => {
                 try {
-message ("end queue call");
-                    uint handle = 0;
+                    uint handle;
                     handle = proxy.queue.end (res);
-//~                     proxy.queue.end (res, out handle);
-                    if (handle > 0) {
-message ("got handle %u", handle);
-                        this.request_handle_mapping.insert (this_request, handle);
-                        this.handle_request_mapping.insert (handle, this_request);
-                    } else {
-                        warning ("No handle returned from proxy call Queue");
-                    }
+                    request_handle_mapping.insert (this_request, handle);
+                    handle_request_mapping.insert (handle, this_request);
                 } catch (GLib.Error e) {
                     warning ("Thumbnailer proxy request %u failed - %s", this_request, e.message);
                 }
             });
 
-            request = this_request;
+            request = (int)this_request;
             return true;
         }
 
-        public void dequeue (uint request) {
+        public void dequeue (int request) {
             if (proxy == null) {
                 return;
             }
 
+            uint req = (uint)request;
             thumbnailer_lock.@lock ();
-
-            var handle = request_handle_mapping.lookup (request);
+            uint handle = request_handle_mapping.lookup (req);
+            handle_request_mapping.remove (handle);
+            request_handle_mapping.remove (req);
+            thumbnailer_lock.unlock ();
 
             proxy.dequeue (handle);
-            handle_request_mapping.remove (handle);
-            request_handle_mapping.remove (request);
-
-            thumbnailer_lock.unlock ();
         }
 
         private bool is_supported (GOF.File file) {
             /* TODO cache supported combinations */
             var ftype = file.get_ftype ();
             if (proxy == null || ftype == null) {
-warning ("null proxy or content type");
                 return false;
             }
             bool supported = false;
@@ -286,7 +256,6 @@ warning ("null proxy or content type");
                 foreach (string scheme in supported_schemes) {
                     if (file.location.has_uri_scheme (scheme) &&
                        GLib.ContentType.is_a (ftype, supported_types[index])) {
-message ("%s is supported type for %s", ftype, scheme);
                         supported = true;
                         break;
                     }
@@ -301,35 +270,28 @@ message ("%s is supported type for %s", ftype, scheme);
             return supported;
         }
 
-        private void on_proxy_error (uint handle, string[] failed_uris,
+        private static void on_proxy_error (uint handle, string[] failed_uris,
                                      int error_code, string msg) {
 
 message ("proxy error %s", msg);
+            var idle = Idle ();
+            idle.type = IdleType.ERROR;
+            idle.uris = GLib.strdupv (failed_uris);
+            idles.prepend (idle);
 
-            var request = handle_request_mapping.lookup (handle);
-
-            if (request > 0) {
-                var idle = Idle ();
-                idle.type = IdleType.ERROR;
-                idle.uris = GLib.strdupv (failed_uris);
-                idles.prepend (idle);
-
-                /* TODO batch up errors? */
-                idle.id = GLib.Idle.add_full (GLib.Priority.LOW, () => {
-                    handle_error_idle (idle);
-                    return false;
-                });
-            } else {
-                warning ("Failed to get matching handle");
-            }
+            /* TODO batch up errors? */
+            idle.id = GLib.Idle.add_full (GLib.Priority.LOW, () => {
+                handle_error_idle (idle);
+                return false;
+            });
         }
 
 
-        private void on_proxy_started (uint handle) {
+        private static void on_proxy_started (uint handle) {
 message ("started %u", handle);
         }
 
-        private void on_proxy_ready (uint handle, string[] ready_uris) {
+        private static void on_proxy_ready (uint handle, string[] ready_uris) {
 message ("ready handle %u", handle);
             if (ready_uris != null) {
                 var idle = Idle ();
@@ -347,28 +309,19 @@ message ("ready handle %u", handle);
             }
         }
 
-        private void on_proxy_finished (uint handle) {
+        private static void on_proxy_finished (uint handle) {
 message ("finished handle %u", handle);
-            var request = handle_request_mapping.lookup (handle);
+            thumbnailer_lock.@lock ();
+            uint request = handle_request_mapping.lookup (handle);
             request_handle_mapping.remove (request);
             handle_request_mapping.remove (handle);
+            thumbnailer_lock.unlock ();
         }
 
-//~         private void queue_async_reply (uint handle) {
-
-//~         }
-
-//~         private uint queue_async (string[] uris, string[] mime_hints, bool large) {
-
-//~         }
-
-        private void handle_error_idle (Idle error_idle) {
+        private static void handle_error_idle (Idle error_idle) {
 message ("handle error idle");
             foreach (string uri in error_idle.uris) {
-                var goffile = GOF.File.get_by_uri (uri);
-                if (goffile != null && goffile.flags != GOF.File.ThumbState.READY) {
-                    goffile.flags = GOF.File.ThumbState.NONE;
-                }
+                update_file_thumbstate (uri, GOF.File.ThumbState.NONE);
             }
 
             thumbnailer_lock.@lock ();
@@ -376,16 +329,23 @@ message ("handle error idle");
             thumbnailer_lock.unlock ();
         }
 
-        private void handle_ready_idle (Idle ready_idle) {
+        private static void handle_ready_idle (Idle ready_idle) {
 message ("handle ready idle");
             foreach (string uri in ready_idle.uris) {
-                var goffile = GOF.File.get_by_uri (uri);
-                goffile.flags = GOF.File.ThumbState.READY;
+                update_file_thumbstate (uri, GOF.File.ThumbState.READY);
             }
 
             thumbnailer_lock.@lock ();
             idles.remove (ready_idle);
             thumbnailer_lock.unlock ();
+        }
+    }
+
+    private void update_file_thumbstate (string uri, GOF.File.ThumbState state) {
+        var goffile = GOF.File.get_by_uri (uri);
+        if (goffile != null) {
+            goffile.flags = state;
+            goffile.query_thumbnail_update ();
         }
     }
 

@@ -160,7 +160,7 @@ namespace FM {
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs that are contained in the drop data */
 
         /* support for generating thumbnails */
-        uint thumbnail_request = 0;
+        int thumbnail_request = -1;
         uint thumbnail_source_id = 0;
         uint freeze_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
@@ -687,9 +687,9 @@ namespace FM {
         }
 
         protected void cancel_thumbnailing () {
-            if (thumbnail_request > 0) {
+            if (thumbnail_request >= 0) {
                 thumbnailer.dequeue (thumbnail_request);
-                thumbnail_request = 0;
+                thumbnail_request = -1;
             }
 
             slot.directory.cancel_thumbnailing ();
