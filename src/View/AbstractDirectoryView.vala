@@ -692,7 +692,7 @@ namespace FM {
                 thumbnail_request = -1;
             }
 
-            slot.directory.cancel_thumbnailing ();
+//~             slot.directory.cancel_thumbnailing ();
             cancel_timeout (ref thumbnail_source_id);
         }
 
@@ -1344,12 +1344,12 @@ namespace FM {
                 is_writable = false;
             }
 
-            /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
-             * are sometimes not properly aligned when first drawn, only after redrawing the view. */
-            Idle.add (() => {
-                queue_draw ();
-                return false;
-            });
+//~             /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
+//~              * are sometimes not properly aligned when first drawn, only after redrawing the view. */
+//~             Idle.add (() => {
+//~                 queue_draw ();
+//~                 return false;
+//~             });
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
@@ -1366,9 +1366,9 @@ namespace FM {
             model.set_property ("size", icon_size);
             change_zoom_level ();
 
-            if (get_realized () && (slot.directory.is_local || show_remote_thumbnails)) {
-                load_thumbnails (slot.directory, zoom);
-            }
+//~             if (get_realized () && (slot.directory.is_local || show_remote_thumbnails)) {
+//~                 load_thumbnails (slot.directory, zoom);
+//~             }
         }
 
     /** Handle Preference changes */
@@ -2465,6 +2465,7 @@ namespace FM {
                  * and there has not been another event (which would zero the thumbnail_source_if) */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
+                    queue_draw ();
                 }
                 thumbnail_source_id = 0;
                 return false;
@@ -2482,10 +2483,10 @@ namespace FM {
             model.row_deleted.connect (on_row_deleted);
         }
 
-        private void load_thumbnails (GOF.Directory.Async dir, Marlin.ZoomLevel zoom) {
-            /* Async function checks dir is not loading and dir is local */
-            dir.queue_load_thumbnails (Marlin.zoom_level_to_icon_size (zoom));
-        }
+//~         private void load_thumbnails (GOF.Directory.Async dir, Marlin.ZoomLevel zoom) {
+//~             /* Async function checks dir is not loading and dir is local */
+//~             dir.queue_load_thumbnails (Marlin.zoom_level_to_icon_size (zoom));
+//~         }
 
         private Gtk.Widget? get_real_view () {
             return (this as Gtk.Bin).get_child ();
@@ -3036,7 +3037,7 @@ namespace FM {
             } else if (style_context.has_class (MESSAGE_CLASS)) {
                 style_context.remove_class (MESSAGE_CLASS);
             }
-
+message ("ADV view draw");
             return false;
         }
 

@@ -56,7 +56,6 @@ namespace Marlin {
                 _file = value;
                 if (_file != null) {
                     _file.update_icon (icon_size);
-                    pixbuf = _file.pix;
                 }
             }
         }
@@ -65,7 +64,11 @@ namespace Marlin {
         private GOF.File? _file;
         private Marlin.IconSize icon_size;
         private int emblem_overlap = 0;
-        private Gdk.Pixbuf pixbuf;
+        private unowned Gdk.Pixbuf? pixbuf {
+            get {
+                return _file != null ? _file.pix : null;
+            }
+        }
         private double scale;
         private ClipboardManager clipboard;
 
@@ -79,6 +82,8 @@ namespace Marlin {
             if (file == null || pixbuf == null) {
                 return;
             }
+
+            Gdk.Pixbuf? pb = pixbuf;
 
             var pix_rect = Gdk.Rectangle ();
             get_size (widget, cell_area, out pix_rect.x, out pix_rect.y, out pix_rect.width, out pix_rect.height);
@@ -107,18 +112,18 @@ namespace Marlin {
             if (special_icon_name != null) {
                 var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size);
                 if (nicon != null) {
-                    pixbuf = nicon.get_pixbuf_nodefault ();
+                    pb = nicon.get_pixbuf_nodefault ();
                 }
             }
 
             if (clipboard.has_cutted_file (file)) {
                 /* 50% translucent for cutted files */
-                pixbuf = Eel.gdk_pixbuf_lucent (pixbuf, 50);
+                pb = Eel.gdk_pixbuf_lucent (pixbuf, 50);
             }
             if (file.is_hidden) {
                 /* 75% translucent for hidden files */
-                pixbuf = Eel.gdk_pixbuf_lucent (pixbuf, 75);
-                pixbuf = Eel.create_darkened_pixbuf (pixbuf, 150, 200);
+                pb = Eel.gdk_pixbuf_lucent (pixbuf, 75);
+                pb = Eel.create_darkened_pixbuf (pb, 150, 200);
             }
 
             var style_context = widget.get_parent ().get_style_context ();
@@ -135,23 +140,18 @@ namespace Marlin {
                     state = Gtk.StateFlags.SELECTED;
                     state |= widget.get_state_flags ();
                     var color = style_context.get_background_color (state);
-                    pixbuf = Eel.create_colorized_pixbuf (pixbuf, color);
+                    pb = Eel.create_colorized_pixbuf (pb, color);
                 }
                 if (prelit) {
-                    pixbuf = Eel.create_spotlight_pixbuf (pixbuf);
+                    pb = Eel.create_spotlight_pixbuf (pb);
                 }
             }
 
-            bool can_frame = file.flags == GOF.File.ThumbState.READY &&
-                             file.get_thumbnail_path () != null &&
-                             file.thumb_can_frame ();
-
-
-            if (pixbuf == null) {
+            if (pb == null) {
                 return;
             }
 
-            Gtk.render_icon (style_context, cr, pixbuf,
+            Gtk.render_icon (style_context, cr, pb,
                              pix_rect.x, pix_rect.y);
 
             style_context.restore ();

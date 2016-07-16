@@ -109,6 +109,8 @@ namespace Marlin {
 
         private uint last_request = 0;
 
+        public signal void finished (uint request);
+
         private Thumbnailer () {
             if (request_handle_mapping == null) {
                 request_handle_mapping = new GLib.HashTable<uint, uint>.full (direct_hash, direct_equal, null, null);
@@ -166,7 +168,7 @@ namespace Marlin {
 
         public bool queue_files (GLib.List<GOF.File> files, out int request, bool large) {
             request = -1;
-
+message ("TN queue files");
             if (proxy == null) {
                 return false;
             }
@@ -205,6 +207,7 @@ namespace Marlin {
             var scheduler = "foreground";
             proxy.queue.begin (uris, mime_hints, flavor, scheduler, 0, (obj, res) => {
                 try {
+message ("got handle");
                     uint handle;
                     handle = proxy.queue.end (res);
                     request_handle_mapping.insert (this_request, handle);
@@ -300,7 +303,7 @@ message ("ready handle %u", handle);
                 idles.prepend (idle);
 
                 /* TODO batch up errors? */
-                idle.id = GLib.Idle.add_full (GLib.Priority.LOW, () => {
+                idle.id = GLib.Idle.add_full (GLib.Priority.HIGH, () => {
                     handle_ready_idle (idle);
                     return false;
                 });
