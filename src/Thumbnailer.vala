@@ -16,7 +16,7 @@
     General Public License for more details.
 
     You should have received a copy of the GNU General Public
-    License along with this program; see the file COPYING.  If not,
+    License along with this program; see the Timeoutfile COPYING.  If not,
     write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
     Boston, MA 02111-1307, USA.
 
@@ -87,13 +87,15 @@ namespace Marlin {
         enum IdleType {
             ERROR,
             READY,
-            STARTED
+            STARTED,
+            FINISHED
         }
 
         struct Idle {
             uint id;
             IdleType type;
             string[] uris;
+            uint handle;
         }
 
 
@@ -168,7 +170,6 @@ namespace Marlin {
 
         public bool queue_files (GLib.List<GOF.File> files, out int request, bool large) {
             request = -1;
-message ("TN queue files");
             if (proxy == null) {
                 return false;
             }
@@ -207,7 +208,6 @@ message ("TN queue files");
             var scheduler = "foreground";
             proxy.queue.begin (uris, mime_hints, flavor, scheduler, 0, (obj, res) => {
                 try {
-message ("got handle");
                     uint handle;
                     handle = proxy.queue.end (res);
                     request_handle_mapping.insert (this_request, handle);
@@ -229,11 +229,9 @@ message ("got handle");
             uint req = (uint)request;
             thumbnailer_lock.@lock ();
             uint handle = request_handle_mapping.lookup (req);
-            handle_request_mapping.remove (handle);
-            request_handle_mapping.remove (req);
             thumbnailer_lock.unlock ();
 
-            proxy.dequeue (handle);
+            proxy.dequeue (handle); /* hash tables will be updated when "finished" signal received. */
         }
 
         private bool is_supported (GOF.File file) {
@@ -243,8 +241,6 @@ message ("got handle");
                 return false;
             }
             bool supported = false;
-
-            thumbnailer_lock.@lock ();
 
             if (supported_schemes == null) {
                 try {
@@ -268,15 +264,12 @@ message ("got handle");
                 warning ("No supported schemes or types returned by proxy");
             }
 
-            thumbnailer_lock.unlock ();
-
             return supported;
         }
 
         private static void on_proxy_error (uint handle, string[] failed_uris,
                                      int error_code, string msg) {
 
-message ("proxy error %s", msg);
             var idle = Idle ();
             idle.type = IdleType.ERROR;
             idle.uris = GLib.strdupv (failed_uris);
@@ -291,15 +284,16 @@ message ("proxy error %s", msg);
 
 
         private static void on_proxy_started (uint handle) {
-message ("started %u", handle);
+            debug ("started %u", handle);
         }
 
         private static void on_proxy_ready (uint handle, string[] ready_uris) {
-message ("ready handle %u", handle);
             if (ready_uris != null) {
                 var idle = Idle ();
                 idle.type = IdleType.READY;
                 idle.uris = GLib.strdupv (ready_uris);
+                idle.handle = handle;
+
                 idles.prepend (idle);
 
                 /* TODO batch up errors? */
@@ -313,16 +307,19 @@ message ("ready handle %u", handle);
         }
 
         private static void on_proxy_finished (uint handle) {
-message ("finished handle %u", handle);
-            thumbnailer_lock.@lock ();
-            uint request = handle_request_mapping.lookup (handle);
-            request_handle_mapping.remove (request);
-            handle_request_mapping.remove (handle);
-            thumbnailer_lock.unlock ();
+            var idle = Idle ();
+            idle.type = IdleType.FINISHED;
+            idle.handle = handle;
+            idles.prepend (idle);
+
+            /* TODO batch up errors? */
+            idle.id = GLib.Idle.add_full (GLib.Priority.LOW, () => {
+                handle_finished_idle (idle);
+                return false;
+            });
         }
 
         private static void handle_error_idle (Idle error_idle) {
-message ("handle error idle");
             foreach (string uri in error_idle.uris) {
                 update_file_thumbstate (uri, GOF.File.ThumbState.NONE);
             }
@@ -333,7 +330,7 @@ message ("handle error idle");
         }
 
         private static void handle_ready_idle (Idle ready_idle) {
-message ("handle ready idle");
+
             foreach (string uri in ready_idle.uris) {
                 update_file_thumbstate (uri, GOF.File.ThumbState.READY);
             }
@@ -342,14 +339,23 @@ message ("handle ready idle");
             idles.remove (ready_idle);
             thumbnailer_lock.unlock ();
         }
-    }
 
-    private void update_file_thumbstate (string uri, GOF.File.ThumbState state) {
-        var goffile = GOF.File.get_by_uri (uri);
-        if (goffile != null) {
-            goffile.flags = state;
-            goffile.query_thumbnail_update ();
+        private static void handle_finished_idle (Idle finished_idle) {
+            var handle = finished_idle.handle;
+            thumbnailer_lock.@lock ();
+            uint request = handle_request_mapping.lookup (handle);
+            request_handle_mapping.remove (request);
+            handle_request_mapping.remove (handle);
+            thumbnailer_lock.unlock ();
+            Thumbnailer.@get ().finished (request);
+        }
+
+        private static void update_file_thumbstate (string uri, GOF.File.ThumbState state) {
+            var goffile = GOF.File.get_by_uri (uri);
+            if (goffile != null) {
+                goffile.flags = state;
+                goffile.query_thumbnail_update ();
+            }
         }
     }
-
 }
