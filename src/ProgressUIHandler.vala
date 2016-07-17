@@ -44,10 +44,11 @@ public class Marlin.Progress.UIHandler : Object {
     private const int ICON_SIZE = 64;
     private const string CANCELLED_ICON_NAME = "dialog-warning";
 
-    private bool actions_supported = false;
+    private Marlin.Application application;
 
-    public UIHandler () {
+    public UIHandler (Marlin.Application app) {
         this.manager = new Marlin.Progress.InfoManager ();
+        this.application = app;
 
         manager.new_progress_info.connect ((info) => {
             info.started.connect (progress_info_started_cb);
@@ -60,15 +61,6 @@ public class Marlin.Progress.UIHandler : Object {
         } catch (GLib.Error e) {
             warning ("ProgressUIHandler error loading notification images - %s", e.message);
         }
-
-         var capabilities = Notify.get_server_caps ();
-
-        debug ("Notification Server capabilities");
-        foreach (string s in capabilities) {
-            debug (s);
-        }
-
-        actions_supported = capabilities.find ("actions") != null;
     }
 
     ~UIHandler () {
@@ -95,7 +87,6 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private void progress_info_started_cb (Marlin.Progress.Info info) {
-        var application = Marlin.Application.get ();
         application.hold ();
 
         if (info == null || !(info is Marlin.Progress.Info) ||
@@ -154,46 +145,54 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     private void ensure_window () {
-        if (this.progress_window != null) {
-            return;
+        if (this.progress_window == null) {
+            /* This provides an undeletable, unminimisable window in which to show the info widgets */
+            this.progress_window = new Gtk.Dialog ();
+            this.progress_window.resizable = false;
+            this.progress_window.deletable = false;
+            this.progress_window.title = _("File Operations");
+            this.progress_window.set_wmclass ("file_progress", "Marlin");
+            this.progress_window.icon_name = "system-file-manager";
+
+            this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
+
+            this.progress_window.get_content_area ().set_border_width (10);
+            this.progress_window.get_content_area ().add (this.window_vbox);
+            this.window_vbox.show ();
+
+            this.progress_window.delete_event.connect ((widget, event) => {
+                widget.hide ();
+                return true;
+            });
         }
-        /* This provides an undeletable, unminimisable window in which to show the info widgets */
-        this.progress_window = new Gtk.Dialog ();
-        this.progress_window.resizable = false;
-        this.progress_window.deletable = false;
-        this.progress_window.title = _("File Operations");
-        this.progress_window.set_wmclass ("file_progress", "Marlin");
-        this.progress_window.icon_name = "system-file-manager";
 
-
-        this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);
-
-        this.progress_window.get_content_area ().set_border_width (10);
-        this.progress_window.get_content_area ().add (this.window_vbox);
-        this.window_vbox.show ();
-
-        this.progress_window.delete_event.connect ((widget, event) => {
-            widget.hide ();
-            return true;
-        });
+        progress_window.set_transient_for (application.get_active_window ());
     }
 
     private void progress_info_finished_cb (Marlin.Progress.Info info) {
-        var application = Marlin.Application.get ();
         application.release ();
 
         if (active_infos > 0) {
-            this.active_infos--; 
-            show_operation_complete_notification (info, active_infos < 1);
+            this.active_infos--;
+            /* Only notify if application is not focussed. Add a delay
+             * so that the active application window has time to refocus (if the application itself is focussed)
+             * after progress window dialog is hidden. We have to wait until the dialog is hidden
+             * because it steals focus from the application main window. This also means that a notification
+             * is only sent after last operation finishes and the progress window closes. 
+             * FIXME: Avoid use of a timeout by not using a dialog for progress window or otherwise.*/
+            Timeout.add (100, () => {
+                if (!application.get_active_window ().has_toplevel_focus) {
+                    show_operation_complete_notification (info, active_infos < 1);
+                }
+                return false;
+            });
         } else {
             warning ("Attempt to decrement zero active infos");
         }
-
         /* For rapid file transfers this can get called before progress window was been created */
         if (active_infos < 1 && progress_window != null && progress_window.visible) {
             (this.progress_window as Gtk.Window).hide ();
         }
-
 #if HAVE_UNITY
         update_unity_launcher (info, false);
 #endif
@@ -211,18 +210,10 @@ public class Marlin.Progress.UIHandler : Object {
             result = result + "\n" + _("All file operations have ended");
         }
 
-        var complete_notification = new Notify.Notification (TITLE,
-                                                             result,
-                                                             Marlin.ICON_APP_LOGO);
-
-        /* Must use Config.GETTEXT_PACKAGE not Marlin.APP_NAME for notification settings to be honoured. */
-        complete_notification.set_app_name (Config.GETTEXT_PACKAGE);
-
-        try {
-            complete_notification.show ();
-        } catch (Error error) {
-            warning ("There was an error when showing the notification: %s", error.message);
-        }
+        var complete_notification = new GLib.Notification (TITLE);
+        complete_notification.set_body (result);
+        complete_notification.set_icon (new GLib.ThemedIcon (Marlin.ICON_APP_LOGO));
+        application.send_notification ("Pantheon Files Operation", complete_notification);
     }
 
 #if HAVE_UNITY
@@ -298,17 +289,6 @@ public class Marlin.Progress.UIHandler : Object {
             unity_lentry.progress_visible = false;
             unity_lentry.progress = 0.0;
             show_unity_quicklist (marlin_lentry, false);
-
-            Cancellable pc = info.get_cancellable ();
-
-            if (!pc.is_cancelled ()) {
-                unity_lentry.urgent = true;
-
-                Timeout.add_seconds (2, () => {
-                    unity_lentry.urgent = false;
-                    return false;
-                });
-            }
         }
     }
 

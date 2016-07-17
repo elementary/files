@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-02 05:58+0400\n"
-"PO-Revision-Date: 2016-06-30 19:08+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"POT-Creation-Date: 2016-07-04 08:38-0700\n"
+"PO-Revision-Date: 2016-07-03 06:26+0000\n"
+"Last-Translator: Roman Sytnyk <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-07-02 05:53+0000\n"
+"X-Launchpad-Export-Date: 2016-07-05 05:54+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 "Language: uk\n"
 
@@ -143,10 +143,6 @@ msgstr "Операцію скасовано"
 msgid "There is nothing on the clipboard to paste"
 msgstr "Буфер обміну порожній"
 
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (некоректний символ Unicode)"
-
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr "Сьогодні о %-I:%M %p"
@@ -172,35 +168,10 @@ msgstr "Не вдається визначити початкове розташ
 msgid "The item cannot be restored from trash"
 msgstr "Елемент неможливо відновити зі смітника"
 
-#: ../libcore/gof-file.c:366
-#, c-format
-msgid "link to %s"
-msgstr "посилання на %s"
-
-#: ../libcore/gof-file.c:1913
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Неможливо обробити desktop-файл: %s"
-
-#: ../libcore/gof-file.c:1951
-msgid "No Exec field specified"
-msgstr "Не вказано поле Exec"
-
-#: ../libcore/gof-file.c:1971
-msgid "No URL field specified"
-msgstr "Не вказано URL"
-
-#: ../libcore/gof-file.c:1977
-msgid "Invalid desktop file"
-msgstr "Некоректний файл .desktop"
-
-#: ../libcore/gof-file.c:2272
-msgid "Slashes are not allowed in filenames"
-msgstr "У назвах файлів не можна використовувати похилу риску"
-
-#: ../libcore/gof-file.c:2292
-msgid "Toplevel files cannot be renamed"
-msgstr "Файли верхнього рівня не можна перейменовувати"
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Приготування"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
@@ -607,15 +578,6 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Повернути зміну власника %d елемента"
 msgstr[1] "Повернути зміну власника %d елементів"
 msgstr[2] "Повернути зміну власника %d елементів"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Приготування"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "_Докладніше"
 
 #: ../libcore/marlin-file-operations.c:199
 #: ../libcore/marlin-file-conflict-dialog.c:748
@@ -1407,6 +1369,44 @@ msgstr "Очищення смітника"
 msgid "Emptying Trash"
 msgstr "Очищення смітника"
 
+#: ../libcore/gof-file.c:366
+#, c-format
+msgid "link to %s"
+msgstr "посилання на %s"
+
+#: ../libcore/gof-file.c:1913
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Неможливо обробити desktop-файл: %s"
+
+#: ../libcore/gof-file.c:1951
+msgid "No Exec field specified"
+msgstr "Не вказано поле Exec"
+
+#: ../libcore/gof-file.c:1971
+msgid "No URL field specified"
+msgstr "Не вказано URL"
+
+#: ../libcore/gof-file.c:1977
+msgid "Invalid desktop file"
+msgstr "Некоректний файл .desktop"
+
+#: ../libcore/gof-file.c:2272
+msgid "Slashes are not allowed in filenames"
+msgstr "У назвах файлів не можна використовувати похилу риску"
+
+#: ../libcore/gof-file.c:2292
+msgid "Toplevel files cannot be renamed"
+msgstr "Файли верхнього рівня не можна перейменовувати"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (некоректний символ Unicode)"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "_Докладніше"
+
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
@@ -1495,7 +1495,7 @@ msgstr "Початковий файл"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:574
+#: ../src/View/PropertiesWindow.vala:518
 msgid "Size:"
 msgstr "Розмір:"
 
@@ -1503,7 +1503,7 @@ msgstr "Розмір:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:581
+#: ../src/View/PropertiesWindow.vala:525
 msgid "Type:"
 msgstr "Тип:"
 
@@ -1558,6 +1558,63 @@ msgstr "Попередній"
 msgid "Next"
 msgstr "Наступний"
 
+#: ../src/View/AbstractDirectoryView.vala:561
+msgid "Failed to preview"
+msgstr "Помилка попереднього перегляду"
+
+#: ../src/View/AbstractDirectoryView.vala:820
+msgid "Cannot open this file"
+msgstr "Не вдається відкрити цей файл"
+
+#: ../src/View/AbstractDirectoryView.vala:833
+msgid "Cannot identify file type to open"
+msgstr "Не вдається ідентифікувати тип файлу для відкриття"
+
+#: ../src/View/AbstractDirectoryView.vala:1568
+msgid "Cannot drop this file"
+msgstr "Неможливо перемістити цей файл"
+
+#: ../src/View/AbstractDirectoryView.vala:1568
+msgid "Invalid file name provided"
+msgstr "Некоректне ім'я файлу"
+
+#: ../src/View/AbstractDirectoryView.vala:2012
+msgid "Invalid"
+msgstr "Некоректний"
+
+#: ../src/View/AbstractDirectoryView.vala:2018
+msgid "Run"
+msgstr "Виконати"
+
+#: ../src/View/AbstractDirectoryView.vala:2023
+msgid "Open in %s"
+msgstr "Відкрити в %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2033
+msgid "Open in"
+msgstr "Відкрити у"
+
+#: ../src/View/AbstractDirectoryView.vala:2035
+#: ../libwidgets/View/BreadcrumbsEntry.vala:451
+msgid "Open with"
+msgstr "Відкрити за допомогою"
+
+#: ../src/View/AbstractDirectoryView.vala:2095
+msgid "Other Application"
+msgstr "Інший додаток"
+
+#: ../src/View/AbstractDirectoryView.vala:2353
+msgid "Untitled %s"
+msgstr "Неназваний %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2788
+msgid "Cannot copy files that are in the trash"
+msgstr "Неможливо скопіювати файли, що знаходяться у смітнику"
+
+#: ../src/View/AbstractDirectoryView.vala:2789
+msgid "Cutting the selection instead"
+msgstr "Натомість вирізаю виділення"
+
 #: ../src/View/ListView.vala:26
 msgid "Filename"
 msgstr "Ім'я файлу"
@@ -1573,6 +1630,67 @@ msgstr "Тип"
 #: ../src/View/ListView.vala:29
 msgid "Modified"
 msgstr "Змінено"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+msgid "This Folder Does Not Exist"
+msgstr "Ця тек а не існує"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Теку \"%s\" неможливо знайти."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Створити"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Створити теку \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Помилка при створенні теки\n"
+"\n"
+"%s"
+
+#: ../src/View/AbstractPropertiesDialog.vala:48
+msgid "Info"
+msgstr "Інформація"
+
+#: ../src/View/AbstractPropertiesDialog.vala:57
+msgid "General"
+msgstr "Загальне"
+
+#: ../src/View/AbstractPropertiesDialog.vala:76
+msgid "Close"
+msgstr "Закрити"
+
+#: ../src/View/AbstractPropertiesDialog.vala:138
+msgid "Device Usage"
+msgstr "Використання девайсів"
+
+#: ../src/View/AbstractPropertiesDialog.vala:154
+msgid "Capacity:"
+msgstr "Об’єм:"
+
+#: ../src/View/AbstractPropertiesDialog.vala:155
+#: ../src/View/AbstractPropertiesDialog.vala:158
+#: ../src/View/AbstractPropertiesDialog.vala:161
+#: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
+msgid "Unknown"
+msgstr "Невідомо"
+
+#: ../src/View/AbstractPropertiesDialog.vala:157
+msgid "Available:"
+msgstr "Доступно:"
+
+#: ../src/View/AbstractPropertiesDialog.vala:160
+msgid "Used:"
+msgstr "Використано:"
 
 #: ../src/View/Sidebar.vala:472
 msgid "Personal"
@@ -1610,8 +1728,8 @@ msgstr "Пристрої"
 msgid "Your local partitions and devices"
 msgstr "Ваші локальні розділи та пристрої"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/ViewContainer.vala:333
-#: ../src/View/VolumePropertiesWindow.vala:44 ../libwidgets/Resources.vala:93
+#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
+#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "Файлова система"
 
@@ -1671,7 +1789,7 @@ msgstr "_Від'єднати"
 msgid "_Eject"
 msgstr "_Витягнути"
 
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:142
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:130
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Параметри"
@@ -1692,7 +1810,32 @@ msgstr "Немає нещодавніх файлів"
 msgid "Access Denied"
 msgstr "Доступ заборонено"
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1283
+#: ../src/View/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Властивості диску"
+
+#: ../src/View/VolumePropertiesWindow.vala:78
+#: ../src/View/PropertiesWindow.vala:597
+msgid "Location:"
+msgstr "Розташування:"
+
+#: ../src/View/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Формат:"
+
+#: ../src/View/Window.vala:204
+msgid "Files isn't your default file manager."
+msgstr "Ця програма не являється файловим менеджером по-замовчуванню."
+
+#: ../src/View/Window.vala:210
+msgid "Set as Default"
+msgstr "Встановити як типовий"
+
+#: ../src/View/Window.vala:216
+msgid "Ignore"
+msgstr "Ігнорувати"
+
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1301
 msgid "%u folders"
 msgstr "%u теки"
 
@@ -1708,8 +1851,8 @@ msgstr " і %u інших елементів (%s) вибрано"
 msgid " selected"
 msgstr " обрано"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1254
-#: ../src/View/PropertiesWindow.vala:1293
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1272
+#: ../src/View/PropertiesWindow.vala:1311
 msgid "%u folder"
 msgstr "%u тека"
 
@@ -1752,10 +1895,6 @@ msgstr "Файли %u недоступні для читання"
 #: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
 msgstr "(як Адміністратор)"
-
-#: ../src/View/ViewContainer.vala:355 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr "Ця тек а не існує"
 
 #: ../src/View/ViewContainer.vala:356
 msgid "You cannot create a folder here."
@@ -1801,291 +1940,197 @@ msgstr "Файл не знайдено"
 msgid "The file selected no longer exists."
 msgstr "Виділений файл більше не існує."
 
-#: ../src/View/AbstractPropertiesDialog.vala:47
-msgid "Info"
-msgstr "Інформація"
-
-#: ../src/View/AbstractPropertiesDialog.vala:56
-msgid "General"
-msgstr "Загальне"
-
-#: ../src/View/AbstractPropertiesDialog.vala:75
-msgid "Close"
-msgstr "Закрити"
-
-#: ../src/View/AbstractPropertiesDialog.vala:137
-msgid "Device Usage"
-msgstr "Використання девайсів"
-
-#: ../src/View/AbstractPropertiesDialog.vala:154
-msgid "Capacity:"
-msgstr "Об’єм:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:155
-#: ../src/View/AbstractPropertiesDialog.vala:158
-#: ../src/View/AbstractPropertiesDialog.vala:161
-msgid "Unknown"
-msgstr "Невідомо"
-
-#: ../src/View/AbstractPropertiesDialog.vala:157
-msgid "Available:"
-msgstr "Доступно:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:160
-msgid "Used:"
-msgstr "Використано:"
-
-#: ../src/View/PropertiesWindow.vala:26
-msgid "Resolution:"
-msgstr "Роздільна здатність:"
-
-#: ../src/View/PropertiesWindow.vala:219
+#: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
 msgstr "Права доступу"
 
-#: ../src/View/PropertiesWindow.vala:246
+#: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
 msgstr "Попередній перегляд"
 
-#: ../src/View/PropertiesWindow.vala:265
+#: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Фактичний розмір може бути більше"
 
-#: ../src/View/PropertiesWindow.vala:265
+#: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:284 ../src/View/PropertiesWindow.vala:303
+#: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
 msgstr "невідомо"
 
-#: ../src/View/PropertiesWindow.vala:463
-msgid "Created:"
-msgstr "Створено:"
-
-#: ../src/View/PropertiesWindow.vala:465
-msgid "Modified:"
-msgstr "Змінено:"
-
-#: ../src/View/PropertiesWindow.vala:468
-msgid "Last Access:"
-msgstr "Останній доступ:"
-
-#: ../src/View/PropertiesWindow.vala:476
-msgid "Deleted:"
-msgstr "Видалено"
-
-#: ../src/View/PropertiesWindow.vala:482
-msgid "MimeType:"
-msgstr "Тип Mime:"
-
-#: ../src/View/PropertiesWindow.vala:490
+#: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
-msgstr ""
+msgstr "Завантаження…"
 
-#: ../src/View/PropertiesWindow.vala:503
-msgid "MimeTypes:"
-msgstr "Типи Mime:"
-
-#: ../src/View/PropertiesWindow.vala:516 ../src/View/PropertiesWindow.vala:518
-#: ../src/View/VolumePropertiesWindow.vala:78
-msgid "Location:"
-msgstr "Розташування:"
-
-#: ../src/View/PropertiesWindow.vala:522
-msgid "Target:"
-msgstr "Призначення:"
-
-#: ../src/View/PropertiesWindow.vala:528
-msgid "Origin Location:"
-msgstr "Початкове розташування:"
-
-#: ../src/View/PropertiesWindow.vala:535
+#: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
 msgstr "Не можливо визначти"
 
-#: ../src/View/PropertiesWindow.vala:584
+#: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
 msgstr "Містить:"
 
-#: ../src/View/PropertiesWindow.vala:620
-msgid "Other Application…"
+#: ../src/View/PropertiesWindow.vala:544
+msgid "Created:"
+msgstr "Створено:"
+
+#: ../src/View/PropertiesWindow.vala:552
+msgid "Modified:"
+msgstr "Змінено:"
+
+#: ../src/View/PropertiesWindow.vala:561
+msgid "Last Access:"
+msgstr "Останній доступ:"
+
+#: ../src/View/PropertiesWindow.vala:572
+msgid "Deleted:"
+msgstr "Видалено"
+
+#: ../src/View/PropertiesWindow.vala:582
+msgid "Mimetype:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:640
+#: ../src/View/PropertiesWindow.vala:589
+msgid "Resolution:"
+msgstr "Роздільна здатність:"
+
+#: ../src/View/PropertiesWindow.vala:607
+msgid "Target:"
+msgstr "Призначення:"
+
+#: ../src/View/PropertiesWindow.vala:615
+msgid "Original Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:638
+msgid "Other Application…"
+msgstr "Інший додаток..."
+
+#: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
 msgstr "Відкрити за допомогою:"
 
-#: ../src/View/PropertiesWindow.vala:734
+#: ../src/View/PropertiesWindow.vala:752
 msgid "Read"
 msgstr "Читання"
 
-#: ../src/View/PropertiesWindow.vala:738
+#: ../src/View/PropertiesWindow.vala:756
 msgid "Write"
 msgstr "Запис"
 
-#: ../src/View/PropertiesWindow.vala:742
+#: ../src/View/PropertiesWindow.vala:760
 msgid "Execute"
 msgstr "Виконання"
 
-#: ../src/View/PropertiesWindow.vala:949 ../src/View/PropertiesWindow.vala:965
+#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:983
 msgid "Owner:"
 msgstr "Власник:"
 
-#: ../src/View/PropertiesWindow.vala:955 ../src/View/PropertiesWindow.vala:969
+#: ../src/View/PropertiesWindow.vala:973 ../src/View/PropertiesWindow.vala:987
 msgid "Group:"
 msgstr "Група:"
 
-#: ../src/View/PropertiesWindow.vala:973
+#: ../src/View/PropertiesWindow.vala:991
 msgid "Everyone:"
 msgstr "Всі:"
 
-#: ../src/View/PropertiesWindow.vala:1239
+#: ../src/View/PropertiesWindow.vala:1257
 msgid "%u subfolders and %u files"
 msgstr "%u вкладених тек та %u файлів"
 
-#: ../src/View/PropertiesWindow.vala:1241
+#: ../src/View/PropertiesWindow.vala:1259
 msgid "%u subfolders and %u file"
 msgstr "%u вкладених тек та %u файл"
 
-#: ../src/View/PropertiesWindow.vala:1244
+#: ../src/View/PropertiesWindow.vala:1262
 msgid "%u subfolders"
 msgstr "%u вкладених тек"
 
-#: ../src/View/PropertiesWindow.vala:1249
+#: ../src/View/PropertiesWindow.vala:1267
 msgid "%u subfolder and %u files"
 msgstr "%u вкладена тека та %u файли"
 
-#: ../src/View/PropertiesWindow.vala:1251
+#: ../src/View/PropertiesWindow.vala:1269
 msgid "%u subfolder and %u file"
 msgstr "%u вкладена тека та %u файл"
 
-#: ../src/View/PropertiesWindow.vala:1260
-#: ../src/View/PropertiesWindow.vala:1299
+#: ../src/View/PropertiesWindow.vala:1278
+#: ../src/View/PropertiesWindow.vala:1317
 msgid "%u files"
 msgstr "%u файлів"
 
-#: ../src/View/PropertiesWindow.vala:1262
-#: ../src/View/PropertiesWindow.vala:1301
+#: ../src/View/PropertiesWindow.vala:1280
+#: ../src/View/PropertiesWindow.vala:1319
 msgid "%u file"
 msgstr "%u файл"
 
-#: ../src/View/PropertiesWindow.vala:1278
+#: ../src/View/PropertiesWindow.vala:1296
 msgid "%u selected items (%u folders and %u files)"
 msgstr "%u обраних елементів (%u тек та %u файлів)"
 
-#: ../src/View/PropertiesWindow.vala:1280
+#: ../src/View/PropertiesWindow.vala:1298
 msgid "%u selected items (%u folders and %u file)"
 msgstr "%u обраних елементів (%u тек та %u файл)"
 
-#: ../src/View/PropertiesWindow.vala:1288
+#: ../src/View/PropertiesWindow.vala:1306
 msgid "%u selected items (%u folder and %u files)"
 msgstr "%u обраних елементів (%u тека та %u файлів)"
 
-#: ../src/View/PropertiesWindow.vala:1290
+#: ../src/View/PropertiesWindow.vala:1308
 msgid "%u selected items (%u folder and %u file)"
 msgstr "%u обраних елементів (%u тека та %u файл)"
 
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Властивості диску"
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Формат:"
-
-#: ../src/View/AbstractDirectoryView.vala:561
-msgid "Failed to preview"
-msgstr "Помилка попереднього перегляду"
-
-#: ../src/View/AbstractDirectoryView.vala:820
-msgid "Cannot open this file"
-msgstr "Не вдається відкрити цей файл"
-
-#: ../src/View/AbstractDirectoryView.vala:833
-msgid "Cannot identify file type to open"
-msgstr "Не вдається ідентифікувати тип файлу для відкриття"
-
-#: ../src/View/AbstractDirectoryView.vala:1568
-msgid "Cannot drop this file"
-msgstr "Неможливо перемістити цей файл"
-
-#: ../src/View/AbstractDirectoryView.vala:1568
-msgid "Invalid file name provided"
-msgstr "Некоректне ім'я файлу"
-
-#: ../src/View/AbstractDirectoryView.vala:2012
-msgid "Invalid"
-msgstr "Некоректний"
-
-#: ../src/View/AbstractDirectoryView.vala:2018
-msgid "Run"
-msgstr "Виконати"
-
-#: ../src/View/AbstractDirectoryView.vala:2023
-msgid "Open in %s"
-msgstr "Відкрити в %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2033
-msgid "Open in"
-msgstr "Відкрити у"
-
-#: ../src/View/AbstractDirectoryView.vala:2035
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
-msgid "Open with"
-msgstr "Відкрити за допомогою"
-
-#: ../src/View/AbstractDirectoryView.vala:2095
-msgid "Other Application"
-msgstr "Інший додаток"
-
-#: ../src/View/AbstractDirectoryView.vala:2353
-msgid "Untitled %s"
-msgstr "Неназваний %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2788
-msgid "Cannot copy files that are in the trash"
-msgstr "Неможливо скопіювати файли, що знаходяться у смітнику"
-
-#: ../src/View/AbstractDirectoryView.vala:2789
-msgid "Cutting the selection instead"
-msgstr "Натомість вирізаю виділення"
-
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "Ця програма не являється файловим менеджером по-замовчуванню."
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "Встановити як типовий"
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Ігнорувати"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Теку \"%s\" неможливо знайти."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Створити"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Створити теку \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
+#: ../src/ProgressUIHandler.vala:42
+msgid "File Manager Operations"
 msgstr ""
-"Помилка при створенні теки\n"
-"\n"
-"%s"
+
+#: ../src/ProgressUIHandler.vala:164
+msgid "File Operations"
+msgstr "Дії над файлами"
+
+#: ../src/ProgressUIHandler.vala:208
+msgid "Completed %s"
+msgstr "Завершено %s"
+
+#: ../src/ProgressUIHandler.vala:211
+msgid "All file operations have ended"
+msgstr "Всі файлові операції закінчилися"
+
+#: ../src/ProgressUIHandler.vala:264
+msgid "Show Copy Dialog"
+msgstr "Відобразити вікно копіювання"
+
+#: ../src/ProgressUIHandler.vala:276
+msgid "Cancel All In-progress Actions"
+msgstr "Скасувати всі активні дії"
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Переглянути свої файли"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Файловий менеджер"
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Window"
+msgstr "_Нове вікно"
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New Window As _Administrator"
+msgstr "Відкрити нове вікно як _Адміністратор"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "About _Files"
+msgstr "Про _Файли"
+
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Файли"
 
 #: ../src/Application.vala:158
 msgid "Show the version of the program."
@@ -2125,53 +2170,9 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit неможливо використати з URI."
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Переглянути свої файли"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Файловий менеджер"
-
-#: ../src/DesktopLauncher.vala:8
-msgid "New _Window"
-msgstr "_Нове вікно"
-
-#: ../src/DesktopLauncher.vala:9
-msgid "New Window As _Administrator"
-msgstr "Відкрити нове вікно як _Адміністратор"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "About _Files"
-msgstr "Про _Файли"
-
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Файли"
-
-#: ../src/ProgressUIHandler.vala:42
-msgid "File Manager Operations"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:164
-msgid "File Operations"
-msgstr "Дії над файлами"
-
-#: ../src/ProgressUIHandler.vala:208
-msgid "Completed %s"
-msgstr "Завершено %s"
-
-#: ../src/ProgressUIHandler.vala:211
-msgid "All file operations have ended"
-msgstr "Всі файлові операції закінчилися"
-
-#: ../src/ProgressUIHandler.vala:264
-msgid "Show Copy Dialog"
-msgstr "Відобразити вікно копіювання"
-
-#: ../src/ProgressUIHandler.vala:276
-msgid "Cancel All In-progress Actions"
-msgstr "Скасувати всі активні дії"
+#: ../libcore/FileUtils.vala:259
+msgid "Could not rename to '%s'"
+msgstr "Неможливо перейменувати на '%s'"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2193,22 +2194,9 @@ msgstr "Посилання сюди"
 msgid "Cancel"
 msgstr "Скасувати"
 
-#: ../libcore/FileUtils.vala:259
-msgid "Could not rename to '%s'"
-msgstr "Неможливо перейменувати на '%s'"
-
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
 msgstr "Зробити типовим"
-
-#: ../libwidgets/View/LocationBar.vala:166
-msgid "Reload this folder"
-msgstr "Оновити теку"
-
-#: ../libwidgets/View/LocationBar.vala:169
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
-msgid "Enter search term or path"
-msgstr "Введіть пошуковий запит або шлях"
 
 #: ../libwidgets/View/SearchResults.vala:180
 msgid "In This Folder"
@@ -2221,6 +2209,15 @@ msgstr "Закладки"
 #: ../libwidgets/View/SearchResults.vala:184
 msgid "Everywhere Else"
 msgstr "В інших місцях"
+
+#: ../libwidgets/View/LocationBar.vala:166
+msgid "Reload this folder"
+msgstr "Оновити теку"
+
+#: ../libwidgets/View/LocationBar.vala:169
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
+msgid "Enter search term or path"
+msgstr "Введіть пошуковий запит або шлях"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:412
 msgid "Open in New Tab"
@@ -2242,6 +2239,10 @@ msgstr "Перейти до %s"
 msgid "Go to %s"
 msgstr "Перейти до %s"
 
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "введіть шлях"
+
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
 msgstr "У вигляді сітки"
@@ -2253,10 +2254,6 @@ msgstr "У вигляді списку"
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
 msgstr "У вигляді колонок"
-
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr "введіть шлях"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2431,9 +2428,3 @@ msgstr "Дата"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "В зворотному порядку"
-
-#~ msgid "file"
-#~ msgstr "файл"
-
-#~ msgid "files"
-#~ msgstr "файли"

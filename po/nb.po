@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-07-02 05:58+0400\n"
+"POT-Creation-Date: 2016-07-04 08:38-0700\n"
 "PO-Revision-Date: 2016-06-30 19:09+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-07-02 05:53+0000\n"
+"X-Launchpad-Export-Date: 2016-07-05 05:53+0000\n"
 "X-Generator: Launchpad (build 18115)\n"
 "Language: nb\n"
 
@@ -143,10 +143,6 @@ msgstr "Operasjon avbrutt"
 msgid "There is nothing on the clipboard to paste"
 msgstr "Utklippstavlen har ingenting å lime inn"
 
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (ugyldig Unicode)"
-
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
 msgstr "I dag %H:%M"
@@ -172,35 +168,10 @@ msgstr "Kunne ikke fastslå opprinnelig lokasjon for «%s» "
 msgid "The item cannot be restored from trash"
 msgstr "Elementet kan ikke gjenopprettes fra papirkurven"
 
-#: ../libcore/gof-file.c:366
-#, c-format
-msgid "link to %s"
-msgstr "lenke til %s"
-
-#: ../libcore/gof-file.c:1913
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Kunne ikke tolke skrivebordsfil: %s"
-
-#: ../libcore/gof-file.c:1951
-msgid "No Exec field specified"
-msgstr "Exec-feltet er ikke spesifisert"
-
-#: ../libcore/gof-file.c:1971
-msgid "No URL field specified"
-msgstr "URL-feltet er ikke spesifisert"
-
-#: ../libcore/gof-file.c:1977
-msgid "Invalid desktop file"
-msgstr "Ugyldig skrivebords-fil"
-
-#: ../libcore/gof-file.c:2272
-msgid "Slashes are not allowed in filenames"
-msgstr "Skråstrek er ikke tillatt i filnavn"
-
-#: ../libcore/gof-file.c:2292
-msgid "Toplevel files cannot be renamed"
-msgstr "Kan ikke endre navn for filer på toppnivå"
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Forbereder"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
@@ -581,15 +552,6 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "Gjenta eierendring av %d element"
 msgstr[1] "Gjenta eierendring av %d elementer"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Forbereder"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Vis flere _detaljer"
 
 #: ../libcore/marlin-file-operations.c:199
 #: ../libcore/marlin-file-conflict-dialog.c:748
@@ -1359,6 +1321,44 @@ msgstr "Tømmer papirkurven"
 msgid "Emptying Trash"
 msgstr "Tømmer papirkurv"
 
+#: ../libcore/gof-file.c:366
+#, c-format
+msgid "link to %s"
+msgstr "lenke til %s"
+
+#: ../libcore/gof-file.c:1913
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Kunne ikke tolke skrivebordsfil: %s"
+
+#: ../libcore/gof-file.c:1951
+msgid "No Exec field specified"
+msgstr "Exec-feltet er ikke spesifisert"
+
+#: ../libcore/gof-file.c:1971
+msgid "No URL field specified"
+msgstr "URL-feltet er ikke spesifisert"
+
+#: ../libcore/gof-file.c:1977
+msgid "Invalid desktop file"
+msgstr "Ugyldig skrivebords-fil"
+
+#: ../libcore/gof-file.c:2272
+msgid "Slashes are not allowed in filenames"
+msgstr "Skråstrek er ikke tillatt i filnavn"
+
+#: ../libcore/gof-file.c:2292
+msgid "Toplevel files cannot be renamed"
+msgstr "Kan ikke endre navn for filer på toppnivå"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (ugyldig Unicode)"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Vis flere _detaljer"
+
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
@@ -1446,7 +1446,7 @@ msgstr "Originalfil"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:574
+#: ../src/View/PropertiesWindow.vala:518
 msgid "Size:"
 msgstr "Størrelse:"
 
@@ -1454,7 +1454,7 @@ msgstr "Størrelse:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:581
+#: ../src/View/PropertiesWindow.vala:525
 msgid "Type:"
 msgstr "Type:"
 
@@ -1509,6 +1509,63 @@ msgstr "Forrige"
 msgid "Next"
 msgstr "Neste"
 
+#: ../src/View/AbstractDirectoryView.vala:561
+msgid "Failed to preview"
+msgstr "Feilet forhåndsvisning"
+
+#: ../src/View/AbstractDirectoryView.vala:820
+msgid "Cannot open this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:833
+msgid "Cannot identify file type to open"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1568
+msgid "Cannot drop this file"
+msgstr "Kunne ikke slippe denne fila"
+
+#: ../src/View/AbstractDirectoryView.vala:1568
+msgid "Invalid file name provided"
+msgstr "Ugyldig filnavn angitt"
+
+#: ../src/View/AbstractDirectoryView.vala:2012
+msgid "Invalid"
+msgstr "Ugyldig"
+
+#: ../src/View/AbstractDirectoryView.vala:2018
+msgid "Run"
+msgstr "Kjør"
+
+#: ../src/View/AbstractDirectoryView.vala:2023
+msgid "Open in %s"
+msgstr "Åpne i %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2033
+msgid "Open in"
+msgstr "Åpne i"
+
+#: ../src/View/AbstractDirectoryView.vala:2035
+#: ../libwidgets/View/BreadcrumbsEntry.vala:451
+msgid "Open with"
+msgstr "Åpne med"
+
+#: ../src/View/AbstractDirectoryView.vala:2095
+msgid "Other Application"
+msgstr "Annen applikasjon"
+
+#: ../src/View/AbstractDirectoryView.vala:2353
+msgid "Untitled %s"
+msgstr "Uten navn %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2788
+msgid "Cannot copy files that are in the trash"
+msgstr "Kan ikke kopiere filer som er i papirkurven"
+
+#: ../src/View/AbstractDirectoryView.vala:2789
+msgid "Cutting the selection instead"
+msgstr "Klipper ut utvalget i stedet"
+
 #: ../src/View/ListView.vala:26
 msgid "Filename"
 msgstr "Filnavn"
@@ -1524,6 +1581,67 @@ msgstr "Type"
 #: ../src/View/ListView.vala:29
 msgid "Modified"
 msgstr "Endret"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+msgid "This Folder Does Not Exist"
+msgstr "Mappen eksisterer ikke"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Mappen «%s» kan ikke bli funnet."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Opprett"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Lag mappen «%s»"
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Feilet å lage mappen\n"
+"\n"
+"%s"
+
+#: ../src/View/AbstractPropertiesDialog.vala:48
+msgid "Info"
+msgstr "Info"
+
+#: ../src/View/AbstractPropertiesDialog.vala:57
+msgid "General"
+msgstr "Generelt"
+
+#: ../src/View/AbstractPropertiesDialog.vala:76
+msgid "Close"
+msgstr "Lukk"
+
+#: ../src/View/AbstractPropertiesDialog.vala:138
+msgid "Device Usage"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:154
+msgid "Capacity:"
+msgstr "Kapasitet:"
+
+#: ../src/View/AbstractPropertiesDialog.vala:155
+#: ../src/View/AbstractPropertiesDialog.vala:158
+#: ../src/View/AbstractPropertiesDialog.vala:161
+#: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
+msgid "Unknown"
+msgstr "Ukjent"
+
+#: ../src/View/AbstractPropertiesDialog.vala:157
+msgid "Available:"
+msgstr "Tilgjengelig:"
+
+#: ../src/View/AbstractPropertiesDialog.vala:160
+msgid "Used:"
+msgstr "Brukt:"
 
 #: ../src/View/Sidebar.vala:472
 msgid "Personal"
@@ -1561,8 +1679,8 @@ msgstr "Enheter"
 msgid "Your local partitions and devices"
 msgstr "Dine lokale partisjoner og enheter"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/ViewContainer.vala:333
-#: ../src/View/VolumePropertiesWindow.vala:44 ../libwidgets/Resources.vala:93
+#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
+#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "Filsystem"
 
@@ -1622,7 +1740,7 @@ msgstr "_Avmonter"
 msgid "_Eject"
 msgstr "_Løs ut"
 
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:142
+#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:130
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Egenskaper"
@@ -1643,7 +1761,32 @@ msgstr "Det finnes ingen nylige filer"
 msgid "Access Denied"
 msgstr "Ingen tilgang"
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1283
+#: ../src/View/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Egenskaper for harddisk"
+
+#: ../src/View/VolumePropertiesWindow.vala:78
+#: ../src/View/PropertiesWindow.vala:597
+msgid "Location:"
+msgstr "Plassering:"
+
+#: ../src/View/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Format:"
+
+#: ../src/View/Window.vala:204
+msgid "Files isn't your default file manager."
+msgstr "Filer er ikke din standard filbehandler."
+
+#: ../src/View/Window.vala:210
+msgid "Set as Default"
+msgstr "Velg som standard"
+
+#: ../src/View/Window.vala:216
+msgid "Ignore"
+msgstr "Ignorer"
+
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1301
 msgid "%u folders"
 msgstr "%u mapper"
 
@@ -1659,8 +1802,8 @@ msgstr " og %u andre ting (%s) valgt"
 msgid " selected"
 msgstr " valgt"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1254
-#: ../src/View/PropertiesWindow.vala:1293
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1272
+#: ../src/View/PropertiesWindow.vala:1311
 msgid "%u folder"
 msgstr "%u mappe"
 
@@ -1703,10 +1846,6 @@ msgstr ""
 #: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
 msgstr "(som Administrator)"
-
-#: ../src/View/ViewContainer.vala:355 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr "Mappen eksisterer ikke"
 
 #: ../src/View/ViewContainer.vala:356
 msgid "You cannot create a folder here."
@@ -1752,291 +1891,197 @@ msgstr "Finner ikke fil"
 msgid "The file selected no longer exists."
 msgstr "Den valgte filen finnes ikke lenger."
 
-#: ../src/View/AbstractPropertiesDialog.vala:47
-msgid "Info"
-msgstr "Info"
-
-#: ../src/View/AbstractPropertiesDialog.vala:56
-msgid "General"
-msgstr "Generelt"
-
-#: ../src/View/AbstractPropertiesDialog.vala:75
-msgid "Close"
-msgstr "Lukk"
-
-#: ../src/View/AbstractPropertiesDialog.vala:137
-msgid "Device Usage"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:154
-msgid "Capacity:"
-msgstr "Kapasitet:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:155
-#: ../src/View/AbstractPropertiesDialog.vala:158
-#: ../src/View/AbstractPropertiesDialog.vala:161
-msgid "Unknown"
-msgstr "Ukjent"
-
-#: ../src/View/AbstractPropertiesDialog.vala:157
-msgid "Available:"
-msgstr "Tilgjengelig:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:160
-msgid "Used:"
-msgstr "Brukt:"
-
-#: ../src/View/PropertiesWindow.vala:26
-msgid "Resolution:"
-msgstr "Oppløsning:"
-
-#: ../src/View/PropertiesWindow.vala:219
+#: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:246
+#: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
 msgstr "Forhåndsvisning"
 
-#: ../src/View/PropertiesWindow.vala:265
+#: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:265
+#: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:284 ../src/View/PropertiesWindow.vala:303
+#: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
 msgstr "ukjent"
 
-#: ../src/View/PropertiesWindow.vala:463
-msgid "Created:"
-msgstr "Opprettet:"
-
-#: ../src/View/PropertiesWindow.vala:465
-msgid "Modified:"
-msgstr "Endret:"
-
-#: ../src/View/PropertiesWindow.vala:468
-msgid "Last Access:"
-msgstr "Siste tilgang:"
-
-#: ../src/View/PropertiesWindow.vala:476
-msgid "Deleted:"
-msgstr "Slettet:"
-
-#: ../src/View/PropertiesWindow.vala:482
-msgid "MimeType:"
-msgstr "MimeType:"
-
-#: ../src/View/PropertiesWindow.vala:490
+#: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:503
-msgid "MimeTypes:"
-msgstr "MimeTyper:"
-
-#: ../src/View/PropertiesWindow.vala:516 ../src/View/PropertiesWindow.vala:518
-#: ../src/View/VolumePropertiesWindow.vala:78
-msgid "Location:"
-msgstr "Plassering:"
-
-#: ../src/View/PropertiesWindow.vala:522
-msgid "Target:"
-msgstr "Mål:"
-
-#: ../src/View/PropertiesWindow.vala:528
-msgid "Origin Location:"
-msgstr "Opprinnelse sted:"
-
-#: ../src/View/PropertiesWindow.vala:535
+#: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
 msgstr "Kunne ikke bestemmes"
 
-#: ../src/View/PropertiesWindow.vala:584
+#: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:620
+#: ../src/View/PropertiesWindow.vala:544
+msgid "Created:"
+msgstr "Opprettet:"
+
+#: ../src/View/PropertiesWindow.vala:552
+msgid "Modified:"
+msgstr "Endret:"
+
+#: ../src/View/PropertiesWindow.vala:561
+msgid "Last Access:"
+msgstr "Siste tilgang:"
+
+#: ../src/View/PropertiesWindow.vala:572
+msgid "Deleted:"
+msgstr "Slettet:"
+
+#: ../src/View/PropertiesWindow.vala:582
+msgid "Mimetype:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:589
+msgid "Resolution:"
+msgstr "Oppløsning:"
+
+#: ../src/View/PropertiesWindow.vala:607
+msgid "Target:"
+msgstr "Mål:"
+
+#: ../src/View/PropertiesWindow.vala:615
+msgid "Original Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:640
+#: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
 msgstr "Åpne med:"
 
-#: ../src/View/PropertiesWindow.vala:734
+#: ../src/View/PropertiesWindow.vala:752
 msgid "Read"
 msgstr "Lese"
 
-#: ../src/View/PropertiesWindow.vala:738
+#: ../src/View/PropertiesWindow.vala:756
 msgid "Write"
 msgstr "Skrive"
 
-#: ../src/View/PropertiesWindow.vala:742
+#: ../src/View/PropertiesWindow.vala:760
 msgid "Execute"
 msgstr "Kjøre"
 
-#: ../src/View/PropertiesWindow.vala:949 ../src/View/PropertiesWindow.vala:965
+#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:983
 msgid "Owner:"
 msgstr "Eier:"
 
-#: ../src/View/PropertiesWindow.vala:955 ../src/View/PropertiesWindow.vala:969
+#: ../src/View/PropertiesWindow.vala:973 ../src/View/PropertiesWindow.vala:987
 msgid "Group:"
 msgstr "Gruppe:"
 
-#: ../src/View/PropertiesWindow.vala:973
+#: ../src/View/PropertiesWindow.vala:991
 msgid "Everyone:"
 msgstr "Alle:"
 
-#: ../src/View/PropertiesWindow.vala:1239
+#: ../src/View/PropertiesWindow.vala:1257
 msgid "%u subfolders and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1241
+#: ../src/View/PropertiesWindow.vala:1259
 msgid "%u subfolders and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1244
+#: ../src/View/PropertiesWindow.vala:1262
 msgid "%u subfolders"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1249
+#: ../src/View/PropertiesWindow.vala:1267
 msgid "%u subfolder and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1251
+#: ../src/View/PropertiesWindow.vala:1269
 msgid "%u subfolder and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1260
-#: ../src/View/PropertiesWindow.vala:1299
+#: ../src/View/PropertiesWindow.vala:1278
+#: ../src/View/PropertiesWindow.vala:1317
 msgid "%u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1262
-#: ../src/View/PropertiesWindow.vala:1301
+#: ../src/View/PropertiesWindow.vala:1280
+#: ../src/View/PropertiesWindow.vala:1319
 msgid "%u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1278
+#: ../src/View/PropertiesWindow.vala:1296
 msgid "%u selected items (%u folders and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1280
+#: ../src/View/PropertiesWindow.vala:1298
 msgid "%u selected items (%u folders and %u file)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1288
+#: ../src/View/PropertiesWindow.vala:1306
 msgid "%u selected items (%u folder and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1290
+#: ../src/View/PropertiesWindow.vala:1308
 msgid "%u selected items (%u folder and %u file)"
 msgstr ""
 
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Egenskaper for harddisk"
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Format:"
-
-#: ../src/View/AbstractDirectoryView.vala:561
-msgid "Failed to preview"
-msgstr "Feilet forhåndsvisning"
-
-#: ../src/View/AbstractDirectoryView.vala:820
-msgid "Cannot open this file"
+#: ../src/ProgressUIHandler.vala:42
+msgid "File Manager Operations"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:833
-msgid "Cannot identify file type to open"
+#: ../src/ProgressUIHandler.vala:164
+msgid "File Operations"
+msgstr "Filoperasjoner"
+
+#: ../src/ProgressUIHandler.vala:208
+msgid "Completed %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1568
-msgid "Cannot drop this file"
-msgstr "Kunne ikke slippe denne fila"
-
-#: ../src/View/AbstractDirectoryView.vala:1568
-msgid "Invalid file name provided"
-msgstr "Ugyldig filnavn angitt"
-
-#: ../src/View/AbstractDirectoryView.vala:2012
-msgid "Invalid"
-msgstr "Ugyldig"
-
-#: ../src/View/AbstractDirectoryView.vala:2018
-msgid "Run"
-msgstr "Kjør"
-
-#: ../src/View/AbstractDirectoryView.vala:2023
-msgid "Open in %s"
-msgstr "Åpne i %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2033
-msgid "Open in"
-msgstr "Åpne i"
-
-#: ../src/View/AbstractDirectoryView.vala:2035
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
-msgid "Open with"
-msgstr "Åpne med"
-
-#: ../src/View/AbstractDirectoryView.vala:2095
-msgid "Other Application"
-msgstr "Annen applikasjon"
-
-#: ../src/View/AbstractDirectoryView.vala:2353
-msgid "Untitled %s"
-msgstr "Uten navn %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2788
-msgid "Cannot copy files that are in the trash"
-msgstr "Kan ikke kopiere filer som er i papirkurven"
-
-#: ../src/View/AbstractDirectoryView.vala:2789
-msgid "Cutting the selection instead"
-msgstr "Klipper ut utvalget i stedet"
-
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "Filer er ikke din standard filbehandler."
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "Velg som standard"
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Ignorer"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Mappen «%s» kan ikke bli funnet."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Opprett"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Lag mappen «%s»"
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
+#: ../src/ProgressUIHandler.vala:211
+msgid "All file operations have ended"
 msgstr ""
-"Feilet å lage mappen\n"
-"\n"
-"%s"
+
+#: ../src/ProgressUIHandler.vala:264
+msgid "Show Copy Dialog"
+msgstr "Vis kopieringsdialog"
+
+#: ../src/ProgressUIHandler.vala:276
+msgid "Cancel All In-progress Actions"
+msgstr "Avbryt alle pågående handlinger"
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Bla gjennom filer"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Filbehandler"
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Window"
+msgstr "Nytt _vindu"
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New Window As _Administrator"
+msgstr "Nytt vindu som _administrator"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "About _Files"
+msgstr "Om _Filer"
+
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Filer"
 
 #: ../src/Application.vala:158
 msgid "Show the version of the program."
@@ -2076,53 +2121,9 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan ikke brukes med URI'er."
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Bla gjennom filer"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Filbehandler"
-
-#: ../src/DesktopLauncher.vala:8
-msgid "New _Window"
-msgstr "Nytt _vindu"
-
-#: ../src/DesktopLauncher.vala:9
-msgid "New Window As _Administrator"
-msgstr "Nytt vindu som _administrator"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "About _Files"
-msgstr "Om _Filer"
-
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Filer"
-
-#: ../src/ProgressUIHandler.vala:42
-msgid "File Manager Operations"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:164
-msgid "File Operations"
-msgstr "Filoperasjoner"
-
-#: ../src/ProgressUIHandler.vala:208
-msgid "Completed %s"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:211
-msgid "All file operations have ended"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:264
-msgid "Show Copy Dialog"
-msgstr "Vis kopieringsdialog"
-
-#: ../src/ProgressUIHandler.vala:276
-msgid "Cancel All In-progress Actions"
-msgstr "Avbryt alle pågående handlinger"
+#: ../libcore/FileUtils.vala:259
+msgid "Could not rename to '%s'"
+msgstr "Kunne ikke endre navnet til  '%s'"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2144,22 +2145,9 @@ msgstr "Lenk hit"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../libcore/FileUtils.vala:259
-msgid "Could not rename to '%s'"
-msgstr "Kunne ikke endre navnet til  '%s'"
-
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
 msgstr "Bruk som standard"
-
-#: ../libwidgets/View/LocationBar.vala:166
-msgid "Reload this folder"
-msgstr "Last inn mappe på nytt"
-
-#: ../libwidgets/View/LocationBar.vala:169
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
-msgid "Enter search term or path"
-msgstr "Angi søkeord eller sti"
 
 #: ../libwidgets/View/SearchResults.vala:180
 msgid "In This Folder"
@@ -2172,6 +2160,15 @@ msgstr "Bokmerker"
 #: ../libwidgets/View/SearchResults.vala:184
 msgid "Everywhere Else"
 msgstr "Overalt ellers"
+
+#: ../libwidgets/View/LocationBar.vala:166
+msgid "Reload this folder"
+msgstr "Last inn mappe på nytt"
+
+#: ../libwidgets/View/LocationBar.vala:169
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
+msgid "Enter search term or path"
+msgstr "Angi søkeord eller sti"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:412
 msgid "Open in New Tab"
@@ -2193,6 +2190,10 @@ msgstr "Naviger til %s"
 msgid "Go to %s"
 msgstr "Gå til %s"
 
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "Skriv inn en sti"
+
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
 msgstr "Vis som rutenett"
@@ -2204,10 +2205,6 @@ msgstr "Vis som liste"
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
 msgstr "Vis i kolonner"
-
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr "Skriv inn en sti"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2367,9 +2364,3 @@ msgstr "Dato"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Omvendt rekkefølge"
-
-#~ msgid "file"
-#~ msgstr "fil"
-
-#~ msgid "files"
-#~ msgstr "filer"
