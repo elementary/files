@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-07-02 20:07+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-07-15 12:37+0000\n"
+"Last-Translator: Pedro Monteiro <Unknown>\n"
 "Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-07-05 05:53+0000\n"
-"X-Generator: Launchpad (build 18115)\n"
+"X-Launchpad-Export-Date: 2016-07-17 06:05+0000\n"
+"X-Generator: Launchpad (build 18140)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1955,7 +1955,7 @@ msgstr "Apagado:"
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "Tipo MIME:"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
@@ -1967,7 +1967,7 @@ msgstr "Destino:"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Original Location:"
-msgstr ""
+msgstr "Localização Original:"
 
 #: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
@@ -2228,9 +2228,11 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Christian Sousa https://launchpad.net/~chapadanastrombas\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
+"  Daniel https://launchpad.net/~moonwalkerpt\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Daniel Jorge https://launchpad.net/~daniel-mf-jorge\n"
 "  David Gomes https://launchpad.net/~davidgomes\n"
+"  Francisco Rogerio Bossini https://launchpad.net/~frbossini\n"
 "  Luis Neves https://launchpad.net/~luisjneves\n"
 "  Pedro Monteiro https://launchpad.net/~pedro.monteiro\n"
 "  RDRR https://launchpad.net/~rubendrr\n"
