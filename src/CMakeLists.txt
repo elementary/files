@@ -27,7 +27,6 @@ pkg_check_modules (DEPS REQUIRED
     sqlite3
     dbus-glib-1
     libcanberra>=0.30
-    plank
     zeitgeist-2.0)
 
 pkg_check_modules(PLANK011 QUIET plank>=0.10.9)
@@ -117,6 +116,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         ProgressInfoWidget.vala
         ProgressUIHandler.vala
         TextRenderer.vala
+        View/AbstractPropertiesDialog.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
@@ -133,6 +133,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Sidebar.vala
         View/Slot.vala
         View/Miller.vala
+        View/VolumePropertiesWindow.vala
     PACKAGES
         gtk+-3.0
         gio-2.0
@@ -145,7 +146,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         pantheon-files-widgets
         marlin
         zeitgeist-2.0
-        plank
     GENERATE_HEADER
         marlin-vala
     OPTIONS
