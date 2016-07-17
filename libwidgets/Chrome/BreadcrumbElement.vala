@@ -89,8 +89,9 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
     public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, bool is_RTL, Gtk.Widget widget) {
         var state = button_context.get_state ();
-        if (pressed)
+        if (pressed) {
             state |= Gtk.StateFlags.ACTIVE;
+        }
 
         padding = button_context.get_padding (state);
         double line_width = cr.get_line_width ();
@@ -128,8 +129,8 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                 room_for_text = false;
             }
         }
-        /* Erase area for drawing */
 
+        /* Erase area for drawing */
         if (offset > 0.0) {
             double x_frame_width, x_half_height, x_frame_width_half_height;
             if (is_RTL) {
@@ -165,9 +166,11 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                 right_x = base_x + frame_width + line_width;
                 arrow_right_x = right_x + half_height;
             }
+
             var top_y = y + padding.top - line_width;
             var bottom_y = y_height - padding.bottom + line_width;
             var arrow_y = y_half_height;
+
             cr.move_to (left_x, top_y);
             cr.line_to (base_x, arrow_y);
             cr.line_to (left_x, bottom_y);
@@ -180,7 +183,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             button_context.save ();
             button_context.set_state (Gtk.StateFlags.ACTIVE);
             button_context.render_background (cr, left_x, y, width + height + 2 * line_width, height);
-            button_context.render_frame (cr, 0, padding.top - line_width, widget.get_allocated_width (), height - line_width);
+            button_context.render_frame (cr, 0, y, widget.get_allocated_width (), height);
             button_context.restore ();
             cr.restore ();
         }
