@@ -25,7 +25,6 @@ pkg_check_modules (DEPS REQUIRED
     gail-3.0
     gee-0.8
     sqlite3
-    dbus-glib-1
     libnotify>=0.7.2
     libcanberra>=0.30
     plank
@@ -168,7 +167,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 add_executable (${CMAKE_PROJECT_NAME}
-    #~ marlin-thumbnailer.c
     marlin-connect-server-dialog.c
     ${VALA_C} )
 
