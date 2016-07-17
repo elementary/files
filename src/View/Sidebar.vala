@@ -863,7 +863,7 @@ namespace Marlin.Places {
                 device = context.get_device ();
                 device.get_position (null, out x, out y);
 
-#if HAVE_UNIY
+#if HAVE_UNITY
 
 #if HAVE_PLANK_0_11
                 Plank.PoofWindow poof_window;

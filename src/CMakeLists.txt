@@ -13,6 +13,29 @@ include_directories (${CMAKE_BINARY_DIR}/libwidgets/)
 
 find_package (PkgConfig)
 
+
+
+OPTION (WITH_UNITY "Add Unity launcher support" ON)
+pkg_check_modules (UNITY unity>=4.0.0)
+
+if (WITH_UNITY AND UNITY_FOUND)
+pkg_check_modules (DEPS REQUIRED
+    granite>=0.3.0
+    glib-2.0>=2.29.0
+    gthread-2.0
+    gio-2.0
+    gio-unix-2.0
+    pango>=1.1.2
+    gtk+-3.0>=3.14
+    gmodule-2.0
+    gail-3.0
+    gee-0.8
+    sqlite3
+    dbus-glib-1
+    libcanberra>=0.30
+    zeitgeist-2.0
+    plank)
+else (WITH_UNITY AND UNITY_FOUND)
 pkg_check_modules (DEPS REQUIRED
     granite>=0.3.0
     glib-2.0>=2.29.0
@@ -28,6 +51,7 @@ pkg_check_modules (DEPS REQUIRED
     dbus-glib-1
     libcanberra>=0.30
     zeitgeist-2.0)
+endif (WITH_UNITY AND UNITY_FOUND)
 
 pkg_check_modules(PLANK011 QUIET plank>=0.10.9)
 if (PLANK011_FOUND)
@@ -45,8 +69,7 @@ set (LIB_PATHS
 link_directories (${LIB_PATHS})
 add_definitions (${CFLAGS} -O2)
 
-OPTION (WITH_UNITY "Add Unity launcher support" ON)
-pkg_check_modules (UNITY unity>=4.0.0)
+
 
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
@@ -87,12 +110,12 @@ IF (WITH_UNITY AND UNITY_FOUND)
         gee-0.8
         granite
         unity
+        plank
         pantheon-files-core
         pantheon-files-core-C
         pantheon-files-widgets
         marlin
         zeitgeist-2.0
-        plank
     GENERATE_HEADER
         marlin-vala
     OPTIONS
