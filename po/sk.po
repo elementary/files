@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-07-05 18:46+0000\n"
-"Last-Translator: Ľubomír Hlavko <5lubo555@azet.sk>\n"
+"PO-Revision-Date: 2016-07-17 21:38+0000\n"
+"Last-Translator: Igor Štefanko <istefanko@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2016-07-06 05:35+0000\n"
-"X-Generator: Launchpad (build 18115)\n"
+"X-Launchpad-Export-Date: 2016-07-18 05:30+0000\n"
+"X-Generator: Launchpad (build 18140)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1565,7 +1565,7 @@ msgstr "Nieje možné otvoriť tento súbor"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Nemožno identifikovať typ súboru na otvorenie"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
@@ -1668,7 +1668,7 @@ msgstr "Zavrieť"
 
 #: ../src/View/AbstractPropertiesDialog.vala:138
 msgid "Device Usage"
-msgstr ""
+msgstr "Využitie zariadenia"
 
 #: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
@@ -1883,11 +1883,11 @@ msgstr "neznáma veľkosť"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u súbor nieje možné čítať"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u súborov nieje možné čítať"
 
 #: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
@@ -1899,11 +1899,11 @@ msgstr "Nie je možné vytvoriť priečinok TU."
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The network is unavailable"
-msgstr ""
+msgstr "Sieť je nedostupná"
 
 #: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Pre sprístupnenie tohto priečinka je potrebné sieťové pripojenie"
 
 #: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
@@ -1919,7 +1919,7 @@ msgstr "Nie je možné pripojiť priečinok"
 
 #: ../src/View/ViewContainer.vala:365
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Nemožno sa pripojiť na server pre tento priečinok."
 
 #: ../src/View/ViewContainer.vala:367
 msgid "Unable show Folder"
@@ -1939,7 +1939,7 @@ msgstr "Vybraný súbor už neexistuje."
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
-msgstr ""
+msgstr "Oprávnenia"
 
 #: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
@@ -1947,13 +1947,15 @@ msgstr "Náhľad"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Skutočná veľkosť môže byť väčšia"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"%i súbor nie je možné čítať z dôvodu oprávnenia, alebo inej chyby."
 msgstr[1] ""
+"%i súbory nie je možné čítať z dôvodu oprávnenia, alebo inej chyby."
 
 #: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
@@ -1989,7 +1991,7 @@ msgstr "Vymazané:"
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "Typ súboru"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
@@ -2001,11 +2003,11 @@ msgstr "Cieľ:"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Original Location:"
-msgstr ""
+msgstr "Pôvodné umiestnenie"
 
 #: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
-msgstr ""
+msgstr "Iná aplikícia..."
 
 #: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
@@ -2083,7 +2085,7 @@ msgstr "%u vybraných položiek (%u priečinok a %u súbor)"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "Akcie správcu súborov"
 
 #: ../src/ProgressUIHandler.vala:164
 msgid "File Operations"
@@ -2091,11 +2093,11 @@ msgstr "Operácie so súbormi"
 
 #: ../src/ProgressUIHandler.vala:208
 msgid "Completed %s"
-msgstr ""
+msgstr "Hotové %s"
 
 #: ../src/ProgressUIHandler.vala:211
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Všetky akcie sú ukončené"
 
 #: ../src/ProgressUIHandler.vala:264
 msgid "Show Copy Dialog"
@@ -2263,6 +2265,7 @@ msgstr ""
 "  Adam Lukacovic https://launchpad.net/~lukacovic-adam\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Igor Štefanko https://launchpad.net/~istefanko\n"
 "  Jakub Ivanicky https://launchpad.net/~jivanicky\n"
 "  Lukáš Papík https://launchpad.net/~stereo839\n"
 "  Milan Slovák https://launchpad.net/~milboys\n"
@@ -2367,7 +2370,7 @@ msgstr "Zobraziť skryté súbory"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Zobraziť vzdialené náhľady"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"

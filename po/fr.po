@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-07-02 20:12+0000\n"
-"Last-Translator: Corentin Noël <corentin@elementaryos.org>\n"
+"PO-Revision-Date: 2016-07-17 17:58+0000\n"
+"Last-Translator: Phan Hoang <phahoatho@gmail.com>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-07-05 05:52+0000\n"
-"X-Generator: Launchpad (build 18115)\n"
+"X-Launchpad-Export-Date: 2016-07-18 05:30+0000\n"
+"X-Generator: Launchpad (build 18140)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -955,7 +955,7 @@ msgstr "Impossible de démonter %V"
 
 #: ../libcore/marlin-file-operations.c:2409
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "Souhaitez-vous vider la corbeille avant de démonter ?"
+msgstr "Souhaitez-vous vider la corbeille avant le démontage ?"
 
 #: ../libcore/marlin-file-operations.c:2411
 msgid ""
@@ -1537,11 +1537,11 @@ msgstr "Prévisualisation impossible"
 
 #: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Ce fichier ne peut etre ouvert"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Le type du fichier à ouvrir ne peut etre identifié"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
@@ -1644,7 +1644,7 @@ msgstr "Fermer"
 
 #: ../src/View/AbstractPropertiesDialog.vala:138
 msgid "Device Usage"
-msgstr ""
+msgstr "Utilisation de l'appareil"
 
 #: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
@@ -1724,7 +1724,7 @@ msgstr "Parcourir le réseau"
 
 #: ../src/View/Sidebar.vala:830
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "%s libre sur %s"
 
 #: ../src/View/Sidebar.vala:1323
 msgid "Unable to start %s"
@@ -1851,7 +1851,7 @@ msgstr "%u fichiers, "
 
 #: ../src/View/OverlayBar.vala:288
 msgid "%s approx."
-msgstr ""
+msgstr "Approximativement %s"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
@@ -1859,11 +1859,11 @@ msgstr "taille inconnue"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u fichier illisible"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u files not readable"
-msgstr ""
+msgstr "%s fichiers illisibles"
 
 #: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
@@ -1875,11 +1875,11 @@ msgstr "Vous ne pouvez pas créer un dossier ici."
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The network is unavailable"
-msgstr ""
+msgstr "Le réseau est indisponible"
 
 #: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Une connexion réseau active est nécessaire pour atteindre ce dossier"
 
 #: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
@@ -1915,7 +1915,7 @@ msgstr "Le fichier sélectionné n'existe plus."
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
-msgstr ""
+msgstr "Permissions"
 
 #: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
@@ -1923,13 +1923,16 @@ msgstr "Aperçu"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "La taille réelle peut être plus grande"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"%s fichier ne peut être lu faute de permission suffisante ou d'autres erreurs"
 msgstr[1] ""
+"%s fichiers ne peuvent être lus faute de permission suffisante ou d'autres "
+"erreurs"
 
 #: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
@@ -1937,7 +1940,7 @@ msgstr "inconnu"
 
 #: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
-msgstr ""
+msgstr "Chargement…"
 
 #: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
@@ -1945,7 +1948,7 @@ msgstr "Ne peut être déterminé"
 
 #: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
-msgstr ""
+msgstr "Contient :"
 
 #: ../src/View/PropertiesWindow.vala:544
 msgid "Created:"
@@ -1965,7 +1968,7 @@ msgstr "Supprimé :"
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "Type MIME :"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
@@ -1977,11 +1980,11 @@ msgstr "Destination :"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Original Location:"
-msgstr ""
+msgstr "Emplacement d'origine :"
 
 #: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
-msgstr ""
+msgstr "Autre application..."
 
 #: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
@@ -2013,53 +2016,53 @@ msgstr "Tout le monde :"
 
 #: ../src/View/PropertiesWindow.vala:1257
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u sous-dossiers et %u fichiers"
 
 #: ../src/View/PropertiesWindow.vala:1259
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u sous-dossiers et %u fichier"
 
 #: ../src/View/PropertiesWindow.vala:1262
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u sous-dossiers"
 
 #: ../src/View/PropertiesWindow.vala:1267
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u sous-dossier et %u fichiers"
 
 #: ../src/View/PropertiesWindow.vala:1269
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u sous-dossier et %u fichier"
 
 #: ../src/View/PropertiesWindow.vala:1278
 #: ../src/View/PropertiesWindow.vala:1317
 msgid "%u files"
-msgstr ""
+msgstr "%u fichiers"
 
 #: ../src/View/PropertiesWindow.vala:1280
 #: ../src/View/PropertiesWindow.vala:1319
 msgid "%u file"
-msgstr ""
+msgstr "%u fichier"
 
 #: ../src/View/PropertiesWindow.vala:1296
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u éléments selectionnés (%u dossiers et %u fichiers)"
 
 #: ../src/View/PropertiesWindow.vala:1298
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u éléments selectionnés (%u dossiers et %u fichier)"
 
 #: ../src/View/PropertiesWindow.vala:1306
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u éléments selectionnés (%u dossier et %u fichiers)"
 
 #: ../src/View/PropertiesWindow.vala:1308
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u éléments selectionnés (%u dossier et %u fichier)"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "Fonctionnement du Gestionnaire de Fichiers"
 
 #: ../src/ProgressUIHandler.vala:164
 msgid "File Operations"
@@ -2067,11 +2070,11 @@ msgstr "Opérations sur les fichiers"
 
 #: ../src/ProgressUIHandler.vala:208
 msgid "Completed %s"
-msgstr ""
+msgstr "Terminé %s"
 
 #: ../src/ProgressUIHandler.vala:211
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Toutes les opérations sur les fichiers sont terminées"
 
 #: ../src/ProgressUIHandler.vala:264
 msgid "Show Copy Dialog"
@@ -2258,6 +2261,7 @@ msgstr ""
 "  Mehdi Benadel https://launchpad.net/~murazaki\n"
 "  Moez Bouhlel https://launchpad.net/~lejenome\n"
 "  Nikos https://launchpad.net/~nicolas-jovanovic\n"
+"  Olivier REBOUL https://launchpad.net/~olivier-reboul\n"
 "  PerfectCarl https://launchpad.net/~name-is-carl\n"
 "  Petrichor https://launchpad.net/~yannick-h\n"
 "  Phan Hoang https://launchpad.net/~phahoatho\n"
@@ -2371,7 +2375,7 @@ msgstr "Afficher les fichiers cachés"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Afficher les miniatures distantes"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
