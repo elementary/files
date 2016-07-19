@@ -53,12 +53,7 @@ namespace Marlin.View {
 
         public bool locked_focus {
             get {
-//<<<<<<< TREE
                 return slot != null && slot.locked_focus;
-//=======
-//                var slot = get_current_slot ();
-//                return slot != null ? get_current_slot ().locked_focus : false;
-//>>>>>>> MERGE-SOURCE
             }
         }
 
@@ -74,14 +69,14 @@ namespace Marlin.View {
             }
         }
 
-        public bool frozen_state {
+        public bool is_frozen {
             get {
-                return slot == null || slot.frozen_state;
+                return slot == null || slot.is_frozen;
             }
 
             set {
                 if (slot != null) {
-                    slot.frozen_state = value;
+                    slot.is_frozen = value;
                 }
             }
         }
@@ -529,7 +524,7 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
-            frozen_state = false;
+            is_frozen = false;
             if (can_show_folder && view != null)
                 view.grab_focus ();
             else

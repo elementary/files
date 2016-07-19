@@ -40,7 +40,7 @@ namespace FM {
                 GLib.Source.remove (double_click_timeout_id);
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
-                frozen_state = false;
+                is_frozen = false;
             }
         }
 
@@ -48,7 +48,7 @@ namespace FM {
             if (double_click_timeout_id != 0) {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
-                frozen_state = false;
+                is_frozen = false;
                 if (should_activate) { /* button already released */
                     activate_selected_items ();
                 }
@@ -139,7 +139,7 @@ namespace FM {
                 else {
                     /*  ... store clicked folder and start double-click timeout */
                     awaiting_double_click = true;
-                    frozen_state = true;
+                    is_frozen = true;
                     double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
                         not_double_click (event, path);
                         return false;

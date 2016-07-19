@@ -221,10 +221,10 @@ namespace FM {
 
         public bool renaming {get; protected set; default = false;}
 
-        private bool _frozen_state = true;
-        public bool frozen_state {
+        private bool _is_frozen = true;
+        public bool is_frozen {
             set {
-                if (value && !_frozen_state) {
+                if (value && !_is_frozen) {
                     action_set_enabled (selection_actions, "cut", false);
                     action_set_enabled (common_actions, "copy", false);
                     action_set_enabled (common_actions, "paste_into", false);
@@ -234,7 +234,7 @@ namespace FM {
                     clipboard.changed.disconnect (on_clipboard_changed);
                     view.enter_notify_event.disconnect (on_enter_notify_event);
                     view.key_press_event.disconnect (on_view_key_press_event);
-                } else if (!value && _frozen_state) {
+                } else if (!value && _is_frozen) {
                     update_menu_actions ();
                     size_allocate.connect (on_size_allocate);
                     clipboard.changed.connect (on_clipboard_changed);
@@ -246,11 +246,11 @@ namespace FM {
                     slot.directory.unblock_monitor ();
                 }
 
-                _frozen_state = value;
+                _is_frozen = value;
             }
 
             get {
-                return _frozen_state;
+                return _is_frozen;
             }
         }
 
@@ -482,7 +482,7 @@ namespace FM {
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
                                                 GLib.List<GOF.File> selection = get_selected_files ()) {
-            if (frozen_state)
+            if (is_frozen)
                 return;
 
             uint nb_elem = selection.length ();
@@ -688,7 +688,7 @@ namespace FM {
 
     /** Handle scroll events */
         protected bool handle_scroll_event (Gdk.EventScroll event) {
-            if (frozen_state)
+            if (is_frozen)
                 return true;
 
             if ((event.state & Gdk.ModifierType.CONTROL_MASK) > 0) {
@@ -746,7 +746,7 @@ namespace FM {
 
 
         private void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
-            if (frozen_state)
+            if (is_frozen)
                 return;
 
             GOF.File file = _file;
@@ -2127,7 +2127,7 @@ namespace FM {
         }
 
         private void update_menu_actions () {
-            if (frozen_state || !slot.directory.can_load)
+            if (is_frozen || !slot.directory.can_load)
                 return;
 
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
@@ -2570,7 +2570,7 @@ namespace FM {
         protected virtual void on_view_selection_changed () {
             update_selected_files ();
             update_menu_actions ();
-            if (frozen_state)
+            if (is_frozen)
                 return;
 
             selection_changed (get_selected_files ());
@@ -2594,7 +2594,7 @@ namespace FM {
         }
 
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-            if (frozen_state || event.is_modifier == 1) {
+            if (is_frozen || event.is_modifier == 1) {
                 return true;
             }
 
@@ -2847,7 +2847,7 @@ namespace FM {
                 previous_click_zone = click_zone;
             }
 
-            if (frozen_state)
+            if (is_frozen)
                 return false;
 
             if ((path != null && hover_path == null) ||
@@ -2941,7 +2941,7 @@ namespace FM {
             renaming = false;
             name_renderer.editable = false;
             proposed_name = "";
-            frozen_state = false;
+            is_frozen = false;
             grab_focus ();
         }
 
@@ -3253,7 +3253,7 @@ namespace FM {
         }
 
         private void start_renaming_file (GOF.File file) {
-            if (frozen_state) {
+            if (is_frozen) {
                 warning ("Trying to rename when frozen");
                 return;
             }
@@ -3264,7 +3264,7 @@ namespace FM {
             }
 
             /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
-            frozen_state = true;
+            is_frozen = true;
             Gtk.TreePath path = model.get_path (iter);
 
             uint count = 0;
@@ -3414,7 +3414,7 @@ namespace FM {
         }
 
         public void close () {
-            frozen_state = true; /* stop signal handlers running during destruction */
+            is_frozen = true; /* stop signal handlers running during destruction */
             unselect_all ();
         }
 

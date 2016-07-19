@@ -34,15 +34,15 @@ namespace Marlin.View {
         public GLib.List<Marlin.View.Slot> slot_list = null;
         public int total_width = 0;
 
-        public override bool frozen_state {
+        public override bool is_frozen {
             set {
                 if (current_slot != null) {
-                    current_slot.frozen_state = value;
+                    current_slot.is_frozen = value;
                 }
             }
 
             get {
-                return current_slot == null || current_slot.frozen_state;
+                return current_slot == null || current_slot.is_frozen;
             }
 
             default = true;
@@ -408,7 +408,7 @@ namespace Marlin.View {
                 var s = abstract_slot as Marlin.View.Slot;
                 if (s != null) {
                     s.frozen_changed.disconnect (on_slot_frozen_changed);
-                    s.frozen_state = frozen;
+                    s.is_frozen = frozen;
                     s.frozen_changed.connect (on_slot_frozen_changed);
                 }
             });

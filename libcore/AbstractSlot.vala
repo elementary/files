@@ -49,7 +49,7 @@ namespace GOF {
             }
         }
 
-        public virtual bool frozen_state {get; set; default = true;}
+        public virtual bool is_frozen {get; set; default = true;}
 
         protected Gtk.Box extra_location_widgets;
         protected Gtk.Box content_box;

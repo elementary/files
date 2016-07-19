@@ -238,7 +238,7 @@ namespace Marlin.View {
             top_menu.back.connect (on_go_back);
             top_menu.escape.connect (grab_focus);
             top_menu.path_change_request.connect ((loc, flag) => {
-                current_tab.frozen_state = false;
+                current_tab.is_frozen = false;
                 uri_path_change_request (loc, flag);
             });
             top_menu.reload_request.connect (action_reload);
@@ -246,11 +246,11 @@ namespace Marlin.View {
                 current_tab.focus_location_if_in_current_directory (loc, true);
             });
             top_menu.focus_in_event.connect (() => {
-                current_tab.frozen_state = true;
+                current_tab.is_frozen = true;
                 return true;
             });
             top_menu.focus_out_event.connect (() => {
-                current_tab.frozen_state = false;
+                current_tab.is_frozen = false;
                 return true;
             });
 
@@ -439,7 +439,7 @@ namespace Marlin.View {
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
-            top_menu.working = current_tab.frozen_state;
+            top_menu.working = current_tab.is_frozen;
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
@@ -524,7 +524,7 @@ namespace Marlin.View {
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
             /* Do not initiate search while slot is frozen e.g. during loading */
-            if (current_tab == null || current_tab.frozen_state) {
+            if (current_tab == null || current_tab.is_frozen) {
                 return;
             }
             string search_scope = param.get_string ();
@@ -536,7 +536,7 @@ namespace Marlin.View {
             }
         }
         public void on_search_request (Gdk.EventKey event) {
-            if (current_tab == null || current_tab.frozen_state) {
+            if (current_tab == null || current_tab.is_frozen) {
                 return;
             }
             if (top_menu.enter_search_mode (true, true)) {
