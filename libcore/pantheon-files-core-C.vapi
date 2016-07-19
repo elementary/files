@@ -76,7 +76,7 @@ namespace Marlin {
 
     [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
     namespace Dialogs {
-        public void show_error (void* widget_or_screen_or_null_pointer, GLib.Error? error, string format_string, ...);
+        public void show_error (void* data, GLib.Error? error, string format_string, ...);
     }
 }
 
