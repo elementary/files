@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-05-02 18:45+0000\n"
+"PO-Revision-Date: 2016-07-20 16:22+0000\n"
 "Last-Translator: laberba <karabutaworld@gmail.com>\n"
 "Language-Team: Akan <ak@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-07-05 05:52+0000\n"
-"X-Generator: Launchpad (build 18115)\n"
+"X-Launchpad-Export-Date: 2016-07-21 05:40+0000\n"
+"X-Generator: Launchpad (build 18147)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -24,11 +24,11 @@ msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "Obiara FTP"
+msgstr "Badwam FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "FTP (nea wo bɛ  kɔ mu)"
+msgstr "FTP (nea wo bɛkɔ mu)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
@@ -48,7 +48,7 @@ msgstr "Secure WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "Ɛkonɛkte..."
+msgstr "Connecting..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -73,7 +73,7 @@ msgstr "Yɛ bio"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Hwɛ sɛ wo ho nsɛm no yɛ saa pɛpɛɛpɛ."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -142,19 +142,19 @@ msgstr "Bribiara nni clipboard no mu a wo bɛ pasti wɔ ha"
 
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Nnɛ mmerɛ %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Ɛnnora mmerɛ %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b at %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: ../libcore/marlin-file-utilities.c:131
 #, c-format
@@ -163,53 +163,53 @@ msgstr "Ɛntumi nhu baabi a na \"%s\"  wɔ dedaw "
 
 #: ../libcore/marlin-file-utilities.c:135
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Wo nsa ntumi nka wo nneɛma no bio"
 
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
-msgstr ""
+msgstr "έyɛ nsiesei"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Ɛntumi nhu baabi a ɛwo ankasa"
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Bue trash no and wánkasa twe bra bio"
 
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "Yi nneɛma %d a watwe"
 
 #: ../libcore/marlin-undostack-manager.c:1228
 #: ../libcore/marlin-undostack-manager.c:1238
 #: ../libcore/marlin-undostack-manager.c:1269
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "Yi '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1235
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "Yi nneɛmma %d a wotwee no mprenu"
 
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "Fa nneɛma %d san kɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "Fa  '%s'  san kɔ  '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1259
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "Sesã '%s' din kɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1278
 #: ../libcore/marlin-undostack-manager.c:1473
