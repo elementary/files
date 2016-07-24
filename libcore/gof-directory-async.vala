@@ -29,7 +29,7 @@ public class GOF.Directory.Async : Object {
     private uint mount_timeout_id = 0;
     private const int ENUMERATE_TIMEOUT_SEC = 15;
     private const int QUERY_INFO_TIMEOUT_SEC = 5;
-    private const int MOUNT_TIMEOUT_SEC = 5;
+    private const int MOUNT_TIMEOUT_SEC = 10;
 
     public GLib.File location;
     public GLib.File? selected_file = null;
@@ -238,6 +238,7 @@ public class GOF.Directory.Async : Object {
             file.is_connected = false;
             return false;
         }
+
         if (success) {
             debug ("got file info");
             file.update ();
@@ -253,15 +254,28 @@ public class GOF.Directory.Async : Object {
             var mount_op = new Gtk.MountOperation (null);
             cancellable = new Cancellable ();
             bool mounting = true;
+            bool asking_password = false;
             assert (mount_timeout_id == 0);
+
             mount_timeout_id = Timeout.add_seconds (MOUNT_TIMEOUT_SEC, () => {
-                if (mounting) {
+                if (mounting && !asking_password) {
                     warning ("Cancelled after timeout in mount mountable %s", file.uri);
                     cancellable.cancel ();
+                    mount_timeout_id = 0;
+                    return false;
+                } else {
+                    return true;
                 }
-                mount_timeout_id = 0;
-                return false;
             });
+
+            mount_op.ask_password.connect (() => {
+                asking_password = true;
+            });
+
+            mount_op.reply.connect (() => {
+                asking_password = false;
+            });
+
             yield location.mount_enclosing_volume (0, mount_op, cancellable);
             var mount = location.find_enclosing_mount ();
 
@@ -1101,7 +1115,7 @@ public class GOF.Directory.Async : Object {
         cancel_timeout (ref timeout_thumbsq);
         cancel_timeout (ref idle_consume_changes_id);
         cancel_timeout (ref load_timeout_id);
-        
+        cancel_timeout (ref mount_timeout_id);
     }
 
     private bool cancel_timeout (ref uint id) {
