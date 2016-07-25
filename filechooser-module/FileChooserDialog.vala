@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2015 elementary LLC (http://launchpad.net/elementary)
+ * Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -19,6 +19,9 @@
  * Authored by: Adam Bieńkowski <donadigos159@gmail.com>
  */
 
+/*** The Gtk.FileChooserWidget widget names and paths can be found in "gtkfilechooserwidget.ui"
+ *   in the Gtk+3 source code package.  Changes to that file could break this code.
+***/
 public class CustomFileChooserDialog : Object {
     private static Gtk.FileChooserDialog chooser_dialog;
     private static Gtk.Widget rootwidget;
@@ -42,6 +45,7 @@ public class CustomFileChooserDialog : Object {
     private string current_path = null;
     private bool is_previous = false;
     private bool is_button_next = false;
+    private bool is_single_click = true;
 
     public CustomFileChooserDialog (Gtk.FileChooserDialog dialog) {
         previous_paths = new GLib.Queue<string> ();
@@ -50,6 +54,9 @@ public class CustomFileChooserDialog : Object {
         chooser_dialog = dialog;
         chooser_dialog.can_focus = true;
         chooser_dialog.deletable = false;
+
+        var settings = new Settings ("org.pantheon.files.preferences");
+        is_single_click = settings.get_boolean ("single-click");
 
         assign_container_box ();
         remove_gtk_widgets ();
@@ -131,23 +138,23 @@ public class CustomFileChooserDialog : Object {
             (root as Gtk.Container).get_children ().foreach ((w0) => {
                 if (w0.get_name () == GTK_PATHBAR_PATH[0]) {
                     /* Add top separator between headerbar and filechooser when is not Save action */
-                        var chooserwidget = w0 as Gtk.Container;
-                        chooserwidget.vexpand = true;
+                    var chooserwidget = w0 as Gtk.Container;
+                    chooserwidget.vexpand = true;
 
-                        (root as Gtk.Container).remove (w0);
-                        var root_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+                    (root as Gtk.Container).remove (w0);
+                    var root_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+                    root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+                    root_box.add (chooserwidget); 
+
+                    if (chooser_dialog.get_extra_widget () == null) {
                         root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-                        root_box.add (chooserwidget); 
+                    }
 
-                        if (chooser_dialog.get_extra_widget () == null) {
-                            root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-                        }
-
-                        (root as Gtk.Container).add (root_box);
-                        rootwidget = chooserwidget;
-                        rootwidget = w0;
-                        rootwidget.can_focus = true;
-                        transform_rootwidget_container (rootwidget, w0);
+                    (root as Gtk.Container).add (root_box);
+                    rootwidget = chooserwidget;
+                    rootwidget = w0;
+                    rootwidget.can_focus = true;
+                    transform_rootwidget_container (rootwidget, w0);
                 }
             });
         });
@@ -222,8 +229,28 @@ public class CustomFileChooserDialog : Object {
                 });
 
                 (w2 as Gtk.Container).remove (w3);
+            } else if (w3.get_name () ==  "list_and_preview_box") { /* file browser list and preview box */
+                var tv = find_tree_view (w3);
+                tv.set_activate_on_single_click (is_single_click);
             }
         });
+    }
+
+    private Gtk.TreeView? find_tree_view (Gtk.Widget browser_box) {
+        /* Locate the TreeView and set its click behaviour */
+        Gtk.TreeView? tv = null;
+        ((Gtk.Container)browser_box).get_children ().foreach ((w) => {
+            ((Gtk.Container)w).get_children ().foreach ((w) => {
+                ((Gtk.Container)w).get_children ().foreach ((w) => {
+                    ((Gtk.Container)w).get_children ().foreach ((w) => {
+                        if (w is Gtk.TreeView) {
+                            tv =(Gtk.TreeView)w;
+                        }
+                    });
+                });
+            });
+        });
+        return tv;
     }
 
     private void assign_container_box () {
