@@ -584,8 +584,10 @@ namespace Marlin.View.Chrome {
             double height = get_allocated_height ();
             double width = get_allocated_width ();
 
+            Gtk.Border border = this.get_style_context ().get_margin (Gtk.StateFlags.ACTIVE);
+
             if (!is_focus) {
-                double margin = YPAD;
+                double margin = border.top;
 
                 /* Ensure there is an editable area to the right of the breadcrumbs */
                 double width_marged = width - 2 * margin - MINIMUM_LOCATION_BAR_ENTRY_WIDTH - ICON_WIDTH;
