@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-06-30 19:10+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-07-24 11:14+0000\n"
+"Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2016-07-05 05:53+0000\n"
-"X-Generator: Launchpad (build 18115)\n"
+"X-Launchpad-Export-Date: 2016-07-25 05:27+0000\n"
+"X-Generator: Launchpad (build 18147)\n"
 "Language: sl\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -76,7 +76,7 @@ msgstr "Poskusi znova"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "Preverite svoje uporabniške podrobnosti"
+msgstr "Preverite uporabniško ime in geslo."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -93,7 +93,7 @@ msgstr "Poveži se s strežnikom"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr "Strežniške podrobnosti"
+msgstr "Strežnik"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
@@ -117,7 +117,7 @@ msgstr "_Mapa:"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr "Uporabniške podrobnosti"
+msgstr "Uporabnik"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -175,11 +175,11 @@ msgstr "Pripravljanje"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Izvorne lokacije ni bilo mogoče določiti."
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Odpri smeti in obnovi ročno"
 
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
@@ -1609,7 +1609,7 @@ msgstr "Te datoteke ni mogoče odpreti."
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Ni bilo mogoče ugotoviti vrste datoteke"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
@@ -1674,7 +1674,7 @@ msgstr "Spremenjeno"
 
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
 msgid "This Folder Does Not Exist"
-msgstr "Ta mapa ne obstaja"
+msgstr "Ta mapa ne obstaja."
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
@@ -1712,7 +1712,7 @@ msgstr "Zapri"
 
 #: ../src/View/AbstractPropertiesDialog.vala:138
 msgid "Device Usage"
-msgstr ""
+msgstr "Poraba prostora"
 
 #: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
@@ -1723,7 +1723,7 @@ msgstr "Kapaciteta:"
 #: ../src/View/AbstractPropertiesDialog.vala:161
 #: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
 msgid "Unknown"
-msgstr ""
+msgstr "Neznano"
 
 #: ../src/View/AbstractPropertiesDialog.vala:157
 msgid "Available:"
@@ -1837,11 +1837,11 @@ msgstr "Lastnosti"
 
 #: ../src/View/Slot.vala:39
 msgid "This Folder Is Empty"
-msgstr "Ta mapa je prazna"
+msgstr "Ta mapa je prazna."
 
 #: ../src/View/Slot.vala:40
 msgid "Trash Is Empty"
-msgstr "Koš je prazen"
+msgstr "Ni smeti."
 
 #: ../src/View/Slot.vala:41
 msgid "There Are No Recent Files"
@@ -1853,7 +1853,7 @@ msgstr "Dostop zavrnjen"
 
 #: ../src/View/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Lastnosti diska"
 
 #: ../src/View/VolumePropertiesWindow.vala:78
 #: ../src/View/PropertiesWindow.vala:597
@@ -1919,7 +1919,7 @@ msgstr "%u datotek, "
 
 #: ../src/View/OverlayBar.vala:288
 msgid "%s approx."
-msgstr ""
+msgstr "pribl. %s"
 
 #: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
@@ -1927,11 +1927,11 @@ msgstr "neznana velikost"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u datoteka ni berljiva"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u datotek ni berljivih"
 
 #: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
@@ -1943,15 +1943,15 @@ msgstr "Tu ni mogoče ustvariti mape."
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The network is unavailable"
-msgstr ""
+msgstr "Omrežje ni na voljo"
 
 #: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Za dostop do te mape je potrebno delujoče omrežje"
 
 #: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
-msgstr "Ta mapa ne pripada vam"
+msgstr "Ta mapa ni vaša."
 
 #: ../src/View/ViewContainer.vala:362
 msgid "You don't have permission to view this folder."
@@ -1959,15 +1959,15 @@ msgstr "Nimate dovoljenja za ogled te mape."
 
 #: ../src/View/ViewContainer.vala:364
 msgid "Unable to Mount Folder"
-msgstr "Ni bilo mogoče priklopiti mape"
+msgstr "Ni bilo mogoče odpreti mape."
 
 #: ../src/View/ViewContainer.vala:365
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Ni bilo mogoče vzpostaviti povezave s strežnikom za to mapo."
 
 #: ../src/View/ViewContainer.vala:367
 msgid "Unable show Folder"
-msgstr ""
+msgstr "Mape ni mogoče prikazati"
 
 #: ../src/View/ViewContainer.vala:368
 msgid "The server for this folder could not be located."
@@ -1983,7 +1983,7 @@ msgstr "Izbrana datoteka več ne obstaja."
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
-msgstr ""
+msgstr "Dovoljenja"
 
 #: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
@@ -1991,13 +1991,19 @@ msgstr "Predogled"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Dejanska velikost je lahko večja"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"%i datotek ni bilo mogoče prebrati zaradi dovoljenj ali drugih napak."
 msgstr[1] ""
+"%i datoteke ni bilo mogoče prebrati zaradi dovoljenj ali drugih napak."
+msgstr[2] ""
+"%i datoteki ni bilo mogoče prebrati zaradi dovoljenj ali drugih napak."
+msgstr[3] ""
+"%i datotek ni bilo mogoče prebrati zaradi dovoljenj ali drugih napak."
 
 #: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
@@ -2005,11 +2011,11 @@ msgstr "neznano"
 
 #: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
-msgstr ""
+msgstr "Nalaganje ..."
 
 #: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
-msgstr ""
+msgstr "Ni bilo mogoče določiti"
 
 #: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
@@ -2033,7 +2039,7 @@ msgstr "Izbrisano:"
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "MIME tip:"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
@@ -2045,11 +2051,11 @@ msgstr "Cilj:"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Original Location:"
-msgstr ""
+msgstr "Izvorna lokacija"
 
 #: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
-msgstr ""
+msgstr "Drugo aplikacijo..."
 
 #: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
@@ -2081,53 +2087,53 @@ msgstr "Vsi:"
 
 #: ../src/View/PropertiesWindow.vala:1257
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u podmap in %u datotek"
 
 #: ../src/View/PropertiesWindow.vala:1259
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u podmap in %u datoteka"
 
 #: ../src/View/PropertiesWindow.vala:1262
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u podmap"
 
 #: ../src/View/PropertiesWindow.vala:1267
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u podmapa in %u datotek"
 
 #: ../src/View/PropertiesWindow.vala:1269
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u podmapa in %u datoteka"
 
 #: ../src/View/PropertiesWindow.vala:1278
 #: ../src/View/PropertiesWindow.vala:1317
 msgid "%u files"
-msgstr ""
+msgstr "%u datotek"
 
 #: ../src/View/PropertiesWindow.vala:1280
 #: ../src/View/PropertiesWindow.vala:1319
 msgid "%u file"
-msgstr ""
+msgstr "%u datotek"
 
 #: ../src/View/PropertiesWindow.vala:1296
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u izbranih predmetov (%u map in %u datotek)"
 
 #: ../src/View/PropertiesWindow.vala:1298
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u izbranih predmetov (%u map in %u datoteka)"
 
 #: ../src/View/PropertiesWindow.vala:1306
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u izbranih predmetov (%u mapa in %u datotek)"
 
 #: ../src/View/PropertiesWindow.vala:1308
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u izbranih predmetov (%u mapa in %u datoteka)"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "Datotečne operacije"
 
 #: ../src/ProgressUIHandler.vala:164
 msgid "File Operations"
@@ -2135,11 +2141,11 @@ msgstr "Opravila datotek"
 
 #: ../src/ProgressUIHandler.vala:208
 msgid "Completed %s"
-msgstr ""
+msgstr "%s končano"
 
 #: ../src/ProgressUIHandler.vala:211
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Vse operacije so bile končane"
 
 #: ../src/ProgressUIHandler.vala:264
 msgid "Show Copy Dialog"
@@ -2258,7 +2264,7 @@ msgstr "Osveži to mapo"
 #: ../libwidgets/View/LocationBar.vala:169
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Vnesite iskalni niz"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:412
 msgid "Open in New Tab"
@@ -2266,11 +2272,11 @@ msgstr "Odpri v novem zavihku"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:419
 msgid "Open in New Window"
-msgstr ""
+msgstr "Odpri v novem oknu"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:458
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Odpri v drugi aplikaciji..."
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
 msgid "Navigate to %s"
@@ -2282,7 +2288,7 @@ msgstr "Pojdi v %s"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Vnesite pot"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2405,7 +2411,7 @@ msgstr "Prikaži skrite datoteke"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Prikaži predogled"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
