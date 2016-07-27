@@ -1949,23 +1949,22 @@ namespace FM {
             if (in_trash) {
                 if (clipboard != null && clipboard.get_can_paste ()) {
                     menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
-
                     return menu as MenuModel;
-                } else
+                } else {
                     return null;
+                }
             }
 
             if (in_recent) {
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
                 menu.append_section (null, build_show_menu (builder));
-
-
                 return menu as MenuModel;
             }
 
             var open_menu = build_menu_open (ref builder);
-            if (open_menu != null)
+            if (open_menu != null) {
                 menu.append_section (null, open_menu);
+            }
 
             if (!in_network_root) {
                 /* If something is pastable in the clipboard, show the option even if it is not enabled */ 
@@ -1976,12 +1975,14 @@ namespace FM {
                 GLib.MenuModel? template_menu = build_menu_templates ();
                 var new_menu = builder.get_object ("new") as GLib.Menu;
 
-                if (template_menu != null) {
-                    var new_submenu = builder.get_object ("new-submenu") as GLib.Menu;
-                    new_submenu.append_section (null, template_menu);
-                }
+                if (is_writable) {
+                    if (template_menu != null) {
+                        var new_submenu = builder.get_object ("new-submenu") as GLib.Menu;
+                        new_submenu.append_section (null, template_menu);
+                    }
 
-                menu.append_section (null, new_menu as GLib.MenuModel);
+                    menu.append_section (null, new_menu as GLib.MenuModel);
+                }
 
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
             }
@@ -1993,11 +1994,11 @@ namespace FM {
                 }
             }
 
-
             menu.append_section (null, build_show_menu (builder));
 
-            if (!in_network_root)
+            if (!in_network_root) {
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
+            }
 
             return menu as MenuModel;
         }
