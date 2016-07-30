@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-04 08:38-0700\n"
-"PO-Revision-Date: 2016-06-30 19:10+0000\n"
-"Last-Translator: Domar <domar@gmx.at>\n"
+"PO-Revision-Date: 2016-07-29 18:05+0000\n"
+"Last-Translator: Denis Graipel <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-07-05 05:52+0000\n"
-"X-Generator: Launchpad (build 18115)\n"
+"X-Launchpad-Export-Date: 2016-07-30 05:58+0000\n"
+"X-Generator: Launchpad (build 18169)\n"
 "Language: de\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1654,7 +1654,7 @@ msgstr "Schließen"
 
 #: ../src/View/AbstractPropertiesDialog.vala:138
 msgid "Device Usage"
-msgstr ""
+msgstr "Geräte Auslastung"
 
 #: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
@@ -1927,7 +1927,7 @@ msgstr "Die ausgewählte Datei existiert nicht mehr."
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
-msgstr ""
+msgstr "Berechtigungen"
 
 #: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
@@ -1935,7 +1935,7 @@ msgstr "Vorschau"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Eigentliche Größe könnte größer sein"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
@@ -1949,7 +1949,7 @@ msgstr "unbekannt"
 
 #: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
-msgstr ""
+msgstr "Laden …"
 
 #: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
@@ -1977,7 +1977,7 @@ msgstr "Gelöscht:"
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "MIME-Typ:"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
@@ -1989,11 +1989,11 @@ msgstr "Ziel:"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Original Location:"
-msgstr ""
+msgstr "Ursprünglicher Ort:"
 
 #: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
-msgstr ""
+msgstr "Andere Anwendung …"
 
 #: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
@@ -2079,11 +2079,11 @@ msgstr "Dateioperationen"
 
 #: ../src/ProgressUIHandler.vala:208
 msgid "Completed %s"
-msgstr ""
+msgstr "%s fertiggestellt"
 
 #: ../src/ProgressUIHandler.vala:211
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Alle Dateioperationen sind beendet"
 
 #: ../src/ProgressUIHandler.vala:264
 msgid "Show Copy Dialog"
@@ -2289,6 +2289,7 @@ msgstr ""
 "  Toni https://launchpad.net/~jony-sun\n"
 "  UweS https://launchpad.net/~uwes\n"
 "  Versable https://launchpad.net/~versable\n"
+"  dworld https://launchpad.net/~johannesgerber\n"
 "  kontakt@wilkomeyer.eu https://launchpad.net/~s-kontakt-2\n"
 "  neonblack https://launchpad.net/~neonblack\n"
 "  quassy https://launchpad.net/~quassy\n"
