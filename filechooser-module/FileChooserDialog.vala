@@ -35,6 +35,7 @@ public class CustomFileChooserDialog : Object {
     /* Paths to widgets */
     private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_revealer" };
     private const string[] GTK_FILTERCHOOSER_PATH = { "extra_and_filters", "filter_combo_hbox" };
+    private const string[] GTK_TREEVIEW_PATH = { "browse_files_stack", "browse_files_swin", "browse_files_tree_view" };
     private const string PLACES_SIDEBAR_PATH = "places_sidebar";
 
     private GLib.Queue<string> previous_paths;
@@ -231,7 +232,9 @@ public class CustomFileChooserDialog : Object {
                 (w2 as Gtk.Container).remove (w3);
             } else if (w3.get_name () ==  "list_and_preview_box") { /* file browser list and preview box */
                 var tv = find_tree_view (w3);
-                tv.set_activate_on_single_click (is_single_click);
+                if (tv != null) {
+                    tv.set_activate_on_single_click (is_single_click);
+                }
             }
         });
     }
@@ -240,16 +243,23 @@ public class CustomFileChooserDialog : Object {
         /* Locate the TreeView and set its click behaviour */
         Gtk.TreeView? tv = null;
         ((Gtk.Container)browser_box).get_children ().foreach ((w) => {
-            ((Gtk.Container)w).get_children ().foreach ((w) => {
+            if (w.get_name () == GTK_TREEVIEW_PATH[0]) {
                 ((Gtk.Container)w).get_children ().foreach ((w) => {
-                    ((Gtk.Container)w).get_children ().foreach ((w) => {
-                        if (w is Gtk.TreeView) {
-                            tv =(Gtk.TreeView)w;
-                        }
-                    });
+                    if (w.name == "GtkBox") {
+                        ((Gtk.Container)w).get_children ().foreach ((w) => {
+                            if (w.get_name () == GTK_TREEVIEW_PATH[1]) {
+                                ((Gtk.Container)w).get_children ().foreach ((w) => {
+                                    if (w.get_name () == GTK_TREEVIEW_PATH[2]) {
+                                        tv = (Gtk.TreeView)w;
+                                    }
+                                });
+                            }
+                        });
+                    }
                 });
-            });
+            }
         });
+
         return tv;
     }
 
