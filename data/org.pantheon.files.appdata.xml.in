@@ -22,5 +22,5 @@
   <url type="bugtracker">https://bugs.launchpad.net/pantheon-files</url>
   <url type="donation">https://elementary.io/get-involved#funding</url>
   <url type="help">https://elementaryos.stackexchange.com/questions/tagged/pantheon-files</url>
-  <updatecontact>contact_at_elementary.io</updatecontact>
+  <update_contact>contact_AT_elementary.io</update_contact>
 </component>
