@@ -1,7 +1,7 @@
 Source: pantheon-files
 Section: x11
 Priority: optional
-Maintainer: Cody Garver <cody@elementaryos.org>
+Maintainer: Cody Garver <cody@elementary.io>
 Vcs-Bzr: https://code.launchpad.net/~elementary-os/pantheon-files/deb-packaging
 Build-Depends: cmake (>= 2.8),
                debhelper (>= 9),
