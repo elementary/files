@@ -1,22 +1,25 @@
 # Akan translation for pantheon-files
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the pantheon-files package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# laberba <karabutaworld@gmail.com>, 2016.
+# Lawrence Aberba <karabutaworld@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Report-Msgid-Bugs-To: Lawrence Aberba <karabutaworld@gmail.com>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-07-20 16:22+0000\n"
+"PO-Revision-Date: 2016-08-02 06:12+0000\n"
 "Last-Translator: laberba <karabutaworld@gmail.com>\n"
 "Language-Team: Akan <ak@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-08-02 05:52+0000\n"
+"X-Launchpad-Export-Date: 2016-08-03 05:45+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
+"Language: Akan\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -86,7 +89,7 @@ msgstr "Toa so"
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr "C_onnecte"
+msgstr "C_onnect"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
@@ -106,7 +109,7 @@ msgstr "_Port:"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr "_Twerɛ:"
+msgstr "_Type:"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
@@ -118,7 +121,7 @@ msgstr "_Folder:"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr "Ne wura ho nsɛm"
+msgstr "Ne Wura Oo Nsɛm"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -134,7 +137,7 @@ msgstr "Pass_word:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr "_Kae password wei"
+msgstr "_Kae me password wei"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
@@ -161,6 +164,8 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Sɛ έka folder dodoɔ bi abom na file bi ne ɔfoforɔ sɛ a, ɛbɛ bisa wo sɛ wopɛ "
+"sɛ wode mono no si ananmu anaa."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:380
@@ -237,7 +242,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:493
 #: ../src/View/PropertiesWindow.vala:518
 msgid "Size:"
-msgstr ""
+msgstr "Ne Kɛseɛ:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:256
 #: ../libcore/marlin-file-conflict-dialog.c:287
@@ -262,7 +267,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:312
 #: ../libcore/marlin-file-conflict-dialog.c:517
 msgid "Merge"
-msgstr ""
+msgstr "Ka Bom"
 
 #: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
@@ -283,7 +288,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
-msgstr ""
+msgstr "Sesa din"
 
 #: ../libcore/marlin-file-conflict-dialog.c:759
 msgid "Replace"
@@ -353,11 +358,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr ""
+msgstr "_Ka bom"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr ""
+msgstr "Ka Ne _Nyinaa Bom"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
@@ -615,7 +620,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1837
 #: ../libcore/marlin-file-operations.c:1849
 msgid "Moving files to trash"
-msgstr ""
+msgstr "έfa files no akɔ trash no mu"
 
 #: ../libcore/marlin-file-operations.c:1851
 #, c-format
@@ -811,7 +816,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3114
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "Fa \"%B\" kɔ \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3115
 msgid "Copying \"%B\" to \"%B\""
@@ -824,8 +829,8 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:3123
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ɛde file %'d (a ɛwɔ \"%B\") ɛkɔ \"%B\""
+msgstr[1] "Ɛde files %'d (a ɛwɔ \"%B\") έkɔ \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3126
 msgid "Copying %'d file (in \"%B\") to \"%B\""
@@ -987,7 +992,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:5370
 msgid "Moving Files"
-msgstr ""
+msgstr "έfa Files No"
 
 #: ../libcore/marlin-file-operations.c:5399
 msgid "Creating links in \"%B\""
@@ -1036,7 +1041,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:6152
 msgid "new file"
-msgstr ""
+msgstr "file foforɔ"
 
 #: ../libcore/marlin-file-operations.c:6323
 msgid "Error while creating directory %B."
@@ -1114,12 +1119,12 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
 msgid "Move %d items back to trash"
-msgstr ""
+msgstr "Fa nneɛma %d san kɔ trash no mu"
 
 #: ../libcore/marlin-undostack-manager.c:1300
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "Fa '%s' san kɔ trash no mu"
 
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
@@ -1129,7 +1134,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "Yi link a ɛkɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
@@ -1154,149 +1159,149 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "Fa nneɛma  %d san kɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "Fa  %s items san kɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1400
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Nneɛma korɔ %d na ɛwɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1405
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "Yɛ '%s' mmeinu wɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1413
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "Fa nneɛma %d kɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "Fa '%s' kɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1435
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "Yɛ file foforɔ '%s' firi template "
 
 #: ../libcore/marlin-undostack-manager.c:1442
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Yɛ file foforɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1449
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Yɛ folder foforɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1457
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Fa nneɛma %d kɔ trash no mu"
 
 #: ../libcore/marlin-undostack-manager.c:1463
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Fa '%s'kɔ trash no mu"
 
 #: ../libcore/marlin-undostack-manager.c:1476
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "San yi '%s' firi trash no mu bra"
 
 #: ../libcore/marlin-undostack-manager.c:1485
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "Yɛ link ma nneɛma %d"
 
 #: ../libcore/marlin-undostack-manager.c:1488
 #, c-format
 msgid "Create link to '%s'"
-msgstr ""
+msgstr "Yɛ link ma '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1497
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Hyehyɛ hokwan ma nneɛma a ɛwɔ '%s' mu"
 
 #: ../libcore/marlin-undostack-manager.c:1505
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "Hyehyɛ '%s' ho hokwan"
 
 #: ../libcore/marlin-undostack-manager.c:1514
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "Sesã kuo '%s' kɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1524
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "Sesã '%s' wura kɔ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1556
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
+msgstr[1] "_Sesã nneɛma dodoɔ %d a w'fa bi no"
 
 #: ../libcore/marlin-undostack-manager.c:1561
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Sesã nneɛma dodoɔ %d ɛyɛ adekorɔ no"
+msgstr[1] "_Sesã nneɛma dodoɔ %d ɛyɛ adekorɔ no"
 
 #: ../libcore/marlin-undostack-manager.c:1566
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Sesã nneɛma dodoɔ %d a w'fa no"
+msgstr[1] "_Sesã nneɛma dodoɔ %d a w'fa no"
 
 #: ../libcore/marlin-undostack-manager.c:1571
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
+msgstr[1] "_Sesã nneɛma dodoɔ %d a w'aseã ne din"
 
 #: ../libcore/marlin-undostack-manager.c:1575
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Sesã file foforɔ a woreyɛ no"
 
 #: ../libcore/marlin-undostack-manager.c:1578
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Sesã file foforɔ a wode template reyɛ no"
 
 #: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Sesã folder dodoɔ %d a woreyɛ no"
+msgstr[1] "_Sesã folder dodoɔ %d a woreyɛ no"
 
 #: ../libcore/marlin-undostack-manager.c:1587
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Sesã folder dodoɔ %d a worefa akɔ trash no mu no"
+msgstr[1] "_Sesã folder dodoɔ %d a worefa akɔ trash no mu no"
 
 #: ../libcore/marlin-undostack-manager.c:1592
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
+msgstr[1] "_Sesã files dodoɔ %d a worefa afi trash no mu aba no"
 
 #: ../libcore/marlin-undostack-manager.c:1597
 #, c-format
@@ -1463,12 +1468,12 @@ msgstr "έyɛ nsiesei"
 #: ../filechooser-module/FileChooserDialog.vala:69
 #: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
-msgstr ""
+msgstr "Nea ɛdi akyire"
 
 #: ../filechooser-module/FileChooserDialog.vala:73
 #: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
-msgstr ""
+msgstr "Nea edi hɔ"
 
 #: ../src/View/Window.vala:204
 msgid "Files isn't your default file manager."
@@ -1484,7 +1489,7 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:472
 msgid "Personal"
-msgstr ""
+msgstr "Wo Nneɛma"
 
 #: ../src/View/Sidebar.vala:473
 msgid "Your common places and bookmarks"
@@ -1492,11 +1497,11 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:331
 msgid "Home"
-msgstr ""
+msgstr "Ahyɛase"
 
 #: ../src/View/Sidebar.vala:492
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Bue folder a wo nneɛma wɔ mu no"
 
 #: ../src/View/Sidebar.vala:507
 msgid "View the list of recently used files"
@@ -1504,15 +1509,15 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:90
 msgid "Trash"
-msgstr ""
+msgstr "Trash"
 
 #: ../src/View/Sidebar.vala:535
 msgid "Open the Trash"
-msgstr ""
+msgstr "Bue Trash no"
 
 #: ../src/View/Sidebar.vala:539
 msgid "Devices"
-msgstr ""
+msgstr "Mfidie Ahoroɔ"
 
 #: ../src/View/Sidebar.vala:540
 msgid "Your local partitions and devices"
@@ -1549,11 +1554,11 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:1429
 msgid "Open"
-msgstr ""
+msgstr "Bue"
 
 #: ../src/View/Sidebar.vala:1437
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Bue wɔ _Tab foforɔ mu"
 
 #: ../src/View/Sidebar.vala:1443
 msgid "Open in New _Window"
@@ -1561,28 +1566,28 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:1451
 msgid "Remove"
-msgstr ""
+msgstr "Yi"
 
 #: ../src/View/Sidebar.vala:1459 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr ""
+msgstr "Sesã ne din"
 
 #: ../src/View/Sidebar.vala:1468
 msgid "_Mount"
-msgstr ""
+msgstr "_Fa hyɛ mu"
 
 #: ../src/View/Sidebar.vala:1474
 msgid "_Unmount"
-msgstr ""
+msgstr "_Yi fi mu"
 
 #: ../src/View/Sidebar.vala:1480
 msgid "_Eject"
-msgstr ""
+msgstr "_Yi"
 
 #: ../src/View/Sidebar.vala:1494 ../src/View/PropertiesWindow.vala:130
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
-msgstr ""
+msgstr "Ɛho nhyehyeɛ"
 
 #: ../src/View/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
@@ -1591,7 +1596,7 @@ msgstr ""
 #: ../src/View/VolumePropertiesWindow.vala:78
 #: ../src/View/PropertiesWindow.vala:597
 msgid "Location:"
-msgstr ""
+msgstr "Baabi a ɛwɔ:"
 
 #: ../src/View/VolumePropertiesWindow.vala:85
 msgid "Format:"
@@ -1609,9 +1614,12 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
+# Notes:
+# Add Note
+# Check spelling for ɛsesaeɛ (Modefied -s past tense)
 #: ../src/View/ListView.vala:29
 msgid "Modified"
-msgstr ""
+msgstr "Mmerɛ a ɛsesaeɛ"
 
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
 msgid "This Folder Does Not Exist"
@@ -1638,7 +1646,7 @@ msgstr ""
 
 #: ../src/View/AbstractPropertiesDialog.vala:48
 msgid "Info"
-msgstr ""
+msgstr "Ɛho nsɛm"
 
 #: ../src/View/AbstractPropertiesDialog.vala:57
 msgid "General"
@@ -1646,7 +1654,7 @@ msgstr ""
 
 #: ../src/View/AbstractPropertiesDialog.vala:76
 msgid "Close"
-msgstr ""
+msgstr "Yi"
 
 #: ../src/View/AbstractPropertiesDialog.vala:138
 msgid "Device Usage"
@@ -1661,11 +1669,11 @@ msgstr ""
 #: ../src/View/AbstractPropertiesDialog.vala:161
 #: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
 msgid "Unknown"
-msgstr ""
+msgstr "Nea wɔnnim ho hwee"
 
 #: ../src/View/AbstractPropertiesDialog.vala:157
 msgid "Available:"
-msgstr ""
+msgstr "Nea ɛwɔ hɔ:"
 
 #: ../src/View/AbstractPropertiesDialog.vala:160
 msgid "Used:"
@@ -1673,11 +1681,11 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:561
 msgid "Failed to preview"
-msgstr ""
+msgstr "Antumi anyi ankyerɛ"
 
 #: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Antumi ambue file wei"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
@@ -1689,28 +1697,28 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Ɛdin no nnyɛ nea ɛbɛtumi de ayɛ"
 
 #: ../src/View/AbstractDirectoryView.vala:2012
 msgid "Invalid"
-msgstr ""
+msgstr "Ennyɛ papa"
 
 #: ../src/View/AbstractDirectoryView.vala:2018
 msgid "Run"
-msgstr ""
+msgstr "Fa di dwuma"
 
 #: ../src/View/AbstractDirectoryView.vala:2023
 msgid "Open in %s"
-msgstr ""
+msgstr "Bue wɔ %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2033
 msgid "Open in"
-msgstr ""
+msgstr "Bue wɔ"
 
 #: ../src/View/AbstractDirectoryView.vala:2035
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
-msgstr ""
+msgstr "Fa dwumadie wei bue"
 
 #: ../src/View/AbstractDirectoryView.vala:2095
 msgid "Other Application"
@@ -1792,11 +1800,11 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
-msgstr ""
+msgstr "Hokwan Ahoroɔ"
 
 #: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
-msgstr ""
+msgstr "Hwɛ senea ɛte"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
@@ -1810,11 +1818,11 @@ msgstr[1] ""
 
 #: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
-msgstr ""
+msgstr "nea wɔnnim ho hwee"
 
 #: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
-msgstr ""
+msgstr "Loading…"
 
 #: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
@@ -1830,11 +1838,11 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:552
 msgid "Modified:"
-msgstr ""
+msgstr "Mmerɛ a ɛsesaeɛ:"
 
 #: ../src/View/PropertiesWindow.vala:561
 msgid "Last Access:"
-msgstr ""
+msgstr "Mmerɛ a wɔbueɛ:"
 
 #: ../src/View/PropertiesWindow.vala:572
 msgid "Deleted:"
@@ -1842,7 +1850,7 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "Mimetype:"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
@@ -1976,7 +1984,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:378
 msgid "File not Found"
-msgstr ""
+msgstr "Anhu File No"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The file selected no longer exists."
@@ -1984,15 +1992,15 @@ msgstr ""
 
 #: ../src/View/Slot.vala:39
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Hwee Nni Folder Wei Mu"
 
 #: ../src/View/Slot.vala:40
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Hwee Nni Trash No Mu"
 
 #: ../src/View/Slot.vala:41
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Files Biara Nni Hɔ a Wobuei Sesei Ara"
 
 #: ../src/View/Slot.vala:42
 msgid "Access Denied"
@@ -2008,7 +2016,7 @@ msgstr ""
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr ""
+msgstr "Window Foforɔ"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
@@ -2043,7 +2051,7 @@ msgstr ""
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Window"
-msgstr ""
+msgstr "_Window Foforɔ"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
@@ -2088,7 +2096,7 @@ msgstr ""
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
-msgstr ""
+msgstr "Fa to ɛha"
 
 #: ../libcore/DndHandler.vala:94
 msgid "Copy Here"
@@ -2108,24 +2116,24 @@ msgstr ""
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:412
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Bue wɔ Tab Foforɔ Mu"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:419
 msgid "Open in New Window"
-msgstr ""
+msgstr "Bue wɔ Window Foforɔ Mu"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:458
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Fa dwumadie foforɔ bue …"
 
 #: ../libwidgets/View/LocationBar.vala:171
 msgid "Reload this folder"
-msgstr ""
+msgstr "San bue folder wei"
 
 #: ../libwidgets/View/LocationBar.vala:174
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Bɔ nea wopɛ sɛ wohwehwɛ"
 
 #: ../libwidgets/View/SearchResults.vala:180
 msgid "In This Folder"
@@ -2141,7 +2149,7 @@ msgstr ""
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "Dwumadie a wɔde di files ahoroɔ ho dwuma"
 
 #: ../libwidgets/Resources.vala:50
 msgid "translator-credits"
@@ -2175,7 +2183,7 @@ msgstr ""
 
 #: ../libwidgets/Resources.vala:91
 msgid "Recent"
-msgstr ""
+msgstr "Seisei ara"
 
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
@@ -2187,23 +2195,24 @@ msgstr ""
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr ""
+msgstr "Hwɛ no Adakadaka mu"
 
+# Check spelling of for nnidisoɔnnidisoɔ (list)
 #: ../libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "Hwɛ no Nnidisoɔ Nnidisoɔ mu"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr ""
+msgstr "Hwɛ no Nkyekyɛmu Mkyekyɛmu mu"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Bue kɔ %s"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:274
 msgid "Go to %s"
-msgstr ""
+msgstr "Kɔ %s"
 
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
@@ -2251,11 +2260,11 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "Fa kɔ trash no mu"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr ""
+msgstr "Foforɔ"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
@@ -2275,7 +2284,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr ""
+msgstr "Tab Foforɔ"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
