@@ -299,10 +299,12 @@ public class Marlin.Progress.UIHandler : Object {
         Dbusmenu.Menuitem quicklist = unity_lentry.quicklist;
 
         foreach (Dbusmenu.Menuitem menuitem in marlin_lentry.progress_quicklists) {
+            var parent = menuitem.get_parent ();
             if (show) {
-                if (menuitem.get_parent () == null)
+                if (parent == null) {
                     quicklist.child_add_position (menuitem, -1);
-            } else {
+                }
+            } else if (parent != null && parent == quicklist) {
                 quicklist.child_delete (menuitem);
             }
         }
