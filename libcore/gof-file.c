@@ -1946,8 +1946,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
             }
             else
             {
-                /* TRANSLATORS: `Exec' is a field name in a .desktop file.
-                 * Don't translate it. */
+                /// TRANSLATORS: `Exec' is a field name in a .desktop file. Don't translate it.
                 g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
                              _("No Exec field specified"));
             }
@@ -1966,8 +1965,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
             }
             else
             {
-                /* TRANSLATORS: `URL' is a field name in a .desktop file.
-                 * Don't translate it. */
+                /// TRANSLATORS: `Exec' is a field name in a .desktop file. Don't translate it.
                 g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
                              _("No URL field specified"));
             }

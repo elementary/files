@@ -203,7 +203,7 @@ public class Marlin.Progress.UIHandler : Object {
             return; /* No notification of cancellation action required */
         }
 
-        /* TRANSLATORS: %s will be replaced by the title of the file operation */
+        /// TRANSLATORS: %s will be replaced by the title of the file operation
         var result = (_("Completed %s")).printf (info.get_title ());
 
         if (all_finished) {
