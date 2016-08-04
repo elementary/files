@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-07-31 16:17+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-08-03 17:14+0000\n"
+"Last-Translator: UweS <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:46+0000\n"
+"X-Launchpad-Export-Date: 2016-08-04 05:37+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 "Language: de\n"
 
@@ -931,8 +931,8 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Der Ordner »%B« konnte nicht kopiert werden, da Sie nicht die nötigen Rechte "
-"besitzen, um den Ordner im Ziel zu erstellen."
+"Der Ordner »%B« konnte nicht kopiert werden, da Sie nicht die nötigen "
+"Zugriffsrechte besitzen, um den Ordner im Ziel zu erstellen."
 
 #: ../libcore/marlin-file-operations.c:3593
 msgid "There was an error creating the folder \"%B\"."
@@ -1292,12 +1292,12 @@ msgstr "Erstelle Verknüpfung nach »%s«"
 #: ../libcore/marlin-undostack-manager.c:1497
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "Setze Berechtigungen der Objekte die in »%s« enthalten sind"
+msgstr "Zugriffsrechte für die Objekte in »%s« festlegen"
 
 #: ../libcore/marlin-undostack-manager.c:1505
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr "Setze Berechtigungen von »%s«"
+msgstr "Zugriffsrechte für »%s« festlegen"
 
 #: ../libcore/marlin-undostack-manager.c:1514
 #, c-format
@@ -1385,8 +1385,10 @@ msgstr[1] "_Rückgängig machen von %d Objekten"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Veränderung der Benutzerrechte für %d Objekt rückgängig machen"
-msgstr[1] "Veränderung der Benutzerrechte für %d Objekte rückgängig machen"
+msgstr[0] ""
+"Rekursive Veränderung der Zugriffsrechte für %d Objekt rückgängig machen"
+msgstr[1] ""
+"Rekursive Veränderung der Zugriffsrechte für %d Objekte rückgängig machen"
 
 #: ../libcore/marlin-undostack-manager.c:1613
 #, c-format
@@ -1866,7 +1868,7 @@ msgstr "%u Dateien sind nicht lesbar"
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
-msgstr "Berechtigungen"
+msgstr "Zugriffsrechte"
 
 #: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
@@ -1880,7 +1882,11 @@ msgstr "Eigentliche Größe könnte größer sein"
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"%i Datei konnte aufgrund fehlender Zugriffsrechte oder anderer Fehler nicht "
+"gelesen werden."
 msgstr[1] ""
+"%i Dateien konnten aufgrund fehlender Zugriffsrechte oder anderer Fehler "
+"nicht gelesen werden."
 
 #: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
@@ -2031,7 +2037,7 @@ msgstr "Dieser Ordner gehört nicht Ihnen"
 
 #: ../src/View/ViewContainer.vala:362
 msgid "You don't have permission to view this folder."
-msgstr "Sie haben keine Zugriffsrechte, um diesen Ordner anzuzeigen."
+msgstr "Zur Anzeige dieses Ordners fehlen Ihnen die Zugriffsrechte."
 
 #: ../src/View/ViewContainer.vala:364
 msgid "Unable to Mount Folder"
@@ -2138,7 +2144,7 @@ msgstr "Dateien"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "Dateiverwaltungsoperationen"
 
 #: ../src/ProgressUIHandler.vala:153
 msgid "File Operations"

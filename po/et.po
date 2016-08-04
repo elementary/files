@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-06-30 19:09+0000\n"
+"PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:46+0000\n"
+"X-Launchpad-Export-Date: 2016-08-04 05:37+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1691,7 +1691,7 @@ msgstr "Välju"
 
 #: ../src/View/AbstractPropertiesDialog.vala:138
 msgid "Device Usage"
-msgstr ""
+msgstr "Kettakasutus"
 
 #: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
@@ -1833,7 +1833,7 @@ msgstr "%u faili pole võimalik lugeda"
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
-msgstr ""
+msgstr "Õigused"
 
 #: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
@@ -1841,13 +1841,17 @@ msgstr "Eelvaade"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Tegelik suurus võib erineda"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"%i faili lugemine ebaõnnestus, sest sellel failil puudub lugemisõigus või "
+"tekkis mõne teine probleem."
 msgstr[1] ""
+"%i faili lugemine ebaõnnestus, sest sellel failil puudub lugemisõigus või "
+"tekkis mõne teine probleem."
 
 #: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
@@ -1855,7 +1859,7 @@ msgstr "tundmatu"
 
 #: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
-msgstr ""
+msgstr "Laadimine…"
 
 #: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
@@ -1883,7 +1887,7 @@ msgstr "Kustutatud:"
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "Formaat:"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
@@ -1895,11 +1899,11 @@ msgstr "Sihtkoht:"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Original Location:"
-msgstr ""
+msgstr "Originaal asukoht:"
 
 #: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
-msgstr ""
+msgstr "Teine rakendus…"
 
 #: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
@@ -1985,11 +1989,11 @@ msgstr "Sul pole siia võimalik kausta luua."
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The network is unavailable"
-msgstr ""
+msgstr "Võrk pole saadaval"
 
 #: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Selle kausta vaatamiseks on vajalik toimiv võrguühendus"
 
 #: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
@@ -2103,7 +2107,7 @@ msgstr "Failid"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "Failihalduri tegevused"
 
 #: ../src/ProgressUIHandler.vala:153
 msgid "File Operations"
@@ -2112,11 +2116,11 @@ msgstr "Failioperatsioonid"
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
 #: ../src/ProgressUIHandler.vala:207
 msgid "Completed %s"
-msgstr ""
+msgstr "%s lõpetatud."
 
 #: ../src/ProgressUIHandler.vala:210
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Kõik failihalduri tegevused said valmis"
 
 #: ../src/ProgressUIHandler.vala:255
 msgid "Show Copy Dialog"
