@@ -1,4 +1,4 @@
-# Spanish translation for pantheon-files
+# Croatian translation for pantheon-files
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the pantheon-files package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-05 00:17+0000\n"
-"Last-Translator: Oscar A. Mata T. <Unknown>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"PO-Revision-Date: 2016-08-04 19:33+0000\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
+"Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,10 +18,10 @@ msgstr ""
 "X-Generator: Launchpad (build 18169)\n"
 
 msgid "Files"
-msgstr "Archivos"
+msgstr "Datoteke"
 
 msgid "Browse and manage files and folders"
-msgstr ""
+msgstr "Pregledajte i upravljajte datotekama"
 
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
@@ -29,3 +29,8 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
+"Lagano kopirajte, premjestite i preimenujte svoje datoteke ili koristite "
+"mape kako bi ostali organizirani. Bilo da volite prikaz datoteka u popisu, "
+"mreži ili stupcima, uvijek ih možete odmah pronaći. Pristupite svim svojim "
+"datotekama lokalno, na vanjskim uređajima ili udaljeno putem FTP, SFTP, AFP, "
+"Webdava, ili Windows dijeljenja."

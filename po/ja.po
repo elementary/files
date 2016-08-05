@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-03 13:35+0000\n"
-"Last-Translator: BALLOON a.k.a. Fu-sen. (Keiichi SHIGA) <Unknown>\n"
+"PO-Revision-Date: 2016-08-05 03:51+0000\n"
+"Last-Translator: Ryo Nakano <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-08-04 05:37+0000\n"
+"X-Launchpad-Export-Date: 2016-08-05 05:37+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -515,7 +515,7 @@ msgstr "ゴミ箱からすべてのアイテムを完全に削除しますか？
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
-msgstr ""
+msgstr "マウントされたすべての外付けドライブ上のものも含め、ゴミ箱にあるすべてのアイテムは、完全に削除されます。"
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
@@ -523,7 +523,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "このマウントされたドライブ上のゴミ箱にあるすべてのアイテムは、完全に削除されます。"
 
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1487
@@ -1987,7 +1987,7 @@ msgstr "URL を新しいタブで開く"
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr ""
+msgstr "新しいウィンドウ"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
@@ -2133,6 +2133,7 @@ msgstr ""
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Jun Takeda https://launchpad.net/~takeda-jun\n"
 "  Naoki Kephart https://launchpad.net/~naoki-kephart\n"
+"  Ryo Nakano https://launchpad.net/~uq3-him13de-9spzka7\n"
 "  Yuki Yamada https://launchpad.net/~lz-yamada\n"
 "  平野　祐介 https://launchpad.net/~yukketopi-tyann"
 
