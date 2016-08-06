@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-02 16:00+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-08-05 08:42+0000\n"
+"Last-Translator: Dono <laszlo.bence.27@gmail.com>\n"
 "Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:47+0000\n"
+"X-Launchpad-Export-Date: 2016-08-06 05:37+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 "Language: hu\n"
 
@@ -1090,11 +1090,11 @@ msgstr "Kuka ürítése"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Az eredeti hely ismeretlen"
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Kézi helyreállítás a Kuka megnyitásával"
 
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
@@ -1571,7 +1571,7 @@ msgstr "A hálózat tartalmának tallózása"
 
 #: ../src/View/Sidebar.vala:830
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s szabad ennyiből: %s)"
 
 #: ../src/View/Sidebar.vala:1325
 msgid "Unable to start %s"
@@ -1616,16 +1616,16 @@ msgstr "Tulajdonságok"
 
 #: ../src/View/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Lemez tulajdonságok"
 
 #: ../src/View/VolumePropertiesWindow.vala:78
 #: ../src/View/PropertiesWindow.vala:597
 msgid "Location:"
-msgstr ""
+msgstr "Elérési út:"
 
 #: ../src/View/VolumePropertiesWindow.vala:85
 msgid "Format:"
-msgstr ""
+msgstr "Formátum:"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1683,26 +1683,26 @@ msgstr "Bezárás"
 
 #: ../src/View/AbstractPropertiesDialog.vala:138
 msgid "Device Usage"
-msgstr ""
+msgstr "Eszközhasználat"
 
 #: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
-msgstr ""
+msgstr "Kapacitás:"
 
 #: ../src/View/AbstractPropertiesDialog.vala:155
 #: ../src/View/AbstractPropertiesDialog.vala:158
 #: ../src/View/AbstractPropertiesDialog.vala:161
 #: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
 msgid "Unknown"
-msgstr ""
+msgstr "Ismeretlen"
 
 #: ../src/View/AbstractPropertiesDialog.vala:157
 msgid "Available:"
-msgstr ""
+msgstr "Elérhető:"
 
 #: ../src/View/AbstractPropertiesDialog.vala:160
 msgid "Used:"
-msgstr ""
+msgstr "Használva:"
 
 #: ../src/View/AbstractDirectoryView.vala:561
 msgid "Failed to preview"
@@ -1710,11 +1710,11 @@ msgstr "Nincs előnézet"
 
 #: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Ez a fájl nem nyitható meg"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Nem azonosítható be a fájltípus a megnyitáshoz"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
@@ -1807,12 +1807,12 @@ msgstr "%u fájl, "
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/OverlayBar.vala:288
 msgid "%s approx."
-msgstr ""
+msgstr "Körülbelül %s."
 
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
-msgstr ""
+msgstr "ismeretlen méret"
 
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/OverlayBar.vala:295
@@ -1821,11 +1821,11 @@ msgstr ""
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u fájl nem olvasható"
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
-msgstr ""
+msgstr "Jogosultságok"
 
 #: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
@@ -1833,13 +1833,15 @@ msgstr "Előnézet"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Az aktuális méret nagyobb lehet"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"%i fájl nem lesz olvasható a jogosultságok miatt vagy egyéb hibák."
 msgstr[1] ""
+"%i fájl nem lesz olvasható a jogosultságok miatt vagy egyéb hibák."
 
 #: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
@@ -1847,51 +1849,51 @@ msgstr "ismeretlen"
 
 #: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
-msgstr ""
+msgstr "Betöltés..."
 
 #: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
-msgstr ""
+msgstr "Nem lehet meghatározni"
 
 #: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
-msgstr ""
+msgstr "Tartalmazza:"
 
 #: ../src/View/PropertiesWindow.vala:544
 msgid "Created:"
-msgstr ""
+msgstr "Létrehozva:"
 
 #: ../src/View/PropertiesWindow.vala:552
 msgid "Modified:"
-msgstr ""
+msgstr "Módosítva:"
 
 #: ../src/View/PropertiesWindow.vala:561
 msgid "Last Access:"
-msgstr ""
+msgstr "Legutóbbi hozzáférés:"
 
 #: ../src/View/PropertiesWindow.vala:572
 msgid "Deleted:"
-msgstr ""
+msgstr "Törölve:"
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "Pantonimtípus:"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
-msgstr ""
+msgstr "Felbontás:"
 
 #: ../src/View/PropertiesWindow.vala:607
 msgid "Target:"
-msgstr ""
+msgstr "Cél:"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Original Location:"
-msgstr ""
+msgstr "Eredeti hely:"
 
 #: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
-msgstr ""
+msgstr "Egyéb alkalmazás..."
 
 #: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
@@ -1911,61 +1913,61 @@ msgstr "Végrehajtás"
 
 #: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:983
 msgid "Owner:"
-msgstr ""
+msgstr "Tulajdonos:"
 
 #: ../src/View/PropertiesWindow.vala:973 ../src/View/PropertiesWindow.vala:987
 msgid "Group:"
-msgstr ""
+msgstr "Csoport:"
 
 #: ../src/View/PropertiesWindow.vala:991
 msgid "Everyone:"
-msgstr ""
+msgstr "Mindenki:"
 
 #: ../src/View/PropertiesWindow.vala:1257
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u almappák és %u fájlok"
 
 #: ../src/View/PropertiesWindow.vala:1259
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u almappák és %u fájlok"
 
 #: ../src/View/PropertiesWindow.vala:1262
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u almappák"
 
 #: ../src/View/PropertiesWindow.vala:1267
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u almappa és %u fájlok"
 
 #: ../src/View/PropertiesWindow.vala:1269
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u almappa és %u fájlok"
 
 #: ../src/View/PropertiesWindow.vala:1278
 #: ../src/View/PropertiesWindow.vala:1317
 msgid "%u files"
-msgstr ""
+msgstr "%u fájlok"
 
 #: ../src/View/PropertiesWindow.vala:1280
 #: ../src/View/PropertiesWindow.vala:1319
 msgid "%u file"
-msgstr ""
+msgstr "%u fájl"
 
 #: ../src/View/PropertiesWindow.vala:1296
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u kiválasztott elemek (%u mappák és %u fájlok)"
 
 #: ../src/View/PropertiesWindow.vala:1298
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u kiválasztott elemek (%u mappák és %u fájlok)"
 
 #: ../src/View/PropertiesWindow.vala:1306
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u kiválasztott elemek (%u mappák és %u fájlok)"
 
 #: ../src/View/PropertiesWindow.vala:1308
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u kiválasztott elemek (%u mappa és %u fájl)"
 
 #: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
@@ -1977,11 +1979,11 @@ msgstr "Ide nem hozható létre mappa."
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The network is unavailable"
-msgstr ""
+msgstr "A hálózat elérhetetlen"
 
 #: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Egy működő hálózat szükséges ennek a mappának az eléréshez"
 
 #: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
@@ -1997,11 +1999,11 @@ msgstr "Mappa nem csatolható"
 
 #: ../src/View/ViewContainer.vala:365
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Nem lehet csatlakozni a szerverhez ezért a mappáért"
 
 #: ../src/View/ViewContainer.vala:367
 msgid "Unable show Folder"
-msgstr ""
+msgstr "Nem megjeleníthető mappa"
 
 #: ../src/View/ViewContainer.vala:368
 msgid "The server for this folder could not be located."
@@ -2095,7 +2097,7 @@ msgstr "Fájlkezelő"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "Fájlkezelő műveletek"
 
 #: ../src/ProgressUIHandler.vala:153
 msgid "File Operations"
@@ -2104,11 +2106,11 @@ msgstr "Fájlműveletek"
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
 #: ../src/ProgressUIHandler.vala:207
 msgid "Completed %s"
-msgstr ""
+msgstr "%s befejezett"
 
 #: ../src/ProgressUIHandler.vala:210
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Minden fájlművelet véget ért"
 
 #: ../src/ProgressUIHandler.vala:255
 msgid "Show Copy Dialog"
@@ -2148,11 +2150,11 @@ msgstr "Megnyitás új lapon"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:419
 msgid "Open in New Window"
-msgstr ""
+msgstr "Megnyitás új ablakban"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:458
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Megnyitás másik alkalmazással"
 
 #: ../libwidgets/View/LocationBar.vala:171
 msgid "Reload this folder"
@@ -2161,7 +2163,7 @@ msgstr "A mappa újratöltése"
 #: ../libwidgets/View/LocationBar.vala:174
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Keresőkifejezés vagy út megadása"
 
 #: ../libwidgets/View/SearchResults.vala:180
 msgid "In This Folder"
@@ -2198,6 +2200,7 @@ msgstr ""
 "  Papp Ferenc https://launchpad.net/~pappfer\n"
 "  Prigero https://launchpad.net/~prigero\n"
 "  Zoltan Faludi https://launchpad.net/~faludiz\n"
+"  krnkris https://launchpad.net/~krnacs\n"
 "  schmate https://launchpad.net/~schnellbach-mate"
 
 #: ../libwidgets/Resources.vala:83
@@ -2230,11 +2233,11 @@ msgstr "Előzmények"
 
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Adj meg egy elérési utat"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2322,7 +2325,7 @@ msgstr "Rejtett fájlok megjelenítése"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Távoli miniatűrök megjelenítése"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
