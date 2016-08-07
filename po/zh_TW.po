@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-06-30 19:08+0000\n"
+"PO-Revision-Date: 2016-08-07 04:40+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:50+0000\n"
+"X-Launchpad-Export-Date: 2016-08-07 05:28+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 "Language: zh_TW\n"
 
@@ -1497,7 +1497,7 @@ msgstr "瀏覽網路的內容"
 
 #: ../src/View/Sidebar.vala:830
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s 可用，共 %s)"
 
 #: ../src/View/Sidebar.vala:1325
 msgid "Unable to start %s"
@@ -1609,7 +1609,7 @@ msgstr "關閉"
 
 #: ../src/View/AbstractPropertiesDialog.vala:138
 msgid "Device Usage"
-msgstr ""
+msgstr "裝置用量"
 
 #: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
@@ -1636,11 +1636,11 @@ msgstr "無法預覽"
 
 #: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot open this file"
-msgstr ""
+msgstr "無法開啟這份檔案"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "無法辨識要開啓的檔案類型"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
@@ -1733,25 +1733,25 @@ msgstr "%u 份檔案， "
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/OverlayBar.vala:288
 msgid "%s approx."
-msgstr ""
+msgstr "大約 %s"
 
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
-msgstr ""
+msgstr "未知大小"
 
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/OverlayBar.vala:295
 msgid "%u file not readable"
-msgstr ""
+msgstr "%s 份檔案無法讀取"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u 份檔案無法讀取"
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
-msgstr ""
+msgstr "權限"
 
 #: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
@@ -1759,13 +1759,12 @@ msgstr "預覽"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "實際大小可能更大"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i 份檔案無法讀取，因為權限問題或其他錯誤。"
 
 #: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
@@ -1773,15 +1772,15 @@ msgstr "未知"
 
 #: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
-msgstr ""
+msgstr "載入中…"
 
 #: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
-msgstr ""
+msgstr "無法判定"
 
 #: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
-msgstr ""
+msgstr "包含："
 
 #: ../src/View/PropertiesWindow.vala:544
 msgid "Created:"
@@ -1801,11 +1800,11 @@ msgstr "刪除時間："
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "MIME 類型："
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
-msgstr ""
+msgstr "解析度："
 
 #: ../src/View/PropertiesWindow.vala:607
 msgid "Target:"
@@ -1813,11 +1812,11 @@ msgstr "目標："
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Original Location:"
-msgstr ""
+msgstr "原始位置："
 
 #: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
-msgstr ""
+msgstr "其他應用程式…"
 
 #: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
@@ -1849,49 +1848,49 @@ msgstr "任何人："
 
 #: ../src/View/PropertiesWindow.vala:1257
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u 個子資料夾和 %u 份檔案"
 
 #: ../src/View/PropertiesWindow.vala:1259
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u 個子資料夾和 %u 份檔案"
 
 #: ../src/View/PropertiesWindow.vala:1262
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u 個子資料夾"
 
 #: ../src/View/PropertiesWindow.vala:1267
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u 個子資料夾和 %u 份檔案"
 
 #: ../src/View/PropertiesWindow.vala:1269
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u 個子資料夾和 %u 份檔案"
 
 #: ../src/View/PropertiesWindow.vala:1278
 #: ../src/View/PropertiesWindow.vala:1317
 msgid "%u files"
-msgstr ""
+msgstr "%u 份檔案"
 
 #: ../src/View/PropertiesWindow.vala:1280
 #: ../src/View/PropertiesWindow.vala:1319
 msgid "%u file"
-msgstr ""
+msgstr "%u 份檔案"
 
 #: ../src/View/PropertiesWindow.vala:1296
 msgid "%u selected items (%u folders and %u files)"
-msgstr ""
+msgstr "%u 個選取項目 (%u 個資料夾和 %u 份檔案)"
 
 #: ../src/View/PropertiesWindow.vala:1298
 msgid "%u selected items (%u folders and %u file)"
-msgstr ""
+msgstr "%u 個選取項目 (%u 個資料夾和 %u 份檔案)"
 
 #: ../src/View/PropertiesWindow.vala:1306
 msgid "%u selected items (%u folder and %u files)"
-msgstr ""
+msgstr "%u 個選取項目 (%u 個資料夾和 %u 份檔案)"
 
 #: ../src/View/PropertiesWindow.vala:1308
 msgid "%u selected items (%u folder and %u file)"
-msgstr ""
+msgstr "%u 個選取項目 (%u 個資料夾和 %u 份檔案)"
 
 #: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
@@ -1903,11 +1902,11 @@ msgstr "您無法在這裡建立資料夾。"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The network is unavailable"
-msgstr ""
+msgstr "網路無法使用"
 
 #: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "需要有能用的網路才能到這個資料夾"
 
 #: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
@@ -1923,11 +1922,11 @@ msgstr "無法掛載資料夾"
 
 #: ../src/View/ViewContainer.vala:365
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "無法連接到這個資料夾的所屬伺服器。"
 
 #: ../src/View/ViewContainer.vala:367
 msgid "Unable show Folder"
-msgstr ""
+msgstr "無法顯示資料夾"
 
 #: ../src/View/ViewContainer.vala:368
 msgid "The server for this folder could not be located."
@@ -2021,7 +2020,7 @@ msgstr "檔案"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "檔案管理源操作"
 
 #: ../src/ProgressUIHandler.vala:153
 msgid "File Operations"
@@ -2030,11 +2029,11 @@ msgstr "檔案操作"
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
 #: ../src/ProgressUIHandler.vala:207
 msgid "Completed %s"
-msgstr ""
+msgstr "已完成 %s"
 
 #: ../src/ProgressUIHandler.vala:210
 msgid "All file operations have ended"
-msgstr ""
+msgstr "所有檔案操作皆已結束"
 
 #: ../src/ProgressUIHandler.vala:255
 msgid "Show Copy Dialog"
@@ -2241,7 +2240,7 @@ msgstr "顯示隱藏檔案"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "顯示遠端縮圖"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"

@@ -1,4 +1,4 @@
-# Italian translation for pantheon-files
+# Chinese (Traditional) translation for pantheon-files
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the pantheon-files package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
@@ -8,9 +8,9 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-06 14:34+0000\n"
-"Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
-"Language-Team: Italian <it@li.org>\n"
+"PO-Revision-Date: 2016-08-06 11:18+0000\n"
+"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,10 +18,10 @@ msgstr ""
 "X-Generator: Launchpad (build 18169)\n"
 
 msgid "Files"
-msgstr "File"
+msgstr "檔案"
 
 msgid "Browse and manage files and folders"
-msgstr "Sfoglia e gestisci file e cartelle"
+msgstr "瀏覽、管理檔案及資料夾"
 
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
@@ -29,8 +29,5 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
-"Copia, muovi, e rinomina facilmente i tuoi file oppure utilizza cartelle per "
-"rimanere organizzato. Che tu li preferisca organizzati in liste, griglie "
-"oppure colonne, puoi sempre trovarli in un attimo. Accedi a tutti i tuoi "
-"file sia a livello locale, sia su un dispositivo esterno o in remoto tramite "
-"FTP, SFTP, AFP, WebDAV, o condivisione di Windows."
+"輕鬆複製、移動和改名您的檔案，或使用資料夾來維持井然有序。無論您是希望用清單、柵格、或多欄的方式列出檔案，您都可以隨時找到它們。不管是在本機上、外接裝置上"
+"、或是使用 FTP、SFTP、AFP、Webdav、或 Windows 網路芳鄰等遠端上，都能存取您的所有檔案。"

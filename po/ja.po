@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-06 00:02+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-08-06 16:10+0000\n"
+"Last-Translator: Jun Takeda <takeda.jun@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-08-06 05:37+0000\n"
+"X-Launchpad-Export-Date: 2016-08-07 05:28+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -519,7 +519,7 @@ msgstr "マウントされたすべての外付けドライブ上のものも含
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "このマウントされたドライブ上のゴミ箱にある、すべてのアイテムを完全に削除しますか？"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
@@ -620,34 +620,34 @@ msgstr[0] "残り %'d 個のファイルをゴミ箱へ移動中"
 #: ../libcore/marlin-file-operations.c:1949
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "ゴミ箱へファイルを移動したり、削除できません。"
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
+msgstr "読み取り専用ファイルシステムにあるファイルをゴミ箱へ移動したり削除することはできません。"
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr ""
+msgstr "書き込み権限を持っていないフォルダにあるファイルをゴミ箱へ移動したり削除することはできません。"
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr ""
+msgstr "書き込み権限を持っていないフォルダをゴミ箱へ移動したり削除することはできません。"
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "ゴミ箱へファイルを移動できません。すぐに削除してみますか？"
 
 #: ../libcore/marlin-file-operations.c:1956
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr ""
+msgstr "このファイルはゴミ箱へ移動させることができません。詳細については、下記を参照してください。"
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -657,7 +657,7 @@ msgstr "ファイルをゴミ箱に移動できません。削除をしてみま
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
+msgstr "このファイルはゴミ箱に移動することができません。削除することもできないでしょう。"
 
 #: ../libcore/marlin-file-operations.c:1966
 msgid ""
@@ -1442,12 +1442,12 @@ msgstr "準備中"
 #: ../filechooser-module/FileChooserDialog.vala:69
 #: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
-msgstr ""
+msgstr "前へ戻る"
 
 #: ../filechooser-module/FileChooserDialog.vala:73
 #: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
-msgstr ""
+msgstr "次へ進む"
 
 #: ../src/View/Window.vala:204
 msgid "Files isn't your default file manager."
@@ -1512,7 +1512,7 @@ msgstr "ネットワーク上の場所"
 
 #: ../src/View/Sidebar.vala:697
 msgid "Entire Network"
-msgstr ""
+msgstr "ネットワーク全体"
 
 #: ../src/View/Sidebar.vala:704
 msgid "Browse the contents of the network"
@@ -1570,7 +1570,7 @@ msgstr "ディスクのプロパティ"
 #: ../src/View/VolumePropertiesWindow.vala:78
 #: ../src/View/PropertiesWindow.vala:597
 msgid "Location:"
-msgstr "場所："
+msgstr "場所:"
 
 #: ../src/View/VolumePropertiesWindow.vala:85
 msgid "Format:"
@@ -1594,11 +1594,11 @@ msgstr "変更日時"
 
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "このフォルダは存在しません"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "フォルダ \"%s\" が見つかりません。"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -1606,7 +1606,7 @@ msgstr "作成"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
-msgstr "フォルダ \"%s\" を作成"
+msgstr "フォルダ \"%s\" を作成します"
 
 #: ../src/View/DirectoryNotFound.vala:44
 msgid ""
@@ -1614,6 +1614,9 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"フォルダの作成に失敗しました\n"
+"\n"
+"%s"
 
 #: ../src/View/AbstractPropertiesDialog.vala:48
 msgid "Info"
@@ -1684,7 +1687,7 @@ msgstr "%s で開く"
 
 #: ../src/View/AbstractDirectoryView.vala:2033
 msgid "Open in"
-msgstr ""
+msgstr "指定した方法で開く"
 
 #: ../src/View/AbstractDirectoryView.vala:2035
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
@@ -1923,35 +1926,35 @@ msgstr "ここにフォルダーを作成できません。"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The network is unavailable"
-msgstr ""
+msgstr "ネットワークが利用できません"
 
 #: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "このフォルダに到達するためにはネットワークが必要です"
 
 #: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "このフォルダはあなたのものではありません"
 
 #: ../src/View/ViewContainer.vala:362
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "このフォルダを参照する権限がありません。"
 
 #: ../src/View/ViewContainer.vala:364
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "フォルダのマウントができません"
 
 #: ../src/View/ViewContainer.vala:365
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "このフォルダのサーバーに接続できませんでした。"
 
 #: ../src/View/ViewContainer.vala:367
 msgid "Unable show Folder"
-msgstr ""
+msgstr "フォルダの表示に失敗"
 
 #: ../src/View/ViewContainer.vala:368
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "このフォルダのサーバーが見つかりませんでした。"
 
 #: ../src/View/ViewContainer.vala:378
 msgid "File not Found"
@@ -1959,7 +1962,7 @@ msgstr "ファイルが見つかりません"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "選択したファイルは存在しません。"
 
 #: ../src/View/Slot.vala:39
 msgid "This Folder Is Empty"
@@ -1971,7 +1974,7 @@ msgstr "ゴミ箱は空です"
 
 #: ../src/View/Slot.vala:41
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "最近使用したファイルはありません"
 
 #: ../src/View/Slot.vala:42
 msgid "Access Denied"
@@ -2050,11 +2053,11 @@ msgstr "ファイル操作"
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
 #: ../src/ProgressUIHandler.vala:207
 msgid "Completed %s"
-msgstr ""
+msgstr "%s の完了"
 
 #: ../src/ProgressUIHandler.vala:210
 msgid "All file operations have ended"
-msgstr ""
+msgstr "すべてのファイル操作が完了しました"
 
 #: ../src/ProgressUIHandler.vala:255
 msgid "Show Copy Dialog"
@@ -2107,11 +2110,11 @@ msgstr "このフォルダーを再読み込み"
 #: ../libwidgets/View/LocationBar.vala:174
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Enter search term or path"
-msgstr ""
+msgstr "検索用語かパスを入力してください"
 
 #: ../libwidgets/View/SearchResults.vala:180
 msgid "In This Folder"
-msgstr ""
+msgstr "このフォルダ内"
 
 #: ../libwidgets/View/SearchResults.vala:182
 msgid "Bookmarks"
@@ -2175,7 +2178,7 @@ msgstr ""
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr "グリット表示"
+msgstr "グリッド表示"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
@@ -2287,7 +2290,7 @@ msgstr "コピー"
 
 #: ../src/View/directory_view_popup.ui:128
 msgid "Paste into Folder"
-msgstr ""
+msgstr "フォルダの中にペースト"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Sort by"

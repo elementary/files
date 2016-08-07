@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-02 16:00+0000\n"
-"Last-Translator: Adolfo Jayme <fitoschido@gmail.com>\n"
+"PO-Revision-Date: 2016-08-07 00:01+0000\n"
+"Last-Translator: Ing. Roger Salinas Robalino <megatron87@hotmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:49+0000\n"
+"X-Launchpad-Export-Date: 2016-08-07 05:28+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 "Language: es\n"
 
@@ -1705,7 +1705,7 @@ msgstr "Cerrar"
 
 #: ../src/View/AbstractPropertiesDialog.vala:138
 msgid "Device Usage"
-msgstr ""
+msgstr "Uso del dispositivo"
 
 #: ../src/View/AbstractPropertiesDialog.vala:154
 msgid "Capacity:"
@@ -1732,7 +1732,7 @@ msgstr "Error en previsualización"
 
 #: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot open this file"
-msgstr ""
+msgstr "No se puede abrir este archivo"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
@@ -1829,7 +1829,7 @@ msgstr "%u archivos, "
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/OverlayBar.vala:288
 msgid "%s approx."
-msgstr ""
+msgstr "%s aprox."
 
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/OverlayBar.vala:291
@@ -1839,15 +1839,15 @@ msgstr "tamaño desconocido"
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/OverlayBar.vala:295
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u archivo no legible"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u archivos no legibles"
 
 #: ../src/View/PropertiesWindow.vala:202
 msgid "Permissions"
-msgstr ""
+msgstr "Permisos"
 
 #: ../src/View/PropertiesWindow.vala:229
 msgid "Preview"
@@ -1855,7 +1855,7 @@ msgstr "Previsualización"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "El tamaño real podría ser mayor"
 
 #: ../src/View/PropertiesWindow.vala:245
 msgid "%i file could not be read due to permissions or other errors."
@@ -1869,7 +1869,7 @@ msgstr "desconocido"
 
 #: ../src/View/PropertiesWindow.vala:461
 msgid "Loading…"
-msgstr ""
+msgstr "Cargando…"
 
 #: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
@@ -1877,7 +1877,7 @@ msgstr "No se pudo determinar"
 
 #: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
-msgstr ""
+msgstr "Contiene:"
 
 #: ../src/View/PropertiesWindow.vala:544
 msgid "Created:"
@@ -1897,7 +1897,7 @@ msgstr "Eliminación:"
 
 #: ../src/View/PropertiesWindow.vala:582
 msgid "Mimetype:"
-msgstr ""
+msgstr "Tipo MIME:"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
@@ -1909,11 +1909,11 @@ msgstr "Objetivo:"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Original Location:"
-msgstr ""
+msgstr "Ubicación original:"
 
 #: ../src/View/PropertiesWindow.vala:638
 msgid "Other Application…"
-msgstr ""
+msgstr "Otra aplicación…"
 
 #: ../src/View/PropertiesWindow.vala:658
 msgid "Open with:"
@@ -1945,33 +1945,33 @@ msgstr "Todos:"
 
 #: ../src/View/PropertiesWindow.vala:1257
 msgid "%u subfolders and %u files"
-msgstr ""
+msgstr "%u subcarpetas y %u archivos"
 
 #: ../src/View/PropertiesWindow.vala:1259
 msgid "%u subfolders and %u file"
-msgstr ""
+msgstr "%u subcarpetas y %u archivo"
 
 #: ../src/View/PropertiesWindow.vala:1262
 msgid "%u subfolders"
-msgstr ""
+msgstr "%u subcarpetas"
 
 #: ../src/View/PropertiesWindow.vala:1267
 msgid "%u subfolder and %u files"
-msgstr ""
+msgstr "%u subcarpeta y %u archivos"
 
 #: ../src/View/PropertiesWindow.vala:1269
 msgid "%u subfolder and %u file"
-msgstr ""
+msgstr "%u subcarpeta y %u archivo"
 
 #: ../src/View/PropertiesWindow.vala:1278
 #: ../src/View/PropertiesWindow.vala:1317
 msgid "%u files"
-msgstr ""
+msgstr "%u archivos"
 
 #: ../src/View/PropertiesWindow.vala:1280
 #: ../src/View/PropertiesWindow.vala:1319
 msgid "%u file"
-msgstr ""
+msgstr "%u archivo"
 
 #: ../src/View/PropertiesWindow.vala:1296
 msgid "%u selected items (%u folders and %u files)"
@@ -1999,7 +1999,7 @@ msgstr "No puede crear una carpeta aquí."
 
 #: ../src/View/ViewContainer.vala:358
 msgid "The network is unavailable"
-msgstr ""
+msgstr "La red no está disponible"
 
 #: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
@@ -2117,7 +2117,7 @@ msgstr "Archivos"
 
 #: ../src/ProgressUIHandler.vala:42
 msgid "File Manager Operations"
-msgstr ""
+msgstr "Operaciones del gestor de archivos"
 
 #: ../src/ProgressUIHandler.vala:153
 msgid "File Operations"
@@ -2245,6 +2245,8 @@ msgstr ""
 "  Matías Ocampo Reinaldo https://launchpad.net/~matiocre\n"
 "  Mostro En Turno https://launchpad.net/~mostroenturno\n"
 "  NBPalomino https://launchpad.net/~nykodemuz\n"
+"  Oscar A. Mata T. https://launchpad.net/~oscar-mata\n"
+"  Oscar Miranda https://launchpad.net/~oscarmiranda3615\n"
 "  PL402 https://launchpad.net/~pl402\n"
 "  Pablo Santos https://launchpad.net/~pasamue3t\n"
 "  Rafael Ernesto Poveda https://launchpad.net/~raerpo\n"
