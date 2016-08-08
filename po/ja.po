@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-06 16:10+0000\n"
+"PO-Revision-Date: 2016-08-07 15:52+0000\n"
 "Last-Translator: Jun Takeda <takeda.jun@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-08-07 05:28+0000\n"
+"X-Launchpad-Export-Date: 2016-08-08 05:31+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1946,11 +1946,11 @@ msgstr "フォルダのマウントができません"
 
 #: ../src/View/ViewContainer.vala:365
 msgid "Could not connect to the server for this folder."
-msgstr "このフォルダのサーバーに接続できませんでした。"
+msgstr "このフォルダーのサーバーに接続できませんでした。"
 
 #: ../src/View/ViewContainer.vala:367
 msgid "Unable show Folder"
-msgstr "フォルダの表示に失敗"
+msgstr "フォルダーの表示に失敗"
 
 #: ../src/View/ViewContainer.vala:368
 msgid "The server for this folder could not be located."
@@ -2114,7 +2114,7 @@ msgstr "検索用語かパスを入力してください"
 
 #: ../libwidgets/View/SearchResults.vala:180
 msgid "In This Folder"
-msgstr "このフォルダ内"
+msgstr "このフォルダー内"
 
 #: ../libwidgets/View/SearchResults.vala:182
 msgid "Bookmarks"
@@ -2174,7 +2174,7 @@ msgstr "MTP"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "パスを入力してください"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2182,7 +2182,7 @@ msgstr "グリッド表示"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
-msgstr "一覧表示"
+msgstr "リスト表示"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-02 15:59+0000\n"
+"PO-Revision-Date: 2016-08-07 23:49+0000\n"
 "Last-Translator: Maxim Taranov <png2378@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:49+0000\n"
+"X-Launchpad-Export-Date: 2016-08-08 05:31+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 "Language: ru\n"
 
@@ -2370,7 +2370,9 @@ msgstr "Очистить корзину"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr "Эти объекты могут быть восстановлены или удалены из корзины."
+msgstr ""
+"Эти объекты могут быть восстановлены или\n"
+"удалены из корзины."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
