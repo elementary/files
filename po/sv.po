@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-07-24 18:48+0000\n"
-"Last-Translator: Mikael Nyberg <mikanybe@gmail.com>\n"
+"PO-Revision-Date: 2016-08-08 16:08+0000\n"
+"Last-Translator: Larsson <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:49+0000\n"
+"X-Launchpad-Export-Date: 2016-08-09 05:37+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1108,7 +1108,7 @@ msgstr "Kunde inte fastställa ursprunglig plats"
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Öppna papperskorgen och återställ manuellt"
 
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
@@ -1723,7 +1723,7 @@ msgstr "Förhandsvisning misslyckades"
 
 #: ../src/View/AbstractDirectoryView.vala:820
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Kan inte öppna denna filen"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
@@ -1825,7 +1825,7 @@ msgstr ""
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
-msgstr ""
+msgstr "okänd storlek"
 
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/OverlayBar.vala:295
@@ -1869,11 +1869,11 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
-msgstr ""
+msgstr "Innehåller:"
 
 #: ../src/View/PropertiesWindow.vala:544
 msgid "Created:"
-msgstr ""
+msgstr "Skapad:"
 
 #: ../src/View/PropertiesWindow.vala:552
 msgid "Modified:"
@@ -1893,7 +1893,7 @@ msgstr "MIME-typ:"
 
 #: ../src/View/PropertiesWindow.vala:589
 msgid "Resolution:"
-msgstr ""
+msgstr "Upplösning:"
 
 #: ../src/View/PropertiesWindow.vala:607
 msgid "Target:"
