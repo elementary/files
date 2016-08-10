@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-08 12:24+0000\n"
+"PO-Revision-Date: 2016-08-10 01:57+0000\n"
 "Last-Translator: Ryo Nakano <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-08-09 05:37+0000\n"
+"X-Launchpad-Export-Date: 2016-08-10 05:33+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -65,7 +65,7 @@ msgstr ""
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "フォルダ \"%s\" を \"%s\" 上で開けません。"
+msgstr "フォルダー \"%s\" を \"%s\" 上で開けません。"
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
@@ -571,7 +571,7 @@ msgstr "削除中にエラーが発生しました。"
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
-msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないため削除できません。"
+msgstr "フォルダー \"%B\" 内のファイルを参照する権限がないため削除できません。"
 
 #: ../libcore/marlin-file-operations.c:1613
 #: ../libcore/marlin-file-operations.c:2732
@@ -858,23 +858,23 @@ msgstr[0] "%S / %S — 残り %T (%S/秒)"
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
-msgstr "フォルダ \"%B\" をコピー先に作成する権限がないためコピーできません。"
+msgstr "フォルダー \"%B\" をコピー先に作成する権限がないためコピーできません。"
 
 #: ../libcore/marlin-file-operations.c:3593
 msgid "There was an error creating the folder \"%B\"."
-msgstr "フォルダ \"%B\" を作成する際にエラーが発生しました。"
+msgstr "フォルダー \"%B\" を作成する際にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:3723
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
-msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないためコピーできません。"
+msgstr "フォルダー \"%B\" 内のファイルを参照する権限がないためコピーできません。"
 
 #: ../libcore/marlin-file-operations.c:3768
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr "フォルダ \"%B\" を参照する権限がないためコピーできません。"
+msgstr "フォルダー \"%B\" を参照する権限がないためコピーできません。"
 
 #: ../libcore/marlin-file-operations.c:3813
 #: ../libcore/marlin-file-operations.c:4519
@@ -1049,7 +1049,7 @@ msgstr "ゴミ箱フォルダを開き手動で復旧してください"
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "コピーした %d 個のアイテムの削除"
 
 #: ../libcore/marlin-undostack-manager.c:1228
 #: ../libcore/marlin-undostack-manager.c:1238
@@ -1061,7 +1061,7 @@ msgstr "'%s' を削除"
 #: ../libcore/marlin-undostack-manager.c:1235
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "複製した %d 個のアイテムの削除"
 
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
@@ -1103,7 +1103,7 @@ msgstr "'%s'をゴミ箱へ戻す"
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
 msgid "Delete links to %d items"
-msgstr ""
+msgstr "%d 個のアイテムへのリンクを削除"
 
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
@@ -1143,7 +1143,7 @@ msgstr "'%s' を '%s' へコピー"
 #: ../libcore/marlin-undostack-manager.c:1400
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "%d 個の '%s' にあるアイテムの複製"
 
 #: ../libcore/marlin-undostack-manager.c:1405
 #, c-format
@@ -1153,7 +1153,7 @@ msgstr "'%s' を '%s' へ複製"
 #: ../libcore/marlin-undostack-manager.c:1413
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "%d 個のアイテムを '%s' へ移動"
 
 #: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
@@ -1178,7 +1178,7 @@ msgstr "新しいフォルダー '%s' を作成"
 #: ../libcore/marlin-undostack-manager.c:1457
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "%d 個のアイテムをゴミ箱へ移動"
 
 #: ../libcore/marlin-undostack-manager.c:1463
 #, c-format
@@ -1193,7 +1193,7 @@ msgstr "'%s' をゴミ箱から元の場所に戻す"
 #: ../libcore/marlin-undostack-manager.c:1485
 #, c-format
 msgid "Create links to %d items"
-msgstr ""
+msgstr "%d 個のアイテムへのリンクを作成"
 
 #: ../libcore/marlin-undostack-manager.c:1488
 #, c-format
@@ -1224,199 +1224,173 @@ msgstr "所有者 '%s' を '%s' に設定"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムのコピーを元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1561
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの複製を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1566
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの移動を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1571
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの名前の変更を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1575
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "空のファイルの作成を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1578
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "テンプレートからのファイルの作成を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のフォルダーの作成を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1587
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムのゴミ箱への移動を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1592
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のゴミ箱からの復元を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1597
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個へのリンクの作成を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1602
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの削除を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1607
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの再帰的なパーミッション変更を元に戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1613
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムのパーミッション変更を元に戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1618
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムのグループ変更を元に戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1623
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの所有者変更を元に戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1651
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムのコピーをやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1656
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの複製をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1661
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの移動をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1666
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの名前の変更をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "空のファイルの作成をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1673
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "テンプレートからのファイル作成をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のフォルダーの作成をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1682
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムのゴミ箱への移動をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1687
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムのゴミ箱からの復元をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1692
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムへのリンク作成をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1697
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの削除をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1702
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの再帰的なパーミッション変更をやり直す"
 
 #: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムのパーミッション変更をやり直す"
 
 #: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムのグループ変更をやり直す"
 
 #: ../libcore/marlin-undostack-manager.c:1718
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d 個のアイテムの所有者変更をやり直す"
 
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
@@ -1594,11 +1568,11 @@ msgstr "変更日時"
 
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
 msgid "This Folder Does Not Exist"
-msgstr "このフォルダは存在しません"
+msgstr "このフォルダーは存在しません"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr "フォルダ \"%s\" が見つかりません。"
+msgstr "フォルダー \"%s\" が見つかりません。"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -1606,7 +1580,7 @@ msgstr "作成"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
-msgstr "フォルダ \"%s\" を作成します"
+msgstr "フォルダー \"%s\" を作成します"
 
 #: ../src/View/DirectoryNotFound.vala:44
 msgid ""
@@ -1663,7 +1637,7 @@ msgstr "このファイルを開けません"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "ファイルタイプを識別できません"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
@@ -1671,7 +1645,7 @@ msgstr "このファイルを削除できません"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "無効なファイル名が入力されました"
 
 #: ../src/View/AbstractDirectoryView.vala:2012
 msgid "Invalid"
@@ -1716,11 +1690,11 @@ msgstr "%u フォルダ"
 
 #: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " と 他の %u アイテム選択 (%s)"
 
 #: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " と 他の %u アイテム選択 (%s)"
 
 #: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
 msgid " selected"
@@ -1733,7 +1707,7 @@ msgstr "%u フォルダ"
 
 #: ../src/View/OverlayBar.vala:231
 msgid "%u items selected (%s)"
-msgstr "%s アイテム選択 (%s)"
+msgstr "%u アイテム選択 (%s)"
 
 #. / TRANSLATORS: %u will be substituted by the number of sub folders
 #: ../src/View/OverlayBar.vala:272
@@ -1766,7 +1740,7 @@ msgstr "不明サイズ"
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/OverlayBar.vala:295
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u 個のファイルが読み込めません"
 
 #: ../src/View/OverlayBar.vala:295
 msgid "%u files not readable"
@@ -1799,7 +1773,7 @@ msgstr "読み込み中..."
 
 #: ../src/View/PropertiesWindow.vala:492
 msgid "Could not be determined"
-msgstr ""
+msgstr "決定することができませんでした"
 
 #: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
@@ -1933,7 +1907,7 @@ msgstr "このフォルダに到達するためにはネットワークが必要
 
 #: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
-msgstr "このフォルダはあなたのものではありません"
+msgstr "このフォルダーはあなたのものではありません"
 
 #: ../src/View/ViewContainer.vala:362
 msgid "You don't have permission to view this folder."
@@ -2217,7 +2191,7 @@ msgstr "ゴミ箱を空にする"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "これらの項目は復元またはゴミ箱から削除することができます。"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
@@ -2233,7 +2207,7 @@ msgstr "完全に削除"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "親フォルダーを開く"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
