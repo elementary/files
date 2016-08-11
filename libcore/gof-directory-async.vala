@@ -89,6 +89,7 @@ public class GOF.Directory.Async : Object {
     public bool is_trash {get; private set;}
     public bool is_network {get; private set;}
     public bool is_recent {get; private set;}
+    public bool is_no_info {get; private set;}
     public bool has_mounts {get; private set;}
     public bool has_trash_dirs {get; private set;}
     public bool can_load {get; private set;}
@@ -113,6 +114,7 @@ public class GOF.Directory.Async : Object {
         scheme = location.get_uri_scheme ();
         is_trash = (scheme == "trash");
         is_recent = (scheme == "recent");
+        is_no_info = ("cdda mtp".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
         can_open_files = !("mtp".contains (scheme));
@@ -167,7 +169,7 @@ public class GOF.Directory.Async : Object {
     private async void prepare_directory (GOFFileLoadedFunc? file_loaded_func) {
         bool success = yield get_file_info ();
         if (success) {
-            if (!file.is_folder () && !file.is_root_network_folder ()) {
+            if (!is_no_info && !file.is_folder () && !file.is_root_network_folder ()) {
                 warning ("Trying to load a non-folder - finding parent");
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
@@ -179,8 +181,6 @@ public class GOF.Directory.Async : Object {
                     warning ("Parent is null for file %s", file.uri);
                     success = false;
                 }
-            } else {
-
             }
         } else {
             warning ("Failed to get file info for file %s", file.uri);
@@ -188,32 +188,39 @@ public class GOF.Directory.Async : Object {
         yield make_ready (success, file_loaded_func); /* Only place that should call this function */
     }
 
+    /*** Returns false if should be able to get info but were unable to ***/
     private async bool get_file_info () {
         /* Force info to be refreshed - the GOF.File may have been created already by another part of the program
          * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
          */
         file.info = null;
+
+        if (is_network && !yield check_network ()) {
+            file.is_connected = false;
+            return false;
+        }
+
+        if (is_no_info) {
+            /* Not a failure when not expected to get file info */
+            return true;
+        }
+
         if (is_local) {
             return file.ensure_query_info ();
         }
-        /* Must be non-local */
-        if (!yield check_network ()) {
-            file.is_connected = false;
-            return false;
-        } else {
-            if (!yield try_query_info ()) { /* may already be mounted */
-                if (yield mount_mountable ()) {
-                /* Previously mounted Samba servers still appear mounted even if disconnected
-                 * e.g. by unplugging the network cable.  So the following function can block for
-                 * a long time; we therefore use a timeout */
-                    debug ("successful mount %s", file.uri);
-                    return yield try_query_info ();
-                } else {
-                    return false;
-                }
+
+        if (!yield try_query_info ()) { /* may already be mounted */
+            if (yield mount_mountable ()) {
+            /* Previously mounted Samba servers still appear mounted even if disconnected
+             * e.g. by unplugging the network cable.  So the following function can block for
+             * a long time; we therefore use a timeout */
+                debug ("successful mount %s", file.uri);
+                return yield try_query_info ();
             } else {
-                return true;
+                return false;
             }
+        } else {
+            return true;
         }
     }
 
@@ -535,6 +542,7 @@ public class GOF.Directory.Async : Object {
                         if (gof == null) {
                             gof = new GOF.File (loc, location); /*does not add to GOF file cache */
                         }
+
                         gof.info = file_info;
                         gof.update ();
 
