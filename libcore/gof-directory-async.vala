@@ -89,6 +89,7 @@ public class GOF.Directory.Async : Object {
     public bool is_trash {get; private set;}
     public bool is_network {get; private set;}
     public bool is_recent {get; private set;}
+    public bool is_no_info {get; private set;}
     public bool has_mounts {get; private set;}
     public bool has_trash_dirs {get; private set;}
     public bool can_load {get; private set;}
@@ -115,6 +116,7 @@ public class GOF.Directory.Async : Object {
         is_recent = (scheme == "recent");
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
+        is_no_info = "mtp".contains (scheme);
         can_open_files = !("mtp".contains (scheme));
         can_stream_files = !("ftp sftp mtp dav davs".contains (scheme));
 
@@ -185,7 +187,8 @@ public class GOF.Directory.Async : Object {
         } else {
             warning ("Failed to get file info for file %s", file.uri);
         }
-        yield make_ready (success, file_loaded_func); /* Only place that should call this function */
+
+        yield make_ready (is_no_info || success, file_loaded_func); /* Only place that should call this function */
     }
 
     private async bool get_file_info () {
@@ -193,11 +196,16 @@ public class GOF.Directory.Async : Object {
          * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
          */
         file.info = null;
+
+        if (is_no_info) {
+            return true;
+        }
+
         if (is_local) {
             return file.ensure_query_info ();
         }
-        /* Must be non-local */
-        if (!yield check_network ()) {
+
+        if (is_network && !yield check_network ()) {
             file.is_connected = false;
             return false;
         } else {
