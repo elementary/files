@@ -51,6 +51,36 @@ namespace PF.FileUtils {
         return parent_path;
     }
 
+    public GLib.File? get_trashed_file_original_folder (GOF.File file) {
+        GLib.FileInfo? info = null;
+        string? original_path = null;
+
+        if (file.info == null) {
+            if (file.location != null) {
+                try {
+                    info = file.location.query_info (GLib.FileAttribute.TRASH_ORIG_PATH, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                } catch (GLib.Error e) {
+                    debug ("Error querying info of trashed file %s - %s", file.uri, e.message);
+                    return null;
+                }
+            }
+        } else {
+            info = file.info.dup ();
+        }
+
+        if (info != null && info.has_attribute (GLib.FileAttribute.TRASH_ORIG_PATH)) {
+            original_path = file.info.get_attribute_byte_string (GLib.FileAttribute.TRASH_ORIG_PATH);
+        }
+
+        if (original_path != null) {
+            debug ("Original path of trashed file %s was %s", file.uri, original_path);
+            return get_file_for_path (get_parent_path_from_path (original_path));
+        } else {
+            debug ("Could not get original path for trashed file %s", file.uri);
+            return null;
+        }
+    }
+
     private string construct_parent_path (string path) {
         if (path.length < 2) {
             return Path.DIR_SEPARATOR_S;

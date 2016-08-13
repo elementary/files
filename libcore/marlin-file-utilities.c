@@ -57,7 +57,7 @@ marlin_trashed_files_get_original_directories (GList *files, GList **unhandled_f
 {
     GHashTable *directories;
     GOFFile *file;
-    GFile *original_file, *original_dir;
+    GFile *original_dir;
     GList *l, *m;
     GFile *parent;
 
@@ -77,13 +77,7 @@ marlin_trashed_files_get_original_directories (GList *files, GList **unhandled_f
          * (it will be restored with its parent anyway) */
         parent = g_file_get_parent(file->location);
         if (parent != NULL && strcmp (g_file_get_basename (parent), G_DIR_SEPARATOR_S) == 0) {
-            original_file = pf_file_utils_get_file_for_path (
-                                g_file_info_get_attribute_byte_string (file->info,
-                                                                       G_FILE_ATTRIBUTE_TRASH_ORIG_PATH));
             original_dir = NULL;
-            if (original_file != NULL) {
-                original_dir = g_file_get_parent (original_file);
-            }
 
             if (original_dir != NULL) {
                 if (directories == NULL) {
@@ -103,9 +97,6 @@ marlin_trashed_files_get_original_directories (GList *files, GList **unhandled_f
                 if (original_dir != NULL)
                     g_object_unref (original_dir);
             }
-
-            if (original_file != NULL)
-                g_object_unref (original_file);
 
             if (parent)
                 g_object_unref (parent);
