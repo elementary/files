@@ -47,6 +47,7 @@ public class CustomFileChooserDialog : Object {
     private bool is_previous = false;
     private bool is_button_next = false;
     private bool is_single_click = true;
+    private bool can_activate = true;
 
     public CustomFileChooserDialog (Gtk.FileChooserDialog dialog) {
         previous_paths = new GLib.Queue<string> ();
@@ -233,14 +234,21 @@ public class CustomFileChooserDialog : Object {
             } else if (w3.get_name () ==  "list_and_preview_box") { /* file browser list and preview box */
                 var tv = find_tree_view (w3);
                 if (tv != null) {
+                    /* set its click behaviour the same as pantheon-files setting */
                     tv.set_activate_on_single_click (is_single_click);
+                    if (is_single_click) {
+                        /* We need to modify native behaviour to only activate on folders */
+                        tv.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK);
+                        tv.button_press_event.connect (on_tv_button_press_event);
+                        tv.button_release_event.connect (on_tv_button_release_event);
+                    }
                 }
             }
         });
     }
 
     private Gtk.TreeView? find_tree_view (Gtk.Widget browser_box) {
-        /* Locate the TreeView and set its click behaviour */
+        /* Locate the TreeView */
         Gtk.TreeView? tv = null;
         ((Gtk.Container)browser_box).get_children ().foreach ((w) => {
             if (w.get_name () == GTK_TREEVIEW_PATH[0]) {
@@ -302,5 +310,41 @@ public class CustomFileChooserDialog : Object {
             container_box.pack_end (grid);
             ((Gtk.ButtonBox) container_box).set_child_secondary (grid, true);
         }
+    }
+
+    private bool on_tv_button_press_event (Gtk.Widget w, Gdk.EventButton event) {
+        can_activate = false;
+        if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
+            can_activate = true;
+            return false;
+        }
+
+        if (w == null) {
+            return false;
+        }
+
+        Gtk.TreeView tv = ((Gtk.TreeView)(w));
+        Gtk.TreePath? path = null;
+        int cell_x, cell_y;
+
+        tv.get_path_at_pos ((int)(event.x), (int)(event.y), out path, null, out cell_x, out cell_y);
+
+        if (path != null) {
+            var model = tv.get_model ();
+            Gtk.TreeIter? iter = null;
+            if (model.get_iter (out iter, path)) {
+                bool is_folder;
+                model.@get (iter, 5, out is_folder);
+                if (is_folder) {
+                    can_activate = true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool on_tv_button_release_event (Gdk.EventButton event) {
+        return !can_activate;
     }
 }

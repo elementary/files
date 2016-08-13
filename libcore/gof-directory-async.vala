@@ -185,7 +185,8 @@ public class GOF.Directory.Async : Object {
         } else {
             warning ("Failed to get file info for file %s", file.uri);
         }
-        yield make_ready (success, file_loaded_func); /* Only place that should call this function */
+
+        yield make_ready (is_no_info || success, file_loaded_func); /* Only place that should call this function */
     }
 
     /*** Returns false if should be able to get info but were unable to ***/
