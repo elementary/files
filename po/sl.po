@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-07-24 11:14+0000\n"
+"PO-Revision-Date: 2016-08-13 16:01+0000\n"
 "Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:49+0000\n"
+"X-Launchpad-Export-Date: 2016-08-14 05:31+0000\n"
 "X-Generator: Launchpad (build 18169)\n"
 "Language: sl\n"
 
@@ -1570,19 +1570,19 @@ msgstr[3] "_Uveljavi spremembo lastnika %d predmetov"
 
 #: ../libcore/eel-fcts.c:85
 msgid "Today at %-I:%M %p"
-msgstr "Danes ob %-I:%M %p"
+msgstr "danes ob %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:89
 msgid "Yesterday at %-I:%M %p"
-msgstr "Včeraj ob %-I:%M %p"
+msgstr "včeraj ob %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b ob %-I:%M %p"
+msgstr "%a, %-d. %b. ob %-H:%M"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y ob %-I:%M %p"
+msgstr "%a, %-d. %b. %Y ob %-H:%M"
 
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
@@ -2429,7 +2429,7 @@ msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
-msgstr "Zaznamek"
+msgstr "Dodaj med zaznamke"
 
 #: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
