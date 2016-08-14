@@ -258,7 +258,7 @@ namespace PF.FileUtils {
         GOF.Directory.Async? dir = GOF.Directory.Async.cache_lookup_parent (old_location);
         string original_name = old_location.get_basename ();
 
-        old_location.set_display_name_async (new_name, 0, null, (obj, res) => {
+        old_location.set_display_name_async.begin (new_name, 0, null, (obj, res) => {
             try {
                 assert (obj is GLib.Object);
                 GLib.File? n = old_location.set_display_name_async.end (res);
