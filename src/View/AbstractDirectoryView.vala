@@ -3283,6 +3283,7 @@ namespace FM {
             /* Scroll to row to be renamed and then start renaming after a delay
              * so that file to be renamed is on screen.  This avoids the renaming being
              * cancelled */
+            set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, false, false);
             GLib.Timeout.add (50, () => {
                 /* Wait until view stops scrolling before starting to rename (up to 1 second)
                  * Scrolling is deemed to have stopped when the starting visible path is stable
