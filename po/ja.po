@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-17 14:51+0000\n"
+"PO-Revision-Date: 2016-08-23 12:51+0000\n"
 "Last-Translator: Jun Takeda <takeda.jun@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-08-18 05:43+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
+"X-Launchpad-Export-Date: 2016-08-24 05:36+0000\n"
+"X-Generator: Launchpad (build 18179)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -664,6 +664,8 @@ msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" ファイルを削除すると完全に削除します"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
@@ -1682,7 +1684,7 @@ msgstr "ゴミ箱内のファイルをコピーできません。"
 
 #: ../src/View/AbstractDirectoryView.vala:2789
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "代わりに選択を切り取り"
 
 #: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1301
 msgid "%u folders"
@@ -1777,7 +1779,7 @@ msgstr "決定することができませんでした"
 
 #: ../src/View/PropertiesWindow.vala:528
 msgid "Contains:"
-msgstr ""
+msgstr "含む:"
 
 #: ../src/View/PropertiesWindow.vala:544
 msgid "Created:"
@@ -2095,7 +2097,7 @@ msgstr "ブックマーク"
 
 #: ../libwidgets/View/SearchResults.vala:184
 msgid "Everywhere Else"
-msgstr ""
+msgstr "他のすべての場所"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2195,7 +2197,7 @@ msgstr "これらの項目は復元またはゴミ箱から削除することが
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "ルートフォルダでない場合、復元や削除はできません"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
