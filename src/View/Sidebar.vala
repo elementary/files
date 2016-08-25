@@ -1626,18 +1626,19 @@ namespace Marlin.Places {
                                              Gtk.TreeIter iter) {
 
             var crt = renderer as Gtk.CellRendererText;
+            string text;
             bool is_category, show_eject_button;
             uint64 disk_size = 0;
-            model.@get (iter, Column.IS_CATEGORY, out is_category,
+            model.@get (iter, Column.NAME, out text,
+                              Column.IS_CATEGORY, out is_category,
                               Column.DISK_SIZE, out disk_size,
                               Column.SHOW_EJECT, out show_eject_button, -1);
 
             if (is_category) {
-                crt.weight = 900;
-                crt.weight_set = true;
+                crt.markup = "<b>" + text + "</b>";
                 crt.ypad = CATEGORY_YPAD;
             } else {
-                crt.weight_set = false;
+                crt.markup = text;
                 crt.ypad = BOOKMARK_YPAD;
                 if (disk_size > 0) {
                     /* Make disk space graphic same length whether or not eject button displayed */
