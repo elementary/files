@@ -77,7 +77,8 @@ marlin_trashed_files_get_original_directories (GList *files, GList **unhandled_f
          * (it will be restored with its parent anyway) */
         parent = g_file_get_parent(file->location);
         if (parent != NULL && strcmp (g_file_get_basename (parent), G_DIR_SEPARATOR_S) == 0) {
-            original_dir = NULL;
+            /* We are in trash root */
+            original_dir = pf_file_utils_get_trashed_file_original_folder (file);
 
             if (original_dir != NULL) {
                 if (directories == NULL) {
