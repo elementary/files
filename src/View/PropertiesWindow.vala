@@ -23,7 +23,6 @@
 namespace Marlin.View {
 
 public class PropertiesWindow : AbstractPropertiesDialog {
-    private Granite.Widgets.ImgEventBox evbox;
     private Granite.Widgets.XsEntry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
@@ -205,28 +204,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                     widget.set_sensitive (false);
                 }
             }
-        }
-
-        /* Preview */
-        if (count == 1 && goffile.flags != 0) {
-            /* Retrieve the low quality (existent) thumbnail.
-             * This will be shown to prevent resizing the properties window
-             * when the large preview is retrieved.
-             */
-            Gdk.Pixbuf small_preview;
-
-            if (view.is_in_recent ()) {
-                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.NONE);
-            } else {
-                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
-            }
-
-            /* Request the creation of the large thumbnail */
-            Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true);
-            var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-
-            construct_preview_panel (preview_box, small_preview);
-            add_section (stack, _("Preview"), PanelType.PREVIEW.to_string (), preview_box);
         }
 
         show_all ();
@@ -1165,24 +1142,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         choice.set_valign (Gtk.Align.CENTER);
 
         return choice;
-    }
-
-    private void construct_preview_panel (Gtk.Box box, Gdk.Pixbuf? small_preview) {
-        evbox = new Granite.Widgets.ImgEventBox (Gtk.Orientation.HORIZONTAL);
-        if (small_preview != null)
-            evbox.set_from_pixbuf (small_preview);
-        box.pack_start (evbox, false, true, 0);
-
-        goffile.icon_changed.connect (() => {
-            var large_preview_path = goffile.get_preview_path ();
-            if (large_preview_path != null)
-                try {
-                    var large_preview = new Gdk.Pixbuf.from_file (large_preview_path);
-                    evbox.set_from_pixbuf (large_preview);
-                } catch (Error e) {
-                    warning (e.message);
-                }
-        });
     }
 
     private Icon ensure_icon (AppInfo app) {
