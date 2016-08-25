@@ -1634,11 +1634,10 @@ namespace Marlin.Places {
                               Column.DISK_SIZE, out disk_size,
                               Column.SHOW_EJECT, out show_eject_button, -1);
 
-            if(is_category) {
+            if (is_category) {
                 crt.markup = "<b>" + text + "</b>";
                 crt.ypad = CATEGORY_YPAD;
-            }
-            else {
+            } else {
                 crt.markup = text;
                 crt.ypad = BOOKMARK_YPAD;
                 if (disk_size > 0) {
