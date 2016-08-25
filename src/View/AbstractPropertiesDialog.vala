@@ -31,8 +31,7 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
 
     protected enum PanelType {
         INFO,
-        PERMISSIONS,
-        PREVIEW
+        PERMISSIONS
     }
 
     public AbstractPropertiesDialog (string _title, Gtk.Window parent) {
