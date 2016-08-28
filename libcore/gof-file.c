@@ -343,10 +343,13 @@ static void
 gof_file_update_size (GOFFile *file)
 {
     g_free (file->format_size);
-    if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file))
+    if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_SIZE)) {
+        file->format_size = g_strdup (_("Unknown"));
+    } else if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file)) {
         file->format_size = g_strdup ("—");
-    else
+    } else {
         file->format_size = g_format_size (file->size);
+    }
 }
 
 static void
@@ -524,7 +527,11 @@ gof_file_update (GOFFile *file)
     /* sizes */
     gof_file_update_size (file);
     /* modified date */
-    file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED)) {
+        file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+    } else {
+        file->formated_modified = g_strdup (_("Unknown"));
+    }
     /* icon */
     if (file->is_directory) {
         gof_file_get_folder_icon_from_uri_or_path (file);
@@ -1340,7 +1347,13 @@ gof_file_is_writable (GOFFile *file)
         return FALSE;
     }
 
-    return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+    gboolean can_write = g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+
+    if (file->directory && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE)) {
+        return can_write && g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE);
+    }
+
+    return can_write;
 }
 
 gboolean
