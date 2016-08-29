@@ -1327,7 +1327,9 @@ gof_file_is_writable (GOFFile *file)
     } else if (file->info != NULL && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
         return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
     } else if (file->has_permissions) {
-        return file->permissions & S_IWUSR | file->permissions & S_IWGRP | file->permissions & S_IWOTH;
+        return (file->permissions & S_IWOTH) ||
+               (file->permissions & S_IWUSR) && (strcmp (file->owner, g_get_user_name ()) == 0) ||
+               (file->permissions & S_IWGRP) && eel_user_in_group (file->group);
     } else {
         return TRUE;  /* We will just have to assume we can write to the file */
     }
@@ -1343,7 +1345,9 @@ gof_file_is_readable (GOFFile *file)
     } else if (file->info != NULL && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ)) {
         return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
     } else if (file->has_permissions) {
-        return file->permissions & S_IRUSR | file->permissions & S_IRGRP | file->permissions & S_IROTH;
+        return (file->permissions & S_IROTH) ||
+               (file->permissions & S_IRUSR) && (strcmp (file->owner, g_get_user_name ()) == 0) ||
+               (file->permissions & S_IRGRP) && eel_user_in_group (file->group);
     } else {
         return TRUE;  /* We will just have to assume we can read the file */
     }

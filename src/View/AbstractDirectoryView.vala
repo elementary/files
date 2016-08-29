@@ -1912,7 +1912,9 @@ namespace FM {
                      * selection menu definition in directory_view_popup.ui may necessitate changing
                      * the index below.
                      */
-                    if (clipboard == null || !clipboard.get_can_paste ()) {
+                    if (!action_get_enabled (common_actions, "paste_into") ||
+                        clipboard == null || !clipboard.get_can_paste ()) {
+
                         clipboard_menu.remove (2);
                     }
 
@@ -1947,7 +1949,7 @@ namespace FM {
             var menu = new GLib.Menu ();
 
             if (in_trash) {
-                if (clipboard != null && clipboard.get_can_paste ()) {
+                if (clipboard != null && clipboard.has_cutted_file (null) ) {
                     menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
                     return menu as MenuModel;
                 } else {
@@ -2167,7 +2169,7 @@ namespace FM {
                 if (file != null) {
                     single_folder = (!more_than_one_selected && file.is_folder ());
                     can_rename = is_writable;
-                    can_paste_into = file.is_writable ();
+                    can_paste_into = single_folder && file.is_writable () ;
                 } else {
                     critical ("File in selection is null");
                 }
@@ -2189,7 +2191,7 @@ namespace FM {
             can_show_properties = !(in_recent && selection_count > 1);
 
             action_set_enabled (window.win_actions, "select_all", !slot.directory.is_empty ());
-            action_set_enabled (common_actions, "paste_into", single_folder && can_paste_into);
+            action_set_enabled (common_actions, "paste_into", can_paste_into);
             action_set_enabled (common_actions, "open_in", only_folders);
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
             action_set_enabled (selection_actions, "view_in_location", selection_count > 0);
@@ -2237,6 +2239,17 @@ namespace FM {
                 }
             }
             critical ("Action name not found: %s - cannot enable", name);
+        }
+
+        private bool action_get_enabled (GLib.SimpleActionGroup? action_group, string name) {
+            if (action_group != null) {
+                GLib.SimpleAction? action = (action_group.lookup_action (name) as GLib.SimpleAction);
+                if (action != null) {
+                    return action.enabled;
+                }
+            }
+            critical ("Action name not found: %s - cannot get enabled", name);
+            return false;
         }
 
         private void action_set_state (GLib.SimpleActionGroup? action_group, string name, GLib.Variant val) {
