@@ -584,7 +584,7 @@ namespace Marlin.View.Chrome {
             double height = get_allocated_height ();
             double width = get_allocated_width ();
 
-            Gtk.Border border = this.get_style_context ().get_margin (Gtk.StateFlags.ACTIVE);
+            Gtk.Border border = button_context_active.get_margin (Gtk.StateFlags.ACTIVE);
 
             if (!is_focus) {
                 double margin = border.top;
