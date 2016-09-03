@@ -50,6 +50,8 @@ namespace Marlin.View.Chrome {
 
         private Gdk.Window? entry_window = null;
 
+        protected bool context_menu_showing = false;
+
     /** Construction **/
     /******************/
         construct {
@@ -212,6 +214,7 @@ namespace Marlin.View.Chrome {
         }
 
         protected virtual bool on_button_press_event (Gdk.EventButton event) {
+            context_menu_showing = has_focus && event.button == Gdk.BUTTON_SECONDARY;
             return !has_focus;
         }
 
@@ -286,7 +289,9 @@ namespace Marlin.View.Chrome {
         }
 
         protected virtual bool on_focus_out (Gdk.EventFocus event) {
-            reset ();
+            if (context_menu_showing) {
+                return true;
+            }
             return base.focus_out_event (event);
         }
 
