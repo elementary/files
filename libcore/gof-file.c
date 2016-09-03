@@ -343,12 +343,13 @@ static void
 gof_file_update_size (GOFFile *file)
 {
     g_free (file->format_size);
-    if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_SIZE)) {
-        file->format_size = g_strdup (_("Unknown"));
-    } else if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file)) {
+
+    if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file)) {
         file->format_size = g_strdup ("—");
-    } else {
+    } else if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_SIZE)) {
         file->format_size = g_format_size (file->size);
+    } else {
+        file->format_size = g_strdup (_("Inaccessible"));
     }
 }
 
@@ -530,7 +531,7 @@ gof_file_update (GOFFile *file)
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED)) {
         file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
     } else {
-        file->formated_modified = g_strdup (_("Unknown"));
+        file->formated_modified = g_strdup (_("Inaccessible"));
     }
     /* icon */
     if (file->is_directory) {
