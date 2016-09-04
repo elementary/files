@@ -289,13 +289,18 @@ namespace Marlin.View.Chrome {
         }
 
         protected virtual bool on_focus_out (Gdk.EventFocus event) {
+            base.focus_out_event (event);
             if (context_menu_showing) {
                 return true;
             }
-            return base.focus_out_event (event);
+
+            reset ();
+            return false;
+
         }
 
         protected virtual bool on_focus_in (Gdk.EventFocus event) {
+            context_menu_showing = false;
             current_dir_path = get_breadcrumbs_path ();
             set_entry_text (current_dir_path);
             return false;

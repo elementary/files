@@ -496,19 +496,6 @@ namespace Marlin.View.Chrome {
             return null;
         }
 
-        protected override bool on_focus_out (Gdk.EventFocus event) {
-            if (context_menu_showing) {
-                return true;
-            }
-            reset ();
-            return base.focus_out_event (event);
-        }
-
-        protected override bool on_focus_in (Gdk.EventFocus event) {
-            set_entry_text (get_breadcrumbs_path ());
-            return base.on_focus_in (event);
-        }
-
         protected override bool on_button_press_event (Gdk.EventButton event) {
             if (icon_event (event) || has_focus) {
                 return base.on_button_press_event (event);
