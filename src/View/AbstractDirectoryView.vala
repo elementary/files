@@ -1499,7 +1499,8 @@ namespace FM {
             GLib.StringBuilder sb = new GLib.StringBuilder ("");
 
             drag_file_list.@foreach ((file) => {
-                sb.append (file.get_target_location ().get_uri ());
+                var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
+                sb.append (target);
                 sb.append ("\r\n");  /* Drop onto Filezilla does not work without the "\r" */
             });
 
