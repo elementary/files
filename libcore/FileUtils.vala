@@ -51,7 +51,61 @@ namespace PF.FileUtils {
         return parent_path;
     }
 
-    public GLib.File? get_trashed_file_original_folder (GOF.File file) {
+    public void restore_files_from_trash (GLib.List<GOF.File> files, Gtk.Widget? widget) {
+        GLib.List<GOF.File>? unhandled_files = null;
+        var original_dirs_hash = get_trashed_files_original_directories (files, out unhandled_files);
+
+        foreach (GOF.File goffile in unhandled_files) {
+            var message = _("Could not determine original location of \"%s\" ").printf (goffile.get_display_name ());
+            Eel.show_warning_dialog (message, _("The item cannot be restored from trash"),
+                                     (widget is Gtk.Window) ? widget as Gtk.Window : null );
+        }
+
+        original_dirs_hash.foreach ((original_dir, dir_files) => {
+                Marlin.FileOperations.copy_move (dir_files,
+                                                 null,
+                                                 original_dir,
+                                                 Gdk.DragAction.MOVE,
+                                                 widget,
+                                                 null,
+                                                 null);
+        });
+    }
+
+    private GLib.HashTable<GLib.File, GLib.List<GLib.File>> get_trashed_files_original_directories (GLib.List<GOF.File> files, out GLib.List<GOF.File> unhandled_files) {
+        var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (File.hash, File.equal);
+        unhandled_files = null;
+
+        foreach (GOF.File goffile in files) {
+            var location = goffile.location;
+            /* Check it is a valid file (e.g. not a dummy row from list view) */
+            if (!(location != null && goffile.basename.char_count (2) > 0)) {
+                continue;
+            }
+
+            /* Check that file is in root of trash.  If not, do not try to restore
+             * (it will be restored with its parent anyway) */
+            if (Path.get_dirname (goffile.uri) == "trash:") {
+                /* We are in trash root */
+                var original_dir = get_trashed_file_original_folder (goffile);
+                if (original_dir != null) {
+                    unowned GLib.List<GLib.File>? dir_files = null;
+                    dir_files = directories.lookup (original_dir); /* get list of files being restored to this original dir */
+                    if (dir_files != null) {
+                        directories.steal (original_dir);
+                    }
+                    dir_files.prepend (goffile.location);
+                    directories.insert (original_dir, dir_files.copy ());
+                } else {
+                    unhandled_files.prepend (goffile);
+                }
+            }
+        }
+
+        return directories;
+   }
+
+    private GLib.File? get_trashed_file_original_folder (GOF.File file) {
         GLib.FileInfo? info = null;
         string? original_path = null;
 

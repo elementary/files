@@ -1075,7 +1075,8 @@ namespace FM {
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
             unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
-            Marlin.restore_files_from_trash (selection, window);
+            PF.FileUtils.restore_files_from_trash (selection, window);
+
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {

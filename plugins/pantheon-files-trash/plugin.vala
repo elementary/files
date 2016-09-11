@@ -59,8 +59,8 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                     switch (response) {
                         case 0:
                             slot.set_all_selected (true);
-                            unowned GLib.List<unowned GOF.File> selection = slot.get_selected_files ();
-                            Marlin.restore_files_from_trash (selection, window);
+                            unowned GLib.List<GOF.File> selection = slot.get_selected_files ();
+                            PF.FileUtils.restore_files_from_trash (selection, window);
                             break;
                         case 1:
                             Marlin.FileOperations.empty_trash (self);
