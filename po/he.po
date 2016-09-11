@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-06-30 19:07+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-09-10 14:09+0000\n"
+"Last-Translator: Niv Baehr <Unknown>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:47+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
+"X-Launchpad-Export-Date: 2016-09-11 06:07+0000\n"
+"X-Generator: Launchpad (build 18186)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -52,15 +52,15 @@ msgstr "WebDAV מאובטח (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "בהליך חיבור"
+msgstr "מתחבר..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"רשימת שיטות השרת הנתמכות לא נטענה.\n"
-"נא לבדוק את התקנת ה־gvfs שלך."
+"לא ניתן לטעון את רשימת שיטות השרת הנתמכות.\n"
+"נא לבדוק את התקנת ה־gvfs."
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
@@ -78,7 +78,7 @@ msgstr "נסיון חוזר"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "נא לוודא את פרטי המשתמש שלך."
+msgstr "נא לוודא את פרטי המשתמש."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -131,11 +131,11 @@ msgstr "שם _משתמש:"
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
-msgstr "_סיסמא:"
+msgstr "_ססמה:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr "_שמירת סיסמא זו"
+msgstr "_שמירת ססמה זו"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
@@ -148,7 +148,7 @@ msgstr "לא ניתן להגדיר את המיקום המקורי של \"%s\" "
 
 #: ../libcore/marlin-file-utilities.c:135
 msgid "The item cannot be restored from trash"
-msgstr "לא ניתן לשחזר הפריט מסל המיחזור"
+msgstr "לא ניתן לשחזר את הפריט מהאשפה."
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -162,8 +162,8 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"תהליך המיזוג יבקש אישורך טרם החלפת קבצים בספריה העומדים בסתירה לקבצים "
-"המועתקים"
+"פעולת המיזוג תבקש אישור בטרם החלפת קבצים כלשהם בתיקייה המתנגשים עם הקבצים "
+"המועתקים."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:380
@@ -2160,6 +2160,7 @@ msgstr ""
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Danny Damsky https://launchpad.net/~dannydamsky99\n"
 "  Megolas https://launchpad.net/~ofeklavie\n"
+"  Niv Baehr https://launchpad.net/~rzil\n"
 "  Ramon fried https://launchpad.net/~ramon-fried\n"
 "  Uri Damsker  אורי דמסקר https://launchpad.net/~ud1955\n"
 "  Yaron https://launchpad.net/~sh-yaron"
@@ -2314,20 +2315,20 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:128
 msgid "Paste into Folder"
-msgstr ""
+msgstr "הדבקה לתיקיה"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Sort by"
-msgstr ""
+msgstr "מיון לפי"
 
 #: ../src/View/directory_view_popup.ui:138
 msgid "Name"
-msgstr ""
+msgstr "שם"
 
 #: ../src/View/directory_view_popup.ui:153
 msgid "Date"
-msgstr ""
+msgstr "תאריך"
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
-msgstr ""
+msgstr "סדר מהופך"
