@@ -521,6 +521,19 @@ gof_file_update (GOFFile *file)
         }
     }
 
+    if (file->custom_display_name == NULL) {
+        /* Use custom_display_name to store default display name if there is no custom name */
+        if (file->info && g_file_info_get_display_name (file->info) != NULL) {
+            if (file->directory != NULL && strcmp (g_file_get_uri_scheme (file->directory), "network") == 0) {
+                /* Show protocol after server name (lp:1184606) */
+                file->custom_display_name = g_strdup_printf ("%s (%s)", g_file_info_get_display_name (file->info),
+                                                                        g_file_get_uri_scheme (file->target_location));
+            } else {
+                file->custom_display_name = g_strdup (g_file_info_get_display_name (file->info));
+            }
+        }
+    }
+
     /* sizes */
     gof_file_update_size (file);
     /* modified date */
@@ -2490,18 +2503,7 @@ gof_file_get_target_location (GOFFile *file)
 const gchar *
 gof_file_get_display_name (GOFFile *file)
 {
-    if (file->is_desktop) {
-        if (gof_preferences_get_default ()->pref_interpret_desktop_files && file->custom_display_name != NULL)
-            return file->custom_display_name;
-    } else {
-        if (file->custom_display_name != NULL)
-            return file->custom_display_name;
-    }
-
-    if (file->info && g_file_info_get_display_name (file->info) != NULL)
-        return g_file_info_get_display_name (file->info);
-
-    return file->basename;
+    return file->custom_display_name ? file->custom_display_name : file->basename;
 }
 
 gboolean
