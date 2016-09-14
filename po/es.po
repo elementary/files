@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-07 23:48+0000\n"
-"Last-Translator: Ing. Roger Salinas Robalino <megatron87@hotmail.com>\n"
+"PO-Revision-Date: 2016-09-13 22:45+0000\n"
+"Last-Translator: Félix Brezo <felixbrezo@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-08-09 05:37+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
+"X-Launchpad-Export-Date: 2016-09-14 06:05+0000\n"
+"X-Generator: Launchpad (build 18186)\n"
 "Language: es\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1593,7 +1593,7 @@ msgstr "Examinar los contenidos de la red"
 
 #: ../src/View/Sidebar.vala:830
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "%s libre(s) de %s"
 
 #: ../src/View/Sidebar.vala:1325
 msgid "Unable to start %s"
@@ -1736,7 +1736,7 @@ msgstr "No se puede abrir este archivo"
 
 #: ../src/View/AbstractDirectoryView.vala:833
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "No se puede identificar el tipo de archivo a abrir"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
@@ -1861,7 +1861,7 @@ msgstr "El tamaño real podría ser mayor"
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
-msgstr[1] ""
+"El archivo %i no puede ser leído por problemas de permisos u otros errores."
 
 #: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
 msgid "unknown"
@@ -2003,7 +2003,7 @@ msgstr "La red no está disponible"
 
 #: ../src/View/ViewContainer.vala:359
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Se necesita una red activa para llegar a esta carpeta"
 
 #: ../src/View/ViewContainer.vala:361
 msgid "This Folder Does Not Belong to You"
@@ -2130,7 +2130,7 @@ msgstr ""
 
 #: ../src/ProgressUIHandler.vala:210
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Todas las operaciones con archivos han finalizado"
 
 #: ../src/ProgressUIHandler.vala:255
 msgid "Show Copy Dialog"
@@ -2216,6 +2216,7 @@ msgstr ""
 "  Andrey Alfaro Alvarado https://launchpad.net/~kesymaru\n"
 "  Arturo Ortega https://launchpad.net/~a01651668\n"
 "  BoobyZm https://launchpad.net/~m2010sanchez\n"
+"  Celis González https://launchpad.net/~c3lg0n\n"
 "  Christopher https://launchpad.net/~cdhornb\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
 "  Daniel Esc. https://launchpad.net/~mdan-escb\n"
@@ -2224,6 +2225,7 @@ msgstr ""
 "  David Vilela https://launchpad.net/~david-vilela\n"
 "  ERIC https://launchpad.net/~galleto-balu\n"
 "  Franco https://launchpad.net/~franngr\n"
+"  Félix Brezo https://launchpad.net/~febrezo\n"
 "  Gabriel_P https://launchpad.net/~gabp\n"
 "  German https://launchpad.net/~gergarcia8\n"
 "  Giovanni F. Villavicencio Sandi https://launchpad.net/~gvillavicencio\n"
@@ -2381,7 +2383,7 @@ msgstr "Mostrar los archivos ocultos"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Mostrar miniaturas remotas"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
