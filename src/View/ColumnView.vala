@@ -40,7 +40,7 @@ namespace FM {
                 GLib.Source.remove (double_click_timeout_id);
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
-                unfreeze_updates ();
+                is_frozen = false;
             }
         }
 
@@ -48,9 +48,10 @@ namespace FM {
             if (double_click_timeout_id != 0) {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
-                unfreeze_updates ();
-                if (should_activate) /* button already released */
+                is_frozen = false;
+                if (should_activate) { /* button already released */
                     activate_selected_items ();
+                }
             }
             return false;
         }
@@ -138,7 +139,7 @@ namespace FM {
                 else {
                     /*  ... store clicked folder and start double-click timeout */
                     awaiting_double_click = true;
-                    freeze_updates ();
+                    is_frozen = true;
                     double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
                         not_double_click (event, path);
                         return false;
