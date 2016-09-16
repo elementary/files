@@ -807,11 +807,7 @@ namespace FM {
         /* Open all files through this */
         private void open_file (GOF.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
             if (can_open_file (file, true)) {
-                AppInfo app = app_info;
-                if (app == null) {
-                    app = Marlin.MimeActions.choose_app_for_glib_file (file.location, this);
-                }
-                file.open_single (screen, app); /* This does not show app chooser again if app is null*/
+                Marlin.MimeActions.open_glib_file_request (file.location, this, app_info);
             }
         }
 
@@ -1097,7 +1093,7 @@ namespace FM {
         private void on_selection_action_open_with_other_app () {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-            Marlin.MimeActions.open_glib_file_request (file.location, this, null);
+            open_file (file, null, null);
         }
 
         private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {

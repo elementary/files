@@ -232,6 +232,8 @@ public class Marlin.MimeActions {
     }
 
     public static void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
+        /* Note: This function should be only called if file_to_open is not an executable or it is not
+         * intended to execute it (AbstractDirectoryView takes care of this) */ 
         if (app == null) {
             var choice = choose_app_for_glib_file (file_to_open, parent);
             if (choice != null) {
@@ -248,8 +250,14 @@ public class Marlin.MimeActions {
         return chooser.get_app_info ();
     }
 
-    private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {
-        var goffile = GOF.File.get (file_to_open);
-        goffile.launch (parent.get_screen (), app);
-    }
+     private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {
+        GLib.List<GLib.File> files_to_open = null;
+        files_to_open.append (file_to_open);
+
+        try {
+            app.launch (files_to_open, null);
+        } catch (GLib.Error e) {
+            warning ("Failed to open file - %s", e.message);
+        }
+     }
 }

@@ -247,7 +247,6 @@ namespace GOF {
         public static GOF.File @get(GLib.File location);
         public static GOF.File? get_by_uri (string uri);
         public static File cache_lookup (GLib.File file);
-        public static bool launch_files (GLib.List<GOF.File> files, Gdk.Screen screen, GLib.AppInfo app);
         public static void list_free (GLib.List<GOF.File> files);
         public static GLib.Mount? get_mount_at (GLib.File location);
 
@@ -282,7 +281,7 @@ namespace GOF {
         public bool is_folder();
         public bool is_symlink();
         public bool is_trashed();
-	public bool is_readable ();
+        public bool is_readable ();
         public bool is_writable ();
         public bool is_executable ();
         public bool is_mountable ();
@@ -311,7 +310,6 @@ namespace GOF {
         public bool has_permissions;
         public uint32 permissions;
 
-        public void open_single (Gdk.Screen screen, GLib.AppInfo? app_info);
         public void update ();
         public void update_type ();
         public void update_icon (int size);
@@ -327,7 +325,6 @@ namespace GOF {
         public bool can_unmount ();
         public GLib.Mount? mount;
         public string get_permissions_as_string ();
-        public bool launch (Gdk.Screen screen, GLib.AppInfo app);
 
         public GLib.List? get_settable_group_names ();
         public static int compare_by_display_name (File file1, File file2);
