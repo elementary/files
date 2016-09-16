@@ -2370,10 +2370,7 @@ namespace FM {
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<GOF.File> files) {
-            var screen = get_screen ();
-            foreach (GOF.File file in files) {
-                open_file (file, screen, app);
-            }
+            Marlin.MimeActions.open_multiple_gof_files_request (files, this, app);
         }
 
 
