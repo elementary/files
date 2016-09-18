@@ -235,7 +235,39 @@ namespace FM {
 
         public bool renaming {get; protected set; default = false;}
 
-        private bool updates_frozen = false;
+        private bool _is_frozen = true;
+        public bool is_frozen {
+            set {
+                if (value && !_is_frozen) {
+                    action_set_enabled (selection_actions, "cut", false);
+                    action_set_enabled (common_actions, "copy", false);
+                    action_set_enabled (common_actions, "paste_into", false);
+                    action_set_enabled (window.win_actions, "select_all", false);
+
+                    size_allocate.disconnect (on_size_allocate);
+                    clipboard.changed.disconnect (on_clipboard_changed);
+                    view.enter_notify_event.disconnect (on_enter_notify_event);
+                    view.key_press_event.disconnect (on_view_key_press_event);
+                } else if (!value && _is_frozen) {
+                    update_menu_actions ();
+                    size_allocate.connect (on_size_allocate);
+                    clipboard.changed.connect (on_clipboard_changed);
+                    view.enter_notify_event.connect (on_enter_notify_event);
+                    view.key_press_event.connect (on_view_key_press_event);
+
+                    /* It should do no harm to ensure the directory is not frozen as well */
+                    slot.directory.freeze_update = false;
+                    slot.directory.unblock_monitor ();
+                }
+
+                _is_frozen = value;
+            }
+
+            get {
+                return _is_frozen;
+            }
+        }
+
         protected bool tree_frozen = false;
         private bool in_trash = false;
         private bool in_recent = false;
@@ -444,45 +476,6 @@ namespace FM {
             return default_app;
         }
 
-        public void set_updates_frozen (bool freeze) {
-            if (freeze && !updates_frozen)
-                freeze_updates ();
-            else if (!freeze && updates_frozen)
-                unfreeze_updates ();
-        }
-
-        public bool get_updates_frozen () {
-            return updates_frozen;
-        }
-
-        protected void freeze_updates () {
-            /* As this gets called before View closes (without a corresponding unfreeze),
-             * it must not freeze the directory, which may be being used by other views */
-            updates_frozen = true;
-            action_set_enabled (selection_actions, "cut", false);
-            action_set_enabled (common_actions, "copy", false);
-            action_set_enabled (common_actions, "paste_into", false);
-            action_set_enabled (window.win_actions, "select_all", false);
-
-            size_allocate.disconnect (on_size_allocate);
-            clipboard.changed.disconnect (on_clipboard_changed);
-            view.enter_notify_event.disconnect (on_enter_notify_event);
-            view.key_press_event.disconnect (on_view_key_press_event);
-        }
-
-        protected void unfreeze_updates () {
-            updates_frozen = false;
-            update_menu_actions ();
-            size_allocate.connect (on_size_allocate);
-            clipboard.changed.connect (on_clipboard_changed);
-            view.enter_notify_event.connect (on_enter_notify_event);
-            view.key_press_event.connect (on_view_key_press_event);
-
-            /* It should do no harm to ensure the directory is not frozen as well */
-            slot.directory.freeze_update = false;
-            slot.directory.unblock_monitor ();
-        }
-
         public new void grab_focus () {
             if (slot.is_active && view.get_realized ()) {
                 view.grab_focus ();
@@ -491,10 +484,6 @@ namespace FM {
 
         public unowned GLib.List<GOF.File> get_selected_files () {
             return selected_files;
-        }
-
-        public bool is_frozen () {
-            return updates_frozen;
         }
 
 /*** Protected Methods */
@@ -513,7 +502,7 @@ namespace FM {
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
                                                 GLib.List<GOF.File> selection = get_selected_files ()) {
-            if (updates_frozen)
+            if (is_frozen)
                 return;
 
             uint nb_elem = selection.length ();
@@ -717,7 +706,7 @@ namespace FM {
 
     /** Handle scroll events */
         protected bool handle_scroll_event (Gdk.EventScroll event) {
-            if (updates_frozen)
+            if (is_frozen)
                 return true;
 
             if ((event.state & Gdk.ModifierType.CONTROL_MASK) > 0) {
@@ -775,7 +764,7 @@ namespace FM {
 
 
         private void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
-            if (updates_frozen)
+            if (is_frozen)
                 return;
 
             GOF.File file = _file;
@@ -1904,23 +1893,28 @@ namespace FM {
                     menu.append_section (null, open_menu);
 
                 if (slot.directory.file.is_smb_server ()) {
-                    if (common_actions.get_action_enabled ("paste_into"))
+                    if (clipboard != null && clipboard.can_paste) {
                         menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
+                    }
                 } else if (valid_selection_for_edit ()) {
-                    /* Do not display the 'Paste into' menuitem if selection is not a folder.
+                    /* Do not display the 'Paste into' menuitem nothing to paste.
                      * We have to hard-code the menuitem index so any change to the clipboard-
                      * selection menu definition in directory_view_popup.ui may necessitate changing
                      * the index below.
                      */
-                    if (!common_actions.get_action_enabled ("paste_into"))
+                    if (!action_get_enabled (common_actions, "paste_into") ||
+                        clipboard == null || !clipboard.can_paste) {
+
                         clipboard_menu.remove (2);
+                    }
 
                     menu.append_section (null, clipboard_menu);
 
-                    if (slot.directory.has_trash_dirs)
+                    if (slot.directory.has_trash_dirs) {
                         menu.append_section (null, builder.get_object ("trash") as GLib.MenuModel);
-                    else
+                    } else {
                         menu.append_section (null, builder.get_object ("delete") as GLib.MenuModel);
+                    }
 
                     menu.append_section (null, builder.get_object ("rename") as GLib.MenuModel);
                 }
@@ -1934,49 +1928,53 @@ namespace FM {
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             }
 
-            if (menu.get_n_items () > 0)
+            if (menu.get_n_items () > 0) {
                 return menu as MenuModel;
-            else
+            } else {
                 return null;
+            }
         }
 
         private GLib.MenuModel? build_menu_background (ref Gtk.Builder builder, bool in_trash, bool in_recent) {
             var menu = new GLib.Menu ();
 
             if (in_trash) {
-                if (common_actions.get_action_enabled ("paste_into")) {
+                if (clipboard != null && clipboard.has_cutted_file (null) ) {
                     menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
-
                     return menu as MenuModel;
-                } else
+                } else {
                     return null;
+                }
             }
 
             if (in_recent) {
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
                 menu.append_section (null, build_show_menu (builder));
-
-
                 return menu as MenuModel;
             }
 
             var open_menu = build_menu_open (ref builder);
-            if (open_menu != null)
+            if (open_menu != null) {
                 menu.append_section (null, open_menu);
+            }
 
             if (!in_network_root) {
-                if (common_actions.get_action_enabled ("paste_into"))
+                /* If something is pastable in the clipboard, show the option even if it is not enabled */ 
+                if (clipboard != null && clipboard.can_paste) {
                     menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
+                }
 
                 GLib.MenuModel? template_menu = build_menu_templates ();
                 var new_menu = builder.get_object ("new") as GLib.Menu;
 
-                if (template_menu != null) {
-                    var new_submenu = builder.get_object ("new-submenu") as GLib.Menu;
-                    new_submenu.append_section (null, template_menu);
-                }
+                if (is_writable) {
+                    if (template_menu != null) {
+                        var new_submenu = builder.get_object ("new-submenu") as GLib.Menu;
+                        new_submenu.append_section (null, template_menu);
+                    }
 
-                menu.append_section (null, new_menu as GLib.MenuModel);
+                    menu.append_section (null, new_menu as GLib.MenuModel);
+                }
 
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
             }
@@ -1988,11 +1986,11 @@ namespace FM {
                 }
             }
 
-
             menu.append_section (null, build_show_menu (builder));
 
-            if (!in_network_root)
+            if (!in_network_root) {
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
+            }
 
             return menu as MenuModel;
         }
@@ -2103,7 +2101,7 @@ namespace FM {
         private GLib.MenuModel? build_menu_templates () {
             /* Potential optimisation - do just once when app starts or view created */
             templates = null;
-            var template_path = "%s/Templates".printf (GLib.Environment.get_home_dir ());
+            var template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
             var template_folder = GLib.File.new_for_path (template_path);
             load_templates_from_folder (template_folder);
 
@@ -2139,7 +2137,7 @@ namespace FM {
         }
 
         private void update_menu_actions () {
-            if (updates_frozen || !slot.directory.can_load)
+            if (is_frozen || !slot.directory.can_load)
                 return;
 
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
@@ -2152,31 +2150,38 @@ namespace FM {
             bool can_rename = false;
             bool can_show_properties = false;
             bool can_copy = false;
-
-            if (!(in_recent && selection_count > 1))
-                can_show_properties = true;
-            else
-                can_show_properties = false;
-
-            update_default_app (selection);
+            bool can_open = false;
+            bool can_paste_into = false;
+            bool can_bookmark = false;
 
             if (selection_count > 0) {
                 file = selection.data;
                 if (file != null) {
                     single_folder = (!more_than_one_selected && file.is_folder ());
                     can_rename = is_writable;
-                } else
+                    can_paste_into = single_folder && file.is_writable () ;
+                } else {
                     critical ("File in selection is null");
+                }
             } else {
                 file = slot.directory.file;
                 single_folder = (!more_than_one_selected && file.is_folder ());
+                can_paste_into = is_writable;
             }
 
-            update_paste_action_enabled (single_folder);
-            update_select_all_action ();
-            update_menu_actions_sort ();
+            /* Both folder and file can be bookmarked if local, but only remote folders can be bookmarked
+             * because remote file bookmarks do not work correctly for unmounted locations */
+            can_bookmark = (!more_than_one_selected || single_folder) &&
+                           (slot.directory.is_local ||
+                           (file.get_ftype () != null && file.get_ftype () == "inode/directory") ||
+                           file.is_smb_server ());
+
             can_copy = file.is_readable (); 
-            bool can_open = can_open_file (file);
+            can_open = can_open_file (file);
+            can_show_properties = !(in_recent && selection_count > 1);
+
+            action_set_enabled (window.win_actions, "select_all", !slot.directory.is_empty ());
+            action_set_enabled (common_actions, "paste_into", can_paste_into);
             action_set_enabled (common_actions, "open_in", only_folders);
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
             action_set_enabled (selection_actions, "view_in_location", selection_count > 0);
@@ -2184,20 +2189,16 @@ namespace FM {
             action_set_enabled (selection_actions, "open_with_app", can_open);
             action_set_enabled (selection_actions, "open_with_default", can_open);
             action_set_enabled (selection_actions, "open_with_other_app", can_open);
-            action_set_enabled (selection_actions, "cut", selection_count > 0);
-            action_set_enabled (selection_actions, "trash", slot.directory.has_trash_dirs);
+            action_set_enabled (selection_actions, "cut", is_writable && selection_count > 0);
+            action_set_enabled (selection_actions, "trash", is_writable && slot.directory.has_trash_dirs);
+            action_set_enabled (selection_actions, "delete", is_writable);
             action_set_enabled (common_actions, "properties", can_show_properties);
-
-            /* Both folder and file can be bookmarked if local, but only remote folders can be bookmarked
-             * because remote file bookmarks do not work correctly for unmounted locations */
-            bool can_bookmark = (!more_than_one_selected || single_folder) &&
-                                 (slot.directory.is_local ||
-                                 (file.get_ftype () != null && file.get_ftype () == "inode/directory") ||
-                                 file.is_smb_server ());
-
             action_set_enabled (common_actions, "bookmark", can_bookmark);
             action_set_enabled (common_actions, "copy", !in_trash && can_copy);
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
+
+            update_default_app (selection);
+            update_menu_actions_sort ();
         }
 
         private void update_menu_actions_sort () {
@@ -2217,17 +2218,6 @@ namespace FM {
             return;
         }
 
-        private void update_paste_action_enabled (bool single_folder) {
-            if (clipboard != null && clipboard.can_paste)
-                action_set_enabled (common_actions, "paste_into", single_folder);
-            else
-                action_set_enabled (common_actions, "paste_into", false);
-        }
-
-        private void update_select_all_action () {
-            action_set_enabled (window.win_actions, "select_all", !slot.directory.is_empty ());
-        }
-
     /** Menu helpers */
 
         private void action_set_enabled (GLib.SimpleActionGroup? action_group, string name, bool enabled) {
@@ -2239,6 +2229,17 @@ namespace FM {
                 }
             }
             critical ("Action name not found: %s - cannot enable", name);
+        }
+
+        private bool action_get_enabled (GLib.SimpleActionGroup? action_group, string name) {
+            if (action_group != null) {
+                GLib.SimpleAction? action = (action_group.lookup_action (name) as GLib.SimpleAction);
+                if (action != null) {
+                    return action.enabled;
+                }
+            }
+            critical ("Action name not found: %s - cannot get enabled", name);
+            return false;
         }
 
         private void action_set_state (GLib.SimpleActionGroup? action_group, string name, GLib.Variant val) {
@@ -2584,7 +2585,7 @@ namespace FM {
         protected virtual void on_view_selection_changed () {
             update_selected_files ();
             update_menu_actions ();
-            if (updates_frozen)
+            if (is_frozen)
                 return;
 
             selection_changed (get_selected_files ());
@@ -2608,8 +2609,9 @@ namespace FM {
         }
 
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-            if (updates_frozen || event.is_modifier == 1)
-                return false;
+            if (is_frozen || event.is_modifier == 1) {
+                return true;
+            }
 
             cancel_hover ();
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
@@ -2654,7 +2656,12 @@ namespace FM {
 
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
-                    if (no_mods) {
+                    if (!is_writable) {
+                        Eel.show_warning_dialog (_("Cannot remove files from here"),
+                                                 _("You do not have permission to change this location"),
+                                                 window as Gtk.Window);
+                        break;
+                    } else if (no_mods) {
                         /* If already in trash, permanently delete the file */
                         trash_or_delete_selected_files (in_trash);
                         return true;
@@ -2799,14 +2806,26 @@ namespace FM {
                     return true;
                 } else if (match_keycode (Gdk.Key.v, keycode)) {
                     if (!in_recent) {
-                        /* Will drop any existing selection and paste into current directory */
-                        action_set_enabled (common_actions, "paste_into", true);
-                        unselect_all ();
-                        common_actions.activate_action ("paste_into", null);
+                        if (is_writable) {
+                            /* Will drop any existing selection and paste into current directory */
+                            action_set_enabled (common_actions, "paste_into", true);
+                            unselect_all ();
+                            common_actions.activate_action ("paste_into", null);
+                        } else {
+                            Eel.show_warning_dialog (_("Cannot paste files here"),
+                                                     _("You do not have permission to change this location"),
+                                                     window as Gtk.Window);
+                        }
                         return true;
                     }
                 } else if (match_keycode (Gdk.Key.x, keycode)) {
-                    selection_actions.activate_action ("cut", null);
+                    if (is_writable) {
+                        selection_actions.activate_action ("cut", null);
+                    } else {
+                        Eel.show_warning_dialog (_("Cannot remove files from here"),
+                                                 _("You do not have permission to change this location"),
+                                                 window as Gtk.Window);
+                    }
                     return true;
                 }
             }
@@ -2860,7 +2879,7 @@ namespace FM {
                 previous_click_zone = click_zone;
             }
 
-            if (updates_frozen)
+            if (is_frozen)
                 return false;
 
             if ((path != null && hover_path == null) ||
@@ -2954,7 +2973,7 @@ namespace FM {
             renaming = false;
             name_renderer.editable = false;
             proposed_name = "";
-            unfreeze_updates ();
+            is_frozen = false;
             grab_focus ();
         }
 
@@ -3263,7 +3282,7 @@ namespace FM {
         }
 
         private void start_renaming_file (GOF.File file) {
-            if (updates_frozen) {
+            if (is_frozen) {
                 warning ("Trying to rename when frozen");
                 return;
             }
@@ -3274,7 +3293,7 @@ namespace FM {
             }
 
             /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
-            freeze_updates ();
+            is_frozen = true;
             Gtk.TreePath path = model.get_path (iter);
 
             uint count = 0;
@@ -3283,6 +3302,7 @@ namespace FM {
             /* Scroll to row to be renamed and then start renaming after a delay
              * so that file to be renamed is on screen.  This avoids the renaming being
              * cancelled */
+            set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, false, false);
             GLib.Timeout.add (50, () => {
                 /* Wait until view stops scrolling before starting to rename (up to 1 second)
                  * Scrolling is deemed to have stopped when the starting visible path is stable
@@ -3424,7 +3444,7 @@ namespace FM {
         }
 
         public void close () {
-            set_updates_frozen (true); /* stop signal handlers running during destruction */
+            is_frozen = true; /* stop signal handlers running during destruction */
             unselect_all ();
         }
 

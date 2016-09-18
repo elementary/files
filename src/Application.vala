@@ -74,11 +74,6 @@ public class Marlin.Application : Granite.Application {
         return application_singleton;
     }
 
-    /* Using ~Application () here does not work */
-    void before_app_exit () {
-        Notify.uninit ();
-    }
-
     public override void startup () {
         base.startup ();
 
@@ -93,9 +88,7 @@ public class Marlin.Application : Granite.Application {
             Marlin.IconInfo.clear_caches ();
         });
 
-        Notify.init (Config.GETTEXT_PACKAGE);
-
-        progress_handler = new Marlin.Progress.UIHandler ();
+        progress_handler = new Marlin.Progress.UIHandler (this);
 
         this.clipboard = Marlin.ClipboardManager.get_for_display ();
 //~ message ("app getting thumbnailer");
@@ -118,11 +111,6 @@ public class Marlin.Application : Granite.Application {
         this.window_added.connect_after (() => {window_count++;});
         this.window_removed.connect (() => {
             window_count--;
-            /* If there are active file operations, these will hold the application running */
-            if (get_windows () == null && progress_handler.get_active_info_count () == 0) {
-                /* Otherwise perform final cleanup */
-                before_app_exit ();
-            }
         });
     }
 
@@ -230,7 +218,6 @@ public class Marlin.Application : Granite.Application {
         warning ("Quitting mainloop");
         Marlin.IconInfo.clear_caches ();
 
-        before_app_exit ();
         base.quit_mainloop ();
     }
 

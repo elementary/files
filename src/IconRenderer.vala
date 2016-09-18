@@ -86,14 +86,11 @@ namespace Marlin {
             Gdk.Pixbuf? pb = pixbuf;
 
             var pix_rect = Gdk.Rectangle ();
-            get_size (widget, cell_area, out pix_rect.x, out pix_rect.y, out pix_rect.width, out pix_rect.height);
 
-            int xpad, ypad;
-            get_padding (out xpad, out ypad);
-            pix_rect.x += cell_area.x + xpad;
-            pix_rect.y += cell_area.y + ypad;
-            pix_rect.width -= xpad * 2;
-            pix_rect.height -= ypad * 2;
+            pix_rect.width = pixbuf.get_width ();
+            pix_rect.height = pixbuf.get_height ();
+            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+            pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
             var draw_rect = Gdk.Rectangle ();
             if (!cell_area.intersect (pix_rect, out draw_rect)) {
@@ -151,9 +148,7 @@ namespace Marlin {
                 return;
             }
 
-            Gtk.render_icon (style_context, cr, pb,
-                             pix_rect.x, pix_rect.y);
-
+            style_context.render_icon (cr, pb, draw_rect.x, draw_rect.y);
             style_context.restore ();
 
             /* Do not show selection helpers or emblems for very small icons */
@@ -176,12 +171,24 @@ namespace Marlin {
                     if (nicon != null) {
                         pix = nicon.get_pixbuf_nodefault ();
                     }
+
                     if (pix != null) {
-                        Gdk.cairo_set_source_pixbuf (cr, pix, pix_rect.x, pix_rect.y);
+                        var helper_area = Gdk.Rectangle ();
+                        helper_area.x = draw_rect.x - helper_size / 2;
+                        helper_area.y = draw_rect.y - helper_size / 2;
+
+                        if (helper_area.y < background_area.y) {
+                            helper_area.y = background_area.y;
+                        }
+
+                        if (helper_area.x < background_area.x) {
+                            helper_area.x = background_area.x;
+                        }
+
+                        Gdk.cairo_set_source_pixbuf (cr, pix, helper_area.x, helper_area.y);
                         cr.paint ();
                     }
                 }
-                
             }
 
             /* check if we should render emblems as well */
@@ -190,8 +197,7 @@ namespace Marlin {
             if (show_emblems) {
                 int pos = 0;
                 var emblem_area = Gdk.Rectangle ();
-                emblem_area.x = pix_rect.x + pix_rect.width - emblem_overlap;
-                emblem_area.y = pix_rect.y + pix_rect.height - helper_size;
+
                 foreach (string emblem in file.emblems_list) {
                     if (pos > zoom_level) {
                         break;
@@ -210,7 +216,10 @@ namespace Marlin {
                         continue;
                     }
 
+                    emblem_area.x = draw_rect.x + draw_rect.width - emblem_overlap;
+                    emblem_area.y = draw_rect.y + draw_rect.height - helper_size;
                     emblem_area.y -= helper_size * pos;
+
                     if (emblem_area.y < background_area.y) {
                         break;
                     }
@@ -226,7 +235,7 @@ namespace Marlin {
             }
         }
 
-
+        /* We still have to implement this even though it is deprecated */
         public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
                                        out int x_offset, out int y_offset,
                                        out int width, out int height) {
@@ -240,24 +249,18 @@ namespace Marlin {
                 return;
             }
 
-            int pixbuf_width = 0;
-            int pixbuf_height = 0;
 
-            if (pixbuf != null) {
-                pixbuf_width = pixbuf.get_width ();
-                pixbuf_height = pixbuf.get_height ();
-            }
+            int pixbuf_width = pixbuf.get_width ();
+            int pixbuf_height = pixbuf.get_height ();
 
-            int xpad, ypad;
-            get_padding (out xpad, out ypad);
-            int calc_width = xpad * 2 + pixbuf_width;
-            int calc_height = ypad * 2 + pixbuf_height;
+            int calc_width = pixbuf_width;
+            int calc_height = pixbuf_height;
 
             if (cell_area != null && pixbuf_width > 0 && pixbuf_height > 0) {
                 float xalign, yalign;
                 bool rtl = widget.get_direction () == Gtk.TextDirection.RTL;
                 get_alignment (out xalign, out yalign);
-                x_offset = (int)(rtl ? (1.0 -xalign) : xalign);
+                x_offset = (int)(rtl ? (1.0 -xalign) : xalign) * (cell_area.width - calc_width);
                 x_offset = int.max (x_offset, 0);
                 y_offset = (int)(yalign * (cell_area.height - calc_height));
                 y_offset = int.max (y_offset, 0);
