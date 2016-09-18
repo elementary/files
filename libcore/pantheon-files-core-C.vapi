@@ -342,6 +342,7 @@ namespace GOF {
         public bool is_root_network_folder ();
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
+        public bool is_recent_uri_scheme ();
         public bool is_connected;
 
         public unowned string get_display_target_uri ();

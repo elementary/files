@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-07-02 05:58+0400\n"
+"POT-Creation-Date: 2016-09-15 05:54-0500\n"
 "PO-Revision-Date: 2016-06-30 19:08+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
@@ -15,8 +15,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-07-02 05:53+0000\n"
-"X-Generator: Launchpad (build 18115)\n"
+"X-Launchpad-Export-Date: 2016-09-16 07:39+0000\n"
+"X-Generator: Launchpad (build 18186)\n"
+
+#: ../src/marlin-clipboard-manager.c:365
+msgid "There is nothing on the clipboard to paste"
+msgstr "Tiada apa-apa pada 'clipboard' untuk ditampalkan"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -137,68 +141,962 @@ msgstr "_Ingat kata laluan ini"
 msgid "Operation cancelled"
 msgstr "Operasi dibatalkan"
 
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "Tiada apa-apa pada 'clipboard' untuk ditampalkan"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (unikod tidak sah)"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Hari ini pada %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Semalam pada %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b pada %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y pada %-I:%M %p"
-
-#: ../libcore/marlin-file-utilities.c:131
+#: ../libcore/marlin-file-utilities.c:123
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
 
-#: ../libcore/marlin-file-utilities.c:135
+#: ../libcore/marlin-file-utilities.c:127
 msgid "The item cannot be restored from trash"
 msgstr "Item tidak boleh dipulihkan kembali dari tong sampah"
+
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:372
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Cantum folder \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:375
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Pencantuman memerlukan pengesahan sebelum menggantikan mana-mana fail "
+"didalam folder yang mungkin mengakibatkan konflik dengan fail yang disalin."
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Folder lama dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Folder yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:388
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Folder lain dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will remove all files in the folder."
+msgstr "Penggantiannya akan membuang semua fail di dalam folder."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Ganti folder \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Folder dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:402
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Ganti fail \"%s\"?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:404
+msgid "Replacing it will overwrite its content."
+msgstr "Penggantiannya akan menulisganti kandungan didalamnya."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:408
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Fail lama dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:412
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Fail yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:416
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Fail lain dengan nama yang sama sudah wujud di \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:471
+msgid "Original file"
+msgstr "Fail Asal"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:495
+msgid "Size:"
+msgstr "Saiz:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:502
+msgid "Type:"
+msgstr "Jenis:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
+msgid "Last modified:"
+msgstr "Terakhir diubahsuai:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:492
+msgid "Replace with"
+msgstr "Ganti dengan"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:517
+msgid "Merge"
+msgstr "Cantum"
+
+#: ../libcore/marlin-file-conflict-dialog.c:711
+msgid "_Select a new name for the destination"
+msgstr "_Pilih nama baru destinasi"
+
+#: ../libcore/marlin-file-conflict-dialog.c:725
+msgid "Reset"
+msgstr "Tetap semula"
+
+#: ../libcore/marlin-file-conflict-dialog.c:737
+msgid "Apply this action to all files"
+msgstr "Laksanakan tindakan ini untuk semua fail"
+
+#: ../libcore/marlin-file-conflict-dialog.c:748
+#: ../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr "_Langkau"
+
+#: ../libcore/marlin-file-conflict-dialog.c:753
+msgid "Re_name"
+msgstr "_Namakan Semula"
+
+#: ../libcore/marlin-file-conflict-dialog.c:759
+msgid "Replace"
+msgstr "Ganti"
+
+#: ../libcore/marlin-file-conflict-dialog.c:832
+msgid "File conflict"
+msgstr "Fail konflik"
 
 #: ../libcore/gof-file.c:366
 #, c-format
 msgid "link to %s"
 msgstr "paut ke %s"
 
-#: ../libcore/gof-file.c:1913
+#: ../libcore/gof-file.c:1908
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Gagal menghurai fail desktop: %s"
 
-#: ../libcore/gof-file.c:1951
+#: ../libcore/gof-file.c:1945
 msgid "No Exec field specified"
 msgstr "Tiada medan Exec dinyatakan"
 
-#: ../libcore/gof-file.c:1971
+#: ../libcore/gof-file.c:1964
 msgid "No URL field specified"
 msgstr "Tiada Ruang URL dinyatakan"
 
-#: ../libcore/gof-file.c:1977
+#: ../libcore/gof-file.c:1970
 msgid "Invalid desktop file"
 msgstr "Fail desktop tidak sah"
 
-#: ../libcore/gof-file.c:2272
+#: ../libcore/gof-file.c:2265
 msgid "Slashes are not allowed in filenames"
 msgstr "Garis miring tidak dibenarkan dalam nama fail"
 
-#: ../libcore/gof-file.c:2292
+#: ../libcore/gof-file.c:2285
 msgid "Toplevel files cannot be renamed"
 msgstr "Fail aras tinggi tidak boleh dinamakan semula"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Papar lebih _perician"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (unikod tidak sah)"
+
+#: ../libcore/marlin-file-operations.c:200
+msgid "S_kip All"
+msgstr "Lang_kau Semua"
+
+#: ../libcore/marlin-file-operations.c:201
+msgid "_Retry"
+msgstr "_Cuba Lagi"
+
+#: ../libcore/marlin-file-operations.c:202
+msgid "Delete _All"
+msgstr "Padam _Semua"
+
+#: ../libcore/marlin-file-operations.c:203
+msgid "_Replace"
+msgstr "_Ganti"
+
+#: ../libcore/marlin-file-operations.c:204
+msgid "Replace _All"
+msgstr "Ganti Semu_a"
+
+#: ../libcore/marlin-file-operations.c:205
+msgid "_Merge"
+msgstr "_Cantum"
+
+#: ../libcore/marlin-file-operations.c:206
+msgid "Merge _All"
+msgstr "Cantum _Semua"
+
+#: ../libcore/marlin-file-operations.c:207
+msgid "Copy _Anyway"
+msgstr "S_alin Jua"
+
+#: ../libcore/marlin-file-operations.c:296
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d saat"
+msgstr[1] "%'d saat"
+
+#: ../libcore/marlin-file-operations.c:301
+#: ../libcore/marlin-file-operations.c:312
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d minit"
+msgstr[1] "%'d minit"
+
+#: ../libcore/marlin-file-operations.c:311
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d jam"
+msgstr[1] "%'d jam"
+
+#: ../libcore/marlin-file-operations.c:319
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "anggaran %'d jam"
+msgstr[1] "anggaran %'d jam"
+
+#: ../libcore/marlin-file-operations.c:395
+#, c-format
+msgid "Link to %s"
+msgstr "Paut ke %s"
+
+#: ../libcore/marlin-file-operations.c:399
+#, c-format
+msgid "Another link to %s"
+msgstr "Pautan lain ke %s"
+
+#: ../libcore/marlin-file-operations.c:415
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'d dipautkan ke %s"
+
+#: ../libcore/marlin-file-operations.c:419
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "Ke %'d dipautkan ke %s"
+
+#: ../libcore/marlin-file-operations.c:423
+#, c-format
+msgid "%'drd link to %s"
+msgstr "Ke %'d dipautkan ke %s"
+
+#: ../libcore/marlin-file-operations.c:427
+#, c-format
+msgid "%'dth link to %s"
+msgstr "Ke %'d dipautkan ke %s"
+
+#: ../libcore/marlin-file-operations.c:465
+msgid " (copy)"
+msgstr " (salinan)"
+
+#: ../libcore/marlin-file-operations.c:467
+msgid " (another copy)"
+msgstr " (salinan lain)"
+
+#: ../libcore/marlin-file-operations.c:470
+#: ../libcore/marlin-file-operations.c:472
+#: ../libcore/marlin-file-operations.c:474
+#: ../libcore/marlin-file-operations.c:484
+msgid "th copy)"
+msgstr "salinan)"
+
+#: ../libcore/marlin-file-operations.c:477
+msgid "st copy)"
+msgstr "salinan)"
+
+#: ../libcore/marlin-file-operations.c:479
+msgid "nd copy)"
+msgstr "salinan)"
+
+#: ../libcore/marlin-file-operations.c:481
+msgid "rd copy)"
+msgstr "salinan)"
+
+#: ../libcore/marlin-file-operations.c:498
+#, c-format
+msgid "%s (copy)%s"
+msgstr "%s (salinan)%s"
+
+#: ../libcore/marlin-file-operations.c:500
+#, c-format
+msgid "%s (another copy)%s"
+msgstr "%s (salinan lain)%s"
+
+#: ../libcore/marlin-file-operations.c:503
+#: ../libcore/marlin-file-operations.c:505
+#: ../libcore/marlin-file-operations.c:507
+#: ../libcore/marlin-file-operations.c:521
+#, c-format
+msgid "%s (%'dth copy)%s"
+msgstr "%s (%'d salinan)%s"
+
+#: ../libcore/marlin-file-operations.c:515
+#, c-format
+msgid "%s (%'dst copy)%s"
+msgstr "%s (%'d salinan)%s"
+
+#: ../libcore/marlin-file-operations.c:517
+#, c-format
+msgid "%s (%'dnd copy)%s"
+msgstr "%s (%'d salinan)%s"
+
+#: ../libcore/marlin-file-operations.c:519
+#, c-format
+msgid "%s (%'drd copy)%s"
+msgstr "%s (%'d salinan)%s"
+
+#: ../libcore/marlin-file-operations.c:619
+msgid " ("
+msgstr " ("
+
+#: ../libcore/marlin-file-operations.c:627
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: ../libcore/marlin-file-operations.c:1384
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "Anda pasti hendak memadam \"%B\"  dari tong sampah secara kekal?"
+
+#: ../libcore/marlin-file-operations.c:1387
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] ""
+"Anda pasti hendak memadam \"%d\" item pilihan  dari tong sampah secara kekal?"
+msgstr[1] ""
+"Anda pasti hendak memadam \"%d\" item pilihan  dari tong sampah secara kekal?"
+
+#: ../libcore/marlin-file-operations.c:1397
+#: ../libcore/marlin-file-operations.c:1477
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Jika anda memadamkan suatu item, item itu akan hilang secara kekal."
+
+#: ../libcore/marlin-file-operations.c:1422
+msgid "Permanently delete all items from Trash?"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1423
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1426
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1427
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1438
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
+msgid "Empty _Trash"
+msgstr "Kosongkan Tong _Sampah"
+
+#: ../libcore/marlin-file-operations.c:1465
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Anda pasti hendak memadam  \"%B\" secara kekal?"
+
+#: ../libcore/marlin-file-operations.c:1468
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] "Anda pasti hendak memadam item %'d pilihan secara kekal?"
+msgstr[1] "Anda pasti hendak memadam  %'d item pilihan secara kekal?"
+
+#: ../libcore/marlin-file-operations.c:1493
+#: ../libcore/marlin-file-operations.c:1525
+msgid "Deleting files"
+msgstr "Memadam fail"
+
+#: ../libcore/marlin-file-operations.c:1519
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "%'d fail lagi untuk dipadam"
+msgstr[1] "%'d fail lagi untuk dipadam"
+
+#. / TRANSLATORS: %T will expand to a time like "2 minutes".
+#. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#: ../libcore/marlin-file-operations.c:1538
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "Tinggal %T"
+msgstr[1] "Tinggal %T"
+
+#: ../libcore/marlin-file-operations.c:1606
+#: ../libcore/marlin-file-operations.c:1640
+#: ../libcore/marlin-file-operations.c:1679
+#: ../libcore/marlin-file-operations.c:1756
+#: ../libcore/marlin-file-operations.c:2673
+msgid "Error while deleting."
+msgstr "Ralat bila memadam."
+
+#: ../libcore/marlin-file-operations.c:1610
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr ""
+"Fail didalam folder \"%B\" tidak boleh dipadam kerana anda tidak mempunyai "
+"keizinan untuk melihatnya."
+
+#: ../libcore/marlin-file-operations.c:1613
+#: ../libcore/marlin-file-operations.c:2732
+#: ../libcore/marlin-file-operations.c:3726
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr ""
+"Terdapat ralat mendapatkan maklumat mengenai fail didalam folder \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:1622
+#: ../libcore/marlin-file-operations.c:3735
+msgid "_Skip files"
+msgstr "_Langkau fail"
+
+#: ../libcore/marlin-file-operations.c:1643
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr ""
+"Folder  \"%B\" tidak boleh dipadam kerana anda tidak mempunyai kebenaran "
+"untuk membacanya."
+
+#: ../libcore/marlin-file-operations.c:1646
+#: ../libcore/marlin-file-operations.c:2771
+#: ../libcore/marlin-file-operations.c:3771
+msgid "There was an error reading the folder \"%B\"."
+msgstr "Terdapat ralat semasa membaca folder \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:1680
+msgid "Could not remove the folder %B."
+msgstr "Tidak dapat buang folder %B."
+
+#: ../libcore/marlin-file-operations.c:1757
+msgid "There was an error deleting %B."
+msgstr "Terdapat ralat semasa memadam %B."
+
+#: ../libcore/marlin-file-operations.c:1837
+#: ../libcore/marlin-file-operations.c:1849
+msgid "Moving files to trash"
+msgstr "Mengalih fail ke tong sampah"
+
+#: ../libcore/marlin-file-operations.c:1851
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "tinggal %'d fail untuk dibuang"
+msgstr[1] "tinggal %'d fail untuk dibuang"
+
+#: ../libcore/marlin-file-operations.c:1946
+#: ../libcore/marlin-file-operations.c:1949
+#: ../libcore/marlin-file-operations.c:1952
+msgid "Cannot move file to trash or delete it"
+msgstr "Tidak dapat alih fail ke tong sampah atau memadamnya"
+
+#: ../libcore/marlin-file-operations.c:1947
+msgid ""
+"It is not permitted to trash or delete files on a read only filesystem."
+msgstr ""
+"Tidak diizinkan memadam atau dimasukkan ke dalam tong sampah fail dalam "
+"sistem fail baca sahaja."
+
+#: ../libcore/marlin-file-operations.c:1950
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr ""
+"Tidak dibenarkan memadam atau membuang fail di dalam folder yang mana anda "
+"tidak mempunyai kelayakan tulis."
+
+#: ../libcore/marlin-file-operations.c:1953
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr ""
+"Tidak dibenarkan memadam atau membuang folder yang mana anda tidak mempunyai "
+"kelayakan tulis."
+
+#: ../libcore/marlin-file-operations.c:1955
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr ""
+"Tidak dapat alih fail ke dalam tong sampah. Cuba memadamnya serta-merta?"
+
+#: ../libcore/marlin-file-operations.c:1956
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+"Fail ini tidak dapat dialih ke dalam tong sampah. Lihat perincian di bawah "
+"untuk maklumat lanjut."
+
+#: ../libcore/marlin-file-operations.c:1960
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr "Tidak dapat alih fail ke dalam tong sampah. Cuba memadamnya?"
+
+#: ../libcore/marlin-file-operations.c:1961
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr ""
+"Fail ini tidak dapat dialih ke dalam tong sampah. Anda tidak boleh "
+"memadamnya."
+
+#: ../libcore/marlin-file-operations.c:1966
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+"\n"
+" Memadam fail akan membuangnya secara kekal"
+
+#: ../libcore/marlin-file-operations.c:2156
+msgid "Trashing Files"
+msgstr "Mengalih fail ke tong sampah"
+
+#: ../libcore/marlin-file-operations.c:2158
+msgid "Deleting Files"
+msgstr "Memadam fail"
+
+#: ../libcore/marlin-file-operations.c:2227
+msgid "Unable to eject %V"
+msgstr "Tidak dapat lentingkan %V"
+
+#: ../libcore/marlin-file-operations.c:2229
+msgid "Unable to unmount %V"
+msgstr "Tidak dapat nyahlekap %V"
+
+#: ../libcore/marlin-file-operations.c:2408
+msgid "Do you want to empty the trash before you unmount?"
+msgstr "Anda ingin mengosongkan tong sampah sebelum anda menyahlekap?"
+
+#: ../libcore/marlin-file-operations.c:2410
+msgid ""
+"In order to regain the free space on this volume the trash must be emptied. "
+"All trashed items on the volume will be permanently lost."
+msgstr ""
+"Bagi mengembalikan ruang bebas pada volum ini, tong sampah mestilah "
+"dikosongkan. Semua item tong sampah dalam volum ini akan hilang secara kekal."
+
+#: ../libcore/marlin-file-operations.c:2416
+msgid "Do _not Empty Trash"
+msgstr "Jangan Kosongkan Tong Sampah"
+
+#: ../libcore/marlin-file-operations.c:2530
+#, c-format
+msgid "Unable to mount %s"
+msgstr "Tidak boleh lekap  %s"
+
+#: ../libcore/marlin-file-operations.c:2608
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "Bersedia untuk menyalin fail %'d (%S)"
+msgstr[1] "Bersedia untuk menyalin fail %'d (%S)"
+
+#: ../libcore/marlin-file-operations.c:2614
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "Bersedia untuk mengalih fail %'d (%S)"
+msgstr[1] "Bersedia untuk mengalih fail %'d (%S)"
+
+#: ../libcore/marlin-file-operations.c:2620
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "Bersedia untuk memadam fail %'d (%S)"
+msgstr[1] "Bersedia untuk memadam fail %'d (%S)"
+
+#: ../libcore/marlin-file-operations.c:2626
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Bersedia untuk memindah fail %'d kedalam tong sampah"
+msgstr[1] "Bersedia untuk memindah fail %'d kedalam tong sampah"
+
+#: ../libcore/marlin-file-operations.c:2669
+#: ../libcore/marlin-file-operations.c:3586
+#: ../libcore/marlin-file-operations.c:3718
+#: ../libcore/marlin-file-operations.c:3763
+msgid "Error while copying."
+msgstr "Ralat semasa menyalin."
+
+#: ../libcore/marlin-file-operations.c:2671
+#: ../libcore/marlin-file-operations.c:3716
+#: ../libcore/marlin-file-operations.c:3761
+msgid "Error while moving."
+msgstr "Ralat semasa mengalih."
+
+#: ../libcore/marlin-file-operations.c:2675
+msgid "Error while moving files to trash."
+msgstr "Ralat semasa mengalihkan fail ke tong sampah."
+
+#: ../libcore/marlin-file-operations.c:2729
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Fail didalam folder \"%B\" tidak boleh dikendalikan kerana anda tidak "
+"mempunyai keizinan untuk melihatnya."
+
+#: ../libcore/marlin-file-operations.c:2768
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Folder \"%B\" tidak boleh dikendalikan kerana anda tidak mempunyai keizinan "
+"untuk membacanya."
+
+#: ../libcore/marlin-file-operations.c:2844
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Fail \"%B\" tidak boleh dikendalikan kerana anda tidak mempunyai keizinan "
+"untuk membacanya."
+
+#: ../libcore/marlin-file-operations.c:2847
+msgid "There was an error getting information about \"%B\"."
+msgstr "Terdapat ralat ketika memperoleh maklumat mengenai \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:2947
+#: ../libcore/marlin-file-operations.c:2989
+#: ../libcore/marlin-file-operations.c:3022
+#: ../libcore/marlin-file-operations.c:3052
+msgid "Error while copying to \"%B\"."
+msgstr "Ralat ketika menyalin \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:2951
+msgid "You do not have permissions to access the destination folder."
+msgstr "Anda tidak mempunyai kebenaran untuk mencapai folder destinasi."
+
+#: ../libcore/marlin-file-operations.c:2953
+msgid "There was an error getting information about the destination."
+msgstr "Terdapat ralat semasa memperoleh maklumat mengenai destinasi."
+
+#: ../libcore/marlin-file-operations.c:2990
+msgid "The destination is not a folder."
+msgstr "Destinasi bukan folder."
+
+#: ../libcore/marlin-file-operations.c:3023
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"Tidak cukup ruang didalam destinasi. Cuba buang fail untuk mendapatkan ruang."
+
+#: ../libcore/marlin-file-operations.c:3025
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Hanya ada %S, tetapi %S diperlukan."
+
+#: ../libcore/marlin-file-operations.c:3053
+msgid "The destination is read-only."
+msgstr "Destinasi hanya baca-sahaja."
+
+#: ../libcore/marlin-file-operations.c:3114
+msgid "Moving \"%B\" to \"%B\""
+msgstr "Mengalih \"%B\" ke \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3115
+msgid "Copying \"%B\" to \"%B\""
+msgstr "Menyalin \"%B\" ke \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3119
+msgid "Duplicating \"%B\""
+msgstr "Menduakan \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3123
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Mengalih fail %'d (dari \"%B\") ke \"%B\""
+msgstr[1] "Mengalih fail %'d (dari \"%B\") ke \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3126
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Menyalin %'d fail (dalam \"%B\") ke \"%B\""
+msgstr[1] "Menyalin %'d fail (dalam \"%B\") ke \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3133
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Menduakan %'d fail (dalam \"%B\")"
+msgstr[1] "Menduakan %'d fail (dalam \"%B\")"
+
+#: ../libcore/marlin-file-operations.c:3142
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "Mengalih fail %'d ke \"%B\""
+msgstr[1] "Mengalih fail %'d ke \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3146
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "Menyalin fail %'d ke \"%B\""
+msgstr[1] "Menyalin fail %'d ke \"%B\""
+
+#: ../libcore/marlin-file-operations.c:3151
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "Menduakan fail %'d"
+msgstr[1] "Menduakan fail %'d"
+
+#. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
+#: ../libcore/marlin-file-operations.c:3202
+#, c-format
+msgid "%S of %S"
+msgstr "%S dari %S"
+
+#. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+#. / "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
+#. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#: ../libcore/marlin-file-operations.c:3211
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S dari %S — tinggal %T (%S/saat)"
+msgstr[1] "%S dari %S — tinggal %T (%S/saat)"
+
+#: ../libcore/marlin-file-operations.c:3590
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"Folder \"%B\" tidak boleh disalin kerana anda tidak mempunyai keizinan "
+"menciptakannya didalam destinasi."
+
+#: ../libcore/marlin-file-operations.c:3593
+msgid "There was an error creating the folder \"%B\"."
+msgstr "Terdapat ralat semasa mencipta folder \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:3723
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Fail \"%B\" tidak boleh disalin kerana anda tidak mempunyai keizinan "
+"melihatnya."
+
+#: ../libcore/marlin-file-operations.c:3768
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr ""
+"Folder \"%B\" tidak boleh disalin kerana anda tidak mempunyai keizinan "
+"membacanya."
+
+#: ../libcore/marlin-file-operations.c:3813
+#: ../libcore/marlin-file-operations.c:4519
+msgid "Error while moving \"%B\"."
+msgstr "Ralat semasa memindah \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:3814
+msgid "Could not remove the source folder."
+msgstr "Tidak dapat membuang folder sumber."
+
+#: ../libcore/marlin-file-operations.c:3899
+#: ../libcore/marlin-file-operations.c:3940
+#: ../libcore/marlin-file-operations.c:4521
+msgid "Error while copying \"%B\"."
+msgstr "Ralat semasa menyalin \"%B\"."
+
+#: ../libcore/marlin-file-operations.c:3900
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "Tidak boleh buang fail dari folder sedia ada %F."
+
+#: ../libcore/marlin-file-operations.c:3941
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "Tidak dapat membuang fail %F yang sedia ada."
+
+#: ../libcore/marlin-file-operations.c:4271
+#: ../libcore/marlin-file-operations.c:4947
+msgid "You cannot move a folder into itself."
+msgstr "Anda tidak boleh alih folder ke dirinya sendiri."
+
+#: ../libcore/marlin-file-operations.c:4272
+#: ../libcore/marlin-file-operations.c:4948
+msgid "You cannot copy a folder into itself."
+msgstr "Anda tidak boleh salin folder ke dirinya sendiri."
+
+#: ../libcore/marlin-file-operations.c:4273
+#: ../libcore/marlin-file-operations.c:4949
+msgid "The destination folder is inside the source folder."
+msgstr "Folder destinasi berada dalam folder sumber."
+
+#: ../libcore/marlin-file-operations.c:4304
+msgid "You cannot move a file over itself."
+msgstr "Anda tidak boleh mengalih fail keatas dirinya sendiri."
+
+#: ../libcore/marlin-file-operations.c:4305
+msgid "You cannot copy a file over itself."
+msgstr "Anda tidak boleh salin fail ke atas dirinya sendiri."
+
+#: ../libcore/marlin-file-operations.c:4306
+msgid "The source file would be overwritten by the destination."
+msgstr "Fail sumber akan ditulis-ganti oleh destinasi."
+
+#: ../libcore/marlin-file-operations.c:4523
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr ""
+"Tidak dapat membuang fail yang sudah wujud dengan nama yang sama dalam %F."
+
+#: ../libcore/marlin-file-operations.c:4593
+msgid "Cannot copy \"%B\" here."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:4594
+msgid "There was an error copying the file into %B."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:4821
+msgid "Copying Files"
+msgstr "Menyalin Fail"
+
+#: ../libcore/marlin-file-operations.c:4847
+msgid "Preparing to move to \"%B\""
+msgstr "Bersedia mengalih ke \"%B\""
+
+#: ../libcore/marlin-file-operations.c:4859
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Bersedia mengalih %'d fail"
+msgstr[1] "Bersedia mengalih %'d fail"
+
+#: ../libcore/marlin-file-operations.c:5107
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:5108
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "Terdapat ralat semasa mengalih fail kedalam %F."
+
+#: ../libcore/marlin-file-operations.c:5370
+msgid "Moving Files"
+msgstr "Mengalih Fail"
+
+#: ../libcore/marlin-file-operations.c:5399
+msgid "Creating links in \"%B\""
+msgstr "Mencipta pautan di \"%B\""
+
+#: ../libcore/marlin-file-operations.c:5410
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Membina pautan ke fail %'d"
+msgstr[1] "Membina pautan ke fail %'d"
+
+#: ../libcore/marlin-file-operations.c:5551
+msgid "Error while creating link to %B."
+msgstr "Ralat semasa mencipta pautan ke %B."
+
+#: ../libcore/marlin-file-operations.c:5553
+msgid "Symbolic links only supported for local files"
+msgstr "Pautan simbolik hanya menyokong fail setempat"
+
+#: ../libcore/marlin-file-operations.c:5556
+msgid "The target doesn't support symbolic links."
+msgstr "Sasaran tidak menyokong pautan simbolik."
+
+#: ../libcore/marlin-file-operations.c:5559
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "Terdapat ralat semasa mencipta pautan simbolik dalam %F."
+
+#: ../libcore/marlin-file-operations.c:5887
+#: ../libcore/marlin-file-operations.c:5890
+msgid "Setting permissions"
+msgstr "Menetapkan keizinan"
+
+#: ../libcore/marlin-file-operations.c:6002
+msgid "Cannot copy into trash."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:6003
+msgid "It is not permitted to copy files into the trash"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:6144
+msgid "untitled folder"
+msgstr "folder tidak bertajuk"
+
+#: ../libcore/marlin-file-operations.c:6152
+msgid "new file"
+msgstr "fail baru"
+
+#: ../libcore/marlin-file-operations.c:6323
+msgid "Error while creating directory %B."
+msgstr "Ralat semasa mencipta direktori %B."
+
+#: ../libcore/marlin-file-operations.c:6325
+msgid "Error while creating file %B."
+msgstr "Ralat semasa mencipta fail %B."
+
+#: ../libcore/marlin-file-operations.c:6327
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "Terdapat ralat semasa mencipta direktori di %F."
+
+#: ../libcore/marlin-file-operations.c:6649
+msgid "Emptying the trash"
+msgstr "Mengosongkan tong sampah"
+
+#: ../libcore/marlin-file-operations.c:6661
+msgid "Emptying Trash"
+msgstr "Mengosongkan Tong Sampah"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
@@ -580,934 +1478,163 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Buat semula ubah pemilik bagi %d item"
 msgstr[1] "Buat semula ubah pemilik bagi %d item"
 
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Hari ini pada %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Semalam pada %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b pada %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y pada %-I:%M %p"
+
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
 msgstr "Menyediakan"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Papar lebih _perician"
-
-#: ../libcore/marlin-file-operations.c:199
-#: ../libcore/marlin-file-conflict-dialog.c:748
-msgid "_Skip"
-msgstr "_Langkau"
-
-#: ../libcore/marlin-file-operations.c:200
-msgid "S_kip All"
-msgstr "Lang_kau Semua"
-
-#: ../libcore/marlin-file-operations.c:201
-msgid "_Retry"
-msgstr "_Cuba Lagi"
-
-#: ../libcore/marlin-file-operations.c:202
-msgid "Delete _All"
-msgstr "Padam _Semua"
-
-#: ../libcore/marlin-file-operations.c:203
-msgid "_Replace"
-msgstr "_Ganti"
-
-#: ../libcore/marlin-file-operations.c:204
-msgid "Replace _All"
-msgstr "Ganti Semu_a"
-
-#: ../libcore/marlin-file-operations.c:205
-msgid "_Merge"
-msgstr "_Cantum"
-
-#: ../libcore/marlin-file-operations.c:206
-msgid "Merge _All"
-msgstr "Cantum _Semua"
-
-#: ../libcore/marlin-file-operations.c:207
-msgid "Copy _Anyway"
-msgstr "S_alin Jua"
-
-#: ../libcore/marlin-file-operations.c:296
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d saat"
-msgstr[1] "%'d saat"
-
-#: ../libcore/marlin-file-operations.c:301
-#: ../libcore/marlin-file-operations.c:312
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d minit"
-msgstr[1] "%'d minit"
-
-#: ../libcore/marlin-file-operations.c:311
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d jam"
-msgstr[1] "%'d jam"
-
-#: ../libcore/marlin-file-operations.c:319
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "anggaran %'d jam"
-msgstr[1] "anggaran %'d jam"
-
-#: ../libcore/marlin-file-operations.c:395
-#, c-format
-msgid "Link to %s"
-msgstr "Paut ke %s"
-
-#: ../libcore/marlin-file-operations.c:399
-#, c-format
-msgid "Another link to %s"
-msgstr "Pautan lain ke %s"
-
-#: ../libcore/marlin-file-operations.c:415
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%'d dipautkan ke %s"
-
-#: ../libcore/marlin-file-operations.c:419
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "Ke %'d dipautkan ke %s"
-
-#: ../libcore/marlin-file-operations.c:423
-#, c-format
-msgid "%'drd link to %s"
-msgstr "Ke %'d dipautkan ke %s"
-
-#: ../libcore/marlin-file-operations.c:427
-#, c-format
-msgid "%'dth link to %s"
-msgstr "Ke %'d dipautkan ke %s"
-
-#: ../libcore/marlin-file-operations.c:465
-msgid " (copy)"
-msgstr " (salinan)"
-
-#: ../libcore/marlin-file-operations.c:467
-msgid " (another copy)"
-msgstr " (salinan lain)"
-
-#: ../libcore/marlin-file-operations.c:470
-#: ../libcore/marlin-file-operations.c:472
-#: ../libcore/marlin-file-operations.c:474
-#: ../libcore/marlin-file-operations.c:484
-msgid "th copy)"
-msgstr "salinan)"
-
-#: ../libcore/marlin-file-operations.c:477
-msgid "st copy)"
-msgstr "salinan)"
-
-#: ../libcore/marlin-file-operations.c:479
-msgid "nd copy)"
-msgstr "salinan)"
-
-#: ../libcore/marlin-file-operations.c:481
-msgid "rd copy)"
-msgstr "salinan)"
-
-#: ../libcore/marlin-file-operations.c:498
-#, c-format
-msgid "%s (copy)%s"
-msgstr "%s (salinan)%s"
-
-#: ../libcore/marlin-file-operations.c:500
-#, c-format
-msgid "%s (another copy)%s"
-msgstr "%s (salinan lain)%s"
-
-#: ../libcore/marlin-file-operations.c:503
-#: ../libcore/marlin-file-operations.c:505
-#: ../libcore/marlin-file-operations.c:507
-#: ../libcore/marlin-file-operations.c:521
-#, c-format
-msgid "%s (%'dth copy)%s"
-msgstr "%s (%'d salinan)%s"
-
-#: ../libcore/marlin-file-operations.c:515
-#, c-format
-msgid "%s (%'dst copy)%s"
-msgstr "%s (%'d salinan)%s"
-
-#: ../libcore/marlin-file-operations.c:517
-#, c-format
-msgid "%s (%'dnd copy)%s"
-msgstr "%s (%'d salinan)%s"
-
-#: ../libcore/marlin-file-operations.c:519
-#, c-format
-msgid "%s (%'drd copy)%s"
-msgstr "%s (%'d salinan)%s"
-
-#: ../libcore/marlin-file-operations.c:619
-msgid " ("
-msgstr " ("
-
-#: ../libcore/marlin-file-operations.c:627
-#, c-format
-msgid " (%'d"
-msgstr " (%'d"
-
-#: ../libcore/marlin-file-operations.c:1384
-msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Anda pasti hendak memadam \"%B\"  dari tong sampah secara kekal?"
-
-#: ../libcore/marlin-file-operations.c:1387
-#, c-format
-msgid ""
-"Are you sure you want to permanently delete the %'d selected item from the "
-"trash?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items from the "
-"trash?"
-msgstr[0] ""
-"Anda pasti hendak memadam \"%d\" item pilihan  dari tong sampah secara kekal?"
-msgstr[1] ""
-"Anda pasti hendak memadam \"%d\" item pilihan  dari tong sampah secara kekal?"
-
-#: ../libcore/marlin-file-operations.c:1397
-#: ../libcore/marlin-file-operations.c:1477
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Jika anda memadamkan suatu item, item itu akan hilang secara kekal."
-
-#: ../libcore/marlin-file-operations.c:1422
-msgid "Permanently delete all items from Trash?"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1423
-msgid ""
-"All items in all trash directories, including those on any mounted external "
-"drives, will be permanently deleted."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1426
-msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1427
-msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1485
-msgid "Empty _Trash"
-msgstr "Kosongkan Tong _Sampah"
-
-#: ../libcore/marlin-file-operations.c:1465
-msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Anda pasti hendak memadam  \"%B\" secara kekal?"
-
-#: ../libcore/marlin-file-operations.c:1468
-#, c-format
-msgid "Are you sure you want to permanently delete the %'d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Anda pasti hendak memadam item %'d pilihan secara kekal?"
-msgstr[1] "Anda pasti hendak memadam  %'d item pilihan secara kekal?"
-
-#: ../libcore/marlin-file-operations.c:1493
-#: ../libcore/marlin-file-operations.c:1525
-msgid "Deleting files"
-msgstr "Memadam fail"
-
-#: ../libcore/marlin-file-operations.c:1519
-#, c-format
-msgid "%'d file left to delete"
-msgid_plural "%'d files left to delete"
-msgstr[0] "%'d fail lagi untuk dipadam"
-msgstr[1] "%'d fail lagi untuk dipadam"
-
-#. /plural form will be used depending on the remaining time (i.e. the %T argument).
-#. 
-#: ../libcore/marlin-file-operations.c:1539
-msgid "%T left"
-msgid_plural "%T left"
-msgstr[0] "Tinggal %T"
-msgstr[1] "Tinggal %T"
-
-#: ../libcore/marlin-file-operations.c:1607
-#: ../libcore/marlin-file-operations.c:1641
-#: ../libcore/marlin-file-operations.c:1680
-#: ../libcore/marlin-file-operations.c:1757
-#: ../libcore/marlin-file-operations.c:2674
-msgid "Error while deleting."
-msgstr "Ralat bila memadam."
-
-#: ../libcore/marlin-file-operations.c:1611
-msgid ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
-"permissions to see them."
-msgstr ""
-"Fail didalam folder \"%B\" tidak boleh dipadam kerana anda tidak mempunyai "
-"keizinan untuk melihatnya."
-
-#: ../libcore/marlin-file-operations.c:1614
-#: ../libcore/marlin-file-operations.c:2733
-#: ../libcore/marlin-file-operations.c:3729
-msgid ""
-"There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
-"Terdapat ralat mendapatkan maklumat mengenai fail didalam folder \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:1623
-#: ../libcore/marlin-file-operations.c:3738
-msgid "_Skip files"
-msgstr "_Langkau fail"
-
-#: ../libcore/marlin-file-operations.c:1644
-msgid ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
-"read it."
-msgstr ""
-"Folder  \"%B\" tidak boleh dipadam kerana anda tidak mempunyai kebenaran "
-"untuk membacanya."
-
-#: ../libcore/marlin-file-operations.c:1647
-#: ../libcore/marlin-file-operations.c:2772
-#: ../libcore/marlin-file-operations.c:3774
-msgid "There was an error reading the folder \"%B\"."
-msgstr "Terdapat ralat semasa membaca folder \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:1681
-msgid "Could not remove the folder %B."
-msgstr "Tidak dapat buang folder %B."
-
-#: ../libcore/marlin-file-operations.c:1758
-msgid "There was an error deleting %B."
-msgstr "Terdapat ralat semasa memadam %B."
-
-#: ../libcore/marlin-file-operations.c:1838
-#: ../libcore/marlin-file-operations.c:1850
-msgid "Moving files to trash"
-msgstr "Mengalih fail ke tong sampah"
-
-#: ../libcore/marlin-file-operations.c:1852
-#, c-format
-msgid "%'d file left to trash"
-msgid_plural "%'d files left to trash"
-msgstr[0] "tinggal %'d fail untuk dibuang"
-msgstr[1] "tinggal %'d fail untuk dibuang"
-
-#: ../libcore/marlin-file-operations.c:1947
-#: ../libcore/marlin-file-operations.c:1950
-#: ../libcore/marlin-file-operations.c:1953
-msgid "Cannot move file to trash or delete it"
-msgstr "Tidak dapat alih fail ke tong sampah atau memadamnya"
-
-#: ../libcore/marlin-file-operations.c:1948
-msgid ""
-"It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
-"Tidak diizinkan memadam atau dimasukkan ke dalam tong sampah fail dalam "
-"sistem fail baca sahaja."
-
-#: ../libcore/marlin-file-operations.c:1951
-msgid ""
-"It is not permitted to trash or delete files inside folders for which you do "
-"not have write privileges."
-msgstr ""
-"Tidak dibenarkan memadam atau membuang fail di dalam folder yang mana anda "
-"tidak mempunyai kelayakan tulis."
-
-#: ../libcore/marlin-file-operations.c:1954
-msgid ""
-"It is not permitted to trash or delete folders for which you do not have "
-"write privileges."
-msgstr ""
-"Tidak dibenarkan memadam atau membuang folder yang mana anda tidak mempunyai "
-"kelayakan tulis."
-
-#: ../libcore/marlin-file-operations.c:1956
-msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
-"Tidak dapat alih fail ke dalam tong sampah. Cuba memadamnya serta-merta?"
-
-#: ../libcore/marlin-file-operations.c:1957
-msgid ""
-"This file could not be moved to trash. See details below for further "
-"information."
-msgstr ""
-"Fail ini tidak dapat dialih ke dalam tong sampah. Lihat perincian di bawah "
-"untuk maklumat lanjut."
-
-#: ../libcore/marlin-file-operations.c:1961
-msgid "Cannot move file to trash.  Try to delete it?"
-msgstr "Tidak dapat alih fail ke dalam tong sampah. Cuba memadamnya?"
-
-#: ../libcore/marlin-file-operations.c:1962
-msgid ""
-"This file could not be moved to trash. You may not be able to delete it "
-"either."
-msgstr ""
-"Fail ini tidak dapat dialih ke dalam tong sampah. Anda tidak boleh "
-"memadamnya."
-
-#: ../libcore/marlin-file-operations.c:1967
-msgid ""
-"\n"
-" Deleting a file removes it permanently"
-msgstr ""
-"\n"
-" Memadam fail akan membuangnya secara kekal"
-
-#: ../libcore/marlin-file-operations.c:2157
-msgid "Trashing Files"
-msgstr "Mengalih fail ke tong sampah"
-
-#: ../libcore/marlin-file-operations.c:2159
-msgid "Deleting Files"
-msgstr "Memadam fail"
-
-#: ../libcore/marlin-file-operations.c:2228
-msgid "Unable to eject %V"
-msgstr "Tidak dapat lentingkan %V"
-
-#: ../libcore/marlin-file-operations.c:2230
-msgid "Unable to unmount %V"
-msgstr "Tidak dapat nyahlekap %V"
-
-#: ../libcore/marlin-file-operations.c:2409
-msgid "Do you want to empty the trash before you unmount?"
-msgstr "Anda ingin mengosongkan tong sampah sebelum anda menyahlekap?"
-
-#: ../libcore/marlin-file-operations.c:2411
-msgid ""
-"In order to regain the free space on this volume the trash must be emptied. "
-"All trashed items on the volume will be permanently lost."
-msgstr ""
-"Bagi mengembalikan ruang bebas pada volum ini, tong sampah mestilah "
-"dikosongkan. Semua item tong sampah dalam volum ini akan hilang secara kekal."
-
-#: ../libcore/marlin-file-operations.c:2417
-msgid "Do _not Empty Trash"
-msgstr "Jangan Kosongkan Tong Sampah"
-
-#: ../libcore/marlin-file-operations.c:2531
-#, c-format
-msgid "Unable to mount %s"
-msgstr "Tidak boleh lekap  %s"
-
-#: ../libcore/marlin-file-operations.c:2609
-#, c-format
-msgid "Preparing to copy %'d file (%S)"
-msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "Bersedia untuk menyalin fail %'d (%S)"
-msgstr[1] "Bersedia untuk menyalin fail %'d (%S)"
-
-#: ../libcore/marlin-file-operations.c:2615
-#, c-format
-msgid "Preparing to move %'d file (%S)"
-msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Bersedia untuk mengalih fail %'d (%S)"
-msgstr[1] "Bersedia untuk mengalih fail %'d (%S)"
-
-#: ../libcore/marlin-file-operations.c:2621
-#, c-format
-msgid "Preparing to delete %'d file (%S)"
-msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Bersedia untuk memadam fail %'d (%S)"
-msgstr[1] "Bersedia untuk memadam fail %'d (%S)"
-
-#: ../libcore/marlin-file-operations.c:2627
-#, c-format
-msgid "Preparing to trash %'d file"
-msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Bersedia untuk memindah fail %'d kedalam tong sampah"
-msgstr[1] "Bersedia untuk memindah fail %'d kedalam tong sampah"
-
-#: ../libcore/marlin-file-operations.c:2670
-#: ../libcore/marlin-file-operations.c:3589
-#: ../libcore/marlin-file-operations.c:3721
-#: ../libcore/marlin-file-operations.c:3766
-msgid "Error while copying."
-msgstr "Ralat semasa menyalin."
-
-#: ../libcore/marlin-file-operations.c:2672
-#: ../libcore/marlin-file-operations.c:3719
-#: ../libcore/marlin-file-operations.c:3764
-msgid "Error while moving."
-msgstr "Ralat semasa mengalih."
-
-#: ../libcore/marlin-file-operations.c:2676
-msgid "Error while moving files to trash."
-msgstr "Ralat semasa mengalihkan fail ke tong sampah."
-
-#: ../libcore/marlin-file-operations.c:2730
-msgid ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
-"permissions to see them."
-msgstr ""
-"Fail didalam folder \"%B\" tidak boleh dikendalikan kerana anda tidak "
-"mempunyai keizinan untuk melihatnya."
-
-#: ../libcore/marlin-file-operations.c:2769
-msgid ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"Folder \"%B\" tidak boleh dikendalikan kerana anda tidak mempunyai keizinan "
-"untuk membacanya."
-
-#: ../libcore/marlin-file-operations.c:2845
-msgid ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"Fail \"%B\" tidak boleh dikendalikan kerana anda tidak mempunyai keizinan "
-"untuk membacanya."
-
-#: ../libcore/marlin-file-operations.c:2848
-msgid "There was an error getting information about \"%B\"."
-msgstr "Terdapat ralat ketika memperoleh maklumat mengenai \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:2948
-#: ../libcore/marlin-file-operations.c:2990
-#: ../libcore/marlin-file-operations.c:3023
-#: ../libcore/marlin-file-operations.c:3053
-msgid "Error while copying to \"%B\"."
-msgstr "Ralat ketika menyalin \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:2952
-msgid "You do not have permissions to access the destination folder."
-msgstr "Anda tidak mempunyai kebenaran untuk mencapai folder destinasi."
-
-#: ../libcore/marlin-file-operations.c:2954
-msgid "There was an error getting information about the destination."
-msgstr "Terdapat ralat semasa memperoleh maklumat mengenai destinasi."
-
-#: ../libcore/marlin-file-operations.c:2991
-msgid "The destination is not a folder."
-msgstr "Destinasi bukan folder."
-
-#: ../libcore/marlin-file-operations.c:3024
-msgid ""
-"There is not enough space on the destination. Try to remove files to make "
-"space."
-msgstr ""
-"Tidak cukup ruang didalam destinasi. Cuba buang fail untuk mendapatkan ruang."
-
-#: ../libcore/marlin-file-operations.c:3026
-#, c-format
-msgid "There is %S available, but %S is required."
-msgstr "Hanya ada %S, tetapi %S diperlukan."
-
-#: ../libcore/marlin-file-operations.c:3054
-msgid "The destination is read-only."
-msgstr "Destinasi hanya baca-sahaja."
-
-#: ../libcore/marlin-file-operations.c:3115
-msgid "Moving \"%B\" to \"%B\""
-msgstr "Mengalih \"%B\" ke \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3116
-msgid "Copying \"%B\" to \"%B\""
-msgstr "Menyalin \"%B\" ke \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3120
-msgid "Duplicating \"%B\""
-msgstr "Menduakan \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3124
-msgid "Moving %'d file (in \"%B\") to \"%B\""
-msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Mengalih fail %'d (dari \"%B\") ke \"%B\""
-msgstr[1] "Mengalih fail %'d (dari \"%B\") ke \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3127
-msgid "Copying %'d file (in \"%B\") to \"%B\""
-msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Menyalin %'d fail (dalam \"%B\") ke \"%B\""
-msgstr[1] "Menyalin %'d fail (dalam \"%B\") ke \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3134
-msgid "Duplicating %'d file (in \"%B\")"
-msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Menduakan %'d fail (dalam \"%B\")"
-msgstr[1] "Menduakan %'d fail (dalam \"%B\")"
-
-#: ../libcore/marlin-file-operations.c:3143
-msgid "Moving %'d file to \"%B\""
-msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Mengalih fail %'d ke \"%B\""
-msgstr[1] "Mengalih fail %'d ke \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3147
-msgid "Copying %'d file to \"%B\""
-msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "Menyalin fail %'d ke \"%B\""
-msgstr[1] "Menyalin fail %'d ke \"%B\""
-
-#: ../libcore/marlin-file-operations.c:3152
-#, c-format
-msgid "Duplicating %'d file"
-msgid_plural "Duplicating %'d files"
-msgstr[0] "Menduakan fail %'d"
-msgstr[1] "Menduakan fail %'d"
-
-#: ../libcore/marlin-file-operations.c:3203
-#, c-format
-msgid "%S of %S"
-msgstr "%S dari %S"
-
-#. /sec)"
-#. *
-#. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#. 
-#: ../libcore/marlin-file-operations.c:3214
-msgid "%S of %S — %T left (%S/sec)"
-msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S dari %S — tinggal %T (%S/saat)"
-msgstr[1] "%S dari %S — tinggal %T (%S/saat)"
-
-#: ../libcore/marlin-file-operations.c:3593
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"create it in the destination."
-msgstr ""
-"Folder \"%B\" tidak boleh disalin kerana anda tidak mempunyai keizinan "
-"menciptakannya didalam destinasi."
-
-#: ../libcore/marlin-file-operations.c:3596
-msgid "There was an error creating the folder \"%B\"."
-msgstr "Terdapat ralat semasa mencipta folder \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:3726
-msgid ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
-"permissions to see them."
-msgstr ""
-"Fail \"%B\" tidak boleh disalin kerana anda tidak mempunyai keizinan "
-"melihatnya."
-
-#: ../libcore/marlin-file-operations.c:3771
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"read it."
-msgstr ""
-"Folder \"%B\" tidak boleh disalin kerana anda tidak mempunyai keizinan "
-"membacanya."
-
-#: ../libcore/marlin-file-operations.c:3816
-#: ../libcore/marlin-file-operations.c:4522
-msgid "Error while moving \"%B\"."
-msgstr "Ralat semasa memindah \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:3817
-msgid "Could not remove the source folder."
-msgstr "Tidak dapat membuang folder sumber."
-
-#: ../libcore/marlin-file-operations.c:3902
-#: ../libcore/marlin-file-operations.c:3943
-#: ../libcore/marlin-file-operations.c:4524
-msgid "Error while copying \"%B\"."
-msgstr "Ralat semasa menyalin \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:3903
-#, c-format
-msgid "Could not remove files from the already existing folder %F."
-msgstr "Tidak boleh buang fail dari folder sedia ada %F."
-
-#: ../libcore/marlin-file-operations.c:3944
-#, c-format
-msgid "Could not remove the already existing file %F."
-msgstr "Tidak dapat membuang fail %F yang sedia ada."
-
-#: ../libcore/marlin-file-operations.c:4274
-#: ../libcore/marlin-file-operations.c:4950
-msgid "You cannot move a folder into itself."
-msgstr "Anda tidak boleh alih folder ke dirinya sendiri."
-
-#: ../libcore/marlin-file-operations.c:4275
-#: ../libcore/marlin-file-operations.c:4951
-msgid "You cannot copy a folder into itself."
-msgstr "Anda tidak boleh salin folder ke dirinya sendiri."
-
-#: ../libcore/marlin-file-operations.c:4276
-#: ../libcore/marlin-file-operations.c:4952
-msgid "The destination folder is inside the source folder."
-msgstr "Folder destinasi berada dalam folder sumber."
-
-#: ../libcore/marlin-file-operations.c:4307
-msgid "You cannot move a file over itself."
-msgstr "Anda tidak boleh mengalih fail keatas dirinya sendiri."
-
-#: ../libcore/marlin-file-operations.c:4308
-msgid "You cannot copy a file over itself."
-msgstr "Anda tidak boleh salin fail ke atas dirinya sendiri."
-
-#: ../libcore/marlin-file-operations.c:4309
-msgid "The source file would be overwritten by the destination."
-msgstr "Fail sumber akan ditulis-ganti oleh destinasi."
-
-#: ../libcore/marlin-file-operations.c:4526
-#, c-format
-msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
-"Tidak dapat membuang fail yang sudah wujud dengan nama yang sama dalam %F."
-
-#: ../libcore/marlin-file-operations.c:4596
-msgid "Cannot copy \"%B\" here."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:4597
-msgid "There was an error copying the file into %B."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:4824
-msgid "Copying Files"
-msgstr "Menyalin Fail"
-
-#: ../libcore/marlin-file-operations.c:4850
-msgid "Preparing to move to \"%B\""
-msgstr "Bersedia mengalih ke \"%B\""
-
-#: ../libcore/marlin-file-operations.c:4862
-#, c-format
-msgid "Preparing to move %'d file"
-msgid_plural "Preparing to move %'d files"
-msgstr[0] "Bersedia mengalih %'d fail"
-msgstr[1] "Bersedia mengalih %'d fail"
-
-#: ../libcore/marlin-file-operations.c:5110
-#, c-format
-msgid "Error while moving \"%F\"."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:5111
-#, c-format
-msgid "There was an error moving the file into %F."
-msgstr "Terdapat ralat semasa mengalih fail kedalam %F."
-
-#: ../libcore/marlin-file-operations.c:5373
-msgid "Moving Files"
-msgstr "Mengalih Fail"
-
-#: ../libcore/marlin-file-operations.c:5402
-msgid "Creating links in \"%B\""
-msgstr "Mencipta pautan di \"%B\""
-
-#: ../libcore/marlin-file-operations.c:5413
-#, c-format
-msgid "Making link to %'d file"
-msgid_plural "Making links to %'d files"
-msgstr[0] "Membina pautan ke fail %'d"
-msgstr[1] "Membina pautan ke fail %'d"
-
-#: ../libcore/marlin-file-operations.c:5554
-msgid "Error while creating link to %B."
-msgstr "Ralat semasa mencipta pautan ke %B."
-
-#: ../libcore/marlin-file-operations.c:5556
-msgid "Symbolic links only supported for local files"
-msgstr "Pautan simbolik hanya menyokong fail setempat"
-
-#: ../libcore/marlin-file-operations.c:5559
-msgid "The target doesn't support symbolic links."
-msgstr "Sasaran tidak menyokong pautan simbolik."
-
-#: ../libcore/marlin-file-operations.c:5562
-#, c-format
-msgid "There was an error creating the symlink in %F."
-msgstr "Terdapat ralat semasa mencipta pautan simbolik dalam %F."
-
-#: ../libcore/marlin-file-operations.c:5890
-#: ../libcore/marlin-file-operations.c:5893
-msgid "Setting permissions"
-msgstr "Menetapkan keizinan"
-
-#: ../libcore/marlin-file-operations.c:6005
-msgid "Cannot copy into trash."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:6006
-msgid "It is not permitted to copy files into the trash"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:6147
-msgid "untitled folder"
-msgstr "folder tidak bertajuk"
-
-#: ../libcore/marlin-file-operations.c:6155
-msgid "new file"
-msgstr "fail baru"
-
-#: ../libcore/marlin-file-operations.c:6326
-msgid "Error while creating directory %B."
-msgstr "Ralat semasa mencipta direktori %B."
-
-#: ../libcore/marlin-file-operations.c:6328
-msgid "Error while creating file %B."
-msgstr "Ralat semasa mencipta fail %B."
-
-#: ../libcore/marlin-file-operations.c:6330
-#, c-format
-msgid "There was an error creating the directory in %F."
-msgstr "Terdapat ralat semasa mencipta direktori di %F."
-
-#: ../libcore/marlin-file-operations.c:6652
-msgid "Emptying the trash"
-msgstr "Mengosongkan tong sampah"
-
-#: ../libcore/marlin-file-operations.c:6664
-msgid "Emptying Trash"
-msgstr "Mengosongkan Tong Sampah"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Cantum folder \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Pencantuman memerlukan pengesahan sebelum menggantikan mana-mana fail "
-"didalam folder yang mungkin mengakibatkan konflik dengan fail yang disalin."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Folder lama dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Folder yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Folder lain dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "Penggantiannya akan membuang semua fail di dalam folder."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Ganti folder \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Folder dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Ganti fail \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "Penggantiannya akan menulisganti kandungan didalamnya."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Fail lama dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Fail yang lebih baru dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Fail lain dengan nama yang sama sudah wujud di \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Fail Asal"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:574
-msgid "Size:"
-msgstr "Saiz:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:581
-msgid "Type:"
-msgstr "Jenis:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Terakhir diubahsuai:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Ganti dengan"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Cantum"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "_Pilih nama baru destinasi"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Tetap semula"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Laksanakan tindakan ini untuk semua fail"
-
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "_Namakan Semula"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Ganti"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Fail konflik"
-
-#: ../filechooser-module/FileChooserDialog.vala:61
+#: ../filechooser-module/FileChooserDialog.vala:70
 #: ../libwidgets/Chrome/TopMenu.vala:51
 msgid "Previous"
 msgstr "Terdahulu"
 
-#: ../filechooser-module/FileChooserDialog.vala:65
+#: ../filechooser-module/FileChooserDialog.vala:74
 #: ../libwidgets/Chrome/TopMenu.vala:55
 msgid "Next"
 msgstr "Berikutnya"
+
+#: ../src/View/Window.vala:209
+msgid "Files isn't your default file manager."
+msgstr "Fail bukanlah pengurus fail lalai anda."
+
+#: ../src/View/Window.vala:215
+msgid "Set as Default"
+msgstr "Tetapkan sebagai Lalai"
+
+#: ../src/View/Window.vala:221
+msgid "Ignore"
+msgstr "Abai"
+
+#: ../src/View/Sidebar.vala:481
+msgid "Personal"
+msgstr "Peribadi"
+
+#: ../src/View/Sidebar.vala:482
+msgid "Your common places and bookmarks"
+msgstr "Tempat dan tanda buku umum anda"
+
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:331
+msgid "Home"
+msgstr "Rumah"
+
+#: ../src/View/Sidebar.vala:501
+msgid "Open your personal folder"
+msgstr "Buka folder peribadi anda"
+
+#: ../src/View/Sidebar.vala:516
+msgid "View the list of recently used files"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
+msgid "Trash"
+msgstr "Tong Sampah"
+
+#: ../src/View/Sidebar.vala:544
+msgid "Open the Trash"
+msgstr "Buka Tong Sampah"
+
+#: ../src/View/Sidebar.vala:548
+msgid "Devices"
+msgstr "Peranti"
+
+#: ../src/View/Sidebar.vala:549
+msgid "Your local partitions and devices"
+msgstr "Sekaran dan peranti setempat anda"
+
+#: ../src/View/Sidebar.vala:555 ../src/View/VolumePropertiesWindow.vala:44
+#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "Sistem Fail"
+
+#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
+msgid "Network"
+msgstr "Rangkaian"
+
+#: ../src/View/Sidebar.vala:674
+msgid "Your network places"
+msgstr "Tempat rangkaian anda"
+
+#: ../src/View/Sidebar.vala:706
+msgid "Entire Network"
+msgstr "Keseluruhan Rangkaian"
+
+#: ../src/View/Sidebar.vala:713
+msgid "Browse the contents of the network"
+msgstr "Layar kandungan rangkaian"
+
+#: ../src/View/Sidebar.vala:845
+msgid "(%s Free of %s)"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1341
+msgid "Unable to start %s"
+msgstr "Tidak boleh mulakan %s"
+
+#: ../src/View/Sidebar.vala:1445
+msgid "Open"
+msgstr "Buka"
+
+#: ../src/View/Sidebar.vala:1453
+msgid "Open in New _Tab"
+msgstr "Buka dalam _Tab Baru"
+
+#: ../src/View/Sidebar.vala:1459
+msgid "Open in New _Window"
+msgstr "Buka dalam _Tetingkap Baru"
+
+#: ../src/View/Sidebar.vala:1467
+msgid "Remove"
+msgstr "Buang"
+
+#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Nama Semula"
+
+#: ../src/View/Sidebar.vala:1484
+msgid "_Mount"
+msgstr "_Lekap"
+
+#: ../src/View/Sidebar.vala:1490
+msgid "_Unmount"
+msgstr "_Nyahlekap"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "_Eject"
+msgstr "_Lenting"
+
+#: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:129
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Sifat"
+
+#: ../src/View/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/View/VolumePropertiesWindow.vala:78
+#: ../src/View/PropertiesWindow.vala:574
+msgid "Location:"
+msgstr ""
+
+#: ../src/View/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr ""
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1525,125 +1652,140 @@ msgstr "Jenis"
 msgid "Modified"
 msgstr "Diubahsuai"
 
-#: ../src/View/Sidebar.vala:472
-msgid "Personal"
-msgstr "Peribadi"
-
-#: ../src/View/Sidebar.vala:473
-msgid "Your common places and bookmarks"
-msgstr "Tempat dan tanda buku umum anda"
-
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:331
-msgid "Home"
-msgstr "Rumah"
-
-#: ../src/View/Sidebar.vala:492
-msgid "Open your personal folder"
-msgstr "Buka folder peribadi anda"
-
-#: ../src/View/Sidebar.vala:507
-msgid "View the list of recently used files"
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+msgid "This Folder Does Not Exist"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:90
-msgid "Trash"
-msgstr "Tong Sampah"
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Folder \"%s\" tidak ditemui."
 
-#: ../src/View/Sidebar.vala:535
-msgid "Open the Trash"
-msgstr "Buka Tong Sampah"
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Cipta"
 
-#: ../src/View/Sidebar.vala:539
-msgid "Devices"
-msgstr "Peranti"
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Cipta folder \"%s\""
 
-#: ../src/View/Sidebar.vala:540
-msgid "Your local partitions and devices"
-msgstr "Sekaran dan peranti setempat anda"
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Gagal mencipta folder\n"
+"\n"
+"%s"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/ViewContainer.vala:333
-#: ../src/View/VolumePropertiesWindow.vala:44 ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Sistem Fail"
-
-#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:87
-msgid "Network"
-msgstr "Rangkaian"
-
-#: ../src/View/Sidebar.vala:665
-msgid "Your network places"
-msgstr "Tempat rangkaian anda"
-
-#: ../src/View/Sidebar.vala:697
-msgid "Entire Network"
-msgstr "Keseluruhan Rangkaian"
-
-#: ../src/View/Sidebar.vala:704
-msgid "Browse the contents of the network"
-msgstr "Layar kandungan rangkaian"
-
-#: ../src/View/Sidebar.vala:830
-msgid "(%s Free of %s)"
+#: ../src/View/AbstractPropertiesDialog.vala:47
+msgid "Info"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1323
-msgid "Unable to start %s"
-msgstr "Tidak boleh mulakan %s"
+#: ../src/View/AbstractPropertiesDialog.vala:56
+msgid "General"
+msgstr "Am"
 
-#: ../src/View/Sidebar.vala:1427
-msgid "Open"
-msgstr "Buka"
+#: ../src/View/AbstractPropertiesDialog.vala:75
+msgid "Close"
+msgstr "Tutup"
 
-#: ../src/View/Sidebar.vala:1435
-msgid "Open in New _Tab"
-msgstr "Buka dalam _Tab Baru"
-
-#: ../src/View/Sidebar.vala:1441
-msgid "Open in New _Window"
-msgstr "Buka dalam _Tetingkap Baru"
-
-#: ../src/View/Sidebar.vala:1449
-msgid "Remove"
-msgstr "Buang"
-
-#: ../src/View/Sidebar.vala:1457 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Nama Semula"
-
-#: ../src/View/Sidebar.vala:1466
-msgid "_Mount"
-msgstr "_Lekap"
-
-#: ../src/View/Sidebar.vala:1472
-msgid "_Unmount"
-msgstr "_Nyahlekap"
-
-#: ../src/View/Sidebar.vala:1478
-msgid "_Eject"
-msgstr "_Lenting"
-
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:142
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Sifat"
-
-#: ../src/View/Slot.vala:39
-msgid "This Folder Is Empty"
+#: ../src/View/AbstractPropertiesDialog.vala:137
+msgid "Device Usage"
 msgstr ""
 
-#: ../src/View/Slot.vala:40
-msgid "Trash Is Empty"
+#: ../src/View/AbstractPropertiesDialog.vala:153
+msgid "Capacity:"
 msgstr ""
 
-#: ../src/View/Slot.vala:41
-msgid "There Are No Recent Files"
+#: ../src/View/AbstractPropertiesDialog.vala:154
+#: ../src/View/AbstractPropertiesDialog.vala:157
+#: ../src/View/AbstractPropertiesDialog.vala:160
+#: ../src/View/PropertiesWindow.vala:427 ../src/View/PropertiesWindow.vala:463
+msgid "Unknown"
 msgstr ""
 
-#: ../src/View/Slot.vala:42
-msgid "Access Denied"
+#: ../src/View/AbstractPropertiesDialog.vala:156
+msgid "Available:"
 msgstr ""
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1283
+#: ../src/View/AbstractPropertiesDialog.vala:159
+msgid "Used:"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:561
+msgid "Failed to preview"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:820
+msgid "Cannot open this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:833
+msgid "Cannot identify file type to open"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1569
+msgid "Cannot drop this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1569
+msgid "Invalid file name provided"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2022
+msgid "Invalid"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2028
+msgid "Run"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2033
+msgid "Open in %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2043
+msgid "Open in"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2045
+#: ../libwidgets/View/BreadcrumbsEntry.vala:451
+msgid "Open with"
+msgstr "Buka dengan"
+
+#: ../src/View/AbstractDirectoryView.vala:2105
+msgid "Other Application"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2366
+msgid "Untitled %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2668
+#: ../src/View/AbstractDirectoryView.vala:2833
+msgid "Cannot remove files from here"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2669
+#: ../src/View/AbstractDirectoryView.vala:2824
+#: ../src/View/AbstractDirectoryView.vala:2834
+msgid "You do not have permission to change this location"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2806
+msgid "Cannot copy files that are in the trash"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2807
+msgid "Cutting the selection instead"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2823
+msgid "Cannot paste files here"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
 msgid "%u folders"
 msgstr "%u folder"
 
@@ -1659,8 +1801,8 @@ msgstr " dan %u item lain (%s) terpilih"
 msgid " selected"
 msgstr " dipilih"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1254
-#: ../src/View/PropertiesWindow.vala:1293
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1231
+#: ../src/View/PropertiesWindow.vala:1270
 msgid "%u folder"
 msgstr "%u folder"
 
@@ -1668,6 +1810,7 @@ msgstr "%u folder"
 msgid "%u items selected (%s)"
 msgstr "%u item dipilih (%s)"
 
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
 #: ../src/View/OverlayBar.vala:272
 msgid "%u sub-folder, "
 msgstr ""
@@ -1676,6 +1819,7 @@ msgstr ""
 msgid "%u sub-folders, "
 msgstr ""
 
+#. / TRANSLATORS: %u will be substituted by the number of readable files
 #: ../src/View/OverlayBar.vala:278
 msgid "%u file, "
 msgstr ""
@@ -1684,14 +1828,17 @@ msgstr ""
 msgid "%u files, "
 msgstr ""
 
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/OverlayBar.vala:288
 msgid "%s approx."
 msgstr ""
 
+#. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/OverlayBar.vala:291
 msgid "unknown size"
 msgstr ""
 
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/OverlayBar.vala:295
 msgid "%u file not readable"
 msgstr ""
@@ -1700,13 +1847,149 @@ msgstr ""
 msgid "%u files not readable"
 msgstr ""
 
+#: ../src/View/PropertiesWindow.vala:201
+msgid "Permissions"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "Actual Size Could Be Larger"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/View/PropertiesWindow.vala:241 ../src/View/PropertiesWindow.vala:260
+msgid "unknown"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:438
+msgid "Loading…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:469
+msgid "Could not be determined"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:505
+msgid "Contains:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:521
+msgid "Created:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:529
+msgid "Modified:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:538
+msgid "Last Access:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:549
+msgid "Deleted:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:559
+msgid "Mimetype:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:566
+msgid "Resolution:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:584
+msgid "Target:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:592
+msgid "Original Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:615
+msgid "Other Application…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:635
+msgid "Open with:"
+msgstr "Buka dengan:"
+
+#: ../src/View/PropertiesWindow.vala:729
+msgid "Read"
+msgstr "Baca"
+
+#: ../src/View/PropertiesWindow.vala:733
+msgid "Write"
+msgstr "Tulis"
+
+#: ../src/View/PropertiesWindow.vala:737
+msgid "Execute"
+msgstr "Lakukan"
+
+#: ../src/View/PropertiesWindow.vala:944 ../src/View/PropertiesWindow.vala:960
+msgid "Owner:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:950 ../src/View/PropertiesWindow.vala:964
+msgid "Group:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:968
+msgid "Everyone:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1216
+msgid "%u subfolders and %u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1218
+msgid "%u subfolders and %u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1221
+msgid "%u subfolders"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1226
+msgid "%u subfolder and %u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1228
+msgid "%u subfolder and %u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1237
+#: ../src/View/PropertiesWindow.vala:1276
+msgid "%u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1239
+#: ../src/View/PropertiesWindow.vala:1278
+msgid "%u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1255
+msgid "%u selected items (%u folders and %u files)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1257
+msgid "%u selected items (%u folders and %u file)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1265
+msgid "%u selected items (%u folder and %u files)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1267
+msgid "%u selected items (%u folder and %u file)"
+msgstr ""
+
 #: ../src/View/ViewContainer.vala:342
 msgid "(as Administrator)"
 msgstr "(sebagai Pentadbir)"
-
-#: ../src/View/ViewContainer.vala:355 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr ""
 
 #: ../src/View/ViewContainer.vala:356
 msgid "You cannot create a folder here."
@@ -1752,317 +2035,47 @@ msgstr ""
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: ../src/View/AbstractPropertiesDialog.vala:47
-msgid "Info"
+#: ../src/View/Slot.vala:39
+msgid "This Folder Is Empty"
 msgstr ""
 
-#: ../src/View/AbstractPropertiesDialog.vala:56
-msgid "General"
-msgstr "Am"
-
-#: ../src/View/AbstractPropertiesDialog.vala:75
-msgid "Close"
-msgstr "Tutup"
-
-#: ../src/View/AbstractPropertiesDialog.vala:137
-msgid "Device Usage"
+#: ../src/View/Slot.vala:40
+msgid "Trash Is Empty"
 msgstr ""
 
-#: ../src/View/AbstractPropertiesDialog.vala:154
-msgid "Capacity:"
+#: ../src/View/Slot.vala:41
+msgid "There Are No Recent Files"
 msgstr ""
 
-#: ../src/View/AbstractPropertiesDialog.vala:155
-#: ../src/View/AbstractPropertiesDialog.vala:158
-#: ../src/View/AbstractPropertiesDialog.vala:161
-msgid "Unknown"
+#: ../src/View/Slot.vala:42
+msgid "Access Denied"
 msgstr ""
 
-#: ../src/View/AbstractPropertiesDialog.vala:157
-msgid "Available:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:160
-msgid "Used:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:26
-msgid "Resolution:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:219
-msgid "Permissions"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:246
-msgid "Preview"
-msgstr "Pratonton"
-
-#: ../src/View/PropertiesWindow.vala:265
-msgid "Actual Size Could Be Larger"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:265
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/View/PropertiesWindow.vala:284 ../src/View/PropertiesWindow.vala:303
-msgid "unknown"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:463
-msgid "Created:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:465
-msgid "Modified:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:468
-msgid "Last Access:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:476
-msgid "Deleted:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:482
-msgid "MimeType:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:490
-msgid "Loading…"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:503
-msgid "MimeTypes:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:516 ../src/View/PropertiesWindow.vala:518
-#: ../src/View/VolumePropertiesWindow.vala:78
-msgid "Location:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:522
-msgid "Target:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:528
-msgid "Origin Location:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:535
-msgid "Could not be determined"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:584
-msgid "Contains:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:620
-msgid "Other Application…"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:640
-msgid "Open with:"
-msgstr "Buka dengan:"
-
-#: ../src/View/PropertiesWindow.vala:734
-msgid "Read"
-msgstr "Baca"
-
-#: ../src/View/PropertiesWindow.vala:738
-msgid "Write"
-msgstr "Tulis"
-
-#: ../src/View/PropertiesWindow.vala:742
-msgid "Execute"
-msgstr "Lakukan"
-
-#: ../src/View/PropertiesWindow.vala:949 ../src/View/PropertiesWindow.vala:965
-msgid "Owner:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:955 ../src/View/PropertiesWindow.vala:969
-msgid "Group:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:973
-msgid "Everyone:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1239
-msgid "%u subfolders and %u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1241
-msgid "%u subfolders and %u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1244
-msgid "%u subfolders"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1249
-msgid "%u subfolder and %u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1251
-msgid "%u subfolder and %u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1260
-#: ../src/View/PropertiesWindow.vala:1299
-msgid "%u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1262
-#: ../src/View/PropertiesWindow.vala:1301
-msgid "%u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1278
-msgid "%u selected items (%u folders and %u files)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1280
-msgid "%u selected items (%u folders and %u file)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1288
-msgid "%u selected items (%u folder and %u files)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1290
-msgid "%u selected items (%u folder and %u file)"
-msgstr ""
-
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr ""
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:561
-msgid "Failed to preview"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:820
-msgid "Cannot open this file"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:833
-msgid "Cannot identify file type to open"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:1568
-msgid "Cannot drop this file"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:1568
-msgid "Invalid file name provided"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2012
-msgid "Invalid"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2018
-msgid "Run"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2023
-msgid "Open in %s"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2033
-msgid "Open in"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2035
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
-msgid "Open with"
-msgstr "Buka dengan"
-
-#: ../src/View/AbstractDirectoryView.vala:2095
-msgid "Other Application"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2353
-msgid "Untitled %s"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2788
-msgid "Cannot copy files that are in the trash"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2789
-msgid "Cutting the selection instead"
-msgstr ""
-
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "Fail bukanlah pengurus fail lalai anda."
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "Tetapkan sebagai Lalai"
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Abai"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Folder \"%s\" tidak ditemui."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Cipta"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Cipta folder \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Gagal mencipta folder\n"
-"\n"
-"%s"
-
-#: ../src/Application.vala:158
+#: ../src/Application.vala:146
 msgid "Show the version of the program."
 msgstr "Papar versi program"
 
-#: ../src/Application.vala:160
+#: ../src/Application.vala:148
 msgid "Open uri(s) in new tab"
 msgstr "Buka uri dalam tab baru"
 
-#: ../src/Application.vala:162 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Tetingkap Baharu"
 
-#: ../src/Application.vala:164
+#: ../src/Application.vala:152
 msgid "Quit Files."
 msgstr "Keluar dari FIles."
 
-#: ../src/Application.vala:166
+#: ../src/Application.vala:154
 msgid "Enable debug logging"
 msgstr "Benarkan pengelogan nyahpepijat"
 
-#: ../src/Application.vala:169
+#: ../src/Application.vala:157
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:172
+#: ../src/Application.vala:160
 msgid ""
 "\n"
 "\n"
@@ -2072,7 +2085,7 @@ msgstr ""
 "\n"
 "Layari fail sistem menggunakan pengurus fail"
 
-#: ../src/Application.vala:199
+#: ../src/Application.vala:187
 msgid "--quit cannot be used with URIs."
 msgstr "--quit tidak dapat digunakan dengan URI."
 
@@ -2104,23 +2117,24 @@ msgstr "Fail"
 msgid "File Manager Operations"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:164
+#: ../src/ProgressUIHandler.vala:153
 msgid "File Operations"
 msgstr "Operasi Fail"
 
-#: ../src/ProgressUIHandler.vala:208
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:207
 msgid "Completed %s"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:211
+#: ../src/ProgressUIHandler.vala:210
 msgid "All file operations have ended"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:264
+#: ../src/ProgressUIHandler.vala:255
 msgid "Show Copy Dialog"
 msgstr "Papar Dialog Salin"
 
-#: ../src/ProgressUIHandler.vala:276
+#: ../src/ProgressUIHandler.vala:267
 msgid "Cancel All In-progress Actions"
 msgstr "Batal Semua TIndakan Dalam-proses"
 
@@ -2144,20 +2158,28 @@ msgstr ""
 msgid "Cancel"
 msgstr "Batal"
 
-#: ../libcore/FileUtils.vala:259
+#: ../libcore/FileUtils.vala:289
 msgid "Could not rename to '%s'"
 msgstr ""
 
-#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
-msgid "Set as default"
-msgstr "Tetapkan sebagai lalai"
+#: ../libwidgets/View/BreadcrumbsEntry.vala:412
+msgid "Open in New Tab"
+msgstr "Buka dalam Tab Baru"
 
-#: ../libwidgets/View/LocationBar.vala:166
+#: ../libwidgets/View/BreadcrumbsEntry.vala:419
+msgid "Open in New Window"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:458
+msgid "Open in Other Application…"
+msgstr ""
+
+#: ../libwidgets/View/LocationBar.vala:171
 msgid "Reload this folder"
 msgstr ""
 
-#: ../libwidgets/View/LocationBar.vala:169
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
+#: ../libwidgets/View/LocationBar.vala:174
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Enter search term or path"
 msgstr ""
 
@@ -2172,42 +2194,6 @@ msgstr "Tanda Buku"
 #: ../libwidgets/View/SearchResults.vala:184
 msgid "Everywhere Else"
 msgstr "Dimana Sahaja"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:412
-msgid "Open in New Tab"
-msgstr "Buka dalam Tab Baru"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:419
-msgid "Open in New Window"
-msgstr ""
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:458
-msgid "Open in Other Application…"
-msgstr ""
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
-msgid "Navigate to %s"
-msgstr ""
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:259
-msgid "Go to %s"
-msgstr "Pergi ke %s"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Papar sebagai Grid"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Papar sebagai Senarai"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "Papar dalam Lajur"
-
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr ""
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2253,6 +2239,34 @@ msgstr ""
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr ""
+
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr ""
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Papar sebagai Grid"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Papar sebagai Senarai"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Papar dalam Lajur"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
+msgid "Navigate to %s"
+msgstr ""
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:274
+msgid "Go to %s"
+msgstr "Pergi ke %s"
+
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
+msgid "Set as default"
+msgstr "Tetapkan sebagai lalai"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

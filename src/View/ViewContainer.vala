@@ -33,29 +33,27 @@ namespace Marlin.View {
         public Marlin.View.Window window;
         public GOF.AbstractSlot? view = null;
         public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
+
         public GLib.File? location {
             get {
-                var slot = get_current_slot ();
                 return slot != null ? slot.location : null;
             }
         }
         public string uri {
             get {
-                var slot = get_current_slot ();
                 return slot != null ? slot.uri : "";
             }
         }
 
         public GOF.AbstractSlot? slot {
             get {
-                return get_current_slot ();
+                return view != null ? view.get_current_slot () : null;
             }
         }
 
         public bool locked_focus {
             get {
-                var slot = get_current_slot ();
-                return slot != null ? get_current_slot ().locked_focus : false;
+                return slot != null && slot.locked_focus;
             }
         }
 
@@ -68,6 +66,18 @@ namespace Marlin.View {
         public bool can_go_forward {
             get {
                 return browser.get_can_go_forward ();
+            }
+        }
+
+        public bool is_frozen {
+            get {
+                return slot == null || slot.is_frozen;
+            }
+
+            set {
+                if (slot != null) {
+                    slot.is_frozen = value;
+                }
             }
         }
 
@@ -200,7 +210,7 @@ namespace Marlin.View {
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
-            view.directory.init ();
+            slot.initialize_directory ();
             show_all ();
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
@@ -225,6 +235,7 @@ namespace Marlin.View {
             disconnect_slot_signals (view);
             content = null; /* Make sure old slot and directory view are destroyed */
             view = null; /* Pre-requisite for add view */
+            loading (false);
         }
         private void after_mode_change () {
             /* Slot is created inactive so we activate now since we must be the current tab
@@ -421,12 +432,6 @@ namespace Marlin.View {
                 active ();
             }
         }
-        
-        public void set_frozen_state (bool is_frozen) {
-            var aslot = get_current_slot ();
-            if (aslot != null)
-                aslot.set_frozen_state (is_frozen);
-        }
 
         private void set_all_selected (bool select_all) {
             var aslot = get_current_slot ();
@@ -519,7 +524,7 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
-            set_frozen_state (false);
+            is_frozen = false;
             if (can_show_folder && view != null)
                 view.grab_focus ();
             else

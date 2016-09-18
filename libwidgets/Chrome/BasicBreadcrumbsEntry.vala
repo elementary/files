@@ -178,6 +178,10 @@ namespace Marlin.View.Chrome {
             if (event.is_modifier == 1) {
                 return true;
             }
+
+            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+
             switch (event.keyval) {
                 case Gdk.Key.KP_Down:
                 case Gdk.Key.Down:
@@ -192,6 +196,17 @@ namespace Marlin.View.Chrome {
                 case Gdk.Key.Escape:
                     activate_path ("");
                     return true;
+
+                case Gdk.Key.l:
+                    if (only_control_pressed) {
+                        set_entry_text (current_dir_path);
+                        grab_focus ();
+                        return true;
+                    } else {
+                        break;
+                    }
+                default:
+                    break;
             }
             return base.key_press_event (event);
         }
@@ -569,8 +584,10 @@ namespace Marlin.View.Chrome {
             double height = get_allocated_height ();
             double width = get_allocated_width ();
 
+            Gtk.Border border = button_context_active.get_margin (Gtk.StateFlags.ACTIVE);
+
             if (!is_focus) {
-                double margin = YPAD;
+                double margin = border.top;
 
                 /* Ensure there is an editable area to the right of the breadcrumbs */
                 double width_marged = width - 2 * margin - MINIMUM_LOCATION_BAR_ENTRY_WIDTH - ICON_WIDTH;

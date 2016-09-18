@@ -175,6 +175,33 @@ eel_get_all_group_names (void)
 }
 
 gboolean
+eel_user_in_group (const char *group_name)
+{
+    GList *list;
+    struct group *group;
+    int count, i;
+    gid_t gid_list[NGROUPS_MAX + 1];
+    gboolean found;
+
+    list = NULL;
+    found = FALSE;
+
+    count = getgroups (NGROUPS_MAX + 1, gid_list);
+    for (i = 0; i < count; i++) {
+        group = getgrgid (gid_list[i]);
+        if (group == NULL)
+            break;
+
+        if (g_strcmp0 (group_name, group->gr_name) == 0) {
+            found = TRUE;
+            break;
+        }
+    }
+
+    return found;
+}
+
+gboolean
 eel_get_group_id_from_group_name (const char *group_name, uid_t *gid)
 {
     struct group *group;

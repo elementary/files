@@ -28,17 +28,30 @@ namespace Marlin.View.Chrome
         public LocationBar? location_bar;
         public Chrome.ButtonWithMenu button_forward;
         public Chrome.ButtonWithMenu button_back;
+
         public bool locked_focus {get; private set; default = false;}
+
+        public bool working {
+            set {
+                location_bar.sensitive = !value;
+            }
+        }
+
+        public bool can_go_back {
+           set {
+                button_back.sensitive = value;
+            }
+        }
+
+        public bool can_go_forward {
+           set {
+                button_forward.sensitive = value;
+            }
+        }
 
         public signal void forward (int steps);
         public signal void back (int steps);  /* TODO combine using negative step */
 
-        public void set_can_go_back (bool can) {
-           button_back.set_sensitive (can);
-        }
-        public void set_can_go_forward (bool can) {
-           button_forward.set_sensitive (can);
-        }
 
         public signal void focus_location_request (GLib.File? location);
         public signal void path_change_request (string path, Marlin.OpenFlag flag);
@@ -153,11 +166,7 @@ namespace Marlin.View.Chrome
         }
 
         public bool on_key_press_event (Gdk.EventKey event) {
-            bool res = false;
-            if (location_bar.has_focus) {
-                res = location_bar.key_press_event (event);
-            }
-            return res;
+            return location_bar.key_press_event (event);
         }
 
         public void cancel () {
