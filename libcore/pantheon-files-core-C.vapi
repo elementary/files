@@ -76,7 +76,7 @@ namespace Marlin {
 
     [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
     namespace Dialogs {
-        public void show_error (void* widget_or_screen_or_null_pointer, GLib.Error? error, string format_string, ...);
+        public void show_error (void* data, GLib.Error? error, string format_string, ...);
     }
 }
 
@@ -349,6 +349,7 @@ namespace GOF {
         public bool is_root_network_folder ();
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
+        public bool is_recent_uri_scheme ();
         public bool is_connected;
 
         public unowned string get_display_target_uri ();

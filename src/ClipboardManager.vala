@@ -73,8 +73,10 @@ namespace Marlin {
             clipboard.owner_change.disconnect (owner_changed);
         }
 
-        public bool has_cutted_file (GOF.File file) {
-            return files_cutted && has_file (file);
+        /* If @file is null, returns whether there are ANY cut files
+         * otherwise whether @file is amongst the cut files */
+        public bool has_cutted_file (GOF.File? file) {
+            return files_cutted && (file == null || has_file (file));
         }
 
         public bool has_file (GOF.File file) {
@@ -233,6 +235,7 @@ namespace Marlin {
                 } else {
                     sb.append (loc.get_uri ());
                 }
+
                 if (count < file_count) {
                     sb.append ("\n");
                 }
@@ -242,7 +245,7 @@ namespace Marlin {
         }
 
         public static void clear_callback (Gtk.Clipboard cb, void* parent) {
-            var manager = parent as ClipboardManager;
+            var manager = (ClipboardManager)parent;
             if (!(manager != null && manager.clipboard == cb)) {
                 return;
             }

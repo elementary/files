@@ -254,7 +254,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             /* This gets called during directory loading, before the "directory loaded" signal
              * is received - therefore ignore_dir may not be set correctly */  
             if (file.location.has_uri_scheme ("recent")) {
-                rreal_update_file_info_for_recent (file, file.get_display_target_uri ());
+                rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
             } else {
                 rreal_update_file_info.begin (file);
             }

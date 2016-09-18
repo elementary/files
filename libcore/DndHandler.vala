@@ -273,15 +273,18 @@ namespace Marlin {
                                                               string? prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
+            bool in_recent = file_list.data.is_recent_uri_scheme ();
 
             file_list.@foreach ((file) => {
-                sb.append (file.get_target_location ().get_uri ());
+                var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
+                sb.append (target);
                 sb.append ("\r\n");  /* Drop onto Filezilla does not work without the "\r" */
             });
 
             selection_data.@set (selection_data.get_target (),
                                  8,
                                  sb.data);
+
         }
     }
 }
