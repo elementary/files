@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-09-15 05:54-0500\n"
-"PO-Revision-Date: 2016-08-07 23:49+0000\n"
+"PO-Revision-Date: 2016-09-17 19:42+0000\n"
 "Last-Translator: Maxim Taranov <png2378@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-09-16 07:40+0000\n"
+"X-Launchpad-Export-Date: 2016-09-18 06:58+0000\n"
 "X-Generator: Launchpad (build 18186)\n"
 "Language: ru\n"
 
@@ -1814,13 +1814,13 @@ msgstr "Безымянный %s"
 #: ../src/View/AbstractDirectoryView.vala:2668
 #: ../src/View/AbstractDirectoryView.vala:2833
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Не удалось удалить файлы отсюда"
 
 #: ../src/View/AbstractDirectoryView.vala:2669
 #: ../src/View/AbstractDirectoryView.vala:2824
 #: ../src/View/AbstractDirectoryView.vala:2834
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "У вас нет прав на изменение этого расположения"
 
 #: ../src/View/AbstractDirectoryView.vala:2806
 msgid "Cannot copy files that are in the trash"
@@ -1832,7 +1832,7 @@ msgstr "Вырезать невыделенное"
 
 #: ../src/View/AbstractDirectoryView.vala:2823
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Не удалось вставить файлы сюда"
 
 #: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
 msgid "%u folders"
