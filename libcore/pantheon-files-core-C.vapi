@@ -144,8 +144,6 @@ namespace Marlin
 {
     [CCode (cheader_filename = "marlin-file-utilities.h")]
     public string get_accel_map_file ();
-    [CCode (cheader_filename = "marlin-file-utilities.h")]
-    public void restore_files_from_trash (GLib.List<GOF.File> *files, Gtk.Window *parent_window);
 
     [CCode (cheader_filename = "marlin-icon-info.h")]
     public class IconInfo : GLib.Object {
