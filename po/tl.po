@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-09-15 05:54-0500\n"
+"POT-Creation-Date: 2016-09-21 06:14-0500\n"
 "PO-Revision-Date: 2016-07-13 15:37+0000\n"
 "Last-Translator: yavinfour <anjelo.passionist@gmail.com>\n"
 "Language-Team: Tagalog <tl@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-09-16 07:42+0000\n"
-"X-Generator: Launchpad (build 18186)\n"
+"X-Launchpad-Export-Date: 2016-09-22 08:45+0000\n"
+"X-Generator: Launchpad (build 18204)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -140,15 +140,6 @@ msgstr "Tandaan ang password na itp"
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "Itinigil ang operasyon"
-
-#: ../libcore/marlin-file-utilities.c:123
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Hindi malaman ang orihinal na lokasyon ng \"%s\" "
-
-#: ../libcore/marlin-file-utilities.c:127
-msgid "The item cannot be restored from trash"
-msgstr "Hindi maibalik mula sa basura ang aytem"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -1478,12 +1469,12 @@ msgid "Preparing"
 msgstr "Ihinahanda"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../libwidgets/Chrome/TopMenu.vala:51
+#: ../libwidgets/Chrome/TopMenu.vala:64
 msgid "Previous"
 msgstr "Nakaraan"
 
 #: ../filechooser-module/FileChooserDialog.vala:74
-#: ../libwidgets/Chrome/TopMenu.vala:55
+#: ../libwidgets/Chrome/TopMenu.vala:68
 msgid "Next"
 msgstr "Susunod"
 
@@ -1507,7 +1498,7 @@ msgstr "Pangsarili"
 msgid "Your common places and bookmarks"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:331
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:342
 msgid "Home"
 msgstr "Tahanan"
 
@@ -1536,7 +1527,7 @@ msgid "Your local partitions and devices"
 msgstr ""
 
 #: ../src/View/Sidebar.vala:555 ../src/View/VolumePropertiesWindow.vala:44
-#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
+#: ../src/View/ViewContainer.vala:344 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr ""
 
@@ -1630,7 +1621,7 @@ msgstr "Uri"
 msgid "Modified"
 msgstr "Huling nabago"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:366
 msgid "This Folder Does Not Exist"
 msgstr "Walang Ganitong Polder"
 
@@ -1688,75 +1679,75 @@ msgstr "Magagamit:"
 msgid "Used:"
 msgstr "Ginagamit:"
 
-#: ../src/View/AbstractDirectoryView.vala:561
+#: ../src/View/AbstractDirectoryView.vala:550
 msgid "Failed to preview"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:820
+#: ../src/View/AbstractDirectoryView.vala:809
 msgid "Cannot open this file"
 msgstr "Hindi mabuksan ang file na ito"
 
-#: ../src/View/AbstractDirectoryView.vala:833
+#: ../src/View/AbstractDirectoryView.vala:822
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1569
+#: ../src/View/AbstractDirectoryView.vala:1559
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1569
+#: ../src/View/AbstractDirectoryView.vala:1559
 msgid "Invalid file name provided"
 msgstr "Hindi pupwede ang binigay na pangalan ng file"
 
-#: ../src/View/AbstractDirectoryView.vala:2022
+#: ../src/View/AbstractDirectoryView.vala:2012
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2028
+#: ../src/View/AbstractDirectoryView.vala:2018
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2023
 msgid "Open in %s"
 msgstr "Buksan sa %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2043
+#: ../src/View/AbstractDirectoryView.vala:2033
 msgid "Open in"
 msgstr "Buksan sa"
 
-#: ../src/View/AbstractDirectoryView.vala:2045
+#: ../src/View/AbstractDirectoryView.vala:2035
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr "Buksan gamit ang"
 
-#: ../src/View/AbstractDirectoryView.vala:2105
+#: ../src/View/AbstractDirectoryView.vala:2095
 msgid "Other Application"
 msgstr "Iba pang Aplikasyon"
 
-#: ../src/View/AbstractDirectoryView.vala:2366
+#: ../src/View/AbstractDirectoryView.vala:2356
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2668
-#: ../src/View/AbstractDirectoryView.vala:2833
+#: ../src/View/AbstractDirectoryView.vala:2659
+#: ../src/View/AbstractDirectoryView.vala:2824
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2669
-#: ../src/View/AbstractDirectoryView.vala:2824
-#: ../src/View/AbstractDirectoryView.vala:2834
+#: ../src/View/AbstractDirectoryView.vala:2660
+#: ../src/View/AbstractDirectoryView.vala:2815
+#: ../src/View/AbstractDirectoryView.vala:2825
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2806
+#: ../src/View/AbstractDirectoryView.vala:2797
 msgid "Cannot copy files that are in the trash"
 msgstr "Hindi pwedeng kopyahin ang mga files na nasa basura"
 
-#: ../src/View/AbstractDirectoryView.vala:2807
+#: ../src/View/AbstractDirectoryView.vala:2798
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2823
+#: ../src/View/AbstractDirectoryView.vala:2814
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -1962,67 +1953,67 @@ msgstr ""
 msgid "%u selected items (%u folder and %u file)"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:342
+#: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
 msgstr "(bilang Administrador)"
 
-#: ../src/View/ViewContainer.vala:356
+#: ../src/View/ViewContainer.vala:367
 msgid "You cannot create a folder here."
 msgstr "Hindi ka pwedeng bumuo ng polder dito"
 
-#: ../src/View/ViewContainer.vala:358
+#: ../src/View/ViewContainer.vala:369
 msgid "The network is unavailable"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:359
+#: ../src/View/ViewContainer.vala:370
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:361
+#: ../src/View/ViewContainer.vala:372
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:362
+#: ../src/View/ViewContainer.vala:373
 msgid "You don't have permission to view this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:364
+#: ../src/View/ViewContainer.vala:375
 msgid "Unable to Mount Folder"
 msgstr "Hindi Mai-mount ang Polder"
 
-#: ../src/View/ViewContainer.vala:365
+#: ../src/View/ViewContainer.vala:376
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:367
-msgid "Unable show Folder"
-msgstr "Hindi maipakita ang Polder"
+#: ../src/View/ViewContainer.vala:378
+msgid "Unable to Show Folder"
+msgstr ""
 
-#: ../src/View/ViewContainer.vala:368
+#: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:378
+#: ../src/View/ViewContainer.vala:389
 msgid "File not Found"
 msgstr "Hindi makita ang File"
 
-#: ../src/View/ViewContainer.vala:379
+#: ../src/View/ViewContainer.vala:390
 msgid "The file selected no longer exists."
 msgstr "Hindi na umiiral ang naka-select na file"
 
-#: ../src/View/Slot.vala:39
+#: ../src/View/Slot.vala:32
 msgid "This Folder Is Empty"
 msgstr "Walang Laman ang Polder na Ito"
 
-#: ../src/View/Slot.vala:40
+#: ../src/View/Slot.vala:33
 msgid "Trash Is Empty"
 msgstr "Wakang Laman ang Basura"
 
-#: ../src/View/Slot.vala:41
+#: ../src/View/Slot.vala:34
 msgid "There Are No Recent Files"
 msgstr ""
 
-#: ../src/View/Slot.vala:42
+#: ../src/View/Slot.vala:35
 msgid "Access Denied"
 msgstr ""
 
@@ -2130,7 +2121,15 @@ msgstr "I-link Dito"
 msgid "Cancel"
 msgstr "I-kansela"
 
-#: ../libcore/FileUtils.vala:289
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "Hindi malaman ang orihinal na lokasyon ng \"%s\" "
+
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "Hindi maibalik mula sa basura ang aytem"
+
+#: ../libcore/FileUtils.vala:343
 msgid "Could not rename to '%s'"
 msgstr "Hindi mabago ang pangalan sa '%s'"
 
@@ -2146,11 +2145,11 @@ msgstr "Buksan sa Bagong Window"
 msgid "Open in Other Application…"
 msgstr "Buksan gamit ang Ibang Aplikasyon"
 
-#: ../libwidgets/View/LocationBar.vala:171
+#: ../libwidgets/View/LocationBar.vala:181
 msgid "Reload this folder"
 msgstr "I-load muli ang polder na ito"
 
-#: ../libwidgets/View/LocationBar.vala:174
+#: ../libwidgets/View/LocationBar.vala:184
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Enter search term or path"
 msgstr ""
