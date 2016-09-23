@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-21 06:14-0500\n"
-"PO-Revision-Date: 2016-07-11 14:42+0000\n"
+"PO-Revision-Date: 2016-09-22 15:20+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-09-22 08:43+0000\n"
+"X-Launchpad-Export-Date: 2016-09-23 06:21+0000\n"
 "X-Generator: Launchpad (build 18204)\n"
 "Language: pl\n"
 
@@ -1811,13 +1811,13 @@ msgstr "Nienazwany %s"
 #: ../src/View/AbstractDirectoryView.vala:2659
 #: ../src/View/AbstractDirectoryView.vala:2824
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Nie można usunąć stąd plików"
 
 #: ../src/View/AbstractDirectoryView.vala:2660
 #: ../src/View/AbstractDirectoryView.vala:2815
 #: ../src/View/AbstractDirectoryView.vala:2825
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Nie masz wystarczających uprawnień, aby zmienić to położenie"
 
 #: ../src/View/AbstractDirectoryView.vala:2797
 msgid "Cannot copy files that are in the trash"
@@ -1829,7 +1829,7 @@ msgstr "Wytnij wybór"
 
 #: ../src/View/AbstractDirectoryView.vala:2814
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Nie można wkleić tutaj plików"
 
 #: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
 msgid "%u folders"
@@ -2071,7 +2071,7 @@ msgstr "Nie udało się połączyć z serwerem do tego katalogu."
 
 #: ../src/View/ViewContainer.vala:378
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Nie można wyświetlić katalogu"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
