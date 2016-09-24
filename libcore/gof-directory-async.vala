@@ -29,7 +29,7 @@ public class GOF.Directory.Async : Object {
     private uint mount_timeout_id = 0;
     private const int ENUMERATE_TIMEOUT_SEC = 30;
     private const int QUERY_INFO_TIMEOUT_SEC = 20;
-    private const int MOUNT_TIMEOUT_SEC = 20;
+    private const int MOUNT_TIMEOUT_SEC = 60;
 
     public GLib.File location;
     public GLib.File? selected_file = null;
@@ -264,7 +264,7 @@ public class GOF.Directory.Async : Object {
         bool res = false;
 
         try {
-            var mount_op = new Gtk.MountOperation (null);
+            var mount_op = new GLib.MountOperation ();
             cancellable = new Cancellable ();
             bool mounting = true;
             bool asking_password = false;
@@ -291,8 +291,10 @@ public class GOF.Directory.Async : Object {
                 asking_password = false;
             });
 
-            yield location.mount_enclosing_volume (0, mount_op, cancellable);
-            var mount = location.find_enclosing_mount ();
+            debug ("mounting ....");
+            yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
+            debug ("getting enclosing mount");
+            var mount = yield location.find_enclosing_mount_async (GLib.Priority.DEFAULT, cancellable);
 
             debug ("Found enclosing mount %s", mount != null ? mount.get_name () : "null");
             res = (mount != null);
@@ -331,26 +333,40 @@ public class GOF.Directory.Async : Object {
             SocketConnectable? connectable = null;
             try {
                 connectable = NetworkAddress.parse_uri (file.uri, 21);
-                if (((NetworkAddress)(connectable)).get_hostname () != "" && scheme != "smb") {
+            } catch (GLib.Error e) {
+                warning ("Failed to parse uri %s - %s", file.uri, e.message);
+                return false;
+            }
+
+            if (((NetworkAddress)(connectable)).get_hostname () != "" && scheme != "smb") {
+                try {
                     success = net_mon.can_reach (connectable, cancellable);
+                }
+                catch (GLib.Error e) {
+                    warning ("Error: cannot reach connectable %s - %s", file.uri, e.message);
+                    return false;
+                }
+
+                try {
                     /* Try to connect for real.  This should time out after about 15 seconds if
                      * the host is not reachable */
                     var scl = new SocketClient ();
                     var sc = yield scl.connect_async (connectable, cancellable);
                     success = (sc != null && sc.is_connected ());
-                    debug ("Attempt to connect to %s %s", file.uri, success ? "succeeded" : "failed");
-                } else {
-                    success = true;
+                    debug ("Socketclient is %s", sc == null ? "null" : (sc.is_connected () ? "connected" : "not connected"));
+                } catch (GLib.Error e) {
+                    warning ("Error: could not connect to connectable %s - %s", file.uri, e.message);
+                    return false;
                 }
-            }
-            catch (GLib.Error e) {
-                warning ("Error connecting to connectable %s - %s", file.uri, e.message);
-                success = false;
-
+            } else {
+                success = true;
             }
         } else {
             warning ("No network available");
         }
+
+
+        debug ("Attempt to connect to %s %s", file.uri, success ? "succeeded" : "failed");
         return success;
     }
      
