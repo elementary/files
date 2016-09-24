@@ -102,6 +102,8 @@ public class GOF.Directory.Async : Object {
         get { return cancellable.is_cancelled (); }
     }
 
+    public string last_error_message {get; private set; default = "";}
+
     private Async (GLib.File _file) {
         /* Ensure uri is correctly escaped */
         location = GLib.File.new_for_uri (PF.FileUtils.escape_uri (_file.get_uri ()));
@@ -236,6 +238,7 @@ public class GOF.Directory.Async : Object {
             if (querying) {
                 warning ("Cancelled after timeout in query info async %s", file.uri);
                 cancellable.cancel ();
+                last_error_message = "Timed out while querying file info";
             }
             load_timeout_id = 0;
             return false;
@@ -262,19 +265,22 @@ public class GOF.Directory.Async : Object {
 
     private async bool mount_mountable () {
         bool res = false;
+        var mount_op = new Gtk.MountOperation (null);
+        cancellable = new Cancellable ();
 
         try {
-            var mount_op = new GLib.MountOperation ();
-            cancellable = new Cancellable ();
+
+
             bool mounting = true;
             bool asking_password = false;
             assert (mount_timeout_id == 0);
 
             mount_timeout_id = Timeout.add_seconds (MOUNT_TIMEOUT_SEC, () => {
                 if (mounting && !asking_password) {
-                    warning ("Cancelled after timeout in mount mountable %s", file.uri);
                     cancellable.cancel ();
                     mount_timeout_id = 0;
+                    warning ("Cancelled after timeout in mount mountable %s", file.uri);
+                    last_error_message = ("Timed out when trying to mount %s").printf (file.uri);
                     return false;
                 } else {
                     return true;
@@ -294,11 +300,9 @@ public class GOF.Directory.Async : Object {
             debug ("mounting ....");
             yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
             debug ("getting enclosing mount");
-            var mount = yield location.find_enclosing_mount_async (GLib.Priority.DEFAULT, cancellable);
-
-            debug ("Found enclosing mount %s", mount != null ? mount.get_name () : "null");
-            res = (mount != null);
+            res = true;
         } catch (Error e) {
+            last_error_message = e.message;
             if (e is IOError.ALREADY_MOUNTED) {
                 debug ("Already mounted %s", file.uri);
                 file.is_connected = true;
@@ -306,8 +310,15 @@ public class GOF.Directory.Async : Object {
             } else if (e is IOError.NOT_FOUND) {
                 debug ("Enclosing mount not found %s (may be remote share)", file.uri);
                 /* Do not fail loading at this point - may still load */
-                file.is_connected = true;
-                res = true;
+                try {
+                    yield location.mount_mountable (GLib.MountMountFlags.NONE, mount_op, cancellable);
+                    res = true;
+                } catch (GLib.Error e2) {
+                    last_error_message = e2.message;
+                    warning ("Unable to mount mountable");
+                    res = false;
+                }
+
             } else {
                 file.is_connected = false;
                 file.is_mounted = false;
@@ -334,6 +345,7 @@ public class GOF.Directory.Async : Object {
             try {
                 connectable = NetworkAddress.parse_uri (file.uri, 21);
             } catch (GLib.Error e) {
+                last_error_message = e.message;
                 warning ("Failed to parse uri %s - %s", file.uri, e.message);
                 return false;
             }
@@ -343,6 +355,7 @@ public class GOF.Directory.Async : Object {
                     success = net_mon.can_reach (connectable, cancellable);
                 }
                 catch (GLib.Error e) {
+                    last_error_message = e.message;
                     warning ("Error: cannot reach connectable %s - %s", file.uri, e.message);
                     return false;
                 }
@@ -355,6 +368,7 @@ public class GOF.Directory.Async : Object {
                     success = (sc != null && sc.is_connected ());
                     debug ("Socketclient is %s", sc == null ? "null" : (sc.is_connected () ? "connected" : "not connected"));
                 } catch (GLib.Error e) {
+                    last_error_message = e.message;
                     warning ("Error: could not connect to connectable %s - %s", file.uri, e.message);
                     return false;
                 }
@@ -395,6 +409,7 @@ public class GOF.Directory.Async : Object {
                         monitor.rate_limit = 100;
                         monitor.changed.connect (directory_changed);
                     } catch (IOError e) {
+                        last_error_message = e.message;
                         if (!(e is IOError.NOT_MOUNTED)) {
                             /* Will fail for remote filesystems - not an error */
                             debug ("directory monitor failed: %s %s", e.message, file.uri);
@@ -581,12 +596,14 @@ public class GOF.Directory.Async : Object {
                         }
                     }
                 } catch (Error e) {
+                    last_error_message = e.message;
                     warning ("Error reported by next_files_async - %s", e.message);
                 }
             }
             /* Load as many files as we can get info for */
             state = State.LOADED;
         } catch (Error err) {
+            last_error_message = err.message;
             warning ("Listing directory error: %s %s", err.message, file.uri);
             can_load = false;
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY) {
@@ -723,6 +740,7 @@ public class GOF.Directory.Async : Object {
                 f (gof);
             }
         } catch (Error err) {
+            last_error_message = err.message;
             warning ("query info failed, %s %s", err.message, gof.uri);
             if (err is IOError.NOT_FOUND) {
                 gof.exists = false;
@@ -1118,6 +1136,7 @@ public class GOF.Directory.Async : Object {
             this.ref ();
             new Thread<void*>.try ("load_thumbnails_func", load_thumbnails_func);
         } catch (Error e) {
+            last_error_message = e.message;
             critical ("Could not start loading thumbnails: %s", e.message);
         }
     }
