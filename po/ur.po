@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-09-21 06:14-0500\n"
-"PO-Revision-Date: 2016-01-08 14:58+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-09-23 19:28+0000\n"
+"Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-09-22 08:46+0000\n"
+"X-Launchpad-Export-Date: 2016-09-24 06:54+0000\n"
 "X-Generator: Launchpad (build 18204)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -24,51 +24,53 @@ msgstr "پیسٹ کرنے کے لیے کلپ بورڈ میں کچھ نہیں ہ�
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr ""
+msgstr "ایس ایس ایچ"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr ""
+msgstr "پبلک ایف۔ٹی۔پی"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr ""
+msgstr "ایف۔ٹی۔پی(بمع لاگن)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "اے۔ایف۔پی(ایپل فائلنگ پروٹوکول)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr ""
+msgstr "ونڈوز اشتراک"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "Secure WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr ""
+msgstr "جڑ رہا ہے۔۔۔"
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
+"معاون کردہ میتھڈ فہرسے لوڈ کرنے میں ناکام\\n\n"
+"برائے مہربانی اپنی gvfs تنصیب چیک کریں۔"
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "فولڈر \"%s\" ۔ \"%s\" پر نہیں کھولا جا سکتا۔"
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "\"%s\" پر سرور نہیں پایا گیا۔"
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
@@ -76,7 +78,7 @@ msgstr "دوبارہ کوشش کرِیں"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "صارف کی تفصیلات کی تصدیق کریں۔"
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -85,7 +87,7 @@ msgstr "جاری رکھیں"
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr ""
+msgstr "_متصل ہوں"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
@@ -93,7 +95,7 @@ msgstr "سرور سِے رابطہ قائم کریں"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr ""
+msgstr "سرور کی تفصیلات"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
@@ -109,11 +111,11 @@ msgstr "_نوعیت:"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
-msgstr ""
+msgstr "اشتر_اک کریں:"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr ""
+msgstr "_فولڈر"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
@@ -129,11 +131,11 @@ msgstr "صارف کا نام"
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
-msgstr ""
+msgstr "پاس_ورڈ:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr ""
+msgstr "اس پاس_ورڈ کو یاد رکھیں"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
@@ -143,7 +145,7 @@ msgstr "عمل منسوخ"
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "فولڈر \"%s\" کو ملا دیں؟"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:375
@@ -2157,6 +2159,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Waqar Ahmed https://launchpad.net/~waqar-17a\n"
 "  Waqas Ahmad https://launchpad.net/~waqqas-ahmad"
 
 #: ../libwidgets/Resources.vala:83

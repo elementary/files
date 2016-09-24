@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
 "POT-Creation-Date: 2016-09-21 06:14-0500\n"
-"PO-Revision-Date: 2016-09-16 09:03+0000\n"
+"PO-Revision-Date: 2016-09-23 23:04+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-09-22 08:44+0000\n"
+"X-Launchpad-Export-Date: 2016-09-24 06:54+0000\n"
 "X-Generator: Launchpad (build 18204)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1796,13 +1796,13 @@ msgstr "Neimenovano %s"
 #: ../src/View/AbstractDirectoryView.vala:2659
 #: ../src/View/AbstractDirectoryView.vala:2824
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Nemoguće je uklanjanje datoteka odavdje"
 
 #: ../src/View/AbstractDirectoryView.vala:2660
 #: ../src/View/AbstractDirectoryView.vala:2815
 #: ../src/View/AbstractDirectoryView.vala:2825
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Nemate dozvolu za mijenjanje ove lokacije"
 
 #: ../src/View/AbstractDirectoryView.vala:2797
 msgid "Cannot copy files that are in the trash"
@@ -1814,7 +1814,7 @@ msgstr "Umjesto toga rezanje odabira"
 
 #: ../src/View/AbstractDirectoryView.vala:2814
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Nemoguće je zalijepiti datoteke ovdje"
 
 #: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
 msgid "%u folders"
@@ -2056,7 +2056,7 @@ msgstr "Nemoguće povezivanje s poslužiteljem ove mape."
 
 #: ../src/View/ViewContainer.vala:378
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Nemoguće je prikazati mapu"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
