@@ -127,14 +127,15 @@ namespace Marlin.View {
             /* Only show side bar in first window - (to be confirmed) */
 
             lside_pane.pack1 (sidebar, false, false);
-            lside_pane.pack2 (tabs, true, false);
 
             Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
             window_box.pack_start(info_bar, false, false, 0);
-            window_box.pack_start(lside_pane, true, true, 0);
+            window_box.pack_start(tabs, true, true, 0);
 
-            add(window_box);
+            lside_pane.pack2 (window_box, true, false);
+
+            add(lside_pane);
 
             title = _(Marlin.APP_TITLE);
             try {
