@@ -116,7 +116,7 @@ public class GOF.Directory.Async : Object {
         scheme = location.get_uri_scheme ();
         is_trash = (scheme == "trash");
         is_recent = (scheme == "recent");
-        is_no_info = ("cdda mtp".contains (scheme));
+        is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme)); //Try lifting requirement for info on remote connections 
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
         can_open_files = !("mtp".contains (scheme));
@@ -193,6 +193,7 @@ public class GOF.Directory.Async : Object {
 
     /*** Returns false if should be able to get info but were unable to ***/
     private async bool get_file_info () {
+        debug ("get_file_info");
         /* Force info to be refreshed - the GOF.File may have been created already by another part of the program
          * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
          */
@@ -204,10 +205,10 @@ public class GOF.Directory.Async : Object {
             return false;
         }
 
-        if (is_no_info) {
-            /* Not a failure when not expected to get file info */
-            return true;
-        }
+//~         if (is_no_info) {
+//~             /* Not a failure when not expected to get file info */
+//~             return true;
+//~         }
 
         if (is_local) {
             return file.ensure_query_info ();
@@ -220,7 +221,7 @@ public class GOF.Directory.Async : Object {
              * e.g. by unplugging the network cable.  So the following function can block for
              * a long time; we therefore use a timeout */
                 debug ("successful mount %s", file.uri);
-                return yield try_query_info ();
+                return (yield try_query_info ()) || is_no_info;
             } else {
                 debug ("failed mount %s", file.uri);
                 return false;
@@ -231,6 +232,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private async bool try_query_info () {
+        debug ("try_query_info");
         cancellable = new Cancellable ();
         bool querying = true;
         assert (load_timeout_id == 0);
@@ -264,13 +266,12 @@ public class GOF.Directory.Async : Object {
     }
 
     private async bool mount_mountable () {
+        debug ("mount_mountable");
         bool res = false;
         var mount_op = new Gtk.MountOperation (null);
         cancellable = new Cancellable ();
 
         try {
-
-
             bool mounting = true;
             bool asking_password = false;
             assert (mount_timeout_id == 0);
@@ -386,6 +387,7 @@ public class GOF.Directory.Async : Object {
      
 
     private async void make_ready (bool ready, GOFFileLoadedFunc? file_loaded_func = null) {
+        debug ("make ready");
         can_load = ready;
         if (!can_load) {
             warning ("%s cannot load.  Connected %s, Mounted %s, Exists %s", file.uri,
@@ -513,6 +515,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
+        debug ("list cached files");
         if (state != State.LOADED) {
             warning ("list cached files called in %s state - not expected to happen", state.to_string ());
             return;
@@ -529,6 +532,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private async void list_directory_async (GOFFileLoadedFunc? file_loaded_func) {
+        debug ("list directory async");
         /* Should only be called after creation and if reloaded */
         if (!is_ready || file_hash.size () > 0) {
             critical ("(Re)load directory called when not cleared");
