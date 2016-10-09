@@ -1652,8 +1652,8 @@ namespace FM {
 
 /** DnD helpers */
 
-        private GOF.File? get_drop_target_file (int x, int y, out Gtk.TreePath? path_return) {
-            Gtk.TreePath? path = get_path_at_pos (x, y);
+        private GOF.File? get_drop_target_file (int win_x, int win_y, out Gtk.TreePath? path_return) {
+            Gtk.TreePath? path = get_path_at_pos (win_x, win_y);
             GOF.File? file = null;
 
             if (path != null) {
@@ -3482,7 +3482,7 @@ namespace FM {
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
-        public abstract Gtk.TreePath? get_path_at_pos (int x, int y);
+        public abstract Gtk.TreePath? get_path_at_pos (int x, int win);
         public abstract Gtk.TreePath? get_path_at_cursor ();
         public abstract void select_all ();
         public abstract void unselect_all ();
