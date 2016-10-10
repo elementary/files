@@ -1,3 +1,9 @@
+pantheon-files (0.3.0.3) xenial; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <cody@elementary.io>  Mon, 10 Oct 2016 09:43:33 -0500
+
 pantheon-files (0.3.0.2) xenial; urgency=medium
 
   * New upstream release.
