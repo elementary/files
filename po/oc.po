@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-09-21 06:14-0500\n"
-"PO-Revision-Date: 2016-10-05 08:01+0000\n"
+"PO-Revision-Date: 2016-10-09 14:37+0000\n"
 "Last-Translator: Cédric VALMARY (Tot en òc) <cvalmary@yahoo.fr>\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-10-06 06:07+0000\n"
-"X-Generator: Launchpad (build 18217)\n"
+"X-Launchpad-Export-Date: 2016-10-10 07:02+0000\n"
+"X-Generator: Launchpad (build 18227)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -277,7 +277,7 @@ msgstr "_Ignorar"
 
 #: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
-msgstr "Tornar _nomenar"
+msgstr "Re_nomenar"
 
 #: ../libcore/marlin-file-conflict-dialog.c:759
 msgid "Replace"
@@ -315,7 +315,7 @@ msgstr "Las barras oblicas son pas permesas dins los noms de fichièrs"
 
 #: ../libcore/gof-file.c:2285
 msgid "Toplevel files cannot be renamed"
-msgstr "Impossible de tornar nomenar los fichièrs raices"
+msgstr "Impossible de renomenar los fichièrs raices"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
@@ -389,7 +389,7 @@ msgstr[1] "a l'entorn de %'d oras"
 #: ../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
-msgstr "Ligam fins a %s"
+msgstr "Ligam cap a %s"
 
 #: ../libcore/marlin-file-operations.c:399
 #, c-format
@@ -562,8 +562,8 @@ msgstr[1] "Demòra %'d fichièrs de suprimir"
 #: ../libcore/marlin-file-operations.c:1538
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] "Demòra %T"
-msgstr[1] "Demòra %T"
+msgstr[0] "Demòra %T"
+msgstr[1] "Demòran %T"
 
 #: ../libcore/marlin-file-operations.c:1606
 #: ../libcore/marlin-file-operations.c:1640
@@ -607,7 +607,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:2771
 #: ../libcore/marlin-file-operations.c:3771
 msgid "There was an error reading the folder \"%B\"."
-msgstr "Una error s'es producha al moment de copiar lo dorsièr « %B »."
+msgstr "Una error s'es produita al moment de copiar lo dorsièr « %B »."
 
 #: ../libcore/marlin-file-operations.c:1680
 msgid "Could not remove the folder %B."
@@ -615,7 +615,7 @@ msgstr "Impossible de suprimir lo dorsièr %B."
 
 #: ../libcore/marlin-file-operations.c:1757
 msgid "There was an error deleting %B."
-msgstr "Una error s'es producha al moment de suprimir « %B »."
+msgstr "Una error s'es produita al moment de suprimir « %B »."
 
 #: ../libcore/marlin-file-operations.c:1837
 #: ../libcore/marlin-file-operations.c:1849
@@ -627,7 +627,7 @@ msgstr "Desplaçament dels fichièrs dins l'escobilhièr"
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "Demòra %'d fichièr dins l'escobilhièr"
-msgstr[1] "Demòra %'d fichièrs dins l'escobilhièr"
+msgstr[1] "Demòran %'d fichièrs dins l'escobilièr"
 
 #: ../libcore/marlin-file-operations.c:1946
 #: ../libcore/marlin-file-operations.c:1949
@@ -703,7 +703,7 @@ msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
-"Per recobrar d'espaci liure sus aqueste periferic, devètz voidar "
+"Per ganhar d'espaci liure sus aqueste periferic, vos cal voidar "
 "l'escobilhièr. Totes los elements de l'escobilhièr seràn suprimits per "
 "totjorn."
 
@@ -787,7 +787,8 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2847
 msgid "There was an error getting information about \"%B\"."
-msgstr "I a aguda una error al moment d'obténer d'entresenhas sus « %B » ."
+msgstr ""
+"Una error s'es produita al moment d'obténer d'entresenhas sus « %B » ."
 
 #: ../libcore/marlin-file-operations.c:2947
 #: ../libcore/marlin-file-operations.c:2989
@@ -803,12 +804,12 @@ msgstr "Avètz pas las permissions per accedir al dorsièr de destinacion."
 #: ../libcore/marlin-file-operations.c:2953
 msgid "There was an error getting information about the destination."
 msgstr ""
-"Error al moment de l'obtencion d'informacions que concernisson la "
-"destinacion."
+"Una error s'es produita al moment d'obténer d'entresenhas a prepaus de la "
+"cibla."
 
 #: ../libcore/marlin-file-operations.c:2990
 msgid "The destination is not a folder."
-msgstr "La cibla es pas un dorsièr."
+msgstr "La destinacion es pas un dorsièr."
 
 #: ../libcore/marlin-file-operations.c:3023
 msgid ""
@@ -821,7 +822,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:3025
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr "%S es disponible, mas %S es requesit."
+msgstr "%S es disponible mas es necessari d'aver %S."
 
 #: ../libcore/marlin-file-operations.c:3053
 msgid "The destination is read-only."
@@ -1074,7 +1075,7 @@ msgstr "Error al moment de crear lo fichièr %B."
 #: ../libcore/marlin-file-operations.c:6327
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Error al moment de la creacion del repertòri dins %F."
+msgstr "Error al moment de crear lo dorsièr dins %F."
 
 #: ../libcore/marlin-file-operations.c:6649
 msgid "Emptying the trash"
