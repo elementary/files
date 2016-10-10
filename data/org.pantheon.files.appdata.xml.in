@@ -18,7 +18,14 @@
     <binary>pantheon-files-pkexec</binary>
   </provides>
   <releases>
-    <release version="0.3.0.3" date="" urgency="medium">
+    <release version="0.3.0.3.1" date="2016-10-10" urgency="medium">
+      <description>
+        <ul>
+          <_li>Fix appdata release dates</_li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.0.3" date="2016-10-10" urgency="medium">
       <description>
         <ul>
           <_li>Improve file opening over Samba shares</_li>
