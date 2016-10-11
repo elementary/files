@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-09-21 06:14-0500\n"
+"POT-Creation-Date: 2016-10-10 13:06-0500\n"
 "PO-Revision-Date: 2016-08-13 16:01+0000\n"
 "Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2016-09-22 08:44+0000\n"
-"X-Generator: Launchpad (build 18204)\n"
+"X-Launchpad-Export-Date: 2016-10-11 07:26+0000\n"
+"X-Generator: Launchpad (build 18227)\n"
 "Language: sl\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1590,15 +1590,15 @@ msgstr "Naprej"
 msgid "Next"
 msgstr "Nazaj"
 
-#: ../src/View/Window.vala:209
+#: ../src/View/Window.vala:210
 msgid "Files isn't your default file manager."
 msgstr "File ni vaš privzed upravljalnik datotek"
 
-#: ../src/View/Window.vala:215
+#: ../src/View/Window.vala:216
 msgid "Set as Default"
 msgstr "Nastavi kot privzeto"
 
-#: ../src/View/Window.vala:221
+#: ../src/View/Window.vala:222
 msgid "Ignore"
 msgstr "Prezri"
 
@@ -1798,71 +1798,71 @@ msgstr "Uporabljeno:"
 msgid "Failed to preview"
 msgstr "Predogleda ni bilo mogoče prikazati"
 
-#: ../src/View/AbstractDirectoryView.vala:809
+#: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
 msgstr "Te datoteke ni mogoče odpreti."
 
-#: ../src/View/AbstractDirectoryView.vala:822
+#: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
 msgstr "Ni bilo mogoče ugotoviti vrste datoteke"
 
-#: ../src/View/AbstractDirectoryView.vala:1559
+#: ../src/View/AbstractDirectoryView.vala:1555
 msgid "Cannot drop this file"
 msgstr "Datoteke ni mogoče spustiti"
 
-#: ../src/View/AbstractDirectoryView.vala:1559
+#: ../src/View/AbstractDirectoryView.vala:1555
 msgid "Invalid file name provided"
 msgstr "Ime datoteke je napačno"
 
-#: ../src/View/AbstractDirectoryView.vala:2012
+#: ../src/View/AbstractDirectoryView.vala:2008
 msgid "Invalid"
 msgstr "Neveljavna"
 
-#: ../src/View/AbstractDirectoryView.vala:2018
+#: ../src/View/AbstractDirectoryView.vala:2014
 msgid "Run"
 msgstr "Zaženi"
 
-#: ../src/View/AbstractDirectoryView.vala:2023
+#: ../src/View/AbstractDirectoryView.vala:2019
 msgid "Open in %s"
 msgstr "Odpri v %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2029
 msgid "Open in"
 msgstr "Odpri v"
 
-#: ../src/View/AbstractDirectoryView.vala:2035
+#: ../src/View/AbstractDirectoryView.vala:2031
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr "Odpri z"
 
-#: ../src/View/AbstractDirectoryView.vala:2095
+#: ../src/View/AbstractDirectoryView.vala:2091
 msgid "Other Application"
 msgstr "Druga aplikacija"
 
-#: ../src/View/AbstractDirectoryView.vala:2356
+#: ../src/View/AbstractDirectoryView.vala:2352
 msgid "Untitled %s"
 msgstr "Neimenovana %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2659
-#: ../src/View/AbstractDirectoryView.vala:2824
+#: ../src/View/AbstractDirectoryView.vala:2652
+#: ../src/View/AbstractDirectoryView.vala:2817
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2660
-#: ../src/View/AbstractDirectoryView.vala:2815
-#: ../src/View/AbstractDirectoryView.vala:2825
+#: ../src/View/AbstractDirectoryView.vala:2653
+#: ../src/View/AbstractDirectoryView.vala:2808
+#: ../src/View/AbstractDirectoryView.vala:2818
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2797
+#: ../src/View/AbstractDirectoryView.vala:2790
 msgid "Cannot copy files that are in the trash"
 msgstr "Datotek v smeteh ni mogoče kopirati"
 
-#: ../src/View/AbstractDirectoryView.vala:2798
+#: ../src/View/AbstractDirectoryView.vala:2791
 msgid "Cutting the selection instead"
 msgstr "Režem izbrane predmete"
 
-#: ../src/View/AbstractDirectoryView.vala:2814
+#: ../src/View/AbstractDirectoryView.vala:2807
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -2360,6 +2360,26 @@ msgstr "Pojdi v %s"
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:274
 msgid "Go to %s"
 msgstr "Pojdi v %s"
+
+#: ../libwidgets/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr ""
 
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
