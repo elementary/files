@@ -524,10 +524,12 @@ gof_file_update (GOFFile *file)
     if (file->custom_display_name == NULL) {
         /* Use custom_display_name to store default display name if there is no custom name */
         if (file->info && g_file_info_get_display_name (file->info) != NULL) {
-            if (file->directory != NULL && strcmp (g_file_get_uri_scheme (file->directory), "network") == 0) {
+            if (file->directory != NULL &&
+                strcmp (g_file_get_uri_scheme (file->directory), "network") == 0 &&
+                !(strcmp (g_file_get_uri (file->target_location), "smb:///") == 0)) {
                 /* Show protocol after server name (lp:1184606) */
                 file->custom_display_name = g_strdup_printf ("%s (%s)", g_file_info_get_display_name (file->info),
-                                                                        g_file_get_uri_scheme (file->target_location));
+                                                                        g_utf8_strup (g_file_get_uri_scheme (file->target_location), -1));
             } else {
                 file->custom_display_name = g_strdup (g_file_info_get_display_name (file->info));
             }
