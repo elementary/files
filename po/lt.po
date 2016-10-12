@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-10-10 13:06-0500\n"
-"PO-Revision-Date: 2016-09-21 13:38+0000\n"
+"PO-Revision-Date: 2016-10-11 08:52+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-10-11 07:24+0000\n"
+"X-Launchpad-Export-Date: 2016-10-12 06:29+0000\n"
 "X-Generator: Launchpad (build 18227)\n"
 "Language: lt\n"
 
@@ -2324,23 +2324,23 @@ msgstr "Pereiti į %s"
 
 #: ../libwidgets/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Pasirinkti keli failo tipai"
 
 #: ../libwidgets/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Jokia viena programa negali atverti visų šių failo tipų"
 
 #: ../libwidgets/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Nepavyko atverti failų"
 
 #: ../libwidgets/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Nepavyko atverti uri"
 
 #: ../libwidgets/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Naudojant šią programą, nepavyko atverti failų ar uri"
 
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
