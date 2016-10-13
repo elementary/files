@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-10 13:06-0500\n"
-"PO-Revision-Date: 2016-10-11 10:39+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-10-12 14:31+0000\n"
+"Last-Translator: UweS <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-10-12 06:29+0000\n"
-"X-Generator: Launchpad (build 18227)\n"
+"X-Launchpad-Export-Date: 2016-10-13 06:08+0000\n"
+"X-Generator: Launchpad (build 18232)\n"
 "Language: de\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -1790,13 +1790,14 @@ msgstr "%s ohne Namen"
 #: ../src/View/AbstractDirectoryView.vala:2652
 #: ../src/View/AbstractDirectoryView.vala:2817
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Dateien können von diesem Ort nicht entfernt werden"
 
 #: ../src/View/AbstractDirectoryView.vala:2653
 #: ../src/View/AbstractDirectoryView.vala:2808
 #: ../src/View/AbstractDirectoryView.vala:2818
 msgid "You do not have permission to change this location"
 msgstr ""
+"Sie haben nicht die Zugriffsrechte, um an diesem Ort Änderungen vorzunehmen"
 
 #: ../src/View/AbstractDirectoryView.vala:2790
 msgid "Cannot copy files that are in the trash"
@@ -1808,7 +1809,7 @@ msgstr "Die ausgewählten Objekte wurden stattdessen ausgeschnitten"
 
 #: ../src/View/AbstractDirectoryView.vala:2807
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "An diesem Ort können keine Dateien eingefügt werden"
 
 #: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
 msgid "%u folders"
@@ -2052,7 +2053,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:378
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Dieser Ordner kann nicht angezeigt werden"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
