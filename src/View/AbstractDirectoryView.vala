@@ -2587,13 +2587,14 @@ namespace FM {
 
         /** Returns true if the code parameter matches the keycode of the keyval parameter for
           * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
-        protected bool match_keycode (int keyval, uint code) {
+        protected bool match_keycode (uint keyval, uint code, int level) {
             Gdk.KeymapKey [] keys;
             Gdk.Keymap keymap = Gdk.Keymap.get_default ();
             if (keymap.get_entries_for_keyval (keyval, out keys)) {
                 foreach (var key in keys) {
-                    if (code == key.keycode)
+                    if (code == key.keycode && level == key.level) {
                         return true;
+                    }
                 }
             }
 
@@ -2604,6 +2605,8 @@ namespace FM {
             if (is_frozen || event.is_modifier == 1) {
                 return true;
             }
+
+            cancel_hover ();
 
             uint keyval;
             int eff_grp, level;
@@ -2617,7 +2620,19 @@ namespace FM {
                 return false;
             }
 
-            cancel_hover ();
+            keyval = 0;
+            for (uint key = 32; key < 128; key++) {
+                if (match_keycode (key, event.hardware_keycode, level)) {
+                    keyval = key;
+                    break;
+                }
+            }
+
+            if (keyval == 0) {
+                debug ("Could not match hardware code to ASCII hotkey");
+                keyval = event.keyval;
+                consumed_mods = 0;
+            }
 
             var mods = (event.state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
@@ -2733,23 +2748,26 @@ namespace FM {
                 case Gdk.Key.MenuKB:
                     if (no_mods) {
                         show_context_menu (event);
+                        return true;
                     }
 
-                   return true;
+                    break;
 
-                case Gdk.Key.N: /*shift is pressed */
+                case Gdk.Key.N:
                     if (control_pressed) {
                         new_empty_folder ();
+                        return true;
                     }
 
-                    return true;
+                    break;
 
-                case Gdk.Key.A: /*shift is pressed */
+                case Gdk.Key.A:
                     if (control_pressed) {
                         invert_selection ();
+                        return true;
                     }
 
-                    return true;
+                    break;
 
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
