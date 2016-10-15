@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-10-10 13:06-0500\n"
-"PO-Revision-Date: 2016-08-07 04:40+0000\n"
+"PO-Revision-Date: 2016-10-14 15:49+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-10-11 07:29+0000\n"
-"X-Generator: Launchpad (build 18227)\n"
+"X-Launchpad-Export-Date: 2016-10-15 06:10+0000\n"
+"X-Generator: Launchpad (build 18232)\n"
 "Language: zh_TW\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -88,7 +88,7 @@ msgstr "繼續"
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr "連線(_O)"
+msgstr "連接(_O)"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
@@ -1673,13 +1673,13 @@ msgstr "未命名 %s"
 #: ../src/View/AbstractDirectoryView.vala:2652
 #: ../src/View/AbstractDirectoryView.vala:2817
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "無法從此處移除檔案"
 
 #: ../src/View/AbstractDirectoryView.vala:2653
 #: ../src/View/AbstractDirectoryView.vala:2808
 #: ../src/View/AbstractDirectoryView.vala:2818
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "您沒有對此位置作更改的權利"
 
 #: ../src/View/AbstractDirectoryView.vala:2790
 msgid "Cannot copy files that are in the trash"
@@ -1691,7 +1691,7 @@ msgstr "改剪下選取項目"
 
 #: ../src/View/AbstractDirectoryView.vala:2807
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "無法在此處貼上檔案"
 
 #: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
 msgid "%u folders"
@@ -1928,7 +1928,7 @@ msgstr "無法連接到這個資料夾的所屬伺服器。"
 
 #: ../src/View/ViewContainer.vala:378
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "無法顯示資料夾"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
@@ -2186,23 +2186,23 @@ msgstr "前往 %s"
 
 #: ../libwidgets/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "已選取多種檔案類型"
 
 #: ../libwidgets/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "無法用一個程式就開啟所有這些類型的檔案"
 
 #: ../libwidgets/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "無法開啟檔案"
 
 #: ../libwidgets/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "無法開啟 URI"
 
 #: ../libwidgets/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "無法使用此程式開啟檔案或 URI"
 
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
