@@ -29,8 +29,6 @@
 //char *  marlin_get_xdg_dir                      (const char *type);
 char    *marlin_get_accel_map_file      (void);
 
-void    marlin_restore_files_from_trash         (GList *files, GtkWindow *parent_window);
-
 void    marlin_get_rename_region (const char *filename, int *start_offset, int *end_offset, gboolean select_all);
 
 #endif /* MARLIN_FILE_UTILITIES_H */

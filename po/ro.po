@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-07-02 05:58+0400\n"
-"PO-Revision-Date: 2016-06-30 19:09+0000\n"
+"POT-Creation-Date: 2016-10-10 13:06-0500\n"
+"PO-Revision-Date: 2016-09-16 09:06+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2016-07-02 05:53+0000\n"
-"X-Generator: Launchpad (build 18115)\n"
+"X-Launchpad-Export-Date: 2016-10-11 07:26+0000\n"
+"X-Generator: Launchpad (build 18227)\n"
+
+#: ../src/marlin-clipboard-manager.c:365
+msgid "There is nothing on the clipboard to paste"
+msgstr "Nu există nimic în clipboard pentru lipire"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -138,68 +142,963 @@ msgstr "Memo_rează această parolă"
 msgid "Operation cancelled"
 msgstr "Operațiune anulată"
 
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "Nu există nimic în clipboard pentru lipire"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (invalid Unicode)"
-
-#: ../libcore/eel-fcts.c:85
-msgid "Today at %-I:%M %p"
-msgstr "Astazi la %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89
-msgid "Yesterday at %-I:%M %p"
-msgstr "Ieri la %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %y la %-I:%M %p"
-
-#: ../libcore/marlin-file-utilities.c:131
+#: ../libcore/marlin-file-conflict-dialog.c:145
+#: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nu s-a putut determina locația originală pentru „%s” "
+msgid "Merge folder \"%s\"?"
+msgstr "Combinați dosarul „%s”?"
 
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "Elementul nu a putut fi restaurat din coșul de gunoi"
+#: ../libcore/marlin-file-conflict-dialog.c:149
+#: ../libcore/marlin-file-conflict-dialog.c:375
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Combinarea va cere o confirmare înainte de înlocuirea oricărui fișier din "
+"dosar care este în conflict cu fișierele ce urmează a fi copiate."
+
+#: ../libcore/marlin-file-conflict-dialog.c:154
+#: ../libcore/marlin-file-conflict-dialog.c:380
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Există deja un dosar mai vechi cu același nume în \"%s\""
+
+#: ../libcore/marlin-file-conflict-dialog.c:158
+#: ../libcore/marlin-file-conflict-dialog.c:384
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Un dosar mai nou cu același nume există deja în \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:162
+#: ../libcore/marlin-file-conflict-dialog.c:388
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Alt dosar cu același nume există deja în \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:167
+#: ../libcore/marlin-file-conflict-dialog.c:393
+msgid "Replacing it will remove all files in the folder."
+msgstr "Înlocuindu-l se vor elimina toate fișierele din dosar."
+
+#: ../libcore/marlin-file-conflict-dialog.c:169
+#: ../libcore/marlin-file-conflict-dialog.c:395
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Înlocuiți dosarul „%s”?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:171
+#: ../libcore/marlin-file-conflict-dialog.c:397
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Un dosar cu același nume există deja în \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:176
+#: ../libcore/marlin-file-conflict-dialog.c:402
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Înlocuiți fișierul „%s”?"
+
+#: ../libcore/marlin-file-conflict-dialog.c:178
+#: ../libcore/marlin-file-conflict-dialog.c:404
+msgid "Replacing it will overwrite its content."
+msgstr "Înlocuirea va suprascrie conținutul."
+
+#: ../libcore/marlin-file-conflict-dialog.c:182
+#: ../libcore/marlin-file-conflict-dialog.c:408
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Un fișier mai vechi cu același nume există deja în \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:186
+#: ../libcore/marlin-file-conflict-dialog.c:412
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Un fișier mai nou cu același nume există deja în \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:190
+#: ../libcore/marlin-file-conflict-dialog.c:416
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Alt fișier cu același nume există deja în \"%s\"."
+
+#: ../libcore/marlin-file-conflict-dialog.c:252
+#: ../libcore/marlin-file-conflict-dialog.c:471
+msgid "Original file"
+msgstr "Fișierul original"
+
+#: ../libcore/marlin-file-conflict-dialog.c:253
+#: ../libcore/marlin-file-conflict-dialog.c:284
+#: ../libcore/marlin-file-conflict-dialog.c:472
+#: ../libcore/marlin-file-conflict-dialog.c:493
+#: ../src/View/PropertiesWindow.vala:495
+msgid "Size:"
+msgstr "Dimensiune:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:256
+#: ../libcore/marlin-file-conflict-dialog.c:287
+#: ../libcore/marlin-file-conflict-dialog.c:475
+#: ../libcore/marlin-file-conflict-dialog.c:496
+#: ../src/View/PropertiesWindow.vala:502
+msgid "Type:"
+msgstr "Tip:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:259
+#: ../libcore/marlin-file-conflict-dialog.c:290
+#: ../libcore/marlin-file-conflict-dialog.c:478
+#: ../libcore/marlin-file-conflict-dialog.c:499
+msgid "Last modified:"
+msgstr "Data ultimei modificări:"
+
+#: ../libcore/marlin-file-conflict-dialog.c:283
+#: ../libcore/marlin-file-conflict-dialog.c:492
+msgid "Replace with"
+msgstr "Înlocuieşte cu"
+
+#: ../libcore/marlin-file-conflict-dialog.c:312
+#: ../libcore/marlin-file-conflict-dialog.c:517
+msgid "Merge"
+msgstr "Îmbină"
+
+#: ../libcore/marlin-file-conflict-dialog.c:711
+msgid "_Select a new name for the destination"
+msgstr "_Alegeți un nou nume pentru destinație"
+
+#: ../libcore/marlin-file-conflict-dialog.c:725
+msgid "Reset"
+msgstr "Resetează"
+
+#: ../libcore/marlin-file-conflict-dialog.c:737
+msgid "Apply this action to all files"
+msgstr "Aplică această acțiune tuturor fișierelor"
+
+#: ../libcore/marlin-file-conflict-dialog.c:748
+#: ../libcore/marlin-file-operations.c:199
+msgid "_Skip"
+msgstr "_Omite"
+
+#: ../libcore/marlin-file-conflict-dialog.c:753
+msgid "Re_name"
+msgstr "Redenumește"
+
+#: ../libcore/marlin-file-conflict-dialog.c:759
+msgid "Replace"
+msgstr "Înlocuiește"
+
+#: ../libcore/marlin-file-conflict-dialog.c:832
+msgid "File conflict"
+msgstr "Conflict de fișiere"
 
 #: ../libcore/gof-file.c:366
 #, c-format
 msgid "link to %s"
 msgstr "ink catre %s"
 
-#: ../libcore/gof-file.c:1913
+#: ../libcore/gof-file.c:1908
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Eroare in analizarea fisierelor desktopului: %s"
 
-#: ../libcore/gof-file.c:1951
+#: ../libcore/gof-file.c:1945
 msgid "No Exec field specified"
 msgstr "Nu s-a specificat un câmp „Exec”"
 
-#: ../libcore/gof-file.c:1971
+#: ../libcore/gof-file.c:1964
 msgid "No URL field specified"
 msgstr "Nu s-a specificat un URL"
 
-#: ../libcore/gof-file.c:1977
+#: ../libcore/gof-file.c:1970
 msgid "Invalid desktop file"
 msgstr "Fișier desktop invalid"
 
-#: ../libcore/gof-file.c:2272
+#: ../libcore/gof-file.c:2265
 msgid "Slashes are not allowed in filenames"
 msgstr "Caracterul nu este permis în numele fișierelor."
 
-#: ../libcore/gof-file.c:2292
+#: ../libcore/gof-file.c:2285
 msgid "Toplevel files cannot be renamed"
 msgstr "Fisierele de mai jos nu pot fi redenumite"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Arată mai multe _detalii"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (invalid Unicode)"
+
+#: ../libcore/marlin-file-operations.c:200
+msgid "S_kip All"
+msgstr "Sari toate"
+
+#: ../libcore/marlin-file-operations.c:201
+msgid "_Retry"
+msgstr "Reîncearcă"
+
+#: ../libcore/marlin-file-operations.c:202
+msgid "Delete _All"
+msgstr "Șterge tot"
+
+#: ../libcore/marlin-file-operations.c:203
+msgid "_Replace"
+msgstr "Înlocuiește"
+
+#: ../libcore/marlin-file-operations.c:204
+msgid "Replace _All"
+msgstr "Înlocuiește tot"
+
+#: ../libcore/marlin-file-operations.c:205
+msgid "_Merge"
+msgstr "Combină"
+
+#: ../libcore/marlin-file-operations.c:206
+msgid "Merge _All"
+msgstr "Combină tot"
+
+#: ../libcore/marlin-file-operations.c:207
+msgid "Copy _Anyway"
+msgstr "Copiază oricum"
+
+#: ../libcore/marlin-file-operations.c:296
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d secundă"
+msgstr[1] "%'d secunde"
+msgstr[2] "%'d secunde"
+
+#: ../libcore/marlin-file-operations.c:301
+#: ../libcore/marlin-file-operations.c:312
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d minut"
+msgstr[1] ""
+"Copy text   \t\r\n"
+"%'d minute"
+
+#: ../libcore/marlin-file-operations.c:311
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d oră"
+msgstr[1] ""
+msgstr[2] "%'d de ore"
+
+#: ../libcore/marlin-file-operations.c:319
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "aproximativ %'d oră"
+msgstr[1] "aproximativ %'d ore"
+msgstr[2] "aproximativ %'d de ore"
+
+#: ../libcore/marlin-file-operations.c:395
+#, c-format
+msgid "Link to %s"
+msgstr "Legătură la %s"
+
+#: ../libcore/marlin-file-operations.c:399
+#, c-format
+msgid "Another link to %s"
+msgstr "O altă legătură la %s"
+
+#: ../libcore/marlin-file-operations.c:415
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'d-a legătură la %s"
+
+#: ../libcore/marlin-file-operations.c:419
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "A %'d-a legătură la %s"
+
+#: ../libcore/marlin-file-operations.c:423
+#, c-format
+msgid "%'drd link to %s"
+msgstr "A %'d-a legătură la %s"
+
+#: ../libcore/marlin-file-operations.c:427
+#, c-format
+msgid "%'dth link to %s"
+msgstr "A %'d-a legătură la %s"
+
+#: ../libcore/marlin-file-operations.c:465
+msgid " (copy)"
+msgstr " (copiaza)"
+
+#: ../libcore/marlin-file-operations.c:467
+msgid " (another copy)"
+msgstr " (altă copie)"
+
+#: ../libcore/marlin-file-operations.c:470
+#: ../libcore/marlin-file-operations.c:472
+#: ../libcore/marlin-file-operations.c:474
+#: ../libcore/marlin-file-operations.c:484
+msgid "th copy)"
+msgstr "-a copie)"
+
+#: ../libcore/marlin-file-operations.c:477
+msgid "st copy)"
+msgstr "a copie)"
+
+#: ../libcore/marlin-file-operations.c:479
+msgid "nd copy)"
+msgstr "a copie)"
+
+#: ../libcore/marlin-file-operations.c:481
+msgid "rd copy)"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:498
+#, c-format
+msgid "%s (copy)%s"
+msgstr "%s (copiaza)%s"
+
+#: ../libcore/marlin-file-operations.c:500
+#, c-format
+msgid "%s (another copy)%s"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:503
+#: ../libcore/marlin-file-operations.c:505
+#: ../libcore/marlin-file-operations.c:507
+#: ../libcore/marlin-file-operations.c:521
+#, c-format
+msgid "%s (%'dth copy)%s"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:515
+#, c-format
+msgid "%s (%'dst copy)%s"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:517
+#, c-format
+msgid "%s (%'dnd copy)%s"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:519
+#, c-format
+msgid "%s (%'drd copy)%s"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:619
+msgid " ("
+msgstr " ("
+
+#: ../libcore/marlin-file-operations.c:627
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: ../libcore/marlin-file-operations.c:1384
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "Sigur doriți să ștergeți ireversibil „%B” din coșul de gunoi?"
+
+#: ../libcore/marlin-file-operations.c:1387
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] ""
+"Sigur doriți să ștergeți ireversibil elementul selectat din coșul de gunoi?"
+msgstr[1] ""
+"Sigur doriți să ștergeți ireversibil %'d elemente selectate din coșul de "
+"gunoi?"
+msgstr[2] ""
+"Sigur doriți să ștergeți ireversibil %'d de elemente selectate din coșul de "
+"gunoi?"
+
+#: ../libcore/marlin-file-operations.c:1397
+#: ../libcore/marlin-file-operations.c:1477
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Dacă ștergeți un element, nu îl veți mai putea recupera."
+
+#: ../libcore/marlin-file-operations.c:1422
+msgid "Permanently delete all items from Trash?"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1423
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1426
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1427
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1438
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
+msgid "Empty _Trash"
+msgstr "Golește coșul de gunoi"
+
+#: ../libcore/marlin-file-operations.c:1465
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Sigur doriți să ștergeți ireversibil „%B”?"
+
+#: ../libcore/marlin-file-operations.c:1468
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] "Sigur doriți să ștergeți ireversibil elementul selectat?"
+msgstr[1] "Sigur doriți să ștergeți ireversibil %'d elemente selectate?"
+msgstr[2] "Sigur doriți să ștergeți ireversibil %'d de elemente selectate?"
+
+#: ../libcore/marlin-file-operations.c:1493
+#: ../libcore/marlin-file-operations.c:1525
+msgid "Deleting files"
+msgstr "Se șterg fișierele"
+
+#: ../libcore/marlin-file-operations.c:1519
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "Un fișier rămas pentru ștergere"
+msgstr[1] ""
+msgstr[2] "%'d de fișiere rămase pentru ștergere"
+
+#. / TRANSLATORS: %T will expand to a time like "2 minutes".
+#. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#: ../libcore/marlin-file-operations.c:1538
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "%T rămas"
+msgstr[1] "%T rămase"
+msgstr[2] "%T rămase"
+
+#: ../libcore/marlin-file-operations.c:1606
+#: ../libcore/marlin-file-operations.c:1640
+#: ../libcore/marlin-file-operations.c:1679
+#: ../libcore/marlin-file-operations.c:1756
+#: ../libcore/marlin-file-operations.c:2673
+msgid "Error while deleting."
+msgstr "Eroare la ștergere."
+
+#: ../libcore/marlin-file-operations.c:1610
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr ""
+"Fisierele din dosarul \"%B\" nu pot fi sterse pentru ca nu avetipermisiunea "
+"sa le vizualizati"
+
+#: ../libcore/marlin-file-operations.c:1613
+#: ../libcore/marlin-file-operations.c:2732
+#: ../libcore/marlin-file-operations.c:3726
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr ""
+"S-a produs o eroare la obținerea informațiilor despre fișierele din dosarul "
+"„%B”."
+
+#: ../libcore/marlin-file-operations.c:1622
+#: ../libcore/marlin-file-operations.c:3735
+msgid "_Skip files"
+msgstr "Omite fișierele"
+
+#: ../libcore/marlin-file-operations.c:1643
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr ""
+"Dosarul „%B” nu a putut fi șters deoarece nu aveți suficiente permisiuni "
+"pentru a-l citi."
+
+#: ../libcore/marlin-file-operations.c:1646
+#: ../libcore/marlin-file-operations.c:2771
+#: ../libcore/marlin-file-operations.c:3771
+msgid "There was an error reading the folder \"%B\"."
+msgstr "S-a produs o eroare la citirea dosarului „%B”."
+
+#: ../libcore/marlin-file-operations.c:1680
+msgid "Could not remove the folder %B."
+msgstr "Dosarul %B nu poate fi șters."
+
+#: ../libcore/marlin-file-operations.c:1757
+msgid "There was an error deleting %B."
+msgstr "S-a produs o eroare la ștergerea %B."
+
+#: ../libcore/marlin-file-operations.c:1837
+#: ../libcore/marlin-file-operations.c:1849
+msgid "Moving files to trash"
+msgstr "Se mută fișiere la coșul de gunoi"
+
+#: ../libcore/marlin-file-operations.c:1851
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "Un fișier rămas de trimis la coșul de gunoi"
+msgstr[1] "%'d fișiere rămase de trimis la coșul de gunoi"
+msgstr[2] "%'d de fișiere rămase de trimis la coșul de gunoi"
+
+#: ../libcore/marlin-file-operations.c:1946
+#: ../libcore/marlin-file-operations.c:1949
+#: ../libcore/marlin-file-operations.c:1952
+msgid "Cannot move file to trash or delete it"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1947
+msgid ""
+"It is not permitted to trash or delete files on a read only filesystem."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1950
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1953
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1955
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1956
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1960
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1961
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:1966
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:2156
+msgid "Trashing Files"
+msgstr "Se mută fișierele la coșul de gunoi"
+
+#: ../libcore/marlin-file-operations.c:2158
+msgid "Deleting Files"
+msgstr "Se șterg fișierele"
+
+#: ../libcore/marlin-file-operations.c:2227
+msgid "Unable to eject %V"
+msgstr "Nu s-a putut scoate %V"
+
+#: ../libcore/marlin-file-operations.c:2229
+msgid "Unable to unmount %V"
+msgstr "Nu s-a putut demonta %V"
+
+#: ../libcore/marlin-file-operations.c:2408
+msgid "Do you want to empty the trash before you unmount?"
+msgstr "Doriți să goliți coșul de gunoi înainte de a-l demonta?"
+
+#: ../libcore/marlin-file-operations.c:2410
+msgid ""
+"In order to regain the free space on this volume the trash must be emptied. "
+"All trashed items on the volume will be permanently lost."
+msgstr ""
+"Pentru a recâștiga spațiu liber pe acest volum trebuie golit coșul de gunoi. "
+"Toate elementele din coș vor fi șterse ireversibil."
+
+#: ../libcore/marlin-file-operations.c:2416
+msgid "Do _not Empty Trash"
+msgstr "_Nu goli coșul de gunoi"
+
+#: ../libcore/marlin-file-operations.c:2530
+#, c-format
+msgid "Unable to mount %s"
+msgstr "Nu s-a putut monta %s"
+
+#: ../libcore/marlin-file-operations.c:2608
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "Se pregătește %'d fișier pentru copiere (%S)"
+msgstr[1] "Se pregătesc %'d fișiere pentru copiere (%S)"
+msgstr[2] "Se pregătesc %'d de fișiere pentru copiere (%S)"
+
+#: ../libcore/marlin-file-operations.c:2614
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "Se pregătește %'d fișier pentru mutare (%S)"
+msgstr[1] "Se pregătesc %'d fișiere pentru mutare (%S)"
+msgstr[2] "Se pregătesc %'d de fișiere pentru mutare (%S)"
+
+#: ../libcore/marlin-file-operations.c:2620
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "Se pregătește %'d fișier pentru ștergere (%S)"
+msgstr[1] "Se pregătesc pentru ștergere %'d fișiere (%S)"
+msgstr[2] "Se pregătesc pentru ștergere %'d de fișiere (%S)"
+
+#: ../libcore/marlin-file-operations.c:2626
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Se pregătește un fișier pentru mutarea la coșul de gunoi"
+msgstr[1] "Se pregătesc %'d fișiere pentru mutare la coșul de gunoi"
+msgstr[2] "Se pregătesc %'d de fișiere pentru mutare la coșul de gunoi"
+
+#: ../libcore/marlin-file-operations.c:2669
+#: ../libcore/marlin-file-operations.c:3586
+#: ../libcore/marlin-file-operations.c:3718
+#: ../libcore/marlin-file-operations.c:3763
+msgid "Error while copying."
+msgstr "Eroare la copiere."
+
+#: ../libcore/marlin-file-operations.c:2671
+#: ../libcore/marlin-file-operations.c:3716
+#: ../libcore/marlin-file-operations.c:3761
+msgid "Error while moving."
+msgstr "Eroare la mutare."
+
+#: ../libcore/marlin-file-operations.c:2675
+msgid "Error while moving files to trash."
+msgstr "Eroare în timpul mutării fișierelor la coșul de gunoi."
+
+#: ../libcore/marlin-file-operations.c:2729
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Fișierele din dosarul „%B” nu pot fi accesate deoarece nu aveți suficiente "
+"permisiuni."
+
+#: ../libcore/marlin-file-operations.c:2768
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Dosarul „%B” nu poate fi accesat deoarece nu aveți permisiuni de citire."
+
+#: ../libcore/marlin-file-operations.c:2844
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Fișierul „%B” nu poate fi accesat deoarece nu aveți permisiuni de citire."
+
+#: ../libcore/marlin-file-operations.c:2847
+msgid "There was an error getting information about \"%B\"."
+msgstr "S-a produs o eroare la obținerea informațiilor despre „%B”."
+
+#: ../libcore/marlin-file-operations.c:2947
+#: ../libcore/marlin-file-operations.c:2989
+#: ../libcore/marlin-file-operations.c:3022
+#: ../libcore/marlin-file-operations.c:3052
+msgid "Error while copying to \"%B\"."
+msgstr "S-a produs o eroare la copierea în „%B”."
+
+#: ../libcore/marlin-file-operations.c:2951
+msgid "You do not have permissions to access the destination folder."
+msgstr "Nu aveți permisiuni pentru a accesa dosarul destinație."
+
+#: ../libcore/marlin-file-operations.c:2953
+msgid "There was an error getting information about the destination."
+msgstr "S-a produs o eroare la obținerea informațiilor despre destinație."
+
+#: ../libcore/marlin-file-operations.c:2990
+msgid "The destination is not a folder."
+msgstr "Destinația nu este un dosar."
+
+#: ../libcore/marlin-file-operations.c:3023
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"Destinația nu are suficient spațiu liber. Pentru a obține spațiu încercați "
+"să ștergeți fișiere."
+
+#: ../libcore/marlin-file-operations.c:3025
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Există %S disponibili, dar sunt necesari %S."
+
+#: ../libcore/marlin-file-operations.c:3053
+msgid "The destination is read-only."
+msgstr "Destinația poate fi doar citită."
+
+#: ../libcore/marlin-file-operations.c:3114
+msgid "Moving \"%B\" to \"%B\""
+msgstr "Se mută „%B” în „%B”"
+
+#: ../libcore/marlin-file-operations.c:3115
+msgid "Copying \"%B\" to \"%B\""
+msgstr "Se copiază „%B” în „%B”"
+
+#: ../libcore/marlin-file-operations.c:3119
+msgid "Duplicating \"%B\""
+msgstr "Se duplică „%B”"
+
+#: ../libcore/marlin-file-operations.c:3123
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Se mută %'d fișier (din „%B”) în „%B”"
+msgstr[1] "Se mută %'d fișiere (din „%B”) în „%B”"
+msgstr[2] "Se mută %'d de fișiere (din „%B”) în „%B”"
+
+#: ../libcore/marlin-file-operations.c:3126
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Se copiază %'d fișier (din „%B”) în „%B”"
+msgstr[1] "Se copiază %'d fișiere (din „%B”) în „%B”"
+msgstr[2] "Se copiază %'d de fișiere (din „%B”) în „%B”"
+
+#: ../libcore/marlin-file-operations.c:3133
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Se duplică %'d fișier (în „%B”)"
+msgstr[1] "Se duplică %'d fișiere (în „%B”)"
+msgstr[2] "Se duplică %'d de fișiere (în „%B”)"
+
+#: ../libcore/marlin-file-operations.c:3142
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "Se mută %'d fișier în „%B”"
+msgstr[1] "Se mută %'d fișiere în „%B”"
+msgstr[2] "Se mută %'d de fișiere în „%B”"
+
+#: ../libcore/marlin-file-operations.c:3146
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "Se copiază %'d fișier în „%B”"
+msgstr[1] "Se copiază %'d fișiere în „%B”"
+msgstr[2] "Se copiază %'d de fișiere în „%B”"
+
+#: ../libcore/marlin-file-operations.c:3151
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "Se duplică un fișier"
+msgstr[1] "Se duplică %'d fișiere"
+msgstr[2] "Se duplică %'d de fișiere"
+
+#. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
+#: ../libcore/marlin-file-operations.c:3202
+#, c-format
+msgid "%S of %S"
+msgstr "%S din %S"
+
+#. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+#. / "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
+#. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+#: ../libcore/marlin-file-operations.c:3211
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S din %S — %T rămas (%S/sec)"
+msgstr[1] "%S din %S — %T rămase (%S/sec)"
+
+#: ../libcore/marlin-file-operations.c:3590
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"Dosarul „%B” nu a putut fi copiat deoarece nu aveți permisiuni pentru a-l "
+"crea în destinația menționată."
+
+#: ../libcore/marlin-file-operations.c:3593
+msgid "There was an error creating the folder \"%B\"."
+msgstr "S-a produs o eroare la crearea dosarului „%B”."
+
+#: ../libcore/marlin-file-operations.c:3723
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Fișierele din dosarul „%B” nu pot fi copiate deoarece nu aveți suficiente "
+"permisiuni pentru a le vedea."
+
+#: ../libcore/marlin-file-operations.c:3768
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr ""
+"Dosarul „%B” nu poate fi copiat deoarece nu aveți permisiuni de citire."
+
+#: ../libcore/marlin-file-operations.c:3813
+#: ../libcore/marlin-file-operations.c:4519
+msgid "Error while moving \"%B\"."
+msgstr "Eroare la mutarea „%B”."
+
+#: ../libcore/marlin-file-operations.c:3814
+msgid "Could not remove the source folder."
+msgstr "Dosarul sursă nu poate fi șters."
+
+#: ../libcore/marlin-file-operations.c:3899
+#: ../libcore/marlin-file-operations.c:3940
+#: ../libcore/marlin-file-operations.c:4521
+msgid "Error while copying \"%B\"."
+msgstr "Eroare la copierea „%B”."
+
+#: ../libcore/marlin-file-operations.c:3900
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "Nu s-au putut șterge fișiere din dosarul existent %F."
+
+#: ../libcore/marlin-file-operations.c:3941
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "Nu s-a putut șterge fișierul existent %F."
+
+#: ../libcore/marlin-file-operations.c:4271
+#: ../libcore/marlin-file-operations.c:4947
+msgid "You cannot move a folder into itself."
+msgstr "Nu puteți muta un dosar în el însuși."
+
+#: ../libcore/marlin-file-operations.c:4272
+#: ../libcore/marlin-file-operations.c:4948
+msgid "You cannot copy a folder into itself."
+msgstr "Nu puteți copia un dosar în el însuși."
+
+#: ../libcore/marlin-file-operations.c:4273
+#: ../libcore/marlin-file-operations.c:4949
+msgid "The destination folder is inside the source folder."
+msgstr "Dosarul destinație este în interiorul dosarului sursă."
+
+#: ../libcore/marlin-file-operations.c:4304
+msgid "You cannot move a file over itself."
+msgstr "Nu puteți muta un fișier peste el însuși."
+
+#: ../libcore/marlin-file-operations.c:4305
+msgid "You cannot copy a file over itself."
+msgstr "Nu puteți copia un fișier în el însuși."
+
+#: ../libcore/marlin-file-operations.c:4306
+msgid "The source file would be overwritten by the destination."
+msgstr "Fișierul sursă ar fi suprascris de destinație."
+
+#: ../libcore/marlin-file-operations.c:4523
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr "Nu s-a putut șterge fișierul existent cu același nume din %F."
+
+#: ../libcore/marlin-file-operations.c:4593
+msgid "Cannot copy \"%B\" here."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:4594
+msgid "There was an error copying the file into %B."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:4821
+msgid "Copying Files"
+msgstr "Se copiază fișiere"
+
+#: ../libcore/marlin-file-operations.c:4847
+msgid "Preparing to move to \"%B\""
+msgstr "Se pregateste mutarea in \"%B\""
+
+#: ../libcore/marlin-file-operations.c:4859
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Se pregătește mutarea unui fișier"
+msgstr[1] "Se pregătește mutarea a %'d fișiere"
+msgstr[2] "Se pregătește mutarea a %'d de fișiere"
+
+#: ../libcore/marlin-file-operations.c:5107
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:5108
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "S-a produs o eroare la mutarea fișierului în %F."
+
+#: ../libcore/marlin-file-operations.c:5370
+msgid "Moving Files"
+msgstr "Se mută fișierele"
+
+#: ../libcore/marlin-file-operations.c:5399
+msgid "Creating links in \"%B\""
+msgstr "Se creează legături în „%B”"
+
+#: ../libcore/marlin-file-operations.c:5410
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Se creează o legătură la un fișier"
+msgstr[1] "Se creează legături la %'d fișiere"
+msgstr[2] "Se creează legături la %'d de fișiere"
+
+#: ../libcore/marlin-file-operations.c:5551
+msgid "Error while creating link to %B."
+msgstr "Eroare la creare legăturii către %B."
+
+#: ../libcore/marlin-file-operations.c:5553
+msgid "Symbolic links only supported for local files"
+msgstr "Legăturile simbolice sunt suportate doar pentru fișiere locale"
+
+#: ../libcore/marlin-file-operations.c:5556
+msgid "The target doesn't support symbolic links."
+msgstr "Destinația nu suportă legături simbolice."
+
+#: ../libcore/marlin-file-operations.c:5559
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "S-a produs o eroare la efectuarea legăturii simbolice în %F."
+
+#: ../libcore/marlin-file-operations.c:5887
+#: ../libcore/marlin-file-operations.c:5890
+msgid "Setting permissions"
+msgstr "Se definesc permisiunile"
+
+#: ../libcore/marlin-file-operations.c:6002
+msgid "Cannot copy into trash."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:6003
+msgid "It is not permitted to copy files into the trash"
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:6144
+msgid "untitled folder"
+msgstr "dosar fără nume"
+
+#: ../libcore/marlin-file-operations.c:6152
+msgid "new file"
+msgstr "fișier nou"
+
+#: ../libcore/marlin-file-operations.c:6323
+msgid "Error while creating directory %B."
+msgstr "Eroare la crearea dosarului %B."
+
+#: ../libcore/marlin-file-operations.c:6325
+msgid "Error while creating file %B."
+msgstr "Eroare la crearea fișierului %B."
+
+#: ../libcore/marlin-file-operations.c:6327
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "S-a produs o eroare la crearea dosarului în %F."
+
+#: ../libcore/marlin-file-operations.c:6649
+msgid "Emptying the trash"
+msgstr "Se golește coșul de gunoi"
+
+#: ../libcore/marlin-file-operations.c:6661
+msgid "Emptying Trash"
+msgstr "Se golește coșul de gunoi"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
@@ -581,943 +1480,162 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
+#: ../libcore/eel-fcts.c:85
+msgid "Today at %-I:%M %p"
+msgstr "Astazi la %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89
+msgid "Yesterday at %-I:%M %p"
+msgstr "Ieri la %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %y la %-I:%M %p"
+
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
 msgstr "Se pregătește"
 
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Arată mai multe _detalii"
-
-#: ../libcore/marlin-file-operations.c:199
-#: ../libcore/marlin-file-conflict-dialog.c:748
-msgid "_Skip"
-msgstr "_Omite"
-
-#: ../libcore/marlin-file-operations.c:200
-msgid "S_kip All"
-msgstr "Sari toate"
-
-#: ../libcore/marlin-file-operations.c:201
-msgid "_Retry"
-msgstr "Reîncearcă"
-
-#: ../libcore/marlin-file-operations.c:202
-msgid "Delete _All"
-msgstr "Șterge tot"
-
-#: ../libcore/marlin-file-operations.c:203
-msgid "_Replace"
-msgstr "Înlocuiește"
-
-#: ../libcore/marlin-file-operations.c:204
-msgid "Replace _All"
-msgstr "Înlocuiește tot"
-
-#: ../libcore/marlin-file-operations.c:205
-msgid "_Merge"
-msgstr "Combină"
-
-#: ../libcore/marlin-file-operations.c:206
-msgid "Merge _All"
-msgstr "Combină tot"
-
-#: ../libcore/marlin-file-operations.c:207
-msgid "Copy _Anyway"
-msgstr "Copiază oricum"
-
-#: ../libcore/marlin-file-operations.c:296
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d secundă"
-msgstr[1] "%'d secunde"
-msgstr[2] "%'d secunde"
-
-#: ../libcore/marlin-file-operations.c:301
-#: ../libcore/marlin-file-operations.c:312
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d minut"
-msgstr[1] ""
-"Copy text   \t\r\n"
-"%'d minute"
-
-#: ../libcore/marlin-file-operations.c:311
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d oră"
-msgstr[1] ""
-msgstr[2] "%'d de ore"
-
-#: ../libcore/marlin-file-operations.c:319
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "aproximativ %'d oră"
-msgstr[1] "aproximativ %'d ore"
-msgstr[2] "aproximativ %'d de ore"
-
-#: ../libcore/marlin-file-operations.c:395
-#, c-format
-msgid "Link to %s"
-msgstr "Legătură la %s"
-
-#: ../libcore/marlin-file-operations.c:399
-#, c-format
-msgid "Another link to %s"
-msgstr "O altă legătură la %s"
-
-#: ../libcore/marlin-file-operations.c:415
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%'d-a legătură la %s"
-
-#: ../libcore/marlin-file-operations.c:419
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "A %'d-a legătură la %s"
-
-#: ../libcore/marlin-file-operations.c:423
-#, c-format
-msgid "%'drd link to %s"
-msgstr "A %'d-a legătură la %s"
-
-#: ../libcore/marlin-file-operations.c:427
-#, c-format
-msgid "%'dth link to %s"
-msgstr "A %'d-a legătură la %s"
-
-#: ../libcore/marlin-file-operations.c:465
-msgid " (copy)"
-msgstr " (copiaza)"
-
-#: ../libcore/marlin-file-operations.c:467
-msgid " (another copy)"
-msgstr " (altă copie)"
-
-#: ../libcore/marlin-file-operations.c:470
-#: ../libcore/marlin-file-operations.c:472
-#: ../libcore/marlin-file-operations.c:474
-#: ../libcore/marlin-file-operations.c:484
-msgid "th copy)"
-msgstr "-a copie)"
-
-#: ../libcore/marlin-file-operations.c:477
-msgid "st copy)"
-msgstr "a copie)"
-
-#: ../libcore/marlin-file-operations.c:479
-msgid "nd copy)"
-msgstr "a copie)"
-
-#: ../libcore/marlin-file-operations.c:481
-msgid "rd copy)"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:498
-#, c-format
-msgid "%s (copy)%s"
-msgstr "%s (copiaza)%s"
-
-#: ../libcore/marlin-file-operations.c:500
-#, c-format
-msgid "%s (another copy)%s"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:503
-#: ../libcore/marlin-file-operations.c:505
-#: ../libcore/marlin-file-operations.c:507
-#: ../libcore/marlin-file-operations.c:521
-#, c-format
-msgid "%s (%'dth copy)%s"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:515
-#, c-format
-msgid "%s (%'dst copy)%s"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:517
-#, c-format
-msgid "%s (%'dnd copy)%s"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:519
-#, c-format
-msgid "%s (%'drd copy)%s"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:619
-msgid " ("
-msgstr " ("
-
-#: ../libcore/marlin-file-operations.c:627
-#, c-format
-msgid " (%'d"
-msgstr " (%'d"
-
-#: ../libcore/marlin-file-operations.c:1384
-msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Sigur doriți să ștergeți ireversibil „%B” din coșul de gunoi?"
-
-#: ../libcore/marlin-file-operations.c:1387
-#, c-format
-msgid ""
-"Are you sure you want to permanently delete the %'d selected item from the "
-"trash?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items from the "
-"trash?"
-msgstr[0] ""
-"Sigur doriți să ștergeți ireversibil elementul selectat din coșul de gunoi?"
-msgstr[1] ""
-"Sigur doriți să ștergeți ireversibil %'d elemente selectate din coșul de "
-"gunoi?"
-msgstr[2] ""
-"Sigur doriți să ștergeți ireversibil %'d de elemente selectate din coșul de "
-"gunoi?"
-
-#: ../libcore/marlin-file-operations.c:1397
-#: ../libcore/marlin-file-operations.c:1477
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Dacă ștergeți un element, nu îl veți mai putea recupera."
-
-#: ../libcore/marlin-file-operations.c:1422
-msgid "Permanently delete all items from Trash?"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1423
-msgid ""
-"All items in all trash directories, including those on any mounted external "
-"drives, will be permanently deleted."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1426
-msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1427
-msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2419 ../src/View/Sidebar.vala:1485
-msgid "Empty _Trash"
-msgstr "Golește coșul de gunoi"
-
-#: ../libcore/marlin-file-operations.c:1465
-msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Sigur doriți să ștergeți ireversibil „%B”?"
-
-#: ../libcore/marlin-file-operations.c:1468
-#, c-format
-msgid "Are you sure you want to permanently delete the %'d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Sigur doriți să ștergeți ireversibil elementul selectat?"
-msgstr[1] "Sigur doriți să ștergeți ireversibil %'d elemente selectate?"
-msgstr[2] "Sigur doriți să ștergeți ireversibil %'d de elemente selectate?"
-
-#: ../libcore/marlin-file-operations.c:1493
-#: ../libcore/marlin-file-operations.c:1525
-msgid "Deleting files"
-msgstr "Se șterg fișierele"
-
-#: ../libcore/marlin-file-operations.c:1519
-#, c-format
-msgid "%'d file left to delete"
-msgid_plural "%'d files left to delete"
-msgstr[0] "Un fișier rămas pentru ștergere"
-msgstr[1] ""
-msgstr[2] "%'d de fișiere rămase pentru ștergere"
-
-#. /plural form will be used depending on the remaining time (i.e. the %T argument).
-#. 
-#: ../libcore/marlin-file-operations.c:1539
-msgid "%T left"
-msgid_plural "%T left"
-msgstr[0] "%T rămas"
-msgstr[1] "%T rămase"
-msgstr[2] "%T rămase"
-
-#: ../libcore/marlin-file-operations.c:1607
-#: ../libcore/marlin-file-operations.c:1641
-#: ../libcore/marlin-file-operations.c:1680
-#: ../libcore/marlin-file-operations.c:1757
-#: ../libcore/marlin-file-operations.c:2674
-msgid "Error while deleting."
-msgstr "Eroare la ștergere."
-
-#: ../libcore/marlin-file-operations.c:1611
-msgid ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
-"permissions to see them."
-msgstr ""
-"Fisierele din dosarul \"%B\" nu pot fi sterse pentru ca nu avetipermisiunea "
-"sa le vizualizati"
-
-#: ../libcore/marlin-file-operations.c:1614
-#: ../libcore/marlin-file-operations.c:2733
-#: ../libcore/marlin-file-operations.c:3729
-msgid ""
-"There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
-"S-a produs o eroare la obținerea informațiilor despre fișierele din dosarul "
-"„%B”."
-
-#: ../libcore/marlin-file-operations.c:1623
-#: ../libcore/marlin-file-operations.c:3738
-msgid "_Skip files"
-msgstr "Omite fișierele"
-
-#: ../libcore/marlin-file-operations.c:1644
-msgid ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
-"read it."
-msgstr ""
-"Dosarul „%B” nu a putut fi șters deoarece nu aveți suficiente permisiuni "
-"pentru a-l citi."
-
-#: ../libcore/marlin-file-operations.c:1647
-#: ../libcore/marlin-file-operations.c:2772
-#: ../libcore/marlin-file-operations.c:3774
-msgid "There was an error reading the folder \"%B\"."
-msgstr "S-a produs o eroare la citirea dosarului „%B”."
-
-#: ../libcore/marlin-file-operations.c:1681
-msgid "Could not remove the folder %B."
-msgstr "Dosarul %B nu poate fi șters."
-
-#: ../libcore/marlin-file-operations.c:1758
-msgid "There was an error deleting %B."
-msgstr "S-a produs o eroare la ștergerea %B."
-
-#: ../libcore/marlin-file-operations.c:1838
-#: ../libcore/marlin-file-operations.c:1850
-msgid "Moving files to trash"
-msgstr "Se mută fișiere la coșul de gunoi"
-
-#: ../libcore/marlin-file-operations.c:1852
-#, c-format
-msgid "%'d file left to trash"
-msgid_plural "%'d files left to trash"
-msgstr[0] "Un fișier rămas de trimis la coșul de gunoi"
-msgstr[1] "%'d fișiere rămase de trimis la coșul de gunoi"
-msgstr[2] "%'d de fișiere rămase de trimis la coșul de gunoi"
-
-#: ../libcore/marlin-file-operations.c:1947
-#: ../libcore/marlin-file-operations.c:1950
-#: ../libcore/marlin-file-operations.c:1953
-msgid "Cannot move file to trash or delete it"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1948
-msgid ""
-"It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1951
-msgid ""
-"It is not permitted to trash or delete files inside folders for which you do "
-"not have write privileges."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1954
-msgid ""
-"It is not permitted to trash or delete folders for which you do not have "
-"write privileges."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1956
-msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1957
-msgid ""
-"This file could not be moved to trash. See details below for further "
-"information."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1961
-msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1962
-msgid ""
-"This file could not be moved to trash. You may not be able to delete it "
-"either."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:1967
-msgid ""
-"\n"
-" Deleting a file removes it permanently"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:2157
-msgid "Trashing Files"
-msgstr "Se mută fișierele la coșul de gunoi"
-
-#: ../libcore/marlin-file-operations.c:2159
-msgid "Deleting Files"
-msgstr "Se șterg fișierele"
-
-#: ../libcore/marlin-file-operations.c:2228
-msgid "Unable to eject %V"
-msgstr "Nu s-a putut scoate %V"
-
-#: ../libcore/marlin-file-operations.c:2230
-msgid "Unable to unmount %V"
-msgstr "Nu s-a putut demonta %V"
-
-#: ../libcore/marlin-file-operations.c:2409
-msgid "Do you want to empty the trash before you unmount?"
-msgstr "Doriți să goliți coșul de gunoi înainte de a-l demonta?"
-
-#: ../libcore/marlin-file-operations.c:2411
-msgid ""
-"In order to regain the free space on this volume the trash must be emptied. "
-"All trashed items on the volume will be permanently lost."
-msgstr ""
-"Pentru a recâștiga spațiu liber pe acest volum trebuie golit coșul de gunoi. "
-"Toate elementele din coș vor fi șterse ireversibil."
-
-#: ../libcore/marlin-file-operations.c:2417
-msgid "Do _not Empty Trash"
-msgstr "_Nu goli coșul de gunoi"
-
-#: ../libcore/marlin-file-operations.c:2531
-#, c-format
-msgid "Unable to mount %s"
-msgstr "Nu s-a putut monta %s"
-
-#: ../libcore/marlin-file-operations.c:2609
-#, c-format
-msgid "Preparing to copy %'d file (%S)"
-msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "Se pregătește %'d fișier pentru copiere (%S)"
-msgstr[1] "Se pregătesc %'d fișiere pentru copiere (%S)"
-msgstr[2] "Se pregătesc %'d de fișiere pentru copiere (%S)"
-
-#: ../libcore/marlin-file-operations.c:2615
-#, c-format
-msgid "Preparing to move %'d file (%S)"
-msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Se pregătește %'d fișier pentru mutare (%S)"
-msgstr[1] "Se pregătesc %'d fișiere pentru mutare (%S)"
-msgstr[2] "Se pregătesc %'d de fișiere pentru mutare (%S)"
-
-#: ../libcore/marlin-file-operations.c:2621
-#, c-format
-msgid "Preparing to delete %'d file (%S)"
-msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Se pregătește %'d fișier pentru ștergere (%S)"
-msgstr[1] "Se pregătesc pentru ștergere %'d fișiere (%S)"
-msgstr[2] "Se pregătesc pentru ștergere %'d de fișiere (%S)"
-
-#: ../libcore/marlin-file-operations.c:2627
-#, c-format
-msgid "Preparing to trash %'d file"
-msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Se pregătește un fișier pentru mutarea la coșul de gunoi"
-msgstr[1] "Se pregătesc %'d fișiere pentru mutare la coșul de gunoi"
-msgstr[2] "Se pregătesc %'d de fișiere pentru mutare la coșul de gunoi"
-
-#: ../libcore/marlin-file-operations.c:2670
-#: ../libcore/marlin-file-operations.c:3589
-#: ../libcore/marlin-file-operations.c:3721
-#: ../libcore/marlin-file-operations.c:3766
-msgid "Error while copying."
-msgstr "Eroare la copiere."
-
-#: ../libcore/marlin-file-operations.c:2672
-#: ../libcore/marlin-file-operations.c:3719
-#: ../libcore/marlin-file-operations.c:3764
-msgid "Error while moving."
-msgstr "Eroare la mutare."
-
-#: ../libcore/marlin-file-operations.c:2676
-msgid "Error while moving files to trash."
-msgstr "Eroare în timpul mutării fișierelor la coșul de gunoi."
-
-#: ../libcore/marlin-file-operations.c:2730
-msgid ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
-"permissions to see them."
-msgstr ""
-"Fișierele din dosarul „%B” nu pot fi accesate deoarece nu aveți suficiente "
-"permisiuni."
-
-#: ../libcore/marlin-file-operations.c:2769
-msgid ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"Dosarul „%B” nu poate fi accesat deoarece nu aveți permisiuni de citire."
-
-#: ../libcore/marlin-file-operations.c:2845
-msgid ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"Fișierul „%B” nu poate fi accesat deoarece nu aveți permisiuni de citire."
-
-#: ../libcore/marlin-file-operations.c:2848
-msgid "There was an error getting information about \"%B\"."
-msgstr "S-a produs o eroare la obținerea informațiilor despre „%B”."
-
-#: ../libcore/marlin-file-operations.c:2948
-#: ../libcore/marlin-file-operations.c:2990
-#: ../libcore/marlin-file-operations.c:3023
-#: ../libcore/marlin-file-operations.c:3053
-msgid "Error while copying to \"%B\"."
-msgstr "S-a produs o eroare la copierea în „%B”."
-
-#: ../libcore/marlin-file-operations.c:2952
-msgid "You do not have permissions to access the destination folder."
-msgstr "Nu aveți permisiuni pentru a accesa dosarul destinație."
-
-#: ../libcore/marlin-file-operations.c:2954
-msgid "There was an error getting information about the destination."
-msgstr "S-a produs o eroare la obținerea informațiilor despre destinație."
-
-#: ../libcore/marlin-file-operations.c:2991
-msgid "The destination is not a folder."
-msgstr "Destinația nu este un dosar."
-
-#: ../libcore/marlin-file-operations.c:3024
-msgid ""
-"There is not enough space on the destination. Try to remove files to make "
-"space."
-msgstr ""
-"Destinația nu are suficient spațiu liber. Pentru a obține spațiu încercați "
-"să ștergeți fișiere."
-
-#: ../libcore/marlin-file-operations.c:3026
-#, c-format
-msgid "There is %S available, but %S is required."
-msgstr "Există %S disponibili, dar sunt necesari %S."
-
-#: ../libcore/marlin-file-operations.c:3054
-msgid "The destination is read-only."
-msgstr "Destinația poate fi doar citită."
-
-#: ../libcore/marlin-file-operations.c:3115
-msgid "Moving \"%B\" to \"%B\""
-msgstr "Se mută „%B” în „%B”"
-
-#: ../libcore/marlin-file-operations.c:3116
-msgid "Copying \"%B\" to \"%B\""
-msgstr "Se copiază „%B” în „%B”"
-
-#: ../libcore/marlin-file-operations.c:3120
-msgid "Duplicating \"%B\""
-msgstr "Se duplică „%B”"
-
-#: ../libcore/marlin-file-operations.c:3124
-msgid "Moving %'d file (in \"%B\") to \"%B\""
-msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Se mută %'d fișier (din „%B”) în „%B”"
-msgstr[1] "Se mută %'d fișiere (din „%B”) în „%B”"
-msgstr[2] "Se mută %'d de fișiere (din „%B”) în „%B”"
-
-#: ../libcore/marlin-file-operations.c:3127
-msgid "Copying %'d file (in \"%B\") to \"%B\""
-msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Se copiază %'d fișier (din „%B”) în „%B”"
-msgstr[1] "Se copiază %'d fișiere (din „%B”) în „%B”"
-msgstr[2] "Se copiază %'d de fișiere (din „%B”) în „%B”"
-
-#: ../libcore/marlin-file-operations.c:3134
-msgid "Duplicating %'d file (in \"%B\")"
-msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Se duplică %'d fișier (în „%B”)"
-msgstr[1] "Se duplică %'d fișiere (în „%B”)"
-msgstr[2] "Se duplică %'d de fișiere (în „%B”)"
-
-#: ../libcore/marlin-file-operations.c:3143
-msgid "Moving %'d file to \"%B\""
-msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Se mută %'d fișier în „%B”"
-msgstr[1] "Se mută %'d fișiere în „%B”"
-msgstr[2] "Se mută %'d de fișiere în „%B”"
-
-#: ../libcore/marlin-file-operations.c:3147
-msgid "Copying %'d file to \"%B\""
-msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "Se copiază %'d fișier în „%B”"
-msgstr[1] "Se copiază %'d fișiere în „%B”"
-msgstr[2] "Se copiază %'d de fișiere în „%B”"
-
-#: ../libcore/marlin-file-operations.c:3152
-#, c-format
-msgid "Duplicating %'d file"
-msgid_plural "Duplicating %'d files"
-msgstr[0] "Se duplică un fișier"
-msgstr[1] "Se duplică %'d fișiere"
-msgstr[2] "Se duplică %'d de fișiere"
-
-#: ../libcore/marlin-file-operations.c:3203
-#, c-format
-msgid "%S of %S"
-msgstr "%S din %S"
-
-#. /sec)"
-#. *
-#. * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#. 
-#: ../libcore/marlin-file-operations.c:3214
-msgid "%S of %S — %T left (%S/sec)"
-msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S din %S — %T rămas (%S/sec)"
-msgstr[1] "%S din %S — %T rămase (%S/sec)"
-
-#: ../libcore/marlin-file-operations.c:3593
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"create it in the destination."
-msgstr ""
-"Dosarul „%B” nu a putut fi copiat deoarece nu aveți permisiuni pentru a-l "
-"crea în destinația menționată."
-
-#: ../libcore/marlin-file-operations.c:3596
-msgid "There was an error creating the folder \"%B\"."
-msgstr "S-a produs o eroare la crearea dosarului „%B”."
-
-#: ../libcore/marlin-file-operations.c:3726
-msgid ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
-"permissions to see them."
-msgstr ""
-"Fișierele din dosarul „%B” nu pot fi copiate deoarece nu aveți suficiente "
-"permisiuni pentru a le vedea."
-
-#: ../libcore/marlin-file-operations.c:3771
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"read it."
-msgstr ""
-"Dosarul „%B” nu poate fi copiat deoarece nu aveți permisiuni de citire."
-
-#: ../libcore/marlin-file-operations.c:3816
-#: ../libcore/marlin-file-operations.c:4522
-msgid "Error while moving \"%B\"."
-msgstr "Eroare la mutarea „%B”."
-
-#: ../libcore/marlin-file-operations.c:3817
-msgid "Could not remove the source folder."
-msgstr "Dosarul sursă nu poate fi șters."
-
-#: ../libcore/marlin-file-operations.c:3902
-#: ../libcore/marlin-file-operations.c:3943
-#: ../libcore/marlin-file-operations.c:4524
-msgid "Error while copying \"%B\"."
-msgstr "Eroare la copierea „%B”."
-
-#: ../libcore/marlin-file-operations.c:3903
-#, c-format
-msgid "Could not remove files from the already existing folder %F."
-msgstr "Nu s-au putut șterge fișiere din dosarul existent %F."
-
-#: ../libcore/marlin-file-operations.c:3944
-#, c-format
-msgid "Could not remove the already existing file %F."
-msgstr "Nu s-a putut șterge fișierul existent %F."
-
-#: ../libcore/marlin-file-operations.c:4274
-#: ../libcore/marlin-file-operations.c:4950
-msgid "You cannot move a folder into itself."
-msgstr "Nu puteți muta un dosar în el însuși."
-
-#: ../libcore/marlin-file-operations.c:4275
-#: ../libcore/marlin-file-operations.c:4951
-msgid "You cannot copy a folder into itself."
-msgstr "Nu puteți copia un dosar în el însuși."
-
-#: ../libcore/marlin-file-operations.c:4276
-#: ../libcore/marlin-file-operations.c:4952
-msgid "The destination folder is inside the source folder."
-msgstr "Dosarul destinație este în interiorul dosarului sursă."
-
-#: ../libcore/marlin-file-operations.c:4307
-msgid "You cannot move a file over itself."
-msgstr "Nu puteți muta un fișier peste el însuși."
-
-#: ../libcore/marlin-file-operations.c:4308
-msgid "You cannot copy a file over itself."
-msgstr "Nu puteți copia un fișier în el însuși."
-
-#: ../libcore/marlin-file-operations.c:4309
-msgid "The source file would be overwritten by the destination."
-msgstr "Fișierul sursă ar fi suprascris de destinație."
-
-#: ../libcore/marlin-file-operations.c:4526
-#, c-format
-msgid "Could not remove the already existing file with the same name in %F."
-msgstr "Nu s-a putut șterge fișierul existent cu același nume din %F."
-
-#: ../libcore/marlin-file-operations.c:4596
-msgid "Cannot copy \"%B\" here."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:4597
-msgid "There was an error copying the file into %B."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:4824
-msgid "Copying Files"
-msgstr "Se copiază fișiere"
-
-#: ../libcore/marlin-file-operations.c:4850
-msgid "Preparing to move to \"%B\""
-msgstr "Se pregateste mutarea in \"%B\""
-
-#: ../libcore/marlin-file-operations.c:4862
-#, c-format
-msgid "Preparing to move %'d file"
-msgid_plural "Preparing to move %'d files"
-msgstr[0] "Se pregătește mutarea unui fișier"
-msgstr[1] "Se pregătește mutarea a %'d fișiere"
-msgstr[2] "Se pregătește mutarea a %'d de fișiere"
-
-#: ../libcore/marlin-file-operations.c:5110
-#, c-format
-msgid "Error while moving \"%F\"."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:5111
-#, c-format
-msgid "There was an error moving the file into %F."
-msgstr "S-a produs o eroare la mutarea fișierului în %F."
-
-#: ../libcore/marlin-file-operations.c:5373
-msgid "Moving Files"
-msgstr "Se mută fișierele"
-
-#: ../libcore/marlin-file-operations.c:5402
-msgid "Creating links in \"%B\""
-msgstr "Se creează legături în „%B”"
-
-#: ../libcore/marlin-file-operations.c:5413
-#, c-format
-msgid "Making link to %'d file"
-msgid_plural "Making links to %'d files"
-msgstr[0] "Se creează o legătură la un fișier"
-msgstr[1] "Se creează legături la %'d fișiere"
-msgstr[2] "Se creează legături la %'d de fișiere"
-
-#: ../libcore/marlin-file-operations.c:5554
-msgid "Error while creating link to %B."
-msgstr "Eroare la creare legăturii către %B."
-
-#: ../libcore/marlin-file-operations.c:5556
-msgid "Symbolic links only supported for local files"
-msgstr "Legăturile simbolice sunt suportate doar pentru fișiere locale"
-
-#: ../libcore/marlin-file-operations.c:5559
-msgid "The target doesn't support symbolic links."
-msgstr "Destinația nu suportă legături simbolice."
-
-#: ../libcore/marlin-file-operations.c:5562
-#, c-format
-msgid "There was an error creating the symlink in %F."
-msgstr "S-a produs o eroare la efectuarea legăturii simbolice în %F."
-
-#: ../libcore/marlin-file-operations.c:5890
-#: ../libcore/marlin-file-operations.c:5893
-msgid "Setting permissions"
-msgstr "Se definesc permisiunile"
-
-#: ../libcore/marlin-file-operations.c:6005
-msgid "Cannot copy into trash."
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:6006
-msgid "It is not permitted to copy files into the trash"
-msgstr ""
-
-#: ../libcore/marlin-file-operations.c:6147
-msgid "untitled folder"
-msgstr "dosar fără nume"
-
-#: ../libcore/marlin-file-operations.c:6155
-msgid "new file"
-msgstr "fișier nou"
-
-#: ../libcore/marlin-file-operations.c:6326
-msgid "Error while creating directory %B."
-msgstr "Eroare la crearea dosarului %B."
-
-#: ../libcore/marlin-file-operations.c:6328
-msgid "Error while creating file %B."
-msgstr "Eroare la crearea fișierului %B."
-
-#: ../libcore/marlin-file-operations.c:6330
-#, c-format
-msgid "There was an error creating the directory in %F."
-msgstr "S-a produs o eroare la crearea dosarului în %F."
-
-#: ../libcore/marlin-file-operations.c:6652
-msgid "Emptying the trash"
-msgstr "Se golește coșul de gunoi"
-
-#: ../libcore/marlin-file-operations.c:6664
-msgid "Emptying Trash"
-msgstr "Se golește coșul de gunoi"
-
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Combinați dosarul „%s”?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Combinarea va cere o confirmare înainte de înlocuirea oricărui fișier din "
-"dosar care este în conflict cu fișierele ce urmează a fi copiate."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Există deja un dosar mai vechi cu același nume în \"%s\""
-
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Un dosar mai nou cu același nume există deja în \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Alt dosar cu același nume există deja în \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "Înlocuindu-l se vor elimina toate fișierele din dosar."
-
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Înlocuiți dosarul „%s”?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Un dosar cu același nume există deja în \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Înlocuiți fișierul „%s”?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "Înlocuirea va suprascrie conținutul."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Un fișier mai vechi cu același nume există deja în \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Un fișier mai nou cu același nume există deja în \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Alt fișier cu același nume există deja în \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Fișierul original"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:574
-msgid "Size:"
-msgstr "Dimensiune:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:581
-msgid "Type:"
-msgstr "Tip:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Data ultimei modificări:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Înlocuieşte cu"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Îmbină"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "_Alegeți un nou nume pentru destinație"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Resetează"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Aplică această acțiune tuturor fișierelor"
-
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "Redenumește"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Înlocuiește"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Conflict de fișiere"
-
-#: ../filechooser-module/FileChooserDialog.vala:61
-#: ../libwidgets/Chrome/TopMenu.vala:51
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../libwidgets/Chrome/TopMenu.vala:64
 msgid "Previous"
 msgstr ""
 
-#: ../filechooser-module/FileChooserDialog.vala:65
-#: ../libwidgets/Chrome/TopMenu.vala:55
+#: ../filechooser-module/FileChooserDialog.vala:74
+#: ../libwidgets/Chrome/TopMenu.vala:68
 msgid "Next"
+msgstr ""
+
+#: ../src/View/Window.vala:210
+msgid "Files isn't your default file manager."
+msgstr "Files nu este managerul de fișiere implicit."
+
+#: ../src/View/Window.vala:216
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:222
+msgid "Ignore"
+msgstr "Ignoră"
+
+#: ../src/View/Sidebar.vala:481
+msgid "Personal"
+msgstr "Personal"
+
+#: ../src/View/Sidebar.vala:482
+msgid "Your common places and bookmarks"
+msgstr "Locurile tale comune si semnee de carte"
+
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:342
+msgid "Home"
+msgstr "Acasă"
+
+#: ../src/View/Sidebar.vala:501
+msgid "Open your personal folder"
+msgstr "Deschide dosarul personal"
+
+#: ../src/View/Sidebar.vala:516
+msgid "View the list of recently used files"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
+msgid "Trash"
+msgstr "Coș de gunoi"
+
+#: ../src/View/Sidebar.vala:544
+msgid "Open the Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:548
+msgid "Devices"
+msgstr "Dispozitive"
+
+#: ../src/View/Sidebar.vala:549
+msgid "Your local partitions and devices"
+msgstr "Partițiile și dispozitivele tale locale"
+
+#: ../src/View/Sidebar.vala:555 ../src/View/VolumePropertiesWindow.vala:44
+#: ../src/View/ViewContainer.vala:344 ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "Sistem de fișiere"
+
+#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
+msgid "Network"
+msgstr "Reţea"
+
+#: ../src/View/Sidebar.vala:674
+msgid "Your network places"
+msgstr "Locurile tale în rețea"
+
+#: ../src/View/Sidebar.vala:706
+msgid "Entire Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:713
+msgid "Browse the contents of the network"
+msgstr "Navighează conținutul rețelei"
+
+#: ../src/View/Sidebar.vala:845
+msgid "(%s Free of %s)"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1341
+msgid "Unable to start %s"
+msgstr "Nu s-a putut porni %s"
+
+#: ../src/View/Sidebar.vala:1445
+msgid "Open"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1453
+msgid "Open in New _Tab"
+msgstr "Deschide într-o fila noua"
+
+#: ../src/View/Sidebar.vala:1459
+msgid "Open in New _Window"
+msgstr "Deschide într-o fereastră nouă"
+
+#: ../src/View/Sidebar.vala:1467
+msgid "Remove"
+msgstr "Elimina"
+
+#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1484
+msgid "_Mount"
+msgstr "Montează"
+
+#: ../src/View/Sidebar.vala:1490
+msgid "_Unmount"
+msgstr "Demontează"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "_Eject"
+msgstr "Scoate"
+
+#: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:129
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Proprietăţi"
+
+#: ../src/View/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/View/VolumePropertiesWindow.vala:78
+#: ../src/View/PropertiesWindow.vala:574
+msgid "Location:"
+msgstr ""
+
+#: ../src/View/VolumePropertiesWindow.vala:85
+msgid "Format:"
 msgstr ""
 
 #: ../src/View/ListView.vala:26
@@ -1536,496 +1654,9 @@ msgstr "Tip"
 msgid "Modified"
 msgstr "Modificat"
 
-#: ../src/View/Sidebar.vala:472
-msgid "Personal"
-msgstr "Personal"
-
-#: ../src/View/Sidebar.vala:473
-msgid "Your common places and bookmarks"
-msgstr "Locurile tale comune si semnee de carte"
-
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:331
-msgid "Home"
-msgstr "Acasă"
-
-#: ../src/View/Sidebar.vala:492
-msgid "Open your personal folder"
-msgstr "Deschide dosarul personal"
-
-#: ../src/View/Sidebar.vala:507
-msgid "View the list of recently used files"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:90
-msgid "Trash"
-msgstr "Coș de gunoi"
-
-#: ../src/View/Sidebar.vala:535
-msgid "Open the Trash"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:539
-msgid "Devices"
-msgstr "Dispozitive"
-
-#: ../src/View/Sidebar.vala:540
-msgid "Your local partitions and devices"
-msgstr "Partițiile și dispozitivele tale locale"
-
-#: ../src/View/Sidebar.vala:546 ../src/View/ViewContainer.vala:333
-#: ../src/View/VolumePropertiesWindow.vala:44 ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Sistem de fișiere"
-
-#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:87
-msgid "Network"
-msgstr "Reţea"
-
-#: ../src/View/Sidebar.vala:665
-msgid "Your network places"
-msgstr "Locurile tale în rețea"
-
-#: ../src/View/Sidebar.vala:697
-msgid "Entire Network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:704
-msgid "Browse the contents of the network"
-msgstr "Navighează conținutul rețelei"
-
-#: ../src/View/Sidebar.vala:830
-msgid "(%s Free of %s)"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1323
-msgid "Unable to start %s"
-msgstr "Nu s-a putut porni %s"
-
-#: ../src/View/Sidebar.vala:1427
-msgid "Open"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1435
-msgid "Open in New _Tab"
-msgstr "Deschide într-o fila noua"
-
-#: ../src/View/Sidebar.vala:1441
-msgid "Open in New _Window"
-msgstr "Deschide într-o fereastră nouă"
-
-#: ../src/View/Sidebar.vala:1449
-msgid "Remove"
-msgstr "Elimina"
-
-#: ../src/View/Sidebar.vala:1457 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1466
-msgid "_Mount"
-msgstr "Montează"
-
-#: ../src/View/Sidebar.vala:1472
-msgid "_Unmount"
-msgstr "Demontează"
-
-#: ../src/View/Sidebar.vala:1478
-msgid "_Eject"
-msgstr "Scoate"
-
-#: ../src/View/Sidebar.vala:1492 ../src/View/PropertiesWindow.vala:142
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Proprietăţi"
-
-#: ../src/View/Slot.vala:39
-msgid "This Folder Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:40
-msgid "Trash Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:41
-msgid "There Are No Recent Files"
-msgstr ""
-
-#: ../src/View/Slot.vala:42
-msgid "Access Denied"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1283
-msgid "%u folders"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
-msgid " and %u other item (%s) selected"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
-msgid " and %u other items (%s) selected"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
-msgid " selected"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1254
-#: ../src/View/PropertiesWindow.vala:1293
-msgid "%u folder"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:231
-msgid "%u items selected (%s)"
-msgstr "%u elemente selectate (%s)"
-
-#: ../src/View/OverlayBar.vala:272
-msgid "%u sub-folder, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:272
-msgid "%u sub-folders, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:278
-msgid "%u file, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:278
-msgid "%u files, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:288
-msgid "%s approx."
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:291
-msgid "unknown size"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:295
-msgid "%u file not readable"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:295
-msgid "%u files not readable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:342
-msgid "(as Administrator)"
-msgstr "(ca Administrator)"
-
-#: ../src/View/ViewContainer.vala:355 ../src/View/DirectoryNotFound.vala:28
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:366
 msgid "This Folder Does Not Exist"
 msgstr ""
-
-#: ../src/View/ViewContainer.vala:356
-msgid "You cannot create a folder here."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:358
-msgid "The network is unavailable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:359
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:361
-msgid "This Folder Does Not Belong to You"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:362
-msgid "You don't have permission to view this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:364
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:365
-msgid "Could not connect to the server for this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:367
-msgid "Unable show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:368
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:378
-msgid "File not Found"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:379
-msgid "The file selected no longer exists."
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:47
-msgid "Info"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:56
-msgid "General"
-msgstr "General"
-
-#: ../src/View/AbstractPropertiesDialog.vala:75
-msgid "Close"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:137
-msgid "Device Usage"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:154
-msgid "Capacity:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:155
-#: ../src/View/AbstractPropertiesDialog.vala:158
-#: ../src/View/AbstractPropertiesDialog.vala:161
-msgid "Unknown"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:157
-msgid "Available:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:160
-msgid "Used:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:26
-msgid "Resolution:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:219
-msgid "Permissions"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:246
-msgid "Preview"
-msgstr "Previzualizare"
-
-#: ../src/View/PropertiesWindow.vala:265
-msgid "Actual Size Could Be Larger"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:265
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/View/PropertiesWindow.vala:284 ../src/View/PropertiesWindow.vala:303
-msgid "unknown"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:463
-msgid "Created:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:465
-msgid "Modified:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:468
-msgid "Last Access:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:476
-msgid "Deleted:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:482
-msgid "MimeType:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:490
-msgid "Loading…"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:503
-msgid "MimeTypes:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:516 ../src/View/PropertiesWindow.vala:518
-#: ../src/View/VolumePropertiesWindow.vala:78
-msgid "Location:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:522
-msgid "Target:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:528
-msgid "Origin Location:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:535
-msgid "Could not be determined"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:584
-msgid "Contains:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:620
-msgid "Other Application…"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:640
-msgid "Open with:"
-msgstr "Deschide cu:"
-
-#: ../src/View/PropertiesWindow.vala:734
-msgid "Read"
-msgstr "Citeşte"
-
-#: ../src/View/PropertiesWindow.vala:738
-msgid "Write"
-msgstr "Scrie"
-
-#: ../src/View/PropertiesWindow.vala:742
-msgid "Execute"
-msgstr "Execută"
-
-#: ../src/View/PropertiesWindow.vala:949 ../src/View/PropertiesWindow.vala:965
-msgid "Owner:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:955 ../src/View/PropertiesWindow.vala:969
-msgid "Group:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:973
-msgid "Everyone:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1239
-msgid "%u subfolders and %u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1241
-msgid "%u subfolders and %u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1244
-msgid "%u subfolders"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1249
-msgid "%u subfolder and %u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1251
-msgid "%u subfolder and %u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1260
-#: ../src/View/PropertiesWindow.vala:1299
-msgid "%u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1262
-#: ../src/View/PropertiesWindow.vala:1301
-msgid "%u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1278
-msgid "%u selected items (%u folders and %u files)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1280
-msgid "%u selected items (%u folders and %u file)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1288
-msgid "%u selected items (%u folder and %u files)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1290
-msgid "%u selected items (%u folder and %u file)"
-msgstr ""
-
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr ""
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:561
-msgid "Failed to preview"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:820
-msgid "Cannot open this file"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:833
-msgid "Cannot identify file type to open"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:1568
-msgid "Cannot drop this file"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:1568
-msgid "Invalid file name provided"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2012
-msgid "Invalid"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2018
-msgid "Run"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2023
-msgid "Open in %s"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2033
-msgid "Open in"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2035
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
-msgid "Open with"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2095
-msgid "Other Application"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2353
-msgid "Untitled %s"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2788
-msgid "Cannot copy files that are in the trash"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2789
-msgid "Cutting the selection instead"
-msgstr ""
-
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "Files nu este managerul de fișiere implicit."
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr ""
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Ignoră"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
@@ -2046,31 +1677,404 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ../src/Application.vala:158
+#: ../src/View/AbstractPropertiesDialog.vala:47
+msgid "Info"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:56
+msgid "General"
+msgstr "General"
+
+#: ../src/View/AbstractPropertiesDialog.vala:75
+msgid "Close"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:137
+msgid "Device Usage"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:153
+msgid "Capacity:"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:154
+#: ../src/View/AbstractPropertiesDialog.vala:157
+#: ../src/View/AbstractPropertiesDialog.vala:160
+#: ../src/View/PropertiesWindow.vala:427 ../src/View/PropertiesWindow.vala:463
+msgid "Unknown"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:156
+msgid "Available:"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:159
+msgid "Used:"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:550
+msgid "Failed to preview"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:805
+msgid "Cannot open this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:818
+msgid "Cannot identify file type to open"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Cannot drop this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Invalid file name provided"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2008
+msgid "Invalid"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2014
+msgid "Run"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2019
+msgid "Open in %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2029
+msgid "Open in"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2031
+#: ../libwidgets/View/BreadcrumbsEntry.vala:451
+msgid "Open with"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2091
+msgid "Other Application"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2352
+msgid "Untitled %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2652
+#: ../src/View/AbstractDirectoryView.vala:2817
+msgid "Cannot remove files from here"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2653
+#: ../src/View/AbstractDirectoryView.vala:2808
+#: ../src/View/AbstractDirectoryView.vala:2818
+msgid "You do not have permission to change this location"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2790
+msgid "Cannot copy files that are in the trash"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2791
+msgid "Cutting the selection instead"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2807
+msgid "Cannot paste files here"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
+msgid "%u folders"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
+msgid " and %u other item (%s) selected"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
+msgid " and %u other items (%s) selected"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
+msgid " selected"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1231
+#: ../src/View/PropertiesWindow.vala:1270
+msgid "%u folder"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:231
+msgid "%u items selected (%s)"
+msgstr "%u elemente selectate (%s)"
+
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
+#: ../src/View/OverlayBar.vala:272
+msgid "%u sub-folder, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:272
+msgid "%u sub-folders, "
+msgstr ""
+
+#. / TRANSLATORS: %u will be substituted by the number of readable files
+#: ../src/View/OverlayBar.vala:278
+msgid "%u file, "
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:278
+msgid "%u files, "
+msgstr ""
+
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: ../src/View/OverlayBar.vala:288
+msgid "%s approx."
+msgstr ""
+
+#. / TRANSLATORS: 'size' refers to disk space
+#: ../src/View/OverlayBar.vala:291
+msgid "unknown size"
+msgstr ""
+
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
+#: ../src/View/OverlayBar.vala:295
+msgid "%u file not readable"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:295
+msgid "%u files not readable"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:201
+msgid "Permissions"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "Actual Size Could Be Larger"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:222
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/View/PropertiesWindow.vala:241 ../src/View/PropertiesWindow.vala:260
+msgid "unknown"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:438
+msgid "Loading…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:469
+msgid "Could not be determined"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:505
+msgid "Contains:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:521
+msgid "Created:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:529
+msgid "Modified:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:538
+msgid "Last Access:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:549
+msgid "Deleted:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:559
+msgid "Mimetype:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:566
+msgid "Resolution:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:584
+msgid "Target:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:592
+msgid "Original Location:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:615
+msgid "Other Application…"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:635
+msgid "Open with:"
+msgstr "Deschide cu:"
+
+#: ../src/View/PropertiesWindow.vala:729
+msgid "Read"
+msgstr "Citeşte"
+
+#: ../src/View/PropertiesWindow.vala:733
+msgid "Write"
+msgstr "Scrie"
+
+#: ../src/View/PropertiesWindow.vala:737
+msgid "Execute"
+msgstr "Execută"
+
+#: ../src/View/PropertiesWindow.vala:944 ../src/View/PropertiesWindow.vala:960
+msgid "Owner:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:950 ../src/View/PropertiesWindow.vala:964
+msgid "Group:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:968
+msgid "Everyone:"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1216
+msgid "%u subfolders and %u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1218
+msgid "%u subfolders and %u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1221
+msgid "%u subfolders"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1226
+msgid "%u subfolder and %u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1228
+msgid "%u subfolder and %u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1237
+#: ../src/View/PropertiesWindow.vala:1276
+msgid "%u files"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1239
+#: ../src/View/PropertiesWindow.vala:1278
+msgid "%u file"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1255
+msgid "%u selected items (%u folders and %u files)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1257
+msgid "%u selected items (%u folders and %u file)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1265
+msgid "%u selected items (%u folder and %u files)"
+msgstr ""
+
+#: ../src/View/PropertiesWindow.vala:1267
+msgid "%u selected items (%u folder and %u file)"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:353
+msgid "(as Administrator)"
+msgstr "(ca Administrator)"
+
+#: ../src/View/ViewContainer.vala:367
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:369
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:370
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:372
+msgid "This Folder Does Not Belong to You"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:373
+msgid "You don't have permission to view this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:375
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:376
+msgid "Could not connect to the server for this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:378
+msgid "Unable to Show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:379
+msgid "The server for this folder could not be located."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:389
+msgid "File not Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:390
+msgid "The file selected no longer exists."
+msgstr ""
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr ""
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr ""
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr ""
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr ""
+
+#: ../src/Application.vala:146
 msgid "Show the version of the program."
 msgstr "Arata versiunea programului"
 
-#: ../src/Application.vala:160
+#: ../src/Application.vala:148
 msgid "Open uri(s) in new tab"
 msgstr "Deschide uri(le) in fila noua"
 
-#: ../src/Application.vala:162 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr ""
 
-#: ../src/Application.vala:164
+#: ../src/Application.vala:152
 msgid "Quit Files."
 msgstr "Închide FIles."
 
-#: ../src/Application.vala:166
+#: ../src/Application.vala:154
 msgid "Enable debug logging"
 msgstr ""
 
-#: ../src/Application.vala:169
+#: ../src/Application.vala:157
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:172
+#: ../src/Application.vala:160
 msgid ""
 "\n"
 "\n"
@@ -2080,7 +2084,7 @@ msgstr ""
 "\n"
 "Explorați sistemul de fișiere folosind managerul de fișiere"
 
-#: ../src/Application.vala:199
+#: ../src/Application.vala:187
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nu poate fi folosit cu URI-uri."
 
@@ -2112,23 +2116,24 @@ msgstr "Files"
 msgid "File Manager Operations"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:164
+#: ../src/ProgressUIHandler.vala:153
 msgid "File Operations"
 msgstr "Operații cu fișiere"
 
-#: ../src/ProgressUIHandler.vala:208
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:207
 msgid "Completed %s"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:211
+#: ../src/ProgressUIHandler.vala:210
 msgid "All file operations have ended"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:264
+#: ../src/ProgressUIHandler.vala:255
 msgid "Show Copy Dialog"
 msgstr "Arată dialogul de copiere"
 
-#: ../src/ProgressUIHandler.vala:276
+#: ../src/ProgressUIHandler.vala:267
 msgid "Cancel All In-progress Actions"
 msgstr "Anuleaza toate actiunile in desfasurare"
 
@@ -2152,20 +2157,36 @@ msgstr ""
 msgid "Cancel"
 msgstr "Anulează"
 
-#: ../libcore/FileUtils.vala:259
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nu s-a putut determina locația originală pentru „%s” "
+
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "Elementul nu a putut fi restaurat din coșul de gunoi"
+
+#: ../libcore/FileUtils.vala:343
 msgid "Could not rename to '%s'"
 msgstr ""
 
-#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
-msgid "Set as default"
-msgstr "Definește ca implicit"
+#: ../libwidgets/View/BreadcrumbsEntry.vala:412
+msgid "Open in New Tab"
+msgstr "Deschide într-o filă nouă"
 
-#: ../libwidgets/View/LocationBar.vala:166
+#: ../libwidgets/View/BreadcrumbsEntry.vala:419
+msgid "Open in New Window"
+msgstr ""
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:458
+msgid "Open in Other Application…"
+msgstr ""
+
+#: ../libwidgets/View/LocationBar.vala:181
 msgid "Reload this folder"
 msgstr ""
 
-#: ../libwidgets/View/LocationBar.vala:169
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:263
+#: ../libwidgets/View/LocationBar.vala:184
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Enter search term or path"
 msgstr ""
 
@@ -2181,42 +2202,6 @@ msgstr ""
 msgid "Everywhere Else"
 msgstr ""
 
-#: ../libwidgets/View/BreadcrumbsEntry.vala:412
-msgid "Open in New Tab"
-msgstr "Deschide într-o filă nouă"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:419
-msgid "Open in New Window"
-msgstr ""
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:458
-msgid "Open in Other Application…"
-msgstr ""
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
-msgid "Navigate to %s"
-msgstr ""
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:259
-msgid "Go to %s"
-msgstr "Mergi la %s"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Arată ca grilă"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Arată ca listă"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr ""
-
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr ""
-
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
 msgstr ""
@@ -2228,6 +2213,7 @@ msgstr ""
 "  Alex V. https://launchpad.net/~vitel-alex\n"
 "  Alexandru Musina https://launchpad.net/~alex-musina\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
+"  CristianSW https://launchpad.net/~protest-street-workout\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Daniel-Nicolae Bălășoiu https://launchpad.net/~daniel-t0t3u\n"
 "  Edi https://launchpad.net/~edi-frb\n"
@@ -2269,6 +2255,54 @@ msgstr ""
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr ""
+
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr ""
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Arată ca grilă"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Arată ca listă"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr ""
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
+msgid "Navigate to %s"
+msgstr ""
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:274
+msgid "Go to %s"
+msgstr "Mergi la %s"
+
+#: ../libwidgets/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr ""
+
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
+msgid "Set as default"
+msgstr "Definește ca implicit"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

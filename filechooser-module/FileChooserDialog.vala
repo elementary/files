@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2015 elementary LLC (http://launchpad.net/elementary)
+ * Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -19,6 +19,9 @@
  * Authored by: Adam Bieńkowski <donadigos159@gmail.com>
  */
 
+/*** The Gtk.FileChooserWidget widget names and paths can be found in "gtkfilechooserwidget.ui"
+ *   in the Gtk+3 source code package.  Changes to that file could break this code.
+***/
 public class CustomFileChooserDialog : Object {
     private static Gtk.FileChooserDialog chooser_dialog;
     private static Gtk.Widget rootwidget;
@@ -32,6 +35,7 @@ public class CustomFileChooserDialog : Object {
     /* Paths to widgets */
     private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_revealer" };
     private const string[] GTK_FILTERCHOOSER_PATH = { "extra_and_filters", "filter_combo_hbox" };
+    private const string[] GTK_TREEVIEW_PATH = { "browse_files_stack", "browse_files_swin", "browse_files_tree_view" };
     private const string PLACES_SIDEBAR_PATH = "places_sidebar";
 
     private GLib.Queue<string> previous_paths;
@@ -42,6 +46,8 @@ public class CustomFileChooserDialog : Object {
     private string current_path = null;
     private bool is_previous = false;
     private bool is_button_next = false;
+    private bool is_single_click = true;
+    private bool can_activate = true;
 
     public CustomFileChooserDialog (Gtk.FileChooserDialog dialog) {
         previous_paths = new GLib.Queue<string> ();
@@ -50,6 +56,9 @@ public class CustomFileChooserDialog : Object {
         chooser_dialog = dialog;
         chooser_dialog.can_focus = true;
         chooser_dialog.deletable = false;
+
+        var settings = new Settings ("org.pantheon.files.preferences");
+        is_single_click = settings.get_boolean ("single-click");
 
         assign_container_box ();
         remove_gtk_widgets ();
@@ -131,23 +140,23 @@ public class CustomFileChooserDialog : Object {
             (root as Gtk.Container).get_children ().foreach ((w0) => {
                 if (w0.get_name () == GTK_PATHBAR_PATH[0]) {
                     /* Add top separator between headerbar and filechooser when is not Save action */
-                        var chooserwidget = w0 as Gtk.Container;
-                        chooserwidget.vexpand = true;
+                    var chooserwidget = w0 as Gtk.Container;
+                    chooserwidget.vexpand = true;
 
-                        (root as Gtk.Container).remove (w0);
-                        var root_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+                    (root as Gtk.Container).remove (w0);
+                    var root_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+                    root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+                    root_box.add (chooserwidget); 
+
+                    if (chooser_dialog.get_extra_widget () == null) {
                         root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-                        root_box.add (chooserwidget); 
+                    }
 
-                        if (chooser_dialog.get_extra_widget () == null) {
-                            root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-                        }
-
-                        (root as Gtk.Container).add (root_box);
-                        rootwidget = chooserwidget;
-                        rootwidget = w0;
-                        rootwidget.can_focus = true;
-                        transform_rootwidget_container (rootwidget, w0);
+                    (root as Gtk.Container).add (root_box);
+                    rootwidget = chooserwidget;
+                    rootwidget = w0;
+                    rootwidget.can_focus = true;
+                    transform_rootwidget_container (rootwidget, w0);
                 }
             });
         });
@@ -222,8 +231,44 @@ public class CustomFileChooserDialog : Object {
                 });
 
                 (w2 as Gtk.Container).remove (w3);
+            } else if (w3.get_name () ==  "list_and_preview_box") { /* file browser list and preview box */
+                var tv = find_tree_view (w3);
+                if (tv != null) {
+                    /* set its click behaviour the same as pantheon-files setting */
+                    tv.set_activate_on_single_click (is_single_click);
+                    if (is_single_click) {
+                        /* We need to modify native behaviour to only activate on folders */
+                        tv.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK);
+                        tv.button_press_event.connect (on_tv_button_press_event);
+                        tv.button_release_event.connect (on_tv_button_release_event);
+                    }
+                }
             }
         });
+    }
+
+    private Gtk.TreeView? find_tree_view (Gtk.Widget browser_box) {
+        /* Locate the TreeView */
+        Gtk.TreeView? tv = null;
+        ((Gtk.Container)browser_box).get_children ().foreach ((w) => {
+            if (w.get_name () == GTK_TREEVIEW_PATH[0]) {
+                ((Gtk.Container)w).get_children ().foreach ((w) => {
+                    if (w.name == "GtkBox") {
+                        ((Gtk.Container)w).get_children ().foreach ((w) => {
+                            if (w.get_name () == GTK_TREEVIEW_PATH[1]) {
+                                ((Gtk.Container)w).get_children ().foreach ((w) => {
+                                    if (w.get_name () == GTK_TREEVIEW_PATH[2]) {
+                                        tv = (Gtk.TreeView)w;
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+
+        return tv;
     }
 
     private void assign_container_box () {
@@ -265,5 +310,41 @@ public class CustomFileChooserDialog : Object {
             container_box.pack_end (grid);
             ((Gtk.ButtonBox) container_box).set_child_secondary (grid, true);
         }
+    }
+
+    private bool on_tv_button_press_event (Gtk.Widget w, Gdk.EventButton event) {
+        can_activate = false;
+        if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
+            can_activate = true;
+            return false;
+        }
+
+        if (w == null) {
+            return false;
+        }
+
+        Gtk.TreeView tv = ((Gtk.TreeView)(w));
+        Gtk.TreePath? path = null;
+        int cell_x, cell_y;
+
+        tv.get_path_at_pos ((int)(event.x), (int)(event.y), out path, null, out cell_x, out cell_y);
+
+        if (path != null) {
+            var model = tv.get_model ();
+            Gtk.TreeIter? iter = null;
+            if (model.get_iter (out iter, path)) {
+                bool is_folder;
+                model.@get (iter, 5, out is_folder);
+                if (is_folder) {
+                    can_activate = true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool on_tv_button_release_event (Gdk.EventButton event) {
+        return !can_activate;
     }
 }

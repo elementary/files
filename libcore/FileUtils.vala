@@ -51,6 +51,90 @@ namespace PF.FileUtils {
         return parent_path;
     }
 
+    public void restore_files_from_trash (GLib.List<GOF.File> files, Gtk.Widget? widget) {
+        GLib.List<GOF.File>? unhandled_files = null;
+        var original_dirs_hash = get_trashed_files_original_directories (files, out unhandled_files);
+
+        foreach (GOF.File goffile in unhandled_files) {
+            var message = _("Could not determine original location of \"%s\" ").printf (goffile.get_display_name ());
+            Eel.show_warning_dialog (message, _("The item cannot be restored from trash"),
+                                     (widget is Gtk.Window) ? widget as Gtk.Window : null );
+        }
+
+        original_dirs_hash.foreach ((original_dir, dir_files) => {
+                Marlin.FileOperations.copy_move (dir_files,
+                                                 null,
+                                                 original_dir,
+                                                 Gdk.DragAction.MOVE,
+                                                 widget,
+                                                 null,
+                                                 null);
+        });
+    }
+
+    private GLib.HashTable<GLib.File, GLib.List<GLib.File>> get_trashed_files_original_directories (GLib.List<GOF.File> files, out GLib.List<GOF.File> unhandled_files) {
+        var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (File.hash, File.equal);
+        unhandled_files = null;
+
+        foreach (GOF.File goffile in files) {
+            var location = goffile.location;
+            /* Check it is a valid file (e.g. not a dummy row from list view) */
+            if (!(location != null && goffile.basename.char_count (2) > 0)) {
+                continue;
+            }
+
+            /* Check that file is in root of trash.  If not, do not try to restore
+             * (it will be restored with its parent anyway) */
+            if (Path.get_dirname (goffile.uri) == "trash:") {
+                /* We are in trash root */
+                var original_dir = get_trashed_file_original_folder (goffile);
+                if (original_dir != null) {
+                    unowned GLib.List<GLib.File>? dir_files = null;
+                    dir_files = directories.lookup (original_dir); /* get list of files being restored to this original dir */
+                    if (dir_files != null) {
+                        directories.steal (original_dir);
+                    }
+                    dir_files.prepend (goffile.location);
+                    directories.insert (original_dir, dir_files.copy ());
+                } else {
+                    unhandled_files.prepend (goffile);
+                }
+            }
+        }
+
+        return directories;
+   }
+
+    private GLib.File? get_trashed_file_original_folder (GOF.File file) {
+        GLib.FileInfo? info = null;
+        string? original_path = null;
+
+        if (file.info == null) {
+            if (file.location != null) {
+                try {
+                    info = file.location.query_info (GLib.FileAttribute.TRASH_ORIG_PATH, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                } catch (GLib.Error e) {
+                    debug ("Error querying info of trashed file %s - %s", file.uri, e.message);
+                    return null;
+                }
+            }
+        } else {
+            info = file.info.dup ();
+        }
+
+        if (info != null && info.has_attribute (GLib.FileAttribute.TRASH_ORIG_PATH)) {
+            original_path = file.info.get_attribute_byte_string (GLib.FileAttribute.TRASH_ORIG_PATH);
+        }
+
+        if (original_path != null) {
+            debug ("Original path of trashed file %s was %s", file.uri, original_path);
+            return get_file_for_path (get_parent_path_from_path (original_path));
+        } else {
+            debug ("Could not get original path for trashed file %s", file.uri);
+            return null;
+        }
+    }
+
     private string construct_parent_path (string path) {
         if (path.length < 2) {
             return Path.DIR_SEPARATOR_S;
@@ -228,7 +312,7 @@ namespace PF.FileUtils {
         GOF.Directory.Async? dir = GOF.Directory.Async.cache_lookup_parent (old_location);
         string original_name = old_location.get_basename ();
 
-        old_location.set_display_name_async (new_name, 0, null, (obj, res) => {
+        old_location.set_display_name_async.begin (new_name, 0, null, (obj, res) => {
             try {
                 assert (obj is GLib.Object);
                 GLib.File? n = old_location.set_display_name_async.end (res);
@@ -280,13 +364,30 @@ namespace PF.FileUtils {
             case FileAttribute.TIME_ACCESS:
             case FileAttribute.TIME_CHANGED:
                 uint64 t = info.get_attribute_uint64 (attr);
-                if (t == 0)
+                if (t == 0) {
                     return "";
+                }
 
                 DateTime dt = new DateTime.from_unix_local ((int64)t);
 
-                if (dt == null)
+                if (dt == null) {
                     return "";
+                }
+
+                return get_formatted_date_time (dt, format);
+
+            case FileAttribute.TRASH_DELETION_DATE:
+                var deletion_date = info.get_attribute_string (attr);
+                var tv = TimeVal ();
+                if (deletion_date == null || !tv.from_iso8601 (deletion_date)) {
+                    return "";
+                }
+
+                DateTime dt = new DateTime.from_timeval_local (tv);
+
+                if (dt == null) {
+                    return "";
+                }
 
                 return get_formatted_date_time (dt, format);
 

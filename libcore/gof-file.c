@@ -1322,25 +1322,17 @@ gof_file_is_writable (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
-    /* Take care not to create infinite loop */
-    if (file->target_gof && !g_file_equal (file->location, file->target_gof->location))
+    if (file->target_gof && !g_file_equal (file->location, file->target_gof->location)) {
         return gof_file_is_writable (file->target_gof);
-
-    if (file->info == NULL)
-        return FALSE;
-
-    if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
-        /* Trash folder and network folders do not necessarily have this attribute defined.
-         * The function must be forced to return TRUE in these cases. */
-        if (strncmp (file->uri, "trash:///", 10) == 0 ||
-            gof_file_is_smb_uri_scheme (file) ||
-            gof_file_is_remote_uri_scheme (file))
-            return TRUE;
-
-        return FALSE;
+    } else if (file->info != NULL && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
+        return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+    } else if (file->has_permissions) {
+        return (file->permissions & S_IWOTH) ||
+               (file->permissions & S_IWUSR) && (strcmp (file->owner, g_get_user_name ()) == 0) ||
+               (file->permissions & S_IWGRP) && eel_user_in_group (file->group);
+    } else {
+        return TRUE;  /* We will just have to assume we can write to the file */
     }
-
-    return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
 }
 
 gboolean
@@ -1348,14 +1340,17 @@ gof_file_is_readable (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
-    if (file->target_gof)
-        return gof_file_is_writable (file->target_gof);
-    if (file->info == NULL)
-        return FALSE;
-    if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
-        return FALSE;
-
-    return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
+    if (file->target_gof && !g_file_equal (file->location, file->target_gof->location)) {
+        return gof_file_is_readable (file->target_gof);
+    } else if (file->info != NULL && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ)) {
+        return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
+    } else if (file->has_permissions) {
+        return (file->permissions & S_IROTH) ||
+               (file->permissions & S_IRUSR) && (strcmp (file->owner, g_get_user_name ()) == 0) ||
+               (file->permissions & S_IRGRP) && eel_user_in_group (file->group);
+    } else {
+        return TRUE;  /* We will just have to assume we can read the file */
+    }
 }
 
 gboolean
@@ -1943,8 +1938,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
             }
             else
             {
-                /* TRANSLATORS: `Exec' is a field name in a .desktop file.
-                 * Don't translate it. */
+                /// TRANSLATORS: `Exec' is a field name in a .desktop file. Don't translate it.
                 g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
                              _("No Exec field specified"));
             }
@@ -1963,8 +1957,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
             }
             else
             {
-                /* TRANSLATORS: `URL' is a field name in a .desktop file.
-                 * Don't translate it. */
+                /// TRANSLATORS: `Exec' is a field name in a .desktop file. Don't translate it.
                 g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
                              _("No URL field specified"));
             }

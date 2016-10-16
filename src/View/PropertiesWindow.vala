@@ -23,20 +23,6 @@
 namespace Marlin.View {
 
 public class PropertiesWindow : AbstractPropertiesDialog {
-    private const string resolution_key = _("Resolution:");
-
-    private class Pair<F, G> {
-        public F key;
-        public G value;
-
-        public Pair (F key, G value) {
-            this.key = key;
-            this.value = value;
-        }
-    }
-
-    private Gee.LinkedList<Pair<string, string>> info;
-    private Granite.Widgets.ImgEventBox evbox;
     private Granite.Widgets.XsEntry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
@@ -75,11 +61,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private GLib.List<Marlin.DeepCount>? deep_count_directories = null;
 
     private Gee.Set<string>? mimes;
-    private Gtk.Label type_label;
-    private Gtk.Label size_label;
-    private Gtk.Label contains_label;
-    private Gtk.Label contains_key_label;
-    private Gtk.Widget type_key_label;
+    private ValueLabel contains_value;
+    private ValueLabel resolution_value;
+    private ValueLabel size_value;
+    private ValueLabel type_value;
+    private KeyLabel contains_key_label;
+    private KeyLabel type_key_label;
     private string ftype; /* common type */
     private Gtk.Spinner spinner;
     private int size_warning = 0;
@@ -183,7 +170,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return;
         }
 
-        goffile = (GOF.File) files.data;
         mimes = new Gee.HashSet<string> ();
         foreach (var gof in files) {
             if (!(gof is GOF.File)) {
@@ -201,15 +187,11 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         }
 
-        get_info (goffile);
+        goffile = (GOF.File) files.data;
+        construct_info_panel (goffile);
         cancellable = new GLib.Cancellable ();
 
-        /* Info */
-        if (info.size > 0) {
-            construct_info_panel (info);
-        }
-
-        update_selection_size (); /* Start counting first to get number of selected files and folders */
+        update_selection_size (); /* Start counting first to get number of selected files and folders */    
         build_header_box ();
 
         /* Permissions */
@@ -224,46 +206,21 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         }
 
-        /* Preview */
-        if (count == 1 && goffile.flags != 0) {
-            /* Retrieve the low quality (existent) thumbnail.
-             * This will be shown to prevent resizing the properties window
-             * when the large preview is retrieved.
-             */
-            Gdk.Pixbuf small_preview;
-
-            if (view.is_in_recent ()) {
-                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.NONE);
-            } else {
-                small_preview = goffile.get_icon_pixbuf (256, true, GOF.FileIconFlags.USE_THUMBNAILS);
-            }
-
-            /* Request the creation of the large thumbnail */
-            Marlin.Thumbnailer.get ().queue_file (goffile, null, /* LARGE */ true);
-            var preview_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-
-            construct_preview_panel (preview_box, small_preview);
-            add_section (stack, _("Preview"), PanelType.PREVIEW.to_string (), preview_box);
-        }
-
         show_all ();
-
-        /* There is a race condition between reaching update_size_label () or here first
-         * so call update_widgets_state in both places.
-         */
         update_widgets_state ();
     }
 
-    private void update_size_label () {
-        size_label.label = format_size ((int64) total_size);
-        contains_label.label = get_contains_label (folder_count, file_count);
+    private void update_size_value () {
+        size_value.label = format_size ((int64) total_size);
+        contains_value.label = get_contains_value (folder_count, file_count);
+        update_selection_usage (total_size);
 
         if (size_warning > 0) {
             var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
             size_warning_image.halign = Gtk.Align.START;
             size_warning_image.hexpand = true;
             size_warning_image.tooltip_markup = "<b>" + _("Actual Size Could Be Larger") + "</b>" + "\n" + ngettext ("%i file could not be read due to permissions or other errors.", "%i files could not be read due to permissions or other errors.", (ulong) size_warning).printf (size_warning);
-            info_grid.attach_next_to (size_warning_image, size_label, Gtk.PositionType.RIGHT);
+            info_grid.attach_next_to (size_warning_image, size_value, Gtk.PositionType.RIGHT);
             info_grid.show_all ();
         }
     }
@@ -281,7 +238,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         foreach (GOF.File gof in files) {
             if (gof.is_root_network_folder ()) {
-                size_label.label = _("unknown");
+                size_value.label = _("unknown");
                 continue;
             }
             if (gof.is_directory) {
@@ -300,7 +257,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                     total_size += d.total_size;
                     size_warning = d.file_not_read;
                     if (file_count + uncounted_folders == size_warning)
-                        size_label.label = _("unknown");
+                        size_value.label = _("unknown");
 
                     folder_count += d.dirs_count;
                     file_count += d.files_count;
@@ -323,11 +280,11 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 if (uncounted_folders == 0) {
                     spinner.hide ();
                     spinner.stop ();
-                    update_size_label ();
+                    update_size_value ();
                 }
             });
         } else {
-            update_size_label ();
+            update_size_value ();
         }
     }
 
@@ -453,54 +410,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return path;
     }
 
-    private void get_info (GOF.File file) {
-        info = new Gee.LinkedList<Pair<string, string>>();
-
-        /* Always give full time details (default format is "locale" for get_formatted_time_attribute_from_info function) */
-        if (count == 1) {
-            var time_created = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_CREATED);
-            if (time_created != "") {
-                info.add (new Pair<string, string>(_("Created:"), time_created));
-            }
-
-            var time_modified = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_MODIFIED);
-            if (time_modified != "") {
-                info.add (new Pair<string, string>(_("Modified:"), time_modified));
-            }
-
-            var time_last_access = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_ACCESS);
-            if (time_last_access != "") {
-                info.add (new Pair<string, string>(_("Last Access:"), time_last_access));
-            }
-
-            /* print deletion date if trashed file */
-            if (file.is_trashed ()) {
-                var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
-                var tv = TimeVal ();
-                if (deletion_date != null && tv.from_iso8601 (deletion_date)) {
-                    var time_deleted = PF.FileUtils.get_formatted_date_time (new DateTime.from_timeval_local (tv));
-                    if (time_deleted != "")
-                        info.add (new Pair<string, string>(_("Deleted:"), time_deleted));
-                }
-            }
-        }
-
+    private string filetype (GOF.File file) {
         ftype = get_common_ftype ();
         if (ftype != null) {
-            info.add (new Pair<string, string>(_("MimeType:"), ftype));
-            /* get image size in pixels using an asynchronous method to stop the interface blocking on
-             * large images. */
-            if ("image" in ftype) {
-                string resolution_value = "";
-                if (file.width > 0) { /* resolution has already been determined */
-                    resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
-                } else {
-                    resolution_value = _("Loading…");
-                    /* Async function will update info when resolution determined */
-                    get_resolution.begin (file, info);
-                }
-                info.add (new Pair<string, string> (resolution_key, resolution_value));
-            }
+            return ftype;
         } else {
             /* show list of mimetypes only if we got a default application in common */
             if (view.get_default_app () != null && !goffile.is_directory) {
@@ -508,39 +421,52 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 foreach (var mime in mimes) {
                     (str == null) ? str = mime : str = string.join (", ", str, mime);
                 }
-                info.add (new Pair<string, string>(_("MimeTypes:"), str));
+                return str;
             }
         }
+        return _("Unknown");
+    }
 
-
-
-        if (got_common_location ()) {
-            if (view.is_in_recent ()) {
-                string original_location = file.get_display_target_uri ().replace ("%20", " ");
-                string file_name = file.get_display_name ().replace ("%20", " ");
-                string location_folder = original_location.slice (0, -(file_name.length)).replace ("%20", " ");
-                string location_name = location_folder.slice (7, -1);
-
-                info.add (new Pair<string, string>(_("Location:"), "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>"));
-            } else
-                info.add (new Pair<string, string>(_("Location:"), "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>"));
-        }
-
-        if (count == 1 && file.info.get_is_symlink ())
-            info.add (new Pair<string, string>(_("Target:"), file.info.get_symlink_target()));
-
-        /* print orig location of trashed files */
-        if (file.is_trashed () && file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
-            var trash_orig_loc = get_common_trash_orig ();
-            if (trash_orig_loc != null)
-                info.add (new Pair<string, string>(_("Origin Location:"), "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>"));
+    private string resolution (GOF.File file) {
+        /* get image size in pixels using an asynchronous method to stop the interface blocking on
+         * large images. */
+        if (file.width > 0) { /* resolution has already been determined */
+            return goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+        } else {
+            /* Async function will update info when resolution determined */
+            get_resolution.begin (file);
+            return _("Loading…");
         }
     }
 
-    private async void get_resolution (GOF.File goffile, Gee.LinkedList<Pair<string, string>> info) {
+    private string location (GOF.File file) {
+        if (view.is_in_recent ()) {
+            string original_location = file.get_display_target_uri ().replace ("%20", " ");
+            string file_name = file.get_display_name ().replace ("%20", " ");
+            string location_folder = original_location.slice (0, -(file_name.length)).replace ("%20", " ");
+            string location_name = location_folder.slice (7, -1);
+
+            return "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>";
+        } else {
+            return "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>";
+        }
+    }
+
+    private string original_location (GOF.File file) {
+        /* print orig location of trashed files */
+        if (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
+            var trash_orig_loc = get_common_trash_orig ();
+            if (trash_orig_loc != null) {
+                return "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>";
+            }
+        }
+        return _("Unknown");
+    }
+
+    private async void get_resolution (GOF.File goffile) {
         GLib.FileInputStream? stream = null;
         GLib.File file = goffile.location;
-        string resolution_value = _("Could not be determined");
+        string resolution = _("Could not be determined");
 
         try {
             stream = yield file.read_async (0, cancellable);
@@ -550,7 +476,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 var pixbuf = yield new Gdk.Pixbuf.from_stream_async (stream, cancellable);
                 goffile.width = pixbuf.get_width ();
                 goffile.height = pixbuf.get_height ();
-                resolution_value = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
+                resolution = goffile.width.to_string () +" × " + goffile.height.to_string () + " px";
             }
         } catch (Error e) {
             warning ("Error loading image resolution in PropertiesWindow: %s", e.message);
@@ -561,49 +487,102 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             debug ("Error closing stream in get_resolution: %s", e.message);
         }
 
-        /* Cannot be sure which row the resolution line was added to the grid so we have to search for it */
-        Gtk.Widget? kw = null;
-        int row = 0;
-        do {
-            kw = info_grid.get_child_at (0, row);
-            if (kw is Gtk.Label && (kw as Gtk.Label).label == resolution_key) {
-                Gtk.Widget vw = info_grid.get_child_at (1, row);
-                if (vw is Gtk.Label) {
-                    (vw as Gtk.Label).label = resolution_value;
-                    break;
-                }
-            }
-            row++;
-        } while (kw != null);
+        resolution_value.label = resolution;
     }
 
-    private void construct_info_panel (Gee.LinkedList<Pair<string, string>> item_info) {
+    private void construct_info_panel (GOF.File file) {
         /* Have to have these separate as size call is async */
         var size_key_label = new KeyLabel (_("Size:"));
 
         spinner = new Gtk.Spinner ();
         spinner.halign = Gtk.Align.START;
 
-        size_label = new ValueLabel ("");
+        size_value = new ValueLabel ("");
 
         type_key_label = new KeyLabel (_("Type:"));
-        type_label = new ValueLabel ("");
+        type_value = new ValueLabel ("");
 
         contains_key_label = new KeyLabel (_("Contains:"));
-        contains_label = new ValueLabel ("");
+        contains_value = new ValueLabel ("");
 
         info_grid.attach (size_key_label, 0, 1, 1, 1);
         info_grid.attach_next_to (spinner, size_key_label, Gtk.PositionType.RIGHT);
-        info_grid.attach_next_to (size_label, size_key_label, Gtk.PositionType.RIGHT);
+        info_grid.attach_next_to (size_value, size_key_label, Gtk.PositionType.RIGHT);
         info_grid.attach (type_key_label, 0, 2, 1, 1);
-        info_grid.attach_next_to (type_label, type_key_label, Gtk.PositionType.RIGHT, 3, 1);
+        info_grid.attach_next_to (type_value, type_key_label, Gtk.PositionType.RIGHT, 3, 1);
         info_grid.attach (contains_key_label, 0, 3, 1, 1);
-        info_grid.attach_next_to (contains_label, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
+        info_grid.attach_next_to (contains_value, contains_key_label, Gtk.PositionType.RIGHT, 3, 1);
 
         int n = 4;
-        foreach (var pair in item_info) {
-            var value_label = new ValueLabel (pair.value);
-            var key_label = new KeyLabel (pair.key);
+
+        if (count == 1) {
+            var time_created = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_CREATED);
+            if (time_created != "") {
+                var key_label = new KeyLabel (_("Created:"));
+                var value_label = new ValueLabel (time_created);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                n++;
+            }
+
+            var time_modified = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_MODIFIED);
+            if (time_modified != "") {
+                var key_label = new KeyLabel (_("Modified:"));
+                var value_label = new ValueLabel (time_modified);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                n++;
+            }
+        }
+
+        if (count == 1 && file.is_trashed ()) {
+            var deletion_date = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TRASH_DELETION_DATE);
+            if (deletion_date != "") {
+                var key_label = new KeyLabel (_("Deleted:"));
+                var value_label = new ValueLabel (deletion_date);
+                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+                n++;
+            }
+        }
+
+        var ftype = filetype (file);
+
+        var mimetype_key = new KeyLabel (_("Mimetype:"));
+        var mimetype_value = new ValueLabel (ftype);
+        info_grid.attach (mimetype_key, 0, n, 1, 1);
+        info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
+        n++;
+
+        if (count == 1 && "image" in ftype) {
+            var resolution_key = new KeyLabel (_("Resolution:"));
+            resolution_value = new ValueLabel (resolution (file));
+            info_grid.attach (resolution_key, 0, n, 1, 1);
+            info_grid.attach_next_to (resolution_value, resolution_key, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
+
+        if (got_common_location ()) {
+            var location_key = new KeyLabel (_("Location:"));
+            var location_value = new ValueLabel (location (file));
+            location_value.ellipsize = Pango.EllipsizeMode.MIDDLE;
+            location_value.max_width_chars = 32;
+            info_grid.attach (location_key, 0, n, 1, 1);
+            info_grid.attach_next_to (location_value, location_key, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
+
+        if (count == 1 && file.info.get_is_symlink ()) {
+            var key_label = new KeyLabel (_("Target:"));
+            var value_label = new ValueLabel (file.info.get_symlink_target());
+            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
+            n++;
+        }
+
+        if (file.is_trashed ()) {
+            var key_label = new KeyLabel (_("Original Location:"));
+            var value_label = new ValueLabel (original_location (file));
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
@@ -1157,24 +1136,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return choice;
     }
 
-    private void construct_preview_panel (Gtk.Box box, Gdk.Pixbuf? small_preview) {
-        evbox = new Granite.Widgets.ImgEventBox (Gtk.Orientation.HORIZONTAL);
-        if (small_preview != null)
-            evbox.set_from_pixbuf (small_preview);
-        box.pack_start (evbox, false, true, 0);
-
-        goffile.icon_changed.connect (() => {
-            var large_preview_path = goffile.get_preview_path ();
-            if (large_preview_path != null)
-                try {
-                    var large_preview = new Gdk.Pixbuf.from_file (large_preview_path);
-                    evbox.set_from_pixbuf (large_preview);
-                } catch (Error e) {
-                    warning (e.message);
-                }
-        });
-    }
-
     private Icon ensure_icon (AppInfo app) {
         Icon icon = app.get_icon ();
         if (icon == null)
@@ -1238,7 +1199,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return file_size;
     }
 
-    private string get_contains_label (uint folders, uint files) {
+    private string get_contains_value (uint folders, uint files) {
         string txt = "";
         if (folders > 0) {
             if (folders > 1) {
@@ -1323,10 +1284,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         if (count > 1) {
             type_key_label.hide ();
-            type_label.hide ();
+            type_value.hide ();
         } else {
             if (ftype != null) {
-                type_label.label = goffile.formated_type;
+                type_value.label = goffile.formated_type;
             }
         }
 
@@ -1340,12 +1301,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether
          * the "contained files" counted are only in the subfolders or not.*/
         /* Only show 'contains' label when folders selected are not empty */
-        if (count > selected_folders || contains_label.get_text ().length < 1) {
+        if (count > selected_folders || contains_value.get_text ().length < 1) {
             contains_key_label.hide ();
-            contains_label.hide ();
+            contains_value.hide ();
         } else { /* Make sure it shows otherwise (may have been hidden by previous call)*/
             contains_key_label.show ();
-            contains_label.show ();
+            contains_value.show ();
         }
     }
 }

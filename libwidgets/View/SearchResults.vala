@@ -247,7 +247,7 @@ namespace Marlin.View.Chrome
 
             display_count = 0;
             directory_queue = new Gee.LinkedList<File> ();
-            waiting_results = new Gee.HashMap<Gtk.TreeIter?,Match> ();
+            waiting_results = new Gee.HashMap<Gtk.TreeIter?,Gee.List> ();
             current_root = folder;
 
             current_operation = new Cancellable ();
@@ -364,11 +364,19 @@ namespace Marlin.View.Chrome
             bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
 
             if (mods != 0 && !only_shift_pressed) {
-                if (only_control_pressed && event.keyval == Gdk.Key.f) {
-                    search_current_directory_only = false;
-                    begins_with_only = false;
-                    search (search_term, current_root);
-                    return true;
+                if (only_control_pressed) {
+                    if (event.keyval == Gdk.Key.f) {
+                        search_current_directory_only = false;
+                        begins_with_only = false;
+                        search (search_term, current_root);
+                        return true;
+                    } else if (event.keyval == Gdk.Key.l) {
+                        cancel (); /* release any grab */
+                        exit (false); /* Do not exit navigate mode */
+                        return true;
+                    } else {
+                        return parent.key_press_event (event);
+                    }
                 } else if (only_alt_pressed &&
                            event.keyval == Gdk.Key.Return ||
                            event.keyval == Gdk.Key.KP_Enter ||
