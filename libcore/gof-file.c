@@ -1333,7 +1333,7 @@ gof_file_is_writable (GOFFile *file)
         return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
     } else if (file->has_permissions) {
         return ((file->permissions & S_IWOTH) > 0) ||
-               ((file->permissions & S_IWUSR) > 0) && (file->uid < 0 || file->uid == getuid ()) ||
+               ((file->permissions & S_IWUSR) > 0) && (file->uid < 0 || file->uid == geteuid ()) ||
                ((file->permissions & S_IWGRP) > 0) && eel_user_in_group (file->group);
     } else {
         return TRUE;  /* We will just have to assume we can write to the file */
@@ -1351,7 +1351,7 @@ gof_file_is_readable (GOFFile *file)
         return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
     } else if (file->has_permissions) {
         return (file->permissions & S_IROTH) ||
-               (file->permissions & S_IRUSR) && (file->uid < 0 || file->uid == getuid ()) ||
+               (file->permissions & S_IRUSR) && (file->uid < 0 || file->uid == geteuid ()) ||
                (file->permissions & S_IRGRP) && eel_user_in_group (file->group);
     } else {
         return TRUE;  /* We will just have to assume we can read the file */
@@ -1730,7 +1730,9 @@ gof_file_accepts_drop (GOFFile          *file,
                 return 0;
         }
 
-        /* if the source offers both copy and move and the GTK+ suggested action is copy, try to be smart telling whether we should copy or move by default by checking whether the source and target are on the same disk. */
+        /* if the source offers both copy and move and the GTK+ suggested action is copy, try to
+         * be smart telling whether we should copy or move by default by checking whether the
+         * source and target are on the same disk. */
         if ((actions & (GDK_ACTION_COPY | GDK_ACTION_MOVE)) != 0
             && (suggested_action == GDK_ACTION_COPY))
         {
@@ -1753,8 +1755,8 @@ gof_file_accepts_drop (GOFFile          *file,
                 if (ofile == NULL
                     || !gof_file_same_filesystem (file, ofile)
                     || (ofile->info != NULL
-                        && g_file_info_get_attribute_uint32 (ofile->info,
-                                                             G_FILE_ATTRIBUTE_UNIX_UID) != effective_user_id))
+                        && ofile->uid > -1
+                        && ofile->uid != effective_user_id ))
                 {
                     /* default to copy and get outa here */
                     suggested_action = GDK_ACTION_COPY;
