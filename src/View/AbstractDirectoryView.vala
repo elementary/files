@@ -2648,14 +2648,8 @@ namespace FM {
             bool in_recent = slot.location.has_uri_scheme ("recent");
 
             /* Implement linear selection in Icon View with cursor keys */
-            bool linear_select_required = false;
-            if (!no_mods && !only_control_pressed) {
-                if (only_shift_pressed && (this is IconView)) {
-                    linear_select_required = true;
-                } else {
-                    previous_selection_was_linear = false;
-                }
-            } else {
+            bool linear_select_required = (no_mods || only_shift_pressed) && this is IconView;
+            if (!linear_select_required || !only_shift_pressed) {
                 previous_selection_was_linear = false;
             }
 
@@ -2788,9 +2782,12 @@ namespace FM {
                         }
                     }
 
-                    if (linear_select_required && selected_files.length () > 0) { /* Only true for Icon View */
+                    if (linear_select_required) { /* Only true for Icon View */
                         Gtk.TreePath? path = get_path_at_cursor ();
+            
                         if (path != null) {
+                            Gtk.TreePath old_path = path;
+
                             if (event.keyval == Gdk.Key.Right) {
                                 path.next (); /* Does not check if path is valid */
                             } else if (event.keyval == Gdk.Key.Left) {
@@ -2804,7 +2801,12 @@ namespace FM {
                             Gtk.TreeIter? iter = null;
                             /* Do not try to select invalid path */
                             if (model.get_iter (out iter, path)) {
-                                linear_select_path (path);
+                                if (only_shift_pressed && selected_files.length () > 0) {
+                                    linear_select_path (path);
+                                } else if (no_mods) {
+                                    unselect_path (old_path);
+                                    select_path (path);
+                                }
                             }
                             return true;
                         }
