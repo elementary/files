@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-10-10 13:06-0500\n"
-"PO-Revision-Date: 2016-10-27 12:23+0000\n"
+"PO-Revision-Date: 2016-10-28 12:22+0000\n"
 "Last-Translator: Адмирал АнимЕ <Unknown>\n"
 "Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-10-28 05:41+0000\n"
+"X-Launchpad-Export-Date: 2016-10-29 06:06+0000\n"
 "X-Generator: Launchpad (build 18246)\n"
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
@@ -531,7 +531,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
 msgid "Empty _Trash"
-msgstr "Опразни Кошчето"
+msgstr "Изпразване на _кошчето"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -617,7 +617,7 @@ msgstr "Грешка при изтриване на %B."
 #: ../libcore/marlin-file-operations.c:1837
 #: ../libcore/marlin-file-operations.c:1849
 msgid "Moving files to trash"
-msgstr "Изхвърляне в Кошчето"
+msgstr "Изхвърляне в кошчето"
 
 #: ../libcore/marlin-file-operations.c:1851
 #, c-format
@@ -630,7 +630,7 @@ msgstr[1] "%'d файла остават в Кошчето"
 #: ../libcore/marlin-file-operations.c:1949
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash or delete it"
-msgstr "Не може файла да бъде преместен или изтрит"
+msgstr "Файлът не може да бъде преместен или изтрит"
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid ""
@@ -1122,7 +1122,7 @@ msgstr "Премести '%s' обратно в '%s'"
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "Преименувай «%s» на «%s»"
+msgstr "Преименуване на „%s“ на „%s“"
 
 #: ../libcore/marlin-undostack-manager.c:1278
 #: ../libcore/marlin-undostack-manager.c:1473
@@ -1532,7 +1532,7 @@ msgstr "Кошче"
 
 #: ../src/View/Sidebar.vala:544
 msgid "Open the Trash"
-msgstr "Отвори в Кошчето"
+msgstr "Отваряне на кошчето"
 
 #: ../src/View/Sidebar.vala:548
 msgid "Devices"
@@ -1565,7 +1565,7 @@ msgstr "Разгледай съдържаннието на мрежата"
 
 #: ../src/View/Sidebar.vala:845
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s свободно от общо %s)"
 
 #: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
@@ -1573,15 +1573,15 @@ msgstr "Не може да се стартира %s"
 
 #: ../src/View/Sidebar.vala:1445
 msgid "Open"
-msgstr "Отвoри"
+msgstr "Отваряне"
 
 #: ../src/View/Sidebar.vala:1453
 msgid "Open in New _Tab"
-msgstr "Отвори в нов подпрозорец"
+msgstr "Отваряне в нов подпрозорец"
 
 #: ../src/View/Sidebar.vala:1459
 msgid "Open in New _Window"
-msgstr "Отвори в нов прозорец"
+msgstr "Отваряне в нов прозорец"
 
 #: ../src/View/Sidebar.vala:1467
 msgid "Remove"
@@ -1589,19 +1589,19 @@ msgstr "Премахни"
 
 #: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr "Преименувай"
+msgstr "Преименуване"
 
 #: ../src/View/Sidebar.vala:1484
 msgid "_Mount"
-msgstr "Монтирай"
+msgstr "_Монтиране"
 
 #: ../src/View/Sidebar.vala:1490
 msgid "_Unmount"
-msgstr "Демонтирай"
+msgstr "_Демонтиране"
 
 #: ../src/View/Sidebar.vala:1496
 msgid "_Eject"
-msgstr "Извади"
+msgstr "_Изваждане"
 
 #: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:129
 #: ../src/View/directory_view_popup.ui:99
@@ -1677,7 +1677,7 @@ msgstr "Затваряне"
 
 #: ../src/View/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
-msgstr ""
+msgstr "Използвано пространство"
 
 #: ../src/View/AbstractPropertiesDialog.vala:153
 msgid "Capacity:"
@@ -1741,7 +1741,7 @@ msgstr "Отвори с"
 
 #: ../src/View/AbstractDirectoryView.vala:2091
 msgid "Other Application"
-msgstr "Други Приложения"
+msgstr "Друга програма"
 
 #: ../src/View/AbstractDirectoryView.vala:2352
 msgid "Untitled %s"
@@ -1872,7 +1872,7 @@ msgstr "Последна промяна:"
 
 #: ../src/View/PropertiesWindow.vala:538
 msgid "Last Access:"
-msgstr ""
+msgstr "Последно отваряне:"
 
 #: ../src/View/PropertiesWindow.vala:549
 msgid "Deleted:"
@@ -1880,7 +1880,7 @@ msgstr "Изтрито:"
 
 #: ../src/View/PropertiesWindow.vala:559
 msgid "Mimetype:"
-msgstr ""
+msgstr "Вид на файла:"
 
 #: ../src/View/PropertiesWindow.vala:566
 msgid "Resolution:"
@@ -1896,7 +1896,7 @@ msgstr "Първоначално местоположение:"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Other Application…"
-msgstr ""
+msgstr "Друга програма..."
 
 #: ../src/View/PropertiesWindow.vala:635
 msgid "Open with:"
@@ -2046,7 +2046,7 @@ msgstr "Отваряне на адреса/те в нов подпрозорец
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Нов Прозорец"
+msgstr "Нов прозорец"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
@@ -2088,7 +2088,7 @@ msgstr "Нов _прозорец"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
-msgstr "Нов Прозорец Като _Управител"
+msgstr "Нов прозорец като администратор"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
@@ -2157,7 +2157,7 @@ msgstr ""
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:412
 msgid "Open in New Tab"
-msgstr "Отваряне в нов раздел"
+msgstr "Отваряне в нов подпрозорец"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:419
 msgid "Open in New Window"
@@ -2247,15 +2247,15 @@ msgstr "Въведете път"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr "Изглед като Решетка"
+msgstr "Изглед като решетка"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
-msgstr "Изглед като Списък"
+msgstr "Изглед като списък"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr "Изглед като Колони"
+msgstr "Изглед като колони"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
 msgid "Navigate to %s"
@@ -2335,7 +2335,7 @@ msgstr "Преместване в Кошчето"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr "Нов"
+msgstr "Създаване на"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
@@ -2343,11 +2343,11 @@ msgstr "Папка"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr "Празен Файл"
+msgstr "Празен файл"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr "Покажи Скритите файлове"
+msgstr "Показване на скритите файлове"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
@@ -2355,7 +2355,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr "Нов Подпрозорец"
+msgstr "Нов подпрозорец"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
@@ -2363,7 +2363,7 @@ msgstr "Терминал"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
-msgstr "Отметка"
+msgstr "Добавяне към отметките"
 
 #: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
@@ -2383,7 +2383,7 @@ msgstr "Сложи в Папката"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Sort by"
-msgstr "Отбери По"
+msgstr "Подреждане по"
 
 #: ../src/View/directory_view_popup.ui:138
 msgid "Name"
@@ -2395,4 +2395,4 @@ msgstr "Дата"
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
-msgstr "Обратен Ред"
+msgstr "Обратен ред"
