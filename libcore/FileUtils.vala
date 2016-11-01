@@ -414,31 +414,17 @@ namespace PF.FileUtils {
         int now_year = now.get_year ();
         int disp_year = dt.get_year ();
 
-        if (disp_year < now_year) {
-            /* TRANSLATORS: This string determines the format and order in which the day month and year
-             * are shown informally for a date that occurred in the previous year or before.
-             * %-d expands to the numeric day of the month.
-             * %b expands to the abbreviated name of the month according to the locale.
-             * %Y expands to the 4-digit number of the year.
-             * These components must not be altered, but their order may be changed to accord with
-             * the informal custom for the locale.
-             */   
-            return dt.format (_("%-d %b %Y"));
+        string default_date_format = Granite.DateTime.get_default_date_format (false, true, true);
+
+        if (disp_year < now_year) {  
+            return dt.format (default_date_format);
         }
 
         int now_day = now.get_day_of_year ();
         int disp_day = dt.get_day_of_year ();
 
         if (disp_day < now_day - 7) {
-            /* TRANSLATORS: This string determines the format and order in which the day month and year
-             * are shown informally for a date that occurred in the current year but more than a week ago.
-             * %-d expands to the numeric day of the month.
-             * %b expands to the abbreviated name of the month according to the locale.
-             * %Y expands to the 4-digit number of the year.
-             * These components must not be altered, but their order may be changed to accord with
-             * the informal custom for the locale.
-             */ 
-            return dt.format (_("%-d %b %Y"));
+            return dt.format (default_date_format);
         }
 
         int now_weekday = now.get_day_of_week ();
