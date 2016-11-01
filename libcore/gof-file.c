@@ -343,10 +343,14 @@ static void
 gof_file_update_size (GOFFile *file)
 {
     g_free (file->format_size);
-    if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file))
+
+    if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file)) {
         file->format_size = g_strdup ("—");
-    else
+    } else if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_SIZE)) {
         file->format_size = g_format_size (file->size);
+    } else {
+        file->format_size = g_strdup (_("Inaccessible"));
+    }
 }
 
 static void
@@ -521,10 +525,29 @@ gof_file_update (GOFFile *file)
         }
     }
 
+    if (file->custom_display_name == NULL) {
+        /* Use custom_display_name to store default display name if there is no custom name */
+        if (file->info && g_file_info_get_display_name (file->info) != NULL) {
+            if (file->directory != NULL &&
+                strcmp (g_file_get_uri_scheme (file->directory), "network") == 0 &&
+                !(strcmp (g_file_get_uri (file->target_location), "smb:///") == 0)) {
+                /* Show protocol after server name (lp:1184606) */
+                file->custom_display_name = g_strdup_printf ("%s (%s)", g_file_info_get_display_name (file->info),
+                                                                        g_utf8_strup (g_file_get_uri_scheme (file->target_location), -1));
+            } else {
+                file->custom_display_name = g_strdup (g_file_info_get_display_name (file->info));
+            }
+        }
+    }
+
     /* sizes */
     gof_file_update_size (file);
     /* modified date */
-    file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED)) {
+        file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+    } else {
+        file->formated_modified = g_strdup (_("Inaccessible"));
+    }
     /* icon */
     if (file->is_directory) {
         gof_file_get_folder_icon_from_uri_or_path (file);
@@ -1333,6 +1356,14 @@ gof_file_is_writable (GOFFile *file)
     } else {
         return TRUE;  /* We will just have to assume we can write to the file */
     }
+
+    gboolean can_write = g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+
+    if (file->directory && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE)) {
+        return can_write && g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE);
+    }
+
+    return can_write;
 }
 
 gboolean
@@ -2488,18 +2519,7 @@ gof_file_get_target_location (GOFFile *file)
 const gchar *
 gof_file_get_display_name (GOFFile *file)
 {
-    if (file->is_desktop) {
-        if (gof_preferences_get_default ()->pref_interpret_desktop_files && file->custom_display_name != NULL)
-            return file->custom_display_name;
-    } else {
-        if (file->custom_display_name != NULL)
-            return file->custom_display_name;
-    }
-
-    if (file->info && g_file_info_get_display_name (file->info) != NULL)
-        return g_file_info_get_display_name (file->info);
-
-    return file->basename;
+    return file->custom_display_name ? file->custom_display_name : file->basename;
 }
 
 gboolean

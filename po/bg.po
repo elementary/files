@@ -8,22 +8,22 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-10-10 13:06-0500\n"
-"PO-Revision-Date: 2016-06-30 19:08+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-10-28 12:22+0000\n"
+"Last-Translator: Адмирал АнимЕ <Unknown>\n"
 "Language-Team: Bulgarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-10-11 07:21+0000\n"
-"X-Generator: Launchpad (build 18227)\n"
+"X-Launchpad-Export-Date: 2016-10-29 06:06+0000\n"
+"X-Generator: Launchpad (build 18246)\n"
 "X-Poedit-Country: bulgaria\n"
 "X-Poedit-Language: bg\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
-msgstr "Няма нищо в клипборда за поставяне"
+msgstr "Няма нищо за поставяне от системния буфер"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -77,7 +77,7 @@ msgstr "Сървърът на \"%s\" не може да се намери."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr "Опитай отново"
+msgstr "Нов опит"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
@@ -85,16 +85,16 @@ msgstr "Моля, проверете Вашите потребителски д�
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr "Продължи"
+msgstr "Продължаване"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr "Свържи"
+msgstr "_Свързване"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr "Свържи се със сървър"
+msgstr "Свързване към сървър"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
@@ -186,19 +186,19 @@ msgstr "Заместването ще премахне всички файлов
 #: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Замени папка \"%s\"?"
+msgstr "Замяна на папката \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
 #: ../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Има вече папка със същото име в  \"%s\"."
+msgstr "В \"%s\" вече съществува папка със същото име."
 
 #: ../libcore/marlin-file-conflict-dialog.c:176
 #: ../libcore/marlin-file-conflict-dialog.c:402
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "Замени файл \"%s\"?"
+msgstr "Да се замени ли файла „%s“?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
@@ -209,19 +209,19 @@ msgstr "Замяната им ще презапише съдържанието �
 #: ../libcore/marlin-file-conflict-dialog.c:408
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Вече съществува по-стар файл с това име  в „%s“."
+msgstr "В \"%s\" вече съществува по-стар файл със същото име."
 
 #: ../libcore/marlin-file-conflict-dialog.c:186
 #: ../libcore/marlin-file-conflict-dialog.c:412
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Вече съществува по-нов файл с това име  в „%s“."
+msgstr "В \"%s\" вече съществува по-нов файл със същото име."
 
 #: ../libcore/marlin-file-conflict-dialog.c:190
 #: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Вече съществува друг файл с това име  в „%s“."
+msgstr "В \"%s\" вече съществува друг файл със същото име."
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:471
@@ -249,12 +249,12 @@ msgstr "Тип:"
 #: ../libcore/marlin-file-conflict-dialog.c:478
 #: ../libcore/marlin-file-conflict-dialog.c:499
 msgid "Last modified:"
-msgstr "Промяна:"
+msgstr "Последна промяна:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:492
 msgid "Replace with"
-msgstr "Замени с"
+msgstr "Замяна с"
 
 #: ../libcore/marlin-file-conflict-dialog.c:312
 #: ../libcore/marlin-file-conflict-dialog.c:517
@@ -267,24 +267,24 @@ msgstr "Задай ново име на целта."
 
 #: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
-msgstr "Възстанови"
+msgstr "Нулиране"
 
 #: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
-msgstr "Приложи това действие за всички файлове"
+msgstr "Прилагане на това действие към всички файлове"
 
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr "Пропусни"
+msgstr "_Пропускане"
 
 #: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
-msgstr "Преименувай"
+msgstr "Преимен_уване"
 
 #: ../libcore/marlin-file-conflict-dialog.c:759
 msgid "Replace"
-msgstr "Замени"
+msgstr "Заместване"
 
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
@@ -330,23 +330,23 @@ msgstr " (неправилен Уникод)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr "Пропусни всички"
+msgstr "Пропус_кане на всички"
 
 #: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr "Отново"
+msgstr "По_вторен опит"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "Изтрий всички"
+msgstr "Изтриване на _всички"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr "Замени"
+msgstr "_Замяна"
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr "Замени всички"
+msgstr "Замяна на _всички"
 
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
@@ -358,7 +358,7 @@ msgstr "Сливане на всички"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "Копирай въпреки това"
+msgstr "Копиране _въпреки всичко"
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
@@ -531,7 +531,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
 msgid "Empty _Trash"
-msgstr "Опразни Кошчето"
+msgstr "Изпразване на _кошчето"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -617,7 +617,7 @@ msgstr "Грешка при изтриване на %B."
 #: ../libcore/marlin-file-operations.c:1837
 #: ../libcore/marlin-file-operations.c:1849
 msgid "Moving files to trash"
-msgstr "Изхвърляне в Кошчето"
+msgstr "Изхвърляне в кошчето"
 
 #: ../libcore/marlin-file-operations.c:1851
 #, c-format
@@ -630,7 +630,7 @@ msgstr[1] "%'d файла остават в Кошчето"
 #: ../libcore/marlin-file-operations.c:1949
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash or delete it"
-msgstr "Не може файла да бъде преместен или изтрит"
+msgstr "Файлът не може да бъде преместен или изтрит"
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid ""
@@ -1122,7 +1122,7 @@ msgstr "Премести '%s' обратно в '%s'"
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "Преименувай «%s» на «%s»"
+msgstr "Преименуване на „%s“ на „%s“"
 
 #: ../libcore/marlin-undostack-manager.c:1278
 #: ../libcore/marlin-undostack-manager.c:1473
@@ -1532,7 +1532,7 @@ msgstr "Кошче"
 
 #: ../src/View/Sidebar.vala:544
 msgid "Open the Trash"
-msgstr "Отвори в Кошчето"
+msgstr "Отваряне на кошчето"
 
 #: ../src/View/Sidebar.vala:548
 msgid "Devices"
@@ -1565,7 +1565,7 @@ msgstr "Разгледай съдържаннието на мрежата"
 
 #: ../src/View/Sidebar.vala:845
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s свободно от общо %s)"
 
 #: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
@@ -1573,15 +1573,15 @@ msgstr "Не може да се стартира %s"
 
 #: ../src/View/Sidebar.vala:1445
 msgid "Open"
-msgstr "Отвoри"
+msgstr "Отваряне"
 
 #: ../src/View/Sidebar.vala:1453
 msgid "Open in New _Tab"
-msgstr "Отвори в нов подпрозорец"
+msgstr "Отваряне в нов подпрозорец"
 
 #: ../src/View/Sidebar.vala:1459
 msgid "Open in New _Window"
-msgstr "Отвори в нов прозорец"
+msgstr "Отваряне в нов прозорец"
 
 #: ../src/View/Sidebar.vala:1467
 msgid "Remove"
@@ -1589,19 +1589,19 @@ msgstr "Премахни"
 
 #: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr "Преименувай"
+msgstr "Преименуване"
 
 #: ../src/View/Sidebar.vala:1484
 msgid "_Mount"
-msgstr "Монтирай"
+msgstr "_Монтиране"
 
 #: ../src/View/Sidebar.vala:1490
 msgid "_Unmount"
-msgstr "Демонтирай"
+msgstr "_Демонтиране"
 
 #: ../src/View/Sidebar.vala:1496
 msgid "_Eject"
-msgstr "Извади"
+msgstr "_Изваждане"
 
 #: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:129
 #: ../src/View/directory_view_popup.ui:99
@@ -1615,11 +1615,11 @@ msgstr ""
 #: ../src/View/VolumePropertiesWindow.vala:78
 #: ../src/View/PropertiesWindow.vala:574
 msgid "Location:"
-msgstr ""
+msgstr "Местоположение:"
 
 #: ../src/View/VolumePropertiesWindow.vala:85
 msgid "Format:"
-msgstr ""
+msgstr "Формат:"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1639,7 +1639,7 @@ msgstr "Промяна"
 
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:366
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "Папката не съществува"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
@@ -1665,7 +1665,7 @@ msgstr ""
 
 #: ../src/View/AbstractPropertiesDialog.vala:47
 msgid "Info"
-msgstr ""
+msgstr "Сведения"
 
 #: ../src/View/AbstractPropertiesDialog.vala:56
 msgid "General"
@@ -1677,26 +1677,26 @@ msgstr "Затваряне"
 
 #: ../src/View/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
-msgstr ""
+msgstr "Използвано пространство"
 
 #: ../src/View/AbstractPropertiesDialog.vala:153
 msgid "Capacity:"
-msgstr ""
+msgstr "Обем:"
 
 #: ../src/View/AbstractPropertiesDialog.vala:154
 #: ../src/View/AbstractPropertiesDialog.vala:157
 #: ../src/View/AbstractPropertiesDialog.vala:160
 #: ../src/View/PropertiesWindow.vala:427 ../src/View/PropertiesWindow.vala:463
 msgid "Unknown"
-msgstr ""
+msgstr "Неизвестно"
 
 #: ../src/View/AbstractPropertiesDialog.vala:156
 msgid "Available:"
-msgstr ""
+msgstr "Налично:"
 
 #: ../src/View/AbstractPropertiesDialog.vala:159
 msgid "Used:"
-msgstr ""
+msgstr "Използвано:"
 
 #: ../src/View/AbstractDirectoryView.vala:550
 msgid "Failed to preview"
@@ -1704,7 +1704,7 @@ msgstr "Провал при прегледа"
 
 #: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Файлът не може да се отвори"
 
 #: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
@@ -1741,7 +1741,7 @@ msgstr "Отвори с"
 
 #: ../src/View/AbstractDirectoryView.vala:2091
 msgid "Other Application"
-msgstr "Други Приложения"
+msgstr "Друга програма"
 
 #: ../src/View/AbstractDirectoryView.vala:2352
 msgid "Untitled %s"
@@ -1834,7 +1834,7 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:201
 msgid "Permissions"
-msgstr ""
+msgstr "Разрешения"
 
 #: ../src/View/PropertiesWindow.vala:222
 msgid "Actual Size Could Be Larger"
@@ -1852,7 +1852,7 @@ msgstr "неизвестен"
 
 #: ../src/View/PropertiesWindow.vala:438
 msgid "Loading…"
-msgstr ""
+msgstr "Зареждане…"
 
 #: ../src/View/PropertiesWindow.vala:469
 msgid "Could not be determined"
@@ -1860,43 +1860,43 @@ msgstr ""
 
 #: ../src/View/PropertiesWindow.vala:505
 msgid "Contains:"
-msgstr ""
+msgstr "Съдържа:"
 
 #: ../src/View/PropertiesWindow.vala:521
 msgid "Created:"
-msgstr ""
+msgstr "Създадено на:"
 
 #: ../src/View/PropertiesWindow.vala:529
 msgid "Modified:"
-msgstr ""
+msgstr "Последна промяна:"
 
 #: ../src/View/PropertiesWindow.vala:538
 msgid "Last Access:"
-msgstr ""
+msgstr "Последно отваряне:"
 
 #: ../src/View/PropertiesWindow.vala:549
 msgid "Deleted:"
-msgstr ""
+msgstr "Изтрито:"
 
 #: ../src/View/PropertiesWindow.vala:559
 msgid "Mimetype:"
-msgstr ""
+msgstr "Вид на файла:"
 
 #: ../src/View/PropertiesWindow.vala:566
 msgid "Resolution:"
-msgstr ""
+msgstr "Разделителна способност:"
 
 #: ../src/View/PropertiesWindow.vala:584
 msgid "Target:"
-msgstr ""
+msgstr "Местоназначение:"
 
 #: ../src/View/PropertiesWindow.vala:592
 msgid "Original Location:"
-msgstr ""
+msgstr "Първоначално местоположение:"
 
 #: ../src/View/PropertiesWindow.vala:615
 msgid "Other Application…"
-msgstr ""
+msgstr "Друга програма..."
 
 #: ../src/View/PropertiesWindow.vala:635
 msgid "Open with:"
@@ -1916,15 +1916,15 @@ msgstr "Изпълним"
 
 #: ../src/View/PropertiesWindow.vala:944 ../src/View/PropertiesWindow.vala:960
 msgid "Owner:"
-msgstr ""
+msgstr "Собственик:"
 
 #: ../src/View/PropertiesWindow.vala:950 ../src/View/PropertiesWindow.vala:964
 msgid "Group:"
-msgstr ""
+msgstr "Група:"
 
 #: ../src/View/PropertiesWindow.vala:968
 msgid "Everyone:"
-msgstr ""
+msgstr "Всички:"
 
 #: ../src/View/PropertiesWindow.vala:1216
 msgid "%u subfolders and %u files"
@@ -2014,19 +2014,19 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:389
 msgid "File not Found"
-msgstr ""
+msgstr "Файлът не е намерен"
 
 #: ../src/View/ViewContainer.vala:390
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "Избраният файл вече не съществува."
 
 #: ../src/View/Slot.vala:32
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Папката е празна"
 
 #: ../src/View/Slot.vala:33
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Кошчето е празно"
 
 #: ../src/View/Slot.vala:34
 msgid "There Are No Recent Files"
@@ -2034,7 +2034,7 @@ msgstr ""
 
 #: ../src/View/Slot.vala:35
 msgid "Access Denied"
-msgstr ""
+msgstr "Достъпът е отказан"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2046,7 +2046,7 @@ msgstr "Отваряне на адреса/те в нов подпрозорец
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Нов Прозорец"
+msgstr "Нов прозорец"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
@@ -2088,7 +2088,7 @@ msgstr "Нов _прозорец"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
-msgstr "Нов Прозорец Като _Управител"
+msgstr "Нов прозорец като администратор"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
@@ -2157,24 +2157,24 @@ msgstr ""
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:412
 msgid "Open in New Tab"
-msgstr "Отваряне в нов раздел"
+msgstr "Отваряне в нов подпрозорец"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:419
 msgid "Open in New Window"
-msgstr ""
+msgstr "Отваряне в нов прозорец"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:458
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Отваряне с друга програма..."
 
 #: ../libwidgets/View/LocationBar.vala:181
 msgid "Reload this folder"
-msgstr ""
+msgstr "Опресняване на папката"
 
 #: ../libwidgets/View/LocationBar.vala:184
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Въведете израз или път"
 
 #: ../libwidgets/View/SearchResults.vala:180
 msgid "In This Folder"
@@ -2206,7 +2206,8 @@ msgstr ""
 "  Veselin Trakiyski https://launchpad.net/~wesako\n"
 "  Viktor Reseleshki https://launchpad.net/~vikktor91\n"
 "  alex4o https://launchpad.net/~mrabonin\n"
-"  fakebutt https://launchpad.net/~dr-no-style"
+"  fakebutt https://launchpad.net/~dr-no-style\n"
+"  Адмирал АнимЕ https://launchpad.net/~aeternus-arcis"
 
 #: ../libwidgets/Resources.vala:83
 msgid "AFP"
@@ -2234,7 +2235,7 @@ msgstr "SMB"
 
 #: ../libwidgets/Resources.vala:91
 msgid "Recent"
-msgstr ""
+msgstr "Скорошни"
 
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
@@ -2242,19 +2243,19 @@ msgstr ""
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Въведете път"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr "Изглед като Решетка"
+msgstr "Изглед като решетка"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
-msgstr "Изглед като Списък"
+msgstr "Изглед като списък"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr "Изглед като Колони"
+msgstr "Изглед като колони"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
 msgid "Navigate to %s"
@@ -2322,11 +2323,11 @@ msgstr "Изтрий безвъзвратно"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Отваряне на родителската папка"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Премахване от хронологията"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
@@ -2334,7 +2335,7 @@ msgstr "Преместване в Кошчето"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr "Нов"
+msgstr "Създаване на"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
@@ -2342,11 +2343,11 @@ msgstr "Папка"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr "Празен Файл"
+msgstr "Празен файл"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr "Покажи Скритите файлове"
+msgstr "Показване на скритите файлове"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
@@ -2354,7 +2355,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr "Нов Подпрозорец"
+msgstr "Нов подпрозорец"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
@@ -2362,7 +2363,7 @@ msgstr "Терминал"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
-msgstr "Отметка"
+msgstr "Добавяне към отметките"
 
 #: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
@@ -2382,7 +2383,7 @@ msgstr "Сложи в Папката"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Sort by"
-msgstr "Отбери По"
+msgstr "Подреждане по"
 
 #: ../src/View/directory_view_popup.ui:138
 msgid "Name"
@@ -2394,4 +2395,4 @@ msgstr "Дата"
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
-msgstr "Обратен Ред"
+msgstr "Обратен ред"
