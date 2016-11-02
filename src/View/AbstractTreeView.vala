@@ -64,6 +64,10 @@ namespace FM {
 
         protected void set_up_view () {
             connect_tree_signals ();
+            tree.realize.connect ((w) => {
+                tree.grab_focus ();
+                tree.columns_autosize ();
+            });
         }
 
         protected override void set_up_name_renderer () {
@@ -76,13 +80,11 @@ namespace FM {
             name_renderer.yalign = 0.5f;
         }
 
-        protected void connect_tree_signals () {
+        protected override void connect_tree_signals () {
             tree.get_selection ().changed.connect (on_view_selection_changed);
-
-            tree.realize.connect ((w) => {
-                tree.grab_focus ();
-                tree.columns_autosize ();
-            });
+        }
+        protected override void disconnect_tree_signals () {
+            tree.get_selection ().changed.disconnect (on_view_selection_changed);
         }
 
         protected override Gtk.Widget? create_view () {
@@ -131,21 +133,27 @@ namespace FM {
             tree.get_selection ().unselect_all ();
         }
 
-        public override void select_path (Gtk.TreePath? path) {
+        /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
+         * It would take an exponentially long time. Use "select_files" function in parent class.
+         */  
+        public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
             if (path != null) {
                 var selection = tree.get_selection ();
-                /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
-                 * so we have to remember them and reselect afterwards */ 
-                GLib.List<Gtk.TreePath> selected_paths = null;
-                selection.selected_foreach ((m, p, i) => {
-                    selected_paths.prepend (p);
-                });
-                /* Ensure cursor follows last selection */
-                tree.set_cursor (path, null, false);  /* This selects path but unselects rest! */
                 selection.select_path (path);
-                selected_paths.@foreach ((p) => {
-                    selection.select_path (p);
-                });
+                if (cursor_follows) {
+                    /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
+                     * so we have to remember them and reselect afterwards */ 
+                    GLib.List<Gtk.TreePath> selected_paths = null;
+                    selection.selected_foreach ((m, p, i) => {
+                        selected_paths.prepend (p);
+                    });
+                    /* Ensure cursor follows last selection */
+                    tree.set_cursor (path, null, false);  /* This selects path but unselects rest! */
+
+                    selected_paths.@foreach ((p) => {
+                       selection.select_path (p);
+                    });
+                }
             }
         }
         public override void unselect_path (Gtk.TreePath? path) {

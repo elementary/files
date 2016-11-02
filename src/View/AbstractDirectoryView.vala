@@ -217,7 +217,6 @@ namespace FM {
         /* Rapid keyboard paste support */
         protected bool pasting_files = false;
         protected bool select_added_files = false;
-        private HashTable? pasted_files = null;
 
         public bool renaming {get; protected set; default = false;}
 
@@ -230,12 +229,20 @@ namespace FM {
                     action_set_enabled (common_actions, "paste_into", false);
                     action_set_enabled (window.win_actions, "select_all", false);
 
+                    /* Fix problems when navigating away from directory with large number
+                     * of selected files (e.g. OverlayBar critical errors)
+                     */  
+                    disconnect_tree_signals ();
+
                     size_allocate.disconnect (on_size_allocate);
                     clipboard.changed.disconnect (on_clipboard_changed);
                     view.enter_notify_event.disconnect (on_enter_notify_event);
                     view.key_press_event.disconnect (on_view_key_press_event);
                 } else if (!value && _is_frozen) {
-                    update_menu_actions ();
+                    /* Ensure selected files and menu actions are up to date */
+                    connect_tree_signals ();
+                    on_view_selection_changed ();
+
                     size_allocate.connect (on_size_allocate);
                     clipboard.changed.connect (on_clipboard_changed);
                     view.enter_notify_event.connect (on_enter_notify_event);
@@ -417,35 +424,40 @@ namespace FM {
                 });
             }
         }
-        public void select_glib_files (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
-            unselect_all ();
+
+        public void select_glib_files_when_thawed (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
             GLib.List<GOF.File>? file_list = null;
 
             location_list.@foreach ((loc) => {
                 file_list.prepend (GOF.File.@get (loc));
             });
 
+            GLib.File? focus = focus_location != null ? focus_location.dup () : null;
+
             /* Because the Icon View disconnects the model while loading, we need to wait until
              * the tree is thawed and the model reconnected before selecting the files */
             Idle.add_full (GLib.Priority.LOW, () => {
                 if (!tree_frozen) {
-                    file_list.@foreach ((file) => {
-                        Gtk.TreeIter iter;
-                        if (model.get_first_iter_for_file (file, out iter)) {
-                            Gtk.TreePath path = model.get_path (iter);
-                            if (path != null) {
-                                select_path (path);
-                                if (focus_location != null && focus_location.equal (file.location)) {
-                                    /* set cursor and scroll to focus location*/
-                                    set_cursor (path, false, false, true);
-                                }
-                            }
-                        }
-                    });
+                    select_file_paths (file_list, focus);
                     return false;
-                } else
+                } else {
                     return true;
+                }
             });
+        }
+
+        private void select_file_paths (GLib.List<GOF.File> files, GLib.File? focus) {
+            Gtk.TreeIter iter;
+            disconnect_tree_signals (); /* Avoid unnecessary signal processing */
+            unselect_all ();
+            foreach (GOF.File f in files) {
+               if (model.get_first_iter_for_file (f, out iter)) {
+                    var path = model.get_path (iter);
+                    select_path (path, focus != null && focus.equal (f.location));  /* Cursor follows if matches focus location*/
+                }
+            }
+            connect_tree_signals ();
+            on_view_selection_changed (); /* Update selected files and menu actions */
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
@@ -577,7 +589,7 @@ namespace FM {
                 return; /* file not in model */
 
             var path = model.get_path (iter);
-            select_path (path);
+            select_path (path); /* Cursor does not follow */
         }
 
     /** Directory signal handlers. */
@@ -1190,6 +1202,7 @@ namespace FM {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
 
+
         public static void after_pasting_files (GLib.HashTable? uris, void* pointer) {
             if (pointer == null)
                 return;
@@ -1200,23 +1213,24 @@ namespace FM {
                 return;
             }
 
-            view.pasting_files = false;
+
             if (uris == null || uris.size () == 0)
                 return;
 
-            view.pasted_files = uris;
 
-            Idle.add (() => {
-                /* Select the most recently pasted files */
-                GLib.List<GLib.File> pasted_files_list = null;
-                view.pasted_files.foreach ((k, v) => {
-                    if (k is GLib.File)
-                        pasted_files_list.prepend (k as File);
-                });
-
-                view.select_glib_files (pasted_files_list, pasted_files_list.first ().data);
-                return false;
+            /* Select the most recently pasted files */
+            /* No need to idle here - select_glib_files will copy the files and do selecting when idle */
+            /* Calling immediately ensures the debuting file objects do not become invalid before being copied for selection */
+            GLib.List<GLib.File> pasted_files_list = null;
+            uris.foreach ((k,v) => {
+                if (k is GLib.File) {
+                    pasted_files_list.prepend ((GLib.File)k);
+                }
             });
+
+            view.select_glib_files_when_thawed (pasted_files_list, pasted_files_list.first ().data);
+
+            view.pasting_files = false; /* Allow another paste operation */
         }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2575,14 +2589,23 @@ namespace FM {
         }
 
         protected virtual void on_view_selection_changed () {
-            update_selected_files ();
-            update_menu_actions ();
-            if (is_frozen)
-                return;
-
-            selection_changed (get_selected_files ());
+            /* updating selecting file list is expensive for large selections so throttle */
+            schedule_update_selected_files ();
         }
 
+        uint update_selected_timeout_id = 0;
+        private void schedule_update_selected_files () {
+            if (update_selected_timeout_id == 0) {
+                update_selected_timeout_id = Timeout.add_full (GLib.Priority.LOW, 100, () => {
+                    update_selected_timeout_id = 0;
+                    update_selected_files ();
+                    update_menu_actions ();
+                    selection_changed (get_selected_files ());
+                   return false;
+                });
+            }
+         }
+ 
 /** Keyboard event handling **/
 
         /** Returns true if the code parameter matches the keycode of the keyval parameter for
@@ -2805,7 +2828,7 @@ namespace FM {
                                     linear_select_path (path);
                                 } else if (no_mods) {
                                     unselect_path (old_path);
-                                    select_path (path);
+                                    select_path (path, true);  /* Cursor follows */
                                 }
                             }
                             return true;
@@ -3174,12 +3197,13 @@ namespace FM {
             }
 
             if (!path_selected && click_zone != ClickZone.HELPER) {
-                if (no_mods)
+                if (no_mods) {
                     unselect_all ();
-
+                }
                 /* If modifier pressed then default handler determines selection */
-                if (no_mods && !on_blank)
-                    select_path (path);
+                if (no_mods && !on_blank) {
+                    select_path (path, true);  /* Cursor follows */
+                }
             }
 
             bool result = true;
@@ -3235,7 +3259,7 @@ namespace FM {
                                 if (path_selected) {
                                     unselect_path (path);
                                 } else {
-                                    select_path (path);
+                                    select_path (path, true); /* Cursor follows */
                                 }
                             }
 
@@ -3268,9 +3292,10 @@ namespace FM {
 
                 case Gdk.BUTTON_SECONDARY:
                     if (click_zone == ClickZone.NAME ||
-                        (!single_click_rename && click_zone == ClickZone.BLANK_PATH))
+                        (!single_click_rename && click_zone == ClickZone.BLANK_PATH)) {
 
-                        select_path (path);
+                        select_path (path);  /* Curso does not follow */
+                    }
 
                     unblock_drag_and_drop ();
                     result = handle_secondary_button_click (event);
@@ -3475,6 +3500,7 @@ namespace FM {
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref add_remove_file_timeout_id);
+            cancel_timeout (ref update_selected_timeout_id);
             /* List View will take care of unloading subdirectories */
         }
 
@@ -3531,7 +3557,7 @@ namespace FM {
         public abstract Gtk.TreePath? get_path_at_cursor ();
         public abstract void select_all ();
         public abstract void unselect_all ();
-        public abstract void select_path (Gtk.TreePath? path);
+        public abstract void select_path (Gtk.TreePath? path, bool cursor_follows = false);
         public abstract void unselect_path (Gtk.TreePath? path);
         public abstract bool path_is_selected (Gtk.TreePath? path);
         public abstract bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
@@ -3557,7 +3583,9 @@ namespace FM {
         protected abstract void thaw_tree ();
         protected new abstract void freeze_child_notify ();
         protected new abstract void thaw_child_notify ();
-
+        protected abstract void connect_tree_signals ();
+        protected abstract void disconnect_tree_signals ();
+ 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear
 */
