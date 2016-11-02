@@ -1866,8 +1866,9 @@ namespace FM {
 
                     clipboard_menu.remove (1); /* Copy */
                     clipboard_menu.remove (1); /* Paste (index updated by previous line) */
-
                     menu.append_section (null, clipboard_menu);
+
+                    menu.append_section (null, builder.get_object ("properties") as GLib.Menu);
                 }
             } else if (in_recent) {
                 var open_menu = build_menu_open (ref builder);

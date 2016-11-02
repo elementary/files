@@ -357,6 +357,114 @@ namespace PF.FileUtils {
         });
     }
 
+    public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr, string format = "locale") {
+        switch (attr) {
+            case FileAttribute.TIME_MODIFIED:
+            case FileAttribute.TIME_CREATED:
+            case FileAttribute.TIME_ACCESS:
+            case FileAttribute.TIME_CHANGED:
+                uint64 t = info.get_attribute_uint64 (attr);
+                if (t == 0) {
+                    return "";
+                }
+
+                DateTime dt = new DateTime.from_unix_local ((int64)t);
+
+                if (dt == null) {
+                    return "";
+                }
+
+                return get_formatted_date_time (dt, format);
+
+            case FileAttribute.TRASH_DELETION_DATE:
+                var deletion_date = info.get_attribute_string (attr);
+                var tv = TimeVal ();
+                if (deletion_date == null || !tv.from_iso8601 (deletion_date)) {
+                    return "";
+                }
+
+                DateTime dt = new DateTime.from_timeval_local (tv);
+
+                if (dt == null) {
+                    return "";
+                }
+
+                return get_formatted_date_time (dt, format);
+
+            default:
+                break;
+        }
+
+        return "";
+    }
+
+    public string get_formatted_date_time (DateTime dt, string format = "locale") {
+        switch (format) {
+            case "locale":
+                return dt.format ("%c");
+            case "ISO" :
+                return dt.format ("%Y-%m-%d %H:%M:%S");
+            default:
+                return get_informal_date_time (dt);
+        }
+    }
+
+    private string get_informal_date_time (DateTime dt) {
+        DateTime now = new DateTime.now_local ();
+        int now_year = now.get_year ();
+        int disp_year = dt.get_year ();
+
+        string default_date_format = Granite.DateTime.get_default_date_format (false, true, true);
+
+        if (disp_year < now_year) {  
+            return dt.format (default_date_format);
+        }
+
+        int now_day = now.get_day_of_year ();
+        int disp_day = dt.get_day_of_year ();
+
+        if (disp_day < now_day - 7) {
+            return dt.format (default_date_format);
+        }
+
+        int now_weekday = now.get_day_of_week ();
+        int disp_weekday = dt.get_day_of_week ();
+
+        switch (now_weekday - disp_weekday) {
+            case 0:
+            /* TRANSLATORS: This string determines the format and order in which the day and time
+             * are shown informally for a time that occurred today.
+             * %-I expands to the numeric hour in 12 hour clock.
+             * %M expands to the numeric minute.
+             * %p expands to "am" or "pm" according to the locale. 
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */ 
+                return dt.format (_("Today at %-I:%M %p"));
+            case 1:
+            /* TRANSLATORS: This string determines the format and order in which the day and time
+             * are shown informally for a time that occurred yesterday.
+             * %-I expands to the numeric hour in 12 hour clock.
+             * %M expands to the numeric minute.
+             * %p expands to "am" or "pm" according to the locale. 
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */ 
+                return dt.format (_("Yesterday at %-I:%M %p"));
+            default:
+            /* TRANSLATORS: This string determines the format and order in which the day and time
+             * are shown informally for a time that occurred in the past week.
+             * %-I expands to the numeric hour in 12 hour clock.
+             * %M expands to the numeric minute.
+             * %p expands to "am" or "pm" according to the locale.
+             * %A expands to the abbreviated name of the weekday according to the locale.   
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */ 
+                return dt.format (_("%A at %-I:%M %p"));
+        }
+    }
+
     private bool can_browse_scheme (string scheme) {
         switch (scheme) {
             case Marlin.AFP_URI:
