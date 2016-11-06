@@ -583,14 +583,20 @@ gof_file_update (GOFFile *file)
 
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_UID)) {
         file->uid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_UID);
-        if (file->owner == NULL)
+        if (file->owner == NULL) {
             file->owner = g_strdup_printf ("%d", file->uid);
+        }
+    } else if (file->owner != NULL) { /* e.g. ftp info yields owner but not uid */
+        file->uid = atoi (file->owner);
     }
 
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_GID)) {
         file->gid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_GID);
-        if (file->group == NULL)
+        if (file->group == NULL) {
             file->group = g_strdup_printf ("%d", file->gid);
+        }
+    } else if (file->group != NULL) {  /* e.g. ftp info yields owner but not uid */
+        file->gid = atoi (file->group);
     }
 
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT))
@@ -1344,15 +1350,14 @@ gboolean
 gof_file_is_writable (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-
     if (file->target_gof && !g_file_equal (file->location, file->target_gof->location)) {
         return gof_file_is_writable (file->target_gof);
     } else if (file->info != NULL && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
         return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
     } else if (file->has_permissions) {
-        return (file->permissions & S_IWOTH) ||
-               (file->permissions & S_IWUSR) && (strcmp (file->owner, g_get_user_name ()) == 0) ||
-               (file->permissions & S_IWGRP) && eel_user_in_group (file->group);
+        return ((file->permissions & S_IWOTH) > 0) ||
+               ((file->permissions & S_IWUSR) > 0) && (file->uid < 0 || file->uid == geteuid ()) ||
+               ((file->permissions & S_IWGRP) > 0) && eel_user_in_group (file->group);
     } else {
         return TRUE;  /* We will just have to assume we can write to the file */
     }
@@ -1377,7 +1382,7 @@ gof_file_is_readable (GOFFile *file)
         return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
     } else if (file->has_permissions) {
         return (file->permissions & S_IROTH) ||
-               (file->permissions & S_IRUSR) && (strcmp (file->owner, g_get_user_name ()) == 0) ||
+               (file->permissions & S_IRUSR) && (file->uid < 0 || file->uid == geteuid ()) ||
                (file->permissions & S_IRGRP) && eel_user_in_group (file->group);
     } else {
         return TRUE;  /* We will just have to assume we can read the file */
@@ -1754,7 +1759,9 @@ gof_file_accepts_drop (GOFFile          *file,
                 return 0;
         }
 
-        /* if the source offers both copy and move and the GTK+ suggested action is copy, try to be smart telling whether we should copy or move by default by checking whether the source and target are on the same disk. */
+        /* if the source offers both copy and move and the GTK+ suggested action is copy, try to
+         * be smart telling whether we should copy or move by default by checking whether the
+         * source and target are on the same disk. */
         if ((actions & (GDK_ACTION_COPY | GDK_ACTION_MOVE)) != 0
             && (suggested_action == GDK_ACTION_COPY))
         {
@@ -1777,8 +1784,8 @@ gof_file_accepts_drop (GOFFile          *file,
                 if (ofile == NULL
                     || !gof_file_same_filesystem (file, ofile)
                     || (ofile->info != NULL
-                        && g_file_info_get_attribute_uint32 (ofile->info,
-                                                             G_FILE_ATTRIBUTE_UNIX_UID) != effective_user_id))
+                        && ofile->uid > -1
+                        && ofile->uid != effective_user_id ))
                 {
                     /* default to copy and get outa here */
                     suggested_action = GDK_ACTION_COPY;
