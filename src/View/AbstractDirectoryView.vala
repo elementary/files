@@ -215,7 +215,6 @@ namespace FM {
         private bool can_trash_or_delete = true;
 
         /* Rapid keyboard paste support */
-        protected bool pasting_files = false;
         protected bool select_added_files = false;
 
         public bool renaming {get; protected set; default = false;}
@@ -447,15 +446,18 @@ namespace FM {
         }
 
         private void select_file_paths (GLib.List<GOF.File> files, GLib.File? focus) {
+
             Gtk.TreeIter iter;
             disconnect_tree_signals (); /* Avoid unnecessary signal processing */
             unselect_all ();
+
             foreach (GOF.File f in files) {
                if (model.get_first_iter_for_file (f, out iter)) {
                     var path = model.get_path (iter);
                     select_path (path, focus != null && focus.equal (f.location));  /* Cursor follows if matches focus location*/
                 }
             }
+
             connect_tree_signals ();
             on_view_selection_changed (); /* Update selected files and menu actions */
         }
@@ -1213,30 +1215,12 @@ namespace FM {
                 return;
             }
 
-
-            if (uris == null || uris.size () == 0)
+            if (uris == null || uris.size () == 0) {
                 return;
-
-
-            /* Select the most recently pasted files */
-            /* No need to idle here - select_glib_files will copy the files and do selecting when idle */
-            /* Calling immediately ensures the debuting file objects do not become invalid before being copied for selection */
-            GLib.List<GLib.File> pasted_files_list = null;
-            uris.foreach ((k,v) => {
-                if (k is GLib.File) {
-                    pasted_files_list.prepend ((GLib.File)k);
-                }
-            });
-
-            view.select_glib_files_when_thawed (pasted_files_list, pasted_files_list.first ().data);
-
-            view.pasting_files = false; /* Allow another paste operation */
+            }
         }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
-            if (pasting_files)
-                return;
-
             var file = get_files_for_action ().nth_data (0);
 
             if (file != null && clipboard.get_can_paste ()) {
@@ -1250,10 +1234,10 @@ namespace FM {
 
                 if (target.has_uri_scheme ("trash")) {
                     /* Pasting files into trash is equivalent to trash or delete action */
-                    pasting_files = false;
+                    select_added_files = false;
                     call_back = (GLib.Callback)after_trash_or_delete;
                 } else {
-                    pasting_files = true;
+                    select_added_files = true;
                     /* callback takes care of selecting pasted files */
                     call_back = (GLib.Callback)after_pasting_files;
                 }
@@ -2589,23 +2573,24 @@ namespace FM {
             activate_selected_items (Marlin.OpenFlag.DEFAULT);
         }
 
+        uint update_selected_timeout_id = 0;
         protected virtual void on_view_selection_changed () {
             /* updating selecting file list is expensive for large selections so throttle */
-            schedule_update_selected_files ();
-        }
-
-        uint update_selected_timeout_id = 0;
-        private void schedule_update_selected_files () {
             if (update_selected_timeout_id == 0) {
+                after_selected_files_changed (); /* Make sure first update happens immediately */
                 update_selected_timeout_id = Timeout.add_full (GLib.Priority.LOW, 100, () => {
                     update_selected_timeout_id = 0;
-                    update_selected_files ();
-                    update_menu_actions ();
-                    selection_changed (get_selected_files ());
-                   return false;
+                    after_selected_files_changed ();
+                    return false;
                 });
             }
-         }
+        }
+
+        private void after_selected_files_changed () {
+            update_selected_files ();
+            update_menu_actions ();
+            selection_changed (get_selected_files ());
+        }
  
 /** Keyboard event handling **/
 
