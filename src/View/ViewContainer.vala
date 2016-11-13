@@ -429,7 +429,9 @@ namespace Marlin.View {
             if (aslot != null) {
                 /* Since async loading it may not have been determined whether slot is loadable */
                 aslot.set_active_state (is_active, animate);
-                active ();
+                if (is_active) {
+                    active ();
+                }
             }
         }
 

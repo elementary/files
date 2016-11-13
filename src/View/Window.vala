@@ -1018,8 +1018,9 @@ namespace Marlin.View {
         }
 
         private void update_top_menu () {
-            if (restoring_tabs || current_tab == null)
+            if (restoring_tabs || current_tab == null) {
                 return;
+            }
 
             /* Update browser buttons */
             top_menu.set_back_menu (current_tab.get_go_back_path_list ());
