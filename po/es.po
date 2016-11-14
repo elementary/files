@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-10 13:06-0500\n"
-"PO-Revision-Date: 2016-09-16 08:54+0000\n"
-"Last-Translator: Oscar Miranda <oscarmiranda3615@hotmail.com>\n"
+"PO-Revision-Date: 2016-11-13 10:52+0000\n"
+"Last-Translator: Félix Brezo <felixbrezo@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-10-11 07:27+0000\n"
-"X-Generator: Launchpad (build 18227)\n"
+"X-Launchpad-Export-Date: 2016-11-14 06:03+0000\n"
+"X-Generator: Launchpad (build 18255)\n"
 "Language: es\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -155,7 +155,7 @@ msgid ""
 "that conflict with the files being copied."
 msgstr ""
 "Al combinar se pedirá confirmación antes de reemplazar cualquier archivo en "
-"la carpeta que esté en conflicto con los archivos que se están moviendo."
+"la carpeta que esté en conflicto con los archivos que se están copiando."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:380
@@ -1519,7 +1519,7 @@ msgstr "Archivos no es el gestor de archivos predeterminado."
 
 #: ../src/View/Window.vala:216
 msgid "Set as Default"
-msgstr "Predeterminar"
+msgstr "Establecer como predeterminado"
 
 #: ../src/View/Window.vala:222
 msgid "Ignore"
@@ -1588,7 +1588,7 @@ msgstr "%s libre(s) de %s"
 
 #: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
-msgstr "No se pudo iniciar %s"
+msgstr "No se puede iniciar %s"
 
 #: ../src/View/Sidebar.vala:1445
 msgid "Open"
@@ -1600,7 +1600,7 @@ msgstr "Abrir en una pes_taña nueva"
 
 #: ../src/View/Sidebar.vala:1459
 msgid "Open in New _Window"
-msgstr "Abrir en una _ventana nueva"
+msgstr "Abrir en una nueva _ventana"
 
 #: ../src/View/Sidebar.vala:1467
 msgid "Remove"
@@ -2176,7 +2176,7 @@ msgstr "No se pudo cambiar el nombre a «%s»"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:412
 msgid "Open in New Tab"
-msgstr "Abrir en una pestaña nueva"
+msgstr "Abrir en una nueva pestaña"
 
 #: ../libwidgets/View/BreadcrumbsEntry.vala:419
 msgid "Open in New Window"
