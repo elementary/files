@@ -345,8 +345,8 @@ namespace Marlin.View {
         private void make_bindings () {
             if (is_first_window) {
                 /*Preference bindings */
-                Preferences.settings.bind("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
-                Preferences.settings.bind("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
+                Preferences.settings.bind ("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
+                Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
 
                 /* keyboard shortcuts bindings */
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
