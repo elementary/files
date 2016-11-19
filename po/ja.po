@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-10-10 13:06-0500\n"
-"PO-Revision-Date: 2016-09-27 13:12+0000\n"
+"PO-Revision-Date: 2016-11-18 16:34+0000\n"
 "Last-Translator: Jun Takeda <takeda.jun@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-10-11 07:23+0000\n"
-"X-Generator: Launchpad (build 18227)\n"
+"X-Launchpad-Export-Date: 2016-11-19 05:56+0000\n"
+"X-Generator: Launchpad (build 18269)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -2183,23 +2183,23 @@ msgstr "%s へ移動"
 
 #: ../libwidgets/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "複数のファイルタイプが選択されています"
 
 #: ../libwidgets/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "これらすべてのファイルタイプを開くことができるアプリがありません"
 
 #: ../libwidgets/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "ファイルを開くことに失敗しました"
 
 #: ../libwidgets/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "URI を開くことに失敗しました"
 
 #: ../libwidgets/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "このアプリでファイルまたは URI を開けません"
 
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
