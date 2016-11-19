@@ -18,6 +18,13 @@
     <binary>pantheon-files-pkexec</binary>
   </provides>
   <releases>
+    <release version="0.3.0.4" date="2016-11-19" urgency="medium">
+      <description>
+        <ul>
+          <_li>Minor bug fixes</_li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.0.3.1" date="2016-10-10" urgency="medium">
       <description>
         <ul>
