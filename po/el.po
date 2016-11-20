@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-09-15 05:54-0500\n"
+"POT-Creation-Date: 2016-10-10 13:06-0500\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-09-16 07:36+0000\n"
-"X-Generator: Launchpad (build 18186)\n"
+"X-Launchpad-Export-Date: 2016-10-11 07:22+0000\n"
+"X-Generator: Launchpad (build 18227)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -140,15 +140,6 @@ msgstr "_Απομνημόνευση αυτού του κωδικού πρόσβ�
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "Η λειτουργία ακυρώθηκε"
-
-#: ../libcore/marlin-file-utilities.c:123
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Αδυναμία προσδιορισμού αρχικής τοποθεσίας του \"%s\" "
-
-#: ../libcore/marlin-file-utilities.c:127
-msgid "The item cannot be restored from trash"
-msgstr "Το αντικείμενο δεν μπορεί να αποκατασταθεί από τα απορρήματα"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -1514,25 +1505,25 @@ msgid "Preparing"
 msgstr "Προετοιμασία"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../libwidgets/Chrome/TopMenu.vala:51
+#: ../libwidgets/Chrome/TopMenu.vala:64
 msgid "Previous"
 msgstr "Προηγούμενο"
 
 #: ../filechooser-module/FileChooserDialog.vala:74
-#: ../libwidgets/Chrome/TopMenu.vala:55
+#: ../libwidgets/Chrome/TopMenu.vala:68
 msgid "Next"
 msgstr "Επόμενο"
 
-#: ../src/View/Window.vala:209
+#: ../src/View/Window.vala:210
 msgid "Files isn't your default file manager."
 msgstr ""
 "Η εφαρμογή Αρχεία δεν είναι ο προεπιλεγμένος διαχειριστής αρχείων σας."
 
-#: ../src/View/Window.vala:215
+#: ../src/View/Window.vala:216
 msgid "Set as Default"
 msgstr "Ορισμός ως Προεπιλογή"
 
-#: ../src/View/Window.vala:221
+#: ../src/View/Window.vala:222
 msgid "Ignore"
 msgstr "Παράβλεψη"
 
@@ -1544,7 +1535,7 @@ msgstr "Προσωπικά"
 msgid "Your common places and bookmarks"
 msgstr "Οι συνήθεις τοποθεσίες και τα αγαπημένα σας"
 
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:331
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:342
 msgid "Home"
 msgstr "Προσωπικός φάκελος"
 
@@ -1573,7 +1564,7 @@ msgid "Your local partitions and devices"
 msgstr "Τα τοπικά σας διαμερίσματα και συσκευές"
 
 #: ../src/View/Sidebar.vala:555 ../src/View/VolumePropertiesWindow.vala:44
-#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
+#: ../src/View/ViewContainer.vala:344 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "Σύστημα Αρχείων"
 
@@ -1667,7 +1658,7 @@ msgstr "Τύπος"
 msgid "Modified"
 msgstr "Τροποποίηση"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:366
 msgid "This Folder Does Not Exist"
 msgstr "Αυτός ο φάκελος δεν υπάρχει"
 
@@ -1728,75 +1719,75 @@ msgstr ""
 msgid "Used:"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:561
+#: ../src/View/AbstractDirectoryView.vala:550
 msgid "Failed to preview"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:820
+#: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:833
+#: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1569
+#: ../src/View/AbstractDirectoryView.vala:1555
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1569
+#: ../src/View/AbstractDirectoryView.vala:1555
 msgid "Invalid file name provided"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2022
+#: ../src/View/AbstractDirectoryView.vala:2008
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2028
+#: ../src/View/AbstractDirectoryView.vala:2014
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2019
 msgid "Open in %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2043
+#: ../src/View/AbstractDirectoryView.vala:2029
 msgid "Open in"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2045
+#: ../src/View/AbstractDirectoryView.vala:2031
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr "Άνοιγμα με"
 
-#: ../src/View/AbstractDirectoryView.vala:2105
+#: ../src/View/AbstractDirectoryView.vala:2091
 msgid "Other Application"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2366
+#: ../src/View/AbstractDirectoryView.vala:2352
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2668
-#: ../src/View/AbstractDirectoryView.vala:2833
+#: ../src/View/AbstractDirectoryView.vala:2652
+#: ../src/View/AbstractDirectoryView.vala:2817
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2669
-#: ../src/View/AbstractDirectoryView.vala:2824
-#: ../src/View/AbstractDirectoryView.vala:2834
+#: ../src/View/AbstractDirectoryView.vala:2653
+#: ../src/View/AbstractDirectoryView.vala:2808
+#: ../src/View/AbstractDirectoryView.vala:2818
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2806
+#: ../src/View/AbstractDirectoryView.vala:2790
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2807
+#: ../src/View/AbstractDirectoryView.vala:2791
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2823
+#: ../src/View/AbstractDirectoryView.vala:2807
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -2002,67 +1993,67 @@ msgstr ""
 msgid "%u selected items (%u folder and %u file)"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:342
+#: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
 msgstr "ως Διαχειριστής"
 
-#: ../src/View/ViewContainer.vala:356
+#: ../src/View/ViewContainer.vala:367
 msgid "You cannot create a folder here."
 msgstr "Δεν μπορείτε να δημιουργήσετε έναν φάκελο εδώ"
 
-#: ../src/View/ViewContainer.vala:358
+#: ../src/View/ViewContainer.vala:369
 msgid "The network is unavailable"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:359
+#: ../src/View/ViewContainer.vala:370
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:361
+#: ../src/View/ViewContainer.vala:372
 msgid "This Folder Does Not Belong to You"
 msgstr "Αυτός ο φάκελος δεν σας ανήκει"
 
-#: ../src/View/ViewContainer.vala:362
+#: ../src/View/ViewContainer.vala:373
 msgid "You don't have permission to view this folder."
 msgstr "Δεν έχετε δικαιώματα για να δείτε αυτό το φάκελο."
 
-#: ../src/View/ViewContainer.vala:364
+#: ../src/View/ViewContainer.vala:375
 msgid "Unable to Mount Folder"
 msgstr "Δεν είναι δυνατή η προσάρτηση του φακέλου"
 
-#: ../src/View/ViewContainer.vala:365
+#: ../src/View/ViewContainer.vala:376
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:367
-msgid "Unable show Folder"
+#: ../src/View/ViewContainer.vala:378
+msgid "Unable to Show Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:368
+#: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:378
+#: ../src/View/ViewContainer.vala:389
 msgid "File not Found"
 msgstr "Το αρχείο δεν βρέθηκε"
 
-#: ../src/View/ViewContainer.vala:379
+#: ../src/View/ViewContainer.vala:390
 msgid "The file selected no longer exists."
 msgstr "Το επιλεγμένο αρχείο δεν υπάρχει πλέον."
 
-#: ../src/View/Slot.vala:39
+#: ../src/View/Slot.vala:32
 msgid "This Folder Is Empty"
 msgstr "Αυτός ο φάκελος είναι άδειος"
 
-#: ../src/View/Slot.vala:40
+#: ../src/View/Slot.vala:33
 msgid "Trash Is Empty"
 msgstr ""
 
-#: ../src/View/Slot.vala:41
+#: ../src/View/Slot.vala:34
 msgid "There Are No Recent Files"
 msgstr "Δεν υπάρχουν πρόσφατα αρχεία"
 
-#: ../src/View/Slot.vala:42
+#: ../src/View/Slot.vala:35
 msgid "Access Denied"
 msgstr ""
 
@@ -2173,7 +2164,15 @@ msgstr ""
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: ../libcore/FileUtils.vala:289
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "Αδυναμία προσδιορισμού αρχικής τοποθεσίας του \"%s\" "
+
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "Το αντικείμενο δεν μπορεί να αποκατασταθεί από τα απορρήματα"
+
+#: ../libcore/FileUtils.vala:343
 msgid "Could not rename to '%s'"
 msgstr ""
 
@@ -2189,11 +2188,11 @@ msgstr ""
 msgid "Open in Other Application…"
 msgstr ""
 
-#: ../libwidgets/View/LocationBar.vala:171
+#: ../libwidgets/View/LocationBar.vala:181
 msgid "Reload this folder"
 msgstr ""
 
-#: ../libwidgets/View/LocationBar.vala:174
+#: ../libwidgets/View/LocationBar.vala:184
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Enter search term or path"
 msgstr ""
@@ -2289,6 +2288,26 @@ msgstr ""
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:274
 msgid "Go to %s"
 msgstr "Μετάβαση στο %s"
+
+#: ../libwidgets/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr ""
 
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"

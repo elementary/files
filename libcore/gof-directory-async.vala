@@ -772,19 +772,23 @@ public class GOF.Directory.Async : Object {
             warning ("Add and refresh file which is gone");
             return;
         }
-        if (gof.info == null)
+
+        if (gof.info == null) {
             critical ("FILE INFO null");
+        }
 
         gof.update ();
 
-        if ((!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
+        if ((!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)) {
             file_added (gof);
+        }
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
-            if (sorted_dirs.find (gof) == null)
+            if (sorted_dirs.find (gof) == null) {
                 sorted_dirs.insert_sorted (gof,
                     GOF.File.compare_by_display_name);
+            }
         }
 
         if (track_longest_name && gof.basename.length > longest_file_name.length) {

@@ -516,8 +516,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         int n = 4;
 
         if (count == 1) {
-            var time_created = file.get_formated_time (FileAttribute.TIME_CREATED);
-            if (time_created != null) {
+            var time_created = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_CREATED);
+            if (time_created != "") {
                 var key_label = new KeyLabel (_("Created:"));
                 var value_label = new ValueLabel (time_created);
                 info_grid.attach (key_label, 0, n, 1, 1);
@@ -525,18 +525,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 n++;
             }
 
-            if (file.formated_modified != null) {
+            var time_modified = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_MODIFIED);
+            if (time_modified != "") {
                 var key_label = new KeyLabel (_("Modified:"));
-                var value_label = new ValueLabel (file.formated_modified);
-                info_grid.attach (key_label, 0, n, 1, 1);
-                info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
-                n++;
-            }
-
-            var time_last_access = file.get_formated_time (FileAttribute.TIME_ACCESS);
-            if (time_last_access != null) {
-                var key_label = new KeyLabel (_("Last Access:"));
-                var value_label = new ValueLabel (time_last_access);
+                var value_label = new ValueLabel (time_modified);
                 info_grid.attach (key_label, 0, n, 1, 1);
                 info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
                 n++;
@@ -544,8 +536,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         if (count == 1 && file.is_trashed ()) {
-            var deletion_date = file.info.get_attribute_as_string ("trash::deletion-date");
-            if (deletion_date != null) {
+            var deletion_date = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TRASH_DELETION_DATE);
+            if (deletion_date != "") {
                 var key_label = new KeyLabel (_("Deleted:"));
                 var value_label = new ValueLabel (deletion_date);
                 info_grid.attach (key_label, 0, n, 1, 1);

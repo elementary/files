@@ -247,7 +247,7 @@ namespace Marlin.View.Chrome
 
             display_count = 0;
             directory_queue = new Gee.LinkedList<File> ();
-            waiting_results = new Gee.HashMap<Gtk.TreeIter?,Match> ();
+            waiting_results = new Gee.HashMap<Gtk.TreeIter?,Gee.List> ();
             current_root = folder;
 
             current_operation = new Cancellable ();
