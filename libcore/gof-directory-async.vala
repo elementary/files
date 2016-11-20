@@ -147,6 +147,7 @@ public class GOF.Directory.Async : Object {
      **/
     public void init (GOFFileLoadedFunc? file_loaded_func = null) {
         if (state == State.LOADING) {
+            debug ("Directory Init re-entered - already loading");
             return; /* Do not re-enter */
         }
         var previous_state = state;
@@ -169,6 +170,7 @@ public class GOF.Directory.Async : Object {
      * the network is made
      */
     private async void prepare_directory (GOFFileLoadedFunc? file_loaded_func) {
+        debug ("Preparing directory for loading");
         bool success = yield get_file_info ();
         if (success) {
             if (!is_no_info && !file.is_folder () && !file.is_root_network_folder ()) {
@@ -205,12 +207,8 @@ public class GOF.Directory.Async : Object {
             return false;
         }
 
-//~         if (is_no_info) {
-//~             /* Not a failure when not expected to get file info */
-//~             return true;
-//~         }
-
         if (is_local) {
+            debug ("Loading info for local directory");
             return file.ensure_query_info ();
         }
 
@@ -336,15 +334,18 @@ public class GOF.Directory.Async : Object {
     }
 
     public async bool check_network () {
+        debug ("check network");
         var net_mon = GLib.NetworkMonitor.get_default ();
         network_available = net_mon.get_network_available ();
 
         bool success = false;
 
         if (network_available) {
+            debug ("Network is available");
             SocketConnectable? connectable = null;
             try {
                 connectable = NetworkAddress.parse_uri (file.uri, 21);
+                debug ("Got connectable from file uri");
             } catch (GLib.Error e) {
                 last_error_message = e.message;
                 warning ("Failed to parse uri %s - %s", file.uri, e.message);
@@ -353,6 +354,7 @@ public class GOF.Directory.Async : Object {
 
             if (((NetworkAddress)(connectable)).get_hostname () != "" && scheme != "smb") {
                 try {
+                    debug ("Trying to reach connectable");
                     success = net_mon.can_reach (connectable, cancellable);
                 }
                 catch (GLib.Error e) {
@@ -365,6 +367,7 @@ public class GOF.Directory.Async : Object {
                     /* Try to connect for real.  This should time out after about 15 seconds if
                      * the host is not reachable */
                     var scl = new SocketClient ();
+                    debug ("Trying to connect to connectable");
                     var sc = yield scl.connect_async (connectable, cancellable);
                     success = (sc != null && sc.is_connected ());
                     debug ("Socketclient is %s", sc == null ? "null" : (sc.is_connected () ? "connected" : "not connected"));
