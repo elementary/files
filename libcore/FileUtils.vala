@@ -478,6 +478,44 @@ namespace PF.FileUtils {
                 return true;
         }
     }
+
+    public uint16 get_default_port_for_protocol (string protocol) {
+        var ptcl = protocol.down ();
+        switch (ptcl) {
+            case "sftp":
+                return 22;
+            case "ftp":
+                return 21;
+            case "afp" :
+                return 548;
+            case "dav" :
+                return 80;
+            case "davs" :
+                return 443;
+            default :
+                return 0;
+        }
+    }
+
+    public bool get_is_tls_for_protocol (string protocol) {
+        var ptcl = protocol.down ();
+        switch (ptcl) {
+            case "sftp":
+                return false;
+            case "ssh":
+                return true;
+            case "ftp":
+                return false;
+            case "afp" :
+                return false;
+            case "dav" :
+                return false;
+            case "davs" :
+                return true;
+            default :
+                return false;
+        }
+    }
 }
 
 namespace Marlin {

@@ -342,33 +342,14 @@ public class GOF.Directory.Async : Object {
 
         if (network_available) {
             debug ("Network is available");
-            SocketConnectable? connectable = null;
-            try {
-                connectable = NetworkAddress.parse_uri (file.uri, 21);
-                debug ("Got connectable from file uri");
-            } catch (GLib.Error e) {
-                last_error_message = e.message;
-                warning ("Failed to parse uri %s - %s", file.uri, e.message);
-                return false;
-            }
-
-            if (((NetworkAddress)(connectable)).get_hostname () != "" && scheme != "smb") {
+            if (scheme != "smb") {
                 try {
-                    debug ("Trying to reach connectable");
-                    success = net_mon.can_reach (connectable, cancellable);
-                }
-                catch (GLib.Error e) {
-                    last_error_message = e.message;
-                    warning ("Error: cannot reach connectable %s - %s", file.uri, e.message);
-                    return false;
-                }
-
-                try {
-                    /* Try to connect for real.  This should time out after about 15 seconds if
-                     * the host is not reachable */
+                    /* Try to connect for real.  */
                     var scl = new SocketClient ();
+                    scl.set_timeout (10);
+                    scl.set_tls (PF.FileUtils.get_is_tls_for_protocol (scheme));
                     debug ("Trying to connect to connectable");
-                    var sc = yield scl.connect_async (connectable, cancellable);
+                    var sc = yield scl.connect_to_uri_async (file.uri, PF.FileUtils.get_default_port_for_protocol (scheme), cancellable);
                     success = (sc != null && sc.is_connected ());
                     debug ("Socketclient is %s", sc == null ? "null" : (sc.is_connected () ? "connected" : "not connected"));
                 } catch (GLib.Error e) {
