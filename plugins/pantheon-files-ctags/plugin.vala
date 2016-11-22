@@ -53,11 +53,20 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         "file:///media"
     };
 
+    private const string ignore_schemes [5] = {
+        "ftp",
+        "sftp",
+        "afp",
+        "dav",
+        "davs"
+    };
+
     private bool f_is_user_dir (string uri) {
         return_val_if_fail (uri != null, false);
         foreach (var duri in users_dirs) {
-            if (Posix.strncmp (uri, duri, duri.length) == 0)
+            if (Posix.strncmp (uri, duri, duri.length) == 0) {
                 return true;
+            }
         }
 
         return false;
@@ -68,6 +77,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
         if (uri == "file:///tmp") {
             return true;
+        }
+
+        var uri_scheme = Uri.parse_scheme (uri);
+        foreach (var scheme in ignore_schemes) {
+            if (scheme == uri_scheme) {
+                return true;
+            }
         }
 
         return false;

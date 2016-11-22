@@ -27,6 +27,7 @@ public class GOF.Directory.Async : Object {
 
     private uint load_timeout_id = 0;
     private uint mount_timeout_id = 0;
+    private const int CONNECT_SOCKET_TIMEOUT_SEC = 30;
     private const int ENUMERATE_TIMEOUT_SEC = 30;
     private const int QUERY_INFO_TIMEOUT_SEC = 20;
     private const int MOUNT_TIMEOUT_SEC = 60;
@@ -46,7 +47,8 @@ public class GOF.Directory.Async : Object {
     public enum State {
         NOT_LOADED,
         LOADING,
-        LOADED
+        LOADED,
+        TIMED_OUT
     }
     public State state {get; private set;}
 
@@ -171,7 +173,12 @@ public class GOF.Directory.Async : Object {
      */
     private async void prepare_directory (GOFFileLoadedFunc? file_loaded_func) {
         debug ("Preparing directory for loading");
+        /* Force info to be refreshed - the GOF.File may have been created already by another part of the program
+         * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
+         */
+        file.info = null;
         bool success = yield get_file_info ();
+
         if (success) {
             if (!is_no_info && !file.is_folder () && !file.is_root_network_folder ()) {
                 warning ("Trying to load a non-folder - finding parent");
@@ -190,16 +197,16 @@ public class GOF.Directory.Async : Object {
             warning ("Failed to get file info for file %s", file.uri);
         }
 
+        if (success) {
+            file.update ();
+        }
+            debug ("enclosing mount is null 4? %s", file.mount == null ? "true" : "false");
         yield make_ready (is_no_info || success, file_loaded_func); /* Only place that should call this function */
     }
 
     /*** Returns false if should be able to get info but were unable to ***/
     private async bool get_file_info () {
         debug ("get_file_info");
-        /* Force info to be refreshed - the GOF.File may have been created already by another part of the program
-         * that did not ensure the correct info Aync purposes, and retrieved from cache (bug 1511307).
-         */
-        file.info = null;
 
         if (is_network && !yield check_network ()) {
             warning ("No network found");
@@ -221,7 +228,7 @@ public class GOF.Directory.Async : Object {
                 debug ("successful mount %s", file.uri);
                 return (yield try_query_info ()) || is_no_info;
             } else {
-                debug ("failed mount %s", file.uri);
+                warning ("failed mount %s", file.uri);
                 return false;
             }
         } else {
@@ -254,8 +261,9 @@ public class GOF.Directory.Async : Object {
         }
 
         if (success) {
-            debug ("got file info");
+            debug ("got file info - updating");
             file.update ();
+            debug ("enclosing mount is %s", file.mount == null ? "null" : file.mount.get_name ());
             return true;
         } else {
             warning ("Failed to get file info for %s", file.uri);
@@ -276,10 +284,12 @@ public class GOF.Directory.Async : Object {
 
             mount_timeout_id = Timeout.add_seconds (MOUNT_TIMEOUT_SEC, () => {
                 if (mounting && !asking_password) {
-                    cancellable.cancel ();
                     mount_timeout_id = 0;
                     warning ("Cancelled after timeout in mount mountable %s", file.uri);
                     last_error_message = ("Timed out when trying to mount %s").printf (file.uri);
+                    state = State.TIMED_OUT;
+                    cancellable.cancel ();
+
                     return false;
                 } else {
                     return true;
@@ -298,7 +308,7 @@ public class GOF.Directory.Async : Object {
 
             debug ("mounting ....");
             yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
-            debug ("getting enclosing mount");
+
             res = true;
         } catch (Error e) {
             last_error_message = e.message;
@@ -321,6 +331,8 @@ public class GOF.Directory.Async : Object {
             } else {
                 file.is_connected = false;
                 file.is_mounted = false;
+                debug ("Setting mount null 1");
+                file.mount = null;
                 warning ("Mount_mountable failed: %s", e.message);
                 if (e is IOError.PERMISSION_DENIED || e is IOError.FAILED_HANDLED) {
                     permission_denied = true;
@@ -330,6 +342,7 @@ public class GOF.Directory.Async : Object {
             cancel_timeout (ref mount_timeout_id);
         }
 
+            debug ("enclosing mount is null 2? %s", file.mount == null ? "true" : "false");
         return res;
     }
 
@@ -341,23 +354,28 @@ public class GOF.Directory.Async : Object {
         bool success = false;
 
         if (network_available) {
-            debug ("Network is available");
-            if (scheme != "smb") {
-                try {
-                    /* Try to connect for real.  */
-                    var scl = new SocketClient ();
-                    scl.set_timeout (10);
-                    scl.set_tls (PF.FileUtils.get_is_tls_for_protocol (scheme));
-                    debug ("Trying to connect to connectable");
-                    var sc = yield scl.connect_to_uri_async (file.uri, PF.FileUtils.get_default_port_for_protocol (scheme), cancellable);
-                    success = (sc != null && sc.is_connected ());
-                    debug ("Socketclient is %s", sc == null ? "null" : (sc.is_connected () ? "connected" : "not connected"));
-                } catch (GLib.Error e) {
-                    last_error_message = e.message;
-                    warning ("Error: could not connect to connectable %s - %s", file.uri, e.message);
-                    return false;
+            if (!file.is_mounted) {
+                debug ("Network is available");
+                if (scheme != "smb") {
+                    try {
+                        /* Try to connect for real.  */
+                        var scl = new SocketClient ();
+                        scl.set_timeout (CONNECT_SOCKET_TIMEOUT_SEC);
+                        scl.set_tls (PF.FileUtils.get_is_tls_for_protocol (scheme));
+                        debug ("Trying to connect to connectable");
+                        var sc = yield scl.connect_to_uri_async (file.uri, PF.FileUtils.get_default_port_for_protocol (scheme), cancellable);
+                        success = (sc != null && sc.is_connected ());
+                        debug ("Socketclient is %s", sc == null ? "null" : (sc.is_connected () ? "connected" : "not connected"));
+                    } catch (GLib.Error e) {
+                        last_error_message = e.message;
+                        warning ("Error: could not connect to connectable %s - %s", file.uri, e.message);
+                        return false;
+                    }
+                } else {
+                    success = true;
                 }
             } else {
+                debug ("File is already mounted - not reconnecting");
                 success = true;
             }
         } else {
@@ -378,13 +396,25 @@ public class GOF.Directory.Async : Object {
                                                                              file.is_connected.to_string (),
                                                                              file.is_mounted.to_string (),
                                                                              file.exists.to_string ());
-            state = State.NOT_LOADED; /* ensure state is correct */
-            done_loading ();
+            after_loading (file_loaded_func);
             return;
         }
 
         if (!is_ready) {
             is_ready = true;
+            if (file.mount != null) {
+                unowned GLib.List? trash_dirs = null;
+                trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
+                has_trash_dirs = (trash_dirs != null);
+            } else {
+                if (is_network) {
+                    after_loading (file_loaded_func);
+                    return;
+                } else {
+                    has_trash_dirs = is_local;
+                }
+            }
+
             yield list_directory_async (file_loaded_func);
 
             if (can_load) {
@@ -404,15 +434,6 @@ public class GOF.Directory.Async : Object {
                 }
 
                 set_confirm_trash ();
-                file.mount = GOF.File.get_mount_at (location);
-                if (file.mount != null) {
-                    file.is_mounted = true;
-                    unowned GLib.List? trash_dirs = null;
-                    trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
-                    has_trash_dirs = (trash_dirs != null);
-                } else {
-                    has_trash_dirs = is_local;
-                }
 
                 if (is_trash) {
                     connect_volume_monitor_signals ();
@@ -479,7 +500,18 @@ public class GOF.Directory.Async : Object {
     }
 
     public void reload () {
+        debug ("Reload - state is %s", state.to_string ());
+        if (state == State.TIMED_OUT && file.is_mounted) {
+            debug ("Unmounting because of timeout");
+            cancellable.cancel ();
+            cancellable = new Cancellable ();
+            file.location.unmount_mountable (GLib.MountUnmountFlags.FORCE, cancellable);
+            file.mount = null;
+            file.is_mounted = false;
+        }
+
         clear_directory_info ();
+        state = State.NOT_LOADED;
         init ();
     }
 
@@ -493,7 +525,6 @@ public class GOF.Directory.Async : Object {
         monitor = null;
         sorted_dirs = null;
         files_count = 0;
-        state = State.NOT_LOADED;
         is_ready = false;
         can_load = false;
     }
@@ -550,8 +581,11 @@ public class GOF.Directory.Async : Object {
              * impose a time limit */
             load_timeout_id = Timeout.add_seconds (ENUMERATE_TIMEOUT_SEC, () => {
                 debug ("Load timeout expired");
-                cancellable.cancel ();
+                state = State.TIMED_OUT;
+                last_error_message = _("No file information was received from the server");
                 load_timeout_id = 0;
+                cancellable.cancel ();
+
                 return false;
             });
 
@@ -589,17 +623,20 @@ public class GOF.Directory.Async : Object {
                 }
             }
             /* Load as many files as we can get info for */
-            state = State.LOADED;
+            if (!(cancellable.is_cancelled ())) {
+                state = State.LOADED;
+            }
         } catch (Error err) {
-            last_error_message = err.message;
-            warning ("Listing directory error: %s %s", err.message, file.uri);
+            warning ("Listing directory error: %s, %s %s", last_error_message, err.message, file.uri);
             can_load = false;
             if (err is IOError.NOT_FOUND || err is IOError.NOT_DIRECTORY) {
                 file.exists = false;
-            } else if (err is IOError.PERMISSION_DENIED)
+            } else if (err is IOError.PERMISSION_DENIED) {
                 permission_denied = true;
-            else if (err is IOError.NOT_MOUNTED)
+            } else if (err is IOError.NOT_MOUNTED) {
+                file.mount = null;
                 file.is_mounted = false;
+            }
         } finally {
             cancel_timeout (ref load_timeout_id);
             after_loading (file_loaded_func);
@@ -621,13 +658,17 @@ public class GOF.Directory.Async : Object {
     private void after_loading (GOFFileLoadedFunc? file_loaded_func) {
         /* If loading failed reset */
         debug ("after loading state is %s", state.to_string ());
-        if (state == State.LOADING) {
-            state = State.NOT_LOADED; /* else clear directory info will fail */
-            clear_directory_info ();
+        if (state == State.LOADING || state == State.TIMED_OUT) {
+            state = State.TIMED_OUT; /* else clear directory info will fail */
             can_load = false;
         }
+
         if (file_loaded_func == null) {
             done_loading ();
+        }
+
+        if (state != State.LOADED) {
+            clear_directory_info ();
         }
     }
 
@@ -1059,6 +1100,10 @@ public class GOF.Directory.Async : Object {
 
     public bool is_loaded () {
         return this.state == State.LOADED;
+    }
+
+    public bool has_timed_out () {
+        return this.state == State.TIMED_OUT;
     }
 
     public bool is_empty () {

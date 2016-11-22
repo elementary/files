@@ -374,6 +374,9 @@ namespace Marlin.View {
                 } else if (!slot.directory.file.is_connected) {
                     content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
                                                        _("Could not connect to the server for this folder.") + "\n\n" + slot.directory.last_error_message);
+                } else if (slot.directory.state == GOF.Directory.Async.State.TIMED_OUT) {
+                    content = new Marlin.View.Welcome (_("Unable to Display Folder Contents"),
+                                                       _("The operation timed out.") + "\n\n" + slot.directory.last_error_message);
                 } else {
                     content = new Marlin.View.Welcome (_("Unable to Show Folder"),
                                                        _("The server for this folder could not be located.") + "\n\n" + slot.directory.last_error_message);
