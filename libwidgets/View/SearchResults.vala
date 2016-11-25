@@ -18,7 +18,7 @@
 
 namespace Marlin.View.Chrome
 {
-    protected class SearchResults : Gtk.Window, Searchable
+    public class SearchResults : Gtk.Window, Searchable
     {
         class Match : Object
         {
@@ -98,7 +98,7 @@ namespace Marlin.View.Chrome
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
 
-        protected SearchResults (Gtk.Widget parent_widget)
+        public SearchResults (Gtk.Widget parent_widget)
         {
             Object (resizable: false,
                     type_hint: Gdk.WindowTypeHint.COMBO,
