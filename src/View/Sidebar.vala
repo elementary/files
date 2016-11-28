@@ -1279,7 +1279,7 @@ namespace Marlin.Places {
                 } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                     window.add_tab (location, Marlin.ViewMode.CURRENT);
                 } else {
-                    window.file_path_change_request (location);
+                    window.uri_path_change_request (uri);
                 }
             } else if (f != null) {
                 f (this);
@@ -1319,7 +1319,7 @@ namespace Marlin.Places {
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                             window.add_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
-                            window.file_path_change_request (location);
+                            window.uri_path_change_request (location.get_uri ());
                         }
                     }
                 }
