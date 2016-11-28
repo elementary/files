@@ -1079,9 +1079,11 @@ namespace Marlin.View {
         }
 
         public void uri_path_change_request (string p, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+            /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
             string path = PF.FileUtils.sanitize_path (p, current_tab.location.get_path ());
             if (path.length > 0) {
-                file_path_change_request (File.new_for_commandline_arg (path), flag);
+                /* Have to escape path and use File.new_for_uri () to correctly handle paths with certain characters such as "#" */
+                file_path_change_request (File.new_for_uri (PF.FileUtils.escape_uri (path)), flag);
             } else {
                 warning ("Cannot browse %s", p);
             }
