@@ -938,24 +938,16 @@ namespace Marlin.View {
                 if (mode < 0 || mode >= Marlin.ViewMode.INVALID || root_uri == null || root_uri == "" || tip_uri == null)
                     continue;
 
-                string? unescaped_root_uri = PF.FileUtils.sanitize_path (root_uri);
-
-                if (unescaped_root_uri == null) {
-                    warning ("Invalid root location for tab");
-                    continue;
-                }
-
-                GLib.File root_location = GLib.File.new_for_commandline_arg (unescaped_root_uri);
-
                 /* We do not check valid location here because it may cause the interface to hang
                  * before the window appears (e.g. if trying to connect to a server that has become unavailable)
                  * Leave it to GOF.Directory.Async to deal with invalid locations asynchronously. 
                  */
 
-                add_tab (root_location, mode);
+                add_tab_by_uri (root_uri, mode);
 
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri)
-                    expand_miller_view (tip_uri, root_location);
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
+                    expand_miller_view (tip_uri, root_uri);
+                }
 
                 tabs_added++;
                 mode = Marlin.ViewMode.INVALID;
@@ -995,7 +987,7 @@ namespace Marlin.View {
             return tabs_added;
         }
 
-        private void expand_miller_view (string tip_uri, GLib.File root_location) {
+        private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
             /* It might be more elegant for Miller.vala to handle this */
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
@@ -1008,6 +1000,7 @@ namespace Marlin.View {
             }
 
             var tip_location = PF.FileUtils.get_file_for_path (unescaped_tip_uri);
+            var root_location = PF.FileUtils.get_file_for_path (unescaped_root_uri);
             var relative_path = root_location.get_relative_path (tip_location);
             GLib.File gfile;
 
@@ -1017,7 +1010,7 @@ namespace Marlin.View {
 
                 foreach (string dir in dirs) {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
-                    gfile = PF.FileUtils.get_file_for_path (uri);
+                    gfile = get_file_from_uri (uri);
 
                     mwcols.add_location (gfile, mwcols.current_slot, false); /* Do not scroll at this stage */
                 }
@@ -1100,7 +1093,12 @@ namespace Marlin.View {
         /** Use this function to standardise how locations are generated from uris **/
         private File? get_file_from_uri (string uri) {
             /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
-            string path = PF.FileUtils.sanitize_path (uri, current_tab.location.get_path ());
+            string? current_uri = null;
+            if (current_tab != null && current_tab.location != null) {
+                current_uri = current_tab.location.get_uri ();
+            }
+
+            string path = PF.FileUtils.sanitize_path (uri, current_uri);
             if (path.length > 0) {
                 return File.new_for_uri (PF.FileUtils.escape_uri (path));
             } else {
