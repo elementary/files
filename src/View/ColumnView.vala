@@ -83,7 +83,6 @@ namespace FM {
             model.set_property ("has-child", false);
             base.create_view ();
             tree.show_expanders = false;
-
             return tree as Gtk.Widget;
         }
 
@@ -126,8 +125,9 @@ namespace FM {
 
             selected_folder = null;
 
-            if (!is_folder || !Preferences.settings.get_boolean ("single-click"))
+            if (!is_folder || !Preferences.settings.get_boolean ("single-click")) {
                 return base.handle_primary_button_click (event, path);
+            }
 
             selected_folder = file;
             bool result = true;
@@ -155,6 +155,14 @@ namespace FM {
                 result = true;
             }
             return result;
+        }
+
+        protected override bool handle_secondary_button_click (Gdk.EventButton event) {
+            /* In Column Views show background menu on all white space */
+            if (click_zone == ClickZone.BLANK_PATH) {
+                unselect_all ();
+            }
+            return base.handle_secondary_button_click (event);
         }
 
         protected override bool handle_default_button_click (Gdk.EventButton event) {

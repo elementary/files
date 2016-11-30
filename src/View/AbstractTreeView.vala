@@ -203,14 +203,18 @@ namespace FM {
             x = (int)event.x;
             y = (int)event.y;
 
+            /* Determine whether there whitespace at this point */
+            var is_blank = tree.is_blank_at_pos ((int)event.x, (int)event.y, null, null, null, null);
+
             tree.get_path_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
             /* Do not allow rubberbanding to start except on a row in tree view */
-            zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.INVALID);
+            zone = (p != null && is_blank ? ClickZone.BLANK_PATH : ClickZone.INVALID);
+
 
             if (p != null && c != null && c == name_column) {
-                int? x_offset = null, width = null;
+                int x_offset, width;
                 Gdk.Rectangle area;
 
                 tree.get_cell_area (p, c, out area);
@@ -226,21 +230,8 @@ namespace FM {
                         zone = ClickZone.HELPER;
                     } else if (on_icon) {
                         zone = ClickZone.ICON;
-                    } else {
-                        c.cell_get_position (name_renderer, out x_offset, out width);
-                        int expander_width = ICON_XPAD;
-                        if (tree.show_expanders) {
-                            var expander_val = GLib.Value (typeof (int));
-                            tree.style_get_property ("expander-size", ref expander_val);
-                            int expander_size = expander_val.get_int () + tree.get_level_indentation () + 3;
-                            expander_width += expander_size * (depth) + zoom_level;
-                        }
-                        orig_x = expander_width + x_offset;
-                        if (right_margin_unselects_all && cx >= orig_x + width - 6)
-                            zone = ClickZone.INVALID; /* Cause unselect all to occur on right margin */
-                        else {
-                            zone = ClickZone.NAME;
-                        }
+                    } else if (!is_blank) {
+                        zone = ClickZone.NAME;
                     }
                 } else {
                     zone = ClickZone.EXPANDER;
