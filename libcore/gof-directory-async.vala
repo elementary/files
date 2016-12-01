@@ -200,7 +200,7 @@ public class GOF.Directory.Async : Object {
         if (success) {
             file.update ();
         }
-            debug ("enclosing mount is null 4? %s", file.mount == null ? "true" : "false");
+        debug ("success %s; enclosing mount %s", success.to_string (), file.mount != null ? file.mount.get_name () : "null");
         yield make_ready (is_no_info || success, file_loaded_func); /* Only place that should call this function */
     }
 
@@ -226,6 +226,7 @@ public class GOF.Directory.Async : Object {
              * e.g. by unplugging the network cable.  So the following function can block for
              * a long time; we therefore use a timeout */
                 debug ("successful mount %s", file.uri);
+                file.is_mounted = true;
                 return (yield try_query_info ()) || is_no_info;
             } else {
                 warning ("failed mount %s", file.uri);
@@ -263,7 +264,7 @@ public class GOF.Directory.Async : Object {
         if (success) {
             debug ("got file info - updating");
             file.update ();
-            debug ("enclosing mount is %s", file.mount == null ? "null" : file.mount.get_name ());
+            debug ("success %s; enclosing mount %s", success.to_string (), file.mount != null ? file.mount.get_name () : "null");
             return true;
         } else {
             warning ("Failed to get file info for %s", file.uri);
@@ -307,9 +308,7 @@ public class GOF.Directory.Async : Object {
             });
 
             debug ("mounting ....");
-            yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
-
-            res = true;
+            res =yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
         } catch (Error e) {
             last_error_message = e.message;
             if (e is IOError.ALREADY_MOUNTED) {
@@ -342,7 +341,7 @@ public class GOF.Directory.Async : Object {
             cancel_timeout (ref mount_timeout_id);
         }
 
-            debug ("enclosing mount is null 2? %s", file.mount == null ? "true" : "false");
+        debug ("success %s; enclosing mount %s", res.to_string (), file.mount != null ? file.mount.get_name () : "null");
         return res;
     }
 
@@ -403,16 +402,12 @@ public class GOF.Directory.Async : Object {
         if (!is_ready) {
             is_ready = true;
             if (file.mount != null) {
+                debug ("Directory has mount point");
                 unowned GLib.List? trash_dirs = null;
                 trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
                 has_trash_dirs = (trash_dirs != null);
             } else {
-                if (is_network) {
-                    after_loading (file_loaded_func);
-                    return;
-                } else {
-                    has_trash_dirs = is_local;
-                }
+                has_trash_dirs = is_local;
             }
 
             yield list_directory_async (file_loaded_func);
@@ -575,18 +570,23 @@ public class GOF.Directory.Async : Object {
         files_count = 0;
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
+        bool server_responding = false;
 
         try {
             /* This may hang for a long time if the connection was closed but is still mounted so we
              * impose a time limit */
             load_timeout_id = Timeout.add_seconds (ENUMERATE_TIMEOUT_SEC, () => {
-                debug ("Load timeout expired");
-                state = State.TIMED_OUT;
-                last_error_message = _("No file information was received from the server");
-                load_timeout_id = 0;
-                cancellable.cancel ();
+                if (server_responding) {
+                    return true;
+                } else {
+                    debug ("Load timeout expired");
+                    state = State.TIMED_OUT;
+                    last_error_message = _("Server did not respond within time limit");
+                    load_timeout_id = 0;
+                    cancellable.cancel ();
 
-                return false;
+                    return false;
+                }
             });
 
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
@@ -596,7 +596,10 @@ public class GOF.Directory.Async : Object {
             GLib.File loc;
             while (!cancellable.is_cancelled ()) {
                 try {
+                    server_responding = false;
                     var files = yield e.next_files_async (200, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
+                    server_responding = true;
+
                     if (files == null) {
                         break;
                     } else {
