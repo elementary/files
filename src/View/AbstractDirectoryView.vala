@@ -1823,8 +1823,9 @@ namespace FM {
                 /* add any additional entries from plugins */
                 var menu = new Gtk.Menu.from_model (model);
 
-                if (!in_trash)
-                    plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+                if (!in_trash) {
+                    plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
+                }
 
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
