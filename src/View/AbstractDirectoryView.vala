@@ -2893,20 +2893,11 @@ namespace FM {
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
                 switch (click_zone) {
-                    case ClickZone.NAME:
-                        if (single_click_rename && is_writable && file != null)
-                            win.set_cursor (editable_cursor);
-                        else
-                            win.set_cursor (selectable_cursor);
-
-                        break;
-
-                    case ClickZone.BLANK_NO_PATH:
-                        win.set_cursor (selectable_cursor);
-                        break;
-
                     case ClickZone.ICON:
-                        win.set_cursor (activatable_cursor);
+                    case ClickZone.NAME:
+                        if (single_click_mode) {
+                            win.set_cursor (activatable_cursor);
+                        }
                         break;
 
                     default:
