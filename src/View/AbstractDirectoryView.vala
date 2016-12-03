@@ -1823,8 +1823,9 @@ namespace FM {
                 /* add any additional entries from plugins */
                 var menu = new Gtk.Menu.from_model (model);
 
-                if (!in_trash)
-                    plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+                if (!in_trash) {
+                    plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
+                }
 
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
@@ -2893,20 +2894,11 @@ namespace FM {
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
                 switch (click_zone) {
-                    case ClickZone.NAME:
-                        if (single_click_rename && is_writable && file != null)
-                            win.set_cursor (editable_cursor);
-                        else
-                            win.set_cursor (selectable_cursor);
-
-                        break;
-
-                    case ClickZone.BLANK_NO_PATH:
-                        win.set_cursor (selectable_cursor);
-                        break;
-
                     case ClickZone.ICON:
-                        win.set_cursor (activatable_cursor);
+                    case ClickZone.NAME:
+                        if (single_click_mode) {
+                            win.set_cursor (activatable_cursor);
+                        }
                         break;
 
                     default:
