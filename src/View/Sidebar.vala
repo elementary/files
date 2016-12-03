@@ -675,6 +675,7 @@ namespace Marlin.Places {
                 add_device_tooltip.begin (last_iter, root, update_cancellable);
             }
 
+            if (!is_admin) {
             /* ADD NETWORK CATEGORY */
 
             iter = add_category (Marlin.PlaceType.NETWORK_CATEGORY,
@@ -682,45 +683,47 @@ namespace Marlin.Places {
                                  _("Your network places"));
 
             network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
+                /* Add network mounts */
+                network_mounts.reverse ();
+                foreach (Mount mount in network_mounts) {
+                    root = mount.get_default_location ();
+                    /* get_smb_share_from_uri will return the uri unaltered if does not have
+                     * the smb scheme so we need not test.  This is required because the mount
+                     * does not return the true root location of the share but the location used
+                     * when creating the mount.
+                     */
+                    string uri = PF.FileUtils.get_smb_share_from_uri (root.get_uri ());
 
-            /* Add network mounts */
-            network_mounts.reverse ();
-            foreach (Mount mount in network_mounts) {
-                root = mount.get_default_location ();
-                /* get_smb_share_from_uri will return the uri unaltered if does not have
-                 * the smb scheme so we need not test.  This is required because the mount
-                 * does not return the true root location of the share but the location used
-                 * when creating the mount.
-                 */
-                string uri = PF.FileUtils.get_smb_share_from_uri (root.get_uri ());
+                    last_iter = add_place (Marlin.PlaceType.BUILT_IN,
+                                           iter,
+                                           mount.get_name (),
+                                           mount.get_icon (),
+                                           uri,
+                                           null,
+                                           null,
+                                           mount,
+                                           0,
+                                           null);
 
-                last_iter = add_place (Marlin.PlaceType.BUILT_IN,
-                                       iter,
-                                       mount.get_name (),
-                                       mount.get_icon (),
-                                       uri,
-                                       null,
-                                       null,
-                                       mount,
-                                       0,
-                                       null);
+                    add_device_tooltip.begin (last_iter, root, update_cancellable);
+                }
 
-                add_device_tooltip.begin (last_iter, root, update_cancellable);
+                /* Add Entire Network BUILTIN */
+                add_place (Marlin.PlaceType.BUILT_IN,
+                           iter,
+                           _("Entire Network"),
+                           new GLib.ThemedIcon (Marlin.ICON_NETWORK),
+                           "network:///",
+                           null,
+                           null,
+                           null,
+                           0,
+                           _("Browse the contents of the network"));
+
+                plugins.update_sidebar ((Gtk.Widget)this);
             }
 
-            /* Add Entire Network BUILTIN */
-            add_place (Marlin.PlaceType.BUILT_IN,
-                       iter,
-                       _("Entire Network"),
-                       new GLib.ThemedIcon (Marlin.ICON_NETWORK),
-                       "network:///",
-                       null,
-                       null,
-                       null,
-                       0,
-                       _("Browse the contents of the network"));
 
-            plugins.update_sidebar ((Gtk.Widget)this);
 
             expander_init_pref_state (tree_view);
 
