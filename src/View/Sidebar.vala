@@ -119,6 +119,9 @@ namespace Marlin.Places {
             }
         }
 
+        /* For cancelling async tooltip updates when update_places re-entered */ 
+        Cancellable? update_cancellable = null;
+
         public signal bool request_focus ();
         public signal void sync_needed ();
 
@@ -464,6 +467,12 @@ namespace Marlin.Places {
             string mount_uri;
             GLib.File root;
 
+            if (update_cancellable != null) {
+                update_cancellable.cancel ();
+            }
+
+            update_cancellable = new Cancellable ();
+
             this.last_selected_uri = null;
             this.n_builtins_before = 0;
 
@@ -560,7 +569,7 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-            add_device_tooltip (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI));
+            add_device_tooltip.begin (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI), update_cancellable);
 
             /* Add all connected drives */
             GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
@@ -613,7 +622,7 @@ namespace Marlin.Places {
                                            0,
                                            null);
 
-                    add_device_tooltip (last_iter, root);
+                    add_device_tooltip.begin (last_iter, root, update_cancellable);
                 } else {
                 /* see comment above in why we add an icon for an unmounted mountable volume */
                     var name = volume.get_name ();
@@ -663,7 +672,7 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-                add_device_tooltip (last_iter, root);
+                add_device_tooltip.begin (last_iter, root, update_cancellable);
             }
 
             /* ADD NETWORK CATEGORY */
@@ -696,7 +705,7 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-                add_device_tooltip (last_iter, root);
+                add_device_tooltip.begin (last_iter, root, update_cancellable);
             }
 
             /* Add Entire Network BUILTIN */
@@ -760,7 +769,7 @@ namespace Marlin.Places {
                                            0,
                                            null);
 
-                    add_device_tooltip (last_iter, root);
+                    add_device_tooltip.begin (last_iter, root, update_cancellable);
                 } else {
                     /* Do show the unmounted volumes in the sidebar;
                     * this is so the user can mount it (in case automounting
@@ -785,20 +794,39 @@ namespace Marlin.Places {
             }
         }
 
-        private void get_filesystem_space_and_type (GLib.File root, out uint64 fs_capacity,
-                                                    out uint64 fs_free, out string type) {
-            GLib.FileInfo info;
-            try {
-                info = root.query_filesystem_info ("filesystem::*", null);
-            }
-            catch (GLib.Error error) {
-                warning ("Error querying root filesystem info: %s", error.message);
-                info = null;
-            }
+        private async bool get_filesystem_space_and_type (GLib.File root, out uint64 fs_capacity,
+                                                          out uint64 fs_free, out string type,
+                                                          Cancellable update_cancellable) {
             fs_capacity = 0;
             fs_free = 0;
-            type = _("Unknown type");
-            if (info != null) {
+            type = "";
+
+            string scheme = Uri.parse_scheme (root.get_uri ());
+            if ("sftp davs".contains (scheme)) {
+                return false; /* Cannot get info from these protocols */
+            }
+            if ("smb afp".contains (scheme)) {
+                /* Check network is functional */
+                var net_mon = GLib.NetworkMonitor.get_default ();
+                if (!net_mon.get_network_available ()) {
+                    return false;
+                }
+            }
+
+            GLib.FileInfo info;
+            try {
+                info = yield root.query_filesystem_info_async ("filesystem::*", 0, update_cancellable);
+            }
+            catch (GLib.Error error) {
+                if (!(error is IOError.CANCELLED)) {
+                    warning ("Error querying %s filesystem info: %s", root.get_uri (), error.message);
+                }
+                info = null;
+            }
+
+            if (update_cancellable.is_cancelled () || info == null) {
+                return false;
+            } else {
                 if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE)) {
                     fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
                 }
@@ -808,6 +836,7 @@ namespace Marlin.Places {
                 if (info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
                     type = info.get_attribute_as_string (FileAttribute.FILESYSTEM_TYPE);
                 }
+                return true;
             }
         }
 
@@ -827,15 +856,25 @@ namespace Marlin.Places {
             return sb.str.replace ("&", "&amp;").replace (">", "&gt;").replace ("<", "&lt;");
         }
 
-        private void add_device_tooltip (Gtk.TreeIter iter, GLib.File root) {
+        private async void add_device_tooltip (Gtk.TreeIter iter, GLib.File root, Cancellable update_cancellable) {
+
             uint64 fs_capacity, fs_free;
             string fs_type;
-            get_filesystem_space_and_type (root, out fs_capacity, out fs_free, out fs_type);
-            var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
-            store.@set (iter,
-                        Column.FREE_SPACE, fs_free,
-                        Column.DISK_SIZE, fs_capacity,
-                        Column.TOOLTIP, tooltip);
+            var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
+
+            if (yield get_filesystem_space_and_type (root, out fs_capacity, out fs_free, out fs_type, update_cancellable)) {
+                var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
+                if (rowref != null && rowref.valid ()) {
+                    Gtk.TreeIter? itr = null;
+                    store.get_iter (out itr, rowref.get_path ());
+                    store.@set (itr,
+                                Column.FREE_SPACE, fs_free,
+                                Column.DISK_SIZE, fs_capacity,
+                                Column.TOOLTIP, tooltip);
+                } else {
+                    warning ("Attempt to add tooltip for %s failed - invalid rowref", root.get_uri ());
+                }
+            }
         }
 
 /* DRAG N DROP FUNCTIONS START */
@@ -843,21 +882,23 @@ namespace Marlin.Places {
         private bool drag_failed_callback (Gdk.DragContext context, Gtk.DragResult result) {
             int x, y;
             Gdk.Device device;
-#if HAVE_PLANK_0_11
-            Plank.PoofWindow poof_window;
-#else
-            Plank.Widgets.PoofWindow poof_window;
-#endif
 
             if (internal_drag_started && dragged_out_of_window) {
                 device = context.get_device ();
                 device.get_position (null, out x, out y);
+
+#if HAVE_UNITY
+
 #if HAVE_PLANK_0_11
+                Plank.PoofWindow poof_window;
                 poof_window = Plank.PoofWindow.get_default ();
 #else
+                Plank.Widgets.PoofWindow? poof_window = null;
                 poof_window = Plank.Widgets.PoofWindow.get_default ();
 #endif
                 poof_window.show_at (x, y);
+#endif
+
                 if (drag_row_ref != null) {
                     Gtk.TreeIter iter;
                     store.get_iter (out iter, drag_row_ref.get_path ());
@@ -1456,13 +1497,13 @@ namespace Marlin.Places {
 
             item = new Gtk.ImageMenuItem.with_mnemonic (_("_Unmount"));
             popupmenu_unmount_item = item;
-            item.activate.connect (eject_or_unmount_shortcut_cb);
+            item.activate.connect (unmount_shortcut_cb);
             item.show ();
             popupmenu.append (item);
 
             item = new Gtk.ImageMenuItem.with_mnemonic (_("_Eject"));
             popupmenu_eject_item = item;
-            item.activate.connect (eject_or_unmount_shortcut_cb);
+            item.activate.connect (eject_shortcut_cb);
             item.show ();
             popupmenu.append (item);
 
@@ -1570,15 +1611,24 @@ namespace Marlin.Places {
         }
 
         private void expander_update_pref_state (Marlin.PlaceType type, bool flag) {
+            /* Do not update settings if they have not changed.  Otherwise an infinite loop occurs
+             * when viewing the ~/.config/dconf/user folder.
+             */  
             switch (type) {
                 case Marlin.PlaceType.NETWORK_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
+                    }
                     break;
                 case Marlin.PlaceType.STORAGE_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-devices-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-devices-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-devices-expander", flag);
+                    }
                     break;
                 case Marlin.PlaceType.BOOKMARKS_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-personal-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-personal-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-personal-expander", flag);
+                    }
                     break;
             }
         }
@@ -1609,18 +1659,19 @@ namespace Marlin.Places {
                                              Gtk.TreeIter iter) {
 
             var crt = renderer as Gtk.CellRendererText;
+            string text;
             bool is_category, show_eject_button;
             uint64 disk_size = 0;
-            model.@get (iter, Column.IS_CATEGORY, out is_category,
+            model.@get (iter, Column.NAME, out text,
+                              Column.IS_CATEGORY, out is_category,
                               Column.DISK_SIZE, out disk_size,
                               Column.SHOW_EJECT, out show_eject_button, -1);
 
             if (is_category) {
-                crt.weight = 900;
-                crt.weight_set = true;
+                crt.markup = "<b>" + text + "</b>";
                 crt.ypad = CATEGORY_YPAD;
             } else {
-                crt.weight_set = false;
+                crt.markup = text;
                 crt.ypad = BOOKMARK_YPAD;
                 if (disk_size > 0) {
                     /* Make disk space graphic same length whether or not eject button displayed */
@@ -1784,29 +1835,39 @@ namespace Marlin.Places {
 
 /* MOUNT UNMOUNT AND EJECT FUNCTIONS */
 
-         private void do_unmount (Mount? mount, Gtk.TreeRowReference? row_ref = null) {
+         private void do_unmount (Mount? mount, Gtk.TreeRowReference? row_ref = null, bool can_eject = false) {
             /* Ignore signals generated by our own eject and unmount actins */
             disconnect_volume_monitor_signals ();
 
             if (mount == null) {
-                finish_eject_or_unmount (row_ref);
+                finish_eject_or_unmount (row_ref, false);
                 return;
             }
             /* Do not offer to empty trash every time - this can be done
              * from the context menu if needed */
             ejecting_or_unmounting = true;
+            var volume = mount.get_volume ();
+
             GLib.MountOperation mount_op = new Gtk.MountOperation (window as Gtk.Window);
             mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                 mount_op,
                                                 null,
                                                 (obj, res) => {
+                bool success = false;
                 try {
-                    mount.unmount_with_operation.end (res);
+                    success = mount.unmount_with_operation.end (res);
+                    if (success && can_eject) {
+                        /* Eject associated volume after unmount if appropriate.
+                         * Keep volume monitor disconnected */
+                        do_eject (null, volume, null, row_ref);
+                    } else {
+                        finish_eject_or_unmount (row_ref, success);
+                    }
                 }
                 catch (GLib.Error error) {
                     debug ("Error while unmounting");
+                    finish_eject_or_unmount (row_ref, false);
                 }
-                finish_eject_or_unmount (row_ref);
             });
          }
 
@@ -1864,79 +1925,83 @@ namespace Marlin.Places {
                                                   mount_op,
                                                   null,
                                                   (obj, res) => {
+                    bool success = false;
                     try {
-                        drive.eject_with_operation.end (res);
+                        success = drive.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
                         warning ("Error ejecting drive: %s", error.message);
                     }
-                    finish_eject_or_unmount (row_ref);
+                    finish_eject_or_unmount (row_ref, success);
                 });
                 return;
             }
 
-            if (volume != null){
+            if (volume != null) {
                 ejecting_or_unmounting = true;
                 volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                    mount_op,
                                                    null,
                                                    (obj, res) => {
+                    bool success = false;
                     try {
-                        volume.eject_with_operation.end (res);
+                        success = volume.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
                         warning ("Error ejecting volume: %s", error.message);
                     }
-                    finish_eject_or_unmount (row_ref);
+                    finish_eject_or_unmount (row_ref, success);
                 });
                 return;
             }
 
-            if (mount != null){
+            if (mount != null) {
                 ejecting_or_unmounting = true;
                 mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                   mount_op,
                                                   null,
                                                   (obj, res) => {
+                    bool success = false;
                     try {
-                        mount.eject_with_operation.end (res);
+                        success = mount.eject_with_operation.end (res);
                     }
                     catch (GLib.Error error) {
                         warning ("Error ejecting mount: %s", error.message);
                     }
-                    finish_eject_or_unmount (row_ref);
+                    finish_eject_or_unmount (row_ref, success);
                 });
                 return;
             }
-            finish_eject_or_unmount (row_ref);
+            finish_eject_or_unmount (row_ref, false);
         }
 
-        private void finish_eject_or_unmount (Gtk.TreeRowReference? row_ref) {
+        private void finish_eject_or_unmount (Gtk.TreeRowReference? row_ref, bool success) {
             ejecting_or_unmounting = false;
             if (row_ref != null && row_ref.valid ()) {
                 Gtk.TreeIter iter;
                 if (store.get_iter (out iter, row_ref.get_path ())) {
-                    store.@set (iter, Column.SHOW_SPINNER, false) ;
-                    store.@set (iter, Column.SHOW_EJECT, true) ;
+                    store.@set (iter, Column.SHOW_SPINNER, false);
+                    store.@set (iter, Column.SHOW_EJECT, !success); /* continue to show eject if did not succeed */
                 }
             }
             /* Delay reconnecting volume monitor - we do not need to respond to signals consequent on
              * our own actions that may still be in the pipeline */ 
-            Timeout.add (100, () => {
+            Timeout.add (300, () => {
                 connect_volume_monitor_signals ();
+                update_places ();
                 return false;
             });
-
-            update_places ();
         }
 
-        private bool eject_or_unmount_bookmark (Gtk.TreePath? path) {
-            if (path == null || ejecting_or_unmounting)
+        private bool eject_or_unmount_bookmark (Gtk.TreePath? path, bool allow_eject = true) {
+            if (path == null || ejecting_or_unmounting) {
                 return false;
+            }
 
             Gtk.TreeIter iter;
-            if (!store.get_iter (out iter, path))
+            if (!store.get_iter (out iter, path)) {
                 return false;
+            }
 
             Mount mount;
             Volume volume;
@@ -1949,14 +2014,16 @@ namespace Marlin.Places {
                         Column.SHOW_SPINNER, out spinner_active);
 
             /* Return if already ejecting */
-            if (spinner_active)
+            if (spinner_active) {
                 return true;
+            }
 
             bool can_unmount, can_eject;
             check_unmount_and_eject (mount, volume, drive, out can_unmount, out can_eject);
 
-            if (!(can_eject || can_unmount))
+            if (!(can_eject || can_unmount)) {
                 return false;
+            }
 
             var rowref = new Gtk.TreeRowReference (store, path);
             store.@set (iter, Column.SHOW_SPINNER, true);
@@ -1976,10 +2043,11 @@ namespace Marlin.Places {
                 return true;
             });
 
-            if (can_eject) {
+            if (can_unmount) {
+                do_unmount (mount, rowref, can_eject && allow_eject);
+                /* Drive changed callback will eject the drive if appropriate */
+            } else if (can_eject) {
                 do_eject (mount, volume, drive, rowref);
-            } else if (can_unmount) {
-                do_unmount (mount, rowref);
             }
             return true;
         }
@@ -2058,12 +2126,21 @@ namespace Marlin.Places {
             }
         }
 
-        private void eject_or_unmount_shortcut_cb (Gtk.MenuItem item) {
+        private void eject_or_unmount_shortcut_cb (bool allow_eject = true) {
             Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
                 return;
             else
-                eject_or_unmount_bookmark (store.get_path (iter));
+                eject_or_unmount_bookmark (store.get_path (iter), allow_eject);
+        }
+
+        private void unmount_shortcut_cb () {
+            /* If unmount rather than eject was chosen from menu, do not eject after unmount */
+            eject_or_unmount_shortcut_cb (false);
+        }
+
+        private void eject_shortcut_cb () {
+            eject_or_unmount_shortcut_cb (true);
         }
 
         private void empty_trash_cb (Gtk.MenuItem item) {
@@ -2136,7 +2213,9 @@ namespace Marlin.Places {
         }
 
         private void eject_drive_if_no_media (Drive drive) {
-            if (!drive.has_media () && drive.can_eject ()) {
+            /* Additional checks required because some devices give incorrect results e.g. some MP3 players
+             * resulting in them being ejected as soon as plugged in */ 
+            if (drive.is_media_removable () && drive.can_poll_for_media () && !drive.has_media () && drive.can_eject ()) {
                 do_eject (null, null, drive, null);
             }
         }
@@ -2168,15 +2247,16 @@ namespace Marlin.Places {
             show_unmount = false;
             show_eject = false;
 
-            if (drive != null)
-                show_eject = drive.can_eject ();
-
-            if (volume != null)
-                show_eject = volume.can_eject ();
-
             if (mount != null) {
-                show_eject = mount.can_eject ();
-                show_unmount = mount.can_unmount () && !show_eject;
+                show_unmount = mount.can_unmount ();
+            }
+
+            if (drive != null) {
+                show_eject = drive.can_eject ();
+            }
+
+            if (volume != null) {
+                show_eject = show_eject || volume.can_eject ();
             }
         }
 
@@ -2207,12 +2287,22 @@ namespace Marlin.Places {
                 show_start = drive.can_start ()|| drive.can_start_degraded ();
                 show_stop = drive.can_stop ();
 
-                if (show_stop)
+                /* Show_stop option is not currently used. Moreover, this can give an incorrect
+                 * indication (e.g. for NTFS partitions) */
+#if 0
+                if (show_stop) {
                     show_unmount = false;
+                }
+#endif
             }
 
-            if (volume != null && mount == null)
+            if (volume != null && mount == null) {
                 show_mount = volume.can_mount ();
+            }
+
+            if (show_eject && show_unmount) {
+                show_eject = false;
+            }
         }
 
         private void check_popup_sensitivity () {
@@ -2237,7 +2327,6 @@ namespace Marlin.Places {
                         Column.URI, out uri,
                         Column.BOOKMARK, out is_bookmark);
 
-            popupmenu_open_in_new_tab_item.show ();
             Eel.gtk_widget_set_shown (popupmenu_remove_item, is_bookmark);
             Eel.gtk_widget_set_shown (popupmenu_rename_item, is_bookmark);
             Eel.gtk_widget_set_shown (popupmenu_separator_item1, is_bookmark);

@@ -19,7 +19,7 @@ public const string TERMINAL_NAME = "pantheon-terminal";
 
 public static int main (string[] args) {
     /* Initiliaze gettext support */
-    Intl.setlocale (LocaleCategory.ALL, Intl.get_language_names ()[0]);
+    Intl.setlocale (LocaleCategory.ALL, "");
     Intl.textdomain (Config.GETTEXT_PACKAGE);
 
     Environment.set_application_name (APP_NAME);

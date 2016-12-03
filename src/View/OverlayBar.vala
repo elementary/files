@@ -102,6 +102,10 @@ namespace Marlin.View {
             if (!showbar)
                 return;
 
+            if (file == null) {
+                visible = false;
+            }
+
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
                 GLib.List<GOF.File> list = null;
                 if (file != null) {
@@ -264,13 +268,13 @@ namespace Marlin.View {
 
             if (deep_counter != null) {
                 if (deep_counter.dirs_count > 0) {
-                    /* TRANSLATORS: %u will be substituted by the number of sub folders */
+                    /// TRANSLATORS: %u will be substituted by the number of sub folders
                     str = ngettext (_("%u sub-folder, "), _("%u sub-folders, "), deep_counter.dirs_count);
                     status += str.printf (deep_counter.dirs_count);
                 }
 
                 if (deep_counter.files_count > 0 || deep_counter.file_not_read == 0) {
-                    /* TRANSLATORS: %u will be substituted by the number of readable files */
+                    /// TRANSLATORS: %u will be substituted by the number of readable files
                     str = ngettext (_("%u file, "), _("%u files, "), deep_counter.files_count);
                     status += str.printf (deep_counter.files_count);
                 }
@@ -280,14 +284,14 @@ namespace Marlin.View {
                     status += ")";
                 } else {
                     if (deep_counter.total_size > 0) {
-                        /* TRANSLATORS: %s will be substituted by the approximate disk space used by the folder */
+                        /// TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
                         status += _("%s approx.").printf (format_size (deep_counter.total_size));
                     } else {
-                        /* TRANSLATORS: 'size' refers to disk space */
+                        /// TRANSLATORS: 'size' refers to disk space
                         status += _("unknown size");
                     }
                     status += ") ";
-                    /* TRANSLATORS: %u will be substituted by the number of unreadable files */
+                    /// TRANSLATORS: %u will be substituted by the number of unreadable files
                     str = ngettext (_("%u file not readable"), _("%u files not readable"), deep_counter.file_not_read);
                     status += str.printf (deep_counter.file_not_read);
                 }

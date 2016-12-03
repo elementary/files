@@ -65,12 +65,17 @@ namespace Marlin.View {
 
         public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
-        private bool freeze_view_changes = false;
+        private bool restoring_tabs = false;
         private bool doing_undo_redo = false;
 
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
         public signal void free_space_change ();
+        
+        [Signal (action=true)]
+        public virtual signal void go_back() {
+            current_tab.go_back ();
+        }
 
         [Signal (action=true)]
         public virtual signal void go_up () {
@@ -122,16 +127,17 @@ namespace Marlin.View {
             /* Only show side bar in first window - (to be confirmed) */
 
             lside_pane.pack1 (sidebar, false, false);
-            lside_pane.pack2 (tabs, true, false);
 
             Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
             window_box.pack_start(info_bar, false, false, 0);
-            window_box.pack_start(lside_pane, true, true, 0);
+            window_box.pack_start(tabs, true, true, 0);
 
-            add(window_box);
+            lside_pane.pack2 (window_box, true, false);
 
-            title = Marlin.APP_TITLE;
+            add(lside_pane);
+
+            title = _(Marlin.APP_TITLE);
             try {
                 this.icon = Gtk.IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
             } catch (Error err) {
@@ -238,7 +244,7 @@ namespace Marlin.View {
             top_menu.back.connect (on_go_back);
             top_menu.escape.connect (grab_focus);
             top_menu.path_change_request.connect ((loc, flag) => {
-                current_tab.set_frozen_state (false);
+                current_tab.is_frozen = false;
                 uri_path_change_request (loc, flag);
             });
             top_menu.reload_request.connect (action_reload);
@@ -246,11 +252,11 @@ namespace Marlin.View {
                 current_tab.focus_location_if_in_current_directory (loc, true);
             });
             top_menu.focus_in_event.connect (() => {
-                current_tab.set_frozen_state (true);
+                current_tab.is_frozen = true;
                 return true;
             });
             top_menu.focus_out_event.connect (() => {
-                current_tab.set_frozen_state (false);
+                current_tab.is_frozen = false;
                 return true;
             });
 
@@ -339,12 +345,12 @@ namespace Marlin.View {
         private void make_bindings () {
             if (is_first_window) {
                 /*Preference bindings */
-                Preferences.settings.bind("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
-                Preferences.settings.bind("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
+                Preferences.settings.bind ("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
+                Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
 
                 /* keyboard shortcuts bindings */
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_up", 0);
+                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_back", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Back"), 0, "go_back", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Forward"), 0, "go_forward", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
@@ -417,18 +423,19 @@ namespace Marlin.View {
         }
 
         public void change_tab (int offset) {
-            if (freeze_view_changes)
+            if (restoring_tabs) {
                 return;
+            }
 
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
 
-            if (current_tab == null || old_tab == current_tab || freeze_view_changes)
+            if (current_tab == null || old_tab == current_tab)
                 return;
 
-            if (old_tab != null)
+            if (old_tab != null) {
                 old_tab.set_active_state (false);
-
+            }
             /* ViewContainer will update topmenu once successfully loaded */
 #if 0
             /* sync selection - to be reimplemented if needed*/
@@ -437,7 +444,8 @@ namespace Marlin.View {
 #endif
             /* sync sidebar selection */
             loading_uri (current_tab.uri);
-            current_tab.set_active_state (true);
+            current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
+            top_menu.working = current_tab.is_frozen;
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
@@ -521,6 +529,10 @@ namespace Marlin.View {
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
+            /* Do not initiate search while slot is frozen e.g. during loading */
+            if (current_tab == null || current_tab.is_frozen) {
+                return;
+            }
             string search_scope = param.get_string ();
             if (search_scope == "CURRENT_DIRECTORY_ONLY") {
                 /* Just search current directory for filenames beginning with term */
@@ -530,6 +542,9 @@ namespace Marlin.View {
             }
         }
         public void on_search_request (Gdk.EventKey event) {
+            if (current_tab == null || current_tab.is_frozen) {
+                return;
+            }
             if (top_menu.enter_search_mode (true, true)) {
                 top_menu.on_key_press_event (event);
             }
@@ -754,7 +769,7 @@ namespace Marlin.View {
 
         protected void show_about() {
             Granite.Widgets.show_about_dialog ((Gtk.Window) this,
-                "program-name", Marlin.APP_TITLE,
+                "program-name", _(Marlin.APP_TITLE),
                 "version", Config.VERSION,
                 "copyright", Marlin.COPYRIGHT,
                 "license-type", Gtk.License.GPL_3_0,
@@ -762,7 +777,7 @@ namespace Marlin.View {
                 "website-label",  Marlin.LAUNCHPAD_LABEL,
                 "authors", Marlin.AUTHORS,
                 "artists", Marlin.ARTISTS,
-                "logo-icon-name", Marlin.ICON_ABOUT_LOGO,
+                "logo-icon-name", Marlin.ICON_APP_LOGO,
                 "translator-credits",  Marlin.TRANSLATORS,
                 "help", Marlin.HELP_URL,
                 "translate", Marlin.TRANSLATE_URL,
@@ -800,19 +815,19 @@ namespace Marlin.View {
         }
 
         private bool is_marlin_mydefault_fm () {
-            bool foldertype_is_default = ("pantheon-files.desktop" == AppInfo.get_default_for_type("inode/directory", false).get_id());
+            bool foldertype_is_default = (Marlin.APP_DESKTOP == AppInfo.get_default_for_type("inode/directory", false).get_id());
 
             bool trash_uri_is_default = false;
             AppInfo? app_trash_handler = AppInfo.get_default_for_type("x-scheme-handler/trash", true);
             if (app_trash_handler != null)
-                trash_uri_is_default = ("pantheon-files.desktop" == app_trash_handler.get_id());
+                trash_uri_is_default = (Marlin.APP_DESKTOP == app_trash_handler.get_id());
 
             return foldertype_is_default && trash_uri_is_default;
         }
 
         private void make_marlin_default_fm (bool active) {
             if (active) {
-                AppInfo marlin_app = (AppInfo) new DesktopAppInfo ("pantheon-files.desktop");
+                AppInfo marlin_app = (AppInfo) new DesktopAppInfo (Marlin.APP_DESKTOP);
 
                 if (marlin_app != null) {
                     try {
@@ -908,7 +923,7 @@ namespace Marlin.View {
 
             /* inhibit unnecessary changes of view and rendering of location bar while restoring tabs
              * as this causes all sorts of problems */
-            freeze_view_changes = true;
+            restoring_tabs = true;
 
             while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
                 if (mode < 0 || mode >= Marlin.ViewMode.INVALID || root_uri == null || root_uri == "" || tip_uri == null)
@@ -944,7 +959,7 @@ namespace Marlin.View {
                 Thread.usleep (100000);
             }
 
-            freeze_view_changes = false;
+            restoring_tabs = false;
 
             /* Don't attempt to set active tab position if no tabs were restored */
             if (tabs_added < 1)
@@ -995,22 +1010,24 @@ namespace Marlin.View {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
                     gfile = PF.FileUtils.get_file_for_path (uri);
 
-                    mwcols.add_location (gfile, mwcols.current_slot);
+                    mwcols.add_location (gfile, mwcols.current_slot, false); /* Do not scroll at this stage */
                 }
             } else {
-                warning ("Invalid tip uri for Miller View");
+                warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
             }
         }
 
         private void update_top_menu () {
-            if (freeze_view_changes || current_tab == null)
+            if (restoring_tabs || current_tab == null) {
                 return;
+            }
 
             /* Update browser buttons */
             top_menu.set_back_menu (current_tab.get_go_back_path_list ());
             top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
-            top_menu.set_can_go_back (current_tab.can_go_back);
-            top_menu.set_can_go_forward (current_tab.can_show_folder && current_tab.can_go_forward);
+            top_menu.can_go_back = current_tab.can_go_back;
+            top_menu.can_go_forward = (current_tab.can_show_folder && current_tab.can_go_forward);
+            top_menu.working = tabs.current.working;
 
             /* Update viewmode switch, action state and settings */
             var mode = current_tab.view_mode;
@@ -1046,7 +1063,7 @@ namespace Marlin.View {
         public void file_path_change_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
             /* ViewContainer deals with non-existent or unmounted directories
              * and locations that are not directories */
-            if (freeze_view_changes) {
+            if (restoring_tabs) {
                 return;
             }
 

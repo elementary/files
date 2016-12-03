@@ -15,7 +15,7 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-[DBus (name = "org.elementary.pantheonfiles.db")]
+[DBus (name = "org.pantheon.files.db")]
 interface MarlinDaemon : Object {
     public abstract async Variant get_uri_infos (string raw_uri) throws IOError;
     public abstract async bool record_uris (Variant[] entries, string directory)    throws IOError;
@@ -40,8 +40,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         cancellable = new Cancellable ();
 
         try {
-            daemon = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.pantheonfiles.db",
-                                         "/org/elementary/pantheonfiles/db");
+            daemon = Bus.get_proxy_sync (BusType.SESSION, "org.pantheon.files.db",
+                                         "/org/pantheon/files/db");
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }
@@ -87,6 +87,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         cancellable.reset ();
 
         directory = ((Object[]) user_data)[2] as GOF.File;
+        assert (directory != null);
         debug ("CTags Plugin dir %s", directory.uri);
         is_user_dir = f_is_user_dir (directory.uri);
         ignore_dir = f_ignore_dir (directory.uri);
@@ -103,6 +104,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void consume_knowns_queue () {
+        if (directory == null) {
+            warning ("Color tag plugin consume knowns queue called with null directory");
+        }
         Variant[] entries = null;
         GOF.File gof;
         while ((gof = knowns.pop_head ()) != null) {
@@ -123,7 +127,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         GOF.File gof = null;
         var count = unknowns.get_length ();
         debug ("unknowns queue length: %u", count);
-        if (count > 10) {
+        if (count > 10 && directory != null) {
             /* query info the whole dir, we can clear the whole unknowns queue */
             unknowns.clear ();
             try {
@@ -136,8 +140,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                     foreach (var file_info in files) {
                         GLib.File loc = directory.location.get_child ((string) file_info.get_name());
                         gof = GOF.File.get (loc);
-                        if (gof != null)
+                        if (gof != null) {
                             add_to_knowns_queue (gof, file_info);
+                        }
                     }
                 }
             } catch (Error err1) {
@@ -247,14 +252,11 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
     public override void update_file_info (GOF.File file) {
         return_if_fail (file != null);
-        if (!ignore_dir
-            && file != null && file.info != null
-            && (!file.is_hidden || GOF.Preferences.get_default ().pref_show_hidden_files)) {
-
-            /* This gets called during directory loading, before the "directory loaded" signal
-             * is received - therefore ignore_dir may not be set correctly */  
+        if (!ignore_dir && file.info != null &&
+            (!file.is_hidden || GOF.Preferences.get_default ().pref_show_hidden_files)) {
+ 
             if (file.location.has_uri_scheme ("recent")) {
-                rreal_update_file_info_for_recent (file, file.get_display_target_uri ());
+                rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
             } else {
                 rreal_update_file_info.begin (file);
             }

@@ -23,9 +23,19 @@ namespace Marlin.View.Chrome
 {
     public class LocationBar : BasicLocationBar {
         private BreadcrumbsEntry bread;
-        public SearchResults search_results { get; private set; }
+        private SearchResults search_results;
         private GLib.File? search_location = null;
         public bool search_mode {get; private set;}
+
+        public new bool sensitive {
+            set {
+                bread.sensitive = value;
+            }
+
+            get {
+                return bread.sensitive;
+            }
+        }
 
         uint focus_timeout_id = 0;
 
@@ -42,7 +52,7 @@ namespace Marlin.View.Chrome
             show_refresh_icon ();
 
             key_press_event.connect ((event) => {
-                return bread.key_press_event (event);
+                return has_focus && bread.key_press_event (event);
             });
         }
 
@@ -81,13 +91,18 @@ namespace Marlin.View.Chrome
         private void on_search_results_realize () {
             (get_toplevel () as Gtk.Window).get_group ().add_window (search_results); /*Is this necessary every popup? */
         }
-        private void on_search_results_exit () {
+        private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */
             bread.reset_im_context ();
             if (focus_timeout_id > 0) {
                 GLib.Source.remove (focus_timeout_id);
             }
-            escape ();
+            if (exit_navigate) {
+                escape ();
+            } else {
+                bread.set_entry_text (bread.get_breadcrumbs_path ());
+                enter_navigate_mode ();
+            }
         }
 
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
@@ -173,6 +188,9 @@ namespace Marlin.View.Chrome
         }
 
         public bool enter_search_mode (bool local_only, bool begins_with_only) {
+            if (!sensitive) {
+                return false;
+            }
             search_results.set_search_current_directory_only (local_only);
             search_results.set_begins_with_only (begins_with_only);
             if (!search_mode) {
@@ -190,7 +208,7 @@ namespace Marlin.View.Chrome
         }
 
         public virtual bool enter_navigate_mode (string? current = null) {
-            if (set_focussed ()) {
+            if (sensitive && set_focussed ()) {
                 bread.grab_focus ();
                 show_navigate_icon ();
                 return true;

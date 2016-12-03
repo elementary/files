@@ -121,8 +121,8 @@ pkg_check_modules(DEPS REQUIRED
     gee-0.8
     gmodule-2.0
     sqlite3
-    libcanberra>=0.30
-    libnotify>=0.7.2)
+    libcanberra>=0.30)
+
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})

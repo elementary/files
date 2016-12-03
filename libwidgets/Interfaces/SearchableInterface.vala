@@ -22,7 +22,7 @@ namespace Marlin.View.Chrome {
         public signal void file_activated (GLib.File file);
         public signal void cursor_changed (GLib.File? file);
         public signal void first_match_found (GLib.File? file);
-        public signal void exit ();
+        public signal void exit (bool exit_navigate = true);
 
         public abstract void cancel ();
         public abstract void search (string txt, GLib.File search_location);

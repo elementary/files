@@ -21,6 +21,7 @@ namespace FM {
         protected new Gtk.IconView tree;
 
         public IconView (Marlin.View.Slot _slot) {
+            assert (_slot != null);
             base (_slot);
         }
 
@@ -120,8 +121,10 @@ namespace FM {
             tree.set_drag_dest_item (path, Gtk.IconViewDropPosition.DROP_INTO);
         }
 
-        public override Gtk.TreePath? get_path_at_pos (int x, int y) {
-            return tree.get_path_at_pos (x, y);
+        public override Gtk.TreePath? get_path_at_pos (int win_x, int win_y) {
+            /* Supplied coords are drag coords - need IconView bin window coords */
+            /* Icon view does not scroll horizontally so no adjustment needed for x coord*/
+            return tree.get_path_at_pos (win_x, win_y + (int)(get_vadjustment ().get_value ()));
         }
 
         public override void select_all () {
@@ -129,7 +132,7 @@ namespace FM {
         }
 
         public override void unselect_all () {
-            tree.unselect_all ();
+                tree.unselect_all ();
         }
 
         public override void select_path (Gtk.TreePath? path) {
@@ -250,9 +253,11 @@ namespace FM {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-            if (tree == null || path == null || slot.directory.permission_denied)
-                return;
+            if (tree == null || path == null || slot == null || /* slot should not be null but see lp:1595438 */
+                slot.directory.permission_denied || slot.directory.is_empty ()) {
 
+                return;
+            }
             tree.scroll_to_path (path, scroll_to_top, 0.5f, 0.5f);
         }
 
@@ -260,7 +265,7 @@ namespace FM {
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top) {
-            scroll_to_cell(path, scroll_to_top);
+            scroll_to_cell (path, scroll_to_top);
             tree.set_cursor (path, renderer, start_editing);
         }
 

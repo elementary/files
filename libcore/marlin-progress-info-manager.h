@@ -26,17 +26,18 @@
 
 #include <marlin-progress-info.h>
 
-#define MARLIN_TYPE_PROGRESS_INFO_MANAGER marlin_progress_info_manager_get_type()
+/* Match pantheon-files-core-C.vapi namespace Marlin.Progress*/
+#define MARLIN_PROGRESS_TYPE_INFO_MANAGER marlin_progress_info_manager_get_type()
 #define MARLIN_PROGRESS_INFO_MANAGER(obj) \
-    (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_TYPE_PROGRESS_INFO_MANAGER, MarlinProgressInfoManager))
+    (G_TYPE_CHECK_INSTANCE_CAST ((obj), MARLIN_PROGRESS_TYPE_INFO_MANAGER, MarlinProgressInfoManager))
 #define MARLIN_PROGRESS_INFO_MANAGER_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_CAST ((klass), MARLIN_TYPE_PROGRESS_INFO_MANAGER, MarlinProgressInfoManagerClass))
-#define MARLIN_IS_PROGRESS_INFO_MANAGER(obj) \
-    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MARLIN_TYPE_PROGRESS_INFO_MANAGER))
-#define MARLIN_IS_PROGRESS_INFO_MANAGER_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_TYPE ((klass), MARLIN_TYPE_PROGRESS_INFO_MANAGER))
+    (G_TYPE_CHECK_CLASS_CAST ((klass), MARLIN_PROGRESS_TYPE_INFO_MANAGER, MarlinProgressInfoManagerClass))
+#define MARLIN_PROGRESS_IS_INFO_MANAGER(obj) \
+    (G_TYPE_CHECK_INSTANCE_TYPE ((obj), MARLIN_PROGRESS_TYPE_INFO_MANAGER))
+#define MARLIN_PROGRESS_IS_INFO_MANAGER_CLASS(klass) \
+    (G_TYPE_CHECK_CLASS_TYPE ((klass), MARLIN_PROGRESS_TYPE_INFO_MANAGER))
 #define MARLIN_PROGRESS_INFO_MANAGER_GET_CLASS(obj) \
-    (G_TYPE_INSTANCE_GET_CLASS ((obj), MARLIN_TYPE_PROGRESS_INFO_MANAGER, MarlinProgressInfoManagerClass))
+    (G_TYPE_INSTANCE_GET_CLASS ((obj), MARLIN_PROGRESS_TYPE_INFO_MANAGER, MarlinProgressInfoManagerClass))
 
 typedef struct _MarlinProgressInfoManager MarlinProgressInfoManager;
 typedef struct _MarlinProgressInfoManagerClass MarlinProgressInfoManagerClass;

@@ -343,10 +343,14 @@ static void
 gof_file_update_size (GOFFile *file)
 {
     g_free (file->format_size);
-    if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file))
+
+    if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file)) {
         file->format_size = g_strdup ("—");
-    else
+    } else if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_SIZE)) {
         file->format_size = g_format_size (file->size);
+    } else {
+        file->format_size = g_strdup (_("Inaccessible"));
+    }
 }
 
 static void
@@ -521,10 +525,29 @@ gof_file_update (GOFFile *file)
         }
     }
 
+    if (file->custom_display_name == NULL) {
+        /* Use custom_display_name to store default display name if there is no custom name */
+        if (file->info && g_file_info_get_display_name (file->info) != NULL) {
+            if (file->directory != NULL &&
+                strcmp (g_file_get_uri_scheme (file->directory), "network") == 0 &&
+                !(strcmp (g_file_get_uri (file->target_location), "smb:///") == 0)) {
+                /* Show protocol after server name (lp:1184606) */
+                file->custom_display_name = g_strdup_printf ("%s (%s)", g_file_info_get_display_name (file->info),
+                                                                        g_utf8_strup (g_file_get_uri_scheme (file->target_location), -1));
+            } else {
+                file->custom_display_name = g_strdup (g_file_info_get_display_name (file->info));
+            }
+        }
+    }
+
     /* sizes */
     gof_file_update_size (file);
     /* modified date */
-    file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED)) {
+        file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+    } else {
+        file->formated_modified = g_strdup (_("Inaccessible"));
+    }
     /* icon */
     if (file->is_directory) {
         gof_file_get_folder_icon_from_uri_or_path (file);
@@ -560,14 +583,20 @@ gof_file_update (GOFFile *file)
 
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_UID)) {
         file->uid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_UID);
-        if (file->owner == NULL)
+        if (file->owner == NULL) {
             file->owner = g_strdup_printf ("%d", file->uid);
+        }
+    } else if (file->owner != NULL) { /* e.g. ftp info yields owner but not uid */
+        file->uid = atoi (file->owner);
     }
 
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_GID)) {
         file->gid = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_GID);
-        if (file->group == NULL)
+        if (file->group == NULL) {
             file->group = g_strdup_printf ("%d", file->gid);
+        }
+    } else if (file->group != NULL) {  /* e.g. ftp info yields owner but not uid */
+        file->gid = atoi (file->group);
     }
 
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT))
@@ -1321,26 +1350,25 @@ gboolean
 gof_file_is_writable (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-
-    /* Take care not to create infinite loop */
-    if (file->target_gof && !g_file_equal (file->location, file->target_gof->location))
+    if (file->target_gof && !g_file_equal (file->location, file->target_gof->location)) {
         return gof_file_is_writable (file->target_gof);
-
-    if (file->info == NULL)
-        return FALSE;
-
-    if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
-        /* Trash folder and network folders do not necessarily have this attribute defined.
-         * The function must be forced to return TRUE in these cases. */
-        if (strncmp (file->uri, "trash:///", 10) == 0 ||
-            gof_file_is_smb_uri_scheme (file) ||
-            gof_file_is_remote_uri_scheme (file))
-            return TRUE;
-
-        return FALSE;
+    } else if (file->info != NULL && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE)) {
+        return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+    } else if (file->has_permissions) {
+        return ((file->permissions & S_IWOTH) > 0) ||
+               ((file->permissions & S_IWUSR) > 0) && (file->uid < 0 || file->uid == geteuid ()) ||
+               ((file->permissions & S_IWGRP) > 0) && eel_user_in_group (file->group);
+    } else {
+        return TRUE;  /* We will just have to assume we can write to the file */
     }
 
-    return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+    gboolean can_write = g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_WRITE);
+
+    if (file->directory && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE)) {
+        return can_write && g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE);
+    }
+
+    return can_write;
 }
 
 gboolean
@@ -1348,14 +1376,17 @@ gof_file_is_readable (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
-    if (file->target_gof)
-        return gof_file_is_writable (file->target_gof);
-    if (file->info == NULL)
-        return FALSE;
-    if (!g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ))
-        return FALSE;
-
-    return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
+    if (file->target_gof && !g_file_equal (file->location, file->target_gof->location)) {
+        return gof_file_is_readable (file->target_gof);
+    } else if (file->info != NULL && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ)) {
+        return g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_ACCESS_CAN_READ);
+    } else if (file->has_permissions) {
+        return (file->permissions & S_IROTH) ||
+               (file->permissions & S_IRUSR) && (file->uid < 0 || file->uid == geteuid ()) ||
+               (file->permissions & S_IRGRP) && eel_user_in_group (file->group);
+    } else {
+        return TRUE;  /* We will just have to assume we can read the file */
+    }
 }
 
 gboolean
@@ -1393,11 +1424,9 @@ gof_file_get_formated_time (GOFFile *file, const char *attr)
     g_return_val_if_fail (file != NULL, NULL);
     g_return_val_if_fail (file->info != NULL, NULL);
 
-    guint64 date = g_file_info_get_attribute_uint64 (file->info, attr);
-    if (date == 0)
-        return NULL;
-
-    return eel_get_date_as_string (date, gof_preferences_get_default ()->pref_date_format);
+    return pf_file_utils_get_formatted_time_attribute_from_info (file->info,
+                                                                 attr,
+                                                                 gof_preferences_get_default ()->pref_date_format);
 }
 
 
@@ -1730,7 +1759,9 @@ gof_file_accepts_drop (GOFFile          *file,
                 return 0;
         }
 
-        /* if the source offers both copy and move and the GTK+ suggested action is copy, try to be smart telling whether we should copy or move by default by checking whether the source and target are on the same disk. */
+        /* if the source offers both copy and move and the GTK+ suggested action is copy, try to
+         * be smart telling whether we should copy or move by default by checking whether the
+         * source and target are on the same disk. */
         if ((actions & (GDK_ACTION_COPY | GDK_ACTION_MOVE)) != 0
             && (suggested_action == GDK_ACTION_COPY))
         {
@@ -1753,8 +1784,8 @@ gof_file_accepts_drop (GOFFile          *file,
                 if (ofile == NULL
                     || !gof_file_same_filesystem (file, ofile)
                     || (ofile->info != NULL
-                        && g_file_info_get_attribute_uint32 (ofile->info,
-                                                             G_FILE_ATTRIBUTE_UNIX_UID) != effective_user_id))
+                        && ofile->uid > -1
+                        && ofile->uid != effective_user_id ))
                 {
                     /* default to copy and get outa here */
                     suggested_action = GDK_ACTION_COPY;
@@ -1945,8 +1976,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
             }
             else
             {
-                /* TRANSLATORS: `Exec' is a field name in a .desktop file.
-                 * Don't translate it. */
+                /// TRANSLATORS: `Exec' is a field name in a .desktop file. Don't translate it.
                 g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
                              _("No Exec field specified"));
             }
@@ -1965,8 +1995,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
             }
             else
             {
-                /* TRANSLATORS: `URL' is a field name in a .desktop file.
-                 * Don't translate it. */
+                /// TRANSLATORS: `Exec' is a field name in a .desktop file. Don't translate it.
                 g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
                              _("No URL field specified"));
             }
@@ -2497,18 +2526,7 @@ gof_file_get_target_location (GOFFile *file)
 const gchar *
 gof_file_get_display_name (GOFFile *file)
 {
-    if (file->is_desktop) {
-        if (gof_preferences_get_default ()->pref_interpret_desktop_files && file->custom_display_name != NULL)
-            return file->custom_display_name;
-    } else {
-        if (file->custom_display_name != NULL)
-            return file->custom_display_name;
-    }
-
-    if (file->info && g_file_info_get_display_name (file->info) != NULL)
-        return g_file_info_get_display_name (file->info);
-
-    return file->basename;
+    return file->custom_display_name ? file->custom_display_name : file->basename;
 }
 
 gboolean

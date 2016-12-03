@@ -49,7 +49,7 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     public Contractor () {
     }
 
-    public override void context_menu (Gtk.Widget? widget, List<GOF.File> gof_files) {
+    public override void context_menu (Gtk.Widget? widget, List<unowned GOF.File> gof_files) {
         menu = widget as Gtk.Menu;
         return_if_fail (menu != null);
 
