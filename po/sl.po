@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-10-10 13:06-0500\n"
-"PO-Revision-Date: 2016-08-13 16:01+0000\n"
+"PO-Revision-Date: 2016-12-10 08:20+0000\n"
 "Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2016-12-10 05:21+0000\n"
+"X-Launchpad-Export-Date: 2016-12-11 05:16+0000\n"
 "X-Generator: Launchpad (build 18292)\n"
 "Language: sl\n"
 
@@ -1846,13 +1846,13 @@ msgstr "Neimenovana %s"
 #: ../src/View/AbstractDirectoryView.vala:2652
 #: ../src/View/AbstractDirectoryView.vala:2817
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Od tu ni mogoče odstraniti datotek"
 
 #: ../src/View/AbstractDirectoryView.vala:2653
 #: ../src/View/AbstractDirectoryView.vala:2808
 #: ../src/View/AbstractDirectoryView.vala:2818
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Nimate dovoljenja za spreminjanje te lokacije"
 
 #: ../src/View/AbstractDirectoryView.vala:2790
 msgid "Cannot copy files that are in the trash"
@@ -1864,7 +1864,7 @@ msgstr "Režem izbrane predmete"
 
 #: ../src/View/AbstractDirectoryView.vala:2807
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Datotek ni mogoče prilepiti sem"
 
 #: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
 msgid "%u folders"
@@ -2108,7 +2108,7 @@ msgstr "Ni bilo mogoče vzpostaviti povezave s strežnikom za to mapo."
 
 #: ../src/View/ViewContainer.vala:378
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Ni mogoče prikazati mape"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
@@ -2363,23 +2363,23 @@ msgstr "Pojdi v %s"
 
 #: ../libwidgets/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Izbranih je več tipov datotek"
 
 #: ../libwidgets/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Teh tipov datotek ni mogoče odpreti z eno samo aplikacijo"
 
 #: ../libwidgets/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Ni bilo mogoče odpreti datotek"
 
 #: ../libwidgets/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Ni bilo mogoče odpreti naslovov"
 
 #: ../libwidgets/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Datotek in naslovov ni bilo mogoče odpreti s to aplikacijo"
 
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
