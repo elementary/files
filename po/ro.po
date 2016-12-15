@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-10-10 13:06-0500\n"
-"PO-Revision-Date: 2016-09-16 09:06+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-12-14 11:28+0000\n"
+"Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2016-12-10 05:20+0000\n"
-"X-Generator: Launchpad (build 18292)\n"
+"X-Launchpad-Export-Date: 2016-12-15 04:51+0000\n"
+"X-Generator: Launchpad (build 18293)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -37,7 +37,7 @@ msgstr "FTP (cu autentificare)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -371,17 +371,16 @@ msgstr[2] "%'d secunde"
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] "%'d minut"
-msgstr[1] ""
-"Copy text   \t\r\n"
-"%'d minute"
+msgstr[0] "un minut"
+msgstr[1] "%'d minute"
+msgstr[2] "%'d de minute"
 
 #: ../libcore/marlin-file-operations.c:311
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] "%'d oră"
-msgstr[1] ""
+msgstr[0] "o oră"
+msgstr[1] "%'d ore"
 msgstr[2] "%'d de ore"
 
 #: ../libcore/marlin-file-operations.c:319
@@ -447,7 +446,7 @@ msgstr "a copie)"
 
 #: ../libcore/marlin-file-operations.c:481
 msgid "rd copy)"
-msgstr ""
+msgstr "a copie)"
 
 #: ../libcore/marlin-file-operations.c:498
 #, c-format
@@ -457,7 +456,7 @@ msgstr "%s (copiaza)%s"
 #: ../libcore/marlin-file-operations.c:500
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s (altă copie)%s"
 
 #: ../libcore/marlin-file-operations.c:503
 #: ../libcore/marlin-file-operations.c:505
@@ -465,22 +464,22 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:521
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (a %'d-a copie)%s"
 
 #: ../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (copia %'d)%s"
 
 #: ../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (copia %'d)%s"
 
 #: ../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (copia %'d)%s"
 
 #: ../libcore/marlin-file-operations.c:619
 msgid " ("
@@ -519,21 +518,26 @@ msgstr "Dacă ștergeți un element, nu îl veți mai putea recupera."
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Șterge definitiv toate articolele din coșul de gunoi?"
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Toate articolele din directoarele reziduale, inclusiv cele de pe unități de "
+"stocare externe montate, vor fi șterse definitiv."
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
+"ștergi definitiv toate articolele din coșul de gunoi de pe această montare?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
+"Toate articolele din coșul de gunoi pe această montare, vor fi șterse "
+"definitiv."
 
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
@@ -563,7 +567,7 @@ msgstr "Se șterg fișierele"
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "Un fișier rămas pentru ștergere"
-msgstr[1] ""
+msgstr[1] "%'d fișiere rămase pentru ștergere"
 msgstr[2] "%'d de fișiere rămase pentru ștergere"
 
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
@@ -644,50 +648,63 @@ msgstr[2] "%'d de fișiere rămase de trimis la coșul de gunoi"
 #: ../libcore/marlin-file-operations.c:1949
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Nu se poate muta fișierul în coșul de gunoi sau șterge"
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Nu este permisă ștergea fișierelor de pe un sistem de fișiere numai în "
+"citire."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Fișierele din interiorul dosarelor pentru care nu ai drepturi de scriere, nu "
+"se pot muta în coșul de gunoi sau șterge."
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Dosarele pentru care nu ai drepturi de scriere, nu se pot muta în coșul de "
+"gunoi sau șterge."
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"Nu se poate muta fişierul în coşul de gunoi. Încerci să îl ştergi imediat?"
 
 #: ../libcore/marlin-file-operations.c:1956
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Acest fişier nu a putut fi mutat în coşul de gunoi. Pentru mai multe "
+"informaţii, vezi detalii mai jos."
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Nu pot muta fişierul în coşul de gunoi. Încerci să îl ştergi?"
 
 #: ../libcore/marlin-file-operations.c:1961
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Acest fişier nu a putut fi mutat în coşul de gunoi. Posibil, de asemenea, să "
+"nu poată fi şters."
 
 #: ../libcore/marlin-file-operations.c:1966
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" ştergerea unui fişier este definitivă"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
@@ -904,8 +921,9 @@ msgstr "%S din %S"
 #: ../libcore/marlin-file-operations.c:3211
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S din %S — %T rămas (%S/sec)"
-msgstr[1] "%S din %S — %T rămase (%S/sec)"
+msgstr[0] "%S din %S — %T rămas (%S/s)"
+msgstr[1] "%S din %S — %T rămase (%S/s)"
+msgstr[2] "%S din %S — %T rămase (%S/s)"
 
 #: ../libcore/marlin-file-operations.c:3590
 msgid ""
@@ -993,11 +1011,11 @@ msgstr "Nu s-a putut șterge fișierul existent cu același nume din %F."
 
 #: ../libcore/marlin-file-operations.c:4593
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Nu se poate copia \"%B\" aici."
 
 #: ../libcore/marlin-file-operations.c:4594
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "S-a produs o eroare la copierea fişierului in %B."
 
 #: ../libcore/marlin-file-operations.c:4821
 msgid "Copying Files"
@@ -1018,7 +1036,7 @@ msgstr[2] "Se pregătește mutarea a %'d de fișiere"
 #: ../libcore/marlin-file-operations.c:5107
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr ""
+msgstr "Eroare la mutarea \"%F\"."
 
 #: ../libcore/marlin-file-operations.c:5108
 #, c-format
@@ -1065,11 +1083,11 @@ msgstr "Se definesc permisiunile"
 
 #: ../libcore/marlin-file-operations.c:6002
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Nu se poate copia în coşul de gunoi."
 
 #: ../libcore/marlin-file-operations.c:6003
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Nu este permis sa copiezi fişiere în coşul de gunoi"
 
 #: ../libcore/marlin-file-operations.c:6144
 msgid "untitled folder"
@@ -1102,11 +1120,11 @@ msgstr "Se golește coșul de gunoi"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Locaţia originală nu a putut fi determinată"
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Deschide coş de gunoi si restaurează manual"
 
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
@@ -1286,143 +1304,161 @@ msgstr "Seteaza proprietarul de '%s' la '%s'"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează copierea elementului"
+msgstr[1] "_Anulează copierea a %d elemente"
+msgstr[2] "_Anulează copierea a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1561
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează duplicarea elementului"
+msgstr[1] "_Anulează duplicarea a %d elemente"
+msgstr[2] "_Anulează duplicarea a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1566
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează mutarea elementului"
+msgstr[1] "_Anulează mutarea a %d elemente"
+msgstr[2] "_Anulează mutarea a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1571
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează redenumirea elementului"
+msgstr[1] "_Anulează redenumirea a %d elemente"
+msgstr[2] "_Anulează redenumirea a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1575
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_Anulează crearea unui fișier gol"
 
 #: ../libcore/marlin-undostack-manager.c:1578
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_Anulează crearea unui fișier din șablon"
 
 #: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează crearea dosarului"
+msgstr[1] "_Anulează crearea a %d dosare"
+msgstr[2] "_Anulează crearea a %d dosare"
 
 #: ../libcore/marlin-undostack-manager.c:1587
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează mutarea elementului la gunoi"
+msgstr[1] "_Anulează mutarea a %d elemente la gunoi"
+msgstr[2] "_Anulează mutarea a %d elemente la gunoi"
 
 #: ../libcore/marlin-undostack-manager.c:1592
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează restaurarea din coşul de gunoi a elementului"
+msgstr[1] "_Anulează restaurarea din coşul de gunoi a  %d elemente"
+msgstr[2] "_Anulează restaurarea din coşul de gunoi a  %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1597
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează crearea unei legături către element"
+msgstr[1] "_Anulează crearea unei legături către %d elemente"
+msgstr[2] "_Anulează crearea unei legături către %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1602
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează ștergerea elementului"
+msgstr[1] "_Anulează ștergerea a %d elemente"
+msgstr[2] "_Anulează ștergerea a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1607
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează schimbarea recursivă a drepturilor elementului"
+msgstr[1] "_Anulează schimbarea recursivă a drepturilor a %d elemente"
+msgstr[2] "_Anulează schimbarea recursivă a drepturilor a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1613
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează schimbarea drepturilor elementului"
+msgstr[1] "_Anulează schimbarea drepturilor a %d elemente"
+msgstr[2] "_Anulează schimbarea drepturilor a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1618
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează  schimbarea grupului elementului"
+msgstr[1] "_Anulează  schimbarea grupului a %d elemente"
+msgstr[2] "_Anulează  schimbarea grupului a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1623
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulează schimbarea de proprietar a elementului"
+msgstr[1] "_Anulează schimbarea de proprietar a  %d elemente"
+msgstr[2] "_Anulează schimbarea de proprietar a  %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1651
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Reface copierea elementului"
+msgstr[1] "_Reface copierea a %d elemente"
+msgstr[2] "_Reface copierea a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1656
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Reface duplicarea elementului"
+msgstr[1] "_Reface duplicarea a %d elemente"
+msgstr[2] "_Reface duplicarea a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1661
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Reface mutarea elementului"
+msgstr[1] "_Reface mutarea a %d elemente"
+msgstr[2] "_Reface mutarea a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1666
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Anulază redenumirea elementului"
+msgstr[1] "_Anulază redenumirea a %d elemente"
+msgstr[2] "_Anulază redenumirea a %d elemente"
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_Refă fișierul gol"
 
 #: ../libcore/marlin-undostack-manager.c:1673
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_Refă fișierul dintr-un șablon"
 
 #: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_Refă dosarul"
+msgstr[1] "_Refă  %d dosare"
+msgstr[2] "_Refă  %d dosare"
 
 #: ../libcore/marlin-undostack-manager.c:1682
 #, c-format
@@ -2217,6 +2253,7 @@ msgstr ""
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Daniel-Nicolae Bălășoiu https://launchpad.net/~daniel-t0t3u\n"
 "  Edi https://launchpad.net/~edi-frb\n"
+"  Marius Albina https://launchpad.net/~marius-albina\n"
 "  Marius Amza https://launchpad.net/~mariusamza\n"
 "  Richard B. https://launchpad.net/~dx-richard\n"
 "  Rus F Adrian https://launchpad.net/~tue-deactivatedaccount\n"
