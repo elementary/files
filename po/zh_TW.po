@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-07 04:40+0000\n"
+"POT-Creation-Date: 2016-10-10 13:06-0500\n"
+"PO-Revision-Date: 2016-10-14 15:49+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-08-08 05:31+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
+"X-Launchpad-Export-Date: 2016-12-10 05:22+0000\n"
+"X-Generator: Launchpad (build 18292)\n"
 "Language: zh_TW\n"
 
 #: ../src/marlin-clipboard-manager.c:365
@@ -88,7 +88,7 @@ msgstr "繼續"
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr "連線(_O)"
+msgstr "連接(_O)"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
@@ -141,15 +141,6 @@ msgstr "記住此密碼(_R)"
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "操作程序已取消"
-
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "無法決定「%s」的原始位置 "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "此項目不能從垃圾筒還原。"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -237,7 +228,7 @@ msgstr "原始檔案"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:518
+#: ../src/View/PropertiesWindow.vala:495
 msgid "Size:"
 msgstr "大小："
 
@@ -245,7 +236,7 @@ msgstr "大小："
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:525
+#: ../src/View/PropertiesWindow.vala:502
 msgid "Type:"
 msgstr "類型："
 
@@ -300,28 +291,28 @@ msgstr "檔案發生衝突"
 msgid "link to %s"
 msgstr "連結到 %s"
 
-#: ../libcore/gof-file.c:1914
+#: ../libcore/gof-file.c:1908
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "無法解析桌面檔：%s"
 
-#: ../libcore/gof-file.c:1951
+#: ../libcore/gof-file.c:1945
 msgid "No Exec field specified"
 msgstr "Exec 欄並未指定"
 
-#: ../libcore/gof-file.c:1970
+#: ../libcore/gof-file.c:1964
 msgid "No URL field specified"
 msgstr "URL 欄並未指定"
 
-#: ../libcore/gof-file.c:1976
+#: ../libcore/gof-file.c:1970
 msgid "Invalid desktop file"
 msgstr "無效的桌面檔"
 
-#: ../libcore/gof-file.c:2271
+#: ../libcore/gof-file.c:2265
 msgid "Slashes are not allowed in filenames"
 msgstr "檔案名稱中不能使用斜線 ( / )"
 
-#: ../libcore/gof-file.c:2291
+#: ../libcore/gof-file.c:2285
 msgid "Toplevel files cannot be renamed"
 msgstr "頂端層級檔案無法更改名稱"
 
@@ -527,7 +518,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "所有此掛載上垃圾筒中的物件，都永久刪除。"
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1487
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
 msgid "Empty _Trash"
 msgstr "清理垃圾(_T)"
 
@@ -1416,126 +1407,126 @@ msgstr "%Y年%b%-d日  %a %p %-I:%M"
 msgid "Preparing"
 msgstr "準備中"
 
-#: ../filechooser-module/FileChooserDialog.vala:69
-#: ../libwidgets/Chrome/TopMenu.vala:51
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../libwidgets/Chrome/TopMenu.vala:64
 msgid "Previous"
 msgstr "上一個"
 
-#: ../filechooser-module/FileChooserDialog.vala:73
-#: ../libwidgets/Chrome/TopMenu.vala:55
+#: ../filechooser-module/FileChooserDialog.vala:74
+#: ../libwidgets/Chrome/TopMenu.vala:68
 msgid "Next"
 msgstr "下一個"
 
-#: ../src/View/Window.vala:204
+#: ../src/View/Window.vala:210
 msgid "Files isn't your default file manager."
 msgstr "「檔案」不是您的預設檔案瀏覽器。"
 
-#: ../src/View/Window.vala:210
+#: ../src/View/Window.vala:216
 msgid "Set as Default"
 msgstr "設為預設值"
 
-#: ../src/View/Window.vala:216
+#: ../src/View/Window.vala:222
 msgid "Ignore"
 msgstr "忽略"
 
-#: ../src/View/Sidebar.vala:472
+#: ../src/View/Sidebar.vala:481
 msgid "Personal"
 msgstr "個人"
 
-#: ../src/View/Sidebar.vala:473
+#: ../src/View/Sidebar.vala:482
 msgid "Your common places and bookmarks"
 msgstr "您的常用位置與書籤"
 
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:331
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:342
 msgid "Home"
 msgstr "家屋"
 
-#: ../src/View/Sidebar.vala:492
+#: ../src/View/Sidebar.vala:501
 msgid "Open your personal folder"
 msgstr "開啟您的個人資料夾"
 
-#: ../src/View/Sidebar.vala:507
+#: ../src/View/Sidebar.vala:516
 msgid "View the list of recently used files"
 msgstr "檢視最近使用檔案的清單"
 
-#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:90
+#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
 msgid "Trash"
 msgstr "垃圾"
 
-#: ../src/View/Sidebar.vala:535
+#: ../src/View/Sidebar.vala:544
 msgid "Open the Trash"
 msgstr "開啟垃圾筒"
 
-#: ../src/View/Sidebar.vala:539
+#: ../src/View/Sidebar.vala:548
 msgid "Devices"
 msgstr "裝置"
 
-#: ../src/View/Sidebar.vala:540
+#: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
 msgstr "您的本地端分割區和裝置"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
-#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
+#: ../src/View/Sidebar.vala:555 ../src/View/VolumePropertiesWindow.vala:44
+#: ../src/View/ViewContainer.vala:344 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "檔案系統"
 
-#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:87
+#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
 msgstr "網路"
 
-#: ../src/View/Sidebar.vala:665
+#: ../src/View/Sidebar.vala:674
 msgid "Your network places"
 msgstr "您的網路位置"
 
-#: ../src/View/Sidebar.vala:697
+#: ../src/View/Sidebar.vala:706
 msgid "Entire Network"
 msgstr "整個網路"
 
-#: ../src/View/Sidebar.vala:704
+#: ../src/View/Sidebar.vala:713
 msgid "Browse the contents of the network"
 msgstr "瀏覽網路的內容"
 
-#: ../src/View/Sidebar.vala:830
+#: ../src/View/Sidebar.vala:845
 msgid "(%s Free of %s)"
 msgstr "(%s 可用，共 %s)"
 
-#: ../src/View/Sidebar.vala:1325
+#: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
 msgstr "無法開啟 %s"
 
-#: ../src/View/Sidebar.vala:1429
+#: ../src/View/Sidebar.vala:1445
 msgid "Open"
 msgstr "開啟"
 
-#: ../src/View/Sidebar.vala:1437
+#: ../src/View/Sidebar.vala:1453
 msgid "Open in New _Tab"
 msgstr "在新分頁中開啟(_T)"
 
-#: ../src/View/Sidebar.vala:1443
+#: ../src/View/Sidebar.vala:1459
 msgid "Open in New _Window"
 msgstr "在新視窗中開啟(_W)"
 
-#: ../src/View/Sidebar.vala:1451
+#: ../src/View/Sidebar.vala:1467
 msgid "Remove"
 msgstr "移除"
 
-#: ../src/View/Sidebar.vala:1459 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "重新命名"
 
-#: ../src/View/Sidebar.vala:1468
+#: ../src/View/Sidebar.vala:1484
 msgid "_Mount"
 msgstr "掛載(_M)"
 
-#: ../src/View/Sidebar.vala:1474
+#: ../src/View/Sidebar.vala:1490
 msgid "_Unmount"
 msgstr "卸載(_U)"
 
-#: ../src/View/Sidebar.vala:1480
+#: ../src/View/Sidebar.vala:1496
 msgid "_Eject"
 msgstr "退出(_E)"
 
-#: ../src/View/Sidebar.vala:1494 ../src/View/PropertiesWindow.vala:130
+#: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:129
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "屬性"
@@ -1545,7 +1536,7 @@ msgid "Disk Properties"
 msgstr "磁碟屬性"
 
 #: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:597
+#: ../src/View/PropertiesWindow.vala:574
 msgid "Location:"
 msgstr "位置："
 
@@ -1569,7 +1560,7 @@ msgstr "類型"
 msgid "Modified"
 msgstr "已修改"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:366
 msgid "This Folder Does Not Exist"
 msgstr "這個資料夾不存在"
 
@@ -1595,99 +1586,114 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractPropertiesDialog.vala:48
+#: ../src/View/AbstractPropertiesDialog.vala:47
 msgid "Info"
 msgstr "資訊"
 
-#: ../src/View/AbstractPropertiesDialog.vala:57
+#: ../src/View/AbstractPropertiesDialog.vala:56
 msgid "General"
 msgstr "一般設定"
 
-#: ../src/View/AbstractPropertiesDialog.vala:76
+#: ../src/View/AbstractPropertiesDialog.vala:75
 msgid "Close"
 msgstr "關閉"
 
-#: ../src/View/AbstractPropertiesDialog.vala:138
+#: ../src/View/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
 msgstr "裝置用量"
 
-#: ../src/View/AbstractPropertiesDialog.vala:154
+#: ../src/View/AbstractPropertiesDialog.vala:153
 msgid "Capacity:"
 msgstr "容量："
 
-#: ../src/View/AbstractPropertiesDialog.vala:155
-#: ../src/View/AbstractPropertiesDialog.vala:158
-#: ../src/View/AbstractPropertiesDialog.vala:161
-#: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
+#: ../src/View/AbstractPropertiesDialog.vala:154
+#: ../src/View/AbstractPropertiesDialog.vala:157
+#: ../src/View/AbstractPropertiesDialog.vala:160
+#: ../src/View/PropertiesWindow.vala:427 ../src/View/PropertiesWindow.vala:463
 msgid "Unknown"
 msgstr "未知"
 
-#: ../src/View/AbstractPropertiesDialog.vala:157
+#: ../src/View/AbstractPropertiesDialog.vala:156
 msgid "Available:"
 msgstr "可使用："
 
-#: ../src/View/AbstractPropertiesDialog.vala:160
+#: ../src/View/AbstractPropertiesDialog.vala:159
 msgid "Used:"
 msgstr "已使用："
 
-#: ../src/View/AbstractDirectoryView.vala:561
+#: ../src/View/AbstractDirectoryView.vala:550
 msgid "Failed to preview"
 msgstr "無法預覽"
 
-#: ../src/View/AbstractDirectoryView.vala:820
+#: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
 msgstr "無法開啟這份檔案"
 
-#: ../src/View/AbstractDirectoryView.vala:833
+#: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
 msgstr "無法辨識要開啓的檔案類型"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1555
 msgid "Cannot drop this file"
 msgstr "無法放下此檔案"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1555
 msgid "Invalid file name provided"
 msgstr "提供的檔名無效"
 
-#: ../src/View/AbstractDirectoryView.vala:2012
+#: ../src/View/AbstractDirectoryView.vala:2008
 msgid "Invalid"
 msgstr "無效"
 
-#: ../src/View/AbstractDirectoryView.vala:2018
+#: ../src/View/AbstractDirectoryView.vala:2014
 msgid "Run"
 msgstr "執行"
 
-#: ../src/View/AbstractDirectoryView.vala:2023
+#: ../src/View/AbstractDirectoryView.vala:2019
 msgid "Open in %s"
 msgstr "以 %s 開啟"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2029
 msgid "Open in"
 msgstr "開啟方式"
 
-#: ../src/View/AbstractDirectoryView.vala:2035
+#: ../src/View/AbstractDirectoryView.vala:2031
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr "以此開啟"
 
-#: ../src/View/AbstractDirectoryView.vala:2095
+#: ../src/View/AbstractDirectoryView.vala:2091
 msgid "Other Application"
 msgstr "其他應用程式"
 
-#: ../src/View/AbstractDirectoryView.vala:2353
+#: ../src/View/AbstractDirectoryView.vala:2352
 msgid "Untitled %s"
 msgstr "未命名 %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2788
+#: ../src/View/AbstractDirectoryView.vala:2652
+#: ../src/View/AbstractDirectoryView.vala:2817
+msgid "Cannot remove files from here"
+msgstr "無法從此處移除檔案"
+
+#: ../src/View/AbstractDirectoryView.vala:2653
+#: ../src/View/AbstractDirectoryView.vala:2808
+#: ../src/View/AbstractDirectoryView.vala:2818
+msgid "You do not have permission to change this location"
+msgstr "您沒有對此位置作更改的權利"
+
+#: ../src/View/AbstractDirectoryView.vala:2790
 msgid "Cannot copy files that are in the trash"
 msgstr "無法複製垃圾筒中的檔案"
 
-#: ../src/View/AbstractDirectoryView.vala:2789
+#: ../src/View/AbstractDirectoryView.vala:2791
 msgid "Cutting the selection instead"
 msgstr "改剪下選取項目"
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1301
+#: ../src/View/AbstractDirectoryView.vala:2807
+msgid "Cannot paste files here"
+msgstr "無法在此處貼上檔案"
+
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
 msgid "%u folders"
 msgstr "%u 個資料夾"
 
@@ -1703,8 +1709,8 @@ msgstr " 與另外 %u 個項目 (%s) 已選取"
 msgid " selected"
 msgstr " 已選取"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1272
-#: ../src/View/PropertiesWindow.vala:1311
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1231
+#: ../src/View/PropertiesWindow.vala:1270
 msgid "%u folder"
 msgstr "%u 個資料夾"
 
@@ -1749,210 +1755,206 @@ msgstr "%s 份檔案無法讀取"
 msgid "%u files not readable"
 msgstr "%u 份檔案無法讀取"
 
-#: ../src/View/PropertiesWindow.vala:202
+#: ../src/View/PropertiesWindow.vala:201
 msgid "Permissions"
 msgstr "權限"
 
-#: ../src/View/PropertiesWindow.vala:229
-msgid "Preview"
-msgstr "預覽"
-
-#: ../src/View/PropertiesWindow.vala:245
+#: ../src/View/PropertiesWindow.vala:222
 msgid "Actual Size Could Be Larger"
 msgstr "實際大小可能更大"
 
-#: ../src/View/PropertiesWindow.vala:245
+#: ../src/View/PropertiesWindow.vala:222
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] "%i 份檔案無法讀取，因為權限問題或其他錯誤。"
 
-#: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
+#: ../src/View/PropertiesWindow.vala:241 ../src/View/PropertiesWindow.vala:260
 msgid "unknown"
 msgstr "未知"
 
-#: ../src/View/PropertiesWindow.vala:461
+#: ../src/View/PropertiesWindow.vala:438
 msgid "Loading…"
 msgstr "載入中…"
 
-#: ../src/View/PropertiesWindow.vala:492
+#: ../src/View/PropertiesWindow.vala:469
 msgid "Could not be determined"
 msgstr "無法判定"
 
-#: ../src/View/PropertiesWindow.vala:528
+#: ../src/View/PropertiesWindow.vala:505
 msgid "Contains:"
 msgstr "包含："
 
-#: ../src/View/PropertiesWindow.vala:544
+#: ../src/View/PropertiesWindow.vala:521
 msgid "Created:"
 msgstr "建立時間："
 
-#: ../src/View/PropertiesWindow.vala:552
+#: ../src/View/PropertiesWindow.vala:529
 msgid "Modified:"
 msgstr "修改時間："
 
-#: ../src/View/PropertiesWindow.vala:561
+#: ../src/View/PropertiesWindow.vala:538
 msgid "Last Access:"
 msgstr "上次存取："
 
-#: ../src/View/PropertiesWindow.vala:572
+#: ../src/View/PropertiesWindow.vala:549
 msgid "Deleted:"
 msgstr "刪除時間："
 
-#: ../src/View/PropertiesWindow.vala:582
+#: ../src/View/PropertiesWindow.vala:559
 msgid "Mimetype:"
 msgstr "MIME 類型："
 
-#: ../src/View/PropertiesWindow.vala:589
+#: ../src/View/PropertiesWindow.vala:566
 msgid "Resolution:"
 msgstr "解析度："
 
-#: ../src/View/PropertiesWindow.vala:607
+#: ../src/View/PropertiesWindow.vala:584
 msgid "Target:"
 msgstr "目標："
 
-#: ../src/View/PropertiesWindow.vala:615
+#: ../src/View/PropertiesWindow.vala:592
 msgid "Original Location:"
 msgstr "原始位置："
 
-#: ../src/View/PropertiesWindow.vala:638
+#: ../src/View/PropertiesWindow.vala:615
 msgid "Other Application…"
 msgstr "其他應用程式…"
 
-#: ../src/View/PropertiesWindow.vala:658
+#: ../src/View/PropertiesWindow.vala:635
 msgid "Open with:"
 msgstr "以此開啟："
 
-#: ../src/View/PropertiesWindow.vala:752
+#: ../src/View/PropertiesWindow.vala:729
 msgid "Read"
 msgstr "讀取"
 
-#: ../src/View/PropertiesWindow.vala:756
+#: ../src/View/PropertiesWindow.vala:733
 msgid "Write"
 msgstr "寫入"
 
-#: ../src/View/PropertiesWindow.vala:760
+#: ../src/View/PropertiesWindow.vala:737
 msgid "Execute"
 msgstr "執行"
 
-#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:983
+#: ../src/View/PropertiesWindow.vala:944 ../src/View/PropertiesWindow.vala:960
 msgid "Owner:"
 msgstr "擁有者："
 
-#: ../src/View/PropertiesWindow.vala:973 ../src/View/PropertiesWindow.vala:987
+#: ../src/View/PropertiesWindow.vala:950 ../src/View/PropertiesWindow.vala:964
 msgid "Group:"
 msgstr "群組："
 
-#: ../src/View/PropertiesWindow.vala:991
+#: ../src/View/PropertiesWindow.vala:968
 msgid "Everyone:"
 msgstr "任何人："
 
-#: ../src/View/PropertiesWindow.vala:1257
+#: ../src/View/PropertiesWindow.vala:1216
 msgid "%u subfolders and %u files"
 msgstr "%u 個子資料夾和 %u 份檔案"
 
-#: ../src/View/PropertiesWindow.vala:1259
+#: ../src/View/PropertiesWindow.vala:1218
 msgid "%u subfolders and %u file"
 msgstr "%u 個子資料夾和 %u 份檔案"
 
-#: ../src/View/PropertiesWindow.vala:1262
+#: ../src/View/PropertiesWindow.vala:1221
 msgid "%u subfolders"
 msgstr "%u 個子資料夾"
 
-#: ../src/View/PropertiesWindow.vala:1267
+#: ../src/View/PropertiesWindow.vala:1226
 msgid "%u subfolder and %u files"
 msgstr "%u 個子資料夾和 %u 份檔案"
 
-#: ../src/View/PropertiesWindow.vala:1269
+#: ../src/View/PropertiesWindow.vala:1228
 msgid "%u subfolder and %u file"
 msgstr "%u 個子資料夾和 %u 份檔案"
 
-#: ../src/View/PropertiesWindow.vala:1278
-#: ../src/View/PropertiesWindow.vala:1317
+#: ../src/View/PropertiesWindow.vala:1237
+#: ../src/View/PropertiesWindow.vala:1276
 msgid "%u files"
 msgstr "%u 份檔案"
 
-#: ../src/View/PropertiesWindow.vala:1280
-#: ../src/View/PropertiesWindow.vala:1319
+#: ../src/View/PropertiesWindow.vala:1239
+#: ../src/View/PropertiesWindow.vala:1278
 msgid "%u file"
 msgstr "%u 份檔案"
 
-#: ../src/View/PropertiesWindow.vala:1296
+#: ../src/View/PropertiesWindow.vala:1255
 msgid "%u selected items (%u folders and %u files)"
 msgstr "%u 個選取項目 (%u 個資料夾和 %u 份檔案)"
 
-#: ../src/View/PropertiesWindow.vala:1298
+#: ../src/View/PropertiesWindow.vala:1257
 msgid "%u selected items (%u folders and %u file)"
 msgstr "%u 個選取項目 (%u 個資料夾和 %u 份檔案)"
 
-#: ../src/View/PropertiesWindow.vala:1306
+#: ../src/View/PropertiesWindow.vala:1265
 msgid "%u selected items (%u folder and %u files)"
 msgstr "%u 個選取項目 (%u 個資料夾和 %u 份檔案)"
 
-#: ../src/View/PropertiesWindow.vala:1308
+#: ../src/View/PropertiesWindow.vala:1267
 msgid "%u selected items (%u folder and %u file)"
 msgstr "%u 個選取項目 (%u 個資料夾和 %u 份檔案)"
 
-#: ../src/View/ViewContainer.vala:342
+#: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
 msgstr "（以管理員身份）"
 
-#: ../src/View/ViewContainer.vala:356
+#: ../src/View/ViewContainer.vala:367
 msgid "You cannot create a folder here."
 msgstr "您無法在這裡建立資料夾。"
 
-#: ../src/View/ViewContainer.vala:358
+#: ../src/View/ViewContainer.vala:369
 msgid "The network is unavailable"
 msgstr "網路無法使用"
 
-#: ../src/View/ViewContainer.vala:359
+#: ../src/View/ViewContainer.vala:370
 msgid "A working network is needed to reach this folder"
 msgstr "需要有能用的網路才能到這個資料夾"
 
-#: ../src/View/ViewContainer.vala:361
+#: ../src/View/ViewContainer.vala:372
 msgid "This Folder Does Not Belong to You"
 msgstr "這個資料夾不屬於您"
 
-#: ../src/View/ViewContainer.vala:362
+#: ../src/View/ViewContainer.vala:373
 msgid "You don't have permission to view this folder."
 msgstr "您未取得檢視此資料夾的許可。"
 
-#: ../src/View/ViewContainer.vala:364
+#: ../src/View/ViewContainer.vala:375
 msgid "Unable to Mount Folder"
 msgstr "無法掛載資料夾"
 
-#: ../src/View/ViewContainer.vala:365
+#: ../src/View/ViewContainer.vala:376
 msgid "Could not connect to the server for this folder."
 msgstr "無法連接到這個資料夾的所屬伺服器。"
 
-#: ../src/View/ViewContainer.vala:367
-msgid "Unable show Folder"
+#: ../src/View/ViewContainer.vala:378
+msgid "Unable to Show Folder"
 msgstr "無法顯示資料夾"
 
-#: ../src/View/ViewContainer.vala:368
+#: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
 msgstr "無法定位此資料夾的伺服器。"
 
-#: ../src/View/ViewContainer.vala:378
+#: ../src/View/ViewContainer.vala:389
 msgid "File not Found"
 msgstr "找不到檔案"
 
-#: ../src/View/ViewContainer.vala:379
+#: ../src/View/ViewContainer.vala:390
 msgid "The file selected no longer exists."
 msgstr "選取的檔案不再存在。"
 
-#: ../src/View/Slot.vala:39
+#: ../src/View/Slot.vala:32
 msgid "This Folder Is Empty"
 msgstr "空的資料夾"
 
-#: ../src/View/Slot.vala:40
+#: ../src/View/Slot.vala:33
 msgid "Trash Is Empty"
 msgstr "空的垃圾桶"
 
-#: ../src/View/Slot.vala:41
+#: ../src/View/Slot.vala:34
 msgid "There Are No Recent Files"
 msgstr "沒有最近的檔案"
 
-#: ../src/View/Slot.vala:42
+#: ../src/View/Slot.vala:35
 msgid "Access Denied"
 msgstr "拒絕存取"
 
@@ -2063,7 +2065,15 @@ msgstr "連結到此處"
 msgid "Cancel"
 msgstr "取消"
 
-#: ../libcore/FileUtils.vala:259
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "無法決定「%s」的原始位置 "
+
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "此項目不能從垃圾筒還原。"
+
+#: ../libcore/FileUtils.vala:343
 msgid "Could not rename to '%s'"
 msgstr "無法重新命名為「%s」"
 
@@ -2079,11 +2089,11 @@ msgstr "在新視窗中開啟"
 msgid "Open in Other Application…"
 msgstr "以其他應用程式開啟…"
 
-#: ../libwidgets/View/LocationBar.vala:171
+#: ../libwidgets/View/LocationBar.vala:181
 msgid "Reload this folder"
 msgstr "重新載入此資料夾"
 
-#: ../libwidgets/View/LocationBar.vala:174
+#: ../libwidgets/View/LocationBar.vala:184
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Enter search term or path"
 msgstr "請輸入搜尋詞語或路徑"
@@ -2173,6 +2183,26 @@ msgstr "導航至 %s"
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:274
 msgid "Go to %s"
 msgstr "前往 %s"
+
+#: ../libwidgets/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "已選取多種檔案類型"
+
+#: ../libwidgets/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "無法用一個程式就開啟所有這些類型的檔案"
+
+#: ../libwidgets/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "無法開啟檔案"
+
+#: ../libwidgets/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "無法開啟 URI"
+
+#: ../libwidgets/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "無法使用此程式開啟檔案或 URI"
 
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"

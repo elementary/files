@@ -113,8 +113,21 @@ namespace Marlin.Places {
         /* Remember path at button press */
         Gtk.TreePath? click_path = null;
 
+        /* For cancelling async tooltip updates when update_places re-entered */ 
+        Cancellable? update_cancellable = null;
+
         public signal bool request_focus ();
         public signal void sync_needed ();
+
+        public new void grab_focus () {
+            tree_view.grab_focus ();
+        }
+
+        public new bool has_focus {
+            get {
+                return tree_view.has_focus;
+            }
+        }
 
         public Sidebar (Marlin.View.Window window) {
             init ();  /* creates the Gtk.TreeModel store. */
@@ -458,6 +471,12 @@ namespace Marlin.Places {
             string mount_uri;
             GLib.File root;
 
+            if (update_cancellable != null) {
+                update_cancellable.cancel ();
+            }
+
+            update_cancellable = new Cancellable ();
+
             this.last_selected_uri = null;
             this.n_builtins_before = 0;
 
@@ -552,7 +571,7 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-            add_device_tooltip.begin (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI));
+            add_device_tooltip.begin (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI), update_cancellable);
 
             /* Add all connected drives */
             GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
@@ -605,7 +624,7 @@ namespace Marlin.Places {
                                            0,
                                            null);
 
-                    add_device_tooltip.begin (last_iter, root);
+                    add_device_tooltip.begin (last_iter, root, update_cancellable);
                 } else {
                 /* see comment above in why we add an icon for an unmounted mountable volume */
                     var name = volume.get_name ();
@@ -655,7 +674,7 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-                add_device_tooltip.begin (last_iter, root);
+                add_device_tooltip.begin (last_iter, root, update_cancellable);
             }
 
             /* ADD NETWORK CATEGORY */
@@ -688,7 +707,7 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-                add_device_tooltip.begin (last_iter, root);
+                add_device_tooltip.begin (last_iter, root, update_cancellable);
             }
 
             /* Add Entire Network BUILTIN */
@@ -752,7 +771,7 @@ namespace Marlin.Places {
                                            0,
                                            null);
 
-                    add_device_tooltip.begin (last_iter, root);
+                    add_device_tooltip.begin (last_iter, root, update_cancellable);
                 } else {
                     /* Do show the unmounted volumes in the sidebar;
                     * this is so the user can mount it (in case automounting
@@ -777,34 +796,39 @@ namespace Marlin.Places {
             }
         }
 
-        private async void get_filesystem_space_and_type (GLib.File root, out uint64 fs_capacity,
-                                                    out uint64 fs_free, out string type) {
+        private async bool get_filesystem_space_and_type (GLib.File root, out uint64 fs_capacity,
+                                                          out uint64 fs_free, out string type,
+                                                          Cancellable update_cancellable) {
             fs_capacity = 0;
             fs_free = 0;
             type = "";
 
             string scheme = Uri.parse_scheme (root.get_uri ());
             if ("sftp davs".contains (scheme)) {
-                return; /* Cannot get info from these protocols */
+                return false; /* Cannot get info from these protocols */
             }
             if ("smb afp".contains (scheme)) {
                 /* Check network is functional */
                 var net_mon = GLib.NetworkMonitor.get_default ();
                 if (!net_mon.get_network_available ()) {
-                    return;
+                    return false;
                 }
             }
 
             GLib.FileInfo info;
             try {
-                info = yield root.query_filesystem_info_async ("filesystem::*", 0, null);
+                info = yield root.query_filesystem_info_async ("filesystem::*", 0, update_cancellable);
             }
             catch (GLib.Error error) {
-                warning ("Error querying %s filesystem info: %s", root.get_uri (), error.message);
+                if (!(error is IOError.CANCELLED)) {
+                    warning ("Error querying %s filesystem info: %s", root.get_uri (), error.message);
+                }
                 info = null;
             }
 
-            if (info != null) {
+            if (update_cancellable.is_cancelled () || info == null) {
+                return false;
+            } else {
                 if (info.has_attribute (FileAttribute.FILESYSTEM_SIZE)) {
                     fs_capacity = info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
                 }
@@ -814,6 +838,7 @@ namespace Marlin.Places {
                 if (info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
                     type = info.get_attribute_as_string (FileAttribute.FILESYSTEM_TYPE);
                 }
+                return true;
             }
         }
 
@@ -833,23 +858,24 @@ namespace Marlin.Places {
             return sb.str.replace ("&", "&amp;").replace (">", "&gt;").replace ("<", "&lt;");
         }
 
-        private async void add_device_tooltip (Gtk.TreeIter iter, GLib.File root) {
+        private async void add_device_tooltip (Gtk.TreeIter iter, GLib.File root, Cancellable update_cancellable) {
 
             uint64 fs_capacity, fs_free;
             string fs_type;
             var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
 
-            yield get_filesystem_space_and_type (root, out fs_capacity, out fs_free, out fs_type);
-            var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
-            if (rowref != null && rowref.valid ()) {
-                Gtk.TreeIter? itr = null;
-                store.get_iter (out itr, rowref.get_path ());
-                store.@set (itr,
-                            Column.FREE_SPACE, fs_free,
-                            Column.DISK_SIZE, fs_capacity,
-                            Column.TOOLTIP, tooltip);
-            } else {
-                warning ("Attempt to add tooltip for %s failed - invalid rowref", root.get_uri ());
+            if (yield get_filesystem_space_and_type (root, out fs_capacity, out fs_free, out fs_type, update_cancellable)) {
+                var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
+                if (rowref != null && rowref.valid ()) {
+                    Gtk.TreeIter? itr = null;
+                    store.get_iter (out itr, rowref.get_path ());
+                    store.@set (itr,
+                                Column.FREE_SPACE, fs_free,
+                                Column.DISK_SIZE, fs_capacity,
+                                Column.TOOLTIP, tooltip);
+                } else {
+                    warning ("Attempt to add tooltip for %s failed - invalid rowref", root.get_uri ());
+                }
             }
         }
 
@@ -1587,15 +1613,24 @@ namespace Marlin.Places {
         }
 
         private void expander_update_pref_state (Marlin.PlaceType type, bool flag) {
+            /* Do not update settings if they have not changed.  Otherwise an infinite loop occurs
+             * when viewing the ~/.config/dconf/user folder.
+             */  
             switch (type) {
                 case Marlin.PlaceType.NETWORK_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
+                    }
                     break;
                 case Marlin.PlaceType.STORAGE_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-devices-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-devices-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-devices-expander", flag);
+                    }
                     break;
                 case Marlin.PlaceType.BOOKMARKS_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-personal-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-personal-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-personal-expander", flag);
+                    }
                     break;
             }
         }

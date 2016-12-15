@@ -629,24 +629,29 @@ marlin_clipboard_manager_get_can_paste (MarlinClipboardManager *manager)
     return manager->can_paste;
 }
 
-
-
 /**
  * marlin_clipboard_manager_has_cutted_file:
  * @manager : a #MarlinClipboardManager.
- * @file    : a #GOFFile.
+ * @file    : a #GOFFile or NULL
  *
- * Checks whether @file was cutted to the given @manager earlier.
+ * if @file is not NULL, checks whether @file was cutted to the given @manager earlier.
+ * if @file is NULL, returns true if there are any cut files in the clipboard. 
  *
- * Return value: %TRUE if @file is on the cutted list of @manager.
+ * Return value: %TRUE if @file is on the cutted list of @manager, or when @file is NULL,
+ * whether there are any cut files.
 **/
 gboolean
 marlin_clipboard_manager_has_cutted_file (MarlinClipboardManager *manager,
                                           const GOFFile       *file)
 {
     g_return_val_if_fail (MARLIN_IS_CLIPBOARD_MANAGER (manager), FALSE);
-    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
+
+    if (file == NULL) {
+        return manager->files_cutted;
+    }
+
+    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
     return (manager->files_cutted && g_list_find (manager->files, file) != NULL);
 }
 

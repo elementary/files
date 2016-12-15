@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-02 15:55+0000\n"
+"POT-Creation-Date: 2016-10-10 13:06-0500\n"
+"PO-Revision-Date: 2016-12-10 08:53+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:46+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
+"X-Launchpad-Export-Date: 2016-12-11 05:15+0000\n"
+"X-Generator: Launchpad (build 18292)\n"
 
 #: ../src/marlin-clipboard-manager.c:365
 msgid "There is nothing on the clipboard to paste"
@@ -141,15 +141,6 @@ msgstr "_Husk denne adgangskode"
 msgid "Operation cancelled"
 msgstr "Handlingen blev afbrudt"
 
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "Kunne ikke bestemme den originale placering af \"%s\" "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "Elementet kan ikke genskabes fra papirkurven"
-
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
@@ -238,7 +229,7 @@ msgstr "Oprindelig fil"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:518
+#: ../src/View/PropertiesWindow.vala:495
 msgid "Size:"
 msgstr "Størrelse:"
 
@@ -246,7 +237,7 @@ msgstr "Størrelse:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:525
+#: ../src/View/PropertiesWindow.vala:502
 msgid "Type:"
 msgstr "Type:"
 
@@ -301,28 +292,28 @@ msgstr "Filkonflikt"
 msgid "link to %s"
 msgstr "henvisning til %s"
 
-#: ../libcore/gof-file.c:1914
+#: ../libcore/gof-file.c:1908
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Kunne ikke fortolke desktop filen: %s"
 
-#: ../libcore/gof-file.c:1951
+#: ../libcore/gof-file.c:1945
 msgid "No Exec field specified"
 msgstr "Intet 'Exec' felt angivet"
 
-#: ../libcore/gof-file.c:1970
+#: ../libcore/gof-file.c:1964
 msgid "No URL field specified"
 msgstr "Intet URL-felt angivet"
 
-#: ../libcore/gof-file.c:1976
+#: ../libcore/gof-file.c:1970
 msgid "Invalid desktop file"
 msgstr "Ugyldig skrivebordsfil"
 
-#: ../libcore/gof-file.c:2271
+#: ../libcore/gof-file.c:2265
 msgid "Slashes are not allowed in filenames"
 msgstr "Skråstreger er ikke tilladt i filnavne"
 
-#: ../libcore/gof-file.c:2291
+#: ../libcore/gof-file.c:2285
 msgid "Toplevel files cannot be renamed"
 msgstr "Topniveau-filer kan ikke omdøbes"
 
@@ -539,7 +530,7 @@ msgstr ""
 "Alle elementer i papirkurven på dette drev, vil blive slettet permanent."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1487
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
 msgid "Empty _Trash"
 msgstr "_Tøm papirkurven"
 
@@ -1501,126 +1492,126 @@ msgstr "%a %-d. %b %Y kl. %H:%M"
 msgid "Preparing"
 msgstr "Forbereder"
 
-#: ../filechooser-module/FileChooserDialog.vala:69
-#: ../libwidgets/Chrome/TopMenu.vala:51
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../libwidgets/Chrome/TopMenu.vala:64
 msgid "Previous"
 msgstr "Forrige"
 
-#: ../filechooser-module/FileChooserDialog.vala:73
-#: ../libwidgets/Chrome/TopMenu.vala:55
+#: ../filechooser-module/FileChooserDialog.vala:74
+#: ../libwidgets/Chrome/TopMenu.vala:68
 msgid "Next"
 msgstr "Næste"
 
-#: ../src/View/Window.vala:204
+#: ../src/View/Window.vala:210
 msgid "Files isn't your default file manager."
 msgstr "Filer er ikke dit standard filhåndteringsprogram."
 
-#: ../src/View/Window.vala:210
+#: ../src/View/Window.vala:216
 msgid "Set as Default"
 msgstr "Brug som standard"
 
-#: ../src/View/Window.vala:216
+#: ../src/View/Window.vala:222
 msgid "Ignore"
 msgstr "Ignorér"
 
-#: ../src/View/Sidebar.vala:472
+#: ../src/View/Sidebar.vala:481
 msgid "Personal"
 msgstr "Personlig"
 
-#: ../src/View/Sidebar.vala:473
+#: ../src/View/Sidebar.vala:482
 msgid "Your common places and bookmarks"
 msgstr "Dine almindelige steder og bogmærker"
 
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:331
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:342
 msgid "Home"
 msgstr "Hjem"
 
-#: ../src/View/Sidebar.vala:492
+#: ../src/View/Sidebar.vala:501
 msgid "Open your personal folder"
 msgstr "Åbn din personlige mappe"
 
-#: ../src/View/Sidebar.vala:507
+#: ../src/View/Sidebar.vala:516
 msgid "View the list of recently used files"
 msgstr "Se listen med de seneste filer"
 
-#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:90
+#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
 msgid "Trash"
 msgstr "Papirkurv"
 
-#: ../src/View/Sidebar.vala:535
+#: ../src/View/Sidebar.vala:544
 msgid "Open the Trash"
 msgstr "Åben papirkurven"
 
-#: ../src/View/Sidebar.vala:539
+#: ../src/View/Sidebar.vala:548
 msgid "Devices"
 msgstr "Enheder"
 
-#: ../src/View/Sidebar.vala:540
+#: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
 msgstr "Dine lokale partitioner og enheder"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
-#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
+#: ../src/View/Sidebar.vala:555 ../src/View/VolumePropertiesWindow.vala:44
+#: ../src/View/ViewContainer.vala:344 ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "Filsystem"
 
-#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:87
+#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
 msgstr "Netværk"
 
-#: ../src/View/Sidebar.vala:665
+#: ../src/View/Sidebar.vala:674
 msgid "Your network places"
 msgstr "Dine netværkssteder"
 
-#: ../src/View/Sidebar.vala:697
+#: ../src/View/Sidebar.vala:706
 msgid "Entire Network"
 msgstr "Hele netværk"
 
-#: ../src/View/Sidebar.vala:704
+#: ../src/View/Sidebar.vala:713
 msgid "Browse the contents of the network"
 msgstr "Gennemse indholdet af netværket"
 
-#: ../src/View/Sidebar.vala:830
+#: ../src/View/Sidebar.vala:845
 msgid "(%s Free of %s)"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1325
+#: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
 msgstr "Kan ikke starte %s"
 
-#: ../src/View/Sidebar.vala:1429
+#: ../src/View/Sidebar.vala:1445
 msgid "Open"
 msgstr "Åbn"
 
-#: ../src/View/Sidebar.vala:1437
+#: ../src/View/Sidebar.vala:1453
 msgid "Open in New _Tab"
 msgstr "Åbn i ny _fane"
 
-#: ../src/View/Sidebar.vala:1443
+#: ../src/View/Sidebar.vala:1459
 msgid "Open in New _Window"
 msgstr "Åbn i nyt _vindue"
 
-#: ../src/View/Sidebar.vala:1451
+#: ../src/View/Sidebar.vala:1467
 msgid "Remove"
 msgstr "Fjern"
 
-#: ../src/View/Sidebar.vala:1459 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Omdøb"
 
-#: ../src/View/Sidebar.vala:1468
+#: ../src/View/Sidebar.vala:1484
 msgid "_Mount"
 msgstr "_Montér"
 
-#: ../src/View/Sidebar.vala:1474
+#: ../src/View/Sidebar.vala:1490
 msgid "_Unmount"
 msgstr "_Afmontér"
 
-#: ../src/View/Sidebar.vala:1480
+#: ../src/View/Sidebar.vala:1496
 msgid "_Eject"
 msgstr "_Skub ud"
 
-#: ../src/View/Sidebar.vala:1494 ../src/View/PropertiesWindow.vala:130
+#: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:129
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Egenskaber"
@@ -1630,7 +1621,7 @@ msgid "Disk Properties"
 msgstr "Lager-egenskaber:"
 
 #: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:597
+#: ../src/View/PropertiesWindow.vala:574
 msgid "Location:"
 msgstr "Lokation:"
 
@@ -1654,7 +1645,7 @@ msgstr "Type"
 msgid "Modified"
 msgstr "Ændret"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:366
 msgid "This Folder Does Not Exist"
 msgstr "Denne mappe eksisterer ikke"
 
@@ -1680,99 +1671,114 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractPropertiesDialog.vala:48
+#: ../src/View/AbstractPropertiesDialog.vala:47
 msgid "Info"
 msgstr "Info"
 
-#: ../src/View/AbstractPropertiesDialog.vala:57
+#: ../src/View/AbstractPropertiesDialog.vala:56
 msgid "General"
 msgstr "Generelt"
 
-#: ../src/View/AbstractPropertiesDialog.vala:76
+#: ../src/View/AbstractPropertiesDialog.vala:75
 msgid "Close"
 msgstr "Luk"
 
-#: ../src/View/AbstractPropertiesDialog.vala:138
+#: ../src/View/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
 msgstr ""
 
-#: ../src/View/AbstractPropertiesDialog.vala:154
+#: ../src/View/AbstractPropertiesDialog.vala:153
 msgid "Capacity:"
 msgstr "Kapacitet:"
 
-#: ../src/View/AbstractPropertiesDialog.vala:155
-#: ../src/View/AbstractPropertiesDialog.vala:158
-#: ../src/View/AbstractPropertiesDialog.vala:161
-#: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
+#: ../src/View/AbstractPropertiesDialog.vala:154
+#: ../src/View/AbstractPropertiesDialog.vala:157
+#: ../src/View/AbstractPropertiesDialog.vala:160
+#: ../src/View/PropertiesWindow.vala:427 ../src/View/PropertiesWindow.vala:463
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: ../src/View/AbstractPropertiesDialog.vala:157
+#: ../src/View/AbstractPropertiesDialog.vala:156
 msgid "Available:"
 msgstr "Tilgængelig:"
 
-#: ../src/View/AbstractPropertiesDialog.vala:160
+#: ../src/View/AbstractPropertiesDialog.vala:159
 msgid "Used:"
 msgstr "I brug:"
 
-#: ../src/View/AbstractDirectoryView.vala:561
+#: ../src/View/AbstractDirectoryView.vala:550
 msgid "Failed to preview"
 msgstr "Forhåndsvisning fejlede"
 
-#: ../src/View/AbstractDirectoryView.vala:820
+#: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:833
+#: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1555
 msgid "Cannot drop this file"
 msgstr "Kan ikke droppe denne fil"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1555
 msgid "Invalid file name provided"
 msgstr "Ugyldigt filnavn angivet"
 
-#: ../src/View/AbstractDirectoryView.vala:2012
+#: ../src/View/AbstractDirectoryView.vala:2008
 msgid "Invalid"
 msgstr "Ugyldig"
 
-#: ../src/View/AbstractDirectoryView.vala:2018
+#: ../src/View/AbstractDirectoryView.vala:2014
 msgid "Run"
 msgstr "Kør"
 
-#: ../src/View/AbstractDirectoryView.vala:2023
+#: ../src/View/AbstractDirectoryView.vala:2019
 msgid "Open in %s"
 msgstr "Åbn i %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2029
 msgid "Open in"
 msgstr "Åben i"
 
-#: ../src/View/AbstractDirectoryView.vala:2035
+#: ../src/View/AbstractDirectoryView.vala:2031
 #: ../libwidgets/View/BreadcrumbsEntry.vala:451
 msgid "Open with"
 msgstr "Åbn med"
 
-#: ../src/View/AbstractDirectoryView.vala:2095
+#: ../src/View/AbstractDirectoryView.vala:2091
 msgid "Other Application"
 msgstr "Anden applikation"
 
-#: ../src/View/AbstractDirectoryView.vala:2353
+#: ../src/View/AbstractDirectoryView.vala:2352
 msgid "Untitled %s"
 msgstr "Unavngivet %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2788
+#: ../src/View/AbstractDirectoryView.vala:2652
+#: ../src/View/AbstractDirectoryView.vala:2817
+msgid "Cannot remove files from here"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2653
+#: ../src/View/AbstractDirectoryView.vala:2808
+#: ../src/View/AbstractDirectoryView.vala:2818
+msgid "You do not have permission to change this location"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2790
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikke kopiere filer der er i papirkurven"
 
-#: ../src/View/AbstractDirectoryView.vala:2789
+#: ../src/View/AbstractDirectoryView.vala:2791
 msgid "Cutting the selection instead"
 msgstr "Klipper det markerede i stedet"
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1301
+#: ../src/View/AbstractDirectoryView.vala:2807
+msgid "Cannot paste files here"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
 msgid "%u folders"
 msgstr "%u mapper"
 
@@ -1788,8 +1794,8 @@ msgstr " og %u yderligere elementer (%s) er valgt"
 msgid " selected"
 msgstr " valgt"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1272
-#: ../src/View/PropertiesWindow.vala:1311
+#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1231
+#: ../src/View/PropertiesWindow.vala:1270
 msgid "%u folder"
 msgstr "%u mappe"
 
@@ -1834,211 +1840,207 @@ msgstr ""
 msgid "%u files not readable"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:202
+#: ../src/View/PropertiesWindow.vala:201
 msgid "Permissions"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:229
-msgid "Preview"
-msgstr "Forhåndsvisning"
-
-#: ../src/View/PropertiesWindow.vala:245
+#: ../src/View/PropertiesWindow.vala:222
 msgid "Actual Size Could Be Larger"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:245
+#: ../src/View/PropertiesWindow.vala:222
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
+#: ../src/View/PropertiesWindow.vala:241 ../src/View/PropertiesWindow.vala:260
 msgid "unknown"
 msgstr "ukendt"
 
-#: ../src/View/PropertiesWindow.vala:461
+#: ../src/View/PropertiesWindow.vala:438
 msgid "Loading…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:492
+#: ../src/View/PropertiesWindow.vala:469
 msgid "Could not be determined"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:528
+#: ../src/View/PropertiesWindow.vala:505
 msgid "Contains:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:544
+#: ../src/View/PropertiesWindow.vala:521
 msgid "Created:"
 msgstr "Oprettet:"
 
-#: ../src/View/PropertiesWindow.vala:552
+#: ../src/View/PropertiesWindow.vala:529
 msgid "Modified:"
 msgstr "Ændret:"
 
-#: ../src/View/PropertiesWindow.vala:561
+#: ../src/View/PropertiesWindow.vala:538
 msgid "Last Access:"
 msgstr "Sidste tilgang:"
 
-#: ../src/View/PropertiesWindow.vala:572
+#: ../src/View/PropertiesWindow.vala:549
 msgid "Deleted:"
 msgstr "Slettet"
 
-#: ../src/View/PropertiesWindow.vala:582
+#: ../src/View/PropertiesWindow.vala:559
 msgid "Mimetype:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:589
+#: ../src/View/PropertiesWindow.vala:566
 msgid "Resolution:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:607
+#: ../src/View/PropertiesWindow.vala:584
 msgid "Target:"
 msgstr "Mål:"
 
-#: ../src/View/PropertiesWindow.vala:615
+#: ../src/View/PropertiesWindow.vala:592
 msgid "Original Location:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:638
+#: ../src/View/PropertiesWindow.vala:615
 msgid "Other Application…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:658
+#: ../src/View/PropertiesWindow.vala:635
 msgid "Open with:"
 msgstr "Åbn med:"
 
-#: ../src/View/PropertiesWindow.vala:752
+#: ../src/View/PropertiesWindow.vala:729
 msgid "Read"
 msgstr "Læs"
 
-#: ../src/View/PropertiesWindow.vala:756
+#: ../src/View/PropertiesWindow.vala:733
 msgid "Write"
 msgstr "Skriv"
 
-#: ../src/View/PropertiesWindow.vala:760
+#: ../src/View/PropertiesWindow.vala:737
 msgid "Execute"
 msgstr "Kør"
 
-#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:983
+#: ../src/View/PropertiesWindow.vala:944 ../src/View/PropertiesWindow.vala:960
 msgid "Owner:"
 msgstr "Ejer:"
 
-#: ../src/View/PropertiesWindow.vala:973 ../src/View/PropertiesWindow.vala:987
+#: ../src/View/PropertiesWindow.vala:950 ../src/View/PropertiesWindow.vala:964
 msgid "Group:"
 msgstr "Gruppe:"
 
-#: ../src/View/PropertiesWindow.vala:991
+#: ../src/View/PropertiesWindow.vala:968
 msgid "Everyone:"
 msgstr "Alle:"
 
-#: ../src/View/PropertiesWindow.vala:1257
+#: ../src/View/PropertiesWindow.vala:1216
 msgid "%u subfolders and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1259
+#: ../src/View/PropertiesWindow.vala:1218
 msgid "%u subfolders and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1262
+#: ../src/View/PropertiesWindow.vala:1221
 msgid "%u subfolders"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1267
+#: ../src/View/PropertiesWindow.vala:1226
 msgid "%u subfolder and %u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1269
+#: ../src/View/PropertiesWindow.vala:1228
 msgid "%u subfolder and %u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1278
-#: ../src/View/PropertiesWindow.vala:1317
+#: ../src/View/PropertiesWindow.vala:1237
+#: ../src/View/PropertiesWindow.vala:1276
 msgid "%u files"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1280
-#: ../src/View/PropertiesWindow.vala:1319
+#: ../src/View/PropertiesWindow.vala:1239
+#: ../src/View/PropertiesWindow.vala:1278
 msgid "%u file"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1296
+#: ../src/View/PropertiesWindow.vala:1255
 msgid "%u selected items (%u folders and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1298
+#: ../src/View/PropertiesWindow.vala:1257
 msgid "%u selected items (%u folders and %u file)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1306
+#: ../src/View/PropertiesWindow.vala:1265
 msgid "%u selected items (%u folder and %u files)"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1308
+#: ../src/View/PropertiesWindow.vala:1267
 msgid "%u selected items (%u folder and %u file)"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:342
+#: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
 msgstr "(som Administrator)"
 
-#: ../src/View/ViewContainer.vala:356
+#: ../src/View/ViewContainer.vala:367
 msgid "You cannot create a folder here."
 msgstr "Du kan ikke oprette en mappe her"
 
-#: ../src/View/ViewContainer.vala:358
+#: ../src/View/ViewContainer.vala:369
 msgid "The network is unavailable"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:359
+#: ../src/View/ViewContainer.vala:370
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:361
+#: ../src/View/ViewContainer.vala:372
 msgid "This Folder Does Not Belong to You"
 msgstr "Denne mappe tilhører ikke dig"
 
-#: ../src/View/ViewContainer.vala:362
+#: ../src/View/ViewContainer.vala:373
 msgid "You don't have permission to view this folder."
 msgstr "Du har ikke tilladelse til at se denne mappe."
 
-#: ../src/View/ViewContainer.vala:364
+#: ../src/View/ViewContainer.vala:375
 msgid "Unable to Mount Folder"
 msgstr "Kan ikke montere mappe"
 
-#: ../src/View/ViewContainer.vala:365
+#: ../src/View/ViewContainer.vala:376
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:367
-msgid "Unable show Folder"
+#: ../src/View/ViewContainer.vala:378
+msgid "Unable to Show Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:368
+#: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
 msgstr "Kan ikke finde serveren for denne mappe."
 
-#: ../src/View/ViewContainer.vala:378
+#: ../src/View/ViewContainer.vala:389
 msgid "File not Found"
 msgstr "Filen blev ikke fundet"
 
-#: ../src/View/ViewContainer.vala:379
+#: ../src/View/ViewContainer.vala:390
 msgid "The file selected no longer exists."
 msgstr "Den valgte fil eksisterer ikke længere."
 
-#: ../src/View/Slot.vala:39
+#: ../src/View/Slot.vala:32
 msgid "This Folder Is Empty"
 msgstr "Denne mappe er tom"
 
-#: ../src/View/Slot.vala:40
+#: ../src/View/Slot.vala:33
 msgid "Trash Is Empty"
 msgstr "Papirkurven er tom"
 
-#: ../src/View/Slot.vala:41
+#: ../src/View/Slot.vala:34
 msgid "There Are No Recent Files"
 msgstr "Der er ikke nogen seneste filer"
 
-#: ../src/View/Slot.vala:42
+#: ../src/View/Slot.vala:35
 msgid "Access Denied"
 msgstr "Adgang nægtet"
 
@@ -2149,7 +2151,15 @@ msgstr "Henvis hertil"
 msgid "Cancel"
 msgstr "Annullér"
 
-#: ../libcore/FileUtils.vala:259
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "Kunne ikke bestemme den originale placering af \"%s\" "
+
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "Elementet kan ikke genskabes fra papirkurven"
+
+#: ../libcore/FileUtils.vala:343
 msgid "Could not rename to '%s'"
 msgstr "Kunne ikke omdøbe til \"%s\""
 
@@ -2165,11 +2175,11 @@ msgstr "Åbn i nyt vindue"
 msgid "Open in Other Application…"
 msgstr "Åbn med en anden applikation..."
 
-#: ../libwidgets/View/LocationBar.vala:171
+#: ../libwidgets/View/LocationBar.vala:181
 msgid "Reload this folder"
 msgstr "Genindlæs denne mappe"
 
-#: ../libwidgets/View/LocationBar.vala:174
+#: ../libwidgets/View/LocationBar.vala:184
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Enter search term or path"
 msgstr "Indtast søgeterm eller sti"
@@ -2205,9 +2215,11 @@ msgstr ""
 "  Kasper Steensig Jensen https://launchpad.net/~ksteensig\n"
 "  Kristoffer Andersen https://launchpad.net/~kris24\n"
 "  Mickas Jensen https://launchpad.net/~qrank\n"
+"  Patrick https://launchpad.net/~mangodjango\n"
 "  Rune Jensen https://launchpad.net/~runeofdenmark\n"
 "  Rune Jensen https://launchpad.net/~runeofdenmark-n\n"
 "  Simon https://launchpad.net/~sims73\n"
+"  Steffen Christensen https://launchpad.net/~drmclaser\n"
 "  js https://launchpad.net/~jonas-stisen-mb"
 
 #: ../libwidgets/Resources.vala:83
@@ -2265,6 +2277,26 @@ msgstr "Navigér til %s"
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:274
 msgid "Go to %s"
 msgstr "Gå til %s"
+
+#: ../libwidgets/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr ""
+
+#: ../libwidgets/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr ""
 
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
