@@ -248,7 +248,6 @@ namespace Marlin.Places {
             tree_view.set_search_column (Column.NAME);
             var selection = tree_view.get_selection ();
             selection.set_mode (Gtk.SelectionMode.BROWSE);
-            selection.set_select_function (tree_selection_func);
 
             this.drag_scroll_timer_id = 0;
             tree_view.enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK,
@@ -1687,14 +1686,6 @@ namespace Marlin.Places {
             }
         }
 
-        private bool tree_selection_func (Gtk.TreeSelection selection,
-                                          Gtk.TreeModel model,
-                                          Gtk.TreePath path,
-                                          bool path_currently_selected) {
-        /* Don't allow categories to be selected. */
-            return !category_at_path (path);
-        }
-
         private void category_row_expanded_event_cb (Gtk.TreeView tree,
                                                      Gtk.TreeIter iter,
                                                      Gtk.TreePath path) {
@@ -1738,7 +1729,26 @@ namespace Marlin.Places {
                 return true;
             }
 
+            if (event.keyval == Gdk.Key.Right && (event.state & modifiers) == 0) {
+                expand_collapse_category (true);
+                return true;
+            }
+            if (event.keyval == Gdk.Key.Left && (event.state & modifiers) == 0) {
+                expand_collapse_category (false);
+                return true;
+            }
             return false;
+        }
+
+        private void expand_collapse_category (bool expand) {
+            Gtk.TreePath? path = get_path_at_cursor ();
+            if (category_at_path (path)) {
+                if (expand) {
+                    tree_view.expand_row (path, false);
+                } else {
+                    tree_view.collapse_row (path);
+                }
+            }
         }
 
         private bool button_press_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
@@ -2403,6 +2413,12 @@ namespace Marlin.Places {
             tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
             Gtk.TreePath? path = null;
             tree_view.get_path_at_pos (tx, ty, out path, null, null, null);
+            return path;
+        }
+        private Gtk.TreePath? get_path_at_cursor () {
+            Gtk.TreePath? path = null;
+            Gtk.TreeViewColumn? focus_column = null;
+            tree_view.get_cursor (out path, out focus_column);
             return path;
         }
 
