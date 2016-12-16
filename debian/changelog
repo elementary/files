@@ -1,5 +1,5 @@
-pantheon-files-plugin-dropbox (0.1) oneiric; urgency=low
+pantheon-files-plugin-dropbox (0.1) xenial; urgency=medium
 
-  * Initial packaging
+  * Initial release.
 
- -- ammonkey <am.monkeyd@gmail.com>  Sat, 19 Nov 2011 17:53:11 +0100
+ -- Cody Garver <cody@elementary.io>  Fri, 16 Dec 2016 04:41:58 -0600
