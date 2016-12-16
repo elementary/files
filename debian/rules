@@ -10,7 +10,8 @@
 #export DH_VERBOSE=1
 
 %:
-    dh $@
+	dh $@
 
-override_dh_builddeb:
-    dh_builddeb -- -Zxz
+# Fix for dpkg-shlibdeps: error: no dependency information found for /usr/lib/libpantheon-files-core.so.0
+override_dh_shlibdeps:
+	dh_shlibdeps --dpkg-shlibdeps-params=--ignore-missing-info

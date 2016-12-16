@@ -4,20 +4,21 @@ Priority: optional
 Maintainer: Mario Guerriero <mefrio.g@gmail.com>
 Vcs-Bzr: lp:~elementary-apps/pantheon-files/pantheon-files-plugin-dropbox
 Build-Depends: cmake,
-               debhelper (>= 7),
+               debhelper (>= 9),
                gnome-common,
-               libgee-dev,
+               libgee-0.8-dev,
                libglib2.0-dev (>= 2.29.0),
                libgtk-3-dev (>= 3.0.3),
                pantheon-files,
+               libpantheon-files-core-dev,
+               libcanberra-dev,
                pkg-config
 Homepage: https://launchpad.net/pantheon-files
-Standards-Version: 3.9.3
+Standards-Version: 3.9.6
 
 Package: pantheon-files-plugin-dropbox
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Enhances: pantheon-files
-Pre-Depends: dpkg (>= 1.15.6)
 Description: Dropbox integration for Files
  Files Plugin Dropbox is an extension that integrates the Dropbox web service with your Desktop.
