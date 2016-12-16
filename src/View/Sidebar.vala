@@ -1577,6 +1577,7 @@ namespace Marlin.Places {
                     var file2 = GLib.File.new_for_path (uri);
                     if (file1.equal (file2)) {
                         selection.select_iter (child_iter);
+                        tree_view.set_cursor (store.get_path (child_iter), null, false);
                         this.last_selected_uri = location;
                         valid = false; /* escape from outer loop */
                         break;

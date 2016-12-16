@@ -271,6 +271,7 @@ namespace Marlin.View {
                             /* This works better than trying to use a focus chain */
                             if (sidebar.has_focus) {
                                 current_tab.grab_focus ();
+                                sidebar.sync_needed ();
                             } else {
                                 sidebar.grab_focus ();
                             }
