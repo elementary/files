@@ -20,6 +20,7 @@ pkg_check_modules(DROPBOX REQUIRED
 set(CFLAGS
     ${DROPBOX_CFLAGS} ${DROPBOX_CFLAGS_OTHER}
 )
+
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 include_directories(${CMAKE_BINARY_DIR}/libcore/)
