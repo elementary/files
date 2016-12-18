@@ -138,11 +138,7 @@ namespace Marlin.View {
             add(lside_pane);
 
             title = _(Marlin.APP_TITLE);
-            try {
-                this.icon = Gtk.IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
-            } catch (Error err) {
-                stderr.printf ("Unable to load marlin icon: %s\n", err.message);
-            }
+            icon_name = "system-file-manager";
 
         /** Apply preferences */
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));

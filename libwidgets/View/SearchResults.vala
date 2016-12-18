@@ -140,7 +140,7 @@ namespace Marlin.View.Chrome
 
             var cell = new Gtk.CellRendererPixbuf ();
             column.pack_start (cell, false);
-            column.set_attributes (cell, "pixbuf", 1, "visible", 4);
+            column.set_attributes (cell, "gicon", 1, "visible", 4);
 
             var cell_name = new Gtk.CellRendererText ();
             cell_name.ellipsize = Pango.EllipsizeMode.MIDDLE;
@@ -155,7 +155,7 @@ namespace Marlin.View.Chrome
 
             view.append_column (column);
 
-            list = new Gtk.TreeStore (5, typeof (string), typeof (Gdk.Pixbuf),
+            list = new Gtk.TreeStore (5, typeof (string), typeof (GLib.Icon),
                 typeof (string), typeof (File), typeof (bool));
             filter = new Gtk.TreeModelFilter (list, null);
             filter.set_visible_func ((model, iter) => {
@@ -700,21 +700,11 @@ namespace Marlin.View.Chrome
                     }
                 }
 
-                Gdk.Pixbuf? pixbuf = null;
-                if (match.icon != null) {
-                    var icon_info = Gtk.IconTheme.get_default ().lookup_by_gicon (match.icon, 16, 0);
-                    if (icon_info != null) {
-                        try {
-                            pixbuf = icon_info.load_icon ();
-                        } catch (Error e) {}
-                    }
-                }
-
                 var location = "<span %s>%s</span>".printf (get_pango_grey_color_string (),
                     Markup.escape_text (match.path_string));
 
                 list.append (out iter, parent);
-                list.@set (iter, 0, Markup.escape_text (match.name), 1, pixbuf, 2, location, 3, match.file, 4, true);
+                list.@set (iter, 0, Markup.escape_text (match.name), 1, match.icon, 2, location, 3, match.file, 4, true);
                 n_results++;
 
                 view.expand_all ();
