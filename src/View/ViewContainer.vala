@@ -94,7 +94,7 @@ namespace Marlin.View {
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win) {
             window = win;
-            overlay_statusbar = new OverlayBar (win, this);
+            overlay_statusbar = new OverlayBar (this);
             browser = new Browser ();
 
             /* Override background color to support transparency on overlay widgets */
