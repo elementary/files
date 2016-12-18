@@ -814,11 +814,7 @@ namespace FM {
         /* Open all files through this */
         private void open_file (GOF.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
             if (can_open_file (file, true)) {
-                AppInfo app = app_info;
-                if (app == null) {
-                    app = Marlin.MimeActions.choose_app_for_glib_file (file.location, this);
-                }
-                file.open_single (screen, app); /* This does not show app chooser again if app is null*/
+                Marlin.MimeActions.open_glib_file_request (file.location, this, app_info);
             }
         }
 
@@ -1082,7 +1078,8 @@ namespace FM {
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
             unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
-            Marlin.restore_files_from_trash (selection, window);
+            PF.FileUtils.restore_files_from_trash (selection, window);
+
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1104,7 +1101,7 @@ namespace FM {
         private void on_selection_action_open_with_other_app () {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-            Marlin.MimeActions.open_glib_file_request (file.location, this, null);
+            open_file (file, null, null);
         }
 
         private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1655,8 +1652,8 @@ namespace FM {
 
 /** DnD helpers */
 
-        private GOF.File? get_drop_target_file (int x, int y, out Gtk.TreePath? path_return) {
-            Gtk.TreePath? path = get_path_at_pos (x, y);
+        private GOF.File? get_drop_target_file (int win_x, int win_y, out Gtk.TreePath? path_return) {
+            Gtk.TreePath? path = get_path_at_pos (win_x, win_y);
             GOF.File? file = null;
 
             if (path != null) {
@@ -1826,8 +1823,9 @@ namespace FM {
                 /* add any additional entries from plugins */
                 var menu = new Gtk.Menu.from_model (model);
 
-                if (!in_trash)
-                    plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+                if (!in_trash) {
+                    plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
+                }
 
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
@@ -1869,8 +1867,9 @@ namespace FM {
 
                     clipboard_menu.remove (1); /* Copy */
                     clipboard_menu.remove (1); /* Paste (index updated by previous line) */
-
                     menu.append_section (null, clipboard_menu);
+
+                    menu.append_section (null, builder.get_object ("properties") as GLib.Menu);
                 }
             } else if (in_recent) {
                 var open_menu = build_menu_open (ref builder);
@@ -2363,10 +2362,7 @@ namespace FM {
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<GOF.File> files) {
-            var screen = get_screen ();
-            foreach (GOF.File file in files) {
-                open_file (file, screen, app);
-            }
+            Marlin.MimeActions.open_multiple_gof_files_request (files, this, app);
         }
 
 
@@ -2595,13 +2591,14 @@ namespace FM {
 
         /** Returns true if the code parameter matches the keycode of the keyval parameter for
           * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
-        protected bool match_keycode (int keyval, uint code) {
+        protected bool match_keycode (uint keyval, uint code, int level) {
             Gdk.KeymapKey [] keys;
             Gdk.Keymap keymap = Gdk.Keymap.get_default ();
             if (keymap.get_entries_for_keyval (keyval, out keys)) {
                 foreach (var key in keys) {
-                    if (code == key.keycode)
+                    if (code == key.keycode && level == key.level) {
                         return true;
+                    }
                 }
             }
 
@@ -2614,7 +2611,34 @@ namespace FM {
             }
 
             cancel_hover ();
-            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+
+            uint keyval;
+            int eff_grp, level;
+            Gdk.ModifierType consumed_mods;
+
+            if (!Gdk.Keymap.get_default ().translate_keyboard_state (event.hardware_keycode,
+                                                                     event.state, event.group,
+                                                                     out keyval, out eff_grp,
+                                                                     out level, out consumed_mods)) {
+                warning ("translate keyboard state failed");
+                return false;
+            }
+
+            keyval = 0;
+            for (uint key = 32; key < 128; key++) {
+                if (match_keycode (key, event.hardware_keycode, level)) {
+                    keyval = key;
+                    break;
+                }
+            }
+
+            if (keyval == 0) {
+                debug ("Could not match hardware code to ASCII hotkey");
+                keyval = event.keyval;
+                consumed_mods = 0;
+            }
+
+            var mods = (event.state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
             bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
             bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
@@ -2623,23 +2647,17 @@ namespace FM {
             bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
             bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
             bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
+
             bool in_trash = slot.location.has_uri_scheme ("trash");
             bool in_recent = slot.location.has_uri_scheme ("recent");
 
-
             /* Implement linear selection in Icon View with cursor keys */
-            bool linear_select_required = false;
-            if (!no_mods && !only_control_pressed) {
-                if (only_shift_pressed && (this is IconView)) {
-                    linear_select_required = true;
-                } else {
-                    previous_selection_was_linear = false;
-                }
-            } else {
+            bool linear_select_required = (no_mods || only_shift_pressed) && this is IconView;
+            if (!linear_select_required || !only_shift_pressed) {
                 previous_selection_was_linear = false;
             }
 
-            switch (event.keyval) {
+            switch (keyval) {
                 case Gdk.Key.F10:
                     if (only_control_pressed) {
                         show_or_queue_context_menu (event);
@@ -2676,12 +2694,13 @@ namespace FM {
 
                 case Gdk.Key.space:
                     if (view_has_focus ()) {
-                        if (only_shift_pressed  && !in_trash)
+                        if (only_shift_pressed  && !in_trash) {
                             activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        else if (no_mods)
+                        } else if (no_mods) {
                             preview_selected_items ();
-                        else
+                        } else {
                             return false;
+                        }
 
                         return true;
                     }
@@ -2689,62 +2708,71 @@ namespace FM {
 
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
-                    if (in_trash)
+                    if (in_trash) {
                         return false;
-                    else if (in_recent)
+                    } else if (in_recent) {
                         activate_selected_items (Marlin.OpenFlag.DEFAULT);
-                    else if (only_shift_pressed)
+                    } else if (only_shift_pressed) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                    else if (only_alt_pressed)
+                    } else if (only_alt_pressed) {
                         common_actions.activate_action ("properties", null);
-                    else if (no_mods)
+                    } else if (no_mods) {
                          activate_selected_items (Marlin.OpenFlag.DEFAULT);
-                    else
+                    } else {
                         return false;
+                    }
 
                     return true;
 
                 case Gdk.Key.minus:
                     if (only_alt_pressed) {
                         Gtk.TreePath? path = get_path_at_cursor ();
-                        if (path != null && path_is_selected (path))
+                        if (path != null && path_is_selected (path)) {
                             unselect_path (path);
+                        }
 
                         return true;
                     }
                     break;
 
                 case Gdk.Key.Escape:
-                    if (no_mods)
+                    if (no_mods) {
                         unselect_all ();
+                    }
 
                     break;
 
                 case Gdk.Key.Menu:
                 case Gdk.Key.MenuKB:
-                    if (no_mods)
+                    if (no_mods) {
                         show_context_menu (event);
+                        return true;
+                    }
 
-                   return true;
+                    break;
 
                 case Gdk.Key.N:
-                    if (shift_pressed && only_control_pressed)
+                    if (control_pressed) {
                         new_empty_folder ();
+                        return true;
+                    }
 
-                   return true;
+                    break;
 
                 case Gdk.Key.A:
-                    if (shift_pressed && only_control_pressed)
+                    if (control_pressed) {
                         invert_selection ();
+                        return true;
+                    }
 
-                   return true;
+                    break;
 
                 case Gdk.Key.Up:
                 case Gdk.Key.Down:
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
 
-                    if (only_alt_pressed && event.keyval == Gdk.Key.Down) {
+                    if (only_alt_pressed && keyval == Gdk.Key.Down) {
                         /* Only open a single selected folder */
                         unowned GLib.List<GOF.File> selection = get_selected_files ();
                         if (selection != null &&
@@ -2758,9 +2786,12 @@ namespace FM {
                         }
                     }
 
-                    if (linear_select_required && selected_files.length () > 0) { /* Only true for Icon View */
+                    if (linear_select_required) { /* Only true for Icon View */
                         Gtk.TreePath? path = get_path_at_cursor ();
+            
                         if (path != null) {
+                            Gtk.TreePath old_path = path;
+
                             if (event.keyval == Gdk.Key.Right) {
                                 path.next (); /* Does not check if path is valid */
                             } else if (event.keyval == Gdk.Key.Left) {
@@ -2774,7 +2805,12 @@ namespace FM {
                             Gtk.TreeIter? iter = null;
                             /* Do not try to select invalid path */
                             if (model.get_iter (out iter, path)) {
-                                linear_select_path (path);
+                                if (only_shift_pressed && selected_files.length () > 0) {
+                                    linear_select_path (path);
+                                } else if (no_mods) {
+                                    unselect_path (old_path);
+                                    select_path (path);
+                                }
                             }
                             return true;
                         }
@@ -2784,29 +2820,26 @@ namespace FM {
                     }
                     break;
 
-                default:
-                    break;
-            }
-
-            /* Use hardware keycodes for cut, copy and paste so the key used
-             * is unaffected by internationalized layout */
-            if (only_control_pressed) {
-                uint keycode = event.hardware_keycode;
-                if (match_keycode (Gdk.Key.c, keycode)) {
+                case Gdk.Key.c:
+                    if (only_control_pressed) {
                     /* Should not copy files in the trash - cut instead */
-                    if (in_trash) {
-                        Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
-                                                 _("Cutting the selection instead"),
-                                                 window as Gtk.Window);
+                        if (in_trash) {
+                            Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
+                                                     _("Cutting the selection instead"),
+                                                     window as Gtk.Window);
 
-                        selection_actions.activate_action ("cut", null);
-                    } else
-                        common_actions.activate_action ("copy", null);
+                            selection_actions.activate_action ("cut", null);
+                        } else {
+                            common_actions.activate_action ("copy", null);
+                        }
 
-                    return true;
-                } else if (match_keycode (Gdk.Key.v, keycode)) {
-                    if (!in_recent) {
-                        if (is_writable) {
+                        return true;
+                    }
+                    break;
+
+                case Gdk.Key.v:
+                    if (only_control_pressed) {
+                        if (!in_recent && is_writable) {
                             /* Will drop any existing selection and paste into current directory */
                             action_set_enabled (common_actions, "paste_into", true);
                             unselect_all ();
@@ -2818,22 +2851,30 @@ namespace FM {
                         }
                         return true;
                     }
-                } else if (match_keycode (Gdk.Key.x, keycode)) {
-                    if (is_writable) {
-                        selection_actions.activate_action ("cut", null);
-                    } else {
-                        Eel.show_warning_dialog (_("Cannot remove files from here"),
-                                                 _("You do not have permission to change this location"),
-                                                 window as Gtk.Window);
+                    break;
+
+                case Gdk.Key.x:
+                    if (only_control_pressed) {
+                        if (is_writable) {
+                            selection_actions.activate_action ("cut", null);
+                        } else {
+                            Eel.show_warning_dialog (_("Cannot remove files from here"),
+                                                     _("You do not have permission to change this location"),
+                                                     window as Gtk.Window);
+                        }
+                        return true;
                     }
-                    return true;
-                }
+                    break;
+
+
+                default:
+                    break;
             }
 
             /* Use find function instead of view interactive search */
             if (no_mods || only_shift_pressed) {
                 /* Use printable characters to initiate search */
-                if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
+                if (((unichar)(Gdk.keyval_to_unicode (keyval))).isprint ()) {
                     window.win_actions.activate_action ("find", "CURRENT_DIRECTORY_ONLY");
                     window.key_press_event (event);
                     return true;
@@ -2855,20 +2896,11 @@ namespace FM {
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
                 switch (click_zone) {
-                    case ClickZone.NAME:
-                        if (single_click_rename && is_writable && file != null)
-                            win.set_cursor (editable_cursor);
-                        else
-                            win.set_cursor (selectable_cursor);
-
-                        break;
-
-                    case ClickZone.BLANK_NO_PATH:
-                        win.set_cursor (selectable_cursor);
-                        break;
-
                     case ClickZone.ICON:
-                        win.set_cursor (activatable_cursor);
+                    case ClickZone.NAME:
+                        if (single_click_mode) {
+                            win.set_cursor (activatable_cursor);
+                        }
                         break;
 
                     default:
@@ -3487,7 +3519,7 @@ namespace FM {
 
 /** Abstract methods - must be overridden*/
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
-        public abstract Gtk.TreePath? get_path_at_pos (int x, int y);
+        public abstract Gtk.TreePath? get_path_at_pos (int x, int win);
         public abstract Gtk.TreePath? get_path_at_cursor ();
         public abstract void select_all ();
         public abstract void unselect_all ();
