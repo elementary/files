@@ -148,11 +148,17 @@ watch_killer(PFDropboxHookserv *hookserv) {
     hookserv->socket = 0;
 
     /* lol we also have to start a new connection */
+    hookserv->connection_attempt = 1;
     try_to_connect(hookserv);
 }
 
 static gboolean
 try_to_connect(PFDropboxHookserv *hookserv) {
+    if (hookserv->connection_attempt > 10) {
+        return FALSE;
+    } else {
+        hookserv->connection_attempt++;
+    }
     /* create socket */
     hookserv->socket = socket(PF_UNIX, SOCK_STREAM, 0);
 
@@ -206,14 +212,6 @@ try_to_connect(PFDropboxHookserv *hookserv) {
         }
     }
 
-    /* lol sometimes i write funny codez */
-    if (FALSE) {
-FAIL_CLEANUP:
-        close(hookserv->socket);
-        g_timeout_add_seconds(1, (GSourceFunc) try_to_connect, hookserv);
-        return FALSE;
-    }
-
     /* great we connected!, let's create the channel and wait on it */
     hookserv->chan = g_io_channel_unix_new(hookserv->socket);
     g_io_channel_set_line_term(hookserv->chan, "\n", -1);
@@ -254,6 +252,16 @@ FAIL_CLEANUP:
 
     /*debug("added watch");*/
     return FALSE;
+
+FAIL_CLEANUP:
+    close(hookserv->socket);
+    if (hookserv->connection_attempt <= 10 ) {
+        g_warning ("Dropbox connection attempt %u failed", hookserv->connection_attempt - 1);
+        g_timeout_add_seconds(1, (GSourceFunc) try_to_connect, hookserv);
+    } else {
+        g_critical ("Unable to connect to Dropbox server. Please check that Dropbox is installed and started, or uninstall the dropbox plugin");
+    }
+    return FALSE;
 }
 
 /* should only be called in glib main loop */
@@ -290,6 +298,7 @@ pf_dropbox_hooks_setup(PFDropboxHookserv *hookserv) {
                                                      (GEqualFunc) g_str_equal,
                                                      g_free, g_free);
     hookserv->connected = FALSE;
+    hookserv->connection_attempt = 1;
 
     g_hook_list_init(&(hookserv->ondisconnect_hooklist), sizeof(GHook));
     g_hook_list_init(&(hookserv->onconnect_hooklist), sizeof(GHook));
@@ -314,6 +323,8 @@ pf_dropbox_hooks_add_on_connect_hook(PFDropboxHookserv *hookserv,
                                          gpointer ud) {
     GHook *newhook;
 
+    hookserv->connection_attempt = 1;
+
     newhook = g_hook_alloc(&(hookserv->onconnect_hooklist));
     newhook->func = dhcch;
     newhook->data = ud;
@@ -333,5 +344,6 @@ void pf_dropbox_hooks_add(PFDropboxHookserv *ndhs,
 
 void
 pf_dropbox_hooks_start(PFDropboxHookserv *hookserv) {
+    hookserv->connection_attempt = 1;
     try_to_connect(hookserv);
 }

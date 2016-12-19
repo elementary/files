@@ -515,9 +515,15 @@ pf_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *files)
     gchar *filename_un, *filename;
     int file_count;
 
-    cvs->selection = files;
-    if ((file_count = g_list_length (cvs->selection)) != 1)
+    if (dropbox_client_is_connected(&(cvs->dc)) == FALSE) {
+        g_debug ("Context menu - dropbox not connected");
         return;
+    }
+
+    cvs->selection = files;
+    if ((file_count = g_list_length (cvs->selection)) != 1) {
+        return;
+    }
 
     /*
      * 1. Convert files to filenames.
@@ -564,13 +570,15 @@ pf_dropbox_context_menu (MarlinPluginsBase *base, GtkWidget *menu, GList *files)
      */
 
     gtv = g_get_real_time();
-    gtv  = gtv + 5000;
+    gtv  = gtv + 50000;  //Add 50 ms
 
     GHashTable *context_options_response = g_async_queue_timeout_pop(reply_queue, gtv);
     g_async_queue_unref(reply_queue);
 
-    if (!context_options_response)
+    if (!context_options_response) {
+        g_debug ("no response from dropbox");
         return;
+    }
 
     /*
      * 5. Parse the reply.

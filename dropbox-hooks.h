@@ -45,6 +45,7 @@ typedef struct {
     GHashTable *dispatch_table;
     GHookList ondisconnect_hooklist;
     GHookList onconnect_hooklist;
+    guint connection_attempt;
 } PFDropboxHookserv;
 
 void
