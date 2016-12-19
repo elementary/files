@@ -1603,15 +1603,24 @@ namespace Marlin.Places {
         }
 
         private void expander_update_pref_state (Marlin.PlaceType type, bool flag) {
+            /* Do not update settings if they have not changed.  Otherwise an infinite loop occurs
+             * when viewing the ~/.config/dconf/user folder.
+             */  
             switch (type) {
                 case Marlin.PlaceType.NETWORK_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
+                    }
                     break;
                 case Marlin.PlaceType.STORAGE_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-devices-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-devices-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-devices-expander", flag);
+                    }
                     break;
                 case Marlin.PlaceType.BOOKMARKS_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-personal-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-personal-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-personal-expander", flag);
+                    }
                     break;
             }
         }

@@ -375,7 +375,7 @@ namespace Marlin.View {
                     content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
                                                        _("Could not connect to the server for this folder."));
                 } else {
-                    content = new Marlin.View.Welcome (_("Unable show Folder"),
+                    content = new Marlin.View.Welcome (_("Unable to Show Folder"),
                                                        _("The server for this folder could not be located."));
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
@@ -429,7 +429,9 @@ namespace Marlin.View {
             if (aslot != null) {
                 /* Since async loading it may not have been determined whether slot is loadable */
                 aslot.set_active_state (is_active, animate);
-                active ();
+                if (is_active) {
+                    active ();
+                }
             }
         }
 

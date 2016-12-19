@@ -127,14 +127,15 @@ namespace Marlin.View {
             /* Only show side bar in first window - (to be confirmed) */
 
             lside_pane.pack1 (sidebar, false, false);
-            lside_pane.pack2 (tabs, true, false);
 
             Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
             window_box.pack_start(info_bar, false, false, 0);
-            window_box.pack_start(lside_pane, true, true, 0);
+            window_box.pack_start(tabs, true, true, 0);
 
-            add(window_box);
+            lside_pane.pack2 (window_box, true, false);
+
+            add(lside_pane);
 
             title = _(Marlin.APP_TITLE);
             try {
@@ -344,8 +345,8 @@ namespace Marlin.View {
         private void make_bindings () {
             if (is_first_window) {
                 /*Preference bindings */
-                Preferences.settings.bind("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
-                Preferences.settings.bind("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
+                Preferences.settings.bind ("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
+                Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
 
                 /* keyboard shortcuts bindings */
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
@@ -1017,8 +1018,9 @@ namespace Marlin.View {
         }
 
         private void update_top_menu () {
-            if (restoring_tabs || current_tab == null)
+            if (restoring_tabs || current_tab == null) {
                 return;
+            }
 
             /* Update browser buttons */
             top_menu.set_back_menu (current_tab.get_go_back_path_list ());

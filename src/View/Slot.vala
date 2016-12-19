@@ -284,7 +284,11 @@ namespace Marlin.View {
         }
 
         public override void initialize_directory () {
-            assert (!directory.is_loading ());
+            if (directory.is_loading ()) {
+                /* This can happen when restoring duplicate tabs */
+                debug ("Slot.initialize_directory () called when directory already loading - ignoring");
+                return;
+            }
             /* view and slot are unfrozen when done loading signal received */
             is_frozen = true;
             directory.init ();
