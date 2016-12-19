@@ -303,15 +303,15 @@ namespace Marlin.View {
                 schedule_scroll_to_slot (slot, animate);
             }
 
-            if (this.current_slot == slot)
-                return;
+            if (this.current_slot != slot) {
+                slot_list.@foreach ((s) => {
+                    if (s != slot)
+                        s.inactive ();
+                });
 
-            slot_list.@foreach ((s) => {
-                if (s != slot)
-                    s.inactive ();
-            });
-
-            current_slot = slot;
+                current_slot = slot;
+            }
+            /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
         }
 
