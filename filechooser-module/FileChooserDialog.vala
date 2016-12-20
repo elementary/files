@@ -40,7 +40,6 @@ public class CustomFileChooserDialog : Object {
 
     private GLib.Queue<string> previous_paths;
     private GLib.Queue<string> next_paths;
-//~     private Settings chooser_settings;
 
     private bool filters_available = false;
 
