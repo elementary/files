@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-10 13:06-0500\n"
-"PO-Revision-Date: 2016-11-19 08:18+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-12-19 23:44+0000\n"
+"Last-Translator: Corentin Noël <corentin@elementaryos.org>\n"
 "Language-Team: Fr <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2016-12-10 05:18+0000\n"
-"X-Generator: Launchpad (build 18292)\n"
+"X-Launchpad-Export-Date: 2016-12-20 04:53+0000\n"
+"X-Generator: Launchpad (build 18298)\n"
 "Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -1778,13 +1778,13 @@ msgstr "Sans titre %s"
 #: ../src/View/AbstractDirectoryView.vala:2652
 #: ../src/View/AbstractDirectoryView.vala:2817
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Impossible de supprimer les fichiers d'ici"
 
 #: ../src/View/AbstractDirectoryView.vala:2653
 #: ../src/View/AbstractDirectoryView.vala:2808
 #: ../src/View/AbstractDirectoryView.vala:2818
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Vous n'avez pas l'autorisation de modifier ce répertoire"
 
 #: ../src/View/AbstractDirectoryView.vala:2790
 msgid "Cannot copy files that are in the trash"
@@ -1796,7 +1796,7 @@ msgstr "Couper la sélection à la place"
 
 #: ../src/View/AbstractDirectoryView.vala:2807
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Impossible de coller des fichiers ici"
 
 #: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1260
 msgid "%u folders"
@@ -2037,7 +2037,7 @@ msgstr "Ne peut se connecter au serveur pour afficher ce dossier"
 
 #: ../src/View/ViewContainer.vala:378
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Impossible d'afficher le dossier"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
@@ -2327,23 +2327,23 @@ msgstr "Aller à %s"
 
 #: ../libwidgets/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Multiples types de fichiers sélectionnés"
 
 #: ../libwidgets/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Aucune application ne peut ouvrir tous ces types en même temps"
 
 #: ../libwidgets/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Impossible d'ouvrir les fichiers"
 
 #: ../libwidgets/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Impossible d'ouvrir les uris"
 
 #: ../libwidgets/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Impossible d'ouvrir les fichiers ou uris avec cette application"
 
 #: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
 msgid "Set as default"
