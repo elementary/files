@@ -751,8 +751,9 @@ public class GOF.Directory.Async : Object {
     }
 
     private void notify_file_removed (GOF.File gof) {
-        if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)
+        if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files) {
             file_deleted (gof);
+        }
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* remove from sorted_dirs */
@@ -893,7 +894,8 @@ public class GOF.Directory.Async : Object {
                 if (!found)
                     dirs.append (dir);
             } else {
-                warning ("parent of deleted file not found");
+                dir = cache_lookup (loc);
+                dir.file_deleted (dir.file);
             }
         }
 
