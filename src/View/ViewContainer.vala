@@ -126,8 +126,10 @@ namespace Marlin.View {
         
         private void on_folder_deleted (GLib.File deleted) {
             if (deleted.equal (this.location)) {
-                close ();
-                window.remove_tab (this);
+                if (!go_up ()) {
+                    close ();
+                    window.remove_tab (this);
+                }
             }
         }
 
@@ -163,7 +165,7 @@ namespace Marlin.View {
             }
         }
 
-        public void go_up () {
+        public bool go_up () {
             selected_locations.append (this.location);
             GLib.File parent = location;
             if (view.directory.has_parent ()) { /* May not work for some protocols */
@@ -176,6 +178,9 @@ namespace Marlin.View {
             /* Certain parents such as ftp:// will be returned as null as they are not browsable */
             if (parent != null) {
                 user_path_change_request (parent, false, false);
+                return true;
+            } else {
+                return false;
             }
         }
 
