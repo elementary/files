@@ -207,12 +207,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         show_all ();
-        update_widgets_state ();
     }
 
     private void update_size_value () {
         size_value.label = format_size ((int64) total_size);
         contains_value.label = get_contains_value (folder_count, file_count);
+        update_widgets_state ();
         update_selection_usage (total_size);
 
         if (size_warning > 0) {
@@ -504,6 +504,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         contains_key_label = new KeyLabel (_("Contains:"));
         contains_value = new ValueLabel ("");
+
+        /* Dialog may get displayed after these labels are hidden so we set no_show_all to true */
+        type_key_label.no_show_all = true;
+        type_value.no_show_all = true;
+        contains_key_label.no_show_all = true;
+        contains_value.no_show_all = true;
 
         info_grid.attach (size_key_label, 0, 1, 1, 1);
         info_grid.attach_next_to (spinner, size_key_label, Gtk.PositionType.RIGHT);
@@ -1200,80 +1206,48 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private string get_contains_value (uint folders, uint files) {
-        string txt = "";
+        string folders_txt = "";
+        string files_txt = "";
+
         if (folders > 0) {
-            if (folders > 1) {
-                if (files > 0) {
-                    if (files > 1) {
-                        txt = _("%u subfolders and %u files").printf (folders, files);
-                    } else {
-                        txt = _("%u subfolders and %u file").printf (folders,files);
-                    }
-                } else {
-                    txt = _("%u subfolders").printf (folders);
-                }
-            } else {
-                if (files > 0) {
-                    if (files > 1) {
-                        txt = _("%u subfolder and %u files").printf (folders, files);
-                    } else {
-                        txt = _("%u subfolder and %u file").printf (folders, files);
-                    }
-                } else {
-                    txt = _("%u folder").printf (folders);
-                }
-            }
-        } else {
-            if (files > 0) {
-                if (files > 1) {
-                    txt = _("%u files").printf (files);
-                } else {
-                    txt = _("%u file").printf (files);
-                }
-            }
+            folders_txt = (ngettext ("%u subfolder", "%u subfolders", folders)).printf (folders);
         }
 
-        return txt;
+        if (files > 0) {
+            files_txt = (ngettext ("%u file", "%u files", files)).printf (files);
+        }
+
+        if (folders > 0 && files > 0) {
+            ///TRANSLATORS: folders, files
+            return _("%s, %s").printf (folders_txt, files_txt);
+        } else if (files > 0) {
+            return files_txt;
+        } else {
+            return folders_txt;
+        }
     }
 
     private string get_selected_label (uint folders, uint files) {
-        string txt = "";
-        uint total = folders + files;
+        string folders_txt = "";
+        string files_txt = "";
 
         if (folders > 0) {
-            if (folders > 1) {
-                if (files > 0) {
-                    if (files > 1) {
-                        txt = _("%u selected items (%u folders and %u files)").printf (total, folders, files);
-                    } else {
-                        txt = _("%u selected items (%u folders and %u file)").printf (total, folders, files);
-                    }
-                } else {
-                    txt = _("%u folders").printf (folders);
-                }
-            } else {
-                if (files > 0) {
-                    if (files > 1) {
-                        txt = _("%u selected items (%u folder and %u files)").printf (total, folders,files);
-                    } else {
-                        txt = _("%u selected items (%u folder and %u file)").printf (total, folders,files);
-                    }
-                } else {
-                    txt = _("%u folder").printf (folders); /* displayed for background folder*/
-                }
-            }
-        } else {
-            if (files > 0) {
-                if (files > 1) {
-                    txt = _("%u files").printf (files);
-                } else {
-                    txt = _("%u file").printf (files); /* should not be displayed - entry instead */
-                }
-            }
+            folders_txt = (ngettext ("%u folder", "%u folders", folders)).printf (folders);
         }
 
-        /* The selection should never be empty */
-        return txt;
+        if (files > 0) {
+            files_txt = (ngettext ("%u file", "%u files", files)).printf (files);
+        }
+
+        if (files > 0 && folders > 0) {
+            string total_txt = (ngettext ("%u selected item", "%u selected items", folders + files)).printf (folders + files);
+            ///TRANSLATORS: total (folders, files)
+            return _("%s (%s, %s)").printf (total_txt, folders_txt, files_txt);
+        } else if (files > 0) {
+            return files_txt;
+        } else {
+            return folders_txt;
+        }
     }
 
     /** Hide certain widgets under certain conditions **/
@@ -1301,7 +1275,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         /* Only show 'contains' label when only folders selected - otherwise could be ambiguous whether
          * the "contained files" counted are only in the subfolders or not.*/
         /* Only show 'contains' label when folders selected are not empty */
-        if (count > selected_folders || contains_value.get_text ().length < 1) {
+        if (count > selected_folders || contains_value.label.length < 1) {
             contains_key_label.hide ();
             contains_value.hide ();
         } else { /* Make sure it shows otherwise (may have been hidden by previous call)*/
