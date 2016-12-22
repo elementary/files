@@ -35,14 +35,17 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
     }
 
     public AbstractPropertiesDialog (string _title, Gtk.Window parent) {
-        title = _title;
-        resizable = false;
-        deletable = false;
+        Object (title: _title,
+                transient_for: parent,
+                resizable: false,
+                deletable: false,
+                window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
+                destroy_with_parent: true
+        );
+    }
+
+    construct {
         set_default_size (220, -1);
-        transient_for = parent;
-        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-        border_width = 6;
-        destroy_with_parent = true;
 
         var info_header = new HeaderLabel (_("Info"));
 
