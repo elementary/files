@@ -27,6 +27,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
 
+    private PermissionButton perm_button_user;
+    private PermissionButton perm_button_group;
+    private PermissionButton perm_button_other;
+
     private Gtk.ListStore store_users;
     private Gtk.ListStore store_groups;
     private Gtk.ListStore store_apps;
@@ -93,16 +97,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         ICON
     }
 
-    private enum PermissionType {
+    public enum PermissionType {
         USER,
         GROUP,
         OTHER
-    }
-
-    private enum PermissionValue {
-        READ = (1<<0),
-        WRITE = (1<<1),
-        EXE = (1<<2)
     }
 
     private Posix.mode_t[,] vfs_perms = {
@@ -661,12 +659,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return false;
     }
 
-    private void toggle_button_add_label (Gtk.ToggleButton btn, string str) {
-        var l_read = new Gtk.Label ("<span size='small'>"+ str + "</span>");
-        l_read.set_use_markup (true);
-        btn.add (l_read);
-    }
-
     private void update_perm_codes (PermissionType pt, int val, int mult) {
         switch (pt) {
         case PermissionType.USER:
@@ -681,65 +673,40 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private void action_toggled_read (Gtk.ToggleButton btn) {
+    private void permission_button_toggle (Gtk.ToggleButton btn) {
         unowned PermissionType pt = btn.get_data ("permissiontype");
+        unowned PermissionButton.Value permission_value = btn.get_data ("permissionvalue");
         int mult = 1;
 
         reset_and_cancel_perm_timeout ();
-        if (!btn.get_active ())
+
+        if (!btn.get_active ()) {
             mult = -1;
-        update_perm_codes (pt, 4, mult);
-        if (perm_code_should_update)
+        }
+
+        switch (permission_value) {
+            case PermissionButton.Value.READ:
+                update_perm_codes (pt, 4, mult);
+                break;
+            case PermissionButton.Value.WRITE:
+                update_perm_codes (pt, 2, mult);
+                break;
+            case PermissionButton.Value.EXE:
+                update_perm_codes (pt, 1, mult);
+                break;
+        }
+
+        if (perm_code_should_update) {
             perm_code.set_text ("%d%d%d".printf (owner_perm_code, group_perm_code, everyone_perm_code));
+        }
     }
 
-    private void action_toggled_write (Gtk.ToggleButton btn) {
-        unowned PermissionType pt = btn.get_data ("permissiontype");
-        int mult = 1;
-
-        reset_and_cancel_perm_timeout ();
-        if (!btn.get_active ())
-            mult = -1;
-        update_perm_codes (pt, 2, mult);
-        if (perm_code_should_update)
-            perm_code.set_text ("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
-    }
-
-    private void action_toggled_execute (Gtk.ToggleButton btn) {
-        unowned PermissionType pt = btn.get_data ("permissiontype");
-        int mult = 1;
-
-        reset_and_cancel_perm_timeout ();
-        if (!btn.get_active ())
-            mult = -1;
-        update_perm_codes (pt, 1, mult);
-        if (perm_code_should_update)
-            perm_code.set_text ("%d%d%d".printf(owner_perm_code, group_perm_code, everyone_perm_code));
-    }
-
-    private Gtk.Box create_perm_choice (PermissionType pt) {
-        Gtk.Box hbox;
-
-        hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-        hbox.homogeneous = true;
-        hbox.get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
-        var btn_read = new Gtk.ToggleButton ();
-        toggle_button_add_label (btn_read, _("Read"));
-        btn_read.set_data ("permissiontype", pt);
-        btn_read.toggled.connect (action_toggled_read);
-        var btn_write = new Gtk.ToggleButton ();
-        toggle_button_add_label (btn_write, _("Write"));
-        btn_write.set_data ("permissiontype", pt);
-        btn_write.toggled.connect (action_toggled_write);
-        var btn_exe = new Gtk.ToggleButton ();
-        toggle_button_add_label (btn_exe, _("Execute"));
-        btn_exe.set_data ("permissiontype", pt);
-        btn_exe.toggled.connect (action_toggled_execute);
-        hbox.pack_start (btn_read);
-        hbox.pack_start (btn_write);
-        hbox.pack_start (btn_exe);
-
-        return hbox;
+    private PermissionButton create_perm_choice (PermissionType pt) {
+        var permission_button = new PermissionButton (pt);
+        permission_button.btn_read.toggled.connect (permission_button_toggle);
+        permission_button.btn_write.toggled.connect (permission_button_toggle);
+        permission_button.btn_exe.toggled.connect (permission_button_toggle);
+        return permission_button;
     }
 
     private uint32 get_perm_from_chmod_unit (uint32 vfs_perm, int nb,
@@ -777,7 +744,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return vfs_perm;
     }
 
-    private void update_permission_type_buttons (Gtk.Box hbox, uint32 permissions, PermissionType pt) {
+    private void update_permission_type_buttons (PermissionButton hbox, uint32 permissions, PermissionType pt) {
         int i=0;
         foreach (var widget in hbox.get_children ()) {
             Gtk.ToggleButton btn = (Gtk.ToggleButton) widget;
@@ -787,19 +754,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private void update_perm_grid_toggle_states (uint32 permissions) {
-        Gtk.Box hbox;
-
-        /* update USR row */
-        hbox = (Gtk.Box) perm_grid.get_child_at (1,3);
-        update_permission_type_buttons (hbox, permissions, PermissionType.USER);
-
-        /* update GRP row */
-        hbox = (Gtk.Box) perm_grid.get_child_at (1,4);
-        update_permission_type_buttons (hbox, permissions, PermissionType.GROUP);
-
-        /* update OTHER row */
-        hbox = (Gtk.Box) perm_grid.get_child_at (1,5);
-        update_permission_type_buttons (hbox, permissions, PermissionType.OTHER);
+        update_permission_type_buttons (perm_button_user, permissions, PermissionType.USER);
+        update_permission_type_buttons (perm_button_group, permissions, PermissionType.GROUP);
+        update_permission_type_buttons (perm_button_other, permissions, PermissionType.OTHER);
     }
 
     private bool is_chmod_code (string str) {
@@ -930,43 +887,24 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private Gtk.Grid construct_perm_panel () {
-        perm_grid = new Gtk.Grid ();
-        perm_grid.column_spacing = 6;
-        perm_grid.row_spacing = 6;
-        perm_grid.halign = Gtk.Align.CENTER;
+        var owner_user_label = new KeyLabel (_("Owner:"));
 
-        Gtk.Widget key_label;
-        Gtk.Widget value_label;
-        Gtk.Box value_hlabel;
+        var owner_user_choice = create_owner_choice ();
 
-        key_label = new Gtk.Label (_("Owner:"));
-        key_label.halign = Gtk.Align.END;
-        perm_grid.attach (key_label, 0, 1, 1, 1);
-        value_label = create_owner_choice ();
-        perm_grid.attach (value_label, 1, 1, 2, 1);
+        var group_combo_label = new KeyLabel (_("Group:"));
+        group_combo_label.margin_bottom = 12;
 
-        key_label = new Gtk.Label (_("Group:"));
-        key_label.halign = Gtk.Align.END;
-        perm_grid.attach (key_label, 0, 2, 1, 1);
-        value_label = create_group_choice ();
-        perm_grid.attach (value_label, 1, 2, 2, 1);
+        var group_combo = create_group_choice ();
+        group_combo.margin_bottom = 12;
 
-        /* make a separator with margins */
-        key_label.margin_bottom = 12;
-        value_label.margin_bottom = 12;
+        var owner_label = new KeyLabel (_("Owner:"));
+        perm_button_user = create_perm_choice (PermissionType.USER);
 
-        key_label = new KeyLabel (_("Owner:"));
-        value_hlabel = create_perm_choice (PermissionType.USER);
-        perm_grid.attach (key_label, 0, 3, 1, 1);
-        perm_grid.attach (value_hlabel, 1, 3, 2, 1);
-        key_label = new KeyLabel (_("Group:"));
-        value_hlabel = create_perm_choice (PermissionType.GROUP);
-        perm_grid.attach (key_label, 0, 4, 1, 1);
-        perm_grid.attach (value_hlabel, 1, 4, 2, 1);
-        key_label = new KeyLabel (_("Everyone:"));
-        value_hlabel = create_perm_choice (PermissionType.OTHER);
-        perm_grid.attach (key_label, 0, 5, 1, 1);
-        perm_grid.attach (value_hlabel, 1, 5, 2, 1);
+        var group_label = new KeyLabel (_("Group:"));
+        perm_button_group = create_perm_choice (PermissionType.GROUP);
+
+        var other_label = new KeyLabel (_("Everyone:"));
+        perm_button_other = create_perm_choice (PermissionType.OTHER);
 
         perm_code = new Granite.Widgets.XsEntry ();
         perm_code.set_text ("000");
@@ -975,6 +913,20 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         l_perm = new Gtk.Label (goffile.get_permissions_as_string ());
 
+        perm_grid = new Gtk.Grid ();
+        perm_grid.column_spacing = 6;
+        perm_grid.row_spacing = 6;
+        perm_grid.halign = Gtk.Align.CENTER;
+        perm_grid.attach (owner_user_label, 0, 1, 1, 1);
+        perm_grid.attach (owner_user_choice, 1, 1, 2, 1);
+        perm_grid.attach (group_combo_label, 0, 2, 1, 1);
+        perm_grid.attach (group_combo, 1, 2, 2, 1);
+        perm_grid.attach (owner_label, 0, 3, 1, 1);
+        perm_grid.attach (perm_button_user, 1, 3, 2, 1);
+        perm_grid.attach (group_label, 0, 4, 1, 1);
+        perm_grid.attach (perm_button_group, 1, 4, 2, 1);
+        perm_grid.attach (other_label, 0, 5, 1, 1);
+        perm_grid.attach (perm_button_other, 1, 5, 2, 1);
         perm_grid.attach (l_perm, 1, 6, 1, 1);
         perm_grid.attach (perm_code, 2, 6, 1, 1);
 

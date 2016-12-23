@@ -102,6 +102,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Slot.vala
         View/Miller.vala
         View/VolumePropertiesWindow.vala
+        View/Widgets/PermissionButton.vala
 
     PACKAGES
         gtk+-3.0
