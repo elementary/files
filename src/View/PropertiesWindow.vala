@@ -812,9 +812,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 foreach (GOF.File gof in files) {
                     if (gof.can_set_permissions() && gof.permissions != perm) {
                         gof.permissions = perm;
+
                         /* update permission label once */
-                        if (n<1)
-                            l_perm.set_text (goffile.get_permissions_as_string ());
+                        if (n < 1) {
+                            l_perm.label = "<tt>%s</tt>".printf (goffile.get_permissions_as_string ());
+                        }
+
                         /* real update permissions */
                         file_set_attributes.begin (gof, FileAttribute.UNIX_MODE, perm, cancellable);
                         n++;
@@ -911,7 +914,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         perm_code.set_max_length (3);
         perm_code.set_size_request (35, -1);
 
-        l_perm = new Gtk.Label (goffile.get_permissions_as_string ());
+        l_perm = new Gtk.Label ("<tt>%s</tt>".printf (goffile.get_permissions_as_string ()));
+        l_perm.halign = Gtk.Align.START;
+        l_perm.use_markup = true;
 
         perm_grid = new Gtk.Grid ();
         perm_grid.column_spacing = 6;
