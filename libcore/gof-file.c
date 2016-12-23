@@ -287,6 +287,15 @@ gof_file_is_smb_uri_scheme (GOFFile *file)
 }
 
 gboolean
+gof_file_is_recent_uri_scheme (GOFFile *file)
+{
+    if (!G_IS_FILE (file->location))
+        return TRUE;
+
+    return g_file_has_uri_scheme (file->location, "recent");
+}
+
+gboolean
 gof_file_is_other_uri_scheme (GOFFile *file)
 {
     GFile *loc = file->location;

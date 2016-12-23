@@ -90,7 +90,7 @@ public class Marlin.Application : Granite.Application {
 
         progress_handler = new Marlin.Progress.UIHandler (this);
 
-        this.clipboard = new Marlin.ClipboardManager.get_for_display (Gdk.Display.get_default ());
+        this.clipboard = Marlin.ClipboardManager.get_for_display ();
         this.thumbnailer = Marlin.Thumbnailer.get ();
         this.recent = new Gtk.RecentManager ();
 

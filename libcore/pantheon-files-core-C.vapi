@@ -73,6 +73,11 @@ namespace Marlin {
     public delegate void CopyCallback (GLib.HashTable<GLib.File, void*>? debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
+
+    [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
+    namespace Dialogs {
+        public void show_error (void* data, GLib.Error? error, string format_string, ...);
+    }
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -238,6 +243,7 @@ namespace GOF {
         public signal void changed ();
         public signal void info_available ();
         public signal void icon_changed ();
+        public signal void destroy ();
 
         public const string GIO_DEFAULT_ATTRIBUTES;
 
@@ -331,6 +337,7 @@ namespace GOF {
         public bool is_root_network_folder ();
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
+        public bool is_recent_uri_scheme ();
         public bool is_connected;
 
         public string get_display_target_uri ();

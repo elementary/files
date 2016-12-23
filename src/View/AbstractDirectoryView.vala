@@ -1225,7 +1225,7 @@ namespace FM {
 
             var file = get_files_for_action ().nth_data (0);
 
-            if (file != null && clipboard.get_can_paste ()) {
+            if (file != null && clipboard.can_paste) {
                 GLib.File target;
                 GLib.Callback? call_back;
 
@@ -1482,17 +1482,8 @@ namespace FM {
                                        Gtk.SelectionData selection_data,
                                        uint info,
                                        uint timestamp) {
-            GLib.StringBuilder sb = new GLib.StringBuilder ("");
 
-            drag_file_list.@foreach ((file) => {
-                var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
-                sb.append (target);
-                sb.append ("\r\n");  /* Drop onto Filezilla does not work without the "\r" */
-            });
-
-            selection_data.@set (selection_data.get_target (),
-                                 8,
-                                 sb.data);
+            Marlin.DndHandler.set_selection_data_from_file_list (selection_data, drag_file_list);
         }
 
         private void on_drag_data_delete (Gdk.DragContext context) {
@@ -1580,7 +1571,7 @@ namespace FM {
             if (!drop_data_ready) {
                 /* We don't have the drop data - extract uri list from selection data */
                 string? text;
-                if (dnd_handler.selection_data_is_uri_list (selection_data, info, out text)) {
+                if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
                     drop_file_list = EelGFile.list_new_from_string (text);
                     drop_data_ready = true;
                 }
@@ -1892,7 +1883,7 @@ namespace FM {
                     menu.append_section (null, open_menu);
 
                 if (slot.directory.file.is_smb_server ()) {
-                    if (clipboard != null && clipboard.get_can_paste ()) {
+                    if (clipboard != null && clipboard.can_paste) {
                         menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
                     }
                 } else if (valid_selection_for_edit ()) {
@@ -1902,7 +1893,7 @@ namespace FM {
                      * the index below.
                      */
                     if (!action_get_enabled (common_actions, "paste_into") ||
-                        clipboard == null || !clipboard.get_can_paste ()) {
+                        clipboard == null || !clipboard.can_paste) {
 
                         clipboard_menu.remove (2);
                     }
@@ -1959,7 +1950,7 @@ namespace FM {
 
             if (!in_network_root) {
                 /* If something is pastable in the clipboard, show the option even if it is not enabled */ 
-                if (clipboard != null && clipboard.get_can_paste ()) {
+                if (clipboard != null && clipboard.can_paste) {
                     menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
                 }
 
