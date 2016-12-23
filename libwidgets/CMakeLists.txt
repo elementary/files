@@ -44,7 +44,6 @@ vala_precompile(VALA_C ${PKGNAME}
     Interfaces/SearchableInterface.vala
     Chrome/TopMenu.vala
     Chrome/ViewSwitcher.vala
-    Chrome/XsEntry.vala
     Animations/Animations.vala
     Resources.vala
     MimeActions.vala
