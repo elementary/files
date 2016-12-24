@@ -20,6 +20,40 @@ namespace Marlin.View.Chrome
 {
     public class SearchResults : Gtk.Window, Searchable
     {
+        /* The order of these categories governs the order in which matches appear in the search view.
+         * The category represents a first level sort.  Within a category the matches sort alphabetically on name */
+        private enum Category {
+            CURRENT_HEADER,
+            CURRENT_BEGINS,
+            CURRENT_CONTAINS,
+            CURRENT_ELLIPSIS,
+            DEEP_HEADER,
+            DEEP_BEGINS,
+            DEEP_CONTAINS,
+            DEEP_ELLIPSIS,
+            ZEITGEIST_HEADER,
+            ZEITGEIST_BEGINS,
+            ZEITGEIST_CONTAINS,
+            ZEITGEIST_ELLIPSIS,
+            BOOKMARK_HEADER,
+            BOOKMARK_BEGINS,
+            BOOKMARK_CONTAINS,
+            BOOKMARK_ELLIPSIS
+        }
+
+        /* This function converts a Category enum to a letter which can be prefixed to the match
+         * name to form a sort key.  This ensures that the categories appear in the list in the
+         * desired order - that is within each class of results (current folder, deep search,
+         * zeitgeist search and bookmark search), after the header, the matches appear with the
+         * "begins with" ones first, then the "contains" and finally an "ellipsis" pseudo-match
+         * appears if MAX_RESULTS is exceeded for that category.
+         */ 
+         /* The constant "sort_string" serves as an array of characters indexed by the enum. */ 
+        private const string sort_string = "ABCDEFGHIJKLMN";
+        private static string category_to_string (Category category) {
+            return (sort_string.get_char ((uint)category)).to_string ();
+        }
+ 
         class Match : Object
         {
             public string name { get; construct; }
@@ -27,32 +61,34 @@ namespace Marlin.View.Chrome
             public string path_string { get; construct; }
             public Icon icon { get; construct; }
             public File? file { get; construct; }
+            public string sortkey { get; construct; }
 
-            public Match (FileInfo info, string path_string, File parent)
-            {
-                Object (name: info.get_display_name (),
+            public Match (FileInfo info, string path_string, File parent, SearchResults.Category category) {
+                var _name = info.get_display_name ();
+                Object (name: Markup.escape_text (_name),
                         mime: info.get_content_type (),
                         icon: info.get_icon (),
                         path_string: path_string,
-                        file: parent.resolve_relative_path (info.get_name ()));
+                        file: parent.resolve_relative_path (info.get_name ()),
+                        sortkey: category_to_string (category) + _name);
             }
 
-            public Match.from_bookmark (Bookmark bookmark)
-            {
-                Object (name: bookmark.label,
+            public Match.from_bookmark (Bookmark bookmark, SearchResults.Category category) {
+                Object (name: Markup.escape_text (bookmark.label),
                         mime: "inode/directory",
                         icon: bookmark.get_icon (),
                         path_string: "",
-                        file: bookmark.get_location ());
+                        file: bookmark.get_location (),
+                        sortkey: SearchResults.category_to_string (category) + bookmark.label);
             }
 
-            public Match.ellipsis ()
-            {
+            public Match.ellipsis (SearchResults.Category category) {
                 Object (name: "...",
                         mime: "",
                         icon: null,
                         path_string: "",
-                        file: null);
+                        file: null,
+                        sortkey: SearchResults.category_to_string (category));
             }
         }
 
@@ -79,7 +115,8 @@ namespace Marlin.View.Chrome
         Zeitgeist.Index zg_index;
         GenericArray<Zeitgeist.Event> templates;
 
-        int display_count;
+        int current_count;
+        int deep_count;
 
         bool local_search_finished = false;
         bool global_search_finished = false;
@@ -87,10 +124,11 @@ namespace Marlin.View.Chrome
         bool is_grabbing = false;
         Gdk.Device? device = null;
 
-        Gtk.TreeIter local_results;
-        Gtk.TreeIter global_results;
-        Gtk.TreeIter bookmark_results;
-        Gtk.TreeIter no_results_label;
+        Gtk.TreeIter? current_results = null;
+        Gtk.TreeIter? deep_results = null;
+        Gtk.TreeIter? zeitgeist_results = null;
+        Gtk.TreeIter? bookmark_results = null;
+
         Gtk.TreeView view;
         Gtk.TreeStore list;
         Gtk.TreeModelFilter filter;
@@ -153,16 +191,22 @@ namespace Marlin.View.Chrome
 
             view.append_column (column);
 
-            list = new Gtk.TreeStore (5, typeof (string), typeof (GLib.Icon),
-                typeof (string), typeof (File), typeof (bool));
-            filter = new Gtk.TreeModelFilter (list, null);
-            filter.set_visible_func ((model, iter) => {
-                if (iter == no_results_label)
-                    return n_results < 1;
+            list = new Gtk.TreeStore (6,
+                                      typeof (string),       /*0 file basename or category name */
+                                      typeof (GLib.Icon),    /*1 file icon */
+                                      typeof (string?),      /*2 file location */
+                                      typeof (File?),        /*3 file object */
+                                      typeof (bool),         /*4 icon is visible */
+                                      typeof (string));      /*5 Sort key */
 
+            filter = new Gtk.TreeModelFilter (list, null);
+
+            filter.set_visible_func ((model, iter) => {
                 /* hide empty category headers */
                 return list.iter_depth (iter) != 0 || list.iter_has_child (iter);
+
             });
+
             view.model = filter;
 
             list.row_changed.connect ((path, iter) => {
@@ -174,12 +218,27 @@ namespace Marlin.View.Chrome
                 }
             });
 
-            list.append (out local_results, null);
-            list.@set (local_results, 0, get_category_header (_("In This Folder")));
+            list.set_sort_column_id (5, Gtk.SortType.ASCENDING);
+
+            list.append (out current_results, null);
+            list.@set (current_results,
+                            0, get_category_header (_("In This Folder")),
+                            5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+
+            list.append (out deep_results, null);
+            list.@set (deep_results,
+                            0, get_category_header (_("Below This Folder")),
+                            5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+
             list.append (out bookmark_results, null);
-            list.@set (bookmark_results, 0, get_category_header (_("Bookmarks")));
-            list.append (out global_results, null);
-            list.@set (global_results, 0, get_category_header (_("Everywhere Else")));
+            list.@set (bookmark_results,
+                            0, get_category_header (_("Bookmarks")),
+                            5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+
+            list.append (out zeitgeist_results, null);
+            list.@set (zeitgeist_results,
+                            0, get_category_header (_("Recently used")),
+                            5, SearchResults.category_to_string (Category.CURRENT_HEADER));
 
             scroll.add (view);
             frame.add (scroll);
@@ -242,8 +301,8 @@ namespace Marlin.View.Chrome
             }
 
             var include_hidden = GOF.Preferences.get_default ().pref_show_hidden_files;
-
-            display_count = 0;
+            current_count = 0;
+            deep_count = 0;
             directory_queue = new Gee.LinkedList<File> ();
             waiting_results = new Gee.HashMap<Gtk.TreeIter?,Gee.List> ();
             current_root = folder;
@@ -277,7 +336,7 @@ namespace Marlin.View.Chrome
             new Thread<void*> (null, () => {
                 local_search_finished = false;
                 while (!file_search_operation.is_cancelled () && directory_queue.size > 0) {
-                    visit (search_term, include_hidden, file_search_operation);
+                    visit (search_term, include_hidden, file_search_operation, folder);
                 }
 
                 local_search_finished = true;
@@ -286,17 +345,17 @@ namespace Marlin.View.Chrome
                 return null;
             });
 
-                get_zg_results.begin (search_term);
+            get_zg_results.begin (search_term);
 
-                var bookmarks_matched = new Gee.LinkedList<Match> ();
-
-                foreach (var bookmark in BookmarkList.get_instance ().list) {
-                    if (term_matches (search_term, bookmark.label)) {
-                        bookmarks_matched.add (new Match.from_bookmark (bookmark));
-                    }
+            var bookmarks_matched = new Gee.LinkedList<Match> ();
+            var begins_with = false;
+            foreach (var bookmark in BookmarkList.get_instance ().list) {
+                if (term_matches (search_term, bookmark.label, out begins_with)) {
+                    bookmarks_matched.add (new Match.from_bookmark (bookmark, begins_with ? Category.BOOKMARK_BEGINS : Category.BOOKMARK_CONTAINS));
                 }
+            }
 
-                add_results (bookmarks_matched, bookmark_results);
+            add_results (bookmarks_matched, bookmark_results);
         }
 
         /** Signal handlers **/
@@ -648,15 +707,14 @@ namespace Marlin.View.Chrome
                 return;
             }
 
-            Gtk.TreeIter iter;
-            File file;
-
             foreach (var match in new_results) {
-                /* prevent results from showing in both global and local results */
-                if (parent == global_results) {
+                Gtk.TreeIter? iter = null;
+                File file;
+                /* do not add global result if already in local results */
+                if (parent == zeitgeist_results) {
                     var already_added = false;
 
-                    for (var valid = list.iter_nth_child (out iter, local_results, 0); valid;
+                    for (var valid = list.iter_nth_child (out iter, current_results, 0); valid;
                         valid = list.iter_next (ref iter)) {
 
                         list.@get (iter, 3, out file);
@@ -667,10 +725,25 @@ namespace Marlin.View.Chrome
                         }
                     }
 
-                    if (already_added)
+                    if (!already_added) {
+                        for (var valid = list.iter_nth_child (out iter, deep_results, 0); valid;
+                            valid = list.iter_next (ref iter)) {
+
+                            list.@get (iter, 3, out file);
+
+                            if (file != null && match.file != null && file.equal (match.file)) {
+                                already_added = true;
+                                break;
+                           }
+                        }
+                    }
+
+                    if (already_added) {
                         continue;
-                } else if (parent == local_results) {
-                    for (var valid = list.iter_nth_child (out iter, global_results, 0); valid;
+                    }
+                } else if (parent == current_results) {
+                    /* remove current search result from global if in global results */
+                    for (var valid = list.iter_nth_child (out iter, zeitgeist_results, 0); valid;
                         valid = list.iter_next (ref iter)) {
 
                         list.@get (iter, 3, out file);
@@ -680,13 +753,25 @@ namespace Marlin.View.Chrome
                             break;
                         }
                     }
-                }
+                } else if (parent == deep_results) {
+                    /* remove deep search result from from global if in global results */
+                    for (var valid = list.iter_nth_child (out iter, zeitgeist_results, 0); valid;
+                        valid = list.iter_next (ref iter)) {
+
+                        list.@get (iter, 3, out file);
+
+                        if (file != null && match.file != null && file.equal (match.file)) {
+                            list.remove (ref iter);
+                             break;
+                         }
+                     }
+                 }
 
                 var location = "<span %s>%s</span>".printf (get_pango_grey_color_string (),
-                    Markup.escape_text (match.path_string));
+                                                            Markup.escape_text (match.path_string));
 
                 list.append (out iter, parent);
-                list.@set (iter, 0, Markup.escape_text (match.name), 1, match.icon, 2, location, 3, match.file, 4, true);
+                list.@set (iter, 0, match.name, 1, match.icon, 2, location, 3, match.file, 4, true, 5, match.sortkey);
                 n_results++;
 
                 view.expand_all ();
@@ -804,21 +889,23 @@ namespace Marlin.View.Chrome
                             FileAttribute.STANDARD_TYPE + "," +
                             FileAttribute.STANDARD_ICON;
 
-        void visit (string term, bool include_hidden, Cancellable cancel)
-        {
-
-            FileEnumerator enumerator;
+        void visit (string term, bool include_hidden, Cancellable cancel, File root_folder) {
             var folder = directory_queue.poll ();
 
             if (folder == null) {
                 return;
             }
 
+            bool in_root = folder.equal (root_folder);
+            var category_count = in_root ? current_count : deep_count;
+
             var depth = 0;
 
             File f = folder;
             var path_string = "";
-            while (!f.equal (current_root)) {
+
+
+            while (f != null && !f.equal (current_root)) {
                 path_string = f.get_basename () + (path_string == "" ? "" : Path.DIR_SEPARATOR_S + path_string);
                 f = f.get_parent ();
                 depth++;
@@ -828,6 +915,7 @@ namespace Marlin.View.Chrome
                 return;
             }
 
+            FileEnumerator enumerator;
             try {
                 enumerator = folder.enumerate_children (ATTRIBUTES, 0, cancel);
             } catch (Error e) {
@@ -837,8 +925,13 @@ namespace Marlin.View.Chrome
             var new_results = new Gee.LinkedList<Match> ();
 
             FileInfo info = null;
+            Category cat;
+
             try {
-                while (!cancel.is_cancelled () && (info = enumerator.next_file (null)) != null) {
+                while (!cancel.is_cancelled () &&
+                       (info = enumerator.next_file (null)) != null &&
+                       category_count < MAX_RESULTS) {
+
                     if (info.get_is_hidden () && !include_hidden) {
                         continue;
                     }
@@ -847,43 +940,47 @@ namespace Marlin.View.Chrome
                         directory_queue.add (folder.resolve_relative_path (info.get_name ()));
                     }
 
-                    if (term_matches (term, info.get_display_name ())) {
-                        new_results.add (new Match (info, path_string, folder));
-                    }
+                    var begins_with = false;
+                    if (term_matches (term, info.get_display_name (), out begins_with)) {
+                        if (in_root) {
+                            cat = begins_with ? Category.CURRENT_BEGINS : Category.CURRENT_CONTAINS;
+                        } else {
+                            cat = begins_with ? Category.DEEP_BEGINS : Category.DEEP_CONTAINS;
+                        }
+                        new_results.add (new Match (info, path_string, folder, cat));
+                        category_count++;
+                     }
                 }
             } catch (Error e) {warning ("Error enumerating in visit");}
 
             if (new_results.size < 1) {
+                cat = in_root ? Category.CURRENT_ELLIPSIS : Category.DEEP_ELLIPSIS;
+                new_results.add (new Match.ellipsis (cat));
                 return;
-            }
-
-            if (!cancel.is_cancelled ()) {
-                var new_count = display_count + new_results.size;
-                if (new_count > MAX_RESULTS) {
-                    cancel.cancel ();
-
-                    var num_ok = MAX_RESULTS - display_count;
-                    if (num_ok < new_results.size) {
-                        var count = 0;
-                        var it = new_results.iterator ();
-                        while (it.next ()) {
-                            count++;
-                            if (count > num_ok)
-                                it.remove ();
-                        }
-                    }
-
-                    new_results.add (new Match.ellipsis ());
-
-                    display_count = MAX_RESULTS;
-                } else
-                    display_count = new_count;
+            } else if (!cancel.is_cancelled ()) {
+                if (in_root) {
+                    current_count = category_count;
+                } else {
+                    deep_count = category_count;
+                }
 
                 /* use a closure here to get vala to pass the userdata that we actually want */
                 Idle.add (() => {
-                    add_results (new_results, local_results);
+                    add_results (new_results, in_root ? current_results : deep_results);
                     return false;
                 });
+
+
+                if (category_count >= MAX_RESULTS) {
+                    cat = in_root ? Category.CURRENT_ELLIPSIS : Category.DEEP_ELLIPSIS;
+                    new_results.add (new Match.ellipsis (cat));
+                    return;
+                }
+
+
+                if (current_count >= MAX_RESULTS && deep_count >= MAX_RESULTS) {
+                    cancel.cancel ();
+                }
             }
         }
 
@@ -893,11 +990,11 @@ namespace Marlin.View.Chrome
 
             Zeitgeist.ResultSet results;
             try {
-                results = yield zg_index.search (term,
+                results = yield zg_index.search ("name:" + term + "*",
                                                  new Zeitgeist.TimeRange.anytime (),
                                                  templates,
                                                  0, /* offset */
-                                                 MAX_RESULTS + 1,
+                                                 MAX_RESULTS * 3,
                                                  Zeitgeist.ResultType.MOST_POPULAR_SUBJECTS,
                                                  current_operation);
             } catch (IOError.CANCELLED e) {
@@ -911,57 +1008,81 @@ namespace Marlin.View.Chrome
                 return;
             }
 
-            var i = 0;
-
             var matches = new Gee.LinkedList<Match> ();
             var home = File.new_for_path (Environment.get_home_dir ());
-            while (results.has_next () && !current_operation.is_cancelled ()) {
+            Category cat;
+            var i = 0;
+            while (results.has_next () && !current_operation.is_cancelled () && !global_search_finished) {
+
                 var result = results.next_value ();
                 foreach (var subject in result.subjects.data) {
                     if (i == MAX_RESULTS) {
-                        matches.add (new Match.ellipsis ());
+                        matches.add (new Match.ellipsis (Category.ZEITGEIST_ELLIPSIS));
+                        global_search_finished = true;
                         break;
                     }
 
                     try {
                         var file = File.new_for_uri (subject.uri);
-                        var path_string = "";
-                        var parent = file;
-                        while ((parent = parent.get_parent ()) != null) {
-                            if (parent.equal (current_root))
-                                break;
+                        /* Zeitgeist search finds search term anywhere in path.  We are only interested
+                         * when the search term is in the basename */ 
+                        while (file != null && !file.get_basename ().contains (term)) {
+                            file = file.get_parent ();
+                        }
+                        if (file != null) {
+                            var path_string = "";
+                            var parent = file;
+                            while ((parent = parent.get_parent ()) != null) {
+                                if (parent.equal (current_root)) {
+                                    break;
+                                }
 
-                            if (parent.equal (home)) {
-                                path_string = "~/" + path_string;
-                                break;
+                                if (parent.equal (home)) {
+                                    path_string = "~/" + path_string;
+                                    break;
+                                }
+
+                                if (path_string == "") {
+                                    path_string = parent.get_basename ();
+                                } else {
+                                    path_string = parent.get_basename () + Path.DIR_SEPARATOR_S + path_string;
+                                }
                             }
 
-                            if (path_string == "")
-                                path_string = parent.get_basename ();
-                            else
-                                path_string = parent.get_basename () + Path.DIR_SEPARATOR_S + path_string;
+                            /* Eliminate duplicate matches */
+                            bool found = false;
+                            foreach (Match m in matches) {
+                                if (m.path_string == path_string) {
+                                    found = true;
+                                    break;
+                                }
+                            }
+
+                            if (!found) {
+                                var info = yield file.query_info_async (ATTRIBUTES, 0, Priority.DEFAULT, current_operation);
+                                var name = info.get_display_name ();
+                                cat = name.has_prefix (term) ? Category.ZEITGEIST_BEGINS : Category.ZEITGEIST_CONTAINS;
+                                matches.add (new Match (info, path_string, file.get_parent (), cat));
+                                i++;
+                           }
                         }
-
-                        var info = yield file.query_info_async (ATTRIBUTES, 0, Priority.DEFAULT, current_operation);
-                        matches.add (new Match (info, path_string, file.get_parent ()));
-
-                        i++;
                     } catch (Error e) {}
                 }
             }
 
-            if (!current_operation.is_cancelled ())
-                add_results (matches, global_results);
+            if (!current_operation.is_cancelled ()) {
+                add_results (matches, zeitgeist_results);
+            }
 
             global_search_finished = true;
             Idle.add (send_search_finished);
         }
 
-        bool term_matches (string term, string name)
-        {
-            /**TODO** improve */
+        bool term_matches (string term, string name, out bool begins_with ) {
             /* term is assumed to be down */
-            return name.normalize ().casefold ().contains (term);
+            var n = name.normalize ().casefold ();
+            begins_with = n.has_prefix (term);
+            return n.contains (term);
         }
 
         string get_category_header (string title)
