@@ -26,8 +26,6 @@ namespace Marlin.View.Chrome {
 
         public abstract void cancel ();
         public abstract void search (string txt, GLib.File search_location);
-        public abstract void set_search_current_directory_only (bool only);
-        public abstract void set_begins_with_only (bool only);
         public abstract bool has_popped_up ();
     }
 }

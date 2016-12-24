@@ -32,7 +32,7 @@ namespace Marlin.View {
             {"undo", action_undo},
             {"redo", action_redo},
             {"bookmark", action_bookmark},
-            {"find", action_find, "s"},
+            {"find", action_find},
             {"tab", action_tab, "s"},
             {"go_to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
@@ -529,19 +529,15 @@ namespace Marlin.View {
             if (current_tab == null || current_tab.is_frozen) {
                 return;
             }
-            string search_scope = param.get_string ();
-            if (search_scope == "CURRENT_DIRECTORY_ONLY") {
-                /* Just search current directory for filenames beginning with term */
-                top_menu.enter_search_mode (true, true);
-            } else {
-                top_menu.enter_search_mode (false, false);
-            }
+
+            top_menu.enter_search_mode ();
         }
         public void on_search_request (Gdk.EventKey event) {
             if (current_tab == null || current_tab.is_frozen) {
                 return;
             }
-            if (top_menu.enter_search_mode (true, true)) {
+
+            if (top_menu.enter_search_mode ()) {
                 top_menu.on_key_press_event (event);
             }
         }
