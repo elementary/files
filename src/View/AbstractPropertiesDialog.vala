@@ -19,9 +19,8 @@
 *
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
-namespace Marlin.View {
 
-protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
+protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     protected Gtk.Grid info_grid;
     protected Gtk.Grid layout;
     protected Gtk.Stack stack;
@@ -176,31 +175,4 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
             storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.FILES, size);
         }
     }
-}
-
-protected class HeaderLabel : Gtk.Label {
-    public HeaderLabel (string _label) {
-        halign = Gtk.Align.START;
-        get_style_context ().add_class ("h4");
-        label = _label;
-    }
-}
-
-protected class KeyLabel : Gtk.Label {
-    public KeyLabel (string _label) {
-        halign = Gtk.Align.END;
-        label = _label;
-        margin_start = 12;
-    }
-}
-
-protected class ValueLabel : Gtk.Label {
-    public ValueLabel (string _label) {
-        can_focus = true;
-        halign = Gtk.Align.START;
-        label = _label;
-        selectable = true;
-        use_markup = true;
-    }
-}
 }

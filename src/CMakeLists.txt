@@ -69,8 +69,6 @@ set (LIB_PATHS
 link_directories (${LIB_PATHS})
 add_definitions (${CFLAGS} -O2)
 
-
-
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
         Application.vala
@@ -103,6 +101,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Slot.vala
         View/Miller.vala
         View/VolumePropertiesWindow.vala
+        View/Widgets/Label.vala
         View/Widgets/PermissionButton.vala
 
     PACKAGES
@@ -160,6 +159,9 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Slot.vala
         View/Miller.vala
         View/VolumePropertiesWindow.vala
+        View/Widgets/Label.vala
+        View/Widgets/PermissionButton.vala
+
     PACKAGES
         gtk+-3.0
         gio-2.0
