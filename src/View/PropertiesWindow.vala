@@ -23,7 +23,7 @@
 namespace Marlin.View {
 
 public class PropertiesWindow : AbstractPropertiesDialog {
-    private Granite.Widgets.XsEntry perm_code;
+    private Gtk.Entry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
 
@@ -909,10 +909,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         var other_label = new KeyLabel (_("Everyone:"));
         perm_button_other = create_perm_choice (PermissionType.OTHER);
 
-        perm_code = new Granite.Widgets.XsEntry ();
-        perm_code.set_text ("000");
-        perm_code.set_max_length (3);
-        perm_code.set_size_request (35, -1);
+        perm_code = new Gtk.Entry ();
+        perm_code.text = "000";
+        perm_code.max_length = perm_code.max_width_chars = perm_code.width_chars = 3;
 
         l_perm = new Gtk.Label ("<tt>%s</tt>".printf (goffile.get_permissions_as_string ()));
         l_perm.halign = Gtk.Align.START;
