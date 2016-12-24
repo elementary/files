@@ -190,7 +190,34 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         cancellable = new GLib.Cancellable ();
 
         update_selection_size (); /* Start counting first to get number of selected files and folders */    
-        build_header_box ();
+
+        /* create some widgets first (may be hidden by update_selection_size ()) */
+        var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
+        var file_icon = new Gtk.Image.from_pixbuf (file_pix);
+        overlay_emblems (file_icon, goffile.emblems_list);
+
+        /* Build header box */
+        if (count > 1 || (count == 1 && !goffile.is_writable ())) {
+            var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
+            label.halign = Gtk.Align.START;
+            header_title = label;
+        } else if (count == 1 && goffile.is_writable ()) {
+            entry = new Gtk.Entry ();
+            original_name = goffile.info.get_name ();
+            reset_entry_text ();
+
+            entry.activate.connect (() => {
+                rename_file (goffile, entry.get_text ());
+            });
+
+            entry.focus_out_event.connect (() => {
+                rename_file (goffile, entry.get_text ());
+                return false;
+            });
+            header_title = entry;
+        }
+
+        create_header_title ();
 
         /* Permissions */
         /* Don't show permissions for uri scheme trash and archives */
@@ -316,36 +343,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         entry.set_text (original_name);
-    }
-
-    private void build_header_box () {
-        /* create some widgets first (may be hidden by update_selection_size ()) */
-        var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-        var file_icon = new Gtk.Image.from_pixbuf (file_pix);
-        overlay_emblems (file_icon, goffile.emblems_list);
-
-        /* Build header box */
-        if (count > 1 || (count == 1 && !goffile.is_writable ())) {
-            var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
-            label.halign = Gtk.Align.START;
-            header_title = label;
-        } else if (count == 1 && goffile.is_writable ()) {
-            entry = new Gtk.Entry ();
-            original_name = goffile.info.get_name ();
-            reset_entry_text ();
-
-            entry.activate.connect (() => {
-                rename_file (goffile, entry.get_text ());
-            });
-
-            entry.focus_out_event.connect (() => {
-                rename_file (goffile, entry.get_text ());
-                return false;
-            });
-            header_title = entry;
-        }
-
-        create_header_title ();
     }
 
     private string? get_common_ftype () {
