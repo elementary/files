@@ -1090,7 +1090,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.select_all", {"<Ctrl>A"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
-            application.set_accels_for_action ("win.find::GLOBAL", {"<Ctrl>F"});
+            application.set_accels_for_action ("win.find", {"<Ctrl>F"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down"});
