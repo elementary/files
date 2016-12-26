@@ -17,7 +17,7 @@
 * Boston, MA 02111-1307, USA.
 */
 
-public class PermissionButton : Gtk.Box {
+public class PermissionButton : Gtk.Grid {
     public Gtk.ToggleButton btn_read;
     public Gtk.ToggleButton btn_write;
     public Gtk.ToggleButton btn_exe;
@@ -29,6 +29,12 @@ public class PermissionButton : Gtk.Box {
         WRITE,
         EXE
     }
+
+    private Posix.mode_t[,] vfs_perms = {
+        { Posix.S_IRUSR, Posix.S_IWUSR, Posix.S_IXUSR },
+        { Posix.S_IRGRP, Posix.S_IWGRP, Posix.S_IXGRP },
+        { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
+    };
 
     public PermissionButton (Marlin.View.PropertiesWindow.PermissionType permission_type) {
         Object (permission_type: permission_type);
@@ -47,10 +53,30 @@ public class PermissionButton : Gtk.Box {
         btn_exe.set_data ("permissiontype", permission_type);
         btn_exe.set_data ("permissionvalue", Value.EXE);
 
-        homogeneous = true;
+        column_homogeneous = true;
         get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
         add (btn_read);
         add (btn_write);
         add (btn_exe);
+    }
+
+    public void update_buttons (uint32 permissions) {
+        if ((permissions & vfs_perms[permission_type, 0]) != 0) {
+            btn_read.active = true;
+        } else {
+            btn_read.active = false;
+        }
+
+        if ((permissions & vfs_perms[permission_type, 1]) != 0) {
+            btn_write.active = true;
+        } else {
+            btn_write.active = false;
+        }
+
+        if ((permissions & vfs_perms[permission_type, 2]) != 0) {
+            btn_exe.active = true;
+        } else {
+            btn_exe.active = false;
+        }
     }
 }

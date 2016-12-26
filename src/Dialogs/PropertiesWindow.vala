@@ -741,19 +741,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return vfs_perm;
     }
 
-    private void update_permission_type_buttons (PermissionButton hbox, uint32 permissions, PermissionType pt) {
-        int i=0;
-        foreach (var widget in hbox.get_children ()) {
-            Gtk.ToggleButton btn = (Gtk.ToggleButton) widget;
-            ((permissions & vfs_perms[pt, i]) != 0) ? btn.active = true : btn.active = false;
-            i++;
-        }
-    }
-
     private void update_perm_grid_toggle_states (uint32 permissions) {
-        update_permission_type_buttons (perm_button_user, permissions, PermissionType.USER);
-        update_permission_type_buttons (perm_button_group, permissions, PermissionType.GROUP);
-        update_permission_type_buttons (perm_button_other, permissions, PermissionType.OTHER);
+        perm_button_user.update_buttons (permissions);
+        perm_button_group.update_buttons (permissions);
+        perm_button_other.update_buttons (permissions);
     }
 
     private bool is_chmod_code (string str) {
