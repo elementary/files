@@ -80,8 +80,10 @@ IF (WITH_UNITY AND UNITY_FOUND)
         QuicklistHandler.vala
         ClipboardManager.vala
         Dialogs/AbstractPropertiesDialog.vala
+        Dialogs/ChooseAppDialog.vala
         Dialogs/PropertiesWindow.vala
         Dialogs/VolumePropertiesWindow.vala
+        Utils/MimeActions.vala
         Utils/Permissions.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
@@ -97,13 +99,16 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Slot.vala
         View/Miller.vala
         View/Widgets/AbstractEditableLabel.vala
+        View/Widgets/BreadcrumbsEntry.vala
         View/Widgets/DiskRenderer.vala
         View/Widgets/Label.vala
+        View/Widgets/LocationBar.vala
         View/Widgets/MultiLineEditableLabel.vala
         View/Widgets/OverlayBar.vala
         View/Widgets/PermissionButton.vala
         View/Widgets/ProgressInfoWidget.vala
         View/Widgets/SingleLineEditableLabel.vala
+        View/Widgets/TopMenu.vala
 
     PACKAGES
         gtk+-3.0
@@ -139,8 +144,10 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         TextRenderer.vala
         ClipboardManager.vala
         Dialogs/AbstractPropertiesDialog.vala
+        Dialogs/ChooseAppDialog.vala
         Dialogs/PropertiesWindow.vala
         Dialogs/VolumePropertiesWindow.vala
+        Utils/MimeActions.vala
         Utils/Permissions.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
@@ -156,13 +163,16 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Slot.vala
         View/Miller.vala
         View/Widgets/AbstractEditableLabel.vala
+        View/Widgets/BreadcrumbsEntry.vala
         View/Widgets/DiskRenderer.vala
         View/Widgets/Label.vala
+        View/Widgets/LocationBar.vala
         View/Widgets/MultiLineEditableLabel.vala
         View/Widgets/OverlayBar.vala
         View/Widgets/PermissionButton.vala
         View/Widgets/ProgressInfoWidget.vala
         View/Widgets/SingleLineEditableLabel.vala
+        View/Widgets/TopMenu.vala
 
     PACKAGES
         gtk+-3.0
