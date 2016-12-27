@@ -1,66 +1,69 @@
-/***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+/*
+* Copyright (c) 2015-2016 elementary LLC. (http://launchpad.net/pantheon-files)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 3 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+* Boston, MA 02111-1307, USA.
+*
+* Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+*/
 
-    This program is free software: you can redistribute it and/or modify it
-    under the terms of the GNU Lesser General Public License version 3, as published
-    by the Free Software Foundation.
+class PF.ChooseAppDialog : Object {
+    Gtk.AppChooserDialog dialog;
+    Gtk.CheckButton check_default;
 
-    This program is distributed in the hope that it will be useful, but
-    WITHOUT ANY WARRANTY; without even the implied warranties of
-    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
-    PURPOSE. See the GNU General Public License for more details.
+    public GLib.File file_to_open { get; construct; }
+    public Gtk.Window parent { get; construct; }
 
-    You should have received a copy of the GNU General Public License along
-    with this program. If not, see <http://www.gnu.org/licenses/>.
+    public ChooseAppDialog (Gtk.Window? parent, GLib.File file_to_open) {
+        Object (parent: parent, file_to_open: file_to_open);
+    }
+    
+    construct {
+        dialog = new Gtk.AppChooserDialog (parent, Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT, file_to_open);
+        dialog.deletable = false;
 
-    Authors : Jeremy Wootten <jeremy@elementaryos.org>
-***/
+        var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
+        app_chooser.show_recommended = true;
 
-namespace PF {
-    class ChooseAppDialog {
-        Gtk.AppChooserDialog dialog;
-        Gtk.CheckButton check_default;
-        GLib.File file_to_open;
-        public ChooseAppDialog (Gtk.Widget? parent, GLib.File file) {
-            file_to_open = file;
-            Gtk.Window? window = null;
-            if (parent != null && parent is Gtk.Window) {
-                window = parent as Gtk.Window;
-            }
-            dialog = new Gtk.AppChooserDialog (window,
-                                               Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
-                                               file_to_open);
+        check_default = new Gtk.CheckButton.with_label (_("Set as default"));
+        check_default.active = true;
+        check_default.show ();
 
-            dialog.set_deletable (false);
-            var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
-            app_chooser.set_show_recommended (true);
-            check_default = new Gtk.CheckButton.with_label (_("Set as default"));
-            check_default.set_active (true);
-            check_default.show ();
-            var action_area = dialog.get_action_area () as Gtk.ButtonBox;
-            action_area.add (check_default);
-            action_area.set_child_secondary (check_default, true);
-            dialog.show ();
-        }
+        var action_area = dialog.get_action_area () as Gtk.ButtonBox;
+        action_area.add (check_default);
+        action_area.set_child_secondary (check_default, true);
 
-        public AppInfo? get_app_info () {
-            AppInfo? app = null;
-            int response = dialog.run ();
-            if (response == Gtk.ResponseType.OK) {
-                app = dialog.get_app_info ();
-                if (check_default.get_active ()) {
-                    try {
-                        var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
-                                                                    FileQueryInfoFlags.NONE, null);
-                        app.set_as_default_for_type (info.get_content_type ());
-                    }
-                    catch (GLib.Error error) {
-                        critical ("Could not set as default: %s", error.message);
-                    }
+        dialog.show ();
+    }
+
+    public AppInfo? get_app_info () {
+        AppInfo? app = null;
+        int response = dialog.run ();
+        if (response == Gtk.ResponseType.OK) {
+            app = dialog.get_app_info ();
+            if (check_default.get_active ()) {
+                try {
+                    var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE, FileQueryInfoFlags.NONE, null);
+                    app.set_as_default_for_type (info.get_content_type ());
+                }
+                catch (GLib.Error error) {
+                    critical ("Could not set as default: %s", error.message);
                 }
             }
-            dialog.destroy ();
-            return app;
         }
+        dialog.destroy ();
+        return app;
     }
 }
