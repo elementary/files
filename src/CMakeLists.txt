@@ -82,6 +82,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         Dialogs/AbstractPropertiesDialog.vala
         Dialogs/PropertiesWindow.vala
         Dialogs/VolumePropertiesWindow.vala
+        Utils/Permissions.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
@@ -140,6 +141,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         Dialogs/AbstractPropertiesDialog.vala
         Dialogs/PropertiesWindow.vala
         Dialogs/VolumePropertiesWindow.vala
+        Utils/Permissions.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala

@@ -22,13 +22,7 @@ public class PermissionButton : Gtk.Grid {
     public Gtk.ToggleButton btn_write;
     public Gtk.ToggleButton btn_exe;
 
-    public Marlin.View.PropertiesWindow.PermissionType permission_type { get; construct; }
-
-    public enum Value {
-        READ,
-        WRITE,
-        EXE
-    }
+    public Permissions.Type permission_type { get; construct; }
 
     private Posix.mode_t[,] vfs_perms = {
         { Posix.S_IRUSR, Posix.S_IWUSR, Posix.S_IXUSR },
@@ -36,22 +30,22 @@ public class PermissionButton : Gtk.Grid {
         { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
     };
 
-    public PermissionButton (Marlin.View.PropertiesWindow.PermissionType permission_type) {
+    public PermissionButton (Permissions.Type permission_type) {
         Object (permission_type: permission_type);
     }
 
     construct {
         btn_read = new Gtk.ToggleButton.with_label (_("Read"));
         btn_read.set_data ("permissiontype", permission_type);
-        btn_read.set_data ("permissionvalue", Value.READ);
+        btn_read.set_data ("permissionvalue", Permissions.Value.READ);
 
         btn_write = new Gtk.ToggleButton.with_label (_("Write"));
         btn_write.set_data ("permissiontype", permission_type);
-        btn_write.set_data ("permissionvalue", Value.WRITE);
+        btn_write.set_data ("permissionvalue", Permissions.Value.WRITE);
 
         btn_exe = new Gtk.ToggleButton.with_label (_("Execute"));
         btn_exe.set_data ("permissiontype", permission_type);
-        btn_exe.set_data ("permissionvalue", Value.EXE);
+        btn_exe.set_data ("permissionvalue", Permissions.Value.EXE);
 
         column_homogeneous = true;
         get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
