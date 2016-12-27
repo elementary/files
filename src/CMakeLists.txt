@@ -79,7 +79,10 @@ IF (WITH_UNITY AND UNITY_FOUND)
         TextRenderer.vala
         QuicklistHandler.vala
         ClipboardManager.vala
-        View/AbstractPropertiesDialog.vala
+        Dialogs/AbstractPropertiesDialog.vala
+        Dialogs/PropertiesWindow.vala
+        Dialogs/VolumePropertiesWindow.vala
+        Utils/Permissions.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
@@ -89,12 +92,10 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
-        View/PropertiesWindow.vala
         View/Browser.vala
         View/Sidebar.vala
         View/Slot.vala
         View/Miller.vala
-        View/VolumePropertiesWindow.vala
         View/Widgets/AbstractEditableLabel.vala
         View/Widgets/DiskRenderer.vala
         View/Widgets/Label.vala
@@ -137,7 +138,10 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         ProgressUIHandler.vala
         TextRenderer.vala
         ClipboardManager.vala
-        View/AbstractPropertiesDialog.vala
+        Dialogs/AbstractPropertiesDialog.vala
+        Dialogs/PropertiesWindow.vala
+        Dialogs/VolumePropertiesWindow.vala
+        Utils/Permissions.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
@@ -147,12 +151,10 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
-        View/PropertiesWindow.vala
         View/Browser.vala
         View/Sidebar.vala
         View/Slot.vala
         View/Miller.vala
-        View/VolumePropertiesWindow.vala
         View/Widgets/AbstractEditableLabel.vala
         View/Widgets/DiskRenderer.vala
         View/Widgets/Label.vala
