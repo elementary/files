@@ -423,7 +423,7 @@ namespace PF.FileUtils {
         int now_day = now.get_day_of_year ();
         int disp_day = dt.get_day_of_year ();
 
-        if (disp_day < now_day - 7) {
+        if (disp_day < now_day - 6) {
             return dt.format (default_date_format);
         }
 
