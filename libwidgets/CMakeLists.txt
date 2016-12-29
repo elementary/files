@@ -29,7 +29,6 @@ set(LIB_PATHS
 link_directories(${LIB_PATHS})
 
 vala_precompile(VALA_C ${PKGNAME}
-    Dialogs/ChooseAppDialog.vala
     Interfaces/LocatableInterface.vala
     Interfaces/NavigatableInterface.vala
     Chrome/BasicLocationBar.vala
@@ -38,15 +37,11 @@ vala_precompile(VALA_C ${PKGNAME}
     Chrome/BreadcrumbIconList.vala
     Chrome/ButtonWithMenu.vala
     Chrome/ImgEventBox.vala
-    View/LocationBar.vala
-    View/BreadcrumbsEntry.vala
     View/SearchResults.vala
     Interfaces/SearchableInterface.vala
-    Chrome/TopMenu.vala
     Chrome/ViewSwitcher.vala
     Animations/Animations.vala
     Resources.vala
-    MimeActions.vala
     Welcome.vala
 PACKAGES
     gtk+-3.0
