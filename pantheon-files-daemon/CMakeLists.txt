@@ -15,7 +15,6 @@ pkg_check_modules(DEPS REQUIRED
 	gail-3.0
 	gee-0.8
 	sqlite3
-    dbus-glib-1
 	libnotify>=0.7.2)
 set(CFLAGS
 	${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
@@ -27,6 +26,8 @@ link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS})
 
 vala_precompile(VALA_C pantheon-files-daemon
+    main.vala
+    FileManager1.vala
     marlind-tagging.vala
 PACKAGES
     gtk+-3.0
