@@ -878,7 +878,10 @@ public class GOF.Directory.Async : Object {
         bool found;
 
         foreach (var loc in files) {
-            assert (loc != null);
+            if (loc == null) {
+                continue;
+            }
+
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
@@ -895,7 +898,9 @@ public class GOF.Directory.Async : Object {
                     dirs.append (dir);
             } else {
                 dir = cache_lookup (loc);
-                dir.file_deleted (dir.file);
+                if (dir != null) {
+                    dir.file_deleted (dir.file);
+                }
             }
         }
 
