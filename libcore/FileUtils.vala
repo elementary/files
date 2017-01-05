@@ -22,12 +22,13 @@ namespace PF.FileUtils {
     const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
 
     public File? get_file_for_path (string? path) {
-        File? file = null;
-        string new_path = sanitize_path (path);
-        if (path.length > 0) {
-            file = File.new_for_commandline_arg (new_path);
+        string? new_path = sanitize_path (path);
+
+        if (new_path != null && new_path.length > 0) {
+            return  File.new_for_commandline_arg (new_path);
+        } else {
+            return null;
         }
-        return file;
     }
 
     public string get_parent_path_from_path (string path) {
