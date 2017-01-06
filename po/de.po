@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-23 12:40-0800\n"
-"PO-Revision-Date: 2016-12-10 08:41+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2017-01-05 18:09+0000\n"
+"Last-Translator: UweS <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-12-24 04:50+0000\n"
-"X-Generator: Launchpad (build 18298)\n"
+"X-Launchpad-Export-Date: 2017-01-06 06:09+0000\n"
+"X-Generator: Launchpad (build 18302)\n"
 "Language: de\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1107,7 +1107,7 @@ msgstr "Weitere _Details anzeigen"
 
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
 msgid "Inaccessible"
-msgstr ""
+msgstr "Zugriff nicht möglich"
 
 #: ../libcore/gof-file.c:379
 #, c-format
@@ -1150,7 +1150,7 @@ msgstr "Papierkorb öffnen, um manuell wiederherzustellen"
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
 msgid "Delete %d copied items"
-msgstr "Lösche %d kopierte Dateien"
+msgstr "%d kopierte Dateien löschen"
 
 #: ../libcore/marlin-undostack-manager.c:1228
 #: ../libcore/marlin-undostack-manager.c:1238
@@ -1162,12 +1162,12 @@ msgstr "Lösche »%s«"
 #: ../libcore/marlin-undostack-manager.c:1235
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr "Lösche %d doppelte Dateien"
+msgstr "%d doppelte Dateien löschen"
 
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Verschiebe %d Dateien zurück nach »%s«"
+msgstr "%d Objekte zurück nach »%s« verschieben"
 
 #: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
@@ -1184,7 +1184,7 @@ msgstr "»%s« in »%s« umbenennen"
 #: ../libcore/marlin-undostack-manager.c:1473
 #, c-format
 msgid "Restore %d items from trash"
-msgstr "%d Dateien aus dem Papierkorb wiederherstellen"
+msgstr "%d Objekte aus dem Papierkorb wiederherstellen"
 
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
@@ -1194,7 +1194,7 @@ msgstr "»%s« nach »%s« wiederherstellen"
 #: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "%d Dateien zurück in den Papierkorb verschieben"
+msgstr "%d Objekte zurück in den Papierkorb verschieben"
 
 #: ../libcore/marlin-undostack-manager.c:1300
 #, c-format
@@ -1204,7 +1204,7 @@ msgstr "»%s« zurück in den Papierkorb verschieben"
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
 msgid "Delete links to %d items"
-msgstr "Lösche Verknüpfungen zu %d Dateien"
+msgstr "Verknüpfungen zu %d Objekte löschen"
 
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
@@ -1234,7 +1234,7 @@ msgstr "Besitzer von »%s« auf »%s« zurücksetzen"
 #: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr "Kopiere %d Dateien nach »%s«"
+msgstr "%d Objekte nach »%s« kopieren"
 
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
@@ -1244,7 +1244,7 @@ msgstr "»%s« nach »%s« kopieren"
 #: ../libcore/marlin-undostack-manager.c:1400
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "Dupliziere %d in »%s«"
+msgstr "%d Objekte in »%s« duplizieren"
 
 #: ../libcore/marlin-undostack-manager.c:1405
 #, c-format
@@ -1254,7 +1254,7 @@ msgstr "Dupliziere »%s« in »%s«"
 #: ../libcore/marlin-undostack-manager.c:1413
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr "Verschiebe %d Dateien nach »%s«"
+msgstr "%d Objekte nach »%s« verschieben"
 
 #: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
@@ -1294,7 +1294,7 @@ msgstr "»%s« aus dem Papierkorb wiederherstellen"
 #: ../libcore/marlin-undostack-manager.c:1485
 #, c-format
 msgid "Create links to %d items"
-msgstr "Erstelle Verknüpfungen für %d Objekte"
+msgstr "Verknüpfungen für %d Objekte erstellen"
 
 #: ../libcore/marlin-undostack-manager.c:1488
 #, c-format
@@ -1648,11 +1648,11 @@ msgstr "%u Ordner"
 
 #: ../src/View/OverlayBar.vala:232 ../src/View/OverlayBar.vala:240
 msgid " and %u other item (%s) selected"
-msgstr " und %u anderes Element (%s) ausgewählt"
+msgstr " und %u anderes Objekt (%s) ausgewählt"
 
 #: ../src/View/OverlayBar.vala:233 ../src/View/OverlayBar.vala:241
 msgid " and %u other items (%s) selected"
-msgstr " und %u andere Elemente (%s) ausgewählt"
+msgstr " und %u andere Objekte (%s) ausgewählt"
 
 #: ../src/View/OverlayBar.vala:236 ../src/View/OverlayBar.vala:244
 msgid " selected"
@@ -1661,12 +1661,12 @@ msgstr " ausgewählt"
 #: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1187
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u Ordner"
+msgstr[1] "%u Ordner"
 
 #: ../src/View/OverlayBar.vala:246
 msgid "%u items selected (%s)"
-msgstr "%u ausgewählte Elemente (%s)"
+msgstr "%u ausgewählte Objekte (%s)"
 
 #. / TRANSLATORS: %u will be substituted by the number of sub folders
 #: ../src/View/OverlayBar.vala:287
@@ -1987,31 +1987,31 @@ msgstr "Jeder:"
 #: ../src/View/PropertiesWindow.vala:1165
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u Unterordner"
+msgstr[1] "%u Unterordner"
 
 #: ../src/View/PropertiesWindow.vala:1169
 #: ../src/View/PropertiesWindow.vala:1191
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u Datei"
+msgstr[1] "%u Dateien"
 
 #. /TRANSLATORS: folders, files
 #: ../src/View/PropertiesWindow.vala:1174
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/View/PropertiesWindow.vala:1195
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u ausgewähltes Objekt"
+msgstr[1] "%u ausgewählte Objekte"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/View/PropertiesWindow.vala:1197
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
@@ -2267,7 +2267,6 @@ msgstr ""
 "  UweS https://launchpad.net/~uwes\n"
 "  Versable https://launchpad.net/~versable\n"
 "  dworld https://launchpad.net/~johannesgerber\n"
-"  kontakt@wilkomeyer.eu https://launchpad.net/~s-kontakt-2\n"
 "  neonblack https://launchpad.net/~neonblack\n"
 "  quassy https://launchpad.net/~quassy\n"
 "  queckjap https://launchpad.net/~eribabu"
@@ -2377,7 +2376,7 @@ msgstr "Papierkorb leeren"
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
 msgstr ""
-"Diese Elemente können aus dem Papierkorb wiederhergestellt oder gelöscht "
+"Diese Objekte können aus dem Papierkorb wiederhergestellt oder gelöscht "
 "werden."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
