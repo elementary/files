@@ -16,19 +16,29 @@ set (LIB_PATHS
 )
 
 set (TEST_NAME
-    gof-directory-async_tests
+    gof_directory_async_tests
 )
 
 link_directories (${LIB_PATHS})
 add_definitions (${CFLAGS} -O2)
 
+vala_precompile (VALA_TEST_C ${TEST_NAME}
+  GOFDirectoryAsyncTests.vala
+  PACKAGES
+    posix
+    pantheon-files-core
+  OPTIONS
+    --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
+    --thread
+    --target-glib=2.32 # Needed for new thread API
+)
 
 add_executable (${TEST_NAME}
-    tests.c
-    marlincore-tests-file.c
+    ${VALA_TEST_C}
 )
 
 target_link_libraries (${TEST_NAME} ${CORE_LIB} ${DEPS_LIBRARIES})
 add_dependencies (${TEST_NAME} ${CORE_LIB})
 
 add_test (core-${TEST_NAME} ${TEST_NAME})
+
