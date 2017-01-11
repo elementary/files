@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2016-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software; you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the Free
@@ -68,4 +68,3 @@ namespace PF {
         public const string EMPTY_TRASH = "trash-empty";
     }
 }
-

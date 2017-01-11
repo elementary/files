@@ -69,39 +69,46 @@ set (LIB_PATHS
 link_directories (${LIB_PATHS})
 add_definitions (${CFLAGS} -O2)
 
-
-
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
         Application.vala
         ConnectServerOperation.vala
-        AbstractEditableLabel.vala
-        SingleLineEditableLabel.vala
-        MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
-        ProgressInfoWidget.vala
         ProgressUIHandler.vala
         TextRenderer.vala
         QuicklistHandler.vala
-        View/AbstractPropertiesDialog.vala
+        ClipboardManager.vala
+        Dialogs/AbstractPropertiesDialog.vala
+        Dialogs/ChooseAppDialog.vala
+        Dialogs/PropertiesWindow.vala
+        Dialogs/VolumePropertiesWindow.vala
+        Utils/MimeActions.vala
+        Utils/Permissions.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
         View/ListView.vala
         ZeitgeistManager.vala
-        View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
-        View/OverlayBar.vala
-        View/PropertiesWindow.vala
         View/Browser.vala
         View/Sidebar.vala
         View/Slot.vala
         View/Miller.vala
-        View/VolumePropertiesWindow.vala
+        View/Widgets/AbstractEditableLabel.vala
+        View/Widgets/BreadcrumbsEntry.vala
+        View/Widgets/DiskRenderer.vala
+        View/Widgets/Label.vala
+        View/Widgets/LocationBar.vala
+        View/Widgets/MultiLineEditableLabel.vala
+        View/Widgets/OverlayBar.vala
+        View/Widgets/PermissionButton.vala
+        View/Widgets/ProgressInfoWidget.vala
+        View/Widgets/SingleLineEditableLabel.vala
+        View/Widgets/TopMenu.vala
 
     PACKAGES
         gtk+-3.0
@@ -131,32 +138,42 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
         Application.vala
         ConnectServerOperation.vala
-        AbstractEditableLabel.vala
-        SingleLineEditableLabel.vala
-        MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
-        ProgressInfoWidget.vala
         ProgressUIHandler.vala
         TextRenderer.vala
-        View/AbstractPropertiesDialog.vala
+        ClipboardManager.vala
+        Dialogs/AbstractPropertiesDialog.vala
+        Dialogs/ChooseAppDialog.vala
+        Dialogs/PropertiesWindow.vala
+        Dialogs/VolumePropertiesWindow.vala
+        Utils/MimeActions.vala
+        Utils/Permissions.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
         View/ListView.vala
         ZeitgeistManager.vala
-        View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
-        View/OverlayBar.vala
-        View/PropertiesWindow.vala
         View/Browser.vala
         View/Sidebar.vala
         View/Slot.vala
         View/Miller.vala
-        View/VolumePropertiesWindow.vala
+        View/Widgets/AbstractEditableLabel.vala
+        View/Widgets/BreadcrumbsEntry.vala
+        View/Widgets/DiskRenderer.vala
+        View/Widgets/Label.vala
+        View/Widgets/LocationBar.vala
+        View/Widgets/MultiLineEditableLabel.vala
+        View/Widgets/OverlayBar.vala
+        View/Widgets/PermissionButton.vala
+        View/Widgets/ProgressInfoWidget.vala
+        View/Widgets/SingleLineEditableLabel.vala
+        View/Widgets/TopMenu.vala
+
     PACKAGES
         gtk+-3.0
         gio-2.0
@@ -182,7 +199,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 add_executable (${CMAKE_PROJECT_NAME}
-    marlin-clipboard-manager.c
     marlin-thumbnailer.c
     marlin-icon-renderer.c
     marlin-connect-server-dialog.c
