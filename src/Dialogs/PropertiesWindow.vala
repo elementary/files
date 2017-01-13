@@ -1,6 +1,6 @@
 /*
 * Copyright (c) 2011 Marlin Developers (http://launchpad.net/marlin)
-* Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/pantheon-files)
+* Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/pantheon-files)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -23,7 +23,7 @@
 namespace Marlin.View {
 
 public class PropertiesWindow : AbstractPropertiesDialog {
-    private Granite.Widgets.XsEntry perm_code;
+    private Gtk.Entry perm_code;
     private bool perm_code_should_update = true;
     private Gtk.Label l_perm;
 
@@ -95,12 +95,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         APP_INFO,
         LABEL,
         ICON
-    }
-
-    public enum PermissionType {
-        USER,
-        GROUP,
-        OTHER
     }
 
     private Posix.mode_t[,] vfs_perms = {
@@ -190,7 +184,34 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         cancellable = new GLib.Cancellable ();
 
         update_selection_size (); /* Start counting first to get number of selected files and folders */    
-        build_header_box ();
+
+        /* create some widgets first (may be hidden by update_selection_size ()) */
+        var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
+        var file_icon = new Gtk.Image.from_pixbuf (file_pix);
+        overlay_emblems (file_icon, goffile.emblems_list);
+
+        /* Build header box */
+        if (count > 1 || (count == 1 && !goffile.is_writable ())) {
+            var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
+            label.halign = Gtk.Align.START;
+            header_title = label;
+        } else if (count == 1 && goffile.is_writable ()) {
+            entry = new Gtk.Entry ();
+            original_name = goffile.info.get_name ();
+            reset_entry_text ();
+
+            entry.activate.connect (() => {
+                rename_file (goffile, entry.get_text ());
+            });
+
+            entry.focus_out_event.connect (() => {
+                rename_file (goffile, entry.get_text ());
+                return false;
+            });
+            header_title = entry;
+        }
+
+        create_header_title ();
 
         /* Permissions */
         /* Don't show permissions for uri scheme trash and archives */
@@ -316,36 +337,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         entry.set_text (original_name);
-    }
-
-    private void build_header_box () {
-        /* create some widgets first (may be hidden by update_selection_size ()) */
-        var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
-        var file_icon = new Gtk.Image.from_pixbuf (file_pix);
-        overlay_emblems (file_icon, goffile.emblems_list);
-
-        /* Build header box */
-        if (count > 1 || (count == 1 && !goffile.is_writable ())) {
-            var label = new Gtk.Label (get_selected_label (selected_folders, selected_files));
-            label.halign = Gtk.Align.START;
-            header_title = label;
-        } else if (count == 1 && goffile.is_writable ()) {
-            entry = new Gtk.Entry ();
-            original_name = goffile.info.get_name ();
-            reset_entry_text ();
-
-            entry.activate.connect (() => {
-                rename_file (goffile, entry.get_text ());
-            });
-
-            entry.focus_out_event.connect (() => {
-                rename_file (goffile, entry.get_text ());
-                return false;
-            });
-            header_title = entry;
-        }
-
-        create_header_title ();
     }
 
     private string? get_common_ftype () {
@@ -659,23 +650,23 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         return false;
     }
 
-    private void update_perm_codes (PermissionType pt, int val, int mult) {
+    private void update_perm_codes (Permissions.Type pt, int val, int mult) {
         switch (pt) {
-        case PermissionType.USER:
+        case Permissions.Type.USER:
             owner_perm_code += mult*val;
             break;
-        case PermissionType.GROUP:
+        case Permissions.Type.GROUP:
             group_perm_code += mult*val;
             break;
-        case PermissionType.OTHER:
+        case Permissions.Type.OTHER:
             everyone_perm_code += mult*val;
             break;
         }
     }
 
     private void permission_button_toggle (Gtk.ToggleButton btn) {
-        unowned PermissionType pt = btn.get_data ("permissiontype");
-        unowned PermissionButton.Value permission_value = btn.get_data ("permissionvalue");
+        unowned Permissions.Type pt = btn.get_data ("permissiontype");
+        unowned Permissions.Value permission_value = btn.get_data ("permissionvalue");
         int mult = 1;
 
         reset_and_cancel_perm_timeout ();
@@ -685,13 +676,13 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         switch (permission_value) {
-            case PermissionButton.Value.READ:
+            case Permissions.Value.READ:
                 update_perm_codes (pt, 4, mult);
                 break;
-            case PermissionButton.Value.WRITE:
+            case Permissions.Value.WRITE:
                 update_perm_codes (pt, 2, mult);
                 break;
-            case PermissionButton.Value.EXE:
+            case Permissions.Value.EXE:
                 update_perm_codes (pt, 1, mult);
                 break;
         }
@@ -701,7 +692,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private PermissionButton create_perm_choice (PermissionType pt) {
+    private PermissionButton create_perm_choice (Permissions.Type pt) {
         var permission_button = new PermissionButton (pt);
         permission_button.btn_read.toggled.connect (permission_button_toggle);
         permission_button.btn_write.toggled.connect (permission_button_toggle);
@@ -710,7 +701,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private uint32 get_perm_from_chmod_unit (uint32 vfs_perm, int nb,
-                                             int chmod, PermissionType pt) {
+                                             int chmod, Permissions.Type pt) {
         if (nb > 7 || nb < 0)
             critical ("erroned chmod code %d %d", chmod, nb);
 
@@ -733,42 +724,22 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         /* user */
         vfs_perm = get_perm_from_chmod_unit (vfs_perm, (int) chmod / 100,
-                                             chmod, PermissionType.USER);
+                                             chmod, Permissions.Type.USER);
         /* group */
         vfs_perm = get_perm_from_chmod_unit (vfs_perm, (int) (chmod / 10) % 10,
-                                             chmod, PermissionType.GROUP);
+                                             chmod, Permissions.Type.GROUP);
         /* other */
         vfs_perm = get_perm_from_chmod_unit (vfs_perm, (int) chmod % 10,
-                                             chmod, PermissionType.OTHER);
+                                             chmod, Permissions.Type.OTHER);
 
         return vfs_perm;
     }
 
-    private void update_permission_type_buttons (PermissionButton hbox, uint32 permissions, PermissionType pt) {
-        int i=0;
-        foreach (var widget in hbox.get_children ()) {
-            Gtk.ToggleButton btn = (Gtk.ToggleButton) widget;
-            ((permissions & vfs_perms[pt, i]) != 0) ? btn.active = true : btn.active = false;
-            i++;
-        }
-    }
 
     private void update_perm_grid_toggle_states (uint32 permissions) {
-        update_permission_type_buttons (perm_button_user, permissions, PermissionType.USER);
-        update_permission_type_buttons (perm_button_group, permissions, PermissionType.GROUP);
-        update_permission_type_buttons (perm_button_other, permissions, PermissionType.OTHER);
-    }
-
-    private bool is_chmod_code (string str) {
-        try {
-            var regex = new Regex ("^[0-7]{3}$");
-            if (regex.match (str))
-                return true;
-        } catch (RegexError e) {
-            assert_not_reached ();
-        }
-
-        return false;
+        perm_button_user.update_buttons (permissions);
+        perm_button_group.update_buttons (permissions);
+        perm_button_other.update_buttons (permissions);
     }
 
     private void reset_and_cancel_perm_timeout () {
@@ -801,7 +772,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
     private void entry_changed () {
         var str = perm_code.get_text ();
-        if (is_chmod_code (str)) {
+        if (Permissions.is_chmod_code (str)) {
             reset_and_cancel_perm_timeout ();
             timeout_perm = Timeout.add (60, () => {
                 uint32 perm = chmod_to_vfs (int.parse (str));
@@ -812,9 +783,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 foreach (GOF.File gof in files) {
                     if (gof.can_set_permissions() && gof.permissions != perm) {
                         gof.permissions = perm;
+
                         /* update permission label once */
-                        if (n<1)
-                            l_perm.set_text (goffile.get_permissions_as_string ());
+                        if (n < 1) {
+                            l_perm.label = "<tt>%s</tt>".printf (goffile.get_permissions_as_string ());
+                        }
+
                         /* real update permissions */
                         file_set_attributes.begin (gof, FileAttribute.UNIX_MODE, perm, cancellable);
                         n++;
@@ -898,20 +872,21 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         group_combo.margin_bottom = 12;
 
         var owner_label = new KeyLabel (_("Owner:"));
-        perm_button_user = create_perm_choice (PermissionType.USER);
+        perm_button_user = create_perm_choice (Permissions.Type.USER);
 
         var group_label = new KeyLabel (_("Group:"));
-        perm_button_group = create_perm_choice (PermissionType.GROUP);
+        perm_button_group = create_perm_choice (Permissions.Type.GROUP);
 
         var other_label = new KeyLabel (_("Everyone:"));
-        perm_button_other = create_perm_choice (PermissionType.OTHER);
+        perm_button_other = create_perm_choice (Permissions.Type.OTHER);
 
-        perm_code = new Granite.Widgets.XsEntry ();
-        perm_code.set_text ("000");
-        perm_code.set_max_length (3);
-        perm_code.set_size_request (35, -1);
+        perm_code = new Gtk.Entry ();
+        perm_code.text = "000";
+        perm_code.max_length = perm_code.max_width_chars = perm_code.width_chars = 3;
 
-        l_perm = new Gtk.Label (goffile.get_permissions_as_string ());
+        l_perm = new Gtk.Label ("<tt>%s</tt>".printf (goffile.get_permissions_as_string ()));
+        l_perm.halign = Gtk.Align.START;
+        l_perm.use_markup = true;
 
         perm_grid = new Gtk.Grid ();
         perm_grid.column_spacing = 6;

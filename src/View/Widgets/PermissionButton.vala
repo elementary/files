@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2016 elementary LLC. (http://launchpad.net/pantheon-files)
+* Copyright (c) 2016-2017 elementary LLC. (http://launchpad.net/pantheon-files)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -17,40 +17,60 @@
 * Boston, MA 02111-1307, USA.
 */
 
-public class PermissionButton : Gtk.Box {
+public class PermissionButton : Gtk.Grid {
     public Gtk.ToggleButton btn_read;
     public Gtk.ToggleButton btn_write;
     public Gtk.ToggleButton btn_exe;
 
-    public Marlin.View.PropertiesWindow.PermissionType permission_type { get; construct; }
+    public Permissions.Type permission_type { get; construct; }
 
-    public enum Value {
-        READ,
-        WRITE,
-        EXE
-    }
+    private Posix.mode_t[,] vfs_perms = {
+        { Posix.S_IRUSR, Posix.S_IWUSR, Posix.S_IXUSR },
+        { Posix.S_IRGRP, Posix.S_IWGRP, Posix.S_IXGRP },
+        { Posix.S_IROTH, Posix.S_IWOTH, Posix.S_IXOTH }
+    };
 
-    public PermissionButton (Marlin.View.PropertiesWindow.PermissionType permission_type) {
+    public PermissionButton (Permissions.Type permission_type) {
         Object (permission_type: permission_type);
     }
 
     construct {
         btn_read = new Gtk.ToggleButton.with_label (_("Read"));
         btn_read.set_data ("permissiontype", permission_type);
-        btn_read.set_data ("permissionvalue", Value.READ);
+        btn_read.set_data ("permissionvalue", Permissions.Value.READ);
 
         btn_write = new Gtk.ToggleButton.with_label (_("Write"));
         btn_write.set_data ("permissiontype", permission_type);
-        btn_write.set_data ("permissionvalue", Value.WRITE);
+        btn_write.set_data ("permissionvalue", Permissions.Value.WRITE);
 
         btn_exe = new Gtk.ToggleButton.with_label (_("Execute"));
         btn_exe.set_data ("permissiontype", permission_type);
-        btn_exe.set_data ("permissionvalue", Value.EXE);
+        btn_exe.set_data ("permissionvalue", Permissions.Value.EXE);
 
-        homogeneous = true;
+        column_homogeneous = true;
         get_style_context ().add_class (Gtk.STYLE_CLASS_LINKED);
         add (btn_read);
         add (btn_write);
         add (btn_exe);
+    }
+
+    public void update_buttons (uint32 permissions) {
+        if ((permissions & vfs_perms[permission_type, 0]) != 0) {
+            btn_read.active = true;
+        } else {
+            btn_read.active = false;
+        }
+
+        if ((permissions & vfs_perms[permission_type, 1]) != 0) {
+            btn_write.active = true;
+        } else {
+            btn_write.active = false;
+        }
+
+        if ((permissions & vfs_perms[permission_type, 2]) != 0) {
+            btn_exe.active = true;
+        } else {
+            btn_exe.active = false;
+        }
     }
 }

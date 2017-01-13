@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-23 12:40-0800\n"
-"PO-Revision-Date: 2016-11-18 16:34+0000\n"
+"PO-Revision-Date: 2016-12-28 04:50+0000\n"
 "Last-Translator: Jun Takeda <takeda.jun@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-12-24 04:51+0000\n"
+"X-Launchpad-Export-Date: 2016-12-29 04:47+0000\n"
 "X-Generator: Launchpad (build 18298)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1020,7 +1020,7 @@ msgstr "詳細を表示 (_D)"
 
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
 msgid "Inaccessible"
-msgstr ""
+msgstr "アクセスできません"
 
 #: ../libcore/gof-file.c:379
 #, c-format
@@ -1542,8 +1542,7 @@ msgstr " 選択"
 #: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1187
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u フォルダー"
 
 #: ../src/View/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1863,31 +1862,28 @@ msgstr "全員:"
 #: ../src/View/PropertiesWindow.vala:1165
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u サブフォルダー"
 
 #: ../src/View/PropertiesWindow.vala:1169
 #: ../src/View/PropertiesWindow.vala:1191
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u ファイル"
 
 #. /TRANSLATORS: folders, files
 #: ../src/View/PropertiesWindow.vala:1174
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/View/PropertiesWindow.vala:1195
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u 個の選択項目"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/View/PropertiesWindow.vala:1197
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
@@ -2038,7 +2034,7 @@ msgstr "'%s' へ名前を変更できません"
 
 #: ../libcore/FileUtils.vala:464
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A の %-I:%M %p"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""

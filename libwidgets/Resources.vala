@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -21,7 +21,7 @@ namespace Marlin {
     public const string APP_DESKTOP = APP_ID + ".desktop";
     public const string APP_TITLE = N_("Files");
     public const string COPYRIGHT = APP_YEARS + " elementary LLC (http://launchpad.net/elementary)";
-    public const string APP_YEARS = "2013-2016";
+    public const string APP_YEARS = "2013-2017";
     public const string LAUNCHPAD_LABEL = "Website";
     public const string LAUNCHPAD_URL = "http://launchpad.net/pantheon-files";
     public const string HELP_URL = "https://answers.launchpad.net/pantheon-files";

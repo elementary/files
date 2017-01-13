@@ -9,14 +9,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-23 12:40-0800\n"
-"PO-Revision-Date: 2016-12-10 08:46+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2016-12-31 00:41+0000\n"
+"Last-Translator: Gonçalo Camelo Neves Pereira <Unknown>\n"
 "Language-Team: Português <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-12-24 04:52+0000\n"
+"X-Launchpad-Export-Date: 2017-01-01 05:28+0000\n"
 "X-Generator: Launchpad (build 18298)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1089,7 +1089,7 @@ msgstr "Mostrar mais _detalhes"
 
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
 msgid "Inaccessible"
-msgstr ""
+msgstr "Inacessível"
 
 #: ../libcore/gof-file.c:379
 #, c-format
@@ -1598,13 +1598,13 @@ msgstr "%s Sem Nome"
 #: ../src/View/AbstractDirectoryView.vala:2667
 #: ../src/View/AbstractDirectoryView.vala:2850
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Não é possível remover ficheiros daqui"
 
 #: ../src/View/AbstractDirectoryView.vala:2668
 #: ../src/View/AbstractDirectoryView.vala:2838
 #: ../src/View/AbstractDirectoryView.vala:2851
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Não tem permissões para mudar este local"
 
 #: ../src/View/AbstractDirectoryView.vala:2816
 msgid "Cannot copy files that are in the trash"
@@ -1616,7 +1616,7 @@ msgstr "Então cortar a seleção"
 
 #: ../src/View/AbstractDirectoryView.vala:2837
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Não pode colar ficheiros aqui"
 
 #: ../src/View/OverlayBar.vala:230
 msgid "%u folders"
@@ -1637,8 +1637,8 @@ msgstr " seleccionados"
 #: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1187
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u pasta"
+msgstr[1] "%u pastas"
 
 #: ../src/View/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1960,31 +1960,31 @@ msgstr "Todos:"
 #: ../src/View/PropertiesWindow.vala:1165
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u subpasta"
+msgstr[1] "%u subpastas"
 
 #: ../src/View/PropertiesWindow.vala:1169
 #: ../src/View/PropertiesWindow.vala:1191
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u ficheiro"
+msgstr[1] "%u ficheiros"
 
 #. /TRANSLATORS: folders, files
 #: ../src/View/PropertiesWindow.vala:1174
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/View/PropertiesWindow.vala:1195
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u item selecionado"
+msgstr[1] "%u itens selecionados"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/View/PropertiesWindow.vala:1197
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
@@ -2020,7 +2020,7 @@ msgstr "Não é possível conetar ao servidor para esta diretoria."
 
 #: ../src/View/ViewContainer.vala:378
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Não é possível mostrar a pasta"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
@@ -2247,23 +2247,23 @@ msgstr "Definir como pré-definido"
 
 #: ../libwidgets/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Vários tipos de ficheiros foram selecionados"
 
 #: ../libwidgets/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Nenhuma aplicação consegue abrir todos estes tipos de ficheiro"
 
 #: ../libwidgets/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Ocorreu um erro ao abrir os ficheiros"
 
 #: ../libwidgets/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Falha ao abrir uris"
 
 #: ../libwidgets/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Não é possível abrir ficheiros ou uris com esta aplicação"
 
 #: ../libwidgets/View/LocationBar.vala:181
 msgid "Reload this folder"
