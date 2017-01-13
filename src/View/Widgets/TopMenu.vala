@@ -112,8 +112,8 @@ namespace Marlin.View.Chrome
             location_bar.escape.connect (() => {escape ();});
         }
 
-        public bool enter_search_mode (bool local_only, bool begins_with_only) {
-            return location_bar.enter_search_mode (local_only, begins_with_only);
+        public bool enter_search_mode () {
+            return location_bar.enter_search_mode ();
         }
 
         public bool enter_navigate_mode () {
