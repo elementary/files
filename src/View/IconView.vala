@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -121,8 +121,10 @@ namespace FM {
             tree.set_drag_dest_item (path, Gtk.IconViewDropPosition.DROP_INTO);
         }
 
-        public override Gtk.TreePath? get_path_at_pos (int x, int y) {
-            return tree.get_path_at_pos (x, y);
+        public override Gtk.TreePath? get_path_at_pos (int win_x, int win_y) {
+            /* Supplied coords are drag coords - need IconView bin window coords */
+            /* Icon view does not scroll horizontally so no adjustment needed for x coord*/
+            return tree.get_path_at_pos (win_x, win_y + (int)(get_vadjustment ().get_value ()));
         }
 
         public override void select_all () {

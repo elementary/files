@@ -3205,6 +3205,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         char *s;
         remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
 
+
         /// TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
         /// "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
         /// The singular/plural form will be used depending on the remaining time (i.e. the %T argument).

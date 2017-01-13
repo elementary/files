@@ -73,6 +73,11 @@ namespace Marlin {
     public delegate void CopyCallback (GLib.HashTable<GLib.File, void*>? debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
+
+    [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
+    namespace Dialogs {
+        public void show_error (void* data, GLib.Error? error, string format_string, ...);
+    }
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -238,6 +243,7 @@ namespace GOF {
         public signal void changed ();
         public signal void info_available ();
         public signal void icon_changed ();
+        public signal void destroy ();
 
         public const string GIO_DEFAULT_ATTRIBUTES;
 
@@ -245,7 +251,6 @@ namespace GOF {
         public static GOF.File @get(GLib.File location);
         public static GOF.File? get_by_uri (string uri);
         public static File cache_lookup (GLib.File file);
-        public static bool launch_files (GLib.List<GOF.File> files, Gdk.Screen screen, GLib.AppInfo app);
         public static void list_free (GLib.List<GOF.File> files);
         public static GLib.Mount? get_mount_at (GLib.File location);
 
@@ -280,7 +285,7 @@ namespace GOF {
         public bool is_folder();
         public bool is_symlink();
         public bool is_trashed();
-	public bool is_readable ();
+        public bool is_readable ();
         public bool is_writable ();
         public bool is_executable ();
         public bool is_mountable ();
@@ -309,7 +314,6 @@ namespace GOF {
         public bool has_permissions;
         public uint32 permissions;
 
-        public void open_single (Gdk.Screen screen, GLib.AppInfo? app_info);
         public void update ();
         public void update_type ();
         public void update_icon (int size);
@@ -325,7 +329,6 @@ namespace GOF {
         public bool can_unmount ();
         public GLib.Mount? mount;
         public string get_permissions_as_string ();
-        public bool launch (Gdk.Screen screen, GLib.AppInfo app);
 
         public GLib.List? get_settable_group_names ();
         public static int compare_by_display_name (File file1, File file2);
@@ -334,9 +337,10 @@ namespace GOF {
         public bool is_root_network_folder ();
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
+        public bool is_recent_uri_scheme ();
         public bool is_connected;
 
-        public unowned string get_display_target_uri ();
+        public string get_display_target_uri ();
 
         public GLib.AppInfo get_default_handler ();
 

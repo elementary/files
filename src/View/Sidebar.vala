@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -1603,15 +1603,24 @@ namespace Marlin.Places {
         }
 
         private void expander_update_pref_state (Marlin.PlaceType type, bool flag) {
+            /* Do not update settings if they have not changed.  Otherwise an infinite loop occurs
+             * when viewing the ~/.config/dconf/user folder.
+             */  
             switch (type) {
                 case Marlin.PlaceType.NETWORK_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-network-expander", flag);
+                    }
                     break;
                 case Marlin.PlaceType.STORAGE_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-devices-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-devices-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-devices-expander", flag);
+                    }
                     break;
                 case Marlin.PlaceType.BOOKMARKS_CATEGORY:
-                    Preferences.settings.set_boolean ("sidebar-cat-personal-expander", flag);
+                    if (flag != Preferences.settings.get_boolean ("sidebar-cat-personal-expander")) {
+                        Preferences.settings.set_boolean ("sidebar-cat-personal-expander", flag);
+                    }
                     break;
             }
         }

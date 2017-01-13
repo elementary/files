@@ -1,6 +1,6 @@
 /*
 * Copyright (c) 2011 Marlin Developers (http://launchpad.net/marlin)
-* Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/pantheon-files)
+* Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/pantheon-files)
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -19,9 +19,8 @@
 *
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
-namespace Marlin.View {
 
-protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
+protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     protected Gtk.Grid info_grid;
     protected Gtk.Grid layout;
     protected Gtk.Stack stack;
@@ -35,14 +34,17 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
     }
 
     public AbstractPropertiesDialog (string _title, Gtk.Window parent) {
-        title = _title;
-        resizable = false;
-        deletable = false;
+        Object (title: _title,
+                transient_for: parent,
+                resizable: false,
+                deletable: false,
+                window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
+                destroy_with_parent: true
+        );
+    }
+
+    construct {
         set_default_size (220, -1);
-        transient_for = parent;
-        window_position = Gtk.WindowPosition.CENTER_ON_PARENT;
-        border_width = 6;
-        destroy_with_parent = true;
 
         var info_header = new HeaderLabel (_("Info"));
 
@@ -173,31 +175,4 @@ protected abstract class AbstractPropertiesDialog : Gtk.Dialog {
             storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.FILES, size);
         }
     }
-}
-
-protected class HeaderLabel : Gtk.Label {
-    public HeaderLabel (string _label) {
-        halign = Gtk.Align.START;
-        get_style_context ().add_class ("h4");
-        label = _label;
-    }
-}
-
-protected class KeyLabel : Gtk.Label {
-    public KeyLabel (string _label) {
-        halign = Gtk.Align.END;
-        label = _label;
-        margin_start = 12;
-    }
-}
-
-protected class ValueLabel : Gtk.Label {
-    public ValueLabel (string _label) {
-        can_focus = true;
-        halign = Gtk.Align.START;
-        label = _label;
-        selectable = true;
-        use_markup = true;
-    }
-}
 }

@@ -50,6 +50,8 @@ namespace Marlin.View.Chrome {
 
         private Gdk.Window? entry_window = null;
 
+        protected bool context_menu_showing = false;
+
     /** Construction **/
     /******************/
         construct {
@@ -208,10 +210,12 @@ namespace Marlin.View.Chrome {
                 default:
                     break;
             }
-            return base.key_press_event (event);
+
+            return false;
         }
 
         protected virtual bool on_button_press_event (Gdk.EventButton event) {
+            context_menu_showing = has_focus && event.button == Gdk.BUTTON_SECONDARY;
             return !has_focus;
         }
 
@@ -286,11 +290,18 @@ namespace Marlin.View.Chrome {
         }
 
         protected virtual bool on_focus_out (Gdk.EventFocus event) {
+            base.focus_out_event (event);
+            if (context_menu_showing) {
+                return true;
+            }
+
             reset ();
-            return base.focus_out_event (event);
+            return false;
+
         }
 
         protected virtual bool on_focus_in (Gdk.EventFocus event) {
+            context_menu_showing = false;
             current_dir_path = get_breadcrumbs_path ();
             set_entry_text (current_dir_path);
             return false;

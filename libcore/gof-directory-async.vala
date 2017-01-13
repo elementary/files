@@ -1,6 +1,6 @@
 /***
     Copyright (C) 2011 Marlin Developers
-                  2015-2016 elementary LLC (http://launchpad.net/elementary) 
+                  2015-2017 elementary LLC (http://launchpad.net/elementary) 
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -717,19 +717,23 @@ public class GOF.Directory.Async : Object {
             warning ("Add and refresh file which is gone");
             return;
         }
-        if (gof.info == null)
+
+        if (gof.info == null) {
             critical ("FILE INFO null");
+        }
 
         gof.update ();
 
-        if ((!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
+        if ((!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)) {
             file_added (gof);
+        }
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* add to sorted_dirs */
-            if (sorted_dirs.find (gof) == null)
+            if (sorted_dirs.find (gof) == null) {
                 sorted_dirs.insert_sorted (gof,
                     GOF.File.compare_by_display_name);
+            }
         }
 
         if (track_longest_name && gof.basename.length > longest_file_name.length) {
@@ -747,8 +751,9 @@ public class GOF.Directory.Async : Object {
     }
 
     private void notify_file_removed (GOF.File gof) {
-        if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)
+        if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files) {
             file_deleted (gof);
+        }
 
         if (!gof.is_hidden && gof.is_folder ()) {
             /* remove from sorted_dirs */
@@ -873,7 +878,10 @@ public class GOF.Directory.Async : Object {
         bool found;
 
         foreach (var loc in files) {
-            assert (loc != null);
+            if (loc == null) {
+                continue;
+            }
+
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
@@ -889,7 +897,10 @@ public class GOF.Directory.Async : Object {
                 if (!found)
                     dirs.append (dir);
             } else {
-                warning ("parent of deleted file not found");
+                dir = cache_lookup (loc);
+                if (dir != null) {
+                    dir.file_deleted (dir.file);
+                }
             }
         }
 
