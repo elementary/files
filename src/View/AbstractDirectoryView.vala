@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -1283,17 +1283,20 @@ namespace FM {
             /* Can be called twice for same file - once via Marlin.FileOperations and once via directory FileMonitor.
              * Model.remove_file returns false if the file was already removed.
              */
-            if (model.remove_file (file, dir)) {
-                remove_marlin_icon_info_cache (file);
-                if (file.is_folder ()) {
-                    var file_dir = GOF.Directory.Async.cache_lookup (file.location);
-                    if (file_dir != null) {
-                        file_dir.purge_dir_from_cache ();
-                        slot.folder_deleted (file, file_dir);
-                    }
+            /* The deleted file could be the whole directory, which is not in the model but that
+             * that does not matter.  */
+            model.remove_file (file, dir);
+
+            remove_marlin_icon_info_cache (file);
+            if (file.is_folder ()) {
+                /* Check whether the deleted file is the directory */
+                var file_dir = GOF.Directory.Async.cache_lookup (file.location);
+                if (file_dir != null) {
+                    file_dir.purge_dir_from_cache ();
+                    slot.folder_deleted (file, file_dir);
                 }
-                handle_free_space_change ();
             }
+            handle_free_space_change ();
         }
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {

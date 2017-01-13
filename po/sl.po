@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-23 12:40-0800\n"
-"PO-Revision-Date: 2016-12-10 08:20+0000\n"
+"PO-Revision-Date: 2016-12-28 11:51+0000\n"
 "Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
 "n%100==4 ? 3 : 0);\n"
-"X-Launchpad-Export-Date: 2016-12-24 04:53+0000\n"
+"X-Launchpad-Export-Date: 2016-12-29 04:47+0000\n"
 "X-Generator: Launchpad (build 18298)\n"
 "Language: sl\n"
 
@@ -1116,7 +1116,7 @@ msgstr "Pokaži več _podrobnosti"
 
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
 msgid "Inaccessible"
-msgstr ""
+msgstr "Nedostopno"
 
 #: ../libcore/gof-file.c:379
 #, c-format
@@ -1716,8 +1716,10 @@ msgstr " izbranih"
 #: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1187
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u map"
+msgstr[1] "%u mapa"
+msgstr[2] "%u mapi"
+msgstr[3] "%u map"
 
 #: ../src/View/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -2044,31 +2046,37 @@ msgstr "Vsi:"
 #: ../src/View/PropertiesWindow.vala:1165
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u podmap"
+msgstr[1] "%u podmapa"
+msgstr[2] "%u podmapi"
+msgstr[3] "%u podmap"
 
 #: ../src/View/PropertiesWindow.vala:1169
 #: ../src/View/PropertiesWindow.vala:1191
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u datotek"
+msgstr[1] "%u datoteka"
+msgstr[2] "%u datoteki"
+msgstr[3] "%u datotek"
 
 #. /TRANSLATORS: folders, files
 #: ../src/View/PropertiesWindow.vala:1174
 msgid "%s, %s"
-msgstr ""
+msgstr "%s %s"
 
 #: ../src/View/PropertiesWindow.vala:1195
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u izbranih predmetov"
+msgstr[1] "%u izbran predmet"
+msgstr[2] "%u izbrana predmeta"
+msgstr[3] "%u izbrani predmeti"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/View/PropertiesWindow.vala:1197
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
@@ -2219,7 +2227,7 @@ msgstr "Ni bilo mogoče spremeniti imena v '%s'"
 
 #: ../libcore/FileUtils.vala:464
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A ob %-H:%M"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""

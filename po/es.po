@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-23 12:40-0800\n"
-"PO-Revision-Date: 2016-12-22 21:11+0000\n"
-"Last-Translator: Cody Garver <cody@elementaryos.org>\n"
+"PO-Revision-Date: 2017-01-09 22:55+0000\n"
+"Last-Translator: Félix Brezo <felixbrezo@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-12-24 04:53+0000\n"
-"X-Generator: Launchpad (build 18298)\n"
+"X-Launchpad-Export-Date: 2017-01-10 05:41+0000\n"
+"X-Generator: Launchpad (build 18302)\n"
 "Language: es\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1639,8 +1639,8 @@ msgstr " seleccionadas"
 #: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1187
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u directorio"
+msgstr[1] "%u directorios"
 
 #: ../src/View/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1747,7 +1747,7 @@ msgstr "Personal"
 
 #: ../src/View/Sidebar.vala:482
 msgid "Your common places and bookmarks"
-msgstr "Sus lugares preferidos y marcadores"
+msgstr "Marcadores y lugares preferidos"
 
 #: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:342
 msgid "Home"
@@ -1783,7 +1783,7 @@ msgstr "Red"
 
 #: ../src/View/Sidebar.vala:674
 msgid "Your network places"
-msgstr "Lugares en la red"
+msgstr "Tus sitios de red"
 
 #: ../src/View/Sidebar.vala:706
 msgid "Entire Network"
@@ -1893,6 +1893,9 @@ msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 "El archivo %i no puede ser leído por problemas de permisos u otros errores."
+msgstr[1] ""
+"Los archivos %¡ no pudieron ser leídos por problemas de permisos u otros "
+"errores."
 
 #: ../src/View/PropertiesWindow.vala:239 ../src/View/PropertiesWindow.vala:258
 msgid "unknown"
@@ -1961,31 +1964,31 @@ msgstr "Todos:"
 #: ../src/View/PropertiesWindow.vala:1165
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u subdirectorio"
+msgstr[1] "%u subdirectorios"
 
 #: ../src/View/PropertiesWindow.vala:1169
 #: ../src/View/PropertiesWindow.vala:1191
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u archivo"
+msgstr[1] "%u archivos"
 
 #. /TRANSLATORS: folders, files
 #: ../src/View/PropertiesWindow.vala:1174
 msgid "%s, %s"
-msgstr ""
+msgstr "%s y %s"
 
 #: ../src/View/PropertiesWindow.vala:1195
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u objeto seleccionado"
+msgstr[1] "%u objetos seleccionados"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/View/PropertiesWindow.vala:1197
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
@@ -2021,7 +2024,7 @@ msgstr "No se puede conectar con el servidor para acceder a esta carpeta."
 
 #: ../src/View/ViewContainer.vala:378
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "No es posible mostrar la carpeta"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The server for this folder could not be located."
@@ -2100,7 +2103,7 @@ msgstr "Cancelar todas las acciones en progreso"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr "Examine sus archivos"
+msgstr "Explora tus archivos"
 
 #: ../src/DesktopLauncher.vala:7
 msgid "File Manager"
@@ -2136,7 +2139,7 @@ msgstr "No se pudo cambiar el nombre a «%s»"
 
 #: ../libcore/FileUtils.vala:464
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A a las %H:%M"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2287,23 +2290,24 @@ msgstr "Establecer como predeterminado"
 
 #: ../libwidgets/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Archivos de múltiples tipos seleccionados"
 
 #: ../libwidgets/MimeActions.vala:261
 msgid "No single app can open all these types of file"
 msgstr ""
+"Ninguna aplicación concreta es capaz de abrir todos esos tipos de archivos"
 
 #: ../libwidgets/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Error al abrir los archivos"
 
 #: ../libwidgets/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Error al abrir las URI"
 
 #: ../libwidgets/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "No se pudo abrir los archivos o URI con esta aplicación"
 
 #: ../libwidgets/View/LocationBar.vala:181
 msgid "Reload this folder"

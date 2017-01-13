@@ -259,16 +259,6 @@ namespace Marlin.View {
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
             button_press_event.connect (on_button_press_event);
 
-            /* Top menu captures keystrokes if pathbar has focus, otherwise returns false so
-             * they can trigger window actions or get passed to the view */
-            key_press_event.connect ((event) => {
-                if (top_menu.key_press_event (event)) {
-                    return true;
-                } else {
-                    return current_tab.key_press_event (event);
-                }
-            });
-
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
                     Preferences.settings.set_boolean("maximized",
@@ -531,15 +521,6 @@ namespace Marlin.View {
             }
 
             top_menu.enter_search_mode ();
-        }
-        public void on_search_request (Gdk.EventKey event) {
-            if (current_tab == null || current_tab.is_frozen) {
-                return;
-            }
-
-            if (top_menu.enter_search_mode ()) {
-                top_menu.on_key_press_event (event);
-            }
         }
 
         private bool adding_window = false;
@@ -1090,7 +1071,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.select_all", {"<Ctrl>A"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
-            application.set_accels_for_action ("win.find::GLOBAL", {"<Ctrl>F"});
+            application.set_accels_for_action ("win.find", {"<Ctrl>F"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down"});

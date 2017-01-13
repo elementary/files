@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2016-12-23 12:40-0800\n"
-"PO-Revision-Date: 2016-12-23 22:58+0000\n"
+"PO-Revision-Date: 2016-12-25 12:04+0000\n"
 "Last-Translator: Maxim Taranov <png2378@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-12-24 04:53+0000\n"
+"X-Launchpad-Export-Date: 2016-12-26 04:49+0000\n"
 "X-Generator: Launchpad (build 18298)\n"
 "Language: ru\n"
 
@@ -1081,11 +1081,11 @@ msgstr "Идёт подготовка"
 
 #: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
 msgid "Today at %-I:%M %p"
-msgstr "Сегодня в %-I:%M %p"
+msgstr "Сегодня в %H:%M"
 
 #: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
 msgid "Yesterday at %-I:%M %p"
-msgstr "Вчера в %-I:%M %p"
+msgstr "Вчера в %H:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
@@ -1093,7 +1093,7 @@ msgstr "%a, %-d %b в %H:%M"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y в %-I:%M %p"
+msgstr "%a, %-d %b %Y в %H:%M"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
@@ -1101,7 +1101,7 @@ msgstr "Показать по_дробности"
 
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
 msgid "Inaccessible"
-msgstr ""
+msgstr "Недоступно"
 
 #: ../libcore/gof-file.c:379
 #, c-format
@@ -1675,8 +1675,9 @@ msgstr " выбрано"
 #: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1187
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u папка"
+msgstr[1] "%u папки"
+msgstr[2] "%u папок"
 
 #: ../src/View/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -2001,31 +2002,34 @@ msgstr "Все:"
 #: ../src/View/PropertiesWindow.vala:1165
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u подпапка"
+msgstr[1] "%u подпапки"
+msgstr[2] "%u подпапок"
 
 #: ../src/View/PropertiesWindow.vala:1169
 #: ../src/View/PropertiesWindow.vala:1191
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u файл"
+msgstr[1] "%u файла"
+msgstr[2] "%u файлов"
 
 #. /TRANSLATORS: folders, files
 #: ../src/View/PropertiesWindow.vala:1174
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/View/PropertiesWindow.vala:1195
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u выбранный элемент"
+msgstr[1] "%u выбранных элемента"
+msgstr[2] "%u выбранных элементов"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/View/PropertiesWindow.vala:1197
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
@@ -2176,7 +2180,7 @@ msgstr "Невозможно изменить название на «%s»"
 
 #: ../libcore/FileUtils.vala:464
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A, %H:%M"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
