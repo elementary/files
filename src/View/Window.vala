@@ -138,11 +138,7 @@ namespace Marlin.View {
             add(lside_pane);
 
             title = _(Marlin.APP_TITLE);
-            try {
-                this.icon = Gtk.IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
-            } catch (Error err) {
-                stderr.printf ("Unable to load marlin icon: %s\n", err.message);
-            }
+            icon_name = "system-file-manager";
 
         /** Apply preferences */
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
@@ -262,16 +258,6 @@ namespace Marlin.View {
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
             button_press_event.connect (on_button_press_event);
-
-            /* Top menu captures keystrokes if pathbar has focus, otherwise returns false so
-             * they can trigger window actions or get passed to the view */
-            key_press_event.connect ((event) => {
-                if (top_menu.key_press_event (event)) {
-                    return true;
-                } else {
-                    return current_tab.key_press_event (event);
-                }
-            });
 
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
@@ -538,24 +524,17 @@ namespace Marlin.View {
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
-            /* Do not initiate search while slot is frozen e.g. during loading */
-            if (current_tab == null || current_tab.is_frozen) {
-                return;
-            }
             string search_scope = param.get_string ();
             if (search_scope == "CURRENT_DIRECTORY_ONLY") {
+                /* Do not initiate search while slot is frozen e.g. during loading */
+                if (current_tab == null || current_tab.is_frozen) {
+                    return;
+                }
                 /* Just search current directory for filenames beginning with term */
                 top_menu.enter_search_mode (true, true);
             } else {
+                /* Slot is frozen, but only because already searching */
                 top_menu.enter_search_mode (false, false);
-            }
-        }
-        public void on_search_request (Gdk.EventKey event) {
-            if (current_tab == null || current_tab.is_frozen) {
-                return;
-            }
-            if (top_menu.enter_search_mode (true, true)) {
-                top_menu.on_key_press_event (event);
             }
         }
 
