@@ -78,6 +78,7 @@ namespace Marlin.View.Chrome {
                     complete ();
                     return true;
             }
+
             return base.on_key_press_event (event);
         }
 
