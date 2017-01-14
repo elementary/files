@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -423,7 +423,7 @@ namespace PF.FileUtils {
         int now_day = now.get_day_of_year ();
         int disp_day = dt.get_day_of_year ();
 
-        if (disp_day < now_day - 7) {
+        if (disp_day < now_day - 6) {
             return dt.format (default_date_format);
         }
 
