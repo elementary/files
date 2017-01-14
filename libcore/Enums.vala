@@ -1,7 +1,7 @@
 /***
     Copyright (c) 2006-2007 Benedikt Meurer <benny@xfce.org>
     Copyright (c) 2009 Jannis Pohlmann <jannis@xfce.org>
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software; you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the Free
