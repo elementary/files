@@ -287,6 +287,15 @@ gof_file_is_smb_uri_scheme (GOFFile *file)
 }
 
 gboolean
+gof_file_is_recent_uri_scheme (GOFFile *file)
+{
+    if (!G_IS_FILE (file->location))
+        return TRUE;
+
+    return g_file_has_uri_scheme (file->location, "recent");
+}
+
+gboolean
 gof_file_is_other_uri_scheme (GOFFile *file)
 {
     GFile *loc = file->location;
@@ -2598,7 +2607,16 @@ gof_file_get_thumbnail_path (GOFFile *file)
 char*
 gof_file_get_display_target_uri (GOFFile *file)
 {
-    return g_file_info_get_attribute_as_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+    /* This returns a string that requires freeing */
+    gchar* uri;
+
+    uri = g_file_info_get_attribute_as_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+
+    if (uri == NULL) {
+        uri = strdup (file->uri);
+    }
+
+    return uri;
 }
 
 const gchar *

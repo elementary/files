@@ -32,7 +32,7 @@ namespace Marlin.View {
             {"undo", action_undo},
             {"redo", action_redo},
             {"bookmark", action_bookmark},
-            {"find", action_find, "s"},
+            {"find", action_find},
             {"tab", action_tab, "s"},
             {"go_to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
@@ -134,11 +134,7 @@ namespace Marlin.View {
             add (lside_pane);
 
             title = _(Marlin.APP_TITLE);
-            try {
-                this.icon = Gtk.IconTheme.get_default ().load_icon ("system-file-manager", 32, 0);
-            } catch (Error err) {
-                stderr.printf ("Unable to load marlin icon: %s\n", err.message);
-            }
+            icon_name = "system-file-manager";
 
         /** Apply preferences */
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
@@ -259,31 +255,29 @@ namespace Marlin.View {
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
             button_press_event.connect (on_button_press_event);
 
-            /* Top menu captures keystrokes if pathbar has focus, otherwise returns false so
-             * they can trigger window actions or get passed to the view */
+            /* Toggle focus between sidebar and view using Tab key, unless location
+             * bar in focus. */
             key_press_event.connect ((event) => {
-                if (top_menu.key_press_event (event)) {
+                switch (event.keyval) {
+                    case Gdk.Key.Tab:
+                    case Gdk.Key.KP_Tab:
+                        if (top_menu.locked_focus) {
+                            return false;
+                        }
+                        /* This works better than trying to use a focus chain */
+                        if (sidebar.has_focus) {
+                            current_tab.grab_focus ();
+                            sidebar.sync_needed ();
+                        } else {
+                            sidebar.grab_focus ();
+                        }
                     return true;
-                } else {
-                    switch (event.keyval) {
-                        case Gdk.Key.Tab:
-                        case Gdk.Key.KP_Tab:
-                            /* This works better than trying to use a focus chain */
-                            if (sidebar.has_focus) {
-                                current_tab.grab_focus ();
-                                sidebar.sync_needed ();
-                            } else {
-                                sidebar.grab_focus ();
-                            }
-                        return true;
 
-                        default:
-                            break;
-                    }
+                    default:
+                        return false;
                 }
-
-                return (current_tab.key_press_event (event));
             });
+
 
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
@@ -545,21 +539,8 @@ namespace Marlin.View {
             if (current_tab == null || current_tab.is_frozen) {
                 return;
             }
-            string search_scope = param.get_string ();
-            if (search_scope == "CURRENT_DIRECTORY_ONLY") {
-                /* Just search current directory for filenames beginning with term */
-                top_menu.enter_search_mode (true, true);
-            } else {
-                top_menu.enter_search_mode (false, false);
-            }
-        }
-        public void on_search_request (Gdk.EventKey event) {
-            if (current_tab == null || current_tab.is_frozen) {
-                return;
-            }
-            if (top_menu.enter_search_mode (true, true)) {
-                top_menu.on_key_press_event (event);
-            }
+
+            top_menu.enter_search_mode ();
         }
 
         private bool adding_window = false;
@@ -1110,7 +1091,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.select_all", {"<Ctrl>A"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
-            application.set_accels_for_action ("win.find::GLOBAL", {"<Ctrl>F"});
+            application.set_accels_for_action ("win.find", {"<Ctrl>F"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down"});

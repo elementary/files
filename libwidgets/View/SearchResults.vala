@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -83,8 +83,6 @@ namespace Marlin.View.Chrome
 
         bool local_search_finished = false;
         bool global_search_finished = false;
-        protected bool search_current_directory_only = false;
-        protected bool begins_with_only = false;
 
         bool is_grabbing = false;
         Gdk.Device? device = null;
@@ -140,7 +138,7 @@ namespace Marlin.View.Chrome
 
             var cell = new Gtk.CellRendererPixbuf ();
             column.pack_start (cell, false);
-            column.set_attributes (cell, "pixbuf", 1, "visible", 4);
+            column.set_attributes (cell, "gicon", 1, "visible", 4);
 
             var cell_name = new Gtk.CellRendererText ();
             cell_name.ellipsize = Pango.EllipsizeMode.MIDDLE;
@@ -155,7 +153,7 @@ namespace Marlin.View.Chrome
 
             view.append_column (column);
 
-            list = new Gtk.TreeStore (5, typeof (string), typeof (Gdk.Pixbuf),
+            list = new Gtk.TreeStore (5, typeof (string), typeof (GLib.Icon),
                 typeof (string), typeof (File), typeof (bool));
             filter = new Gtk.TreeModelFilter (list, null);
             filter.set_visible_func ((model, iter) => {
@@ -288,7 +286,6 @@ namespace Marlin.View.Chrome
                 return null;
             });
 
-            if (!search_current_directory_only) {
                 get_zg_results.begin (search_term);
 
                 var bookmarks_matched = new Gee.LinkedList<Match> ();
@@ -300,16 +297,6 @@ namespace Marlin.View.Chrome
                 }
 
                 add_results (bookmarks_matched, bookmark_results);
-            } else {
-                global_search_finished = true;
-            }
-        }
-
-        public void set_search_current_directory_only (bool only) {
-            search_current_directory_only = only;
-        }
-        public void set_begins_with_only (bool only) {
-            begins_with_only = only;
         }
 
         /** Signal handlers **/
@@ -365,12 +352,7 @@ namespace Marlin.View.Chrome
 
             if (mods != 0 && !only_shift_pressed) {
                 if (only_control_pressed) {
-                    if (event.keyval == Gdk.Key.f) {
-                        search_current_directory_only = false;
-                        begins_with_only = false;
-                        search (search_term, current_root);
-                        return true;
-                    } else if (event.keyval == Gdk.Key.l) {
+                    if (event.keyval == Gdk.Key.l) {
                         cancel (); /* release any grab */
                         exit (false); /* Do not exit navigate mode */
                         return true;
@@ -700,21 +682,11 @@ namespace Marlin.View.Chrome
                     }
                 }
 
-                Gdk.Pixbuf? pixbuf = null;
-                if (match.icon != null) {
-                    var icon_info = Gtk.IconTheme.get_default ().lookup_by_gicon (match.icon, 16, 0);
-                    if (icon_info != null) {
-                        try {
-                            pixbuf = icon_info.load_icon ();
-                        } catch (Error e) {}
-                    }
-                }
-
                 var location = "<span %s>%s</span>".printf (get_pango_grey_color_string (),
                     Markup.escape_text (match.path_string));
 
                 list.append (out iter, parent);
-                list.@set (iter, 0, Markup.escape_text (match.name), 1, pixbuf, 2, location, 3, match.file, 4, true);
+                list.@set (iter, 0, Markup.escape_text (match.name), 1, match.icon, 2, location, 3, match.file, 4, true);
                 n_results++;
 
                 view.expand_all ();
@@ -852,7 +824,7 @@ namespace Marlin.View.Chrome
                 depth++;
             }
 
-            if ((search_current_directory_only && depth > 1) || depth > MAX_DEPTH) {
+            if (depth > MAX_DEPTH) {
                 return;
             }
 
@@ -871,7 +843,7 @@ namespace Marlin.View.Chrome
                         continue;
                     }
 
-                    if (info.get_file_type () == FileType.DIRECTORY && !search_current_directory_only) {
+                    if (info.get_file_type () == FileType.DIRECTORY) {
                         directory_queue.add (folder.resolve_relative_path (info.get_name ()));
                     }
 
@@ -988,15 +960,8 @@ namespace Marlin.View.Chrome
         bool term_matches (string term, string name)
         {
             /**TODO** improve */
-
             /* term is assumed to be down */
-            bool res;
-            if (begins_with_only)
-                res = name.normalize ().casefold ().has_prefix (term);
-            else
-                res = name.normalize ().casefold ().contains (term);
-
-            return res;
+            return name.normalize ().casefold ().contains (term);
         }
 
         string get_category_header (string title)

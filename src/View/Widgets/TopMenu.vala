@@ -78,7 +78,6 @@ namespace Marlin.View.Chrome
                 back (1);
             });
 
-            key_press_event.connect (on_key_press_event);
             view_switcher = switcher;
             view_switcher.margin_end = 20;
             view_switcher.show_all ();
@@ -113,8 +112,8 @@ namespace Marlin.View.Chrome
             location_bar.escape.connect (() => {escape ();});
         }
 
-        public bool enter_search_mode (bool local_only, bool begins_with_only) {
-            return location_bar.enter_search_mode (local_only, begins_with_only);
+        public bool enter_search_mode () {
+            return location_bar.enter_search_mode ();
         }
 
         public bool enter_navigate_mode () {
@@ -163,10 +162,6 @@ namespace Marlin.View.Chrome
             location_bar.with_animation = with_animation;
             location_bar.set_display_path (new_path);
             location_bar.with_animation = true;
-        }
-
-        public bool on_key_press_event (Gdk.EventKey event) {
-            return location_bar.key_press_event (event);
         }
 
         public void cancel () {

@@ -26,7 +26,6 @@
 
 #include <glib-object.h>
 #include <gtk/gtk.h>
-#include "marlin-clipboard-manager.h"
 #include "marlin-icon-renderer.h"
 #include "eel-gdk-pixbuf-extensions.h"
 #include "marlin-vala.h"
@@ -110,7 +109,7 @@ marlin_icon_renderer_init (MarlinIconRenderer *cellpixbuf)
                                                     MarlinIconRendererPrivate);
     priv = cellpixbuf->priv;
 
-    priv->clipboard = marlin_clipboard_manager_new_get_for_display (gdk_display_get_default ());
+    priv->clipboard = marlin_clipboard_manager_get_for_display (gdk_display_get_default ());
     priv->emblems = TRUE;
 }
 
