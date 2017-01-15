@@ -2607,7 +2607,16 @@ gof_file_get_thumbnail_path (GOFFile *file)
 char*
 gof_file_get_display_target_uri (GOFFile *file)
 {
-    return g_file_info_get_attribute_as_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+    /* This returns a string that requires freeing */
+    gchar* uri;
+
+    uri = g_file_info_get_attribute_as_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+
+    if (uri == NULL) {
+        uri = strdup (file->uri);
+    }
+
+    return uri;
 }
 
 const gchar *
