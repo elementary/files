@@ -2,7 +2,7 @@
     Copyright (c) 1999, 2000 Red Hat, Inc.
     Copyright (c) 2000, 2001 Eazel, Inc.
     Copyright (c) 2013 Julián Unrrein <junrrein@gmail.com>
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)  
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)  
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -90,7 +90,7 @@ public class Marlin.Application : Granite.Application {
 
         progress_handler = new Marlin.Progress.UIHandler (this);
 
-        this.clipboard = new Marlin.ClipboardManager.get_for_display (Gdk.Display.get_default ());
+        this.clipboard = Marlin.ClipboardManager.get_for_display ();
         this.thumbnailer = Marlin.Thumbnailer.get ();
         this.recent = new Gtk.RecentManager ();
 

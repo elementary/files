@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -154,7 +154,7 @@ namespace Marlin {
                                            );
 
             if (exists && data != null) {
-                string name = data_to_string (data);
+                string name = DndHandler.data_to_string (data);
                 if (GLib.Path.DIR_SEPARATOR.to_string () in name) {
                     warning ("invalid source filename");
                     return null; /* not a valid filename */
@@ -246,26 +246,45 @@ namespace Marlin {
         }
 
 
-        public bool selection_data_is_uri_list (Gtk.SelectionData selection_data, uint info, out string? text) {
+        public static bool selection_data_is_uri_list (Gtk.SelectionData selection_data, uint info, out string? text) {
             text = null;
 
             if (info == Marlin.TargetType.TEXT_URI_LIST &&
                 selection_data.get_format () == 8 &&
                 selection_data.get_length () > 0) {
 
-                text = data_to_string (selection_data.get_data_with_length ());
+                text = DndHandler.data_to_string (selection_data.get_data_with_length ());
             }
             debug ("DNDHANDLER selection data is uri list returning %s", (text != null).to_string ());
             return (text != null);
         }
 
-        private string data_to_string (uchar [] cdata) {
+        public static string data_to_string (uchar [] cdata) {
             var sb = new StringBuilder ("");
 
             foreach (uchar u in cdata)
                 sb.append_c ((char)u);
 
             return sb.str;
+        }
+
+        public static void set_selection_data_from_file_list (Gtk.SelectionData selection_data,
+                                                              GLib.List<GOF.File> file_list,
+                                                              string? prefix = "") {
+
+            GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
+            bool in_recent = file_list.data.is_recent_uri_scheme ();
+
+            file_list.@foreach ((file) => {
+                var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
+                sb.append (target);
+                sb.append ("\r\n");  /* Drop onto Filezilla does not work without the "\r" */
+            });
+
+            selection_data.@set (selection_data.get_target (),
+                                 8,
+                                 sb.data);
+
         }
     }
 }

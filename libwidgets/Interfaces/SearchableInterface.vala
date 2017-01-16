@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -26,8 +26,6 @@ namespace Marlin.View.Chrome {
 
         public abstract void cancel ();
         public abstract void search (string txt, GLib.File search_location);
-        public abstract void set_search_current_directory_only (bool only);
-        public abstract void set_begins_with_only (bool only);
         public abstract bool has_popped_up ();
     }
 }

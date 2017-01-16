@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-20 07:21-0600\n"
+"POT-Creation-Date: 2016-12-23 12:40-0800\n"
 "PO-Revision-Date: 2016-12-21 08:27+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -15,12 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2016-12-22 05:23+0000\n"
+"X-Launchpad-Export-Date: 2016-12-24 04:49+0000\n"
 "X-Generator: Launchpad (build 18298)\n"
-
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "Ve schránce není nic ke vložení"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -229,7 +225,7 @@ msgstr "Původní soubor"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:495
+#: ../src/View/PropertiesWindow.vala:493
 msgid "Size:"
 msgstr "Velikost:"
 
@@ -237,7 +233,7 @@ msgstr "Velikost:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:502
+#: ../src/View/PropertiesWindow.vala:500
 msgid "Type:"
 msgstr "Typ:"
 
@@ -286,44 +282,6 @@ msgstr "Nahradit"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Konflikt souborů"
-
-#: ../libcore/gof-file.c:352 ../libcore/gof-file.c:549
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:370
-#, c-format
-msgid "link to %s"
-msgstr "odkaz na %s"
-
-#: ../libcore/gof-file.c:1944
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Selhalo zpracování souboru vstupu pracovního prostředí: %s"
-
-#: ../libcore/gof-file.c:1981
-msgid "No Exec field specified"
-msgstr "Nebylo specifikováno pole Exec"
-
-#: ../libcore/gof-file.c:2000
-msgid "No URL field specified"
-msgstr "Nebyla zadána adresa URL"
-
-#: ../libcore/gof-file.c:2006
-msgid "Invalid desktop file"
-msgstr "Neplatný soubor pracovní plochy"
-
-#: ../libcore/gof-file.c:2301
-msgid "Slashes are not allowed in filenames"
-msgstr "Lomítka nejsou v názvech souborů povolena"
-
-#: ../libcore/gof-file.c:2321
-msgid "Toplevel files cannot be renamed"
-msgstr "Soubory v nejvyšší úrovni nelze přejmenovat"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Zobrazit více _detailů"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -1106,6 +1064,65 @@ msgstr "Vyprazdňuje se koš"
 msgid "Emptying Trash"
 msgstr "Vyprazdňuje se koš"
 
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Připravuje se"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+msgid "Today at %-I:%M %p"
+msgstr "Dnes v %-I:%M"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+msgid "Yesterday at %-I:%M %p"
+msgstr "Včera v %-I:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b v %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y v %-I:%M %p"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Zobrazit více _detailů"
+
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:379
+#, c-format
+msgid "link to %s"
+msgstr "odkaz na %s"
+
+#: ../libcore/gof-file.c:1953
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Selhalo zpracování souboru vstupu pracovního prostředí: %s"
+
+#: ../libcore/gof-file.c:1990
+msgid "No Exec field specified"
+msgstr "Nebylo specifikováno pole Exec"
+
+#: ../libcore/gof-file.c:2009
+msgid "No URL field specified"
+msgstr "Nebyla zadána adresa URL"
+
+#: ../libcore/gof-file.c:2015
+msgid "Invalid desktop file"
+msgstr "Neplatný soubor pracovní plochy"
+
+#: ../libcore/gof-file.c:2310
+msgid "Slashes are not allowed in filenames"
+msgstr "Lomítka nejsou v názvech souborů povolena"
+
+#: ../libcore/gof-file.c:2330
+msgid "Toplevel files cannot be renamed"
+msgstr "Soubory v nejvyšší úrovni nelze přejmenovat"
+
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
 msgstr "Původní umístění je neznámé"
@@ -1512,27 +1529,6 @@ msgstr[0] "Znovu provést změnu vlastníka %d položky"
 msgstr[1] "Znovu provést změnu vlastníka %d položek"
 msgstr[2] "Znovu provést změnu vlastníka %d položek"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
-msgid "Today at %-I:%M %p"
-msgstr "Dnes v %-I:%M"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
-msgid "Yesterday at %-I:%M %p"
-msgstr "Včera v %-I:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b v %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y v %-I:%M %p"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Připravuje se"
-
 #: ../filechooser-module/FileChooserDialog.vala:70
 #: ../libwidgets/Chrome/TopMenu.vala:64
 msgid "Previous"
@@ -1542,6 +1538,188 @@ msgstr "Předchozí"
 #: ../libwidgets/Chrome/TopMenu.vala:68
 msgid "Next"
 msgstr "Následující"
+
+#: ../src/View/AbstractPropertiesDialog.vala:50
+msgid "Info"
+msgstr "Informace"
+
+#: ../src/View/AbstractPropertiesDialog.vala:59
+msgid "General"
+msgstr "Obecné"
+
+#: ../src/View/AbstractPropertiesDialog.vala:78
+msgid "Close"
+msgstr "Zavřít"
+
+#: ../src/View/AbstractPropertiesDialog.vala:140
+msgid "Device Usage"
+msgstr ""
+
+#: ../src/View/AbstractPropertiesDialog.vala:156
+msgid "Capacity:"
+msgstr "Kapacita:"
+
+#: ../src/View/AbstractPropertiesDialog.vala:157
+#: ../src/View/AbstractPropertiesDialog.vala:160
+#: ../src/View/AbstractPropertiesDialog.vala:163
+#: ../src/View/PropertiesWindow.vala:425 ../src/View/PropertiesWindow.vala:461
+msgid "Unknown"
+msgstr "Neznámý"
+
+#: ../src/View/AbstractPropertiesDialog.vala:159
+msgid "Available:"
+msgstr "Dostupný:"
+
+#: ../src/View/AbstractPropertiesDialog.vala:162
+msgid "Used:"
+msgstr "Použitý:"
+
+#: ../src/View/AbstractDirectoryView.vala:550
+msgid "Failed to preview"
+msgstr "Nelze zobrazit náhled"
+
+#: ../src/View/AbstractDirectoryView.vala:805
+msgid "Cannot open this file"
+msgstr "Tento soubor nelze otevřít"
+
+#: ../src/View/AbstractDirectoryView.vala:818
+msgid "Cannot identify file type to open"
+msgstr "Nelze zjistit typ souboru pro otevření"
+
+#: ../src/View/AbstractDirectoryView.vala:1546
+msgid "Cannot drop this file"
+msgstr "Tento soubor nelze přetáhnout"
+
+#: ../src/View/AbstractDirectoryView.vala:1546
+msgid "Invalid file name provided"
+msgstr "Zadán neplatný název souboru"
+
+#: ../src/View/AbstractDirectoryView.vala:2001
+msgid "Invalid"
+msgstr "Neplatný"
+
+#: ../src/View/AbstractDirectoryView.vala:2007
+msgid "Run"
+msgstr "Spustit"
+
+#: ../src/View/AbstractDirectoryView.vala:2012
+msgid "Open in %s"
+msgstr "Otevřít v %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2022
+msgid "Open in"
+msgstr "Otevřít v"
+
+#: ../src/View/AbstractDirectoryView.vala:2024
+#: ../libwidgets/View/BreadcrumbsEntry.vala:451
+msgid "Open with"
+msgstr "Otevřít s"
+
+#: ../src/View/AbstractDirectoryView.vala:2084
+msgid "Other Application"
+msgstr "Jiná Aplikace"
+
+#: ../src/View/AbstractDirectoryView.vala:2345
+msgid "Untitled %s"
+msgstr "Nepojmenovaný soubor %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2667
+#: ../src/View/AbstractDirectoryView.vala:2850
+msgid "Cannot remove files from here"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2668
+#: ../src/View/AbstractDirectoryView.vala:2838
+#: ../src/View/AbstractDirectoryView.vala:2851
+msgid "You do not have permission to change this location"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2816
+msgid "Cannot copy files that are in the trash"
+msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
+
+#: ../src/View/AbstractDirectoryView.vala:2817
+msgid "Cutting the selection instead"
+msgstr "Místo toho vyjmout výběr"
+
+#: ../src/View/AbstractDirectoryView.vala:2837
+msgid "Cannot paste files here"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:230
+msgid "%u folders"
+msgstr "%u složek"
+
+#: ../src/View/OverlayBar.vala:232 ../src/View/OverlayBar.vala:240
+msgid " and %u other item (%s) selected"
+msgstr " a %u další položka (%s) zvolena"
+
+#: ../src/View/OverlayBar.vala:233 ../src/View/OverlayBar.vala:241
+msgid " and %u other items (%s) selected"
+msgstr " a %u dalších položek (%s) zvoleno"
+
+#: ../src/View/OverlayBar.vala:236 ../src/View/OverlayBar.vala:244
+msgid " selected"
+msgstr " zvoleno"
+
+#: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1187
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/View/OverlayBar.vala:246
+msgid "%u items selected (%s)"
+msgstr "%u označených položek (%s)"
+
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
+#: ../src/View/OverlayBar.vala:287
+msgid "%u sub-folder, "
+msgstr "%u podsložka, "
+
+#: ../src/View/OverlayBar.vala:287
+msgid "%u sub-folders, "
+msgstr "%u podsložky, "
+
+#. / TRANSLATORS: %u will be substituted by the number of readable files
+#: ../src/View/OverlayBar.vala:293
+msgid "%u file, "
+msgstr "%u soubor, "
+
+#: ../src/View/OverlayBar.vala:293
+msgid "%u files, "
+msgstr "%u soubory, "
+
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: ../src/View/OverlayBar.vala:303
+msgid "%s approx."
+msgstr ""
+
+#. / TRANSLATORS: 'size' refers to disk space
+#: ../src/View/OverlayBar.vala:306
+msgid "unknown size"
+msgstr "neznámá velikost"
+
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
+#: ../src/View/OverlayBar.vala:310
+msgid "%u file not readable"
+msgstr ""
+
+#: ../src/View/OverlayBar.vala:310
+msgid "%u files not readable"
+msgstr ""
+
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Čtení"
+
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Zápis"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Spouštění"
 
 #: ../src/View/Window.vala:206
 msgid "Files isn't your default file manager."
@@ -1554,6 +1732,40 @@ msgstr "Nastavit jako Výchozí"
 #: ../src/View/Window.vala:218
 msgid "Ignore"
 msgstr "Ignorovat"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Název souboru"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Velikost"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Typ"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Změněno"
+
+#: ../src/View/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Vlastnosti disku"
+
+#: ../src/View/VolumePropertiesWindow.vala:44 ../src/View/Sidebar.vala:555
+#: ../src/View/ViewContainer.vala:344 ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "Souborový systém"
+
+#: ../src/View/VolumePropertiesWindow.vala:78
+#: ../src/View/PropertiesWindow.vala:570
+msgid "Location:"
+msgstr "Umístění:"
+
+#: ../src/View/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Formát:"
 
 #: ../src/View/Sidebar.vala:481
 msgid "Personal"
@@ -1590,11 +1802,6 @@ msgstr "Zařízení"
 #: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
 msgstr "Vaše místní oddíly a zařízení"
-
-#: ../src/View/Sidebar.vala:555 ../src/View/VolumePropertiesWindow.vala:44
-#: ../src/View/ViewContainer.vala:344 ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Souborový systém"
 
 #: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
@@ -1652,39 +1859,10 @@ msgstr "_Odpojit"
 msgid "_Eject"
 msgstr "V_ysunout"
 
-#: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:129
+#: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:127
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Vlastnosti"
-
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Vlastnosti disku"
-
-#: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:566
-msgid "Location:"
-msgstr "Umístění:"
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Formát:"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Název souboru"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Velikost"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Typ"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Změněno"
 
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:366
 msgid "This Folder Does Not Exist"
@@ -1711,310 +1889,128 @@ msgstr ""
 "Selhalo vytvoření složky\n"
 "%s"
 
-#: ../src/View/AbstractPropertiesDialog.vala:47
-msgid "Info"
-msgstr "Informace"
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Tato složka je prázdná"
 
-#: ../src/View/AbstractPropertiesDialog.vala:56
-msgid "General"
-msgstr "Obecné"
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "Koš je prázdný"
 
-#: ../src/View/AbstractPropertiesDialog.vala:75
-msgid "Close"
-msgstr "Zavřít"
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Nejsou zde žádné nedávno použité soubory"
 
-#: ../src/View/AbstractPropertiesDialog.vala:137
-msgid "Device Usage"
-msgstr ""
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Přístup odepřen"
 
-#: ../src/View/AbstractPropertiesDialog.vala:153
-msgid "Capacity:"
-msgstr "Kapacita:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:154
-#: ../src/View/AbstractPropertiesDialog.vala:157
-#: ../src/View/AbstractPropertiesDialog.vala:160
-#: ../src/View/PropertiesWindow.vala:427 ../src/View/PropertiesWindow.vala:463
-msgid "Unknown"
-msgstr "Neznámý"
-
-#: ../src/View/AbstractPropertiesDialog.vala:156
-msgid "Available:"
-msgstr "Dostupný:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:159
-msgid "Used:"
-msgstr "Použitý:"
-
-#: ../src/View/AbstractDirectoryView.vala:550
-msgid "Failed to preview"
-msgstr "Nelze zobrazit náhled"
-
-#: ../src/View/AbstractDirectoryView.vala:805
-msgid "Cannot open this file"
-msgstr "Tento soubor nelze otevřít"
-
-#: ../src/View/AbstractDirectoryView.vala:818
-msgid "Cannot identify file type to open"
-msgstr "Nelze zjistit typ souboru pro otevření"
-
-#: ../src/View/AbstractDirectoryView.vala:1555
-msgid "Cannot drop this file"
-msgstr "Tento soubor nelze přetáhnout"
-
-#: ../src/View/AbstractDirectoryView.vala:1555
-msgid "Invalid file name provided"
-msgstr "Zadán neplatný název souboru"
-
-#: ../src/View/AbstractDirectoryView.vala:2010
-msgid "Invalid"
-msgstr "Neplatný"
-
-#: ../src/View/AbstractDirectoryView.vala:2016
-msgid "Run"
-msgstr "Spustit"
-
-#: ../src/View/AbstractDirectoryView.vala:2021
-msgid "Open in %s"
-msgstr "Otevřít v %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2031
-msgid "Open in"
-msgstr "Otevřít v"
-
-#: ../src/View/AbstractDirectoryView.vala:2033
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
-msgid "Open with"
-msgstr "Otevřít s"
-
-#: ../src/View/AbstractDirectoryView.vala:2093
-msgid "Other Application"
-msgstr "Jiná Aplikace"
-
-#: ../src/View/AbstractDirectoryView.vala:2354
-msgid "Untitled %s"
-msgstr "Nepojmenovaný soubor %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2676
-#: ../src/View/AbstractDirectoryView.vala:2859
-msgid "Cannot remove files from here"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2677
-#: ../src/View/AbstractDirectoryView.vala:2847
-#: ../src/View/AbstractDirectoryView.vala:2860
-msgid "You do not have permission to change this location"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2825
-msgid "Cannot copy files that are in the trash"
-msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
-
-#: ../src/View/AbstractDirectoryView.vala:2826
-msgid "Cutting the selection instead"
-msgstr "Místo toho vyjmout výběr"
-
-#: ../src/View/AbstractDirectoryView.vala:2846
-msgid "Cannot paste files here"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:230 ../src/View/PropertiesWindow.vala:1252
-msgid "%u folders"
-msgstr "%u složek"
-
-#: ../src/View/OverlayBar.vala:232 ../src/View/OverlayBar.vala:240
-msgid " and %u other item (%s) selected"
-msgstr " a %u další položka (%s) zvolena"
-
-#: ../src/View/OverlayBar.vala:233 ../src/View/OverlayBar.vala:241
-msgid " and %u other items (%s) selected"
-msgstr " a %u dalších položek (%s) zvoleno"
-
-#: ../src/View/OverlayBar.vala:236 ../src/View/OverlayBar.vala:244
-msgid " selected"
-msgstr " zvoleno"
-
-#: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1223
-#: ../src/View/PropertiesWindow.vala:1262
-msgid "%u folder"
-msgstr "%u složka"
-
-#: ../src/View/OverlayBar.vala:246
-msgid "%u items selected (%s)"
-msgstr "%u označených položek (%s)"
-
-#. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/OverlayBar.vala:287
-msgid "%u sub-folder, "
-msgstr "%u podsložka, "
-
-#: ../src/View/OverlayBar.vala:287
-msgid "%u sub-folders, "
-msgstr "%u podsložky, "
-
-#. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/OverlayBar.vala:293
-msgid "%u file, "
-msgstr "%u soubor, "
-
-#: ../src/View/OverlayBar.vala:293
-msgid "%u files, "
-msgstr "%u soubory, "
-
-#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/OverlayBar.vala:303
-msgid "%s approx."
-msgstr ""
-
-#. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/OverlayBar.vala:306
-msgid "unknown size"
-msgstr "neznámá velikost"
-
-#. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/OverlayBar.vala:310
-msgid "%u file not readable"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:310
-msgid "%u files not readable"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:201
+#: ../src/View/PropertiesWindow.vala:199
 msgid "Permissions"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:222
+#: ../src/View/PropertiesWindow.vala:220
 msgid "Actual Size Could Be Larger"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:222
+#: ../src/View/PropertiesWindow.vala:220
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:241 ../src/View/PropertiesWindow.vala:260
+#: ../src/View/PropertiesWindow.vala:239 ../src/View/PropertiesWindow.vala:258
 msgid "unknown"
 msgstr "neznámý"
 
-#: ../src/View/PropertiesWindow.vala:438
+#: ../src/View/PropertiesWindow.vala:436
 msgid "Loading…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:469
+#: ../src/View/PropertiesWindow.vala:467
 msgid "Could not be determined"
 msgstr "Nepodařilo se zjistit"
 
-#: ../src/View/PropertiesWindow.vala:505
+#: ../src/View/PropertiesWindow.vala:503
 msgid "Contains:"
 msgstr "Obsahuje:"
 
-#: ../src/View/PropertiesWindow.vala:521
+#: ../src/View/PropertiesWindow.vala:525
 msgid "Created:"
 msgstr "Vytvořeno:"
 
-#: ../src/View/PropertiesWindow.vala:530
+#: ../src/View/PropertiesWindow.vala:534
 msgid "Modified:"
 msgstr "Změněno:"
 
-#: ../src/View/PropertiesWindow.vala:541
+#: ../src/View/PropertiesWindow.vala:545
 msgid "Deleted:"
 msgstr "Smazáno:"
 
-#: ../src/View/PropertiesWindow.vala:551
+#: ../src/View/PropertiesWindow.vala:555
 msgid "Mimetype:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:558
+#: ../src/View/PropertiesWindow.vala:562
 msgid "Resolution:"
 msgstr "Rozlišení:"
 
-#: ../src/View/PropertiesWindow.vala:576
+#: ../src/View/PropertiesWindow.vala:580
 msgid "Target:"
 msgstr "Cíl:"
 
-#: ../src/View/PropertiesWindow.vala:584
+#: ../src/View/PropertiesWindow.vala:588
 msgid "Original Location:"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:607
+#: ../src/View/PropertiesWindow.vala:611
 msgid "Other Application…"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:627
+#: ../src/View/PropertiesWindow.vala:631
 msgid "Open with:"
 msgstr "Oteřít s:"
 
-#: ../src/View/PropertiesWindow.vala:721
-msgid "Read"
-msgstr "Čtení"
-
-#: ../src/View/PropertiesWindow.vala:725
-msgid "Write"
-msgstr "Zápis"
-
-#: ../src/View/PropertiesWindow.vala:729
-msgid "Execute"
-msgstr "Spouštění"
-
-#: ../src/View/PropertiesWindow.vala:936 ../src/View/PropertiesWindow.vala:952
+#: ../src/View/PropertiesWindow.vala:890 ../src/View/PropertiesWindow.vala:900
 msgid "Owner:"
 msgstr "Vlastník:"
 
-#: ../src/View/PropertiesWindow.vala:942 ../src/View/PropertiesWindow.vala:956
+#: ../src/View/PropertiesWindow.vala:894 ../src/View/PropertiesWindow.vala:903
 msgid "Group:"
 msgstr "Skupina:"
 
-#: ../src/View/PropertiesWindow.vala:960
+#: ../src/View/PropertiesWindow.vala:906
 msgid "Everyone:"
 msgstr "Ostatní:"
 
-#: ../src/View/PropertiesWindow.vala:1208
-msgid "%u subfolders and %u files"
-msgstr "%u podsložek a %u souborů"
+#: ../src/View/PropertiesWindow.vala:1165
+msgid "%u subfolder"
+msgid_plural "%u subfolders"
+msgstr[0] ""
+msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:1210
-msgid "%u subfolders and %u file"
-msgstr "%u podsložek a %u soubor"
-
-#: ../src/View/PropertiesWindow.vala:1213
-msgid "%u subfolders"
-msgstr "%u podsložek"
-
-#: ../src/View/PropertiesWindow.vala:1218
-msgid "%u subfolder and %u files"
-msgstr "%u podsložka a %u souborů"
-
-#: ../src/View/PropertiesWindow.vala:1220
-msgid "%u subfolder and %u file"
-msgstr "%u podsložka a %u soubor"
-
-#: ../src/View/PropertiesWindow.vala:1229
-#: ../src/View/PropertiesWindow.vala:1268
-msgid "%u files"
-msgstr "%u souborů"
-
-#: ../src/View/PropertiesWindow.vala:1231
-#: ../src/View/PropertiesWindow.vala:1270
+#: ../src/View/PropertiesWindow.vala:1169
+#: ../src/View/PropertiesWindow.vala:1191
 msgid "%u file"
-msgstr "%u soubor"
+msgid_plural "%u files"
+msgstr[0] ""
+msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:1247
-msgid "%u selected items (%u folders and %u files)"
-msgstr "%u vybraných položek (%u složek a %u souborů)"
+#. /TRANSLATORS: folders, files
+#: ../src/View/PropertiesWindow.vala:1174
+msgid "%s, %s"
+msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:1249
-msgid "%u selected items (%u folders and %u file)"
-msgstr "%u vybraných položek (%u složek a %u soubor)"
+#: ../src/View/PropertiesWindow.vala:1195
+msgid "%u selected item"
+msgid_plural "%u selected items"
+msgstr[0] ""
+msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:1257
-msgid "%u selected items (%u folder and %u files)"
-msgstr "%u vybraných položek (%u složka a %u souborů)"
-
-#: ../src/View/PropertiesWindow.vala:1259
-msgid "%u selected items (%u folder and %u file)"
-msgstr "%u vybraných položek (%u složka a %u soubor)"
+#. /TRANSLATORS: total (folders, files)
+#: ../src/View/PropertiesWindow.vala:1197
+msgid "%s (%s, %s)"
+msgstr ""
 
 #: ../src/View/ViewContainer.vala:353
 msgid "(as Administrator)"
@@ -2064,22 +2060,6 @@ msgstr "Soubor nenalezen"
 msgid "The file selected no longer exists."
 msgstr "Vybraný soubor již neexistuje."
 
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Tato složka je prázdná"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "Koš je prázdný"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Nejsou zde žádné nedávno použité soubory"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Přístup odepřen"
-
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
 msgstr "Zobrazit verzi programu."
@@ -2118,6 +2098,31 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nelze použít spolu s adresami URI."
 
+#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
+msgid "There is nothing on the clipboard to paste"
+msgstr "Ve schránce není nic ke vložení"
+
+#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
+msgid "File Operations"
+msgstr "Operace se soubory"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:190
+msgid "Completed %s"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:193
+msgid "All file operations have ended"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:238
+msgid "Show Copy Dialog"
+msgstr "Zobrazit nabídku kopírování"
+
+#: ../src/ProgressUIHandler.vala:250
+msgid "Cancel All In-progress Actions"
+msgstr "Zrušit všechny vykonávané akce"
+
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "Procházet soubory"
@@ -2142,26 +2147,21 @@ msgstr "O _Files"
 msgid "Files"
 msgstr "Správce souborů"
 
-#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
-msgid "File Operations"
-msgstr "Operace se soubory"
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nelze zjistit původní umístění \"%s\" "
 
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:190
-msgid "Completed %s"
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "Soubor nelze z koše obnovit"
+
+#: ../libcore/FileUtils.vala:343
+msgid "Could not rename to '%s'"
+msgstr "Přejmenování na '%s' se nezdařilo"
+
+#: ../libcore/FileUtils.vala:464
+msgid "%A at %-I:%M %p"
 msgstr ""
-
-#: ../src/ProgressUIHandler.vala:193
-msgid "All file operations have ended"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:238
-msgid "Show Copy Dialog"
-msgstr "Zobrazit nabídku kopírování"
-
-#: ../src/ProgressUIHandler.vala:250
-msgid "Cancel All In-progress Actions"
-msgstr "Zrušit všechny vykonávané akce"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2183,54 +2183,34 @@ msgstr "Odkaz sem"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../libcore/FileUtils.vala:59
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nelze zjistit původní umístění \"%s\" "
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Přejít do %s"
 
-#: ../libcore/FileUtils.vala:60
-msgid "The item cannot be restored from trash"
-msgstr "Soubor nelze z koše obnovit"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:277
+msgid "Go to %s"
+msgstr "Přejít do %s"
 
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "Přejmenování na '%s' se nezdařilo"
-
-#: ../libcore/FileUtils.vala:464
-msgid "%A at %-I:%M %p"
-msgstr ""
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:412
-msgid "Open in New Tab"
-msgstr "Otevřít v nové kartě"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:419
-msgid "Open in New Window"
-msgstr "Otevřít v novém okně"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:458
-msgid "Open in Other Application…"
-msgstr "Otevřít v jiné aplikaci..."
-
-#: ../libwidgets/View/LocationBar.vala:181
-msgid "Reload this folder"
-msgstr "Obnovit složku"
-
-#: ../libwidgets/View/LocationBar.vala:184
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:281
+#: ../libwidgets/View/LocationBar.vala:184
 msgid "Enter search term or path"
 msgstr "Vložte vyhledávaný výraz nebo cestu"
 
-#: ../libwidgets/View/SearchResults.vala:180
-msgid "In This Folder"
-msgstr "V této složce"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "Napište cestu"
 
-#: ../libwidgets/View/SearchResults.vala:182
-msgid "Bookmarks"
-msgstr "Záložky"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Zobrazit v mřížce"
 
-#: ../libwidgets/View/SearchResults.vala:184
-msgid "Everywhere Else"
-msgstr "Všude jinde"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Zobrazit jako seznam"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Zobrazit ve sloupcích"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2294,29 +2274,9 @@ msgstr "Nedávné"
 msgid "MTP"
 msgstr "MTP"
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr "Napište cestu"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Zobrazit v mřížce"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Zobrazit jako seznam"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "Zobrazit ve sloupcích"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Přejít do %s"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:277
-msgid "Go to %s"
-msgstr "Přejít do %s"
+#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
+msgid "Set as default"
+msgstr "Nastavit jako výchozí"
 
 #: ../libwidgets/MimeActions.vala:260
 msgid "Multiple file types selected"
@@ -2338,9 +2298,33 @@ msgstr ""
 msgid "Unable to open files or uris with this app"
 msgstr ""
 
-#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
-msgid "Set as default"
-msgstr "Nastavit jako výchozí"
+#: ../libwidgets/View/LocationBar.vala:181
+msgid "Reload this folder"
+msgstr "Obnovit složku"
+
+#: ../libwidgets/View/SearchResults.vala:180
+msgid "In This Folder"
+msgstr "V této složce"
+
+#: ../libwidgets/View/SearchResults.vala:182
+msgid "Bookmarks"
+msgstr "Záložky"
+
+#: ../libwidgets/View/SearchResults.vala:184
+msgid "Everywhere Else"
+msgstr "Všude jinde"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:412
+msgid "Open in New Tab"
+msgstr "Otevřít v nové kartě"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:419
+msgid "Open in New Window"
+msgstr "Otevřít v novém okně"
+
+#: ../libwidgets/View/BreadcrumbsEntry.vala:458
+msgid "Open in Other Application…"
+msgstr "Otevřít v jiné aplikaci..."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
