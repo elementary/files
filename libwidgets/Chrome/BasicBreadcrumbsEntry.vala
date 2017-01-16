@@ -210,7 +210,8 @@ namespace Marlin.View.Chrome {
                 default:
                     break;
             }
-            return base.key_press_event (event);
+
+            return false;
         }
 
         protected virtual bool on_button_press_event (Gdk.EventButton event) {

@@ -43,6 +43,9 @@ namespace Marlin {
         private GLib.List<GOF.File> files = null;
 
         private bool files_cutted = false;
+
+        /** Returns TRUE if the contents of the clipboard can be pasted into a folder.
+        **/ 
         public bool can_paste {get; private set; default = false;}
 
         public signal void changed ();
@@ -59,12 +62,14 @@ namespace Marlin {
                 critical ("ClipboardManager cannot find display");
                 assert_not_reached ();
             }
-            var _clipboard = Gtk.Clipboard.get_for_display (display, Gdk.SELECTION_CLIPBOARD);
-            ClipboardManager? _manager = _clipboard.get_qdata (marlin_clipboard_manager_quark);
-            if (_manager != null) {
-                return _manager;
+
+            var clipboard = Gtk.Clipboard.get_for_display (display, Gdk.SELECTION_CLIPBOARD);
+            ClipboardManager? manager = clipboard.get_qdata (marlin_clipboard_manager_quark);
+
+            if (manager != null) {
+                return manager;
             } else {
-                return new ClipboardManager (_clipboard);
+                return new ClipboardManager (clipboard);
             }
         }
 
@@ -73,8 +78,9 @@ namespace Marlin {
             clipboard.owner_change.disconnect (owner_changed);
         }
 
-        /* If @file is null, returns whether there are ANY cut files
-         * otherwise whether @file is amongst the cut files */
+        /** If @file is null, returns whether there are ANY cut files
+         * otherwise whether @file is amongst the cut files
+        **/
         public bool has_cutted_file (GOF.File? file) {
             return files_cutted && (file == null || has_file (file));
         }
@@ -91,10 +97,27 @@ namespace Marlin {
             transfer_files (false, files);
         }
 
+        /**
+         * @target_file        : the #GFile of the folder to which the contents on the clipboard
+         *                       should be pasted.
+         * @widget             : a #GtkWidget, on which to perform the paste or %NULL if no widget is
+         *                       known.
+         * @new_files_callback : a #GCallback to connect to the job's "new-files" signal,
+         *                       which will be emitted when the job finishes with the
+         *                       list of #GFile<!---->s created by the job, or
+         *                       %NULL if you're not interested in the signal.
+         *
+         * Pastes the contents from the clipboard to the directory
+         * referenced by @target_file.
+        **/
         public void paste_files (GLib.File target_file,
                                  Gtk.Widget? widget = null,
                                  GLib.Callback? new_files_callback = null) {
 
+            /**
+             *  @cb the clipboard.
+             *  @sd selection_data returned from the clipboard.
+            **/   
             clipboard.request_contents (x_special_gnome_copied_files, (cb, sd) => {
                 contents_received (sd, target_file, widget, new_files_callback);
             });
@@ -178,6 +201,10 @@ namespace Marlin {
             });
         }
 
+        /**
+         * Sets the clipboard to contain @files_for_transfer and marks them to be copied
+         * or moved according to @copy when the user pastes from the clipboard.
+        **/
         private void transfer_files (bool copy, GLib.List<GOF.File> files_for_transfer) {
             release_pending_files ();
             files_cutted = !copy;
@@ -204,9 +231,10 @@ namespace Marlin {
 
         public static void get_callback (Gtk.Clipboard cb, Gtk.SelectionData sd, uint target_info, void* parent) {
             var manager = parent as ClipboardManager;
-            if (!(manager != null && manager.clipboard == cb)) {
+            if (manager == null || manager.clipboard != cb) {
                 return;
             }
+
             switch (target_info) {
                 case ClipboardTarget.GNOME_COPIED_FILES:
                     string prefix = manager.files_cutted ? "cut" : "copy";
@@ -246,7 +274,7 @@ namespace Marlin {
 
         public static void clear_callback (Gtk.Clipboard cb, void* parent) {
             var manager = (ClipboardManager)parent;
-            if (!(manager != null && manager.clipboard == cb)) {
+            if (manager == null || manager.clipboard != cb) {
                 return;
             }
 

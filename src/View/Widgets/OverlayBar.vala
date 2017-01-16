@@ -1,6 +1,6 @@
 /***
     Copyright (c) 2012 ammonkey <am.monkeyd@gmail.com>
-                  2015-2016 elementary LLC (http://launchpad.net/elementary)
+                  2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -33,13 +33,14 @@ namespace Marlin.View {
         private GLib.FileInputStream? stream;
         private Gdk.PixbufLoader loader;
         private uint update_timeout_id = 0;
+        private uint hover_timeout_id = 0;
         private Marlin.DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
         private Gtk.Spinner spinner;
 
         public bool showbar = false;
 
-        public OverlayBar (Marlin.View.Window win, Gtk.Overlay overlay) {
+        public OverlayBar (Gtk.Overlay overlay) {
             base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
 
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
@@ -77,14 +78,16 @@ namespace Marlin.View {
             cancel ();
             visible = false;
 
-            if (!showbar)
+            if (!showbar) {
                 return;
+            }
 
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
-                if (files != null)
+                if (files != null) {
                     selected_files = files.copy ();
-                else
+                } else {
                     selected_files = null;
+                }
 
                 real_update (selected_files);
                 update_timeout_id = 0;
@@ -97,7 +100,7 @@ namespace Marlin.View {
         }
 
         public void update_hovered (GOF.File? file) {
-            cancel (); /* This will stop and hide spinner */
+            hover_cancel (); /* This will stop and hide spinner, and reset the hover timeout */
 
             if (!showbar)
                 return;
@@ -106,20 +109,21 @@ namespace Marlin.View {
                 visible = false;
             }
 
-            update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
+            hover_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
                 GLib.List<GOF.File> list = null;
                 if (file != null) {
                     bool matched = false;
                     if (selected_files != null) {
                         selected_files.@foreach ((f) => {
-                            if (f == file)
+                            if (f == file) {
                                 matched = true;
+                            }
                         });
                     }
 
-                    if (matched)
+                    if (matched) {
                         real_update (selected_files);
-                    else {
+                    } else {
                         list.prepend (file);
                         real_update (list);
                     }
@@ -127,17 +131,28 @@ namespace Marlin.View {
                     real_update (null);
                 }
 
-                update_timeout_id = 0;
+                hover_timeout_id = 0;
                 return false;
             });
         }
 
-        public void cancel() {
+        /** Function to be called when view is going to be destroyed or going to show another folder
+ *        * and on a selection change.
+*         **/
+        public void cancel () {
+            hover_cancel ();
             if (update_timeout_id > 0) {
                 GLib.Source.remove (update_timeout_id);
                 update_timeout_id = 0;
             }
+        }
 
+        private void hover_cancel() {
+            /* Do not cancel updating of selected files when hovered file changes */
+            if (hover_timeout_id > 0) {
+                GLib.Source.remove (hover_timeout_id);
+                hover_timeout_id = 0;
+            }
             if (deep_count_timeout_id > 0) {
                 GLib.Source.remove (deep_count_timeout_id);
                 deep_count_timeout_id = 0;

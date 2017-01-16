@@ -35,15 +35,6 @@ public class Marlin.Progress.UIHandler : Object {
     private Gtk.Widget window_vbox = null;
     private uint active_infos = 0;
 
-    private Gdk.Pixbuf notification_image = null;
-    private Gdk.Pixbuf cancelled_image = null;
-
-    private const string ACTION_DETAILS = "details";
-    private const string TITLE = _("File Manager Operations");
-    private const string ICON_NAME = "system-file-manager";
-    private const int ICON_SIZE = 64;
-    private const string CANCELLED_ICON_NAME = "dialog-warning";
-
     private Marlin.Application application;
 
     public UIHandler (Marlin.Application app) {
@@ -53,14 +44,6 @@ public class Marlin.Progress.UIHandler : Object {
         manager.new_progress_info.connect ((info) => {
             info.started.connect (progress_info_started_cb);
         });
-
-        var theme = Gtk.IconTheme.get_default ();
-        try {
-            notification_image = theme.load_icon (ICON_NAME, ICON_SIZE, 0);
-            cancelled_image = theme.load_icon (CANCELLED_ICON_NAME, ICON_SIZE, 0);
-        } catch (GLib.Error e) {
-            warning ("ProgressUIHandler error loading notification images - %s", e.message);
-        }
     }
 
     ~UIHandler () {
@@ -210,7 +193,7 @@ public class Marlin.Progress.UIHandler : Object {
             result = result + "\n" + _("All file operations have ended");
         }
 
-        var complete_notification = new GLib.Notification (TITLE);
+        var complete_notification = new GLib.Notification (_("File Operations"));
         complete_notification.set_body (result);
         complete_notification.set_icon (new GLib.ThemedIcon (Marlin.ICON_APP_LOGO));
         application.send_notification ("Pantheon Files Operation", complete_notification);
