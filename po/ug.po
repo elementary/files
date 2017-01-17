@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-23 12:40-0800\n"
+"POT-Creation-Date: 2017-01-16 17:24-0600\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-12-24 04:54+0000\n"
-"X-Generator: Launchpad (build 18298)\n"
+"X-Launchpad-Export-Date: 2017-01-17 06:47+0000\n"
+"X-Generator: Launchpad (build 18302)\n"
 "Language: ug\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -227,7 +227,7 @@ msgstr "ئورىگىنال ھۆججەت"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:493
+#: ../src/Dialogs/PropertiesWindow.vala:484
 msgid "Size:"
 msgstr "چوڭلۇقى:"
 
@@ -235,7 +235,7 @@ msgstr "چوڭلۇقى:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:500
+#: ../src/Dialogs/PropertiesWindow.vala:491
 msgid "Type:"
 msgstr "تىپى:"
 
@@ -284,6 +284,44 @@ msgstr "ئالماشتۇرۇش"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "ھۆججەت توقۇنۇشى"
+
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:379
+#, c-format
+msgid "link to %s"
+msgstr "%s غا ئۇلاش"
+
+#: ../libcore/gof-file.c:1953
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "ئۈستەليۈزى ھۆججىتى %s نى ئانالىز قىلىش مەغلۇپ بولدى"
+
+#: ../libcore/gof-file.c:1990
+msgid "No Exec field specified"
+msgstr "Exec ئۈچۈن بەلگىلەنگەن سۆز بۆلىكى يوق"
+
+#: ../libcore/gof-file.c:2009
+msgid "No URL field specified"
+msgstr "تور ئادىرىسى ئۈچۈن بەلگىلەنگەن سۆز بۆلىكى يوق"
+
+#: ../libcore/gof-file.c:2015
+msgid "Invalid desktop file"
+msgstr "ئىناۋەتسىز ئۈستەليۇزى ھۆججىتى"
+
+#: ../libcore/gof-file.c:2310
+msgid "Slashes are not allowed in filenames"
+msgstr "ھۆججەت ئىسىمىدا يانتۇ سىزىق بولۇشقا يول قويۇلمايدۇ"
+
+#: ../libcore/gof-file.c:2330
+msgid "Toplevel files cannot be renamed"
+msgstr "يۇقىرى دەرىجىلىك ھۆججەت ئىسىمىنى ئۆزگەرتكىلى بولمايدۇ"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "تەپسىلاتىنى كۆرسىتىش(_D)"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -1024,65 +1062,6 @@ msgstr "ئەخلەت چېلىكىنى قۇرۇقداۋاتىدۇ"
 msgid "Emptying Trash"
 msgstr "ئەخلەت چېلىكىنى بوشىتىۋاتىدۇ"
 
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "تەييارلاۋاتىدۇ"
-
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
-msgid "Today at %-I:%M %p"
-msgstr "بۈگۈن  %-I:%M %p دە"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
-msgid "Yesterday at %-I:%M %p"
-msgstr "تۈنۈگۈن  %-I:%M %p دە"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b  %-I:%M %p دە"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y  %-I:%M %p دە"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "تەپسىلاتىنى كۆرسىتىش(_D)"
-
-#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:379
-#, c-format
-msgid "link to %s"
-msgstr "%s غا ئۇلاش"
-
-#: ../libcore/gof-file.c:1953
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "ئۈستەليۈزى ھۆججىتى %s نى ئانالىز قىلىش مەغلۇپ بولدى"
-
-#: ../libcore/gof-file.c:1990
-msgid "No Exec field specified"
-msgstr "Exec ئۈچۈن بەلگىلەنگەن سۆز بۆلىكى يوق"
-
-#: ../libcore/gof-file.c:2009
-msgid "No URL field specified"
-msgstr "تور ئادىرىسى ئۈچۈن بەلگىلەنگەن سۆز بۆلىكى يوق"
-
-#: ../libcore/gof-file.c:2015
-msgid "Invalid desktop file"
-msgstr "ئىناۋەتسىز ئۈستەليۇزى ھۆججىتى"
-
-#: ../libcore/gof-file.c:2310
-msgid "Slashes are not allowed in filenames"
-msgstr "ھۆججەت ئىسىمىدا يانتۇ سىزىق بولۇشقا يول قويۇلمايدۇ"
-
-#: ../libcore/gof-file.c:2330
-msgid "Toplevel files cannot be renamed"
-msgstr "يۇقىرى دەرىجىلىك ھۆججەت ئىسىمىنى ئۆزگەرتكىلى بولمايدۇ"
-
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
 msgstr "ئەسلى ئورنىنى جەزىملەشتۈرگىلى بولمىدى"
@@ -1437,197 +1416,36 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "%d تۈرنىڭ ئىگىسىنى قايتىدىن ئۆزگەرتىش"
 
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+msgid "Today at %-I:%M %p"
+msgstr "بۈگۈن  %-I:%M %p دە"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+msgid "Yesterday at %-I:%M %p"
+msgstr "تۈنۈگۈن  %-I:%M %p دە"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b  %-I:%M %p دە"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y  %-I:%M %p دە"
+
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "تەييارلاۋاتىدۇ"
+
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../libwidgets/Chrome/TopMenu.vala:64
+#: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
 msgstr "ئالدىنقىسى"
 
 #: ../filechooser-module/FileChooserDialog.vala:74
-#: ../libwidgets/Chrome/TopMenu.vala:68
+#: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "كىيىنكىسى"
-
-#: ../src/View/AbstractPropertiesDialog.vala:50
-msgid "Info"
-msgstr "ئۇچۇر"
-
-#: ../src/View/AbstractPropertiesDialog.vala:59
-msgid "General"
-msgstr "ئادەتتىكى"
-
-#: ../src/View/AbstractPropertiesDialog.vala:78
-msgid "Close"
-msgstr "تاقاش"
-
-#: ../src/View/AbstractPropertiesDialog.vala:140
-msgid "Device Usage"
-msgstr "ئۈسكۈنىنىڭ ئىشلىتىلىشى"
-
-#: ../src/View/AbstractPropertiesDialog.vala:156
-msgid "Capacity:"
-msgstr "سۈزۈكلۈكى:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:157
-#: ../src/View/AbstractPropertiesDialog.vala:160
-#: ../src/View/AbstractPropertiesDialog.vala:163
-#: ../src/View/PropertiesWindow.vala:425 ../src/View/PropertiesWindow.vala:461
-msgid "Unknown"
-msgstr "نامەلۇم"
-
-#: ../src/View/AbstractPropertiesDialog.vala:159
-msgid "Available:"
-msgstr "ئىشلەتكىلى بولىدىغىنى:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:162
-msgid "Used:"
-msgstr "ئىشلىتىلگىنى:"
-
-#: ../src/View/AbstractDirectoryView.vala:550
-msgid "Failed to preview"
-msgstr "ئالدىن كۆرۈش مەغلۇپ بولدى"
-
-#: ../src/View/AbstractDirectoryView.vala:805
-msgid "Cannot open this file"
-msgstr "بۇ ھۆججەتنى ئاچقىلى بولمىدى"
-
-#: ../src/View/AbstractDirectoryView.vala:818
-msgid "Cannot identify file type to open"
-msgstr "ئاچماقچى بولغان ھۆججەتنىڭ تۈرىنى پەرقلەندۈرگىلى بولمىدى"
-
-#: ../src/View/AbstractDirectoryView.vala:1546
-msgid "Cannot drop this file"
-msgstr "بۇ ھۆججەتنى قويغىلى بولمىدى"
-
-#: ../src/View/AbstractDirectoryView.vala:1546
-msgid "Invalid file name provided"
-msgstr "تەمىنلەنگەن ھۆججەت ئىسمى ئىناۋەتسىز"
-
-#: ../src/View/AbstractDirectoryView.vala:2001
-msgid "Invalid"
-msgstr "ئىناۋەتسىز"
-
-#: ../src/View/AbstractDirectoryView.vala:2007
-msgid "Run"
-msgstr "ئىجرا قىلىش"
-
-#: ../src/View/AbstractDirectoryView.vala:2012
-msgid "Open in %s"
-msgstr "%s دا ئىچىش"
-
-#: ../src/View/AbstractDirectoryView.vala:2022
-msgid "Open in"
-msgstr "دا ئىچىش"
-
-#: ../src/View/AbstractDirectoryView.vala:2024
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
-msgid "Open with"
-msgstr "بىلەن ئىچىش"
-
-#: ../src/View/AbstractDirectoryView.vala:2084
-msgid "Other Application"
-msgstr "باشقا ئەپ"
-
-#: ../src/View/AbstractDirectoryView.vala:2345
-msgid "Untitled %s"
-msgstr "ئىسىمسىز %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2667
-#: ../src/View/AbstractDirectoryView.vala:2850
-msgid "Cannot remove files from here"
-msgstr "بۇ يەردىن ھۆججەتلەرنى يۆتكىگىلى بولمىدى"
-
-#: ../src/View/AbstractDirectoryView.vala:2668
-#: ../src/View/AbstractDirectoryView.vala:2838
-#: ../src/View/AbstractDirectoryView.vala:2851
-msgid "You do not have permission to change this location"
-msgstr "سىزنىڭ بۇ ئورۇننى ئۆزگەرتىش سالاھىيىتىڭىز يوق"
-
-#: ../src/View/AbstractDirectoryView.vala:2816
-msgid "Cannot copy files that are in the trash"
-msgstr "ئەخلەت چېلىكىدىكى ھۆججەتلەرنى كۆپەيتكىلى بولمايدۇ"
-
-#: ../src/View/AbstractDirectoryView.vala:2817
-msgid "Cutting the selection instead"
-msgstr "تاللانغان مەزمۇننى كىسىش"
-
-#: ../src/View/AbstractDirectoryView.vala:2837
-msgid "Cannot paste files here"
-msgstr "ھۆججەتلەرنى بۇ يەرگە چاپلىغىلى بولمىدى"
-
-#: ../src/View/OverlayBar.vala:230
-msgid "%u folders"
-msgstr "%u مۇندەرىجە"
-
-#: ../src/View/OverlayBar.vala:232 ../src/View/OverlayBar.vala:240
-msgid " and %u other item (%s) selected"
-msgstr " ۋە  %u باشقا تۈر  (%s) تاللاندى"
-
-#: ../src/View/OverlayBar.vala:233 ../src/View/OverlayBar.vala:241
-msgid " and %u other items (%s) selected"
-msgstr " ۋە  %u باشقا تۈر  (%s) تاللاندى"
-
-#: ../src/View/OverlayBar.vala:236 ../src/View/OverlayBar.vala:244
-msgid " selected"
-msgstr " تاللاندى"
-
-#: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1187
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/View/OverlayBar.vala:246
-msgid "%u items selected (%s)"
-msgstr "%u تۈر تاللاندى (%s)"
-
-#. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/OverlayBar.vala:287
-msgid "%u sub-folder, "
-msgstr "%u بالا مۇندەرىجە، "
-
-#: ../src/View/OverlayBar.vala:287
-msgid "%u sub-folders, "
-msgstr "%u بالا مۇندەرىجە، "
-
-#. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/OverlayBar.vala:293
-msgid "%u file, "
-msgstr "%u ھۆججەت، "
-
-#: ../src/View/OverlayBar.vala:293
-msgid "%u files, "
-msgstr "%u ھۆججەت، "
-
-#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/OverlayBar.vala:303
-msgid "%s approx."
-msgstr "%s تەخمىنەن"
-
-#. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/OverlayBar.vala:306
-msgid "unknown size"
-msgstr "چوڭلۇقى نامەلۇم"
-
-#. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/OverlayBar.vala:310
-msgid "%u file not readable"
-msgstr "%s ھۆججەت ئوقۇغىلى بولمايدىغان ھۆججەت"
-
-#: ../src/View/OverlayBar.vala:310
-msgid "%u files not readable"
-msgstr "%u ھۆججەت ئوقۇغىلى بولمايدىغان ھۆججەت"
-
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "ئوقۇش"
-
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "يىزىش"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "ئىجرا قىلىش"
 
 #: ../src/View/Window.vala:206
 msgid "Files isn't your default file manager."
@@ -1641,40 +1459,6 @@ msgstr "نورمالدىكىسى قىلىپ تەڭشەش"
 msgid "Ignore"
 msgstr "نەزەردىن ساقىت قىلىش"
 
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "ھۆججەت ئىسىمى"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "چوڭلۇقى"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "تىپى"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "ئۆزگەرتىلگەن ۋاقتى"
-
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "دىسكا خاسلىقلىرى"
-
-#: ../src/View/VolumePropertiesWindow.vala:44 ../src/View/Sidebar.vala:555
-#: ../src/View/ViewContainer.vala:344 ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "ھۆججەت سىستېمىسى"
-
-#: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:570
-msgid "Location:"
-msgstr "ئورنى:"
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "فورماتى:"
-
 #: ../src/View/Sidebar.vala:481
 msgid "Personal"
 msgstr "شەخسىي"
@@ -1683,7 +1467,7 @@ msgstr "شەخسىي"
 msgid "Your common places and bookmarks"
 msgstr "ئادەتتە كۆپ ئىشلەتكەن ئورنىڭىز ۋە خەتكۈچلىرىڭىز"
 
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:342
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
 msgid "Home"
 msgstr "باش بەت"
 
@@ -1710,6 +1494,12 @@ msgstr "ئۈسكۈنىلەر"
 #: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
 msgstr "سىزنىڭ يەرلىكتىكى تارماق رايونىڭىز ۋە ئۈسكۈنىلىرىڭىز"
+
+#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "ھۆججەت سىستېمىسى"
 
 #: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
@@ -1767,12 +1557,28 @@ msgstr "چۈشۈرۈش(_U)"
 msgid "_Eject"
 msgstr "دىسكىنى چىقىرىش(_E)"
 
-#: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:127
+#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "خاسلىقلىرى"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:366
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "ھۆججەت ئىسىمى"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "چوڭلۇقى"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "تىپى"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "ئۆزگەرتىلگەن ۋاقتى"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
 msgid "This Folder Does Not Exist"
 msgstr "بۇ مۇندەرىجە مەۋجۇت ئەمەس"
 
@@ -1798,6 +1604,126 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../src/View/AbstractDirectoryView.vala:550
+msgid "Failed to preview"
+msgstr "ئالدىن كۆرۈش مەغلۇپ بولدى"
+
+#: ../src/View/AbstractDirectoryView.vala:805
+msgid "Cannot open this file"
+msgstr "بۇ ھۆججەتنى ئاچقىلى بولمىدى"
+
+#: ../src/View/AbstractDirectoryView.vala:818
+msgid "Cannot identify file type to open"
+msgstr "ئاچماقچى بولغان ھۆججەتنىڭ تۈرىنى پەرقلەندۈرگىلى بولمىدى"
+
+#: ../src/View/AbstractDirectoryView.vala:1549
+msgid "Cannot drop this file"
+msgstr "بۇ ھۆججەتنى قويغىلى بولمىدى"
+
+#: ../src/View/AbstractDirectoryView.vala:1549
+msgid "Invalid file name provided"
+msgstr "تەمىنلەنگەن ھۆججەت ئىسمى ئىناۋەتسىز"
+
+#: ../src/View/AbstractDirectoryView.vala:2004
+msgid "Invalid"
+msgstr "ئىناۋەتسىز"
+
+#: ../src/View/AbstractDirectoryView.vala:2010
+msgid "Run"
+msgstr "ئىجرا قىلىش"
+
+#: ../src/View/AbstractDirectoryView.vala:2015
+msgid "Open in %s"
+msgstr "%s دا ئىچىش"
+
+#: ../src/View/AbstractDirectoryView.vala:2025
+msgid "Open in"
+msgstr "دا ئىچىش"
+
+#: ../src/View/AbstractDirectoryView.vala:2027
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
+msgid "Open with"
+msgstr "بىلەن ئىچىش"
+
+#: ../src/View/AbstractDirectoryView.vala:2087
+msgid "Other Application"
+msgstr "باشقا ئەپ"
+
+#: ../src/View/AbstractDirectoryView.vala:2348
+msgid "Untitled %s"
+msgstr "ئىسىمسىز %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2670
+#: ../src/View/AbstractDirectoryView.vala:2853
+msgid "Cannot remove files from here"
+msgstr "بۇ يەردىن ھۆججەتلەرنى يۆتكىگىلى بولمىدى"
+
+#: ../src/View/AbstractDirectoryView.vala:2671
+#: ../src/View/AbstractDirectoryView.vala:2841
+#: ../src/View/AbstractDirectoryView.vala:2854
+msgid "You do not have permission to change this location"
+msgstr "سىزنىڭ بۇ ئورۇننى ئۆزگەرتىش سالاھىيىتىڭىز يوق"
+
+#: ../src/View/AbstractDirectoryView.vala:2819
+msgid "Cannot copy files that are in the trash"
+msgstr "ئەخلەت چېلىكىدىكى ھۆججەتلەرنى كۆپەيتكىلى بولمايدۇ"
+
+#: ../src/View/AbstractDirectoryView.vala:2820
+msgid "Cutting the selection instead"
+msgstr "تاللانغان مەزمۇننى كىسىش"
+
+#: ../src/View/AbstractDirectoryView.vala:2840
+msgid "Cannot paste files here"
+msgstr "ھۆججەتلەرنى بۇ يەرگە چاپلىغىلى بولمىدى"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "(as Administrator)"
+msgstr "(باشقۇرغۇچى سالاھىيىتىدە)"
+
+#: ../src/View/ViewContainer.vala:372
+msgid "You cannot create a folder here."
+msgstr "سىز بۇ يەردە مۇندەرىجە قۇرالمايسىز."
+
+#: ../src/View/ViewContainer.vala:374
+msgid "The network is unavailable"
+msgstr "بۇ تورنى ئىشلەتكىلى بولمايدۇ"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "A working network is needed to reach this folder"
+msgstr "تورغا ئۇلىغاندا ئاندىن بۇ ھۆججەتنى ئاچقىلى بولىدۇ"
+
+#: ../src/View/ViewContainer.vala:377
+msgid "This Folder Does Not Belong to You"
+msgstr "بۇ مۇندەرىجە سىزگە تەۋە ئەمەس"
+
+#: ../src/View/ViewContainer.vala:378
+msgid "You don't have permission to view this folder."
+msgstr "سىزنىڭ بۇ مۇندەرىجىنى كۆرۈش ھوقۇقىڭىز يوق."
+
+#: ../src/View/ViewContainer.vala:380
+msgid "Unable to Mount Folder"
+msgstr "مۇندەرىجىگە ئۇلىغىلى بولمىدى"
+
+#: ../src/View/ViewContainer.vala:381
+msgid "Could not connect to the server for this folder."
+msgstr "بۇ مۇندەرىجە ساقلانغان مۇلازىمېتىرغا ئۇلىغىلى بولمىدى."
+
+#: ../src/View/ViewContainer.vala:383
+msgid "Unable to Show Folder"
+msgstr "مۇندەرىجىنى كۆرسەتكىلى بولمىدى"
+
+#: ../src/View/ViewContainer.vala:384
+msgid "The server for this folder could not be located."
+msgstr "بۇ مۇندەرىجە ساقلانغان مۇلازىمېتىرنىڭ ئورنىنى بىكىتكىلى بولمىدى."
+
+#: ../src/View/ViewContainer.vala:394
+msgid "File not Found"
+msgstr "ھۆججەت تىپىلمىدى"
+
+#: ../src/View/ViewContainer.vala:395
+msgid "The file selected no longer exists."
+msgstr "تاللانغان ھۆججەت مەۋجۇت ئەمەس."
+
 #: ../src/View/Slot.vala:32
 msgid "This Folder Is Empty"
 msgstr "بۇ مۇندەرىجە قۇرۇق"
@@ -1814,160 +1740,105 @@ msgstr "يىقىندا ئىشلەتكەن ھۆججەت يوق"
 msgid "Access Denied"
 msgstr "زىيارەت رەت قىلىندى"
 
-#: ../src/View/PropertiesWindow.vala:199
-msgid "Permissions"
-msgstr "سالاھىيەتلەر"
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+msgid "Open in New Tab"
+msgstr "يېڭى بەتكۈچتە ئىچىش"
 
-#: ../src/View/PropertiesWindow.vala:220
-msgid "Actual Size Could Be Larger"
-msgstr "ئەمەلىي چوڭلۇقى چوڭراق بولىشى مۇمكىن"
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Window"
+msgstr "يېڭى كۆزنەكتە ئىچىش"
 
-#: ../src/View/PropertiesWindow.vala:220
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-"%i ھۆججەتنى سالاھىيەت ياكى باشقا خاتالىق سەۋەبىدىن ئوقۇغىلى بولمىدى."
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+msgid "Open in Other Application…"
+msgstr "باشقا ئەپتە ئىچىش...."
 
-#: ../src/View/PropertiesWindow.vala:239 ../src/View/PropertiesWindow.vala:258
-msgid "unknown"
-msgstr "نامەلۇم"
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "بۇ مۇندەرىجىنى قايتا يۈكلەش"
 
-#: ../src/View/PropertiesWindow.vala:436
-msgid "Loading…"
-msgstr "يۈكلەۋاتىدۇ...."
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
+msgid "Enter search term or path"
+msgstr "ئىزدەيدىغان سۆزنى ياكى ئورنىنى كىرگۈزۈڭ"
 
-#: ../src/View/PropertiesWindow.vala:467
-msgid "Could not be determined"
-msgstr "جەزملەشتۈرگىلى بولمىدى"
+#: ../src/View/Widgets/OverlayBar.vala:230
+msgid "%u folders"
+msgstr "%u مۇندەرىجە"
 
-#: ../src/View/PropertiesWindow.vala:503
-msgid "Contains:"
-msgstr "ئۆز ئىچىگە ئالغىنى:"
+#: ../src/View/Widgets/OverlayBar.vala:232
+#: ../src/View/Widgets/OverlayBar.vala:240
+msgid " and %u other item (%s) selected"
+msgstr " ۋە  %u باشقا تۈر  (%s) تاللاندى"
 
-#: ../src/View/PropertiesWindow.vala:525
-msgid "Created:"
-msgstr "قۇرۇلغان ۋاقتى:"
+#: ../src/View/Widgets/OverlayBar.vala:233
+#: ../src/View/Widgets/OverlayBar.vala:241
+msgid " and %u other items (%s) selected"
+msgstr " ۋە  %u باشقا تۈر  (%s) تاللاندى"
 
-#: ../src/View/PropertiesWindow.vala:534
-msgid "Modified:"
-msgstr "ئۆزگەرتىلگەن ۋاقتى:"
+#: ../src/View/Widgets/OverlayBar.vala:236
+#: ../src/View/Widgets/OverlayBar.vala:244
+msgid " selected"
+msgstr " تاللاندى"
 
-#: ../src/View/PropertiesWindow.vala:545
-msgid "Deleted:"
-msgstr "ئۆچۈرۈلگەن ۋاقتى:"
-
-#: ../src/View/PropertiesWindow.vala:555
-msgid "Mimetype:"
-msgstr "ھۆججەت فورماتى:"
-
-#: ../src/View/PropertiesWindow.vala:562
-msgid "Resolution:"
-msgstr "ئىنىقلىقى:"
-
-#: ../src/View/PropertiesWindow.vala:580
-msgid "Target:"
-msgstr "نىشان:"
-
-#: ../src/View/PropertiesWindow.vala:588
-msgid "Original Location:"
-msgstr "ئەسلى ئورنى:"
-
-#: ../src/View/PropertiesWindow.vala:611
-msgid "Other Application…"
-msgstr "باشقا ئەپلەر...."
-
-#: ../src/View/PropertiesWindow.vala:631
-msgid "Open with:"
-msgstr "ئىچىش ئۇسۇلى:"
-
-#: ../src/View/PropertiesWindow.vala:890 ../src/View/PropertiesWindow.vala:900
-msgid "Owner:"
-msgstr "ئىگىسى:"
-
-#: ../src/View/PropertiesWindow.vala:894 ../src/View/PropertiesWindow.vala:903
-msgid "Group:"
-msgstr "گۇرۇپپا:"
-
-#: ../src/View/PropertiesWindow.vala:906
-msgid "Everyone:"
-msgstr "ھەربىر ئادەم:"
-
-#: ../src/View/PropertiesWindow.vala:1165
-msgid "%u subfolder"
-msgid_plural "%u subfolders"
+#: ../src/View/Widgets/OverlayBar.vala:238
+#: ../src/Dialogs/PropertiesWindow.vala:1162
+msgid "%u folder"
+msgid_plural "%u folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:1169
-#: ../src/View/PropertiesWindow.vala:1191
-msgid "%u file"
-msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+#: ../src/View/Widgets/OverlayBar.vala:246
+msgid "%u items selected (%s)"
+msgstr "%u تۈر تاللاندى (%s)"
 
-#. /TRANSLATORS: folders, files
-#: ../src/View/PropertiesWindow.vala:1174
-msgid "%s, %s"
-msgstr ""
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folder, "
+msgstr "%u بالا مۇندەرىجە، "
 
-#: ../src/View/PropertiesWindow.vala:1195
-msgid "%u selected item"
-msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folders, "
+msgstr "%u بالا مۇندەرىجە، "
 
-#. /TRANSLATORS: total (folders, files)
-#: ../src/View/PropertiesWindow.vala:1197
-msgid "%s (%s, %s)"
-msgstr ""
+#. / TRANSLATORS: %u will be substituted by the number of readable files
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u file, "
+msgstr "%u ھۆججەت، "
 
-#: ../src/View/ViewContainer.vala:353
-msgid "(as Administrator)"
-msgstr "(باشقۇرغۇچى سالاھىيىتىدە)"
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u files, "
+msgstr "%u ھۆججەت، "
 
-#: ../src/View/ViewContainer.vala:367
-msgid "You cannot create a folder here."
-msgstr "سىز بۇ يەردە مۇندەرىجە قۇرالمايسىز."
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: ../src/View/Widgets/OverlayBar.vala:303
+msgid "%s approx."
+msgstr "%s تەخمىنەن"
 
-#: ../src/View/ViewContainer.vala:369
-msgid "The network is unavailable"
-msgstr "بۇ تورنى ئىشلەتكىلى بولمايدۇ"
+#. / TRANSLATORS: 'size' refers to disk space
+#: ../src/View/Widgets/OverlayBar.vala:306
+msgid "unknown size"
+msgstr "چوڭلۇقى نامەلۇم"
 
-#: ../src/View/ViewContainer.vala:370
-msgid "A working network is needed to reach this folder"
-msgstr "تورغا ئۇلىغاندا ئاندىن بۇ ھۆججەتنى ئاچقىلى بولىدۇ"
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u file not readable"
+msgstr "%s ھۆججەت ئوقۇغىلى بولمايدىغان ھۆججەت"
 
-#: ../src/View/ViewContainer.vala:372
-msgid "This Folder Does Not Belong to You"
-msgstr "بۇ مۇندەرىجە سىزگە تەۋە ئەمەس"
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u files not readable"
+msgstr "%u ھۆججەت ئوقۇغىلى بولمايدىغان ھۆججەت"
 
-#: ../src/View/ViewContainer.vala:373
-msgid "You don't have permission to view this folder."
-msgstr "سىزنىڭ بۇ مۇندەرىجىنى كۆرۈش ھوقۇقىڭىز يوق."
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "ئوقۇش"
 
-#: ../src/View/ViewContainer.vala:375
-msgid "Unable to Mount Folder"
-msgstr "مۇندەرىجىگە ئۇلىغىلى بولمىدى"
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "يىزىش"
 
-#: ../src/View/ViewContainer.vala:376
-msgid "Could not connect to the server for this folder."
-msgstr "بۇ مۇندەرىجە ساقلانغان مۇلازىمېتىرغا ئۇلىغىلى بولمىدى."
-
-#: ../src/View/ViewContainer.vala:378
-msgid "Unable to Show Folder"
-msgstr "مۇندەرىجىنى كۆرسەتكىلى بولمىدى"
-
-#: ../src/View/ViewContainer.vala:379
-msgid "The server for this folder could not be located."
-msgstr "بۇ مۇندەرىجە ساقلانغان مۇلازىمېتىرنىڭ ئورنىنى بىكىتكىلى بولمىدى."
-
-#: ../src/View/ViewContainer.vala:389
-msgid "File not Found"
-msgstr "ھۆججەت تىپىلمىدى"
-
-#: ../src/View/ViewContainer.vala:390
-msgid "The file selected no longer exists."
-msgstr "تاللانغان ھۆججەت مەۋجۇت ئەمەس."
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "ئىجرا قىلىش"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2007,31 +1878,6 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit نى URI بىلەن بىللە ئىشلەتكىلى بولمايدۇ."
 
-#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
-msgid "There is nothing on the clipboard to paste"
-msgstr "چاپلاش تاختىسىدا چاپلىغىلى بولىدىغان ھىچنەرسە يوق"
-
-#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
-msgid "File Operations"
-msgstr "ھۆججەت مەشغۇلاتلىرى"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:190
-msgid "Completed %s"
-msgstr "تاماملانغىنى%s"
-
-#: ../src/ProgressUIHandler.vala:193
-msgid "All file operations have ended"
-msgstr "بارلىق ھۆججەت مەشغۇلاتلىرى ئاخىرلاشتى"
-
-#: ../src/ProgressUIHandler.vala:238
-msgid "Show Copy Dialog"
-msgstr "كۆچۈرۈش دىئالوگىنى كۆرسىتىش"
-
-#: ../src/ProgressUIHandler.vala:250
-msgid "Cancel All In-progress Actions"
-msgstr "ئىجرا بولۇۋاتقان بارلىق مەشغۇلاتنى ئەمەلدىن قالدۇرۇش"
-
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "ھۆججەتلىرىڭىزنى كۆرۈڭ"
@@ -2056,20 +1902,212 @@ msgstr "ھۆججەتلەر ھەققىدە"
 msgid "Files"
 msgstr "ھۆججەتلەر"
 
-#: ../libcore/FileUtils.vala:59
-msgid "Could not determine original location of \"%s\" "
-msgstr "«%s» نىڭ ئەسلى ئورنىنى بىكىتەلمىدى "
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "كۆپ خىل ھۆججەت تىپى تاللاندى"
 
-#: ../libcore/FileUtils.vala:60
-msgid "The item cannot be restored from trash"
-msgstr "بۇ تۈرنى ئەخلەت چېلىكىدىن ئەسلىگە كەلتۈرگىلى بولمىدى"
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "ھەممە ھۆججەت تىپلىرىنى يەككە بىرخىل ئەپ ئاچالمايدۇ"
 
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "ئىسمىنى '%s' غا ئۆزگەرتكىلى بولمىدى"
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "ھۆججەتنى ئىچىش مەغلۇپ بولدى"
 
-#: ../libcore/FileUtils.vala:464
-msgid "%A at %-I:%M %p"
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "تورئادىرىسىنى ئىچىش مەغلۇپ بولدى"
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "بۇ ئەپ بىلەن ھۆججەت ياكى تور ئادىرىسلىرىنى ئىچىش مەغلۇپ بولدى"
+
+#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
+msgid "File Operations"
+msgstr "ھۆججەت مەشغۇلاتلىرى"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:190
+msgid "Completed %s"
+msgstr "تاماملانغىنى%s"
+
+#: ../src/ProgressUIHandler.vala:193
+msgid "All file operations have ended"
+msgstr "بارلىق ھۆججەت مەشغۇلاتلىرى ئاخىرلاشتى"
+
+#: ../src/ProgressUIHandler.vala:238
+msgid "Show Copy Dialog"
+msgstr "كۆچۈرۈش دىئالوگىنى كۆرسىتىش"
+
+#: ../src/ProgressUIHandler.vala:250
+msgid "Cancel All In-progress Actions"
+msgstr "ئىجرا بولۇۋاتقان بارلىق مەشغۇلاتنى ئەمەلدىن قالدۇرۇش"
+
+#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
+msgid "There is nothing on the clipboard to paste"
+msgstr "چاپلاش تاختىسىدا چاپلىغىلى بولىدىغان ھىچنەرسە يوق"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "نورمالدىكىسى قىلىپ تەڭشەش"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "دىسكا خاسلىقلىرى"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "ئورنى:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "فورماتى:"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:49
+msgid "Info"
+msgstr "ئۇچۇر"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:58
+msgid "General"
+msgstr "ئادەتتىكى"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:77
+msgid "Close"
+msgstr "تاقاش"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:139
+msgid "Device Usage"
+msgstr "ئۈسكۈنىنىڭ ئىشلىتىلىشى"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:155
+msgid "Capacity:"
+msgstr "سۈزۈكلۈكى:"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:162
+#: ../src/Dialogs/PropertiesWindow.vala:416
+#: ../src/Dialogs/PropertiesWindow.vala:452
+msgid "Unknown"
+msgstr "نامەلۇم"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:158
+msgid "Available:"
+msgstr "ئىشلەتكىلى بولىدىغىنى:"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:161
+msgid "Used:"
+msgstr "ئىشلىتىلگىنى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:220
+msgid "Permissions"
+msgstr "سالاھىيەتلەر"
+
+#: ../src/Dialogs/PropertiesWindow.vala:241
+msgid "Actual Size Could Be Larger"
+msgstr "ئەمەلىي چوڭلۇقى چوڭراق بولىشى مۇمكىن"
+
+#: ../src/Dialogs/PropertiesWindow.vala:241
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] ""
+"%i ھۆججەتنى سالاھىيەت ياكى باشقا خاتالىق سەۋەبىدىن ئوقۇغىلى بولمىدى."
+
+#: ../src/Dialogs/PropertiesWindow.vala:260
+#: ../src/Dialogs/PropertiesWindow.vala:279
+msgid "unknown"
+msgstr "نامەلۇم"
+
+#: ../src/Dialogs/PropertiesWindow.vala:427
+msgid "Loading…"
+msgstr "يۈكلەۋاتىدۇ...."
+
+#: ../src/Dialogs/PropertiesWindow.vala:458
+msgid "Could not be determined"
+msgstr "جەزملەشتۈرگىلى بولمىدى"
+
+#: ../src/Dialogs/PropertiesWindow.vala:494
+msgid "Contains:"
+msgstr "ئۆز ئىچىگە ئالغىنى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:516
+msgid "Created:"
+msgstr "قۇرۇلغان ۋاقتى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:525
+msgid "Modified:"
+msgstr "ئۆزگەرتىلگەن ۋاقتى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:536
+msgid "Deleted:"
+msgstr "ئۆچۈرۈلگەن ۋاقتى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:546
+msgid "Mimetype:"
+msgstr "ھۆججەت فورماتى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:553
+msgid "Resolution:"
+msgstr "ئىنىقلىقى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:571
+msgid "Target:"
+msgstr "نىشان:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:579
+msgid "Original Location:"
+msgstr "ئەسلى ئورنى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:602
+msgid "Other Application…"
+msgstr "باشقا ئەپلەر...."
+
+#: ../src/Dialogs/PropertiesWindow.vala:622
+msgid "Open with:"
+msgstr "ئىچىش ئۇسۇلى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:864
+#: ../src/Dialogs/PropertiesWindow.vala:874
+msgid "Owner:"
+msgstr "ئىگىسى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:868
+#: ../src/Dialogs/PropertiesWindow.vala:877
+msgid "Group:"
+msgstr "گۇرۇپپا:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:880
+msgid "Everyone:"
+msgstr "ھەربىر ئادەم:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:1140
+msgid "%u subfolder"
+msgid_plural "%u subfolders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:1144
+#: ../src/Dialogs/PropertiesWindow.vala:1166
+msgid "%u file"
+msgid_plural "%u files"
+msgstr[0] ""
+msgstr[1] ""
+
+#. /TRANSLATORS: folders, files
+#: ../src/Dialogs/PropertiesWindow.vala:1149
+msgid "%s, %s"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:1170
+msgid "%u selected item"
+msgid_plural "%u selected items"
+msgstr[0] ""
+msgstr[1] ""
+
+#. /TRANSLATORS: total (folders, files)
+#: ../src/Dialogs/PropertiesWindow.vala:1172
+msgid "%s (%s, %s)"
 msgstr ""
 
 #: ../libcore/DndHandler.vala:45
@@ -2092,34 +2130,33 @@ msgstr "بۇ يەرگە ئۇلاش"
 msgid "Cancel"
 msgstr "ئەمەلدىن قالدۇرۇش"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "%s نى زىيارەت قىلىش"
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "«%s» نىڭ ئەسلى ئورنىنى بىكىتەلمىدى "
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:277
-msgid "Go to %s"
-msgstr "%s غا بىرىش"
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "بۇ تۈرنى ئەخلەت چېلىكىدىن ئەسلىگە كەلتۈرگىلى بولمىدى"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:281
-#: ../libwidgets/View/LocationBar.vala:184
-msgid "Enter search term or path"
-msgstr "ئىزدەيدىغان سۆزنى ياكى ئورنىنى كىرگۈزۈڭ"
+#: ../libcore/FileUtils.vala:343
+msgid "Could not rename to '%s'"
+msgstr "ئىسمىنى '%s' غا ئۆزگەرتكىلى بولمىدى"
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr "ئورنىنى كىرگۈزۈش"
+#: ../libcore/FileUtils.vala:464
+msgid "%A at %-I:%M %p"
+msgstr ""
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "كاتەكچە كۆرۈنۈشى"
+#: ../libwidgets/View/SearchResults.vala:178
+msgid "In This Folder"
+msgstr "بۇ مۇندەرىجىدە"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "تىزىملىك كۆرۈنۈشى"
+#: ../libwidgets/View/SearchResults.vala:180
+msgid "Bookmarks"
+msgstr "خەتكۈچلەر"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "تىك كۆرۈش"
+#: ../libwidgets/View/SearchResults.vala:182
+msgid "Everywhere Else"
+msgstr "باشقا يەردە"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2165,57 +2202,29 @@ msgstr "يىقىندىكىسى"
 msgid "MTP"
 msgstr "MTP"
 
-#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
-msgid "Set as default"
-msgstr "نورمالدىكىسى قىلىپ تەڭشەش"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "ئورنىنى كىرگۈزۈش"
 
-#: ../libwidgets/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr "كۆپ خىل ھۆججەت تىپى تاللاندى"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "كاتەكچە كۆرۈنۈشى"
 
-#: ../libwidgets/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr "ھەممە ھۆججەت تىپلىرىنى يەككە بىرخىل ئەپ ئاچالمايدۇ"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "تىزىملىك كۆرۈنۈشى"
 
-#: ../libwidgets/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr "ھۆججەتنى ئىچىش مەغلۇپ بولدى"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "تىك كۆرۈش"
 
-#: ../libwidgets/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "تورئادىرىسىنى ئىچىش مەغلۇپ بولدى"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "%s نى زىيارەت قىلىش"
 
-#: ../libwidgets/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr "بۇ ئەپ بىلەن ھۆججەت ياكى تور ئادىرىسلىرىنى ئىچىش مەغلۇپ بولدى"
-
-#: ../libwidgets/View/LocationBar.vala:181
-msgid "Reload this folder"
-msgstr "بۇ مۇندەرىجىنى قايتا يۈكلەش"
-
-#: ../libwidgets/View/SearchResults.vala:180
-msgid "In This Folder"
-msgstr "بۇ مۇندەرىجىدە"
-
-#: ../libwidgets/View/SearchResults.vala:182
-msgid "Bookmarks"
-msgstr "خەتكۈچلەر"
-
-#: ../libwidgets/View/SearchResults.vala:184
-msgid "Everywhere Else"
-msgstr "باشقا يەردە"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:412
-msgid "Open in New Tab"
-msgstr "يېڭى بەتكۈچتە ئىچىش"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:419
-msgid "Open in New Window"
-msgstr "يېڭى كۆزنەكتە ئىچىش"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:458
-msgid "Open in Other Application…"
-msgstr "باشقا ئەپتە ئىچىش...."
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
+msgid "Go to %s"
+msgstr "%s غا بىرىش"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
