@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-01-16 17:24-0600\n"
-"PO-Revision-Date: 2016-08-14 22:52+0000\n"
-"Last-Translator: notnoyyyyy <notnoyyyyy@gmail.com>\n"
+"PO-Revision-Date: 2017-01-17 15:53+0000\n"
+"Last-Translator: Panan <panan25444@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2017-01-17 06:47+0000\n"
+"X-Launchpad-Export-Date: 2017-01-18 05:41+0000\n"
 "X-Generator: Launchpad (build 18302)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -285,7 +285,7 @@ msgstr "แฟ้มขัดแย้งกัน"
 
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
 msgid "Inaccessible"
-msgstr ""
+msgstr "ไม่สามารถเข้าถึงได้"
 
 #: ../libcore/gof-file.c:379
 #, c-format
@@ -295,7 +295,7 @@ msgstr "เชื่อมโยงไปยัง %s"
 #: ../libcore/gof-file.c:1953
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "ไฟล์เดสก์ทอปไม่ถูกต้อง : %s"
+msgstr "แฟ้มเดสก์ทอปไม่ถูกต้อง : %s"
 
 #: ../libcore/gof-file.c:1990
 msgid "No Exec field specified"
@@ -509,14 +509,16 @@ msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"รายการทั้งหมดในทุกไดเรกทอรีถังขยะ รวมทั้งผู้ที่อยู่ในไดรฟ์ภายนอกใด ๆ "
+"ที่ติดตั้งจะถูกลบอย่างถาวร"
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "ลบรายการทั้งหมดออกจากถังขยะที่เมานต์นี้หรือไม่?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "รายการทั้งหมดในถังขยะที่เมานต์นี้จะถูกลบอย่างถาวร"
 
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
@@ -644,7 +646,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "ไม่สามารถย้ายแฟ้มไปที่ถังขยะ ลบมัน ?"
 
 #: ../libcore/marlin-file-operations.c:1961
 msgid ""
@@ -660,65 +662,64 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
-msgstr ""
+msgstr "กำลังย้ายแฟ้มลงถังขยะ"
 
 #: ../libcore/marlin-file-operations.c:2158
 msgid "Deleting Files"
-msgstr ""
+msgstr "กำลังลบแฟ้ม"
 
 #: ../libcore/marlin-file-operations.c:2227
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "ไม่สามารถดันแผ่น %V ออกได้"
 
 #: ../libcore/marlin-file-operations.c:2229
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "ไม่สามารถเลิกเมานต์ %V"
 
 #: ../libcore/marlin-file-operations.c:2408
 msgid "Do you want to empty the trash before you unmount?"
-msgstr ""
+msgstr "ต้องการเทขยะในถังขยะก่อนเลิกเมานต์หรือไม่?"
 
 #: ../libcore/marlin-file-operations.c:2410
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
+"เพื่อให้ได้เนื้อที่ว่างในโวลุมนี้เพิ่มเติม จะต้องเทขยะในถังขยะทิ้ง "
+"รายการต่างๆ ที่อยู่ในถังขยะทั้งหมดจะถูกลบทิ้งอย่างถาวร"
 
 #: ../libcore/marlin-file-operations.c:2416
 msgid "Do _not Empty Trash"
-msgstr ""
+msgstr "ไม่ต้องเทขยะ"
 
 #: ../libcore/marlin-file-operations.c:2530
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "ไม่สามารถเมานต์ %s"
 
 #: ../libcore/marlin-file-operations.c:2608
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "กำลังเตรียมการคัดลอก %'d ไฟล์ (%S)"
+msgstr[0] "กำลังเตรียมคัดลอกแฟ้ม %'d แฟ้ม (%S)"
 
 #: ../libcore/marlin-file-operations.c:2614
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "กำลังเตรียมย้ายแฟ้ม %'d แฟ้ม (%S)"
 
 #: ../libcore/marlin-file-operations.c:2620
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "กำลังเตรียมลบแฟ้ม %'d แฟ้ม (%S)"
 
 #: ../libcore/marlin-file-operations.c:2626
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "กำลังเตรียมย้ายแฟ้มลงถังขยะ %'d แฟ้ม"
 
 #: ../libcore/marlin-file-operations.c:2669
 #: ../libcore/marlin-file-operations.c:3587
@@ -731,33 +732,34 @@ msgstr "เกิดข้อผิดพลาดระหว่างคัด
 #: ../libcore/marlin-file-operations.c:3717
 #: ../libcore/marlin-file-operations.c:3762
 msgid "Error while moving."
-msgstr ""
+msgstr "เกิดข้อผิดพลาดขณะย้าย"
 
 #: ../libcore/marlin-file-operations.c:2675
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "เกิดข้อผิดพลาดขณะย้ายแฟ้มลงถังขยะ"
 
 #: ../libcore/marlin-file-operations.c:2729
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
+"จัดการแฟ้มในโฟลเดอร์ \"%B\" ไม่ได้ เพราะคุณไม่มีสิทธิ์มองเห็นแฟ้มเหล่านี้"
 
 #: ../libcore/marlin-file-operations.c:2768
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "จัดการโฟลเดอร์ \"%B\" ไม่ได้ เพราะคุณไม่มีสิทธิ์อ่านโฟลเดอร์นี้"
 
 #: ../libcore/marlin-file-operations.c:2844
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "จัดการแฟ้ม \"%B\" ไม่ได้ เพราะคุณไม่มีสิทธิ์อ่านแฟ้มนี้"
 
 #: ../libcore/marlin-file-operations.c:2847
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "เกิดข้อผิดพลาดขณะอ่านข้อมูลเกี่ยวกับ \"%B\""
 
 #: ../libcore/marlin-file-operations.c:2947
 #: ../libcore/marlin-file-operations.c:2989
@@ -768,7 +770,7 @@ msgstr "เกิดข้อผิดพลาดระหว่างคัด
 
 #: ../libcore/marlin-file-operations.c:2951
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "คุณไม่มีสิทธิ์ที่จะเข้าใช้โฟลเดอร์ปลายทาง"
 
 #: ../libcore/marlin-file-operations.c:2953
 msgid "There was an error getting information about the destination."
@@ -1504,7 +1506,7 @@ msgstr ""
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:93
 msgid "File System"
-msgstr "ระบบไฟล์"
+msgstr "ระบบแฟ้ม"
 
 #: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
@@ -1552,11 +1554,11 @@ msgstr ""
 
 #: ../src/View/Sidebar.vala:1484
 msgid "_Mount"
-msgstr ""
+msgstr "_เมานต์"
 
 #: ../src/View/Sidebar.vala:1490
 msgid "_Unmount"
-msgstr ""
+msgstr "_เลิกเมานต์"
 
 #: ../src/View/Sidebar.vala:1496
 msgid "_Eject"
@@ -1706,7 +1708,7 @@ msgstr "คุณไม่มีสิทธิ์ในการเข้าถ
 
 #: ../src/View/ViewContainer.vala:380
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "ไม่สามารถเมานต์โฟล์เดอร์"
 
 #: ../src/View/ViewContainer.vala:381
 msgid "Could not connect to the server for this folder."
@@ -1901,7 +1903,7 @@ msgstr ""
 
 #: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
 msgid "Files"
-msgstr "ไฟล์"
+msgstr "แฟ้ม"
 
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
@@ -2161,7 +2163,7 @@ msgstr ""
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
-msgstr "ตัวจัดการไฟล์ที่ใช้ง่ายและทรงพลัง"
+msgstr "ตัวจัดการแฟ้มที่ใช้ง่ายและทรงพลัง"
 
 #: ../libwidgets/Resources.vala:50
 msgid "translator-credits"
@@ -2173,6 +2175,7 @@ msgstr ""
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Jirayu Yingthawornsuk https://launchpad.net/~jirayu\n"
 "  Khwunchai J. https://launchpad.net/~jamiiz\n"
+"  Panan https://launchpad.net/~panan25444\n"
 "  Rockworld https://launchpad.net/~rockrock2222222\n"
 "  notnoyyyyy https://launchpad.net/~notnoyyyyy"
 
