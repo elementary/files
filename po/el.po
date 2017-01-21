@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-01-16 17:24-0600\n"
-"PO-Revision-Date: 2017-01-17 10:03+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2017-01-19 16:08+0000\n"
+"Last-Translator: PliachasPaschalis <pliahas@otenet.gr>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-18 05:41+0000\n"
+"X-Launchpad-Export-Date: 2017-01-21 06:42+0000\n"
 "X-Generator: Launchpad (build 18302)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -997,7 +997,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4594
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Αδύνατη η αντιγραφή του \"%Β\" εδώ."
 
 #: ../libcore/marlin-file-operations.c:4595
 msgid "There was an error copying the file into %B."
@@ -1104,7 +1104,7 @@ msgstr "Άδειασμα απορριμμάτων"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Η αρχική τοποθεσία δεν μπορεί να καθορισθεί"
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
@@ -1545,7 +1545,7 @@ msgstr "Άνοιγμα του προσωπικού σας φακέλου"
 
 #: ../src/View/Sidebar.vala:516
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Δείτε τη λίστα με τα αρχεία που χρησιμοποιήθηκαν πρόσφατα"
 
 #: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
 msgid "Trash"
@@ -1674,7 +1674,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:550
 msgid "Failed to preview"
-msgstr ""
+msgstr "Αποτυχία προεπισκόπησης"
 
 #: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
@@ -1706,7 +1706,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2025
 msgid "Open in"
-msgstr ""
+msgstr "Άνοιγμα σε"
 
 #: ../src/View/AbstractDirectoryView.vala:2027
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:452
@@ -1715,7 +1715,7 @@ msgstr "Άνοιγμα με"
 
 #: ../src/View/AbstractDirectoryView.vala:2087
 msgid "Other Application"
-msgstr ""
+msgstr "Άλλη εφαρμογή"
 
 #: ../src/View/AbstractDirectoryView.vala:2348
 msgid "Untitled %s"
@@ -1738,7 +1738,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2820
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Αποκοπή της επιλογής πάραυτα"
 
 #: ../src/View/AbstractDirectoryView.vala:2840
 msgid "Cannot paste files here"

@@ -1,16 +1,16 @@
-# Finnish translation for pantheon-files
-# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# Ido translation for pantheon-files
+# Copyright (c) 2017 Rosetta Contributors and Canonical Ltd 2017
 # This file is distributed under the same license as the pantheon-files package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-01-16 17:24-0600\n"
-"PO-Revision-Date: 2017-01-21 06:22+0000\n"
-"Last-Translator: Jiri Grönroos <Unknown>\n"
-"Language-Team: Finnish <fi@li.org>\n"
+"PO-Revision-Date: 2017-01-19 12:53+0000\n"
+"Last-Translator: William <Unknown>\n"
+"Language-Team: Ido <io@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,10 +18,10 @@ msgstr ""
 "X-Generator: Launchpad (build 18302)\n"
 
 msgid "Files"
-msgstr "Tiedostot"
+msgstr "Faili"
 
 msgid "Browse and manage files and folders"
-msgstr "Selaa ja hallitse tiedostoja sekä kansioita"
+msgstr "Navigar e direktar faili e direktorii"
 
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
@@ -29,37 +29,33 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
-"Kopioi, siirrä ja nimeä uudelleen tiedostoja. Hallitse kansioita ja pysy "
-"järjestelmällisenä. Katsele tiedostoja luettelo-, ruudukko- tai "
-"kolumninäkymässä. Käytä tiedostoja paikallisesti tai etänä FTP:n, SFTP:n, "
-"AFP:n, WebDAV:in tai Windows-jakojen kautta."
 
 msgid "Fix appdata release dates"
-msgstr "Korjattu appdata-julkaisupäivät"
+msgstr ""
 
 msgid "Improve file opening over Samba shares"
-msgstr "Parannettu tiedostojen avaamista Samba-jaoista"
+msgstr ""
 
 msgid "Fix a crash when restoring items from the Trash"
-msgstr "Korjattu kaatuminen kohteita palauttaessa roskakorista"
+msgstr ""
 
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Parannettu leikkaa/kopioi/liitä-herkkyyttä kontekstivalikossa"
+msgstr ""
 
 msgid "Translation updates"
-msgstr "Päivityksiä kielikäännöksiin"
+msgstr ""
 
 msgid "Minor bug fixes"
-msgstr "Muita pieniä korjauksia"
+msgstr ""
 
 msgid "Merge search functionality into Ctrl+F"
-msgstr "Yhdistä hakutoiminto Ctrl+F-näppäinyhdistelmään"
+msgstr ""
 
 msgid "Improved translation support"
-msgstr "Paranneltu tuki kielikäännöksille"
+msgstr ""
 
 msgid "Various crash fixes"
-msgstr "Useita korjauksia kaatumisen aiheuttamiin virheisiin"
+msgstr ""
 
 msgid "New translations"
-msgstr "Uusia kielikäännöksiä"
+msgstr "Nova tradukuri"
