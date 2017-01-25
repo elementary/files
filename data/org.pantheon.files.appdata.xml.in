@@ -18,6 +18,16 @@
     <binary>pantheon-files-pkexec</binary>
   </provides>
   <releases>
+    <release version="0.3.1.1" date="2017-01-25" urgency="medium">
+      <description>
+        <ul>
+          <_li>Enable drag and drop tabs between windows</_li>
+          <_li>Various crash fixes</_li>
+          <_li>New translations</_li>
+          <_li>Minor bug fixes</_li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.1" date="2017-01-16" urgency="medium">
       <description>
         <ul>
