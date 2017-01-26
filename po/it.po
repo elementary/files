@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-16 17:24-0600\n"
-"PO-Revision-Date: 2016-11-19 22:30+0000\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2017-01-25 13:13+0000\n"
 "Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-17 06:44+0000\n"
-"X-Generator: Launchpad (build 18302)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:10+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -56,17 +56,17 @@ msgid ""
 "Please check your gvfs installation."
 msgstr ""
 "Impossibile caricare l'elenco dei metodi per i server supportati.\n"
-"Controllare l'installazione di gvfs."
+"Controlla l'installazione di gvfs."
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Impossibile aprire la cartella «%s» su «%s»."
+msgstr "Impossibile aprire la cartella \"%s\" su \"%s\"."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Impossibile trovare il server presso «%s»."
+msgstr "Impossibile trovare il server presso \"%s\"."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
@@ -74,7 +74,7 @@ msgstr "Riprova"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "Verificare i propri dettagli utente."
+msgstr "Verifica i tuoi dettagli utente."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -91,7 +91,7 @@ msgstr "Connetti al server"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr "Dettagli server"
+msgstr "Dettagli del server"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
@@ -141,7 +141,7 @@ msgstr "Operazione annullata"
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Unire la cartella «%s»?"
+msgstr "Unire la cartella \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:375
@@ -150,49 +150,51 @@ msgid ""
 "that conflict with the files being copied."
 msgstr ""
 "Unendola, verrà chiesta conferma prima di sostituire ogni file nella "
-"cartella che va in conflitto con quelli che stanno per essere copiati."
+"cartella che è in conflitto con quelli che stanno per essere copiati."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "In «%s» è già presente una cartella più vecchia con lo stesso nome."
+msgstr ""
+"In \"%s\" è già presente una cartella più vecchia con lo stesso nome."
 
 #: ../libcore/marlin-file-conflict-dialog.c:158
 #: ../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "In «%s» è già presente una cartella più nuova con lo stesso nome."
+msgstr ""
+"In \"%s\" è già presente una cartella più recente con lo stesso nome."
 
 #: ../libcore/marlin-file-conflict-dialog.c:162
 #: ../libcore/marlin-file-conflict-dialog.c:388
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "In «%s» è già presente un'altra cartella con lo stesso nome."
+msgstr "In \"%s\" è già presente un'altra cartella con lo stesso nome."
 
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will remove all files in the folder."
 msgstr ""
-"Sostituendola, verranno rimossi tutti i file contenuti nella cartella."
+"Sostituendola, verranno eliminati tutti i file contenuti nella cartella."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Sostituire la cartella «%s»?"
+msgstr "Sostituire la cartella \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
 #: ../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "In «%s» è già presente una cartella con lo stesso nome."
+msgstr "In \"%s\" è già presente una cartella con lo stesso nome."
 
 #: ../libcore/marlin-file-conflict-dialog.c:176
 #: ../libcore/marlin-file-conflict-dialog.c:402
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "Sostituire il file «%s»?"
+msgstr "Sostituire il file \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
@@ -203,19 +205,19 @@ msgstr "Sostituendolo il suo contenuto verrà sovrascritto."
 #: ../libcore/marlin-file-conflict-dialog.c:408
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "In «%s» è già presente un file più vecchio con lo stesso nome."
+msgstr "In \"%s\" è già presente un file più vecchio con lo stesso nome."
 
 #: ../libcore/marlin-file-conflict-dialog.c:186
 #: ../libcore/marlin-file-conflict-dialog.c:412
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "In «%s» è già presente un file più nuovo con lo stesso nome."
+msgstr "In \"%s\" è già presente un file più recente con lo stesso nome."
 
 #: ../libcore/marlin-file-conflict-dialog.c:190
 #: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "In «%s» è già presente un altro file con lo stesso nome."
+msgstr "In \"%s\" è già presente un altro file con lo stesso nome."
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:471
@@ -228,7 +230,7 @@ msgstr "File originale"
 #: ../libcore/marlin-file-conflict-dialog.c:493
 #: ../src/Dialogs/PropertiesWindow.vala:484
 msgid "Size:"
-msgstr "Dimensioni:"
+msgstr "Dimensione:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:256
 #: ../libcore/marlin-file-conflict-dialog.c:287
@@ -286,7 +288,7 @@ msgstr "Conflitto tra file"
 
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
 msgid "Inaccessible"
-msgstr ""
+msgstr "Non accessibile"
 
 #: ../libcore/gof-file.c:379
 #, c-format
@@ -488,7 +490,7 @@ msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1384
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Eliminare permanentemente «%B» dal cestino?"
+msgstr "Eliminare permanentemente \"%B\" dal cestino?"
 
 #: ../libcore/marlin-file-operations.c:1387
 #, c-format
@@ -504,7 +506,7 @@ msgstr[1] "Eliminare permanentemente i %'d elementi selezionati dal cestino?"
 #: ../libcore/marlin-file-operations.c:1397
 #: ../libcore/marlin-file-operations.c:1477
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Se si elimina un elemento, questo è perduto per sempre."
+msgstr "Se elimini un elemento, questo sarà perduto per sempre."
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
@@ -530,18 +532,19 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
 msgid "Empty _Trash"
-msgstr "Svuota cestino"
+msgstr "Svuota _cestino"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Eliminare permanentemente «%B»?"
+msgstr "Sei sicuro di voler eliminare permanentemente \"%B\"?"
 
 #: ../libcore/marlin-file-operations.c:1468
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Eliminare permanentemente l'elemento selezionato?"
+msgstr[0] ""
+"Sei sicuro di voler eliminare permanentemente l'elemento selezionato?"
 msgstr[1] "Eliminare permanentemente i %'d elementi selezionati?"
 
 #: ../libcore/marlin-file-operations.c:1493
@@ -577,7 +580,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Non è possibile eliminare i file nella cartella «%B» perché non si hanno "
+"Non è possibile eliminare i file nella cartella \"%B\" perché non si hanno "
 "permessi sufficienti per visualizzarli."
 
 #: ../libcore/marlin-file-operations.c:1613
@@ -587,7 +590,7 @@ msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "Si è verificato un errore nell'ottenere informazioni sui file nella cartella "
-"«%B»."
+"\"%B\"."
 
 #: ../libcore/marlin-file-operations.c:1622
 #: ../libcore/marlin-file-operations.c:3736
@@ -599,22 +602,22 @@ msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"Non è possibile eliminare la cartella «%B» perché non si hanno permessi "
+"Non è possibile eliminare la cartella \"%B\" perché non si hanno permessi "
 "sufficienti per leggerla."
 
 #: ../libcore/marlin-file-operations.c:1646
 #: ../libcore/marlin-file-operations.c:2771
 #: ../libcore/marlin-file-operations.c:3772
 msgid "There was an error reading the folder \"%B\"."
-msgstr "Si è verificato un errore nel leggere la cartella «%B»."
+msgstr "Si è verificato un errore nel leggere la cartella \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:1680
 msgid "Could not remove the folder %B."
-msgstr "Impossibile rimuovere la cartella «%B»."
+msgstr "Impossibile rimuovere la cartella %B."
 
 #: ../libcore/marlin-file-operations.c:1757
 msgid "There was an error deleting %B."
-msgstr "Si è verificato un errore nell'eliminare «%B»."
+msgstr "Si è verificato un errore nell'eliminare %B."
 
 #: ../libcore/marlin-file-operations.c:1837
 #: ../libcore/marlin-file-operations.c:1849
@@ -647,7 +650,7 @@ msgid ""
 "not have write privileges."
 msgstr ""
 "Non è consentito spostare nel cestino o eliminare i file all'interno di "
-"cartelle per le quali non si dispone di privilegi di scrittura."
+"cartelle per le quali non si dispone dei privilegi di scrittura."
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid ""
@@ -655,7 +658,7 @@ msgid ""
 "write privileges."
 msgstr ""
 "Non è consentito spostare nel cestino o eliminare le cartelle per le quali "
-"non si dispone di privilegi di scrittura."
+"non si dispone dei privilegi di scrittura."
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -701,11 +704,11 @@ msgstr "Eliminazione dei file"
 
 #: ../libcore/marlin-file-operations.c:2227
 msgid "Unable to eject %V"
-msgstr "Impossibile espellere «%V»"
+msgstr "Impossibile espellere %V"
 
 #: ../libcore/marlin-file-operations.c:2229
 msgid "Unable to unmount %V"
-msgstr "Impossibile smontare «%V»"
+msgstr "Impossibile smontare %V"
 
 #: ../libcore/marlin-file-operations.c:2408
 msgid "Do you want to empty the trash before you unmount?"
@@ -722,12 +725,12 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2416
 msgid "Do _not Empty Trash"
-msgstr "Non svuotare il cestino"
+msgstr "_Non svuotare il cestino"
 
 #: ../libcore/marlin-file-operations.c:2530
 #, c-format
 msgid "Unable to mount %s"
-msgstr "Impossibile montare «%s»"
+msgstr "Impossibile montare %s"
 
 #: ../libcore/marlin-file-operations.c:2608
 #, c-format
@@ -779,7 +782,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Non è possibile gestire i file nella cartella «%B» perché non si hanno "
+"Non è possibile gestire i file nella cartella \"%B\" perché non si hanno "
 "permessi sufficienti per visualizzarli."
 
 #: ../libcore/marlin-file-operations.c:2768
@@ -787,7 +790,7 @@ msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Non è possibile gestire la cartella «%B» perché non si hanno permessi "
+"Non è possibile gestire la cartella \"%B\" perché non si hanno permessi "
 "sufficienti per leggerla."
 
 #: ../libcore/marlin-file-operations.c:2844
@@ -795,23 +798,24 @@ msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Non è possibile gestire il file «%B» perché non si hanno permessi "
+"Non è possibile gestire il file \"%B\" perché non si hanno permessi "
 "sufficienti per leggerlo."
 
 #: ../libcore/marlin-file-operations.c:2847
 msgid "There was an error getting information about \"%B\"."
-msgstr "Si è verificato un errore nell'ottenere informazioni su «%B»."
+msgstr "Si è verificato un errore nell'ottenere informazioni su \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:2947
 #: ../libcore/marlin-file-operations.c:2989
 #: ../libcore/marlin-file-operations.c:3022
 #: ../libcore/marlin-file-operations.c:3052
 msgid "Error while copying to \"%B\"."
-msgstr "Errore durante la copia in «%B»."
+msgstr "Errore durante la copia in \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:2951
 msgid "You do not have permissions to access the destination folder."
-msgstr "Permessi non sufficienti per accedere alla cartella di destinazione."
+msgstr ""
+"Non hai permessi sufficienti per accedere alla cartella di destinazione."
 
 #: ../libcore/marlin-file-operations.c:2953
 msgid "There was an error getting information about the destination."
@@ -841,45 +845,45 @@ msgstr "La destinazione è in sola lettura."
 
 #: ../libcore/marlin-file-operations.c:3114
 msgid "Moving \"%B\" to \"%B\""
-msgstr "Spostamento di «%B» in «%B»"
+msgstr "Spostamento di \"%B\" in \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3115
 msgid "Copying \"%B\" to \"%B\""
-msgstr "Copia di «%B» in «%B»."
+msgstr "Copia di \"%B\" in \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3119
 msgid "Duplicating \"%B\""
-msgstr "Duplicazione di «%B»"
+msgstr "Duplicazione di \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3123
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Spostamento di %'d file (da «%B») in «%B»"
-msgstr[1] "Spostamento di %'d file (da «%B») in «%B»"
+msgstr[0] "Spostamento di %'d file (da \"%B\") in \"%B\""
+msgstr[1] "Spostamento di %'d file (da \"%B\") in \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3126
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Copia di %'d file (da «%B») in «%B»"
-msgstr[1] "Copia di %'d file (da «%B») in «%B»"
+msgstr[0] "Copia di %'d file (da \"%B\") in \"%B\""
+msgstr[1] "Copia di %'d file (da \"%B\") in \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3133
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Duplicazione di %'d file (da «%B»)"
-msgstr[1] "Duplicazione di %'d file (da «%B»)"
+msgstr[0] "Duplicazione di %'d file (da \"%B\")"
+msgstr[1] "Duplicazione di %'d file (da \"%B\")"
 
 #: ../libcore/marlin-file-operations.c:3142
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Spostamento di %'d file in «%B»"
-msgstr[1] "Spostamento di %'d file in «%B»"
+msgstr[0] "Spostamento di %'d file in \"%B\""
+msgstr[1] "Spostamento di %'d file in \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3146
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "Copia di %'d file in «%B»"
-msgstr[1] "Copia di %'d file in «%B»"
+msgstr[0] "Copia di %'d file in \"%B\""
+msgstr[1] "Copia di %'d file in \"%B\""
 
 #: ../libcore/marlin-file-operations.c:3151
 #, c-format
@@ -908,19 +912,19 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Non è possibile copiare la cartella «%B» perché non si hanno permessi "
+"Non è possibile copiare la cartella \"%B\" perché non si hanno permessi "
 "sufficienti per crearla nella destinazione."
 
 #: ../libcore/marlin-file-operations.c:3594
 msgid "There was an error creating the folder \"%B\"."
-msgstr "Si è verificato un errore nel creare la cartella «%B»."
+msgstr "Si è verificato un errore nel creare la cartella \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:3724
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Non è possibile copiare i file nella cartella «%B» perché non si hanno "
+"Non è possibile copiare i file nella cartella \"%B\" perché non si hanno "
 "permessi sufficienti per leggerli."
 
 #: ../libcore/marlin-file-operations.c:3769
@@ -928,13 +932,13 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"Non è possibile copiare la cartella «%B» perché non si hanno permessi "
+"Non è possibile copiare la cartella \"%B\" perché non si hanno permessi "
 "sufficienti per leggerla."
 
 #: ../libcore/marlin-file-operations.c:3814
 #: ../libcore/marlin-file-operations.c:4520
 msgid "Error while moving \"%B\"."
-msgstr "Errore durante lo spostamento di «%B»."
+msgstr "Errore durante lo spostamento di \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:3815
 msgid "Could not remove the source folder."
@@ -944,7 +948,7 @@ msgstr "Non è possibile rimovere la cartella d'origine."
 #: ../libcore/marlin-file-operations.c:3941
 #: ../libcore/marlin-file-operations.c:4522
 msgid "Error while copying \"%B\"."
-msgstr "Errore durante la copia di «%B»."
+msgstr "Errore durante la copia di \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:3901
 #, c-format
@@ -1003,7 +1007,7 @@ msgstr "Copia dei file"
 
 #: ../libcore/marlin-file-operations.c:4848
 msgid "Preparing to move to \"%B\""
-msgstr "Preparazione allo spostamento in «%B»"
+msgstr "Preparazione allo spostamento in \"%B\""
 
 #: ../libcore/marlin-file-operations.c:4860
 #, c-format
@@ -1029,7 +1033,7 @@ msgstr "Spostamento dei file"
 
 #: ../libcore/marlin-file-operations.c:5400
 msgid "Creating links in \"%B\""
-msgstr "Creazione dei collegamenti in «%B»"
+msgstr "Creazione dei collegamenti in \"%B\""
 
 #: ../libcore/marlin-file-operations.c:5411
 #, c-format
@@ -1078,11 +1082,11 @@ msgstr "nuovo file"
 
 #: ../libcore/marlin-file-operations.c:6324
 msgid "Error while creating directory %B."
-msgstr "Errore durante la creazione della cartella «%B»."
+msgstr "Errore durante la creazione della cartella \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:6326
 msgid "Error while creating file %B."
-msgstr "Errore durante la creazione del file «%B»."
+msgstr "Errore durante la creazione del file \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:6328
 #, c-format
@@ -1115,7 +1119,7 @@ msgstr "Elimina %d elementi copiati"
 #: ../libcore/marlin-undostack-manager.c:1269
 #, c-format
 msgid "Delete '%s'"
-msgstr "Elimina «%s»"
+msgstr "Elimina '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1235
 #, c-format
@@ -1125,18 +1129,18 @@ msgstr "Elimina %d elementi copiati"
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Sposta %d elementi nuovamente in «%s»"
+msgstr "Sposta %d elementi nuovamente in '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr "Sposta nuovamente «%s» in «%s»"
+msgstr "Sposta nuovamente '%s' in '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1259
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "Rinomina «%s» come «%s»"
+msgstr "Rinomina '%s' come '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1278
 #: ../libcore/marlin-undostack-manager.c:1473
@@ -1147,7 +1151,7 @@ msgstr "Ripristina %d elementi dal cestino"
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr "Ripristina «%s» su «%s»"
+msgstr "Ripristina '%s' su '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
@@ -1157,7 +1161,7 @@ msgstr "Sposta %d oggetti nuovamente nel cestino"
 #: ../libcore/marlin-undostack-manager.c:1300
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "Sposta nuovamente «%s» nel cestino"
+msgstr "Sposta nuovamente '%s' nel cestino"
 
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
@@ -1167,72 +1171,72 @@ msgstr "Elimina i collegamenti ai %d oggetti"
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
 msgid "Delete link to '%s'"
-msgstr "Elimina il collegamento a «%s»"
+msgstr "Elimina il collegamento a '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Ripristina i permessi originali degli oggetti presenti in «%s»"
+msgstr "Ripristina i permessi originali degli oggetti presenti in '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1330
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr "Ripristina i permessi originali di «%s»"
+msgstr "Ripristina i permessi originali di '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1339
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "Ripristina il gruppo di «%s» a «%s»"
+msgstr "Ripristina il gruppo di '%s' a '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1349
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr "Ripristina il proprietario di «%s» a «%s»"
+msgstr "Ripristina il proprietario di '%s' a '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr "Copia %d elementi in «%s»"
+msgstr "Copia %d elementi in '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr "Copia «%s» in «%s»"
+msgstr "Copia '%s' in '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1400
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "Duplica %d elementi in «%s»"
+msgstr "Duplica %d elementi in '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1405
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr "Duplica «%s» in «%s»"
+msgstr "Duplica '%s' in '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1413
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr "Sposta %d elementi in «%s»"
+msgstr "Sposta %d elementi in '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr "Sposta «%s» in «%s»"
+msgstr "Sposta '%s' in '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1435
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr "Crea il nuovo file «%s» dal modello "
+msgstr "Crea il nuovo file '%s' dal modello "
 
 #: ../libcore/marlin-undostack-manager.c:1442
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr "Crea un file vuoto «%s»"
+msgstr "Crea un file vuoto '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1449
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr "Crea una nuova cartella «%s»"
+msgstr "Crea una nuova cartella '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1457
 #, c-format
@@ -1242,12 +1246,12 @@ msgstr "Sposta %d oggetti nel cestino"
 #: ../libcore/marlin-undostack-manager.c:1463
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "Sposta «%s» nel cestino"
+msgstr "Sposta '%s' nel cestino"
 
 #: ../libcore/marlin-undostack-manager.c:1476
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr "Ripristina «%s» dal cestino"
+msgstr "Ripristina '%s' dal cestino"
 
 #: ../libcore/marlin-undostack-manager.c:1485
 #, c-format
@@ -1257,27 +1261,27 @@ msgstr "Crea collegamenti a %d elementi"
 #: ../libcore/marlin-undostack-manager.c:1488
 #, c-format
 msgid "Create link to '%s'"
-msgstr "Crea collegamento a «%s»"
+msgstr "Crea collegamento a '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1497
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "Imposta i permessi degli elementi presenti in «%s»"
+msgstr "Imposta i permessi degli elementi presenti in '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1505
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr "Imposta i permessi di «%s»"
+msgstr "Imposta i permessi di '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1514
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr "Imposta il gruppo di «%s» a «%s»"
+msgstr "Imposta il gruppo di '%s' a '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1524
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr "Imposta il proprietario di «%s» a «%s»"
+msgstr "Imposta il proprietario di '%s' a '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1556
 #, c-format
@@ -1477,11 +1481,11 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Ripeti modifica proprietario di %d elemento"
 msgstr[1] "Ripeti modifica proprietario di %d elementi"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
 msgid "Today at %-I:%M %p"
 msgstr "Oggi alle %-I:%M %p"
 
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
 msgid "Yesterday at %-I:%M %p"
 msgstr "Ieri alle %-I:%M %p"
 
@@ -1508,15 +1512,15 @@ msgstr "Precedente"
 msgid "Next"
 msgstr "Successivo"
 
-#: ../src/View/Window.vala:206
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
 msgstr "Files non è il tuo gestore file predefinito."
 
-#: ../src/View/Window.vala:212
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
 msgstr "Imposta come predefinito"
 
-#: ../src/View/Window.vala:218
+#: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "Ignora"
 
@@ -1584,7 +1588,7 @@ msgstr "(%s disponibile di %s)"
 
 #: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
-msgstr "Impossibile avviare «%s»"
+msgstr "Impossibile avviare %s"
 
 #: ../src/View/Sidebar.vala:1445
 msgid "Open"
@@ -2196,17 +2200,17 @@ msgstr "Annulla"
 
 #: ../libcore/FileUtils.vala:59
 msgid "Could not determine original location of \"%s\" "
-msgstr "Non è possibile determinare la posizione originale di «%s». "
+msgstr "Non è possibile determinare la posizione originale di \"%s\". "
 
 #: ../libcore/FileUtils.vala:60
 msgid "The item cannot be restored from trash"
 msgstr "Non è possibile ripristinare l'elemento dal cestino"
 
-#: ../libcore/FileUtils.vala:343
+#: ../libcore/FileUtils.vala:342
 msgid "Could not rename to '%s'"
 msgstr "Impossibile rinominare in '%s'"
 
-#: ../libcore/FileUtils.vala:464
+#: ../libcore/FileUtils.vala:463
 msgid "%A at %-I:%M %p"
 msgstr ""
 

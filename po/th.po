@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-16 17:24-0600\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
 "PO-Revision-Date: 2017-01-18 07:57+0000\n"
 "Last-Translator: Panan <panan25444@gmail.com>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2017-01-19 05:54+0000\n"
-"X-Generator: Launchpad (build 18302)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:13+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1423,11 +1423,11 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
 msgid "Today at %-I:%M %p"
 msgstr ""
 
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
 msgid "Yesterday at %-I:%M %p"
 msgstr ""
 
@@ -1454,15 +1454,15 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: ../src/View/Window.vala:206
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
 msgstr "Files ไม่ได้เป็นตัวจัดการไฟล์หลักของคุณ"
 
-#: ../src/View/Window.vala:212
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
 msgstr ""
 
-#: ../src/View/Window.vala:218
+#: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "ไม่สนใจ"
 
@@ -2141,11 +2141,11 @@ msgstr "ไม่สามารถระบุตำแหน่งเดิม
 msgid "The item cannot be restored from trash"
 msgstr "ไม่สามารถกู้รายการนี้คืนจากถังขยะได้"
 
-#: ../libcore/FileUtils.vala:343
+#: ../libcore/FileUtils.vala:342
 msgid "Could not rename to '%s'"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:464
+#: ../libcore/FileUtils.vala:463
 msgid "%A at %-I:%M %p"
 msgstr ""
 

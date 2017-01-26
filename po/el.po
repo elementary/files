@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-16 17:24-0600\n"
-"PO-Revision-Date: 2017-01-19 16:08+0000\n"
-"Last-Translator: PliachasPaschalis <pliahas@otenet.gr>\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2017-01-25 23:06+0000\n"
+"Last-Translator: Theodore Grammenos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-21 06:42+0000\n"
-"X-Generator: Launchpad (build 18302)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:09+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1483,11 +1483,11 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Επανάληψη αλλαγής ιδιοκτήτη του %d αντικειμένου"
 msgstr[1] "Επανάληψη αλλαγής ιδιοκτήτη των %d αντικειμένων"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
 msgid "Today at %-I:%M %p"
 msgstr "Σήμερα στις %-I:%M %p"
 
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
 msgid "Yesterday at %-I:%M %p"
 msgstr "Χθες στις %-I:%M %p"
 
@@ -1514,16 +1514,16 @@ msgstr "Προηγούμενο"
 msgid "Next"
 msgstr "Επόμενο"
 
-#: ../src/View/Window.vala:206
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
 msgstr ""
 "Η εφαρμογή Αρχεία δεν είναι ο προεπιλεγμένος διαχειριστής αρχείων σας."
 
-#: ../src/View/Window.vala:212
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
 msgstr "Ορισμός ως Προεπιλογή"
 
-#: ../src/View/Window.vala:218
+#: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "Παράβλεψη"
 
@@ -1698,11 +1698,11 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2010
 msgid "Run"
-msgstr ""
+msgstr "Εκτέλεση"
 
 #: ../src/View/AbstractDirectoryView.vala:2015
 msgid "Open in %s"
-msgstr ""
+msgstr "Άνοιγμα σε %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2025
 msgid "Open in"
@@ -1814,11 +1814,11 @@ msgstr "Άνοιγμα σε νέα καρτέλα"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:420
 msgid "Open in New Window"
-msgstr ""
+msgstr "Άνοιγμα σε νέο παράθυρο"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Άνοιγμα σε άλλη εφαρμογή..."
 
 #: ../src/View/Widgets/LocationBar.vala:177
 msgid "Reload this folder"
@@ -1862,20 +1862,20 @@ msgstr "%u επιλεγμένα αντικείμενα (%s)"
 #. / TRANSLATORS: %u will be substituted by the number of sub folders
 #: ../src/View/Widgets/OverlayBar.vala:287
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u υποφάκελος, "
 
 #: ../src/View/Widgets/OverlayBar.vala:287
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u υποφάκελοι, "
 
 #. / TRANSLATORS: %u will be substituted by the number of readable files
 #: ../src/View/Widgets/OverlayBar.vala:293
 msgid "%u file, "
-msgstr ""
+msgstr "%u αρχείο, "
 
 #: ../src/View/Widgets/OverlayBar.vala:293
 msgid "%u files, "
-msgstr ""
+msgstr "%u αρχεία, "
 
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/Widgets/OverlayBar.vala:303
@@ -1885,7 +1885,7 @@ msgstr ""
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/Widgets/OverlayBar.vala:306
 msgid "unknown size"
-msgstr ""
+msgstr "άγνωστο μέγεθος"
 
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/Widgets/OverlayBar.vala:310
@@ -2021,7 +2021,7 @@ msgstr "Ορισμός ως προεπιλογή"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Ιδιότητες δίσκου"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:78
 #: ../src/Dialogs/PropertiesWindow.vala:561
@@ -2046,11 +2046,11 @@ msgstr "Κλείσιμο"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:139
 msgid "Device Usage"
-msgstr ""
+msgstr "Χρήση συσκευής"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Capacity:"
-msgstr ""
+msgstr "Χωρητικότητα:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:156
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
@@ -2089,7 +2089,7 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr ""
+msgstr "Γίνεται φόρτωση..."
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2129,7 +2129,7 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr ""
+msgstr "Άλλη εφαρμογή..."
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2143,7 +2143,7 @@ msgstr ""
 #: ../src/Dialogs/PropertiesWindow.vala:868
 #: ../src/Dialogs/PropertiesWindow.vala:877
 msgid "Group:"
-msgstr ""
+msgstr "Ομάδα:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:880
 msgid "Everyone:"
@@ -2152,31 +2152,31 @@ msgstr ""
 #: ../src/Dialogs/PropertiesWindow.vala:1140
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u υποφάκελος"
+msgstr[1] "%u υποφάκελοι"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1144
 #: ../src/Dialogs/PropertiesWindow.vala:1166
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u αρχείο"
+msgstr[1] "%u αρχεία"
 
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1149
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1170
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u επιλεγμένο αντικείμενο"
+msgstr[1] "%u επιλεγμένα αντικείμενα"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/Dialogs/PropertiesWindow.vala:1172
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2184,11 +2184,11 @@ msgstr ""
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
-msgstr ""
+msgstr "Μετακίνηση εδώ"
 
 #: ../libcore/DndHandler.vala:94
 msgid "Copy Here"
-msgstr ""
+msgstr "Αντιγραφή εδώ"
 
 #: ../libcore/DndHandler.vala:95
 msgid "Link Here"
@@ -2206,11 +2206,11 @@ msgstr "Αδυναμία προσδιορισμού αρχικής τοποθε�
 msgid "The item cannot be restored from trash"
 msgstr "Το αντικείμενο δεν μπορεί να αποκατασταθεί από τα απορρήματα"
 
-#: ../libcore/FileUtils.vala:343
+#: ../libcore/FileUtils.vala:342
 msgid "Could not rename to '%s'"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:464
+#: ../libcore/FileUtils.vala:463
 msgid "%A at %-I:%M %p"
 msgstr ""
 
@@ -2317,7 +2317,7 @@ msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Επαναφορά όλων"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
@@ -2345,7 +2345,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Αφαίρεση από το ιστορικό"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
@@ -2357,7 +2357,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr ""
+msgstr "Φάκελος"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
@@ -2365,7 +2365,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Προβολή κρυφών αρχείων"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
@@ -2373,11 +2373,11 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr ""
+msgstr "Νέα καρτέλα"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
-msgstr ""
+msgstr "Τερματικό"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
@@ -2385,31 +2385,31 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
-msgstr ""
+msgstr "Επικόλληση"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Cut"
-msgstr ""
+msgstr "Αποκοπή"
 
 #: ../src/View/directory_view_popup.ui:124
 msgid "Copy"
-msgstr ""
+msgstr "Αντιγραφή"
 
 #: ../src/View/directory_view_popup.ui:128
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Επικόλληση στον φάκελο"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Sort by"
-msgstr ""
+msgstr "Ταξινόμηση κατά"
 
 #: ../src/View/directory_view_popup.ui:138
 msgid "Name"
-msgstr ""
+msgstr "Όνομα"
 
 #: ../src/View/directory_view_popup.ui:153
 msgid "Date"
-msgstr ""
+msgstr "Ημερομηνία"
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"

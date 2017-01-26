@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-16 17:24-0600\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
 "PO-Revision-Date: 2016-10-14 15:49+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2017-01-17 06:48+0000\n"
-"X-Generator: Launchpad (build 18302)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:14+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 "Language: zh_TW\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1386,11 +1386,11 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "再次執行 %d 個項目其改變擁有者的動作"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
 msgid "Today at %-I:%M %p"
 msgstr "今日%p %-I:%M"
 
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
 msgid "Yesterday at %-I:%M %p"
 msgstr "昨日%p %-I:%M"
 
@@ -1417,15 +1417,15 @@ msgstr "上一個"
 msgid "Next"
 msgstr "下一個"
 
-#: ../src/View/Window.vala:206
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
 msgstr "「檔案」不是您的預設檔案瀏覽器。"
 
-#: ../src/View/Window.vala:212
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
 msgstr "設為預設值"
 
-#: ../src/View/Window.vala:218
+#: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "忽略"
 
@@ -2107,11 +2107,11 @@ msgstr "無法決定「%s」的原始位置 "
 msgid "The item cannot be restored from trash"
 msgstr "此項目不能從垃圾筒還原。"
 
-#: ../libcore/FileUtils.vala:343
+#: ../libcore/FileUtils.vala:342
 msgid "Could not rename to '%s'"
 msgstr "無法重新命名為「%s」"
 
-#: ../libcore/FileUtils.vala:464
+#: ../libcore/FileUtils.vala:463
 msgid "%A at %-I:%M %p"
 msgstr ""
 

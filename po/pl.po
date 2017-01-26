@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 17:24-0600\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
 "PO-Revision-Date: 2017-01-10 13:10+0000\n"
 "Last-Translator: Damian Woźniak <fiszet@gmail.com>\n"
 "Language-Team: polski <>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2017-01-17 06:46+0000\n"
-"X-Generator: Launchpad (build 18302)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:12+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 "Language: pl\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1524,11 +1524,11 @@ msgstr[0] "Powtórz zmianę właściciela %d elementu"
 msgstr[1] "Powtórz zmianę właściciela %d elementów"
 msgstr[2] "Powtórz zmianę właściciela %d elementów"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
 msgid "Today at %-I:%M %p"
 msgstr "Dzisiaj o %-I:%M %p"
 
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
 msgid "Yesterday at %-I:%M %p"
 msgstr "Wczoraj o %-I:%M %p"
 
@@ -1555,15 +1555,15 @@ msgstr "Poprzedni"
 msgid "Next"
 msgstr "Następny"
 
-#: ../src/View/Window.vala:206
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
 msgstr "To nie jest Twój domyślny manager plików."
 
-#: ../src/View/Window.vala:212
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
 msgstr "Ustaw jako domyślny"
 
-#: ../src/View/Window.vala:218
+#: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "Zignoruj"
 
@@ -2256,11 +2256,11 @@ msgstr "Nie można określić pierwotnego położenia \"%s\" "
 msgid "The item cannot be restored from trash"
 msgstr "Nie można przywrócić elementu z kosza"
 
-#: ../libcore/FileUtils.vala:343
+#: ../libcore/FileUtils.vala:342
 msgid "Could not rename to '%s'"
 msgstr "Nie można zmienić nazwy na '%s'"
 
-#: ../libcore/FileUtils.vala:464
+#: ../libcore/FileUtils.vala:463
 msgid "%A at %-I:%M %p"
 msgstr "%A, %H:%M"
 

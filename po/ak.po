@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: Lawrence Aberba <karabutaworld@gmail.com>\n"
-"POT-Creation-Date: 2017-01-16 17:24-0600\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
 "PO-Revision-Date: 2016-12-10 08:44+0000\n"
 "Last-Translator: aberba <karabutaworld@gmail.com>\n"
 "Language-Team: Akan <ak@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2017-01-17 06:42+0000\n"
-"X-Generator: Launchpad (build 18302)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:08+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 "Language: Akan\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
@@ -1438,11 +1438,11 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
 msgid "Today at %-I:%M %p"
 msgstr "Nnɛ mmerɛ %-I:%M %p"
 
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
 msgid "Yesterday at %-I:%M %p"
 msgstr "Ɛnnora mmerɛ %-I:%M %p"
 
@@ -1469,15 +1469,15 @@ msgstr "Nea ɛdi akyire"
 msgid "Next"
 msgstr "Nea edi hɔ"
 
-#: ../src/View/Window.vala:206
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
 msgstr ""
 
-#: ../src/View/Window.vala:212
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
 msgstr ""
 
-#: ../src/View/Window.vala:218
+#: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr ""
 
@@ -2157,11 +2157,11 @@ msgstr "Ɛntumi nhu baabi a na \"%s\"  wɔ dedaw "
 msgid "The item cannot be restored from trash"
 msgstr "Wo nsa ntumi nka wo nneɛma no bio"
 
-#: ../libcore/FileUtils.vala:343
+#: ../libcore/FileUtils.vala:342
 msgid "Could not rename to '%s'"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:464
+#: ../libcore/FileUtils.vala:463
 msgid "%A at %-I:%M %p"
 msgstr ""
 

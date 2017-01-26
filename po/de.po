@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-16 17:24-0600\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
 "PO-Revision-Date: 2017-01-07 09:12+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-17 06:44+0000\n"
-"X-Generator: Launchpad (build 18302)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:09+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 "Language: de\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1503,11 +1503,11 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Veränderung des Besitzers von %d Objekt wiede_rholen"
 msgstr[1] "Veränderung des Besitzers von %d Objekten wiede_rholen"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
 msgid "Today at %-I:%M %p"
 msgstr "Heute um %-I:%M Uhr"
 
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
 msgid "Yesterday at %-I:%M %p"
 msgstr "Gestern um %-I:%M Uhr"
 
@@ -1534,15 +1534,15 @@ msgstr "Zurück"
 msgid "Next"
 msgstr "Weiter"
 
-#: ../src/View/Window.vala:206
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
 msgstr "Dateien ist nicht Ihre vorgegebene Dateiverwaltung."
 
-#: ../src/View/Window.vala:212
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
 msgstr "Als Vorgabe einstellen"
 
-#: ../src/View/Window.vala:218
+#: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "Ignorieren"
 
@@ -2234,11 +2234,11 @@ msgstr "Ursprünglicher Ort von »%s« konnte nicht ermittelt werden "
 msgid "The item cannot be restored from trash"
 msgstr "Das Objekt kann aus dem Papierkorb nicht wiederhergestellt werden"
 
-#: ../libcore/FileUtils.vala:343
+#: ../libcore/FileUtils.vala:342
 msgid "Could not rename to '%s'"
 msgstr "Zu »%s« umzubenennen ist fehlgeschlagen"
 
-#: ../libcore/FileUtils.vala:464
+#: ../libcore/FileUtils.vala:463
 msgid "%A at %-I:%M %p"
 msgstr ""
 
