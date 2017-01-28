@@ -1133,7 +1133,6 @@ do_run_simple_dialog (gpointer _data)
                                      data->message_type,
                                      GTK_BUTTONS_NONE,
                                      NULL);
-
     gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
 
     g_object_set (dialog,
@@ -1534,9 +1533,8 @@ report_delete_progress (CommonJob *job,
         transfer_rate = transfer_info->num_files / elapsed;
         remaining_time = files_left / transfer_rate;
 
-        /* To translators: %T will expand to a time like "2 minutes".
-         * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-         */
+        /// TRANSLATORS: %T will expand to a time like "2 minutes".
+        /// The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
         time_left_s = f (ngettext ("%T left",
                                    "%T left",
                                    seconds_count_format_time_units (remaining_time)),
@@ -1823,6 +1821,10 @@ delete_files (CommonJob *job, GList *files, int *files_skipped)
             (*files_skipped)++;
         }
     }
+
+    PFSoundManager *sm;
+    sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
+    pf_sound_manager_play_delete_sound (sm);
 }
 
 static void
@@ -3196,18 +3198,17 @@ report_copy_progress (CopyMoveJob *copy_job,
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
         transfer_rate > 0) {
         char *s;
-        /* To translators: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB" */
+        /// TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
         s = f (_("%S of %S"), transfer_info->num_bytes, total_size);
         marlin_progress_info_take_details (job->progress, s);
     } else {
         char *s;
         remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
 
-        /* To translators: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
-         * "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
-         *
-         * The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-         */
+
+        /// TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+        /// "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
+        /// The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
         s = f (ngettext ("%S of %S \xE2\x80\x94 %T left (%S/sec)",
                  "%S of %S \xE2\x80\x94 %T left (%S/sec)",
                  seconds_count_format_time_units (remaining_time)),
@@ -5352,7 +5353,6 @@ marlin_file_operations_move (GList *files,
                              gpointer done_callback_data)
 {
     CopyMoveJob *job;
-
     job = op_job_new (JOB_MOVE, CopyMoveJob, parent_window);
     job->is_move = TRUE;
     job->done_callback = done_callback;
@@ -6583,6 +6583,10 @@ empty_trash_job_done (gpointer user_data)
     /* There is no job callback after emptying trash */
     marlin_undo_manager_trash_has_emptied (marlin_undo_manager_instance());
     finalize_empty_trash_job (user_data);
+
+    PFSoundManager *sm;
+    sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
+    pf_sound_manager_play_empty_trash_sound (sm);
 
     return FALSE;
 }

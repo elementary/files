@@ -1,7 +1,8 @@
 Requirements:
-- Vala >= 0.16
+
+- Vala >= 0.26
 - Granite >= 0.3.0
-- Gtk+ >= 3.0.3
+- Gtk+ >= 3.12
 - GLib >= 2.32
 - Gio >= 2.0
 - Gee >= 1.0
@@ -18,9 +19,11 @@ To get all of the dependencies under a Debian-based distribution, run:
     sudo apt-get build-dep pantheon-files
 
 Optional:
+
 - Unity (libunity-dev) >= 4.0.0 (For Unity launcher support).
 
 To build pantheon-files:
+
     mkdir build
     cd build
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr

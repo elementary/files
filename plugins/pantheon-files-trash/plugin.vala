@@ -1,5 +1,5 @@
 /***
-    Copyright (C) Lucas Baudin 2011 <xapantu@gmail.com>
+    Copyright (c) Lucas Baudin 2011 <xapantu@gmail.com>
 
     Marlin is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
@@ -45,14 +45,13 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
         unowned GOF.File file = ((Object[]) user_data)[2] as GOF.File;
         assert (((Object[]) user_data)[1] is GOF.AbstractSlot);
         unowned GOF.AbstractSlot slot = ((Object[]) user_data)[1] as GOF.AbstractSlot;
-
+        Gtk.InfoBar? infobar = infobars.@get (slot);
         /* Ignore directories other than trash and ignore reloading trash */
         if (file.location.get_uri_scheme () == "trash") {
-            Gtk.InfoBar? infobar = null;
             /* Only add infobar once */
-            if (!infobars.has_key (slot)) {
+            if (infobar == null) {
                 infobar = new Gtk.InfoBar ();
-                (infobar.get_content_area () as Gtk.Box).add (new Gtk.Label (_("These items may be restored or deleted from the trash.")));
+                (infobar.get_content_area () as Gtk.Box).add (new Gtk.Label (null));
                 infobar.add_button (_("Restore All"), 0);
                 infobar.add_button (_("Empty the Trash"), 1);
 
@@ -60,8 +59,8 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                     switch (response) {
                         case 0:
                             slot.set_all_selected (true);
-                            unowned GLib.List<unowned GOF.File> selection = slot.get_selected_files ();
-                            Marlin.restore_files_from_trash (selection, window);
+                            unowned GLib.List<GOF.File> selection = slot.get_selected_files ();
+                            PF.FileUtils.restore_files_from_trash (selection, window);
                             break;
                         case 1:
                             Marlin.FileOperations.empty_trash (self);
@@ -69,29 +68,27 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                     }
                 });
 
-                infobar.set_message_type (Gtk.MessageType.INFO);
-                infobar.set_response_sensitive (0, !TrashMonitor.is_empty ());
-                infobar.set_response_sensitive (1, !TrashMonitor.is_empty ());
-                infobar.show_all ();
-                infobar.set_visible (false);
                 slot.add_extra_widget (infobar);
                 infobars.@set (slot, infobar);
+            }
+            infobar.set_message_type (file.basename == "/" ? Gtk.MessageType.INFO :  Gtk.MessageType.WARNING);
+            string msg;
+            if (file.basename == "/")
+                msg = _("These items may be restored or deleted from the trash.");
+            else
+                msg = _("Cannot restore or delete unless in root folder");
 
-                GLib.Timeout.add (10, () => {
-                    if (!slot.get_realized ())
-                        return true;
-                    else {
-                        infobar.set_visible (!TrashMonitor.is_empty ());
-                        return false;
-                    }
-                });
+            foreach (Gtk.Widget w in (infobar.get_content_area ()).get_children ()) {
+                if (w is Gtk.Label)
+                    (w as Gtk.Label).set_text (msg);
             }
-        } else {
-            var infobar = infobars.@get (slot);
-            if (infobar != null) {
-                infobar.destroy ();
-                infobars.unset (slot);
-            }
+            infobar.set_response_sensitive (0, !TrashMonitor.is_empty () && file.basename == "/");
+            infobar.set_response_sensitive (1, !TrashMonitor.is_empty () && file.basename == "/");
+            infobar.show_all ();
+            infobar.set_visible (!TrashMonitor.is_empty ());
+        } else if (infobar != null) {
+            infobar.destroy ();
+            infobars.unset (slot);
         }
     }
 }

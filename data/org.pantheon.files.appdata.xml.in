@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2016-2017 elementary, LLC <contact@elementary.io> -->
+<component type="desktop">
+  <id>org.pantheon.files.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_group>elementary</project_group>
+  <project_license>GPL-3.0+</project_license>
+  <_name>Files</_name>
+  <_summary>Browse and manage files and folders</_summary>
+  <description>
+    <_p>
+      Easily copy, move, and rename your files, or use folders to stay organized. Whether you like files in lists, grids or columns, you can always find them right away. Access all your files, whether locally, on an external device or remotely using FTP, SFTP, AFP, Webdav, or Windows share.
+    </_p>
+  </description>
+  <provides>
+    <binary>pantheon-files</binary>
+    <binary>pantheon-files-daemon</binary>
+    <binary>pantheon-files-pkexec</binary>
+  </provides>
+  <releases>
+    <release version="0.3.1.1" date="2017-01-25" urgency="medium">
+      <description>
+        <ul>
+          <_li>Enable drag and drop tabs between windows</_li>
+          <_li>Various crash fixes</_li>
+          <_li>New translations</_li>
+          <_li>Minor bug fixes</_li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.1" date="2017-01-16" urgency="medium">
+      <description>
+        <ul>
+          <_li>Merge search functionality into Ctrl+F</_li>
+          <_li>Improved translation support</_li>
+          <_li>Various crash fixes</_li>
+          <_li>New translations</_li>
+          <_li>Minor bug fixes</_li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.0.5" date="2016-12-16" urgency="medium">
+      <description>
+        <ul>
+          <_li>Minor bug fixes</_li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.0.4" date="2016-11-19" urgency="medium">
+      <description>
+        <ul>
+          <_li>Minor bug fixes</_li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.0.3.1" date="2016-10-10" urgency="medium">
+      <description>
+        <ul>
+          <_li>Fix appdata release dates</_li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.0.3" date="2016-10-10" urgency="medium">
+      <description>
+        <ul>
+          <_li>Improve file opening over Samba shares</_li>
+          <_li>Fix a crash when restoring items from the Trash</_li>
+          <_li>Improve cut/copy/paste sensitivity in context menu</_li>
+          <_li>Translation updates</_li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.3.0.2" date="2016-09-01" urgency="medium">
+      <description>
+        <ul>
+          <_li>Minor bug fixes</_li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  <developer_name>elementary LLC.</developer_name>
+  <url type="homepage">http://elementary.io/</url>
+  <url type="bugtracker">https://bugs.launchpad.net/pantheon-files</url>
+  <url type="donation">https://elementary.io/get-involved#funding</url>
+  <url type="help">https://elementaryos.stackexchange.com/questions/tagged/pantheon-files</url>
+  <update_contact>contact_AT_elementary.io</update_contact>
+</component>

@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 elementary Developers
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -19,7 +19,7 @@
 namespace Marlin {
     public class TextRenderer: Gtk.CellRendererText {
 
-        const int MAX_LINES = 3;
+        const int MAX_LINES = 5;
         const uint BORDER_RADIUS = 6;
 
         public Marlin.ZoomLevel zoom_level {get; set;}
@@ -34,7 +34,7 @@ namespace Marlin {
         int focus_border_width;
         Pango.Layout layout;
         Gtk.Widget widget;
-        Marlin.AbstractEditableLabel? entry = null;
+        public Marlin.AbstractEditableLabel entry;
 
         public TextRenderer (Marlin.ViewMode viewmode) {
             this.mode = Gtk.CellRendererMode.EDITABLE;
@@ -132,13 +132,12 @@ namespace Marlin {
             text_height = height;
         }
 
-        /* Needs patched gtk+-3.0.vapi file - incorrect function signature up to version 0.25.4 */
         public override unowned Gtk.CellEditable? start_editing (Gdk.Event? event,
-                                                                 Gtk.Widget widget,
-                                                                 string  path,
-                                                                 Gdk.Rectangle  background_area,
-                                                                 Gdk.Rectangle  cell_area,
-                                                                 Gtk.CellRendererState flags) {
+                                                           Gtk.Widget widget,
+                                                           string  path,
+                                                           Gdk.Rectangle  background_area,
+                                                           Gdk.Rectangle  cell_area,
+                                                           Gtk.CellRendererState flags) {
 
             if (!visible || mode != Gtk.CellRendererMode.EDITABLE)
                 return null;
@@ -165,6 +164,7 @@ namespace Marlin {
             entry.set_data ("marlin-text-renderer-path", path.dup ());
             entry.show_all ();
 
+            base.start_editing (event, widget, path, background_area, cell_area, flags);
             return entry as Gtk.CellEditable;
         }
 
@@ -206,15 +206,16 @@ namespace Marlin {
 
         private void connect_widget_signals () {
             widget.destroy.connect (invalidate);
-            widget.style_set.connect (invalidate);
+            widget.style_updated.connect (invalidate);
         }
 
         private void disconnect_widget_signals () {
             widget.destroy.disconnect (invalidate);
-            widget.style_set.disconnect (invalidate);
+            widget.style_updated.disconnect (invalidate);
         }
 
         private void invalidate () {
+            disconnect_widget_signals ();
             set_widget (null);
             file = null;
         }

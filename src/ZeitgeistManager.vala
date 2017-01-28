@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 elementary Developers
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -17,13 +17,13 @@
 ***/
 namespace Marlin {
     public class ZeitgeistManager : Object {
-        const string FILES_ACTOR = "application://pantheon-files.desktop";
+        const string FILES_ACTOR = "application://" + Marlin.APP_DESKTOP;
         const string ATTRS = FileAttribute.STANDARD_DISPLAY_NAME + "," + FileAttribute.STANDARD_CONTENT_TYPE;
 
         public static void report_event (string uri, string interpretation) {
             var file = File.new_for_commandline_arg (uri);
 
-            file.query_info_async (ATTRS, 0, Priority.DEFAULT, null, (obj, res) => {
+            file.query_info_async.begin (ATTRS, 0, Priority.DEFAULT, null, (obj, res) => {
                 FileInfo info;
                 try {
                     info = file.query_info_async.end (res);

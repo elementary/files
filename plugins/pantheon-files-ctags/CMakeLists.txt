@@ -31,6 +31,6 @@ add_library(pantheon-filesctags SHARED
     ${VALA_C})
 target_link_libraries(pantheon-filesctags ${DEPS_LIBRARIES} pantheon-files-core)
 add_dependencies(pantheon-filesctags pantheon-files-core)
-install(TARGETS pantheon-filesctags DESTINATION lib/pantheon-files/plugins/core/)
-install(FILES pantheon-files-ctags.plug DESTINATION lib/pantheon-files/plugins/core/)
+install(TARGETS pantheon-filesctags DESTINATION ${PLUGIN_DIR}/core/)
+install(FILES pantheon-files-ctags.plug DESTINATION ${PLUGIN_DIR}/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)

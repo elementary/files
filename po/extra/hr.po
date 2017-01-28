@@ -1,0 +1,70 @@
+# Croatian translation for pantheon-files
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the pantheon-files package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pantheon-files\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2016-10-15 19:28+0000\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
+"Language-Team: Croatian <hr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:15+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
+
+msgid "Files"
+msgstr "Datoteke"
+
+msgid "Browse and manage files and folders"
+msgstr "Pregledajte i upravljajte datotekama"
+
+msgid ""
+"Easily copy, move, and rename your files, or use folders to stay organized. "
+"Whether you like files in lists, grids or columns, you can always find them "
+"right away. Access all your files, whether locally, on an external device or "
+"remotely using FTP, SFTP, AFP, Webdav, or Windows share."
+msgstr ""
+"Lagano kopirajte, premjestite i preimenujte svoje datoteke ili koristite "
+"mape kako bi ostali organizirani. Bilo da volite prikaz datoteka u popisu, "
+"mreži ili stupcima, uvijek ih možete odmah pronaći. Pristupite svim svojim "
+"datotekama lokalno, na vanjskim uređajima ili udaljeno putem FTP, SFTP, AFP, "
+"Webdava, ili Windows dijeljenja."
+
+msgid "Fix appdata release dates"
+msgstr "Popravi datume izdanja podataka palikacije"
+
+msgid "Improve file opening over Samba shares"
+msgstr "Poboljšaj otvaranje datoteka putem Samba dijeljenja"
+
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "Popravi rušenje pri vraćanju stavki iz smeća"
+
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr ""
+"Poboljšaj izreži/kopiraj/zalijepi osjetljivost u sadržajnom izborniku"
+
+msgid "Translation updates"
+msgstr "Nadopune prijevoda"
+
+msgid "Minor bug fixes"
+msgstr "Manji popravci grešaka"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr ""
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""

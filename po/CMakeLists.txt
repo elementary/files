@@ -10,4 +10,8 @@ add_translations_catalog(${GETTEXT_PACKAGE}
     ../plugins/marlin-trash
     ../plugins/network-places
     ../plugins/pantheon-files-trash
+    DESKTOP_FILES
+        ../data/pantheon-files.desktop.in
+    APPDATA_FILES
+        ../data/org.pantheon.files.appdata.xml.in
 )

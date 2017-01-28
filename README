@@ -1,6 +1,7 @@
 Files is a simple, powerful and sexy file manager.
 
 Some of its features:
+
 * Full integration with GTK+3 and Granite.
 * Built for the Pantheon DE as the main target.
 * Tab browsing, allowing the restoration of closed tabs.
@@ -11,6 +12,7 @@ Some of its features:
 For installation instructions read INSTALL.
 
 Please report comments, suggestions and bugs to:
+
     https://bugs.launchpad.net/pantheon-files
 
 And join the IRC channel #elementary on irc.freenode.net
@@ -18,7 +20,9 @@ And join the IRC channel #elementary on irc.freenode.net
 For contributing code/translations/documentation to Files read HACKING.
 
 Check for new versions at:
+
     http://launchpad.net/pantheon-files
 
 For Ubuntu and derivatives, you can get stable builds of Files at:
+
     https://launchpad.net/~elementary-os/+archive/stable

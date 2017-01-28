@@ -6,27 +6,57 @@ include_directories (${CMAKE_BINARY_DIR})
 include_directories (${CMAKE_BINARY_DIR}/marlinplugins/)
 include_directories (${CMAKE_CURRENT_SOURCE_DIR})
 include_directories (${CMAKE_CURRENT_BINARY_DIR})
-include_directories (${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
-include_directories (${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
-include_directories (${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/)
+include_directories (${CMAKE_SOURCE_DIR}/libcore/)
+include_directories (${CMAKE_BINARY_DIR}/libcore/)
+include_directories (${CMAKE_SOURCE_DIR}/libwidgets/)
+include_directories (${CMAKE_BINARY_DIR}/libwidgets/)
 
 find_package (PkgConfig)
 
-pkg_check_modules (DEPS REQUIRED
-    granite>=0.3.0
-    glib-2.0>=2.29.0
-    gthread-2.0
-    gio-2.0
-    gio-unix-2.0
-    pango>=1.1.2
-    gtk+-3.0>=3.10
-    gmodule-2.0
-    gail-3.0
-    gee-0.8
-    sqlite3
-    dbus-glib-1
-    libnotify>=0.7.2
-    zeitgeist-2.0)
+
+
+OPTION (WITH_UNITY "Add Unity launcher support" ON)
+pkg_check_modules (UNITY unity>=4.0.0)
+
+if (WITH_UNITY AND UNITY_FOUND)
+    pkg_check_modules (DEPS REQUIRED
+        granite>=0.3.0
+        glib-2.0>=2.29.0
+        gthread-2.0
+        gio-2.0
+        gio-unix-2.0
+        pango>=1.1.2
+        gtk+-3.0>=3.14
+        gmodule-2.0
+        gail-3.0
+        gee-0.8
+        sqlite3
+        dbus-glib-1
+        libcanberra>=0.30
+        zeitgeist-2.0
+        plank)
+else (WITH_UNITY AND UNITY_FOUND)
+    pkg_check_modules (DEPS REQUIRED
+        granite>=0.3.0
+        glib-2.0>=2.29.0
+        gthread-2.0
+        gio-2.0
+        gio-unix-2.0
+        pango>=1.1.2
+        gtk+-3.0>=3.14
+        gmodule-2.0
+        gail-3.0
+        gee-0.8
+        sqlite3
+        dbus-glib-1
+        libcanberra>=0.30
+        zeitgeist-2.0)
+endif (WITH_UNITY AND UNITY_FOUND)
+
+pkg_check_modules(PLANK011 QUIET plank>=0.10.9)
+if (PLANK011_FOUND)
+  set (PLANK_OPTIONS --define=HAVE_PLANK_0_11)
+endif ()
 
 set (CFLAGS
     ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
@@ -39,60 +69,55 @@ set (LIB_PATHS
 link_directories (${LIB_PATHS})
 add_definitions (${CFLAGS} -O2)
 
-OPTION (WITH_UNITY "Add Unity launcher support" ON)
-pkg_check_modules (UNITY unity>=4.0.0)
-
 IF (WITH_UNITY AND UNITY_FOUND)
-    vala_precompile (VALA_C pantheon-files
+    vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
         Application.vala
-        Bookmark.vala
-        BookmarkList.vala
         ConnectServerOperation.vala
-        DndHandler.vala
-        Enums.vala
-        AbstractEditableLabel.vala
-        SingleLineEditableLabel.vala
-        MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
-        MimeActions.vala
-        ProgressInfoWidget.vala
         ProgressUIHandler.vala
         TextRenderer.vala
         QuicklistHandler.vala
+        ClipboardManager.vala
+        Dialogs/AbstractPropertiesDialog.vala
+        Dialogs/ChooseAppDialog.vala
+        Dialogs/PropertiesWindow.vala
+        Dialogs/VolumePropertiesWindow.vala
+        Utils/MimeActions.vala
+        Utils/Permissions.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
         View/ListView.vala
         ZeitgeistManager.vala
-        View/DiskRenderer.vala
-        View/IconSpinnerRenderer.vala
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
-        View/SearchResults.vala
         View/Window.vala
-        View/Resources.vala
         View/ViewContainer.vala
-        View/OverlayBar.vala
-        View/PropertiesWindow.vala
         View/Browser.vala
-        View/LocationBar.vala
         View/Sidebar.vala
         View/Slot.vala
         View/Miller.vala
-        View/Chrome/TopMenu.vala
-        View/Chrome/ButtonWithMenu.vala
-        View/Chrome/ViewSwicher.vala
-        View/Chrome/XsEntry.vala
-        View/Chrome/ImgEventBox.vala
+        View/Widgets/AbstractEditableLabel.vala
+        View/Widgets/BreadcrumbsEntry.vala
+        View/Widgets/DiskRenderer.vala
+        View/Widgets/Label.vala
+        View/Widgets/LocationBar.vala
+        View/Widgets/MultiLineEditableLabel.vala
+        View/Widgets/OverlayBar.vala
+        View/Widgets/PermissionButton.vala
+        View/Widgets/ProgressInfoWidget.vala
+        View/Widgets/SingleLineEditableLabel.vala
+        View/Widgets/TopMenu.vala
+
     PACKAGES
         gtk+-3.0
         gio-2.0
         posix
         gee-0.8
         granite
-        libnotify
         unity
+        plank
         pantheon-files-core
         pantheon-files-core-C
         pantheon-files-widgets
@@ -106,50 +131,49 @@ IF (WITH_UNITY AND UNITY_FOUND)
         --vapidir=${CMAKE_BINARY_DIR}/libcore/
         --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
         --target-glib=2.32 # Needed for new thread API
+        ${PLANK_OPTIONS}
         --thread
         -D HAVE_UNITY)
 ELSE (WITH_UNITY AND UNITY_FOUND)
-    vala_precompile (VALA_C pantheon-files
+    vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
         Application.vala
-        Bookmark.vala
-        BookmarkList.vala
         ConnectServerOperation.vala
-        DndHandler.vala
-        Enums.vala
-        AbstractEditableLabel.vala
-        SingleLineEditableLabel.vala
-        MultiLineEditableLabel.vala
         main.vala
         marlin-deep-count.vala
-        MimeActions.vala
-        ProgressInfoWidget.vala
         ProgressUIHandler.vala
         TextRenderer.vala
+        ClipboardManager.vala
+        Dialogs/AbstractPropertiesDialog.vala
+        Dialogs/ChooseAppDialog.vala
+        Dialogs/PropertiesWindow.vala
+        Dialogs/VolumePropertiesWindow.vala
+        Utils/MimeActions.vala
+        Utils/Permissions.vala
         View/ColumnView.vala
         View/AbstractTreeView.vala
         View/IconView.vala
         View/ListView.vala
         ZeitgeistManager.vala
-        View/SearchResults.vala
-        View/DiskRenderer.vala
         View/DirectoryNotFound.vala
         View/AbstractDirectoryView.vala
         View/Window.vala
-        View/Resources.vala
         View/ViewContainer.vala
-        View/IconSpinnerRenderer.vala
-        View/OverlayBar.vala
-        View/PropertiesWindow.vala
         View/Browser.vala
-        View/LocationBar.vala
         View/Sidebar.vala
         View/Slot.vala
         View/Miller.vala
-        View/Chrome/TopMenu.vala
-        View/Chrome/ButtonWithMenu.vala
-        View/Chrome/ViewSwicher.vala
-        View/Chrome/XsEntry.vala
-        View/Chrome/ImgEventBox.vala
+        View/Widgets/AbstractEditableLabel.vala
+        View/Widgets/BreadcrumbsEntry.vala
+        View/Widgets/DiskRenderer.vala
+        View/Widgets/Label.vala
+        View/Widgets/LocationBar.vala
+        View/Widgets/MultiLineEditableLabel.vala
+        View/Widgets/OverlayBar.vala
+        View/Widgets/PermissionButton.vala
+        View/Widgets/ProgressInfoWidget.vala
+        View/Widgets/SingleLineEditableLabel.vala
+        View/Widgets/TopMenu.vala
+
     PACKAGES
         gtk+-3.0
         gio-2.0
@@ -157,7 +181,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         posix
         gee-0.8
         granite
-        libnotify
         pantheon-files-core
         pantheon-files-core-C
         pantheon-files-widgets
@@ -171,25 +194,25 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         --vapidir=${CMAKE_BINARY_DIR}/libcore/
         --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
         --target-glib=2.32 # Needed for new thread API
+        ${PLANK_OPTIONS}
         --thread)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
-add_executable (../pantheon-files
-    marlin-clipboard-manager.c
+add_executable (${CMAKE_PROJECT_NAME}
     marlin-thumbnailer.c
     marlin-icon-renderer.c
     marlin-connect-server-dialog.c
     ${VALA_C} )
 
-target_link_libraries (../pantheon-files m pantheon-files-core pantheon-files-widgets ${DEPS_LIBRARIES})
-add_dependencies (../pantheon-files pantheon-files-core pantheon-files-widgets)
+target_link_libraries (${CMAKE_PROJECT_NAME} m pantheon-files-core pantheon-files-widgets ${DEPS_LIBRARIES})
+add_dependencies (${CMAKE_PROJECT_NAME} pantheon-files-core pantheon-files-widgets)
 
 IF (WITH_UNITY AND UNITY_FOUND)
     include_directories (${UNITY_INCLUDE_DIRS})
-    target_link_libraries (../pantheon-files pantheon-files-core pantheon-files-widgets ${UNITY_LIBRARIES})
+    target_link_libraries (${CMAKE_PROJECT_NAME} pantheon-files-core pantheon-files-widgets ${UNITY_LIBRARIES})
     add_definitions ("-DHAVE_UNITY=1")
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
-install (TARGETS ../pantheon-files RUNTIME DESTINATION bin)
+install (TARGETS ${CMAKE_PROJECT_NAME} RUNTIME DESTINATION bin)
 install (FILES View/directory_view_popup.ui DESTINATION ${UI_DIR})
 include (Tests)

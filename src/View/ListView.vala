@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 elementary Developers
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -20,7 +20,7 @@ namespace FM {
     public class ListView : AbstractTreeView {
 
         /* We wait two seconds after row is collapsed to unload the subdirectory */
-        static const int COLLAPSE_TO_UNLOAD_DELAY = 2;
+        const int COLLAPSE_TO_UNLOAD_DELAY = 2;
 
         static string [] column_titles = {
             _("Filename"),
@@ -29,8 +29,10 @@ namespace FM {
             _("Modified")
         };
 
+        /* ListView manages the loading and unloading of subdirectories displayed */
         private uint unload_file_timeout_id = 0;
-        private GLib.List<GOF.File> subdirectories_to_unload = null;
+        private GLib.List<Gtk.TreeRowReference> subdirectories_to_unload = null;
+        private GLib.List<GOF.Directory.Async> loaded_subdirectories = null;
 
         public ListView (Marlin.View.Slot _slot) {
             base (_slot);
@@ -39,6 +41,7 @@ namespace FM {
         private void connect_additional_signals () {
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
+            model.subdirectory_unloaded.connect (on_model_subdirectory_unloaded);
         }
 
         private void append_extra_tree_columns () {
@@ -70,24 +73,25 @@ namespace FM {
         }
 
         private void on_row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
-            GOF.Directory.Async dir;
             set_path_expanded (path, true);
-
-            if (model.load_subdirectory (path, out dir) && dir is GOF.Directory.Async)
-                add_subdirectory (dir);
+            add_subdirectory_at_path (path);
         }
 
         private void on_row_collapsed (Gtk.TreeIter iter, Gtk.TreePath path) {
-            unowned GOF.Directory.Async dir;
-            unowned GOF.File file;
             set_path_expanded (path, false);
+            schedule_unload_subdirectory_at_path (path);
+        }
 
-            if (model.get_directory_file (path, out dir, out file)) {
-                remove_subdirectory (dir);
-                subdirectories_to_unload.append (file);
+        private void on_model_subdirectory_unloaded (GOF.Directory.Async dir) {
+            /* ensure the model and our list of subdirectories are kept in sync */
+            remove_subdirectory (dir);
+        }
+
+        private void schedule_unload_subdirectory_at_path (Gtk.TreePath path) {
+                /* unload subdirectory from model and remove from our list of subdirectories
+                 * after a delay, in case of rapid collapsing and re-expanding of rows */
+                subdirectories_to_unload.append (new Gtk.TreeRowReference (model, path));
                 schedule_model_unload_directories ();
-            } else
-                critical ("failed to get directory/file");
         }
 
         private void set_path_expanded (Gtk.TreePath path, bool expanded) {
@@ -104,20 +108,27 @@ namespace FM {
         }
 
         private bool unload_directories () {
-            foreach (var file in subdirectories_to_unload) {
-                Gtk.TreeIter iter;
+            foreach (var rowref in subdirectories_to_unload) {
+                Gtk.TreeIter? iter = null;
                 Gtk.TreePath path;
+                if (rowref.valid ())
+                    path = rowref.get_path ();
+                else {
+                    warning ("TreeRowRef invalid when unloading subdirectory");
+                    continue;
+                }
 
-                if (model.get_first_iter_for_file (file, out iter)) {
-                    path = ((Gtk.TreeModel)model).get_path (iter);
-                    if (path != null && !((Gtk.TreeView)tree).is_row_expanded (path))
+                if (((Gtk.TreeView)tree).is_row_expanded (path))
+                    continue;
+
+                if (model.get_iter (out iter, path) && iter != null)
                         model.unload_subdirectory (iter);
-                } else
+                else
                     warning ("Subdirectory to unload not found in model");
             }
 
-            subdirectories_to_unload.@foreach ((file) => {
-                subdirectories_to_unload.remove (file);
+            subdirectories_to_unload.@foreach ((rowref) => {
+                subdirectories_to_unload.remove (rowref);
             });
 
             unload_file_timeout_id = 0;
@@ -182,6 +193,15 @@ namespace FM {
             var zoom = Preferences.marlin_list_view_settings.get_enum ("zoom-level");
             Preferences.marlin_list_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
 
+            minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_list_view_settings.get_enum ("minimum-zoom-level");
+            maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_list_view_settings.get_enum ("maximum-zoom-level");
+
+            if (zoom_level < minimum_zoom)
+                zoom_level = minimum_zoom;
+
+            if (zoom_level > maximum_zoom)
+                zoom_level = maximum_zoom;
+
             return (Marlin.ZoomLevel)zoom;
         }
 
@@ -192,19 +212,28 @@ namespace FM {
             return (Marlin.ZoomLevel)zoom;
         }
 
-        protected override void add_subdirectory (GOF.Directory.Async dir) {
-            connect_directory_handlers (dir);
-            dir.load ();
-            /* Maintain our own reference on dir, independent of the model */
-            /* Also needed for updating show hidden status */
-            loaded_subdirectories.prepend (dir);
+        private void add_subdirectory_at_path (Gtk.TreePath path) {
+            /* If a new subdirectory is loaded, connect it, load it
+             * and add it to the list of subdirectories */
+            GOF.Directory.Async? dir = null;
+            if (model.load_subdirectory (path, out dir)) {
+                if (dir != null) {
+                    connect_directory_handlers (dir);
+                    dir.init ();
+                    /* Maintain our own reference on dir, independent of the model */
+                    /* Also needed for updating show hidden status */
+                    loaded_subdirectories.prepend (dir);
+                }
+            }
         }
 
-        protected override void remove_subdirectory (GOF.Directory.Async dir) {
-            assert (dir != null);
-            disconnect_directory_handlers (dir);
-            /* Release our reference on dir */
-            loaded_subdirectories.remove (dir);
+        private void remove_subdirectory (GOF.Directory.Async? dir) {
+            if (dir != null) {
+                disconnect_directory_handlers (dir);
+                /* Release our reference on dir */
+                loaded_subdirectories.remove (dir);
+            } else
+                warning ("List View: directory null in remove_subdirectory");
         }
 
         protected override bool expand_collapse (Gtk.TreePath? path) {
@@ -244,8 +273,11 @@ namespace FM {
         }
 
         public override void cancel () {
-            base.cancel ();
             cancel_file_timeout ();
+            base.cancel ();
+            loaded_subdirectories.@foreach ((dir) => {
+                remove_subdirectory (dir);
+            });
         }
     }
 }

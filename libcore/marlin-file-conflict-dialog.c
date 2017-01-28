@@ -338,6 +338,8 @@ file_list_ready_cb (GList *files, gpointer user_data)
     GString *str;
     PangoFontDescription *desc;
 
+    gtk_window_set_deletable (GTK_WINDOW (fcd), FALSE);
+
     details = fcd->details;
 
     details->handle = NULL;

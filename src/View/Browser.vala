@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2010 ammonkey
+    Copyright (c) 2010 ammonkey
 
     This library is free software; you can redistribute it and/or modify
     it under the terms of the GNU Lesser General Public License
@@ -39,19 +39,25 @@ namespace Marlin.View {
          * Use this method to track an uri location in
          * the back/forward stacks
          */
-        public void record_uri (string uri) {
+        public void record_uri (string? uri) {
             /* When path changed by browser buttons or menu, uri will equal current_uri */
-            if (current_uri != null && current_uri != uri) {
-                back_stack.push (current_uri);
-                forward_stack.clear ();
+            if (current_uri != null) {
+                if (uri != null) {
+                    /* Only record if the uri has changed other than by use of forward or back buttons */
+                    /* If the forward or back buttons were pressed then the current uri would already have
+                     * been made equal to the new uri */ 
+                    if (current_uri != uri) {
+                        forward_stack.clear ();
+                        back_stack.push (current_uri);
+
+                        ZeitgeistManager.report_event (current_uri, Zeitgeist.ZG.LEAVE_EVENT);
+                        ZeitgeistManager.report_event (uri, Zeitgeist.ZG.ACCESS_EVENT);
+                    }
+                } else { /* If current uri is not loadable remember previous uri anyway so that back button works */
+                    back_stack.push (current_uri);
+                }
             }
-
-            if (current_uri != null)
-                ZeitgeistManager.report_event (current_uri, Zeitgeist.ZG.LEAVE_EVENT);
-
             current_uri = uri;
-
-            ZeitgeistManager.report_event (uri, Zeitgeist.ZG.ACCESS_EVENT);
         }
 
         public Gee.List<string> go_back_list () {
@@ -68,7 +74,7 @@ namespace Marlin.View {
             if (uri != null) {
                 if (current_uri != null) {
                     forward_stack.push (current_uri);
-                    current_uri = uri;
+                    current_uri = uri; /* This stops the change affecting the history */
                 }
             }
 
@@ -84,7 +90,7 @@ namespace Marlin.View {
             if (uri != null) {
                 if (current_uri != null) {
                     back_stack.push (current_uri);
-                    current_uri = uri;
+                    current_uri = uri; /* This stops the change affecting the history */
                 }
             }
 

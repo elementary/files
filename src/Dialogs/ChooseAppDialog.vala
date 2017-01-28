@@ -1,0 +1,69 @@
+/*
+* Copyright (c) 2015-2017 elementary LLC. (http://launchpad.net/pantheon-files)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU Lesser General Public
+* License as published by the Free Software Foundation; either
+* version 3 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+* Boston, MA 02111-1307, USA.
+*
+* Authored by: Jeremy Wootten <jeremy@elementaryos.org>
+*/
+
+class PF.ChooseAppDialog : Object {
+    Gtk.AppChooserDialog dialog;
+    Gtk.CheckButton check_default;
+
+    public GLib.File file_to_open { get; construct; }
+    public Gtk.Window parent { get; construct; }
+
+    public ChooseAppDialog (Gtk.Window? parent, GLib.File file_to_open) {
+        Object (parent: parent, file_to_open: file_to_open);
+    }
+    
+    construct {
+        dialog = new Gtk.AppChooserDialog (parent, Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT, file_to_open);
+        dialog.deletable = false;
+
+        var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
+        app_chooser.show_recommended = true;
+
+        check_default = new Gtk.CheckButton.with_label (_("Set as default"));
+        check_default.active = true;
+        check_default.show ();
+
+        var action_area = dialog.get_action_area () as Gtk.ButtonBox;
+        action_area.add (check_default);
+        action_area.set_child_secondary (check_default, true);
+
+        dialog.show ();
+    }
+
+    public AppInfo? get_app_info () {
+        AppInfo? app = null;
+        int response = dialog.run ();
+        if (response == Gtk.ResponseType.OK) {
+            app = dialog.get_app_info ();
+            if (check_default.get_active ()) {
+                try {
+                    var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE, FileQueryInfoFlags.NONE, null);
+                    app.set_as_default_for_type (info.get_content_type ());
+                }
+                catch (GLib.Error error) {
+                    critical ("Could not set as default: %s", error.message);
+                }
+            }
+        }
+        dialog.destroy ();
+        return app;
+    }
+}

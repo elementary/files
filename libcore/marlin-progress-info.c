@@ -46,6 +46,7 @@ struct _MarlinProgressInfo
 
     GCancellable *cancellable;
 
+    char *title;
     char *status;
     char *details;
     double progress;
@@ -81,6 +82,7 @@ marlin_progress_info_finalize (GObject *object)
 
     info = MARLIN_PROGRESS_INFO (object);
 
+    g_free (info->title);
     g_free (info->status);
     g_free (info->details);
     g_object_unref (info->cancellable);
@@ -119,7 +121,7 @@ marlin_progress_info_class_init (MarlinProgressInfoClass *klass)
     gobject_class->dispose = marlin_progress_info_dispose;
 
     signals[CHANGED] = g_signal_new ("changed",
-                                     MARLIN_TYPE_PROGRESS_INFO,
+                                     MARLIN_PROGRESS_TYPE_INFO,
                                      G_SIGNAL_RUN_LAST,
                                      0,
                                      NULL, NULL,
@@ -127,7 +129,7 @@ marlin_progress_info_class_init (MarlinProgressInfoClass *klass)
                                      G_TYPE_NONE, 0);
 
     signals[PROGRESS_CHANGED] = g_signal_new ("progress-changed",
-                                              MARLIN_TYPE_PROGRESS_INFO,
+                                              MARLIN_PROGRESS_TYPE_INFO,
                                               G_SIGNAL_RUN_LAST,
                                               0,
                                               NULL, NULL,
@@ -135,7 +137,7 @@ marlin_progress_info_class_init (MarlinProgressInfoClass *klass)
                                               G_TYPE_NONE, 0);
 
     signals[STARTED] = g_signal_new ("started",
-                                     MARLIN_TYPE_PROGRESS_INFO,
+                                     MARLIN_PROGRESS_TYPE_INFO,
                                      G_SIGNAL_RUN_LAST,
                                      0,
                                      NULL, NULL,
@@ -143,7 +145,7 @@ marlin_progress_info_class_init (MarlinProgressInfoClass *klass)
                                      G_TYPE_NONE, 0);
 
     signals[FINISHED] = g_signal_new ("finished",
-                                      MARLIN_TYPE_PROGRESS_INFO,
+                                      MARLIN_PROGRESS_TYPE_INFO,
                                       G_SIGNAL_RUN_LAST,
                                       0,
                                       NULL, NULL,
@@ -159,6 +161,8 @@ marlin_progress_info_init (MarlinProgressInfo *info)
 
     info->cancellable = g_cancellable_new ();
 
+    info->title = NULL;
+
     manager = marlin_progress_info_manager_new ();
     marlin_progress_info_manager_add_new_info (manager, info);
     g_object_unref (manager);
@@ -169,9 +173,29 @@ marlin_progress_info_new (void)
 {
     MarlinProgressInfo *info;
 
-    info = g_object_new (MARLIN_TYPE_PROGRESS_INFO, NULL);
+    info = g_object_new (MARLIN_PROGRESS_TYPE_INFO, NULL);
 
     return info;
+}
+
+char *
+marlin_progress_info_get_title (MarlinProgressInfo *info)
+{
+    char *res;
+
+    G_LOCK (progress_info);
+
+    if (info->title) {
+        res = g_strdup (info->title);
+    } else if (info->details) {
+        res = g_strdup (info->details);
+    } else {
+        res = g_strdup (_("Preparing"));
+    }
+
+    G_UNLOCK (progress_info);
+
+    return res;
 }
 
 char *

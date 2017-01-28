@@ -56,6 +56,7 @@ show_message_dialog (const char *primary_text,
 {
     GtkWidget *dialog;
     dialog = gtk_message_dialog_new (parent, 0, type, buttons_type, NULL);
+    gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
     g_object_set (dialog, "text", primary_text, "secondary-text", secondary_text, NULL);
 
     if (details_text != NULL) {
@@ -80,6 +81,7 @@ show_ok_dialog (const char *primary_text,
     dialog = show_message_dialog (primary_text, secondary_text, type,
                                   GTK_BUTTONS_OK, NULL, parent);
     gtk_dialog_set_default_response (GTK_DIALOG (dialog), GTK_RESPONSE_OK);
+
     return dialog;
 }
 
@@ -206,6 +208,7 @@ marlin_dialogs_show_error (gpointer      parent,
                                      GTK_MESSAGE_ERROR,
                                      GTK_BUTTONS_CLOSE,
                                      "%s.", primary_text);
+    gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
 
     /* move the dialog to the appropriate screen */
     if (G_UNLIKELY (window == NULL && screen != NULL))

@@ -11,6 +11,20 @@
         </item>
     </menu>
 
+    <menu id='view-in-location'>
+        <item>
+            <attribute name='label' translatable='yes'>Open Parent Folder</attribute>
+            <attribute name='action'>selection.view_in_location</attribute>
+        </item>
+    </menu>
+
+    <menu id='forget'>
+        <item>
+            <attribute name='label' translatable='yes'>Remove from History</attribute>
+            <attribute name='action'>selection.forget</attribute>
+        </item>
+    </menu>
+
     <menu id='rename'>
         <item>
             <attribute name='label' translatable='yes'>Rename</attribute>
@@ -48,10 +62,14 @@
         </submenu>
     </menu>
 
-    <menu id='hidden'>
+    <menu id='show'>
         <item>
             <attribute name='label' translatable='yes'>Show Hidden Files</attribute>
             <attribute name='action'>background.show_hidden</attribute>
+        </item>
+        <item>
+            <attribute name='label' translatable='yes'>Show Remote Thumbnails</attribute>
+            <attribute name='action'>background.show_remote_thumbnails</attribute>
         </item>
     </menu>
 

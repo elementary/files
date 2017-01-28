@@ -1,0 +1,69 @@
+# Brazilian Portuguese translation for pantheon-files
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the pantheon-files package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pantheon-files\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2016-11-18 23:30+0000\n"
+"Last-Translator: Siderlan Santos <siderlan.santos@gmail.com>\n"
+"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:15+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
+
+msgid "Files"
+msgstr "Arquivos"
+
+msgid "Browse and manage files and folders"
+msgstr "Navegue e gerencie seus arquivos e pastas"
+
+msgid ""
+"Easily copy, move, and rename your files, or use folders to stay organized. "
+"Whether you like files in lists, grids or columns, you can always find them "
+"right away. Access all your files, whether locally, on an external device or "
+"remotely using FTP, SFTP, AFP, Webdav, or Windows share."
+msgstr ""
+"Copie, mova e renomeie seus arquivos facilmente, ou use suas pastas para o "
+"manter organizados. Não importa como você goste de visualizá-los, listas, "
+"grades ou colunas, você sempre vai achá-los da maneira correta. Acesse todos "
+"os seus arquivos, seja localmente, em um dispositivo externo ou remotamente "
+"usando FTP, SFTP, AFP, Webdav ou Compartilhamento com o Windows."
+
+msgid "Fix appdata release dates"
+msgstr "Corrigir datas de lançamento appdata"
+
+msgid "Improve file opening over Samba shares"
+msgstr "Melhorar a abertura de arquivos compartilhados via Samba"
+
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "Corrigir uma falha quando restaurar itens da Lixeira"
+
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr "Melhorar sensibilidade recortar/copiar/colar no contexto do menu"
+
+msgid "Translation updates"
+msgstr "Atualizações de tradução"
+
+msgid "Minor bug fixes"
+msgstr "Correções de bugs menores"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr ""
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""

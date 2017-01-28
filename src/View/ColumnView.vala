@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 elementary Developers
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -40,7 +40,7 @@ namespace FM {
                 GLib.Source.remove (double_click_timeout_id);
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
-                unfreeze_updates ();
+                is_frozen = false;
             }
         }
 
@@ -48,9 +48,10 @@ namespace FM {
             if (double_click_timeout_id != 0) {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
-                unfreeze_updates ();
-                if (should_activate) /* button already released */
+                is_frozen = false;
+                if (should_activate) { /* button already released */
                     activate_selected_items ();
+                }
             }
             return false;
         }
@@ -58,6 +59,15 @@ namespace FM {
         protected override Marlin.ZoomLevel get_set_up_zoom_level () {
             var zoom = Preferences.marlin_column_view_settings.get_enum ("zoom-level");
             Preferences.marlin_column_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
+
+            minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_column_view_settings.get_enum ("minimum-zoom-level");
+            maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_column_view_settings.get_enum ("maximum-zoom-level");
+
+            if (zoom_level < minimum_zoom)
+                zoom_level = minimum_zoom;
+
+            if (zoom_level > maximum_zoom)
+                zoom_level = maximum_zoom;
 
             return (Marlin.ZoomLevel)zoom;
         }
@@ -85,9 +95,12 @@ namespace FM {
                 /* Do not emit alert sound on left and right cursor keys in Miller View */
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
-                    if (no_mods)
+                case Gdk.Key.BackSpace:
+                    if (no_mods) {
+                        /* Pass event to MillerView */ 
+                        slot.colpane.key_press_event (event);
                         return true;
-
+                    }
                     break;
 
                 default:
@@ -126,7 +139,7 @@ namespace FM {
                 else {
                     /*  ... store clicked folder and start double-click timeout */
                     awaiting_double_click = true;
-                    freeze_updates ();
+                    is_frozen = true;
                     double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
                         not_double_click (event, path);
                         return false;

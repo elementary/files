@@ -33,6 +33,8 @@ namespace GOF {
             }
         }
 
+        public bool show_remote_thumbnails {set; get; default=false;}
+
         public bool pref_confirm_trash = true;
         public bool confirm_trash {
             get {
@@ -50,6 +52,16 @@ namespace GOF {
             }
             set {
                 pref_interpret_desktop_files = value;
+            }
+        }
+
+        public bool pref_force_icon_size = true;
+        public bool force_icon_size {
+            get {
+                return pref_force_icon_size;
+            }
+            set {
+                pref_force_icon_size = value;
             }
         }
 

@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 elementary Developers
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -18,17 +18,11 @@
 
 namespace FM {
     public class IconView : AbstractDirectoryView {
-        const double COLUMN_SPACING_RATIO = 0.2;
-        const double ROW_SPACING_RATIO = 0.2;
-        const double ITEM_WIDTH_RATIO = 1.5;
         protected new Gtk.IconView tree;
 
         public IconView (Marlin.View.Slot _slot) {
+            assert (_slot != null);
             base (_slot);
-            minimum_zoom = Marlin.ZoomLevel.SMALLER;
-
-            if (zoom_level < minimum_zoom)
-                zoom_level = minimum_zoom;
         }
 
         ~IconView () {
@@ -60,7 +54,6 @@ namespace FM {
             name_renderer.wrap_mode = Pango.WrapMode.WORD_CHAR;
             name_renderer.xalign = 0.5f;
             name_renderer.yalign = 0.0f;
-            name_renderer.set_fixed_size (-1, 54);
         }
 
         protected void set_up_icon_renderer () {
@@ -89,6 +82,15 @@ namespace FM {
             var zoom = Preferences.marlin_icon_view_settings.get_enum ("zoom-level");
             Preferences.marlin_icon_view_settings.bind ("zoom-level", this, "zoom-level", GLib.SettingsBindFlags.SET);
 
+            minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_icon_view_settings.get_enum ("minimum-zoom-level");
+            maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_icon_view_settings.get_enum ("maximum-zoom-level");
+
+            if (zoom_level < minimum_zoom)
+                zoom_level = minimum_zoom;
+
+            if (zoom_level > maximum_zoom)
+                zoom_level = maximum_zoom;
+
             return (Marlin.ZoomLevel)zoom;
         }
 
@@ -101,9 +103,8 @@ namespace FM {
 
         public override void change_zoom_level () {
             if (tree != null) {
-                tree.set_column_spacing ((int)((double)icon_size * COLUMN_SPACING_RATIO));
-                tree.set_row_spacing ((int)((double)icon_size * ROW_SPACING_RATIO));
-                tree.set_item_width ((int)((double)icon_size * ITEM_WIDTH_RATIO));
+                tree.set_column_spacing ((int)((double)icon_size * (0.3 - zoom_level * 0.03)));
+                tree.set_item_width ((int)((double)icon_size * (2.5 - zoom_level * 0.2)));
 
                 name_renderer.set_property ("wrap-width", tree.get_item_width ());
                 name_renderer.set_property ("zoom-level", zoom_level);
@@ -120,16 +121,10 @@ namespace FM {
             tree.set_drag_dest_item (path, Gtk.IconViewDropPosition.DROP_INTO);
         }
 
-        public override Gtk.TreePath? get_path_at_pos (int x, int y) {
-            unowned Gtk.TreePath? path = null;
-            Gtk.IconViewDropPosition? pos = null;
-
-            /* The next line needs a patched gtk+-3.0.vapi file in order to compile as of valac version 0.25.4
-             * - the fourth parameter should be an 'out' parameter */
-            if (x >= 0 && y >= 0 && tree.get_dest_item_at_pos  (x, y, out path, out pos))
-                return path;
-            else
-                return null;
+        public override Gtk.TreePath? get_path_at_pos (int win_x, int win_y) {
+            /* Supplied coords are drag coords - need IconView bin window coords */
+            /* Icon view does not scroll horizontally so no adjustment needed for x coord*/
+            return tree.get_path_at_pos (win_x, win_y + (int)(get_vadjustment ().get_value ()));
         }
 
         public override void select_all () {
@@ -137,11 +132,13 @@ namespace FM {
         }
 
         public override void unselect_all () {
-            tree.unselect_all ();
+                tree.unselect_all ();
         }
 
         public override void select_path (Gtk.TreePath? path) {
             if (path != null) {
+                /* Ensure cursor follows last selection */
+                tree.set_cursor (path, null, false); /* This selects path but does not unselect the rest (unlike TreeView) */
                 tree.select_path (path);
             }
         }
@@ -256,17 +253,19 @@ namespace FM {
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
-            if (tree == null || path == null || slot.directory.permission_denied)
-                return;
+            if (tree == null || path == null || slot == null || /* slot should not be null but see lp:1595438 */
+                slot.directory.permission_denied || slot.directory.is_empty ()) {
 
-            tree.scroll_to_path (path, scroll_to_top, 0.0f, 0.0f);
+                return;
+            }
+            tree.scroll_to_path (path, scroll_to_top, 0.5f, 0.5f);
         }
 
         protected override void set_cursor_on_cell (Gtk.TreePath path,
                                                     Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top) {
-            scroll_to_cell(path, scroll_to_top);
+            scroll_to_cell (path, scroll_to_top);
             tree.set_cursor (path, renderer, start_editing);
         }
 
@@ -277,14 +276,17 @@ namespace FM {
             if (path == null)
                 return;
 
-            if (!select)
+            if (!select) {
                 tree.selection_changed.disconnect (on_view_selection_changed);
-
+            } else {
+                select_path (path);
+            }
+            
             set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
-            select_path (path);
 
-            if (!select)
+            if (!select) {
                 tree.selection_changed.connect (on_view_selection_changed);
+            }
         }
 
         public override Gtk.TreePath? get_path_at_cursor () {
@@ -307,6 +309,147 @@ namespace FM {
                 tree.thaw_child_notify ();
                 tree_frozen = false;
             }
+        }
+
+        protected override void freeze_child_notify () {
+            tree.freeze_child_notify ();
+        }
+
+        protected override void thaw_child_notify () {
+            tree.thaw_child_notify ();
+        }
+
+        protected override void linear_select_path (Gtk.TreePath path) {
+            /* We override the native Gtk.IconView behaviour when selecting files with Shift-Click */
+            /* We wish to emulate the behaviour of ListView and ColumnView. This depends on whether the */
+            /* the previous selection was made with the Shift key pressed */
+            /* Note: 'first' and 'last' refer to position in selection, not the time selected */
+
+            if (path == null) {
+                critical ("Ignoring attempt to select null path in linear_select_path");
+                return;
+            }
+            if (previous_linear_selection_path != null && path.compare (previous_linear_selection_path) == 0) {
+                /* Ignore if repeat click on same file as before. We keep the previous linear selection direction. */
+                return;
+            }
+
+            var selected_paths = tree.get_selected_items ();
+            /* Ensure the order of the selected files list matches the visible order */
+            selected_paths.sort (Gtk.TreePath.compare);
+
+            var first_selected = selected_paths.first ().data;
+            var last_selected = selected_paths.last ().data;
+            bool before_first = path.compare (first_selected) <= 0;
+            bool after_last = path.compare (last_selected) >= 0;
+            bool direction_change = false;
+
+            direction_change = (before_first && previous_linear_selection_direction > 0) ||
+                               (after_last && previous_linear_selection_direction < 0);
+
+            var p = path.copy ();
+            Gtk.TreePath p2 = null;
+
+            unselect_all ();
+            Gtk.TreePath? end_path = null;
+            if (!previous_selection_was_linear && previous_linear_selection_path != null) {
+                end_path = previous_linear_selection_path;
+            } else if (before_first) {
+                end_path = direction_change ? first_selected : last_selected;
+            } else {
+                end_path = direction_change ? last_selected : first_selected;
+            }
+
+            if (before_first) {
+                do {
+                    p2 = p.copy ();
+                    select_path (p);
+                    p.next ();
+                } while (p.compare (p2) != 0 && p.compare (end_path) <= 0);
+            } else if (after_last) {
+                do {
+                    select_path (p);
+                    p2 = p.copy ();
+                    p.prev ();
+                } while (p.compare (p2) != 0 && p.compare (end_path) >= 0);
+            } else {/* between first and last */
+                do {
+                    p2 = p.copy ();
+                    select_path (p);
+                    p.prev ();
+                } while (p.compare (p2) != 0 && p.compare (first_selected) >= 0);
+
+                p = path.copy ();
+                do {
+                    p2 = p.copy ();
+                    p.next ();
+                    unselect_path (p);
+                } while (p.compare (p2) != 0 && p.compare (last_selected) <= 0);
+            }
+            previous_selection_was_linear = true;
+
+            selected_paths = tree.get_selected_items ();
+            selected_paths.sort (Gtk.TreePath.compare);
+
+            first_selected = selected_paths.first ().data;
+            last_selected = selected_paths.last ().data;
+
+            if (path.compare (last_selected) == 0) {
+                previous_linear_selection_direction = 1; /* clicked after the (visually) first selection */
+            } else if (path.compare (first_selected) == 0) {
+                previous_linear_selection_direction = -1; /* clicked before the (visually) first selection */
+            } else {
+                critical ("Linear selection did not become end point - this should not happen!");
+                previous_linear_selection_direction = 0;
+            }
+            previous_linear_selection_path = path.copy ();
+            /* Ensure cursor in correct place, regardless of any selections made in this function */
+            tree.set_cursor (path, null, false);
+            tree.scroll_to_path (path, false, 0.5f, 0.5f);
+        }
+
+        protected override Gtk.TreePath up (Gtk.TreePath path) {
+            int item_row = tree.get_item_row (path);
+            if (item_row == 0) {
+                return path;
+            }
+            int cols = get_n_cols ();
+            int index = path.get_indices ()[0];
+            Gtk.TreePath new_path;
+            Gtk.TreeIter? iter = null;
+            new_path = new Gtk.TreePath.from_indices (index - cols, -1);
+            if (tree.model.get_iter (out iter, new_path)) {
+                return new_path;
+            } else {
+                return path;
+            }
+        }
+        protected override Gtk.TreePath down (Gtk.TreePath path) {
+            int cols = get_n_cols ();
+            int index = path.get_indices ()[0];
+
+            Gtk.TreePath new_path;
+            Gtk.TreeIter? iter = null;
+            new_path = new Gtk.TreePath.from_indices (index + cols, -1);
+            if (tree.model.get_iter (out iter, new_path)) {
+                return new_path;
+            } else {
+                return path;
+            }
+        }
+
+        /* When Icon View is automatically adjusting column number it does not expose the actual number of
+         * columns (get_columns () returns -1). So we have to write our own method. This is the only way
+         * (I can think of) that works on row 0. 
+         */   
+        private int get_n_cols () {
+            var path = new Gtk.TreePath.from_indices (0, -1);
+            int index = 0;
+            while (tree.get_item_row (path) == 0) {
+                index++;
+                path.next ();
+            }
+            return index;
         }
     }
 }

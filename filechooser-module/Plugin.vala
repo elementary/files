@@ -1,6 +1,6 @@
 // -*- Mode: vala; indent-tabs-mode: nil; tab-width: 4 -*-
 /*-
- * Copyright (c) 2013 Pantheon Developers (http://launchpad.net/elementary)
+ * Copyright (c) 2013 elementary LLC (http://launchpad.net/elementary)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -25,6 +25,8 @@ public class PantheonModule.FileChooserDialog : GLib.Object {
     Gee.TreeSet<Gtk.FileChooserDialog> tree_set;
     public FileChooserDialog () {
         tree_set = new Gee.TreeSet<Gtk.FileChooserDialog> ();
+        /* We need to register the Gtk.Dialog class first */
+        (typeof (Gtk.Dialog)).class_ref ();
         /* It's the only way to get every new window */
         var map_id = GLib.Signal.lookup ("window-state-event", typeof (Gtk.Dialog));
         GLib.Signal.add_emission_hook (map_id, 0, (ihint, param_values) => {
@@ -32,10 +34,10 @@ public class PantheonModule.FileChooserDialog : GLib.Object {
                 var dialog = (Gtk.FileChooserDialog)param_values [0];//.dup_object ();
                 if (tree_set.contains (dialog) == false) {
                     tree_set.add (dialog);
-                    
-                    var dialog_new = new CustomFileChooserDialog (dialog);  
-                    dialog_new.set_open_path (dialog.get_current_folder ());
+                    var dialog_new = new CustomFileChooserDialog (dialog);
+                    dialog.set_data<CustomFileChooserDialog> ("pantheon_dialog", dialog_new);
                     dialog.destroy.connect (() => {
+                        dialog.steal_data<CustomFileChooserDialog> ("pantheon_dialog");
                         tree_set.remove (dialog);
                     });
                 }
@@ -52,6 +54,7 @@ public void gtk_module_init ([CCode (array_length_cname = "argc", array_length_p
         var appinfo = AppInfo.get_default_for_type ("inode/directory", true);
         if (appinfo.get_executable () == "pantheon-files")
             filechooser_module = new PantheonModule.FileChooserDialog ();
-    } else
-        warning ("The required GTK version is 3.14");    
+    } else {
+        warning ("The required GTK version is 3.14");
+    }
 }

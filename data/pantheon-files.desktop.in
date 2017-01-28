@@ -8,29 +8,20 @@ Icon=system-file-manager
 Terminal=false
 StartupNotify=true
 Type=Application
-MimeType=x-directory/gnome-default-handler;x-directory/normal;inode/directory;
+MimeType=inode/directory;
 Categories=System;Utility;Core;GTK;FileTools;FileManager;
 X-GNOME-Gettext-Domain=pantheon-files
 X-GNOME-UsesNotifications=true
+Actions=WindowNew;Root;AboutDialog;
 
-X-Ayatana-Desktop-Shortcuts=TabNew;WindowNew;Root;AboutDialog
-
-[TabNew Shortcut Group]
-Name=New _Tab
-Exec=pantheon-files -t
-TargetEnvironment=Unity
-
-[WindowNew Shortcut Group]
+[Desktop Action WindowNew]
 Name=New _Window
 Exec=pantheon-files -n
-TargetEnvironment=Unity
 
-[Root Shortcut Group]
+[Desktop Action Root]
 Name=New Window As _Administrator
 Exec=pantheon-files-pkexec
-TargetEnvironment=Unity
 
-[AboutDialog Shortcut Group]
+[Desktop Action AboutDialog]
 Name=About _Files
 Exec=pantheon-files --about
-TargetEnvironment=Unity

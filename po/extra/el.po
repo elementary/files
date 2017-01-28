@@ -1,0 +1,64 @@
+# Greek translation for pantheon-files
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the pantheon-files package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pantheon-files\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2017-01-25 22:53+0000\n"
+"Last-Translator: Christos Iatropoulos <Unknown>\n"
+"Language-Team: Greek <el@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:14+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
+
+msgid "Files"
+msgstr "Αρχεία"
+
+msgid "Browse and manage files and folders"
+msgstr "Περιήγηση και διαχείριση αρχείων και φακέλων"
+
+msgid ""
+"Easily copy, move, and rename your files, or use folders to stay organized. "
+"Whether you like files in lists, grids or columns, you can always find them "
+"right away. Access all your files, whether locally, on an external device or "
+"remotely using FTP, SFTP, AFP, Webdav, or Windows share."
+msgstr ""
+
+msgid "Fix appdata release dates"
+msgstr ""
+
+msgid "Improve file opening over Samba shares"
+msgstr ""
+
+msgid "Fix a crash when restoring items from the Trash"
+msgstr ""
+
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr ""
+
+msgid "Translation updates"
+msgstr "Ενημερώσεις μεταφράσεων"
+
+msgid "Minor bug fixes"
+msgstr ""
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
+msgstr "Βελτιωμένη υποστήριξη μετάφρασης"
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr "Νέες μεταφράσεις"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""

@@ -461,11 +461,10 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
             break;
 
         case MARLIN_UNDO_RENAME:
-            new_name = get_uri_basename (action->new_uri);
-            file = gof_file_get_by_uri (action->old_uri);
-            gof_file_rename (file, new_name, undo_redo_done_rename_callback, action);
-            g_object_unref (file);
-            g_free (new_name);
+            pf_file_utils_set_file_display_name (g_file_new_for_uri (action->old_uri),
+                                                 get_uri_basename (action->new_uri),
+                                                 undo_redo_done_rename_callback,
+                                                 action);
             break;
 
         case MARLIN_UNDO_CREATEEMPTYFILE:
@@ -555,8 +554,6 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
 {
     GList *uris = NULL;
     GHashTable *files_to_restore;
-    GOFFile *file;
-    char *new_name;
     MarlinUndoManagerPrivate *priv = manager->priv;
 
     g_mutex_lock (&priv->mutex);
@@ -634,6 +631,10 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
                 }
                 g_list_free (gfiles_in_trash);
                 marlin_file_changes_consume_changes (TRUE);
+            } else {
+                eel_show_error_dialog (_("Original location could not be determined"),
+                                       _("Open trash folder and restore manually"),
+                                       gtk_widget_get_toplevel (parent_view));
             }
             g_hash_table_destroy (files_to_restore);
 
@@ -648,11 +649,10 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
             break;
 
         case MARLIN_UNDO_RENAME:
-            new_name = get_uri_basename (action->old_uri);
-            file = gof_file_get_by_uri (action->new_uri);
-            gof_file_rename (file, new_name, undo_redo_done_rename_callback, action);
-            g_object_unref (file);
-            g_free (new_name);
+            pf_file_utils_set_file_display_name (g_file_new_for_uri (action->new_uri),
+                                                 get_uri_basename (action->old_uri),
+                                                 undo_redo_done_rename_callback,
+                                                 action);
             break;
 
 #if 0
@@ -2064,27 +2064,28 @@ retrieve_files_to_restore (GHashTable * trashed)
                 g_file_enumerator_next_file (enumerator, NULL, NULL)) != NULL) {
             /* Retrieve the original file uri */
             origpath = g_file_info_get_attribute_byte_string (info, "trash::orig-path");
-            origfile = g_file_new_for_path (origpath);
-            origuri = g_file_get_uri (origfile);
-            g_object_unref (origfile);
+            if (origpath) {
+                origfile = g_file_new_for_path (origpath);
+                origuri = g_file_get_uri (origfile);
+                g_object_unref (origfile);
 
-            lookupvalue = g_hash_table_lookup (trashed, origuri);
+                lookupvalue = g_hash_table_lookup (trashed, origuri);
 
-            if (lookupvalue) {
-                //printf ("we got a MATCH\n");
-                mtime = (guint64 *)
-                    lookupvalue;
-                mtime_item =
-                    g_file_info_get_attribute_uint64
-                    (info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
-                if (*mtime == mtime_item) {
-                    item = g_file_get_child (trash, g_file_info_get_name (info)); /* File in the trash */
-                    g_hash_table_insert (to_restore, item, origuri);
+                if (lookupvalue) {
+                    //printf ("we got a MATCH\n");
+                    mtime = (guint64 *)
+                        lookupvalue;
+                    mtime_item =
+                        g_file_info_get_attribute_uint64
+                        (info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+                    if (*mtime == mtime_item) {
+                        item = g_file_get_child (trash, g_file_info_get_name (info)); /* File in the trash */
+                        g_hash_table_insert (to_restore, item, origuri);
+                    }
+                } else {
+                    g_free (origuri);
                 }
-            } else {
-                g_free (origuri);
             }
-
         }
         g_file_enumerator_close (enumerator, FALSE, NULL);
         g_object_unref (enumerator);

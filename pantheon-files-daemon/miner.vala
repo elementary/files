@@ -1,4 +1,4 @@
-[DBus (name = "org.elementary.pantheonfiles.db")]
+[DBus (name = "org.pantheon.files.db")]
 interface Tags : Object {
     public abstract bool   	showTable	(string table) 	throws IOError;
     public abstract bool 	record_uris	(Variant[] entries, string directory) 	throws IOError;
@@ -23,8 +23,8 @@ public class Miner : Object {
         cancellable = new Cancellable ();
 
         try {
-            tags = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.pantheonfiles.db",
-                                       "/org/elementary/pantheonfiles/db");
+            tags = Bus.get_proxy_sync (BusType.SESSION, "org.pantheon.files.db",
+                                       "/org/pantheon/files/db");
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }

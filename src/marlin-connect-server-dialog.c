@@ -880,11 +880,14 @@ marlin_connect_server_dialog_init (MarlinConnectServerDialog *dialog)
                                                    MarlinConnectServerDialogDetails);
 
     content_area = gtk_dialog_get_content_area (GTK_DIALOG (dialog));
+    gtk_widget_set_margin_start (GTK_WIDGET (content_area), 12);
+    gtk_widget_set_margin_end (GTK_WIDGET (content_area), 12);
+    gtk_widget_set_margin_bottom (GTK_WIDGET (content_area), 6);
 
     /* set dialog properties */
     gtk_window_set_title (GTK_WINDOW (dialog), _("Connect to Server"));
-    gtk_container_set_border_width (GTK_CONTAINER (dialog), 6);
-    gtk_box_set_spacing (GTK_BOX (content_area), 2);
+    gtk_window_set_deletable (GTK_WINDOW (dialog), FALSE);
+    gtk_box_set_spacing (GTK_BOX (content_area), 6);
     gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
 
     /* create the size group */

@@ -1,5 +1,5 @@
 /*-
- * Copyright (c) 2015 Pantheon Developers (http://launchpad.net/elementary)
+ * Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -19,253 +19,332 @@
  * Authored by: Adam Bieńkowski <donadigos159@gmail.com>
  */
 
+/*** The Gtk.FileChooserWidget widget names and paths can be found in "gtkfilechooserwidget.ui"
+ *   in the Gtk+3 source code package.  Changes to that file could break this code.
+***/
 public class CustomFileChooserDialog : Object {
-    private static Gtk.FileChooser chooser;
-
-    private static Gtk.FileChooserDialog d;
+    private static Gtk.FileChooserDialog chooser_dialog;
     private static Gtk.Widget rootwidget;
     
     private static Gtk.Box container_box;
     private static Gtk.Button? gtk_folder_button = null;
 
     /* Response to get parent of the bottom box */
-    private const int BUTTON_RESPONSE = -6;    
+    private const int BUTTON_RESPONSE = -6;
 
     /* Paths to widgets */
-    private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_box" };
+    private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_revealer" };
     private const string[] GTK_FILTERCHOOSER_PATH = { "extra_and_filters", "filter_combo_hbox" };
-    private const string[] GTK_CREATEFOLDER_BUTTON_PATH = { "browse_header_stack", "browse_path_bar_hbox", "browse_new_folder_button" };
+    private const string[] GTK_TREEVIEW_PATH = { "browse_files_stack", "browse_files_swin", "browse_files_tree_view" };
     private const string PLACES_SIDEBAR_PATH = "places_sidebar";
 
-    private const string FILE_PREFIX = "file://";
+    private GLib.Queue<string> previous_paths;
+    private GLib.Queue<string> next_paths;
 
-    private GenericArray<string> forward_path_list = new GenericArray<string> ();
-    private Gee.ArrayList<string> history  = new Gee.ArrayList<string> ();
+    private bool filters_available = false;
 
-    private static bool filters_available = false;
+    private string current_path = null;
+    private bool is_previous = false;
+    private bool is_button_next = false;
+    private bool is_single_click = true;
+    private bool can_activate = true;
 
-    private static string open_path;
-    private string previous_path = "";
+    public CustomFileChooserDialog (Gtk.FileChooserDialog dialog) {
+        previous_paths = new GLib.Queue<string> ();
+        next_paths = new GLib.Queue<string> ();
+        /* The "chooser_dialog" variable is the main dialog */
+        chooser_dialog = dialog;
+        chooser_dialog.can_focus = true;
+        chooser_dialog.deletable = false;
 
-    public CustomFileChooserDialog (Gtk.FileChooserDialog _dialog) {
-        /* The "d" variable is the main dialog */
-        d = _dialog;
-        d.can_focus = true;
-        
-        /* Main FileChooser interface */
-        chooser = (d as Gtk.FileChooser);
+        var settings = new Settings ("org.pantheon.files.preferences");
+        is_single_click = settings.get_boolean ("single-click");
 
-        d.deletable = false;
         assign_container_box ();
-        setup_filter_box ();
         remove_gtk_widgets ();
+        setup_filter_box ();
 
         var header_bar = new Gtk.HeaderBar ();
-        
+
         var button_back = new Gtk.Button.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         button_back.tooltip_text = _("Previous");
         button_back.sensitive = false;
-        
+
         var button_forward = new Gtk.Button.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
         button_forward.tooltip_text = _("Next");
         button_forward.sensitive = false;
 
-        var pathbar = new Marlin.View.Chrome.LocationBar (rootwidget);
-        pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
-        pathbar.hexpand = true;
+        var location_bar = new Marlin.View.Chrome.BasicLocationBar ();
+        location_bar.set_display_path (chooser_dialog.get_current_folder_uri ());
+        location_bar.hexpand = true;
 
         header_bar.pack_start (button_back);
         header_bar.pack_start (button_forward);
-        header_bar.pack_start (pathbar);
-        if ((gtk_folder_button != null) && (chooser.get_action () != Gtk.FileChooserAction.OPEN)) {
-            var create_folder_button = new Gtk.Button.from_icon_name ("folder-new", Gtk.IconSize.LARGE_TOOLBAR);
-            create_folder_button.set_tooltip_text (_("Create folder"));
-            create_folder_button.clicked.connect (() => {
-                gtk_folder_button.clicked ();
-            });
-
-            header_bar.pack_end (create_folder_button);
+        header_bar.pack_start (location_bar);
+        if ((gtk_folder_button != null) && (chooser_dialog.get_action () != Gtk.FileChooserAction.OPEN)) {
+            gtk_folder_button.image = new Gtk.Image.from_icon_name ("folder-new", Gtk.IconSize.LARGE_TOOLBAR);
+            ((Gtk.Container) gtk_folder_button.get_parent ()).remove (gtk_folder_button);
+            header_bar.pack_end (gtk_folder_button);
         }
 
-        d.set_titlebar (header_bar);
-        d.show_all ();
-        
+        chooser_dialog.set_titlebar (header_bar);
+        chooser_dialog.show_all ();
+
         button_back.clicked.connect (() => {
-            forward_path_list.add (chooser.get_current_folder ());
-            
-            history.remove (history.last ());
-            chooser.set_current_folder (history.last ()); 
-            history.remove (history.last ());
+            is_previous = true;
+            chooser_dialog.set_current_folder_uri (previous_paths.pop_head ());
         });
 
         button_forward.clicked.connect (() => {
-            if (forward_path_list.length > 0) {
-                int length = forward_path_list.length - 1;
-                
-                pathbar.path = FILE_PREFIX + forward_path_list.@get (length);
-                chooser.set_current_folder (forward_path_list.@get (length));
-                forward_path_list.remove (forward_path_list.@get (length));
-            }
+            is_button_next = true;
+            chooser_dialog.set_current_folder_uri (next_paths.pop_head ());
         });
 
-        chooser.current_folder_changed.connect (() => {
-            if (history.size > 0)
-                previous_path = history.last (); 
-            else if (open_path != chooser.get_current_folder ()) {
-                previous_path = "";
-                history.add (open_path);
+        chooser_dialog.current_folder_changed.connect (() => {
+            var previous_path = current_path;
+            current_path = chooser_dialog.get_current_folder_uri ();
+            if (previous_path == null || previous_path == current_path) {
+                location_bar.set_display_path (current_path);
+                return;
             }
 
-            button_back.sensitive = (history.size > 0);
-            button_forward.sensitive = (forward_path_list.length > 0);
+            if (is_previous) {
+                next_paths.push_head (previous_path);
+                is_previous = false;
+            } else {
+                previous_paths.push_head (previous_path);
+                if (!is_button_next) {
+                    next_paths.clear ();
+                } else {
+                    is_button_next = false;
+                }
+            }
 
-            if (chooser.get_current_folder () != previous_path)
-                history.add (chooser.get_current_folder ());
-
-            pathbar.path = FILE_PREFIX + chooser.get_current_folder ();
+            button_back.sensitive = !previous_paths.is_empty ();
+            button_forward.sensitive = !next_paths.is_empty ();
+            location_bar.set_display_path (current_path);
         });
-        
-        pathbar.change_to_file.connect ((file) => {
-            chooser.set_current_folder (file);
+
+        location_bar.path_change_request.connect ((uri) => {
+            chooser_dialog.set_current_folder (uri);
         });
     }
 
-    public void set_open_path (string _open_path) {
-        open_path = _open_path;
-        previous_path = open_path;
-        chooser.set_current_folder (open_path);
-    }
+    /*
+     * Playing with the native Gtk dialog.
+     */
 
     /* Remove GTK's native path bar and FileFilter chooser by widgets names */
-    private static void remove_gtk_widgets () {
-        foreach (var root in d.get_children ()) {
-            foreach (var w0 in (root as Gtk.Container).get_children ()) {
+    private void remove_gtk_widgets () {
+        chooser_dialog.get_children ().foreach ((root) => {
+            (root as Gtk.Container).get_children ().foreach ((w0) => {
                 if (w0.get_name () == GTK_PATHBAR_PATH[0]) {
                     /* Add top separator between headerbar and filechooser when is not Save action */
-                        var chooserwidget = w0 as Gtk.Container;
-                        chooserwidget.vexpand = true;
+                    var chooserwidget = w0 as Gtk.Container;
+                    chooserwidget.vexpand = true;
 
-                        (root as Gtk.Container).remove (w0);
-                        var root_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+                    (root as Gtk.Container).remove (w0);
+                    var root_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+                    root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
+                    root_box.add (chooserwidget); 
+
+                    if (chooser_dialog.get_extra_widget () == null) {
                         root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-                        root_box.add (chooserwidget); 
+                    }
 
-                        if (chooser.get_extra_widget () == null)
-                            root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));   
-                                                 
-                        (root as Gtk.Container).add (root_box);
-                        rootwidget = chooserwidget;
-                        rootwidget = w0;
-                        rootwidget.can_focus = true;
-                        transform_rootwidget_container (rootwidget, w0);
+                    (root as Gtk.Container).add (root_box);
+                    rootwidget = chooserwidget;
+                    rootwidget = w0;
+                    rootwidget.can_focus = true;
+                    transform_rootwidget_container (rootwidget, w0);
                 }
-            }  
-        }   
+            });
+        });
     }
 
-    private static void transform_rootwidget_container (Gtk.Widget rootwidget, Gtk.Widget w0) {
-        foreach (var w1 in (rootwidget as Gtk.Container).get_children ()) {
+    private void transform_rootwidget_container (Gtk.Widget rootwidget, Gtk.Widget w0) {
+        (rootwidget as Gtk.Container).get_children ().foreach ((w1) => {
             if (w1.name == "GtkBox" && w1.get_name () != GTK_PATHBAR_PATH[1]) {
-                var new_w1 = w1.@ref ();
+                w1.ref ();
                 (rootwidget as Gtk.Container).remove (w1);
 
-                foreach (var grid in (new_w1 as Gtk.Container).get_children ()) {
-                    if (grid != null) {
-                        var new_grid = grid.@ref ();
-                        (new_grid as Gtk.Widget).margin = 0;
-                        (new_w1 as Gtk.Container).remove (grid);
-                        container_box.add (new_grid as Gtk.Widget);
-                    }
-                } 
-                       
+                (w1 as Gtk.Container).get_children ().foreach ((grid) => {
+                    grid.ref ();
+                    grid.margin = 0;
+                    grid.valign = Gtk.Align.CENTER;
+                    ((Gtk.Container) grid).border_width = 0;
+                    (w1 as Gtk.Container).remove (grid);
+                    container_box.pack_start (grid);
+                    ((Gtk.ButtonBox) container_box).set_child_secondary (grid, true);
+                    grid.unref ();
+                });
+
+                w1.unref ();
                 container_box.show_all ();
-            } else if (w1.get_name () == GTK_PATHBAR_PATH[1])
+            } else if (w1.get_name () == GTK_PATHBAR_PATH[1]) {
                 transform_w1_container (w1);
-            else {
+            } else {
                 if (w1.get_name () == GTK_FILTERCHOOSER_PATH[0]) {
                     /* Remove extra_and_filters if there is no extra widget */
-                    if (chooser.get_extra_widget () == null)
+                    if (chooser_dialog.get_extra_widget () == null) {
                         (w0 as Gtk.Container).remove (w1);
-                    else {
-                        foreach (var w5 in (w1 as Gtk.Container).get_children ()) {
+                    } else {
+                        (w1 as Gtk.Container).get_children ().foreach ((w5) => {
                             if (w5.get_name () == GTK_FILTERCHOOSER_PATH[1])
                                (w1 as Gtk.Container).remove (w5);
-                        }
+                        });
                     }
                 }
-            }   
-        }
+            }
+        });
     }
 
-    private static void transform_w1_container (Gtk.Widget w1) {
-        foreach (var paned in (w1 as Gtk.Container).get_children ()) {
-            foreach (var w2 in (paned as Gtk.Container).get_children ()) {
-                if (w2.get_name () == PLACES_SIDEBAR_PATH) {
+    private void transform_w1_container (Gtk.Widget w1) {
+        (w1 as Gtk.Container).get_children ().foreach ((paned) => {
+            (paned as Gtk.Container).get_children ().foreach ((w2) => {
+                if (w2 is Gtk.PlacesSidebar) {
                     (w2 as Gtk.PlacesSidebar).show_desktop = false; 
                     (w2 as Gtk.PlacesSidebar).show_enter_location = false;
-                } else if (w2.get_name () == GTK_PATHBAR_PATH[2])
-                    transform_w2_container (w2);   
-            }
-        }
+                } else {
+                    transform_w2_container (w2);
+                }
+            });
+        });
     }
 
-    private static void transform_w2_container (Gtk.Widget w2) {
-        foreach (var w3 in (w2 as Gtk.Container).get_children ()) {
+    private void transform_w2_container (Gtk.Widget w2) {
+        (w2 as Gtk.Container).get_children ().foreach ((w3) => {
             if (w3.get_name () == GTK_PATHBAR_PATH[3]) {
-                foreach (var w4 in (w3 as Gtk.Container).get_children ()) {
-                    if (w4.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[0]) {
-                        foreach (var w5 in (w4 as Gtk.Container).get_children ()) {
-                            if (w5.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[1]) {
-                                foreach (var w6 in (w5 as Gtk.Container).get_children ()) {
-                                    if (w6.get_name () == GTK_CREATEFOLDER_BUTTON_PATH[2])
+                (w3 as Gtk.Container).get_children ().foreach ((w4) => {
+                    (w4 as Gtk.Container).get_children ().foreach ((w5) => {
+                        (w5 as Gtk.Container).get_children ().foreach ((w6) => {
+                            if (w6 is Gtk.Box) {
+                                (w6 as Gtk.Container).get_children ().foreach ((w7) => {
+                                    if (w7 is Gtk.Button) {
                                         /* Register the button so we can use it's signal */
-                                        gtk_folder_button = w6.@ref () as Gtk.Button;
-                                }   
+                                        gtk_folder_button = w7 as Gtk.Button;
+                                    }
+                                });
                             }
-                        }
-                    }
-                }
+                        });
+                    });
+                });
 
                 (w2 as Gtk.Container).remove (w3);
+            } else if (w3.get_name () ==  "list_and_preview_box") { /* file browser list and preview box */
+                var tv = find_tree_view (w3);
+                if (tv != null) {
+                    /* set its click behaviour the same as pantheon-files setting */
+                    tv.set_activate_on_single_click (is_single_click);
+                    if (is_single_click) {
+                        /* We need to modify native behaviour to only activate on folders */
+                        tv.add_events (Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK);
+                        tv.button_press_event.connect (on_tv_button_press_event);
+                        tv.button_release_event.connect (on_tv_button_release_event);
+                    }
+                }
             }
-        }        
+        });
     }
 
-    private static void assign_container_box () {
-        var tmp = d.get_widget_for_response (BUTTON_RESPONSE);
+    private Gtk.TreeView? find_tree_view (Gtk.Widget browser_box) {
+        /* Locate the TreeView */
+        Gtk.TreeView? tv = null;
+        ((Gtk.Container)browser_box).get_children ().foreach ((w) => {
+            if (w.get_name () == GTK_TREEVIEW_PATH[0]) {
+                ((Gtk.Container)w).get_children ().foreach ((w) => {
+                    if (w.name == "GtkBox") {
+                        ((Gtk.Container)w).get_children ().foreach ((w) => {
+                            if (w.get_name () == GTK_TREEVIEW_PATH[1]) {
+                                ((Gtk.Container)w).get_children ().foreach ((w) => {
+                                    if (w.get_name () == GTK_TREEVIEW_PATH[2]) {
+                                        tv = (Gtk.TreeView)w;
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
 
-        var container = tmp.get_parent ();
-        container_box = container.get_parent () as Gtk.Box;           
+        return tv;
     }
-    
-    private static void setup_filter_box () {
-        var filters = chooser.list_filters (); 
+
+    private void assign_container_box () {
+        container_box = chooser_dialog.get_action_area () as Gtk.Box;
+        container_box.valign = Gtk.Align.CENTER;
+        container_box.get_children ().foreach ((child) => {
+            child.valign = Gtk.Align.CENTER;
+        });
+    }
+
+    private void setup_filter_box () {
+        var filters = chooser_dialog.list_filters ();
+        var current_filter_name = chooser_dialog.get_filter ().get_filter_name ();
+
         if (filters.length () > 0) {
             filters_available = true;
             var combo_box = new Gtk.ComboBoxText ();
-            
-            if (chooser.get_action () == Gtk.FileChooserAction.SAVE)
-                combo_box.margin_top = 8;
-            else    
-                combo_box.margin_top = 4;
-                
             combo_box.changed.connect (() => {
-                chooser.list_filters ().@foreach ((filter) => {
+                chooser_dialog.list_filters ().foreach ((filter) => {
                     if (filter.get_filter_name () == combo_box.get_active_text ())
-                        chooser.set_filter (filter);
+                        chooser_dialog.set_filter (filter);
                 });
             });
 
+            var index = 0;
             filters.foreach ((filter) => {
-                combo_box.append_text (filter.get_filter_name ()); 
+                var name = filter.get_filter_name ();
+                combo_box.append_text (name);
+                if (name == current_filter_name) {
+                    combo_box.active = index;
+                }
+
+                index++;
             });
 
-            combo_box.active = 0;
-       
             var grid = new Gtk.Grid ();
-            grid.margin_start = 5;
+            grid.valign = Gtk.Align.CENTER;
             grid.add (combo_box);
-            container_box.add (grid);   
+            container_box.pack_end (grid);
+            ((Gtk.ButtonBox) container_box).set_child_secondary (grid, true);
         }
+    }
+
+    private bool on_tv_button_press_event (Gtk.Widget w, Gdk.EventButton event) {
+        can_activate = false;
+        if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
+            can_activate = true;
+            return false;
+        }
+
+        if (w == null) {
+            return false;
+        }
+
+        Gtk.TreeView tv = ((Gtk.TreeView)(w));
+        Gtk.TreePath? path = null;
+        int cell_x, cell_y;
+
+        tv.get_path_at_pos ((int)(event.x), (int)(event.y), out path, null, out cell_x, out cell_y);
+
+        if (path != null) {
+            var model = tv.get_model ();
+            Gtk.TreeIter? iter = null;
+            if (model.get_iter (out iter, path)) {
+                bool is_folder;
+                model.@get (iter, 5, out is_folder);
+                if (is_folder) {
+                    can_activate = true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool on_tv_button_release_event (Gdk.EventButton event) {
+        return !can_activate;
     }
 }

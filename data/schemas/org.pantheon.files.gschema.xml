@@ -12,7 +12,9 @@
     <value value="3" nick="normal"/>
     <value value="4" nick="large"/>
     <value value="5" nick="larger"/>
-    <value value="6" nick="largest"/>
+    <value value="6" nick="huge"/>
+    <value value="7" nick="huger"/>
+    <value value="8" nick="largest"/>
   </enum>
   <enum id="dateformatmode">
     <value value="0" nick="iso"/>
@@ -21,6 +23,11 @@
   </enum>
 
   <schema path="/org/pantheon/files/preferences/" id="org.pantheon.files.preferences">
+    <key type="b" name="show-remote-thumbnails">
+      <default>false</default>
+      <summary>Thumbnail remote files</summary>
+      <description>Show thumbnails for files on remote filesystems</description>
+    </key>
     <key type="b" name="show-sidebar">
       <default>true</default>
       <summary>Show the sidebar</summary>
@@ -51,13 +58,6 @@
       <summary>Default viewmode when browsing</summary>
       <description>
         The default viewmode to be used when opening a new tab or window
-      </description>
-    </key>
-    <key type="as" name="toolbar-items">
-      <default>[ 'Back', 'Forward', 'ViewSwitcher', 'LocationEntry']</default>
-      <summary>List of actions present in the toolbar</summary>
-      <description>
-        List of actions present in the toolbar
       </description>
     </key>
     <key name="sidebar-zoom-level" enum="org.pantheon.files.ZoomLevel">
@@ -130,18 +130,33 @@
       <default>[(0,'','')]</default>
       <description>Array of tab info:  View mode, root uri, tip uri (for Miller view)</description>
     </key>
+    <key type="b" name="force-icon-size">
+      <default>false</default>
+      <summary>Whether to force icons to the specified size</summary>
+      <description>Whether to scale up small icons to the size specified by the zoom level, if necessary</description>
+    </key>
   </schema>
 
   <schema path="/org/pantheon/files/icon-view/" id="org.pantheon.files.icon-view">
     <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
       <default>'large'</default>
-      <summary>icon default zoom level</summary>
+      <summary>Icon default zoom level</summary>
       <description>Default Zoom level used by the icon view.</description>
     </key>
     <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
       <default>'large'</default>
-      <summary>icon zoom level</summary>
-      <description>Zoom level used by the icon view.</description>
+      <summary>Icon zoom level</summary>
+      <description>Zoom level used by the Icon View.</description>
+    </key>
+    <key name="minimum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+      <default>'normal'</default>
+      <summary>Minimum icon zoom level</summary>
+      <description>The minimum zoom level used by the Icon View.</description>
+    </key>
+    <key name="maximum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+      <default>'largest'</default>
+      <summary>Maximum icon zoom level</summary>
+      <description>The maximum zoom level used by the Icon View.</description>
     </key>
   </schema>
 
@@ -149,12 +164,22 @@
     <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon default zoom level</summary>
-      <description>Default Zoom level used by the list view.</description>
+      <description>Default Zoom level used by the List View.</description>
     </key>
     <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon zoom level</summary>
-      <description>Zoom level used by the list view.</description>
+      <description>Zoom level used by the List View.</description>
+    </key>
+    <key name="minimum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+      <default>'smaller'</default>
+      <summary>Minimum icon zoom level</summary>
+      <description>The minimum zoom level used by the List View.</description>
+    </key>
+    <key name="maximum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+      <default>'large'</default>
+      <summary>Maximum icon zoom level</summary>
+      <description>The maximum zoom level used by the List View.</description>
     </key>
   </schema>
 
@@ -162,17 +187,27 @@
     <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon default zoom level</summary>
-      <description>Default Zoom level used by the column view.</description>
+      <description>Default Zoom level used by the  Miller Column View.</description>
     </key>
     <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon zoom level</summary>
-      <description>Zoom level used by the column view.</description>
+      <description>Zoom level used by the  Miller Column View.</description>
+    </key>
+    <key name="minimum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+      <default>'smallest'</default>
+      <summary>Minimum icon zoom level</summary>
+      <description>The minimum zoom level used by the  Miller Column View.</description>
+    </key>
+    <key name="maximum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+      <default>'normal'</default>
+      <summary>Maximum icon zoom level</summary>
+      <description>The maximum zoom level used by the Miller Column View.</description>
     </key>
     <key type="i" name="preferred-column-width">
       <default>180</default>
       <summary>prefered column width</summary>
-      <description>The column width preferred by the miller column view.</description>
+      <description>The column width preferred by the  Miller Column View.</description>
     </key>
   </schema>
 

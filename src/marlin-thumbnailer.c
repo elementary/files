@@ -537,7 +537,6 @@ marlin_thumbnailer_thumbnailer_ready (DBusGProxy        *proxy,
 
         /* remember the idle struct because we might have to remove it in finalize() */
         thumbnailer->idles = g_list_prepend (thumbnailer->idles, idle);
-
         /* call the ready idle function when we have the time */
         idle->id = g_idle_add_full (G_PRIORITY_LOW,
                                     marlin_thumbnailer_ready_idle, idle,
@@ -566,9 +565,9 @@ marlin_thumbnailer_queue_async_reply (DBusGProxy *proxy,
     {
         /* remember that this request and D-Bus handle belong together */
         g_hash_table_insert (thumbnailer->request_handle_mapping,
-                             call->request, GUINT_TO_POINTER (handle));
+                             GUINT_TO_POINTER (call->request), GUINT_TO_POINTER (handle));
         g_hash_table_insert (thumbnailer->handle_request_mapping,
-                             GUINT_TO_POINTER (handle), call->request);
+                             GUINT_TO_POINTER (handle), GUINT_TO_POINTER (call->request));
     }
 
     /* the queue call is finished, we can forget about its proxy call */
@@ -707,6 +706,8 @@ marlin_thumbnailer_ready_idle (gpointer user_data)
         {
             /* set thumbnail state to ready - we now have a thumbnail */
             gof_file_set_thumb_state (file, GOF_FILE_THUMB_STATE_READY);
+            /* ensure new thumbnail is displayed */
+            gof_file_query_thumbnail_update (file);
         }
         g_object_unref (file);
     }
@@ -847,9 +848,12 @@ marlin_thumbnailer_queue_files (MarlinThumbnailer *thumbnailer,
      * processed (and awaiting to be refreshed) */
     for (lp = g_list_last (files); lp != NULL; lp = lp->prev)
     {
-        /* 1067061 - Do not thumbnail network files */
-        if (!gof_file_is_remote_uri_scheme(lp->data) && marlin_thumbnailer_file_is_supported (thumbnailer, lp->data))
+        /* It is up to the user whether or not remote files are thumbnailed*/
+        if (marlin_thumbnailer_file_is_supported (thumbnailer, lp->data)) {
                 supported_files = g_list_prepend (supported_files, lp->data);
+        } else {
+            gof_file_set_thumb_state (lp->data, GOF_FILE_THUMB_STATE_NONE);
+        }
     }
 
     /* determine how many URIs are in the wait queue */
@@ -912,6 +916,7 @@ marlin_thumbnailer_dequeue (MarlinThumbnailer *thumbnailer,
 #ifdef HAVE_DBUS
     gpointer request_ptr;
     gpointer handle;
+    DBusGProxyCall *call;
 #endif
 
     g_return_if_fail (MARLIN_IS_THUMBNAILER (thumbnailer));
@@ -926,14 +931,20 @@ marlin_thumbnailer_dequeue (MarlinThumbnailer *thumbnailer,
     /* check if we have a valid thumbnailer proxy */
     if (thumbnailer->thumbnailer_proxy != NULL)
     {
+        /* check if there is a pending dbus proxy call for this request */
+        call = g_hash_table_lookup (thumbnailer->request_call_mapping, request_ptr);
+        if (call != NULL) {
+            /* Dequeue the call */
+            dbus_g_proxy_cancel_call (thumbnailer->thumbnailer_proxy, call);
+            g_hash_table_remove (thumbnailer->request_call_mapping, request_ptr);
+        }
+
         /* check if there is a pending tumbler request handle for this request */
         handle = g_hash_table_lookup (thumbnailer->request_handle_mapping, request_ptr);
-        if (GPOINTER_TO_UINT (handle) > 0)
-        {
+        if (GPOINTER_TO_UINT (handle) > 0) {
             /* Dequeue the request */
-            //amtest
-            /*marlin_thumbnailer_proxy_dequeue (thumbnailer->thumbnailer_proxy,
-              GPOINTER_TO_UINT (handle), NULL);*/
+            marlin_thumbnailer_proxy_unqueue (thumbnailer->thumbnailer_proxy,
+                                              GPOINTER_TO_UINT (handle), NULL);
 
             /* drop all the request information */
             g_hash_table_remove (thumbnailer->handle_request_mapping, handle);

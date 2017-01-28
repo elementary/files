@@ -20,23 +20,12 @@
 
 namespace Marlin.View
 {
-
-    public static int show_dialog (string message, Gtk.MessageType type, Gtk.ButtonsType buttons) {
-        var dialog = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL,
-                                            type, buttons, "%s", message);
-
-        dialog.set_position (Gtk.WindowPosition.MOUSE);
-        var response = dialog.run ();
-        dialog.destroy ();
-        return response;
-    }
-
-    public class DirectoryNotFound : Granite.Widgets.Welcome {
+    public class DirectoryNotFound : Marlin.View.Welcome {
         public GOF.Directory.Async dir_saved;
         public ViewContainer ctab;
 
         public DirectoryNotFound(GOF.Directory.Async dir, ViewContainer tab) {
-            base (_("This folder does not exist."), _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));
+            base (_("This Folder Does Not Exist"), _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));
 
             append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
 
@@ -56,8 +45,9 @@ namespace Marlin.View
                                      Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE);
                 }
 
-                if (success)
-                    ctab.user_path_change_request (dir_saved.location);
+                if (success) {
+                    ctab.reload ();
+                }
             });
 
             show_all ();

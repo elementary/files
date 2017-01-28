@@ -29,7 +29,7 @@ public class Marlin.PluginManager : Object {
     bool in_available = false;
     bool update_queued = false;
 
-    [Deprecated (replacement = "Marlin.PluginManager.menuitem_references")]
+    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Marlin.PluginManager.menuitem_references")]
     public GLib.List<Gtk.Widget>? menus; /* this doesn't manage GObject references properly */
 
     public Gee.List<Gtk.Widget> menuitem_references { get; private set; }
@@ -190,7 +190,7 @@ public class Marlin.PluginManager : Object {
         menuitem_references.clear ();
     }
 
-    [Deprecated (replacement = "Marlin.PluginManager.drop_plugin_menuitems")]
+    [Version (deprecated = true, deprecated_since = "0.2", replacement = "Marlin.PluginManager.drop_plugin_menuitems")]
     private void drop_menu_references (Gtk.Widget menu) {
         if (menus == null)
             return;

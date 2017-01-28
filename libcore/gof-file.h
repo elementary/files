@@ -89,6 +89,8 @@ struct _GOFFile {
     gchar           *custom_icon_name;
     GdkPixbuf       *pix;
     gint            pix_size;
+    gint            width;
+    gint            height;
     guint64         modified;
     gchar           *formated_modified;
     int             color;
@@ -258,6 +260,7 @@ gboolean        gof_file_is_remote_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_root_network_folder (GOFFile *file);
 gboolean        gof_file_is_network_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_smb_uri_scheme (GOFFile *file);
+gboolean        gof_file_is_recent_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_smb_share (GOFFile *file);
 gboolean        gof_file_is_smb_server (GOFFile *file);
 gboolean        gof_file_is_mountable (GOFFile *file);

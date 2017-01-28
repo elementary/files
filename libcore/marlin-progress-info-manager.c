@@ -72,7 +72,7 @@ marlin_progress_info_manager_constructor (GType type,
 static void
 marlin_progress_info_manager_init (MarlinProgressInfoManager *self)
 {
-    self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self, MARLIN_TYPE_PROGRESS_INFO_MANAGER,
+    self->priv = G_TYPE_INSTANCE_GET_PRIVATE (self, MARLIN_PROGRESS_TYPE_INFO_MANAGER,
                                               MarlinProgressInfoManagerPriv);
 }
 
@@ -93,7 +93,7 @@ marlin_progress_info_manager_class_init (MarlinProgressInfoManagerClass *klass)
                       g_cclosure_marshal_VOID__OBJECT,
                       G_TYPE_NONE,
                       1,
-                      MARLIN_TYPE_PROGRESS_INFO);
+                      MARLIN_PROGRESS_TYPE_INFO);
 
     g_type_class_add_private (klass, sizeof (MarlinProgressInfoManagerPriv));
 }
@@ -109,7 +109,7 @@ progress_info_finished_cb (MarlinProgressInfo *info,
 MarlinProgressInfoManager *
 marlin_progress_info_manager_new (void)
 {
-    return g_object_new (MARLIN_TYPE_PROGRESS_INFO_MANAGER, NULL);
+    return g_object_new (MARLIN_PROGRESS_TYPE_INFO_MANAGER, NULL);
 }
 
 void

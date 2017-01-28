@@ -32,3 +32,5 @@ gchar*      eel_get_user_name_from_user_uid (uid_t uid);
 gboolean    eel_get_id_from_digit_string (const char *digit_string, uid_t *id);
 
 gchar       *eel_format_size (guint64 size);
+
+gboolean    eel_user_in_group (const char *group_name);

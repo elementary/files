@@ -1,6 +1,6 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
- * Copyright (C) 2010 Jordi Puigdellívol <jordi@gloobus.net>
+ * Copyright (c) 2010 Jordi Puigdellívol <jordi@gloobus.net>
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License
@@ -33,7 +33,7 @@ valac --pkg sqlite3 --pkg gio-2.0 -o sqlitesample marlin_tagging.vala && ./sqlit
 
 */
 
-[DBus (name = "org.elementary.pantheonfiles.db")]
+[DBus (name = "org.pantheon.files.db")]
 public class MarlinTags : Object {
 
     protected static Sqlite.Database db;
@@ -355,7 +355,7 @@ t.getColor("file:///home/jordi"));
 
 void on_bus_aquired (DBusConnection conn) {
     try {
-        conn.register_object ("/org/elementary/pantheonfiles/db", new MarlinTags ());
+        conn.register_object ("/org/pantheon/files/db", new MarlinTags ());
     } catch (IOError e) {
         error ("Could not register service");
     }
@@ -370,7 +370,7 @@ void on_bus_lost (DBusConnection connection, string name) {
 }
 
 void main () {
-    Bus.own_name (BusType.SESSION, "org.elementary.pantheonfiles.db", BusNameOwnerFlags.NONE,
+    Bus.own_name (BusType.SESSION, "org.pantheon.files.db", BusNameOwnerFlags.NONE,
                   on_bus_aquired,
                   () => {},
                   on_bus_lost);

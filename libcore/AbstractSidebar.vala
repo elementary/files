@@ -1,5 +1,5 @@
 /***
-    Copyright (C) 2015 elementary Developers
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -41,12 +41,15 @@ namespace Marlin {
             ROW_TYPE,
             ICON,
             INDEX,
-            EJECT,
+            CAN_EJECT,
             NO_EJECT,
             BOOKMARK,
+            IS_CATEGORY,
+            NOT_CATEGORY,
             TOOLTIP,
             EJECT_ICON,
             SHOW_SPINNER,
+            SHOW_EJECT,
             SPINNER_PULSE,
             FREE_SPACE,
             DISK_SIZE,
@@ -68,12 +71,15 @@ namespace Marlin {
                                         typeof (int),               /* row type*/
                                         typeof (Icon),              /* Primary icon */
                                         typeof (uint),              /* index*/
-                                        typeof (bool),              /* eject */
-                                        typeof (bool),              /* no eject */
+                                        typeof (bool),              /* can eject */
+                                        typeof (bool),              /* cannot eject */
                                         typeof (bool),              /* is bookmark */
+                                        typeof (bool),              /* is category */
+                                        typeof (bool),              /* is not category */
                                         typeof (string),            /* tool tip */
                                         typeof (Icon),              /* Action icon (e.g. eject button) */
-                                        typeof (bool),              /* Show spinner */
+                                        typeof (bool),              /* Show spinner (not eject button) */
+                                        typeof (bool),              /* Show eject button (not spinner) */
                                         typeof (uint),              /* Spinner pulse */
                                         typeof (uint64),            /* Free space */
                                         typeof (uint64),            /* For disks, total size */
@@ -116,6 +122,6 @@ namespace Marlin {
                                                   Volume? volume,
                                                   Mount? mount,
                                                   uint index,
-                                                  string tooltip) ;
+                                                  string? tooltip = null) ;
     }
 }

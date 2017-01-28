@@ -4,8 +4,8 @@
       ammonkey <am.monkeyd@gmail.com>
       Victor Martinez <victoreduardm@gmail.com>
 
-    Copyright (C) Lucas Baudin 2011 <xapantu@gmail.com>
-    Copyright (C) 2013 elementary
+    Copyright (c) Lucas Baudin 2011 <xapantu@gmail.com>
+    Copyright (c) 2013-2017 elementary LLC (http://launchpad.net/elementary)
 
     Marlin is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
@@ -49,7 +49,7 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     public Contractor () {
     }
 
-    public override void context_menu (Gtk.Widget? widget, List<GOF.File> gof_files) {
+    public override void context_menu (Gtk.Widget? widget, List<unowned GOF.File> gof_files) {
         menu = widget as Gtk.Menu;
         return_if_fail (menu != null);
 
@@ -132,8 +132,12 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
         File[] file_array = new File[0];
 
         foreach (var file in files) {
-            if (file.location != null)
-                file_array += file.location;
+            if (file.location != null) {
+                if (file.location.get_uri_scheme () == "recent")
+                    file_array += GLib.File.new_for_uri (file.get_display_target_uri ());
+                else
+                    file_array += file.location;
+            }
         }
 
         return file_array;

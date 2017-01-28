@@ -4,6 +4,11 @@ pkg_check_modules(DEPS REQUIRED
     gee-0.8
     glib-2.0
     granite)
+
+pkg_check_modules (GRANITE REQUIRED "granite")
+add_definitions (${GRANITE_CFLAGS})
+link_libraries (${GRANITE_LIBRARIES})
+link_directories (${GRANITE_LIBRARY_DIRS})
 set(CFLAGS
     ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
 )
@@ -30,5 +35,5 @@ add_library(pantheon-files-contractor SHARED
     ${VALA_C})
 target_link_libraries(pantheon-files-contractor pantheon-files-core pantheon-files-widgets)
 add_dependencies(pantheon-files-contractor pantheon-files-core pantheon-files-widgets)
-install(TARGETS pantheon-files-contractor DESTINATION lib/pantheon-files/plugins/core/)
-install(FILES contractor.plug DESTINATION lib/pantheon-files/plugins/core/)
+install(TARGETS pantheon-files-contractor DESTINATION ${PLUGIN_DIR}/core/)
+install(FILES contractor.plug DESTINATION ${PLUGIN_DIR}/core/)

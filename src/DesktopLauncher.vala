@@ -5,7 +5,6 @@ namespace DesktopLauncher {
 
     public const string COMMENT = N_("Browse your files");
     public const string GENERIC_NAME = N_("File Manager");
-    public const string NEW_TAB = N_("New _Tab");
     public const string NEW_WINDOW = N_("New _Window");
     public const string NEW_ROOT_WINDOW = N_("New Window As _Administrator");
     public const string ABOUT = N_("About _Files");

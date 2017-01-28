@@ -16,17 +16,24 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 vala_precompile(VALA_C ${PKGNAME}
     AbstractSidebar.vala
     AbstractSlot.vala
+    Bookmark.vala
+    BookmarkList.vala
+    DndHandler.vala
+    Enums.vala
+    FileUtils.vala
     gof-callwhenready.vala
     gof-directory-async.vala
     gof-preferences.vala
     PluginManager.vala
     Plugin.vala
+    SoundManager.vala
 PACKAGES
     granite
     gtk+-3.0
     gio-2.0
     gee-0.8
     gmodule-2.0
+    libcanberra
     pantheon-files-core-C
 OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
@@ -61,7 +68,6 @@ set (C_SOURCE_FILES
     marlin-progress-info.c
     marlin-progress-info-manager.c
     marlin-exec.c
-#    gof-abstract-slot.c
     gof-file.c
     marlin-icon-info.c
     marlin-trash-monitor.c
@@ -81,7 +87,6 @@ set (C_HEADER_FILES
     eel-string.h
     eel-ui.h
     eel-vfs-extensions.h
-#    gof-abstract-slot.h
     gof-file.h
     marlin-exec.h
     marlin-file-conflict-dialog.h
@@ -97,7 +102,7 @@ set (C_HEADER_FILES
     marlin-trash-monitor.h)
 
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/pkgconfig/)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig/)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files-core.h DESTINATION include/pantheon-files-core/)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/pantheon-files-core.vapi DESTINATION share/vala/vapi)
 install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/pantheon-files-core.deps DESTINATION share/vala/vapi)
@@ -116,7 +121,8 @@ pkg_check_modules(DEPS REQUIRED
     gee-0.8
     gmodule-2.0
     sqlite3
-    libnotify>=0.7.2)
+    libcanberra>=0.30)
+
 # Link all
 
 set(CFLAGS ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER})
@@ -139,7 +145,7 @@ set_target_properties (${PKGNAME} PROPERTIES
 
 target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 
-install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/)
+install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 add_executable (pantheon-files-core_tests
     tests/tests.c

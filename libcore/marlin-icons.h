@@ -5,8 +5,8 @@
 #define MARLIN_ICON_NETWORK_SERVER  "network-server"
 #define MARLIN_ICON_FILESYSTEM      "drive-harddisk-system"
 
-#define MARLIN_TRASH_URI            "trash:///"
-#define MARLIN_NETWORK_URI          "network:///"
+#define MARLIN_TRASH_URI            "trash://"
+#define MARLIN_NETWORK_URI          "network://"
 
 #define MARLIN_ICON_FOLDER          "folder"
 #define MARLIN_ICON_FOLDER_REMOTE   "folder-remote"

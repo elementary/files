@@ -1,4 +1,4 @@
-[DBus (name = "org.elementary.pantheonfiles.db")]
+[DBus (name = "org.pantheon.files.db")]
 interface Demo : Object {
     public abstract bool   	showTable	(string table) 	throws IOError;
     public abstract int 	getColor 	(string uri) 	throws IOError;
@@ -9,8 +9,8 @@ interface Demo : Object {
 
 void main () {
     try {
-        Demo demo = Bus.get_proxy_sync (BusType.SESSION, "org.elementary.pantheonfiles.db",
-                                        "/org/elementary/pantheonfiles/db");
+        Demo demo = Bus.get_proxy_sync (BusType.SESSION, "org.pantheon.files.db",
+                                        "/org/pantheon/files/db");
         
 		demo.showTable ("tags");
 

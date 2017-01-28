@@ -29,7 +29,7 @@ namespace FM
         public bool load_subdirectory(Gtk.TreePath path, out GOF.Directory.Async dir);
         public bool unload_subdirectory(Gtk.TreeIter iter);
         public void add_file(GOF.File file, GOF.Directory.Async dir);
-        public void remove_file (GOF.File file, GOF.Directory.Async dir);
+        public bool remove_file (GOF.File file, GOF.Directory.Async dir);
         public void file_changed (GOF.File file, GOF.Directory.Async dir);
         public GOF.File? file_for_path (Gtk.TreePath path);
         public static GLib.Type get_type ();
@@ -73,6 +73,11 @@ namespace Marlin {
     public delegate void CopyCallback (GLib.HashTable<GLib.File, void*>? debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
+
+    [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
+    namespace Dialogs {
+        public void show_error (void* data, GLib.Error? error, string format_string, ...);
+    }
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -125,6 +130,11 @@ namespace Eel {
 
     [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
+
+    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
+    public Gdk.Pixbuf create_colorized_pixbuf (Gdk.Pixbuf source_pixbuf, Gdk.RGBA color);
+    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
+    public Gdk.Pixbuf gdk_pixbuf_lucent (Gdk.Pixbuf source_pixbuf, int percent);
 }
 
 [CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]
@@ -140,8 +150,6 @@ namespace Marlin
 {
     [CCode (cheader_filename = "marlin-file-utilities.h")]
     public string get_accel_map_file ();
-    [CCode (cheader_filename = "marlin-file-utilities.h")]
-    public void restore_files_from_trash (GLib.List<GOF.File> *files, Gtk.Window *parent_window);
 
     [CCode (cheader_filename = "marlin-icon-info.h")]
     public class IconInfo : GLib.Object {
@@ -192,6 +200,7 @@ namespace Marlin
         public signal void finished ();
         public signal void progress_changed ();
         public void cancel ();
+        public string get_title ();
         public string get_status ();
         public string get_details ();
         public double get_progress ();
@@ -235,6 +244,7 @@ namespace GOF {
         public signal void changed ();
         public signal void info_available ();
         public signal void icon_changed ();
+        public signal void destroy ();
 
         public const string GIO_DEFAULT_ATTRIBUTES;
 
@@ -242,7 +252,6 @@ namespace GOF {
         public static GOF.File @get(GLib.File location);
         public static GOF.File? get_by_uri (string uri);
         public static File cache_lookup (GLib.File file);
-        public static bool launch_files (GLib.List<GOF.File> files, Gdk.Screen screen, GLib.AppInfo app);
         public static void list_free (GLib.List<GOF.File> files);
         public static GLib.Mount? get_mount_at (GLib.File location);
 
@@ -264,6 +273,8 @@ namespace GOF {
         public string tagstype;
         public Gdk.Pixbuf pix;
         public int pix_size;
+        public int width;
+        public int height;
         public int sort_column_id;
         public Gtk.SortType sort_order;
 
@@ -275,6 +286,7 @@ namespace GOF {
         public bool is_folder();
         public bool is_symlink();
         public bool is_trashed();
+        public bool is_readable ();
         public bool is_writable ();
         public bool is_executable ();
         public bool is_mountable ();
@@ -303,7 +315,6 @@ namespace GOF {
         public bool has_permissions;
         public uint32 permissions;
 
-        public void open_single (Gdk.Screen screen, GLib.AppInfo? app_info);
         public void update ();
         public void update_type ();
         public void update_icon (int size);
@@ -319,7 +330,6 @@ namespace GOF {
         public bool can_unmount ();
         public GLib.Mount? mount;
         public string get_permissions_as_string ();
-        public bool launch (Gdk.Screen screen, GLib.AppInfo app);
 
         public GLib.List? get_settable_group_names ();
         public static int compare_by_display_name (File file1, File file2);
@@ -328,9 +338,10 @@ namespace GOF {
         public bool is_root_network_folder ();
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
+        public bool is_recent_uri_scheme ();
         public bool is_connected;
 
-        public unowned string get_display_target_uri ();
+        public string get_display_target_uri ();
 
         public GLib.AppInfo get_default_handler ();
 

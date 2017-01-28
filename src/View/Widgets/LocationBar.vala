@@ -1,0 +1,253 @@
+/***
+    Copyright (c) 2010 mathijshenquet
+    Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
+
+    Marlin is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation; either version 2 of the
+    License, or (at your option) any later version.
+
+    Marlin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    General Public License for more details.
+
+    You should have received a copy of the GNU General Public
+    License along with this program; see the file COPYING.  If not,
+    write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+    Boston, MA 02111-1307, USA.
+
+***/
+
+namespace Marlin.View.Chrome
+{
+    public class LocationBar : BasicLocationBar {
+        private BreadcrumbsEntry bread;
+        private SearchResults search_results;
+        private GLib.File? search_location = null;
+        public bool search_mode {get; private set;}
+
+        public new bool sensitive {
+            set {
+                bread.sensitive = value;
+            }
+
+            get {
+                return bread.sensitive;
+            }
+        }
+
+        uint focus_timeout_id = 0;
+
+        public signal void reload_request ();
+        public signal void focus_file_request (File? file);
+        public signal void escape ();
+
+        public LocationBar () {
+            var _bread = new BreadcrumbsEntry ();
+            base (_bread as Navigatable);
+            bread = _bread;
+            search_results = new SearchResults (bread as Gtk.Widget);
+            connect_additional_signals ();
+            show_refresh_icon ();
+        }
+
+        private void connect_additional_signals () {
+            bread.open_with_request.connect (on_bread_open_with_request);
+            search_results.file_selected.connect (on_search_results_file_selected);
+            search_results.file_activated.connect (on_search_results_file_activated);
+            search_results.cursor_changed.connect (on_search_results_cursor_changed);
+            search_results.first_match_found.connect (on_search_results_first_match_found);
+            search_results.realize.connect (on_search_results_realize);
+            search_results.exit.connect (on_search_results_exit);
+        }
+
+        private void on_search_results_file_selected (GLib.File file) {
+            /* Search result widget ensures it has closed and released grab */
+            /* Returned result might be a link or a server */
+            var gof = new GOF.File (file, null);
+            gof.ensure_query_info ();
+
+            path_change_request (gof.get_target_location ().get_uri ());
+        }
+        private void on_search_results_file_activated (GLib.File file) {
+            AppInfo? app = Marlin.MimeActions.get_default_application_for_glib_file (file);
+            Marlin.MimeActions.open_glib_file_request (file, this, app);
+            on_search_results_exit ();
+        }
+
+        private void on_search_results_first_match_found (GLib.File? file) {
+            focus_file_request (file);
+        }
+
+        private void on_search_results_cursor_changed (GLib.File? file) {
+            schedule_focus_file_request (file);
+        }
+
+        private void on_search_results_realize () {
+            (get_toplevel () as Gtk.Window).get_group ().add_window (search_results); /*Is this necessary every popup? */
+        }
+        private void on_search_results_exit (bool exit_navigate = true) {
+            /* Search result widget ensures it has closed and released grab */
+            bread.reset_im_context ();
+            if (focus_timeout_id > 0) {
+                GLib.Source.remove (focus_timeout_id);
+            }
+            if (exit_navigate) {
+                escape ();
+            } else {
+                bread.set_entry_text (bread.get_breadcrumbs_path ());
+                enter_navigate_mode ();
+            }
+        }
+
+        protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
+            base.after_bread_focus_out_event (event);
+            search_mode = false;
+            hide_search_icon ();
+            show_refresh_icon ();
+            focus_out_event (event);
+            return true;
+        }
+        protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
+            base.after_bread_focus_in_event (event);
+            focus_in_event (event);
+            search_location = PF.FileUtils.get_file_for_path (bread.get_breadcrumbs_path ());
+            show_navigate_icon ();
+            return true;
+        }
+
+        private void on_bread_open_with_request (File file, AppInfo? app) {
+            Marlin.MimeActions.open_glib_file_request (file, this, app);
+        }
+
+        protected override void on_bread_action_icon_press () {
+            if (has_focus) {
+                bread.activate ();
+            } else {
+                reload_request ();
+            }
+        }
+
+        protected override void after_bread_text_changed (string txt) {
+            if (txt.length < 1) {
+                if (search_mode) {
+                    switch_to_navigate_mode ();
+                }
+                show_placeholder ();
+                return;
+            }
+            hide_placeholder ();
+            if (search_mode) {
+                if (txt.contains (Path.DIR_SEPARATOR_S)) {
+                    switch_to_navigate_mode ();
+                } else {
+                    show_search_icon ();
+                    search_results.search (txt, search_location);
+                }
+            } else {
+                if (!txt.contains (Path.DIR_SEPARATOR_S)) {
+                    switch_to_search_mode ();
+                } else {
+                    base.after_bread_text_changed (txt);
+                    bread.completion_needed (); /* delegate to bread to decide whether completion really needed */
+                }
+            }
+        }
+
+        protected override void show_navigate_icon () {
+            show_path_icon ();
+            base.show_navigate_icon ();
+        }
+        protected void show_search_icon () {
+            bread.set_primary_icon_name (Marlin.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
+        }
+        protected void hide_search_icon () {
+            bread.set_primary_icon_name (null);
+        }
+        protected void show_path_icon () {
+            bread.set_primary_icon_name (Marlin.ICON_PATHBAR_PRIMARY_PATH_SYMBOLIC);
+        }
+        protected void hide_path_icon () {
+            bread.set_primary_icon_name (null);
+        }
+
+        protected void show_refresh_icon () {
+            bread.set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC);
+            bread.set_action_icon_tooltip (_("Reload this folder"));
+        }
+        private void show_placeholder () {
+            bread.set_placeholder (_("Enter search term or path"));
+        }
+        private void hide_placeholder () {
+            bread.set_placeholder ("");
+        }
+
+        public bool enter_search_mode () {
+            if (!sensitive) {
+                return false;
+            }
+
+            if (!search_mode) {
+                /* Initialise search mode but do not search until first character has been received */
+                if (set_focussed ()) {
+                    bread.set_entry_text ("");
+                } else {
+                    return false;
+                }
+            } else {
+                /* repeat search with new settings */
+                search_results.search (bread.get_entry_text (), search_location);
+            }
+            return true;
+        }
+
+        public virtual bool enter_navigate_mode (string? current = null) {
+            if (sensitive && set_focussed ()) {
+                bread.grab_focus ();
+                show_navigate_icon ();
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        private void switch_to_navigate_mode () {
+            search_mode = false;
+            cancel_search ();
+            hide_search_icon ();
+            show_navigate_icon ();
+        }
+
+        private void switch_to_search_mode () {
+            search_mode = true;
+            hide_navigate_icon ();
+            hide_path_icon ();
+            show_search_icon ();
+            /* Next line ensures that the pathbar not lose focus when the mouse if over the sidebar,
+             * which would normally grab the focus */
+            after_bread_text_changed (bread.get_entry_text ());
+        }
+
+        private void cancel_search () {
+            search_results.cancel ();
+        }
+
+        public void cancel () {
+            cancel_search ();
+            on_search_results_exit (); /* Exit navigation mode as well */
+        }
+
+        private void schedule_focus_file_request (GLib.File? file) {
+            if (focus_timeout_id > 0) {
+                GLib.Source.remove (focus_timeout_id);
+            }
+
+            focus_timeout_id = GLib.Timeout.add (300, () => {
+                focus_file_request (file);
+                focus_timeout_id = 0;
+                return false;
+            });
+        }
+    }
+}
