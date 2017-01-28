@@ -34,10 +34,4 @@ namespace Marlin {
 
     [CCode (cheader_filename = "marlin-file-utilities.h")]
     public void get_rename_region (string filename, out int start_offset, out int end_offset, bool select_all);
-
-    [CCode (cheader_filename = "marlin-icon-renderer.h")]
-    public class IconRenderer : Gtk.CellRenderer {
-        public IconRenderer ();
-        public uint get_helper_size ();
-    }
 }
