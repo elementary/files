@@ -156,7 +156,8 @@ namespace Marlin.View {
         }
 
         private void construct_sidebar () {
-            sidebar = new Marlin.Places.Sidebar (this);
+            /* Only show local places in sidebar when running as root */
+            sidebar = new Marlin.Places.Sidebar (this, Posix.getuid () == 0);
         }
 
         public void show_sidebar (bool show = true) {
