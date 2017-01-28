@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -88,20 +88,22 @@ namespace FM {
         GLib.SimpleActionGroup selection_actions;
         GLib.SimpleActionGroup background_actions;
 
-        private Marlin.ZoomLevel _zoom_level;
+        private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
         public Marlin.ZoomLevel zoom_level {
             get {
                 return _zoom_level;
             }
 
             set {
-                if (value <= maximum_zoom &&
-                    value >= minimum_zoom &&
-                    value != _zoom_level) {
-
-                        _zoom_level = value;
-                        on_zoom_level_changed (value);
+                if (value > maximum_zoom) {
+                    _zoom_level = maximum_zoom;
+                } else if (value < minimum_zoom) {
+                    _zoom_level = minimum_zoom;
+                } else {
+                    _zoom_level = value;
                 }
+
+                on_zoom_level_changed (value);
             }
         }
 
@@ -182,7 +184,19 @@ namespace FM {
         protected bool single_click_rename = false;
         protected bool activate_on_blank = true;
         protected bool right_margin_unselects_all = false;
-        public bool single_click_mode {get; set;}
+        public bool _single_click_mode = true;
+        public bool single_click_mode {
+            get {
+                return _single_click_mode;
+            }
+
+            set {
+                _single_click_mode = value;
+                if (icon_renderer != null) {
+                    icon_renderer.selection_helpers = _single_click_mode;
+                }
+            }
+        }
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
@@ -260,7 +274,6 @@ namespace FM {
         private bool in_network_root = false;
         protected bool is_writable = false;
         protected bool is_loading;
-        protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = false;} 
 
         private Gtk.Widget view;
@@ -389,16 +402,17 @@ namespace FM {
         }
 
         public void zoom_in () {
-                zoom_level = zoom_level + 1;
+            zoom_level = zoom_level + 1;
         }
 
         public void zoom_out () {
+            if (zoom_level > 0) {
                 zoom_level = zoom_level - 1;
+            }
         }
 
         private void set_up_zoom_level () {
             zoom_level = get_set_up_zoom_level ();
-            model.set_property ("size", icon_size);
         }
 
         public void zoom_normal () {
@@ -2867,7 +2881,8 @@ namespace FM {
             if (no_mods || only_shift_pressed) {
                 /* Use printable characters to initiate search */
                 if (((unichar)(Gdk.keyval_to_unicode (keyval))).isprint ()) {
-                    window.win_actions.activate_action ("find", "CURRENT_DIRECTORY_ONLY");
+                    window.win_actions.activate_action ("find", null);
+
                     window.key_press_event (event);
                     return true;
                 }
@@ -3302,9 +3317,6 @@ namespace FM {
 
         public virtual void change_zoom_level () {
             icon_renderer.set_property ("zoom-level", zoom_level);
-            icon_renderer.set_property ("size", icon_size);
-            helpers_shown = single_click_mode && (zoom_level >= Marlin.ZoomLevel.SMALL);
-            icon_renderer.set_property ("selection-helpers", helpers_shown);
             view.style_updated ();
         }
 
@@ -3481,10 +3493,10 @@ namespace FM {
                              y >= orig_y &&
                              y <= orig_y + icon_size);
 
-            if (!on_icon || !helpers_shown)
+            if (!on_icon || !icon_renderer.selection_helpers)
                 on_helper = false;
             else {
-                var helper_size = icon_renderer.get_helper_size () + 2;
+                var helper_size = icon_renderer.helper_size + 2;
                 on_helper = (x - orig_x <= helper_size &&
                              y - orig_y <= helper_size);
             }

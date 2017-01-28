@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -36,13 +36,22 @@ namespace Marlin {
         }
 
         public bool on_key_press_event (Gdk.EventKey event) {
-            bool control_pressed = ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0);
+            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+
             switch (event.keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
-                    editing_canceled = false;
-                    remove_widget (); /* also causes edited signal to be emitted by CellRenderer */
-                    return true;
+                    /*  Only end rename with unmodified Enter. This is to allow use of Ctrl-Enter
+                     *  to commit Chinese/Japanese characters when using some input methods, without ending rename.
+                     */ 
+                    if (mods == 0) {
+                        editing_canceled = false;
+                        remove_widget (); /* also causes edited signal to be emitted by CellRenderer */
+                        return true;
+                    }
+
+                    break;
 
                 case Gdk.Key.Escape:
                     editing_canceled = true;
@@ -50,7 +59,8 @@ namespace Marlin {
                     return true;
 
                 case Gdk.Key.z:
-                    if (control_pressed) {
+                    /* Undo with Ctrl-Z only */
+                    if (only_control_pressed) {
                         set_text (original_name);
                         return true;
                     }

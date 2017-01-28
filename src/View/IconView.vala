@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -85,11 +85,13 @@ namespace FM {
             minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_icon_view_settings.get_enum ("minimum-zoom-level");
             maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_icon_view_settings.get_enum ("maximum-zoom-level");
 
-            if (zoom_level < minimum_zoom)
+            if (zoom_level < minimum_zoom) {
                 zoom_level = minimum_zoom;
+            }
 
-            if (zoom_level > maximum_zoom)
+            if (zoom_level > maximum_zoom) {
                 zoom_level = maximum_zoom;
+            }
 
             return (Marlin.ZoomLevel)zoom;
         }

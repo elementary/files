@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-23 12:40-0800\n"
-"PO-Revision-Date: 2016-09-10 15:04+0000\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2016-12-31 00:37+0000\n"
 "Last-Translator: Pedro Monteiro <Unknown>\n"
 "Language-Team: Portuguese <pt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-12-24 04:54+0000\n"
-"X-Generator: Launchpad (build 18298)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:15+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 msgid "Files"
 msgstr "Ficheiros"
@@ -36,19 +36,34 @@ msgstr ""
 "de FTP, SFTP, AFP, Webdav ou Windows share."
 
 msgid "Fix appdata release dates"
-msgstr ""
+msgstr "Corrigidas datas de release da appdata"
 
 msgid "Improve file opening over Samba shares"
-msgstr ""
+msgstr "Melhorada a abertura de ficheiros em partilhas Samba"
 
 msgid "Fix a crash when restoring items from the Trash"
-msgstr ""
+msgstr "Corrigida falha ao restaurar do Lixo"
 
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
+msgstr "Melhorada sensibilidade cortar/copiar/colar no menu de contexto"
 
 msgid "Translation updates"
-msgstr ""
+msgstr "Atualização de traduções"
 
 msgid "Minor bug fixes"
+msgstr "Pequenas correções de erros"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr ""
+
+msgid "Enable drag and drop tabs between windows"
 msgstr ""

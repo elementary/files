@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-23 12:40-0800\n"
-"PO-Revision-Date: 2016-10-21 02:02+0000\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2016-12-30 03:36+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-12-24 04:54+0000\n"
-"X-Generator: Launchpad (build 18298)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:14+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 "Language: \n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -224,7 +224,7 @@ msgstr "原文件"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:493
+#: ../src/Dialogs/PropertiesWindow.vala:484
 msgid "Size:"
 msgstr "大小："
 
@@ -232,7 +232,7 @@ msgstr "大小："
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:500
+#: ../src/Dialogs/PropertiesWindow.vala:491
 msgid "Type:"
 msgstr "类型："
 
@@ -281,6 +281,44 @@ msgstr "替换"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "文件冲突"
+
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
+msgid "Inaccessible"
+msgstr "无法访问"
+
+#: ../libcore/gof-file.c:379
+#, c-format
+msgid "link to %s"
+msgstr "链接到 %s"
+
+#: ../libcore/gof-file.c:1953
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "解析桌面文件 %s 失败"
+
+#: ../libcore/gof-file.c:1990
+msgid "No Exec field specified"
+msgstr "没有指定 Exec 字段"
+
+#: ../libcore/gof-file.c:2009
+msgid "No URL field specified"
+msgstr "没有指定 URL 字段"
+
+#: ../libcore/gof-file.c:2015
+msgid "Invalid desktop file"
+msgstr "无效的桌面文件"
+
+#: ../libcore/gof-file.c:2310
+msgid "Slashes are not allowed in filenames"
+msgstr "文件名中不能出现斜线"
+
+#: ../libcore/gof-file.c:2330
+msgid "Toplevel files cannot be renamed"
+msgstr "无法重命名顶级文件"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "显示更多细节"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -994,65 +1032,6 @@ msgstr "清空回收站"
 msgid "Emptying Trash"
 msgstr "正在清空回收站"
 
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "正在准备"
-
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
-msgid "Today at %-I:%M %p"
-msgstr "今天 %-l:%M %p"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
-msgid "Yesterday at %-I:%M %p"
-msgstr "昨天 %-l:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b at %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "显示更多细节"
-
-#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:379
-#, c-format
-msgid "link to %s"
-msgstr "链接到 %s"
-
-#: ../libcore/gof-file.c:1953
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "解析桌面文件 %s 失败"
-
-#: ../libcore/gof-file.c:1990
-msgid "No Exec field specified"
-msgstr "没有指定 Exec 字段"
-
-#: ../libcore/gof-file.c:2009
-msgid "No URL field specified"
-msgstr "没有指定 URL 字段"
-
-#: ../libcore/gof-file.c:2015
-msgid "Invalid desktop file"
-msgstr "无效的桌面文件"
-
-#: ../libcore/gof-file.c:2310
-msgid "Slashes are not allowed in filenames"
-msgstr "文件名中不能出现斜线"
-
-#: ../libcore/gof-file.c:2330
-msgid "Toplevel files cannot be renamed"
-msgstr "无法重命名顶级文件"
-
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
 msgstr "无法确定其原始位置"
@@ -1407,243 +1386,48 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "重新改变 %d 个项目的所有者"
 
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
+msgid "Today at %-I:%M %p"
+msgstr "今天 %-l:%M %p"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
+msgid "Yesterday at %-I:%M %p"
+msgstr "昨天 %-l:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%b月%-d日 %A %p %-I:%M"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%Y年%b月%-d日 %A %p %-I:%M"
+
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "正在准备"
+
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../libwidgets/Chrome/TopMenu.vala:64
+#: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
 msgstr "后退"
 
 #: ../filechooser-module/FileChooserDialog.vala:74
-#: ../libwidgets/Chrome/TopMenu.vala:68
+#: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "前进"
 
-#: ../src/View/AbstractPropertiesDialog.vala:50
-msgid "Info"
-msgstr "信息："
-
-#: ../src/View/AbstractPropertiesDialog.vala:59
-msgid "General"
-msgstr "常规"
-
-#: ../src/View/AbstractPropertiesDialog.vala:78
-msgid "Close"
-msgstr "关闭"
-
-#: ../src/View/AbstractPropertiesDialog.vala:140
-msgid "Device Usage"
-msgstr "用量："
-
-#: ../src/View/AbstractPropertiesDialog.vala:156
-msgid "Capacity:"
-msgstr "容量："
-
-#: ../src/View/AbstractPropertiesDialog.vala:157
-#: ../src/View/AbstractPropertiesDialog.vala:160
-#: ../src/View/AbstractPropertiesDialog.vala:163
-#: ../src/View/PropertiesWindow.vala:425 ../src/View/PropertiesWindow.vala:461
-msgid "Unknown"
-msgstr "未知"
-
-#: ../src/View/AbstractPropertiesDialog.vala:159
-msgid "Available:"
-msgstr "可用："
-
-#: ../src/View/AbstractPropertiesDialog.vala:162
-msgid "Used:"
-msgstr "已用："
-
-#: ../src/View/AbstractDirectoryView.vala:550
-msgid "Failed to preview"
-msgstr "预览失败"
-
-#: ../src/View/AbstractDirectoryView.vala:805
-msgid "Cannot open this file"
-msgstr "不能打开此文件"
-
-#: ../src/View/AbstractDirectoryView.vala:818
-msgid "Cannot identify file type to open"
-msgstr "不能识别文件类型并打开"
-
-#: ../src/View/AbstractDirectoryView.vala:1546
-msgid "Cannot drop this file"
-msgstr "无法放置此文件"
-
-#: ../src/View/AbstractDirectoryView.vala:1546
-msgid "Invalid file name provided"
-msgstr "提供的文件名无效"
-
-#: ../src/View/AbstractDirectoryView.vala:2001
-msgid "Invalid"
-msgstr "无效"
-
-#: ../src/View/AbstractDirectoryView.vala:2007
-msgid "Run"
-msgstr "运行"
-
-#: ../src/View/AbstractDirectoryView.vala:2012
-msgid "Open in %s"
-msgstr "在 %s 中打开"
-
-#: ../src/View/AbstractDirectoryView.vala:2022
-msgid "Open in"
-msgstr "使用其他方式打开"
-
-#: ../src/View/AbstractDirectoryView.vala:2024
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
-msgid "Open with"
-msgstr "打开方式"
-
-#: ../src/View/AbstractDirectoryView.vala:2084
-msgid "Other Application"
-msgstr "其他应用"
-
-#: ../src/View/AbstractDirectoryView.vala:2345
-msgid "Untitled %s"
-msgstr "未命名 %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2667
-#: ../src/View/AbstractDirectoryView.vala:2850
-msgid "Cannot remove files from here"
-msgstr "无法从此处删除文件"
-
-#: ../src/View/AbstractDirectoryView.vala:2668
-#: ../src/View/AbstractDirectoryView.vala:2838
-#: ../src/View/AbstractDirectoryView.vala:2851
-msgid "You do not have permission to change this location"
-msgstr "您没有更改此目录的权限"
-
-#: ../src/View/AbstractDirectoryView.vala:2816
-msgid "Cannot copy files that are in the trash"
-msgstr "无法复制回收站中的文件"
-
-#: ../src/View/AbstractDirectoryView.vala:2817
-msgid "Cutting the selection instead"
-msgstr "更改选中项为剪切"
-
-#: ../src/View/AbstractDirectoryView.vala:2837
-msgid "Cannot paste files here"
-msgstr "无法在此处粘贴文件"
-
-#: ../src/View/OverlayBar.vala:230
-msgid "%u folders"
-msgstr "%u 个文件夹"
-
-#: ../src/View/OverlayBar.vala:232 ../src/View/OverlayBar.vala:240
-msgid " and %u other item (%s) selected"
-msgstr " 和 %u 其他项目(%s)已被选中"
-
-#: ../src/View/OverlayBar.vala:233 ../src/View/OverlayBar.vala:241
-msgid " and %u other items (%s) selected"
-msgstr " 和 %u 个其他条目 - 已选中(%s)"
-
-#: ../src/View/OverlayBar.vala:236 ../src/View/OverlayBar.vala:244
-msgid " selected"
-msgstr " 已选中"
-
-#: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1187
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/View/OverlayBar.vala:246
-msgid "%u items selected (%s)"
-msgstr "已选中 %u 个条目 (%s)"
-
-#. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/OverlayBar.vala:287
-msgid "%u sub-folder, "
-msgstr "%u 子文件夹， "
-
-#: ../src/View/OverlayBar.vala:287
-msgid "%u sub-folders, "
-msgstr "%u 子文件夹， "
-
-#. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/OverlayBar.vala:293
-msgid "%u file, "
-msgstr "%u 文件， "
-
-#: ../src/View/OverlayBar.vala:293
-msgid "%u files, "
-msgstr "%u 文件， "
-
-#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/OverlayBar.vala:303
-msgid "%s approx."
-msgstr "大约 %s"
-
-#. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/OverlayBar.vala:306
-msgid "unknown size"
-msgstr "未知大小"
-
-#. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/OverlayBar.vala:310
-msgid "%u file not readable"
-msgstr "%u 个文件不可读"
-
-#: ../src/View/OverlayBar.vala:310
-msgid "%u files not readable"
-msgstr "%u 个文件不可读"
-
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "读取"
-
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "写入"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "执行"
-
-#: ../src/View/Window.vala:206
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
 msgstr "Files 不是您的默认文件管理器。"
 
-#: ../src/View/Window.vala:212
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
 msgstr "设为默认"
 
-#: ../src/View/Window.vala:218
+#: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "忽略"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "文件名"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "大小"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "类型"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "已修改"
-
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "磁盘属性"
-
-#: ../src/View/VolumePropertiesWindow.vala:44 ../src/View/Sidebar.vala:555
-#: ../src/View/ViewContainer.vala:344 ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "文件系统"
-
-#: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:570
-msgid "Location:"
-msgstr "存储目录："
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "格式："
 
 #: ../src/View/Sidebar.vala:481
 msgid "Personal"
@@ -1653,7 +1437,7 @@ msgstr "个人"
 msgid "Your common places and bookmarks"
 msgstr "您的常用位置和书签"
 
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:342
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
 msgid "Home"
 msgstr "主页"
 
@@ -1680,6 +1464,12 @@ msgstr "设备"
 #: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
 msgstr "您的本地分区和设备"
+
+#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "文件系统"
 
 #: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
@@ -1737,12 +1527,28 @@ msgstr "卸载"
 msgid "_Eject"
 msgstr "弹出"
 
-#: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:127
+#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "属性"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:366
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "文件名"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "大小"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "类型"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "已修改"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
 msgid "This Folder Does Not Exist"
 msgstr "此文件夹不存在"
 
@@ -1768,6 +1574,126 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../src/View/AbstractDirectoryView.vala:550
+msgid "Failed to preview"
+msgstr "预览失败"
+
+#: ../src/View/AbstractDirectoryView.vala:805
+msgid "Cannot open this file"
+msgstr "不能打开此文件"
+
+#: ../src/View/AbstractDirectoryView.vala:818
+msgid "Cannot identify file type to open"
+msgstr "不能识别文件类型并打开"
+
+#: ../src/View/AbstractDirectoryView.vala:1549
+msgid "Cannot drop this file"
+msgstr "无法放置此文件"
+
+#: ../src/View/AbstractDirectoryView.vala:1549
+msgid "Invalid file name provided"
+msgstr "提供的文件名无效"
+
+#: ../src/View/AbstractDirectoryView.vala:2004
+msgid "Invalid"
+msgstr "无效"
+
+#: ../src/View/AbstractDirectoryView.vala:2010
+msgid "Run"
+msgstr "运行"
+
+#: ../src/View/AbstractDirectoryView.vala:2015
+msgid "Open in %s"
+msgstr "在 %s 中打开"
+
+#: ../src/View/AbstractDirectoryView.vala:2025
+msgid "Open in"
+msgstr "使用其他方式打开"
+
+#: ../src/View/AbstractDirectoryView.vala:2027
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
+msgid "Open with"
+msgstr "打开方式"
+
+#: ../src/View/AbstractDirectoryView.vala:2087
+msgid "Other Application"
+msgstr "其他应用"
+
+#: ../src/View/AbstractDirectoryView.vala:2348
+msgid "Untitled %s"
+msgstr "未命名 %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2670
+#: ../src/View/AbstractDirectoryView.vala:2853
+msgid "Cannot remove files from here"
+msgstr "无法从此处删除文件"
+
+#: ../src/View/AbstractDirectoryView.vala:2671
+#: ../src/View/AbstractDirectoryView.vala:2841
+#: ../src/View/AbstractDirectoryView.vala:2854
+msgid "You do not have permission to change this location"
+msgstr "您没有更改此目录的权限"
+
+#: ../src/View/AbstractDirectoryView.vala:2819
+msgid "Cannot copy files that are in the trash"
+msgstr "无法复制回收站中的文件"
+
+#: ../src/View/AbstractDirectoryView.vala:2820
+msgid "Cutting the selection instead"
+msgstr "更改选中项为剪切"
+
+#: ../src/View/AbstractDirectoryView.vala:2840
+msgid "Cannot paste files here"
+msgstr "无法在此处粘贴文件"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "(as Administrator)"
+msgstr "(以管理员身份)"
+
+#: ../src/View/ViewContainer.vala:372
+msgid "You cannot create a folder here."
+msgstr "无法在此位置新建文件夹。"
+
+#: ../src/View/ViewContainer.vala:374
+msgid "The network is unavailable"
+msgstr "网络不可用"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "A working network is needed to reach this folder"
+msgstr "需要网络连接才能打开此文件夹"
+
+#: ../src/View/ViewContainer.vala:377
+msgid "This Folder Does Not Belong to You"
+msgstr "此文件夹不属于您"
+
+#: ../src/View/ViewContainer.vala:378
+msgid "You don't have permission to view this folder."
+msgstr "您没有权限查看该文件夹。"
+
+#: ../src/View/ViewContainer.vala:380
+msgid "Unable to Mount Folder"
+msgstr "无法挂载文件夹"
+
+#: ../src/View/ViewContainer.vala:381
+msgid "Could not connect to the server for this folder."
+msgstr "无法连接到此文件夹所在服务器"
+
+#: ../src/View/ViewContainer.vala:383
+msgid "Unable to Show Folder"
+msgstr "无法显示文件夹"
+
+#: ../src/View/ViewContainer.vala:384
+msgid "The server for this folder could not be located."
+msgstr "无法定位此文件夹的位置。"
+
+#: ../src/View/ViewContainer.vala:394
+msgid "File not Found"
+msgstr "文件未找到"
+
+#: ../src/View/ViewContainer.vala:395
+msgid "The file selected no longer exists."
+msgstr "选中的文件已不存在。"
+
 #: ../src/View/Slot.vala:32
 msgid "This Folder Is Empty"
 msgstr "此文件夹为空"
@@ -1784,159 +1710,104 @@ msgstr "无最近使用的文件"
 msgid "Access Denied"
 msgstr "拒绝访问"
 
-#: ../src/View/PropertiesWindow.vala:199
-msgid "Permissions"
-msgstr "权限"
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+msgid "Open in New Tab"
+msgstr "在新标签中打开"
 
-#: ../src/View/PropertiesWindow.vala:220
-msgid "Actual Size Could Be Larger"
-msgstr "实际大小可能更大"
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Window"
+msgstr "在新窗口中打开"
 
-#: ../src/View/PropertiesWindow.vala:220
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i 个文件由于权限原因或其他错误无法读取。"
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+msgid "Open in Other Application…"
+msgstr "用其他应用打开..."
 
-#: ../src/View/PropertiesWindow.vala:239 ../src/View/PropertiesWindow.vala:258
-msgid "unknown"
-msgstr "未知"
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "重新载入"
 
-#: ../src/View/PropertiesWindow.vala:436
-msgid "Loading…"
-msgstr "正在载入..."
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
+msgid "Enter search term or path"
+msgstr "输入关键词或位置"
 
-#: ../src/View/PropertiesWindow.vala:467
-msgid "Could not be determined"
-msgstr "无法确定"
+#: ../src/View/Widgets/OverlayBar.vala:230
+msgid "%u folders"
+msgstr "%u 个文件夹"
 
-#: ../src/View/PropertiesWindow.vala:503
-msgid "Contains:"
-msgstr "包含："
+#: ../src/View/Widgets/OverlayBar.vala:232
+#: ../src/View/Widgets/OverlayBar.vala:240
+msgid " and %u other item (%s) selected"
+msgstr " 和 %u 其他项目(%s)已被选中"
 
-#: ../src/View/PropertiesWindow.vala:525
-msgid "Created:"
-msgstr "创建时间："
+#: ../src/View/Widgets/OverlayBar.vala:233
+#: ../src/View/Widgets/OverlayBar.vala:241
+msgid " and %u other items (%s) selected"
+msgstr " 和 %u 个其他条目 - 已选中(%s)"
 
-#: ../src/View/PropertiesWindow.vala:534
-msgid "Modified:"
-msgstr "修改时间："
+#: ../src/View/Widgets/OverlayBar.vala:236
+#: ../src/View/Widgets/OverlayBar.vala:244
+msgid " selected"
+msgstr " 已选中"
 
-#: ../src/View/PropertiesWindow.vala:545
-msgid "Deleted:"
-msgstr "删除时间："
+#: ../src/View/Widgets/OverlayBar.vala:238
+#: ../src/Dialogs/PropertiesWindow.vala:1162
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] "%u 个文件夹"
 
-#: ../src/View/PropertiesWindow.vala:555
-msgid "Mimetype:"
-msgstr "文件格式："
+#: ../src/View/Widgets/OverlayBar.vala:246
+msgid "%u items selected (%s)"
+msgstr "已选中 %u 个条目 (%s)"
 
-#: ../src/View/PropertiesWindow.vala:562
-msgid "Resolution:"
-msgstr "分辨率："
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folder, "
+msgstr "%u 子文件夹， "
 
-#: ../src/View/PropertiesWindow.vala:580
-msgid "Target:"
-msgstr "目标："
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folders, "
+msgstr "%u 子文件夹， "
 
-#: ../src/View/PropertiesWindow.vala:588
-msgid "Original Location:"
-msgstr "原始位置："
+#. / TRANSLATORS: %u will be substituted by the number of readable files
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u file, "
+msgstr "%u 文件， "
 
-#: ../src/View/PropertiesWindow.vala:611
-msgid "Other Application…"
-msgstr "其他应用..."
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u files, "
+msgstr "%u 文件， "
 
-#: ../src/View/PropertiesWindow.vala:631
-msgid "Open with:"
-msgstr "打开方式："
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: ../src/View/Widgets/OverlayBar.vala:303
+msgid "%s approx."
+msgstr "大约 %s"
 
-#: ../src/View/PropertiesWindow.vala:890 ../src/View/PropertiesWindow.vala:900
-msgid "Owner:"
-msgstr "所有者："
+#. / TRANSLATORS: 'size' refers to disk space
+#: ../src/View/Widgets/OverlayBar.vala:306
+msgid "unknown size"
+msgstr "未知大小"
 
-#: ../src/View/PropertiesWindow.vala:894 ../src/View/PropertiesWindow.vala:903
-msgid "Group:"
-msgstr "群组："
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u file not readable"
+msgstr "%u 个文件不可读"
 
-#: ../src/View/PropertiesWindow.vala:906
-msgid "Everyone:"
-msgstr "任何人："
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u files not readable"
+msgstr "%u 个文件不可读"
 
-#: ../src/View/PropertiesWindow.vala:1165
-msgid "%u subfolder"
-msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "读取"
 
-#: ../src/View/PropertiesWindow.vala:1169
-#: ../src/View/PropertiesWindow.vala:1191
-msgid "%u file"
-msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "写入"
 
-#. /TRANSLATORS: folders, files
-#: ../src/View/PropertiesWindow.vala:1174
-msgid "%s, %s"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1195
-msgid "%u selected item"
-msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
-
-#. /TRANSLATORS: total (folders, files)
-#: ../src/View/PropertiesWindow.vala:1197
-msgid "%s (%s, %s)"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:353
-msgid "(as Administrator)"
-msgstr "(以管理员身份)"
-
-#: ../src/View/ViewContainer.vala:367
-msgid "You cannot create a folder here."
-msgstr "无法在此位置新建文件夹。"
-
-#: ../src/View/ViewContainer.vala:369
-msgid "The network is unavailable"
-msgstr "网络不可用"
-
-#: ../src/View/ViewContainer.vala:370
-msgid "A working network is needed to reach this folder"
-msgstr "需要网络连接才能打开此文件夹"
-
-#: ../src/View/ViewContainer.vala:372
-msgid "This Folder Does Not Belong to You"
-msgstr "此文件夹不属于您"
-
-#: ../src/View/ViewContainer.vala:373
-msgid "You don't have permission to view this folder."
-msgstr "您没有权限查看该文件夹。"
-
-#: ../src/View/ViewContainer.vala:375
-msgid "Unable to Mount Folder"
-msgstr "无法挂载文件夹"
-
-#: ../src/View/ViewContainer.vala:376
-msgid "Could not connect to the server for this folder."
-msgstr "无法连接到此文件夹所在服务器"
-
-#: ../src/View/ViewContainer.vala:378
-msgid "Unable to Show Folder"
-msgstr "无法显示文件夹"
-
-#: ../src/View/ViewContainer.vala:379
-msgid "The server for this folder could not be located."
-msgstr "无法定位此文件夹的位置。"
-
-#: ../src/View/ViewContainer.vala:389
-msgid "File not Found"
-msgstr "文件未找到"
-
-#: ../src/View/ViewContainer.vala:390
-msgid "The file selected no longer exists."
-msgstr "选中的文件已不存在。"
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "执行"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -1976,31 +1847,6 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit 不能与 URI 一起使用。"
 
-#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
-msgid "There is nothing on the clipboard to paste"
-msgstr "剪贴板中没有可粘贴的内容"
-
-#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
-msgid "File Operations"
-msgstr "文件操作"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:190
-msgid "Completed %s"
-msgstr "已完成 %s"
-
-#: ../src/ProgressUIHandler.vala:193
-msgid "All file operations have ended"
-msgstr "所有文件操作已结束"
-
-#: ../src/ProgressUIHandler.vala:238
-msgid "Show Copy Dialog"
-msgstr "显示复制对话框"
-
-#: ../src/ProgressUIHandler.vala:250
-msgid "Cancel All In-progress Actions"
-msgstr "取消所有正在进行的动作"
-
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
 msgstr "浏览文件"
@@ -2025,20 +1871,208 @@ msgstr "关于文件"
 msgid "Files"
 msgstr "文件"
 
-#: ../libcore/FileUtils.vala:59
-msgid "Could not determine original location of \"%s\" "
-msgstr "无法确定“%s”的原位置 "
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "您选中了多个文件类型"
 
-#: ../libcore/FileUtils.vala:60
-msgid "The item cannot be restored from trash"
-msgstr "此项目无法从回收站中恢复"
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "未找到能同时兼容所有文件类型的应用"
 
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "无法重命名为 '%s'"
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "文件打开失败"
 
-#: ../libcore/FileUtils.vala:464
-msgid "%A at %-I:%M %p"
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "地址打开失败"
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "无法使用此应用打开文件或地址"
+
+#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
+msgid "File Operations"
+msgstr "文件操作"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:190
+msgid "Completed %s"
+msgstr "已完成 %s"
+
+#: ../src/ProgressUIHandler.vala:193
+msgid "All file operations have ended"
+msgstr "所有文件操作已结束"
+
+#: ../src/ProgressUIHandler.vala:238
+msgid "Show Copy Dialog"
+msgstr "显示复制对话框"
+
+#: ../src/ProgressUIHandler.vala:250
+msgid "Cancel All In-progress Actions"
+msgstr "取消所有正在进行的动作"
+
+#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
+msgid "There is nothing on the clipboard to paste"
+msgstr "剪贴板中没有可粘贴的内容"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "设为默认"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "磁盘属性"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "存储目录："
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "格式："
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:49
+msgid "Info"
+msgstr "信息："
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:58
+msgid "General"
+msgstr "常规"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:77
+msgid "Close"
+msgstr "关闭"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:139
+msgid "Device Usage"
+msgstr "用量："
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:155
+msgid "Capacity:"
+msgstr "容量："
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:162
+#: ../src/Dialogs/PropertiesWindow.vala:416
+#: ../src/Dialogs/PropertiesWindow.vala:452
+msgid "Unknown"
+msgstr "未知"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:158
+msgid "Available:"
+msgstr "可用："
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:161
+msgid "Used:"
+msgstr "已用："
+
+#: ../src/Dialogs/PropertiesWindow.vala:220
+msgid "Permissions"
+msgstr "权限"
+
+#: ../src/Dialogs/PropertiesWindow.vala:241
+msgid "Actual Size Could Be Larger"
+msgstr "实际大小可能更大"
+
+#: ../src/Dialogs/PropertiesWindow.vala:241
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] "%i 个文件由于权限原因或其他错误无法读取。"
+
+#: ../src/Dialogs/PropertiesWindow.vala:260
+#: ../src/Dialogs/PropertiesWindow.vala:279
+msgid "unknown"
+msgstr "未知"
+
+#: ../src/Dialogs/PropertiesWindow.vala:427
+msgid "Loading…"
+msgstr "正在载入..."
+
+#: ../src/Dialogs/PropertiesWindow.vala:458
+msgid "Could not be determined"
+msgstr "无法确定"
+
+#: ../src/Dialogs/PropertiesWindow.vala:494
+msgid "Contains:"
+msgstr "包含："
+
+#: ../src/Dialogs/PropertiesWindow.vala:516
+msgid "Created:"
+msgstr "创建时间："
+
+#: ../src/Dialogs/PropertiesWindow.vala:525
+msgid "Modified:"
+msgstr "修改时间："
+
+#: ../src/Dialogs/PropertiesWindow.vala:536
+msgid "Deleted:"
+msgstr "删除时间："
+
+#: ../src/Dialogs/PropertiesWindow.vala:546
+msgid "Mimetype:"
+msgstr "文件格式："
+
+#: ../src/Dialogs/PropertiesWindow.vala:553
+msgid "Resolution:"
+msgstr "分辨率："
+
+#: ../src/Dialogs/PropertiesWindow.vala:571
+msgid "Target:"
+msgstr "目标："
+
+#: ../src/Dialogs/PropertiesWindow.vala:579
+msgid "Original Location:"
+msgstr "原始位置："
+
+#: ../src/Dialogs/PropertiesWindow.vala:602
+msgid "Other Application…"
+msgstr "其他应用..."
+
+#: ../src/Dialogs/PropertiesWindow.vala:622
+msgid "Open with:"
+msgstr "打开方式："
+
+#: ../src/Dialogs/PropertiesWindow.vala:864
+#: ../src/Dialogs/PropertiesWindow.vala:874
+msgid "Owner:"
+msgstr "所有者："
+
+#: ../src/Dialogs/PropertiesWindow.vala:868
+#: ../src/Dialogs/PropertiesWindow.vala:877
+msgid "Group:"
+msgstr "群组："
+
+#: ../src/Dialogs/PropertiesWindow.vala:880
+msgid "Everyone:"
+msgstr "任何人："
+
+#: ../src/Dialogs/PropertiesWindow.vala:1140
+msgid "%u subfolder"
+msgid_plural "%u subfolders"
+msgstr[0] "%u 个子文件夹"
+
+#: ../src/Dialogs/PropertiesWindow.vala:1144
+#: ../src/Dialogs/PropertiesWindow.vala:1166
+msgid "%u file"
+msgid_plural "%u files"
+msgstr[0] "%u 个文件"
+
+#. /TRANSLATORS: folders, files
+#: ../src/Dialogs/PropertiesWindow.vala:1149
+msgid "%s, %s"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:1170
+msgid "%u selected item"
+msgid_plural "%u selected items"
+msgstr[0] "%u 选中项"
+
+#. /TRANSLATORS: total (folders, files)
+#: ../src/Dialogs/PropertiesWindow.vala:1172
+msgid "%s (%s, %s)"
 msgstr ""
 
 #: ../libcore/DndHandler.vala:45
@@ -2061,34 +2095,33 @@ msgstr "链接到此处"
 msgid "Cancel"
 msgstr "取消"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "前往 %s"
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "无法确定“%s”的原位置 "
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:277
-msgid "Go to %s"
-msgstr "转到 %s"
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "此项目无法从回收站中恢复"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:281
-#: ../libwidgets/View/LocationBar.vala:184
-msgid "Enter search term or path"
-msgstr "输入关键词或位置"
+#: ../libcore/FileUtils.vala:342
+msgid "Could not rename to '%s'"
+msgstr "无法重命名为 '%s'"
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr "输入位置"
+#: ../libcore/FileUtils.vala:463
+msgid "%A at %-I:%M %p"
+msgstr "%A %p %-I:%M"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "网格视图"
+#: ../libwidgets/View/SearchResults.vala:178
+msgid "In This Folder"
+msgstr "在此文件夹中"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "列表视图"
+#: ../libwidgets/View/SearchResults.vala:180
+msgid "Bookmarks"
+msgstr "书签"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "分栏视图"
+#: ../libwidgets/View/SearchResults.vala:182
+msgid "Everywhere Else"
+msgstr "其它地方"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2142,57 +2175,29 @@ msgstr "最近"
 msgid "MTP"
 msgstr "MTP"
 
-#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
-msgid "Set as default"
-msgstr "设为默认"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "输入位置"
 
-#: ../libwidgets/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr "您选中了多个文件类型"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "网格视图"
 
-#: ../libwidgets/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr "未找到能同时兼容所有文件类型的应用"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "列表视图"
 
-#: ../libwidgets/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr "文件打开失败"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "分栏视图"
 
-#: ../libwidgets/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "地址打开失败"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "前往 %s"
 
-#: ../libwidgets/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr "无法使用此应用打开文件或地址"
-
-#: ../libwidgets/View/LocationBar.vala:181
-msgid "Reload this folder"
-msgstr "重新载入"
-
-#: ../libwidgets/View/SearchResults.vala:180
-msgid "In This Folder"
-msgstr "在此文件夹中"
-
-#: ../libwidgets/View/SearchResults.vala:182
-msgid "Bookmarks"
-msgstr "书签"
-
-#: ../libwidgets/View/SearchResults.vala:184
-msgid "Everywhere Else"
-msgstr "其它地方"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:412
-msgid "Open in New Tab"
-msgstr "在新标签中打开"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:419
-msgid "Open in New Window"
-msgstr "在新窗口中打开"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:458
-msgid "Open in Other Application…"
-msgstr "用其他应用打开..."
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
+msgid "Go to %s"
+msgstr "转到 %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

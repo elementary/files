@@ -183,14 +183,17 @@ namespace Marlin.View.Chrome
             bread.set_placeholder ("");
         }
 
-        public bool enter_search_mode (bool local_only, bool begins_with_only) {
+        public bool enter_search_mode () {
             if (!sensitive) {
                 return false;
             }
 
-            search_results.set_search_current_directory_only (local_only);
-            search_results.set_begins_with_only (begins_with_only);
+//~ <<<<<<< TREE
+//~ =======
+//~             search_results.set_search_current_directory_only (local_only);
+//~             search_results.set_begins_with_only (begins_with_only);
 
+//~ >>>>>>> MERGE-SOURCE
             if (!search_mode) {
                 /* Initialise search mode but do not search until first character has been received */
                 if (set_focussed ()) {
