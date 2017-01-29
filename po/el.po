@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-12-23 12:40-0800\n"
-"PO-Revision-Date: 2016-06-30 19:10+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2017-01-28 17:53+0000\n"
+"Last-Translator: Christos Iatropoulos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2016-12-24 04:50+0000\n"
-"X-Generator: Launchpad (build 18298)\n"
+"X-Launchpad-Export-Date: 2017-01-29 04:57+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -48,7 +48,7 @@ msgstr "Ασφαλές WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "Σύνδεση..."
+msgstr "Γίνεται σύνδεση..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -131,7 +131,7 @@ msgstr "_Κωδικός πρόσβασης:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr "_Απομνημόνευση αυτού του κωδικού πρόσβασης"
+msgstr "_Απομνημόνευση αυτού του συνθηματικού"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
@@ -225,7 +225,7 @@ msgstr "Αρχικό αρχείο"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:493
+#: ../src/Dialogs/PropertiesWindow.vala:484
 msgid "Size:"
 msgstr "Μέγεθος:"
 
@@ -233,7 +233,7 @@ msgstr "Μέγεθος:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:500
+#: ../src/Dialogs/PropertiesWindow.vala:491
 msgid "Type:"
 msgstr "Τύπος:"
 
@@ -283,6 +283,44 @@ msgstr "Αντικατάσταση"
 msgid "File conflict"
 msgstr "Σύγκρουση αρχείων"
 
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:379
+#, c-format
+msgid "link to %s"
+msgstr "σύνδεσμος προς το %s"
+
+#: ../libcore/gof-file.c:1953
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
+
+#: ../libcore/gof-file.c:1990
+msgid "No Exec field specified"
+msgstr "Δεν έχει οριστεί το πεδίο Exec"
+
+#: ../libcore/gof-file.c:2009
+msgid "No URL field specified"
+msgstr "Δεν έχει οριστεί το πεδίο URL"
+
+#: ../libcore/gof-file.c:2015
+msgid "Invalid desktop file"
+msgstr "Μη έγκυρο αρχείο επιφάνειας εργασίας"
+
+#: ../libcore/gof-file.c:2310
+msgid "Slashes are not allowed in filenames"
+msgstr "Δεν επιτρέπεται η χρήση καθέτων στα ονόματα αρχείων"
+
+#: ../libcore/gof-file.c:2330
+msgid "Toplevel files cannot be renamed"
+msgstr "Τα αρχεία ανωτάτου επιπέδου δεν μπορούν να μετονομαστούν"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Εμφάνιση περισσότερων _λεπτομερειών"
+
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (μη έγκυρο Unicode)"
@@ -297,7 +335,7 @@ msgstr "_Επανάληψη"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "Διαγραφή _Όλων"
+msgstr "Διαγραφή _όλων"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
@@ -313,7 +351,7 @@ msgstr "_Συγχώνευση"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr "Συγχώνευση _Όλων"
+msgstr "Συγχώνευση _όλων"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
@@ -591,7 +629,7 @@ msgstr "Παρουσιάστηκε σφάλμα κατά τη διαγραφή �
 #: ../libcore/marlin-file-operations.c:1837
 #: ../libcore/marlin-file-operations.c:1849
 msgid "Moving files to trash"
-msgstr "Μετακίνηση των αρχείων στα απορρίμματα"
+msgstr "Γίνεται μετακίνηση των αρχείων στον κάδο"
 
 #: ../libcore/marlin-file-operations.c:1851
 #, c-format
@@ -656,6 +694,8 @@ msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Η διαγραφή του αρχείου είναι οριστική"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
@@ -663,7 +703,7 @@ msgstr "Μεταφορά Αρχείων στα Απορρίμματα"
 
 #: ../libcore/marlin-file-operations.c:2158
 msgid "Deleting Files"
-msgstr "Διαγραφή Αρχείων"
+msgstr "Γίνεται διαγραφή αρχείων"
 
 #: ../libcore/marlin-file-operations.c:2227
 msgid "Unable to eject %V"
@@ -959,7 +999,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4594
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Αδύνατη η αντιγραφή του \"%Β\" εδώ."
 
 #: ../libcore/marlin-file-operations.c:4595
 msgid "There was an error copying the file into %B."
@@ -1064,68 +1104,9 @@ msgstr "Τα απορρίμματα αδειάζουν"
 msgid "Emptying Trash"
 msgstr "Άδειασμα απορριμμάτων"
 
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Προετοιμασία"
-
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
-msgid "Today at %-I:%M %p"
-msgstr "Σήμερα στις %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
-msgid "Yesterday at %-I:%M %p"
-msgstr "Χθες στις %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b στις %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y στις %-I:%M %p"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Εμφάνιση περισσότερων _λεπτομερειών"
-
-#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:379
-#, c-format
-msgid "link to %s"
-msgstr "σύνδεσμος προς το %s"
-
-#: ../libcore/gof-file.c:1953
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Αποτυχία ανάλυσης αρχείου επιφάνειας εργασίας: %s"
-
-#: ../libcore/gof-file.c:1990
-msgid "No Exec field specified"
-msgstr "Δεν έχει οριστεί το πεδίο Exec"
-
-#: ../libcore/gof-file.c:2009
-msgid "No URL field specified"
-msgstr "Δεν έχει οριστεί το πεδίο URL"
-
-#: ../libcore/gof-file.c:2015
-msgid "Invalid desktop file"
-msgstr "Μη έγκυρο αρχείο επιφάνειας εργασίας"
-
-#: ../libcore/gof-file.c:2310
-msgid "Slashes are not allowed in filenames"
-msgstr "Δεν επιτρέπεται η χρήση καθέτων στα ονόματα αρχείων"
-
-#: ../libcore/gof-file.c:2330
-msgid "Toplevel files cannot be renamed"
-msgstr "Τα αρχεία ανωτάτου επιπέδου δεν μπορούν να μετονομαστούν"
-
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "Η αρχική τοποθεσία δεν μπορεί να καθορισθεί"
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
@@ -1435,7 +1416,7 @@ msgstr[1] "Επανάληψη μετονομασίας %d αντικειμένω
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
-msgstr "Επανάληψη δημιουργίας ενός κενού φακέλου"
+msgstr "Επανάληψη δημιουργίας ενός κενού αρχείου"
 
 #: ../libcore/marlin-undostack-manager.c:1673
 msgid "_Redo creation of a file from template"
@@ -1452,15 +1433,15 @@ msgstr[1] "Επανάληψη δημιουργίας %d φακέλων"
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "Επανάληψη μετακίνησης στα απορρίμματα  %d αντικειμένου"
-msgstr[1] "Επανάληψη μετακίνησης στα απορρίμματα %d αντικειμένων"
+msgstr[0] "Επανάληψη μετακίνησης στον κάδο  %d αντικειμένου"
+msgstr[1] "Επανάληψη μετακίνησης στον κάδο %d αντικειμένων"
 
 #: ../libcore/marlin-undostack-manager.c:1687
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "Επανάληψη επαναφοράς από τα απορρίμματα %d αντικειμένου"
-msgstr[1] "Επανάληψη επαναφοράς από τα απορρίμματα %d αντικειμένων"
+msgstr[0] "Επανάληψη επαναφοράς από τον κάδο %d αντικειμένου"
+msgstr[1] "Επανάληψη επαναφοράς από τον κάδο %d αντικειμένων"
 
 #: ../libcore/marlin-undostack-manager.c:1692
 #, c-format
@@ -1504,244 +1485,49 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Επανάληψη αλλαγής ιδιοκτήτη του %d αντικειμένου"
 msgstr[1] "Επανάληψη αλλαγής ιδιοκτήτη των %d αντικειμένων"
 
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
+msgid "Today at %-I:%M %p"
+msgstr "Σήμερα στις %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
+msgid "Yesterday at %-I:%M %p"
+msgstr "Χθες στις %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b στις %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y στις %-I:%M %p"
+
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Προετοιμασία"
+
 #: ../filechooser-module/FileChooserDialog.vala:70
-#: ../libwidgets/Chrome/TopMenu.vala:64
+#: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
 msgstr "Προηγούμενο"
 
 #: ../filechooser-module/FileChooserDialog.vala:74
-#: ../libwidgets/Chrome/TopMenu.vala:68
+#: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "Επόμενο"
 
-#: ../src/View/AbstractPropertiesDialog.vala:50
-msgid "Info"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:59
-msgid "General"
-msgstr "Γενικά"
-
-#: ../src/View/AbstractPropertiesDialog.vala:78
-msgid "Close"
-msgstr "Κλείσιμο"
-
-#: ../src/View/AbstractPropertiesDialog.vala:140
-msgid "Device Usage"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:156
-msgid "Capacity:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:157
-#: ../src/View/AbstractPropertiesDialog.vala:160
-#: ../src/View/AbstractPropertiesDialog.vala:163
-#: ../src/View/PropertiesWindow.vala:425 ../src/View/PropertiesWindow.vala:461
-msgid "Unknown"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:159
-msgid "Available:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:162
-msgid "Used:"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:550
-msgid "Failed to preview"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:805
-msgid "Cannot open this file"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:818
-msgid "Cannot identify file type to open"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:1546
-msgid "Cannot drop this file"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:1546
-msgid "Invalid file name provided"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2001
-msgid "Invalid"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2007
-msgid "Run"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2012
-msgid "Open in %s"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2022
-msgid "Open in"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2024
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
-msgid "Open with"
-msgstr "Άνοιγμα με"
-
-#: ../src/View/AbstractDirectoryView.vala:2084
-msgid "Other Application"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2345
-msgid "Untitled %s"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2667
-#: ../src/View/AbstractDirectoryView.vala:2850
-msgid "Cannot remove files from here"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2668
-#: ../src/View/AbstractDirectoryView.vala:2838
-#: ../src/View/AbstractDirectoryView.vala:2851
-msgid "You do not have permission to change this location"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2816
-msgid "Cannot copy files that are in the trash"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2817
-msgid "Cutting the selection instead"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2837
-msgid "Cannot paste files here"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:230
-msgid "%u folders"
-msgstr "%u φάκελοι"
-
-#: ../src/View/OverlayBar.vala:232 ../src/View/OverlayBar.vala:240
-msgid " and %u other item (%s) selected"
-msgstr " και %u άλλο αντικείμενο (%s) επιλέχθηκαν"
-
-#: ../src/View/OverlayBar.vala:233 ../src/View/OverlayBar.vala:241
-msgid " and %u other items (%s) selected"
-msgstr " και %u άλλα αντικείμενα (%s) επιλέχθηκαν"
-
-#: ../src/View/OverlayBar.vala:236 ../src/View/OverlayBar.vala:244
-msgid " selected"
-msgstr " επιλέχτηκε"
-
-#: ../src/View/OverlayBar.vala:238 ../src/View/PropertiesWindow.vala:1187
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/View/OverlayBar.vala:246
-msgid "%u items selected (%s)"
-msgstr "%u επιλεγμένα αντικείμενα (%s)"
-
-#. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/OverlayBar.vala:287
-msgid "%u sub-folder, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:287
-msgid "%u sub-folders, "
-msgstr ""
-
-#. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/OverlayBar.vala:293
-msgid "%u file, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:293
-msgid "%u files, "
-msgstr ""
-
-#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/OverlayBar.vala:303
-msgid "%s approx."
-msgstr ""
-
-#. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/OverlayBar.vala:306
-msgid "unknown size"
-msgstr ""
-
-#. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/OverlayBar.vala:310
-msgid "%u file not readable"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:310
-msgid "%u files not readable"
-msgstr ""
-
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Ανάγνωση"
-
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Εγγραφή"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Εκτέλεση"
-
-#: ../src/View/Window.vala:206
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
 msgstr ""
 "Η εφαρμογή Αρχεία δεν είναι ο προεπιλεγμένος διαχειριστής αρχείων σας."
 
-#: ../src/View/Window.vala:212
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
-msgstr "Ορισμός ως Προεπιλογή"
+msgstr "Ορισμός ως προεπιλογής"
 
-#: ../src/View/Window.vala:218
+#: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "Παράβλεψη"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Όνομα αρχείου"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Μέγεθος"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Τύπος"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Τροποποίηση"
-
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr ""
-
-#: ../src/View/VolumePropertiesWindow.vala:44 ../src/View/Sidebar.vala:555
-#: ../src/View/ViewContainer.vala:344 ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Σύστημα Αρχείων"
-
-#: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:570
-msgid "Location:"
-msgstr ""
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr ""
 
 #: ../src/View/Sidebar.vala:481
 msgid "Personal"
@@ -1749,9 +1535,9 @@ msgstr "Προσωπικά"
 
 #: ../src/View/Sidebar.vala:482
 msgid "Your common places and bookmarks"
-msgstr "Οι συνήθεις τοποθεσίες και τα αγαπημένα σας"
+msgstr "Οι συνήθεις τοποθεσίες και οι σελιδοδείκτες σας"
 
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:342
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
 msgid "Home"
 msgstr "Προσωπικός φάκελος"
 
@@ -1761,15 +1547,15 @@ msgstr "Άνοιγμα του προσωπικού σας φακέλου"
 
 #: ../src/View/Sidebar.vala:516
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Προβολή της λίστας των πρόσφατα χρησιμοποιημένων αρχείων"
 
 #: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
 msgid "Trash"
-msgstr "Απορρίμματα"
+msgstr "Κάδος"
 
 #: ../src/View/Sidebar.vala:544
 msgid "Open the Trash"
-msgstr "Άνοιγμα των Απορριμμάτων"
+msgstr "Άνοιγμα του κάδου"
 
 #: ../src/View/Sidebar.vala:548
 msgid "Devices"
@@ -1778,6 +1564,12 @@ msgstr "Συσκευές"
 #: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
 msgstr "Τα τοπικά σας διαμερίσματα και συσκευές"
+
+#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "Σύστημα αρχείων"
 
 #: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
@@ -1789,7 +1581,7 @@ msgstr "Οι δικτυακές σας τοποθεσίες"
 
 #: ../src/View/Sidebar.vala:706
 msgid "Entire Network"
-msgstr "Ολόκληρο Δίκτυο"
+msgstr "Ολόκληρο δίκτυο"
 
 #: ../src/View/Sidebar.vala:713
 msgid "Browse the contents of the network"
@@ -1797,7 +1589,7 @@ msgstr "Περιήγηση στα περιεχόμενα του δικτύου"
 
 #: ../src/View/Sidebar.vala:845
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s ελεύθερα από %s)"
 
 #: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
@@ -1809,11 +1601,11 @@ msgstr "Άνοιγμα"
 
 #: ../src/View/Sidebar.vala:1453
 msgid "Open in New _Tab"
-msgstr "Άνοιγμα σε Νέα _Καρτέλα"
+msgstr "Άνοιγμα σε νέα _καρτέλα"
 
 #: ../src/View/Sidebar.vala:1459
 msgid "Open in New _Window"
-msgstr "Άνοιγμα σε Νέο _Παράθυρο"
+msgstr "Άνοιγμα σε νέο _παράθυρο"
 
 #: ../src/View/Sidebar.vala:1467
 msgid "Remove"
@@ -1835,12 +1627,28 @@ msgstr "Αποπ_ροσάρτηση"
 msgid "_Eject"
 msgstr "Ε_ξαγωγή"
 
-#: ../src/View/Sidebar.vala:1510 ../src/View/PropertiesWindow.vala:127
+#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "Ιδιότητες"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:366
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Όνομα αρχείου"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Μέγεθος"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Τύπος"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Τροποποίηση"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
 msgid "This Folder Does Not Exist"
 msgstr "Αυτός ο φάκελος δεν υπάρχει"
 
@@ -1866,13 +1674,133 @@ msgstr ""
 "\n"
 "%s"
 
+#: ../src/View/AbstractDirectoryView.vala:550
+msgid "Failed to preview"
+msgstr "Αποτυχία προεπισκόπησης"
+
+#: ../src/View/AbstractDirectoryView.vala:805
+msgid "Cannot open this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:818
+msgid "Cannot identify file type to open"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1549
+msgid "Cannot drop this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1549
+msgid "Invalid file name provided"
+msgstr "Δόθηκε μη έγκυρο όνομα αρχείου"
+
+#: ../src/View/AbstractDirectoryView.vala:2004
+msgid "Invalid"
+msgstr "Μη έγκυρο"
+
+#: ../src/View/AbstractDirectoryView.vala:2010
+msgid "Run"
+msgstr "Εκτέλεση"
+
+#: ../src/View/AbstractDirectoryView.vala:2015
+msgid "Open in %s"
+msgstr "Άνοιγμα σε %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2025
+msgid "Open in"
+msgstr "Άνοιγμα σε"
+
+#: ../src/View/AbstractDirectoryView.vala:2027
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
+msgid "Open with"
+msgstr "Άνοιγμα με"
+
+#: ../src/View/AbstractDirectoryView.vala:2087
+msgid "Other Application"
+msgstr "Άλλη εφαρμογή"
+
+#: ../src/View/AbstractDirectoryView.vala:2348
+msgid "Untitled %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2670
+#: ../src/View/AbstractDirectoryView.vala:2853
+msgid "Cannot remove files from here"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2671
+#: ../src/View/AbstractDirectoryView.vala:2841
+#: ../src/View/AbstractDirectoryView.vala:2854
+msgid "You do not have permission to change this location"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2819
+msgid "Cannot copy files that are in the trash"
+msgstr "Η αντιγραφή των αρχείων που βρίσκονται στον κάδο είναι αδύνατη"
+
+#: ../src/View/AbstractDirectoryView.vala:2820
+msgid "Cutting the selection instead"
+msgstr "Αποκοπή της επιλογής πάραυτα"
+
+#: ../src/View/AbstractDirectoryView.vala:2840
+msgid "Cannot paste files here"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:358
+msgid "(as Administrator)"
+msgstr "ως Διαχειριστής"
+
+#: ../src/View/ViewContainer.vala:372
+msgid "You cannot create a folder here."
+msgstr "Δεν μπορείτε να δημιουργήσετε έναν φάκελο εδώ"
+
+#: ../src/View/ViewContainer.vala:374
+msgid "The network is unavailable"
+msgstr "Το δίκτυο είναι μη διαθέσιμο"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:377
+msgid "This Folder Does Not Belong to You"
+msgstr "Αυτός ο φάκελος δεν σας ανήκει"
+
+#: ../src/View/ViewContainer.vala:378
+msgid "You don't have permission to view this folder."
+msgstr "Δεν έχετε δικαιώματα για να δείτε αυτό το φάκελο."
+
+#: ../src/View/ViewContainer.vala:380
+msgid "Unable to Mount Folder"
+msgstr "Δεν είναι δυνατή η προσάρτηση του φακέλου"
+
+#: ../src/View/ViewContainer.vala:381
+msgid "Could not connect to the server for this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:383
+msgid "Unable to Show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:384
+msgid "The server for this folder could not be located."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:394
+msgid "File not Found"
+msgstr "Το αρχείο δεν βρέθηκε"
+
+#: ../src/View/ViewContainer.vala:395
+msgid "The file selected no longer exists."
+msgstr "Το επιλεγμένο αρχείο δεν υπάρχει πλέον."
+
 #: ../src/View/Slot.vala:32
 msgid "This Folder Is Empty"
 msgstr "Αυτός ο φάκελος είναι άδειος"
 
 #: ../src/View/Slot.vala:33
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Ο κάδος είναι άδειος"
 
 #: ../src/View/Slot.vala:34
 msgid "There Are No Recent Files"
@@ -1880,162 +1808,107 @@ msgstr "Δεν υπάρχουν πρόσφατα αρχεία"
 
 #: ../src/View/Slot.vala:35
 msgid "Access Denied"
+msgstr "Δεν επιτρέπεται η πρόσβαση"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+msgid "Open in New Tab"
+msgstr "Άνοιγμα σε νέα καρτέλα"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Window"
+msgstr "Άνοιγμα σε νέο παράθυρο"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+msgid "Open in Other Application…"
+msgstr "Άνοιγμα σε άλλη εφαρμογή..."
+
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "Ανανέωση αυτού του φακέλου"
+
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
+msgid "Enter search term or path"
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:199
-msgid "Permissions"
+#: ../src/View/Widgets/OverlayBar.vala:230
+msgid "%u folders"
+msgstr "%u φάκελοι"
+
+#: ../src/View/Widgets/OverlayBar.vala:232
+#: ../src/View/Widgets/OverlayBar.vala:240
+msgid " and %u other item (%s) selected"
+msgstr " και %u άλλο αντικείμενο (%s) επιλέχθηκαν"
+
+#: ../src/View/Widgets/OverlayBar.vala:233
+#: ../src/View/Widgets/OverlayBar.vala:241
+msgid " and %u other items (%s) selected"
+msgstr " και %u άλλα αντικείμενα (%s) επιλέχθηκαν"
+
+#: ../src/View/Widgets/OverlayBar.vala:236
+#: ../src/View/Widgets/OverlayBar.vala:244
+msgid " selected"
+msgstr " επιλέχτηκε"
+
+#: ../src/View/Widgets/OverlayBar.vala:238
+#: ../src/Dialogs/PropertiesWindow.vala:1162
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] "%u φάκελος"
+msgstr[1] "%u φάκελοι"
+
+#: ../src/View/Widgets/OverlayBar.vala:246
+msgid "%u items selected (%s)"
+msgstr "%u επιλεγμένα αντικείμενα (%s)"
+
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folder, "
+msgstr "%u υποφάκελος, "
+
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folders, "
+msgstr "%u υποφάκελοι, "
+
+#. / TRANSLATORS: %u will be substituted by the number of readable files
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u file, "
+msgstr "%u αρχείο, "
+
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u files, "
+msgstr "%u αρχεία, "
+
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: ../src/View/Widgets/OverlayBar.vala:303
+msgid "%s approx."
 msgstr ""
 
-#: ../src/View/PropertiesWindow.vala:220
-msgid "Actual Size Could Be Larger"
-msgstr ""
+#. / TRANSLATORS: 'size' refers to disk space
+#: ../src/View/Widgets/OverlayBar.vala:306
+msgid "unknown size"
+msgstr "άγνωστο μέγεθος"
 
-#: ../src/View/PropertiesWindow.vala:220
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u file not readable"
+msgstr "%u αρχείο δεν είναι αναγνώσιμο"
 
-#: ../src/View/PropertiesWindow.vala:239 ../src/View/PropertiesWindow.vala:258
-msgid "unknown"
-msgstr ""
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u files not readable"
+msgstr "%u αρχεία δεν είναι αναγνώσιμα"
 
-#: ../src/View/PropertiesWindow.vala:436
-msgid "Loading…"
-msgstr ""
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Ανάγνωση"
 
-#: ../src/View/PropertiesWindow.vala:467
-msgid "Could not be determined"
-msgstr ""
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Εγγραφή"
 
-#: ../src/View/PropertiesWindow.vala:503
-msgid "Contains:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:525
-msgid "Created:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:534
-msgid "Modified:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:545
-msgid "Deleted:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:555
-msgid "Mimetype:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:562
-msgid "Resolution:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:580
-msgid "Target:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:588
-msgid "Original Location:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:611
-msgid "Other Application…"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:631
-msgid "Open with:"
-msgstr "Άνοιγμα με:"
-
-#: ../src/View/PropertiesWindow.vala:890 ../src/View/PropertiesWindow.vala:900
-msgid "Owner:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:894 ../src/View/PropertiesWindow.vala:903
-msgid "Group:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:906
-msgid "Everyone:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1165
-msgid "%u subfolder"
-msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/View/PropertiesWindow.vala:1169
-#: ../src/View/PropertiesWindow.vala:1191
-msgid "%u file"
-msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
-
-#. /TRANSLATORS: folders, files
-#: ../src/View/PropertiesWindow.vala:1174
-msgid "%s, %s"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1195
-msgid "%u selected item"
-msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
-
-#. /TRANSLATORS: total (folders, files)
-#: ../src/View/PropertiesWindow.vala:1197
-msgid "%s (%s, %s)"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:353
-msgid "(as Administrator)"
-msgstr "ως Διαχειριστής"
-
-#: ../src/View/ViewContainer.vala:367
-msgid "You cannot create a folder here."
-msgstr "Δεν μπορείτε να δημιουργήσετε έναν φάκελο εδώ"
-
-#: ../src/View/ViewContainer.vala:369
-msgid "The network is unavailable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:370
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:372
-msgid "This Folder Does Not Belong to You"
-msgstr "Αυτός ο φάκελος δεν σας ανήκει"
-
-#: ../src/View/ViewContainer.vala:373
-msgid "You don't have permission to view this folder."
-msgstr "Δεν έχετε δικαιώματα για να δείτε αυτό το φάκελο."
-
-#: ../src/View/ViewContainer.vala:375
-msgid "Unable to Mount Folder"
-msgstr "Δεν είναι δυνατή η προσάρτηση του φακέλου"
-
-#: ../src/View/ViewContainer.vala:376
-msgid "Could not connect to the server for this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:378
-msgid "Unable to Show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:379
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:389
-msgid "File not Found"
-msgstr "Το αρχείο δεν βρέθηκε"
-
-#: ../src/View/ViewContainer.vala:390
-msgid "The file selected no longer exists."
-msgstr "Το επιλεγμένο αρχείο δεν υπάρχει πλέον."
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Εκτέλεση"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2047,11 +1920,11 @@ msgstr "Άνοιγμα uri (s) σε νέα καρτέλα"
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Νέο Παράθυρο"
+msgstr "Νέο παράθυρο"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
-msgstr "Έξοδος από το Files"
+msgstr "Έξοδος από τα Αρχεία"
 
 #: ../src/Application.vala:154
 msgid "Enable debug logging"
@@ -2075,9 +1948,49 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "το --quit δεν μπορεί να χρησιμοποιηθεί σε URI."
 
-#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
-msgid "There is nothing on the clipboard to paste"
-msgstr "Δεν υπάρχει τίποτα στο πρόχειρο για επικόλληση."
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Περιηγηθείτε στα αρχεία σας"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Διαχειριστής αρχείων"
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Window"
+msgstr "Νέο _παράθυρο"
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New Window As _Administrator"
+msgstr "Νέο παράθυρο ως_Διαχειριστής"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "About _Files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Αρχεία"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr ""
 
 #: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
 msgid "File Operations"
@@ -2100,57 +2013,184 @@ msgstr "Εμφάνιση διαλόγου αντιγραφής"
 msgid "Cancel All In-progress Actions"
 msgstr "Ακύρωση όλων των ενεργειών σε εξέλιξη"
 
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Περιηγηθείτε στα αρχεία σας"
+#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
+msgid "There is nothing on the clipboard to paste"
+msgstr "Δεν υπάρχει τίποτα στο πρόχειρο για επικόλληση."
 
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Διαχειριστής αρχείων"
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Ορισμός ως προεπιλογή"
 
-#: ../src/DesktopLauncher.vala:8
-msgid "New _Window"
-msgstr "Νέο _Παράθυρο"
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Ιδιότητες δίσκου"
 
-#: ../src/DesktopLauncher.vala:9
-msgid "New Window As _Administrator"
-msgstr "Νέο παράθυρο ως_Διαχειριστής"
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "Τοποθεσία:"
 
-#: ../src/DesktopLauncher.vala:10
-msgid "About _Files"
-msgstr "Σχετικά με τα _Αρχεία"
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Μορφή:"
 
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Αρχεία"
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:49
+msgid "Info"
+msgstr "Πληροφορίες"
 
-#: ../libcore/FileUtils.vala:59
-msgid "Could not determine original location of \"%s\" "
-msgstr "Αδυναμία προσδιορισμού αρχικής τοποθεσίας του \"%s\" "
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:58
+msgid "General"
+msgstr "Γενικά"
 
-#: ../libcore/FileUtils.vala:60
-msgid "The item cannot be restored from trash"
-msgstr "Το αντικείμενο δεν μπορεί να αποκατασταθεί από τα απορρήματα"
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:77
+msgid "Close"
+msgstr "Κλείσιμο"
 
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:139
+msgid "Device Usage"
+msgstr "Χρήση συσκευής"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:155
+msgid "Capacity:"
+msgstr "Χωρητικότητα:"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:162
+#: ../src/Dialogs/PropertiesWindow.vala:416
+#: ../src/Dialogs/PropertiesWindow.vala:452
+msgid "Unknown"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:464
-msgid "%A at %-I:%M %p"
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:158
+msgid "Available:"
 msgstr ""
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:161
+msgid "Used:"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:220
+msgid "Permissions"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:241
+msgid "Actual Size Could Be Larger"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:241
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:260
+#: ../src/Dialogs/PropertiesWindow.vala:279
+msgid "unknown"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:427
+msgid "Loading…"
+msgstr "Γίνεται φόρτωση..."
+
+#: ../src/Dialogs/PropertiesWindow.vala:458
+msgid "Could not be determined"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:494
+msgid "Contains:"
+msgstr "Περιέχει :"
+
+#: ../src/Dialogs/PropertiesWindow.vala:516
+msgid "Created:"
+msgstr "Δημιουργήθηκε:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:525
+msgid "Modified:"
+msgstr "Τροποποιήθηκε:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:536
+msgid "Deleted:"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:546
+msgid "Mimetype:"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:553
+msgid "Resolution:"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:571
+msgid "Target:"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:579
+msgid "Original Location:"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:602
+msgid "Other Application…"
+msgstr "Άλλη εφαρμογή..."
+
+#: ../src/Dialogs/PropertiesWindow.vala:622
+msgid "Open with:"
+msgstr "Άνοιγμα με:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:864
+#: ../src/Dialogs/PropertiesWindow.vala:874
+msgid "Owner:"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:868
+#: ../src/Dialogs/PropertiesWindow.vala:877
+msgid "Group:"
+msgstr "Ομάδα:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:880
+msgid "Everyone:"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:1140
+msgid "%u subfolder"
+msgid_plural "%u subfolders"
+msgstr[0] "%u υποφάκελος"
+msgstr[1] "%u υποφάκελοι"
+
+#: ../src/Dialogs/PropertiesWindow.vala:1144
+#: ../src/Dialogs/PropertiesWindow.vala:1166
+msgid "%u file"
+msgid_plural "%u files"
+msgstr[0] "%u αρχείο"
+msgstr[1] "%u αρχεία"
+
+#. /TRANSLATORS: folders, files
+#: ../src/Dialogs/PropertiesWindow.vala:1149
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../src/Dialogs/PropertiesWindow.vala:1170
+msgid "%u selected item"
+msgid_plural "%u selected items"
+msgstr[0] "%u επιλεγμένο αντικείμενο"
+msgstr[1] "%u επιλεγμένα αντικείμενα"
+
+#. /TRANSLATORS: total (folders, files)
+#: ../src/Dialogs/PropertiesWindow.vala:1172
+msgid "%s (%s, %s)"
+msgstr "%s (%s, %s)"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Αποτυχία εκτέλεσης του \"%s\""
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
-msgstr ""
+msgstr "Μετακίνηση εδώ"
 
 #: ../libcore/DndHandler.vala:94
 msgid "Copy Here"
-msgstr ""
+msgstr "Αντιγραφή εδώ"
 
 #: ../libcore/DndHandler.vala:95
 msgid "Link Here"
@@ -2160,34 +2200,33 @@ msgstr ""
 msgid "Cancel"
 msgstr "Ακύρωση"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "Αδυναμία προσδιορισμού αρχικής τοποθεσίας του \"%s\" "
+
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "Το αντικείμενο δεν μπορεί να επαναφερθεί από τον κάθο"
+
+#: ../libcore/FileUtils.vala:342
+msgid "Could not rename to '%s'"
 msgstr ""
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:277
-msgid "Go to %s"
-msgstr "Μετάβαση στο %s"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:281
-#: ../libwidgets/View/LocationBar.vala:184
-msgid "Enter search term or path"
+#: ../libcore/FileUtils.vala:463
+msgid "%A at %-I:%M %p"
 msgstr ""
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr ""
+#: ../libwidgets/View/SearchResults.vala:178
+msgid "In This Folder"
+msgstr "Σε αυτό το φάκελο"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Προβολή σε πλέγμα"
+#: ../libwidgets/View/SearchResults.vala:180
+msgid "Bookmarks"
+msgstr "Σελιδοδείκτες"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Προβολή ως λίστα"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "Προβολή σε στήλες"
+#: ../libwidgets/View/SearchResults.vala:182
+msgid "Everywhere Else"
+msgstr "Οπουδήποτε αλλού"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2198,6 +2237,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Chris Triantafillis https://launchpad.net/~christriant\n"
+"  Christos Iatropoulos https://launchpad.net/~ci4\n"
 "  Cody Garver https://launchpad.net/~codygarver\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Filippos Kolyvas https://launchpad.net/~fkol-k4\n"
@@ -2239,63 +2279,35 @@ msgstr "SMB"
 
 #: ../libwidgets/Resources.vala:91
 msgid "Recent"
-msgstr ""
+msgstr "Πρόσφατα"
 
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr ""
 
-#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
-msgid "Set as default"
-msgstr "Ορισμός ως προεπιλογή"
-
-#: ../libwidgets/MimeActions.vala:260
-msgid "Multiple file types selected"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
 msgstr ""
 
-#: ../libwidgets/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr ""
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Προβολή σε πλέγμα"
 
-#: ../libwidgets/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr ""
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Προβολή ως λίστα"
 
-#: ../libwidgets/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr ""
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Προβολή σε στήλες"
 
-#: ../libwidgets/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr ""
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Πλοήγηση σε %s"
 
-#: ../libwidgets/View/LocationBar.vala:181
-msgid "Reload this folder"
-msgstr ""
-
-#: ../libwidgets/View/SearchResults.vala:180
-msgid "In This Folder"
-msgstr "Σε Αυτό το Φάκελο"
-
-#: ../libwidgets/View/SearchResults.vala:182
-msgid "Bookmarks"
-msgstr "Σελιδοδείκτες"
-
-#: ../libwidgets/View/SearchResults.vala:184
-msgid "Everywhere Else"
-msgstr "Οπουδήποτε Αλλού"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:412
-msgid "Open in New Tab"
-msgstr "Άνοιγμα σε νέα καρτέλα"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:419
-msgid "Open in New Window"
-msgstr ""
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:458
-msgid "Open in Other Application…"
-msgstr ""
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
+msgid "Go to %s"
+msgstr "Μετάβαση στο %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2307,15 +2319,17 @@ msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Επαναφορά όλων"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Άδειασμα του κάδου"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
 msgstr ""
+"Αυτά τα αντικείμενα μπορούν είτε να επαναφερθούν είτε να διαγραφούν απο τον "
+"κάδο."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
@@ -2323,11 +2337,11 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Επαναφορά από τον κάδο"
 
 #: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
-msgstr ""
+msgstr "Οριστική διαγραφή"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
@@ -2335,27 +2349,27 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Αφαίρεση από το ιστορικό"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "Μετακίνηση στον κάδο"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr ""
+msgstr "Νέος"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr ""
+msgstr "Φάκελος"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr ""
+msgstr "Κενό αρχείο"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Προβολή κρυφών αρχείων"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
@@ -2363,44 +2377,44 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr ""
+msgstr "Νέα καρτέλα"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
-msgstr ""
+msgstr "Τερματικό"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
-msgstr ""
+msgstr "Προσθήκη στους σελιδοδείκτες"
 
 #: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
-msgstr ""
+msgstr "Επικόλληση"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Cut"
-msgstr ""
+msgstr "Αποκοπή"
 
 #: ../src/View/directory_view_popup.ui:124
 msgid "Copy"
-msgstr ""
+msgstr "Αντιγραφή"
 
 #: ../src/View/directory_view_popup.ui:128
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Επικόλληση στον φάκελο"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Sort by"
-msgstr ""
+msgstr "Ταξινόμηση κατά"
 
 #: ../src/View/directory_view_popup.ui:138
 msgid "Name"
-msgstr ""
+msgstr "Όνομα"
 
 #: ../src/View/directory_view_popup.ui:153
 msgid "Date"
-msgstr ""
+msgstr "Ημερομηνία"
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
-msgstr ""
+msgstr "Αντίστροφη σειρά"
