@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-01-25 23:06+0000\n"
-"Last-Translator: Theodore Grammenos <Unknown>\n"
+"PO-Revision-Date: 2017-01-28 17:53+0000\n"
+"Last-Translator: Christos Iatropoulos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:09+0000\n"
+"X-Launchpad-Export-Date: 2017-01-29 04:57+0000\n"
 "X-Generator: Launchpad (build 18315)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -48,7 +48,7 @@ msgstr "Ασφαλές WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "Σύνδεση..."
+msgstr "Γίνεται σύνδεση..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -131,7 +131,7 @@ msgstr "_Κωδικός πρόσβασης:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr "_Απομνημόνευση αυτού του κωδικού πρόσβασης"
+msgstr "_Απομνημόνευση αυτού του συνθηματικού"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
@@ -335,7 +335,7 @@ msgstr "_Επανάληψη"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "Διαγραφή _Όλων"
+msgstr "Διαγραφή _όλων"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
@@ -351,7 +351,7 @@ msgstr "_Συγχώνευση"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr "Συγχώνευση _Όλων"
+msgstr "Συγχώνευση _όλων"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
@@ -629,7 +629,7 @@ msgstr "Παρουσιάστηκε σφάλμα κατά τη διαγραφή �
 #: ../libcore/marlin-file-operations.c:1837
 #: ../libcore/marlin-file-operations.c:1849
 msgid "Moving files to trash"
-msgstr "Μετακίνηση των αρχείων στα απορρίμματα"
+msgstr "Γίνεται μετακίνηση των αρχείων στον κάδο"
 
 #: ../libcore/marlin-file-operations.c:1851
 #, c-format
@@ -694,6 +694,8 @@ msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Η διαγραφή του αρχείου είναι οριστική"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
@@ -701,7 +703,7 @@ msgstr "Μεταφορά Αρχείων στα Απορρίμματα"
 
 #: ../libcore/marlin-file-operations.c:2158
 msgid "Deleting Files"
-msgstr "Διαγραφή Αρχείων"
+msgstr "Γίνεται διαγραφή αρχείων"
 
 #: ../libcore/marlin-file-operations.c:2227
 msgid "Unable to eject %V"
@@ -1414,7 +1416,7 @@ msgstr[1] "Επανάληψη μετονομασίας %d αντικειμένω
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
-msgstr "Επανάληψη δημιουργίας ενός κενού φακέλου"
+msgstr "Επανάληψη δημιουργίας ενός κενού αρχείου"
 
 #: ../libcore/marlin-undostack-manager.c:1673
 msgid "_Redo creation of a file from template"
@@ -1431,15 +1433,15 @@ msgstr[1] "Επανάληψη δημιουργίας %d φακέλων"
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "Επανάληψη μετακίνησης στα απορρίμματα  %d αντικειμένου"
-msgstr[1] "Επανάληψη μετακίνησης στα απορρίμματα %d αντικειμένων"
+msgstr[0] "Επανάληψη μετακίνησης στον κάδο  %d αντικειμένου"
+msgstr[1] "Επανάληψη μετακίνησης στον κάδο %d αντικειμένων"
 
 #: ../libcore/marlin-undostack-manager.c:1687
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "Επανάληψη επαναφοράς από τα απορρίμματα %d αντικειμένου"
-msgstr[1] "Επανάληψη επαναφοράς από τα απορρίμματα %d αντικειμένων"
+msgstr[0] "Επανάληψη επαναφοράς από τον κάδο %d αντικειμένου"
+msgstr[1] "Επανάληψη επαναφοράς από τον κάδο %d αντικειμένων"
 
 #: ../libcore/marlin-undostack-manager.c:1692
 #, c-format
@@ -1521,7 +1523,7 @@ msgstr ""
 
 #: ../src/View/Window.vala:213
 msgid "Set as Default"
-msgstr "Ορισμός ως Προεπιλογή"
+msgstr "Ορισμός ως προεπιλογής"
 
 #: ../src/View/Window.vala:219
 msgid "Ignore"
@@ -1533,7 +1535,7 @@ msgstr "Προσωπικά"
 
 #: ../src/View/Sidebar.vala:482
 msgid "Your common places and bookmarks"
-msgstr "Οι συνήθεις τοποθεσίες και τα αγαπημένα σας"
+msgstr "Οι συνήθεις τοποθεσίες και οι σελιδοδείκτες σας"
 
 #: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
 msgid "Home"
@@ -1545,15 +1547,15 @@ msgstr "Άνοιγμα του προσωπικού σας φακέλου"
 
 #: ../src/View/Sidebar.vala:516
 msgid "View the list of recently used files"
-msgstr "Δείτε τη λίστα με τα αρχεία που χρησιμοποιήθηκαν πρόσφατα"
+msgstr "Προβολή της λίστας των πρόσφατα χρησιμοποιημένων αρχείων"
 
 #: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
 msgid "Trash"
-msgstr "Απορρίμματα"
+msgstr "Κάδος"
 
 #: ../src/View/Sidebar.vala:544
 msgid "Open the Trash"
-msgstr "Άνοιγμα των Απορριμμάτων"
+msgstr "Άνοιγμα του κάδου"
 
 #: ../src/View/Sidebar.vala:548
 msgid "Devices"
@@ -1567,7 +1569,7 @@ msgstr "Τα τοπικά σας διαμερίσματα και συσκευέ�
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:93
 msgid "File System"
-msgstr "Σύστημα Αρχείων"
+msgstr "Σύστημα αρχείων"
 
 #: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
@@ -1579,7 +1581,7 @@ msgstr "Οι δικτυακές σας τοποθεσίες"
 
 #: ../src/View/Sidebar.vala:706
 msgid "Entire Network"
-msgstr "Ολόκληρο Δίκτυο"
+msgstr "Ολόκληρο δίκτυο"
 
 #: ../src/View/Sidebar.vala:713
 msgid "Browse the contents of the network"
@@ -1587,7 +1589,7 @@ msgstr "Περιήγηση στα περιεχόμενα του δικτύου"
 
 #: ../src/View/Sidebar.vala:845
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s ελεύθερα από %s)"
 
 #: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
@@ -1599,11 +1601,11 @@ msgstr "Άνοιγμα"
 
 #: ../src/View/Sidebar.vala:1453
 msgid "Open in New _Tab"
-msgstr "Άνοιγμα σε Νέα _Καρτέλα"
+msgstr "Άνοιγμα σε νέα _καρτέλα"
 
 #: ../src/View/Sidebar.vala:1459
 msgid "Open in New _Window"
-msgstr "Άνοιγμα σε Νέο _Παράθυρο"
+msgstr "Άνοιγμα σε νέο _παράθυρο"
 
 #: ../src/View/Sidebar.vala:1467
 msgid "Remove"
@@ -1690,11 +1692,11 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1549
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Δόθηκε μη έγκυρο όνομα αρχείου"
 
 #: ../src/View/AbstractDirectoryView.vala:2004
 msgid "Invalid"
-msgstr ""
+msgstr "Μη έγκυρο"
 
 #: ../src/View/AbstractDirectoryView.vala:2010
 msgid "Run"
@@ -1734,7 +1736,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2819
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Η αντιγραφή των αρχείων που βρίσκονται στον κάδο είναι αδύνατη"
 
 #: ../src/View/AbstractDirectoryView.vala:2820
 msgid "Cutting the selection instead"
@@ -1754,7 +1756,7 @@ msgstr "Δεν μπορείτε να δημιουργήσετε έναν φάκ�
 
 #: ../src/View/ViewContainer.vala:374
 msgid "The network is unavailable"
-msgstr ""
+msgstr "Το δίκτυο είναι μη διαθέσιμο"
 
 #: ../src/View/ViewContainer.vala:375
 msgid "A working network is needed to reach this folder"
@@ -1798,7 +1800,7 @@ msgstr "Αυτός ο φάκελος είναι άδειος"
 
 #: ../src/View/Slot.vala:33
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Ο κάδος είναι άδειος"
 
 #: ../src/View/Slot.vala:34
 msgid "There Are No Recent Files"
@@ -1806,7 +1808,7 @@ msgstr "Δεν υπάρχουν πρόσφατα αρχεία"
 
 #: ../src/View/Slot.vala:35
 msgid "Access Denied"
-msgstr ""
+msgstr "Δεν επιτρέπεται η πρόσβαση"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:413
 msgid "Open in New Tab"
@@ -1822,7 +1824,7 @@ msgstr "Άνοιγμα σε άλλη εφαρμογή..."
 
 #: ../src/View/Widgets/LocationBar.vala:177
 msgid "Reload this folder"
-msgstr ""
+msgstr "Ανανέωση αυτού του φακέλου"
 
 #: ../src/View/Widgets/LocationBar.vala:180
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
@@ -1852,8 +1854,8 @@ msgstr " επιλέχτηκε"
 #: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u φάκελος"
+msgstr[1] "%u φάκελοι"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1890,11 +1892,11 @@ msgstr "άγνωστο μέγεθος"
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u αρχείο δεν είναι αναγνώσιμο"
 
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u αρχεία δεν είναι αναγνώσιμα"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1918,11 +1920,11 @@ msgstr "Άνοιγμα uri (s) σε νέα καρτέλα"
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Νέο Παράθυρο"
+msgstr "Νέο παράθυρο"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
-msgstr "Έξοδος από το Files"
+msgstr "Έξοδος από τα Αρχεία"
 
 #: ../src/Application.vala:154
 msgid "Enable debug logging"
@@ -1956,7 +1958,7 @@ msgstr "Διαχειριστής αρχείων"
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Window"
-msgstr "Νέο _Παράθυρο"
+msgstr "Νέο _παράθυρο"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
@@ -1964,7 +1966,7 @@ msgstr "Νέο παράθυρο ως_Διαχειριστής"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
-msgstr "Σχετικά με τα _Αρχεία"
+msgstr ""
 
 #: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
 msgid "Files"
@@ -2026,15 +2028,15 @@ msgstr "Ιδιότητες δίσκου"
 #: ../src/Dialogs/VolumePropertiesWindow.vala:78
 #: ../src/Dialogs/PropertiesWindow.vala:561
 msgid "Location:"
-msgstr ""
+msgstr "Τοποθεσία:"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:85
 msgid "Format:"
-msgstr ""
+msgstr "Μορφή:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "Πληροφορίες"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:58
 msgid "General"
@@ -2097,15 +2099,15 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:494
 msgid "Contains:"
-msgstr ""
+msgstr "Περιέχει :"
 
 #: ../src/Dialogs/PropertiesWindow.vala:516
 msgid "Created:"
-msgstr ""
+msgstr "Δημιουργήθηκε:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:525
 msgid "Modified:"
-msgstr ""
+msgstr "Τροποποιήθηκε:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:536
 msgid "Deleted:"
@@ -2180,7 +2182,7 @@ msgstr "%s (%s, %s)"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Αποτυχία εκτέλεσης του \"%s\""
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
@@ -2204,7 +2206,7 @@ msgstr "Αδυναμία προσδιορισμού αρχικής τοποθε�
 
 #: ../libcore/FileUtils.vala:60
 msgid "The item cannot be restored from trash"
-msgstr "Το αντικείμενο δεν μπορεί να αποκατασταθεί από τα απορρήματα"
+msgstr "Το αντικείμενο δεν μπορεί να επαναφερθεί από τον κάθο"
 
 #: ../libcore/FileUtils.vala:342
 msgid "Could not rename to '%s'"
@@ -2216,7 +2218,7 @@ msgstr ""
 
 #: ../libwidgets/View/SearchResults.vala:178
 msgid "In This Folder"
-msgstr "Σε Αυτό το Φάκελο"
+msgstr "Σε αυτό το φάκελο"
 
 #: ../libwidgets/View/SearchResults.vala:180
 msgid "Bookmarks"
@@ -2224,7 +2226,7 @@ msgstr "Σελιδοδείκτες"
 
 #: ../libwidgets/View/SearchResults.vala:182
 msgid "Everywhere Else"
-msgstr "Οπουδήποτε Αλλού"
+msgstr "Οπουδήποτε αλλού"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2277,7 +2279,7 @@ msgstr "SMB"
 
 #: ../libwidgets/Resources.vala:91
 msgid "Recent"
-msgstr ""
+msgstr "Πρόσφατα"
 
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
@@ -2301,7 +2303,7 @@ msgstr "Προβολή σε στήλες"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Πλοήγηση σε %s"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Go to %s"
@@ -2321,11 +2323,13 @@ msgstr "Επαναφορά όλων"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Άδειασμα του κάδου"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
 msgstr ""
+"Αυτά τα αντικείμενα μπορούν είτε να επαναφερθούν είτε να διαγραφούν απο τον "
+"κάδο."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
@@ -2333,11 +2337,11 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Επαναφορά από τον κάδο"
 
 #: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
-msgstr ""
+msgstr "Οριστική διαγραφή"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
@@ -2349,11 +2353,11 @@ msgstr "Αφαίρεση από το ιστορικό"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "Μετακίνηση στον κάδο"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr ""
+msgstr "Νέος"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
@@ -2361,7 +2365,7 @@ msgstr "Φάκελος"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr ""
+msgstr "Κενό αρχείο"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
@@ -2381,7 +2385,7 @@ msgstr "Τερματικό"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
-msgstr ""
+msgstr "Προσθήκη στους σελιδοδείκτες"
 
 #: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
@@ -2413,4 +2417,4 @@ msgstr "Ημερομηνία"
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
-msgstr ""
+msgstr "Αντίστροφη σειρά"
