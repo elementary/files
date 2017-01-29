@@ -28,7 +28,6 @@ public class Marlin.Application : Granite.Application {
     private VolumeMonitor volume_monitor;
     private Marlin.Progress.UIHandler progress_handler;
     private Marlin.ClipboardManager clipboard;
-    private Marlin.Thumbnailer thumbnailer;
     private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -91,7 +90,6 @@ public class Marlin.Application : Granite.Application {
         progress_handler = new Marlin.Progress.UIHandler (this);
 
         this.clipboard = Marlin.ClipboardManager.get_for_display ();
-        this.thumbnailer = Marlin.Thumbnailer.get ();
         this.recent = new Gtk.RecentManager ();
 
         plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);

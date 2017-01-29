@@ -160,7 +160,7 @@ namespace FM {
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs that are contained in the drop data */
 
         /* support for generating thumbnails */
-        uint thumbnail_request = 0;
+        int thumbnail_request = -1;
         uint thumbnail_source_id = 0;
         uint freeze_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
@@ -300,6 +300,12 @@ namespace FM {
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
+            thumbnailer.finished.connect ((req) => {
+                if (req == thumbnail_request) {
+                    thumbnail_request = -1;
+                    view.queue_draw ();
+                }
+            });
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
@@ -676,12 +682,10 @@ namespace FM {
         }
 
         protected void cancel_thumbnailing () {
-            if (thumbnail_request > 0) {
-                thumbnailer.dequeue (thumbnail_request);
-                thumbnail_request = 0;
+            if (thumbnail_request >= 0) {
+                thumbnail_request = -1;
             }
 
-            slot.directory.cancel_thumbnailing ();
             cancel_timeout (ref thumbnail_source_id);
         }
 
@@ -1333,12 +1337,7 @@ namespace FM {
                 is_writable = false;
             }
 
-            /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
-             * are sometimes not properly aligned when first drawn, only after redrawing the view. */
-            Idle.add (() => {
-                queue_draw ();
-                return false;
-            });
+            schedule_thumbnail_timeout ();
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
@@ -1354,10 +1353,6 @@ namespace FM {
 
             model.set_property ("size", icon_size);
             change_zoom_level ();
-
-            if (get_realized () && (slot.directory.is_local || show_remote_thumbnails)) {
-                load_thumbnails (slot.directory, zoom);
-            }
         }
 
     /** Handle Preference changes */
@@ -2398,7 +2393,7 @@ namespace FM {
              * The timeout is restarted for each scroll or size allocate event */  
             cancel_timeout (ref freeze_source_id);
             freeze_child_notify ();
-            freeze_source_id = Timeout.add (500, () => {
+            freeze_source_id = Timeout.add (100, () => {
                 if (thumbnail_source_id > 0) {
                     return true;
                 }
@@ -2411,6 +2406,7 @@ namespace FM {
              * we wait longer for scrolling to stop before updating the thumbnails */ 
             uint delay = uint.min (50 + slot.directory.files_count / 10, 500);
             thumbnail_source_id = GLib.Timeout.add (delay, () => {
+
                 /* compute visible item range */
                 Gtk.TreePath start_path, end_path, path;
                 Gtk.TreePath sp, ep;
@@ -2445,7 +2441,9 @@ namespace FM {
                         path = model.get_path (iter);
 
                         /* Ask thumbnailer only if ThumbState UNKNOWN */
-                        if (file != null && file.flags == GOF.File.ThumbState.UNKNOWN) {
+                        if (file != null &&
+                            (file.flags == GOF.File.ThumbState.UNKNOWN)) {
+
                             visible_files.prepend (file);
                             if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                 actually_visible++;
@@ -2465,8 +2463,12 @@ namespace FM {
                  * and there has not been another event (which would zero the thumbnail_source_if) */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
+                } else {
+                    view.queue_draw ();
                 }
+
                 thumbnail_source_id = 0;
+
                 return false;
             });
         }
@@ -2480,11 +2482,6 @@ namespace FM {
 
         protected void unblock_model () {
             model.row_deleted.connect (on_row_deleted);
-        }
-
-        private void load_thumbnails (GOF.Directory.Async dir, Marlin.ZoomLevel zoom) {
-            /* Async function checks dir is not loading and dir is local */
-            dir.queue_load_thumbnails (Marlin.zoom_level_to_icon_size (zoom));
         }
 
         private Gtk.Widget? get_real_view () {
@@ -2882,7 +2879,6 @@ namespace FM {
                 /* Use printable characters to initiate search */
                 if (((unichar)(Gdk.keyval_to_unicode (keyval))).isprint ()) {
                     window.win_actions.activate_action ("find", null);
-
                     window.key_press_event (event);
                     return true;
                 }
