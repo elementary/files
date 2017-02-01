@@ -168,9 +168,7 @@ vala_precompile (VALA_TEST_C ${PKGNAME}-vala_tests
     gmodule-2.0
     libcanberra
     pantheon-files-core
-    pantheon-files-core-C
   OPTIONS
-    --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
     --thread
     --target-glib=2.32 # Needed for new thread API
 )
