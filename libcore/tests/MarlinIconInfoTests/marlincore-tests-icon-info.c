@@ -47,7 +47,7 @@ void marlincore_tests_icon_info (void)
     GOFFile* file;
     g_test_log_set_fatal_handler (fatal_handler, NULL);
     /* The URI is valid, the target exists */
-    file = gof_file_get_by_uri ("file:///home/kitkat/test/zz/a.png");
+    file = gof_file_get_by_uri ("file:///usr/share/icons/hicolor/16x16/apps/system-file-manager.svg");
     g_assert(file != NULL);
     gof_file_query_update (file);
     g_assert(file->pix == NULL);

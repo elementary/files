@@ -25,8 +25,7 @@
 
 int main (int argc, char* argv[])
 {
-    g_type_init ();
-    gtk_test_init (&argc, &argv);
+    g_test_init (&argc, &argv, NULL);
 
     g_test_add_func("/marlin/goffile", marlincore_tests_goffile);
 

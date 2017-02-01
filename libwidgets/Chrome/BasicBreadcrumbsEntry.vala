@@ -185,15 +185,24 @@ namespace Marlin.View.Chrome {
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
             switch (event.keyval) {
+                /* Do not trap unmodified Down and Up keys - used by some input methods */
                 case Gdk.Key.KP_Down:
                 case Gdk.Key.Down:
-                    go_down ();
-                    return true;
+                    if (only_control_pressed) {
+                        go_down ();
+                        return true;
+                    }
+
+                    break;
 
                 case Gdk.Key.KP_Up:
                 case Gdk.Key.Up:
-                    go_up ();
-                    return true;
+                    if (only_control_pressed) {
+                        go_up ();
+                        return true;
+                    }
+
+                    break;
 
                 case Gdk.Key.Escape:
                     activate_path ("");
