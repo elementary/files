@@ -25,8 +25,7 @@
 
 int main (int argc, char* argv[])
 {
-    g_type_init ();
-    gtk_test_init (&argc, &argv);
+    g_test_init (&argc, &argv, NULL);
 
     /* only used for local tests with local files */
     g_test_add_func ("/marlin/icon_info", marlincore_tests_icon_info);

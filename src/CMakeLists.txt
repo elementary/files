@@ -13,8 +13,6 @@ include_directories (${CMAKE_BINARY_DIR}/libwidgets/)
 
 find_package (PkgConfig)
 
-
-
 OPTION (WITH_UNITY "Add Unity launcher support" ON)
 pkg_check_modules (UNITY unity>=4.0.0)
 
@@ -79,6 +77,8 @@ IF (WITH_UNITY AND UNITY_FOUND)
         TextRenderer.vala
         QuicklistHandler.vala
         ClipboardManager.vala
+        IconRenderer.vala
+        Thumbnailer.vala
         Dialogs/AbstractPropertiesDialog.vala
         Dialogs/ChooseAppDialog.vala
         Dialogs/PropertiesWindow.vala
@@ -143,6 +143,8 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         ProgressUIHandler.vala
         TextRenderer.vala
         ClipboardManager.vala
+        IconRenderer.vala
+        Thumbnailer.vala
         Dialogs/AbstractPropertiesDialog.vala
         Dialogs/ChooseAppDialog.vala
         Dialogs/PropertiesWindow.vala
@@ -199,8 +201,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 add_executable (${CMAKE_PROJECT_NAME}
-    marlin-thumbnailer.c
-    marlin-icon-renderer.c
     marlin-connect-server-dialog.c
     ${VALA_C} )
 
