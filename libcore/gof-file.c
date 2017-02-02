@@ -368,21 +368,17 @@ gof_file_update_formated_type (GOFFile *file)
     gchar *formated_type = NULL;
 
     _g_free0 (file->formated_type);
-    if (gof_preferences_get_default ()->pref_interpret_desktop_files && file->target_gof && gof_file_get_ftype (file->target_gof)) {
-        file->formated_type = g_content_type_get_description (gof_file_get_ftype (file->target_gof));
-    } else {
-        //trash doesn't have a ftype
-        const gchar *ftype = gof_file_get_ftype (file);
-        if (ftype != NULL) {
-            formated_type = g_content_type_get_description (ftype);
-            if (G_UNLIKELY (gof_file_is_symlink (file))) {
-                file->formated_type = g_strdup_printf (_("link to %s"), formated_type);
-            } else {
-                file->formated_type = g_strdup (formated_type);
-            }
+    const gchar *ftype = gof_file_get_ftype (file);
+    /* Do not interpret desktop files (lp:1660742) */
+    if (ftype != NULL) {
+        formated_type = g_content_type_get_description (ftype);
+        if (G_UNLIKELY (gof_file_is_symlink (file))) {
+            file->formated_type = g_strdup_printf (_("link to %s"), formated_type);
         } else {
-            file->formated_type = g_strdup ("");
+            file->formated_type = g_strdup (formated_type);
         }
+    } else {
+        file->formated_type = g_strdup ("");
     }
     g_free (formated_type);
 }
@@ -2502,10 +2498,7 @@ gof_file_compare_by_display_name (gconstpointer a, gconstpointer b)
 GFile *
 gof_file_get_target_location (GOFFile *file)
 {
-    /* when desktop files are not interpreted return the original loc,
-     * this way we can copy/paste simple desktop files intead of their target */
-    if (file->is_desktop && !gof_preferences_get_default ()->pref_interpret_desktop_files)
-        return file->location;
+    /* Do not interpret desktop files (lp:1660742) */
     if (file->target_location != NULL)
         return file->target_location;
 
@@ -2539,11 +2532,9 @@ gof_file_is_folder (GOFFile *file)
 
         return TRUE;
 
-    if (file->target_gof && file->target_gof->is_directory) {
-        /* file->target_gof is directory */
-        if (gof_preferences_get_default ()->pref_interpret_desktop_files ||
-            gof_file_is_network_uri_scheme (file->target_gof))
-
+    if (file->target_gof &&
+        file->target_gof->is_directory &&
+        gof_file_is_network_uri_scheme (file->target_gof)) {
             return TRUE;
     }
 

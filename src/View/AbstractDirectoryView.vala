@@ -383,7 +383,6 @@ namespace FM {
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
-            (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
 
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
@@ -1384,10 +1383,6 @@ namespace FM {
             /* May not be slot.directory - could be subdirectory */
             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
             dir.load_hiddens ();
-        }
-
-        private void on_interpret_desktop_files_changed () {
-            slot.directory.update_desktop_files ();
         }
 
     /** Handle popup menu events */
