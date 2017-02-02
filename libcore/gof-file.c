@@ -1461,10 +1461,6 @@ gof_file_is_executable (GOFFile *file)
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
-    if (gof_file_is_desktop_file (file)) {
-        return TRUE;
-    }
-
     if (file->target_gof)
         return gof_file_is_executable (file->target_gof);
     if (file->info == NULL) {
