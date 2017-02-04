@@ -148,3 +148,4 @@ target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 add_subdirectory (tests)
+
