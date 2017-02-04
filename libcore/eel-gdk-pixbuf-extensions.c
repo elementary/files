@@ -66,12 +66,12 @@ eel_create_spotlight_pixbuf (GdkPixbuf* src)
     guchar *target_pixels, *original_pixels;
     guchar *pixsrc, *pixdest;
 
-    g_return_val_if_fail (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB, NULL);
+    g_return_val_if_fail (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB, src);
     g_return_val_if_fail ((!gdk_pixbuf_get_has_alpha (src)
                            && gdk_pixbuf_get_n_channels (src) == 3)
                           || (gdk_pixbuf_get_has_alpha (src)
-                              && gdk_pixbuf_get_n_channels (src) == 4), NULL);
-    g_return_val_if_fail (gdk_pixbuf_get_bits_per_sample (src) == 8, NULL);
+                              && gdk_pixbuf_get_n_channels (src) == 4), src);
+    g_return_val_if_fail (gdk_pixbuf_get_bits_per_sample (src) == 8, src);
 
     dest = create_new_pixbuf (src);
 
@@ -117,12 +117,12 @@ eel_create_darkened_pixbuf (GdkPixbuf *src, int saturation, int darken)
     guchar r, g, b;
     GdkPixbuf *dest;
 
-    g_return_val_if_fail (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB, NULL);
+    g_return_val_if_fail (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB, src);
     g_return_val_if_fail ((!gdk_pixbuf_get_has_alpha (src)
                            && gdk_pixbuf_get_n_channels (src) == 3)
                           || (gdk_pixbuf_get_has_alpha (src)
-                              && gdk_pixbuf_get_n_channels (src) == 4), NULL);
-    g_return_val_if_fail (gdk_pixbuf_get_bits_per_sample (src) == 8, NULL);
+                              && gdk_pixbuf_get_n_channels (src) == 4), src);
+    g_return_val_if_fail (gdk_pixbuf_get_bits_per_sample (src) == 8, src);
 
     dest = create_new_pixbuf (src);
 
@@ -170,12 +170,12 @@ eel_create_colorized_pixbuf (GdkPixbuf *src,
     GdkPixbuf *dest;
     gint red_value, green_value, blue_value;
 
-    g_return_val_if_fail (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB, NULL);
+    g_return_val_if_fail (gdk_pixbuf_get_colorspace (src) == GDK_COLORSPACE_RGB, src);
     g_return_val_if_fail ((!gdk_pixbuf_get_has_alpha (src)
                            && gdk_pixbuf_get_n_channels (src) == 3)
                           || (gdk_pixbuf_get_has_alpha (src)
-                              && gdk_pixbuf_get_n_channels (src) == 4), NULL);
-    g_return_val_if_fail (gdk_pixbuf_get_bits_per_sample (src) == 8, NULL);
+                              && gdk_pixbuf_get_n_channels (src) == 4), src);
+    g_return_val_if_fail (gdk_pixbuf_get_bits_per_sample (src) == 8, src);
 
     red_value = (gint) floor (color->red * 255);
     green_value = (gint) floor (color->green * 255);
@@ -237,8 +237,7 @@ eel_gdk_pixbuf_lucent (GdkPixbuf *source,
   gint       height;
   gint       i, j;
 
-  g_return_val_if_fail (GDK_IS_PIXBUF (source), NULL);
-  g_return_val_if_fail ((gint) percent >= 0 && percent <= 100, NULL);
+  g_return_val_if_fail ((gint) percent >= 0 && percent <= 100, source);
 
   /* determine source parameters */
   width = gdk_pixbuf_get_width (source);
