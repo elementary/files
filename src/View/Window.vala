@@ -170,6 +170,7 @@ namespace Marlin.View {
             tabs.allow_restoring = true;
             tabs.allow_duplication = true;
             tabs.allow_new_window = true;
+            tabs.group_name = APP_NAME;
 
             this.configure_event.connect_after ((e) => {
                 tabs.set_size_request (e.width / 2, -1);
