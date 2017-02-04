@@ -446,10 +446,6 @@ public class GOF.Directory.Async : Object {
         cancel_timeouts ();
     }
 
-    public void cancel_thumbnailing () {
-        /* remove any pending thumbnail generation */
-        cancel_timeout (ref timeout_thumbsq);
-    }
 
     public void reload () {
         clear_directory_info ();
@@ -1048,91 +1044,7 @@ public class GOF.Directory.Async : Object {
         sorted_dirs.sort (GOF.File.compare_by_display_name);
         return sorted_dirs;
     }
-
-    /* Thumbnail loading */
-    private uint timeout_thumbsq = 0;
-    private bool thumbs_stop;
-    private bool thumbs_thread_running;
-
-    private void *load_thumbnails_func () {
-        return_val_if_fail (this is Async, null);
-        /* Ensure only one thread loading thumbs for this directory */
-        return_val_if_fail (!thumbs_thread_running, null);
-
-        if (cancellable.is_cancelled () || file_hash == null) {
-            this.unref ();
-            return null;
-        }
-        thumbs_thread_running = true;
-        thumbs_stop = false;
-
-        GLib.List<unowned GOF.File> files = file_hash.get_values ();
-        foreach (var gof in files) {
-            if (cancellable.is_cancelled () || thumbs_stop)
-                break;
-
-            /* Only try to load pixbuf from thumbnail if one may exist.
-             * Note: query_thumbnail_update () does not call the thumbnailer, only loads pixbuf from existing thumbnail file.*/
-            if (gof.flags != GOF.File.ThumbState.NONE) {
-                gof.pix_size = icon_size;
-                gof.query_thumbnail_update ();
-            }
-        }
-
-        if (!cancellable.is_cancelled () && !thumbs_stop)
-            thumbs_loaded ();
-
-        thumbs_thread_running = false;
-        this.unref ();
-        return null;
-    }
-
-    private void threaded_load_thumbnails (int size) {
-        try {
-            icon_size = size;
-            thumbs_stop = false;
-            this.ref ();
-            new Thread<void*>.try ("load_thumbnails_func", load_thumbnails_func);
-        } catch (Error e) {
-            critical ("Could not start loading thumbnails: %s", e.message);
-        }
-    }
-
-    private bool queue_thumbs_timeout_cb () {
-        /* Wait for thumbnail thread to stop then start a new thread */
-        if (!thumbs_thread_running) {
-            threaded_load_thumbnails (icon_size);
-            timeout_thumbsq = 0;
-            return false;
-        }
-
-        return true;
-    }
-
-    public void queue_load_thumbnails (int size) {
-        if (!is_local)
-            return;
-
-        icon_size = size;
-        if (this.state == State.LOADING)
-            return;
-
-        /* Do not interrupt loading thumbs at same size for this folder */
-        if ((icon_size == size) && thumbs_thread_running)
-            return;
-
-        icon_size = size;
-        thumbs_stop = true;
-
-        /* Wait for thumbnail thread to stop then start a new thread */
-        if (timeout_thumbsq != 0)
-            GLib.Source.remove (timeout_thumbsq);
-
-        timeout_thumbsq = Timeout.add (40, queue_thumbs_timeout_cb);
-    }
-
     private void cancel_timeouts () {
-        cancel_timeout (ref timeout_thumbsq);
         cancel_timeout (ref idle_consume_changes_id);
         cancel_timeout (ref load_timeout_id);
         cancel_timeout (ref mount_timeout_id);
