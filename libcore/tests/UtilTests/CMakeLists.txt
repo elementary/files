@@ -25,9 +25,15 @@ add_definitions (${CFLAGS} -O2)
 vala_precompile (VALA_TEST_C ${TEST_NAME}
   UtilTests.vala
   PACKAGES
+    gtk+-3.0
+    granite
+    gee-0.8
+    posix
     pantheon-files-core
+    pantheon-files-core-C
   OPTIONS
-    --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
+    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+    --vapidir=${CMAKE_BINARY_DIR}/libcore/
     --thread
     --target-glib=2.32 # Needed for new thread API
 )
