@@ -88,20 +88,22 @@ namespace FM {
         GLib.SimpleActionGroup selection_actions;
         GLib.SimpleActionGroup background_actions;
 
-        private Marlin.ZoomLevel _zoom_level;
+        private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
         public Marlin.ZoomLevel zoom_level {
             get {
                 return _zoom_level;
             }
 
             set {
-                if (value <= maximum_zoom &&
-                    value >= minimum_zoom &&
-                    value != _zoom_level) {
-
-                        _zoom_level = value;
-                        on_zoom_level_changed (value);
+                if (value > maximum_zoom) {
+                    _zoom_level = maximum_zoom;
+                } else if (value < minimum_zoom) {
+                    _zoom_level = minimum_zoom;
+                } else {
+                    _zoom_level = value;
                 }
+
+                on_zoom_level_changed (value);
             }
         }
 
@@ -158,7 +160,7 @@ namespace FM {
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs that are contained in the drop data */
 
         /* support for generating thumbnails */
-        uint thumbnail_request = 0;
+        int thumbnail_request = -1;
         uint thumbnail_source_id = 0;
         uint freeze_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
@@ -179,10 +181,21 @@ namespace FM {
         private double total_delta_y = 0.0;
 
         /* UI options for button press handling */
-        protected bool single_click_rename = false;
         protected bool activate_on_blank = true;
         protected bool right_margin_unselects_all = false;
-        public bool single_click_mode {get; set;}
+        public bool _single_click_mode = true;
+        public bool single_click_mode {
+            get {
+                return _single_click_mode;
+            }
+
+            set {
+                _single_click_mode = value;
+                if (icon_renderer != null) {
+                    icon_renderer.selection_helpers = _single_click_mode;
+                }
+            }
+        }
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
@@ -266,7 +279,6 @@ namespace FM {
         private bool in_network_root = false;
         protected bool is_writable = false;
         protected bool is_loading;
-        protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = false;} 
 
         private Gtk.Widget view;
@@ -293,6 +305,12 @@ namespace FM {
             clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
             icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
+            thumbnailer.finished.connect ((req) => {
+                if (req == thumbnail_request) {
+                    thumbnail_request = -1;
+                    view.queue_draw ();
+                }
+            });
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
@@ -370,7 +388,6 @@ namespace FM {
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
-            (GOF.Preferences.get_default ()).notify["interpret-desktop-files"].connect (on_interpret_desktop_files_changed);
 
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
@@ -395,16 +412,17 @@ namespace FM {
         }
 
         public void zoom_in () {
-                zoom_level = zoom_level + 1;
+            zoom_level = zoom_level + 1;
         }
 
         public void zoom_out () {
+            if (zoom_level > 0) {
                 zoom_level = zoom_level - 1;
+            }
         }
 
         private void set_up_zoom_level () {
             zoom_level = get_set_up_zoom_level ();
-            model.set_property ("size", icon_size);
         }
 
         public void zoom_normal () {
@@ -676,12 +694,10 @@ namespace FM {
         }
 
         protected void cancel_thumbnailing () {
-            if (thumbnail_request > 0) {
-                thumbnailer.dequeue (thumbnail_request);
-                thumbnail_request = 0;
+            if (thumbnail_request >= 0) {
+                thumbnail_request = -1;
             }
 
-            slot.directory.cancel_thumbnailing ();
             cancel_timeout (ref thumbnail_source_id);
         }
 
@@ -1317,12 +1333,7 @@ namespace FM {
                 is_writable = false;
             }
 
-            /* This is a workround for a bug (Gtk?) in the drawing of the ListView where the columns
-             * are sometimes not properly aligned when first drawn, only after redrawing the view. */
-            Idle.add (() => {
-                queue_draw ();
-                return false;
-            });
+            schedule_thumbnail_timeout ();
         }
 
         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
@@ -1338,10 +1349,6 @@ namespace FM {
 
             model.set_property ("size", icon_size);
             change_zoom_level ();
-
-            if (get_realized () && (slot.directory.is_local || show_remote_thumbnails)) {
-                load_thumbnails (slot.directory, zoom);
-            }
         }
 
     /** Handle Preference changes */
@@ -1373,10 +1380,6 @@ namespace FM {
             /* May not be slot.directory - could be subdirectory */
             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
             dir.load_hiddens ();
-        }
-
-        private void on_interpret_desktop_files_changed () {
-            slot.directory.update_desktop_files ();
         }
 
     /** Handle popup menu events */
@@ -2382,7 +2385,7 @@ namespace FM {
              * The timeout is restarted for each scroll or size allocate event */  
             cancel_timeout (ref freeze_source_id);
             freeze_child_notify ();
-            freeze_source_id = Timeout.add (500, () => {
+            freeze_source_id = Timeout.add (100, () => {
                 if (thumbnail_source_id > 0) {
                     return true;
                 }
@@ -2395,6 +2398,7 @@ namespace FM {
              * we wait longer for scrolling to stop before updating the thumbnails */ 
             uint delay = uint.min (50 + slot.directory.files_count / 10, 500);
             thumbnail_source_id = GLib.Timeout.add (delay, () => {
+
                 /* compute visible item range */
                 Gtk.TreePath start_path, end_path, path;
                 Gtk.TreePath sp, ep;
@@ -2429,7 +2433,9 @@ namespace FM {
                         path = model.get_path (iter);
 
                         /* Ask thumbnailer only if ThumbState UNKNOWN */
-                        if (file != null && file.flags == GOF.File.ThumbState.UNKNOWN) {
+                        if (file != null &&
+                            (file.flags == GOF.File.ThumbState.UNKNOWN)) {
+
                             visible_files.prepend (file);
                             if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                 actually_visible++;
@@ -2449,8 +2455,12 @@ namespace FM {
                  * and there has not been another event (which would zero the thumbnail_source_if) */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
+                } else {
+                    view.queue_draw ();
                 }
+
                 thumbnail_source_id = 0;
+
                 return false;
             });
         }
@@ -2464,11 +2474,6 @@ namespace FM {
 
         protected void unblock_model () {
             model.row_deleted.connect (on_row_deleted);
-        }
-
-        private void load_thumbnails (GOF.Directory.Async dir, Marlin.ZoomLevel zoom) {
-            /* Async function checks dir is not loading and dir is local */
-            dir.queue_load_thumbnails (Marlin.zoom_level_to_icon_size (zoom));
         }
 
         private Gtk.Widget? get_real_view () {
@@ -2875,7 +2880,7 @@ namespace FM {
             if (no_mods || only_shift_pressed) {
                 /* Use printable characters to initiate search */
                 if (((unichar)(Gdk.keyval_to_unicode (keyval))).isprint ()) {
-                    window.win_actions.activate_action ("find", "CURRENT_DIRECTORY_ONLY");
+                    window.win_actions.activate_action ("find", null);
                     window.key_press_event (event);
                     return true;
                 }
@@ -3092,7 +3097,7 @@ namespace FM {
             return true;
         }
 
-        protected bool handle_secondary_button_click (Gdk.EventButton event) {
+        protected virtual bool handle_secondary_button_click (Gdk.EventButton event) {
             should_scroll = false;
             show_or_queue_context_menu (event);
             return true;
@@ -3126,16 +3131,13 @@ namespace FM {
             drag_y = (int)(event.y);
 
             click_zone = get_event_position_info (event, out path, true);
+
             /* certain positions fake a no path blank zone */
             if (click_zone == ClickZone.BLANK_NO_PATH && path != null) {
                 unselect_path (path);
                 path = null;
             }
             click_path = path;
-
-            /* Unless single click renaming is enabled, treat name same as blank zone */
-            if (!single_click_rename && click_zone == ClickZone.NAME)
-                click_zone = ClickZone.BLANK_PATH;
 
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
@@ -3196,6 +3198,7 @@ namespace FM {
 
                         case ClickZone.BLANK_PATH:
                         case ClickZone.ICON:
+                        case ClickZone.NAME:
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
                             /* determine whether should activate on key release (unless pointer moved)*/
                             should_activate =  no_mods &&
@@ -3207,14 +3210,14 @@ namespace FM {
                              * the item is unselected or activate_on_blank is not enabled.
                              */
 
-                            if (!no_mods || (on_blank && (!activate_on_blank || !path_selected)))
+                            if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
                                 if (linear_select_required && selected_files.length () > 0) {
                                     linear_select_path (path);
                                 } else {
                                     previous_selection_was_linear = false;
                                     result = false; /* Rubberband */
                                 }
-                            else {
+                            } else {
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
@@ -3235,10 +3238,6 @@ namespace FM {
                                 }
                             }
 
-                            break;
-
-                        case ClickZone.NAME:
-                            rename_file (selected_files.data);
                             break;
 
                         case ClickZone.EXPANDER:
@@ -3264,9 +3263,11 @@ namespace FM {
 
                 case Gdk.BUTTON_SECONDARY:
                     if (click_zone == ClickZone.NAME ||
-                        (!single_click_rename && click_zone == ClickZone.BLANK_PATH)) {
+                        click_zone == ClickZone.BLANK_PATH) {
 
-                        select_path (path);  /* Curso does not follow */
+                        select_path (path);
+                    } else if (click_zone == ClickZone.INVALID) {
+                        unselect_all ();
                     }
 
                     unblock_drag_and_drop ();
@@ -3312,9 +3313,6 @@ namespace FM {
 
         public virtual void change_zoom_level () {
             icon_renderer.set_property ("zoom-level", zoom_level);
-            icon_renderer.set_property ("size", icon_size);
-            helpers_shown = single_click_mode && (zoom_level >= Marlin.ZoomLevel.SMALL);
-            icon_renderer.set_property ("selection-helpers", helpers_shown);
             view.style_updated ();
         }
 
@@ -3492,10 +3490,10 @@ namespace FM {
                              y >= orig_y &&
                              y <= orig_y + icon_size);
 
-            if (!on_icon || !helpers_shown)
+            if (!on_icon || !icon_renderer.selection_helpers)
                 on_helper = false;
             else {
-                var helper_size = icon_renderer.get_helper_size () + 2;
+                var helper_size = icon_renderer.helper_size + 2;
                 on_helper = (x - orig_x <= helper_size &&
                              y - orig_y <= helper_size);
             }
