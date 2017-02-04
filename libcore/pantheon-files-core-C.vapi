@@ -131,7 +131,11 @@ namespace Eel {
     public string? str_double_underscores (string? str);
 
     [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
+    public Gdk.Pixbuf create_spotlight_pixbuf (Gdk.Pixbuf source_pixbuf);
+    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
     public Gdk.Pixbuf create_colorized_pixbuf (Gdk.Pixbuf source_pixbuf, Gdk.RGBA color);
+    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
+    public Gdk.Pixbuf create_darkened_pixbuf (Gdk.Pixbuf source_pixbuf, int saturation, int darken);
     [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
     public Gdk.Pixbuf gdk_pixbuf_lucent (Gdk.Pixbuf source_pixbuf, int percent);
 }
@@ -152,7 +156,8 @@ namespace Marlin
 
     [CCode (cheader_filename = "marlin-icon-info.h")]
     public class IconInfo : GLib.Object {
-        public static IconInfo lookup(GLib.Icon icon, int size);
+        public static IconInfo? lookup (GLib.Icon icon, int size);
+        public static IconInfo? lookup_from_name (string icon_name, int size);
         public Gdk.Pixbuf? get_pixbuf_nodefault();
         public Gdk.Pixbuf? get_pixbuf_at_size(int size);
         public static void clear_caches ();
@@ -282,6 +287,7 @@ namespace GOF {
         public bool is_hidden;
         public bool is_directory;
         public bool is_desktop;
+        public bool is_expanded;
         public void set_expanded (bool expanded);
         public bool is_folder();
         public bool is_symlink();
@@ -293,6 +299,7 @@ namespace GOF {
         public bool link_known_target;
         public bool is_smb_share ();
         public bool is_smb_server ();
+        public bool thumb_can_frame ();
         public uint flags;
 
         public Gdk.DragAction accepts_drop (GLib.List<GLib.File> file_list, Gdk.DragContext context, out Gdk.DragAction suggested_action_return);
