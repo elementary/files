@@ -28,7 +28,6 @@ public class Marlin.Application : Granite.Application {
     private VolumeMonitor volume_monitor;
     private Marlin.Progress.UIHandler progress_handler;
     private Marlin.ClipboardManager clipboard;
-    private Marlin.Thumbnailer thumbnailer;
     private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -91,7 +90,6 @@ public class Marlin.Application : Granite.Application {
         progress_handler = new Marlin.Progress.UIHandler (this);
 
         this.clipboard = Marlin.ClipboardManager.get_for_display ();
-        this.thumbnailer = Marlin.Thumbnailer.get ();
         this.recent = new Gtk.RecentManager ();
 
         plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
@@ -264,8 +262,6 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("date-format",
                                    GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("interpret-desktop-files",
-                                   GOF.Preferences.get_default (), "interpret-desktop-files", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("force-icon-size",
                                    GOF.Preferences.get_default (), "force-icon-size", GLib.SettingsBindFlags.DEFAULT);
     }

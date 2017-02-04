@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-01-25 13:13+0000\n"
+"PO-Revision-Date: 2017-01-30 12:18+0000\n"
 "Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:10+0000\n"
+"X-Launchpad-Export-Date: 2017-01-31 05:48+0000\n"
 "X-Generator: Launchpad (build 18315)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -532,19 +532,18 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
 msgid "Empty _Trash"
-msgstr "Svuota _cestino"
+msgstr "Svuota il _cestino"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Sei sicuro di voler eliminare permanentemente \"%B\"?"
+msgstr "Eliminare permanentemente \"%B\"?"
 
 #: ../libcore/marlin-file-operations.c:1468
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-"Sei sicuro di voler eliminare permanentemente l'elemento selezionato?"
+msgstr[0] "Eliminare permanentemente l'elemento selezionato?"
 msgstr[1] "Eliminare permanentemente i %'d elementi selezionati?"
 
 #: ../libcore/marlin-file-operations.c:1493
@@ -580,8 +579,8 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"Non è possibile eliminare i file nella cartella \"%B\" perché non si hanno "
-"permessi sufficienti per visualizzarli."
+"Non è possibile eliminare i file nella cartella \"%B\" perché non disponi "
+"dei permessi necessari per visualizzarli."
 
 #: ../libcore/marlin-file-operations.c:1613
 #: ../libcore/marlin-file-operations.c:2732
@@ -602,8 +601,8 @@ msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
-"Non è possibile eliminare la cartella \"%B\" perché non si hanno permessi "
-"sufficienti per leggerla."
+"Non è possibile eliminare la cartella \"%B\" perché non disponi dei permessi "
+"necessari per leggerla."
 
 #: ../libcore/marlin-file-operations.c:1646
 #: ../libcore/marlin-file-operations.c:2771
@@ -782,24 +781,24 @@ msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"Non è possibile gestire i file nella cartella \"%B\" perché non si hanno "
-"permessi sufficienti per visualizzarli."
+"Non è possibile gestire i file nella cartella \"%B\" perché non disponi dei "
+"permessi necessari per visualizzarli."
 
 #: ../libcore/marlin-file-operations.c:2768
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Non è possibile gestire la cartella \"%B\" perché non si hanno permessi "
-"sufficienti per leggerla."
+"Non è possibile gestire la cartella \"%B\" perché non disponi dei permessi "
+"necessari per leggerla."
 
 #: ../libcore/marlin-file-operations.c:2844
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
-"Non è possibile gestire il file \"%B\" perché non si hanno permessi "
-"sufficienti per leggerlo."
+"Non è possibile gestire il file \"%B\" perché non disponi dei permessi "
+"necessari per leggerlo."
 
 #: ../libcore/marlin-file-operations.c:2847
 msgid "There was an error getting information about \"%B\"."
@@ -814,8 +813,7 @@ msgstr "Errore durante la copia in \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:2951
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
-"Non hai permessi sufficienti per accedere alla cartella di destinazione."
+msgstr "Non disponi dei permessi per accedere alla cartella di destinazione."
 
 #: ../libcore/marlin-file-operations.c:2953
 msgid "There was an error getting information about the destination."
@@ -912,8 +910,8 @@ msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"Non è possibile copiare la cartella \"%B\" perché non si hanno permessi "
-"sufficienti per crearla nella destinazione."
+"Non è possibile copiare la cartella \"%B\" perché non disponi dei permessi "
+"necessari per crearla nella destinazione."
 
 #: ../libcore/marlin-file-operations.c:3594
 msgid "There was an error creating the folder \"%B\"."
@@ -924,16 +922,16 @@ msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"Non è possibile copiare i file nella cartella \"%B\" perché non si hanno "
-"permessi sufficienti per leggerli."
+"Non è possibile copiare i file nella cartella \"%B\" perché non disponi dei "
+"permessi necessari per leggerli."
 
 #: ../libcore/marlin-file-operations.c:3769
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
-"Non è possibile copiare la cartella \"%B\" perché non si hanno permessi "
-"sufficienti per leggerla."
+"Non è possibile copiare la cartella \"%B\" perché non disponi dei permessi "
+"necessari per leggerla."
 
 #: ../libcore/marlin-file-operations.c:3814
 #: ../libcore/marlin-file-operations.c:4520
@@ -977,7 +975,7 @@ msgstr "La cartella destinazione è all'interno della cartella sorgente."
 
 #: ../libcore/marlin-file-operations.c:4305
 msgid "You cannot move a file over itself."
-msgstr "Impossibile spostare un file su se stesso."
+msgstr "Non è possibile spostare un file su se stesso."
 
 #: ../libcore/marlin-file-operations.c:4306
 msgid "You cannot copy a file over itself."
@@ -1091,7 +1089,7 @@ msgstr "Errore durante la creazione del file \"%B\"."
 #: ../libcore/marlin-file-operations.c:6328
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "Si è verificato un errore nel creare la cartella in «%F»."
+msgstr "Si è verificato un errore nel creare la cartella in \"%F\"."
 
 #: ../libcore/marlin-file-operations.c:6650
 msgid "Emptying the trash"
@@ -1514,7 +1512,7 @@ msgstr "Successivo"
 
 #: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
-msgstr "Files non è il tuo gestore file predefinito."
+msgstr "File non è il tuo gestore di file predefinito."
 
 #: ../src/View/Window.vala:213
 msgid "Set as Default"
@@ -1763,7 +1761,7 @@ msgstr "Questa cartella non ti appartiene"
 
 #: ../src/View/ViewContainer.vala:378
 msgid "You don't have permission to view this folder."
-msgstr "Non possiedi i permessi per sfogliare questa cartella"
+msgstr "Non disponi dei permessi per sfogliare questa cartella."
 
 #: ../src/View/ViewContainer.vala:380
 msgid "Unable to Mount Folder"
@@ -1849,8 +1847,8 @@ msgstr " selezionati"
 #: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u cartella"
+msgstr[1] "%u cartelle"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -2043,7 +2041,7 @@ msgstr "Chiudi"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:139
 msgid "Device Usage"
-msgstr "Utilizzo dispositivo"
+msgstr "Utilizzo del dispositivo"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Capacity:"
@@ -2077,9 +2075,9 @@ msgstr "La dimensione reale potrebbe essere maggiore"
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
-"Il file %i non può essere letto a causa di privilegi limitati o altri errori."
+"%i file non può essere letto a causa di privilegi limitati o altri errori."
 msgstr[1] ""
-"I file %i non possono essere letti a causa di privilegi limitati o altri "
+"%i file non possono essere letti a causa di privilegi limitati o altri "
 "errori."
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
@@ -2152,31 +2150,31 @@ msgstr "Tutti:"
 #: ../src/Dialogs/PropertiesWindow.vala:1140
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u sottocartella"
+msgstr[1] "%u sottocartelle"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1144
 #: ../src/Dialogs/PropertiesWindow.vala:1166
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u file"
+msgstr[1] "%u file"
 
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1149
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1170
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u elemento selezionato"
+msgstr[1] "%u elementi selezionati"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/Dialogs/PropertiesWindow.vala:1172
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2212,7 +2210,7 @@ msgstr "Impossibile rinominare in '%s'"
 
 #: ../libcore/FileUtils.vala:463
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A alle %-I:%M %p"
 
 #: ../libwidgets/View/SearchResults.vala:178
 msgid "In This Folder"

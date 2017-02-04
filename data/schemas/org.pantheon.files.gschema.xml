@@ -48,11 +48,6 @@
       <summary>single click</summary>
       <description>Whether items are activated by single clicks instead of dubble clicks</description>
     </key>
-    <key type="b" name="interpret-desktop-files">
-      <default>true</default>
-      <summary>interpret desktop files</summary>
-      <description>If true the desktop files would be interpreted, a desktop file can represent an executable, a directory etc. (their filename, type and some other properties would be the target ones)</description>
-    </key>
     <key name="default-viewmode" enum="viewmode">
       <default>'icon'</default>
       <summary>Default viewmode when browsing</summary>
