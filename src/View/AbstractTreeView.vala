@@ -197,25 +197,33 @@ namespace FM {
             int x, y, cx, cy, depth;
             path = null;
 
-            if (event.window != tree.get_bin_window ())
+            if (event.window != tree.get_bin_window ()) {
                 return ClickZone.INVALID;
+            }
 
             x = (int)event.x;
             y = (int)event.y;
 
+            /* Determine whether there whitespace at this point.  Note: this function returns false when the
+             * position is on the edge of the cell, even though this appears to be blank. We
+             * deal with this below. */
+            var is_blank = tree.is_blank_at_pos ((int)event.x, (int)event.y, null, null, null, null);
+
             tree.get_path_at_pos ((int)event.x, (int)event.y, out p, out c, out cx, out cy);
             path = p;
             depth = p != null ? p.get_depth () : 0;
+
+            /* Determine whether on edge of cell and designate as blank */
+            Gdk.Rectangle area;
+            tree.get_cell_area (p, c, out area);
+            int height = area.height;
+
+            is_blank = is_blank || cy < 5 || cy > height - 5;
+
             /* Do not allow rubberbanding to start except on a row in tree view */
-            zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.INVALID);
+            zone = (p != null && is_blank ? ClickZone.BLANK_PATH : ClickZone.INVALID);
 
             if (p != null && c != null && c == name_column) {
-                int? x_offset = null, width = null;
-                Gdk.Rectangle area;
-
-                tree.get_cell_area (p, c, out area);
-
-                width = area.width;
                 int orig_x = area.x + ICON_XPAD;
 
                 if (x > orig_x) { /* y must be in range */
@@ -226,21 +234,8 @@ namespace FM {
                         zone = ClickZone.HELPER;
                     } else if (on_icon) {
                         zone = ClickZone.ICON;
-                    } else {
-                        c.cell_get_position (name_renderer, out x_offset, out width);
-                        int expander_width = ICON_XPAD;
-                        if (tree.show_expanders) {
-                            var expander_val = GLib.Value (typeof (int));
-                            tree.style_get_property ("expander-size", ref expander_val);
-                            int expander_size = expander_val.get_int () + tree.get_level_indentation () + 3;
-                            expander_width += expander_size * (depth) + zoom_level;
-                        }
-                        orig_x = expander_width + x_offset;
-                        if (right_margin_unselects_all && cx >= orig_x + width - 6)
-                            zone = ClickZone.INVALID; /* Cause unselect all to occur on right margin */
-                        else {
-                            zone = ClickZone.NAME;
-                        }
+                    } else if (!is_blank) {
+                        zone = ClickZone.NAME;
                     }
                 } else {
                     zone = ClickZone.EXPANDER;
@@ -249,6 +244,15 @@ namespace FM {
                 zone = ClickZone.INVALID; /* Cause unselect all to occur on other columns*/
 
             return zone;
+        }
+
+        protected override bool handle_secondary_button_click (Gdk.EventButton event) {
+            /* In Column and List Views show background menu on all white space to allow
+             * creation of new folder when view full. */
+            if (click_zone == ClickZone.BLANK_PATH) {
+                unselect_all ();
+            }
+            return base.handle_secondary_button_click (event);
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
