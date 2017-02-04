@@ -11,13 +11,6 @@ namespace Preferences {
 
 
 namespace Marlin {
-    [CCode (cheader_filename = "marlin-thumbnailer.h")]
-    public class Thumbnailer : GLib.Object {
-        public static Thumbnailer get();
-        public bool queue_file (GOF.File file, out uint request, bool large);
-        public bool queue_files (GLib.List<GOF.File> files, out uint request, bool large);
-        public void dequeue (uint request);
-    }
 
     [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]
     namespace ConnectServer {
