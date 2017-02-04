@@ -32,7 +32,7 @@ namespace Marlin.View {
             {"undo", action_undo},
             {"redo", action_redo},
             {"bookmark", action_bookmark},
-            {"find", action_find, "s"},
+            {"find", action_find},
             {"tab", action_tab, "s"},
             {"go_to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
@@ -174,6 +174,7 @@ namespace Marlin.View {
             tabs.allow_restoring = true;
             tabs.allow_duplication = true;
             tabs.allow_new_window = true;
+            tabs.group_name = APP_NAME;
 
             this.configure_event.connect_after ((e) => {
                 tabs.set_size_request (e.width / 2, -1);
@@ -524,18 +525,12 @@ namespace Marlin.View {
         }
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
-            string search_scope = param.get_string ();
-            if (search_scope == "CURRENT_DIRECTORY_ONLY") {
-                /* Do not initiate search while slot is frozen e.g. during loading */
-                if (current_tab == null || current_tab.is_frozen) {
-                    return;
-                }
-                /* Just search current directory for filenames beginning with term */
-                top_menu.enter_search_mode (true, true);
-            } else {
-                /* Slot is frozen, but only because already searching */
-                top_menu.enter_search_mode (false, false);
+            /* Do not initiate search while slot is frozen e.g. during loading */
+            if (current_tab == null || current_tab.is_frozen) {
+                return;
             }
+
+            top_menu.enter_search_mode ();
         }
 
         private bool adding_window = false;
@@ -1096,7 +1091,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.select_all", {"<Ctrl>A"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
-            application.set_accels_for_action ("win.find::GLOBAL", {"<Ctrl>F"});
+            application.set_accels_for_action ("win.find", {"<Ctrl>F"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down"});

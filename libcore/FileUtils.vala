@@ -77,9 +77,8 @@ namespace PF.FileUtils {
         unhandled_files = null;
 
         foreach (GOF.File goffile in files) {
-            var location = goffile.location;
             /* Check it is a valid file (e.g. not a dummy row from list view) */
-            if (!(location != null && goffile.basename.char_count (2) > 0)) {
+            if (goffile == null || goffile.location == null) {
                 continue;
             }
 
