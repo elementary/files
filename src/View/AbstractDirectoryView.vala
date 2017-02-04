@@ -181,7 +181,6 @@ namespace FM {
         private double total_delta_y = 0.0;
 
         /* UI options for button press handling */
-        protected bool single_click_rename = false;
         protected bool activate_on_blank = true;
         protected bool right_margin_unselects_all = false;
         public bool _single_click_mode = true;
@@ -3093,7 +3092,7 @@ namespace FM {
             return true;
         }
 
-        protected bool handle_secondary_button_click (Gdk.EventButton event) {
+        protected virtual bool handle_secondary_button_click (Gdk.EventButton event) {
             should_scroll = false;
             show_or_queue_context_menu (event);
             return true;
@@ -3127,16 +3126,13 @@ namespace FM {
             drag_y = (int)(event.y);
 
             click_zone = get_event_position_info (event, out path, true);
+
             /* certain positions fake a no path blank zone */
             if (click_zone == ClickZone.BLANK_NO_PATH && path != null) {
                 unselect_path (path);
                 path = null;
             }
             click_path = path;
-
-            /* Unless single click renaming is enabled, treat name same as blank zone */
-            if (!single_click_rename && click_zone == ClickZone.NAME)
-                click_zone = ClickZone.BLANK_PATH;
 
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
@@ -3196,6 +3192,7 @@ namespace FM {
 
                         case ClickZone.BLANK_PATH:
                         case ClickZone.ICON:
+                        case ClickZone.NAME:
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
                             /* determine whether should activate on key release (unless pointer moved)*/
                             should_activate =  no_mods &&
@@ -3207,14 +3204,14 @@ namespace FM {
                              * the item is unselected or activate_on_blank is not enabled.
                              */
 
-                            if (!no_mods || (on_blank && (!activate_on_blank || !path_selected)))
+                            if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
                                 if (linear_select_required && selected_files.length () > 0) {
                                     linear_select_path (path);
                                 } else {
                                     previous_selection_was_linear = false;
                                     result = false; /* Rubberband */
                                 }
-                            else {
+                            } else {
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
@@ -3235,10 +3232,6 @@ namespace FM {
                                 }
                             }
 
-                            break;
-
-                        case ClickZone.NAME:
-                            rename_file (selected_files.data);
                             break;
 
                         case ClickZone.EXPANDER:
@@ -3264,9 +3257,12 @@ namespace FM {
 
                 case Gdk.BUTTON_SECONDARY:
                     if (click_zone == ClickZone.NAME ||
-                        (!single_click_rename && click_zone == ClickZone.BLANK_PATH))
+                        (click_zone == ClickZone.BLANK_PATH)) {
 
                         select_path (path);
+                    } else if (click_zone == ClickZone.INVALID) {
+                        unselect_all ();
+                    }
 
                     unblock_drag_and_drop ();
                     result = handle_secondary_button_click (event);
