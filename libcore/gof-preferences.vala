@@ -45,16 +45,6 @@ namespace GOF {
             }
         }
 
-        public bool pref_interpret_desktop_files = true;
-        public bool interpret_desktop_files {
-            get {
-                return pref_interpret_desktop_files;
-            }
-            set {
-                pref_interpret_desktop_files = value;
-            }
-        }
-
         public bool pref_force_icon_size = true;
         public bool force_icon_size {
             get {

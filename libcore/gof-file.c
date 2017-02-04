@@ -368,21 +368,17 @@ gof_file_update_formated_type (GOFFile *file)
     gchar *formated_type = NULL;
 
     _g_free0 (file->formated_type);
-    if (gof_preferences_get_default ()->pref_interpret_desktop_files && file->target_gof && gof_file_get_ftype (file->target_gof)) {
-        file->formated_type = g_content_type_get_description (gof_file_get_ftype (file->target_gof));
-    } else {
-        //trash doesn't have a ftype
-        const gchar *ftype = gof_file_get_ftype (file);
-        if (ftype != NULL) {
-            formated_type = g_content_type_get_description (ftype);
-            if (G_UNLIKELY (gof_file_is_symlink (file))) {
-                file->formated_type = g_strdup_printf (_("link to %s"), formated_type);
-            } else {
-                file->formated_type = g_strdup (formated_type);
-            }
+    const gchar *ftype = gof_file_get_ftype (file);
+    /* Do not interpret desktop files (lp:1660742) */
+    if (ftype != NULL) {
+        formated_type = g_content_type_get_description (ftype);
+        if (G_UNLIKELY (gof_file_is_symlink (file))) {
+            file->formated_type = g_strdup_printf (_("link to %s"), formated_type);
         } else {
-            file->formated_type = g_strdup ("");
+            file->formated_type = g_strdup (formated_type);
         }
+    } else {
+        file->formated_type = g_strdup ("");
     }
     g_free (formated_type);
 }
@@ -487,29 +483,9 @@ gof_file_update (GOFFile *file)
                 }
             }
 
-            /* read the display name from the .desktop file (will be overwritten later
-             * if it's undefined here) */
-            gchar *custom_display_name = g_key_file_get_locale_string (key_file,
-                                                                G_KEY_FILE_DESKTOP_GROUP,
-                                                                G_KEY_FILE_DESKTOP_KEY_NAME,
-                                                                NULL,
-                                                                NULL);
+            /* Do not show name from desktop file as this can be used as an exploit (lp:1660742) */
 
-            /* check if we have a display name now */
-            if (custom_display_name != NULL)
-            {
-                /* drop the name if it's empty or has invalid encoding */
-                if (*custom_display_name == '\0'
-                    || !g_utf8_validate (custom_display_name, -1, NULL))
-                {
-                    _g_free0 (custom_display_name);
-                    custom_display_name = NULL;
-                } else {
-                    file->custom_display_name = custom_display_name;
-                }
-            }
-
-            /* check f we have a target location */
+            /* check if we have a target location */
             gchar *url;
             gchar *type;
 
@@ -1484,10 +1460,6 @@ gof_file_is_executable (GOFFile *file)
     const gchar *content_type;
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-
-    if (gof_file_is_desktop_file (file)) {
-        return TRUE;
-    }
 
     if (file->target_gof)
         return gof_file_is_executable (file->target_gof);
@@ -2522,10 +2494,7 @@ gof_file_compare_by_display_name (gconstpointer a, gconstpointer b)
 GFile *
 gof_file_get_target_location (GOFFile *file)
 {
-    /* when desktop files are not interpreted return the original loc,
-     * this way we can copy/paste simple desktop files intead of their target */
-    if (file->is_desktop && !gof_preferences_get_default ()->pref_interpret_desktop_files)
-        return file->location;
+    /* Do not interpret desktop files (lp:1660742) */
     if (file->target_location != NULL)
         return file->target_location;
 
@@ -2559,11 +2528,9 @@ gof_file_is_folder (GOFFile *file)
 
         return TRUE;
 
-    if (file->target_gof && file->target_gof->is_directory) {
-        /* file->target_gof is directory */
-        if (gof_preferences_get_default ()->pref_interpret_desktop_files ||
-            gof_file_is_network_uri_scheme (file->target_gof))
-
+    if (file->target_gof &&
+        file->target_gof->is_directory &&
+        gof_file_is_network_uri_scheme (file->target_gof)) {
             return TRUE;
     }
 

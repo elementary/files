@@ -262,8 +262,6 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("date-format",
                                    GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("interpret-desktop-files",
-                                   GOF.Preferences.get_default (), "interpret-desktop-files", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("force-icon-size",
                                    GOF.Preferences.get_default (), "force-icon-size", GLib.SettingsBindFlags.DEFAULT);
     }

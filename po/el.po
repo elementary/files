@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-01-28 17:53+0000\n"
+"PO-Revision-Date: 2017-01-30 17:17+0000\n"
 "Last-Translator: Christos Iatropoulos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-29 04:57+0000\n"
+"X-Launchpad-Export-Date: 2017-01-31 05:48+0000\n"
 "X-Generator: Launchpad (build 18315)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -642,7 +642,7 @@ msgstr[1] "%'d αρχεία απομένουν για μεταφορά στα α
 #: ../libcore/marlin-file-operations.c:1949
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Η μετακίνηση του αρχείου στον κάδο ή η διαγραφή του είναι αδύνατη"
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid ""
@@ -678,16 +678,22 @@ msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Η μετακίνηση αυτού του αρχείου στον κάδο ήταν αδύνατη. Δείτε τις "
+"λεπτομέρειες παρακάτω για περισσότερες πληροφορίες."
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
+"Η μετακίνηση του αρχείου στον κάδο είναι αδύνατη. Να γίνει προσπάθεια για "
+"διαγραφή;"
 
 #: ../libcore/marlin-file-operations.c:1961
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Η μετακίνηση αυτού του αρχείου στον κάδο ήταν αδύνατη. Επιπλέον, μπορεί να "
+"μην είστε σε θέση να το διαγράψετε."
 
 #: ../libcore/marlin-file-operations.c:1966
 msgid ""
@@ -1680,7 +1686,7 @@ msgstr "Αποτυχία προεπισκόπησης"
 
 #: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Το άνοιγμα αυτού του αρχείου είναι αδύνατο"
 
 #: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
@@ -1688,7 +1694,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1549
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Η ρίψη αυτού του αρχείου είναι αδύνατη"
 
 #: ../src/View/AbstractDirectoryView.vala:1549
 msgid "Invalid file name provided"
@@ -1726,7 +1732,7 @@ msgstr ""
 #: ../src/View/AbstractDirectoryView.vala:2670
 #: ../src/View/AbstractDirectoryView.vala:2853
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Η αφαίρεση αρχείων από εδώ είναι αδύνατη"
 
 #: ../src/View/AbstractDirectoryView.vala:2671
 #: ../src/View/AbstractDirectoryView.vala:2841
@@ -1744,7 +1750,7 @@ msgstr "Αποκοπή της επιλογής πάραυτα"
 
 #: ../src/View/AbstractDirectoryView.vala:2840
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Η επικόλληση αρχείων εδώ είναι αδύνατη"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "(as Administrator)"
@@ -1777,14 +1783,15 @@ msgstr "Δεν είναι δυνατή η προσάρτηση του φακέλ
 #: ../src/View/ViewContainer.vala:381
 msgid "Could not connect to the server for this folder."
 msgstr ""
+"Η σύνδεση με το διακομιστή γι' αυτόν το φάκελο δεν μπόρεσε να επιτευχθεί."
 
 #: ../src/View/ViewContainer.vala:383
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Αδυναμία εμφάνισης φακέλου"
 
 #: ../src/View/ViewContainer.vala:384
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Ο διακομιστής γι' αυτόν το φάκελο δεν μπορεί να εντοπιστεί."
 
 #: ../src/View/ViewContainer.vala:394
 msgid "File not Found"
