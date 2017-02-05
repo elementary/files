@@ -338,7 +338,6 @@ namespace Marlin {
                                   out int x_offset,
                                   out int y_offset) {
 
-            float x;
             if (widget.get_direction () == Gtk.TextDirection.RTL) {
                 x_offset = (int)((1.0f - xalign) * (cell_area.width - width));
                 x_offset -= (int)xpad;
