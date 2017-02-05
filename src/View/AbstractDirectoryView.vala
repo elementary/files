@@ -334,7 +334,6 @@ namespace FM {
 
         protected virtual void set_up_name_renderer () {
             name_renderer.editable = false;
-            name_renderer.follow_state = true;
             name_renderer.edited.connect (on_name_edited);
             name_renderer.editing_canceled.connect (on_name_editing_canceled);
             name_renderer.editing_started.connect (on_name_editing_started);
