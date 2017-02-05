@@ -253,10 +253,6 @@ namespace FM {
                     clipboard.changed.connect (on_clipboard_changed);
                     view.enter_notify_event.connect (on_enter_notify_event);
                     view.key_press_event.connect (on_view_key_press_event);
-
-                    /* It should do no harm to ensure the directory is not frozen as well */
-                    slot.directory.freeze_update = false;
-                    slot.directory.unblock_monitor ();
                 }
 
                 _is_frozen = value;
@@ -954,11 +950,10 @@ namespace FM {
 /** File operation callbacks */
         static void create_file_done (GLib.File? new_file, void* data) {
             var view = data as FM.AbstractDirectoryView;
-            view.slot.directory.unblock_monitor ();
 
-            if (new_file == null)
+            if (new_file == null) {
                 return;
-
+            }
 
             if (view == null) {
                 warning ("View invalid after creating file");
@@ -966,17 +961,28 @@ namespace FM {
             }
             /* Start to rename the file once we get signal that it has been added to model */
             view.slot.directory.file_added.connect_after (view.after_new_file_added);
+            view.unblock_directory_monitor ();;
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
           * using this callback */
         public static void after_trash_or_delete (bool user_cancel, void* data) {
             var view = data as FM.AbstractDirectoryView;
-            if (view == null)
+            if (view == null) {
                 return;
+            }
 
-            view.slot.directory.unblock_monitor ();
             view.can_trash_or_delete = true;
+            view.unblock_directory_monitor ();
+        }
+
+        private void unblock_directory_monitor () {
+            /* Using an idle stops two file deleted/added signals being received (one via the file monitor
+             * and one via marlin-file-changes. */
+            GLib.Idle.add_full (GLib.Priority.LOW, () => {
+                slot.directory.unblock_monitor ();
+                return false;
+            });
         }
 
         private void trash_or_delete_selected_files (bool delete_immediately = false) {
@@ -1296,9 +1302,6 @@ namespace FM {
         }
 
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
-            /* Can be called twice for same file - once via Marlin.FileOperations and once via directory FileMonitor.
-             * Model.remove_file returns false if the file was already removed.
-             */
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             model.remove_file (file, dir);
