@@ -67,7 +67,7 @@ namespace Marlin {
             set_widget (widget);
             set_up_layout (text, width);
 
-            int h = char_height + 2 * (int)ypad;
+            int h = char_height;
 
             natural_size = int.max (h, text_height) + h;
             minimum_size = natural_size;
