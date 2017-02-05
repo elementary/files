@@ -3,27 +3,27 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2016-08-02 15:47+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
+"PO-Revision-Date: 2017-02-04 22:07+0000\n"
+"Last-Translator: Rokar <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:10+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-02-05 05:39+0000\n"
+"X-Generator: Launchpad (build 18322)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr ""
+msgstr "FTPya Giştî"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (bi têketin)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
@@ -31,19 +31,19 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr ""
+msgstr "Parvekirina Windowsê"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
-msgstr ""
+msgstr "WebDAV (HTTPS) ya Ewle"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr ""
+msgstr "Tê girêdan..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -63,7 +63,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "Carekî din biceribîne"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
@@ -71,16 +71,16 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr ""
+msgstr "Berdewam"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr ""
+msgstr "_Girêdan"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr ""
+msgstr "Bi Pêşkêşkarê Girê Bide"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
@@ -88,23 +88,23 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
-msgstr ""
+msgstr "_Pêşkêşkar:"
 
 #: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
-msgstr ""
+msgstr "_Port:"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr ""
+msgstr "_Cure:"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
-msgstr ""
+msgstr "_Par ve bike:"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr ""
+msgstr "_Peldank:"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
@@ -112,15 +112,15 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr ""
+msgstr "Navê _Domainê:"
 
 #: ../src/marlin-connect-server-dialog.c:1108
 msgid "_User name:"
-msgstr ""
+msgstr "Navê _Bikarhêner:"
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
-msgstr ""
+msgstr "Şîf_re:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
@@ -182,12 +182,12 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:402
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "Pelê \"%s\" were guherandin?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "Heke were guherandin dê li ser naveroka pelê berê were nivisandin."
 
 #: ../libcore/marlin-file-conflict-dialog.c:182
 #: ../libcore/marlin-file-conflict-dialog.c:408
@@ -218,7 +218,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:493
 #: ../src/Dialogs/PropertiesWindow.vala:484
 msgid "Size:"
-msgstr ""
+msgstr "Mezinahî:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:256
 #: ../libcore/marlin-file-conflict-dialog.c:287
@@ -226,24 +226,24 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:496
 #: ../src/Dialogs/PropertiesWindow.vala:491
 msgid "Type:"
-msgstr ""
+msgstr "Teşe:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:259
 #: ../libcore/marlin-file-conflict-dialog.c:290
 #: ../libcore/marlin-file-conflict-dialog.c:478
 #: ../libcore/marlin-file-conflict-dialog.c:499
 msgid "Last modified:"
-msgstr ""
+msgstr "Guherandina dawî:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:492
 msgid "Replace with"
-msgstr ""
+msgstr "Biguherîne bi"
 
 #: ../libcore/marlin-file-conflict-dialog.c:312
 #: ../libcore/marlin-file-conflict-dialog.c:517
 msgid "Merge"
-msgstr ""
+msgstr "Bike yek"
 
 #: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
@@ -251,7 +251,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
-msgstr ""
+msgstr "Ji nû dest pê bike"
 
 #: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
@@ -260,28 +260,28 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr ""
+msgstr "_Derbas be"
 
 #: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
-msgstr ""
+msgstr "_Nav biguherîne"
 
 #: ../libcore/marlin-file-conflict-dialog.c:759
 msgid "Replace"
-msgstr ""
+msgstr "Biguherîne"
 
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
-msgstr ""
+msgstr "Têkçuna pelan"
 
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
 msgid "Inaccessible"
-msgstr ""
+msgstr "Nayê gihaştin"
 
 #: ../libcore/gof-file.c:379
 #, c-format
 msgid "link to %s"
-msgstr ""
+msgstr "lînk bi %s re"
 
 #: ../libcore/gof-file.c:1953
 #, c-format
@@ -290,15 +290,15 @@ msgstr ""
 
 #: ../libcore/gof-file.c:1990
 msgid "No Exec field specified"
-msgstr ""
+msgstr "Qada Execê nehatiye diyarkirin"
 
 #: ../libcore/gof-file.c:2009
 msgid "No URL field specified"
-msgstr ""
+msgstr "Qada URL nehatiye diyarkirin"
 
 #: ../libcore/gof-file.c:2015
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "Dosiya sermasê ya nederbasdar"
 
 #: ../libcore/gof-file.c:2310
 msgid "Slashes are not allowed in filenames"
@@ -310,39 +310,39 @@ msgstr ""
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr ""
+msgstr "Hîn zêde _kîtekîtan nîşan bide"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
-msgstr ""
+msgstr " (Unikoda Nederbasdar)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr ""
+msgstr "Li ser hemûyan biqevize"
 
 #: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr ""
+msgstr "_Careke din biceribîne"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr ""
+msgstr "Hemûyan _jê bibe"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr ""
+msgstr "_Biguherîne"
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr ""
+msgstr "Hemûyî _Biguherîne"
 
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr ""
+msgstr "Bike _yek"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr ""
+msgstr "He_mû bike yek"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
@@ -352,8 +352,7 @@ msgstr ""
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d çirke"
 
 #: ../libcore/marlin-file-operations.c:301
 #: ../libcore/marlin-file-operations.c:312
@@ -367,35 +366,35 @@ msgstr[1] ""
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d saet"
+msgstr[1] "%'d saet"
 
 #: ../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "kêmzêde %'d saet"
+msgstr[1] "kêmzêde %'d saet"
 
 #: ../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "Girêdan bi %s re"
 
 #: ../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "Girêdaneke din bi %s re"
 
 #: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "%demîn girêdan bi %s re"
 
 #: ../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "%demîn girêdan bi %s re"
 
 #: ../libcore/marlin-file-operations.c:423
 #, c-format
@@ -2167,6 +2166,8 @@ msgstr ""
 #: ../libwidgets/Resources.vala:50
 msgid "translator-credits"
 msgstr ""
+"Launchpad Contributions:\n"
+"  Rokar https://launchpad.net/~rokarali"
 
 #: ../libwidgets/Resources.vala:83
 msgid "AFP"
