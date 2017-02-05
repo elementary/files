@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-01-09 22:55+0000\n"
+"PO-Revision-Date: 2017-01-27 17:41+0000\n"
 "Last-Translator: Félix Brezo <felixbrezo@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:12+0000\n"
+"X-Launchpad-Export-Date: 2017-01-28 05:50+0000\n"
 "X-Generator: Launchpad (build 18315)\n"
 "Language: es\n"
 
@@ -1962,7 +1962,7 @@ msgstr "Ventana como _administrador nueva"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
-msgstr "_Acerca de Archivos"
+msgstr "Acerca de Archivos"
 
 #: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
 msgid "Files"
