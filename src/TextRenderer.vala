@@ -30,7 +30,7 @@ namespace Marlin {
             set {
                 _item_width = value;
                 if (xalign == 0.5) {
-                    wrap_width = _item_width - 4 * (focus_border_width + (int)xpad);
+                    wrap_width = _item_width - 2 * (focus_border_width + (int)xpad + BORDER_RADIUS);
                 } else {
                     wrap_width = -1;
                 }
@@ -44,7 +44,6 @@ namespace Marlin {
         public int text_width;
         public int text_height;
 
-        int char_width;
         int char_height;
         int focus_border_width;
 
@@ -68,7 +67,7 @@ namespace Marlin {
             set_widget (widget);
             set_up_layout (text, width);
 
-            int h = int.max (16, char_height) + 2 * (int)ypad;
+            int h = char_height + 2 * (int)ypad;
 
             natural_size = int.max (h, text_height) + h;
             minimum_size = natural_size;
@@ -217,7 +216,6 @@ namespace Marlin {
                 layout.set_auto_dir (false);
                 layout.set_single_paragraph_mode (true);
                 metrics = context.get_metrics (layout.get_font_description (), context.get_language ());
-                char_width = (metrics.get_approximate_char_width () + 512 ) >> 10;
                 char_height = (metrics.get_ascent () + metrics.get_descent () + 512) >> 10;
                 
                 if (wrap_width < 0) {
@@ -231,7 +229,6 @@ namespace Marlin {
 
             } else {
                 layout = null;
-                char_width = 0;
                 char_height = 0;
             }
         }
