@@ -220,7 +220,7 @@ namespace FM {
                     model.@get (iter,
                             FM.ListModel.ColumnID.FILENAME, out text);
 
-                    (r as Marlin.TextRenderer).set_up_layout (text, area);
+                    (r as Marlin.TextRenderer).set_up_layout (text, area.width);
 
                     if (x >= rect.x &&
                         x <= rect.x + rect.width &&

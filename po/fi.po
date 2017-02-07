@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"POT-Creation-Date: 2017-02-06 11:17-0800\n"
 "PO-Revision-Date: 2016-12-23 21:52+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:09+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-02-07 05:46+0000\n"
+"X-Generator: Launchpad (build 18326)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -282,44 +282,6 @@ msgstr "Korvaa"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Tiedostoristiriita"
-
-#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
-msgid "Inaccessible"
-msgstr "Ei käytettävissä"
-
-#: ../libcore/gof-file.c:379
-#, c-format
-msgid "link to %s"
-msgstr "linkki kohteeseen %s"
-
-#: ../libcore/gof-file.c:1953
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Desktop-tiedoston jäsennys epäonnistui: %s"
-
-#: ../libcore/gof-file.c:1990
-msgid "No Exec field specified"
-msgstr "Exec-kenttää ei ole määritetty"
-
-#: ../libcore/gof-file.c:2009
-msgid "No URL field specified"
-msgstr "URL-kenttää ei ole määritetty"
-
-#: ../libcore/gof-file.c:2015
-msgid "Invalid desktop file"
-msgstr "Virheellinen desktop-tiedosto"
-
-#: ../libcore/gof-file.c:2310
-msgid "Slashes are not allowed in filenames"
-msgstr "Kauttaviivat eivät ole sallittuja tiedostonimissä"
-
-#: ../libcore/gof-file.c:2330
-msgid "Toplevel files cannot be renamed"
-msgstr "Päätason tiedostoja ei voi nimetä uudestaan"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Näytä _lisätietoja"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -1089,6 +1051,65 @@ msgstr "Tyhjennetään roskakoria"
 msgid "Emptying Trash"
 msgstr "Tyhjennetään roskakoria"
 
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Valmistellaan"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
+msgid "Today at %-I:%M %p"
+msgstr "Tänään %H:%M"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
+msgid "Yesterday at %-I:%M %p"
+msgstr "Eilen %H:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %e. %bkuuta %R"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %e. %bkuuta %Y %R"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Näytä _lisätietoja"
+
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
+msgid "Inaccessible"
+msgstr "Ei käytettävissä"
+
+#: ../libcore/gof-file.c:376
+#, c-format
+msgid "link to %s"
+msgstr "linkki kohteeseen %s"
+
+#: ../libcore/gof-file.c:1925
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Desktop-tiedoston jäsennys epäonnistui: %s"
+
+#: ../libcore/gof-file.c:1962
+msgid "No Exec field specified"
+msgstr "Exec-kenttää ei ole määritetty"
+
+#: ../libcore/gof-file.c:1981
+msgid "No URL field specified"
+msgstr "URL-kenttää ei ole määritetty"
+
+#: ../libcore/gof-file.c:1987
+msgid "Invalid desktop file"
+msgstr "Virheellinen desktop-tiedosto"
+
+#: ../libcore/gof-file.c:2282
+msgid "Slashes are not allowed in filenames"
+msgstr "Kauttaviivat eivät ole sallittuja tiedostonimissä"
+
+#: ../libcore/gof-file.c:2302
+msgid "Toplevel files cannot be renamed"
+msgstr "Päätason tiedostoja ei voi nimetä uudestaan"
+
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
 msgstr "Alkuperäistä sijaintia ei voitu määrittää"
@@ -1469,27 +1490,6 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Tee uudelleen %d kohteen omistajan muutos"
 msgstr[1] "Tee uudelleen %d kohteen omistajan muutos"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
-msgid "Today at %-I:%M %p"
-msgstr "Tänään %H:%M"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
-msgid "Yesterday at %-I:%M %p"
-msgstr "Eilen %H:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %e. %bkuuta %R"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %e. %bkuuta %Y %R"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Valmistellaan"
-
 #: ../filechooser-module/FileChooserDialog.vala:70
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
@@ -1499,6 +1499,178 @@ msgstr "Edellinen"
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "Seuraava"
+
+#: ../src/View/AbstractDirectoryView.vala:564
+msgid "Failed to preview"
+msgstr "Esikatselu epäonnistui"
+
+#: ../src/View/AbstractDirectoryView.vala:817
+msgid "Cannot open this file"
+msgstr "Tämän tiedoston avaaminen ei onnistu"
+
+#: ../src/View/AbstractDirectoryView.vala:830
+msgid "Cannot identify file type to open"
+msgstr "Avattavan tiedoston tiedostotyyppiä ei tunnistettu"
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Cannot drop this file"
+msgstr "Tämän tiedoston pudottaminen ei onnistu"
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Invalid file name provided"
+msgstr "Virheellinen tiedostonimi"
+
+#: ../src/View/AbstractDirectoryView.vala:2010
+msgid "Invalid"
+msgstr "Virheellinen"
+
+#: ../src/View/AbstractDirectoryView.vala:2016
+msgid "Run"
+msgstr "Suorita"
+
+#: ../src/View/AbstractDirectoryView.vala:2021
+msgid "Open in %s"
+msgstr "Avaa sovelluksella %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2031
+msgid "Open in"
+msgstr "Avaa sovelluksella"
+
+#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
+msgid "Open with"
+msgstr "Avaa sovelluksella"
+
+#: ../src/View/AbstractDirectoryView.vala:2093
+msgid "Other Application"
+msgstr "Muu sovellus"
+
+#: ../src/View/AbstractDirectoryView.vala:2354
+msgid "Untitled %s"
+msgstr "Nimetön %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2678
+#: ../src/View/AbstractDirectoryView.vala:2861
+msgid "Cannot remove files from here"
+msgstr "Tiedostojen poistaminen täältä ei onnistu"
+
+#: ../src/View/AbstractDirectoryView.vala:2679
+#: ../src/View/AbstractDirectoryView.vala:2849
+#: ../src/View/AbstractDirectoryView.vala:2862
+msgid "You do not have permission to change this location"
+msgstr "Sinulla ei ole käyttöoikeutta muuttaa tätä sijaintia"
+
+#: ../src/View/AbstractDirectoryView.vala:2827
+msgid "Cannot copy files that are in the trash"
+msgstr "Roskakorissa olevia tiedostoja ei voi kopioida"
+
+#: ../src/View/AbstractDirectoryView.vala:2828
+msgid "Cutting the selection instead"
+msgstr "Sen sijaan leikataan valinta"
+
+#: ../src/View/AbstractDirectoryView.vala:2848
+msgid "Cannot paste files here"
+msgstr "Tiedostoja ei voi liittää tänne"
+
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "Päivitä tämä kansio"
+
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
+msgid "Enter search term or path"
+msgstr "Kirjoita hakuehdot tai polku"
+
+#: ../src/View/Widgets/OverlayBar.vala:230
+msgid "%u folders"
+msgstr "%u kansiota"
+
+#: ../src/View/Widgets/OverlayBar.vala:232
+#: ../src/View/Widgets/OverlayBar.vala:240
+msgid " and %u other item (%s) selected"
+msgstr " ja %u muu kohde (%s) valittu"
+
+#: ../src/View/Widgets/OverlayBar.vala:233
+#: ../src/View/Widgets/OverlayBar.vala:241
+msgid " and %u other items (%s) selected"
+msgstr " ja %u muuta kohdetta (%s) valittu"
+
+#: ../src/View/Widgets/OverlayBar.vala:236
+#: ../src/View/Widgets/OverlayBar.vala:244
+msgid " selected"
+msgstr " valittu"
+
+#: ../src/View/Widgets/OverlayBar.vala:238
+#: ../src/Dialogs/PropertiesWindow.vala:1162
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] "%u kansio"
+msgstr[1] "%u kansiota"
+
+#: ../src/View/Widgets/OverlayBar.vala:246
+msgid "%u items selected (%s)"
+msgstr "%u kohdetta valittu (%s)"
+
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folder, "
+msgstr "%u alikansio, "
+
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folders, "
+msgstr "%u alikansiota, "
+
+#. / TRANSLATORS: %u will be substituted by the number of readable files
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u file, "
+msgstr "%u tiedosto, "
+
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u files, "
+msgstr "%u tiedostoa, "
+
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: ../src/View/Widgets/OverlayBar.vala:303
+msgid "%s approx."
+msgstr "%s noin"
+
+#. / TRANSLATORS: 'size' refers to disk space
+#: ../src/View/Widgets/OverlayBar.vala:306
+msgid "unknown size"
+msgstr "tuntematon koko"
+
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u file not readable"
+msgstr "%u tiedosto ei luettavissa"
+
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u files not readable"
+msgstr "%u tiedostoa ei luettavissa"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+msgid "Open in New Tab"
+msgstr "Avaa uudessa välilehdessä"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Window"
+msgstr "Avaa uudessa ikkunassa"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+msgid "Open in Other Application…"
+msgstr "Avaa muussa sovelluksessa…"
+
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Luku"
+
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Kirjoitus"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Suoritus"
 
 #: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
@@ -1511,6 +1683,22 @@ msgstr "Aseta oletukseksi"
 #: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "Ohita"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Tiedostonimi"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Koko"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Tyyppi"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Muokattu"
 
 #: ../src/View/Sidebar.vala:481
 msgid "Personal"
@@ -1615,22 +1803,6 @@ msgstr "_Avaa asema"
 msgid "Properties"
 msgstr "Ominaisuudet"
 
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Tiedostonimi"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Koko"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Tyyppi"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Muokattu"
-
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
 msgid "This Folder Does Not Exist"
 msgstr "Tätä kansiota ei ole olemassa"
@@ -1657,77 +1829,21 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractDirectoryView.vala:550
-msgid "Failed to preview"
-msgstr "Esikatselu epäonnistui"
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Tämä kansio on tyhjä"
 
-#: ../src/View/AbstractDirectoryView.vala:805
-msgid "Cannot open this file"
-msgstr "Tämän tiedoston avaaminen ei onnistu"
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "Roskakori on tyhjä"
 
-#: ../src/View/AbstractDirectoryView.vala:818
-msgid "Cannot identify file type to open"
-msgstr "Avattavan tiedoston tiedostotyyppiä ei tunnistettu"
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Ei viimeaikaisia tiedostoja"
 
-#: ../src/View/AbstractDirectoryView.vala:1549
-msgid "Cannot drop this file"
-msgstr "Tämän tiedoston pudottaminen ei onnistu"
-
-#: ../src/View/AbstractDirectoryView.vala:1549
-msgid "Invalid file name provided"
-msgstr "Virheellinen tiedostonimi"
-
-#: ../src/View/AbstractDirectoryView.vala:2004
-msgid "Invalid"
-msgstr "Virheellinen"
-
-#: ../src/View/AbstractDirectoryView.vala:2010
-msgid "Run"
-msgstr "Suorita"
-
-#: ../src/View/AbstractDirectoryView.vala:2015
-msgid "Open in %s"
-msgstr "Avaa sovelluksella %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2025
-msgid "Open in"
-msgstr "Avaa sovelluksella"
-
-#: ../src/View/AbstractDirectoryView.vala:2027
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
-msgid "Open with"
-msgstr "Avaa sovelluksella"
-
-#: ../src/View/AbstractDirectoryView.vala:2087
-msgid "Other Application"
-msgstr "Muu sovellus"
-
-#: ../src/View/AbstractDirectoryView.vala:2348
-msgid "Untitled %s"
-msgstr "Nimetön %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2670
-#: ../src/View/AbstractDirectoryView.vala:2853
-msgid "Cannot remove files from here"
-msgstr "Tiedostojen poistaminen täältä ei onnistu"
-
-#: ../src/View/AbstractDirectoryView.vala:2671
-#: ../src/View/AbstractDirectoryView.vala:2841
-#: ../src/View/AbstractDirectoryView.vala:2854
-msgid "You do not have permission to change this location"
-msgstr "Sinulla ei ole käyttöoikeutta muuttaa tätä sijaintia"
-
-#: ../src/View/AbstractDirectoryView.vala:2819
-msgid "Cannot copy files that are in the trash"
-msgstr "Roskakorissa olevia tiedostoja ei voi kopioida"
-
-#: ../src/View/AbstractDirectoryView.vala:2820
-msgid "Cutting the selection instead"
-msgstr "Sen sijaan leikataan valinta"
-
-#: ../src/View/AbstractDirectoryView.vala:2840
-msgid "Cannot paste files here"
-msgstr "Tiedostoja ei voi liittää tänne"
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Pääsy estetty"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "(as Administrator)"
@@ -1777,147 +1893,31 @@ msgstr "Tiedostoa ei löytynyt"
 msgid "The file selected no longer exists."
 msgstr "Valittua tiedostoa ei ole enää olemassa."
 
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Tämä kansio on tyhjä"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "Roskakori on tyhjä"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Ei viimeaikaisia tiedostoja"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Pääsy estetty"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
-msgid "Open in New Tab"
-msgstr "Avaa uudessa välilehdessä"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
-msgid "Open in New Window"
-msgstr "Avaa uudessa ikkunassa"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
-msgid "Open in Other Application…"
-msgstr "Avaa muussa sovelluksessa…"
-
-#: ../src/View/Widgets/LocationBar.vala:177
-msgid "Reload this folder"
-msgstr "Päivitä tämä kansio"
-
-#: ../src/View/Widgets/LocationBar.vala:180
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
-msgid "Enter search term or path"
-msgstr "Kirjoita hakuehdot tai polku"
-
-#: ../src/View/Widgets/OverlayBar.vala:230
-msgid "%u folders"
-msgstr "%u kansiota"
-
-#: ../src/View/Widgets/OverlayBar.vala:232
-#: ../src/View/Widgets/OverlayBar.vala:240
-msgid " and %u other item (%s) selected"
-msgstr " ja %u muu kohde (%s) valittu"
-
-#: ../src/View/Widgets/OverlayBar.vala:233
-#: ../src/View/Widgets/OverlayBar.vala:241
-msgid " and %u other items (%s) selected"
-msgstr " ja %u muuta kohdetta (%s) valittu"
-
-#: ../src/View/Widgets/OverlayBar.vala:236
-#: ../src/View/Widgets/OverlayBar.vala:244
-msgid " selected"
-msgstr " valittu"
-
-#: ../src/View/Widgets/OverlayBar.vala:238
-#: ../src/Dialogs/PropertiesWindow.vala:1162
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] "%u kansio"
-msgstr[1] "%u kansiota"
-
-#: ../src/View/Widgets/OverlayBar.vala:246
-msgid "%u items selected (%s)"
-msgstr "%u kohdetta valittu (%s)"
-
-#. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/Widgets/OverlayBar.vala:287
-msgid "%u sub-folder, "
-msgstr "%u alikansio, "
-
-#: ../src/View/Widgets/OverlayBar.vala:287
-msgid "%u sub-folders, "
-msgstr "%u alikansiota, "
-
-#. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/Widgets/OverlayBar.vala:293
-msgid "%u file, "
-msgstr "%u tiedosto, "
-
-#: ../src/View/Widgets/OverlayBar.vala:293
-msgid "%u files, "
-msgstr "%u tiedostoa, "
-
-#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/Widgets/OverlayBar.vala:303
-msgid "%s approx."
-msgstr "%s noin"
-
-#. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/Widgets/OverlayBar.vala:306
-msgid "unknown size"
-msgstr "tuntematon koko"
-
-#. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/Widgets/OverlayBar.vala:310
-msgid "%u file not readable"
-msgstr "%u tiedosto ei luettavissa"
-
-#: ../src/View/Widgets/OverlayBar.vala:310
-msgid "%u files not readable"
-msgstr "%u tiedostoa ei luettavissa"
-
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Luku"
-
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Kirjoitus"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Suoritus"
-
-#: ../src/Application.vala:146
+#: ../src/Application.vala:144
 msgid "Show the version of the program."
 msgstr "Näytä ohjelman versio."
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:146
 msgid "Open uri(s) in new tab"
 msgstr "Avaa URI-tunnisteet uusiin välilehtiin"
 
-#: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:148 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Uusi ikkuna"
 
-#: ../src/Application.vala:152
+#: ../src/Application.vala:150
 msgid "Quit Files."
 msgstr "Lopeta Files-tiedostonhallinta."
 
-#: ../src/Application.vala:154
+#: ../src/Application.vala:152
 msgid "Enable debug logging"
 msgstr "Käytä vianjäljityksen lokitusta"
 
-#: ../src/Application.vala:157
+#: ../src/Application.vala:155
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:160
+#: ../src/Application.vala:158
 msgid ""
 "\n"
 "\n"
@@ -1927,95 +1927,13 @@ msgstr ""
 "\n"
 "Selaa tiedostojärjestelmää tiedostonhallinnasta"
 
-#: ../src/Application.vala:187
+#: ../src/Application.vala:185
 msgid "--quit cannot be used with URIs."
 msgstr "--quit ei voida käyttää URI:n kanssa"
-
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Selaa tiedostojasi"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Tiedostonhallinta"
-
-#: ../src/DesktopLauncher.vala:8
-msgid "New _Window"
-msgstr "Uusi i_kkuna"
-
-#: ../src/DesktopLauncher.vala:9
-msgid "New Window As _Administrator"
-msgstr "Uusi ikkuna _ylläpitäjän oikeuksin"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "About _Files"
-msgstr "Tietoja - Tie_dostot"
-
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Tiedostot"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr "Useita eri tiedostotyyppejä valittu"
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr "Yksittäinen sovellus ei voi avata näitä kaikkia tiedostotyyppejä"
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr "Tiedostojen avaaminen epäonnistui"
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
-msgid "File Operations"
-msgstr "Tiedostotoiminnot"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:190
-msgid "Completed %s"
-msgstr "Valmistui %s"
-
-#: ../src/ProgressUIHandler.vala:193
-msgid "All file operations have ended"
-msgstr "Kaikki toimenpiteet ovat valmistuneet"
-
-#: ../src/ProgressUIHandler.vala:238
-msgid "Show Copy Dialog"
-msgstr "Näytä kopiointi-ikkuna"
-
-#: ../src/ProgressUIHandler.vala:250
-msgid "Cancel All In-progress Actions"
-msgstr "Peru kaikki meneillään olevat toiminnot"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "Leikepöydällä ei ole liitettävää"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Aseta oletukseksi"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Levyn ominaisuudet"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Sijainti:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Muoto:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2052,6 +1970,23 @@ msgstr "Käytettävissä:"
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:161
 msgid "Used:"
 msgstr "Käytetty:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Levyn ominaisuudet"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "Sijainti:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Muoto:"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Aseta oletukseksi"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
@@ -2165,6 +2100,87 @@ msgstr[1] "%u valittua kohdetta"
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Tiedostotoiminnot"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "Valmistui %s"
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "Kaikki toimenpiteet ovat valmistuneet"
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Näytä kopiointi-ikkuna"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Peru kaikki meneillään olevat toiminnot"
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Selaa tiedostojasi"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Tiedostonhallinta"
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Window"
+msgstr "Uusi i_kkuna"
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New Window As _Administrator"
+msgstr "Uusi ikkuna _ylläpitäjän oikeuksin"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "About _Files"
+msgstr "Tietoja - Tie_dostot"
+
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Tiedostot"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "Useita eri tiedostotyyppejä valittu"
+
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "Yksittäinen sovellus ei voi avata näitä kaikkia tiedostotyyppejä"
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "Tiedostojen avaaminen epäonnistui"
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "Kohteen ”%s” alkuperäistä sijaintia ei voitu selvittää. "
+
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "Kohdetta ei voi palauttaa roskakorista."
+
+#: ../libcore/FileUtils.vala:342
+msgid "Could not rename to '%s'"
+msgstr "Nimen vaihtaminen muotoon '%s' epäonnistui"
+
+#: ../libcore/FileUtils.vala:463
+msgid "%A at %-I:%M %p"
+msgstr "%A klo %R"
+
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "Kohteen \"%s\" suorittaminen epäonnistui"
@@ -2185,33 +2201,29 @@ msgstr "Linkitä tänne"
 msgid "Cancel"
 msgstr "Peru"
 
-#: ../libcore/FileUtils.vala:59
-msgid "Could not determine original location of \"%s\" "
-msgstr "Kohteen ”%s” alkuperäistä sijaintia ei voitu selvittää. "
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Siirry kohteeseen %s"
 
-#: ../libcore/FileUtils.vala:60
-msgid "The item cannot be restored from trash"
-msgstr "Kohdetta ei voi palauttaa roskakorista."
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Siirry kohteeseen %s"
 
-#: ../libcore/FileUtils.vala:342
-msgid "Could not rename to '%s'"
-msgstr "Nimen vaihtaminen muotoon '%s' epäonnistui"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "Kirjoita polku"
 
-#: ../libcore/FileUtils.vala:463
-msgid "%A at %-I:%M %p"
-msgstr "%A klo %R"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Näytä ruudukkona"
 
-#: ../libwidgets/View/SearchResults.vala:178
-msgid "In This Folder"
-msgstr "Tässä kansiossa"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Näytä luettelona"
 
-#: ../libwidgets/View/SearchResults.vala:180
-msgid "Bookmarks"
-msgstr "Kirjanmerkit"
-
-#: ../libwidgets/View/SearchResults.vala:182
-msgid "Everywhere Else"
-msgstr "Kaikkialla muualla"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Näytä sarakkeina"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2260,29 +2272,17 @@ msgstr "Viimeisimmät"
 msgid "MTP"
 msgstr "MTP"
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr "Kirjoita polku"
+#: ../libwidgets/View/SearchResults.vala:178
+msgid "In This Folder"
+msgstr "Tässä kansiossa"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Näytä ruudukkona"
+#: ../libwidgets/View/SearchResults.vala:180
+msgid "Bookmarks"
+msgstr "Kirjanmerkit"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Näytä luettelona"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "Näytä sarakkeina"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Siirry kohteeseen %s"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
-msgid "Go to %s"
-msgstr "Siirry kohteeseen %s"
+#: ../libwidgets/View/SearchResults.vala:182
+msgid "Everywhere Else"
+msgstr "Kaikkialla muualla"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

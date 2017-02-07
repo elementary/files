@@ -48,6 +48,15 @@ namespace Marlin {
             entry.get_real_editable ().focus_out_event.connect_after (on_entry_focus_out_event);
         }
 
+        public override void get_preferred_height_for_width (Gtk.Widget widget, int width, out int minimum_size, out int natural_size) {
+            set_widget (widget);
+            set_up_layout (text, width);
+
+            int h = int.max (16, char_height) + 2 * (int)ypad;
+
+            natural_size = int.max (h, text_height) + h;
+            minimum_size = natural_size;
+        }
 
         public override void render (Cairo.Context cr,
                                      Gtk.Widget widget,
@@ -64,7 +73,7 @@ namespace Marlin {
             else
                 state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
 
-            set_up_layout (text, cell_area);
+            set_up_layout (text, cell_area.width);
 
             var style_context = widget.get_parent ().get_style_context ();
             style_context.save ();
@@ -98,19 +107,21 @@ namespace Marlin {
             file = null;
         }
 
-        public void set_up_layout (string? text, Gdk.Rectangle cell_area) {
+        public void set_up_layout (string? text, int cell_width) {
             /* render small/normal text depending on the zoom_level */
-            if (text == null)
+            if (text == null) {
                 text= " ";
+            }
 
             bool small = this.zoom_level < Marlin.ZoomLevel.NORMAL;
-            if (small)
+            if (small) {
                 layout.set_attributes (EelPango.attr_list_small ());
-            else
+            } else {
                 layout.set_attributes (null);
+            }
 
             if (wrap_width < 0) {
-                layout.set_width (cell_area.width * Pango.SCALE);
+                layout.set_width (cell_width * Pango.SCALE);
                 layout.set_height (- 1);
             } else {
                 layout.set_width (wrap_width * Pango.SCALE);
@@ -120,8 +131,9 @@ namespace Marlin {
 
             layout.set_ellipsize (Pango.EllipsizeMode.END);
 
-            if (xalign == 0.5f)
+            if (xalign == 0.5f) {
                 layout.set_alignment (Pango.Alignment.CENTER);
+            }
 
             layout.set_text (text, -1);
 
