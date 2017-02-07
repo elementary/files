@@ -1,5 +1,3 @@
-enable_testing ()
-
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
