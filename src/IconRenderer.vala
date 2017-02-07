@@ -41,8 +41,6 @@ namespace Marlin {
             }
             set {
                 _zoom_level = value;
-                helper_size = _zoom_level > Marlin.ZoomLevel.LARGER ? Marlin.IconSize.LARGE_EMBLEM : Marlin.IconSize.EMBLEM;
-                emblem_overlap = helper_size / 4;
                 icon_size = Marlin.zoom_level_to_icon_size (_zoom_level);
                 show_emblems = _zoom_level > Marlin.ZoomLevel.SMALLEST;
             }
@@ -59,11 +57,13 @@ namespace Marlin {
                 }
             }
         }
+
         private bool show_emblems = true;
         private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
         private GOF.File? _file;
         private Marlin.IconSize icon_size;
-        private int emblem_overlap = 0;
+        public int helper_x {get; private set;}
+        public int helper_y {get; private set;}
         private unowned Gdk.Pixbuf? pixbuf {
             get {
                 return _file != null ? _file.pix : null;
@@ -72,7 +72,7 @@ namespace Marlin {
         private double scale;
         private ClipboardManager clipboard;
 
-        public IconRenderer () {
+        construct {
             clipboard = Marlin.ClipboardManager.get_for_display ();
         }
 
@@ -152,7 +152,7 @@ namespace Marlin {
             style_context.restore ();
 
             /* Do not show selection helpers or emblems for very small icons */
-            if (selection_helpers && show_emblems &&
+            if (selection_helpers &&
                 (selected || prelit) &&
                 file != drop_file) {
 
@@ -166,6 +166,9 @@ namespace Marlin {
                 }
 
                 if (special_icon_name != null) {
+                    helper_size = Marlin.IconSize.LARGE_EMBLEM > pixbuf.get_width () / 2 ?
+                                  Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
+
                     var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, helper_size);
                     Gdk.Pixbuf? pix = null;
                     if (nicon != null) {
@@ -173,9 +176,10 @@ namespace Marlin {
                     }
 
                     if (pix != null) {
+                        int overlap = helper_size / 4;
                         var helper_area = Gdk.Rectangle ();
-                        helper_area.x = draw_rect.x - helper_size / 2;
-                        helper_area.y = draw_rect.y - helper_size / 2;
+                        helper_area.x = draw_rect.x - overlap;
+                        helper_area.y = draw_rect.y - overlap;
 
                         if (helper_area.y < background_area.y) {
                             helper_area.y = background_area.y;
@@ -185,7 +189,10 @@ namespace Marlin {
                             helper_area.x = background_area.x;
                         }
 
-                        Gdk.cairo_set_source_pixbuf (cr, pix, helper_area.x, helper_area.y);
+                        helper_x = helper_area.x;
+                        helper_y = helper_area.y;
+
+                        Gdk.cairo_set_source_pixbuf (cr, pix, helper_x, helper_y);
                         cr.paint ();
                     }
                 }
@@ -196,6 +203,7 @@ namespace Marlin {
             /* How many emblems can be shown depends on icon icon_size (zoom lebel) */
             if (show_emblems) {
                 int pos = 0;
+                int emblem_overlap = helper_size / 4;
                 var emblem_area = Gdk.Rectangle ();
 
                 foreach (string emblem in file.emblems_list) {
