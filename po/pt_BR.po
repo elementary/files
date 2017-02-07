@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"POT-Creation-Date: 2017-02-06 11:17-0800\n"
 "PO-Revision-Date: 2016-11-19 08:18+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:14+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-02-07 05:50+0000\n"
+"X-Generator: Launchpad (build 18326)\n"
 "Language: pt_BR\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -283,44 +283,6 @@ msgstr "Substituir"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Conflito de arquivo"
-
-#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:379
-#, c-format
-msgid "link to %s"
-msgstr "ligação para %s"
-
-#: ../libcore/gof-file.c:1953
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Falha ao analisar o arquivo de desktop: %s"
-
-#: ../libcore/gof-file.c:1990
-msgid "No Exec field specified"
-msgstr "Nenhum campo Exec especificado"
-
-#: ../libcore/gof-file.c:2009
-msgid "No URL field specified"
-msgstr "Nenhum campo URL especificado"
-
-#: ../libcore/gof-file.c:2015
-msgid "Invalid desktop file"
-msgstr "Arquivo de área de trabalho inválido"
-
-#: ../libcore/gof-file.c:2310
-msgid "Slashes are not allowed in filenames"
-msgstr "Barras não são permitidas nos nomes dos arquivos"
-
-#: ../libcore/gof-file.c:2330
-msgid "Toplevel files cannot be renamed"
-msgstr "Os arquivos do nível superior não podem ser renomeados"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Exibir mais _detalhes"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -1101,6 +1063,65 @@ msgstr "Esvaziando a lixeira"
 msgid "Emptying Trash"
 msgstr "Esvaziando lixeira"
 
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Preparando"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
+msgid "Today at %-I:%M %p"
+msgstr "Hoje às %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
+msgid "Yesterday at %-I:%M %p"
+msgstr "Ontem às %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b em %-k:%M"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y em %-I:%M %p"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Exibir mais _detalhes"
+
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:376
+#, c-format
+msgid "link to %s"
+msgstr "ligação para %s"
+
+#: ../libcore/gof-file.c:1925
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Falha ao analisar o arquivo de desktop: %s"
+
+#: ../libcore/gof-file.c:1962
+msgid "No Exec field specified"
+msgstr "Nenhum campo Exec especificado"
+
+#: ../libcore/gof-file.c:1981
+msgid "No URL field specified"
+msgstr "Nenhum campo URL especificado"
+
+#: ../libcore/gof-file.c:1987
+msgid "Invalid desktop file"
+msgstr "Arquivo de área de trabalho inválido"
+
+#: ../libcore/gof-file.c:2282
+msgid "Slashes are not allowed in filenames"
+msgstr "Barras não são permitidas nos nomes dos arquivos"
+
+#: ../libcore/gof-file.c:2302
+msgid "Toplevel files cannot be renamed"
+msgstr "Os arquivos do nível superior não podem ser renomeados"
+
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
 msgstr "A localização original não pôde ser determinada"
@@ -1481,27 +1502,6 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Refazer mudança de proprietário de %d item"
 msgstr[1] "Refazer mudança de proprietário de %d itens"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
-msgid "Today at %-I:%M %p"
-msgstr "Hoje às %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
-msgid "Yesterday at %-I:%M %p"
-msgstr "Ontem às %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b em %-k:%M"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y em %-I:%M %p"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Preparando"
-
 #: ../filechooser-module/FileChooserDialog.vala:70
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
@@ -1511,6 +1511,178 @@ msgstr "Anterior"
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "Próximo"
+
+#: ../src/View/AbstractDirectoryView.vala:564
+msgid "Failed to preview"
+msgstr "Falha ao visualizar"
+
+#: ../src/View/AbstractDirectoryView.vala:817
+msgid "Cannot open this file"
+msgstr "Não pode abrir este arquivo"
+
+#: ../src/View/AbstractDirectoryView.vala:830
+msgid "Cannot identify file type to open"
+msgstr "Não pode identificar o tipo de arquivo a abrir"
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Cannot drop this file"
+msgstr "Não é possível descartar este arquivo"
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Invalid file name provided"
+msgstr "Nome de arquivo fornecido inválido"
+
+#: ../src/View/AbstractDirectoryView.vala:2010
+msgid "Invalid"
+msgstr "Inválido"
+
+#: ../src/View/AbstractDirectoryView.vala:2016
+msgid "Run"
+msgstr "Executar"
+
+#: ../src/View/AbstractDirectoryView.vala:2021
+msgid "Open in %s"
+msgstr "Abrir em %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2031
+msgid "Open in"
+msgstr "Abrir em"
+
+#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
+msgid "Open with"
+msgstr "Abrir com"
+
+#: ../src/View/AbstractDirectoryView.vala:2093
+msgid "Other Application"
+msgstr "Outra aplicação"
+
+#: ../src/View/AbstractDirectoryView.vala:2354
+msgid "Untitled %s"
+msgstr "Sem título %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2678
+#: ../src/View/AbstractDirectoryView.vala:2861
+msgid "Cannot remove files from here"
+msgstr "Não é possível remover arquivos daqui"
+
+#: ../src/View/AbstractDirectoryView.vala:2679
+#: ../src/View/AbstractDirectoryView.vala:2849
+#: ../src/View/AbstractDirectoryView.vala:2862
+msgid "You do not have permission to change this location"
+msgstr "Você não tem permissão para alterar este local"
+
+#: ../src/View/AbstractDirectoryView.vala:2827
+msgid "Cannot copy files that are in the trash"
+msgstr "Não é possível copiar os arquivos que estão na lixeira"
+
+#: ../src/View/AbstractDirectoryView.vala:2828
+msgid "Cutting the selection instead"
+msgstr "Cortar a seleção ao invés"
+
+#: ../src/View/AbstractDirectoryView.vala:2848
+msgid "Cannot paste files here"
+msgstr "Não é possível colar arquivos aqui"
+
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "Recarregar esta pasta"
+
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
+msgid "Enter search term or path"
+msgstr "Digite o termo de busca ou caminho"
+
+#: ../src/View/Widgets/OverlayBar.vala:230
+msgid "%u folders"
+msgstr "%u pastas"
+
+#: ../src/View/Widgets/OverlayBar.vala:232
+#: ../src/View/Widgets/OverlayBar.vala:240
+msgid " and %u other item (%s) selected"
+msgstr " e %u outro item (%s) selecionado"
+
+#: ../src/View/Widgets/OverlayBar.vala:233
+#: ../src/View/Widgets/OverlayBar.vala:241
+msgid " and %u other items (%s) selected"
+msgstr " e %u outros itens (%s) selecionados"
+
+#: ../src/View/Widgets/OverlayBar.vala:236
+#: ../src/View/Widgets/OverlayBar.vala:244
+msgid " selected"
+msgstr " selecionado"
+
+#: ../src/View/Widgets/OverlayBar.vala:238
+#: ../src/Dialogs/PropertiesWindow.vala:1162
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/View/Widgets/OverlayBar.vala:246
+msgid "%u items selected (%s)"
+msgstr "%u itens selecionados (%s)"
+
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folder, "
+msgstr "%u sub-pasta, "
+
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folders, "
+msgstr "%u sub-pastas, "
+
+#. / TRANSLATORS: %u will be substituted by the number of readable files
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u file, "
+msgstr "%u arquivo, "
+
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u files, "
+msgstr "%u arquivos, "
+
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: ../src/View/Widgets/OverlayBar.vala:303
+msgid "%s approx."
+msgstr "% aprox."
+
+#. / TRANSLATORS: 'size' refers to disk space
+#: ../src/View/Widgets/OverlayBar.vala:306
+msgid "unknown size"
+msgstr "tamanho desconhecido"
+
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u file not readable"
+msgstr "% arquivo não legível"
+
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u files not readable"
+msgstr "% arquivos não legíveis"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+msgid "Open in New Tab"
+msgstr "Abrir em uma nova aba"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Window"
+msgstr "Abrir em uma nova janela"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+msgid "Open in Other Application…"
+msgstr "Abrir com outro aplicativo…"
+
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Leitura"
+
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Gravação"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Execução"
 
 #: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
@@ -1523,6 +1695,22 @@ msgstr "Definir como padrão"
 #: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "Ignorar"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Nome do arquivo"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Tamanho"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Tipo"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Modificado"
 
 #: ../src/View/Sidebar.vala:481
 msgid "Personal"
@@ -1627,22 +1815,6 @@ msgstr "_Ejetar"
 msgid "Properties"
 msgstr "Propriedades"
 
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Nome do arquivo"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Tamanho"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Tipo"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Modificado"
-
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
 msgid "This Folder Does Not Exist"
 msgstr "Esta pasta não existe"
@@ -1669,77 +1841,21 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractDirectoryView.vala:550
-msgid "Failed to preview"
-msgstr "Falha ao visualizar"
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Esta pasta está vazia"
 
-#: ../src/View/AbstractDirectoryView.vala:805
-msgid "Cannot open this file"
-msgstr "Não pode abrir este arquivo"
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "A lixeira está vazia"
 
-#: ../src/View/AbstractDirectoryView.vala:818
-msgid "Cannot identify file type to open"
-msgstr "Não pode identificar o tipo de arquivo a abrir"
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Não há arquivos recentes"
 
-#: ../src/View/AbstractDirectoryView.vala:1549
-msgid "Cannot drop this file"
-msgstr "Não é possível descartar este arquivo"
-
-#: ../src/View/AbstractDirectoryView.vala:1549
-msgid "Invalid file name provided"
-msgstr "Nome de arquivo fornecido inválido"
-
-#: ../src/View/AbstractDirectoryView.vala:2004
-msgid "Invalid"
-msgstr "Inválido"
-
-#: ../src/View/AbstractDirectoryView.vala:2010
-msgid "Run"
-msgstr "Executar"
-
-#: ../src/View/AbstractDirectoryView.vala:2015
-msgid "Open in %s"
-msgstr "Abrir em %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2025
-msgid "Open in"
-msgstr "Abrir em"
-
-#: ../src/View/AbstractDirectoryView.vala:2027
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
-msgid "Open with"
-msgstr "Abrir com"
-
-#: ../src/View/AbstractDirectoryView.vala:2087
-msgid "Other Application"
-msgstr "Outra aplicação"
-
-#: ../src/View/AbstractDirectoryView.vala:2348
-msgid "Untitled %s"
-msgstr "Sem título %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2670
-#: ../src/View/AbstractDirectoryView.vala:2853
-msgid "Cannot remove files from here"
-msgstr "Não é possível remover arquivos daqui"
-
-#: ../src/View/AbstractDirectoryView.vala:2671
-#: ../src/View/AbstractDirectoryView.vala:2841
-#: ../src/View/AbstractDirectoryView.vala:2854
-msgid "You do not have permission to change this location"
-msgstr "Você não tem permissão para alterar este local"
-
-#: ../src/View/AbstractDirectoryView.vala:2819
-msgid "Cannot copy files that are in the trash"
-msgstr "Não é possível copiar os arquivos que estão na lixeira"
-
-#: ../src/View/AbstractDirectoryView.vala:2820
-msgid "Cutting the selection instead"
-msgstr "Cortar a seleção ao invés"
-
-#: ../src/View/AbstractDirectoryView.vala:2840
-msgid "Cannot paste files here"
-msgstr "Não é possível colar arquivos aqui"
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Acesso negado"
 
 #: ../src/View/ViewContainer.vala:358
 msgid "(as Administrator)"
@@ -1789,147 +1905,31 @@ msgstr "Arquivo não encontrado"
 msgid "The file selected no longer exists."
 msgstr "O arquivo selecionado não existe mais."
 
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Esta pasta está vazia"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "A lixeira está vazia"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Não há arquivos recentes"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Acesso negado"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
-msgid "Open in New Tab"
-msgstr "Abrir em uma nova aba"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
-msgid "Open in New Window"
-msgstr "Abrir em uma nova janela"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
-msgid "Open in Other Application…"
-msgstr "Abrir com outro aplicativo…"
-
-#: ../src/View/Widgets/LocationBar.vala:177
-msgid "Reload this folder"
-msgstr "Recarregar esta pasta"
-
-#: ../src/View/Widgets/LocationBar.vala:180
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
-msgid "Enter search term or path"
-msgstr "Digite o termo de busca ou caminho"
-
-#: ../src/View/Widgets/OverlayBar.vala:230
-msgid "%u folders"
-msgstr "%u pastas"
-
-#: ../src/View/Widgets/OverlayBar.vala:232
-#: ../src/View/Widgets/OverlayBar.vala:240
-msgid " and %u other item (%s) selected"
-msgstr " e %u outro item (%s) selecionado"
-
-#: ../src/View/Widgets/OverlayBar.vala:233
-#: ../src/View/Widgets/OverlayBar.vala:241
-msgid " and %u other items (%s) selected"
-msgstr " e %u outros itens (%s) selecionados"
-
-#: ../src/View/Widgets/OverlayBar.vala:236
-#: ../src/View/Widgets/OverlayBar.vala:244
-msgid " selected"
-msgstr " selecionado"
-
-#: ../src/View/Widgets/OverlayBar.vala:238
-#: ../src/Dialogs/PropertiesWindow.vala:1162
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../src/View/Widgets/OverlayBar.vala:246
-msgid "%u items selected (%s)"
-msgstr "%u itens selecionados (%s)"
-
-#. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/Widgets/OverlayBar.vala:287
-msgid "%u sub-folder, "
-msgstr "%u sub-pasta, "
-
-#: ../src/View/Widgets/OverlayBar.vala:287
-msgid "%u sub-folders, "
-msgstr "%u sub-pastas, "
-
-#. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/Widgets/OverlayBar.vala:293
-msgid "%u file, "
-msgstr "%u arquivo, "
-
-#: ../src/View/Widgets/OverlayBar.vala:293
-msgid "%u files, "
-msgstr "%u arquivos, "
-
-#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/Widgets/OverlayBar.vala:303
-msgid "%s approx."
-msgstr "% aprox."
-
-#. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/Widgets/OverlayBar.vala:306
-msgid "unknown size"
-msgstr "tamanho desconhecido"
-
-#. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/Widgets/OverlayBar.vala:310
-msgid "%u file not readable"
-msgstr "% arquivo não legível"
-
-#: ../src/View/Widgets/OverlayBar.vala:310
-msgid "%u files not readable"
-msgstr "% arquivos não legíveis"
-
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Leitura"
-
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Gravação"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Execução"
-
-#: ../src/Application.vala:146
+#: ../src/Application.vala:144
 msgid "Show the version of the program."
 msgstr "Mostra a versão do programa."
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:146
 msgid "Open uri(s) in new tab"
 msgstr "Abrir uri(s) em nova aba"
 
-#: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:148 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Nova janela"
 
-#: ../src/Application.vala:152
+#: ../src/Application.vala:150
 msgid "Quit Files."
 msgstr "Encerrar Files."
 
-#: ../src/Application.vala:154
+#: ../src/Application.vala:152
 msgid "Enable debug logging"
 msgstr "Habilitar registros de depuração"
 
-#: ../src/Application.vala:157
+#: ../src/Application.vala:155
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:160
+#: ../src/Application.vala:158
 msgid ""
 "\n"
 "\n"
@@ -1939,96 +1939,13 @@ msgstr ""
 "\n"
 "Navegue no sistema de arquivos com o gerenciador de arquivos"
 
-#: ../src/Application.vala:187
+#: ../src/Application.vala:185
 msgid "--quit cannot be used with URIs."
 msgstr "--quit não pode ser usado com URIs."
-
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Visualizar seus arquivos"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Gerenciador de arquivos"
-
-#: ../src/DesktopLauncher.vala:8
-msgid "New _Window"
-msgstr "Nova _janela"
-
-#: ../src/DesktopLauncher.vala:9
-msgid "New Window As _Administrator"
-msgstr "Nova janela como _administrador"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "About _Files"
-msgstr "Sobre _Arquivos"
-
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Arquivos"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr "Diversos tipos de arquivos foram selecionados"
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr ""
-"Nenhum aplicativo consegue abrir todos estes tipos de arquivos ao mesmo tempo"
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr "Falha ao abrir arquivos"
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "Falha ao abrir uris"
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr "Não foi possível abrir arquivos ou uris com esse aplicativo"
-
-#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
-msgid "File Operations"
-msgstr "Operações de arquivo"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:190
-msgid "Completed %s"
-msgstr "Completou %s"
-
-#: ../src/ProgressUIHandler.vala:193
-msgid "All file operations have ended"
-msgstr "Todas as operações de arquivos terminaram"
-
-#: ../src/ProgressUIHandler.vala:238
-msgid "Show Copy Dialog"
-msgstr "Exibir janela de cópia"
-
-#: ../src/ProgressUIHandler.vala:250
-msgid "Cancel All In-progress Actions"
-msgstr "Cancelar todas as ações em andamento"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "Não há nada na área de transferência para colar"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Definir como padrão"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Propriedades do disco"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Localização:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Formato:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2065,6 +1982,23 @@ msgstr "Disponível:"
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:161
 msgid "Used:"
 msgstr "Utilizado:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Propriedades do disco"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "Localização:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Formato:"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Definir como padrão"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
@@ -2179,6 +2113,88 @@ msgstr[1] ""
 msgid "%s (%s, %s)"
 msgstr ""
 
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Operações de arquivo"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "Completou %s"
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "Todas as operações de arquivos terminaram"
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Exibir janela de cópia"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Cancelar todas as ações em andamento"
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Visualizar seus arquivos"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Gerenciador de arquivos"
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Window"
+msgstr "Nova _janela"
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New Window As _Administrator"
+msgstr "Nova janela como _administrador"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "About _Files"
+msgstr "Sobre _Arquivos"
+
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Arquivos"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "Diversos tipos de arquivos foram selecionados"
+
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr ""
+"Nenhum aplicativo consegue abrir todos estes tipos de arquivos ao mesmo tempo"
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "Falha ao abrir arquivos"
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "Falha ao abrir uris"
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "Não foi possível abrir arquivos ou uris com esse aplicativo"
+
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "Não foi possível determinar a localização original de \"%s\" "
+
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "O item não pode ser restaurado da lixeira"
+
+#: ../libcore/FileUtils.vala:342
+msgid "Could not rename to '%s'"
+msgstr "Não foi possível renomear para '%s'"
+
+#: ../libcore/FileUtils.vala:463
+msgid "%A at %-I:%M %p"
+msgstr ""
+
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "Falhou ao executar \"%s\""
@@ -2199,33 +2215,29 @@ msgstr "Ligar aqui"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../libcore/FileUtils.vala:59
-msgid "Could not determine original location of \"%s\" "
-msgstr "Não foi possível determinar a localização original de \"%s\" "
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Navegar para %s"
 
-#: ../libcore/FileUtils.vala:60
-msgid "The item cannot be restored from trash"
-msgstr "O item não pode ser restaurado da lixeira"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Ir para %s"
 
-#: ../libcore/FileUtils.vala:342
-msgid "Could not rename to '%s'"
-msgstr "Não foi possível renomear para '%s'"
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "Digite um caminho"
 
-#: ../libcore/FileUtils.vala:463
-msgid "%A at %-I:%M %p"
-msgstr ""
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Visualizar em grade"
 
-#: ../libwidgets/View/SearchResults.vala:178
-msgid "In This Folder"
-msgstr "Nesta pasta"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Visualizar em lista"
 
-#: ../libwidgets/View/SearchResults.vala:180
-msgid "Bookmarks"
-msgstr "Favoritos"
-
-#: ../libwidgets/View/SearchResults.vala:182
-msgid "Everywhere Else"
-msgstr "Em todos outros lugadores"
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Visualizar em colunas"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2304,29 +2316,17 @@ msgstr "Recente"
 msgid "MTP"
 msgstr "MTP"
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr "Digite um caminho"
+#: ../libwidgets/View/SearchResults.vala:178
+msgid "In This Folder"
+msgstr "Nesta pasta"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Visualizar em grade"
+#: ../libwidgets/View/SearchResults.vala:180
+msgid "Bookmarks"
+msgstr "Favoritos"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Visualizar em lista"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "Visualizar em colunas"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Navegar para %s"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
-msgid "Go to %s"
-msgstr "Ir para %s"
+#: ../libwidgets/View/SearchResults.vala:182
+msgid "Everywhere Else"
+msgstr "Em todos outros lugadores"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
