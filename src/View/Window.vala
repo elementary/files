@@ -467,7 +467,7 @@ namespace Marlin.View {
         private string check_for_tab_with_same_name (ViewContainer vc) {
             string name = vc.tab_name;
             string path = Uri.unescape_string (vc.uri);
-            string new_name = Path.get_basename (path);
+            string new_name = name;
 
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
                 var content = (ViewContainer)(tab.page);

@@ -29,7 +29,6 @@ namespace Marlin.View {
 
         public Gtk.Widget? content_item;
         public bool can_show_folder = false;
-        public string label = "";
         public Marlin.View.Window window;
         public GOF.AbstractSlot? view = null;
         public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
@@ -155,8 +154,9 @@ namespace Marlin.View {
             }
         }
 
+        private string label = "";
         public string tab_name {
-            set {
+            private set {
                 if (label != value) { /* Do not signal if no change */
                     label = value;
                     tab_name_changed (value);
@@ -414,7 +414,6 @@ namespace Marlin.View {
 
             loading (false); /* Will cause topmenu to update */
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
-            refresh_slot_info (slot.location);
         }
 
         private void store_selection () {
