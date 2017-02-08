@@ -36,16 +36,18 @@ namespace Marlin {
         Gtk.Widget widget;
         public Marlin.AbstractEditableLabel entry;
 
-        public TextRenderer (Marlin.ViewMode viewmode) {
+        construct {
             this.mode = Gtk.CellRendererMode.EDITABLE;
+        }
 
-            if (viewmode == Marlin.ViewMode.ICON)
+        public TextRenderer (Marlin.ViewMode viewmode) {
+            if (viewmode == Marlin.ViewMode.ICON) {
                 entry = new Marlin.MultiLineEditableLabel ();
-            else
+            } else {
                 entry = new Marlin.SingleLineEditableLabel ();
+            }
 
             entry.editing_done.connect (on_entry_editing_done);
-            entry.get_real_editable ().focus_out_event.connect_after (on_entry_focus_out_event);
         }
 
         public override void get_preferred_height_for_width (Gtk.Widget widget, int width, out int minimum_size, out int natural_size) {
@@ -244,11 +246,6 @@ namespace Marlin {
                 edited (path, text);
             }
             file = null;
-        }
-
-        private bool on_entry_focus_out_event (Gdk.Event event) {
-            on_entry_editing_done ();
-            return false;
         }
 
         private void draw_focus (Cairo.Context cr,
