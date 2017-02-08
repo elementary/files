@@ -2,20 +2,21 @@
 # Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the pantheon-files package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# Martin Korpala <korpyk@gmail.com>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-09-08 09:00+0000\n"
-"Last-Translator: Samuel <s.mensak@gmail.com>\n"
-"Language-Team: Slovak <sk@li.org>\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2016-12-12 20:18+0000\n"
+"Last-Translator: Martin Korpala <Unknown>\n"
+"Language-Team: Slovak <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-09-09 06:24+0000\n"
-"X-Generator: Launchpad (build 18184)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:15+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 msgid "Files"
 msgstr "Súbory"
@@ -34,3 +35,36 @@ msgstr ""
 "alebo riadkoch, vždy ich viete ľahko nájsť. Pristupujte k všetkým vaším "
 "súborom, či už lokálnym alebo na externom zariadení prípadne vzdialene "
 "pomocou FTP, SFTP, AFP, Webdav alebo Windows share."
+
+msgid "Fix appdata release dates"
+msgstr "Opraviť dátumy vydania dát aplikácie."
+
+msgid "Improve file opening over Samba shares"
+msgstr "Zlepšiť otváranie súborov cez Samba zdieľania"
+
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "Opraviť pád pri obnovovaní položiek z Koša"
+
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr "Zlepšiť vystrihnúť/kopírovať/vložiť"
+
+msgid "Translation updates"
+msgstr "Aktualizácie prekladu"
+
+msgid "Minor bug fixes"
+msgstr "Menšie opravy chýb"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr ""
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""

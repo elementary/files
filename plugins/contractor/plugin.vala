@@ -5,7 +5,7 @@
       Victor Martinez <victoreduardm@gmail.com>
 
     Copyright (c) Lucas Baudin 2011 <xapantu@gmail.com>
-    Copyright (c) 2013-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2013-2017 elementary LLC (http://launchpad.net/elementary)
 
     Marlin is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License as published by the
@@ -49,7 +49,7 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     public Contractor () {
     }
 
-    public override void context_menu (Gtk.Widget? widget, List<GOF.File> gof_files) {
+    public override void context_menu (Gtk.Widget? widget, List<unowned GOF.File> gof_files) {
         menu = widget as Gtk.Menu;
         return_if_fail (menu != null);
 

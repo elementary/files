@@ -26,20 +26,32 @@ namespace Marlin.View {
 
         private uint reload_timeout_id = 0;
         private uint path_change_timeout_id = 0;
+        private bool original_reload_request = false;
+        private bool has_autosized = false;
 
-        protected bool updates_frozen = false;
-        protected bool original_reload_request = false;
-        public bool has_autosized = false;
+        private const string EMPTY_MESSAGE = _("This Folder Is Empty");
+        private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
+        private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
+        private const string DENIED_MESSAGE = _("Access Denied");
+
         public bool is_active {get; protected set;}
 
         public unowned Marlin.View.Window window {
             get {return ctab.window;}
         }
 
-        private const string EMPTY_MESSAGE = _("This Folder Is Empty");
-        private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
-        private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
-        private const string DENIED_MESSAGE = _("Access Denied");
+        public  override bool is_frozen {
+            set {
+                dir_view.is_frozen = value;
+                frozen_changed (value);
+            }
+
+            get {
+                return dir_view == null || dir_view.is_frozen;
+            }
+
+            default = true;
+        }
 
         public override bool locked_focus {
             get {
@@ -77,8 +89,9 @@ namespace Marlin.View {
 
         private void connect_slot_signals () {
             active.connect (() => {
-                if (is_active)
+                if (is_active) {
                     return;
+                }
 
                 is_active = true;
                 dir_view.grab_focus ();
@@ -132,30 +145,24 @@ namespace Marlin.View {
         private void on_directory_done_loading (GOF.Directory.Async dir) {
             ctab.directory_done_loading (this);
 
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                 autosize_slot ();
+            }
 
-            set_view_updates_frozen (false);
-            updates_frozen = false;
+            is_frozen = false;
         }
 
         private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
-            if (!updates_frozen) {
-                updates_frozen = true;
+            if (!is_frozen) {
                 dir_view.clear (); /* clear model but do not change directory */
-
+                /* view and slot are unfrozen when done loading signal received */
+                is_frozen = true;
                 path_changed (false);
                 /* if original_request false, leave original_load_request as it is (it may already be true
                  * if reloading in response to reload button press). */  
                 if (original_request) {
                     original_reload_request = true;
                 }
-                /* ViewContainer listens to this signal takes care of updating appearance
-                 * If allow_mode_change is false View Container will not automagically
-                 * switch to icon view for icon folders (needed for Miller View) */
-
-
-
                 /* Only need to initialise directory once - the slot that originally received the
                  * reload request does this */ 
                 if (original_reload_request) {
@@ -181,8 +188,9 @@ namespace Marlin.View {
         }
 
         private void set_up_directory (GLib.File loc) {
-            if (directory != null)
+            if (directory != null) {
                 disconnect_dir_signals ();
+            }
 
             directory = GOF.Directory.Async.from_gfile (loc);
             assert (directory != null);
@@ -191,8 +199,9 @@ namespace Marlin.View {
 
             has_autosized = false;
 
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                 directory.track_longest_name = true;
+            }
         }
 
         /* This delay in passing on the path change request is necessary to prevent occasional crashes
@@ -212,17 +221,20 @@ namespace Marlin.View {
 
         private void on_dir_view_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                     miller_slot_request (loc, make_root); /* signal to parent MillerView */
-                else
+                } else {
                     user_path_change_request (loc, false, make_root); /* Handle ourselves */
-            } else
+                }
+            } else {
                 ctab.new_container_request (loc, flag);
+            }
         }
 
         public void autosize_slot () {
-            if (dir_view == null || has_autosized)
+            if (dir_view == null || has_autosized) {
                 return;
+            }
 
             Pango.Layout layout = dir_view.create_pango_layout (null);
 
@@ -239,8 +251,9 @@ namespace Marlin.View {
                   + 64; /* allow some extra room for icon padding and right margin*/
 
             /* Allow extra room for MESSAGE_CLASS styling of special messages */
-            if (directory.is_empty () || directory.permission_denied)
+            if (directory.is_empty () || directory.permission_denied) {
                 width += width;
+            }
 
             width = width.clamp (preferred_column_width, preferred_column_width * 3);
 
@@ -248,8 +261,9 @@ namespace Marlin.View {
             hpane.set_position (width);
             colpane.show_all ();
 
-            if (colpane.get_realized ())
+            if (colpane.get_realized ()) {
                 colpane.queue_draw ();
+            }
 
             has_autosized = true;
         }
@@ -265,6 +279,18 @@ namespace Marlin.View {
             /* ViewContainer listens to this signal takes care of updating appearance
              * If allow_mode_change is false View Container will not automagically
              * switch to icon view for icon folders (needed for Miller View) */
+            dir_view.change_directory (old_dir, directory);
+            initialize_directory ();
+        }
+
+        public override void initialize_directory () {
+            if (directory.is_loading ()) {
+                /* This can happen when restoring duplicate tabs */
+                debug ("Slot.initialize_directory () called when directory already loading - ignoring");
+                return;
+            }
+            /* view and slot are unfrozen when done loading signal received */
+            is_frozen = true;
             directory.init ();
         }
 
@@ -297,33 +323,30 @@ namespace Marlin.View {
                     break;
             }
 
-            if (mode != Marlin.ViewMode.MILLER_COLUMNS)
+            if (mode != Marlin.ViewMode.MILLER_COLUMNS) {
                 content_box.pack_start (dir_view, true, true, 0);
-
-            set_view_updates_frozen (true);
-        }
-
-        public void set_view_updates_frozen (bool freeze) {
-            dir_view.set_updates_frozen (freeze);
+            }
         }
 
         public override bool set_all_selected (bool select_all) {
             if (dir_view != null) {
-                if (select_all)
+                if (select_all) {
                     dir_view.select_all ();
-                else
+                } else {
                     dir_view.unselect_all ();
-
+                }
                 return true;
-            } else
+            } else {
                 return false;
+            }
         }
 
         public override unowned GLib.List<unowned GOF.File>? get_selected_files () {
-            if (dir_view != null)
+            if (dir_view != null) {
                 return dir_view.get_selected_files ();
-            else
+            } else {
                 return null;
+            }
         }
 
         public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
@@ -332,20 +355,23 @@ namespace Marlin.View {
         }
 
         public void select_gof_file (GOF.File gof) {
-            if (dir_view != null)
+            if (dir_view != null) {
                 dir_view.select_gof_file (gof);
+            }
         }
 
         public override void select_first_for_empty_selection () {
-            if (dir_view != null)
+            if (dir_view != null) {
                 dir_view.select_first_for_empty_selection ();
+            }
         }
 
         public override void set_active_state (bool set_active, bool animate = true) {
-            if (set_active)
+            if (set_active) {
                 active (true, animate);
-            else
+            } else {
                 inactive ();
+            }
         }
 
         public override unowned GOF.AbstractSlot? get_current_slot () {
@@ -357,40 +383,47 @@ namespace Marlin.View {
         }
 
         public override void grab_focus () {
-            if (dir_view != null)
+            if (dir_view != null) {
                 dir_view.grab_focus ();
+            }
         }
 
         public override void zoom_in () {
-            if (dir_view != null)
+            if (dir_view != null) {
                 dir_view.zoom_in ();
+            }
         }
 
         public override void zoom_out () {
-            if (dir_view != null)
+            if (dir_view != null) {
                 dir_view.zoom_out ();
+            }
         }
 
         public override void zoom_normal () {
-            if (dir_view != null)
+            if (dir_view != null) {
                 dir_view.zoom_normal ();
+            }
         }
 
         public override void cancel () {
             cancel_timeouts ();
 
-            if (directory != null)
+            if (directory != null) {
                 directory.cancel ();
+            }
 
-            if (dir_view != null)
+            if (dir_view != null) {
                 dir_view.cancel ();
+            }
         }
 
         public override void close () {
             cancel ();
 
-            if (directory != null)
+            if (directory != null) {
                 disconnect_dir_signals ();
+            }
 
             if (dir_view != null) {
                 dir_view.close ();
@@ -402,11 +435,6 @@ namespace Marlin.View {
             if (directory != null) {
                 directory.update_files ();
             }
-        }
-
-        public override void set_frozen_state (bool freeze) {
-            set_view_updates_frozen (freeze);
-            frozen_changed (freeze);
         }
 
         public override FileInfo? lookup_file_info (GLib.File loc) {

@@ -7,20 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-30 06:25+0000\n"
-"Last-Translator: Ryo Nakano <Unknown>\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2016-12-28 04:50+0000\n"
+"Last-Translator: Jun Takeda <takeda.jun@gmail.com>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-08-31 06:13+0000\n"
-"X-Generator: Launchpad (build 18179)\n"
-
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr "クリップボード上に貼り付けるものがありません"
+"X-Launchpad-Export-Date: 2017-01-26 06:10+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -141,15 +137,6 @@ msgstr "このパスワードを記憶する (_R)"
 msgid "Operation cancelled"
 msgstr "操作はキャンセルされました"
 
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "\"%s\" があった元の場所を特定できませんでした "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "ゴミ箱からアイテムを復元できません"
-
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
@@ -236,7 +223,7 @@ msgstr "元のファイル"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:518
+#: ../src/Dialogs/PropertiesWindow.vala:484
 msgid "Size:"
 msgstr "サイズ:"
 
@@ -244,7 +231,7 @@ msgstr "サイズ:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:525
+#: ../src/Dialogs/PropertiesWindow.vala:491
 msgid "Type:"
 msgstr "種類:"
 
@@ -294,33 +281,37 @@ msgstr "置き換え"
 msgid "File conflict"
 msgstr "ファイルの重複"
 
-#: ../libcore/gof-file.c:366
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
+msgid "Inaccessible"
+msgstr "アクセスできません"
+
+#: ../libcore/gof-file.c:379
 #, c-format
 msgid "link to %s"
 msgstr "%s へのリンク"
 
-#: ../libcore/gof-file.c:1914
+#: ../libcore/gof-file.c:1953
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "デスクトップファイル \"%s\" を解析できませんでした"
 
-#: ../libcore/gof-file.c:1951
+#: ../libcore/gof-file.c:1990
 msgid "No Exec field specified"
 msgstr "Exec フィールドが指定されていません"
 
-#: ../libcore/gof-file.c:1970
+#: ../libcore/gof-file.c:2009
 msgid "No URL field specified"
 msgstr "URL フィールドが指定されていません"
 
-#: ../libcore/gof-file.c:1976
+#: ../libcore/gof-file.c:2015
 msgid "Invalid desktop file"
 msgstr "不正なデスクトップファイル"
 
-#: ../libcore/gof-file.c:2271
+#: ../libcore/gof-file.c:2310
 msgid "Slashes are not allowed in filenames"
 msgstr "ファイル名にスラッシュは使えません"
 
-#: ../libcore/gof-file.c:2291
+#: ../libcore/gof-file.c:2330
 msgid "Toplevel files cannot be renamed"
 msgstr "トップレベルのファイル名は変更できません"
 
@@ -526,7 +517,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "このマウントされたドライブ上のゴミ箱にあるすべてのアイテムは、完全に削除されます。"
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1487
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
 msgid "Empty _Trash"
 msgstr "ゴミ箱を空にする (_T)"
 
@@ -575,13 +566,13 @@ msgstr "フォルダー \"%B\" 内のファイルを参照する権限がない�
 
 #: ../libcore/marlin-file-operations.c:1613
 #: ../libcore/marlin-file-operations.c:2732
-#: ../libcore/marlin-file-operations.c:3726
+#: ../libcore/marlin-file-operations.c:3727
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "フォルダー \"%B\" 内のファイルについて情報を取得する際にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:1622
-#: ../libcore/marlin-file-operations.c:3735
+#: ../libcore/marlin-file-operations.c:3736
 msgid "_Skip files"
 msgstr "ファイルをスキップ (_S)"
 
@@ -593,7 +584,7 @@ msgstr "フォルダー \"%B\" を参照する権限がないためフォルダ�
 
 #: ../libcore/marlin-file-operations.c:1646
 #: ../libcore/marlin-file-operations.c:2771
-#: ../libcore/marlin-file-operations.c:3771
+#: ../libcore/marlin-file-operations.c:3772
 msgid "There was an error reading the folder \"%B\"."
 msgstr "フォルダー \"%B\" を読み込む際にエラーが発生しました。"
 
@@ -727,15 +718,15 @@ msgid_plural "Preparing to trash %'d files"
 msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備中"
 
 #: ../libcore/marlin-file-operations.c:2669
-#: ../libcore/marlin-file-operations.c:3586
-#: ../libcore/marlin-file-operations.c:3718
-#: ../libcore/marlin-file-operations.c:3763
+#: ../libcore/marlin-file-operations.c:3587
+#: ../libcore/marlin-file-operations.c:3719
+#: ../libcore/marlin-file-operations.c:3764
 msgid "Error while copying."
 msgstr "コピー中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:2671
-#: ../libcore/marlin-file-operations.c:3716
-#: ../libcore/marlin-file-operations.c:3761
+#: ../libcore/marlin-file-operations.c:3717
+#: ../libcore/marlin-file-operations.c:3762
 msgid "Error while moving."
 msgstr "移動中にエラーが発生しました。"
 
@@ -851,192 +842,192 @@ msgstr "%S / %S"
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
 #. / "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:3211
+#: ../libcore/marlin-file-operations.c:3212
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S / %S — 残り %T (%S/秒)"
 
-#: ../libcore/marlin-file-operations.c:3590
+#: ../libcore/marlin-file-operations.c:3591
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr "フォルダー \"%B\" をコピー先に作成する権限がないためコピーできません。"
 
-#: ../libcore/marlin-file-operations.c:3593
+#: ../libcore/marlin-file-operations.c:3594
 msgid "There was an error creating the folder \"%B\"."
 msgstr "フォルダー \"%B\" を作成する際にエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:3723
+#: ../libcore/marlin-file-operations.c:3724
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr "フォルダー \"%B\" 内のファイルを参照する権限がないためコピーできません。"
 
-#: ../libcore/marlin-file-operations.c:3768
+#: ../libcore/marlin-file-operations.c:3769
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "フォルダー \"%B\" を参照する権限がないためコピーできません。"
 
-#: ../libcore/marlin-file-operations.c:3813
-#: ../libcore/marlin-file-operations.c:4519
+#: ../libcore/marlin-file-operations.c:3814
+#: ../libcore/marlin-file-operations.c:4520
 msgid "Error while moving \"%B\"."
 msgstr "\"%B\" の移動中にエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:3814
+#: ../libcore/marlin-file-operations.c:3815
 msgid "Could not remove the source folder."
 msgstr "転送元のフォルダを削除できませんでした。"
 
-#: ../libcore/marlin-file-operations.c:3899
-#: ../libcore/marlin-file-operations.c:3940
-#: ../libcore/marlin-file-operations.c:4521
+#: ../libcore/marlin-file-operations.c:3900
+#: ../libcore/marlin-file-operations.c:3941
+#: ../libcore/marlin-file-operations.c:4522
 msgid "Error while copying \"%B\"."
 msgstr "\"%B\" のコピー中にエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:3900
+#: ../libcore/marlin-file-operations.c:3901
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "既に存在しているフォルダ %F からファイルを削除できませんでした。"
 
-#: ../libcore/marlin-file-operations.c:3941
+#: ../libcore/marlin-file-operations.c:3942
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "すでに存在しているファイル %F を削除できませんでした。"
 
-#: ../libcore/marlin-file-operations.c:4271
-#: ../libcore/marlin-file-operations.c:4947
+#: ../libcore/marlin-file-operations.c:4272
+#: ../libcore/marlin-file-operations.c:4948
 msgid "You cannot move a folder into itself."
 msgstr "フォルダを自身の中に移動することはできません。"
 
-#: ../libcore/marlin-file-operations.c:4272
-#: ../libcore/marlin-file-operations.c:4948
+#: ../libcore/marlin-file-operations.c:4273
+#: ../libcore/marlin-file-operations.c:4949
 msgid "You cannot copy a folder into itself."
 msgstr "フォルダーを自身の中にコピーすることはできません。"
 
-#: ../libcore/marlin-file-operations.c:4273
-#: ../libcore/marlin-file-operations.c:4949
+#: ../libcore/marlin-file-operations.c:4274
+#: ../libcore/marlin-file-operations.c:4950
 msgid "The destination folder is inside the source folder."
 msgstr "転送先のフォルダーが転送元のフォルダーの中にあります。"
 
-#: ../libcore/marlin-file-operations.c:4304
+#: ../libcore/marlin-file-operations.c:4305
 msgid "You cannot move a file over itself."
 msgstr "ファイルを自身の上に移動することはできません。"
 
-#: ../libcore/marlin-file-operations.c:4305
+#: ../libcore/marlin-file-operations.c:4306
 msgid "You cannot copy a file over itself."
 msgstr "ファイルを自身の上にコピーすることはできません。"
 
-#: ../libcore/marlin-file-operations.c:4306
+#: ../libcore/marlin-file-operations.c:4307
 msgid "The source file would be overwritten by the destination."
 msgstr "転送元のファイルは転送先によって上書きされます。"
 
-#: ../libcore/marlin-file-operations.c:4523
+#: ../libcore/marlin-file-operations.c:4524
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "%F の中に存在する同名のファイルを削除できませんでした。"
 
-#: ../libcore/marlin-file-operations.c:4593
+#: ../libcore/marlin-file-operations.c:4594
 msgid "Cannot copy \"%B\" here."
 msgstr "\"%B\"をここにはコピーできません。"
 
-#: ../libcore/marlin-file-operations.c:4594
+#: ../libcore/marlin-file-operations.c:4595
 msgid "There was an error copying the file into %B."
 msgstr "%Bへのファイルコピーでエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:4821
+#: ../libcore/marlin-file-operations.c:4822
 msgid "Copying Files"
 msgstr "ファイルをコピー中"
 
-#: ../libcore/marlin-file-operations.c:4847
+#: ../libcore/marlin-file-operations.c:4848
 msgid "Preparing to move to \"%B\""
 msgstr "\"%B\" へ移動する準備中..."
 
-#: ../libcore/marlin-file-operations.c:4859
+#: ../libcore/marlin-file-operations.c:4860
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "%'d 個のファイルを移動する準備中..."
 
-#: ../libcore/marlin-file-operations.c:5107
+#: ../libcore/marlin-file-operations.c:5108
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr "\"%F\" の移動中にエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:5108
+#: ../libcore/marlin-file-operations.c:5109
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "%F 内にファイルを移動する際にエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:5370
+#: ../libcore/marlin-file-operations.c:5371
 msgid "Moving Files"
 msgstr "ファイルを移動中"
 
-#: ../libcore/marlin-file-operations.c:5399
+#: ../libcore/marlin-file-operations.c:5400
 msgid "Creating links in \"%B\""
 msgstr "\"%B\" 内でリンクを作成中"
 
-#: ../libcore/marlin-file-operations.c:5410
+#: ../libcore/marlin-file-operations.c:5411
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "%'d 個のファイルへのリンクを作成中"
 
-#: ../libcore/marlin-file-operations.c:5551
+#: ../libcore/marlin-file-operations.c:5552
 msgid "Error while creating link to %B."
 msgstr "%B へのリンク作成中にエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:5553
+#: ../libcore/marlin-file-operations.c:5554
 msgid "Symbolic links only supported for local files"
 msgstr "シンボリックリンクはローカルファイルでのみサポートされています。"
 
-#: ../libcore/marlin-file-operations.c:5556
+#: ../libcore/marlin-file-operations.c:5557
 msgid "The target doesn't support symbolic links."
 msgstr "リンクの作成先はシンボリックリンクをサポートしていません。"
 
-#: ../libcore/marlin-file-operations.c:5559
+#: ../libcore/marlin-file-operations.c:5560
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "%F 内へシンボリックリンクを作成している際にエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:5887
-#: ../libcore/marlin-file-operations.c:5890
+#: ../libcore/marlin-file-operations.c:5888
+#: ../libcore/marlin-file-operations.c:5891
 msgid "Setting permissions"
 msgstr "パーミッションを設定中"
 
-#: ../libcore/marlin-file-operations.c:6002
+#: ../libcore/marlin-file-operations.c:6003
 msgid "Cannot copy into trash."
 msgstr "ゴミ箱にコピーできません。"
 
-#: ../libcore/marlin-file-operations.c:6003
+#: ../libcore/marlin-file-operations.c:6004
 msgid "It is not permitted to copy files into the trash"
 msgstr "ゴミ箱にファイルをコピーすることはできません。"
 
-#: ../libcore/marlin-file-operations.c:6144
+#: ../libcore/marlin-file-operations.c:6145
 msgid "untitled folder"
 msgstr "新しいフォルダー"
 
-#: ../libcore/marlin-file-operations.c:6152
+#: ../libcore/marlin-file-operations.c:6153
 msgid "new file"
 msgstr "新しいファイル"
 
-#: ../libcore/marlin-file-operations.c:6323
+#: ../libcore/marlin-file-operations.c:6324
 msgid "Error while creating directory %B."
 msgstr "フォルダー %B の作成中にエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:6325
+#: ../libcore/marlin-file-operations.c:6326
 msgid "Error while creating file %B."
 msgstr "ファイル %B の作成中にエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:6327
+#: ../libcore/marlin-file-operations.c:6328
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "%F 内にフォルダーを作成する際にエラーが発生しました。"
 
-#: ../libcore/marlin-file-operations.c:6649
+#: ../libcore/marlin-file-operations.c:6650
 msgid "Emptying the trash"
 msgstr "ゴミ箱を空にしています"
 
-#: ../libcore/marlin-file-operations.c:6661
+#: ../libcore/marlin-file-operations.c:6662
 msgid "Emptying Trash"
 msgstr "ゴミ箱を空にしています"
 
@@ -1394,11 +1385,11 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "%d 個のアイテムの所有者変更をやり直す"
 
-#: ../libcore/eel-fcts.c:85
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
 msgid "Today at %-I:%M %p"
 msgstr "今日 %p %I:%M"
 
-#: ../libcore/eel-fcts.c:89
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
 msgid "Yesterday at %-I:%M %p"
 msgstr "昨日 %p %I:%M"
 
@@ -1415,142 +1406,130 @@ msgstr "%Y/%m/%d %A %p %I:%M"
 msgid "Preparing"
 msgstr "準備中"
 
-#: ../filechooser-module/FileChooserDialog.vala:69
-#: ../libwidgets/Chrome/TopMenu.vala:51
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
 msgstr "前へ戻る"
 
-#: ../filechooser-module/FileChooserDialog.vala:73
-#: ../libwidgets/Chrome/TopMenu.vala:55
+#: ../filechooser-module/FileChooserDialog.vala:74
+#: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "次へ進む"
 
-#: ../src/View/Window.vala:204
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
 msgstr "ファイルはデフォルトファイルマネージャーになっていません。"
 
-#: ../src/View/Window.vala:210
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
 msgstr "デフォルトに設定"
 
-#: ../src/View/Window.vala:216
+#: ../src/View/Window.vala:219
 msgid "Ignore"
 msgstr "無視する"
 
-#: ../src/View/Sidebar.vala:472
+#: ../src/View/Sidebar.vala:481
 msgid "Personal"
 msgstr "パーソナル"
 
-#: ../src/View/Sidebar.vala:473
+#: ../src/View/Sidebar.vala:482
 msgid "Your common places and bookmarks"
 msgstr "一般的な場所とブックマーク"
 
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:331
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
 msgid "Home"
 msgstr "ホーム"
 
-#: ../src/View/Sidebar.vala:492
+#: ../src/View/Sidebar.vala:501
 msgid "Open your personal folder"
 msgstr "ユーザーのホームフォルダを開く"
 
-#: ../src/View/Sidebar.vala:507
+#: ../src/View/Sidebar.vala:516
 msgid "View the list of recently used files"
 msgstr "最近使用したファイルの一覧を表示"
 
-#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:90
+#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
 msgid "Trash"
 msgstr "ゴミ箱"
 
-#: ../src/View/Sidebar.vala:535
+#: ../src/View/Sidebar.vala:544
 msgid "Open the Trash"
 msgstr "ゴミ箱を開く"
 
-#: ../src/View/Sidebar.vala:539
+#: ../src/View/Sidebar.vala:548
 msgid "Devices"
 msgstr "デバイス"
 
-#: ../src/View/Sidebar.vala:540
+#: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
 msgstr "ローカルのディスクドライブと接続されたデバイス"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
-#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
+#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "ファイルシステム"
 
-#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:87
+#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
 msgstr "ネットワーク"
 
-#: ../src/View/Sidebar.vala:665
+#: ../src/View/Sidebar.vala:674
 msgid "Your network places"
 msgstr "ネットワーク上の場所"
 
-#: ../src/View/Sidebar.vala:697
+#: ../src/View/Sidebar.vala:706
 msgid "Entire Network"
 msgstr "ネットワーク全体"
 
-#: ../src/View/Sidebar.vala:704
+#: ../src/View/Sidebar.vala:713
 msgid "Browse the contents of the network"
 msgstr "ネットワークの内容を表示"
 
-#: ../src/View/Sidebar.vala:830
+#: ../src/View/Sidebar.vala:845
 msgid "(%s Free of %s)"
 msgstr "( %s 空き / %s )"
 
-#: ../src/View/Sidebar.vala:1325
+#: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
 msgstr "%s を起動できません"
 
-#: ../src/View/Sidebar.vala:1429
+#: ../src/View/Sidebar.vala:1445
 msgid "Open"
 msgstr "開く"
 
-#: ../src/View/Sidebar.vala:1437
+#: ../src/View/Sidebar.vala:1453
 msgid "Open in New _Tab"
 msgstr "新しいタブで開く (_T)"
 
-#: ../src/View/Sidebar.vala:1443
+#: ../src/View/Sidebar.vala:1459
 msgid "Open in New _Window"
 msgstr "新しいウィンドウで開く (_W)"
 
-#: ../src/View/Sidebar.vala:1451
+#: ../src/View/Sidebar.vala:1467
 msgid "Remove"
 msgstr "削除"
 
-#: ../src/View/Sidebar.vala:1459 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "名前の変更"
 
-#: ../src/View/Sidebar.vala:1468
+#: ../src/View/Sidebar.vala:1484
 msgid "_Mount"
 msgstr "マウント (_M)"
 
-#: ../src/View/Sidebar.vala:1474
+#: ../src/View/Sidebar.vala:1490
 msgid "_Unmount"
 msgstr "アンマウント (_U)"
 
-#: ../src/View/Sidebar.vala:1480
+#: ../src/View/Sidebar.vala:1496
 msgid "_Eject"
 msgstr "取り出し (_E)"
 
-#: ../src/View/Sidebar.vala:1494 ../src/View/PropertiesWindow.vala:130
+#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
 msgstr "プロパティ"
-
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "ディスクのプロパティ"
-
-#: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:597
-msgid "Location:"
-msgstr "場所:"
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "フォーマット:"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
@@ -1568,7 +1547,7 @@ msgstr "形式"
 msgid "Modified"
 msgstr "変更日時"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
 msgid "This Folder Does Not Exist"
 msgstr "このフォルダーは存在しません"
 
@@ -1594,366 +1573,240 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/AbstractPropertiesDialog.vala:48
-msgid "Info"
-msgstr "情報"
-
-#: ../src/View/AbstractPropertiesDialog.vala:57
-msgid "General"
-msgstr "一般"
-
-#: ../src/View/AbstractPropertiesDialog.vala:76
-msgid "Close"
-msgstr "閉じる"
-
-#: ../src/View/AbstractPropertiesDialog.vala:138
-msgid "Device Usage"
-msgstr "使用デバイス"
-
-#: ../src/View/AbstractPropertiesDialog.vala:154
-msgid "Capacity:"
-msgstr "容量:"
-
-#: ../src/View/AbstractPropertiesDialog.vala:155
-#: ../src/View/AbstractPropertiesDialog.vala:158
-#: ../src/View/AbstractPropertiesDialog.vala:161
-#: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
-msgid "Unknown"
-msgstr "不明"
-
-#: ../src/View/AbstractPropertiesDialog.vala:157
-msgid "Available:"
-msgstr "利用可能："
-
-#: ../src/View/AbstractPropertiesDialog.vala:160
-msgid "Used:"
-msgstr "使用済み:"
-
-#: ../src/View/AbstractDirectoryView.vala:561
+#: ../src/View/AbstractDirectoryView.vala:550
 msgid "Failed to preview"
 msgstr "プレビューに失敗しました"
 
-#: ../src/View/AbstractDirectoryView.vala:820
+#: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
 msgstr "このファイルを開けません"
 
-#: ../src/View/AbstractDirectoryView.vala:833
+#: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
 msgstr "ファイルタイプを識別できません"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1549
 msgid "Cannot drop this file"
 msgstr "このファイルを削除できません"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1549
 msgid "Invalid file name provided"
 msgstr "無効なファイル名が入力されました"
 
-#: ../src/View/AbstractDirectoryView.vala:2012
+#: ../src/View/AbstractDirectoryView.vala:2004
 msgid "Invalid"
 msgstr "不正"
 
-#: ../src/View/AbstractDirectoryView.vala:2018
+#: ../src/View/AbstractDirectoryView.vala:2010
 msgid "Run"
 msgstr "実行"
 
-#: ../src/View/AbstractDirectoryView.vala:2023
+#: ../src/View/AbstractDirectoryView.vala:2015
 msgid "Open in %s"
 msgstr "%s で開く"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2025
 msgid "Open in"
 msgstr "指定した方法で開く"
 
-#: ../src/View/AbstractDirectoryView.vala:2035
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
+#: ../src/View/AbstractDirectoryView.vala:2027
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open with"
 msgstr "他のアプリケーションで開く"
 
-#: ../src/View/AbstractDirectoryView.vala:2095
+#: ../src/View/AbstractDirectoryView.vala:2087
 msgid "Other Application"
 msgstr "他のアプリケーション"
 
-#: ../src/View/AbstractDirectoryView.vala:2353
+#: ../src/View/AbstractDirectoryView.vala:2348
 msgid "Untitled %s"
 msgstr "無題 %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2788
+#: ../src/View/AbstractDirectoryView.vala:2670
+#: ../src/View/AbstractDirectoryView.vala:2853
+msgid "Cannot remove files from here"
+msgstr "ここからファイルを移動できません"
+
+#: ../src/View/AbstractDirectoryView.vala:2671
+#: ../src/View/AbstractDirectoryView.vala:2841
+#: ../src/View/AbstractDirectoryView.vala:2854
+msgid "You do not have permission to change this location"
+msgstr "この場所を変更するパーミッションがありません"
+
+#: ../src/View/AbstractDirectoryView.vala:2819
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません。"
 
-#: ../src/View/AbstractDirectoryView.vala:2789
+#: ../src/View/AbstractDirectoryView.vala:2820
 msgid "Cutting the selection instead"
 msgstr "代わりに選択を切り取り"
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1301
+#: ../src/View/AbstractDirectoryView.vala:2840
+msgid "Cannot paste files here"
+msgstr "ここにファイルをペーストできません"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "(as Administrator)"
+msgstr "(管理者)"
+
+#: ../src/View/ViewContainer.vala:372
+msgid "You cannot create a folder here."
+msgstr "ここにフォルダーを作成できません。"
+
+#: ../src/View/ViewContainer.vala:374
+msgid "The network is unavailable"
+msgstr "ネットワークが利用できません"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "A working network is needed to reach this folder"
+msgstr "このフォルダに到達するためにはネットワークが必要です"
+
+#: ../src/View/ViewContainer.vala:377
+msgid "This Folder Does Not Belong to You"
+msgstr "このフォルダーはあなたのものではありません"
+
+#: ../src/View/ViewContainer.vala:378
+msgid "You don't have permission to view this folder."
+msgstr "このフォルダを参照する権限がありません。"
+
+#: ../src/View/ViewContainer.vala:380
+msgid "Unable to Mount Folder"
+msgstr "フォルダのマウントができません"
+
+#: ../src/View/ViewContainer.vala:381
+msgid "Could not connect to the server for this folder."
+msgstr "このフォルダーのサーバーに接続できませんでした。"
+
+#: ../src/View/ViewContainer.vala:383
+msgid "Unable to Show Folder"
+msgstr "フォルダーを表示することができません"
+
+#: ../src/View/ViewContainer.vala:384
+msgid "The server for this folder could not be located."
+msgstr "このフォルダのサーバーが見つかりませんでした。"
+
+#: ../src/View/ViewContainer.vala:394
+msgid "File not Found"
+msgstr "ファイルが見つかりません"
+
+#: ../src/View/ViewContainer.vala:395
+msgid "The file selected no longer exists."
+msgstr "選択したファイルは存在しません。"
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "このフォルダーは空です"
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "ゴミ箱は空です"
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "最近使用したファイルはありません"
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "アクセスが拒否されました"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+msgid "Open in New Tab"
+msgstr "新しいタブを開く"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Window"
+msgstr "新しいウィンドウを開く"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+msgid "Open in Other Application…"
+msgstr "他のアプリケーションで開く..."
+
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "このフォルダーを再読み込み"
+
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
+msgid "Enter search term or path"
+msgstr "検索用語かパスを入力してください"
+
+#: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
 msgstr "%u フォルダ"
 
-#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
+#: ../src/View/Widgets/OverlayBar.vala:232
+#: ../src/View/Widgets/OverlayBar.vala:240
 msgid " and %u other item (%s) selected"
 msgstr " と 他の %u アイテム選択 (%s)"
 
-#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
+#: ../src/View/Widgets/OverlayBar.vala:233
+#: ../src/View/Widgets/OverlayBar.vala:241
 msgid " and %u other items (%s) selected"
 msgstr " と 他の %u アイテム選択 (%s)"
 
-#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
+#: ../src/View/Widgets/OverlayBar.vala:236
+#: ../src/View/Widgets/OverlayBar.vala:244
 msgid " selected"
 msgstr " 選択"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1272
-#: ../src/View/PropertiesWindow.vala:1311
+#: ../src/View/Widgets/OverlayBar.vala:238
+#: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
-msgstr "%u フォルダ"
+msgid_plural "%u folders"
+msgstr[0] "%u フォルダー"
 
-#: ../src/View/OverlayBar.vala:231
+#: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
 msgstr "%u アイテム選択 (%s)"
 
 #. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/OverlayBar.vala:272
+#: ../src/View/Widgets/OverlayBar.vala:287
 msgid "%u sub-folder, "
 msgstr "%u サブフォルダ、 "
 
-#: ../src/View/OverlayBar.vala:272
+#: ../src/View/Widgets/OverlayBar.vala:287
 msgid "%u sub-folders, "
 msgstr "%u サブフォルダ、 "
 
 #. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/OverlayBar.vala:278
+#: ../src/View/Widgets/OverlayBar.vala:293
 msgid "%u file, "
 msgstr "%u ファイル、 "
 
-#: ../src/View/OverlayBar.vala:278
+#: ../src/View/Widgets/OverlayBar.vala:293
 msgid "%u files, "
 msgstr "%u 個のファイル、 "
 
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/OverlayBar.vala:288
+#: ../src/View/Widgets/OverlayBar.vala:303
 msgid "%s approx."
 msgstr "約 %s"
 
 #. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/OverlayBar.vala:291
+#: ../src/View/Widgets/OverlayBar.vala:306
 msgid "unknown size"
 msgstr "不明サイズ"
 
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/OverlayBar.vala:295
+#: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u file not readable"
 msgstr "%u 個のファイルが読み込めません"
 
-#: ../src/View/OverlayBar.vala:295
+#: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u files not readable"
 msgstr "%u 個のファイルが読み込めません"
 
-#: ../src/View/PropertiesWindow.vala:202
-msgid "Permissions"
-msgstr "パーミッション"
-
-#: ../src/View/PropertiesWindow.vala:229
-msgid "Preview"
-msgstr "プレビュー"
-
-#: ../src/View/PropertiesWindow.vala:245
-msgid "Actual Size Could Be Larger"
-msgstr "実際のサイズはより大きい可能性があります"
-
-#: ../src/View/PropertiesWindow.vala:245
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i 個のファイルがアクセス許可かその他のエラーにより読み込めません。"
-
-#: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
-msgid "unknown"
-msgstr "不明"
-
-#: ../src/View/PropertiesWindow.vala:461
-msgid "Loading…"
-msgstr "読み込み中..."
-
-#: ../src/View/PropertiesWindow.vala:492
-msgid "Could not be determined"
-msgstr "決定することができませんでした"
-
-#: ../src/View/PropertiesWindow.vala:528
-msgid "Contains:"
-msgstr "含む:"
-
-#: ../src/View/PropertiesWindow.vala:544
-msgid "Created:"
-msgstr "作成日時:"
-
-#: ../src/View/PropertiesWindow.vala:552
-msgid "Modified:"
-msgstr "更新日時:"
-
-#: ../src/View/PropertiesWindow.vala:561
-msgid "Last Access:"
-msgstr "最終アクセス日時:"
-
-#: ../src/View/PropertiesWindow.vala:572
-msgid "Deleted:"
-msgstr "削除："
-
-#: ../src/View/PropertiesWindow.vala:582
-msgid "Mimetype:"
-msgstr "Mime-Type:"
-
-#: ../src/View/PropertiesWindow.vala:589
-msgid "Resolution:"
-msgstr "画面解像度:"
-
-#: ../src/View/PropertiesWindow.vala:607
-msgid "Target:"
-msgstr "ターゲット:"
-
-#: ../src/View/PropertiesWindow.vala:615
-msgid "Original Location:"
-msgstr "元の場所:"
-
-#: ../src/View/PropertiesWindow.vala:638
-msgid "Other Application…"
-msgstr "他のアプリケーション..."
-
-#: ../src/View/PropertiesWindow.vala:658
-msgid "Open with:"
-msgstr "他のアプリケーションで開く:"
-
-#: ../src/View/PropertiesWindow.vala:752
+#: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
 msgstr "読み込み"
 
-#: ../src/View/PropertiesWindow.vala:756
+#: ../src/View/Widgets/PermissionButton.vala:42
 msgid "Write"
 msgstr "書き込み"
 
-#: ../src/View/PropertiesWindow.vala:760
+#: ../src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
 msgstr "実行"
-
-#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:983
-msgid "Owner:"
-msgstr "所有者:"
-
-#: ../src/View/PropertiesWindow.vala:973 ../src/View/PropertiesWindow.vala:987
-msgid "Group:"
-msgstr "グループ:"
-
-#: ../src/View/PropertiesWindow.vala:991
-msgid "Everyone:"
-msgstr "全員:"
-
-#: ../src/View/PropertiesWindow.vala:1257
-msgid "%u subfolders and %u files"
-msgstr "%u 個のサブフォルダー %u 個のファイル"
-
-#: ../src/View/PropertiesWindow.vala:1259
-msgid "%u subfolders and %u file"
-msgstr "%u サブフォルダー %u ファイル"
-
-#: ../src/View/PropertiesWindow.vala:1262
-msgid "%u subfolders"
-msgstr "%u サブフォルダー"
-
-#: ../src/View/PropertiesWindow.vala:1267
-msgid "%u subfolder and %u files"
-msgstr "%u 個のサブフォルダー %u 個のファイル"
-
-#: ../src/View/PropertiesWindow.vala:1269
-msgid "%u subfolder and %u file"
-msgstr "%u サブフォルダー %u ファイル"
-
-#: ../src/View/PropertiesWindow.vala:1278
-#: ../src/View/PropertiesWindow.vala:1317
-msgid "%u files"
-msgstr "%u 個のファイル"
-
-#: ../src/View/PropertiesWindow.vala:1280
-#: ../src/View/PropertiesWindow.vala:1319
-msgid "%u file"
-msgstr "%u ファイル"
-
-#: ../src/View/PropertiesWindow.vala:1296
-msgid "%u selected items (%u folders and %u files)"
-msgstr "%u 個のアイテムを選択 ( %u 個のフォルダ %u 個のファイル)"
-
-#: ../src/View/PropertiesWindow.vala:1298
-msgid "%u selected items (%u folders and %u file)"
-msgstr "%u アイテム選択 ( %u フォルダ %u ファイル)"
-
-#: ../src/View/PropertiesWindow.vala:1306
-msgid "%u selected items (%u folder and %u files)"
-msgstr "%u 個のアイテムを選択 ( %u 個のフォルダ %u 個のファイル)"
-
-#: ../src/View/PropertiesWindow.vala:1308
-msgid "%u selected items (%u folder and %u file)"
-msgstr "%u アイテム選択 ( %u フォルダ %u ファイル)"
-
-#: ../src/View/ViewContainer.vala:342
-msgid "(as Administrator)"
-msgstr "(管理者)"
-
-#: ../src/View/ViewContainer.vala:356
-msgid "You cannot create a folder here."
-msgstr "ここにフォルダーを作成できません。"
-
-#: ../src/View/ViewContainer.vala:358
-msgid "The network is unavailable"
-msgstr "ネットワークが利用できません"
-
-#: ../src/View/ViewContainer.vala:359
-msgid "A working network is needed to reach this folder"
-msgstr "このフォルダに到達するためにはネットワークが必要です"
-
-#: ../src/View/ViewContainer.vala:361
-msgid "This Folder Does Not Belong to You"
-msgstr "このフォルダーはあなたのものではありません"
-
-#: ../src/View/ViewContainer.vala:362
-msgid "You don't have permission to view this folder."
-msgstr "このフォルダを参照する権限がありません。"
-
-#: ../src/View/ViewContainer.vala:364
-msgid "Unable to Mount Folder"
-msgstr "フォルダのマウントができません"
-
-#: ../src/View/ViewContainer.vala:365
-msgid "Could not connect to the server for this folder."
-msgstr "このフォルダーのサーバーに接続できませんでした。"
-
-#: ../src/View/ViewContainer.vala:367
-msgid "Unable show Folder"
-msgstr "フォルダーの表示に失敗"
-
-#: ../src/View/ViewContainer.vala:368
-msgid "The server for this folder could not be located."
-msgstr "このフォルダのサーバーが見つかりませんでした。"
-
-#: ../src/View/ViewContainer.vala:378
-msgid "File not Found"
-msgstr "ファイルが見つかりません"
-
-#: ../src/View/ViewContainer.vala:379
-msgid "The file selected no longer exists."
-msgstr "選択したファイルは存在しません。"
-
-#: ../src/View/Slot.vala:39
-msgid "This Folder Is Empty"
-msgstr "このフォルダーは空です"
-
-#: ../src/View/Slot.vala:40
-msgid "Trash Is Empty"
-msgstr "ゴミ箱は空です"
-
-#: ../src/View/Slot.vala:41
-msgid "There Are No Recent Files"
-msgstr "最近使用したファイルはありません"
-
-#: ../src/View/Slot.vala:42
-msgid "Access Denied"
-msgstr "アクセスが拒否されました"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
@@ -2017,30 +1870,209 @@ msgstr "ファイルについて (_F)"
 msgid "Files"
 msgstr "ファイル"
 
-#: ../src/ProgressUIHandler.vala:42
-msgid "File Manager Operations"
-msgstr "ファイルマネージャー操作"
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "複数のファイルタイプが選択されています"
 
-#: ../src/ProgressUIHandler.vala:153
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "これらすべてのファイルタイプを開くことができるアプリがありません"
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "ファイルを開くことに失敗しました"
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "URI を開くことに失敗しました"
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "このアプリでファイルまたは URI を開けません"
+
+#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
 msgid "File Operations"
 msgstr "ファイル操作"
 
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:207
+#: ../src/ProgressUIHandler.vala:190
 msgid "Completed %s"
 msgstr "%s の完了"
 
-#: ../src/ProgressUIHandler.vala:210
+#: ../src/ProgressUIHandler.vala:193
 msgid "All file operations have ended"
 msgstr "すべてのファイル操作が完了しました"
 
-#: ../src/ProgressUIHandler.vala:255
+#: ../src/ProgressUIHandler.vala:238
 msgid "Show Copy Dialog"
 msgstr "コピーダイアログを表示"
 
-#: ../src/ProgressUIHandler.vala:267
+#: ../src/ProgressUIHandler.vala:250
 msgid "Cancel All In-progress Actions"
 msgstr "進行しているすべてのアクションをキャンセル"
+
+#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
+msgid "There is nothing on the clipboard to paste"
+msgstr "クリップボード上に貼り付けるものがありません"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "デフォルトに設定"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "ディスクのプロパティ"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "場所:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "フォーマット:"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:49
+msgid "Info"
+msgstr "情報"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:58
+msgid "General"
+msgstr "一般"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:77
+msgid "Close"
+msgstr "閉じる"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:139
+msgid "Device Usage"
+msgstr "使用デバイス"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:155
+msgid "Capacity:"
+msgstr "容量:"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:162
+#: ../src/Dialogs/PropertiesWindow.vala:416
+#: ../src/Dialogs/PropertiesWindow.vala:452
+msgid "Unknown"
+msgstr "不明"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:158
+msgid "Available:"
+msgstr "利用可能："
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:161
+msgid "Used:"
+msgstr "使用済み:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:220
+msgid "Permissions"
+msgstr "パーミッション"
+
+#: ../src/Dialogs/PropertiesWindow.vala:241
+msgid "Actual Size Could Be Larger"
+msgstr "実際のサイズはより大きい可能性があります"
+
+#: ../src/Dialogs/PropertiesWindow.vala:241
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] "%i 個のファイルがパーミッションまたはその他のエラーにより読み込めません。"
+
+#: ../src/Dialogs/PropertiesWindow.vala:260
+#: ../src/Dialogs/PropertiesWindow.vala:279
+msgid "unknown"
+msgstr "不明"
+
+#: ../src/Dialogs/PropertiesWindow.vala:427
+msgid "Loading…"
+msgstr "読み込み中..."
+
+#: ../src/Dialogs/PropertiesWindow.vala:458
+msgid "Could not be determined"
+msgstr "決定することができませんでした"
+
+#: ../src/Dialogs/PropertiesWindow.vala:494
+msgid "Contains:"
+msgstr "含む:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:516
+msgid "Created:"
+msgstr "作成日時:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:525
+msgid "Modified:"
+msgstr "更新日時:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:536
+msgid "Deleted:"
+msgstr "削除："
+
+#: ../src/Dialogs/PropertiesWindow.vala:546
+msgid "Mimetype:"
+msgstr "Mime-Type:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:553
+msgid "Resolution:"
+msgstr "画面解像度:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:571
+msgid "Target:"
+msgstr "ターゲット:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:579
+msgid "Original Location:"
+msgstr "元の場所:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:602
+msgid "Other Application…"
+msgstr "他のアプリケーション..."
+
+#: ../src/Dialogs/PropertiesWindow.vala:622
+msgid "Open with:"
+msgstr "他のアプリケーションで開く:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:864
+#: ../src/Dialogs/PropertiesWindow.vala:874
+msgid "Owner:"
+msgstr "所有者:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:868
+#: ../src/Dialogs/PropertiesWindow.vala:877
+msgid "Group:"
+msgstr "グループ:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:880
+msgid "Everyone:"
+msgstr "全員:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:1140
+msgid "%u subfolder"
+msgid_plural "%u subfolders"
+msgstr[0] "%u サブフォルダー"
+
+#: ../src/Dialogs/PropertiesWindow.vala:1144
+#: ../src/Dialogs/PropertiesWindow.vala:1166
+msgid "%u file"
+msgid_plural "%u files"
+msgstr[0] "%u ファイル"
+
+#. /TRANSLATORS: folders, files
+#: ../src/Dialogs/PropertiesWindow.vala:1149
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../src/Dialogs/PropertiesWindow.vala:1170
+msgid "%u selected item"
+msgid_plural "%u selected items"
+msgstr[0] "%u 個の選択項目"
+
+#. /TRANSLATORS: total (folders, files)
+#: ../src/Dialogs/PropertiesWindow.vala:1172
+msgid "%s (%s, %s)"
+msgstr "%s (%s, %s)"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2062,40 +2094,31 @@ msgstr "ここへリンク"
 msgid "Cancel"
 msgstr "キャンセル"
 
-#: ../libcore/FileUtils.vala:259
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "\"%s\" があった元の場所を特定できませんでした "
+
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "ゴミ箱からアイテムを復元できません"
+
+#: ../libcore/FileUtils.vala:342
 msgid "Could not rename to '%s'"
 msgstr "'%s' へ名前を変更できません"
 
-#: ../libwidgets/View/BreadcrumbsEntry.vala:412
-msgid "Open in New Tab"
-msgstr "新しいタブを開く"
+#: ../libcore/FileUtils.vala:463
+msgid "%A at %-I:%M %p"
+msgstr "%A の %-I:%M %p"
 
-#: ../libwidgets/View/BreadcrumbsEntry.vala:419
-msgid "Open in New Window"
-msgstr "新しいウィンドウを開く"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:458
-msgid "Open in Other Application…"
-msgstr "他のアプリケーションで開く..."
-
-#: ../libwidgets/View/LocationBar.vala:171
-msgid "Reload this folder"
-msgstr "このフォルダーを再読み込み"
-
-#: ../libwidgets/View/LocationBar.vala:174
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
-msgid "Enter search term or path"
-msgstr "検索用語かパスを入力してください"
-
-#: ../libwidgets/View/SearchResults.vala:180
+#: ../libwidgets/View/SearchResults.vala:178
 msgid "In This Folder"
 msgstr "このフォルダー内"
 
-#: ../libwidgets/View/SearchResults.vala:182
+#: ../libwidgets/View/SearchResults.vala:180
 msgid "Bookmarks"
 msgstr "ブックマーク"
 
-#: ../libwidgets/View/SearchResults.vala:184
+#: ../libwidgets/View/SearchResults.vala:182
 msgid "Everywhere Else"
 msgstr "他のすべての場所"
 
@@ -2163,17 +2186,13 @@ msgstr "リスト表示"
 msgid "View in Columns"
 msgstr "カラム表示"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
 msgstr "%s へ移動"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:274
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Go to %s"
 msgstr "%s へ移動"
-
-#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
-msgid "Set as default"
-msgstr "デフォルトに設定"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

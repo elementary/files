@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -40,7 +40,7 @@ namespace FM {
                 GLib.Source.remove (double_click_timeout_id);
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
-                unfreeze_updates ();
+                is_frozen = false;
             }
         }
 
@@ -48,9 +48,10 @@ namespace FM {
             if (double_click_timeout_id != 0) {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
-                unfreeze_updates ();
-                if (should_activate) /* button already released */
+                is_frozen = false;
+                if (should_activate) { /* button already released */
                     activate_selected_items ();
+                }
             }
             return false;
         }
@@ -82,7 +83,6 @@ namespace FM {
             model.set_property ("has-child", false);
             base.create_view ();
             tree.show_expanders = false;
-
             return tree as Gtk.Widget;
         }
 
@@ -125,8 +125,9 @@ namespace FM {
 
             selected_folder = null;
 
-            if (!is_folder || !Preferences.settings.get_boolean ("single-click"))
+            if (!is_folder || !Preferences.settings.get_boolean ("single-click")) {
                 return base.handle_primary_button_click (event, path);
+            }
 
             selected_folder = file;
             bool result = true;
@@ -138,7 +139,7 @@ namespace FM {
                 else {
                     /*  ... store clicked folder and start double-click timeout */
                     awaiting_double_click = true;
-                    freeze_updates ();
+                    is_frozen = true;
                     double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
                         not_double_click (event, path);
                         return false;

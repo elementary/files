@@ -34,6 +34,20 @@ namespace Marlin.View {
         public GLib.List<Marlin.View.Slot> slot_list = null;
         public int total_width = 0;
 
+        public override bool is_frozen {
+            set {
+                if (current_slot != null) {
+                    current_slot.is_frozen = value;
+                }
+            }
+
+            get {
+                return current_slot == null || current_slot.is_frozen;
+            }
+
+            default = true;
+        }
+
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
             base.init ();
             this.ctab = ctab;
@@ -72,6 +86,8 @@ namespace Marlin.View {
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, Marlin.View.Slot? host = null, bool scroll = true, bool animate = true) {
             Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
+            /* Notify view container of path change - will set tab to working and change pathbar */
+            path_changed (false); /* DO not allow mode change when adding a location */
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
             total_width += new_slot.width;
 
@@ -287,15 +303,15 @@ namespace Marlin.View {
                 schedule_scroll_to_slot (slot, animate);
             }
 
-            if (this.current_slot == slot)
-                return;
+            if (this.current_slot != slot) {
+                slot_list.@foreach ((s) => {
+                    if (s != slot)
+                        s.inactive ();
+                });
 
-            slot_list.@foreach ((s) => {
-                if (s != slot)
-                    s.inactive ();
-            });
-
-            current_slot = slot;
+                current_slot = slot;
+            }
+            /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
         }
 
@@ -392,7 +408,7 @@ namespace Marlin.View {
                 var s = abstract_slot as Marlin.View.Slot;
                 if (s != null) {
                     s.frozen_changed.disconnect (on_slot_frozen_changed);
-                    s.set_view_updates_frozen (frozen);
+                    s.is_frozen = frozen;
                     s.frozen_changed.connect (on_slot_frozen_changed);
                 }
             });
@@ -518,6 +534,10 @@ namespace Marlin.View {
             ((Marlin.View.Slot)(current_slot)).grab_focus ();
         }
 
+        public override void initialize_directory () {
+            ((Marlin.View.Slot)(current_slot)).initialize_directory ();
+        }
+
         public override void reload (bool non_local_only = false) {
             ((Marlin.View.Slot)(current_slot)).reload (non_local_only);
         }
@@ -541,10 +561,6 @@ namespace Marlin.View {
 
         public override bool set_all_selected (bool all) {
             return ((Marlin.View.Slot)(current_slot)).set_all_selected (all);
-        }
-
-        public override void set_frozen_state (bool freeze) {
-            current_slot.set_frozen_state (freeze);
         }
 
         public override FileInfo? lookup_file_info (GLib.File loc) {

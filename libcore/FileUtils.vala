@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -51,7 +51,60 @@ namespace PF.FileUtils {
         return parent_path;
     }
 
-    public GLib.File? get_trashed_file_original_folder (GOF.File file) {
+    public void restore_files_from_trash (GLib.List<GOF.File> files, Gtk.Widget? widget) {
+        GLib.List<GOF.File>? unhandled_files = null;
+        var original_dirs_hash = get_trashed_files_original_directories (files, out unhandled_files);
+
+        foreach (GOF.File goffile in unhandled_files) {
+            var message = _("Could not determine original location of \"%s\" ").printf (goffile.get_display_name ());
+            Eel.show_warning_dialog (message, _("The item cannot be restored from trash"),
+                                     (widget is Gtk.Window) ? widget as Gtk.Window : null );
+        }
+
+        original_dirs_hash.foreach ((original_dir, dir_files) => {
+                Marlin.FileOperations.copy_move (dir_files,
+                                                 null,
+                                                 original_dir,
+                                                 Gdk.DragAction.MOVE,
+                                                 widget,
+                                                 null,
+                                                 null);
+        });
+    }
+
+    private GLib.HashTable<GLib.File, GLib.List<GLib.File>> get_trashed_files_original_directories (GLib.List<GOF.File> files, out GLib.List<GOF.File> unhandled_files) {
+        var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (File.hash, File.equal);
+        unhandled_files = null;
+
+        foreach (GOF.File goffile in files) {
+            /* Check it is a valid file (e.g. not a dummy row from list view) */
+            if (goffile == null || goffile.location == null) {
+                continue;
+            }
+
+            /* Check that file is in root of trash.  If not, do not try to restore
+             * (it will be restored with its parent anyway) */
+            if (Path.get_dirname (goffile.uri) == "trash:") {
+                /* We are in trash root */
+                var original_dir = get_trashed_file_original_folder (goffile);
+                if (original_dir != null) {
+                    unowned GLib.List<GLib.File>? dir_files = null;
+                    dir_files = directories.lookup (original_dir); /* get list of files being restored to this original dir */
+                    if (dir_files != null) {
+                        directories.steal (original_dir);
+                    }
+                    dir_files.prepend (goffile.location);
+                    directories.insert (original_dir, dir_files.copy ());
+                } else {
+                    unhandled_files.prepend (goffile);
+                }
+            }
+        }
+
+        return directories;
+   }
+
+    private GLib.File? get_trashed_file_original_folder (GOF.File file) {
         GLib.FileInfo? info = null;
         string? original_path = null;
 
@@ -301,6 +354,114 @@ namespace PF.FileUtils {
                 f (old_location, new_location, null);
             }
         });
+    }
+
+    public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr, string format = "locale") {
+        switch (attr) {
+            case FileAttribute.TIME_MODIFIED:
+            case FileAttribute.TIME_CREATED:
+            case FileAttribute.TIME_ACCESS:
+            case FileAttribute.TIME_CHANGED:
+                uint64 t = info.get_attribute_uint64 (attr);
+                if (t == 0) {
+                    return "";
+                }
+
+                DateTime dt = new DateTime.from_unix_local ((int64)t);
+
+                if (dt == null) {
+                    return "";
+                }
+
+                return get_formatted_date_time (dt, format);
+
+            case FileAttribute.TRASH_DELETION_DATE:
+                var deletion_date = info.get_attribute_string (attr);
+                var tv = TimeVal ();
+                if (deletion_date == null || !tv.from_iso8601 (deletion_date)) {
+                    return "";
+                }
+
+                DateTime dt = new DateTime.from_timeval_local (tv);
+
+                if (dt == null) {
+                    return "";
+                }
+
+                return get_formatted_date_time (dt, format);
+
+            default:
+                break;
+        }
+
+        return "";
+    }
+
+    public string get_formatted_date_time (DateTime dt, string format = "locale") {
+        switch (format) {
+            case "locale":
+                return dt.format ("%c");
+            case "ISO" :
+                return dt.format ("%Y-%m-%d %H:%M:%S");
+            default:
+                return get_informal_date_time (dt);
+        }
+    }
+
+    private string get_informal_date_time (DateTime dt) {
+        DateTime now = new DateTime.now_local ();
+        int now_year = now.get_year ();
+        int disp_year = dt.get_year ();
+
+        string default_date_format = Granite.DateTime.get_default_date_format (false, true, true);
+
+        if (disp_year < now_year) {  
+            return dt.format (default_date_format);
+        }
+
+        int now_day = now.get_day_of_year ();
+        int disp_day = dt.get_day_of_year ();
+
+        if (disp_day < now_day - 6) {
+            return dt.format (default_date_format);
+        }
+
+        int now_weekday = now.get_day_of_week ();
+        int disp_weekday = dt.get_day_of_week ();
+
+        switch (now_weekday - disp_weekday) {
+            case 0:
+            /* TRANSLATORS: This string determines the format and order in which the day and time
+             * are shown informally for a time that occurred today.
+             * %-I expands to the numeric hour in 12 hour clock.
+             * %M expands to the numeric minute.
+             * %p expands to "am" or "pm" according to the locale. 
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */ 
+                return dt.format (_("Today at %-I:%M %p"));
+            case 1:
+            /* TRANSLATORS: This string determines the format and order in which the day and time
+             * are shown informally for a time that occurred yesterday.
+             * %-I expands to the numeric hour in 12 hour clock.
+             * %M expands to the numeric minute.
+             * %p expands to "am" or "pm" according to the locale. 
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */ 
+                return dt.format (_("Yesterday at %-I:%M %p"));
+            default:
+            /* TRANSLATORS: This string determines the format and order in which the day and time
+             * are shown informally for a time that occurred in the past week.
+             * %-I expands to the numeric hour in 12 hour clock.
+             * %M expands to the numeric minute.
+             * %p expands to "am" or "pm" according to the locale.
+             * %A expands to the abbreviated name of the weekday according to the locale.   
+             * These components must not be altered, but their order may be changed to accord with
+             * the informal custom for the locale.
+             */ 
+                return dt.format (_("%A at %-I:%M %p"));
+        }
     }
 
     private bool can_browse_scheme (string scheme) {

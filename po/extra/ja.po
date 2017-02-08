@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-23 12:44+0000\n"
-"Last-Translator: Jun Takeda <takeda.jun@gmail.com>\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2017-01-25 09:52+0000\n"
+"Last-Translator: Watebox <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-08-24 05:36+0000\n"
-"X-Generator: Launchpad (build 18179)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:14+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 msgid "Files"
 msgstr "ファイル"
@@ -32,3 +32,36 @@ msgstr ""
 "ファイルのコピー、移動、名前の変更や整理するためのフォルダを簡単に使えます。リスト形式、グリッド形式、カラム形式の好みに関わらず、いつでもすぐにファイルを"
 "見つけることができます。ローカル、外部デバイスやFTP、SFTP、AFP、Webdav や Windows "
 "共有を問わず、すべてのファイルにアクセスしてください。"
+
+msgid "Fix appdata release dates"
+msgstr "リリース日のアプリデーターを修正"
+
+msgid "Improve file opening over Samba shares"
+msgstr "Samba 共有上でのファイルのオープンを向上"
+
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "ゴミ箱からアイテムを戻すときのクラッシュを修正"
+
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr "コンテキストメニューにおける切り取り・コピー・貼り付けの感度を向上"
+
+msgid "Translation updates"
+msgstr "翻訳のアップデート"
+
+msgid "Minor bug fixes"
+msgstr "マイナーなバグ修正"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Ctrl+F で検索機能に貼り付ける"
+
+msgid "Improved translation support"
+msgstr "改善された翻訳"
+
+msgid "Various crash fixes"
+msgstr "様々なクラッシュを修正"
+
+msgid "New translations"
+msgstr "新しい翻訳"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""

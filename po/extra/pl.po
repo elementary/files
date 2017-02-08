@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-14 20:03+0000\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2017-01-27 10:14+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-08-15 05:35+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
+"X-Launchpad-Export-Date: 2017-01-28 05:50+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 msgid "Files"
 msgstr "Pliki"
@@ -35,3 +35,36 @@ msgstr ""
 "wszystkich Twoich plików, zarówno lokalnie, jak i na urządzeniach "
 "zewnętrznych lub zdalnie używając FTP, SFTP, AFP, Webdav, czy udziałów "
 "systemu Windows."
+
+msgid "Fix appdata release dates"
+msgstr "Poprawione daty wydań danych programu"
+
+msgid "Improve file opening over Samba shares"
+msgstr "Ulepszone otwieranie plików w ramach udziałów sieciowych Samba"
+
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "Naprawione błędy występujące podczas przywracania elementów z kosza"
+
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr "Ulepszona czułość wycinania/kopiowania/wklejania w menu kontekstowym"
+
+msgid "Translation updates"
+msgstr "Aktualizacje tłumaczenia"
+
+msgid "Minor bug fixes"
+msgstr "Poprawki drobnych błędów"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Scalenie funkcji wyszukiwania pod Ctrl+F"
+
+msgid "Improved translation support"
+msgstr "Ulepszone tłumaczenia"
+
+msgid "Various crash fixes"
+msgstr "Różne poprawki błędów"
+
+msgid "New translations"
+msgstr "Nowe tłumaczenia"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr "Włącz możliwość \"złap i przenieś\" zakłądki pomiędzy oknami"

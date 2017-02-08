@@ -73,6 +73,11 @@ namespace Marlin {
     public delegate void CopyCallback (GLib.HashTable<GLib.File, void*>? debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
+
+    [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
+    namespace Dialogs {
+        public void show_error (void* data, GLib.Error? error, string format_string, ...);
+    }
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -126,7 +131,11 @@ namespace Eel {
     public string? str_double_underscores (string? str);
 
     [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
+    public Gdk.Pixbuf create_spotlight_pixbuf (Gdk.Pixbuf source_pixbuf);
+    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
     public Gdk.Pixbuf create_colorized_pixbuf (Gdk.Pixbuf source_pixbuf, Gdk.RGBA color);
+    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
+    public Gdk.Pixbuf create_darkened_pixbuf (Gdk.Pixbuf source_pixbuf, int saturation, int darken);
     [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
     public Gdk.Pixbuf gdk_pixbuf_lucent (Gdk.Pixbuf source_pixbuf, int percent);
 }
@@ -144,12 +153,11 @@ namespace Marlin
 {
     [CCode (cheader_filename = "marlin-file-utilities.h")]
     public string get_accel_map_file ();
-    [CCode (cheader_filename = "marlin-file-utilities.h")]
-    public void restore_files_from_trash (GLib.List<GOF.File> *files, Gtk.Window *parent_window);
 
     [CCode (cheader_filename = "marlin-icon-info.h")]
     public class IconInfo : GLib.Object {
-        public static IconInfo lookup(GLib.Icon icon, int size);
+        public static IconInfo? lookup (GLib.Icon icon, int size);
+        public static IconInfo? lookup_from_name (string icon_name, int size);
         public Gdk.Pixbuf? get_pixbuf_nodefault();
         public Gdk.Pixbuf? get_pixbuf_at_size(int size);
         public static void clear_caches ();
@@ -240,6 +248,7 @@ namespace GOF {
         public signal void changed ();
         public signal void info_available ();
         public signal void icon_changed ();
+        public signal void destroy ();
 
         public const string GIO_DEFAULT_ATTRIBUTES;
 
@@ -247,7 +256,6 @@ namespace GOF {
         public static GOF.File @get(GLib.File location);
         public static GOF.File? get_by_uri (string uri);
         public static File cache_lookup (GLib.File file);
-        public static bool launch_files (GLib.List<GOF.File> files, Gdk.Screen screen, GLib.AppInfo app);
         public static void list_free (GLib.List<GOF.File> files);
         public static GLib.Mount? get_mount_at (GLib.File location);
 
@@ -278,17 +286,19 @@ namespace GOF {
         public bool is_hidden;
         public bool is_directory;
         public bool is_desktop;
+        public bool is_expanded;
         public void set_expanded (bool expanded);
         public bool is_folder();
         public bool is_symlink();
         public bool is_trashed();
-	public bool is_readable ();
+        public bool is_readable ();
         public bool is_writable ();
         public bool is_executable ();
         public bool is_mountable ();
         public bool link_known_target;
         public bool is_smb_share ();
         public bool is_smb_server ();
+        public bool thumb_can_frame ();
         public uint flags;
 
         public Gdk.DragAction accepts_drop (GLib.List<GLib.File> file_list, Gdk.DragContext context, out Gdk.DragAction suggested_action_return);
@@ -311,7 +321,6 @@ namespace GOF {
         public bool has_permissions;
         public uint32 permissions;
 
-        public void open_single (Gdk.Screen screen, GLib.AppInfo? app_info);
         public void update ();
         public void update_type ();
         public void update_icon (int size);
@@ -327,7 +336,6 @@ namespace GOF {
         public bool can_unmount ();
         public GLib.Mount? mount;
         public string get_permissions_as_string ();
-        public bool launch (Gdk.Screen screen, GLib.AppInfo app);
 
         public GLib.List? get_settable_group_names ();
         public static int compare_by_display_name (File file1, File file2);
@@ -336,9 +344,10 @@ namespace GOF {
         public bool is_root_network_folder ();
         public bool is_network_uri_scheme ();
         public bool is_smb_uri_scheme ();
+        public bool is_recent_uri_scheme ();
         public bool is_connected;
 
-        public unowned string get_display_target_uri ();
+        public string get_display_target_uri ();
 
         public GLib.AppInfo get_default_handler ();
 

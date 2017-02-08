@@ -87,12 +87,15 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         cancellable.reset ();
 
         directory = ((Object[]) user_data)[2] as GOF.File;
+        assert (directory != null);
         debug ("CTags Plugin dir %s", directory.uri);
         is_user_dir = f_is_user_dir (directory.uri);
         ignore_dir = f_ignore_dir (directory.uri);
     }
 
     private Variant add_entry (GOF.File gof) {
+        return_if_fail (gof != null);
+
         char* ptr_arr[4];
         ptr_arr[0] = gof.uri;
         ptr_arr[1] = gof.get_ftype ();
@@ -103,6 +106,11 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void consume_knowns_queue () {
+        if (directory == null) {
+            warning ("Color tag plugin consume knowns queue called with null directory");
+            return;
+        }
+
         Variant[] entries = null;
         GOF.File gof;
         while ((gof = knowns.pop_head ()) != null) {
@@ -120,6 +128,11 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void consume_unknowns_queue () {
+        if (directory == null) {
+            warning ("Color tag plugin consume unknowns queue called with null directory");
+            return;
+        }
+
         GOF.File gof = null;
         var count = unknowns.get_length ();
         debug ("unknowns queue length: %u", count);
@@ -136,8 +149,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                     foreach (var file_info in files) {
                         GLib.File loc = directory.location.get_child ((string) file_info.get_name());
                         gof = GOF.File.get (loc);
-                        if (gof != null)
+                        if (gof != null) {
                             add_to_knowns_queue (gof, file_info);
+                        }
                     }
                 }
             } catch (Error err1) {
@@ -157,6 +171,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private void add_to_knowns_queue (GOF.File file, FileInfo info) {
+        return_if_fail (file != null && info != null);
+
         file.tagstype = info.get_content_type ();
         file.update_type ();
 
@@ -173,6 +189,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private void add_to_unknowns_queue (GOF.File file) {
+        return_if_fail (file != null);
+
         if (file.get_ftype () == "application/octet-stream") {
             unknowns.push_head (file);
 
@@ -186,6 +204,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void rreal_update_file_info (GOF.File file) {
+        return_if_fail (file != null);
+
         try {
             var rc = yield daemon.get_uri_infos (file.uri);
 
@@ -225,6 +245,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             return;
         }
 
+        return_if_fail (file != null);
+
         try {
             var rc = yield daemon.get_uri_infos (target_uri);
 
@@ -247,12 +269,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
     public override void update_file_info (GOF.File file) {
         return_if_fail (file != null);
-        if (!ignore_dir
-            && file != null && file.info != null
-            && (!file.is_hidden || GOF.Preferences.get_default ().pref_show_hidden_files)) {
 
-            /* This gets called during directory loading, before the "directory loaded" signal
-             * is received - therefore ignore_dir may not be set correctly */  
+        if (!ignore_dir && file.info != null &&
+            (!file.is_hidden || GOF.Preferences.get_default ().pref_show_hidden_files)) {
+ 
             if (file.location.has_uri_scheme ("recent")) {
                 rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
             } else {

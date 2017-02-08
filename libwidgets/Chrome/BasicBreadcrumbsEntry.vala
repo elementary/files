@@ -50,6 +50,8 @@ namespace Marlin.View.Chrome {
 
         private Gdk.Window? entry_window = null;
 
+        protected bool context_menu_showing = false;
+
     /** Construction **/
     /******************/
         construct {
@@ -183,15 +185,24 @@ namespace Marlin.View.Chrome {
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
             switch (event.keyval) {
+                /* Do not trap unmodified Down and Up keys - used by some input methods */
                 case Gdk.Key.KP_Down:
                 case Gdk.Key.Down:
-                    go_down ();
-                    return true;
+                    if (only_control_pressed) {
+                        go_down ();
+                        return true;
+                    }
+
+                    break;
 
                 case Gdk.Key.KP_Up:
                 case Gdk.Key.Up:
-                    go_up ();
-                    return true;
+                    if (only_control_pressed) {
+                        go_up ();
+                        return true;
+                    }
+
+                    break;
 
                 case Gdk.Key.Escape:
                     activate_path ("");
@@ -208,10 +219,12 @@ namespace Marlin.View.Chrome {
                 default:
                     break;
             }
-            return base.key_press_event (event);
+
+            return false;
         }
 
         protected virtual bool on_button_press_event (Gdk.EventButton event) {
+            context_menu_showing = has_focus && event.button == Gdk.BUTTON_SECONDARY;
             return !has_focus;
         }
 
@@ -286,11 +299,18 @@ namespace Marlin.View.Chrome {
         }
 
         protected virtual bool on_focus_out (Gdk.EventFocus event) {
+            base.focus_out_event (event);
+            if (context_menu_showing) {
+                return true;
+            }
+
             reset ();
-            return base.focus_out_event (event);
+            return false;
+
         }
 
         protected virtual bool on_focus_in (Gdk.EventFocus event) {
+            context_menu_showing = false;
             current_dir_path = get_breadcrumbs_path ();
             set_entry_text (current_dir_path);
             return false;

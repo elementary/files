@@ -2,7 +2,7 @@
     Copyright (c) 1999, 2000 Red Hat, Inc.
     Copyright (c) 2000, 2001 Eazel, Inc.
     Copyright (c) 2013 Julián Unrrein <junrrein@gmail.com>
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)  
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)  
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -28,7 +28,6 @@ public class Marlin.Application : Granite.Application {
     private VolumeMonitor volume_monitor;
     private Marlin.Progress.UIHandler progress_handler;
     private Marlin.ClipboardManager clipboard;
-    private Marlin.Thumbnailer thumbnailer;
     private Gtk.RecentManager recent;
 
     private const int MARLIN_ACCEL_MAP_SAVE_DELAY = 15;
@@ -90,8 +89,7 @@ public class Marlin.Application : Granite.Application {
 
         progress_handler = new Marlin.Progress.UIHandler (this);
 
-        this.clipboard = new Marlin.ClipboardManager.get_for_display (Gdk.Display.get_default ());
-        this.thumbnailer = Marlin.Thumbnailer.get ();
+        this.clipboard = Marlin.ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
         plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
@@ -264,8 +262,6 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("date-format",
                                    GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("interpret-desktop-files",
-                                   GOF.Preferences.get_default (), "interpret-desktop-files", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("force-icon-size",
                                    GOF.Preferences.get_default (), "force-icon-size", GLib.SettingsBindFlags.DEFAULT);
     }

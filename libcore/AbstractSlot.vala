@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -48,6 +48,9 @@ namespace GOF {
                 return false;
             }
         }
+
+        public virtual bool is_frozen {get; set; default = true;}
+
         protected Gtk.Box extra_location_widgets;
         protected Gtk.Box content_box;
         protected int slot_number;
@@ -68,9 +71,9 @@ namespace GOF {
             slot_number = -1;
         }
 
+        public abstract void initialize_directory ();
         public abstract unowned GLib.List<unowned GOF.File>? get_selected_files ();
         public abstract void set_active_state (bool set_active, bool animate = true);
-        public abstract void set_frozen_state (bool is_frozen);
         public abstract unowned AbstractSlot? get_current_slot ();
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();

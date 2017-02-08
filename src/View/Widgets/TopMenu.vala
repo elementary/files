@@ -28,17 +28,30 @@ namespace Marlin.View.Chrome
         public LocationBar? location_bar;
         public Chrome.ButtonWithMenu button_forward;
         public Chrome.ButtonWithMenu button_back;
+
         public bool locked_focus {get; private set; default = false;}
+
+        public bool working {
+            set {
+                location_bar.sensitive = !value;
+            }
+        }
+
+        public bool can_go_back {
+           set {
+                button_back.sensitive = value;
+            }
+        }
+
+        public bool can_go_forward {
+           set {
+                button_forward.sensitive = value;
+            }
+        }
 
         public signal void forward (int steps);
         public signal void back (int steps);  /* TODO combine using negative step */
 
-        public void set_can_go_back (bool can) {
-           button_back.set_sensitive (can);
-        }
-        public void set_can_go_forward (bool can) {
-           button_forward.set_sensitive (can);
-        }
 
         public signal void focus_location_request (GLib.File? location);
         public signal void path_change_request (string path, Marlin.OpenFlag flag);
@@ -65,7 +78,6 @@ namespace Marlin.View.Chrome
                 back (1);
             });
 
-            key_press_event.connect (on_key_press_event);
             view_switcher = switcher;
             view_switcher.margin_end = 20;
             view_switcher.show_all ();
@@ -100,8 +112,8 @@ namespace Marlin.View.Chrome
             location_bar.escape.connect (() => {escape ();});
         }
 
-        public bool enter_search_mode (bool local_only, bool begins_with_only) {
-            return location_bar.enter_search_mode (local_only, begins_with_only);
+        public bool enter_search_mode () {
+            return location_bar.enter_search_mode ();
         }
 
         public bool enter_navigate_mode () {
@@ -150,14 +162,6 @@ namespace Marlin.View.Chrome
             location_bar.with_animation = with_animation;
             location_bar.set_display_path (new_path);
             location_bar.with_animation = true;
-        }
-
-        public bool on_key_press_event (Gdk.EventKey event) {
-            bool res = false;
-            if (location_bar.has_focus) {
-                res = location_bar.key_press_event (event);
-            }
-            return res;
         }
 
         public void cancel () {

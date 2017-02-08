@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-06 14:34+0000\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2017-01-25 12:18+0000\n"
 "Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-08-07 05:28+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
+"X-Launchpad-Export-Date: 2017-01-26 06:14+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 msgid "Files"
 msgstr "File"
@@ -34,3 +34,37 @@ msgstr ""
 "oppure colonne, puoi sempre trovarli in un attimo. Accedi a tutti i tuoi "
 "file sia a livello locale, sia su un dispositivo esterno o in remoto tramite "
 "FTP, SFTP, AFP, WebDAV, o condivisione di Windows."
+
+msgid "Fix appdata release dates"
+msgstr "Corregge le date di rilascio in appdata"
+
+msgid "Improve file opening over Samba shares"
+msgstr "Migliora l'apertura di file su condivisioni Samba"
+
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "Risolve un crash che avveniva ripristinando gli elementi dal cestino"
+
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr ""
+"Migliora la sensibilità delle voci taglia/copia/incolla nel menu contestuale"
+
+msgid "Translation updates"
+msgstr "Aggiornamento delle traduzioni"
+
+msgid "Minor bug fixes"
+msgstr "Correzioni di bug minori"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Unita la funzionalità di ricerca in Ctrl + F"
+
+msgid "Improved translation support"
+msgstr "Migliorato supporto alla traduzione"
+
+msgid "Various crash fixes"
+msgstr "Varie correzioni di crash"
+
+msgid "New translations"
+msgstr "Nuove traduzioni"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr "Abilita il drag and drop di schede da una finestra all'altra"

@@ -1,7 +1,7 @@
 /***
     Copyright (c) 2000 Eazel, Inc.
     Copyright (c) 2011 ammonkey <am.monkeyd@gmail.com>
-    Copyright (c) 2013-2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2013-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -232,6 +232,8 @@ public class Marlin.MimeActions {
     }
 
     public static void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
+        /* Note: This function should be only called if file_to_open is not an executable or it is not
+         * intended to execute it (AbstractDirectoryView takes care of this) */ 
         if (app == null) {
             var choice = choose_app_for_glib_file (file_to_open, parent);
             if (choice != null) {
@@ -242,14 +244,71 @@ public class Marlin.MimeActions {
         }
     }
 
+    public static void open_multiple_gof_files_request (GLib.List<GOF.File> gofs_to_open, Gtk.Widget parent, AppInfo? app = null) {
+        /* Note: This function should be only called if files_to_open are not executables or it is not
+         * intended to execute them (AbstractDirectoryView takes care of this) */
+        AppInfo? app_info = null;
+        if (app == null) {
+            app_info = get_default_application_for_files (gofs_to_open);
+        } else {
+            app_info = app;
+        }
+
+        var win = get_toplevel_window (parent);
+
+        if (app_info == null) {
+            Eel.show_error_dialog (_("Multiple file types selected"),
+                                   _("No single app can open all these types of file"), win);
+        } else {
+            GLib.List<GLib.File> files_to_open = null;
+            foreach (var gof in gofs_to_open) {
+                files_to_open.append (gof.location);
+            }
+
+            launch_with_app (files_to_open, app_info, win);
+        }
+    }
+
     public static AppInfo? choose_app_for_glib_file (GLib.File file_to_open, Gtk.Widget parent) {
-        Gtk.Widget? toplevel = parent != null ? parent.get_toplevel () : null;
-        var chooser = new PF.ChooseAppDialog (toplevel, file_to_open);
+        var chooser = new PF.ChooseAppDialog (get_toplevel_window (parent), file_to_open);
         return chooser.get_app_info ();
     }
 
-    private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {
-        var goffile = GOF.File.get (file_to_open);
-        goffile.launch (parent.get_screen (), app);
+     private static void launch_glib_file_with_app (GLib.File file_to_open, Gtk.Widget parent, AppInfo app) {
+        GLib.List<GLib.File> files_to_open = null;
+        files_to_open.append (file_to_open);
+        launch_with_app (files_to_open, app, get_toplevel_window (parent));
+     }
+
+    private static void launch_with_app (GLib.List<GLib.File> files_to_open, AppInfo app, Gtk.Window? win) {
+        if (app.supports_files ()) {
+            try {
+                app.launch (files_to_open, null);
+            } catch (GLib.Error e) {
+                Eel.show_error_dialog (_("Failed to open files"), e.message, win);
+            }
+        } else if (app.supports_uris ()) {
+            GLib.List<string> uris = null;
+            foreach (var file in files_to_open) {
+                uris.append (file.get_uri ());
+            }
+            try {
+                app.launch_uris (uris, null);
+            } catch (GLib.Error e) {
+                Eel.show_error_dialog (_("Failed to open uris"), e.message, win);
+            }
+        } else {
+            Eel.show_error_dialog (_("Unable to open files or uris with this app"), "", win);
+        }
+    }
+
+    private static Gtk.Window? get_toplevel_window (Gtk.Widget widget) {
+        Gtk.Window? win = null;
+        var tl = widget.get_toplevel ();
+        if (tl.is_toplevel ()) {
+            win = (Gtk.Window)tl;
+        }
+
+        return win;
     }
 }

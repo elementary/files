@@ -7,20 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-06-30 19:10+0000\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:49+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
-
-#: ../src/marlin-clipboard-manager.c:365
-msgid "There is nothing on the clipboard to paste"
-msgstr ""
+"X-Launchpad-Export-Date: 2017-01-26 06:13+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
+"Language: ug\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -32,15 +29,15 @@ msgstr "ئاممىۋى FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr "FTP (تىزىمغا كىرىش زۆرۈر)"
+msgstr "FTP (كىرىش زۆرۈر)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (ئالما ھۆججەت كىلىشىمى)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "Windows ھەمبەھىر"
+msgstr "Windows ھەمبەھىرى"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
@@ -52,20 +49,20 @@ msgstr "بىخەتەر WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "باغلىنىۋاتىدۇ…"
+msgstr "ئۇلىنىۋاتىدۇ...."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"قوللايدىغان مۇلازىمېتىر ھالىتى تىزىمىنى ئوقۇغىلى بولمىدى. gvfs "
-"ئورنىتىشىڭىزنى تەكشۈرۈڭ."
+"قوللايدىغان مۇلازىمېتىر ئۇسۇلى تىزىمىنى يۈكلىگىلى بولمىدى.\n"
+" gvfs ئورنىتىشىڭىزنى تەكشۈرۈڭ."
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "بۇ «%s» قىسقۇچنى «%s» دا ئاچالمايدۇ."
+msgstr "بۇ «%s» مۇندەرىجىسى «%s» دا ئىچىلمايدۇ."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
@@ -78,20 +75,20 @@ msgstr "قايتا سىناش"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "ئىشلەتكۈچى تەپسىلاتىڭىزنى دەلىللەڭ."
+msgstr "ئابونت تەپسىلاتىڭىزنى دەلىللەڭ."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr "داۋاملاشتۇر"
+msgstr "داۋاملاشتۇرۇش"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr "ئۇلا(_O)"
+msgstr "ئۇلاش"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr "مۇلازىمېتىرغا باغلا"
+msgstr "مۇلازىمېتىرغا ئۇلاش"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
@@ -103,7 +100,7 @@ msgstr "مۇلازىمېتىر(_S):"
 
 #: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
-msgstr "ئېغىز(_P):"
+msgstr "پورت(_P):"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
@@ -115,46 +112,37 @@ msgstr "ھەمبەھىر(_H):"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr "قىسقۇچ(_F):"
+msgstr "مۇندەرىجە(_F):"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr "ئىشلەتكۈچى تەپسىلاتى"
+msgstr "ئابونت تەپسىلاتى"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr "دائىرە ئاتى(_D):"
+msgstr "دائىرە ئىسىمى(_D):"
 
 #: ../src/marlin-connect-server-dialog.c:1108
 msgid "_User name:"
-msgstr "ئىشلەتكۈچى ئاتى(_U):"
+msgstr "ئابونت ئىسمى(_U):"
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
-msgstr "ئىم(_W):"
+msgstr "پارول(_W):"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr "بۇ ئىمنى ئەستە تۇت(_R)"
+msgstr "پارولنى ئىسىڭىزدە ساقلاڭ(_R)"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "مەشغۇلات ئەمەلدىن قالدۇرۇلدى"
 
-#: ../libcore/marlin-file-utilities.c:131
-#, c-format
-msgid "Could not determine original location of \"%s\" "
-msgstr "«%s» نىڭ ئەسلى ئورنىنى جەزملىيەلمىدى "
-
-#: ../libcore/marlin-file-utilities.c:135
-msgid "The item cannot be restored from trash"
-msgstr "تۈرنى ئەخلەتخانىدىن ئەسلىگە كەلتۈرەلمىدى"
-
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "قىسقۇچ «%s» نى بىرىكتۈرەمسىز؟"
+msgstr "مۇندەرىجە «%s» نى بىرلەشتۈرەمسىز؟"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:375
@@ -162,7 +150,7 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"بىرلەشتۈرگەندە كۆچۈرۈلىدىغان ھۆججەت بۇ قىسقۇچتىكى ھەر قانداق ھۆججەت بىلەن "
+"بىرلەشتۈرگەندە كۆچۈرۈلىدىغان ھۆججەت بۇ مۇندەرىجەتىكى ھەر قانداق ھۆججەت بىلەن "
 "توقۇنۇشسا ئۇلارنى ئالماشتۇرۇشتىن ئىلگىرى بىرلەشتۈرۈشنى جەزملەش ئىلتىماسى "
 "كۆرۈنىدۇ."
 
@@ -170,36 +158,36 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئاتلىق كونا قىسقۇچ مەۋجۇت."
+msgstr "«%s» دا ئوخشاش ئىسىملىك كونا مۇندەرىجە مەۋجۇت."
 
 #: ../libcore/marlin-file-conflict-dialog.c:158
 #: ../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئاتلىق يېڭى قىسقۇچ مەۋجۇت."
+msgstr "«%s» دا ئوخشاش ئىسىملىك يېڭى مۇندەرىجە مەۋجۇت."
 
 #: ../libcore/marlin-file-conflict-dialog.c:162
 #: ../libcore/marlin-file-conflict-dialog.c:388
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئاتلىق باشقا قىسقۇچ مەۋجۇت."
+msgstr "«%s» دا ئوخشاش ئىسىملىك باشقا مۇندەرىجە مەۋجۇت."
 
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will remove all files in the folder."
-msgstr "ئۇ ئالماشتۇرۇلسا بۇ قىسقۇچتىكى ھەممە ھۆججەتلەر چىقىرىۋېتىلىدۇ."
+msgstr "ئۇ ئالماشتۇرۇلسا بۇ مۇندەرىجىدىكى ھەممە ھۆججەتلەر يۆتكىۋېتىلىدۇ."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "ھۆججەت قىسقۇچى «%s» نى ئالماشتۇرۇۋېتەمسىز؟"
+msgstr "مۇندەرىجە «%s» نى ئالماشتۇرۇۋېتەمسىز؟"
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
 #: ../libcore/marlin-file-conflict-dialog.c:397
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئاتلىق قىسقۇچ مەۋجۇت."
+msgstr "«%s» دا ئوخشاش ئسىملىك مۇندەرىجە مەۋجۇت."
 
 #: ../libcore/marlin-file-conflict-dialog.c:176
 #: ../libcore/marlin-file-conflict-dialog.c:402
@@ -216,19 +204,19 @@ msgstr "ئۇ ئالماشتۇرۇلسا ئۇنىڭ مەزمۇنى قاپلىنى
 #: ../libcore/marlin-file-conflict-dialog.c:408
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئاتلىق كونا ھۆججەت مەۋجۇت."
+msgstr "«%s» دا ئوخشاش ئسىملىك كونا ھۆججەت مەۋجۇت."
 
 #: ../libcore/marlin-file-conflict-dialog.c:186
 #: ../libcore/marlin-file-conflict-dialog.c:412
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئاتلىق يېڭى ھۆججەت مەۋجۇت."
+msgstr "«%s» دا ئوخشاش ئىسىملىك يېڭى ھۆججەت مەۋجۇت."
 
 #: ../libcore/marlin-file-conflict-dialog.c:190
 #: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "«%s» دا ئوخشاش ئاتلىق باشقا ھۆججەت مەۋجۇت."
+msgstr "«%s» دا ئوخشاش ئىسىملىك باشقا ھۆججەت مەۋجۇت."
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:471
@@ -239,7 +227,7 @@ msgstr "ئورىگىنال ھۆججەت"
 #: ../libcore/marlin-file-conflict-dialog.c:284
 #: ../libcore/marlin-file-conflict-dialog.c:472
 #: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/View/PropertiesWindow.vala:518
+#: ../src/Dialogs/PropertiesWindow.vala:484
 msgid "Size:"
 msgstr "چوڭلۇقى:"
 
@@ -247,7 +235,7 @@ msgstr "چوڭلۇقى:"
 #: ../libcore/marlin-file-conflict-dialog.c:287
 #: ../libcore/marlin-file-conflict-dialog.c:475
 #: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/View/PropertiesWindow.vala:525
+#: ../src/Dialogs/PropertiesWindow.vala:491
 msgid "Type:"
 msgstr "تىپى:"
 
@@ -261,75 +249,79 @@ msgstr "ئاخىرقى ئۆزگەرتىلگەن ۋاقىت:"
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:492
 msgid "Replace with"
-msgstr "ئالماشتۇر"
+msgstr "ئالماشتۇرۇش"
 
 #: ../libcore/marlin-file-conflict-dialog.c:312
 #: ../libcore/marlin-file-conflict-dialog.c:517
 msgid "Merge"
-msgstr "بىرىكتۈر"
+msgstr "بىرىكتۈرۈش"
 
 #: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
-msgstr "نىشانغا يېڭى ئات تاللا(_S)"
+msgstr "نىشانغا يېڭى ئىسىم تاللا(_S)"
 
 #: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
-msgstr "ئەسلىگە قايتۇرۇش"
+msgstr "قايتا بىكىتىش"
 
 #: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
-msgstr "بۇ مەشغۇلاتنى ھەممە ھۆججەتكە قوللان"
+msgstr "بۇ مەشغۇلاتنى ھەممە ھۆججەتكە قوللىنىش"
 
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
 msgid "_Skip"
-msgstr "ئۆتكۈزۈۋەت(_S)"
+msgstr "ئاتلاپ ئۆتۈش(_S)"
 
 #: ../libcore/marlin-file-conflict-dialog.c:753
 msgid "Re_name"
-msgstr "ئاتىنى ئۆزگەرت(_N)"
+msgstr "ئىسىمىنى ئۆزگەرتىش(_N)"
 
 #: ../libcore/marlin-file-conflict-dialog.c:759
 msgid "Replace"
-msgstr "ئالماشتۇر"
+msgstr "ئالماشتۇرۇش"
 
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "ھۆججەت توقۇنۇشى"
 
-#: ../libcore/gof-file.c:366
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:379
 #, c-format
 msgid "link to %s"
-msgstr "%s غا ئۇلا"
+msgstr "%s غا ئۇلاش"
 
-#: ../libcore/gof-file.c:1914
+#: ../libcore/gof-file.c:1953
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr ""
+msgstr "ئۈستەليۈزى ھۆججىتى %s نى ئانالىز قىلىش مەغلۇپ بولدى"
 
-#: ../libcore/gof-file.c:1951
+#: ../libcore/gof-file.c:1990
 msgid "No Exec field specified"
-msgstr ""
+msgstr "Exec ئۈچۈن بەلگىلەنگەن سۆز بۆلىكى يوق"
 
-#: ../libcore/gof-file.c:1970
+#: ../libcore/gof-file.c:2009
 msgid "No URL field specified"
-msgstr ""
+msgstr "تور ئادىرىسى ئۈچۈن بەلگىلەنگەن سۆز بۆلىكى يوق"
 
-#: ../libcore/gof-file.c:1976
+#: ../libcore/gof-file.c:2015
 msgid "Invalid desktop file"
-msgstr ""
+msgstr "ئىناۋەتسىز ئۈستەليۇزى ھۆججىتى"
 
-#: ../libcore/gof-file.c:2271
+#: ../libcore/gof-file.c:2310
 msgid "Slashes are not allowed in filenames"
-msgstr "ھۆججەت ئاتىدا يانتۇ سىزىق بولۇشقا يول قويۇلمايدۇ"
+msgstr "ھۆججەت ئىسىمىدا يانتۇ سىزىق بولۇشقا يول قويۇلمايدۇ"
 
-#: ../libcore/gof-file.c:2291
+#: ../libcore/gof-file.c:2330
 msgid "Toplevel files cannot be renamed"
-msgstr "يۇقىرى دەرىجىدىكى ھۆججەت ئاتىنى ئۆزگەرتكىلى بولمايدۇ"
+msgstr "يۇقىرى دەرىجىلىك ھۆججەت ئىسىمىنى ئۆزگەرتكىلى بولمايدۇ"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
-msgstr "تەپسىلاتىنى كۆرسەت(_D)"
+msgstr "تەپسىلاتىنى كۆرسىتىش(_D)"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -337,35 +329,35 @@ msgstr " (ئىناۋەتسىز يۇنىكود)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
-msgstr "ھەممىدىن ئۆتكۈزۈۋەت(_K)"
+msgstr "ھەممىسىنى ئاتلاپ ئۆتۈش(_K)"
 
 #: ../libcore/marlin-file-operations.c:201
 msgid "_Retry"
-msgstr "قايتا سىنا(_R)"
+msgstr "قايتا سىناش(_R)"
 
 #: ../libcore/marlin-file-operations.c:202
 msgid "Delete _All"
-msgstr "ھەممىنى ئۆچۈر(_A)"
+msgstr "ھەممىنى ئۆچۈرۈش(_A)"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr "ئالماشتۇر(_R)"
+msgstr "ئالماشتۇرۇش(_R)"
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
-msgstr "ھەممىنى ئالماشتۇر(_A)"
+msgstr "ھەممىنى ئالماشتۇرۇش(_A)"
 
 #: ../libcore/marlin-file-operations.c:205
 msgid "_Merge"
-msgstr "بىرلەشتۈر(_M)"
+msgstr "بىرلەشتۈرۈش(_M)"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr "ھەممىنى بىرلەشتۈر(_A)"
+msgstr "ھەممىنى بىرلەشتۈرۈش(_A)"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "كۆچۈرۈۋەر(_A)"
+msgstr "كۆچۈرۈۋىرىش(_A)"
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
@@ -395,7 +387,7 @@ msgstr[0] "تەخمىنەن %'d سائەت"
 #: ../libcore/marlin-file-operations.c:395
 #, c-format
 msgid "Link to %s"
-msgstr "%s غا ئۇلا"
+msgstr "%s غا ئۇلاش"
 
 #: ../libcore/marlin-file-operations.c:399
 #, c-format
@@ -405,59 +397,59 @@ msgstr "%s غا ئۇلىنىدىغان باشقا ئۇلانما"
 #: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
-msgstr "%'d نىڭ %s ئۇلانمىسى"
+msgstr "غا ئۇلانغان %2$s  %1$'d - ئۇلانما"
 
 #: ../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
-msgstr "%'d نىڭ %s ئۇلانمىسى"
+msgstr "غا ئۇلانغان %2$s  %1$'d - ئۇلانما"
 
 #: ../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
-msgstr "%'d نىڭ %s ئۇلانمىسى"
+msgstr "غا ئۇلانغان %2$s  %1$'d - ئۇلانما"
 
 #: ../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
-msgstr "%'d نىڭ %s ئۇلانمىسى"
+msgstr "غا ئۇلانغان %2$s  %1$'d - ئۇلانما"
 
 #: ../libcore/marlin-file-operations.c:465
 msgid " (copy)"
-msgstr " (كۆچۈر)"
+msgstr " (كۆچۈرۈلمە)"
 
 #: ../libcore/marlin-file-operations.c:467
 msgid " (another copy)"
-msgstr " (باشقا كۆچۈر)"
+msgstr " (باشقا كۆچۈرۈلمە)"
 
 #: ../libcore/marlin-file-operations.c:470
 #: ../libcore/marlin-file-operations.c:472
 #: ../libcore/marlin-file-operations.c:474
 #: ../libcore/marlin-file-operations.c:484
 msgid "th copy)"
-msgstr "كۆچۈر)"
+msgstr "كۆچۈرۈلمە)"
 
 #: ../libcore/marlin-file-operations.c:477
 msgid "st copy)"
-msgstr "كۆچۈر)"
+msgstr "- كۆچۈرۈلمە)"
 
 #: ../libcore/marlin-file-operations.c:479
 msgid "nd copy)"
-msgstr "كۆچۈر)"
+msgstr "- كۆچۈرۈلمە)"
 
 #: ../libcore/marlin-file-operations.c:481
 msgid "rd copy)"
-msgstr "كۆچۈر)"
+msgstr "- كۆچۈرۈلمە)"
 
 #: ../libcore/marlin-file-operations.c:498
 #, c-format
 msgid "%s (copy)%s"
-msgstr "%s (كۆچۈر)%s"
+msgstr "%s (كۆچۈرۈلمە)%s"
 
 #: ../libcore/marlin-file-operations.c:500
 #, c-format
 msgid "%s (another copy)%s"
-msgstr "%s (باشقا كۆچۈر)%s"
+msgstr "%s (باشقا كۆچۈرۈلمە)%s"
 
 #: ../libcore/marlin-file-operations.c:503
 #: ../libcore/marlin-file-operations.c:505
@@ -465,22 +457,22 @@ msgstr "%s (باشقا كۆچۈر)%s"
 #: ../libcore/marlin-file-operations.c:521
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr "%s (%'d چى كۆچۈر)%s"
+msgstr "%s (%'d- كۆچۈرۈلمە)%s"
 
 #: ../libcore/marlin-file-operations.c:515
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr "%s (%'dچى كۆچۈر)%s"
+msgstr "%s (%'d- كۆچۈرۈلمە)%s"
 
 #: ../libcore/marlin-file-operations.c:517
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr "%s (%'dچى كۆچۈر)%s"
+msgstr "%s (%'d- كۆچۈرۈلمە)%s"
 
 #: ../libcore/marlin-file-operations.c:519
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr "%s (%'dچى كۆچۈر)%s"
+msgstr "%s (%'d- كۆچۈرۈلمە)%s"
 
 #: ../libcore/marlin-file-operations.c:619
 msgid " ("
@@ -493,7 +485,7 @@ msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1384
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "سىز %B\" نى ئەخلەتخانىدىن راستىنىلا مەڭگۈلۈك ئۆچۈرەمسىز؟"
+msgstr "سىز %B\" نى ئەخلەت چېلىكىدىن راستىنىلا مەڭگۈلۈك ئۆچۈرەمسىز؟"
 
 #: ../libcore/marlin-file-operations.c:1387
 #, c-format
@@ -503,7 +495,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "راستلا تاللانغان %'d تۈرنى ئەخلەتخانىدىن مەڭگۈلۈك ئۆچۈرەمسىز؟"
+msgstr[0] "راستلا تاللانغان %'d تۈرنى ئەخلەت چېلىكىدىن مەڭگۈلۈك ئۆچۈرەمسىز؟"
 
 #: ../libcore/marlin-file-operations.c:1397
 #: ../libcore/marlin-file-operations.c:1477
@@ -512,48 +504,52 @@ msgstr "ئەگەر تۈردىن بىرنى ئۆچۈرسىڭىز ئۇنداقتا
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "ئەخلەت چېلىكىدىن ھەممە تۈرلەرنى راسىتتىنلا ئۆچۈرەمسىز؟"
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"ئەخلەت چېلىكىدىكى بارلىق تۈرلەر، كومپىيۇتىرغا چىتىلغان ھەرقانداق سىرتقى "
+"ئۈسكۈنىلەرمۇ مەڭگۈلۈك ئۆچۈرىلىدۇ."
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
+"بۇ دىسكا رايونىدىكى بارلىق تۈرلەرنى ئەخلەت چېلىكىدىن مەڭگۈلۈك ئۆچۈرەمسىز؟"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
+"ئەخلەت چېلىكىدىكى بۇ دىسكا رايونىدىكى بارلىق تۈرلەر مەڭگۈلۈك ئۆچۈرىلىدۇ."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1487
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
 msgid "Empty _Trash"
-msgstr "ئەخلەتخانىنى تازىلا(_T)"
+msgstr "ئەخلەت چېلىكىنى تازىلاش(_T)"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "\"%B\" نى راستىنىلا مەڭگۈلۈك ئۆچۈرەمسىز؟"
+msgstr "\"%B\" نى راستتىنلا مەڭگۈلۈك ئۆچۈرەمسىز؟"
 
 #: ../libcore/marlin-file-operations.c:1468
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "راستلا تاللانغان %'d تۈرنى مەڭگۈلۈك ئۆچۈرەمسىز؟"
+msgstr[0] "راسىتتىنلا تاللانغان %'d تۈرنى مەڭگۈلۈك ئۆچۈرەمسىز؟"
 
 #: ../libcore/marlin-file-operations.c:1493
 #: ../libcore/marlin-file-operations.c:1525
 msgid "Deleting files"
-msgstr "ھۆججەت ئۆچۈرۈۋاتىدۇ"
+msgstr "ھۆججەتلەرنى ئۆچۈرۈۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:1519
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "ئۆچۈرىدىغان ھۆججەتتىن %'d قالدى"
+msgstr[0] "%'d پارچە ئۆچۈرىدىغان ھۆججەت قالدى"
 
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
@@ -575,136 +571,150 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"\"%B\" قىسقۇچتىكى ھۆججەتلەرنى ئۆچۈرەلمىدى چۈنكى ئۇلارنى كۆرۈش ھوقۇقىڭىز يوق."
+"\"%B\" مۇندەرىجىدىكى ھۆججەتلەرنى ئۆچۈرەلمىدى چۈنكى ئۇلارنى كۆرۈش ھوقۇقىڭىز "
+"يوق."
 
 #: ../libcore/marlin-file-operations.c:1613
 #: ../libcore/marlin-file-operations.c:2732
-#: ../libcore/marlin-file-operations.c:3726
+#: ../libcore/marlin-file-operations.c:3727
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr "\"%B\" قىسقۇچتىكى ھۆججەت ئۇچۇرىغا ئېرىشىۋاتقاندا خاتالىق كۆرۈلدى"
+msgstr "\"%B\" مۇندەرىجىدىكى ھۆججەت ئۇچۇرىغا ئېرىشىۋاتقاندا خاتالىق كۆرۈلدى"
 
 #: ../libcore/marlin-file-operations.c:1622
-#: ../libcore/marlin-file-operations.c:3735
+#: ../libcore/marlin-file-operations.c:3736
 msgid "_Skip files"
-msgstr "ھۆججەتتىن ئاتلا(_S)"
+msgstr "ھۆججەتلەرنى ئاتلاپ ئۆتۈش(_S)"
 
 #: ../libcore/marlin-file-operations.c:1643
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr "\"%B\" قىسقۇچنى ئۆچۈرەلمىدى چۈنكى ئۇنى ئوقۇش ھوقۇقىڭىز يوق."
+msgstr "مۇندەرىجە \"%B\"نى ئۆچۈرەلمىدى چۈنكى ئۇنى ئوقۇش ھوقۇقىڭىز يوق."
 
 #: ../libcore/marlin-file-operations.c:1646
 #: ../libcore/marlin-file-operations.c:2771
-#: ../libcore/marlin-file-operations.c:3771
+#: ../libcore/marlin-file-operations.c:3772
 msgid "There was an error reading the folder \"%B\"."
-msgstr "\"%B\" قىسقۇچنى ئوقۇۋاتقاندا خاتالىق كۆرۈلدى."
+msgstr "مۇندەرىجە \"%B\" نى ئوقۇۋاتقاندا خاتالىق كۆرۈلدى."
 
 #: ../libcore/marlin-file-operations.c:1680
 msgid "Could not remove the folder %B."
-msgstr "قىسقۇچ «%B» نى ئۆچۈرگىلى بولمايدۇ."
+msgstr "مۇندەرىجە «%B» نى ئۆچۈرگىلى بولمايدۇ."
 
 #: ../libcore/marlin-file-operations.c:1757
 msgid "There was an error deleting %B."
-msgstr "%B ئۆچۈرۈۋاتقاندا خاتالىق كۆرۈلدى."
+msgstr "%B نى ئۆچۈرۈۋاتقاندا خاتالىق كۆرۈلدى."
 
 #: ../libcore/marlin-file-operations.c:1837
 #: ../libcore/marlin-file-operations.c:1849
 msgid "Moving files to trash"
-msgstr "ھۆججەتلەرنى ئەخلەتخانىغا يۆتكەۋاتىدۇ"
+msgstr "ھۆججەتلەرنى ئەخلەت چېلىكىگە يۆتكەۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:1851
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "ئەخلەتخانىغا يۆتكەيدىغان %'d ھۆججەت قالدى"
+msgstr[0] "ئەخلەت چېلىكىغا يۆتكەيدىغان %'d ھۆججەت قالدى"
 
 #: ../libcore/marlin-file-operations.c:1946
 #: ../libcore/marlin-file-operations.c:1949
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "ھۆججەتنى ئەخلەت چېلىكىگە يۆتكىگىلى ياكى ئۆچۈرگىلى بولمىدى"
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid ""
 "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"پەقەت ئوقۇغىلىلا بولىدىغان ھۆججەت سىستىمىسىدا ھۆججەتلەرنى ئەخلەت چېلىكىگە "
+"تاشلىۋىتىشكە ياكى ئۆچۈرىۋىتىشكە يول قويۇلمايدۇ."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"سىزنىڭ يىزىش ھوقۇقىڭىز بولمىغان مۇندەرىجىنىڭ ئىچىدىكى ھۆججەتلەرنى ئەخلەت "
+"چېلىكىگە تاشلىۋىتىشىڭىزگە ياكى ئۆچۈرىۋىتىشىڭىزگە يول قويۇلمايدۇ."
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"سىزنىڭ يىزىش ھوقۇقىڭىز بولمىغان مۇندەرىجىنى ئەخلەت چېلىكىگە تاشلىۋىتىشىڭىزگە "
+"ياكى ئۆچۈرىۋىتىشىڭىزگە يول قويۇلمايدۇ."
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"ھۆججەتنى ئەخلەت چېلىكىگە تاشلىغىلى بولمىدى،دەرھال ئۆچۈرۈپ سىناپ باقامسىز؟"
 
 #: ../libcore/marlin-file-operations.c:1956
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"بۇ ھۆججەتنى ئەخلەت چېلىكىگە تاشلىغىلى بولمىدى، تىخىمۇ كۆپ ئۇچۇرلار ئۈچۈن "
+"تۆۋەندىكى تەپسىلاتىغا قاراڭ."
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "ھۆججەتنى ئەخلەت چېلىكىگە تاشلىغىلى بولمىدى، ئۆچۈرۈپ سىناپ باقامسىز؟"
 
 #: ../libcore/marlin-file-operations.c:1961
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"بۇ ھۆججەتنى ئەخلەت چىلىكىگە تاشلىغىلى بولمىدى، بەلكىم سىز ئۇنى "
+"ئۆچۈرەلمەسلىكىڭىز مۇمكىن."
 
 #: ../libcore/marlin-file-operations.c:1966
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" ھۆججەتنى مەڭگۈلۈك ئۆچۈرۈش"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
-msgstr "ھۆججەتلەرنى ئەخلەتخانىغا يۆتكەۋاتىدۇ"
+msgstr "ھۆججەتلەرنى ئەخلەت چېلىكىگە تاشلاۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:2158
 msgid "Deleting Files"
-msgstr "ھۆججەت ئۆچۈرۈۋاتىدۇ"
+msgstr "ھۆججەتلەرنى ئۆچۈرۈۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:2227
 msgid "Unable to eject %V"
-msgstr "%V قاڭقىتالمىدى"
+msgstr "%Vنى قاڭقىتالمىدى"
 
 #: ../libcore/marlin-file-operations.c:2229
 msgid "Unable to unmount %V"
-msgstr "%V نى ئېگەرسىزلىگىلى بولمىدى"
+msgstr "%V نى چۈشۈرگىلى بولمىدى"
 
 #: ../libcore/marlin-file-operations.c:2408
 msgid "Do you want to empty the trash before you unmount?"
-msgstr "يۈك چۈشۈرۈشتىن ئىلگىرى ئەخلەتخانىنى بوشىتامسىز؟"
+msgstr "چۈشۈرۈشتىن ئىلگىرى ئەخلەت چېلىكىنى قۇرۇقدامسىز؟"
 
 #: ../libcore/marlin-file-operations.c:2410
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
 msgstr ""
-"بۇ ئەندىكى ئەركىن بوشلۇقتىن قايتىدىن پايدىلىنىش ئۈچۈن چوقۇم ئەخلەتخانىنى "
-"بوشىتىڭ. ئەخلەتخانىدىكى ھەممە مەزمۇنلار مەڭگۈلۈك يوقىلىدۇ."
+"بۇ ئەندىكى ئەركىن بوشلۇقتىن قايتىدىن پايدىلىنىش ئۈچۈن چوقۇم ئەخلەت چېلىكىنى "
+"قۇرۇقداڭ. ئەخلەت چېلىكىدىكى ھەممە مەزمۇنلار مەڭگۈلۈك يوقىلىدۇ."
 
 #: ../libcore/marlin-file-operations.c:2416
 msgid "Do _not Empty Trash"
-msgstr "ئەخلەتخانىنى تازىلىما(_M)"
+msgstr "ئەخلەت چېلىكىنى قۇرۇقدىماسلىق(_M)"
 
 #: ../libcore/marlin-file-operations.c:2530
 #, c-format
 msgid "Unable to mount %s"
-msgstr "%s نى ئېگەرلىگىلى بولمىدى"
+msgstr "%s نى چۈشۈرگىلى بولمىدى"
 
 #: ../libcore/marlin-file-operations.c:2608
 #, c-format
@@ -728,38 +738,39 @@ msgstr[0] "%'d ھۆججەتنى ئۆچۈرۈشكە تەييارلىنىۋاتى�
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "%'d ھۆججەتنى ئەخلەتخانىغا يۆتكەشكە تەييارلىنىۋاتىدۇ"
+msgstr[0] "%'d ھۆججەتنى ئەخلەت چېلىكىگە تاشلاشقا تەييارلىنىۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:2669
-#: ../libcore/marlin-file-operations.c:3586
-#: ../libcore/marlin-file-operations.c:3718
-#: ../libcore/marlin-file-operations.c:3763
+#: ../libcore/marlin-file-operations.c:3587
+#: ../libcore/marlin-file-operations.c:3719
+#: ../libcore/marlin-file-operations.c:3764
 msgid "Error while copying."
 msgstr "كۆچۈرگەندە خاتالىق كۆرۈلدى."
 
 #: ../libcore/marlin-file-operations.c:2671
-#: ../libcore/marlin-file-operations.c:3716
-#: ../libcore/marlin-file-operations.c:3761
+#: ../libcore/marlin-file-operations.c:3717
+#: ../libcore/marlin-file-operations.c:3762
 msgid "Error while moving."
 msgstr "يۆتكىگەندە خاتالىق كۆرۈلدى."
 
 #: ../libcore/marlin-file-operations.c:2675
 msgid "Error while moving files to trash."
-msgstr "ھۆججەتنى ئەخلەتخانىغا يۆتكىگەندە خاتالىق كۆرۈلدى."
+msgstr "ھۆججەتنى ئەخلەت چېلىكىگە تاشلىغاندا خاتالىق كۆرۈلدى."
 
 #: ../libcore/marlin-file-operations.c:2729
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
-"\"%B\" قىسقۇچتىكى ھۆججەتلەرنى بىر تەرەپ قىلالمىدى چۈنكى ئۇلارنى كۆرۈش "
+"\"%B\" مۇندەرىجىدىكى ھۆججەتلەرنى بىر تەرەپ قىلالمىدى چۈنكى ئۇلارنى كۆرۈش "
 "ھوقۇقىڭىز يوق."
 
 #: ../libcore/marlin-file-operations.c:2768
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr "\"%B\" قىسقۇچنى بىر تەرەپ قىلالمىدى چۈنكى ئۇنى ئوقۇش ھوقۇقىڭىز يوق."
+msgstr ""
+"\"%B\" مۇندەرىجىنى بىر تەرەپ قىلالمىدى چۈنكى ئۇنى ئوقۇش ھوقۇقىڭىز يوق."
 
 #: ../libcore/marlin-file-operations.c:2844
 msgid ""
@@ -780,7 +791,7 @@ msgstr "\"%B\" غا كۆچۈرگەندە خاتالىق كۆرۈلدى."
 
 #: ../libcore/marlin-file-operations.c:2951
 msgid "You do not have permissions to access the destination folder."
-msgstr "نىشان قىسقۇچنى زىيارەت قىلىش ھوقۇقىڭىز يوق."
+msgstr "نىشان مۇندەرىجىنى زىيارەت قىلىش ھوقۇقىڭىز يوق."
 
 #: ../libcore/marlin-file-operations.c:2953
 msgid "There was an error getting information about the destination."
@@ -788,7 +799,7 @@ msgstr "نىشان ھەققىدىكى ئۇچۇرغا ئېرىشىشتە خاتا
 
 #: ../libcore/marlin-file-operations.c:2990
 msgid "The destination is not a folder."
-msgstr "نىشان قىسقۇچ ئەمەس."
+msgstr "نىشان مۇندەرىجە ئەمەس."
 
 #: ../libcore/marlin-file-operations.c:3023
 msgid ""
@@ -801,7 +812,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:3025
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "%S نى ئىشلەتكىلى بولىدۇ، لىكىن %S زۆرۈر."
 
 #: ../libcore/marlin-file-operations.c:3053
 msgid "The destination is read-only."
@@ -817,362 +828,356 @@ msgstr "\"%B\" نى \"%B\" غا كۆچۈرۈۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:3119
 msgid "Duplicating \"%B\""
-msgstr "\"%B\" جايىدا كۆچۈرۈۋاتىدۇ"
+msgstr "\"%B\" نى جايىدا كۆچۈرۈۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:3123
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(\"%B\" دىكى) %'d پارچە ھۆججەتنى \"%B\" غا يۆتكەۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:3126
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(\"%B\" دىكى) %'d پارچە ھۆججەتنى \"%B\" غا كۆچۈرۈۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:3133
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(\"%B\" دىكى) %'d پارچە ھۆججەتنى جايىدا كۆچۈرىۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:3142
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d پارچە ھۆججەتنى \"%B\" غا يۆتكەۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:3146
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d پارچە ھۆججەتنى \"%B\" غا كۆچۈرۈۋاتىدۇ"
 
 #: ../libcore/marlin-file-operations.c:3151
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d پارچە ھۆججەتنى جايىدا كۆچۈرۈۋاتىدۇ"
 
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
 #: ../libcore/marlin-file-operations.c:3202
 #, c-format
 msgid "%S of %S"
-msgstr "%S جەمئىي %S"
+msgstr "%S / %S"
 
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
 #. / "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:3211
+#: ../libcore/marlin-file-operations.c:3212
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S جەمئىي %S — %T قالدى (%S/sec)"
+msgstr[0] "%S/%S — %T قالدى (%S/سىكۇنت)"
 
-#: ../libcore/marlin-file-operations.c:3590
+#: ../libcore/marlin-file-operations.c:3591
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
-"\"%B\" قىسقۇچنى كۆچۈرەلمىدى چۈنكى سىزنىڭ نىشان ئورۇندا ئۇنى قۇرۇش ھوقۇقىڭىز "
-"يوق."
+"\"%B\" مۇندەرىجىنى كۆچۈرەلمىدى چۈنكى سىزنىڭ نىشان ئورۇندا ئۇنى قۇرۇش "
+"ھوقۇقىڭىز يوق."
 
-#: ../libcore/marlin-file-operations.c:3593
+#: ../libcore/marlin-file-operations.c:3594
 msgid "There was an error creating the folder \"%B\"."
-msgstr "\"%B\" قىسقۇچنى قۇرغاندا خاتالىق كۆرۈلدى."
+msgstr "\"%B\" مۇندەرىجىنى قۇرغاندا خاتالىق كۆرۈلدى."
 
-#: ../libcore/marlin-file-operations.c:3723
+#: ../libcore/marlin-file-operations.c:3724
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
-"\"%B\" قىسقۇچتىكى ھۆججەتنى كۆچۈرەلمىدى چۈنكى ئۇنى كۆرۈش ھوقۇقىڭىز يوق."
+"\"%B\" مۇندەرىجىدىكى ھۆججەتنى كۆچۈرەلمىدى چۈنكى ئۇنى كۆرۈش ھوقۇقىڭىز يوق."
 
-#: ../libcore/marlin-file-operations.c:3768
+#: ../libcore/marlin-file-operations.c:3769
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr "\"%B\" قىسقۇچنى كۆچۈرەلمىدى چۈنكى ئۇنى ئوقۇش ھوقۇقىڭىز يوق."
-
-#: ../libcore/marlin-file-operations.c:3813
-#: ../libcore/marlin-file-operations.c:4519
-msgid "Error while moving \"%B\"."
-msgstr "\"%B\" يۆتكەۋاتقاندا خاتالىق كۆرۈلدى."
+msgstr "\"%B\" مۇندەرىجىنى كۆچۈرەلمىدى چۈنكى ئۇنى ئوقۇش ھوقۇقىڭىز يوق."
 
 #: ../libcore/marlin-file-operations.c:3814
-msgid "Could not remove the source folder."
-msgstr "ئەسلى قىسقۇچنى چىقىرىۋېتەلمىدى."
+#: ../libcore/marlin-file-operations.c:4520
+msgid "Error while moving \"%B\"."
+msgstr "\"%B\" نى يۆتكەۋاتقاندا خاتالىق كۆرۈلدى."
 
-#: ../libcore/marlin-file-operations.c:3899
-#: ../libcore/marlin-file-operations.c:3940
-#: ../libcore/marlin-file-operations.c:4521
-msgid "Error while copying \"%B\"."
-msgstr "\"%B\" كۆچۈرۈۋاتقاندا خاتالىق كۆرۈلدى."
+#: ../libcore/marlin-file-operations.c:3815
+msgid "Could not remove the source folder."
+msgstr "ئەسلى مۇندەرىجەنى چىقىرىۋېتەلمىدى."
 
 #: ../libcore/marlin-file-operations.c:3900
+#: ../libcore/marlin-file-operations.c:3941
+#: ../libcore/marlin-file-operations.c:4522
+msgid "Error while copying \"%B\"."
+msgstr "\"%B\" نى كۆچۈرۈۋاتقاندا خاتالىق كۆرۈلدى."
+
+#: ../libcore/marlin-file-operations.c:3901
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr "مەۋجۇت قىسقۇچ %F دىن ھۆججەتلەرنى چىقىرىۋېتەلمىدى."
+msgstr "مەۋجۇت مۇندەرىجە %F دىن ھۆججەتلەرنى چىقىرىۋېتەلمىدى."
 
-#: ../libcore/marlin-file-operations.c:3941
+#: ../libcore/marlin-file-operations.c:3942
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "مەۋجۇت ھۆججەت %F نى چىقىرىۋېتەلمىدى."
 
-#: ../libcore/marlin-file-operations.c:4271
-#: ../libcore/marlin-file-operations.c:4947
-msgid "You cannot move a folder into itself."
-msgstr "قىسقۇچنى ئۆزىگە يۆتكىيەلمەيسىز."
-
 #: ../libcore/marlin-file-operations.c:4272
 #: ../libcore/marlin-file-operations.c:4948
-msgid "You cannot copy a folder into itself."
-msgstr "قىسقۇچنى ئۆزىگە كۆچۈرەلمەيسىز."
+msgid "You cannot move a folder into itself."
+msgstr "مۇندەرىجەنى ئۆزىگە يۆتكىيەلمەيسىز."
 
 #: ../libcore/marlin-file-operations.c:4273
 #: ../libcore/marlin-file-operations.c:4949
-msgid "The destination folder is inside the source folder."
-msgstr "نىشان قىسقۇچ مەنبە قىسقۇچتا."
+msgid "You cannot copy a folder into itself."
+msgstr "مۇندەرىجەنى ئۆزىگە كۆچۈرەلمەيسىز."
 
-#: ../libcore/marlin-file-operations.c:4304
+#: ../libcore/marlin-file-operations.c:4274
+#: ../libcore/marlin-file-operations.c:4950
+msgid "The destination folder is inside the source folder."
+msgstr "نىشان مۇندەرىجە مەنبە مۇندەرىجىنىڭ ئىچىدە."
+
+#: ../libcore/marlin-file-operations.c:4305
 msgid "You cannot move a file over itself."
 msgstr "ھۆججەتنى ئۆزىگە يۆتكىيەلمەيسىز."
 
-#: ../libcore/marlin-file-operations.c:4305
+#: ../libcore/marlin-file-operations.c:4306
 msgid "You cannot copy a file over itself."
 msgstr "ھۆججەتنى ئۆزىگە كۆچۈرەلمەيسىز."
 
-#: ../libcore/marlin-file-operations.c:4306
+#: ../libcore/marlin-file-operations.c:4307
 msgid "The source file would be overwritten by the destination."
 msgstr "مەنبە ھۆججەت نىشان ھۆججەت تەرىپىدىن قاپلىنىدۇ."
 
-#: ../libcore/marlin-file-operations.c:4523
+#: ../libcore/marlin-file-operations.c:4524
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr "%F دىكى ئوخشاش ئاتتىكى ھۆججەتنى يۆتكىۋېتەلمىدى."
-
-#: ../libcore/marlin-file-operations.c:4593
-msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "%F دىكى ئوخشاش ئىسىمتىكى ھۆججەتنى يۆتكىۋېتەلمىدى."
 
 #: ../libcore/marlin-file-operations.c:4594
+msgid "Cannot copy \"%B\" here."
+msgstr "\"%B\" نى بۇيەرگە كۆچۈرگىلى بولمايدۇ"
+
+#: ../libcore/marlin-file-operations.c:4595
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "ھۆججەتنى \"%B\" غا كۆچۈرۈۋاتقاندا خاتالىق كۆرۈلدى."
 
-#: ../libcore/marlin-file-operations.c:4821
+#: ../libcore/marlin-file-operations.c:4822
 msgid "Copying Files"
-msgstr "ھۆججەت كۆچۈرۈۋاتىدۇ"
+msgstr "ھۆججەتلەرنى كۆچۈرۈۋاتىدۇ"
 
-#: ../libcore/marlin-file-operations.c:4847
+#: ../libcore/marlin-file-operations.c:4848
 msgid "Preparing to move to \"%B\""
-msgstr ""
+msgstr "\"%B\" غا يۆتكەشكە تەييارلاۋاتىدۇ"
 
-#: ../libcore/marlin-file-operations.c:4859
+#: ../libcore/marlin-file-operations.c:4860
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "%'d ھۆججەتنى يۆتكەشكە تەييارلىنىۋاتىدۇ"
 
-#: ../libcore/marlin-file-operations.c:5107
-#, c-format
-msgid "Error while moving \"%F\"."
-msgstr ""
-
 #: ../libcore/marlin-file-operations.c:5108
 #, c-format
+msgid "Error while moving \"%F\"."
+msgstr "\"%F\" قا يۆتكەۋاتقاندا خاتالىق كۆرۈلدى."
+
+#: ../libcore/marlin-file-operations.c:5109
+#, c-format
 msgid "There was an error moving the file into %F."
-msgstr "ھۆججەتنى %F غا يۆتكەشتە خاتالىق كۆرۈلدى."
+msgstr "ھۆججەتنى %F قا يۆتكەشتە خاتالىق كۆرۈلدى."
 
-#: ../libcore/marlin-file-operations.c:5370
+#: ../libcore/marlin-file-operations.c:5371
 msgid "Moving Files"
-msgstr "ھۆججەت يۆتكەۋاتىدۇ"
+msgstr "ھۆججەتلەرنى يۆتكەۋاتىدۇ"
 
-#: ../libcore/marlin-file-operations.c:5399
+#: ../libcore/marlin-file-operations.c:5400
 msgid "Creating links in \"%B\""
 msgstr "\"%B\" نى كۆرسەتكەن ئۇلانما قۇرۇۋاتىدۇ"
 
-#: ../libcore/marlin-file-operations.c:5410
+#: ../libcore/marlin-file-operations.c:5411
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "ھۆججەت %'d غا ئۇلانما قۇرۇۋاتىدۇ"
 
-#: ../libcore/marlin-file-operations.c:5551
+#: ../libcore/marlin-file-operations.c:5552
 msgid "Error while creating link to %B."
 msgstr "%B غا ئۇلانما قۇرغاندا خاتالىق كۆرۈلدى."
 
-#: ../libcore/marlin-file-operations.c:5553
+#: ../libcore/marlin-file-operations.c:5554
 msgid "Symbolic links only supported for local files"
 msgstr "بەلگە ئۇلانمىسى يەرلىك ھۆججەتنىلا قوللايدۇ"
 
-#: ../libcore/marlin-file-operations.c:5556
+#: ../libcore/marlin-file-operations.c:5557
 msgid "The target doesn't support symbolic links."
 msgstr "نىشان بەلگە ئۇلانمىنى قوللىمايدۇ."
 
-#: ../libcore/marlin-file-operations.c:5559
+#: ../libcore/marlin-file-operations.c:5560
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr "%F غا بەلگە ئۇلىنىشى قۇرغاندا خاتالىق كۆرۈلدى."
+msgstr "%F تە بەلگە ئۇلىنىشى قۇرغاندا خاتالىق كۆرۈلدى."
 
-#: ../libcore/marlin-file-operations.c:5887
-#: ../libcore/marlin-file-operations.c:5890
+#: ../libcore/marlin-file-operations.c:5888
+#: ../libcore/marlin-file-operations.c:5891
 msgid "Setting permissions"
-msgstr "ئىمتىيازلار تەڭشىكى"
-
-#: ../libcore/marlin-file-operations.c:6002
-msgid "Cannot copy into trash."
-msgstr ""
+msgstr "سالاھىيەت تەڭشىكى"
 
 #: ../libcore/marlin-file-operations.c:6003
+msgid "Cannot copy into trash."
+msgstr "ئەخلەت چېلىكىگە كۆپەيتكىلى بولمايدۇ."
+
+#: ../libcore/marlin-file-operations.c:6004
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "ھۆججەتلەرنى ئەخلەت چېلىكىگە كۆپەيتكىلى بولمايدۇ."
 
-#: ../libcore/marlin-file-operations.c:6144
+#: ../libcore/marlin-file-operations.c:6145
 msgid "untitled folder"
-msgstr ""
+msgstr "ئىسىمسىز مۇندەرىجە"
 
-#: ../libcore/marlin-file-operations.c:6152
+#: ../libcore/marlin-file-operations.c:6153
 msgid "new file"
-msgstr ""
+msgstr "يىڭى ھۆججەت قۇرۇش"
 
-#: ../libcore/marlin-file-operations.c:6323
+#: ../libcore/marlin-file-operations.c:6324
 msgid "Error while creating directory %B."
-msgstr "%B مۇندەرىجە قۇرۇشتا خاتالىق كۆرۈلدى."
+msgstr "%B مۇندەرىجىنى قۇرۇشتا خاتالىق كۆرۈلدى."
 
-#: ../libcore/marlin-file-operations.c:6325
+#: ../libcore/marlin-file-operations.c:6326
 msgid "Error while creating file %B."
-msgstr "%B ھۆججەت قۇرۇشتا خاتالىق كۆرۈلدى."
+msgstr "%B ھۆججەتنى قۇرۇشتا خاتالىق كۆرۈلدى."
 
-#: ../libcore/marlin-file-operations.c:6327
+#: ../libcore/marlin-file-operations.c:6328
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "%F غا مۇندەرىجە قۇرغاندا خاتالىق كۆرۈلدى."
 
-#: ../libcore/marlin-file-operations.c:6649
+#: ../libcore/marlin-file-operations.c:6650
 msgid "Emptying the trash"
-msgstr ""
+msgstr "ئەخلەت چېلىكىنى قۇرۇقداۋاتىدۇ"
 
-#: ../libcore/marlin-file-operations.c:6661
+#: ../libcore/marlin-file-operations.c:6662
 msgid "Emptying Trash"
-msgstr "ئەخلەتخانىنى بوشىتىۋاتىدۇ"
+msgstr "ئەخلەت چېلىكىنى بوشىتىۋاتىدۇ"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "ئەسلى ئورنىنى جەزىملەشتۈرگىلى بولمىدى"
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "ئەخلەت چېلىكىنى ئىچىڭ ۋە ئەسلىگە قايتۇرۇڭ"
 
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
 msgid "Delete %d copied items"
-msgstr "كۆچۈرۈلگەن %d دانە تۈرنى ئۆچۈر"
+msgstr "كۆچۈرۈلگەن %d دانە تۈرنى ئۆچۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1228
 #: ../libcore/marlin-undostack-manager.c:1238
 #: ../libcore/marlin-undostack-manager.c:1269
 #, c-format
 msgid "Delete '%s'"
-msgstr "‹%s› نى ئۆچۈر"
+msgstr "‹'%s' نى ئۆچۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1235
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr "تەكرارلانغان %d تۈرنى ئۆچۈر"
+msgstr "تەكرارلانغان %d تۈرنى ئۆچۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "%d دانە تۈرنى ‹%s› گە ئەسلىگە كەلتۈر"
+msgstr "%d دانە تۈرنى ‹%s› گە ئەسلىگە كەلتۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr "‹%s› نى ‹%s› غا يۆتكەپ قايتۇرىدۇ"
+msgstr "‹%s› نى ‹%s›غا قايتۇرۇپ ئەكىلىش"
 
 #: ../libcore/marlin-undostack-manager.c:1259
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "‹%s› ئاتنى ‹%s› غا ئۆزگەرت"
+msgstr "‹%s› ئىسىمنى ‹%s› غا ئۆزگەرت"
 
 #: ../libcore/marlin-undostack-manager.c:1278
 #: ../libcore/marlin-undostack-manager.c:1473
 #, c-format
 msgid "Restore %d items from trash"
-msgstr "%d دانە تۈرنى ئەخلەتخانىدىن ئەسلىگە كەلتۈر"
+msgstr "%d دانە تۈرنى ئەخلەت چېلىكىدىن ئەسلىگە كەلتۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr "‹%s› نى ‹%s› غا ئەسلىگە كەلتۈر"
+msgstr "‹%s› نى ‹%s› غا ئەسلىگە كەلتۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "%d دانە تۈرنى ئەخلەتخانىغا يەنە يۆتكە"
+msgstr "%d دانە تۈرنى ئەخلەت چېلىكىگە يەنە تاشلاش"
 
 #: ../libcore/marlin-undostack-manager.c:1300
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "‹%s› نى ئەخلەتخانىغا قايتۇرۇپ يۆتكە"
+msgstr "‹%s› نى ئەخلەت چېلىكىگە يەنە تاشلاش"
 
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
 msgid "Delete links to %d items"
-msgstr "%d دانە تۈرگە بولغان ئۇلانمىنى ئۆچۈر"
+msgstr "%d دانە تۈرگە بولغان ئۇلانمىنى ئۆچۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
 msgid "Delete link to '%s'"
-msgstr "‹%s› غىچە ئۇلانمىنى ئۆچۈر"
+msgstr "‹%s› غىچە ئۇلانمىنى ئۆچۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "‹%s› دىكى تاماملانغان تۈرنىڭ دەسلەپكى ئىمتىيازىنى ئەسلىگە كەلتۈرىدۇ"
+msgstr "‹%s› دىكى تاماملانغان تۈرنىڭ دەسلەپكى ئىمتىيازىنى ئەسلىگە كەلتۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1330
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr "‹%s› نىڭ دەسلەپكى ئىمتىيازىنى ئەسلىگە كەلتۈر"
+msgstr "‹%s› نىڭ دەسلەپكى ئىمتىيازىنى ئەسلىگە كەلتۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1339
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "‹%s›  گۇرۇپپىنى ‹%s› غا ئەسلىگە كەلتۈر"
+msgstr "‹%s›  گۇرۇپپىنى ‹%s› غا ئەسلىگە كەلتۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1349
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr "‹%s› نىڭ ئىگىدارىنى ‹%s› غا ئەسلىگە كەلتۈر"
+msgstr "‹%s› نىڭ ئىگىدارىنى ‹%s› غا ئەسلىگە كەلتۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr "%d دانە تۈرنى ‹%s› غا كۆچۈر"
+msgstr "%d دانە تۈرنى ‹%s› غا كۆچۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr "‹%s› نى ‹%s› غا كۆچۈر"
+msgstr "‹%s› نى ‹%s› غا كۆچۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1400
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "%d تۈرنى '%s' دا جايىدا نۇسخىلاش"
 
 #: ../libcore/marlin-undostack-manager.c:1405
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr "'%2$s' دىكى '%1$s'نى نۇسخىلا"
+msgstr "'%2$s' دىكى '%1$s'نى نۇسخىلاش"
 
 #: ../libcore/marlin-undostack-manager.c:1413
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr "%d دانە تۈرنى ‹%s› گە يۆتكە"
+msgstr "%d دانە تۈرنى ‹%s› گە يۆتكەش"
 
 #: ../libcore/marlin-undostack-manager.c:1417
 #, c-format
@@ -1182,422 +1187,384 @@ msgstr "‹%s› نى ‹%s› غا يۆتكە"
 #: ../libcore/marlin-undostack-manager.c:1435
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr "يېڭىدىن ‹%s› دېگەن ھۆججەتنى قېلىپ ئاساسىدا قۇرىدۇ "
+msgstr "يېڭىدىن ‹%s› دېگەن ھۆججەتنى قېلىپ ئاساسىدا قۇرۇش "
 
 #: ../libcore/marlin-undostack-manager.c:1442
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr "‹%s› بىر بوش ھۆججەت قۇر"
+msgstr "‹%s›ناملىق بىر بوش ھۆججەت قۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1449
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr "يېڭىدىن ‹%s› دېگەن قىسقۇچنى قۇرىدۇ"
+msgstr "يېڭىدىن ‹%s› دېگەن مۇندەرىجىنى قۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1457
 #, c-format
 msgid "Move %d items to trash"
-msgstr "%d دانە تۈرنى ئەخلەتخانىغا يۆتكە"
+msgstr "%d دانە تۈرنى ئەخلەت چېلىكىگە تاشلاش"
 
 #: ../libcore/marlin-undostack-manager.c:1463
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "‹%s› نى ئەخلەتخانىغا يۆتكە"
+msgstr "‹%s› نى ئەخلەت چېلىكىغا يۆتكەش"
 
 #: ../libcore/marlin-undostack-manager.c:1476
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr "‹%s› نى ئەخلەتخانىدىن ئەسلىگە كەلتۈر"
+msgstr "‹%s› نى ئەخلەت چېلىكىدىن ئەسلىگە كەلتۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1485
 #, c-format
 msgid "Create links to %d items"
-msgstr "%d دانە تۈرگە بولغان ئۇلانمىنى قۇر"
+msgstr "%d دانە تۈرگە بولغان ئۇلانمىنى قۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1488
 #, c-format
 msgid "Create link to '%s'"
-msgstr "‹%s› غىچە ئۇلانما قۇر"
+msgstr "‹%s› غا ئۇلانما قۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1497
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "‹%s› دىكى تاماملانغان تۈرنىڭ ئىمتىيازىنى تەڭشەيدۇ"
+msgstr "‹%s› دىكى مۇناسىۋەتلىك تۈرنىڭ سالاھىيىتىنى تەڭشەش"
 
 #: ../libcore/marlin-undostack-manager.c:1505
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr "‹%s› نىڭ ئىمتىيازلار تەڭشىكى"
+msgstr "‹%s› نىڭ سالاھىيىتىنى تەڭشەش"
 
 #: ../libcore/marlin-undostack-manager.c:1514
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr "‹%s›  گۇرۇپپىنى ‹%s› غا تەڭشە"
+msgstr "“%s”تىكى گۇرۇپپىنى “%s” قىلىپ تەڭشەش"
 
 #: ../libcore/marlin-undostack-manager.c:1524
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr "‹%s› نىڭ ئىگىدارىنى ‹%s› غا تەڭشە"
+msgstr "“%s” نى “%s” نىڭ ئىگىسى قىلىپ تەڭشەش"
 
 #: ../libcore/marlin-undostack-manager.c:1556
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنى كۆپەيتىشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1561
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنى جايىدا كۆپەيتىشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1566
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنى يۆتكەشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1571
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d نىڭ ئىسمىنى ئۆزگەرتىشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1575
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "قۇرۇق ھۆججەت قۇرۇشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1578
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "قىلىپقا ئاساسەن ھۆججەت قۇرۇشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d مۇندەرىجە قۇرۇشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1587
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d نى ئەخلەت چېلىكىگە تاشلاشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1592
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ئەخلەت چېلىكىدىن %d تۈرنى ئەسلىگە كەلتۈرۈشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1597
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرگە ئۇلانما قۇرۇشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1602
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنى ئۆچۈرۈشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1607
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنىڭ تەۋەلىك سالاھىيىتىنى ئۆزگەرتىشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1613
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنىڭ سالاھىيىتىنى ئۆزگەرتىشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1618
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنىڭ گۇرۇپپىسىنى ئۆزگەرتىشنى ئەمەلدىن قالدۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1623
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنىڭ ئىگىسىنى ئۆزگەرتىشنى ئەمەلدىن قالدرۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1651
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنى قايتا كۆپەيتىش"
 
 #: ../libcore/marlin-undostack-manager.c:1656
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d  تۈرنى قايتا جايىدا كۆپەيتىش"
 
 #: ../libcore/marlin-undostack-manager.c:1661
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنى قايتا يۆتكەش"
 
 #: ../libcore/marlin-undostack-manager.c:1666
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنىڭ ئىسمىنى قايتا ئۆزگەرتىش"
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "قايتا قۇرۇق ھۆججەت قۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1673
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "قىلىپقا ئاساسەن قايتا ھۆججەت قۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "قايتا %d مۇندەرىجە قۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1682
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنى ئەخلەت چېلىكىگە قايتا تاشلاش"
 
 #: ../libcore/marlin-undostack-manager.c:1687
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنى ئەخلەت چېلىكىدىن قايتا قايتۇرۇپ ئەكىلىش"
 
 #: ../libcore/marlin-undostack-manager.c:1692
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنىڭ ئۇلانمىسىنى قايتا قۇرۇش"
 
 #: ../libcore/marlin-undostack-manager.c:1697
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنى قايتا ئۆچۈرۈش"
 
 #: ../libcore/marlin-undostack-manager.c:1702
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنىڭ سالاھىيىتىنى قايتىلانما ھالدا قايتىدىن ئۆزگەرتىش"
 
 #: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنىڭ سالاھىيىتىنى قايتىدىن ئۆزگەرتىش"
 
 #: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنىڭ گۇرۇپپىسىنى قايتىدىن ئۆزگەرتىش"
 
 #: ../libcore/marlin-undostack-manager.c:1718
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d تۈرنىڭ ئىگىسىنى قايتىدىن ئۆزگەرتىش"
 
-#: ../libcore/eel-fcts.c:85
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "بۈگۈن  %-I:%M %p دە"
 
-#: ../libcore/eel-fcts.c:89
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "تۈنۈگۈن  %-I:%M %p دە"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b  %-I:%M %p دە"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a %-d %b %Y  %-I:%M %p دە"
 
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
-msgstr "تەييارلىق ھالەت"
+msgstr "تەييارلاۋاتىدۇ"
 
-#: ../filechooser-module/FileChooserDialog.vala:69
-#: ../libwidgets/Chrome/TopMenu.vala:51
+#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
-msgstr ""
+msgstr "ئالدىنقىسى"
 
-#: ../filechooser-module/FileChooserDialog.vala:73
-#: ../libwidgets/Chrome/TopMenu.vala:55
+#: ../filechooser-module/FileChooserDialog.vala:74
+#: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
-msgstr ""
+msgstr "كىيىنكىسى"
 
-#: ../src/View/Window.vala:204
+#: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
-msgstr ""
+msgstr "Files سىزنىڭ نورمالدىكى ھۆججەت باشقۇرغۇچىڭىز ئەمەس."
 
-#: ../src/View/Window.vala:210
+#: ../src/View/Window.vala:213
 msgid "Set as Default"
-msgstr ""
+msgstr "نورمالدىكىسى قىلىپ تەڭشەش"
 
-#: ../src/View/Window.vala:216
+#: ../src/View/Window.vala:219
 msgid "Ignore"
-msgstr "پەرۋا قىلما"
+msgstr "نەزەردىن ساقىت قىلىش"
 
-#: ../src/View/Sidebar.vala:472
+#: ../src/View/Sidebar.vala:481
 msgid "Personal"
 msgstr "شەخسىي"
 
-#: ../src/View/Sidebar.vala:473
+#: ../src/View/Sidebar.vala:482
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "ئادەتتە كۆپ ئىشلەتكەن ئورنىڭىز ۋە خەتكۈچلىرىڭىز"
 
-#: ../src/View/Sidebar.vala:485 ../src/View/ViewContainer.vala:331
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
 msgid "Home"
-msgstr "ماكان"
+msgstr "باش بەت"
 
-#: ../src/View/Sidebar.vala:492
+#: ../src/View/Sidebar.vala:501
 msgid "Open your personal folder"
-msgstr "شەخسىي قىسقۇچىڭىزنى ئاچىدۇ"
+msgstr "شەخسىي مۇندەرىجەىڭىزنى ئىچىش"
 
-#: ../src/View/Sidebar.vala:507
+#: ../src/View/Sidebar.vala:516
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "يىقىندا ئىشلەتكەن ھۆججەتلەر تىزىملىكىنى كۆرۈش"
 
-#: ../src/View/Sidebar.vala:528 ../libwidgets/Resources.vala:90
+#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
 msgid "Trash"
-msgstr "ئەخلەتخانا"
+msgstr "ئەخلەت چېلىكى"
 
-#: ../src/View/Sidebar.vala:535
+#: ../src/View/Sidebar.vala:544
 msgid "Open the Trash"
-msgstr ""
+msgstr "ئەخلەت چېلىكىنى ئىچىش"
 
-#: ../src/View/Sidebar.vala:539
+#: ../src/View/Sidebar.vala:548
 msgid "Devices"
 msgstr "ئۈسكۈنىلەر"
 
-#: ../src/View/Sidebar.vala:540
+#: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "سىزنىڭ يەرلىكتىكى تارماق رايونىڭىز ۋە ئۈسكۈنىلىرىڭىز"
 
-#: ../src/View/Sidebar.vala:546 ../src/View/VolumePropertiesWindow.vala:44
-#: ../src/View/ViewContainer.vala:333 ../libwidgets/Resources.vala:93
+#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "ھۆججەت سىستېمىسى"
 
-#: ../src/View/Sidebar.vala:664 ../libwidgets/Resources.vala:87
+#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
 msgstr "تور"
 
-#: ../src/View/Sidebar.vala:665
+#: ../src/View/Sidebar.vala:674
 msgid "Your network places"
-msgstr ""
+msgstr "سىزنىڭ تور ئورنىڭىز"
 
-#: ../src/View/Sidebar.vala:697
+#: ../src/View/Sidebar.vala:706
 msgid "Entire Network"
-msgstr ""
+msgstr "تور ئۈسكۈنىلىرى"
 
-#: ../src/View/Sidebar.vala:704
+#: ../src/View/Sidebar.vala:713
 msgid "Browse the contents of the network"
-msgstr "تور مۇندەرىجىسىگە كۆز يۈگۈرتىدۇ"
+msgstr "توردىكى مەزمۇنلارنى زىيارەت قىلىش"
 
-#: ../src/View/Sidebar.vala:830
+#: ../src/View/Sidebar.vala:845
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s نى ئىشلەتكىلى بولىدۇ،جەمئىي %s)"
 
-#: ../src/View/Sidebar.vala:1325
+#: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
-msgstr "%s نى قوزغىتالمايدۇ"
+msgstr "%s نى قوزغاتقىلى بولمىدى"
 
-#: ../src/View/Sidebar.vala:1429
+#: ../src/View/Sidebar.vala:1445
 msgid "Open"
-msgstr ""
+msgstr "ئىچىش"
 
-#: ../src/View/Sidebar.vala:1437
+#: ../src/View/Sidebar.vala:1453
 msgid "Open in New _Tab"
-msgstr "يېڭى بەتكۈچتە ئاچ(_T)"
+msgstr "يېڭى بەتكۈچتە ئىچىش(_T)"
 
-#: ../src/View/Sidebar.vala:1443
+#: ../src/View/Sidebar.vala:1459
 msgid "Open in New _Window"
-msgstr "يېڭى كۆزنەكتە ئاچ(_W)"
+msgstr "يېڭى كۆزنەكتە ئىچىش(_W)"
 
-#: ../src/View/Sidebar.vala:1451
+#: ../src/View/Sidebar.vala:1467
 msgid "Remove"
-msgstr "چىقىرىۋەت"
+msgstr "چىقىرىۋىتىش"
 
-#: ../src/View/Sidebar.vala:1459 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr ""
+msgstr "ئىسمىنى ئۆزگەرتىش"
 
-#: ../src/View/Sidebar.vala:1468
+#: ../src/View/Sidebar.vala:1484
 msgid "_Mount"
-msgstr "ئېگەرلە(_M)"
+msgstr "چىتىش(_M)"
 
-#: ../src/View/Sidebar.vala:1474
+#: ../src/View/Sidebar.vala:1490
 msgid "_Unmount"
-msgstr "ئېگەرسىزلە(_U)"
+msgstr "چۈشۈرۈش(_U)"
 
-#: ../src/View/Sidebar.vala:1480
+#: ../src/View/Sidebar.vala:1496
 msgid "_Eject"
 msgstr "دىسكىنى چىقىرىش(_E)"
 
-#: ../src/View/Sidebar.vala:1494 ../src/View/PropertiesWindow.vala:130
+#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
 #: ../src/View/directory_view_popup.ui:99
 msgid "Properties"
-msgstr "خاسلىق"
-
-#: ../src/View/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr ""
-
-#: ../src/View/VolumePropertiesWindow.vala:78
-#: ../src/View/PropertiesWindow.vala:597
-msgid "Location:"
-msgstr ""
-
-#: ../src/View/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr ""
+msgstr "خاسلىقلىرى"
 
 #: ../src/View/ListView.vala:26
 msgid "Filename"
-msgstr "ھۆججەت ئاتى"
+msgstr "ھۆججەت ئىسىمى"
 
 #: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
 msgid "Size"
@@ -1611,21 +1578,21 @@ msgstr "تىپى"
 msgid "Modified"
 msgstr "ئۆزگەرتىلگەن ۋاقتى"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:355
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "بۇ مۇندەرىجە مەۋجۇت ئەمەس"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "مۇندەرىجە \"%s\" تىپىلمىدى."
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
-msgstr "ياسا"
+msgstr "قۇرۇش"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "مۇندەرىجە \"%s\" نى قۇرۇش"
 
 #: ../src/View/DirectoryNotFound.vala:44
 msgid ""
@@ -1633,388 +1600,265 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"مۇندەرىجە قۇرۇش مەغلۇپ بولدى\n"
+"\n"
+"%s"
 
-#: ../src/View/AbstractPropertiesDialog.vala:48
-msgid "Info"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:57
-msgid "General"
-msgstr "ئادەتتىكى"
-
-#: ../src/View/AbstractPropertiesDialog.vala:76
-msgid "Close"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:138
-msgid "Device Usage"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:154
-msgid "Capacity:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:155
-#: ../src/View/AbstractPropertiesDialog.vala:158
-#: ../src/View/AbstractPropertiesDialog.vala:161
-#: ../src/View/PropertiesWindow.vala:450 ../src/View/PropertiesWindow.vala:486
-msgid "Unknown"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:157
-msgid "Available:"
-msgstr ""
-
-#: ../src/View/AbstractPropertiesDialog.vala:160
-msgid "Used:"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:561
+#: ../src/View/AbstractDirectoryView.vala:550
 msgid "Failed to preview"
-msgstr ""
+msgstr "ئالدىن كۆرۈش مەغلۇپ بولدى"
 
-#: ../src/View/AbstractDirectoryView.vala:820
+#: ../src/View/AbstractDirectoryView.vala:805
 msgid "Cannot open this file"
-msgstr ""
+msgstr "بۇ ھۆججەتنى ئاچقىلى بولمىدى"
 
-#: ../src/View/AbstractDirectoryView.vala:833
+#: ../src/View/AbstractDirectoryView.vala:818
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "ئاچماقچى بولغان ھۆججەتنىڭ تۈرىنى پەرقلەندۈرگىلى بولمىدى"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1549
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "بۇ ھۆججەتنى قويغىلى بولمىدى"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1549
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "تەمىنلەنگەن ھۆججەت ئىسمى ئىناۋەتسىز"
 
-#: ../src/View/AbstractDirectoryView.vala:2012
+#: ../src/View/AbstractDirectoryView.vala:2004
 msgid "Invalid"
-msgstr ""
+msgstr "ئىناۋەتسىز"
 
-#: ../src/View/AbstractDirectoryView.vala:2018
+#: ../src/View/AbstractDirectoryView.vala:2010
 msgid "Run"
-msgstr ""
+msgstr "ئىجرا قىلىش"
 
-#: ../src/View/AbstractDirectoryView.vala:2023
+#: ../src/View/AbstractDirectoryView.vala:2015
 msgid "Open in %s"
-msgstr ""
+msgstr "%s دا ئىچىش"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2025
 msgid "Open in"
-msgstr ""
+msgstr "دا ئىچىش"
 
-#: ../src/View/AbstractDirectoryView.vala:2035
-#: ../libwidgets/View/BreadcrumbsEntry.vala:451
+#: ../src/View/AbstractDirectoryView.vala:2027
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
 msgid "Open with"
-msgstr ""
+msgstr "بىلەن ئىچىش"
 
-#: ../src/View/AbstractDirectoryView.vala:2095
+#: ../src/View/AbstractDirectoryView.vala:2087
 msgid "Other Application"
-msgstr ""
+msgstr "باشقا ئەپ"
 
-#: ../src/View/AbstractDirectoryView.vala:2353
+#: ../src/View/AbstractDirectoryView.vala:2348
 msgid "Untitled %s"
-msgstr ""
+msgstr "ئىسىمسىز %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2788
+#: ../src/View/AbstractDirectoryView.vala:2670
+#: ../src/View/AbstractDirectoryView.vala:2853
+msgid "Cannot remove files from here"
+msgstr "بۇ يەردىن ھۆججەتلەرنى يۆتكىگىلى بولمىدى"
+
+#: ../src/View/AbstractDirectoryView.vala:2671
+#: ../src/View/AbstractDirectoryView.vala:2841
+#: ../src/View/AbstractDirectoryView.vala:2854
+msgid "You do not have permission to change this location"
+msgstr "سىزنىڭ بۇ ئورۇننى ئۆزگەرتىش سالاھىيىتىڭىز يوق"
+
+#: ../src/View/AbstractDirectoryView.vala:2819
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "ئەخلەت چېلىكىدىكى ھۆججەتلەرنى كۆپەيتكىلى بولمايدۇ"
 
-#: ../src/View/AbstractDirectoryView.vala:2789
+#: ../src/View/AbstractDirectoryView.vala:2820
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "تاللانغان مەزمۇننى كىسىش"
 
-#: ../src/View/OverlayBar.vala:215 ../src/View/PropertiesWindow.vala:1301
+#: ../src/View/AbstractDirectoryView.vala:2840
+msgid "Cannot paste files here"
+msgstr "ھۆججەتلەرنى بۇ يەرگە چاپلىغىلى بولمىدى"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "(as Administrator)"
+msgstr "(باشقۇرغۇچى سالاھىيىتىدە)"
+
+#: ../src/View/ViewContainer.vala:372
+msgid "You cannot create a folder here."
+msgstr "سىز بۇ يەردە مۇندەرىجە قۇرالمايسىز."
+
+#: ../src/View/ViewContainer.vala:374
+msgid "The network is unavailable"
+msgstr "بۇ تورنى ئىشلەتكىلى بولمايدۇ"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "A working network is needed to reach this folder"
+msgstr "تورغا ئۇلىغاندا ئاندىن بۇ ھۆججەتنى ئاچقىلى بولىدۇ"
+
+#: ../src/View/ViewContainer.vala:377
+msgid "This Folder Does Not Belong to You"
+msgstr "بۇ مۇندەرىجە سىزگە تەۋە ئەمەس"
+
+#: ../src/View/ViewContainer.vala:378
+msgid "You don't have permission to view this folder."
+msgstr "سىزنىڭ بۇ مۇندەرىجىنى كۆرۈش ھوقۇقىڭىز يوق."
+
+#: ../src/View/ViewContainer.vala:380
+msgid "Unable to Mount Folder"
+msgstr "مۇندەرىجىگە ئۇلىغىلى بولمىدى"
+
+#: ../src/View/ViewContainer.vala:381
+msgid "Could not connect to the server for this folder."
+msgstr "بۇ مۇندەرىجە ساقلانغان مۇلازىمېتىرغا ئۇلىغىلى بولمىدى."
+
+#: ../src/View/ViewContainer.vala:383
+msgid "Unable to Show Folder"
+msgstr "مۇندەرىجىنى كۆرسەتكىلى بولمىدى"
+
+#: ../src/View/ViewContainer.vala:384
+msgid "The server for this folder could not be located."
+msgstr "بۇ مۇندەرىجە ساقلانغان مۇلازىمېتىرنىڭ ئورنىنى بىكىتكىلى بولمىدى."
+
+#: ../src/View/ViewContainer.vala:394
+msgid "File not Found"
+msgstr "ھۆججەت تىپىلمىدى"
+
+#: ../src/View/ViewContainer.vala:395
+msgid "The file selected no longer exists."
+msgstr "تاللانغان ھۆججەت مەۋجۇت ئەمەس."
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "بۇ مۇندەرىجە قۇرۇق"
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "ئەخلەت چېلىكى قۇرۇق"
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "يىقىندا ئىشلەتكەن ھۆججەت يوق"
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "زىيارەت رەت قىلىندى"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+msgid "Open in New Tab"
+msgstr "يېڭى بەتكۈچتە ئىچىش"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Window"
+msgstr "يېڭى كۆزنەكتە ئىچىش"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+msgid "Open in Other Application…"
+msgstr "باشقا ئەپتە ئىچىش...."
+
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "بۇ مۇندەرىجىنى قايتا يۈكلەش"
+
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
+msgid "Enter search term or path"
+msgstr "ئىزدەيدىغان سۆزنى ياكى ئورنىنى كىرگۈزۈڭ"
+
+#: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
-msgstr ""
+msgstr "%u مۇندەرىجە"
 
-#: ../src/View/OverlayBar.vala:217 ../src/View/OverlayBar.vala:225
+#: ../src/View/Widgets/OverlayBar.vala:232
+#: ../src/View/Widgets/OverlayBar.vala:240
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " ۋە  %u باشقا تۈر  (%s) تاللاندى"
 
-#: ../src/View/OverlayBar.vala:218 ../src/View/OverlayBar.vala:226
+#: ../src/View/Widgets/OverlayBar.vala:233
+#: ../src/View/Widgets/OverlayBar.vala:241
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " ۋە  %u باشقا تۈر  (%s) تاللاندى"
 
-#: ../src/View/OverlayBar.vala:221 ../src/View/OverlayBar.vala:229
+#: ../src/View/Widgets/OverlayBar.vala:236
+#: ../src/View/Widgets/OverlayBar.vala:244
 msgid " selected"
-msgstr ""
+msgstr " تاللاندى"
 
-#: ../src/View/OverlayBar.vala:223 ../src/View/PropertiesWindow.vala:1272
-#: ../src/View/PropertiesWindow.vala:1311
+#: ../src/View/Widgets/OverlayBar.vala:238
+#: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:231
-msgid "%u items selected (%s)"
-msgstr ""
-
-#. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/OverlayBar.vala:272
-msgid "%u sub-folder, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:272
-msgid "%u sub-folders, "
-msgstr ""
-
-#. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/OverlayBar.vala:278
-msgid "%u file, "
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:278
-msgid "%u files, "
-msgstr ""
-
-#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/OverlayBar.vala:288
-msgid "%s approx."
-msgstr ""
-
-#. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/OverlayBar.vala:291
-msgid "unknown size"
-msgstr ""
-
-#. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/OverlayBar.vala:295
-msgid "%u file not readable"
-msgstr ""
-
-#: ../src/View/OverlayBar.vala:295
-msgid "%u files not readable"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:202
-msgid "Permissions"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:229
-msgid "Preview"
-msgstr "ئالدىن كۆزەت"
-
-#: ../src/View/PropertiesWindow.vala:245
-msgid "Actual Size Could Be Larger"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:245
-msgid "%i file could not be read due to permissions or other errors."
-msgid_plural "%i files could not be read due to permissions or other errors."
+msgid_plural "%u folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/View/PropertiesWindow.vala:264 ../src/View/PropertiesWindow.vala:283
-msgid "unknown"
-msgstr ""
+#: ../src/View/Widgets/OverlayBar.vala:246
+msgid "%u items selected (%s)"
+msgstr "%u تۈر تاللاندى (%s)"
 
-#: ../src/View/PropertiesWindow.vala:461
-msgid "Loading…"
-msgstr ""
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folder, "
+msgstr "%u بالا مۇندەرىجە، "
 
-#: ../src/View/PropertiesWindow.vala:492
-msgid "Could not be determined"
-msgstr ""
+#: ../src/View/Widgets/OverlayBar.vala:287
+msgid "%u sub-folders, "
+msgstr "%u بالا مۇندەرىجە، "
 
-#: ../src/View/PropertiesWindow.vala:528
-msgid "Contains:"
-msgstr ""
+#. / TRANSLATORS: %u will be substituted by the number of readable files
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u file, "
+msgstr "%u ھۆججەت، "
 
-#: ../src/View/PropertiesWindow.vala:544
-msgid "Created:"
-msgstr ""
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "%u files, "
+msgstr "%u ھۆججەت، "
 
-#: ../src/View/PropertiesWindow.vala:552
-msgid "Modified:"
-msgstr ""
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: ../src/View/Widgets/OverlayBar.vala:303
+msgid "%s approx."
+msgstr "%s تەخمىنەن"
 
-#: ../src/View/PropertiesWindow.vala:561
-msgid "Last Access:"
-msgstr ""
+#. / TRANSLATORS: 'size' refers to disk space
+#: ../src/View/Widgets/OverlayBar.vala:306
+msgid "unknown size"
+msgstr "چوڭلۇقى نامەلۇم"
 
-#: ../src/View/PropertiesWindow.vala:572
-msgid "Deleted:"
-msgstr ""
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u file not readable"
+msgstr "%s ھۆججەت ئوقۇغىلى بولمايدىغان ھۆججەت"
 
-#: ../src/View/PropertiesWindow.vala:582
-msgid "Mimetype:"
-msgstr ""
+#: ../src/View/Widgets/OverlayBar.vala:310
+msgid "%u files not readable"
+msgstr "%u ھۆججەت ئوقۇغىلى بولمايدىغان ھۆججەت"
 
-#: ../src/View/PropertiesWindow.vala:589
-msgid "Resolution:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:607
-msgid "Target:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:615
-msgid "Original Location:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:638
-msgid "Other Application…"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:658
-msgid "Open with:"
-msgstr "ئاچىدىغان پروگرامما:"
-
-#: ../src/View/PropertiesWindow.vala:752
+#: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
-msgstr "ئوقۇ"
+msgstr "ئوقۇش"
 
-#: ../src/View/PropertiesWindow.vala:756
+#: ../src/View/Widgets/PermissionButton.vala:42
 msgid "Write"
-msgstr "يازغاندا"
+msgstr "يىزىش"
 
-#: ../src/View/PropertiesWindow.vala:760
+#: ../src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
-msgstr "ئىجرا قىل"
-
-#: ../src/View/PropertiesWindow.vala:967 ../src/View/PropertiesWindow.vala:983
-msgid "Owner:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:973 ../src/View/PropertiesWindow.vala:987
-msgid "Group:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:991
-msgid "Everyone:"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1257
-msgid "%u subfolders and %u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1259
-msgid "%u subfolders and %u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1262
-msgid "%u subfolders"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1267
-msgid "%u subfolder and %u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1269
-msgid "%u subfolder and %u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1278
-#: ../src/View/PropertiesWindow.vala:1317
-msgid "%u files"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1280
-#: ../src/View/PropertiesWindow.vala:1319
-msgid "%u file"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1296
-msgid "%u selected items (%u folders and %u files)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1298
-msgid "%u selected items (%u folders and %u file)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1306
-msgid "%u selected items (%u folder and %u files)"
-msgstr ""
-
-#: ../src/View/PropertiesWindow.vala:1308
-msgid "%u selected items (%u folder and %u file)"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:342
-msgid "(as Administrator)"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:356
-msgid "You cannot create a folder here."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:358
-msgid "The network is unavailable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:359
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:361
-msgid "This Folder Does Not Belong to You"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:362
-msgid "You don't have permission to view this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:364
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:365
-msgid "Could not connect to the server for this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:367
-msgid "Unable show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:368
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:378
-msgid "File not Found"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:379
-msgid "The file selected no longer exists."
-msgstr ""
-
-#: ../src/View/Slot.vala:39
-msgid "This Folder Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:40
-msgid "Trash Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:41
-msgid "There Are No Recent Files"
-msgstr ""
-
-#: ../src/View/Slot.vala:42
-msgid "Access Denied"
-msgstr ""
+msgstr "ئىجرا قىلىش"
 
 #: ../src/Application.vala:146
 msgid "Show the version of the program."
-msgstr "پروگراممىنىڭ نەشرىنى كۆرسەت."
+msgstr "پروگراممىنىڭ نەشرىنى كۆرسىتىش"
 
 #: ../src/Application.vala:148
 msgid "Open uri(s) in new tab"
-msgstr ""
+msgstr "يىڭى بەتكۈچتە تورئادىرىسىنى ئىچىش"
 
 #: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr ""
+msgstr "يىڭى كۆزنەك"
 
 #: ../src/Application.vala:152
 msgid "Quit Files."
-msgstr ""
+msgstr "ھۆججەتتىن چىكىنىش"
 
 #: ../src/Application.vala:154
 msgid "Enable debug logging"
-msgstr ""
+msgstr "سىناق خاتىرىسىنى قوزغىتىش"
 
 #: ../src/Application.vala:157
 msgid "[URI...]"
@@ -2028,7 +1872,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"ھۆججەت باشقۇرغۇچتا ھۆججەت سىستېمىسىغا كۆز يۈگۈرت"
+"ھۆججەت باشقۇرغۇچتا ھۆججەت سىستېمىسىنى كۆرۈش"
 
 #: ../src/Application.vala:187
 msgid "--quit cannot be used with URIs."
@@ -2036,285 +1880,459 @@ msgstr "--quit نى URI بىلەن بىللە ئىشلەتكىلى بولماي�
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
-msgstr ""
+msgstr "ھۆججەتلىرىڭىزنى كۆرۈڭ"
 
 #: ../src/DesktopLauncher.vala:7
 msgid "File Manager"
-msgstr "ھۆججەت باشقۇرغۇ"
+msgstr "ھۆججەت باشقۇرغۇچ"
 
 #: ../src/DesktopLauncher.vala:8
 msgid "New _Window"
-msgstr "يېڭى كۆزنەك(_W)"
+msgstr "يېڭى كۆزنەك قۇرۇش(_W)"
 
 #: ../src/DesktopLauncher.vala:9
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "باشقۇرغۇچىلىق سالاھىيىتىدە يىڭى كۆزنەك قۇرۇش"
 
 #: ../src/DesktopLauncher.vala:10
 msgid "About _Files"
-msgstr ""
+msgstr "ھۆججەتلەر ھەققىدە"
 
 #: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "ھۆججەتلەر"
 
-#: ../src/ProgressUIHandler.vala:42
-msgid "File Manager Operations"
-msgstr ""
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "كۆپ خىل ھۆججەت تىپى تاللاندى"
 
-#: ../src/ProgressUIHandler.vala:153
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "ھەممە ھۆججەت تىپلىرىنى يەككە بىرخىل ئەپ ئاچالمايدۇ"
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "ھۆججەتنى ئىچىش مەغلۇپ بولدى"
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "تورئادىرىسىنى ئىچىش مەغلۇپ بولدى"
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "بۇ ئەپ بىلەن ھۆججەت ياكى تور ئادىرىسلىرىنى ئىچىش مەغلۇپ بولدى"
+
+#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
 msgid "File Operations"
 msgstr "ھۆججەت مەشغۇلاتلىرى"
 
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:207
+#: ../src/ProgressUIHandler.vala:190
 msgid "Completed %s"
-msgstr ""
+msgstr "تاماملانغىنى%s"
 
-#: ../src/ProgressUIHandler.vala:210
+#: ../src/ProgressUIHandler.vala:193
 msgid "All file operations have ended"
-msgstr ""
+msgstr "بارلىق ھۆججەت مەشغۇلاتلىرى ئاخىرلاشتى"
 
-#: ../src/ProgressUIHandler.vala:255
+#: ../src/ProgressUIHandler.vala:238
 msgid "Show Copy Dialog"
-msgstr "كۆچۈرۈش سۆزلەشكۈسىنى كۆرسىتىش"
+msgstr "كۆچۈرۈش دىئالوگىنى كۆرسىتىش"
 
-#: ../src/ProgressUIHandler.vala:267
+#: ../src/ProgressUIHandler.vala:250
 msgid "Cancel All In-progress Actions"
 msgstr "ئىجرا بولۇۋاتقان بارلىق مەشغۇلاتنى ئەمەلدىن قالدۇرۇش"
 
+#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
+msgid "There is nothing on the clipboard to paste"
+msgstr "چاپلاش تاختىسىدا چاپلىغىلى بولىدىغان ھىچنەرسە يوق"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "نورمالدىكىسى قىلىپ تەڭشەش"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "دىسكا خاسلىقلىرى"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "ئورنى:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "فورماتى:"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:49
+msgid "Info"
+msgstr "ئۇچۇر"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:58
+msgid "General"
+msgstr "ئادەتتىكى"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:77
+msgid "Close"
+msgstr "تاقاش"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:139
+msgid "Device Usage"
+msgstr "ئۈسكۈنىنىڭ ئىشلىتىلىشى"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:155
+msgid "Capacity:"
+msgstr "سۈزۈكلۈكى:"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:162
+#: ../src/Dialogs/PropertiesWindow.vala:416
+#: ../src/Dialogs/PropertiesWindow.vala:452
+msgid "Unknown"
+msgstr "نامەلۇم"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:158
+msgid "Available:"
+msgstr "ئىشلەتكىلى بولىدىغىنى:"
+
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:161
+msgid "Used:"
+msgstr "ئىشلىتىلگىنى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:220
+msgid "Permissions"
+msgstr "سالاھىيەتلەر"
+
+#: ../src/Dialogs/PropertiesWindow.vala:241
+msgid "Actual Size Could Be Larger"
+msgstr "ئەمەلىي چوڭلۇقى چوڭراق بولىشى مۇمكىن"
+
+#: ../src/Dialogs/PropertiesWindow.vala:241
+msgid "%i file could not be read due to permissions or other errors."
+msgid_plural "%i files could not be read due to permissions or other errors."
+msgstr[0] ""
+"%i ھۆججەتنى سالاھىيەت ياكى باشقا خاتالىق سەۋەبىدىن ئوقۇغىلى بولمىدى."
+
+#: ../src/Dialogs/PropertiesWindow.vala:260
+#: ../src/Dialogs/PropertiesWindow.vala:279
+msgid "unknown"
+msgstr "نامەلۇم"
+
+#: ../src/Dialogs/PropertiesWindow.vala:427
+msgid "Loading…"
+msgstr "يۈكلەۋاتىدۇ...."
+
+#: ../src/Dialogs/PropertiesWindow.vala:458
+msgid "Could not be determined"
+msgstr "جەزملەشتۈرگىلى بولمىدى"
+
+#: ../src/Dialogs/PropertiesWindow.vala:494
+msgid "Contains:"
+msgstr "ئۆز ئىچىگە ئالغىنى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:516
+msgid "Created:"
+msgstr "قۇرۇلغان ۋاقتى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:525
+msgid "Modified:"
+msgstr "ئۆزگەرتىلگەن ۋاقتى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:536
+msgid "Deleted:"
+msgstr "ئۆچۈرۈلگەن ۋاقتى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:546
+msgid "Mimetype:"
+msgstr "ھۆججەت فورماتى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:553
+msgid "Resolution:"
+msgstr "ئىنىقلىقى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:571
+msgid "Target:"
+msgstr "نىشان:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:579
+msgid "Original Location:"
+msgstr "ئەسلى ئورنى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:602
+msgid "Other Application…"
+msgstr "باشقا ئەپلەر...."
+
+#: ../src/Dialogs/PropertiesWindow.vala:622
+msgid "Open with:"
+msgstr "ئىچىش ئۇسۇلى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:864
+#: ../src/Dialogs/PropertiesWindow.vala:874
+msgid "Owner:"
+msgstr "ئىگىسى:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:868
+#: ../src/Dialogs/PropertiesWindow.vala:877
+msgid "Group:"
+msgstr "گۇرۇپپا:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:880
+msgid "Everyone:"
+msgstr "ھەربىر ئادەم:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:1140
+msgid "%u subfolder"
+msgid_plural "%u subfolders"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:1144
+#: ../src/Dialogs/PropertiesWindow.vala:1166
+msgid "%u file"
+msgid_plural "%u files"
+msgstr[0] ""
+msgstr[1] ""
+
+#. /TRANSLATORS: folders, files
+#: ../src/Dialogs/PropertiesWindow.vala:1149
+msgid "%s, %s"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:1170
+msgid "%u selected item"
+msgid_plural "%u selected items"
+msgstr[0] ""
+msgstr[1] ""
+
+#. /TRANSLATORS: total (folders, files)
+#: ../src/Dialogs/PropertiesWindow.vala:1172
+msgid "%s (%s, %s)"
+msgstr ""
+
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "\"%s\" نى ئىجرا قىلىش مەغلۇپ بولدى"
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
-msgstr ""
+msgstr "بۇ يەرگە يۆتكەش"
 
 #: ../libcore/DndHandler.vala:94
 msgid "Copy Here"
-msgstr ""
+msgstr "بۇ يەرگە كۆپەيتىش"
 
 #: ../libcore/DndHandler.vala:95
 msgid "Link Here"
-msgstr ""
+msgstr "بۇ يەرگە ئۇلاش"
 
 #: ../libcore/DndHandler.vala:98
 msgid "Cancel"
-msgstr "ئەمەلدىن قالدۇر"
+msgstr "ئەمەلدىن قالدۇرۇش"
 
-#: ../libcore/FileUtils.vala:259
+#: ../libcore/FileUtils.vala:59
+msgid "Could not determine original location of \"%s\" "
+msgstr "«%s» نىڭ ئەسلى ئورنىنى بىكىتەلمىدى "
+
+#: ../libcore/FileUtils.vala:60
+msgid "The item cannot be restored from trash"
+msgstr "بۇ تۈرنى ئەخلەت چېلىكىدىن ئەسلىگە كەلتۈرگىلى بولمىدى"
+
+#: ../libcore/FileUtils.vala:342
 msgid "Could not rename to '%s'"
+msgstr "ئىسمىنى '%s' غا ئۆزگەرتكىلى بولمىدى"
+
+#: ../libcore/FileUtils.vala:463
+msgid "%A at %-I:%M %p"
 msgstr ""
 
-#: ../libwidgets/View/BreadcrumbsEntry.vala:412
-msgid "Open in New Tab"
-msgstr "يېڭى بەتكۈچتە ئاچ"
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:419
-msgid "Open in New Window"
-msgstr ""
-
-#: ../libwidgets/View/BreadcrumbsEntry.vala:458
-msgid "Open in Other Application…"
-msgstr ""
-
-#: ../libwidgets/View/LocationBar.vala:171
-msgid "Reload this folder"
-msgstr ""
-
-#: ../libwidgets/View/LocationBar.vala:174
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
-msgid "Enter search term or path"
-msgstr ""
+#: ../libwidgets/View/SearchResults.vala:178
+msgid "In This Folder"
+msgstr "بۇ مۇندەرىجىدە"
 
 #: ../libwidgets/View/SearchResults.vala:180
-msgid "In This Folder"
-msgstr ""
+msgid "Bookmarks"
+msgstr "خەتكۈچلەر"
 
 #: ../libwidgets/View/SearchResults.vala:182
-msgid "Bookmarks"
-msgstr ""
-
-#: ../libwidgets/View/SearchResults.vala:184
 msgid "Everywhere Else"
-msgstr ""
+msgstr "باشقا يەردە"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
-msgstr ""
+msgstr "ئاددىي ۋە ئىقتىدارى كۈچلۈك ھۆججەت باشقۇرغۇچ"
 
 #: ../libwidgets/Resources.vala:50
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Gheyret T.Kenji https://launchpad.net/~gheyretkenji"
+"  Gheyret T.Kenji https://launchpad.net/~gheyretkenji\n"
+"  ablimet https://launchpad.net/~ablimet"
 
 #: ../libwidgets/Resources.vala:83
 msgid "AFP"
-msgstr ""
+msgstr "AFP (ئالما ھۆججەت كىلىشىمى)"
 
 #: ../libwidgets/Resources.vala:84
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: ../libwidgets/Resources.vala:85
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: ../libwidgets/Resources.vala:86
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: ../libwidgets/Resources.vala:88
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: ../libwidgets/Resources.vala:89
 msgid "SMB"
-msgstr ""
+msgstr "SMB"
 
 #: ../libwidgets/Resources.vala:91
 msgid "Recent"
-msgstr ""
+msgstr "يىقىندىكىسى"
 
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "ئورنىنى كىرگۈزۈش"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr ""
+msgstr "كاتەكچە كۆرۈنۈشى"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "تىزىملىك كۆرۈنۈشى"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr ""
+msgstr "تىك كۆرۈش"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:172
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
-msgstr ""
+msgstr "%s نى زىيارەت قىلىش"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:274
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
 msgid "Go to %s"
-msgstr ""
-
-#: ../libwidgets/Dialogs/ChooseAppDialog.vala:37
-msgid "Set as default"
-msgstr "كۆڭۈلدىكى قىممەتكە تەڭشە"
+msgstr "%s غا بىرىش"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr ""
+msgstr "مۇلازىمېتىرغا ئۇلاش...."
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "توردىكى ھۆججەت مۇلازىمىتېرىغا ئۇلاش"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "ھەممىنى ئەسلىگە كەلتۈرۈش"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr ""
+msgstr "ئەخلەت چېلىكىنى قۇرۇقداش"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
 msgstr ""
+"بۇ تۈرلەر ئەخلەت چېلىكىدىن ئەسلىگە قايتۇرۇلغان ياكى ئۆچۈرۈلگەن بولىشى مۇمكىن."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
 msgstr ""
+"باشقۇرغۇچىلىق سالاھىيىتى بولمىسا بۇ تۈرلەرنى ئەخلەت چېلىكىدىن ئەسلىگە "
+"قايتۇرغىلى ياكى ئۆچۈرۈۋەتكىلى بولمايدۇ."
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "ئەخلەت چېلىكىدىن ئەسلىگە قايتۇرۇش"
 
 #: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
-msgstr ""
+msgstr "مەڭگۈلۈك ئۆچۈرۈش"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "ئاتا مۇندەرىجىنى ئىچىش"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "تارىختىن ئۆچۈرۈش"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "ئەخلەت چېلىكىگە تاشلاش"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr ""
+msgstr "يىڭىدىن قۇرۇش"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr ""
+msgstr "مۇندەرىجە"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr ""
+msgstr "قۇرۇق ھۆججەت"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "يوشۇرۇن ھۆججەتلەرنى كۆرسىتىش"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "يىراقتىكى كومپىيۇتىردىكى مىكرو سۈرەتلەرنى كۆرسىتىش"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr ""
+msgstr "يىڭى بەتكۈچ قۇرۇش"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
-msgstr ""
+msgstr "تېرمىنال"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
-msgstr ""
+msgstr "خەتكۈچ"
 
 #: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
-msgstr ""
+msgstr "چاپلاش"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Cut"
-msgstr ""
+msgstr "كىسىش"
 
 #: ../src/View/directory_view_popup.ui:124
 msgid "Copy"
-msgstr ""
+msgstr "كۆپەيتىش"
 
 #: ../src/View/directory_view_popup.ui:128
 msgid "Paste into Folder"
-msgstr ""
+msgstr "مۇندەرىجىگە چاپلاش"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Sort by"
-msgstr ""
+msgstr "رەتكە تىزىش ئاساسى"
 
 #: ../src/View/directory_view_popup.ui:138
 msgid "Name"
-msgstr ""
+msgstr "ئىسىم"
 
 #: ../src/View/directory_view_popup.ui:153
 msgid "Date"
-msgstr ""
+msgstr "چىسلا"
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
-msgstr ""
+msgstr "تەتۈر تەرتىپ بويىچە تىزىش"

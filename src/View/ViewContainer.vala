@@ -33,29 +33,27 @@ namespace Marlin.View {
         public Marlin.View.Window window;
         public GOF.AbstractSlot? view = null;
         public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
+
         public GLib.File? location {
             get {
-                var slot = get_current_slot ();
                 return slot != null ? slot.location : null;
             }
         }
         public string uri {
             get {
-                var slot = get_current_slot ();
                 return slot != null ? slot.uri : "";
             }
         }
 
         public GOF.AbstractSlot? slot {
             get {
-                return get_current_slot ();
+                return view != null ? view.get_current_slot () : null;
             }
         }
 
         public bool locked_focus {
             get {
-                var slot = get_current_slot ();
-                return slot != null ? get_current_slot ().locked_focus : false;
+                return slot != null && slot.locked_focus;
             }
         }
 
@@ -68,6 +66,18 @@ namespace Marlin.View {
         public bool can_go_forward {
             get {
                 return browser.get_can_go_forward ();
+            }
+        }
+
+        public bool is_frozen {
+            get {
+                return slot == null || slot.is_frozen;
+            }
+
+            set {
+                if (slot != null) {
+                    slot.is_frozen = value;
+                }
             }
         }
 
@@ -84,7 +94,7 @@ namespace Marlin.View {
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win) {
             window = win;
-            overlay_statusbar = new OverlayBar (win, this);
+            overlay_statusbar = new OverlayBar (this);
             browser = new Browser ();
 
             /* Override background color to support transparency on overlay widgets */
@@ -116,8 +126,10 @@ namespace Marlin.View {
         
         private void on_folder_deleted (GLib.File deleted) {
             if (deleted.equal (this.location)) {
-                close ();
-                window.remove_tab (this);
+                if (!go_up ()) {
+                    close ();
+                    window.remove_tab (this);
+                }
             }
         }
 
@@ -145,15 +157,17 @@ namespace Marlin.View {
 
         public string tab_name {
             set {
-                label = value;
-                tab_name_changed (value);
+                if (label != value) { /* Do not signal if no change */
+                    label = value;
+                    tab_name_changed (value);
+                }
             }
             get {
                 return label;
             }
         }
 
-        public void go_up () {
+        public bool go_up () {
             selected_locations.append (this.location);
             GLib.File parent = location;
             if (view.directory.has_parent ()) { /* May not work for some protocols */
@@ -166,6 +180,9 @@ namespace Marlin.View {
             /* Certain parents such as ftp:// will be returned as null as they are not browsable */
             if (parent != null) {
                 user_path_change_request (parent, false, false);
+                return true;
+            } else {
+                return false;
             }
         }
 
@@ -200,7 +217,7 @@ namespace Marlin.View {
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
-            view.directory.init ();
+            slot.initialize_directory ();
             show_all ();
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
@@ -225,6 +242,7 @@ namespace Marlin.View {
             disconnect_slot_signals (view);
             content = null; /* Make sure old slot and directory view are destroyed */
             view = null; /* Pre-requisite for add view */
+            loading (false);
         }
         private void after_mode_change () {
             /* Slot is created inactive so we activate now since we must be the current tab
@@ -302,46 +320,46 @@ namespace Marlin.View {
         }
 
         private void refresh_slot_info (GLib.File loc) {
-            update_tab_name (loc);
+            update_tab_name ();
             window.loading_uri (loc.get_uri ());
             window.update_labels (loc.get_parse_name (), tab_name);
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
-        public void update_tab_name (GLib.File loc) {
-            string? slot_path = loc.get_path ();
-            tab_name = "-----";
+       private void update_tab_name () {
+            string? slot_path = Uri.unescape_string (this.uri);
+            string? tab_name = null;
 
-            if (slot_path == null) {
-                string [] uri_parts = GLib.Uri.unescape_string (loc.get_uri ()).split (Path.DIR_SEPARATOR_S);
-                uint index = uri_parts.length - 1;
-                string s;
-                while (index >= 0) {
-                    s = uri_parts [index];
-                    if (s.length >= 1) {
-                        if (index == 0) {
-                            tab_name = Marlin.protocol_to_name (s);
-                        } else
-                            tab_name = s;
-                        break;
+            if (slot_path != null) {
+                if (this.location.get_path () == null) {
+                    tab_name = Marlin.protocol_to_name (this.uri);
+                } else {
+                    try {
+                        var fn = Filename.from_uri (slot_path);
+                        if (fn == Environment.get_home_dir ()) {
+                            tab_name = _("Home");
+                        } else if (fn == "/") {
+                            tab_name = _("File System");
+                        }
+                    } catch (ConvertError e) {}
+
+                    if (tab_name == null) {
+                        tab_name = Path.get_basename (slot_path);
                     }
-                    index--;
                 }
-            } else if (slot_path == Environment.get_home_dir ())
-                tab_name = _("Home");
-            else if (slot_path == "/")
-                tab_name = _("File System");
-            else {
-                tab_name = Uri.unescape_string (Path.get_basename (loc.get_uri ()));
             }
 
-            if (tab_name == "-----")
-                tab_name = loc.get_uri ();
+            if (tab_name == null) {
+                tab_name = "-----";
+            } else if (Posix.getuid() == 0) {
+                    tab_name = tab_name + " " + _("(as Administrator)");
+            }
 
-            if (Posix.getuid() == 0)
-                tab_name = tab_name + " " + _("(as Administrator)");
-                overlay_statusbar.hide ();
+            this.tab_name = tab_name;
+
+            overlay_statusbar.hide ();
         }
+
 
         public void directory_done_loading (GOF.AbstractSlot slot) {
             can_show_folder = slot.directory.can_load;
@@ -349,11 +367,12 @@ namespace Marlin.View {
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
                 if (!slot.directory.file.exists) {
-                    if (slot.can_create)
+                    if (slot.can_create) {
                         content = new DirectoryNotFound (slot.directory, this);
-                    else
+                    } else {
                         content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
                                                            _("You cannot create a folder here."));
+                    }
                 } else if (!slot.directory.network_available) {
                     content = new Marlin.View.Welcome (_("The network is unavailable"),
                                                        _("A working network is needed to reach this folder"));
@@ -364,7 +383,7 @@ namespace Marlin.View {
                     content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
                                                        _("Could not connect to the server for this folder."));
                 } else {
-                    content = new Marlin.View.Welcome (_("Unable show Folder"),
+                    content = new Marlin.View.Welcome (_("Unable to Show Folder"),
                                                        _("The server for this folder could not be located."));
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
@@ -395,6 +414,7 @@ namespace Marlin.View {
 
             loading (false); /* Will cause topmenu to update */
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
+            refresh_slot_info (slot.location);
         }
 
         private void store_selection () {
@@ -418,14 +438,10 @@ namespace Marlin.View {
             if (aslot != null) {
                 /* Since async loading it may not have been determined whether slot is loadable */
                 aslot.set_active_state (is_active, animate);
-                active ();
+                if (is_active) {
+                    active ();
+                }
             }
-        }
-        
-        public void set_frozen_state (bool is_frozen) {
-            var aslot = get_current_slot ();
-            if (aslot != null)
-                aslot.set_frozen_state (is_frozen);
         }
 
         private void set_all_selected (bool select_all) {
@@ -519,7 +535,7 @@ namespace Marlin.View {
         }
 
         public new void grab_focus () {
-            set_frozen_state (false);
+            is_frozen = false;
             if (can_show_folder && view != null)
                 view.grab_focus ();
             else

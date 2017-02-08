@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2016-08-01 20:31-0500\n"
-"PO-Revision-Date: 2016-08-02 06:50+0000\n"
+"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"PO-Revision-Date: 2017-01-26 20:09+0000\n"
 "Last-Translator: Jiri Grönroos <Unknown>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-08-03 05:50+0000\n"
-"X-Generator: Launchpad (build 18169)\n"
+"X-Launchpad-Export-Date: 2017-01-27 06:06+0000\n"
+"X-Generator: Launchpad (build 18315)\n"
 
 msgid "Files"
 msgstr "Tiedostot"
@@ -33,3 +33,37 @@ msgstr ""
 "järjestelmällisenä. Katsele tiedostoja luettelo-, ruudukko- tai "
 "kolumninäkymässä. Käytä tiedostoja paikallisesti tai etänä FTP:n, SFTP:n, "
 "AFP:n, WebDAV:in tai Windows-jakojen kautta."
+
+msgid "Fix appdata release dates"
+msgstr "Korjattu appdata-julkaisupäivät"
+
+msgid "Improve file opening over Samba shares"
+msgstr "Parannettu tiedostojen avaamista Samba-jaoista"
+
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "Korjattu kaatuminen kohteita palauttaessa roskakorista"
+
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr "Parannettu leikkaa/kopioi/liitä-herkkyyttä kontekstivalikossa"
+
+msgid "Translation updates"
+msgstr "Päivityksiä kielikäännöksiin"
+
+msgid "Minor bug fixes"
+msgstr "Muita pieniä korjauksia"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Yhdistä hakutoiminto Ctrl+F-näppäinyhdistelmään"
+
+msgid "Improved translation support"
+msgstr "Paranneltu tuki kielikäännöksille"
+
+msgid "Various crash fixes"
+msgstr "Useita korjauksia kaatumisen aiheuttamiin virheisiin"
+
+msgid "New translations"
+msgstr "Uusia kielikäännöksiä"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""
+"Ota käyttöön \"vedä ja pudota\"-toiminto välilehdille ikkunoiden välillä"
