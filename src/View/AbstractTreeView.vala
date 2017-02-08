@@ -225,8 +225,7 @@ namespace FM {
 
             if (p != null && c != null && c == name_column) {
                 int orig_x = area.x + ICON_XPAD;
-
-                if (x > orig_x) { /* y must be in range */
+                if (x < orig_x + icon_size) { /* cannot be on name */
                     bool on_helper = false;
                     bool on_icon = is_on_icon (x, y, orig_x, area.y, ref on_helper);
 
@@ -234,11 +233,12 @@ namespace FM {
                         zone = ClickZone.HELPER;
                     } else if (on_icon) {
                         zone = ClickZone.ICON;
-                    } else if (!is_blank) {
-                        zone = ClickZone.NAME;
+
+                    } else {
+                        zone = ClickZone.EXPANDER;
                     }
-                } else {
-                    zone = ClickZone.EXPANDER;
+                } else if (!is_blank) {
+                        zone = ClickZone.NAME;
                 }
             } else if (c != name_column)
                 zone = ClickZone.INVALID; /* Cause unselect all to occur on other columns*/

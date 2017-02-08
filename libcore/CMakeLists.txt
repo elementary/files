@@ -157,3 +157,27 @@ add_test (core pantheon-files-core_tests)
 
 target_link_libraries (pantheon-files-core_tests pantheon-files-core ${DEPS_LIBRARIES})
 add_dependencies (pantheon-files-core_tests pantheon-files-core)
+
+vala_precompile (VALA_TEST_C ${PKGNAME}-vala_tests
+  tests/Tests.vala
+  PACKAGES
+    granite
+    gtk+-3.0
+    gio-2.0
+    gee-0.8
+    gmodule-2.0
+    libcanberra
+    pantheon-files-core
+  OPTIONS
+    --thread
+    --target-glib=2.32 # Needed for new thread API
+)
+
+add_executable (${PKGNAME}-vala_tests
+    ${VALA_TEST_C}
+)
+
+target_link_libraries (${PKGNAME}-vala_tests pantheon-files-core ${DEPS_LIBRARIES})
+add_dependencies (${PKGNAME}-vala_tests pantheon-files-core)
+
+add_test (core-vala-tests ${PKGNAME}-vala_tests)

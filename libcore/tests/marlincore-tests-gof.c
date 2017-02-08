@@ -62,7 +62,6 @@ void marlincore_tests_goffile(void)
         GFile *location = g_file_new_for_path ("/usr/share");
         file = gof_file_get(location);
         g_object_unref (location);
-        //file = gof_file_get_by_uri("file:///usr/share");
     }
     for (i=0; i<5; i++)
         g_object_unref (file);
@@ -77,7 +76,6 @@ void marlincore_tests_goffile(void)
     g_test_log_set_fatal_handler(fatal_handler, NULL);
     file = gof_file_get_by_uri("file:///tmp/very/long/path/azerty");
     g_assert(file != NULL);
-    //g_test_log_set_fatal_handler(NULL, NULL);
 
     system("rm /tmp/.marlin_backup /tmp/marlin_sym -f && touch /tmp/.marlin_backup");
     /* The URI is valid, the target exists */
