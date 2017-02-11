@@ -136,8 +136,17 @@ namespace Marlin {
                 if (selected) {
                     state = Gtk.StateFlags.SELECTED;
                     state |= widget.get_state_flags ();
-                    var color = style_context.get_background_color (state);
-                    pb = Eel.create_colorized_pixbuf (pb, color);
+
+                    var bg = style_context.get_property ("background-color", state);
+                    
+                    if (bg.holds (typeof (Gdk.RGBA))) {
+                        var color = (Gdk.RGBA) bg;
+
+                        /* if background-color is black something probably is wrong */
+                        if (color.red != 0 || color.green != 0 || color.blue != 0) {
+                            pb = Eel.create_colorized_pixbuf (pb, color);
+                        }
+                    }
                 }
                 if (prelit) {
                     pb = Eel.create_spotlight_pixbuf (pb);
