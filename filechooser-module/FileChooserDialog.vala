@@ -60,6 +60,8 @@ public class CustomFileChooserDialog : Object {
         var settings = new Settings ("org.pantheon.files.preferences");
         is_single_click = settings.get_boolean ("single-click");
 
+        var chooser_settings = new Settings ("org.pantheon.files.file-chooser");
+
         assign_container_box ();
         remove_gtk_widgets ();
         setup_filter_box ();
@@ -125,9 +127,15 @@ public class CustomFileChooserDialog : Object {
             location_bar.set_display_path (current_path);
         });
 
+        chooser_dialog.unrealize.connect (() => {
+            chooser_settings.set_string ("last-folder-uri", location_bar.get_display_path ());
+        });
+
         location_bar.path_change_request.connect ((uri) => {
             chooser_dialog.set_current_folder (uri);
         });
+
+        chooser_dialog.set_current_folder_uri (chooser_settings.get_string ("last-folder-uri"));
     }
 
     /*

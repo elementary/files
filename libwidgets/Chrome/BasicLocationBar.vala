@@ -131,6 +131,10 @@ namespace Marlin.View.Chrome
             display_path = path;  /* Will also change breadcrumbs */
         }
 
+        public string get_display_path () {
+            return display_path;
+        }
+
         public bool set_focussed () {
             bread.grab_focus ();
             return bread.has_focus;
