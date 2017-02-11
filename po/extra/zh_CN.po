@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-06 11:17-0800\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
 "PO-Revision-Date: 2016-10-21 02:07+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-07 05:50+0000\n"
+"X-Launchpad-Export-Date: 2017-02-11 05:46+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 msgid "Files"
 msgstr "文件"
+
+msgid "Browse your files"
+msgstr ""
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr ""
+
+msgid "File Manager"
+msgstr ""
+
+msgid "New Window"
+msgstr ""
+
+msgid "New Window As Administrator"
+msgstr ""
+
+msgid "About Files"
+msgstr ""
 
 msgid "Browse and manage files and folders"
 msgstr "浏览和管理您的文件"
@@ -31,6 +49,24 @@ msgid ""
 msgstr ""
 "用文件夹保持文件整洁有序，在自己喜欢的视图中快速找到文件，轻松完成复制、移动和删除文件等操作。无论是内置硬盘中的文件，还是外接设备、远程设备中的文件，统统"
 "不在话下。"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr ""
+
+msgid "Minor bug fixes"
+msgstr "细节修复"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
+msgstr ""
 
 msgid "Fix appdata release dates"
 msgstr "修正应用数据发布日期"
@@ -46,24 +82,6 @@ msgstr "提高上下文菜单中“剪切、复制、粘贴”的响应速度"
 
 msgid "Translation updates"
 msgstr "翻译更新"
-
-msgid "Minor bug fixes"
-msgstr "细节修复"
-
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
-
-msgid "Improved translation support"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
-msgstr ""
 
 msgid "Run Pantheon Files as Administrator"
 msgstr ""

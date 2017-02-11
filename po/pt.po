@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-06 11:17-0800\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
 "PO-Revision-Date: 2016-12-31 00:41+0000\n"
 "Last-Translator: Gonçalo Camelo Neves Pereira <Unknown>\n"
 "Language-Team: Português <>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-02-07 05:48+0000\n"
+"X-Launchpad-Export-Date: 2017-02-11 05:44+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -137,6 +137,402 @@ msgstr "_Lembrar esta senha"
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "Operação cancelada"
+
+#: ../libcore/marlin-undostack-manager.c:635
+msgid "Original location could not be determined"
+msgstr "Impossível determinar localização original"
+
+#: ../libcore/marlin-undostack-manager.c:636
+msgid "Open trash folder and restore manually"
+msgstr "Abrir pasta de lixo e restaurar manualmente"
+
+#: ../libcore/marlin-undostack-manager.c:1225
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Eliminar os %d itens copiados"
+
+#: ../libcore/marlin-undostack-manager.c:1228
+#: ../libcore/marlin-undostack-manager.c:1238
+#: ../libcore/marlin-undostack-manager.c:1269
+#, c-format
+msgid "Delete '%s'"
+msgstr "Eliminar %s"
+
+#: ../libcore/marlin-undostack-manager.c:1235
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Eliminar os %d itens duplicados"
+
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Mover \"%d\" itens de volta para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1250
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Mover \"%s\" de volta para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1259
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Mudar nome de \"%s\" para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1278
+#: ../libcore/marlin-undostack-manager.c:1473
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Recuperar %d itens do lixo"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Recuperar \"%s\" para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1297
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Mover %d itens novamente para o lixo"
+
+#: ../libcore/marlin-undostack-manager.c:1300
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Mover \"%s\" novamente para o lixo"
+
+#: ../libcore/marlin-undostack-manager.c:1309
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Eliminar as ligações a %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1312
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Eliminar a ligação a %s"
+
+#: ../libcore/marlin-undostack-manager.c:1322
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Recuperar as permissões originais dos itens contidos em \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1330
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Recuperar as permissões originais de \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1339
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Recuperar o grupo de \"%s\" para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1349
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Recuperar o dono de \"%s\" para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1388
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Copiar %d itens para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1392
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Copiar \"%s\" para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1400
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Duplicado de %d itens em \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1405
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Duplicar \"%s\" em \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1413
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Mover %d itens para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Mover \"%s\" para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1435
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Criar um novo ficheiro \"%s\" a partir do modelo "
+
+#: ../libcore/marlin-undostack-manager.c:1442
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Criar um ficheiro vazio \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Criar uma nova pasta \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1457
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Mover %d itens para o lixo"
+
+#: ../libcore/marlin-undostack-manager.c:1463
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Mover \"%s\" para o lixo"
+
+#: ../libcore/marlin-undostack-manager.c:1476
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Recuperar \"%s\" do lixo"
+
+#: ../libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "Create links to %d items"
+msgstr "Criar ligação a %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1488
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Criar ligação a \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1497
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Definir as permissões dos itens contidos em \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1505
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Definir as permissões de \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1514
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Definir o grupo de \"%s\" para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1524
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Definir o dono de \"%s\" para \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1556
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "An_ular a cópia de %d item"
+msgstr[1] "An_ular a cópia de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1561
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "An_ular a duplicação de %d item"
+msgstr[1] "Anular a duplicação de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1566
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "An_ular a movimentação de %d item"
+msgstr[1] "An_ular a movimentação de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1571
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "An_ular a mudança de nome de %d item"
+msgstr[1] "An_ular a mudança de nome de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1575
+msgid "_Undo creation of an empty file"
+msgstr "An_ular a criação do ficheiro vazio"
+
+#: ../libcore/marlin-undostack-manager.c:1578
+msgid "_Undo creation of a file from template"
+msgstr "An_ular a criação do ficheiro a partir de um modelo"
+
+#: ../libcore/marlin-undostack-manager.c:1582
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "An_ular a criação de %d pasta"
+msgstr[1] "An_ular a criação de %d pastas"
+
+#: ../libcore/marlin-undostack-manager.c:1587
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "An_ular a movimentação para o lixo de %d item"
+msgstr[1] "An_ular a movimentação para o lixo de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1592
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "An_ular a recuperação do lixo para %d item"
+msgstr[1] "An_ular a recuperação do lixo para %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1597
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "An_ular a criação de uma ligação para %d item"
+msgstr[1] "An_ular a criação de uma ligação para %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1602
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "An_ular a eliminação de %d item"
+msgstr[1] "An_ular a eliminação de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1607
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "An_ular a alteração recursiva de permissões para %d item"
+msgstr[1] "An_ular a alteração recursiva de permissões para %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1613
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "An_ular a alteração de permissões para %d item"
+msgstr[1] "An_ular a alteração permissões para %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1618
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "An_ular a alteração de grupo para %d item"
+msgstr[1] "An_ular a alteração de grupo para %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1623
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "An_ular a alteração do proprietário para %d item"
+msgstr[1] "An_ular a alteração do proprietário para %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1651
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Refazer a cópia de %d item"
+msgstr[1] "_Refazer a cópia de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1656
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Refazer a duplicação de %d item"
+msgstr[1] "_Refazer a duplicação de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1661
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Refazer a movimentação de %d item"
+msgstr[1] "_Refazer a movimentação de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1666
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Refazer a mudança de nome de %d item"
+msgstr[1] "_Refazer a mudança de nome de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1670
+msgid "_Redo creation of an empty file"
+msgstr "_Refazer a criação de um ficheiro vazio"
+
+#: ../libcore/marlin-undostack-manager.c:1673
+msgid "_Redo creation of a file from template"
+msgstr "_Refazer a criação de um ficheiro a partir de modelo"
+
+#: ../libcore/marlin-undostack-manager.c:1677
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Refazer a criação de %d pasta"
+msgstr[1] "_Refazer a criação de %d pastas"
+
+#: ../libcore/marlin-undostack-manager.c:1682
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Refazer a movimentação para o lixo de %d item"
+msgstr[1] "_Refazer a movimentação para o lixo de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1687
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Refazer a recuperação do lixo para %d item"
+msgstr[1] "_Refazer a recuperação do lixo para %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1692
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Refazer a criação da ligação para %d item"
+msgstr[1] "_Refazer a criação da ligação para %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1697
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Refazer a eliminação de %d item"
+msgstr[1] "_Refazer a eliminação de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1702
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "_Refazer a alteração recursiva de permissões de %d item"
+msgstr[1] "_Refazer a alteração recursiva de permissões de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1708
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "_Refazer a alteração de permissões de %d item"
+msgstr[1] "_Refazer a alteração de permissões de %d item"
+
+#: ../libcore/marlin-undostack-manager.c:1713
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "_Refazer a alteração de grupo de %d item"
+msgstr[1] "_Refazer a alteração de grupo de %d itens"
+
+#: ../libcore/marlin-undostack-manager.c:1718
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Refazer a alteração de proprietário de %d item"
+msgstr[1] "Refazer a alteração de proprietário de %d itens"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+msgid "Today at %-I:%M %p"
+msgstr "Hoje às %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+msgid "Yesterday at %-I:%M %p"
+msgstr "Ontem às %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d de %b às %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a. %d de %b. de %Y às %I:%M %p"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -283,10 +679,6 @@ msgstr "Substituir"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Conflito de ficheiros"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (Unicode inválido)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -1067,26 +1459,6 @@ msgstr "A esvaziar o lixo"
 msgid "Preparing"
 msgstr "A preparar"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
-msgid "Today at %-I:%M %p"
-msgstr "Hoje às %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
-msgid "Yesterday at %-I:%M %p"
-msgstr "Ontem às %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d de %b às %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a. %d de %b. de %Y às %I:%M %p"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Mostrar mais _detalhes"
-
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
 msgid "Inaccessible"
 msgstr "Inacessível"
@@ -1121,385 +1493,13 @@ msgstr "Os nomes de ficheiros não podem ter barras"
 msgid "Toplevel files cannot be renamed"
 msgstr "Não pode mudar o nome dos ficheiros do nível superior"
 
-#: ../libcore/marlin-undostack-manager.c:635
-msgid "Original location could not be determined"
-msgstr "Impossível determinar localização original"
-
-#: ../libcore/marlin-undostack-manager.c:636
-msgid "Open trash folder and restore manually"
-msgstr "Abrir pasta de lixo e restaurar manualmente"
-
-#: ../libcore/marlin-undostack-manager.c:1225
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Eliminar os %d itens copiados"
-
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
-#, c-format
-msgid "Delete '%s'"
-msgstr "Eliminar %s"
-
-#: ../libcore/marlin-undostack-manager.c:1235
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Eliminar os %d itens duplicados"
-
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Mover \"%d\" itens de volta para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1250
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Mover \"%s\" de volta para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Mudar nome de \"%s\" para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Recuperar %d itens do lixo"
-
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Recuperar \"%s\" para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1297
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Mover %d itens novamente para o lixo"
-
-#: ../libcore/marlin-undostack-manager.c:1300
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Mover \"%s\" novamente para o lixo"
-
-#: ../libcore/marlin-undostack-manager.c:1309
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Eliminar as ligações a %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1312
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Eliminar a ligação a %s"
-
-#: ../libcore/marlin-undostack-manager.c:1322
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Recuperar as permissões originais dos itens contidos em \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1330
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Recuperar as permissões originais de \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1339
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Recuperar o grupo de \"%s\" para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1349
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Recuperar o dono de \"%s\" para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Copiar %d itens para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1392
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Copiar \"%s\" para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1400
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Duplicado de %d itens em \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Duplicar \"%s\" em \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1413
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Mover %d itens para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1417
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Mover \"%s\" para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1435
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Criar um novo ficheiro \"%s\" a partir do modelo "
-
-#: ../libcore/marlin-undostack-manager.c:1442
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Criar um ficheiro vazio \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1449
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Criar uma nova pasta \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Mover %d itens para o lixo"
-
-#: ../libcore/marlin-undostack-manager.c:1463
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Mover \"%s\" para o lixo"
-
-#: ../libcore/marlin-undostack-manager.c:1476
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Recuperar \"%s\" do lixo"
-
-#: ../libcore/marlin-undostack-manager.c:1485
-#, c-format
-msgid "Create links to %d items"
-msgstr "Criar ligação a %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1488
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Criar ligação a \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1497
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Definir as permissões dos itens contidos em \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1505
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Definir as permissões de \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1514
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Definir o grupo de \"%s\" para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1524
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Definir o dono de \"%s\" para \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1556
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "An_ular a cópia de %d item"
-msgstr[1] "An_ular a cópia de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1561
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "An_ular a duplicação de %d item"
-msgstr[1] "Anular a duplicação de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1566
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "An_ular a movimentação de %d item"
-msgstr[1] "An_ular a movimentação de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1571
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "An_ular a mudança de nome de %d item"
-msgstr[1] "An_ular a mudança de nome de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1575
-msgid "_Undo creation of an empty file"
-msgstr "An_ular a criação do ficheiro vazio"
-
-#: ../libcore/marlin-undostack-manager.c:1578
-msgid "_Undo creation of a file from template"
-msgstr "An_ular a criação do ficheiro a partir de um modelo"
-
-#: ../libcore/marlin-undostack-manager.c:1582
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "An_ular a criação de %d pasta"
-msgstr[1] "An_ular a criação de %d pastas"
-
-#: ../libcore/marlin-undostack-manager.c:1587
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "An_ular a movimentação para o lixo de %d item"
-msgstr[1] "An_ular a movimentação para o lixo de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1592
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "An_ular a recuperação do lixo para %d item"
-msgstr[1] "An_ular a recuperação do lixo para %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1597
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "An_ular a criação de uma ligação para %d item"
-msgstr[1] "An_ular a criação de uma ligação para %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1602
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "An_ular a eliminação de %d item"
-msgstr[1] "An_ular a eliminação de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1607
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "An_ular a alteração recursiva de permissões para %d item"
-msgstr[1] "An_ular a alteração recursiva de permissões para %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1613
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "An_ular a alteração de permissões para %d item"
-msgstr[1] "An_ular a alteração permissões para %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1618
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "An_ular a alteração de grupo para %d item"
-msgstr[1] "An_ular a alteração de grupo para %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1623
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "An_ular a alteração do proprietário para %d item"
-msgstr[1] "An_ular a alteração do proprietário para %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1651
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Refazer a cópia de %d item"
-msgstr[1] "_Refazer a cópia de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1656
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Refazer a duplicação de %d item"
-msgstr[1] "_Refazer a duplicação de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1661
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Refazer a movimentação de %d item"
-msgstr[1] "_Refazer a movimentação de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1666
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Refazer a mudança de nome de %d item"
-msgstr[1] "_Refazer a mudança de nome de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1670
-msgid "_Redo creation of an empty file"
-msgstr "_Refazer a criação de um ficheiro vazio"
-
-#: ../libcore/marlin-undostack-manager.c:1673
-msgid "_Redo creation of a file from template"
-msgstr "_Refazer a criação de um ficheiro a partir de modelo"
-
-#: ../libcore/marlin-undostack-manager.c:1677
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Refazer a criação de %d pasta"
-msgstr[1] "_Refazer a criação de %d pastas"
-
-#: ../libcore/marlin-undostack-manager.c:1682
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Refazer a movimentação para o lixo de %d item"
-msgstr[1] "_Refazer a movimentação para o lixo de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1687
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Refazer a recuperação do lixo para %d item"
-msgstr[1] "_Refazer a recuperação do lixo para %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1692
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Refazer a criação da ligação para %d item"
-msgstr[1] "_Refazer a criação da ligação para %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1697
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Refazer a eliminação de %d item"
-msgstr[1] "_Refazer a eliminação de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1702
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "_Refazer a alteração recursiva de permissões de %d item"
-msgstr[1] "_Refazer a alteração recursiva de permissões de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1708
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "_Refazer a alteração de permissões de %d item"
-msgstr[1] "_Refazer a alteração de permissões de %d item"
-
-#: ../libcore/marlin-undostack-manager.c:1713
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "_Refazer a alteração de grupo de %d item"
-msgstr[1] "_Refazer a alteração de grupo de %d itens"
-
-#: ../libcore/marlin-undostack-manager.c:1718
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Refazer a alteração de proprietário de %d item"
-msgstr[1] "Refazer a alteração de proprietário de %d itens"
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Mostrar mais _detalhes"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (Unicode inválido)"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
 #: ../src/View/Widgets/TopMenu.vala:64
@@ -1510,6 +1510,80 @@ msgstr "Anterior"
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "Seguinte"
+
+#: ../src/View/ViewContainer.vala:347 ../src/View/Sidebar.vala:494
+msgid "Home"
+msgstr "Pasta pessoal"
+
+#: ../src/View/ViewContainer.vala:349 ../src/View/Sidebar.vala:555
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "Sistema de ficheiros"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "(as Administrator)"
+msgstr "(como administrador)"
+
+#: ../src/View/ViewContainer.vala:371 ../src/View/DirectoryNotFound.vala:28
+msgid "This Folder Does Not Exist"
+msgstr "Esta Pasta Não Existe"
+
+#: ../src/View/ViewContainer.vala:372
+msgid "You cannot create a folder here."
+msgstr "Não pode criar uma pasta aqui."
+
+#: ../src/View/ViewContainer.vala:374
+msgid "The network is unavailable"
+msgstr "A rede está indisponível"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "A working network is needed to reach this folder"
+msgstr "É necessário uma rede para aceder a esta diretoria"
+
+#: ../src/View/ViewContainer.vala:377
+msgid "This Folder Does Not Belong to You"
+msgstr "Esta Pasta Não Lhe Pertence"
+
+#: ../src/View/ViewContainer.vala:378
+msgid "You don't have permission to view this folder."
+msgstr "Não tem permissões para ver esta pasta."
+
+#: ../src/View/ViewContainer.vala:380
+msgid "Unable to Mount Folder"
+msgstr "Incapaz de Montar a Pasta"
+
+#: ../src/View/ViewContainer.vala:381
+msgid "Could not connect to the server for this folder."
+msgstr "Não é possível conetar ao servidor para esta diretoria."
+
+#: ../src/View/ViewContainer.vala:383
+msgid "Unable to Show Folder"
+msgstr "Não é possível mostrar a pasta"
+
+#: ../src/View/ViewContainer.vala:384
+msgid "The server for this folder could not be located."
+msgstr "O servidor para esta pasta não foi localizado."
+
+#: ../src/View/ViewContainer.vala:394
+msgid "File not Found"
+msgstr "Ficheiro não encontrado"
+
+#: ../src/View/ViewContainer.vala:395
+msgid "The file selected no longer exists."
+msgstr "O ficheiro selecionado já não existe."
+
+#: ../src/View/Window.vala:207
+msgid "Files isn't your default file manager."
+msgstr "O Files não é o gestor de ficheiros do sistema"
+
+#: ../src/View/Window.vala:213
+msgid "Set as Default"
+msgstr "Definir como Predefinido"
+
+#: ../src/View/Window.vala:219
+msgid "Ignore"
+msgstr "Ignorar"
 
 #: ../src/View/AbstractDirectoryView.vala:564
 msgid "Failed to preview"
@@ -1583,14 +1657,138 @@ msgstr "Então cortar a seleção"
 msgid "Cannot paste files here"
 msgstr "Não pode colar ficheiros aqui"
 
-#: ../src/View/Widgets/LocationBar.vala:177
-msgid "Reload this folder"
-msgstr "Recarregar esta pasta"
+#: ../src/View/Sidebar.vala:481
+msgid "Personal"
+msgstr "Pessoal"
 
-#: ../src/View/Widgets/LocationBar.vala:180
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
-msgid "Enter search term or path"
-msgstr "Introduzir termo de pesquisa ou caminho"
+#: ../src/View/Sidebar.vala:482
+msgid "Your common places and bookmarks"
+msgstr "Os seus marcadores e locais recorrentes"
+
+#: ../src/View/Sidebar.vala:501
+msgid "Open your personal folder"
+msgstr "Abrir a pasta pessoal"
+
+#: ../src/View/Sidebar.vala:516
+msgid "View the list of recently used files"
+msgstr "Ver a lista de ficheiros usados recentemente"
+
+#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
+msgid "Trash"
+msgstr "Lixo"
+
+#: ../src/View/Sidebar.vala:544
+msgid "Open the Trash"
+msgstr "Abrir o Lixo"
+
+#: ../src/View/Sidebar.vala:548
+msgid "Devices"
+msgstr "Dispositivos"
+
+#: ../src/View/Sidebar.vala:549
+msgid "Your local partitions and devices"
+msgstr "As suas partições locais e dispositivos"
+
+#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
+msgid "Network"
+msgstr "Rede"
+
+#: ../src/View/Sidebar.vala:674
+msgid "Your network places"
+msgstr "Os seus locais na rede"
+
+#: ../src/View/Sidebar.vala:706
+msgid "Entire Network"
+msgstr "Toda a Rede"
+
+#: ../src/View/Sidebar.vala:713
+msgid "Browse the contents of the network"
+msgstr "Explorar o conteúdo da rede"
+
+#: ../src/View/Sidebar.vala:845
+msgid "(%s Free of %s)"
+msgstr "(%s Livres de %s)"
+
+#: ../src/View/Sidebar.vala:1341
+msgid "Unable to start %s"
+msgstr "Incapaz de iniciar %s"
+
+#: ../src/View/Sidebar.vala:1445
+msgid "Open"
+msgstr "Abrir"
+
+#: ../src/View/Sidebar.vala:1453
+msgid "Open in New _Tab"
+msgstr "Abrir num Novo _Separador"
+
+#: ../src/View/Sidebar.vala:1459
+msgid "Open in New _Window"
+msgstr "Abrir numa Nova _Janela"
+
+#: ../src/View/Sidebar.vala:1467
+msgid "Remove"
+msgstr "Remover"
+
+#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Mudar nome"
+
+#: ../src/View/Sidebar.vala:1484
+msgid "_Mount"
+msgstr "_Montar"
+
+#: ../src/View/Sidebar.vala:1490
+msgid "_Unmount"
+msgstr "_Desmontar"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "_Eject"
+msgstr "_Ejetar"
+
+#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Propriedades"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Nome do ficheiro"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Tamanho"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Tipo"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Modificado"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+msgid "Open in New Tab"
+msgstr "Abrir num novo separador"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Window"
+msgstr "Abrir numa Nova Janela"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+msgid "Open in Other Application…"
+msgstr "Abrir com outra Aplicação..."
+
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Leitura"
+
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Escrita"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Executar"
 
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
@@ -1659,164 +1857,30 @@ msgstr "%u ficheiro não pode ser lido"
 msgid "%u files not readable"
 msgstr "%u ficheiros não podme ser lidos"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
-msgid "Open in New Tab"
-msgstr "Abrir num novo separador"
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "Recarregar esta pasta"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
-msgid "Open in New Window"
-msgstr "Abrir numa Nova Janela"
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
+msgid "Enter search term or path"
+msgstr "Introduzir termo de pesquisa ou caminho"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
-msgid "Open in Other Application…"
-msgstr "Abrir com outra Aplicação..."
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Pasta Vazia"
 
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Leitura"
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "Lixo Vazio"
 
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Escrita"
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Não Há Ficheiros Recentes"
 
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Executar"
-
-#: ../src/View/Window.vala:207
-msgid "Files isn't your default file manager."
-msgstr "O Files não é o gestor de ficheiros do sistema"
-
-#: ../src/View/Window.vala:213
-msgid "Set as Default"
-msgstr "Definir como Predefinido"
-
-#: ../src/View/Window.vala:219
-msgid "Ignore"
-msgstr "Ignorar"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Nome do ficheiro"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Tamanho"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Tipo"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Modificado"
-
-#: ../src/View/Sidebar.vala:481
-msgid "Personal"
-msgstr "Pessoal"
-
-#: ../src/View/Sidebar.vala:482
-msgid "Your common places and bookmarks"
-msgstr "Os seus marcadores e locais recorrentes"
-
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
-msgid "Home"
-msgstr "Pasta pessoal"
-
-#: ../src/View/Sidebar.vala:501
-msgid "Open your personal folder"
-msgstr "Abrir a pasta pessoal"
-
-#: ../src/View/Sidebar.vala:516
-msgid "View the list of recently used files"
-msgstr "Ver a lista de ficheiros usados recentemente"
-
-#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
-msgid "Trash"
-msgstr "Lixo"
-
-#: ../src/View/Sidebar.vala:544
-msgid "Open the Trash"
-msgstr "Abrir o Lixo"
-
-#: ../src/View/Sidebar.vala:548
-msgid "Devices"
-msgstr "Dispositivos"
-
-#: ../src/View/Sidebar.vala:549
-msgid "Your local partitions and devices"
-msgstr "As suas partições locais e dispositivos"
-
-#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Sistema de ficheiros"
-
-#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
-msgid "Network"
-msgstr "Rede"
-
-#: ../src/View/Sidebar.vala:674
-msgid "Your network places"
-msgstr "Os seus locais na rede"
-
-#: ../src/View/Sidebar.vala:706
-msgid "Entire Network"
-msgstr "Toda a Rede"
-
-#: ../src/View/Sidebar.vala:713
-msgid "Browse the contents of the network"
-msgstr "Explorar o conteúdo da rede"
-
-#: ../src/View/Sidebar.vala:845
-msgid "(%s Free of %s)"
-msgstr "(%s Livres de %s)"
-
-#: ../src/View/Sidebar.vala:1341
-msgid "Unable to start %s"
-msgstr "Incapaz de iniciar %s"
-
-#: ../src/View/Sidebar.vala:1445
-msgid "Open"
-msgstr "Abrir"
-
-#: ../src/View/Sidebar.vala:1453
-msgid "Open in New _Tab"
-msgstr "Abrir num Novo _Separador"
-
-#: ../src/View/Sidebar.vala:1459
-msgid "Open in New _Window"
-msgstr "Abrir numa Nova _Janela"
-
-#: ../src/View/Sidebar.vala:1467
-msgid "Remove"
-msgstr "Remover"
-
-#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Mudar nome"
-
-#: ../src/View/Sidebar.vala:1484
-msgid "_Mount"
-msgstr "_Montar"
-
-#: ../src/View/Sidebar.vala:1490
-msgid "_Unmount"
-msgstr "_Desmontar"
-
-#: ../src/View/Sidebar.vala:1496
-msgid "_Eject"
-msgstr "_Ejetar"
-
-#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Propriedades"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
-msgid "This Folder Does Not Exist"
-msgstr "Esta Pasta Não Existe"
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Acesso Negado"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
@@ -1840,69 +1904,70 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Pasta Vazia"
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Operações de ficheiro"
 
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "Lixo Vazio"
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "Operação %s completa"
 
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Não Há Ficheiros Recentes"
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "Todas as operações de ficheiros terminaram"
 
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Acesso Negado"
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Mostrar diálogo de cópia"
 
-#: ../src/View/ViewContainer.vala:358
-msgid "(as Administrator)"
-msgstr "(como administrador)"
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Cancelar todas as operações ativas"
 
-#: ../src/View/ViewContainer.vala:372
-msgid "You cannot create a folder here."
-msgstr "Não pode criar uma pasta aqui."
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Gestão de ficheiros"
 
-#: ../src/View/ViewContainer.vala:374
-msgid "The network is unavailable"
-msgstr "A rede está indisponível"
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Gestor de ficheiros"
 
-#: ../src/View/ViewContainer.vala:375
-msgid "A working network is needed to reach this folder"
-msgstr "É necessário uma rede para aceder a esta diretoria"
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Window"
+msgstr "No_va janela"
 
-#: ../src/View/ViewContainer.vala:377
-msgid "This Folder Does Not Belong to You"
-msgstr "Esta Pasta Não Lhe Pertence"
+#: ../src/DesktopLauncher.vala:9
+msgid "New Window As _Administrator"
+msgstr "Nova janela como _administrador"
 
-#: ../src/View/ViewContainer.vala:378
-msgid "You don't have permission to view this folder."
-msgstr "Não tem permissões para ver esta pasta."
+#: ../src/DesktopLauncher.vala:10
+msgid "About _Files"
+msgstr "Sobre _Ficheiros"
 
-#: ../src/View/ViewContainer.vala:380
-msgid "Unable to Mount Folder"
-msgstr "Incapaz de Montar a Pasta"
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Ficheiros"
 
-#: ../src/View/ViewContainer.vala:381
-msgid "Could not connect to the server for this folder."
-msgstr "Não é possível conetar ao servidor para esta diretoria."
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "Vários tipos de ficheiros foram selecionados"
 
-#: ../src/View/ViewContainer.vala:383
-msgid "Unable to Show Folder"
-msgstr "Não é possível mostrar a pasta"
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "Nenhuma aplicação consegue abrir todos estes tipos de ficheiro"
 
-#: ../src/View/ViewContainer.vala:384
-msgid "The server for this folder could not be located."
-msgstr "O servidor para esta pasta não foi localizado."
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "Ocorreu um erro ao abrir os ficheiros"
 
-#: ../src/View/ViewContainer.vala:394
-msgid "File not Found"
-msgstr "Ficheiro não encontrado"
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "Falha ao abrir uris"
 
-#: ../src/View/ViewContainer.vala:395
-msgid "The file selected no longer exists."
-msgstr "O ficheiro selecionado já não existe."
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "Não é possível abrir ficheiros ou uris com esta aplicação"
 
 #: ../src/Application.vala:144
 msgid "Show the version of the program."
@@ -1982,23 +2047,6 @@ msgstr "Disponível:"
 msgid "Used:"
 msgstr "Usado:"
 
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Propriedade do Disco"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Localização:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Formato:"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Definir como pré-definido"
-
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
 msgstr "Permissões"
@@ -2050,6 +2098,11 @@ msgstr "Tipo MIME:"
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
 msgstr "Resolução:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+msgid "Location:"
+msgstr "Localização:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
@@ -2110,84 +2163,31 @@ msgstr[1] "%u itens selecionados"
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "Operações de ficheiro"
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Definir como pré-definido"
 
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
-msgstr "Operação %s completa"
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Propriedade do Disco"
 
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
-msgstr "Todas as operações de ficheiros terminaram"
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Formato:"
 
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "Mostrar diálogo de cópia"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "Cancelar todas as operações ativas"
-
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Gestão de ficheiros"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Gestor de ficheiros"
-
-#: ../src/DesktopLauncher.vala:8
-msgid "New _Window"
-msgstr "No_va janela"
-
-#: ../src/DesktopLauncher.vala:9
-msgid "New Window As _Administrator"
-msgstr "Nova janela como _administrador"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "About _Files"
-msgstr "Sobre _Ficheiros"
-
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Ficheiros"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr "Vários tipos de ficheiros foram selecionados"
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr "Nenhuma aplicação consegue abrir todos estes tipos de ficheiro"
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr "Ocorreu um erro ao abrir os ficheiros"
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "Falha ao abrir uris"
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr "Não é possível abrir ficheiros ou uris com esta aplicação"
-
-#: ../libcore/FileUtils.vala:59
+#: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
 msgstr "Não foi possível determinar a localização original de \"%s\" "
 
-#: ../libcore/FileUtils.vala:60
+#: ../libcore/FileUtils.vala:61
 msgid "The item cannot be restored from trash"
 msgstr "O item não pode ser recuperado do lixo"
 
-#: ../libcore/FileUtils.vala:342
+#: ../libcore/FileUtils.vala:343
 msgid "Could not rename to '%s'"
 msgstr "Impossível mudar o nome para '%s'"
 
-#: ../libcore/FileUtils.vala:463
+#: ../libcore/FileUtils.vala:464
 msgid "%A at %-I:%M %p"
 msgstr ""
 
@@ -2210,6 +2210,18 @@ msgstr "Criar uma Ligação para Aqui"
 #: ../libcore/DndHandler.vala:98
 msgid "Cancel"
 msgstr "Cancelar"
+
+#: ../libwidgets/View/SearchResults.vala:178
+msgid "In This Folder"
+msgstr "Nesta Pasta"
+
+#: ../libwidgets/View/SearchResults.vala:180
+msgid "Bookmarks"
+msgstr "Marcadores"
+
+#: ../libwidgets/View/SearchResults.vala:182
+msgid "Everywhere Else"
+msgstr "Outros Locais"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
@@ -2289,18 +2301,6 @@ msgstr "Recentes"
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr "MTP"
-
-#: ../libwidgets/View/SearchResults.vala:178
-msgid "In This Folder"
-msgstr "Nesta Pasta"
-
-#: ../libwidgets/View/SearchResults.vala:180
-msgid "Bookmarks"
-msgstr "Marcadores"
-
-#: ../libwidgets/View/SearchResults.vala:182
-msgid "Everywhere Else"
-msgstr "Outros Locais"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
