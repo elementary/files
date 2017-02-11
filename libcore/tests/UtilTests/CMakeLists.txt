@@ -30,6 +30,8 @@ vala_precompile (VALA_TEST_C ${PKGNAME}-vala_tests
     pantheon-files-core-C
   OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
+    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+    --vapidir=${CMAKE_BINARY_DIR}/libcore/
     --thread
     --target-glib=2.32 # Needed for new thread API
 )
