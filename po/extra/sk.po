@@ -8,18 +8,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-06 11:17-0800\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
 "PO-Revision-Date: 2016-12-12 20:18+0000\n"
 "Last-Translator: Martin Korpala <Unknown>\n"
 "Language-Team: Slovak <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-07 05:50+0000\n"
+"X-Launchpad-Export-Date: 2017-02-11 05:46+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 msgid "Files"
 msgstr "Súbory"
+
+msgid "Browse your files"
+msgstr ""
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr ""
+
+msgid "File Manager"
+msgstr ""
+
+msgid "New Window"
+msgstr ""
+
+msgid "New Window As Administrator"
+msgstr ""
+
+msgid "About Files"
+msgstr ""
 
 msgid "Browse and manage files and folders"
 msgstr "Prehliadať a spravovať súbory a prečinky"
@@ -36,6 +54,24 @@ msgstr ""
 "súborom, či už lokálnym alebo na externom zariadení prípadne vzdialene "
 "pomocou FTP, SFTP, AFP, Webdav alebo Windows share."
 
+msgid "Enable drag and drop tabs between windows"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr ""
+
+msgid "Minor bug fixes"
+msgstr "Menšie opravy chýb"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
+msgstr ""
+
 msgid "Fix appdata release dates"
 msgstr "Opraviť dátumy vydania dát aplikácie."
 
@@ -50,24 +86,6 @@ msgstr "Zlepšiť vystrihnúť/kopírovať/vložiť"
 
 msgid "Translation updates"
 msgstr "Aktualizácie prekladu"
-
-msgid "Minor bug fixes"
-msgstr "Menšie opravy chýb"
-
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
-
-msgid "Improved translation support"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
-msgstr ""
 
 msgid "Run Pantheon Files as Administrator"
 msgstr ""

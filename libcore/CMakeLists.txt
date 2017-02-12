@@ -1,5 +1,3 @@
-enable_testing ()
-
 set (PKGNAME pantheon-files-core)
 set (PKGNAME_ PANTHEON_FILES_CORE)
 set (${PKGNAME_}_VERSION 0.1)
