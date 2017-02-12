@@ -475,6 +475,9 @@ public class GOF.Directory.Async : Object {
             warning ("list cached files called in %s state - not expected to happen", state.to_string ());
             return;
         }
+
+        debug ("Listing cached files");
+
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
         foreach (GOF.File gof in file_hash.get_values ()) {

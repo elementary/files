@@ -1,10 +1,9 @@
-set (PKGNAME pantheon-files-core)
-set (PKGNAME_ PANTHEON_FILES_CORE)
-set (${PKGNAME_}_VERSION 0.1)
-# increase the version number if you break the API
-
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+
+set (CORE_LIB
+    pantheon-files-core
+)
 
 set (CFLAGS
     ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
@@ -14,34 +13,35 @@ set (LIB_PATHS
     ${DEPS_LIBRARY_DIRS}
 )
 
+set (TEST_NAME
+    file_util_tests
+)
+
 link_directories (${LIB_PATHS})
 add_definitions (${CFLAGS} -O2)
 
-vala_precompile (VALA_TEST_C ${PKGNAME}-vala_tests
+vala_precompile (VALA_TEST_C ${TEST_NAME}
   UtilTests.vala
   PACKAGES
-    granite
     gtk+-3.0
-    gio-2.0
+    granite
     gee-0.8
-    gmodule-2.0
-    libcanberra
+    posix
     pantheon-files-core
     pantheon-files-core-C
   OPTIONS
-    --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
     --vapidir=${CMAKE_BINARY_DIR}/libcore/
     --thread
     --target-glib=2.32 # Needed for new thread API
 )
 
-add_executable (${PKGNAME}-vala_tests
+add_executable (${TEST_NAME}
     ${VALA_TEST_C}
 )
 
-target_link_libraries (${PKGNAME}-vala_tests pantheon-files-core ${DEPS_LIBRARIES})
-add_dependencies (${PKGNAME}-vala_tests pantheon-files-core)
+target_link_libraries (${TEST_NAME} ${CORE_LIB} ${DEPS_LIBRARIES})
+add_dependencies (${TEST_NAME} ${CORE_LIB})
 
-add_test (core-vala-tests ${PKGNAME}-vala_tests)
+add_test (core-${TEST_NAME} ${TEST_NAME})
 
