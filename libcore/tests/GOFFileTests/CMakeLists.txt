@@ -20,10 +20,24 @@ set (TEST_NAME
 link_directories (${LIB_PATHS})
 add_definitions (${CFLAGS} -O2)
 
+vala_precompile (VALA_TEST_C ${TEST_NAME}
+  GOFFileTests.vala
+  PACKAGES
+    gtk+-3.0
+    granite
+    gee-0.8
+    posix
+    pantheon-files-core
+    pantheon-files-core-C
+  OPTIONS
+    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+    --vapidir=${CMAKE_BINARY_DIR}/libcore/
+    --thread
+    --target-glib=2.32 # Needed for new thread API
+)
 
 add_executable (${TEST_NAME}
-    tests.c
-    marlincore-tests-gof.c
+    ${VALA_TEST_C}
 )
 
 target_link_libraries (${TEST_NAME} ${CORE_LIB} ${DEPS_LIBRARIES})
