@@ -8,35 +8,35 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-10 16:45+0000\n"
-"PO-Revision-Date: 2017-02-06 13:59+0000\n"
+"PO-Revision-Date: 2017-02-11 19:52+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-11 05:46+0000\n"
+"X-Launchpad-Export-Date: 2017-02-12 06:12+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 msgid "Files"
 msgstr "Failai"
 
 msgid "Browse your files"
-msgstr ""
+msgstr "Naršyti savo failus"
 
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr ""
+msgstr "aplankas;tvarkytuvė;naršyti;diskas;failų sistema;"
 
 msgid "File Manager"
-msgstr ""
+msgstr "Failų tvarkytuvė"
 
 msgid "New Window"
-msgstr ""
+msgstr "Naujas langas"
 
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "Naujas langas administratoriaus teisėmis"
 
 msgid "About Files"
-msgstr ""
+msgstr "Apie Failus"
 
 msgid "Browse and manage files and folders"
 msgstr "Naršyti ir tvarkyti failus ir aplankus"
