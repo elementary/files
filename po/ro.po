@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-06 11:17-0800\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
-"X-Launchpad-Export-Date: 2017-02-07 05:48+0000\n"
+"X-Launchpad-Export-Date: 2017-02-11 05:44+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -137,6 +137,428 @@ msgstr "Memo_rează această parolă"
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "Operațiune anulată"
+
+#: ../libcore/marlin-undostack-manager.c:635
+msgid "Original location could not be determined"
+msgstr "Locaţia originală nu a putut fi determinată"
+
+#: ../libcore/marlin-undostack-manager.c:636
+msgid "Open trash folder and restore manually"
+msgstr "Deschide coş de gunoi si restaurează manual"
+
+#: ../libcore/marlin-undostack-manager.c:1225
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Sterge %d elementele copiate"
+
+#: ../libcore/marlin-undostack-manager.c:1228
+#: ../libcore/marlin-undostack-manager.c:1238
+#: ../libcore/marlin-undostack-manager.c:1269
+#, c-format
+msgid "Delete '%s'"
+msgstr "Sterge '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1235
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Sterge %d elementele dublate"
+
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Mută cele %d elemente înapoi la '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1250
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Muta '%s' inapoi in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1259
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Redenumeste '%s' ca '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1278
+#: ../libcore/marlin-undostack-manager.c:1473
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Restaureaza elementele %d din cosul de gunoi"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Restaureaza '%s' in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1297
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Muta elementele %d inapoi in cosul de gunoi"
+
+#: ../libcore/marlin-undostack-manager.c:1300
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Muta '%s' inapoi in cosul de gunoi"
+
+#: ../libcore/marlin-undostack-manager.c:1309
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Sterge legaturile catre fisierele %d"
+
+#: ../libcore/marlin-undostack-manager.c:1312
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Sterge legatuta catre '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1322
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Restaureaza permisiunile originale fisierelor anexate in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1330
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Restaureaza permisiunile originale pentru '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1339
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Restaureaza grupul de '%s' la '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1349
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Restaureaza proprietarului de '%s' la '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1388
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Copiază cele %d elemente în '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1392
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Copiaza '%s' la '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1400
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "dublurile %d elementelor in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1405
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Dublurile '%s' in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1413
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Muta fisierele %d in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Muta '%s' in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1435
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Creeaza fisier nou '%s' din sablon "
+
+#: ../libcore/marlin-undostack-manager.c:1442
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Creeaza fisier gol '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "creeaza un dosar nou '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1457
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Muta elementele %d in cosul de gunoi"
+
+#: ../libcore/marlin-undostack-manager.c:1463
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Muta '%s' in gosul de gunoi"
+
+#: ../libcore/marlin-undostack-manager.c:1476
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Restaureaza '%s' din cosul de gunoi"
+
+#: ../libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "Create links to %d items"
+msgstr "Creaza legaturi catre elementele %d"
+
+#: ../libcore/marlin-undostack-manager.c:1488
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Creeaza lagatura catre '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1497
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Seteaza permisiunile fisierelor anexate in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1505
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Seteaza permisiunile de '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1514
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Seteaza grupul de '%s' la '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1524
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Seteaza proprietarul de '%s' la '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1556
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Anulează copierea elementului"
+msgstr[1] "_Anulează copierea a %d elemente"
+msgstr[2] "_Anulează copierea a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1561
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Anulează duplicarea elementului"
+msgstr[1] "_Anulează duplicarea a %d elemente"
+msgstr[2] "_Anulează duplicarea a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1566
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Anulează mutarea elementului"
+msgstr[1] "_Anulează mutarea a %d elemente"
+msgstr[2] "_Anulează mutarea a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1571
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Anulează redenumirea elementului"
+msgstr[1] "_Anulează redenumirea a %d elemente"
+msgstr[2] "_Anulează redenumirea a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1575
+msgid "_Undo creation of an empty file"
+msgstr "_Anulează crearea unui fișier gol"
+
+#: ../libcore/marlin-undostack-manager.c:1578
+msgid "_Undo creation of a file from template"
+msgstr "_Anulează crearea unui fișier din șablon"
+
+#: ../libcore/marlin-undostack-manager.c:1582
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Anulează crearea dosarului"
+msgstr[1] "_Anulează crearea a %d dosare"
+msgstr[2] "_Anulează crearea a %d dosare"
+
+#: ../libcore/marlin-undostack-manager.c:1587
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Anulează mutarea elementului la gunoi"
+msgstr[1] "_Anulează mutarea a %d elemente la gunoi"
+msgstr[2] "_Anulează mutarea a %d elemente la gunoi"
+
+#: ../libcore/marlin-undostack-manager.c:1592
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Anulează restaurarea din coşul de gunoi a elementului"
+msgstr[1] "_Anulează restaurarea din coşul de gunoi a  %d elemente"
+msgstr[2] "_Anulează restaurarea din coşul de gunoi a  %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1597
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Anulează crearea unei legături către element"
+msgstr[1] "_Anulează crearea unei legături către %d elemente"
+msgstr[2] "_Anulează crearea unei legături către %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1602
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Anulează ștergerea elementului"
+msgstr[1] "_Anulează ștergerea a %d elemente"
+msgstr[2] "_Anulează ștergerea a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1607
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "_Anulează schimbarea recursivă a drepturilor elementului"
+msgstr[1] "_Anulează schimbarea recursivă a drepturilor a %d elemente"
+msgstr[2] "_Anulează schimbarea recursivă a drepturilor a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1613
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "_Anulează schimbarea drepturilor elementului"
+msgstr[1] "_Anulează schimbarea drepturilor a %d elemente"
+msgstr[2] "_Anulează schimbarea drepturilor a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1618
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "_Anulează  schimbarea grupului elementului"
+msgstr[1] "_Anulează  schimbarea grupului a %d elemente"
+msgstr[2] "_Anulează  schimbarea grupului a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1623
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "_Anulează schimbarea de proprietar a elementului"
+msgstr[1] "_Anulează schimbarea de proprietar a  %d elemente"
+msgstr[2] "_Anulează schimbarea de proprietar a  %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1651
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Reface copierea elementului"
+msgstr[1] "_Reface copierea a %d elemente"
+msgstr[2] "_Reface copierea a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1656
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Reface duplicarea elementului"
+msgstr[1] "_Reface duplicarea a %d elemente"
+msgstr[2] "_Reface duplicarea a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1661
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Reface mutarea elementului"
+msgstr[1] "_Reface mutarea a %d elemente"
+msgstr[2] "_Reface mutarea a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1666
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Anulază redenumirea elementului"
+msgstr[1] "_Anulază redenumirea a %d elemente"
+msgstr[2] "_Anulază redenumirea a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1670
+msgid "_Redo creation of an empty file"
+msgstr "_Refă fișierul gol"
+
+#: ../libcore/marlin-undostack-manager.c:1673
+msgid "_Redo creation of a file from template"
+msgstr "_Refă fișierul dintr-un șablon"
+
+#: ../libcore/marlin-undostack-manager.c:1677
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Refă dosarul"
+msgstr[1] "_Refă  %d dosare"
+msgstr[2] "_Refă  %d dosare"
+
+#: ../libcore/marlin-undostack-manager.c:1682
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "Anulează mutarea în coș a %d element"
+msgstr[1] "Anulează mutarea în coș a %d elemente"
+msgstr[2] "Anulează mutarea în coș a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1687
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "Reîncearcă restaurarea din coş a %d element"
+msgstr[1] "Reîncearcă restaurarea din coş a %d elemente"
+msgstr[2] "Reîncearcă restaurarea din coş a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1692
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "Reîncearcă crearea legăturii a %d element"
+msgstr[1] "Reîncearcă crearea legăturii a %d elemente"
+msgstr[2] "Reîncearcă crearea legăturii a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1697
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "Reîncearcă ștergerea a %d element"
+msgstr[1] "Reîncearcă ștergerea a %d elemente"
+msgstr[2] "Reîncearcă ștergerea a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1702
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Reîncearcă schimbarea permisiunilor recursive a %d element"
+msgstr[1] "Reîncearcă schimbarea permisiunilor recursive a %d elemente"
+msgstr[2] "Reîncearcă schimbarea permisiunilor recursive a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1708
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Reîncearcă schimbarea permisiunilor a %d element"
+msgstr[1] "Reîncearcă schimbarea permisiunilor a %d elemente"
+msgstr[2] "Reîncearcă schimbarea permisiunilor a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1713
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Reîncearcă schimbarea grupului a %d element"
+msgstr[1] "Reîncearcă schimbarea grupului a %d elemente"
+msgstr[2] "Reîncearcă schimbarea grupului a %d elemente"
+
+#: ../libcore/marlin-undostack-manager.c:1718
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Reîncearcă schimbarea proprietarului a %d element"
+msgstr[1] "Reîncearcă schimbarea proprietarului a %d elemente"
+msgstr[2] "Reîncearcă schimbarea proprietarului a %d elemente"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+msgid "Today at %-I:%M %p"
+msgstr "Astazi la %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+msgid "Yesterday at %-I:%M %p"
+msgstr "Ieri la %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b la %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %y la %-I:%M %p"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -283,10 +705,6 @@ msgstr "Înlocuiește"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Conflict de fișiere"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (invalid Unicode)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -1085,26 +1503,6 @@ msgstr "Se golește coșul de gunoi"
 msgid "Preparing"
 msgstr "Se pregătește"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
-msgid "Today at %-I:%M %p"
-msgstr "Astazi la %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
-msgid "Yesterday at %-I:%M %p"
-msgstr "Ieri la %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b la %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %y la %-I:%M %p"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Arată mai multe _detalii"
-
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
 msgid "Inaccessible"
 msgstr "Inaccesibil"
@@ -1139,411 +1537,13 @@ msgstr "Bara oblică nu este permisă în numele fișierelor"
 msgid "Toplevel files cannot be renamed"
 msgstr "Fişierele din rădăcină nu pot fi redenumite"
 
-#: ../libcore/marlin-undostack-manager.c:635
-msgid "Original location could not be determined"
-msgstr "Locaţia originală nu a putut fi determinată"
-
-#: ../libcore/marlin-undostack-manager.c:636
-msgid "Open trash folder and restore manually"
-msgstr "Deschide coş de gunoi si restaurează manual"
-
-#: ../libcore/marlin-undostack-manager.c:1225
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Sterge %d elementele copiate"
-
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
-#, c-format
-msgid "Delete '%s'"
-msgstr "Sterge '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1235
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Sterge %d elementele dublate"
-
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Mută cele %d elemente înapoi la '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1250
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Muta '%s' inapoi in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Redenumeste '%s' ca '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Restaureaza elementele %d din cosul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Restaureaza '%s' in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1297
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Muta elementele %d inapoi in cosul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1300
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Muta '%s' inapoi in cosul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1309
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Sterge legaturile catre fisierele %d"
-
-#: ../libcore/marlin-undostack-manager.c:1312
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Sterge legatuta catre '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1322
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Restaureaza permisiunile originale fisierelor anexate in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1330
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Restaureaza permisiunile originale pentru '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1339
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Restaureaza grupul de '%s' la '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1349
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Restaureaza proprietarului de '%s' la '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Copiază cele %d elemente în '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1392
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Copiaza '%s' la '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1400
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "dublurile %d elementelor in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Dublurile '%s' in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1413
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Muta fisierele %d in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1417
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Muta '%s' in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1435
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Creeaza fisier nou '%s' din sablon "
-
-#: ../libcore/marlin-undostack-manager.c:1442
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Creeaza fisier gol '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1449
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "creeaza un dosar nou '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Muta elementele %d in cosul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1463
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Muta '%s' in gosul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1476
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Restaureaza '%s' din cosul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1485
-#, c-format
-msgid "Create links to %d items"
-msgstr "Creaza legaturi catre elementele %d"
-
-#: ../libcore/marlin-undostack-manager.c:1488
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Creeaza lagatura catre '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1497
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Seteaza permisiunile fisierelor anexate in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1505
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Seteaza permisiunile de '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1514
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Seteaza grupul de '%s' la '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1524
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Seteaza proprietarul de '%s' la '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1556
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Anulează copierea elementului"
-msgstr[1] "_Anulează copierea a %d elemente"
-msgstr[2] "_Anulează copierea a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1561
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Anulează duplicarea elementului"
-msgstr[1] "_Anulează duplicarea a %d elemente"
-msgstr[2] "_Anulează duplicarea a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1566
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Anulează mutarea elementului"
-msgstr[1] "_Anulează mutarea a %d elemente"
-msgstr[2] "_Anulează mutarea a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1571
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Anulează redenumirea elementului"
-msgstr[1] "_Anulează redenumirea a %d elemente"
-msgstr[2] "_Anulează redenumirea a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1575
-msgid "_Undo creation of an empty file"
-msgstr "_Anulează crearea unui fișier gol"
-
-#: ../libcore/marlin-undostack-manager.c:1578
-msgid "_Undo creation of a file from template"
-msgstr "_Anulează crearea unui fișier din șablon"
-
-#: ../libcore/marlin-undostack-manager.c:1582
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Anulează crearea dosarului"
-msgstr[1] "_Anulează crearea a %d dosare"
-msgstr[2] "_Anulează crearea a %d dosare"
-
-#: ../libcore/marlin-undostack-manager.c:1587
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Anulează mutarea elementului la gunoi"
-msgstr[1] "_Anulează mutarea a %d elemente la gunoi"
-msgstr[2] "_Anulează mutarea a %d elemente la gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1592
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Anulează restaurarea din coşul de gunoi a elementului"
-msgstr[1] "_Anulează restaurarea din coşul de gunoi a  %d elemente"
-msgstr[2] "_Anulează restaurarea din coşul de gunoi a  %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1597
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Anulează crearea unei legături către element"
-msgstr[1] "_Anulează crearea unei legături către %d elemente"
-msgstr[2] "_Anulează crearea unei legături către %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1602
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Anulează ștergerea elementului"
-msgstr[1] "_Anulează ștergerea a %d elemente"
-msgstr[2] "_Anulează ștergerea a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1607
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "_Anulează schimbarea recursivă a drepturilor elementului"
-msgstr[1] "_Anulează schimbarea recursivă a drepturilor a %d elemente"
-msgstr[2] "_Anulează schimbarea recursivă a drepturilor a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1613
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "_Anulează schimbarea drepturilor elementului"
-msgstr[1] "_Anulează schimbarea drepturilor a %d elemente"
-msgstr[2] "_Anulează schimbarea drepturilor a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1618
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "_Anulează  schimbarea grupului elementului"
-msgstr[1] "_Anulează  schimbarea grupului a %d elemente"
-msgstr[2] "_Anulează  schimbarea grupului a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1623
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "_Anulează schimbarea de proprietar a elementului"
-msgstr[1] "_Anulează schimbarea de proprietar a  %d elemente"
-msgstr[2] "_Anulează schimbarea de proprietar a  %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1651
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Reface copierea elementului"
-msgstr[1] "_Reface copierea a %d elemente"
-msgstr[2] "_Reface copierea a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1656
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Reface duplicarea elementului"
-msgstr[1] "_Reface duplicarea a %d elemente"
-msgstr[2] "_Reface duplicarea a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1661
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Reface mutarea elementului"
-msgstr[1] "_Reface mutarea a %d elemente"
-msgstr[2] "_Reface mutarea a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1666
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Anulază redenumirea elementului"
-msgstr[1] "_Anulază redenumirea a %d elemente"
-msgstr[2] "_Anulază redenumirea a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1670
-msgid "_Redo creation of an empty file"
-msgstr "_Refă fișierul gol"
-
-#: ../libcore/marlin-undostack-manager.c:1673
-msgid "_Redo creation of a file from template"
-msgstr "_Refă fișierul dintr-un șablon"
-
-#: ../libcore/marlin-undostack-manager.c:1677
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Refă dosarul"
-msgstr[1] "_Refă  %d dosare"
-msgstr[2] "_Refă  %d dosare"
-
-#: ../libcore/marlin-undostack-manager.c:1682
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "Anulează mutarea în coș a %d element"
-msgstr[1] "Anulează mutarea în coș a %d elemente"
-msgstr[2] "Anulează mutarea în coș a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1687
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "Reîncearcă restaurarea din coş a %d element"
-msgstr[1] "Reîncearcă restaurarea din coş a %d elemente"
-msgstr[2] "Reîncearcă restaurarea din coş a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1692
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "Reîncearcă crearea legăturii a %d element"
-msgstr[1] "Reîncearcă crearea legăturii a %d elemente"
-msgstr[2] "Reîncearcă crearea legăturii a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1697
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "Reîncearcă ștergerea a %d element"
-msgstr[1] "Reîncearcă ștergerea a %d elemente"
-msgstr[2] "Reîncearcă ștergerea a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1702
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Reîncearcă schimbarea permisiunilor recursive a %d element"
-msgstr[1] "Reîncearcă schimbarea permisiunilor recursive a %d elemente"
-msgstr[2] "Reîncearcă schimbarea permisiunilor recursive a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1708
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Reîncearcă schimbarea permisiunilor a %d element"
-msgstr[1] "Reîncearcă schimbarea permisiunilor a %d elemente"
-msgstr[2] "Reîncearcă schimbarea permisiunilor a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1713
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Reîncearcă schimbarea grupului a %d element"
-msgstr[1] "Reîncearcă schimbarea grupului a %d elemente"
-msgstr[2] "Reîncearcă schimbarea grupului a %d elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1718
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Reîncearcă schimbarea proprietarului a %d element"
-msgstr[1] "Reîncearcă schimbarea proprietarului a %d elemente"
-msgstr[2] "Reîncearcă schimbarea proprietarului a %d elemente"
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Arată mai multe _detalii"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (invalid Unicode)"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
 #: ../src/View/Widgets/TopMenu.vala:64
@@ -1554,6 +1554,80 @@ msgstr "Anterior"
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "Următor"
+
+#: ../src/View/ViewContainer.vala:347 ../src/View/Sidebar.vala:494
+msgid "Home"
+msgstr "Acasă"
+
+#: ../src/View/ViewContainer.vala:349 ../src/View/Sidebar.vala:555
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "Sistem de fișiere"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "(as Administrator)"
+msgstr "(ca Administrator)"
+
+#: ../src/View/ViewContainer.vala:371 ../src/View/DirectoryNotFound.vala:28
+msgid "This Folder Does Not Exist"
+msgstr "Acest dosar nu există"
+
+#: ../src/View/ViewContainer.vala:372
+msgid "You cannot create a folder here."
+msgstr "Nu se poate creea un dosar aici."
+
+#: ../src/View/ViewContainer.vala:374
+msgid "The network is unavailable"
+msgstr "Rețeaua nu este disponibilă"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "A working network is needed to reach this folder"
+msgstr "O rețea funcțională este necesară pentru a ajunge la acest dosar"
+
+#: ../src/View/ViewContainer.vala:377
+msgid "This Folder Does Not Belong to You"
+msgstr "Acest dosar nu-ți aparţine"
+
+#: ../src/View/ViewContainer.vala:378
+msgid "You don't have permission to view this folder."
+msgstr "Nu ai permisiunea de a vizualiza acest folder."
+
+#: ../src/View/ViewContainer.vala:380
+msgid "Unable to Mount Folder"
+msgstr "Nu se poate monta dosarul"
+
+#: ../src/View/ViewContainer.vala:381
+msgid "Could not connect to the server for this folder."
+msgstr "Nu se poate conecta la server pentru acest dosar."
+
+#: ../src/View/ViewContainer.vala:383
+msgid "Unable to Show Folder"
+msgstr "Nu se poate afişa acest dosar"
+
+#: ../src/View/ViewContainer.vala:384
+msgid "The server for this folder could not be located."
+msgstr "Serverul pentru acest dosar nu a putut fi localizat."
+
+#: ../src/View/ViewContainer.vala:394
+msgid "File not Found"
+msgstr "Fișierul nu a fost găsit"
+
+#: ../src/View/ViewContainer.vala:395
+msgid "The file selected no longer exists."
+msgstr "Fișierul selectat nu mai există."
+
+#: ../src/View/Window.vala:207
+msgid "Files isn't your default file manager."
+msgstr "Files nu este managerul de fișiere implicit."
+
+#: ../src/View/Window.vala:213
+msgid "Set as Default"
+msgstr "Stabilește ca implicit"
+
+#: ../src/View/Window.vala:219
+msgid "Ignore"
+msgstr "Ignoră"
 
 #: ../src/View/AbstractDirectoryView.vala:564
 msgid "Failed to preview"
@@ -1627,14 +1701,138 @@ msgstr "În schimb se poate tăia selecţia"
 msgid "Cannot paste files here"
 msgstr "Nu se pot lipi fișiere aici"
 
-#: ../src/View/Widgets/LocationBar.vala:177
-msgid "Reload this folder"
-msgstr "Reîncarcă acest dosar"
+#: ../src/View/Sidebar.vala:481
+msgid "Personal"
+msgstr "Personal"
 
-#: ../src/View/Widgets/LocationBar.vala:180
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
-msgid "Enter search term or path"
-msgstr "Introdu termenul de căutare sau calea"
+#: ../src/View/Sidebar.vala:482
+msgid "Your common places and bookmarks"
+msgstr "Locurile tale comune si semnee de carte"
+
+#: ../src/View/Sidebar.vala:501
+msgid "Open your personal folder"
+msgstr "Deschide dosarul personal"
+
+#: ../src/View/Sidebar.vala:516
+msgid "View the list of recently used files"
+msgstr "Vezi lista fișierelor recent utilizate"
+
+#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
+msgid "Trash"
+msgstr "Coș de gunoi"
+
+#: ../src/View/Sidebar.vala:544
+msgid "Open the Trash"
+msgstr "Deschide coșul de gunoi"
+
+#: ../src/View/Sidebar.vala:548
+msgid "Devices"
+msgstr "Dispozitive"
+
+#: ../src/View/Sidebar.vala:549
+msgid "Your local partitions and devices"
+msgstr "Partițiile și dispozitivele tale locale"
+
+#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
+msgid "Network"
+msgstr "Reţea"
+
+#: ../src/View/Sidebar.vala:674
+msgid "Your network places"
+msgstr "Locurile tale în rețea"
+
+#: ../src/View/Sidebar.vala:706
+msgid "Entire Network"
+msgstr "Toată reţeaua"
+
+#: ../src/View/Sidebar.vala:713
+msgid "Browse the contents of the network"
+msgstr "Navighează conținutul rețelei"
+
+#: ../src/View/Sidebar.vala:845
+msgid "(%s Free of %s)"
+msgstr "(%s liber din %s)"
+
+#: ../src/View/Sidebar.vala:1341
+msgid "Unable to start %s"
+msgstr "Nu s-a putut porni %s"
+
+#: ../src/View/Sidebar.vala:1445
+msgid "Open"
+msgstr "Deschide"
+
+#: ../src/View/Sidebar.vala:1453
+msgid "Open in New _Tab"
+msgstr "Deschide într-o filă nouă"
+
+#: ../src/View/Sidebar.vala:1459
+msgid "Open in New _Window"
+msgstr "Deschide într-o fereastră nouă"
+
+#: ../src/View/Sidebar.vala:1467
+msgid "Remove"
+msgstr "Elimina"
+
+#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Redenumește"
+
+#: ../src/View/Sidebar.vala:1484
+msgid "_Mount"
+msgstr "Montează"
+
+#: ../src/View/Sidebar.vala:1490
+msgid "_Unmount"
+msgstr "Demontează"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "_Eject"
+msgstr "Scoate"
+
+#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Proprietăţi"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Nume  fişier"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Dimensiune"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Tip"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Modificat"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+msgid "Open in New Tab"
+msgstr "Deschide într-o filă nouă"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Window"
+msgstr "Deschide în fereastră nouă"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+msgid "Open in Other Application…"
+msgstr "Deschide în altă aplicație..."
+
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Citeşte"
+
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Scrie"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Execută"
 
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
@@ -1704,164 +1902,30 @@ msgstr "%u fișier nu se poate citi"
 msgid "%u files not readable"
 msgstr "%u fișiere nu se pot citi"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
-msgid "Open in New Tab"
-msgstr "Deschide într-o filă nouă"
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "Reîncarcă acest dosar"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
-msgid "Open in New Window"
-msgstr "Deschide în fereastră nouă"
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
+msgid "Enter search term or path"
+msgstr "Introdu termenul de căutare sau calea"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
-msgid "Open in Other Application…"
-msgstr "Deschide în altă aplicație..."
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Acest dosar este gol"
 
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Citeşte"
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "Coșul este gol"
 
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Scrie"
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Nu sunt fișiere recente"
 
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Execută"
-
-#: ../src/View/Window.vala:207
-msgid "Files isn't your default file manager."
-msgstr "Files nu este managerul de fișiere implicit."
-
-#: ../src/View/Window.vala:213
-msgid "Set as Default"
-msgstr "Stabilește ca implicit"
-
-#: ../src/View/Window.vala:219
-msgid "Ignore"
-msgstr "Ignoră"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Nume  fişier"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Dimensiune"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Tip"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Modificat"
-
-#: ../src/View/Sidebar.vala:481
-msgid "Personal"
-msgstr "Personal"
-
-#: ../src/View/Sidebar.vala:482
-msgid "Your common places and bookmarks"
-msgstr "Locurile tale comune si semnee de carte"
-
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
-msgid "Home"
-msgstr "Acasă"
-
-#: ../src/View/Sidebar.vala:501
-msgid "Open your personal folder"
-msgstr "Deschide dosarul personal"
-
-#: ../src/View/Sidebar.vala:516
-msgid "View the list of recently used files"
-msgstr "Vezi lista fișierelor recent utilizate"
-
-#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
-msgid "Trash"
-msgstr "Coș de gunoi"
-
-#: ../src/View/Sidebar.vala:544
-msgid "Open the Trash"
-msgstr "Deschide coșul de gunoi"
-
-#: ../src/View/Sidebar.vala:548
-msgid "Devices"
-msgstr "Dispozitive"
-
-#: ../src/View/Sidebar.vala:549
-msgid "Your local partitions and devices"
-msgstr "Partițiile și dispozitivele tale locale"
-
-#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Sistem de fișiere"
-
-#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
-msgid "Network"
-msgstr "Reţea"
-
-#: ../src/View/Sidebar.vala:674
-msgid "Your network places"
-msgstr "Locurile tale în rețea"
-
-#: ../src/View/Sidebar.vala:706
-msgid "Entire Network"
-msgstr "Toată reţeaua"
-
-#: ../src/View/Sidebar.vala:713
-msgid "Browse the contents of the network"
-msgstr "Navighează conținutul rețelei"
-
-#: ../src/View/Sidebar.vala:845
-msgid "(%s Free of %s)"
-msgstr "(%s liber din %s)"
-
-#: ../src/View/Sidebar.vala:1341
-msgid "Unable to start %s"
-msgstr "Nu s-a putut porni %s"
-
-#: ../src/View/Sidebar.vala:1445
-msgid "Open"
-msgstr "Deschide"
-
-#: ../src/View/Sidebar.vala:1453
-msgid "Open in New _Tab"
-msgstr "Deschide într-o filă nouă"
-
-#: ../src/View/Sidebar.vala:1459
-msgid "Open in New _Window"
-msgstr "Deschide într-o fereastră nouă"
-
-#: ../src/View/Sidebar.vala:1467
-msgid "Remove"
-msgstr "Elimina"
-
-#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Redenumește"
-
-#: ../src/View/Sidebar.vala:1484
-msgid "_Mount"
-msgstr "Montează"
-
-#: ../src/View/Sidebar.vala:1490
-msgid "_Unmount"
-msgstr "Demontează"
-
-#: ../src/View/Sidebar.vala:1496
-msgid "_Eject"
-msgstr "Scoate"
-
-#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Proprietăţi"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
-msgid "This Folder Does Not Exist"
-msgstr "Acest dosar nu există"
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Acces refuzat"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
@@ -1884,69 +1948,70 @@ msgstr ""
 "Nu s-a putut creea dosarul\n"
 "%s"
 
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Acest dosar este gol"
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Operații cu fișiere"
 
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "Coșul este gol"
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "Complet %s"
 
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Nu sunt fișiere recente"
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "Toate operațiunile s-au terminat"
 
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Acces refuzat"
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Arată dialogul de copiere"
 
-#: ../src/View/ViewContainer.vala:358
-msgid "(as Administrator)"
-msgstr "(ca Administrator)"
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Anuleaza toate actiunile in desfasurare"
 
-#: ../src/View/ViewContainer.vala:372
-msgid "You cannot create a folder here."
-msgstr "Nu se poate creea un dosar aici."
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Navighează prin fișierele tale"
 
-#: ../src/View/ViewContainer.vala:374
-msgid "The network is unavailable"
-msgstr "Rețeaua nu este disponibilă"
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Manager de fișiere"
 
-#: ../src/View/ViewContainer.vala:375
-msgid "A working network is needed to reach this folder"
-msgstr "O rețea funcțională este necesară pentru a ajunge la acest dosar"
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Window"
+msgstr "_Fereastră nouă"
 
-#: ../src/View/ViewContainer.vala:377
-msgid "This Folder Does Not Belong to You"
-msgstr "Acest dosar nu-ți aparţine"
+#: ../src/DesktopLauncher.vala:9
+msgid "New Window As _Administrator"
+msgstr "Fereastră nouă ca și _Administrator"
 
-#: ../src/View/ViewContainer.vala:378
-msgid "You don't have permission to view this folder."
-msgstr "Nu ai permisiunea de a vizualiza acest folder."
+#: ../src/DesktopLauncher.vala:10
+msgid "About _Files"
+msgstr "Despre Fişiere"
 
-#: ../src/View/ViewContainer.vala:380
-msgid "Unable to Mount Folder"
-msgstr "Nu se poate monta dosarul"
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Files"
 
-#: ../src/View/ViewContainer.vala:381
-msgid "Could not connect to the server for this folder."
-msgstr "Nu se poate conecta la server pentru acest dosar."
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "Multiple tipuri de fișiere selectate"
 
-#: ../src/View/ViewContainer.vala:383
-msgid "Unable to Show Folder"
-msgstr "Nu se poate afişa acest dosar"
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "O singură aplicație nu poate deschide toate aceste tipuri de fişiere"
 
-#: ../src/View/ViewContainer.vala:384
-msgid "The server for this folder could not be located."
-msgstr "Serverul pentru acest dosar nu a putut fi localizat."
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "Eșec în a deschide fişierele"
 
-#: ../src/View/ViewContainer.vala:394
-msgid "File not Found"
-msgstr "Fișierul nu a fost găsit"
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "Eșec în a deschide URI-urile"
 
-#: ../src/View/ViewContainer.vala:395
-msgid "The file selected no longer exists."
-msgstr "Fișierul selectat nu mai există."
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "Nu se pot deschide fișiere sau URI-uri cu aceasta aplicaţie"
 
 #: ../src/Application.vala:144
 msgid "Show the version of the program."
@@ -2026,23 +2091,6 @@ msgstr "Disponibil:"
 msgid "Used:"
 msgstr "Utilizat:"
 
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Proprietăți disc"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Locație:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Format:"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Stabilește ca implicit"
-
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
 msgstr "Permisiuni"
@@ -2097,6 +2145,11 @@ msgstr "Mimetype:"
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
 msgstr "Rezoluţie:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+msgid "Location:"
+msgstr "Locație:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
@@ -2160,84 +2213,31 @@ msgstr[2] "%u elemente selectate"
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "Operații cu fișiere"
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Stabilește ca implicit"
 
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
-msgstr "Complet %s"
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Proprietăți disc"
 
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
-msgstr "Toate operațiunile s-au terminat"
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Format:"
 
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "Arată dialogul de copiere"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "Anuleaza toate actiunile in desfasurare"
-
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Navighează prin fișierele tale"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Manager de fișiere"
-
-#: ../src/DesktopLauncher.vala:8
-msgid "New _Window"
-msgstr "_Fereastră nouă"
-
-#: ../src/DesktopLauncher.vala:9
-msgid "New Window As _Administrator"
-msgstr "Fereastră nouă ca și _Administrator"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "About _Files"
-msgstr "Despre Fişiere"
-
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Files"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr "Multiple tipuri de fișiere selectate"
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr "O singură aplicație nu poate deschide toate aceste tipuri de fişiere"
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr "Eșec în a deschide fişierele"
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "Eșec în a deschide URI-urile"
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr "Nu se pot deschide fișiere sau URI-uri cu aceasta aplicaţie"
-
-#: ../libcore/FileUtils.vala:59
+#: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
 msgstr "Nu s-a putut determina locația originară pentru „%s” "
 
-#: ../libcore/FileUtils.vala:60
+#: ../libcore/FileUtils.vala:61
 msgid "The item cannot be restored from trash"
 msgstr "Elementul nu a putut fi restaurat din coșul de gunoi"
 
-#: ../libcore/FileUtils.vala:342
+#: ../libcore/FileUtils.vala:343
 msgid "Could not rename to '%s'"
 msgstr "Nu s-a putut redenumi în '%s'"
 
-#: ../libcore/FileUtils.vala:463
+#: ../libcore/FileUtils.vala:464
 msgid "%A at %-I:%M %p"
 msgstr "%A la %-I:%M %p"
 
@@ -2260,6 +2260,18 @@ msgstr "Leagă aici"
 #: ../libcore/DndHandler.vala:98
 msgid "Cancel"
 msgstr "Anulează"
+
+#: ../libwidgets/View/SearchResults.vala:178
+msgid "In This Folder"
+msgstr "În acest dosar"
+
+#: ../libwidgets/View/SearchResults.vala:180
+msgid "Bookmarks"
+msgstr "Favorite"
+
+#: ../libwidgets/View/SearchResults.vala:182
+msgid "Everywhere Else"
+msgstr "Oricine altcineva"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
@@ -2339,18 +2351,6 @@ msgstr "Recent"
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr "MTP"
-
-#: ../libwidgets/View/SearchResults.vala:178
-msgid "In This Folder"
-msgstr "În acest dosar"
-
-#: ../libwidgets/View/SearchResults.vala:180
-msgid "Bookmarks"
-msgstr "Favorite"
-
-#: ../libwidgets/View/SearchResults.vala:182
-msgid "Everywhere Else"
-msgstr "Oricine altcineva"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

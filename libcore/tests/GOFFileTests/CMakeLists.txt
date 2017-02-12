@@ -1,5 +1,3 @@
-enable_testing ()
-
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -18,7 +16,6 @@ set (LIB_PATHS
 set (TEST_NAME
     gof-file_tests
 )
-
 
 link_directories (${LIB_PATHS})
 add_definitions (${CFLAGS} -O2)

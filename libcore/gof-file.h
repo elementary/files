@@ -3,7 +3,7 @@
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License
- * version 3.0 as published by the Free Software Foundation.
+ * version 3.0 as published by the Free Software Foundation, Inc.,.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -45,7 +45,7 @@ G_BEGIN_DECLS
  * @GOF_FILE_THUMB_STATE_UNKNOWN : unknown whether there's a thumbnail.
  * @GOF_FILE_THUMB_STATE_NONE    : no thumbnail is available.
  * @GOF_FILE_THUMB_STATE_READY   : a thumbnail is available.
- * @GOF_FILE_THUMB_STATE_LOADING : a thumbnail is being generated.
+ * @GOF_FILE_THUMB_STATE_LOADING : a thumbnail is being loaded.
  *
  * The state of the thumbnailing for a given #GOFFile.
  **/
@@ -269,5 +269,6 @@ gboolean        gof_file_thumb_can_frame (GOFFile *file);
 char            *gof_file_get_display_target_uri (GOFFile *file);
 G_END_DECLS
 
-#endif /* GOF_DIRECTORY_ASYNC_H */
+#endif /* GOF_FILE_H */
+
 

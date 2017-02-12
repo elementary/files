@@ -1,5 +1,3 @@
-enable_testing ()
-
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -16,7 +14,7 @@ set (LIB_PATHS
 )
 
 set (TEST_NAME
-    gof_directory_async_tests
+    gof-directory-async_tests
 )
 
 link_directories (${LIB_PATHS})
