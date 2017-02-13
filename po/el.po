@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-10 16:45+0000\n"
-"PO-Revision-Date: 2017-02-10 12:01+0000\n"
+"PO-Revision-Date: 2017-02-12 08:46+0000\n"
 "Last-Translator: Christos Iatropoulos <Unknown>\n"
 "Language-Team: Greek <el@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-02-11 05:42+0000\n"
+"X-Launchpad-Export-Date: 2017-02-13 05:52+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -36,7 +36,7 @@ msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "Κοινή χρήση παραθύρων"
+msgstr "Windows share"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
@@ -165,7 +165,7 @@ msgstr "Διαγραφή %d αντιγραφέντων αντικειμένων"
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Μετακίνιση %d στοιχείων πίσω στο '%s'"
+msgstr "Μετακίνηση  %d αντικειμένων πίσω σε '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
@@ -182,7 +182,7 @@ msgstr "Μετονομασία του '%s' ως '%s'"
 #: ../libcore/marlin-undostack-manager.c:1473
 #, c-format
 msgid "Restore %d items from trash"
-msgstr "Επαναφορά %d στοιχείων από τα απορρίμματα"
+msgstr "Επαναφορά %d αντικειμένων από τον κάδο"
 
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format

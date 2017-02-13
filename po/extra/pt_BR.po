@@ -8,35 +8,35 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-10 16:45+0000\n"
-"PO-Revision-Date: 2016-11-18 23:30+0000\n"
-"Last-Translator: Siderlan Santos <siderlan.santos@gmail.com>\n"
+"PO-Revision-Date: 2017-02-12 16:45+0000\n"
+"Last-Translator: Leonardo Lemos <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-11 05:46+0000\n"
+"X-Launchpad-Export-Date: 2017-02-13 05:52+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 msgid "Files"
 msgstr "Arquivos"
 
 msgid "Browse your files"
-msgstr ""
+msgstr "Visualizar seus arquivos"
 
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr ""
+msgstr "pasta;gerenciador;explorar;disco;sistema de arquivos;"
 
 msgid "File Manager"
-msgstr ""
+msgstr "Gerenciador de arquivos"
 
 msgid "New Window"
-msgstr ""
+msgstr "Nova janela"
 
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "Nova janela como administrador"
 
 msgid "About Files"
-msgstr ""
+msgstr "Sobre Arquivos"
 
 msgid "Browse and manage files and folders"
 msgstr "Navegue e gerencie seus arquivos e pastas"
@@ -54,22 +54,22 @@ msgstr ""
 "usando FTP, SFTP, AFP, Webdav ou Compartilhamento com o Windows."
 
 msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgstr "Permitir arrastar e soltar as guias entre as janelas"
 
 msgid "Various crash fixes"
-msgstr ""
+msgstr "Várias correções de falha"
 
 msgid "New translations"
-msgstr ""
+msgstr "Novas traduções"
 
 msgid "Minor bug fixes"
 msgstr "Correções de bugs menores"
 
 msgid "Merge search functionality into Ctrl+F"
-msgstr ""
+msgstr "Mesclar a funcionalidade de pesquisa no CTRL+F"
 
 msgid "Improved translation support"
-msgstr ""
+msgstr "Melhor suporte à tradução"
 
 msgid "Fix appdata release dates"
 msgstr "Corrigir datas de lançamento appdata"
@@ -87,7 +87,8 @@ msgid "Translation updates"
 msgstr "Atualizações de tradução"
 
 msgid "Run Pantheon Files as Administrator"
-msgstr ""
+msgstr "Executar Pantheon Files como administrador"
 
 msgid "Authentication is required to run Files as Administrator"
 msgstr ""
+"A autenticação é necessária para executar arquivos como administrador"
