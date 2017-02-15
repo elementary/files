@@ -137,6 +137,8 @@ namespace Marlin.View {
 
             add(lside_pane);
 
+
+            set_size_request (910, 640);
             title = _(Marlin.APP_TITLE);
             icon_name = "system-file-manager";
 
