@@ -70,7 +70,7 @@ namespace Marlin {
             return false;
         }
 
-        private void end_editing (bool cancelled) {
+        public void end_editing (bool cancelled) {
             editing_canceled = cancelled;
             remove_widget ();
             editing_done ();
