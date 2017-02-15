@@ -7,18 +7,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-06 11:17-0800\n"
-"PO-Revision-Date: 2017-01-27 10:14+0000\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
+"PO-Revision-Date: 2017-02-14 17:34+0000\n"
 "Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-07 05:50+0000\n"
+"X-Launchpad-Export-Date: 2017-02-15 06:29+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 msgid "Files"
 msgstr "Pliki"
+
+msgid "Browse your files"
+msgstr "Przeglądaj swoje pliki"
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr ""
+"katalog;folder;menedżer;menadżer;manadżer;manedżer;manager;eksploruj;eksplora"
+"tor;dysk;system plików;"
+
+msgid "File Manager"
+msgstr "Menedżer plików"
+
+msgid "New Window"
+msgstr "Nowe okno"
+
+msgid "New Window As Administrator"
+msgstr "Nowe okno jako administrator"
+
+msgid "About Files"
+msgstr "O Plikach"
 
 msgid "Browse and manage files and folders"
 msgstr "Przeglądaj i zarządzaj plikami oraz katalogami"
@@ -36,6 +56,24 @@ msgstr ""
 "zewnętrznych lub zdalnie używając FTP, SFTP, AFP, Webdav, czy udziałów "
 "systemu Windows."
 
+msgid "Enable drag and drop tabs between windows"
+msgstr "Włącz możliwość \"złap i przenieś\" zakłądki pomiędzy oknami"
+
+msgid "Various crash fixes"
+msgstr "Różne poprawki błędów"
+
+msgid "New translations"
+msgstr "Nowe tłumaczenia"
+
+msgid "Minor bug fixes"
+msgstr "Poprawki drobnych błędów"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Scalenie funkcji wyszukiwania pod Ctrl+F"
+
+msgid "Improved translation support"
+msgstr "Ulepszone tłumaczenia"
+
 msgid "Fix appdata release dates"
 msgstr "Poprawione daty wydań danych programu"
 
@@ -51,26 +89,8 @@ msgstr "Ulepszona czułość wycinania/kopiowania/wklejania w menu kontekstowym"
 msgid "Translation updates"
 msgstr "Aktualizacje tłumaczenia"
 
-msgid "Minor bug fixes"
-msgstr "Poprawki drobnych błędów"
-
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Scalenie funkcji wyszukiwania pod Ctrl+F"
-
-msgid "Improved translation support"
-msgstr "Ulepszone tłumaczenia"
-
-msgid "Various crash fixes"
-msgstr "Różne poprawki błędów"
-
-msgid "New translations"
-msgstr "Nowe tłumaczenia"
-
-msgid "Enable drag and drop tabs between windows"
-msgstr "Włącz możliwość \"złap i przenieś\" zakłądki pomiędzy oknami"
-
 msgid "Run Pantheon Files as Administrator"
-msgstr ""
+msgstr "Uruchom Pliki Pantheon jako administrator"
 
 msgid "Authentication is required to run Files as Administrator"
-msgstr ""
+msgstr "Wymagane uwierzytelnienie, aby uruchomić Pliki jako administrator"

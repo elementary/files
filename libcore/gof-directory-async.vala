@@ -4,7 +4,7 @@
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
+    the Free Software Foundation, Inc.,, either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -475,6 +475,9 @@ public class GOF.Directory.Async : Object {
             warning ("list cached files called in %s state - not expected to happen", state.to_string ());
             return;
         }
+
+        debug ("Listing cached files");
+
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
         foreach (GOF.File gof in file_hash.get_values ()) {

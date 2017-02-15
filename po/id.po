@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-06 11:17-0800\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
 "PO-Revision-Date: 2016-09-16 09:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2017-02-07 05:47+0000\n"
+"X-Launchpad-Export-Date: 2017-02-11 05:42+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -136,6 +136,376 @@ msgstr "Ingat kata kunci ini (_R)"
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "Operasi dibatalkan"
+
+#: ../libcore/marlin-undostack-manager.c:635
+msgid "Original location could not be determined"
+msgstr ""
+
+#: ../libcore/marlin-undostack-manager.c:636
+msgid "Open trash folder and restore manually"
+msgstr ""
+
+#: ../libcore/marlin-undostack-manager.c:1225
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Buang %d objek yang tersalin"
+
+#: ../libcore/marlin-undostack-manager.c:1228
+#: ../libcore/marlin-undostack-manager.c:1238
+#: ../libcore/marlin-undostack-manager.c:1269
+#, c-format
+msgid "Delete '%s'"
+msgstr "Buang '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1235
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Buang %d objek yang tergandakan"
+
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Pindahkan %d objek kembali ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1250
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Pindahkan '%s' kembali ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1259
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Ubah nama '%s' menjadi '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1278
+#: ../libcore/marlin-undostack-manager.c:1473
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Kembalikan %d objek dari Tong Sampah"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Kembalikan '%s' ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1297
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Buang %d objek ke sampah"
+
+#: ../libcore/marlin-undostack-manager.c:1300
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Buang '%s' ke sampah lagi"
+
+#: ../libcore/marlin-undostack-manager.c:1309
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Hapus tautan ke %d objek"
+
+#: ../libcore/marlin-undostack-manager.c:1312
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Hapus tautan ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1322
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Kembalikan izin asli dari objek dalam folder '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1330
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Kembalikan izin asli dari '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1339
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Kembalikan grup '%s' to '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1349
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Kembalikan pemilik '%s' ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1388
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Salin %d objek ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1392
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Salin '%s' ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1400
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "%d objek ganda di '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1405
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Gandakan '%s' di '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1413
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Pindah %d objek ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Pindah '%s' ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1435
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Buat berkas baru '%s' dari cetakan "
+
+#: ../libcore/marlin-undostack-manager.c:1442
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Buat berkas kosong '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Buat folder baru '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1457
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Pindah %d objek ke tong sampah"
+
+#: ../libcore/marlin-undostack-manager.c:1463
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Pindah '%s' ke tong sampah"
+
+#: ../libcore/marlin-undostack-manager.c:1476
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Kembalikan '%s' dari tong sampah"
+
+#: ../libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "Create links to %d items"
+msgstr "Buat tautan ke %d objek"
+
+#: ../libcore/marlin-undostack-manager.c:1488
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Buat tautan ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1497
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Atur izin dari objek dalam folder '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1505
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Atur izin folder '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1514
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Atur grup '%s' ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1524
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Atur pemilik '%s' ke '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1556
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "Batal salin %d objek (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1561
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "Batal gandakan %d objek (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1566
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "Batal pindah %d objek (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1571
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "Batal ubah nama %d objek (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1575
+msgid "_Undo creation of an empty file"
+msgstr "Batal buat berkas kosong (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1578
+msgid "_Undo creation of a file from template"
+msgstr "Batal buat berkas dari cetakan (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1582
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "Batal buat %d folder (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1587
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "Batal buang %d objek (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1592
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "Batal kembalikan %d objek dari tong sampah (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1597
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "Batal buat tautan ke %d objek (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1602
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "Batal buang %d objek (_U)"
+
+#: ../libcore/marlin-undostack-manager.c:1607
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Batal ubah izin %d objek secara rekursif"
+
+#: ../libcore/marlin-undostack-manager.c:1613
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Batal ubah izin %d objek"
+
+#: ../libcore/marlin-undostack-manager.c:1618
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Batal ubah grup %d objek"
+
+#: ../libcore/marlin-undostack-manager.c:1623
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Batal ubah pemilik %d objek"
+
+#: ../libcore/marlin-undostack-manager.c:1651
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "Salin lagi %d objek (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1656
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "Gandakan lagi %d objek (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1661
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "Pindah lagi %d objek (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1666
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "Ubah lagi nama %d objek (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1670
+msgid "_Redo creation of an empty file"
+msgstr "Buat lagi berkas kosong (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1673
+msgid "_Redo creation of a file from template"
+msgstr "Buat lagi berkas dari cetakan (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1677
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "Buat lagi %d folder (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1682
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "Buang lagi %d objek (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1687
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "Kembalikan lagi %d objek dari tong sampah (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1692
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "Buat lagi tautan ke %d objek (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1697
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "Buang lagi %d objek (_R)"
+
+#: ../libcore/marlin-undostack-manager.c:1702
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Ubah lagi izin %d objek secara rekursif"
+
+#: ../libcore/marlin-undostack-manager.c:1708
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Ubah lagi izin %d objek"
+
+#: ../libcore/marlin-undostack-manager.c:1713
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Ubah lagi grup %d objek"
+
+#: ../libcore/marlin-undostack-manager.c:1718
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Ubah lagi pemilik %d objek"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+msgid "Today at %-I:%M %p"
+msgstr "Hari ini jam %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+msgid "Yesterday at %-I:%M %p"
+msgstr "Kemarin pukul %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y at %-I:%M %p"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -282,10 +652,6 @@ msgstr "Timpa"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Berkas bermasalah"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (unicode tidak sah)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -1018,26 +1384,6 @@ msgstr "Mengosongkan Tong Sampah"
 msgid "Preparing"
 msgstr "Bersiap"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
-msgid "Today at %-I:%M %p"
-msgstr "Hari ini jam %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
-msgid "Yesterday at %-I:%M %p"
-msgstr "Kemarin pukul %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Tampilkan lebih banyak rincian (_D)"
-
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
 msgid "Inaccessible"
 msgstr ""
@@ -1072,359 +1418,13 @@ msgstr "Garis miring tidak boleh ada dalam nama berkas"
 msgid "Toplevel files cannot be renamed"
 msgstr "Nama berkas di tingkat atas tidak dapat diubah"
 
-#: ../libcore/marlin-undostack-manager.c:635
-msgid "Original location could not be determined"
-msgstr ""
-
-#: ../libcore/marlin-undostack-manager.c:636
-msgid "Open trash folder and restore manually"
-msgstr ""
-
-#: ../libcore/marlin-undostack-manager.c:1225
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Buang %d objek yang tersalin"
-
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
-#, c-format
-msgid "Delete '%s'"
-msgstr "Buang '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1235
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Buang %d objek yang tergandakan"
-
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Pindahkan %d objek kembali ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1250
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Pindahkan '%s' kembali ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Ubah nama '%s' menjadi '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Kembalikan %d objek dari Tong Sampah"
-
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Kembalikan '%s' ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1297
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Buang %d objek ke sampah"
-
-#: ../libcore/marlin-undostack-manager.c:1300
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Buang '%s' ke sampah lagi"
-
-#: ../libcore/marlin-undostack-manager.c:1309
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Hapus tautan ke %d objek"
-
-#: ../libcore/marlin-undostack-manager.c:1312
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Hapus tautan ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1322
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Kembalikan izin asli dari objek dalam folder '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1330
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Kembalikan izin asli dari '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1339
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Kembalikan grup '%s' to '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1349
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Kembalikan pemilik '%s' ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Salin %d objek ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1392
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Salin '%s' ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1400
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "%d objek ganda di '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Gandakan '%s' di '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1413
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Pindah %d objek ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1417
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Pindah '%s' ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1435
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Buat berkas baru '%s' dari cetakan "
-
-#: ../libcore/marlin-undostack-manager.c:1442
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Buat berkas kosong '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1449
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Buat folder baru '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Pindah %d objek ke tong sampah"
-
-#: ../libcore/marlin-undostack-manager.c:1463
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Pindah '%s' ke tong sampah"
-
-#: ../libcore/marlin-undostack-manager.c:1476
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Kembalikan '%s' dari tong sampah"
-
-#: ../libcore/marlin-undostack-manager.c:1485
-#, c-format
-msgid "Create links to %d items"
-msgstr "Buat tautan ke %d objek"
-
-#: ../libcore/marlin-undostack-manager.c:1488
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Buat tautan ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1497
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Atur izin dari objek dalam folder '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1505
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Atur izin folder '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1514
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Atur grup '%s' ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1524
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Atur pemilik '%s' ke '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1556
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "Batal salin %d objek (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1561
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "Batal gandakan %d objek (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1566
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "Batal pindah %d objek (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1571
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "Batal ubah nama %d objek (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1575
-msgid "_Undo creation of an empty file"
-msgstr "Batal buat berkas kosong (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1578
-msgid "_Undo creation of a file from template"
-msgstr "Batal buat berkas dari cetakan (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1582
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "Batal buat %d folder (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1587
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "Batal buang %d objek (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1592
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "Batal kembalikan %d objek dari tong sampah (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1597
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "Batal buat tautan ke %d objek (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1602
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "Batal buang %d objek (_U)"
-
-#: ../libcore/marlin-undostack-manager.c:1607
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Batal ubah izin %d objek secara rekursif"
-
-#: ../libcore/marlin-undostack-manager.c:1613
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Batal ubah izin %d objek"
-
-#: ../libcore/marlin-undostack-manager.c:1618
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Batal ubah grup %d objek"
-
-#: ../libcore/marlin-undostack-manager.c:1623
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Batal ubah pemilik %d objek"
-
-#: ../libcore/marlin-undostack-manager.c:1651
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "Salin lagi %d objek (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1656
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "Gandakan lagi %d objek (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1661
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "Pindah lagi %d objek (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1666
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "Ubah lagi nama %d objek (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1670
-msgid "_Redo creation of an empty file"
-msgstr "Buat lagi berkas kosong (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1673
-msgid "_Redo creation of a file from template"
-msgstr "Buat lagi berkas dari cetakan (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1677
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "Buat lagi %d folder (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1682
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "Buang lagi %d objek (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1687
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "Kembalikan lagi %d objek dari tong sampah (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1692
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "Buat lagi tautan ke %d objek (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1697
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "Buang lagi %d objek (_R)"
-
-#: ../libcore/marlin-undostack-manager.c:1702
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Ubah lagi izin %d objek secara rekursif"
-
-#: ../libcore/marlin-undostack-manager.c:1708
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Ubah lagi izin %d objek"
-
-#: ../libcore/marlin-undostack-manager.c:1713
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Ubah lagi grup %d objek"
-
-#: ../libcore/marlin-undostack-manager.c:1718
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Ubah lagi pemilik %d objek"
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Tampilkan lebih banyak rincian (_D)"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (unicode tidak sah)"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
 #: ../src/View/Widgets/TopMenu.vala:64
@@ -1435,6 +1435,80 @@ msgstr ""
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr ""
+
+#: ../src/View/ViewContainer.vala:347 ../src/View/Sidebar.vala:494
+msgid "Home"
+msgstr "Beranda"
+
+#: ../src/View/ViewContainer.vala:349 ../src/View/Sidebar.vala:555
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "Sistem Berkas"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "(as Administrator)"
+msgstr "(sebagai Administrator)"
+
+#: ../src/View/ViewContainer.vala:371 ../src/View/DirectoryNotFound.vala:28
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:372
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:374
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:375
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:377
+msgid "This Folder Does Not Belong to You"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:378
+msgid "You don't have permission to view this folder."
+msgstr "Anda tak punya izin untuk melihat folder ini."
+
+#: ../src/View/ViewContainer.vala:380
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:381
+msgid "Could not connect to the server for this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:383
+msgid "Unable to Show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:384
+msgid "The server for this folder could not be located."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:394
+msgid "File not Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:395
+msgid "The file selected no longer exists."
+msgstr ""
+
+#: ../src/View/Window.vala:207
+msgid "Files isn't your default file manager."
+msgstr "'Pengelola Berkas' bukan aplikasi utama anda dalam mengelola berkas."
+
+#: ../src/View/Window.vala:213
+msgid "Set as Default"
+msgstr ""
+
+#: ../src/View/Window.vala:219
+msgid "Ignore"
+msgstr "Abaikan"
 
 #: ../src/View/AbstractDirectoryView.vala:564
 msgid "Failed to preview"
@@ -1508,14 +1582,138 @@ msgstr ""
 msgid "Cannot paste files here"
 msgstr ""
 
-#: ../src/View/Widgets/LocationBar.vala:177
-msgid "Reload this folder"
+#: ../src/View/Sidebar.vala:481
+msgid "Personal"
+msgstr "Pribadi"
+
+#: ../src/View/Sidebar.vala:482
+msgid "Your common places and bookmarks"
+msgstr "Tempat umum dan penanda Anda"
+
+#: ../src/View/Sidebar.vala:501
+msgid "Open your personal folder"
+msgstr "Buka folder pribadi anda"
+
+#: ../src/View/Sidebar.vala:516
+msgid "View the list of recently used files"
 msgstr ""
 
-#: ../src/View/Widgets/LocationBar.vala:180
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
-msgid "Enter search term or path"
+#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
+msgid "Trash"
+msgstr "Tong Sampah"
+
+#: ../src/View/Sidebar.vala:544
+msgid "Open the Trash"
 msgstr ""
+
+#: ../src/View/Sidebar.vala:548
+msgid "Devices"
+msgstr "Perangkat"
+
+#: ../src/View/Sidebar.vala:549
+msgid "Your local partitions and devices"
+msgstr "Partisi dan perangkat lokal anda"
+
+#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
+msgid "Network"
+msgstr "Jaringan"
+
+#: ../src/View/Sidebar.vala:674
+msgid "Your network places"
+msgstr "Jaringan Anda"
+
+#: ../src/View/Sidebar.vala:706
+msgid "Entire Network"
+msgstr "Seluruh Jaringan"
+
+#: ../src/View/Sidebar.vala:713
+msgid "Browse the contents of the network"
+msgstr "Jelajahi isi dari jaringan"
+
+#: ../src/View/Sidebar.vala:845
+msgid "(%s Free of %s)"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1341
+msgid "Unable to start %s"
+msgstr "Tidak dapat menjalankan %s"
+
+#: ../src/View/Sidebar.vala:1445
+msgid "Open"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1453
+msgid "Open in New _Tab"
+msgstr "Buka di _Tab baru"
+
+#: ../src/View/Sidebar.vala:1459
+msgid "Open in New _Window"
+msgstr "Buka di Jendela Baru (_W)"
+
+#: ../src/View/Sidebar.vala:1467
+msgid "Remove"
+msgstr "Buang"
+
+#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1484
+msgid "_Mount"
+msgstr "Kaitkan (_M)"
+
+#: ../src/View/Sidebar.vala:1490
+msgid "_Unmount"
+msgstr "Lepas Kaitan (_U)"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "_Eject"
+msgstr "Keluarkan (_E)"
+
+#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Properti"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Nama berkas"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Ukuran"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Tipe"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Diubah pada"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+msgid "Open in New Tab"
+msgstr "Buka di Tab Baru"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Window"
+msgstr ""
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+msgid "Open in Other Application…"
+msgstr ""
+
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Baca"
+
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Tulis"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Menjalankan"
 
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
@@ -1584,163 +1782,29 @@ msgstr ""
 msgid "%u files not readable"
 msgstr ""
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
-msgid "Open in New Tab"
-msgstr "Buka di Tab Baru"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
-msgid "Open in New Window"
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
 msgstr ""
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
-msgid "Open in Other Application…"
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
+msgid "Enter search term or path"
 msgstr ""
 
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Baca"
-
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Tulis"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Menjalankan"
-
-#: ../src/View/Window.vala:207
-msgid "Files isn't your default file manager."
-msgstr "'Pengelola Berkas' bukan aplikasi utama anda dalam mengelola berkas."
-
-#: ../src/View/Window.vala:213
-msgid "Set as Default"
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
 msgstr ""
 
-#: ../src/View/Window.vala:219
-msgid "Ignore"
-msgstr "Abaikan"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Nama berkas"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Ukuran"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Tipe"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Diubah pada"
-
-#: ../src/View/Sidebar.vala:481
-msgid "Personal"
-msgstr "Pribadi"
-
-#: ../src/View/Sidebar.vala:482
-msgid "Your common places and bookmarks"
-msgstr "Tempat umum dan penanda Anda"
-
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
-msgid "Home"
-msgstr "Beranda"
-
-#: ../src/View/Sidebar.vala:501
-msgid "Open your personal folder"
-msgstr "Buka folder pribadi anda"
-
-#: ../src/View/Sidebar.vala:516
-msgid "View the list of recently used files"
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
-msgid "Trash"
-msgstr "Tong Sampah"
-
-#: ../src/View/Sidebar.vala:544
-msgid "Open the Trash"
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:548
-msgid "Devices"
-msgstr "Perangkat"
-
-#: ../src/View/Sidebar.vala:549
-msgid "Your local partitions and devices"
-msgstr "Partisi dan perangkat lokal anda"
-
-#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Sistem Berkas"
-
-#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
-msgid "Network"
-msgstr "Jaringan"
-
-#: ../src/View/Sidebar.vala:674
-msgid "Your network places"
-msgstr "Jaringan Anda"
-
-#: ../src/View/Sidebar.vala:706
-msgid "Entire Network"
-msgstr "Seluruh Jaringan"
-
-#: ../src/View/Sidebar.vala:713
-msgid "Browse the contents of the network"
-msgstr "Jelajahi isi dari jaringan"
-
-#: ../src/View/Sidebar.vala:845
-msgid "(%s Free of %s)"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1341
-msgid "Unable to start %s"
-msgstr "Tidak dapat menjalankan %s"
-
-#: ../src/View/Sidebar.vala:1445
-msgid "Open"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1453
-msgid "Open in New _Tab"
-msgstr "Buka di _Tab baru"
-
-#: ../src/View/Sidebar.vala:1459
-msgid "Open in New _Window"
-msgstr "Buka di Jendela Baru (_W)"
-
-#: ../src/View/Sidebar.vala:1467
-msgid "Remove"
-msgstr "Buang"
-
-#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1484
-msgid "_Mount"
-msgstr "Kaitkan (_M)"
-
-#: ../src/View/Sidebar.vala:1490
-msgid "_Unmount"
-msgstr "Lepas Kaitan (_U)"
-
-#: ../src/View/Sidebar.vala:1496
-msgid "_Eject"
-msgstr "Keluarkan (_E)"
-
-#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Properti"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
-msgid "This Folder Does Not Exist"
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
 msgstr ""
 
 #: ../src/View/DirectoryNotFound.vala:28
@@ -1765,68 +1829,69 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Operasi Berkas"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
 msgstr ""
 
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
 msgstr ""
 
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Tampilkan Dialog Penyalinan"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Batalkan Semua Aksi Berjalan"
+
+#: ../src/DesktopLauncher.vala:6
+msgid "Browse your files"
+msgstr "Jelajahi berkas Anda"
+
+#: ../src/DesktopLauncher.vala:7
+msgid "File Manager"
+msgstr "Pengelola Berkas"
+
+#: ../src/DesktopLauncher.vala:8
+msgid "New _Window"
+msgstr "Jendela Baru (_W)"
+
+#: ../src/DesktopLauncher.vala:9
+msgid "New Window As _Administrator"
+msgstr "Jendela Baru Sebagai _Administrator"
+
+#: ../src/DesktopLauncher.vala:10
+msgid "About _Files"
+msgstr "Tentang _Files"
+
+#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Pengelola Berkas"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
 msgstr ""
 
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:358
-msgid "(as Administrator)"
-msgstr "(sebagai Administrator)"
-
-#: ../src/View/ViewContainer.vala:372
-msgid "You cannot create a folder here."
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:374
-msgid "The network is unavailable"
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:375
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:377
-msgid "This Folder Does Not Belong to You"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:378
-msgid "You don't have permission to view this folder."
-msgstr "Anda tak punya izin untuk melihat folder ini."
-
-#: ../src/View/ViewContainer.vala:380
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:381
-msgid "Could not connect to the server for this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:383
-msgid "Unable to Show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:384
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:394
-msgid "File not Found"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:395
-msgid "The file selected no longer exists."
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
 msgstr ""
 
 #: ../src/Application.vala:144
@@ -1907,23 +1972,6 @@ msgstr ""
 msgid "Used:"
 msgstr ""
 
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr ""
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr ""
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr ""
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Sebagai aplikasi utama"
-
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
 msgstr ""
@@ -1973,6 +2021,11 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+msgid "Location:"
 msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:571
@@ -2034,84 +2087,31 @@ msgstr[1] ""
 msgid "%s (%s, %s)"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "Operasi Berkas"
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Sebagai aplikasi utama"
 
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "Tampilkan Dialog Penyalinan"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "Batalkan Semua Aksi Berjalan"
-
-#: ../src/DesktopLauncher.vala:6
-msgid "Browse your files"
-msgstr "Jelajahi berkas Anda"
-
-#: ../src/DesktopLauncher.vala:7
-msgid "File Manager"
-msgstr "Pengelola Berkas"
-
-#: ../src/DesktopLauncher.vala:8
-msgid "New _Window"
-msgstr "Jendela Baru (_W)"
-
-#: ../src/DesktopLauncher.vala:9
-msgid "New Window As _Administrator"
-msgstr "Jendela Baru Sebagai _Administrator"
-
-#: ../src/DesktopLauncher.vala:10
-msgid "About _Files"
-msgstr "Tentang _Files"
-
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Pengelola Berkas"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr ""
-
-#: ../libcore/FileUtils.vala:59
+#: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
 msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
 
-#: ../libcore/FileUtils.vala:60
+#: ../libcore/FileUtils.vala:61
 msgid "The item cannot be restored from trash"
 msgstr "Objek tidak bisa dikembalikan dari tong sampah"
 
-#: ../libcore/FileUtils.vala:342
+#: ../libcore/FileUtils.vala:343
 msgid "Could not rename to '%s'"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:463
+#: ../libcore/FileUtils.vala:464
 msgid "%A at %-I:%M %p"
 msgstr ""
 
@@ -2134,6 +2134,18 @@ msgstr ""
 #: ../libcore/DndHandler.vala:98
 msgid "Cancel"
 msgstr "Batal"
+
+#: ../libwidgets/View/SearchResults.vala:178
+msgid "In This Folder"
+msgstr "Dalam Folder ini"
+
+#: ../libwidgets/View/SearchResults.vala:180
+msgid "Bookmarks"
+msgstr ""
+
+#: ../libwidgets/View/SearchResults.vala:182
+msgid "Everywhere Else"
+msgstr "Dimana Saja"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
@@ -2215,18 +2227,6 @@ msgstr ""
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr ""
-
-#: ../libwidgets/View/SearchResults.vala:178
-msgid "In This Folder"
-msgstr "Dalam Folder ini"
-
-#: ../libwidgets/View/SearchResults.vala:180
-msgid "Bookmarks"
-msgstr ""
-
-#: ../libwidgets/View/SearchResults.vala:182
-msgid "Everywhere Else"
-msgstr "Dimana Saja"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
