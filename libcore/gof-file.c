@@ -3,7 +3,7 @@
  *
  * This library is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License
- * version 3.0 as published by the Free Software Foundation.
+ * version 3.0 as published by the Free Software Foundation, Inc.,.
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -1585,9 +1585,19 @@ GOFFile* gof_file_get_by_uri (const char *uri)
     GFile *location;
     GOFFile *file;
 
-    location = g_file_new_for_uri (uri);
-    if(location == NULL)
-        return NULL;
+    /* Check first that uri is valid */
+    gchar *scheme;
+    scheme = g_uri_parse_scheme (uri);
+    if (scheme == NULL) {
+        return gof_file_get_by_commandline_arg (uri);
+    } else {
+        g_free (scheme);
+
+        location = g_file_new_for_uri (uri);
+        if (location == NULL) {
+            return NULL;
+        }
+    }
 
     file = gof_file_get (location);
 #ifdef ENABLE_DEBUG

@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-01-26 15:28+0000\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
+"PO-Revision-Date: 2017-02-11 19:52+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-27 06:06+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-02-12 06:12+0000\n"
+"X-Generator: Launchpad (build 18326)\n"
 
 msgid "Files"
 msgstr "Failai"
+
+msgid "Browse your files"
+msgstr "Naršyti savo failus"
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr "aplankas;tvarkytuvė;naršyti;diskas;failų sistema;"
+
+msgid "File Manager"
+msgstr "Failų tvarkytuvė"
+
+msgid "New Window"
+msgstr "Naujas langas"
+
+msgid "New Window As Administrator"
+msgstr "Naujas langas administratoriaus teisėmis"
+
+msgid "About Files"
+msgstr "Apie Failus"
 
 msgid "Browse and manage files and folders"
 msgstr "Naršyti ir tvarkyti failus ir aplankus"
@@ -35,6 +53,24 @@ msgstr ""
 "savo failus taip pat ir išoriniame įrenginyje bei nuotoliniu būdu, naudodami "
 "FTP, SFTP, AFP, Webdav, ar Windows viešinius."
 
+msgid "Enable drag and drop tabs between windows"
+msgstr "Įjungtas kortelių vilkimas tarp langų"
+
+msgid "Various crash fixes"
+msgstr "Įvairių strigčių pataisymai"
+
+msgid "New translations"
+msgstr "Nauji vertimai"
+
+msgid "Minor bug fixes"
+msgstr "Smulkių klaidų pataisymai"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Sujungtas paieškos funkcionalumas į Ctrl+F"
+
+msgid "Improved translation support"
+msgstr "Patobulintas vertimų palaikymas"
+
 msgid "Fix appdata release dates"
 msgstr "Ištaisyti programos duomenų laidos datas"
 
@@ -50,20 +86,9 @@ msgstr "Patobulinti iškirpti/kopijuoti/įdėti jautrumą kontekstiniame meniu"
 msgid "Translation updates"
 msgstr "Vertimų atnaujinimai"
 
-msgid "Minor bug fixes"
-msgstr "Smulkių klaidų pataisymai"
+msgid "Run Pantheon Files as Administrator"
+msgstr "Vykdyti Pantheon failus kaip administratorius"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Sujungtas paieškos funkcionalumas į Ctrl+F"
-
-msgid "Improved translation support"
-msgstr "Patobulintas vertimų palaikymas"
-
-msgid "Various crash fixes"
-msgstr "Įvairių strigčių pataisymai"
-
-msgid "New translations"
-msgstr "Nauji vertimai"
-
-msgid "Enable drag and drop tabs between windows"
-msgstr "Įjungtas kortelių vilkimas tarp langų"
+msgid "Authentication is required to run Files as Administrator"
+msgstr ""
+"Norint vykdyti Failus administratoriaus teisėmis, reikia nustatyti tapatybę"

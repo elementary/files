@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
 "PO-Revision-Date: 2016-06-30 19:06+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:09+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-02-11 05:41+0000\n"
+"X-Generator: Launchpad (build 18326)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -136,6 +136,403 @@ msgstr "Dit wachtwoo_rd onthouden"
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "Bewerking geannuleerd"
+
+#: ../libcore/marlin-undostack-manager.c:635
+msgid "Original location could not be determined"
+msgstr ""
+
+#: ../libcore/marlin-undostack-manager.c:636
+msgid "Open trash folder and restore manually"
+msgstr ""
+
+#: ../libcore/marlin-undostack-manager.c:1225
+#, c-format
+msgid "Delete %d copied items"
+msgstr "%d gekopieerde items verwijderen"
+
+#: ../libcore/marlin-undostack-manager.c:1228
+#: ../libcore/marlin-undostack-manager.c:1238
+#: ../libcore/marlin-undostack-manager.c:1269
+#, c-format
+msgid "Delete '%s'"
+msgstr "‘%s’ _verwijderen"
+
+#: ../libcore/marlin-undostack-manager.c:1235
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Verwijder %d dubbele items"
+
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "%d items terugplaatsen naar ‘%s’"
+
+#: ../libcore/marlin-undostack-manager.c:1250
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "‘%s’ terugplaatsen naar ‘%s’"
+
+#: ../libcore/marlin-undostack-manager.c:1259
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "'%s' hernoemen naar '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1278
+#: ../libcore/marlin-undostack-manager.c:1473
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "%d items terugzetten uit prullenbak"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "'%s' terugzetten naar '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1297
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Verplaats %d items terug naar de prullenbak"
+
+#: ../libcore/marlin-undostack-manager.c:1300
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Verplaats '%s' terug naar de prullenbak"
+
+#: ../libcore/marlin-undostack-manager.c:1309
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Verwijder verwijzingen naar %d items"
+
+#: ../libcore/marlin-undostack-manager.c:1312
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Verwijder verwijzing naar '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1322
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Herstel oorspronkelijke rechten van items in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1330
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Herstel oorspronkelijke rechten van '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1339
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Herstel groep van '%s' naar '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1349
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Herstel eigenaar van '%s' naar '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1388
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Kopieer %d items naar '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1392
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Kopieer ‘%s’ naar ‘%s’"
+
+#: ../libcore/marlin-undostack-manager.c:1400
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Kopie van %d items in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1405
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Kopieer '%s' in '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1413
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Verplaats %d items naar '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Verplaats ‘%s’ naar ‘%s’"
+
+#: ../libcore/marlin-undostack-manager.c:1435
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Nieuw bestand ‘%s’ aanmaken vanaf sjabloon "
+
+#: ../libcore/marlin-undostack-manager.c:1442
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Maak een leeg bestand '%s' aan"
+
+#: ../libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Maak een nieuwe map '%s' aan"
+
+#: ../libcore/marlin-undostack-manager.c:1457
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Verplaats %d items naar de prullenbak"
+
+#: ../libcore/marlin-undostack-manager.c:1463
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Verplaats ‘%s’ naar de prullenbak"
+
+#: ../libcore/marlin-undostack-manager.c:1476
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Herstel '%s' uit de prullenbak"
+
+#: ../libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "Create links to %d items"
+msgstr "Maak verwijzingen naar '%d' items aan"
+
+#: ../libcore/marlin-undostack-manager.c:1488
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Maak verwijzing naar '%s' aan"
+
+#: ../libcore/marlin-undostack-manager.c:1497
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Stel rechten van items in '%s' in"
+
+#: ../libcore/marlin-undostack-manager.c:1505
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Stel rechten van ‘%s’ in"
+
+#: ../libcore/marlin-undostack-manager.c:1514
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Verander groep van '%s' naar '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1524
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Verander eigenaar van ‘%s’ in ‘%s’"
+
+#: ../libcore/marlin-undostack-manager.c:1556
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "Kopiëren van %d onderdeel _ongedaan maken"
+msgstr[1] "Kopiëren van %d onderdelen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1561
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "Dupliceren van %d onderdeel _ongedaan maken"
+msgstr[1] "Dupliceren van %d onderdelen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1566
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "Verplaatsen van %d object _ongedaan maken"
+msgstr[1] "Verplaatsen van %d objecten _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1571
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "Hernoemen van %d onderdeel _ongedaan maken"
+msgstr[1] "Hernoemen van %d onderdelen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1575
+msgid "_Undo creation of an empty file"
+msgstr "Aanmaken van leeg bestand _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1578
+msgid "_Undo creation of a file from template"
+msgstr "_Aanmaken van bestand met sjabloon ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1582
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "Aanmaken van %d map _ongedaan maken"
+msgstr[1] "Aanmaken van %d mappen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1587
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "Verplaaten van %d onderdeel naar prullenbak _ongedaan maken"
+msgstr[1] "Verplaaten van %d onderdelen naar prullenbak _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1592
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "Uit prullenbak terugzetten van %d onderdeel _ongedaan maken"
+msgstr[1] "Uit prullenbak terugzetten van %d onderdelen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1597
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "Aanmaken van verwijzing naar %d onderdeel _ongedaan maken"
+msgstr[1] "Aanmaken van verwijzing naar %d onderdelen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1602
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "Verwijderen van %d onderdeel _ongedaan maken"
+msgstr[1] "Verwijderen van %d onderdelen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1607
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Recursief wijzigen rechten van %d onderdeel _ongedaan maken"
+msgstr[1] "Recursief wijzigen rechten van %d onderdelen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1613
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Wijzigen rechten van %d onderdeel _ongedaan maken"
+msgstr[1] "Wijzigen rechten van %d onderdelen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1618
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Wijzigen groep van %d onderdeel _ongedaan maken"
+msgstr[1] "Wijzigen groep van %d onderdelen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1623
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Wijzigen eigenaar van %d onderdeel _ongedaan maken"
+msgstr[1] "Wijzigen eigenaar van %d onderdelen _ongedaan maken"
+
+#: ../libcore/marlin-undostack-manager.c:1651
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "Kopiëren van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Kopiëren van %d onderdelen op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1656
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "Dupliceren van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Dupliceren van %d onderdelen op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1661
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "Verplaatsen van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Verplaatsen van %d onderdelen op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1666
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "Hernoemen van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Hernoemen van %d onderdelen op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1670
+msgid "_Redo creation of an empty file"
+msgstr "Aanmaken leeg bestand op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1673
+msgid "_Redo creation of a file from template"
+msgstr "Aanmaken bestand vanaf sjabloon op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1677
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "Aanmaken van %d map op_nieuw uitvoeren"
+msgstr[1] "Aanmaken van %d mappen op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1682
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "Verplaatsen van %d onderdeel naar prullenbak op_nieuw uitvoeren"
+msgstr[1] "Verplaatsen van %d onderdelen naar prullenbak op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1687
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "Terugzetten van %d onderdeel uit de prullenbak op_nieuw uitvoeren"
+msgstr[1] ""
+"Terugzetten van %d onderdelen uit de prullenbak op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1692
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "Aanmaken verwijzing naar %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Aanmaken verwijzing naar %d onderdelen op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1697
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "Verwijderen van % item op_nieuw uitvoeren"
+msgstr[1] "Verwijderen van %d items op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1702
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Recursief wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Recursief wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1708
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1713
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Wijzigen groep van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Wijzigen groep van %d onderdelen op_nieuw uitvoeren"
+
+#: ../libcore/marlin-undostack-manager.c:1718
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Wijzigen eigenaar van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Wijzigen eigenaar van %d onderdelen op_nieuw uitvoeren"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+msgid "Today at %-I:%M %p"
+msgstr "Vandaag om %k:%M"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+msgid "Yesterday at %-I:%M %p"
+msgstr "Gisteren om %k:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y om %-k:%M"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -283,48 +680,6 @@ msgstr "Vervang"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Bestandsconflict"
-
-#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:379
-#, c-format
-msgid "link to %s"
-msgstr "link naar %s"
-
-#: ../libcore/gof-file.c:1953
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Desktop-bestand verwerken is mislukt: %s"
-
-#: ../libcore/gof-file.c:1990
-msgid "No Exec field specified"
-msgstr "Geen Exec veld gespecificeerd"
-
-#: ../libcore/gof-file.c:2009
-msgid "No URL field specified"
-msgstr "Geen URL-veld opgegeven"
-
-#: ../libcore/gof-file.c:2015
-msgid "Invalid desktop file"
-msgstr "Ongeldig desktop-bestand"
-
-#: ../libcore/gof-file.c:2310
-msgid "Slashes are not allowed in filenames"
-msgstr "Slashes zijn niet toegestaan in bestandsnamen"
-
-#: ../libcore/gof-file.c:2330
-msgid "Toplevel files cannot be renamed"
-msgstr "Toplevel bestanden kunnen niet hernoemd worden"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Toon meer _details"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (ongeldige Unicode)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -1087,407 +1442,52 @@ msgstr "Prullenbak wordt geleegd"
 msgid "Emptying Trash"
 msgstr "Bezig met prullenbak legen"
 
-#: ../libcore/marlin-undostack-manager.c:635
-msgid "Original location could not be determined"
-msgstr ""
-
-#: ../libcore/marlin-undostack-manager.c:636
-msgid "Open trash folder and restore manually"
-msgstr ""
-
-#: ../libcore/marlin-undostack-manager.c:1225
-#, c-format
-msgid "Delete %d copied items"
-msgstr "%d gekopieerde items verwijderen"
-
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
-#, c-format
-msgid "Delete '%s'"
-msgstr "‘%s’ _verwijderen"
-
-#: ../libcore/marlin-undostack-manager.c:1235
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Verwijder %d dubbele items"
-
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "%d items terugplaatsen naar ‘%s’"
-
-#: ../libcore/marlin-undostack-manager.c:1250
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "‘%s’ terugplaatsen naar ‘%s’"
-
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "'%s' hernoemen naar '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "%d items terugzetten uit prullenbak"
-
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "'%s' terugzetten naar '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1297
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Verplaats %d items terug naar de prullenbak"
-
-#: ../libcore/marlin-undostack-manager.c:1300
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Verplaats '%s' terug naar de prullenbak"
-
-#: ../libcore/marlin-undostack-manager.c:1309
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Verwijder verwijzingen naar %d items"
-
-#: ../libcore/marlin-undostack-manager.c:1312
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Verwijder verwijzing naar '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1322
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Herstel oorspronkelijke rechten van items in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1330
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Herstel oorspronkelijke rechten van '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1339
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Herstel groep van '%s' naar '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1349
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Herstel eigenaar van '%s' naar '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Kopieer %d items naar '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1392
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Kopieer ‘%s’ naar ‘%s’"
-
-#: ../libcore/marlin-undostack-manager.c:1400
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Kopie van %d items in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Kopieer '%s' in '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1413
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Verplaats %d items naar '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1417
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Verplaats ‘%s’ naar ‘%s’"
-
-#: ../libcore/marlin-undostack-manager.c:1435
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Nieuw bestand ‘%s’ aanmaken vanaf sjabloon "
-
-#: ../libcore/marlin-undostack-manager.c:1442
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Maak een leeg bestand '%s' aan"
-
-#: ../libcore/marlin-undostack-manager.c:1449
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Maak een nieuwe map '%s' aan"
-
-#: ../libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Verplaats %d items naar de prullenbak"
-
-#: ../libcore/marlin-undostack-manager.c:1463
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Verplaats ‘%s’ naar de prullenbak"
-
-#: ../libcore/marlin-undostack-manager.c:1476
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Herstel '%s' uit de prullenbak"
-
-#: ../libcore/marlin-undostack-manager.c:1485
-#, c-format
-msgid "Create links to %d items"
-msgstr "Maak verwijzingen naar '%d' items aan"
-
-#: ../libcore/marlin-undostack-manager.c:1488
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Maak verwijzing naar '%s' aan"
-
-#: ../libcore/marlin-undostack-manager.c:1497
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Stel rechten van items in '%s' in"
-
-#: ../libcore/marlin-undostack-manager.c:1505
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Stel rechten van ‘%s’ in"
-
-#: ../libcore/marlin-undostack-manager.c:1514
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Verander groep van '%s' naar '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1524
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Verander eigenaar van ‘%s’ in ‘%s’"
-
-#: ../libcore/marlin-undostack-manager.c:1556
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "Kopiëren van %d onderdeel _ongedaan maken"
-msgstr[1] "Kopiëren van %d onderdelen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1561
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "Dupliceren van %d onderdeel _ongedaan maken"
-msgstr[1] "Dupliceren van %d onderdelen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1566
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "Verplaatsen van %d object _ongedaan maken"
-msgstr[1] "Verplaatsen van %d objecten _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1571
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "Hernoemen van %d onderdeel _ongedaan maken"
-msgstr[1] "Hernoemen van %d onderdelen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1575
-msgid "_Undo creation of an empty file"
-msgstr "Aanmaken van leeg bestand _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1578
-msgid "_Undo creation of a file from template"
-msgstr "_Aanmaken van bestand met sjabloon ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1582
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "Aanmaken van %d map _ongedaan maken"
-msgstr[1] "Aanmaken van %d mappen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1587
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "Verplaaten van %d onderdeel naar prullenbak _ongedaan maken"
-msgstr[1] "Verplaaten van %d onderdelen naar prullenbak _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1592
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "Uit prullenbak terugzetten van %d onderdeel _ongedaan maken"
-msgstr[1] "Uit prullenbak terugzetten van %d onderdelen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1597
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "Aanmaken van verwijzing naar %d onderdeel _ongedaan maken"
-msgstr[1] "Aanmaken van verwijzing naar %d onderdelen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1602
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "Verwijderen van %d onderdeel _ongedaan maken"
-msgstr[1] "Verwijderen van %d onderdelen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1607
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Recursief wijzigen rechten van %d onderdeel _ongedaan maken"
-msgstr[1] "Recursief wijzigen rechten van %d onderdelen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1613
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Wijzigen rechten van %d onderdeel _ongedaan maken"
-msgstr[1] "Wijzigen rechten van %d onderdelen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1618
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Wijzigen groep van %d onderdeel _ongedaan maken"
-msgstr[1] "Wijzigen groep van %d onderdelen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1623
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Wijzigen eigenaar van %d onderdeel _ongedaan maken"
-msgstr[1] "Wijzigen eigenaar van %d onderdelen _ongedaan maken"
-
-#: ../libcore/marlin-undostack-manager.c:1651
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "Kopiëren van %d onderdeel op_nieuw uitvoeren"
-msgstr[1] "Kopiëren van %d onderdelen op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1656
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "Dupliceren van %d onderdeel op_nieuw uitvoeren"
-msgstr[1] "Dupliceren van %d onderdelen op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1661
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "Verplaatsen van %d onderdeel op_nieuw uitvoeren"
-msgstr[1] "Verplaatsen van %d onderdelen op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1666
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "Hernoemen van %d onderdeel op_nieuw uitvoeren"
-msgstr[1] "Hernoemen van %d onderdelen op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1670
-msgid "_Redo creation of an empty file"
-msgstr "Aanmaken leeg bestand op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1673
-msgid "_Redo creation of a file from template"
-msgstr "Aanmaken bestand vanaf sjabloon op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1677
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "Aanmaken van %d map op_nieuw uitvoeren"
-msgstr[1] "Aanmaken van %d mappen op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1682
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "Verplaatsen van %d onderdeel naar prullenbak op_nieuw uitvoeren"
-msgstr[1] "Verplaatsen van %d onderdelen naar prullenbak op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1687
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "Terugzetten van %d onderdeel uit de prullenbak op_nieuw uitvoeren"
-msgstr[1] ""
-"Terugzetten van %d onderdelen uit de prullenbak op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1692
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "Aanmaken verwijzing naar %d onderdeel op_nieuw uitvoeren"
-msgstr[1] "Aanmaken verwijzing naar %d onderdelen op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1697
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "Verwijderen van % item op_nieuw uitvoeren"
-msgstr[1] "Verwijderen van %d items op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1702
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Recursief wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
-msgstr[1] "Recursief wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1708
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
-msgstr[1] "Wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1713
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Wijzigen groep van %d onderdeel op_nieuw uitvoeren"
-msgstr[1] "Wijzigen groep van %d onderdelen op_nieuw uitvoeren"
-
-#: ../libcore/marlin-undostack-manager.c:1718
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Wijzigen eigenaar van %d onderdeel op_nieuw uitvoeren"
-msgstr[1] "Wijzigen eigenaar van %d onderdelen op_nieuw uitvoeren"
-
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
-msgid "Today at %-I:%M %p"
-msgstr "Vandaag om %k:%M"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
-msgid "Yesterday at %-I:%M %p"
-msgstr "Gisteren om %k:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y om %-k:%M"
-
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
 msgstr "Bezig met voorbereiden"
+
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:376
+#, c-format
+msgid "link to %s"
+msgstr "link naar %s"
+
+#: ../libcore/gof-file.c:1925
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Desktop-bestand verwerken is mislukt: %s"
+
+#: ../libcore/gof-file.c:1962
+msgid "No Exec field specified"
+msgstr "Geen Exec veld gespecificeerd"
+
+#: ../libcore/gof-file.c:1981
+msgid "No URL field specified"
+msgstr "Geen URL-veld opgegeven"
+
+#: ../libcore/gof-file.c:1987
+msgid "Invalid desktop file"
+msgstr "Ongeldig desktop-bestand"
+
+#: ../libcore/gof-file.c:2282
+msgid "Slashes are not allowed in filenames"
+msgstr "Slashes zijn niet toegestaan in bestandsnamen"
+
+#: ../libcore/gof-file.c:2302
+msgid "Toplevel files cannot be renamed"
+msgstr "Toplevel bestanden kunnen niet hernoemd worden"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Toon meer _details"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (ongeldige Unicode)"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
 #: ../src/View/Widgets/TopMenu.vala:64
@@ -1497,6 +1497,68 @@ msgstr ""
 #: ../filechooser-module/FileChooserDialog.vala:74
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:347 ../src/View/Sidebar.vala:494
+msgid "Home"
+msgstr "Persoonlijke map"
+
+#: ../src/View/ViewContainer.vala:349 ../src/View/Sidebar.vala:555
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "Bestandssysteem"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "(as Administrator)"
+msgstr "(als Beheerder)"
+
+#: ../src/View/ViewContainer.vala:371 ../src/View/DirectoryNotFound.vala:28
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:372
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:374
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:375
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:377
+msgid "This Folder Does Not Belong to You"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:378
+msgid "You don't have permission to view this folder."
+msgstr "Je hebt niet de rechten om deze map te bekijken"
+
+#: ../src/View/ViewContainer.vala:380
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:381
+msgid "Could not connect to the server for this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:383
+msgid "Unable to Show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:384
+msgid "The server for this folder could not be located."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:394
+msgid "File not Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:395
+msgid "The file selected no longer exists."
 msgstr ""
 
 #: ../src/View/Window.vala:207
@@ -1511,6 +1573,78 @@ msgstr ""
 msgid "Ignore"
 msgstr "Negeren"
 
+#: ../src/View/AbstractDirectoryView.vala:564
+msgid "Failed to preview"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:817
+msgid "Cannot open this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:830
+msgid "Cannot identify file type to open"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Cannot drop this file"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Invalid file name provided"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2010
+msgid "Invalid"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2016
+msgid "Run"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2021
+msgid "Open in %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2031
+msgid "Open in"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
+msgid "Open with"
+msgstr "Openen met"
+
+#: ../src/View/AbstractDirectoryView.vala:2093
+msgid "Other Application"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2354
+msgid "Untitled %s"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2678
+#: ../src/View/AbstractDirectoryView.vala:2861
+msgid "Cannot remove files from here"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2679
+#: ../src/View/AbstractDirectoryView.vala:2849
+#: ../src/View/AbstractDirectoryView.vala:2862
+msgid "You do not have permission to change this location"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2827
+msgid "Cannot copy files that are in the trash"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2828
+msgid "Cutting the selection instead"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2848
+msgid "Cannot paste files here"
+msgstr ""
+
 #: ../src/View/Sidebar.vala:481
 msgid "Personal"
 msgstr "Persoonlijk"
@@ -1518,10 +1652,6 @@ msgstr "Persoonlijk"
 #: ../src/View/Sidebar.vala:482
 msgid "Your common places and bookmarks"
 msgstr "Uw gebruikelijke plaatsen en bladwijzers"
-
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
-msgid "Home"
-msgstr "Persoonlijke map"
 
 #: ../src/View/Sidebar.vala:501
 msgid "Open your personal folder"
@@ -1546,12 +1676,6 @@ msgstr "Apparaten"
 #: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
 msgstr "Uw lokale partities en apparaten"
-
-#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Bestandssysteem"
 
 #: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
@@ -1630,168 +1754,6 @@ msgstr "Type"
 msgid "Modified"
 msgstr "Gewijzigd"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
-msgid "This Folder Does Not Exist"
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "\"%s\" kan niet gevonden worden."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Aanmaken"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Maak de map \"%s\" aan"
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Kon de map niet aanmaken\n"
-"\n"
-"%s"
-
-#: ../src/View/AbstractDirectoryView.vala:550
-msgid "Failed to preview"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:805
-msgid "Cannot open this file"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:818
-msgid "Cannot identify file type to open"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:1549
-msgid "Cannot drop this file"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:1549
-msgid "Invalid file name provided"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2004
-msgid "Invalid"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2010
-msgid "Run"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2015
-msgid "Open in %s"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2025
-msgid "Open in"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2027
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
-msgid "Open with"
-msgstr "Openen met"
-
-#: ../src/View/AbstractDirectoryView.vala:2087
-msgid "Other Application"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2348
-msgid "Untitled %s"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2670
-#: ../src/View/AbstractDirectoryView.vala:2853
-msgid "Cannot remove files from here"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2671
-#: ../src/View/AbstractDirectoryView.vala:2841
-#: ../src/View/AbstractDirectoryView.vala:2854
-msgid "You do not have permission to change this location"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2819
-msgid "Cannot copy files that are in the trash"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2820
-msgid "Cutting the selection instead"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2840
-msgid "Cannot paste files here"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:358
-msgid "(as Administrator)"
-msgstr "(als Beheerder)"
-
-#: ../src/View/ViewContainer.vala:372
-msgid "You cannot create a folder here."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:374
-msgid "The network is unavailable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:375
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:377
-msgid "This Folder Does Not Belong to You"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:378
-msgid "You don't have permission to view this folder."
-msgstr "Je hebt niet de rechten om deze map te bekijken"
-
-#: ../src/View/ViewContainer.vala:380
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:381
-msgid "Could not connect to the server for this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:383
-msgid "Unable to Show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:384
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:394
-msgid "File not Found"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:395
-msgid "The file selected no longer exists."
-msgstr ""
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr ""
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr ""
-
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:413
 msgid "Open in New Tab"
 msgstr "Openen in nieuw tabblad"
@@ -1804,14 +1766,17 @@ msgstr ""
 msgid "Open in Other Application…"
 msgstr ""
 
-#: ../src/View/Widgets/LocationBar.vala:177
-msgid "Reload this folder"
-msgstr ""
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Lezen"
 
-#: ../src/View/Widgets/LocationBar.vala:180
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
-msgid "Enter search term or path"
-msgstr ""
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Schrijven"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Uitvoeren"
 
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
@@ -1880,55 +1845,73 @@ msgstr ""
 msgid "%u files not readable"
 msgstr ""
 
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Lezen"
-
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Schrijven"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Uitvoeren"
-
-#: ../src/Application.vala:146
-msgid "Show the version of the program."
-msgstr "Toon programmaversie"
-
-#: ../src/Application.vala:148
-msgid "Open uri(s) in new tab"
-msgstr "URI('s) in nieuwe tab openen"
-
-#: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
-msgid "New Window"
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
 msgstr ""
 
-#: ../src/Application.vala:152
-msgid "Quit Files."
-msgstr "Bestanden afsluiten."
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
+msgid "Enter search term or path"
+msgstr ""
 
-#: ../src/Application.vala:154
-msgid "Enable debug logging"
-msgstr "Debuglogging inschakelen"
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr ""
 
-#: ../src/Application.vala:157
-msgid "[URI...]"
-msgstr "[URI…]"
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr ""
 
-#: ../src/Application.vala:160
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr ""
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "\"%s\" kan niet gevonden worden."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Aanmaken"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Maak de map \"%s\" aan"
+
+#: ../src/View/DirectoryNotFound.vala:44
 msgid ""
+"Failed to create the folder\n"
 "\n"
-"\n"
-"Browse the file system with the file manager"
+"%s"
 msgstr ""
+"Kon de map niet aanmaken\n"
 "\n"
-"\n"
-"Bestandssysteem doorbladeren met het bestandsbeheer"
+"%s"
 
-#: ../src/Application.vala:187
-msgid "--quit cannot be used with URIs."
-msgstr "--quit kan niet gebruikt worden met URI's."
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Bestandsbewerkingen"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Kopieer-dialoogvenster tonen"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Alle actieve acties annuleren"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -1974,47 +1957,47 @@ msgstr ""
 msgid "Unable to open files or uris with this app"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
-msgid "File Operations"
-msgstr "Bestandsbewerkingen"
+#: ../src/Application.vala:144
+msgid "Show the version of the program."
+msgstr "Toon programmaversie"
 
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:190
-msgid "Completed %s"
+#: ../src/Application.vala:146
+msgid "Open uri(s) in new tab"
+msgstr "URI('s) in nieuwe tab openen"
+
+#: ../src/Application.vala:148 ../src/View/directory_view_popup.ui:83
+msgid "New Window"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:193
-msgid "All file operations have ended"
+#: ../src/Application.vala:150
+msgid "Quit Files."
+msgstr "Bestanden afsluiten."
+
+#: ../src/Application.vala:152
+msgid "Enable debug logging"
+msgstr "Debuglogging inschakelen"
+
+#: ../src/Application.vala:155
+msgid "[URI...]"
+msgstr "[URI…]"
+
+#: ../src/Application.vala:158
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"Bestandssysteem doorbladeren met het bestandsbeheer"
 
-#: ../src/ProgressUIHandler.vala:238
-msgid "Show Copy Dialog"
-msgstr "Kopieer-dialoogvenster tonen"
-
-#: ../src/ProgressUIHandler.vala:250
-msgid "Cancel All In-progress Actions"
-msgstr "Alle actieve acties annuleren"
+#: ../src/Application.vala:185
+msgid "--quit cannot be used with URIs."
+msgstr "--quit kan niet gebruikt worden met URI's."
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "Er is niets op het klembord om te plakken"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Instellen als standaard"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr ""
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr ""
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr ""
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2103,6 +2086,11 @@ msgstr ""
 msgid "Resolution:"
 msgstr ""
 
+#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+msgid "Location:"
+msgstr ""
+
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
 msgstr ""
@@ -2162,6 +2150,34 @@ msgstr[1] ""
 msgid "%s (%s, %s)"
 msgstr ""
 
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Instellen als standaard"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
+
+#: ../libcore/FileUtils.vala:343
+msgid "Could not rename to '%s'"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:464
+msgid "%A at %-I:%M %p"
+msgstr ""
+
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr ""
@@ -2182,22 +2198,6 @@ msgstr ""
 msgid "Cancel"
 msgstr "Annuleren"
 
-#: ../libcore/FileUtils.vala:59
-msgid "Could not determine original location of \"%s\" "
-msgstr "Kan de oorspronkelijke locatie van ‘%s’ niet bepalen "
-
-#: ../libcore/FileUtils.vala:60
-msgid "The item cannot be restored from trash"
-msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
-
-#: ../libcore/FileUtils.vala:342
-msgid "Could not rename to '%s'"
-msgstr ""
-
-#: ../libcore/FileUtils.vala:463
-msgid "%A at %-I:%M %p"
-msgstr ""
-
 #: ../libwidgets/View/SearchResults.vala:178
 msgid "In This Folder"
 msgstr ""
@@ -2209,6 +2209,30 @@ msgstr ""
 #: ../libwidgets/View/SearchResults.vala:182
 msgid "Everywhere Else"
 msgstr ""
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr ""
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Ga naar %s"
+
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr ""
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Als rooster weergeven"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Lijst-weergave"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Kolom-weergave"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2287,30 +2311,6 @@ msgstr ""
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr ""
-
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr ""
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Als rooster weergeven"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Lijst-weergave"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "Kolom-weergave"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr ""
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
-msgid "Go to %s"
-msgstr "Ga naar %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-01-27 09:19+0000\n"
-"Last-Translator: Maxim Taranov <png2378@gmail.com>\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
+"PO-Revision-Date: 2017-02-11 15:04+0000\n"
+"Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-28 05:50+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-02-12 06:12+0000\n"
+"X-Generator: Launchpad (build 18326)\n"
 
 msgid "Files"
 msgstr "Файлы"
+
+msgid "Browse your files"
+msgstr "Обзор ваших файлов"
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr "папка;менеджер;обзор;диск;файловая система;"
+
+msgid "File Manager"
+msgstr "Файловый менеджер"
+
+msgid "New Window"
+msgstr "Новое окно"
+
+msgid "New Window As Administrator"
+msgstr "Новое окно от имени Администратора"
+
+msgid "About Files"
+msgstr "О программе"
 
 msgid "Browse and manage files and folders"
 msgstr "Просмотр и управление файлами и папками"
@@ -34,6 +52,24 @@ msgstr ""
 "таблицу. Имейте доступ ко всем вашим файлам, включая локальные, на внешнем "
 "или на удаленном устройстве, используя FTP, SFTP, AFP, Webdav или доступ к "
 "Windows."
+
+msgid "Enable drag and drop tabs between windows"
+msgstr "Добавлена возможность переноса вкладок между окнами"
+
+msgid "Various crash fixes"
+msgstr "Различные исправления падений"
+
+msgid "New translations"
+msgstr "Новые переводы"
+
+msgid "Minor bug fixes"
+msgstr "Исправления небольших ошибок"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Объединение функций поиска в Ctrl+F"
+
+msgid "Improved translation support"
+msgstr "Улучшенная поддержка переводов"
 
 msgid "Fix appdata release dates"
 msgstr "Исправление даты релиза в appdata"
@@ -52,20 +88,10 @@ msgstr ""
 msgid "Translation updates"
 msgstr "Обновления перевода"
 
-msgid "Minor bug fixes"
-msgstr "Исправления небольших ошибок"
+msgid "Run Pantheon Files as Administrator"
+msgstr "Запустить Pantheon Files с правами администратора"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Объединение функций поиска в Ctrl+F"
-
-msgid "Improved translation support"
-msgstr "Улучшенная поддержка переводов"
-
-msgid "Various crash fixes"
-msgstr "Различные исправления падений"
-
-msgid "New translations"
-msgstr "Новые переводы"
-
-msgid "Enable drag and drop tabs between windows"
-msgstr "Добавлена возможность переноса вкладок между окнами"
+msgid "Authentication is required to run Files as Administrator"
+msgstr ""
+"Для запуска файлового менеджера с правами администратора требуется "
+"аутентификация"

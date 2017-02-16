@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
 "PO-Revision-Date: 2016-10-07 08:33+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:09+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-02-11 05:42+0000\n"
+"X-Generator: Launchpad (build 18326)\n"
 "Language: hu\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -138,6 +138,403 @@ msgstr "_Emlékezzen erre a jelszóra"
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "A művelet megszakítva"
+
+#: ../libcore/marlin-undostack-manager.c:635
+msgid "Original location could not be determined"
+msgstr "Az eredeti hely ismeretlen"
+
+#: ../libcore/marlin-undostack-manager.c:636
+msgid "Open trash folder and restore manually"
+msgstr "Kézi helyreállítás a Kuka megnyitásával"
+
+#: ../libcore/marlin-undostack-manager.c:1225
+#, c-format
+msgid "Delete %d copied items"
+msgstr "%d másolt elem törlése"
+
+#: ../libcore/marlin-undostack-manager.c:1228
+#: ../libcore/marlin-undostack-manager.c:1238
+#: ../libcore/marlin-undostack-manager.c:1269
+#, c-format
+msgid "Delete '%s'"
+msgstr "„%s” törlése"
+
+#: ../libcore/marlin-undostack-manager.c:1235
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "%d duplikált elem törlése"
+
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "%d elem visszahelyezése ide: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1250
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "„%s” helyreállítása ide: „%s”"
+
+#: ../libcore/marlin-undostack-manager.c:1259
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "„%s” átnevezése erre: „%s”"
+
+#: ../libcore/marlin-undostack-manager.c:1278
+#: ../libcore/marlin-undostack-manager.c:1473
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "%d elem helyreállítása a kukából"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "„%s” visszaállítása erre: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1297
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "%d elem visszahelyezése a kukába"
+
+#: ../libcore/marlin-undostack-manager.c:1300
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "„%s” visszahelyezése a kukába"
+
+#: ../libcore/marlin-undostack-manager.c:1309
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Linkek törlése %d elemre"
+
+#: ../libcore/marlin-undostack-manager.c:1312
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Erre mutató link: „%s”"
+
+#: ../libcore/marlin-undostack-manager.c:1322
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr ""
+"„%s” által tartalmazott elemek eredeti jogosultságainak helyreállítása"
+
+#: ../libcore/marlin-undostack-manager.c:1330
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "„%s” eredeti jogosultságainak helyreállítása"
+
+#: ../libcore/marlin-undostack-manager.c:1339
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "„%s” csoportjának visszaállítása erre: „%s”"
+
+#: ../libcore/marlin-undostack-manager.c:1349
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "„%s” tulajdonságának visszaállítása erre: „%s”"
+
+#: ../libcore/marlin-undostack-manager.c:1388
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "%d elem másolása ide: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1392
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "„%s” másolása ide: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1400
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "%d duplikált elem itt: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1405
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "„%s” kettőzése itt: „%s”"
+
+#: ../libcore/marlin-undostack-manager.c:1413
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "%d elem mozgatása ide: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "„%s” áthelyezése ide: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1435
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Új „%s” fájl létrehozása sablonból "
+
+#: ../libcore/marlin-undostack-manager.c:1442
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Üres fájl létrehozása: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Új mappa létrehozása: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1457
+#, c-format
+msgid "Move %d items to trash"
+msgstr "%d elem áthelyezése a kukába"
+
+#: ../libcore/marlin-undostack-manager.c:1463
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "„%s” áthelyezés a kukába"
+
+#: ../libcore/marlin-undostack-manager.c:1476
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "„%s” visszaállítása a kukából"
+
+#: ../libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "Create links to %d items"
+msgstr "Hivatkozása létrehozása %d elemre"
+
+#: ../libcore/marlin-undostack-manager.c:1488
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Hivatkozás létrehozása erre: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1497
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "„%s” által tartalmazott elemek jogosultságainak beállítása"
+
+#: ../libcore/marlin-undostack-manager.c:1505
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "„%s” jogosultságainak beállítása"
+
+#: ../libcore/marlin-undostack-manager.c:1514
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "„%s” csoportjának beállítása erre: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1524
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "„%s” tulajdonosának beállítása erre: %s"
+
+#: ../libcore/marlin-undostack-manager.c:1556
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "%d ele_m másolásának visszavonása"
+msgstr[1] "%d ele_m másolásának visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1561
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "%d fájl _kettőzésének visszavonása"
+msgstr[1] "%d fájl _kettőzésének visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1566
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "%d elem át_helyezésének visszavonása"
+msgstr[1] "%d elem át_helyezésének visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1571
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "%d elem át_nevezésének visszavonása"
+msgstr[1] "%d elem át_nevezésének visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1575
+msgid "_Undo creation of an empty file"
+msgstr "Ü_res fájl létrehozásának visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1578
+msgid "_Undo creation of a file from template"
+msgstr "Ü_res sablonfájl létrehozásának visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1582
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "%d ü_res mappa létrehozásának visszavonása"
+msgstr[1] "%d ü_res mappa létrehozásának visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1587
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "%d elem kukába át_helyezésének visszavonása"
+msgstr[1] "%d elem kukába át_helyezésének visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1592
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "%d elem kukából való _helyreállításának visszavonása"
+msgstr[1] "%d elem kukából való _helyreállításának visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1597
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "%d elemre mutató _link létrehozásának visszavonása"
+msgstr[1] "%d elemre mutató _link létrehozásának visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1602
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "%d elem _törlésének visszavonása"
+msgstr[1] "%d elem _törlésének visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1607
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "%d elem rekurzív jogosultságmódosításának visszavonása"
+msgstr[1] "%d elem rekurzív jogosultságmódosításának visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1613
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "%d elem jogosultságmódosításának visszavonása"
+msgstr[1] "%d elem jogosultságmódosításának visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1618
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "%d elem csoportmódosításának visszavonása"
+msgstr[1] "%d elem csoportmódosításának visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1623
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "%d elem tulajdonosmódosításának visszavonása"
+msgstr[1] "%d elem tulajdonosmódosításának visszavonása"
+
+#: ../libcore/marlin-undostack-manager.c:1651
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "%d ele_m másolása mégis"
+msgstr[1] "%d ele_m másolása mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1656
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "%d elem _kettőzése mégis"
+msgstr[1] "%d elem _kettőzése mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1661
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "%d elem át_helyezése mégis"
+msgstr[1] "%d elem át_helyezése mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1666
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "%d elem át_nevezése mégis"
+msgstr[1] "%d elem át_nevezése mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1670
+msgid "_Redo creation of an empty file"
+msgstr "Ü_res fájl létrehozása mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1673
+msgid "_Redo creation of a file from template"
+msgstr "Ü_res sablonfájl létrehozása mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1677
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "%d _mappa létrehozása mégis"
+msgstr[1] "%d _mappa létrehozása mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1682
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "%d elem kukába át_helyezése mégis"
+msgstr[1] "%d elem kukába át_helyezése mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1687
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "%d elem kukából való _helyreállítása mégis"
+msgstr[1] "%d elem kukából való _helyreállítása mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1692
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "%d elemre mutató _link létrehozása mégis"
+msgstr[1] "%d elemre mutató _link létrehozása mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1697
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "%d elem _törlése mégis"
+msgstr[1] "%d elem _törlése mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1702
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "%d elem rekurzív jogosultságmódosítása mégis"
+msgstr[1] "%d elem rekurzív jogosultságmódosítása mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1708
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "%d elem jogosultságmódosítása mégis"
+msgstr[1] "%d elem jogosultságmódosítása mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1713
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "%d elem csoportmódosítása mégis"
+msgstr[1] "%d elem csoportmódosítása mégis"
+
+#: ../libcore/marlin-undostack-manager.c:1718
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "%d elem tulajdonosmódosítása mégis"
+msgstr[1] "%d elem tulajdonosmódosítása mégis"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+msgid "Today at %-I:%M %p"
+msgstr "Ma %-k.%M-kor"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+msgid "Yesterday at %-I:%M %p"
+msgstr "Tegnap %-k.%M-kor"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b - %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%Y. %b %d. %a. %H%M-kor"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -284,48 +681,6 @@ msgstr "Felülírás"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Fájlütközés"
-
-#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:379
-#, c-format
-msgid "link to %s"
-msgstr "link erre: %s"
-
-#: ../libcore/gof-file.c:1953
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "A fájl elemzése sikertelen: %s"
-
-#: ../libcore/gof-file.c:1990
-msgid "No Exec field specified"
-msgstr "Nincs Exec mező megadva"
-
-#: ../libcore/gof-file.c:2009
-msgid "No URL field specified"
-msgstr "Nincs URL megadva"
-
-#: ../libcore/gof-file.c:2015
-msgid "Invalid desktop file"
-msgstr "Érvénytelen .desktop fájl"
-
-#: ../libcore/gof-file.c:2310
-msgid "Slashes are not allowed in filenames"
-msgstr "A fájlnevek nem tartalmazhatnak osztásjelet"
-
-#: ../libcore/gof-file.c:2330
-msgid "Toplevel files cannot be renamed"
-msgstr "A felső szintű fájlok nem nevezhetők át"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Több _részlet megjelenítése"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (érvénytelen Unicode)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -1079,407 +1434,52 @@ msgstr "A kuka ürítése folyamatban"
 msgid "Emptying Trash"
 msgstr "Kuka ürítése"
 
-#: ../libcore/marlin-undostack-manager.c:635
-msgid "Original location could not be determined"
-msgstr "Az eredeti hely ismeretlen"
-
-#: ../libcore/marlin-undostack-manager.c:636
-msgid "Open trash folder and restore manually"
-msgstr "Kézi helyreállítás a Kuka megnyitásával"
-
-#: ../libcore/marlin-undostack-manager.c:1225
-#, c-format
-msgid "Delete %d copied items"
-msgstr "%d másolt elem törlése"
-
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
-#, c-format
-msgid "Delete '%s'"
-msgstr "„%s” törlése"
-
-#: ../libcore/marlin-undostack-manager.c:1235
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "%d duplikált elem törlése"
-
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "%d elem visszahelyezése ide: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1250
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "„%s” helyreállítása ide: „%s”"
-
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "„%s” átnevezése erre: „%s”"
-
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "%d elem helyreállítása a kukából"
-
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "„%s” visszaállítása erre: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1297
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "%d elem visszahelyezése a kukába"
-
-#: ../libcore/marlin-undostack-manager.c:1300
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "„%s” visszahelyezése a kukába"
-
-#: ../libcore/marlin-undostack-manager.c:1309
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Linkek törlése %d elemre"
-
-#: ../libcore/marlin-undostack-manager.c:1312
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Erre mutató link: „%s”"
-
-#: ../libcore/marlin-undostack-manager.c:1322
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
-"„%s” által tartalmazott elemek eredeti jogosultságainak helyreállítása"
-
-#: ../libcore/marlin-undostack-manager.c:1330
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "„%s” eredeti jogosultságainak helyreállítása"
-
-#: ../libcore/marlin-undostack-manager.c:1339
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "„%s” csoportjának visszaállítása erre: „%s”"
-
-#: ../libcore/marlin-undostack-manager.c:1349
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "„%s” tulajdonságának visszaállítása erre: „%s”"
-
-#: ../libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "%d elem másolása ide: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1392
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "„%s” másolása ide: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1400
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "%d duplikált elem itt: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "„%s” kettőzése itt: „%s”"
-
-#: ../libcore/marlin-undostack-manager.c:1413
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "%d elem mozgatása ide: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1417
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "„%s” áthelyezése ide: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1435
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Új „%s” fájl létrehozása sablonból "
-
-#: ../libcore/marlin-undostack-manager.c:1442
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Üres fájl létrehozása: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1449
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Új mappa létrehozása: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "Move %d items to trash"
-msgstr "%d elem áthelyezése a kukába"
-
-#: ../libcore/marlin-undostack-manager.c:1463
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "„%s” áthelyezés a kukába"
-
-#: ../libcore/marlin-undostack-manager.c:1476
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "„%s” visszaállítása a kukából"
-
-#: ../libcore/marlin-undostack-manager.c:1485
-#, c-format
-msgid "Create links to %d items"
-msgstr "Hivatkozása létrehozása %d elemre"
-
-#: ../libcore/marlin-undostack-manager.c:1488
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Hivatkozás létrehozása erre: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1497
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "„%s” által tartalmazott elemek jogosultságainak beállítása"
-
-#: ../libcore/marlin-undostack-manager.c:1505
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "„%s” jogosultságainak beállítása"
-
-#: ../libcore/marlin-undostack-manager.c:1514
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "„%s” csoportjának beállítása erre: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1524
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "„%s” tulajdonosának beállítása erre: %s"
-
-#: ../libcore/marlin-undostack-manager.c:1556
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "%d ele_m másolásának visszavonása"
-msgstr[1] "%d ele_m másolásának visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1561
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "%d fájl _kettőzésének visszavonása"
-msgstr[1] "%d fájl _kettőzésének visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1566
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "%d elem át_helyezésének visszavonása"
-msgstr[1] "%d elem át_helyezésének visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1571
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "%d elem át_nevezésének visszavonása"
-msgstr[1] "%d elem át_nevezésének visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1575
-msgid "_Undo creation of an empty file"
-msgstr "Ü_res fájl létrehozásának visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1578
-msgid "_Undo creation of a file from template"
-msgstr "Ü_res sablonfájl létrehozásának visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1582
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "%d ü_res mappa létrehozásának visszavonása"
-msgstr[1] "%d ü_res mappa létrehozásának visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1587
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "%d elem kukába át_helyezésének visszavonása"
-msgstr[1] "%d elem kukába át_helyezésének visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1592
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "%d elem kukából való _helyreállításának visszavonása"
-msgstr[1] "%d elem kukából való _helyreállításának visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1597
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "%d elemre mutató _link létrehozásának visszavonása"
-msgstr[1] "%d elemre mutató _link létrehozásának visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1602
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "%d elem _törlésének visszavonása"
-msgstr[1] "%d elem _törlésének visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1607
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "%d elem rekurzív jogosultságmódosításának visszavonása"
-msgstr[1] "%d elem rekurzív jogosultságmódosításának visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1613
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "%d elem jogosultságmódosításának visszavonása"
-msgstr[1] "%d elem jogosultságmódosításának visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1618
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "%d elem csoportmódosításának visszavonása"
-msgstr[1] "%d elem csoportmódosításának visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1623
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "%d elem tulajdonosmódosításának visszavonása"
-msgstr[1] "%d elem tulajdonosmódosításának visszavonása"
-
-#: ../libcore/marlin-undostack-manager.c:1651
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "%d ele_m másolása mégis"
-msgstr[1] "%d ele_m másolása mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1656
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "%d elem _kettőzése mégis"
-msgstr[1] "%d elem _kettőzése mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1661
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "%d elem át_helyezése mégis"
-msgstr[1] "%d elem át_helyezése mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1666
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "%d elem át_nevezése mégis"
-msgstr[1] "%d elem át_nevezése mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1670
-msgid "_Redo creation of an empty file"
-msgstr "Ü_res fájl létrehozása mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1673
-msgid "_Redo creation of a file from template"
-msgstr "Ü_res sablonfájl létrehozása mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1677
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "%d _mappa létrehozása mégis"
-msgstr[1] "%d _mappa létrehozása mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1682
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "%d elem kukába át_helyezése mégis"
-msgstr[1] "%d elem kukába át_helyezése mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1687
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "%d elem kukából való _helyreállítása mégis"
-msgstr[1] "%d elem kukából való _helyreállítása mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1692
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "%d elemre mutató _link létrehozása mégis"
-msgstr[1] "%d elemre mutató _link létrehozása mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1697
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "%d elem _törlése mégis"
-msgstr[1] "%d elem _törlése mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1702
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "%d elem rekurzív jogosultságmódosítása mégis"
-msgstr[1] "%d elem rekurzív jogosultságmódosítása mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1708
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "%d elem jogosultságmódosítása mégis"
-msgstr[1] "%d elem jogosultságmódosítása mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1713
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "%d elem csoportmódosítása mégis"
-msgstr[1] "%d elem csoportmódosítása mégis"
-
-#: ../libcore/marlin-undostack-manager.c:1718
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "%d elem tulajdonosmódosítása mégis"
-msgstr[1] "%d elem tulajdonosmódosítása mégis"
-
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
-msgid "Today at %-I:%M %p"
-msgstr "Ma %-k.%M-kor"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
-msgid "Yesterday at %-I:%M %p"
-msgstr "Tegnap %-k.%M-kor"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b - %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%Y. %b %d. %a. %H%M-kor"
-
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
 msgstr "Felkészülés"
+
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:376
+#, c-format
+msgid "link to %s"
+msgstr "link erre: %s"
+
+#: ../libcore/gof-file.c:1925
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "A fájl elemzése sikertelen: %s"
+
+#: ../libcore/gof-file.c:1962
+msgid "No Exec field specified"
+msgstr "Nincs Exec mező megadva"
+
+#: ../libcore/gof-file.c:1981
+msgid "No URL field specified"
+msgstr "Nincs URL megadva"
+
+#: ../libcore/gof-file.c:1987
+msgid "Invalid desktop file"
+msgstr "Érvénytelen .desktop fájl"
+
+#: ../libcore/gof-file.c:2282
+msgid "Slashes are not allowed in filenames"
+msgstr "A fájlnevek nem tartalmazhatnak osztásjelet"
+
+#: ../libcore/gof-file.c:2302
+msgid "Toplevel files cannot be renamed"
+msgstr "A felső szintű fájlok nem nevezhetők át"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Több _részlet megjelenítése"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (érvénytelen Unicode)"
 
 #: ../filechooser-module/FileChooserDialog.vala:70
 #: ../src/View/Widgets/TopMenu.vala:64
@@ -1490,6 +1490,68 @@ msgstr "Előző"
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "Következő"
+
+#: ../src/View/ViewContainer.vala:347 ../src/View/Sidebar.vala:494
+msgid "Home"
+msgstr "Saját mappa"
+
+#: ../src/View/ViewContainer.vala:349 ../src/View/Sidebar.vala:555
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "Fájlrendszer"
+
+#: ../src/View/ViewContainer.vala:358
+msgid "(as Administrator)"
+msgstr "(Adminisztrátorként)"
+
+#: ../src/View/ViewContainer.vala:371 ../src/View/DirectoryNotFound.vala:28
+msgid "This Folder Does Not Exist"
+msgstr "Ez a mappa nem létezik"
+
+#: ../src/View/ViewContainer.vala:372
+msgid "You cannot create a folder here."
+msgstr "Ide nem hozható létre mappa."
+
+#: ../src/View/ViewContainer.vala:374
+msgid "The network is unavailable"
+msgstr "A hálózat elérhetetlen"
+
+#: ../src/View/ViewContainer.vala:375
+msgid "A working network is needed to reach this folder"
+msgstr "Egy működő hálózat szükséges ennek a mappának az eléréshez"
+
+#: ../src/View/ViewContainer.vala:377
+msgid "This Folder Does Not Belong to You"
+msgstr "Ez a mappa nem önhöz tartozik"
+
+#: ../src/View/ViewContainer.vala:378
+msgid "You don't have permission to view this folder."
+msgstr "Nincs jogosultsága, hogy megnézze ezt a könyvtárat."
+
+#: ../src/View/ViewContainer.vala:380
+msgid "Unable to Mount Folder"
+msgstr "Mappa nem csatolható"
+
+#: ../src/View/ViewContainer.vala:381
+msgid "Could not connect to the server for this folder."
+msgstr "Nem lehet csatlakozni a szerverhez ezért a mappáért"
+
+#: ../src/View/ViewContainer.vala:383
+msgid "Unable to Show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:384
+msgid "The server for this folder could not be located."
+msgstr "Nem található a mappához tartozó szerver."
+
+#: ../src/View/ViewContainer.vala:394
+msgid "File not Found"
+msgstr "Fájl nem található"
+
+#: ../src/View/ViewContainer.vala:395
+msgid "The file selected no longer exists."
+msgstr "A kiválasztott fájl már nem létezik."
 
 #: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
@@ -1503,6 +1565,78 @@ msgstr "Beállítás alapértelmezésként"
 msgid "Ignore"
 msgstr "Mellőzés"
 
+#: ../src/View/AbstractDirectoryView.vala:564
+msgid "Failed to preview"
+msgstr "Nincs előnézet"
+
+#: ../src/View/AbstractDirectoryView.vala:817
+msgid "Cannot open this file"
+msgstr "Ez a fájl nem nyitható meg"
+
+#: ../src/View/AbstractDirectoryView.vala:830
+msgid "Cannot identify file type to open"
+msgstr "Nem azonosítható be a fájltípus a megnyitáshoz"
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Cannot drop this file"
+msgstr "A fájlt nem lehet elejteni"
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Invalid file name provided"
+msgstr "Érvénytelen fájlnév megadva"
+
+#: ../src/View/AbstractDirectoryView.vala:2010
+msgid "Invalid"
+msgstr "Érvénytelen"
+
+#: ../src/View/AbstractDirectoryView.vala:2016
+msgid "Run"
+msgstr "Futtatás"
+
+#: ../src/View/AbstractDirectoryView.vala:2021
+msgid "Open in %s"
+msgstr "%s -ben megnyitás"
+
+#: ../src/View/AbstractDirectoryView.vala:2031
+msgid "Open in"
+msgstr "Nyissa meg ezzel:"
+
+#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
+msgid "Open with"
+msgstr "Megnyitás ezzel"
+
+#: ../src/View/AbstractDirectoryView.vala:2093
+msgid "Other Application"
+msgstr "Más alkalmazás"
+
+#: ../src/View/AbstractDirectoryView.vala:2354
+msgid "Untitled %s"
+msgstr "Névtelen %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2678
+#: ../src/View/AbstractDirectoryView.vala:2861
+msgid "Cannot remove files from here"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2679
+#: ../src/View/AbstractDirectoryView.vala:2849
+#: ../src/View/AbstractDirectoryView.vala:2862
+msgid "You do not have permission to change this location"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2827
+msgid "Cannot copy files that are in the trash"
+msgstr "A kukában levő fájlok nem másolhatóak."
+
+#: ../src/View/AbstractDirectoryView.vala:2828
+msgid "Cutting the selection instead"
+msgstr "A kijelöltek kivágása inkább"
+
+#: ../src/View/AbstractDirectoryView.vala:2848
+msgid "Cannot paste files here"
+msgstr ""
+
 #: ../src/View/Sidebar.vala:481
 msgid "Personal"
 msgstr "Személyes"
@@ -1510,10 +1644,6 @@ msgstr "Személyes"
 #: ../src/View/Sidebar.vala:482
 msgid "Your common places and bookmarks"
 msgstr "Saját mappái és könyvjelzői"
-
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
-msgid "Home"
-msgstr "Saját mappa"
 
 #: ../src/View/Sidebar.vala:501
 msgid "Open your personal folder"
@@ -1538,12 +1668,6 @@ msgstr "Eszközök"
 #: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
 msgstr "Helyi partíciók és eszközök"
-
-#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Fájlrendszer"
 
 #: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
@@ -1622,168 +1746,6 @@ msgstr "Típus"
 msgid "Modified"
 msgstr "Módosítva"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
-msgid "This Folder Does Not Exist"
-msgstr "Ez a mappa nem létezik"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "A „%s” mappa nem található"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Létrehozás"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "„%s” mappa létrehozása"
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Mappa létrehozása sikertelen\n"
-"\n"
-"%s"
-
-#: ../src/View/AbstractDirectoryView.vala:550
-msgid "Failed to preview"
-msgstr "Nincs előnézet"
-
-#: ../src/View/AbstractDirectoryView.vala:805
-msgid "Cannot open this file"
-msgstr "Ez a fájl nem nyitható meg"
-
-#: ../src/View/AbstractDirectoryView.vala:818
-msgid "Cannot identify file type to open"
-msgstr "Nem azonosítható be a fájltípus a megnyitáshoz"
-
-#: ../src/View/AbstractDirectoryView.vala:1549
-msgid "Cannot drop this file"
-msgstr "A fájlt nem lehet elejteni"
-
-#: ../src/View/AbstractDirectoryView.vala:1549
-msgid "Invalid file name provided"
-msgstr "Érvénytelen fájlnév megadva"
-
-#: ../src/View/AbstractDirectoryView.vala:2004
-msgid "Invalid"
-msgstr "Érvénytelen"
-
-#: ../src/View/AbstractDirectoryView.vala:2010
-msgid "Run"
-msgstr "Futtatás"
-
-#: ../src/View/AbstractDirectoryView.vala:2015
-msgid "Open in %s"
-msgstr "%s -ben megnyitás"
-
-#: ../src/View/AbstractDirectoryView.vala:2025
-msgid "Open in"
-msgstr "Nyissa meg ezzel:"
-
-#: ../src/View/AbstractDirectoryView.vala:2027
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
-msgid "Open with"
-msgstr "Megnyitás ezzel"
-
-#: ../src/View/AbstractDirectoryView.vala:2087
-msgid "Other Application"
-msgstr "Más alkalmazás"
-
-#: ../src/View/AbstractDirectoryView.vala:2348
-msgid "Untitled %s"
-msgstr "Névtelen %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2670
-#: ../src/View/AbstractDirectoryView.vala:2853
-msgid "Cannot remove files from here"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2671
-#: ../src/View/AbstractDirectoryView.vala:2841
-#: ../src/View/AbstractDirectoryView.vala:2854
-msgid "You do not have permission to change this location"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2819
-msgid "Cannot copy files that are in the trash"
-msgstr "A kukában levő fájlok nem másolhatóak."
-
-#: ../src/View/AbstractDirectoryView.vala:2820
-msgid "Cutting the selection instead"
-msgstr "A kijelöltek kivágása inkább"
-
-#: ../src/View/AbstractDirectoryView.vala:2840
-msgid "Cannot paste files here"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:358
-msgid "(as Administrator)"
-msgstr "(Adminisztrátorként)"
-
-#: ../src/View/ViewContainer.vala:372
-msgid "You cannot create a folder here."
-msgstr "Ide nem hozható létre mappa."
-
-#: ../src/View/ViewContainer.vala:374
-msgid "The network is unavailable"
-msgstr "A hálózat elérhetetlen"
-
-#: ../src/View/ViewContainer.vala:375
-msgid "A working network is needed to reach this folder"
-msgstr "Egy működő hálózat szükséges ennek a mappának az eléréshez"
-
-#: ../src/View/ViewContainer.vala:377
-msgid "This Folder Does Not Belong to You"
-msgstr "Ez a mappa nem önhöz tartozik"
-
-#: ../src/View/ViewContainer.vala:378
-msgid "You don't have permission to view this folder."
-msgstr "Nincs jogosultsága, hogy megnézze ezt a könyvtárat."
-
-#: ../src/View/ViewContainer.vala:380
-msgid "Unable to Mount Folder"
-msgstr "Mappa nem csatolható"
-
-#: ../src/View/ViewContainer.vala:381
-msgid "Could not connect to the server for this folder."
-msgstr "Nem lehet csatlakozni a szerverhez ezért a mappáért"
-
-#: ../src/View/ViewContainer.vala:383
-msgid "Unable to Show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:384
-msgid "The server for this folder could not be located."
-msgstr "Nem található a mappához tartozó szerver."
-
-#: ../src/View/ViewContainer.vala:394
-msgid "File not Found"
-msgstr "Fájl nem található"
-
-#: ../src/View/ViewContainer.vala:395
-msgid "The file selected no longer exists."
-msgstr "A kiválasztott fájl már nem létezik."
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Ez a mappa üres"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "A kuka üres"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Nincsenek előzmények"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Hozzáférés megtagadva"
-
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:413
 msgid "Open in New Tab"
 msgstr "Megnyitás új lapon"
@@ -1796,14 +1758,17 @@ msgstr "Megnyitás új ablakban"
 msgid "Open in Other Application…"
 msgstr "Megnyitás másik alkalmazással"
 
-#: ../src/View/Widgets/LocationBar.vala:177
-msgid "Reload this folder"
-msgstr "A mappa újratöltése"
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Olvasás"
 
-#: ../src/View/Widgets/LocationBar.vala:180
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
-msgid "Enter search term or path"
-msgstr "Keresőkifejezés vagy út megadása"
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Írás"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Végrehajtás"
 
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
@@ -1872,55 +1837,73 @@ msgstr ""
 msgid "%u files not readable"
 msgstr "%u fájl nem olvasható"
 
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Olvasás"
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "A mappa újratöltése"
 
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Írás"
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
+msgid "Enter search term or path"
+msgstr "Keresőkifejezés vagy út megadása"
 
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Végrehajtás"
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Ez a mappa üres"
 
-#: ../src/Application.vala:146
-msgid "Show the version of the program."
-msgstr "A program verziószámának megjelenítése."
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "A kuka üres"
 
-#: ../src/Application.vala:148
-msgid "Open uri(s) in new tab"
-msgstr "URI cím(ek) megjelenítése új lapon"
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Nincsenek előzmények"
 
-#: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
-msgid "New Window"
-msgstr "Új ablak"
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Hozzáférés megtagadva"
 
-#: ../src/Application.vala:152
-msgid "Quit Files."
-msgstr "Kilépés a fájlkezelőből."
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "A „%s” mappa nem található"
 
-#: ../src/Application.vala:154
-msgid "Enable debug logging"
-msgstr "Hibakereső naplózás engedélyezése"
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Létrehozás"
 
-#: ../src/Application.vala:157
-msgid "[URI...]"
-msgstr "[URI...]"
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "„%s” mappa létrehozása"
 
-#: ../src/Application.vala:160
+#: ../src/View/DirectoryNotFound.vala:44
 msgid ""
+"Failed to create the folder\n"
 "\n"
-"\n"
-"Browse the file system with the file manager"
+"%s"
 msgstr ""
+"Mappa létrehozása sikertelen\n"
 "\n"
-"\n"
-"A fájlrendszer böngészése a fájlkezelővel"
+"%s"
 
-#: ../src/Application.vala:187
-msgid "--quit cannot be used with URIs."
-msgstr "a --quit nem használható URI-címekkel."
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Fájlműveletek"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "%s befejezett"
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "Minden fájlművelet véget ért"
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Másolási ablak megjelenítése"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Összes folyamatban lévő művelet megszakítása"
 
 #: ../src/DesktopLauncher.vala:6
 msgid "Browse your files"
@@ -1966,47 +1949,47 @@ msgstr ""
 msgid "Unable to open files or uris with this app"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
-msgid "File Operations"
-msgstr "Fájlműveletek"
+#: ../src/Application.vala:144
+msgid "Show the version of the program."
+msgstr "A program verziószámának megjelenítése."
 
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:190
-msgid "Completed %s"
-msgstr "%s befejezett"
+#: ../src/Application.vala:146
+msgid "Open uri(s) in new tab"
+msgstr "URI cím(ek) megjelenítése új lapon"
 
-#: ../src/ProgressUIHandler.vala:193
-msgid "All file operations have ended"
-msgstr "Minden fájlművelet véget ért"
+#: ../src/Application.vala:148 ../src/View/directory_view_popup.ui:83
+msgid "New Window"
+msgstr "Új ablak"
 
-#: ../src/ProgressUIHandler.vala:238
-msgid "Show Copy Dialog"
-msgstr "Másolási ablak megjelenítése"
+#: ../src/Application.vala:150
+msgid "Quit Files."
+msgstr "Kilépés a fájlkezelőből."
 
-#: ../src/ProgressUIHandler.vala:250
-msgid "Cancel All In-progress Actions"
-msgstr "Összes folyamatban lévő művelet megszakítása"
+#: ../src/Application.vala:152
+msgid "Enable debug logging"
+msgstr "Hibakereső naplózás engedélyezése"
+
+#: ../src/Application.vala:155
+msgid "[URI...]"
+msgstr "[URI...]"
+
+#: ../src/Application.vala:158
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+msgstr ""
+"\n"
+"\n"
+"A fájlrendszer böngészése a fájlkezelővel"
+
+#: ../src/Application.vala:185
+msgid "--quit cannot be used with URIs."
+msgstr "a --quit nem használható URI-címekkel."
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "A vágólapról nincs mit beilleszteni"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Beállítás alapértelmezettként"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Lemez tulajdonságok"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Elérési út:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Formátum:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2097,6 +2080,11 @@ msgstr "Pantonimtípus:"
 msgid "Resolution:"
 msgstr "Felbontás:"
 
+#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+msgid "Location:"
+msgstr "Elérési út:"
+
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
 msgstr "Cél:"
@@ -2156,6 +2144,34 @@ msgstr[1] ""
 msgid "%s (%s, %s)"
 msgstr ""
 
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Beállítás alapértelmezettként"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Lemez tulajdonságok"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Formátum:"
+
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nem határozható meg „%s” eredeti helye "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "Az elem nem állítható helyre a Kukából"
+
+#: ../libcore/FileUtils.vala:343
+msgid "Could not rename to '%s'"
+msgstr "Nem lehet átnevezni erre: '%s'"
+
+#: ../libcore/FileUtils.vala:464
+msgid "%A at %-I:%M %p"
+msgstr ""
+
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "\"%s\" futtatása sikertelen"
@@ -2176,22 +2192,6 @@ msgstr "Link ide"
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../libcore/FileUtils.vala:59
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nem határozható meg „%s” eredeti helye "
-
-#: ../libcore/FileUtils.vala:60
-msgid "The item cannot be restored from trash"
-msgstr "Az elem nem állítható helyre a Kukából"
-
-#: ../libcore/FileUtils.vala:342
-msgid "Could not rename to '%s'"
-msgstr "Nem lehet átnevezni erre: '%s'"
-
-#: ../libcore/FileUtils.vala:463
-msgid "%A at %-I:%M %p"
-msgstr ""
-
 #: ../libwidgets/View/SearchResults.vala:178
 msgid "In This Folder"
 msgstr "Ebben a mappában"
@@ -2203,6 +2203,30 @@ msgstr "Könyvjelzők"
 #: ../libwidgets/View/SearchResults.vala:182
 msgid "Everywhere Else"
 msgstr "Akárhol máshol"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Navigáljon ide: %s"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Ugrás ide: %s"
+
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "Adj meg egy elérési utat"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Rácsnézet"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Listanézet"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Oszlop nézet"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2262,30 +2286,6 @@ msgstr "Előzmények"
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr "MTP"
-
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr "Adj meg egy elérési utat"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Rácsnézet"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Listanézet"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "Oszlop nézet"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Navigáljon ide: %s"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
-msgid "Go to %s"
-msgstr "Ugrás ide: %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

@@ -4,7 +4,7 @@
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
+    the Free Software Foundation, Inc.,, either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -120,13 +120,6 @@ public class GOF.Directory.Async : Object {
         can_open_files = !("mtp".contains (scheme));
         can_stream_files = !("ftp sftp mtp dav davs".contains (scheme));
 
-        dir_cache_lock.@lock (); /* will always have been created via call to public static functions from_file () or from_gfile () */
-        directory_cache.insert (location.dup (), this);
-        dir_cache_lock.unlock ();
-
-        this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-        this.unref ();
-
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
     }
 
@@ -170,7 +163,7 @@ public class GOF.Directory.Async : Object {
         bool success = yield get_file_info ();
         if (success) {
             if (!is_no_info && !file.is_folder () && !file.is_root_network_folder ()) {
-                warning ("Trying to load a non-folder - finding parent");
+                debug ("Trying to load a non-folder - finding parent");
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
                     file = GOF.File.get (parent);
@@ -358,6 +351,16 @@ public class GOF.Directory.Async : Object {
         }
 
         if (!is_ready) {
+            /* Do not cache directory until it prepared and loadable to avoid an incorrect key being used in some
+             * in some cases.
+             */ 
+            dir_cache_lock.@lock (); /* will always have been created via call to public static functions from_file () or from_gfile () */
+            directory_cache.insert (location.dup (), this);
+            dir_cache_lock.unlock ();
+
+            this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+            this.unref ();
+
             is_ready = true;
             yield list_directory_async (file_loaded_func);
 
@@ -472,6 +475,9 @@ public class GOF.Directory.Async : Object {
             warning ("list cached files called in %s state - not expected to happen", state.to_string ());
             return;
         }
+
+        debug ("Listing cached files");
+
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
         foreach (GOF.File gof in file_hash.get_values ()) {

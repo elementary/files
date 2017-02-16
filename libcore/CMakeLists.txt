@@ -1,5 +1,3 @@
-include (Tests)
-
 set (PKGNAME pantheon-files-core)
 set (PKGNAME_ PANTHEON_FILES_CORE)
 set (${PKGNAME_}_VERSION 0.1)
@@ -147,13 +145,5 @@ target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-add_executable (pantheon-files-core_tests
-    tests/tests.c
-    tests/marlincore-tests-gof.c
-    tests/marlincore-tests-file.c
-    tests/marlincore-tests-icon-info.c)
+add_subdirectory (tests)
 
-add_test (core pantheon-files-core_tests)
-
-target_link_libraries (pantheon-files-core_tests pantheon-files-core ${DEPS_LIBRARIES})
-add_dependencies (pantheon-files-core_tests pantheon-files-core)

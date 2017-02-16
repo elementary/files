@@ -3,7 +3,7 @@
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
- * License as published by the Free Software Foundation; either
+ * License as published by the Free Software Foundation, Inc.,; either
  * version 2 of the License, or (at your option) any later version.
  *
  * This library is distributed in the hope that it will be useful,
@@ -13,8 +13,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
+ * Boston, MA 02110-1335 USA.
  */
 
 //#include <config.h>
@@ -47,6 +47,23 @@ struct _MarlinIconInfoClass
 static void schedule_reap_cache (void);
 
 G_DEFINE_TYPE (MarlinIconInfo, marlin_icon_info, G_TYPE_OBJECT);
+
+/** This is required for testing themed icon functions under ctest when there is no default screen and
+  * we have to set the icon theme manually.  We assume that any system being used for testing will have
+  * the "hicolor" theme.
+  */   
+static GtkIconTheme *
+marlin_icon_info_get_gtk_icon_theme () {
+    GtkIconTheme *theme;
+    if (gdk_screen_get_default () == NULL) {
+        theme = gtk_icon_theme_new ();
+        gtk_icon_theme_set_custom_theme (theme, "hicolor");
+    } else {
+        theme = gtk_icon_theme_get_default ();
+    }
+
+    return theme;
+}
 
 static void
 marlin_icon_info_init (MarlinIconInfo *icon)
@@ -490,7 +507,7 @@ marlin_icon_info_lookup (GIcon *icon, int size)
 
         names = g_themed_icon_get_names (G_THEMED_ICON (icon));
 
-        icon_theme = gtk_icon_theme_get_default ();
+        icon_theme = marlin_icon_info_get_gtk_icon_theme ();
         gtkicon_info = gtk_icon_theme_choose_icon (icon_theme, (const char **)names, size, 0);
 
         if (gtkicon_info == NULL) {
@@ -526,7 +543,7 @@ marlin_icon_info_lookup (GIcon *icon, int size)
         GtkIconInfo *gtk_icon_info;
 
         //g_message ("%s ELSE ... %s", G_STRFUNC, g_icon_to_string (icon));
-        gtk_icon_info = gtk_icon_theme_lookup_by_gicon (gtk_icon_theme_get_default (),
+        gtk_icon_info = gtk_icon_theme_lookup_by_gicon (marlin_icon_info_get_gtk_icon_theme (),
                                                         icon,
                                                         size,
                                                         GTK_ICON_LOOKUP_GENERIC_FALLBACK);

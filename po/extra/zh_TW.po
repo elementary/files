@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"POT-Creation-Date: 2017-02-10 16:45+0000\n"
 "PO-Revision-Date: 2016-10-14 15:46+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:15+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-02-11 05:46+0000\n"
+"X-Generator: Launchpad (build 18326)\n"
 
 msgid "Files"
 msgstr "檔案"
+
+msgid "Browse your files"
+msgstr ""
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr ""
+
+msgid "File Manager"
+msgstr ""
+
+msgid "New Window"
+msgstr ""
+
+msgid "New Window As Administrator"
+msgstr ""
+
+msgid "About Files"
+msgstr ""
 
 msgid "Browse and manage files and folders"
 msgstr "瀏覽、管理檔案及資料夾"
@@ -31,6 +49,24 @@ msgid ""
 msgstr ""
 "輕鬆複製、移動和改名您的檔案，或使用資料夾來維持井然有序。無論您是希望用清單、柵格、或多欄的方式列出檔案，您都可以隨時找到它們。不管是在本機上、外接裝置上"
 "、或是使用 FTP、SFTP、AFP、Webdav、或 Windows 網路芳鄰等遠端上，都能存取您的所有檔案。"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr ""
+
+msgid "Minor bug fixes"
+msgstr "小臭蟲修正"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
+msgstr ""
 
 msgid "Fix appdata release dates"
 msgstr "修正 appdata 發行日期"
@@ -47,20 +83,8 @@ msgstr "改善情境選單中的剪下/複製/貼上敏感度"
 msgid "Translation updates"
 msgstr "翻譯更新"
 
-msgid "Minor bug fixes"
-msgstr "小臭蟲修正"
-
-msgid "Merge search functionality into Ctrl+F"
+msgid "Run Pantheon Files as Administrator"
 msgstr ""
 
-msgid "Improved translation support"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
+msgid "Authentication is required to run Files as Administrator"
 msgstr ""
