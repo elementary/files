@@ -145,6 +145,9 @@ public class GOF.Directory.Async : Object {
         cancellable.cancel ();
         cancellable = new Cancellable ();
 
+        this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+        this.unref ();
+
         /* If we already have a loaded file cache just list them */ 
         if (previous_state == State.LOADED) {
             list_cached_files (file_loaded_func);
@@ -357,9 +360,6 @@ public class GOF.Directory.Async : Object {
             dir_cache_lock.@lock (); /* will always have been created via call to public static functions from_file () or from_gfile () */
             directory_cache.insert (location.dup (), this);
             dir_cache_lock.unlock ();
-
-            this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-            this.unref ();
 
             is_ready = true;
             yield list_directory_async (file_loaded_func);
