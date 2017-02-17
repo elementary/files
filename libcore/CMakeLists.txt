@@ -33,6 +33,7 @@ PACKAGES
     gmodule-2.0
     libcanberra
     pantheon-files-core-C
+    posix
 OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
     --thread

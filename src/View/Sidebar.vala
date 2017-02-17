@@ -537,17 +537,20 @@ namespace Marlin.Places {
                 add_bookmark (iter, bm, index);
             }
 
-            /* Add trash */
-            add_place (Marlin.PlaceType.BUILT_IN,
-                       iter,
-                       _("Trash"),
-                       Marlin.TrashMonitor.get_icon (),
-                       Marlin.TRASH_URI,
-                       null,
-                       null,
-                       null,
-                       index + n_builtins_before,
-                       _("Open the Trash"));
+            /* Do not show Trash if running as root (cannot be loaded) */
+            if (Posix.getuid () != 0) {
+                /* Add trash */
+                add_place (Marlin.PlaceType.BUILT_IN,
+                           iter,
+                           _("Trash"),
+                           Marlin.TrashMonitor.get_icon (),
+                           Marlin.TRASH_URI,
+                           null,
+                           null,
+                           null,
+                           index + n_builtins_before,
+                           _("Open the Trash"));
+            }
 
             /* ADD STORAGE CATEGORY*/
             iter = add_category (Marlin.PlaceType.STORAGE_CATEGORY,

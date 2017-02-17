@@ -390,6 +390,9 @@ public class GOF.Directory.Async : Object {
                     has_trash_dirs = is_local;
                 }
 
+                /* Do not use root trash_dirs (Move to the Rubbish Bin option will not be shown) */
+                has_trash_dirs = has_trash_dirs && (Posix.getuid () != 0);
+
                 if (is_trash) {
                     connect_volume_monitor_signals ();
                 }
