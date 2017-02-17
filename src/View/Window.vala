@@ -1002,7 +1002,7 @@ namespace Marlin.View {
             top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
             top_menu.can_go_back = current_tab.can_go_back;
             top_menu.can_go_forward = (current_tab.can_show_folder && current_tab.can_go_forward);
-            top_menu.working = tabs.current.working;
+            top_menu.working = current_tab.is_loading;
 
             /* Update viewmode switch, action state and settings */
             var mode = current_tab.view_mode;

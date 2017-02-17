@@ -81,6 +81,8 @@ namespace Marlin.View {
             }
         }
 
+        public bool is_loading {get; private set; default = false;}
+
         public OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
@@ -113,6 +115,9 @@ namespace Marlin.View {
             path_changed.connect (on_path_changed);
             window.folder_deleted.connect (on_folder_deleted);
             enter_notify_event.connect (on_enter_notify_event);
+            loading.connect ((loading) => {
+                is_loading = loading;
+            });
         }
 
         private void disconnect_signals () {
