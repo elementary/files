@@ -120,7 +120,8 @@ namespace Eel {
     public GLib.List? get_user_names ();
     [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_user_id_from_user_name (string *user_name, out int uid);
-    public string? get_user_name_from_user_uid (int uid);
+    [CCode (cheader_filename = "eel-fcts.h")]
+    public string? get_real_user_home ();
     [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_group_id_from_group_name (string *group_name, out int gid);
     [CCode (cheader_filename = "eel-fcts.h")]

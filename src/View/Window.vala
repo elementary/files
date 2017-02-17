@@ -436,7 +436,7 @@ namespace Marlin.View {
             top_menu.working = current_tab.is_frozen;
         }
 
-        public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
+        public void add_tab (File location = File.new_for_commandline_arg (Eel.get_real_user_home ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             mode = real_mode (mode);
 
@@ -482,9 +482,10 @@ namespace Marlin.View {
             tab.close ();
         }
 
-        public void add_window (File location = File.new_for_path (Environment.get_home_dir ()),
+        public void add_window (File location = File.new_for_path (Eel.get_real_user_home ()),
                                  Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                                  int x = -1, int y = -1) {
+
             ((Marlin.Application) application).create_window (location, real_mode (mode), x, y);
         }
 
@@ -584,7 +585,7 @@ namespace Marlin.View {
                     break;
 
                 case "HOME":
-                    uri_path_change_request ("file://" + Environment.get_home_dir());
+                    uri_path_change_request ("file://" + Eel.get_real_user_home ());
                     break;
 
                 case "TRASH":
@@ -872,7 +873,7 @@ namespace Marlin.View {
                 /* ViewContainer is responsible for returning valid uris */
                 vb.add ("(uss)",
                         view_container.view_mode,
-                        view_container.get_root_uri () ?? Environment.get_home_dir (),
+                        view_container.get_root_uri () ?? Eel.get_real_user_home (),
                         view_container.get_tip_uri () ?? ""
                        );
             }
@@ -901,8 +902,12 @@ namespace Marlin.View {
             restoring_tabs = true;
 
             while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
-                if (mode < 0 || mode >= Marlin.ViewMode.INVALID || root_uri == null || root_uri == "" || tip_uri == null)
+
+                if (mode < 0 || mode >= Marlin.ViewMode.INVALID ||
+                    root_uri == null || root_uri == "" || tip_uri == null) {
+
                     continue;
+                }
 
                 string? unescaped_root_uri = PF.FileUtils.sanitize_path (root_uri);
 
@@ -1028,7 +1033,7 @@ namespace Marlin.View {
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == current_tab)
-                        view_container.focus_location (File.new_for_path (Environment.get_home_dir ()));
+                        view_container.focus_location (File.new_for_path (Eel.get_real_user_home ()));
                     else
                         remove_tab (view_container);
                 }

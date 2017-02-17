@@ -48,14 +48,10 @@ namespace Marlin {
              * When running under pkexec determine real user from PKEXEC_UID
              */
             string config_dir = GLib.Environment.get_user_config_dir ();
-            string? real_uid = GLib.Environment.get_variable ("PKEXEC_UID");
+            string? user_home = Eel.get_real_user_home ();
 
-            if (real_uid != null) { /* Running as root under pkexec */
-                string? user_name = Eel.get_user_name_from_user_uid (int.parse (real_uid));
-                if (user_name != null) {
-                    /* Assume the real user config directory is in the usual place */
-                    config_dir = config_dir.replace ("root", "home/" + user_name);
-                }
+            if (user_home != null) {
+                config_dir = GLib.Path.build_filename (user_home, ".config");
             }
 
             /*Check bookmarks file exists and in right place */
@@ -232,7 +228,8 @@ namespace Marlin {
             }
             /* Do not insert bookmark for home or filesystem root (already have builtins) */
             var path = bm.gof_file.location.get_path ();
-            if ((path == Environment.get_home_dir () || path == Path.DIR_SEPARATOR_S)) {
+
+            if ((path == Eel.get_real_user_home () || path == Path.DIR_SEPARATOR_S)) {
                 return;
             }
 

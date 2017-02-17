@@ -235,17 +235,32 @@ eel_get_user_id_from_user_name (const char *user_name, uid_t *uid)
     return TRUE;
 }
 
-gchar*
-eel_get_user_name_from_user_uid (uid_t uid)
+static const char*
+get_user_home_from_user_uid (uid_t uid)
 {
     struct passwd *password_info;
 
     password_info = getpwuid (uid);
 
-    if (password_info == NULL || password_info->pw_name == NULL)
+    if (password_info == NULL || password_info->pw_dir == NULL)
         return NULL;
 
-    return g_strdup (password_info->pw_name);
+    return password_info->pw_dir;
+}
+
+char*
+eel_get_real_user_home ()
+{
+    const char *real_uid_s;
+    int uid;
+
+    real_uid_s = g_environ_getenv (g_get_environ (), "PKEXEC_UID");
+    /* If running as administrator return the real user home, not root home */
+    if (real_uid_s != NULL && eel_get_id_from_digit_string (real_uid_s, &uid)) {
+        return g_strdup (get_user_home_from_user_uid ((uid_t)uid));
+    } else {
+        return g_strdup (g_get_home_dir ());
+    }
 }
 
 gboolean
@@ -262,7 +277,9 @@ eel_get_id_from_digit_string (const char *digit_string, uid_t *id)
     if (sscanf (digit_string, "%ld%c", &scanned_id, &c) != 1) {
         return FALSE;
     }
+
     *id = scanned_id;
+
     return TRUE;
 }
 

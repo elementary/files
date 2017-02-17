@@ -486,7 +486,7 @@ namespace Marlin.Places {
 
             /* Add Home BUILTIN */
             try {
-                mount_uri = GLib.Filename.to_uri (GLib.Environment.get_home_dir (), null);
+                mount_uri = GLib.Filename.to_uri (Eel.get_real_user_home (), null);
             }
             catch (ConvertError e) {
                 mount_uri = "";

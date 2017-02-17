@@ -242,6 +242,7 @@ namespace Marlin.View {
             view = null; /* Pre-requisite for add view */
             loading (false);
         }
+
         private void after_mode_change () {
             /* Slot is created inactive so we activate now since we must be the current tab
              * to have received a change mode instruction */

@@ -3405,7 +3405,7 @@ namespace FM {
             Gtk.SortType sort_order = 0;
 
             /* Setting file attributes fails when root */
-            if (Posix.getuid() == 0) {
+            if (Posix.getuid () == 0) {
                 return;
             }
 

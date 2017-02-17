@@ -431,14 +431,16 @@ public class GOF.Directory.Async : Object {
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
+
         return_if_fail (object != null && object is Object);
+
         if (is_last) {
             Async dir = (Async) object;
             debug ("Async toggle_ref_notify %s", dir.file.uri);
 
-            if (!dir.removed_from_cache)
+            if (!dir.removed_from_cache) {
                 dir.remove_dir_from_cache ();
-
+            }
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         }
     }
