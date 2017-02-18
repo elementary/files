@@ -33,6 +33,9 @@ void add_gof_directory_async_tests () {
     Test.add_func ("/GOFDirectoryAsync/load_cached_local", () => {
         run_load_folder_test (load_cached_local_test);
     });
+    Test.add_func ("/GOFDirectoryAsync/reload_populated_local", () => {
+        run_load_folder_test (reload_populated_local_test);
+    });
 }
 
 delegate GOF.Directory.Async LoadFolderTest (string path, MainLoop loop);
@@ -45,10 +48,11 @@ void run_load_folder_test (LoadFolderTest test) {
     dir.init ();
     loop.run ();
 
-    /* Tear down */
-    Posix.system ("rm -rf " + test_dir_path);
+    /* Tear down test folder*/
+    tear_down_folder (test_dir_path);
 }
 
+/*** Test functions ***/
 GOF.Directory.Async load_non_existent_local_test (string test_dir_path, MainLoop loop) {
     GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
     assert (!gfile.query_exists (null));
@@ -85,6 +89,8 @@ GOF.Directory.Async load_populated_local_test (string test_dir_path, MainLoop lo
 
     var dir = setup_temp_async (test_dir_path, n_files);
 
+    assert (dir.ref_count == 1); //First ref replaced by toggle ref;
+
     dir.file_loaded.connect (() => {
         file_loaded_signal_count++;
     });
@@ -94,9 +100,13 @@ GOF.Directory.Async load_populated_local_test (string test_dir_path, MainLoop lo
         assert (dir.can_load);
         assert (dir.state == GOF.Directory.Async.State.LOADED);
         assert (file_loaded_signal_count == n_files);
+
+        Test.assert_expected_messages ();
+
         loop.quit ();
     });
 
+    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*(Re)loading*");
     return dir;
 }
 
@@ -122,12 +132,54 @@ GOF.Directory.Async load_cached_local_test (string test_dir_path, MainLoop loop)
             assert (dir.state == GOF.Directory.Async.State.LOADED);
             assert (file_loaded_signal_count == n_files);
             Test.assert_expected_messages ();
+
             loop.quit ();
         }
     });
     return dir;
 }
 
+GOF.Directory.Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
+    uint n_files = 50;
+    uint n_loads = 5; /* Number of times to reload the directory */
+    uint loads = 0;
+    uint ref_count_before_reload = 0;
+    string tmp_pth = get_text_template_path ();
+
+    var dir = setup_temp_async (test_dir_path, n_files, "txt", tmp_pth);
+
+    dir.done_loading.connect (() => {
+        if (loads == 0) {
+            ref_count_before_reload = dir.ref_count;
+            
+        }
+        if (loads < n_loads) {
+            loads++;
+            dir.cancel ();
+            dir.reload ();
+        } else {
+            assert (dir.files_count == n_files);
+            assert (dir.can_load);
+            assert (dir.state == GOF.Directory.Async.State.LOADED);
+            assert (dir.ref_count == ref_count_before_reload);
+
+            Test.assert_expected_messages ();
+
+            tear_down_file (tmp_pth);
+
+            /* Test for problem with toggle ref after reloading (lp:1665620) */
+            dir.cancel ();
+            dir = null;
+
+            loop.quit ();
+        }
+    });
+
+    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*(Re)loading*");
+    return dir;
+}
+
+/*** Helper functions ***/
 GOF.Directory.Async setup_temp_async (string path, uint n_files, string? extension = null, string? path_to_template = null) {
     assert (extension == null || extension.length > 0 || extension.length < 5);
 
@@ -154,6 +206,20 @@ GOF.Directory.Async setup_temp_async (string path, uint n_files, string? extensi
     GOF.Directory.Async dir = GOF.Directory.Async.from_gfile (gfile);
     assert (dir != null);
     return dir;
+}
+
+string get_text_template_path () {
+    string test_template_path = "/tmp/marlin-template-" + get_real_time ().to_string () + "txt";
+    Posix.system ("env > " + test_template_path);
+    return test_template_path;
+}
+
+void tear_down_folder (string path) {
+    Posix.system ("rm -rf " + path);
+}
+
+void tear_down_file (string path) {
+    Posix.system ("rm -f " + path);
 }
 
 int main (string[] args) {
