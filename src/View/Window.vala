@@ -466,6 +466,11 @@ namespace Marlin.View {
 
         private string check_for_tab_with_same_name (ViewContainer vc) {
             string name = vc.tab_name;
+
+            if (name == Marlin.INVALID_TAB_NAME) {
+                return name;
+            }
+
             string path = Uri.unescape_string (vc.uri);
             string new_name = name;
 
@@ -481,9 +486,8 @@ namespace Marlin.View {
                                 return false;
                             });
                         }
-                        if (new_name == name) {
-                            new_name = disambiguate_name (name, path, content_path); /*Also relabel this tab */
-                        }
+
+                        new_name = disambiguate_name (name, path, content_path); /*Also relabel this tab */
                     }
                 }
             }
@@ -506,6 +510,7 @@ namespace Marlin.View {
                 path_temp= parent_path;
                 conflict_path_temp = parent_conflict_path;
             }
+
             return prefix + name;
         }
 

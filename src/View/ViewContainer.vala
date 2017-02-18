@@ -350,8 +350,8 @@ namespace Marlin.View {
             }
 
             if (tab_name == null) {
-                tab_name = "-----";
-            } else if (Posix.getuid() == 0) {
+                tab_name = Marlin.FALLBACK_TAB_NAME;
+            } else if (Posix.getuid () == 0) {
                     tab_name = tab_name + " " + _("(as Administrator)");
             }
 
