@@ -121,6 +121,9 @@ public class GOF.Directory.Async : Object {
         can_stream_files = !("ftp sftp mtp dav davs".contains (scheme));
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
+
+        this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+        this.unref ();
     }
 
     ~Async () {
@@ -144,9 +147,6 @@ public class GOF.Directory.Async : Object {
 
         cancellable.cancel ();
         cancellable = new Cancellable ();
-
-        this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-        this.unref ();
 
         /* If we already have a loaded file cache just list them */ 
         if (previous_state == State.LOADED) {
