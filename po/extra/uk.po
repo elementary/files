@@ -8,35 +8,35 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-10 16:45+0000\n"
-"PO-Revision-Date: 2016-10-30 08:32+0000\n"
-"Last-Translator: Vladislav <mars-d@ex.ua>\n"
+"PO-Revision-Date: 2017-02-19 15:52+0000\n"
+"Last-Translator: neiron13 <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-11 05:46+0000\n"
+"X-Launchpad-Export-Date: 2017-02-20 05:44+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 
 msgid "Files"
 msgstr "Файли"
 
 msgid "Browse your files"
-msgstr ""
+msgstr "Переглянути свої файли"
 
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr ""
+msgstr "тека;менеджер;огляд;диск;файлова система;"
 
 msgid "File Manager"
-msgstr ""
+msgstr "Файловий менеджер"
 
 msgid "New Window"
-msgstr ""
+msgstr "Нове вікно"
 
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "Нове вікно Як адміністратор"
 
 msgid "About Files"
-msgstr ""
+msgstr "Про файли"
 
 msgid "Browse and manage files and folders"
 msgstr "Перегляд та редагування файли та теки"
@@ -49,22 +49,22 @@ msgid ""
 msgstr ""
 
 msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgstr "Увімкнення перетягування вкладок між вікнами"
 
 msgid "Various crash fixes"
 msgstr ""
 
 msgid "New translations"
-msgstr ""
+msgstr "Нові переклади"
 
 msgid "Minor bug fixes"
-msgstr ""
+msgstr "Незначні виправлення"
 
 msgid "Merge search functionality into Ctrl+F"
 msgstr ""
 
 msgid "Improved translation support"
-msgstr ""
+msgstr "Покращена підтримка перекладу"
 
 msgid "Fix appdata release dates"
 msgstr ""
@@ -79,10 +79,10 @@ msgid "Improve cut/copy/paste sensitivity in context menu"
 msgstr ""
 
 msgid "Translation updates"
-msgstr ""
+msgstr "Оновлення перекладу"
 
 msgid "Run Pantheon Files as Administrator"
-msgstr ""
+msgstr "Запуск Pantheon файлів в якості адміністратора"
 
 msgid "Authentication is required to run Files as Administrator"
 msgstr ""

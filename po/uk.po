@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-10 16:45+0000\n"
-"PO-Revision-Date: 2017-01-26 09:24+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2017-02-19 15:44+0000\n"
+"Last-Translator: neiron13 <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2017-02-11 05:45+0000\n"
+"X-Launchpad-Export-Date: 2017-02-20 05:44+0000\n"
 "X-Generator: Launchpad (build 18326)\n"
 "Language: uk\n"
 
@@ -1499,7 +1499,7 @@ msgstr "Приготування"
 
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
 msgid "Inaccessible"
-msgstr ""
+msgstr "Недоступно"
 
 #: ../libcore/gof-file.c:376
 #, c-format
@@ -1613,7 +1613,7 @@ msgstr "Виділений файл більше не існує."
 
 #: ../src/View/Window.vala:207
 msgid "Files isn't your default file manager."
-msgstr "Ця програма не являється файловим менеджером по-замовчуванню."
+msgstr "Ця програма не є ваш типовим файловим менеджером."
 
 #: ../src/View/Window.vala:213
 msgid "Set as Default"
@@ -1851,8 +1851,9 @@ msgstr " обрано"
 #: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u тека"
+msgstr[1] "%u теки"
+msgstr[2] "%u тек"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -2001,11 +2002,11 @@ msgstr "Не вдалося відкрити файли"
 
 #: ../src/Utils/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Не вдалося відкрити посилання"
 
 #: ../src/Utils/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Не вдалося відкрити файли або посилання цим додатком"
 
 #: ../src/Application.vala:144
 msgid "Show the version of the program."
@@ -2097,7 +2098,11 @@ msgstr "Фактичний розмір може бути більше"
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"%i файл не може бути прочитаний через прав доступу або інші помилки."
 msgstr[1] ""
+"%i файли не можуть бути прочитані через прав доступу або інші помилки."
+msgstr[2] ""
+"%i файли не можуть бути прочитані через прав доступу або інші помилки."
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
 #: ../src/Dialogs/PropertiesWindow.vala:279
@@ -2174,31 +2179,34 @@ msgstr "Всі:"
 #: ../src/Dialogs/PropertiesWindow.vala:1140
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u вкладена тека"
+msgstr[1] "%u вкладені теки"
+msgstr[2] "%u вкладені теки"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1144
 #: ../src/Dialogs/PropertiesWindow.vala:1166
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u файл"
+msgstr[1] "%u файли"
+msgstr[2] "%u файлів"
 
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1149
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1170
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u selected item"
+msgstr[1] "%u selected items"
+msgstr[2] "%u selected items"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/Dialogs/PropertiesWindow.vala:1172
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/Dialogs/ChooseAppDialog.vala:40
 msgid "Set as default"
@@ -2226,7 +2234,7 @@ msgstr "Неможливо перейменувати на '%s'"
 
 #: ../libcore/FileUtils.vala:464
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A at %-I:%M %p"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
