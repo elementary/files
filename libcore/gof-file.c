@@ -430,17 +430,17 @@ gof_file_update (GOFFile *file)
         g_object_ref (file->icon);
     }
 
-    if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
-        const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
-        if (target_uri != NULL) {
-            file->target_location = g_file_new_for_uri (target_uri);
-            gof_file_target_location_update (file);
+    /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
+    const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+    if (target_uri != NULL) {
+        file->target_location = g_file_new_for_uri (target_uri);
+        gof_file_target_location_update (file);
 
-            if (file->file_type == G_FILE_TYPE_MOUNTABLE) {
-                file->mount = gof_file_get_mount_at (file->target_location);
-                file->is_mounted = (file->mount != NULL);
-            }
-        }
+        file->mount = g_file_find_enclosing_mount (file->target_location, NULL, NULL);
+        file->is_mounted = (file->mount != NULL);
+    } else {
+        file->mount = g_file_find_enclosing_mount (file->location, NULL, NULL);
+        file->is_mounted = (file->mount != NULL);
     }
 
     /* TODO the key-files could be loaded async.

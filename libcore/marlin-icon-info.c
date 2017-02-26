@@ -106,8 +106,8 @@ marlin_icon_info_finalize (GObject *object)
     MarlinIconInfo *icon = MARLIN_ICON_INFO (object);
 
     if (icon->pixbuf != NULL) {
-        g_debug ("%s %s %s ref_count %u", G_STRFUNC, icon->display_name,
-                   icon->icon_name, G_OBJECT (icon->pixbuf)->ref_count);
+        //~ g_debug ("%s %s %s ref_count %u", G_STRFUNC, icon->display_name,
+                   //~ icon->icon_name, G_OBJECT (icon->pixbuf)->ref_count);
 
         g_object_remove_toggle_ref (G_OBJECT (icon->pixbuf),
                                     pixbuf_toggle_notify,
