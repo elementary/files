@@ -476,7 +476,7 @@ public class GOF.Directory.Async : Object {
             return;
         }
 
-        debug ("Listing cached files");
+        debug ("Listing cached files");  /* Required for ctest */
 
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
@@ -517,6 +517,8 @@ public class GOF.Directory.Async : Object {
         files_count = 0;
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
+
+        debug ("(Re)loading folder children"); /* Required for ctest */
 
         try {
             /* This may hang for a long time if the connection was closed but is still mounted so we
