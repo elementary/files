@@ -3110,7 +3110,11 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
-            grab_focus (); /* cancels any renaming */
+            if (renaming) {
+                /* Cancel renaming */
+                name_renderer.end_editing (true);
+            }
+
             cancel_hover (); /* cancel overlay statusbar cancellables */
 
             /* Ignore if second button pressed before first released - not permitted during rubberbanding.

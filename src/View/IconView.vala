@@ -38,6 +38,8 @@ namespace FM {
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.ICON);
             set_up_name_renderer ();
 
+            set_up_icon_renderer ();
+
             (tree as Gtk.CellLayout).pack_start (icon_renderer, false);
             (tree as Gtk.CellLayout).pack_end (name_renderer, false);
 
@@ -72,8 +74,6 @@ namespace FM {
         protected override Gtk.Widget? create_view () {
             tree = new Gtk.IconView ();
             set_up_view ();
-            set_up_name_renderer ();
-            set_up_icon_renderer ();
 
             return tree as Gtk.Widget;
         }
