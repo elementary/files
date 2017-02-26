@@ -18,6 +18,20 @@
     <binary>pantheon-files-pkexec</binary>
   </provides>
   <releases>
+    <release version="0.3.2" date="2017-02-25" urgency="medium">
+      <description>
+        <ul>
+          <_li>Web browsers like Firefox now remember the most recently used downloads directory</_li>
+          <_li>Remember preferred zoom level</_li>
+          <_li>Improved input method support</_li>
+          <_li>910x640 minimum window size</_li>
+          <_li>Security fixes</_li>
+          <_li>Various crash fixes</_li>
+          <_li>New translations</_li>
+          <_li>Minor bug fixes</_li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.1.1" date="2017-01-25" urgency="medium">
       <description>
         <ul>
