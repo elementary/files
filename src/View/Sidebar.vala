@@ -424,15 +424,15 @@ namespace Marlin.Places {
             return iter;
         }
 
-        public bool has_place (string uri) {
+        public bool has_bookmark (string uri) {
             bool found = false;
 
             store.@foreach ((model, path, iter) => {
                 string u;
-                model.@get (iter, Column.URI, out u);
-                if (u == null) { /* Category entries etc have null uri, for example */
-                    return false;
-                } else if (u == uri) {
+                bool is_bookmark;
+
+                model.@get (iter, Column.URI, out u, Column.BOOKMARK, out is_bookmark);
+                if (is_bookmark && u == uri) {
                     found = true;
                     return true;
                 } else {
