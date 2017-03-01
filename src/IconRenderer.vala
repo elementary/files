@@ -175,7 +175,7 @@ namespace Marlin {
                 }
 
                 if (special_icon_name != null) {
-                    helper_size = Marlin.IconSize.LARGE_EMBLEM > pixbuf.get_width () / 2 ?
+                    helper_size = Marlin.IconSize.LARGE_EMBLEM > int.max (pixbuf.get_width (), pixbuf.get_height ()) / 2 ?
                                   Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
 
                     var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, helper_size);
