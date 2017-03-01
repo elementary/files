@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-10 16:45+0000\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
 "PO-Revision-Date: 2017-02-11 15:04+0000\n"
 "Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-12 06:12+0000\n"
-"X-Generator: Launchpad (build 18326)\n"
+"X-Launchpad-Export-Date: 2017-03-01 05:56+0000\n"
+"X-Generator: Launchpad (build 18329)\n"
 
 msgid "Files"
 msgstr "Файлы"
@@ -53,8 +53,22 @@ msgstr ""
 "или на удаленном устройстве, используя FTP, SFTP, AFP, Webdav или доступ к "
 "Windows."
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Добавлена возможность переноса вкладок между окнами"
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+
+msgid "Remember preferred zoom level"
+msgstr ""
+
+msgid "Improved input method support"
+msgstr ""
+
+msgid "910x640 minimum window size"
+msgstr ""
+
+msgid "Security fixes"
+msgstr ""
 
 msgid "Various crash fixes"
 msgstr "Различные исправления падений"
@@ -64,6 +78,9 @@ msgstr "Новые переводы"
 
 msgid "Minor bug fixes"
 msgstr "Исправления небольших ошибок"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr "Добавлена возможность переноса вкладок между окнами"
 
 msgid "Merge search functionality into Ctrl+F"
 msgstr "Объединение функций поиска в Ctrl+F"

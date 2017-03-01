@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-10 16:45+0000\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
 "PO-Revision-Date: 2016-12-14 15:45+0000\n"
 "Last-Translator: Timothy <timothy.wong@rocketmail.com>\n"
 "Language-Team: Malay <ms@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-11 05:46+0000\n"
-"X-Generator: Launchpad (build 18326)\n"
+"X-Launchpad-Export-Date: 2017-03-01 05:56+0000\n"
+"X-Generator: Launchpad (build 18329)\n"
 
 msgid "Files"
 msgstr ""
@@ -54,7 +54,21 @@ msgstr ""
 "peranti luaran, ataupun dari jauh menggunakan FTP, SFTP, AFP, Webdav atau "
 "\"Windows share\"."
 
-msgid "Enable drag and drop tabs between windows"
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+
+msgid "Remember preferred zoom level"
+msgstr ""
+
+msgid "Improved input method support"
+msgstr ""
+
+msgid "910x640 minimum window size"
+msgstr ""
+
+msgid "Security fixes"
 msgstr ""
 
 msgid "Various crash fixes"
@@ -64,6 +78,9 @@ msgid "New translations"
 msgstr ""
 
 msgid "Minor bug fixes"
+msgstr ""
+
+msgid "Enable drag and drop tabs between windows"
 msgstr ""
 
 msgid "Merge search functionality into Ctrl+F"
