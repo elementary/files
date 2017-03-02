@@ -1045,8 +1045,10 @@ public class GOF.Directory.Async : Object {
         if (file == null) {
             critical ("Null file received in Async cache_lookup");
         }
+
         dir_cache_lock.@lock ();
         cached_dir = directory_cache.lookup (file);
+        dir_cache_lock.unlock ();
 
         if (cached_dir != null) {
             if (cached_dir is Async && cached_dir.file != null) {
@@ -1058,12 +1060,13 @@ public class GOF.Directory.Async : Object {
             } else {
                 warning ("Invalid directory found in cache");
                 cached_dir = null;
+                dir_cache_lock.@lock ();
                 directory_cache.remove (file);
+                dir_cache_lock.unlock ();
             }
         } else {
             debug ("Dir %s not in cache", file.get_uri ());
         }
-        dir_cache_lock.unlock ();
 
         return cached_dir;
     }
