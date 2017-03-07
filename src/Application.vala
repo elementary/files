@@ -82,8 +82,8 @@ public class Marlin.Application : Granite.Application {
         message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
         /* Only allow running with root privileges using pkexec, not using sudo */
-        if (Posix.getuid () == 0 && GLib.Environ.get_variable (GLib.Environ.get (), "PKEXEC_UID") == null) {
-            warning ("Running Files as root using sudo is not possible.  Please use the command: pantheon-files-pkexec [folder]");
+        if (Posix.getuid () == 0 && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
+            warning ("Running Files as root using sudo is not possible. Please use the command: pantheon-files-pkexec [folder]");
             quit ();
         };
 
