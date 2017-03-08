@@ -225,12 +225,8 @@ namespace FM {
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
 
-        private bool can_trash_or_delete = true;
-
         /* Rapid keyboard paste support */
-        protected bool pasting_files = false;
         protected bool select_added_files = false;
-        private HashTable? pasted_files = null;
 
         public bool renaming {get; protected set; default = false;}
 
@@ -972,7 +968,6 @@ namespace FM {
                 return;
             }
 
-            view.can_trash_or_delete = true;
             view.unblock_directory_monitor ();
         }
 
@@ -990,12 +985,8 @@ namespace FM {
          * when using keybindings. So we remember if the current selection
          * was already removed (but the view doesn't know about it yet).
          */
-            if (!can_trash_or_delete)
-                return;
-
             unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
-                can_trash_or_delete = false;
                 trash_or_delete_files (selection, true, delete_immediately);
             }
         }
@@ -1222,16 +1213,14 @@ namespace FM {
                 return;
             }
 
-            view.pasting_files = false;
-            if (uris == null || uris.size () == 0)
+            if (uris == null || uris.size () == 0) {
                 return;
-
-            view.pasted_files = uris;
+            }
 
             Idle.add (() => {
                 /* Select the most recently pasted files */
                 GLib.List<GLib.File> pasted_files_list = null;
-                view.pasted_files.foreach ((k, v) => {
+                uris.foreach ((k, v) => {
                     if (k is GLib.File)
                         pasted_files_list.prepend (k as File);
                 });
@@ -1242,9 +1231,6 @@ namespace FM {
         }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
-            if (pasting_files)
-                return;
-
             var file = get_files_for_action ().nth_data (0);
 
             if (file != null && clipboard.can_paste) {
@@ -1258,10 +1244,8 @@ namespace FM {
 
                 if (target.has_uri_scheme ("trash")) {
                     /* Pasting files into trash is equivalent to trash or delete action */
-                    pasting_files = false;
                     call_back = (GLib.Callback)after_trash_or_delete;
                 } else {
-                    pasting_files = true;
                     /* callback takes care of selecting pasted files */
                     call_back = (GLib.Callback)after_pasting_files;
                 }
