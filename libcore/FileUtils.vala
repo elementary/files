@@ -399,10 +399,10 @@ namespace PF.FileUtils {
     }
 
     public string get_formatted_date_time (DateTime dt, string format = "locale") {
-        switch (format) {
+        switch (format.down ()) {
             case "locale":
                 return dt.format ("%c");
-            case "ISO" :
+            case "iso" :
                 return dt.format ("%Y-%m-%d %H:%M:%S");
             default:
                 return get_informal_date_time (dt);
