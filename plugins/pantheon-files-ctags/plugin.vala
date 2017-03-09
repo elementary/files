@@ -287,7 +287,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         return_if_fail (file != null);
 
         if (!ignore_dir && file.info != null &&
-            (!file.is_hidden || GOF.Preferences.get_default ().pref_show_hidden_files)) {
+            (!file.is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
  
             if (file.location.has_uri_scheme ("recent")) {
                 rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());

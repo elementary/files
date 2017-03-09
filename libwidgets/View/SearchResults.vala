@@ -241,7 +241,7 @@ namespace Marlin.View.Chrome
                 return;
             }
 
-            var include_hidden = GOF.Preferences.get_default ().pref_show_hidden_files;
+            var include_hidden = GOF.Preferences.get_default ().show_hidden_files;
 
             display_count = 0;
             directory_queue = new Gee.LinkedList<File> ();

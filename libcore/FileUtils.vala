@@ -357,49 +357,43 @@ namespace PF.FileUtils {
         });
     }
 
-    public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr, string format = "locale") {
+    public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr) {
+        DateTime? dt = null;
+
         switch (attr) {
             case FileAttribute.TIME_MODIFIED:
             case FileAttribute.TIME_CREATED:
             case FileAttribute.TIME_ACCESS:
             case FileAttribute.TIME_CHANGED:
                 uint64 t = info.get_attribute_uint64 (attr);
-                if (t == 0) {
-                    return "";
+                if (t > 0) {
+                    dt = new DateTime.from_unix_local ((int64)t);
                 }
 
-                DateTime dt = new DateTime.from_unix_local ((int64)t);
-
-                if (dt == null) {
-                    return "";
-                }
-
-                return get_formatted_date_time (dt, format);
+                break;
 
             case FileAttribute.TRASH_DELETION_DATE:
                 var deletion_date = info.get_attribute_string (attr);
                 var tv = TimeVal ();
-                if (deletion_date == null || !tv.from_iso8601 (deletion_date)) {
-                    return "";
+                if (deletion_date != null && !tv.from_iso8601 (deletion_date)) {
+                    dt = new DateTime.from_timeval_local (tv);
                 }
 
-                DateTime dt = new DateTime.from_timeval_local (tv);
-
-                if (dt == null) {
-                    return "";
-                }
-
-                return get_formatted_date_time (dt, format);
+                break;
 
             default:
                 break;
         }
 
-        return "";
+        return get_formatted_date_time (dt);
     }
 
-    public string get_formatted_date_time (DateTime dt, string format = "locale") {
-        switch (format.down ()) {
+    public string get_formatted_date_time (DateTime? dt) {
+        if (dt == null) {
+            return "";
+        }
+
+        switch (GOF.Preferences.get_default ().date_format.down ()) {
             case "locale":
                 return dt.format ("%c");
             case "iso" :
@@ -430,39 +424,25 @@ namespace PF.FileUtils {
         int now_weekday = now.get_day_of_week ();
         int disp_weekday = dt.get_day_of_week ();
 
+        bool clock_is_24h = GOF.Preferences.get_default ().clock_format.has_prefix ("24");
+
+        string format_string = _("%s at %s"); ///TRANSLATORS: First %s is a day name, second %s is the time
+        string day_string = "%A";
+        string time_string = clock_is_24h ? "%-H:%M" : "%-I:%M %p";
+
         switch (now_weekday - disp_weekday) {
             case 0:
-            /* TRANSLATORS: This string determines the format and order in which the day and time
-             * are shown informally for a time that occurred today.
-             * %-I expands to the numeric hour in 12 hour clock.
-             * %M expands to the numeric minute.
-             * %p expands to "am" or "pm" according to the locale. 
-             * These components must not be altered, but their order may be changed to accord with
-             * the informal custom for the locale.
-             */ 
-                return dt.format (_("Today at %-I:%M %p"));
+                day_string = _("Today");
+                break;
             case 1:
-            /* TRANSLATORS: This string determines the format and order in which the day and time
-             * are shown informally for a time that occurred yesterday.
-             * %-I expands to the numeric hour in 12 hour clock.
-             * %M expands to the numeric minute.
-             * %p expands to "am" or "pm" according to the locale. 
-             * These components must not be altered, but their order may be changed to accord with
-             * the informal custom for the locale.
-             */ 
-                return dt.format (_("Yesterday at %-I:%M %p"));
+                day_string = _("Yesterday");
+                break;
+
             default:
-            /* TRANSLATORS: This string determines the format and order in which the day and time
-             * are shown informally for a time that occurred in the past week.
-             * %-I expands to the numeric hour in 12 hour clock.
-             * %M expands to the numeric minute.
-             * %p expands to "am" or "pm" according to the locale.
-             * %A expands to the abbreviated name of the weekday according to the locale.   
-             * These components must not be altered, but their order may be changed to accord with
-             * the informal custom for the locale.
-             */ 
-                return dt.format (_("%A at %-I:%M %p"));
+                break;
         }
+
+        return dt.format (format_string.printf (day_string, time_string));
     }
 
     private bool can_browse_scheme (string scheme) {
