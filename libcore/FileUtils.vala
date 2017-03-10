@@ -426,23 +426,37 @@ namespace PF.FileUtils {
 
         bool clock_is_24h = GOF.Preferences.get_default ().clock_format.has_prefix ("24");
 
-        string format_string = _("%s at %s"); ///TRANSLATORS: First %s is a day name, second %s is the time
-        string day_string = "%A";
-        string time_string = clock_is_24h ? "%-H:%M" : "%-I:%M %p";
+        string format_string = "";
 
         switch (now_weekday - disp_weekday) {
             case 0:
-                day_string = _("Today");
+                if (clock_is_24h) {
+                    format_string = _("Today at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                } else {
+                    format_string = _("Today at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected (if available))
+                }
+
                 break;
             case 1:
-                day_string = _("Yesterday");
+                if (clock_is_24h) {
+                    format_string = _("Yesterday at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                } else {
+                    format_string = _("Yesterday at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected (if available))
+                }
+
                 break;
 
             default:
+                if (clock_is_24h) {
+                    format_string = _("%A at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                } else {
+                    format_string = _("%A at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected (if available))
+                }
+
                 break;
         }
 
-        return dt.format (format_string.printf (day_string, time_string));
+        return dt.format (format_string);
     }
 
     private bool can_browse_scheme (string scheme) {
