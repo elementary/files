@@ -20,6 +20,8 @@ namespace Marlin {
     public class SingleLineEditableLabel : AbstractEditableLabel {
 
         protected Gtk.Entry textview;
+        private int select_start = 0;
+        private int select_end = 0;
 
         public SingleLineEditableLabel () {}
 
@@ -65,7 +67,11 @@ namespace Marlin {
         /** Gtk.Editable interface */
 
         public override void select_region (int start_pos, int end_pos) {
-            textview.select_region (start_pos, end_pos);
+            /* Cannot select textview region here because it is not realised yet and the selected region
+             * will be overridden when keyboard focus is grabbed after realising. So just remember start and end.
+             */  
+            select_start = start_pos;
+            select_end = end_pos;
         }
 
         public override void do_delete_text (int start_pos, int end_pos) {
@@ -101,6 +107,9 @@ namespace Marlin {
         }
 
         public override void start_editing (Gdk.Event? event) {
+            /* Now realised.  Grab keyboard focus first and then select region */
+            textview.grab_focus ();
+            textview.select_region (select_start, select_end);
         }
     }
 }
