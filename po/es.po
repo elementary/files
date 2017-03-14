@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-01-27 17:41+0000\n"
-"Last-Translator: Félix Brezo <felixbrezo@gmail.com>\n"
+"PO-Revision-Date: 2017-03-12 11:55+0000\n"
+"Last-Translator: Gackt Camui <Unknown>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-03-01 05:54+0000\n"
-"X-Generator: Launchpad (build 18329)\n"
+"X-Launchpad-Export-Date: 2017-03-14 07:02+0000\n"
+"X-Generator: Launchpad (build 18331)\n"
 "Language: es\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1561,11 +1561,11 @@ msgstr "No se puede conectar con el servidor para acceder a esta carpeta."
 
 #: ../src/View/ViewContainer.vala:388
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "No se puede mostrar el contenido de la carpeta."
 
 #: ../src/View/ViewContainer.vala:389
 msgid "The operation timed out."
-msgstr ""
+msgstr "Se ha agotado el tiempo para la operación."
 
 #: ../src/View/ViewContainer.vala:391
 msgid "Unable to Show Folder"
@@ -2190,7 +2190,7 @@ msgstr "Formato:"
 
 #: ../libcore/gof-directory-async.vala:588
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "El servidor no ha respondido dentro del tiempo límite."
 
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
@@ -2294,6 +2294,7 @@ msgstr ""
 "  Franco https://launchpad.net/~franngr\n"
 "  Félix Brezo https://launchpad.net/~febrezo\n"
 "  Gabriel_P https://launchpad.net/~gabp\n"
+"  Gackt Camui https://launchpad.net/~gackt\n"
 "  German https://launchpad.net/~gergarcia8\n"
 "  Giovanni F. Villavicencio Sandi https://launchpad.net/~gvillavicencio\n"
 "  Haggen https://launchpad.net/~h2gn\n"
@@ -2303,6 +2304,7 @@ msgstr ""
 "  Jaime Villegas https://launchpad.net/~janvil0296\n"
 "  Javier https://launchpad.net/~javierfuenca\n"
 "  Jesus Delgado https://launchpad.net/~talpio\n"
+"  Jose Antonio Velasco https://launchpad.net/~velascopja\n"
 "  Jose Roa https://launchpad.net/~jg-roac\n"
 "  Josué Martínez https://launchpad.net/~josue-pingu\n"
 "  José Morales https://launchpad.net/~jomorales87\n"
