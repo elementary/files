@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2016-12-10 08:53+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
+"PO-Revision-Date: 2017-03-14 21:54+0000\n"
+"Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-03-01 05:51+0000\n"
-"X-Generator: Launchpad (build 18329)\n"
+"X-Launchpad-Export-Date: 2017-03-15 06:40+0000\n"
+"X-Generator: Launchpad (build 18331)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1526,11 +1526,11 @@ msgstr "Du kan ikke oprette en mappe her"
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The network is unavailable"
-msgstr ""
+msgstr "Netværket er utilgængeligt"
 
 #: ../src/View/ViewContainer.vala:380
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Der kræves et fungerende netværk for at kunne nå denne mappe"
 
 #: ../src/View/ViewContainer.vala:382
 msgid "This Folder Does Not Belong to You"
@@ -1546,7 +1546,7 @@ msgstr "Kan ikke montere mappe"
 
 #: ../src/View/ViewContainer.vala:386
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Kunne ikke oprette forbindelse til serveren for denne mappe."
 
 #: ../src/View/ViewContainer.vala:388
 msgid "Unable to Display Folder Contents"
@@ -1558,7 +1558,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:391
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Kan ikke vise mappe"
 
 #: ../src/View/ViewContainer.vala:392
 msgid "The server for this folder could not be located."
@@ -1590,7 +1590,7 @@ msgstr "Forhåndsvisning fejlede"
 
 #: ../src/View/AbstractDirectoryView.vala:817
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Kan ikke åbne denne fil"
 
 #: ../src/View/AbstractDirectoryView.vala:830
 msgid "Cannot identify file type to open"
@@ -1636,7 +1636,7 @@ msgstr "Unavngivet %s"
 #: ../src/View/AbstractDirectoryView.vala:2678
 #: ../src/View/AbstractDirectoryView.vala:2861
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Kan ikke fjerne filer herfra"
 
 #: ../src/View/AbstractDirectoryView.vala:2679
 #: ../src/View/AbstractDirectoryView.vala:2849
@@ -1654,7 +1654,7 @@ msgstr "Klipper det markerede i stedet"
 
 #: ../src/View/AbstractDirectoryView.vala:2848
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Kan ikke indsætte filer her"
 
 #: ../src/View/Sidebar.vala:481
 msgid "Personal"
@@ -1706,7 +1706,7 @@ msgstr "Gennemse indholdet af netværket"
 
 #: ../src/View/Sidebar.vala:845
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s ledig ud af %s)"
 
 #: ../src/View/Sidebar.vala:1341
 msgid "Unable to start %s"
@@ -1845,16 +1845,16 @@ msgstr ""
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/Widgets/OverlayBar.vala:306
 msgid "unknown size"
-msgstr ""
+msgstr "ukendt størrelse"
 
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u fil kan ikke læses"
 
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u filer kan ikke læses"
 
 #: ../src/View/Widgets/LocationBar.vala:177
 msgid "Reload this folder"
@@ -1914,7 +1914,7 @@ msgstr ""
 
 #: ../src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Alle filhandlinger er afsluttet"
 
 #: ../src/ProgressUIHandler.vala:240
 msgid "Show Copy Dialog"
@@ -1950,23 +1950,23 @@ msgstr "Filer"
 
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Flere filtyper er valgt"
 
 #: ../src/Utils/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Intet enkelt program kan åbne alle disse typer filer"
 
 #: ../src/Utils/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Kunne ikke åbne filer"
 
 #: ../src/Utils/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Kunne ikke åbne uri'er"
 
 #: ../src/Utils/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Kunne ikke åbne filer eller uri'er med dette program"
 
 #: ../src/Application.vala:144
 msgid "Show the version of the program."
@@ -2024,7 +2024,7 @@ msgstr "Luk"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:139
 msgid "Device Usage"
-msgstr ""
+msgstr "Enhedsforbrug"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Capacity:"
@@ -2052,7 +2052,7 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Den faktiske størrelse kan være større"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
@@ -2067,15 +2067,15 @@ msgstr "ukendt"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr ""
+msgstr "Indlæser…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
-msgstr ""
+msgstr "Kunne ikke bestemmes"
 
 #: ../src/Dialogs/PropertiesWindow.vala:494
 msgid "Contains:"
-msgstr ""
+msgstr "Indeholder:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:516
 msgid "Created:"
@@ -2091,11 +2091,11 @@ msgstr "Slettet"
 
 #: ../src/Dialogs/PropertiesWindow.vala:546
 msgid "Mimetype:"
-msgstr ""
+msgstr "MIME-type:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
-msgstr ""
+msgstr "Opløsning:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:561
 #: ../src/Dialogs/VolumePropertiesWindow.vala:78
@@ -2108,11 +2108,11 @@ msgstr "Mål:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:579
 msgid "Original Location:"
-msgstr ""
+msgstr "Original placering:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr ""
+msgstr "Andet program…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2273,7 +2273,8 @@ msgstr ""
 "  Rune Jensen https://launchpad.net/~runeofdenmark-n\n"
 "  Simon https://launchpad.net/~sims73\n"
 "  Steffen Christensen https://launchpad.net/~drmclaser\n"
-"  js https://launchpad.net/~jonas-stisen-mb"
+"  js https://launchpad.net/~jonas-stisen-mb\n"
+"  scootergrisen https://launchpad.net/~scootergrisen"
 
 #: ../libwidgets/Resources.vala:83
 msgid "AFP"
