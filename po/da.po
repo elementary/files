@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-03-14 21:54+0000\n"
+"PO-Revision-Date: 2017-03-17 16:20+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-03-15 06:40+0000\n"
-"X-Generator: Launchpad (build 18331)\n"
+"X-Launchpad-Export-Date: 2017-03-19 06:29+0000\n"
+"X-Generator: Launchpad (build 18332)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1001,14 +1001,15 @@ msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"Det er ikke tilladt at slette filer i mapper du ikke har skrivetilladelse til"
+"Det er ikke tilladt at slette filer i mapper du ikke har skrivetilladelse "
+"til."
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
-"Det er ikke tilladt at slette mapper du ikke har skrivetilladelse til"
+"Det er ikke tilladt at slette mapper du ikke har skrivetilladelse til."
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -1452,7 +1453,7 @@ msgstr "Forbereder"
 
 #: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
 msgid "Inaccessible"
-msgstr ""
+msgstr "Utilgængelig"
 
 #: ../libcore/gof-file.c:376
 #, c-format
@@ -1522,7 +1523,7 @@ msgstr "Denne mappe eksisterer ikke"
 
 #: ../src/View/ViewContainer.vala:377
 msgid "You cannot create a folder here."
-msgstr "Du kan ikke oprette en mappe her"
+msgstr "Du kan ikke oprette en mappe her."
 
 #: ../src/View/ViewContainer.vala:379
 msgid "The network is unavailable"
@@ -1550,11 +1551,11 @@ msgstr "Kunne ikke oprette forbindelse til serveren for denne mappe."
 
 #: ../src/View/ViewContainer.vala:388
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Kan ikke vise mappeindhold"
 
 #: ../src/View/ViewContainer.vala:389
 msgid "The operation timed out."
-msgstr ""
+msgstr "Handlingen fik timeout."
 
 #: ../src/View/ViewContainer.vala:391
 msgid "Unable to Show Folder"
@@ -1594,7 +1595,7 @@ msgstr "Kan ikke åbne denne fil"
 
 #: ../src/View/AbstractDirectoryView.vala:830
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Kan ikke identificere filen som skal åbnes"
 
 #: ../src/View/AbstractDirectoryView.vala:1555
 msgid "Cannot drop this file"
@@ -1627,7 +1628,7 @@ msgstr "Åbn med"
 
 #: ../src/View/AbstractDirectoryView.vala:2093
 msgid "Other Application"
-msgstr "Anden applikation"
+msgstr "Andet program"
 
 #: ../src/View/AbstractDirectoryView.vala:2354
 msgid "Untitled %s"
@@ -1642,7 +1643,7 @@ msgstr "Kan ikke fjerne filer herfra"
 #: ../src/View/AbstractDirectoryView.vala:2849
 #: ../src/View/AbstractDirectoryView.vala:2862
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Du har ikke rettigheder til at ændre denne placering"
 
 #: ../src/View/AbstractDirectoryView.vala:2827
 msgid "Cannot copy files that are in the trash"
@@ -1718,7 +1719,7 @@ msgstr "Åbn"
 
 #: ../src/View/Sidebar.vala:1453
 msgid "Open in New _Tab"
-msgstr "Åbn i ny _fane"
+msgstr "Åbn i nyt _faneblad"
 
 #: ../src/View/Sidebar.vala:1459
 msgid "Open in New _Window"
@@ -1767,7 +1768,7 @@ msgstr "Ændret"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:413
 msgid "Open in New Tab"
-msgstr "Åbn i ny fane"
+msgstr "Åbn i nyt faneblad"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:420
 msgid "Open in New Window"
@@ -1775,7 +1776,7 @@ msgstr "Åbn i nyt vindue"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in Other Application…"
-msgstr "Åbn med en anden applikation..."
+msgstr "Åbn i andet program..."
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1812,8 +1813,8 @@ msgstr " valgt"
 #: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u mappe"
+msgstr[1] "%u mapper"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1840,7 +1841,7 @@ msgstr "%u filer, "
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/Widgets/OverlayBar.vala:303
 msgid "%s approx."
-msgstr ""
+msgstr "%s anslået"
 
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/Widgets/OverlayBar.vala:306
@@ -1883,7 +1884,7 @@ msgstr "Adgang nægtet"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr "Mappen \"%s\" kan ikke findes"
+msgstr "Mappen \"%s\" kan ikke findes."
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -1910,7 +1911,7 @@ msgstr "Filhandlinger"
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
 #: ../src/ProgressUIHandler.vala:192
 msgid "Completed %s"
-msgstr ""
+msgstr "Fuldførte %s"
 
 #: ../src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
@@ -1974,7 +1975,7 @@ msgstr "Vis programmets version."
 
 #: ../src/Application.vala:146
 msgid "Open uri(s) in new tab"
-msgstr "Åbn adresse(r) (URI) i ny(e) fane(r)"
+msgstr "Åbn URI(er) i nyt faneblad"
 
 #: ../src/Application.vala:148 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -2048,7 +2049,7 @@ msgstr "I brug:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
-msgstr ""
+msgstr "Rettigheder"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "Actual Size Could Be Larger"
@@ -2058,7 +2059,9 @@ msgstr "Den faktiske størrelse kan være større"
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"$i-filen kunne ikke læses grundet manglende rettigheder, eller andre fejl."
 msgstr[1] ""
+"$i-filerne kunne ikke læses grundet manglende rettigheder, eller andre fejl."
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
 #: ../src/Dialogs/PropertiesWindow.vala:279
@@ -2135,31 +2138,31 @@ msgstr "Alle:"
 #: ../src/Dialogs/PropertiesWindow.vala:1140
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u undermappe"
+msgstr[1] "%u undermapper"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1144
 #: ../src/Dialogs/PropertiesWindow.vala:1166
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u fil"
+msgstr[1] "%u filer"
 
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1149
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1170
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u valgt post"
+msgstr[1] "%u valgte poster"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/Dialogs/PropertiesWindow.vala:1172
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/Dialogs/ChooseAppDialog.vala:40
 msgid "Set as default"
@@ -2175,7 +2178,7 @@ msgstr "Format:"
 
 #: ../libcore/gof-directory-async.vala:588
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Serveren svarede ikke indenfor tidsgrænsen"
 
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
@@ -2191,7 +2194,7 @@ msgstr "Kunne ikke omdøbe til \"%s\""
 
 #: ../libcore/FileUtils.vala:464
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A den %-I:%M"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2370,11 +2373,11 @@ msgstr "Vis skjulte filer"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Vis fjern-miniaturer"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr "Ny fane"
+msgstr "Nyt faneblad"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"

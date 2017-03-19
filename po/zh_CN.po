@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-03-13 08:21+0000\n"
+"PO-Revision-Date: 2017-03-17 00:48+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2017-03-14 07:02+0000\n"
-"X-Generator: Launchpad (build 18331)\n"
+"X-Launchpad-Export-Date: 2017-03-19 06:29+0000\n"
+"X-Generator: Launchpad (build 18332)\n"
 "Language: \n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -2059,7 +2059,7 @@ msgstr[0] "%u 个文件"
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1149
 msgid "%s, %s"
-msgstr ""
+msgstr "%s %s"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1170
 msgid "%u selected item"
@@ -2069,7 +2069,7 @@ msgstr[0] "%u 选中项"
 #. /TRANSLATORS: total (folders, files)
 #: ../src/Dialogs/PropertiesWindow.vala:1172
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s %s)"
 
 #: ../src/Dialogs/ChooseAppDialog.vala:40
 msgid "Set as default"
