@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-03-17 16:20+0000\n"
+"PO-Revision-Date: 2017-03-20 14:37+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-03-19 06:29+0000\n"
-"X-Generator: Launchpad (build 18332)\n"
+"X-Launchpad-Export-Date: 2017-03-22 06:52+0000\n"
+"X-Generator: Launchpad (build 18334)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -213,22 +213,21 @@ msgstr "Slet henvisning til \"%s\""
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr ""
-"Gendan de  oprindelige tilladelser for elementerne indeholdt i \"%s\""
 
 #: ../libcore/marlin-undostack-manager.c:1330
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr "Gendan de  oprindelige tilladelser for \"%s\""
+msgstr "Gendan de oprindelige tilladelser for \"%s\""
 
 #: ../libcore/marlin-undostack-manager.c:1339
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "Genopret gruppen for \"%s\" til \"%s\""
+msgstr "Gendan gruppen for \"%s\" til \"%s\""
 
 #: ../libcore/marlin-undostack-manager.c:1349
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr "Genopret ejer af \"%s\" til \"%s\""
+msgstr "Gendan ejer af \"%s\" til \"%s\""
 
 #: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
@@ -1042,7 +1041,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Sletning af en fil fjerner den permanent."
+" Sletning af en fil fjerner den permanent"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
@@ -1776,7 +1775,7 @@ msgstr "Åbn i nyt vindue"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open in Other Application…"
-msgstr "Åbn i andet program..."
+msgstr "Åbn i andet program…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -2090,7 +2089,7 @@ msgstr "Ændret:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:536
 msgid "Deleted:"
-msgstr "Slettet"
+msgstr "Slettet:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:546
 msgid "Mimetype:"
@@ -2170,7 +2169,7 @@ msgstr "Indstil som standard"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr "Lager-egenskaber:"
+msgstr "Diskegenskaber"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:85
 msgid "Format:"
@@ -2313,7 +2312,7 @@ msgstr "MTP"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Forbind til server..."
+msgstr "Forbind til server…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
