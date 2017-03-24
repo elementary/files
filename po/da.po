@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-03-20 14:37+0000\n"
+"PO-Revision-Date: 2017-03-22 17:35+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-03-22 06:52+0000\n"
+"X-Launchpad-Export-Date: 2017-03-24 06:08+0000\n"
 "X-Generator: Launchpad (build 18334)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -212,7 +212,7 @@ msgstr "Slet henvisning til \"%s\""
 #: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "Genopret oprindelige rettigheder af elementerne indeholdt i \"%s\""
 
 #: ../libcore/marlin-undostack-manager.c:1330
 #, c-format
