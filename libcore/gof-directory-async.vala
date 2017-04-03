@@ -210,10 +210,8 @@ public class GOF.Directory.Async : Object {
             return false;
         }
 
-        if (is_local) {
-            debug ("Loading info for local directory");
-            return file.ensure_query_info ();
-        }
+        /* is_network flag fails to detect remote folders mapped to a local uri through fstab, so treat
+         * all folders as potentially remote (and disconnected) */
 
         if (!yield try_query_info ()) { /* may already be mounted */
             debug ("try query info failed - trying to mount");
