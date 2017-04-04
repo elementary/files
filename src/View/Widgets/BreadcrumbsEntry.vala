@@ -33,6 +33,8 @@ namespace Marlin.View.Chrome {
          * user enter /home/user/a, we will search for "a". */
         string to_search = "";
 
+        public bool search_mode = false; // Used to suppress activate events while searching
+
         /** Drag and drop support **/
         public enum TargetType {
             TEXT_URI_LIST,
@@ -73,6 +75,13 @@ namespace Marlin.View.Chrome {
     /************************************************/
         public override bool on_key_press_event (Gdk.EventKey event) {
             switch (event.keyval) {
+                case Gdk.Key.Return:
+                case Gdk.Key.KP_Enter:
+                case Gdk.Key.ISO_Enter:
+                    if (search_mode) {
+                        return true;
+                    }
+                    break;
                 case Gdk.Key.KP_Tab:
                 case Gdk.Key.Tab:
                     complete ();
