@@ -25,7 +25,16 @@ namespace Marlin.View.Chrome
         private BreadcrumbsEntry bread;
         private SearchResults search_results;
         private GLib.File? search_location = null;
-        public bool search_mode {get; private set;}
+
+        public bool search_mode {
+            get {
+                return bread.search_mode;
+            }
+
+            private set {
+                bread.search_mode = value; //Ensure no path change requests from entry while searching
+            }
+        }
 
         public new bool sensitive {
             set {
