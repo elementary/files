@@ -18,6 +18,19 @@
     <binary>pantheon-files-pkexec</binary>
   </provides>
   <releases>
+    <release version="0.3.3" date="2017-04-10" urgency="medium">
+      <description>
+        <ul>
+          <_li>Improved networking support</_li>
+          <_li>Correct window geometry when snapping to left or right</_li>
+          <_li>Pressing Ctrl no longer cancels renaming while the "Reveal Pointer" setting is active</_li>
+          <_li>Switching input language cancels actions</_li>
+          <_li>Various crash fixes</_li>
+          <_li>New translations</_li>
+          <_li>Minor bug fixes</_li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.2" date="2017-02-25" urgency="medium">
       <description>
         <ul>
