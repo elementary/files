@@ -468,7 +468,7 @@ namespace Marlin.View {
         }
 
         public bool can_bookmark_uri (string uri) {
-            return !sidebar.has_place (uri);
+            return !sidebar.has_bookmark (uri);
         }
 
         public void remove_tab (ViewContainer view_container) {
@@ -513,6 +513,7 @@ namespace Marlin.View {
         }
 
         private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+            /* Note: Duplicate bookmarks will not be created by BookmarkList */
             sidebar.add_uri (current_tab.location.get_uri ());
         }
 
