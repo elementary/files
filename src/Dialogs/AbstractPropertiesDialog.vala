@@ -82,8 +82,6 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
                     break;
             }
         });
-
-        present ();
     }
 
     protected void create_header_title () {

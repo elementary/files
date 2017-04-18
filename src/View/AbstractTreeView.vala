@@ -321,5 +321,29 @@ namespace FM {
         protected override void thaw_child_notify () {
             tree.thaw_child_notify ();
         }
+
+        protected override bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {
+            /* orig_x and orig_y must be top left hand corner of icon (excluding helper) */
+            int x_offset = x - orig_x;
+            int y_offset = y - orig_y;
+
+            bool on_icon =  (x_offset >= 0 &&
+                             x_offset <= icon_size &&
+                             y_offset >= 0 &&
+                             y_offset <= icon_size);
+
+            on_helper = false;
+            if (icon_renderer.selection_helpers) {
+                int x_helper_offset = x - icon_renderer.helper_x;
+                int y_helper_offset = y - icon_renderer.helper_y;
+
+                on_helper =  (x_helper_offset >= 0 &&
+                             x_helper_offset <= icon_renderer.helper_size &&
+                             y_helper_offset >= 0 &&
+                             y_helper_offset <= icon_renderer.helper_size);
+            }
+
+            return on_icon;
+        }
     }
 }

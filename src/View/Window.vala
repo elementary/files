@@ -137,7 +137,7 @@ namespace Marlin.View {
 
             add(lside_pane);
 
-            set_size_request (910, 640);
+            set_size_request (500, 300);
             title = _(Marlin.APP_TITLE);
             icon_name = "system-file-manager";
 
@@ -468,7 +468,7 @@ namespace Marlin.View {
         }
 
         public bool can_bookmark_uri (string uri) {
-            return !sidebar.has_place (uri);
+            return !sidebar.has_bookmark (uri);
         }
 
         public void remove_tab (ViewContainer view_container) {
@@ -513,6 +513,7 @@ namespace Marlin.View {
         }
 
         private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+            /* Note: Duplicate bookmarks will not be created by BookmarkList */
             sidebar.add_uri (current_tab.location.get_uri ());
         }
 
@@ -883,10 +884,11 @@ namespace Marlin.View {
 
         public uint restore_tabs () {
             /* Do not restore tabs more than once */
-            if (tabs_restored || !is_first_window)
+            if (tabs_restored || !is_first_window) {
                 return 0;
-            else
+            } else {
                 tabs_restored = true;
+            }
 
             GLib.Variant tab_info_array = Preferences.settings.get_value ("tab-info-list");
             GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
@@ -920,8 +922,9 @@ namespace Marlin.View {
 
                 add_tab (root_location, mode);
 
-                if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri)
+                if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
                     expand_miller_view (tip_uri, root_location);
+                }
 
                 tabs_added++;
                 mode = Marlin.ViewMode.INVALID;
@@ -952,8 +955,9 @@ namespace Marlin.View {
             if (current_tab != null) {
                 path = current_tab.get_tip_uri ();
 
-                if (path == null || path == "")
+                if (path == null || path == "") {
                     path = current_tab.get_root_uri ();
+                }
             }
 
             /* Render the final path in the location bar without animation */

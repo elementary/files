@@ -1,4 +1,4 @@
-# Czech translation for pantheon-files
+# Danish translation for pantheon-files
 # Copyright (c) 2017 Rosetta Contributors and Canonical Ltd 2017
 # This file is distributed under the same license as the pantheon-files package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
@@ -8,38 +8,38 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-04-11 13:14+0000\n"
-"Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"PO-Revision-Date: 2017-03-17 16:12+0000\n"
+"Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
+"Language-Team: Danish <da@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-14 05:42+0000\n"
-"X-Generator: Launchpad (build 18352)\n"
+"X-Launchpad-Export-Date: 2017-03-19 06:29+0000\n"
+"X-Generator: Launchpad (build 18332)\n"
 
 msgid "Files"
-msgstr "Soubory"
+msgstr "Filer"
 
 msgid "Browse your files"
-msgstr "Procházet své soubory"
+msgstr "Gennemse dine filer"
 
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr "složka;správce;procházet;disk;souborový systém;"
+msgstr "mappe;håndtering;udforsk;gennemse;disk;filsystem;"
 
 msgid "File Manager"
-msgstr "Správce souborů"
+msgstr "Filhåndtering"
 
 msgid "New Window"
-msgstr "Nové okno"
+msgstr "Nyt vindue"
 
 msgid "New Window As Administrator"
-msgstr "Nové administrátorské okno"
+msgstr "Nyt vindue som administrator"
 
 msgid "About Files"
-msgstr "O aplikaci Soubory"
+msgstr "Om Filer"
 
 msgid "Browse and manage files and folders"
-msgstr "Procházet a spravovat soubory a složky"
+msgstr "Gennemse og håndter filer og mapper"
 
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
@@ -47,61 +47,65 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
+"Nem kopiering, flytning og omdøbning af dine filer, eller brug mapper til at "
+"organisere. Hvad enten du kan lide filer i lister, gitre eller kolonner, kan "
+"du altid finde dem med det samme. Tilgå alle dine filer, hvad enten det er "
+"lokale eller på en ekstern enhed eller fjernt ve brug af FTP, SFTP, AFP, "
+"Webdav eller Windows-share."
 
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr ""
+"Webbrowsere såsom Firefox husker nu den seneste brugte downloadsmappe"
 
 msgid "Remember preferred zoom level"
-msgstr ""
+msgstr "Huske foretrukne zoomniveau"
 
 msgid "Improved input method support"
-msgstr ""
+msgstr "Forbedret inputmetode-understøttelse"
 
 msgid "910x640 minimum window size"
-msgstr ""
+msgstr "910x640 minimum vinduesstørrelse"
 
 msgid "Security fixes"
-msgstr ""
+msgstr "Sikkerhedsrettelser"
 
 msgid "Various crash fixes"
-msgstr ""
+msgstr "Diverse rettelser af nebrud"
 
 msgid "New translations"
-msgstr ""
+msgstr "Nye oversættelser"
 
 msgid "Minor bug fixes"
-msgstr ""
+msgstr "Mindre fejlrettelser"
 
 msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgstr "Aktivér træk-og-slip af faneblade mellem vinduer"
 
 msgid "Merge search functionality into Ctrl+F"
-msgstr ""
+msgstr "Før søgefaciliteter sammen i Ctrl+F"
 
 msgid "Improved translation support"
-msgstr ""
+msgstr "Forbedret understøttelse af oversættelser"
 
 msgid "Fix appdata release dates"
-msgstr ""
+msgstr "Ret programdata-udgivelsesdatoer"
 
 msgid "Improve file opening over Samba shares"
-msgstr ""
+msgstr "Forbedr filåbning over Samba-shares"
 
 msgid "Fix a crash when restoring items from the Trash"
-msgstr ""
+msgstr "Ret et nedbrud ved gendannelse af elementer fra papirkurven"
 
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
+msgstr "Forbedr klip-/kopiér-/indsæt-følsomhed i genvejsmenu"
 
 msgid "Translation updates"
-msgstr "Aktualizace překladů"
+msgstr "Opdatering af oversættelse"
 
 msgid "Run Pantheon Files as Administrator"
-msgstr "Spustit Pantheon Files jako administrátor"
+msgstr "Kør Pantheon Filer som administrator"
 
 msgid "Authentication is required to run Files as Administrator"
-msgstr ""
-"Pro spuštění aplikace Soubory s administrátorskými právy je vyžadováno "
-"ověření"
+msgstr "Godkendelse er påkrævet for at køre Filer som administrator"

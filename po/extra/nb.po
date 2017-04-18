@@ -1,45 +1,45 @@
-# Sinhalese translation for pantheon-files
-# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# Norwegian Bokmal translation for pantheon-files
+# Copyright (c) 2017 Rosetta Contributors and Canonical Ltd 2017
 # This file is distributed under the same license as the pantheon-files package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-04-15 02:41+0000\n"
-"Last-Translator: Srimal Priyanga <s.priyanga22@gmail.com>\n"
-"Language-Team: Sinhalese <si@li.org>\n"
+"PO-Revision-Date: 2017-04-03 02:27+0000\n"
+"Last-Translator: Allan Nordhøy <comradekingu@gmail.com>\n"
+"Language-Team: Norwegian Bokmal <nb@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-04-17 06:22+0000\n"
-"X-Generator: Launchpad (build 18354)\n"
+"X-Launchpad-Export-Date: 2017-04-05 07:08+0000\n"
+"X-Generator: Launchpad (build 18335)\n"
 
 msgid "Files"
-msgstr "ගොනු"
+msgstr ""
 
 msgid "Browse your files"
-msgstr "ඔබේ ගොනු විමසන්න"
+msgstr ""
 
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 
 msgid "File Manager"
-msgstr "ගොනු කළමනාකරු"
+msgstr "Filbehandler"
 
 msgid "New Window"
-msgstr "නව කවුළුව"
+msgstr "Nytt vindu"
 
 msgid "New Window As Administrator"
-msgstr "පරිපාලක ලෙස නව කවුළුව"
+msgstr "Nytt vindu som administrator"
 
 msgid "About Files"
-msgstr "ගොනු සම්බන්දව"
+msgstr ""
 
 msgid "Browse and manage files and folders"
-msgstr "ලිපි ගොනු සොයා බලා, කළමනාකරණය කරන්න"
+msgstr ""
 
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
@@ -51,37 +51,37 @@ msgstr ""
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
-msgstr ""
+msgstr "Nettlesere som Firefox husker nå ditt sist brukte nedlastingssted"
 
 msgid "Remember preferred zoom level"
-msgstr ""
+msgstr "Husk foretrukket forstørrelsesnivå"
 
 msgid "Improved input method support"
-msgstr ""
+msgstr "Forbedre støtte for inndatametoder"
 
 msgid "910x640 minimum window size"
-msgstr ""
+msgstr "910x640 minimums vindusstørrelse"
 
 msgid "Security fixes"
-msgstr ""
+msgstr "Sikkerhetsfikser"
 
 msgid "Various crash fixes"
-msgstr ""
+msgstr "Kræsjrettinger"
 
 msgid "New translations"
-msgstr "නව පරිවර්තනය"
+msgstr "Nye oversettelser"
 
 msgid "Minor bug fixes"
-msgstr ""
+msgstr "Retting av småfeil"
 
 msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgstr "Dra og slipp faner mellom vinduer"
 
 msgid "Merge search functionality into Ctrl+F"
-msgstr ""
+msgstr "Flett søkefunksjonalitet inn i Ctrl+F"
 
 msgid "Improved translation support"
-msgstr ""
+msgstr "Forbedret oversettingsstøtte"
 
 msgid "Fix appdata release dates"
 msgstr ""

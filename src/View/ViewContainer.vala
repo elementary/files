@@ -213,10 +213,11 @@ namespace Marlin.View {
             view_mode = mode;
             overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
 
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this, mode);
-            else
+            } else {
                 this.view = new Slot (loc, this, mode);
+            }
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
