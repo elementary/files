@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-01-10 13:10+0000\n"
-"Last-Translator: Damian Woźniak <fiszet@gmail.com>\n"
+"PO-Revision-Date: 2017-04-18 09:53+0000\n"
+"Last-Translator: Piotr Strębski <strebski@gmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2017-03-01 05:53+0000\n"
-"X-Generator: Launchpad (build 18329)\n"
+"X-Launchpad-Export-Date: 2017-04-19 06:26+0000\n"
+"X-Generator: Launchpad (build 18354)\n"
 "Language: pl\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -26,7 +26,7 @@ msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "Publiczne FTP"
+msgstr "Publiczny FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
@@ -57,7 +57,7 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Nie można wczytać listy obsługiwanych metod serwerów.\n"
+"Nie można wczytać listy obsługiwanych połączeń do serwerów.\n"
 "Proszę sprawdzić instalację programu gvfs."
 
 #: ../src/marlin-connect-server-dialog.c:282
@@ -167,7 +167,7 @@ msgstr "Usuń %d duplikatów"
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Przenieś %d elementów do „%s”"
+msgstr "Przenieś %d elementów z powrotem do „%s”"
 
 #: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
@@ -204,7 +204,7 @@ msgstr "Przenosi „%s” z powrotem do kosza"
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
 msgid "Delete links to %d items"
-msgstr "Usuń połącznia do %d elementów"
+msgstr "Usuń dowiązania do %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
@@ -1603,11 +1603,11 @@ msgstr "Nie udało się połączyć z serwerem do tego katalogu."
 
 #: ../src/View/ViewContainer.vala:388
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Nie można wyświetlić zawartości katalogu"
 
 #: ../src/View/ViewContainer.vala:389
 msgid "The operation timed out."
-msgstr ""
+msgstr "Przekroczono limit czasu operacji."
 
 #: ../src/View/ViewContainer.vala:391
 msgid "Unable to Show Folder"
@@ -2238,7 +2238,7 @@ msgstr "Format:"
 
 #: ../libcore/gof-directory-async.vala:588
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Serwer nie odpowiedział w określonym przedziale czasu"
 
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
@@ -2336,12 +2336,13 @@ msgstr ""
 "  Marcin Wierzbicki https://launchpad.net/~marcin-wierzb\n"
 "  Marek Jędrzejewski https://launchpad.net/~slomianowlosy\n"
 "  Marek Pikuła https://launchpad.net/~mar4k\n"
+"  Mariusz https://launchpad.net/~marbed31\n"
 "  Olek https://launchpad.net/~olek-janiszewski\n"
 "  Pawel Kalinowski https://launchpad.net/~qleers\n"
 "  Piotr Filipek https://launchpad.net/~piotrek290\n"
 "  Piotr Sokół https://launchpad.net/~psokol\n"
 "  Piotr Strębski https://launchpad.net/~strebski\n"
-"  Przemysław Figura https://launchpad.net/~pf1gura-deactivatedaccount\n"
+"  Przemysław Figura https://launchpad.net/~pf1gura\n"
 "  Szymon https://launchpad.net/~nysdenn\n"
 "  Szymon Mazurczak https://launchpad.net/~sz-mazurczak\n"
 "  Szymon Mróz https://launchpad.net/~predek00\n"
