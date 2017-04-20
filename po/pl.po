@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-04-18 09:53+0000\n"
+"PO-Revision-Date: 2017-04-19 10:33+0000\n"
 "Last-Translator: Piotr Strębski <strebski@gmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2017-04-19 06:26+0000\n"
+"X-Launchpad-Export-Date: 2017-04-20 06:29+0000\n"
 "X-Generator: Launchpad (build 18354)\n"
 "Language: pl\n"
 
@@ -365,7 +365,7 @@ msgstr "_Cofnij utworzenie pliku z szablonu"
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Cofnij utworzenie %d katalogu"
+msgstr[0] "_Cofnij utworzenie katalogu"
 msgstr[1] "_Cofnij utworzenie %d katalogów"
 msgstr[2] "_Cofnij utworzenie %d katalogów"
 
@@ -373,7 +373,7 @@ msgstr[2] "_Cofnij utworzenie %d katalogów"
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Cofnij przeniesienie do kosza %d elementu"
+msgstr[0] "_Cofnij przeniesienie do kosza elementu"
 msgstr[1] "_Cofnij przeniesienie do kosza %d elementów"
 msgstr[2] "_Cofnij przeniesienie do kosza %d elementów"
 
@@ -381,7 +381,7 @@ msgstr[2] "_Cofnij przeniesienie do kosza %d elementów"
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Cofnij przywrócenie z kosza %d elementu"
+msgstr[0] "_Cofnij przywrócenie elementu z kosza"
 msgstr[1] "_Cofnij przywrócenie z kosza %d elementów"
 msgstr[2] "_Cofnij przywrócenie z kosza %d elementów"
 
@@ -405,9 +405,11 @@ msgstr[2] "_Cofnij usunięcie %d elementów"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Cofnij zmianę uprawnień dla %d elementu"
-msgstr[1] "Cofnij zmianę uprawnień dla %d elementów"
-msgstr[2] "Cofnij zmianę uprawnień dla %d elementów"
+msgstr[0] "Cofnij zmianę uprawnień dla elementu i elementów w nim zawartych"
+msgstr[1] ""
+"Cofnij zmianę uprawnień dla %d elementów i elementów w nich zawartych"
+msgstr[2] ""
+"Cofnij zmianę uprawnień dla %d elementów i elementów w nich zawartych"
 
 #: ../libcore/marlin-undostack-manager.c:1613
 #, c-format
@@ -437,47 +439,47 @@ msgstr[2] "Confij zmianę właściciela %d elementów"
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Powtórz kopiowanie %d elementu"
-msgstr[1] "_Powtórz kopiowanie %d elementów"
-msgstr[2] "_Powtórz kopiowanie %d elementów"
+msgstr[0] "_Ponów kopiowanie elementu"
+msgstr[1] "_Ponów kopiowanie %d elementów"
+msgstr[2] "_Ponów kopiowanie %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1656
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Powtórz powielenie %d elementu"
-msgstr[1] "_Powtórz powielenie %d elementów"
-msgstr[2] "_Powtórz powielenie %d elementów"
+msgstr[0] "_Ponów powielenie elementu"
+msgstr[1] "_Ponów powielenie %d elementów"
+msgstr[2] "_Ponów powielenie %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1661
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "_Powtórz przeniesienie %d elementu"
-msgstr[1] "_Powtórz przeniesienie %d elementów"
-msgstr[2] "_Powtórz przeniesienie %d elementów"
+msgstr[0] "_Ponów przeniesienie elementu"
+msgstr[1] "_Ponów przeniesienie %d elementów"
+msgstr[2] "_Ponów przeniesienie %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1666
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Powtórz zmianę nazwy %d elementu"
-msgstr[1] "_Powtórz zmianę nazwy %d elementów"
-msgstr[2] "_Powtórz zmianę nazwy %d elementów"
+msgstr[0] "_Ponów zmianę nazwy elementu"
+msgstr[1] "_Ponów zmianę nazwy %d elementów"
+msgstr[2] "_Ponów zmianę nazwy %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
-msgstr "_Powtórz utworzenie pustego pliku"
+msgstr "_Ponów utworzenie pustego pliku"
 
 #: ../libcore/marlin-undostack-manager.c:1673
 msgid "_Redo creation of a file from template"
-msgstr "_Powtórz utworzenie pliku z szablanu"
+msgstr "_Ponów utworzenie pliku z szablonu"
 
 #: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Powtórz utworzenie %d katalogu"
+msgstr[0] "_Powtórz utworzenie katalogu"
 msgstr[1] "_Powtórz utworzenie %d katalogów"
 msgstr[2] "_Powtórz utworzenie %d katalogów"
 
@@ -485,7 +487,7 @@ msgstr[2] "_Powtórz utworzenie %d katalogów"
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Powtórz przeniesienie do kosza %d elementu"
+msgstr[0] "_Powtórz przeniesienie do kosza elementu"
 msgstr[1] "_Powtórz przeniesienie do kosza %d elementu"
 msgstr[2] "_Powtórz przeniesienie do kosza %d elementu"
 
@@ -493,7 +495,7 @@ msgstr[2] "_Powtórz przeniesienie do kosza %d elementu"
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Powtórz przywrócenie z kosza %d elementu"
+msgstr[0] "_Powtórz przywrócenie z kosza elementu"
 msgstr[1] "_Powtórz przywrócenie z kosza %d elementów"
 msgstr[2] "_Powtórz przywrócenie z kosza %d elementów"
 
@@ -501,7 +503,7 @@ msgstr[2] "_Powtórz przywrócenie z kosza %d elementów"
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Powtórz utworzenie dowiązania do %d elementu"
+msgstr[0] ""
 msgstr[1] "_Powtórz utworzenie dowiązania do %d elementów"
 msgstr[2] "_Powtórz utworzenie dowiązania do %d elementów"
 
@@ -509,41 +511,41 @@ msgstr[2] "_Powtórz utworzenie dowiązania do %d elementów"
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Powtórz usunięcie %d elementu"
-msgstr[1] "_Powtórz usunięcie %d elementów"
-msgstr[2] "_Powtórz usunięcie %d elementów"
+msgstr[0] "_Ponów usunięcie elementu"
+msgstr[1] "_Ponów usunięcie %d elementów"
+msgstr[2] "_Ponów usunięcie %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1702
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Powtórz rekurencyjną zmianę uprawnień %d elementu"
-msgstr[1] "Powtórz rekurencyjną zmianę uprawnień %d elementów"
-msgstr[2] "Powtórz rekurencyjną zmianę uprawnień %d elementów"
+msgstr[0] "Ponów zmianę uprawnień elementu i elementów w nim zawartych"
+msgstr[1] "Ponów zmianę uprawnień %d elementów i elementów w nich zawartych"
+msgstr[2] "Ponów zmianę uprawnień %d elementów i elementów w nich zawartych"
 
 #: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Powtórz zmianę uprawnień %d elementu"
-msgstr[1] "Powtórz zmianę uprawnień %d elementów"
-msgstr[2] "Powtórz zmianę uprawnień %d elementów"
+msgstr[0] "Powtórz zmianę uprawnień do elementu"
+msgstr[1] "_Ponów zmianę uprawnień %d elementów"
+msgstr[2] "_Ponów zmianę uprawnień %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] "Powtórz zmianę grupy %d elementu"
-msgstr[1] "Powtórz zmianę grupy %d elementów"
-msgstr[2] "Powtórz zmianę grupy %d elementów"
+msgstr[0] "Ponów zmianę grupy elementu"
+msgstr[1] "Ponów zmianę grupy %d elementów"
+msgstr[2] "Ponów zmianę grupy %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1718
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] "Powtórz zmianę właściciela %d elementu"
-msgstr[1] "Powtórz zmianę właściciela %d elementów"
-msgstr[2] "Powtórz zmianę właściciela %d elementów"
+msgstr[0] "Ponów zmianę właściciela elementu"
+msgstr[1] "Ponów zmianę właściciela %d elementów"
+msgstr[2] "Ponów zmianę właściciela %d elementów"
 
 #: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
 msgid "Today at %-I:%M %p"
@@ -559,7 +561,7 @@ msgstr "%a %-d %b o %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y o %-I:%M %p"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -621,7 +623,7 @@ msgstr "Zastąpić plik „%s”?"
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
 msgid "Replacing it will overwrite its content."
-msgstr "Zastąpienie go, zmieni jego zawartość."
+msgstr "Zastąpienie go spowoduje nadpisanie jego zawartości."
 
 #: ../libcore/marlin-file-conflict-dialog.c:182
 #: ../libcore/marlin-file-conflict-dialog.c:408
@@ -667,7 +669,7 @@ msgstr "Typ:"
 #: ../libcore/marlin-file-conflict-dialog.c:478
 #: ../libcore/marlin-file-conflict-dialog.c:499
 msgid "Last modified:"
-msgstr "Ostatnio zmodyfikowany:"
+msgstr "Ostatnia modyfikacja:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:492
@@ -681,7 +683,7 @@ msgstr "Połącz"
 
 #: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
-msgstr "Wybranie nowej _nazwy dla pliku docelowego"
+msgstr "_Wybór nowej nazwy dla pliku docelowego"
 
 #: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
@@ -689,7 +691,7 @@ msgstr "Przywróć"
 
 #: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
-msgstr "Zastosowanie tej czynności dla wszystkich plików"
+msgstr "Wykonaj tę czynność dla wszystkich plików"
 
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
@@ -738,7 +740,7 @@ msgstr "P_ołącz wszystkie"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "Skopiuj p_omimo to"
+msgstr "Skopiuj po_mimo tego"
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
