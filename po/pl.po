@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-04-19 10:33+0000\n"
+"PO-Revision-Date: 2017-04-23 15:32+0000\n"
 "Last-Translator: Piotr Strębski <strebski@gmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2017-04-20 06:29+0000\n"
-"X-Generator: Launchpad (build 18354)\n"
+"X-Launchpad-Export-Date: 2017-04-25 06:22+0000\n"
+"X-Generator: Launchpad (build 18361)\n"
 "Language: pl\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -503,9 +503,9 @@ msgstr[2] "_Powtórz przywrócenie z kosza %d elementów"
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] "_Powtórz utworzenie dowiązania do %d elementów"
-msgstr[2] "_Powtórz utworzenie dowiązania do %d elementów"
+msgstr[0] "_Ponów utworzenie dowiązania do elementu"
+msgstr[1] "_Ponów utworzenie dowiązań do %d elementów"
+msgstr[2] "_Ponów utworzenie dowiązań do %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1697
 #, c-format
