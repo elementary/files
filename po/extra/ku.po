@@ -8,20 +8,20 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-02-14 08:55+0000\n"
-"Last-Translator: Rokar ✌ <Unknown>\n"
+"PO-Revision-Date: 2017-04-25 10:10+0000\n"
+"Last-Translator: Sipan Roj <sipanroj@live.com>\n"
 "Language-Team: Kurdish <ku@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-03-01 05:56+0000\n"
-"X-Generator: Launchpad (build 18329)\n"
+"X-Launchpad-Export-Date: 2017-04-27 05:38+0000\n"
+"X-Generator: Launchpad (build 18364)\n"
 
 msgid "Files"
 msgstr "Dosya"
 
 msgid "Browse your files"
-msgstr ""
+msgstr "Çav li pelên xwe bike"
 
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
@@ -33,13 +33,13 @@ msgid "New Window"
 msgstr "Paceya nû"
 
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "Paceyek Nû Weke Rêvebir Veke"
 
 msgid "About Files"
-msgstr ""
+msgstr "Derbarê Pelan de"
 
 msgid "Browse and manage files and folders"
-msgstr ""
+msgstr "Pelan û Peldankan çav lê bike û rêvebibe"
 
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
@@ -63,13 +63,13 @@ msgid "910x640 minimum window size"
 msgstr ""
 
 msgid "Security fixes"
-msgstr ""
+msgstr "Sererastkirinên ewlehiyê"
 
 msgid "Various crash fixes"
 msgstr ""
 
 msgid "New translations"
-msgstr ""
+msgstr "Wergerên Nû"
 
 msgid "Minor bug fixes"
 msgstr ""
@@ -99,7 +99,7 @@ msgid "Translation updates"
 msgstr "rojanekirina wergerrandin"
 
 msgid "Run Pantheon Files as Administrator"
-msgstr ""
+msgstr "Panthenon Files'ê Weke Rêvebir karbîne"
 
 msgid "Authentication is required to run Files as Administrator"
 msgstr ""
