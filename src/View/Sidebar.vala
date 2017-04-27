@@ -602,7 +602,7 @@ namespace Marlin.Places {
 
                 var mount = volume.get_mount ();
                 if (mount != null) {
-                    root = mount.get_default_location ();
+                    root = mount.get_root ();
                     last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                            iter,
                                            mount.get_name (),
@@ -641,7 +641,7 @@ namespace Marlin.Places {
                 if (volume != null)
                     continue;
 
-                root = mount.get_default_location ();
+                root = mount.get_root ();
                 if (root.is_native ()) {
                     string scheme = root.get_uri_scheme ();
                     if (scheme == "archive" ) {
@@ -678,7 +678,7 @@ namespace Marlin.Places {
             /* Add network mounts */
             network_mounts.reverse ();
             foreach (Mount mount in network_mounts) {
-                root = mount.get_default_location ();
+                root = mount.get_root ();
                 /* get_smb_share_from_uri will return the uri unaltered if does not have
                  * the smb scheme so we need not test.  This is required because the mount
                  * does not return the true root location of the share but the location used
@@ -749,7 +749,7 @@ namespace Marlin.Places {
                 var mount = volume.get_mount ();
                 if (mount != null) {
                     /* show mounted volume in sidebar */
-                    var root = mount.get_default_location ();
+                    var root = mount.get_root ();
                     last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                            iter,
                                            mount.get_name (),
@@ -1312,7 +1312,7 @@ namespace Marlin.Places {
                     volume.mount.end (res);
                     Mount mount = volume.get_mount ();
                     if (mount != null) {
-                        var location = mount.get_default_location ();
+                        var location = mount.get_root ();
                         if (flags == Marlin.OpenFlag.NEW_WINDOW) {
                             var app = Marlin.Application.get ();
                             app.create_window (location);
