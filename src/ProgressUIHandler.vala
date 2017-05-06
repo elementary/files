@@ -75,11 +75,13 @@ public class Marlin.Progress.UIHandler : Object {
         if (info == null || !(info is Marlin.Progress.Info) ||
             info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
 
+            application.release ();
             return;
         }
 
-        this.active_infos++;
         info.finished.connect (progress_info_finished_cb);
+        this.active_infos++;
+
 
         var operation_running = false;
         Timeout.add_full (GLib.Priority.LOW, 500, () => {

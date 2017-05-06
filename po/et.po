@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:09+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-05-06 05:37+0000\n"
+"X-Generator: Launchpad (build 18366)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -136,6 +136,402 @@ msgstr "Seda _parooli peetakse meeles"
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "Toiming katkestati"
+
+#: ../libcore/marlin-undostack-manager.c:635
+msgid "Original location could not be determined"
+msgstr "Originaalasukohta polnud võimalik määrata"
+
+#: ../libcore/marlin-undostack-manager.c:636
+msgid "Open trash folder and restore manually"
+msgstr "Ava prügikast ja taasta käsitsi"
+
+#: ../libcore/marlin-undostack-manager.c:1225
+#, c-format
+msgid "Delete %d copied items"
+msgstr "%d kopeeritud failide kustutamine"
+
+#: ../libcore/marlin-undostack-manager.c:1228
+#: ../libcore/marlin-undostack-manager.c:1238
+#: ../libcore/marlin-undostack-manager.c:1269
+#, c-format
+msgid "Delete '%s'"
+msgstr "'%s' kustutamine"
+
+#: ../libcore/marlin-undostack-manager.c:1235
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "%d dubleeritud faili kustutamine"
+
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "%d faili ümbertõstmine tagasi asukohta \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1250
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "\"%s\" ümbertõstmine tagasi asukohta \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1259
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "'%s' ümbernimetamine kui '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1278
+#: ../libcore/marlin-undostack-manager.c:1473
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "%d faili taastamine prügikastist"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "'%s' taastamine asukohta '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1297
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "%d faili ümbertõstmine tagasi prügikasti"
+
+#: ../libcore/marlin-undostack-manager.c:1300
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "\"%s\" ümbertõstmine tagasi prügikasti"
+
+#: ../libcore/marlin-undostack-manager.c:1309
+#, c-format
+msgid "Delete links to %d items"
+msgstr "%d faili viidete kustutamine"
+
+#: ../libcore/marlin-undostack-manager.c:1312
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Asukoha '%s' viite kustutamine"
+
+#: ../libcore/marlin-undostack-manager.c:1322
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Asukoha '%s' failide esialgsete õiguste taastamine"
+
+#: ../libcore/marlin-undostack-manager.c:1330
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "'%s' esialgsete õiguste taastamine"
+
+#: ../libcore/marlin-undostack-manager.c:1339
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "'%s' grupi taastamine kui '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1349
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "'%s' omaniku taastamine kui '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1388
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "%d faili kopeerimine asukohta '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1392
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "'%s' kopeerimine asukohta '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1400
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "%d faili dubleerimine asukohas '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1405
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "'%s' dubleerimine asukohas '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1413
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "%d faili ümbertõstmine asukohta '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "\"%s\" ümbertõstmine asukohta \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1435
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Uue faili '%s' loomine mallist "
+
+#: ../libcore/marlin-undostack-manager.c:1442
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Faili '%s' loomine"
+
+#: ../libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Uue kataloogi '%s' loomine"
+
+#: ../libcore/marlin-undostack-manager.c:1457
+#, c-format
+msgid "Move %d items to trash"
+msgstr "%d faili ümbertõstmine prügikasti"
+
+#: ../libcore/marlin-undostack-manager.c:1463
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "\"%s\" ümbertõstmine prügikasti"
+
+#: ../libcore/marlin-undostack-manager.c:1476
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "'%s' taastamine prügikastist"
+
+#: ../libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "Create links to %d items"
+msgstr "%d faili viite loomine"
+
+#: ../libcore/marlin-undostack-manager.c:1488
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Viida loomine asukohta '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1497
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "'%s' failide õiguste määramine"
+
+#: ../libcore/marlin-undostack-manager.c:1505
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "'%s' õiguste määramine"
+
+#: ../libcore/marlin-undostack-manager.c:1514
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "'%s' grupi määramine kui '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1524
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Omaniku '%s' määramine omanikuks '%s'"
+
+#: ../libcore/marlin-undostack-manager.c:1556
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Võta tagasi %d faili kopeerimine"
+msgstr[1] "_Võta tagasi %d faili kopeerimine"
+
+#: ../libcore/marlin-undostack-manager.c:1561
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Võta tagasi %d faili paljundamine"
+msgstr[1] "_Võta tagasi %d faili paljundamine"
+
+#: ../libcore/marlin-undostack-manager.c:1566
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Võta tagasi %d faili ümbertõstmine"
+msgstr[1] "_Võta tagasi %d faili ümbertõstmine"
+
+#: ../libcore/marlin-undostack-manager.c:1571
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Võta tagasi %d faili ümbernimetamine"
+msgstr[1] "_Võta tagasi %d faili ümbernimetamine"
+
+#: ../libcore/marlin-undostack-manager.c:1575
+msgid "_Undo creation of an empty file"
+msgstr "_Võta tagasi faili loomine"
+
+#: ../libcore/marlin-undostack-manager.c:1578
+msgid "_Undo creation of a file from template"
+msgstr "_Võta tagasi faili loomine mallist"
+
+#: ../libcore/marlin-undostack-manager.c:1582
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Võta tagasi %d kausta loomine"
+msgstr[1] "_Võta tagasi %d kausta loomine"
+
+#: ../libcore/marlin-undostack-manager.c:1587
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Võta tagasi %d faili ümbertõstmine prügikasti"
+msgstr[1] "_Võta tagasi %d faili ümbertõstmine prügikasti"
+
+#: ../libcore/marlin-undostack-manager.c:1592
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Võta tagasi %d faili prügikastist taastamine"
+msgstr[1] "_Võta tagasi %d faili prügikastist taastamine"
+
+#: ../libcore/marlin-undostack-manager.c:1597
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Võta tagasi %d faili otsetee loomine"
+msgstr[1] "_Võta tagasi %d faili otsetee loomine"
+
+#: ../libcore/marlin-undostack-manager.c:1602
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Võta tagasi %d faili kustutamine"
+msgstr[1] "_Võta tagasi %d faili kustutamine"
+
+#: ../libcore/marlin-undostack-manager.c:1607
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "_Võta tagasi %d faili piirangute rekursiivne muutmine"
+msgstr[1] "_Võta tagasi %d faili piirangute rekursiivne muutmine"
+
+#: ../libcore/marlin-undostack-manager.c:1613
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "_Võta tagasi %d faili piirangute muutmine"
+msgstr[1] "_Võta tagasi %d faili piirangute muutmine"
+
+#: ../libcore/marlin-undostack-manager.c:1618
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "_Võta tagasi %d faili grupi muutmine"
+msgstr[1] "_Võta tagasi %d faili grupi muutmine"
+
+#: ../libcore/marlin-undostack-manager.c:1623
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "_Võta tagasi %d faili omaniku muutmine"
+msgstr[1] "_Võta tagasi %d faili omaniku muutmine"
+
+#: ../libcore/marlin-undostack-manager.c:1651
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Tee uuesti %d faili kopeerimine"
+msgstr[1] "_Tee uuesti %d faili kopeerimine"
+
+#: ../libcore/marlin-undostack-manager.c:1656
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Tee uuesti %d faili paljundamine"
+msgstr[1] "_Tee uuesti %d faili paljundamine"
+
+#: ../libcore/marlin-undostack-manager.c:1661
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Tee uuesti %d faili ümbertõstmine"
+msgstr[1] "_Tee uuesti %d faili liigutamine"
+
+#: ../libcore/marlin-undostack-manager.c:1666
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Tee uuesti %d faili ümbernimetamine"
+msgstr[1] "_Tee uuesti %d faili ümbernimetamine"
+
+#: ../libcore/marlin-undostack-manager.c:1670
+msgid "_Redo creation of an empty file"
+msgstr "_Tee uuesti faili loomine"
+
+#: ../libcore/marlin-undostack-manager.c:1673
+msgid "_Redo creation of a file from template"
+msgstr "_Tee uuesti faili loomine mallist"
+
+#: ../libcore/marlin-undostack-manager.c:1677
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Tee uuesti %d kausta loomine"
+msgstr[1] "_Tee uuesti %d kausta loomine"
+
+#: ../libcore/marlin-undostack-manager.c:1682
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Tee uuesti %d faili ümbertõstmine prügikasti"
+msgstr[1] "_Tee uuesti %d faili liigutamine prügikasti"
+
+#: ../libcore/marlin-undostack-manager.c:1687
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Tee uuesti %d faili taastamine prügikastist"
+msgstr[1] "_Tee uuesti %d faili taastamine prügikastist"
+
+#: ../libcore/marlin-undostack-manager.c:1692
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Tee uuesti %d faili otsetee loomine"
+msgstr[1] "_Tee uuesti %d faili otsetee loomine"
+
+#: ../libcore/marlin-undostack-manager.c:1697
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Tee uuesti %d faili kustutamine"
+msgstr[1] "_Tee uuesti %d faili kustutamine"
+
+#: ../libcore/marlin-undostack-manager.c:1702
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "_Tee uuesti %d faili õiguste muutmine"
+msgstr[1] "_Tee uuesti %d faili õiguste muutmine"
+
+#: ../libcore/marlin-undostack-manager.c:1708
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "_Tee uuesti %d faili  õiguste muutmine"
+msgstr[1] "_Tee uuesti %d faili  õiguste muutmine"
+
+#: ../libcore/marlin-undostack-manager.c:1713
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "_Tee uuesti %d faili  grupi muutmine"
+msgstr[1] "_Tee uuesti %d faili  grupi muutmine"
+
+#: ../libcore/marlin-undostack-manager.c:1718
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "_Tee uuesti %d faili omaniku muutmine"
+msgstr[1] "_Tee uuesti %d faili omaniku muutmine"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
+msgid "Today at %-I:%M %p"
+msgstr "Täna, kell %H:%M"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
+msgid "Yesterday at %-I:%M %p"
+msgstr "Eile, kell %H:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a, %-d. %b, kell %H:%M"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%A, %d. %B, %Y, kell %H:%M"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -282,48 +678,6 @@ msgstr "Asenda"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Konflikt failide vahel"
-
-#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:558
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:379
-#, c-format
-msgid "link to %s"
-msgstr "viit failile %s"
-
-#: ../libcore/gof-file.c:1953
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Töölaua faili %s analüüsimine ebaõnnestus"
-
-#: ../libcore/gof-file.c:1990
-msgid "No Exec field specified"
-msgstr "Käivituskäsku pole valitud"
-
-#: ../libcore/gof-file.c:2009
-msgid "No URL field specified"
-msgstr "URL väli puudub"
-
-#: ../libcore/gof-file.c:2015
-msgid "Invalid desktop file"
-msgstr "Sobimatu töölaua fail"
-
-#: ../libcore/gof-file.c:2310
-msgid "Slashes are not allowed in filenames"
-msgstr "Failinimedes pole kaldkriipsud lubatud"
-
-#: ../libcore/gof-file.c:2330
-msgid "Toplevel files cannot be renamed"
-msgstr "Ülemfailide nimesid pole võimalik muuta"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "_Näita üksikasjalisemalt"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (vigane Unikood)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -1088,428 +1442,216 @@ msgstr "Prügikasti tühjendamine"
 msgid "Emptying Trash"
 msgstr "Prügikasti tühjendamine"
 
-#: ../libcore/marlin-undostack-manager.c:635
-msgid "Original location could not be determined"
-msgstr "Originaalasukohta polnud võimalik määrata"
-
-#: ../libcore/marlin-undostack-manager.c:636
-msgid "Open trash folder and restore manually"
-msgstr "Ava prügikast ja taasta käsitsi"
-
-#: ../libcore/marlin-undostack-manager.c:1225
-#, c-format
-msgid "Delete %d copied items"
-msgstr "%d kopeeritud failide kustutamine"
-
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
-#, c-format
-msgid "Delete '%s'"
-msgstr "'%s' kustutamine"
-
-#: ../libcore/marlin-undostack-manager.c:1235
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "%d dubleeritud faili kustutamine"
-
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "%d faili ümbertõstmine tagasi asukohta \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1250
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "\"%s\" ümbertõstmine tagasi asukohta \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "'%s' ümbernimetamine kui '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "%d faili taastamine prügikastist"
-
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "'%s' taastamine asukohta '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1297
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "%d faili ümbertõstmine tagasi prügikasti"
-
-#: ../libcore/marlin-undostack-manager.c:1300
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "\"%s\" ümbertõstmine tagasi prügikasti"
-
-#: ../libcore/marlin-undostack-manager.c:1309
-#, c-format
-msgid "Delete links to %d items"
-msgstr "%d faili viidete kustutamine"
-
-#: ../libcore/marlin-undostack-manager.c:1312
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Asukoha '%s' viite kustutamine"
-
-#: ../libcore/marlin-undostack-manager.c:1322
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Asukoha '%s' failide esialgsete õiguste taastamine"
-
-#: ../libcore/marlin-undostack-manager.c:1330
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "'%s' esialgsete õiguste taastamine"
-
-#: ../libcore/marlin-undostack-manager.c:1339
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "'%s' grupi taastamine kui '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1349
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "'%s' omaniku taastamine kui '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "%d faili kopeerimine asukohta '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1392
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "'%s' kopeerimine asukohta '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1400
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "%d faili dubleerimine asukohas '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "'%s' dubleerimine asukohas '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1413
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "%d faili ümbertõstmine asukohta '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1417
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "\"%s\" ümbertõstmine asukohta \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1435
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Uue faili '%s' loomine mallist "
-
-#: ../libcore/marlin-undostack-manager.c:1442
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Faili '%s' loomine"
-
-#: ../libcore/marlin-undostack-manager.c:1449
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Uue kataloogi '%s' loomine"
-
-#: ../libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "Move %d items to trash"
-msgstr "%d faili ümbertõstmine prügikasti"
-
-#: ../libcore/marlin-undostack-manager.c:1463
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "\"%s\" ümbertõstmine prügikasti"
-
-#: ../libcore/marlin-undostack-manager.c:1476
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "'%s' taastamine prügikastist"
-
-#: ../libcore/marlin-undostack-manager.c:1485
-#, c-format
-msgid "Create links to %d items"
-msgstr "%d faili viite loomine"
-
-#: ../libcore/marlin-undostack-manager.c:1488
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Viida loomine asukohta '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1497
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "'%s' failide õiguste määramine"
-
-#: ../libcore/marlin-undostack-manager.c:1505
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "'%s' õiguste määramine"
-
-#: ../libcore/marlin-undostack-manager.c:1514
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "'%s' grupi määramine kui '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1524
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Omaniku '%s' määramine omanikuks '%s'"
-
-#: ../libcore/marlin-undostack-manager.c:1556
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_Võta tagasi %d faili kopeerimine"
-msgstr[1] "_Võta tagasi %d faili kopeerimine"
-
-#: ../libcore/marlin-undostack-manager.c:1561
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Võta tagasi %d faili paljundamine"
-msgstr[1] "_Võta tagasi %d faili paljundamine"
-
-#: ../libcore/marlin-undostack-manager.c:1566
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Võta tagasi %d faili ümbertõstmine"
-msgstr[1] "_Võta tagasi %d faili ümbertõstmine"
-
-#: ../libcore/marlin-undostack-manager.c:1571
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Võta tagasi %d faili ümbernimetamine"
-msgstr[1] "_Võta tagasi %d faili ümbernimetamine"
-
-#: ../libcore/marlin-undostack-manager.c:1575
-msgid "_Undo creation of an empty file"
-msgstr "_Võta tagasi faili loomine"
-
-#: ../libcore/marlin-undostack-manager.c:1578
-msgid "_Undo creation of a file from template"
-msgstr "_Võta tagasi faili loomine mallist"
-
-#: ../libcore/marlin-undostack-manager.c:1582
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Võta tagasi %d kausta loomine"
-msgstr[1] "_Võta tagasi %d kausta loomine"
-
-#: ../libcore/marlin-undostack-manager.c:1587
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Võta tagasi %d faili ümbertõstmine prügikasti"
-msgstr[1] "_Võta tagasi %d faili ümbertõstmine prügikasti"
-
-#: ../libcore/marlin-undostack-manager.c:1592
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Võta tagasi %d faili prügikastist taastamine"
-msgstr[1] "_Võta tagasi %d faili prügikastist taastamine"
-
-#: ../libcore/marlin-undostack-manager.c:1597
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Võta tagasi %d faili otsetee loomine"
-msgstr[1] "_Võta tagasi %d faili otsetee loomine"
-
-#: ../libcore/marlin-undostack-manager.c:1602
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Võta tagasi %d faili kustutamine"
-msgstr[1] "_Võta tagasi %d faili kustutamine"
-
-#: ../libcore/marlin-undostack-manager.c:1607
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "_Võta tagasi %d faili piirangute rekursiivne muutmine"
-msgstr[1] "_Võta tagasi %d faili piirangute rekursiivne muutmine"
-
-#: ../libcore/marlin-undostack-manager.c:1613
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "_Võta tagasi %d faili piirangute muutmine"
-msgstr[1] "_Võta tagasi %d faili piirangute muutmine"
-
-#: ../libcore/marlin-undostack-manager.c:1618
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "_Võta tagasi %d faili grupi muutmine"
-msgstr[1] "_Võta tagasi %d faili grupi muutmine"
-
-#: ../libcore/marlin-undostack-manager.c:1623
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "_Võta tagasi %d faili omaniku muutmine"
-msgstr[1] "_Võta tagasi %d faili omaniku muutmine"
-
-#: ../libcore/marlin-undostack-manager.c:1651
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Tee uuesti %d faili kopeerimine"
-msgstr[1] "_Tee uuesti %d faili kopeerimine"
-
-#: ../libcore/marlin-undostack-manager.c:1656
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Tee uuesti %d faili paljundamine"
-msgstr[1] "_Tee uuesti %d faili paljundamine"
-
-#: ../libcore/marlin-undostack-manager.c:1661
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Tee uuesti %d faili ümbertõstmine"
-msgstr[1] "_Tee uuesti %d faili liigutamine"
-
-#: ../libcore/marlin-undostack-manager.c:1666
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Tee uuesti %d faili ümbernimetamine"
-msgstr[1] "_Tee uuesti %d faili ümbernimetamine"
-
-#: ../libcore/marlin-undostack-manager.c:1670
-msgid "_Redo creation of an empty file"
-msgstr "_Tee uuesti faili loomine"
-
-#: ../libcore/marlin-undostack-manager.c:1673
-msgid "_Redo creation of a file from template"
-msgstr "_Tee uuesti faili loomine mallist"
-
-#: ../libcore/marlin-undostack-manager.c:1677
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Tee uuesti %d kausta loomine"
-msgstr[1] "_Tee uuesti %d kausta loomine"
-
-#: ../libcore/marlin-undostack-manager.c:1682
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Tee uuesti %d faili ümbertõstmine prügikasti"
-msgstr[1] "_Tee uuesti %d faili liigutamine prügikasti"
-
-#: ../libcore/marlin-undostack-manager.c:1687
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Tee uuesti %d faili taastamine prügikastist"
-msgstr[1] "_Tee uuesti %d faili taastamine prügikastist"
-
-#: ../libcore/marlin-undostack-manager.c:1692
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Tee uuesti %d faili otsetee loomine"
-msgstr[1] "_Tee uuesti %d faili otsetee loomine"
-
-#: ../libcore/marlin-undostack-manager.c:1697
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Tee uuesti %d faili kustutamine"
-msgstr[1] "_Tee uuesti %d faili kustutamine"
-
-#: ../libcore/marlin-undostack-manager.c:1702
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "_Tee uuesti %d faili õiguste muutmine"
-msgstr[1] "_Tee uuesti %d faili õiguste muutmine"
-
-#: ../libcore/marlin-undostack-manager.c:1708
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "_Tee uuesti %d faili  õiguste muutmine"
-msgstr[1] "_Tee uuesti %d faili  õiguste muutmine"
-
-#: ../libcore/marlin-undostack-manager.c:1713
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "_Tee uuesti %d faili  grupi muutmine"
-msgstr[1] "_Tee uuesti %d faili  grupi muutmine"
-
-#: ../libcore/marlin-undostack-manager.c:1718
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "_Tee uuesti %d faili omaniku muutmine"
-msgstr[1] "_Tee uuesti %d faili omaniku muutmine"
-
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:442
-msgid "Today at %-I:%M %p"
-msgstr "Täna, kell %H:%M"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:452
-msgid "Yesterday at %-I:%M %p"
-msgstr "Eile, kell %H:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a, %-d. %b, kell %H:%M"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%A, %d. %B, %Y, kell %H:%M"
-
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
 msgstr "Ettevalmistamine"
 
-#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:376
+#, c-format
+msgid "link to %s"
+msgstr "viit failile %s"
+
+#: ../libcore/gof-file.c:1935
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Töölaua faili %s analüüsimine ebaõnnestus"
+
+#: ../libcore/gof-file.c:1972
+msgid "No Exec field specified"
+msgstr "Käivituskäsku pole valitud"
+
+#: ../libcore/gof-file.c:1991
+msgid "No URL field specified"
+msgstr "URL väli puudub"
+
+#: ../libcore/gof-file.c:1997
+msgid "Invalid desktop file"
+msgstr "Sobimatu töölaua fail"
+
+#: ../libcore/gof-file.c:2292
+msgid "Slashes are not allowed in filenames"
+msgstr "Failinimedes pole kaldkriipsud lubatud"
+
+#: ../libcore/gof-file.c:2312
+msgid "Toplevel files cannot be renamed"
+msgstr "Ülemfailide nimesid pole võimalik muuta"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "_Näita üksikasjalisemalt"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (vigane Unikood)"
+
+#: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
 msgstr "Eelmine"
 
-#: ../filechooser-module/FileChooserDialog.vala:74
+#: ../filechooser-module/FileChooserDialog.vala:76
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "Järgmine"
 
-#: ../src/View/Window.vala:207
+#: ../src/View/ViewContainer.vala:352 ../src/View/Sidebar.vala:494
+msgid "Home"
+msgstr "Kodu"
+
+#: ../src/View/ViewContainer.vala:354 ../src/View/Sidebar.vala:555
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:93
+msgid "File System"
+msgstr "Failisüsteem"
+
+#: ../src/View/ViewContainer.vala:363
+msgid "(as Administrator)"
+msgstr "- juurkasutajana"
+
+#: ../src/View/ViewContainer.vala:376 ../src/View/DirectoryNotFound.vala:28
+msgid "This Folder Does Not Exist"
+msgstr "Seda kausta pole olemas"
+
+#: ../src/View/ViewContainer.vala:377
+msgid "You cannot create a folder here."
+msgstr "Sul pole siia võimalik kausta luua."
+
+#: ../src/View/ViewContainer.vala:379
+msgid "The network is unavailable"
+msgstr "Võrk pole saadaval"
+
+#: ../src/View/ViewContainer.vala:380
+msgid "A working network is needed to reach this folder"
+msgstr "Selle kausta vaatamiseks on vajalik toimiv võrguühendus"
+
+#: ../src/View/ViewContainer.vala:382
+msgid "This Folder Does Not Belong to You"
+msgstr "Kaust ei kuulu sulle"
+
+#: ../src/View/ViewContainer.vala:383
+msgid "You don't have permission to view this folder."
+msgstr "Sul pole õigusi selle kausta sisu vaatamiseks."
+
+#: ../src/View/ViewContainer.vala:385
+msgid "Unable to Mount Folder"
+msgstr "Kausta haakimine ebaõnnestus"
+
+#: ../src/View/ViewContainer.vala:386
+msgid "Could not connect to the server for this folder."
+msgstr "Võrku ühendamine ebaõnnestus, kausta vaatamine pole võimalik."
+
+#: ../src/View/ViewContainer.vala:388
+msgid "Unable to Display Folder Contents"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:389
+msgid "The operation timed out."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:391
+msgid "Unable to Show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:392
+msgid "The server for this folder could not be located."
+msgstr "Selle kausta serverit pole võimalik leida."
+
+#: ../src/View/ViewContainer.vala:402
+msgid "File not Found"
+msgstr "Faili ei leitud"
+
+#: ../src/View/ViewContainer.vala:403
+msgid "The file selected no longer exists."
+msgstr "Valitud faili ei eksisteeri enam."
+
+#: ../src/View/Window.vala:208
 msgid "Files isn't your default file manager."
 msgstr "\"Failid\" ei ole sinu vaikimis failihaldur."
 
-#: ../src/View/Window.vala:213
+#: ../src/View/Window.vala:214
 msgid "Set as Default"
 msgstr "Määra vaikeväärtuseks"
 
-#: ../src/View/Window.vala:219
+#: ../src/View/Window.vala:220
 msgid "Ignore"
 msgstr "Ära muuda"
+
+#: ../src/View/AbstractDirectoryView.vala:564
+msgid "Failed to preview"
+msgstr "Eelvaate loomine ebaõnnestus."
+
+#: ../src/View/AbstractDirectoryView.vala:817
+msgid "Cannot open this file"
+msgstr "Selle faili avamine pole võimalik"
+
+#: ../src/View/AbstractDirectoryView.vala:830
+msgid "Cannot identify file type to open"
+msgstr "Avatava faili formaati pole võimalik tuvastada"
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Cannot drop this file"
+msgstr "Faili ümbertõstmine pole võimalik"
+
+#: ../src/View/AbstractDirectoryView.vala:1555
+msgid "Invalid file name provided"
+msgstr "Vigane faili nimi"
+
+#: ../src/View/AbstractDirectoryView.vala:2010
+msgid "Invalid"
+msgstr "Vigane"
+
+#: ../src/View/AbstractDirectoryView.vala:2016
+msgid "Run"
+msgstr "Käivita"
+
+#: ../src/View/AbstractDirectoryView.vala:2021
+msgid "Open in %s"
+msgstr "Ava rakendusega %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2031
+msgid "Open in"
+msgstr "Ava..."
+
+#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
+msgid "Open with"
+msgstr "Ava koos"
+
+#: ../src/View/AbstractDirectoryView.vala:2093
+msgid "Other Application"
+msgstr "Muu rakendusega..."
+
+#: ../src/View/AbstractDirectoryView.vala:2354
+msgid "Untitled %s"
+msgstr "Nimetu %s"
+
+#: ../src/View/AbstractDirectoryView.vala:2678
+#: ../src/View/AbstractDirectoryView.vala:2861
+msgid "Cannot remove files from here"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2679
+#: ../src/View/AbstractDirectoryView.vala:2849
+#: ../src/View/AbstractDirectoryView.vala:2862
+msgid "You do not have permission to change this location"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2827
+msgid "Cannot copy files that are in the trash"
+msgstr "Prügikastis olevate failide kopeerimine pole võimalik."
+
+#: ../src/View/AbstractDirectoryView.vala:2828
+msgid "Cutting the selection instead"
+msgstr "Valitud failide lõikamine"
+
+#: ../src/View/AbstractDirectoryView.vala:2848
+msgid "Cannot paste files here"
+msgstr ""
 
 #: ../src/View/Sidebar.vala:481
 msgid "Personal"
@@ -1518,10 +1660,6 @@ msgstr "Isiklik"
 #: ../src/View/Sidebar.vala:482
 msgid "Your common places and bookmarks"
 msgstr "Üldised kaustad ja lemmikud"
-
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:347
-msgid "Home"
-msgstr "Kodu"
 
 #: ../src/View/Sidebar.vala:501
 msgid "Open your personal folder"
@@ -1546,12 +1684,6 @@ msgstr "Seadmed"
 #: ../src/View/Sidebar.vala:549
 msgid "Your local partitions and devices"
 msgstr "Kohalikud partitsioonid ja seadmed"
-
-#: ../src/View/Sidebar.vala:555 ../src/View/ViewContainer.vala:349
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Failisüsteem"
 
 #: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
 msgid "Network"
@@ -1630,168 +1762,6 @@ msgstr "Tüüp"
 msgid "Modified"
 msgstr "Muudetud"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:371
-msgid "This Folder Does Not Exist"
-msgstr "Seda kausta pole olemas"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Kausta \"%s\" ei leitud"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Loo"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Loo kaust \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Ebaõnnestus luua kausta\n"
-"\n"
-"%s"
-
-#: ../src/View/AbstractDirectoryView.vala:550
-msgid "Failed to preview"
-msgstr "Eelvaate loomine ebaõnnestus."
-
-#: ../src/View/AbstractDirectoryView.vala:805
-msgid "Cannot open this file"
-msgstr "Selle faili avamine pole võimalik"
-
-#: ../src/View/AbstractDirectoryView.vala:818
-msgid "Cannot identify file type to open"
-msgstr "Avatava faili formaati pole võimalik tuvastada"
-
-#: ../src/View/AbstractDirectoryView.vala:1549
-msgid "Cannot drop this file"
-msgstr "Faili ümbertõstmine pole võimalik"
-
-#: ../src/View/AbstractDirectoryView.vala:1549
-msgid "Invalid file name provided"
-msgstr "Vigane faili nimi"
-
-#: ../src/View/AbstractDirectoryView.vala:2004
-msgid "Invalid"
-msgstr "Vigane"
-
-#: ../src/View/AbstractDirectoryView.vala:2010
-msgid "Run"
-msgstr "Käivita"
-
-#: ../src/View/AbstractDirectoryView.vala:2015
-msgid "Open in %s"
-msgstr "Ava rakendusega %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2025
-msgid "Open in"
-msgstr "Ava..."
-
-#: ../src/View/AbstractDirectoryView.vala:2027
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
-msgid "Open with"
-msgstr "Ava koos"
-
-#: ../src/View/AbstractDirectoryView.vala:2087
-msgid "Other Application"
-msgstr "Muu rakendusega..."
-
-#: ../src/View/AbstractDirectoryView.vala:2348
-msgid "Untitled %s"
-msgstr "Nimetu %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2670
-#: ../src/View/AbstractDirectoryView.vala:2853
-msgid "Cannot remove files from here"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2671
-#: ../src/View/AbstractDirectoryView.vala:2841
-#: ../src/View/AbstractDirectoryView.vala:2854
-msgid "You do not have permission to change this location"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2819
-msgid "Cannot copy files that are in the trash"
-msgstr "Prügikastis olevate failide kopeerimine pole võimalik."
-
-#: ../src/View/AbstractDirectoryView.vala:2820
-msgid "Cutting the selection instead"
-msgstr "Valitud failide lõikamine"
-
-#: ../src/View/AbstractDirectoryView.vala:2840
-msgid "Cannot paste files here"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:358
-msgid "(as Administrator)"
-msgstr "- juurkasutajana"
-
-#: ../src/View/ViewContainer.vala:372
-msgid "You cannot create a folder here."
-msgstr "Sul pole siia võimalik kausta luua."
-
-#: ../src/View/ViewContainer.vala:374
-msgid "The network is unavailable"
-msgstr "Võrk pole saadaval"
-
-#: ../src/View/ViewContainer.vala:375
-msgid "A working network is needed to reach this folder"
-msgstr "Selle kausta vaatamiseks on vajalik toimiv võrguühendus"
-
-#: ../src/View/ViewContainer.vala:377
-msgid "This Folder Does Not Belong to You"
-msgstr "Kaust ei kuulu sulle"
-
-#: ../src/View/ViewContainer.vala:378
-msgid "You don't have permission to view this folder."
-msgstr "Sul pole õigusi selle kausta sisu vaatamiseks."
-
-#: ../src/View/ViewContainer.vala:380
-msgid "Unable to Mount Folder"
-msgstr "Kausta haakimine ebaõnnestus"
-
-#: ../src/View/ViewContainer.vala:381
-msgid "Could not connect to the server for this folder."
-msgstr "Võrku ühendamine ebaõnnestus, kausta vaatamine pole võimalik."
-
-#: ../src/View/ViewContainer.vala:383
-msgid "Unable to Show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:384
-msgid "The server for this folder could not be located."
-msgstr "Selle kausta serverit pole võimalik leida."
-
-#: ../src/View/ViewContainer.vala:394
-msgid "File not Found"
-msgstr "Faili ei leitud"
-
-#: ../src/View/ViewContainer.vala:395
-msgid "The file selected no longer exists."
-msgstr "Valitud faili ei eksisteeri enam."
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Kaust on tühi"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "Prügikast on tühi"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Hiljutised failid puuduvad"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Juurdepääs keelatud"
-
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:413
 msgid "Open in New Tab"
 msgstr "Ava uues kaardis"
@@ -1804,14 +1774,17 @@ msgstr "Ava uues aknas"
 msgid "Open in Other Application…"
 msgstr "Ava teise rakendusega…"
 
-#: ../src/View/Widgets/LocationBar.vala:177
-msgid "Reload this folder"
-msgstr "Värskenda kausta sisu"
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Lugemine"
 
-#: ../src/View/Widgets/LocationBar.vala:180
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:282
-msgid "Enter search term or path"
-msgstr "Sisesta otsingu märksõna või asukoht"
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Muutmine"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Käivitamine"
 
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
@@ -1880,77 +1853,95 @@ msgstr "%u faili pole võimalik lugeda"
 msgid "%u files not readable"
 msgstr "%u faili pole võimalik lugeda"
 
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Lugemine"
+#: ../src/View/Widgets/LocationBar.vala:177
+msgid "Reload this folder"
+msgstr "Värskenda kausta sisu"
 
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Muutmine"
+#: ../src/View/Widgets/LocationBar.vala:180
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
+msgid "Enter search term or path"
+msgstr "Sisesta otsingu märksõna või asukoht"
 
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Käivitamine"
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Kaust on tühi"
 
-#: ../src/Application.vala:146
-msgid "Show the version of the program."
-msgstr "Programmi versiooni näitamine."
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "Prügikast on tühi"
 
-#: ../src/Application.vala:148
-msgid "Open uri(s) in new tab"
-msgstr "URI-de avamine uues aknas"
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Hiljutised failid puuduvad"
 
-#: ../src/Application.vala:150 ../src/View/directory_view_popup.ui:83
-msgid "New Window"
-msgstr "Uues aknas"
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Juurdepääs keelatud"
 
-#: ../src/Application.vala:152
-msgid "Quit Files."
-msgstr "Välju Failidest"
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Kausta \"%s\" ei leitud"
 
-#: ../src/Application.vala:154
-msgid "Enable debug logging"
-msgstr "Silumislogide lubamine"
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Loo"
 
-#: ../src/Application.vala:157
-msgid "[URI...]"
-msgstr "[URI...]"
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Loo kaust \"%s\""
 
-#: ../src/Application.vala:160
+#: ../src/View/DirectoryNotFound.vala:44
 msgid ""
+"Failed to create the folder\n"
 "\n"
-"\n"
-"Browse the file system with the file manager"
+"%s"
 msgstr ""
+"Ebaõnnestus luua kausta\n"
 "\n"
-"\n"
-"Failisüsteemi sirvimine failihalduriga"
+"%s"
 
-#: ../src/Application.vala:187
-msgid "--quit cannot be used with URIs."
-msgstr "--quit võtit pole võimalik koos URI-dega kasutada."
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Failioperatsioonid"
 
-#: ../src/DesktopLauncher.vala:6
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "%s lõpetatud."
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "Kõik failihalduri tegevused said valmis"
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Kopeerimisdialoogi näitamine"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Kõikide töösolevate toimetuste katkestamine"
+
+#: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
 msgstr "Failide sirvimine"
 
-#: ../src/DesktopLauncher.vala:7
+#: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
 msgstr "Failihaldur"
 
-#: ../src/DesktopLauncher.vala:8
+#: ../src/DesktopLauncher.vala:23
 msgid "New _Window"
 msgstr "Uus _aken"
 
-#: ../src/DesktopLauncher.vala:9
+#: ../src/DesktopLauncher.vala:24
 msgid "New Window As _Administrator"
 msgstr "Uus aken _juurkasutajana"
 
-#: ../src/DesktopLauncher.vala:10
+#: ../src/DesktopLauncher.vala:25
 msgid "About _Files"
 msgstr "_Rakendusest..."
 
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Failid"
 
@@ -1974,47 +1965,47 @@ msgstr ""
 msgid "Unable to open files or uris with this app"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:136 ../src/ProgressUIHandler.vala:196
-msgid "File Operations"
-msgstr "Failioperatsioonid"
+#: ../src/Application.vala:144
+msgid "Show the version of the program."
+msgstr "Programmi versiooni näitamine."
 
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:190
-msgid "Completed %s"
-msgstr "%s lõpetatud."
+#: ../src/Application.vala:146
+msgid "Open uri(s) in new tab"
+msgstr "URI-de avamine uues aknas"
 
-#: ../src/ProgressUIHandler.vala:193
-msgid "All file operations have ended"
-msgstr "Kõik failihalduri tegevused said valmis"
+#: ../src/Application.vala:148 ../src/View/directory_view_popup.ui:83
+msgid "New Window"
+msgstr "Uues aknas"
 
-#: ../src/ProgressUIHandler.vala:238
-msgid "Show Copy Dialog"
-msgstr "Kopeerimisdialoogi näitamine"
+#: ../src/Application.vala:150
+msgid "Quit Files."
+msgstr "Välju Failidest"
 
-#: ../src/ProgressUIHandler.vala:250
-msgid "Cancel All In-progress Actions"
-msgstr "Kõikide töösolevate toimetuste katkestamine"
+#: ../src/Application.vala:152
+msgid "Enable debug logging"
+msgstr "Silumislogide lubamine"
+
+#: ../src/Application.vala:155
+msgid "[URI...]"
+msgstr "[URI...]"
+
+#: ../src/Application.vala:158
+msgid ""
+"\n"
+"\n"
+"Browse the file system with the file manager"
+msgstr ""
+"\n"
+"\n"
+"Failisüsteemi sirvimine failihalduriga"
+
+#: ../src/Application.vala:185
+msgid "--quit cannot be used with URIs."
+msgstr "--quit võtit pole võimalik koos URI-dega kasutada."
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "Lõikepuhver ei sisalda kleepimiseks andmeid"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Määra vaikimisi"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Ketta omadused"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Asukoht:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Vorming:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2107,6 +2098,11 @@ msgstr "Formaat:"
 msgid "Resolution:"
 msgstr "Resolutsioon:"
 
+#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+msgid "Location:"
+msgstr "Asukoht:"
+
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
 msgstr "Sihtkoht:"
@@ -2166,6 +2162,38 @@ msgstr[1] ""
 msgid "%s (%s, %s)"
 msgstr ""
 
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Määra vaikimisi"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Ketta omadused"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Vorming:"
+
+#: ../libcore/gof-directory-async.vala:588
+msgid "Server did not respond within time limit"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "\"%s\" algset asukohta pole võimalik tuvastada "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "Seda faili pole võimalik prügikastist taastada"
+
+#: ../libcore/FileUtils.vala:343
+msgid "Could not rename to '%s'"
+msgstr "Ümbernimetamine kui '%s' ebaõnnestus"
+
+#: ../libcore/FileUtils.vala:464
+msgid "%A at %-I:%M %p"
+msgstr ""
+
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "\"%s\"-i käivitamine ebaõnnestus"
@@ -2186,22 +2214,6 @@ msgstr "Loo otsetee siia"
 msgid "Cancel"
 msgstr "Loobu"
 
-#: ../libcore/FileUtils.vala:59
-msgid "Could not determine original location of \"%s\" "
-msgstr "\"%s\" algset asukohta pole võimalik tuvastada "
-
-#: ../libcore/FileUtils.vala:60
-msgid "The item cannot be restored from trash"
-msgstr "Seda faili pole võimalik prügikastist taastada"
-
-#: ../libcore/FileUtils.vala:342
-msgid "Could not rename to '%s'"
-msgstr "Ümbernimetamine kui '%s' ebaõnnestus"
-
-#: ../libcore/FileUtils.vala:463
-msgid "%A at %-I:%M %p"
-msgstr ""
-
 #: ../libwidgets/View/SearchResults.vala:178
 msgid "In This Folder"
 msgstr "Selles kaustas:"
@@ -2213,6 +2225,30 @@ msgstr "Järjehoidjad:"
 #: ../libwidgets/View/SearchResults.vala:182
 msgid "Everywhere Else"
 msgstr "Kõikjal süsteemis:"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Navigeerimine sihtkohta %s"
+
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Mine %s"
+
+#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+msgid "Type a path"
+msgstr "Sisesta asukoht"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Kuva võrgustikuna"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Kuva nimekirjana"
+
+#: ../libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Kuva veergudena"
 
 #: ../libwidgets/Resources.vala:30
 msgid "A simple and powerful file manager"
@@ -2257,30 +2293,6 @@ msgstr "Hiljutised"
 #: ../libwidgets/Resources.vala:92
 msgid "MTP"
 msgstr "MTP"
-
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
-msgid "Type a path"
-msgstr "Sisesta asukoht"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Kuva võrgustikuna"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Kuva nimekirjana"
-
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "Kuva veergudena"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Navigeerimine sihtkohta %s"
-
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:278
-msgid "Go to %s"
-msgstr "Mine %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

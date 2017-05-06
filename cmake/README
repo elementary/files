@@ -1,3 +1,5 @@
+Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+
         Elementary CMake modules
 
 This is a set of CMake modules: Translations, GSettings, and Vala modules.

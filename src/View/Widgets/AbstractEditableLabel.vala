@@ -46,16 +46,14 @@ namespace Marlin {
                      *  to commit Chinese/Japanese characters when using some input methods, without ending rename.
                      */ 
                     if (mods == 0) {
-                        editing_canceled = false;
-                        remove_widget (); /* also causes edited signal to be emitted by CellRenderer */
+                        end_editing (false);
                         return true;
                     }
 
                     break;
 
                 case Gdk.Key.Escape:
-                    editing_canceled = true;
-                    remove_widget (); /* also causes edited signal to be emitted by CellRenderer */
+                    end_editing (true);
                     return true;
 
                 case Gdk.Key.z:
@@ -72,6 +70,11 @@ namespace Marlin {
             return false;
         }
 
+        public void end_editing (bool cancelled) {
+            editing_canceled = cancelled;
+            remove_widget ();
+            editing_done ();
+        }
 
         public virtual void set_text (string text) {
             original_name = text;

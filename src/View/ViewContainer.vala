@@ -18,8 +18,8 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+    along with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1335 USA.
 ***/
 
 using Marlin;
@@ -81,6 +81,8 @@ namespace Marlin.View {
             }
         }
 
+        public bool is_loading {get; private set; default = false;}
+
         public OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
@@ -113,6 +115,9 @@ namespace Marlin.View {
             path_changed.connect (on_path_changed);
             window.folder_deleted.connect (on_folder_deleted);
             enter_notify_event.connect (on_enter_notify_event);
+            loading.connect ((loading) => {
+                is_loading = loading;
+            });
         }
 
         private void disconnect_signals () {
@@ -208,10 +213,11 @@ namespace Marlin.View {
             view_mode = mode;
             overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
 
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS)
+            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this, mode);
-            else
+            } else {
                 this.view = new Slot (loc, this, mode);
+            }
 
             connect_slot_signals (this.view);
             directory_is_loading (loc);
@@ -372,16 +378,19 @@ namespace Marlin.View {
                                                            _("You cannot create a folder here."));
                 } else if (!slot.directory.network_available) {
                     content = new Marlin.View.Welcome (_("The network is unavailable"),
-                                                       _("A working network is needed to reach this folder"));
+                                                       _("A working network is needed to reach this folder") + "\n\n" + slot.directory.last_error_message);
                 } else if (slot.directory.permission_denied) {
                     content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
                                                        _("You don't have permission to view this folder."));
                 } else if (!slot.directory.file.is_connected) {
                     content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
-                                                       _("Could not connect to the server for this folder."));
+                                                       _("Could not connect to the server for this folder.") + "\n\n" + slot.directory.last_error_message);
+                } else if (slot.directory.state == GOF.Directory.Async.State.TIMED_OUT) {
+                    content = new Marlin.View.Welcome (_("Unable to Display Folder Contents"),
+                                                       _("The operation timed out.") + "\n\n" + slot.directory.last_error_message);
                 } else {
                     content = new Marlin.View.Welcome (_("Unable to Show Folder"),
-                                                       _("The server for this folder could not be located."));
+                                                       _("The server for this folder could not be located.") + "\n\n" + slot.directory.last_error_message);
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {

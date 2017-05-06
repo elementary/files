@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-01-03 01:38+0000\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"PO-Revision-Date: 2017-02-18 14:04+0000\n"
 "Last-Translator: İbrahim Ethem Göl <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:15+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-05-06 05:41+0000\n"
+"X-Generator: Launchpad (build 18366)\n"
 
 msgid "Files"
 msgstr "Dosyalar"
+
+msgid "Browse your files"
+msgstr "Dosyalarınıza gözatın"
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr "klasör;yönetici;keşfet;disk;dosya sistemi;"
+
+msgid "File Manager"
+msgstr "Dosya Yöneticisi"
+
+msgid "New Window"
+msgstr "Yeni Pencere"
+
+msgid "New Window As Administrator"
+msgstr "Yönetici Olarak Yeni Pencere"
+
+msgid "About Files"
+msgstr "Dosyalar Hakkında"
 
 msgid "Browse and manage files and folders"
 msgstr "Dosya ve klasörlere göz atın ve yönetin"
@@ -34,6 +52,41 @@ msgstr ""
 "Dosyaları liste, ızgara veya sütun şeklinde görüntüleyip kolayca "
 "bulabilirsiniz.  Tüm dosyalarınıza erişebilir, yerel dosyalarınızı harici "
 "cihazla ya da FTP, SFTP, AFP, Webdav ve Windows ile paylaşabilirsiniz."
+
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+
+msgid "Remember preferred zoom level"
+msgstr ""
+
+msgid "Improved input method support"
+msgstr ""
+
+msgid "910x640 minimum window size"
+msgstr ""
+
+msgid "Security fixes"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr "Çeşitli kilitlenme düzeltmeleri"
+
+msgid "New translations"
+msgstr "Yeni çeviriler"
+
+msgid "Minor bug fixes"
+msgstr "Küçük hata düzeltmeleri"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Arama işlevselliğini Ctrl+F 'ye birleştir"
+
+msgid "Improved translation support"
+msgstr "Geliştirilmiş çeviri desteği"
 
 msgid "Fix appdata release dates"
 msgstr "Uygulama verisi sürüm tarihlerini düzelt"
@@ -51,20 +104,8 @@ msgstr ""
 msgid "Translation updates"
 msgstr "Çeviri güncellemeleri"
 
-msgid "Minor bug fixes"
-msgstr "Küçük hata düzeltmeleri"
+msgid "Run Pantheon Files as Administrator"
+msgstr "Dosyalar'ı yönetici olarak çalıştır."
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
-
-msgid "Improved translation support"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgid "Authentication is required to run Files as Administrator"
+msgstr "Dosyaları Yönetici olarak çalıştırmak için kimlik doğrulama gerekir"

@@ -14,8 +14,8 @@
 
     You should have received a copy of the GNU General Public
     License along with this program; see the file COPYING.  If not,
-    write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-    Boston, MA 02111-1307, USA.
+    write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1335 USA.
 
 ***/
 
@@ -25,7 +25,16 @@ namespace Marlin.View.Chrome
         private BreadcrumbsEntry bread;
         private SearchResults search_results;
         private GLib.File? search_location = null;
-        public bool search_mode {get; private set;}
+
+        public bool search_mode {
+            get {
+                return bread.search_mode;
+            }
+
+            private set {
+                bread.search_mode = value; //Ensure no path change requests from entry while searching
+            }
+        }
 
         public new bool sensitive {
             set {
