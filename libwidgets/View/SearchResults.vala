@@ -164,15 +164,10 @@ namespace Marlin.View.Chrome
 
             view = new Gtk.TreeView ();
             view.get_selection ().set_mode (Gtk.SelectionMode.BROWSE);
-            /* Do not select category headers */
-            view.get_selection ().set_select_function ((selection, list, path, path_selected) => {
-                return path.get_depth () != 0;
-            });
             view.headers_visible = false;
             view.show_expanders = false;
             view.level_indentation = 12;
-            /* Revert to no hover select as the search window is now much larger */
-            view.set_hover_selection (false);
+            view.set_hover_selection (true);
 
             get_style_context ().add_class ("completion-popup");
 
