@@ -144,8 +144,9 @@ gof_file_icon_changed (GOFFile *file)
     if (file->directory != NULL) {
         dir = gof_directory_async_cache_lookup (file->directory);
         if (dir != NULL) {
-            if (!file->is_hidden || gof_preferences_get_default ()->pref_show_hidden_files)
+            if (!file->is_hidden || gof_preferences_get_show_hidden_files (gof_preferences_get_default ())) {
                 g_signal_emit_by_name (dir, "icon_changed", file);
+            }
 
             g_object_unref (dir);
         }
@@ -695,7 +696,7 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
     _g_object_unref0 (file->pix);
     /* make sure we always got a non null pixbuf of the specified size */
     file->pix = gof_file_get_icon_pixbuf (file, size,
-                                          gof_preferences_get_default ()->pref_force_icon_size,
+                                          gof_preferences_get_force_icon_size (gof_preferences_get_default ()),
                                           GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     file->pix_size = size;
 }
@@ -1409,9 +1410,7 @@ gof_file_get_formated_time (GOFFile *file, const char *attr)
     g_return_val_if_fail (file != NULL, NULL);
     g_return_val_if_fail (file->info != NULL, NULL);
 
-    return pf_file_utils_get_formatted_time_attribute_from_info (file->info,
-                                                                 attr,
-                                                                 gof_preferences_get_default ()->pref_date_format);
+    return pf_file_utils_get_formatted_time_attribute_from_info (file->info, attr);
 }
 
 

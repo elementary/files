@@ -531,7 +531,7 @@ public class GOF.Directory.Async : Object {
         debug ("Listing cached files");  /* Required for ctest */
 
         state = State.LOADING;
-        bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
+        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
         foreach (GOF.File gof in file_hash.get_values ()) {
             if (gof != null) {
                 after_load_file (gof, show_hidden, file_loaded_func);
@@ -569,7 +569,7 @@ public class GOF.Directory.Async : Object {
         can_load = true;
         files_count = 0;
         state = State.LOADING;
-        bool show_hidden = is_trash || Preferences.get_default ().pref_show_hidden_files;
+        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
         bool server_responding = false;
 
         debug ("(Re)loading folder children"); /* Required for ctest */
@@ -710,7 +710,7 @@ public class GOF.Directory.Async : Object {
     public void update_files () {
         foreach (GOF.File gof in file_hash.get_values ()) {
             if (gof != null && gof.info != null
-                && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files))
+                && (!gof.is_hidden || Preferences.get_default ().show_hidden_files))
 
                 gof.update ();
         }
@@ -719,7 +719,7 @@ public class GOF.Directory.Async : Object {
     public void update_desktop_files () {
         foreach (GOF.File gof in file_hash.get_values ()) {
             if (gof != null && gof.info != null
-                && (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)
+                && (!gof.is_hidden || Preferences.get_default ().show_hidden_files)
                 && gof.is_desktop)
 
                 gof.update_desktop_file ();
@@ -791,7 +791,7 @@ public class GOF.Directory.Async : Object {
 
         gof.update ();
 
-        if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files) {
+        if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
             file_changed (gof);
             gof.changed ();
         }
@@ -809,7 +809,7 @@ public class GOF.Directory.Async : Object {
 
         gof.update ();
 
-        if ((!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files)) {
+        if ((!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
             file_added (gof);
         }
 
@@ -836,7 +836,7 @@ public class GOF.Directory.Async : Object {
     }
 
     private void notify_file_removed (GOF.File gof) {
-        if (!gof.is_hidden || Preferences.get_default ().pref_show_hidden_files) {
+        if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
             file_deleted (gof);
         }
 
