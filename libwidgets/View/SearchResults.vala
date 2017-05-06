@@ -909,7 +909,6 @@ namespace Marlin.View.Chrome
             File f = folder;
             var path_string = "";
 
-
             while (f != null && !f.equal (current_root)) {
                 path_string = f.get_basename () + (path_string == "" ? "" : Path.DIR_SEPARATOR_S + path_string);
                 f = f.get_parent ();
@@ -975,13 +974,11 @@ namespace Marlin.View.Chrome
                     return false;
                 });
 
-
                 if (category_count >= MAX_RESULTS) {
                     cat = in_root ? Category.CURRENT_ELLIPSIS : Category.DEEP_ELLIPSIS;
                     new_results.add (new Match.ellipsis (cat));
                     return;
                 }
-
 
                 if (current_count >= MAX_RESULTS && deep_count >= MAX_RESULTS) {
                     cancel.cancel ();
