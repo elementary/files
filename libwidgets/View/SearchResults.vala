@@ -28,8 +28,7 @@ namespace Marlin.View.Chrome
             public Icon icon { get; construct; }
             public File? file { get; construct; }
 
-            public Match (FileInfo info, string path_string, File parent)
-            {
+            public Match (FileInfo info, string path_string, File parent) {
                 Object (name: info.get_display_name (),
                         mime: info.get_content_type (),
                         icon: info.get_icon (),
@@ -37,8 +36,7 @@ namespace Marlin.View.Chrome
                         file: parent.resolve_relative_path (info.get_name ()));
             }
 
-            public Match.from_bookmark (Bookmark bookmark)
-            {
+            public Match.from_bookmark (Bookmark bookmark) {
                 Object (name: bookmark.label,
                         mime: "inode/directory",
                         icon: bookmark.get_icon (),
@@ -46,8 +44,7 @@ namespace Marlin.View.Chrome
                         file: bookmark.get_location ());
             }
 
-            public Match.ellipsis ()
-            {
+            public Match.ellipsis () {
                 Object (name: "...",
                         mime: "",
                         icon: null,
@@ -667,8 +664,9 @@ namespace Marlin.View.Chrome
                         }
                     }
 
-                    if (already_added)
+                    if (already_added) {
                         continue;
+                    }
                 } else if (parent == local_results) {
                     for (var valid = list.iter_nth_child (out iter, global_results, 0); valid;
                         valid = list.iter_next (ref iter)) {
@@ -683,7 +681,7 @@ namespace Marlin.View.Chrome
                 }
 
                 var location = "<span %s>%s</span>".printf (get_pango_grey_color_string (),
-                    Markup.escape_text (match.path_string));
+                                                            Markup.escape_text (match.path_string));
 
                 list.append (out iter, parent);
                 list.@set (iter, 0, Markup.escape_text (match.name), 1, match.icon, 2, location, 3, match.file, 4, true);
@@ -810,8 +808,7 @@ namespace Marlin.View.Chrome
                             FileAttribute.STANDARD_TYPE + "," +
                             FileAttribute.STANDARD_ICON;
 
-        void visit (string term, bool include_hidden, Cancellable cancel)
-        {
+        void visit (string term, bool include_hidden, Cancellable cancel) {
 
             FileEnumerator enumerator;
             var folder = directory_queue.poll ();
@@ -956,15 +953,15 @@ namespace Marlin.View.Chrome
                 }
             }
 
-            if (!current_operation.is_cancelled ())
+            if (!current_operation.is_cancelled ()) {
                 add_results (matches, global_results);
+            }
 
             global_search_finished = true;
             Idle.add (send_search_finished);
         }
 
-        bool term_matches (string term, string name)
-        {
+        bool term_matches (string term, string name) {
             /**TODO** improve */
             /* term is assumed to be down */
             return name.normalize ().casefold ().contains (term);
