@@ -258,6 +258,7 @@ public class Marlin.Application : Granite.Application {
         Preferences.marlin_icon_view_settings = new Settings ("org.pantheon.files.icon-view");
         Preferences.marlin_list_view_settings = new Settings ("org.pantheon.files.list-view");
         Preferences.marlin_column_view_settings = new Settings ("org.pantheon.files.column-view");
+        Preferences.gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
 
         /* Bind settings with GOFPreferences */
         Preferences.settings.bind ("show-hiddenfiles",
@@ -270,6 +271,8 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("force-icon-size",
                                    GOF.Preferences.get_default (), "force-icon-size", GLib.SettingsBindFlags.DEFAULT);
+        Preferences.gnome_interface_settings.bind ("clock-format",
+                                   GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
     }
 
     private void open_windows (File[]? files) {

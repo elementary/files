@@ -1361,7 +1361,7 @@ job_aborted (CommonJob *job)
 static gboolean
 should_confirm_trash (void)
 {
-    return gof_preferences_get_default ()->pref_confirm_trash;
+    return gof_preferences_get_confirm_trash (gof_preferences_get_default ());
 }
 
 static gboolean
