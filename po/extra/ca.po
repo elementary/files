@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2016-11-10 17:59+0000\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"PO-Revision-Date: 2017-03-27 14:58+0000\n"
 "Last-Translator: Davidmp <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <ca@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:14+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-05-06 05:41+0000\n"
+"X-Generator: Launchpad (build 18366)\n"
 
 msgid "Files"
 msgstr "Fitxers"
+
+msgid "Browse your files"
+msgstr "Navegueu pels fitxers"
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr "carpeta;gestor;explora;disc;sistema de fitxers;"
+
+msgid "File Manager"
+msgstr "Gestors de fitxers"
+
+msgid "New Window"
+msgstr "Finestra nova"
+
+msgid "New Window As Administrator"
+msgstr "Finestra nova com a administrador"
+
+msgid "About Files"
+msgstr "Quant a Fitxers"
 
 msgid "Browse and manage files and folders"
 msgstr "Gestioneu fitxers i carpetes"
@@ -36,6 +54,43 @@ msgstr ""
 "de forma remota a través d'FTP, SFTP, AFP, WebDAV o d'un recurs compartit de "
 "Windows."
 
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+"Els navegadors com ara el Firefox ara recorden el directori de baixades usat "
+"recentment."
+
+msgid "Remember preferred zoom level"
+msgstr "Recorda el nivell d'ampliació preferit."
+
+msgid "Improved input method support"
+msgstr "S'ha millorat el suport del mètode d'entrada"
+
+msgid "910x640 minimum window size"
+msgstr "910x640, mida mínima de la finestra"
+
+msgid "Security fixes"
+msgstr "Correccions de seguretat"
+
+msgid "Various crash fixes"
+msgstr "Diverses correccions de fallades"
+
+msgid "New translations"
+msgstr "Traduccions noves"
+
+msgid "Minor bug fixes"
+msgstr "Correccions d'errors menors"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr "Habilita poder arrossegar i deixar anar pestanyes entre finestres."
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Fusió de la funcionalitat de cerca amb Ctrl+F"
+
+msgid "Improved translation support"
+msgstr "Millora del suport de traducció"
+
 msgid "Fix appdata release dates"
 msgstr "Corregeix les datesde les dades de la versió"
 
@@ -52,20 +107,8 @@ msgstr ""
 msgid "Translation updates"
 msgstr "Actualitzacions de traducció"
 
-msgid "Minor bug fixes"
-msgstr "Correccions d'errors menors"
+msgid "Run Pantheon Files as Administrator"
+msgstr "Executa el Fitxers del Pantheon com a administrador"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
-
-msgid "Improved translation support"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgid "Authentication is required to run Files as Administrator"
+msgstr "Cal autenticació per executar el Fitxers com a administrador."

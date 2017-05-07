@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2016-10-21 02:07+0000\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"PO-Revision-Date: 2017-03-13 08:25+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:15+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-05-06 05:41+0000\n"
+"X-Generator: Launchpad (build 18366)\n"
 
 msgid "Files"
 msgstr "文件"
+
+msgid "Browse your files"
+msgstr "浏览您的文件"
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr "文件夹;管理;浏览;磁盘;文件系统;"
+
+msgid "File Manager"
+msgstr "文件管理器"
+
+msgid "New Window"
+msgstr "新建窗口"
+
+msgid "New Window As Administrator"
+msgstr "新建管理员窗口"
+
+msgid "About Files"
+msgstr "关于 文件"
 
 msgid "Browse and manage files and folders"
 msgstr "浏览和管理您的文件"
@@ -31,6 +49,41 @@ msgid ""
 msgstr ""
 "用文件夹保持文件整洁有序，在自己喜欢的视图中快速找到文件，轻松完成复制、移动和删除文件等操作。无论是内置硬盘中的文件，还是外接设备、远程设备中的文件，统统"
 "不在话下。"
+
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr "网页浏览器（如 Firefox）记忆常用下载位置"
+
+msgid "Remember preferred zoom level"
+msgstr "记忆缩放等级"
+
+msgid "Improved input method support"
+msgstr "改进输入法支持"
+
+msgid "910x640 minimum window size"
+msgstr "最小窗口尺寸 910x640"
+
+msgid "Security fixes"
+msgstr "安全修复"
+
+msgid "Various crash fixes"
+msgstr "多项崩溃修复"
+
+msgid "New translations"
+msgstr "更新翻译"
+
+msgid "Minor bug fixes"
+msgstr "细节修复"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr "新增窗口间标签拖放"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Ctrl + F 打开搜索功能"
+
+msgid "Improved translation support"
+msgstr "改进翻译支持"
 
 msgid "Fix appdata release dates"
 msgstr "修正应用数据发布日期"
@@ -47,20 +100,8 @@ msgstr "提高上下文菜单中“剪切、复制、粘贴”的响应速度"
 msgid "Translation updates"
 msgstr "翻译更新"
 
-msgid "Minor bug fixes"
-msgstr "细节修复"
+msgid "Run Pantheon Files as Administrator"
+msgstr "以管理员身份运行文件管理器"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
-
-msgid "Improved translation support"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgid "Authentication is required to run Files as Administrator"
+msgstr "以管理员身份运行文件管理器需要进行验证"

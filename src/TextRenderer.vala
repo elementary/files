@@ -49,25 +49,27 @@ namespace Marlin {
 
         Pango.Layout layout;
         Gtk.Widget widget;
-        public Marlin.AbstractEditableLabel entry;
+        Marlin.AbstractEditableLabel entry;
+
+        construct {
+            this.mode = Gtk.CellRendererMode.EDITABLE;
+        }
 
         public TextRenderer (Marlin.ViewMode viewmode) {
-            this.mode = Gtk.CellRendererMode.EDITABLE;
-
-            if (viewmode == Marlin.ViewMode.ICON)
+            if (viewmode == Marlin.ViewMode.ICON) {
                 entry = new Marlin.MultiLineEditableLabel ();
-            else
+            } else {
                 entry = new Marlin.SingleLineEditableLabel ();
+            }
 
             entry.editing_done.connect (on_entry_editing_done);
-            entry.get_real_editable ().focus_out_event.connect_after (on_entry_focus_out_event);
         }
 
         public override void get_preferred_height_for_width (Gtk.Widget widget, int width, out int minimum_size, out int natural_size) {
             set_widget (widget);
             set_up_layout (text, width);
 
-            int h = char_height;
+            int h = int.max (16, char_height) + 2 * (int)ypad;
 
             natural_size = int.max (h, text_height) + h;
             minimum_size = natural_size;
@@ -196,6 +198,10 @@ namespace Marlin {
             return entry as Gtk.CellEditable;
         }
 
+        public void end_editing (bool cancel) {
+            entry.end_editing (cancel);
+        }
+
         private void set_widget (Gtk.Widget? _widget) {
             Pango.FontMetrics metrics;
             Pango.Context context;
@@ -261,11 +267,6 @@ namespace Marlin {
                 edited (path, text);
             }
             file = null;
-        }
-
-        private bool on_entry_focus_out_event (Gdk.Event event) {
-            on_entry_editing_done ();
-            return false;
         }
 
         private void draw_focus (Cairo.Context cr,

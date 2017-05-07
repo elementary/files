@@ -7,27 +7,80 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-02-04 22:01+0000\n"
-"Last-Translator: Rokar <Unknown>\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"PO-Revision-Date: 2017-05-04 19:50+0000\n"
+"Last-Translator: Rokar ✌ <Unknown>\n"
 "Language-Team: Kurdish <ku@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-02-05 05:39+0000\n"
-"X-Generator: Launchpad (build 18322)\n"
+"X-Launchpad-Export-Date: 2017-05-06 05:41+0000\n"
+"X-Generator: Launchpad (build 18366)\n"
 
 msgid "Files"
 msgstr "Dosya"
 
-msgid "Browse and manage files and folders"
+msgid "Browse your files"
+msgstr "Çav li pelên xwe bike"
+
+msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
+
+msgid "File Manager"
+msgstr "Rêveberiya Pelan"
+
+msgid "New Window"
+msgstr "Paceya nû"
+
+msgid "New Window As Administrator"
+msgstr "Paceyek Nû Weke Rêvebir Veke"
+
+msgid "About Files"
+msgstr "Derbarê Pelan de"
+
+msgid "Browse and manage files and folders"
+msgstr "Pelan û Peldankan çav lê bike û rêvebibe"
 
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
+msgstr ""
+
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+
+msgid "Remember preferred zoom level"
+msgstr ""
+
+msgid "Improved input method support"
+msgstr ""
+
+msgid "910x640 minimum window size"
+msgstr ""
+
+msgid "Security fixes"
+msgstr "Sererastkirinên ewlehiyê"
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr "Wergerên Nû"
+
+msgid "Minor bug fixes"
+msgstr "çêkirina biçûke çewtî"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
 msgstr ""
 
 msgid "Fix appdata release dates"
@@ -43,22 +96,10 @@ msgid "Improve cut/copy/paste sensitivity in context menu"
 msgstr ""
 
 msgid "Translation updates"
-msgstr ""
+msgstr "rojanekirina wergerrandin"
 
-msgid "Minor bug fixes"
-msgstr ""
+msgid "Run Pantheon Files as Administrator"
+msgstr "Panthenon Files'ê Weke Rêvebir karbîne"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
-
-msgid "Improved translation support"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
+msgid "Authentication is required to run Files as Administrator"
 msgstr ""

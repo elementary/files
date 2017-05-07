@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2016-11-04 01:20+0000\n"
-"Last-Translator: Chamuth Chamandana <Unknown>\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"PO-Revision-Date: 2017-04-15 02:41+0000\n"
+"Last-Translator: Srimal Priyanga <s.priyanga22@gmail.com>\n"
 "Language-Team: Sinhalese <si@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:15+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-05-06 05:41+0000\n"
+"X-Generator: Launchpad (build 18366)\n"
 
 msgid "Files"
 msgstr "ගොනු"
+
+msgid "Browse your files"
+msgstr "ඔබේ ගොනු විමසන්න"
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr ""
+
+msgid "File Manager"
+msgstr "ගොනු කළමනාකරු"
+
+msgid "New Window"
+msgstr "නව කවුළුව"
+
+msgid "New Window As Administrator"
+msgstr "පරිපාලක ලෙස නව කවුළුව"
+
+msgid "About Files"
+msgstr "ගොනු සම්බන්දව"
 
 msgid "Browse and manage files and folders"
 msgstr "ලිපි ගොනු සොයා බලා, කළමනාකරණය කරන්න"
@@ -28,6 +46,41 @@ msgid ""
 "Whether you like files in lists, grids or columns, you can always find them "
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
+msgstr ""
+
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+
+msgid "Remember preferred zoom level"
+msgstr ""
+
+msgid "Improved input method support"
+msgstr ""
+
+msgid "910x640 minimum window size"
+msgstr ""
+
+msgid "Security fixes"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr "නව පරිවර්තනය"
+
+msgid "Minor bug fixes"
+msgstr ""
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
 msgstr ""
 
 msgid "Fix appdata release dates"
@@ -45,20 +98,8 @@ msgstr ""
 msgid "Translation updates"
 msgstr ""
 
-msgid "Minor bug fixes"
+msgid "Run Pantheon Files as Administrator"
 msgstr ""
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
-
-msgid "Improved translation support"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
+msgid "Authentication is required to run Files as Administrator"
 msgstr ""
