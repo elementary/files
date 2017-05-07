@@ -154,9 +154,15 @@ namespace Marlin.View.Chrome
 
             view.append_column (column);
 
-            list = new Gtk.TreeStore (5, typeof (string), typeof (GLib.Icon),
-                typeof (string), typeof (File), typeof (bool));
+            list = new Gtk.TreeStore (5,
+                                      typeof (string),       /*0 file basename or category name */
+                                      typeof (GLib.Icon),    /*1 file icon */
+                                      typeof (string),       /*2 file location */
+                                      typeof (File),         /*3 file object */
+                                      typeof (bool));        /*4 icon is visible */
+
             filter = new Gtk.TreeModelFilter (list, null);
+
             filter.set_visible_func ((model, iter) => {
                 if (iter == no_results_label)
                     return n_results < 1;
@@ -164,6 +170,7 @@ namespace Marlin.View.Chrome
                 /* hide empty category headers */
                 return list.iter_depth (iter) != 0 || list.iter_has_child (iter);
             });
+
             view.model = filter;
 
             list.row_changed.connect ((path, iter) => {
@@ -176,11 +183,16 @@ namespace Marlin.View.Chrome
             });
 
             list.append (out local_results, null);
-            list.@set (local_results, 0, get_category_header (_("In This Folder")));
+            list.@set (local_results,
+                        0, get_category_header (_("In This Folder")));
+
             list.append (out bookmark_results, null);
-            list.@set (bookmark_results, 0, get_category_header (_("Bookmarks")));
+            list.@set (bookmark_results,
+                        0, get_category_header (_("Bookmarks")));
+
             list.append (out global_results, null);
-            list.@set (global_results, 0, get_category_header (_("Everywhere Else")));
+            list.@set (global_results,
+                        0, get_category_header (_("Everywhere Else")));
 
             scroll.add (view);
             frame.add (scroll);
@@ -287,17 +299,17 @@ namespace Marlin.View.Chrome
                 return null;
             });
 
-                get_zg_results.begin (search_term);
+            get_zg_results.begin (search_term);
 
-                var bookmarks_matched = new Gee.LinkedList<Match> ();
+            var bookmarks_matched = new Gee.LinkedList<Match> ();
 
-                foreach (var bookmark in BookmarkList.get_instance ().list) {
-                    if (term_matches (search_term, bookmark.label)) {
-                        bookmarks_matched.add (new Match.from_bookmark (bookmark));
-                    }
+            foreach (var bookmark in BookmarkList.get_instance ().list) {
+                if (term_matches (search_term, bookmark.label)) {
+                    bookmarks_matched.add (new Match.from_bookmark (bookmark));
                 }
+            }
 
-                add_results (bookmarks_matched, bookmark_results);
+            add_results (bookmarks_matched, bookmark_results);
         }
 
         /** Signal handlers **/
@@ -649,10 +661,9 @@ namespace Marlin.View.Chrome
                 return;
             }
 
-            Gtk.TreeIter iter;
-            File file;
-
             foreach (var match in new_results) {
+                Gtk.TreeIter iter;
+                File file;
                 /* prevent results from showing in both global and local results */
                 if (parent == global_results) {
                     var already_added = false;
@@ -825,6 +836,7 @@ namespace Marlin.View.Chrome
 
             File f = folder;
             var path_string = "";
+
             while (!f.equal (current_root)) {
                 path_string = f.get_basename () + (path_string == "" ? "" : Path.DIR_SEPARATOR_S + path_string);
                 f = f.get_parent ();
@@ -844,8 +856,11 @@ namespace Marlin.View.Chrome
             var new_results = new Gee.LinkedList<Match> ();
 
             FileInfo info = null;
+
             try {
-                while (!cancel.is_cancelled () && (info = enumerator.next_file (null)) != null) {
+                while (!cancel.is_cancelled () &&
+                       (info = enumerator.next_file (null)) != null) {
+
                     if (info.get_is_hidden () && !include_hidden) {
                         continue;
                     }
@@ -918,10 +933,9 @@ namespace Marlin.View.Chrome
                 return;
             }
 
-            var i = 0;
-
             var matches = new Gee.LinkedList<Match> ();
             var home = File.new_for_path (Environment.get_home_dir ());
+            var i = 0;
             while (results.has_next () && !current_operation.is_cancelled ()) {
                 var result = results.next_value ();
                 foreach (var subject in result.subjects.data) {
