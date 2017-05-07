@@ -163,11 +163,15 @@ namespace Marlin.View.Chrome
             scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
 
             view = new Gtk.TreeView ();
-            view.get_selection ().set_mode (Gtk.SelectionMode.BROWSE);
             view.headers_visible = false;
-            view.show_expanders = false;
             view.level_indentation = 12;
-            view.set_hover_selection (true);
+            view.show_expanders = false;
+            view.get_selection ().set_mode (Gtk.SelectionMode.BROWSE);
+
+            /* Do not select category headers */
+            view.get_selection ().set_select_function ((selection, list, path, path_selected) => {
+                return path.get_depth () != 0;
+            });
 
             get_style_context ().add_class ("completion-popup");
 
