@@ -180,15 +180,15 @@ namespace Marlin.View.Chrome
 
             list.append (out local_results, null);
             list.@set (local_results,
-                            0, get_category_header (_("In This Folder")));
+                        0, get_category_header (_("In This Folder")));
 
             list.append (out bookmark_results, null);
             list.@set (bookmark_results,
-                            0, get_category_header (_("Bookmarks")));
+                        0, get_category_header (_("Bookmarks")));
 
             list.append (out global_results, null);
             list.@set (global_results,
-                            0, get_category_header (_("Everywhere Else")));
+                        0, get_category_header (_("Everywhere Else")));
 
             scroll.add (view);
             frame.add (scroll);
