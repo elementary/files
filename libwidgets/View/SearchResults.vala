@@ -225,23 +225,23 @@ namespace Marlin.View.Chrome
 
             list.append (out current_results, null);
             list.@set (current_results,
-                            0, get_category_header (_("In This Folder")),
-                            5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+                        0, get_category_header (_("In This Folder")),
+                        5, SearchResults.category_to_string (Category.CURRENT_HEADER));
 
             list.append (out deep_results, null);
             list.@set (deep_results,
-                            0, get_category_header (_("Below This Folder")),
-                            5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+                        0, get_category_header (_("Below This Folder")),
+                        5, SearchResults.category_to_string (Category.CURRENT_HEADER));
 
             list.append (out bookmark_results, null);
             list.@set (bookmark_results,
-                            0, get_category_header (_("Bookmarks")),
-                            5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+                        0, get_category_header (_("Bookmarks")),
+                        5, SearchResults.category_to_string (Category.CURRENT_HEADER));
 
             list.append (out zeitgeist_results, null);
             list.@set (zeitgeist_results,
-                            0, get_category_header (_("Recently used")),
-                            5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+                        0, get_category_header (_("Recently used")),
+                        5, SearchResults.category_to_string (Category.CURRENT_HEADER));
 
             scroll.add (view);
             frame.add (scroll);
@@ -1018,8 +1018,8 @@ namespace Marlin.View.Chrome
             var home = File.new_for_path (Environment.get_home_dir ());
             Category cat;
             var i = 0;
-            while (results.has_next () && !current_operation.is_cancelled () && !global_search_finished) {
 
+            while (results.has_next () && !current_operation.is_cancelled () && !global_search_finished) {
                 var result = results.next_value ();
                 foreach (var subject in result.subjects.data) {
                     if (i == MAX_RESULTS) {
