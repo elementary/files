@@ -1,11 +1,11 @@
 /* nautilus-file-operations: execute file operations.
  *
- * Copyright (C) 1999, 2000 Free Software Foundation
+ * Copyright (C) 1999, 2000 Free Software Foundation, Inc.,
  * Copyright (C) 2000, 2001 Eazel, Inc.
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation, Inc.,; either version 2 of the
  * License, or (at your option) any later version.
  *
  * This program is distributed in the hope that it will be useful,
@@ -15,8 +15,8 @@
  *
  * You should have received a copy of the GNU General Public
  * License along with this program; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
+ * Boston, MA 02110-1335 USA.
  *
  * Authors: Ettore Perazzoli <ettore@gnu.org>,
  *          Pavel Cisler <pavel@eazel.com>
@@ -1361,7 +1361,7 @@ job_aborted (CommonJob *job)
 static gboolean
 should_confirm_trash (void)
 {
-    return gof_preferences_get_default ()->pref_confirm_trash;
+    return gof_preferences_get_confirm_trash (gof_preferences_get_default ());
 }
 
 static gboolean

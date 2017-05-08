@@ -430,15 +430,15 @@ namespace Marlin.Places {
             return iter;
         }
 
-        public bool has_place (string uri) {
+        public bool has_bookmark (string uri) {
             bool found = false;
 
             store.@foreach ((model, path, iter) => {
                 string u;
-                model.@get (iter, Column.URI, out u);
-                if (u == null) { /* Category entries etc have null uri, for example */
-                    return false;
-                } else if (u == uri) {
+                bool is_bookmark;
+
+                model.@get (iter, Column.URI, out u, Column.BOOKMARK, out is_bookmark);
+                if (is_bookmark && u == uri) {
                     found = true;
                     return true;
                 } else {
@@ -610,7 +610,7 @@ namespace Marlin.Places {
 
                 var mount = volume.get_mount ();
                 if (mount != null) {
-                    root = mount.get_default_location ();
+                    root = mount.get_root ();
                     last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                            iter,
                                            mount.get_name (),
@@ -649,7 +649,7 @@ namespace Marlin.Places {
                 if (volume != null)
                     continue;
 
-                root = mount.get_default_location ();
+                root = mount.get_root ();
                 if (root.is_native ()) {
                     string scheme = root.get_uri_scheme ();
                     if (scheme == "archive" ) {
@@ -676,17 +676,17 @@ namespace Marlin.Places {
             }
 
             if (!is_admin) {
-            /* ADD NETWORK CATEGORY */
+                /* ADD NETWORK CATEGORY */
+                iter = add_category (Marlin.PlaceType.NETWORK_CATEGORY,
+                                     _("Network"),
+                                     _("Your network places"));
 
-            iter = add_category (Marlin.PlaceType.NETWORK_CATEGORY,
-                                 _("Network"),
-                                 _("Your network places"));
+                network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
 
-            network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
                 /* Add network mounts */
                 network_mounts.reverse ();
                 foreach (Mount mount in network_mounts) {
-                    root = mount.get_default_location ();
+                    root = mount.get_root ();
                     /* get_smb_share_from_uri will return the uri unaltered if does not have
                      * the smb scheme so we need not test.  This is required because the mount
                      * does not return the true root location of the share but the location used
@@ -723,8 +723,6 @@ namespace Marlin.Places {
                 plugins.update_sidebar ((Gtk.Widget)this);
             }
 
-
-
             expander_init_pref_state (tree_view);
 
             /* select any previously selected place or any place matching slot location */
@@ -760,7 +758,7 @@ namespace Marlin.Places {
                 var mount = volume.get_mount ();
                 if (mount != null) {
                     /* show mounted volume in sidebar */
-                    var root = mount.get_default_location ();
+                    var root = mount.get_root ();
                     last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                            iter,
                                            mount.get_name (),
@@ -1323,7 +1321,7 @@ namespace Marlin.Places {
                     volume.mount.end (res);
                     Mount mount = volume.get_mount ();
                     if (mount != null) {
-                        var location = mount.get_default_location ();
+                        var location = mount.get_root ();
                         if (flags == Marlin.OpenFlag.NEW_WINDOW) {
                             var app = Marlin.Application.get ();
                             app.create_window (location);

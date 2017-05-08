@@ -7,18 +7,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-01-27 17:40+0000\n"
-"Last-Translator: Félix Brezo <felixbrezo@gmail.com>\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"PO-Revision-Date: 2017-03-12 11:55+0000\n"
+"Last-Translator: Jose Antonio Velasco <velascopja@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-28 05:51+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-05-06 05:41+0000\n"
+"X-Generator: Launchpad (build 18366)\n"
 
 msgid "Files"
 msgstr "Archivos"
+
+msgid "Browse your files"
+msgstr "Examine sus archivos"
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr ""
+"carpeta;gestor;explorar;disco;sistema de archivos;sistema de ficheros;"
+
+msgid "File Manager"
+msgstr "Gestor de archivos"
+
+msgid "New Window"
+msgstr "Nueva ventana"
+
+msgid "New Window As Administrator"
+msgstr "Nueva ventana como administrador"
+
+msgid "About Files"
+msgstr "Acerca de Archivos"
 
 msgid "Browse and manage files and folders"
 msgstr "Explora y administra archivos y carpetas"
@@ -36,6 +55,43 @@ msgstr ""
 "dispositivo externo o remotamente utilizando FTP, SFTP, AFP, Webdav o "
 "Windows Share."
 
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+"Los navegadores web como Firefox ahora recuerdan el directorio de descargas "
+"usado más recientemente"
+
+msgid "Remember preferred zoom level"
+msgstr "Recordar el nivel de zoom preferido"
+
+msgid "Improved input method support"
+msgstr "Soporte mejorado para método de entrada"
+
+msgid "910x640 minimum window size"
+msgstr "Tamaño mínimo de ventana de 910x640"
+
+msgid "Security fixes"
+msgstr "Actualizaciones de seguridad"
+
+msgid "Various crash fixes"
+msgstr "Corrección de varios errores"
+
+msgid "New translations"
+msgstr "Nuevas traducciones"
+
+msgid "Minor bug fixes"
+msgstr "Reparar errores menores"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr "Permitir arrastrar y soltar pestañas entre ventanas"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Fusionar la función de búsqueda con Ctrl+F"
+
+msgid "Improved translation support"
+msgstr "Mejoras de traducciones"
+
 msgid "Fix appdata release dates"
 msgstr "Reparar las fechas de lanzamiento de appdata"
 
@@ -51,20 +107,8 @@ msgstr "Mejorar la sensibilidad del menú contextual  cortar/copiar/pegar"
 msgid "Translation updates"
 msgstr "Actualización de traducciones"
 
-msgid "Minor bug fixes"
-msgstr "Reparar errores menores"
+msgid "Run Pantheon Files as Administrator"
+msgstr "Ejecutar Archivos como administrador"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Fusionar la función de búsqueda con Ctrl+F"
-
-msgid "Improved translation support"
-msgstr "Mejoras de traducciones"
-
-msgid "Various crash fixes"
-msgstr "Corrección de varios errores"
-
-msgid "New translations"
-msgstr "Nuevas traducciones"
-
-msgid "Enable drag and drop tabs between windows"
-msgstr "Permitir arrastrar y soltar pestañas entre ventanas"
+msgid "Authentication is required to run Files as Administrator"
+msgstr "Es necesario autenticarse para lanzar Archivos como administrador"
