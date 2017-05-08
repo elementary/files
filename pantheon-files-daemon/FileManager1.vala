@@ -51,7 +51,7 @@ public class FileManager1 : Object {
                                                            null,
                                                            AppInfoCreateFlags.NONE);
         } catch (Error e) {
-            var msg = "Unable to open item or folder with command %s. ".printf (cmd) + e.message;
+            var msg = "Unable to open item or folder with command %s. %s".printf (cmd, e.message);
             throw new IOError.FAILED (msg);
         }
 
@@ -59,7 +59,7 @@ public class FileManager1 : Object {
             try {
                 pf_app_info.launch (null, null);
             } catch (Error e) {
-                var msg = "Unable to open item or folder with command %s. ".printf (cmd) + e.message;
+                var msg = "Unable to open item or folder with command %s. %s".printf (cmd, e.message);
                 throw new IOError.FAILED (msg);
             }
         }
