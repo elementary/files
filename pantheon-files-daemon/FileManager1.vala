@@ -31,7 +31,8 @@ public class FileManager1 : Object {
 
     [DBus (name = "ShowItemProperties")]
     public void show_item_properties (string[] uris, string startup_id)  throws DBusError, IOError {
-        /* To be implemented */
+        var msg = "ShowItemProperties method not currently supported by Files.";
+        throw new DBusError.NOT_SUPPORTED (msg);
     }
 
     private void open_items_and_folders (string[] uris, string startup_id) throws DBusError, IOError {
@@ -49,12 +50,18 @@ public class FileManager1 : Object {
             pf_app_info = AppInfo.create_from_commandline (cmd,
                                                            null,
                                                            AppInfoCreateFlags.NONE);
-        } catch (Error e) {}
+        } catch (Error e) {
+            var msg = "Unable to open item or folder with command %s. ".printf (cmd) + e.message;
+            throw new IOError.FAILED (msg);
+        }
 
         if (pf_app_info != null) {
             try {
                 pf_app_info.launch (null, null);
-            } catch (Error e) {}
+            } catch (Error e) {
+                var msg = "Unable to open item or folder with command %s. ".printf (cmd) + e.message;
+                throw new IOError.FAILED (msg);
+            }
         }
     }
 }
