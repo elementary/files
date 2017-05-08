@@ -273,7 +273,6 @@ namespace Marlin.View {
             assert (loc != null);
             var old_dir = directory;
             set_up_directory (loc);
-            dir_view.change_directory (old_dir, directory);
 
             path_changed (allow_mode_change && directory.uri_contain_keypath_icons);
             /* ViewContainer listens to this signal takes care of updating appearance

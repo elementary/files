@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2016-10-30 08:32+0000\n"
-"Last-Translator: Vladislav <mars-d@ex.ua>\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"PO-Revision-Date: 2017-02-19 15:52+0000\n"
+"Last-Translator: neiron13 <Unknown>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:15+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-05-06 05:41+0000\n"
+"X-Generator: Launchpad (build 18366)\n"
 
 msgid "Files"
 msgstr "Файли"
+
+msgid "Browse your files"
+msgstr "Переглянути свої файли"
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr "тека;менеджер;огляд;диск;файлова система;"
+
+msgid "File Manager"
+msgstr "Файловий менеджер"
+
+msgid "New Window"
+msgstr "Нове вікно"
+
+msgid "New Window As Administrator"
+msgstr "Нове вікно Як адміністратор"
+
+msgid "About Files"
+msgstr "Про файли"
 
 msgid "Browse and manage files and folders"
 msgstr "Перегляд та редагування файли та теки"
@@ -29,6 +47,41 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
+
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+
+msgid "Remember preferred zoom level"
+msgstr ""
+
+msgid "Improved input method support"
+msgstr ""
+
+msgid "910x640 minimum window size"
+msgstr ""
+
+msgid "Security fixes"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr "Нові переклади"
+
+msgid "Minor bug fixes"
+msgstr "Незначні виправлення"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr "Увімкнення перетягування вкладок між вікнами"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
+msgstr "Покращена підтримка перекладу"
 
 msgid "Fix appdata release dates"
 msgstr ""
@@ -43,22 +96,10 @@ msgid "Improve cut/copy/paste sensitivity in context menu"
 msgstr ""
 
 msgid "Translation updates"
-msgstr ""
+msgstr "Оновлення перекладу"
 
-msgid "Minor bug fixes"
-msgstr ""
+msgid "Run Pantheon Files as Administrator"
+msgstr "Запуск Pantheon файлів в якості адміністратора"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
-
-msgid "Improved translation support"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
+msgid "Authentication is required to run Files as Administrator"
 msgstr ""

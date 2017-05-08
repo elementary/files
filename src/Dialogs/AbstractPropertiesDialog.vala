@@ -4,7 +4,7 @@
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
-* License as published by the Free Software Foundation; either
+* License as published by the Free Software Foundation, Inc.,; either
 * version 3 of the License, or (at your option) any later version.
 *
 * This program is distributed in the hope that it will be useful,
@@ -14,8 +14,8 @@
 *
 * You should have received a copy of the GNU General Public
 * License along with this program; if not, write to the
-* Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-* Boston, MA 02111-1307, USA.
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1335 USA.
 *
 * Authored by: ammonkey <am.monkeyd@gmail.com>
 */
@@ -82,8 +82,6 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
                     break;
             }
         });
-
-        present ();
     }
 
     protected void create_header_title () {

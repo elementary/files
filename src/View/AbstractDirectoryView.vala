@@ -253,10 +253,6 @@ namespace FM {
                     clipboard.changed.connect (on_clipboard_changed);
                     view.enter_notify_event.connect (on_enter_notify_event);
                     view.key_press_event.connect (on_view_key_press_event);
-
-                    /* It should do no harm to ensure the directory is not frozen as well */
-                    slot.directory.freeze_update = false;
-                    slot.directory.unblock_monitor ();
                 }
 
                 _is_frozen = value;
@@ -954,11 +950,10 @@ namespace FM {
 /** File operation callbacks */
         static void create_file_done (GLib.File? new_file, void* data) {
             var view = data as FM.AbstractDirectoryView;
-            view.slot.directory.unblock_monitor ();
 
-            if (new_file == null)
+            if (new_file == null) {
                 return;
-
+            }
 
             if (view == null) {
                 warning ("View invalid after creating file");
@@ -966,17 +961,28 @@ namespace FM {
             }
             /* Start to rename the file once we get signal that it has been added to model */
             view.slot.directory.file_added.connect_after (view.after_new_file_added);
+            view.unblock_directory_monitor ();;
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
           * using this callback */
         public static void after_trash_or_delete (bool user_cancel, void* data) {
             var view = data as FM.AbstractDirectoryView;
-            if (view == null)
+            if (view == null) {
                 return;
+            }
 
-            view.slot.directory.unblock_monitor ();
             view.can_trash_or_delete = true;
+            view.unblock_directory_monitor ();
+        }
+
+        private void unblock_directory_monitor () {
+            /* Using an idle stops two file deleted/added signals being received (one via the file monitor
+             * and one via marlin-file-changes. */
+            GLib.Idle.add_full (GLib.Priority.LOW, () => {
+                slot.directory.unblock_monitor ();
+                return false;
+            });
         }
 
         private void trash_or_delete_selected_files (bool delete_immediately = false) {
@@ -1296,9 +1302,6 @@ namespace FM {
         }
 
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
-            /* Can be called twice for same file - once via Marlin.FileOperations and once via directory FileMonitor.
-             * Model.remove_file returns false if the file was already removed.
-             */
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             model.remove_file (file, dir);
@@ -3107,7 +3110,11 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
-            grab_focus (); /* cancels any renaming */
+            if (renaming) {
+                /* Cancel renaming */
+                name_renderer.end_editing (true);
+            }
+
             cancel_hover (); /* cancel overlay statusbar cancellables */
 
             /* Ignore if second button pressed before first released - not permitted during rubberbanding.
@@ -3225,6 +3232,7 @@ namespace FM {
                                 if (path_selected) {
                                     unselect_path (path);
                                 } else {
+                                    should_deselect = false;
                                     select_path (path);
                                 }
                             }
@@ -3474,22 +3482,6 @@ namespace FM {
             unselect_all ();
         }
 
-        protected bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {
-            bool on_icon =  (x >= orig_x &&
-                             x <= orig_x + icon_size &&
-                             y >= orig_y &&
-                             y <= orig_y + icon_size);
-
-            if (!on_icon || !icon_renderer.selection_helpers)
-                on_helper = false;
-            else {
-                var helper_size = icon_renderer.helper_size + 2;
-                on_helper = (x - orig_x <= helper_size &&
-                             y - orig_y <= helper_size);
-            }
-            return on_icon;
-        }
-
         protected void invert_selection () {
             GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
 
@@ -3543,6 +3535,7 @@ namespace FM {
         protected abstract void thaw_tree ();
         protected new abstract void freeze_child_notify ();
         protected new abstract void thaw_child_notify ();
+        protected abstract bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear
