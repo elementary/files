@@ -404,7 +404,6 @@ namespace Marlin.View {
                                                        _("The file selected no longer exists."));
                     can_show_folder = false;
                 }
-                slot.directory.selected_file = null;
             }
 
             if (can_show_folder) {

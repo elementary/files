@@ -336,6 +336,8 @@ public class Marlin.Application : Granite.Application {
             win.show ();
         }
 
+        win.present ();
+
         return win;
     }
 
@@ -345,6 +347,7 @@ public class Marlin.Application : Granite.Application {
         /* Get the first window, if any, else create a new window */
         if (windows_exist ()) {
             window = (this.get_windows ()).data as Marlin.View.Window;
+            window.present ();
         } else {
             window = create_window (null); /* Do not add a tab on creation */
             if (window == null) { /* Maximum number of windows reached */
