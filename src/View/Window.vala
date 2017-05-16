@@ -122,20 +122,16 @@ namespace Marlin.View {
         }
 
         private void build_window () {
-            lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-            lside_pane.show ();
-            /* Only show side bar in first window - (to be confirmed) */
-
-            lside_pane.pack1 (sidebar, false, false);
-
             Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
             window_box.pack_start(info_bar, false, false, 0);
             window_box.pack_start(tabs, true, true, 0);
 
+            lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+            lside_pane.show ();
+            lside_pane.pack1 (sidebar, false, false);
             lside_pane.pack2 (window_box, true, false);
-
-            add(lside_pane);
+            add (lside_pane);
 
             set_size_request (500, 300);
             title = _(Marlin.APP_TITLE);
@@ -260,6 +256,30 @@ namespace Marlin.View {
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
             button_press_event.connect (on_button_press_event);
+
+            /* Toggle focus between sidebar and view using Tab key, unless location
+             * bar in focus. */
+            key_press_event.connect ((event) => {
+                switch (event.keyval) {
+                    case Gdk.Key.Tab:
+                    case Gdk.Key.KP_Tab:
+                        if (top_menu.locked_focus) {
+                            return false;
+                        }
+                        /* This works better than trying to use a focus chain */
+                        if (sidebar.has_focus) {
+                            current_tab.grab_focus ();
+                            sidebar.sync_needed ();
+                        } else {
+                            sidebar.grab_focus ();
+                        }
+                    return true;
+
+                    default:
+                        return false;
+                }
+            });
+
 
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
