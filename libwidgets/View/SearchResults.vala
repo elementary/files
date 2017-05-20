@@ -47,13 +47,13 @@ namespace Marlin.View.Chrome
          * zeitgeist search and bookmark search), after the header, the matches appear with the
          * "begins with" ones first, then the "contains" and finally an "ellipsis" pseudo-match
          * appears if MAX_RESULTS is exceeded for that category.
-         */ 
-         /* The constant "sort_string" serves as an array of characters indexed by the enum. */ 
+         */
+         /* The constant "sort_string" serves as an array of characters indexed by the enum. */
         private const string sort_string = "ABCDEFGHIJKLMN";
         private static string category_to_string (Category category) {
             return (sort_string.get_char ((uint)category)).to_string ();
         }
- 
+
         class Match : Object
         {
             public string name { get; construct; }
@@ -124,7 +124,7 @@ namespace Marlin.View.Chrome
         bool is_grabbing = false;
         Gdk.Device? device = null;
 
-        Gtk.TreeIter? current_results = null;
+        Gtk.TreeIter? local_results = null;
         Gtk.TreeIter? deep_results = null;
         Gtk.TreeIter? zeitgeist_results = null;
         Gtk.TreeIter? bookmark_results = null;
@@ -223,8 +223,8 @@ namespace Marlin.View.Chrome
 
             list.set_sort_column_id (5, Gtk.SortType.ASCENDING);
 
-            list.append (out current_results, null);
-            list.@set (current_results,
+            list.append (out local_results, null);
+            list.@set (local_results,
                         0, get_category_header (_("In This Folder")),
                         5, SearchResults.category_to_string (Category.CURRENT_HEADER));
 
@@ -717,7 +717,7 @@ namespace Marlin.View.Chrome
                 if (parent == zeitgeist_results) {
                     var already_added = false;
 
-                    for (var valid = list.iter_nth_child (out iter, current_results, 0); valid;
+                    for (var valid = list.iter_nth_child (out iter, local_results, 0); valid;
                         valid = list.iter_next (ref iter)) {
 
                         list.@get (iter, 3, out file);
@@ -744,7 +744,7 @@ namespace Marlin.View.Chrome
                     if (already_added) {
                         continue;
                     }
-                } else if (parent == current_results) {
+                } else if (parent == local_results) {
                     /* remove current search result from global if in global results */
                     for (var valid = list.iter_nth_child (out iter, zeitgeist_results, 0); valid;
                         valid = list.iter_next (ref iter)) {
@@ -974,7 +974,7 @@ namespace Marlin.View.Chrome
 
                 /* use a closure here to get vala to pass the userdata that we actually want */
                 Idle.add (() => {
-                    add_results (new_results, in_root ? current_results : deep_results);
+                    add_results (new_results, in_root ? local_results : deep_results);
                     return false;
                 });
 
@@ -1031,7 +1031,7 @@ namespace Marlin.View.Chrome
                     try {
                         var file = File.new_for_uri (subject.uri);
                         /* Zeitgeist search finds search term anywhere in path.  We are only interested
-                         * when the search term is in the basename */ 
+                         * when the search term is in the basename */
                         while (file != null && !file.get_basename ().contains (term)) {
                             file = file.get_parent ();
                         }
