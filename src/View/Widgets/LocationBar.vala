@@ -213,7 +213,6 @@ namespace Marlin.View.Chrome
 
         public virtual bool enter_navigate_mode (string? current = null) {
             if (sensitive && set_focussed ()) {
-                bread.grab_focus ();
                 show_navigate_icon ();
                 return true;
             } else {

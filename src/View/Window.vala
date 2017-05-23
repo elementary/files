@@ -122,20 +122,16 @@ namespace Marlin.View {
         }
 
         private void build_window () {
-            lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
-            lside_pane.show ();
-            /* Only show side bar in first window - (to be confirmed) */
-
-            lside_pane.pack1 (sidebar, false, false);
-
             Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
             window_box.show();
             window_box.pack_start(info_bar, false, false, 0);
             window_box.pack_start(tabs, true, true, 0);
 
+            lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+            lside_pane.show ();
+            lside_pane.pack1 (sidebar, false, false);
             lside_pane.pack2 (window_box, true, false);
-
-            add(lside_pane);
+            add (lside_pane);
 
             set_size_request (500, 300);
             title = _(Marlin.APP_TITLE);
@@ -260,6 +256,30 @@ namespace Marlin.View {
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
             button_press_event.connect (on_button_press_event);
+
+            /* Toggle focus between sidebar and view using Tab key, unless location
+             * bar in focus. */
+            key_press_event.connect ((event) => {
+                switch (event.keyval) {
+                    case Gdk.Key.Tab:
+                    case Gdk.Key.KP_Tab:
+                        if (top_menu.locked_focus) {
+                            return false;
+                        }
+                        /* This works better than trying to use a focus chain */
+                        if (sidebar.has_focus) {
+                            current_tab.grab_focus ();
+                            sidebar.sync_needed ();
+                        } else {
+                            sidebar.grab_focus ();
+                        }
+                    return true;
+
+                    default:
+                        return false;
+                }
+            });
+
 
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
@@ -439,12 +459,15 @@ namespace Marlin.View {
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             mode = real_mode (mode);
-
             var content = new View.ViewContainer (this);
             var tab = new Granite.Widgets.Tab ("", null, content);
+            tab.ellipsize_mode = Pango.EllipsizeMode.MIDDLE;
 
             content.tab_name_changed.connect ((tab_name) => {
-                tab.label = tab_name;
+                Idle.add (() => {
+                    tab.label = check_for_tab_with_same_name (content);
+                    return false;
+                });
             });
 
             content.loading.connect ((is_loading) => {
@@ -456,11 +479,60 @@ namespace Marlin.View {
                 update_top_menu ();
             });
 
-            content.update_tab_name (location);
             content.add_view (mode, location);
 
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
+        }
+
+        private string check_for_tab_with_same_name (ViewContainer vc) {
+            string name = vc.tab_name;
+
+            if (name == Marlin.INVALID_TAB_NAME) {
+                return name;
+            }
+
+            string path = Uri.unescape_string (vc.uri);
+            string new_name = name;
+
+            foreach (Granite.Widgets.Tab tab in tabs.tabs) {
+                var content = (ViewContainer)(tab.page);
+                if (content != vc) {
+                    string content_path = Uri.unescape_string (content.uri);
+                    if (content.tab_name == name && content_path != path) {
+                        if (content.tab_name == tab.label) {
+                            Idle.add_full (GLib.Priority.LOW, () => {
+                                /* Trigger relabelling of conflicting tab (but not before this function finishes) */
+                                content.tab_name_changed (content.tab_name);
+                                return false;
+                            });
+                        }
+
+                        new_name = disambiguate_name (name, path, content_path); /*Also relabel this tab */
+                    }
+                }
+            }
+
+            return new_name;
+        }
+
+        private string disambiguate_name (string name, string path, string conflict_path) {
+            string prefix = "";
+            string prefix_conflict = "";
+            string path_temp = path;
+            string conflict_path_temp = conflict_path;
+
+            /* Add parent directories until path and conflict path differ */
+            while (prefix == prefix_conflict) {
+                var parent_path= PF.FileUtils.get_parent_path_from_path (path_temp);
+                var parent_conflict_path = PF.FileUtils.get_parent_path_from_path (conflict_path_temp);
+                prefix = Path.get_basename (parent_path) + Path.DIR_SEPARATOR_S + prefix;
+                prefix_conflict = Path.get_basename (parent_conflict_path) + Path.DIR_SEPARATOR_S + prefix_conflict;
+                path_temp= parent_path;
+                conflict_path_temp = parent_conflict_path;
+            }
+
+            return prefix + name;
         }
 
         public void bookmark_uri (string uri, string? name = null) {

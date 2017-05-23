@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2016-06-15 12:48+0000\n"
-"Last-Translator: Ashish Saini <sainiashish08@gmail.com>\n"
+"PO-Revision-Date: 2017-05-19 12:42+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-05-06 05:38+0000\n"
-"X-Generator: Launchpad (build 18366)\n"
+"X-Launchpad-Export-Date: 2017-05-20 06:01+0000\n"
+"X-Generator: Launchpad (build 18386)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr "एसएसएच"
+msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
@@ -48,7 +48,7 @@ msgstr "सुरक्षित WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "कनेक्ट हो रहा है..."
+msgstr "जुड़ रहा है..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -87,7 +87,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr "सर्वर से संयोजन करें"
+msgstr "सर्वर से जुड़ें"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
@@ -115,7 +115,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr ""
+msgstr "उपयोगकर्ता विवरण"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -155,7 +155,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1269
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "मिटाएँ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1235
 #, c-format
@@ -176,7 +176,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "'%s' के रूप में '%s' को पुनः नाम दें"
 
 #: ../libcore/marlin-undostack-manager.c:1278
 #: ../libcore/marlin-undostack-manager.c:1473
@@ -187,7 +187,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "'%s' को '%s' में पुनर्स्थापित करें"
 
 #: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
@@ -197,7 +197,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1300
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "'%s' को वापस रद्दी में भेजें"
 
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
@@ -207,27 +207,27 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "लिंक मिटायें '%s' के"
 
 #: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "संलग्न मदों के मूल अनुमतियाँ पुनर्स्थापित करें '%s' में"
 
 #: ../libcore/marlin-undostack-manager.c:1330
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "'%s' का मूल अनुमतियाँ पुनर्स्थापित करें"
 
 #: ../libcore/marlin-undostack-manager.c:1339
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' में '%s' समूह को पुनर्स्थापित करें"
 
 #: ../libcore/marlin-undostack-manager.c:1349
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' में मालिक '%s' को पुनर्स्थापित करें"
 
 #: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
@@ -237,7 +237,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "'%s' की '%s' प्रतिलिपि है"
 
 #: ../libcore/marlin-undostack-manager.c:1400
 #, c-format
@@ -247,7 +247,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1405
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "'%s' को दुहराए '%s' में"
 
 #: ../libcore/marlin-undostack-manager.c:1413
 #, c-format
@@ -2211,6 +2211,7 @@ msgstr "एक सरल और शक्तिशाली फ़ाइल प�
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Anand Kumar https://launchpad.net/~anandkumar\n"
 "  Ashish Saini https://launchpad.net/~sainiashish08\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Siddhant Pathak https://launchpad.net/~sid02phi\n"
