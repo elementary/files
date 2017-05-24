@@ -144,8 +144,9 @@ gof_file_icon_changed (GOFFile *file)
     if (file->directory != NULL) {
         dir = gof_directory_async_cache_lookup (file->directory);
         if (dir != NULL) {
-            if (!file->is_hidden || gof_preferences_get_default ()->pref_show_hidden_files)
+            if (!file->is_hidden || gof_preferences_get_show_hidden_files (gof_preferences_get_default ())) {
                 g_signal_emit_by_name (dir, "icon_changed", file);
+            }
 
             g_object_unref (dir);
         }
@@ -430,17 +431,17 @@ gof_file_update (GOFFile *file)
         g_object_ref (file->icon);
     }
 
-    if (file->file_type == G_FILE_TYPE_SHORTCUT || file->file_type == G_FILE_TYPE_MOUNTABLE) {
-        const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
-        if (target_uri != NULL) {
-            file->target_location = g_file_new_for_uri (target_uri);
-            gof_file_target_location_update (file);
+    /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
+    const char *target_uri =  g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_TARGET_URI);
+    if (target_uri != NULL) {
+        file->target_location = g_file_new_for_uri (target_uri);
+        gof_file_target_location_update (file);
 
-            if (file->file_type == G_FILE_TYPE_MOUNTABLE) {
-                file->mount = gof_file_get_mount_at (file->target_location);
-                file->is_mounted = (file->mount != NULL);
-            }
-        }
+        file->mount = g_file_find_enclosing_mount (file->target_location, NULL, NULL);
+        file->is_mounted = (file->mount != NULL);
+    } else {
+        file->mount = g_file_find_enclosing_mount (file->location, NULL, NULL);
+        file->is_mounted = (file->mount != NULL);
     }
 
     /* TODO the key-files could be loaded async.
@@ -695,7 +696,7 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
     _g_object_unref0 (file->pix);
     /* make sure we always got a non null pixbuf of the specified size */
     file->pix = gof_file_get_icon_pixbuf (file, size,
-                                          gof_preferences_get_default ()->pref_force_icon_size,
+                                          gof_preferences_get_force_icon_size (gof_preferences_get_default ()),
                                           GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     file->pix_size = size;
 }
@@ -1409,9 +1410,7 @@ gof_file_get_formated_time (GOFFile *file, const char *attr)
     g_return_val_if_fail (file != NULL, NULL);
     g_return_val_if_fail (file->info != NULL, NULL);
 
-    return pf_file_utils_get_formatted_time_attribute_from_info (file->info,
-                                                                 attr,
-                                                                 gof_preferences_get_default ()->pref_date_format);
+    return pf_file_utils_get_formatted_time_attribute_from_info (file->info, attr);
 }
 
 

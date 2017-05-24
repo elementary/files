@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-10 16:45+0000\n"
-"PO-Revision-Date: 2016-12-21 08:27+0000\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"PO-Revision-Date: 2017-04-14 11:48+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2017-02-11 05:41+0000\n"
-"X-Generator: Launchpad (build 18326)\n"
+"X-Launchpad-Export-Date: 2017-05-06 05:37+0000\n"
+"X-Generator: Launchpad (build 18366)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1496,28 +1496,28 @@ msgstr ""
 msgid "link to %s"
 msgstr "odkaz na %s"
 
-#: ../libcore/gof-file.c:1925
+#: ../libcore/gof-file.c:1935
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Selhalo zpracování souboru vstupu pracovního prostředí: %s"
 
-#: ../libcore/gof-file.c:1962
+#: ../libcore/gof-file.c:1972
 msgid "No Exec field specified"
 msgstr "Nebylo specifikováno pole Exec"
 
-#: ../libcore/gof-file.c:1981
+#: ../libcore/gof-file.c:1991
 msgid "No URL field specified"
 msgstr "Nebyla zadána adresa URL"
 
-#: ../libcore/gof-file.c:1987
+#: ../libcore/gof-file.c:1997
 msgid "Invalid desktop file"
 msgstr "Neplatný soubor pracovní plochy"
 
-#: ../libcore/gof-file.c:2282
+#: ../libcore/gof-file.c:2292
 msgid "Slashes are not allowed in filenames"
 msgstr "Lomítka nejsou v názvech souborů povolena"
 
-#: ../libcore/gof-file.c:2302
+#: ../libcore/gof-file.c:2312
 msgid "Toplevel files cannot be renamed"
 msgstr "Soubory v nejvyšší úrovni nelze přejmenovat"
 
@@ -1529,87 +1529,95 @@ msgstr "Zobrazit více _detailů"
 msgid " (invalid Unicode)"
 msgstr " (neplatný Unicode)"
 
-#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
 msgstr "Předchozí"
 
-#: ../filechooser-module/FileChooserDialog.vala:74
+#: ../filechooser-module/FileChooserDialog.vala:76
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "Následující"
 
-#: ../src/View/ViewContainer.vala:347 ../src/View/Sidebar.vala:494
+#: ../src/View/ViewContainer.vala:352 ../src/View/Sidebar.vala:494
 msgid "Home"
 msgstr "Domů"
 
-#: ../src/View/ViewContainer.vala:349 ../src/View/Sidebar.vala:555
+#: ../src/View/ViewContainer.vala:354 ../src/View/Sidebar.vala:555
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "Souborový systém"
 
-#: ../src/View/ViewContainer.vala:358
+#: ../src/View/ViewContainer.vala:363
 msgid "(as Administrator)"
 msgstr "(jako Administrátor)"
 
-#: ../src/View/ViewContainer.vala:371 ../src/View/DirectoryNotFound.vala:28
+#: ../src/View/ViewContainer.vala:376 ../src/View/DirectoryNotFound.vala:28
 msgid "This Folder Does Not Exist"
 msgstr "Tato složka neexistuje"
 
-#: ../src/View/ViewContainer.vala:372
+#: ../src/View/ViewContainer.vala:377
 msgid "You cannot create a folder here."
 msgstr "Zde nelze vytvořit složku"
 
-#: ../src/View/ViewContainer.vala:374
+#: ../src/View/ViewContainer.vala:379
 msgid "The network is unavailable"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:375
+#: ../src/View/ViewContainer.vala:380
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:377
+#: ../src/View/ViewContainer.vala:382
 msgid "This Folder Does Not Belong to You"
 msgstr "Tato složka nepatří Vám"
 
-#: ../src/View/ViewContainer.vala:378
+#: ../src/View/ViewContainer.vala:383
 msgid "You don't have permission to view this folder."
 msgstr "Nemáte dostatečná práva k  prohlížení této složky"
 
-#: ../src/View/ViewContainer.vala:380
+#: ../src/View/ViewContainer.vala:385
 msgid "Unable to Mount Folder"
 msgstr "Složku nelze připojit"
 
-#: ../src/View/ViewContainer.vala:381
+#: ../src/View/ViewContainer.vala:386
 msgid "Could not connect to the server for this folder."
 msgstr "Pro tuto složku se nepodařilo připojit k serveru."
 
-#: ../src/View/ViewContainer.vala:383
+#: ../src/View/ViewContainer.vala:388
+msgid "Unable to Display Folder Contents"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:389
+msgid "The operation timed out."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:391
 msgid "Unable to Show Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:384
+#: ../src/View/ViewContainer.vala:392
 msgid "The server for this folder could not be located."
 msgstr "Server pro tuto složku nelze nalézt."
 
-#: ../src/View/ViewContainer.vala:394
+#: ../src/View/ViewContainer.vala:402
 msgid "File not Found"
 msgstr "Soubor nenalezen"
 
-#: ../src/View/ViewContainer.vala:395
+#: ../src/View/ViewContainer.vala:403
 msgid "The file selected no longer exists."
 msgstr "Vybraný soubor již neexistuje."
 
-#: ../src/View/Window.vala:207
+#: ../src/View/Window.vala:208
 msgid "Files isn't your default file manager."
 msgstr "Tento Správce souborů není váš výchozí"
 
-#: ../src/View/Window.vala:213
+#: ../src/View/Window.vala:214
 msgid "Set as Default"
 msgstr "Nastavit jako Výchozí"
 
-#: ../src/View/Window.vala:219
+#: ../src/View/Window.vala:220
 msgid "Ignore"
 msgstr "Ignorovat"
 
@@ -1841,8 +1849,9 @@ msgstr " zvoleno"
 #: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u složka"
+msgstr[1] "%u složky"
+msgstr[2] "%u složek"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1952,27 +1961,27 @@ msgstr "Zobrazit nabídku kopírování"
 msgid "Cancel All In-progress Actions"
 msgstr "Zrušit všechny vykonávané akce"
 
-#: ../src/DesktopLauncher.vala:6
+#: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
 msgstr "Procházet soubory"
 
-#: ../src/DesktopLauncher.vala:7
+#: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
 msgstr "Správce souborů"
 
-#: ../src/DesktopLauncher.vala:8
+#: ../src/DesktopLauncher.vala:23
 msgid "New _Window"
 msgstr "Nové _okno"
 
-#: ../src/DesktopLauncher.vala:9
+#: ../src/DesktopLauncher.vala:24
 msgid "New Window As _Administrator"
 msgstr "Nové _administrátorské okno"
 
-#: ../src/DesktopLauncher.vala:10
+#: ../src/DesktopLauncher.vala:25
 msgid "About _Files"
 msgstr "O _Files"
 
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Správce souborů"
 
@@ -2076,7 +2085,7 @@ msgstr "Použitý:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
-msgstr ""
+msgstr "Oprávnění"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "Actual Size Could Be Larger"
@@ -2201,6 +2210,10 @@ msgstr "Vlastnosti disku"
 msgid "Format:"
 msgstr "Formát:"
 
+#: ../libcore/gof-directory-async.vala:588
+msgid "Server did not respond within time limit"
+msgstr ""
+
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
 msgstr "Nelze zjistit původní umístění \"%s\" "
@@ -2285,6 +2298,7 @@ msgstr ""
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Filip Joska https://launchpad.net/~jimmyl0l3c\n"
 "  Hlobil Vaclav https://launchpad.net/~vaclav-hlobil\n"
+"  Jan Marek https://launchpad.net/~janmarek28\n"
 "  Jaroslav Staněk https://launchpad.net/~fleury08\n"
 "  Long Do Hai https://launchpad.net/~mailbox-b\n"
 "  Lukas Golik https://launchpad.net/~golik-lukas\n"
@@ -2377,7 +2391,7 @@ msgstr "Odebrat z historie"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr "Přesunout do Koše"
+msgstr "Přesunout do koše"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"

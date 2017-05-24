@@ -710,7 +710,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     }
 
     if (ptr != NULL) {
-        g_debug ("file already in tree (parent_ptr: %p)!!!\n", parent_ptr);
+        //~ g_debug ("file already in tree (parent_ptr: %p)!!!\n", parent_ptr);
         return FALSE;
     }
 

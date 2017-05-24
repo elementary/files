@@ -81,6 +81,12 @@ public class Marlin.Application : Granite.Application {
 
         message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
 
+        /* Only allow running with root privileges using pkexec, not using sudo */
+        if (Posix.getuid () == 0 && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
+            warning ("Running Files as root using sudo is not possible. Please use the command: pantheon-files-pkexec [folder]");
+            quit ();
+        };
+
         init_schemas ();
 
         Gtk.IconTheme.get_default ().changed.connect (() => {
@@ -252,6 +258,7 @@ public class Marlin.Application : Granite.Application {
         Preferences.marlin_icon_view_settings = new Settings ("org.pantheon.files.icon-view");
         Preferences.marlin_list_view_settings = new Settings ("org.pantheon.files.list-view");
         Preferences.marlin_column_view_settings = new Settings ("org.pantheon.files.column-view");
+        Preferences.gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
 
         /* Bind settings with GOFPreferences */
         Preferences.settings.bind ("show-hiddenfiles",
@@ -264,6 +271,8 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("force-icon-size",
                                    GOF.Preferences.get_default (), "force-icon-size", GLib.SettingsBindFlags.DEFAULT);
+        Preferences.gnome_interface_settings.bind ("clock-format",
+                                   GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
     }
 
     private void open_windows (File[]? files) {
@@ -327,6 +336,8 @@ public class Marlin.Application : Granite.Application {
             win.show ();
         }
 
+        win.present ();
+
         return win;
     }
 
@@ -336,6 +347,7 @@ public class Marlin.Application : Granite.Application {
         /* Get the first window, if any, else create a new window */
         if (windows_exist ()) {
             window = (this.get_windows ()).data as Marlin.View.Window;
+            window.present ();
         } else {
             window = create_window (null); /* Do not add a tab on creation */
             if (window == null) { /* Maximum number of windows reached */

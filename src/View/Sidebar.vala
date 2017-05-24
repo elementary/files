@@ -120,6 +120,16 @@ namespace Marlin.Places {
         public signal bool request_focus ();
         public signal void sync_needed ();
 
+        public new void grab_focus () {
+            tree_view.grab_focus ();
+        }
+
+        public new bool has_focus {
+            get {
+                return tree_view.has_focus;
+            }
+        }
+
         public Sidebar (Marlin.View.Window window, bool local_only = false) {
             init ();  /* creates the Gtk.TreeModel store. */
             this.last_selected_uri = null;
@@ -241,7 +251,6 @@ namespace Marlin.Places {
             tree_view.set_search_column (Column.NAME);
             var selection = tree_view.get_selection ();
             selection.set_mode (Gtk.SelectionMode.BROWSE);
-            selection.set_select_function (tree_selection_func);
 
             this.drag_scroll_timer_id = 0;
             tree_view.enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK,
@@ -427,15 +436,15 @@ namespace Marlin.Places {
             return iter;
         }
 
-        public bool has_place (string uri) {
+        public bool has_bookmark (string uri) {
             bool found = false;
 
             store.@foreach ((model, path, iter) => {
                 string u;
-                model.@get (iter, Column.URI, out u);
-                if (u == null) { /* Category entries etc have null uri, for example */
-                    return false;
-                } else if (u == uri) {
+                bool is_bookmark;
+
+                model.@get (iter, Column.URI, out u, Column.BOOKMARK, out is_bookmark);
+                if (is_bookmark && u == uri) {
                     found = true;
                     return true;
                 } else {
@@ -611,7 +620,7 @@ namespace Marlin.Places {
 
                 var mount = volume.get_mount ();
                 if (mount != null) {
-                    root = mount.get_default_location ();
+                    root = mount.get_root ();
                     last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                            iter,
                                            mount.get_name (),
@@ -650,7 +659,7 @@ namespace Marlin.Places {
                 if (volume != null)
                     continue;
 
-                root = mount.get_default_location ();
+                root = mount.get_root ();
                 if (root.is_native ()) {
                     string scheme = root.get_uri_scheme ();
                     if (scheme == "archive" ) {
@@ -759,7 +768,7 @@ namespace Marlin.Places {
                 var mount = volume.get_mount ();
                 if (mount != null) {
                     /* show mounted volume in sidebar */
-                    var root = mount.get_default_location ();
+                    var root = mount.get_root ();
                     last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                            iter,
                                            mount.get_name (),
@@ -1322,7 +1331,7 @@ namespace Marlin.Places {
                     volume.mount.end (res);
                     Mount mount = volume.get_mount ();
                     if (mount != null) {
-                        var location = mount.get_default_location ();
+                        var location = mount.get_root ();
                         if (flags == Marlin.OpenFlag.NEW_WINDOW) {
                             var app = Marlin.Application.get ();
                             app.create_window (location);
@@ -1578,6 +1587,7 @@ namespace Marlin.Places {
                     var file2 = GLib.File.new_for_path (uri);
                     if (file1.equal (file2)) {
                         selection.select_iter (child_iter);
+                        tree_view.set_cursor (store.get_path (child_iter), null, false);
                         this.last_selected_uri = location;
                         valid = false; /* escape from outer loop */
                         break;
@@ -1687,14 +1697,6 @@ namespace Marlin.Places {
             }
         }
 
-        private bool tree_selection_func (Gtk.TreeSelection selection,
-                                          Gtk.TreeModel model,
-                                          Gtk.TreePath path,
-                                          bool path_currently_selected) {
-        /* Don't allow categories to be selected. */
-            return !category_at_path (path);
-        }
-
         private void category_row_expanded_event_cb (Gtk.TreeView tree,
                                                      Gtk.TreeIter iter,
                                                      Gtk.TreePath path) {
@@ -1738,7 +1740,26 @@ namespace Marlin.Places {
                 return true;
             }
 
+            if (event.keyval == Gdk.Key.Right && (event.state & modifiers) == 0) {
+                expand_collapse_category (true);
+                return true;
+            }
+            if (event.keyval == Gdk.Key.Left && (event.state & modifiers) == 0) {
+                expand_collapse_category (false);
+                return true;
+            }
             return false;
+        }
+
+        private void expand_collapse_category (bool expand) {
+            Gtk.TreePath? path = get_path_at_cursor ();
+            if (category_at_path (path)) {
+                if (expand) {
+                    tree_view.expand_row (path, false);
+                } else {
+                    tree_view.collapse_row (path);
+                }
+            }
         }
 
         private bool button_press_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
@@ -2403,6 +2424,12 @@ namespace Marlin.Places {
             tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
             Gtk.TreePath? path = null;
             tree_view.get_path_at_pos (tx, ty, out path, null, null, null);
+            return path;
+        }
+        private Gtk.TreePath? get_path_at_cursor () {
+            Gtk.TreePath? path = null;
+            Gtk.TreeViewColumn? focus_column = null;
+            tree_view.get_cursor (out path, out focus_column);
             return path;
         }
 

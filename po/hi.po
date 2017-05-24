@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-10 16:45+0000\n"
-"PO-Revision-Date: 2016-06-15 12:48+0000\n"
-"Last-Translator: Ashish Saini <sainiashish08@gmail.com>\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"PO-Revision-Date: 2017-05-19 12:42+0000\n"
+"Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Hindi <hi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-02-11 05:42+0000\n"
-"X-Generator: Launchpad (build 18326)\n"
+"X-Launchpad-Export-Date: 2017-05-20 06:01+0000\n"
+"X-Generator: Launchpad (build 18386)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr "एसएसएच"
+msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
@@ -48,7 +48,7 @@ msgstr "सुरक्षित WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "कनेक्ट हो रहा है..."
+msgstr "जुड़ रहा है..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -87,7 +87,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr "सर्वर से संयोजन करें"
+msgstr "सर्वर से जुड़ें"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
@@ -115,7 +115,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr ""
+msgstr "उपयोगकर्ता विवरण"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
@@ -155,7 +155,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1269
 #, c-format
 msgid "Delete '%s'"
-msgstr ""
+msgstr "मिटाएँ '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1235
 #, c-format
@@ -176,7 +176,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "'%s' के रूप में '%s' को पुनः नाम दें"
 
 #: ../libcore/marlin-undostack-manager.c:1278
 #: ../libcore/marlin-undostack-manager.c:1473
@@ -187,7 +187,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "'%s' को '%s' में पुनर्स्थापित करें"
 
 #: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
@@ -197,7 +197,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1300
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr ""
+msgstr "'%s' को वापस रद्दी में भेजें"
 
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
@@ -207,27 +207,27 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
 msgid "Delete link to '%s'"
-msgstr ""
+msgstr "लिंक मिटायें '%s' के"
 
 #: ../libcore/marlin-undostack-manager.c:1322
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "संलग्न मदों के मूल अनुमतियाँ पुनर्स्थापित करें '%s' में"
 
 #: ../libcore/marlin-undostack-manager.c:1330
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "'%s' का मूल अनुमतियाँ पुनर्स्थापित करें"
 
 #: ../libcore/marlin-undostack-manager.c:1339
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' में '%s' समूह को पुनर्स्थापित करें"
 
 #: ../libcore/marlin-undostack-manager.c:1349
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' में मालिक '%s' को पुनर्स्थापित करें"
 
 #: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
@@ -237,7 +237,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "'%s' की '%s' प्रतिलिपि है"
 
 #: ../libcore/marlin-undostack-manager.c:1400
 #, c-format
@@ -247,7 +247,7 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1405
 #, c-format
 msgid "Duplicate '%s' in '%s'"
-msgstr ""
+msgstr "'%s' को दुहराए '%s' में"
 
 #: ../libcore/marlin-undostack-manager.c:1413
 #, c-format
@@ -1419,28 +1419,28 @@ msgstr ""
 msgid "link to %s"
 msgstr ""
 
-#: ../libcore/gof-file.c:1925
+#: ../libcore/gof-file.c:1935
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr ""
 
-#: ../libcore/gof-file.c:1962
+#: ../libcore/gof-file.c:1972
 msgid "No Exec field specified"
 msgstr ""
 
-#: ../libcore/gof-file.c:1981
+#: ../libcore/gof-file.c:1991
 msgid "No URL field specified"
 msgstr ""
 
-#: ../libcore/gof-file.c:1987
+#: ../libcore/gof-file.c:1997
 msgid "Invalid desktop file"
 msgstr ""
 
-#: ../libcore/gof-file.c:2282
+#: ../libcore/gof-file.c:2292
 msgid "Slashes are not allowed in filenames"
 msgstr ""
 
-#: ../libcore/gof-file.c:2302
+#: ../libcore/gof-file.c:2312
 msgid "Toplevel files cannot be renamed"
 msgstr ""
 
@@ -1452,87 +1452,95 @@ msgstr ""
 msgid " (invalid Unicode)"
 msgstr ""
 
-#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
 msgstr ""
 
-#: ../filechooser-module/FileChooserDialog.vala:74
+#: ../filechooser-module/FileChooserDialog.vala:76
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:347 ../src/View/Sidebar.vala:494
+#: ../src/View/ViewContainer.vala:352 ../src/View/Sidebar.vala:494
 msgid "Home"
 msgstr "घर"
 
-#: ../src/View/ViewContainer.vala:349 ../src/View/Sidebar.vala:555
+#: ../src/View/ViewContainer.vala:354 ../src/View/Sidebar.vala:555
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "फ़ाइल तंत्र"
 
-#: ../src/View/ViewContainer.vala:358
+#: ../src/View/ViewContainer.vala:363
 msgid "(as Administrator)"
 msgstr "प्रशासक के रूप में"
 
-#: ../src/View/ViewContainer.vala:371 ../src/View/DirectoryNotFound.vala:28
+#: ../src/View/ViewContainer.vala:376 ../src/View/DirectoryNotFound.vala:28
 msgid "This Folder Does Not Exist"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:372
+#: ../src/View/ViewContainer.vala:377
 msgid "You cannot create a folder here."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:374
+#: ../src/View/ViewContainer.vala:379
 msgid "The network is unavailable"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:375
+#: ../src/View/ViewContainer.vala:380
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:377
+#: ../src/View/ViewContainer.vala:382
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:378
+#: ../src/View/ViewContainer.vala:383
 msgid "You don't have permission to view this folder."
 msgstr "आपको इस फ़ोल्डर को देखने की अनुमति नहीं है"
 
-#: ../src/View/ViewContainer.vala:380
+#: ../src/View/ViewContainer.vala:385
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:381
+#: ../src/View/ViewContainer.vala:386
 msgid "Could not connect to the server for this folder."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:383
+#: ../src/View/ViewContainer.vala:388
+msgid "Unable to Display Folder Contents"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:389
+msgid "The operation timed out."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:391
 msgid "Unable to Show Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:384
+#: ../src/View/ViewContainer.vala:392
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:394
+#: ../src/View/ViewContainer.vala:402
 msgid "File not Found"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:395
+#: ../src/View/ViewContainer.vala:403
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: ../src/View/Window.vala:207
+#: ../src/View/Window.vala:208
 msgid "Files isn't your default file manager."
 msgstr "फ़ाइल्स आपका डिफ़ॉल्ट फ़ाइल प्रबंधक नही है"
 
-#: ../src/View/Window.vala:213
+#: ../src/View/Window.vala:214
 msgid "Set as Default"
 msgstr ""
 
-#: ../src/View/Window.vala:219
+#: ../src/View/Window.vala:220
 msgid "Ignore"
 msgstr ""
 
@@ -1873,27 +1881,27 @@ msgstr ""
 msgid "Cancel All In-progress Actions"
 msgstr ""
 
-#: ../src/DesktopLauncher.vala:6
+#: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
 msgstr ""
 
-#: ../src/DesktopLauncher.vala:7
+#: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
 msgstr ""
 
-#: ../src/DesktopLauncher.vala:8
+#: ../src/DesktopLauncher.vala:23
 msgid "New _Window"
 msgstr ""
 
-#: ../src/DesktopLauncher.vala:9
+#: ../src/DesktopLauncher.vala:24
 msgid "New Window As _Administrator"
 msgstr ""
 
-#: ../src/DesktopLauncher.vala:10
+#: ../src/DesktopLauncher.vala:25
 msgid "About _Files"
 msgstr ""
 
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr ""
 
@@ -2119,6 +2127,10 @@ msgstr ""
 msgid "Format:"
 msgstr ""
 
+#: ../libcore/gof-directory-async.vala:588
+msgid "Server did not respond within time limit"
+msgstr ""
+
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
 msgstr ""
@@ -2199,6 +2211,7 @@ msgstr "एक सरल और शक्तिशाली फ़ाइल प�
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Anand Kumar https://launchpad.net/~anandkumar\n"
 "  Ashish Saini https://launchpad.net/~sainiashish08\n"
 "  Daniel Fore https://launchpad.net/~danrabbit\n"
 "  Siddhant Pathak https://launchpad.net/~sid02phi\n"

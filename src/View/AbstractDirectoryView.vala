@@ -2866,7 +2866,6 @@ namespace FM {
                     }
                     break;
 
-
                 default:
                     break;
             }
@@ -3110,7 +3109,11 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
-            grab_focus (); /* cancels any renaming */
+            if (renaming) {
+                /* Cancel renaming */
+                name_renderer.end_editing (true);
+            }
+
             cancel_hover (); /* cancel overlay statusbar cancellables */
 
             /* Ignore if second button pressed before first released - not permitted during rubberbanding.
@@ -3484,31 +3487,6 @@ namespace FM {
             unselect_all ();
         }
 
-        protected bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {
-            /* orig_x and orig_y must be top left hand corner of icon (excluding helper) */
-            int x_offset = x - orig_x;
-            int y_offset = y - orig_y;
-
-
-            bool on_icon =  (x_offset >= 0 &&
-                             x_offset <= icon_size &&
-                             y_offset >= 0 &&
-                             y_offset <= icon_size);
-
-            on_helper = false;
-            if (icon_renderer.selection_helpers) {
-                int x_helper_offset = x - icon_renderer.helper_x;
-                int y_helper_offset = y - icon_renderer.helper_y;
-
-                on_helper =  (x_helper_offset >= 0 &&
-                             x_helper_offset <= icon_renderer.helper_size &&
-                             y_helper_offset >= 0 &&
-                             y_helper_offset <= icon_renderer.helper_size);
-            }
-
-            return on_icon;
-        }
-
         protected void invert_selection () {
             GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
 
@@ -3562,6 +3540,7 @@ namespace FM {
         protected abstract void thaw_tree ();
         protected new abstract void freeze_child_notify ();
         protected new abstract void thaw_child_notify ();
+        protected abstract bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

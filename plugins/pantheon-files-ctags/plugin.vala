@@ -53,11 +53,20 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         "file:///media"
     };
 
+    private const string ignore_schemes [5] = {
+        "ftp",
+        "sftp",
+        "afp",
+        "dav",
+        "davs"
+    };
+
     private bool f_is_user_dir (string uri) {
         return_val_if_fail (uri != null, false);
         foreach (var duri in users_dirs) {
-            if (Posix.strncmp (uri, duri, duri.length) == 0)
+            if (Posix.strncmp (uri, duri, duri.length) == 0) {
                 return true;
+            }
         }
 
         return false;
@@ -70,11 +79,18 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             return true;
         }
 
+        var uri_scheme = Uri.parse_scheme (uri);
+        foreach (var scheme in ignore_schemes) {
+            if (scheme == uri_scheme) {
+                return true;
+            }
+        }
+
         return false;
     }
 
     public override void directory_loaded (void* user_data) {
-        debug  ("CANCEL");
+//~         debug  ("CANCEL");
         cancellable.cancel ();
 
 
@@ -210,10 +226,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             var rc = yield daemon.get_uri_infos (file.uri);
 
             VariantIter iter = rc.iterator ();
-            debug ("iter n_children %d", (int) iter.n_children ());
+//~             debug ("iter n_children %d", (int) iter.n_children ());
             assert (iter.n_children () == 1);
             VariantIter row_iter = iter.next_value ().iterator ();
-            debug ("row_iter n_children %d", (int) row_iter.n_children ());
+//~             debug ("row_iter n_children %d", (int) row_iter.n_children ());
 
             if (row_iter.n_children () == 3) {
                 uint64 modified = int64.parse (row_iter.next_value ().get_string ());
@@ -251,10 +267,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             var rc = yield daemon.get_uri_infos (target_uri);
 
             VariantIter iter = rc.iterator ();
-            debug ("iter n_children %d", (int) iter.n_children ());
+//~             debug ("iter n_children %d", (int) iter.n_children ());
             assert (iter.n_children () == 1);
             VariantIter row_iter = iter.next_value ().iterator ();
-            debug ("row_iter n_children %d", (int) row_iter.n_children ());
+//~             debug ("row_iter n_children %d", (int) row_iter.n_children ());
 
             if (row_iter.n_children () == 3) {
                 /* Only interested in color tag in recent:// at the moment */
@@ -271,7 +287,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         return_if_fail (file != null);
 
         if (!ignore_dir && file.info != null &&
-            (!file.is_hidden || GOF.Preferences.get_default ().pref_show_hidden_files)) {
+            (!file.is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
  
             if (file.location.has_uri_scheme ("recent")) {
                 rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());

@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-10 16:45+0000\n"
-"PO-Revision-Date: 2017-01-10 13:10+0000\n"
-"Last-Translator: Damian Woźniak <fiszet@gmail.com>\n"
+"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"PO-Revision-Date: 2017-04-23 15:32+0000\n"
+"Last-Translator: Piotr Strębski <strebski@gmail.com>\n"
 "Language-Team: polski <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2017-02-11 05:44+0000\n"
-"X-Generator: Launchpad (build 18326)\n"
+"X-Launchpad-Export-Date: 2017-05-06 05:39+0000\n"
+"X-Generator: Launchpad (build 18366)\n"
 "Language: pl\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -26,7 +26,7 @@ msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr "Publiczne FTP"
+msgstr "Publiczny FTP"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
@@ -57,7 +57,7 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Nie można wczytać listy obsługiwanych metod serwerów.\n"
+"Nie można wczytać listy obsługiwanych połączeń do serwerów.\n"
 "Proszę sprawdzić instalację programu gvfs."
 
 #: ../src/marlin-connect-server-dialog.c:282
@@ -167,7 +167,7 @@ msgstr "Usuń %d duplikatów"
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "Przenieś %d elementów do „%s”"
+msgstr "Przenieś %d elementów z powrotem do „%s”"
 
 #: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
@@ -204,7 +204,7 @@ msgstr "Przenosi „%s” z powrotem do kosza"
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
 msgid "Delete links to %d items"
-msgstr "Usuń połącznia do %d elementów"
+msgstr "Usuń dowiązania do %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1312
 #, c-format
@@ -365,7 +365,7 @@ msgstr "_Cofnij utworzenie pliku z szablonu"
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Cofnij utworzenie %d katalogu"
+msgstr[0] "_Cofnij utworzenie katalogu"
 msgstr[1] "_Cofnij utworzenie %d katalogów"
 msgstr[2] "_Cofnij utworzenie %d katalogów"
 
@@ -373,7 +373,7 @@ msgstr[2] "_Cofnij utworzenie %d katalogów"
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Cofnij przeniesienie do kosza %d elementu"
+msgstr[0] "_Cofnij przeniesienie do kosza elementu"
 msgstr[1] "_Cofnij przeniesienie do kosza %d elementów"
 msgstr[2] "_Cofnij przeniesienie do kosza %d elementów"
 
@@ -381,7 +381,7 @@ msgstr[2] "_Cofnij przeniesienie do kosza %d elementów"
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Cofnij przywrócenie z kosza %d elementu"
+msgstr[0] "_Cofnij przywrócenie elementu z kosza"
 msgstr[1] "_Cofnij przywrócenie z kosza %d elementów"
 msgstr[2] "_Cofnij przywrócenie z kosza %d elementów"
 
@@ -405,9 +405,11 @@ msgstr[2] "_Cofnij usunięcie %d elementów"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Cofnij zmianę uprawnień dla %d elementu"
-msgstr[1] "Cofnij zmianę uprawnień dla %d elementów"
-msgstr[2] "Cofnij zmianę uprawnień dla %d elementów"
+msgstr[0] "Cofnij zmianę uprawnień dla elementu i elementów w nim zawartych"
+msgstr[1] ""
+"Cofnij zmianę uprawnień dla %d elementów i elementów w nich zawartych"
+msgstr[2] ""
+"Cofnij zmianę uprawnień dla %d elementów i elementów w nich zawartych"
 
 #: ../libcore/marlin-undostack-manager.c:1613
 #, c-format
@@ -437,47 +439,47 @@ msgstr[2] "Confij zmianę właściciela %d elementów"
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Powtórz kopiowanie %d elementu"
-msgstr[1] "_Powtórz kopiowanie %d elementów"
-msgstr[2] "_Powtórz kopiowanie %d elementów"
+msgstr[0] "_Ponów kopiowanie elementu"
+msgstr[1] "_Ponów kopiowanie %d elementów"
+msgstr[2] "_Ponów kopiowanie %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1656
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Powtórz powielenie %d elementu"
-msgstr[1] "_Powtórz powielenie %d elementów"
-msgstr[2] "_Powtórz powielenie %d elementów"
+msgstr[0] "_Ponów powielenie elementu"
+msgstr[1] "_Ponów powielenie %d elementów"
+msgstr[2] "_Ponów powielenie %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1661
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "_Powtórz przeniesienie %d elementu"
-msgstr[1] "_Powtórz przeniesienie %d elementów"
-msgstr[2] "_Powtórz przeniesienie %d elementów"
+msgstr[0] "_Ponów przeniesienie elementu"
+msgstr[1] "_Ponów przeniesienie %d elementów"
+msgstr[2] "_Ponów przeniesienie %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1666
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Powtórz zmianę nazwy %d elementu"
-msgstr[1] "_Powtórz zmianę nazwy %d elementów"
-msgstr[2] "_Powtórz zmianę nazwy %d elementów"
+msgstr[0] "_Ponów zmianę nazwy elementu"
+msgstr[1] "_Ponów zmianę nazwy %d elementów"
+msgstr[2] "_Ponów zmianę nazwy %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
-msgstr "_Powtórz utworzenie pustego pliku"
+msgstr "_Ponów utworzenie pustego pliku"
 
 #: ../libcore/marlin-undostack-manager.c:1673
 msgid "_Redo creation of a file from template"
-msgstr "_Powtórz utworzenie pliku z szablanu"
+msgstr "_Ponów utworzenie pliku z szablonu"
 
 #: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Powtórz utworzenie %d katalogu"
+msgstr[0] "_Powtórz utworzenie katalogu"
 msgstr[1] "_Powtórz utworzenie %d katalogów"
 msgstr[2] "_Powtórz utworzenie %d katalogów"
 
@@ -485,7 +487,7 @@ msgstr[2] "_Powtórz utworzenie %d katalogów"
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Powtórz przeniesienie do kosza %d elementu"
+msgstr[0] "_Powtórz przeniesienie do kosza elementu"
 msgstr[1] "_Powtórz przeniesienie do kosza %d elementu"
 msgstr[2] "_Powtórz przeniesienie do kosza %d elementu"
 
@@ -493,7 +495,7 @@ msgstr[2] "_Powtórz przeniesienie do kosza %d elementu"
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Powtórz przywrócenie z kosza %d elementu"
+msgstr[0] "_Powtórz przywrócenie z kosza elementu"
 msgstr[1] "_Powtórz przywrócenie z kosza %d elementów"
 msgstr[2] "_Powtórz przywrócenie z kosza %d elementów"
 
@@ -501,49 +503,49 @@ msgstr[2] "_Powtórz przywrócenie z kosza %d elementów"
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Powtórz utworzenie dowiązania do %d elementu"
-msgstr[1] "_Powtórz utworzenie dowiązania do %d elementów"
-msgstr[2] "_Powtórz utworzenie dowiązania do %d elementów"
+msgstr[0] "_Ponów utworzenie dowiązania do elementu"
+msgstr[1] "_Ponów utworzenie dowiązań do %d elementów"
+msgstr[2] "_Ponów utworzenie dowiązań do %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1697
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Powtórz usunięcie %d elementu"
-msgstr[1] "_Powtórz usunięcie %d elementów"
-msgstr[2] "_Powtórz usunięcie %d elementów"
+msgstr[0] "_Ponów usunięcie elementu"
+msgstr[1] "_Ponów usunięcie %d elementów"
+msgstr[2] "_Ponów usunięcie %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1702
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Powtórz rekurencyjną zmianę uprawnień %d elementu"
-msgstr[1] "Powtórz rekurencyjną zmianę uprawnień %d elementów"
-msgstr[2] "Powtórz rekurencyjną zmianę uprawnień %d elementów"
+msgstr[0] "Ponów zmianę uprawnień elementu i elementów w nim zawartych"
+msgstr[1] "Ponów zmianę uprawnień %d elementów i elementów w nich zawartych"
+msgstr[2] "Ponów zmianę uprawnień %d elementów i elementów w nich zawartych"
 
 #: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Powtórz zmianę uprawnień %d elementu"
-msgstr[1] "Powtórz zmianę uprawnień %d elementów"
-msgstr[2] "Powtórz zmianę uprawnień %d elementów"
+msgstr[0] "Powtórz zmianę uprawnień do elementu"
+msgstr[1] "_Ponów zmianę uprawnień %d elementów"
+msgstr[2] "_Ponów zmianę uprawnień %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] "Powtórz zmianę grupy %d elementu"
-msgstr[1] "Powtórz zmianę grupy %d elementów"
-msgstr[2] "Powtórz zmianę grupy %d elementów"
+msgstr[0] "Ponów zmianę grupy elementu"
+msgstr[1] "Ponów zmianę grupy %d elementów"
+msgstr[2] "Ponów zmianę grupy %d elementów"
 
 #: ../libcore/marlin-undostack-manager.c:1718
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] "Powtórz zmianę właściciela %d elementu"
-msgstr[1] "Powtórz zmianę właściciela %d elementów"
-msgstr[2] "Powtórz zmianę właściciela %d elementów"
+msgstr[0] "Ponów zmianę właściciela elementu"
+msgstr[1] "Ponów zmianę właściciela %d elementów"
+msgstr[2] "Ponów zmianę właściciela %d elementów"
 
 #: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
 msgid "Today at %-I:%M %p"
@@ -559,7 +561,7 @@ msgstr "%a %-d %b o %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y o %-I:%M %p"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -621,7 +623,7 @@ msgstr "Zastąpić plik „%s”?"
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
 msgid "Replacing it will overwrite its content."
-msgstr "Zastąpienie go, zmieni jego zawartość."
+msgstr "Zastąpienie go spowoduje nadpisanie jego zawartości."
 
 #: ../libcore/marlin-file-conflict-dialog.c:182
 #: ../libcore/marlin-file-conflict-dialog.c:408
@@ -667,7 +669,7 @@ msgstr "Typ:"
 #: ../libcore/marlin-file-conflict-dialog.c:478
 #: ../libcore/marlin-file-conflict-dialog.c:499
 msgid "Last modified:"
-msgstr "Ostatnio zmodyfikowany:"
+msgstr "Ostatnia modyfikacja:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:492
@@ -681,7 +683,7 @@ msgstr "Połącz"
 
 #: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
-msgstr "Wybranie nowej _nazwy dla pliku docelowego"
+msgstr "_Wybór nowej nazwy dla pliku docelowego"
 
 #: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
@@ -689,7 +691,7 @@ msgstr "Przywróć"
 
 #: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
-msgstr "Zastosowanie tej czynności dla wszystkich plików"
+msgstr "Wykonaj tę czynność dla wszystkich plików"
 
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
@@ -738,7 +740,7 @@ msgstr "P_ołącz wszystkie"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "Skopiuj p_omimo to"
+msgstr "Skopiuj po_mimo tego"
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
@@ -1512,28 +1514,28 @@ msgstr "Niedostępny"
 msgid "link to %s"
 msgstr "dowiązanie do %s"
 
-#: ../libcore/gof-file.c:1925
+#: ../libcore/gof-file.c:1935
 #, c-format
 msgid "Failed to parse the desktop file: %s"
 msgstr "Nie udało się przetworzyć pliku .desktop: %s"
 
-#: ../libcore/gof-file.c:1962
+#: ../libcore/gof-file.c:1972
 msgid "No Exec field specified"
 msgstr "Nie określono pola Exec"
 
-#: ../libcore/gof-file.c:1981
+#: ../libcore/gof-file.c:1991
 msgid "No URL field specified"
 msgstr "Nie określono pola URL"
 
-#: ../libcore/gof-file.c:1987
+#: ../libcore/gof-file.c:1997
 msgid "Invalid desktop file"
 msgstr "Nieprawidłowy plik .desktop"
 
-#: ../libcore/gof-file.c:2282
+#: ../libcore/gof-file.c:2292
 msgid "Slashes are not allowed in filenames"
 msgstr "Ukośniki są niedozwolone w nazwach plików"
 
-#: ../libcore/gof-file.c:2302
+#: ../libcore/gof-file.c:2312
 msgid "Toplevel files cannot be renamed"
 msgstr "Nie można zmienić nazw dla plików najwyższego poziomu"
 
@@ -1545,87 +1547,95 @@ msgstr "Wyświetlenie większej ilości _szczegółów"
 msgid " (invalid Unicode)"
 msgstr " (nieprawidłowe kodowanie Unikod)"
 
-#: ../filechooser-module/FileChooserDialog.vala:70
+#: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
 msgstr "Poprzedni"
 
-#: ../filechooser-module/FileChooserDialog.vala:74
+#: ../filechooser-module/FileChooserDialog.vala:76
 #: ../src/View/Widgets/TopMenu.vala:68
 msgid "Next"
 msgstr "Następny"
 
-#: ../src/View/ViewContainer.vala:347 ../src/View/Sidebar.vala:494
+#: ../src/View/ViewContainer.vala:352 ../src/View/Sidebar.vala:494
 msgid "Home"
 msgstr "Katalog użytkownika"
 
-#: ../src/View/ViewContainer.vala:349 ../src/View/Sidebar.vala:555
+#: ../src/View/ViewContainer.vala:354 ../src/View/Sidebar.vala:555
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:93
 msgid "File System"
 msgstr "System plików"
 
-#: ../src/View/ViewContainer.vala:358
+#: ../src/View/ViewContainer.vala:363
 msgid "(as Administrator)"
 msgstr "(jako administrator)"
 
-#: ../src/View/ViewContainer.vala:371 ../src/View/DirectoryNotFound.vala:28
+#: ../src/View/ViewContainer.vala:376 ../src/View/DirectoryNotFound.vala:28
 msgid "This Folder Does Not Exist"
 msgstr "Katalog nie istnieje"
 
-#: ../src/View/ViewContainer.vala:372
+#: ../src/View/ViewContainer.vala:377
 msgid "You cannot create a folder here."
 msgstr "Nie można utworzyć tutaj katalogu."
 
-#: ../src/View/ViewContainer.vala:374
+#: ../src/View/ViewContainer.vala:379
 msgid "The network is unavailable"
 msgstr "Sieć jest niedostępna"
 
-#: ../src/View/ViewContainer.vala:375
+#: ../src/View/ViewContainer.vala:380
 msgid "A working network is needed to reach this folder"
 msgstr "Aby uzyskać dostęp do tego katalogu wymagana jest działająca sieć."
 
-#: ../src/View/ViewContainer.vala:377
+#: ../src/View/ViewContainer.vala:382
 msgid "This Folder Does Not Belong to You"
 msgstr "Ten katalog nie należy do Ciebie"
 
-#: ../src/View/ViewContainer.vala:378
+#: ../src/View/ViewContainer.vala:383
 msgid "You don't have permission to view this folder."
 msgstr "Nie masz uprawnień do przegladania tego katalogu."
 
-#: ../src/View/ViewContainer.vala:380
+#: ../src/View/ViewContainer.vala:385
 msgid "Unable to Mount Folder"
 msgstr "Nie udało się zamontować katalogu"
 
-#: ../src/View/ViewContainer.vala:381
+#: ../src/View/ViewContainer.vala:386
 msgid "Could not connect to the server for this folder."
 msgstr "Nie udało się połączyć z serwerem do tego katalogu."
 
-#: ../src/View/ViewContainer.vala:383
+#: ../src/View/ViewContainer.vala:388
+msgid "Unable to Display Folder Contents"
+msgstr "Nie można wyświetlić zawartości katalogu"
+
+#: ../src/View/ViewContainer.vala:389
+msgid "The operation timed out."
+msgstr "Przekroczono limit czasu operacji."
+
+#: ../src/View/ViewContainer.vala:391
 msgid "Unable to Show Folder"
 msgstr "Nie można wyświetlić katalogu"
 
-#: ../src/View/ViewContainer.vala:384
+#: ../src/View/ViewContainer.vala:392
 msgid "The server for this folder could not be located."
 msgstr "Serwer dla tego katalogu nie mógł zostać zlokalizowany."
 
-#: ../src/View/ViewContainer.vala:394
+#: ../src/View/ViewContainer.vala:402
 msgid "File not Found"
 msgstr "Plik nie istnieje"
 
-#: ../src/View/ViewContainer.vala:395
+#: ../src/View/ViewContainer.vala:403
 msgid "The file selected no longer exists."
 msgstr "Wybrany plik nie istnieje."
 
-#: ../src/View/Window.vala:207
+#: ../src/View/Window.vala:208
 msgid "Files isn't your default file manager."
 msgstr "To nie jest Twój domyślny manager plików."
 
-#: ../src/View/Window.vala:213
+#: ../src/View/Window.vala:214
 msgid "Set as Default"
 msgstr "Ustaw jako domyślny"
 
-#: ../src/View/Window.vala:219
+#: ../src/View/Window.vala:220
 msgid "Ignore"
 msgstr "Zignoruj"
 
@@ -1970,27 +1980,27 @@ msgstr "Pokaż okno kopiowania"
 msgid "Cancel All In-progress Actions"
 msgstr "Anuluj wszystkie trwające czynności"
 
-#: ../src/DesktopLauncher.vala:6
+#: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
 msgstr "Przeglądaj swoje pliki"
 
-#: ../src/DesktopLauncher.vala:7
+#: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
 msgstr "Menedżer plików"
 
-#: ../src/DesktopLauncher.vala:8
+#: ../src/DesktopLauncher.vala:23
 msgid "New _Window"
 msgstr "Nowe _okno"
 
-#: ../src/DesktopLauncher.vala:9
+#: ../src/DesktopLauncher.vala:24
 msgid "New Window As _Administrator"
 msgstr "Nowe okno, jako _administrator"
 
-#: ../src/DesktopLauncher.vala:10
+#: ../src/DesktopLauncher.vala:25
 msgid "About _Files"
 msgstr "O _Plikach"
 
-#: ../src/DesktopLauncher.vala:11 ../libwidgets/Resources.vala:22
+#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Pliki"
 
@@ -2228,6 +2238,10 @@ msgstr "Właściwości dysku"
 msgid "Format:"
 msgstr "Format:"
 
+#: ../libcore/gof-directory-async.vala:588
+msgid "Server did not respond within time limit"
+msgstr "Serwer nie odpowiedział w określonym przedziale czasu"
+
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
 msgstr "Nie można określić pierwotnego położenia \"%s\" "
@@ -2324,12 +2338,13 @@ msgstr ""
 "  Marcin Wierzbicki https://launchpad.net/~marcin-wierzb\n"
 "  Marek Jędrzejewski https://launchpad.net/~slomianowlosy\n"
 "  Marek Pikuła https://launchpad.net/~mar4k\n"
+"  Mariusz https://launchpad.net/~marbed31\n"
 "  Olek https://launchpad.net/~olek-janiszewski\n"
 "  Pawel Kalinowski https://launchpad.net/~qleers\n"
 "  Piotr Filipek https://launchpad.net/~piotrek290\n"
 "  Piotr Sokół https://launchpad.net/~psokol\n"
 "  Piotr Strębski https://launchpad.net/~strebski\n"
-"  Przemysław Figura https://launchpad.net/~pf1gura-deactivatedaccount\n"
+"  Przemysław Figura https://launchpad.net/~pf1gura\n"
 "  Szymon https://launchpad.net/~nysdenn\n"
 "  Szymon Mazurczak https://launchpad.net/~sz-mazurczak\n"
 "  Szymon Mróz https://launchpad.net/~predek00\n"
