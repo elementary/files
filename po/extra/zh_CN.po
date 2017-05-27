@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"POT-Creation-Date: 2017-05-26 14:33-0500\n"
 "PO-Revision-Date: 2017-03-13 08:25+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-05-06 05:41+0000\n"
-"X-Generator: Launchpad (build 18366)\n"
+"X-Launchpad-Export-Date: 2017-05-27 06:09+0000\n"
+"X-Generator: Launchpad (build 18391)\n"
 
 msgid "Files"
 msgstr "文件"
@@ -50,6 +50,29 @@ msgstr ""
 "用文件夹保持文件整洁有序，在自己喜欢的视图中快速找到文件，轻松完成复制、移动和删除文件等操作。无论是内置硬盘中的文件，还是外接设备、远程设备中的文件，统统"
 "不在话下。"
 
+msgid "Improved networking support"
+msgstr ""
+
+msgid "Correct window geometry when snapping to left or right"
+msgstr ""
+
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+
+msgid "Switching input language cancels actions"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr "多项崩溃修复"
+
+msgid "New translations"
+msgstr "更新翻译"
+
+msgid "Minor bug fixes"
+msgstr "细节修复"
+
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
@@ -66,15 +89,6 @@ msgstr "最小窗口尺寸 910x640"
 
 msgid "Security fixes"
 msgstr "安全修复"
-
-msgid "Various crash fixes"
-msgstr "多项崩溃修复"
-
-msgid "New translations"
-msgstr "更新翻译"
-
-msgid "Minor bug fixes"
-msgstr "细节修复"
 
 msgid "Enable drag and drop tabs between windows"
 msgstr "新增窗口间标签拖放"
