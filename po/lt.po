@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-02-28 15:46+0000\n"
+"PO-Revision-Date: 2017-05-27 19:46+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2017-05-27 06:06+0000\n"
+"X-Launchpad-Export-Date: 2017-05-28 05:34+0000\n"
 "X-Generator: Launchpad (build 18391)\n"
 "Language: lt\n"
 
@@ -2268,15 +2268,15 @@ msgstr "Nepavyko pervadinti į \"%s\""
 
 #: ../libcore/FileUtils.vala:434
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Šiandien ties %-H:%M"
 
 #: ../libcore/FileUtils.vala:442
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Vakar ties %-H:%M"
 
 #: ../libcore/FileUtils.vala:451
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A ties %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-I:%M %p"
