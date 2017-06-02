@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-05-07 04:28+0000\n"
+"PO-Revision-Date: 2017-06-02 04:43+0000\n"
 "Last-Translator: Melih Güçlü <melihguclu@hotmail.com>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2017-05-27 06:08+0000\n"
+"X-Launchpad-Export-Date: 2017-06-02 06:33+0000\n"
 "X-Generator: Launchpad (build 18391)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -2200,11 +2200,11 @@ msgstr "'%s' yeniden adlandırılamadı"
 
 #: ../libcore/FileUtils.vala:434
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Bugün %-H:%M"
 
 #: ../libcore/FileUtils.vala:442
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Dün %-H:%M"
 
 #: ../libcore/FileUtils.vala:451
 msgid "%A at %-H:%M"
