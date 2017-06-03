@@ -7,18 +7,38 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-01-27 10:14+0000\n"
-"Last-Translator: Piotr Strębski <strebski@o2.pl>\n"
+"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"PO-Revision-Date: 2017-04-18 09:51+0000\n"
+"Last-Translator: Piotr Strębski <strebski@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-28 05:50+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-05-27 06:09+0000\n"
+"X-Generator: Launchpad (build 18391)\n"
 
 msgid "Files"
 msgstr "Pliki"
+
+msgid "Browse your files"
+msgstr "Przeglądaj swoje pliki"
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr ""
+"katalog;folder;menedżer;menadżer;manadżer;manedżer;manager;eksploruj;eksplora"
+"tor;dysk;system plików;"
+
+msgid "File Manager"
+msgstr "Menedżer plików"
+
+msgid "New Window"
+msgstr "Nowe okno"
+
+msgid "New Window As Administrator"
+msgstr "Nowe okno jako administrator"
+
+msgid "About Files"
+msgstr "O Plikach"
 
 msgid "Browse and manage files and folders"
 msgstr "Przeglądaj i zarządzaj plikami oraz katalogami"
@@ -29,12 +49,63 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
-"Z łatwością kopiuj, przenoś oraz zmieniaj nazwy swoich plików oraz używaj "
-"katalogów, aby utrzymać porządek. Czy lubisz widzieć pliki w układzie list, "
-"siatki lub kolumn, zawsze znajdziesz je we właściwym miejscu. Dostęp do "
-"wszystkich Twoich plików, zarówno lokalnie, jak i na urządzeniach "
-"zewnętrznych lub zdalnie używając FTP, SFTP, AFP, Webdav, czy udziałów "
-"systemu Windows."
+"Kopiuj z łatwością, przenoś, zmieniaj nazwy swoich plików oraz używaj "
+"katalogów, aby utrzymać porządek. Zawsze kiedy chcesz przeglądać pliki w "
+"postaci list, siatki lub kolumn możesz znaleźć je we właściwym miejscu. "
+"Utrzymuj dostęp do wszystkich swoich plików, zarówno lokalnie jak i na "
+"urządzeniach zewnętrznych lub zdalnych, używając rozwiązań FTP, SFTP, AFP, "
+"WebDAV lub udziałów systemu Microsoft Windows."
+
+msgid "Improved networking support"
+msgstr ""
+
+msgid "Correct window geometry when snapping to left or right"
+msgstr ""
+
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+
+msgid "Switching input language cancels actions"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr "Różne poprawki błędów"
+
+msgid "New translations"
+msgstr "Nowe tłumaczenia"
+
+msgid "Minor bug fixes"
+msgstr "Poprawki drobnych błędów"
+
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+"Przeglądarki internetowe takie jak Firefox pamiętają najczęściej używane "
+"katalogi pobierania"
+
+msgid "Remember preferred zoom level"
+msgstr "Pamiętaj preferowany poziom powiększenia"
+
+msgid "Improved input method support"
+msgstr "Ulepszona obsługa metody wprowadzania"
+
+msgid "910x640 minimum window size"
+msgstr "Minimalny rozmiar okna: 910x640"
+
+msgid "Security fixes"
+msgstr "Poprawki zabezpieczeń"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr "Włącz możliwość przeniesienia zakładki metodą \"przenieś i upuść\"."
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Scalenie funkcji wyszukiwania skrótem klawiszowym Ctrl+F"
+
+msgid "Improved translation support"
+msgstr "Ulepszona obsługa tłumaczenia"
 
 msgid "Fix appdata release dates"
 msgstr "Poprawione daty wydań danych programu"
@@ -51,20 +122,9 @@ msgstr "Ulepszona czułość wycinania/kopiowania/wklejania w menu kontekstowym"
 msgid "Translation updates"
 msgstr "Aktualizacje tłumaczenia"
 
-msgid "Minor bug fixes"
-msgstr "Poprawki drobnych błędów"
+msgid "Run Pantheon Files as Administrator"
+msgstr "Uruchom Pliki Pantheon jako administrator"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Scalenie funkcji wyszukiwania pod Ctrl+F"
-
-msgid "Improved translation support"
-msgstr "Ulepszone tłumaczenia"
-
-msgid "Various crash fixes"
-msgstr "Różne poprawki błędów"
-
-msgid "New translations"
-msgstr "Nowe tłumaczenia"
-
-msgid "Enable drag and drop tabs between windows"
-msgstr "Włącz możliwość \"złap i przenieś\" zakłądki pomiędzy oknami"
+msgid "Authentication is required to run Files as Administrator"
+msgstr ""
+"Aby uruchomić Pliki jako administrator wymagane jest uwierzytelnienie."

@@ -13,8 +13,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with this library; if not, write to the
- * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
+ * Boston, MA 02110-1335 USA.
  *
  * Authored by: Adam Bieńkowski <donadigos159@gmail.com>
  */
@@ -59,6 +59,8 @@ public class CustomFileChooserDialog : Object {
 
         var settings = new Settings ("org.pantheon.files.preferences");
         is_single_click = settings.get_boolean ("single-click");
+
+        var chooser_settings = new Settings ("org.pantheon.files.file-chooser");
 
         assign_container_box ();
         remove_gtk_widgets ();
@@ -125,9 +127,15 @@ public class CustomFileChooserDialog : Object {
             location_bar.set_display_path (current_path);
         });
 
+        chooser_dialog.unrealize.connect (() => {
+            chooser_settings.set_string ("last-folder-uri", location_bar.get_display_path ());
+        });
+
         location_bar.path_change_request.connect ((uri) => {
             chooser_dialog.set_current_folder (uri);
         });
+
+        chooser_dialog.set_current_folder_uri (chooser_settings.get_string ("last-folder-uri"));
     }
 
     /*

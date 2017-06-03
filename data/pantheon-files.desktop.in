@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=Files
-Comment=Browse your files
-Keywords=folder;manager;explore;disk;filesystem;
-GenericName=File Manager
+_Name=Files
+_Comment=Browse your files
+_Keywords=folder;manager;explore;disk;filesystem;
+_GenericName=File Manager
 Exec=pantheon-files %U
 Icon=system-file-manager
 Terminal=false
@@ -15,13 +15,13 @@ X-GNOME-UsesNotifications=true
 Actions=WindowNew;Root;AboutDialog;
 
 [Desktop Action WindowNew]
-Name=New _Window
+_Name=New Window
 Exec=pantheon-files -n
 
 [Desktop Action Root]
-Name=New Window As _Administrator
+_Name=New Window As Administrator
 Exec=pantheon-files-pkexec
 
 [Desktop Action AboutDialog]
-Name=About _Files
+_Name=About Files
 Exec=pantheon-files --about

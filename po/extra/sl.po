@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
+"POT-Creation-Date: 2017-05-26 14:33-0500\n"
 "PO-Revision-Date: 2016-08-17 08:45+0000\n"
 "Last-Translator: Jernej Virag <Unknown>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:15+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-05-27 06:09+0000\n"
+"X-Generator: Launchpad (build 18391)\n"
 
 msgid "Files"
 msgstr "Datoteke"
+
+msgid "Browse your files"
+msgstr ""
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr ""
+
+msgid "File Manager"
+msgstr ""
+
+msgid "New Window"
+msgstr ""
+
+msgid "New Window As Administrator"
+msgstr ""
+
+msgid "About Files"
+msgstr ""
 
 msgid "Browse and manage files and folders"
 msgstr "Brskajte in upravljajte z datotekami ali mapami"
@@ -32,6 +50,55 @@ msgstr ""
 "Preprosto kopirajte, premikajte ali preimenujte vaše datoteke in mape. "
 "Podpira veliko različnih pogledov in dostop do lokalnih ter omrežnih datotek "
 "preko FTP, SFTP, AFP, Webdav ali Windows protokola."
+
+msgid "Improved networking support"
+msgstr ""
+
+msgid "Correct window geometry when snapping to left or right"
+msgstr ""
+
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+
+msgid "Switching input language cancels actions"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr ""
+
+msgid "Minor bug fixes"
+msgstr ""
+
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+
+msgid "Remember preferred zoom level"
+msgstr ""
+
+msgid "Improved input method support"
+msgstr ""
+
+msgid "910x640 minimum window size"
+msgstr ""
+
+msgid "Security fixes"
+msgstr ""
+
+msgid "Enable drag and drop tabs between windows"
+msgstr ""
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr ""
+
+msgid "Improved translation support"
+msgstr ""
 
 msgid "Fix appdata release dates"
 msgstr ""
@@ -48,20 +115,8 @@ msgstr ""
 msgid "Translation updates"
 msgstr ""
 
-msgid "Minor bug fixes"
+msgid "Run Pantheon Files as Administrator"
 msgstr ""
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
-
-msgid "Improved translation support"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
+msgid "Authentication is required to run Files as Administrator"
 msgstr ""

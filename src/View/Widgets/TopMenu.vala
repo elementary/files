@@ -62,10 +62,12 @@ namespace Marlin.View.Chrome
             button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             button_forward = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
             button_back.tooltip_text = _("Previous");
+            button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             button_back.show_all ();
             pack_start (button_back);
 
             button_forward.tooltip_text = _("Next");
+            button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             button_forward.show_all ();
             pack_start (button_forward);
 

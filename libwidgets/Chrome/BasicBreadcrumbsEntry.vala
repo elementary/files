@@ -13,8 +13,8 @@
 
     You should have received a copy of the GNU General Public
     License along with this program; see the file COPYING.  If not,
-    write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-    Boston, MA 02111-1307, USA.
+    write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
+    Boston, MA 02110-1335 USA.
 
 ***/
 
@@ -298,22 +298,42 @@ namespace Marlin.View.Chrome {
             return false;
         }
 
+        private uint focus_out_timeout_id = 0;
         protected virtual bool on_focus_out (Gdk.EventFocus event) {
-            base.focus_out_event (event);
-            if (context_menu_showing) {
+            if (focus_out_timeout_id == 0) {
+                /* Delay acting on focus out - may be temporary, due to keyboard layout change */
+                focus_out_timeout_id = GLib.Timeout.add (10, () => {
+                    focus_out_event (event);
+                    return false;
+                });
                 return true;
+            } else {
+                /* This the delayed propagated event */
+                focus_out_timeout_id = 0;
+                base.focus_out_event (event);
+
+                if (context_menu_showing) {
+                    return true;
+                }
+
+                reset ();
+                return false;
             }
-
-            reset ();
-            return false;
-
         }
 
         protected virtual bool on_focus_in (Gdk.EventFocus event) {
-            context_menu_showing = false;
-            current_dir_path = get_breadcrumbs_path ();
-            set_entry_text (current_dir_path);
-            return false;
+            if (focus_out_timeout_id > 0) {
+                /* There was a temporary focus out due to keyboard layout change.
+                 * Cancel propagation of focus out event and ignore focus in event */
+                GLib.Source.remove (focus_out_timeout_id);
+                focus_out_timeout_id = 0;
+                return true;
+            } else {
+                context_menu_showing = false;
+                current_dir_path = get_breadcrumbs_path ();
+                set_entry_text (current_dir_path);
+                return false;
+            }
         }
 
         protected virtual void on_activate () {
