@@ -107,8 +107,14 @@ public class GOF.Directory.Async : Object {
     public string last_error_message {get; private set; default = "";}
 
     private Async (GLib.File _file) {
-        /* Ensure uri is correctly escaped */
-        location = GLib.File.new_for_uri (PF.FileUtils.escape_uri (_file.get_uri ()));
+        /* Ensure uri is correctly escaped and has scheme */
+        var escaped_uri = PF.FileUtils.escape_uri (_file.get_uri ());
+        scheme = Uri.parse_scheme (escaped_uri);
+        if (scheme == null) {
+            scheme = Marlin.ROOT_FS_URI;
+            escaped_uri = scheme + escaped_uri;
+        }
+        location = GLib.File.new_for_uri (escaped_uri);
         file = GOF.File.get (location);
         selected_file = null;
 
