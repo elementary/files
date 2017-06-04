@@ -38,20 +38,19 @@ namespace Marlin.View.Chrome
             BOOKMARK_HEADER,
             BOOKMARK_BEGINS,
             BOOKMARK_CONTAINS,
-            BOOKMARK_ELLIPSIS
-        }
+            BOOKMARK_ELLIPSIS;
 
-        /* This function converts a Category enum to a letter which can be prefixed to the match
-         * name to form a sort key.  This ensures that the categories appear in the list in the
-         * desired order - that is within each class of results (current folder, deep search,
-         * zeitgeist search and bookmark search), after the header, the matches appear with the
-         * "begins with" ones first, then the "contains" and finally an "ellipsis" pseudo-match
-         * appears if MAX_RESULTS is exceeded for that category.
-         */
-         /* The constant "sort_string" serves as an array of characters indexed by the enum. */
-        private const string sort_string = "ABCDEFGHIJKLMN";
-        private static string category_to_string (Category category) {
-            return (sort_string.get_char ((uint)category)).to_string ();
+
+            /* This function converts a Category enum to a letter which can be prefixed to the match
+             * name to form a sort key.  This ensures that the categories appear in the list in the
+             * desired order - that is within each class of results (current folder, deep search,
+             * zeitgeist search and bookmark search), after the header, the matches appear with the
+             * "begins with" ones first, then the "contains" and finally an "ellipsis" pseudo-match
+             * appears if MAX_RESULTS is exceeded for that category.
+             */
+            public string to_string () {
+                return CharacterSet.A_2_Z.get_char ((uint)this).to_string ();
+            }
         }
 
         class Match : Object
@@ -70,7 +69,7 @@ namespace Marlin.View.Chrome
                         icon: info.get_icon (),
                         path_string: path_string,
                         file: parent.resolve_relative_path (info.get_name ()),
-                        sortkey: category_to_string (category) + _name);
+                        sortkey: category.to_string () + _name);
             }
 
             public Match.from_bookmark (Bookmark bookmark, SearchResults.Category category) {
@@ -79,7 +78,7 @@ namespace Marlin.View.Chrome
                         icon: bookmark.get_icon (),
                         path_string: "",
                         file: bookmark.get_location (),
-                        sortkey: SearchResults.category_to_string (category) + bookmark.label);
+                        sortkey: category.to_string () + bookmark.label);
             }
 
             public Match.ellipsis (SearchResults.Category category) {
@@ -88,7 +87,7 @@ namespace Marlin.View.Chrome
                         icon: null,
                         path_string: "",
                         file: null,
-                        sortkey: SearchResults.category_to_string (category));
+                        sortkey: category.to_string ());
             }
         }
 
@@ -226,22 +225,22 @@ namespace Marlin.View.Chrome
             list.append (out local_results, null);
             list.@set (local_results,
                         0, get_category_header (_("In This Folder")),
-                        5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+                        5, Category.CURRENT_HEADER.to_string ());
 
             list.append (out deep_results, null);
             list.@set (deep_results,
                         0, get_category_header (_("Below This Folder")),
-                        5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+                        5, Category.CURRENT_HEADER.to_string ());
 
             list.append (out bookmark_results, null);
             list.@set (bookmark_results,
                         0, get_category_header (_("Bookmarks")),
-                        5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+                        5, Category.CURRENT_HEADER.to_string ());
 
             list.append (out zeitgeist_results, null);
             list.@set (zeitgeist_results,
                         0, get_category_header (_("Recently used")),
-                        5, SearchResults.category_to_string (Category.CURRENT_HEADER));
+                        5, Category.CURRENT_HEADER.to_string ());
 
             scroll.add (view);
             frame.add (scroll);
