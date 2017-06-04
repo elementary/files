@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-02-28 15:44+0000\n"
+"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"PO-Revision-Date: 2017-05-27 20:02+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-05-06 05:41+0000\n"
-"X-Generator: Launchpad (build 18366)\n"
+"X-Launchpad-Export-Date: 2017-05-28 05:34+0000\n"
+"X-Generator: Launchpad (build 18391)\n"
 
 msgid "Files"
 msgstr "Failai"
@@ -53,6 +53,31 @@ msgstr ""
 "savo failus taip pat ir išoriniame įrenginyje bei nuotoliniu būdu, naudodami "
 "FTP, SFTP, AFP, Webdav, ar Windows viešinius."
 
+msgid "Improved networking support"
+msgstr "Patobulintas darbo tinkle palaikymas"
+
+msgid "Correct window geometry when snapping to left or right"
+msgstr "Teisinga lango geometriją pritraukiant prie kairės ar dešinės"
+
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+"Ctrl (Vald) paspaudimas daugiau nebeatšaukia pervadinimo, kol nustatymas "
+"\"Parodyti rodyklę\" yra aktyvus"
+
+msgid "Switching input language cancels actions"
+msgstr "Įvesties kalbos perjungimas atšaukia veiksmus"
+
+msgid "Various crash fixes"
+msgstr "Įvairių strigčių pataisymai"
+
+msgid "New translations"
+msgstr "Nauji vertimai"
+
+msgid "Minor bug fixes"
+msgstr "Smulkių klaidų pataisymai"
+
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
@@ -71,15 +96,6 @@ msgstr "910x640 mažiausias lango dydis"
 
 msgid "Security fixes"
 msgstr "Saugumo pataisymai"
-
-msgid "Various crash fixes"
-msgstr "Įvairių strigčių pataisymai"
-
-msgid "New translations"
-msgstr "Nauji vertimai"
-
-msgid "Minor bug fixes"
-msgstr "Smulkių klaidų pataisymai"
 
 msgid "Enable drag and drop tabs between windows"
 msgstr "Įjungtas kortelių vilkimas tarp langų"

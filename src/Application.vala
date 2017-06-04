@@ -200,10 +200,16 @@ public class Marlin.Application : Granite.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            var file = File.new_for_commandline_arg (filepath);
+            string path = PF.FileUtils.sanitize_path (filepath, null);
+            GLib.File? file = null;
 
-            if (file != null)
+            if (path.length > 0) {
+                file = File.new_for_uri (PF.FileUtils.escape_uri (path));
+            }
+
+            if (file != null) {
                 files += (file);
+            }
         }
         /* Open application */
         if (create_new_window) {
@@ -336,6 +342,8 @@ public class Marlin.Application : Granite.Application {
             win.show ();
         }
 
+        win.present ();
+
         return win;
     }
 
@@ -345,6 +353,7 @@ public class Marlin.Application : Granite.Application {
         /* Get the first window, if any, else create a new window */
         if (windows_exist ()) {
             window = (this.get_windows ()).data as Marlin.View.Window;
+            window.present ();
         } else {
             window = create_window (null); /* Do not add a tab on creation */
             if (window == null) { /* Maximum number of windows reached */

@@ -125,6 +125,16 @@ namespace Marlin.Places {
         public signal bool request_focus ();
         public signal void sync_needed ();
 
+        public new void grab_focus () {
+            tree_view.grab_focus ();
+        }
+
+        public new bool has_focus {
+            get {
+                return tree_view.has_focus;
+            }
+        }
+
         public Sidebar (Marlin.View.Window window) {
             init ();  /* creates the Gtk.TreeModel store. */
             this.last_selected_uri = null;
@@ -244,7 +254,6 @@ namespace Marlin.Places {
             tree_view.set_search_column (Column.NAME);
             var selection = tree_view.get_selection ();
             selection.set_mode (Gtk.SelectionMode.BROWSE);
-            selection.set_select_function (tree_selection_func);
 
             this.drag_scroll_timer_id = 0;
             tree_view.enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK,
@@ -1288,7 +1297,7 @@ namespace Marlin.Places {
                 } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                     window.add_tab (location, Marlin.ViewMode.CURRENT);
                 } else {
-                    window.file_path_change_request (location);
+                    window.uri_path_change_request (uri);
                 }
             } else if (f != null) {
                 f (this);
@@ -1328,7 +1337,7 @@ namespace Marlin.Places {
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                             window.add_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
-                            window.file_path_change_request (location);
+                            window.uri_path_change_request (location.get_uri ());
                         }
                     }
                 }
@@ -1577,6 +1586,7 @@ namespace Marlin.Places {
                     var file2 = GLib.File.new_for_path (uri);
                     if (file1.equal (file2)) {
                         selection.select_iter (child_iter);
+                        tree_view.set_cursor (store.get_path (child_iter), null, false);
                         this.last_selected_uri = location;
                         valid = false; /* escape from outer loop */
                         break;
@@ -1686,14 +1696,6 @@ namespace Marlin.Places {
             }
         }
 
-        private bool tree_selection_func (Gtk.TreeSelection selection,
-                                          Gtk.TreeModel model,
-                                          Gtk.TreePath path,
-                                          bool path_currently_selected) {
-        /* Don't allow categories to be selected. */
-            return !category_at_path (path);
-        }
-
         private void category_row_expanded_event_cb (Gtk.TreeView tree,
                                                      Gtk.TreeIter iter,
                                                      Gtk.TreePath path) {
@@ -1737,7 +1739,26 @@ namespace Marlin.Places {
                 return true;
             }
 
+            if (event.keyval == Gdk.Key.Right && (event.state & modifiers) == 0) {
+                expand_collapse_category (true);
+                return true;
+            }
+            if (event.keyval == Gdk.Key.Left && (event.state & modifiers) == 0) {
+                expand_collapse_category (false);
+                return true;
+            }
             return false;
+        }
+
+        private void expand_collapse_category (bool expand) {
+            Gtk.TreePath? path = get_path_at_cursor ();
+            if (category_at_path (path)) {
+                if (expand) {
+                    tree_view.expand_row (path, false);
+                } else {
+                    tree_view.collapse_row (path);
+                }
+            }
         }
 
         private bool button_press_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
@@ -2402,6 +2423,12 @@ namespace Marlin.Places {
             tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
             Gtk.TreePath? path = null;
             tree_view.get_path_at_pos (tx, ty, out path, null, null, null);
+            return path;
+        }
+        private Gtk.TreePath? get_path_at_cursor () {
+            Gtk.TreePath? path = null;
+            Gtk.TreeViewColumn? focus_column = null;
+            tree_view.get_cursor (out path, out focus_column);
             return path;
         }
 

@@ -284,7 +284,7 @@ namespace Marlin.View.Chrome {
             set_tooltip_text ("");
             var el = get_element_from_coordinates ((int)event.x, (int)event.y);
             if (el != null) {
-                set_tooltip_text (_("Go to %s").printf (el.text));
+                set_tooltip_text (_("Go to %s").printf (el.text_for_display));
                 set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {
                 set_entry_cursor (null);
@@ -476,6 +476,7 @@ namespace Marlin.View.Chrome {
                     if (el != null && element == el)
                         break;
             }
+
             return PF.FileUtils.sanitize_path (newpath);
         }
 

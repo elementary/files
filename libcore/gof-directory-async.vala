@@ -33,7 +33,7 @@ public class GOF.Directory.Async : Object {
     private const int MOUNT_TIMEOUT_SEC = 60;
 
     public GLib.File location;
-    public GLib.File? selected_file = null;
+    public GLib.File? selected_file {get; private set;}
     public GOF.File file;
     public int icon_size = 32;
 
@@ -107,9 +107,16 @@ public class GOF.Directory.Async : Object {
     public string last_error_message {get; private set; default = "";}
 
     private Async (GLib.File _file) {
-        /* Ensure uri is correctly escaped */
-        location = GLib.File.new_for_uri (PF.FileUtils.escape_uri (_file.get_uri ()));
+        /* Ensure uri is correctly escaped and has scheme */
+        var escaped_uri = PF.FileUtils.escape_uri (_file.get_uri ());
+        scheme = Uri.parse_scheme (escaped_uri);
+        if (scheme == null) {
+            scheme = Marlin.ROOT_FS_URI;
+            escaped_uri = scheme + escaped_uri;
+        }
+        location = GLib.File.new_for_uri (escaped_uri);
         file = GOF.File.get (location);
+        selected_file = null;
 
         cancellable = new Cancellable ();
         state = State.NOT_LOADED;

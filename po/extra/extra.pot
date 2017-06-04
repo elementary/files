@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"POT-Creation-Date: 2017-05-26 14:33-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,6 +48,29 @@ msgid ""
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
 
+msgid "Improved networking support"
+msgstr ""
+
+msgid "Correct window geometry when snapping to left or right"
+msgstr ""
+
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+
+msgid "Switching input language cancels actions"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr ""
+
+msgid "Minor bug fixes"
+msgstr ""
+
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
@@ -63,15 +86,6 @@ msgid "910x640 minimum window size"
 msgstr ""
 
 msgid "Security fixes"
-msgstr ""
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr ""
-
-msgid "Minor bug fixes"
 msgstr ""
 
 msgid "Enable drag and drop tabs between windows"
