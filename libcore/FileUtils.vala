@@ -162,7 +162,9 @@ namespace PF.FileUtils {
         return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
     }
 
-    /** Produce a valid unescaped path **/
+    /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
+      * to interpret relative paths where necessary.
+      **/
     public string sanitize_path (string? p, string? cp = null) {
         string path = "";
         string scheme = "";

@@ -200,10 +200,16 @@ public class Marlin.Application : Granite.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            var file = File.new_for_commandline_arg (filepath);
+            string path = PF.FileUtils.sanitize_path (filepath, null);
+            GLib.File? file = null;
 
-            if (file != null)
+            if (path.length > 0) {
+                file = File.new_for_uri (PF.FileUtils.escape_uri (path));
+            }
+
+            if (file != null) {
                 files += (file);
+            }
         }
         /* Open application */
         if (create_new_window) {
