@@ -361,10 +361,13 @@ public class Marlin.Application : Granite.Application {
             }
         }
         if (files == null) {
-            /* Restore session if settings allow */
-            if (!Preferences.settings.get_boolean ("restore-tabs") || window.restore_tabs () < 1) {
+            /* Restore session if not root and settings allow */
+            if (Posix.getuid () == 0 ||
+                !Preferences.settings.get_boolean ("restore-tabs") ||
+                window.restore_tabs () < 1) {
+
                 /* Open a tab pointing at the default location if no tabs restored*/
-                var location = File.new_for_path (Environment.get_home_dir ());
+                var location = File.new_for_path (Eel.get_real_user_home ());
                 window.add_tab (location, Marlin.ViewMode.PREFERRED);
             }
         } else {

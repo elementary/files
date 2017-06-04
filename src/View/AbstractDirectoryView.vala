@@ -3407,11 +3407,17 @@ namespace FM {
             int sort_column_id = 0;
             Gtk.SortType sort_order = 0;
 
+            /* Setting file attributes fails when root */
+            if (Posix.getuid () == 0) {
+                return;
+            }
+
             /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
              * the directory file metadata incorrectly (bug 1511307).
              */
-            if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order))
+            if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 return;
+            }
 
             var info = new GLib.FileInfo ();
             var dir = slot.directory;
