@@ -47,11 +47,13 @@ namespace Marlin {
             /* Get the user config directory
              * When running under pkexec determine real user from PKEXEC_UID
              */
-            string config_dir = GLib.Environment.get_user_config_dir ();
             string? user_home = Eel.get_real_user_home ();
+            string config_dir;
 
             if (user_home != null) {
                 config_dir = GLib.Path.build_filename (user_home, ".config");
+            } else {
+                config_dir = GLib.Environment.get_user_config_dir ();
             }
 
             /*Check bookmarks file exists and in right place */
