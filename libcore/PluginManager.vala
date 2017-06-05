@@ -41,10 +41,9 @@ public class Marlin.PluginManager : Object {
         is_admin = (user_id == 0);
         plugin_hash = new Gee.HashMap<string,Plugins.Base> ();
         names = new Gee.ArrayList<string> ();
-
         menuitem_references = new Gee.LinkedList<Gtk.Widget> ();
+        plugin_dirs = new string[0];
 
-            plugin_dirs = new string[0];
         if (!is_admin) {
             plugin_dirs += Path.build_filename (plugin_dir, "core");
             plugin_dirs += plugin_dir;
