@@ -233,8 +233,7 @@ namespace FM {
 
             if (p != null && c != null && c == name_column) {
                 int orig_x = area.x + ICON_XPAD;
-
-                if (x > orig_x) { /* y must be in range */
+                if (x < orig_x + icon_size) { /* cannot be on name */
                     bool on_helper = false;
                     bool on_icon = is_on_icon (x, y, orig_x, area.y, ref on_helper);
 
@@ -242,11 +241,12 @@ namespace FM {
                         zone = ClickZone.HELPER;
                     } else if (on_icon) {
                         zone = ClickZone.ICON;
-                    } else if (!is_blank) {
-                        zone = ClickZone.NAME;
+
+                    } else {
+                        zone = ClickZone.EXPANDER;
                     }
-                } else {
-                    zone = ClickZone.EXPANDER;
+                } else if (!is_blank) {
+                        zone = ClickZone.NAME;
                 }
             } else if (c != name_column)
                 zone = ClickZone.INVALID; /* Cause unselect all to occur on other columns*/
@@ -328,6 +328,30 @@ namespace FM {
 
         protected override void thaw_child_notify () {
             tree.thaw_child_notify ();
+        }
+
+        protected override bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {
+            /* orig_x and orig_y must be top left hand corner of icon (excluding helper) */
+            int x_offset = x - orig_x;
+            int y_offset = y - orig_y;
+
+            bool on_icon =  (x_offset >= 0 &&
+                             x_offset <= icon_size &&
+                             y_offset >= 0 &&
+                             y_offset <= icon_size);
+
+            on_helper = false;
+            if (icon_renderer.selection_helpers) {
+                int x_helper_offset = x - icon_renderer.helper_x;
+                int y_helper_offset = y - icon_renderer.helper_y;
+
+                on_helper =  (x_helper_offset >= 0 &&
+                             x_helper_offset <= icon_renderer.helper_size &&
+                             y_helper_offset >= 0 &&
+                             y_helper_offset <= icon_renderer.helper_size);
+            }
+
+            return on_icon;
         }
     }
 }

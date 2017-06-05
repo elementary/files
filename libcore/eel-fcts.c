@@ -3,7 +3,7 @@
  *
  * The Gnome Library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public License as
- * published by the Free Software Foundation; either version 2 of the
+ * published by the Free Software Foundation, Inc.,; either version 2 of the
  * License, or (at your option) any later version.
  *
  * The Gnome Library is distributed in the hope that it will be useful,
@@ -13,8 +13,8 @@
  *
  * You should have received a copy of the GNU Library General Public
  * License along with the Gnome Library; see the file COPYING.LIB.  If not,
- * write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
- * Boston, MA 02111-1307, USA.
+ * write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
+ * Boston, MA 02110-1335 USA.
  *
  * Authors: John Sullivan <sullivan@eazel.com>
  *          Darin Adler <darin@bentspoon.com>
@@ -235,6 +235,34 @@ eel_get_user_id_from_user_name (const char *user_name, uid_t *uid)
     return TRUE;
 }
 
+static const char*
+get_user_home_from_user_uid (uid_t uid)
+{
+    struct passwd *password_info;
+
+    password_info = getpwuid (uid);
+
+    if (password_info == NULL || password_info->pw_dir == NULL)
+        return NULL;
+
+    return password_info->pw_dir;
+}
+
+char*
+eel_get_real_user_home ()
+{
+    const char *real_uid_s;
+    int uid;
+
+    real_uid_s = g_environ_getenv (g_get_environ (), "PKEXEC_UID");
+    /* If running as administrator return the real user home, not root home */
+    if (real_uid_s != NULL && eel_get_id_from_digit_string (real_uid_s, &uid)) {
+        return g_strdup (get_user_home_from_user_uid ((uid_t)uid));
+    } else {
+        return g_strdup (g_get_home_dir ());
+    }
+}
+
 gboolean
 eel_get_id_from_digit_string (const char *digit_string, uid_t *id)
 {
@@ -249,7 +277,9 @@ eel_get_id_from_digit_string (const char *digit_string, uid_t *id)
     if (sscanf (digit_string, "%ld%c", &scanned_id, &c) != 1) {
         return FALSE;
     }
+
     *id = scanned_id;
+
     return TRUE;
 }
 

@@ -1,3 +1,20 @@
+/* Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/pantheon-files)
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation, Inc.,; either
+* version 3 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
+* Boston, MA 02110-1335 USA.
+*/
 
 namespace Marlin.View.Chrome {
     public struct BreadcrumbIconInfo {
@@ -85,7 +102,7 @@ namespace Marlin.View.Chrome {
             }
 
             /* home */
-            dir = Environment.get_home_dir ();
+            dir = Eel.get_real_user_home ();
             if (dir.contains (Path.DIR_SEPARATOR_S)) {
                 BreadcrumbIconInfo icon = {dir, Marlin.ICON_GO_HOME_SYMBOLIC, false, null, null, dir.split (Path.DIR_SEPARATOR_S), true, null};
                 icon.exploded[0] = Path.DIR_SEPARATOR_S;

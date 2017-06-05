@@ -3,7 +3,7 @@
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
+    the Free Software Foundation, Inc.,, either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -23,57 +23,18 @@ namespace GOF {
 
         public const string TAGS_COLORS[10] = { null, "#fce94f", "#fcaf3e", "#997666", "#8ae234", "#729fcf", "#ad7fa8", "#ef2929", "#d3d7cf", "#888a85" };
 
-        public bool pref_show_hidden_files = false;
-        public bool show_hidden_files {
-            get {
-                return pref_show_hidden_files;
-            }
-            set {
-                pref_show_hidden_files = value;
-            }
-        }
-
+        public bool show_hidden_files {get; set; default=false;}
         public bool show_remote_thumbnails {set; get; default=false;}
-
-        public bool pref_confirm_trash = true;
-        public bool confirm_trash {
-            get {
-                return pref_confirm_trash;
-            }
-            set {
-                pref_confirm_trash = value;
-            }
-        }
-
-        public bool pref_force_icon_size = true;
-        public bool force_icon_size {
-            get {
-                return pref_force_icon_size;
-            }
-            set {
-                pref_force_icon_size = value;
-            }
-        }
-
-        public string pref_date_format = "iso";
-        public string date_format {
-            get {
-                return pref_date_format;
-            }
-            set {
-                pref_date_format = value;
-            }
-        }
-
-        public class Preferences () {
-
-        }
+        public bool confirm_trash {set; get; default=true;}
+        public bool force_icon_size {set; get; default=true;}
+        public string date_format {set; get; default="iso";}
+        public string clock_format {set; get; default="24h";}
 
         public static Preferences get_default () {
-            if (preferences != null)
-                return preferences;
+            if (preferences == null) {
+                preferences = new Preferences ();
+            }
 
-            preferences = new Preferences ();
             return preferences;
         }
     }

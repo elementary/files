@@ -121,6 +121,8 @@ namespace Eel {
     [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_user_id_from_user_name (string *user_name, out int uid);
     [CCode (cheader_filename = "eel-fcts.h")]
+    public string? get_real_user_home ();
+    [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_group_id_from_group_name (string *group_name, out int gid);
     [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_id_from_digit_string (string digit_str, out int id);
@@ -255,6 +257,7 @@ namespace GOF {
         public File(GLib.File location, GLib.File? dir);
         public static GOF.File @get(GLib.File location);
         public static GOF.File? get_by_uri (string uri);
+        public static GOF.File? get_by_commandline_arg (string arg);
         public static File cache_lookup (GLib.File file);
         public static void list_free (GLib.List<GOF.File> files);
         public static GLib.Mount? get_mount_at (GLib.File location);
@@ -305,6 +308,7 @@ namespace GOF {
 
         public unowned string get_display_name ();
         public unowned GLib.File get_target_location ();
+        public string get_symlink_target ();
         public unowned string? get_ftype ();
         public string? get_formated_time (string attr);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);

@@ -28,6 +28,7 @@ namespace Marlin {
     public const string BUG_URL = "https://bugs.launchpad.net/pantheon-files/+filebug";
     public const string TRANSLATE_URL = "https://translations.launchpad.net/pantheon-files";
     public const string COMMENTS = N_("A simple and powerful file manager");
+    public const string INVALID_TAB_NAME = "----";
 
     public const string[] AUTHORS = {
         "ammonkey <am.monkeyd@gmail.com>",

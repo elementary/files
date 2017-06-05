@@ -68,6 +68,7 @@ namespace Marlin.Places {
         bool internal_drag_started;
         bool dragged_out_of_window;
         bool renaming = false;
+        bool local_only;
 
         /* Identifiers for target types */
         public enum TargetType {
@@ -119,11 +120,23 @@ namespace Marlin.Places {
         public signal bool request_focus ();
         public signal void sync_needed ();
 
-        public Sidebar (Marlin.View.Window window) {
+        public new void grab_focus () {
+            tree_view.grab_focus ();
+        }
+
+        public new bool has_focus {
+            get {
+                return tree_view.has_focus;
+            }
+        }
+
+        public Sidebar (Marlin.View.Window window, bool local_only = false) {
             init ();  /* creates the Gtk.TreeModel store. */
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
+            this.local_only = local_only;
+
             window.loading_uri.connect (loading_uri_callback);
             window.free_space_change.connect (reload);
 
@@ -238,7 +251,6 @@ namespace Marlin.Places {
             tree_view.set_search_column (Column.NAME);
             var selection = tree_view.get_selection ();
             selection.set_mode (Gtk.SelectionMode.BROWSE);
-            selection.set_select_function (tree_selection_func);
 
             this.drag_scroll_timer_id = 0;
             tree_view.enable_model_drag_source (Gdk.ModifierType.BUTTON1_MASK,
@@ -424,15 +436,15 @@ namespace Marlin.Places {
             return iter;
         }
 
-        public bool has_place (string uri) {
+        public bool has_bookmark (string uri) {
             bool found = false;
 
             store.@foreach ((model, path, iter) => {
                 string u;
-                model.@get (iter, Column.URI, out u);
-                if (u == null) { /* Category entries etc have null uri, for example */
-                    return false;
-                } else if (u == uri) {
+                bool is_bookmark;
+
+                model.@get (iter, Column.URI, out u, Column.BOOKMARK, out is_bookmark);
+                if (is_bookmark && u == uri) {
                     found = true;
                     return true;
                 } else {
@@ -483,7 +495,7 @@ namespace Marlin.Places {
 
             /* Add Home BUILTIN */
             try {
-                mount_uri = GLib.Filename.to_uri (GLib.Environment.get_home_dir (), null);
+                mount_uri = GLib.Filename.to_uri (Eel.get_real_user_home (), null);
             }
             catch (ConvertError e) {
                 mount_uri = "";
@@ -524,24 +536,30 @@ namespace Marlin.Places {
             uint index;
             for (index = 0; index < bookmark_count; index++) {
                 bm = bookmarks.item_at (index);
-                if (bm == null
-                 || (bm.uri_known_not_to_exist () && !display_all_bookmarks))
+                if (bm == null ||
+                    (bm.uri_known_not_to_exist () && !display_all_bookmarks) ||
+                    (local_only && GLib.Uri.parse_scheme (bm.get_uri ()) != "file")) {
+
                     continue;
+                }
 
                 add_bookmark (iter, bm, index);
             }
 
-            /* Add trash */
-            add_place (Marlin.PlaceType.BUILT_IN,
-                       iter,
-                       _("Trash"),
-                       Marlin.TrashMonitor.get_icon (),
-                       Marlin.TRASH_URI,
-                       null,
-                       null,
-                       null,
-                       index + n_builtins_before,
-                       _("Open the Trash"));
+            /* Do not show Trash if running as root (cannot be loaded) */
+            if (Posix.getuid () != 0) {
+                /* Add trash */
+                add_place (Marlin.PlaceType.BUILT_IN,
+                           iter,
+                           _("Trash"),
+                           Marlin.TrashMonitor.get_icon (),
+                           Marlin.TRASH_URI,
+                           null,
+                           null,
+                           null,
+                           index + n_builtins_before,
+                           _("Open the Trash"));
+            }
 
             /* ADD STORAGE CATEGORY*/
             iter = add_category (Marlin.PlaceType.STORAGE_CATEGORY,
@@ -602,7 +620,7 @@ namespace Marlin.Places {
 
                 var mount = volume.get_mount ();
                 if (mount != null) {
-                    root = mount.get_default_location ();
+                    root = mount.get_root ();
                     last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                            iter,
                                            mount.get_name (),
@@ -641,7 +659,7 @@ namespace Marlin.Places {
                 if (volume != null)
                     continue;
 
-                root = mount.get_default_location ();
+                root = mount.get_root ();
                 if (root.is_native ()) {
                     string scheme = root.get_uri_scheme ();
                     if (scheme == "archive" ) {
@@ -667,52 +685,53 @@ namespace Marlin.Places {
                 add_device_tooltip.begin (last_iter, root, update_cancellable);
             }
 
-            /* ADD NETWORK CATEGORY */
+            if (!local_only) { /* Network operations fail when root */
+                /* ADD NETWORK CATEGORY */
+                iter = add_category (Marlin.PlaceType.NETWORK_CATEGORY,
+                                     _("Network"),
+                                     _("Your network places"));
 
-            iter = add_category (Marlin.PlaceType.NETWORK_CATEGORY,
-                                 _("Network"),
-                                 _("Your network places"));
+                network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
 
-            network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
+                /* Add network mounts */
+                network_mounts.reverse ();
+                foreach (Mount mount in network_mounts) {
+                    root = mount.get_default_location ();
+                    /* get_smb_share_from_uri will return the uri unaltered if does not have
+                     * the smb scheme so we need not test.  This is required because the mount
+                     * does not return the true root location of the share but the location used
+                     * when creating the mount.
+                     */
+                    string uri = PF.FileUtils.get_smb_share_from_uri (root.get_uri ());
 
-            /* Add network mounts */
-            network_mounts.reverse ();
-            foreach (Mount mount in network_mounts) {
-                root = mount.get_default_location ();
-                /* get_smb_share_from_uri will return the uri unaltered if does not have
-                 * the smb scheme so we need not test.  This is required because the mount
-                 * does not return the true root location of the share but the location used
-                 * when creating the mount.
-                 */
-                string uri = PF.FileUtils.get_smb_share_from_uri (root.get_uri ());
+                    last_iter = add_place (Marlin.PlaceType.BUILT_IN,
+                                           iter,
+                                           mount.get_name (),
+                                           mount.get_icon (),
+                                           uri,
+                                           null,
+                                           null,
+                                           mount,
+                                           0,
+                                           null);
 
-                last_iter = add_place (Marlin.PlaceType.BUILT_IN,
-                                       iter,
-                                       mount.get_name (),
-                                       mount.get_icon (),
-                                       uri,
-                                       null,
-                                       null,
-                                       mount,
-                                       0,
-                                       null);
+                    add_device_tooltip.begin (last_iter, root, update_cancellable);
+                }
 
-                add_device_tooltip.begin (last_iter, root, update_cancellable);
+                /* Add Entire Network BUILTIN */
+                add_place (Marlin.PlaceType.BUILT_IN,
+                           iter,
+                           _("Entire Network"),
+                           new GLib.ThemedIcon (Marlin.ICON_NETWORK),
+                           "network:///",
+                           null,
+                           null,
+                           null,
+                           0,
+                           _("Browse the contents of the network"));
+
+                plugins.update_sidebar ((Gtk.Widget)this); /* Add "Connect Server plugin */
             }
-
-            /* Add Entire Network BUILTIN */
-            add_place (Marlin.PlaceType.BUILT_IN,
-                       iter,
-                       _("Entire Network"),
-                       new GLib.ThemedIcon (Marlin.ICON_NETWORK),
-                       "network:///",
-                       null,
-                       null,
-                       null,
-                       0,
-                       _("Browse the contents of the network"));
-
-            plugins.update_sidebar ((Gtk.Widget)this);
 
             expander_init_pref_state (tree_view);
 
@@ -749,7 +768,7 @@ namespace Marlin.Places {
                 var mount = volume.get_mount ();
                 if (mount != null) {
                     /* show mounted volume in sidebar */
-                    var root = mount.get_default_location ();
+                    var root = mount.get_root ();
                     last_iter = add_place (Marlin.PlaceType.MOUNTED_VOLUME,
                                            iter,
                                            mount.get_name (),
@@ -1279,7 +1298,7 @@ namespace Marlin.Places {
                 } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                     window.add_tab (location, Marlin.ViewMode.CURRENT);
                 } else {
-                    window.file_path_change_request (location);
+                    window.uri_path_change_request (uri);
                 }
             } else if (f != null) {
                 f (this);
@@ -1312,14 +1331,14 @@ namespace Marlin.Places {
                     volume.mount.end (res);
                     Mount mount = volume.get_mount ();
                     if (mount != null) {
-                        var location = mount.get_default_location ();
+                        var location = mount.get_root ();
                         if (flags == Marlin.OpenFlag.NEW_WINDOW) {
                             var app = Marlin.Application.get ();
                             app.create_window (location);
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                             window.add_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
-                            window.file_path_change_request (location);
+                            window.uri_path_change_request (location.get_uri ());
                         }
                     }
                 }
@@ -1568,6 +1587,7 @@ namespace Marlin.Places {
                     var file2 = GLib.File.new_for_path (uri);
                     if (file1.equal (file2)) {
                         selection.select_iter (child_iter);
+                        tree_view.set_cursor (store.get_path (child_iter), null, false);
                         this.last_selected_uri = location;
                         valid = false; /* escape from outer loop */
                         break;
@@ -1677,14 +1697,6 @@ namespace Marlin.Places {
             }
         }
 
-        private bool tree_selection_func (Gtk.TreeSelection selection,
-                                          Gtk.TreeModel model,
-                                          Gtk.TreePath path,
-                                          bool path_currently_selected) {
-        /* Don't allow categories to be selected. */
-            return !category_at_path (path);
-        }
-
         private void category_row_expanded_event_cb (Gtk.TreeView tree,
                                                      Gtk.TreeIter iter,
                                                      Gtk.TreePath path) {
@@ -1728,7 +1740,26 @@ namespace Marlin.Places {
                 return true;
             }
 
+            if (event.keyval == Gdk.Key.Right && (event.state & modifiers) == 0) {
+                expand_collapse_category (true);
+                return true;
+            }
+            if (event.keyval == Gdk.Key.Left && (event.state & modifiers) == 0) {
+                expand_collapse_category (false);
+                return true;
+            }
             return false;
+        }
+
+        private void expand_collapse_category (bool expand) {
+            Gtk.TreePath? path = get_path_at_cursor ();
+            if (category_at_path (path)) {
+                if (expand) {
+                    tree_view.expand_row (path, false);
+                } else {
+                    tree_view.collapse_row (path);
+                }
+            }
         }
 
         private bool button_press_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
@@ -2393,6 +2424,12 @@ namespace Marlin.Places {
             tree_view.convert_bin_window_to_tree_coords ((int)event.x, (int)event.y, out tx, out ty);
             Gtk.TreePath? path = null;
             tree_view.get_path_at_pos (tx, ty, out path, null, null, null);
+            return path;
+        }
+        private Gtk.TreePath? get_path_at_cursor () {
+            Gtk.TreePath? path = null;
+            Gtk.TreeViewColumn? focus_column = null;
+            tree_view.get_cursor (out path, out focus_column);
             return path;
         }
 

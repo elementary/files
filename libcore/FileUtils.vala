@@ -3,7 +3,7 @@
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
-    by the Free Software Foundation.
+    by the Free Software Foundation, Inc.,.
 
     This program is distributed in the hope that it will be useful, but
     WITHOUT ANY WARRANTY; without even the implied warranties of
@@ -22,12 +22,13 @@ namespace PF.FileUtils {
     const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
 
     public File? get_file_for_path (string? path) {
-        File? file = null;
-        string new_path = sanitize_path (path);
-        if (path.length > 0) {
-            file = File.new_for_commandline_arg (new_path);
+        string? new_path = sanitize_path (path);
+
+        if (new_path != null && new_path.length > 0) {
+            return  File.new_for_commandline_arg (new_path);
+        } else {
+            return null;
         }
-        return file;
     }
 
     public string get_parent_path_from_path (string path) {
@@ -161,7 +162,9 @@ namespace PF.FileUtils {
         return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
     }
 
-    /** Produce a valid unescaped path **/
+    /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
+      * to interpret relative paths where necessary.
+      **/
     public string sanitize_path (string? p, string? cp = null) {
         string path = "";
         string scheme = "";
@@ -200,7 +203,7 @@ namespace PF.FileUtils {
         if (path.length > 0) {
             if (scheme == "" && path.has_prefix ("/~/")) {
                 sb.erase (0, 2);
-                sb.prepend (Environment.get_home_dir ());
+                sb.prepend (Eel.get_real_user_home ());
             }
         }
 
@@ -235,8 +238,8 @@ namespace PF.FileUtils {
     public void split_protocol_from_path (string path, out string protocol, out string new_path) {
         protocol = "";
         new_path = path.dup ();
-
         string[] explode_protocol = new_path.split ("://");
+
         if (explode_protocol.length > 2) {
             new_path = "";
             return;
@@ -356,52 +359,46 @@ namespace PF.FileUtils {
         });
     }
 
-    public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr, string format = "locale") {
+    public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr) {
+        DateTime? dt = null;
+
         switch (attr) {
             case FileAttribute.TIME_MODIFIED:
             case FileAttribute.TIME_CREATED:
             case FileAttribute.TIME_ACCESS:
             case FileAttribute.TIME_CHANGED:
                 uint64 t = info.get_attribute_uint64 (attr);
-                if (t == 0) {
-                    return "";
+                if (t > 0) {
+                    dt = new DateTime.from_unix_local ((int64)t);
                 }
 
-                DateTime dt = new DateTime.from_unix_local ((int64)t);
-
-                if (dt == null) {
-                    return "";
-                }
-
-                return get_formatted_date_time (dt, format);
+                break;
 
             case FileAttribute.TRASH_DELETION_DATE:
                 var deletion_date = info.get_attribute_string (attr);
                 var tv = TimeVal ();
-                if (deletion_date == null || !tv.from_iso8601 (deletion_date)) {
-                    return "";
+                if (deletion_date != null && !tv.from_iso8601 (deletion_date)) {
+                    dt = new DateTime.from_timeval_local (tv);
                 }
 
-                DateTime dt = new DateTime.from_timeval_local (tv);
-
-                if (dt == null) {
-                    return "";
-                }
-
-                return get_formatted_date_time (dt, format);
+                break;
 
             default:
                 break;
         }
 
-        return "";
+        return get_formatted_date_time (dt);
     }
 
-    public string get_formatted_date_time (DateTime dt, string format = "locale") {
-        switch (format) {
+    public string get_formatted_date_time (DateTime? dt) {
+        if (dt == null) {
+            return "";
+        }
+
+        switch (GOF.Preferences.get_default ().date_format.down ()) {
             case "locale":
                 return dt.format ("%c");
-            case "ISO" :
+            case "iso" :
                 return dt.format ("%Y-%m-%d %H:%M:%S");
             default:
                 return get_informal_date_time (dt);
@@ -429,39 +426,39 @@ namespace PF.FileUtils {
         int now_weekday = now.get_day_of_week ();
         int disp_weekday = dt.get_day_of_week ();
 
+        bool clock_is_24h = GOF.Preferences.get_default ().clock_format.has_prefix ("24");
+
+        string format_string = "";
+
         switch (now_weekday - disp_weekday) {
             case 0:
-            /* TRANSLATORS: This string determines the format and order in which the day and time
-             * are shown informally for a time that occurred today.
-             * %-I expands to the numeric hour in 12 hour clock.
-             * %M expands to the numeric minute.
-             * %p expands to "am" or "pm" according to the locale. 
-             * These components must not be altered, but their order may be changed to accord with
-             * the informal custom for the locale.
-             */ 
-                return dt.format (_("Today at %-I:%M %p"));
+                if (clock_is_24h) {
+                    format_string = _("Today at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                } else {
+                    format_string = _("Today at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected (if available))
+                }
+
+                break;
             case 1:
-            /* TRANSLATORS: This string determines the format and order in which the day and time
-             * are shown informally for a time that occurred yesterday.
-             * %-I expands to the numeric hour in 12 hour clock.
-             * %M expands to the numeric minute.
-             * %p expands to "am" or "pm" according to the locale. 
-             * These components must not be altered, but their order may be changed to accord with
-             * the informal custom for the locale.
-             */ 
-                return dt.format (_("Yesterday at %-I:%M %p"));
+                if (clock_is_24h) {
+                    format_string = _("Yesterday at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                } else {
+                    format_string = _("Yesterday at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected (if available))
+                }
+
+                break;
+
             default:
-            /* TRANSLATORS: This string determines the format and order in which the day and time
-             * are shown informally for a time that occurred in the past week.
-             * %-I expands to the numeric hour in 12 hour clock.
-             * %M expands to the numeric minute.
-             * %p expands to "am" or "pm" according to the locale.
-             * %A expands to the abbreviated name of the weekday according to the locale.   
-             * These components must not be altered, but their order may be changed to accord with
-             * the informal custom for the locale.
-             */ 
-                return dt.format (_("%A at %-I:%M %p"));
+                if (clock_is_24h) {
+                    format_string = _("%A at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                } else {
+                    format_string = _("%A at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected (if available))
+                }
+
+                break;
         }
+
+        return dt.format (format_string);
     }
 
     private bool can_browse_scheme (string scheme) {
@@ -475,6 +472,44 @@ namespace PF.FileUtils {
                 return false;
             default:
                 return true;
+        }
+    }
+
+    public uint16 get_default_port_for_protocol (string protocol) {
+        var ptcl = protocol.down ();
+        switch (ptcl) {
+            case "sftp":
+                return 22;
+            case "ftp":
+                return 21;
+            case "afp" :
+                return 548;
+            case "dav" :
+                return 80;
+            case "davs" :
+                return 443;
+            default :
+                return 0;
+        }
+    }
+
+    public bool get_is_tls_for_protocol (string protocol) {
+        var ptcl = protocol.down ();
+        switch (ptcl) {
+            case "sftp":
+                return false;
+            case "ssh":
+                return true;
+            case "ftp":
+                return false;
+            case "afp" :
+                return false;
+            case "dav" :
+                return false;
+            case "davs" :
+                return true;
+            default :
+                return false;
         }
     }
 }

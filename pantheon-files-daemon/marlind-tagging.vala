@@ -113,14 +113,12 @@ public class MarlinTags : Object {
         var uri = escape(raw_uri);
 
         var sql = "INSERT OR REPLACE INTO tags (uri,content_type,modified_time) VALUES ('"+uri+"','"+content_type+"',"+modified_time.to_string()+");\n";
-        //var c = "INSERT OR IGNORE INTO tags (uri,content_type,modified_time) VALUES ('"+uri+"','"+content_type+"',"+modified_time.to_string()+");\n";
 
         int rc = db.exec (sql, null, null);
         if (rc != Sqlite.OK) {
             stderr.printf ("[record_uri: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
-        //stdout.printf("[Consult]: %s\n",c);
 
         return true;
     }
@@ -143,7 +141,6 @@ public class MarlinTags : Object {
             stderr.printf ("[record_uri: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
-        //stdout.printf("[Consult]: %s\n",sql);
 
         return true;
     }
@@ -163,7 +160,6 @@ public class MarlinTags : Object {
                                 -1, out stmt);
         assert (rc == Sqlite.OK);
         rc = stmt.step();
-
         vb.open (new VariantType ("as"));
 
         switch (rc) {
@@ -209,7 +205,6 @@ public class MarlinTags : Object {
             case Sqlite.ROW:
                 for (col = 0; col < cols; col++) {
                     txt = stmt.column_text(col);
-                    //print ("%s = %s\n", stmt.column_name (col), txt);
                 }
                 break;
             default:
@@ -217,7 +212,6 @@ public class MarlinTags : Object {
                 break;
             }
         } while (rc == Sqlite.ROW);
-        //stdout.printf("[getColor]: %s\n", txt);
 
         int ret = int.parse(txt);
         /* It appears that a db error return -1, we got to check the value just in case */
@@ -309,9 +303,6 @@ public class MarlinTags : Object {
     }
 
     private void upgrade_database () {
-
-        // version 2
-
         if (!has_column("tags", "content_type")) {
             message("upgrade_database: adding content_type column to tags");
             if (!add_column("tags", "content_type", "TEXT"))
@@ -329,52 +320,3 @@ public class MarlinTags : Object {
         }
     }
 }
-
-/* =============== Main ==================== */
-/*void main (string[] args) {
-
-  MarlinTags t = new MarlinTags();
-
-  t.openMarlinDB();
-
-  t.setColor("file:///home/jordi"	,MARLIN_RED);
-  t.setColor("file:///home/dev"	,MARLIN_YELLOW);
-
-//t.deleteEntry(File.new_for_path ("/home/dev"));	//When deleting files
-//t.deleteEntry("/home/documents");
-
-//t.clearDB();
-t.showTable("tags");
-
-
-// DBUS Things
-print("\n\nColor for file is %i\n",
-t.getColor("file:///home/jordi"));
-}*/
-
-
-void on_bus_aquired (DBusConnection conn) {
-    try {
-        conn.register_object ("/org/pantheon/files/db", new MarlinTags ());
-    } catch (IOError e) {
-        error ("Could not register service");
-    }
-}
-
-// Exit C function to quit the loop
-extern void exit (int exit_code);
-
-void on_bus_lost (DBusConnection connection, string name) {
-    critical ("Could not aquire name.");
-    exit (-1);
-}
-
-void main () {
-    Bus.own_name (BusType.SESSION, "org.pantheon.files.db", BusNameOwnerFlags.NONE,
-                  on_bus_aquired,
-                  () => {},
-                  on_bus_lost);
-
-    new MainLoop ().run ();
-}
-

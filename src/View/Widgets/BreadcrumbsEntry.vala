@@ -13,8 +13,8 @@
 
     You should have received a copy of the GNU General Public
     License along with this program; see the file COPYING.  If not,
-    write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-    Boston, MA 02111-1307, USA.
+    write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+    Boston, MA 02110-1335 USA.
 
 ***/
 
@@ -32,6 +32,8 @@ namespace Marlin.View.Chrome {
         /* The string which contains the text we search in the file. e.g, if the
          * user enter /home/user/a, we will search for "a". */
         string to_search = "";
+
+        public bool search_mode = false; // Used to suppress activate events while searching
 
         /** Drag and drop support **/
         public enum TargetType {
@@ -73,6 +75,13 @@ namespace Marlin.View.Chrome {
     /************************************************/
         public override bool on_key_press_event (Gdk.EventKey event) {
             switch (event.keyval) {
+                case Gdk.Key.Return:
+                case Gdk.Key.KP_Enter:
+                case Gdk.Key.ISO_Enter:
+                    if (search_mode) {
+                        return true;
+                    }
+                    break;
                 case Gdk.Key.KP_Tab:
                 case Gdk.Key.Tab:
                     complete ();

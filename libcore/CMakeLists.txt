@@ -1,5 +1,3 @@
-include (Tests)
-
 set (PKGNAME pantheon-files-core)
 set (PKGNAME_ PANTHEON_FILES_CORE)
 set (${PKGNAME_}_VERSION 0.1)
@@ -35,6 +33,7 @@ PACKAGES
     gmodule-2.0
     libcanberra
     pantheon-files-core-C
+    posix
 OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
     --thread
@@ -121,7 +120,8 @@ pkg_check_modules(DEPS REQUIRED
     gee-0.8
     gmodule-2.0
     sqlite3
-    libcanberra>=0.30)
+    libcanberra>=0.30
+    granite)
 
 # Link all
 
@@ -147,13 +147,5 @@ target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-add_executable (pantheon-files-core_tests
-    tests/tests.c
-    tests/marlincore-tests-gof.c
-    tests/marlincore-tests-file.c
-    tests/marlincore-tests-icon-info.c)
+add_subdirectory (tests)
 
-add_test (core pantheon-files-core_tests)
-
-target_link_libraries (pantheon-files-core_tests pantheon-files-core ${DEPS_LIBRARIES})
-add_dependencies (pantheon-files-core_tests pantheon-files-core)

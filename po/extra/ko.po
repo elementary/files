@@ -7,18 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-01-25 05:03-0600\n"
-"PO-Revision-Date: 2017-01-25 16:44+0000\n"
+"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"PO-Revision-Date: 2017-02-28 15:57+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <ko@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-01-26 06:14+0000\n"
-"X-Generator: Launchpad (build 18315)\n"
+"X-Launchpad-Export-Date: 2017-05-27 06:09+0000\n"
+"X-Generator: Launchpad (build 18391)\n"
 
 msgid "Files"
 msgstr "파일스"
+
+msgid "Browse your files"
+msgstr "여러분의 파일을 찾아봅니다."
+
+msgid "folder;manager;explore;disk;filesystem;"
+msgstr "폴더;관리자;찾아보기;디스크;파일시스템;"
+
+msgid "File Manager"
+msgstr "파일 관리자"
+
+msgid "New Window"
+msgstr "새 창"
+
+msgid "New Window As Administrator"
+msgstr "관리자 권한으로 새 창 열기"
+
+msgid "About Files"
+msgstr "파일스 소개"
 
 msgid "Browse and manage files and folders"
 msgstr "파일과 폴더를 관리합니다"
@@ -32,6 +50,55 @@ msgstr ""
 "쉽게 복사하고, 이동하고, 이름을 바꾸거나, 정렬하게 합니다. 목록, 그리드, 컬럼 형식 등 여러분이 원하는 방법대로 찾아볼 수 "
 "있습니다. 컴퓨터에 있던, 외부 저장장치에 있던, 외부에서 원격으로 접속하는 FTP, SFTP, Webdav, 또는 윈도우 공유이던 "
 "찾고자 하는 모든 파일을 찾아볼 수 있습니다."
+
+msgid "Improved networking support"
+msgstr ""
+
+msgid "Correct window geometry when snapping to left or right"
+msgstr ""
+
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+
+msgid "Switching input language cancels actions"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr "여러 가지 크래시 문제 해결"
+
+msgid "New translations"
+msgstr "새 번역"
+
+msgid "Minor bug fixes"
+msgstr "자잘한 버그 해결"
+
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr "이제 파이어 폭스 같은 웹 브라우저에서 가장 최근에 다운로드한 폴더를 기억합니다"
+
+msgid "Remember preferred zoom level"
+msgstr "즐겨 사용하는 줌 레벨을 기억합니다"
+
+msgid "Improved input method support"
+msgstr "향상된 입력기 사용 지원"
+
+msgid "910x640 minimum window size"
+msgstr "최소 창 크기 910x640"
+
+msgid "Security fixes"
+msgstr "보안 이슈 수정"
+
+msgid "Enable drag and drop tabs between windows"
+msgstr "창 사이에 탭 끌어다 놓기 사용"
+
+msgid "Merge search functionality into Ctrl+F"
+msgstr "검색 기능 Ctrl+F와 통합"
+
+msgid "Improved translation support"
+msgstr "향상된 번역 제공"
 
 msgid "Fix appdata release dates"
 msgstr "앱데이터 출시일 수정"
@@ -48,20 +115,8 @@ msgstr "콘텍스트 메뉴의 잘라내기/복사/붙여넣기 기능 향상"
 msgid "Translation updates"
 msgstr "번역 업데이트"
 
-msgid "Minor bug fixes"
-msgstr "자잘한 버그 해결"
+msgid "Run Pantheon Files as Administrator"
+msgstr "관리자 권한으로 실행하기"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "검색 기능 Ctrl+F와 통합"
-
-msgid "Improved translation support"
-msgstr "향상된 번역 제공"
-
-msgid "Various crash fixes"
-msgstr "여러 가지 크래시 문제 해결"
-
-msgid "New translations"
-msgstr "새 번역"
-
-msgid "Enable drag and drop tabs between windows"
-msgstr "창 사이에 탭 끌어다 놓기 사용"
+msgid "Authentication is required to run Files as Administrator"
+msgstr "관리자 권한으로 실행하려면 인증이 필요합니다"
