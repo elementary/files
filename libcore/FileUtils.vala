@@ -203,7 +203,7 @@ namespace PF.FileUtils {
         if (path.length > 0) {
             if (scheme == "" && path.has_prefix ("/~/")) {
                 sb.erase (0, 2);
-                sb.prepend (Environment.get_home_dir ());
+                sb.prepend (Eel.get_real_user_home ());
             }
         }
 
@@ -238,8 +238,8 @@ namespace PF.FileUtils {
     public void split_protocol_from_path (string path, out string protocol, out string new_path) {
         protocol = "";
         new_path = path.dup ();
-
         string[] explode_protocol = new_path.split ("://");
+
         if (explode_protocol.length > 2) {
             new_path = "";
             return;

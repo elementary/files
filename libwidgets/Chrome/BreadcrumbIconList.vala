@@ -102,8 +102,8 @@ namespace Marlin.View.Chrome {
             }
 
             /* home */
-            dir = Environment.get_home_dir ();
-            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
+            dir = Eel.get_real_user_home ();
+            if (dir.contains (Path.DIR_SEPARATOR_S)) {
                 BreadcrumbIconInfo icon = {dir, Marlin.ICON_GO_HOME_SYMBOLIC, false, null, null, dir.split (Path.DIR_SEPARATOR_S), true, null};
                 icon.exploded[0] = Path.DIR_SEPARATOR_S;
                 add_icon (icon);

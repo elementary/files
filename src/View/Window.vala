@@ -153,7 +153,8 @@ namespace Marlin.View {
         }
 
         private void construct_sidebar () {
-            sidebar = new Marlin.Places.Sidebar (this);
+            /* Show only local places in sidebar when running as root */
+            sidebar = new Marlin.Places.Sidebar (this, Posix.getuid () == 0);
         }
 
         public void show_sidebar (bool show = true) {
@@ -563,9 +564,10 @@ namespace Marlin.View {
             tab.close ();
         }
 
-        public void add_window (File location = File.new_for_path (Environment.get_home_dir ()),
+        public void add_window (File location = File.new_for_path (Eel.get_real_user_home ()),
                                  Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                                  int x = -1, int y = -1) {
+
             ((Marlin.Application) application).create_window (location, real_mode (mode), x, y);
         }
 
@@ -666,7 +668,7 @@ namespace Marlin.View {
                     break;
 
                 case "HOME":
-                    uri_path_change_request ("file://" + Environment.get_home_dir());
+                    uri_path_change_request ("file://" + Eel.get_real_user_home ());
                     break;
 
                 case "TRASH":
@@ -954,7 +956,7 @@ namespace Marlin.View {
                 /* ViewContainer is responsible for returning valid uris */
                 vb.add ("(uss)",
                         view_container.view_mode,
-                        view_container.get_root_uri () ?? Environment.get_home_dir (),
+                        view_container.get_root_uri () ?? Eel.get_real_user_home (),
                         view_container.get_tip_uri () ?? ""
                        );
             }
@@ -984,8 +986,12 @@ namespace Marlin.View {
             restoring_tabs = true;
 
             while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
-                if (mode < 0 || mode >= Marlin.ViewMode.INVALID || root_uri == null || root_uri == "" || tip_uri == null)
+
+                if (mode < 0 || mode >= Marlin.ViewMode.INVALID ||
+                    root_uri == null || root_uri == "" || tip_uri == null) {
+
                     continue;
+                }
 
                 /* We do not check valid location here because it may cause the interface to hang
                  * before the window appears (e.g. if trying to connect to a server that has become unavailable)
@@ -1105,7 +1111,7 @@ namespace Marlin.View {
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == current_tab)
-                        view_container.focus_location (File.new_for_path (Environment.get_home_dir ()));
+                        view_container.focus_location (File.new_for_path (Eel.get_real_user_home ()));
                     else
                         remove_tab (view_container);
                 }
