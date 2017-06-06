@@ -225,8 +225,6 @@ namespace FM {
         private GLib.AppInfo default_app;
         private Gtk.TreePath? hover_path = null;
 
-        private bool can_trash_or_delete = true;
-
         /* Rapid keyboard paste support */
         protected bool select_added_files = false;
 
@@ -986,7 +984,6 @@ namespace FM {
                 return;
             }
 
-            view.can_trash_or_delete = true;
             view.unblock_directory_monitor ();
         }
 
@@ -1004,12 +1001,8 @@ namespace FM {
          * when using keybindings. So we remember if the current selection
          * was already removed (but the view doesn't know about it yet).
          */
-            if (!can_trash_or_delete)
-                return;
-
             unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
-                can_trash_or_delete = false;
                 trash_or_delete_files (selection, true, delete_immediately);
             }
         }
@@ -1240,6 +1233,18 @@ namespace FM {
             if (uris == null || uris.size () == 0) {
                 return;
             }
+
+            Idle.add (() => {
+                /* Select the most recently pasted files */
+                GLib.List<GLib.File> pasted_files_list = null;
+                uris.foreach ((k, v) => {
+                    if (k is GLib.File)
+                        pasted_files_list.prepend (k as File);
+                });
+
+                view.select_glib_files_when_thawed (pasted_files_list, pasted_files_list.first ().data);
+                return false;
+            });
         }
 
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1256,10 +1261,8 @@ namespace FM {
 
                 if (target.has_uri_scheme ("trash")) {
                     /* Pasting files into trash is equivalent to trash or delete action */
-                    select_added_files = false;
                     call_back = (GLib.Callback)after_trash_or_delete;
                 } else {
-                    select_added_files = true;
                     /* callback takes care of selecting pasted files */
                     call_back = (GLib.Callback)after_pasting_files;
                 }
