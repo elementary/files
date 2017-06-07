@@ -22,9 +22,9 @@
 
 public class PantheonModule.FileChooserDialog : GLib.Object {
     /* Catching dialogs section by: tintou (https://launchpad.net/~tintou) */
-    Gee.TreeSet<Gtk.FileChooserDialog> tree_set;
+    Gee.TreeSet<unowned Gtk.FileChooserDialog> tree_set;
     public FileChooserDialog () {
-        tree_set = new Gee.TreeSet<Gtk.FileChooserDialog> ();
+        tree_set = new Gee.TreeSet<unowned Gtk.FileChooserDialog> ();
         /* We need to register the Gtk.Dialog class first */
         (typeof (Gtk.Dialog)).class_ref ();
         /* It's the only way to get every new window */
