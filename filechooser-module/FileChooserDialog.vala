@@ -23,11 +23,11 @@
  *   in the Gtk+3 source code package.  Changes to that file could break this code.
 ***/
 public class CustomFileChooserDialog : Object {
-    private static Gtk.FileChooserDialog chooser_dialog;
-    private static Gtk.Widget rootwidget;
+    private Gtk.FileChooserDialog chooser_dialog;
+    private Gtk.Widget rootwidget;
     
-    private static Gtk.Box container_box;
-    private static Gtk.Button? gtk_folder_button = null;
+    private Gtk.Box container_box;
+    private Gtk.Button? gtk_folder_button = null;
 
     /* Response to get parent of the bottom box */
     private const int BUTTON_RESPONSE = -6;
@@ -292,9 +292,9 @@ public class CustomFileChooserDialog : Object {
 
         if (filters.length () > 0) {
             string? current_filter_name = null;
-            var filter = chooser_dialog.get_filter ();
-            if (filter != null) {
-                current_filter_name = filter.get_filter_name ();
+            var current_filter = chooser_dialog.get_filter ();
+            if (current_filter != null) {
+                current_filter_name = current_filter.get_filter_name ();
             }
 
             filters_available = true;
