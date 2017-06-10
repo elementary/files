@@ -23,12 +23,6 @@
  *   in the Gtk+3 source code package.  Changes to that file could break this code.
 ***/
 public class CustomFileChooserDialog : Object {
-    private Gtk.FileChooserDialog chooser_dialog;
-    private Gtk.Widget rootwidget;
-    
-    private Gtk.Box container_box;
-    private Gtk.Button? gtk_folder_button = null;
-
     /* Response to get parent of the bottom box */
     private const int BUTTON_RESPONSE = -6;
 
