@@ -289,9 +289,14 @@ public class CustomFileChooserDialog : Object {
 
     private void setup_filter_box () {
         var filters = chooser_dialog.list_filters ();
-        var current_filter_name = chooser_dialog.get_filter ().get_filter_name ();
 
         if (filters.length () > 0) {
+            string? current_filter_name = null;
+            var current_filter = chooser_dialog.get_filter ();
+            if (current_filter != null) {
+                current_filter_name = current_filter.get_filter_name ();
+            }
+
             filters_available = true;
             var combo_box = new Gtk.ComboBoxText ();
             combo_box.changed.connect (() => {
