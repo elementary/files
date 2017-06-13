@@ -20,7 +20,7 @@ namespace Marlin {
     public class TextRenderer: Gtk.CellRendererText {
 
         const int MAX_LINES = 5;
-        private int BORDER_RADIUS = 6;
+        private int border_radius = 6;
 
         public Marlin.ZoomLevel zoom_level {get; set;}
         public new string background { set; private get;}
@@ -30,12 +30,12 @@ namespace Marlin {
             set {
                 _item_width = value;
                 if (xalign == 0.5) {
-                    wrap_width = _item_width - 2 * (focus_border_width + (int)xpad + BORDER_RADIUS);
+                    wrap_width = _item_width - 2 * (focus_border_width + (int)xpad + border_radius);
                 } else {
                     wrap_width = -1;
                 }
 
-                BORDER_RADIUS = 5 + wrap_width / 40;
+                border_radius = 5 + wrap_width / 40;
             }
 
             private get {
@@ -298,8 +298,8 @@ namespace Marlin {
 
             selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
 
-            focus_rect_height = text_height + 2 * this.focus_border_width + BORDER_RADIUS;
-            focus_rect_width = text_width  + 4 * this.focus_border_width  + BORDER_RADIUS;
+            focus_rect_height = text_height + 2 * this.focus_border_width + border_radius;
+            focus_rect_width = text_width  + 4 * this.focus_border_width  + border_radius;
 
             
             focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);
@@ -318,15 +318,15 @@ namespace Marlin {
                 if (x1 >= cell_area.x + cell_area.width) {
                     x1 = cell_area.x + cell_area.width - 1;
                 }
-                cr.move_to (x0 + BORDER_RADIUS, y0);
-                cr.line_to (x1 - BORDER_RADIUS, y0);
-                cr.curve_to (x1 - BORDER_RADIUS, y0, x1, y0, x1, y0 + BORDER_RADIUS);
-                cr.line_to (x1, y1 - BORDER_RADIUS);
-                cr.curve_to (x1, y1 - BORDER_RADIUS, x1, y1, x1 - BORDER_RADIUS, y1);
-                cr.line_to (x0 + BORDER_RADIUS, y1);
-                cr.curve_to (x0 + BORDER_RADIUS, y1, x0, y1, x0, y1 - BORDER_RADIUS);
-                cr.line_to (x0, y0 + BORDER_RADIUS);
-                cr.curve_to (x0, y0 + BORDER_RADIUS, x0, y0, x0 + BORDER_RADIUS, y0);
+                cr.move_to (x0 + border_radius, y0);
+                cr.line_to (x1 - border_radius, y0);
+                cr.curve_to (x1 - border_radius, y0, x1, y0, x1, y0 + border_radius);
+                cr.line_to (x1, y1 - border_radius);
+                cr.curve_to (x1, y1 - border_radius, x1, y1, x1 - border_radius, y1);
+                cr.line_to (x0 + border_radius, y1);
+                cr.curve_to (x0 + border_radius, y1, x0, y1, x0, y1 - border_radius);
+                cr.line_to (x0, y0 + border_radius);
+                cr.curve_to (x0, y0 + border_radius, x0, y0, x0 + border_radius, y0);
 
                 Gdk.RGBA color ={};
                 if (background != null && !selected) {
