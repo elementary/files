@@ -298,8 +298,8 @@ namespace Marlin {
 
             selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
 
-            focus_rect_height = text_height + 2 * this.focus_border_width + border_radius;
-            focus_rect_width = text_width  + 4 * this.focus_border_width  + border_radius;
+            focus_rect_height = text_height + 2 * (this.focus_border_width + border_radius);
+            focus_rect_width = text_width  + 4 * (this.focus_border_width  + border_radius);
 
             
             focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);
