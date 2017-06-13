@@ -107,8 +107,14 @@ public class GOF.Directory.Async : Object {
     public string last_error_message {get; private set; default = "";}
 
     private Async (GLib.File _file) {
-        /* Ensure uri is correctly escaped */
-        location = GLib.File.new_for_uri (PF.FileUtils.escape_uri (_file.get_uri ()));
+        /* Ensure uri is correctly escaped and has scheme */
+        var escaped_uri = PF.FileUtils.escape_uri (_file.get_uri ());
+        scheme = Uri.parse_scheme (escaped_uri);
+        if (scheme == null) {
+            scheme = Marlin.ROOT_FS_URI;
+            escaped_uri = scheme + escaped_uri;
+        }
+        location = GLib.File.new_for_uri (escaped_uri);
         file = GOF.File.get (location);
         selected_file = null;
 
@@ -432,6 +438,9 @@ public class GOF.Directory.Async : Object {
 
                 set_confirm_trash ();
 
+                /* Do not use root trash_dirs (Move to the Rubbish Bin option will not be shown) */
+                has_trash_dirs = has_trash_dirs && (Posix.getuid () != 0);
+
                 if (is_trash) {
                     connect_volume_monitor_signals ();
                 }
@@ -473,14 +482,16 @@ public class GOF.Directory.Async : Object {
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
+
         return_if_fail (object != null && object is Object);
+
         if (is_last) {
             Async dir = (Async) object;
             debug ("Async toggle_ref_notify %s", dir.file.uri);
 
-            if (!dir.removed_from_cache)
+            if (!dir.removed_from_cache) {
                 dir.remove_dir_from_cache ();
-
+            }
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         }
     }

@@ -23,12 +23,6 @@
  *   in the Gtk+3 source code package.  Changes to that file could break this code.
 ***/
 public class CustomFileChooserDialog : Object {
-    private static Gtk.FileChooserDialog chooser_dialog;
-    private static Gtk.Widget rootwidget;
-    
-    private static Gtk.Box container_box;
-    private static Gtk.Button? gtk_folder_button = null;
-
     /* Response to get parent of the bottom box */
     private const int BUTTON_RESPONSE = -6;
 
@@ -37,6 +31,12 @@ public class CustomFileChooserDialog : Object {
     private const string[] GTK_FILTERCHOOSER_PATH = { "extra_and_filters", "filter_combo_hbox" };
     private const string[] GTK_TREEVIEW_PATH = { "browse_files_stack", "browse_files_swin", "browse_files_tree_view" };
     private const string PLACES_SIDEBAR_PATH = "places_sidebar";
+
+    private unowned Gtk.FileChooserDialog chooser_dialog;
+    private unowned Gtk.Widget rootwidget;
+
+    private unowned Gtk.Box container_box;
+    private unowned Gtk.Button? gtk_folder_button = null;
 
     private GLib.Queue<string> previous_paths;
     private GLib.Queue<string> next_paths;
@@ -289,9 +289,14 @@ public class CustomFileChooserDialog : Object {
 
     private void setup_filter_box () {
         var filters = chooser_dialog.list_filters ();
-        var current_filter_name = chooser_dialog.get_filter ().get_filter_name ();
 
         if (filters.length () > 0) {
+            string? current_filter_name = null;
+            var current_filter = chooser_dialog.get_filter ();
+            if (current_filter != null) {
+                current_filter_name = current_filter.get_filter_name ();
+            }
+
             filters_available = true;
             var combo_box = new Gtk.ComboBoxText ();
             combo_box.changed.connect (() => {

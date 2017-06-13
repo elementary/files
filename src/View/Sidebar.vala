@@ -68,6 +68,7 @@ namespace Marlin.Places {
         bool internal_drag_started;
         bool dragged_out_of_window;
         bool renaming = false;
+        bool local_only;
 
         /* Identifiers for target types */
         public enum TargetType {
@@ -129,11 +130,13 @@ namespace Marlin.Places {
             }
         }
 
-        public Sidebar (Marlin.View.Window window) {
+        public Sidebar (Marlin.View.Window window, bool local_only = false) {
             init ();  /* creates the Gtk.TreeModel store. */
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
+            this.local_only = local_only;
+
             window.loading_uri.connect (loading_uri_callback);
             window.free_space_change.connect (reload);
 
@@ -492,7 +495,7 @@ namespace Marlin.Places {
 
             /* Add Home BUILTIN */
             try {
-                mount_uri = GLib.Filename.to_uri (GLib.Environment.get_home_dir (), null);
+                mount_uri = GLib.Filename.to_uri (Eel.get_real_user_home (), null);
             }
             catch (ConvertError e) {
                 mount_uri = "";
@@ -533,24 +536,30 @@ namespace Marlin.Places {
             uint index;
             for (index = 0; index < bookmark_count; index++) {
                 bm = bookmarks.item_at (index);
-                if (bm == null
-                 || (bm.uri_known_not_to_exist () && !display_all_bookmarks))
+                if (bm == null ||
+                    (bm.uri_known_not_to_exist () && !display_all_bookmarks) ||
+                    (local_only && GLib.Uri.parse_scheme (bm.get_uri ()) != "file")) {
+
                     continue;
+                }
 
                 add_bookmark (iter, bm, index);
             }
 
-            /* Add trash */
-            add_place (Marlin.PlaceType.BUILT_IN,
-                       iter,
-                       _("Trash"),
-                       Marlin.TrashMonitor.get_icon (),
-                       Marlin.TRASH_URI,
-                       null,
-                       null,
-                       null,
-                       index + n_builtins_before,
-                       _("Open the Trash"));
+            /* Do not show Trash if running as root (cannot be loaded) */
+            if (Posix.getuid () != 0) {
+                /* Add trash */
+                add_place (Marlin.PlaceType.BUILT_IN,
+                           iter,
+                           _("Trash"),
+                           Marlin.TrashMonitor.get_icon (),
+                           Marlin.TRASH_URI,
+                           null,
+                           null,
+                           null,
+                           index + n_builtins_before,
+                           _("Open the Trash"));
+            }
 
             /* ADD STORAGE CATEGORY*/
             iter = add_category (Marlin.PlaceType.STORAGE_CATEGORY,
@@ -676,52 +685,53 @@ namespace Marlin.Places {
                 add_device_tooltip.begin (last_iter, root, update_cancellable);
             }
 
-            /* ADD NETWORK CATEGORY */
+            if (!local_only) { /* Network operations fail when root */
+                /* ADD NETWORK CATEGORY */
+                iter = add_category (Marlin.PlaceType.NETWORK_CATEGORY,
+                                     _("Network"),
+                                     _("Your network places"));
 
-            iter = add_category (Marlin.PlaceType.NETWORK_CATEGORY,
-                                 _("Network"),
-                                 _("Your network places"));
+                network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
 
-            network_category_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
+                /* Add network mounts */
+                network_mounts.reverse ();
+                foreach (Mount mount in network_mounts) {
+                    root = mount.get_default_location ();
+                    /* get_smb_share_from_uri will return the uri unaltered if does not have
+                     * the smb scheme so we need not test.  This is required because the mount
+                     * does not return the true root location of the share but the location used
+                     * when creating the mount.
+                     */
+                    string uri = PF.FileUtils.get_smb_share_from_uri (root.get_uri ());
 
-            /* Add network mounts */
-            network_mounts.reverse ();
-            foreach (Mount mount in network_mounts) {
-                root = mount.get_root ();
-                /* get_smb_share_from_uri will return the uri unaltered if does not have
-                 * the smb scheme so we need not test.  This is required because the mount
-                 * does not return the true root location of the share but the location used
-                 * when creating the mount.
-                 */
-                string uri = PF.FileUtils.get_smb_share_from_uri (root.get_uri ());
+                    last_iter = add_place (Marlin.PlaceType.BUILT_IN,
+                                           iter,
+                                           mount.get_name (),
+                                           mount.get_icon (),
+                                           uri,
+                                           null,
+                                           null,
+                                           mount,
+                                           0,
+                                           null);
 
-                last_iter = add_place (Marlin.PlaceType.BUILT_IN,
-                                       iter,
-                                       mount.get_name (),
-                                       mount.get_icon (),
-                                       uri,
-                                       null,
-                                       null,
-                                       mount,
-                                       0,
-                                       null);
+                    add_device_tooltip.begin (last_iter, root, update_cancellable);
+                }
 
-                add_device_tooltip.begin (last_iter, root, update_cancellable);
+                /* Add Entire Network BUILTIN */
+                add_place (Marlin.PlaceType.BUILT_IN,
+                           iter,
+                           _("Entire Network"),
+                           new GLib.ThemedIcon (Marlin.ICON_NETWORK),
+                           "network:///",
+                           null,
+                           null,
+                           null,
+                           0,
+                           _("Browse the contents of the network"));
+
+                plugins.update_sidebar ((Gtk.Widget)this); /* Add "Connect Server plugin */
             }
-
-            /* Add Entire Network BUILTIN */
-            add_place (Marlin.PlaceType.BUILT_IN,
-                       iter,
-                       _("Entire Network"),
-                       new GLib.ThemedIcon (Marlin.ICON_NETWORK),
-                       "network:///",
-                       null,
-                       null,
-                       null,
-                       0,
-                       _("Browse the contents of the network"));
-
-            plugins.update_sidebar ((Gtk.Widget)this);
 
             expander_init_pref_state (tree_view);
 
@@ -1288,7 +1298,7 @@ namespace Marlin.Places {
                 } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                     window.add_tab (location, Marlin.ViewMode.CURRENT);
                 } else {
-                    window.file_path_change_request (location);
+                    window.uri_path_change_request (uri);
                 }
             } else if (f != null) {
                 f (this);
@@ -1328,7 +1338,7 @@ namespace Marlin.Places {
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                             window.add_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
-                            window.file_path_change_request (location);
+                            window.uri_path_change_request (location.get_uri ());
                         }
                     }
                 }

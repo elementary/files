@@ -350,7 +350,7 @@ namespace Marlin.View {
 
         public override void select_glib_files (GLib.List<GLib.File> files, GLib.File? focus_location) {
             if (dir_view != null)
-                dir_view.select_glib_files (files, focus_location);
+                dir_view.select_glib_files_when_thawed (files, focus_location);
         }
 
         public void select_gof_file (GOF.File gof) {

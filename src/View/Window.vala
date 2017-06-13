@@ -153,7 +153,8 @@ namespace Marlin.View {
         }
 
         private void construct_sidebar () {
-            sidebar = new Marlin.Places.Sidebar (this);
+            /* Show only local places in sidebar when running as root */
+            sidebar = new Marlin.Places.Sidebar (this, Posix.getuid () == 0);
         }
 
         public void show_sidebar (bool show = true) {
@@ -324,11 +325,11 @@ namespace Marlin.View {
             });
 
             tabs.tab_restored.connect ((label, restore_data, icon) => {
-                add_tab (File.new_for_uri (restore_data));
+                add_tab_by_uri (restore_data);
             });
 
             tabs.tab_duplicated.connect ((tab) => {
-                add_tab (File.new_for_uri (((tab.page as ViewContainer).uri)));
+                add_tab_by_uri (((ViewContainer)(tab.page)).uri);
             });
 
             tabs.tab_moved.connect ((tab, x, y) => {
@@ -456,6 +457,15 @@ namespace Marlin.View {
             top_menu.working = current_tab.is_frozen;
         }
 
+        public void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+            var file = get_file_from_uri (uri);
+            if (file != null) {
+                add_tab (file, mode);
+            } else {
+                add_tab ();
+            }
+        }
+
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             mode = real_mode (mode);
@@ -554,9 +564,10 @@ namespace Marlin.View {
             tab.close ();
         }
 
-        public void add_window (File location = File.new_for_path (Environment.get_home_dir ()),
+        public void add_window (File location = File.new_for_path (Eel.get_real_user_home ()),
                                  Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                                  int x = -1, int y = -1) {
+
             ((Marlin.Application) application).create_window (location, real_mode (mode), x, y);
         }
 
@@ -657,7 +668,7 @@ namespace Marlin.View {
                     break;
 
                 case "HOME":
-                    uri_path_change_request ("file://" + Environment.get_home_dir());
+                    uri_path_change_request ("file://" + Eel.get_real_user_home ());
                     break;
 
                 case "TRASH":
@@ -945,7 +956,7 @@ namespace Marlin.View {
                 /* ViewContainer is responsible for returning valid uris */
                 vb.add ("(uss)",
                         view_container.view_mode,
-                        view_container.get_root_uri () ?? Environment.get_home_dir (),
+                        view_container.get_root_uri () ?? Eel.get_real_user_home (),
                         view_container.get_tip_uri () ?? ""
                        );
             }
@@ -975,27 +986,22 @@ namespace Marlin.View {
             restoring_tabs = true;
 
             while (iter.next ("(uss)", out mode, out root_uri, out tip_uri)) {
-                if (mode < 0 || mode >= Marlin.ViewMode.INVALID || root_uri == null || root_uri == "" || tip_uri == null)
-                    continue;
 
-                string? unescaped_root_uri = PF.FileUtils.sanitize_path (root_uri);
+                if (mode < 0 || mode >= Marlin.ViewMode.INVALID ||
+                    root_uri == null || root_uri == "" || tip_uri == null) {
 
-                if (unescaped_root_uri == null) {
-                    warning ("Invalid root location for tab");
                     continue;
                 }
-
-                GLib.File root_location = GLib.File.new_for_commandline_arg (unescaped_root_uri);
 
                 /* We do not check valid location here because it may cause the interface to hang
                  * before the window appears (e.g. if trying to connect to a server that has become unavailable)
                  * Leave it to GOF.Directory.Async to deal with invalid locations asynchronously. 
                  */
 
-                add_tab (root_location, mode);
+                add_tab_by_uri (root_uri, mode);
 
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS && tip_uri != root_uri) {
-                    expand_miller_view (tip_uri, root_location);
+                    expand_miller_view (tip_uri, root_uri);
                 }
 
                 tabs_added++;
@@ -1037,7 +1043,7 @@ namespace Marlin.View {
             return tabs_added;
         }
 
-        private void expand_miller_view (string tip_uri, GLib.File root_location) {
+        private void expand_miller_view (string tip_uri, string unescaped_root_uri) {
             /* It might be more elegant for Miller.vala to handle this */
             var tab = tabs.current;
             var view = tab.page as ViewContainer;
@@ -1050,6 +1056,7 @@ namespace Marlin.View {
             }
 
             var tip_location = PF.FileUtils.get_file_for_path (unescaped_tip_uri);
+            var root_location = PF.FileUtils.get_file_for_path (unescaped_root_uri);
             var relative_path = root_location.get_relative_path (tip_location);
             GLib.File gfile;
 
@@ -1059,7 +1066,7 @@ namespace Marlin.View {
 
                 foreach (string dir in dirs) {
                     uri += (GLib.Path.DIR_SEPARATOR_S + dir);
-                    gfile = PF.FileUtils.get_file_for_path (uri);
+                    gfile = get_file_from_uri (uri);
 
                     mwcols.add_location (gfile, mwcols.current_slot, false); /* Do not scroll at this stage */
                 }
@@ -1104,14 +1111,14 @@ namespace Marlin.View {
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == current_tab)
-                        view_container.focus_location (File.new_for_path (Environment.get_home_dir ()));
+                        view_container.focus_location (File.new_for_path (Eel.get_real_user_home ()));
                     else
                         remove_tab (view_container);
                 }
             }
         }
 
-        public void file_path_change_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+        private void file_path_change_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
             /* ViewContainer deals with non-existent or unmounted directories
              * and locations that are not directories */
             if (restoring_tabs) {
@@ -1130,11 +1137,28 @@ namespace Marlin.View {
         }
 
         public void uri_path_change_request (string p, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
-            string path = PF.FileUtils.sanitize_path (p, current_tab.location.get_path ());
-            if (path.length > 0) {
-                file_path_change_request (File.new_for_commandline_arg (path), flag);
+            var file = get_file_from_uri (p);
+            if (file != null) {
+                /* Have to escape path and use File.new_for_uri () to correctly handle paths with certain characters such as "#" */
+                file_path_change_request (file, flag);
             } else {
                 warning ("Cannot browse %s", p);
+            }
+        }
+
+        /** Use this function to standardise how locations are generated from uris **/
+        private File? get_file_from_uri (string uri) {
+            /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
+            string? current_uri = null;
+            if (current_tab != null && current_tab.location != null) {
+                current_uri = current_tab.location.get_uri ();
+            }
+
+            string path = PF.FileUtils.sanitize_path (uri, current_uri);
+            if (path.length > 0) {
+                return File.new_for_uri (PF.FileUtils.escape_uri (path));
+            } else {
+                return null;
             }
         }
 

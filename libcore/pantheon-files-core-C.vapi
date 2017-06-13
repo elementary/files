@@ -121,6 +121,8 @@ namespace Eel {
     [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_user_id_from_user_name (string *user_name, out int uid);
     [CCode (cheader_filename = "eel-fcts.h")]
+    public string? get_real_user_home ();
+    [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_group_id_from_group_name (string *group_name, out int gid);
     [CCode (cheader_filename = "eel-fcts.h")]
     public bool get_id_from_digit_string (string digit_str, out int id);

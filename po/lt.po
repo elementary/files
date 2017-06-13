@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-28 12:05+0000\n"
-"PO-Revision-Date: 2017-02-28 15:46+0000\n"
+"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"PO-Revision-Date: 2017-05-27 19:46+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2017-05-06 05:38+0000\n"
-"X-Generator: Launchpad (build 18366)\n"
+"X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
+"X-Generator: Launchpad (build 18402)\n"
 "Language: lt\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -138,428 +138,6 @@ msgstr "P_risiminti šį slaptažodį"
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
 msgstr "Operacija atšaukta"
-
-#: ../libcore/marlin-undostack-manager.c:635
-msgid "Original location could not be determined"
-msgstr "Nepavyko nustatyti pradinę vietą"
-
-#: ../libcore/marlin-undostack-manager.c:636
-msgid "Open trash folder and restore manually"
-msgstr "Atverti šiukšlinės aplanką ir atkurti rankiniu būdu"
-
-#: ../libcore/marlin-undostack-manager.c:1225
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Ištrinti %d nukopijuotus elementus"
-
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
-#, c-format
-msgid "Delete '%s'"
-msgstr "Ištrinti „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1235
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Pašalinti %d elementų kopijas"
-
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Perkelti %d elementus atgal į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1250
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Perkelti „%s“ atgal į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Pervadinti „%s“ į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Atkurti %d elementus iš šiukšlinės"
-
-#: ../libcore/marlin-undostack-manager.c:1286
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Atkurti „%s“ į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1297
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Perkelti %d elementų atgal į šiukšlinę"
-
-#: ../libcore/marlin-undostack-manager.c:1300
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Perkelti „%s“ atgal į šiukšlinę"
-
-#: ../libcore/marlin-undostack-manager.c:1309
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Ištrinti nuorodas į %d elementus"
-
-#: ../libcore/marlin-undostack-manager.c:1312
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Ištrinti nuorodą į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1322
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "Atkurti elementų, esančių „%s“, pradinius leidimus"
-
-#: ../libcore/marlin-undostack-manager.c:1330
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Atkurti pradinius „%s“ leidimus"
-
-#: ../libcore/marlin-undostack-manager.c:1339
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Atkurti „%s“ grupę į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1349
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Atkurti „%s“ savininką į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1388
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Kopijuoti %d elementų į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1392
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Kopijuoti „%s“ į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1400
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "%d elementų dubliavimas ties \"%s\""
-
-#: ../libcore/marlin-undostack-manager.c:1405
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Sukurti „%s“ kopiją aplanke „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1413
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Perkelti %d elementus į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1417
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Perkelti „%s“ į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1435
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Sukurti naują failą „%s“ iš šablono "
-
-#: ../libcore/marlin-undostack-manager.c:1442
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Sukurti tuščią failą „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1449
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Sukurti naują aplanką „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1457
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Perkelti %d elementus į šiukšlinę"
-
-#: ../libcore/marlin-undostack-manager.c:1463
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Perkelti „%s“ į šiukšlinę"
-
-#: ../libcore/marlin-undostack-manager.c:1476
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Atkurti „%s“ iš šiukšlinės"
-
-#: ../libcore/marlin-undostack-manager.c:1485
-#, c-format
-msgid "Create links to %d items"
-msgstr "Sukurti nuorodas į %d elementus"
-
-#: ../libcore/marlin-undostack-manager.c:1488
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Sukurti nuorodą į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1497
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Nustatyti leidimus elementams, esantiems „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1505
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Nustatyti „%s“ leidimus"
-
-#: ../libcore/marlin-undostack-manager.c:1514
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Nustatyti „%s“ grupę į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1524
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Nustatyti „%s“ savininką į „%s“"
-
-#: ../libcore/marlin-undostack-manager.c:1556
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "A_tšaukti %d elemento kopijavimą"
-msgstr[1] "A_tšaukti %d elementų kopijavimą"
-msgstr[2] "A_tšaukti %d elementų kopijavimą"
-
-#: ../libcore/marlin-undostack-manager.c:1561
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "A_tšaukti %d elemento dubliavimą"
-msgstr[1] "A_tšaukti %d elementų dubliavimą"
-msgstr[2] "A_tšaukti %d elementų dubliavimą"
-
-#: ../libcore/marlin-undostack-manager.c:1566
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "A_tšaukti %d elemento perkėlimą"
-msgstr[1] "A_tšaukti %d elementų perkėlimą"
-msgstr[2] "A_tšaukti %d elementų perkėlimą"
-
-#: ../libcore/marlin-undostack-manager.c:1571
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "A_tšaukti %d elemento pervadinimą"
-msgstr[1] "A_tšaukti %d elementų pervadinimą"
-msgstr[2] "A_tšaukti %d elementų pervadinimą"
-
-#: ../libcore/marlin-undostack-manager.c:1575
-msgid "_Undo creation of an empty file"
-msgstr "_Atšaukti tuščio failo sukūrimą"
-
-#: ../libcore/marlin-undostack-manager.c:1578
-msgid "_Undo creation of a file from template"
-msgstr "A_tšaukti failo iš šablono kūrimą"
-
-#: ../libcore/marlin-undostack-manager.c:1582
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Atšaukti %d aplanko sukūrimą"
-msgstr[1] "_Atšaukti %d aplankų sukūrimą"
-msgstr[2] "_Atšaukti %d aplankų sukūrimą"
-
-#: ../libcore/marlin-undostack-manager.c:1587
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "A_tšaukti %d elemento perkėlimą į šiukšlinę"
-msgstr[1] "A_tšaukti %d elementų perkėlimą į šiukšlinę"
-msgstr[2] "A_tšaukti %d elementų perkėlimą į šiukšlinę"
-
-#: ../libcore/marlin-undostack-manager.c:1592
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "A_tšaukti %d elemento atkūrimą iš šiukšlinės"
-msgstr[1] "A_tšaukti %d elementų atkūrimą iš šiukšlinės"
-msgstr[2] "A_tšaukti %d elementų atkūrimą iš šiukšlinės"
-
-#: ../libcore/marlin-undostack-manager.c:1597
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "A_tšaukti nuorodos sukūrimą į %d elementą"
-msgstr[1] "A_tšaukti nuorodos sukūrimą į %d elementus"
-msgstr[2] "A_tšaukti nuorodos sukūrimą į %d elementų"
-
-#: ../libcore/marlin-undostack-manager.c:1602
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "A_tšaukti %d elemento ištrynimą"
-msgstr[1] "A_tšaukti %d elementų ištrynimą"
-msgstr[2] "A_tšaukti %d elementų ištrynimą"
-
-#: ../libcore/marlin-undostack-manager.c:1607
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Atšaukti rekursinį %d elemento leidimų pakeitimą"
-msgstr[1] "Atšaukti rekursinį %d elementų leidimų pakeitimą"
-msgstr[2] "Atšaukti rekursinį %d elementų leidimų pakeitimą"
-
-#: ../libcore/marlin-undostack-manager.c:1613
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Atšaukti %d elemento leidimų pakeitimą"
-msgstr[1] "Atšaukti %d elementų leidimų pakeitimą"
-msgstr[2] "Atšaukti %d elementų leidimų pakeitimą"
-
-#: ../libcore/marlin-undostack-manager.c:1618
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Atšaukti %d elemento grupės pakeitimą"
-msgstr[1] "Atšaukti %d elementų grupės pakeitimą"
-msgstr[2] "Atšaukti %d elementų grupės pakeitimą"
-
-#: ../libcore/marlin-undostack-manager.c:1623
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Atšaukti %d elemento savininko pakeitimą"
-msgstr[1] "Atšaukti %d elementų savininko pakeitimą"
-msgstr[2] "Atšaukti %d elementų savininko pakeitimą"
-
-#: ../libcore/marlin-undostack-manager.c:1651
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Grąžinti %d elemento kopijavimą"
-msgstr[1] "_Grąžinti %d elementų kopijavimą"
-msgstr[2] "_Grąžinti %d elementų kopijavimą"
-
-#: ../libcore/marlin-undostack-manager.c:1656
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Grąžinti %d elemento dubliavimą"
-msgstr[1] "_Grąžinti %d elementų dubliavimą"
-msgstr[2] "_Grąžinti %d elementų dubliavimą"
-
-#: ../libcore/marlin-undostack-manager.c:1661
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Grąžinti %d elemento perkėlimą"
-msgstr[1] "_Grąžinti %d elementų perkėlimą"
-msgstr[2] "_Grąžinti %d elementų perkėlimą"
-
-#: ../libcore/marlin-undostack-manager.c:1666
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Grąžinti %d elemento pervadinimą"
-msgstr[1] "_Grąžinti %d elementų pervadinimą"
-msgstr[2] "_Grąžinti %d elementų pervadinimą"
-
-#: ../libcore/marlin-undostack-manager.c:1670
-msgid "_Redo creation of an empty file"
-msgstr "_Grąžinti tuščio failo sukūrimą"
-
-#: ../libcore/marlin-undostack-manager.c:1673
-msgid "_Redo creation of a file from template"
-msgstr "_Grąžinti failo iš šablono sukūrimą"
-
-#: ../libcore/marlin-undostack-manager.c:1677
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Grąžinti %d aplanko sukūrimą"
-msgstr[1] "_Grąžinti %d aplankų sukūrimą"
-msgstr[2] "_Grąžinti %d aplankų sukūrimą"
-
-#: ../libcore/marlin-undostack-manager.c:1682
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Grąžinti %d elemento perkėlimą į šiukšlinę"
-msgstr[1] "_Grąžinti %d elementų perkėlimą į šiukšlinę"
-msgstr[2] "_Grąžinti %d elementų perkėlimą į šiukšlinę"
-
-#: ../libcore/marlin-undostack-manager.c:1687
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Grąžinti %d elemento atkūrimą iš šiukšlinės"
-msgstr[1] "_Grąžinti %d elementų atkūrimą iš šiukšlinės"
-msgstr[2] "_Grąžinti %d elementų atkūrimą iš šiukšlinės"
-
-#: ../libcore/marlin-undostack-manager.c:1692
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Grąžinti nuorodos sukūrimą į %d elementą"
-msgstr[1] "_Grąžinti nuorodos sukūrimą į %d elementus"
-msgstr[2] "_Grąžinti nuorodos sukūrimą į %d elementų"
-
-#: ../libcore/marlin-undostack-manager.c:1697
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Grąžinti %d elemento ištrynimą"
-msgstr[1] "_Grąžinti %d elementų ištrynimą"
-msgstr[2] "_Grąžinti %d elementų ištrynimą"
-
-#: ../libcore/marlin-undostack-manager.c:1702
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Grąžinti rekursinį %d elemento leidimų pakeitimą"
-msgstr[1] "Grąžinti rekursinį %d elementų leidimų pakeitimą"
-msgstr[2] "Grąžinti rekursinį %d elementų leidimų pakeitimą"
-
-#: ../libcore/marlin-undostack-manager.c:1708
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Grąžinti %d elemento leidimų pakeitimą"
-msgstr[1] "Grąžinti %d elementų leidimų pakeitimą"
-msgstr[2] "Grąžinti %d elementų leidimų pakeitimą"
-
-#: ../libcore/marlin-undostack-manager.c:1713
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Grąžinti %d elemento grupės pakeitimą"
-msgstr[1] "Grąžinti %d elementų grupės pakeitimą"
-msgstr[2] "Grąžinti %d elementų grupės pakeitimą"
-
-#: ../libcore/marlin-undostack-manager.c:1718
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Grąžinti %d elemento savininko pakeitimą"
-msgstr[1] "Grąžinti %d elementų savininko pakeitimą"
-msgstr[2] "Grąžinti %d elementų savininko pakeitimą"
-
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:443
-msgid "Today at %-I:%M %p"
-msgstr "Šiandien %-k:%M"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:453
-msgid "Yesterday at %-I:%M %p"
-msgstr "Vakar %-k:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%b %d, %a. %-k:%M"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%Y %b %d, %a. %-k:%M"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -706,6 +284,48 @@ msgstr "Pakeisti"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "Konfliktuojantys failai"
+
+#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
+msgid "Inaccessible"
+msgstr "Neprieinamas"
+
+#: ../libcore/gof-file.c:377
+#, c-format
+msgid "link to %s"
+msgstr "nuoroda į %s"
+
+#: ../libcore/gof-file.c:1934
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Nepavyko išnagrinėti darbalaukio failo: %s"
+
+#: ../libcore/gof-file.c:1971
+msgid "No Exec field specified"
+msgstr "Nenurodytas joks Exec laukas"
+
+#: ../libcore/gof-file.c:1990
+msgid "No URL field specified"
+msgstr "Nenurodytas joks URL laukas"
+
+#: ../libcore/gof-file.c:1996
+msgid "Invalid desktop file"
+msgstr "Netinkamas leistuko (desktop) failas"
+
+#: ../libcore/gof-file.c:2291
+msgid "Slashes are not allowed in filenames"
+msgstr "Dešininiai pasvirieji brūkšniai failų pavadinimuose yra neleidžiami"
+
+#: ../libcore/gof-file.c:2311
+msgid "Toplevel files cannot be renamed"
+msgstr "Aukščiausiojo lygio failai negali būti pervadinti"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Rodyti daugiau _informacijos"
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr " (netinkamas Unikodas)"
 
 #: ../libcore/marlin-file-operations.c:200
 msgid "S_kip All"
@@ -920,7 +540,7 @@ msgstr ""
 "laikams."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1503
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1512
 msgid "Empty _Trash"
 msgstr "Iš_valyti šiukšlinę"
 
@@ -1497,52 +1117,432 @@ msgstr "Išvaloma šiukšlinė"
 msgid "Emptying Trash"
 msgstr "Išvaloma šiukšlinė"
 
+#: ../libcore/marlin-undostack-manager.c:635
+msgid "Original location could not be determined"
+msgstr "Nepavyko nustatyti pradinę vietą"
+
+#: ../libcore/marlin-undostack-manager.c:636
+msgid "Open trash folder and restore manually"
+msgstr "Atverti šiukšlinės aplanką ir atkurti rankiniu būdu"
+
+#: ../libcore/marlin-undostack-manager.c:1225
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Ištrinti %d nukopijuotus elementus"
+
+#: ../libcore/marlin-undostack-manager.c:1228
+#: ../libcore/marlin-undostack-manager.c:1238
+#: ../libcore/marlin-undostack-manager.c:1269
+#, c-format
+msgid "Delete '%s'"
+msgstr "Ištrinti „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1235
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Pašalinti %d elementų kopijas"
+
+#: ../libcore/marlin-undostack-manager.c:1246
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Perkelti %d elementus atgal į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1250
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Perkelti „%s“ atgal į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1259
+#: ../libcore/marlin-undostack-manager.c:1426
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Pervadinti „%s“ į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1278
+#: ../libcore/marlin-undostack-manager.c:1473
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Atkurti %d elementus iš šiukšlinės"
+
+#: ../libcore/marlin-undostack-manager.c:1286
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Atkurti „%s“ į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1297
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Perkelti %d elementų atgal į šiukšlinę"
+
+#: ../libcore/marlin-undostack-manager.c:1300
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Perkelti „%s“ atgal į šiukšlinę"
+
+#: ../libcore/marlin-undostack-manager.c:1309
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Ištrinti nuorodas į %d elementus"
+
+#: ../libcore/marlin-undostack-manager.c:1312
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Ištrinti nuorodą į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1322
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Atkurti elementų, esančių „%s“, pradinius leidimus"
+
+#: ../libcore/marlin-undostack-manager.c:1330
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Atkurti pradinius „%s“ leidimus"
+
+#: ../libcore/marlin-undostack-manager.c:1339
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Atkurti „%s“ grupę į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1349
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Atkurti „%s“ savininką į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1388
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Kopijuoti %d elementų į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1392
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Kopijuoti „%s“ į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1400
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "%d elementų dubliavimas ties \"%s\""
+
+#: ../libcore/marlin-undostack-manager.c:1405
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Sukurti „%s“ kopiją aplanke „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1413
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Perkelti %d elementus į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Perkelti „%s“ į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1435
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Sukurti naują failą „%s“ iš šablono "
+
+#: ../libcore/marlin-undostack-manager.c:1442
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Sukurti tuščią failą „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Sukurti naują aplanką „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1457
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Perkelti %d elementus į šiukšlinę"
+
+#: ../libcore/marlin-undostack-manager.c:1463
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Perkelti „%s“ į šiukšlinę"
+
+#: ../libcore/marlin-undostack-manager.c:1476
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Atkurti „%s“ iš šiukšlinės"
+
+#: ../libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "Create links to %d items"
+msgstr "Sukurti nuorodas į %d elementus"
+
+#: ../libcore/marlin-undostack-manager.c:1488
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Sukurti nuorodą į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1497
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Nustatyti leidimus elementams, esantiems „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1505
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Nustatyti „%s“ leidimus"
+
+#: ../libcore/marlin-undostack-manager.c:1514
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Nustatyti „%s“ grupę į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1524
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Nustatyti „%s“ savininką į „%s“"
+
+#: ../libcore/marlin-undostack-manager.c:1556
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "A_tšaukti %d elemento kopijavimą"
+msgstr[1] "A_tšaukti %d elementų kopijavimą"
+msgstr[2] "A_tšaukti %d elementų kopijavimą"
+
+#: ../libcore/marlin-undostack-manager.c:1561
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "A_tšaukti %d elemento dubliavimą"
+msgstr[1] "A_tšaukti %d elementų dubliavimą"
+msgstr[2] "A_tšaukti %d elementų dubliavimą"
+
+#: ../libcore/marlin-undostack-manager.c:1566
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "A_tšaukti %d elemento perkėlimą"
+msgstr[1] "A_tšaukti %d elementų perkėlimą"
+msgstr[2] "A_tšaukti %d elementų perkėlimą"
+
+#: ../libcore/marlin-undostack-manager.c:1571
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "A_tšaukti %d elemento pervadinimą"
+msgstr[1] "A_tšaukti %d elementų pervadinimą"
+msgstr[2] "A_tšaukti %d elementų pervadinimą"
+
+#: ../libcore/marlin-undostack-manager.c:1575
+msgid "_Undo creation of an empty file"
+msgstr "_Atšaukti tuščio failo sukūrimą"
+
+#: ../libcore/marlin-undostack-manager.c:1578
+msgid "_Undo creation of a file from template"
+msgstr "A_tšaukti failo iš šablono kūrimą"
+
+#: ../libcore/marlin-undostack-manager.c:1582
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Atšaukti %d aplanko sukūrimą"
+msgstr[1] "_Atšaukti %d aplankų sukūrimą"
+msgstr[2] "_Atšaukti %d aplankų sukūrimą"
+
+#: ../libcore/marlin-undostack-manager.c:1587
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "A_tšaukti %d elemento perkėlimą į šiukšlinę"
+msgstr[1] "A_tšaukti %d elementų perkėlimą į šiukšlinę"
+msgstr[2] "A_tšaukti %d elementų perkėlimą į šiukšlinę"
+
+#: ../libcore/marlin-undostack-manager.c:1592
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "A_tšaukti %d elemento atkūrimą iš šiukšlinės"
+msgstr[1] "A_tšaukti %d elementų atkūrimą iš šiukšlinės"
+msgstr[2] "A_tšaukti %d elementų atkūrimą iš šiukšlinės"
+
+#: ../libcore/marlin-undostack-manager.c:1597
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "A_tšaukti nuorodos sukūrimą į %d elementą"
+msgstr[1] "A_tšaukti nuorodos sukūrimą į %d elementus"
+msgstr[2] "A_tšaukti nuorodos sukūrimą į %d elementų"
+
+#: ../libcore/marlin-undostack-manager.c:1602
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "A_tšaukti %d elemento ištrynimą"
+msgstr[1] "A_tšaukti %d elementų ištrynimą"
+msgstr[2] "A_tšaukti %d elementų ištrynimą"
+
+#: ../libcore/marlin-undostack-manager.c:1607
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Atšaukti rekursinį %d elemento leidimų pakeitimą"
+msgstr[1] "Atšaukti rekursinį %d elementų leidimų pakeitimą"
+msgstr[2] "Atšaukti rekursinį %d elementų leidimų pakeitimą"
+
+#: ../libcore/marlin-undostack-manager.c:1613
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Atšaukti %d elemento leidimų pakeitimą"
+msgstr[1] "Atšaukti %d elementų leidimų pakeitimą"
+msgstr[2] "Atšaukti %d elementų leidimų pakeitimą"
+
+#: ../libcore/marlin-undostack-manager.c:1618
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Atšaukti %d elemento grupės pakeitimą"
+msgstr[1] "Atšaukti %d elementų grupės pakeitimą"
+msgstr[2] "Atšaukti %d elementų grupės pakeitimą"
+
+#: ../libcore/marlin-undostack-manager.c:1623
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Atšaukti %d elemento savininko pakeitimą"
+msgstr[1] "Atšaukti %d elementų savininko pakeitimą"
+msgstr[2] "Atšaukti %d elementų savininko pakeitimą"
+
+#: ../libcore/marlin-undostack-manager.c:1651
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Grąžinti %d elemento kopijavimą"
+msgstr[1] "_Grąžinti %d elementų kopijavimą"
+msgstr[2] "_Grąžinti %d elementų kopijavimą"
+
+#: ../libcore/marlin-undostack-manager.c:1656
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Grąžinti %d elemento dubliavimą"
+msgstr[1] "_Grąžinti %d elementų dubliavimą"
+msgstr[2] "_Grąžinti %d elementų dubliavimą"
+
+#: ../libcore/marlin-undostack-manager.c:1661
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Grąžinti %d elemento perkėlimą"
+msgstr[1] "_Grąžinti %d elementų perkėlimą"
+msgstr[2] "_Grąžinti %d elementų perkėlimą"
+
+#: ../libcore/marlin-undostack-manager.c:1666
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Grąžinti %d elemento pervadinimą"
+msgstr[1] "_Grąžinti %d elementų pervadinimą"
+msgstr[2] "_Grąžinti %d elementų pervadinimą"
+
+#: ../libcore/marlin-undostack-manager.c:1670
+msgid "_Redo creation of an empty file"
+msgstr "_Grąžinti tuščio failo sukūrimą"
+
+#: ../libcore/marlin-undostack-manager.c:1673
+msgid "_Redo creation of a file from template"
+msgstr "_Grąžinti failo iš šablono sukūrimą"
+
+#: ../libcore/marlin-undostack-manager.c:1677
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Grąžinti %d aplanko sukūrimą"
+msgstr[1] "_Grąžinti %d aplankų sukūrimą"
+msgstr[2] "_Grąžinti %d aplankų sukūrimą"
+
+#: ../libcore/marlin-undostack-manager.c:1682
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Grąžinti %d elemento perkėlimą į šiukšlinę"
+msgstr[1] "_Grąžinti %d elementų perkėlimą į šiukšlinę"
+msgstr[2] "_Grąžinti %d elementų perkėlimą į šiukšlinę"
+
+#: ../libcore/marlin-undostack-manager.c:1687
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Grąžinti %d elemento atkūrimą iš šiukšlinės"
+msgstr[1] "_Grąžinti %d elementų atkūrimą iš šiukšlinės"
+msgstr[2] "_Grąžinti %d elementų atkūrimą iš šiukšlinės"
+
+#: ../libcore/marlin-undostack-manager.c:1692
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Grąžinti nuorodos sukūrimą į %d elementą"
+msgstr[1] "_Grąžinti nuorodos sukūrimą į %d elementus"
+msgstr[2] "_Grąžinti nuorodos sukūrimą į %d elementų"
+
+#: ../libcore/marlin-undostack-manager.c:1697
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Grąžinti %d elemento ištrynimą"
+msgstr[1] "_Grąžinti %d elementų ištrynimą"
+msgstr[2] "_Grąžinti %d elementų ištrynimą"
+
+#: ../libcore/marlin-undostack-manager.c:1702
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Grąžinti rekursinį %d elemento leidimų pakeitimą"
+msgstr[1] "Grąžinti rekursinį %d elementų leidimų pakeitimą"
+msgstr[2] "Grąžinti rekursinį %d elementų leidimų pakeitimą"
+
+#: ../libcore/marlin-undostack-manager.c:1708
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Grąžinti %d elemento leidimų pakeitimą"
+msgstr[1] "Grąžinti %d elementų leidimų pakeitimą"
+msgstr[2] "Grąžinti %d elementų leidimų pakeitimą"
+
+#: ../libcore/marlin-undostack-manager.c:1713
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Grąžinti %d elemento grupės pakeitimą"
+msgstr[1] "Grąžinti %d elementų grupės pakeitimą"
+msgstr[2] "Grąžinti %d elementų grupės pakeitimą"
+
+#: ../libcore/marlin-undostack-manager.c:1718
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Grąžinti %d elemento savininko pakeitimą"
+msgstr[1] "Grąžinti %d elementų savininko pakeitimą"
+msgstr[2] "Grąžinti %d elementų savininko pakeitimą"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:436
+msgid "Today at %-I:%M %p"
+msgstr "Šiandien %-k:%M"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:444
+msgid "Yesterday at %-I:%M %p"
+msgstr "Vakar %-k:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%b %d, %a. %-k:%M"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%Y %b %d, %a. %-k:%M"
+
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
 msgstr "Ruošiama"
-
-#: ../libcore/gof-file.c:361 ../libcore/gof-file.c:534
-msgid "Inaccessible"
-msgstr "Neprieinamas"
-
-#: ../libcore/gof-file.c:376
-#, c-format
-msgid "link to %s"
-msgstr "nuoroda į %s"
-
-#: ../libcore/gof-file.c:1935
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Nepavyko išnagrinėti darbalaukio failo: %s"
-
-#: ../libcore/gof-file.c:1972
-msgid "No Exec field specified"
-msgstr "Nenurodytas joks Exec laukas"
-
-#: ../libcore/gof-file.c:1991
-msgid "No URL field specified"
-msgstr "Nenurodytas joks URL laukas"
-
-#: ../libcore/gof-file.c:1997
-msgid "Invalid desktop file"
-msgstr "Netinkamas leistuko (desktop) failas"
-
-#: ../libcore/gof-file.c:2292
-msgid "Slashes are not allowed in filenames"
-msgstr "Dešininiai pasvirieji brūkšniai failų pavadinimuose yra neleidžiami"
-
-#: ../libcore/gof-file.c:2312
-msgid "Toplevel files cannot be renamed"
-msgstr "Aukščiausiojo lygio failai negali būti pervadinti"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Rodyti daugiau _informacijos"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (netinkamas Unikodas)"
 
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
@@ -1550,91 +1550,166 @@ msgid "Previous"
 msgstr "Ankstesnis"
 
 #: ../filechooser-module/FileChooserDialog.vala:76
-#: ../src/View/Widgets/TopMenu.vala:68
+#: ../src/View/Widgets/TopMenu.vala:69
 msgid "Next"
 msgstr "Kitas"
 
-#: ../src/View/ViewContainer.vala:352 ../src/View/Sidebar.vala:494
-msgid "Home"
-msgstr "Namų aplankas"
-
-#: ../src/View/ViewContainer.vala:354 ../src/View/Sidebar.vala:555
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:93
-msgid "File System"
-msgstr "Failų sistema"
-
-#: ../src/View/ViewContainer.vala:363
-msgid "(as Administrator)"
-msgstr "(kaip administratorius)"
-
-#: ../src/View/ViewContainer.vala:376 ../src/View/DirectoryNotFound.vala:28
-msgid "This Folder Does Not Exist"
-msgstr "Šio aplanko nėra"
-
-#: ../src/View/ViewContainer.vala:377
-msgid "You cannot create a folder here."
-msgstr "Jūs negalite čia sukurti aplanko."
-
-#: ../src/View/ViewContainer.vala:379
-msgid "The network is unavailable"
-msgstr "Tinklas neprieinamas"
-
-#: ../src/View/ViewContainer.vala:380
-msgid "A working network is needed to reach this folder"
-msgstr "Norint pasiekti šį aplanką, reikalingas veikiantis tinklo ryšys"
-
-#: ../src/View/ViewContainer.vala:382
-msgid "This Folder Does Not Belong to You"
-msgstr "Šis aplankas jums nepriklauso"
-
-#: ../src/View/ViewContainer.vala:383
-msgid "You don't have permission to view this folder."
-msgstr "Jūs neturite leidimo peržiūrėti šį aplanką."
-
-#: ../src/View/ViewContainer.vala:385
-msgid "Unable to Mount Folder"
-msgstr "Nepavyksta prijungti aplanko"
-
-#: ../src/View/ViewContainer.vala:386
-msgid "Could not connect to the server for this folder."
-msgstr "Nepavyko prisijungti prie šio aplanko serverio."
-
-#: ../src/View/ViewContainer.vala:388
-msgid "Unable to Display Folder Contents"
-msgstr "Nepavyksta parodyti aplanko turinio"
-
-#: ../src/View/ViewContainer.vala:389
-msgid "The operation timed out."
-msgstr "Pasibaigė operacijai skirtas laikas."
-
-#: ../src/View/ViewContainer.vala:391
-msgid "Unable to Show Folder"
-msgstr "Nepavyko rodyti aplanko"
-
-#: ../src/View/ViewContainer.vala:392
-msgid "The server for this folder could not be located."
-msgstr "Nepavyko nustatyti šio aplanko serverio."
-
-#: ../src/View/ViewContainer.vala:402
-msgid "File not Found"
-msgstr "Failas nerastas"
-
-#: ../src/View/ViewContainer.vala:403
-msgid "The file selected no longer exists."
-msgstr "Pasirinkto failo daugiau nebėra."
-
-#: ../src/View/Window.vala:208
+#: ../src/View/Window.vala:204
 msgid "Files isn't your default file manager."
 msgstr "Failai nėra jūsų numatytoji failų tvarkytuvė."
 
-#: ../src/View/Window.vala:214
+#: ../src/View/Window.vala:210
 msgid "Set as Default"
 msgstr "Nustatyti numatytąja"
 
-#: ../src/View/Window.vala:220
+#: ../src/View/Window.vala:216
 msgid "Ignore"
 msgstr "Nepaisyti"
+
+#: ../src/View/Sidebar.vala:490
+msgid "Personal"
+msgstr "Asmeniniai"
+
+#: ../src/View/Sidebar.vala:491
+msgid "Your common places and bookmarks"
+msgstr "Jūsų dažniausiai lankomos vietos ir žymelės"
+
+#: ../src/View/Sidebar.vala:503 ../src/View/ViewContainer.vala:346
+msgid "Home"
+msgstr "Namų aplankas"
+
+#: ../src/View/Sidebar.vala:510
+msgid "Open your personal folder"
+msgstr "Atverti jūsų asmeninį aplanką"
+
+#: ../src/View/Sidebar.vala:525
+msgid "View the list of recently used files"
+msgstr "Žiūrėti neseniai naudotų failų sąrašą"
+
+#: ../src/View/Sidebar.vala:546 ../libwidgets/Resources.vala:91
+msgid "Trash"
+msgstr "Šiukšlinė"
+
+#: ../src/View/Sidebar.vala:553
+msgid "Open the Trash"
+msgstr "Atverti šiukšlinę"
+
+#: ../src/View/Sidebar.vala:557
+msgid "Devices"
+msgstr "Įrenginiai"
+
+#: ../src/View/Sidebar.vala:558
+msgid "Your local partitions and devices"
+msgstr "Jūsų vietiniai skaidiniai ir įrenginiai"
+
+#: ../src/View/Sidebar.vala:564 ../src/View/ViewContainer.vala:348
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:94
+msgid "File System"
+msgstr "Failų sistema"
+
+#: ../src/View/Sidebar.vala:682 ../libwidgets/Resources.vala:88
+msgid "Network"
+msgstr "Tinklas"
+
+#: ../src/View/Sidebar.vala:683
+msgid "Your network places"
+msgstr "Jūsų tinklo vietos"
+
+#: ../src/View/Sidebar.vala:715
+msgid "Entire Network"
+msgstr "Visas tinklas"
+
+#: ../src/View/Sidebar.vala:722
+msgid "Browse the contents of the network"
+msgstr "Naršyti tinklo turinį"
+
+#: ../src/View/Sidebar.vala:854
+msgid "(%s Free of %s)"
+msgstr "(%s laisva iš %s)"
+
+#: ../src/View/Sidebar.vala:1350
+msgid "Unable to start %s"
+msgstr "Nepavyko paleisti %s"
+
+#: ../src/View/Sidebar.vala:1454
+msgid "Open"
+msgstr "Atverti"
+
+#: ../src/View/Sidebar.vala:1462
+msgid "Open in New _Tab"
+msgstr "Atverti naujoje _kortelėje"
+
+#: ../src/View/Sidebar.vala:1468
+msgid "Open in New _Window"
+msgstr "Atverti naujame _lange"
+
+#: ../src/View/Sidebar.vala:1476
+msgid "Remove"
+msgstr "Šalinti"
+
+#: ../src/View/Sidebar.vala:1484 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Pervadinti"
+
+#: ../src/View/Sidebar.vala:1493
+msgid "_Mount"
+msgstr "Pri_jungti"
+
+#: ../src/View/Sidebar.vala:1499
+msgid "_Unmount"
+msgstr "_Atjungti"
+
+#: ../src/View/Sidebar.vala:1505
+msgid "_Eject"
+msgstr "_Išstumti"
+
+#: ../src/View/Sidebar.vala:1519 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Savybės"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Failo pavadinimas"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Dydis"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Tipas"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Keista"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:379
+msgid "This Folder Does Not Exist"
+msgstr "Šio aplanko nėra"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Aplankas „%s“ nerastas."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Sukurti"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Sukurti aplanką „%s“"
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Aplanko sukurti nepavyko\n"
+"\n"
+"%s"
 
 #: ../src/View/AbstractDirectoryView.vala:564
 msgid "Failed to preview"
@@ -1673,7 +1748,7 @@ msgid "Open in"
 msgstr "Kur atverti"
 
 #: ../src/View/AbstractDirectoryView.vala:2033
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:452
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:461
 msgid "Open with"
 msgstr "Atverti naudojant"
 
@@ -1708,138 +1783,98 @@ msgstr "Vietoj to, iškerpamas pasirinkimas"
 msgid "Cannot paste files here"
 msgstr "Failai negali būti čia įdėti"
 
-#: ../src/View/Sidebar.vala:481
-msgid "Personal"
-msgstr "Asmeniniai"
+#: ../src/View/ViewContainer.vala:361
+msgid "(as Administrator)"
+msgstr "(kaip administratorius)"
 
-#: ../src/View/Sidebar.vala:482
-msgid "Your common places and bookmarks"
-msgstr "Jūsų dažniausiai lankomos vietos ir žymelės"
+#: ../src/View/ViewContainer.vala:380
+msgid "You cannot create a folder here."
+msgstr "Jūs negalite čia sukurti aplanko."
 
-#: ../src/View/Sidebar.vala:501
-msgid "Open your personal folder"
-msgstr "Atverti jūsų asmeninį aplanką"
+#: ../src/View/ViewContainer.vala:383
+msgid "The network is unavailable"
+msgstr "Tinklas neprieinamas"
 
-#: ../src/View/Sidebar.vala:516
-msgid "View the list of recently used files"
-msgstr "Žiūrėti neseniai naudotų failų sąrašą"
+#: ../src/View/ViewContainer.vala:384
+msgid "A working network is needed to reach this folder"
+msgstr "Norint pasiekti šį aplanką, reikalingas veikiantis tinklo ryšys"
 
-#: ../src/View/Sidebar.vala:537 ../libwidgets/Resources.vala:90
-msgid "Trash"
-msgstr "Šiukšlinė"
+#: ../src/View/ViewContainer.vala:386
+msgid "This Folder Does Not Belong to You"
+msgstr "Šis aplankas jums nepriklauso"
 
-#: ../src/View/Sidebar.vala:544
-msgid "Open the Trash"
-msgstr "Atverti šiukšlinę"
+#: ../src/View/ViewContainer.vala:387
+msgid "You don't have permission to view this folder."
+msgstr "Jūs neturite leidimo peržiūrėti šį aplanką."
 
-#: ../src/View/Sidebar.vala:548
-msgid "Devices"
-msgstr "Įrenginiai"
+#: ../src/View/ViewContainer.vala:389
+msgid "Unable to Mount Folder"
+msgstr "Nepavyksta prijungti aplanko"
 
-#: ../src/View/Sidebar.vala:549
-msgid "Your local partitions and devices"
-msgstr "Jūsų vietiniai skaidiniai ir įrenginiai"
+#: ../src/View/ViewContainer.vala:390
+msgid "Could not connect to the server for this folder."
+msgstr "Nepavyko prisijungti prie šio aplanko serverio."
 
-#: ../src/View/Sidebar.vala:673 ../libwidgets/Resources.vala:87
-msgid "Network"
-msgstr "Tinklas"
+#: ../src/View/ViewContainer.vala:392
+msgid "Unable to Display Folder Contents"
+msgstr "Nepavyksta parodyti aplanko turinio"
 
-#: ../src/View/Sidebar.vala:674
-msgid "Your network places"
-msgstr "Jūsų tinklo vietos"
+#: ../src/View/ViewContainer.vala:393
+msgid "The operation timed out."
+msgstr "Pasibaigė operacijai skirtas laikas."
 
-#: ../src/View/Sidebar.vala:706
-msgid "Entire Network"
-msgstr "Visas tinklas"
+#: ../src/View/ViewContainer.vala:395
+msgid "Unable to Show Folder"
+msgstr "Nepavyko rodyti aplanko"
 
-#: ../src/View/Sidebar.vala:713
-msgid "Browse the contents of the network"
-msgstr "Naršyti tinklo turinį"
+#: ../src/View/ViewContainer.vala:396
+msgid "The server for this folder could not be located."
+msgstr "Nepavyko nustatyti šio aplanko serverio."
 
-#: ../src/View/Sidebar.vala:845
-msgid "(%s Free of %s)"
-msgstr "(%s laisva iš %s)"
+#: ../src/View/ViewContainer.vala:406
+msgid "File not Found"
+msgstr "Failas nerastas"
 
-#: ../src/View/Sidebar.vala:1341
-msgid "Unable to start %s"
-msgstr "Nepavyko paleisti %s"
+#: ../src/View/ViewContainer.vala:407
+msgid "The file selected no longer exists."
+msgstr "Pasirinkto failo daugiau nebėra."
 
-#: ../src/View/Sidebar.vala:1445
-msgid "Open"
-msgstr "Atverti"
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Šis aplankas tuščias"
 
-#: ../src/View/Sidebar.vala:1453
-msgid "Open in New _Tab"
-msgstr "Atverti naujoje _kortelėje"
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "Šiukšlinė tuščia"
 
-#: ../src/View/Sidebar.vala:1459
-msgid "Open in New _Window"
-msgstr "Atverti naujame _lange"
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Nėra neseniai naudotų failų"
 
-#: ../src/View/Sidebar.vala:1467
-msgid "Remove"
-msgstr "Šalinti"
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Prieiga negalima"
 
-#: ../src/View/Sidebar.vala:1475 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Pervadinti"
-
-#: ../src/View/Sidebar.vala:1484
-msgid "_Mount"
-msgstr "Pri_jungti"
-
-#: ../src/View/Sidebar.vala:1490
-msgid "_Unmount"
-msgstr "_Atjungti"
-
-#: ../src/View/Sidebar.vala:1496
-msgid "_Eject"
-msgstr "_Išstumti"
-
-#: ../src/View/Sidebar.vala:1510 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Savybės"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Failo pavadinimas"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Dydis"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Tipas"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Keista"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:413
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open in New Tab"
 msgstr "Atverti naujoje kortelėje"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open in New Window"
 msgstr "Atverti naujame lange"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
 msgstr "Atverti naudojant kitą programą..."
 
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Skaityti"
+#: ../src/View/Widgets/LocationBar.vala:186
+msgid "Reload this folder"
+msgstr "Įkelti šį aplanką iš naujo"
 
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Rašyti"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Vykdyti"
+#: ../src/View/Widgets/LocationBar.vala:189
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
+msgid "Enter search term or path"
+msgstr "Įrašykite paieškos žodžius arba kelią"
 
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
@@ -1909,73 +1944,55 @@ msgstr "%u failas neskaitomas"
 msgid "%u files not readable"
 msgstr "%u failai neskaitomi"
 
-#: ../src/View/Widgets/LocationBar.vala:177
-msgid "Reload this folder"
-msgstr "Įkelti šį aplanką iš naujo"
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Skaityti"
 
-#: ../src/View/Widgets/LocationBar.vala:180
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
-msgid "Enter search term or path"
-msgstr "Įrašykite paieškos žodžius arba kelią"
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Rašyti"
 
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Šis aplankas tuščias"
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Vykdyti"
 
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "Šiukšlinė tuščia"
+#: ../src/Application.vala:150
+msgid "Show the version of the program."
+msgstr "Rodyti programos versiją."
 
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Nėra neseniai naudotų failų"
+#: ../src/Application.vala:152
+msgid "Open uri(s) in new tab"
+msgstr "Atverti URI naujoje kortelėje"
 
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Prieiga negalima"
+#: ../src/Application.vala:154 ../src/View/directory_view_popup.ui:83
+msgid "New Window"
+msgstr "Naujas langas"
 
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Aplankas „%s“ nerastas."
+#: ../src/Application.vala:156
+msgid "Quit Files."
+msgstr "Išeiti iš failų."
 
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Sukurti"
+#: ../src/Application.vala:158
+msgid "Enable debug logging"
+msgstr "Įjungti derinimo registravimą"
 
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Sukurti aplanką „%s“"
+#: ../src/Application.vala:161
+msgid "[URI...]"
+msgstr "[URI...]"
 
-#: ../src/View/DirectoryNotFound.vala:44
+#: ../src/Application.vala:164
 msgid ""
-"Failed to create the folder\n"
 "\n"
-"%s"
+"\n"
+"Browse the file system with the file manager"
 msgstr ""
-"Aplanko sukurti nepavyko\n"
 "\n"
-"%s"
+"\n"
+"Naršyti failų sistemą su failų tvarkytuve"
 
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "Failų operacijos"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
-msgstr "%s užbaigta"
-
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
-msgstr "Visos failų operacijos užbaigtos"
-
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "Rodyti kopijavimo langą"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "Nutraukti visus dabar vykdomus veiksmus"
+#: ../src/Application.vala:191
+msgid "--quit cannot be used with URIs."
+msgstr "--quit negali būti naudojamas su URI."
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
@@ -2021,47 +2038,47 @@ msgstr "Nepavyko atverti uri"
 msgid "Unable to open files or uris with this app"
 msgstr "Naudojant šią programą, nepavyko atverti failų ar uri"
 
-#: ../src/Application.vala:144
-msgid "Show the version of the program."
-msgstr "Rodyti programos versiją."
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Failų operacijos"
 
-#: ../src/Application.vala:146
-msgid "Open uri(s) in new tab"
-msgstr "Atverti URI naujoje kortelėje"
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "%s užbaigta"
 
-#: ../src/Application.vala:148 ../src/View/directory_view_popup.ui:83
-msgid "New Window"
-msgstr "Naujas langas"
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "Visos failų operacijos užbaigtos"
 
-#: ../src/Application.vala:150
-msgid "Quit Files."
-msgstr "Išeiti iš failų."
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Rodyti kopijavimo langą"
 
-#: ../src/Application.vala:152
-msgid "Enable debug logging"
-msgstr "Įjungti derinimo registravimą"
-
-#: ../src/Application.vala:155
-msgid "[URI...]"
-msgstr "[URI...]"
-
-#: ../src/Application.vala:158
-msgid ""
-"\n"
-"\n"
-"Browse the file system with the file manager"
-msgstr ""
-"\n"
-"\n"
-"Naršyti failų sistemą su failų tvarkytuve"
-
-#: ../src/Application.vala:185
-msgid "--quit cannot be used with URIs."
-msgstr "--quit negali būti naudojamas su URI."
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Nutraukti visus dabar vykdomus veiksmus"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "Iškarpinėje nieko nėra ką įdėti"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Nustatyti numatytąja"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Disko savybės"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "Vieta:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Formatas:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2075,27 +2092,27 @@ msgstr "Bendra"
 msgid "Close"
 msgstr "Užverti"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:139
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
 msgstr "Įrenginio naudojimas"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:155
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:153
 msgid "Capacity:"
 msgstr "Talpa:"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:162
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:154
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:157
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:160
 #: ../src/Dialogs/PropertiesWindow.vala:416
 #: ../src/Dialogs/PropertiesWindow.vala:452
 msgid "Unknown"
 msgstr "Nežinoma"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:158
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
 msgid "Available:"
 msgstr "Prieinama:"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:161
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 msgid "Used:"
 msgstr "Naudojama:"
 
@@ -2150,11 +2167,6 @@ msgstr "MIME tipas:"
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
 msgstr "Raiška:"
-
-#: ../src/Dialogs/PropertiesWindow.vala:561
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-msgid "Location:"
-msgstr "Vieta:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
@@ -2218,37 +2230,9 @@ msgstr[2] "%u pažymėtų elementų"
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Nustatyti numatytąja"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Disko savybės"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Formatas:"
-
-#: ../libcore/gof-directory-async.vala:588
+#: ../libcore/gof-directory-async.vala:587
 msgid "Server did not respond within time limit"
 msgstr "Serveris neatsakė per tam tikrą laiko terminą"
-
-#: ../libcore/FileUtils.vala:60
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nepavyko nustatyti pradinės \"%s\" vietos "
-
-#: ../libcore/FileUtils.vala:61
-msgid "The item cannot be restored from trash"
-msgstr "Šis elementas negali būti atkurtas iš šiukšlinės"
-
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "Nepavyko pervadinti į \"%s\""
-
-#: ../libcore/FileUtils.vala:464
-msgid "%A at %-I:%M %p"
-msgstr "%A, %-k:%M"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2270,25 +2254,94 @@ msgstr "Kurti nuorodą čia"
 msgid "Cancel"
 msgstr "Atsisakyti"
 
-#: ../libwidgets/View/SearchResults.vala:178
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nepavyko nustatyti pradinės \"%s\" vietos "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "Šis elementas negali būti atkurtas iš šiukšlinės"
+
+#: ../libcore/FileUtils.vala:343
+msgid "Could not rename to '%s'"
+msgstr "Nepavyko pervadinti į \"%s\""
+
+#: ../libcore/FileUtils.vala:434
+msgid "Today at %-H:%M"
+msgstr "Šiandien ties %-H:%M"
+
+#: ../libcore/FileUtils.vala:442
+msgid "Yesterday at %-H:%M"
+msgstr "Vakar ties %-H:%M"
+
+#: ../libcore/FileUtils.vala:451
+msgid "%A at %-H:%M"
+msgstr "%A ties %-H:%M"
+
+#: ../libcore/FileUtils.vala:453
+msgid "%A at %-I:%M %p"
+msgstr "%A, %-k:%M"
+
+#: ../libwidgets/View/SearchResults.vala:187
 msgid "In This Folder"
 msgstr "Šiame aplanke"
 
-#: ../libwidgets/View/SearchResults.vala:180
+#: ../libwidgets/View/SearchResults.vala:191
 msgid "Bookmarks"
 msgstr "Žymelės"
 
-#: ../libwidgets/View/SearchResults.vala:182
+#: ../libwidgets/View/SearchResults.vala:195
 msgid "Everywhere Else"
 msgstr "Visur kitur"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Naršyti į %s"
+#: ../libwidgets/Resources.vala:30
+msgid "A simple and powerful file manager"
+msgstr "Paprasta ir galinga failų tvarkytuvė"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
-msgid "Go to %s"
-msgstr "Pereiti į %s"
+#: ../libwidgets/Resources.vala:51
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Cody Garver https://launchpad.net/~codygarver\n"
+"  Dan https://launchpad.net/~mantas-sidlauskas\n"
+"  Daniel Fore https://launchpad.net/~danrabbit\n"
+"  Mantas Kriaučiūnas https://launchpad.net/~mantas\n"
+"  Moo https://launchpad.net/~mooo\n"
+"  Paulius https://launchpad.net/~p-dambrauskas\n"
+"  Rolandas Barysas https://launchpad.net/~rb---deactivatedaccount\n"
+"  Tomas Ubartas https://launchpad.net/~tomas-ubartas777"
+
+#: ../libwidgets/Resources.vala:84
+msgid "AFP"
+msgstr "AFP"
+
+#: ../libwidgets/Resources.vala:85
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.vala:86
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.vala:87
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.vala:89
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.vala:90
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.vala:92
+msgid "Recent"
+msgstr "Neseniai naudoti"
+
+#: ../libwidgets/Resources.vala:93
+msgid "MTP"
+msgstr "MTP"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
@@ -2306,54 +2359,13 @@ msgstr "Rodyti kaip sąrašą"
 msgid "View in Columns"
 msgstr "Rodyti stulpeliuose"
 
-#: ../libwidgets/Resources.vala:30
-msgid "A simple and powerful file manager"
-msgstr "Paprasta ir galinga failų tvarkytuvė"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Naršyti į %s"
 
-#: ../libwidgets/Resources.vala:50
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Cody Garver https://launchpad.net/~codygarver\n"
-"  Dan https://launchpad.net/~mantas-sidlauskas\n"
-"  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Mantas Kriaučiūnas https://launchpad.net/~mantas\n"
-"  Moo https://launchpad.net/~mooo\n"
-"  Paulius https://launchpad.net/~p-dambrauskas\n"
-"  Rolandas Barysas https://launchpad.net/~rb---deactivatedaccount\n"
-"  Tomas Ubartas https://launchpad.net/~tomas-ubartas777"
-
-#: ../libwidgets/Resources.vala:83
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:84
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:85
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:86
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:88
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:89
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:91
-msgid "Recent"
-msgstr "Neseniai naudoti"
-
-#: ../libwidgets/Resources.vala:92
-msgid "MTP"
-msgstr "MTP"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Pereiti į %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
