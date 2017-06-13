@@ -153,7 +153,7 @@ namespace Marlin {
                 layout.set_width (cell_width * Pango.SCALE);
                 layout.set_height (- 1);
             } else {
-                layout.set_width ((wrap_width) * Pango.SCALE);
+                layout.set_width (wrap_width * Pango.SCALE);
                 layout.set_wrap (this.wrap_mode);
                 layout.set_height (- MAX_LINES);
             }
