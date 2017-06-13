@@ -98,7 +98,7 @@ public class Marlin.Application : Granite.Application {
         this.clipboard = Marlin.ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
-        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
+        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
 
         /**TODO** move the volume manager here? */
         /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */

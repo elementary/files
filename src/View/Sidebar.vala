@@ -114,6 +114,12 @@ namespace Marlin.Places {
         /* Remember path at button press */
         Gtk.TreePath? click_path = null;
 
+        bool is_admin {
+            get {
+                return (uint)Posix.getuid () == 0;
+            }
+        }
+
         /* For cancelling async tooltip updates when update_places re-entered */ 
         Cancellable? update_cancellable = null;
 
@@ -547,7 +553,7 @@ namespace Marlin.Places {
             }
 
             /* Do not show Trash if running as root (cannot be loaded) */
-            if (Posix.getuid () != 0) {
+            if (!is_admin) {
                 /* Add trash */
                 add_place (Marlin.PlaceType.BUILT_IN,
                            iter,

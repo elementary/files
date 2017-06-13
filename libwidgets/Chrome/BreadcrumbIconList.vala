@@ -53,9 +53,9 @@ namespace Marlin.View.Chrome {
 
 
             /* music */
-            string dir;
+            string? dir;
             dir = Environment.get_user_special_dir (UserDirectory.MUSIC);
-            if (dir.contains (Path.DIR_SEPARATOR_S)) {
+            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
                 BreadcrumbIconInfo icon = {dir, Marlin.ICON_FOLDER_MUSIC_SYMBOLIC, false, null, null, dir.split (Path.DIR_SEPARATOR_S), false, Filename.display_basename (dir)};
                 icon.exploded[0] = Path.DIR_SEPARATOR_S;
                 add_icon (icon);
@@ -63,7 +63,7 @@ namespace Marlin.View.Chrome {
 
             /* image */
             dir = Environment.get_user_special_dir (UserDirectory.PICTURES);
-            if (dir.contains (Path.DIR_SEPARATOR_S)) {
+            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
                 BreadcrumbIconInfo icon = {dir, Marlin.ICON_FOLDER_PICTURES_SYMBOLIC, false, null, null, dir.split (Path.DIR_SEPARATOR_S), false, Filename.display_basename (dir)};
                 icon.exploded[0] = Path.DIR_SEPARATOR_S;
                 add_icon (icon);
@@ -71,7 +71,7 @@ namespace Marlin.View.Chrome {
 
             /* movie */
             dir = Environment.get_user_special_dir (UserDirectory.VIDEOS);
-            if (dir.contains (Path.DIR_SEPARATOR_S)) {
+            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
                 BreadcrumbIconInfo icon = {dir, Marlin.ICON_FOLDER_VIDEOS_SYMBOLIC, false, null, null, dir.split (Path.DIR_SEPARATOR_S), false, Filename.display_basename (dir)};
                 icon.exploded[0] = Path.DIR_SEPARATOR_S;
                 add_icon (icon);
@@ -79,7 +79,7 @@ namespace Marlin.View.Chrome {
 
             /* downloads */
             dir = Environment.get_user_special_dir (UserDirectory.DOWNLOAD);
-            if (dir.contains (Path.DIR_SEPARATOR_S)) {
+            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
                 BreadcrumbIconInfo icon = {dir, Marlin.ICON_FOLDER_DOWNLOADS_SYMBOLIC, false, null, null, dir.split (Path.DIR_SEPARATOR_S), false, Filename.display_basename (dir)};
                 icon.exploded[0] = Path.DIR_SEPARATOR_S;
                 add_icon (icon);
@@ -87,7 +87,7 @@ namespace Marlin.View.Chrome {
 
             /* documents */
             dir = Environment.get_user_special_dir (UserDirectory.DOCUMENTS);
-            if (dir.contains (Path.DIR_SEPARATOR_S)) {
+            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
                 BreadcrumbIconInfo icon = {dir, Marlin.ICON_FOLDER_DOCUMENTS_SYMBOLIC, false, null, null, dir.split (Path.DIR_SEPARATOR_S), false, Filename.display_basename (dir)};
                 icon.exploded[0] = Path.DIR_SEPARATOR_S;
                 add_icon (icon);
@@ -95,7 +95,7 @@ namespace Marlin.View.Chrome {
 
             /* templates */
             dir = Environment.get_user_special_dir (UserDirectory.TEMPLATES);
-            if (dir.contains (Path.DIR_SEPARATOR_S)) {
+            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
                 BreadcrumbIconInfo icon = {dir, Marlin.ICON_FOLDER_TEMPLATES_SYMBOLIC, false, null, null, dir.split (Path.DIR_SEPARATOR_S), false, Filename.display_basename (dir)};
                 icon.exploded[0] = Path.DIR_SEPARATOR_S;
                 add_icon (icon);
