@@ -301,7 +301,7 @@ namespace Marlin {
             focus_rect_height = text_height + 2 * (this.focus_border_width + border_radius);
             focus_rect_width = text_width  + 4 * (this.focus_border_width  + border_radius);
 
-            
+            /* Ensure that focus_rect is at least one pixel small than cell_area on each side */
             focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);
             focus_rect_height = int.min (focus_rect_height, cell_area.height -2);
 
