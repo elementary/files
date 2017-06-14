@@ -8,38 +8,38 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2016-10-15 12:57+0000\n"
+"PO-Revision-Date: 2017-06-12 16:42+0000\n"
 "Last-Translator: UweS <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
+"X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
+"X-Generator: Launchpad (build 18404)\n"
 
 msgid "Files"
 msgstr "Dateien"
 
 msgid "Browse your files"
-msgstr ""
+msgstr "Dateien und Ordner durchsuchen"
 
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr ""
+msgstr "Verzeichnis;ordner;Verwaltung;Durchsuchen;Festplatte;Dateisystem;"
 
 msgid "File Manager"
-msgstr ""
+msgstr "Dateiverwaltung"
 
 msgid "New Window"
-msgstr ""
+msgstr "Neues Fenster"
 
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "Neues Fenster als Systemverwalter öffnen"
 
 msgid "About Files"
-msgstr ""
+msgstr "Info zu Dateien"
 
 msgid "Browse and manage files and folders"
-msgstr "Dateien und Verzeichnisse durchsuchen und verwalten"
+msgstr "Dateien und Ordner durchsuchen und verwalten"
 
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
@@ -56,24 +56,27 @@ msgstr ""
 ", AFP-, WebDAV- oder Windows-Freigabe-Server."
 
 msgid "Improved networking support"
-msgstr ""
+msgstr "Bessere Netzwerkunterstützung"
 
 msgid "Correct window geometry when snapping to left or right"
-msgstr ""
+msgstr "Korrekte Fenstergröße beim Einrasten links oder rechts"
 
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
 msgstr ""
+"Durch das Drücken der Taste »Strg« wird nicht länger das Umbenennen "
+"verworfen, wenn in der Systemeinstellung »Maus und Touchpad« die Einstellung "
+"»Mauszeiger hervorheben« eingeschaltet ist."
 
 msgid "Switching input language cancels actions"
-msgstr ""
+msgstr "Der Wechsel der Eingabesprache verwirft Aktionen"
 
 msgid "Various crash fixes"
-msgstr ""
+msgstr "Verschiedene Absturzprobleme wurden behoben"
 
 msgid "New translations"
-msgstr ""
+msgstr "Neue Übersetzungen"
 
 msgid "Minor bug fixes"
 msgstr "Kleinere Fehlerbehebungen"
@@ -82,27 +85,29 @@ msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr ""
+"Internetbrowser wie Firefox merken sich nun den zuletzt für Downloads "
+"genutzt Ordner"
 
 msgid "Remember preferred zoom level"
-msgstr ""
+msgstr "Bevorzugte Vergrößerung wird gespeichert"
 
 msgid "Improved input method support"
-msgstr ""
+msgstr "Verbesserte Unterstützung von Eingabemethoden"
 
 msgid "910x640 minimum window size"
-msgstr ""
+msgstr "Minimale Fenstergröße von 910 × 640 Pixeln"
 
 msgid "Security fixes"
-msgstr ""
+msgstr "Sicherheitsrelevante Fehlerkorrekturen"
 
 msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgstr "Reiter können mit Ziehen-und-ablegen zwischen Fenstern bewegt werden"
 
 msgid "Merge search functionality into Ctrl+F"
-msgstr ""
+msgstr "Tastenkürzel Strg+F ruft immer die Suchfunktion auf"
 
 msgid "Improved translation support"
-msgstr ""
+msgstr "Verbesserte Unterstützung von Lokalisierungen"
 
 msgid "Fix appdata release dates"
 msgstr "Fehlerhafte appdata-Veröffentlichungsdaten behoben"
@@ -122,7 +127,9 @@ msgid "Translation updates"
 msgstr "Übersetzungsaktualisierungen"
 
 msgid "Run Pantheon Files as Administrator"
-msgstr ""
+msgstr "Pantheon-Dateien als Systemverwalter ausführen"
 
 msgid "Authentication is required to run Files as Administrator"
 msgstr ""
+"Damit Dateien als Systemverwalter ausgeführt werden kann, ist eine "
+"Legitimierung nötig"
