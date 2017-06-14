@@ -20,18 +20,35 @@ namespace Marlin {
     public class TextRenderer: Gtk.CellRendererText {
 
         const int MAX_LINES = 5;
-        const uint BORDER_RADIUS = 6;
+        private int border_radius = 6;
 
         public Marlin.ZoomLevel zoom_level {get; set;}
-        public bool follow_state {get; set;}
         public new string background { set; private get;}
         public GOF.File? file {set; private get;}
+        private int _item_width;
+        public int item_width {
+            set {
+                _item_width = value;
+                if (xalign == 0.5) {
+                    wrap_width = _item_width - 2 * (focus_border_width + (int)xpad + border_radius);
+                } else {
+                    wrap_width = -1;
+                }
+
+                border_radius = 5 + wrap_width / 40;
+            }
+
+            private get {
+                return _item_width;
+            }
+        }
+
         public int text_width;
         public int text_height;
 
-        int char_width;
         int char_height;
         int focus_border_width;
+
         Pango.Layout layout;
         Gtk.Widget widget;
         Marlin.AbstractEditableLabel entry;
@@ -81,19 +98,29 @@ namespace Marlin {
             style_context.save ();
             style_context.set_state (state);
 
-            if (follow_state || background != null)
-                draw_focus (cr, cell_area, flags, style_context, state);
+            int x_offset, y_offset, focus_rect_width, focus_rect_height;
+            draw_focus (cr, cell_area, flags, style_context, state, out x_offset, out y_offset,
+                        out focus_rect_width, out focus_rect_height);
 
-            int x_offset, y_offset;
-            get_offsets (cell_area, text_width, text_height, xalign, out x_offset, out y_offset);
+            /* Position text relative to the focus rectangle */
+            if (xalign == 0.5f) {
+                x_offset = (cell_area.width - wrap_width) / 2;
 
-            /* Adjust text offsets for best appearance in each view */
-            if (xalign == 0.5f) { /* Icon view */
-                x_offset = (cell_area.width - this.wrap_width) / 2;
-                y_offset += focus_border_width + (int)ypad;
+                if (widget.get_direction () == Gtk.TextDirection.RTL) {
+                    x_offset -= focus_border_width;
+                } else {
+                    x_offset += focus_border_width;
+                }
+
+                y_offset += (focus_rect_height - text_height) / 2;
             } else {
-                x_offset += focus_border_width + 2 * (int)xpad;
-                y_offset += focus_border_width;
+                y_offset = (cell_area.height - char_height) / 2;
+
+                if (widget.get_direction () == Gtk.TextDirection.RTL) {
+                    x_offset += (focus_rect_width - text_width) - focus_border_width * 4;
+                } else {
+                    x_offset += focus_border_width * 2 + (int)xpad;
+                }
             }
 
             style_context.render_layout (cr,
@@ -189,8 +216,6 @@ namespace Marlin {
         private void set_widget (Gtk.Widget? _widget) {
             Pango.FontMetrics metrics;
             Pango.Context context;
-            int focus_padding;
-            int focus_line_width;
 
             if (_widget == widget)
                 return;
@@ -208,16 +233,19 @@ namespace Marlin {
                 layout.set_auto_dir (false);
                 layout.set_single_paragraph_mode (true);
                 metrics = context.get_metrics (layout.get_font_description (), context.get_language ());
-                char_width = (metrics.get_approximate_char_width () + 512 ) >> 10;
                 char_height = (metrics.get_ascent () + metrics.get_descent () + 512) >> 10;
-                if (wrap_width < 0)
+                
+                if (wrap_width < 0) {
                     (this as Gtk.CellRenderer).set_fixed_size (-1, char_height);
+                }
 
+                int focus_padding;
+                int focus_line_width;
                 widget.style_get ("focus-padding", out focus_padding, "focus-line-width", out focus_line_width);
                 focus_border_width = int.max (focus_padding + focus_line_width, 2);
+
             } else {
                 layout = null;
-                char_width = 0;
                 char_height = 0;
             }
         }
@@ -256,40 +284,49 @@ namespace Marlin {
                                  Gdk.Rectangle cell_area,
                                  Gtk.CellRendererState flags,
                                  Gtk.StyleContext style_context,
-                                 Gtk.StateFlags state) {
+                                 Gtk.StateFlags state,
+                                 out int x_offset,
+                                 out int y_offset,
+                                 out int focus_rect_width,
+                                 out int focus_rect_height) {
+
             bool selected = false;
-            float x;
-            int x_offset, y_offset, focus_rect_width, focus_rect_height;
+            focus_rect_width = 0;
+            focus_rect_height = 0;
+            x_offset = 0;
+            y_offset = 0;
 
-            if (follow_state)
-                selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
+            selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
 
-            focus_rect_width = text_width + 4 * this.focus_border_width;
-            focus_rect_height = text_height + 2 * this.focus_border_width;
+            focus_rect_height = text_height + 2 * (this.focus_border_width + border_radius);
+            focus_rect_width = text_width  + 4 * (this.focus_border_width  + border_radius);
 
-            if (widget.get_direction () == Gtk.TextDirection.RTL)
-                x = 1.0f - xalign;
-            else
-                x = xalign;
+            /* Ensure that focus_rect is at least one pixel small than cell_area on each side */
+            focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);
+            focus_rect_height = int.min (focus_rect_height, cell_area.height -2);
 
-            get_offsets (cell_area, focus_rect_width, focus_rect_height, x, out x_offset, out y_offset);
+            get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
+
+
 
             /* render the background if selected or colorized */
             if (selected || this.background != null) {
-                int x0 = cell_area.x + x_offset + (int)xpad;
-                int y0 = cell_area.y + y_offset + (int)ypad;
+                int x0 = cell_area.x + x_offset;
+                int y0 = cell_area.y + y_offset;
                 int x1 = x0 + focus_rect_width;
                 int y1 = y0 + focus_rect_height;
-
-                cr.move_to (x0 + BORDER_RADIUS, y0);
-                cr.line_to (x1 - BORDER_RADIUS, y0);
-                cr.curve_to (x1 - BORDER_RADIUS, y0, x1, y0, x1, y0 + BORDER_RADIUS);
-                cr.line_to (x1, y1 - BORDER_RADIUS);
-                cr.curve_to (x1, y1 - BORDER_RADIUS, x1, y1, x1 - BORDER_RADIUS, y1);
-                cr.line_to (x0 + BORDER_RADIUS, y1);
-                cr.curve_to (x0 + BORDER_RADIUS, y1, x0, y1, x0, y1 - BORDER_RADIUS);
-                cr.line_to (x0, y0 + BORDER_RADIUS);
-                cr.curve_to (x0, y0 + BORDER_RADIUS, x0, y0, x0 + BORDER_RADIUS, y0);
+                if (x1 >= cell_area.x + cell_area.width) {
+                    x1 = cell_area.x + cell_area.width - 1;
+                }
+                cr.move_to (x0 + border_radius, y0);
+                cr.line_to (x1 - border_radius, y0);
+                cr.curve_to (x1 - border_radius, y0, x1, y0, x1, y0 + border_radius);
+                cr.line_to (x1, y1 - border_radius);
+                cr.curve_to (x1, y1 - border_radius, x1, y1, x1 - border_radius, y1);
+                cr.line_to (x0 + border_radius, y1);
+                cr.curve_to (x0 + border_radius, y1, x0, y1, x0, y1 - border_radius);
+                cr.line_to (x0, y0 + border_radius);
+                cr.curve_to (x0, y0 + border_radius, x0, y0, x0 + border_radius, y0);
 
                 Gdk.RGBA color ={};
                 if (background != null && !selected) {
@@ -304,25 +341,30 @@ namespace Marlin {
                 cr.fill ();
             }
             /* draw the focus indicator */
-            if (follow_state && (flags & Gtk.CellRendererState.FOCUSED) != 0)
+            if ((flags & Gtk.CellRendererState.FOCUSED) != 0) {
                 style_context.render_focus (cr,
                                             cell_area.x + x_offset,
                                             cell_area.y + y_offset,
                                             focus_rect_width,
                                             focus_rect_height);
+            }
         }
 
         private void get_offsets (Gdk.Rectangle cell_area,
                                   int width,
                                   int height,
-                                  float x,
                                   out int x_offset,
                                   out int y_offset) {
-            x_offset = (int)(x * (cell_area.width - width - 2 * (int)xpad));
-            x_offset = int.max (x_offset, 0);
 
-            y_offset = (int)(yalign * (cell_area.height - height - 2 * (int)ypad));
-            y_offset = int.max (y_offset, 0);
+            if (widget.get_direction () == Gtk.TextDirection.RTL) {
+                x_offset = (int)((1.0f - xalign) * (cell_area.width - width));
+                x_offset -= (int)xpad;
+            } else {
+                x_offset = (int)(xalign * (cell_area.width - width));
+                x_offset += (int)xpad;
+            }
+
+            y_offset = (int)(yalign * (cell_area.height - height));
         }
     }
 }

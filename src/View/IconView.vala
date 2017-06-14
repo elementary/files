@@ -34,6 +34,7 @@ namespace FM {
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_columns (-1);
             tree.set_reorderable (false);
+            tree.set_item_padding (3);
 
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.ICON);
             set_up_name_renderer ();
@@ -106,15 +107,16 @@ namespace FM {
         }
 
         public override void change_zoom_level () {
+            int spacing = (int)((double)icon_size * (0.3 - zoom_level * 0.03));
+            int item_width = (int)((double)icon_size * (2.5 - zoom_level * 0.2));
             if (tree != null) {
-                tree.set_column_spacing ((int)((double)icon_size * (0.3 - zoom_level * 0.03)));
-                tree.set_item_width ((int)((double)icon_size * (2.5 - zoom_level * 0.2)));
-
-                name_renderer.set_property ("wrap-width", tree.get_item_width ());
-                name_renderer.set_property ("zoom-level", zoom_level);
-
-                base.change_zoom_level ();
+                tree.set_column_spacing (spacing);
+                tree.set_item_width (item_width);
             }
+            name_renderer.item_width = item_width;
+            name_renderer.set_property ("zoom-level", zoom_level);
+
+            base.change_zoom_level ();
         }
 
         public override GLib.List<Gtk.TreePath> get_selected_paths () {
