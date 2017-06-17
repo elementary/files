@@ -98,7 +98,7 @@ public class Marlin.Application : Granite.Application {
         this.clipboard = Marlin.ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
-        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR);
+        plugins = new Marlin.PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
 
         /**TODO** move the volume manager here? */
         /**TODO** gio: This should be using the UNMOUNTED feature of GFileMonitor instead */
@@ -200,10 +200,16 @@ public class Marlin.Application : Granite.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            var file = File.new_for_commandline_arg (filepath);
+            string path = PF.FileUtils.sanitize_path (filepath, null);
+            GLib.File? file = null;
 
-            if (file != null)
+            if (path.length > 0) {
+                file = File.new_for_uri (PF.FileUtils.escape_uri (path));
+            }
+
+            if (file != null) {
                 files += (file);
+            }
         }
         /* Open application */
         if (create_new_window) {
@@ -336,6 +342,8 @@ public class Marlin.Application : Granite.Application {
             win.show ();
         }
 
+        win.present ();
+
         return win;
     }
 
@@ -345,6 +353,7 @@ public class Marlin.Application : Granite.Application {
         /* Get the first window, if any, else create a new window */
         if (windows_exist ()) {
             window = (this.get_windows ()).data as Marlin.View.Window;
+            window.present ();
         } else {
             window = create_window (null); /* Do not add a tab on creation */
             if (window == null) { /* Maximum number of windows reached */
@@ -352,10 +361,13 @@ public class Marlin.Application : Granite.Application {
             }
         }
         if (files == null) {
-            /* Restore session if settings allow */
-            if (!Preferences.settings.get_boolean ("restore-tabs") || window.restore_tabs () < 1) {
+            /* Restore session if not root and settings allow */
+            if (Posix.getuid () == 0 ||
+                !Preferences.settings.get_boolean ("restore-tabs") ||
+                window.restore_tabs () < 1) {
+
                 /* Open a tab pointing at the default location if no tabs restored*/
-                var location = File.new_for_path (Environment.get_home_dir ());
+                var location = File.new_for_path (Eel.get_real_user_home ());
                 window.add_tab (location, Marlin.ViewMode.PREFERRED);
             }
         } else {

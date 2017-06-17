@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-02-28 12:05+0000\n"
+"POT-Creation-Date: 2017-05-26 14:33-0500\n"
 "PO-Revision-Date: 2017-05-04 19:50+0000\n"
 "Last-Translator: Rokar ✌ <Unknown>\n"
 "Language-Team: Kurdish <ku@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2017-05-06 05:41+0000\n"
-"X-Generator: Launchpad (build 18366)\n"
+"X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
+"X-Generator: Launchpad (build 18402)\n"
 
 msgid "Files"
 msgstr "Dosya"
@@ -48,6 +48,29 @@ msgid ""
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
 
+msgid "Improved networking support"
+msgstr ""
+
+msgid "Correct window geometry when snapping to left or right"
+msgstr ""
+
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+
+msgid "Switching input language cancels actions"
+msgstr ""
+
+msgid "Various crash fixes"
+msgstr ""
+
+msgid "New translations"
+msgstr "Wergerên Nû"
+
+msgid "Minor bug fixes"
+msgstr "çêkirina biçûke çewtî"
+
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
@@ -64,15 +87,6 @@ msgstr ""
 
 msgid "Security fixes"
 msgstr "Sererastkirinên ewlehiyê"
-
-msgid "Various crash fixes"
-msgstr ""
-
-msgid "New translations"
-msgstr "Wergerên Nû"
-
-msgid "Minor bug fixes"
-msgstr "çêkirina biçûke çewtî"
 
 msgid "Enable drag and drop tabs between windows"
 msgstr ""

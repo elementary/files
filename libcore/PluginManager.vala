@@ -28,6 +28,7 @@ public class Marlin.PluginManager : Object {
     Gee.List<string> names;
     bool in_available = false;
     bool update_queued = false;
+    bool is_admin = false;
 
     [Version (deprecated = true, deprecated_since = "0.2", replacement = "Marlin.PluginManager.menuitem_references")]
     public GLib.List<Gtk.Widget>? menus; /* this doesn't manage GObject references properly */
@@ -36,24 +37,26 @@ public class Marlin.PluginManager : Object {
 
     private string[] plugin_dirs;
 
-    public PluginManager (string plugin_dir) {
+    public PluginManager (string plugin_dir, uint user_id) {
+        is_admin = (user_id == 0);
         plugin_hash = new Gee.HashMap<string,Plugins.Base> ();
         names = new Gee.ArrayList<string> ();
-
         menuitem_references = new Gee.LinkedList<Gtk.Widget> ();
-
         plugin_dirs = new string[0];
-        plugin_dirs += Path.build_filename (plugin_dir, "core");
-        plugin_dirs += plugin_dir;
 
-        load_plugins ();
+        if (!is_admin) {
+            plugin_dirs += Path.build_filename (plugin_dir, "core");
+            plugin_dirs += plugin_dir;
 
-        /* Monitor plugin dirs */
-        foreach (string path in plugin_dirs)
-            set_directory_monitor (path);
+            load_plugins ();
+
+            /* Monitor plugin dirs */
+            foreach (string path in plugin_dirs)
+                set_directory_monitor (path);
+        }
     }
 
-    public void load_plugins () {
+    private void load_plugins () {
         load_modules_from_dir (plugin_dirs[0]);
         in_available = true;
         load_modules_from_dir (plugin_dirs[1]);

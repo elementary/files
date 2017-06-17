@@ -28,6 +28,7 @@ GList       *eel_get_group_names_for_user (void);
 GList       *eel_get_all_group_names (void);
 gboolean    eel_get_group_id_from_group_name (const char *group_name, uid_t *gid);
 gboolean    eel_get_user_id_from_user_name (const char *user_name, uid_t *uid);
+gchar*      eel_get_real_user_home ();
 gboolean    eel_get_id_from_digit_string (const char *digit_string, uid_t *id);
 
 gchar       *eel_format_size (guint64 size);

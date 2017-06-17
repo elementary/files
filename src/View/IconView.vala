@@ -34,6 +34,7 @@ namespace FM {
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_columns (-1);
             tree.set_reorderable (false);
+            tree.set_item_padding (3);
 
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.ICON);
             set_up_name_renderer ();
@@ -49,6 +50,9 @@ namespace FM {
             (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
 
             connect_tree_signals ();
+            tree.realize.connect ((w) => {
+                tree.grab_focus ();
+            });
         }
 
         protected override void set_up_name_renderer () {
@@ -63,12 +67,11 @@ namespace FM {
         }
 
 
-        private void connect_tree_signals () {
+        protected override void connect_tree_signals () {
             tree.selection_changed.connect (on_view_selection_changed);
-
-            tree.realize.connect ((w) => {
-                tree.grab_focus ();
-            });
+        }
+        protected override void disconnect_tree_signals () {
+            tree.selection_changed.disconnect (on_view_selection_changed);
         }
 
         protected override Gtk.Widget? create_view () {
@@ -104,15 +107,16 @@ namespace FM {
         }
 
         public override void change_zoom_level () {
+            int spacing = (int)((double)icon_size * (0.3 - zoom_level * 0.03));
+            int item_width = (int)((double)icon_size * (2.5 - zoom_level * 0.2));
             if (tree != null) {
-                tree.set_column_spacing ((int)((double)icon_size * (0.3 - zoom_level * 0.03)));
-                tree.set_item_width ((int)((double)icon_size * (2.5 - zoom_level * 0.2)));
-
-                name_renderer.set_property ("wrap-width", tree.get_item_width ());
-                name_renderer.set_property ("zoom-level", zoom_level);
-
-                base.change_zoom_level ();
+                tree.set_column_spacing (spacing);
+                tree.set_item_width (item_width);
             }
+            name_renderer.item_width = item_width;
+            name_renderer.set_property ("zoom-level", zoom_level);
+
+            base.change_zoom_level ();
         }
 
         public override GLib.List<Gtk.TreePath> get_selected_paths () {
@@ -134,14 +138,19 @@ namespace FM {
         }
 
         public override void unselect_all () {
-                tree.unselect_all ();
+            tree.unselect_all ();
         }
 
-        public override void select_path (Gtk.TreePath? path) {
+        /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
+         * It would take an exponentially long time. Use "select_files" function in parent class.
+         */ 
+        public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
             if (path != null) {
-                /* Ensure cursor follows last selection */
-                tree.set_cursor (path, null, false); /* This selects path but does not unselect the rest (unlike TreeView) */
-                tree.select_path (path);
+                tree.select_path (path);  /* This selects path but does not unselect the rest (unlike TreeView) */
+
+                if (cursor_follows) {
+                    tree.set_cursor (path, null, false);
+                }
             }
         }
 
@@ -362,22 +371,23 @@ namespace FM {
                 end_path = direction_change ? last_selected : first_selected;
             }
 
+            /* Cursor follows when selecting path */
             if (before_first) {
                 do {
                     p2 = p.copy ();
-                    select_path (p);
+                    select_path (p, true);
                     p.next ();
                 } while (p.compare (p2) != 0 && p.compare (end_path) <= 0);
             } else if (after_last) {
                 do {
-                    select_path (p);
+                    select_path (p, true);
                     p2 = p.copy ();
                     p.prev ();
                 } while (p.compare (p2) != 0 && p.compare (end_path) >= 0);
             } else {/* between first and last */
                 do {
                     p2 = p.copy ();
-                    select_path (p);
+                    select_path (p, true);
                     p.prev ();
                 } while (p.compare (p2) != 0 && p.compare (first_selected) >= 0);
 

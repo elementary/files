@@ -44,8 +44,20 @@ namespace Marlin {
             list = new GLib.List<Marlin.Bookmark> ();
             pending_ops = new GLib.Queue<JobType> ();
 
+            /* Get the user config directory
+             * When running under pkexec determine real user from PKEXEC_UID
+             */
+            string? user_home = Eel.get_real_user_home ();
+            string config_dir;
+
+            if (user_home != null) {
+                config_dir = GLib.Path.build_filename (user_home, ".config");
+            } else {
+                config_dir = GLib.Environment.get_user_config_dir ();
+            }
+
             /*Check bookmarks file exists and in right place */
-            string filename = GLib.Path.build_filename (GLib.Environment.get_user_config_dir (),
+            string filename = GLib.Path.build_filename (config_dir,
                                                         "gtk-3.0",
                                                         "bookmarks",
                                                         null);
@@ -218,7 +230,8 @@ namespace Marlin {
             }
             /* Do not insert bookmark for home or filesystem root (already have builtins) */
             var path = bm.gof_file.location.get_path ();
-            if ((path == Environment.get_home_dir () || path == Path.DIR_SEPARATOR_S)) {
+
+            if ((path == Eel.get_real_user_home () || path == Path.DIR_SEPARATOR_S)) {
                 return;
             }
 
