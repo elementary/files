@@ -40,7 +40,6 @@ namespace Marlin.View.Chrome
             BOOKMARK_CONTAINS,
             BOOKMARK_ELLIPSIS;
 
-
             /* This function converts a Category enum to a letter which can be prefixed to the match
              * name to form a sort key.  This ensures that the categories appear in the list in the
              * desired order - that is within each class of results (current folder, deep search,
@@ -947,7 +946,7 @@ namespace Marlin.View.Chrome
                         directory_queue.add (folder.resolve_relative_path (info.get_name ()));
                     }
 
-                    var begins_with = false;
+                    bool begins_with;
                     if (term_matches (term, info.get_display_name (), out begins_with)) {
                         if (in_root) {
                             cat = begins_with ? Category.CURRENT_BEGINS : Category.CURRENT_CONTAINS;
@@ -1034,6 +1033,7 @@ namespace Marlin.View.Chrome
                         while (file != null && !file.get_basename ().contains (term)) {
                             file = file.get_parent ();
                         }
+
                         if (file != null) {
                             var path_string = "";
                             var parent = file;
@@ -1050,7 +1050,7 @@ namespace Marlin.View.Chrome
                                 if (path_string == "") {
                                     path_string = parent.get_basename ();
                                 } else {
-                                    path_string = parent.get_basename () + Path.DIR_SEPARATOR_S + path_string;
+                                    path_string = Path.build_path (Path.DIR_SEPARATOR_S, parent.get_basename (), path_string);
                                 }
                             }
 
