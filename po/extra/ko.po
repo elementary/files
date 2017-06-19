@@ -23,7 +23,7 @@ msgid "Files"
 msgstr "파일스"
 
 msgid "Browse your files"
-msgstr "여러분의 파일을 찾아봅니다."
+msgstr "여러분의 파일을 찾아봅니다"
 
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "폴더;관리자;찾아보기;디스크;파일시스템;"
