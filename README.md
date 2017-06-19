@@ -5,8 +5,6 @@
 
 You'll need the following dependencies:
 * cmake
-* debhelper
-* gnome-common
 * libcanberra-dev
 * libdbus-glib-1-dev
 * libgail-3-dev
