@@ -40,7 +40,7 @@ namespace Marlin {
         };
 
         private Gtk.Clipboard clipboard;
-        private GLib.List<GOF.File> files = null;
+        private GLib.HashTable<string, GOF.File> files = null;
 
         private bool files_cutted = false;
 
@@ -52,9 +52,11 @@ namespace Marlin {
 
         private ClipboardManager (Gtk.Clipboard _clipboard) {
             clipboard = _clipboard;
+            files = new GLib.HashTable<string, GOF.File> (str_hash, str_equal);
+
             clipboard.set_qdata (marlin_clipboard_manager_quark, this);
 
-            clipboard.owner_change.connect (owner_changed);
+            clipboard.owner_change.connect (owner_changed);            
         }
 
         public static ClipboardManager? get_for_display (Gdk.Display? display = Gdk.Display.get_default ()) {
@@ -86,7 +88,7 @@ namespace Marlin {
         }
 
         public bool has_file (GOF.File file) {
-            return files != null && (files.find (file) != null);
+            return files != null && files.contains (file_to_string (file));
         }
 
         public void copy_files (GLib.List<GOF.File> files) {
@@ -211,7 +213,7 @@ namespace Marlin {
 
             /* setup the new file list */
             foreach (var file in files_for_transfer) {
-                files.prepend (file);
+                files.insert (file_to_string (file), file);
                 file.destroy.connect (on_file_destroyed);
             }
 
@@ -226,7 +228,7 @@ namespace Marlin {
 
         private void on_file_destroyed (GOF.File file) {
             file.destroy.disconnect (on_file_destroyed);
-            files.remove (file);
+            files.remove (file_to_string (file));
         }
 
         public static void get_callback (Gtk.Clipboard cb, Gtk.SelectionData sd, uint target_info, void* parent) {
@@ -239,7 +241,7 @@ namespace Marlin {
                 case ClipboardTarget.GNOME_COPIED_FILES:
                     string prefix = manager.files_cutted ? "cut" : "copy";
                     DndHandler.set_selection_data_from_file_list (sd,
-                                                                  manager.files,
+                                                                  manager.files.get_values (),
                                                                   prefix);
                     break;
                 case ClipboardTarget.UTF8_STRING: /* Not clear what this is for */
@@ -254,8 +256,9 @@ namespace Marlin {
         private string file_list_to_string () {
             var sb = new StringBuilder ("");
             uint count = 0;
-            uint file_count = files.length ();
-            foreach (var file in files) {
+            GLib.List<GOF.File> l_files = files.get_values ();
+            uint file_count = l_files.length ();
+            foreach (var file in l_files) {
                 var loc = file.location;
                 var pn = loc.get_parse_name ();
                 if (pn != null) {
@@ -272,6 +275,16 @@ namespace Marlin {
             return sb.str;
         }
 
+        private string file_to_string (GOF.File file) {
+            var loc = file.location;
+            var pn = loc.get_parse_name ();
+            if (pn != null) {
+                return pn;
+            } else {
+                return loc.get_uri ();
+            }
+        }
+
         public static void clear_callback (Gtk.Clipboard cb, void* parent) {
             var manager = (ClipboardManager)parent;
             if (manager == null || manager.clipboard != cb) {
@@ -282,11 +295,12 @@ namespace Marlin {
         }
 
         private void release_pending_files () {
-            foreach (var file in this.files) {
+            foreach (var file in this.files.get_values()) {
                 file.destroy.disconnect (on_file_destroyed);
             }
 
             files = null;
+            files = new GLib.HashTable<string, GOF.File> (str_hash, str_equal);
         }
     }
 }
