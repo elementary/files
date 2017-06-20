@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-06-20 13:52+0700\n"
+"PO-Revision-Date: 2017-06-20 06:54+0000\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
-"Language-Team: Indonesian <id@li.org>\n"
+"Language-Team: Indonesian "
+"<https://l10n.elementary.io/projects/files/files/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Weblate 2.14\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -103,7 +104,7 @@ msgstr "_Port:"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr "_Tipe"
+msgstr "_Tipe:"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
@@ -1031,7 +1032,7 @@ msgstr "Mengatur hak akses"
 
 #: ../libcore/marlin-file-operations.c:6003
 msgid "Cannot copy into trash."
-msgstr "Tidak dapat menyalin ke tong sampah"
+msgstr "Tidak dapat menyalin ke tong sampah."
 
 #: ../libcore/marlin-file-operations.c:6004
 msgid "It is not permitted to copy files into the trash"
@@ -1762,7 +1763,7 @@ msgstr "Buka di Jendela Baru"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "Buka Dengan Aplikasi Lain..."
+msgstr "Buka Dengan Aplikasi Lain…"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1911,7 +1912,7 @@ msgstr "Tentang _Files"
 
 #: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
 msgid "Files"
-msgstr "Pengelola Berkas"
+msgstr "Berkas"
 
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
@@ -2071,7 +2072,7 @@ msgstr "Lokasi Asli:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Aplikasi Lain..."
+msgstr "Aplikasi Lain…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
