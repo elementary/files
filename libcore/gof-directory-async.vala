@@ -22,7 +22,15 @@
 private HashTable<GLib.File,GOF.Directory.Async> directory_cache;
 private Mutex dir_cache_lock;
 
-public class GOF.Directory.Async : Object {
+namespace GOF.Directory {
+namespace TestMessages {
+    public const string FAIL_PREPARE_FILEINFO = "Failed to get file info while preparing directory";
+    public const string CANNOT_LOAD = "Unable to load after preparing directory";
+    public const string LOAD_FILE = "Loading children from directory file";
+    public const string LOAD_CACHE = "Loading children from cache";
+}
+
+public class Async : Object {
     public delegate void GOFFileLoadedFunc (GOF.File file);
 
     private uint load_timeout_id = 0;
@@ -197,7 +205,7 @@ public class GOF.Directory.Async : Object {
                 }
             }
         } else {
-            debug ("PREPARE DIR: Failed to get file info for file %s", file.uri); /* Use by ctest - do not alter */
+            debug (TestMessages.FAIL_PREPARE_FILEINFO);
         }
 
         if (success) {
@@ -222,7 +230,7 @@ public class GOF.Directory.Async : Object {
 
         if (!yield try_query_info ()) { /* may already be mounted */
             debug ("try query info failed - trying to mount");
-//~             warning ("try query info failed - trying to mount");
+
             if (yield mount_mountable ()) {
             /* Previously mounted Samba servers still appear mounted even if disconnected
              * e.g. by unplugging the network cable.  So the following function can block for
@@ -269,7 +277,7 @@ public class GOF.Directory.Async : Object {
             debug ("success %s; enclosing mount %s", success.to_string (), file.mount != null ? file.mount.get_name () : "null");
             return true;
         } else {
-            debug ("TRY QUERY INFO: Failed to get file info for %s", file.uri);
+            debug ("Failed to get file info for %s", file.uri);
             return false;
         }
     }
@@ -394,11 +402,11 @@ public class GOF.Directory.Async : Object {
         can_load = ready;
 
         if (!can_load) {
-            /* Following line used by ctest do not alter */
-            debug ("MAKE_READY: Cannot load %s.  Connected %s, Mounted %s, Exists %s", file.uri,
-                                                                             file.is_connected.to_string (),
-                                                                             file.is_mounted.to_string (),
-                                                                             file.exists.to_string ());
+            debug (TestMessages.CANNOT_LOAD);
+            debug ("Cannot load %s.  Connected %s, Mounted %s, Exists %s", file.uri,
+                                                                           file.is_connected.to_string (),
+                                                                           file.is_mounted.to_string (),
+                                                                           file.exists.to_string ());
             after_loading (file_loaded_func);
             return;
         }
@@ -543,7 +551,7 @@ public class GOF.Directory.Async : Object {
             return;
         }
 
-        debug ("LIST_CACHED_FILES: Listing cached files");  /* Required for ctest */
+        debug (TestMessages.LOAD_CACHE);
 
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
@@ -587,7 +595,7 @@ public class GOF.Directory.Async : Object {
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
         bool server_responding = false;
 
-        debug ("LIST_DIRECTORY_ASYNC: (Re)loading folder children"); /* Required for ctest to check correct program path */
+        debug (TestMessages.LOAD_FILE);
 
         try {
             /* This may hang for a long time if the connection was closed but is still mounted so we
@@ -1174,3 +1182,5 @@ public class GOF.Directory.Async : Object {
         }
     }
 }
+}
+
