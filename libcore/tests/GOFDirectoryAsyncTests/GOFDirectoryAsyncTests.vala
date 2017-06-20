@@ -65,8 +65,8 @@ GOF.Directory.Async load_non_existent_local_test (string test_dir_path, MainLoop
         loop.quit ();
     });
 
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_WARNING,"*info*");
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_WARNING,"*cannot load*");
+    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*PREPARE DIR: Failed to get file info for file*");
+    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*MAKE_READY: Cannot load*");
 
     return dir;
 }
@@ -106,7 +106,7 @@ GOF.Directory.Async load_populated_local_test (string test_dir_path, MainLoop lo
         loop.quit ();
     });
 
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*(Re)loading*");
+    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*LIST_DIRECTORY_ASYNC: (Re)loading folder children*");
     return dir;
 }
 
@@ -124,7 +124,7 @@ GOF.Directory.Async load_cached_local_test (string test_dir_path, MainLoop loop)
                 file_loaded_signal_count++;
             });
 
-            Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*cached*");
+            Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*LIST_CACHED_FILES: Listing cached files*");
             dir.init ();
         } else {
             assert (dir.files_count == n_files);
@@ -151,7 +151,7 @@ GOF.Directory.Async reload_populated_local_test (string test_dir_path, MainLoop 
     dir.done_loading.connect (() => {
         if (loads == 0) {
             ref_count_before_reload = dir.ref_count;
-            
+
         }
         if (loads < n_loads) {
             loads++;
@@ -175,7 +175,7 @@ GOF.Directory.Async reload_populated_local_test (string test_dir_path, MainLoop 
         }
     });
 
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*(Re)loading*");
+    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*LIST_DIRECTORY_ASYNC: (Re)loading folder children*");
     return dir;
 }
 
