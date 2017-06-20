@@ -66,7 +66,7 @@ Async load_non_existent_local_test (string test_dir_path, MainLoop loop) {
         loop.quit ();
     });
 
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*" + TestMessages.FAIL_PREPARE_FILEINFO);
+    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG, "*" + TestMessages.FAIL_PREPARE_FILEINFO);
     Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG, "*" + TestMessages.CANNOT_LOAD);
 
     return dir;
@@ -107,7 +107,7 @@ Async load_populated_local_test (string test_dir_path, MainLoop loop) {
         loop.quit ();
     });
 
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*" + TestMessages.LOAD_FILE);
+    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG, "*" + TestMessages.LOAD_FILE);
     return dir;
 }
 
@@ -125,7 +125,7 @@ Async load_cached_local_test (string test_dir_path, MainLoop loop) {
                 file_loaded_signal_count++;
             });
 
-            Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*" + TestMessages.LOAD_CACHE);
+            Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG, "*" + TestMessages.LOAD_CACHE);
             dir.init ();
         } else {
             assert (dir.files_count == n_files);
@@ -176,7 +176,7 @@ Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
         }
     });
 
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*" + TestMessages.LOAD_FILE);
+    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG, "*" + TestMessages.LOAD_FILE);
     return dir;
 }
 
