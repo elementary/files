@@ -79,7 +79,7 @@ public class Marlin.Application : Granite.Application {
         if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG)
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
 
-        message ("Report any issues/bugs you might find to http://bugs.launchpad.net/pantheon-files");
+        message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
 
         /* Only allow running with root privileges using pkexec, not using sudo */
         if (Posix.getuid () == 0 && GLib.Environment.get_variable ("PKEXEC_UID") == null) {

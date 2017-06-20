@@ -20,13 +20,13 @@ namespace Marlin {
     public const string APP_ID = "org.pantheon.files";
     public const string APP_DESKTOP = APP_ID + ".desktop";
     public const string APP_TITLE = N_("Files");
-    public const string COPYRIGHT = APP_YEARS + " elementary LLC (http://launchpad.net/elementary)";
+    public const string COPYRIGHT = APP_YEARS + " elementary LLC (https://elementary.io)";
     public const string APP_YEARS = "2013-2017";
     public const string LAUNCHPAD_LABEL = "Website";
-    public const string LAUNCHPAD_URL = "http://launchpad.net/pantheon-files";
-    public const string HELP_URL = "https://answers.launchpad.net/pantheon-files";
-    public const string BUG_URL = "https://bugs.launchpad.net/pantheon-files/+filebug";
-    public const string TRANSLATE_URL = "https://translations.launchpad.net/pantheon-files";
+    public const string LAUNCHPAD_URL = "https://github.com/elementary/files";
+    public const string HELP_URL = "https://elementaryos.stackexchange.com/questions/tagged/pantheon-files";
+    public const string BUG_URL = "https://github.com/elementary/files/issues/new";
+    public const string TRANSLATE_URL = "https://l10n.elementary.io/projects/files";
     public const string COMMENTS = N_("A simple and powerful file manager");
     public const string INVALID_TAB_NAME = "----";
 
