@@ -108,6 +108,8 @@ public class Async : Object {
 
     public string last_error_message {get; private set; default = "";}
 
+    public bool loaded_from_cache {get; private set; default = false;}
+
     private Async (GLib.File _file) {
         /* Ensure uri is correctly escaped and has scheme */
         var escaped_uri = PF.FileUtils.escape_uri (_file.get_uri ());
@@ -159,6 +161,7 @@ public class Async : Object {
         }
 
         var previous_state = state;
+        loaded_from_cache = false;
 
         cancellable.cancel ();
         cancellable = new Cancellable ();
@@ -536,6 +539,7 @@ public class Async : Object {
         can_load = false;
 
         state = State.NOT_LOADED;
+        loaded_from_cache = false;
     }
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
@@ -552,7 +556,10 @@ public class Async : Object {
                 after_load_file (gof, show_hidden, file_loaded_func);
             }
         }
+
         state = State.LOADED;
+        loaded_from_cache = true;
+
         after_loading (file_loaded_func);
     }
 
@@ -657,6 +664,7 @@ public class Async : Object {
             }
         } finally {
             cancel_timeout (ref load_timeout_id);
+            loaded_from_cache = false;
             after_loading (file_loaded_func);
         }
     }

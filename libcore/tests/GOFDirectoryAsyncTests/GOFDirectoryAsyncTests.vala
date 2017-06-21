@@ -128,13 +128,14 @@ Async load_cached_local_test (string test_dir_path, MainLoop loop) {
                 file_loaded_signal_count++;
             });
 
+            assert (!dir.loaded_from_cache);
             dir.init ();
         } else {
             assert (dir.files_count == n_files);
             assert (dir.can_load);
             assert (dir.state == Async.State.LOADED);
             assert (file_loaded_signal_count == n_files);
-
+            assert (dir.loaded_from_cache);
             loop.quit ();
         }
     });
@@ -151,10 +152,12 @@ Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
     var dir = setup_temp_async (test_dir_path, n_files, "txt", tmp_pth);
 
     dir.done_loading.connect (() => {
+        assert (!dir.loaded_from_cache);
+
         if (loads == 0) {
             ref_count_before_reload = dir.ref_count;
-
         }
+
         if (loads < n_loads) {
             loads++;
             dir.cancel ();
