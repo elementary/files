@@ -619,7 +619,6 @@ namespace FM {
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
             dir.icon_changed.connect (on_directory_file_icon_changed);
-//~             dir.thumbs_loaded.connect (on_directory_thumbs_loaded);
             connect_directory_loading_handlers (dir);
         }
 
@@ -646,7 +645,6 @@ namespace FM {
             dir.file_deleted.disconnect (on_directory_file_deleted);
             dir.icon_changed.disconnect (on_directory_file_icon_changed);
             dir.done_loading.disconnect (on_directory_done_loading);
-//~             dir.thumbs_loaded.disconnect (on_directory_thumbs_loaded);
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
@@ -1346,10 +1344,6 @@ namespace FM {
 
             schedule_thumbnail_timeout ();
         }
-
-//~         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
-//~             Marlin.IconInfo.infos_caches ();
-//~         }
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (Marlin.ZoomLevel zoom) {
