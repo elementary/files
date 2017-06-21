@@ -64,6 +64,10 @@ Async load_non_existent_local_test (string test_dir_path, MainLoop loop) {
     dir.done_loading.connect (() => {
         assert (dir.files_count == 0);
         assert (!dir.can_load);
+        assert (!dir.file.is_connected);
+        assert (!dir.file.is_mounted);
+        assert (!dir.file.exists);
+        assert (dir.state == Async.State.NOT_LOADED);
         loop.quit ();
     });
 

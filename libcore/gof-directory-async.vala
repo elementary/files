@@ -519,7 +519,6 @@ public class Async : Object {
         }
 
         clear_directory_info ();
-        state = State.NOT_LOADED;
         init ();
     }
 
@@ -535,6 +534,8 @@ public class Async : Object {
         files_count = 0;
         is_ready = false;
         can_load = false;
+
+        state = State.NOT_LOADED;
     }
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
@@ -680,12 +681,12 @@ public class Async : Object {
             can_load = false;
         }
 
-        if (file_loaded_func == null) {
-            done_loading ();
-        }
-
         if (state != State.LOADED) {
             clear_directory_info ();
+        }
+
+        if (file_loaded_func == null) {
+            done_loading ();
         }
     }
 
