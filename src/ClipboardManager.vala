@@ -295,7 +295,7 @@ namespace Marlin {
         }
 
         private void release_pending_files () {
-            foreach (var file in this.files.get_values()) {
+            foreach (var file in this.files.get_values ()) {
                 file.destroy.disconnect (on_file_destroyed);
             }
 
