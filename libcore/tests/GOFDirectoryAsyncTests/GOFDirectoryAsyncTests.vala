@@ -46,6 +46,8 @@ void run_load_folder_test (LoadFolderTest test) {
 
     var dir = test (test_dir_path, loop);
 
+    assert (dir.state == Async.State.NOT_LOADED);
+
     dir.init ();
     loop.run ();
 
@@ -62,12 +64,8 @@ Async load_non_existent_local_test (string test_dir_path, MainLoop loop) {
     dir.done_loading.connect (() => {
         assert (dir.files_count == 0);
         assert (!dir.can_load);
-        Test.assert_expected_messages ();
         loop.quit ();
     });
-
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG, "*" + TestMessages.FAIL_PREPARE_FILEINFO);
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG, "*" + TestMessages.CANNOT_LOAD);
 
     return dir;
 }
@@ -102,12 +100,9 @@ Async load_populated_local_test (string test_dir_path, MainLoop loop) {
         assert (dir.state == Async.State.LOADED);
         assert (file_loaded_signal_count == n_files);
 
-        Test.assert_expected_messages ();
-
         loop.quit ();
     });
 
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG, "*" + TestMessages.LOAD_FILE);
     return dir;
 }
 
@@ -125,14 +120,12 @@ Async load_cached_local_test (string test_dir_path, MainLoop loop) {
                 file_loaded_signal_count++;
             });
 
-            Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG, "*" + TestMessages.LOAD_CACHE);
             dir.init ();
         } else {
             assert (dir.files_count == n_files);
             assert (dir.can_load);
             assert (dir.state == Async.State.LOADED);
             assert (file_loaded_signal_count == n_files);
-            Test.assert_expected_messages ();
 
             loop.quit ();
         }
@@ -164,8 +157,6 @@ Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
             assert (dir.state == Async.State.LOADED);
             assert (dir.ref_count == ref_count_before_reload);
 
-            Test.assert_expected_messages ();
-
             tear_down_file (tmp_pth);
 
             /* Test for problem with toggle ref after reloading (lp:1665620) */
@@ -176,7 +167,6 @@ Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
         }
     });
 
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG, "*" + TestMessages.LOAD_FILE);
     return dir;
 }
 
@@ -223,6 +213,7 @@ void tear_down_file (string path) {
     Posix.system ("rm -f " + path);
 }
 }
+
 
 int main (string[] args) {
     Test.init (ref args);
