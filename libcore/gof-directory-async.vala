@@ -23,12 +23,6 @@ private HashTable<GLib.File,GOF.Directory.Async> directory_cache;
 private Mutex dir_cache_lock;
 
 namespace GOF.Directory {
-namespace TestMessages {
-    public const string FAIL_PREPARE_FILEINFO = "Failed to get file info while preparing directory";
-    public const string CANNOT_LOAD = "Unable to load after preparing directory";
-    public const string LOAD_FILE = "Loading children from directory file";
-    public const string LOAD_CACHE = "Loading children from cache";
-}
 
 public class Async : Object {
     public delegate void GOFFileLoadedFunc (GOF.File file);
@@ -114,6 +108,8 @@ public class Async : Object {
 
     public string last_error_message {get; private set; default = "";}
 
+    public bool loaded_from_cache {get; private set; default = false;}
+
     private Async (GLib.File _file) {
         /* Ensure uri is correctly escaped and has scheme */
         var escaped_uri = PF.FileUtils.escape_uri (_file.get_uri ());
@@ -163,7 +159,9 @@ public class Async : Object {
             debug ("Directory Init re-entered - already loading");
             return; /* Do not re-enter */
         }
+
         var previous_state = state;
+        loaded_from_cache = false;
 
         cancellable.cancel ();
         cancellable = new Cancellable ();
@@ -204,13 +202,12 @@ public class Async : Object {
                     success = false;
                 }
             }
-        } else {
-            debug (TestMessages.FAIL_PREPARE_FILEINFO);
         }
 
         if (success) {
             file.update ();
         }
+
         debug ("success %s; enclosing mount %s", success.to_string (), file.mount != null ? file.mount.get_name () : "null");
         yield make_ready (is_no_info || success, file_loaded_func); /* Only place that should call this function */
     }
@@ -402,7 +399,6 @@ public class Async : Object {
         can_load = ready;
 
         if (!can_load) {
-            debug (TestMessages.CANNOT_LOAD);
             debug ("Cannot load %s.  Connected %s, Mounted %s, Exists %s", file.uri,
                                                                            file.is_connected.to_string (),
                                                                            file.is_mounted.to_string (),
@@ -526,7 +522,6 @@ public class Async : Object {
         }
 
         clear_directory_info ();
-        state = State.NOT_LOADED;
         init ();
     }
 
@@ -542,6 +537,9 @@ public class Async : Object {
         files_count = 0;
         is_ready = false;
         can_load = false;
+
+        state = State.NOT_LOADED;
+        loaded_from_cache = false;
     }
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
@@ -551,8 +549,6 @@ public class Async : Object {
             return;
         }
 
-        debug (TestMessages.LOAD_CACHE);
-
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
         foreach (GOF.File gof in file_hash.get_values ()) {
@@ -560,7 +556,10 @@ public class Async : Object {
                 after_load_file (gof, show_hidden, file_loaded_func);
             }
         }
+
         state = State.LOADED;
+        loaded_from_cache = true;
+
         after_loading (file_loaded_func);
     }
 
@@ -594,8 +593,6 @@ public class Async : Object {
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
         bool server_responding = false;
-
-        debug (TestMessages.LOAD_FILE);
 
         try {
             /* This may hang for a long time if the connection was closed but is still mounted so we
@@ -667,6 +664,7 @@ public class Async : Object {
             }
         } finally {
             cancel_timeout (ref load_timeout_id);
+            loaded_from_cache = false;
             after_loading (file_loaded_func);
         }
     }
@@ -691,12 +689,12 @@ public class Async : Object {
             can_load = false;
         }
 
-        if (file_loaded_func == null) {
-            done_loading ();
-        }
-
         if (state != State.LOADED) {
             clear_directory_info ();
+        }
+
+        if (file_loaded_func == null) {
+            done_loading ();
         }
     }
 
