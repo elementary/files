@@ -241,7 +241,7 @@ namespace FM {
 
                     /* Fix problems when navigating away from directory with large number
                      * of selected files (e.g. OverlayBar critical errors)
-                     */  
+                     */
                     disconnect_tree_signals ();
 
                     size_allocate.disconnect (on_size_allocate);
@@ -619,7 +619,7 @@ namespace FM {
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
             dir.icon_changed.connect (on_directory_file_icon_changed);
-            dir.thumbs_loaded.connect (on_directory_thumbs_loaded);
+//~             dir.thumbs_loaded.connect (on_directory_thumbs_loaded);
             connect_directory_loading_handlers (dir);
         }
 
@@ -646,7 +646,7 @@ namespace FM {
             dir.file_deleted.disconnect (on_directory_file_deleted);
             dir.icon_changed.disconnect (on_directory_file_icon_changed);
             dir.done_loading.disconnect (on_directory_done_loading);
-            dir.thumbs_loaded.disconnect (on_directory_thumbs_loaded);
+//~             dir.thumbs_loaded.disconnect (on_directory_thumbs_loaded);
         }
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
@@ -1347,9 +1347,9 @@ namespace FM {
             schedule_thumbnail_timeout ();
         }
 
-        private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
-            Marlin.IconInfo.infos_caches ();
-        }
+//~         private void on_directory_thumbs_loaded (GOF.Directory.Async dir) {
+//~             Marlin.IconInfo.infos_caches ();
+//~         }
 
     /** Handle zoom level change */
         private void on_zoom_level_changed (Marlin.ZoomLevel zoom) {
@@ -1964,7 +1964,7 @@ namespace FM {
             }
 
             if (!in_network_root) {
-                /* If something is pastable in the clipboard, show the option even if it is not enabled */ 
+                /* If something is pastable in the clipboard, show the option even if it is not enabled */
                 if (clipboard != null && clipboard.can_paste) {
                     menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
                 }
@@ -2181,7 +2181,7 @@ namespace FM {
                            (file.get_ftype () != null && file.get_ftype () == "inode/directory") ||
                            file.is_smb_server ());
 
-            can_copy = file.is_readable (); 
+            can_copy = file.is_readable ();
             can_open = can_open_file (file);
             can_show_properties = !(in_recent && selection_count > 1);
 
@@ -2393,7 +2393,7 @@ namespace FM {
 
             /* In order to improve performance of the Icon View when there are a large number of files,
              * we freeze child notifications while the view is being scrolled or resized.
-             * The timeout is restarted for each scroll or size allocate event */  
+             * The timeout is restarted for each scroll or size allocate event */
             cancel_timeout (ref freeze_source_id);
             freeze_child_notify ();
             freeze_source_id = Timeout.add (100, () => {
@@ -2406,7 +2406,7 @@ namespace FM {
             });
 
             /* Views with a large number of files take longer to redraw (especially IconView) so
-             * we wait longer for scrolling to stop before updating the thumbnails */ 
+             * we wait longer for scrolling to stop before updating the thumbnails */
             uint delay = uint.min (50 + slot.directory.files_count / 10, 500);
             thumbnail_source_id = GLib.Timeout.add (delay, () => {
 
@@ -2425,7 +2425,7 @@ namespace FM {
 
                     /* To improve performance for large folders we thumbnail files on either side of visible region
                      * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
-                     * redraws necessary when scrolling */ 
+                     * redraws necessary when scrolling */
                     int count = 50;
                     while (start_path.prev () && count > 0) {
                         count--;
@@ -2461,7 +2461,7 @@ namespace FM {
                     }
                 }
 
-                /* This is the only place that new thumbnail files are created */ 
+                /* This is the only place that new thumbnail files are created */
                 /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
                  * and there has not been another event (which would zero the thumbnail_source_if) */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
@@ -2602,7 +2602,7 @@ namespace FM {
             update_menu_actions ();
             selection_changed (get_selected_files ());
         }
- 
+
 /** Keyboard event handling **/
 
         /** Returns true if the code parameter matches the keycode of the keyval parameter for
@@ -2792,7 +2792,7 @@ namespace FM {
                         /* Only open a single selected folder */
                         unowned GLib.List<GOF.File> selection = get_selected_files ();
                         if (selection != null &&
-                            selection.length () == 1 && 
+                            selection.length () == 1 &&
                             selection.data.is_folder ()) {
 
                             load_location (selection.data.location);
@@ -2804,7 +2804,7 @@ namespace FM {
 
                     if (linear_select_required) { /* Only true for Icon View */
                         Gtk.TreePath? path = get_path_at_cursor ();
-            
+
                         if (path != null) {
                             Gtk.TreePath old_path = path;
 
