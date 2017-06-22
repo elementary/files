@@ -160,11 +160,10 @@ namespace Marlin
     public class IconInfo : GLib.Object {
         public static IconInfo? lookup (GLib.Icon icon, int size);
         public static IconInfo? lookup_from_name (string icon_name, int size);
-        public Gdk.Pixbuf? get_pixbuf_nodefault();
-        public Gdk.Pixbuf? get_pixbuf_at_size(int size);
+        public Gdk.Pixbuf? get_pixbuf_nodefault ();
+        public Gdk.Pixbuf? get_pixbuf_at_size (int size);
         public static void clear_caches ();
         public static void remove_cache (string path, int size);
-        public static void infos_caches ();
     }
     [CCode (cheader_filename = "marlin-trash-monitor.h")]
     public abstract class TrashMonitor : GLib.Object
@@ -278,7 +277,7 @@ namespace GOF {
         public string formated_modified;
         public string formated_type;
         public string tagstype;
-        public Gdk.Pixbuf pix;
+        public Gdk.Pixbuf? pix;
         public int pix_size;
         public int width;
         public int height;

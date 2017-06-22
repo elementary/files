@@ -685,6 +685,10 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
     if (nicon) {
         g_object_unref (nicon);
     }
+
+    /* pantheon-files-core-C.vapi file indicates this function always returns non-null value */
+    g_assert (pix != NULL);
+
     return pix;
 }
 

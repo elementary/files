@@ -1,4 +1,5 @@
 # Files
+[![Packaging status](https://repology.org/badge/tiny-repos/pantheon-files.svg)](https://repology.org/metapackage/pantheon-files)
 [![Translation status](https://l10n.elementary.io/widgets/files/-/svg-badge.svg)](https://l10n.elementary.io/projects/files/?utm_source=widget)
 
 ## Building, Testing, and Installation
