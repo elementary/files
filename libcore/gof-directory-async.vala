@@ -282,7 +282,7 @@ public class Async : Object {
     private async bool mount_mountable () {
         debug ("mount_mountable");
         bool res = false;
-        var mount_op = new Gtk.MountOperation (null);
+//~         var mount_op = new Gtk.MountOperation (null);
         cancellable = new Cancellable ();
 
         try {
@@ -304,18 +304,19 @@ public class Async : Object {
                 }
             });
 
-            mount_op.ask_password.connect (() => {
-                debug ("Asking for password");
-                asking_password = true;
-            });
+//~             mount_op.ask_password.connect (() => {
+//~                 debug ("Asking for password");
+//~                 asking_password = true;
+//~             });
 
-            mount_op.reply.connect (() => {
-                debug ("Password dialog finished");
-                asking_password = false;
-            });
+//~             mount_op.reply.connect (() => {
+//~                 debug ("Password dialog finished");
+//~                 asking_password = false;
+//~             });
 
             debug ("mounting ....");
-            res =yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
+            res =yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, null, cancellable);
+//~             res =yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
         } catch (Error e) {
             last_error_message = e.message;
             if (e is IOError.ALREADY_MOUNTED) {
@@ -326,7 +327,8 @@ public class Async : Object {
                 debug ("Enclosing mount not found %s (may be remote share)", file.uri);
                 /* Do not fail loading at this point - may still load */
                 try {
-                    yield location.mount_mountable (GLib.MountMountFlags.NONE, mount_op, cancellable);
+//~                     yield location.mount_mountable (GLib.MountMountFlags.NONE, mount_op, cancellable);
+                    yield location.mount_mountable (GLib.MountMountFlags.NONE, null, cancellable);
                     res = true;
                 } catch (GLib.Error e2) {
                     last_error_message = e2.message;
