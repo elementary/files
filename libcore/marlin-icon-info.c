@@ -51,7 +51,7 @@ G_DEFINE_TYPE (MarlinIconInfo, marlin_icon_info, G_TYPE_OBJECT);
 /** This is required for testing themed icon functions under ctest when there is no default screen and
   * we have to set the icon theme manually.  We assume that any system being used for testing will have
   * the "hicolor" theme.
-  */   
+  */
 static GtkIconTheme *
 marlin_icon_info_get_gtk_icon_theme () {
     GtkIconTheme *theme;
@@ -273,30 +273,6 @@ schedule_reap_cache (void)
                                                          reap_cache,
                                                          NULL, NULL);
     }
-}
-
-void
-marlin_icon_info_infos_caches (void)
-{
-    /*if (loadable_icon_cache) {
-        g_warning (">>> %s loadable_icon_cache %u", G_STRFUNC,
-                   g_hash_table_size (loadable_icon_cache));
-    }
-    if (themed_icon_cache) {
-        g_warning (">>> %s themed_icon_cache %u", G_STRFUNC,
-                   g_hash_table_size (themed_icon_cache));
-    }*/
-
-    /*GList *l, *p;
-    GList *list = g_hash_table_get_keys (loadable_icon_cache);
-    GList *lvals = g_hash_table_get_values (loadable_icon_cache);
-    for (l = list, p = lvals; l!= NULL && p!=NULL; l= l->next, p = p->next) {
-        LoadableIconKey *key = l->data;
-        MarlinIconInfo *icon_info = MARLIN_ICON_INFO (p->data);
-        char *str_icon = g_icon_to_string (key->icon);
-        g_message ("reamining key %d %s val ref_count %u", key->size, str_icon, G_OBJECT (icon_info)->ref_count);
-        g_free (str_icon);
-    }*/
 }
 
 void
