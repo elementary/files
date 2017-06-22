@@ -1885,6 +1885,12 @@ namespace Marlin.Places {
                 bool success = false;
                 try {
                     success = mount.unmount_with_operation.end (res);
+                    if (success) {
+                        var location = mount.get_root ();
+                        var directory = GOF.Directory.Async.from_gfile (location);
+                        assert (directory != null);
+                        directory.purge_dir_from_cache ();
+                    }
                     if (success && can_eject) {
                         /* Eject associated volume after unmount if appropriate.
                          * Keep volume monitor disconnected */
