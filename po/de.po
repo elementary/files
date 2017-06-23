@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-06-12 16:19+0000\n"
-"Last-Translator: UweS <Unknown>\n"
-"Language-Team: German <de@li.org>\n"
+"PO-Revision-Date: 2017-06-22 21:10+0000\n"
+"Last-Translator: Uwe S <saabisto@gmx.de>\n"
+"Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.14\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
-"X-Generator: Launchpad (build 18404)\n"
-"Language: de\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -174,7 +174,7 @@ msgstr "Ein Ordner gleichen Namens existiert bereits in »%s«."
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will remove all files in the folder."
-msgstr "Das Ersetzen dieses Ordners löscht alle enthaltenen Dateien"
+msgstr "Das Ersetzen dieses Ordners löscht alle enthaltenen Dateien."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:395
@@ -539,9 +539,7 @@ msgstr "_Papierkorb leeren"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
-"Soll das folgende Objekt dauerhaft gelöscht werden?\n"
-"»%B«"
+msgstr "Soll »%B« dauerhaft gelöscht werden?"
 
 #: ../libcore/marlin-file-operations.c:1468
 #, c-format
@@ -568,8 +566,8 @@ msgstr[1] "Noch %'d zu entfernende Dateien"
 #: ../libcore/marlin-file-operations.c:1538
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] "%T übrig"
-msgstr[1] "%T übrig"
+msgstr[0] "noch %T"
+msgstr[1] "noch %T"
 
 #: ../libcore/marlin-file-operations.c:1606
 #: ../libcore/marlin-file-operations.c:1640
@@ -1083,7 +1081,7 @@ msgstr "Zugriffsrechte werden eingestellt"
 
 #: ../libcore/marlin-file-operations.c:6003
 msgid "Cannot copy into trash."
-msgstr "Es kann nicht in den Papierkorb kopiert werden"
+msgstr "Es können keine Kopien im Papierkorb erstellt werden."
 
 #: ../libcore/marlin-file-operations.c:6004
 msgid "It is not permitted to copy files into the trash"
@@ -1791,7 +1789,7 @@ msgstr "Zur Anzeige dieses Ordners fehlen Ihnen die Zugriffsrechte."
 
 #: ../src/View/ViewContainer.vala:389
 msgid "Unable to Mount Folder"
-msgstr "Der Ordner kann nicht eingehangen werden."
+msgstr "Der Ordner kann nicht eingehängt werden."
 
 #: ../src/View/ViewContainer.vala:390
 msgid "Could not connect to the server for this folder."
@@ -2458,7 +2456,7 @@ msgstr "Verborgene Dateien anzeigen"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr "Zeigt Vorschau der Remote-Vorschaubilder"
+msgstr "Vorschaubilder von entfernten Dateien anzeigen"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
