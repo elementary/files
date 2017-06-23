@@ -43,7 +43,7 @@ public class FileManager1 : Object {
         string cmd = "pantheon-files -t";
 
         foreach (string s in uris) {
-            cmd += (" " + s);
+            cmd += (" \"" + PF.FileUtils.escape_uri (s) + "\"");
         }
 
         try {
