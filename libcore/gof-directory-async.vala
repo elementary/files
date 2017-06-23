@@ -99,6 +99,7 @@ public class Async : Object {
     public bool can_load {get; private set;}
     public bool can_open_files {get; private set;}
     public bool can_stream_files {get; private set;}
+    public bool allow_user_interaction {get; set; default = true;}  /* For testing without user interaction */
 
     private bool is_ready = false;
 
@@ -282,8 +283,8 @@ public class Async : Object {
     private async bool mount_mountable () {
         debug ("mount_mountable");
         bool res = false;
-//~         var mount_op = new Gtk.MountOperation (null);
         cancellable = new Cancellable ();
+        Gtk.MountOperation? mount_op = null;
 
         try {
             bool mounting = true;
@@ -304,19 +305,23 @@ public class Async : Object {
                 }
             });
 
-//~             mount_op.ask_password.connect (() => {
-//~                 debug ("Asking for password");
-//~                 asking_password = true;
-//~             });
 
-//~             mount_op.reply.connect (() => {
-//~                 debug ("Password dialog finished");
-//~                 asking_password = false;
-//~             });
+            if (allow_user_interaction) {
+                mount_op = new Gtk.MountOperation (null);
+
+                mount_op.ask_password.connect (() => {
+                    debug ("Asking for password");
+                    asking_password = true;
+                });
+
+                mount_op.reply.connect (() => {
+                    debug ("Password dialog finished");
+                    asking_password = false;
+                });
+            }
 
             debug ("mounting ....");
-            res =yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, null, cancellable);
-//~             res =yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
+            res =yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
         } catch (Error e) {
             last_error_message = e.message;
             if (e is IOError.ALREADY_MOUNTED) {
@@ -327,8 +332,7 @@ public class Async : Object {
                 debug ("Enclosing mount not found %s (may be remote share)", file.uri);
                 /* Do not fail loading at this point - may still load */
                 try {
-//~                     yield location.mount_mountable (GLib.MountMountFlags.NONE, mount_op, cancellable);
-                    yield location.mount_mountable (GLib.MountMountFlags.NONE, null, cancellable);
+                    yield location.mount_mountable (GLib.MountMountFlags.NONE, mount_op, cancellable);
                     res = true;
                 } catch (GLib.Error e2) {
                     last_error_message = e2.message;
