@@ -99,6 +99,7 @@ public class Async : Object {
     public bool can_load {get; private set;}
     public bool can_open_files {get; private set;}
     public bool can_stream_files {get; private set;}
+    public bool allow_user_interaction {get; set; default = true;}
 
     private bool is_ready = false;
 
@@ -282,7 +283,7 @@ public class Async : Object {
     private async bool mount_mountable () {
         debug ("mount_mountable");
         bool res = false;
-        var mount_op = new Gtk.MountOperation (null);
+        Gtk.MountOperation? mount_op = null;
         cancellable = new Cancellable ();
 
         try {
@@ -304,15 +305,19 @@ public class Async : Object {
                 }
             });
 
-            mount_op.ask_password.connect (() => {
-                debug ("Asking for password");
-                asking_password = true;
-            });
+            if (allow_user_interaction) {
+                mount_op = new Gtk.MountOperation (null);
 
-            mount_op.reply.connect (() => {
-                debug ("Password dialog finished");
-                asking_password = false;
-            });
+                mount_op.ask_password.connect (() => {
+                    debug ("Asking for password");
+                    asking_password = true;
+                });
+
+                mount_op.reply.connect (() => {
+                    debug ("Password dialog finished");
+                    asking_password = false;
+                });
+            }
 
             debug ("mounting ....");
             res =yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
