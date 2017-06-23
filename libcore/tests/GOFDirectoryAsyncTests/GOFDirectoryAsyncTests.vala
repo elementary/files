@@ -19,6 +19,7 @@
 * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 */
 
+namespace GOF.Directory {
 void add_gof_directory_async_tests () {
     /* loading */
     Test.add_func ("/GOFDirectoryAsync/load_non_existent_local", () => {
@@ -38,12 +39,14 @@ void add_gof_directory_async_tests () {
     });
 }
 
-delegate GOF.Directory.Async LoadFolderTest (string path, MainLoop loop);
+delegate Async LoadFolderTest (string path, MainLoop loop);
 void run_load_folder_test (LoadFolderTest test) {
     var loop = new GLib.MainLoop ();
     string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
 
-    GOF.Directory.Async dir = test (test_dir_path, loop);
+    var dir = test (test_dir_path, loop);
+
+    assert (dir.state == Async.State.NOT_LOADED);
 
     dir.init ();
     loop.run ();
@@ -53,37 +56,41 @@ void run_load_folder_test (LoadFolderTest test) {
 }
 
 /*** Test functions ***/
-GOF.Directory.Async load_non_existent_local_test (string test_dir_path, MainLoop loop) {
+Async load_non_existent_local_test (string test_dir_path, MainLoop loop) {
     GLib.File gfile = GLib.File.new_for_commandline_arg (test_dir_path);
     assert (!gfile.query_exists (null));
 
-    GOF.Directory.Async dir = GOF.Directory.Async.from_gfile (gfile);
+    var dir = Async.from_gfile (gfile);
     dir.done_loading.connect (() => {
         assert (dir.files_count == 0);
         assert (!dir.can_load);
-        Test.assert_expected_messages ();
+        assert (!dir.file.is_connected);
+        assert (!dir.file.is_mounted);
+        assert (!dir.file.exists);
+        assert (dir.state == Async.State.NOT_LOADED);
         loop.quit ();
     });
-
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_WARNING,"*info*");
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_WARNING,"*cannot load*");
 
     return dir;
 }
 
-GOF.Directory.Async load_empty_local_test (string test_dir_path, MainLoop loop) {
+Async load_empty_local_test (string test_dir_path, MainLoop loop) {
     var dir = setup_temp_async (test_dir_path, 0);
 
     dir.done_loading.connect (() => {
         assert (dir.files_count == 0);
         assert (dir.can_load);
+        assert (dir.file.is_connected);
+        assert (!dir.file.is_mounted);
+        assert (dir.file.exists);
+        assert (dir.state == Async.State.LOADED);
         loop.quit ();
     });
 
     return dir;
 }
 
-GOF.Directory.Async load_populated_local_test (string test_dir_path, MainLoop loop) {
+Async load_populated_local_test (string test_dir_path, MainLoop loop) {
     uint n_files = 5;
     uint file_loaded_signal_count = 0;
 
@@ -98,19 +105,16 @@ GOF.Directory.Async load_populated_local_test (string test_dir_path, MainLoop lo
     dir.done_loading.connect (() => {
         assert (dir.files_count == n_files);
         assert (dir.can_load);
-        assert (dir.state == GOF.Directory.Async.State.LOADED);
+        assert (dir.state == Async.State.LOADED);
         assert (file_loaded_signal_count == n_files);
-
-        Test.assert_expected_messages ();
 
         loop.quit ();
     });
 
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*(Re)loading*");
     return dir;
 }
 
-GOF.Directory.Async load_cached_local_test (string test_dir_path, MainLoop loop) {
+Async load_cached_local_test (string test_dir_path, MainLoop loop) {
     uint n_files = 5;
     bool first_load = true;
     uint file_loaded_signal_count = 0;
@@ -124,22 +128,21 @@ GOF.Directory.Async load_cached_local_test (string test_dir_path, MainLoop loop)
                 file_loaded_signal_count++;
             });
 
-            Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*cached*");
+            assert (!dir.loaded_from_cache);
             dir.init ();
         } else {
             assert (dir.files_count == n_files);
             assert (dir.can_load);
-            assert (dir.state == GOF.Directory.Async.State.LOADED);
+            assert (dir.state == Async.State.LOADED);
             assert (file_loaded_signal_count == n_files);
-            Test.assert_expected_messages ();
-
+            assert (dir.loaded_from_cache);
             loop.quit ();
         }
     });
     return dir;
 }
 
-GOF.Directory.Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
+Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
     uint n_files = 50;
     uint n_loads = 5; /* Number of times to reload the directory */
     uint loads = 0;
@@ -149,10 +152,12 @@ GOF.Directory.Async reload_populated_local_test (string test_dir_path, MainLoop 
     var dir = setup_temp_async (test_dir_path, n_files, "txt", tmp_pth);
 
     dir.done_loading.connect (() => {
+        assert (!dir.loaded_from_cache);
+
         if (loads == 0) {
             ref_count_before_reload = dir.ref_count;
-            
         }
+
         if (loads < n_loads) {
             loads++;
             dir.cancel ();
@@ -160,10 +165,8 @@ GOF.Directory.Async reload_populated_local_test (string test_dir_path, MainLoop 
         } else {
             assert (dir.files_count == n_files);
             assert (dir.can_load);
-            assert (dir.state == GOF.Directory.Async.State.LOADED);
+            assert (dir.state == Async.State.LOADED);
             assert (dir.ref_count == ref_count_before_reload);
-
-            Test.assert_expected_messages ();
 
             tear_down_file (tmp_pth);
 
@@ -175,12 +178,11 @@ GOF.Directory.Async reload_populated_local_test (string test_dir_path, MainLoop 
         }
     });
 
-    Test.expect_message (null, GLib.LogLevelFlags.LEVEL_DEBUG,"*(Re)loading*");
     return dir;
 }
 
 /*** Helper functions ***/
-GOF.Directory.Async setup_temp_async (string path, uint n_files, string? extension = null, string? path_to_template = null) {
+Async setup_temp_async (string path, uint n_files, string? extension = null, string? path_to_template = null) {
     assert (extension == null || extension.length > 0 || extension.length < 5);
 
     Posix.system ("mkdir " + path);
@@ -203,7 +205,7 @@ GOF.Directory.Async setup_temp_async (string path, uint n_files, string? extensi
     GLib.File gfile = GLib.File.new_for_commandline_arg (path);
     assert (gfile.query_exists (null));
 
-    GOF.Directory.Async dir = GOF.Directory.Async.from_gfile (gfile);
+    Async dir = Async.from_gfile (gfile);
     assert (dir != null);
     return dir;
 }
@@ -221,10 +223,12 @@ void tear_down_folder (string path) {
 void tear_down_file (string path) {
     Posix.system ("rm -f " + path);
 }
+}
+
 
 int main (string[] args) {
     Test.init (ref args);
 
-    add_gof_directory_async_tests ();
+    GOF.Directory.add_gof_directory_async_tests ();
     return Test.run ();
 }
