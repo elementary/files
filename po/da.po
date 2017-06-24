@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-03-22 17:35+0000\n"
-"Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
-"Language-Team: Danish <da@li.org>\n"
+"PO-Revision-Date: 2017-06-23 09:54+0000\n"
+"Last-Translator: Jimmy Merrild Krag <beruic@gmail.com>\n"
+"Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.14\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -2212,18 +2213,20 @@ msgid "Could not rename to '%s'"
 msgstr "Kunne ikke omdøbe til \"%s\""
 
 #: ../libcore/FileUtils.vala:434
+#, fuzzy
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "I dag kl. %-H:%M"
 
 #: ../libcore/FileUtils.vala:442
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "I går kl. %-H:%M"
 
 #: ../libcore/FileUtils.vala:451
 msgid "%A at %-H:%M"
 msgstr ""
 
 #: ../libcore/FileUtils.vala:453
+#, fuzzy
 msgid "%A at %-I:%M %p"
 msgstr "%A den %-I:%M"
 

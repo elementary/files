@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-05-06 12:41+0000\n"
-"Last-Translator: Corentin Noël <corentin@elementaryos.org>\n"
-"Language-Team: Fr <LL@li.org>\n"
+"PO-Revision-Date: 2017-06-22 09:54+0000\n"
+"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
+"Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.14\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
-"Language: \n"
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -159,7 +159,7 @@ msgstr ""
 #: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Un répertoire plus ancien avec ce nom existe déjà dans \"%s\""
+msgstr "Un répertoire plus ancien avec ce nom existe déjà dans \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:158
 #: ../libcore/marlin-file-conflict-dialog.c:384
@@ -176,7 +176,7 @@ msgstr "Un autre dossier portant le même nom existe déjà dans « %s »."
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will remove all files in the folder."
-msgstr "Le remplacement va effacer tous les fichiers dans ce répertoire"
+msgstr "Le remplacer effacera tous les fichiers dans ce répertoire."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:395
@@ -199,7 +199,7 @@ msgstr "Remplacer le fichier « %s » ?"
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
 msgid "Replacing it will overwrite its content."
-msgstr "Le remplacer va écraser son contenu"
+msgstr "Le remplacer écrasera son contenu."
 
 #: ../libcore/marlin-file-conflict-dialog.c:182
 #: ../libcore/marlin-file-conflict-dialog.c:408
@@ -528,7 +528,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
-"Supprimer définitivement tous les éléments de la corbeille sur ce support?"
+"Supprimer définitivement tous les éléments de la corbeille sur ce support ?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
@@ -704,7 +704,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Supprimer un fichier est irréversible."
+" Supprimer un fichier est irréversible"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
@@ -1058,7 +1058,7 @@ msgstr "Erreur lors de la création du lien vers %B."
 #: ../libcore/marlin-file-operations.c:5554
 msgid "Symbolic links only supported for local files"
 msgstr ""
-"Les liens symboliques ne sont pris en charge que pour des fichiers locaux."
+"Les liens symboliques ne sont pris en charge que pour des fichiers locaux"
 
 #: ../libcore/marlin-file-operations.c:5557
 msgid "The target doesn't support symbolic links."
@@ -1722,7 +1722,7 @@ msgstr "Ouvrir avec"
 
 #: ../src/View/AbstractDirectoryView.vala:2093
 msgid "Other Application"
-msgstr "Autre application…"
+msgstr "Autre application"
 
 #: ../src/View/AbstractDirectoryView.vala:2354
 msgid "Untitled %s"
@@ -1781,15 +1781,15 @@ msgstr "Impossible de monter le dossier"
 
 #: ../src/View/ViewContainer.vala:390
 msgid "Could not connect to the server for this folder."
-msgstr "Ne peut se connecter au serveur pour afficher ce dossier"
+msgstr "Impossible se connecter au serveur pour afficher ce dossier."
 
 #: ../src/View/ViewContainer.vala:392
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Impossible d'afficher le contenu du dossier"
 
 #: ../src/View/ViewContainer.vala:393
 msgid "The operation timed out."
-msgstr ""
+msgstr "Le temps d'attente de l'opération a expiré."
 
 #: ../src/View/ViewContainer.vala:395
 msgid "Unable to Show Folder"
@@ -1937,7 +1937,7 @@ msgstr "Nouvelle fenêtre"
 
 #: ../src/Application.vala:156
 msgid "Quit Files."
-msgstr "Quiter Files"
+msgstr "Quitter Fichiers."
 
 #: ../src/Application.vala:158
 msgid "Enable debug logging"
@@ -2095,10 +2095,11 @@ msgstr "La taille réelle peut être plus grande"
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
-"%s fichier ne peut être lu faute de permission suffisante ou d'autres erreurs"
+"%s fichier ne peut être lu faute de permission suffisante ou d'autres "
+"erreurs."
 msgstr[1] ""
 "%s fichiers ne peuvent être lus faute de permission suffisante ou d'autres "
-"erreurs"
+"erreurs."
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
 #: ../src/Dialogs/PropertiesWindow.vala:279
@@ -2135,7 +2136,7 @@ msgstr "Type MIME :"
 
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
-msgstr "Résolution:"
+msgstr "Résolution :"
 
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
@@ -2147,7 +2148,7 @@ msgstr "Emplacement d'origine :"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Autre application..."
+msgstr "Autre application…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2198,7 +2199,7 @@ msgstr "%s (%s, %s)"
 
 #: ../libcore/gof-directory-async.vala:587
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Le serveur n'a pas répondu dans le temps imparti"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2234,15 +2235,15 @@ msgstr "Impossible de renommer en '%s'"
 
 #: ../libcore/FileUtils.vala:434
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Aujourd'hui à %-H:%M"
 
 #: ../libcore/FileUtils.vala:442
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Hier à %-H:%M"
 
 #: ../libcore/FileUtils.vala:451
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A à %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-I:%M %p"
