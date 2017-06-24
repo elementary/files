@@ -29,14 +29,14 @@ namespace Marlin.View {
 
         public Gtk.Widget? content_item;
         public bool can_show_folder = false;
-        private Marlin.View.Window _window;
+        private Marlin.View.Window? _window = null;
         public Marlin.View.Window window {
             get {
                 return _window;
             }
 
             set {
-                if (window != null) {
+                if (_window != null) {
                     disconnect_window_signals ();
                 }
 
