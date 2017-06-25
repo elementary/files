@@ -19,7 +19,6 @@ set (TEST_NAME
     marlin-icon-info_tests
 )
 
-
 link_directories (${LIB_PATHS})
 add_definitions (${CFLAGS} -O2)
 
