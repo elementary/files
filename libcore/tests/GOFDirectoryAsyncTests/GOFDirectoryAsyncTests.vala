@@ -45,6 +45,7 @@ void run_load_folder_test (LoadFolderTest test) {
     string test_dir_path = "/tmp/marlin-test-" + get_real_time ().to_string ();
 
     var dir = test (test_dir_path, loop);
+    dir.allow_user_interaction = false;
 
     assert (dir.state == Async.State.NOT_LOADED);
 

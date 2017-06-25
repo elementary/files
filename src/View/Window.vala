@@ -342,10 +342,13 @@ namespace Marlin.View {
                 });
             });
 
+
             tabs.tab_added.connect ((tab) => {
                 var vc = tab.page as ViewContainer;
                 vc.window = this;
             });
+
+            tabs.tab_removed.connect (on_tab_removed);
 
             sidebar.request_focus.connect (() => {
                 return !current_tab.locked_focus && !top_menu.locked_focus;
@@ -396,6 +399,12 @@ namespace Marlin.View {
                     break;
             }
             return result;
+        }
+
+        private void on_tab_removed () {
+            if (tabs.n_tabs == 0) {
+                add_tab ();
+            }
         }
 
         private void on_go_forward (int n = 1) {
@@ -916,6 +925,8 @@ namespace Marlin.View {
                 save_geometries ();
                 save_tabs ();
             }
+
+            tabs.tab_removed.disconnect (on_tab_removed); /* Avoid infinite loop */
 
             foreach (var tab in tabs.tabs) {
                 current_tab = null;
