@@ -120,7 +120,7 @@ namespace Marlin.Places {
             }
         }
 
-        /* For cancelling async tooltip updates when update_places re-entered */ 
+        /* For cancelling async tooltip updates when update_places re-entered */
         Cancellable? update_cancellable = null;
 
         public signal bool request_focus ();
@@ -202,7 +202,7 @@ namespace Marlin.Places {
             name_renderer.ellipsize_set = true;
             name_renderer.edited.connect (edited);
             name_renderer.editing_canceled.connect (editing_canceled);
-            
+
             col.pack_start (crd, true);
             col.set_attributes (crd,
                                 "text", Column.NAME,
@@ -296,7 +296,7 @@ namespace Marlin.Places {
         private bool on_enter_notify_event () {
             /* Ensure tree has focus when scrolling but do not grab focus if either a bookmark
              *  is being renamed or request_focus is denied.
-             */ 
+             */
             if (!tree_view.has_focus && !renaming && request_focus ())
                 tree_view.grab_focus ();
 
@@ -304,6 +304,10 @@ namespace Marlin.Places {
         }
 
         private bool on_leave_notify_event () {
+            if (renaming) {
+                return true;
+            }
+
             /* Signal Marlin.View.Window to synchronise sidebar with current tab */
             sync_needed ();
             return false;
@@ -1631,7 +1635,7 @@ namespace Marlin.Places {
         private void expander_update_pref_state (Marlin.PlaceType type, bool flag) {
             /* Do not update settings if they have not changed.  Otherwise an infinite loop occurs
              * when viewing the ~/.config/dconf/user folder.
-             */  
+             */
             switch (type) {
                 case Marlin.PlaceType.NETWORK_CATEGORY:
                     if (flag != Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
@@ -1830,7 +1834,7 @@ namespace Marlin.Places {
                 unblock_drag_and_drop ();
             }
 
-            if (renaming) 
+            if (renaming)
                 return true;
 
             if (over_eject_button (event)) {
@@ -2014,7 +2018,7 @@ namespace Marlin.Places {
                 }
             }
             /* Delay reconnecting volume monitor - we do not need to respond to signals consequent on
-             * our own actions that may still be in the pipeline */ 
+             * our own actions that may still be in the pipeline */
             Timeout.add (300, () => {
                 connect_volume_monitor_signals ();
                 update_places ();
@@ -2230,20 +2234,20 @@ namespace Marlin.Places {
             if (!drive.is_media_check_automatic ()) {
                 drive.poll_for_media.begin (null, (obj, res) => {
                     try {
-                        if (drive.poll_for_media.end (res)) 
+                        if (drive.poll_for_media.end (res))
                             eject_drive_if_no_media (drive);
                     }
                     catch (GLib.Error e) {
                         warning ("Could not poll for media");
                     }
                 });
-            } else 
+            } else
                  eject_drive_if_no_media (drive);
         }
 
         private void eject_drive_if_no_media (Drive drive) {
             /* Additional checks required because some devices give incorrect results e.g. some MP3 players
-             * resulting in them being ejected as soon as plugged in */ 
+             * resulting in them being ejected as soon as plugged in */
             if (drive.is_media_removable () && drive.can_poll_for_media () && !drive.has_media () && drive.can_eject ()) {
                 do_eject (null, null, drive, null);
             }
