@@ -127,7 +127,7 @@ namespace Marlin.View {
         private void on_path_changed (GLib.File file) {
             focus_location (file);
         }
-        
+
         private void on_folder_deleted (GLib.File deleted) {
             if (deleted.equal (this.location)) {
                 if (!go_up ()) {
@@ -173,6 +173,7 @@ namespace Marlin.View {
         }
 
         public bool go_up () {
+            selected_locations = null;
             selected_locations.append (this.location);
             GLib.File parent = location;
             if (view.directory.has_parent ()) { /* May not work for some protocols */
@@ -195,6 +196,7 @@ namespace Marlin.View {
             string? loc = browser.go_back (n);
 
             if (loc != null) {
+                selected_locations = null;
                 selected_locations.append (this.location);
                 user_path_change_request (File.new_for_commandline_arg (loc), false, false);
             }
@@ -458,12 +460,12 @@ namespace Marlin.View {
                 aslot.set_all_selected (select_all);
             }
         }
-        
+
         public void focus_location (GLib.File? loc,
                                     bool no_path_change = false,
                                     bool unselect_others = false) {
 
-            /* This function navigates to another folder if necessary if 
+            /* This function navigates to another folder if necessary if
              * select_in_current_only is not set to true.
              */
 

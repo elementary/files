@@ -2565,8 +2565,10 @@ namespace FM {
                 selected_files.@foreach ((file) => {
                     var goffile = GOF.File.get_by_uri (file.get_display_target_uri ());
                     goffile.query_update ();
-                    action_files.append (goffile);
+                    action_files.prepend (goffile);
                 });
+
+                action_files.reverse ();
             } else {
                 action_files = selected_files;
             }
