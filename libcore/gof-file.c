@@ -151,6 +151,7 @@ gof_file_icon_changed (GOFFile *file)
             g_object_unref (dir);
         }
     }
+
     g_signal_emit_by_name (file, "icon_changed");
 }
 
@@ -387,28 +388,7 @@ gof_file_update_formated_type (GOFFile *file)
 static void
 gof_file_update_icon_internal (GOFFile *file, gint size);
 
-void
-gof_file_update_type (GOFFile *file)
-{
-    const gchar *ftype = gof_file_get_ftype (file);
-
-    gof_file_update_formated_type (file);
-    /* update icon */
-    file->icon = g_content_type_get_icon (ftype);
-    if (file->pix_size > 1)
-        gof_file_update_icon_internal (file, file->pix_size);
-
-    gof_file_icon_changed (file);
-}
-
-void
-gof_file_update (GOFFile *file)
-{
-    GKeyFile *key_file;
-    gchar *p;
-
-    g_return_if_fail (file->info != NULL);
-
+void gof_file_initial_update (GOFFile *file) {
     /* free previously allocated */
     gof_file_clear_info (file);
 
@@ -418,17 +398,23 @@ gof_file_update (GOFFile *file)
     file->is_directory = (file->file_type == G_FILE_TYPE_DIRECTORY);
     file->modified = g_file_info_get_attribute_uint64 (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
 
-    /* metadata */
+    file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
+}
+
+gboolean
+gof_file_visible_update (GOFFile *file) {
+    if (file == NULL || file->formated_modified != NULL) {
+        return FALSE;  /* Proxy for already been visible */
+    }
+
+    GKeyFile *key_file;
+    gchar *p;
+
     if (file->is_directory) {
         if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-column-id"))
             file->sort_column_id = fm_list_model_get_column_id_from_string (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-column-id"));
         if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-reversed"))
             file->sort_order = !g_strcmp0 (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-reversed"), "true") ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING;
-    }
-
-    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON)) {
-        file->icon = (GIcon *) g_file_info_get_attribute_object (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON);
-        g_object_ref (file->icon);
     }
 
     /* Any location or target on a mount will now have the file->mount and file->is_mounted set */
@@ -526,40 +512,54 @@ gof_file_update (GOFFile *file)
         }
     }
 
-    /* sizes */
+    /* formatted sizes */
     gof_file_update_size (file);
-    /* modified date */
+
+    /* formatted modified date */
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_TIME_MODIFIED)) {
         file->formated_modified = gof_file_get_formated_time (file, G_FILE_ATTRIBUTE_TIME_MODIFIED);
     } else {
         file->formated_modified = g_strdup (_("Inaccessible"));
     }
-    /* icon */
-    if (file->is_directory) {
-        gof_file_get_folder_icon_from_uri_or_path (file);
-    } else if (g_file_info_get_file_type(file->info) == G_FILE_TYPE_MOUNTABLE) {
-        file->icon = g_themed_icon_new_with_default_fallbacks ("folder-remote");
-    } else {
-        const gchar *ftype = gof_file_get_ftype (file);
-        if (ftype != NULL && file->icon == NULL)
-            file->icon = g_content_type_get_icon (ftype);
-    }
 
-    file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
+    /* formated type */
+    gof_file_update_formated_type (file);
+
     /* mark the thumb flags as state none, we'll load the thumbs once the directory
      * would be loaded on a thread */
     if (gof_file_get_thumbnail_path (file) != NULL) {
         file->flags = GOF_FILE_THUMB_STATE_UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
     }
 
-    /* formated type */
+    /* Icon */
+    if (file->icon == NULL && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON)) {
+        file->icon = (GIcon *) g_file_info_get_attribute_object (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON);
+        g_object_ref (file->icon);
+    } else {
+        if (file->is_directory) {
+            gof_file_get_folder_icon_from_uri_or_path (file);
+        } else if (g_file_info_get_file_type (file->info) == G_FILE_TYPE_MOUNTABLE) {
+            file->icon = g_themed_icon_new_with_default_fallbacks ("folder-remote");
+        } else {
+            const gchar *ftype = gof_file_get_ftype (file);
+            if (ftype != NULL && file->icon == NULL) {
+                file->icon = g_content_type_get_icon (ftype);
+            }
+        }
+    }
+
     gof_file_update_formated_type (file);
+
+    if (file->pix_size > 1) {
+        gof_file_update_icon_internal (file, file->pix_size);
+    }
 
     /* permissions */
     file->has_permissions = g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
     file->permissions = g_file_info_get_attribute_uint32 (file->info, G_FILE_ATTRIBUTE_UNIX_MODE);
     const char *owner = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_OWNER_USER);
     const char *group = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_OWNER_GROUP);
+
 
     if (owner != NULL)
         file->owner = strdup (owner);
@@ -585,12 +585,27 @@ gof_file_update (GOFFile *file)
         file->gid = atoi (file->group);
     }
 
-    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT))
+    if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT)) {
         file->can_unmount = g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT);
+    }
+
 
     gof_file_update_trash_info (file);
 
     gof_file_update_emblem (file);
+
+    gof_file_icon_changed (file);
+
+    return TRUE;
+}
+
+void
+gof_file_update (GOFFile *file)
+{
+    g_return_if_fail (file->info != NULL);
+
+    gof_file_initial_update (file);
+    gof_file_visible_update (file);
 }
 
 static MarlinIconInfo *
@@ -629,8 +644,11 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     g_return_val_if_fail (size >= 1, NULL);
 
     icon = gof_file_get_special_icon (file, size, flags);
-    if (icon != NULL && !marlin_icon_info_is_fallback (icon))
+
+    if (icon != NULL && !marlin_icon_info_is_fallback (icon)) {
         return icon;
+    }
+
     _g_object_unref0 (icon);
 
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS

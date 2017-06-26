@@ -640,7 +640,7 @@ public class Async : Object {
                             }
 
                             gof.info = file_info;
-                            gof.update ();
+                            gof.initial_update ();
 
                             file_hash.insert (gof.location, gof);
                             after_load_file (gof, show_hidden, file_loaded_func);
@@ -738,7 +738,7 @@ public class Async : Object {
             if (gof != null && gof.info != null
                 && (!gof.is_hidden || Preferences.get_default ().show_hidden_files))
 
-                gof.update ();
+                gof.initial_update ();
         }
     }
 

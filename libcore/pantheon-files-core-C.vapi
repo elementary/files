@@ -325,6 +325,8 @@ namespace GOF {
         public uint32 permissions;
 
         public void update ();
+        public void initial_update ();
+        public bool visible_update ();
         public void update_type ();
         public void update_icon (int size);
         public void update_desktop_file ();
