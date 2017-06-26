@@ -2,7 +2,7 @@
     Copyright (c) 1999, 2000 Red Hat, Inc.
     Copyright (c) 2000, 2001 Eazel, Inc.
     Copyright (c) 2013 Julián Unrrein <junrrein@gmail.com>
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)  
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -98,6 +98,7 @@ public class Marlin.Application : Granite.Application {
         this.clipboard = Marlin.ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
+        /* Global static variable "plugins" declared in PluginManager.vala */
         plugins = new Marlin.PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
 
         /**TODO** move the volume manager here? */
@@ -283,7 +284,7 @@ public class Marlin.Application : Granite.Application {
 
     private void open_windows (File[]? files) {
         if (files == null)
-            open_tabs (null); /* open_tabs () will restore saved tabs or default tab depending on preference */ 
+            open_tabs (null); /* open_tabs () will restore saved tabs or default tab depending on preference */
         else {
             /* Open windows with tab at each requested location. */
             foreach (var file in files) {
@@ -305,7 +306,7 @@ public class Marlin.Application : Granite.Application {
         Gdk.Screen screen = Gdk.Screen.get_default ();
         var aw = this.get_active_window ();
         if (aw != null) {
-            /* This is not the first window - determine size and position of new window */            
+            /* This is not the first window - determine size and position of new window */
             int w, h;
             aw.get_size (out w, out h);
             /* Calculate difference between the visible width of the window and the width returned by Gtk+,
@@ -326,7 +327,7 @@ public class Marlin.Application : Granite.Application {
                 y -= (shadow_width + 6);
                 new_win_rect = {x, y, w, h};
             }
-        } 
+        }
 
         /* New window will not size or show itself if new_win_rect is not null */
         win = new Marlin.View.Window (this, screen, new_win_rect == null);

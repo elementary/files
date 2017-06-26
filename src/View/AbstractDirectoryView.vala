@@ -1297,6 +1297,9 @@ namespace FM {
                 /* This is required if we need to dequeue the request */
                 if (slot.directory.is_local || (show_remote_thumbnails && slot.directory.can_open_files)) {
                     thumbnailer.queue_file (file, null, large_thumbnails);
+                    if (plugins != null) {
+                        plugins.update_file_info (file);
+                    }
                 }
             }
         }
@@ -2438,13 +2441,15 @@ namespace FM {
                         path = model.get_path (iter);
 
                         /* Ask thumbnailer only if ThumbState UNKNOWN */
-                        if (file != null &&
-                            (file.flags == GOF.File.ThumbState.UNKNOWN)) {
-
+                        if (file != null && file.flags == GOF.File.ThumbState.UNKNOWN) {
                             visible_files.prepend (file);
                             if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                 actually_visible++;
                             }
+                        }
+
+                        if (plugins != null) {
+                            plugins.update_file_info (file);
                         }
 
                         /* check if we've reached the end of the visible range */
