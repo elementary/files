@@ -312,7 +312,16 @@ namespace FM {
                 }
             });
 
+            in_trash = slot.directory.is_trash;
+            in_recent = slot.directory.is_recent;
+
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
+            if (in_recent)
+                model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
+            else if (slot.directory.file.info != null) {
+                model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+            }
+
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
 
@@ -661,6 +670,17 @@ namespace FM {
             clear ();
             disconnect_directory_handlers (old_dir);
             connect_directory_handlers (new_dir);
+
+            /* If navigating to new folder reset the sort order as appropriate */
+            if (new_dir.file.uri != old_dir.file.uri) {
+                in_trash = new_dir.is_trash;
+                in_recent = new_dir.is_recent;
+                if (in_recent)
+                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
+                else if (new_dir.file.info != null) {
+                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+                }
+            }
         }
 
         public void clear () {
@@ -1365,11 +1385,6 @@ namespace FM {
 
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
-                if (in_recent)
-                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-                else if (slot.directory.file.info != null) {
-                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
-                }
             } else {
                 is_writable = false;
             }
