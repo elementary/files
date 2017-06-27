@@ -162,7 +162,6 @@ namespace FM {
         /* support for generating thumbnails */
         int thumbnail_request = -1;
         uint thumbnail_source_id = 0;
-        uint freeze_source_id = 0;
         double current_val = -100.0;  /* Thumbnail on significant scroll change */
         Gtk.Allocation current_alloc;  /* Thumbnail on significant size change */
         Marlin.Thumbnailer thumbnailer = null;
