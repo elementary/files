@@ -8,15 +8,17 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-03-11 09:20+0000\n"
-"Last-Translator: Ryo Nakano <Unknown>\n"
-"Language-Team: Japanese <ja@li.org>\n"
+"PO-Revision-Date: 2017-06-24 10:31+0000\n"
+"Last-Translator: Ryo Nakano <rmfmada3q@gmail.com>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.14\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -611,7 +613,7 @@ msgstr[0] "残り %'d 個のファイルをゴミ箱へ移動中"
 #: ../libcore/marlin-file-operations.c:1949
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash or delete it"
-msgstr "ゴミ箱へファイルを移動したり、削除できません。"
+msgstr "ゴミ箱へファイルを移動したり、削除したりできません"
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid ""
@@ -697,13 +699,13 @@ msgstr "%s をマウントできません"
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "%'d 個のファイル (%S) をコピーする準備中..."
+msgstr[0] "%'d 個のファイル (%S) をコピーする準備中"
 
 #: ../libcore/marlin-file-operations.c:2614
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "%'d 個のファイル (%S) を移動する準備中..."
+msgstr[0] "%'d 個のファイル (%S) を移動する準備中"
 
 #: ../libcore/marlin-file-operations.c:2620
 #, c-format
@@ -940,13 +942,13 @@ msgstr "ファイルをコピー中"
 
 #: ../libcore/marlin-file-operations.c:4848
 msgid "Preparing to move to \"%B\""
-msgstr "\"%B\" へ移動する準備中..."
+msgstr "\"%B\" へ移動する準備中"
 
 #: ../libcore/marlin-file-operations.c:4860
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "%'d 個のファイルを移動する準備中..."
+msgstr[0] "%'d 個のファイルを移動させる準備中"
 
 #: ../libcore/marlin-file-operations.c:5108
 #, c-format
@@ -978,7 +980,7 @@ msgstr "%B へのリンク作成中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:5554
 msgid "Symbolic links only supported for local files"
-msgstr "シンボリックリンクはローカルファイルでのみサポートされています。"
+msgstr "シンボリックリンクはローカルファイルでのみサポートされています"
 
 #: ../libcore/marlin-file-operations.c:5557
 msgid "The target doesn't support symbolic links."
@@ -1000,7 +1002,7 @@ msgstr "ゴミ箱にコピーできません。"
 
 #: ../libcore/marlin-file-operations.c:6004
 msgid "It is not permitted to copy files into the trash"
-msgstr "ゴミ箱にファイルをコピーすることはできません。"
+msgstr "ゴミ箱にファイルをコピーすることはできません"
 
 #: ../libcore/marlin-file-operations.c:6145
 msgid "untitled folder"
@@ -1033,7 +1035,7 @@ msgstr "ゴミ箱を空にしています"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
-msgstr "元の場所が判別できませんでした。"
+msgstr "元の場所が判別できませんでした"
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
@@ -1635,7 +1637,7 @@ msgstr "この場所を変更するパーミッションがありません"
 
 #: ../src/View/AbstractDirectoryView.vala:2827
 msgid "Cannot copy files that are in the trash"
-msgstr "ゴミ箱内のファイルをコピーできません。"
+msgstr "ゴミ箱内のファイルをコピーできません"
 
 #: ../src/View/AbstractDirectoryView.vala:2828
 msgid "Cutting the selection instead"
@@ -1727,7 +1729,7 @@ msgstr "新しいウィンドウを開く"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "他のアプリケーションで開く..."
+msgstr "他のアプリケーションで開く…"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1996,7 +1998,7 @@ msgstr "不明"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "読み込み中..."
+msgstr "読み込み中…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2036,7 +2038,7 @@ msgstr "元の場所:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "他のアプリケーション..."
+msgstr "他のアプリケーション…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2220,7 +2222,7 @@ msgstr "%s へ移動"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "サーバーへ接続"
+msgstr "サーバーへ接続…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
