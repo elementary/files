@@ -162,7 +162,8 @@ namespace FM {
         /* support for generating thumbnails */
         int thumbnail_request = -1;
         uint thumbnail_source_id = 0;
-        uint freeze_source_id = 0;
+        double current_val = -100.0;  /* Thumbnail on significant scroll change */
+        Gtk.Allocation current_alloc;  /* Thumbnail on significant size change */
         Marlin.Thumbnailer thumbnailer = null;
 
         /**TODO** Support for preview see bug #1380139 */
@@ -322,6 +323,8 @@ namespace FM {
               * Currently, "right margin unselects all" is disabled, matching existing UI
               */
 
+            current_alloc = {-100, -100};
+
             set_up__menu_actions ();
             set_up_directory_view ();
             view = create_view ();
@@ -383,8 +386,13 @@ namespace FM {
 
             scroll_event.connect (on_scroll_event);
 
-            get_vadjustment ().value_changed.connect_after (schedule_thumbnail_timeout);
-
+            get_vadjustment ().value_changed.connect_after ((va) => {
+                var v = va.get_value ();
+                if ((v - current_val).abs () > 2 * icon_size) {
+                    schedule_thumbnail_timeout ();
+                    current_val = v;
+                }
+            });
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
 
@@ -715,9 +723,6 @@ namespace FM {
 
     /** Handle scroll events */
         protected bool handle_scroll_event (Gdk.EventScroll event) {
-            if (is_frozen)
-                return true;
-
             if ((event.state & Gdk.ModifierType.CONTROL_MASK) > 0) {
                 switch (event.direction) {
                     case Gdk.ScrollDirection.UP:
@@ -1464,7 +1469,13 @@ namespace FM {
 
     /** Handle size allocation event */
         private void on_size_allocate (Gtk.Allocation allocation) {
-            schedule_thumbnail_timeout ();
+            if ((allocation.width - current_alloc.width).abs () > icon_size ||
+                (allocation.height - current_alloc.height).abs () > icon_size) {
+
+                schedule_thumbnail_timeout ();
+                current_alloc.width = allocation.width;
+                current_alloc.height = allocation.height;
+            }
         }
 
 /** DRAG AND DROP */
@@ -2367,6 +2378,7 @@ namespace FM {
 
 
 /** Thumbnail handling */
+        uint thumbnail_events = 0;
         private void schedule_thumbnail_timeout () {
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
@@ -2375,34 +2387,27 @@ namespace FM {
 
             assert (slot is GOF.AbstractSlot && slot.directory != null);
 
-            if (thumbnail_source_id != 0 ||
+            if (slot.directory.is_loading () ||
                 (!slot.directory.is_local && !show_remote_thumbnails) ||
-                 !slot.directory.can_open_files ||
-                 slot.directory.is_loading ()) {
+                 !slot.directory.can_open_files) {
 
                     return;
             }
 
-            cancel_thumbnailing (); /* cancels any existing timeout or thumbnail request */
-
-            /* In order to improve performance of the Icon View when there are a large number of files,
-             * we freeze child notifications while the view is being scrolled or resized.
-             * The timeout is restarted for each scroll or size allocate event */
-            cancel_timeout (ref freeze_source_id);
-            freeze_child_notify ();
-            freeze_source_id = Timeout.add (100, () => {
-                if (thumbnail_source_id > 0) {
-                    return true;
-                }
-                thaw_child_notify ();
-                freeze_source_id = 0;
-                return false;
-            });
+            thumbnail_events++;
+            if (thumbnail_events > 1) {
+                return;
+            }
 
             /* Views with a large number of files take longer to redraw (especially IconView) so
              * we wait longer for scrolling to stop before updating the thumbnails */
-            uint delay = uint.min (50 + slot.directory.files_count / 10, 500);
+            uint delay = uint.min (100 + slot.directory.files_count / 100, 500);
+
             thumbnail_source_id = GLib.Timeout.add (delay, () => {
+                if (thumbnail_events > 1) {
+                    thumbnail_events = 1;
+                    return true;
+                }
 
                 /* compute visible item range */
                 Gtk.TreePath start_path, end_path, path;
@@ -2411,21 +2416,19 @@ namespace FM {
                 bool valid_iter;
                 GOF.File file;
                 GLib.List<GOF.File> visible_files = null;
-                uint actually_visible = 0;
+                bool new_visible = false;
 
                 if (get_visible_range (out start_path, out end_path)) {
                     sp = start_path;
                     ep = end_path;
+                    /* To improve performance for large folders we thumbnail files on either side of visible region as well.  The delay is mainly in redrawing the view and this reduces the number of updates and redraws necessary when scrolling */
 
-                    /* To improve performance for large folders we thumbnail files on either side of visible region
-                     * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
-                     * redraws necessary when scrolling */
-                    int count = 50;
+                    int count = 1;
                     while (start_path.prev () && count > 0) {
                         count--;
                     }
 
-                    count = 50;
+                    count = 1;
                     while (count > 0) {
                         end_path.next ();
                         count--;
@@ -2433,37 +2436,35 @@ namespace FM {
 
                     /* iterate over the range to collect all files */
                     valid_iter = model.get_iter (out iter, start_path);
-                    while (valid_iter && thumbnail_source_id > 0) {
+                    while (valid_iter) {
                         file = model.file_for_iter (iter);
                         path = model.get_path (iter);
+                        new_visible = file.visible_update () || new_visible;
 
                         /* Ask thumbnailer only if ThumbState UNKNOWN */
-                        if (file != null &&
-                            (file.flags == GOF.File.ThumbState.UNKNOWN)) {
-
+                        if (file != null && file.flags == GOF.File.ThumbState.UNKNOWN) {
                             visible_files.prepend (file);
-                            if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                actually_visible++;
-                            }
                         }
 
                         /* check if we've reached the end of the visible range */
-                        if (path.compare (end_path) != 0)
+                        if (path.compare (end_path) != 0) {
                             valid_iter = get_next_visible_iter (ref iter);
-                        else
+                        } else {
                             valid_iter = false;
+                        }
+                    }
+
+                    /* This is the only place that new thumbnail files are created */
+                    /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
+                     * and there has not been another event (which would zero the thumbnail_source_if) */
+                    thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
+
+                    if (new_visible) {
+                        view.queue_draw ();
                     }
                 }
 
-                /* This is the only place that new thumbnail files are created */
-                /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
-                 * and there has not been another event (which would zero the thumbnail_source_if) */
-                if (actually_visible > 0 && thumbnail_source_id > 0) {
-                    thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
-                } else {
-                    view.queue_draw ();
-                }
-
+                thumbnail_events = 0;
                 thumbnail_source_id = 0;
 
                 return false;
@@ -3323,6 +3324,7 @@ namespace FM {
         public virtual void change_zoom_level () {
             icon_renderer.set_property ("zoom-level", zoom_level);
             view.style_updated ();
+            schedule_thumbnail_timeout ();
         }
 
         private void start_renaming_file (GOF.File file) {

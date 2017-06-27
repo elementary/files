@@ -90,7 +90,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void directory_loaded (void* user_data) {
-//~         debug  ("CANCEL");
         cancellable.cancel ();
 
 
@@ -190,7 +189,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         return_if_fail (file != null && info != null);
 
         file.tagstype = info.get_content_type ();
-        file.update_type ();
 
         knowns.push_head (file);
         if (t_consume_knowns != 0) {
@@ -226,10 +224,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             var rc = yield daemon.get_uri_infos (file.uri);
 
             VariantIter iter = rc.iterator ();
-//~             debug ("iter n_children %d", (int) iter.n_children ());
             assert (iter.n_children () == 1);
             VariantIter row_iter = iter.next_value ().iterator ();
-//~             debug ("row_iter n_children %d", (int) row_iter.n_children ());
 
             if (row_iter.n_children () == 3) {
                 uint64 modified = int64.parse (row_iter.next_value ().get_string ());
@@ -245,7 +241,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 if (type.length > 0 && file.get_ftype () == "application/octet-stream") {
                     if (type != "application/octet-stream") {
                         file.tagstype = type;
-                        file.update_type ();
                     }
                 }
             } else {
@@ -267,10 +262,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             var rc = yield daemon.get_uri_infos (target_uri);
 
             VariantIter iter = rc.iterator ();
-//~             debug ("iter n_children %d", (int) iter.n_children ());
             assert (iter.n_children () == 1);
             VariantIter row_iter = iter.next_value ().iterator ();
-//~             debug ("row_iter n_children %d", (int) row_iter.n_children ());
 
             if (row_iter.n_children () == 3) {
                 /* Only interested in color tag in recent:// at the moment */
@@ -288,7 +281,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
         if (!ignore_dir && file.info != null &&
             (!file.is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
- 
+
             if (file.location.has_uri_scheme ("recent")) {
                 rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
             } else {
@@ -335,7 +328,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 GOF.File first = (GOF.File) (files.data);
                 yield daemon.record_uris (entries, first.uri);
                 /* If the color of the target is set while in recent view, we have to
-                 * update the recent view to reflect this */ 
+                 * update the recent view to reflect this */
                 if (first.location.has_uri_scheme ("recent")) {
                     foreach (GOF.File file in files) {
                         update_file_info (file);

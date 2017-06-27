@@ -159,12 +159,12 @@ namespace Marlin.View {
                 is_frozen = true;
                 path_changed (false);
                 /* if original_request false, leave original_load_request as it is (it may already be true
-                 * if reloading in response to reload button press). */  
+                 * if reloading in response to reload button press). */
                 if (original_request) {
                     original_reload_request = true;
                 }
                 /* Only need to initialise directory once - the slot that originally received the
-                 * reload request does this */ 
+                 * reload request does this */
                 if (original_reload_request) {
                     schedule_reload ();
                     original_reload_request = false;
@@ -206,7 +206,7 @@ namespace Marlin.View {
 
         /* This delay in passing on the path change request is necessary to prevent occasional crashes
          * due to undiagnosed bug.
-         */  
+         */
         private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
             if (path_change_timeout_id > 0) {
                 warning ("Path change request received too rapidly");
@@ -214,7 +214,7 @@ namespace Marlin.View {
             }
             path_change_timeout_id = GLib.Timeout.add (20, () => {
                 on_dir_view_path_change_request (loc, flag, make_root);
-                path_change_timeout_id = 0; 
+                path_change_timeout_id = 0;
                 return false;
             });
         }
@@ -298,7 +298,7 @@ namespace Marlin.View {
                 original_reload_request = true;
                 /* Propagate reload signal to any other slot showing this directory indicating it is not
                  * the original signal */
-                directory.need_reload (false); 
+                directory.need_reload (false);
             }
         }
 
@@ -464,7 +464,7 @@ namespace Marlin.View {
             } else if (directory.is_trash && (uri == Marlin.TRASH_URI + Path.DIR_SEPARATOR_S)) {
                 msg = EMPTY_TRASH_MESSAGE;
             } else if (directory.permission_denied) {
-                msg = DENIED_MESSAGE; 
+                msg = DENIED_MESSAGE;
             }
             return msg;
         }

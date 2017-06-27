@@ -169,6 +169,8 @@ GType gof_file_get_type (void);
 GOFFile         *gof_file_new (GFile *location, GFile *dir);
 
 void            gof_file_update (GOFFile *file);
+void            gof_file_initial_update (GOFFile *file);
+gboolean        gof_file_visible_update (GOFFile *file);
 void            gof_file_query_update (GOFFile *file);
 gboolean        gof_file_ensure_query_info (GOFFile *file);
 void            gof_file_update_type (GOFFile *file);

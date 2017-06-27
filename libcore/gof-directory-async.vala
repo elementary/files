@@ -55,7 +55,7 @@ public class Async : Object {
     public State state {get; private set;}
 
     private HashTable<GLib.File,GOF.File> file_hash;
-    public uint files_count;
+    public int files_count; /* int to avoid under-flowing */
 
     public bool permission_denied = false;
     public bool network_available = true;
@@ -640,7 +640,7 @@ public class Async : Object {
                             }
 
                             gof.info = file_info;
-                            gof.update ();
+                            gof.initial_update ();
 
                             file_hash.insert (gof.location, gof);
                             after_load_file (gof, show_hidden, file_loaded_func);
@@ -738,7 +738,7 @@ public class Async : Object {
             if (gof != null && gof.info != null
                 && (!gof.is_hidden || Preferences.get_default ().show_hidden_files))
 
-                gof.update ();
+                gof.initial_update ();
         }
     }
 
@@ -765,6 +765,7 @@ public class Async : Object {
 
     public void file_hash_add_file (GOF.File gof) { /* called directly by GOF.File */
         file_hash.insert (gof.location, gof);
+        files_count++;
     }
 
     public GOF.File file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
@@ -778,6 +779,7 @@ public class Async : Object {
             if (result == null) {
                 result = new GOF.File (file, location);
                 file_hash.insert (file, result);
+                files_count++;
             }
             else if (update_hash)
                 file_hash.insert (file, result);
@@ -1053,8 +1055,10 @@ public class Async : Object {
     public static void remove_file_from_cache (GOF.File gof) {
         assert (gof != null);
         Async? dir = cache_lookup (gof.directory);
-        if (dir != null)
+        if (dir != null) {
             dir.file_hash.remove (gof.location);
+            dir.files_count--;
+        }
     }
 
     public static Async? cache_lookup (GLib.File? file) {

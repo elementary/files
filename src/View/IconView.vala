@@ -143,7 +143,7 @@ namespace FM {
 
         /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
          * It would take an exponentially long time. Use "select_files" function in parent class.
-         */ 
+         */
         public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
             if (path != null) {
                 tree.select_path (path);  /* This selects path but does not unselect the rest (unlike TreeView) */
@@ -292,7 +292,7 @@ namespace FM {
             } else {
                 select_path (path);
             }
-            
+
             set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
 
             if (!select) {
@@ -464,7 +464,7 @@ namespace FM {
             if (icon_renderer.selection_helpers) {
                 int x_helper_offset = x - icon_renderer.helper_x;
                 /* IconView provide IconRenderer with bin coords not widget coords (unlike TreeView) so we have to
-                 * correct for scrolling */ 
+                 * correct for scrolling */
                 int y_helper_offset = y - icon_renderer.helper_y + (int)(get_vadjustment ().value);
 
                 on_helper =  (x_helper_offset >= 0 &&
@@ -480,8 +480,8 @@ namespace FM {
 
         /* When Icon View is automatically adjusting column number it does not expose the actual number of
          * columns (get_columns () returns -1). So we have to write our own method. This is the only way
-         * (I can think of) that works on row 0. 
-         */   
+         * (I can think of) that works on row 0.
+         */
         private int get_n_cols () {
             var path = new Gtk.TreePath.from_indices (0, -1);
             int index = 0;
