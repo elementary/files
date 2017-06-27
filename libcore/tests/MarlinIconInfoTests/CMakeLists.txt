@@ -1,3 +1,5 @@
+enable_testing ()
+
 include_directories(${CMAKE_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -20,10 +22,21 @@ set (TEST_NAME
 link_directories (${LIB_PATHS})
 add_definitions (${CFLAGS} -O2)
 
+vala_precompile (VALA_TEST_C ${TEST_NAME}
+  MarlinIconInfoTests.vala
+  PACKAGES
+    gtk+-3.0
+    posix
+    pantheon-files-core
+  OPTIONS
+    --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
+    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+    --thread
+    --target-glib=2.32 # Needed for new thread API
+)
 
 add_executable (${TEST_NAME}
-    tests.c
-    marlincore-tests-icon-info.c
+    ${VALA_TEST_C}
 )
 
 target_link_libraries (${TEST_NAME} ${CORE_LIB} ${DEPS_LIBRARIES})
