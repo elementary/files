@@ -765,6 +765,8 @@ namespace FM {
                 list.prepend (file);
             });
 
+            list.reverse ();
+
             return list;
         }
 
