@@ -7,6 +7,7 @@ namespace Config {
     public const string VERSION;
     public const string GNOMELOCALEDIR;
     public const string PLUGIN_DIR;
+    public const string TESTDATA_DIR;
 }
 
 [CCode (cprefix = "FM", lower_case_cprefix = "fm_", cheader_filename = "fm-list-model.h")]
