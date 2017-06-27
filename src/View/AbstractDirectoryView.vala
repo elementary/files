@@ -163,9 +163,8 @@ namespace FM {
         int thumbnail_request = -1;
         uint thumbnail_source_id = 0;
         uint freeze_source_id = 0;
-        double current_val = 0.0;  /* Thumbnail on significant scroll change */
+        double current_val = -100.0;  /* Thumbnail on significant scroll change */
         Gtk.Allocation current_alloc;  /* Thumbnail on significant size change */
-        bool still_scrolling = false; /* Do not thumbnail while still scrolling */
         Marlin.Thumbnailer thumbnailer = null;
 
         /**TODO** Support for preview see bug #1380139 */
@@ -2380,6 +2379,7 @@ namespace FM {
 
 
 /** Thumbnail handling */
+        uint thumbnail_events = 0;
         private void schedule_thumbnail_timeout () {
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
@@ -2395,36 +2395,18 @@ namespace FM {
                     return;
             }
 
-            /* If a new scroll or allocate event received before get_visible_range started,
-             * set flag to continue timout without thumbnailing */
-            if (thumbnail_source_id > 0) {
-                still_scrolling = true;
+            thumbnail_events++;
+            if (thumbnail_events > 1) {
                 return;
-            } else {
-                still_scrolling = false;
             }
-
-            /* In order to improve performance of the Icon View when there are a large number of files,
-             * we freeze child notifications while the view is being scrolled or resized.
-             * The timeout is restarted for each scroll or size allocate event */
-            cancel_timeout (ref freeze_source_id);
-            freeze_child_notify ();
-            freeze_source_id = Timeout.add (100, () => {
-                if (thumbnail_source_id > 0) {
-                    return true;
-                }
-                thaw_child_notify ();
-                freeze_source_id = 0;
-                return false;
-            });
 
             /* Views with a large number of files take longer to redraw (especially IconView) so
              * we wait longer for scrolling to stop before updating the thumbnails */
-            uint delay = uint.min (50 + slot.directory.files_count / 10, 500);
-            thumbnail_source_id = GLib.Timeout.add (delay, () => {
+            uint delay = uint.min (100 + slot.directory.files_count / 100, 500);
 
-                if (still_scrolling) {
-                    still_scrolling = false;
+            thumbnail_source_id = GLib.Timeout.add (delay, () => {
+                if (thumbnail_events > 1) {
+                    thumbnail_events = 1;
                     return true;
                 }
 
@@ -2435,13 +2417,11 @@ namespace FM {
                 bool valid_iter;
                 GOF.File file;
                 GLib.List<GOF.File> visible_files = null;
-                uint actually_visible = 0;
                 bool new_visible = false;
 
                 if (get_visible_range (out start_path, out end_path)) {
                     sp = start_path;
                     ep = end_path;
-
                     /* To improve performance for large folders we thumbnail files on either side of visible region as well.  The delay is mainly in redrawing the view and this reduces the number of updates and redraws necessary when scrolling */
 
                     int count = 1;
@@ -2457,40 +2437,35 @@ namespace FM {
 
                     /* iterate over the range to collect all files */
                     valid_iter = model.get_iter (out iter, start_path);
-                    while (valid_iter && thumbnail_source_id > 0) {
+                    while (valid_iter) {
                         file = model.file_for_iter (iter);
                         path = model.get_path (iter);
                         new_visible = file.visible_update () || new_visible;
 
                         /* Ask thumbnailer only if ThumbState UNKNOWN */
-                        if (file != null &&
-                            (file.flags == GOF.File.ThumbState.UNKNOWN)) {
-
+                        if (file != null && file.flags == GOF.File.ThumbState.UNKNOWN) {
                             visible_files.prepend (file);
-                            if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                actually_visible++;
-                            }
                         }
 
                         /* check if we've reached the end of the visible range */
-                        if (path.compare (end_path) != 0)
+                        if (path.compare (end_path) != 0) {
                             valid_iter = get_next_visible_iter (ref iter);
-                        else
+                        } else {
                             valid_iter = false;
+                        }
+                    }
+
+                    /* This is the only place that new thumbnail files are created */
+                    /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
+                     * and there has not been another event (which would zero the thumbnail_source_if) */
+                    thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
+
+                    if (new_visible) {
+                        view.queue_draw ();
                     }
                 }
 
-                /* This is the only place that new thumbnail files are created */
-                /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
-                 * and there has not been another event (which would zero the thumbnail_source_if) */
-                if (actually_visible > 0 && thumbnail_source_id > 0) {
-                    thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
-                }
-
-                if (new_visible) {
-                    view.queue_draw ();
-                }
-
+                thumbnail_events = 0;
                 thumbnail_source_id = 0;
 
                 return false;
