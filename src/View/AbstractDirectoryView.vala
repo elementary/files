@@ -651,7 +651,7 @@ namespace FM {
             /* will not have been disconnected */
 
             if (dir.is_loading ()) {
-                prepare_to_load_directory (dir);
+                after_loading_directory (dir);
             }
 
             dir.file_added.disconnect (on_directory_file_added);
@@ -1376,7 +1376,7 @@ namespace FM {
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
             /* Should only be called on directory creation or reload */
-            prepare_to_load_directory (dir);
+            after_loading_directory (dir);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
