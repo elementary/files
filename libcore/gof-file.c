@@ -682,6 +682,7 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
     g_return_val_if_fail (size >= 1, NULL);
     nicon = gof_file_get_icon (file, size, flags);
     pix = marlin_icon_info_get_pixbuf_force_size (nicon, size, force_size);
+
     if (nicon) {
         g_object_unref (nicon);
     }
