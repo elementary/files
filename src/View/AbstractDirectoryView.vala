@@ -81,7 +81,7 @@ namespace FM {
             {"paste_into", on_common_action_paste_into},
             {"open_in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark},
-            {"properties", on_common_action_properties}
+            {"properties", on_common_action_properties},
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -237,7 +237,6 @@ namespace FM {
                     action_set_enabled (selection_actions, "cut", false);
                     action_set_enabled (common_actions, "copy", false);
                     action_set_enabled (common_actions, "paste_into", false);
-                    action_set_enabled (window.win_actions, "select_all", false);
 
                     /* Fix problems when navigating away from directory with large number
                      * of selected files (e.g. OverlayBar critical errors)
@@ -280,6 +279,8 @@ namespace FM {
                 return (uint)Posix.getuid () == 0;
             }
         }
+
+        protected bool all_selected = false;
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -664,6 +665,7 @@ namespace FM {
             freeze_tree ();
             block_model ();
             model.clear ();
+            all_selected = false;
             unblock_model ();
             connect_directory_loading_handlers (slot.directory);
             /* tree will be thawed after done loading */
@@ -1221,7 +1223,6 @@ namespace FM {
         private void on_common_action_copy (GLib.SimpleAction action, GLib.Variant? param) {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
-
 
         public static void after_pasting_files (GLib.HashTable? uris, void* pointer) {
             if (pointer == null)
@@ -2179,7 +2180,6 @@ namespace FM {
             can_open = can_open_file (file);
             can_show_properties = !(in_recent && selection_count > 1);
 
-            action_set_enabled (window.win_actions, "select_all", !slot.directory.is_empty ());
             action_set_enabled (common_actions, "paste_into", can_paste_into);
             action_set_enabled (common_actions, "open_in", only_folders);
             action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
@@ -2764,6 +2764,19 @@ namespace FM {
                 case Gdk.Key.N:
                     if (control_pressed) {
                         new_empty_folder ();
+                        return true;
+                    }
+
+                    break;
+
+                case Gdk.Key.a:
+                    if (control_pressed) {
+                        if (all_selected) {
+                            unselect_all ();
+                        } else {
+                            select_all ();
+                        }
+
                         return true;
                     }
 
@@ -3504,15 +3517,20 @@ namespace FM {
         protected void invert_selection () {
             GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
 
-            foreach (Gtk.TreePath p in get_selected_paths ())
+            foreach (Gtk.TreePath p in get_selected_paths ()) {
                 selected_row_refs.prepend (new Gtk.TreeRowReference (model, p));
+            }
 
             select_all ();
 
-            foreach (Gtk.TreeRowReference r in selected_row_refs) {
-                var p = r.get_path ();
-                if (p != null)
-                    unselect_path (p);
+            if (selected_row_refs != null) {
+                foreach (Gtk.TreeRowReference r in selected_row_refs) {
+                    var p = r.get_path ();
+                    if (p != null)
+                        unselect_path (p);
+                }
+
+                all_selected = false;
             }
         }
 

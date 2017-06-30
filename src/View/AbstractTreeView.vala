@@ -127,22 +127,24 @@ namespace FM {
 
         public override void select_all () {
             tree.get_selection ().select_all ();
+            all_selected = true;
         }
 
         public override void unselect_all () {
             tree.get_selection ().unselect_all ();
+            all_selected = false;
         }
 
         /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
          * It would take an exponentially long time. Use "select_files" function in parent class.
-         */  
+         */
         public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
             if (path != null) {
                 var selection = tree.get_selection ();
                 selection.select_path (path);
                 if (cursor_follows) {
                     /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
-                     * so we have to remember them and reselect afterwards */ 
+                     * so we have to remember them and reselect afterwards */
                     GLib.List<Gtk.TreePath> selected_paths = null;
                     selection.selected_foreach ((m, p, i) => {
                         selected_paths.prepend (p);
@@ -294,7 +296,7 @@ namespace FM {
             } else {
                 select_path (path);
             }
-            
+
             set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
 
             if (!select) {
