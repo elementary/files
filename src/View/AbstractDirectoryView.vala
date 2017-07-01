@@ -1474,6 +1474,13 @@ namespace FM {
         private void on_drag_begin (Gdk.DragContext context) {
             drag_has_begun = true;
             should_activate = false;
+        }
+
+        private void on_drag_data_get (Gdk.DragContext context,
+                                       Gtk.SelectionData selection_data,
+                                       uint info,
+                                       uint timestamp) {
+
             drag_file_list = get_selected_files_for_transfer ();
 
             if (drag_file_list == null)
@@ -1485,12 +1492,6 @@ namespace FM {
                 Gtk.drag_set_icon_pixbuf (context, file.pix, 0, 0);
             else
                 Gtk.drag_set_icon_name (context, "stock-file", 0, 0);
-        }
-
-        private void on_drag_data_get (Gdk.DragContext context,
-                                       Gtk.SelectionData selection_data,
-                                       uint info,
-                                       uint timestamp) {
 
             Marlin.DndHandler.set_selection_data_from_file_list (selection_data, drag_file_list);
         }
