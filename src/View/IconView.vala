@@ -457,7 +457,6 @@ namespace FM {
             int x_offset = x - area.x;
             int y_offset = y - area.y;
 
-            /* Area.height includes name as well. Assume area for icon is square */
             int pix_x_offset = (area.width - pix.width) / 2;
             int pix_y_offset = (area.height - pix.height) / 2;
 
