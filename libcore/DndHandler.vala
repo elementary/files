@@ -270,16 +270,20 @@ namespace Marlin {
 
         public static void set_selection_data_from_file_list (Gtk.SelectionData selection_data,
                                                               GLib.List<GOF.File> file_list,
-                                                              string? prefix = "") {
+                                                              string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            bool in_recent = file_list.data.is_recent_uri_scheme ();
+            if (file_list != null && file_list.data != null && file_list.data is GOF.File) {
+                bool in_recent = file_list.data.is_recent_uri_scheme ();
 
-            file_list.@foreach ((file) => {
-                var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
-                sb.append (target);
-                sb.append ("\r\n");  /* Drop onto Filezilla does not work without the "\r" */
-            });
+                file_list.@foreach ((file) => {
+                    var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
+                    sb.append (target);
+                    sb.append ("\r\n");  /* Drop onto Filezilla does not work without the "\r" */
+                });
+            } else {
+                warning ("Invalid file list for drag and drop ignored");
+            }
 
             selection_data.@set (selection_data.get_target (),
                                  8,
