@@ -133,14 +133,12 @@ namespace FM {
             return tree.get_path_at_pos (win_x, win_y + (int)(get_vadjustment ().get_value ()));
         }
 
-        public override void select_all () {
+        public override void tree_select_all () {
             tree.select_all ();
-            all_selected = true;
         }
 
-        public override void unselect_all () {
+        public override void tree_unselect_all () {
             tree.unselect_all ();
-            all_selected = false;
         }
 
         /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one

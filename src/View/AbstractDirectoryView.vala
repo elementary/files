@@ -81,7 +81,7 @@ namespace FM {
             {"paste_into", on_common_action_paste_into},
             {"open_in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark},
-            {"properties", on_common_action_properties},
+            {"properties", on_common_action_properties}
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -280,7 +280,7 @@ namespace FM {
             }
         }
 
-        protected bool all_selected = false;
+        private bool all_selected = false;
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -3534,6 +3534,16 @@ namespace FM {
             }
         }
 
+        public void select_all () {
+            tree_select_all ();
+            all_selected = true;
+        }
+
+        public void unselect_all () {
+            tree_unselect_all ();
+            all_selected = false;
+        }
+
         public virtual void sync_selection () {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual void linear_select_path (Gtk.TreePath path) {}
@@ -3544,8 +3554,8 @@ namespace FM {
         public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
         public abstract Gtk.TreePath? get_path_at_pos (int x, int win);
         public abstract Gtk.TreePath? get_path_at_cursor ();
-        public abstract void select_all ();
-        public abstract void unselect_all ();
+        public abstract void tree_select_all ();
+        public abstract void tree_unselect_all ();
         public abstract void select_path (Gtk.TreePath? path, bool cursor_follows = false);
         public abstract void unselect_path (Gtk.TreePath? path);
         public abstract bool path_is_selected (Gtk.TreePath? path);
