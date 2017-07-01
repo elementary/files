@@ -143,7 +143,7 @@ namespace FM {
 
         /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
          * It would take an exponentially long time. Use "select_files" function in parent class.
-         */ 
+         */
         public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
             if (path != null) {
                 tree.select_path (path);  /* This selects path but does not unselect the rest (unlike TreeView) */
@@ -245,7 +245,9 @@ namespace FM {
                     }
                 } else {
                     bool on_helper = false;
-                    bool on_icon = is_on_icon (x, y, area.x, area.y, ref on_helper);
+                    GOF.File? file = model.file_for_path (p);
+
+                    bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
 
                     if (on_helper) {
                         zone = ClickZone.HELPER;
@@ -292,7 +294,7 @@ namespace FM {
             } else {
                 select_path (path);
             }
-            
+
             set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
 
             if (!select) {
@@ -436,6 +438,7 @@ namespace FM {
                 return path;
             }
         }
+
         protected override Gtk.TreePath down (Gtk.TreePath path) {
             int cols = get_n_cols ();
             int index = path.get_indices ()[0];
@@ -450,38 +453,35 @@ namespace FM {
             }
         }
 
-        protected override bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {
-            /* orig_x and orig_y must be top left hand corner of icon (excluding helper) */
-            int x_offset = x - orig_x;
-            int y_offset = y - orig_y;
+        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper) {
+            int x_offset = x - area.x;
+            int y_offset = y - area.y;
 
-            bool on_icon =  (x_offset >= 0 &&
-                             x_offset <= icon_size &&
-                             y_offset >= 0 &&
-                             y_offset <= icon_size);
+            /* Area.height includes name as well. Assume area for icon is square */
+            int pix_x_offset = (area.width - pix.width) / 2;
+            int pix_y_offset = (area.height - pix.height) / 2;
+
+            bool on_icon =  (x_offset >= pix_x_offset &&
+                             x_offset <= pix_x_offset + pix.width  &&
+                             y_offset >= pix_y_offset &&
+                             y_offset <= pix_y_offset + pix.height);
 
             on_helper = false;
+
             if (icon_renderer.selection_helpers) {
-                int x_helper_offset = x - icon_renderer.helper_x;
-                /* IconView provide IconRenderer with bin coords not widget coords (unlike TreeView) so we have to
-                 * correct for scrolling */ 
-                int y_helper_offset = y - icon_renderer.helper_y + (int)(get_vadjustment ().value);
-
-                on_helper =  (x_helper_offset >= 0 &&
-                             x_helper_offset <= icon_renderer.helper_size &&
-                             y_helper_offset >= 0 &&
-                             y_helper_offset <= icon_renderer.helper_size);
-
+                int hs = icon_renderer.helper_size;
+                on_helper = (on_icon &&
+                             x_offset <= int.max (pix_x_offset + hs, hs) &&
+                             y_offset <= int.max (pix_y_offset + hs, hs));
             }
 
             return on_icon;
         }
 
-
         /* When Icon View is automatically adjusting column number it does not expose the actual number of
          * columns (get_columns () returns -1). So we have to write our own method. This is the only way
-         * (I can think of) that works on row 0. 
-         */   
+         * (I can think of) that works on row 0.
+         */
         private int get_n_cols () {
             var path = new Gtk.TreePath.from_indices (0, -1);
             int index = 0;
