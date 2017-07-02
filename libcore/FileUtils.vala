@@ -162,6 +162,16 @@ namespace PF.FileUtils {
         return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
     }
 
+    public string? sanitize_path_for_appinfo_from_commandline (string uri) {
+        var s = sanitize_path (uri);
+        if (s != null && s.length > 0) {
+            string ss = "'" + s.replace ("'", "%27").replace ("%", "%%") + "'";
+            return (ss);
+        } else {
+            return null;
+        }
+    }
+
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
       * to interpret relative paths where necessary.
       **/
@@ -173,6 +183,10 @@ namespace PF.FileUtils {
 
         if (p == null || p == "") {
             return cp ?? "";
+        }
+
+        if (p.contains ("\n") || p.contains ("\r")) {
+            return "";
         }
 
         string? unescaped_p = Uri.unescape_string (p, null);
@@ -412,7 +426,7 @@ namespace PF.FileUtils {
 
         string default_date_format = Granite.DateTime.get_default_date_format (false, true, true);
 
-        if (disp_year < now_year) {  
+        if (disp_year < now_year) {
             return dt.format (default_date_format);
         }
 

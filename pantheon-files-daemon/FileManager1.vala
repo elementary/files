@@ -45,7 +45,13 @@ public class FileManager1 : Object {
         string cmd = "pantheon-files -t";
 
         foreach (string s in uris) {
-            cmd += " " + ("'" + PF.FileUtils.sanitize_path (s).replace ("'", "%27").replace ("%", "%%") + "'");
+            var ss = PF.FileUtils.sanitize_path_for_appinfo_from_commandline (s);
+
+            if (ss != null) {
+                cmd += " " + ss;
+            } else {
+                throw new IOError.FAILED ("Invalid path");
+            }
         }
 
         try {
