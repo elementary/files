@@ -25,6 +25,7 @@ interface FileManager1Proxy : Object {
 }
 
 FileManager1Proxy? fm1_interface = null;
+GLib.Cancellable? cancellable = null;
 GLib.MainLoop loop;
 
 /*** Tests ***/
@@ -37,16 +38,21 @@ void commandline_test1 () {
     string uri = """'New Folder'""";
     if (fm1_interface != null) {
         assert (filemanager1_sanitize_commandline_test (uri));
+    } else {
+        assert (PF.FileUtils.sanitize_path_for_appinfo_from_commandline (uri) != null);
     }
 }
 
 void commandline_test2 () {
+    /* Should fail because contains more than one line */
     string uri = """if [ $number = "1" ]; then
                     echo "Number equals 1"
                     else echo "Number does not equal 1"
                     fi""";
     if (fm1_interface != null) {
-        assert (filemanager1_sanitize_commandline_test (uri));
+        assert (!filemanager1_sanitize_commandline_test (uri));
+    } else {
+        assert (PF.FileUtils.sanitize_path_for_appinfo_from_commandline (uri) == null);
     }
 }
 
@@ -75,15 +81,6 @@ bool filemanager1_sanitize_commandline_test (string uri) {
 /*** DBus functions ***/
 
 void on_fm1_bus_aquired (DBusConnection conn, string n) {
-    var cancellable = new Cancellable ();
-
-    uint timeout_id = 0;
-    timeout_id = Timeout.add (500, () => {
-        cancellable.cancel ();
-        timeout_id = 0;
-        return false;
-    });
-
     try {
         string name = "/org/freedesktop/FileManager1";
         var object = new FileManager1 ();
@@ -93,39 +90,55 @@ void on_fm1_bus_aquired (DBusConnection conn, string n) {
         fm1_interface = Bus.get_proxy_sync (BusType.SESSION, "org.freedesktop.FileManager1",
                                      "/org/freedesktop/FileManager1", 0, cancellable);
     } catch (IOError e) {
-        debug ("Could not register FileManager1 service %s", e.message);
-    }
-
-    if (timeout_id == 0) {
-        debug ("Timed out trying to register object");
+        message ("Could not register FileManager1 service %s", e.message);
     }
 }
 
 
 void on_name_lost (DBusConnection connection, string name) {
-    critical ("Name %s was not acquired", name);
-    loop.quit ();
+    message ("Name %s was not acquired", name);
+    fm1_interface = null;
 }
 
+uint timeout_id = 0;
 int main (string[] args) {
-    loop = new GLib.MainLoop ();
+    var context = GLib.MainContext.@default ();
+    cancellable = new Cancellable ();
 
-    /* This starts the daemon if not already running */
+    var t_source = new TimeoutSource.seconds (1);
+    t_source.set_callback (() => {
+        cancellable.cancel ();
+        timeout_id = 0;
+        loop.quit ();
+        return false;
+    });
+
+    t_source.attach (context);
+
+    loop = new GLib.MainLoop (context, true);
+
+
+    /* This starts the daemon if not already running (may stall on Travis CI) */
     var id = Bus.own_name (BusType.SESSION, "org.freedesktop.FileManager1", BusNameOwnerFlags.REPLACE,
                   (conn, n) => {on_fm1_bus_aquired (conn, n); loop.quit ();},
                   () => {},
-                  (conn, n) => {loop.quit ();}
+                  (conn, n) => {on_name_lost (conn, n); loop.quit ();}
             );
 
-    loop.run (); /* Wait until bus name acquired, FileManager1 object registered and proxy obtained*/
+    /* Wait until bus name acquired, FileManager1 object registered and proxy obtained
+     * or timed out.
+     */
+    loop.run ();
 
-    if (fm1_interface != null) {
-        Test.init (ref args);
-
-        add_filemanager1_tests ();
-
-        Test.run ();
+    if (fm1_interface == null) {
+        message ("Timed out trying set up dbus");
+    } else {
+        Source.remove (t_source.get_id ());
     }
 
-    return 0;
+    Test.init (ref args);
+
+    add_filemanager1_tests ();
+
+    return Test.run ();
 }
