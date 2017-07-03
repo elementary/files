@@ -43,7 +43,8 @@ public class FileManager1 : Object {
         string cmd = "pantheon-files -t";
 
         foreach (string s in uris) {
-            cmd += (" \"" + PF.FileUtils.sanitize_path (s) + "\"");
+            s = s.replace ("'", "%27").replace ("%", "%%");
+            cmd += (" \'" + PF.FileUtils.sanitize_path (s, null, false) + "\'");
         }
 
         try {
