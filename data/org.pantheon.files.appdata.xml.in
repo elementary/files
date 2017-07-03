@@ -118,8 +118,9 @@
   </releases>
   <developer_name>elementary LLC.</developer_name>
   <url type="homepage">http://elementary.io/</url>
-  <url type="bugtracker">https://bugs.launchpad.net/pantheon-files</url>
+  <url type="bugtracker">https://github.com/elementary/files/issues</url>
   <url type="donation">https://elementary.io/get-involved#funding</url>
   <url type="help">https://elementaryos.stackexchange.com/questions/tagged/pantheon-files</url>
+  <url type="translate">https://l10n.elementary.io/projects/files</url>
   <update_contact>contact_AT_elementary.io</update_contact>
 </component>
