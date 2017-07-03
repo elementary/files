@@ -342,6 +342,12 @@ namespace Marlin.View {
                 });
             });
 
+
+            tabs.tab_added.connect ((tab) => {
+                var vc = tab.page as ViewContainer;
+                vc.window = this;
+            });
+
             tabs.tab_removed.connect (on_tab_removed);
 
             sidebar.request_focus.connect (() => {
@@ -447,8 +453,9 @@ namespace Marlin.View {
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
 
-            if (current_tab == null || old_tab == current_tab)
+            if (current_tab == null || old_tab == current_tab) {
                 return;
+            }
 
             if (old_tab != null) {
                 old_tab.set_active_state (false);
