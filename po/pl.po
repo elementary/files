@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-07-03 12:39+0000\n"
+"PO-Revision-Date: 2017-07-03 12:41+0000\n"
 "Last-Translator: Piotr Strebski <strebski@o2.pl>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -76,7 +76,7 @@ msgstr "Spróbuj ponownie"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr "Sprawdź dane logowania"
+msgstr "Sprawdź swoje dane użytkownika."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -589,7 +589,7 @@ msgid ""
 "permissions to see them."
 msgstr ""
 "Pliki w katalogu „%B” nie mogą być usunięte ponieważ nie masz uprawnień do "
-"ich oglądania"
+"ich oglądania."
 
 #: ../libcore/marlin-file-operations.c:1613
 #: ../libcore/marlin-file-operations.c:2732
@@ -1014,7 +1014,7 @@ msgstr "Nie można skopiować \"%B\" tutaj."
 
 #: ../libcore/marlin-file-operations.c:4595
 msgid "There was an error copying the file into %B."
-msgstr "Wystąpił błąd podczas kopiowania pliku do %B"
+msgstr "Wystąpił błąd podczas kopiowania pliku do %B."
 
 #: ../libcore/marlin-file-operations.c:4822
 msgid "Copying Files"
@@ -1800,7 +1800,7 @@ msgstr "Sieć jest niedostępna"
 
 #: ../src/View/ViewContainer.vala:384
 msgid "A working network is needed to reach this folder"
-msgstr "Aby uzyskać dostęp do tego katalogu wymagana jest działająca sieć."
+msgstr "Aby uzyskać dostęp do tego katalogu wymagana jest działająca sieć"
 
 #: ../src/View/ViewContainer.vala:386
 msgid "This Folder Does Not Belong to You"
@@ -1868,7 +1868,7 @@ msgstr "Otwórz w nowym oknie"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "Otwórz w innym programie..."
+msgstr "Otwórz w innym programie…"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1931,7 +1931,7 @@ msgstr "%u pliki, "
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/Widgets/OverlayBar.vala:303
 msgid "%s approx."
-msgstr "ok. %s"
+msgstr "około %s."
 
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/Widgets/OverlayBar.vala:306
@@ -1961,7 +1961,7 @@ msgstr "Uruchom"
 
 #: ../src/Application.vala:150
 msgid "Show the version of the program."
-msgstr "Wypisuje informacje o wersji"
+msgstr "Wypisuje informacje o wersji programu."
 
 #: ../src/Application.vala:152
 msgid "Open uri(s) in new tab"
@@ -2186,7 +2186,7 @@ msgstr "Oryginalne położenie:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Inny program..."
+msgstr "Inny program…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2401,7 +2401,7 @@ msgstr "Przechodzi do położenia „%s”"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Łączenie z serwerem..."
+msgstr "Łączenie z serwerem…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
