@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-07-04 08:43+0000\n"
+"PO-Revision-Date: 2017-07-04 08:48+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) "
 "<https://l10n.elementary.io/projects/files/files/zh_CN/>\n"
@@ -395,22 +395,22 @@ msgstr "另一个到 %s 的链接"
 #: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
-msgstr "到 %2$s 的第 %1$'d 个链接"
+msgstr "到 %s 的第 %'d 个链接"
 
 #: ../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
-msgstr "到 %2$s 的第 %1$'d 个链接"
+msgstr "到 %s 的第 %'d 个链接"
 
 #: ../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
-msgstr "到 %2$s 的第 %1$'d 个链接"
+msgstr "到 %s 的第 %'d 个链接"
 
 #: ../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
-msgstr "到 %2$s 的第 %1$'d 个链接"
+msgstr "到 %s 的第 %'d 个链接"
 
 #: ../libcore/marlin-file-operations.c:465
 msgid " (copy)"
@@ -1002,7 +1002,7 @@ msgstr "无法复制到回收站。"
 
 #: ../libcore/marlin-file-operations.c:6004
 msgid "It is not permitted to copy files into the trash"
-msgstr "将文件复制到回收站是不允许的。"
+msgstr "无法将文件复制到回收站"
 
 #: ../libcore/marlin-file-operations.c:6145
 msgid "untitled folder"
@@ -1677,7 +1677,7 @@ msgstr "无法挂载文件夹"
 
 #: ../src/View/ViewContainer.vala:390
 msgid "Could not connect to the server for this folder."
-msgstr "无法连接到此文件夹所在服务器"
+msgstr "无法连接到此文件夹所在服务器。"
 
 #: ../src/View/ViewContainer.vala:392
 msgid "Unable to Display Folder Contents"
@@ -1729,7 +1729,7 @@ msgstr "在新窗口中打开"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "用其他应用打开..."
+msgstr "用其他应用打开…"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1998,7 +1998,7 @@ msgstr "未知"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "正在载入..."
+msgstr "正在载入…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2038,7 +2038,7 @@ msgstr "原始位置："
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "其他应用..."
+msgstr "其他应用…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2226,7 +2226,7 @@ msgstr "转到 %s"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "服务器..."
+msgstr "服务器…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
