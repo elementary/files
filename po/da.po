@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-06-23 09:54+0000\n"
-"Last-Translator: Jimmy Merrild Krag <beruic@gmail.com>\n"
+"PO-Revision-Date: 2017-07-01 22:14+0000\n"
+"Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
@@ -2198,7 +2198,7 @@ msgstr "Henvis hertil"
 
 #: ../libcore/DndHandler.vala:98
 msgid "Cancel"
-msgstr "Annullér"
+msgstr "Annuller"
 
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
@@ -2213,7 +2213,6 @@ msgid "Could not rename to '%s'"
 msgstr "Kunne ikke omdøbe til \"%s\""
 
 #: ../libcore/FileUtils.vala:434
-#, fuzzy
 msgid "Today at %-H:%M"
 msgstr "I dag kl. %-H:%M"
 
@@ -2226,9 +2225,8 @@ msgid "%A at %-H:%M"
 msgstr ""
 
 #: ../libcore/FileUtils.vala:453
-#, fuzzy
 msgid "%A at %-I:%M %p"
-msgstr "%A den %-I:%M"
+msgstr "%A kl. %-I:%M"
 
 #: ../libwidgets/View/SearchResults.vala:187
 msgid "In This Folder"
