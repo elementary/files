@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-07-07 20:31+0000\n"
+"PO-Revision-Date: 2017-07-07 20:33+0000\n"
 "Last-Translator: Mattias Ezequiel Mignone <memignone@gmail.com>\n"
 "Language-Team: Spanish <https://l10n.elementary.io/projects/files/files/es/>"
 "\n"
@@ -699,7 +699,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Si elimina un archivo se perderá para siempre."
+" Si elimina un archivo, se perderá para siempre"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
@@ -907,7 +907,7 @@ msgstr "%S de %S"
 #: ../libcore/marlin-file-operations.c:3212
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S de %S — %T restantes (%S/seg)"
+msgstr[0] "%S de %S — %T restante (%S/seg)"
 msgstr[1] "%S de %S — %T restantes (%S/seg)"
 
 #: ../libcore/marlin-file-operations.c:3591
@@ -1777,7 +1777,7 @@ msgstr "No se puede conectar con el servidor para acceder a esta carpeta."
 
 #: ../src/View/ViewContainer.vala:392
 msgid "Unable to Display Folder Contents"
-msgstr "No se puede mostrar el contenido de la carpeta."
+msgstr "No se puede mostrar el contenido de la carpeta"
 
 #: ../src/View/ViewContainer.vala:393
 msgid "The operation timed out."
@@ -2191,7 +2191,7 @@ msgstr "%s (%s, %s)"
 
 #: ../libcore/gof-directory-async.vala:587
 msgid "Server did not respond within time limit"
-msgstr "El servidor no ha respondido dentro del tiempo límite."
+msgstr "El servidor no ha respondido dentro del tiempo límite"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
