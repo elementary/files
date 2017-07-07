@@ -33,7 +33,7 @@ find_package (PkgConfig)
 OPTION (WITH_UNITY "Add Unity launcher support" ON)
 pkg_check_modules (UNITY unity>=4.0.0)
 
-set(COMMON_DEPS
+set (COMMON_DEPS
     granite>=0.3.0
     glib-2.0>=2.29.0
     gthread-2.0
@@ -58,10 +58,10 @@ endif ()
 
 if (MODULE_ONLY)
     add_subdirectory (filechooser-module)
-ELSEIF (LIB_ONLY)
+elseif (LIB_ONLY)
     add_subdirectory (libcore)
     add_subdirectory (libwidgets)
-ELSE ()
+else ()
     add_subdirectory (src)
     add_subdirectory (data)
     add_subdirectory (pantheon-files-daemon)
@@ -69,5 +69,4 @@ ELSE ()
     add_subdirectory (libwidgets)
     add_subdirectory (plugins)
     add_subdirectory (filechooser-module)
-    add_subdirectory (po)
-ENDIF ()
+endif ()
