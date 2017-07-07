@@ -26,6 +26,8 @@ vala_precompile (VALA_TEST_C ${TEST_NAME}
   MarlinIconInfoTests.vala
   PACKAGES
     gtk+-3.0
+    granite
+    gee-0.8
     posix
     pantheon-files-core
     pantheon-files-core-C
