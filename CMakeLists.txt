@@ -33,40 +33,28 @@ find_package (PkgConfig)
 OPTION (WITH_UNITY "Add Unity launcher support" ON)
 pkg_check_modules (UNITY unity>=4.0.0)
 
+set(COMMON_DEPS
+    granite>=0.3.0
+    glib-2.0>=2.29.0
+    gthread-2.0
+    gio-2.0
+    gio-unix-2.0
+    pango>=1.1.2
+    gtk+-3.0>=3.14
+    gmodule-2.0
+    gail-3.0
+    gee-0.8
+    sqlite3
+    dbus-glib-1
+    libcanberra>=0.30
+    zeitgeist-2.0
+)
+
 if (WITH_UNITY AND UNITY_FOUND)
-    pkg_check_modules (DEPS REQUIRED
-        granite>=0.3.0
-        glib-2.0>=2.29.0
-        gthread-2.0
-        gio-2.0
-        gio-unix-2.0
-        pango>=1.1.2
-        gtk+-3.0>=3.14
-        gmodule-2.0
-        gail-3.0
-        gee-0.8
-        sqlite3
-        dbus-glib-1
-        libcanberra>=0.30
-        zeitgeist-2.0
-        plank)
-else (WITH_UNITY AND UNITY_FOUND)
-    pkg_check_modules (DEPS REQUIRED
-        granite>=0.3.0
-        glib-2.0>=2.29.0
-        gthread-2.0
-        gio-2.0
-        gio-unix-2.0
-        pango>=1.1.2
-        gtk+-3.0>=3.14
-        gmodule-2.0
-        gail-3.0
-        gee-0.8
-        sqlite3
-        dbus-glib-1
-        libcanberra>=0.30
-        zeitgeist-2.0)
-endif (WITH_UNITY AND UNITY_FOUND)
+    pkg_check_modules (DEPS REQUIRED ${COMMON_DEPS} plank)
+else ()
+    pkg_check_modules (DEPS REQUIRED ${COMMON_DEPS})
+endif ()
 
 if (MODULE_ONLY)
     add_subdirectory (filechooser-module)
