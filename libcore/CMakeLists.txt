@@ -34,6 +34,7 @@ PACKAGES
     libcanberra
     pantheon-files-core-C
     posix
+    zeitgeist-2.0
 OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
     --thread
@@ -148,4 +149,3 @@ target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 add_subdirectory (tests)
-
