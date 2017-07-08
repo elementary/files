@@ -80,15 +80,6 @@ void cache_and_ref_test () {
         return false;
     });
     loop.run ();
-
-    loop = new MainLoop ();
-    Timeout.add (reap_time_msec * 12, () => {
-        /* Icon should be reaped by now */
-        assert (Marlin.IconInfo.themed_icon_cache_info () == 0);
-        loop.quit ();
-        return false;
-    });
-    loop.run ();
 }
 
 int main (string[] args) {

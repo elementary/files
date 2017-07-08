@@ -425,6 +425,7 @@ marlin_icon_info_lookup (GIcon *icon, int size)
         }
 
         filename = gtk_icon_info_get_filename (gtkicon_info);
+
         if (filename == NULL) {
             gtk_icon_info_free (gtkicon_info);
             return marlin_icon_info_new_for_pixbuf (NULL);
@@ -444,7 +445,7 @@ marlin_icon_info_lookup (GIcon *icon, int size)
 
         key = themed_icon_key_new (filename, size);
         g_hash_table_insert (themed_icon_cache, key, g_object_ref (icon_info));
-            g_debug ("INSERTED %s themed icon %s\n", G_STRFUNC, filename);
+        g_debug ("INSERTED %s themed icon %s\n", G_STRFUNC, filename);
 
         gtk_icon_info_free (gtkicon_info);
 
@@ -604,10 +605,10 @@ marlin_icon_info_loadable_icon_cache_info (void)
             MarlinIconInfo *icon_info = MARLIN_ICON_INFO (p->data);
 
             g_debug ("LOADABLE CACHE: key size %d key iconname %s icon_info ref_count %u pixbuf refcount %u",
-                    key->size,
-                    g_icon_to_string (key->icon),
-                    G_OBJECT (icon_info)->ref_count,
-                    G_OBJECT (icon_info->pixbuf)->ref_count);
+                     key->size,
+                     g_icon_to_string (key->icon),
+                     G_OBJECT (icon_info)->ref_count,
+                     G_OBJECT (icon_info->pixbuf)->ref_count);
         }
     }
 
@@ -630,10 +631,10 @@ marlin_icon_info_themed_icon_cache_info (void)
             MarlinIconInfo *icon_info = MARLIN_ICON_INFO (p->data);
 
             g_debug ("THEMED CACHE: key size %d key filename %s icon_info ref_count %u pixbuf refcount %u",
-                        key->size,
-                        key->filename,
-                        G_OBJECT (icon_info)->ref_count,
-                        G_OBJECT (icon_info->pixbuf)->ref_count);
+                     key->size,
+                     key->filename,
+                     G_OBJECT (icon_info)->ref_count,
+                     G_OBJECT (icon_info->pixbuf)->ref_count);
         }
     }
 
