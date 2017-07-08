@@ -138,7 +138,7 @@ namespace Marlin {
                     state |= widget.get_state_flags ();
 
                     var bg = style_context.get_property ("background-color", state);
-                    
+
                     if (bg.holds (typeof (Gdk.RGBA))) {
                         var color = (Gdk.RGBA) bg;
 
@@ -180,6 +180,7 @@ namespace Marlin {
 
                     var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, helper_size);
                     Gdk.Pixbuf? pix = null;
+
                     if (nicon != null) {
                         pix = nicon.get_pixbuf_nodefault ();
                     }
@@ -291,7 +292,7 @@ namespace Marlin {
                pixbuf */
 
             int s = int.max (pixbuf_width, pixbuf_height);
-            scale = double.min (1.0, (double)icon_size / s); /* scaling to make pix required icon_size (not taking into account screen scaling) */ 
+            scale = double.min (1.0, (double)icon_size / s); /* scaling to make pix required icon_size (not taking into account screen scaling) */
 
             width = (int)(calc_width * scale);
             height = (int)(calc_height * scale);
