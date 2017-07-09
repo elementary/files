@@ -6,12 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-06 13:44-0700\n"
 "PO-Revision-Date: 2017-06-21 14:10+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
-"\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
+">\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -285,44 +285,6 @@ msgstr "Substitueix"
 msgid "File conflict"
 msgstr "Conflicte de fitxers"
 
-#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
-msgid "Inaccessible"
-msgstr "Inaccessible"
-
-#: ../libcore/gof-file.c:377
-#, c-format
-msgid "link to %s"
-msgstr "enllaç a %s"
-
-#: ../libcore/gof-file.c:1934
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
-
-#: ../libcore/gof-file.c:1971
-msgid "No Exec field specified"
-msgstr "No s'ha especificat el camp Exec"
-
-#: ../libcore/gof-file.c:1990
-msgid "No URL field specified"
-msgstr "No s'ha especificat el camp URL"
-
-#: ../libcore/gof-file.c:1996
-msgid "Invalid desktop file"
-msgstr "El nom del fitxer d'escriptori no és vàlid"
-
-#: ../libcore/gof-file.c:2291
-msgid "Slashes are not allowed in filenames"
-msgstr "No es permeten barres en els noms dels fitxers"
-
-#: ../libcore/gof-file.c:2311
-msgid "Toplevel files cannot be renamed"
-msgstr "No es pot canviar el nom dels fitxers de nivell superior"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Mostra més _detalls"
-
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (Unicode no vàlid)"
@@ -536,7 +498,7 @@ msgstr ""
 "permanentment."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1512
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
 msgid "Empty _Trash"
 msgstr "Buida la _paperera"
 
@@ -549,8 +511,7 @@ msgstr "Esteu segur que voleu esborrrar «%B» permanentment?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-"Esteu segur que voleu suprimir permanentment l'element seleccionat?"
+msgstr[0] "Esteu segur que voleu suprimir permanentment l'element seleccionat?"
 msgstr[1] ""
 "Esteu segur que voleu suprimir permanentment els %'d elements seleccionats?"
 
@@ -644,8 +605,7 @@ msgid "Cannot move file to trash or delete it"
 msgstr "No s'ha pogut moure el fitxer a la paperera o suprimir-ho"
 
 #: ../libcore/marlin-file-operations.c:1947
-msgid ""
-"It is not permitted to trash or delete files on a read only filesystem."
+msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "No està permès enviar a la paperera o suprimir un fitxer dels sistemes de "
 "només lectura."
@@ -933,8 +893,7 @@ msgstr ""
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr ""
-"No es pot copiar la carpeta «%B» perquè no teniu permís per llegir-la."
+msgstr "No es pot copiar la carpeta «%B» perquè no teniu permís per llegir-la."
 
 #: ../libcore/marlin-file-operations.c:3814
 #: ../libcore/marlin-file-operations.c:4520
@@ -1099,6 +1058,65 @@ msgstr "S'està buidant la paperera"
 #: ../libcore/marlin-file-operations.c:6662
 msgid "Emptying Trash"
 msgstr "S'està buidant la paperera"
+
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "S'està preparant"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
+msgid "Today at %-I:%M %p"
+msgstr "Avui a les %-H:%M"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
+msgid "Yesterday at %-I:%M %p"
+msgstr "Ahir a les %-H:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a, %-d de %b. a les %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d de %b de %Y a les %-H:%M"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Mostra més _detalls"
+
+#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
+msgid "Inaccessible"
+msgstr "Inaccessible"
+
+#: ../libcore/gof-file.c:377
+#, c-format
+msgid "link to %s"
+msgstr "enllaç a %s"
+
+#: ../libcore/gof-file.c:1938
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
+
+#: ../libcore/gof-file.c:1975
+msgid "No Exec field specified"
+msgstr "No s'ha especificat el camp Exec"
+
+#: ../libcore/gof-file.c:1994
+msgid "No URL field specified"
+msgstr "No s'ha especificat el camp URL"
+
+#: ../libcore/gof-file.c:2000
+msgid "Invalid desktop file"
+msgstr "El nom del fitxer d'escriptori no és vàlid"
+
+#: ../libcore/gof-file.c:2295
+msgid "Slashes are not allowed in filenames"
+msgstr "No es permeten barres en els noms dels fitxers"
+
+#: ../libcore/gof-file.c:2315
+msgid "Toplevel files cannot be renamed"
+msgstr "No es pot canviar el nom dels fitxers de nivell superior"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
@@ -1480,27 +1498,6 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Refés el canvi de propietari d'%d element"
 msgstr[1] "Refés el canvi de propietari de %d elements"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:436
-msgid "Today at %-I:%M %p"
-msgstr "Avui a les %-H:%M"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:444
-msgid "Yesterday at %-I:%M %p"
-msgstr "Ahir a les %-H:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a, %-d de %b. a les %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d de %b de %Y a les %-H:%M"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "S'està preparant"
-
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
@@ -1511,318 +1508,77 @@ msgstr "Anterior"
 msgid "Next"
 msgstr "Següent"
 
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "El Fitxers no és el vostre gestor de fitxers predeterminat."
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "Estableix com a predeterminada"
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Ignora"
-
-#: ../src/View/Sidebar.vala:490
-msgid "Personal"
-msgstr "Personal"
-
-#: ../src/View/Sidebar.vala:491
-msgid "Your common places and bookmarks"
-msgstr "Els vostres llocs comuns i adreces d'interès"
-
-#: ../src/View/Sidebar.vala:503 ../src/View/ViewContainer.vala:346
-msgid "Home"
-msgstr "Carpeta de l'usuari"
-
-#: ../src/View/Sidebar.vala:510
-msgid "Open your personal folder"
-msgstr "Obriu la vostra carpeta personal"
-
-#: ../src/View/Sidebar.vala:525
-msgid "View the list of recently used files"
-msgstr "Mostra la llista dels fitxers usats recentment"
-
-#: ../src/View/Sidebar.vala:546 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "Paperera"
-
-#: ../src/View/Sidebar.vala:553
-msgid "Open the Trash"
-msgstr "Obre la paperera"
-
-#: ../src/View/Sidebar.vala:557
-msgid "Devices"
-msgstr "Dispositius"
-
-#: ../src/View/Sidebar.vala:558
-msgid "Your local partitions and devices"
-msgstr "Dispositius y particions locals"
-
-#: ../src/View/Sidebar.vala:564 ../src/View/ViewContainer.vala:348
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:94
-msgid "File System"
-msgstr "Sistema de fitxers"
-
-#: ../src/View/Sidebar.vala:682 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "Xarxa"
-
-#: ../src/View/Sidebar.vala:683
-msgid "Your network places"
-msgstr "Llocs a la xarxa"
-
-#: ../src/View/Sidebar.vala:715
-msgid "Entire Network"
-msgstr "Tota la xarxa"
-
-#: ../src/View/Sidebar.vala:722
-msgid "Browse the contents of the network"
-msgstr "Navega pel contingut de la xarxa"
-
-#: ../src/View/Sidebar.vala:854
-msgid "(%s Free of %s)"
-msgstr "(%s lliure de %s)"
-
-#: ../src/View/Sidebar.vala:1350
-msgid "Unable to start %s"
-msgstr "No s'ha pogut iniciar %s"
-
-#: ../src/View/Sidebar.vala:1454
-msgid "Open"
-msgstr "Obre"
-
-#: ../src/View/Sidebar.vala:1462
-msgid "Open in New _Tab"
-msgstr "Obre en una _pestanya nova"
-
-#: ../src/View/Sidebar.vala:1468
-msgid "Open in New _Window"
-msgstr "Obre en una _finestra nova"
-
-#: ../src/View/Sidebar.vala:1476
-msgid "Remove"
-msgstr "Elimina"
-
-#: ../src/View/Sidebar.vala:1484 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Reanomena"
-
-#: ../src/View/Sidebar.vala:1493
-msgid "_Mount"
-msgstr "_Munta"
-
-#: ../src/View/Sidebar.vala:1499
-msgid "_Unmount"
-msgstr "_Desmunta"
-
-#: ../src/View/Sidebar.vala:1505
-msgid "_Eject"
-msgstr "_Expulsa"
-
-#: ../src/View/Sidebar.vala:1519 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Propietats"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Nom del fitxer"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Mida"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Tipus"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Modificat"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:379
-msgid "This Folder Does Not Exist"
-msgstr "Aquesta carpeta no existeix"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "No s'ha pogut trobar la carpeta «%s»."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Crea"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Crea la carpeta «%s»"
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"S'ha produït un error en crear la carpeta\n"
-"\n"
-"%s"
-
-#: ../src/View/AbstractDirectoryView.vala:564
+#: ../src/View/AbstractDirectoryView.vala:581
 msgid "Failed to preview"
 msgstr "La previsualització ha fallat"
 
-#: ../src/View/AbstractDirectoryView.vala:817
+#: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
 msgstr "No es pot obrir aquest fitxer"
 
-#: ../src/View/AbstractDirectoryView.vala:830
+#: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
 msgstr "No es pot identificar el tipus de fitxer per obrir"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Cannot drop this file"
 msgstr "No es pot deixar anar aquest fitxer"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Invalid file name provided"
 msgstr "S’ha proporcionat un nom de fitxer no vàlid"
 
-#: ../src/View/AbstractDirectoryView.vala:2010
+#: ../src/View/AbstractDirectoryView.vala:2011
 msgid "Invalid"
 msgstr "No vàlid"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:2017
 msgid "Run"
 msgstr "Executa"
 
-#: ../src/View/AbstractDirectoryView.vala:2021
+#: ../src/View/AbstractDirectoryView.vala:2022
 msgid "Open in %s"
 msgstr "Obre amb %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2031
+#: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "Obre amb"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2034
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
 msgid "Open with"
 msgstr "Obre amb"
 
-#: ../src/View/AbstractDirectoryView.vala:2093
+#: ../src/View/AbstractDirectoryView.vala:2094
 msgid "Other Application"
 msgstr "Una altra aplicació"
 
-#: ../src/View/AbstractDirectoryView.vala:2354
+#: ../src/View/AbstractDirectoryView.vala:2355
 msgid "Untitled %s"
 msgstr "%s sense nom"
 
-#: ../src/View/AbstractDirectoryView.vala:2678
-#: ../src/View/AbstractDirectoryView.vala:2861
+#: ../src/View/AbstractDirectoryView.vala:2689
+#: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
 msgstr "No es poden eliminar fitxers des d'aquí"
 
-#: ../src/View/AbstractDirectoryView.vala:2679
-#: ../src/View/AbstractDirectoryView.vala:2849
-#: ../src/View/AbstractDirectoryView.vala:2862
+#: ../src/View/AbstractDirectoryView.vala:2690
+#: ../src/View/AbstractDirectoryView.vala:2860
+#: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
 msgstr "No teniu permís per canviar aquesta ubicació"
 
-#: ../src/View/AbstractDirectoryView.vala:2827
+#: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
 msgstr "No és possible copiar els fitxers que són a la paperera."
 
-#: ../src/View/AbstractDirectoryView.vala:2828
+#: ../src/View/AbstractDirectoryView.vala:2839
 msgid "Cutting the selection instead"
 msgstr "En canvi, es retalla la selecció"
 
-#: ../src/View/AbstractDirectoryView.vala:2848
+#: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
 msgstr "Aquí no es poden enganxar fitxers"
-
-#: ../src/View/ViewContainer.vala:361
-msgid "(as Administrator)"
-msgstr "(com a Administrador)"
-
-#: ../src/View/ViewContainer.vala:380
-msgid "You cannot create a folder here."
-msgstr "Aquí no podeu crear una carpeta."
-
-#: ../src/View/ViewContainer.vala:383
-msgid "The network is unavailable"
-msgstr "La xarxa no està disponible"
-
-#: ../src/View/ViewContainer.vala:384
-msgid "A working network is needed to reach this folder"
-msgstr "Cal una xarxa que funcioni per arribar a aquesta carpeta"
-
-#: ../src/View/ViewContainer.vala:386
-msgid "This Folder Does Not Belong to You"
-msgstr "Aquesta carpeta no us pertany"
-
-#: ../src/View/ViewContainer.vala:387
-msgid "You don't have permission to view this folder."
-msgstr "No teniu permís per veure aquesta carpeta."
-
-#: ../src/View/ViewContainer.vala:389
-msgid "Unable to Mount Folder"
-msgstr "No es pot muntar la carpeta"
-
-#: ../src/View/ViewContainer.vala:390
-msgid "Could not connect to the server for this folder."
-msgstr "No s'ha pogut connectar amb el servidor per a aquesta carpeta."
-
-#: ../src/View/ViewContainer.vala:392
-msgid "Unable to Display Folder Contents"
-msgstr "No es poden mostrar els continguts de la carpeta."
-
-#: ../src/View/ViewContainer.vala:393
-msgid "The operation timed out."
-msgstr "S'ha esgotat el temps d'espera de l'operació."
-
-#: ../src/View/ViewContainer.vala:395
-msgid "Unable to Show Folder"
-msgstr "No es pot mostrar la carpeta"
-
-#: ../src/View/ViewContainer.vala:396
-msgid "The server for this folder could not be located."
-msgstr "No s’ha trobat el servidor que allotja aquesta carpeta."
-
-#: ../src/View/ViewContainer.vala:406
-msgid "File not Found"
-msgstr "No s'ha trobat el fitxer"
-
-#: ../src/View/ViewContainer.vala:407
-msgid "The file selected no longer exists."
-msgstr "El fitxer seleccionat ja no existeix."
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Aquesta carpeta és buida"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "La paperera és buida"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "No hi ha fitxers recents"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Accés denegat"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
-msgid "Open in New Tab"
-msgstr "Obre en una pestanya nova"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
-msgid "Open in New Window"
-msgstr "Obre en una finestra nova"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
-msgid "Open in Other Application…"
-msgstr "Obre en una altra aplicació…"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1900,6 +1656,18 @@ msgstr "%u fitxer no llegible"
 msgid "%u files not readable"
 msgstr "%u fitxers no llegibles"
 
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
+msgid "Open in New Tab"
+msgstr "Obre en una pestanya nova"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
+msgid "Open in New Window"
+msgstr "Obre en una finestra nova"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
+msgid "Open in Other Application…"
+msgstr "Obre en una altra aplicació…"
+
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
 msgstr "Llegir"
@@ -1912,31 +1680,260 @@ msgstr "Escriure"
 msgid "Execute"
 msgstr "Execució"
 
-#: ../src/Application.vala:150
+#: ../src/View/Window.vala:205
+msgid "Files isn't your default file manager."
+msgstr "El Fitxers no és el vostre gestor de fitxers predeterminat."
+
+#: ../src/View/Window.vala:211
+msgid "Set as Default"
+msgstr "Estableix com a predeterminada"
+
+#: ../src/View/Window.vala:217
+msgid "Ignore"
+msgstr "Ignora"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Nom del fitxer"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Mida"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Tipus"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Modificat"
+
+#: ../src/View/Sidebar.vala:503
+msgid "Personal"
+msgstr "Personal"
+
+#: ../src/View/Sidebar.vala:504
+msgid "Your common places and bookmarks"
+msgstr "Els vostres llocs comuns i adreces d'interès"
+
+#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:373
+msgid "Home"
+msgstr "Carpeta de l'usuari"
+
+#: ../src/View/Sidebar.vala:523
+msgid "Open your personal folder"
+msgstr "Obriu la vostra carpeta personal"
+
+#: ../src/View/Sidebar.vala:538
+msgid "View the list of recently used files"
+msgstr "Mostra la llista dels fitxers usats recentment"
+
+#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr "Paperera"
+
+#: ../src/View/Sidebar.vala:571
+msgid "Open the Trash"
+msgstr "Obre la paperera"
+
+#: ../src/View/Sidebar.vala:576
+msgid "Devices"
+msgstr "Dispositius"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your local partitions and devices"
+msgstr "Dispositius y particions locals"
+
+#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:375
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:68
+msgid "File System"
+msgstr "Sistema de fitxers"
+
+#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
+msgid "Network"
+msgstr "Xarxa"
+
+#: ../src/View/Sidebar.vala:702
+msgid "Your network places"
+msgstr "Llocs a la xarxa"
+
+#: ../src/View/Sidebar.vala:734
+msgid "Entire Network"
+msgstr "Tota la xarxa"
+
+#: ../src/View/Sidebar.vala:741
+msgid "Browse the contents of the network"
+msgstr "Navega pel contingut de la xarxa"
+
+#: ../src/View/Sidebar.vala:874
+msgid "(%s Free of %s)"
+msgstr "(%s lliure de %s)"
+
+#: ../src/View/Sidebar.vala:1370
+msgid "Unable to start %s"
+msgstr "No s'ha pogut iniciar %s"
+
+#: ../src/View/Sidebar.vala:1474
+msgid "Open"
+msgstr "Obre"
+
+#: ../src/View/Sidebar.vala:1482
+msgid "Open in New _Tab"
+msgstr "Obre en una _pestanya nova"
+
+#: ../src/View/Sidebar.vala:1488
+msgid "Open in New _Window"
+msgstr "Obre en una _finestra nova"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "Remove"
+msgstr "Elimina"
+
+#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Reanomena"
+
+#: ../src/View/Sidebar.vala:1513
+msgid "_Mount"
+msgstr "_Munta"
+
+#: ../src/View/Sidebar.vala:1519
+msgid "_Unmount"
+msgstr "_Desmunta"
+
+#: ../src/View/Sidebar.vala:1525
+msgid "_Eject"
+msgstr "_Expulsa"
+
+#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Propietats"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
+msgid "This Folder Does Not Exist"
+msgstr "Aquesta carpeta no existeix"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "No s'ha pogut trobar la carpeta «%s»."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Crea"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Crea la carpeta «%s»"
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"S'ha produït un error en crear la carpeta\n"
+"\n"
+"%s"
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Aquesta carpeta és buida"
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "La paperera és buida"
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "No hi ha fitxers recents"
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Accés denegat"
+
+#: ../src/View/ViewContainer.vala:388
+msgid "(as Administrator)"
+msgstr "(com a Administrador)"
+
+#: ../src/View/ViewContainer.vala:407
+msgid "You cannot create a folder here."
+msgstr "Aquí no podeu crear una carpeta."
+
+#: ../src/View/ViewContainer.vala:410
+msgid "The network is unavailable"
+msgstr "La xarxa no està disponible"
+
+#: ../src/View/ViewContainer.vala:411
+msgid "A working network is needed to reach this folder"
+msgstr "Cal una xarxa que funcioni per arribar a aquesta carpeta"
+
+#: ../src/View/ViewContainer.vala:413
+msgid "This Folder Does Not Belong to You"
+msgstr "Aquesta carpeta no us pertany"
+
+#: ../src/View/ViewContainer.vala:414
+msgid "You don't have permission to view this folder."
+msgstr "No teniu permís per veure aquesta carpeta."
+
+#: ../src/View/ViewContainer.vala:416
+msgid "Unable to Mount Folder"
+msgstr "No es pot muntar la carpeta"
+
+#: ../src/View/ViewContainer.vala:417
+msgid "Could not connect to the server for this folder."
+msgstr "No s'ha pogut connectar amb el servidor per a aquesta carpeta."
+
+#: ../src/View/ViewContainer.vala:419
+msgid "Unable to Display Folder Contents"
+msgstr "No es poden mostrar els continguts de la carpeta."
+
+#: ../src/View/ViewContainer.vala:420
+msgid "The operation timed out."
+msgstr "S'ha esgotat el temps d'espera de l'operació."
+
+#: ../src/View/ViewContainer.vala:422
+msgid "Unable to Show Folder"
+msgstr "No es pot mostrar la carpeta"
+
+#: ../src/View/ViewContainer.vala:423
+msgid "The server for this folder could not be located."
+msgstr "No s’ha trobat el servidor que allotja aquesta carpeta."
+
+#: ../src/View/ViewContainer.vala:433
+msgid "File not Found"
+msgstr "No s'ha trobat el fitxer"
+
+#: ../src/View/ViewContainer.vala:434
+msgid "The file selected no longer exists."
+msgstr "El fitxer seleccionat ja no existeix."
+
+#: ../src/Application.vala:134
 msgid "Show the version of the program."
 msgstr "Mostra la versió del programa."
 
-#: ../src/Application.vala:152
+#: ../src/Application.vala:136
 msgid "Open uri(s) in new tab"
 msgstr "Obre els URI(s) en una pestanya nova"
 
-#: ../src/Application.vala:154 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Finestra nova"
 
-#: ../src/Application.vala:156
+#: ../src/Application.vala:140
 msgid "Quit Files."
 msgstr "Surt."
 
-#: ../src/Application.vala:158
+#: ../src/Application.vala:142
 msgid "Enable debug logging"
 msgstr "Activa el registre de depuració"
 
-#: ../src/Application.vala:161
+#: ../src/Application.vala:145
 msgid "[URI...]"
 msgstr "[URI…]"
 
-#: ../src/Application.vala:164
+#: ../src/Application.vala:148
 msgid ""
 "\n"
 "\n"
@@ -1946,95 +1943,13 @@ msgstr ""
 "\n"
 "Navegueu pel sistema de fitxers amb el gestor de fitxers"
 
-#: ../src/Application.vala:191
+#: ../src/Application.vala:175
 msgid "--quit cannot be used with URIs."
 msgstr "--quit no es pot utilitzar amb els URI."
-
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr "Navegueu pels vostres fitxers"
-
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr "Gestor de fitxers"
-
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr "_Finestra nova"
-
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Finestra com a _administrador nova"
-
-#: ../src/DesktopLauncher.vala:25
-msgid "About _Files"
-msgstr "Quant al _Fitxers"
-
-#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Fitxers"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr "S'han seleccionat diversos tipus de fitxers"
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr "No hi ha cap aplicació que pugui obrir tots aquests tipus de fitxers"
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr "Ha fallat obrir els fitxers"
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "Ha fallat obrir els uris"
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr "No es poden obrir els fitxers o uris amb aquesta aplicació"
-
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "Operacions sobre fitxers"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
-msgstr "Completat: %s"
-
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
-msgstr "Han acabat totes les operacions de fitxers"
-
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "Mostra el diàleg de còpia"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "Cancel·la totes les accions en progrés"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "El porta-retalls no té res per enganxar"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Estableix com a predeterminada"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Propietats del disc"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Ubicació:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Format:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2071,6 +1986,23 @@ msgstr "Disponible:"
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 msgid "Used:"
 msgstr "Usat:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Propietats del disc"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "Ubicació:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Format:"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Estableix com a predeterminada"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
@@ -2183,9 +2115,94 @@ msgstr[1] "%u elements seleccionats"
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: ../libcore/gof-directory-async.vala:587
-msgid "Server did not respond within time limit"
-msgstr "El servidor no ha respost dins del límit de temps."
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Operacions sobre fitxers"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "Completat: %s"
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "Han acabat totes les operacions de fitxers"
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Mostra el diàleg de còpia"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Cancel·la totes les accions en progrés"
+
+#: ../src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr "Navegueu pels vostres fitxers"
+
+#: ../src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr "Gestor de fitxers"
+
+#: ../src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr "_Finestra nova"
+
+#: ../src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr "Finestra com a _administrador nova"
+
+#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Fitxers"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "S'han seleccionat diversos tipus de fitxers"
+
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "No hi ha cap aplicació que pugui obrir tots aquests tipus de fitxers"
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "Ha fallat obrir els fitxers"
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "Ha fallat obrir els uris"
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "No es poden obrir els fitxers o uris amb aquesta aplicació"
+
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "No s'ha pogut determinar la ubicació original de «%s» "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "No es pot restaurar l'element des de la paperera"
+
+#: ../libcore/FileUtils.vala:345
+msgid "Could not rename to '%s'"
+msgstr "No s'ha pogut canviar el nom a \"%s\""
+
+#: ../libcore/FileUtils.vala:436
+msgid "Today at %-H:%M"
+msgstr "Avui a les %-H.%M"
+
+#: ../libcore/FileUtils.vala:444
+msgid "Yesterday at %-H:%M"
+msgstr "Ahir a les %-H.%M"
+
+#: ../libcore/FileUtils.vala:453
+msgid "%A at %-H:%M"
+msgstr "%A a les %-H.%M"
+
+#: ../libcore/FileUtils.vala:455
+msgid "%A at %-I:%M %p"
+msgstr "%A a les %-I.%M %p"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2207,97 +2224,17 @@ msgstr "Enllaça aquí"
 msgid "Cancel"
 msgstr "Canceŀla"
 
-#: ../libcore/FileUtils.vala:60
-msgid "Could not determine original location of \"%s\" "
-msgstr "No s'ha pogut determinar la ubicació original de «%s» "
+#: ../libcore/gof-directory-async.vala:611
+msgid "Server did not respond within time limit"
+msgstr "El servidor no ha respost dins del límit de temps."
 
-#: ../libcore/FileUtils.vala:61
-msgid "The item cannot be restored from trash"
-msgstr "No es pot restaurar l'element des de la paperera"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Navega a %s"
 
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "No s'ha pogut canviar el nom a \"%s\""
-
-#: ../libcore/FileUtils.vala:434
-msgid "Today at %-H:%M"
-msgstr "Avui a les %-H.%M"
-
-#: ../libcore/FileUtils.vala:442
-msgid "Yesterday at %-H:%M"
-msgstr "Ahir a les %-H.%M"
-
-#: ../libcore/FileUtils.vala:451
-msgid "%A at %-H:%M"
-msgstr "%A a les %-H.%M"
-
-#: ../libcore/FileUtils.vala:453
-msgid "%A at %-I:%M %p"
-msgstr "%A a les %-I.%M %p"
-
-#: ../libwidgets/View/SearchResults.vala:187
-msgid "In This Folder"
-msgstr "En aquesta carpeta"
-
-#: ../libwidgets/View/SearchResults.vala:191
-msgid "Bookmarks"
-msgstr "Adreces d'interès"
-
-#: ../libwidgets/View/SearchResults.vala:195
-msgid "Everywhere Else"
-msgstr "Qualsevol lloc"
-
-#: ../libwidgets/Resources.vala:30
-msgid "A simple and powerful file manager"
-msgstr "Un administrador de fitxers simple i poderós"
-
-#: ../libwidgets/Resources.vala:51
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Adolfo Jayme https://launchpad.net/~fitojb\n"
-"  Adri Sans https://launchpad.net/~asansc\n"
-"  Alfredo Hernández https://launchpad.net/~aldomann\n"
-"  Asturel https://launchpad.net/~elmalkavian\n"
-"  Cody Garver https://launchpad.net/~codygarver\n"
-"  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Davidmp https://launchpad.net/~davidmp\n"
-"  Enrique Villarreal https://launchpad.net/~evillarreal\n"
-"  Gerard Mayans https://launchpad.net/~gerardmc-45\n"
-"  Mario Rodrigo https://launchpad.net/~capitantrueno\n"
-"  Vakjorsan https://launchpad.net/~vakjorsan"
-
-#: ../libwidgets/Resources.vala:84
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:85
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:86
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:87
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:89
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:90
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:92
-msgid "Recent"
-msgstr "Recents"
-
-#: ../libwidgets/Resources.vala:93
-msgid "MTP"
-msgstr "MTP"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Vés a %s"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
@@ -2315,13 +2252,55 @@ msgstr "Visualitza com a llista"
 msgid "View in Columns"
 msgstr "Visualitza en columnes"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Navega a %s"
+#: ../libwidgets/Resources.vala:58
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
-msgid "Go to %s"
-msgstr "Vés a %s"
+#: ../libwidgets/Resources.vala:59
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.vala:60
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.vala:61
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.vala:63
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.vala:64
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.vala:66
+msgid "Recent"
+msgstr "Recents"
+
+#: ../libwidgets/Resources.vala:67
+msgid "MTP"
+msgstr "MTP"
+
+#: ../libwidgets/View/SearchResults.vala:226
+msgid "In This Folder"
+msgstr "En aquesta carpeta"
+
+#: ../libwidgets/View/SearchResults.vala:231
+#, fuzzy
+msgid "Below This Folder"
+msgstr "En aquesta carpeta"
+
+#: ../libwidgets/View/SearchResults.vala:236
+msgid "Bookmarks"
+msgstr "Adreces d'interès"
+
+#: ../libwidgets/View/SearchResults.vala:241
+#, fuzzy
+msgid "Recently used"
+msgstr "Recents"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2430,3 +2409,27 @@ msgstr "Data"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Ordre invers"
+
+#~ msgid "About _Files"
+#~ msgstr "Quant al _Fitxers"
+
+#~ msgid "Everywhere Else"
+#~ msgstr "Qualsevol lloc"
+
+#~ msgid "A simple and powerful file manager"
+#~ msgstr "Un administrador de fitxers simple i poderós"
+
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Launchpad Contributions:\n"
+#~ "  Adolfo Jayme https://launchpad.net/~fitojb\n"
+#~ "  Adri Sans https://launchpad.net/~asansc\n"
+#~ "  Alfredo Hernández https://launchpad.net/~aldomann\n"
+#~ "  Asturel https://launchpad.net/~elmalkavian\n"
+#~ "  Cody Garver https://launchpad.net/~codygarver\n"
+#~ "  Daniel Fore https://launchpad.net/~danrabbit\n"
+#~ "  Davidmp https://launchpad.net/~davidmp\n"
+#~ "  Enrique Villarreal https://launchpad.net/~evillarreal\n"
+#~ "  Gerard Mayans https://launchpad.net/~gerardmc-45\n"
+#~ "  Mario Rodrigo https://launchpad.net/~capitantrueno\n"
+#~ "  Vakjorsan https://launchpad.net/~vakjorsan"
