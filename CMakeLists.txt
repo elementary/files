@@ -70,3 +70,5 @@ else ()
     add_subdirectory (plugins)
     add_subdirectory (filechooser-module)
 endif ()
+
+add_subdirectory (po)
