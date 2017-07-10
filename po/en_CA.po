@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2016-06-30 19:10+0000\n"
-"Last-Translator: Giovanni Caligaris <giovannicaligaris@gmail.com>\n"
-"Language-Team: English (Canada) <en_CA@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2017-07-10 14:56+0000\n"
+"Last-Translator: Mattias Ezequiel Mignone <memignone@gmail.com>\n"
+"Language-Team: English (Canada) "
+"<https://l10n.elementary.io/projects/files/files/en_CA/>\n"
+"Language: en_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.14\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1080,7 +1081,7 @@ msgstr "Show more _details"
 
 #: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
 msgid "Inaccessible"
-msgstr ""
+msgstr "Inaccessible"
 
 #: ../libcore/gof-file.c:377
 #, c-format
@@ -1508,11 +1509,11 @@ msgstr "Failed to preview"
 
 #: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Cannot open this file"
 
 #: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Cannot identify file type to open"
 
 #: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Cannot drop this file"
@@ -1554,13 +1555,13 @@ msgstr "Untitled %s"
 #: ../src/View/AbstractDirectoryView.vala:2689
 #: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Cannot remove files from here"
 
 #: ../src/View/AbstractDirectoryView.vala:2690
 #: ../src/View/AbstractDirectoryView.vala:2860
 #: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "You do not have permission to change this location"
 
 #: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
@@ -1572,7 +1573,7 @@ msgstr "Cutting the selection instead"
 
 #: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Cannot paste files here"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1606,8 +1607,8 @@ msgstr " selected"
 #: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u folder"
+msgstr[1] "%u folders"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1634,7 +1635,7 @@ msgstr "%u files, "
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/Widgets/OverlayBar.vala:303
 msgid "%s approx."
-msgstr ""
+msgstr "%s approx."
 
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/Widgets/OverlayBar.vala:306
@@ -1644,11 +1645,11 @@ msgstr "unknown size"
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u file not readable"
 
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u files not readable"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open in New Tab"
@@ -1762,7 +1763,7 @@ msgstr "Browse the contents of the network"
 
 #: ../src/View/Sidebar.vala:874
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s Free of %s)"
 
 #: ../src/View/Sidebar.vala:1370
 msgid "Unable to start %s"
@@ -1857,11 +1858,11 @@ msgstr "You cannot create a folder here."
 
 #: ../src/View/ViewContainer.vala:410
 msgid "The network is unavailable"
-msgstr ""
+msgstr "The network is unavailable"
 
 #: ../src/View/ViewContainer.vala:411
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "A working network is needed to reach this folder"
 
 #: ../src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
@@ -1881,15 +1882,15 @@ msgstr "Could not connect to the server for this folder."
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Unable to Display Folder Contents"
 
 #: ../src/View/ViewContainer.vala:420
 msgid "The operation timed out."
-msgstr ""
+msgstr "The operation timed out."
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Unable to Show Folder"
 
 #: ../src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
@@ -1959,7 +1960,7 @@ msgstr "Close"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
-msgstr ""
+msgstr "Device Usage"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:153
 msgid "Capacity:"
@@ -2000,17 +2001,17 @@ msgstr "Set as default"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
-msgstr ""
+msgstr "Permissions"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Actual Size Could Be Larger"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i file could not be read due to permissions or other errors."
+msgstr[1] "%i files could not be read due to permissions or other errors."
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
 #: ../src/Dialogs/PropertiesWindow.vala:279
@@ -2019,7 +2020,7 @@ msgstr "unknown"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr ""
+msgstr "Loading…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2043,7 +2044,7 @@ msgstr "Deleted:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:546
 msgid "Mimetype:"
-msgstr ""
+msgstr "Mimetype:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
@@ -2055,11 +2056,11 @@ msgstr "Target:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:579
 msgid "Original Location:"
-msgstr ""
+msgstr "Original Location:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr ""
+msgstr "Other Application…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2082,31 +2083,31 @@ msgstr "Everyone:"
 #: ../src/Dialogs/PropertiesWindow.vala:1140
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u subfolder"
+msgstr[1] "%u subfolders"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1144
 #: ../src/Dialogs/PropertiesWindow.vala:1166
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u file"
+msgstr[1] "%u files"
 
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1149
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1170
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u selected item"
+msgstr[1] "%u selected items"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/Dialogs/PropertiesWindow.vala:1172
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
 msgid "File Operations"
@@ -2115,11 +2116,11 @@ msgstr "File Operations"
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
 #: ../src/ProgressUIHandler.vala:192
 msgid "Completed %s"
-msgstr ""
+msgstr "Completed %s"
 
 #: ../src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
-msgstr ""
+msgstr "All file operations have ended"
 
 #: ../src/ProgressUIHandler.vala:240
 msgid "Show Copy Dialog"
@@ -2151,23 +2152,23 @@ msgstr "Files"
 
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Multiple file types selected"
 
 #: ../src/Utils/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "No single app can open all these types of file"
 
 #: ../src/Utils/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Failed to open files"
 
 #: ../src/Utils/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Failed to open uris"
 
 #: ../src/Utils/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Unable to open files or uris with this app"
 
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
@@ -2183,19 +2184,19 @@ msgstr "Could not rename to '%s'"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Today at %-H:%M"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Yesterday at %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A at %-H:%M"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A at %-I:%M %p"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2219,7 +2220,7 @@ msgstr "Cancel"
 
 #: ../libcore/gof-directory-async.vala:611
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Server did not respond within time limit"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
@@ -2282,18 +2283,16 @@ msgid "In This Folder"
 msgstr "In This Folder"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "In This Folder"
+msgstr "Below This Folder"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
 msgstr "Bookmarks"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
-msgstr "Recent"
+msgstr "Recently used"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
