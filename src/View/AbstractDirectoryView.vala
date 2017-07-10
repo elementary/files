@@ -230,7 +230,7 @@ namespace FM {
 
         public bool renaming {get; protected set; default = false;}
 
-        private bool _is_frozen = true;
+        private bool _is_frozen = false; /* Avoid duplicate signal connection on start up */
         public bool is_frozen {
             set {
                 if (value && !_is_frozen) {
@@ -653,9 +653,15 @@ namespace FM {
                 style_context.remove_class (MESSAGE_CLASS);
 
             cancel ();
-            clear ();
+
+            /* Stop unneeded signal handling of old_dir while clearing */
             disconnect_directory_handlers (old_dir);
+            is_frozen = true;
+
+            clear ();
+
             connect_directory_handlers (new_dir);
+            is_frozen = false;
         }
 
         public void clear () {
@@ -2579,16 +2585,35 @@ namespace FM {
             activate_selected_items (Marlin.OpenFlag.DEFAULT);
         }
 
+        /* These variables only used by on_view_selection_changed () */
         uint update_selected_timeout_id = 0;
+        bool selection_changing = false;
+        uint selection_event_count = 0;
+
         protected virtual void on_view_selection_changed () {
             /* updating selecting file list is expensive for large selections so throttle */
             if (update_selected_timeout_id == 0) {
                 after_selected_files_changed (); /* Make sure first update happens immediately */
                 update_selected_timeout_id = Timeout.add_full (GLib.Priority.LOW, 100, () => {
+                    if (selection_changing) {
+                        selection_changing = false;
+                        return true;
+                    }
+
+                    if (selection_event_count > 0) {
+                        selection_event_count = 0;
+                        after_selected_files_changed ();
+                        if (selection_event_count > 0) { /* Ensure no missed event while processing */
+                            return true;
+                        }
+                    }
+
                     update_selected_timeout_id = 0;
-                    after_selected_files_changed ();
                     return false;
                 });
+            } else {
+                selection_changing = true;
+                selection_event_count++;
             }
         }
 
