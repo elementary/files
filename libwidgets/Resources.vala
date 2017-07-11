@@ -20,35 +20,9 @@ namespace Marlin {
     public const string APP_ID = "org.pantheon.files";
     public const string APP_DESKTOP = APP_ID + ".desktop";
     public const string APP_TITLE = N_("Files");
-    public const string COPYRIGHT = APP_YEARS + " elementary LLC (https://elementary.io)";
-    public const string APP_YEARS = "2013-2017";
-    public const string LAUNCHPAD_LABEL = "Website";
-    public const string LAUNCHPAD_URL = "https://github.com/elementary/files";
     public const string HELP_URL = "https://elementaryos.stackexchange.com/questions/tagged/pantheon-files";
     public const string BUG_URL = "https://github.com/elementary/files/issues/new";
-    public const string TRANSLATE_URL = "https://l10n.elementary.io/projects/files";
-    public const string COMMENTS = N_("A simple and powerful file manager");
     public const string INVALID_TAB_NAME = "----";
-
-    public const string[] AUTHORS = {
-        "ammonkey <am.monkeyd@gmail.com>",
-        "Lucas Baudin <xapantu@gmail.com>",
-        "Mathijs Henquet <mathijs.henquet@gmail.com>",
-        "Robert Roth",
-        "Vadim Rutkovsky",
-        "Rico Tzschichholz",
-        "Mario Guerriero <mario@elementaryos.org>",
-        "Julián Unrrein <junrrein@gmail.com>",
-        "Jeremy Wootten <jeremy@elementaryos.org>",
-        null
-    };
-
-    public const string[] ARTISTS = {
-        "Daniel Foré <daniel.p.fore@gmail.com>",
-        null
-    };
-
-    public const string TRANSLATORS = N_("translator-credits");
 
     public const string ICON_APP_LOGO = "system-file-manager";
     public const string ICON_FILESYSTEM = "drive-harddisk-system";

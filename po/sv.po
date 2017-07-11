@@ -6,11 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-06 13:44-0700\n"
 "PO-Revision-Date: 2017-03-01 12:39+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Swedish <sv@li.org>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -283,44 +284,6 @@ msgstr "Ersätt"
 msgid "File conflict"
 msgstr "Filkonflikt"
 
-#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:377
-#, c-format
-msgid "link to %s"
-msgstr "länk till %s"
-
-#: ../libcore/gof-file.c:1934
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Misslyckades med att hämta skrivbordsfilen: %s"
-
-#: ../libcore/gof-file.c:1971
-msgid "No Exec field specified"
-msgstr "Inget \"Exec\"-fält angivet"
-
-#: ../libcore/gof-file.c:1990
-msgid "No URL field specified"
-msgstr "Inget URL-fält angivet"
-
-#: ../libcore/gof-file.c:1996
-msgid "Invalid desktop file"
-msgstr "Ogiltig skrivbordsfil"
-
-#: ../libcore/gof-file.c:2291
-msgid "Slashes are not allowed in filenames"
-msgstr "Snedstreck tillåts inte i filnamn"
-
-#: ../libcore/gof-file.c:2311
-msgid "Toplevel files cannot be renamed"
-msgstr "Toppnivåfiler kan inte döpas om"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Visa mer _information"
-
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (ogiltig Unicode)"
@@ -487,8 +450,7 @@ msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1384
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
-"Är du säker på att du permanent vill radera \"%B\" från papperskorgen?"
+msgstr "Är du säker på att du permanent vill radera \"%B\" från papperskorgen?"
 
 #: ../libcore/marlin-file-operations.c:1387
 #, c-format
@@ -528,7 +490,7 @@ msgstr ""
 "Alla objekt i papperskorgen på denna enhet kommer att raderas permanent."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1512
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
 msgid "Empty _Trash"
 msgstr "Töm _papperskorgen"
 
@@ -541,8 +503,7 @@ msgstr "Vill du radera \"%B\" permanent?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-"Är du säker på att du vill ta bort %'d markerat objekt permanent ?"
+msgstr[0] "Är du säker på att du vill ta bort %'d markerat objekt permanent ?"
 msgstr[1] ""
 "Är du säker att du vill ta bort de %'d markerade objekten permanent?"
 
@@ -636,8 +597,7 @@ msgid "Cannot move file to trash or delete it"
 msgstr "Kan inte flytta filen till papperskorgen eller ta bort den"
 
 #: ../libcore/marlin-file-operations.c:1947
-msgid ""
-"It is not permitted to trash or delete files on a read only filesystem."
+msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Det är inte tillåtet att flytta filer till papperskorgen eller radera filer "
 "på ett skrivskyddat filsystem."
@@ -672,8 +632,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
-"Kan inte flytta filen till papperskorgen. Vill du försöka radera den?"
+msgstr "Kan inte flytta filen till papperskorgen. Vill du försöka radera den?"
 
 #: ../libcore/marlin-file-operations.c:1961
 msgid ""
@@ -1093,6 +1052,65 @@ msgstr "Tömmer papperskorgen"
 msgid "Emptying Trash"
 msgstr "Tömmer papperskorgen"
 
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Förbereder"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
+msgid "Today at %-I:%M %p"
+msgstr "Idag kl. %H.%M"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
+msgid "Yesterday at %-I:%M %p"
+msgstr "Igår kl. %H.%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b %-H:%M"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%Y-%m-%d kl. %H.%M"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Visa mer _information"
+
+#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:377
+#, c-format
+msgid "link to %s"
+msgstr "länk till %s"
+
+#: ../libcore/gof-file.c:1938
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Misslyckades med att hämta skrivbordsfilen: %s"
+
+#: ../libcore/gof-file.c:1975
+msgid "No Exec field specified"
+msgstr "Inget \"Exec\"-fält angivet"
+
+#: ../libcore/gof-file.c:1994
+msgid "No URL field specified"
+msgstr "Inget URL-fält angivet"
+
+#: ../libcore/gof-file.c:2000
+msgid "Invalid desktop file"
+msgstr "Ogiltig skrivbordsfil"
+
+#: ../libcore/gof-file.c:2295
+msgid "Slashes are not allowed in filenames"
+msgstr "Snedstreck tillåts inte i filnamn"
+
+#: ../libcore/gof-file.c:2315
+msgid "Toplevel files cannot be renamed"
+msgstr "Toppnivåfiler kan inte döpas om"
+
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
 msgstr "Kunde inte fastställa ursprunglig plats"
@@ -1473,27 +1491,6 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "Gör om ändring av ägare för %d objekt"
 msgstr[1] "Gör om ändring av ägare för %d objekt"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:436
-msgid "Today at %-I:%M %p"
-msgstr "Idag kl. %H.%M"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:444
-msgid "Yesterday at %-I:%M %p"
-msgstr "Igår kl. %H.%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b %-H:%M"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%Y-%m-%d kl. %H.%M"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Förbereder"
-
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
@@ -1504,317 +1501,76 @@ msgstr "Föregående"
 msgid "Next"
 msgstr "Nästa"
 
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "Files är inte din standardfilhanterare."
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "Ange som standard"
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Ignorera"
-
-#: ../src/View/Sidebar.vala:490
-msgid "Personal"
-msgstr "Personligt"
-
-#: ../src/View/Sidebar.vala:491
-msgid "Your common places and bookmarks"
-msgstr "Dina vanliga platser och bokmärken"
-
-#: ../src/View/Sidebar.vala:503 ../src/View/ViewContainer.vala:346
-msgid "Home"
-msgstr "Hem"
-
-#: ../src/View/Sidebar.vala:510
-msgid "Open your personal folder"
-msgstr "Öppna din personliga mapp"
-
-#: ../src/View/Sidebar.vala:525
-msgid "View the list of recently used files"
-msgstr "Visa listan över senast använda filer"
-
-#: ../src/View/Sidebar.vala:546 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "Papperskorg"
-
-#: ../src/View/Sidebar.vala:553
-msgid "Open the Trash"
-msgstr "Öppna papperskorgen"
-
-#: ../src/View/Sidebar.vala:557
-msgid "Devices"
-msgstr "Enheter"
-
-#: ../src/View/Sidebar.vala:558
-msgid "Your local partitions and devices"
-msgstr "Dina lokala partitioner och enheter"
-
-#: ../src/View/Sidebar.vala:564 ../src/View/ViewContainer.vala:348
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:94
-msgid "File System"
-msgstr "Filsystem"
-
-#: ../src/View/Sidebar.vala:682 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "Nätverk"
-
-#: ../src/View/Sidebar.vala:683
-msgid "Your network places"
-msgstr "Dina nätverksplatser"
-
-#: ../src/View/Sidebar.vala:715
-msgid "Entire Network"
-msgstr "Hela nätverket"
-
-#: ../src/View/Sidebar.vala:722
-msgid "Browse the contents of the network"
-msgstr "Bläddra i nätverkets innehåll"
-
-#: ../src/View/Sidebar.vala:854
-msgid "(%s Free of %s)"
-msgstr "(%s ledigt av %s)"
-
-#: ../src/View/Sidebar.vala:1350
-msgid "Unable to start %s"
-msgstr "Kunde inte starta %s"
-
-#: ../src/View/Sidebar.vala:1454
-msgid "Open"
-msgstr "Öppna"
-
-#: ../src/View/Sidebar.vala:1462
-msgid "Open in New _Tab"
-msgstr "Öppna i ny _flik"
-
-#: ../src/View/Sidebar.vala:1468
-msgid "Open in New _Window"
-msgstr "Öppna i nytt _fönster"
-
-#: ../src/View/Sidebar.vala:1476
-msgid "Remove"
-msgstr "Ta bort"
-
-#: ../src/View/Sidebar.vala:1484 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Byt namn"
-
-#: ../src/View/Sidebar.vala:1493
-msgid "_Mount"
-msgstr "_Montera"
-
-#: ../src/View/Sidebar.vala:1499
-msgid "_Unmount"
-msgstr "_Avmontera"
-
-#: ../src/View/Sidebar.vala:1505
-msgid "_Eject"
-msgstr "Mata _ut"
-
-#: ../src/View/Sidebar.vala:1519 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Egenskaper"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Filnamn"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Storlek"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Filtyp"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Ändrad"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:379
-msgid "This Folder Does Not Exist"
-msgstr "Den här mappen finns inte"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Mappen \"%s\" kan inte hittas."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Skapa"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Skapa mappen \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Misslyckades med att skapa mappen\n"
-"\n"
-"%s"
-
-#: ../src/View/AbstractDirectoryView.vala:564
+#: ../src/View/AbstractDirectoryView.vala:581
 msgid "Failed to preview"
 msgstr "Förhandsvisning misslyckades"
 
-#: ../src/View/AbstractDirectoryView.vala:817
+#: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
 msgstr "Kan inte öppna denna filen"
 
-#: ../src/View/AbstractDirectoryView.vala:830
+#: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Cannot drop this file"
 msgstr "Kan inte släppa denna fil"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Invalid file name provided"
 msgstr "Ogiltigt filnamn angivit"
 
-#: ../src/View/AbstractDirectoryView.vala:2010
+#: ../src/View/AbstractDirectoryView.vala:2011
 msgid "Invalid"
 msgstr "Ogiltig"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:2017
 msgid "Run"
 msgstr "Kör"
 
-#: ../src/View/AbstractDirectoryView.vala:2021
+#: ../src/View/AbstractDirectoryView.vala:2022
 msgid "Open in %s"
 msgstr "Öppna med %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2031
+#: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "Öppna med"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2034
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
 msgid "Open with"
 msgstr "Öppna med"
 
-#: ../src/View/AbstractDirectoryView.vala:2093
+#: ../src/View/AbstractDirectoryView.vala:2094
 msgid "Other Application"
 msgstr "Annat program"
 
-#: ../src/View/AbstractDirectoryView.vala:2354
+#: ../src/View/AbstractDirectoryView.vala:2355
 msgid "Untitled %s"
 msgstr "Namnlös %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2678
-#: ../src/View/AbstractDirectoryView.vala:2861
+#: ../src/View/AbstractDirectoryView.vala:2689
+#: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2679
-#: ../src/View/AbstractDirectoryView.vala:2849
-#: ../src/View/AbstractDirectoryView.vala:2862
+#: ../src/View/AbstractDirectoryView.vala:2690
+#: ../src/View/AbstractDirectoryView.vala:2860
+#: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2827
+#: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan inte kopiera filer som ligger i papperskorgen"
 
-#: ../src/View/AbstractDirectoryView.vala:2828
+#: ../src/View/AbstractDirectoryView.vala:2839
 msgid "Cutting the selection instead"
 msgstr "Klipper ut markeringen istället"
 
-#: ../src/View/AbstractDirectoryView.vala:2848
+#: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:361
-msgid "(as Administrator)"
-msgstr "(som administratör)"
-
-#: ../src/View/ViewContainer.vala:380
-msgid "You cannot create a folder here."
-msgstr "Du kan inte skapa en mapp här."
-
-#: ../src/View/ViewContainer.vala:383
-msgid "The network is unavailable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:384
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:386
-msgid "This Folder Does Not Belong to You"
-msgstr "Den här mappen tillhör inte dig"
-
-#: ../src/View/ViewContainer.vala:387
-msgid "You don't have permission to view this folder."
-msgstr "Du saknar rättigheter för att se innehållet i denna mapp"
-
-#: ../src/View/ViewContainer.vala:389
-msgid "Unable to Mount Folder"
-msgstr "Kunde inte montera mappen"
-
-#: ../src/View/ViewContainer.vala:390
-msgid "Could not connect to the server for this folder."
-msgstr "Kunde inte ansluta till den här mappens server"
-
-#: ../src/View/ViewContainer.vala:392
-msgid "Unable to Display Folder Contents"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:393
-msgid "The operation timed out."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:395
-msgid "Unable to Show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:396
-msgid "The server for this folder could not be located."
-msgstr "Servern för den här mappen kunde inte hittas."
-
-#: ../src/View/ViewContainer.vala:406
-msgid "File not Found"
-msgstr "Filen hittades inte"
-
-#: ../src/View/ViewContainer.vala:407
-msgid "The file selected no longer exists."
-msgstr "Den valda filen finns inte längre."
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Den här mappen är tom"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "Papperskorgen är tom"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Det finns inga nyligen använda filer"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Åtkomst nekad"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
-msgid "Open in New Tab"
-msgstr "Öppna i ny flik"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
-msgid "Open in New Window"
-msgstr ""
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
-msgid "Open in Other Application…"
 msgstr ""
 
 #: ../src/View/Widgets/LocationBar.vala:186
@@ -1893,6 +1649,18 @@ msgstr ""
 msgid "%u files not readable"
 msgstr ""
 
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
+msgid "Open in New Tab"
+msgstr "Öppna i ny flik"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
+msgid "Open in New Window"
+msgstr ""
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
+msgid "Open in Other Application…"
+msgstr ""
+
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
 msgstr "Läs"
@@ -1905,31 +1673,260 @@ msgstr "Skriv"
 msgid "Execute"
 msgstr "Kör"
 
-#: ../src/Application.vala:150
+#: ../src/View/Window.vala:205
+msgid "Files isn't your default file manager."
+msgstr "Files är inte din standardfilhanterare."
+
+#: ../src/View/Window.vala:211
+msgid "Set as Default"
+msgstr "Ange som standard"
+
+#: ../src/View/Window.vala:217
+msgid "Ignore"
+msgstr "Ignorera"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Filnamn"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Storlek"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Filtyp"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Ändrad"
+
+#: ../src/View/Sidebar.vala:503
+msgid "Personal"
+msgstr "Personligt"
+
+#: ../src/View/Sidebar.vala:504
+msgid "Your common places and bookmarks"
+msgstr "Dina vanliga platser och bokmärken"
+
+#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:373
+msgid "Home"
+msgstr "Hem"
+
+#: ../src/View/Sidebar.vala:523
+msgid "Open your personal folder"
+msgstr "Öppna din personliga mapp"
+
+#: ../src/View/Sidebar.vala:538
+msgid "View the list of recently used files"
+msgstr "Visa listan över senast använda filer"
+
+#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr "Papperskorg"
+
+#: ../src/View/Sidebar.vala:571
+msgid "Open the Trash"
+msgstr "Öppna papperskorgen"
+
+#: ../src/View/Sidebar.vala:576
+msgid "Devices"
+msgstr "Enheter"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your local partitions and devices"
+msgstr "Dina lokala partitioner och enheter"
+
+#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:375
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:68
+msgid "File System"
+msgstr "Filsystem"
+
+#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
+msgid "Network"
+msgstr "Nätverk"
+
+#: ../src/View/Sidebar.vala:702
+msgid "Your network places"
+msgstr "Dina nätverksplatser"
+
+#: ../src/View/Sidebar.vala:734
+msgid "Entire Network"
+msgstr "Hela nätverket"
+
+#: ../src/View/Sidebar.vala:741
+msgid "Browse the contents of the network"
+msgstr "Bläddra i nätverkets innehåll"
+
+#: ../src/View/Sidebar.vala:874
+msgid "(%s Free of %s)"
+msgstr "(%s ledigt av %s)"
+
+#: ../src/View/Sidebar.vala:1370
+msgid "Unable to start %s"
+msgstr "Kunde inte starta %s"
+
+#: ../src/View/Sidebar.vala:1474
+msgid "Open"
+msgstr "Öppna"
+
+#: ../src/View/Sidebar.vala:1482
+msgid "Open in New _Tab"
+msgstr "Öppna i ny _flik"
+
+#: ../src/View/Sidebar.vala:1488
+msgid "Open in New _Window"
+msgstr "Öppna i nytt _fönster"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "Remove"
+msgstr "Ta bort"
+
+#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Byt namn"
+
+#: ../src/View/Sidebar.vala:1513
+msgid "_Mount"
+msgstr "_Montera"
+
+#: ../src/View/Sidebar.vala:1519
+msgid "_Unmount"
+msgstr "_Avmontera"
+
+#: ../src/View/Sidebar.vala:1525
+msgid "_Eject"
+msgstr "Mata _ut"
+
+#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Egenskaper"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
+msgid "This Folder Does Not Exist"
+msgstr "Den här mappen finns inte"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Mappen \"%s\" kan inte hittas."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Skapa"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Skapa mappen \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Misslyckades med att skapa mappen\n"
+"\n"
+"%s"
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Den här mappen är tom"
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "Papperskorgen är tom"
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Det finns inga nyligen använda filer"
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Åtkomst nekad"
+
+#: ../src/View/ViewContainer.vala:388
+msgid "(as Administrator)"
+msgstr "(som administratör)"
+
+#: ../src/View/ViewContainer.vala:407
+msgid "You cannot create a folder here."
+msgstr "Du kan inte skapa en mapp här."
+
+#: ../src/View/ViewContainer.vala:410
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:411
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:413
+msgid "This Folder Does Not Belong to You"
+msgstr "Den här mappen tillhör inte dig"
+
+#: ../src/View/ViewContainer.vala:414
+msgid "You don't have permission to view this folder."
+msgstr "Du saknar rättigheter för att se innehållet i denna mapp"
+
+#: ../src/View/ViewContainer.vala:416
+msgid "Unable to Mount Folder"
+msgstr "Kunde inte montera mappen"
+
+#: ../src/View/ViewContainer.vala:417
+msgid "Could not connect to the server for this folder."
+msgstr "Kunde inte ansluta till den här mappens server"
+
+#: ../src/View/ViewContainer.vala:419
+msgid "Unable to Display Folder Contents"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:420
+msgid "The operation timed out."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:422
+msgid "Unable to Show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:423
+msgid "The server for this folder could not be located."
+msgstr "Servern för den här mappen kunde inte hittas."
+
+#: ../src/View/ViewContainer.vala:433
+msgid "File not Found"
+msgstr "Filen hittades inte"
+
+#: ../src/View/ViewContainer.vala:434
+msgid "The file selected no longer exists."
+msgstr "Den valda filen finns inte längre."
+
+#: ../src/Application.vala:134
 msgid "Show the version of the program."
 msgstr "Visa programversionen."
 
-#: ../src/Application.vala:152
+#: ../src/Application.vala:136
 msgid "Open uri(s) in new tab"
 msgstr "Öppna uri(s) i en ny tab"
 
-#: ../src/Application.vala:154 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Nytt fönster"
 
-#: ../src/Application.vala:156
+#: ../src/Application.vala:140
 msgid "Quit Files."
 msgstr "Avsluta Filer."
 
-#: ../src/Application.vala:158
+#: ../src/Application.vala:142
 msgid "Enable debug logging"
 msgstr "Aktivera felsöknings-loggning"
 
-#: ../src/Application.vala:161
+#: ../src/Application.vala:145
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:164
+#: ../src/Application.vala:148
 msgid ""
 "\n"
 "\n"
@@ -1939,95 +1936,13 @@ msgstr ""
 "\n"
 "Bläddra i filsystemet med filhanteraren"
 
-#: ../src/Application.vala:191
+#: ../src/Application.vala:175
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan inte användas med URI:er."
-
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr "Bläddra bland dina filer"
-
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr "Filhanterare"
-
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr "Nytt _fönster"
-
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Nytt fönster som _administratör"
-
-#: ../src/DesktopLauncher.vala:25
-msgid "About _Files"
-msgstr "Om _Filer"
-
-#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Filer"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "Filåtgärder"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "Visa kopieringsdialog"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "Avbryt alla pågående åtgärder"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "Det finns inget i urklipp att klistra in"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Använd som standard"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr ""
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Plats:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr ""
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2065,6 +1980,23 @@ msgstr ""
 msgid "Used:"
 msgstr ""
 
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "Plats:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr ""
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Använd som standard"
+
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
 msgstr "Rättigheter"
@@ -2077,8 +2009,7 @@ msgstr ""
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] "%i fil kunde inte läsas på grund av rättigheter eller andra fel."
-msgstr[1] ""
-"%i filer kunde inte läsas på grund av rättigheter eller andra fel."
+msgstr[1] "%i filer kunde inte läsas på grund av rättigheter eller andra fel."
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
 #: ../src/Dialogs/PropertiesWindow.vala:279
@@ -2176,8 +2107,93 @@ msgstr[1] ""
 msgid "%s (%s, %s)"
 msgstr ""
 
-#: ../libcore/gof-directory-async.vala:587
-msgid "Server did not respond within time limit"
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Filåtgärder"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Visa kopieringsdialog"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Avbryt alla pågående åtgärder"
+
+#: ../src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr "Bläddra bland dina filer"
+
+#: ../src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr "Filhanterare"
+
+#: ../src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr "Nytt _fönster"
+
+#: ../src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr "Nytt fönster som _administratör"
+
+#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Filer"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "Kunde inte fastställa ursprunglig plats för \"%s\" "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "Objektet kan inte återskapas från papperskorgen"
+
+#: ../libcore/FileUtils.vala:345
+msgid "Could not rename to '%s'"
+msgstr "Kunde inte döpa om till '%s'"
+
+#: ../libcore/FileUtils.vala:436
+msgid "Today at %-H:%M"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:444
+msgid "Yesterday at %-H:%M"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:453
+msgid "%A at %-H:%M"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:455
+msgid "%A at %-I:%M %p"
 msgstr ""
 
 #: ../libcore/DndHandler.vala:45
@@ -2200,107 +2216,17 @@ msgstr "Länka hit"
 msgid "Cancel"
 msgstr "Avbryt"
 
-#: ../libcore/FileUtils.vala:60
-msgid "Could not determine original location of \"%s\" "
-msgstr "Kunde inte fastställa ursprunglig plats för \"%s\" "
-
-#: ../libcore/FileUtils.vala:61
-msgid "The item cannot be restored from trash"
-msgstr "Objektet kan inte återskapas från papperskorgen"
-
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "Kunde inte döpa om till '%s'"
-
-#: ../libcore/FileUtils.vala:434
-msgid "Today at %-H:%M"
+#: ../libcore/gof-directory-async.vala:611
+msgid "Server did not respond within time limit"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:442
-msgid "Yesterday at %-H:%M"
-msgstr ""
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Navigera till %s"
 
-#: ../libcore/FileUtils.vala:451
-msgid "%A at %-H:%M"
-msgstr ""
-
-#: ../libcore/FileUtils.vala:453
-msgid "%A at %-I:%M %p"
-msgstr ""
-
-#: ../libwidgets/View/SearchResults.vala:187
-msgid "In This Folder"
-msgstr "I denna mapp"
-
-#: ../libwidgets/View/SearchResults.vala:191
-msgid "Bookmarks"
-msgstr "Bokmärken"
-
-#: ../libwidgets/View/SearchResults.vala:195
-msgid "Everywhere Else"
-msgstr "Alla andra platser"
-
-#: ../libwidgets/Resources.vala:30
-msgid "A simple and powerful file manager"
-msgstr "En enkel och kraftfull filhanterare"
-
-#: ../libwidgets/Resources.vala:51
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Benjamin Bultman https://launchpad.net/~bultman-ben\n"
-"  Cody Garver https://launchpad.net/~codygarver\n"
-"  Dan Hansson https://launchpad.net/~b-dan\n"
-"  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Daniel Ruus https://launchpad.net/~daniel-ruus\n"
-"  David Eurenius https://launchpad.net/~david-eureniusdesign\n"
-"  Ellie https://launchpad.net/~magnonellie\n"
-"  Gustav Ekner https://launchpad.net/~gustav-ekner\n"
-"  Joachim Johansson https://launchpad.net/~joachim-j\n"
-"  Johan Holtz https://launchpad.net/~little-fox\n"
-"  Jon https://launchpad.net/~jomenvisst\n"
-"  KranisXD https://launchpad.net/~kranis-xd-239\n"
-"  Larsson https://launchpad.net/~larsson\n"
-"  Marcus Lundgren https://launchpad.net/~marcus-lundgren\n"
-"  Max Malm https://launchpad.net/~benjick\n"
-"  Mikael Nyberg https://launchpad.net/~miknyb\n"
-"  Simon Vall https://launchpad.net/~simon.vall\n"
-"  Synlic https://launchpad.net/~synlic\n"
-"  Zahirovic Mensur https://launchpad.net/~nookienoq\n"
-"  fsavje https://launchpad.net/~fred-ubuntu-9\n"
-"  skaggmannen https://launchpad.net/~fredrik-allansson"
-
-#: ../libwidgets/Resources.vala:84
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:85
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:86
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:87
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:89
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:90
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:92
-msgid "Recent"
-msgstr "Senaste"
-
-#: ../libwidgets/Resources.vala:93
-msgid "MTP"
-msgstr ""
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Gå till %s"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
@@ -2318,13 +2244,55 @@ msgstr "Visa som lista"
 msgid "View in Columns"
 msgstr "Visa i kolumner"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Navigera till %s"
+#: ../libwidgets/Resources.vala:58
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
-msgid "Go to %s"
-msgstr "Gå till %s"
+#: ../libwidgets/Resources.vala:59
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.vala:60
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.vala:61
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.vala:63
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.vala:64
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.vala:66
+msgid "Recent"
+msgstr "Senaste"
+
+#: ../libwidgets/Resources.vala:67
+msgid "MTP"
+msgstr ""
+
+#: ../libwidgets/View/SearchResults.vala:226
+msgid "In This Folder"
+msgstr "I denna mapp"
+
+#: ../libwidgets/View/SearchResults.vala:231
+#, fuzzy
+msgid "Below This Folder"
+msgstr "I denna mapp"
+
+#: ../libwidgets/View/SearchResults.vala:236
+msgid "Bookmarks"
+msgstr "Bokmärken"
+
+#: ../libwidgets/View/SearchResults.vala:241
+#, fuzzy
+msgid "Recently used"
+msgstr "Senaste"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2433,3 +2401,37 @@ msgstr "Datum"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Omvänd ordning"
+
+#~ msgid "About _Files"
+#~ msgstr "Om _Filer"
+
+#~ msgid "Everywhere Else"
+#~ msgstr "Alla andra platser"
+
+#~ msgid "A simple and powerful file manager"
+#~ msgstr "En enkel och kraftfull filhanterare"
+
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Launchpad Contributions:\n"
+#~ "  Benjamin Bultman https://launchpad.net/~bultman-ben\n"
+#~ "  Cody Garver https://launchpad.net/~codygarver\n"
+#~ "  Dan Hansson https://launchpad.net/~b-dan\n"
+#~ "  Daniel Fore https://launchpad.net/~danrabbit\n"
+#~ "  Daniel Ruus https://launchpad.net/~daniel-ruus\n"
+#~ "  David Eurenius https://launchpad.net/~david-eureniusdesign\n"
+#~ "  Ellie https://launchpad.net/~magnonellie\n"
+#~ "  Gustav Ekner https://launchpad.net/~gustav-ekner\n"
+#~ "  Joachim Johansson https://launchpad.net/~joachim-j\n"
+#~ "  Johan Holtz https://launchpad.net/~little-fox\n"
+#~ "  Jon https://launchpad.net/~jomenvisst\n"
+#~ "  KranisXD https://launchpad.net/~kranis-xd-239\n"
+#~ "  Larsson https://launchpad.net/~larsson\n"
+#~ "  Marcus Lundgren https://launchpad.net/~marcus-lundgren\n"
+#~ "  Max Malm https://launchpad.net/~benjick\n"
+#~ "  Mikael Nyberg https://launchpad.net/~miknyb\n"
+#~ "  Simon Vall https://launchpad.net/~simon.vall\n"
+#~ "  Synlic https://launchpad.net/~synlic\n"
+#~ "  Zahirovic Mensur https://launchpad.net/~nookienoq\n"
+#~ "  fsavje https://launchpad.net/~fred-ubuntu-9\n"
+#~ "  skaggmannen https://launchpad.net/~fredrik-allansson"

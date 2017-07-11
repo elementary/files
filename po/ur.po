@@ -6,18 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-06 13:44-0700\n"
 "PO-Revision-Date: 2016-10-16 09:51+0000\n"
 "Last-Translator: Waqar Ahmed <waqar.17a@gmail.com>\n"
 "Language-Team: Urdu <ur@li.org>\n"
+"Language: ur\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
-"Language: ur\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -282,44 +282,6 @@ msgstr "تبدیل کریں"
 msgid "File conflict"
 msgstr "فائل تصادم"
 
-#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:377
-#, c-format
-msgid "link to %s"
-msgstr "ربط تا %s"
-
-#: ../libcore/gof-file.c:1934
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "یہ ڈیسک ٹاپ فائل پارس کرنے میں ناکامی: %s"
-
-#: ../libcore/gof-file.c:1971
-msgid "No Exec field specified"
-msgstr "کوئی Exec  فیلڈ نہیں دی"
-
-#: ../libcore/gof-file.c:1990
-msgid "No URL field specified"
-msgstr "کوئی URL فیلڈ نہیں دی"
-
-#: ../libcore/gof-file.c:1996
-msgid "Invalid desktop file"
-msgstr "ناموزوں ڈیسک ٹاپ فائل"
-
-#: ../libcore/gof-file.c:2291
-msgid "Slashes are not allowed in filenames"
-msgstr "فائل نام کے اندر سلیش(/) کی اجازت نہیں"
-
-#: ../libcore/gof-file.c:2311
-msgid "Toplevel files cannot be renamed"
-msgstr "اوپری درجے کی فائلوں کے نام تبدیل نہیں کیے جاسکتے"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "مزید _تفصیلات ظاہر کریں"
-
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (ناموزوں یونیکوڈ)"
@@ -496,8 +458,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-"کیا آپ واقعی %'d منتخب کردہ چیز کو مستقل طور پر حذف کرنا چاہتے ہیں؟"
+msgstr[0] "کیا آپ واقعی %'d منتخب کردہ چیز کو مستقل طور پر حذف کرنا چاہتے ہیں؟"
 msgstr[1] ""
 "کیا آپ واقعی %'d منتخب کردہ چیزوں کو مستقل طور پر حذف کرنا چاہتے ہیں؟"
 
@@ -525,7 +486,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1512
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
 msgid "Empty _Trash"
 msgstr "_ردی خالی کریں"
 
@@ -538,8 +499,7 @@ msgstr "کیا آپ واقعی \"%B\" کو ہمیشہ کے لیے حذف کرن�
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-"کیا آپ واقعی %'d منتخب کردہ چیز کو مستقل طور پر حذف کرنا چاہتے ہیں؟"
+msgstr[0] "کیا آپ واقعی %'d منتخب کردہ چیز کو مستقل طور پر حذف کرنا چاہتے ہیں؟"
 msgstr[1] ""
 "کیا آپ واقعی %'d منتخب کردہ چیزوں کو مستقل طور پر حذف کرنا چاہتے ہیں؟"
 
@@ -632,8 +592,7 @@ msgid "Cannot move file to trash or delete it"
 msgstr "فائل کو نہ تو ہلایا جا سکتا ہے، نا ردی میں منتقل اور نہ ہی حذف"
 
 #: ../libcore/marlin-file-operations.c:1947
-msgid ""
-"It is not permitted to trash or delete files on a read only filesystem."
+msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1950
@@ -1066,6 +1025,65 @@ msgstr "ردی  کو خالی کیا جا رہا ہے"
 msgid "Emptying Trash"
 msgstr "ردی خالی کی جارہی ہے"
 
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "تیار کر رہا ہے"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
+msgid "Today at %-I:%M %p"
+msgstr "آج بوقت %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
+msgid "Yesterday at %-I:%M %p"
+msgstr "گزشتہ روز بوقت %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%b %-d %Y پر %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a, %b %-d %Y پر %-I:%M %p"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "مزید _تفصیلات ظاہر کریں"
+
+#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:377
+#, c-format
+msgid "link to %s"
+msgstr "ربط تا %s"
+
+#: ../libcore/gof-file.c:1938
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "یہ ڈیسک ٹاپ فائل پارس کرنے میں ناکامی: %s"
+
+#: ../libcore/gof-file.c:1975
+msgid "No Exec field specified"
+msgstr "کوئی Exec  فیلڈ نہیں دی"
+
+#: ../libcore/gof-file.c:1994
+msgid "No URL field specified"
+msgstr "کوئی URL فیلڈ نہیں دی"
+
+#: ../libcore/gof-file.c:2000
+msgid "Invalid desktop file"
+msgstr "ناموزوں ڈیسک ٹاپ فائل"
+
+#: ../libcore/gof-file.c:2295
+msgid "Slashes are not allowed in filenames"
+msgstr "فائل نام کے اندر سلیش(/) کی اجازت نہیں"
+
+#: ../libcore/gof-file.c:2315
+msgid "Toplevel files cannot be renamed"
+msgstr "اوپری درجے کی فائلوں کے نام تبدیل نہیں کیے جاسکتے"
+
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
 msgstr "اصل مقام کا تعین نہیں کیا جا سکتا"
@@ -1446,27 +1464,6 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:436
-msgid "Today at %-I:%M %p"
-msgstr "آج بوقت %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:444
-msgid "Yesterday at %-I:%M %p"
-msgstr "گزشتہ روز بوقت %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%b %-d %Y پر %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a, %b %-d %Y پر %-I:%M %p"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "تیار کر رہا ہے"
-
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
@@ -1477,315 +1474,77 @@ msgstr "سابقہ"
 msgid "Next"
 msgstr "اگلا"
 
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "فائلز آپکا طےشدہ فائل مینیجر نہیں ہے"
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "طے شُدہ بنائیں"
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "نظرانداز کریں"
-
-#: ../src/View/Sidebar.vala:490
-msgid "Personal"
-msgstr "ذاتی"
-
-#: ../src/View/Sidebar.vala:491
-msgid "Your common places and bookmarks"
-msgstr "آپکے عمومی رسائی کی جگہیں اور بک مارک"
-
-#: ../src/View/Sidebar.vala:503 ../src/View/ViewContainer.vala:346
-msgid "Home"
-msgstr "گھر"
-
-#: ../src/View/Sidebar.vala:510
-msgid "Open your personal folder"
-msgstr "اپنا ذاتی فولڈر کھولیں"
-
-#: ../src/View/Sidebar.vala:525
-msgid "View the list of recently used files"
-msgstr "حالیہ استعمال کردہ فائلوں کی فہرست دیکھیں"
-
-#: ../src/View/Sidebar.vala:546 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "ردی"
-
-#: ../src/View/Sidebar.vala:553
-msgid "Open the Trash"
-msgstr "ردی کھولیں"
-
-#: ../src/View/Sidebar.vala:557
-msgid "Devices"
-msgstr "آلات"
-
-#: ../src/View/Sidebar.vala:558
-msgid "Your local partitions and devices"
-msgstr "آپکی مقامی پارٹیشن اور ڈیوائسز"
-
-#: ../src/View/Sidebar.vala:564 ../src/View/ViewContainer.vala:348
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:94
-msgid "File System"
-msgstr "فائل کا نظام"
-
-#: ../src/View/Sidebar.vala:682 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "نیٹ ورک"
-
-#: ../src/View/Sidebar.vala:683
-msgid "Your network places"
-msgstr "نیٹ ورک جگہیں"
-
-#: ../src/View/Sidebar.vala:715
-msgid "Entire Network"
-msgstr "پورا نیٹ ورک"
-
-#: ../src/View/Sidebar.vala:722
-msgid "Browse the contents of the network"
-msgstr "نیٹ ورک کا مواد براؤز کریں"
-
-#: ../src/View/Sidebar.vala:854
-msgid "(%s Free of %s)"
-msgstr "(%s خالی جگہ %s میں سے)"
-
-#: ../src/View/Sidebar.vala:1350
-msgid "Unable to start %s"
-msgstr "‏%s کو شروع کرنے سے قاصر"
-
-#: ../src/View/Sidebar.vala:1454
-msgid "Open"
-msgstr "کهولیں"
-
-#: ../src/View/Sidebar.vala:1462
-msgid "Open in New _Tab"
-msgstr "نئے _ٹیب میں کھولیں"
-
-#: ../src/View/Sidebar.vala:1468
-msgid "Open in New _Window"
-msgstr "نئے _دریچے میں کھولیں"
-
-#: ../src/View/Sidebar.vala:1476
-msgid "Remove"
-msgstr "حذف کریں"
-
-#: ../src/View/Sidebar.vala:1484 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "نام بدلیں"
-
-#: ../src/View/Sidebar.vala:1493
-msgid "_Mount"
-msgstr "_ماؤنٹ کریں"
-
-#: ../src/View/Sidebar.vala:1499
-msgid "_Unmount"
-msgstr "_ان ماؤنٹ کریں"
-
-#: ../src/View/Sidebar.vala:1505
-msgid "_Eject"
-msgstr "_خارج کریں"
-
-#: ../src/View/Sidebar.vala:1519 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "_خصوصیات"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "فائل کا نام"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "سائز"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "نوعیت"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "تبدیل کردہ"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:379
-msgid "This Folder Does Not Exist"
-msgstr "یہ فولڈر موجود نہیں ہے"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "فولڈر \"%s\" نہیں پایا گیا۔"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "بنائیں"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "فولڈر '%s' بنائیں"
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr "فولڈر '%s' بنانے میں ناکامی"
-
-#: ../src/View/AbstractDirectoryView.vala:564
+#: ../src/View/AbstractDirectoryView.vala:581
 msgid "Failed to preview"
 msgstr "پیش منظر دکھانے میں ناکام"
 
-#: ../src/View/AbstractDirectoryView.vala:817
+#: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
 msgstr "یہ فائل کھولی نہیں کی جاسکتی"
 
-#: ../src/View/AbstractDirectoryView.vala:830
+#: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
 msgstr "کھولنے کے لیے فائل کی نوعیت کی شناخت نہیں کی جاسکی"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Cannot drop this file"
 msgstr "یہ فائل ڈراپ نہیں کی جاسکتی"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Invalid file name provided"
 msgstr "فائل کا نام ناموزوں ہے"
 
-#: ../src/View/AbstractDirectoryView.vala:2010
+#: ../src/View/AbstractDirectoryView.vala:2011
 msgid "Invalid"
 msgstr "ناموزوں"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:2017
 msgid "Run"
 msgstr "چلائیں"
 
-#: ../src/View/AbstractDirectoryView.vala:2021
+#: ../src/View/AbstractDirectoryView.vala:2022
 msgid "Open in %s"
 msgstr "%s میں کھولیں"
 
-#: ../src/View/AbstractDirectoryView.vala:2031
+#: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "کھولیں بذریعہ"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2034
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
 msgid "Open with"
 msgstr "کھولیں بذریعہ"
 
-#: ../src/View/AbstractDirectoryView.vala:2093
+#: ../src/View/AbstractDirectoryView.vala:2094
 msgid "Other Application"
 msgstr "دیگر اطلاقیے۔۔۔"
 
-#: ../src/View/AbstractDirectoryView.vala:2354
+#: ../src/View/AbstractDirectoryView.vala:2355
 msgid "Untitled %s"
 msgstr "بے عُنوان %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2678
-#: ../src/View/AbstractDirectoryView.vala:2861
+#: ../src/View/AbstractDirectoryView.vala:2689
+#: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
 msgstr "یہاں سے فائلیں نہیں ہٹا سکتا"
 
-#: ../src/View/AbstractDirectoryView.vala:2679
-#: ../src/View/AbstractDirectoryView.vala:2849
-#: ../src/View/AbstractDirectoryView.vala:2862
+#: ../src/View/AbstractDirectoryView.vala:2690
+#: ../src/View/AbstractDirectoryView.vala:2860
+#: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
 msgstr "آپکو اس مقام کو بدلنے کی اجازت نہیں ہے"
 
-#: ../src/View/AbstractDirectoryView.vala:2827
+#: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
 msgstr "ردی میں پڑی فائلوں کو کاپی نہیں کر سکتا"
 
-#: ../src/View/AbstractDirectoryView.vala:2828
+#: ../src/View/AbstractDirectoryView.vala:2839
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2848
+#: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
 msgstr "یہاں سے فائلیں پیسٹ نہیں کر سکتا"
-
-#: ../src/View/ViewContainer.vala:361
-msgid "(as Administrator)"
-msgstr "(بطور ایڈمنسٹریٹر)"
-
-#: ../src/View/ViewContainer.vala:380
-msgid "You cannot create a folder here."
-msgstr "آپ یہاں پر فولڈر نہیں بنا سکتے"
-
-#: ../src/View/ViewContainer.vala:383
-msgid "The network is unavailable"
-msgstr "نیٹ ورک دستیاب نہیں"
-
-#: ../src/View/ViewContainer.vala:384
-msgid "A working network is needed to reach this folder"
-msgstr "اس فولڈر تک رسائی کے لیے نیٹ ورک کنکشن کی ضرورت ہے"
-
-#: ../src/View/ViewContainer.vala:386
-msgid "This Folder Does Not Belong to You"
-msgstr "یہ فولڈر آپکی ملکیت نہیں ہے"
-
-#: ../src/View/ViewContainer.vala:387
-msgid "You don't have permission to view this folder."
-msgstr "آپ کو اس فولڈر کو دیکھنے کی اجازت نہیں ہے"
-
-#: ../src/View/ViewContainer.vala:389
-msgid "Unable to Mount Folder"
-msgstr "فولڈر کو ماؤنٹ کرنے سے قاصر"
-
-#: ../src/View/ViewContainer.vala:390
-msgid "Could not connect to the server for this folder."
-msgstr "اس فولڈر کے سرور سے جڑنے میں ناکام"
-
-#: ../src/View/ViewContainer.vala:392
-msgid "Unable to Display Folder Contents"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:393
-msgid "The operation timed out."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:395
-msgid "Unable to Show Folder"
-msgstr "فولڈر دکھانے میں ناکام"
-
-#: ../src/View/ViewContainer.vala:396
-msgid "The server for this folder could not be located."
-msgstr "اس فولڈر کا سرور نہیں مل سکا."
-
-#: ../src/View/ViewContainer.vala:406
-msgid "File not Found"
-msgstr "فائل نہیں پائی گئی"
-
-#: ../src/View/ViewContainer.vala:407
-msgid "The file selected no longer exists."
-msgstr "منتخب کردہ فائل اب موجود نہیں"
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "یہ فولڈر خالی ہے"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "ردی خالی ہے"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "کوئی حالیہ فائلیں نہیں"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "رسائی روک دی گئی."
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
-msgid "Open in New Tab"
-msgstr "نئے ٹیب میں کھولیں"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
-msgid "Open in New Window"
-msgstr "نئی ونڈو میں کھولیں"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
-msgid "Open in Other Application…"
-msgstr "کسی اور اطلاقیے سے کھولیں..."
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1863,6 +1622,18 @@ msgstr "%u فائل پڑھی جانے کے قابل نہیں"
 msgid "%u files not readable"
 msgstr "%u فائلیں پڑھی جانے کے قابل نہیں"
 
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
+msgid "Open in New Tab"
+msgstr "نئے ٹیب میں کھولیں"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
+msgid "Open in New Window"
+msgstr "نئی ونڈو میں کھولیں"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
+msgid "Open in Other Application…"
+msgstr "کسی اور اطلاقیے سے کھولیں..."
+
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
 msgstr "پڑھنا"
@@ -1875,31 +1646,257 @@ msgstr "لکھنا"
 msgid "Execute"
 msgstr "چلانا"
 
-#: ../src/Application.vala:150
+#: ../src/View/Window.vala:205
+msgid "Files isn't your default file manager."
+msgstr "فائلز آپکا طےشدہ فائل مینیجر نہیں ہے"
+
+#: ../src/View/Window.vala:211
+msgid "Set as Default"
+msgstr "طے شُدہ بنائیں"
+
+#: ../src/View/Window.vala:217
+msgid "Ignore"
+msgstr "نظرانداز کریں"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "فائل کا نام"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "سائز"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "نوعیت"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "تبدیل کردہ"
+
+#: ../src/View/Sidebar.vala:503
+msgid "Personal"
+msgstr "ذاتی"
+
+#: ../src/View/Sidebar.vala:504
+msgid "Your common places and bookmarks"
+msgstr "آپکے عمومی رسائی کی جگہیں اور بک مارک"
+
+#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:373
+msgid "Home"
+msgstr "گھر"
+
+#: ../src/View/Sidebar.vala:523
+msgid "Open your personal folder"
+msgstr "اپنا ذاتی فولڈر کھولیں"
+
+#: ../src/View/Sidebar.vala:538
+msgid "View the list of recently used files"
+msgstr "حالیہ استعمال کردہ فائلوں کی فہرست دیکھیں"
+
+#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr "ردی"
+
+#: ../src/View/Sidebar.vala:571
+msgid "Open the Trash"
+msgstr "ردی کھولیں"
+
+#: ../src/View/Sidebar.vala:576
+msgid "Devices"
+msgstr "آلات"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your local partitions and devices"
+msgstr "آپکی مقامی پارٹیشن اور ڈیوائسز"
+
+#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:375
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:68
+msgid "File System"
+msgstr "فائل کا نظام"
+
+#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
+msgid "Network"
+msgstr "نیٹ ورک"
+
+#: ../src/View/Sidebar.vala:702
+msgid "Your network places"
+msgstr "نیٹ ورک جگہیں"
+
+#: ../src/View/Sidebar.vala:734
+msgid "Entire Network"
+msgstr "پورا نیٹ ورک"
+
+#: ../src/View/Sidebar.vala:741
+msgid "Browse the contents of the network"
+msgstr "نیٹ ورک کا مواد براؤز کریں"
+
+#: ../src/View/Sidebar.vala:874
+msgid "(%s Free of %s)"
+msgstr "(%s خالی جگہ %s میں سے)"
+
+#: ../src/View/Sidebar.vala:1370
+msgid "Unable to start %s"
+msgstr "‏%s کو شروع کرنے سے قاصر"
+
+#: ../src/View/Sidebar.vala:1474
+msgid "Open"
+msgstr "کهولیں"
+
+#: ../src/View/Sidebar.vala:1482
+msgid "Open in New _Tab"
+msgstr "نئے _ٹیب میں کھولیں"
+
+#: ../src/View/Sidebar.vala:1488
+msgid "Open in New _Window"
+msgstr "نئے _دریچے میں کھولیں"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "Remove"
+msgstr "حذف کریں"
+
+#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "نام بدلیں"
+
+#: ../src/View/Sidebar.vala:1513
+msgid "_Mount"
+msgstr "_ماؤنٹ کریں"
+
+#: ../src/View/Sidebar.vala:1519
+msgid "_Unmount"
+msgstr "_ان ماؤنٹ کریں"
+
+#: ../src/View/Sidebar.vala:1525
+msgid "_Eject"
+msgstr "_خارج کریں"
+
+#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "_خصوصیات"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
+msgid "This Folder Does Not Exist"
+msgstr "یہ فولڈر موجود نہیں ہے"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "فولڈر \"%s\" نہیں پایا گیا۔"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "بنائیں"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "فولڈر '%s' بنائیں"
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr "فولڈر '%s' بنانے میں ناکامی"
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "یہ فولڈر خالی ہے"
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "ردی خالی ہے"
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "کوئی حالیہ فائلیں نہیں"
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "رسائی روک دی گئی."
+
+#: ../src/View/ViewContainer.vala:388
+msgid "(as Administrator)"
+msgstr "(بطور ایڈمنسٹریٹر)"
+
+#: ../src/View/ViewContainer.vala:407
+msgid "You cannot create a folder here."
+msgstr "آپ یہاں پر فولڈر نہیں بنا سکتے"
+
+#: ../src/View/ViewContainer.vala:410
+msgid "The network is unavailable"
+msgstr "نیٹ ورک دستیاب نہیں"
+
+#: ../src/View/ViewContainer.vala:411
+msgid "A working network is needed to reach this folder"
+msgstr "اس فولڈر تک رسائی کے لیے نیٹ ورک کنکشن کی ضرورت ہے"
+
+#: ../src/View/ViewContainer.vala:413
+msgid "This Folder Does Not Belong to You"
+msgstr "یہ فولڈر آپکی ملکیت نہیں ہے"
+
+#: ../src/View/ViewContainer.vala:414
+msgid "You don't have permission to view this folder."
+msgstr "آپ کو اس فولڈر کو دیکھنے کی اجازت نہیں ہے"
+
+#: ../src/View/ViewContainer.vala:416
+msgid "Unable to Mount Folder"
+msgstr "فولڈر کو ماؤنٹ کرنے سے قاصر"
+
+#: ../src/View/ViewContainer.vala:417
+msgid "Could not connect to the server for this folder."
+msgstr "اس فولڈر کے سرور سے جڑنے میں ناکام"
+
+#: ../src/View/ViewContainer.vala:419
+msgid "Unable to Display Folder Contents"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:420
+msgid "The operation timed out."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:422
+msgid "Unable to Show Folder"
+msgstr "فولڈر دکھانے میں ناکام"
+
+#: ../src/View/ViewContainer.vala:423
+msgid "The server for this folder could not be located."
+msgstr "اس فولڈر کا سرور نہیں مل سکا."
+
+#: ../src/View/ViewContainer.vala:433
+msgid "File not Found"
+msgstr "فائل نہیں پائی گئی"
+
+#: ../src/View/ViewContainer.vala:434
+msgid "The file selected no longer exists."
+msgstr "منتخب کردہ فائل اب موجود نہیں"
+
+#: ../src/Application.vala:134
 msgid "Show the version of the program."
 msgstr "پروگرام کا ورژن دکھائیں."
 
-#: ../src/Application.vala:152
+#: ../src/Application.vala:136
 msgid "Open uri(s) in new tab"
 msgstr "uri کو نئی ٹیب میں کھولیں"
 
-#: ../src/Application.vala:154 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "نئی ونڈو"
 
-#: ../src/Application.vala:156
+#: ../src/Application.vala:140
 msgid "Quit Files."
 msgstr "فائلیں بند کریں۔"
 
-#: ../src/Application.vala:158
+#: ../src/Application.vala:142
 msgid "Enable debug logging"
 msgstr "ڈی بگ لاگنگ فعال کریں"
 
-#: ../src/Application.vala:161
+#: ../src/Application.vala:145
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:164
+#: ../src/Application.vala:148
 msgid ""
 "\n"
 "\n"
@@ -1909,95 +1906,13 @@ msgstr ""
 "\n"
 "فائل منیجر سے فائل نظام دیکھیں"
 
-#: ../src/Application.vala:191
+#: ../src/Application.vala:175
 msgid "--quit cannot be used with URIs."
 msgstr "quit-- ، URI کے ساتھ استعمال نہیں ہوسکتا۔"
-
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr "فائلیں براؤز کریں"
-
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr "فائل منیجر"
-
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr "نیا _ونڈو"
-
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "نیا ونڈو بطور _ایڈمنسٹریٹر"
-
-#: ../src/DesktopLauncher.vala:25
-msgid "About _Files"
-msgstr "_فائلز کے متعلق"
-
-#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "فائلز"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "فائل آپریشنز"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
-msgstr "مکمل شدہ %s"
-
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
-msgstr "تمام فائل آپریشن کامیابی سے مکمل ہوگئے"
-
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "کاپی ڈائیلاگ دکھائیں"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "تمام چلتے ہوئے عمل منسوخ کردیں"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "پیسٹ کرنے کے لیے کلپ بورڈ میں کچھ نہیں ہے"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "طے شُدہ بنائیں"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "_ڈسک خصوصیات"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "مقام:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "ساخت:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2034,6 +1949,23 @@ msgstr "دستیاب"
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 msgid "Used:"
 msgstr "استعمال شدہ:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "_ڈسک خصوصیات"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "مقام:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "ساخت:"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "طے شُدہ بنائیں"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
@@ -2145,8 +2077,93 @@ msgstr[1] ""
 msgid "%s (%s, %s)"
 msgstr ""
 
-#: ../libcore/gof-directory-async.vala:587
-msgid "Server did not respond within time limit"
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "فائل آپریشنز"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "مکمل شدہ %s"
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "تمام فائل آپریشن کامیابی سے مکمل ہوگئے"
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "کاپی ڈائیلاگ دکھائیں"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "تمام چلتے ہوئے عمل منسوخ کردیں"
+
+#: ../src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr "فائلیں براؤز کریں"
+
+#: ../src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr "فائل منیجر"
+
+#: ../src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr "نیا _ونڈو"
+
+#: ../src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr "نیا ونڈو بطور _ایڈمنسٹریٹر"
+
+#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "فائلز"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "‏\"%s\" کے اصل مقام کا تعین نہیں ہوسکا "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "اس چیز کو ردی سے بحال نہیں کیا جا سکتا"
+
+#: ../libcore/FileUtils.vala:345
+msgid "Could not rename to '%s'"
+msgstr "'‏%'s پہ نام نہیں بدلا جا سکتا"
+
+#: ../libcore/FileUtils.vala:436
+msgid "Today at %-H:%M"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:444
+msgid "Yesterday at %-H:%M"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:453
+msgid "%A at %-H:%M"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:455
+msgid "%A at %-I:%M %p"
 msgstr ""
 
 #: ../libcore/DndHandler.vala:45
@@ -2169,89 +2186,17 @@ msgstr "یہاں ربط بنائیں"
 msgid "Cancel"
 msgstr "منسوخ کریں"
 
-#: ../libcore/FileUtils.vala:60
-msgid "Could not determine original location of \"%s\" "
-msgstr "‏\"%s\" کے اصل مقام کا تعین نہیں ہوسکا "
-
-#: ../libcore/FileUtils.vala:61
-msgid "The item cannot be restored from trash"
-msgstr "اس چیز کو ردی سے بحال نہیں کیا جا سکتا"
-
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "'‏%'s پہ نام نہیں بدلا جا سکتا"
-
-#: ../libcore/FileUtils.vala:434
-msgid "Today at %-H:%M"
+#: ../libcore/gof-directory-async.vala:611
+msgid "Server did not respond within time limit"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:442
-msgid "Yesterday at %-H:%M"
-msgstr ""
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "%s تک جائیں"
 
-#: ../libcore/FileUtils.vala:451
-msgid "%A at %-H:%M"
-msgstr ""
-
-#: ../libcore/FileUtils.vala:453
-msgid "%A at %-I:%M %p"
-msgstr ""
-
-#: ../libwidgets/View/SearchResults.vala:187
-msgid "In This Folder"
-msgstr "اس فولڈر مِں"
-
-#: ../libwidgets/View/SearchResults.vala:191
-msgid "Bookmarks"
-msgstr "بک مارک"
-
-#: ../libwidgets/View/SearchResults.vala:195
-msgid "Everywhere Else"
-msgstr "ہرجگہ اسکے علاوہ"
-
-#: ../libwidgets/Resources.vala:30
-msgid "A simple and powerful file manager"
-msgstr "ایک سادہ اور طاقتور فائل مینیجر"
-
-#: ../libwidgets/Resources.vala:51
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Waqar Ahmed https://launchpad.net/~waqar-17a\n"
-"  Waqas Ahmad https://launchpad.net/~waqqas-ahmad"
-
-#: ../libwidgets/Resources.vala:84
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:85
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:86
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:87
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:89
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:90
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:92
-msgid "Recent"
-msgstr "حالیہ"
-
-#: ../libwidgets/Resources.vala:93
-msgid "MTP"
-msgstr "MTP"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "جائیں %s پر"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
@@ -2269,13 +2214,55 @@ msgstr "بطور فہرست دیکھیں"
 msgid "View in Columns"
 msgstr "کالموں میں دیکھیں"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "%s تک جائیں"
+#: ../libwidgets/Resources.vala:58
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
-msgid "Go to %s"
-msgstr "جائیں %s پر"
+#: ../libwidgets/Resources.vala:59
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.vala:60
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.vala:61
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.vala:63
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.vala:64
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.vala:66
+msgid "Recent"
+msgstr "حالیہ"
+
+#: ../libwidgets/Resources.vala:67
+msgid "MTP"
+msgstr "MTP"
+
+#: ../libwidgets/View/SearchResults.vala:226
+msgid "In This Folder"
+msgstr "اس فولڈر مِں"
+
+#: ../libwidgets/View/SearchResults.vala:231
+#, fuzzy
+msgid "Below This Folder"
+msgstr "اس فولڈر مِں"
+
+#: ../libwidgets/View/SearchResults.vala:236
+msgid "Bookmarks"
+msgstr "بک مارک"
+
+#: ../libwidgets/View/SearchResults.vala:241
+#, fuzzy
+msgid "Recently used"
+msgstr "حالیہ"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2384,3 +2371,19 @@ msgstr "تاریخ"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr ""
+
+#~ msgid "About _Files"
+#~ msgstr "_فائلز کے متعلق"
+
+#~ msgid "Everywhere Else"
+#~ msgstr "ہرجگہ اسکے علاوہ"
+
+#~ msgid "A simple and powerful file manager"
+#~ msgstr "ایک سادہ اور طاقتور فائل مینیجر"
+
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Launchpad Contributions:\n"
+#~ "  Daniel Fore https://launchpad.net/~danrabbit\n"
+#~ "  Waqar Ahmed https://launchpad.net/~waqar-17a\n"
+#~ "  Waqas Ahmad https://launchpad.net/~waqqas-ahmad"
