@@ -29,7 +29,22 @@ namespace Marlin.View {
 
         public Gtk.Widget? content_item;
         public bool can_show_folder = false;
-        public Marlin.View.Window window;
+        private Marlin.View.Window? _window = null;
+        public Marlin.View.Window window {
+            get {
+                return _window;
+            }
+
+            set {
+                if (_window != null) {
+                    disconnect_window_signals ();
+                }
+
+                _window = value;
+                connect_window_signals ();
+            }
+        }
+
         public GOF.AbstractSlot? view = null;
         public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
 
@@ -112,16 +127,27 @@ namespace Marlin.View {
 
         private void connect_signals () {
             path_changed.connect (on_path_changed);
-            window.folder_deleted.connect (on_folder_deleted);
             enter_notify_event.connect (on_enter_notify_event);
             loading.connect ((loading) => {
                 is_loading = loading;
             });
         }
 
+        private void connect_window_signals () {
+            if (window != null) {
+                window.folder_deleted.connect (on_folder_deleted);
+            }
+        }
+
         private void disconnect_signals () {
             path_changed.disconnect (on_path_changed);
-            window.folder_deleted.disconnect (on_folder_deleted);
+            disconnect_window_signals ();
+        }
+
+        private void disconnect_window_signals () {
+            if (window != null) {
+                window.folder_deleted.disconnect (on_folder_deleted);
+            }
         }
 
         private void on_path_changed (GLib.File file) {
