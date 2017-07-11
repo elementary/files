@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-07-11 11:16+0000\n"
+"PO-Revision-Date: 2017-07-11 11:22+0000\n"
 "Last-Translator: Fabio Zaramella <fabiozaramella@hotmail.it>\n"
 "Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/>"
 "\n"
@@ -1665,7 +1665,7 @@ msgstr "Apri in una nuova finestra"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "Apri in un'altra applicazione..."
+msgstr "Apri in un'altra applicazione…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1816,7 +1816,7 @@ msgstr "Questa cartella non esiste"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr "La cartella \"%s\" non può essere trovata"
+msgstr "La cartella \"%s\" non può essere trovata."
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -2027,7 +2027,7 @@ msgstr "sconosciuto"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "Caricamento..."
+msgstr "Caricamento…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2067,7 +2067,7 @@ msgstr "Posizione originale:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Altre applicazioni..."
+msgstr "Altre applicazioni…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2143,7 +2143,7 @@ msgstr "Sfoglia i tuoi file"
 
 #: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
-msgstr "Gestore file"
+msgstr "Gestore di file"
 
 #: ../src/DesktopLauncher.vala:23
 msgid "New _Window"
@@ -2303,7 +2303,7 @@ msgstr "Utilizzati di recente"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Connetti al server..."
+msgstr "Connetti al server…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
