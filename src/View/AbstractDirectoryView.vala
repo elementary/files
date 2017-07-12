@@ -469,12 +469,18 @@ namespace FM {
             disconnect_tree_signals (); /* Avoid unnecessary signal processing */
             unselect_all ();
 
+            uint count = 0;
+
             foreach (GOF.File f in files) {
+                /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
                if (model.get_first_iter_for_file (f, out iter)) {
+                    count++;
                     var path = model.get_path (iter);
                     select_path (path, focus != null && focus.equal (f.location));  /* Cursor follows if matches focus location*/
                 }
             }
+
+            all_selected = count == slot.files_count;
 
             connect_tree_signals ();
             on_view_selection_changed (); /* Update selected files and menu actions */

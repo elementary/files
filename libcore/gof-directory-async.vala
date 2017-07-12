@@ -55,7 +55,7 @@ public class Async : Object {
     public State state {get; private set;}
 
     private HashTable<GLib.File,GOF.File> file_hash;
-    public uint files_count;
+    public uint files_count {get; private set;}
 
     public bool permission_denied = false;
     public bool network_available = true;
