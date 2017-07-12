@@ -1367,6 +1367,9 @@ namespace FM {
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = (prefs as GOF.Preferences).show_hidden_files;
             cancel ();
+            /* As directory may reload, for consistent behaviour always lose selection */
+            unselect_all ();
+
             if (!show) {
                 block_model ();
                 model.clear ();
@@ -1374,8 +1377,9 @@ namespace FM {
 
             directory_hidden_changed (slot.directory, show);
 
-            if (!show)
+            if (!show) {
                 unblock_model ();
+            }
 
             action_set_state (background_actions, "show_hidden", show);
         }
