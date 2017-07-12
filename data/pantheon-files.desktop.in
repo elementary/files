@@ -12,7 +12,7 @@ MimeType=inode/directory;
 Categories=System;Utility;Core;GTK;FileTools;FileManager;
 X-GNOME-Gettext-Domain=pantheon-files
 X-GNOME-UsesNotifications=true
-Actions=WindowNew;Root;AboutDialog;
+Actions=WindowNew;Root;
 
 [Desktop Action WindowNew]
 _Name=New Window
@@ -21,7 +21,3 @@ Exec=pantheon-files -n
 [Desktop Action Root]
 _Name=New Window As Administrator
 Exec=pantheon-files-pkexec
-
-[Desktop Action AboutDialog]
-_Name=About Files
-Exec=pantheon-files --about

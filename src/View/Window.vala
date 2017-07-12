@@ -765,10 +765,6 @@ namespace Marlin.View {
                     show_app_help ();
                     break;
 
-                case "ABOUT":
-                    show_about ();
-                    break;
-
                 default:
                     break;
             }
@@ -827,24 +823,6 @@ namespace Marlin.View {
         private void connect_to_server () {
             var dialog = new Marlin.ConnectServer.Dialog ((Gtk.Window) this);
             dialog.show ();
-        }
-
-        protected void show_about() {
-            Granite.Widgets.show_about_dialog ((Gtk.Window) this,
-                "program-name", _(Marlin.APP_TITLE),
-                "version", Config.VERSION,
-                "copyright", Marlin.COPYRIGHT,
-                "license-type", Gtk.License.GPL_3_0,
-                "website", Marlin.LAUNCHPAD_URL,
-                "website-label",  Marlin.LAUNCHPAD_LABEL,
-                "authors", Marlin.AUTHORS,
-                "artists", Marlin.ARTISTS,
-                "logo-icon-name", Marlin.ICON_APP_LOGO,
-                "translator-credits",  Marlin.TRANSLATORS,
-                "help", Marlin.HELP_URL,
-                "translate", Marlin.TRANSLATE_URL,
-                "bug", Marlin.BUG_URL
-            );
         }
 
         void show_app_help() {
@@ -1198,7 +1176,6 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right"});
             application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
-            application.set_accels_for_action ("win.info::ABOUT", {"F3"});
         }
     }
 }

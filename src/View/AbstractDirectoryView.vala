@@ -1475,6 +1475,13 @@ namespace FM {
         private void on_drag_begin (Gdk.DragContext context) {
             drag_has_begun = true;
             should_activate = false;
+        }
+
+        private void on_drag_data_get (Gdk.DragContext context,
+                                       Gtk.SelectionData selection_data,
+                                       uint info,
+                                       uint timestamp) {
+
             drag_file_list = get_selected_files_for_transfer ();
 
             if (drag_file_list == null)
@@ -1486,12 +1493,6 @@ namespace FM {
                 Gtk.drag_set_icon_pixbuf (context, file.pix, 0, 0);
             else
                 Gtk.drag_set_icon_name (context, "stock-file", 0, 0);
-        }
-
-        private void on_drag_data_get (Gdk.DragContext context,
-                                       Gtk.SelectionData selection_data,
-                                       uint info,
-                                       uint timestamp) {
 
             Marlin.DndHandler.set_selection_data_from_file_list (selection_data, drag_file_list);
         }
@@ -2913,7 +2914,6 @@ namespace FM {
                 return true;
 
             click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
-            GOF.File? file = path != null ? model.file_for_path (path) : null;
 
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
@@ -2944,6 +2944,8 @@ namespace FM {
                 if (slot.directory.is_local || NetworkMonitor.get_default ().get_network_available ()) {
                     /* cannot get file info while network disconnected. */
                     GOF.File? target_file;
+                    GOF.File? file = path != null ? model.file_for_path (path) : null;
+
                     if (file != null && slot.directory.is_recent) {
                         target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
                         target_file.ensure_query_info ();
@@ -3584,7 +3586,7 @@ namespace FM {
         protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
-        protected abstract bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper);
+        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

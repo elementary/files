@@ -222,9 +222,9 @@ namespace FM {
             depth = p != null ? p.get_depth () : 0;
 
             /* Determine whether on edge of cell and designate as blank */
-            Gdk.Rectangle area;
-            tree.get_cell_area (p, c, out area);
-            int height = area.height;
+            Gdk.Rectangle rect;
+            tree.get_cell_area (p, c, out rect);
+            int height = rect.height;
 
             is_blank = is_blank || cy < 5 || cy > height - 5;
 
@@ -232,10 +232,11 @@ namespace FM {
             zone = (p != null && is_blank ? ClickZone.BLANK_PATH : ClickZone.INVALID);
 
             if (p != null && c != null && c == name_column) {
-                int orig_x = area.x + ICON_XPAD;
-                if (x < orig_x + icon_size) { /* cannot be on name */
+                GOF.File? file = model.file_for_path (p);
+
+                if (x < rect.x + ICON_XPAD + icon_size) { /* cannot be on name */
                     bool on_helper = false;
-                    bool on_icon = is_on_icon (x, y, orig_x, area.y, ref on_helper);
+                    bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
 
                     if (on_helper) {
                         zone = ClickZone.HELPER;
@@ -330,25 +331,26 @@ namespace FM {
             tree.thaw_child_notify ();
         }
 
-        protected override bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper) {
-            /* orig_x and orig_y must be top left hand corner of icon (excluding helper) */
-            int x_offset = x - orig_x;
-            int y_offset = y - orig_y;
+        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper) {
+            int x_offset = x - area.x;
+            int y_offset = y - area.y;
 
-            bool on_icon =  (x_offset >= 0 &&
-                             x_offset <= icon_size &&
-                             y_offset >= 0 &&
-                             y_offset <= icon_size);
+            /* Area.width includes name as well. Assume area for icon is square */
+            int pix_x_offset = (area.height - pix.width) / 2;
+            int pix_y_offset = (area.height - pix.height) / 2;
+
+            bool on_icon =  (x_offset >= pix_x_offset &&
+                             x_offset <= pix_x_offset + pix.width  &&
+                             y_offset >= pix_y_offset &&
+                             y_offset <= pix_y_offset + pix.height);
 
             on_helper = false;
-            if (icon_renderer.selection_helpers) {
-                int x_helper_offset = x - icon_renderer.helper_x;
-                int y_helper_offset = y - icon_renderer.helper_y;
 
-                on_helper =  (x_helper_offset >= 0 &&
-                             x_helper_offset <= icon_renderer.helper_size &&
-                             y_helper_offset >= 0 &&
-                             y_helper_offset <= icon_renderer.helper_size);
+            if (icon_renderer.selection_helpers) {
+                int hs = icon_renderer.helper_size;
+                on_helper = (on_icon &&
+                             x_offset <= int.max (pix_x_offset + hs, hs) &&
+                             y_offset <= int.max (pix_y_offset + hs, hs));
             }
 
             return on_icon;
