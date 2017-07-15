@@ -658,15 +658,19 @@ namespace FM {
             connect_directory_handlers (new_dir);
         }
 
-        public void clear () {
+        public void prepare_reload (GOF.Directory.Async dir) {
+            cancel ();
+            clear ();
+            connect_directory_loading_handlers (dir);
+        }
+
+        private void clear () {
             /* after calling this (prior to reloading), the directory must be re-initialised so
              * we reconnect the file_loaded and done_loading signals */
             freeze_tree ();
             block_model ();
             model.clear ();
             unblock_model ();
-            connect_directory_loading_handlers (slot.directory);
-            /* tree will be thawed after done loading */
         }
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {

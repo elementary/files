@@ -137,9 +137,6 @@ public class Async : Object {
         can_stream_files = !("ftp sftp mtp dav davs".contains (scheme));
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
-
-        this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-        this.unref ();
     }
 
     ~Async () {
@@ -414,10 +411,21 @@ public class Async : Object {
 
         if (!is_ready) {
             /* Do not cache directory until it prepared and loadable to avoid an incorrect key being used in some
-             * in some cases.
-             */
-            dir_cache_lock.@lock (); /* will always have been created via call to public static functions from_file () or from_gfile () */
-            directory_cache.insert (location.dup (), this);
+             * in some cases. dir_cache will always have been created via call to public static
+             * functions from_file () or from_gfile () */
+
+            dir_cache_lock.@lock ();
+
+            /* Only add toggle on first insert (not on reload) */
+            var key = location.dup ();
+            var val = directory_cache.lookup (key);
+
+            if (val == null || val != this ) {
+                directory_cache.replace (key, this);
+                this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+                this.unref (); /* Make the toggle ref the only ref */
+            }
+
             dir_cache_lock.unlock ();
 
             is_ready = true;
@@ -499,11 +507,13 @@ public class Async : Object {
 
         if (is_last) {
             Async dir = (Async) object;
-            debug ("Async toggle_ref_notify %s", dir.file.uri);
+            debug ("Async is last toggle_ref_notify %s", dir.file.uri);
 
             if (!dir.removed_from_cache) {
+                dir.@ref (); /* Add back ref removed when cached so toggle ref not removed */
                 dir.remove_dir_from_cache ();
             }
+
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         }
     }
@@ -1105,9 +1115,6 @@ public class Async : Object {
     }
 
     public bool remove_dir_from_cache () {
-        /* we got to increment the dir ref to remove the toggle_ref */
-        this.ref ();
-
         removed_from_cache = true;
         return directory_cache.remove (location);
     }
