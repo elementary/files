@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-07-11 18:38+0000\n"
+"PO-Revision-Date: 2017-07-15 08:18+0000\n"
 "Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementary.io/projects/files/files/ru/>"
 "\n"
@@ -1956,7 +1956,7 @@ msgstr "Открыть uri в новой вкладке"
 
 #: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Новом окне"
+msgstr "Новое окно"
 
 #: ../src/Application.vala:140
 msgid "Quit Files."
