@@ -145,15 +145,12 @@ Async load_cached_local_test (string test_dir_path, MainLoop loop) {
 
 Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
     uint n_files = 50;
-//~     uint n_loads = 5; /* Number of times to reload the directory */
-    uint n_loads = 10; /* Number of times to reload the directory */
+    uint n_loads = 5; /* Number of times to reload the directory */
     uint loads = 0;
     uint ref_count_before_reload = 0;
     string tmp_pth = get_text_template_path ();
 
     var dir = setup_temp_async (test_dir_path, n_files, "txt", tmp_pth);
-
-message ("refcount after set %u", dir.ref_count);
 
     dir.done_loading.connect (() => {
         assert (!dir.loaded_from_cache);
@@ -170,7 +167,6 @@ message ("refcount after set %u", dir.ref_count);
             assert (dir.files_count == n_files);
             assert (dir.can_load);
             assert (dir.state == Async.State.LOADED);
-message ("before %u after %u", ref_count_before_reload, dir.ref_count);
             assert (dir.ref_count == ref_count_before_reload);
 
             tear_down_file (tmp_pth);
