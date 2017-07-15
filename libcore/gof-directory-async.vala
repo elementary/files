@@ -410,64 +410,63 @@ public class Async : Object {
         }
 
         if (!is_ready) {
+            /* This must only be run once for each Async */
+            is_ready = true;
+
             /* Do not cache directory until it prepared and loadable to avoid an incorrect key being used in some
              * in some cases. dir_cache will always have been created via call to public static
-             * functions from_file () or from_gfile () */
+             * functions from_file () or from_gfile (). Do not add toggle until cached. */
 
             dir_cache_lock.@lock ();
 
-            /* Only add toggle on first insert (not on reload) */
-            var key = location.dup ();
-            var val = directory_cache.lookup (key);
-
-            if (val == null || val != this ) {
-                directory_cache.replace (key, this);
-                this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-                this.unref (); /* Make the toggle ref the only ref */
-            }
+            directory_cache.insert (location.dup (), this);
+            this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+            this.unref (); /* Make the toggle ref the only ref */
 
             dir_cache_lock.unlock ();
 
-            is_ready = true;
-            if (file.mount != null) {
-                debug ("Directory has mount point");
-                unowned GLib.List? trash_dirs = null;
-                trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
-                has_trash_dirs = (trash_dirs != null);
-            } else {
-                has_trash_dirs = is_local;
-            }
 
-            yield list_directory_async (file_loaded_func);
+        }
 
-            if (can_load) {
-                uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
-                if (file_loaded_func == null && is_local) {
-                    try {
-                        monitor = location.monitor_directory (0);
-                        monitor.rate_limit = 100;
-                        monitor.changed.connect (directory_changed);
-                    } catch (IOError e) {
-                        last_error_message = e.message;
-                        if (!(e is IOError.NOT_MOUNTED)) {
-                            /* Will fail for remote filesystems - not an error */
-                            debug ("directory monitor failed: %s %s", e.message, file.uri);
-                        }
+        /* The following can run on reloading */
+        if (file.mount != null) {
+            debug ("Directory has mount point");
+            unowned GLib.List? trash_dirs = null;
+            trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
+            has_trash_dirs = (trash_dirs != null);
+        } else {
+            has_trash_dirs = is_local;
+        }
+
+        /* Do not use root trash_dirs (Move to the Rubbish Bin option will not be shown) */
+        has_trash_dirs = has_trash_dirs && (Posix.getuid () != 0);
+
+        set_confirm_trash ();
+
+        if (can_load) {
+            uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
+
+            if (file_loaded_func == null && is_local) {
+                try {
+                    monitor = location.monitor_directory (0);
+                    monitor.rate_limit = 100;
+                    monitor.changed.connect (directory_changed);
+                } catch (IOError e) {
+                    last_error_message = e.message;
+                    if (!(e is IOError.NOT_MOUNTED)) {
+                        /* Will fail for remote filesystems - not an error */
+                        debug ("directory monitor failed: %s %s", e.message, file.uri);
                     }
                 }
-
-                set_confirm_trash ();
-
-                /* Do not use root trash_dirs (Move to the Rubbish Bin option will not be shown) */
-                has_trash_dirs = has_trash_dirs && (Posix.getuid () != 0);
-
-                if (is_trash) {
-                    connect_volume_monitor_signals ();
-                }
             }
-        } else {
-            yield list_directory_async (file_loaded_func);
+
+
+            if (is_trash) {
+                connect_volume_monitor_signals ();
+            }
         }
+
+        yield list_directory_async (file_loaded_func);
     }
 
     private void set_confirm_trash () {
@@ -545,16 +544,26 @@ public class Async : Object {
         if (state == State.LOADING) {
             return; /* Do not re-enter */
         }
+
         cancel ();
         file_hash.remove_all ();
         monitor = null;
         sorted_dirs = null;
         files_count = 0;
-        is_ready = false;
         can_load = false;
-
         state = State.NOT_LOADED;
         loaded_from_cache = false;
+        /* Do not change @is_ready to false - we do not want to
+         * perform caching amd adding toggle ref again  */
+
+        /* These will be reconnected if directory still (or now) loadable */
+        if (monitor != null) {
+            monitor.changed.disconnect (directory_changed);
+        }
+
+        if (is_trash) {
+            disconnect_volume_monitor_signals ();
+        }
     }
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
