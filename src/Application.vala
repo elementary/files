@@ -47,22 +47,6 @@ public class Marlin.Application : Granite.Application {
         this.exec_name = APP_NAME;
         this.build_version = Config.VERSION;
 
-        this.app_copyright = Marlin.COPYRIGHT;
-        this.app_years = Marlin.APP_YEARS;
-        this.about_license_type = Gtk.License.GPL_3_0;
-        this.app_icon = Marlin.ICON_APP_LOGO;
-
-        this.main_url = Marlin.LAUNCHPAD_URL;
-        this.bug_url = Marlin.BUG_URL;
-        this.help_url = Marlin.HELP_URL;
-        this.translate_url = Marlin.TRANSLATE_URL;
-
-        this.about_authors = Marlin.AUTHORS;
-        this.about_documenters = { null };
-        this.about_artists = Marlin.ARTISTS;
-        this.about_comments = _(Marlin.COMMENTS);
-        this.about_translators = Marlin.TRANSLATORS;
-
         application_singleton = this;
     }
 
