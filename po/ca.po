@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-06-21 14:10+0000\n"
+"PO-Revision-Date: 2017-07-11 09:32+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/"
-">\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2289,18 +2289,16 @@ msgid "In This Folder"
 msgstr "En aquesta carpeta"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "En aquesta carpeta"
+msgstr "Per sota d'aquesta carpeta"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
 msgstr "Adreces d'interès"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
-msgstr "Recents"
+msgstr "D'ús recent"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
