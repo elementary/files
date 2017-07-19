@@ -202,7 +202,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
     private async void rreal_update_file_info (GOF.File file) {
         return_if_fail (file != null);
-warning ("rreal update file info %s", file.uri);
+
         try {
             var rc = yield daemon.get_uri_infos (file.uri);
 
@@ -295,10 +295,6 @@ warning ("rreal update file info %s", file.uri);
     }
 
     private async void set_color (GLib.List<unowned GOF.File> files, int n) throws IOError {
-        if (files == null) {
-            return;
-        }
-
         Variant[] entries = null;
         GOF.File target_file;
         foreach (unowned GOF.File file in files) {
