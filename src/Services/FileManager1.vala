@@ -41,35 +41,20 @@ public class FileManager1 : Object {
 
         /* Startup notification id currently ignored */
 
-        AppInfo? pf_app_info = null;
-        string cmd = "pantheon-files -t";
+        GLib.File[] files = new GLib.File[1];
 
         foreach (string s in uris) {
-            var ss = PF.FileUtils.sanitize_path_for_appinfo_from_commandline (s);
+            var file = PF.FileUtils.get_file_for_path (s);
 
-            if (ss != null) {
-                cmd += " " + ss;
+            if (file != null) {
+                files += file;
             } else {
-                throw new IOError.FAILED ("Invalid path");
+                warning ("Invalid uri %s received by FileManager1 interface", s);
             }
+
         }
 
-        try {
-            pf_app_info = AppInfo.create_from_commandline (cmd,
-                                                           null,
-                                                           AppInfoCreateFlags.NONE);
-        } catch (Error e) {
-            var msg = "Unable to open item or folder with command %s. %s".printf (cmd, e.message);
-            throw new IOError.FAILED (msg);
-        }
-
-        if (pf_app_info != null) {
-            try {
-                pf_app_info.launch (null, null);
-            } catch (Error e) {
-                var msg = "Unable to open item or folder with command %s. %s".printf (cmd, e.message);
-                throw new IOError.FAILED (msg);
-            }
-        }
+        var app = Marlin.Application.@get ();
+        app.open_tabs (files);
     }
 }
