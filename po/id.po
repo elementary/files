@@ -5,9 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-06-20 06:54+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-06 13:44-0700\n"
+"PO-Revision-Date: 2017-07-11 15:30+0700\n"
 "Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian "
 "<https://l10n.elementary.io/projects/files/files/id/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.14\n"
+"X-Generator: Poedit 2.0.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -284,44 +284,6 @@ msgstr "Timpa"
 msgid "File conflict"
 msgstr "Berkas bermasalah"
 
-#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
-msgid "Inaccessible"
-msgstr "Tidak dapat diakses"
-
-#: ../libcore/gof-file.c:377
-#, c-format
-msgid "link to %s"
-msgstr "taut ke %s"
-
-#: ../libcore/gof-file.c:1934
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Gagal untuk mengurai berkas desktop: %s"
-
-#: ../libcore/gof-file.c:1971
-msgid "No Exec field specified"
-msgstr "Isian exec tidak disebutkan"
-
-#: ../libcore/gof-file.c:1990
-msgid "No URL field specified"
-msgstr "Isian URL tidak disebutkan"
-
-#: ../libcore/gof-file.c:1996
-msgid "Invalid desktop file"
-msgstr "Berkas desktop tidak sah"
-
-#: ../libcore/gof-file.c:2291
-msgid "Slashes are not allowed in filenames"
-msgstr "Garis miring tidak boleh ada dalam nama berkas"
-
-#: ../libcore/gof-file.c:2311
-msgid "Toplevel files cannot be renamed"
-msgstr "Nama berkas di tingkat atas tidak dapat diubah"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Tampilkan lebih banyak rincian (_D)"
-
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (unicode tidak sah)"
@@ -494,8 +456,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-"Yakin akan membuang selamanya %'d objek terpilih dari tong sampah?"
+msgstr[0] "Yakin akan membuang selamanya %'d objek terpilih dari tong sampah?"
 
 #: ../libcore/marlin-file-operations.c:1397
 #: ../libcore/marlin-file-operations.c:1477
@@ -524,7 +485,7 @@ msgstr ""
 "Semua item di tempat sampah pada kaitan ini, akan dihapus secara permanen."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1512
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
 msgid "Empty _Trash"
 msgstr "Kosongkan _Tong Sampah"
 
@@ -578,8 +539,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:3727
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
-"Terjadi error sewaktu mendapatkan informasi berkas pada folder \"%B\"."
+msgstr "Terjadi error sewaktu mendapatkan informasi berkas pada folder \"%B\"."
 
 #: ../libcore/marlin-file-operations.c:1622
 #: ../libcore/marlin-file-operations.c:3736
@@ -625,8 +585,7 @@ msgid "Cannot move file to trash or delete it"
 msgstr "Tidak dapat memindahkan berkas ke tong sampah atau menghapusnya"
 
 #: ../libcore/marlin-file-operations.c:1947
-msgid ""
-"It is not permitted to trash or delete files on a read only filesystem."
+msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Tidak diizinkan untuk membuang atau menghapus berkas pada sistem berkas "
 "hanya baca."
@@ -1067,6 +1026,65 @@ msgstr "Mengosongkan tong sampah"
 msgid "Emptying Trash"
 msgstr "Mengosongkan Tong Sampah"
 
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Bersiap"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
+msgid "Today at %-I:%M %p"
+msgstr "Hari ini jam %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
+msgid "Yesterday at %-I:%M %p"
+msgstr "Kemarin pukul %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b pada %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y at %-I:%M %p"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Tampilkan lebih banyak rincian (_D)"
+
+#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
+msgid "Inaccessible"
+msgstr "Tidak dapat diakses"
+
+#: ../libcore/gof-file.c:377
+#, c-format
+msgid "link to %s"
+msgstr "taut ke %s"
+
+#: ../libcore/gof-file.c:1938
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Gagal untuk mengurai berkas desktop: %s"
+
+#: ../libcore/gof-file.c:1975
+msgid "No Exec field specified"
+msgstr "Isian exec tidak disebutkan"
+
+#: ../libcore/gof-file.c:1994
+msgid "No URL field specified"
+msgstr "Isian URL tidak disebutkan"
+
+#: ../libcore/gof-file.c:2000
+msgid "Invalid desktop file"
+msgstr "Berkas desktop tidak sah"
+
+#: ../libcore/gof-file.c:2295
+msgid "Slashes are not allowed in filenames"
+msgstr "Garis miring tidak boleh ada dalam nama berkas"
+
+#: ../libcore/gof-file.c:2315
+msgid "Toplevel files cannot be renamed"
+msgstr "Nama berkas di tingkat atas tidak dapat diubah"
+
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
 msgstr "Lokasi asli tidak dapat ditentukan"
@@ -1421,27 +1439,6 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "Ubah lagi pemilik %d objek"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:436
-msgid "Today at %-I:%M %p"
-msgstr "Hari ini jam %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:444
-msgid "Yesterday at %-I:%M %p"
-msgstr "Kemarin pukul %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b pada %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y at %-I:%M %p"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Bersiap"
-
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
@@ -1452,318 +1449,77 @@ msgstr "Sebelumnya"
 msgid "Next"
 msgstr "Selanjutnya"
 
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "'Pengelola Berkas' bukan aplikasi utama anda dalam mengelola berkas."
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "Atur sebagai Bawaan"
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Abaikan"
-
-#: ../src/View/Sidebar.vala:490
-msgid "Personal"
-msgstr "Pribadi"
-
-#: ../src/View/Sidebar.vala:491
-msgid "Your common places and bookmarks"
-msgstr "Tempat umum dan penanda Anda"
-
-#: ../src/View/Sidebar.vala:503 ../src/View/ViewContainer.vala:346
-msgid "Home"
-msgstr "Beranda"
-
-#: ../src/View/Sidebar.vala:510
-msgid "Open your personal folder"
-msgstr "Buka folder pribadi anda"
-
-#: ../src/View/Sidebar.vala:525
-msgid "View the list of recently used files"
-msgstr "Lihat daftar berkas yang baru saja digunakan"
-
-#: ../src/View/Sidebar.vala:546 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "Tong Sampah"
-
-#: ../src/View/Sidebar.vala:553
-msgid "Open the Trash"
-msgstr "Buka Tong Sampah"
-
-#: ../src/View/Sidebar.vala:557
-msgid "Devices"
-msgstr "Perangkat"
-
-#: ../src/View/Sidebar.vala:558
-msgid "Your local partitions and devices"
-msgstr "Partisi dan perangkat lokal anda"
-
-#: ../src/View/Sidebar.vala:564 ../src/View/ViewContainer.vala:348
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:94
-msgid "File System"
-msgstr "Sistem Berkas"
-
-#: ../src/View/Sidebar.vala:682 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "Jaringan"
-
-#: ../src/View/Sidebar.vala:683
-msgid "Your network places"
-msgstr "Jaringan Anda"
-
-#: ../src/View/Sidebar.vala:715
-msgid "Entire Network"
-msgstr "Seluruh Jaringan"
-
-#: ../src/View/Sidebar.vala:722
-msgid "Browse the contents of the network"
-msgstr "Jelajahi isi dari jaringan"
-
-#: ../src/View/Sidebar.vala:854
-msgid "(%s Free of %s)"
-msgstr "(%s Bebas dari %s)"
-
-#: ../src/View/Sidebar.vala:1350
-msgid "Unable to start %s"
-msgstr "Tidak dapat menjalankan %s"
-
-#: ../src/View/Sidebar.vala:1454
-msgid "Open"
-msgstr "Buka"
-
-#: ../src/View/Sidebar.vala:1462
-msgid "Open in New _Tab"
-msgstr "Buka di _Tab baru"
-
-#: ../src/View/Sidebar.vala:1468
-msgid "Open in New _Window"
-msgstr "Buka di Jendela Baru (_W)"
-
-#: ../src/View/Sidebar.vala:1476
-msgid "Remove"
-msgstr "Buang"
-
-#: ../src/View/Sidebar.vala:1484 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Ganti nama"
-
-#: ../src/View/Sidebar.vala:1493
-msgid "_Mount"
-msgstr "Kaitkan (_M)"
-
-#: ../src/View/Sidebar.vala:1499
-msgid "_Unmount"
-msgstr "Lepas Kaitan (_U)"
-
-#: ../src/View/Sidebar.vala:1505
-msgid "_Eject"
-msgstr "Keluarkan (_E)"
-
-#: ../src/View/Sidebar.vala:1519 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Properti"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Nama berkas"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Ukuran"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Tipe"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Diubah pada"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:379
-msgid "This Folder Does Not Exist"
-msgstr "Folder ini tidak ada"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Folder \"%s\" tak bisa ditemukan."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Buat"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Buat Folder \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Gagal membuat folder\n"
-"\n"
-"%s"
-
-#: ../src/View/AbstractDirectoryView.vala:564
+#: ../src/View/AbstractDirectoryView.vala:581
 msgid "Failed to preview"
 msgstr "Gagal melihat pratinjau"
 
-#: ../src/View/AbstractDirectoryView.vala:817
+#: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
 msgstr "Tidak bisa membuka berkas ini"
 
-#: ../src/View/AbstractDirectoryView.vala:830
+#: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
 msgstr "Tidak dapat mengidentifikasi jenis berkas yang akan dibuka"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Cannot drop this file"
 msgstr "Tidak bisa drop berkas ini"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Invalid file name provided"
 msgstr "Nama berkas tidak valid disediakan"
 
-#: ../src/View/AbstractDirectoryView.vala:2010
+#: ../src/View/AbstractDirectoryView.vala:2011
 msgid "Invalid"
 msgstr "Tidak Valid"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:2017
 msgid "Run"
 msgstr "Jalankan"
 
-#: ../src/View/AbstractDirectoryView.vala:2021
+#: ../src/View/AbstractDirectoryView.vala:2022
 msgid "Open in %s"
 msgstr "Buka di %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2031
+#: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "Buka di"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2034
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
 msgid "Open with"
 msgstr "Buka dengan"
 
-#: ../src/View/AbstractDirectoryView.vala:2093
+#: ../src/View/AbstractDirectoryView.vala:2094
 msgid "Other Application"
 msgstr "Aplikasi Lain"
 
-#: ../src/View/AbstractDirectoryView.vala:2354
+#: ../src/View/AbstractDirectoryView.vala:2355
 msgid "Untitled %s"
 msgstr "Tanpa Judul %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2678
-#: ../src/View/AbstractDirectoryView.vala:2861
+#: ../src/View/AbstractDirectoryView.vala:2689
+#: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
 msgstr "Tidak dapat menghapus berkas dari sini"
 
-#: ../src/View/AbstractDirectoryView.vala:2679
-#: ../src/View/AbstractDirectoryView.vala:2849
-#: ../src/View/AbstractDirectoryView.vala:2862
+#: ../src/View/AbstractDirectoryView.vala:2690
+#: ../src/View/AbstractDirectoryView.vala:2860
+#: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
 msgstr "Anda tidak memiliki izin untuk mengubah lokasi ini"
 
-#: ../src/View/AbstractDirectoryView.vala:2827
+#: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
 msgstr "Tidak bisa menyalin berkas yang ada di tong sampah"
 
-#: ../src/View/AbstractDirectoryView.vala:2828
+#: ../src/View/AbstractDirectoryView.vala:2839
 msgid "Cutting the selection instead"
 msgstr "Pemotongan pilihan sebagai gantinya"
 
-#: ../src/View/AbstractDirectoryView.vala:2848
+#: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
 msgstr "Tidak bisa menempelkan berkas disini"
-
-#: ../src/View/ViewContainer.vala:361
-msgid "(as Administrator)"
-msgstr "(sebagai Administrator)"
-
-#: ../src/View/ViewContainer.vala:380
-msgid "You cannot create a folder here."
-msgstr "Anda tidak dapat membuat folder di sini."
-
-#: ../src/View/ViewContainer.vala:383
-msgid "The network is unavailable"
-msgstr "Jaringan tidak tersedia"
-
-#: ../src/View/ViewContainer.vala:384
-msgid "A working network is needed to reach this folder"
-msgstr "Jaringan kerja diperlukan untuk menjangkau folder ini"
-
-#: ../src/View/ViewContainer.vala:386
-msgid "This Folder Does Not Belong to You"
-msgstr "Folder ini tidak sesuai dengan Anda"
-
-#: ../src/View/ViewContainer.vala:387
-msgid "You don't have permission to view this folder."
-msgstr "Anda tak punya izin untuk melihat folder ini."
-
-#: ../src/View/ViewContainer.vala:389
-msgid "Unable to Mount Folder"
-msgstr "Tidak dapat ke Mengaitkan Folder"
-
-#: ../src/View/ViewContainer.vala:390
-msgid "Could not connect to the server for this folder."
-msgstr "Tidak dapat terhubung ke server untuk folder ini."
-
-#: ../src/View/ViewContainer.vala:392
-msgid "Unable to Display Folder Contents"
-msgstr "Tidak dapat menampilkan isi Folder"
-
-#: ../src/View/ViewContainer.vala:393
-msgid "The operation timed out."
-msgstr "Operasi habis."
-
-#: ../src/View/ViewContainer.vala:395
-msgid "Unable to Show Folder"
-msgstr "Tidak dapat menampilkan folder"
-
-#: ../src/View/ViewContainer.vala:396
-msgid "The server for this folder could not be located."
-msgstr "Server untuk folder ini tidak dapat ditemukan."
-
-#: ../src/View/ViewContainer.vala:406
-msgid "File not Found"
-msgstr "Berkas tidak ditemukan"
-
-#: ../src/View/ViewContainer.vala:407
-msgid "The file selected no longer exists."
-msgstr "Berkas yang dipilih sudah tidak ada lagi."
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Folder Ini Kosong"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "Tong Sampah Kosong"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Tidak Ada Berkas Baru"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Akses Ditolak"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
-msgid "Open in New Tab"
-msgstr "Buka di Tab Baru"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
-msgid "Open in New Window"
-msgstr "Buka di Jendela Baru"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
-msgid "Open in Other Application…"
-msgstr "Buka Dengan Aplikasi Lain…"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1840,6 +1596,18 @@ msgstr "%u berkas tidak dapat dibaca"
 msgid "%u files not readable"
 msgstr "%u berkas tidak dapat dibaca"
 
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
+msgid "Open in New Tab"
+msgstr "Buka di Tab Baru"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
+msgid "Open in New Window"
+msgstr "Buka di Jendela Baru"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
+msgid "Open in Other Application…"
+msgstr "Buka Dengan Aplikasi Lain…"
+
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
 msgstr "Baca"
@@ -1852,31 +1620,260 @@ msgstr "Tulis"
 msgid "Execute"
 msgstr "Menjalankan"
 
-#: ../src/Application.vala:150
+#: ../src/View/Window.vala:205
+msgid "Files isn't your default file manager."
+msgstr "'Pengelola Berkas' bukan aplikasi utama anda dalam mengelola berkas."
+
+#: ../src/View/Window.vala:211
+msgid "Set as Default"
+msgstr "Atur sebagai Bawaan"
+
+#: ../src/View/Window.vala:217
+msgid "Ignore"
+msgstr "Abaikan"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Nama berkas"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Ukuran"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Tipe"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Diubah pada"
+
+#: ../src/View/Sidebar.vala:503
+msgid "Personal"
+msgstr "Pribadi"
+
+#: ../src/View/Sidebar.vala:504
+msgid "Your common places and bookmarks"
+msgstr "Tempat umum dan penanda Anda"
+
+#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:373
+msgid "Home"
+msgstr "Beranda"
+
+#: ../src/View/Sidebar.vala:523
+msgid "Open your personal folder"
+msgstr "Buka folder pribadi anda"
+
+#: ../src/View/Sidebar.vala:538
+msgid "View the list of recently used files"
+msgstr "Lihat daftar berkas yang baru saja digunakan"
+
+#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr "Tong Sampah"
+
+#: ../src/View/Sidebar.vala:571
+msgid "Open the Trash"
+msgstr "Buka Tong Sampah"
+
+#: ../src/View/Sidebar.vala:576
+msgid "Devices"
+msgstr "Perangkat"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your local partitions and devices"
+msgstr "Partisi dan perangkat lokal anda"
+
+#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:375
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:68
+msgid "File System"
+msgstr "Sistem Berkas"
+
+#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
+msgid "Network"
+msgstr "Jaringan"
+
+#: ../src/View/Sidebar.vala:702
+msgid "Your network places"
+msgstr "Jaringan Anda"
+
+#: ../src/View/Sidebar.vala:734
+msgid "Entire Network"
+msgstr "Seluruh Jaringan"
+
+#: ../src/View/Sidebar.vala:741
+msgid "Browse the contents of the network"
+msgstr "Jelajahi isi dari jaringan"
+
+#: ../src/View/Sidebar.vala:874
+msgid "(%s Free of %s)"
+msgstr "(%s Bebas dari %s)"
+
+#: ../src/View/Sidebar.vala:1370
+msgid "Unable to start %s"
+msgstr "Tidak dapat menjalankan %s"
+
+#: ../src/View/Sidebar.vala:1474
+msgid "Open"
+msgstr "Buka"
+
+#: ../src/View/Sidebar.vala:1482
+msgid "Open in New _Tab"
+msgstr "Buka di _Tab baru"
+
+#: ../src/View/Sidebar.vala:1488
+msgid "Open in New _Window"
+msgstr "Buka di Jendela Baru (_W)"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "Remove"
+msgstr "Buang"
+
+#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Ganti nama"
+
+#: ../src/View/Sidebar.vala:1513
+msgid "_Mount"
+msgstr "Kaitkan (_M)"
+
+#: ../src/View/Sidebar.vala:1519
+msgid "_Unmount"
+msgstr "Lepas Kaitan (_U)"
+
+#: ../src/View/Sidebar.vala:1525
+msgid "_Eject"
+msgstr "Keluarkan (_E)"
+
+#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Properti"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
+msgid "This Folder Does Not Exist"
+msgstr "Folder ini tidak ada"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Folder \"%s\" tak bisa ditemukan."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Buat"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Buat Folder \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Gagal membuat folder\n"
+"\n"
+"%s"
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Folder Ini Kosong"
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "Tong Sampah Kosong"
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Tidak Ada Berkas Baru"
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Akses Ditolak"
+
+#: ../src/View/ViewContainer.vala:388
+msgid "(as Administrator)"
+msgstr "(sebagai Administrator)"
+
+#: ../src/View/ViewContainer.vala:407
+msgid "You cannot create a folder here."
+msgstr "Anda tidak dapat membuat folder di sini."
+
+#: ../src/View/ViewContainer.vala:410
+msgid "The network is unavailable"
+msgstr "Jaringan tidak tersedia"
+
+#: ../src/View/ViewContainer.vala:411
+msgid "A working network is needed to reach this folder"
+msgstr "Jaringan kerja diperlukan untuk menjangkau folder ini"
+
+#: ../src/View/ViewContainer.vala:413
+msgid "This Folder Does Not Belong to You"
+msgstr "Folder ini tidak sesuai dengan Anda"
+
+#: ../src/View/ViewContainer.vala:414
+msgid "You don't have permission to view this folder."
+msgstr "Anda tak punya izin untuk melihat folder ini."
+
+#: ../src/View/ViewContainer.vala:416
+msgid "Unable to Mount Folder"
+msgstr "Tidak dapat ke Mengaitkan Folder"
+
+#: ../src/View/ViewContainer.vala:417
+msgid "Could not connect to the server for this folder."
+msgstr "Tidak dapat terhubung ke server untuk folder ini."
+
+#: ../src/View/ViewContainer.vala:419
+msgid "Unable to Display Folder Contents"
+msgstr "Tidak dapat menampilkan isi Folder"
+
+#: ../src/View/ViewContainer.vala:420
+msgid "The operation timed out."
+msgstr "Operasi habis."
+
+#: ../src/View/ViewContainer.vala:422
+msgid "Unable to Show Folder"
+msgstr "Tidak dapat menampilkan folder"
+
+#: ../src/View/ViewContainer.vala:423
+msgid "The server for this folder could not be located."
+msgstr "Server untuk folder ini tidak dapat ditemukan."
+
+#: ../src/View/ViewContainer.vala:433
+msgid "File not Found"
+msgstr "Berkas tidak ditemukan"
+
+#: ../src/View/ViewContainer.vala:434
+msgid "The file selected no longer exists."
+msgstr "Berkas yang dipilih sudah tidak ada lagi."
+
+#: ../src/Application.vala:134
 msgid "Show the version of the program."
 msgstr "Tampilkan versi program."
 
-#: ../src/Application.vala:152
+#: ../src/Application.vala:136
 msgid "Open uri(s) in new tab"
 msgstr "Buka URI di tab baru"
 
-#: ../src/Application.vala:154 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Jendela Baru"
 
-#: ../src/Application.vala:156
+#: ../src/Application.vala:140
 msgid "Quit Files."
 msgstr "Keluar Pengelola Berkas."
 
-#: ../src/Application.vala:158
+#: ../src/Application.vala:142
 msgid "Enable debug logging"
 msgstr "Aktifkan pencatatan error"
 
-#: ../src/Application.vala:161
+#: ../src/Application.vala:145
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:164
+#: ../src/Application.vala:148
 msgid ""
 "\n"
 "\n"
@@ -1886,95 +1883,13 @@ msgstr ""
 "\n"
 "Jelajahi sistem berkas dengan pengelola berkas"
 
-#: ../src/Application.vala:191
+#: ../src/Application.vala:175
 msgid "--quit cannot be used with URIs."
 msgstr "--quit tidak dapat digunakan dengan URI."
-
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr "Jelajahi berkas Anda"
-
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr "Pengelola Berkas"
-
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr "Jendela Baru (_W)"
-
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Jendela Baru Sebagai _Administrator"
-
-#: ../src/DesktopLauncher.vala:25
-msgid "About _Files"
-msgstr "Tentang _Files"
-
-#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Berkas"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr "Beberapa jenis berkas yang dipilih"
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr "Tidak ada aplikasi tunggal yang bisa membuka semua jenis berkas ini"
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr "Gagal membuka berkas"
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "Gagal membuka uris"
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr "Tidak dapat membuka berkas atau uris dengan aplikasi ini"
-
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "Operasi Berkas"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
-msgstr "Selesai: %s"
-
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
-msgstr "Semua operasi berkas telah berakhir"
-
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "Tampilkan Dialog Penyalinan"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "Batalkan Semua Aksi Berjalan"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "Tidak ada yang dapat ditempelkan dari papan klip"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Sebagai aplikasi utama"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Properti Diska"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Lokasi:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Format:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2011,6 +1926,23 @@ msgstr "Tersedia:"
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 msgid "Used:"
 msgstr "Dipakai:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Properti Diska"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "Lokasi:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Format:"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Sebagai aplikasi utama"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
@@ -2118,9 +2050,94 @@ msgstr[0] "%u item yang dipilih"
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: ../libcore/gof-directory-async.vala:587
-msgid "Server did not respond within time limit"
-msgstr "Server tidak merespon dalam batas waktu"
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Operasi Berkas"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "Selesai: %s"
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "Semua operasi berkas telah berakhir"
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Tampilkan Dialog Penyalinan"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Batalkan Semua Aksi Berjalan"
+
+#: ../src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr "Jelajahi berkas Anda"
+
+#: ../src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr "Pengelola Berkas"
+
+#: ../src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr "Jendela Baru (_W)"
+
+#: ../src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr "Jendela Baru Sebagai _Administrator"
+
+#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Berkas"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "Beberapa jenis berkas yang dipilih"
+
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "Tidak ada aplikasi tunggal yang bisa membuka semua jenis berkas ini"
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "Gagal membuka berkas"
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "Gagal membuka uris"
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "Tidak dapat membuka berkas atau uris dengan aplikasi ini"
+
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "Objek tidak bisa dikembalikan dari tong sampah"
+
+#: ../libcore/FileUtils.vala:345
+msgid "Could not rename to '%s'"
+msgstr "Tidak dapat mengganti nama menjadi '%s'"
+
+#: ../libcore/FileUtils.vala:436
+msgid "Today at %-H:%M"
+msgstr "Hari ini pada %-H:%M"
+
+#: ../libcore/FileUtils.vala:444
+msgid "Yesterday at %-H:%M"
+msgstr "Kemarin pada %-H:%M"
+
+#: ../libcore/FileUtils.vala:453
+msgid "%A at %-H:%M"
+msgstr "%A pada %-H:%M"
+
+#: ../libcore/FileUtils.vala:455
+msgid "%A at %-I:%M %p"
+msgstr "%A pada %-I:%M %p"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2142,102 +2159,17 @@ msgstr "Taut Disini"
 msgid "Cancel"
 msgstr "Batal"
 
-#: ../libcore/FileUtils.vala:60
-msgid "Could not determine original location of \"%s\" "
-msgstr "Tidak dapat menentukan lokasi asal \"%s\" "
+#: ../libcore/gof-directory-async.vala:611
+msgid "Server did not respond within time limit"
+msgstr "Server tidak merespon dalam batas waktu"
 
-#: ../libcore/FileUtils.vala:61
-msgid "The item cannot be restored from trash"
-msgstr "Objek tidak bisa dikembalikan dari tong sampah"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Navigasikan ke %s"
 
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "Tidak dapat mengganti nama menjadi '%s'"
-
-#: ../libcore/FileUtils.vala:434
-msgid "Today at %-H:%M"
-msgstr "Hari ini pada %-H:%M"
-
-#: ../libcore/FileUtils.vala:442
-msgid "Yesterday at %-H:%M"
-msgstr "Kemarin pada %-H:%M"
-
-#: ../libcore/FileUtils.vala:451
-msgid "%A at %-H:%M"
-msgstr "%A pada %-H:%M"
-
-#: ../libcore/FileUtils.vala:453
-msgid "%A at %-I:%M %p"
-msgstr "%A pada %-I:%M %p"
-
-#: ../libwidgets/View/SearchResults.vala:187
-msgid "In This Folder"
-msgstr "Dalam Folder ini"
-
-#: ../libwidgets/View/SearchResults.vala:191
-msgid "Bookmarks"
-msgstr "Penanda Taut"
-
-#: ../libwidgets/View/SearchResults.vala:195
-msgid "Everywhere Else"
-msgstr "Dimana Saja"
-
-#: ../libwidgets/Resources.vala:30
-msgid "A simple and powerful file manager"
-msgstr "Pengelola berkas yang simpel dan hebat"
-
-#: ../libwidgets/Resources.vala:51
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Affif Mukhlashin https://launchpad.net/~bluemeda\n"
-"  Arif Budiman https://launchpad.net/~arifpedia\n"
-"  Cody Garver https://launchpad.net/~codygarver\n"
-"  Dani Pratomo https://launchpad.net/~daneepee\n"
-"  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Erieck Saputra https://launchpad.net/~erick-1383\n"
-"  Jaga My Priera https://launchpad.net/~mj-jaga\n"
-"  Jeffry https://launchpad.net/~jeffry-a\n"
-"  Juniasta Datah https://launchpad.net/~junnickbefore14\n"
-"  Ngalim Siregar https://launchpad.net/~ngalim-siregar-4\n"
-"  Viko Adi Rahmawan https://launchpad.net/~vikoadi\n"
-"  Yudha Yudhistira https://launchpad.net/~yudhayudhistira94\n"
-"  muhamad luthfi jayalaksana https://launchpad.net/~luthfi-j-o\n"
-"  raissa https://launchpad.net/~rai-9\n"
-"  sucipto https://launchpad.net/~show-cheap\n"
-"  vikriaulia https://launchpad.net/~vikriaulia"
-
-#: ../libwidgets/Resources.vala:84
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:85
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:86
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:87
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:89
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:90
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:92
-msgid "Recent"
-msgstr "Terkini"
-
-#: ../libwidgets/Resources.vala:93
-msgid "MTP"
-msgstr "MTP"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Tuju %s"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
@@ -2255,13 +2187,53 @@ msgstr "Tampilan Daftar"
 msgid "View in Columns"
 msgstr "Tampilan Kolom"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Navigasikan ke %s"
+#: ../libwidgets/Resources.vala:58
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
-msgid "Go to %s"
-msgstr "Tuju %s"
+#: ../libwidgets/Resources.vala:59
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.vala:60
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.vala:61
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.vala:63
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.vala:64
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.vala:66
+msgid "Recent"
+msgstr "Terkini"
+
+#: ../libwidgets/Resources.vala:67
+msgid "MTP"
+msgstr "MTP"
+
+#: ../libwidgets/View/SearchResults.vala:226
+msgid "In This Folder"
+msgstr "Dalam Folder ini"
+
+#: ../libwidgets/View/SearchResults.vala:231
+msgid "Below This Folder"
+msgstr "Di bawah Folder Ini"
+
+#: ../libwidgets/View/SearchResults.vala:236
+msgid "Bookmarks"
+msgstr "Penanda Taut"
+
+#: ../libwidgets/View/SearchResults.vala:241
+msgid "Recently used"
+msgstr "Baru digunakan"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2370,3 +2342,32 @@ msgstr "Tanggal"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Urutan Terbalik"
+
+#~ msgid "About _Files"
+#~ msgstr "Tentang _Files"
+
+#~ msgid "Everywhere Else"
+#~ msgstr "Dimana Saja"
+
+#~ msgid "A simple and powerful file manager"
+#~ msgstr "Pengelola berkas yang simpel dan hebat"
+
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Launchpad Contributions:\n"
+#~ "  Affif Mukhlashin https://launchpad.net/~bluemeda\n"
+#~ "  Arif Budiman https://launchpad.net/~arifpedia\n"
+#~ "  Cody Garver https://launchpad.net/~codygarver\n"
+#~ "  Dani Pratomo https://launchpad.net/~daneepee\n"
+#~ "  Daniel Fore https://launchpad.net/~danrabbit\n"
+#~ "  Erieck Saputra https://launchpad.net/~erick-1383\n"
+#~ "  Jaga My Priera https://launchpad.net/~mj-jaga\n"
+#~ "  Jeffry https://launchpad.net/~jeffry-a\n"
+#~ "  Juniasta Datah https://launchpad.net/~junnickbefore14\n"
+#~ "  Ngalim Siregar https://launchpad.net/~ngalim-siregar-4\n"
+#~ "  Viko Adi Rahmawan https://launchpad.net/~vikoadi\n"
+#~ "  Yudha Yudhistira https://launchpad.net/~yudhayudhistira94\n"
+#~ "  muhamad luthfi jayalaksana https://launchpad.net/~luthfi-j-o\n"
+#~ "  raissa https://launchpad.net/~rai-9\n"
+#~ "  sucipto https://launchpad.net/~show-cheap\n"
+#~ "  vikriaulia https://launchpad.net/~vikriaulia"
