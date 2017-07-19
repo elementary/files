@@ -41,7 +41,7 @@ public class FileManager1 : Object {
 
         /* Startup notification id currently ignored */
 
-        GLib.File[] files = new GLib.File[1];
+        GLib.File[] files = null;
 
         foreach (string s in uris) {
             var file = PF.FileUtils.get_file_for_path (s);

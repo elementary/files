@@ -362,8 +362,9 @@ public class Marlin.Application : Granite.Application {
             }
         } else {
             /* Open tabs at each requested location */
-            foreach (var file in files)
+            foreach (var file in files) {
                 window.add_tab (file, Marlin.ViewMode.PREFERRED);
+            }
         }
     }
 
