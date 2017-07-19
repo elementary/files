@@ -71,6 +71,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Widgets/ProgressInfoWidget.vala
         View/Widgets/SingleLineEditableLabel.vala
         View/Widgets/TopMenu.vala
+        Services/FileManager1.vala
 
     PACKAGES
         gtk+-3.0
@@ -137,6 +138,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Widgets/ProgressInfoWidget.vala
         View/Widgets/SingleLineEditableLabel.vala
         View/Widgets/TopMenu.vala
+        Services/FileManager1.vala
 
     PACKAGES
         gtk+-3.0
@@ -177,3 +179,5 @@ ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 install (TARGETS ${CMAKE_PROJECT_NAME} RUNTIME DESTINATION bin)
 install (FILES View/directory_view_popup.ui DESTINATION ${UI_DIR})
+
+add_subdirectory (Services/tests)

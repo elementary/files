@@ -28,7 +28,6 @@ add_definitions(${CFLAGS})
 
 vala_precompile(VALA_C pantheon-files-daemon
     main.vala
-    FileManager1.vala
     marlind-tagging.vala
 PACKAGES
     gtk+-3.0
@@ -46,5 +45,3 @@ add_executable(pantheon-files-daemon
     ${VALA_C} )
 target_link_libraries(pantheon-files-daemon pantheon-files-core ${DEPS_LIBRARIES})
 install(TARGETS pantheon-files-daemon RUNTIME DESTINATION bin)
-
-add_subdirectory (tests)
