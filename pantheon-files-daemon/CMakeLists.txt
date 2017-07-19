@@ -34,12 +34,11 @@ PACKAGES
     gio-2.0
     gee-0.8
     sqlite3
-    pantheon-files-core
-    pantheon-files-core-C
 OPTIONS
     --thread)
 
 add_executable(pantheon-files-daemon
     ${VALA_C} )
-target_link_libraries(pantheon-files-daemon pantheon-files-core ${DEPS_LIBRARIES})
+
+target_link_libraries(pantheon-files-daemon ${DEPS_LIBRARIES})
 install(TARGETS pantheon-files-daemon RUNTIME DESTINATION bin)
