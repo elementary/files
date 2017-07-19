@@ -5,7 +5,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/)
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
+
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
     glib-2.0>=2.29.0
@@ -37,10 +37,8 @@ PACKAGES
     pantheon-files-core
     pantheon-files-core-C
 OPTIONS
-    --thread
-    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
-    --vapidir=${CMAKE_BINARY_DIR}/libcore/
-)
+    --thread)
+
 add_executable(pantheon-files-daemon
     ${VALA_C} )
 target_link_libraries(pantheon-files-daemon pantheon-files-core ${DEPS_LIBRARIES})
