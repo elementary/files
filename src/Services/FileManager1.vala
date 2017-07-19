@@ -51,7 +51,6 @@ public class FileManager1 : Object {
             } else {
                 warning ("Invalid uri %s received by FileManager1 interface", s);
             }
-
         }
 
         var app = Marlin.Application.@get ();
