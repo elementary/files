@@ -37,12 +37,8 @@ public class FileManager1 : Object {
 
     private PF.AppInterface app;
 
-    public FileManager1 (PF.AppInterface? _app = null) {
-        if (_app == null) {
-            app = Marlin.Application.@get ();
-        } else {
-            app = _app;
-        }
+    public FileManager1 (PF.AppInterface _app) {
+        app = _app;
     }
 
     private void open_items_and_folders (string[] uris, string startup_id) throws DBusError, IOError {
