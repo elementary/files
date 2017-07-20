@@ -120,7 +120,7 @@ public class Marlin.Application : Granite.Application, PF.AppInterface {
     /* The array that holds the file commandline arguments
        needs some boilerplate so its size gets updated. */
     [CCode (array_length = false, array_null_terminated = true)]
-    private string[]? remaining = null;
+    private string[] remaining = new string[0];
 
     private int _command_line (ApplicationCommandLine cmd) {
         /* Setup the argument parser */
@@ -184,10 +184,29 @@ public class Marlin.Application : Granite.Application, PF.AppInterface {
             }
         }
 
+        var flag = Marlin.OpenFlag.DEFAULT;
+
+        if (open_in_tab) {
+            flag = Marlin.OpenFlag.NEW_TAB;
+        } else if (create_new_window) {
+            if (no_tabs) {
+                flag = Marlin.OpenFlag.NEW_ROOT;
+            } else {
+                flag = Marlin.OpenFlag.NEW_WINDOW;
+            }
+        }
+
+        open_uris (remaining, flag);
+
+        return Posix.EXIT_SUCCESS;
+    }
+
+
+    public int open_uris (string[] uris, Marlin.OpenFlag flag) {
+        int opened = 0;
         File[] files = null;
 
-        /* Convert remaining arguments to GFiles */
-        foreach (string filepath in remaining) {
+        foreach (string filepath in uris) {
             string path = PF.FileUtils.sanitize_path (filepath, null);
             GLib.File? file = null;
 
@@ -197,20 +216,28 @@ public class Marlin.Application : Granite.Application, PF.AppInterface {
 
             if (file != null) {
                 files += (file);
+                opened++;
             }
         }
+
+        if (uris.length > 0 && opened == 0 && window_count > 0 && get_active_window_open_uris ().length > 0) {
+            return 0;
+        }
+
         /* Open application */
-        if (create_new_window) {
+        if (flag == Marlin.OpenFlag.NEW_WINDOW | flag == Marlin.OpenFlag.NEW_ROOT) {
             var win = create_window (null);
-            if (!no_tabs) {
+            if (flag == Marlin.OpenFlag.NEW_WINDOW) {
                 win.add_tab (); /* Default tab */
+                opened = 1;
             }
-        } else if (open_in_tab) {
+        } else if (flag == Marlin.OpenFlag.NEW_TAB) {
             open_tabs (files);
         } else {
             open_windows (files);
         }
-        return Posix.EXIT_SUCCESS;
+
+        return opened;
     }
 
     public override void quit_mainloop () {
@@ -271,7 +298,7 @@ public class Marlin.Application : Granite.Application, PF.AppInterface {
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
     }
 
-    private void open_windows (File[]? files) {
+    private void open_windows (File[] files) {
         if (files == null)
             open_tabs (null); /* open_tabs () will restore saved tabs or default tab depending on preference */
         else {
@@ -337,7 +364,7 @@ public class Marlin.Application : Granite.Application, PF.AppInterface {
         return win;
     }
 
-    public void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ()) {
+    public void open_tabs (File[]? files, Gdk.Screen? screen = Gdk.Screen.get_default ()) {
         Marlin.View.Window window = null;
 
         /* Get the first window, if any, else create a new window */
@@ -385,5 +412,19 @@ public class Marlin.Application : Granite.Application, PF.AppInterface {
             win.resize (rect.width, rect.height);
         }
         win.show ();
+    }
+
+/***    For testing    ***/
+    public string[] get_active_window_open_uris () {
+        var uris = new string[0];
+        var win = get_active_window () as Marlin.View.Window;
+        if (win != null) {
+            foreach (Granite.Widgets.Tab tab in win.tabs.tabs) {
+                var content = tab.page as Marlin.View.ViewContainer;
+                uris += content.uri;
+            }
+        }
+
+        return uris;
     }
 }

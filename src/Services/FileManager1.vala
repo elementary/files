@@ -15,9 +15,14 @@
 
     Authors: Jeremy Wootten <jeremy@elementaryos.org>
 ***/
+[DBus (name = "org.freedesktop.FileManager1")]
+public interface FileManager1Proxy : Object {
+    public abstract void show_folders (string[] uris, string startup_id) throws DBusError, IOError;
+    public abstract string[] get_opened_folders ();// throws DBusError, IOError;
+}
 
 [DBus (name = "org.freedesktop.FileManager1")]
-public class FileManager1 : Object {
+public class FileManager1 : Object, FileManager1Proxy {
 
     [DBus (name = "ShowFolders")]
     public void show_folders (string[] uris, string startup_id) throws DBusError, IOError {
@@ -35,9 +40,15 @@ public class FileManager1 : Object {
         throw new DBusError.NOT_SUPPORTED (msg);
     }
 
-    private PF.AppInterface app;
+    /*** For testing ***/
+    [DBus (name = "GetOpenedFolders")]
+    public string[] get_opened_folders () {// throws DBusError, IOError {
+        return opened_uris ();
+    }
 
-    public FileManager1 (PF.AppInterface _app) {
+    private PF.AppInterface? app = null;
+
+    public FileManager1 (PF.AppInterface? _app) {
         app = _app;
     }
 
@@ -46,19 +57,22 @@ public class FileManager1 : Object {
          * to open and the item be selected.  Each view will open in a separate tab in one window */
 
         /* Startup notification id currently ignored */
-
-        GLib.File[] files = null;
-
-        foreach (string s in uris) {
-            var file = PF.FileUtils.get_file_for_path (s);
-
-            if (file != null) {
-                files += file;
-            } else {
-                warning ("Invalid uri %s received by FileManager1 interface", s);
+        if (app != null) {
+            if (app.open_uris (uris, Marlin.OpenFlag.NEW_TAB) < uris.length) {
+                throw new IOError.FAILED ("One or more uris failed to open");
             }
+        } else {
+            throw new IOError.FAILED ("No app to open uris"); /* Should not happen */
         }
+    }
 
-        app.open_tabs (files);
+    /*** For testing ***/
+
+    private string[] opened_uris () {
+        if (app != null) {
+            return app.get_active_window_open_uris ();
+        } else {
+            return new string[0];
+        }
     }
 }

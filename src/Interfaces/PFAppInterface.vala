@@ -21,8 +21,10 @@
  *
  */
 
+/*** Interface used by ctesting ***/
 namespace PF {
 public interface AppInterface : GLib.Object {
-    public abstract void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ());
+    public abstract int open_uris (string[] uris, Marlin.OpenFlag flag);
+    public abstract string[] get_active_window_open_uris ();
 }
 }
