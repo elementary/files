@@ -23,7 +23,7 @@
 
 private Marlin.Application application_singleton = null;
 
-public class Marlin.Application : Granite.Application {
+public class Marlin.Application : Granite.Application, PF.AppInterface {
 
     private VolumeMonitor volume_monitor;
     private Marlin.Progress.UIHandler progress_handler;
