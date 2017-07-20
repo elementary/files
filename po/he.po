@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-07-18 16:33+0000\n"
+"PO-Revision-Date: 2017-07-20 09:58+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew "
 "<https://weblate.elementary.io/projects/files/files/he/>\n"
@@ -1032,10 +1032,12 @@ msgid "Preparing"
 msgstr "בהכנה לביצוע"
 
 #: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
+#, fuzzy
 msgid "Today at %-I:%M %p"
 msgstr "היום ב %-I:%M %p"
 
 #: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
+#, fuzzy
 msgid "Yesterday at %-I:%M %p"
 msgstr "אתמול ב %-I:%M %p"
 
