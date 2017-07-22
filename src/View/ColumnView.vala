@@ -120,40 +120,45 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
-            unowned GOF.File file = selected_files.data;
-            bool is_folder = file.is_folder ();
-
-            selected_folder = null;
-
-            if (!is_folder || !Preferences.settings.get_boolean ("single-click")) {
-                return base.handle_primary_button_click (event, path);
-            }
-
-            selected_folder = file;
             bool result = true;
 
-            if (event.type == Gdk.EventType.BUTTON_PRESS) {
-                /* Ignore second GDK_BUTTON_PRESS event of double-click */
-                if (awaiting_double_click)
-                    result = true;
-                else {
-                    /*  ... store clicked folder and start double-click timeout */
-                    awaiting_double_click = true;
-                    is_frozen = true;
-                    double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
-                        not_double_click (event, path);
-                        return false;
-                    });
+            if (selected_files != null) {
+                unowned GOF.File file = selected_files.data;
+                bool is_folder = file.is_folder ();
+
+                selected_folder = null;
+
+                if (!is_folder || !Preferences.settings.get_boolean ("single-click")) {
+                    return base.handle_primary_button_click (event, path);
                 }
-            } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
-                should_activate = false;
-                cancel_await_double_click ();
 
-                if (selected_folder != null)
-                    load_root_location (selected_folder.get_target_location ());
+                selected_folder = file;
+                
 
-                result = true;
+                if (event.type == Gdk.EventType.BUTTON_PRESS) {
+                    /* Ignore second GDK_BUTTON_PRESS event of double-click */
+                    if (awaiting_double_click)
+                        result = true;
+                    else {
+                        /*  ... store clicked folder and start double-click timeout */
+                        awaiting_double_click = true;
+                        is_frozen = true;
+                        double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
+                            not_double_click (event, path);
+                            return false;
+                        });
+                    }
+                } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {
+                    should_activate = false;
+                    cancel_await_double_click ();
+
+                    if (selected_folder != null)
+                        load_root_location (selected_folder.get_target_location ());
+
+                    result = true;
+                }
             }
+            
             return result;
         }
 
