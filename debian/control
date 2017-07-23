@@ -31,8 +31,7 @@ Depends: gvfs,
          tumbler,
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends: contractor, gvfs-backends, exfat-fuse
-Suggests: tumbler-plugins-extra
+Recommends: contractor, gvfs-backends, exfat-fuse, tumbler-plugins-extra
 Description: File manager for the Pantheon desktop
  Pantheon Files is a modern file manager originally
  designed for the Pantheon desktop environment.
