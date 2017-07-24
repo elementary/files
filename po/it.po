@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-03-02 18:42+0000\n"
-"Last-Translator: Fabio Zaramella <FFabio.96.X@Gmail.com>\n"
-"Language-Team: Italian <it@li.org>\n"
+"PO-Revision-Date: 2017-07-11 11:22+0000\n"
+"Last-Translator: Fabio Zaramella <fabiozaramella@hotmail.it>\n"
+"Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/>"
+"\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.14\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1664,7 +1665,7 @@ msgstr "Apri in una nuova finestra"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "Apri in un'altra applicazione..."
+msgstr "Apri in un'altra applicazione…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1815,7 +1816,7 @@ msgstr "Questa cartella non esiste"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr "La cartella \"%s\" non può essere trovata"
+msgstr "La cartella \"%s\" non può essere trovata."
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -2026,7 +2027,7 @@ msgstr "sconosciuto"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "Caricamento..."
+msgstr "Caricamento…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2066,7 +2067,7 @@ msgstr "Posizione originale:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Altre applicazioni..."
+msgstr "Altre applicazioni…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2142,7 +2143,7 @@ msgstr "Sfoglia i tuoi file"
 
 #: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
-msgstr "Gestore file"
+msgstr "Gestore di file"
 
 #: ../src/DesktopLauncher.vala:23
 msgid "New _Window"
@@ -2190,15 +2191,15 @@ msgstr "Impossibile rinominare in '%s'"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Oggi alle %-H:%M"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Ieri alle %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A alle %-H:%M"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
@@ -2289,7 +2290,6 @@ msgid "In This Folder"
 msgstr "In questa cartella"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
 msgstr "In questa cartella"
 
@@ -2298,13 +2298,12 @@ msgid "Bookmarks"
 msgstr "Segnalibri"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
-msgstr "Recenti"
+msgstr "Utilizzati di recente"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Connetti al server..."
+msgstr "Connetti al server…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"

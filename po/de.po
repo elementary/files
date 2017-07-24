@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-06-22 21:10+0000\n"
+"PO-Revision-Date: 2017-07-10 14:42+0000\n"
 "Last-Translator: Uwe S <saabisto@gmx.de>\n"
 "Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
@@ -257,7 +257,7 @@ msgstr "Zusammenführen"
 
 #: ../libcore/marlin-file-conflict-dialog.c:711
 msgid "_Select a new name for the destination"
-msgstr "Einen neuen Namen für das Ziel w_ählen"
+msgstr "Neuen Namen für das Ziel w_ählen"
 
 #: ../libcore/marlin-file-conflict-dialog.c:725
 msgid "Reset"
@@ -357,7 +357,7 @@ msgstr "Verknüpfung mit %s"
 #: ../libcore/marlin-file-operations.c:399
 #, c-format
 msgid "Another link to %s"
-msgstr "noch eine Verknüpfung mit %s"
+msgstr "Weitere Verknüpfung mit %s"
 
 #: ../libcore/marlin-file-operations.c:415
 #, c-format
@@ -414,7 +414,7 @@ msgstr "%s (Kopie)%s"
 #: ../libcore/marlin-file-operations.c:500
 #, c-format
 msgid "%s (another copy)%s"
-msgstr "%s (noch eine Kopie)%s"
+msgstr "%s (weitere Kopie)%s"
 
 #: ../libcore/marlin-file-operations.c:503
 #: ../libcore/marlin-file-operations.c:505
@@ -1688,7 +1688,7 @@ msgstr "In neuem Fenster öffnen"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "In einer anderen Anwendung öffnen…"
+msgstr "In einer anderen Anwendung öffnen …"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1756,7 +1756,7 @@ msgstr "Papierkorb"
 
 #: ../src/View/Sidebar.vala:571
 msgid "Open the Trash"
-msgstr "Den Papierkorb öffnen"
+msgstr "Papierkorb öffnen"
 
 #: ../src/View/Sidebar.vala:576
 msgid "Devices"
@@ -1989,7 +1989,7 @@ msgstr "Schließen"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
-msgstr "Geräte Auslastung"
+msgstr "Gerätauslastung"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:153
 msgid "Capacity:"
@@ -2033,8 +2033,9 @@ msgid "Permissions"
 msgstr "Zugriffsrechte"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
+#, fuzzy
 msgid "Actual Size Could Be Larger"
-msgstr "Eigentliche Größe könnte größer sein"
+msgstr "Tatsächlich möglicherweise größer"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
@@ -2327,13 +2328,12 @@ msgid "Bookmarks"
 msgstr "Lesezeichen"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
 msgstr "Zuletzt verwendet"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Mit Server verbinden…"
+msgstr "Mit Server verbinden …"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
