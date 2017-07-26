@@ -330,7 +330,7 @@ namespace PF.FileUtils {
 
                 if (dir != null) {
                     /* Notify directory of change.  Since only a single file is changed we bypass MarlinFileChangesQueue */
-
+                    /* Appending OK here since only one file */
                     GLib.List<GLib.File>added_files = null;
                     added_files.append (new_location);
                     GLib.List<GLib.File>removed_files = null;
