@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-07-20 09:58+0000\n"
+"PO-Revision-Date: 2017-07-23 14:50+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew "
 "<https://weblate.elementary.io/projects/files/files/he/>\n"
@@ -1032,22 +1032,20 @@ msgid "Preparing"
 msgstr "בהכנה לביצוע"
 
 #: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
-#, fuzzy
 msgid "Today at %-I:%M %p"
-msgstr "היום ב %-I:%M %p"
+msgstr "היום ב־%H:%M"
 
 #: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
-#, fuzzy
 msgid "Yesterday at %-I:%M %p"
-msgstr "אתמול ב %-I:%M %p"
+msgstr "אתמול ב־%H:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
+msgstr "%a ה־%b ב%d ב־%H:%M"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
+msgstr "%a ה־%b ב%d %Y ב־%H:%M"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
@@ -1984,8 +1982,8 @@ msgstr "הגודל המעשי עשוי להיות גדול יותר"
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "לא ניתן לקרוא את אחד הקבצים עקב הרשאות או שגיאות אחרות."
+msgstr[1] "לא ניתן לקרוא %i מהקבצים עקב הרשאות או שגיאות אחרות."
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
 #: ../src/Dialogs/PropertiesWindow.vala:279
@@ -2090,7 +2088,7 @@ msgstr "פעולות קבצים"
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
 #: ../src/ProgressUIHandler.vala:192
 msgid "Completed %s"
-msgstr ""
+msgstr "הושלמו %s"
 
 #: ../src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
@@ -2158,19 +2156,19 @@ msgstr "לא ניתן לשנות את השם ל־‚%s‘"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "היום ב־%H:%M"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "אתמול ב־%H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A ב־%H:%M"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A ב־%H:%M"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
