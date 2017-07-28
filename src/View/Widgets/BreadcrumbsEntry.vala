@@ -319,7 +319,7 @@ namespace Marlin.View.Chrome {
             if (!drop_data_ready) {
                 drop_file_list = null;
                 foreach (var uri in selection_data.get_uris ()) {
-                    drop_file_list.append (File.new_for_uri (uri));
+                    drop_file_list.prepend (File.new_for_uri (uri));
                     drop_data_ready = true;
                 }
             }
@@ -421,7 +421,7 @@ namespace Marlin.View.Chrome {
             var path = loc.get_uri ();
             var menuitem_newtab = new Gtk.MenuItem.with_label (_("Open in New Tab"));
             menu.append (menuitem_newtab);
-            menuitem_newtab.activate.connect (() => {                
+            menuitem_newtab.activate.connect (() => {
                 activate_path (path, Marlin.OpenFlag.NEW_TAB);
             });
 

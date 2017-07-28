@@ -135,14 +135,14 @@ namespace FM {
 
         /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
          * It would take an exponentially long time. Use "select_files" function in parent class.
-         */  
+         */
         public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
             if (path != null) {
                 var selection = tree.get_selection ();
                 selection.select_path (path);
                 if (cursor_follows) {
                     /* Unlike for IconView, set_cursor unselects previously selected paths (Gtk bug?),
-                     * so we have to remember them and reselect afterwards */ 
+                     * so we have to remember them and reselect afterwards */
                     GLib.List<Gtk.TreePath> selected_paths = null;
                     selection.selected_foreach ((m, p, i) => {
                         selected_paths.prepend (p);
@@ -234,7 +234,9 @@ namespace FM {
             if (p != null && c != null && c == name_column) {
                 GOF.File? file = model.file_for_path (p);
 
-                if (x < rect.x + ICON_XPAD + icon_size) { /* cannot be on name */
+                if (file == null) {
+                    zone = ClickZone.INVALID;
+                } else if (x < rect.x + ICON_XPAD + icon_size) { /* cannot be on name */
                     bool on_helper = false;
                     bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
 
@@ -295,7 +297,7 @@ namespace FM {
             } else {
                 select_path (path);
             }
-            
+
             set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
 
             if (!select) {

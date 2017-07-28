@@ -199,6 +199,7 @@ namespace Marlin.View {
         }
 
         public bool go_up () {
+            selected_locations = null;
             selected_locations.append (this.location);
             GLib.File parent = location;
             if (view.directory.has_parent ()) { /* May not work for some protocols */
@@ -221,6 +222,7 @@ namespace Marlin.View {
             string? loc = browser.go_back (n);
 
             if (loc != null) {
+                selected_locations = null;
                 selected_locations.append (this.location);
                 user_path_change_request (File.new_for_commandline_arg (loc), false, false);
             }

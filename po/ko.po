@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-06-19 16:26+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-06 13:44-0700\n"
+"PO-Revision-Date: 2017-07-14 23:45+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
 "Language: ko\n"
@@ -149,7 +149,9 @@ msgstr "폴더 \"%s\"을(를) 합치시겠습니까?"
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
-msgstr "폴더를 합치면, 폴더 안에 복사하려는 파일과 겹치는 파일이 있는 경우에 이를 덮어쓸 지 물어봅니다."
+msgstr ""
+"폴더를 합치면, 폴더 안에 복사하려는 파일과 겹치는 파일이 있는 경우에 이를 덮"
+"어쓸 지 물어봅니다."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:380
@@ -281,44 +283,6 @@ msgstr "바꾸기"
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
 msgstr "파일 충돌"
-
-#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
-msgid "Inaccessible"
-msgstr "접근할 수 없음"
-
-#: ../libcore/gof-file.c:377
-#, c-format
-msgid "link to %s"
-msgstr "%s(으)로의 링크"
-
-#: ../libcore/gof-file.c:1934
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "데스크탑 파일: %s의 구문 분석에 실패하였습니다"
-
-#: ../libcore/gof-file.c:1971
-msgid "No Exec field specified"
-msgstr "Exec 항목이 정의되지 않았습니다"
-
-#: ../libcore/gof-file.c:1990
-msgid "No URL field specified"
-msgstr "URL 항목이 정의되지 않았습니다"
-
-#: ../libcore/gof-file.c:1996
-msgid "Invalid desktop file"
-msgstr "올바르지 않은 desktop 파일"
-
-#: ../libcore/gof-file.c:2291
-msgid "Slashes are not allowed in filenames"
-msgstr "파일 이름에 슬래시(/) 기호를 포함할 수 없습니다"
-
-#: ../libcore/gof-file.c:2311
-msgid "Toplevel files cannot be renamed"
-msgstr "맨 위 파일의 이름을 바꿀 수 없습니다"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "자세한 내용 보이기(_D)"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -507,7 +471,9 @@ msgstr "휴지통의 항목을 완전히 지우시겠습니까?"
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
-msgstr "휴지통의 모든 내용과, 외부 장비에 연결된 것을 포함한, 모든 폴더가 완전히 지워지게 됩니다."
+msgstr ""
+"휴지통의 모든 내용과, 외부 장비에 연결된 것을 포함한, 모든 폴더가 완전히 지워"
+"지게 됩니다."
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
@@ -518,7 +484,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "이 장비와 휴지통에 연결된 모든 내용은 완전히 지워지게 됩니다."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1512
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
 msgid "Empty _Trash"
 msgstr "휴지통 비우기(_T)"
 
@@ -615,8 +581,7 @@ msgid "Cannot move file to trash or delete it"
 msgstr "파일이 휴지통으로 보내지지 않거나 지워지지 않습니다"
 
 #: ../libcore/marlin-file-operations.c:1947
-msgid ""
-"It is not permitted to trash or delete files on a read only filesystem."
+msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr "읽기 전용 파일시스템의 파일은 휴지통에 버리거나 지울 수 없습니다."
 
 #: ../libcore/marlin-file-operations.c:1950
@@ -639,7 +604,9 @@ msgstr "파일을 휴지통에 버릴 수 없습니다. 바로 지울까요?"
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr "이 파일은 휴지통에 버릴 수 없습니다. 자세한 내용은 아래 세부 사항을 확인하세요."
+msgstr ""
+"이 파일은 휴지통에 버릴 수 없습니다. 자세한 내용은 아래 세부 사항을 확인하세"
+"요."
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -649,7 +616,8 @@ msgstr "파일을 휴지통에 버릴 수 없습니다. 그냥 지울까요?"
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr "이 파일은 휴지통에 버려지지 않습니다. 어쩌면 지워지지도  않을 수 있습니다."
+msgstr ""
+"이 파일은 휴지통에 버려지지 않습니다. 어쩌면 지워지지도  않을 수 있습니다."
 
 #: ../libcore/marlin-file-operations.c:1966
 msgid ""
@@ -683,7 +651,9 @@ msgstr "마운트를 해제하기 전에 휴지통을 비우겠습니까?"
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
-msgstr "이 볼륨에서 빈 공간을 확보하려면 휴지통을 비워야 합니다. 휴지통의 모든 항목은 완전히 사라지게 됩니다."
+msgstr ""
+"이 볼륨에서 빈 공간을 확보하려면 휴지통을 비워야 합니다. 휴지통의 모든 항목"
+"은 완전히 사라지게 됩니다."
 
 #: ../libcore/marlin-file-operations.c:2416
 msgid "Do _not Empty Trash"
@@ -739,7 +709,9 @@ msgstr "휴지통에 파일을 버리는 중 오류."
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
-msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더 안의 파일을 처리할 수 없습니다."
+msgstr ""
+"읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더 안의 파일을 처리할 수 없습니"
+"다."
 
 #: ../libcore/marlin-file-operations.c:2768
 msgid ""
@@ -852,7 +824,9 @@ msgstr[0] "%S / %S — %T 남음 (%S/초)"
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
-msgstr "대상 안에 파일이나 폴더를 만들 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 복사할 수 없습니다."
+msgstr ""
+"대상 안에 파일이나 폴더를 만들 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더를 "
+"복사할 수 없습니다."
 
 #: ../libcore/marlin-file-operations.c:3594
 msgid "There was an error creating the folder \"%B\"."
@@ -862,7 +836,9 @@ msgstr "\"%B\" 폴더를 만드는 데 오류가 발생했습니다."
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
-msgstr "읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더 내의 파일을 복사할 수 없습니다."
+msgstr ""
+"읽을 수 있는 접근 권한이 없기 때문에 \"%B\" 폴더 내의 파일을 복사할 수 없습니"
+"다."
 
 #: ../libcore/marlin-file-operations.c:3769
 msgid ""
@@ -1031,6 +1007,65 @@ msgstr "휴지통을 비우는 중"
 #: ../libcore/marlin-file-operations.c:6662
 msgid "Emptying Trash"
 msgstr "휴지통을 비우는 중"
+
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "대기 중"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
+msgid "Today at %-I:%M %p"
+msgstr "오늘 %p %-l:%M"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
+msgid "Yesterday at %-I:%M %p"
+msgstr "어제 %p %-l:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%b %-d일 %a요일 %p %-I:%M"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%Y년 %b -d%일 %a요일 %p %-l:%M"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "자세한 내용 보이기(_D)"
+
+#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
+msgid "Inaccessible"
+msgstr "접근할 수 없음"
+
+#: ../libcore/gof-file.c:377
+#, c-format
+msgid "link to %s"
+msgstr "%s(으)로의 링크"
+
+#: ../libcore/gof-file.c:1938
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "데스크탑 파일: %s의 구문 분석에 실패하였습니다"
+
+#: ../libcore/gof-file.c:1975
+msgid "No Exec field specified"
+msgstr "Exec 항목이 정의되지 않았습니다"
+
+#: ../libcore/gof-file.c:1994
+msgid "No URL field specified"
+msgstr "URL 항목이 정의되지 않았습니다"
+
+#: ../libcore/gof-file.c:2000
+msgid "Invalid desktop file"
+msgstr "올바르지 않은 desktop 파일"
+
+#: ../libcore/gof-file.c:2295
+msgid "Slashes are not allowed in filenames"
+msgstr "파일 이름에 슬래시(/) 기호를 포함할 수 없습니다"
+
+#: ../libcore/gof-file.c:2315
+msgid "Toplevel files cannot be renamed"
+msgstr "맨 위 파일의 이름을 바꿀 수 없습니다"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
@@ -1386,27 +1421,6 @@ msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] "%d 항목 소유자 변경 다시하기"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:436
-msgid "Today at %-I:%M %p"
-msgstr "오늘 %p %-l:%M"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:444
-msgid "Yesterday at %-I:%M %p"
-msgstr "어제 %p %-l:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%b %-d일 %a요일 %p %-I:%M"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%Y년 %b -d%일 %a요일 %p %-l:%M"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "대기 중"
-
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
@@ -1417,318 +1431,77 @@ msgstr "이전"
 msgid "Next"
 msgstr "다음"
 
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "파일스가 기본 파일 관리자가 아닙니다."
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "기본값으로 설정"
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "무시"
-
-#: ../src/View/Sidebar.vala:490
-msgid "Personal"
-msgstr "개인"
-
-#: ../src/View/Sidebar.vala:491
-msgid "Your common places and bookmarks"
-msgstr "사용자의 개인 폴더 및 즐겨찾기"
-
-#: ../src/View/Sidebar.vala:503 ../src/View/ViewContainer.vala:346
-msgid "Home"
-msgstr "홈"
-
-#: ../src/View/Sidebar.vala:510
-msgid "Open your personal folder"
-msgstr "개인 폴더를 엽니다"
-
-#: ../src/View/Sidebar.vala:525
-msgid "View the list of recently used files"
-msgstr "최근 사용 기록 보기"
-
-#: ../src/View/Sidebar.vala:546 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "휴지통"
-
-#: ../src/View/Sidebar.vala:553
-msgid "Open the Trash"
-msgstr "휴지통 열기"
-
-#: ../src/View/Sidebar.vala:557
-msgid "Devices"
-msgstr "장치"
-
-#: ../src/View/Sidebar.vala:558
-msgid "Your local partitions and devices"
-msgstr "로컬 파티션과 장치"
-
-#: ../src/View/Sidebar.vala:564 ../src/View/ViewContainer.vala:348
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:94
-msgid "File System"
-msgstr "파일 시스템"
-
-#: ../src/View/Sidebar.vala:682 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "네트워크"
-
-#: ../src/View/Sidebar.vala:683
-msgid "Your network places"
-msgstr "네트워크 위치"
-
-#: ../src/View/Sidebar.vala:715
-msgid "Entire Network"
-msgstr "전체 네트워크"
-
-#: ../src/View/Sidebar.vala:722
-msgid "Browse the contents of the network"
-msgstr "네트워크를 탐색합니다"
-
-#: ../src/View/Sidebar.vala:854
-msgid "(%s Free of %s)"
-msgstr "(%s 사용 가능, 전체 크기 %s)"
-
-#: ../src/View/Sidebar.vala:1350
-msgid "Unable to start %s"
-msgstr "'%s'을(를) 시작할 수 없습니다"
-
-#: ../src/View/Sidebar.vala:1454
-msgid "Open"
-msgstr "열기"
-
-#: ../src/View/Sidebar.vala:1462
-msgid "Open in New _Tab"
-msgstr "새 탭에서 열기(_T)"
-
-#: ../src/View/Sidebar.vala:1468
-msgid "Open in New _Window"
-msgstr "새 창에서 열기(_W)"
-
-#: ../src/View/Sidebar.vala:1476
-msgid "Remove"
-msgstr "제거"
-
-#: ../src/View/Sidebar.vala:1484 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "이름 바꾸기"
-
-#: ../src/View/Sidebar.vala:1493
-msgid "_Mount"
-msgstr "마운트(_M)"
-
-#: ../src/View/Sidebar.vala:1499
-msgid "_Unmount"
-msgstr "마운트 해제(_U)"
-
-#: ../src/View/Sidebar.vala:1505
-msgid "_Eject"
-msgstr "꺼내기(_E)"
-
-#: ../src/View/Sidebar.vala:1519 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "속성"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "파일 이름"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "크기"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "종류"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "수정"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:379
-msgid "This Folder Does Not Exist"
-msgstr "이 폴더는 없는 폴더입니다"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "\"%s\" 폴더를 찾지 못하였습니다."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "만들기"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "\"%s\" 폴더를 생성합니다"
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"폴더 생성에 실패하였습니다:\n"
-"\n"
-"%s"
-
-#: ../src/View/AbstractDirectoryView.vala:564
+#: ../src/View/AbstractDirectoryView.vala:581
 msgid "Failed to preview"
 msgstr "미리 보기 실패"
 
-#: ../src/View/AbstractDirectoryView.vala:817
+#: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
 msgstr "이 파일을 열 수 없습니다"
 
-#: ../src/View/AbstractDirectoryView.vala:830
+#: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
 msgstr "열려는 파일의 형식을 알 수 없습니다"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Cannot drop this file"
 msgstr "이 파일을 놓을 수 없음"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Invalid file name provided"
 msgstr "잘못된 파일 이름이 사용됨"
 
-#: ../src/View/AbstractDirectoryView.vala:2010
+#: ../src/View/AbstractDirectoryView.vala:2011
 msgid "Invalid"
 msgstr "잘못됨"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:2017
 msgid "Run"
 msgstr "실행"
 
-#: ../src/View/AbstractDirectoryView.vala:2021
+#: ../src/View/AbstractDirectoryView.vala:2022
 msgid "Open in %s"
 msgstr "%s에서 열기"
 
-#: ../src/View/AbstractDirectoryView.vala:2031
+#: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "열기"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2034
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
 msgid "Open with"
 msgstr "다른 프로그램으로 열기"
 
-#: ../src/View/AbstractDirectoryView.vala:2093
+#: ../src/View/AbstractDirectoryView.vala:2094
 msgid "Other Application"
 msgstr "다른 프로그램"
 
-#: ../src/View/AbstractDirectoryView.vala:2354
+#: ../src/View/AbstractDirectoryView.vala:2355
 msgid "Untitled %s"
 msgstr "이름 없는 %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2678
-#: ../src/View/AbstractDirectoryView.vala:2861
+#: ../src/View/AbstractDirectoryView.vala:2689
+#: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
 msgstr "이곳의 파일을 제거할 수 없습니다"
 
-#: ../src/View/AbstractDirectoryView.vala:2679
-#: ../src/View/AbstractDirectoryView.vala:2849
-#: ../src/View/AbstractDirectoryView.vala:2862
+#: ../src/View/AbstractDirectoryView.vala:2690
+#: ../src/View/AbstractDirectoryView.vala:2860
+#: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
 msgstr "이 위치를 바꿀 수 있는 권한이 없습니다"
 
-#: ../src/View/AbstractDirectoryView.vala:2827
+#: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
 msgstr "휴지통에 있는 파일은 복사할 수 없습니다"
 
-#: ../src/View/AbstractDirectoryView.vala:2828
+#: ../src/View/AbstractDirectoryView.vala:2839
 msgid "Cutting the selection instead"
 msgstr "대신 선택한 항목을 잘라냅니다"
 
-#: ../src/View/AbstractDirectoryView.vala:2848
+#: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
 msgstr "이곳에 파일을 붙여 넣을 수 없습니다"
-
-#: ../src/View/ViewContainer.vala:361
-msgid "(as Administrator)"
-msgstr "(관리자 권한으로)"
-
-#: ../src/View/ViewContainer.vala:380
-msgid "You cannot create a folder here."
-msgstr "이곳엔 폴더를 만들 수 없습니다."
-
-#: ../src/View/ViewContainer.vala:383
-msgid "The network is unavailable"
-msgstr "네트워크를 사용할 수 없습니다"
-
-#: ../src/View/ViewContainer.vala:384
-msgid "A working network is needed to reach this folder"
-msgstr "네트워크 작업은 이 폴더에 연결되어야 합니다"
-
-#: ../src/View/ViewContainer.vala:386
-msgid "This Folder Does Not Belong to You"
-msgstr "이 폴더의 소유자가 아니시네요"
-
-#: ../src/View/ViewContainer.vala:387
-msgid "You don't have permission to view this folder."
-msgstr "이 폴더를 볼 권한이 없습니다."
-
-#: ../src/View/ViewContainer.vala:389
-msgid "Unable to Mount Folder"
-msgstr "폴더에 접근할 수 없습니다"
-
-#: ../src/View/ViewContainer.vala:390
-msgid "Could not connect to the server for this folder."
-msgstr "이 폴더와 서버를 연결할 수 없음."
-
-#: ../src/View/ViewContainer.vala:392
-msgid "Unable to Display Folder Contents"
-msgstr "폴더의 내용을 표시할 수 없습니다"
-
-#: ../src/View/ViewContainer.vala:393
-msgid "The operation timed out."
-msgstr "작업 시간을 초과했습니다."
-
-#: ../src/View/ViewContainer.vala:395
-msgid "Unable to Show Folder"
-msgstr "폴더를 표시할 수 없습니다"
-
-#: ../src/View/ViewContainer.vala:396
-msgid "The server for this folder could not be located."
-msgstr "이 폴더에 대한 서버를 찾을 수 없습니다."
-
-#: ../src/View/ViewContainer.vala:406
-msgid "File not Found"
-msgstr "파일이 없습니다"
-
-#: ../src/View/ViewContainer.vala:407
-msgid "The file selected no longer exists."
-msgstr "선택하신 파일이 더이상 존재하지 않습니다."
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "이 폴더는 비어 있습니다"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "휴지통이 비어있습니다"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "최근 사용한 기록이 없습니다"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "접근이 거부되었습니다"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
-msgid "Open in New Tab"
-msgstr "새 탭에서 열기"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
-msgid "Open in New Window"
-msgstr "새 창에서 열기"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
-msgid "Open in Other Application…"
-msgstr "다른 프로그램으로 열기…"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1805,6 +1578,18 @@ msgstr "%u개 파일을 읽을 수 없습니다"
 msgid "%u files not readable"
 msgstr "%u개 파일을 읽을 수 없습니다"
 
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
+msgid "Open in New Tab"
+msgstr "새 탭에서 열기"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
+msgid "Open in New Window"
+msgstr "새 창에서 열기"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
+msgid "Open in Other Application…"
+msgstr "다른 프로그램으로 열기…"
+
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
 msgstr "읽기"
@@ -1817,31 +1602,260 @@ msgstr "쓰기"
 msgid "Execute"
 msgstr "실행"
 
-#: ../src/Application.vala:150
+#: ../src/View/Window.vala:205
+msgid "Files isn't your default file manager."
+msgstr "파일스가 기본 파일 관리자가 아닙니다."
+
+#: ../src/View/Window.vala:211
+msgid "Set as Default"
+msgstr "기본값으로 설정"
+
+#: ../src/View/Window.vala:217
+msgid "Ignore"
+msgstr "무시"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "파일 이름"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "크기"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "종류"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "수정"
+
+#: ../src/View/Sidebar.vala:503
+msgid "Personal"
+msgstr "개인"
+
+#: ../src/View/Sidebar.vala:504
+msgid "Your common places and bookmarks"
+msgstr "사용자의 개인 폴더 및 즐겨찾기"
+
+#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:373
+msgid "Home"
+msgstr "홈"
+
+#: ../src/View/Sidebar.vala:523
+msgid "Open your personal folder"
+msgstr "개인 폴더를 엽니다"
+
+#: ../src/View/Sidebar.vala:538
+msgid "View the list of recently used files"
+msgstr "최근 사용 기록 보기"
+
+#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr "휴지통"
+
+#: ../src/View/Sidebar.vala:571
+msgid "Open the Trash"
+msgstr "휴지통 열기"
+
+#: ../src/View/Sidebar.vala:576
+msgid "Devices"
+msgstr "장치"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your local partitions and devices"
+msgstr "로컬 파티션과 장치"
+
+#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:375
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:68
+msgid "File System"
+msgstr "파일 시스템"
+
+#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
+msgid "Network"
+msgstr "네트워크"
+
+#: ../src/View/Sidebar.vala:702
+msgid "Your network places"
+msgstr "네트워크 위치"
+
+#: ../src/View/Sidebar.vala:734
+msgid "Entire Network"
+msgstr "전체 네트워크"
+
+#: ../src/View/Sidebar.vala:741
+msgid "Browse the contents of the network"
+msgstr "네트워크를 탐색합니다"
+
+#: ../src/View/Sidebar.vala:874
+msgid "(%s Free of %s)"
+msgstr "(%s 사용 가능, 전체 크기 %s)"
+
+#: ../src/View/Sidebar.vala:1370
+msgid "Unable to start %s"
+msgstr "'%s'을(를) 시작할 수 없습니다"
+
+#: ../src/View/Sidebar.vala:1474
+msgid "Open"
+msgstr "열기"
+
+#: ../src/View/Sidebar.vala:1482
+msgid "Open in New _Tab"
+msgstr "새 탭에서 열기(_T)"
+
+#: ../src/View/Sidebar.vala:1488
+msgid "Open in New _Window"
+msgstr "새 창에서 열기(_W)"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "Remove"
+msgstr "제거"
+
+#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "이름 바꾸기"
+
+#: ../src/View/Sidebar.vala:1513
+msgid "_Mount"
+msgstr "마운트(_M)"
+
+#: ../src/View/Sidebar.vala:1519
+msgid "_Unmount"
+msgstr "마운트 해제(_U)"
+
+#: ../src/View/Sidebar.vala:1525
+msgid "_Eject"
+msgstr "꺼내기(_E)"
+
+#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "속성"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
+msgid "This Folder Does Not Exist"
+msgstr "이 폴더는 없는 폴더입니다"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "\"%s\" 폴더를 찾지 못하였습니다."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "만들기"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "\"%s\" 폴더를 생성합니다"
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"폴더 생성에 실패하였습니다:\n"
+"\n"
+"%s"
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "이 폴더는 비어 있습니다"
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "휴지통이 비어있습니다"
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "최근 사용한 기록이 없습니다"
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "접근이 거부되었습니다"
+
+#: ../src/View/ViewContainer.vala:388
+msgid "(as Administrator)"
+msgstr "(관리자 권한으로)"
+
+#: ../src/View/ViewContainer.vala:407
+msgid "You cannot create a folder here."
+msgstr "이곳엔 폴더를 만들 수 없습니다."
+
+#: ../src/View/ViewContainer.vala:410
+msgid "The network is unavailable"
+msgstr "네트워크를 사용할 수 없습니다"
+
+#: ../src/View/ViewContainer.vala:411
+msgid "A working network is needed to reach this folder"
+msgstr "네트워크 작업은 이 폴더에 연결되어야 합니다"
+
+#: ../src/View/ViewContainer.vala:413
+msgid "This Folder Does Not Belong to You"
+msgstr "이 폴더의 소유자가 아니시네요"
+
+#: ../src/View/ViewContainer.vala:414
+msgid "You don't have permission to view this folder."
+msgstr "이 폴더를 볼 권한이 없습니다."
+
+#: ../src/View/ViewContainer.vala:416
+msgid "Unable to Mount Folder"
+msgstr "폴더에 접근할 수 없습니다"
+
+#: ../src/View/ViewContainer.vala:417
+msgid "Could not connect to the server for this folder."
+msgstr "이 폴더와 서버를 연결할 수 없음."
+
+#: ../src/View/ViewContainer.vala:419
+msgid "Unable to Display Folder Contents"
+msgstr "폴더의 내용을 표시할 수 없습니다"
+
+#: ../src/View/ViewContainer.vala:420
+msgid "The operation timed out."
+msgstr "작업 시간을 초과했습니다."
+
+#: ../src/View/ViewContainer.vala:422
+msgid "Unable to Show Folder"
+msgstr "폴더를 표시할 수 없습니다"
+
+#: ../src/View/ViewContainer.vala:423
+msgid "The server for this folder could not be located."
+msgstr "이 폴더에 대한 서버를 찾을 수 없습니다."
+
+#: ../src/View/ViewContainer.vala:433
+msgid "File not Found"
+msgstr "파일이 없습니다"
+
+#: ../src/View/ViewContainer.vala:434
+msgid "The file selected no longer exists."
+msgstr "선택하신 파일이 더이상 존재하지 않습니다."
+
+#: ../src/Application.vala:134
 msgid "Show the version of the program."
 msgstr "프로그램의 버전을 보입니다."
 
-#: ../src/Application.vala:152
+#: ../src/Application.vala:136
 msgid "Open uri(s) in new tab"
 msgstr "새 탭에서 URL을 엽니다"
 
-#: ../src/Application.vala:154 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "새 창"
 
-#: ../src/Application.vala:156
+#: ../src/Application.vala:140
 msgid "Quit Files."
 msgstr "닫기."
 
-#: ../src/Application.vala:158
+#: ../src/Application.vala:142
 msgid "Enable debug logging"
 msgstr "디버그 로깅 사용"
 
-#: ../src/Application.vala:161
+#: ../src/Application.vala:145
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:164
+#: ../src/Application.vala:148
 msgid ""
 "\n"
 "\n"
@@ -1851,95 +1865,13 @@ msgstr ""
 "\n"
 "파일 관리자로 파일 시스템을 찾아봅니다"
 
-#: ../src/Application.vala:191
+#: ../src/Application.vala:175
 msgid "--quit cannot be used with URIs."
 msgstr "--quit 옵션은 URI와 같이 사용할 수 없습니다."
-
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr "여러분의 파일을 찾아봅니다"
-
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr "파일 관리자"
-
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr "새 창(_W)"
-
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "관리자 권한으로 새 창 열기"
-
-#: ../src/DesktopLauncher.vala:25
-msgid "About _Files"
-msgstr "파일스 소개 (_F)"
-
-#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "파일스"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr "여러 형식의 파일이 선택되었습니다"
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr "단일 앱으로는 이런 모든 형식의 파일을 열 수 없습니다"
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr "파일을 열 수 없습니다"
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "URI를 열 수 없습니다"
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr "이 앱으로는 파일이나 URI를 열 수 없습니다"
-
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "파일 작업"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
-msgstr "작업 완료 %s"
-
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
-msgstr "모든 파일 작업이 마무리되었습니다"
-
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "복사 대화 상자 보이기"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "진행 중인 모든 작업 취소"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "클립보드에서 붙여넣을 자료가 없습니다"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "기본값으로 설정"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "디스크 정보"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "위치:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "형식:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -1976,6 +1908,23 @@ msgstr "유효:"
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 msgid "Used:"
 msgstr "사용:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "디스크 정보"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "위치:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "형식:"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "기본값으로 설정"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
@@ -2083,9 +2032,94 @@ msgstr[0] "선택한 항목 %u개"
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: ../libcore/gof-directory-async.vala:587
-msgid "Server did not respond within time limit"
-msgstr "서버가 제한 시간 안에 응답하지 않았습니다"
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "파일 작업"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "작업 완료 %s"
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "모든 파일 작업이 마무리되었습니다"
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "복사 대화 상자 보이기"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "진행 중인 모든 작업 취소"
+
+#: ../src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr "여러분의 파일을 찾아봅니다"
+
+#: ../src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr "파일 관리자"
+
+#: ../src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr "새 창(_W)"
+
+#: ../src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr "관리자 권한으로 새 창 열기"
+
+#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "파일스"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "여러 형식의 파일이 선택되었습니다"
+
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "단일 앱으로는 이런 모든 형식의 파일을 열 수 없습니다"
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "파일을 열 수 없습니다"
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "URI를 열 수 없습니다"
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "이 앱으로는 파일이나 URI를 열 수 없습니다"
+
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "\"%s\"의 원래 위치를 알 수 없습니다 "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "항목을 휴지통에서 되살릴 수 없습니다"
+
+#: ../libcore/FileUtils.vala:345
+msgid "Could not rename to '%s'"
+msgstr "'%s'로 이름을 바꿀 수 없습니다"
+
+#: ../libcore/FileUtils.vala:436
+msgid "Today at %-H:%M"
+msgstr "오늘 %-H:%M에"
+
+#: ../libcore/FileUtils.vala:444
+msgid "Yesterday at %-H:%M"
+msgstr "어제 %-H:%M에"
+
+#: ../libcore/FileUtils.vala:453
+msgid "%A at %-H:%M"
+msgstr "%A %-H:%M에"
+
+#: ../libcore/FileUtils.vala:455
+msgid "%A at %-I:%M %p"
+msgstr "%A %p %-I:%M"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2107,93 +2141,17 @@ msgstr "여기로 연결"
 msgid "Cancel"
 msgstr "취소"
 
-#: ../libcore/FileUtils.vala:60
-msgid "Could not determine original location of \"%s\" "
-msgstr "\"%s\"의 원래 위치를 알 수 없습니다 "
+#: ../libcore/gof-directory-async.vala:611
+msgid "Server did not respond within time limit"
+msgstr "서버가 제한 시간 안에 응답하지 않았습니다"
 
-#: ../libcore/FileUtils.vala:61
-msgid "The item cannot be restored from trash"
-msgstr "항목을 휴지통에서 되살릴 수 없습니다"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "다음으로 찾아감 %s"
 
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "'%s'로 이름을 바꿀 수 없습니다"
-
-#: ../libcore/FileUtils.vala:434
-msgid "Today at %-H:%M"
-msgstr "오늘 %-H:%M에"
-
-#: ../libcore/FileUtils.vala:442
-msgid "Yesterday at %-H:%M"
-msgstr "어제 %-H:%M에"
-
-#: ../libcore/FileUtils.vala:451
-msgid "%A at %-H:%M"
-msgstr "%A %-H:%M에"
-
-#: ../libcore/FileUtils.vala:453
-msgid "%A at %-I:%M %p"
-msgstr "%A %p %-I:%M"
-
-#: ../libwidgets/View/SearchResults.vala:187
-msgid "In This Folder"
-msgstr "이 폴더에 있음"
-
-#: ../libwidgets/View/SearchResults.vala:191
-msgid "Bookmarks"
-msgstr "책갈피"
-
-#: ../libwidgets/View/SearchResults.vala:195
-msgid "Everywhere Else"
-msgstr "이 폴더 외 전체 위치"
-
-#: ../libwidgets/Resources.vala:30
-msgid "A simple and powerful file manager"
-msgstr "간결하고 성능 좋은 파일 관리자"
-
-#: ../libwidgets/Resources.vala:51
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Jung-Kyu Park https://launchpad.net/~bagjunggyu\n"
-"  Kenny Kim https://launchpad.net/~kennykim12\n"
-"  Kyu-Seok Yang https://launchpad.net/~lklk9110-3\n"
-"  LeeHoseok https://launchpad.net/~neochain\n"
-"  MinSik CHO https://launchpad.net/~mscho527\n"
-"  park jong heum https://launchpad.net/~whdgmawkd"
-
-#: ../libwidgets/Resources.vala:84
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:85
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:86
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:87
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:89
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:90
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:92
-msgid "Recent"
-msgstr "최근 사용 기록"
-
-#: ../libwidgets/Resources.vala:93
-msgid "MTP"
-msgstr "MTP"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "%s 로 가기"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
@@ -2211,13 +2169,53 @@ msgstr "목록으로 보기"
 msgid "View in Columns"
 msgstr "나란히 보기"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "다음으로 찾아감 %s"
+#: ../libwidgets/Resources.vala:58
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
-msgid "Go to %s"
-msgstr "%s 로 가기"
+#: ../libwidgets/Resources.vala:59
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.vala:60
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.vala:61
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.vala:63
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.vala:64
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.vala:66
+msgid "Recent"
+msgstr "최근 사용 기록"
+
+#: ../libwidgets/Resources.vala:67
+msgid "MTP"
+msgstr "MTP"
+
+#: ../libwidgets/View/SearchResults.vala:226
+msgid "In This Folder"
+msgstr "이 폴더에 있음"
+
+#: ../libwidgets/View/SearchResults.vala:231
+msgid "Below This Folder"
+msgstr "이 폴더에 있음"
+
+#: ../libwidgets/View/SearchResults.vala:236
+msgid "Bookmarks"
+msgstr "책갈피"
+
+#: ../libwidgets/View/SearchResults.vala:241
+msgid "Recently used"
+msgstr "최근 사용 기록"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2326,3 +2324,23 @@ msgstr "날짜"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "거꾸로"
+
+#~ msgid "About _Files"
+#~ msgstr "파일스 소개 (_F)"
+
+#~ msgid "Everywhere Else"
+#~ msgstr "이 폴더 외 전체 위치"
+
+#~ msgid "A simple and powerful file manager"
+#~ msgstr "간결하고 성능 좋은 파일 관리자"
+
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Launchpad Contributions:\n"
+#~ "  Daniel Fore https://launchpad.net/~danrabbit\n"
+#~ "  Jung-Kyu Park https://launchpad.net/~bagjunggyu\n"
+#~ "  Kenny Kim https://launchpad.net/~kennykim12\n"
+#~ "  Kyu-Seok Yang https://launchpad.net/~lklk9110-3\n"
+#~ "  LeeHoseok https://launchpad.net/~neochain\n"
+#~ "  MinSik CHO https://launchpad.net/~mscho527\n"
+#~ "  park jong heum https://launchpad.net/~whdgmawkd"
