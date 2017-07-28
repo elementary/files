@@ -71,7 +71,7 @@ namespace Marlin.View {
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
         public signal void free_space_change ();
-        
+
         [Signal (action=true)]
         public virtual signal void go_back() {
             current_tab.go_back ();
@@ -198,7 +198,7 @@ namespace Marlin.View {
             top_menu.set_show_close_button (true);
             top_menu.set_custom_title (new Gtk.Label (null));
         }
-                
+
         private void construct_info_bar () {
             info_bar = new Gtk.InfoBar ();
 
@@ -342,6 +342,14 @@ namespace Marlin.View {
                 });
             });
 
+
+            tabs.tab_added.connect ((tab) => {
+                var vc = tab.page as ViewContainer;
+                vc.window = this;
+            });
+
+            tabs.tab_removed.connect (on_tab_removed);
+
             sidebar.request_focus.connect (() => {
                 return !current_tab.locked_focus && !top_menu.locked_focus;
             });
@@ -393,6 +401,12 @@ namespace Marlin.View {
             return result;
         }
 
+        private void on_tab_removed () {
+            if (tabs.n_tabs == 0) {
+                add_tab ();
+            }
+        }
+
         private void on_go_forward (int n = 1) {
             current_tab.go_forward (n);
         }
@@ -439,8 +453,9 @@ namespace Marlin.View {
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
 
-            if (current_tab == null || old_tab == current_tab)
+            if (current_tab == null || old_tab == current_tab) {
                 return;
+            }
 
             if (old_tab != null) {
                 old_tab.set_active_state (false);
@@ -751,10 +766,6 @@ namespace Marlin.View {
                     show_app_help ();
                     break;
 
-                case "ABOUT":
-                    show_about ();
-                    break;
-
                 default:
                     break;
             }
@@ -826,24 +837,6 @@ namespace Marlin.View {
             dialog.show ();
         }
 
-        protected void show_about() {
-            Granite.Widgets.show_about_dialog ((Gtk.Window) this,
-                "program-name", _(Marlin.APP_TITLE),
-                "version", Config.VERSION,
-                "copyright", Marlin.COPYRIGHT,
-                "license-type", Gtk.License.GPL_3_0,
-                "website", Marlin.LAUNCHPAD_URL,
-                "website-label",  Marlin.LAUNCHPAD_LABEL,
-                "authors", Marlin.AUTHORS,
-                "artists", Marlin.ARTISTS,
-                "logo-icon-name", Marlin.ICON_APP_LOGO,
-                "translator-credits",  Marlin.TRANSLATORS,
-                "help", Marlin.HELP_URL,
-                "translate", Marlin.TRANSLATE_URL,
-                "bug", Marlin.BUG_URL
-            );
-        }
-
         void show_app_help() {
             try { Gtk.show_uri (screen, Marlin.HELP_URL, -1); }
             catch (Error e) { critical("Can't open the link"); }
@@ -910,6 +903,8 @@ namespace Marlin.View {
                 save_geometries ();
                 save_tabs ();
             }
+
+            tabs.tab_removed.disconnect (on_tab_removed); /* Avoid infinite loop */
 
             foreach (var tab in tabs.tabs) {
                 current_tab = null;
@@ -995,7 +990,7 @@ namespace Marlin.View {
 
                 /* We do not check valid location here because it may cause the interface to hang
                  * before the window appears (e.g. if trying to connect to a server that has become unavailable)
-                 * Leave it to GOF.Directory.Async to deal with invalid locations asynchronously. 
+                 * Leave it to GOF.Directory.Async to deal with invalid locations asynchronously.
                  */
 
                 add_tab_by_uri (root_uri, mode);
@@ -1127,9 +1122,9 @@ namespace Marlin.View {
 
             if (flag == Marlin.OpenFlag.DEFAULT) {
                 grab_focus ();
-                /* Focus_location will not unnecessarily load the current directory if location is 
+                /* Focus_location will not unnecessarily load the current directory if location is
                  * normal file in the current directory, otherwise it will call user_path_change_request
-                 */  
+                 */
                 current_tab.focus_location (loc);
             } else {
                 new_container_request (loc, flag);
@@ -1194,7 +1189,6 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right"});
             application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
-            application.set_accels_for_action ("win.info::ABOUT", {"F3"});
         }
     }
 }

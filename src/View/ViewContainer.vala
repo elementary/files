@@ -29,7 +29,22 @@ namespace Marlin.View {
 
         public Gtk.Widget? content_item;
         public bool can_show_folder = false;
-        public Marlin.View.Window window;
+        private Marlin.View.Window? _window = null;
+        public Marlin.View.Window window {
+            get {
+                return _window;
+            }
+
+            set {
+                if (_window != null) {
+                    disconnect_window_signals ();
+                }
+
+                _window = value;
+                connect_window_signals ();
+            }
+        }
+
         public GOF.AbstractSlot? view = null;
         public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
 
@@ -112,22 +127,33 @@ namespace Marlin.View {
 
         private void connect_signals () {
             path_changed.connect (on_path_changed);
-            window.folder_deleted.connect (on_folder_deleted);
             enter_notify_event.connect (on_enter_notify_event);
             loading.connect ((loading) => {
                 is_loading = loading;
             });
         }
 
+        private void connect_window_signals () {
+            if (window != null) {
+                window.folder_deleted.connect (on_folder_deleted);
+            }
+        }
+
         private void disconnect_signals () {
             path_changed.disconnect (on_path_changed);
-            window.folder_deleted.disconnect (on_folder_deleted);
+            disconnect_window_signals ();
+        }
+
+        private void disconnect_window_signals () {
+            if (window != null) {
+                window.folder_deleted.disconnect (on_folder_deleted);
+            }
         }
 
         private void on_path_changed (GLib.File file) {
             focus_location (file);
         }
-        
+
         private void on_folder_deleted (GLib.File deleted) {
             if (deleted.equal (this.location)) {
                 if (!go_up ()) {
@@ -173,6 +199,7 @@ namespace Marlin.View {
         }
 
         public bool go_up () {
+            selected_locations = null;
             selected_locations.append (this.location);
             GLib.File parent = location;
             if (view.directory.has_parent ()) { /* May not work for some protocols */
@@ -195,6 +222,7 @@ namespace Marlin.View {
             string? loc = browser.go_back (n);
 
             if (loc != null) {
+                selected_locations = null;
                 selected_locations.append (this.location);
                 user_path_change_request (File.new_for_commandline_arg (loc), false, false);
             }
@@ -458,12 +486,12 @@ namespace Marlin.View {
                 aslot.set_all_selected (select_all);
             }
         }
-        
+
         public void focus_location (GLib.File? loc,
                                     bool no_path_change = false,
                                     bool unselect_others = false) {
 
-            /* This function navigates to another folder if necessary if 
+            /* This function navigates to another folder if necessary if
              * select_in_current_only is not set to true.
              */
 

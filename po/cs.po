@@ -6,11 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-06 13:44-0700\n"
 "PO-Revision-Date: 2017-04-14 11:48+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -283,44 +284,6 @@ msgstr "Nahradit"
 msgid "File conflict"
 msgstr "Konflikt souborů"
 
-#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:377
-#, c-format
-msgid "link to %s"
-msgstr "odkaz na %s"
-
-#: ../libcore/gof-file.c:1934
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Selhalo zpracování souboru vstupu pracovního prostředí: %s"
-
-#: ../libcore/gof-file.c:1971
-msgid "No Exec field specified"
-msgstr "Nebylo specifikováno pole Exec"
-
-#: ../libcore/gof-file.c:1990
-msgid "No URL field specified"
-msgstr "Nebyla zadána adresa URL"
-
-#: ../libcore/gof-file.c:1996
-msgid "Invalid desktop file"
-msgstr "Neplatný soubor pracovní plochy"
-
-#: ../libcore/gof-file.c:2291
-msgid "Slashes are not allowed in filenames"
-msgstr "Lomítka nejsou v názvech souborů povolena"
-
-#: ../libcore/gof-file.c:2311
-msgid "Toplevel files cannot be renamed"
-msgstr "Soubory v nejvyšší úrovni nelze přejmenovat"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Zobrazit více _detailů"
-
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (neplatný Unicode)"
@@ -531,7 +494,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Všechny položky z koše v tomto umístění budou trvale smazány."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1512
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
 msgid "Empty _Trash"
 msgstr "Vyprázdnit _koš"
 
@@ -602,8 +565,7 @@ msgstr "Pře_skočit soubory"
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
-"Složku „%B“ nelze smazat, protože nemáte oprávnění na její zobrazení."
+msgstr "Složku „%B“ nelze smazat, protože nemáte oprávnění na její zobrazení."
 
 #: ../libcore/marlin-file-operations.c:1646
 #: ../libcore/marlin-file-operations.c:2771
@@ -639,8 +601,7 @@ msgid "Cannot move file to trash or delete it"
 msgstr "Soubor nelze odstranit nebo přesunout do koše"
 
 #: ../libcore/marlin-file-operations.c:1947
-msgid ""
-"It is not permitted to trash or delete files on a read only filesystem."
+msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Některé soubory nelze odstranit nebo přesunout do koše, protože souborový "
 "systém je pouze pro čtení."
@@ -790,8 +751,7 @@ msgstr ""
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr ""
-"Složku \"%B\" nelze spravovat, protože nemáte oprávnění na její čtení."
+msgstr "Složku \"%B\" nelze spravovat, protože nemáte oprávnění na její čtení."
 
 #: ../libcore/marlin-file-operations.c:2844
 msgid ""
@@ -826,8 +786,7 @@ msgstr "Cílové umístění není složka."
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr ""
-"V cíli není dostatek místa. Zkuste uvolnit místo odstraněním souborů."
+msgstr "V cíli není dostatek místa. Zkuste uvolnit místo odstraněním souborů."
 
 #: ../libcore/marlin-file-operations.c:3025
 #, c-format
@@ -1101,6 +1060,65 @@ msgstr "Vyprazdňuje se koš"
 #: ../libcore/marlin-file-operations.c:6662
 msgid "Emptying Trash"
 msgstr "Vyprazdňuje se koš"
+
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Připravuje se"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
+msgid "Today at %-I:%M %p"
+msgstr "Dnes v %-I:%M"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
+msgid "Yesterday at %-I:%M %p"
+msgstr "Včera v %-I:%M"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b v %-I:%M %p"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y v %-I:%M %p"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Zobrazit více _detailů"
+
+#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:377
+#, c-format
+msgid "link to %s"
+msgstr "odkaz na %s"
+
+#: ../libcore/gof-file.c:1938
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Selhalo zpracování souboru vstupu pracovního prostředí: %s"
+
+#: ../libcore/gof-file.c:1975
+msgid "No Exec field specified"
+msgstr "Nebylo specifikováno pole Exec"
+
+#: ../libcore/gof-file.c:1994
+msgid "No URL field specified"
+msgstr "Nebyla zadána adresa URL"
+
+#: ../libcore/gof-file.c:2000
+msgid "Invalid desktop file"
+msgstr "Neplatný soubor pracovní plochy"
+
+#: ../libcore/gof-file.c:2295
+msgid "Slashes are not allowed in filenames"
+msgstr "Lomítka nejsou v názvech souborů povolena"
+
+#: ../libcore/gof-file.c:2315
+msgid "Toplevel files cannot be renamed"
+msgstr "Soubory v nejvyšší úrovni nelze přejmenovat"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
@@ -1508,27 +1526,6 @@ msgstr[0] "Znovu provést změnu vlastníka %d položky"
 msgstr[1] "Znovu provést změnu vlastníka %d položek"
 msgstr[2] "Znovu provést změnu vlastníka %d položek"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:436
-msgid "Today at %-I:%M %p"
-msgstr "Dnes v %-I:%M"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:444
-msgid "Yesterday at %-I:%M %p"
-msgstr "Včera v %-I:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b v %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y v %-I:%M %p"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Připravuje se"
-
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
@@ -1539,317 +1536,77 @@ msgstr "Předchozí"
 msgid "Next"
 msgstr "Následující"
 
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "Tento Správce souborů není váš výchozí"
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "Nastavit jako Výchozí"
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Ignorovat"
-
-#: ../src/View/Sidebar.vala:490
-msgid "Personal"
-msgstr "Osobní"
-
-#: ../src/View/Sidebar.vala:491
-msgid "Your common places and bookmarks"
-msgstr "Vaše často prohlížená místa a záložky"
-
-#: ../src/View/Sidebar.vala:503 ../src/View/ViewContainer.vala:346
-msgid "Home"
-msgstr "Domů"
-
-#: ../src/View/Sidebar.vala:510
-msgid "Open your personal folder"
-msgstr "Otevřít osobní složku"
-
-#: ../src/View/Sidebar.vala:525
-msgid "View the list of recently used files"
-msgstr "Zobrazit nedávno použité soubory"
-
-#: ../src/View/Sidebar.vala:546 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "Koš"
-
-#: ../src/View/Sidebar.vala:553
-msgid "Open the Trash"
-msgstr "Otevřít Koš"
-
-#: ../src/View/Sidebar.vala:557
-msgid "Devices"
-msgstr "Zařízení"
-
-#: ../src/View/Sidebar.vala:558
-msgid "Your local partitions and devices"
-msgstr "Vaše místní oddíly a zařízení"
-
-#: ../src/View/Sidebar.vala:564 ../src/View/ViewContainer.vala:348
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:94
-msgid "File System"
-msgstr "Souborový systém"
-
-#: ../src/View/Sidebar.vala:682 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "Síť"
-
-#: ../src/View/Sidebar.vala:683
-msgid "Your network places"
-msgstr "Vaše síť"
-
-#: ../src/View/Sidebar.vala:715
-msgid "Entire Network"
-msgstr "Celá síť"
-
-#: ../src/View/Sidebar.vala:722
-msgid "Browse the contents of the network"
-msgstr "Procházet obsah sítě"
-
-#: ../src/View/Sidebar.vala:854
-msgid "(%s Free of %s)"
-msgstr "(%s volných z %s)"
-
-#: ../src/View/Sidebar.vala:1350
-msgid "Unable to start %s"
-msgstr "Nelze aktivovat %s"
-
-#: ../src/View/Sidebar.vala:1454
-msgid "Open"
-msgstr "Otevřít"
-
-#: ../src/View/Sidebar.vala:1462
-msgid "Open in New _Tab"
-msgstr "Otevřít v nové kar_tě"
-
-#: ../src/View/Sidebar.vala:1468
-msgid "Open in New _Window"
-msgstr "Otevřít v novém _okně"
-
-#: ../src/View/Sidebar.vala:1476
-msgid "Remove"
-msgstr "Odstranit"
-
-#: ../src/View/Sidebar.vala:1484 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Přejmenovat"
-
-#: ../src/View/Sidebar.vala:1493
-msgid "_Mount"
-msgstr "_Připojit"
-
-#: ../src/View/Sidebar.vala:1499
-msgid "_Unmount"
-msgstr "_Odpojit"
-
-#: ../src/View/Sidebar.vala:1505
-msgid "_Eject"
-msgstr "V_ysunout"
-
-#: ../src/View/Sidebar.vala:1519 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Vlastnosti"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Název souboru"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Velikost"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Typ"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Změněno"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:379
-msgid "This Folder Does Not Exist"
-msgstr "Tato složka neexistuje"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Složka \"%s\" nenalezena."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Vytvořit"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Vytvořit složku \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Selhalo vytvoření složky\n"
-"%s"
-
-#: ../src/View/AbstractDirectoryView.vala:564
+#: ../src/View/AbstractDirectoryView.vala:581
 msgid "Failed to preview"
 msgstr "Nelze zobrazit náhled"
 
-#: ../src/View/AbstractDirectoryView.vala:817
+#: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
 msgstr "Tento soubor nelze otevřít"
 
-#: ../src/View/AbstractDirectoryView.vala:830
+#: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
 msgstr "Nelze zjistit typ souboru pro otevření"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Cannot drop this file"
 msgstr "Tento soubor nelze přetáhnout"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Invalid file name provided"
 msgstr "Zadán neplatný název souboru"
 
-#: ../src/View/AbstractDirectoryView.vala:2010
+#: ../src/View/AbstractDirectoryView.vala:2011
 msgid "Invalid"
 msgstr "Neplatný"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:2017
 msgid "Run"
 msgstr "Spustit"
 
-#: ../src/View/AbstractDirectoryView.vala:2021
+#: ../src/View/AbstractDirectoryView.vala:2022
 msgid "Open in %s"
 msgstr "Otevřít v %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2031
+#: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "Otevřít v"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2034
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
 msgid "Open with"
 msgstr "Otevřít s"
 
-#: ../src/View/AbstractDirectoryView.vala:2093
+#: ../src/View/AbstractDirectoryView.vala:2094
 msgid "Other Application"
 msgstr "Jiná Aplikace"
 
-#: ../src/View/AbstractDirectoryView.vala:2354
+#: ../src/View/AbstractDirectoryView.vala:2355
 msgid "Untitled %s"
 msgstr "Nepojmenovaný soubor %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2678
-#: ../src/View/AbstractDirectoryView.vala:2861
+#: ../src/View/AbstractDirectoryView.vala:2689
+#: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2679
-#: ../src/View/AbstractDirectoryView.vala:2849
-#: ../src/View/AbstractDirectoryView.vala:2862
+#: ../src/View/AbstractDirectoryView.vala:2690
+#: ../src/View/AbstractDirectoryView.vala:2860
+#: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2827
+#: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
 msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
 
-#: ../src/View/AbstractDirectoryView.vala:2828
+#: ../src/View/AbstractDirectoryView.vala:2839
 msgid "Cutting the selection instead"
 msgstr "Místo toho vyjmout výběr"
 
-#: ../src/View/AbstractDirectoryView.vala:2848
+#: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
 msgstr ""
-
-#: ../src/View/ViewContainer.vala:361
-msgid "(as Administrator)"
-msgstr "(jako Administrátor)"
-
-#: ../src/View/ViewContainer.vala:380
-msgid "You cannot create a folder here."
-msgstr "Zde nelze vytvořit složku"
-
-#: ../src/View/ViewContainer.vala:383
-msgid "The network is unavailable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:384
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:386
-msgid "This Folder Does Not Belong to You"
-msgstr "Tato složka nepatří Vám"
-
-#: ../src/View/ViewContainer.vala:387
-msgid "You don't have permission to view this folder."
-msgstr "Nemáte dostatečná práva k  prohlížení této složky"
-
-#: ../src/View/ViewContainer.vala:389
-msgid "Unable to Mount Folder"
-msgstr "Složku nelze připojit"
-
-#: ../src/View/ViewContainer.vala:390
-msgid "Could not connect to the server for this folder."
-msgstr "Pro tuto složku se nepodařilo připojit k serveru."
-
-#: ../src/View/ViewContainer.vala:392
-msgid "Unable to Display Folder Contents"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:393
-msgid "The operation timed out."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:395
-msgid "Unable to Show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:396
-msgid "The server for this folder could not be located."
-msgstr "Server pro tuto složku nelze nalézt."
-
-#: ../src/View/ViewContainer.vala:406
-msgid "File not Found"
-msgstr "Soubor nenalezen"
-
-#: ../src/View/ViewContainer.vala:407
-msgid "The file selected no longer exists."
-msgstr "Vybraný soubor již neexistuje."
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Tato složka je prázdná"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "Koš je prázdný"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Nejsou zde žádné nedávno použité soubory"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Přístup odepřen"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
-msgid "Open in New Tab"
-msgstr "Otevřít v nové kartě"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
-msgid "Open in New Window"
-msgstr "Otevřít v novém okně"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
-msgid "Open in Other Application…"
-msgstr "Otevřít v jiné aplikaci..."
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1928,6 +1685,18 @@ msgstr ""
 msgid "%u files not readable"
 msgstr ""
 
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
+msgid "Open in New Tab"
+msgstr "Otevřít v nové kartě"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
+msgid "Open in New Window"
+msgstr "Otevřít v novém okně"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
+msgid "Open in Other Application…"
+msgstr "Otevřít v jiné aplikaci..."
+
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
 msgstr "Čtení"
@@ -1940,31 +1709,259 @@ msgstr "Zápis"
 msgid "Execute"
 msgstr "Spouštění"
 
-#: ../src/Application.vala:150
+#: ../src/View/Window.vala:205
+msgid "Files isn't your default file manager."
+msgstr "Tento Správce souborů není váš výchozí"
+
+#: ../src/View/Window.vala:211
+msgid "Set as Default"
+msgstr "Nastavit jako Výchozí"
+
+#: ../src/View/Window.vala:217
+msgid "Ignore"
+msgstr "Ignorovat"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Název souboru"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Velikost"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Typ"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Změněno"
+
+#: ../src/View/Sidebar.vala:503
+msgid "Personal"
+msgstr "Osobní"
+
+#: ../src/View/Sidebar.vala:504
+msgid "Your common places and bookmarks"
+msgstr "Vaše často prohlížená místa a záložky"
+
+#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:373
+msgid "Home"
+msgstr "Domů"
+
+#: ../src/View/Sidebar.vala:523
+msgid "Open your personal folder"
+msgstr "Otevřít osobní složku"
+
+#: ../src/View/Sidebar.vala:538
+msgid "View the list of recently used files"
+msgstr "Zobrazit nedávno použité soubory"
+
+#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr "Koš"
+
+#: ../src/View/Sidebar.vala:571
+msgid "Open the Trash"
+msgstr "Otevřít Koš"
+
+#: ../src/View/Sidebar.vala:576
+msgid "Devices"
+msgstr "Zařízení"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your local partitions and devices"
+msgstr "Vaše místní oddíly a zařízení"
+
+#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:375
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:68
+msgid "File System"
+msgstr "Souborový systém"
+
+#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
+msgid "Network"
+msgstr "Síť"
+
+#: ../src/View/Sidebar.vala:702
+msgid "Your network places"
+msgstr "Vaše síť"
+
+#: ../src/View/Sidebar.vala:734
+msgid "Entire Network"
+msgstr "Celá síť"
+
+#: ../src/View/Sidebar.vala:741
+msgid "Browse the contents of the network"
+msgstr "Procházet obsah sítě"
+
+#: ../src/View/Sidebar.vala:874
+msgid "(%s Free of %s)"
+msgstr "(%s volných z %s)"
+
+#: ../src/View/Sidebar.vala:1370
+msgid "Unable to start %s"
+msgstr "Nelze aktivovat %s"
+
+#: ../src/View/Sidebar.vala:1474
+msgid "Open"
+msgstr "Otevřít"
+
+#: ../src/View/Sidebar.vala:1482
+msgid "Open in New _Tab"
+msgstr "Otevřít v nové kar_tě"
+
+#: ../src/View/Sidebar.vala:1488
+msgid "Open in New _Window"
+msgstr "Otevřít v novém _okně"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "Remove"
+msgstr "Odstranit"
+
+#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Přejmenovat"
+
+#: ../src/View/Sidebar.vala:1513
+msgid "_Mount"
+msgstr "_Připojit"
+
+#: ../src/View/Sidebar.vala:1519
+msgid "_Unmount"
+msgstr "_Odpojit"
+
+#: ../src/View/Sidebar.vala:1525
+msgid "_Eject"
+msgstr "V_ysunout"
+
+#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Vlastnosti"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
+msgid "This Folder Does Not Exist"
+msgstr "Tato složka neexistuje"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Složka \"%s\" nenalezena."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Vytvořit"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Vytvořit složku \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Selhalo vytvoření složky\n"
+"%s"
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Tato složka je prázdná"
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "Koš je prázdný"
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Nejsou zde žádné nedávno použité soubory"
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Přístup odepřen"
+
+#: ../src/View/ViewContainer.vala:388
+msgid "(as Administrator)"
+msgstr "(jako Administrátor)"
+
+#: ../src/View/ViewContainer.vala:407
+msgid "You cannot create a folder here."
+msgstr "Zde nelze vytvořit složku"
+
+#: ../src/View/ViewContainer.vala:410
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:411
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:413
+msgid "This Folder Does Not Belong to You"
+msgstr "Tato složka nepatří Vám"
+
+#: ../src/View/ViewContainer.vala:414
+msgid "You don't have permission to view this folder."
+msgstr "Nemáte dostatečná práva k  prohlížení této složky"
+
+#: ../src/View/ViewContainer.vala:416
+msgid "Unable to Mount Folder"
+msgstr "Složku nelze připojit"
+
+#: ../src/View/ViewContainer.vala:417
+msgid "Could not connect to the server for this folder."
+msgstr "Pro tuto složku se nepodařilo připojit k serveru."
+
+#: ../src/View/ViewContainer.vala:419
+msgid "Unable to Display Folder Contents"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:420
+msgid "The operation timed out."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:422
+msgid "Unable to Show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:423
+msgid "The server for this folder could not be located."
+msgstr "Server pro tuto složku nelze nalézt."
+
+#: ../src/View/ViewContainer.vala:433
+msgid "File not Found"
+msgstr "Soubor nenalezen"
+
+#: ../src/View/ViewContainer.vala:434
+msgid "The file selected no longer exists."
+msgstr "Vybraný soubor již neexistuje."
+
+#: ../src/Application.vala:134
 msgid "Show the version of the program."
 msgstr "Zobrazit verzi programu."
 
-#: ../src/Application.vala:152
+#: ../src/Application.vala:136
 msgid "Open uri(s) in new tab"
 msgstr "Otevřít adresu(-y) v nové kartě"
 
-#: ../src/Application.vala:154 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Nové okno"
 
-#: ../src/Application.vala:156
+#: ../src/Application.vala:140
 msgid "Quit Files."
 msgstr "Ukončit Správce souborů"
 
-#: ../src/Application.vala:158
+#: ../src/Application.vala:142
 msgid "Enable debug logging"
 msgstr "Vypisovat ladicí zprávy"
 
-#: ../src/Application.vala:161
+#: ../src/Application.vala:145
 msgid "[URI...]"
 msgstr "[URI…]"
 
-#: ../src/Application.vala:164
+#: ../src/Application.vala:148
 msgid ""
 "\n"
 "\n"
@@ -1974,95 +1971,13 @@ msgstr ""
 "\n"
 "Procházet systém souborů správcem souborů"
 
-#: ../src/Application.vala:191
+#: ../src/Application.vala:175
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nelze použít spolu s adresami URI."
-
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr "Procházet soubory"
-
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr "Správce souborů"
-
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr "Nové _okno"
-
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Nové _administrátorské okno"
-
-#: ../src/DesktopLauncher.vala:25
-msgid "About _Files"
-msgstr "O _Files"
-
-#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Správce souborů"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr ""
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "Operace se soubory"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
-msgstr ""
-
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "Zobrazit nabídku kopírování"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "Zrušit všechny vykonávané akce"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "Ve schránce není nic ke vložení"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Nastavit jako výchozí"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Vlastnosti disku"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Umístění:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Formát:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2099,6 +2014,23 @@ msgstr "Dostupný:"
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 msgid "Used:"
 msgstr "Použitý:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Vlastnosti disku"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "Umístění:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Formát:"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Nastavit jako výchozí"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
@@ -2210,8 +2142,93 @@ msgstr[1] ""
 msgid "%s (%s, %s)"
 msgstr ""
 
-#: ../libcore/gof-directory-async.vala:587
-msgid "Server did not respond within time limit"
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Operace se soubory"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr ""
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Zobrazit nabídku kopírování"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Zrušit všechny vykonávané akce"
+
+#: ../src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr "Procházet soubory"
+
+#: ../src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr "Správce souborů"
+
+#: ../src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr "Nové _okno"
+
+#: ../src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr "Nové _administrátorské okno"
+
+#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Správce souborů"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr ""
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nelze zjistit původní umístění \"%s\" "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "Soubor nelze z koše obnovit"
+
+#: ../libcore/FileUtils.vala:345
+msgid "Could not rename to '%s'"
+msgstr "Přejmenování na '%s' se nezdařilo"
+
+#: ../libcore/FileUtils.vala:436
+msgid "Today at %-H:%M"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:444
+msgid "Yesterday at %-H:%M"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:453
+msgid "%A at %-H:%M"
+msgstr ""
+
+#: ../libcore/FileUtils.vala:455
+msgid "%A at %-I:%M %p"
 msgstr ""
 
 #: ../libcore/DndHandler.vala:45
@@ -2234,108 +2251,17 @@ msgstr "Odkaz sem"
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: ../libcore/FileUtils.vala:60
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nelze zjistit původní umístění \"%s\" "
-
-#: ../libcore/FileUtils.vala:61
-msgid "The item cannot be restored from trash"
-msgstr "Soubor nelze z koše obnovit"
-
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "Přejmenování na '%s' se nezdařilo"
-
-#: ../libcore/FileUtils.vala:434
-msgid "Today at %-H:%M"
+#: ../libcore/gof-directory-async.vala:611
+msgid "Server did not respond within time limit"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:442
-msgid "Yesterday at %-H:%M"
-msgstr ""
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Přejít do %s"
 
-#: ../libcore/FileUtils.vala:451
-msgid "%A at %-H:%M"
-msgstr ""
-
-#: ../libcore/FileUtils.vala:453
-msgid "%A at %-I:%M %p"
-msgstr ""
-
-#: ../libwidgets/View/SearchResults.vala:187
-msgid "In This Folder"
-msgstr "V této složce"
-
-#: ../libwidgets/View/SearchResults.vala:191
-msgid "Bookmarks"
-msgstr "Záložky"
-
-#: ../libwidgets/View/SearchResults.vala:195
-msgid "Everywhere Else"
-msgstr "Všude jinde"
-
-#: ../libwidgets/Resources.vala:30
-msgid "A simple and powerful file manager"
-msgstr "Jednoduchý a účelový prohlížeč souborů"
-
-#: ../libwidgets/Resources.vala:51
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Cody Garver https://launchpad.net/~codygarver\n"
-"  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Filip Joska https://launchpad.net/~jimmyl0l3c\n"
-"  Hlobil Vaclav https://launchpad.net/~vaclav-hlobil\n"
-"  Jan Marek https://launchpad.net/~janmarek28\n"
-"  Jaroslav Staněk https://launchpad.net/~fleury08\n"
-"  Long Do Hai https://launchpad.net/~mailbox-b\n"
-"  Lukas Golik https://launchpad.net/~golik-lukas\n"
-"  Marek Doležel https://launchpad.net/~marekdolezel\n"
-"  Marek Suchánek https://launchpad.net/~suchm\n"
-"  Miroslav Lacina https://launchpad.net/~seinodernichtsein\n"
-"  Ondra Kadlec https://launchpad.net/~o-kadlec\n"
-"  Ondra Voves https://launchpad.net/~o-voves\n"
-"  Ondřej Brabec https://launchpad.net/~kaktus-ob\n"
-"  Petr Dombek https://launchpad.net/~dombek\n"
-"  Samuel Kristev https://launchpad.net/~samuelkristev\n"
-"  Strihtrs https://launchpad.net/~filip-kalous\n"
-"  Tin Man https://launchpad.net/~tin.man\n"
-"  Tomo Moto https://launchpad.net/~tomasivanek\n"
-"  Tomáš Moravec https://launchpad.net/~otoman100\n"
-"  Vit Svarc https://launchpad.net/~vs-pb\n"
-"  mirekf https://launchpad.net/~mirekf"
-
-#: ../libwidgets/Resources.vala:84
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:85
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:86
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:87
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:89
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:90
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:92
-msgid "Recent"
-msgstr "Nedávné"
-
-#: ../libwidgets/Resources.vala:93
-msgid "MTP"
-msgstr "MTP"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Přejít do %s"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
@@ -2353,13 +2279,55 @@ msgstr "Zobrazit jako seznam"
 msgid "View in Columns"
 msgstr "Zobrazit ve sloupcích"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Přejít do %s"
+#: ../libwidgets/Resources.vala:58
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
-msgid "Go to %s"
-msgstr "Přejít do %s"
+#: ../libwidgets/Resources.vala:59
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.vala:60
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.vala:61
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.vala:63
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.vala:64
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.vala:66
+msgid "Recent"
+msgstr "Nedávné"
+
+#: ../libwidgets/Resources.vala:67
+msgid "MTP"
+msgstr "MTP"
+
+#: ../libwidgets/View/SearchResults.vala:226
+msgid "In This Folder"
+msgstr "V této složce"
+
+#: ../libwidgets/View/SearchResults.vala:231
+#, fuzzy
+msgid "Below This Folder"
+msgstr "V této složce"
+
+#: ../libwidgets/View/SearchResults.vala:236
+msgid "Bookmarks"
+msgstr "Záložky"
+
+#: ../libwidgets/View/SearchResults.vala:241
+#, fuzzy
+msgid "Recently used"
+msgstr "Nedávné"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2468,3 +2436,38 @@ msgstr "Změněno"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Opačné pořadí"
+
+#~ msgid "About _Files"
+#~ msgstr "O _Files"
+
+#~ msgid "Everywhere Else"
+#~ msgstr "Všude jinde"
+
+#~ msgid "A simple and powerful file manager"
+#~ msgstr "Jednoduchý a účelový prohlížeč souborů"
+
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Launchpad Contributions:\n"
+#~ "  Cody Garver https://launchpad.net/~codygarver\n"
+#~ "  Daniel Fore https://launchpad.net/~danrabbit\n"
+#~ "  Filip Joska https://launchpad.net/~jimmyl0l3c\n"
+#~ "  Hlobil Vaclav https://launchpad.net/~vaclav-hlobil\n"
+#~ "  Jan Marek https://launchpad.net/~janmarek28\n"
+#~ "  Jaroslav Staněk https://launchpad.net/~fleury08\n"
+#~ "  Long Do Hai https://launchpad.net/~mailbox-b\n"
+#~ "  Lukas Golik https://launchpad.net/~golik-lukas\n"
+#~ "  Marek Doležel https://launchpad.net/~marekdolezel\n"
+#~ "  Marek Suchánek https://launchpad.net/~suchm\n"
+#~ "  Miroslav Lacina https://launchpad.net/~seinodernichtsein\n"
+#~ "  Ondra Kadlec https://launchpad.net/~o-kadlec\n"
+#~ "  Ondra Voves https://launchpad.net/~o-voves\n"
+#~ "  Ondřej Brabec https://launchpad.net/~kaktus-ob\n"
+#~ "  Petr Dombek https://launchpad.net/~dombek\n"
+#~ "  Samuel Kristev https://launchpad.net/~samuelkristev\n"
+#~ "  Strihtrs https://launchpad.net/~filip-kalous\n"
+#~ "  Tin Man https://launchpad.net/~tin.man\n"
+#~ "  Tomo Moto https://launchpad.net/~tomasivanek\n"
+#~ "  Tomáš Moravec https://launchpad.net/~otoman100\n"
+#~ "  Vit Svarc https://launchpad.net/~vs-pb\n"
+#~ "  mirekf https://launchpad.net/~mirekf"
