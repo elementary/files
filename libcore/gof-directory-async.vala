@@ -114,7 +114,12 @@ public class Async : Object {
 
     private Async (GLib.File _file) {
         var u = _file.get_uri ();
-        is_archive = PF.FileUtils.is_archive_from_extension (u);
+        scheme = _file.get_uri_scheme ();
+        is_trash = (scheme == "trash");
+        is_recent = (scheme == "recent");
+        is_local = is_trash || is_recent || (scheme == "file");
+
+        is_archive = is_local && PF.FileUtils.is_archive_from_extension (u);
 
         if (!u.has_prefix ("archive")) {
             /* Assume archive urls to be in required format already for now */
@@ -139,11 +144,8 @@ public class Async : Object {
         state = State.NOT_LOADED;
         can_load = false;
 
-        scheme = location.get_uri_scheme ();
-        is_trash = (scheme == "trash");
-        is_recent = (scheme == "recent");
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme)); //Try lifting requirement for info on remote connections
-        is_local = is_trash || is_recent || (scheme == "file");
+
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
         can_open_files = !("mtp".contains (scheme));
         can_stream_files = !("ftp sftp mtp dav davs".contains (scheme));

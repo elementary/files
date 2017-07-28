@@ -207,7 +207,7 @@ namespace PF.FileUtils {
         split_protocol_from_path (unescaped_p, out scheme, out path);
         path = path.strip ().replace ("//", "/");
         StringBuilder sb = new StringBuilder (path);
-        if (cp != null) {ri =
+        if (cp != null) {
             split_protocol_from_path (cp, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
                 if (scheme == "" && path.has_prefix ("/./")) {
