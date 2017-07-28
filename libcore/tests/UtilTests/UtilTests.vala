@@ -45,11 +45,16 @@ void add_file_utils_tests () {
     Test.add_func ("/FileUtils/file_for_zero_length_path", () => {
         assert (PF.FileUtils.get_file_for_path ("") == null);
     });
+
+    Test.add_func ("/FileUtils/sanitize_archive_path", () => {
+        string res = PF.FileUtils.sanitize_path ("archive://file%3A%2F%2F%2Fhome%2Ftest.zip");
+        assert (res == "archive://file%3A%2F%2F%2Fhome%2Ftest.zip");
+    });
 }
 
 int main (string[] args) {
     Test.init (ref args);
-    
+
     add_file_utils_tests ();
     return Test.run ();
 }

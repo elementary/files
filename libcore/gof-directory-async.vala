@@ -112,14 +112,20 @@ public class Async : Object {
     public bool loaded_from_cache {get; private set; default = false;}
 
     private Async (GLib.File _file) {
-        /* Ensure uri is correctly escaped and has scheme */
-        var escaped_uri = PF.FileUtils.escape_uri (_file.get_uri ());
-        scheme = Uri.parse_scheme (escaped_uri);
-        if (scheme == null) {
-            scheme = Marlin.ROOT_FS_URI;
-            escaped_uri = scheme + escaped_uri;
+        var u = _file.get_uri ();
+
+        if (!u.has_prefix ("archive")) {
+            /* Assume archive urls to be in required format already for now */
+            /* else ensure uri is correctly escaped and has scheme */
+            u = PF.FileUtils.escape_uri (u);
+            scheme = Uri.parse_scheme (u);
+            if (scheme == null) {
+                scheme = Marlin.ROOT_FS_URI;
+                u = scheme + u;
+            }
         }
-        location = GLib.File.new_for_uri (escaped_uri);
+
+        location = GLib.File.new_for_uri (u);
         file = GOF.File.get (location);
         selected_file = null;
 

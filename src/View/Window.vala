@@ -1143,15 +1143,23 @@ namespace Marlin.View {
 
         /** Use this function to standardise how locations are generated from uris **/
         private File? get_file_from_uri (string uri) {
-            /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
-            string? current_uri = null;
-            if (current_tab != null && current_tab.location != null) {
-                current_uri = current_tab.location.get_uri ();
+            string  path = "";
+
+            if (uri.has_prefix ("archive")) {
+                /* gvfs-archive backend will not open an unescaped url */
+                path = uri;
+            } else {
+                /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
+                string? current_uri = null;
+                if (current_tab != null && current_tab.location != null) {
+                    current_uri = current_tab.location.get_uri ();
+                }
+
+                path = PF.FileUtils.sanitize_path (uri, current_uri);
             }
 
-            string path = PF.FileUtils.sanitize_path (uri, current_uri);
             if (path.length > 0) {
-                return File.new_for_uri (PF.FileUtils.escape_uri (path));
+                return File.new_for_uri (path);
             } else {
                 return null;
             }

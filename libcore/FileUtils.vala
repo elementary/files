@@ -175,10 +175,17 @@ namespace PF.FileUtils {
             return cp ?? "";
         }
 
+        if (p.has_prefix ("archive")) {
+            /* Do not mess with special archive url format for now */
+            return p;
+        }
+
         string? unescaped_p = Uri.unescape_string (p, null);
         if (unescaped_p == null) {
             unescaped_p = p;
         }
+
+
 
         split_protocol_from_path (unescaped_p, out scheme, out path);
         path = path.strip ().replace ("//", "/");
@@ -244,6 +251,7 @@ namespace PF.FileUtils {
             new_path = "";
             return;
         }
+
         if (explode_protocol.length > 1) {
             if (explode_protocol[0] == "mtp") {
                 string[] explode_path = explode_protocol[1].split ("]", 2);
@@ -412,7 +420,7 @@ namespace PF.FileUtils {
 
         string default_date_format = Granite.DateTime.get_default_date_format (false, true, true);
 
-        if (disp_year < now_year) {  
+        if (disp_year < now_year) {
             return dt.format (default_date_format);
         }
 
