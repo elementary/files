@@ -1020,12 +1020,15 @@ public class Async : Object {
                 found = false;
 
                 foreach (var d in dirs) {
-                    if (d == dir)
+                    if (d == dir) {
                         found = true;
+                        break;
+                    }
                 }
 
-                if (!found)
-                    dirs.append (dir);
+                if (!found) {
+                    dirs.prepend (dir);
+                }
             } else {
                 dir = cache_lookup (loc);
                 if (dir != null) {
@@ -1049,8 +1052,8 @@ public class Async : Object {
             GLib.File from = pair.index (0);
             GLib.File to = pair.index (1);
 
-            list_from.append (from);
-            list_to.append (to);
+            list_from.prepend (from);
+            list_to.prepend (to);
         }
 
         notify_files_removed (list_from);
