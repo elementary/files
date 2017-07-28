@@ -34,10 +34,16 @@ namespace PF.FileUtils {
         }
     }
 
-    public string get_parent_path_from_path (string path) {
+    public string get_parent_path_from_path (string _path) {
         /* We construct the parent path rather than use File.get_parent () as the latter gives odd
          * results for some gvfs files.
          */
+        string path = _path;
+
+        if (is_archive_from_extension (path)) {
+            path = unescape_uri (strip_archive_prefix (path));
+        }
+
         string parent_path = construct_parent_path (path);
         if (parent_path == Marlin.FTP_URI ||
             parent_path == Marlin.SFTP_URI) {
@@ -160,6 +166,14 @@ namespace PF.FileUtils {
         return file.get_parent () != null;
     }
 
+    public string? unescape_uri (string uri) {
+        if (uri.has_prefix ("archive")) {
+            return unescape_archive_uri (uri);
+        } else {
+            return Uri.unescape_string (uri);
+        }
+    }
+
     public string? escape_uri (string uri, bool allow_utf8 = true) {
         string rc = reserved_chars.replace("#", "").replace ("*","");
         return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
@@ -180,7 +194,7 @@ namespace PF.FileUtils {
 
         if (p.has_prefix ("archive")) {
             /* Do not mess with special archive url format for now */
-            return p;
+            return unescape_archive_uri (p);
         }
 
         string? unescaped_p = Uri.unescape_string (p, null);
@@ -193,7 +207,7 @@ namespace PF.FileUtils {
         split_protocol_from_path (unescaped_p, out scheme, out path);
         path = path.strip ().replace ("//", "/");
         StringBuilder sb = new StringBuilder (path);
-        if (cp != null) {
+        if (cp != null) {ri =
             split_protocol_from_path (cp, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
                 if (scheme == "" && path.has_prefix ("/./")) {
@@ -297,7 +311,12 @@ namespace PF.FileUtils {
         return true;
     }
 
-    public bool is_archive_from_extension (string uri) {
+    public bool is_archive_from_extension (string _uri) {
+        string uri = _uri;
+        if (uri.has_suffix (Path.DIR_SEPARATOR_S)) {
+            uri = uri.slice (0, uri.length - 1);
+        }
+
         foreach (string extension in archive_types) {
             if (uri.has_suffix (extension)) {
                 return true;
@@ -307,8 +326,33 @@ namespace PF.FileUtils {
         return false;
     }
 
-    public string construct_archive_uri (string uri) {
-        return "archive://" + uri.replace (Path.DIR_SEPARATOR_S, "%2F").replace (":", "%3A").replace ("%", "%25");
+    public string construct_archive_uri (string _uri) {
+        string uri = _uri;
+        if (!uri.has_prefix ("archive")) {
+            uri = escape_uri (uri);
+            uri = uri.replace (Path.DIR_SEPARATOR_S, "%2F")
+                     .replace (":", "%3A")
+                     .replace ("%", "%25")
+                     .replace (" ", "%252520"); /* This is required by gvfs-archive for some reason */
+
+            return "archive://" + uri;
+        } else {
+            return uri;
+        }
+    }
+
+    public string unescape_archive_uri (string _uri) {
+        string uri = _uri;
+        uri = Uri.unescape_string (uri.replace ("%252520", " ").replace ("%25", "%"));
+        return uri;
+    }
+
+    public string strip_archive_prefix (string uri) {
+        if (uri.has_prefix ("archive://")) {
+            return unescape_uri (uri.slice ("archive://".length, -1));
+        } else {
+            return Uri.unescape_string (uri);
+        }
     }
 
     public string get_smb_share_from_uri (string uri) {

@@ -201,7 +201,7 @@ namespace Marlin.View {
         public bool go_up () {
             selected_locations.append (this.location);
             GLib.File parent = location;
-            if (view.directory.has_parent ()) { /* May not work for some protocols */
+            if (!uri.has_prefix ("archive") && view.directory.has_parent ()) { /* May not work for some protocols */
                 parent = view.directory.get_parent ();
             } else {
                 var parent_path = PF.FileUtils.get_parent_path_from_path (location.get_uri ());
@@ -360,9 +360,11 @@ namespace Marlin.View {
         }
 
        private void update_tab_name () {
-            string? slot_path = Uri.unescape_string (this.uri);
+            string? slot_path = null;
             if (this.uri.has_prefix ("archive")) {
-                slot_path = Uri.unescape_string (slot_path.slice ("archive://".length, -1));
+                slot_path = PF.FileUtils.strip_archive_prefix (this.uri);
+            } else {
+                slot_path = Uri.unescape_string (this.uri);
             }
 
             string? tab_name = null;

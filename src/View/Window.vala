@@ -517,13 +517,13 @@ namespace Marlin.View {
                 return name;
             }
 
-            string path = Uri.unescape_string (vc.uri);
+            string path = PF.FileUtils.unescape_uri (vc.uri);
             string new_name = name;
 
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
                 var content = (ViewContainer)(tab.page);
                 if (content != vc) {
-                    string content_path = Uri.unescape_string (content.uri);
+                    string content_path = PF.FileUtils.unescape_uri (content.uri);
                     if (content.tab_name == name && content_path != path) {
                         if (content.tab_name == tab.label) {
                             Idle.add_full (GLib.Priority.LOW, () => {

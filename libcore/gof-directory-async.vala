@@ -114,6 +114,7 @@ public class Async : Object {
 
     private Async (GLib.File _file) {
         var u = _file.get_uri ();
+        is_archive = PF.FileUtils.is_archive_from_extension (u);
 
         if (!u.has_prefix ("archive")) {
             /* Assume archive urls to be in required format already for now */
@@ -125,8 +126,6 @@ public class Async : Object {
                 u = scheme + u;
             }
         }
-
-        is_archive = PF.FileUtils.is_archive_from_extension (u);
 
         if (is_archive) {
             u = PF.FileUtils.construct_archive_uri (u);
