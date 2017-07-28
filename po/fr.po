@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-06-22 09:54+0000\n"
+"PO-Revision-Date: 2017-07-10 16:18+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
@@ -2304,18 +2304,16 @@ msgid "In This Folder"
 msgstr "Dans ce dossier"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "Dans ce dossier"
+msgstr "À l'intérieur de ce dossier"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
 msgstr "Marque-pages"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
-msgstr "Récent"
+msgstr "Récents"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

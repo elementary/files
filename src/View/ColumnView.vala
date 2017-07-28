@@ -120,12 +120,16 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
-            unowned GOF.File file = selected_files.data;
-            bool is_folder = file.is_folder ();
+            unowned GOF.File? file;
+            if (selected_files != null) {
+                file = selected_files.data;
+            } else {
+                file = null;
+            }
 
             selected_folder = null;
 
-            if (!is_folder || !Preferences.settings.get_boolean ("single-click")) {
+            if (file == null || !file.is_folder () || !Preferences.settings.get_boolean ("single-click")) {
                 return base.handle_primary_button_click (event, path);
             }
 
@@ -154,6 +158,7 @@ namespace FM {
 
                 result = true;
             }
+
             return result;
         }
 

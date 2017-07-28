@@ -234,7 +234,9 @@ namespace FM {
             if (p != null && c != null && c == name_column) {
                 GOF.File? file = model.file_for_path (p);
 
-                if (x < rect.x + ICON_XPAD + icon_size) { /* cannot be on name */
+                if (file == null) {
+                    zone = ClickZone.INVALID;
+                } else if (x < rect.x + ICON_XPAD + icon_size) { /* cannot be on name */
                     bool on_helper = false;
                     bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
 
