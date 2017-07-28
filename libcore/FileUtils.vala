@@ -326,7 +326,7 @@ namespace PF.FileUtils {
 
                 if (dir != null) {
                     /* Notify directory of change.  Since only a single file is changed we bypass MarlinFileChangesQueue */
-
+                    /* Appending OK here since only one file */
                     GLib.List<GLib.File>added_files = null;
                     added_files.append (new_location);
                     GLib.List<GLib.File>removed_files = null;
@@ -412,7 +412,7 @@ namespace PF.FileUtils {
 
         string default_date_format = Granite.DateTime.get_default_date_format (false, true, true);
 
-        if (disp_year < now_year) {  
+        if (disp_year < now_year) {
             return dt.format (default_date_format);
         }
 

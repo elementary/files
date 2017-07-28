@@ -765,6 +765,8 @@ namespace FM {
                 list.prepend (file);
             });
 
+            list.reverse ();
+
             return list;
         }
 
@@ -2566,8 +2568,10 @@ namespace FM {
                 selected_files.@foreach ((file) => {
                     var goffile = GOF.File.get_by_uri (file.get_display_target_uri ());
                     goffile.query_update ();
-                    action_files.append (goffile);
+                    action_files.prepend (goffile);
                 });
+
+                action_files.reverse ();
             } else {
                 action_files = selected_files;
             }
@@ -2901,7 +2905,6 @@ namespace FM {
                 return true;
 
             click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
-            GOF.File? file = path != null ? model.file_for_path (path) : null;
 
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
@@ -2932,6 +2935,8 @@ namespace FM {
                 if (slot.directory.is_local || NetworkMonitor.get_default ().get_network_available ()) {
                     /* cannot get file info while network disconnected. */
                     GOF.File? target_file;
+                    GOF.File? file = path != null ? model.file_for_path (path) : null;
+
                     if (file != null && slot.directory.is_recent) {
                         target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
                         target_file.ensure_query_info ();
@@ -3557,7 +3562,7 @@ namespace FM {
         protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
-        protected abstract bool is_on_icon (int x, int y, int orig_x, int orig_y, ref bool on_helper);
+        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear
