@@ -21,6 +21,9 @@ namespace PF.FileUtils {
      **/
     const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
 
+    /* Selection of extensions of file types mountable with gvfs-archive */
+    const string[] archive_types = {".zip", ".deb", ".xz", ".gz", ".tar", ".tar.Z", ".bz2"};
+
     public File? get_file_for_path (string? path) {
         string? new_path = sanitize_path (path);
 
@@ -292,6 +295,20 @@ namespace PF.FileUtils {
             return false;
         }
         return true;
+    }
+
+    public bool is_archive_from_extension (string uri) {
+        foreach (string extension in archive_types) {
+            if (uri.has_suffix (extension)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public string construct_archive_uri (string uri) {
+        return "archive://" + uri.replace (Path.DIR_SEPARATOR_S, "%2F").replace (":", "%3A").replace ("%", "%25");
     }
 
     public string get_smb_share_from_uri (string uri) {

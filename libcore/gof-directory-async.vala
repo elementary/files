@@ -100,6 +100,7 @@ public class Async : Object {
     public bool can_open_files {get; private set;}
     public bool can_stream_files {get; private set;}
     public bool allow_user_interaction {get; set; default = true;}
+    public bool is_archive {get; private set;}
 
     private bool is_ready = false;
 
@@ -123,6 +124,12 @@ public class Async : Object {
                 scheme = Marlin.ROOT_FS_URI;
                 u = scheme + u;
             }
+        }
+
+        is_archive = PF.FileUtils.is_archive_from_extension (u);
+
+        if (is_archive) {
+            u = PF.FileUtils.construct_archive_uri (u);
         }
 
         location = GLib.File.new_for_uri (u);
@@ -198,6 +205,7 @@ public class Async : Object {
         if (success) {
             if (!is_no_info && !file.is_folder () && !file.is_root_network_folder ()) {
                 debug ("Trying to load a non-folder - finding parent");
+                warning ("Trying to load a non-folder - finding parent");
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
                     file = GOF.File.get (parent);
