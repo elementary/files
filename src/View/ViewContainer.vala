@@ -361,6 +361,10 @@ namespace Marlin.View {
 
        private void update_tab_name () {
             string? slot_path = Uri.unescape_string (this.uri);
+            if (this.uri.has_prefix ("archive")) {
+                slot_path = Uri.unescape_string (slot_path.slice ("archive://".length, -1));
+            }
+
             string? tab_name = null;
 
             if (slot_path != null) {
