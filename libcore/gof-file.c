@@ -2549,6 +2549,15 @@ gof_file_is_folder (GOFFile *file)
     }
 
     if (pf_file_utils_is_archive_from_extension (file->uri)) {
+        GOFDirectoryAsync *dir = NULL;
+        dir = gof_directory_async_cache_lookup (file->directory);
+        if (dir != NULL) {
+            gboolean arch;
+            arch = gof_directory_async_get_is_archive (dir);
+            g_object_unref (dir);
+            return !arch;
+        }
+
         return TRUE;
     }
 
