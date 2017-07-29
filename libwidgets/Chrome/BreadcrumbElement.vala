@@ -49,7 +49,6 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
     }
 
-    public bool hidden = false;
     public bool display = true;
     public bool can_shrink = true;
     public bool pressed = false;

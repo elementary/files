@@ -27,6 +27,7 @@ namespace Marlin {
     public const string ICON_APP_LOGO = "system-file-manager";
     public const string ICON_FILESYSTEM = "drive-harddisk-system";
     public const string ICON_FILESYSTEM_SYMBOLIC = "drive-harddisk-symbolic";
+    public const string ICON_ARCHIVE_SYMBOLIC = "archive-manager-symbolic";
     public const string ICON_FOLDER = "folder";
     public const string ICON_FOLDER_DOCUMENTS_SYMBOLIC = "folder-documents-symbolic";
     public const string ICON_FOLDER_DOWNLOADS_SYMBOLIC = "folder-download-symbolic";
@@ -66,6 +67,7 @@ namespace Marlin {
     public const string PROTOCOL_NAME_RECENT = _("Recent");
     public const string PROTOCOL_NAME_MTP = _("MTP");
     public const string PROTOCOL_NAME_FILE = _("File System");
+    public const string PROTOCOL_NAME_ARCHIVE = _("Archive");
 
     public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
     public const uint LOCATION_BAR_ANIMATION_TIME_MSEC = 300;
@@ -73,7 +75,7 @@ namespace Marlin {
     public const uint BUTTON_LONG_PRESS = 300;
 
     public const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff", "image/jp2"};
-    
+
     public string protocol_to_name (string protocol) {
         /* Deal with protocol with or without : or / characters at the end */
         string s = protocol.delimit (":/", ' ').chomp ();
@@ -101,6 +103,8 @@ namespace Marlin {
                 return Marlin.PROTOCOL_NAME_MTP;
             case "file":
                 return Marlin.PROTOCOL_NAME_FILE;
+            case "archive":
+                return Marlin.PROTOCOL_NAME_ARCHIVE;
             default:
                 return protocol;
         }

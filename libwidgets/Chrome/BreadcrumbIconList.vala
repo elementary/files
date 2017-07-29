@@ -50,6 +50,7 @@ namespace Marlin.View.Chrome {
             add_icon ({ "trash://", Marlin.ICON_TRASH_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_TRASH});
             add_icon ({ "recent://", Marlin.ICON_RECENT_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_RECENT});
             add_icon ({ "mtp://[", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_MTP});
+            add_icon ({ "archive://", Marlin.ICON_ARCHIVE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_ARCHIVE});
 
 
             /* music */
@@ -120,6 +121,12 @@ namespace Marlin.View.Chrome {
             /* filesystem */
             BreadcrumbIconInfo icon = {Path.DIR_SEPARATOR_S, Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
             icon.exploded = {Path.DIR_SEPARATOR_S};
+            add_icon (icon);
+
+            /* filesystem */
+            dir = "file://";
+            icon = {dir, Marlin.ICON_FILESYSTEM_SYMBOLIC, false, null, null, null, false, null};
+            icon.exploded = {dir};
             add_icon (icon);
 
         }

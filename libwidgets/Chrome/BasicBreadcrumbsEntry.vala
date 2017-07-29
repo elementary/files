@@ -470,11 +470,12 @@ namespace Marlin.View.Chrome {
             string newpath = "";
 
             foreach (BreadcrumbElement element in elements) {
-                    string s = element.text;  /* element text should be an escaped string */
-                    newpath += (s + Path.DIR_SEPARATOR_S);
+                string s = element.text;  /* element text should be an escaped string */
+                newpath += (s + Path.DIR_SEPARATOR_S);
 
-                    if (el != null && element == el)
-                        break;
+                if (el != null && element == el) {
+                    break;
+                }
             }
 
             return PF.FileUtils.sanitize_path (newpath);
@@ -485,14 +486,22 @@ namespace Marlin.View.Chrome {
                                                                Gee.ArrayList<BreadcrumbElement> newelements) {
             /* Ensure the breadcrumb texts are escaped strings whether or not the parameter newpath was supplied escaped */
             string newpath = "";
-
-            if (protocol == "archive://") {
+            bool is_archive = protocol == "archive://";
+            if (is_archive) {
                 newpath = PF.FileUtils.unescape_archive_uri (path);
             } else {
                 newpath = PF.FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
             }
 
             newelements.add (new BreadcrumbElement (protocol, this, button_context));
+
+            if (is_archive) {
+                var el = new BreadcrumbElement ("file://", this, button_context);
+                el.display = false;
+                newelements.add (el);
+                newpath = newpath.slice ("file://".length, -1);
+            }
+
             foreach (string dir in newpath.split (Path.DIR_SEPARATOR_S)) {
                 if (dir != "") {
                     newelements.add (new BreadcrumbElement (dir, this, button_context));
@@ -524,12 +533,14 @@ namespace Marlin.View.Chrome {
                             found = false;
                             break;
                         }
+
                         h = i;
                     }
 
                     if (found) {
-                        for (int j = 0; j < h; j++)
+                        for (int j = 0; j < h; j++) {
                             newelements[j].display = false;
+                        }
 
                         newelements[h].display = true;
                         newelements[h].set_icon (icon.icon);
@@ -537,8 +548,9 @@ namespace Marlin.View.Chrome {
                         newelements[h].text_is_displayed = (icon.text_displayed != null) || !icon.break_loop;
                         newelements[h].text_for_display = icon.text_displayed;
 
-                        if (icon.break_loop)
+                        if (icon.break_loop) {
                             break;
+                        }
                     }
                 }
             }
