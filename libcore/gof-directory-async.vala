@@ -88,7 +88,7 @@ public class Async : Object {
         }
     }
 
-    public string scheme {get; private set;}
+    public string? scheme {get; private set;}
     public bool is_local {get; private set;}
     public bool is_trash {get; private set;}
     public bool is_network {get; private set;}
@@ -114,12 +114,15 @@ public class Async : Object {
 
     private Async (GLib.File _file) {
         var u = _file.get_uri ();
-        scheme = _file.get_uri_scheme ();
+
+        scheme = _file.get_uri_scheme () ?? "file";
         is_trash = (scheme == "trash");
         is_recent = (scheme == "recent");
         is_local = is_trash || is_recent || (scheme == "file");
 
-        is_archive = is_local && PF.FileUtils.is_archive_from_extension (u);
+        string? archive_uri = null;
+        string? remainder = null;
+        is_archive = is_local && PF.FileUtils.inside_archive (u, out archive_uri, out remainder);
 
         if (!u.has_prefix ("archive")) {
             /* Assume archive urls to be in required format already for now */
@@ -133,7 +136,7 @@ public class Async : Object {
         }
 
         if (is_archive) {
-            u = PF.FileUtils.construct_archive_uri (u);
+            u = PF.FileUtils.construct_archive_uri (archive_uri, remainder);
         }
 
         location = GLib.File.new_for_uri (u);
