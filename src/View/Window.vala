@@ -1146,17 +1146,19 @@ namespace Marlin.View {
             string  path = "";
 
             if (uri.has_prefix ("archive")) {
-                /* gvfs-archive backend will not open an unescaped url */
-                path = uri;
-            } else {
-                /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
-                string? current_uri = null;
-                if (current_tab != null && current_tab.location != null) {
-                    current_uri = current_tab.location.get_uri ();
-                }
-
-                path = PF.FileUtils.sanitize_path (uri, current_uri);
+                /* Convert to normal uri to avoid specially handling */
+                /* GOF.Directory.Async will reconstruct correctly formatted and escaped uri if required */
+                path = PF.FileUtils.strip_archive_prefix (uri);
+                return File.new_for_commandline_arg (path);
             }
+
+            /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
+            string? current_uri = null;
+            if (current_tab != null && current_tab.location != null) {
+                current_uri = current_tab.location.get_uri ();
+            }
+
+            path = PF.FileUtils.sanitize_path (uri, current_uri);
 
             if (path.length > 0) {
                 return File.new_for_uri (path);

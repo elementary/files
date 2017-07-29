@@ -478,6 +478,11 @@ namespace Marlin.View.Chrome {
                 }
             }
 
+            /* Strip the archive prefix - it will be replaced only when required */
+            if (newpath.has_prefix ("archive:")) {
+                newpath = PF.FileUtils.strip_archive_prefix (newpath);
+            }
+
             return PF.FileUtils.sanitize_path (newpath);
         }
 
@@ -499,7 +504,7 @@ namespace Marlin.View.Chrome {
                 var el = new BreadcrumbElement ("file://", this, button_context);
                 el.display = false;
                 newelements.add (el);
-                newpath = newpath.slice ("file://".length, -1);
+                newpath = newpath.slice ("file://".length, newpath.length);
             }
 
             foreach (string dir in newpath.split (Path.DIR_SEPARATOR_S)) {

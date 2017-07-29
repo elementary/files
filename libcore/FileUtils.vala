@@ -327,6 +327,7 @@ namespace PF.FileUtils {
     }
 
     public string construct_archive_uri (string _uri) {
+        /* Need to add extra escaping to mount with gvfs-archive */
         string uri = _uri;
         if (!uri.has_prefix ("archive")) {
             uri = escape_uri (uri);
@@ -347,12 +348,17 @@ namespace PF.FileUtils {
         return uri;
     }
 
-    public string strip_archive_prefix (string uri) {
+    public string strip_archive_prefix (string _uri) {
+        /* Convert special archive uri to "normal" uri */
+        string uri = unescape_uri (_uri); /* Remove special escaping */
         if (uri.has_prefix ("archive://")) {
-            return unescape_uri (uri.slice ("archive://".length, -1));
-        } else {
-            return Uri.unescape_string (uri);
+            uri = uri.slice ("archive://".length, uri.length);
+            if (uri.has_prefix ("/file:")) { /* Do not assume 2 or 3 slashes after archive */
+                uri = uri.slice (1, uri.length); /* Remove third slash if present */
+            }
         }
+
+        return uri;
     }
 
     public string get_smb_share_from_uri (string uri) {
