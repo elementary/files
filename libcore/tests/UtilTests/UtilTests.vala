@@ -46,9 +46,19 @@ void add_file_utils_tests () {
         assert (PF.FileUtils.get_file_for_path ("") == null);
     });
 
+    /** Sanitize should (at least) unescape archive path **/
     Test.add_func ("/FileUtils/sanitize_archive_path", () => {
-        string res = PF.FileUtils.sanitize_path ("archive://file%3A%2F%2F%2Fhome%2Ftest.zip");
-        assert (res == "archive://file%3A%2F%2F%2Fhome%2Ftest.zip");
+        /* Expect only remove special escaping */
+        string res = PF.FileUtils.sanitize_path ("archive://file%3A%2F%2F%2Fhome%2F%252523test.zip");
+        assert (res == "archive://file:///home/#test.zip");
+    });
+
+    /** Test construction of difficult archive path **/
+    Test.add_func ("/FileUtils/construct_archive_path", () => {
+        /* Expect only remove special escaping */
+        string res = PF.FileUtils.construct_archive_uri ("archive://file:///home/#test.zip", "folder/file.txt");
+        message ("res %s", res);
+        assert (res == "archive://file%253A%252F%252F%252Fhome%252F%252523test.zip/folder/file.txt");
     });
 }
 

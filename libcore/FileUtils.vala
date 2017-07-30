@@ -193,7 +193,7 @@ namespace PF.FileUtils {
         }
 
         if (p.has_prefix ("archive")) {
-            /* Do not mess with special archive url format for now */
+            /* Do not mess with special archive url format for now - just remove escaping */
             return unescape_archive_uri (p);
         }
 
@@ -358,6 +358,10 @@ namespace PF.FileUtils {
         return false;
     }
 
+    /** This function requires the parameter _archive_uri to be EITHER a properly escaped archive uri
+      * OR a valid normal unescaped uri without the archive:// prefix. In each case the path must point to
+      * a valid archive file.  Only limited checks are performed.
+      */
     public string construct_archive_uri (string _archive_uri, string? _remainder) {
         /* Need to add extra escaping to mount with gvfs-archive - but only up to the
          * path of the compressed file. Within that file, there must be no escaping */
@@ -365,36 +369,58 @@ namespace PF.FileUtils {
         string remainder = (_remainder ?? "");
         string prefix = "";
 
-        if (archive_uri != null && !archive_uri.has_prefix ("archive")) {
-            if (!archive_uri.has_prefix ("file:")) {
-                 prefix = "file%253A%252F%252F";
-            }
-
-            archive_uri = escape_uri (archive_uri);
-
-            archive_uri = archive_uri.replace (Path.DIR_SEPARATOR_S, "%2F")
-                     .replace (":", "%3A")
-                     .replace ("%", "%25")
-                     .replace (" ", "%252520"); /* This is required by gvfs-archive for some reason */
-
-
-            prefix = "archive://" + prefix;
+        if (archive_uri == null) {
+            return "";
         }
 
-        var u = prefix.concat (archive_uri, remainder);
+        /* Ensure common starting point */
+        if (archive_uri.has_prefix ("archive")) {
+            archive_uri = strip_archive_prefix (archive_uri); /* Convert to normal uri */
+        }
+
+         archive_uri = Uri.unescape_string (archive_uri);
+        if (!archive_uri.has_prefix ("file:")) {
+             prefix = "file%253A%252F%252F";
+        }
+
+        if (archive_uri.has_suffix (Path.DIR_SEPARATOR_S)) {
+            archive_uri = archive_uri.slice (0, -1);
+        }
+
+        archive_uri = archive_uri.replace (Path.DIR_SEPARATOR_S, "%2F")
+                 .replace (":", "%3A")
+                 .replace ("%", "%25")
+                 .replace (" ", "%252520") /* This is required by gvfs-archive for some reason */
+                 .replace ("#", "%252523");
+
+
+        prefix = "archive://" + prefix;
+
+        string sep = "";
+        if (remainder != null && remainder.length > 0) {
+            if (!remainder.has_prefix (Path.DIR_SEPARATOR_S)) {
+                sep = Path.DIR_SEPARATOR_S;
+            }
+        }
+
+        Uri.escape_string (remainder);
+
+        var u = prefix.concat (archive_uri, sep, remainder);
         return u;
 
     }
 
     public string unescape_archive_uri (string _uri) {
         string uri = _uri;
-        uri = Uri.unescape_string (uri.replace ("%252520", " ").replace ("%25", "%"));
-        return uri;
+        var uri2 = Uri.unescape_string (uri.replace ("%252520", " ")
+                      .replace ("%252523", "#")
+                      .replace ("%25", "%"));
+        return uri2;
     }
 
     public string strip_archive_prefix (string _uri) {
         /* Convert special archive uri to "normal" uri */
-        string uri = unescape_uri (_uri); /* Remove special escaping */
+        string uri = unescape_archive_uri (_uri); /* Remove special escaping */
         if (uri.has_prefix ("archive://")) {
             uri = uri.slice ("archive://".length, uri.length);
             if (uri.has_prefix ("/file:")) { /* Do not assume 2 or 3 slashes after archive */
