@@ -403,9 +403,10 @@ namespace PF.FileUtils {
             }
         }
 
-        Uri.escape_string (remainder);
+        remainder = escape_uri (remainder);
 
         var u = prefix.concat (archive_uri, sep, remainder);
+
         return u;
 
     }
