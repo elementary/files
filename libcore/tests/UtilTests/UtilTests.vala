@@ -18,7 +18,15 @@
 *
 * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 */
+const string archive_normal = "/home/#test archive.zip";
+const string archive_archive_unescaped = "archive://file:///home/#test archive.zip";
+const string archive_archive_escaped = "archive://file%253A%252F%252F%252Fhome%252F%252523test%252520archive.zip";
+const string file_inside_archive_relative = "/folder#/file";
+const string file_inside_archive_relative_escaped = "/folder%23/file";
 
+const string file_inside_archive_normal = archive_normal + file_inside_archive_relative;
+const string file_inside_archive_archive_unescaped = archive_archive_unescaped + file_inside_archive_relative;
+const string file_inside_archive_archive_escaped = archive_archive_escaped + file_inside_archive_relative_escaped;
 
 void add_file_utils_tests () {
     /* Sanitize path */
@@ -49,16 +57,15 @@ void add_file_utils_tests () {
     /** Sanitize should (at least) unescape archive path **/
     Test.add_func ("/FileUtils/sanitize_archive_path", () => {
         /* Expect only remove special escaping */
-        string res = PF.FileUtils.sanitize_path ("archive://file%3A%2F%2F%2Fhome%2F%252523test.zip");
-        assert (res == "archive://file:///home/#test.zip");
+        string res = PF.FileUtils.sanitize_path (file_inside_archive_archive_escaped);
+        assert (res == file_inside_archive_archive_unescaped);
     });
 
     /** Test construction of difficult archive path **/
     Test.add_func ("/FileUtils/construct_archive_path", () => {
         /* Expect only remove special escaping */
-        string res = PF.FileUtils.construct_archive_uri ("archive://file:///home/#test.zip", "folder/file.txt");
-        message ("res %s", res);
-        assert (res == "archive://file%253A%252F%252F%252Fhome%252F%252523test.zip/folder/file.txt");
+        string res = PF.FileUtils.construct_archive_uri (archive_normal, file_inside_archive_relative);
+        assert (res == file_inside_archive_archive_escaped);
     });
 }
 
