@@ -246,18 +246,21 @@ namespace FM {
                 } else {
                     bool on_helper = false;
                     GOF.File? file = model.file_for_path (p);
+                    if (file != null) {
+                        bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
 
-                    bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
-
-                    if (on_helper) {
-                        zone = ClickZone.HELPER;
-                    } else if (on_icon) {
-                        zone = ClickZone.ICON;
-                    } else if (rubberband) {
-                        /* Fake location outside centre top of item for rubberbanding */
-                        event.x = rect.x + rect.width / 2;
-                        event.y = rect.y - 10 + (int)(get_vadjustment ().value);
-                        zone = ClickZone.BLANK_NO_PATH;
+                        if (on_helper) {
+                            zone = ClickZone.HELPER;
+                        } else if (on_icon) {
+                            zone = ClickZone.ICON;
+                        } else if (rubberband) {
+                            /* Fake location outside centre top of item for rubberbanding */
+                            event.x = rect.x + rect.width / 2;
+                            event.y = rect.y - 10 + (int)(get_vadjustment ().value);
+                            zone = ClickZone.BLANK_NO_PATH;
+                        }
+                    } else {
+                        zone = ClickZone.INVALID;
                     }
                 }
             }

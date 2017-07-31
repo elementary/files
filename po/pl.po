@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-07-03 12:41+0000\n"
+"PO-Revision-Date: 2017-07-10 14:15+0000\n"
 "Last-Translator: Piotr Strebski <strebski@o2.pl>\n"
 "Language-Team: Polish <https://l10n.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
@@ -2343,18 +2343,16 @@ msgid "In This Folder"
 msgstr "W tym katalogu"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "W tym katalogu"
+msgstr "Poniżej tego katalogu"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
 msgstr "Zakładki"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
-msgstr "Ostatnie"
+msgstr "Ostatnio używane"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
