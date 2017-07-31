@@ -3538,8 +3538,9 @@ namespace FM {
             if (selected_row_refs != null) {
                 foreach (Gtk.TreeRowReference r in selected_row_refs) {
                     var p = r.get_path ();
-                    if (p != null)
+                    if (p != null) {
                         unselect_path (p);
+                    }
                 }
 
                 all_selected = false;
