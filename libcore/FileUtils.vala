@@ -21,6 +21,9 @@ namespace PF.FileUtils {
      **/
     const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
 
+    /* Selection of extensions of file types mountable with gvfs-archive */
+    const string[] archive_types = {".zip", ".deb", ".xz", ".gz", ".tar", ".tar.Z", ".bz2"};
+
     public File? get_file_for_path (string? path) {
         string? new_path = sanitize_path (path);
 
@@ -31,10 +34,16 @@ namespace PF.FileUtils {
         }
     }
 
-    public string get_parent_path_from_path (string path) {
+    public string get_parent_path_from_path (string _path) {
         /* We construct the parent path rather than use File.get_parent () as the latter gives odd
          * results for some gvfs files.
          */
+        string path = _path;
+
+        if (is_archive_from_extension (path)) {
+            path = unescape_uri (strip_archive_prefix (path));
+        }
+
         string parent_path = construct_parent_path (path);
         if (parent_path == Marlin.FTP_URI ||
             parent_path == Marlin.SFTP_URI) {
@@ -157,6 +166,14 @@ namespace PF.FileUtils {
         return file.get_parent () != null;
     }
 
+    public string? unescape_uri (string uri) {
+        if (uri.has_prefix ("archive")) {
+            return unescape_archive_uri (uri);
+        } else {
+            return Uri.unescape_string (uri);
+        }
+    }
+
     public string? escape_uri (string uri, bool allow_utf8 = true) {
         string rc = reserved_chars.replace("#", "").replace ("*","");
         return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
@@ -175,10 +192,17 @@ namespace PF.FileUtils {
             return cp ?? "";
         }
 
+        if (p.has_prefix ("archive")) {
+            /* Do not mess with special archive url format for now - just remove escaping */
+            return unescape_archive_uri (p);
+        }
+
         string? unescaped_p = Uri.unescape_string (p, null);
         if (unescaped_p == null) {
             unescaped_p = p;
         }
+
+
 
         split_protocol_from_path (unescaped_p, out scheme, out path);
         path = path.strip ().replace ("//", "/");
@@ -244,6 +268,7 @@ namespace PF.FileUtils {
             new_path = "";
             return;
         }
+
         if (explode_protocol.length > 1) {
             if (explode_protocol[0] == "mtp") {
                 string[] explode_path = explode_protocol[1].split ("]", 2);
@@ -284,6 +309,145 @@ namespace PF.FileUtils {
             return false;
         }
         return true;
+    }
+
+    public bool inside_archive (string _uri, out string? archive_uri, out string remainder) {
+        string[] folders = _uri.split (Path.DIR_SEPARATOR_S);
+        var sb = new StringBuilder ();
+
+        archive_uri = null;
+        remainder = null;
+
+        foreach (string folder in folders) {
+            sb.append (folder);
+            if (is_archive_from_extension (folder)) {
+                archive_uri = sb.str;
+                sb = new StringBuilder ();
+            }
+
+            sb.append (Path.DIR_SEPARATOR_S);
+        }
+
+        if (archive_uri != null) {
+            sb.truncate (sb.len - 1);
+            remainder = sb.str;
+
+            if (remainder.length <= 1) {
+                remainder = null;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public bool is_archive_from_extension (string _uri) {
+        string uri = _uri;
+
+        if (uri.has_suffix (Path.DIR_SEPARATOR_S)) {
+            uri = uri.slice (0, uri.length - 1);
+        }
+
+        foreach (string extension in archive_types) {
+            if (uri.has_suffix (extension)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /** This function requires the parameter _archive_uri to be EITHER a properly escaped archive uri
+      * OR a valid normal unescaped uri without the archive:// prefix. In each case the path must point to
+      * a valid archive file.  Only limited checks are performed.
+      */
+    public string construct_archive_uri (string _archive_uri, string? _remainder) {
+        /* Need to add extra escaping to mount with gvfs-archive - but only up to the
+         * path of the compressed file. Within that file, there must be no escaping */
+        string archive_uri = _archive_uri;
+        string remainder = (_remainder ?? "");
+        string prefix = "";
+
+        if (archive_uri == null) {
+            warning ("Null archive in construct archive uri - should not happen");
+            return "";
+        }
+
+        /* Ensure common starting point */
+        if (archive_uri.has_prefix ("archive")) {
+            archive_uri = strip_archive_prefix (archive_uri); /* Convert to normal uri */
+            assert (archive_uri != null);
+        }
+
+        archive_uri = unescape_archive_uri (archive_uri);
+        if (!archive_uri.has_prefix ("file:")) {
+             prefix = "file%253A%252F%252F";
+        }
+
+        if (archive_uri.has_suffix (Path.DIR_SEPARATOR_S)) {
+            archive_uri = archive_uri.slice (0, -1);
+        }
+
+        archive_uri = escape_archive_uri (archive_uri);
+
+        prefix = "archive://" + prefix;
+
+        string sep = "";
+        if (remainder != null && remainder.length > 0) {
+            if (!remainder.has_prefix (Path.DIR_SEPARATOR_S)) {
+                sep = Path.DIR_SEPARATOR_S;
+            }
+        }
+
+        remainder = Uri.escape_string (remainder, "/", false);
+
+        var u = prefix.concat (archive_uri, sep, remainder);
+
+        return u;
+
+    }
+
+    public string escape_archive_uri (string _uri) {
+        string archive_uri = _uri;
+
+        archive_uri = Uri.escape_string (archive_uri, "/:", false);
+
+        archive_uri = archive_uri
+                     .replace ("%", "%2525") /* gvfs-archive needs this */
+                     .replace ("/", "%252F")
+                     .replace (":", "%253A");
+
+        return archive_uri;
+    }
+
+    public string unescape_archive_uri (string _uri) {
+        /* Reverse effect of escape_archive_uri */
+        string uri = _uri.replace ("%253A", ":")
+                         .replace ("%252F", "/")
+                         .replace ("%2525", "%");
+
+        var uri2 = Uri.unescape_string (uri);
+
+        if (uri2 == null) {
+            return uri;
+        } else {
+            return uri2;
+        }
+    }
+
+    public string strip_archive_prefix (string _uri) {
+        /* Convert special archive uri to "normal" uri */
+        string uri = unescape_archive_uri (_uri); /* Remove special escaping */
+
+        if (uri.has_prefix ("archive://")) {
+            uri = uri.slice ("archive://".length, uri.length);
+            if (uri.has_prefix ("/file:")) { /* Do not assume 2 or 3 slashes after archive */
+                uri = uri.slice (1, uri.length); /* Remove third slash if present */
+            }
+        }
+
+        return uri;
     }
 
     public string get_smb_share_from_uri (string uri) {

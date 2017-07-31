@@ -88,7 +88,7 @@ public class Async : Object {
         }
     }
 
-    public string scheme {get; private set;}
+    public string? scheme {get; private set;}
     public bool is_local {get; private set;}
     public bool is_trash {get; private set;}
     public bool is_network {get; private set;}
@@ -100,6 +100,7 @@ public class Async : Object {
     public bool can_open_files {get; private set;}
     public bool can_stream_files {get; private set;}
     public bool allow_user_interaction {get; set; default = true;}
+    public bool is_archive {get; private set;}
 
     private bool is_ready = false;
 
@@ -112,14 +113,33 @@ public class Async : Object {
     public bool loaded_from_cache {get; private set; default = false;}
 
     private Async (GLib.File _file) {
-        /* Ensure uri is correctly escaped and has scheme */
-        var escaped_uri = PF.FileUtils.escape_uri (_file.get_uri ());
-        scheme = Uri.parse_scheme (escaped_uri);
-        if (scheme == null) {
-            scheme = Marlin.ROOT_FS_URI;
-            escaped_uri = scheme + escaped_uri;
+        var u = _file.get_uri ();
+
+        scheme = _file.get_uri_scheme () ?? "file";
+        is_trash = (scheme == "trash");
+        is_recent = (scheme == "recent");
+        is_local = is_trash || is_recent || (scheme == "file");
+
+        string? archive_uri = null;
+        string? remainder = null;
+        is_archive = is_local && PF.FileUtils.inside_archive (u, out archive_uri, out remainder);
+
+        if (!u.has_prefix ("archive")) {
+            /* Assume archive urls to be in required format already for now */
+            /* else ensure uri is correctly escaped and has scheme */
+            u = PF.FileUtils.escape_uri (u);
+            scheme = Uri.parse_scheme (u);
+            if (scheme == null) {
+                scheme = Marlin.ROOT_FS_URI;
+                u = scheme + u;
+            }
         }
-        location = GLib.File.new_for_uri (escaped_uri);
+
+        if (is_archive) {
+            u = PF.FileUtils.construct_archive_uri (archive_uri, remainder);
+        }
+
+        location = GLib.File.new_for_uri (u);
         file = GOF.File.get (location);
         selected_file = null;
 
@@ -127,11 +147,8 @@ public class Async : Object {
         state = State.NOT_LOADED;
         can_load = false;
 
-        scheme = location.get_uri_scheme ();
-        is_trash = (scheme == "trash");
-        is_recent = (scheme == "recent");
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme)); //Try lifting requirement for info on remote connections
-        is_local = is_trash || is_recent || (scheme == "file");
+
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
         can_open_files = !("mtp".contains (scheme));
         can_stream_files = !("ftp sftp mtp dav davs".contains (scheme));
@@ -192,6 +209,7 @@ public class Async : Object {
         if (success) {
             if (!is_no_info && !file.is_folder () && !file.is_root_network_folder ()) {
                 debug ("Trying to load a non-folder - finding parent");
+                warning ("Trying to load a non-folder - finding parent");
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
                     file = GOF.File.get (parent);

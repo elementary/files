@@ -2537,14 +2537,28 @@ gof_file_is_folder (GOFFile *file)
 
     if (file->file_type == G_FILE_TYPE_MOUNTABLE &&
         file->info != NULL &&
-        g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT))
+        g_file_info_get_attribute_boolean (file->info, G_FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT)) {
 
         return TRUE;
+    }
 
     if (file->target_gof &&
         file->target_gof->is_directory &&
         gof_file_is_network_uri_scheme (file->target_gof)) {
             return TRUE;
+    }
+
+    if (pf_file_utils_is_archive_from_extension (file->uri)) {
+        GOFDirectoryAsync *dir = NULL;
+        dir = gof_directory_async_cache_lookup (file->directory);
+        if (dir != NULL) {
+            gboolean arch;
+            arch = gof_directory_async_get_is_archive (dir);
+            g_object_unref (dir);
+            return !arch;
+        }
+
+        return TRUE;
     }
 
     return FALSE;

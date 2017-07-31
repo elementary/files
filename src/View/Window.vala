@@ -517,13 +517,13 @@ namespace Marlin.View {
                 return name;
             }
 
-            string path = Uri.unescape_string (vc.uri);
+            string path = PF.FileUtils.unescape_uri (vc.uri);
             string new_name = name;
 
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
                 var content = (ViewContainer)(tab.page);
                 if (content != vc) {
-                    string content_path = Uri.unescape_string (content.uri);
+                    string content_path = PF.FileUtils.unescape_uri (content.uri);
                     if (content.tab_name == name && content_path != path) {
                         if (content.tab_name == tab.label) {
                             Idle.add_full (GLib.Priority.LOW, () => {
@@ -1143,15 +1143,25 @@ namespace Marlin.View {
 
         /** Use this function to standardise how locations are generated from uris **/
         private File? get_file_from_uri (string uri) {
+            string  path = "";
+
+            if (uri.has_prefix ("archive")) {
+                /* Convert to normal uri to avoid specially handling */
+                /* GOF.Directory.Async will reconstruct correctly formatted and escaped uri if required */
+                path = PF.FileUtils.strip_archive_prefix (uri);
+                return File.new_for_commandline_arg (path);
+            }
+
             /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
             string? current_uri = null;
             if (current_tab != null && current_tab.location != null) {
                 current_uri = current_tab.location.get_uri ();
             }
 
-            string path = PF.FileUtils.sanitize_path (uri, current_uri);
+            path = PF.FileUtils.sanitize_path (uri, current_uri);
+
             if (path.length > 0) {
-                return File.new_for_uri (PF.FileUtils.escape_uri (path));
+                return File.new_for_uri (path);
             } else {
                 return null;
             }

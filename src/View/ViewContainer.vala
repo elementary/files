@@ -202,7 +202,7 @@ namespace Marlin.View {
             selected_locations = null;
             selected_locations.append (this.location);
             GLib.File parent = location;
-            if (view.directory.has_parent ()) { /* May not work for some protocols */
+            if (!uri.has_prefix ("archive") && view.directory.has_parent ()) { /* May not work for some protocols */
                 parent = view.directory.get_parent ();
             } else {
                 var parent_path = PF.FileUtils.get_parent_path_from_path (location.get_uri ());
@@ -362,24 +362,32 @@ namespace Marlin.View {
         }
 
        private void update_tab_name () {
-            string? slot_path = Uri.unescape_string (this.uri);
+            string? slot_path = null;
+            bool is_in_archive = this.uri.has_prefix ("archive");
             string? tab_name = null;
 
-            if (slot_path != null) {
-                if (this.location.get_path () == null) {
-                    tab_name = Marlin.protocol_to_name (this.uri);
-                } else {
-                    try {
-                        var fn = Filename.from_uri (slot_path);
-                        if (fn == Environment.get_home_dir ()) {
-                            tab_name = _("Home");
-                        } else if (fn == "/") {
-                            tab_name = _("File System");
-                        }
-                    } catch (ConvertError e) {}
+            if (is_in_archive) {
+                slot_path = PF.FileUtils.strip_archive_prefix (this.uri);
+                tab_name = Path.get_basename (slot_path);
+                is_in_archive = true;
+            } else {
+                slot_path = Uri.unescape_string (this.uri);
+                if (slot_path != null) {
+                    if (this.location.get_path () == null) {
+                        tab_name = Marlin.protocol_to_name (this.uri);
+                    } else {
+                        try {
+                            var fn = Filename.from_uri (slot_path);
+                            if (fn == Environment.get_home_dir ()) {
+                                tab_name = _("Home");
+                            } else if (fn == "/") {
+                                tab_name = _("File System");
+                            }
+                        } catch (ConvertError e) {}
 
-                    if (tab_name == null) {
-                        tab_name = Path.get_basename (slot_path);
+                        if (tab_name == null) {
+                            tab_name = Path.get_basename (slot_path);
+                        }
                     }
                 }
             }
@@ -387,7 +395,7 @@ namespace Marlin.View {
             if (tab_name == null) {
                 tab_name = Marlin.INVALID_TAB_NAME;
             } else if (Posix.getuid () == 0) {
-                    tab_name = tab_name + " " + _("(as Administrator)");
+                tab_name = tab_name + " " + _("(as Administrator)");
             }
 
             this.tab_name = tab_name;

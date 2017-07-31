@@ -49,7 +49,6 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
     }
 
-    public bool hidden = false;
     public bool display = true;
     public bool can_shrink = true;
     public bool pressed = false;
@@ -76,6 +75,9 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         widget = widget_;
         padding = button_context.get_padding (button_context.get_state ());
         text_for_display = Uri.unescape_string (text);
+        if (text_for_display == null) {
+            text_for_display = text;
+        }
     }
 
     public void set_icon (Gdk.Pixbuf icon_) {
