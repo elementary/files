@@ -18,15 +18,18 @@
 *
 * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 */
-const string archive_normal = "/home/#test archive.zip";
-const string archive_archive_unescaped = "archive://file:///home/#test archive.zip";
-const string archive_archive_escaped = "archive://file%253A%252F%252F%252Fhome%252F%252523test%252520archive.zip";
-const string file_inside_archive_relative = "/folder#/file";
-const string file_inside_archive_relative_escaped = "/folder%23/file";
 
-const string file_inside_archive_normal = archive_normal + file_inside_archive_relative;
-const string file_inside_archive_archive_unescaped = archive_archive_unescaped + file_inside_archive_relative;
-const string file_inside_archive_archive_escaped = archive_archive_escaped + file_inside_archive_relative_escaped;
+const string archive_normal = "/home/#testこ ?archive%.zip";
+const string archive_archive_unescaped = "archive://file:///home/#testこ ?archive%.zip";
+
+const string archive_archive_escaped = "archive://file%253A%252F%252F%252Fhome%252F%252523test%2525E3%252581%252593%252520%25253Farchive%252525.zip";
+
+const string file_inside_archive_relative = "#testこ ?folder%";
+const string file_inside_archive_relative_escaped = "%23test%E3%81%93%20%3Ffolder%25";
+
+const string file_inside_archive_normal = archive_normal + Path.DIR_SEPARATOR_S + file_inside_archive_relative;
+const string file_inside_archive_archive_unescaped = archive_archive_unescaped + Path.DIR_SEPARATOR_S + file_inside_archive_relative;
+const string file_inside_archive_archive_escaped = archive_archive_escaped + Path.DIR_SEPARATOR_S + file_inside_archive_relative_escaped;
 
 void add_file_utils_tests () {
     /* Sanitize path */
@@ -63,9 +66,24 @@ void add_file_utils_tests () {
 
     /** Test construction of difficult archive path **/
     Test.add_func ("/FileUtils/construct_archive_path", () => {
-        /* Expect only remove special escaping */
+        /* Expect construct valid uri for gvfs-archive to mount*/
         string res = PF.FileUtils.construct_archive_uri (archive_normal, file_inside_archive_relative);
         assert (res == file_inside_archive_archive_escaped);
+    });
+    Test.add_func ("/FileUtils/construct_archive_path2", () => {
+        /* Check copes with extra separators in parameters */
+        string res = PF.FileUtils.construct_archive_uri (archive_normal + Path.DIR_SEPARATOR_S, Path.DIR_SEPARATOR_S + file_inside_archive_relative);
+        assert (res == file_inside_archive_archive_escaped);
+    });
+    Test.add_func ("/FileUtils/construct_archive_path3", () => {
+        /* Check copes with archive uri already escaped */
+        string res = PF.FileUtils.construct_archive_uri (archive_archive_escaped, file_inside_archive_relative);
+        assert (res == file_inside_archive_archive_escaped);
+    });
+    Test.add_func ("/FileUtils/construct_archive_path4", () => {
+        /* Check copes with null remainder */
+        string res = PF.FileUtils.construct_archive_uri (archive_normal, null);
+        assert (res == archive_archive_escaped);
     });
 }
 

@@ -491,11 +491,12 @@ namespace Marlin.View.Chrome {
                                                                Gee.ArrayList<BreadcrumbElement> newelements) {
             /* Ensure the breadcrumb texts are escaped strings whether or not the parameter newpath was supplied escaped */
             string newpath = "";
-            bool is_archive = protocol == "archive://";
+
+            bool is_archive = protocol.has_prefix ("archive://");
             if (is_archive) {
                 newpath = PF.FileUtils.unescape_archive_uri (path);
             } else {
-                newpath = PF.FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
+                newpath = Uri.unescape_string (path) ?? path;
             }
 
             newelements.add (new BreadcrumbElement (protocol, this, button_context));
