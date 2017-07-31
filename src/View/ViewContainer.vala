@@ -361,29 +361,31 @@ namespace Marlin.View {
 
        private void update_tab_name () {
             string? slot_path = null;
-            if (this.uri.has_prefix ("archive")) {
-                slot_path = PF.FileUtils.strip_archive_prefix (this.uri);
-            } else {
-                slot_path = Uri.unescape_string (this.uri);
-            }
-
+            bool is_in_archive = this.uri.has_prefix ("archive");
             string? tab_name = null;
 
-            if (slot_path != null) {
-                if (this.location.get_path () == null) {
-                    tab_name = Marlin.protocol_to_name (this.uri);
-                } else {
-                    try {
-                        var fn = Filename.from_uri (slot_path);
-                        if (fn == Environment.get_home_dir ()) {
-                            tab_name = _("Home");
-                        } else if (fn == "/") {
-                            tab_name = _("File System");
-                        }
-                    } catch (ConvertError e) {}
+            if (is_in_archive) {
+                slot_path = PF.FileUtils.strip_archive_prefix (this.uri);
+                tab_name = Path.get_basename (slot_path);
+                is_in_archive = true;
+            } else {
+                slot_path = Uri.unescape_string (this.uri);
+                if (slot_path != null) {
+                    if (this.location.get_path () == null) {
+                        tab_name = Marlin.protocol_to_name (this.uri);
+                    } else {
+                        try {
+                            var fn = Filename.from_uri (slot_path);
+                            if (fn == Environment.get_home_dir ()) {
+                                tab_name = _("Home");
+                            } else if (fn == "/") {
+                                tab_name = _("File System");
+                            }
+                        } catch (ConvertError e) {}
 
-                    if (tab_name == null) {
-                        tab_name = Path.get_basename (slot_path);
+                        if (tab_name == null) {
+                            tab_name = Path.get_basename (slot_path);
+                        }
                     }
                 }
             }
@@ -391,7 +393,7 @@ namespace Marlin.View {
             if (tab_name == null) {
                 tab_name = Marlin.INVALID_TAB_NAME;
             } else if (Posix.getuid () == 0) {
-                    tab_name = tab_name + " " + _("(as Administrator)");
+                tab_name = tab_name + " " + _("(as Administrator)");
             }
 
             this.tab_name = tab_name;
