@@ -89,6 +89,7 @@ namespace Marlin.View {
             Object (
                 height_request: 300,
                 icon_name: "system-file-manager",
+                screen: myscreen,
                 title: _(Marlin.APP_TITLE),
                 width_request: 500
             );
@@ -96,7 +97,6 @@ namespace Marlin.View {
             /* Capture application window_count and active_window before they can change */
             window_number = app.window_count;
             application = app;
-            screen = myscreen;
             is_first_window = (window_number == 0);
 
             construct_menu_actions ();
