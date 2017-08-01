@@ -119,14 +119,10 @@ namespace Marlin.View {
         }
 
         private void build_window () {
-            Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            window_box.show();
-            window_box.pack_start(tabs, true, true, 0);
-
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             lside_pane.show ();
             lside_pane.pack1 (sidebar, false, false);
-            lside_pane.pack2 (window_box, true, false);
+            lside_pane.pack2 (tabs, true, false);
             add (lside_pane);
 
             set_size_request (500, 300);
