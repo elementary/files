@@ -88,8 +88,10 @@ namespace Marlin.View {
 
         public Window (Marlin.Application app, Gdk.Screen myscreen, bool show_window = true) {
             Object (
+                height_request: 300,
                 icon_name: "system-file-manager",
-                title: _(Marlin.APP_TITLE)
+                title: _(Marlin.APP_TITLE),
+                width_request: 500
             );
 
             /* Capture application window_count and active_window before they can change */
@@ -128,8 +130,6 @@ namespace Marlin.View {
             lside_pane.pack1 (sidebar, false, false);
             lside_pane.pack2 (tabs, true, false);
             add (lside_pane);
-
-            set_size_request (500, 300);
 
         /** Apply preferences */
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
