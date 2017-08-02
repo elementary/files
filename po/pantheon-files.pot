@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-06 13:44-0700\n"
+"POT-Creation-Date: 2017-08-01 11:31-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,6 +133,64 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
+msgid "Today at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
+msgid "Yesterday at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr ""
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr ""
+
+#: ../libcore/eel-vfs-extensions.c:71
+msgid " (invalid Unicode)"
+msgstr ""
+
+#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
+msgid "Inaccessible"
+msgstr ""
+
+#: ../libcore/gof-file.c:377
+#, c-format
+msgid "link to %s"
+msgstr ""
+
+#: ../libcore/gof-file.c:1938
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr ""
+
+#: ../libcore/gof-file.c:1975
+msgid "No Exec field specified"
+msgstr ""
+
+#: ../libcore/gof-file.c:1994
+msgid "No URL field specified"
+msgstr ""
+
+#: ../libcore/gof-file.c:2000
+msgid "Invalid desktop file"
+msgstr ""
+
+#: ../libcore/gof-file.c:2295
+msgid "Slashes are not allowed in filenames"
+msgstr ""
+
+#: ../libcore/gof-file.c:2315
+msgid "Toplevel files cannot be renamed"
 msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
@@ -277,10 +335,6 @@ msgstr ""
 
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
-msgstr ""
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:200
@@ -1015,60 +1069,6 @@ msgstr ""
 msgid "Preparing"
 msgstr ""
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
-msgid "Today at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
-msgid "Yesterday at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr ""
-
-#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
-msgid "Inaccessible"
-msgstr ""
-
-#: ../libcore/gof-file.c:377
-#, c-format
-msgid "link to %s"
-msgstr ""
-
-#: ../libcore/gof-file.c:1938
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr ""
-
-#: ../libcore/gof-file.c:1975
-msgid "No Exec field specified"
-msgstr ""
-
-#: ../libcore/gof-file.c:1994
-msgid "No URL field specified"
-msgstr ""
-
-#: ../libcore/gof-file.c:2000
-msgid "Invalid desktop file"
-msgstr ""
-
-#: ../libcore/gof-file.c:2295
-msgid "Slashes are not allowed in filenames"
-msgstr ""
-
-#: ../libcore/gof-file.c:2315
-msgid "Toplevel files cannot be renamed"
-msgstr ""
-
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
 msgstr ""
@@ -1463,72 +1463,298 @@ msgstr ""
 msgid "Failed to preview"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:832
+#: ../src/View/AbstractDirectoryView.vala:834
 msgid "Cannot open this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:845
+#: ../src/View/AbstractDirectoryView.vala:847
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1556
+#: ../src/View/AbstractDirectoryView.vala:1558
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1556
+#: ../src/View/AbstractDirectoryView.vala:1558
 msgid "Invalid file name provided"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2011
+#: ../src/View/AbstractDirectoryView.vala:2013
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2017
+#: ../src/View/AbstractDirectoryView.vala:2019
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2022
+#: ../src/View/AbstractDirectoryView.vala:2024
 msgid "Open in %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2032
+#: ../src/View/AbstractDirectoryView.vala:2034
 msgid "Open in"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2034
+#: ../src/View/AbstractDirectoryView.vala:2036
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
 msgid "Open with"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2094
+#: ../src/View/AbstractDirectoryView.vala:2096
 msgid "Other Application"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2355
+#: ../src/View/AbstractDirectoryView.vala:2357
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2689
-#: ../src/View/AbstractDirectoryView.vala:2872
+#: ../src/View/AbstractDirectoryView.vala:2693
+#: ../src/View/AbstractDirectoryView.vala:2876
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2690
-#: ../src/View/AbstractDirectoryView.vala:2860
-#: ../src/View/AbstractDirectoryView.vala:2873
+#: ../src/View/AbstractDirectoryView.vala:2694
+#: ../src/View/AbstractDirectoryView.vala:2864
+#: ../src/View/AbstractDirectoryView.vala:2877
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2838
+#: ../src/View/AbstractDirectoryView.vala:2842
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2839
+#: ../src/View/AbstractDirectoryView.vala:2843
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2859
+#: ../src/View/AbstractDirectoryView.vala:2863
 msgid "Cannot paste files here"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:408
+msgid "This Folder Does Not Exist"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr ""
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr ""
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr ""
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr ""
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:503
+msgid "Personal"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:504
+msgid "Your common places and bookmarks"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:375
+msgid "Home"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:523
+msgid "Open your personal folder"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:538
+msgid "View the list of recently used files"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:571
+msgid "Open the Trash"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:576
+msgid "Devices"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your local partitions and devices"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:377
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:68
+msgid "File System"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
+msgid "Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:702
+msgid "Your network places"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:734
+msgid "Entire Network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:741
+msgid "Browse the contents of the network"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:874
+msgid "(%s Free of %s)"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1370
+msgid "Unable to start %s"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1474
+msgid "Open"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1482
+msgid "Open in New _Tab"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1488
+msgid "Open in New _Window"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1496
+msgid "Remove"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1513
+msgid "_Mount"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1519
+msgid "_Unmount"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1525
+msgid "_Eject"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr ""
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr ""
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr ""
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr ""
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:390
+msgid "(as Administrator)"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:409
+msgid "You cannot create a folder here."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:412
+msgid "The network is unavailable"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:413
+msgid "A working network is needed to reach this folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:415
+msgid "This Folder Does Not Belong to You"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:416
+msgid "You don't have permission to view this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:418
+msgid "Unable to Mount Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:419
+msgid "Could not connect to the server for this folder."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:421
+msgid "Unable to Display Folder Contents"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:422
+msgid "The operation timed out."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:424
+msgid "Unable to Show Folder"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:425
+msgid "The server for this folder could not be located."
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:435
+msgid "File not Found"
+msgstr ""
+
+#: ../src/View/ViewContainer.vala:436
+msgid "The file selected no longer exists."
+msgstr ""
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
+msgid "Open in New Tab"
+msgstr ""
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
+msgid "Open in New Window"
+msgstr ""
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
+msgid "Open in Other Application…"
 msgstr ""
 
 #: ../src/View/Widgets/LocationBar.vala:186
@@ -1607,18 +1833,6 @@ msgstr ""
 msgid "%u files not readable"
 msgstr ""
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
-msgid "Open in New Tab"
-msgstr ""
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
-msgid "Open in New Window"
-msgstr ""
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
-msgid "Open in Other Application…"
-msgstr ""
-
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
 msgstr ""
@@ -1629,232 +1843,6 @@ msgstr ""
 
 #: ../src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
-msgstr ""
-
-#: ../src/View/Window.vala:205
-msgid "Files isn't your default file manager."
-msgstr ""
-
-#: ../src/View/Window.vala:211
-msgid "Set as Default"
-msgstr ""
-
-#: ../src/View/Window.vala:217
-msgid "Ignore"
-msgstr ""
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr ""
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr ""
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr ""
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:503
-msgid "Personal"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:504
-msgid "Your common places and bookmarks"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:373
-msgid "Home"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:523
-msgid "Open your personal folder"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:538
-msgid "View the list of recently used files"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
-msgid "Trash"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:571
-msgid "Open the Trash"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:576
-msgid "Devices"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:577
-msgid "Your local partitions and devices"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:375
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:68
-msgid "File System"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
-msgid "Network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:702
-msgid "Your network places"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:734
-msgid "Entire Network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:741
-msgid "Browse the contents of the network"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:874
-msgid "(%s Free of %s)"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1370
-msgid "Unable to start %s"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1474
-msgid "Open"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1482
-msgid "Open in New _Tab"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1488
-msgid "Open in New _Window"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1496
-msgid "Remove"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1513
-msgid "_Mount"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1519
-msgid "_Unmount"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1525
-msgid "_Eject"
-msgstr ""
-
-#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
-msgid "This Folder Does Not Exist"
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr ""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr ""
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr ""
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:388
-msgid "(as Administrator)"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:407
-msgid "You cannot create a folder here."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:410
-msgid "The network is unavailable"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:411
-msgid "A working network is needed to reach this folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:413
-msgid "This Folder Does Not Belong to You"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:414
-msgid "You don't have permission to view this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:416
-msgid "Unable to Mount Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:417
-msgid "Could not connect to the server for this folder."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:419
-msgid "Unable to Display Folder Contents"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:420
-msgid "The operation timed out."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:422
-msgid "Unable to Show Folder"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:423
-msgid "The server for this folder could not be located."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:433
-msgid "File not Found"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:434
-msgid "The file selected no longer exists."
 msgstr ""
 
 #: ../src/Application.vala:134
@@ -1896,6 +1884,26 @@ msgstr ""
 msgid "There is nothing on the clipboard to paste"
 msgstr ""
 
+#: ../src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr ""
+
+#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr ""
+
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
 msgstr ""
@@ -1930,19 +1938,6 @@ msgstr ""
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 msgid "Used:"
-msgstr ""
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr ""
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr ""
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
 msgstr ""
 
 #: ../src/Dialogs/ChooseAppDialog.vala:40
@@ -1998,6 +1993,11 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
+msgstr ""
+
+#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+msgid "Location:"
 msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:571
@@ -2059,6 +2059,14 @@ msgstr[1] ""
 msgid "%s (%s, %s)"
 msgstr ""
 
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr ""
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr ""
+
 #: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr ""
@@ -2080,26 +2088,6 @@ msgstr ""
 msgid "Cancel All In-progress Actions"
 msgstr ""
 
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr ""
-
-#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr ""
-
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
 msgstr ""
@@ -2118,6 +2106,26 @@ msgstr ""
 
 #: ../src/Utils/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
+msgstr ""
+
+#: ../libcore/DndHandler.vala:45
+msgid "Failed to execute \"%s\""
+msgstr ""
+
+#: ../libcore/DndHandler.vala:93
+msgid "Move Here"
+msgstr ""
+
+#: ../libcore/DndHandler.vala:94
+msgid "Copy Here"
+msgstr ""
+
+#: ../libcore/DndHandler.vala:95
+msgid "Link Here"
+msgstr ""
+
+#: ../libcore/DndHandler.vala:98
+msgid "Cancel"
 msgstr ""
 
 #: ../libcore/FileUtils.vala:60
@@ -2146,26 +2154,6 @@ msgstr ""
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
-msgstr ""
-
-#: ../libcore/DndHandler.vala:45
-msgid "Failed to execute \"%s\""
-msgstr ""
-
-#: ../libcore/DndHandler.vala:93
-msgid "Move Here"
-msgstr ""
-
-#: ../libcore/DndHandler.vala:94
-msgid "Copy Here"
-msgstr ""
-
-#: ../libcore/DndHandler.vala:95
-msgid "Link Here"
-msgstr ""
-
-#: ../libcore/DndHandler.vala:98
-msgid "Cancel"
 msgstr ""
 
 #: ../libcore/gof-directory-async.vala:611
