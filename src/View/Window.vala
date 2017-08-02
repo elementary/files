@@ -37,7 +37,6 @@ namespace Marlin.View {
             {"zoom", action_zoom, "s"},
             {"info", action_info, "s"},
             {"view_mode", action_view_mode, "s", "'MILLER'"},
-            {"select_all", null, null, "false", change_state_select_all},
             {"show_hidden", null, null, "false", change_state_show_hidden},
             {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails},
             {"show_sidebar", null ,  null, "false", change_state_show_sidebar}
@@ -749,17 +748,6 @@ namespace Marlin.View {
             window.doing_undo_redo = false;
         }
 
-        private void change_state_select_all (GLib.SimpleAction action) {
-            var slot = get_active_slot ();
-            if (slot != null) {
-                bool state = !action.state.get_boolean ();
-
-                if (slot.set_all_selected (state))
-                    action.set_state (new GLib.Variant.boolean (state));
-            }
-        }
-
-
         public void change_state_show_hidden (GLib.SimpleAction action) {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
@@ -1085,7 +1073,6 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.new_window", {"<Ctrl>N"});
             application.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
-            application.set_accels_for_action ("win.select_all", {"<Ctrl>A"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
             application.set_accels_for_action ("win.find", {"<Ctrl>F"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
