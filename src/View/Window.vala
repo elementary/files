@@ -51,6 +51,9 @@ namespace Marlin.View {
             "MILLER"
         };
 
+        public bool is_first_window { get; private set; }
+        public bool show_window { get; construct; }
+
         public Gtk.Builder ui;
         private unowned UndoManager undo_manager;
         public Chrome.TopMenu top_menu;
@@ -61,7 +64,6 @@ namespace Marlin.View {
         public ViewContainer? current_tab = null;
         public uint window_number;
 
-        public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
         private bool restoring_tabs = false;
         private bool doing_undo_redo = false;
@@ -85,18 +87,21 @@ namespace Marlin.View {
             action_edit_path ();
         }
 
-        public Window (Marlin.Application app, Gdk.Screen myscreen, bool show_window = true) {
+        public Window (Marlin.Application application, Gdk.Screen myscreen, bool show_window = true) {
             Object (
+                application: application,
                 height_request: 300,
                 icon_name: "system-file-manager",
                 screen: myscreen,
+                show_window: show_window,
                 title: _(Marlin.APP_TITLE),
                 width_request: 500
             );
+        }
 
+        construct {
             /* Capture application window_count and active_window before they can change */
-            window_number = app.window_count;
-            application = app;
+            window_number = ((Marlin.Application) application).window_count;
             is_first_window = (window_number == 0);
 
             construct_menu_actions ();
