@@ -51,8 +51,14 @@ namespace Marlin.View {
             "MILLER"
         };
 
-        public bool is_first_window { get; private set; }
         public bool show_window { get; construct; }
+        public uint window_number { get; construct; }
+
+        public bool is_first_window {
+            get {
+                return (window_number == 0);
+            }
+        }
 
         public Gtk.Builder ui;
         private unowned UndoManager undo_manager;
@@ -62,7 +68,6 @@ namespace Marlin.View {
         private Gtk.Paned lside_pane;
         public Marlin.Places.Sidebar sidebar;
         public ViewContainer? current_tab = null;
-        public uint window_number;
 
         private bool tabs_restored = false;
         private bool restoring_tabs = false;
@@ -95,15 +100,16 @@ namespace Marlin.View {
                 screen: myscreen,
                 show_window: show_window,
                 title: _(Marlin.APP_TITLE),
-                width_request: 500
+                width_request: 500,
+                window_number: application.window_count
             );
+
+            if (is_first_window) {
+                set_accelerators ();
+            }
         }
 
         construct {
-            /* Capture application window_count and active_window before they can change */
-            window_number = ((Marlin.Application) application).window_count;
-            is_first_window = (window_number == 0);
-
             construct_menu_actions ();
             undo_actions_set_insensitive ();
 
@@ -186,9 +192,6 @@ namespace Marlin.View {
             win_actions = new GLib.SimpleActionGroup ();
             win_actions.add_action_entries (win_entries, this);
             this.insert_action_group ("win", win_actions);
-
-            if (is_first_window)
-                set_accelerators ();
         }
 
         private void connect_signals () {
