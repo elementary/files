@@ -23,8 +23,7 @@
 
 namespace Marlin.View {
 
-    public class Window : Gtk.ApplicationWindow
-    {
+    public class Window : Gtk.ApplicationWindow {
         const GLib.ActionEntry [] win_entries = {
             {"new_window", action_new_window},
             {"quit", action_quit},
@@ -87,21 +86,24 @@ namespace Marlin.View {
         }
 
         public Window (Marlin.Application app, Gdk.Screen myscreen, bool show_window = true) {
+            Object (
+                height_request: 300,
+                icon_name: "system-file-manager",
+                screen: myscreen,
+                title: _(Marlin.APP_TITLE),
+                width_request: 500
+            );
 
             /* Capture application window_count and active_window before they can change */
             window_number = app.window_count;
             application = app;
-            screen = myscreen;
             is_first_window = (window_number == 0);
 
             construct_menu_actions ();
             undo_actions_set_insensitive ();
 
             undo_manager = Marlin.UndoManager.instance ();
-            construct_top_menu ();
-            set_titlebar (top_menu);
-            construct_notebook ();
-            construct_sidebar ();
+
             build_window ();
 
             connect_signals ();
@@ -119,21 +121,39 @@ namespace Marlin.View {
         }
 
         private void build_window () {
-            Gtk.Box window_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-            window_box.show();
-            window_box.pack_start(tabs, true, true, 0);
+            view_switcher = new Chrome.ViewSwitcher (win_actions.lookup_action ("view_mode") as SimpleAction);
+            view_switcher.mode = Preferences.settings.get_enum ("default-viewmode");
+
+            top_menu = new Chrome.TopMenu (view_switcher);
+            top_menu.show_close_button = true;
+            top_menu.custom_title = new Gtk.Label (null);
+
+            set_titlebar (top_menu);
+
+            tabs = new Granite.Widgets.DynamicNotebook ();
+            tabs.show_tabs = true;
+            tabs.allow_restoring = true;
+            tabs.allow_duplication = true;
+            tabs.allow_new_window = true;
+            tabs.group_name = APP_NAME;
+
+            this.configure_event.connect_after ((e) => {
+                tabs.set_size_request (e.width / 2, -1);
+                return false;
+            });
+
+            tabs.show ();
+
+            /* Show only local places in sidebar when running as root */
+            sidebar = new Marlin.Places.Sidebar (this, Posix.getuid () == 0);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
             lside_pane.show ();
             lside_pane.pack1 (sidebar, false, false);
-            lside_pane.pack2 (window_box, true, false);
+            lside_pane.pack2 (tabs, true, false);
             add (lside_pane);
 
-            set_size_request (500, 300);
-            title = _(Marlin.APP_TITLE);
-            icon_name = "system-file-manager";
-
-        /** Apply preferences */
+            /** Apply preferences */
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
             get_action ("show_remote_thumbnails").set_state (Preferences.settings.get_boolean ("show-remote-thumbnails"));
 
@@ -148,11 +168,6 @@ namespace Marlin.View {
             }
         }
 
-        private void construct_sidebar () {
-            /* Show only local places in sidebar when running as root */
-            sidebar = new Marlin.Places.Sidebar (this, Posix.getuid () == 0);
-        }
-
         public void show_sidebar (bool show = true) {
             var show_sidebar = (get_action ("show_sidebar")).state.get_boolean ();
             if (show && show_sidebar) {
@@ -162,22 +177,6 @@ namespace Marlin.View {
             }
         }
 
-        private void construct_notebook () {
-            tabs = new Granite.Widgets.DynamicNotebook ();
-            tabs.show_tabs = true;
-            tabs.allow_restoring = true;
-            tabs.allow_duplication = true;
-            tabs.allow_new_window = true;
-            tabs.group_name = APP_NAME;
-
-            this.configure_event.connect_after ((e) => {
-                tabs.set_size_request (e.width / 2, -1);
-                return false;
-            });
-
-            tabs.show ();
-        }
-
         private void construct_menu_actions () {
             win_actions = new GLib.SimpleActionGroup ();
             win_actions.add_action_entries (win_entries, this);
@@ -185,14 +184,6 @@ namespace Marlin.View {
 
             if (is_first_window)
                 set_accelerators ();
-        }
-
-        private void construct_top_menu () {
-            view_switcher = new Chrome.ViewSwitcher (win_actions.lookup_action ("view_mode") as SimpleAction);
-            view_switcher.mode = Preferences.settings.get_enum("default-viewmode");
-            top_menu = new Chrome.TopMenu(view_switcher);
-            top_menu.set_show_close_button (true);
-            top_menu.set_custom_title (new Gtk.Label (null));
         }
 
         private void connect_signals () {
