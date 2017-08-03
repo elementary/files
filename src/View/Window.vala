@@ -50,6 +50,15 @@ namespace Marlin.View {
             "MILLER"
         };
 
+        public bool show_window { get; construct; }
+        public uint window_number { get; construct; }
+
+        public bool is_first_window {
+            get {
+                return (window_number == 0);
+            }
+        }
+
         public Gtk.Builder ui;
         private unowned UndoManager undo_manager;
         public Chrome.TopMenu top_menu;
@@ -58,9 +67,7 @@ namespace Marlin.View {
         private Gtk.Paned lside_pane;
         public Marlin.Places.Sidebar sidebar;
         public ViewContainer? current_tab = null;
-        public uint window_number;
 
-        public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
         private bool restoring_tabs = false;
         private bool doing_undo_redo = false;
@@ -84,21 +91,28 @@ namespace Marlin.View {
             action_edit_path ();
         }
 
-        public Window (Marlin.Application app, Gdk.Screen myscreen, bool show_window = true) {
+        public Window (Marlin.Application application, Gdk.Screen myscreen, bool show_window = true) {
             Object (
+                application: application,
                 height_request: 300,
                 icon_name: "system-file-manager",
                 screen: myscreen,
+                show_window: show_window,
                 title: _(Marlin.APP_TITLE),
-                width_request: 500
+                width_request: 500,
+                window_number: application.window_count
             );
 
-            /* Capture application window_count and active_window before they can change */
-            window_number = app.window_count;
-            application = app;
-            is_first_window = (window_number == 0);
+            if (is_first_window) {
+                set_accelerators ();
+            }
+        }
 
-            construct_menu_actions ();
+        construct {
+            win_actions = new GLib.SimpleActionGroup ();
+            win_actions.add_action_entries (win_entries, this);
+            insert_action_group ("win", win_actions);
+
             undo_actions_set_insensitive ();
 
             undo_manager = Marlin.UndoManager.instance ();
@@ -109,11 +123,11 @@ namespace Marlin.View {
             make_bindings ();
 
             if (show_window) { /* otherwise Application will size and show window */
-                if (Preferences.settings.get_boolean("maximized")) {
-                    maximize();
+                if (Preferences.settings.get_boolean ("maximized")) {
+                    maximize ();
                 } else {
-                    resize (Preferences.settings.get_int("window-width"),
-                            Preferences.settings.get_int("window-height"));
+                    resize (Preferences.settings.get_int ("window-width"),
+                            Preferences.settings.get_int ("window-height"));
                 }
                 show ();
             }
@@ -174,15 +188,6 @@ namespace Marlin.View {
             } else {
                 lside_pane.position = 0;
             }
-        }
-
-        private void construct_menu_actions () {
-            win_actions = new GLib.SimpleActionGroup ();
-            win_actions.add_action_entries (win_entries, this);
-            this.insert_action_group ("win", win_actions);
-
-            if (is_first_window)
-                set_accelerators ();
         }
 
         private void connect_signals () {
