@@ -175,6 +175,10 @@ namespace PF.FileUtils {
             return cp ?? "";
         }
 
+        if (p.contains ("\n") || p.contains ("\r")) {
+            return "";
+        }
+
         string? unescaped_p = Uri.unescape_string (p, null);
         if (unescaped_p == null) {
             unescaped_p = p;

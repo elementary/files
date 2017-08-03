@@ -16,6 +16,26 @@
 
 public const string APP_NAME = "pantheon-files";
 public const string TERMINAL_NAME = "pantheon-terminal";
+private Object obj;
+
+void on_fm1_bus_aquired (DBusConnection conn, string n) {
+    try {
+        string name = "/org/freedesktop/FileManager1";
+        var object = new FileManager1 ((PF.AppInterface)obj);
+        conn.register_object (name, object);
+        debug ("FileManager1 object registered with dbus connection name %s", name);
+    } catch (IOError e) {
+        error ("Could not register FileManager1 service");
+    }
+}
+
+// Exit C function to quit the loop
+extern void exit (int exit_code);
+
+void on_name_lost (DBusConnection connection, string name) {
+    critical ("Name %s was not acquired", name);
+    exit (-1);
+}
 
 public static int main (string[] args) {
     /* Initiliaze gettext support */
@@ -26,6 +46,14 @@ public static int main (string[] args) {
     Environment.set_prgname (APP_NAME);
 
     var application = new Marlin.Application ();
+
+    obj = (Object)application;
+
+    Bus.own_name (BusType.SESSION, "org.freedesktop.FileManager1", BusNameOwnerFlags.REPLACE,
+                  on_fm1_bus_aquired,
+                  () => {},
+                  on_name_lost);
+
 
     return application.run (args);
 }

@@ -2,7 +2,7 @@
     Copyright (c) 1999, 2000 Red Hat, Inc.
     Copyright (c) 2000, 2001 Eazel, Inc.
     Copyright (c) 2013 Julián Unrrein <junrrein@gmail.com>
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)  
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -23,7 +23,7 @@
 
 private Marlin.Application application_singleton = null;
 
-public class Marlin.Application : Granite.Application {
+public class Marlin.Application : Granite.Application, PF.AppInterface {
 
     private VolumeMonitor volume_monitor;
     private Marlin.Progress.UIHandler progress_handler;
@@ -50,9 +50,10 @@ public class Marlin.Application : Granite.Application {
         application_singleton = this;
     }
 
-    public static new unowned Application get () {
-        if (application_singleton == null)
+    public static new unowned Application @get () {
+        if (application_singleton == null) {
             application_singleton = new Marlin.Application ();
+        }
 
         return application_singleton;
     }
@@ -119,31 +120,34 @@ public class Marlin.Application : Granite.Application {
     /* The array that holds the file commandline arguments
        needs some boilerplate so its size gets updated. */
     [CCode (array_length = false, array_null_terminated = true)]
-    private string[]? remaining = null;
+    private string[] remaining = new string[0];
 
     private int _command_line (ApplicationCommandLine cmd) {
         /* Setup the argument parser */
         bool version = false;
         bool open_in_tab = false;
         bool create_new_window = false;
+        bool no_tabs = false;
         bool kill_shell = false;
         bool debug = false;
 
-        OptionEntry[] options = new OptionEntry [7];
+        OptionEntry[] options = new OptionEntry [8];
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
                         N_("Show the version of the program."), null };
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
                         N_("Open uri(s) in new tab"), null };
         options [2] = { "new-window", 'n', 0, OptionArg.NONE, out create_new_window,
                         N_("New Window"), null };
-        options [3] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
+        options [3] = { "empty", 'e', 0, OptionArg.NONE, out no_tabs,
+                        N_("No Tabs"), null }; /* Only useful for FileManager1 interface */
+        options [4] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
                         N_("Quit Files."), null };
-        options [4] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
+        options [5] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
                         N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
-        options [5] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
+        options [6] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
                         null, N_("[URI...]") };
-        options [6] = { null };
+        options [7] = { null };
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
         context.add_main_entries (options, null);
@@ -180,10 +184,29 @@ public class Marlin.Application : Granite.Application {
             }
         }
 
+        var flag = Marlin.OpenFlag.DEFAULT;
+
+        if (open_in_tab) {
+            flag = Marlin.OpenFlag.NEW_TAB;
+        } else if (create_new_window) {
+            if (no_tabs) {
+                flag = Marlin.OpenFlag.NEW_ROOT;
+            } else {
+                flag = Marlin.OpenFlag.NEW_WINDOW;
+            }
+        }
+
+        open_uris (remaining, flag);
+
+        return Posix.EXIT_SUCCESS;
+    }
+
+
+    public int open_uris (string[] uris, Marlin.OpenFlag flag) {
+        int opened = 0;
         File[] files = null;
 
-        /* Convert remaining arguments to GFiles */
-        foreach (string filepath in remaining) {
+        foreach (string filepath in uris) {
             string path = PF.FileUtils.sanitize_path (filepath, null);
             GLib.File? file = null;
 
@@ -193,18 +216,28 @@ public class Marlin.Application : Granite.Application {
 
             if (file != null) {
                 files += (file);
+                opened++;
             }
         }
+
+        if (uris.length > 0 && opened == 0 && window_count > 0 && get_active_window_open_uris ().length > 0) {
+            return 0;
+        }
+
         /* Open application */
-        if (create_new_window) {
+        if (flag == Marlin.OpenFlag.NEW_WINDOW | flag == Marlin.OpenFlag.NEW_ROOT) {
             var win = create_window (null);
-            win.add_tab (); /* Default tab */
-        } else if (open_in_tab) {
+            if (flag == Marlin.OpenFlag.NEW_WINDOW) {
+                win.add_tab (); /* Default tab */
+                opened = 1;
+            }
+        } else if (flag == Marlin.OpenFlag.NEW_TAB) {
             open_tabs (files);
         } else {
             open_windows (files);
         }
-        return Posix.EXIT_SUCCESS;
+
+        return opened;
     }
 
     public override void quit_mainloop () {
@@ -265,9 +298,9 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
     }
 
-    private void open_windows (File[]? files) {
+    private void open_windows (File[] files) {
         if (files == null)
-            open_tabs (null); /* open_tabs () will restore saved tabs or default tab depending on preference */ 
+            open_tabs (null); /* open_tabs () will restore saved tabs or default tab depending on preference */
         else {
             /* Open windows with tab at each requested location. */
             foreach (var file in files) {
@@ -289,7 +322,7 @@ public class Marlin.Application : Granite.Application {
         Gdk.Screen screen = Gdk.Screen.get_default ();
         var aw = this.get_active_window ();
         if (aw != null) {
-            /* This is not the first window - determine size and position of new window */            
+            /* This is not the first window - determine size and position of new window */
             int w, h;
             aw.get_size (out w, out h);
             /* Calculate difference between the visible width of the window and the width returned by Gtk+,
@@ -310,7 +343,7 @@ public class Marlin.Application : Granite.Application {
                 y -= (shadow_width + 6);
                 new_win_rect = {x, y, w, h};
             }
-        } 
+        }
 
         /* New window will not size or show itself if new_win_rect is not null */
         win = new Marlin.View.Window (this, screen, new_win_rect == null);
@@ -331,7 +364,7 @@ public class Marlin.Application : Granite.Application {
         return win;
     }
 
-    private void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ()) {
+    public void open_tabs (File[]? files, Gdk.Screen? screen = Gdk.Screen.get_default ()) {
         Marlin.View.Window window = null;
 
         /* Get the first window, if any, else create a new window */
@@ -356,8 +389,9 @@ public class Marlin.Application : Granite.Application {
             }
         } else {
             /* Open tabs at each requested location */
-            foreach (var file in files)
+            foreach (var file in files) {
                 window.add_tab (file, Marlin.ViewMode.PREFERRED);
+            }
         }
     }
 
@@ -378,5 +412,19 @@ public class Marlin.Application : Granite.Application {
             win.resize (rect.width, rect.height);
         }
         win.show ();
+    }
+
+/***    For testing    ***/
+    public string[] get_active_window_open_uris () {
+        var uris = new string[0];
+        var win = get_active_window () as Marlin.View.Window;
+        if (win != null) {
+            foreach (Granite.Widgets.Tab tab in win.tabs.tabs) {
+                var content = tab.page as Marlin.View.ViewContainer;
+                uris += content.uri;
+            }
+        }
+
+        return uris;
     }
 }

@@ -15,9 +15,14 @@
 
     Authors: Jeremy Wootten <jeremy@elementaryos.org>
 ***/
+[DBus (name = "org.freedesktop.FileManager1")]
+public interface FileManager1Proxy : Object {
+    public abstract void show_folders (string[] uris, string startup_id) throws DBusError, IOError;
+    public abstract string[] get_opened_folders ();// throws DBusError, IOError;
+}
 
 [DBus (name = "org.freedesktop.FileManager1")]
-public class FileManager1 : Object {
+public class FileManager1 : Object, FileManager1Proxy {
 
     [DBus (name = "ShowFolders")]
     public void show_folders (string[] uris, string startup_id) throws DBusError, IOError {
@@ -35,33 +40,39 @@ public class FileManager1 : Object {
         throw new DBusError.NOT_SUPPORTED (msg);
     }
 
+    /*** For testing ***/
+    [DBus (name = "GetOpenedFolders")]
+    public string[] get_opened_folders () {// throws DBusError, IOError {
+        return opened_uris ();
+    }
+
+    private PF.AppInterface? app = null;
+
+    public FileManager1 (PF.AppInterface? _app) {
+        app = _app;
+    }
+
     private void open_items_and_folders (string[] uris, string startup_id) throws DBusError, IOError {
         /* The pantheon-files app will open folder uris as view, other items will cause the parent folder
          * to open and the item be selected.  Each view will open in a separate tab in one window */
- 
-        AppInfo? pf_app_info = null;
-        string cmd = "pantheon-files -t";
 
-        foreach (string s in uris) {
-            cmd += (" " + s);
-        }
-
-        try {
-            pf_app_info = AppInfo.create_from_commandline (cmd,
-                                                           null,
-                                                           AppInfoCreateFlags.NONE);
-        } catch (Error e) {
-            var msg = "Unable to open item or folder with command %s. %s".printf (cmd, e.message);
-            throw new IOError.FAILED (msg);
-        }
-
-        if (pf_app_info != null) {
-            try {
-                pf_app_info.launch (null, null);
-            } catch (Error e) {
-                var msg = "Unable to open item or folder with command %s. %s".printf (cmd, e.message);
-                throw new IOError.FAILED (msg);
+        /* Startup notification id currently ignored */
+        if (app != null) {
+            if (app.open_uris (uris, Marlin.OpenFlag.NEW_TAB) < uris.length) {
+                throw new IOError.FAILED ("One or more uris failed to open");
             }
+        } else {
+            throw new IOError.FAILED ("No app to open uris"); /* Should not happen */
+        }
+    }
+
+    /*** For testing ***/
+
+    private string[] opened_uris () {
+        if (app != null) {
+            return app.get_active_window_open_uris ();
+        } else {
+            return new string[0];
         }
     }
 }

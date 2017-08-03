@@ -31,6 +31,7 @@ add_definitions (${CFLAGS} -O2)
 
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
+        Interfaces/PFAppInterface.vala
         Application.vala
         ConnectServerOperation.vala
         main.vala
@@ -71,6 +72,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Widgets/ProgressInfoWidget.vala
         View/Widgets/SingleLineEditableLabel.vala
         View/Widgets/TopMenu.vala
+        Services/FileManager1.vala
 
     PACKAGES
         gtk+-3.0
@@ -98,6 +100,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         -D HAVE_UNITY)
 ELSE (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
+        Interfaces/PFAppInterface.vala
         Application.vala
         ConnectServerOperation.vala
         main.vala
@@ -137,6 +140,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Widgets/ProgressInfoWidget.vala
         View/Widgets/SingleLineEditableLabel.vala
         View/Widgets/TopMenu.vala
+        Services/FileManager1.vala
 
     PACKAGES
         gtk+-3.0
@@ -177,3 +181,5 @@ ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 install (TARGETS ${CMAKE_PROJECT_NAME} RUNTIME DESTINATION bin)
 install (FILES View/directory_view_popup.ui DESTINATION ${UI_DIR})
+
+add_subdirectory (Services/tests)

@@ -29,16 +29,6 @@
             error ("Could not register MarlinTags service");
         }
     }
-    void on_fm1_bus_aquired (DBusConnection conn, string n) {
-        try {
-            string name = "/org/freedesktop/FileManager1";
-            var object = new FileManager1 ();
-            conn.register_object (name, object);
-            debug ("FileManager1 object registered with dbus connection name %s", name); 
-        } catch (IOError e) {
-            error ("Could not register FileManager1 service");
-        }
-    }
 
     // Exit C function to quit the loop
     extern void exit (int exit_code);
@@ -51,11 +41,6 @@
     void main () {
         Bus.own_name (BusType.SESSION, "org.pantheon.files.db", BusNameOwnerFlags.NONE,
                       on_bus_aquired,
-                      () => {},
-                      on_name_lost);
-
-        Bus.own_name (BusType.SESSION, "org.freedesktop.FileManager1", BusNameOwnerFlags.REPLACE,
-                      on_fm1_bus_aquired,
                       () => {},
                       on_name_lost);
 

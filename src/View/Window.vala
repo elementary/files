@@ -439,6 +439,7 @@ namespace Marlin.View {
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
             var tab = new Granite.Widgets.Tab ("", null, content);
