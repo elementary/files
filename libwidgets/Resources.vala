@@ -17,7 +17,7 @@
 ***/
 
 namespace Marlin {
-    public const string APP_ID = "org.pantheon.files";
+    public const string APP_ID = "io.elementary.files";
     public const string APP_DESKTOP = APP_ID + ".desktop";
     public const string APP_TITLE = N_("Files");
     public const string HELP_URL = "https://elementaryos.stackexchange.com/questions/tagged/pantheon-files";
@@ -73,7 +73,7 @@ namespace Marlin {
     public const uint BUTTON_LONG_PRESS = 300;
 
     public const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff", "image/jp2"};
-    
+
     public string protocol_to_name (string protocol) {
         /* Deal with protocol with or without : or / characters at the end */
         string s = protocol.delimit (":/", ' ').chomp ();

@@ -13,6 +13,6 @@ add_translations_catalog(${GETTEXT_PACKAGE}
     DESKTOP_FILES
         ../data/pantheon-files.desktop.in
     APPDATA_FILES
-        ../data/org.pantheon.files.appdata.xml.in
+        ../data/io.elementary.files.appdata.xml.in
         ${CMAKE_BINARY_DIR}/data/net.launchpad.pantheon-files.policy.xml.in
 )

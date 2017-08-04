@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)  
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License version 3, as published
@@ -14,12 +14,12 @@
     with this program. If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-[DBus (name = "org.pantheon.files.db")]
+[DBus (name = "io.elementary.files.db")]
 interface Tags : Object {
-    public abstract bool   	showTable	(string table) 	throws IOError;
-    public abstract bool 	record_uris	(Variant[] entries, string directory) 	throws IOError;
-    /*public abstract bool 	deleteEntry	(string uri)	throws IOError;
-      public abstract bool	clearDB		()				throws IOError;*/
+    public abstract bool    showTable   (string table)  throws IOError;
+    public abstract bool    record_uris (Variant[] entries, string directory)   throws IOError;
+    /*public abstract bool  deleteEntry (string uri)    throws IOError;
+      public abstract bool  clearDB     ()              throws IOError;*/
 }
 
 public class Miner : Object {
@@ -33,14 +33,14 @@ public class Miner : Object {
     private List<File> ufiles = null;
     private List<File> ufiles_hidden = null;
 
-    public class Miner (File directory) 
+    public class Miner (File directory)
     {
         location = directory;
         cancellable = new Cancellable ();
 
         try {
-            tags = Bus.get_proxy_sync (BusType.SESSION, "org.pantheon.files.db",
-                                       "/org/pantheon/files/db");
+            tags = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files.db",
+                                       "/io/elementary/files/db");
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }
@@ -75,10 +75,10 @@ public class Miner : Object {
             foreach (var file in ufiles) {
                 var info = file.query_info (gio_full_attrs, 0, cancellable);
                 //message ("%s : %s", info.get_name (), info.get_content_type ());
-                /*tags.record_uri (file.get_uri (), 
+                /*tags.record_uri (file.get_uri (),
                                  info.get_content_type (),
                                  (int) info.get_attribute_uint64 (FILE_ATTRIBUTE_TIME_MODIFIED));*/
-                entries += add_entry (file.get_uri (), 
+                entries += add_entry (file.get_uri (),
                                       info.get_content_type (),
                                       (int) info.get_attribute_uint64 (FILE_ATTRIBUTE_TIME_MODIFIED));
             }

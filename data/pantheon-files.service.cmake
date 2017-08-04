@@ -1,3 +1,3 @@
 [D-BUS Service]
-Name=org.pantheon.files.db
+Name=io.elementary.files.db
 Exec=@CMAKE_INSTALL_PREFIX@/bin/pantheon-files-daemon

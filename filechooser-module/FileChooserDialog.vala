@@ -57,10 +57,10 @@ public class CustomFileChooserDialog : Object {
         chooser_dialog.can_focus = true;
         chooser_dialog.deletable = false;
 
-        var settings = new Settings ("org.pantheon.files.preferences");
+        var settings = new Settings ("io.elementary.files.preferences");
         is_single_click = settings.get_boolean ("single-click");
 
-        var chooser_settings = new Settings ("org.pantheon.files.file-chooser");
+        var chooser_settings = new Settings ("io.elementary.files.file-chooser");
 
         assign_container_box ();
         remove_gtk_widgets ();
@@ -154,7 +154,7 @@ public class CustomFileChooserDialog : Object {
                     (root as Gtk.Container).remove (w0);
                     var root_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
                     root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
-                    root_box.add (chooserwidget); 
+                    root_box.add (chooserwidget);
 
                     if (chooser_dialog.get_extra_widget () == null) {
                         root_box.add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
@@ -211,7 +211,7 @@ public class CustomFileChooserDialog : Object {
         (w1 as Gtk.Container).get_children ().foreach ((paned) => {
             (paned as Gtk.Container).get_children ().foreach ((w2) => {
                 if (w2 is Gtk.PlacesSidebar) {
-                    (w2 as Gtk.PlacesSidebar).show_desktop = false; 
+                    (w2 as Gtk.PlacesSidebar).show_desktop = false;
                     (w2 as Gtk.PlacesSidebar).show_enter_location = false;
                 } else {
                     transform_w2_container (w2);
