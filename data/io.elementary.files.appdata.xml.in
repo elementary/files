@@ -13,9 +13,9 @@
     </_p>
   </description>
   <provides>
-    <binary>pantheon-files</binary>
-    <binary>pantheon-files-daemon</binary>
-    <binary>pantheon-files-pkexec</binary>
+    <binary>io.elementary.files</binary>
+    <binary>io.elementary.files-daemon</binary>
+    <binary>io.elementary.files-pkexec</binary>
   </provides>
   <releases>
     <release version="0.3.5" date="2017-06-03" urgency="medium">

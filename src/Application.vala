@@ -67,7 +67,7 @@ public class Marlin.Application : Granite.Application {
 
         /* Only allow running with root privileges using pkexec, not using sudo */
         if (Posix.getuid () == 0 && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
-            warning ("Running Files as root using sudo is not possible. Please use the command: pantheon-files-pkexec [folder]");
+            warning ("Running Files as root using sudo is not possible. Please use the command: io.elementary.files-pkexec [folder]");
             quit ();
         };
 
@@ -166,7 +166,7 @@ public class Marlin.Application : Granite.Application {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
 
         if (version) {
-            cmd.print ("pantheon-files %s\n", Config.VERSION);
+            cmd.print ("io.elementary.files %s\n", Config.VERSION);
             return Posix.EXIT_SUCCESS;
         }
 
