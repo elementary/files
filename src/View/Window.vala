@@ -50,6 +50,15 @@ namespace Marlin.View {
             "MILLER"
         };
 
+        public bool show_window { get; construct; }
+        public uint window_number { get; construct; }
+
+        public bool is_first_window {
+            get {
+                return (window_number == 0);
+            }
+        }
+
         public Gtk.Builder ui;
         private unowned UndoManager undo_manager;
         public Chrome.TopMenu top_menu;
@@ -58,9 +67,7 @@ namespace Marlin.View {
         private Gtk.Paned lside_pane;
         public Marlin.Places.Sidebar sidebar;
         public ViewContainer? current_tab = null;
-        public uint window_number;
 
-        public bool is_first_window {get; private set;}
         private bool tabs_restored = false;
         private bool restoring_tabs = false;
         private bool doing_undo_redo = false;
@@ -70,7 +77,7 @@ namespace Marlin.View {
         public signal void free_space_change ();
 
         [Signal (action=true)]
-        public virtual signal void go_back() {
+        public virtual signal void go_back () {
             current_tab.go_back ();
         }
 
@@ -84,21 +91,28 @@ namespace Marlin.View {
             action_edit_path ();
         }
 
-        public Window (Marlin.Application app, Gdk.Screen myscreen, bool show_window = true) {
+        public Window (Marlin.Application application, Gdk.Screen myscreen, bool show_window = true) {
             Object (
+                application: application,
                 height_request: 300,
                 icon_name: "system-file-manager",
                 screen: myscreen,
+                show_window: show_window,
                 title: _(Marlin.APP_TITLE),
-                width_request: 500
+                width_request: 500,
+                window_number: application.window_count
             );
 
-            /* Capture application window_count and active_window before they can change */
-            window_number = app.window_count;
-            application = app;
-            is_first_window = (window_number == 0);
+            if (is_first_window) {
+                set_accelerators ();
+            }
+        }
 
-            construct_menu_actions ();
+        construct {
+            win_actions = new GLib.SimpleActionGroup ();
+            win_actions.add_action_entries (win_entries, this);
+            insert_action_group ("win", win_actions);
+
             undo_actions_set_insensitive ();
 
             undo_manager = Marlin.UndoManager.instance ();
@@ -109,11 +123,11 @@ namespace Marlin.View {
             make_bindings ();
 
             if (show_window) { /* otherwise Application will size and show window */
-                if (Preferences.settings.get_boolean("maximized")) {
-                    maximize();
+                if (Preferences.settings.get_boolean ("maximized")) {
+                    maximize ();
                 } else {
-                    resize (Preferences.settings.get_int("window-width"),
-                            Preferences.settings.get_int("window-height"));
+                    resize (Preferences.settings.get_int ("window-width"),
+                            Preferences.settings.get_int ("window-height"));
                 }
                 show ();
             }
@@ -176,15 +190,6 @@ namespace Marlin.View {
             }
         }
 
-        private void construct_menu_actions () {
-            win_actions = new GLib.SimpleActionGroup ();
-            win_actions.add_action_entries (win_entries, this);
-            this.insert_action_group ("win", win_actions);
-
-            if (is_first_window)
-                set_accelerators ();
-        }
-
         private void connect_signals () {
             /*/
             /* Connect and abstract signals to local ones
@@ -240,7 +245,7 @@ namespace Marlin.View {
             window_state_event.connect ((event) => {
                 if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
                     Preferences.settings.set_boolean("maximized",
-                                                     (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED);
+                                                     (bool) get_window ().get_state () & Gdk.WindowState.MAXIMIZED);
                 } else if ((bool) event.changed_mask & Gdk.WindowState.ICONIFIED) {
                     top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
                 }
@@ -264,13 +269,15 @@ namespace Marlin.View {
                 /* If closing tab is current, set current_tab to null to ensure
                  * closed ViewContainer is destroyed. It will be reassigned in tab_changed
                  */
-                if (view_container == current_tab)
+                if (view_container == current_tab) {
                     current_tab = null;
+                }
 
-               view_container.close ();
+                view_container.close ();
 
-                if (tabs.n_tabs == 1)
+                if (tabs.n_tabs == 1) {
                     add_tab ();
+                }
 
                 return true;
             });
@@ -382,14 +389,15 @@ namespace Marlin.View {
             }
         }
 
-        public GOF.AbstractSlot? get_active_slot() {
-            if (current_tab != null)
+        public GOF.AbstractSlot? get_active_slot () {
+            if (current_tab != null) {
                 return current_tab.get_current_slot ();
-            else
+            } else {
                 return null;
+            }
         }
 
-        public new void set_title(string title){
+        public new void set_title (string title) {
             this.title = title;
         }
 
@@ -742,8 +750,9 @@ namespace Marlin.View {
 
         public static void after_undo_redo (void  *data) {
             var window = data as Marlin.View.Window;
-            if (window.current_tab.slot.directory.is_recent)
+            if (window.current_tab.slot.directory.is_recent) {
                 window.current_tab.reload ();
+            }
 
             window.doing_undo_redo = false;
         }
@@ -775,8 +784,11 @@ namespace Marlin.View {
         }
 
         void show_app_help() {
-            try { Gtk.show_uri (screen, Marlin.HELP_URL, -1); }
-            catch (Error e) { critical("Can't open the link"); }
+            try {
+                Gtk.show_uri (screen, Marlin.HELP_URL, -1);
+            } catch (Error e) {
+                critical ("Can't open the link");
+            }
         }
 
         private GLib.SimpleAction? get_action (string action_name) {
@@ -824,24 +836,24 @@ namespace Marlin.View {
         private void save_geometries () {
             save_sidebar_width ();
 
-            bool is_maximized = (bool) get_window().get_state() & Gdk.WindowState.MAXIMIZED;
+            bool is_maximized = (bool) get_window ().get_state () & Gdk.WindowState.MAXIMIZED;
 
             if (is_maximized == false) {
                 int width, height;
-                get_size(out width, out height);
-                Preferences.settings.set_int("window-width", width);
-                Preferences.settings.set_int("window-height", height);
+                get_size (out width, out height);
+                Preferences.settings.set_int ("window-width", width);
+                Preferences.settings.set_int ("window-height", height);
             }
 
-            Preferences.settings.set_boolean("maximized", is_maximized);
+            Preferences.settings.set_boolean ("maximized", is_maximized);
         }
 
         private void save_sidebar_width () {
             var sw = lside_pane.get_position ();
-            var mw = Preferences.settings.get_int("minimum-sidebar-width");
+            var mw = Preferences.settings.get_int ("minimum-sidebar-width");
 
             sw = int.max (sw, mw);
-            Preferences.settings.set_int("sidebar-width", sw);
+            Preferences.settings.set_int ("sidebar-width", sw);
         }
 
         private void save_tabs () {
@@ -852,8 +864,9 @@ namespace Marlin.View {
                 var view_container = tab.page as ViewContainer;
 
                 /* Do not save if "File does not exist" or "Does not belong to you" */
-                if (!view_container.can_show_folder)
+                if (!view_container.can_show_folder) {
                     continue;
+                }
 
                 /* ViewContainer is responsible for returning valid uris */
                 vb.add ("(uss)",
@@ -920,13 +933,15 @@ namespace Marlin.View {
             restoring_tabs = false;
 
             /* Don't attempt to set active tab position if no tabs were restored */
-            if (tabs_added < 1)
+            if (tabs_added < 1) {
                 return 0;
+            }
 
             int active_tab_position = Preferences.settings.get_int ("active-tab-position");
 
-            if (active_tab_position < 0 || active_tab_position >= tabs_added)
+            if (active_tab_position < 0 || active_tab_position >= tabs_added) {
                 active_tab_position = 0;
+            }
 
             tabs.current = tabs.get_tab_by_index (active_tab_position);
             change_tab (active_tab_position);
@@ -1012,10 +1027,11 @@ namespace Marlin.View {
                 GLib.File location = view_container.location;
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
-                    if (view_container == current_tab)
+                    if (view_container == current_tab) {
                         view_container.focus_location (File.new_for_path (Eel.get_real_user_home ()));
-                    else
+                    } else {
                         remove_tab (view_container);
+                    }
                 }
             }
         }
