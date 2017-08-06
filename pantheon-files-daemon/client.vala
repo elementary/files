@@ -14,7 +14,7 @@
     with this program. If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-[DBus (name = "org.pantheon.files.db")]
+[DBus (name = "io.elementary.files.db")]
 interface Demo : Object {
     public abstract bool    showTable   (string table)  throws IOError;
     public abstract int     getColor    (string uri)    throws IOError;
@@ -25,8 +25,8 @@ interface Demo : Object {
 
 void main () {
     try {
-        Demo demo = Bus.get_proxy_sync (BusType.SESSION, "org.pantheon.files.db",
-                                        "/org/pantheon/files/db");
+        Demo demo = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files.db",
+                                        "/io/elementary/files/db");
 
         demo.showTable ("tags");
 

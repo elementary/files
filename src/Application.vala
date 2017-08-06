@@ -244,10 +244,10 @@ public class Marlin.Application : Granite.Application {
 
     private void init_schemas () {
         /* GSettings parameters */
-        Preferences.settings = new Settings ("org.pantheon.files.preferences");
-        Preferences.marlin_icon_view_settings = new Settings ("org.pantheon.files.icon-view");
-        Preferences.marlin_list_view_settings = new Settings ("org.pantheon.files.list-view");
-        Preferences.marlin_column_view_settings = new Settings ("org.pantheon.files.column-view");
+        Preferences.settings = new Settings ("io.elementary.files.preferences");
+        Preferences.marlin_icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        Preferences.marlin_list_view_settings = new Settings ("io.elementary.files.list-view");
+        Preferences.marlin_column_view_settings = new Settings ("io.elementary.files.column-view");
         Preferences.gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
 
         /* Bind settings with GOFPreferences */

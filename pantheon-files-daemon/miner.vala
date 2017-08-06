@@ -14,7 +14,7 @@
     with this program. If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-[DBus (name = "org.pantheon.files.db")]
+[DBus (name = "io.elementary.files.db")]
 interface Tags : Object {
     public abstract bool    showTable   (string table)  throws IOError;
     public abstract bool    record_uris (Variant[] entries, string directory)   throws IOError;
@@ -39,8 +39,8 @@ public class Miner : Object {
         cancellable = new Cancellable ();
 
         try {
-            tags = Bus.get_proxy_sync (BusType.SESSION, "org.pantheon.files.db",
-                                       "/org/pantheon/files/db");
+            tags = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files.db",
+                                       "/io/elementary/files/db");
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }

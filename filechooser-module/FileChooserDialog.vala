@@ -57,10 +57,10 @@ public class CustomFileChooserDialog : Object {
         chooser_dialog.can_focus = true;
         chooser_dialog.deletable = false;
 
-        var settings = new Settings ("org.pantheon.files.preferences");
+        var settings = new Settings ("io.elementary.files.preferences");
         is_single_click = settings.get_boolean ("single-click");
 
-        var chooser_settings = new Settings ("org.pantheon.files.file-chooser");
+        var chooser_settings = new Settings ("io.elementary.files.file-chooser");
 
         assign_container_box ();
         remove_gtk_widgets ();

@@ -15,7 +15,7 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-[DBus (name = "org.pantheon.files.db")]
+[DBus (name = "io.elementary.files.db")]
 interface MarlinDaemon : Object {
     public abstract async Variant get_uri_infos (string raw_uri) throws IOError;
     public abstract async bool record_uris (Variant[] entries, string directory)    throws IOError;
@@ -40,8 +40,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         cancellable = new Cancellable ();
 
         try {
-            daemon = Bus.get_proxy_sync (BusType.SESSION, "org.pantheon.files.db",
-                                         "/org/pantheon/files/db");
+            daemon = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files.db",
+                                         "/io/elementary/files/db");
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }
