@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)  
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU General Public License version 3, as published
@@ -16,10 +16,10 @@
 
 [DBus (name = "org.pantheon.files.db")]
 interface Tags : Object {
-    public abstract bool   	showTable	(string table) 	throws IOError;
-    public abstract bool 	record_uris	(Variant[] entries, string directory) 	throws IOError;
-    /*public abstract bool 	deleteEntry	(string uri)	throws IOError;
-      public abstract bool	clearDB		()				throws IOError;*/
+    public abstract bool    showTable   (string table)  throws IOError;
+    public abstract bool    record_uris (Variant[] entries, string directory)   throws IOError;
+    /*public abstract bool  deleteEntry (string uri)    throws IOError;
+      public abstract bool  clearDB     ()              throws IOError;*/
 }
 
 public class Miner : Object {
@@ -33,7 +33,7 @@ public class Miner : Object {
     private List<File> ufiles = null;
     private List<File> ufiles_hidden = null;
 
-    public class Miner (File directory) 
+    public class Miner (File directory)
     {
         location = directory;
         cancellable = new Cancellable ();
@@ -75,10 +75,10 @@ public class Miner : Object {
             foreach (var file in ufiles) {
                 var info = file.query_info (gio_full_attrs, 0, cancellable);
                 //message ("%s : %s", info.get_name (), info.get_content_type ());
-                /*tags.record_uri (file.get_uri (), 
+                /*tags.record_uri (file.get_uri (),
                                  info.get_content_type (),
                                  (int) info.get_attribute_uint64 (FILE_ATTRIBUTE_TIME_MODIFIED));*/
-                entries += add_entry (file.get_uri (), 
+                entries += add_entry (file.get_uri (),
                                       info.get_content_type (),
                                       (int) info.get_attribute_uint64 (FILE_ATTRIBUTE_TIME_MODIFIED));
             }
@@ -137,4 +137,3 @@ public static int main () {
 
     return 0;
 }
-

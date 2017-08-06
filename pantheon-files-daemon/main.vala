@@ -34,7 +34,7 @@
             string name = "/org/freedesktop/FileManager1";
             var object = new FileManager1 ();
             conn.register_object (name, object);
-            debug ("FileManager1 object registered with dbus connection name %s", name); 
+            debug ("FileManager1 object registered with dbus connection name %s", name);
         } catch (IOError e) {
             error ("Could not register FileManager1 service");
         }
