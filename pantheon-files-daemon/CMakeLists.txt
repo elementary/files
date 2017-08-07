@@ -4,6 +4,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libcore/)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/)
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
@@ -34,9 +35,13 @@ PACKAGES
     gio-2.0
     gee-0.8
     sqlite3
+    pantheon-files-core
+    pantheon-files-core-C
 OPTIONS
+    --vapidir=${CMAKE_SOURCE_DIR}/libcore/
+    --vapidir=${CMAKE_BINARY_DIR}/libcore/
     --thread)
 add_executable(pantheon-files-daemon
     ${VALA_C} )
-target_link_libraries(pantheon-files-daemon ${DEPS_LIBRARIES})
+target_link_libraries(pantheon-files-daemon pantheon-files-core ${DEPS_LIBRARIES})
 install(TARGETS pantheon-files-daemon RUNTIME DESTINATION bin)

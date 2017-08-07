@@ -165,7 +165,7 @@ namespace PF.FileUtils {
     /** Produce a valid unescaped path.  A current path can be provided and is used to get the scheme and
       * to interpret relative paths where necessary.
       **/
-    public string sanitize_path (string? p, string? cp = null) {
+    public string sanitize_path (string? p, string? cp = null, bool unescape = true) {
         string path = "";
         string scheme = "";
         string? current_path = null;
@@ -175,7 +175,7 @@ namespace PF.FileUtils {
             return cp ?? "";
         }
 
-        string? unescaped_p = Uri.unescape_string (p, null);
+        string? unescaped_p = unescape ? Uri.unescape_string (p, null) : null;
         if (unescaped_p == null) {
             unescaped_p = p;
         }
