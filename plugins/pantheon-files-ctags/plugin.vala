@@ -15,7 +15,7 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-[DBus (name = "org.pantheon.files.db")]
+[DBus (name = "io.elementary.files.db")]
 interface MarlinDaemon : Object {
     public abstract async Variant get_uri_infos (string raw_uri) throws IOError;
     public abstract async bool record_uris (Variant[] entries, string directory)    throws IOError;
@@ -40,8 +40,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         cancellable = new Cancellable ();
 
         try {
-            daemon = Bus.get_proxy_sync (BusType.SESSION, "org.pantheon.files.db",
-                                         "/org/pantheon/files/db");
+            daemon = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files.db",
+                                         "/io/elementary/files/db");
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }
@@ -288,7 +288,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
         if (!ignore_dir && file.info != null &&
             (!file.is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
- 
+
             if (file.location.has_uri_scheme ("recent")) {
                 rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
             } else {
@@ -335,7 +335,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 GOF.File first = (GOF.File) (files.data);
                 yield daemon.record_uris (entries, first.uri);
                 /* If the color of the target is set while in recent view, we have to
-                 * update the recent view to reflect this */ 
+                 * update the recent view to reflect this */
                 if (first.location.has_uri_scheme ("recent")) {
                     foreach (GOF.File file in files) {
                         update_file_info (file);
