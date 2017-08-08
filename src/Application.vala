@@ -82,6 +82,7 @@ public class Marlin.Application : Granite.Application {
         this.clipboard = Marlin.ClipboardManager.get_for_display ();
         this.recent = new Gtk.RecentManager ();
 
+        /* Global static variable "plugins" declared in PluginManager.vala */
         plugins = new Marlin.PluginManager (Config.PLUGIN_DIR, (uint)(Posix.getuid ()));
 
         /**TODO** move the volume manager here? */
