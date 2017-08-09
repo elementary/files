@@ -242,7 +242,7 @@ public class CustomFileChooserDialog : Object {
             } else if (w3.get_name () ==  "list_and_preview_box") { /* file browser list and preview box */
                 var tv = find_tree_view (w3);
                 if (tv != null) {
-                    /* set its click behaviour the same as pantheon-files setting */
+                    /* set its click behaviour the same as io.elementary.files setting */
                     tv.set_activate_on_single_click (is_single_click);
                     if (is_single_click) {
                         /* We need to modify native behaviour to only activate on folders */
