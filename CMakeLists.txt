@@ -2,7 +2,7 @@
 
 cmake_minimum_required (VERSION 2.8)
 cmake_policy (VERSION 2.8)
-project (pantheon-files C)
+project (io.elementary.files C)
 enable_testing ()
 
 include (GNUInstallDirs)

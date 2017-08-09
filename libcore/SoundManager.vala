@@ -17,7 +17,7 @@
 
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 
-    Some convenience wrappers around libcanberra for using sounds within pantheon-files.
+    Some convenience wrappers around libcanberra for using sounds within io.elementary.files.
 
  ***/
 
