@@ -21,7 +21,7 @@
 
     void on_bus_aquired (DBusConnection conn, string n) {
         try {
-            string name = "/org/pantheon/files/db";
+            string name = "/io/elementary/files/db";
             var object = new MarlinTags ();
             conn.register_object (name, object);
             debug ("MarlinTags object registered with dbus connection name %s", name);
@@ -34,7 +34,7 @@
             string name = "/org/freedesktop/FileManager1";
             var object = new FileManager1 ();
             conn.register_object (name, object);
-            debug ("FileManager1 object registered with dbus connection name %s", name); 
+            debug ("FileManager1 object registered with dbus connection name %s", name);
         } catch (IOError e) {
             error ("Could not register FileManager1 service");
         }
@@ -49,7 +49,7 @@
     }
 
     void main () {
-        Bus.own_name (BusType.SESSION, "org.pantheon.files.db", BusNameOwnerFlags.NONE,
+        Bus.own_name (BusType.SESSION, "io.elementary.files.db", BusNameOwnerFlags.NONE,
                       on_bus_aquired,
                       () => {},
                       on_name_lost);

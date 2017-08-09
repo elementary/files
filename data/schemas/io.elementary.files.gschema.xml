@@ -5,7 +5,7 @@
     <value value="1" nick="list"/>
     <value value="2" nick="miller_columns"/>
   </enum>
-  <enum id="org.pantheon.files.ZoomLevel">
+  <enum id="io.elementary.files.ZoomLevel">
     <value value="0" nick="smallest"/>
     <value value="1" nick="smaller"/>
     <value value="2" nick="small"/>
@@ -22,7 +22,7 @@
     <value value="2" nick="informal"/>
   </enum>
 
-  <schema path="/org/pantheon/files/preferences/" id="org.pantheon.files.preferences">
+  <schema path="/io/elementary/files/preferences/" id="io.elementary.files.preferences">
     <key type="b" name="show-remote-thumbnails">
       <default>false</default>
       <summary>Thumbnail remote files</summary>
@@ -55,7 +55,7 @@
         The default viewmode to be used when opening a new tab or window
       </description>
     </key>
-    <key name="sidebar-zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="sidebar-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'smallest'</default>
       <summary>Size of the icons in the Places sidebar</summary>
       <description>Zoom level used by the places sidebar.</description>
@@ -132,69 +132,69 @@
     </key>
   </schema>
 
-  <schema path="/org/pantheon/files/icon-view/" id="org.pantheon.files.icon-view">
-    <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
+  <schema path="/io/elementary/files/icon-view/" id="io.elementary.files.icon-view">
+    <key name="default-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'large'</default>
       <summary>Icon default zoom level</summary>
       <description>Default Zoom level used by the icon view.</description>
     </key>
-    <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'large'</default>
       <summary>Icon zoom level</summary>
       <description>Zoom level used by the Icon View.</description>
     </key>
-    <key name="minimum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'normal'</default>
       <summary>Minimum icon zoom level</summary>
       <description>The minimum zoom level used by the Icon View.</description>
     </key>
-    <key name="maximum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'largest'</default>
       <summary>Maximum icon zoom level</summary>
       <description>The maximum zoom level used by the Icon View.</description>
     </key>
   </schema>
 
-  <schema path="/org/pantheon/files/list-view/" id="org.pantheon.files.list-view">
-    <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
+  <schema path="/io/elementary/files/list-view/" id="io.elementary.files.list-view">
+    <key name="default-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the List View.</description>
     </key>
-    <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the List View.</description>
     </key>
-    <key name="minimum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'smaller'</default>
       <summary>Minimum icon zoom level</summary>
       <description>The minimum zoom level used by the List View.</description>
     </key>
-    <key name="maximum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'large'</default>
       <summary>Maximum icon zoom level</summary>
       <description>The maximum zoom level used by the List View.</description>
     </key>
   </schema>
 
-  <schema path="/org/pantheon/files/column-view/" id="org.pantheon.files.column-view">
-    <key name="default-zoom-level" enum="org.pantheon.files.ZoomLevel">
+  <schema path="/io/elementary/files/column-view/" id="io.elementary.files.column-view">
+    <key name="default-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon default zoom level</summary>
       <description>Default Zoom level used by the  Miller Column View.</description>
     </key>
-    <key name="zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'small'</default>
       <summary>icon zoom level</summary>
       <description>Zoom level used by the  Miller Column View.</description>
     </key>
-    <key name="minimum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="minimum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'smallest'</default>
       <summary>Minimum icon zoom level</summary>
       <description>The minimum zoom level used by the  Miller Column View.</description>
     </key>
-    <key name="maximum-zoom-level" enum="org.pantheon.files.ZoomLevel">
+    <key name="maximum-zoom-level" enum="io.elementary.files.ZoomLevel">
       <default>'normal'</default>
       <summary>Maximum icon zoom level</summary>
       <description>The maximum zoom level used by the Miller Column View.</description>
@@ -205,7 +205,7 @@
       <description>The column width preferred by the  Miller Column View.</description>
     </key>
   </schema>
-  <schema path="/org/pantheon/files/file-chooser/" id="org.pantheon.files.file-chooser">
+  <schema path="/io/elementary/files/file-chooser/" id="io.elementary.files.file-chooser">
     <key type ="s" name="last-folder-uri">
       <default>''</default>
       <summary>Last folder uri</summary>

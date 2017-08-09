@@ -8,17 +8,18 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-05-06 12:41+0000\n"
-"Last-Translator: Maxim Taranov <png2378@gmail.com>\n"
-"Language-Team: Russian <ru@li.org>\n"
+"PO-Revision-Date: 2017-08-08 14:06+0000\n"
+"Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
+"Language-Team: Russian "
+"<https://weblate.elementary.io/projects/files/files/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1923,11 +1924,11 @@ msgstr "Не удалось подключиться к этой папке на
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Не удалось отобразить содержимое папки"
 
 #: ../src/View/ViewContainer.vala:420
 msgid "The operation timed out."
-msgstr ""
+msgstr "Время операции вышло."
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
@@ -1955,7 +1956,7 @@ msgstr "Открыть uri в новой вкладке"
 
 #: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Новом окне"
+msgstr "Новое окно"
 
 #: ../src/Application.vala:140
 msgid "Quit Files."
@@ -2065,7 +2066,7 @@ msgstr "неизвестно"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "Загрузка..."
+msgstr "Загрузка…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2105,7 +2106,7 @@ msgstr "Исходное расположение:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Другое приложение..."
+msgstr "Другое приложение…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2232,15 +2233,15 @@ msgstr "Невозможно изменить название на «%s»"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Сегодня в %-H:%M"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Вчера в %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A, в %-H:%M"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
@@ -2268,7 +2269,7 @@ msgstr "Отмена"
 
 #: ../libcore/gof-directory-async.vala:611
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Сервер не ответил в течение срока"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
@@ -2331,16 +2332,14 @@ msgid "In This Folder"
 msgstr "В этой папке"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "В этой папке"
+msgstr "Ниже этой папки"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
 msgstr "Закладки"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
 msgstr "Недавние"
 

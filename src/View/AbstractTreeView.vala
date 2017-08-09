@@ -125,11 +125,11 @@ namespace FM {
                 return null;
         }
 
-        public override void select_all () {
+        public override void tree_select_all () {
             tree.get_selection ().select_all ();
         }
 
-        public override void unselect_all () {
+        public override void tree_unselect_all () {
             tree.get_selection ().unselect_all ();
         }
 
@@ -234,7 +234,9 @@ namespace FM {
             if (p != null && c != null && c == name_column) {
                 GOF.File? file = model.file_for_path (p);
 
-                if (x < rect.x + ICON_XPAD + icon_size) { /* cannot be on name */
+                if (file == null) {
+                    zone = ClickZone.INVALID;
+                } else if (x < rect.x + ICON_XPAD + icon_size) { /* cannot be on name */
                     bool on_helper = false;
                     bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
 
