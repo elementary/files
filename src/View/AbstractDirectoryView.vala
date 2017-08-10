@@ -1500,7 +1500,6 @@ namespace FM {
             drag_file_list = get_selected_files_for_transfer ();
 
             if (drag_file_list == null) {
-                warning ("drag with no selected files");
                 return;
             }
 
