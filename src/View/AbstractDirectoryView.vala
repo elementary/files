@@ -317,9 +317,10 @@ namespace FM {
             in_recent = slot.directory.is_recent;
 
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
-            if (in_recent)
+
+            if (in_recent) {
                 model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-            else if (slot.directory.file.info != null) {
+            } else if (slot.directory.file.info != null) {
                 model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
             }
 
@@ -682,9 +683,10 @@ namespace FM {
             if (new_dir.file.uri != old_dir.file.uri) {
                 in_trash = new_dir.is_trash;
                 in_recent = new_dir.is_recent;
-                if (in_recent)
+
+                if (in_recent) {
                     model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-                else if (new_dir.file.info != null) {
+                } else if (new_dir.file.info != null) {
                     model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
                 }
             }
