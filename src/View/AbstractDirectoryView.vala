@@ -1549,8 +1549,9 @@ namespace FM {
 
             drag_file_list = get_selected_files_for_transfer ();
 
-            if (drag_file_list == null)
+            if (drag_file_list == null) {
                 return;
+            }
 
             GOF.File file = drag_file_list.first ().data;
 
@@ -1571,6 +1572,9 @@ namespace FM {
             cancel_timeout (ref drag_scroll_timer_id);
             drag_file_list = null;
             drop_target_file = null;
+            drop_file_list = null;
+            drop_data_ready = false;
+
             current_suggested_action = Gdk.DragAction.DEFAULT;
             current_actions = Gdk.DragAction.DEFAULT;
             drag_has_begun = false;
@@ -1653,7 +1657,7 @@ namespace FM {
                 }
             }
 
-            if (drop_occurred) {
+            if (drop_occurred && drop_data_ready) {
                 drop_occurred = false;
                 if (current_actions != Gdk.DragAction.DEFAULT) {
                     switch (info) {
@@ -1708,11 +1712,6 @@ namespace FM {
                 queue_draw ();
             }
 
-            /* reset the "drop data ready" status and free the URI list */
-            if (drop_data_ready) {
-                drop_file_list = null;
-                drop_data_ready = false;
-            }
             /* disable the highlighting of the items in the view */
             highlight_path (null);
         }
