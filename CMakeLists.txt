@@ -1,4 +1,4 @@
-# Check http://elementaryos.org/docs/developer-guide/cmake for documentation
+# Check https://elementary.io/docs/code/getting-started#the-build-system for documentation
 
 cmake_minimum_required (VERSION 2.8)
 cmake_policy (VERSION 2.8)
