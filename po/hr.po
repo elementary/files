@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-08-16 12:11+0000\n"
+"PO-Revision-Date: 2017-08-16 12:17+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian "
 "<https://weblate.elementary.io/projects/files/files/hr/>\n"
@@ -982,7 +982,7 @@ msgstr[2] "Priprema za premještanje %'d datoteka"
 #: ../libcore/marlin-file-operations.c:5108
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr "Greška pri premještanju \"%F\""
+msgstr "Greška pri premještanju \"%F\"."
 
 #: ../libcore/marlin-file-operations.c:5109
 #, c-format
@@ -1007,7 +1007,7 @@ msgstr[2] "Stvaranje poveznica na %'d datoteka"
 
 #: ../libcore/marlin-file-operations.c:5552
 msgid "Error while creating link to %B."
-msgstr "Greška pri stvaranju poveznice na %B"
+msgstr "Greška pri stvaranju poveznice na %B."
 
 #: ../libcore/marlin-file-operations.c:5554
 msgid "Symbolic links only supported for local files"
@@ -1698,7 +1698,7 @@ msgstr "Otvori u novom prozoru"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "Otvori u drugoj aplikaciji..."
+msgstr "Otvori u drugoj aplikaciji…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1951,7 +1951,7 @@ msgstr "Ovori uri(e) u novoj kartici"
 
 #: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Novom prozoru"
+msgstr "Novi prozor"
 
 #: ../src/Application.vala:140
 msgid "Quit Files."
@@ -2061,7 +2061,7 @@ msgstr "nepoznato"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "Učitavanje..."
+msgstr "Učitavanje…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2101,7 +2101,7 @@ msgstr "Izvorna lokacija:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Ostale aplikacije..."
+msgstr "Ostale aplikacije…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2220,7 +2220,7 @@ msgstr "Početnu lokaciju \"%s\" nije moguće odrediti "
 
 #: ../libcore/FileUtils.vala:61
 msgid "The item cannot be restored from trash"
-msgstr "Stavka iz smeća se ne može vratiti na izvornu lokaciju."
+msgstr "Stavka iz smeća se ne može vratiti na izvornu lokaciju"
 
 #: ../libcore/FileUtils.vala:345
 msgid "Could not rename to '%s'"
@@ -2340,7 +2340,7 @@ msgstr "Nedavno korišteno"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Povezivanje s poslužiteljem..."
+msgstr "Povezivanje s poslužiteljem…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
