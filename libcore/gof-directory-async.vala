@@ -726,6 +726,7 @@ public class Async : Object {
         if (!can_load) {
             return;
         }
+
         if (state != State.LOADED) {
             list_directory_async.begin (null);
         } else {

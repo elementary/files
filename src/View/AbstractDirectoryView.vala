@@ -312,7 +312,18 @@ namespace FM {
                     view.queue_draw ();
                 }
             });
+
+            in_trash = slot.directory.is_trash;
+            in_recent = slot.directory.is_recent;
+
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
+
+            if (in_recent) {
+                model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
+            } else if (slot.directory.file.info != null) {
+                model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+            }
+
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
 
@@ -343,9 +354,7 @@ namespace FM {
                 view.draw.connect (on_view_draw);
             }
 
-            freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
             set_up_zoom_level ();
-
             connect_directory_handlers (slot.directory);
         }
 
@@ -388,6 +397,8 @@ namespace FM {
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
+
+            connect_model_signals ();
 
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
@@ -626,17 +637,21 @@ namespace FM {
             dir.file_changed.connect (on_directory_file_changed);
             dir.file_deleted.connect (on_directory_file_deleted);
             dir.icon_changed.connect (on_directory_file_icon_changed);
-            connect_directory_loading_handlers (dir);
+            prepare_to_load_directory (dir);
         }
 
-        protected void connect_directory_loading_handlers (GOF.Directory.Async dir) {
+        protected void prepare_to_load_directory (GOF.Directory.Async dir) {
             dir.file_loaded.connect (on_directory_file_loaded);
             dir.done_loading.connect (on_directory_done_loading);
+
+            freeze_tree ();
         }
 
-        protected void disconnect_directory_loading_handlers (GOF.Directory.Async dir) {
+        protected void after_loading_directory (GOF.Directory.Async dir) {
             dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
+
+            thaw_tree ();
         }
 
         protected void disconnect_directory_handlers (GOF.Directory.Async dir) {
@@ -644,7 +659,7 @@ namespace FM {
             /* will not have been disconnected */
 
             if (dir.is_loading ()) {
-                disconnect_directory_loading_handlers (dir);
+                after_loading_directory (dir);
             }
 
             dir.file_added.disconnect (on_directory_file_added);
@@ -663,18 +678,45 @@ namespace FM {
             clear ();
             disconnect_directory_handlers (old_dir);
             connect_directory_handlers (new_dir);
+
+            /* If navigating to new folder reset the sort order as appropriate */
+            if (new_dir.file.uri != old_dir.file.uri) {
+                in_trash = new_dir.is_trash;
+                in_recent = new_dir.is_recent;
+
+                if (in_recent) {
+                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
+                } else if (new_dir.file.info != null) {
+                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+                }
+            }
         }
 
         public void clear () {
             /* after calling this (prior to reloading), the directory must be re-initialised so
              * we reconnect the file_loaded and done_loading signals */
-            freeze_tree ();
+            clear_model ();
+            prepare_to_load_directory (slot.directory);
+        }
+
+        private void clear_model () {
             block_model ();
-            model.clear ();
+
+            /* At some point it is quicker to build a new model than clear the old one
+             * time taken proportional to n2 ?*/
+            if (slot.directory.files_count < 1000) {
+                model.clear ();
+            } else {
+                int sort_column_id;
+                Gtk.SortType sort_type;
+
+                model.get_sort_column_id (out sort_column_id, out sort_type);
+                model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
+                model.set_sort_column_id (sort_column_id, sort_type);
+            }
+
             all_selected = false;
             unblock_model ();
-            connect_directory_loading_handlers (slot.directory);
-            /* tree will be thawed after done loading */
         }
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
@@ -691,6 +733,18 @@ namespace FM {
             widget.drag_data_get.connect (on_drag_data_get);
             widget.drag_data_delete.connect (on_drag_data_delete);
             widget.drag_end.connect (on_drag_end);
+        }
+
+        protected virtual void connect_model_signals () {
+            model.row_deleted.connect (on_row_deleted);
+            /* Sort order of model is set after loading */
+            model.sort_column_changed.connect (on_sort_column_changed);
+        }
+
+        protected virtual void disconnect_model_signals () {
+            model.row_deleted.disconnect (on_row_deleted);
+            /* Sort order of model is set after loading */
+            model.sort_column_changed.disconnect (on_sort_column_changed);
         }
 
         protected void cancel_drag_timer () {
@@ -1336,7 +1390,7 @@ namespace FM {
 
         private void  on_directory_done_loading (GOF.Directory.Async dir) {
             /* Should only be called on directory creation or reload */
-            disconnect_directory_loading_handlers (dir);
+            after_loading_directory (dir);
             in_trash = slot.directory.is_trash;
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
@@ -1345,11 +1399,6 @@ namespace FM {
 
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
-                if (in_recent)
-                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-                else if (slot.directory.file.info != null) {
-                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
-                }
             } else {
                 is_writable = false;
             }
@@ -1372,12 +1421,13 @@ namespace FM {
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = (prefs as GOF.Preferences).show_hidden_files;
             cancel ();
+
             /* As directory may reload, for consistent behaviour always lose selection */
             unselect_all ();
 
             if (!show) {
-                block_model ();
-                model.clear ();
+                clear_model ();
+                block_model (); /* Ignore row delete events from removing hidden file rows */
             }
 
             directory_hidden_changed (slot.directory, show);
@@ -1399,7 +1449,7 @@ namespace FM {
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
-            dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
+            prepare_to_load_directory (dir);
             dir.load_hiddens ();
         }
 
@@ -2491,11 +2541,11 @@ namespace FM {
 /** HELPER AND CONVENIENCE FUNCTIONS */
 
         protected void block_model () {
-            model.row_deleted.disconnect (on_row_deleted);
+            disconnect_model_signals ();
         }
 
         protected void unblock_model () {
-            model.row_deleted.connect (on_row_deleted);
+            connect_model_signals ();
         }
 
         private Gtk.Widget? get_real_view () {
