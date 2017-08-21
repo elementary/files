@@ -664,6 +664,17 @@ namespace FM {
             clear ();
             disconnect_directory_handlers (old_dir);
             connect_directory_handlers (new_dir);
+
+            /* If navigating to new folder reset the sort order as appropriate */
+            if (new_dir.file.uri != old_dir.file.uri) {
+                in_trash = new_dir.is_trash;
+                in_recent = new_dir.is_recent;
+                if (in_recent)
+                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
+                else if (new_dir.file.info != null) {
+                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+                }
+            }
         }
 
         public void clear () {
