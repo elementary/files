@@ -391,10 +391,6 @@ namespace FM {
             (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
 
             connect_model_signals ();
-
-            model.row_deleted.connect (on_row_deleted);
-            /* Sort order of model is set after loading */
-            model.sort_column_changed.connect (on_sort_column_changed);
         }
 
         private void set_up__menu_actions () {
