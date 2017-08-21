@@ -312,7 +312,9 @@ namespace FM {
                     view.queue_draw ();
                 }
             });
+
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
+
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
 
@@ -1366,11 +1368,6 @@ namespace FM {
 
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
-                if (in_recent)
-                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-                else if (slot.directory.file.info != null) {
-                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
-                }
             } else {
                 is_writable = false;
             }
