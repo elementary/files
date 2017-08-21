@@ -676,22 +676,14 @@ namespace FM {
         }
 
         private void clear_model () {
-            /* At some point it is quicker to build a new model than clear the old one
-             * time taken proportional to n2 ?*/
-             block_model ();
+            /* It is much quicker to recreate the model for large folders and does no harm for small
+             * folders. */
+            int sort_column_id;
+            Gtk.SortType sort_type;
 
-            if (slot.directory.files_count < 1000) {
-                model.clear ();
-            } else {
-                int sort_column_id;
-                Gtk.SortType sort_type;
-
-                model.get_sort_column_id (out sort_column_id, out sort_type);
-                model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
-                model.set_sort_column_id (sort_column_id, sort_type);
-            }
-
-            unblock_model ();
+            model.get_sort_column_id (out sort_column_id, out sort_type);
+            model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
+            model.set_sort_column_id (sort_column_id, sort_type);
         }
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
