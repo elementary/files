@@ -316,12 +316,14 @@ namespace FM {
         protected override void freeze_tree () {
             tree.freeze_child_notify ();
             tree_frozen = true;
+            tree.set_model (null);
         }
 
         protected override void thaw_tree () {
             if (tree_frozen) {
                 tree.thaw_child_notify ();
                 tree_frozen = false;
+                tree.set_model (model);
             }
         }
 

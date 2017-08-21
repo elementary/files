@@ -637,7 +637,7 @@ namespace FM {
             freeze_tree ();
          }
 
-        protected void after_loading_directory (GOF.Directory dir) {
+        protected void after_loading_directory (GOF.Directory.Async dir) {
             dir.file_loaded.disconnect (on_directory_file_loaded);
             dir.done_loading.disconnect (on_directory_done_loading);
         }
@@ -647,7 +647,6 @@ namespace FM {
             /* will not have been disconnected */
 
             if (dir.is_loading ()) {
-                disconnect_directory_loading_handlers (dir);
                 after_loading_directory (dir);
             }
 
