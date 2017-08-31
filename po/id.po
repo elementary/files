@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-08-22 10:52+0000\n"
-"Last-Translator: Aprianto Nursetiawan <noersetiawan@gmail.com>\n"
+"PO-Revision-Date: 2017-08-31 15:09+0700\n"
+"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian "
 "<https://weblate.elementary.io/projects/files/files/id/>\n"
 "Language: id\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Poedit 2.0.3\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -41,7 +41,7 @@ msgstr "Jaringan berbagi Windows"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr ""
+msgstr "WebDAV (HTTP)"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
@@ -112,7 +112,7 @@ msgstr "Berb_agi:"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr ""
+msgstr "_Folder:"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
@@ -1553,7 +1553,7 @@ msgstr " dipilih"
 #: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
+msgstr[0] "%u folder"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1988,7 +1988,7 @@ msgstr "Dihapus:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:546
 msgid "Mimetype:"
-msgstr ""
+msgstr "Mimetype:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
@@ -1996,7 +1996,7 @@ msgstr "Resolusi:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
-msgstr ""
+msgstr "Target:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:579
 msgid "Original Location:"
@@ -2285,7 +2285,7 @@ msgstr "Baru"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr ""
+msgstr "Folder"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
@@ -2305,7 +2305,7 @@ msgstr "Tab Baru"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
-msgstr ""
+msgstr "Terminal"
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
