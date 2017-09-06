@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
 "PO-Revision-Date: 2017-09-06 17:56+0000\n"
-"Last-Translator: Patrick van Efferen <patrickvanefferen@gmail.com>\n"
+"Last-Translator: Dieter Debast <dieter_debast@hotmail.com>\n"
 "Language-Team: Dutch <https://weblate.elementary.io/projects/files/files/nl/>"
 "\n"
 "Language: nl\n"
@@ -495,7 +495,8 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
-"Alle items in de prullenbak op deze koppeling, worden permanent verwijderd."
+"Alle items in de prullenbak op deze gekoppelde schijf, worden permanent "
+"verwijderd."
 
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
