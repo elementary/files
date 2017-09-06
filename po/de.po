@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-09-06 14:07+0000\n"
+"PO-Revision-Date: 2017-09-06 14:18+0000\n"
 "Last-Translator: Lloyd Carr <l.carr@gmx.de>\n"
 "Language-Team: German "
 "<https://weblate.elementary.io/projects/files/files/de/>\n"
@@ -393,7 +393,7 @@ msgstr " (noch eine Kopie)"
 #: ../libcore/marlin-file-operations.c:474
 #: ../libcore/marlin-file-operations.c:484
 msgid "th copy)"
-msgstr ". Kopie)"
+msgstr "th Kopie)"
 
 #: ../libcore/marlin-file-operations.c:477
 msgid "st copy)"
@@ -993,7 +993,7 @@ msgstr[1] "Verschieben von %'d Dateien wird vorbereitet"
 #: ../libcore/marlin-file-operations.c:5108
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr "Fehler beim Verschieben von »%F«"
+msgstr "Fehler beim Verschieben von »%F«."
 
 #: ../libcore/marlin-file-operations.c:5109
 #, c-format
@@ -1022,8 +1022,8 @@ msgstr "Fehler beim Anlegen einer Verknüpfung mit »%B«."
 #: ../libcore/marlin-file-operations.c:5554
 msgid "Symbolic links only supported for local files"
 msgstr ""
-"Symbolische Verknüpfungen werden ausschließlich auf lokalen Dateisystemen "
-"unterstützt."
+"Symbolische Verknüpfungen werden ausschließlich für lokale Dateien "
+"unterstützt"
 
 #: ../libcore/marlin-file-operations.c:5557
 msgid "The target doesn't support symbolic links."
@@ -1870,7 +1870,7 @@ msgstr "Der Papierkorb ist leer"
 
 #: ../src/View/Slot.vala:34
 msgid "There Are No Recent Files"
-msgstr "Es gibt keine zuletzt verwendete Dateien."
+msgstr "Es gibt keine zuletzt verwendeten Dateien"
 
 #: ../src/View/Slot.vala:35
 msgid "Access Denied"
@@ -1903,7 +1903,7 @@ msgstr "Zur Anzeige dieses Ordners fehlen Ihnen die Zugriffsrechte."
 
 #: ../src/View/ViewContainer.vala:416
 msgid "Unable to Mount Folder"
-msgstr "Der Ordner kann nicht eingehängt werden."
+msgstr "Der Ordner kann nicht eingehängt werden"
 
 #: ../src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
@@ -1916,7 +1916,7 @@ msgstr "Ordnerinhalt kann nicht angezeigt werden"
 
 #: ../src/View/ViewContainer.vala:420
 msgid "The operation timed out."
-msgstr "Zeitüberschreitung"
+msgstr "Zeitüberschreitung."
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
@@ -2166,7 +2166,7 @@ msgstr "Alle laufenden Aktionen abbrechen"
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr "Dateien durchsuchen"
+msgstr "Dateien und Ordner durchsuchen"
 
 #: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
@@ -2191,7 +2191,7 @@ msgstr "Dateien unterschiedlichen Typs ausgewählt"
 #: ../src/Utils/MimeActions.vala:261
 msgid "No single app can open all these types of file"
 msgstr ""
-"Es ist keine Anwendung installiert, die all diese Dateitypen öffnen könnte."
+"Es ist keine Anwendung installiert, die all diese Dateitypen öffnen könnte"
 
 #: ../src/Utils/MimeActions.vala:288
 msgid "Failed to open files"
@@ -2204,7 +2204,7 @@ msgstr "Adressen konnten nicht geöffnet werden"
 #: ../src/Utils/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
 msgstr ""
-"Mit dieser Anwendung konnten die Dateien bzw. Adressen nicht geöffnet werden."
+"Mit dieser Anwendung können die Dateien bzw. Adressen nicht geöffnet werden"
 
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
