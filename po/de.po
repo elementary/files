@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-07-10 14:42+0000\n"
-"Last-Translator: Uwe S <saabisto@gmx.de>\n"
-"Language-Team: German <https://l10n.elementary.io/projects/files/files/de/>\n"
+"PO-Revision-Date: 2017-09-06 14:07+0000\n"
+"Last-Translator: Lloyd Carr <l.carr@gmx.de>\n"
+"Language-Team: German "
+"<https://weblate.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14\n"
+"X-Generator: Weblate 2.16\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -2033,9 +2034,8 @@ msgid "Permissions"
 msgstr "Zugriffsrechte"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
-#, fuzzy
 msgid "Actual Size Could Be Larger"
-msgstr "Tatsächlich möglicherweise größer"
+msgstr "Tatsächliche Größe möglicherweise größer"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
@@ -2319,9 +2319,8 @@ msgid "In This Folder"
 msgstr "In diesem Ordner"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "In diesem Ordner"
+msgstr "Unterhalb dieses Ordners"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
