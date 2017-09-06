@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
 "PO-Revision-Date: 2017-09-06 18:00+0000\n"
-"Last-Translator: Patrick van Efferen <patrickvanefferen@gmail.com>\n"
+"Last-Translator: Dieter Debast <dieter_debast@hotmail.com>\n"
 "Language-Team: Dutch <https://weblate.elementary.io/projects/files/files/nl/>"
 "\n"
 "Language: nl\n"
@@ -1673,7 +1673,7 @@ msgstr "Openen in nieuw venster"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "Openen in andere toepassing..."
+msgstr "Openen in andere toepassing…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -2072,7 +2072,7 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Andere toepassing..."
+msgstr "Andere toepassing…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
