@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
 "PO-Revision-Date: 2017-09-06 17:57+0000\n"
-"Last-Translator: Patrick van Efferen <patrickvanefferen@gmail.com>\n"
+"Last-Translator: Dieter Debast <dieter_debast@hotmail.com>\n"
 "Language-Team: Dutch <https://weblate.elementary.io/projects/files/files/nl/>"
 "\n"
 "Language: nl\n"
@@ -632,7 +632,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
-"Kan bestand niet naar de prullenbak verplaatsen. Wil je het bestand direct "
+"Kan bestand niet naar de prullenbak verplaatsen. Wilt u het bestand direct "
 "proberen te verwijderen?"
 
 #: ../libcore/marlin-file-operations.c:1956
