@@ -17,7 +17,7 @@
 
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 
-    Some convenience wrappers around libcanberra for using sounds within pantheon-files.
+    Some convenience wrappers around libcanberra for using sounds within io.elementary.files.
 
  ***/
 
@@ -61,7 +61,7 @@ namespace PF {
 
     namespace Sound {
         const string APP_TITLE = "Files";
-        const string APP_ID = "org.pantheon.files";
+        const string APP_ID = "io.elementary.files";
         const string APP_LOGO = "system-file-manager";
         public const string THEME = "freedesktop";
         public const string DELETE = "trash-empty";

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2016-2017 elementary, LLC <contact@elementary.io> -->
 <component type="desktop">
-  <id>org.pantheon.files.desktop</id>
+  <id>io.elementary.files.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_group>elementary</project_group>
   <project_license>GPL-3.0+</project_license>
@@ -13,9 +13,9 @@
     </_p>
   </description>
   <provides>
-    <binary>pantheon-files</binary>
-    <binary>pantheon-files-daemon</binary>
-    <binary>pantheon-files-pkexec</binary>
+    <binary>io.elementary.files</binary>
+    <binary>io.elementary.files-daemon</binary>
+    <binary>io.elementary.files-pkexec</binary>
   </provides>
   <releases>
     <release version="0.3.5" date="2017-06-03" urgency="medium">

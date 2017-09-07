@@ -55,7 +55,7 @@ public class Async : Object {
     public State state {get; private set;}
 
     private HashTable<GLib.File,GOF.File> file_hash;
-    public uint files_count;
+    public uint files_count {get; private set;}
 
     public bool permission_denied = false;
     public bool network_available = true;
@@ -134,7 +134,7 @@ public class Async : Object {
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
         can_open_files = !("mtp".contains (scheme));
-        can_stream_files = !("ftp sftp mtp dav davs".contains (scheme));
+        can_stream_files = !("ftp sftp mtp".contains (scheme));
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
     }
