@@ -125,11 +125,11 @@ namespace FM {
                 return null;
         }
 
-        public override void select_all () {
+        public override void tree_select_all () {
             tree.get_selection ().select_all ();
         }
 
-        public override void unselect_all () {
+        public override void tree_unselect_all () {
             tree.get_selection ().unselect_all ();
         }
 

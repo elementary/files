@@ -14,7 +14,7 @@
     with this program. If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-public const string APP_NAME = "pantheon-files";
+public const string APP_NAME = "io.elementary.files";
 public const string TERMINAL_NAME = "pantheon-terminal";
 
 public static int main (string[] args) {

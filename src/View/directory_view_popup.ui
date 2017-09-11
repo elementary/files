@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<interface  domain='pantheon-files'>
+<interface  domain='io.elementary.files'>
     <menu id='popup-trash-selection'>
         <item>
             <attribute name='label' translatable='yes'>Restore from Trash</attribute>

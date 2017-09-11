@@ -401,6 +401,7 @@ gof_file_update_type (GOFFile *file)
     gof_file_icon_changed (file);
 }
 
+/** Avoid calling this unnecessarily (e.g. for whole directory if not visible) **/
 void
 gof_file_update (GOFFile *file)
 {
@@ -745,10 +746,6 @@ void gof_file_update_emblem (GOFFile *file)
         file->emblems_list = NULL;
     }
 
-    if(plugins != NULL)
-        marlin_plugin_manager_update_file_info (plugins, file);
-
-
     if(gof_file_is_symlink(file) || (file->is_desktop && file->target_gof))
     {
         gof_file_add_emblem(file, "emblem-symbolic-link");
@@ -876,8 +873,9 @@ gof_file_query_update (GOFFile *file)
 gboolean
 gof_file_ensure_query_info (GOFFile *file)
 {
-    if (file->info == NULL)
+    if (file->info == NULL) {
         gof_file_query_update (file);
+    }
 
     return (file->info != NULL);
 }

@@ -8,17 +8,18 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-01-11 23:02+0000\n"
-"Last-Translator: gogo <trebelnik2@gmail.com>\n"
-"Language-Team: Croatian <hr@li.org>\n"
+"PO-Revision-Date: 2017-08-16 12:17+0000\n"
+"Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
+"Language-Team: Croatian "
+"<https://weblate.elementary.io/projects/files/files/hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -981,7 +982,7 @@ msgstr[2] "Priprema za premještanje %'d datoteka"
 #: ../libcore/marlin-file-operations.c:5108
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr "Greška pri premještanju \"%F\""
+msgstr "Greška pri premještanju \"%F\"."
 
 #: ../libcore/marlin-file-operations.c:5109
 #, c-format
@@ -1006,7 +1007,7 @@ msgstr[2] "Stvaranje poveznica na %'d datoteka"
 
 #: ../libcore/marlin-file-operations.c:5552
 msgid "Error while creating link to %B."
-msgstr "Greška pri stvaranju poveznice na %B"
+msgstr "Greška pri stvaranju poveznice na %B."
 
 #: ../libcore/marlin-file-operations.c:5554
 msgid "Symbolic links only supported for local files"
@@ -1697,7 +1698,7 @@ msgstr "Otvori u novom prozoru"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "Otvori u drugoj aplikaciji..."
+msgstr "Otvori u drugoj aplikaciji…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1918,11 +1919,11 @@ msgstr "Nemoguće povezivanje s poslužiteljem ove mape."
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Nemoguć prikaz sadržaja mape"
 
 #: ../src/View/ViewContainer.vala:420
 msgid "The operation timed out."
-msgstr ""
+msgstr "Vrijeme radnje isteklo."
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
@@ -1950,7 +1951,7 @@ msgstr "Ovori uri(e) u novoj kartici"
 
 #: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Novom prozoru"
+msgstr "Novi prozor"
 
 #: ../src/Application.vala:140
 msgid "Quit Files."
@@ -2060,7 +2061,7 @@ msgstr "nepoznato"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "Učitavanje..."
+msgstr "Učitavanje…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2100,7 +2101,7 @@ msgstr "Izvorna lokacija:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Ostale aplikacije..."
+msgstr "Ostale aplikacije…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2219,7 +2220,7 @@ msgstr "Početnu lokaciju \"%s\" nije moguće odrediti "
 
 #: ../libcore/FileUtils.vala:61
 msgid "The item cannot be restored from trash"
-msgstr "Stavka iz smeća se ne može vratiti na izvornu lokaciju."
+msgstr "Stavka iz smeća se ne može vratiti na izvornu lokaciju"
 
 #: ../libcore/FileUtils.vala:345
 msgid "Could not rename to '%s'"
@@ -2227,15 +2228,15 @@ msgstr "Nemoguće preimenovati u '%s'"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Danas u %-H:%M"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Jučer u %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A u %-H:%M"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
@@ -2263,7 +2264,7 @@ msgstr "Odustani"
 
 #: ../libcore/gof-directory-async.vala:611
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Poslužitelj nije odgovorio u zadanom vremenu"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
@@ -2326,22 +2327,20 @@ msgid "In This Folder"
 msgstr "U ovoj mapi"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "U ovoj mapi"
+msgstr "Ispod ove mape"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
 msgstr "Zabilješke"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
-msgstr "Nedavno"
+msgstr "Nedavno korišteno"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Povezivanje s poslužiteljem..."
+msgstr "Povezivanje s poslužiteljem…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
