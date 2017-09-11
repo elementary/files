@@ -11,8 +11,8 @@ add_translations_catalog(${GETTEXT_PACKAGE}
     ../plugins/network-places
     ../plugins/pantheon-files-trash
     DESKTOP_FILES
-        ../data/pantheon-files.desktop.in
+        ../data/io.elementary.files.desktop.in
     APPDATA_FILES
-        ../data/org.pantheon.files.appdata.xml.in
-        ${CMAKE_BINARY_DIR}/data/net.launchpad.pantheon-files.policy.xml.in
+        ../data/io.elementary.files.appdata.xml.in
+        ${CMAKE_BINARY_DIR}/data/io.elementary.files.policy.xml.in
 )

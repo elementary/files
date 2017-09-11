@@ -6,18 +6,20 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
-"Report-Msgid-Bugs-To: gogo <trebelnik2@gmail.com>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-01-11 23:02+0000\n"
-"Last-Translator: gogo <trebelnik2@gmail.com>\n"
-"Language-Team: Croatian <hr@li.org>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-06 13:44-0700\n"
+"PO-Revision-Date: 2017-08-16 12:17+0000\n"
+"Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
+"Language-Team: Croatian "
+"<https://weblate.elementary.io/projects/files/files/hr/>\n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -284,44 +286,6 @@ msgstr "Zamijeni"
 msgid "File conflict"
 msgstr "Sukob datoteka"
 
-#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
-msgid "Inaccessible"
-msgstr "Nedostupno"
-
-#: ../libcore/gof-file.c:377
-#, c-format
-msgid "link to %s"
-msgstr "poveznica na %s"
-
-#: ../libcore/gof-file.c:1934
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Nemoguće je obraditi datoteku radne površine: %s"
-
-#: ../libcore/gof-file.c:1971
-msgid "No Exec field specified"
-msgstr "Izvršno polje nije definirano"
-
-#: ../libcore/gof-file.c:1990
-msgid "No URL field specified"
-msgstr "URL polje nije definirano"
-
-#: ../libcore/gof-file.c:1996
-msgid "Invalid desktop file"
-msgstr "Neispravna datoteka radne površine"
-
-#: ../libcore/gof-file.c:2291
-msgid "Slashes are not allowed in filenames"
-msgstr "Kose crte nisu dopuštene u nazivu datoteka"
-
-#: ../libcore/gof-file.c:2311
-msgid "Toplevel files cannot be renamed"
-msgstr "Datoteke najviše razine se ne mogu preimenovati"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Prikaži više _pojedinosti"
-
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
 msgstr " (neispravan unikôd)"
@@ -533,7 +497,7 @@ msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Sve stavke u smeću s ovog montiranog uređaja bit će trajno obrisane."
 
 #: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1512
+#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
 msgid "Empty _Trash"
 msgstr "Isprazni _smeće"
 
@@ -640,8 +604,7 @@ msgid "Cannot move file to trash or delete it"
 msgstr "Nemoguće brisanje ili  premještanje datoteke u smeće"
 
 #: ../libcore/marlin-file-operations.c:1947
-msgid ""
-"It is not permitted to trash or delete files on a read only filesystem."
+msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Nije dopušteno premještanje u smeće ili brisanje datoteka na sustavu s "
 "dozvolom čitanja."
@@ -664,8 +627,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
-"Nemoguće premještanje datoteke u smeće. Želite li ju trajno obrisati?"
+msgstr "Nemoguće premještanje datoteke u smeće. Želite li ju trajno obrisati?"
 
 #: ../libcore/marlin-file-operations.c:1956
 msgid ""
@@ -677,8 +639,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
-"Nemoguće premještanje datoteke u smeće. Želite li ju trajno obrisati?"
+msgstr "Nemoguće premještanje datoteke u smeće. Želite li ju trajno obrisati?"
 
 #: ../libcore/marlin-file-operations.c:1961
 msgid ""
@@ -1021,7 +982,7 @@ msgstr[2] "Priprema za premještanje %'d datoteka"
 #: ../libcore/marlin-file-operations.c:5108
 #, c-format
 msgid "Error while moving \"%F\"."
-msgstr "Greška pri premještanju \"%F\""
+msgstr "Greška pri premještanju \"%F\"."
 
 #: ../libcore/marlin-file-operations.c:5109
 #, c-format
@@ -1046,7 +1007,7 @@ msgstr[2] "Stvaranje poveznica na %'d datoteka"
 
 #: ../libcore/marlin-file-operations.c:5552
 msgid "Error while creating link to %B."
-msgstr "Greška pri stvaranju poveznice na %B"
+msgstr "Greška pri stvaranju poveznice na %B."
 
 #: ../libcore/marlin-file-operations.c:5554
 msgid "Symbolic links only supported for local files"
@@ -1102,6 +1063,65 @@ msgstr "Pražnjenje smeća"
 #: ../libcore/marlin-file-operations.c:6662
 msgid "Emptying Trash"
 msgstr "Pražnjenje smeća"
+
+#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
+#: ../libcore/marlin-progress-info.c:229
+msgid "Preparing"
+msgstr "Pripremanje"
+
+#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
+msgid "Today at %-I:%M %p"
+msgstr "Danas u %-H:%M:%S"
+
+#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
+msgid "Yesterday at %-I:%M %p"
+msgstr "Jučer u %-H:%M:%S"
+
+#: ../libcore/eel-fcts.c:93
+msgid "%a %-d %b at %-I:%M %p"
+msgstr "%a %-d %b u %-H:%M:%S"
+
+#: ../libcore/eel-fcts.c:97
+msgid "%a %-d %b %Y at %-I:%M %p"
+msgstr "%a %-d %b %Y u %-H:%M:%S"
+
+#: ../libcore/eel-stock-dialogs.c:34
+msgid "Show more _details"
+msgstr "Prikaži više _pojedinosti"
+
+#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
+msgid "Inaccessible"
+msgstr "Nedostupno"
+
+#: ../libcore/gof-file.c:377
+#, c-format
+msgid "link to %s"
+msgstr "poveznica na %s"
+
+#: ../libcore/gof-file.c:1938
+#, c-format
+msgid "Failed to parse the desktop file: %s"
+msgstr "Nemoguće je obraditi datoteku radne površine: %s"
+
+#: ../libcore/gof-file.c:1975
+msgid "No Exec field specified"
+msgstr "Izvršno polje nije definirano"
+
+#: ../libcore/gof-file.c:1994
+msgid "No URL field specified"
+msgstr "URL polje nije definirano"
+
+#: ../libcore/gof-file.c:2000
+msgid "Invalid desktop file"
+msgstr "Neispravna datoteka radne površine"
+
+#: ../libcore/gof-file.c:2295
+msgid "Slashes are not allowed in filenames"
+msgstr "Kose crte nisu dopuštene u nazivu datoteka"
+
+#: ../libcore/gof-file.c:2315
+msgid "Toplevel files cannot be renamed"
+msgstr "Datoteke najviše razine se ne mogu preimenovati"
 
 #: ../libcore/marlin-undostack-manager.c:635
 msgid "Original location could not be determined"
@@ -1509,27 +1529,6 @@ msgstr[0] "Ponovi promjenu vlasnika za %d stavku"
 msgstr[1] "Ponovi promjenu vlasnika za %d stavke"
 msgstr[2] "Ponovi promjenu vlasnika za %d stavki"
 
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:436
-msgid "Today at %-I:%M %p"
-msgstr "Danas u %-H:%M:%S"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:444
-msgid "Yesterday at %-I:%M %p"
-msgstr "Jučer u %-H:%M:%S"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b u %-H:%M:%S"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d %b %Y u %-H:%M:%S"
-
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Pripremanje"
-
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
@@ -1540,318 +1539,77 @@ msgstr "Prijašnje"
 msgid "Next"
 msgstr "Sljedeće"
 
-#: ../src/View/Window.vala:204
-msgid "Files isn't your default file manager."
-msgstr "Datoteke nisu vaš zadani upravitelj datoteka."
-
-#: ../src/View/Window.vala:210
-msgid "Set as Default"
-msgstr "Postavi kao zadano"
-
-#: ../src/View/Window.vala:216
-msgid "Ignore"
-msgstr "Zanemari"
-
-#: ../src/View/Sidebar.vala:490
-msgid "Personal"
-msgstr "Osobno"
-
-#: ../src/View/Sidebar.vala:491
-msgid "Your common places and bookmarks"
-msgstr "Vaša uobičajne lokacije i zabilješke"
-
-#: ../src/View/Sidebar.vala:503 ../src/View/ViewContainer.vala:346
-msgid "Home"
-msgstr "Osobna mapa"
-
-#: ../src/View/Sidebar.vala:510
-msgid "Open your personal folder"
-msgstr "Otvori svoju osobnu mapu"
-
-#: ../src/View/Sidebar.vala:525
-msgid "View the list of recently used files"
-msgstr "Pogledaj popis nedavno korištenih datoteka"
-
-#: ../src/View/Sidebar.vala:546 ../libwidgets/Resources.vala:91
-msgid "Trash"
-msgstr "Smeće"
-
-#: ../src/View/Sidebar.vala:553
-msgid "Open the Trash"
-msgstr "Otvori smeće"
-
-#: ../src/View/Sidebar.vala:557
-msgid "Devices"
-msgstr "Uređaji"
-
-#: ../src/View/Sidebar.vala:558
-msgid "Your local partitions and devices"
-msgstr "Vaše lokalne particije i uređaji"
-
-#: ../src/View/Sidebar.vala:564 ../src/View/ViewContainer.vala:348
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:94
-msgid "File System"
-msgstr "Datotečni sustav"
-
-#: ../src/View/Sidebar.vala:682 ../libwidgets/Resources.vala:88
-msgid "Network"
-msgstr "Mreža"
-
-#: ../src/View/Sidebar.vala:683
-msgid "Your network places"
-msgstr "Vaše mrežne lokacije"
-
-#: ../src/View/Sidebar.vala:715
-msgid "Entire Network"
-msgstr "Mrežne lokacije"
-
-#: ../src/View/Sidebar.vala:722
-msgid "Browse the contents of the network"
-msgstr "Pregledaj sadržaj mreže"
-
-#: ../src/View/Sidebar.vala:854
-msgid "(%s Free of %s)"
-msgstr "(%s slobodno od %s)"
-
-#: ../src/View/Sidebar.vala:1350
-msgid "Unable to start %s"
-msgstr "Nemoguće je pokrenuti %s"
-
-#: ../src/View/Sidebar.vala:1454
-msgid "Open"
-msgstr "Otvori"
-
-#: ../src/View/Sidebar.vala:1462
-msgid "Open in New _Tab"
-msgstr "Otvori u novoj _kartici"
-
-#: ../src/View/Sidebar.vala:1468
-msgid "Open in New _Window"
-msgstr "Otvori u novom _prozoru"
-
-#: ../src/View/Sidebar.vala:1476
-msgid "Remove"
-msgstr "Ukloni"
-
-#: ../src/View/Sidebar.vala:1484 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Preimenuj"
-
-#: ../src/View/Sidebar.vala:1493
-msgid "_Mount"
-msgstr "_Montiraj"
-
-#: ../src/View/Sidebar.vala:1499
-msgid "_Unmount"
-msgstr "_Odmontiraj"
-
-#: ../src/View/Sidebar.vala:1505
-msgid "_Eject"
-msgstr "_Izbaci"
-
-#: ../src/View/Sidebar.vala:1519 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Svojstva"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Naziv datoteke"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Veličina"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Vrsta"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Promijenjeno"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:379
-msgid "This Folder Does Not Exist"
-msgstr "Ova mapa ne postoji"
-
-#: ../src/View/DirectoryNotFound.vala:28
-msgid "The folder \"%s\" can't be found."
-msgstr "Mapu \"%s\" nije moguće pronaći."
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create"
-msgstr "Stvori"
-
-#: ../src/View/DirectoryNotFound.vala:30
-msgid "Create the folder \"%s\""
-msgstr "Stvori mapu \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:44
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Neuspjelo stvaranje mape\n"
-"\n"
-"%s"
-
-#: ../src/View/AbstractDirectoryView.vala:564
+#: ../src/View/AbstractDirectoryView.vala:581
 msgid "Failed to preview"
 msgstr "Neuspješan prikaz"
 
-#: ../src/View/AbstractDirectoryView.vala:817
+#: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
 msgstr "Nemoguće otvaranje ove datoteke"
 
-#: ../src/View/AbstractDirectoryView.vala:830
+#: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
 msgstr "Nemoguće odrediti vrstu datoteke za otvaranje"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Cannot drop this file"
 msgstr "Nemoguće ispuštanje ove datoteke"
 
-#: ../src/View/AbstractDirectoryView.vala:1555
+#: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Invalid file name provided"
 msgstr "Neispravan dani naziv datoteke"
 
-#: ../src/View/AbstractDirectoryView.vala:2010
+#: ../src/View/AbstractDirectoryView.vala:2011
 msgid "Invalid"
 msgstr "Neispravan"
 
-#: ../src/View/AbstractDirectoryView.vala:2016
+#: ../src/View/AbstractDirectoryView.vala:2017
 msgid "Run"
 msgstr "Pokreni"
 
-#: ../src/View/AbstractDirectoryView.vala:2021
+#: ../src/View/AbstractDirectoryView.vala:2022
 msgid "Open in %s"
 msgstr "Otvori s(a) %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2031
+#: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
 msgstr "Otvori u"
 
-#: ../src/View/AbstractDirectoryView.vala:2033
+#: ../src/View/AbstractDirectoryView.vala:2034
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
 msgid "Open with"
 msgstr "Otvori s"
 
-#: ../src/View/AbstractDirectoryView.vala:2093
+#: ../src/View/AbstractDirectoryView.vala:2094
 msgid "Other Application"
 msgstr "Drugom aplikacijom"
 
-#: ../src/View/AbstractDirectoryView.vala:2354
+#: ../src/View/AbstractDirectoryView.vala:2355
 msgid "Untitled %s"
 msgstr "Neimenovano %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2678
-#: ../src/View/AbstractDirectoryView.vala:2861
+#: ../src/View/AbstractDirectoryView.vala:2689
+#: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
 msgstr "Nemoguće je uklanjanje datoteka odavdje"
 
-#: ../src/View/AbstractDirectoryView.vala:2679
-#: ../src/View/AbstractDirectoryView.vala:2849
-#: ../src/View/AbstractDirectoryView.vala:2862
+#: ../src/View/AbstractDirectoryView.vala:2690
+#: ../src/View/AbstractDirectoryView.vala:2860
+#: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
 msgstr "Nemate dozvolu za mijenjanje ove lokacije"
 
-#: ../src/View/AbstractDirectoryView.vala:2827
+#: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
 msgstr "Nemoguće kopiranje datoteka koje su u smeću"
 
-#: ../src/View/AbstractDirectoryView.vala:2828
+#: ../src/View/AbstractDirectoryView.vala:2839
 msgid "Cutting the selection instead"
 msgstr "Umjesto toga rezanje odabira"
 
-#: ../src/View/AbstractDirectoryView.vala:2848
+#: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
 msgstr "Nemoguće je zalijepiti datoteke ovdje"
-
-#: ../src/View/ViewContainer.vala:361
-msgid "(as Administrator)"
-msgstr "(kao administrator)"
-
-#: ../src/View/ViewContainer.vala:380
-msgid "You cannot create a folder here."
-msgstr "Ne možete stvoriti mapu ovdje."
-
-#: ../src/View/ViewContainer.vala:383
-msgid "The network is unavailable"
-msgstr "Mreža je nedostupna"
-
-#: ../src/View/ViewContainer.vala:384
-msgid "A working network is needed to reach this folder"
-msgstr "Potrebna je ispravna mreža za pristup ovoj mapi"
-
-#: ../src/View/ViewContainer.vala:386
-msgid "This Folder Does Not Belong to You"
-msgstr "Ova mapa vam ne pripada"
-
-#: ../src/View/ViewContainer.vala:387
-msgid "You don't have permission to view this folder."
-msgstr "Nemate dozvolu za gledanje ova mape."
-
-#: ../src/View/ViewContainer.vala:389
-msgid "Unable to Mount Folder"
-msgstr "Nemoguće montiranje mape"
-
-#: ../src/View/ViewContainer.vala:390
-msgid "Could not connect to the server for this folder."
-msgstr "Nemoguće povezivanje s poslužiteljem ove mape."
-
-#: ../src/View/ViewContainer.vala:392
-msgid "Unable to Display Folder Contents"
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:393
-msgid "The operation timed out."
-msgstr ""
-
-#: ../src/View/ViewContainer.vala:395
-msgid "Unable to Show Folder"
-msgstr "Nemoguće je prikazati mapu"
-
-#: ../src/View/ViewContainer.vala:396
-msgid "The server for this folder could not be located."
-msgstr "Poslužitelja ove mape nije moguće locirati."
-
-#: ../src/View/ViewContainer.vala:406
-msgid "File not Found"
-msgstr "Datoteka nije pronađena"
-
-#: ../src/View/ViewContainer.vala:407
-msgid "The file selected no longer exists."
-msgstr "Odabrana datoteka više ne postoji."
-
-#: ../src/View/Slot.vala:32
-msgid "This Folder Is Empty"
-msgstr "Ova mapa je prazna"
-
-#: ../src/View/Slot.vala:33
-msgid "Trash Is Empty"
-msgstr "Smeće je prazno"
-
-#: ../src/View/Slot.vala:34
-msgid "There Are No Recent Files"
-msgstr "Nema nedavnih datoteka"
-
-#: ../src/View/Slot.vala:35
-msgid "Access Denied"
-msgstr "Pristup odbijen"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
-msgid "Open in New Tab"
-msgstr "Otvori u novoj kartici"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
-msgid "Open in New Window"
-msgstr "Otvori u novom prozoru"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
-msgid "Open in Other Application…"
-msgstr "Otvori u drugoj aplikaciji..."
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1930,6 +1688,18 @@ msgstr "%u datoteka nije čitljiva"
 msgid "%u files not readable"
 msgstr "%u datoteka nije čitljivo"
 
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
+msgid "Open in New Tab"
+msgstr "Otvori u novoj kartici"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
+msgid "Open in New Window"
+msgstr "Otvori u novom prozoru"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
+msgid "Open in Other Application…"
+msgstr "Otvori u drugoj aplikaciji…"
+
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
 msgstr "Čitanje"
@@ -1942,31 +1712,260 @@ msgstr "Pisanje"
 msgid "Execute"
 msgstr "Pokretanje"
 
-#: ../src/Application.vala:150
+#: ../src/View/Window.vala:205
+msgid "Files isn't your default file manager."
+msgstr "Datoteke nisu vaš zadani upravitelj datoteka."
+
+#: ../src/View/Window.vala:211
+msgid "Set as Default"
+msgstr "Postavi kao zadano"
+
+#: ../src/View/Window.vala:217
+msgid "Ignore"
+msgstr "Zanemari"
+
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Naziv datoteke"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
+msgid "Size"
+msgstr "Veličina"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
+msgid "Type"
+msgstr "Vrsta"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Promijenjeno"
+
+#: ../src/View/Sidebar.vala:503
+msgid "Personal"
+msgstr "Osobno"
+
+#: ../src/View/Sidebar.vala:504
+msgid "Your common places and bookmarks"
+msgstr "Vaša uobičajne lokacije i zabilješke"
+
+#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:373
+msgid "Home"
+msgstr "Osobna mapa"
+
+#: ../src/View/Sidebar.vala:523
+msgid "Open your personal folder"
+msgstr "Otvori svoju osobnu mapu"
+
+#: ../src/View/Sidebar.vala:538
+msgid "View the list of recently used files"
+msgstr "Pogledaj popis nedavno korištenih datoteka"
+
+#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr "Smeće"
+
+#: ../src/View/Sidebar.vala:571
+msgid "Open the Trash"
+msgstr "Otvori smeće"
+
+#: ../src/View/Sidebar.vala:576
+msgid "Devices"
+msgstr "Uređaji"
+
+#: ../src/View/Sidebar.vala:577
+msgid "Your local partitions and devices"
+msgstr "Vaše lokalne particije i uređaji"
+
+#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:375
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:68
+msgid "File System"
+msgstr "Datotečni sustav"
+
+#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
+msgid "Network"
+msgstr "Mreža"
+
+#: ../src/View/Sidebar.vala:702
+msgid "Your network places"
+msgstr "Vaše mrežne lokacije"
+
+#: ../src/View/Sidebar.vala:734
+msgid "Entire Network"
+msgstr "Mrežne lokacije"
+
+#: ../src/View/Sidebar.vala:741
+msgid "Browse the contents of the network"
+msgstr "Pregledaj sadržaj mreže"
+
+#: ../src/View/Sidebar.vala:874
+msgid "(%s Free of %s)"
+msgstr "(%s slobodno od %s)"
+
+#: ../src/View/Sidebar.vala:1370
+msgid "Unable to start %s"
+msgstr "Nemoguće je pokrenuti %s"
+
+#: ../src/View/Sidebar.vala:1474
+msgid "Open"
+msgstr "Otvori"
+
+#: ../src/View/Sidebar.vala:1482
+msgid "Open in New _Tab"
+msgstr "Otvori u novoj _kartici"
+
+#: ../src/View/Sidebar.vala:1488
+msgid "Open in New _Window"
+msgstr "Otvori u novom _prozoru"
+
+#: ../src/View/Sidebar.vala:1496
+msgid "Remove"
+msgstr "Ukloni"
+
+#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Preimenuj"
+
+#: ../src/View/Sidebar.vala:1513
+msgid "_Mount"
+msgstr "_Montiraj"
+
+#: ../src/View/Sidebar.vala:1519
+msgid "_Unmount"
+msgstr "_Odmontiraj"
+
+#: ../src/View/Sidebar.vala:1525
+msgid "_Eject"
+msgstr "_Izbaci"
+
+#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:99
+msgid "Properties"
+msgstr "Svojstva"
+
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
+msgid "This Folder Does Not Exist"
+msgstr "Ova mapa ne postoji"
+
+#: ../src/View/DirectoryNotFound.vala:28
+msgid "The folder \"%s\" can't be found."
+msgstr "Mapu \"%s\" nije moguće pronaći."
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Stvori"
+
+#: ../src/View/DirectoryNotFound.vala:30
+msgid "Create the folder \"%s\""
+msgstr "Stvori mapu \"%s\""
+
+#: ../src/View/DirectoryNotFound.vala:44
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Neuspjelo stvaranje mape\n"
+"\n"
+"%s"
+
+#: ../src/View/Slot.vala:32
+msgid "This Folder Is Empty"
+msgstr "Ova mapa je prazna"
+
+#: ../src/View/Slot.vala:33
+msgid "Trash Is Empty"
+msgstr "Smeće je prazno"
+
+#: ../src/View/Slot.vala:34
+msgid "There Are No Recent Files"
+msgstr "Nema nedavnih datoteka"
+
+#: ../src/View/Slot.vala:35
+msgid "Access Denied"
+msgstr "Pristup odbijen"
+
+#: ../src/View/ViewContainer.vala:388
+msgid "(as Administrator)"
+msgstr "(kao administrator)"
+
+#: ../src/View/ViewContainer.vala:407
+msgid "You cannot create a folder here."
+msgstr "Ne možete stvoriti mapu ovdje."
+
+#: ../src/View/ViewContainer.vala:410
+msgid "The network is unavailable"
+msgstr "Mreža je nedostupna"
+
+#: ../src/View/ViewContainer.vala:411
+msgid "A working network is needed to reach this folder"
+msgstr "Potrebna je ispravna mreža za pristup ovoj mapi"
+
+#: ../src/View/ViewContainer.vala:413
+msgid "This Folder Does Not Belong to You"
+msgstr "Ova mapa vam ne pripada"
+
+#: ../src/View/ViewContainer.vala:414
+msgid "You don't have permission to view this folder."
+msgstr "Nemate dozvolu za gledanje ova mape."
+
+#: ../src/View/ViewContainer.vala:416
+msgid "Unable to Mount Folder"
+msgstr "Nemoguće montiranje mape"
+
+#: ../src/View/ViewContainer.vala:417
+msgid "Could not connect to the server for this folder."
+msgstr "Nemoguće povezivanje s poslužiteljem ove mape."
+
+#: ../src/View/ViewContainer.vala:419
+msgid "Unable to Display Folder Contents"
+msgstr "Nemoguć prikaz sadržaja mape"
+
+#: ../src/View/ViewContainer.vala:420
+msgid "The operation timed out."
+msgstr "Vrijeme radnje isteklo."
+
+#: ../src/View/ViewContainer.vala:422
+msgid "Unable to Show Folder"
+msgstr "Nemoguće je prikazati mapu"
+
+#: ../src/View/ViewContainer.vala:423
+msgid "The server for this folder could not be located."
+msgstr "Poslužitelja ove mape nije moguće locirati."
+
+#: ../src/View/ViewContainer.vala:433
+msgid "File not Found"
+msgstr "Datoteka nije pronađena"
+
+#: ../src/View/ViewContainer.vala:434
+msgid "The file selected no longer exists."
+msgstr "Odabrana datoteka više ne postoji."
+
+#: ../src/Application.vala:134
 msgid "Show the version of the program."
 msgstr "Prikaži inačicu programa."
 
-#: ../src/Application.vala:152
+#: ../src/Application.vala:136
 msgid "Open uri(s) in new tab"
 msgstr "Ovori uri(e) u novoj kartici"
 
-#: ../src/Application.vala:154 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Novom prozoru"
+msgstr "Novi prozor"
 
-#: ../src/Application.vala:156
+#: ../src/Application.vala:140
 msgid "Quit Files."
 msgstr "Zatvori Datoteke."
 
-#: ../src/Application.vala:158
+#: ../src/Application.vala:142
 msgid "Enable debug logging"
 msgstr "Omogući zapisivanje grešaka"
 
-#: ../src/Application.vala:161
+#: ../src/Application.vala:145
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:164
+#: ../src/Application.vala:148
 msgid ""
 "\n"
 "\n"
@@ -1976,95 +1975,13 @@ msgstr ""
 "\n"
 "Pregledaj datotečni sustav s upraviteljem datoteka"
 
-#: ../src/Application.vala:191
+#: ../src/Application.vala:175
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nije moguće koristiti s URI-jima."
-
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr "Pregledaj svoje datoteke"
-
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr "Upravitelj datoteka"
-
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr "Novi _prozor"
-
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Novi prozor kao _administrator"
-
-#: ../src/DesktopLauncher.vala:25
-msgid "About _Files"
-msgstr "O Datotekama"
-
-#: ../src/DesktopLauncher.vala:26 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Datoteke"
-
-#: ../src/Utils/MimeActions.vala:260
-msgid "Multiple file types selected"
-msgstr "Više vrsta datoteka odabrano"
-
-#: ../src/Utils/MimeActions.vala:261
-msgid "No single app can open all these types of file"
-msgstr "Nijedna aplikacija ne može otvoriti sve te vrste datoteka"
-
-#: ../src/Utils/MimeActions.vala:288
-msgid "Failed to open files"
-msgstr "Neuspjelo otvaranje datoteka"
-
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "Neuspjelo otvaranje url-ova"
-
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
-msgstr "Neuspjelo otvaranje datoteka ili url-ova s ovom aplikacijom"
-
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
-msgid "File Operations"
-msgstr "Radnje datoteka"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
-msgid "Completed %s"
-msgstr "Završeno %s"
-
-#: ../src/ProgressUIHandler.vala:195
-msgid "All file operations have ended"
-msgstr "Sve radnje datoteke su završene"
-
-#: ../src/ProgressUIHandler.vala:240
-msgid "Show Copy Dialog"
-msgstr "Prikaži dijalog kopiranja"
-
-#: ../src/ProgressUIHandler.vala:252
-msgid "Cancel All In-progress Actions"
-msgstr "Odustajanje od radnji u tijeku"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
 msgstr "Nema ništa u međuspremniku za zalijepiti"
-
-#: ../src/Dialogs/ChooseAppDialog.vala:40
-msgid "Set as default"
-msgstr "Postavi kao zadano"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Svojstva diska"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Lokacija:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Format:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2102,6 +2019,23 @@ msgstr "Dostupno:"
 msgid "Used:"
 msgstr "Iskorišteno:"
 
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Svojstva diska"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: ../src/Dialogs/PropertiesWindow.vala:561
+msgid "Location:"
+msgstr "Lokacija:"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Format:"
+
+#: ../src/Dialogs/ChooseAppDialog.vala:40
+msgid "Set as default"
+msgstr "Postavi kao zadano"
+
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
 msgstr "Dozvole"
@@ -2127,7 +2061,7 @@ msgstr "nepoznato"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "Učitavanje..."
+msgstr "Učitavanje…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2167,7 +2101,7 @@ msgstr "Izvorna lokacija:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Ostale aplikacije..."
+msgstr "Ostale aplikacije…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2219,9 +2153,94 @@ msgstr[2] "%u odabranih stavki"
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: ../libcore/gof-directory-async.vala:587
-msgid "Server did not respond within time limit"
-msgstr ""
+#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+msgid "File Operations"
+msgstr "Radnje datoteka"
+
+#. / TRANSLATORS: %s will be replaced by the title of the file operation
+#: ../src/ProgressUIHandler.vala:192
+msgid "Completed %s"
+msgstr "Završeno %s"
+
+#: ../src/ProgressUIHandler.vala:195
+msgid "All file operations have ended"
+msgstr "Sve radnje datoteke su završene"
+
+#: ../src/ProgressUIHandler.vala:240
+msgid "Show Copy Dialog"
+msgstr "Prikaži dijalog kopiranja"
+
+#: ../src/ProgressUIHandler.vala:252
+msgid "Cancel All In-progress Actions"
+msgstr "Odustajanje od radnji u tijeku"
+
+#: ../src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr "Pregledaj svoje datoteke"
+
+#: ../src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr "Upravitelj datoteka"
+
+#: ../src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr "Novi _prozor"
+
+#: ../src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr "Novi prozor kao _administrator"
+
+#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Datoteke"
+
+#: ../src/Utils/MimeActions.vala:260
+msgid "Multiple file types selected"
+msgstr "Više vrsta datoteka odabrano"
+
+#: ../src/Utils/MimeActions.vala:261
+msgid "No single app can open all these types of file"
+msgstr "Nijedna aplikacija ne može otvoriti sve te vrste datoteka"
+
+#: ../src/Utils/MimeActions.vala:288
+msgid "Failed to open files"
+msgstr "Neuspjelo otvaranje datoteka"
+
+#: ../src/Utils/MimeActions.vala:298
+msgid "Failed to open uris"
+msgstr "Neuspjelo otvaranje url-ova"
+
+#: ../src/Utils/MimeActions.vala:301
+msgid "Unable to open files or uris with this app"
+msgstr "Neuspjelo otvaranje datoteka ili url-ova s ovom aplikacijom"
+
+#: ../libcore/FileUtils.vala:60
+msgid "Could not determine original location of \"%s\" "
+msgstr "Početnu lokaciju \"%s\" nije moguće odrediti "
+
+#: ../libcore/FileUtils.vala:61
+msgid "The item cannot be restored from trash"
+msgstr "Stavka iz smeća se ne može vratiti na izvornu lokaciju"
+
+#: ../libcore/FileUtils.vala:345
+msgid "Could not rename to '%s'"
+msgstr "Nemoguće preimenovati u '%s'"
+
+#: ../libcore/FileUtils.vala:436
+msgid "Today at %-H:%M"
+msgstr "Danas u %-H:%M"
+
+#: ../libcore/FileUtils.vala:444
+msgid "Yesterday at %-H:%M"
+msgstr "Jučer u %-H:%M"
+
+#: ../libcore/FileUtils.vala:453
+msgid "%A at %-H:%M"
+msgstr "%A u %-H:%M"
+
+#: ../libcore/FileUtils.vala:455
+msgid "%A at %-I:%M %p"
+msgstr "%A u %-H:%M"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2243,97 +2262,17 @@ msgstr "Poveži ovdje"
 msgid "Cancel"
 msgstr "Odustani"
 
-#: ../libcore/FileUtils.vala:60
-msgid "Could not determine original location of \"%s\" "
-msgstr "Početnu lokaciju \"%s\" nije moguće odrediti "
+#: ../libcore/gof-directory-async.vala:611
+msgid "Server did not respond within time limit"
+msgstr "Poslužitelj nije odgovorio u zadanom vremenu"
 
-#: ../libcore/FileUtils.vala:61
-msgid "The item cannot be restored from trash"
-msgstr "Stavka iz smeća se ne može vratiti na izvornu lokaciju."
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+msgid "Navigate to %s"
+msgstr "Vodi u %s"
 
-#: ../libcore/FileUtils.vala:343
-msgid "Could not rename to '%s'"
-msgstr "Nemoguće preimenovati u '%s'"
-
-#: ../libcore/FileUtils.vala:434
-msgid "Today at %-H:%M"
-msgstr ""
-
-#: ../libcore/FileUtils.vala:442
-msgid "Yesterday at %-H:%M"
-msgstr ""
-
-#: ../libcore/FileUtils.vala:451
-msgid "%A at %-H:%M"
-msgstr ""
-
-#: ../libcore/FileUtils.vala:453
-msgid "%A at %-I:%M %p"
-msgstr "%A u %-H:%M"
-
-#: ../libwidgets/View/SearchResults.vala:187
-msgid "In This Folder"
-msgstr "U ovoj mapi"
-
-#: ../libwidgets/View/SearchResults.vala:191
-msgid "Bookmarks"
-msgstr "Zabilješke"
-
-#: ../libwidgets/View/SearchResults.vala:195
-msgid "Everywhere Else"
-msgstr "Svugdje drugdje"
-
-#: ../libwidgets/Resources.vala:30
-msgid "A simple and powerful file manager"
-msgstr "Jednostavan i moćan upravitelj datoteka"
-
-#: ../libwidgets/Resources.vala:51
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  AnSukkal https://launchpad.net/~ansukkal\n"
-"  Daniel Fore https://launchpad.net/~danrabbit\n"
-"  Davor Buday https://launchpad.net/~davor-buday-gmail\n"
-"  Ivan https://launchpad.net/~ivan-os\n"
-"  Ivan Vrljić https://launchpad.net/~vrlja92\n"
-"  Nikola Curilovic https://launchpad.net/~ncurilovic\n"
-"  Paulo Pavačić https://launchpad.net/~pavacic-p\n"
-"  Siniša Perović https://launchpad.net/~sinisa-p\n"
-"  Vedran Ivančević https://launchpad.net/~vedran-ivancevic\n"
-"  gogo https://launchpad.net/~trebelnik-stefina\n"
-"  zvacet https://launchpad.net/~ivicakolic"
-
-#: ../libwidgets/Resources.vala:84
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:85
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:86
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:87
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:89
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:90
-msgid "SMB"
-msgstr "SMB"
-
-#: ../libwidgets/Resources.vala:92
-msgid "Recent"
-msgstr "Nedavno"
-
-#: ../libwidgets/Resources.vala:93
-msgid "MTP"
-msgstr "MTP"
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Go to %s"
+msgstr "Idi na %s"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
@@ -2351,17 +2290,57 @@ msgstr "Pogled popisa"
 msgid "View in Columns"
 msgstr "Pogled u stupcu"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
-msgid "Navigate to %s"
-msgstr "Vodi u %s"
+#: ../libwidgets/Resources.vala:58
+msgid "AFP"
+msgstr "AFP"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
-msgid "Go to %s"
-msgstr "Idi na %s"
+#: ../libwidgets/Resources.vala:59
+msgid "DAV"
+msgstr "DAV"
+
+#: ../libwidgets/Resources.vala:60
+msgid "DAVS"
+msgstr "DAVS"
+
+#: ../libwidgets/Resources.vala:61
+msgid "FTP"
+msgstr "FTP"
+
+#: ../libwidgets/Resources.vala:63
+msgid "SFTP"
+msgstr "SFTP"
+
+#: ../libwidgets/Resources.vala:64
+msgid "SMB"
+msgstr "SMB"
+
+#: ../libwidgets/Resources.vala:66
+msgid "Recent"
+msgstr "Nedavno"
+
+#: ../libwidgets/Resources.vala:67
+msgid "MTP"
+msgstr "MTP"
+
+#: ../libwidgets/View/SearchResults.vala:226
+msgid "In This Folder"
+msgstr "U ovoj mapi"
+
+#: ../libwidgets/View/SearchResults.vala:231
+msgid "Below This Folder"
+msgstr "Ispod ove mape"
+
+#: ../libwidgets/View/SearchResults.vala:236
+msgid "Bookmarks"
+msgstr "Zabilješke"
+
+#: ../libwidgets/View/SearchResults.vala:241
+msgid "Recently used"
+msgstr "Nedavno korišteno"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Povezivanje s poslužiteljem..."
+msgstr "Povezivanje s poslužiteljem…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
@@ -2466,3 +2445,27 @@ msgstr "Datum"
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
 msgstr "Obrnuti redoslijed"
+
+#~ msgid "About _Files"
+#~ msgstr "O Datotekama"
+
+#~ msgid "Everywhere Else"
+#~ msgstr "Svugdje drugdje"
+
+#~ msgid "A simple and powerful file manager"
+#~ msgstr "Jednostavan i moćan upravitelj datoteka"
+
+#~ msgid "translator-credits"
+#~ msgstr ""
+#~ "Launchpad Contributions:\n"
+#~ "  AnSukkal https://launchpad.net/~ansukkal\n"
+#~ "  Daniel Fore https://launchpad.net/~danrabbit\n"
+#~ "  Davor Buday https://launchpad.net/~davor-buday-gmail\n"
+#~ "  Ivan https://launchpad.net/~ivan-os\n"
+#~ "  Ivan Vrljić https://launchpad.net/~vrlja92\n"
+#~ "  Nikola Curilovic https://launchpad.net/~ncurilovic\n"
+#~ "  Paulo Pavačić https://launchpad.net/~pavacic-p\n"
+#~ "  Siniša Perović https://launchpad.net/~sinisa-p\n"
+#~ "  Vedran Ivančević https://launchpad.net/~vedran-ivancevic\n"
+#~ "  gogo https://launchpad.net/~trebelnik-stefina\n"
+#~ "  zvacet https://launchpad.net/~ivicakolic"
