@@ -3305,7 +3305,8 @@ namespace FM {
 
                 case Gdk.BUTTON_SECONDARY:
                     if (click_zone == ClickZone.NAME ||
-                        click_zone == ClickZone.BLANK_PATH) {
+                        click_zone == ClickZone.BLANK_PATH ||
+                        click_zone == ClickZone.ICON) {
 
                         select_path (path);
                     } else if (click_zone == ClickZone.INVALID) {
@@ -3313,6 +3314,8 @@ namespace FM {
                     }
 
                     unblock_drag_and_drop ();
+                    /* Ensure selected files list and menu actions are updated before context menu shown */
+                    after_selected_files_changed ();
                     result = handle_secondary_button_click (event);
                     break;
 
