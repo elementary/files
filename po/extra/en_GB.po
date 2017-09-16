@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-08-27 23:25+0000\n"
-"Last-Translator: Flyus Fly <fly_fly@popstar.com>\n"
+"PO-Revision-Date: 2017-09-16 01:20+0000\n"
+"Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: English (United Kingdom) "
 "<https://weblate.elementary.io/projects/files/extra/en_GB/>\n"
 "Language: en_GB\n"
@@ -21,28 +21,28 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 msgid "Files"
-msgstr "Fichiers"
+msgstr "Files"
 
 msgid "Browse your files"
-msgstr "Afficher vos fichiers"
+msgstr "Browse your files"
 
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr "dossier;gestionnaire;explorer;disque;file system;"
+msgstr "folder;manager;explore;disk;filesystem;"
 
 msgid "File Manager"
-msgstr "Gestionnaire de fichiers"
+msgstr "File Manager"
 
 msgid "New Window"
-msgstr "Nouvelle fenêtre"
+msgstr "New Window"
 
 msgid "New Window As Administrator"
-msgstr "Nouvelle fenêtre en tant qu'administrateur"
+msgstr "New Window As Administrator"
 
 msgid "About Files"
-msgstr "A propos des fichiers"
+msgstr "About Files"
 
 msgid "Browse and manage files and folders"
-msgstr "Afficher et gérer les fichiers et les dossiers"
+msgstr "Browse and manage files and folders"
 
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
@@ -53,82 +53,78 @@ msgstr ""
 "Easily copy, move, and rename your files, or use folders to stay organised. "
 "Whether you like files in lists, grids or columns, you can always find them "
 "right away. Access all your files, whether locally, on an external device or "
-"remotely using FTP, SFTP, AFP, Webdav, or a Windows share."
+"remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 
 msgid "Improved networking support"
-msgstr "Amélioration du support réseau"
+msgstr "Improved networking support"
 
 msgid "Correct window geometry when snapping to left or right"
-msgstr ""
+msgstr "Correct window geometry when snapping to left or right"
 
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
 msgstr ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
 
 msgid "Switching input language cancels actions"
-msgstr "Changer la langue en entrée annule les actions"
+msgstr "Switching input language cancels actions"
 
 msgid "Various crash fixes"
-msgstr "Divers correctifs de crash"
+msgstr "Various crash fixes"
 
 msgid "New translations"
-msgstr "Nouvelles traductions"
+msgstr "New translations"
 
 msgid "Minor bug fixes"
-msgstr "Correctifs mineurs de bugs"
+msgstr "Minor bug fixes"
 
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr ""
-"Les navigateurs web comme Firefox se souviennent maintenant le répertoire de "
-"downloads le plus récemment utilisé"
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
 
 msgid "Remember preferred zoom level"
-msgstr ""
+msgstr "Remember preferred zoom level"
 
 msgid "Improved input method support"
-msgstr ""
+msgstr "Improved input method support"
 
 msgid "910x640 minimum window size"
-msgstr "La taille minimum de la fenêtre doit être de 910x640"
+msgstr "910x640 minimum window size"
 
 msgid "Security fixes"
-msgstr "Correctifs de sécurité"
+msgstr "Security fixes"
 
 msgid "Enable drag and drop tabs between windows"
-msgstr "Activation du glisser/déplacer des onglets entre les fenêtres"
+msgstr "Enable drag and drop tabs between windows"
 
 msgid "Merge search functionality into Ctrl+F"
-msgstr "Fusionne les fonctionnalités de recherche via Ctrl+F"
+msgstr "Merge search functionality into Ctrl+F"
 
 msgid "Improved translation support"
-msgstr "Amélioration du support de traduction"
+msgstr "Improved translation support"
 
 msgid "Fix appdata release dates"
-msgstr ""
+msgstr "Fix appdata release dates"
 
 msgid "Improve file opening over Samba shares"
-msgstr "Amélioration de l'ouverture des fichiers via les partages Samba"
+msgstr "Improve file opening over Samba shares"
 
 msgid "Fix a crash when restoring items from the Trash"
-msgstr ""
-"Correctif d'un crash lors e la récupération des éléments à partir de la "
-"poubelle"
+msgstr "Fix a crash when restoring items from the Trash"
 
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
-"Amélioration de la sensibilité du couper/copier/coller dans le menu "
-"contextuel"
+msgstr "Improve cut/copy/paste sensitivity in context menu"
 
 msgid "Translation updates"
-msgstr "Mises à jour de traduction"
+msgstr "Translation updates"
 
 msgid "Run Pantheon Files as Administrator"
-msgstr "Exécuter les fichiers Pantheon en tant qu'administrateur"
+msgstr "Run Pantheon Files as Administrator"
 
 msgid "Authentication is required to run Files as Administrator"
-msgstr ""
-"Une authentification est nécessaire afin d'exécuter les fichiers en tant "
-"qu'administrateur"
+msgstr "Authentication is required to run Files as Administrator"
