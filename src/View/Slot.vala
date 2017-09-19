@@ -163,7 +163,7 @@ namespace Marlin.View {
 
         private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
             if (!is_frozen) {
-                dir_view.clear (); /* clear model but do not change directory */
+                dir_view.prepare_reload (dir); /* clear model but do not change directory */
                 /* view and slot are unfrozen when done loading signal received */
                 is_frozen = true;
                 path_changed (false);
