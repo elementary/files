@@ -54,25 +54,24 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         info_grid.attach (info_header, 0, 0, 2, 1);
 
         stack = new Gtk.Stack ();
-        stack.margin_bottom = 12;
         stack.add_titled (info_grid, PanelType.INFO.to_string (), _("General"));
 
         stack_switcher = new Gtk.StackSwitcher ();
-        stack_switcher.halign = Gtk.Align.CENTER;
+        stack_switcher.homogeneous = true;
         stack_switcher.margin_top = 12;
         stack_switcher.no_show_all = true;
         stack_switcher.stack = stack;
 
         layout = new Gtk.Grid ();
-        layout.margin = 6;
+        layout.margin = 12;
         layout.margin_top = 0;
         layout.column_spacing = 12;
         layout.row_spacing = 6;
         layout.attach (stack_switcher, 0, 1, 2, 1);
         layout.attach (stack, 0, 2, 2, 1);
 
-        var content_area = get_content_area () as Gtk.Box;
-        content_area.add (layout);
+        ((Gtk.Box) get_content_area ()).add (layout);
+        ((Gtk.Box) get_action_area ()).margin = 6;
 
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
