@@ -107,16 +107,18 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         ignore_dir = f_ignore_dir (directory.uri);
     }
 
-    private Variant add_entry (GOF.File gof) {
+    private void add_entry (GOF.File gof, ref GenericArray<Variant> entries) {
         return_if_fail (gof != null);
 
-        char* ptr_arr[4];
-        ptr_arr[0] = gof.uri;
-        ptr_arr[1] = gof.get_ftype ();
-        ptr_arr[2] = gof.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED).to_string ();
-        ptr_arr[3] = gof.color.to_string ();
+        var entry = new Variant.strv (
+                        { gof.uri,
+                          gof.get_ftype (),
+                          gof.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED).to_string (),
+                          gof.color.to_string ()
+                        }
+                    );
 
-        return new Variant.strv ((string[]) ptr_arr);
+        entries.add (entry);
     }
 
     private async void consume_knowns_queue () {
@@ -125,16 +127,16 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             return;
         }
 
-        Variant[] entries = null;
+        var entries = new GenericArray<Variant> ();
         GOF.File gof;
         while ((gof = knowns.pop_head ()) != null) {
-            entries += add_entry (gof);
+            add_entry (gof, ref entries);
         }
 
         if (entries != null) {
             debug ("--- known entries %d", entries.length);
             try {
-                yield daemon.record_uris (entries, directory.uri);
+                yield daemon.record_uris (entries.data, directory.uri);
             } catch (Error err) {
                 warning ("%s", err.message);
             }
@@ -295,8 +297,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void set_color (GLib.List<unowned GOF.File> files, int n) throws IOError {
-        Variant[] entries = null;
+        var entries = new GenericArray<Variant> ();
         GOF.File target_file;
+
         foreach (unowned GOF.File file in files) {
             if (file == null) {
                 continue;
@@ -309,13 +312,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             }
 
             target_file.color = n;
-            entries +=  add_entry (target_file);
+            add_entry (target_file, ref entries);
         }
 
         if (entries != null) {
             try {
                 GOF.File first = (GOF.File) (files.data);
-                yield daemon.record_uris (entries, first.uri);
+                yield daemon.record_uris (entries.data, first.uri);
                 /* If the color of the target is set while in recent view, we have to
                  * update the recent view to reflect this */
                 if (first.location.has_uri_scheme ("recent")) {
