@@ -29,13 +29,14 @@ namespace Marlin {
         public int item_width {
             set {
                 _item_width = value;
+
                 if (xalign == 0.5) {
-                    wrap_width = _item_width - 2 * (focus_border_width + (int)xpad + border_radius);
+                    wrap_width = _item_width - 2 * focus_border_width;
+                    border_radius = 5 + _item_width / 40;
                 } else {
                     wrap_width = -1;
+                    border_radius = 2;
                 }
-
-                border_radius = 5 + wrap_width / 40;
             }
 
             private get {
@@ -43,8 +44,8 @@ namespace Marlin {
             }
         }
 
-        public int text_width;
-        public int text_height;
+        private int text_width;
+        public int text_height {get; private set;}
 
         int char_height;
         int focus_border_width;
@@ -103,24 +104,12 @@ namespace Marlin {
                         out focus_rect_width, out focus_rect_height);
 
             /* Position text relative to the focus rectangle */
-            if (xalign == 0.5f) {
+            if (xalign == 0.5f) { // Icon View - Centre within focus rectangle
                 x_offset = (cell_area.width - wrap_width) / 2;
-
-                if (widget.get_direction () == Gtk.TextDirection.RTL) {
-                    x_offset -= focus_border_width;
-                } else {
-                    x_offset += focus_border_width;
-                }
-
-                y_offset += (focus_rect_height - text_height) / 2;
-            } else {
+                y_offset += int.max ((focus_rect_height - text_height) / 2, 4);
+            } else { // List View - Centre height, left align within focus rectangle
                 y_offset = (cell_area.height - char_height) / 2;
-
-                if (widget.get_direction () == Gtk.TextDirection.RTL) {
-                    x_offset += (focus_rect_width - text_width) - focus_border_width * 4;
-                } else {
-                    x_offset += focus_border_width * 2 + (int)xpad;
-                }
+                x_offset += border_radius;
             }
 
             style_context.render_layout (cr,
@@ -298,16 +287,14 @@ namespace Marlin {
 
             selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
 
-            focus_rect_height = text_height + 2 * (this.focus_border_width + border_radius);
-            focus_rect_width = text_width  + 4 * (this.focus_border_width  + border_radius);
+            focus_rect_height = text_height + 2 * focus_border_width;
+            focus_rect_width = text_width  + 2 * (focus_border_width  + border_radius);
 
-            /* Ensure that focus_rect is at least one pixel small than cell_area on each side */
-            focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);
-            focus_rect_height = int.min (focus_rect_height, cell_area.height - 2);
+            /* Ensure that focus_rect is at least two pixels small than cell_area on each side */
+            focus_rect_width = int.min (focus_rect_width, cell_area.width);
+            focus_rect_height = int.min (focus_rect_height, cell_area.height);
 
             get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
-
-
 
             /* render the background if selected or colorized */
             if (selected || this.background != null) {
@@ -315,8 +302,10 @@ namespace Marlin {
                 int y0 = cell_area.y + y_offset;
                 int x1 = x0 + focus_rect_width;
                 int y1 = y0 + focus_rect_height;
+                /* Avoid truncation of focus rectangle in ListView under RTL */
                 if (x1 >= cell_area.x + cell_area.width) {
-                    x1 = cell_area.x + cell_area.width - 1;
+                    x1 -= border_radius;
+                    x0 -= border_radius;
                 }
                 cr.move_to (x0 + border_radius, y0);
                 cr.line_to (x1 - border_radius, y0);
@@ -356,15 +345,13 @@ namespace Marlin {
                                   out int x_offset,
                                   out int y_offset) {
 
-            if (widget.get_direction () == Gtk.TextDirection.RTL) {
-                x_offset = (int)((1.0f - xalign) * (cell_area.width - width));
-                x_offset -= (int)xpad;
-            } else {
-                x_offset = (int)(xalign * (cell_area.width - width));
-                x_offset += (int)xpad;
-            }
+            var width_diff = cell_area.width - width;
+            var height_diff = cell_area.height - height;
+            var is_rtl = widget.get_direction () == Gtk.TextDirection.RTL;
+            var _xalign = is_rtl ? 1.0f - xalign : xalign;
 
-            y_offset = int.max ((int)(yalign * (cell_area.height - height)), 2);
+            x_offset = int.max ((int)(_xalign * width_diff), 2);
+            y_offset = int.max ((int)(yalign * height_diff), 2);
         }
     }
 }
