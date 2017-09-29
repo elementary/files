@@ -234,7 +234,7 @@ namespace Marlin {
                 layout.set_single_paragraph_mode (true);
                 metrics = context.get_metrics (layout.get_font_description (), context.get_language ());
                 char_height = (metrics.get_ascent () + metrics.get_descent () + 512) >> 10;
-                
+
                 if (wrap_width < 0) {
                     (this as Gtk.CellRenderer).set_fixed_size (-1, char_height);
                 }
@@ -303,7 +303,7 @@ namespace Marlin {
 
             /* Ensure that focus_rect is at least one pixel small than cell_area on each side */
             focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);
-            focus_rect_height = int.min (focus_rect_height, cell_area.height -2);
+            focus_rect_height = int.min (focus_rect_height, cell_area.height - 2);
 
             get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
 
@@ -364,7 +364,7 @@ namespace Marlin {
                 x_offset += (int)xpad;
             }
 
-            y_offset = (int)(yalign * (cell_area.height - height));
+            y_offset = int.max ((int)(yalign * (cell_area.height - height)), 2);
         }
     }
 }
