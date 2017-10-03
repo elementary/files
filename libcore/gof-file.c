@@ -401,6 +401,7 @@ gof_file_update_type (GOFFile *file)
     gof_file_icon_changed (file);
 }
 
+/** Avoid calling this unnecessarily (e.g. for whole directory if not visible) **/
 void
 gof_file_update (GOFFile *file)
 {
@@ -744,10 +745,6 @@ void gof_file_update_emblem (GOFFile *file)
         file->emblems_list = NULL;
     }
 
-    if(plugins != NULL)
-        marlin_plugin_manager_update_file_info (plugins, file);
-
-
     if(gof_file_is_symlink(file) || (file->is_desktop && file->target_gof))
     {
         gof_file_add_emblem(file, "emblem-symbolic-link");
@@ -875,8 +872,9 @@ gof_file_query_update (GOFFile *file)
 gboolean
 gof_file_ensure_query_info (GOFFile *file)
 {
-    if (file->info == NULL)
+    if (file->info == NULL) {
         gof_file_query_update (file);
+    }
 
     return (file->info != NULL);
 }
@@ -2556,6 +2554,10 @@ gof_file_get_ftype (GOFFile *file)
     if (file->info == NULL || gof_file_is_location_uri_default (file))
         return NULL;
 
+    if (file->is_directory) {
+        return g_strdup ("inode/directory");
+    }
+
     const char *ftype = NULL;
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
         return g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
@@ -2563,12 +2565,11 @@ gof_file_get_ftype (GOFFile *file)
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE))
         ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
 
-    if (!g_strcmp0 (ftype, "application/octet-stream") && file->tagstype)
+    if (!g_strcmp0 (ftype, "application/octet-stream") && file->tagstype) /* If octet-stream then check tagtype */
         return file->tagstype;
 
     return ftype;
 }
-
 
 /**
  * transfer: none

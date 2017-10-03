@@ -128,6 +128,7 @@ namespace Marlin {
 
             bool prelit = (flags & Gtk.CellRendererState.PRELIT) > 0;
             bool selected = (flags & Gtk.CellRendererState.SELECTED) > 0;
+            bool focused = (flags & Gtk.CellRendererState.FOCUSED) > 0;
             var state = Gtk.StateFlags.NORMAL;
 
             if (!widget.sensitive || !this.sensitive) {
@@ -148,7 +149,8 @@ namespace Marlin {
                         }
                     }
                 }
-                if (prelit) {
+
+                if (prelit || focused) {
                     pb = Eel.create_spotlight_pixbuf (pb);
                 }
             }
