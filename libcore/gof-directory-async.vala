@@ -34,9 +34,34 @@ public class Async : Object {
     private const int QUERY_INFO_TIMEOUT_SEC = 20;
     private const int MOUNT_TIMEOUT_SEC = 60;
 
-    public GLib.File location;
+    private GOF.File? _file = null;
+    public unowned GOF.File file {
+        get {
+            return _file;
+        }
+
+        private set {
+            this.@ref (); /* Ensure stays alive */
+
+            if (_file != null) {
+                remove_dir_from_cache (this);
+            }
+
+            _file = value;
+            add_dir_to_cache (this);
+
+            this.unref ();
+        }
+    }
+
+    public unowned GLib.File location {
+        get {
+            return file.location;
+        }
+    }
+
     public GLib.File? selected_file {get; private set;}
-    public GOF.File file;
+
     public int icon_size = 32;
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
@@ -73,7 +98,12 @@ public class Async : Object {
 
     public signal void done_loading ();
     public signal void thumbs_loaded ();
-    public signal void need_reload (bool original_request);
+    public virtual signal void will_reload () {
+        Idle.add (() => {
+            reload ();
+            return false;
+        });
+    }
 
     private uint idle_consume_changes_id = 0;
     private bool removed_from_cache;
@@ -112,15 +142,9 @@ public class Async : Object {
     public bool loaded_from_cache {get; private set; default = false;}
 
     private Async (GLib.File _file) {
-        /* Ensure uri is correctly escaped and has scheme */
-        var escaped_uri = PF.FileUtils.escape_uri (_file.get_uri ());
-        scheme = Uri.parse_scheme (escaped_uri);
-        if (scheme == null) {
-            scheme = Marlin.ROOT_FS_URI;
-            escaped_uri = scheme + escaped_uri;
-        }
-        location = GLib.File.new_for_uri (escaped_uri);
-        file = GOF.File.get (location);
+        /* Ensure consistency between the file property and the key used for caching */
+        var loc = get_cache_key (_file);
+        file = GOF.File.get (loc);
         selected_file = null;
 
         cancellable = new Cancellable ();
@@ -159,6 +183,8 @@ public class Async : Object {
         }
 
         var previous_state = state;
+        state = State.LOADING;
+
         loaded_from_cache = false;
 
         cancellable.cancel ();
@@ -169,7 +195,6 @@ public class Async : Object {
             list_cached_files (file_loaded_func);
         /* else fully initialise the directory */
         } else {
-            state = State.LOADING;
             prepare_directory.begin (file_loaded_func);
         }
         /* done_loaded signal is emitted when ready */
@@ -193,7 +218,6 @@ public class Async : Object {
                 if (parent != null) {
                     file = GOF.File.get (parent);
                     selected_file = location.dup ();
-                    location = parent;
                     success = yield get_file_info ();
                 } else {
                     debug ("Parent is null for file %s", file.uri);
@@ -406,6 +430,8 @@ public class Async : Object {
                                                                            file.is_mounted.to_string (),
                                                                            file.exists.to_string ());
             after_loading (file_loaded_func);
+            /* Remove unloadable directories from cache */
+            Async.remove_dir_from_cache (this);
             return;
         }
 
@@ -413,19 +439,9 @@ public class Async : Object {
             /* This must only be run once for each Async */
             is_ready = true;
 
-            /* Do not cache directory until it prepared and loadable to avoid an incorrect key being used in some
-             * in some cases. dir_cache will always have been created via call to public static
-             * functions from_file () or from_gfile (). Do not add toggle until cached. */
-
-            dir_cache_lock.@lock ();
-
-            directory_cache.insert (location.dup (), this);
+            /* Already in cache. Now add toggle ref. */
             this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
             this.unref (); /* Make the toggle ref the only ref */
-
-            dir_cache_lock.unlock ();
-
-
         }
 
         /* The following can run on reloading */
@@ -496,12 +512,11 @@ public class Async : Object {
 
     private void on_mount_changed (GLib.VolumeMonitor vm, GLib.Mount mount) {
         if (state == State.LOADED) {
-            need_reload (true);
+            will_reload (); // Prepare slots for a reload but do not propagate
         }
     }
 
     private static void toggle_ref_notify (void* data, Object object, bool is_last) {
-
         return_if_fail (object != null && object is Object);
 
         if (is_last) {
@@ -510,7 +525,7 @@ public class Async : Object {
 
             if (!dir.removed_from_cache) {
                 dir.@ref (); /* Add back ref removed when cached so toggle ref not removed */
-                dir.remove_dir_from_cache ();
+                remove_dir_from_cache (dir);
             }
 
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
@@ -518,14 +533,19 @@ public class Async : Object {
     }
 
     public void cancel () {
-        /* This should only be called when closing the view - it will cancel initialisation of the directory */
+        /* This should only be called when closing reloading the view.
+         * It will cancel initialisation of the directory */
         cancellable.cancel ();
         cancel_timeouts ();
     }
 
 
     public void reload () {
-        debug ("Reload - state is %s", state.to_string ());
+        if (state != State.LOADED) {
+            warning ("Too rapid reload");
+            return; /* Do not re-enter */
+        }
+
         if (state == State.TIMED_OUT && file.is_mounted) {
             debug ("Unmounting because of timeout");
             cancellable.cancel ();
@@ -547,7 +567,6 @@ public class Async : Object {
 
         cancel ();
         file_hash.remove_all ();
-        monitor = null;
         sorted_dirs = null;
         files_count = 0;
         can_load = false;
@@ -559,6 +578,7 @@ public class Async : Object {
         /* These will be reconnected if directory still (or now) loadable */
         if (monitor != null) {
             monitor.changed.disconnect (directory_changed);
+            monitor = null;
         }
 
         if (is_trash) {
@@ -568,10 +588,6 @@ public class Async : Object {
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
         debug ("list cached files");
-        if (state != State.LOADED) {
-            critical ("list cached files called in %s state - not expected to happen", state.to_string ());
-            return;
-        }
 
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
@@ -638,8 +654,6 @@ public class Async : Object {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
             debug ("Obtained file enumerator for location %s", location.get_uri ());
 
-            GOF.File? gof;
-            GLib.File loc;
             while (!cancellable.is_cancelled ()) {
                 try {
                     server_responding = false;
@@ -650,18 +664,13 @@ public class Async : Object {
                         break;
                     } else {
                         foreach (var file_info in files) {
-                            loc = location.get_child (file_info.get_name ());
-                            assert (loc != null);
-                            gof = GOF.File.cache_lookup (loc);
-
-                            if (gof == null) {
-                                gof = new GOF.File (loc, location); /*does not add to GOF file cache */
-                            }
+                            var key = Async.get_cache_key (location.get_child (file_info.get_name ()));
+                            var gof = new GOF.File (key, this.location); /*does not add to GOF file cache */
 
                             gof.info = file_info;
                             gof.update ();
 
-                            file_hash.insert (gof.location, gof);
+                            file_hash.insert (key, gof);
                             after_load_file (gof, show_hidden, file_loaded_func);
                             files_count++;
                         }
@@ -763,17 +772,20 @@ public class Async : Object {
 
     public void update_desktop_files () {
         foreach (GOF.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null
-                && (!gof.is_hidden || Preferences.get_default ().show_hidden_files)
-                && gof.is_desktop)
+
+            if (gof != null && gof.info != null &&
+                (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
+                gof.is_desktop) {
 
                 gof.update_desktop_file ();
+            }
         }
     }
 
+    /** Use to look up cache if not sure @location is in correct form for key **/
     public GOF.File? file_hash_lookup_location (GLib.File? location) {
         if (location != null && location is GLib.File) {
-            GOF.File? result = file_hash.lookup (location);
+            GOF.File? result = file_hash.lookup (Async.get_cache_key (location));
             /* Although file_hash.lookup returns an unowned value, Vala will add a reference
              * as the return value is owned.  This matches the behaviour of GOF.File.cache_lookup */
             return result;
@@ -786,23 +798,21 @@ public class Async : Object {
         file_hash.insert (gof.location, gof);
     }
 
-    public GOF.File file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
-        assert (file != null);
-        GOF.File? result = file_hash.lookup (file);
-        /* Although file_hash.lookup returns an unowned value, Vala will add a reference
-         * as the return value is owned.  This matches the behaviour of GOF.File.cache_lookup */
-        if (result == null) {
-            result = GOF.File.cache_lookup (file);
+    /** Either return an existing GOF.File from cache or, if @update_hash is true,create a new one
+      * and insert into cache.  Otherwise return null
+     **/
+    public GOF.File? file_cache_find_or_insert (GLib.File loc, bool update_hash = false) {
+        assert (loc != null);
+        var key = Async.get_cache_key (loc);
+        unowned GOF.File? result = file_hash.lookup (key);
 
-            if (result == null) {
-                result = new GOF.File (file, location);
-                file_hash.insert (file, result);
-            }
-            else if (update_hash)
-                file_hash.insert (file, result);
+        if (result == null && update_hash) {
+            var gof = new GOF.File (key, this.location);
+            file_hash.insert (key, gof);
+            return gof;
+        } else {
+            return result; /* Vala will add a reference if necessary */
         }
-
-        return (!) result;
     }
 
     /**TODO** move this to GOF.File */
@@ -881,6 +891,13 @@ public class Async : Object {
     }
 
     private void notify_file_removed (GOF.File gof) {
+        /* gof.location should be in cache key form */
+        if (file_hash.lookup (gof.location) == null) {
+            return;
+        }
+
+        file_hash.remove (gof.location);
+
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
             file_deleted (gof);
         }
@@ -956,11 +973,13 @@ public class Async : Object {
         get {
             return _freeze_update;
         }
+
         set {
             _freeze_update = value;
+
             if (!value && can_load) {
                 if (list_fchanges_count >= FCHANGES_MAX) {
-                    need_reload (true);
+                    will_reload (); // Prepare slots for a reload but do not propagate
                 } else if (list_fchanges_count > 0) {
                     list_fchanges.reverse ();
                     foreach (var fchange in list_fchanges) {
@@ -979,13 +998,17 @@ public class Async : Object {
             assert (loc != null);
             Async? parent_dir = cache_lookup_parent (loc);
             GOF.File? gof = null;
+
             if (parent_dir != null) {
                 gof = parent_dir.file_cache_find_or_insert (loc);
-                parent_dir.notify_file_changed (gof);
+                if (gof != null) {
+                    parent_dir.notify_file_changed (gof);
+                }
             }
 
             /* Has a background directory been changed (e.g. properties)? If so notify the view(s)*/
             Async? dir = cache_lookup (loc);
+
             if (dir != null) {
                 dir.notify_file_changed (dir.file);
             }
@@ -994,7 +1017,7 @@ public class Async : Object {
 
     public static void notify_files_added (List<GLib.File> files) {
         foreach (var loc in files) {
-            Async? dir = cache_lookup_parent (loc);
+            unowned Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
                 GOF.File gof = dir.file_cache_find_or_insert (loc, true);
@@ -1005,33 +1028,38 @@ public class Async : Object {
 
     public static void notify_files_removed (List<GLib.File> files) {
         List<Async> dirs = null;
-        bool found;
+        bool already_in_dirs = false;
 
         foreach (var loc in files) {
             if (loc == null) {
                 continue;
             }
 
-            Async? dir = cache_lookup_parent (loc);
+            unowned Async? dir = cache_lookup_parent (loc); /* Will use correct key */
 
             if (dir != null) {
-                GOF.File gof = dir.file_cache_find_or_insert (loc);
-                dir.notify_file_removed (gof);
-                found = false;
+                GOF.File gof = dir.file_cache_find_or_insert (loc); /* Will use correct key */
+                already_in_dirs = false;
 
-                foreach (var d in dirs) {
-                    if (d == dir) {
-                        found = true;
-                        break;
+                if (gof != null) {
+                    dir.notify_file_removed (gof);
+
+                    foreach (var d in dirs) {
+                        if (d == dir) {
+                            already_in_dirs = true;
+                            break;
+                        }
                     }
                 }
 
-                if (!found) {
+                if (!already_in_dirs) {
                     dirs.prepend (dir);
                 }
             } else {
-                dir = cache_lookup (loc);
+                dir = cache_lookup (loc); /* Will use correct key */
+
                 if (dir != null) {
+                    /* Signal itself deleted. Objects holding reference to dir should all drop them causing dir to be removed from cache.  */
                     dir.file_deleted (dir.file);
                 }
             }
@@ -1056,22 +1084,48 @@ public class Async : Object {
             list_to.prepend (to);
         }
 
-        notify_files_removed (list_from);
-        notify_files_added (list_to);
-    }
-
-    public static Async from_gfile (GLib.File file) {
-        assert (file != null);
-        /* Note: cache_lookup creates directory_cache if necessary */
-        Async?  dir = cache_lookup (file);
-        /* Both local and non-local files can be cached */
-        return dir ?? new Async (file);
+        /* For local files notify_files_removed and notify_file_added also get called via the FileMonitor so
+         * we have to make sure these functions can cope with duplicate calls. */
+        if (list_from != null && list_to != null) {
+            notify_files_removed (list_from);
+            notify_files_added (list_to);
+        }
     }
 
     public static Async from_file (GOF.File gof) {
         return from_gfile (gof.get_target_location ());
     }
 
+    public static Async from_gfile (GLib.File file) {
+        assert (file != null);
+        /* Note: cache_lookup creates directory_cache if necessary */
+         unowned Async?  cached_dir = cache_lookup (file);
+        /* Both local and non-local directories can be cached */
+        if (cached_dir == null) {
+            var new_dir = new Async (file); /* Will add to directory cache */
+            /* Added to cache early to prevent race when creating duplicate tabs */
+            /* Will be removed from cache if dir fails to load */
+            /* Toggle ref added when loaded */
+            return new_dir;
+        }
+
+        return cached_dir; /* Vala will add a reference if required. */
+    }
+
+    private static GLib.File get_cache_key (GLib.File file) {
+        /* Ensure lookup key is same as originally used to insert */
+        var escaped_uri = PF.FileUtils.escape_uri (file.get_uri ());
+        var _scheme = Uri.parse_scheme (escaped_uri);
+
+        if (_scheme == null) {
+            _scheme = Marlin.ROOT_FS_URI;
+            escaped_uri = _scheme + escaped_uri;
+        }
+
+        return GLib.File.new_for_uri (escaped_uri);
+     }
+
+    /* TODO remove this - GOF.File cache should be managed only by Async */
     public static void remove_file_from_cache (GOF.File gof) {
         assert (gof != null);
         Async? dir = cache_lookup (gof.directory);
@@ -1079,8 +1133,8 @@ public class Async : Object {
             dir.file_hash.remove (gof.location);
     }
 
-    public static Async? cache_lookup (GLib.File? file) {
-        Async? cached_dir = null;
+    public static unowned Async? cache_lookup (GLib.File? file) {
+        unowned Async? cached_dir = null;
 
         if (directory_cache == null) {
             directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
@@ -1090,56 +1144,64 @@ public class Async : Object {
 
         if (file == null) {
             critical ("Null file received in Async cache_lookup");
+            return null;
         }
 
+        var key = Async.get_cache_key (file);
         dir_cache_lock.@lock ();
-        cached_dir = directory_cache.lookup (file);
+        cached_dir = directory_cache.lookup (key);
         dir_cache_lock.unlock ();
 
-        if (cached_dir != null) {
-            if (cached_dir is Async && cached_dir.file != null) {
-                debug ("found cached dir %s", cached_dir.file.uri);
-                if (cached_dir.file.info == null && cached_dir.can_load) {
-                    debug ("updating cached file info");
-                    cached_dir.file.query_update ();  /* This is synchronous and causes blocking */
-                }
-            } else {
-                critical ("Invalid directory found in cache");
-                cached_dir = null;
-                dir_cache_lock.@lock ();
-                directory_cache.remove (file);
-                dir_cache_lock.unlock ();
-            }
-        } else {
-            debug ("Dir %s not in cache", file.get_uri ());
+        if ((cached_dir != null) &&
+            (cached_dir is Async && cached_dir.file != null) &&
+            (cached_dir.file.info == null && cached_dir.can_load)) {
+
+            warning ("updating cached file info");
+            cached_dir.file.query_update ();  /* This is synchronous and causes blocking */
         }
 
         return cached_dir;
     }
 
-    public static Async? cache_lookup_parent (GLib.File file) {
+    /** Returns parent Async if in cache else return null.
+     **/
+    public static unowned Async? cache_lookup_parent (GLib.File file) {
         if (file == null) {
             critical ("Null file submitted to cache lookup parent");
             return null;
         }
+
         GLib.File? parent = file.get_parent ();
-        return parent != null ? cache_lookup (parent) : cache_lookup (file);
+        return parent != null ? cache_lookup (parent) : null;
     }
 
-    public bool remove_dir_from_cache () {
-        removed_from_cache = true;
-        return directory_cache.remove (location);
+    public static bool remove_dir_from_cache (Async dir) {
+        dir.removed_from_cache = true;
+
+        dir_cache_lock.@lock ();
+        var result = directory_cache.remove (dir.location);
+        dir_cache_lock.unlock ();
+
+        return result;
     }
 
-    public bool purge_dir_from_cache () {
-        var removed = remove_dir_from_cache ();
+    public static void add_dir_to_cache (Async dir) {
+        dir.removed_from_cache = false;
+
+        dir_cache_lock.@lock ();
+        directory_cache.insert (dir.location, dir);
+        dir_cache_lock.unlock ();
+    }
+
+    public static bool purge_dir_from_cache (Async dir) {
+        var removed = remove_dir_from_cache (dir);
         /* We have to remove the dir's subfolders from cache too */
         if (removed) {
-            foreach (var gfile in file_hash.get_keys ()) {
+            foreach (var gfile in dir.file_hash.get_keys ()) {
                 assert (gfile != null);
-                var dir = cache_lookup (gfile);
-                if (dir != null)
-                    dir.remove_dir_from_cache ();
+                var sub_dir = Async.cache_lookup (gfile);
+                if (sub_dir != null)
+                    Async.remove_dir_from_cache (sub_dir);
             }
         }
 
@@ -1167,7 +1229,8 @@ public class Async : Object {
     }
 
     public bool is_empty () {
-        return (state == State.LOADED && file_hash.size () == 0); /* only return true when loaded to avoid temporary appearance of empty message while loading */
+        /* only return true when loaded to avoid temporary appearance of empty message while loading */
+        return (state == State.LOADED && file_hash.size () == 0);
     }
 
     public unowned List<GOF.File>? get_sorted_dirs () {

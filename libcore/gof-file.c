@@ -104,10 +104,11 @@ gof_file_new (GFile *location, GFile *dir)
     GOFFile *file;
 
     file = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
-    file->location = g_object_ref (location);
+    file->location = g_file_dup (location);
     file->uri = g_file_get_uri (location);
+
     if (dir != NULL)
-        file->directory = g_object_ref (dir);
+        file->directory = g_file_dup (dir);
     else
         file->directory = NULL;
 
@@ -129,8 +130,8 @@ void    gof_file_changed (GOFFile *file)
         if (!file->is_hidden || dir->show_hidden_files)
             g_signal_emit_by_name (dir, "file_changed", file);
 
-        g_object_unref (dir);
     }
+
     g_signal_emit_by_name (file, "changed");
 }
 #endif
@@ -147,8 +148,6 @@ gof_file_icon_changed (GOFFile *file)
             if (!file->is_hidden || gof_preferences_get_show_hidden_files (gof_preferences_get_default ())) {
                 g_signal_emit_by_name (dir, "icon_changed", file);
             }
-
-            g_object_unref (dir);
         }
     }
     g_signal_emit_by_name (file, "icon_changed");
@@ -1516,28 +1515,6 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
     gof_file_icon_changed (file);
 }
 
-GOFFile* gof_file_cache_lookup (GFile *location)
-{
-    GOFFile *cached_file = NULL;
-
-    g_return_val_if_fail (G_IS_FILE (location), NULL);
-
-    /* allocate the GOFFile cache on-demand */
-    if (G_UNLIKELY (file_cache == NULL))
-    {
-        G_LOCK (file_cache_mutex);
-        file_cache = g_hash_table_new_full (g_file_hash,
-                                            (GEqualFunc) g_file_equal,
-                                            (GDestroyNotify) g_object_unref,
-                                            (GDestroyNotify) g_object_unref);
-        G_UNLOCK (file_cache_mutex);
-    }
-    if (file_cache != NULL)
-        cached_file = g_hash_table_lookup (file_cache, location);
-
-    return _g_object_ref0 (cached_file);
-}
-
 void
 gof_file_set_expanded (GOFFile *file, gboolean expanded) {
     g_return_if_fail (file != NULL && file->is_directory);
@@ -1549,34 +1526,9 @@ gof_file_get (GFile *location)
 {
     GFile *parent;
     GOFFile *file = NULL;
-    GOFDirectoryAsync *dir = NULL;
 
-g_return_val_if_fail (location != NULL && G_IS_FILE (location), NULL);
-
-    if ((parent = g_file_get_parent (location)) != NULL) {
-        dir = gof_directory_async_cache_lookup (parent);
-        if (dir != NULL) {
-            file = gof_directory_async_file_hash_lookup_location (dir, location);
-            g_object_unref (dir);
-        }
-    }
-
-    if (file == NULL)
-        file = gof_file_cache_lookup (location);
-
-    if (file != NULL) {
-        g_debug (">>>>reuse file %s", file->uri);
-    } else {
-        file = gof_file_new (location, parent);
-        g_debug (">>>>create file %s", file->uri);
-        G_LOCK (file_cache_mutex);
-        if (file_cache != NULL)
-            g_hash_table_insert (file_cache, g_object_ref (location), g_object_ref (file));
-        G_UNLOCK (file_cache_mutex);
-    }
-
-    if (parent)
-        g_object_unref (parent);
+    parent = g_file_get_parent (location);
+    file = gof_file_new (location, parent);
 
     return (file);
 }
@@ -2168,8 +2120,6 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     file->flags = 0;
 
     gof_file_query_update (file);
-
-    g_object_unref (dir);
 }
 
 /* TODO move this mini job to marlin-file-operations? */
@@ -2651,7 +2601,6 @@ gof_file_thumb_can_frame (GOFFile *file)
     }
     if (dir != NULL) {
         gboolean can_frame = !dir->uri_contain_keypath_icons;
-        g_object_unref (dir);
         return can_frame;
     }
 

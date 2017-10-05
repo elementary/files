@@ -1331,7 +1331,7 @@ namespace FM {
                 /* Check whether the deleted file is the directory */
                 var file_dir = GOF.Directory.Async.cache_lookup (file.location);
                 if (file_dir != null) {
-                    file_dir.purge_dir_from_cache ();
+                    GOF.Directory.Async.purge_dir_from_cache (file_dir);
                     slot.folder_deleted (file, file_dir);
                 }
             }
