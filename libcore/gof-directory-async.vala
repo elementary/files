@@ -913,8 +913,6 @@ public class Async : Object {
                weak pointers as a temporary solution. */
             sorted_dirs.remove (gof);
         }
-
-        gof.remove_from_caches ();
     }
 
     private struct fchanges {

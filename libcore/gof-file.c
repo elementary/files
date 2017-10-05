@@ -924,20 +924,6 @@ void gof_file_update_trash_info (GOFFile *file)
     }
 }
 
-void gof_file_remove_from_caches (GOFFile *file)
-{
-    /* remove from file_cache */
-    if (file_cache != NULL && g_hash_table_remove (file_cache, file->location))
-        g_debug ("remove from file_cache %s", file->uri);
-
-    /* remove from directory_cache */
-    if (file->directory && G_OBJECT (file->directory)->ref_count > 0) {
-        gof_directory_async_remove_file_from_cache (file);
-    }
-
-    file->is_gone = TRUE;
-}
-
 static void gof_file_init (GOFFile *file) {
     /*file->priv = G_TYPE_INSTANCE_GET_PRIVATE (file, GOF_TYPE_FILE, GOFFilePrivate);*/
 
@@ -2099,9 +2085,6 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     if (file->directory != NULL) {
         dir = gof_directory_async_cache_lookup (file->directory);
     }
-
-    gof_file_remove_from_caches (file);
-    file->is_gone = FALSE;
 
     g_object_unref (file->location);
     file->location = g_object_ref (new_location);

@@ -258,11 +258,9 @@ namespace GOF {
         public static GOF.File @get(GLib.File location);
         public static GOF.File? get_by_uri (string uri);
         public static GOF.File? get_by_commandline_arg (string arg);
-        public static File cache_lookup (GLib.File file);
         public static void list_free (GLib.List<GOF.File> files);
         public static GLib.Mount? get_mount_at (GLib.File location);
 
-        public void remove_from_caches ();
         public bool is_gone;
         public GLib.File location;
         public GLib.File target_location;
@@ -308,7 +306,7 @@ namespace GOF {
 
         public unowned string get_display_name ();
         public unowned GLib.File get_target_location ();
-        public string get_symlink_target ();
+        public unowned string get_symlink_target ();
         public unowned string? get_ftype ();
         public string? get_formated_time (string attr);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
