@@ -181,8 +181,6 @@ void            gof_file_get_folder_icon_from_uri_or_path (GOFFile *file);
 GOFFile*        gof_file_get (GFile *location);
 GOFFile*        gof_file_get_by_uri (const char *uri);
 GOFFile*        gof_file_get_by_commandline_arg (const char *arg);
-GOFFile*        gof_file_cache_lookup (GFile *location);
-void            gof_file_remove_from_caches (GOFFile *file);
 
 int             gof_file_compare_for_sort (GOFFile *file_1,
                                            GOFFile *file_2,

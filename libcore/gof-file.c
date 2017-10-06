@@ -31,7 +31,6 @@
 #include "fm-list-model.h"
 #include "pantheon-files-core.h"
 
-
 G_LOCK_DEFINE_STATIC (file_cache_mutex);
 
 static GHashTable   *file_cache;
