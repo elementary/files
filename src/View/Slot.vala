@@ -93,7 +93,7 @@ namespace Marlin.View {
         }
 
         ~Slot () {
-            warning ("Slot destruct %s", uri); /* Directory may already be deleted in which case uri = null */
+            debug ("Slot destruct"); /* Directory may already be deleted in which case uri = null */
         }
 
         private void connect_slot_signals () {

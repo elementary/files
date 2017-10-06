@@ -262,6 +262,7 @@ namespace Marlin.View {
             assert (aslot != null);
             assert (view != null && location != null);
             var loc = location;
+
             if (mode != view_mode) {
                 before_mode_change ();
                 add_view (mode, loc);

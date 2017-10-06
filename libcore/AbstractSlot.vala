@@ -21,7 +21,7 @@ namespace GOF {
     public abstract class AbstractSlot : GLib.Object {
 
         GOF.Directory.Async _directory;
-        public GOF.Directory.Async? directory {
+        public unowned GOF.Directory.Async? directory {
             get {
                 AbstractSlot? current = get_current_slot ();
                 if (current != null)
@@ -33,14 +33,14 @@ namespace GOF {
             protected set {_directory = value;}
         }
 
-        public GOF.File? file {
+        public unowned GOF.File? file {
             get {return directory != null ? directory.file : null;}
         }
-        public GLib.File? location  {
+        public unowned GLib.File? location  {
             get {return directory != null ? directory.location : null;}
         }
-        public string? uri {
-            get {return directory != null && file != null ? directory.file.uri : null;}
+        public unowned string? uri {
+            get {return directory != null && directory.file != null ? directory.file.uri : null;}
         }
         public bool can_create {get {return directory != null && !directory.is_trash;}}
         public virtual bool locked_focus {
