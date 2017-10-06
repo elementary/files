@@ -35,9 +35,9 @@ public class Async : Object {
     private const int MOUNT_TIMEOUT_SEC = 60;
 
     private GOF.File? _file = null;
-    public unowned GOF.File file {
+    public unowned GOF.File? file {
         get {
-            return _file;
+            return this != null ? _file : null;
         }
 
         private set {
@@ -54,9 +54,9 @@ public class Async : Object {
         }
     }
 
-    public unowned GLib.File location {
+    public unowned GLib.File? location {
         get {
-            return file.location;
+            return file != null ? file.location : null;
         }
     }
 
@@ -939,6 +939,7 @@ public class Async : Object {
             real_directory_changed (_file, other_file, event);
     }
 
+    private bool more_changes = false;
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         switch (event) {
         case FileMonitorEvent.CREATED:
@@ -953,15 +954,23 @@ public class Async : Object {
             break;
         }
 
+        more_changes = true;
         if (idle_consume_changes_id == 0) {
             /* Insert delay to avoid race between gof.rename () finishing and consume changes -
              * If consume changes called too soon can corrupt the view.
+             * Also, more delay enables corresponding FileMonitor and Marlin.FileChangeQueue signals to be
+             * be matched and de-duplicated.
              * TODO: Have GOF.Directory.Async control renaming.
              */
-            idle_consume_changes_id = Timeout.add (10, () => {
-                MarlinFile.changes_consume_changes (true);
-                idle_consume_changes_id = 0;
-                return false;
+            idle_consume_changes_id = Timeout.add (20, () => {
+                if (!more_changes) {
+                    MarlinFile.changes_consume_changes (true);
+                    idle_consume_changes_id = 0;
+                    more_changes = false;
+                    return false;
+                } else {
+                    return true;
+                }
             });
         }
     }
@@ -1057,8 +1066,10 @@ public class Async : Object {
                 dir = cache_lookup (loc); /* Will use correct key */
 
                 if (dir != null) {
-                    /* Signal itself deleted. Objects holding reference to dir should all drop them causing dir to be removed from cache.  */
+                    /* Signal itself deleted. */
+                    dir.freeze_update = true; /* Stop any further change signals being processed */
                     dir.file_deleted (dir.file);
+                    purge_deleted_dir_from_cache (dir);
                 }
             }
         }
@@ -1123,14 +1134,6 @@ public class Async : Object {
         return GLib.File.new_for_uri (escaped_uri);
      }
 
-    /* TODO remove this - GOF.File cache should be managed only by Async */
-    public static void remove_file_from_cache (GOF.File gof) {
-        assert (gof != null);
-        Async? dir = cache_lookup (gof.directory);
-        if (dir != null)
-            dir.file_hash.remove (gof.location);
-    }
-
     public static unowned Async? cache_lookup (GLib.File? file) {
         unowned Async? cached_dir = null;
 
@@ -1173,7 +1176,7 @@ public class Async : Object {
         return parent != null ? cache_lookup (parent) : null;
     }
 
-    public static bool remove_dir_from_cache (Async dir) {
+    private static bool remove_dir_from_cache (Async dir) {
         dir.removed_from_cache = true;
 
         dir_cache_lock.@lock ();
@@ -1183,7 +1186,7 @@ public class Async : Object {
         return result;
     }
 
-    public static void add_dir_to_cache (Async dir) {
+    private static void add_dir_to_cache (Async dir) {
         dir.removed_from_cache = false;
 
         dir_cache_lock.@lock ();
@@ -1191,15 +1194,16 @@ public class Async : Object {
         dir_cache_lock.unlock ();
     }
 
-    public static bool purge_dir_from_cache (Async dir) {
+    private static bool purge_deleted_dir_from_cache (Async dir) {
         var removed = remove_dir_from_cache (dir);
         /* We have to remove the dir's subfolders from cache too */
         if (removed) {
             foreach (var gfile in dir.file_hash.get_keys ()) {
                 assert (gfile != null);
                 var sub_dir = Async.cache_lookup (gfile);
-                if (sub_dir != null)
+                if (sub_dir != null) {
                     Async.remove_dir_from_cache (sub_dir);
+                }
             }
         }
 

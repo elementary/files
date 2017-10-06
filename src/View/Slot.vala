@@ -93,7 +93,7 @@ namespace Marlin.View {
         }
 
         ~Slot () {
-            debug ("Slot destruct %s", uri);
+            warning ("Slot destruct %s", uri); /* Directory may already be deleted in which case uri = null */
         }
 
         private void connect_slot_signals () {
@@ -262,6 +262,7 @@ namespace Marlin.View {
              * If allow_mode_change is false View Container will not automagically
              * switch to icon view for icon folders (needed for Miller View) */
             dir_view.change_directory (old_dir, directory);
+
             initialize_directory ();
         }
 
@@ -357,7 +358,7 @@ namespace Marlin.View {
         }
 
         public override unowned GOF.AbstractSlot? get_current_slot () {
-            return this as GOF.AbstractSlot;
+            return (!)this;
         }
 
         public unowned FM.AbstractDirectoryView? get_directory_view () {

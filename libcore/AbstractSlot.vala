@@ -33,14 +33,14 @@ namespace GOF {
             protected set {_directory = value;}
         }
 
-        public GOF.File file {
-            get {return directory.file;}
+        public GOF.File? file {
+            get {return directory != null ? directory.file : null;}
         }
-        public GLib.File location  {
-            get {return directory.location;}
+        public GLib.File? location  {
+            get {return directory != null ? directory.location : null;}
         }
-        public string uri {
-            get {return directory.file.uri;}
+        public string? uri {
+            get {return directory != null && file != null ? directory.file.uri : null;}
         }
         public bool can_create {get {return directory != null && !directory.is_trash;}}
         public virtual bool locked_focus {
