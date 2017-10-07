@@ -355,6 +355,8 @@ namespace Marlin {
             if (goffile != null) {
                 goffile.flags = state;
                 goffile.query_thumbnail_update ();
+            } else {
+                critical ("GOFFile not found for thumbnails update");
             }
         }
     }

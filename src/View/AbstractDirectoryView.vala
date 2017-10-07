@@ -2455,9 +2455,15 @@ namespace FM {
                     while (valid_iter && thumbnail_source_id > 0) {
                         file = model.file_for_iter (iter);
                         path = model.get_path (iter);
-
+#if (BUILD_TYPE_DEBUG)
+                        assert (file != null); /* Null files in the model should be investigated if debugging */
+#else
+                        if (file == null) {
+                            continue;
+                        }
+#endif
                         /* Ask thumbnailer only if ThumbState UNKNOWN */
-                        if (file != null && file.flags == GOF.File.ThumbState.UNKNOWN) {
+                        if (file.flags == GOF.File.ThumbState.UNKNOWN) {
                             visible_files.prepend (file);
                             if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                 actually_visible++;

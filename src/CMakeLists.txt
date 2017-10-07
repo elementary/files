@@ -18,6 +18,10 @@ if (PLANK011_FOUND)
   set (PLANK_OPTIONS --define=HAVE_PLANK_0_11)
 endif ()
 
+if (CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "DEBUG")
+  set (VALA_BUILD_OPTIONS --define=BUILD_TYPE_DEBUG)
+endif ()
+
 set (CFLAGS
     ${DEPS_CFLAGS} ${DEPS_CFLAGS_OTHER}
 )
@@ -94,6 +98,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
         --target-glib=2.32 # Needed for new thread API
         ${PLANK_OPTIONS}
+        ${VALA_BUILD_OPTIONS}
         --thread
         -D HAVE_UNITY)
 ELSE (WITH_UNITY AND UNITY_FOUND)
@@ -159,6 +164,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         --vapidir=${CMAKE_BINARY_DIR}/libwidgets/
         --target-glib=2.32 # Needed for new thread API
         ${PLANK_OPTIONS}
+        ${VALA_BUILD_OPTIONS}
         --thread)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 

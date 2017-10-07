@@ -145,7 +145,7 @@ gof_file_icon_changed (GOFFile *file)
         dir = gof_directory_async_cache_lookup (file->directory);
         if (dir != NULL) {
             if (!file->is_hidden || gof_preferences_get_show_hidden_files (gof_preferences_get_default ())) {
-                g_signal_emit_by_name (dir, "icon_changed", file);
+                g_signal_emit_by_name (dir, "icon-changed", file);
             }
         }
     }
@@ -709,11 +709,13 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
  */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
-    if (size <= 1)
+    if (size <= 1) {
         return;
+    }
 
-    if (!(file->pix == NULL || file->pix_size != size))
+    if ((file->flags == GOF_FILE_THUMB_STATE_READY) && !(file->pix == NULL || file->pix_size != size)) {
         return;
+    }
 
     gof_file_update_icon_internal (file, size);
 }
@@ -885,8 +887,9 @@ gof_file_query_thumbnail_update (GOFFile *file)
     gchar    *md5_hash;
 
     /* Silently ignore invalid requests */
-    if (file->pix_size <= 1)
+    if (file->pix_size <= 1) {
         return;
+    }
 
     if (gof_file_get_thumbnail_path (file) == NULL) {
         /* get the thumbnail path from md5 filename */
@@ -1511,9 +1514,23 @@ gof_file_get (GFile *location)
 {
     GFile *parent;
     GOFFile *file = NULL;
+    GOFDirectoryAsync *dir;
 
+    dir = NULL;
     parent = g_file_get_parent (location);
-    file = gof_file_new (location, parent);
+
+    if (parent != NULL) {
+        /* Before creating new file lookup in async cache */
+        dir = gof_directory_async_cache_lookup (parent);
+    }
+
+    if (dir != NULL) {
+        file = gof_directory_async_file_cache_find_or_insert (dir, location, FALSE);
+    }
+
+    if (file == NULL) {
+        file = gof_file_new (location, parent);
+    }
 
     return (file);
 }
@@ -2183,9 +2200,8 @@ rename_callback (GObject *source_object,
     //marlin_file_changes_queue_file_changed (new_file);
     //marlin_file_changes_queue_file_removed (op->file->location);
     //marlin_file_changes_queue_file_added (new_file);
-    if (error == NULL)
+    if (error != NULL)
         gof_file_update_existing (op->file, new_file);
-    else
         marlin_dialogs_show_error (NULL,
                                    error,
                                    "Failed to rename %s",

@@ -50,11 +50,17 @@ namespace Marlin {
             get {
                 return _file;
             }
+
             set {
-                _file = value;
-                if (_file != null) {
-                    _file.update_icon (icon_size);
+
+#if (BUILD_TYPE_DEBUG)
+                assert (value != null); /* Null files should investigated if debugging */
+#endif
+                if (_file == null || (value != null && (icon_size != value.pix_size))) {
+                    value.update_icon (icon_size);
                 }
+
+                _file = value;
             }
         }
 
