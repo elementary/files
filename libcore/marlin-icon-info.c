@@ -215,7 +215,6 @@ reap_old_icon (LoadableIconKey *key, gpointer value, gpointer user_info)
     //g_return_val_if_fail (icon->pixbuf != NULL && GDK_IS_PIXBUF (icon->pixbuf), TRUE);
 
     /*char *str_icon = g_icon_to_string (key->icon);
-    g_message ("%s %s %d %u\n", G_STRFUNC, str_icon, key->size, G_OBJECT (icon->pixbuf)->ref_count);
     g_free (str_icon);*/
     /* sole owner */
     if (icon->pixbuf && G_IS_OBJECT (icon->pixbuf) && G_OBJECT (icon->pixbuf)->ref_count == 1) {
@@ -410,7 +409,6 @@ marlin_icon_info_lookup (GIcon *icon, int size)
         lookup_key.size = size;
         icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
         if (icon_info != NULL) {
-            //g_message ("CACHED %s stream %s\n", G_STRFUNC, g_icon_to_string (icon));
             return g_object_ref (icon_info);
         }
 #if 0
@@ -496,7 +494,6 @@ marlin_icon_info_lookup (GIcon *icon, int size)
 
         icon_info = g_hash_table_lookup (themed_icon_cache, &lookup_key);
         if (icon_info) {
-            //g_message ("CACHED %s themed icon %s\n", G_STRFUNC, filename);
             gtk_icon_info_free (gtkicon_info);
             return g_object_ref (icon_info);
         }
@@ -513,7 +510,6 @@ marlin_icon_info_lookup (GIcon *icon, int size)
     } else {
         GtkIconInfo *gtk_icon_info;
 
-        //g_message ("%s ELSE ... %s", G_STRFUNC, g_icon_to_string (icon));
         gtk_icon_info = gtk_icon_theme_lookup_by_gicon (marlin_icon_info_get_gtk_icon_theme (),
                                                         icon,
                                                         size,
@@ -677,7 +673,6 @@ test_get_pixbuf_at_size_from_raw_pixbuf (GdkPixbuf *pixbuf, gsize forced_size)
         scaled_pixbuf = gdk_pixbuf_scale_simple (pixbuf,
                                                  w_scaled, h_scaled,
                                                  GDK_INTERP_BILINEAR);
-    //g_message ("scale: %f s: %d w_scaled: %d h_scaled: %d", scale, s, w_scaled, h_scaled);
     return scaled_pixbuf;
 }
 #endif

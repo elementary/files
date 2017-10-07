@@ -112,9 +112,6 @@ gof_file_new (GFile *location, GFile *dir)
         file->directory = NULL;
 
     file->basename = g_file_get_basename (file->location);
-    //file->parent_dir = g_file_enumerator_get_container (enumerator);
-
-    //g_debug ("%s: create %p", __func__, file);
     return (file);
 }
 
@@ -609,8 +606,6 @@ gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
         /* TODO thumb test : Playing with the thumbs */
         //if (file->flags != 0 && thumb_path != NULL) {
         if (thumb_path != NULL) {
-            //g_message ("show thumb %s %s %d\n", file->uri, thumb_path, size);
-            //return marlin_icon_info_lookup_from_path (thumb_path, size * 1.33);
             return marlin_icon_info_lookup_from_path (thumb_path, size);
         }
     }
@@ -970,19 +965,10 @@ static void gof_file_finalize (GObject* obj) {
     GOFFile *file;
 
     file = GOF_FILE (obj);
-#if 0
-    if (file->pix)
-        g_warning ("%s %s %u\n", G_STRFUNC, file->uri, G_OBJECT (file->pix)->ref_count);
-    else
-        g_warning ("%s %s", G_STRFUNC, file->basename);
-#endif
-    if (!(G_IS_FILE (file->location))) {
-        g_warning ("Invalid file location on finalize for %s", file->basename);
-    } else {
-        g_object_unref (file->location);
-    }
+
     g_clear_object (&file->info);
     _g_object_unref0 (file->directory);
+    _g_object_unref0 (file->location);
     _g_free0 (file->uri);
     _g_free0(file->basename);
     _g_free0(file->utf8_collation_key);
@@ -991,7 +977,6 @@ static void gof_file_finalize (GObject* obj) {
     _g_free0(file->formated_modified);
     _g_object_unref0 (file->icon);
     _g_object_unref0 (file->pix);
-    //g_clear_object (&file->pix);
 
     _g_free0 (file->custom_display_name);
     _g_free0 (file->custom_icon_name);
@@ -1203,17 +1188,15 @@ gof_file_compare_for_sort_internal (GOFFile *file1,
                                     gboolean reversed)
 {
     if (directories_first) {
-        if (gof_file_is_folder (file1) && !gof_file_is_folder (file2))
-            return -1;
-        if (gof_file_is_folder (file2) && !gof_file_is_folder (file1))
-            return 1;
-    }
+        gboolean folder1 = gof_file_is_folder (file1);
+        gboolean folder2 = gof_file_is_folder (file2);
 
-    /*if (file1->details->sort_order < file2->details->sort_order) {
-      return reversed ? 1 : -1;
-      } else if (file_1->details->sort_order > file_2->details->sort_order) {
-      return reversed ? -1 : 1;
-      }*/
+        if (folder1 ) {
+            return folder2 ? 0 : -1;
+        }
+
+        return !folder2 ? 0 : 1;
+    }
 
     return 0;
 }
@@ -1225,6 +1208,9 @@ gof_file_compare_for_sort (GOFFile *file1,
                            gboolean directories_first,
                            gboolean reversed)
 {
+    /* When reloading multiple windows this assertion can fail due to an unidentified race condition */
+    g_return_val_if_fail (file1->location != NULL && file2->location != NULL, 0);
+
     int result;
 
     if (file1 == file2) {

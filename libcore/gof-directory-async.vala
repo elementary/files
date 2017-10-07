@@ -99,8 +99,24 @@ public class Async : Object {
     public signal void done_loading ();
     public signal void thumbs_loaded ();
     public virtual signal void will_reload () {
-        Idle.add (() => {
-            reload ();
+        if (state != State.LOADED) {
+            warning ("Too rapid reload");
+            return; /* Do not re-enter */
+        }
+
+        if (state == State.TIMED_OUT && file.is_mounted) {
+            debug ("Unmounting because of timeout");
+            cancellable.cancel ();
+            cancellable = new Cancellable ();
+            file.location.unmount_mountable (GLib.MountUnmountFlags.FORCE, cancellable);
+            file.mount = null;
+            file.is_mounted = false;
+        }
+
+        clear_directory_info ();
+
+        Idle.add_full (GLib.Priority.LOW, () => {
+            init ();
             return false;
         });
     }
@@ -540,25 +556,6 @@ public class Async : Object {
     }
 
 
-    public void reload () {
-        if (state != State.LOADED) {
-            warning ("Too rapid reload");
-            return; /* Do not re-enter */
-        }
-
-        if (state == State.TIMED_OUT && file.is_mounted) {
-            debug ("Unmounting because of timeout");
-            cancellable.cancel ();
-            cancellable = new Cancellable ();
-            file.location.unmount_mountable (GLib.MountUnmountFlags.FORCE, cancellable);
-            file.mount = null;
-            file.is_mounted = false;
-        }
-
-        clear_directory_info ();
-        init ();
-    }
-
     /** Called in preparation for a reload **/
     private void clear_directory_info () {
         if (state == State.LOADING) {
@@ -567,6 +564,7 @@ public class Async : Object {
 
         cancel ();
         file_hash.remove_all ();
+        file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
         sorted_dirs = null;
         files_count = 0;
         can_load = false;
@@ -587,8 +585,6 @@ public class Async : Object {
     }
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
-        debug ("list cached files");
-
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
         foreach (GOF.File gof in file_hash.get_values ()) {
@@ -604,7 +600,6 @@ public class Async : Object {
     }
 
     private async void list_directory_async (GOFFileLoadedFunc? file_loaded_func) {
-        debug ("list directory async");
         /* Should only be called after creation and if reloaded */
         if (!is_ready || file_hash.size () > 0) {
             critical ("(Re)load directory called when not cleared");
@@ -665,7 +660,7 @@ public class Async : Object {
                     } else {
                         foreach (var file_info in files) {
                             var key = Async.get_cache_key (location.get_child (file_info.get_name ()));
-                            var gof = new GOF.File (key, this.location); /*does not add to GOF file cache */
+                            var gof = new GOF.File (key, this.location);
 
                             gof.info = file_info;
                             gof.update ();
@@ -1157,7 +1152,7 @@ public class Async : Object {
             (cached_dir is Async && cached_dir.file != null) &&
             (cached_dir.file.info == null && cached_dir.can_load)) {
 
-            warning ("updating cached file info");
+            debug ("updating cached file info");
             cached_dir.file.query_update ();  /* This is synchronous and causes blocking */
         }
 

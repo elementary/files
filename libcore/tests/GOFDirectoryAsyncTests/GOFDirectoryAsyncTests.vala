@@ -161,7 +161,7 @@ Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
         if (loads < n_loads) {
             loads++;
             dir.cancel ();
-            dir.reload ();
+            dir.will_reload ();
         } else {
             assert (dir.files_count == n_files);
             assert (dir.can_load);

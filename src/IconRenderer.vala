@@ -56,7 +56,7 @@ namespace Marlin {
 #if (BUILD_TYPE_DEBUG)
                 assert (value != null); /* Null files should investigated if debugging */
 #endif
-                if (_file == null || (value != null && (icon_size != value.pix_size))) {
+                if (value != null && (_file == null || (icon_size != value.pix_size))) {
                     value.update_icon (icon_size);
                 }
 

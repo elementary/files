@@ -666,6 +666,7 @@ namespace FM {
         }
 
         public void prepare_reload (GOF.Directory.Async dir) {
+            disconnect_directory_loading_handlers (dir);
             cancel ();
             clear ();
             connect_directory_loading_handlers (dir);
