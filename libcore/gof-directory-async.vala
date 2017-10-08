@@ -19,12 +19,17 @@
             Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-private HashTable<GLib.File,GOF.Directory.Async> directory_cache;
-private Mutex dir_cache_lock;
-
 namespace GOF.Directory {
 
 public class Async : Object {
+    private static HashTable<GLib.File,GOF.Directory.Async> directory_cache;
+    private static Mutex dir_cache_lock;
+
+    static construct {
+            directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
+            dir_cache_lock = GLib.Mutex ();
+    }
+
     public delegate void GOFFileLoadedFunc (GOF.File file);
 
     private uint load_timeout_id = 0;
@@ -1102,8 +1107,8 @@ public class Async : Object {
 
     public static Async from_gfile (GLib.File file) {
         assert (file != null);
-        /* Note: cache_lookup creates directory_cache if necessary */
          unowned Async?  cached_dir = cache_lookup (file);
+
         /* Both local and non-local directories can be cached */
         if (cached_dir == null) {
             var new_dir = new Async (file); /* Will add to directory cache */
@@ -1130,13 +1135,11 @@ public class Async : Object {
      }
 
     public static unowned Async? cache_lookup (GLib.File? file) {
-        unowned Async? cached_dir = null;
-
-        if (directory_cache == null) {
-            directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
-            dir_cache_lock = GLib.Mutex ();
+        if (directory_cache == null) { // Only happens once on startup.  Async gets added on creation
             return null;
         }
+
+        unowned Async? cached_dir = null;
 
         if (file == null) {
             critical ("Null file received in Async cache_lookup");
