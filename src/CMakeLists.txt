@@ -56,6 +56,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
+        View/ViewTab.vala
         View/Browser.vala
         View/Sidebar.vala
         View/Slot.vala
@@ -122,6 +123,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
+        View/ViewTab.vala
         View/Browser.vala
         View/Sidebar.vala
         View/Slot.vala

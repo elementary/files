@@ -48,11 +48,19 @@ namespace Marlin.View {
         public GOF.AbstractSlot? view = null;
         public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
 
-        public GLib.File? location {
-            get {
-                return slot != null ? slot.location : null;
+        private GLib.File _location = null;
+        public unowned GLib.File? location {
+             get {
+                return _location;
             }
-        }
+
+            set {
+                _location = value;
+                focus_location ();
+                _location = slot.location;
+             }
+         }
+
         public string uri {
             get {
                 return slot != null ? slot.uri : "";
@@ -104,7 +112,6 @@ namespace Marlin.View {
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
         /* To maintain compatibility with existing plugins */
-        public signal void path_changed (File file);
         public signal void active ();
 
         /* Initial location now set by Window.make_tab after connecting signals */
@@ -126,7 +133,6 @@ namespace Marlin.View {
         }
 
         private void connect_signals () {
-            path_changed.connect (on_path_changed);
             enter_notify_event.connect (on_enter_notify_event);
             loading.connect ((loading) => {
                 is_loading = loading;
@@ -140,7 +146,6 @@ namespace Marlin.View {
         }
 
         private void disconnect_signals () {
-            path_changed.disconnect (on_path_changed);
             disconnect_window_signals ();
         }
 
@@ -148,10 +153,6 @@ namespace Marlin.View {
             if (window != null) {
                 window.folder_deleted.disconnect (on_folder_deleted);
             }
-        }
-
-        private void on_path_changed (GLib.File file) {
-            focus_location (file);
         }
 
         private void on_folder_deleted (GLib.File deleted) {
@@ -166,6 +167,11 @@ namespace Marlin.View {
         public void close () {
             disconnect_signals ();
             view.close ();
+            overlay_statusbar.cancel ();
+            /* Both the following lines are necessary to break the circular reference */
+            /* Granite bug?  Overlaybar should not hold owned reference to overlay */
+            overlay_statusbar.destroy ();
+            overlay_statusbar = null;
         }
 
         public Gtk.Widget? content {
@@ -235,36 +241,40 @@ namespace Marlin.View {
                 user_path_change_request (File.new_for_commandline_arg (loc), false, false);
         }
 
-        public void add_view (Marlin.ViewMode mode, GLib.File loc) {
-            assert (view == null);
-            assert (loc != null);
+        private void add_view () {
+            if (view != null ||
+                location == null ||
+                view_mode == Marlin.ViewMode.INVALID) {
+
+                return;
+            }
+
 
             overlay_statusbar.cancel ();
-            view_mode = mode;
             overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
 
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
-                this.view = new Miller (loc, this, mode);
+            if (view_mode == Marlin.ViewMode.MILLER_COLUMNS) {
+                this.view = new Miller (location, this, view_mode);
             } else {
-                this.view = new Slot (loc, this, mode);
+                this.view = new Slot (location, this, view_mode);
             }
 
             connect_slot_signals (this.view);
-            directory_is_loading (loc);
+            directory_is_loading ();
             slot.initialize_directory ();
             show_all ();
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
-             * The slot becomes active when the tab becomes current */
+            * The slot becomes active when the tab becomes current */
         }
 
         public void change_view_mode (Marlin.ViewMode mode) {
             var aslot = get_current_slot ();
             assert (aslot != null);
             assert (view != null && location != null);
-            var loc = location;
+
             if (mode != view_mode) {
                 before_mode_change ();
-                add_view (mode, loc);
+                add_view ();
                 after_mode_change ();
             }
         }
@@ -296,7 +306,7 @@ namespace Marlin.View {
         }
 
         private void on_slot_active (GOF.AbstractSlot aslot, bool scroll, bool animate) {
-            refresh_slot_info (slot.location);
+            refresh_slot_info ();
         }
 
         public void user_path_change_request (GLib.File loc, bool allow_mode_change = true, bool make_root = true) {
@@ -327,17 +337,17 @@ namespace Marlin.View {
             if (change_mode_to_icons && view_mode != Marlin.ViewMode.ICON) {
                 change_view_mode (Marlin.ViewMode.ICON);
             } else {
-                directory_is_loading (slot.location);
+                directory_is_loading ();
             }
         }
 
-        private void directory_is_loading (GLib.File loc) {
+        private void directory_is_loading () {
             overlay_statusbar.cancel ();
             overlay_statusbar.halign = Gtk.Align.END;
-            refresh_slot_info (loc);
+            refresh_slot_info ();
 
             can_show_folder = false;
-            loading (true);
+            is_loading =true;
         }
 
         public void plugin_directory_loaded () {
@@ -354,23 +364,24 @@ namespace Marlin.View {
             plugins.directory_loaded ((void*) data);
         }
 
-        private void refresh_slot_info (GLib.File loc) {
+        private void refresh_slot_info () {
             update_tab_name ();
-            window.loading_uri (loc.get_uri ());
-            window.update_labels (loc.get_parse_name (), tab_name);
+            window.loading_uri (uri);
+            window.update_labels (location.get_parse_name (), tab_name);
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
        private void update_tab_name () {
             string? slot_path = Uri.unescape_string (this.uri);
-            string? tab_name = null;
+             string? tab_name = null;
 
-            if (slot_path != null) {
-                if (this.location.get_path () == null) {
-                    tab_name = Marlin.protocol_to_name (this.uri);
+             if (slot_path != null) {
+                if (slot.location.get_path () == null) {
+                    tab_name = Marlin.protocol_to_name (slot_path);
                 } else {
                     try {
                         var fn = Filename.from_uri (slot_path);
+
                         if (fn == Environment.get_home_dir ()) {
                             tab_name = _("Home");
                         } else if (fn == "/") {
@@ -387,11 +398,10 @@ namespace Marlin.View {
             if (tab_name == null) {
                 tab_name = Marlin.INVALID_TAB_NAME;
             } else if (Posix.getuid () == 0) {
-                    tab_name = tab_name + " " + _("(as Administrator)");
+                tab_name = tab_name + " " + _("(as Administrator)");
             }
 
             this.tab_name = tab_name;
-
             overlay_statusbar.hide ();
         }
 
@@ -480,32 +490,31 @@ namespace Marlin.View {
             }
         }
 
-        private void set_all_selected (bool select_all) {
-            var aslot = get_current_slot ();
-            if (aslot != null) {
-                aslot.set_all_selected (select_all);
-            }
-        }
+        private void focus_location () {
+            if (view == null) {
+                if (location != null && view_mode != Marlin.ViewMode.INVALID) {
+                    if (view_mode != Marlin.ViewMode.ICON &&
+                        PF.FileUtils.uri_contain_keypath_icons (location.get_uri ())) {
 
-        public void focus_location (GLib.File? loc,
-                                    bool no_path_change = false,
-                                    bool unselect_others = false) {
+                        /* If initial location, automagicly enable icon view for icons keypath */
+                        view_mode = Marlin.ViewMode.ICON;
+                    }
 
-            /* This function navigates to another folder if necessary if
-             * select_in_current_only is not set to true.
-             */
+                    add_view ();
+                }
 
-            var aslot = get_current_slot ();
-            if (aslot == null) {
                 return;
             }
+
+            user_path_change_request (location);
+         }
+
+        public void focus_location_if_in_current_directory (GLib.File? loc,
+                                                            bool unselect_others = false) {
+            var aslot = get_current_slot ();
             /* Search can generate null focus requests if no match - deselect previous search selection */
-            if (loc == null) {
-                set_all_selected (false);
-                return;
-            }
-
-            if (location.equal (loc)) {
+            if (location == null) {
+                aslot.set_all_selected (false);
                 return;
             }
 
@@ -513,29 +522,20 @@ namespace Marlin.View {
             FileType filetype = FileType.UNKNOWN;
             if (info != null) { /* location is in the current folder */
                 filetype = info.get_file_type ();
-                if (filetype != FileType.DIRECTORY || no_path_change) {
+
+                if (filetype != FileType.DIRECTORY) {
                     if (unselect_others) {
                         aslot.set_all_selected (false);
                         selected_locations = null;
                     }
+
                     var list = new List<File> ();
                     list.prepend (loc);
                     aslot.select_glib_files (list, loc);
                     return;
                 }
-            } else if (no_path_change) { /* not in current, do not navigate to it*/
-                return;
             }
-            /* Attempt to navigate to the location */
-            if (loc != null) {
-                user_path_change_request (loc);
-            }
-        }
-
-        public void focus_location_if_in_current_directory (GLib.File? loc,
-                                                            bool unselect_others = false) {
-            focus_location (loc, true, unselect_others);
-        }
+         }
 
         public string get_root_uri () {
             string path = "";

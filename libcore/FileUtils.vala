@@ -512,6 +512,29 @@ namespace PF.FileUtils {
                 return false;
         }
     }
+
+    public bool uri_contain_keypath_icons (string uri) {
+        return "/icons" in uri || "/.icons" in uri;
+    }
+
+    public string disambiguate_name (string name, string path, string conflict_path) {
+        string prefix = "";
+        string prefix_conflict = "";
+        string path_temp = path;
+        string conflict_path_temp = conflict_path;
+
+        /* Add parent directories until path and conflict path differ */
+        while (prefix == prefix_conflict) {
+            var parent_path= PF.FileUtils.get_parent_path_from_path (path_temp);
+            var parent_conflict_path = PF.FileUtils.get_parent_path_from_path (conflict_path_temp);
+            prefix = Path.get_basename (parent_path) + Path.DIR_SEPARATOR_S + prefix;
+            prefix_conflict = Path.get_basename (parent_conflict_path) + Path.DIR_SEPARATOR_S + prefix_conflict;
+            path_temp= parent_path;
+            conflict_path_temp = parent_conflict_path;
+        }
+
+        return prefix + name;
+    }
 }
 
 namespace Marlin {
