@@ -31,13 +31,6 @@
 #include "fm-list-model.h"
 #include "pantheon-files-core.h"
 
-G_LOCK_DEFINE_STATIC (file_cache_mutex);
-
-static GHashTable   *file_cache;
-
-//static void gof_file_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec);
-//static void gof_file_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec);
-
 G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 
 #define SORT_LAST_CHAR1 '.'
@@ -1208,8 +1201,6 @@ gof_file_compare_for_sort (GOFFile *file1,
                            gboolean directories_first,
                            gboolean reversed)
 {
-    /* When reloading multiple windows this assertion can fail due to an unidentified race condition */
-    g_return_val_if_fail (file1->location != NULL && file2->location != NULL, 0);
 
     int result;
 
@@ -1223,9 +1214,6 @@ gof_file_compare_for_sort (GOFFile *file1,
         switch (sort_type) {
         case FM_LIST_MODEL_FILENAME:
             result = compare_by_display_name (file1, file2);
-            /*if (result == 0) {
-              result = compare_by_directory_name (file_1, file_2);
-              }*/
             break;
         case FM_LIST_MODEL_SIZE:
             result = compare_by_size (file1, file2);
