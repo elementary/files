@@ -953,7 +953,7 @@ static void gof_file_init (GOFFile *file) {
 }
 
 static void gof_file_finalize (GObject* obj) {
-    //g_debug ("%s: delete %p", __func__, obj);
+    g_debug ("%s: delete %p", __func__, obj);
 
     GOFFile *file;
 

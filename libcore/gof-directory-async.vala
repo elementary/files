@@ -24,10 +24,14 @@ namespace GOF.Directory {
 public class Async : Object {
     private static HashTable<GLib.File,GOF.Directory.Async> directory_cache;
     private static Mutex dir_cache_lock;
+    private static HashTable<GLib.File,GOF.File> tmp_file_cache;
+    private static Mutex tmp_file_cache_lock;
 
     static construct {
             directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
             dir_cache_lock = GLib.Mutex ();
+            tmp_file_cache = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
+            tmp_file_cache_lock = GLib.Mutex ();
     }
 
     public delegate void GOFFileLoadedFunc (GOF.File file);
@@ -40,7 +44,7 @@ public class Async : Object {
     private const int MOUNT_TIMEOUT_SEC = 60;
 
     private GOF.File? _file = null;
-    public unowned GOF.File? file {
+    public GOF.File? file {
         get {
             return this != null ? _file : null;
         }
@@ -568,8 +572,12 @@ public class Async : Object {
         }
 
         cancel ();
-        file_hash.remove_all ();
-        file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
+        tmp_file_cache_lock.@lock ();
+        file_hash.foreach_remove ((key, gof) => {
+            tmp_file_cache.insert (key, gof);
+            return true;
+        });
+        tmp_file_cache_lock.unlock ();
         sorted_dirs = null;
         files_count = 0;
         can_load = false;
@@ -654,32 +662,42 @@ public class Async : Object {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
             debug ("Obtained file enumerator for location %s", location.get_uri ());
 
+            GLib.List<GLib.FileInfo> file_infos = null;
             while (!cancellable.is_cancelled ()) {
                 try {
                     server_responding = false;
-                    var files = yield e.next_files_async (200, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
+                    file_infos = yield e.next_files_async (200, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
                     server_responding = true;
-
-                    if (files == null) {
-                        break;
-                    } else {
-                        foreach (var file_info in files) {
-                            var key = Async.get_cache_key (location.get_child (file_info.get_name ()));
-                            var gof = new GOF.File (key, this.location);
-
-                            gof.info = file_info;
-                            gof.update ();
-
-                            file_hash.insert (key, gof);
-                            after_load_file (gof, show_hidden, file_loaded_func);
-                            files_count++;
-                        }
-                    }
                 } catch (Error e) {
                     last_error_message = e.message;
                     warning ("Error reported by next_files_async - %s", e.message);
                 }
+
+                if (file_infos == null) {
+                    break;
+                } else {
+                    tmp_file_cache_lock.@lock ();
+                    foreach (var file_info in file_infos) {
+                        GLib.File key = Async.get_cache_key (location.get_child (file_info.get_name ()));
+                        GOF.File gof = tmp_file_cache.lookup (key);
+
+                        if (gof != null && gof is GOF.File) {
+                            tmp_file_cache.remove (key);
+                        } else {
+                            gof = new GOF.File (key, this.location);
+                        }
+
+                        file_hash.insert (key, gof);
+                        gof.info = file_info;
+                        gof.update ();
+
+                        after_load_file (gof, show_hidden, file_loaded_func);
+                        files_count++;
+                    }
+                    tmp_file_cache_lock.unlock ();
+                }
             }
+
             /* Load as many files as we can get info for */
             if (!(cancellable.is_cancelled ())) {
                 state = State.LOADED;
@@ -1233,7 +1251,7 @@ public class Async : Object {
         return (state == State.LOADED && file_hash.size () == 0);
     }
 
-    public unowned List<GOF.File>? get_sorted_dirs () {
+    public unowned List<unowned GOF.File>? get_sorted_dirs () {
         if (state != State.LOADED) { /* Can happen if pathbar tries to load unloadable directory */
             return null;
         }
