@@ -580,7 +580,7 @@ namespace Marlin.View {
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
             string mode_string = param.get_string ();
-            Marlin.ViewMode mode = Marlin.ViewMode.DEFAULT;
+            Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED;
 
             switch (mode_string) {
                 case "ICON":
