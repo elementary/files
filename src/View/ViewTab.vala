@@ -39,7 +39,7 @@ namespace Marlin.View {
 
         public Marlin.ViewMode mode {
             set {
-                content.view_mode = value;
+                content.view_mode = value; /* changes view if there is one */
             }
 
             get {
@@ -89,6 +89,11 @@ namespace Marlin.View {
 
         private void on_content_active () {
             updated ();
+        }
+
+        public void open (GLib.File loc, Marlin.ViewMode _mode) {
+            mode = _mode;
+            location  = loc;
         }
 
         public new void close () {

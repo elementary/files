@@ -430,6 +430,7 @@ namespace Marlin.View {
 
         public void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             var file = get_file_from_uri (uri);
+
             if (file != null) {
                 add_tab (file, mode);
             } else {
@@ -438,9 +439,9 @@ namespace Marlin.View {
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
-                             Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+                             Marlin.ViewMode _mode = Marlin.ViewMode.PREFERRED) {
 
-            mode = real_mode (mode);
+            var mode = real_mode (_mode);
 
             var tab = new ViewTab (this);
             tabs.insert_tab (tab, -1);
@@ -451,8 +452,8 @@ namespace Marlin.View {
             });
 
             tab.check_for_tab_with_same_name.connect (check_for_tab_with_same_name);
-            tab.mode = mode;
-            tab.location = location;
+
+            tab.open (location, mode);
         }
 
         private void check_for_tab_with_same_name (ViewTab tab) {
@@ -579,7 +580,8 @@ namespace Marlin.View {
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
             string mode_string = param.get_string ();
-            Marlin.ViewMode mode = Marlin.ViewMode.MILLER_COLUMNS;
+            Marlin.ViewMode mode = Marlin.ViewMode.DEFAULT;
+
             switch (mode_string) {
                 case "ICON":
                     mode = Marlin.ViewMode.ICON;

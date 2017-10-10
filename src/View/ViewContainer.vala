@@ -46,7 +46,24 @@ namespace Marlin.View {
         }
 
         public GOF.AbstractSlot? view = null;
-        public Marlin.ViewMode view_mode = Marlin.ViewMode.INVALID;
+
+        private Marlin.ViewMode _view_mode = Marlin.ViewMode.INVALID;
+        public Marlin.ViewMode view_mode {
+            get {
+                return _view_mode;
+            }
+
+            set {
+                bool changed = value != _view_mode;
+                _view_mode = value;
+
+                if (changed && location != null) {
+                    before_mode_change ();
+                    add_view ();
+                    after_mode_change ();
+                }
+            }
+        }
 
         private GLib.File _location = null;
         public unowned GLib.File? location {
@@ -267,18 +284,6 @@ namespace Marlin.View {
             * The slot becomes active when the tab becomes current */
         }
 
-        public void change_view_mode (Marlin.ViewMode mode) {
-            var aslot = get_current_slot ();
-            assert (aslot != null);
-            assert (view != null && location != null);
-
-            if (mode != view_mode) {
-                before_mode_change ();
-                add_view ();
-                after_mode_change ();
-            }
-        }
-
         private void before_mode_change () {
             store_selection ();
             /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
@@ -335,7 +340,7 @@ namespace Marlin.View {
             assert (slot != null);
             /* automagicly enable icon view for icons keypath */
             if (change_mode_to_icons && view_mode != Marlin.ViewMode.ICON) {
-                change_view_mode (Marlin.ViewMode.ICON);
+                view_mode = Marlin.ViewMode.ICON;
             } else {
                 directory_is_loading ();
             }
@@ -347,7 +352,7 @@ namespace Marlin.View {
             refresh_slot_info ();
 
             can_show_folder = false;
-            is_loading =true;
+            is_loading = true;
         }
 
         public void plugin_directory_loaded () {
