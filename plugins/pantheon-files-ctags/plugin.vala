@@ -107,7 +107,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         ignore_dir = f_ignore_dir (directory.uri);
     }
 
-    private void add_entry (GOF.File gof, ref GenericArray<Variant> entries) {
+    private void add_entry (GOF.File gof, GenericArray<Variant> entries) {
         return_if_fail (gof != null);
 
         var entry = new Variant.strv (
@@ -130,7 +130,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         var entries = new GenericArray<Variant> ();
         GOF.File gof;
         while ((gof = knowns.pop_head ()) != null) {
-            add_entry (gof, ref entries);
+            add_entry (gof, entries);
         }
 
         if (entries != null) {
@@ -218,6 +218,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 file.color = int.parse (row_iter.next_value ().get_string ());
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
+                file.icon_changed ();  /* Just need to trigger redraw - the underlying GFile has not changed */
+
                 if (is_user_dir &&
                     file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified) {
                     add_to_unknowns_queue (file);
@@ -312,7 +314,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             }
 
             target_file.color = n;
-            add_entry (target_file, ref entries);
+            add_entry (target_file, entries);
         }
 
         if (entries != null) {
@@ -324,7 +326,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 if (first.location.has_uri_scheme ("recent")) {
                     foreach (GOF.File file in files) {
                         update_file_info (file);
-                        file.changed ();
+                        file.icon_changed (); /* Just need to trigger redraw */
                     }
                 }
             } catch (Error err) {
