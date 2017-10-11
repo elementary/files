@@ -146,7 +146,7 @@ namespace Marlin.View {
         }
 
         ~ViewContainer () {
-            debug ("ViewContainer destruct");
+            debug ("---DESTRUCT--- ViewContainer %s", uri);
         }
 
         private void connect_signals () {

@@ -93,7 +93,7 @@ namespace Marlin.View {
         }
 
         ~Slot () {
-            debug ("Slot destruct");
+            debug ("--- DESTRUCT --- Slot destruct");
         }
 
         private void connect_slot_signals () {

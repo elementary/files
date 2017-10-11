@@ -1564,11 +1564,8 @@ g_return_val_if_fail (location != NULL && G_IS_FILE (location), NULL);
     if (file == NULL)
         file = gof_file_cache_lookup (location);
 
-    if (file != NULL) {
-        g_debug (">>>>reuse file %s", file->uri);
-    } else {
+    if (file == NULL) {
         file = gof_file_new (location, parent);
-        g_debug (">>>>create file %s", file->uri);
         G_LOCK (file_cache_mutex);
         if (file_cache != NULL)
             g_hash_table_insert (file_cache, g_object_ref (location), g_object_ref (file));

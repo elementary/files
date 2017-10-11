@@ -140,7 +140,7 @@ public class Async : Object {
     }
 
     ~Async () {
-        debug ("Async destruct %s", file.uri);
+        debug ("--- DESTRUCT --- Async destruct %s", file.uri);
         if (is_trash)
             disconnect_volume_monitor_signals ();
     }
@@ -267,9 +267,7 @@ public class Async : Object {
         }
 
         if (success) {
-            debug ("got file info - updating");
             file.update ();
-            debug ("success %s; enclosing mount %s", success.to_string (), file.mount != null ? file.mount.get_name () : "null");
             return true;
         } else {
             debug ("Failed to get file info for %s", file.uri);
@@ -278,7 +276,6 @@ public class Async : Object {
     }
 
     private async bool mount_mountable () {
-        debug ("mount_mountable");
         bool res = false;
         Gtk.MountOperation? mount_op = null;
         cancellable = new Cancellable ();
@@ -339,7 +336,6 @@ public class Async : Object {
             } else {
                 file.is_connected = false;
                 file.is_mounted = false;
-                debug ("Setting mount null 1");
                 file.mount = null;
                 debug ("Mount_mountable failed: %s", e.message);
                 if (e is IOError.PERMISSION_DENIED || e is IOError.FAILED_HANDLED) {
@@ -355,7 +351,6 @@ public class Async : Object {
     }
 
     public async bool check_network () {
-        debug ("check network");
         var net_mon = GLib.NetworkMonitor.get_default ();
         network_available = net_mon.get_network_available ();
 
@@ -397,7 +392,6 @@ public class Async : Object {
 
 
     private async void make_ready (bool ready, GOFFileLoadedFunc? file_loaded_func = null) {
-        debug ("make ready");
         can_load = ready;
 
         if (!can_load) {
@@ -636,7 +630,6 @@ public class Async : Object {
             });
 
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
-            debug ("Obtained file enumerator for location %s", location.get_uri ());
 
             GOF.File? gof;
             GLib.File loc;
@@ -707,7 +700,6 @@ public class Async : Object {
 
     private void after_loading (GOFFileLoadedFunc? file_loaded_func) {
         /* If loading failed reset */
-        debug ("after loading state is %s", state.to_string ());
         if (state == State.LOADING || state == State.TIMED_OUT) {
             state = State.TIMED_OUT; /* else clear directory info will fail */
             can_load = false;
@@ -1098,9 +1090,7 @@ public class Async : Object {
 
         if (cached_dir != null) {
             if (cached_dir is Async && cached_dir.file != null) {
-                debug ("found cached dir %s", cached_dir.file.uri);
                 if (cached_dir.file.info == null && cached_dir.can_load) {
-                    debug ("updating cached file info");
                     cached_dir.file.query_update ();  /* This is synchronous and causes blocking */
                 }
             } else {
@@ -1110,8 +1100,6 @@ public class Async : Object {
                 directory_cache.remove (file);
                 dir_cache_lock.unlock ();
             }
-        } else {
-            debug ("Dir %s not in cache", file.get_uri ());
         }
 
         return cached_dir;
