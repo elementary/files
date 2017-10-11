@@ -123,7 +123,7 @@ void new_symlink_local_test () {
     file.query_update ();
     assert (file.info != null);
 
-    string target = file.get_symlink_target ().dup ();
+    string target = file.get_symlink_target ();
     assert (target == path);
     assert (file.is_symlink ());
     assert (!file.is_directory);

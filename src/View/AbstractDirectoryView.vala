@@ -2429,7 +2429,7 @@ namespace FM {
                 Gtk.TreePath sp, ep;
                 Gtk.TreeIter iter;
                 bool valid_iter;
-                GOF.File file;
+                GOF.File? file;
                 GLib.List<GOF.File> visible_files = null;
                 uint actually_visible = 0;
 
@@ -2456,13 +2456,12 @@ namespace FM {
                     while (valid_iter && thumbnail_source_id > 0) {
                         file = model.file_for_iter (iter);
                         path = model.get_path (iter);
-#if (BUILD_TYPE_DEBUG)
-                        assert (file != null); /* Null files in the model should be investigated if debugging */
-#else
-                        if (file == null) {
+
+                        if (file == null) { /* Dummy rows in expanded empty folder result in null file */
+                            valid_iter = false;
                             continue;
                         }
-#endif
+
                         /* Ask thumbnailer only if ThumbState UNKNOWN */
                         if (file.flags == GOF.File.ThumbState.UNKNOWN) {
                             visible_files.prepend (file);

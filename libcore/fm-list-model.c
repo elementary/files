@@ -542,9 +542,7 @@ fm_list_model_file_entry_compare_func (gconstpointer a,
                                             (model->details->order == GTK_SORT_DESCENDING));
 
     } else {
-#ifndef NDEBUG
-        g_critical ("Invalid file entry found in model");
-#endif
+        /* Dummy rows representing expanded empty directories have null files */
         if (file_entry1->file == NULL || file_entry1->file->location == NULL) {
             return -1;
         } else {

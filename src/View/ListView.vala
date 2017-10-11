@@ -103,7 +103,7 @@ namespace FM {
 
         private void schedule_model_unload_directories () {
             cancel_file_timeout ();
-            unload_file_timeout_id = GLib.Timeout.add_seconds (COLLAPSE_TO_UNLOAD_DELAY, 
+            unload_file_timeout_id = GLib.Timeout.add_seconds (COLLAPSE_TO_UNLOAD_DELAY,
                                                                unload_directories);
         }
 

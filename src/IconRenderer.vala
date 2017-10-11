@@ -46,18 +46,18 @@ namespace Marlin {
             }
         }
 
-        public GOF.File? file {
+        private GOF.File? _file = null;
+        public GOF.File file {
             get {
                 return _file;
             }
 
             set {
 
-#if (BUILD_TYPE_DEBUG)
-                assert (value != null); /* Null files should investigated if debugging */
-#endif
+                /* Dummy rows in expanded empty folder result in null file */
                 if (value != null && (_file == null || (icon_size != value.pix_size))) {
                     value.update_icon (icon_size);
+
                 }
 
                 _file = value;
@@ -66,7 +66,7 @@ namespace Marlin {
 
         private bool show_emblems = true;
         private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
-        private GOF.File? _file;
+
         private Marlin.IconSize icon_size;
         public int helper_x {get; private set;}
         public int helper_y {get; private set;}
