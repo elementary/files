@@ -365,7 +365,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             int xpad = 9;
 
             if (event.y >= y0 && event.y <= y0+btnh) {
-                for (i=1; i<=9; i++) {
+                for (i=1; i<=10; i++) {
                     if (event.x>= xpad+x0*i && event.x <= xpad+x0*i+btnw) {
                         color_changed (i-1);
                         break;
@@ -382,7 +382,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             int x0 = btnw+5;
             int xpad = 9;
 
-            for (i=1; i<=9; i++) {
+            for (i=1; i<=10; i++) {
                 if (i==1)
                     DrawCross (cr,xpad + x0*i, y0+1, btnw-2, btnh-2);
                 else {
