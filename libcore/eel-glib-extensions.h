@@ -23,13 +23,7 @@
 #include <glib.h>
 #include <gio/gio.h>
 
-void    eel_g_settings_add_auto_boolean (GSettings *settings, const char *key,
-                                         gboolean *storage);
-void    eel_add_weak_pointer (gpointer pointer_location);
-void    eel_remove_weak_pointer (gpointer pointer_location);
-
-GList   *eel_g_object_list_ref (GList *list);
-GList   *eel_g_object_list_copy (GList *list);
-GList   *eel_g_str_list_alphabetize (GList *list);
+//~ void    eel_add_weak_pointer (gpointer pointer_location);
+//~ void    eel_remove_weak_pointer (gpointer pointer_location);
 
 #endif /* EEL_GLIB_EXTENSIONS_H */

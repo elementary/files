@@ -27,125 +27,61 @@
 #include <sys/time.h>
 #include <math.h>
 
-static void
-update_auto_boolean (GSettings   *settings,
-                     const gchar *key,
-                     gpointer     user_data)
-{
-    int *storage = user_data;
+//~ /**
+ //~ * eel_add_weak_pointer
+ //~ *
+ //~ * Nulls out a saved reference to an object when the object gets destroyed.
+ //~ *
+ //~ * @pointer_location: Address of the saved pointer.
+//~ **/
+//~ void
+//~ eel_add_weak_pointer (gpointer pointer_location)
+//~ {
+    //~ gpointer *object_location;
 
-    *storage = g_settings_get_boolean (settings, key);
-}
+    //~ g_return_if_fail (pointer_location != NULL);
 
-void
-eel_g_settings_add_auto_boolean (GSettings *settings,
-                                 const char *key,
-                                 gboolean *storage)
-{
-    char *signal;
+    //~ object_location = (gpointer *) pointer_location;
+    //~ if (*object_location == NULL) {
+        //~ /* The reference is NULL, nothing to do. */
+        //~ return;
+    //~ }
 
-    *storage = g_settings_get_boolean (settings, key);
-    signal = g_strconcat ("changed::", key, NULL);
-    g_signal_connect (settings, signal,
-                      G_CALLBACK(update_auto_boolean),
-                      storage);
-}
+    //~ g_return_if_fail (G_IS_OBJECT (*object_location));
 
-/**
- * eel_add_weak_pointer
- *
- * Nulls out a saved reference to an object when the object gets destroyed.
- *
- * @pointer_location: Address of the saved pointer.
-**/
-void
-eel_add_weak_pointer (gpointer pointer_location)
-{
-    gpointer *object_location;
+    //~ g_object_add_weak_pointer (G_OBJECT (*object_location),
+                               //~ object_location);
+//~ }
 
-    g_return_if_fail (pointer_location != NULL);
+//~ /**
+ //~ * eel_remove_weak_pointer
+ //~ *
+ //~ * Removes the weak pointer that was added by eel_add_weak_pointer.
+ //~ * Also nulls out the pointer.
+ //~ *
+ //~ * @pointer_location: Pointer that was passed to eel_add_weak_pointer.
+//~ **/
+//~ void
+//~ eel_remove_weak_pointer (gpointer pointer_location)
+//~ {
+    //~ gpointer *object_location;
 
-    object_location = (gpointer *) pointer_location;
-    if (*object_location == NULL) {
-        /* The reference is NULL, nothing to do. */
-        return;
-    }
+    //~ g_return_if_fail (pointer_location != NULL);
 
-    g_return_if_fail (G_IS_OBJECT (*object_location));
+    //~ object_location = (gpointer *) pointer_location;
+    //~ if (*object_location == NULL) {
+        //~ /* The object was already destroyed and the reference
+         //~ * nulled out, nothing to do.
+         //~ */
+        //~ return;
+    //~ }
 
-    g_object_add_weak_pointer (G_OBJECT (*object_location),
-                               object_location);
-}
+    //~ g_return_if_fail (G_IS_OBJECT (*object_location));
 
-/**
- * eel_remove_weak_pointer
- *
- * Removes the weak pointer that was added by eel_add_weak_pointer.
- * Also nulls out the pointer.
- *
- * @pointer_location: Pointer that was passed to eel_add_weak_pointer.
-**/
-void
-eel_remove_weak_pointer (gpointer pointer_location)
-{
-    gpointer *object_location;
+    //~ g_object_remove_weak_pointer (G_OBJECT (*object_location),
+                                  //~ object_location);
 
-    g_return_if_fail (pointer_location != NULL);
-
-    object_location = (gpointer *) pointer_location;
-    if (*object_location == NULL) {
-        /* The object was already destroyed and the reference
-         * nulled out, nothing to do.
-         */
-        return;
-    }
-
-    g_return_if_fail (G_IS_OBJECT (*object_location));
-
-    g_object_remove_weak_pointer (G_OBJECT (*object_location),
-                                  object_location);
-
-    *object_location = NULL;
-}
-
-/**
- * eel_g_object_list_ref
- *
- * Ref all the objects in a list.
- * @list: GList of objects.
-**/
-GList *
-eel_g_object_list_ref (GList *list)
-{
-    g_list_foreach (list, (GFunc) g_object_ref, NULL);
-    return list;
-}
-
-/**
- * eel_g_object_list_copy
- *
- * Copy the list of objects, ref'ing each one.
- * @list: GList of objects.
-**/
-GList *
-eel_g_object_list_copy (GList *list)
-{
-    return g_list_copy (eel_g_object_list_ref (list));
-}
-
-/**
- * eel_g_str_list_alphabetize
- *
- * Sort a list of strings using locale-sensitive rules.
- *
- * @list: List of strings and/or NULLs.
- *
- * Return value: @list, sorted.
- **/
-GList *
-eel_g_str_list_alphabetize (GList *list)
-{
-    return g_list_sort (list, (GCompareFunc) g_utf8_collate);
-}
+    //~ *object_location = NULL;
+//~ }
 
 
