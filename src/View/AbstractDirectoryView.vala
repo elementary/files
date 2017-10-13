@@ -309,7 +309,7 @@ namespace FM {
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
-                    view.queue_draw ();
+                    draw_when_idle ();
                 }
             });
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
@@ -1315,10 +1315,13 @@ namespace FM {
                     }
                 }
             }
+
+            draw_when_idle ();
         }
 
         private void on_directory_file_icon_changed (GOF.Directory.Async dir, GOF.File file) {
             model.file_changed (file, dir);
+            draw_when_idle ();
         }
 
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
@@ -2482,7 +2485,7 @@ namespace FM {
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 } else {
-                    view.queue_draw ();
+                    draw_when_idle ();
                 }
 
                 thumbnail_source_id = 0;
@@ -2493,6 +2496,19 @@ namespace FM {
 
 
 /** HELPER AND CONVENIENCE FUNCTIONS */
+        /** This helps ensure that file item updates are reflected on screen without too many redraws **/
+        uint draw_timeout_id = 0;
+        private void draw_when_idle () {
+            if (draw_timeout_id > 0) {
+                return;
+            }
+
+            draw_timeout_id = Timeout.add (100, () => {
+                draw_timeout_id = 0;
+                view.queue_draw ();
+                return false;
+            });
+        }
 
         protected void block_model () {
             model.row_deleted.disconnect (on_row_deleted);
