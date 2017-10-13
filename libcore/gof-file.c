@@ -108,23 +108,6 @@ gof_file_new (GFile *location, GFile *dir)
     return (file);
 }
 
-#if 0
-void    gof_file_changed (GOFFile *file)
-{
-    GOFDirectoryAsync *dir;
-
-    /* get the DirectoryAsync associated to the file */
-    dir = gof_directory_async_cache_lookup (file->directory);
-    if (dir != NULL) {
-        if (!file->is_hidden || dir->show_hidden_files)
-            g_signal_emit_by_name (dir, "file_changed", file);
-
-        g_object_unref (dir);
-    }
-    g_signal_emit_by_name (file, "changed");
-}
-#endif
-
 void
 gof_file_icon_changed (GOFFile *file)
 {
@@ -641,26 +624,6 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 
     return icon;
 }
-
-#if 0
-static GdkPixbuf
-*ensure_pixbuf_from_nicon (GOFFile *file, gint size, gboolean force_size, MarlinIconInfo *nicon)
-{
-    GdkPixbuf *pix;
-    MarlinIconInfo *temp_nicon;
-    g_return_val_if_fail (size >= 1, NULL);
-
-    pix = marlin_icon_info_get_pixbuf_force_size (nicon, size, force_size);
-    if (pix == NULL) {
-        temp_nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
-        pix = marlin_icon_info_get_pixbuf_force_size (temp_nicon, size, force_size);
-        if (temp_nicon)
-            g_object_unref (temp_nicon);
-    }
-
-    return pix;
-}
-#endif
 
 GdkPixbuf *
 gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFileIconFlags flags)
