@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-#include "eel-i18n.h"
+#include <glib/gi18n.h>
 #include "eel-fcts.h"
 #include "eel-string.h"
 #include "eel-gio-extensions.h"
