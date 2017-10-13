@@ -28,8 +28,6 @@
 
 #include <gtk/gtk.h>
 
-#define EEL_DEFAULT_POPUP_MENU_DISPLACEMENT     2
-
 void        eel_pop_up_context_menu (GtkMenu         *menu,
                                      gint16       offset_x,
                                      gint16       offset_y,

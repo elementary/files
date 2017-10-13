@@ -1553,8 +1553,8 @@ namespace Marlin.Places {
         private new void popup_menu (Gdk.EventButton? event) {
             update_popup_menu ();
             Eel.pop_up_context_menu (popupmenu,
-                                     Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                      event);
         }
 

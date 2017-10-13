@@ -1856,8 +1856,8 @@ namespace FM {
                 if (slot.directory.is_empty ())
                     menu.get_style_context ().add_class ("context-menu");
                 Eel.pop_up_context_menu (menu,
-                                         Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                         Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                         Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                         Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                          (Gdk.EventButton) event);
             }
         }
