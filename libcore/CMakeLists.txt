@@ -50,7 +50,6 @@ set (C_SOURCE_FILES
     eel-gtk-extensions.c
     eel-gdk-pixbuf-extensions.c
     eel-pango-extensions.c
-    eel-glib-extensions.c
     eel-gio-extensions.c
     eel-stock-dialogs.c
     eel-string.c
@@ -73,7 +72,6 @@ set (C_HEADER_FILES
     eel-gtk-extensions.h
     eel-gdk-pixbuf-extensions.h
     eel-pango-extensions.h
-    eel-glib-extensions.h
     eel-gio-extensions.h
     eel-stock-dialogs.h
     eel-string.h

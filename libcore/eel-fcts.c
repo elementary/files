@@ -27,11 +27,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-//#include <sys/types.h>
 #include <pwd.h>
 #include <grp.h>
-#include "eel-glib-extensions.h"
-//~ #include "eel-i18n.h"
 #include <glib/gi18n.h>
 /**
  * eel_get_date_as_string:

@@ -28,7 +28,6 @@
 #include <locale.h>
 #include <stdlib.h>
 #include <string.h>
-#include <eel-glib-extensions.h>
 
 #if 0
 size_t

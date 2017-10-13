@@ -34,7 +34,6 @@
 #include "marlin-file-operations.h"
 
 #ifdef ENABLE_TASKVIEW
-//#include <libtaskview-glib/taskview.h>
 #include <libtaskview/taskview.h>
 #else
 #include "marlin-progress-info.h"
@@ -47,21 +46,9 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "eel-glib-extensions.h"
 #include "eel-string.h"
 #include "eel-stock-dialogs.h"
 
-/*
-#include "nautilus-file-changes-queue.h"
-#include "nautilus-file-private.h"
-#include "nautilus-desktop-icon-file.h"
-#include "nautilus-desktop-link-monitor.h"
-#include "nautilus-global-preferences.h"
-#include "nautilus-link.h"
-#include "nautilus-autorun.h"
-#include "nautilus-trash-monitor.h"
-#include "nautilus-file-utilities.h"
-#include "nautilus-file-conflict-dialog.h"*/
 #include "marlin-file-changes-queue.h"
 #include "marlin-file-conflict-dialog.h"
 #include "marlin-undostack-manager.h"
