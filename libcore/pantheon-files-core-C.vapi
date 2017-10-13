@@ -102,13 +102,7 @@ namespace Eel {
     [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
     [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public void gtk_widget_set_shown (Gtk.Widget widget, bool shown);
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public Gtk.MenuItem gtk_menu_append_separator (Gtk.Menu menu);
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public unowned Gdk.Screen gtk_widget_get_screen (Gtk.Widget? widget);
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public const int16 DEFAULT_POPUP_MENU_DISPLACEMENT;
 
     [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
