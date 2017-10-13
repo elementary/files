@@ -47,17 +47,14 @@ GENERATE_HEADER
 
 set (C_SOURCE_FILES
     eel-fcts.c
-    eel-i18n.c
     eel-gtk-extensions.c
     eel-gdk-pixbuf-extensions.c
     eel-pango-extensions.c
     eel-glib-extensions.c
     eel-gio-extensions.c
+    eel-i18n.c
     eel-stock-dialogs.c
-    eel-debug.c
     eel-string.c
-    eel-accessibility.c
-    eel-ui.c
     eel-vfs-extensions.c
     marlin-file-operations.c
     marlin-undostack-manager.c
@@ -74,18 +71,15 @@ set (C_SOURCE_FILES
     ${VALA_C})
 
 set (C_HEADER_FILES
-    eel-accessibility.h
-    eel-debug.h
     eel-fcts.h
-    eel-gdk-pixbuf-extensions.h
-    eel-gio-extensions.h
-    eel-glib-extensions.h
     eel-gtk-extensions.h
-    eel-i18n.h
+    eel-gdk-pixbuf-extensions.h
     eel-pango-extensions.h
+    eel-glib-extensions.h
+    eel-gio-extensions.h
+    eel-i18n.h
     eel-stock-dialogs.h
     eel-string.h
-    eel-ui.h
     eel-vfs-extensions.h
     gof-file.h
     marlin-exec.h
