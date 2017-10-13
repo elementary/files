@@ -28,7 +28,6 @@
 #include <gio/gio.h>
 #include <glib/gi18n.h>
 #include <pango/pango.h>
-#include "eel-vfs-extensions.h"
 
 #include "gof-file.h"
 #include "marlin-icon-info.h"

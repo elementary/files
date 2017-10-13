@@ -55,7 +55,6 @@ set (C_SOURCE_FILES
     eel-i18n.c
     eel-stock-dialogs.c
     eel-string.c
-    eel-vfs-extensions.c
     marlin-file-operations.c
     marlin-undostack-manager.c
     marlin-file-changes-queue.c
@@ -80,7 +79,6 @@ set (C_HEADER_FILES
     eel-i18n.h
     eel-stock-dialogs.h
     eel-string.h
-    eel-vfs-extensions.h
     gof-file.h
     marlin-exec.h
     marlin-file-conflict-dialog.h
