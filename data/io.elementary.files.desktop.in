@@ -3,21 +3,21 @@ _Name=Files
 _Comment=Browse your files
 _Keywords=folder;manager;explore;disk;filesystem;
 _GenericName=File Manager
-Exec=pantheon-files %U
+Exec=io.elementary.files %U
 Icon=system-file-manager
 Terminal=false
 StartupNotify=true
 Type=Application
 MimeType=inode/directory;
 Categories=System;Utility;Core;GTK;FileTools;FileManager;
-X-GNOME-Gettext-Domain=pantheon-files
+X-GNOME-Gettext-Domain=io.elementary.files
 X-GNOME-UsesNotifications=true
 Actions=WindowNew;Root;
 
 [Desktop Action WindowNew]
 _Name=New Window
-Exec=pantheon-files -n
+Exec=io.elementary.files -n
 
 [Desktop Action Root]
 _Name=New Window As Administrator
-Exec=pantheon-files-pkexec
+Exec=io.elementary.files-pkexec

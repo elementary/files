@@ -15,7 +15,7 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-[DBus (name = "org.pantheon.files.db")]
+[DBus (name = "io.elementary.files.db")]
 interface MarlinDaemon : Object {
     public abstract async Variant get_uri_infos (string raw_uri) throws IOError;
     public abstract async bool record_uris (Variant[] entries, string directory)    throws IOError;
@@ -40,8 +40,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         cancellable = new Cancellable ();
 
         try {
-            daemon = Bus.get_proxy_sync (BusType.SESSION, "org.pantheon.files.db",
-                                         "/org/pantheon/files/db");
+            daemon = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files.db",
+                                         "/io/elementary/files/db");
         } catch (IOError e) {
             stderr.printf ("%s\n", e.message);
         }
@@ -90,9 +90,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void directory_loaded (void* user_data) {
-//~         debug  ("CANCEL");
         cancellable.cancel ();
-
 
         if (idle_consume_unknowns > 0) {
             Source.remove (idle_consume_unknowns);
@@ -100,7 +98,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         unknowns.clear ();
-        cancellable.reset ();
+        cancellable = new Cancellable ();
 
         directory = ((Object[]) user_data)[2] as GOF.File;
         assert (directory != null);
@@ -109,16 +107,18 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         ignore_dir = f_ignore_dir (directory.uri);
     }
 
-    private Variant add_entry (GOF.File gof) {
+    private void add_entry (GOF.File gof, GenericArray<Variant> entries) {
         return_if_fail (gof != null);
 
-        char* ptr_arr[4];
-        ptr_arr[0] = gof.uri;
-        ptr_arr[1] = gof.get_ftype ();
-        ptr_arr[2] = gof.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED).to_string ();
-        ptr_arr[3] = gof.color.to_string ();
+        var entry = new Variant.strv (
+                        { gof.uri,
+                          gof.get_ftype (),
+                          gof.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED).to_string (),
+                          gof.color.to_string ()
+                        }
+                    );
 
-        return new Variant.strv ((string[]) ptr_arr);
+        entries.add (entry);
     }
 
     private async void consume_knowns_queue () {
@@ -127,16 +127,16 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             return;
         }
 
-        Variant[] entries = null;
+        var entries = new GenericArray<Variant> ();
         GOF.File gof;
         while ((gof = knowns.pop_head ()) != null) {
-            entries += add_entry (gof);
+            add_entry (gof, entries);
         }
 
         if (entries != null) {
             debug ("--- known entries %d", entries.length);
             try {
-                yield daemon.record_uris (entries, directory.uri);
+                yield daemon.record_uris (entries.data, directory.uri);
             } catch (Error err) {
                 warning ("%s", err.message);
             }
@@ -150,39 +150,20 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         GOF.File gof = null;
-        var count = unknowns.get_length ();
-        debug ("unknowns queue length: %u", count);
-        if (count > 10) {
-            /* query info the whole dir, we can clear the whole unknowns queue */
-            unknowns.clear ();
+        /* Length of unknowns queue limited to visible files by AbstractDirectoryView.
+         * Avoid querying whole directory in case very large. */
+        while ((gof = unknowns.pop_head ()) != null) {
             try {
-                var e = yield directory.location.enumerate_children_async (FileAttribute.STANDARD_NAME+","+ FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
-                while (true) {
-                    var files = yield e.next_files_async (200, 0, cancellable);
-                    if (files == null)
-                        break;
-
-                    foreach (var file_info in files) {
-                        GLib.File loc = directory.location.get_child ((string) file_info.get_name());
-                        gof = GOF.File.get (loc);
-                        if (gof != null) {
-                            add_to_knowns_queue (gof, file_info);
-                        }
-                    }
-                }
-            } catch (Error err1) {
-                warning ("dir query_info failed: %s %s", err1.message, directory.uri);
-            }
-        } else {
-            while ((gof = unknowns.pop_head ()) != null) {
-                try {
-                    var info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
-                    add_to_knowns_queue (gof, info);
-                } catch (Error err2) {
-                    warning ("query_info failed: %s %s", err2.message, gof.uri);
+                FileInfo? info = gof.info; /* file info should already be up to date at this point */
+                if (info == null) {
+                    info = yield gof.location.query_info_async (FileAttribute.STANDARD_CONTENT_TYPE, 0, 0, cancellable);
                 }
 
+                add_to_knowns_queue (gof, info);
+            } catch (Error err2) {
+                warning ("query_info failed: %s %s", err2.message, gof.uri);
             }
+
         }
     }
 
@@ -197,6 +178,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             Source.remove (t_consume_knowns);
             t_consume_knowns = 0;
         }
+
         t_consume_knowns = Timeout.add (300, () => {
                                         consume_knowns_queue.begin ();
                                         t_consume_knowns = 0;
@@ -210,12 +192,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         if (file.get_ftype () == "application/octet-stream") {
             unknowns.push_head (file);
 
-            if (idle_consume_unknowns == 0)
+            if (idle_consume_unknowns == 0) {
                 idle_consume_unknowns = Idle.add (() => {
                                                   consume_unknowns_queue.begin ();
                                                   idle_consume_unknowns = 0;
                                                   return false;
                                                   });
+            }
         }
     }
 
@@ -226,10 +209,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             var rc = yield daemon.get_uri_infos (file.uri);
 
             VariantIter iter = rc.iterator ();
-//~             debug ("iter n_children %d", (int) iter.n_children ());
             assert (iter.n_children () == 1);
             VariantIter row_iter = iter.next_value ().iterator ();
-//~             debug ("row_iter n_children %d", (int) row_iter.n_children ());
 
             if (row_iter.n_children () == 3) {
                 uint64 modified = int64.parse (row_iter.next_value ().get_string ());
@@ -237,6 +218,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 file.color = int.parse (row_iter.next_value ().get_string ());
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
+                file.icon_changed ();  /* Just need to trigger redraw - the underlying GFile has not changed */
+
                 if (is_user_dir &&
                     file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified) {
                     add_to_unknowns_queue (file);
@@ -267,10 +250,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             var rc = yield daemon.get_uri_infos (target_uri);
 
             VariantIter iter = rc.iterator ();
-//~             debug ("iter n_children %d", (int) iter.n_children ());
             assert (iter.n_children () == 1);
             VariantIter row_iter = iter.next_value ().iterator ();
-//~             debug ("row_iter n_children %d", (int) row_iter.n_children ());
 
             if (row_iter.n_children () == 3) {
                 /* Only interested in color tag in recent:// at the moment */
@@ -288,7 +269,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
         if (!ignore_dir && file.info != null &&
             (!file.is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
- 
+
             if (file.location.has_uri_scheme ("recent")) {
                 rreal_update_file_info_for_recent.begin (file, file.get_display_target_uri ());
             } else {
@@ -318,28 +299,34 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void set_color (GLib.List<unowned GOF.File> files, int n) throws IOError {
-        Variant[] entries = null;
+        var entries = new GenericArray<Variant> ();
         GOF.File target_file;
+
         foreach (unowned GOF.File file in files) {
+            if (file == null) {
+                continue;
+            }
+
             if (file.location.has_uri_scheme ("recent")) {
                 target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
             } else {
                 target_file = file;
             }
+
             target_file.color = n;
-            entries +=  add_entry (target_file);
+            add_entry (target_file, entries);
         }
 
         if (entries != null) {
             try {
                 GOF.File first = (GOF.File) (files.data);
-                yield daemon.record_uris (entries, first.uri);
+                yield daemon.record_uris (entries.data, first.uri);
                 /* If the color of the target is set while in recent view, we have to
-                 * update the recent view to reflect this */ 
+                 * update the recent view to reflect this */
                 if (first.location.has_uri_scheme ("recent")) {
                     foreach (GOF.File file in files) {
                         update_file_info (file);
-                        file.changed ();
+                        file.icon_changed (); /* Just need to trigger redraw */
                     }
                 }
             } catch (Error err) {
@@ -382,13 +369,14 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             int x0 = btnw+5;
             int xpad = 9;
 
-            if (event.y >= y0 && event.y <= y0+btnh)
+            if (event.y >= y0 && event.y <= y0+btnh) {
                 for (i=1; i<=10; i++) {
                     if (event.x>= xpad+x0*i && event.x <= xpad+x0*i+btnw) {
                         color_changed (i-1);
                         break;
                     }
                 }
+            }
         }
 
         protected bool on_draw (Cairo.Context cr) {

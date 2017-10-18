@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-06-24 10:31+0000\n"
+"PO-Revision-Date: 2017-09-03 00:23+0000\n"
 "Last-Translator: Ryo Nakano <rmfmada3q@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese "
+"<https://weblate.elementary.io/projects/files/files/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.14\n"
+"X-Generator: Weblate 2.16\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -58,7 +58,7 @@ msgid ""
 "Please check your gvfs installation."
 msgstr ""
 "サポートされているサーバ形式のリストをロード出来ません。\n"
-"gvfs が正しくインストールされているか確認して下さい。"
+"gvfs がインストールされているか確認してください。"
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
@@ -765,14 +765,12 @@ msgstr "転送先はフォルダーではありません。"
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr ""
-"転送先の空き容量が足りません。容量を増やすためにはファイルを削除してみて下さ"
-"い。"
+msgstr "転送先の空き容量が足りません。容量を増やすためにはファイルを削除してみてください。"
 
 #: ../libcore/marlin-file-operations.c:3025
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr "利用可能な容量は %S ありますが、%S 必要です。"
+msgstr "利用可能な容量は %S ありますが、%S が必要です。"
 
 #: ../libcore/marlin-file-operations.c:3053
 msgid "The destination is read-only."
@@ -2120,15 +2118,15 @@ msgstr "'%s' へ名前を変更できません"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "今日の%-H時%M分"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "昨日の%-H時%M分"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%Aの%-H時%M分"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
@@ -2228,7 +2226,6 @@ msgid "Bookmarks"
 msgstr "ブックマーク"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
 msgstr "最近使用したアイテム"
 

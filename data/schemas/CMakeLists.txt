@@ -1,2 +1,2 @@
 include(GSettings)
-add_schema("org.pantheon.files.gschema.xml")
+add_schema("io.elementary.files.gschema.xml")

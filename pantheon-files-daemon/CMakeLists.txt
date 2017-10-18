@@ -26,7 +26,7 @@ set(LIB_PATHS
 link_directories(${LIB_PATHS})
 add_definitions(${CFLAGS})
 
-vala_precompile(VALA_C pantheon-files-daemon
+vala_precompile(VALA_C io.elementary.files-daemon
     main.vala
     marlind-tagging.vala
 PACKAGES
@@ -36,9 +36,16 @@ PACKAGES
     sqlite3
 OPTIONS
     --thread)
+#~ <<<<<<< HEAD
 
-add_executable(pantheon-files-daemon
+#~ add_executable(pantheon-files-daemon
+    #~ ${VALA_C} )
+
+#~ target_link_libraries(pantheon-files-daemon ${DEPS_LIBRARIES})
+#~ install(TARGETS pantheon-files-daemon RUNTIME DESTINATION bin)
+#~ =======
+add_executable(io.elementary.files-daemon
     ${VALA_C} )
-
-target_link_libraries(pantheon-files-daemon ${DEPS_LIBRARIES})
-install(TARGETS pantheon-files-daemon RUNTIME DESTINATION bin)
+target_link_libraries(io.elementary.files-daemon ${DEPS_LIBRARIES})
+install(TARGETS io.elementary.files-daemon RUNTIME DESTINATION bin)
+#~ >>>>>>> master
