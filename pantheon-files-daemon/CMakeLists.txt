@@ -36,16 +36,8 @@ PACKAGES
     sqlite3
 OPTIONS
     --thread)
-#~ <<<<<<< HEAD
 
-#~ add_executable(pantheon-files-daemon
-    #~ ${VALA_C} )
-
-#~ target_link_libraries(pantheon-files-daemon ${DEPS_LIBRARIES})
-#~ install(TARGETS pantheon-files-daemon RUNTIME DESTINATION bin)
-#~ =======
 add_executable(io.elementary.files-daemon
     ${VALA_C} )
 target_link_libraries(io.elementary.files-daemon ${DEPS_LIBRARIES})
 install(TARGETS io.elementary.files-daemon RUNTIME DESTINATION bin)
-#~ >>>>>>> master
