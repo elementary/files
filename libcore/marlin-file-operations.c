@@ -46,8 +46,8 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "eel-string.h"
 #include "eel-stock-dialogs.h"
+#include "eel-string.h"
 
 #include "marlin-file-changes-queue.h"
 #include "marlin-file-conflict-dialog.h"
@@ -902,6 +902,7 @@ static char *
 f (const char *format, ...) {
     va_list va;
     char *res;
+
 
     va_start (va, format);
     res = eel_strdup_vprintf_with_custom (handlers, format, va);
