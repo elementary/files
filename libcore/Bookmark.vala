@@ -78,7 +78,7 @@ namespace Marlin {
             return this.get_location ().get_parse_name ();
         }
 
-        public unowned GLib.Icon get_icon () {
+        public GLib.Icon get_icon () {
             if (gof_file.icon == null)
                 gof_file.get_folder_icon_from_uri_or_path ();
 
