@@ -159,6 +159,10 @@ namespace Marlin
         public Gdk.Pixbuf? get_pixbuf_at_size (int size);
         public static void clear_caches ();
         public static void remove_cache (string path, int size);
+        /* Use for testing only */
+        public static uint loadable_icon_cache_info ();
+        public static uint themed_icon_cache_info ();
+        public static void set_reap_time (uint milliseconds);
     }
     [CCode (cheader_filename = "marlin-trash-monitor.h")]
     public abstract class TrashMonitor : GLib.Object
