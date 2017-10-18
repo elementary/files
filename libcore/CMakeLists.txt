@@ -52,7 +52,6 @@ set (C_SOURCE_FILES
     eel-pango-extensions.c
     eel-gio-extensions.c
     eel-stock-dialogs.c
-    eel-string.c
     marlin-file-operations.c
     marlin-undostack-manager.c
     marlin-file-changes-queue.c
@@ -74,7 +73,6 @@ set (C_HEADER_FILES
     eel-pango-extensions.h
     eel-gio-extensions.h
     eel-stock-dialogs.h
-    eel-string.h
     gof-file.h
     marlin-exec.h
     marlin-file-conflict-dialog.h
