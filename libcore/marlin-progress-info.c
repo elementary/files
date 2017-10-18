@@ -23,8 +23,6 @@
 
 #include <math.h>
 #include <glib/gi18n.h>
-//~ #include "eel-string.h"
-/*#include <eel/eel-glib-extensions.h>*/
 #include "marlin-progress-info.h"
 #include "marlin-progress-info-manager.h"
 

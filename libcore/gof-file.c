@@ -23,7 +23,6 @@
 #include <sys/stat.h>
 #include <glib/gi18n.h>
 #include "eel-fcts.h"
-//~ #include "eel-string.h"
 #include "eel-gio-extensions.h"
 #include "marlin-exec.h"
 #include "marlin-icons.h"
@@ -439,7 +438,6 @@ gof_file_update (GOFFile *file)
                                                             G_KEY_FILE_DESKTOP_KEY_ICON,
                                                             NULL);
 
-            //~ if (G_UNLIKELY (eel_str_is_empty (file->custom_icon_name)))
             if (G_UNLIKELY (g_strcmp0 (file->custom_icon_name, NULL) == 0))
             {
                 /* make sure we set null if the string is empty else the assertion in
@@ -466,7 +464,6 @@ gof_file_update (GOFFile *file)
 
             type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                           G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
-            //~ if (eel_str_is_equal (type, "Link"))
             if (g_strcmp0 (type, "Link") == 0)
             {
                 url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
@@ -1827,7 +1824,6 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
         type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                       G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
 
-        //~ if (G_LIKELY (eel_str_is_equal (type, "Application")))
         if (G_LIKELY (g_strcmp0 (type, "Application") == 0))
         {
             exec = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
@@ -1854,7 +1850,6 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
                              _("No Exec field specified"));
             }
         }
-        //~ else if (eel_str_is_equal (type, "Link"))
         else if (g_strcmp0 (type, "Link") == 0)
         {
             url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
