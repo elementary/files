@@ -34,7 +34,6 @@
 #include "marlin-file-operations.h"
 
 #ifdef ENABLE_TASKVIEW
-//#include <libtaskview-glib/taskview.h>
 #include <libtaskview/taskview.h>
 #else
 #include "marlin-progress-info.h"
@@ -47,21 +46,9 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "eel-glib-extensions.h"
-#include "eel-string.h"
 #include "eel-stock-dialogs.h"
+#include "eel-string.h"
 
-/*
-#include "nautilus-file-changes-queue.h"
-#include "nautilus-file-private.h"
-#include "nautilus-desktop-icon-file.h"
-#include "nautilus-desktop-link-monitor.h"
-#include "nautilus-global-preferences.h"
-#include "nautilus-link.h"
-#include "nautilus-autorun.h"
-#include "nautilus-trash-monitor.h"
-#include "nautilus-file-utilities.h"
-#include "nautilus-file-conflict-dialog.h"*/
 #include "marlin-file-changes-queue.h"
 #include "marlin-file-conflict-dialog.h"
 #include "marlin-undostack-manager.h"
@@ -916,6 +903,7 @@ f (const char *format, ...) {
     va_list va;
     char *res;
 
+
     va_start (va, format);
     res = eel_strdup_vprintf_with_custom (handlers, format, va);
     va_end (va);
@@ -945,7 +933,7 @@ init_common (JobTypes jobtype,
 
     if (parent_window) {
         common->parent_window = parent_window;
-        eel_add_weak_pointer (&common->parent_window);
+        g_object_add_weak_pointer (parent_window, &common->parent_window);
     }
 
 #ifdef ENABLE_TASKVIEW
@@ -1012,7 +1000,11 @@ finalize_common (CommonJob *common)
 
     common->inhibit_cookie = -1;
     g_timer_destroy (common->time);
-    eel_remove_weak_pointer (&common->parent_window);
+
+    if (common->parent_window) {
+        g_object_remove_weak_pointer (common->parent_window, &common->parent_window);
+    }
+
     if (common->skip_files) {
         g_hash_table_destroy (common->skip_files);
     }
@@ -2146,7 +2138,7 @@ trash_or_delete_internal (GList                  *files,
     /* TODO: special case desktop icon link files ... */
 
     job = op_job_new (JOB_DELETE, DeleteJob, parent_window);
-    job->files = eel_g_object_list_copy (files);
+    job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->try_trash = try_trash;
     job->user_cancel = FALSE;
     job->done_callback = done_callback;
@@ -2243,7 +2235,10 @@ unmount_mount_callback (GObject *source_object,
         g_error_free (error);
     }
 
-    eel_remove_weak_pointer (&data->parent_window);
+    if (data->parent_window) {
+        g_object_remove_weak_pointer (data->parent_window, &data->parent_window);
+    }
+
     g_object_unref (data->mount);
     g_free (data);
 }
@@ -2460,7 +2455,7 @@ marlin_file_operations_unmount_mount_full (GtkWindow                      *paren
     data->callback_data = callback_data;
     if (parent_window) {
         data->parent_window = parent_window;
-        eel_add_weak_pointer (&data->parent_window);
+        g_object_add_weak_pointer (parent_window, &data->parent_window);
 
     }
     data->eject = eject;
@@ -2476,7 +2471,11 @@ marlin_file_operations_unmount_mount_full (GtkWindow                      *paren
             if (callback) {
                 callback (callback_data);
             }
-            eel_remove_weak_pointer (&data->parent_window);
+
+            if (parent_window) {
+                g_object_remove_weak_pointer (parent_window, &data->parent_window);
+            }
+
             g_object_unref (data->mount);
             g_free (data);
             return;
@@ -4808,7 +4807,7 @@ marlin_file_operations_copy (GList *files,
     //job->desktop_location = marlin_get_desktop_location ();
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
-    job->files = eel_g_object_list_copy (files);
+    job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
     if (relative_item_points != NULL &&
         relative_item_points->len > 0) {
@@ -5357,7 +5356,7 @@ marlin_file_operations_move (GList *files,
     job->is_move = TRUE;
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
-    job->files = eel_g_object_list_copy (files);
+    job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
     if (relative_item_points != NULL &&
         relative_item_points->len > 0) {
@@ -5697,7 +5696,7 @@ marlin_file_operations_link (GList *files,
     job = op_job_new (JOB_LINK, CopyMoveJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
-    job->files = eel_g_object_list_copy (files);
+    job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = g_object_ref (target_dir);
     if (relative_item_points != NULL &&
         relative_item_points->len > 0) {
@@ -5738,7 +5737,7 @@ marlin_file_operations_duplicate (GList *files,
     job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
     job->done_callback = done_callback;
     job->done_callback_data = done_callback_data;
-    job->files = eel_g_object_list_copy (files);
+    job->files = g_list_copy_deep (files, (GCopyFunc) g_object_ref, NULL);
     job->destination = NULL;
     if (relative_item_points != NULL &&
         relative_item_points->len > 0) {
