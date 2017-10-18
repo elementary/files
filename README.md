@@ -34,4 +34,4 @@ Run `cmake` to configure the build environment and then `make all test` to build
 To install, use `make install`, then execute with `pantheon-files`
 
     sudo make install
-    pantheon-files
+    io.elementary.files

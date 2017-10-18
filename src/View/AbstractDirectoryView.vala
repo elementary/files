@@ -309,7 +309,7 @@ namespace FM {
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
-                    view.queue_draw ();
+                    draw_when_idle ();
                 }
             });
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
@@ -665,7 +665,13 @@ namespace FM {
             connect_directory_handlers (new_dir);
         }
 
-        public void clear () {
+        public void prepare_reload (GOF.Directory.Async dir) {
+            cancel ();
+            clear ();
+            connect_directory_loading_handlers (dir);
+        }
+
+        private void clear () {
             /* after calling this (prior to reloading), the directory must be re-initialised so
              * we reconnect the file_loaded and done_loading signals */
             freeze_tree ();
@@ -673,8 +679,6 @@ namespace FM {
             model.clear ();
             all_selected = false;
             unblock_model ();
-            connect_directory_loading_handlers (slot.directory);
-            /* tree will be thawed after done loading */
         }
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
@@ -1311,10 +1315,13 @@ namespace FM {
                     }
                 }
             }
+
+            draw_when_idle ();
         }
 
         private void on_directory_file_icon_changed (GOF.Directory.Async dir, GOF.File file) {
             model.file_changed (file, dir);
+            draw_when_idle ();
         }
 
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
@@ -2478,7 +2485,7 @@ namespace FM {
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 } else {
-                    view.queue_draw ();
+                    draw_when_idle ();
                 }
 
                 thumbnail_source_id = 0;
@@ -2489,6 +2496,19 @@ namespace FM {
 
 
 /** HELPER AND CONVENIENCE FUNCTIONS */
+        /** This helps ensure that file item updates are reflected on screen without too many redraws **/
+        uint draw_timeout_id = 0;
+        private void draw_when_idle () {
+            if (draw_timeout_id > 0) {
+                return;
+            }
+
+            draw_timeout_id = Timeout.add (100, () => {
+                draw_timeout_id = 0;
+                view.queue_draw ();
+                return false;
+            });
+        }
 
         protected void block_model () {
             model.row_deleted.disconnect (on_row_deleted);
@@ -3305,7 +3325,8 @@ namespace FM {
 
                 case Gdk.BUTTON_SECONDARY:
                     if (click_zone == ClickZone.NAME ||
-                        click_zone == ClickZone.BLANK_PATH) {
+                        click_zone == ClickZone.BLANK_PATH ||
+                        click_zone == ClickZone.ICON) {
 
                         select_path (path);
                     } else if (click_zone == ClickZone.INVALID) {
@@ -3313,6 +3334,8 @@ namespace FM {
                     }
 
                     unblock_drag_and_drop ();
+                    /* Ensure selected files list and menu actions are updated before context menu shown */
+                    after_selected_files_changed ();
                     result = handle_secondary_button_click (event);
                     break;
 
