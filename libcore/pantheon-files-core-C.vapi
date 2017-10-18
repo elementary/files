@@ -165,6 +165,10 @@ namespace Marlin
         public Gdk.Pixbuf? get_pixbuf_at_size (int size);
         public static void clear_caches ();
         public static void remove_cache (string path, int size);
+        /* Use for testing only */
+        public static uint loadable_icon_cache_info ();
+        public static uint themed_icon_cache_info ();
+        public static void set_reap_time (uint milliseconds);
     }
     [CCode (cheader_filename = "marlin-trash-monitor.h")]
     public abstract class TrashMonitor : GLib.Object
@@ -358,7 +362,7 @@ namespace GOF {
         public static string list_to_string (GLib.List<GOF.File> list, out long len);
 
         public bool execute (Gdk.Screen screen, GLib.List<GLib.File>? files, out GLib.Error error);
-        public void rename (string new_name, GOF.FileOperationCallback? callback = null, void* data = null);
+//~         public void rename (string new_name, GOF.FileOperationCallback? callback = null, void* data = null);
 
         public GOF.File @ref ();
         public GOF.File unref ();
