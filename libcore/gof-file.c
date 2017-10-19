@@ -21,11 +21,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-#include "eel-i18n.h"
+#include <glib/gi18n.h>
 #include "eel-fcts.h"
-#include "eel-string.h"
 #include "eel-gio-extensions.h"
-#include "eel-string.h"
 #include "marlin-exec.h"
 #include "marlin-icons.h"
 #include "fm-list-model.h"
@@ -440,7 +438,7 @@ gof_file_update (GOFFile *file)
                                                             G_KEY_FILE_DESKTOP_KEY_ICON,
                                                             NULL);
 
-            if (G_UNLIKELY (eel_str_is_empty (file->custom_icon_name)))
+            if (G_UNLIKELY (g_strcmp0 (file->custom_icon_name, NULL) == 0))
             {
                 /* make sure we set null if the string is empty else the assertion in
                  * thunar_icon_factory_lookup_icon() will fail */
@@ -466,7 +464,7 @@ gof_file_update (GOFFile *file)
 
             type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                           G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
-            if (eel_str_is_equal (type, "Link"))
+            if (g_strcmp0 (type, "Link") == 0)
             {
                 url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                              G_KEY_FILE_DESKTOP_KEY_URL, NULL);
@@ -633,6 +631,7 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
     g_return_val_if_fail (size >= 1, NULL);
     nicon = gof_file_get_icon (file, size, flags);
     pix = marlin_icon_info_get_pixbuf_force_size (nicon, size, force_size);
+
     if (nicon) {
         g_object_unref (nicon);
     }
@@ -1547,7 +1546,7 @@ gboolean gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b)
                                                         G_FILE_ATTRIBUTE_ID_FILESYSTEM);
 
     /* compare the filesystem IDs */
-    return eel_str_is_equal (filesystem_id_a, filesystem_id_b);
+    return (filesystem_id_a || filesystem_id_b) && g_strcmp0 (filesystem_id_a, filesystem_id_b) == 0;
 }
 
 /**
@@ -1826,7 +1825,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
         type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                       G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
 
-        if (G_LIKELY (eel_str_is_equal (type, "Application")))
+        if (G_LIKELY (g_strcmp0 (type, "Application") == 0))
         {
             exec = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                           G_KEY_FILE_DESKTOP_KEY_EXEC, NULL);
@@ -1852,7 +1851,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
                              _("No Exec field specified"));
             }
         }
-        else if (eel_str_is_equal (type, "Link"))
+        else if (g_strcmp0 (type, "Link") == 0)
         {
             url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                          G_KEY_FILE_DESKTOP_KEY_URL, NULL);

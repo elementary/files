@@ -29,7 +29,6 @@
 #include <glib/gi18n.h>
 #include <locale.h>
 #include <gdk/gdk.h>
-#include "eel-glib-extensions.h"
 #include "marlin-file-changes-queue.h"
 
 struct _MarlinUndoActionData
