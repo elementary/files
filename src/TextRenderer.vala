@@ -20,22 +20,36 @@ namespace Marlin {
     public class TextRenderer: Gtk.CellRendererText {
 
         const int MAX_LINES = 5;
-        private int border_radius = 6;
+        private int border_radius;
+        private int double_border_radius;
 
-        public Marlin.ZoomLevel zoom_level {get; set;}
+        private Marlin.ZoomLevel _zoom_level;
+        public Marlin.ZoomLevel zoom_level {
+            get {
+                return _zoom_level;
+            }
+
+            set {
+                var icon_size = Marlin.zoom_level_to_icon_size (value);
+                border_radius = 5 +  icon_size / 40;
+                double_border_radius = 2 * border_radius;
+
+                if (is_list_view) {
+                    (this as Gtk.CellRenderer).set_fixed_size (-1, icon_size);
+                } else {
+                    wrap_width = item_width - double_border_radius;
+                }
+
+                _zoom_level = value;
+            }
+        }
+
         public new string background { set; private get;}
         public GOF.File? file {set; private get;}
-        private int _item_width;
+        private int _item_width = -1;
         public int item_width {
             set {
                 _item_width = value;
-                border_radius = 5 + value / 40;
-
-                if (xalign == 0.5) {
-                    wrap_width = _item_width - border_radius;
-                } else {
-                    wrap_width = -1;
-                }
             }
 
             private get {
@@ -104,7 +118,7 @@ namespace Marlin {
 
             /* Position text relative to the focus rectangle */
             if (!is_list_view) {
-                x_offset = (cell_area.width - wrap_width) / 2;
+                x_offset += (focus_rect_width - wrap_width) / 2;
                 y_offset += (focus_rect_height - text_height) / 2;
             } else {
                 y_offset = (cell_area.height - char_height) / 2;
@@ -125,20 +139,12 @@ namespace Marlin {
         }
 
         public void set_up_layout (string? text, int cell_width) {
-            /* render small/normal text depending on the zoom_level */
             if (text == null) {
                 text= " ";
             }
 
-            bool small = this.zoom_level < Marlin.ZoomLevel.NORMAL;
-            if (small) {
-                layout.set_attributes (EelPango.attr_list_small ());
-            } else {
-                layout.set_attributes (null);
-            }
-
             if (is_list_view) {
-                layout.set_width (cell_width * Pango.SCALE);
+                layout.set_width ((cell_width - double_border_radius) * Pango.SCALE);
                 layout.set_height (- 1);
             } else {
                 layout.set_width (wrap_width * Pango.SCALE);
@@ -221,10 +227,6 @@ namespace Marlin {
                 layout.set_single_paragraph_mode (true);
                 metrics = context.get_metrics (layout.get_font_description (), context.get_language ());
                 char_height = (metrics.get_ascent () + metrics.get_descent () + 512) >> 10;
-
-                if (is_list_view) {
-                    (this as Gtk.CellRenderer).set_fixed_size (-1, char_height);
-                }
             } else {
                 layout = null;
                 char_height = 0;
@@ -279,15 +281,13 @@ namespace Marlin {
 
             selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
             focus_rect_height = text_height + border_radius;
-            focus_rect_width = text_width + 2 * border_radius;
+            focus_rect_width = text_width + double_border_radius;
 
             /* Ensure that focus_rect is at least one pixel small than cell_area on each side */
-            focus_rect_width = int.min (focus_rect_width, cell_area.width - border_radius);
-            focus_rect_height = int.min (focus_rect_height, cell_area.height - border_radius);
+            focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);
+            focus_rect_height = int.min (focus_rect_height, cell_area.height - 2);
 
             get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
-
-
 
             /* render the background if selected or colorized */
             if (selected || this.background != null) {
@@ -295,9 +295,11 @@ namespace Marlin {
                 int y0 = cell_area.y + y_offset;
                 int x1 = x0 + focus_rect_width;
                 int y1 = y0 + focus_rect_height;
+
                 if (x1 >= cell_area.x + cell_area.width) {
                     x1 = cell_area.x + cell_area.width - 1;
                 }
+
                 cr.move_to (x0 + border_radius, y0);
                 cr.line_to (x1 - border_radius, y0);
                 cr.curve_to (x1 - border_radius, y0, x1, y0, x1, y0 + border_radius);
@@ -343,6 +345,7 @@ namespace Marlin {
             }
 
             y_offset = (int)(yalign * (cell_area.height - height));
+
             if (!is_list_view) {
                 y_offset += border_radius;
             }
