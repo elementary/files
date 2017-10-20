@@ -29,13 +29,13 @@ namespace Marlin {
         public int item_width {
             set {
                 _item_width = value;
+                border_radius = 5 + value / 40;
+
                 if (xalign == 0.5) {
-                    wrap_width = _item_width - 2 * (focus_border_width + (int)xpad + border_radius);
+                    wrap_width = _item_width - border_radius;
                 } else {
                     wrap_width = -1;
                 }
-
-                border_radius = 5 + wrap_width / 40;
             }
 
             private get {
@@ -47,7 +47,6 @@ namespace Marlin {
         public int text_height;
 
         int char_height;
-        int focus_border_width;
 
         Pango.Layout layout;
         Gtk.Widget widget;
@@ -105,22 +104,10 @@ namespace Marlin {
             /* Position text relative to the focus rectangle */
             if (xalign == 0.5f) {
                 x_offset = (cell_area.width - wrap_width) / 2;
-
-                if (widget.get_direction () == Gtk.TextDirection.RTL) {
-                    x_offset -= focus_border_width;
-                } else {
-                    x_offset += focus_border_width;
-                }
-
                 y_offset += (focus_rect_height - text_height) / 2;
             } else {
                 y_offset = (cell_area.height - char_height) / 2;
-
-                if (widget.get_direction () == Gtk.TextDirection.RTL) {
-                    x_offset += (focus_rect_width - text_width) - focus_border_width * 4;
-                } else {
-                    x_offset += focus_border_width * 2 + (int)xpad;
-                }
+                x_offset += border_radius;
             }
 
             style_context.render_layout (cr,
@@ -234,16 +221,10 @@ namespace Marlin {
                 layout.set_single_paragraph_mode (true);
                 metrics = context.get_metrics (layout.get_font_description (), context.get_language ());
                 char_height = (metrics.get_ascent () + metrics.get_descent () + 512) >> 10;
-                
+
                 if (wrap_width < 0) {
                     (this as Gtk.CellRenderer).set_fixed_size (-1, char_height);
                 }
-
-                int focus_padding;
-                int focus_line_width;
-                widget.style_get ("focus-padding", out focus_padding, "focus-line-width", out focus_line_width);
-                focus_border_width = int.max (focus_padding + focus_line_width, 2);
-
             } else {
                 layout = null;
                 char_height = 0;
@@ -297,13 +278,12 @@ namespace Marlin {
             y_offset = 0;
 
             selected = ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED);
-
-            focus_rect_height = text_height + 2 * (this.focus_border_width + border_radius);
-            focus_rect_width = text_width  + 4 * (this.focus_border_width  + border_radius);
+            focus_rect_height = text_height;
+            focus_rect_width = text_width + 2 * border_radius;
 
             /* Ensure that focus_rect is at least one pixel small than cell_area on each side */
-            focus_rect_width = int.min (focus_rect_width, cell_area.width - 2);
-            focus_rect_height = int.min (focus_rect_height, cell_area.height -2);
+            focus_rect_width = int.min (focus_rect_width, cell_area.width - 4);
+            focus_rect_height = int.min (focus_rect_height, cell_area.height - 4);
 
             get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
 
@@ -340,14 +320,8 @@ namespace Marlin {
                 Gdk.cairo_set_source_rgba (cr, color);
                 cr.fill ();
             }
-            /* draw the focus indicator */
-            if ((flags & Gtk.CellRendererState.FOCUSED) != 0) {
-                style_context.render_focus (cr,
-                                            cell_area.x + x_offset,
-                                            cell_area.y + y_offset,
-                                            focus_rect_width,
-                                            focus_rect_height);
-            }
+
+            /* Icons are highlighted when focussed - there is no focus indicator on text */
         }
 
         private void get_offsets (Gdk.Rectangle cell_area,
@@ -358,10 +332,11 @@ namespace Marlin {
 
             if (widget.get_direction () == Gtk.TextDirection.RTL) {
                 x_offset = (int)((1.0f - xalign) * (cell_area.width - width));
-                x_offset -= (int)xpad;
+                if (xalign == 0) {
+                    x_offset -= border_radius;
+                }
             } else {
                 x_offset = (int)(xalign * (cell_area.width - width));
-                x_offset += (int)xpad;
             }
 
             y_offset = (int)(yalign * (cell_area.height - height));
