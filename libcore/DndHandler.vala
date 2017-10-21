@@ -31,13 +31,13 @@ namespace Marlin {
                                  Gdk.DragAction action) {
 
             if (drop_target.is_folder ()) {
-                Marlin.FileOperations.copy_move (drop_file_list,
-                                                 null,
-                                                 drop_target.get_target_location (),
-                                                 action,
-                                                 widget,
-                                                 null,
-                                                 null);
+                Marlin.FileOperations.copy_move_link (drop_file_list,
+                                                      null,
+                                                      drop_target.get_target_location (),
+                                                      action,
+                                                      widget,
+                                                      null,
+                                                      null);
                 return true;
             } else if (drop_target.is_executable ()) {
                 GLib.Error error;

@@ -47,20 +47,17 @@ namespace FM
 namespace Marlin {
     [CCode (cprefix = "MarlinFileOperations", lower_case_cprefix = "marlin_file_operations_", cheader_filename = "marlin-file-operations.h")]
     namespace FileOperations {
-        static void new_folder(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, Marlin.CreateCallback? create_callback = null, void* data_callback = null);
-        static void new_folder_with_name(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, string name, Marlin.CreateCallback? create_callback = null, void* data_callback = null);
-        static void new_folder_with_name_recursive(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file, string name, Marlin.CreateCallback? create_callback = null, void* data_callback = null);
+        static void new_folder(Gtk.Widget? parent_view, Gdk.Point? target_point, GLib.File file,Marlin.CreateCallback? create_callback = null, void* data_callback = null);
         static void mount_volume (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun);
         static void mount_volume_full (Gtk.Window? parent_window, GLib.Volume volume, bool allow_autorun, Marlin.MountCallback? mount_callback, GLib.Object? callback_data_object);
         static void unmount_mount_full (Gtk.Window? parent_window, GLib.Mount mount, bool eject, bool check_trash, Marlin.UnmountCallback? unmount_callback, void* callback_data);
         static void trash_or_delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback = null, void* callback_data = null);
         static void @delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback = null, void* callback_data = null);
         static bool has_trash_files (GLib.Mount mount);
-        static int prompt_empty_trash (Gtk.Window? parent_window);
         static unowned GLib.List<unowned GLib.File> get_trash_dirs_for_mount (GLib.Mount mount);
-        static void empty_trash_dirs (Gtk.Window? parent_window, owned GLib.List<GLib.File> dirs);
         static void empty_trash (Gtk.Widget? widget);
-        static void copy_move (GLib.List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, GLib.Callback? done_callback = null, void* done_callback_data = null);
+        static void empty_trash_for_mount (Gtk.Widget? widget, GLib.Mount mount);
+        static void copy_move_link (GLib.List<GLib.File> files, void* relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, GLib.Callback? done_callback = null, void* done_callback_data = null);
         static void new_file (Gtk.Widget parent_view, Gdk.Point? target_point, string parent_dir, string? target_filename, string? initial_contents, int length, Marlin.CreateCallback? create_callback = null, void* done_callback_data = null);
         static void new_file_from_template (Gtk.Widget parent_view, Gdk.Point? target_point, GLib.File parent_dir, string? target_filename, GLib.File template, Marlin.CreateCallback? create_callback = null, void* done_callback_data = null);
     }
