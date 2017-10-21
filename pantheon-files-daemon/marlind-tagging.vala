@@ -108,22 +108,6 @@ public class MarlinTags : Object {
         return true;
     }
 
-#if 0
-    public async bool record_uri (string raw_uri, string content_type, int modified_time) {
-        var uri = escape(raw_uri);
-
-        var sql = "INSERT OR REPLACE INTO tags (uri,content_type,modified_time) VALUES ('"+uri+"','"+content_type+"',"+modified_time.to_string()+");\n";
-
-        int rc = db.exec (sql, null, null);
-        if (rc != Sqlite.OK) {
-            stderr.printf ("[record_uri: SQL error]  %d, %s\n", rc, db.errmsg ());
-            return false;
-        }
-
-        return true;
-    }
-#endif
-
     public async bool record_uris (Variant[] locations, string directory) {
         string sql = "";
         foreach (var location_variant in locations) {
@@ -179,49 +163,6 @@ public class MarlinTags : Object {
         vb.close ();
         return vb.end ();
     }
-
-#if 0
-    public async int getColor(string raw_uri)
-    {
-        Idle.add (getColor.callback);
-        yield;
-        var uri = escape(raw_uri);
-        string c = "select color from tags where uri='" + uri + "'";
-        Statement stmt;
-        int rc = 0;
-        int col, cols;
-        string txt = "0";
-
-        if ((rc = db.prepare_v2 (c, -1, out stmt, null)) == 1) {
-            printerr ("[getColor]: SQL error: %d, %s\n", rc, db.errmsg ());
-            return -1;
-        }
-        cols = stmt.column_count();
-        do {
-            rc = stmt.step();
-            switch (rc) {
-            case Sqlite.DONE:
-                break;
-            case Sqlite.ROW:
-                for (col = 0; col < cols; col++) {
-                    txt = stmt.column_text(col);
-                }
-                break;
-            default:
-                printerr ("[getColor]: Error: %d, %s\n", rc, db.errmsg ());
-                break;
-            }
-        } while (rc == Sqlite.ROW);
-
-        int ret = int.parse(txt);
-        /* It appears that a db error return -1, we got to check the value just in case */
-        if(ret == -1){
-            ret = 0;
-        }
-
-        return ret;
-    }
-#endif
 
     public async bool deleteEntry (string uri) {
         Idle.add (deleteEntry.callback);
