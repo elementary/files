@@ -1857,8 +1857,8 @@ namespace FM {
                 if (slot.directory.is_empty ())
                     menu.get_style_context ().add_class ("context-menu");
                 Eel.pop_up_context_menu (menu,
-                                         Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                         Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                         Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                         Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                          (Gdk.EventButton) event);
             }
         }
@@ -3060,7 +3060,7 @@ namespace FM {
                 int start_offset= 0, end_offset = -1;
                 /* Select whole name if the file is a folder, otherwise do not select the extension */
                 if (!file.is_folder ()) {
-                    Marlin.get_rename_region (original_name, out start_offset, out end_offset, false);
+                    PF.FileUtils.get_rename_region (original_name, out start_offset, out end_offset, false);
                 }
                 editable_widget.select_region (start_offset, end_offset);
             } else {

@@ -1491,7 +1491,8 @@ namespace Marlin.Places {
             item.show ();
             popupmenu.append (item);
 
-            popupmenu_separator_item1 = Eel.gtk_menu_append_separator (popupmenu);
+            popupmenu_separator_item1 = new Gtk.SeparatorMenuItem ();
+            popupmenu.append (popupmenu_separator_item1);
 
             item = new Gtk.ImageMenuItem.with_label (_("Remove"));
             popupmenu_remove_item = item;
@@ -1507,8 +1508,8 @@ namespace Marlin.Places {
             item.show ();
             popupmenu.append (item);
 
-            /* Mount/Unmount/Eject menu items */
-            popupmenu_separator_item2 = Eel.gtk_menu_append_separator (popupmenu);
+            popupmenu_separator_item2 = new Gtk.SeparatorMenuItem ();
+            popupmenu.append (popupmenu_separator_item2);
 
             item = new Gtk.ImageMenuItem.with_mnemonic (_("_Mount"));
             popupmenu_mount_item = item;
@@ -1552,8 +1553,8 @@ namespace Marlin.Places {
         private new void popup_menu (Gdk.EventButton? event) {
             update_popup_menu ();
             Eel.pop_up_context_menu (popupmenu,
-                                     Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                      event);
         }
 
@@ -2360,9 +2361,9 @@ namespace Marlin.Places {
                         Column.URI, out uri,
                         Column.BOOKMARK, out is_bookmark);
 
-            Eel.gtk_widget_set_shown (popupmenu_remove_item, is_bookmark);
-            Eel.gtk_widget_set_shown (popupmenu_rename_item, is_bookmark);
-            Eel.gtk_widget_set_shown (popupmenu_separator_item1, is_bookmark);
+            popupmenu_remove_item.visible = is_bookmark;
+            popupmenu_rename_item.visible = is_bookmark;
+            popupmenu_separator_item1.visible = is_bookmark;
 
             bool show_mount, show_unmount, show_eject, show_rescan, show_format, show_start, show_stop;
             check_visibility (mount,
@@ -2382,22 +2383,22 @@ namespace Marlin.Places {
                                     ((uri == Marlin.TRASH_URI) ||
                                     Marlin.FileOperations.has_trash_files (mount));
 
-            Eel.gtk_widget_set_shown (popupmenu_separator_item2,
-                                      show_eject || show_unmount ||
-                                      show_mount || show_empty_trash);
+            popupmenu_separator_item2.visible = (show_eject || show_unmount ||
+                                                show_mount || show_empty_trash);
 
             bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
 
-            Eel.gtk_widget_set_shown (popupmenu_mount_item, show_mount);
-            Eel.gtk_widget_set_shown (popupmenu_unmount_item, show_unmount);
-            Eel.gtk_widget_set_shown (popupmenu_eject_item, show_eject);
-            Eel.gtk_widget_set_shown (popupmenu_empty_trash_item, show_empty_trash);
-            Eel.gtk_widget_set_shown (popupmenu_drive_property_item, show_property);
-            popupmenu_empty_trash_item.set_sensitive (!(Marlin.TrashMonitor.is_empty ()));
+            popupmenu_mount_item.visible = show_mount;
+            popupmenu_unmount_item.visible = show_unmount;
+            popupmenu_eject_item.visible = show_eject;
+            popupmenu_empty_trash_item.visible = show_empty_trash;
+            popupmenu_drive_property_item.visible = show_property;
+
+            popupmenu_empty_trash_item.sensitive = !Marlin.TrashMonitor.is_empty ();
 
             bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);
-            Eel.gtk_widget_set_shown (popupmenu_open_in_new_tab_item, !is_plugin);
-            Eel.gtk_widget_set_shown (popupmenu_open_in_new_window_item, !is_plugin);
+            popupmenu_open_in_new_tab_item.visible = !is_plugin;
+            popupmenu_open_in_new_window_item.visible = !is_plugin;
         }
 
         /**

@@ -105,13 +105,7 @@ namespace Eel {
     [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
     [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public void gtk_widget_set_shown (Gtk.Widget widget, bool shown);
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public Gtk.MenuItem gtk_menu_append_separator (Gtk.Menu menu);
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public unowned Gdk.Screen gtk_widget_get_screen (Gtk.Widget? widget);
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public const int16 DEFAULT_POPUP_MENU_DISPLACEMENT;
 
     [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
@@ -168,6 +162,10 @@ namespace Marlin
         public Gdk.Pixbuf? get_pixbuf_at_size (int size);
         public static void clear_caches ();
         public static void remove_cache (string path, int size);
+        /* Use for testing only */
+        public static uint loadable_icon_cache_info ();
+        public static uint themed_icon_cache_info ();
+        public static void set_reap_time (uint milliseconds);
     }
     [CCode (cheader_filename = "marlin-trash-monitor.h")]
     public abstract class TrashMonitor : GLib.Object
@@ -359,7 +357,6 @@ namespace GOF {
         public static string list_to_string (GLib.List<GOF.File> list, out long len);
 
         public bool execute (Gdk.Screen screen, GLib.List<GLib.File>? files, out GLib.Error error);
-        public void rename (string new_name, GOF.FileOperationCallback? callback = null, void* data = null);
 
         public GOF.File @ref ();
         public GOF.File unref ();

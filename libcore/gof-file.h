@@ -61,11 +61,9 @@ typedef enum /*< flags >*/
 
 typedef struct _GOFFile GOFFile;
 typedef struct _GOFFileClass GOFFileClass;
-//typedef struct _GOFFilePrivate GOFFilePrivate;
 
 struct _GOFFile {
     GObject parent_instance;
-    //GOFFilePrivate  *priv;
 
     GFileInfo       *info;
     GFile           *location;
@@ -133,11 +131,6 @@ struct _GOFFileClass {
     void            (* icon_changed)        (GOFFile *file);
 
 };
-
-/*
-#define GIO_SUCKLESS_DEFAULT_ATTRIBUTES                                \
-"standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
-*/
 
 #define GOF_FILE_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::content-type,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed"
 
