@@ -431,7 +431,7 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
             uris = construct_gfile_list (action->sources, action->src_dir);
             marlin_file_operations_copy_move_link (uris, NULL, action->dest_dir,
                                                    GDK_ACTION_COPY, NULL,
-                                                   do_redo_done_transfer_callback, action);
+                                                   undo_redo_done_transfer_callback, action);
 
             g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;

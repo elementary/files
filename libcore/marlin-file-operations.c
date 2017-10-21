@@ -121,26 +121,6 @@ typedef struct {
     gpointer done_callback_data;
 } EmptyTrashJob;
 
-#if 0
-typedef struct {
-    CommonJob common;
-    GFile *file;
-    gboolean interactive;
-    MarlinOpCallback done_callback;
-    gpointer done_callback_data;
-} MarkTrustedJob;
-
-typedef struct {
-    CommonJob common;
-    GFile *file;
-    MarlinOpCallback done_callback;
-    gpointer done_callback_data;
-    guint32 file_permissions;
-    guint32 file_mask;
-    guint32 dir_permissions;
-    guint32 dir_mask;
-} SetPermissionsJob;
-#endif
 
 typedef enum {
     JOB_COPY,
@@ -1221,32 +1201,6 @@ run_simple_dialog_va (CommonJob *job,
 
     return res;
 }
-
-#if 0 /* Not used at the moment */
-static int
-run_simple_dialog (CommonJob *job,
-                   gboolean ignore_close_box,
-                   GtkMessageType message_type,
-                   char *primary_text,
-                   char *secondary_text,
-                   const char *details_text,
-                   ...)
-{
-    va_list varargs;
-    int res;
-
-    va_start (varargs, details_text);
-    res = run_simple_dialog_va (job,
-                                ignore_close_box,
-                                message_type,
-                                primary_text,
-                                secondary_text,
-                                details_text,
-                                varargs);
-    va_end (varargs);
-    return res;
-}
-#endif
 
 static int
 run_error (CommonJob *job,
@@ -3932,54 +3886,6 @@ query_fs_type (GFile *file,
 
     return ret;
 }
-
-#if 0
-static gboolean
-is_trusted_desktop_file (GFile *file,
-                         GCancellable *cancellable)
-{
-    char *basename;
-    gboolean res;
-    GFileInfo *info;
-
-    /* Don't trust non-local files */
-    if (!g_file_is_native (file)) {
-        return FALSE;
-    }
-
-    basename = g_file_get_basename (file);
-    if (!g_str_has_suffix (basename, ".desktop")) {
-        g_free (basename);
-        return FALSE;
-    }
-    g_free (basename);
-
-    info = g_file_query_info (file,
-                              G_FILE_ATTRIBUTE_STANDARD_TYPE ","
-                              G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE,
-                              G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                              cancellable,
-                              NULL);
-
-    if (info == NULL) {
-        return FALSE;
-    }
-
-    res = FALSE;
-
-    /* Weird file => not trusted,
-       Already executable => no need to mark trusted */
-    if (g_file_info_get_file_type (info) == G_FILE_TYPE_REGULAR &&
-        !g_file_info_get_attribute_boolean (info,
-                                            G_FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE) &&
-        marlin_is_in_system_dir (file)) {
-        res = TRUE;
-    }
-    g_object_unref (info);
-
-    return res;
-}
-#endif
 
 typedef struct {
     int id;
