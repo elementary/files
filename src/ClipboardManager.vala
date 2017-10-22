@@ -45,7 +45,7 @@ namespace Marlin {
         private bool files_cutted = false;
 
         /** Returns TRUE if the contents of the clipboard can be pasted into a folder.
-        **/ 
+        **/
         public bool can_paste {get; private set; default = false;}
 
         public signal void changed ();
@@ -117,7 +117,7 @@ namespace Marlin {
             /**
              *  @cb the clipboard.
              *  @sd selection_data returned from the clipboard.
-            **/   
+            **/
             clipboard.request_contents (x_special_gnome_copied_files, (cb, sd) => {
                 contents_received (sd, target_file, widget, new_files_callback);
             });
@@ -159,13 +159,13 @@ namespace Marlin {
             var file_list = EelGFile.list_new_from_string (text);
 
             if (file_list != null) {
-                FileOperations.copy_move (file_list,
-                                          null,
-                                          target_file,
-                                          action,
-                                          widget,
-                                          new_files_callback,
-                                          widget);
+                FileOperations.copy_move_link (file_list,
+                                               null,
+                                               target_file,
+                                               action,
+                                               widget,
+                                               new_files_callback,
+                                               widget);
             }
 
             /* clear the clipboard if it contained "cutted data"

@@ -429,9 +429,11 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
         switch (action->type) {
         case MARLIN_UNDO_COPY:
             uris = construct_gfile_list (action->sources, action->src_dir);
-            marlin_file_operations_copy (uris, NULL,
-                                         action->dest_dir, NULL, undo_redo_done_transfer_callback, action);
-            g_list_free_full (uris, g_object_unref);
+            marlin_file_operations_copy_move_link (uris, NULL, action->dest_dir,
+                                                   GDK_ACTION_COPY, NULL,
+                                                   undo_redo_done_transfer_callback, action);
+
+            g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
 #if 0
         case MARLIN_UNDO_CREATEFILEFROMTEMPLATE:
@@ -447,16 +449,21 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
 #endif
         case MARLIN_UNDO_DUPLICATE:
             uris = construct_gfile_list (action->sources, action->src_dir);
-            marlin_file_operations_duplicate (uris, NULL, NULL,
-                                              undo_redo_done_transfer_callback, action);
-            g_list_free_full (uris, g_object_unref);
+            marlin_file_operations_copy_move_link (uris, NULL, NULL,
+                                                   GDK_ACTION_COPY, NULL,
+                                                   undo_redo_done_transfer_callback, action);
+
+            g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
+
         case MARLIN_UNDO_RESTOREFROMTRASH:
         case MARLIN_UNDO_MOVE:
             uris = construct_gfile_list (action->sources, action->src_dir);
-            marlin_file_operations_move (uris, NULL,
-                                         action->dest_dir, NULL, undo_redo_done_transfer_callback, action);
-            g_list_free_full (uris, g_object_unref);
+            marlin_file_operations_copy_move_link (uris, NULL, action->dest_dir,
+                                                   GDK_ACTION_MOVE, NULL,
+                                                   undo_redo_done_transfer_callback, action);
+
+            g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
 
         case MARLIN_UNDO_RENAME:
@@ -495,9 +502,11 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
             break;
         case MARLIN_UNDO_CREATELINK:
             uris = construct_gfile_list (action->sources, action->src_dir);
-            marlin_file_operations_link (uris, NULL,
-                                         action->dest_dir, NULL, undo_redo_done_transfer_callback, action);
-            g_list_free_full (uris, g_object_unref);
+            marlin_file_operations_copy_move_link (uris, NULL, action->dest_dir,
+                                                   GDK_ACTION_LINK, NULL,
+                                                   undo_redo_done_transfer_callback, action);
+
+            g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
 #if 0
         case MARLIN_UNDO_SETPERMISSIONS:
@@ -642,9 +651,11 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
             break;
         case MARLIN_UNDO_MOVE:
             uris = construct_gfile_list (action->destinations, action->dest_dir);
-            marlin_file_operations_move (uris, NULL,
-                                         action->src_dir, NULL, undo_redo_done_transfer_callback, action);
-            g_list_free_full (uris, g_object_unref);
+            marlin_file_operations_copy_move_link (uris, NULL, action->src_dir,
+                                                  GDK_ACTION_MOVE, NULL,
+                                                  undo_redo_done_transfer_callback, action);
+
+            g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
 
         case MARLIN_UNDO_RENAME:

@@ -1116,11 +1116,11 @@ namespace Marlin.Places {
 
             switch (info) {
                  case TargetType.TEXT_URI_LIST:
-                    Marlin.FileOperations.copy_move (drag_list,
-                                                     null,
-                                                     File.new_for_uri (drop_uri),
-                                                     real_action,
-                                                     this, null, null);
+                    Marlin.FileOperations.copy_move_link (drag_list,
+                                                          null,
+                                                          File.new_for_uri (drop_uri),
+                                                          real_action,
+                                                          this, null, null);
                     return true;
                 case TargetType.GTK_TREE_MODEL_ROW:
                     return false;
@@ -1906,12 +1906,7 @@ namespace Marlin.Places {
          }
 
         private void empty_trash_on_mount (Mount? mount, Gtk.TreeRowReference? row_ref = null) {
-            if (Marlin.FileOperations.has_trash_files (mount)) {
-                unowned GLib.List<unowned GLib.File>? dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
-                /* Marlin.FileOperations will show a confirm dialog according to settings */
-                if (dirs != null)
-                    Marlin.FileOperations.empty_trash_dirs (null, dirs.copy ());
-            }
+            Marlin.FileOperations.empty_trash_for_mount (this, mount);
         }
 
         private bool over_eject_button (Gdk.EventButton event) {
