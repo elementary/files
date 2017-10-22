@@ -63,13 +63,13 @@ namespace PF.FileUtils {
         }
 
         original_dirs_hash.foreach ((original_dir, dir_files) => {
-                Marlin.FileOperations.copy_move (dir_files,
-                                                 null,
-                                                 original_dir,
-                                                 Gdk.DragAction.MOVE,
-                                                 widget,
-                                                 null,
-                                                 null);
+                Marlin.FileOperations.copy_move_link (dir_files,
+                                                      null,
+                                                      original_dir,
+                                                      Gdk.DragAction.MOVE,
+                                                      widget,
+                                                      null,
+                                                      null);
         });
     }
 
