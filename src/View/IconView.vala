@@ -133,11 +133,11 @@ namespace FM {
             return tree.get_path_at_pos (win_x, win_y + (int)(get_vadjustment ().get_value ()));
         }
 
-        public override void select_all () {
+        public override void tree_select_all () {
             tree.select_all ();
         }
 
-        public override void unselect_all () {
+        public override void tree_unselect_all () {
             tree.unselect_all ();
         }
 

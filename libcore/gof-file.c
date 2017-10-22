@@ -21,11 +21,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-#include "eel-i18n.h"
+#include <glib/gi18n.h>
 #include "eel-fcts.h"
-#include "eel-string.h"
 #include "eel-gio-extensions.h"
-#include "eel-string.h"
 #include "marlin-exec.h"
 #include "marlin-icons.h"
 #include "fm-list-model.h"
@@ -36,9 +34,6 @@ G_LOCK_DEFINE_STATIC (file_cache_mutex);
 
 static GHashTable   *file_cache;
 
-//static void gof_file_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec);
-//static void gof_file_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec);
-
 G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 
 #define SORT_LAST_CHAR1 '.'
@@ -48,7 +43,6 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 
 enum {
     CHANGED,
-    //UPDATED_DEEP_COUNT_IN_PROGRESS,
     INFO_AVAILABLE,
     ICON_CHANGED,
     DESTROY,
@@ -56,10 +50,6 @@ enum {
 };
 
 static guint    signals[LAST_SIGNAL];
-
-
-/*struct _GOFFilePrivate {
-};*/
 
 static guint32  effective_user_id;
 
@@ -112,28 +102,9 @@ gof_file_new (GFile *location, GFile *dir)
         file->directory = NULL;
 
     file->basename = g_file_get_basename (file->location);
-    //file->parent_dir = g_file_enumerator_get_container (enumerator);
 
-    //g_debug ("%s: create %p", __func__, file);
     return (file);
 }
-
-#if 0
-void    gof_file_changed (GOFFile *file)
-{
-    GOFDirectoryAsync *dir;
-
-    /* get the DirectoryAsync associated to the file */
-    dir = gof_directory_async_cache_lookup (file->directory);
-    if (dir != NULL) {
-        if (!file->is_hidden || dir->show_hidden_files)
-            g_signal_emit_by_name (dir, "file_changed", file);
-
-        g_object_unref (dir);
-    }
-    g_signal_emit_by_name (file, "changed");
-}
-#endif
 
 void
 gof_file_icon_changed (GOFFile *file)
@@ -401,6 +372,7 @@ gof_file_update_type (GOFFile *file)
     gof_file_icon_changed (file);
 }
 
+/** Avoid calling this unnecessarily (e.g. for whole directory if not visible) **/
 void
 gof_file_update (GOFFile *file)
 {
@@ -466,7 +438,7 @@ gof_file_update (GOFFile *file)
                                                             G_KEY_FILE_DESKTOP_KEY_ICON,
                                                             NULL);
 
-            if (G_UNLIKELY (eel_str_is_empty (file->custom_icon_name)))
+            if (G_UNLIKELY (g_strcmp0 (file->custom_icon_name, NULL) == 0))
             {
                 /* make sure we set null if the string is empty else the assertion in
                  * thunar_icon_factory_lookup_icon() will fail */
@@ -492,7 +464,7 @@ gof_file_update (GOFFile *file)
 
             type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                           G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
-            if (eel_str_is_equal (type, "Link"))
+            if (g_strcmp0 (type, "Link") == 0)
             {
                 url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                              G_KEY_FILE_DESKTOP_KEY_URL, NULL);
@@ -607,11 +579,8 @@ gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
         && file->flags == GOF_FILE_THUMB_STATE_READY) {
         const gchar *thumb_path = gof_file_get_thumbnail_path (file);
-        /* TODO thumb test : Playing with the thumbs */
-        //if (file->flags != 0 && thumb_path != NULL) {
+
         if (thumb_path != NULL) {
-            //g_message ("show thumb %s %s %d\n", file->uri, thumb_path, size);
-            //return marlin_icon_info_lookup_from_path (thumb_path, size * 1.33);
             return marlin_icon_info_lookup_from_path (thumb_path, size);
         }
     }
@@ -654,26 +623,6 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     return icon;
 }
 
-#if 0
-static GdkPixbuf
-*ensure_pixbuf_from_nicon (GOFFile *file, gint size, gboolean force_size, MarlinIconInfo *nicon)
-{
-    GdkPixbuf *pix;
-    MarlinIconInfo *temp_nicon;
-    g_return_val_if_fail (size >= 1, NULL);
-
-    pix = marlin_icon_info_get_pixbuf_force_size (nicon, size, force_size);
-    if (pix == NULL) {
-        temp_nicon = gof_file_get_icon (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
-        pix = marlin_icon_info_get_pixbuf_force_size (temp_nicon, size, force_size);
-        if (temp_nicon)
-            g_object_unref (temp_nicon);
-    }
-
-    return pix;
-}
-#endif
-
 GdkPixbuf *
 gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFileIconFlags flags)
 {
@@ -682,6 +631,7 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
     g_return_val_if_fail (size >= 1, NULL);
     nicon = gof_file_get_icon (file, size, flags);
     pix = marlin_icon_info_get_pixbuf_force_size (nicon, size, force_size);
+
     if (nicon) {
         g_object_unref (nicon);
     }
@@ -744,10 +694,6 @@ void gof_file_update_emblem (GOFFile *file)
         file->emblems_list = NULL;
     }
 
-    if(plugins != NULL)
-        marlin_plugin_manager_update_file_info (plugins, file);
-
-
     if(gof_file_is_symlink(file) || (file->is_desktop && file->target_gof))
     {
         gof_file_add_emblem(file, "emblem-symbolic-link");
@@ -767,7 +713,6 @@ void gof_file_update_emblem (GOFFile *file)
     }
 
     /* TODO update signal on real change */
-    //g_warning ("update emblem %s", file.uri);
     if (file->emblems_list != NULL)
         gof_file_icon_changed (file);
 
@@ -875,8 +820,9 @@ gof_file_query_update (GOFFile *file)
 gboolean
 gof_file_ensure_query_info (GOFFile *file)
 {
-    if (file->info == NULL)
+    if (file->info == NULL) {
         gof_file_query_update (file);
+    }
 
     return (file->info != NULL);
 }
@@ -942,8 +888,6 @@ void gof_file_remove_from_caches (GOFFile *file)
 }
 
 static void gof_file_init (GOFFile *file) {
-    /*file->priv = G_TYPE_INSTANCE_GET_PRIVATE (file, GOF_TYPE_FILE, GOFFilePrivate);*/
-
     file->info = NULL;
     file->location = NULL;
     file->target_location = NULL;
@@ -980,22 +924,16 @@ static void gof_file_init (GOFFile *file) {
 }
 
 static void gof_file_finalize (GObject* obj) {
-    //g_debug ("%s: delete %p", __func__, obj);
-
     GOFFile *file;
 
     file = GOF_FILE (obj);
-#if 0
-    if (file->pix)
-        g_warning ("%s %s %u\n", G_STRFUNC, file->uri, G_OBJECT (file->pix)->ref_count);
-    else
-        g_warning ("%s %s", G_STRFUNC, file->basename);
-#endif
+
     if (!(G_IS_FILE (file->location))) {
         g_warning ("Invalid file location on finalize for %s", file->basename);
     } else {
         g_object_unref (file->location);
     }
+
     g_clear_object (&file->info);
     _g_object_unref0 (file->directory);
     _g_free0 (file->uri);
@@ -1006,7 +944,6 @@ static void gof_file_finalize (GObject* obj) {
     _g_free0(file->formated_modified);
     _g_object_unref0 (file->icon);
     _g_object_unref0 (file->pix);
-    //g_clear_object (&file->pix);
 
     _g_free0 (file->custom_display_name);
     _g_free0 (file->custom_icon_name);
@@ -1036,9 +973,7 @@ static void gof_file_class_init (GOFFileClass * klass) {
     effective_user_id = geteuid ();
 
     gof_file_parent_class = g_type_class_peek_parent (klass);
-    //g_type_class_add_private (klass, sizeof (GOFFilePrivate));
-    /*G_OBJECT_CLASS (klass)->get_property = gof_file_get_property;
-      G_OBJECT_CLASS (klass)->set_property = gof_file_set_property;*/
+
     G_OBJECT_CLASS (klass)->finalize = gof_file_finalize;
 
     signals[CHANGED] = g_signal_new ("changed",
@@ -1073,44 +1008,8 @@ static void gof_file_class_init (GOFFileClass * klass) {
                                           NULL, NULL,
                                           g_cclosure_marshal_VOID__VOID,
                                           G_TYPE_NONE, 0);
-
-    /*g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_NAME, g_param_spec_string ("name", "name", "name", NULL, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));
-      g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_SIZE, g_param_spec_uint64 ("size", "size", "size", 0, G_MAXUINT64, 0U, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));
-      g_object_class_install_property (G_OBJECT_CLASS (klass), gof_FILE_DIRECTORY, g_param_spec_boolean ("directory", "directory", "directory", FALSE, G_PARAM_STATIC_NAME | G_PARAM_STATIC_NICK | G_PARAM_STATIC_BLURB | G_PARAM_READABLE));*/
 }
 
-
-#if 0
-static void gof_file_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec) {
-    GOFFile * self;
-    self = GOF_FILE (object);
-    switch (property_id) {
-    case gof_FILE_NAME:
-        g_value_set_string (value, gof_file_get_name (self));
-        break;
-    case gof_FILE_SIZE:
-        g_value_set_uint64 (value, gof_file_get_size (self));
-        break;
-    case gof_FILE_DIRECTORY:
-        g_value_set_boolean (value, gof_file_get_directory (self));
-        break;
-    default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-        break;
-    }
-}
-
-
-static void gof_file_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec) {
-    GOFFile * self;
-    self = GOF_FILE (object);
-    switch (property_id) {
-    default:
-        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-        break;
-    }
-}
-#endif
 
 static int
 compare_files_by_time (GOFFile *file1, GOFFile *file2)
@@ -1224,12 +1123,6 @@ gof_file_compare_for_sort_internal (GOFFile *file1,
             return 1;
     }
 
-    /*if (file1->details->sort_order < file2->details->sort_order) {
-      return reversed ? 1 : -1;
-      } else if (file_1->details->sort_order > file_2->details->sort_order) {
-      return reversed ? -1 : 1;
-      }*/
-
     return 0;
 }
 
@@ -1320,7 +1213,6 @@ gof_files_get_location_list (GList *files)
             gfile_list = g_list_prepend (gfile_list, eel_g_file_ref (file->location));
         }
     }
-    //gfile_list = g_list_reverse (gfile_list);
 
     return (gfile_list);
 }
@@ -1476,17 +1368,12 @@ gof_file_is_executable (GOFFile *file)
         content_type = gof_file_get_ftype (file);
         if (G_LIKELY (content_type != NULL))
         {
-#ifdef G_OS_WIN32
-            /* check for .exe, .bar or .com */
-            can_execute = g_content_type_can_be_executable (content_type);
-#else
             /* check if the content type is save to execute, we don't use
              * g_content_type_can_be_executable() for unix because it also returns
              * true for "text/plain" and we don't want that */
             if (g_content_type_is_a (content_type, "application/x-executable")
                 || g_content_type_is_a (content_type, "application/x-shellscript"))
                 can_execute = TRUE;
-#endif
         }
     }
 
@@ -1553,7 +1440,7 @@ gof_file_get (GFile *location)
     GOFFile *file = NULL;
     GOFDirectoryAsync *dir = NULL;
 
-g_return_val_if_fail (location != NULL && G_IS_FILE (location), NULL);
+    g_return_val_if_fail (location != NULL && G_IS_FILE (location), NULL);
 
     if ((parent = g_file_get_parent (location)) != NULL) {
         dir = gof_directory_async_cache_lookup (parent);
@@ -1566,11 +1453,9 @@ g_return_val_if_fail (location != NULL && G_IS_FILE (location), NULL);
     if (file == NULL)
         file = gof_file_cache_lookup (location);
 
-    if (file != NULL) {
-        g_debug (">>>>reuse file %s", file->uri);
-    } else {
+    if (file == NULL) {
         file = gof_file_new (location, parent);
-        g_debug (">>>>create file %s", file->uri);
+        /* TODO Move file_cache to GOF.Directory.Async */
         G_LOCK (file_cache_mutex);
         if (file_cache != NULL)
             g_hash_table_insert (file_cache, g_object_ref (location), g_object_ref (file));
@@ -1661,7 +1546,7 @@ gboolean gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b)
                                                         G_FILE_ATTRIBUTE_ID_FILESYSTEM);
 
     /* compare the filesystem IDs */
-    return eel_str_is_equal (filesystem_id_a, filesystem_id_b);
+    return (filesystem_id_a || filesystem_id_b) && g_strcmp0 (filesystem_id_a, filesystem_id_b) == 0;
 }
 
 /**
@@ -1894,7 +1779,6 @@ gof_file_get_default_handler (GOFFile *file)
         return g_app_info_get_default_for_type (content_type, must_support_uris);
     }
 
-    //g_app_info_get_default_for_uri_scheme
     if (file->target_location != NULL)
         return g_file_query_default_handler (file->target_location, NULL, NULL);
 
@@ -1904,8 +1788,6 @@ gof_file_get_default_handler (GOFFile *file)
 gboolean
 gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error)
 {
-    /*gboolean    snotify = FALSE;
-    gboolean    terminal;*/
     gboolean    result = FALSE;
     GKeyFile    *key_file;
     GError      *err = NULL;
@@ -1943,7 +1825,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
         type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                       G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
 
-        if (G_LIKELY (eel_str_is_equal (type, "Application")))
+        if (G_LIKELY (g_strcmp0 (type, "Application") == 0))
         {
             exec = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                           G_KEY_FILE_DESKTOP_KEY_EXEC, NULL);
@@ -1955,12 +1837,6 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
                                                      NULL);
                 icon = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                               G_KEY_FILE_DESKTOP_KEY_ICON, NULL);
-                /* TODO use terminal snotify */
-                /*terminal = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                                   G_KEY_FILE_DESKTOP_KEY_TERMINAL, NULL);
-                snotify = g_key_file_get_boolean (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                                  G_KEY_FILE_DESKTOP_KEY_STARTUP_NOTIFY,
-                                                  NULL);*/
 
                 cmd = marlin_exec_parse (exec, file_list, icon, name, location);
 
@@ -1975,13 +1851,12 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
                              _("No Exec field specified"));
             }
         }
-        else if (eel_str_is_equal (type, "Link"))
+        else if (g_strcmp0 (type, "Link") == 0)
         {
             url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
                                          G_KEY_FILE_DESKTOP_KEY_URL, NULL);
             if (G_LIKELY (url != NULL))
             {
-                //printf ("%s Link %s\n", G_STRFUNC, url);
                 GOFFile *link = gof_file_get_by_commandline_arg (url);
                 result = gof_file_launch (link, screen, NULL);
                 g_object_unref (link);
@@ -2007,12 +1882,10 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
     {
         quoted_location = g_shell_quote (location);
         cmd = marlin_exec_auto_parse (quoted_location, file_list);
-        //printf ("%s exec: %s\n", G_STRFUNC, cmd);
         _g_free0 (quoted_location);
     }
 
     if (cmd != NULL) {
-        //printf ("%s cmd: %s\n", G_STRFUNC, cmd);
         result = gof_spawn_command_line_on_screen (cmd, screen);
     }
 
@@ -2096,14 +1969,6 @@ gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info)
         return TRUE;
     }
 
-    /* check if we're not trying to launch our own file manager */
-    /*if (g_strcmp0 (g_app_info_get_id (app_info), "marlin.desktop") == 0
-        || g_strcmp0 (g_app_info_get_name (app_info), "marlin") == 0)
-    {
-        g_object_unref (G_OBJECT (app_info));
-        app_info = g_app_info_create_from_commandline ("marlin -t", "marlin", 0, NULL);
-    }*/
-
     /* TODO allow launch of multiples same content type files */
 
     succeed = gof_file_launch_with (file, screen, app);
@@ -2163,8 +2028,6 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     file->uri = g_file_get_uri (new_location);
     _g_free0 (file->basename);
     file->basename = g_file_get_basename (file->location);
-    /* TODO update color on rename ? */
-    //file->color = 0;
     file->pix_size = -1;
     _g_free0 (file->thumbnail_path);
     file->flags = 0;
@@ -2172,165 +2035,6 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     gof_file_query_update (file);
 
     g_object_unref (dir);
-}
-
-/* TODO move this mini job to marlin-file-operations? */
-GOFFileOperation *
-gof_file_operation_new (GOFFile *file,
-                        GOFFileOperationCallback callback,
-                        gpointer callback_data)
-{
-    GOFFileOperation *op;
-
-    op = g_new0 (GOFFileOperation, 1);
-    op->file = gof_file_ref (file);
-    op->callback = callback;
-    op->callback_data = callback_data;
-    op->cancellable = g_cancellable_new ();
-
-    /* FIXME check this Glist */
-    op->file->operations_in_progress = g_list_prepend
-        (op->file->operations_in_progress, op);
-
-    return op;
-}
-
-static void
-gof_file_operation_remove (GOFFileOperation *op)
-{
-    op->file->operations_in_progress = g_list_remove
-        (op->file->operations_in_progress, op);
-}
-
-void
-gof_file_operation_free (GOFFileOperation *op)
-{
-    gof_file_operation_remove (op);
-    gof_file_unref (op->file);
-    g_object_unref (op->cancellable);
-    if (op->free_data) {
-        op->free_data (op->data);
-    }
-    _g_free0 (op);
-}
-
-void
-gof_file_operation_complete (GOFFileOperation *op, GFile *result_file, GError *error)
-{
-    /* Claim that something changed even if the operation failed.
-     * This makes it easier for some clients who see the "reverting"
-     * as "changing back".
-     */
-    gof_file_operation_remove (op);
-    gof_file_icon_changed (op->file);
-    //marlin_file_changes_consume_changes (TRUE);
-    if (op->callback) {
-        (* op->callback) (op->file, result_file, error, op->callback_data);
-    }
-    gof_file_operation_free (op);
-}
-
-void
-gof_file_operation_cancel (GOFFileOperation *op)
-{
-    /* Cancel the operation if it's still in progress. */
-    g_cancellable_cancel (op->cancellable);
-}
-
-static void
-rename_callback (GObject *source_object,
-                 GAsyncResult *res,
-                 gpointer callback_data)
-{
-    GOFFileOperation *op;
-    GFile *new_file;
-    GError *error;
-
-    op = callback_data;
-    error = NULL;
-    new_file = g_file_set_display_name_finish (G_FILE (source_object),
-                                               res, &error);
-    //marlin_file_changes_queue_file_changed (new_file);
-    //marlin_file_changes_queue_file_removed (op->file->location);
-    //marlin_file_changes_queue_file_added (new_file);
-    if (error == NULL)
-        gof_file_update_existing (op->file, new_file);
-    else
-        marlin_dialogs_show_error (NULL,
-                                   error,
-                                   "Failed to rename %s",
-                                   g_file_get_parse_name (op->file->location));
-
-    //g_warning ("%s %u", G_STRFUNC, G_OBJECT (op->file)->ref_count);
-    gof_file_operation_complete (op, new_file, error);
-    if (new_file != NULL) {
-        g_object_unref (new_file);
-    } else {
-        g_error_free (error);
-    }
-}
-
-void
-gof_file_rename (GOFFile *file,
-                 const char *new_name,
-                 GOFFileOperationCallback callback,
-                 gpointer callback_data)
-{
-    GOFFileOperation *op;
-    //char *uri;
-    //char *old_name;
-    //char *new_file_name;
-    //gboolean success, name_changed;
-    GError *error;
-    //g_warning ("%s %u", G_STRFUNC, G_OBJECT (file)->ref_count);
-    g_return_if_fail (GOF_IS_FILE (file));
-    g_return_if_fail (new_name != NULL);
-    g_return_if_fail (callback != NULL);
-
-    //TODO rename .desktop files
-    /* Return an error for incoming names containing path separators.
-     * But not for .desktop files as '/' are allowed for them */
-    if (strstr (new_name, "/") != NULL) {
-        error = g_error_new (G_IO_ERROR, G_IO_ERROR_INVALID_ARGUMENT,
-                             _("Slashes are not allowed in filenames"));
-        (* callback) (file, NULL, error, callback_data);
-        g_error_free (error);
-        return;
-    }
-
-    //TODO check
-
-    /* Self-owned files can't be renamed. Test the name-not-actually-changing
-     * case before this case.
-     */
-#if 0
-    if (nautilus_file_is_self_owned (file)) {
-        /* Claim that something changed even if the rename
-         * failed. This makes it easier for some clients who
-         * see the "reverting" to the old name as "changing
-         * back".
-         */
-        nautilus_file_changed (file);
-        error = g_error_new (G_IO_ERROR, G_IO_ERROR_NOT_SUPPORTED,
-                             _("Toplevel files cannot be renamed"));
-
-        (* callback) (file, NULL, error, callback_data);
-        g_error_free (error);
-        return;
-    }
-#endif
-
-    /* Set up a renaming operation. */
-    op = gof_file_operation_new (file, callback, callback_data);
-    op->is_rename = TRUE;
-
-    /* Do the renaming. */
-    g_file_set_display_name_async (file->location,
-                                   new_name,
-                                   G_PRIORITY_DEFAULT,
-                                   op->cancellable,
-                                   rename_callback,
-                                   op);
 }
 
 
@@ -2556,6 +2260,10 @@ gof_file_get_ftype (GOFFile *file)
     if (file->info == NULL || gof_file_is_location_uri_default (file))
         return NULL;
 
+    if (file->is_directory) {
+        return g_strdup ("inode/directory");
+    }
+
     const char *ftype = NULL;
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE))
         return g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE);
@@ -2563,12 +2271,11 @@ gof_file_get_ftype (GOFFile *file)
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE))
         ftype = g_file_info_get_attribute_string (file->info, G_FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE);
 
-    if (!g_strcmp0 (ftype, "application/octet-stream") && file->tagstype)
+    if (!g_strcmp0 (ftype, "application/octet-stream") && file->tagstype) /* If octet-stream then check tagtype */
         return file->tagstype;
 
     return ftype;
 }
-
 
 /**
  * transfer: none

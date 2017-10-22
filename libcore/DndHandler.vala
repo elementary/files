@@ -31,13 +31,13 @@ namespace Marlin {
                                  Gdk.DragAction action) {
 
             if (drop_target.is_folder ()) {
-                Marlin.FileOperations.copy_move (drop_file_list,
-                                                 null,
-                                                 drop_target.get_target_location (),
-                                                 action,
-                                                 widget,
-                                                 null,
-                                                 null);
+                Marlin.FileOperations.copy_move_link (drop_file_list,
+                                                      null,
+                                                      drop_target.get_target_location (),
+                                                      action,
+                                                      widget,
+                                                      null,
+                                                      null);
                 return true;
             } else if (drop_target.is_executable ()) {
                 GLib.Error error;
@@ -230,18 +230,26 @@ namespace Marlin {
                                               Gdk.DragAction possible_actions,
                                               Gdk.DragAction suggested_action,
                                               uint32 timestamp) {
+
             bool success = false;
             Gdk.DragAction action = suggested_action;
 
-            if ((possible_actions & Gdk.DragAction.ASK) != 0)
-                action = drag_drop_action_ask (dest_widget, win, possible_actions);
+            if (drop_file_list != null) {
+                if ((possible_actions & Gdk.DragAction.ASK) != 0) {
+                    action = drag_drop_action_ask (dest_widget, win, possible_actions);
+                }
 
-            if (action != Gdk.DragAction.DEFAULT) {
-                success = dnd_perform (dest_widget,
-                                       drop_target,
-                                       drop_file_list,
-                                       action);
+                if (action != Gdk.DragAction.DEFAULT) {
+                    success = dnd_perform (dest_widget,
+                                           drop_target,
+                                           drop_file_list,
+                                           action);
+                }
+
+            } else {
+                critical ("Attempt to drop null file list");
             }
+
             return success;
         }
 
@@ -255,6 +263,7 @@ namespace Marlin {
 
                 text = DndHandler.data_to_string (selection_data.get_data_with_length ());
             }
+
             debug ("DNDHANDLER selection data is uri list returning %s", (text != null).to_string ());
             return (text != null);
         }
@@ -262,8 +271,9 @@ namespace Marlin {
         public static string data_to_string (uchar [] cdata) {
             var sb = new StringBuilder ("");
 
-            foreach (uchar u in cdata)
+            foreach (uchar u in cdata) {
                 sb.append_c ((char)u);
+            }
 
             return sb.str;
         }
@@ -273,6 +283,7 @@ namespace Marlin {
                                                               string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
+
             if (file_list != null && file_list.data != null && file_list.data is GOF.File) {
                 bool in_recent = file_list.data.is_recent_uri_scheme ();
 

@@ -1,4 +1,5 @@
 # Files
+[![Bountysource](https://www.bountysource.com/badge/tracker?tracker_id=65602118)](https://www.bountysource.com/teams/elementary/issues?tracker_ids=65602118)
 [![Packaging status](https://repology.org/badge/tiny-repos/pantheon-files.svg)](https://repology.org/metapackage/pantheon-files)
 [![Translation status](https://l10n.elementary.io/widgets/files/-/svg-badge.svg)](https://l10n.elementary.io/projects/files/?utm_source=widget)
 
@@ -34,4 +35,4 @@ Run `cmake` to configure the build environment and then `make all test` to build
 To install, use `make install`, then execute with `pantheon-files`
 
     sudo make install
-    pantheon-files
+    io.elementary.files

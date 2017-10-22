@@ -51,13 +51,3 @@ my_list_free_full (GList *list)
 {
     g_list_free_full (list, g_object_unref);
 }
-
-void
-marlin_get_rename_region (const char *filename, int *start_offset, int *end_offset, gboolean select_all)
-{
-    if (select_all) {
-        *start_offset = 0;
-        *end_offset = g_utf8_strlen (filename, -1);
-    } else
-        eel_filename_get_rename_region (filename, start_offset, end_offset);
-}
