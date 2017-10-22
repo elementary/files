@@ -110,7 +110,6 @@ file_entry_free (FileEntry *file_entry)
     g_free (file_entry);
 }
 
-//amtest
 static GtkTreeModelFlags
 fm_list_model_get_flags (GtkTreeModel *tree_model)
 {
@@ -710,7 +709,6 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     }
 
     if (ptr != NULL) {
-        //~ g_debug ("file already in tree (parent_ptr: %p)!!!\n", parent_ptr);
         return FALSE;
     }
 
@@ -870,7 +868,6 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
             } else {
                 path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), iter);
                 gtk_tree_path_append_index (path, 0);
-                //model->details->stamp++;
                 g_sequence_remove (child_ptr);
                 gtk_tree_model_row_deleted (GTK_TREE_MODEL (model), path);
                 gtk_tree_path_free (path);
@@ -912,7 +909,6 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), iter);
 
     g_sequence_remove (ptr);
-    //model->details->stamp++;
     gtk_tree_model_row_deleted (GTK_TREE_MODEL (model), path);
 
     gtk_tree_path_free (path);

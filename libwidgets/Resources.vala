@@ -72,6 +72,8 @@ namespace Marlin {
     public const uint FRAME_RATE_HZ = 60;
     public const uint BUTTON_LONG_PRESS = 300;
 
+    public const int16 DEFAULT_POPUP_MENU_DISPLACEMENT = 2;
+
     public const string[] SKIP_IMAGES = {"image/svg+xml", "image/tiff", "image/jp2"};
 
     public string protocol_to_name (string protocol) {

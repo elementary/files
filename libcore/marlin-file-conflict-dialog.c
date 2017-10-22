@@ -28,7 +28,6 @@
 #include <gio/gio.h>
 #include <glib/gi18n.h>
 #include <pango/pango.h>
-#include "eel-vfs-extensions.h"
 
 #include "gof-file.h"
 #include "marlin-icon-info.h"
@@ -607,8 +606,9 @@ expander_activated_cb (GtkExpander *w,
                        details->conflict_name) == 0) {
             gtk_widget_grab_focus (details->entry);
 
-            eel_filename_get_rename_region (details->conflict_name,
-                                            &start_pos, &end_pos);
+            pf_file_utils_get_rename_region (details->conflict_name,
+                                            &start_pos, &end_pos, FALSE);
+
             gtk_editable_select_region (GTK_EDITABLE (details->entry),
                                         start_pos, end_pos);
         }
@@ -653,8 +653,10 @@ reset_button_clicked_cb (GtkButton *w,
     gtk_entry_set_text (GTK_ENTRY (details->entry),
                         details->conflict_name);
     gtk_widget_grab_focus (details->entry);
-    eel_filename_get_rename_region (details->conflict_name,
-                                    &start_pos, &end_pos);
+
+    pf_file_utils_get_rename_region (details->conflict_name,
+                                            &start_pos, &end_pos, FALSE);
+
     gtk_editable_select_region (GTK_EDITABLE (details->entry),
                                 start_pos, end_pos);
 
