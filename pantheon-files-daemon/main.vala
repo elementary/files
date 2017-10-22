@@ -29,6 +29,7 @@
             error ("Could not register MarlinTags service");
         }
     }
+
     void on_fm1_bus_aquired (DBusConnection conn, string n) {
         try {
             string name = "/org/freedesktop/FileManager1";
