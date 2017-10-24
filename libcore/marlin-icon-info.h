@@ -53,18 +53,18 @@ MarlinIconInfo *    marlin_icon_info_lookup_from_path           (const char     
 MarlinIconInfo *    marlin_icon_info_get_generic_icon           (int size);
 
 gboolean            marlin_icon_info_is_fallback                (MarlinIconInfo *icon);
-//GdkPixbuf *         marlin_icon_info_get_pixbuf                 (MarlinIconInfo *icon);
 GdkPixbuf *         marlin_icon_info_get_pixbuf_nodefault       (MarlinIconInfo *icon);
 GdkPixbuf *         marlin_icon_info_get_pixbuf_force_size      (MarlinIconInfo *icon,
                                                                  gint           size,
                                                                  gboolean       force_size);
-/*GdkPixbuf *           marlin_icon_info_get_pixbuf_nodefault_at_size (MarlinIconInfo  *icon,
-  gsize              forced_size);*/
 GdkPixbuf *         marlin_icon_info_get_pixbuf_at_size         (MarlinIconInfo *icon,
                                                                  gsize          forced_size);
 
 void                marlin_icon_info_clear_caches               (void);
 void                marlin_icon_info_remove_cache               (const char *path, int size);
+guint               marlin_icon_info_themed_icon_cache_info     (void);
+guint               marlin_icon_info_loadable_icon_cache_info   (void);
+void                marlin_icon_info_set_reap_time              (uint milliseconds);
 
 G_END_DECLS
 

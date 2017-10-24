@@ -63,13 +63,13 @@ namespace PF.FileUtils {
         }
 
         original_dirs_hash.foreach ((original_dir, dir_files) => {
-                Marlin.FileOperations.copy_move (dir_files,
-                                                 null,
-                                                 original_dir,
-                                                 Gdk.DragAction.MOVE,
-                                                 widget,
-                                                 null,
-                                                 null);
+                Marlin.FileOperations.copy_move_link (dir_files,
+                                                      null,
+                                                      original_dir,
+                                                      Gdk.DragAction.MOVE,
+                                                      widget,
+                                                      null,
+                                                      null);
         });
     }
 
@@ -304,6 +304,46 @@ namespace PF.FileUtils {
                 sb.append (uri_parts [i] + Path.DIR_SEPARATOR_S);
 
             return sb.str;
+        }
+    }
+
+    /* Lists of compression only and archive only extensions from Wikipedia */
+    private const string compression_extensions = "bz2 F gz tz lz lzma lzo rz sfark sz xz z Z ";
+    private const string archive_extensions = "a cpio shar LBR iso lbr mar sbx tar";
+    private string strip_extension (string filename) {
+        string[] parts = filename.reverse ().split (".", 3);
+        var n_parts = parts.length;
+
+        switch (n_parts) {
+            case 1:
+                break;
+            case 2:
+                return parts[1].reverse ();
+            case 3:
+                if (compression_extensions.reverse ().contains (parts[0]) &&
+                    archive_extensions.reverse ().contains (parts[1])) {
+
+                        return parts[2].reverse ();
+                }
+
+                return string.join (".", parts[1], parts[2]).reverse ();
+
+
+            default:
+                break;
+        }
+
+        return filename;
+    }
+
+    public void get_rename_region (string filename, out int start_offset, out int end_offset, bool select_all) {
+
+        start_offset = 0;
+
+        if (select_all) {
+            end_offset = -1;
+        } else {
+            end_offset = strip_extension (filename).char_count ();
         }
     }
 

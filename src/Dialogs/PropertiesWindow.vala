@@ -183,7 +183,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         construct_info_panel (goffile);
         cancellable = new GLib.Cancellable ();
 
-        update_selection_size (); /* Start counting first to get number of selected files and folders */    
+        update_selection_size (); /* Start counting first to get number of selected files and folders */
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
         var file_pix = goffile.get_icon_pixbuf (48, false, GOF.FileIconFlags.NONE);
@@ -1195,7 +1195,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if ((header_title is Gtk.Entry) && !view.is_in_recent ()) {
             int start_offset= 0, end_offset = -1;
 
-            Marlin.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
+            PF.FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
             (header_title as Gtk.Entry).select_region (start_offset, end_offset);
         }
 
