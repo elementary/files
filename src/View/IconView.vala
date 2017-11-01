@@ -113,10 +113,10 @@ namespace FM {
                 tree.set_column_spacing (spacing);
                 tree.set_item_width (item_width);
             }
-            name_renderer.item_width = item_width;
-            name_renderer.set_property ("zoom-level", zoom_level);
 
-            base.change_zoom_level ();
+            name_renderer.item_width = item_width;
+
+            base.change_zoom_level (); /* Sets name_renderer zoom_level */
         }
 
         public override GLib.List<Gtk.TreePath> get_selected_paths () {
