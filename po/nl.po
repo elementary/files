@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-09-06 18:00+0000\n"
+"PO-Revision-Date: 2017-10-31 23:57+0000\n"
 "Last-Translator: Dieter Debast <dieter_debast@hotmail.com>\n"
 "Language-Team: Dutch <https://weblate.elementary.io/projects/files/files/nl/>"
 "\n"
@@ -646,18 +646,24 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
+"Kan bestand niet naar de prullenbak verplaatsen. Wilt u het bestand proberen "
+"te verwijderen?"
 
 #: ../libcore/marlin-file-operations.c:1961
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Dit bestand kan niet naar de prullenbak worden verplaatst. Het kan mogelijks "
+"ook niet verwijderd worden."
 
 #: ../libcore/marlin-file-operations.c:1966
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Een bestand verwijderen is permanent"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
