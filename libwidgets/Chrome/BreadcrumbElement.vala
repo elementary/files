@@ -87,7 +87,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         icon_name = icon_name_;
     }
 
-    public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, bool is_RTL, Gtk.Widget widget) {
+    public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, bool is_RTL, int scale, Gtk.Widget widget) {
         var state = button_context.get_state ();
         if (pressed) {
             state |= Gtk.StateFlags.ACTIVE;
@@ -204,13 +204,15 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                 }
             } else if (!text_is_displayed) {
                 if (room_for_icon) {
-                    button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon_width,
-                                                y_half_height - icon_half_height);
+                    button_context.render_icon (cr, icon_to_draw,
+                                                px_round(x - ICON_MARGIN - icon_width, scale),
+                                                px_round(y_half_height - icon_half_height, scale));
                 }
             } else {
                 if (room_for_icon) {
-                    button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon_width,
-                                                y_half_height - icon_half_height);
+                    button_context.render_icon (cr, icon_to_draw,
+                                                px_round(x - ICON_MARGIN - icon_width, scale),
+                                                px_round(y_half_height - icon_half_height, scale));
                 }
                 if (room_for_text) {
                     /* text_width already includes icon_width */
@@ -228,13 +230,15 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                 }
             } else if (!text_is_displayed) {
                 if (room_for_icon) {
-                    button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
-                                                 y_half_height - icon_half_height);
+                    button_context.render_icon (cr, icon_to_draw,
+                                                px_round(x + ICON_MARGIN, scale),
+                                                px_round(y_half_height - icon_half_height, scale));
                 }
             } else {
                 if (room_for_icon) {
-                    button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
-                                                 y_half_height - icon_half_height);
+                    button_context.render_icon (cr, icon_to_draw,
+                                                px_round(x + ICON_MARGIN, scale),
+                                                px_round(y_half_height - icon_half_height, scale));
                 }
                 if (room_for_text) {
                     button_context.render_layout (cr, x + iw,
@@ -299,6 +303,10 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         layout.get_size (out width, out height);
         this.text_width = Pango.units_to_double (width);
         this.text_half_height = Pango.units_to_double (height) / 2;
+    }
+
+    private double px_round (double val, int scale) {
+        return Math.round(val * scale) / scale;
     }
 
     /** To help testing **/
