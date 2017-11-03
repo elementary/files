@@ -202,19 +202,13 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     button_context.render_layout (cr, x - width,
                                                   y_half_height - text_half_height, layout);
                 }
-            } else if (!text_is_displayed) {
-                if (room_for_icon) {
-                    button_context.render_icon (cr, icon_to_draw,
-                                                px_round(x - ICON_MARGIN - icon_width, scale),
-                                                px_round(y_half_height - icon_half_height, scale));
-                }
             } else {
                 if (room_for_icon) {
                     button_context.render_icon (cr, icon_to_draw,
                                                 px_round(x - ICON_MARGIN - icon_width, scale),
                                                 px_round(y_half_height - icon_half_height, scale));
                 }
-                if (room_for_text) {
+                if (text_is_displayed && room_for_text) {
                     /* text_width already includes icon_width */
                     button_context.render_layout (cr, x - width,
                                                   y_half_height - text_half_height, layout);
@@ -228,19 +222,13 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     button_context.render_layout (cr, x,
                                                   y_half_height - text_half_height, layout);
                 }
-            } else if (!text_is_displayed) {
-                if (room_for_icon) {
-                    button_context.render_icon (cr, icon_to_draw,
-                                                px_round(x + ICON_MARGIN, scale),
-                                                px_round(y_half_height - icon_half_height, scale));
-                }
             } else {
                 if (room_for_icon) {
                     button_context.render_icon (cr, icon_to_draw,
                                                 px_round(x + ICON_MARGIN, scale),
                                                 px_round(y_half_height - icon_half_height, scale));
                 }
-                if (room_for_text) {
+                if (text_is_displayed && room_for_text) {
                     button_context.render_layout (cr, x + iw,
                                                   y_half_height - text_half_height, layout);
                 }
