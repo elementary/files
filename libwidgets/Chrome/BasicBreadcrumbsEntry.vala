@@ -625,6 +625,12 @@ namespace Marlin.View.Chrome {
             double height = get_allocated_height ();
             double width = get_allocated_width ();
 
+            int scale = 1;
+            Gdk.Window win = get_parent_window ();
+            if (win != null) {
+                scale = win.get_scale_factor ();
+            }
+
             Gtk.Border border = button_context_active.get_margin (Gtk.StateFlags.ACTIVE);
 
             if (!is_focus) {
@@ -655,13 +661,11 @@ namespace Marlin.View.Chrome {
                 cr.save ();
                 /* Really draw the elements */
                 foreach (BreadcrumbElement element in displayed_breadcrumbs) {
+                    x_render = element.draw (cr, x_render, margin, height_marged, button_context, is_RTL, scale, this);
+                    /* save element x axis position */
                     if (is_RTL) {
-                        x_render = element.draw (cr, x_render, margin, height_marged, button_context, true, this);
-                        /* save element x axis position */
                         element.x = x_render + element.real_width;
                     } else {
-                        x_render = element.draw (cr, x_render, margin, height_marged, button_context, false, this);
-                        /* save element x axis position */
                         element.x = x_render - element.real_width;
                     }
                 }
@@ -669,13 +673,11 @@ namespace Marlin.View.Chrome {
                 if (old_elements != null) {
                     foreach (BreadcrumbElement element in old_elements) {
                         if (element.display) {
+                            x_render = element.draw (cr, x_render, margin, height_marged, button_context, is_RTL, scale, this);
+                            /* save element x axis position */
                             if (is_RTL) {
-                                x_render = element.draw (cr, x_render, margin, height_marged, button_context, true, this);
-                                /* save element x axis position */
                                 element.x = x_render + element.real_width;
                             } else {
-                                x_render = element.draw (cr, x_render, margin, height_marged, button_context, false, this);
-                                /* save element x axis position */
                                 element.x = x_render - element.real_width;
                             }
                         }
