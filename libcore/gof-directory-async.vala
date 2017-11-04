@@ -610,34 +610,27 @@ public class Async : Object {
         files_count = 0;
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
-        bool server_responding = false;
 
         try {
-            /* This may hang for a long time if the connection was closed but is still mounted so we
-             * impose a time limit */
-            load_timeout_id = Timeout.add_seconds (ENUMERATE_TIMEOUT_SEC, () => {
-                if (server_responding) {
-                    return true;
-                } else {
-                    debug ("Load timeout expired");
-                    state = State.TIMED_OUT;
-                    last_error_message = _("Server did not respond within time limit");
-                    load_timeout_id = 0;
-                    cancellable.cancel ();
-
-                    return false;
-                }
-            });
-
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
 
             GOF.File? gof;
             GLib.File loc;
             while (!cancellable.is_cancelled ()) {
                 try {
-                    server_responding = false;
-                    var files = yield e.next_files_async (200, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
-                    server_responding = true;
+                    /* This may hang for a long time if the connection was closed but is still mounted so we
+                     * impose a time limit */
+                    load_timeout_id = Timeout.add_seconds_full (GLib.Priority.LOW, ENUMERATE_TIMEOUT_SEC, () => {
+                        warning ("Load timeout expired");
+                        state = State.TIMED_OUT;
+                        load_timeout_id = 0;
+                        cancellable.cancel ();
+                        load_timeout_id = 0;
+                        return false;
+                    });
+
+                    var files = yield e.next_files_async (1000, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
+                    cancel_timeout (ref load_timeout_id);
 
                     if (files == null) {
                         break;
@@ -660,7 +653,11 @@ public class Async : Object {
                         }
                     }
                 } catch (Error e) {
-                    last_error_message = e.message;
+                    if (!(state == State.TIMED_OUT)) {
+                        last_error_message = e.message;
+                    } else {
+                        last_error_message = _("Server did not respond within time limit");
+                    }
                     warning ("Error reported by next_files_async - %s", e.message);
                 }
             }

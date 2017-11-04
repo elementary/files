@@ -623,6 +623,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (combo, key_label, Gtk.PositionType.RIGHT);
+            n++;
         }
 
         /* Device Usage */
