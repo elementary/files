@@ -63,7 +63,7 @@ public class Async : Object {
         }
     }
 
-    public unowned GLib.File? location {
+    public GLib.File? location {
         get {
             return file != null ? file.location : null;
         }
@@ -648,15 +648,6 @@ public class Async : Object {
             GLib.List<GLib.FileInfo> file_infos = null;
             while (!cancellable.is_cancelled ()) {
                 try {
-//~ <<<<<<< HEAD
-//~                     server_responding = false;
-//~                     file_infos = yield e.next_files_async (200, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
-//~                     server_responding = true;
-//~                 } catch (Error e) {
-//~                     last_error_message = e.message;
-//~                     warning ("Error reported by next_files_async - %s", e.message);
-//~                 }
-//~ =======
                     /* This may hang for a long time if the connection was closed but is still mounted so we
                      * impose a time limit */
                     load_timeout_id = Timeout.add_seconds_full (GLib.Priority.LOW, ENUMERATE_TIMEOUT_SEC, () => {
