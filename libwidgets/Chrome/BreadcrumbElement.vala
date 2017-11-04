@@ -208,8 +208,8 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     double draw_scale = 1.0 / scale; 
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
-                                                Math.round((x - ICON_MARGIN - icon_width) * scale),
-                                                Math.round((y_half_height - icon_half_height) * scale));
+                                                Math.round ((x - ICON_MARGIN - icon_width) * scale),
+                                                Math.round ((y_half_height - icon_half_height) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text) {
@@ -232,8 +232,8 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     double draw_scale = 1.0 / scale; 
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
-                                                Math.round((x + ICON_MARGIN) * scale),
-                                                Math.round((y_half_height - icon_half_height) * scale));
+                                                Math.round ((x + ICON_MARGIN) * scale),
+                                                Math.round ((y_half_height - icon_half_height) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text) {
