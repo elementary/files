@@ -3384,6 +3384,7 @@ namespace FM {
 
         public virtual void change_zoom_level () {
             icon_renderer.set_property ("zoom-level", zoom_level);
+            name_renderer.set_property ("zoom-level", zoom_level);
             view.style_updated ();
         }
 

@@ -640,61 +640,67 @@ public class Async : Object {
         files_count = 0;
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
-        bool server_responding = false;
 
         try {
-            /* This may hang for a long time if the connection was closed but is still mounted so we
-             * impose a time limit */
-            load_timeout_id = Timeout.add_seconds (ENUMERATE_TIMEOUT_SEC, () => {
-                if (server_responding) {
-                    return true;
-                } else {
-                    debug ("Load timeout expired");
-                    state = State.TIMED_OUT;
-                    last_error_message = _("Server did not respond within time limit");
-                    load_timeout_id = 0;
-                    cancellable.cancel ();
-
-                    return false;
-                }
-            });
-
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
             debug ("Obtained file enumerator for location %s", location.get_uri ());
 
             GLib.List<GLib.FileInfo> file_infos = null;
             while (!cancellable.is_cancelled ()) {
                 try {
-                    server_responding = false;
-                    file_infos = yield e.next_files_async (200, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
-                    server_responding = true;
-                } catch (Error e) {
-                    last_error_message = e.message;
-                    warning ("Error reported by next_files_async - %s", e.message);
-                }
+//~ <<<<<<< HEAD
+//~                     server_responding = false;
+//~                     file_infos = yield e.next_files_async (200, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
+//~                     server_responding = true;
+//~                 } catch (Error e) {
+//~                     last_error_message = e.message;
+//~                     warning ("Error reported by next_files_async - %s", e.message);
+//~                 }
+//~ =======
+                    /* This may hang for a long time if the connection was closed but is still mounted so we
+                     * impose a time limit */
+                    load_timeout_id = Timeout.add_seconds_full (GLib.Priority.LOW, ENUMERATE_TIMEOUT_SEC, () => {
+                        warning ("Load timeout expired");
+                        state = State.TIMED_OUT;
+                        load_timeout_id = 0;
+                        cancellable.cancel ();
+                        load_timeout_id = 0;
+                        return false;
+                    });
 
-                if (file_infos == null) {
-                    break;
-                } else {
-                    tmp_file_cache_lock.@lock ();
-                    foreach (var file_info in file_infos) {
-                        GLib.File key = Async.get_cache_key (location.get_child (file_info.get_name ()));
-                        GOF.File gof = tmp_file_cache.lookup (key);
+                    file_infos = yield e.next_files_async (1000, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
+                    cancel_timeout (ref load_timeout_id);
 
-                        if (gof != null && gof is GOF.File) {
-                            tmp_file_cache.remove (key);
-                        } else {
-                            gof = new GOF.File (key, this.location);
+                    if (file_infos == null) {
+                        break;
+                    } else {
+                        tmp_file_cache_lock.@lock ();
+                        foreach (var file_info in file_infos) {
+                            GLib.File key = Async.get_cache_key (location.get_child (file_info.get_name ()));
+                            GOF.File gof = tmp_file_cache.lookup (key);
+
+                            if (gof != null && gof is GOF.File) {
+                                tmp_file_cache.remove (key);
+                            } else {
+                                gof = new GOF.File (key, this.location);
+                            }
+
+                            file_hash.insert (key, gof);
+                            gof.info = file_info;
+                            gof.update ();
+
+                            after_load_file (gof, show_hidden, file_loaded_func);
+                            files_count++;
                         }
-
-                        file_hash.insert (key, gof);
-                        gof.info = file_info;
-                        gof.update ();
-
-                        after_load_file (gof, show_hidden, file_loaded_func);
-                        files_count++;
+                        tmp_file_cache_lock.unlock ();
                     }
-                    tmp_file_cache_lock.unlock ();
+                } catch (Error e) {
+                    if (!(state == State.TIMED_OUT)) {
+                        last_error_message = e.message;
+                    } else {
+                        last_error_message = _("Server did not respond within time limit");
+                    }
+                    warning ("Error reported by next_files_async - %s", e.message);
                 }
             }
 
