@@ -38,6 +38,11 @@ namespace FM {
             base (_slot);
         }
 
+        protected override void set_up_icon_renderer () {
+            base.set_up_icon_renderer ();
+            icon_renderer.show_expanded = true;
+        }
+
         private void connect_additional_signals () {
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
@@ -103,7 +108,7 @@ namespace FM {
 
         private void schedule_model_unload_directories () {
             cancel_file_timeout ();
-            unload_file_timeout_id = GLib.Timeout.add_seconds (COLLAPSE_TO_UNLOAD_DELAY, 
+            unload_file_timeout_id = GLib.Timeout.add_seconds (COLLAPSE_TO_UNLOAD_DELAY,
                                                                unload_directories);
         }
 

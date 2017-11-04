@@ -58,6 +58,8 @@ namespace Marlin {
             }
         }
 
+        public bool show_expanded { get; set; default = false; }
+
         private bool show_emblems = true;
         private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
         private GOF.File? _file;
@@ -102,7 +104,7 @@ namespace Marlin {
                 flags |= Gtk.CellRendererState.PRELIT;
                 special_icon_name = "folder-drag-accept";
 
-            } else if (file.is_directory && file.is_expanded) {
+            } else if (show_expanded && file.is_directory && file.is_expanded) {
                 special_icon_name = "folder-open";
             }
 
