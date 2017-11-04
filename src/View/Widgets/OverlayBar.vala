@@ -36,7 +36,6 @@ namespace Marlin.View {
         private uint hover_timeout_id = 0;
         private Marlin.DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
-        private Gtk.Spinner spinner;
 
         public bool showbar = false;
 
@@ -45,33 +44,11 @@ namespace Marlin.View {
 
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             status = "";
-            /* Swap existing child for a Box so we can add additional widget (spinner) */
-            var widget = this.get_child ();
-            ((Gtk.Container)this).remove (widget);
-            var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            this.add (hbox);
-            /* Put the existing child back */
-            hbox.pack_start (widget, true, true);
-            /* Now we can add a spinner */
-            spinner = new Gtk.Spinner ();
-            hbox.pack_start (spinner, true, true);
-
             hide.connect (cancel);
         }
 
         ~OverlayBar () {
             cancel ();
-        }
-
-        public override void get_preferred_width (out int minimum_width, out int natural_width) {
-            base.get_preferred_width (out minimum_width, out natural_width);
-            /* If visible, allow extra space for the spinner - the parent only allows for the label */
-            if (spinner.is_visible ()) {
-                Gtk.Requisition spinner_min_size, spinner_natural_size;
-                spinner.get_preferred_size (out spinner_min_size, out spinner_natural_size);
-                minimum_width += spinner_min_size.width;
-                natural_width += spinner_natural_size.width;
-            }
         }
 
         public void selection_changed (GLib.List<GOF.File> files) {
@@ -159,7 +136,7 @@ namespace Marlin.View {
             }
 
             cancel_cancellable ();
-            hide_spinner ();
+            active = false;
         }
 
         private void cancel_cancellable () {
@@ -252,7 +229,7 @@ namespace Marlin.View {
         private void schedule_deep_count () {
             cancel ();
             /* Show the spinner immediately to indicate that something will happen if hover long enough */
-            show_spinner ();
+            active = true;
 
             deep_count_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, 1000, () => {
                 deep_counter = new Marlin.DeepCount (goffile.location);
@@ -267,7 +244,7 @@ namespace Marlin.View {
                         deep_counter = null;
                         cancellable = null;
                     }
-                    hide_spinner ();
+                    active = false;
                 });
                 deep_count_timeout_id = 0;
                 return false;
@@ -277,7 +254,7 @@ namespace Marlin.View {
         private void update_status_after_deep_count () {
             string str;
             cancellable = null;
-            hide_spinner ();
+            active = false;
 
             status = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
 
@@ -407,16 +384,6 @@ namespace Marlin.View {
                     warning (e.message);
                 }
             }
-        }
-
-        private void show_spinner () {
-            spinner.show ();
-            spinner.start ();
-        }
-
-        private void hide_spinner () {
-            spinner.stop ();
-            spinner.hide ();
         }
     }
 }
