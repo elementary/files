@@ -34,12 +34,29 @@ namespace Marlin.View.Chrome {
         private GLib.List<BreadcrumbIconInfo?> icon_info_list = null;
         private Granite.Services.IconFactory icon_factory;
         private Gtk.StyleContext context;
-        public int scale { public get; private set; }
+
+        private int _scale;
+        public int scale {
+            get {
+                return _scale;
+            }
+            set {
+                _scale = value;
+                make_icons ();
+            }
+        }
 
         public BreadcrumbIconList (Gtk.StyleContext _context) {
             context = _context;
             icon_factory = Granite.Services.IconFactory.get_default ();
             scale = context.get_scale ();
+        }
+
+        private void make_icons() {
+            context.save ();
+            context.set_state (Gtk.StateFlags.NORMAL);
+
+            icon_info_list = new GLib.List<BreadcrumbIconInfo?> ();
 
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
             add_icon ({ "afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, true, null, null, null, true, Marlin.PROTOCOL_NAME_AFP});
@@ -124,6 +141,7 @@ namespace Marlin.View.Chrome {
             icon.exploded = {Path.DIR_SEPARATOR_S};
             add_icon (icon);
 
+            context.restore ();
         }
 
         private void add_icon (BreadcrumbIconInfo icon_info) {
@@ -136,6 +154,9 @@ namespace Marlin.View.Chrome {
         }
 
         public void add_mounted_volumes () {
+            context.save ();
+            context.set_state (Gtk.StateFlags.NORMAL);
+
             /* Add every mounted volume in our BreadcrumbIcon in order to load them properly in the pathbar if needed */
             var volume_monitor = VolumeMonitor.get ();
             var mount_list = volume_monitor.get_mounts ();
@@ -152,6 +173,8 @@ namespace Marlin.View.Chrome {
                     add_icon (icon_info);
                 }
             }
+
+            context.restore ();
         }
 
         public void truncate_to_length (uint new_length) {
