@@ -43,7 +43,7 @@ namespace Marlin.View {
             base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
 
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
-            status = "";
+            label = "";
             hide.connect (cancel);
         }
 
@@ -151,7 +151,7 @@ namespace Marlin.View {
             folders_count = 0;
             files_count = 0;
             files_size = 0;
-            status = "";
+            label = "";
 
             if (files != null) {
                 if (files.data != null) {
@@ -166,18 +166,18 @@ namespace Marlin.View {
                      * wins because we remembered the resolution. So only set status with string returned by
                      * update status if it has not already been set by load resolution.*/
                     var s = update_status ();
-                    if (status == "") {
-                        status = s;
+                    if (label == "") {
+                        label = s;
                     }
                 }
             }
 
-            visible = showbar && (status.length > 0);
+            visible = showbar && (label.length > 0);
         }
 
         private string update_status () {
             string str = "";
-            status = "";
+            label = "";
             if (goffile != null) { /* a single file is hovered or selected */
                 if (goffile.is_network_uri_scheme () || goffile.is_root_network_folder ()) {
                     str = goffile.get_display_target_uri ();
@@ -256,36 +256,36 @@ namespace Marlin.View {
             cancellable = null;
             active = false;
 
-            status = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
+            label = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
 
             if (deep_counter != null) {
                 if (deep_counter.dirs_count > 0) {
                     /// TRANSLATORS: %u will be substituted by the number of sub folders
                     str = ngettext (_("%u sub-folder, "), _("%u sub-folders, "), deep_counter.dirs_count);
-                    status += str.printf (deep_counter.dirs_count);
+                    label += str.printf (deep_counter.dirs_count);
                 }
 
                 if (deep_counter.files_count > 0 || deep_counter.file_not_read == 0) {
                     /// TRANSLATORS: %u will be substituted by the number of readable files
                     str = ngettext (_("%u file, "), _("%u files, "), deep_counter.files_count);
-                    status += str.printf (deep_counter.files_count);
+                    label += str.printf (deep_counter.files_count);
                 }
 
                 if (deep_counter.file_not_read == 0) {
-                    status += format_size (deep_counter.total_size);
-                    status += ")";
+                    label += format_size (deep_counter.total_size);
+                    label += ")";
                 } else {
                     if (deep_counter.total_size > 0) {
                         /// TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-                        status += _("%s approx.").printf (format_size (deep_counter.total_size));
+                        label += _("%s approx.").printf (format_size (deep_counter.total_size));
                     } else {
                         /// TRANSLATORS: 'size' refers to disk space
-                        status += _("unknown size");
+                        label += _("unknown size");
                     }
-                    status += ") ";
+                    label += ") ";
                     /// TRANSLATORS: %u will be substituted by the number of unreadable files
                     str = ngettext (_("%u file not readable"), _("%u files not readable"), deep_counter.file_not_read);
-                    status += str.printf (deep_counter.file_not_read);
+                    label += str.printf (deep_counter.file_not_read);
                 }
             }
         }
@@ -352,7 +352,7 @@ namespace Marlin.View {
             image_size_loaded = true;
             goffile.width = width;
             goffile.height = height;
-            status = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
+            label = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
         }
 
         private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable)
