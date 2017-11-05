@@ -247,7 +247,8 @@ namespace FM {
                     bool on_helper = false;
                     GOF.File? file = model.file_for_path (p);
                     if (file != null) {
-                        bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
+                        /* RTL has no effect on is_on_icon in IconView so just pass false */
+                        bool on_icon = is_on_icon (x, y, rect, file.pix, false, ref on_helper);
 
                         if (on_helper) {
                             zone = ClickZone.HELPER;
@@ -456,7 +457,7 @@ namespace FM {
             }
         }
 
-        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper) {
+        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
             int x_offset = x - area.x;
             int y_offset = y - area.y;
 
