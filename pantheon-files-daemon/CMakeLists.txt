@@ -5,6 +5,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../libcore/)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/../libwidgets/)
+
 find_package(PkgConfig)
 pkg_check_modules(DEPS REQUIRED
     glib-2.0>=2.29.0
@@ -27,7 +28,6 @@ add_definitions(${CFLAGS})
 
 vala_precompile(VALA_C io.elementary.files-daemon
     main.vala
-    FileManager1.vala
     marlind-tagging.vala
 PACKAGES
     gtk+-3.0
@@ -36,6 +36,7 @@ PACKAGES
     sqlite3
 OPTIONS
     --thread)
+
 add_executable(io.elementary.files-daemon
     ${VALA_C} )
 target_link_libraries(io.elementary.files-daemon ${DEPS_LIBRARIES})

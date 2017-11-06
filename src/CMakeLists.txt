@@ -71,6 +71,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/Widgets/ProgressInfoWidget.vala
         View/Widgets/SingleLineEditableLabel.vala
         View/Widgets/TopMenu.vala
+        Services/FileManager1.vala
 
     PACKAGES
         gtk+-3.0
@@ -137,6 +138,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/Widgets/ProgressInfoWidget.vala
         View/Widgets/SingleLineEditableLabel.vala
         View/Widgets/TopMenu.vala
+        Services/FileManager1.vala
 
     PACKAGES
         gtk+-3.0

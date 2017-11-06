@@ -50,9 +50,10 @@ public class Marlin.Application : Granite.Application {
         application_singleton = this;
     }
 
-    public static new unowned Application get () {
-        if (application_singleton == null)
+    public static new unowned Application @get () {
+        if (application_singleton == null) {
             application_singleton = new Marlin.Application ();
+        }
 
         return application_singleton;
     }
@@ -127,24 +128,27 @@ public class Marlin.Application : Granite.Application {
         bool version = false;
         bool open_in_tab = false;
         bool create_new_window = false;
+        bool no_tabs = false;
         bool kill_shell = false;
         bool debug = false;
 
-        OptionEntry[] options = new OptionEntry [7];
+        OptionEntry[] options = new OptionEntry [8];
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
                         N_("Show the version of the program."), null };
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
                         N_("Open uri(s) in new tab"), null };
         options [2] = { "new-window", 'n', 0, OptionArg.NONE, out create_new_window,
                         N_("New Window"), null };
-        options [3] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
+        options [3] = { "empty", 'e', 0, OptionArg.NONE, out no_tabs,
+                        N_("No Tabs"), null }; /* Only useful for FileManager1 interface */
+        options [4] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
                         N_("Quit Files."), null };
-        options [4] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
+        options [5] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
                         N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
-        options [5] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
+        options [6] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
                         null, N_("[URI...]") };
-        options [6] = { null };
+        options [7] = { null };
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
         context.add_main_entries (options, null);
@@ -199,7 +203,9 @@ public class Marlin.Application : Granite.Application {
         /* Open application */
         if (create_new_window) {
             var win = create_window (null);
-            win.add_tab (); /* Default tab */
+            if (!no_tabs) {
+                win.add_tab (); /* Default tab */
+            }
         } else if (open_in_tab) {
             open_tabs (files);
         } else {
@@ -332,7 +338,7 @@ public class Marlin.Application : Granite.Application {
         return win;
     }
 
-    private void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ()) {
+    public void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ()) {
         Marlin.View.Window window = null;
 
         /* Get the first window, if any, else create a new window */
@@ -357,8 +363,9 @@ public class Marlin.Application : Granite.Application {
             }
         } else {
             /* Open tabs at each requested location */
-            foreach (var file in files)
+            foreach (var file in files) {
                 window.add_tab (file, Marlin.ViewMode.PREFERRED);
+            }
         }
     }
 
