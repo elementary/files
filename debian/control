@@ -2,7 +2,7 @@ Source: pantheon-files-plugin-dropbox
 Section: gnome
 Priority: optional
 Maintainer: Mario Guerriero <mefrio.g@gmail.com>
-Vcs-Bzr: lp:~elementary-apps/pantheon-files/pantheon-files-plugin-dropbox
+Vcs-Git: https://github.com/elementary/files/tree/dropbox-plugin
 Build-Depends: cmake,
                debhelper (>= 9),
                gnome-common,
@@ -13,7 +13,7 @@ Build-Depends: cmake,
                libpantheon-files-core-dev,
                libcanberra-dev,
                pkg-config
-Homepage: https://launchpad.net/pantheon-files
+Homepage: https://github.com/elementary/files/tree/dropbox-plugin
 Standards-Version: 3.9.6
 
 Package: pantheon-files-plugin-dropbox
