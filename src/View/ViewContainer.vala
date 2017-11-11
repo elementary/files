@@ -97,7 +97,7 @@ namespace Marlin.View {
 
         public bool is_loading {get; private set; default = false;}
 
-        public OverlayBar overlay_statusbar;
+        private OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
@@ -127,7 +127,6 @@ namespace Marlin.View {
 
         private void connect_signals () {
             path_changed.connect (on_path_changed);
-            enter_notify_event.connect (on_enter_notify_event);
             loading.connect ((loading) => {
                 is_loading = loading;
             });
@@ -584,14 +583,6 @@ namespace Marlin.View {
 
         public void on_selection_changed (GLib.List<GOF.File> files) {
             overlay_statusbar.selection_changed (files);
-        }
-
-        private bool on_enter_notify_event () {
-            /* Before the status bar is entered a leave event is triggered on the view, which
-             * causes the statusbar to disappear. To block this we just cancel the update.
-             */
-            overlay_statusbar.cancel ();
-            return false;
         }
     }
 }
