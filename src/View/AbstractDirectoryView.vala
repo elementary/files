@@ -245,7 +245,6 @@ namespace FM {
 
                     size_allocate.disconnect (on_size_allocate);
                     clipboard.changed.disconnect (on_clipboard_changed);
-                    view.enter_notify_event.disconnect (on_enter_notify_event);
                     view.key_press_event.disconnect (on_view_key_press_event);
                 } else if (!value && _is_frozen) {
                     /* Ensure selected files and menu actions are up to date */
@@ -254,7 +253,6 @@ namespace FM {
 
                     size_allocate.connect (on_size_allocate);
                     clipboard.changed.connect (on_clipboard_changed);
-                    view.enter_notify_event.connect (on_enter_notify_event);
                     view.key_press_event.connect (on_view_key_press_event);
                 }
 
@@ -334,9 +332,9 @@ namespace FM {
                 view.add_events (Gdk.EventMask.POINTER_MOTION_MASK |
                                  Gdk.EventMask.ENTER_NOTIFY_MASK |
                                  Gdk.EventMask.LEAVE_NOTIFY_MASK);
+
                 view.motion_notify_event.connect (on_motion_notify_event);
                 view.leave_notify_event.connect (on_leave_notify_event);
-                view.enter_notify_event.connect (on_enter_notify_event);
                 view.key_press_event.connect (on_view_key_press_event);
                 view.button_press_event.connect (on_view_button_press_event);
                 view.button_release_event.connect (on_view_button_release_event);
@@ -3000,11 +2998,6 @@ namespace FM {
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
             item_hovered (null); /* Ensure overlay statusbar disappears */
-            return false;
-        }
-
-        protected bool on_enter_notify_event (Gdk.EventCrossing event) {
-            grab_focus (); /* Cause OverLay to appear */
             return false;
         }
 
