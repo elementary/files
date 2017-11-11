@@ -86,6 +86,9 @@ namespace Marlin.View {
             }
 
             hover_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
+                deep_count_cancel ();
+                cancel_cancellable ();
+
                 GLib.List<GOF.File> list = null;
                 if (file != null) {
                     bool matched = false;
@@ -236,6 +239,7 @@ namespace Marlin.View {
             cancel ();
             /* Show the spinner immediately to indicate that something will happen if hover long enough */
             active = true;
+            deep_count_cancel ();
 
             deep_count_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, 1000, () => {
                 deep_counter = new Marlin.DeepCount (goffile.location);
