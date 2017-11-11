@@ -1854,7 +1854,7 @@ namespace FM {
                 menu.attach_to_widget (this, null);
                 /* Override style MESSAGE_CLASS of view when it is empty */
                 if (slot.directory.is_empty ())
-                    menu.get_style_context ().add_class ("context-menu");
+                    menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
                 Eel.pop_up_context_menu (menu,
                                          Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                          Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
