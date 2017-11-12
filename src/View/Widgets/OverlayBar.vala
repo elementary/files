@@ -36,7 +36,6 @@ namespace Marlin.View {
         private uint hover_timeout_id = 0;
         private Marlin.DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
-        private Gtk.Spinner spinner;
 
         public bool showbar = false;
 
@@ -44,34 +43,12 @@ namespace Marlin.View {
             base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
 
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
-            status = "";
-            /* Swap existing child for a Box so we can add additional widget (spinner) */
-            var widget = this.get_child ();
-            ((Gtk.Container)this).remove (widget);
-            var hbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            this.add (hbox);
-            /* Put the existing child back */
-            hbox.pack_start (widget, true, true);
-            /* Now we can add a spinner */
-            spinner = new Gtk.Spinner ();
-            hbox.pack_start (spinner, true, true);
-
+            label = "";
             hide.connect (cancel);
         }
 
         ~OverlayBar () {
             cancel ();
-        }
-
-        public override void get_preferred_width (out int minimum_width, out int natural_width) {
-            base.get_preferred_width (out minimum_width, out natural_width);
-            /* If visible, allow extra space for the spinner - the parent only allows for the label */
-            if (spinner.is_visible ()) {
-                Gtk.Requisition spinner_min_size, spinner_natural_size;
-                spinner.get_preferred_size (out spinner_min_size, out spinner_natural_size);
-                minimum_width += spinner_min_size.width;
-                natural_width += spinner_natural_size.width;
-            }
         }
 
         public void selection_changed (GLib.List<GOF.File> files) {
@@ -159,7 +136,7 @@ namespace Marlin.View {
             }
 
             cancel_cancellable ();
-            hide_spinner ();
+            active = false;
         }
 
         private void cancel_cancellable () {
@@ -174,7 +151,7 @@ namespace Marlin.View {
             folders_count = 0;
             files_count = 0;
             files_size = 0;
-            status = "";
+            label = "";
 
             if (files != null) {
                 if (files.data != null) {
@@ -189,18 +166,18 @@ namespace Marlin.View {
                      * wins because we remembered the resolution. So only set status with string returned by
                      * update status if it has not already been set by load resolution.*/
                     var s = update_status ();
-                    if (status == "") {
-                        status = s;
+                    if (label == "") {
+                        label = s;
                     }
                 }
             }
 
-            visible = showbar && (status.length > 0);
+            visible = showbar && (label.length > 0);
         }
 
         private string update_status () {
             string str = "";
-            status = "";
+            label = "";
             if (goffile != null) { /* a single file is hovered or selected */
                 if (goffile.is_network_uri_scheme () || goffile.is_root_network_folder ()) {
                     str = goffile.get_display_target_uri ();
@@ -252,7 +229,7 @@ namespace Marlin.View {
         private void schedule_deep_count () {
             cancel ();
             /* Show the spinner immediately to indicate that something will happen if hover long enough */
-            show_spinner ();
+            active = true;
 
             deep_count_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, 1000, () => {
                 deep_counter = new Marlin.DeepCount (goffile.location);
@@ -267,7 +244,7 @@ namespace Marlin.View {
                         deep_counter = null;
                         cancellable = null;
                     }
-                    hide_spinner ();
+                    active = false;
                 });
                 deep_count_timeout_id = 0;
                 return false;
@@ -277,38 +254,38 @@ namespace Marlin.View {
         private void update_status_after_deep_count () {
             string str;
             cancellable = null;
-            hide_spinner ();
+            active = false;
 
-            status = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
+            label = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
 
             if (deep_counter != null) {
                 if (deep_counter.dirs_count > 0) {
                     /// TRANSLATORS: %u will be substituted by the number of sub folders
                     str = ngettext (_("%u sub-folder, "), _("%u sub-folders, "), deep_counter.dirs_count);
-                    status += str.printf (deep_counter.dirs_count);
+                    label += str.printf (deep_counter.dirs_count);
                 }
 
                 if (deep_counter.files_count > 0 || deep_counter.file_not_read == 0) {
                     /// TRANSLATORS: %u will be substituted by the number of readable files
                     str = ngettext (_("%u file, "), _("%u files, "), deep_counter.files_count);
-                    status += str.printf (deep_counter.files_count);
+                    label += str.printf (deep_counter.files_count);
                 }
 
                 if (deep_counter.file_not_read == 0) {
-                    status += format_size (deep_counter.total_size);
-                    status += ")";
+                    label += format_size (deep_counter.total_size);
+                    label += ")";
                 } else {
                     if (deep_counter.total_size > 0) {
                         /// TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-                        status += _("%s approx.").printf (format_size (deep_counter.total_size));
+                        label += _("%s approx.").printf (format_size (deep_counter.total_size));
                     } else {
                         /// TRANSLATORS: 'size' refers to disk space
-                        status += _("unknown size");
+                        label += _("unknown size");
                     }
-                    status += ") ";
+                    label += ") ";
                     /// TRANSLATORS: %u will be substituted by the number of unreadable files
                     str = ngettext (_("%u file not readable"), _("%u files not readable"), deep_counter.file_not_read);
-                    status += str.printf (deep_counter.file_not_read);
+                    label += str.printf (deep_counter.file_not_read);
                 }
             }
         }
@@ -375,7 +352,7 @@ namespace Marlin.View {
             image_size_loaded = true;
             goffile.width = width;
             goffile.height = height;
-            status = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
+            label = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
         }
 
         private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable)
@@ -407,16 +384,6 @@ namespace Marlin.View {
                     warning (e.message);
                 }
             }
-        }
-
-        private void show_spinner () {
-            spinner.show ();
-            spinner.start ();
-        }
-
-        private void hide_spinner () {
-            spinner.stop ();
-            spinner.hide ();
         }
     }
 }
