@@ -251,8 +251,8 @@ namespace Marlin.Places {
 
         private void configure_tree_view () {
             var style_context = tree_view.get_style_context ();
-            style_context.add_class ("sidebar");
-            style_context.add_class ("source-list");
+            style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
+            style_context.add_class (Granite.STYLE_CLASS_SOURCE_LIST);
 
             tree_view.set_search_column (Column.NAME);
             var selection = tree_view.get_selection ();
