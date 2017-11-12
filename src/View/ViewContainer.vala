@@ -103,9 +103,8 @@ namespace Marlin.View {
 
         public signal void tab_name_changed (string tab_name);
         public signal void loading (bool is_loading);
-        /* To maintain compatibility with existing plugins */
-        public signal void path_changed (File file);
         public signal void active ();
+        /* path-changed signal no longer used */
 
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win) {
@@ -126,7 +125,6 @@ namespace Marlin.View {
         }
 
         private void connect_signals () {
-            path_changed.connect (on_path_changed);
             enter_notify_event.connect (on_enter_notify_event);
             loading.connect ((loading) => {
                 is_loading = loading;
@@ -140,7 +138,6 @@ namespace Marlin.View {
         }
 
         private void disconnect_signals () {
-            path_changed.disconnect (on_path_changed);
             disconnect_window_signals ();
         }
 
@@ -148,10 +145,6 @@ namespace Marlin.View {
             if (window != null) {
                 window.folder_deleted.disconnect (on_folder_deleted);
             }
-        }
-
-        private void on_path_changed (GLib.File file) {
-            focus_location (file);
         }
 
         private void on_folder_deleted (GLib.File deleted) {
