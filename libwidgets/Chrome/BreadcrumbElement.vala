@@ -78,10 +78,10 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         text_for_display = Uri.unescape_string (text);
     }
 
-    public void set_icon (Gdk.Pixbuf icon_) {
+    public void set_icon (Gdk.Pixbuf icon_, int icon_scale) {
         icon = icon_;
-        icon_width = icon.get_width ();
-        icon_half_height = icon.get_height () / 2;
+        icon_width = icon.get_width () / icon_scale;
+        icon_half_height = icon.get_height () / (2 * icon_scale);
     }
     public void set_icon_name (string icon_name_) {
         icon_name = icon_name_;
@@ -204,9 +204,13 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                 }
             } else {
                 if (room_for_icon) {
+                    cr.save ();
+                    double draw_scale = 1.0 / scale; 
+                    cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
-                                                px_round(x - ICON_MARGIN - icon_width, scale),
-                                                px_round(y_half_height - icon_half_height, scale));
+                                                Math.round ((x - ICON_MARGIN - icon_width) * scale),
+                                                Math.round ((y_half_height - icon_half_height) * scale));
+                    cr.restore ();
                 }
                 if (text_is_displayed && room_for_text) {
                     /* text_width already includes icon_width */
@@ -224,9 +228,13 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                 }
             } else {
                 if (room_for_icon) {
+                    cr.save ();
+                    double draw_scale = 1.0 / scale; 
+                    cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
-                                                px_round(x + ICON_MARGIN, scale),
-                                                px_round(y_half_height - icon_half_height, scale));
+                                                Math.round ((x + ICON_MARGIN) * scale),
+                                                Math.round ((y_half_height - icon_half_height) * scale));
+                    cr.restore ();
                 }
                 if (text_is_displayed && room_for_text) {
                     button_context.render_layout (cr, x + iw,
@@ -291,10 +299,6 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         layout.get_size (out width, out height);
         this.text_width = Pango.units_to_double (width);
         this.text_half_height = Pango.units_to_double (height) / 2;
-    }
-
-    private double px_round (double val, int scale) {
-        return Math.round(val * scale) / scale;
     }
 
     /** To help testing **/
