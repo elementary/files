@@ -308,7 +308,7 @@ namespace Marlin.View {
             view.user_path_change_request (loc, allow_mode_change, make_root);
         }
 
-        private void on_slot_new_container_request (GLib.File loc, int flag = 1) {
+        private void on_slot_new_container_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT) {
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
                     this.window.add_tab (loc, view_mode);
