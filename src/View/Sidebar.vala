@@ -125,6 +125,7 @@ namespace Marlin.Places {
 
         public signal bool request_focus ();
         public signal void sync_needed ();
+        public signal void path_change_request (string uri, Marlin.OpenFlag flag);
 
         public new void grab_focus () {
             tree_view.grab_focus ();
@@ -1288,7 +1289,7 @@ namespace Marlin.Places {
 
         private void open_selected_bookmark (Gtk.TreeModel model,
                                              Gtk.TreePath path,
-                                             Marlin.OpenFlag flags) {
+                                             Marlin.OpenFlag open_flag) {
             if (path == null)
                 return;
 
@@ -1301,15 +1302,7 @@ namespace Marlin.Places {
             store.@get (iter, Column.URI, out uri, Column.PLUGIN_CALLBACK, out f);
 
             if (uri != null) {
-                var location = PF.FileUtils.get_file_for_path (uri);
-                /* Navigate to the clicked location */
-                if (flags == Marlin.OpenFlag.NEW_WINDOW) {
-                    window.add_window (location, Marlin.ViewMode.CURRENT);
-                } else if (flags == Marlin.OpenFlag.NEW_TAB) {
-                    window.add_tab (location, Marlin.ViewMode.CURRENT);
-                } else {
-                    window.uri_path_change_request (uri);
-                }
+                path_change_request (uri, open_flag);
             } else if (f != null) {
                 f (this);
             } else if (!ejecting_or_unmounting) {
@@ -1322,7 +1315,7 @@ namespace Marlin.Places {
                             Column.VOLUME, out volume);
 
                 if (volume != null && !mounting)
-                    mount_volume (volume, mount_op, flags);
+                    mount_volume (volume, mount_op, open_flag);
 
                 else if (drive != null && volume == null
                         && (drive.can_start () || drive.can_start_degraded ()))
