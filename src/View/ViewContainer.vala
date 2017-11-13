@@ -289,10 +289,12 @@ namespace Marlin.View {
         private void connect_slot_signals (GOF.AbstractSlot aslot) {
             aslot.active.connect (on_slot_active);
             aslot.path_changed.connect (on_slot_path_changed);
+            aslot.new_container_request.connect (on_slot_new_container_request);
         }
         private void disconnect_slot_signals (GOF.AbstractSlot aslot) {
             aslot.active.disconnect (on_slot_active);
             aslot.path_changed.disconnect (on_slot_path_changed);
+            aslot.new_container_request.disconnect (on_slot_new_container_request);
         }
 
         private void on_slot_active (GOF.AbstractSlot aslot, bool scroll, bool animate) {
@@ -306,7 +308,7 @@ namespace Marlin.View {
             view.user_path_change_request (loc, allow_mode_change, make_root);
         }
 
-        public void new_container_request (GLib.File loc, int flag = 1) {
+        private void on_slot_new_container_request (GLib.File loc, int flag = 1) {
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
                     this.window.add_tab (loc, view_mode);

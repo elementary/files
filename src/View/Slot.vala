@@ -236,7 +236,7 @@ namespace Marlin.View {
                     user_path_change_request (loc, false, make_root); /* Handle ourselves */
                 }
             } else {
-                ctab.new_container_request (loc, flag);
+                new_container_request (loc, flag);
             }
         }
 
