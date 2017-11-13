@@ -292,7 +292,7 @@ namespace FM {
 
         protected unowned Gtk.RecentManager recent;
 
-        public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
+        public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
         public signal void item_hovered (GOF.File? file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
