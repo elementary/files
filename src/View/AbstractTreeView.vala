@@ -57,7 +57,7 @@ namespace FM {
             tree.append_column (name_column);
         }
 
-        protected void set_up_icon_renderer () {
+        protected virtual void set_up_icon_renderer () {
             icon_renderer.set_property ("follow-state",  true);
             icon_renderer.xpad = ICON_XPAD;
         }
