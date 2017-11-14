@@ -319,6 +319,8 @@ namespace Marlin.View {
             sidebar.sync_needed.connect (() => {
                 loading_uri (current_tab.uri);
             });
+
+            sidebar.path_change_request.connect (uri_path_change_request);
         }
 
         private void make_bindings () {
@@ -376,7 +378,7 @@ namespace Marlin.View {
             current_tab.go_back (n);
         }
 
-        public void new_container_request (GLib.File loc, Marlin.OpenFlag flag) {
+        private void open_new_container (GLib.File loc, Marlin.OpenFlag flag) {
             switch (flag) {
                 case Marlin.OpenFlag.NEW_TAB:
                     add_tab (loc, current_tab.view_mode);
@@ -1050,7 +1052,7 @@ namespace Marlin.View {
                  */
                 current_tab.focus_location (loc);
             } else {
-                new_container_request (loc, flag);
+                open_new_container (loc, flag);
             }
         }
 
