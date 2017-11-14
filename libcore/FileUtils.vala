@@ -552,6 +552,10 @@ namespace PF.FileUtils {
                 return false;
         }
     }
+
+    public bool is_icon_path (string path) {
+        return "/icons" in path || "/.icons" in path;
+    }
 }
 
 namespace Marlin {
