@@ -824,7 +824,13 @@ namespace FM {
                     if (file.is_root_network_folder ()) {
                         load_location (location);
                     } else if (file.is_executable ()) {
-                        file.execute (screen, null, null);
+                        var content_type = file.get_ftype ();
+
+                        if (GLib.ContentType.is_a (content_type, "text/plain")) {
+                            open_file (file, screen, default_app);
+                        } else {
+                            file.execute (screen, null, null);
+                        }
                     } else {
                         open_file (file, screen, default_app);
                     }
