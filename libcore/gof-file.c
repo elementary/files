@@ -1366,13 +1366,13 @@ gof_file_is_executable (GOFFile *file)
     {
         /* get the content type of the file */
         content_type = gof_file_get_ftype (file);
+        printf("Content type: %s\n", content_type);
         if (G_LIKELY (content_type != NULL))
         {
             /* check if the content type is save to execute, we don't use
              * g_content_type_can_be_executable() for unix because it also returns
              * true for "text/plain" and we don't want that */
-            if (g_content_type_is_a (content_type, "application/x-executable")
-                || g_content_type_is_a (content_type, "application/x-shellscript"))
+            if (g_content_type_is_a (content_type, "application/x-executable"))
                 can_execute = TRUE;
         }
     }
