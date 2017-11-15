@@ -826,10 +826,11 @@ namespace FM {
                     } else if (file.is_executable ()) {
                         var content_type = file.get_ftype ();
 
-                        if (g_content_type_is_a (content_type, "text/plain"))
+                        if (GLib.ContentType.is_a (content_type, "text/plain")) {
                             open_file (file, screen, default_app);
-                        else
+                        } else {
                             file.execute (screen, null, null);
+                        }
                     } else {
                         open_file (file, screen, default_app);
                     }

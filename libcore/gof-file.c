@@ -1372,8 +1372,9 @@ gof_file_is_executable (GOFFile *file)
             /* check if the content type is save to execute, we don't use
              * g_content_type_can_be_executable() for unix because it also returns
              * true for "text/plain" and we don't want that */
-            if (g_content_type_is_a (content_type, "application/x-executable"))
+            if (g_content_type_is_a (content_type, "application/x-executable")) {
                 can_execute = TRUE;
+            }
         }
     }
 
