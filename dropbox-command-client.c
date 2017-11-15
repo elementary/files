@@ -826,7 +826,7 @@ void
 dropbox_command_client_start(DropboxCommandClient *dcc) {
     /* setup the connect to the command server */
     debug("starting command thread");
-    g_thread_new("pantheon-files-dropbox-plugin", (gpointer (*)(gpointer data)) dropbox_command_client_thread,
+    g_thread_new("pantheon-files-plugin-dropbox", (gpointer (*)(gpointer data)) dropbox_command_client_thread,
                     dcc);
 }
 
