@@ -303,7 +303,11 @@ namespace FM {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
             blank_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "crosshair");
-            clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
+
+            var app = (Marlin.Application.get ());
+            clipboard = app.get_clipboard_manager ();
+            recent = app.get_recent_manager ();
+
             icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
@@ -315,8 +319,6 @@ namespace FM {
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
-
-            recent = ((Marlin.Application)(window.application)).get_recent_manager ();
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "activate on blank" is enabled, matching existing UI
@@ -806,11 +808,9 @@ namespace FM {
 
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
-                        window.add_tab (location, Marlin.ViewMode.CURRENT);
-                        break;
-
                     case Marlin.OpenFlag.NEW_WINDOW:
-                        window.add_window(location, Marlin.ViewMode.CURRENT);
+
+                        path_change_request (location, flag, true);
                         break;
 
                     default:
