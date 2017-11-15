@@ -1366,7 +1366,7 @@ gof_file_is_executable (GOFFile *file)
     {
         /* get the content type of the file */
         content_type = gof_file_get_ftype (file);
-        printf("Content type: %s\n", content_type);
+
         if (G_LIKELY (content_type != NULL))
         {
             /* check if the content type is save to execute, we don't use
