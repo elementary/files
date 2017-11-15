@@ -385,12 +385,6 @@ namespace Marlin.Places {
                                                    Mount? mount,
                                                    uint index,
                                                    string? tooltip = null) {
-            Gdk.Pixbuf? pixbuf = null;
-            if (icon != null) {
-                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, Marlin.IconSize.SMALLEST);
-                if (icon_info != null)
-                    pixbuf = icon_info.get_pixbuf_nodefault ();
-            }
 
             bool show_eject, show_unmount;
             check_unmount_and_eject (mount, volume, drive, out show_unmount, out show_eject);
