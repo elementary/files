@@ -292,7 +292,7 @@ namespace FM {
 
         protected unowned Gtk.RecentManager recent;
 
-        public signal void path_change_request (GLib.File location, int flag = 0, bool new_root = true);
+        public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
         public signal void item_hovered (GOF.File? file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
@@ -1855,7 +1855,7 @@ namespace FM {
                 menu.attach_to_widget (this, null);
                 /* Override style MESSAGE_CLASS of view when it is empty */
                 if (slot.directory.is_empty ())
-                    menu.get_style_context ().add_class ("context-menu");
+                    menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
                 Eel.pop_up_context_menu (menu,
                                          Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                          Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,

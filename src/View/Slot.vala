@@ -190,7 +190,7 @@ namespace Marlin.View {
         /* This delay in passing on the path change request is necessary to prevent occasional crashes
          * due to undiagnosed bug.
          */
-        private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
+        private void schedule_path_change_request (GLib.File loc, Marlin.OpenFlag flag, bool make_root) {
             if (path_change_timeout_id > 0) {
                 warning ("Path change request received too rapidly");
                 return;
@@ -202,7 +202,7 @@ namespace Marlin.View {
             });
         }
 
-        private void on_dir_view_path_change_request (GLib.File loc, int flag, bool make_root) {
+        private void on_dir_view_path_change_request (GLib.File loc, Marlin.OpenFlag flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                     miller_slot_request (loc, make_root); /* signal to parent MillerView */
@@ -210,7 +210,7 @@ namespace Marlin.View {
                     user_path_change_request (loc, false, make_root); /* Handle ourselves */
                 }
             } else {
-                ctab.new_container_request (loc, flag);
+                new_container_request (loc, flag);
             }
         }
 
