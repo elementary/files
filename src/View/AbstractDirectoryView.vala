@@ -1054,7 +1054,8 @@ namespace FM {
                 return;
 
             foreach (GOF.File file in selected_files) {
-                window.add_tab (GLib.File.new_for_uri (file.get_display_target_uri ()), Marlin.ViewMode.CURRENT);
+                var loc = GLib.File.new_for_uri (file.get_display_target_uri ());
+                path_change_request (loc, Marlin.OpenFlag.NEW_TAB, true);
             }
         }
 
