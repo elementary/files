@@ -552,6 +552,15 @@ namespace PF.FileUtils {
                 return false;
         }
     }
+
+    public bool location_is_in_trash (GLib.File location) {
+        var uri = location.get_uri ();
+
+        return (uri.has_prefix ("trash") ||
+                uri.contains (GLib.Path.DIR_SEPARATOR_S + ".Trash-") ||
+                (uri.contains (GLib.Path.DIR_SEPARATOR_S + ".local") &&
+                 uri.contains (GLib.Path.DIR_SEPARATOR_S + "Trash" + GLib.Path.DIR_SEPARATOR_S)));
+    }
 }
 
 namespace Marlin {
