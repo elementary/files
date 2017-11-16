@@ -27,11 +27,19 @@ namespace Marlin {
 
         public bool dnd_perform (Gtk.Widget widget,
                                  GOF.File drop_target,
-                                 GLib.List<GLib.File> drop_file_list,
+                                 Gee.LinkedList<GLib.File> drop_file_list,
                                  Gdk.DragAction action) {
 
+            /* Until core file_operations uses Gee.LinkedList we will have to
+             * convert to GLib.List at this point
+             */
+            GLib.List<GLib.File> file_list = null;
+            foreach (var file in drop_file_list) {
+                file_list.prepend (file); // drop_file_list was created reversed so we do not need to reverse after prepend
+            };
+
             if (drop_target.is_folder ()) {
-                Marlin.FileOperations.copy_move_link (drop_file_list,
+                Marlin.FileOperations.copy_move_link (file_list,
                                                       null,
                                                       drop_target.get_target_location (),
                                                       action,
@@ -41,7 +49,10 @@ namespace Marlin {
                 return true;
             } else if (drop_target.is_executable ()) {
                 GLib.Error error;
-                if (!drop_target.execute (widget.get_screen (), drop_file_list, out error)) {
+                if (!drop_target.execute (widget.get_screen (),
+                                          file_list,
+                                          out error)) {
+
                     Eel.show_error_dialog (_("Failed to execute \"%s\"").printf (drop_target.get_display_name ()),
                                            error.message,
                                            null);
@@ -226,7 +237,7 @@ namespace Marlin {
                                               Gtk.ApplicationWindow win,
                                               Gdk.DragContext context,
                                               GOF.File drop_target,
-                                              GLib.List<GLib.File> drop_file_list,
+                                              Gee.LinkedList<GLib.File> drop_file_list,
                                               Gdk.DragAction possible_actions,
                                               Gdk.DragAction suggested_action,
                                               uint32 timestamp) {

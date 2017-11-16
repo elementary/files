@@ -128,7 +128,7 @@ public class Async : Object {
         can_load = false;
 
         scheme = location.get_uri_scheme ();
-        is_trash = (scheme == "trash");
+        is_trash = PF.FileUtils.location_is_in_trash (location); // works for trash subdirectories etc
         is_recent = (scheme == "recent");
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme)); //Try lifting requirement for info on remote connections
         is_local = is_trash || is_recent || (scheme == "file");

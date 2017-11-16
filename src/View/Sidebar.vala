@@ -57,7 +57,7 @@ namespace Marlin.Places {
         string slot_location;
 
         /* DnD */
-        List<GLib.File> drag_list;
+        Gee.LinkedList<GLib.File>? drag_list = null;
         Gtk.TreeRowReference? drag_row_ref;
         bool dnd_disabled = false;
         uint drag_data_info;
@@ -71,10 +71,11 @@ namespace Marlin.Places {
         bool local_only;
 
         /* Identifiers for target types */
+        /* TODO Convert to Marlin.TargetType and DndHandler where possible */
         public enum TargetType {
             GTK_TREE_MODEL_ROW,
             TEXT_URI_LIST
-            }
+        }
 
         /* Gtk.Target types for dragging from shortcut list */
          const Gtk.TargetEntry source_targets [] = {
@@ -969,7 +970,7 @@ namespace Marlin.Places {
                 if (uri != null) {
                     GOF.File file = GOF.File.get_by_uri (uri);
                     if (file.ensure_query_info ()) {
-                        file.accepts_drop (drag_list, context, out action);
+                        PF.FileUtils.file_accepts_drop (file, drag_list, context, out action);
                     } else {
                         warning ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
                     }
@@ -1030,7 +1031,7 @@ namespace Marlin.Places {
                     && info == TargetType.TEXT_URI_LIST) {
 
                     string s = (string)(selection_data.get_data ());
-                    drag_list = EelGFile.list_new_from_string (s);
+                    drag_list = PF.FileUtils.gee_list_new_from_string (s);
                 } else {
                     if (info == TargetType.GTK_TREE_MODEL_ROW) {
                         Gtk.TreePath path;
@@ -1117,14 +1118,12 @@ namespace Marlin.Places {
 
             switch (info) {
                  case TargetType.TEXT_URI_LIST:
-                    Marlin.FileOperations.copy_move_link (drag_list,
-                                                          null,
-                                                          File.new_for_uri (drop_uri),
-                                                          real_action,
-                                                          this, null, null);
+                    dnd_handler.dnd_perform (this, GOF.File.get_by_uri (drop_uri), drag_list, real_action);
                     return true;
+
                 case TargetType.GTK_TREE_MODEL_ROW:
                     return false;
+
                 default:
                     return false;;
             }
@@ -1150,15 +1149,21 @@ namespace Marlin.Places {
             return file.query_exists (null) && window.can_bookmark_uri (file.get_uri ());
         }
 
-        private bool can_accept_files_as_bookmarks (List<GLib.File> items) {
+        private bool can_accept_files_as_bookmarks (Gee.LinkedList<GLib.File> items) {
         /* Iterate through selection checking if item will get accepted as a bookmark.
          * Does not accept more than MAX_BOOKMARKS_DROPPED bookmarks
          */
             int count = 0;
-            items.@foreach ((file) => {
-                if (can_accept_file_as_bookmark (file))
+            foreach (var item in items) {
+                if (can_accept_file_as_bookmark (item)) {
                     count++;
-            });
+                }
+
+                if (count > MAX_BOOKMARKS_DROPPED) {
+                    break;
+                }
+            };
+
             return count > 0 && count <= MAX_BOOKMARKS_DROPPED;
         }
 
@@ -1169,10 +1174,11 @@ namespace Marlin.Places {
             }
 
             GLib.List<string> uris = null;
-            drag_list.@foreach ((file) => {
-                if (can_accept_file_as_bookmark (file))
+            foreach (var file in drag_list) {
+                if (can_accept_file_as_bookmark (file)) {
                     uris.prepend (file.get_uri ());
-            });
+                }
+            };
 
             if (uris != null) {
                 if (target_position > n_builtins_before) {

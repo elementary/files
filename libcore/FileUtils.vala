@@ -103,7 +103,7 @@ namespace PF.FileUtils {
         }
 
         return directories;
-   }
+    }
 
     private GLib.File? get_trashed_file_original_folder (GOF.File file) {
         GLib.FileInfo? info = null;
@@ -551,6 +551,164 @@ namespace PF.FileUtils {
             default :
                 return false;
         }
+    }
+
+    public Gdk.DragAction file_accepts_drop (GOF.File dest,
+                                        Gee.LinkedList<GLib.File> drop_file_list, // read-only
+                                        Gdk.DragContext context,
+                                        out Gdk.DragAction suggested_action_return) {
+
+        var actions = context.get_actions ();
+        var suggested_action = context.get_suggested_action ();
+        var target_location = dest.get_target_location ();
+
+        suggested_action_return = Gdk.DragAction.PRIVATE;
+
+        if (drop_file_list.is_empty)  {
+            return Gdk.DragAction.DEFAULT;
+        }
+
+        if (dest.is_folder ()) {
+            if (!dest.is_writable ()) {
+                return Gdk.DragAction.DEFAULT;
+            }
+
+            /* Modify actions and suggested_action according to source files */
+            actions &= valid_actions_for_file_list (target_location,
+                                                    drop_file_list,
+                                                    ref suggested_action);
+
+        } else if (dest.is_executable ()) {
+            actions |= (Gdk.DragAction.COPY |
+                       Gdk.DragAction.MOVE |
+                       Gdk.DragAction.LINK |
+                       Gdk.DragAction.PRIVATE);
+        } else {
+            return Gdk.DragAction.DEFAULT;
+        }
+
+        if (actions == Gdk.DragAction.ASK) { // No point asking if no other valid actions
+            return Gdk.DragAction.DEFAULT;
+        } else if (location_is_in_trash (target_location)) { // cannot copy or link to trash
+            actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
+        }
+
+        if ((suggested_action & actions) != 0) {
+            suggested_action_return = suggested_action;
+        } else if ((actions & Gdk.DragAction.ASK) != 0) {
+            suggested_action_return = Gdk.DragAction.ASK;
+        } else if ((actions & Gdk.DragAction.COPY) != 0) {
+            suggested_action_return = Gdk.DragAction.COPY;
+        } else if ((actions & Gdk.DragAction.LINK) != 0) {
+            suggested_action_return = Gdk.DragAction.LINK;
+        } else if ((actions & Gdk.DragAction.MOVE) != 0) {
+            suggested_action_return = Gdk.DragAction.MOVE;
+        }
+
+        return actions;
+    }
+
+    private const uint MAX_FILES_CHECKED = 2;
+    private Gdk.DragAction valid_actions_for_file_list (GLib.File target_location,
+                                                        Gee.LinkedList<GLib.File> drop_file_list,
+                                                        ref Gdk.DragAction suggested_action) {
+
+        var valid_actions = Gdk.DragAction.DEFAULT |
+                            Gdk.DragAction.COPY |
+                            Gdk.DragAction.MOVE |
+                            Gdk.DragAction.LINK |
+                            Gdk.DragAction.ASK;
+
+        bool from_trash = false;
+
+        /* Check the first MAX_FILES_CHECKED and let
+         * the operation fail for file the same as target if it is
+         * buried in a large selection.  We can assume that all source files
+         * come from the same folder.
+         */
+        uint count = 0;
+        foreach (var drop_file in drop_file_list) {
+            bool break_after = (++count > MAX_FILES_CHECKED);
+
+            if (location_is_in_trash (drop_file)) {
+                from_trash = true;
+
+                if (location_is_in_trash (target_location)) {
+                    valid_actions = Gdk.DragAction.DEFAULT;
+                }
+
+                break;
+            }
+
+            var parent = drop_file.get_parent ();
+            if (parent != null && parent.equal (target_location)) {
+                valid_actions &= (Gdk.DragAction.ASK | Gdk.DragAction.LINK);
+                break_after = true;
+            }
+
+            var scheme = drop_file.get_uri_scheme ();
+            if (!scheme.has_prefix ("file")) {
+                valid_actions &= ~(Gdk.DragAction.LINK);
+                break;
+            }
+
+            if (break_after) {
+                break;
+            }
+        }
+
+        /* Modified Gtk suggested COPY action to MOVE if source is trash or dest is in
+         * same filesystem and if MOVE is a valid action.
+         */
+        if ((valid_actions & (Gdk.DragAction.COPY | Gdk.DragAction.MOVE)) != 0 &&
+             suggested_action == Gdk.DragAction.COPY &&
+             (from_trash ||
+              same_file_system (drop_file_list.first (), target_location))) {
+
+            suggested_action = Gdk.DragAction.MOVE;
+        }
+
+        return valid_actions;
+    }
+
+    private bool same_file_system (GLib.File a, GLib.File b) {
+        GLib.FileInfo info_a;
+        GLib.FileInfo info_b;
+
+        try {
+            info_a = a.query_info (GLib.FileAttribute.ID_FILESYSTEM, 0, null);
+            info_b = b.query_info (GLib.FileAttribute.ID_FILESYSTEM, 0, null);
+        } catch (GLib.Error e) {
+            return false;
+        }
+
+        var filesystem_a = info_a.get_attribute_string (GLib.FileAttribute.ID_FILESYSTEM);
+        var filesystem_b = info_b.get_attribute_string (GLib.FileAttribute.ID_FILESYSTEM);
+
+        return (filesystem_a != null && filesystem_b != null &&
+                filesystem_a == filesystem_b);
+
+    }
+
+    public Gee.LinkedList<GLib.File> gee_list_new_from_string (string? uri_list) {
+        Gee.LinkedList<GLib.File> list = new Gee.LinkedList<GLib.File> ();
+        if (uri_list != null) {
+            string[] uris = GLib.Uri.list_extract_uris (uri_list);
+            foreach (var uri in uris) {
+                list.insert (0, GLib.File.new_for_uri (uri)); // Is this faster than add for large numbers?
+            };
+        }
+
+        return list;
+    }
+
+    public bool location_is_in_trash (GLib.File location) {
+        var uri = location.get_uri ();
+
+        return (uri.has_prefix ("trash") ||
+                uri.contains (GLib.Path.DIR_SEPARATOR_S + ".Trash-") ||
+                (uri.contains (GLib.Path.DIR_SEPARATOR_S + ".local") &&
+                 uri.contains (GLib.Path.DIR_SEPARATOR_S + "Trash" + GLib.Path.DIR_SEPARATOR_S)));
     }
 }
 
