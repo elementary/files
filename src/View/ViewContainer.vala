@@ -282,10 +282,14 @@ namespace Marlin.View {
         private void connect_slot_signals (GOF.AbstractSlot aslot) {
             aslot.active.connect (on_slot_active);
             aslot.path_changed.connect (on_slot_path_changed);
+            aslot.new_container_request.connect (on_slot_new_container_request);
+            aslot.item_hovered.connect (on_slot_item_hovered);
         }
         private void disconnect_slot_signals (GOF.AbstractSlot aslot) {
             aslot.active.disconnect (on_slot_active);
             aslot.path_changed.disconnect (on_slot_path_changed);
+            aslot.new_container_request.disconnect (on_slot_new_container_request);
+            aslot.item_hovered.disconnect (on_slot_item_hovered);
         }
 
         private void on_slot_active (GOF.AbstractSlot aslot, bool scroll, bool animate) {
@@ -299,7 +303,7 @@ namespace Marlin.View {
             view.user_path_change_request (loc, allow_mode_change, make_root);
         }
 
-        public void new_container_request (GLib.File loc, int flag = 1) {
+        private void on_slot_new_container_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT) {
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
                     this.window.add_tab (loc, view_mode);
@@ -571,7 +575,7 @@ namespace Marlin.View {
                 content.grab_focus ();
         }
 
-        public void on_item_hovered (GOF.File? file) {
+        private void on_slot_item_hovered (GOF.File? file) {
             overlay_statusbar.update_hovered (file);
         }
 
