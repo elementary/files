@@ -102,8 +102,11 @@ namespace Marlin {
                 flags |= Gtk.CellRendererState.PRELIT;
                 special_icon_name = "folder-drag-accept";
 
-            } else if (file.is_directory && file.is_expanded) {
-                special_icon_name = "folder-open";
+            } else if (file.is_directory) {
+                bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0;
+                if (expanded) {
+                    special_icon_name = "folder-open";
+                }
             }
 
             if (special_icon_name != null) {
