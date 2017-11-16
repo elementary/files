@@ -290,11 +290,13 @@ namespace Marlin.View {
             aslot.active.connect (on_slot_active);
             aslot.path_changed.connect (on_slot_path_changed);
             aslot.new_container_request.connect (on_slot_new_container_request);
+            aslot.item_hovered.connect (on_slot_item_hovered);
         }
         private void disconnect_slot_signals (GOF.AbstractSlot aslot) {
             aslot.active.disconnect (on_slot_active);
             aslot.path_changed.disconnect (on_slot_path_changed);
             aslot.new_container_request.disconnect (on_slot_new_container_request);
+            aslot.item_hovered.disconnect (on_slot_item_hovered);
         }
 
         private void on_slot_active (GOF.AbstractSlot aslot, bool scroll, bool animate) {
@@ -580,7 +582,7 @@ namespace Marlin.View {
                 content.grab_focus ();
         }
 
-        public void on_item_hovered (GOF.File? file) {
+        private void on_slot_item_hovered (GOF.File? file) {
             overlay_statusbar.update_hovered (file);
         }
 
