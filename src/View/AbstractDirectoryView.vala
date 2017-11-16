@@ -1610,11 +1610,10 @@ namespace FM {
                                             uint timestamp
                                             ) {
             bool success = false;
-            string? text;
 
             if (!drop_data_ready) {
                 /* We don't have the drop data - extract uri list from selection data */
-
+                string? text;
                 if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
                     drop_file_list = EelGFile.list_new_from_string (text);
                     drop_data_ready = true;
@@ -1643,15 +1642,6 @@ namespace FM {
                                     unselect_all ();
 
                                 select_added_files = true;
-
-                                /* For an unidentified reason, unless we refresh drop_file_list immediately before
-                                 * using it, it can point to previously dragged files - even if it was correct
-                                 * when last assigned.
-                                 */
-                                if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                                    drop_file_list = EelGFile.list_new_from_string (text);
-                                    drop_data_ready = true;
-                                }
 
                                 success = dnd_handler.handle_file_drag_actions  (get_real_view (),
                                                                                  window,
@@ -1688,6 +1678,9 @@ namespace FM {
 
             /* disable the highlighting of the items in the view */
             highlight_path (null);
+
+            /* Prepare to receive another drop */
+            drop_data_ready = false;
         }
 
 /** DnD helpers */
