@@ -296,7 +296,6 @@ namespace GOF {
         public bool link_known_target;
         public bool is_smb_share ();
         public bool is_smb_server ();
-        public bool thumb_can_frame ();
         public uint flags;
 
         public unowned string get_display_name ();
