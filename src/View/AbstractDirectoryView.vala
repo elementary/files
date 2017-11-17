@@ -372,7 +372,6 @@ namespace FM {
 
             size_allocate.connect_after (on_size_allocate);
 
-            button_press_event.connect (on_button_press_event);
             popup_menu.connect (on_popup_menu);
 
             unrealize.connect (() => {
@@ -1427,24 +1426,6 @@ namespace FM {
                 show_context_menu (event);
 
             return true;
-        }
-
-        private bool on_button_press_event (Gdk.EventButton event) {
-            /* Extra mouse button action: button8 = "Back" button9 = "Forward" */
-            GLib.Action? action = null;
-            GLib.SimpleActionGroup main_actions = window.get_action_group ();
-            if (event.type == Gdk.EventType.BUTTON_PRESS) {
-                if (event.button == 8)
-                    action = main_actions.lookup_action ("Back");
-                else if (event.button == 9)
-                    action = main_actions.lookup_action ("Forward");
-
-                if (action != null) {
-                    action.activate (null);
-                    return true;
-                }
-            }
-            return false;
         }
 
 /** Handle Motion events */
@@ -3232,12 +3213,12 @@ namespace FM {
                 }
             }
 
-            bool result = true;
+            bool result = false; // default false so events get passed to Window
             should_activate = false;
             should_scroll = true;
 
             switch (event.button) {
-                case Gdk.BUTTON_PRIMARY:
+                case Gdk.BUTTON_PRIMARY: // button 1
                     /* Control-click should deselect previously selected path on key release (unless
                      * pointer moves)
                      */
@@ -3308,13 +3289,13 @@ namespace FM {
                     }
                     break;
 
-                case Gdk.BUTTON_MIDDLE:
+                case Gdk.BUTTON_MIDDLE:  // button 2
                     if (path_is_selected (path))
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
 
                     break;
 
-                case Gdk.BUTTON_SECONDARY:
+                case Gdk.BUTTON_SECONDARY: // button 3
                     if (click_zone == ClickZone.NAME ||
                         click_zone == ClickZone.BLANK_PATH ||
                         click_zone == ClickZone.ICON) {
@@ -3334,6 +3315,7 @@ namespace FM {
                     result = handle_default_button_click (event);
                     break;
             }
+
             previous_linear_selection_path = path != null ? path.copy () : null;
             return result;
         }

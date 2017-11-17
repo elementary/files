@@ -216,7 +216,7 @@ namespace Marlin.View {
             });
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
-            button_press_event.connect (on_button_press_event);
+            button_press_event.connect_after (on_button_press_event);
 
             /* Toggle focus between sidebar and view using Tab key, unless location
              * bar in focus. */
@@ -374,6 +374,7 @@ namespace Marlin.View {
                 default:
                     break;
             }
+
             return result;
         }
 
