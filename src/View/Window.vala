@@ -220,7 +220,7 @@ namespace Marlin.View {
 
             /* Toggle focus between sidebar and view using Tab key, unless location
              * bar in focus. */
-            key_press_event.connect ((event) => {
+            key_press_event.connect_after ((event) => {
                 switch (event.keyval) {
                     case Gdk.Key.Tab:
                     case Gdk.Key.KP_Tab:
@@ -237,8 +237,20 @@ namespace Marlin.View {
                     return true;
 
                     default:
-                        return false;
+                        /* Use find function instead of view interactive search */
+                        if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
+                            /* Use printable characters to initiate search */
+                            if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
+                                win_actions.activate_action ("find", null);
+                                key_press_event (event);
+                                return true;
+                            }
+                        }
+
+                        break;
                 }
+
+                return false;
             });
 
 
