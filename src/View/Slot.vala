@@ -134,7 +134,7 @@ namespace Marlin.View {
         }
 
         private void on_dir_view_item_hovered (GOF.File? file) {
-            ctab.on_item_hovered (file);
+            item_hovered (file);
         }
 
         private void on_dir_view_selection_changed (GLib.List<GOF.File> files) {
