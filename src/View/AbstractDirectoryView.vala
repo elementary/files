@@ -3197,7 +3197,7 @@ namespace FM {
                     linear_select_required = true;
                 } else {
                     previous_selection_was_linear = false;
-                    return window.button_press_event (event);
+                    return false;
                 }
             } else {
                 previous_selection_was_linear = false;
@@ -3503,7 +3503,7 @@ namespace FM {
 
         protected virtual bool handle_default_button_click (Gdk.EventButton event) {
             /* pass unhandled events to the Marlin.View.Window */
-            return window.button_press_event (event);
+            return false;
         }
 
         protected virtual bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
