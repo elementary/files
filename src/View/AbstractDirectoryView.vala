@@ -230,7 +230,7 @@ namespace FM {
 
         public bool renaming {get; protected set; default = false;}
 
-        private bool _is_frozen = true;
+        private bool _is_frozen = false;
         public bool is_frozen {
             set {
                 if (value && !_is_frozen) {
