@@ -1,7 +1,7 @@
 Source: pantheon-files-plugin-dropbox
 Section: gnome
 Priority: optional
-Maintainer: Mario Guerriero <mefrio.g@gmail.com>
+Maintainer: Cody Garver <cody@elementary.io>
 Vcs-Git: https://github.com/elementary/files/tree/dropbox-plugin
 Build-Depends: cmake,
                debhelper (>= 9),
