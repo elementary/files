@@ -555,8 +555,9 @@ namespace PF.FileUtils {
 
     public bool location_is_in_trash (GLib.File location) {
         var uri = location.get_uri ();
+        var scheme = Uri.parse_scheme (uri);
 
-        return (uri.has_prefix ("trash") ||
+        return (scheme != null && scheme.has_prefix ("trash") ||
                 uri.contains (GLib.Path.DIR_SEPARATOR_S + ".Trash-") ||
                 (uri.contains (GLib.Path.DIR_SEPARATOR_S + ".local") &&
                  uri.contains (GLib.Path.DIR_SEPARATOR_S + "Trash" + GLib.Path.DIR_SEPARATOR_S)));
