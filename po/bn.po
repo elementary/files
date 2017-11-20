@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2016-01-09 14:46+0000\n"
-"Last-Translator: hukomukhohangla <suv375@gmail.com>\n"
-"Language-Team: Bengali <bn@li.org>\n"
+"PO-Revision-Date: 2017-11-17 05:55+0000\n"
+"Last-Translator: Subhadeep Jasu <subhajasu@gmail.com>\n"
+"Language-Team: Bengali "
+"<https://weblate.elementary.io/projects/files/files/bn/>\n"
 "Language: bn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.16\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:24+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -33,15 +34,15 @@ msgstr "FTP (লগ-ইন সহ)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "উইন্ডো শেয়ার"
+msgstr "উইন্ডোজ শেয়ার"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
+msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
@@ -49,7 +50,7 @@ msgstr "নিরাপদ WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "সংযোগ হচ্ছে ..."
+msgstr "সংযোগ স্থাপন করছে..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -62,12 +63,12 @@ msgstr ""
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "\"%s\" ফোল্ডারটি \"%s\"_তে খোলা সম্ভব নয়।"
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "\"%s\"_তে সার্ভার খোঁজা যাবে না।"
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
@@ -75,7 +76,7 @@ msgstr "আবার চেষ্টা করুন"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "আপনি আপনার ব্যবহারকারী-বৃত্যান্ত যাচাই করুন।"
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
@@ -104,11 +105,11 @@ msgstr "পোর্ট (_P):"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr "ধরন: (_T)"
+msgstr "ধরন (_T):"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
-msgstr "শেয়ার: (_a)"
+msgstr "শেয়ার (_a):"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
@@ -116,7 +117,7 @@ msgstr "ফোল্ডার (_F):"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr ""
+msgstr "ব্যবহারকারীর বৃত্যান্ত"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
