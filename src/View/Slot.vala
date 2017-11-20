@@ -283,7 +283,7 @@ namespace Marlin.View {
             var old_dir = directory;
             set_up_directory (loc);
 
-            path_changed (allow_mode_change && directory.uri_contain_keypath_icons);
+            path_changed (allow_mode_change && directory.uri_contains_keypath_icons);
             /* ViewContainer listens to this signal takes care of updating appearance
              * If allow_mode_change is false View Container will not automagically
              * switch to icon view for icon folders (needed for Miller View) */

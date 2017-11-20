@@ -315,11 +315,12 @@ namespace Marlin.View {
                                     Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT,
                                     bool allow_mode_change = true) {
 
+            /* Default to not change view mode automatically */
             bool change_to_icon_mode = false;
 
             if (allow_mode_change &&
                 view_mode != Marlin.ViewMode.ICON &&
-                PF.FileUtils.is_icon_path (loc.get_uri ())) {
+                PF.FileUtils.is_icon_path (loc.get_uri ())) { // In this case, automagical change to IconMode
 
                     change_to_icon_mode = true;
             }
@@ -341,6 +342,7 @@ namespace Marlin.View {
                                                        allow_mode_change,
                                                        flag == Marlin.OpenFlag.NEW_ROOT);
                     }
+
                     break;
             }
         }

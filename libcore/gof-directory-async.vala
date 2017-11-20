@@ -40,7 +40,7 @@ public class Async : Object {
     public int icon_size = 32;
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
-    public bool uri_contain_keypath_icons = false;
+    public bool uri_contains_keypath_icons = false;
 
     /* for auto-sizing Miller columns */
     public string longest_file_name = "";
@@ -444,7 +444,7 @@ public class Async : Object {
         set_confirm_trash ();
 
         if (can_load) {
-            uri_contain_keypath_icons = PF.FileUtils.is_icon_path (file.uri);
+            uri_contains_keypath_icons = PF.FileUtils.is_icon_path (file.uri);
             if (file_loaded_func == null && is_local) {
                 try {
                     monitor = location.monitor_directory (0);
