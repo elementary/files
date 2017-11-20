@@ -17,16 +17,6 @@
 * Boston, MA 02110-1335 USA.
 */
 
-public class HeaderLabel : Gtk.Label {
-    public HeaderLabel (string label) {
-        Object (halign: Gtk.Align.START, label: label);
-    }
-
-    construct {
-        get_style_context ().add_class ("h4");
-    }
-}
-
 public class KeyLabel : Gtk.Label {
     public KeyLabel (string label) {
         Object (halign: Gtk.Align.END, label: label, margin_start: 12);
