@@ -43,7 +43,7 @@ public class FileManager1 : Object {
         StringBuilder sb = new StringBuilder ("io.elementary.files -t");
         foreach (string s in uris) {
                 sb.append (" ");
-                sb.append (prepare_uri_for_appinfo_create (s));
+                sb.append (FileManager1.prepare_uri_for_appinfo_create (s));
         }
 
         try {
@@ -59,7 +59,7 @@ public class FileManager1 : Object {
         }
     }
 
-    private string prepare_uri_for_appinfo_create (string uri, bool allow_utf8 = true) {
+    private static string prepare_uri_for_appinfo_create (string uri, bool allow_utf8 = true) {
         string rc = reserved_chars.replace("#", "").replace ("*","");
         string? escaped_uri = Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
         return (escaped_uri ?? "").replace ("%", "%%");
