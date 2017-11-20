@@ -60,6 +60,7 @@ namespace GOF {
         public signal void inactive ();
         public signal void path_changed (bool change_mode_to_icons = true);
         public signal void new_container_request (GLib.File loc, Marlin.OpenFlag flag);
+        public signal void item_hovered (GOF.File? file);
 
         public  void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);

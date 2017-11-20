@@ -297,7 +297,6 @@ namespace GOF {
         public bool link_known_target;
         public bool is_smb_share ();
         public bool is_smb_server ();
-        public bool thumb_can_frame ();
         public uint flags;
 
         public Gdk.DragAction accepts_drop (GLib.List<GLib.File> file_list, Gdk.DragContext context, out Gdk.DragAction suggested_action_return);

@@ -255,7 +255,6 @@ gboolean        gof_file_is_recent_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_smb_share (GOFFile *file);
 gboolean        gof_file_is_smb_server (GOFFile *file);
 gboolean        gof_file_is_mountable (GOFFile *file);
-gboolean        gof_file_thumb_can_frame (GOFFile *file);
 
 char            *gof_file_get_display_target_uri (GOFFile *file);
 G_END_DECLS

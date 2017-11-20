@@ -1346,14 +1346,15 @@ gof_file_is_executable (GOFFile *file)
     {
         /* get the content type of the file */
         content_type = gof_file_get_ftype (file);
+
         if (G_LIKELY (content_type != NULL))
         {
             /* check if the content type is save to execute, we don't use
              * g_content_type_can_be_executable() for unix because it also returns
              * true for "text/plain" and we don't want that */
-            if (g_content_type_is_a (content_type, "application/x-executable")
-                || g_content_type_is_a (content_type, "application/x-shellscript"))
+            if (g_content_type_is_a (content_type, "application/x-executable")) {
                 can_execute = TRUE;
+            }
         }
     }
 
@@ -2287,21 +2288,4 @@ gof_file_can_unmount (GOFFile *file)
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
 
     return file->can_unmount || (file->mount != NULL && g_mount_can_unmount (file->mount));
-}
-
-gboolean
-gof_file_thumb_can_frame (GOFFile *file)
-{
-    GOFDirectoryAsync *dir = NULL;
-
-    /* get the DirectoryAsync associated to the file */
-    if (file->directory != NULL) {
-        dir = gof_directory_async_cache_lookup (file->directory);
-    }
-    if (dir != NULL) {
-        gboolean can_frame = !dir->uri_contain_keypath_icons;
-        return can_frame;
-    }
-
-    return FALSE;
 }
