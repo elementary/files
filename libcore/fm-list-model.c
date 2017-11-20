@@ -533,15 +533,20 @@ fm_list_model_file_entry_compare_func (gconstpointer a,
     file_entry1 = (FileEntry *)a;
     file_entry2 = (FileEntry *)b;
 
-    if (file_entry1->file != NULL && file_entry2->file != NULL) {
+    if (file_entry1->file != NULL && file_entry2->file != NULL &&
+        file_entry1->file->location != NULL && file_entry2->file->location != NULL) {
+
         result = gof_file_compare_for_sort (file_entry1->file, file_entry2->file,
                                             model->details->sort_id,
                                             TRUE,
                                             (model->details->order == GTK_SORT_DESCENDING));
-    } else if (file_entry1->file == NULL) {
-        return -1;
     } else {
-        return 1;
+        /* Dummy rows representing expanded empty directories have null files */
+        if (file_entry1->file == NULL || file_entry1->file->location == NULL) {
+            return -1;
+        } else {
+            return 1;
+        }
     }
 
     return result;
@@ -697,7 +702,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     gboolean replaced_dummy;
     GHashTable *parent_hash;
 
-    g_return_val_if_fail (file != NULL, FALSE);
+    g_return_val_if_fail (file != NULL && file->location != NULL, FALSE);
     parent_ptr = g_hash_table_lookup (model->details->directory_reverse_map,
                                       directory);
     if (parent_ptr) {
