@@ -116,7 +116,7 @@ gof_file_icon_changed (GOFFile *file)
         dir = gof_directory_async_cache_lookup (file->directory);
         if (dir != NULL) {
             if (!file->is_hidden || gof_preferences_get_show_hidden_files (gof_preferences_get_default ())) {
-                g_signal_emit_by_name (dir, "icon_changed", file);
+                g_signal_emit_by_name (dir, "icon-changed", file);
             }
 
             g_object_unref (dir);
