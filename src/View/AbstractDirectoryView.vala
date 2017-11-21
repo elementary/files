@@ -2423,7 +2423,7 @@ namespace FM {
                 Gtk.TreePath sp, ep;
                 Gtk.TreeIter iter;
                 bool valid_iter;
-                GOF.File file;
+                GOF.File? file;
                 GLib.List<GOF.File> visible_files = null;
                 uint actually_visible = 0;
 
@@ -2448,21 +2448,23 @@ namespace FM {
                     /* iterate over the range to collect all files */
                     valid_iter = model.get_iter (out iter, start_path);
                     while (valid_iter && thumbnail_source_id > 0) {
-                        file = model.file_for_iter (iter);
+                        file = model.file_for_iter (iter); // Maybe null if dummy row
                         path = model.get_path (iter);
 
-                        /* Ask thumbnailer only if ThumbState UNKNOWN */
-                        if (file != null && file.flags == GOF.File.ThumbState.UNKNOWN) {
-                            visible_files.prepend (file);
-                            if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                actually_visible++;
+                        if (file != null) {
+                            /* Ask thumbnailer only if ThumbState UNKNOWN */
+                            if (file.flags == GOF.File.ThumbState.UNKNOWN) {
+                                visible_files.prepend (file);
+                                if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                    actually_visible++;
+                                }
                             }
-                        }
 
-                        if (plugins != null) {
-                            plugins.update_file_info (file);
-                        }
+                            if (plugins != null) {
+                                plugins.update_file_info (file);
+                            }
 
+                        }
                         /* check if we've reached the end of the visible range */
                         if (path.compare (end_path) != 0)
                             valid_iter = get_next_visible_iter (ref iter);
