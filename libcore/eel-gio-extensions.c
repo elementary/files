@@ -86,13 +86,6 @@ eel_g_file_get_trash_original_file (const gchar *string)
     return location;
 }
 
-gboolean
-eel_g_file_is_trashed (GFile *file)
-{
-  g_return_val_if_fail (G_IS_FILE (file), FALSE);
-  return g_file_has_uri_scheme (file, "trash");
-}
-
 GKeyFile *
 eel_g_file_query_key_file (GFile *file, GCancellable *cancellable, GError **error)
 {
