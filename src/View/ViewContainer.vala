@@ -302,15 +302,6 @@ namespace Marlin.View {
             refresh_slot_info (slot.location);
         }
 
-        private void user_path_change_request (GLib.File loc, bool allow_mode_change = true, bool make_root = true) {
-            /* Ony call directly if it is known that a change of folder is required
-             * otherwise call focus_location.
-             */
-            open_location (loc,
-                           make_root ? Marlin.OpenFlag.NEW_ROOT : Marlin.OpenFlag.DEFAULT,
-                           allow_mode_change);
-        }
-
         private void open_location (GLib.File loc,
                                     Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT,
                                     bool allow_mode_change = true) {
