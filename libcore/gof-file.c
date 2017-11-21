@@ -1275,7 +1275,7 @@ gboolean
 gof_file_is_trashed (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-    return eel_g_file_is_trashed (gof_file_get_target_location (file));
+    return pf_file_utils_location_is_in_trash (gof_file_get_target_location (file));
 }
 
 const gchar *
@@ -1635,7 +1635,7 @@ gof_file_accepts_drop (GOFFile          *file,
             g_free (scheme);
 
             /* copy/move/link within the trash not possible */
-            if (G_UNLIKELY (eel_g_file_is_trashed (lp->data) && gof_file_is_trashed (file)))
+            if (G_UNLIKELY (pf_file_utils_location_is_in_trash (lp->data) && gof_file_is_trashed (file)))
                 return 0;
         }
 
@@ -1652,7 +1652,7 @@ gof_file_accepts_drop (GOFFile          *file,
             for (lp = file_list, n = 0; lp != NULL && n < 100; lp = lp->next, ++n)
             {
                 /* dropping from the trash always suggests move */
-                if (G_UNLIKELY (eel_g_file_is_trashed (lp->data)))
+                if (G_UNLIKELY (pf_file_utils_location_is_in_trash (lp->data)))
                     break;
 
                 /* determine the cached version of the source file */

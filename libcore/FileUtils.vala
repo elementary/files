@@ -556,6 +556,16 @@ namespace PF.FileUtils {
     public bool is_icon_path (string path) {
         return "/icons" in path || "/.icons" in path;
     }
+
+    public bool location_is_in_trash (GLib.File location) {
+        var uri = location.get_uri ();
+        var scheme = Uri.parse_scheme (uri);
+
+        return (scheme != null && scheme.has_prefix ("trash") ||
+                uri.contains (GLib.Path.DIR_SEPARATOR_S + ".Trash-") ||
+                (uri.contains (GLib.Path.DIR_SEPARATOR_S + ".local") &&
+                 uri.contains (GLib.Path.DIR_SEPARATOR_S + "Trash" + GLib.Path.DIR_SEPARATOR_S)));
+    }
 }
 
 namespace Marlin {
