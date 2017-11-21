@@ -224,14 +224,7 @@ public class Marlin.PluginManager : Object {
             plugin.update_sidebar (widget);
     }
 
-    public void update_file_info (GOF.File? file) {
-        /* Plugin interface demands non-null file.  A null file can
-         * arise from a dummy row in list view */
-
-        if (file == null) {
-            return;
-        }
-
+    public void update_file_info (GOF.File file) {
         foreach (var plugin in plugin_hash.values) {
             plugin.update_file_info (file);
         }
