@@ -19,12 +19,19 @@
             Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-private HashTable<GLib.File,GOF.Directory.Async> directory_cache;
-private Mutex dir_cache_lock;
 
 namespace GOF.Directory {
 
 public class Async : Object {
+
+    private static HashTable<GLib.File,GOF.Directory.Async> directory_cache;
+    private static Mutex dir_cache_lock;
+
+    static construct {
+        directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
+        dir_cache_lock = GLib.Mutex ();
+    }
+
     public delegate void GOFFileLoadedFunc (GOF.File file);
 
     private uint load_timeout_id = 0;
@@ -128,7 +135,7 @@ public class Async : Object {
         can_load = false;
 
         scheme = location.get_uri_scheme ();
-        is_trash = (scheme == "trash");
+        is_trash = PF.FileUtils.location_is_in_trash (location);
         is_recent = (scheme == "recent");
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme)); //Try lifting requirement for info on remote connections
         is_local = is_trash || is_recent || (scheme == "file");
@@ -1079,9 +1086,7 @@ public class Async : Object {
     public static Async? cache_lookup (GLib.File? file) {
         Async? cached_dir = null;
 
-        if (directory_cache == null) {
-            directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
-            dir_cache_lock = GLib.Mutex ();
+        if (directory_cache == null) {  // Only happens once on startup.  Async gets added on creation
             return null;
         }
 
