@@ -18,7 +18,6 @@
 
 [DBus (name = "org.freedesktop.FileManager1")]
 public class FileManager1 : Object {
-    const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS);
 
     [DBus (name = "ShowFolders")]
     public void show_folders (string[] uris, string startup_id) throws DBusError, IOError {
@@ -59,9 +58,13 @@ public class FileManager1 : Object {
         }
     }
 
+    static string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
+                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS)
+                                   .replace ("#", "")
+                                   .replace ("*", "");
+
     private static string prepare_uri_for_appinfo_create (string uri, bool allow_utf8 = true) {
-        string rc = reserved_chars.replace("#", "").replace ("*","");
-        string? escaped_uri = Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
+        string? escaped_uri = Uri.escape_string ((Uri.unescape_string (uri) ?? uri), RESERVED_CHARS, allow_utf8);
         return (escaped_uri ?? "").replace ("%", "%%");
     }
 }
