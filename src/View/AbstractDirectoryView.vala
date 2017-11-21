@@ -1642,6 +1642,7 @@ namespace FM {
                                     unselect_all ();
 
                                 select_added_files = true;
+
                                 success = dnd_handler.handle_file_drag_actions  (get_real_view (),
                                                                                  window,
                                                                                  context,
@@ -1677,6 +1678,9 @@ namespace FM {
 
             /* disable the highlighting of the items in the view */
             highlight_path (null);
+
+            /* Prepare to receive another drop */
+            drop_data_ready = false;
         }
 
 /** DnD helpers */
