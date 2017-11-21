@@ -2938,6 +2938,10 @@ namespace FM {
                     }
                     break;
 
+                case Gdk.Key.F12:
+                    open_selected_in_terminal ();
+                    return true;
+
                 default:
                     break;
             }
