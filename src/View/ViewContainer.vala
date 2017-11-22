@@ -166,6 +166,7 @@ namespace Marlin.View {
                 if (content_item != null) {
                     remove (content_item);
                 }
+
                 content_item = value;
 
                 if (content_item != null) {
@@ -306,36 +307,20 @@ namespace Marlin.View {
         }
 
         private void open_location (GLib.File loc,
-                                    Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT,
-                                    bool allow_mode_change = true) {
-
-            /* Default to not change view mode automatically */
-            bool change_to_icon_mode = false;
-
-            if (allow_mode_change &&
-                view_mode != Marlin.ViewMode.ICON &&
-                PF.FileUtils.is_icon_path (loc.get_uri ())) { // In this case, automagical change to IconMode
-
-                    change_to_icon_mode = true;
-            }
+                                    Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT) {
 
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
-                    this.window.add_tab (loc, change_to_icon_mode ? Marlin.ViewMode.ICON : view_mode);
+                    this.window.add_tab (loc, view_mode);
                     break;
 
                 case Marlin.OpenFlag.NEW_WINDOW:
-                    this.window.add_window (loc, change_to_icon_mode ? Marlin.ViewMode.ICON : view_mode);
+                    this.window.add_window (loc, view_mode);
                     break;
 
                 default:
-                    if (change_to_icon_mode) {
-                        change_view_mode (Marlin.ViewMode.ICON, loc);
-                    } else {
                         view.user_path_change_request (loc,
-                                                       allow_mode_change,
                                                        flag == Marlin.OpenFlag.NEW_ROOT);
-                    }
 
                     break;
             }
@@ -345,7 +330,7 @@ namespace Marlin.View {
             open_location (loc, flag);
         }
 
-        public void on_slot_path_changed (GOF.AbstractSlot slot, bool change_mode_to_icons) {
+        public void on_slot_path_changed (GOF.AbstractSlot slot) {
             directory_is_loading (slot.location);
         }
 
