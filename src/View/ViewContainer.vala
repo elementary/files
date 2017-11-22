@@ -125,8 +125,6 @@ namespace Marlin.View {
         }
 
         private void connect_signals () {
-            path_changed.connect (on_path_changed);
-            enter_notify_event.connect (on_enter_notify_event);
             loading.connect ((loading) => {
                 is_loading = loading;
             });
