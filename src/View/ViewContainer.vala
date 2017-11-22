@@ -28,7 +28,7 @@ namespace Marlin.View {
     public class ViewContainer : Gtk.Overlay {
 
         public Gtk.Widget? content_item;
-        public bool can_show_folder = false;
+        public bool can_show_folder { get; private set; default = false; }
         private Marlin.View.Window? _window = null;
         public Marlin.View.Window window {
             get {
@@ -289,12 +289,15 @@ namespace Marlin.View {
             aslot.active.connect (on_slot_active);
             aslot.path_changed.connect (on_slot_path_changed);
             aslot.new_container_request.connect (on_slot_new_container_request);
+            aslot.directory_loaded.connect (on_slot_directory_loaded);
             aslot.item_hovered.connect (on_slot_item_hovered);
         }
+
         private void disconnect_slot_signals (GOF.AbstractSlot aslot) {
             aslot.active.disconnect (on_slot_active);
             aslot.path_changed.disconnect (on_slot_path_changed);
             aslot.new_container_request.disconnect (on_slot_new_container_request);
+            aslot.directory_loaded.disconnect (on_slot_directory_loaded);
             aslot.item_hovered.disconnect (on_slot_item_hovered);
         }
 
@@ -355,20 +358,6 @@ namespace Marlin.View {
             loading (true);
         }
 
-        public void plugin_directory_loaded () {
-            var slot = get_current_slot ();
-            if (slot == null)
-                return;
-
-            Object[] data = new Object[3];
-            data[0] = window;
-            /* infobars are added to the view, not the active slot */
-            data[1] = view;
-            data[2] = slot.directory.file;
-
-            plugins.directory_loaded ((void*) data);
-        }
-
         private void refresh_slot_info (GLib.File loc) {
             update_tab_name ();
             window.loading_uri (loc.get_uri ());
@@ -411,41 +400,41 @@ namespace Marlin.View {
         }
 
 
-        public void directory_done_loading (GOF.AbstractSlot slot) {
-            can_show_folder = slot.directory.can_load;
+        public void on_slot_directory_loaded (GOF.Directory.Async dir) {
+            can_show_folder = dir.can_load;
 
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
-                if (!slot.directory.file.exists) {
-                    if (slot.can_create) {
+                if (!dir.file.exists) {
+                    if (!dir.is_trash) {
                         content = new DirectoryNotFound (slot.directory, this);
                     } else {
                         content = new Marlin.View.Welcome (_("This Folder Does Not Exist"),
                                                            _("You cannot create a folder here."));
                     }
-                } else if (!slot.directory.network_available) {
+                } else if (!dir.network_available) {
                     content = new Marlin.View.Welcome (_("The network is unavailable"),
-                                                       _("A working network is needed to reach this folder") + "\n\n" + slot.directory.last_error_message);
-                } else if (slot.directory.permission_denied) {
+                                                       _("A working network is needed to reach this folder") + "\n\n" + dir.last_error_message);
+                } else if (dir.permission_denied) {
                     content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
                                                        _("You don't have permission to view this folder."));
-                } else if (!slot.directory.file.is_connected) {
+                } else if (!dir.file.is_connected) {
                     content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
-                                                       _("Could not connect to the server for this folder.") + "\n\n" + slot.directory.last_error_message);
+                                                       _("Could not connect to the server for this folder.") + "\n\n" + dir.last_error_message);
                 } else if (slot.directory.state == GOF.Directory.Async.State.TIMED_OUT) {
                     content = new Marlin.View.Welcome (_("Unable to Display Folder Contents"),
-                                                       _("The operation timed out.") + "\n\n" + slot.directory.last_error_message);
+                                                       _("The operation timed out.") + "\n\n" + dir.last_error_message);
                 } else {
                     content = new Marlin.View.Welcome (_("Unable to Show Folder"),
-                                                       _("The server for this folder could not be located.") + "\n\n" + slot.directory.last_error_message);
+                                                       _("The server for this folder could not be located.") + "\n\n" + dir.last_error_message);
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
                 view.select_glib_files (selected_locations, selected_locations.first ().data);
                 selected_locations = null;
-            } else if (slot.directory.selected_file != null) {
-                if (slot.directory.selected_file.query_exists ()) {
-                    focus_location_if_in_current_directory (slot.directory.selected_file);
+            } else if (dir.selected_file != null) {
+                if (dir.selected_file.query_exists ()) {
+                    focus_location_if_in_current_directory (dir.selected_file);
                 } else {
                     content = new Marlin.View.Welcome (_("File not Found"),
                                                        _("The file selected no longer exists."));
@@ -456,9 +445,18 @@ namespace Marlin.View {
             if (can_show_folder) {
                 assert (view != null);
                 content = view.get_content_box ();
+
                 /* Only record valid folders (will also log Zeitgeist event) */
-                browser.record_uri (slot.uri); /* will ignore null changes i.e reloading*/
-                plugin_directory_loaded ();
+                browser.record_uri (dir.file.uri); /* will ignore null changes i.e reloading*/
+
+                /* Notify plugins */
+                Object[] data = new Object[3];
+                data[0] = window;
+                /* infobars are added to the view, not the active slot */
+                data[1] = view;
+                data[2] = dir.file;
+
+                plugins.directory_loaded ((void*) data);
             } else {
                 /* Save previous uri but do not record current one */
                 browser.record_uri (null);
