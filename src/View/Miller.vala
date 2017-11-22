@@ -244,6 +244,7 @@ namespace Marlin.View {
             slot.folder_deleted.connect (on_slot_folder_deleted);
             slot.colpane.key_press_event.connect (on_key_pressed);
             slot.path_changed.connect (on_slot_path_changed);
+            slot.directory_loaded.connect (on_slot_directory_loaded);
         }
 
         private void disconnect_slot_signals (Slot slot) {
@@ -255,11 +256,12 @@ namespace Marlin.View {
             slot.folder_deleted.disconnect (on_slot_folder_deleted);
             slot.colpane.key_press_event.disconnect (on_key_pressed);
             slot.path_changed.disconnect (on_slot_path_changed);
+            slot.directory_loaded.disconnect (on_slot_directory_loaded);
         }
 
         private void on_miller_slot_request (Marlin.View.Slot slot, GLib.File loc, bool make_root) {
             if (make_root) {
-                /* Start a new tree with root at loc */ 
+                /* Start a new tree with root at loc */
                 change_path (loc, true);
             } else {
                 /* Just add another column to the end. */
@@ -282,6 +284,10 @@ namespace Marlin.View {
             path_changed (false);
         }
 
+        private void on_slot_directory_loaded (GOF.Directory.Async dir) {
+            directory_loaded (dir);
+        }
+
         private void on_slot_folder_deleted (Slot slot, GOF.File file, GOF.Directory.Async dir) {
             Slot? next_slot = slot_list.nth_data (slot.slot_number +1);
             if (next_slot != null && next_slot.directory == dir)
@@ -298,7 +304,7 @@ namespace Marlin.View {
                 return;
             else
                 slot = aslot as Marlin.View.Slot;
-    
+
             if (scroll) {
                 schedule_scroll_to_slot (slot, animate);
             }
@@ -434,7 +440,7 @@ namespace Marlin.View {
 
         private bool scroll_to_slot (Marlin.View.Slot slot, bool animate = true) {
             /* Cannot accurately scroll until directory finishes loading because width will change
-             * according the length of the longest filename */ 
+             * according the length of the longest filename */
             if (!scrolled_window.get_realized () || slot.directory.state != GOF.Directory.Async.State.LOADED) {
                 return false;
             }

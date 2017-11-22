@@ -152,7 +152,7 @@ namespace Marlin.View {
         }
 
         private void on_directory_done_loading (GOF.Directory.Async dir) {
-            ctab.directory_done_loading (this);
+            directory_loaded (dir);
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                 autosize_slot ();
