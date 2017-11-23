@@ -220,7 +220,7 @@ namespace Marlin.View {
             });
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
-            button_press_event.connect (on_button_press_event);
+            button_press_event.connect_after (on_button_press_event);
 
             /* Toggle focus between sidebar and view using unmodified Tab key, unless location
              * bar in focus. */
@@ -244,8 +244,20 @@ namespace Marlin.View {
                     return true;
 
                     default:
-                        return false;
+                        /* Use find function instead of view interactive search */
+                        if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
+                            /* Use printable characters to initiate search */
+                            if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
+                                win_actions.activate_action ("find", null);
+                                key_press_event (event);
+                                return true;
+                            }
+                        }
+
+                        break;
                 }
+
+                return false;
             });
 
 
@@ -369,6 +381,7 @@ namespace Marlin.View {
                 default:
                     break;
             }
+
             return result;
         }
 
