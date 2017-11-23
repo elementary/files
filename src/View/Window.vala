@@ -224,7 +224,7 @@ namespace Marlin.View {
 
             /* Toggle focus between sidebar and view using unmodified Tab key, unless location
              * bar in focus. */
-            key_press_event.connect ((event) => {
+            key_press_event.connect_after ((event) => {
                 var mods = (event.state & Gtk.accelerator_get_default_mod_mask ());
 
                 switch (event.keyval) {

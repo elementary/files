@@ -87,7 +87,7 @@ namespace Marlin.View {
         public void add_location (GLib.File loc, Marlin.View.Slot? host = null, bool scroll = true, bool animate = true) {
             Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
             /* Notify view container of path change - will set tab to working and change pathbar */
-            path_changed (false); /* DO not allow mode change when adding a location */
+            path_changed ();
             new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
             total_width += new_slot.width;
 
@@ -160,9 +160,9 @@ namespace Marlin.View {
 /** Signal handling **/
 /*********************/
 
-        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = false, bool make_root = false) {
+        public override void user_path_change_request (GLib.File loc, bool make_root = false) {
             /* Requests from history buttons, pathbar come here with make_root = false.
-             * These do not create a new root and automatic mode change for icon directories is not allowed.
+             * These do not create a new root.
              * Requests from the sidebar have make_root = true
              */
             change_path (loc, make_root);
@@ -190,7 +190,7 @@ namespace Marlin.View {
             if (!found) {
                 truncate_list_after_slot (first_slot);
                 if (loc.get_uri () != first_slot.uri) {
-                    first_slot.user_path_change_request (loc, false, true);
+                    first_slot.user_path_change_request (loc, true);
                     root_location = loc;
                     /* Sidebar requests make_root true - first directory will be selected;
                      * Go_up requests make_root false - previous directory will be selected
@@ -280,8 +280,8 @@ namespace Marlin.View {
             return true;
         }
 
-        private void on_slot_path_changed (GOF.AbstractSlot aslot, bool allow_mode_change) {
-            path_changed (false);
+        private void on_slot_path_changed () {
+            path_changed ();
         }
 
         private void on_slot_directory_loaded (GOF.Directory.Async dir) {

@@ -166,6 +166,7 @@ namespace Marlin.View {
                 if (content_item != null) {
                     remove (content_item);
                 }
+
                 content_item = value;
 
                 if (content_item != null) {
@@ -204,7 +205,7 @@ namespace Marlin.View {
 
             /* Certain parents such as ftp:// will be returned as null as they are not browsable */
             if (parent != null) {
-                user_path_change_request (parent, false, false);
+                open_location (parent);
                 return true;
             } else {
                 return false;
@@ -212,20 +213,21 @@ namespace Marlin.View {
         }
 
         public void go_back (int n = 1) {
-            string? loc = browser.go_back (n);
+            string? path = browser.go_back (n);
 
-            if (loc != null) {
+            if (path != null) {
                 selected_locations = null;
                 selected_locations.append (this.location);
-                user_path_change_request (File.new_for_commandline_arg (loc), false, false);
+                open_location (File.new_for_commandline_arg (path));
             }
         }
 
         public void go_forward (int n = 1) {
-            string? loc = browser.go_forward (n);
+            string? path = browser.go_forward (n);
 
-            if (loc != null)
-                user_path_change_request (File.new_for_commandline_arg (loc), false, false);
+            if (path != null) {
+                open_location (File.new_for_commandline_arg (path));
+            }
         }
 
         public void add_view (Marlin.ViewMode mode, GLib.File loc) {
@@ -250,11 +252,16 @@ namespace Marlin.View {
              * The slot becomes active when the tab becomes current */
         }
 
-        public void change_view_mode (Marlin.ViewMode mode) {
+        /** By default changes the view mode to @mode at the same location.
+            @loc - new location to show.
+        **/
+        public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
             var aslot = get_current_slot ();
             assert (aslot != null);
-            assert (view != null && location != null);
-            var loc = location;
+            if (loc == null) {
+                loc = location;
+            }
+
             if (mode != view_mode) {
                 before_mode_change ();
                 add_view (mode, loc);
@@ -301,14 +308,9 @@ namespace Marlin.View {
             refresh_slot_info (slot.location);
         }
 
-        public void user_path_change_request (GLib.File loc, bool allow_mode_change = true, bool make_root = true) {
-            /* Ony call directly if it is known that a change of folder is required
-             * otherwise call focus_location.
-             */
-            view.user_path_change_request (loc, allow_mode_change, make_root);
-        }
+        private void open_location (GLib.File loc,
+                                    Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT) {
 
-        private void on_slot_new_container_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT) {
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
                     this.window.add_tab (loc, view_mode);
@@ -319,18 +321,19 @@ namespace Marlin.View {
                     break;
 
                 default:
-                    assert_not_reached ();
+                        view.user_path_change_request (loc,
+                                                       flag == Marlin.OpenFlag.NEW_ROOT);
+
+                    break;
             }
         }
 
-        public void on_slot_path_changed (GOF.AbstractSlot slot, bool change_mode_to_icons) {
-            assert (slot != null);
-            /* automagicly enable icon view for icons keypath */
-            if (change_mode_to_icons && view_mode != Marlin.ViewMode.ICON) {
-                change_view_mode (Marlin.ViewMode.ICON);
-            } else {
-                directory_is_loading (slot.location);
-            }
+        private void on_slot_new_container_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT) {
+            open_location (loc, flag);
+        }
+
+        public void on_slot_path_changed (GOF.AbstractSlot slot) {
+            directory_is_loading (slot.location);
         }
 
         private void directory_is_loading (GLib.File loc) {
@@ -525,7 +528,7 @@ namespace Marlin.View {
             }
             /* Attempt to navigate to the location */
             if (loc != null) {
-                user_path_change_request (loc);
+                open_location (loc);
             }
         }
 
