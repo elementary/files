@@ -60,6 +60,7 @@ namespace GOF {
         public signal void inactive ();
         public signal void path_changed ();
         public signal void new_container_request (GLib.File loc, Marlin.OpenFlag flag);
+        public signal void selection_changed (GLib.List<GOF.File> files);
         public signal void directory_loaded (GOF.Directory.Async dir);
         public signal void item_hovered (GOF.File? file);
 

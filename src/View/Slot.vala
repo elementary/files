@@ -138,7 +138,7 @@ namespace Marlin.View {
         }
 
         private void on_dir_view_selection_changed (GLib.List<GOF.File> files) {
-            ctab.on_selection_changed (files);
+            selection_changed (files);
         }
 
         private void connect_dir_signals () {
