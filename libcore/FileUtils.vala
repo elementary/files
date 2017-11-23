@@ -553,10 +553,6 @@ namespace PF.FileUtils {
         }
     }
 
-    public bool uri_contain_keypath_icons (string uri) {
-        return "/icons" in uri || "/.icons" in uri;
-    }
-
     public string disambiguate_name (string name, string path, string conflict_path) {
         string prefix = "";
         string prefix_conflict = "";
@@ -574,6 +570,16 @@ namespace PF.FileUtils {
         }
 
         return prefix + name;
+    }
+
+    public bool location_is_in_trash (GLib.File location) {
+        var uri = location.get_uri ();
+        var scheme = Uri.parse_scheme (uri);
+
+        return (scheme != null && scheme.has_prefix ("trash") ||
+                uri.contains (GLib.Path.DIR_SEPARATOR_S + ".Trash-") ||
+                (uri.contains (GLib.Path.DIR_SEPARATOR_S + ".local") &&
+                 uri.contains (GLib.Path.DIR_SEPARATOR_S + "Trash" + GLib.Path.DIR_SEPARATOR_S)));
     }
 }
 

@@ -42,7 +42,7 @@ namespace GOF {
         public string uri {
             get {return directory.file.uri;}
         }
-        public bool can_create {get {return directory != null && !directory.is_trash;}}
+
         public virtual bool locked_focus {
             get {
                 return false;
@@ -59,6 +59,10 @@ namespace GOF {
         public signal void active (bool scroll = true, bool animate = true);
         public signal void inactive ();
         public signal void path_changed (bool change_mode_to_icons = true);
+        public signal void new_container_request (GLib.File loc, Marlin.OpenFlag flag);
+        public signal void selection_changed (GLib.List<GOF.File> files);
+        public signal void directory_loaded (GOF.Directory.Async dir);
+        public signal void item_hovered (GOF.File? file);
 
         public  void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);
