@@ -283,6 +283,7 @@ namespace Marlin.View {
             aslot.active.connect (on_slot_active);
             aslot.path_changed.connect (on_slot_path_changed);
             aslot.new_container_request.connect (on_slot_new_container_request);
+            aslot.selection_changed.connect (on_slot_selection_changed);
             aslot.directory_loaded.connect (on_slot_directory_loaded);
             aslot.item_hovered.connect (on_slot_item_hovered);
         }
@@ -291,6 +292,7 @@ namespace Marlin.View {
             aslot.active.disconnect (on_slot_active);
             aslot.path_changed.disconnect (on_slot_path_changed);
             aslot.new_container_request.disconnect (on_slot_new_container_request);
+            aslot.selection_changed.disconnect (on_slot_selection_changed);
             aslot.directory_loaded.disconnect (on_slot_directory_loaded);
             aslot.item_hovered.disconnect (on_slot_item_hovered);
         }
@@ -577,7 +579,7 @@ namespace Marlin.View {
             overlay_statusbar.update_hovered (file);
         }
 
-        public void on_selection_changed (GLib.List<GOF.File> files) {
+        private void on_slot_selection_changed (GLib.List<GOF.File> files) {
             overlay_statusbar.selection_changed (files);
         }
 
