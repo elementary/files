@@ -36,9 +36,6 @@ namespace Marlin.View.Chrome {
         public bool search_mode = false; // Used to suppress activate events while searching
 
         /** Drag and drop support **/
-        public enum TargetType {
-            TEXT_URI_LIST,
-        }
         protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
         private bool drop_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
@@ -63,7 +60,7 @@ namespace Marlin.View.Chrome {
 
         private void set_up_drag_drop () {
             /* Drag and drop */
-            Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, TargetType.TEXT_URI_LIST};
+            Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, Marlin.TargetType.TEXT_URI_LIST};
             Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION, {target_uri_list}, Gdk.DragAction.ASK|file_drag_actions);
             drag_leave.connect (on_drag_leave);
             drag_motion.connect (on_drag_motion);
@@ -317,15 +314,16 @@ namespace Marlin.View.Chrome {
             bool success = false;
 
             if (!drop_data_ready) {
-                drop_file_list = null;
-                foreach (var uri in selection_data.get_uris ()) {
-                    drop_file_list.prepend (File.new_for_uri (uri));
+                /* We don't have the drop data - extract uri list from selection data */
+                string? text;
+                if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
+                    drop_file_list = EelGFile.list_new_from_string (text);
                     drop_data_ready = true;
                 }
             }
 
             GLib.Signal.stop_emission_by_name (this, "drag-data-received");
-            if (drop_data_ready && drop_occurred && info == TargetType.TEXT_URI_LIST) {
+            if (drop_data_ready && drop_occurred && info == Marlin.TargetType.TEXT_URI_LIST) {
                 drop_occurred = false;
                 current_actions = 0;
                 current_suggested_action = 0;
