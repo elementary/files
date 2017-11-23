@@ -602,15 +602,15 @@ namespace PF.FileUtils {
             actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
         }
 
-        if ((suggested_action & actions) != 0) {
+        if (suggested_action in actions) {
             suggested_action_return = suggested_action;
-        } else if ((actions & Gdk.DragAction.ASK) != 0) {
+        } else if (Gdk.DragAction.ASK in actions) {
             suggested_action_return = Gdk.DragAction.ASK;
-        } else if ((actions & Gdk.DragAction.COPY) != 0) {
+        } else if (Gdk.DragAction.COPY in actions) {
             suggested_action_return = Gdk.DragAction.COPY;
-        } else if ((actions & Gdk.DragAction.LINK) != 0) {
+        } else if (Gdk.DragAction.LINK in actions) {
             suggested_action_return = Gdk.DragAction.LINK;
-        } else if ((actions & Gdk.DragAction.MOVE) != 0) {
+        } else if (Gdk.DragAction.MOVE in actions) {
             suggested_action_return = Gdk.DragAction.MOVE;
         }
 
@@ -668,7 +668,7 @@ namespace PF.FileUtils {
          * same filesystem and if MOVE is a valid action.  We assume that it is not possible
          * to drop files both from remote and local filesystems simultaneously
          */
-        if ((valid_actions & (Gdk.DragAction.COPY | Gdk.DragAction.MOVE)) != 0 &&
+        if ((Gdk.DragAction.COPY in valid_actions && Gdk.DragAction.MOVE in valid_actions) &&
              suggested_action == Gdk.DragAction.COPY &&
              (from_trash || same_file_system (drop_file_list.first ().data, target_location))) {
 
