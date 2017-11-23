@@ -1111,11 +1111,7 @@ namespace Marlin.Places {
 
             switch (info) {
                  case TargetType.TEXT_URI_LIST:
-                    Marlin.FileOperations.copy_move_link (drag_list,
-                                                          null,
-                                                          File.new_for_uri (drop_uri),
-                                                          real_action,
-                                                          this, null, null);
+                    dnd_handler.dnd_perform (this, GOF.File.get_by_uri (drop_uri), drag_list, real_action);
                     return true;
                 case TargetType.GTK_TREE_MODEL_ROW:
                     return false;
