@@ -1527,29 +1527,6 @@ gchar* gof_file_list_to_string (GList *list, gsize *len)
     return g_string_free (string, FALSE);
 }
 
-gboolean gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b)
-{
-    const gchar *filesystem_id_a;
-    const gchar *filesystem_id_b;
-
-    g_return_val_if_fail (GOF_IS_FILE (file_a), FALSE);
-    g_return_val_if_fail (GOF_IS_FILE (file_b), FALSE);
-
-    /* return false if we have no information about one of the files */
-    if (file_a->info == NULL || file_b->info == NULL)
-        return FALSE;
-
-    /* determine the filesystem IDs */
-    filesystem_id_a = g_file_info_get_attribute_string (file_a->info,
-                                                        G_FILE_ATTRIBUTE_ID_FILESYSTEM);
-
-    filesystem_id_b = g_file_info_get_attribute_string (file_b->info,
-                                                        G_FILE_ATTRIBUTE_ID_FILESYSTEM);
-
-    /* compare the filesystem IDs */
-    return (filesystem_id_a || filesystem_id_b) && g_strcmp0 (filesystem_id_a, filesystem_id_b) == 0;
-}
-
 static gboolean
 gof_spawn_command_line_on_screen (char *cmd, GdkScreen *screen)
 {

@@ -200,7 +200,6 @@ gboolean        gof_file_is_desktop_file (GOFFile *file);
 void            gof_file_set_expanded (GOFFile *file, gboolean expanded);
 gchar           *gof_file_list_to_string (GList *list, gsize *len);
 
-gboolean        gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b);
 void            gof_file_open_single (GOFFile *file, GdkScreen *screen, GAppInfo *app_info);
 gboolean        gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info);
 gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info);
