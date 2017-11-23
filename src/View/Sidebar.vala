@@ -1113,9 +1113,7 @@ namespace Marlin.Places {
                  case TargetType.TEXT_URI_LIST:
                     dnd_handler.dnd_perform (this, GOF.File.get_by_uri (drop_uri), drag_list, real_action);
                     return true;
-                case TargetType.GTK_TREE_MODEL_ROW:
-                    return false;
-                default:
+                default: // Cannot drop row onto row
                     return false;;
             }
         }
