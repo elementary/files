@@ -201,10 +201,6 @@ void            gof_file_set_expanded (GOFFile *file, gboolean expanded);
 gchar           *gof_file_list_to_string (GList *list, gsize *len);
 
 gboolean        gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b);
-GdkDragAction   gof_file_accepts_drop (GOFFile          *file,
-                                       GList            *file_list,
-                                       GdkDragContext   *context,
-                                       GdkDragAction    *suggested_action_return);
 void            gof_file_open_single (GOFFile *file, GdkScreen *screen, GAppInfo *app_info);
 gboolean        gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info);
 gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info);
