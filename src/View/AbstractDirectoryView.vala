@@ -157,7 +157,7 @@ namespace FM {
         private bool drag_has_begun = false;
         protected bool dnd_disabled = false;
         private void* drag_data;
-        private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs that are contained in the drop data */
+        private Gee.LinkedList<GLib.File>? drop_file_list = null; /* the list of URIs that are contained in the drop data */
 
         /* support for generating thumbnails */
         int thumbnail_request = -1;
@@ -1597,7 +1597,7 @@ namespace FM {
                 /* We don't have the drop data - extract uri list from selection data */
                 string? text;
                 if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    drop_file_list = EelGFile.list_new_from_string (text);
+                    drop_file_list = PF.FileUtils.gee_list_new_from_string (text);
                     drop_data_ready = true;
                 }
             }
@@ -1741,8 +1741,12 @@ namespace FM {
                     if (current_target_type == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
                         current_suggested_action = Gdk.DragAction.COPY;
                         current_actions = current_suggested_action;
-                    } else
-                        current_actions = file.accepts_drop (drop_file_list, context, out current_suggested_action);
+                    } else {
+                        current_actions = PF.FileUtils.file_accepts_drop (file,
+                                                                          drop_file_list,
+                                                                          context,
+                                                                          out current_suggested_action);
+                    }
 
                     highlight_drop_file (drop_target_file, current_actions, path);
 
