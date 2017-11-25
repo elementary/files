@@ -535,7 +535,7 @@ public class Async : Object {
             debug ("Unmounting because of timeout");
             cancellable.cancel ();
             cancellable = new Cancellable ();
-            file.location.unmount_mountable (GLib.MountUnmountFlags.FORCE, cancellable);
+            file.location.unmount_mountable_with_operation (GLib.MountUnmountFlags.FORCE, null, cancellable);
             file.mount = null;
             file.is_mounted = false;
         }
