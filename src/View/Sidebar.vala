@@ -290,18 +290,7 @@ namespace Marlin.Places {
 
             tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK | Gdk.EventMask.ENTER_NOTIFY_MASK);
             tree_view.focus_in_event.connect (focus_in_event_cb);
-            tree_view.enter_notify_event.connect (on_enter_notify_event);
             tree_view.leave_notify_event.connect (on_leave_notify_event);
-        }
-
-        private bool on_enter_notify_event () {
-            /* Ensure tree has focus when scrolling but do not grab focus if either a bookmark
-             *  is being renamed or request_focus is denied.
-             */
-            if (!tree_view.has_focus && !renaming && request_focus ())
-                tree_view.grab_focus ();
-
-            return false;
         }
 
         private bool on_leave_notify_event () {
@@ -1338,7 +1327,8 @@ namespace Marlin.Places {
                     }
                 }
                 catch (GLib.Error error) {
-                    warning ("Error mounting volume %s: %s", volume.get_name (), error.message);
+                    var primary = _("Error mounting volume %s").printf (volume.get_name ());
+                    Eel.show_error_dialog (primary, error.message, null);
                 }
             });
         }
@@ -1352,7 +1342,7 @@ namespace Marlin.Places {
                         drive.start.end (res);
                     }
                     catch (GLib.Error error) {
-                            var primary = _("Unable to start %s".printf (drive.get_name ()));
+                            var primary = _("Unable to start %s").printf (drive.get_name ());
                             Eel.show_error_dialog (primary, error.message, null);
                     }
                 }
