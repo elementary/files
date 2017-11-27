@@ -856,7 +856,11 @@ namespace Marlin.View {
         }
 
         private void save_geometries () {
-            save_sidebar_width ();
+            var sidebar_width = lside_pane.get_position ();
+            var min_width = Preferences.settings.get_int ("minimum-sidebar-width");
+
+            sidebar_width = int.max (sidebar_width, min_width);
+            Preferences.settings.set_int ("sidebar-width", sidebar_width);
 
             bool is_maximized = (bool) get_window ().get_state () & Gdk.WindowState.MAXIMIZED;
 
@@ -868,14 +872,6 @@ namespace Marlin.View {
             }
 
             Preferences.settings.set_boolean ("maximized", is_maximized);
-        }
-
-        private void save_sidebar_width () {
-            var sw = lside_pane.get_position ();
-            var mw = Preferences.settings.get_int ("minimum-sidebar-width");
-
-            sw = int.max (sw, mw);
-            Preferences.settings.set_int ("sidebar-width", sw);
         }
 
         private void save_tabs () {
