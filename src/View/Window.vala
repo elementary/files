@@ -838,12 +838,12 @@ namespace Marlin.View {
         }
 
         public void quit () {
-            top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
-
             if (is_first_window) {
                 save_geometries ();
                 save_tabs ();
             }
+
+            top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
 
             tabs.tab_removed.disconnect (on_tab_removed); /* Avoid infinite loop */
 
