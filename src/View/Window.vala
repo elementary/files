@@ -862,8 +862,6 @@ namespace Marlin.View {
             sidebar_width = int.max (sidebar_width, min_width);
             Preferences.settings.set_int ("sidebar-width", sidebar_width);
 
-            bool is_maximized = (bool) get_window ().get_state () & Gdk.WindowState.MAXIMIZED;
-
             if (is_maximized == false) {
                 int width, height;
                 get_size (out width, out height);
