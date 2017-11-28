@@ -858,8 +858,6 @@ namespace Marlin.View {
         private void save_geometries () {
             save_sidebar_width ();
 
-            bool is_maximized = (bool) get_window ().get_state () & Gdk.WindowState.MAXIMIZED;
-
             if (is_maximized == false) {
                 int width, height;
                 get_size (out width, out height);
