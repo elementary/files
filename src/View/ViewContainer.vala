@@ -457,8 +457,7 @@ namespace Marlin.View {
             unowned GLib.List<unowned GOF.File> selected_files = view.get_selected_files ();
             selected_locations = null;
 
-            if (selected_files.length () >= 1) {
-
+            if (selected_files != null) {
                 selected_files.@foreach ((file) => {
                     selected_locations.prepend (GLib.File.new_for_uri (file.uri));
                 });

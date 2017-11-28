@@ -475,7 +475,8 @@ namespace Marlin.View.Chrome {
             /* Append list of directories at the same level */
             if (dir.can_load) {
                 unowned List<GOF.File>? sorted_dirs = dir.get_sorted_dirs ();
-                if (sorted_dirs.length () > 0) {
+
+                if (sorted_dirs != null) {
                     menu.append (new Gtk.SeparatorMenuItem ());
                     foreach (var gof in sorted_dirs) {
                         var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
