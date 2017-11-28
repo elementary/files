@@ -519,17 +519,14 @@ namespace FM {
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
                                                 GLib.List<GOF.File> selection = get_selected_files ()) {
-            if (is_frozen)
-                return;
 
-            uint nb_elem = selection.length ();
-
-            if (nb_elem < 1)
+            if (is_frozen || selection == null) {
                 return;
+            }
 
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
 
-            if (nb_elem == 1) {
+            if (selection.first ().next == null) { // Only one selected
                 activate_file (selection.data, screen, flag, true);
                 return;
             }
@@ -538,7 +535,9 @@ namespace FM {
                 /* launch each selected file individually ignoring selections greater than 10
                  * Do not launch with new instances of this app - open according to flag instead
                  */
-                if (nb_elem < 10 && (default_app == null || app_is_this_app (default_app))) {
+                if (selection.nth_data (11) == null &&  // Less than 10 items
+                   (default_app == null || app_is_this_app (default_app))) {
+
                     foreach (GOF.File file in selection) {
                         /* Prevent too rapid activation of files - causes New Tab to crash for example */
                         if (file.is_folder ()) {
@@ -2101,7 +2100,7 @@ namespace FM {
                         open_with_submenu.append_section (null, apps_section);
                 }
 
-                if (selection.length () == 1) {
+                if (selection != null && selection.first ().next == null) { // Only one selected
                     var other_app_menu = new GLib.Menu ();
                     other_app_menu.append ( _("Other Application"), "selection.open_with_other_app");
                     open_with_submenu.append_section (null, other_app_menu);
