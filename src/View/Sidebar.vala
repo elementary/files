@@ -125,6 +125,7 @@ namespace Marlin.Places {
 
         public signal bool request_focus ();
         public signal void sync_needed ();
+        public signal void path_change_request (string uri, Marlin.OpenFlag flag);
 
         public new void grab_focus () {
             tree_view.grab_focus ();
@@ -251,8 +252,8 @@ namespace Marlin.Places {
 
         private void configure_tree_view () {
             var style_context = tree_view.get_style_context ();
-            style_context.add_class ("sidebar");
-            style_context.add_class ("source-list");
+            style_context.add_class (Gtk.STYLE_CLASS_SIDEBAR);
+            style_context.add_class (Granite.STYLE_CLASS_SOURCE_LIST);
 
             tree_view.set_search_column (Column.NAME);
             var selection = tree_view.get_selection ();
@@ -289,18 +290,7 @@ namespace Marlin.Places {
 
             tree_view.add_events (Gdk.EventMask.FOCUS_CHANGE_MASK | Gdk.EventMask.ENTER_NOTIFY_MASK);
             tree_view.focus_in_event.connect (focus_in_event_cb);
-            tree_view.enter_notify_event.connect (on_enter_notify_event);
             tree_view.leave_notify_event.connect (on_leave_notify_event);
-        }
-
-        private bool on_enter_notify_event () {
-            /* Ensure tree has focus when scrolling but do not grab focus if either a bookmark
-             *  is being renamed or request_focus is denied.
-             */
-            if (!tree_view.has_focus && !renaming && request_focus ())
-                tree_view.grab_focus ();
-
-            return false;
         }
 
         private bool on_leave_notify_event () {
@@ -384,12 +374,6 @@ namespace Marlin.Places {
                                                    Mount? mount,
                                                    uint index,
                                                    string? tooltip = null) {
-            Gdk.Pixbuf? pixbuf = null;
-            if (icon != null) {
-                Marlin.IconInfo? icon_info = Marlin.IconInfo.lookup (icon, Marlin.IconSize.SMALLEST);
-                if (icon_info != null)
-                    pixbuf = icon_info.get_pixbuf_nodefault ();
-            }
 
             bool show_eject, show_unmount;
             check_unmount_and_eject (mount, volume, drive, out show_unmount, out show_eject);
@@ -1103,28 +1087,26 @@ namespace Marlin.Places {
             store.@get (iter, Column.URI, out drop_uri);
 
             var real_action = context.get_selected_action ();
+
             if (real_action == Gdk.DragAction.ASK) {
                 var actions = context.get_actions ();
-                if (drop_uri.has_prefix ("trash://"))
+
+                if (drop_uri.has_prefix ("trash://")) {
                     actions &= Gdk.DragAction.MOVE;
+                }
 
                 real_action = dnd_handler.drag_drop_action_ask ((Gtk.Widget)tree_view, window, actions);
             }
 
-            if (real_action == Gdk.DragAction.DEFAULT)
+            if (real_action == Gdk.DragAction.DEFAULT) {
                 return false;
+            }
 
             switch (info) {
                  case TargetType.TEXT_URI_LIST:
-                    Marlin.FileOperations.copy_move (drag_list,
-                                                     null,
-                                                     File.new_for_uri (drop_uri),
-                                                     real_action,
-                                                     this, null, null);
+                    dnd_handler.dnd_perform (this, GOF.File.get_by_uri (drop_uri), drag_list, real_action);
                     return true;
-                case TargetType.GTK_TREE_MODEL_ROW:
-                    return false;
-                default:
+                default: // Cannot drop row onto row
                     return false;;
             }
         }
@@ -1288,7 +1270,7 @@ namespace Marlin.Places {
 
         private void open_selected_bookmark (Gtk.TreeModel model,
                                              Gtk.TreePath path,
-                                             Marlin.OpenFlag flags) {
+                                             Marlin.OpenFlag open_flag) {
             if (path == null)
                 return;
 
@@ -1301,15 +1283,7 @@ namespace Marlin.Places {
             store.@get (iter, Column.URI, out uri, Column.PLUGIN_CALLBACK, out f);
 
             if (uri != null) {
-                var location = PF.FileUtils.get_file_for_path (uri);
-                /* Navigate to the clicked location */
-                if (flags == Marlin.OpenFlag.NEW_WINDOW) {
-                    window.add_window (location, Marlin.ViewMode.CURRENT);
-                } else if (flags == Marlin.OpenFlag.NEW_TAB) {
-                    window.add_tab (location, Marlin.ViewMode.CURRENT);
-                } else {
-                    window.uri_path_change_request (uri);
-                }
+                path_change_request (uri, open_flag);
             } else if (f != null) {
                 f (this);
             } else if (!ejecting_or_unmounting) {
@@ -1322,7 +1296,7 @@ namespace Marlin.Places {
                             Column.VOLUME, out volume);
 
                 if (volume != null && !mounting)
-                    mount_volume (volume, mount_op, flags);
+                    mount_volume (volume, mount_op, open_flag);
 
                 else if (drive != null && volume == null
                         && (drive.can_start () || drive.can_start_degraded ()))
@@ -1353,7 +1327,8 @@ namespace Marlin.Places {
                     }
                 }
                 catch (GLib.Error error) {
-                    warning ("Error mounting volume %s: %s", volume.get_name (), error.message);
+                    var primary = _("Error mounting volume %s").printf (volume.get_name ());
+                    Eel.show_error_dialog (primary, error.message, null);
                 }
             });
         }
@@ -1367,7 +1342,7 @@ namespace Marlin.Places {
                         drive.start.end (res);
                     }
                     catch (GLib.Error error) {
-                            var primary = _("Unable to start %s".printf (drive.get_name ()));
+                            var primary = _("Unable to start %s").printf (drive.get_name ());
                             Eel.show_error_dialog (primary, error.message, null);
                     }
                 }
@@ -1491,7 +1466,8 @@ namespace Marlin.Places {
             item.show ();
             popupmenu.append (item);
 
-            popupmenu_separator_item1 = Eel.gtk_menu_append_separator (popupmenu);
+            popupmenu_separator_item1 = new Gtk.SeparatorMenuItem ();
+            popupmenu.append (popupmenu_separator_item1);
 
             item = new Gtk.ImageMenuItem.with_label (_("Remove"));
             popupmenu_remove_item = item;
@@ -1507,8 +1483,8 @@ namespace Marlin.Places {
             item.show ();
             popupmenu.append (item);
 
-            /* Mount/Unmount/Eject menu items */
-            popupmenu_separator_item2 = Eel.gtk_menu_append_separator (popupmenu);
+            popupmenu_separator_item2 = new Gtk.SeparatorMenuItem ();
+            popupmenu.append (popupmenu_separator_item2);
 
             item = new Gtk.ImageMenuItem.with_mnemonic (_("_Mount"));
             popupmenu_mount_item = item;
@@ -1552,8 +1528,8 @@ namespace Marlin.Places {
         private new void popup_menu (Gdk.EventButton? event) {
             update_popup_menu ();
             Eel.pop_up_context_menu (popupmenu,
-                                     Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     Eel.DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
+                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                      event);
         }
 
@@ -1911,12 +1887,7 @@ namespace Marlin.Places {
          }
 
         private void empty_trash_on_mount (Mount? mount, Gtk.TreeRowReference? row_ref = null) {
-            if (Marlin.FileOperations.has_trash_files (mount)) {
-                unowned GLib.List<unowned GLib.File>? dirs = Marlin.FileOperations.get_trash_dirs_for_mount (mount);
-                /* Marlin.FileOperations will show a confirm dialog according to settings */
-                if (dirs != null)
-                    Marlin.FileOperations.empty_trash_dirs (null, dirs.copy ());
-            }
+            Marlin.FileOperations.empty_trash_for_mount (this, mount);
         }
 
         private bool over_eject_button (Gdk.EventButton event) {
@@ -2366,9 +2337,9 @@ namespace Marlin.Places {
                         Column.URI, out uri,
                         Column.BOOKMARK, out is_bookmark);
 
-            Eel.gtk_widget_set_shown (popupmenu_remove_item, is_bookmark);
-            Eel.gtk_widget_set_shown (popupmenu_rename_item, is_bookmark);
-            Eel.gtk_widget_set_shown (popupmenu_separator_item1, is_bookmark);
+            popupmenu_remove_item.visible = is_bookmark;
+            popupmenu_rename_item.visible = is_bookmark;
+            popupmenu_separator_item1.visible = is_bookmark;
 
             bool show_mount, show_unmount, show_eject, show_rescan, show_format, show_start, show_stop;
             check_visibility (mount,
@@ -2388,22 +2359,22 @@ namespace Marlin.Places {
                                     ((uri == Marlin.TRASH_URI) ||
                                     Marlin.FileOperations.has_trash_files (mount));
 
-            Eel.gtk_widget_set_shown (popupmenu_separator_item2,
-                                      show_eject || show_unmount ||
-                                      show_mount || show_empty_trash);
+            popupmenu_separator_item2.visible = (show_eject || show_unmount ||
+                                                show_mount || show_empty_trash);
 
             bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
 
-            Eel.gtk_widget_set_shown (popupmenu_mount_item, show_mount);
-            Eel.gtk_widget_set_shown (popupmenu_unmount_item, show_unmount);
-            Eel.gtk_widget_set_shown (popupmenu_eject_item, show_eject);
-            Eel.gtk_widget_set_shown (popupmenu_empty_trash_item, show_empty_trash);
-            Eel.gtk_widget_set_shown (popupmenu_drive_property_item, show_property);
-            popupmenu_empty_trash_item.set_sensitive (!(Marlin.TrashMonitor.is_empty ()));
+            popupmenu_mount_item.visible = show_mount;
+            popupmenu_unmount_item.visible = show_unmount;
+            popupmenu_eject_item.visible = show_eject;
+            popupmenu_empty_trash_item.visible = show_empty_trash;
+            popupmenu_drive_property_item.visible = show_property;
+
+            popupmenu_empty_trash_item.sensitive = !Marlin.TrashMonitor.is_empty ();
 
             bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);
-            Eel.gtk_widget_set_shown (popupmenu_open_in_new_tab_item, !is_plugin);
-            Eel.gtk_widget_set_shown (popupmenu_open_in_new_window_item, !is_plugin);
+            popupmenu_open_in_new_tab_item.visible = !is_plugin;
+            popupmenu_open_in_new_window_item.visible = !is_plugin;
         }
 
         /**

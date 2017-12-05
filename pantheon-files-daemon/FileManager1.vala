@@ -36,32 +36,35 @@ public class FileManager1 : Object {
     }
 
     private void open_items_and_folders (string[] uris, string startup_id) throws DBusError, IOError {
-        /* The pantheon-files app will open folder uris as view, other items will cause the parent folder
+        /* The io.elementary.files app will open folder uris as view, other items will cause the parent folder
          * to open and the item be selected.  Each view will open in a separate tab in one window */
- 
-        AppInfo? pf_app_info = null;
-        string cmd = "pantheon-files -t";
 
+        StringBuilder sb = new StringBuilder ("io.elementary.files -t");
         foreach (string s in uris) {
-            cmd += (" " + s);
+                sb.append (" ");
+                sb.append (FileManager1.prepare_uri_for_appinfo_create (s));
         }
 
         try {
-            pf_app_info = AppInfo.create_from_commandline (cmd,
+            var pf_app_info = AppInfo.create_from_commandline (sb.str,
                                                            null,
                                                            AppInfoCreateFlags.NONE);
+            if (pf_app_info != null) {
+                pf_app_info.launch (null, null);
+            }
         } catch (Error e) {
-            var msg = "Unable to open item or folder with command %s. %s".printf (cmd, e.message);
+            var msg = "Unable to open item or folder with command %s. %s".printf (sb.str, e.message);
             throw new IOError.FAILED (msg);
         }
+    }
 
-        if (pf_app_info != null) {
-            try {
-                pf_app_info.launch (null, null);
-            } catch (Error e) {
-                var msg = "Unable to open item or folder with command %s. %s".printf (cmd, e.message);
-                throw new IOError.FAILED (msg);
-            }
-        }
+    static string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
+                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS)
+                                   .replace ("#", "")
+                                   .replace ("*", "");
+
+    private static string prepare_uri_for_appinfo_create (string uri, bool allow_utf8 = true) {
+        string? escaped_uri = Uri.escape_string ((Uri.unescape_string (uri) ?? uri), RESERVED_CHARS, allow_utf8);
+        return (escaped_uri ?? "").replace ("%", "%%");
     }
 }

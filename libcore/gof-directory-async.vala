@@ -19,12 +19,19 @@
             Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
-private HashTable<GLib.File,GOF.Directory.Async> directory_cache;
-private Mutex dir_cache_lock;
 
 namespace GOF.Directory {
 
 public class Async : Object {
+
+    private static HashTable<GLib.File,GOF.Directory.Async> directory_cache;
+    private static Mutex dir_cache_lock;
+
+    static construct {
+        directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
+        dir_cache_lock = GLib.Mutex ();
+    }
+
     public delegate void GOFFileLoadedFunc (GOF.File file);
 
     private uint load_timeout_id = 0;
@@ -40,7 +47,7 @@ public class Async : Object {
     public int icon_size = 32;
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
-    public bool uri_contain_keypath_icons;
+    public bool uri_contains_keypath_icons = false;
 
     /* for auto-sizing Miller columns */
     public string longest_file_name = "";
@@ -55,7 +62,7 @@ public class Async : Object {
     public State state {get; private set;}
 
     private HashTable<GLib.File,GOF.File> file_hash;
-    public uint files_count;
+    public uint files_count {get; private set;}
 
     public bool permission_denied = false;
     public bool network_available = true;
@@ -128,18 +135,15 @@ public class Async : Object {
         can_load = false;
 
         scheme = location.get_uri_scheme ();
-        is_trash = (scheme == "trash");
+        is_trash = PF.FileUtils.location_is_in_trash (location);
         is_recent = (scheme == "recent");
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme)); //Try lifting requirement for info on remote connections
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
         can_open_files = !("mtp".contains (scheme));
-        can_stream_files = !("ftp sftp mtp dav davs".contains (scheme));
+        can_stream_files = !("ftp sftp mtp".contains (scheme));
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
-
-        this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-        this.unref ();
     }
 
     ~Async () {
@@ -413,53 +417,61 @@ public class Async : Object {
         }
 
         if (!is_ready) {
+            /* This must only be run once for each Async */
+            is_ready = true;
+
             /* Do not cache directory until it prepared and loadable to avoid an incorrect key being used in some
-             * in some cases.
-             */
-            dir_cache_lock.@lock (); /* will always have been created via call to public static functions from_file () or from_gfile () */
+             * in some cases. dir_cache will always have been created via call to public static
+             * functions from_file () or from_gfile (). Do not add toggle until cached. */
+
+            dir_cache_lock.@lock ();
+
             directory_cache.insert (location.dup (), this);
+            this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
+            this.unref (); /* Make the toggle ref the only ref */
+
             dir_cache_lock.unlock ();
 
-            is_ready = true;
-            if (file.mount != null) {
-                debug ("Directory has mount point");
-                unowned GLib.List? trash_dirs = null;
-                trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
-                has_trash_dirs = (trash_dirs != null);
-            } else {
-                has_trash_dirs = is_local;
-            }
 
-            yield list_directory_async (file_loaded_func);
+        }
 
-            if (can_load) {
-                uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
-                if (file_loaded_func == null && is_local) {
-                    try {
-                        monitor = location.monitor_directory (0);
-                        monitor.rate_limit = 100;
-                        monitor.changed.connect (directory_changed);
-                    } catch (IOError e) {
-                        last_error_message = e.message;
-                        if (!(e is IOError.NOT_MOUNTED)) {
-                            /* Will fail for remote filesystems - not an error */
-                            debug ("directory monitor failed: %s %s", e.message, file.uri);
-                        }
+        /* The following can run on reloading */
+        if (file.mount != null) {
+            debug ("Directory has mount point");
+            unowned GLib.List? trash_dirs = null;
+            trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
+            has_trash_dirs = (trash_dirs != null);
+        } else {
+            has_trash_dirs = is_local;
+        }
+
+        /* Do not use root trash_dirs (Move to the Rubbish Bin option will not be shown) */
+        has_trash_dirs = has_trash_dirs && (Posix.getuid () != 0);
+
+        set_confirm_trash ();
+
+        if (can_load) {
+            uri_contains_keypath_icons = PF.FileUtils.is_icon_path (file.uri);
+            if (file_loaded_func == null && is_local) {
+                try {
+                    monitor = location.monitor_directory (0);
+                    monitor.rate_limit = 100;
+                    monitor.changed.connect (directory_changed);
+                } catch (IOError e) {
+                    last_error_message = e.message;
+                    if (!(e is IOError.NOT_MOUNTED)) {
+                        /* Will fail for remote filesystems - not an error */
+                        debug ("directory monitor failed: %s %s", e.message, file.uri);
                     }
                 }
-
-                set_confirm_trash ();
-
-                /* Do not use root trash_dirs (Move to the Rubbish Bin option will not be shown) */
-                has_trash_dirs = has_trash_dirs && (Posix.getuid () != 0);
-
-                if (is_trash) {
-                    connect_volume_monitor_signals ();
-                }
             }
-        } else {
-            yield list_directory_async (file_loaded_func);
+
+            if (is_trash) {
+                connect_volume_monitor_signals ();
+            }
         }
+
+        yield list_directory_async (file_loaded_func);
     }
 
     private void set_confirm_trash () {
@@ -499,11 +511,13 @@ public class Async : Object {
 
         if (is_last) {
             Async dir = (Async) object;
-            debug ("Async toggle_ref_notify %s", dir.file.uri);
+            debug ("Async is last toggle_ref_notify %s", dir.file.uri);
 
             if (!dir.removed_from_cache) {
+                dir.@ref (); /* Add back ref removed when cached so toggle ref not removed */
                 dir.remove_dir_from_cache ();
             }
+
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
         }
     }
@@ -535,16 +549,26 @@ public class Async : Object {
         if (state == State.LOADING) {
             return; /* Do not re-enter */
         }
+
         cancel ();
         file_hash.remove_all ();
         monitor = null;
         sorted_dirs = null;
         files_count = 0;
-        is_ready = false;
         can_load = false;
-
         state = State.NOT_LOADED;
         loaded_from_cache = false;
+        /* Do not change @is_ready to false - we do not want to
+         * perform caching amd adding toggle ref again  */
+
+        /* These will be reconnected if directory still (or now) loadable */
+        if (monitor != null) {
+            monitor.changed.disconnect (directory_changed);
+        }
+
+        if (is_trash) {
+            disconnect_volume_monitor_signals ();
+        }
     }
 
     private void list_cached_files (GOFFileLoadedFunc? file_loaded_func = null) {
@@ -597,25 +621,8 @@ public class Async : Object {
         files_count = 0;
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
-        bool server_responding = false;
 
         try {
-            /* This may hang for a long time if the connection was closed but is still mounted so we
-             * impose a time limit */
-            load_timeout_id = Timeout.add_seconds (ENUMERATE_TIMEOUT_SEC, () => {
-                if (server_responding) {
-                    return true;
-                } else {
-                    debug ("Load timeout expired");
-                    state = State.TIMED_OUT;
-                    last_error_message = _("Server did not respond within time limit");
-                    load_timeout_id = 0;
-                    cancellable.cancel ();
-
-                    return false;
-                }
-            });
-
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
             debug ("Obtained file enumerator for location %s", location.get_uri ());
 
@@ -623,9 +630,19 @@ public class Async : Object {
             GLib.File loc;
             while (!cancellable.is_cancelled ()) {
                 try {
-                    server_responding = false;
-                    var files = yield e.next_files_async (200, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
-                    server_responding = true;
+                    /* This may hang for a long time if the connection was closed but is still mounted so we
+                     * impose a time limit */
+                    load_timeout_id = Timeout.add_seconds_full (GLib.Priority.LOW, ENUMERATE_TIMEOUT_SEC, () => {
+                        warning ("Load timeout expired");
+                        state = State.TIMED_OUT;
+                        load_timeout_id = 0;
+                        cancellable.cancel ();
+                        load_timeout_id = 0;
+                        return false;
+                    });
+
+                    var files = yield e.next_files_async (1000, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
+                    cancel_timeout (ref load_timeout_id);
 
                     if (files == null) {
                         break;
@@ -648,7 +665,11 @@ public class Async : Object {
                         }
                     }
                 } catch (Error e) {
-                    last_error_message = e.message;
+                    if (!(state == State.TIMED_OUT)) {
+                        last_error_message = e.message;
+                    } else {
+                        last_error_message = _("Server did not respond within time limit");
+                    }
                     warning ("Error reported by next_files_async - %s", e.message);
                 }
             }
@@ -1063,9 +1084,7 @@ public class Async : Object {
     public static Async? cache_lookup (GLib.File? file) {
         Async? cached_dir = null;
 
-        if (directory_cache == null) {
-            directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
-            dir_cache_lock = GLib.Mutex ();
+        if (directory_cache == null) {  // Only happens once on startup.  Async gets added on creation
             return null;
         }
 
@@ -1108,9 +1127,6 @@ public class Async : Object {
     }
 
     public bool remove_dir_from_cache () {
-        /* we got to increment the dir ref to remove the toggle_ref */
-        this.ref ();
-
         removed_from_cache = true;
         return directory_cache.remove (location);
     }

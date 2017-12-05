@@ -27,12 +27,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-//#include <sys/types.h>
 #include <pwd.h>
 #include <grp.h>
-#include "eel-glib-extensions.h"
-#include "eel-i18n.h"
-
+#include <glib/gi18n.h>
 /**
  * eel_get_date_as_string:
  *
@@ -123,7 +120,7 @@ eel_get_user_names (void)
     }
     endpwent ();
 
-    return eel_g_str_list_alphabetize (list);
+    return g_list_sort (list, (GCompareFunc) g_utf8_collate);
 }
 
 /* Get a list of group names, filtered to only the ones
@@ -150,7 +147,7 @@ eel_get_group_names_for_user (void)
         list = g_list_prepend (list, g_strdup (group->gr_name));
     }
 
-    return eel_g_str_list_alphabetize (list);
+    return g_list_sort (list, (GCompareFunc) g_utf8_collate);
 }
 
 /**
@@ -171,7 +168,7 @@ eel_get_all_group_names (void)
 
     endgrent ();
 
-    return eel_g_str_list_alphabetize (list);
+    return g_list_sort (list, (GCompareFunc) g_utf8_collate);
 }
 
 gboolean

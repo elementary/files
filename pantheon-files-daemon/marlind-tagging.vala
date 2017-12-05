@@ -33,23 +33,24 @@ valac --pkg sqlite3 --pkg gio-2.0 -o sqlitesample marlin_tagging.vala && ./sqlit
 
 */
 
-[DBus (name = "org.pantheon.files.db")]
+[DBus (name = "io.elementary.files.db")]
 public class MarlinTags : Object {
 
     protected static Sqlite.Database db;
 
-    public MarlinTags (){
+    public MarlinTags () {
         openMarlinDB ();
     }
 
     protected static void fatal (string op, int res) {
-        error("%s: [%d] %s", op, res, db.errmsg());
+        error ("%s: [%d] %s", op, res, db.errmsg ());
     }
 
     private static int show_table_callback (int n_columns, string[] values, string[] column_names) {
         for (int i = 0; i < n_columns; i++) {
             stdout.printf ("%s = %s\n", column_names[i], values[i]);
         }
+
         stdout.printf ("\n");
 
         return 0;
@@ -60,15 +61,16 @@ public class MarlinTags : Object {
         File data_dir = home_dir.get_child (".config").get_child ("marlin");
 
         try {
-            if (!data_dir.query_exists (null))
+            if (!data_dir.query_exists (null)) {
                 data_dir.make_directory_with_parents (null);
+            }
         } catch (Error err) {
-            stderr.printf ("Unable to create data directory %s: %s", data_dir.get_path (), err.message);
+            warning ("Unable to create data directory %s: %s", data_dir.get_path (), err.message);
         }
 
         string marlin_db_path = data_dir.get_child ("marlin.db").get_path ();
         //The database must exists, add here the full path
-        print ("Database path: %s \n", marlin_db_path);
+        message ("Database path: %s \n", marlin_db_path);
         openDB (marlin_db_path);
 
         return true;
@@ -78,14 +80,16 @@ public class MarlinTags : Object {
         int rc = Sqlite.Database.open_v2 (dbpath, out db, Sqlite.OPEN_READWRITE | Sqlite.OPEN_CREATE, null);
 
         if (rc != Sqlite.OK) {
-            stderr.printf ("Can't open database: %d, %s\n", rc, db.errmsg ());
+            warning ("Can't open database: %d, %s\n", rc, db.errmsg ());
             return false;
         }
 
         // disable synchronized commits for performance reasons ... this is not vital
         rc = db.exec ("PRAGMA synchronous=OFF");
-        if (rc != Sqlite.OK)
-            stdout.printf ("Unable to disable synchronous mode %d, %s\n", rc, db.errmsg ());
+
+        if (rc != Sqlite.OK) {
+            warning ("Unable to disable synchronous mode %d, %s\n", rc, db.errmsg ());
+        }
 
         Sqlite.Statement stmt;
         int res = db.prepare_v2 ("CREATE TABLE IF NOT EXISTS tags ("
@@ -97,10 +101,13 @@ public class MarlinTags : Object {
                                 + "modified_time INTEGER DEFAULT 0, "
                                 + "dir TEXT "
                                 + ")", -1, out stmt);
+
         assert (res == Sqlite.OK);
         res = stmt.step ();
-        if (res != Sqlite.DONE)
+
+        if (res != Sqlite.DONE) {
             fatal ("create tags table", res);
+        }
 
         /* TODO check result of the last sql command */
         upgrade_database ();
@@ -108,24 +115,10 @@ public class MarlinTags : Object {
         return true;
     }
 
-#if 0
-    public async bool record_uri (string raw_uri, string content_type, int modified_time) {
-        var uri = escape(raw_uri);
-
-        var sql = "INSERT OR REPLACE INTO tags (uri,content_type,modified_time) VALUES ('"+uri+"','"+content_type+"',"+modified_time.to_string()+");\n";
-
-        int rc = db.exec (sql, null, null);
-        if (rc != Sqlite.OK) {
-            stderr.printf ("[record_uri: SQL error]  %d, %s\n", rc, db.errmsg ());
-            return false;
-        }
-
-        return true;
-    }
-#endif
-
     public async bool record_uris (Variant[] locations, string directory) {
-        string sql = "";
+        var sql = "";
+        var cmd = "INSERT OR REPLACE INTO tags (uri, content_type, color, modified_time, dir) VALUES ('%s', '%s', %s, %s, '%s');\n";
+
         foreach (var location_variant in locations) {
             VariantIter iter = location_variant.iterator ();
 
@@ -133,12 +126,13 @@ public class MarlinTags : Object {
             var content_type = iter.next_value ().get_string ();
             var modified_time = iter.next_value ().get_string ();
             var color = iter.next_value ().get_string ();
-            sql += "INSERT OR REPLACE INTO tags (uri, content_type, color, modified_time, dir) VALUES ('%s', '%s', %s, %s, '%s');\n".printf (uri, content_type, color, modified_time, directory);
+            sql += cmd.printf (uri, content_type, color, modified_time, directory);
         }
 
         int rc = db.exec (sql, null, null);
+
         if (rc != Sqlite.OK) {
-            stderr.printf ("[record_uri: SQL error]  %d, %s\n", rc, db.errmsg ());
+            warning ("[record_uri: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
 
@@ -172,56 +166,13 @@ public class MarlinTags : Object {
             vb.add ("s", stmt.column_text (2));
             break;
         default:
-            printerr ("[get_uri_infos]: Error: %d, %s\n", rc, db.errmsg ());
+            warning ("[get_uri_infos]: Error: %d, %s\n", rc, db.errmsg ());
             break;
         }
 
         vb.close ();
         return vb.end ();
     }
-
-#if 0
-    public async int getColor(string raw_uri)
-    {
-        Idle.add (getColor.callback);
-        yield;
-        var uri = escape(raw_uri);
-        string c = "select color from tags where uri='" + uri + "'";
-        Statement stmt;
-        int rc = 0;
-        int col, cols;
-        string txt = "0";
-
-        if ((rc = db.prepare_v2 (c, -1, out stmt, null)) == 1) {
-            printerr ("[getColor]: SQL error: %d, %s\n", rc, db.errmsg ());
-            return -1;
-        }
-        cols = stmt.column_count();
-        do {
-            rc = stmt.step();
-            switch (rc) {
-            case Sqlite.DONE:
-                break;
-            case Sqlite.ROW:
-                for (col = 0; col < cols; col++) {
-                    txt = stmt.column_text(col);
-                }
-                break;
-            default:
-                printerr ("[getColor]: Error: %d, %s\n", rc, db.errmsg ());
-                break;
-            }
-        } while (rc == Sqlite.ROW);
-
-        int ret = int.parse(txt);
-        /* It appears that a db error return -1, we got to check the value just in case */
-        if(ret == -1){
-            ret = 0;
-        }
-
-        return ret;
-    }
-#endif
 
     public async bool deleteEntry (string uri) {
         Idle.add (deleteEntry.callback);
@@ -230,12 +181,14 @@ public class MarlinTags : Object {
         int   rc = db.exec (c, null, null);
 
         if (rc != Sqlite.OK) {
-            stderr.printf ("[deleteEntry: SQL error]  %d, %s\n", rc, db.errmsg ());
+            warning ("[deleteEntry: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
 
         return true;
     }
+
+/************* Used for maintenance only *************/
 
     public bool showTable (string table) {
         stdout.printf ("showTable\n");
@@ -243,7 +196,7 @@ public class MarlinTags : Object {
         int rc = db.exec (consult, show_table_callback, null);
 
         if (rc != Sqlite.OK) {
-            stderr.printf ("[showTable: SQL error]: %d, %s\n", rc, db.errmsg ());
+            warning ("[showTable: SQL error]: %d, %s\n", rc, db.errmsg ());
             return false;
         }
 
@@ -255,7 +208,7 @@ public class MarlinTags : Object {
         int   rc = db.exec (c, null, null);
 
         if (rc != Sqlite.OK) {
-            stderr.printf ("[clearDB: SQL error]  %d, %s\n", rc, db.errmsg ());
+            warning ("[clearDB: SQL error]  %d, %s\n", rc, db.errmsg ());
             return false;
         }
 
@@ -264,21 +217,22 @@ public class MarlinTags : Object {
 
     private bool has_column (string table_name, string column_name) {
         Sqlite.Statement stmt;
-        int res = db.prepare_v2("PRAGMA table_info(%s)".printf (table_name), -1, out stmt);
+        int res = db.prepare_v2 ("PRAGMA table_info(%s)".printf (table_name), -1, out stmt);
         assert (res == Sqlite.OK);
 
-        for (;;) {
+        while (true) {
             res = stmt.step ();
+
             if (res == Sqlite.DONE) {
                 break;
             } else if (res != Sqlite.ROW) {
-                fatal ("has_column %s".printf(table_name), res);
-
+                critical ("has_column %s".printf (table_name), res);
                 break;
             } else {
                 string column = stmt.column_text (1);
-                if (column != null && column == column_name)
+                if (column != null && column == column_name) {
                     return true;
+                }
             }
         }
 
@@ -289,9 +243,10 @@ public class MarlinTags : Object {
         Sqlite.Statement stmt;
         int res = db.prepare_v2 ("ALTER TABLE %s ADD COLUMN %s %s".printf (table_name, column_name,
             column_constraints), -1, out stmt);
-        assert (res == Sqlite.OK);
 
+        assert (res == Sqlite.OK);
         res = stmt.step ();
+
         if (res != Sqlite.DONE) {
             critical ("Unable to add column %s %s %s: (%d) %s", table_name, column_name, column_constraints,
                 res, db.errmsg ());
@@ -303,20 +258,28 @@ public class MarlinTags : Object {
     }
 
     private void upgrade_database () {
-        if (!has_column("tags", "content_type")) {
-            message("upgrade_database: adding content_type column to tags");
-            if (!add_column("tags", "content_type", "TEXT"))
+        if (!has_column ("tags", "content_type")) {
+            message ("upgrade_database: adding content_type column to tags");
+
+            if (!add_column ("tags", "content_type", "TEXT")) {
                 warning ("UPGRADE_ERROR");
+            }
         }
-        if (!has_column("tags", "modified_time")) {
-            message("upgrade_database: adding modified_time column to tags");
-            if (!add_column("tags", "modified_time", "INTEGER DEFAULT 0"))
+
+        if (!has_column ("tags", "modified_time")) {
+            message ("upgrade_database: adding modified_time column to tags");
+
+            if (!add_column ("tags", "modified_time", "INTEGER DEFAULT 0")) {
                 warning ("UPGRADE_ERROR");
+            }
         }
-        if (!has_column("tags", "dir")) {
+
+        if (!has_column ("tags", "dir")) {
             message("upgrade_database: adding dir column to tags");
-            if (!add_column("tags", "dir", "TEXT"))
+
+            if (!add_column ("tags", "dir", "TEXT")) {
                 warning ("UPGRADE_ERROR");
+            }
         }
     }
 }

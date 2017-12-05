@@ -113,10 +113,10 @@ namespace FM {
                 tree.set_column_spacing (spacing);
                 tree.set_item_width (item_width);
             }
-            name_renderer.item_width = item_width;
-            name_renderer.set_property ("zoom-level", zoom_level);
 
-            base.change_zoom_level ();
+            name_renderer.item_width = item_width;
+
+            base.change_zoom_level (); /* Sets name_renderer zoom_level */
         }
 
         public override GLib.List<Gtk.TreePath> get_selected_paths () {
@@ -133,11 +133,11 @@ namespace FM {
             return tree.get_path_at_pos (win_x, win_y + (int)(get_vadjustment ().get_value ()));
         }
 
-        public override void select_all () {
+        public override void tree_select_all () {
             tree.select_all ();
         }
 
-        public override void unselect_all () {
+        public override void tree_unselect_all () {
             tree.unselect_all ();
         }
 

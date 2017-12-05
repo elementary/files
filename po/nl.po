@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-07-09 10:37+0000\n"
+"PO-Revision-Date: 2017-10-31 23:57+0000\n"
 "Last-Translator: Dieter Debast <dieter_debast@hotmail.com>\n"
-"Language-Team: Dutch <https://l10n.elementary.io/projects/files/files/nl/>\n"
+"Language-Team: Dutch <https://weblate.elementary.io/projects/files/files/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14\n"
+"X-Generator: Weblate 2.16\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -483,14 +484,19 @@ msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Alle items in all prullenbak mappen, inclusief die op alle gekoppelde "
+"externe schijven, worden permanent verwijderd."
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
+"Alle items permanent uit de prullenbak op deze gekoppelde schijf verwijderen?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
+"Alle items in de prullenbak op deze gekoppelde schijf, worden permanent "
+"verwijderd."
 
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
@@ -599,49 +605,65 @@ msgstr[1] "%'d bestanden over om in de prullenbak te gooien"
 #: ../libcore/marlin-file-operations.c:1949
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Kan het bestand niet verplaatsen naar de prullenbak of verwijderen"
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"Het is niet toegestaan bestanden naar de prullenbak te verplaatsen of te "
+"verwijderen op een alleen-lezen bestandssysteem."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
+"Het is niet toegestaan om bestanden, die in mappen staan waarvoor je geen "
+"schrijfrechten hebt, naar de prullenbak te verplaatsen of te verwijderen."
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
+"Het is niet toegestaan om mappen, waar je geen schrijfrechten voor hebt, "
+"naar de prullenbak te verplaatsen of te verwijderen."
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
+"Kan bestand niet naar de prullenbak verplaatsen. Wilt u het bestand direct "
+"proberen te verwijderen?"
 
 #: ../libcore/marlin-file-operations.c:1956
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"Het bestand kan niet naar de prullenbak worden verplaatst. Zie hieronder "
+"voor meer informatie."
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr ""
+"Kan bestand niet naar de prullenbak verplaatsen. Wilt u het bestand proberen "
+"te verwijderen?"
 
 #: ../libcore/marlin-file-operations.c:1961
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
+"Dit bestand kan niet naar de prullenbak worden verplaatst. Het kan mogelijks "
+"ook niet verwijderd worden."
 
 #: ../libcore/marlin-file-operations.c:1966
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" Een bestand verwijderen is permanent"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
@@ -1148,7 +1170,7 @@ msgstr "‘%s’ terugplaatsen naar ‘%s’"
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "'%s' hernoemen naar '%s'"
+msgstr "Hernoem '%s' naar '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1278
 #: ../libcore/marlin-undostack-manager.c:1473
@@ -1492,12 +1514,12 @@ msgstr[1] "Wijzigen eigenaar van %d onderdelen op_nieuw uitvoeren"
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
-msgstr ""
+msgstr "Vorige"
 
 #: ../filechooser-module/FileChooserDialog.vala:76
 #: ../src/View/Widgets/TopMenu.vala:69
 msgid "Next"
-msgstr ""
+msgstr "Volgende"
 
 #: ../src/View/AbstractDirectoryView.vala:581
 msgid "Failed to preview"
@@ -1517,7 +1539,7 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Ongeldige bestandsnaam opgegeven"
 
 #: ../src/View/AbstractDirectoryView.vala:2011
 msgid "Invalid"
@@ -1542,7 +1564,7 @@ msgstr "Openen met"
 
 #: ../src/View/AbstractDirectoryView.vala:2094
 msgid "Other Application"
-msgstr ""
+msgstr "Andere toepassing"
 
 #: ../src/View/AbstractDirectoryView.vala:2355
 msgid "Untitled %s"
@@ -1569,16 +1591,16 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Kan bestanden hier niet plakken"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
-msgstr ""
+msgstr "Herlaad deze map"
 
 #: ../src/View/Widgets/LocationBar.vala:189
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Voer zoekterm of pad in"
 
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
@@ -1653,11 +1675,11 @@ msgstr "Openen in nieuw tabblad"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open in New Window"
-msgstr ""
+msgstr "Openen in nieuw venster"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Openen in andere toepassing…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1725,7 +1747,7 @@ msgstr "Prullenbak"
 
 #: ../src/View/Sidebar.vala:571
 msgid "Open the Trash"
-msgstr ""
+msgstr "Open de prullenbak"
 
 #: ../src/View/Sidebar.vala:576
 msgid "Devices"
@@ -1783,7 +1805,7 @@ msgstr "Verwijder"
 
 #: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr ""
+msgstr "Hernoemen"
 
 #: ../src/View/Sidebar.vala:1513
 msgid "_Mount"
@@ -1830,11 +1852,11 @@ msgstr ""
 
 #: ../src/View/Slot.vala:32
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Deze map is leeg"
 
 #: ../src/View/Slot.vala:33
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Prullenbak is leeg"
 
 #: ../src/View/Slot.vala:34
 msgid "There Are No Recent Files"
@@ -1910,7 +1932,7 @@ msgstr "URI('s) in nieuwe tab openen"
 
 #: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr ""
+msgstr "Nieuw venster"
 
 #: ../src/Application.vala:140
 msgid "Quit Files."
@@ -2056,7 +2078,7 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr ""
+msgstr "Andere toepassing…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2176,7 +2198,7 @@ msgstr "Het bestand kan niet uit de prullenbak teruggehaald worden"
 
 #: ../libcore/FileUtils.vala:345
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Kan niet hernoemen naar '%s'"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
@@ -2196,7 +2218,7 @@ msgstr ""
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Kan \"%s\" niet uitvoeren"
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
@@ -2300,15 +2322,16 @@ msgstr ""
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Alles herstellen"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Maak prullenbak leeg"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
 msgstr ""
+"Deze items kunnen mogelijk worden hersteld of verwijderd uit de prullenbak."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
@@ -2316,7 +2339,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Herstel uit prullenbak"
 
 #: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
@@ -2332,11 +2355,11 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "Verplaats naar prullenbak"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr ""
+msgstr "Nieuw"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
@@ -2344,7 +2367,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr ""
+msgstr "Leeg bestand"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
@@ -2356,7 +2379,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr ""
+msgstr "Nieuwe tab"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
@@ -2364,15 +2387,15 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
-msgstr ""
+msgstr "Bladwijzer"
 
 #: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
-msgstr ""
+msgstr "Plakken"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Cut"
-msgstr ""
+msgstr "Knippen"
 
 #: ../src/View/directory_view_popup.ui:124
 msgid "Copy"
@@ -2380,11 +2403,11 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:128
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Plakken in map"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Sort by"
-msgstr ""
+msgstr "Sorteer op"
 
 #: ../src/View/directory_view_popup.ui:138
 msgid "Name"
@@ -2396,7 +2419,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
-msgstr ""
+msgstr "Omgekeerde volgorde"
 
 #~ msgid "A simple and powerful file manager"
 #~ msgstr "Een eenvoudige en krachtige bestandsbeheerder"

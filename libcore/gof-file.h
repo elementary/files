@@ -61,11 +61,9 @@ typedef enum /*< flags >*/
 
 typedef struct _GOFFile GOFFile;
 typedef struct _GOFFileClass GOFFileClass;
-//typedef struct _GOFFilePrivate GOFFilePrivate;
 
 struct _GOFFile {
     GObject parent_instance;
-    //GOFFilePrivate  *priv;
 
     GFileInfo       *info;
     GFile           *location;
@@ -134,12 +132,7 @@ struct _GOFFileClass {
 
 };
 
-/*
-#define GIO_SUCKLESS_DEFAULT_ATTRIBUTES                                \
-"standard::type,standard::is-hidden,standard::name,standard::display-name,standard::edit-name,standard::copy-name,standard::fast-content-type,standard::size,standard::allocated-size,access::*,mountable::*,time::*,unix::*,owner::*,selinux::*,thumbnail::*,id::filesystem,trash::orig-path,trash::deletion-date,metadata::*"
-*/
-
-#define GOF_FILE_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed"
+#define GOF_FILE_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::content-type,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed"
 
 typedef enum {
     GOF_FILE_ICON_FLAGS_NONE = 0,
@@ -264,7 +257,6 @@ gboolean        gof_file_is_recent_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_smb_share (GOFFile *file);
 gboolean        gof_file_is_smb_server (GOFFile *file);
 gboolean        gof_file_is_mountable (GOFFile *file);
-gboolean        gof_file_thumb_can_frame (GOFFile *file);
 
 char            *gof_file_get_display_target_uri (GOFFile *file);
 G_END_DECLS

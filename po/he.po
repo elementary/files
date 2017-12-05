@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-07-23 14:50+0000\n"
+"PO-Revision-Date: 2017-09-02 11:13+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew "
 "<https://weblate.elementary.io/projects/files/files/he/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.15\n"
+"X-Generator: Weblate 2.16\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1573,7 +1573,7 @@ msgstr " ו־%u פריטים נוספים (%s) נבחרו"
 #: ../src/View/Widgets/OverlayBar.vala:236
 #: ../src/View/Widgets/OverlayBar.vala:244
 msgid " selected"
-msgstr ""
+msgstr " נבחרו"
 
 #: ../src/View/Widgets/OverlayBar.vala:238
 #: ../src/Dialogs/PropertiesWindow.vala:1162

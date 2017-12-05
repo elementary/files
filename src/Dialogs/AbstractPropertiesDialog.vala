@@ -46,7 +46,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     construct {
         set_default_size (220, -1);
 
-        var info_header = new HeaderLabel (_("Info"));
+        var info_header = new Granite.HeaderLabel (_("Info"));
 
         info_grid = new Gtk.Grid ();
         info_grid.column_spacing = 6;
@@ -54,25 +54,24 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         info_grid.attach (info_header, 0, 0, 2, 1);
 
         stack = new Gtk.Stack ();
-        stack.margin_bottom = 12;
         stack.add_titled (info_grid, PanelType.INFO.to_string (), _("General"));
 
         stack_switcher = new Gtk.StackSwitcher ();
-        stack_switcher.halign = Gtk.Align.CENTER;
+        stack_switcher.homogeneous = true;
         stack_switcher.margin_top = 12;
         stack_switcher.no_show_all = true;
         stack_switcher.stack = stack;
 
         layout = new Gtk.Grid ();
-        layout.margin = 6;
+        layout.margin = 12;
         layout.margin_top = 0;
         layout.column_spacing = 12;
         layout.row_spacing = 6;
         layout.attach (stack_switcher, 0, 1, 2, 1);
         layout.attach (stack, 0, 2, 2, 1);
 
-        var content_area = get_content_area () as Gtk.Box;
-        content_area.add (layout);
+        ((Gtk.Box) get_content_area ()).add (layout);
+        ((Gtk.Box) get_action_area ()).margin = 6;
 
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
@@ -85,7 +84,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     }
 
     protected void create_header_title () {
-        header_title.get_style_context ().add_class ("h2");
+        header_title.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
         header_title.hexpand = true;
         header_title.margin_top = 6;
         header_title.valign = Gtk.Align.CENTER;
@@ -134,7 +133,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     }
 
     protected void create_storage_bar (GLib.FileInfo file_info, int line) {
-        var storage_header = new HeaderLabel (_("Device Usage"));
+        var storage_header = new Granite.HeaderLabel (_("Device Usage"));
         info_grid.attach (storage_header, 0, line, 1, 1);
 
         if (file_info != null &&

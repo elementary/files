@@ -110,7 +110,6 @@ file_entry_free (FileEntry *file_entry)
     g_free (file_entry);
 }
 
-//amtest
 static GtkTreeModelFlags
 fm_list_model_get_flags (GtkTreeModel *tree_model)
 {
@@ -534,15 +533,19 @@ fm_list_model_file_entry_compare_func (gconstpointer a,
     file_entry1 = (FileEntry *)a;
     file_entry2 = (FileEntry *)b;
 
-    if (file_entry1->file != NULL && file_entry2->file != NULL) {
+    if (file_entry1->file != NULL && file_entry2->file != NULL &&
+        file_entry1->file->location != NULL && file_entry2->file->location != NULL) {
+
         result = gof_file_compare_for_sort (file_entry1->file, file_entry2->file,
                                             model->details->sort_id,
                                             TRUE,
                                             (model->details->order == GTK_SORT_DESCENDING));
-    } else if (file_entry1->file == NULL) {
-        return -1;
+
+    } else if (file_entry1->file == NULL || file_entry1->file->location == NULL) {
+        /* Dummy rows representing expanded empty directories have null files */
+        result = -1;
     } else {
-        return 1;
+        result = 1;
     }
 
     return result;
@@ -698,7 +701,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     gboolean replaced_dummy;
     GHashTable *parent_hash;
 
-    g_return_val_if_fail (file != NULL, FALSE);
+    g_return_val_if_fail (file != NULL && file->location != NULL, FALSE);
     parent_ptr = g_hash_table_lookup (model->details->directory_reverse_map,
                                       directory);
     if (parent_ptr) {
@@ -710,7 +713,6 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
     }
 
     if (ptr != NULL) {
-        //~ g_debug ("file already in tree (parent_ptr: %p)!!!\n", parent_ptr);
         return FALSE;
     }
 
@@ -870,7 +872,6 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
             } else {
                 path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), iter);
                 gtk_tree_path_append_index (path, 0);
-                //model->details->stamp++;
                 g_sequence_remove (child_ptr);
                 gtk_tree_model_row_deleted (GTK_TREE_MODEL (model), path);
                 gtk_tree_path_free (path);
@@ -912,7 +913,6 @@ fm_list_model_remove (FMListModel *model, GtkTreeIter *iter)
     path = gtk_tree_model_get_path (GTK_TREE_MODEL (model), iter);
 
     g_sequence_remove (ptr);
-    //model->details->stamp++;
     gtk_tree_model_row_deleted (GTK_TREE_MODEL (model), path);
 
     gtk_tree_path_free (path);

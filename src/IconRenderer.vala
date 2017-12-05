@@ -102,8 +102,11 @@ namespace Marlin {
                 flags |= Gtk.CellRendererState.PRELIT;
                 special_icon_name = "folder-drag-accept";
 
-            } else if (file.is_directory && file.is_expanded) {
-                special_icon_name = "folder-open";
+            } else if (file.is_directory) {
+                bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0;
+                if (expanded) {
+                    special_icon_name = "folder-open";
+                }
             }
 
             if (special_icon_name != null) {
@@ -128,6 +131,7 @@ namespace Marlin {
 
             bool prelit = (flags & Gtk.CellRendererState.PRELIT) > 0;
             bool selected = (flags & Gtk.CellRendererState.SELECTED) > 0;
+            bool focused = (flags & Gtk.CellRendererState.FOCUSED) > 0;
             var state = Gtk.StateFlags.NORMAL;
 
             if (!widget.sensitive || !this.sensitive) {
@@ -148,7 +152,8 @@ namespace Marlin {
                         }
                     }
                 }
-                if (prelit) {
+
+                if (prelit || focused) {
                     pb = Eel.create_spotlight_pixbuf (pb);
                 }
             }

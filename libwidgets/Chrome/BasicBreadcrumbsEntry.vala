@@ -34,8 +34,8 @@ namespace Marlin.View.Chrome {
         protected Gee.ArrayList<BreadcrumbElement> elements;
         private BreadcrumbIconList breadcrumb_icons;
         private int minimum_width;
-        /*Animation support */
 
+        /*Animation support */
         protected bool animation_visible = true;
         uint animation_timeout_id = 0;
         protected Gee.Collection<BreadcrumbElement>? old_elements;
@@ -501,7 +501,7 @@ namespace Marlin.View.Chrome {
 
             foreach (BreadcrumbIconInfo icon in breadcrumb_icons.get_list ()) {
                 if (icon.protocol && protocol.has_prefix (icon.path)) {
-                    newelements[0].set_icon (icon.icon);
+                    newelements[0].set_icon (icon.icon, breadcrumb_icons.scale);
                     newelements[0].set_icon_name (icon.icon_name);
                     newelements[0].text_for_display = icon.text_displayed;
                     newelements[0].text_is_displayed = (icon.text_displayed != null);
@@ -523,7 +523,7 @@ namespace Marlin.View.Chrome {
                             newelements[j].display = false;
 
                         newelements[h].display = true;
-                        newelements[h].set_icon (icon.icon);
+                        newelements[h].set_icon (icon.icon, breadcrumb_icons.scale);
                         newelements[h].set_icon_name (icon.icon_name);
                         newelements[h].text_is_displayed = (icon.text_displayed != null) || !icon.break_loop;
                         newelements[h].text_for_display = icon.text_displayed;
@@ -625,6 +625,17 @@ namespace Marlin.View.Chrome {
             double height = get_allocated_height ();
             double width = get_allocated_width ();
 
+            int scale = get_style_context ().get_scale ();
+            if (breadcrumb_icons.scale != scale) {
+                breadcrumb_icons.scale = scale;
+
+                string protocol = "";
+                if (elements.size > 0) {
+                    protocol  = elements[0].text;
+                }
+                set_element_icons (protocol, elements);
+            }
+
             Gtk.Border border = button_context_active.get_margin (Gtk.StateFlags.ACTIVE);
 
             if (!is_focus) {
@@ -655,13 +666,11 @@ namespace Marlin.View.Chrome {
                 cr.save ();
                 /* Really draw the elements */
                 foreach (BreadcrumbElement element in displayed_breadcrumbs) {
+                    x_render = element.draw (cr, x_render, margin, height_marged, button_context, is_RTL, scale, this);
+                    /* save element x axis position */
                     if (is_RTL) {
-                        x_render = element.draw (cr, x_render, margin, height_marged, button_context, true, this);
-                        /* save element x axis position */
                         element.x = x_render + element.real_width;
                     } else {
-                        x_render = element.draw (cr, x_render, margin, height_marged, button_context, false, this);
-                        /* save element x axis position */
                         element.x = x_render - element.real_width;
                     }
                 }
@@ -669,13 +678,11 @@ namespace Marlin.View.Chrome {
                 if (old_elements != null) {
                     foreach (BreadcrumbElement element in old_elements) {
                         if (element.display) {
+                            x_render = element.draw (cr, x_render, margin, height_marged, button_context, is_RTL, scale, this);
+                            /* save element x axis position */
                             if (is_RTL) {
-                                x_render = element.draw (cr, x_render, margin, height_marged, button_context, true, this);
-                                /* save element x axis position */
                                 element.x = x_render + element.real_width;
                             } else {
-                                x_render = element.draw (cr, x_render, margin, height_marged, button_context, false, this);
-                                /* save element x axis position */
                                 element.x = x_render - element.real_width;
                             }
                         }

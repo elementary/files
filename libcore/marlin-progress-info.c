@@ -23,8 +23,6 @@
 
 #include <math.h>
 #include <glib/gi18n.h>
-#include "eel-string.h"
-/*#include <eel/eel-glib-extensions.h>*/
 #include "marlin-progress-info.h"
 #include "marlin-progress-info-manager.h"
 
@@ -515,7 +513,7 @@ marlin_progress_info_take_status (MarlinProgressInfo *info,
 {
     G_LOCK (progress_info);
 
-    if (eel_strcmp (info->status, status) != 0) {
+    if ((info->status || status) && g_strcmp0 (info->status, status) != 0) {
         g_free (info->status);
         info->status = status;
 
@@ -534,7 +532,7 @@ marlin_progress_info_set_status (MarlinProgressInfo *info,
 {
     G_LOCK (progress_info);
 
-    if (eel_strcmp (info->status, status) != 0) {
+    if ((info->status || status) && g_strcmp0 (info->status, status) != 0) {
         g_free (info->status);
         info->status = g_strdup (status);
 
@@ -552,7 +550,7 @@ marlin_progress_info_take_details (MarlinProgressInfo *info,
 {
     G_LOCK (progress_info);
 
-    if (eel_strcmp (info->details, details) != 0) {
+    if ((info->details || details) && g_strcmp0 (info->details, details) != 0) {
         g_free (info->details);
         info->details = details;
 
@@ -571,7 +569,7 @@ marlin_progress_info_set_details (MarlinProgressInfo *info,
 {
     G_LOCK (progress_info);
 
-    if (eel_strcmp (info->details, details) != 0) {
+    if ((info->details || details) && g_strcmp0 (info->details, details) != 0) {
         g_free (info->details);
         info->details = g_strdup (details);
 
