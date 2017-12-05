@@ -129,10 +129,10 @@ namespace Marlin.View {
             if (show_window) { /* otherwise Application will size and show window */
                 if (Preferences.settings.get_boolean ("maximized")) {
                     maximize ();
-                } else {
-                    resize (Preferences.settings.get_int ("window-width"),
-                            Preferences.settings.get_int ("window-height"));
                 }
+
+                default_width = Preferences.settings.get_int ("window-width");
+                default_height = Preferences.settings.get_int ("window-height");
                 show ();
             }
         }
