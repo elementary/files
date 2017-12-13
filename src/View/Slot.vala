@@ -134,11 +134,11 @@ namespace Marlin.View {
         }
 
         private void on_dir_view_item_hovered (GOF.File? file) {
-            ctab.on_item_hovered (file);
+            item_hovered (file);
         }
 
         private void on_dir_view_selection_changed (GLib.List<GOF.File> files) {
-            ctab.on_selection_changed (files);
+            selection_changed (files);
         }
 
         private void connect_dir_signals () {
@@ -152,7 +152,7 @@ namespace Marlin.View {
         }
 
         private void on_directory_done_loading (GOF.Directory.Async dir) {
-            ctab.directory_done_loading (this);
+            directory_loaded (dir);
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                 autosize_slot ();
@@ -166,7 +166,7 @@ namespace Marlin.View {
                 dir_view.prepare_reload (dir); /* clear model but do not change directory */
                 /* view and slot are unfrozen when done loading signal received */
                 is_frozen = true;
-                path_changed (false);
+                path_changed ();
                 /* if original_request false, leave original_load_request as it is (it may already be true
                  * if reloading in response to reload button press). */
                 if (original_request) {
@@ -216,7 +216,7 @@ namespace Marlin.View {
         /* This delay in passing on the path change request is necessary to prevent occasional crashes
          * due to undiagnosed bug.
          */
-        private void schedule_path_change_request (GLib.File loc, int flag, bool make_root) {
+        private void schedule_path_change_request (GLib.File loc, Marlin.OpenFlag flag, bool make_root) {
             if (path_change_timeout_id > 0) {
                 warning ("Path change request received too rapidly");
                 return;
@@ -228,15 +228,15 @@ namespace Marlin.View {
             });
         }
 
-        private void on_dir_view_path_change_request (GLib.File loc, int flag, bool make_root) {
+        private void on_dir_view_path_change_request (GLib.File loc, Marlin.OpenFlag flag, bool make_root) {
             if (flag == 0) { /* make view in existing container */
                 if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                     miller_slot_request (loc, make_root); /* signal to parent MillerView */
                 } else {
-                    user_path_change_request (loc, false, make_root); /* Handle ourselves */
+                    user_path_change_request (loc, make_root); /* Handle ourselves */
                 }
             } else {
-                ctab.new_container_request (loc, flag);
+                new_container_request (loc, flag);
             }
         }
 
@@ -277,16 +277,14 @@ namespace Marlin.View {
             has_autosized = true;
         }
 
-        public override void user_path_change_request (GLib.File loc, bool allow_mode_change = true, bool make_root = true) {
+        public override void user_path_change_request (GLib.File loc, bool make_root = true) {
         /** Only this function must be used to change or reload the path **/
             assert (loc != null);
             var old_dir = directory;
             set_up_directory (loc);
 
-            path_changed (allow_mode_change && directory.uri_contain_keypath_icons);
-            /* ViewContainer listens to this signal takes care of updating appearance
-             * If allow_mode_change is false View Container will not automagically
-             * switch to icon view for icon folders (needed for Miller View) */
+            path_changed ();
+            /* ViewContainer listens to this signal takes care of updating appearance */
             dir_view.change_directory (old_dir, directory);
             initialize_directory ();
         }

@@ -37,7 +37,7 @@ namespace FM
         public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
         public bool get_tree_iter_from_file (GOF.File file, GOF.Directory.Async directory, out Gtk.TreeIter iter);
         public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file);
-        public GOF.File file_for_iter (Gtk.TreeIter iter);
+        public GOF.File? file_for_iter (Gtk.TreeIter iter);
         public void clear ();
         public signal void subdirectory_unloaded (GOF.Directory.Async directory);
     }
@@ -296,7 +296,6 @@ namespace GOF {
         public bool link_known_target;
         public bool is_smb_share ();
         public bool is_smb_server ();
-        public bool thumb_can_frame ();
         public uint flags;
 
         public Gdk.DragAction accepts_drop (GLib.List<GLib.File> file_list, Gdk.DragContext context, out Gdk.DragAction suggested_action_return);

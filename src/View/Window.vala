@@ -106,6 +106,10 @@ namespace Marlin.View {
             if (is_first_window) {
                 set_accelerators ();
             }
+
+            /* Ensure tab key works as desired (toggle between sidebar and view).  Other widgets/functions
+             * have other keyboard shortcuts (location bar, view mode etc) */
+            unset_focus_chain ();
         }
 
         construct {
@@ -125,10 +129,10 @@ namespace Marlin.View {
             if (show_window) { /* otherwise Application will size and show window */
                 if (Preferences.settings.get_boolean ("maximized")) {
                     maximize ();
-                } else {
-                    resize (Preferences.settings.get_int ("window-width"),
-                            Preferences.settings.get_int ("window-height"));
                 }
+
+                default_width = Preferences.settings.get_int ("window-width");
+                default_height = Preferences.settings.get_int ("window-height");
                 show ();
             }
         }
@@ -216,15 +220,17 @@ namespace Marlin.View {
             });
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
-            button_press_event.connect (on_button_press_event);
+            button_press_event.connect_after (on_button_press_event);
 
-            /* Toggle focus between sidebar and view using Tab key, unless location
+            /* Toggle focus between sidebar and view using unmodified Tab key, unless location
              * bar in focus. */
-            key_press_event.connect ((event) => {
+            key_press_event.connect_after ((event) => {
+                var mods = (event.state & Gtk.accelerator_get_default_mod_mask ());
+
                 switch (event.keyval) {
                     case Gdk.Key.Tab:
                     case Gdk.Key.KP_Tab:
-                        if (top_menu.locked_focus) {
+                        if (mods != 0 || top_menu.locked_focus) {
                             return false;
                         }
                         /* This works better than trying to use a focus chain */
@@ -234,11 +240,24 @@ namespace Marlin.View {
                         } else {
                             sidebar.grab_focus ();
                         }
+
                     return true;
 
                     default:
-                        return false;
+                        /* Use find function instead of view interactive search */
+                        if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
+                            /* Use printable characters to initiate search */
+                            if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
+                                win_actions.activate_action ("find", null);
+                                key_press_event (event);
+                                return true;
+                            }
+                        }
+
+                        break;
                 }
+
+                return false;
             });
 
 
@@ -319,6 +338,8 @@ namespace Marlin.View {
             sidebar.sync_needed.connect (() => {
                 loading_uri (current_tab.uri);
             });
+
+            sidebar.path_change_request.connect (uri_path_change_request);
         }
 
         private void make_bindings () {
@@ -360,6 +381,7 @@ namespace Marlin.View {
                 default:
                     break;
             }
+
             return result;
         }
 
@@ -376,7 +398,7 @@ namespace Marlin.View {
             current_tab.go_back (n);
         }
 
-        public void new_container_request (GLib.File loc, Marlin.OpenFlag flag) {
+        private void open_new_container (GLib.File loc, Marlin.OpenFlag flag) {
             switch (flag) {
                 case Marlin.OpenFlag.NEW_TAB:
                     add_tab (loc, current_tab.view_mode);
@@ -816,12 +838,12 @@ namespace Marlin.View {
         }
 
         public void quit () {
-            top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
-
             if (is_first_window) {
                 save_geometries ();
                 save_tabs ();
             }
+
+            top_menu.destroy (); /* stop unwanted signals if quit while pathbar in focus */
 
             tabs.tab_removed.disconnect (on_tab_removed); /* Avoid infinite loop */
 
@@ -834,9 +856,11 @@ namespace Marlin.View {
         }
 
         private void save_geometries () {
-            save_sidebar_width ();
+            var sidebar_width = lside_pane.get_position ();
+            var min_width = Preferences.settings.get_int ("minimum-sidebar-width");
 
-            bool is_maximized = (bool) get_window ().get_state () & Gdk.WindowState.MAXIMIZED;
+            sidebar_width = int.max (sidebar_width, min_width);
+            Preferences.settings.set_int ("sidebar-width", sidebar_width);
 
             if (is_maximized == false) {
                 int width, height;
@@ -846,14 +870,6 @@ namespace Marlin.View {
             }
 
             Preferences.settings.set_boolean ("maximized", is_maximized);
-        }
-
-        private void save_sidebar_width () {
-            var sw = lside_pane.get_position ();
-            var mw = Preferences.settings.get_int ("minimum-sidebar-width");
-
-            sw = int.max (sw, mw);
-            Preferences.settings.set_int ("sidebar-width", sw);
         }
 
         private void save_tabs () {
@@ -1050,7 +1066,7 @@ namespace Marlin.View {
                  */
                 current_tab.focus_location (loc);
             } else {
-                new_container_request (loc, flag);
+                open_new_container (loc, flag);
             }
         }
 
@@ -1093,8 +1109,8 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.find", {"<Ctrl>F"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
-            application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down"});
-            application.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up"});
+            application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
+            application.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
             application.set_accels_for_action ("win.view_mode::ICON", {"<Ctrl>1"});
             application.set_accels_for_action ("win.view_mode::LIST", {"<Ctrl>2"});
             application.set_accels_for_action ("win.view_mode::MILLER", {"<Ctrl>3"});

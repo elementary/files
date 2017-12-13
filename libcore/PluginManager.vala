@@ -225,8 +225,9 @@ public class Marlin.PluginManager : Object {
     }
 
     public void update_file_info (GOF.File file) {
-        foreach (var plugin in plugin_hash.values)
+        foreach (var plugin in plugin_hash.values) {
             plugin.update_file_info (file);
+        }
     }
 
     public Gee.List<string> get_available_plugins () {

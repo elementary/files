@@ -78,16 +78,16 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         text_for_display = Uri.unescape_string (text);
     }
 
-    public void set_icon (Gdk.Pixbuf icon_) {
+    public void set_icon (Gdk.Pixbuf icon_, int icon_scale) {
         icon = icon_;
-        icon_width = icon.get_width ();
-        icon_half_height = icon.get_height () / 2;
+        icon_width = icon.get_width () / icon_scale;
+        icon_half_height = icon.get_height () / (2 * icon_scale);
     }
     public void set_icon_name (string icon_name_) {
         icon_name = icon_name_;
     }
 
-    public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, bool is_RTL, Gtk.Widget widget) {
+    public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, bool is_RTL, int scale, Gtk.Widget widget) {
         var state = button_context.get_state ();
         if (pressed) {
             state |= Gtk.StateFlags.ACTIVE;
@@ -202,17 +202,17 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     button_context.render_layout (cr, x - width,
                                                   y_half_height - text_half_height, layout);
                 }
-            } else if (!text_is_displayed) {
-                if (room_for_icon) {
-                    button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon_width,
-                                                y_half_height - icon_half_height);
-                }
             } else {
                 if (room_for_icon) {
-                    button_context.render_icon (cr, icon_to_draw, x - ICON_MARGIN - icon_width,
-                                                y_half_height - icon_half_height);
+                    cr.save ();
+                    double draw_scale = 1.0 / scale; 
+                    cr.scale (draw_scale, draw_scale);
+                    button_context.render_icon (cr, icon_to_draw,
+                                                Math.round ((x - ICON_MARGIN - icon_width) * scale),
+                                                Math.round ((y_half_height - icon_half_height) * scale));
+                    cr.restore ();
                 }
-                if (room_for_text) {
+                if (text_is_displayed && room_for_text) {
                     /* text_width already includes icon_width */
                     button_context.render_layout (cr, x - width,
                                                   y_half_height - text_half_height, layout);
@@ -226,17 +226,17 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     button_context.render_layout (cr, x,
                                                   y_half_height - text_half_height, layout);
                 }
-            } else if (!text_is_displayed) {
-                if (room_for_icon) {
-                    button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
-                                                 y_half_height - icon_half_height);
-                }
             } else {
                 if (room_for_icon) {
-                    button_context.render_icon (cr, icon_to_draw, x + ICON_MARGIN,
-                                                 y_half_height - icon_half_height);
+                    cr.save ();
+                    double draw_scale = 1.0 / scale; 
+                    cr.scale (draw_scale, draw_scale);
+                    button_context.render_icon (cr, icon_to_draw,
+                                                Math.round ((x + ICON_MARGIN) * scale),
+                                                Math.round ((y_half_height - icon_half_height) * scale));
+                    cr.restore ();
                 }
-                if (room_for_text) {
+                if (text_is_displayed && room_for_text) {
                     button_context.render_layout (cr, x + iw,
                                                   y_half_height - text_half_height, layout);
                 }
