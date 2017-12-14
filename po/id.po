@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-12-14 13:53+0000\n"
+"PO-Revision-Date: 2017-12-15 00:11+0000\n"
 "Last-Translator: Liffindra Angga Zaaldian <liffindra.zaaldian@icloud.com>\n"
 "Language-Team: Indonesian "
 "<https://weblate.elementary.io/projects/files/files/id/>\n"
@@ -67,7 +67,7 @@ msgstr "Folder \"%s\" tidak dapat dibuka pada \"%s\"."
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "Server di \"%s\" tak ditemukan."
+msgstr "Server di \"%s\" tidak dapat ditemukan."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
@@ -88,7 +88,7 @@ msgstr "Sambung (_O)"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr "Sambung ke Server"
+msgstr "Sambungkan ke Server"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
@@ -120,11 +120,11 @@ msgstr "Rincian Pengguna"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr "Nama _domain:"
+msgstr "_Nama domain:"
 
 #: ../src/marlin-connect-server-dialog.c:1108
 msgid "_User name:"
-msgstr "Nama pengg_una:"
+msgstr "_Nama pengguna:"
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
@@ -132,11 +132,11 @@ msgstr "Kata kunci (_W):"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr "Ingat kata kunci ini (_R)"
+msgstr "_Ingat kata sandi ini"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
-msgstr "Operasi dibatalkan"
+msgstr "Pekerjaan dibatalkan"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
@@ -150,31 +150,33 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"Proses penggabungan minta konfirmasi sebelum menimpa berkas yang konflik "
+"Penggabungan akan meminta kepastian sebelum menimpa berkas yang bertentangan "
 "dengan berkas yang sedang disalin."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Sebuah folder yang lebih lama dengan nama sama telah ada di \"%s\"."
+msgstr ""
+"Sebuah folder yang lebih lama dengan nama yang sama telah ada di \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:158
 #: ../libcore/marlin-file-conflict-dialog.c:384
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Sebuah folder yang lebih baru dengan nama sama telah ada di \"%s\"."
+msgstr ""
+"Sebuah folder yang lebih baru dengan nama yang sama telah ada di \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:162
 #: ../libcore/marlin-file-conflict-dialog.c:388
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Folder lain dengan nama sama telah ada di \"%s\"."
+msgstr "Folder lain dengan nama yang sama telah ada di \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:167
 #: ../libcore/marlin-file-conflict-dialog.c:393
 msgid "Replacing it will remove all files in the folder."
-msgstr "Proses menimpa akan menghilangkan semua berkas dalam folder."
+msgstr "Menimpanya akan menghilangkan semua berkas di dalam folder."
 
 #: ../libcore/marlin-file-conflict-dialog.c:169
 #: ../libcore/marlin-file-conflict-dialog.c:395
@@ -197,25 +199,27 @@ msgstr "Timpa berkas \"%s\"?"
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
 msgid "Replacing it will overwrite its content."
-msgstr "Menimpa objek ini akan menimpa isinya."
+msgstr "Menimpanya akan menimpa isinya juga."
 
 #: ../libcore/marlin-file-conflict-dialog.c:182
 #: ../libcore/marlin-file-conflict-dialog.c:408
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Sebuah berkas yang lebih lama dengan nama sama telah ada di \"%s\"."
+msgstr ""
+"Sebuah berkas yang lebih lama dengan nama yang sama telah ada di \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:186
 #: ../libcore/marlin-file-conflict-dialog.c:412
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Sebuah berkas yang lebih baru dengan nama sama telah ada di \"%s\"."
+msgstr ""
+"Sebuah berkas yang lebih baru dengan nama yang sama telah ada di \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:190
 #: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Berkas lain dengan nama sama telah ada di \"%s\"."
+msgstr "Berkas lain dengan nama yang sama telah ada di \"%s\"."
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:471
@@ -236,7 +240,7 @@ msgstr "Ukuran:"
 #: ../libcore/marlin-file-conflict-dialog.c:496
 #: ../src/Dialogs/PropertiesWindow.vala:491
 msgid "Type:"
-msgstr "Tipe:"
+msgstr "Jenis:"
 
 #: ../libcore/marlin-file-conflict-dialog.c:259
 #: ../libcore/marlin-file-conflict-dialog.c:290
@@ -265,7 +269,7 @@ msgstr "Atur Ulang"
 
 #: ../libcore/marlin-file-conflict-dialog.c:737
 msgid "Apply this action to all files"
-msgstr "Terapkan aksi ini pada semua berkas"
+msgstr "Terapkan tindakan ini pada semua berkas"
 
 #: ../libcore/marlin-file-conflict-dialog.c:748
 #: ../libcore/marlin-file-operations.c:199
@@ -282,7 +286,7 @@ msgstr "Timpa"
 
 #: ../libcore/marlin-file-conflict-dialog.c:832
 msgid "File conflict"
-msgstr "Berkas bermasalah"
+msgstr "Berkas bertentangan"
 
 #: ../libcore/eel-vfs-extensions.c:71
 msgid " (invalid Unicode)"
@@ -446,7 +450,8 @@ msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1384
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Yakin akan membuang \"%B\" selamanya dari tong sampah?"
+msgstr ""
+"Apakah Anda yakin ingin menghapus \"%B\" secara permanen dari tong sampah?"
 
 #: ../libcore/marlin-file-operations.c:1387
 #, c-format
@@ -456,33 +461,35 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "Yakin akan membuang selamanya %'d objek terpilih dari tong sampah?"
+msgstr[0] ""
+"Apakah Anda yakin akan menghapus %'d barang yang terpilih secara permanen "
+"dari tong sampah?"
 
 #: ../libcore/marlin-file-operations.c:1397
 #: ../libcore/marlin-file-operations.c:1477
 msgid "If you delete an item, it will be permanently lost."
-msgstr "Jika anda membuang sebuah objek, maka akan hilang selamanya."
+msgstr "Jika Anda menghapus sebuah barang, maka akan hilang selamanya."
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
-msgstr "Hapus semua item dari Tong Sampah secara permanen?"
+msgstr "Hapus semua barang secara permanen dari Tong Sampah?"
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
-"Semua item di semua direktori sampah, termasuk yang ada pada drive eksternal "
-"yang terpasang, akan dihapus secara permanen."
+"Semua barang di semua direktori sampah, termasuk yang ada pada drive "
+"eksternal yang terkait, akan dihapus secara permanen."
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr "Hapus semua item dari Tong Sampah pada kaitan ini secara permanen?"
+msgstr "Hapus semua barang secara permanen dari Tong Sampah pada kaitan ini?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
-"Semua item di tempat sampah pada kaitan ini, akan dihapus secara permanen."
+"Semua barang di tempat sampah pada kaitan ini, akan dihapus secara permanen."
 
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
@@ -503,13 +510,13 @@ msgstr[0] "Anda yakin akan membuang %'d objek terpilih selamanya?"
 #: ../libcore/marlin-file-operations.c:1493
 #: ../libcore/marlin-file-operations.c:1525
 msgid "Deleting files"
-msgstr "Membuang berkas"
+msgstr "Menghapus berkas-berkas"
 
 #: ../libcore/marlin-file-operations.c:1519
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "tinggal %'d berkas yang akan dibuang"
+msgstr[0] "tersisa %'d berkas lagi yang akan dihapus"
 
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
@@ -524,7 +531,7 @@ msgstr[0] "tersisa %T"
 #: ../libcore/marlin-file-operations.c:1756
 #: ../libcore/marlin-file-operations.c:2673
 msgid "Error while deleting."
-msgstr "Error saat membuang."
+msgstr "Terjadi kesalahan saat menghapus."
 
 #: ../libcore/marlin-file-operations.c:1610
 msgid ""
