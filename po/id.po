@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-12-14 13:51+0000\n"
+"PO-Revision-Date: 2017-12-14 13:53+0000\n"
 "Last-Translator: Liffindra Angga Zaaldian <liffindra.zaaldian@icloud.com>\n"
 "Language-Team: Indonesian "
 "<https://weblate.elementary.io/projects/files/files/id/>\n"
@@ -56,13 +56,13 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"Tak bisa memuat daftar metoda server yang didukung.\n"
+"Tidak dapat memuat daftar metode server yang didukung.\n"
 "Silakan periksa instalasi gvfs Anda."
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Folder \"%s\" tak bisa dibuka pada \"%s\"."
+msgstr "Folder \"%s\" tidak dapat dibuka pada \"%s\"."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
