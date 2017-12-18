@@ -199,8 +199,8 @@ namespace FM {
         protected override uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
-            unowned Gtk.TreePath? p = null;
-            unowned Gtk.CellRenderer? r;
+            Gtk.TreePath? p = null;
+            Gtk.CellRenderer? r;
             uint zone;
             int x, y;
             path = null;
