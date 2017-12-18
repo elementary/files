@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-09-03 00:23+0000\n"
+"PO-Revision-Date: 2017-12-19 00:06+0000\n"
 "Last-Translator: Ryo Nakano <rmfmada3q@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1855,7 +1855,7 @@ msgstr "新しいウィンドウ"
 
 #: ../src/Application.vala:140
 msgid "Quit Files."
-msgstr "ファイルの終了"
+msgstr "ファイルを終了します。"
 
 #: ../src/Application.vala:142
 msgid "Enable debug logging"
