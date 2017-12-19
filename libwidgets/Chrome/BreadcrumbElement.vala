@@ -67,7 +67,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
     }
 
-    private Gtk.Border padding = Gtk.Border ();
+    private Gtk.Border padding;
     private Pango.Layout layout;
     private Gtk.Widget widget;
 
