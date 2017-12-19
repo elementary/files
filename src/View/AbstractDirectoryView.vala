@@ -2694,6 +2694,7 @@ namespace FM {
 
             /* Implement linear selection in Icon View with cursor keys */
             bool linear_select_required = (no_mods || only_shift_pressed) && this is IconView;
+
             if (!linear_select_required || !only_shift_pressed) {
                 previous_selection_was_linear = false;
             }
@@ -3231,7 +3232,6 @@ namespace FM {
 
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
-                            result = false;
                             break;
 
                         case ClickZone.BLANK_PATH:
@@ -3251,20 +3251,23 @@ namespace FM {
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
                                 if (linear_select_required && selected_files.length () > 0) {
                                     linear_select_path (path);
+                                    result = true;  /* Do not pass to default handler which would Rubberband */
                                 } else {
                                     previous_selection_was_linear = false;
-                                    result = false; /* Rubberband */
                                 }
                             } else {
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
+
                             previous_linear_selection_path = path.copy ();
+
                             break;
 
                         case ClickZone.HELPER:
                             if (linear_select_required && selected_files.length () > 0) {
                                 linear_select_path (path);
+                                result = true;  /* Do not pass to default handler which would Rubberband */
                             } else {
                                 previous_selection_was_linear = false;
                                 previous_linear_selection_path = null;
@@ -3276,6 +3279,7 @@ namespace FM {
                                     select_path (path);  /* Cursor follows */
                                 }
                             }
+
 
                             break;
 
@@ -3292,11 +3296,14 @@ namespace FM {
                         default:
                             break;
                     }
+
                     break;
 
                 case Gdk.BUTTON_MIDDLE:  // button 2
-                    if (path_is_selected (path))
+                    if (path_is_selected (path)) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                        result = true;
+                    }
 
                     break;
 
