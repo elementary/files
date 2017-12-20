@@ -3523,7 +3523,7 @@ namespace FM {
             return model.iter_next (ref iter);
         }
 
-        public virtual void cancel () {
+        protected virtual void cancel () {
             grab_focus (); /* Cancel any renaming */
             cancel_hover ();
             cancel_thumbnailing ();
@@ -3541,6 +3541,7 @@ namespace FM {
 
         public void close () {
             is_frozen = true; /* stop signal handlers running during destruction */
+            cancel ();
             unselect_all ();
         }
 
