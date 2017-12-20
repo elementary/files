@@ -704,6 +704,7 @@ namespace FM {
 
         protected void cancel_thumbnailing () {
             if (thumbnail_request >= 0) {
+                thumbnailer.dequeue (thumbnail_request);
                 thumbnail_request = -1;
             }
 
