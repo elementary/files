@@ -236,20 +236,23 @@ namespace FM {
 
                 if (file == null) {
                     zone = ClickZone.INVALID;
-                } else if (x < rect.x + ICON_XPAD + icon_size) { /* cannot be on name */
-                    bool on_helper = false;
-                    bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
+                } else {
+                    var rtl = (get_direction () == Gtk.TextDirection.RTL);
+                    if (rtl ? (x > rect.x + rect.width - ICON_XPAD - icon_size) : (x < rect.x + ICON_XPAD + icon_size)) { /* cannot be on name */
+                        bool on_helper = false;
+                        bool on_icon = is_on_icon (x, y, rect, file.pix, rtl, ref on_helper);
 
-                    if (on_helper) {
-                        zone = ClickZone.HELPER;
-                    } else if (on_icon) {
-                        zone = ClickZone.ICON;
+                        if (on_helper) {
+                            zone = ClickZone.HELPER;
+                        } else if (on_icon) {
+                            zone = ClickZone.ICON;
 
-                    } else {
-                        zone = ClickZone.EXPANDER;
+                        } else {
+                            zone = ClickZone.EXPANDER;
+                        }
+                    } else if (!is_blank) {
+                            zone = ClickZone.NAME;
                     }
-                } else if (!is_blank) {
-                        zone = ClickZone.NAME;
                 }
             } else if (c != name_column)
                 zone = ClickZone.INVALID; /* Cause unselect all to occur on other columns*/
@@ -333,26 +336,39 @@ namespace FM {
             tree.thaw_child_notify ();
         }
 
-        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper) {
-            int x_offset = x - area.x;
+        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
+            int x_offset;
+            int pix_x_offset;
             int y_offset = y - area.y;
-
-            /* Area.width includes name as well. Assume area for icon is square */
-            int pix_x_offset = (area.height - pix.width) / 2;
             int pix_y_offset = (area.height - pix.height) / 2;
+            on_helper = false;
+
+            if (rtl) {
+                x_offset = area.x + area.width - (x + ICON_XPAD);
+
+                /* Area.width includes name as well. Assume area for icon is square */
+                pix_x_offset = (area.height - pix.width) / 2;
+            } else {
+                x_offset = x + ICON_XPAD - area.x;
+
+                /* Area.width includes name as well. Assume area for icon is square */
+                pix_x_offset = (area.height - pix.width) / 2;
+            }
 
             bool on_icon =  (x_offset >= pix_x_offset &&
                              x_offset <= pix_x_offset + pix.width  &&
                              y_offset >= pix_y_offset &&
                              y_offset <= pix_y_offset + pix.height);
 
-            on_helper = false;
-
-            if (icon_renderer.selection_helpers) {
+            if (icon_renderer.selection_helpers && on_icon) {
                 int hs = icon_renderer.helper_size;
-                on_helper = (on_icon &&
-                             x_offset <= int.max (pix_x_offset + hs, hs) &&
-                             y_offset <= int.max (pix_y_offset + hs, hs));
+                if (y_offset <= int.max (pix_y_offset + hs, hs)) {
+                    if (rtl) {
+                        on_helper = (x_offset >= pix.width + pix_x_offset - hs);
+                    } else {
+                        on_helper = (x_offset <= pix_x_offset + hs);
+                    }
+                }
             }
 
             return on_icon;
