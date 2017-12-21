@@ -311,8 +311,9 @@ namespace FM {
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
-                    draw_when_idle ();
                 }
+
+                draw_when_idle ();
             });
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
@@ -703,6 +704,7 @@ namespace FM {
 
         protected void cancel_thumbnailing () {
             if (thumbnail_request >= 0) {
+                thumbnailer.dequeue (thumbnail_request);
                 thumbnail_request = -1;
             }
 
@@ -3614,7 +3616,7 @@ namespace FM {
         protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
-        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper);
+        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear
