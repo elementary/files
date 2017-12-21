@@ -1491,7 +1491,13 @@ namespace FM {
                                        uint info,
                                        uint timestamp) {
 
-            drag_file_list = get_selected_files_for_transfer ();
+            /* get file list only once in case view changes location automatically
+             * while dragging (which loses file selection.
+             */
+
+            if (drag_file_list == null) {
+                drag_file_list = get_selected_files_for_transfer ();
+            }
 
             if (drag_file_list == null) {
                 return;
