@@ -245,7 +245,6 @@ namespace FM {
 
                     size_allocate.disconnect (on_size_allocate);
                     clipboard.changed.disconnect (on_clipboard_changed);
-                    view.enter_notify_event.disconnect (on_enter_notify_event);
                     view.key_press_event.disconnect (on_view_key_press_event);
                 } else if (!value && _is_frozen) {
                     /* Ensure selected files and menu actions are up to date */
@@ -254,7 +253,6 @@ namespace FM {
 
                     size_allocate.connect (on_size_allocate);
                     clipboard.changed.connect (on_clipboard_changed);
-                    view.enter_notify_event.connect (on_enter_notify_event);
                     view.key_press_event.connect (on_view_key_press_event);
                 }
 
@@ -303,20 +301,23 @@ namespace FM {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
             blank_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "crosshair");
-            clipboard = ((Marlin.Application)(window.application)).get_clipboard_manager ();
+
+            var app = (Marlin.Application.get ());
+            clipboard = app.get_clipboard_manager ();
+            recent = app.get_recent_manager ();
+
             icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
-                    draw_when_idle ();
                 }
+
+                draw_when_idle ();
             });
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
-
-            recent = ((Marlin.Application)(window.application)).get_recent_manager ();
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "activate on blank" is enabled, matching existing UI
@@ -334,9 +335,9 @@ namespace FM {
                 view.add_events (Gdk.EventMask.POINTER_MOTION_MASK |
                                  Gdk.EventMask.ENTER_NOTIFY_MASK |
                                  Gdk.EventMask.LEAVE_NOTIFY_MASK);
+
                 view.motion_notify_event.connect (on_motion_notify_event);
                 view.leave_notify_event.connect (on_leave_notify_event);
-                view.enter_notify_event.connect (on_enter_notify_event);
                 view.key_press_event.connect (on_view_key_press_event);
                 view.button_press_event.connect (on_view_button_press_event);
                 view.button_release_event.connect (on_view_button_release_event);
@@ -370,7 +371,6 @@ namespace FM {
 
             size_allocate.connect_after (on_size_allocate);
 
-            button_press_event.connect (on_button_press_event);
             popup_menu.connect (on_popup_menu);
 
             unrealize.connect (() => {
@@ -705,6 +705,7 @@ namespace FM {
 
         protected void cancel_thumbnailing () {
             if (thumbnail_request >= 0) {
+                thumbnailer.dequeue (thumbnail_request);
                 thumbnail_request = -1;
             }
 
@@ -807,11 +808,9 @@ namespace FM {
 
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
-                        window.add_tab (location, Marlin.ViewMode.CURRENT);
-                        break;
-
                     case Marlin.OpenFlag.NEW_WINDOW:
-                        window.add_window(location, Marlin.ViewMode.CURRENT);
+
+                        path_change_request (location, flag, true);
                         break;
 
                     default:
@@ -1061,7 +1060,8 @@ namespace FM {
                 return;
 
             foreach (GOF.File file in selected_files) {
-                window.add_tab (GLib.File.new_for_uri (file.get_display_target_uri ()), Marlin.ViewMode.CURRENT);
+                var loc = GLib.File.new_for_uri (file.get_display_target_uri ());
+                path_change_request (loc, Marlin.OpenFlag.NEW_TAB, true);
             }
         }
 
@@ -1435,24 +1435,6 @@ namespace FM {
             return true;
         }
 
-        private bool on_button_press_event (Gdk.EventButton event) {
-            /* Extra mouse button action: button8 = "Back" button9 = "Forward" */
-            GLib.Action? action = null;
-            GLib.SimpleActionGroup main_actions = window.get_action_group ();
-            if (event.type == Gdk.EventType.BUTTON_PRESS) {
-                if (event.button == 8)
-                    action = main_actions.lookup_action ("Back");
-                else if (event.button == 9)
-                    action = main_actions.lookup_action ("Forward");
-
-                if (action != null) {
-                    action.activate (null);
-                    return true;
-                }
-            }
-            return false;
-        }
-
 /** Handle Motion events */
         private bool on_drag_timeout_motion_notify (Gdk.EventMotion event) {
             /* Only active during drag timeout */
@@ -1643,6 +1625,7 @@ namespace FM {
                                     unselect_all ();
 
                                 select_added_files = true;
+
                                 success = dnd_handler.handle_file_drag_actions  (get_real_view (),
                                                                                  window,
                                                                                  context,
@@ -1678,6 +1661,9 @@ namespace FM {
 
             /* disable the highlighting of the items in the view */
             highlight_path (null);
+
+            /* Prepare to receive another drop */
+            drop_data_ready = false;
         }
 
 /** DnD helpers */
@@ -2463,26 +2449,23 @@ namespace FM {
                     /* iterate over the range to collect all files */
                     valid_iter = model.get_iter (out iter, start_path);
                     while (valid_iter && thumbnail_source_id > 0) {
-                        file = model.file_for_iter (iter);
+                        file = model.file_for_iter (iter); // Maybe null if dummy row
                         path = model.get_path (iter);
 
-                        if (file == null) { /* Dummy rows in expanded empty folder result in null file */
-                            valid_iter = false;
-                            continue;
-                        }
-
-                        /* Ask thumbnailer only if ThumbState UNKNOWN */
-                        if (file.flags == GOF.File.ThumbState.UNKNOWN) {
-                            visible_files.prepend (file);
-                            if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                actually_visible++;
+                        if (file != null) {
+                            /* Ask thumbnailer only if ThumbState UNKNOWN */
+                            if (file.flags == GOF.File.ThumbState.UNKNOWN) {
+                                visible_files.prepend (file);
+                                if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
+                                    actually_visible++;
+                                }
                             }
-                        }
 
-                        if (plugins != null) {
-                            plugins.update_file_info (file);
-                        }
+                            if (plugins != null) {
+                                plugins.update_file_info (file);
+                            }
 
+                        }
                         /* check if we've reached the end of the visible range */
                         if (path.compare (end_path) != 0)
                             valid_iter = get_next_visible_iter (ref iter);
@@ -2714,6 +2697,7 @@ namespace FM {
 
             /* Implement linear selection in Icon View with cursor keys */
             bool linear_select_required = (no_mods || only_shift_pressed) && this is IconView;
+
             if (!linear_select_required || !only_shift_pressed) {
                 previous_selection_was_linear = false;
             }
@@ -2944,16 +2928,6 @@ namespace FM {
                     break;
             }
 
-            /* Use find function instead of view interactive search */
-            if (no_mods || only_shift_pressed) {
-                /* Use printable characters to initiate search */
-                if (((unichar)(Gdk.keyval_to_unicode (keyval))).isprint ()) {
-                    window.win_actions.activate_action ("find", null);
-                    window.key_press_event (event);
-                    return true;
-                }
-            }
-
             return false;
         }
 
@@ -3012,11 +2986,6 @@ namespace FM {
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
             item_hovered (null); /* Ensure overlay statusbar disappears */
-            return false;
-        }
-
-        protected bool on_enter_notify_event (Gdk.EventCrossing event) {
-            grab_focus (); /* Cause OverLay to appear */
             return false;
         }
 
@@ -3237,7 +3206,7 @@ namespace FM {
                     linear_select_required = true;
                 } else {
                     previous_selection_was_linear = false;
-                    return window.button_press_event (event);
+                    return false;
                 }
             } else {
                 previous_selection_was_linear = false;
@@ -3253,12 +3222,12 @@ namespace FM {
                 }
             }
 
-            bool result = true;
+            bool result = false; // default false so events get passed to Window
             should_activate = false;
             should_scroll = true;
 
             switch (event.button) {
-                case Gdk.BUTTON_PRIMARY:
+                case Gdk.BUTTON_PRIMARY: // button 1
                     /* Control-click should deselect previously selected path on key release (unless
                      * pointer moves)
                      */
@@ -3266,7 +3235,6 @@ namespace FM {
 
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
-                            result = false;
                             break;
 
                         case ClickZone.BLANK_PATH:
@@ -3286,20 +3254,23 @@ namespace FM {
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
                                 if (linear_select_required && selected_files.length () > 0) {
                                     linear_select_path (path);
+                                    result = true;  /* Do not pass to default handler which would Rubberband */
                                 } else {
                                     previous_selection_was_linear = false;
-                                    result = false; /* Rubberband */
                                 }
                             } else {
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
+
                             previous_linear_selection_path = path.copy ();
+
                             break;
 
                         case ClickZone.HELPER:
                             if (linear_select_required && selected_files.length () > 0) {
                                 linear_select_path (path);
+                                result = true;  /* Do not pass to default handler which would Rubberband */
                             } else {
                                 previous_selection_was_linear = false;
                                 previous_linear_selection_path = null;
@@ -3311,6 +3282,7 @@ namespace FM {
                                     select_path (path);  /* Cursor follows */
                                 }
                             }
+
 
                             break;
 
@@ -3327,15 +3299,18 @@ namespace FM {
                         default:
                             break;
                     }
+
                     break;
 
-                case Gdk.BUTTON_MIDDLE:
-                    if (path_is_selected (path))
+                case Gdk.BUTTON_MIDDLE:  // button 2
+                    if (path_is_selected (path)) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                        result = true;
+                    }
 
                     break;
 
-                case Gdk.BUTTON_SECONDARY:
+                case Gdk.BUTTON_SECONDARY: // button 3
                     if (click_zone == ClickZone.NAME ||
                         click_zone == ClickZone.BLANK_PATH ||
                         click_zone == ClickZone.ICON) {
@@ -3355,6 +3330,7 @@ namespace FM {
                     result = handle_default_button_click (event);
                     break;
             }
+
             previous_linear_selection_path = path != null ? path.copy () : null;
             return result;
         }
@@ -3542,7 +3518,7 @@ namespace FM {
 
         protected virtual bool handle_default_button_click (Gdk.EventButton event) {
             /* pass unhandled events to the Marlin.View.Window */
-            return window.button_press_event (event);
+            return false;
         }
 
         protected virtual bool get_next_visible_iter (ref Gtk.TreeIter iter, bool recurse = true) {
@@ -3641,7 +3617,7 @@ namespace FM {
         protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
-        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper);
+        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

@@ -540,13 +540,11 @@ fm_list_model_file_entry_compare_func (gconstpointer a,
                                             TRUE,
                                             (model->details->order == GTK_SORT_DESCENDING));
 
-    } else {
+    } else if (file_entry1->file == NULL || file_entry1->file->location == NULL) {
         /* Dummy rows representing expanded empty directories have null files */
-        if (file_entry1->file == NULL || file_entry1->file->location == NULL) {
-            return -1;
-        } else {
-            return 1;
-        }
+        result = -1;
+    } else {
+        result = 1;
     }
 
     return result;

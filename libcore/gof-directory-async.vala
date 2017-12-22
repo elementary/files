@@ -74,7 +74,7 @@ public class Async : Object {
     public int icon_size = 32;
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
-    public bool uri_contain_keypath_icons;
+    public bool uri_contains_keypath_icons = false;
 
     /* for auto-sizing Miller columns */
     public string longest_file_name = "";
@@ -177,7 +177,7 @@ public class Async : Object {
         can_load = false;
 
         scheme = location.get_uri_scheme ();
-        is_trash = (scheme == "trash");
+        is_trash = PF.FileUtils.location_is_in_trash (location);
         is_recent = (scheme == "recent");
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme)); //Try lifting requirement for info on remote connections
         is_local = is_trash || is_recent || (scheme == "file");
@@ -485,8 +485,7 @@ public class Async : Object {
         set_confirm_trash ();
 
         if (can_load) {
-            uri_contain_keypath_icons = "/icons" in file.uri || "/.icons" in file.uri;
-
+            uri_contains_keypath_icons = PF.FileUtils.is_icon_path (file.uri);
             if (file_loaded_func == null && is_local) {
                 try {
                     monitor = location.monitor_directory (0);
@@ -500,7 +499,6 @@ public class Async : Object {
                     }
                 }
             }
-
 
             if (is_trash) {
                 connect_volume_monitor_signals ();

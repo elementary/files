@@ -231,7 +231,7 @@ namespace Marlin {
             uint handle = request_handle_mapping.lookup (req);
             thumbnailer_lock.unlock ();
 
-            proxy.dequeue (handle); /* hash tables will be updated when "finished" signal received. */
+            proxy.dequeue.begin (handle); /* hash tables will be updated when "finished" signal received. */
         }
 
         private bool is_supported (GOF.File file) {
