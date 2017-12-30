@@ -21,7 +21,7 @@ namespace FM {
     public abstract class AbstractTreeView : AbstractDirectoryView {
         const int ICON_XPAD = 6;
 
-        protected Gtk.TreeView tree;
+        protected FM.TreeView tree;
         protected Gtk.TreeViewColumn name_column;
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
@@ -88,7 +88,7 @@ namespace FM {
         }
 
         protected override Gtk.Widget? create_view () {
-            tree = new Gtk.TreeView ();
+            tree = new FM.TreeView ();
             tree.set_model (model);
             tree.set_headers_visible (false);
             tree.set_rules_hint (true);
@@ -372,6 +372,31 @@ namespace FM {
             }
 
             return on_icon;
+        }
+    }
+
+    protected class TreeView : Gtk.TreeView {
+        /* Override base class in order to disable the Gtk.TreeView local search functionality */
+        public override bool key_press_event (Gdk.EventKey event) {
+            /* We still need the base class to handle cursor keys first */
+            switch (event.keyval) {
+                case Gdk.Key.Up:
+                case Gdk.Key.Down:
+                case Gdk.Key.KP_Up:
+                case Gdk.Key.KP_Down:
+                case Gdk.Key.Page_Up:
+                case Gdk.Key.Page_Down:
+                case Gdk.Key.KP_Page_Up:
+                case Gdk.Key.KP_Page_Down:
+                case Gdk.Key.Home:
+                case Gdk.Key.End:
+
+                    return base.key_press_event (event);
+
+                default:
+
+                    return false; // Pass event to Window handler.
+            }
         }
     }
 }
