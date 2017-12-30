@@ -311,8 +311,9 @@ namespace FM {
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
-                    draw_when_idle ();
                 }
+
+                draw_when_idle ();
             });
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
@@ -703,6 +704,7 @@ namespace FM {
 
         protected void cancel_thumbnailing () {
             if (thumbnail_request >= 0) {
+                thumbnailer.dequeue (thumbnail_request);
                 thumbnail_request = -1;
             }
 
@@ -2694,6 +2696,7 @@ namespace FM {
 
             /* Implement linear selection in Icon View with cursor keys */
             bool linear_select_required = (no_mods || only_shift_pressed) && this is IconView;
+
             if (!linear_select_required || !only_shift_pressed) {
                 previous_selection_was_linear = false;
             }
@@ -3231,7 +3234,6 @@ namespace FM {
 
                     switch (click_zone) {
                         case ClickZone.BLANK_NO_PATH:
-                            result = false;
                             break;
 
                         case ClickZone.BLANK_PATH:
@@ -3251,20 +3253,23 @@ namespace FM {
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
                                 if (linear_select_required && selected_files.length () > 0) {
                                     linear_select_path (path);
+                                    result = true;  /* Do not pass to default handler which would Rubberband */
                                 } else {
                                     previous_selection_was_linear = false;
-                                    result = false; /* Rubberband */
                                 }
                             } else {
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
+
                             previous_linear_selection_path = path.copy ();
+
                             break;
 
                         case ClickZone.HELPER:
                             if (linear_select_required && selected_files.length () > 0) {
                                 linear_select_path (path);
+                                result = true;  /* Do not pass to default handler which would Rubberband */
                             } else {
                                 previous_selection_was_linear = false;
                                 previous_linear_selection_path = null;
@@ -3276,6 +3281,7 @@ namespace FM {
                                     select_path (path);  /* Cursor follows */
                                 }
                             }
+
 
                             break;
 
@@ -3292,11 +3298,14 @@ namespace FM {
                         default:
                             break;
                     }
+
                     break;
 
                 case Gdk.BUTTON_MIDDLE:  // button 2
-                    if (path_is_selected (path))
+                    if (path_is_selected (path)) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                        result = true;
+                    }
 
                     break;
 
@@ -3607,7 +3616,7 @@ namespace FM {
         protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
-        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper);
+        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

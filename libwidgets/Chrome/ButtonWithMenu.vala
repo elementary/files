@@ -81,45 +81,24 @@ namespace Marlin.View.Chrome {
 
         public ulong toggled_sig_id;
 
-        /**
-         * Delegate function used to populate menu
-         */
-        public delegate Gtk.Menu MenuFetcher ();
-
         public signal void slow_press ();
 
-        public MenuFetcher fetcher {
-            set {
-                _fetcher = value;
-                has_fetcher = true;
-            }
-            get {
-                return _fetcher;
-            }
-        }
-
+        private Gtk.Menu _menu;
         public Gtk.Menu menu {
             get {
                 return _menu;
             }
+
             set {
-                if (has_fetcher) {
-                    warning ("Don't set the menu property on a ToolMenuButton when there is already a menu fetcher");
-                }
-                else {
-                    _menu = value;
-                    update_menu_properties ();
-                }
+                _menu = value;
+                update_menu_properties ();
             }
         }
 
         private int LONG_PRESS_TIME = Gtk.Settings.get_default ().gtk_double_click_time * 2;
         private uint timeout = 0;
         private uint last_click_time = 0;
-        private bool has_fetcher = false;
 
-        private unowned MenuFetcher _fetcher;
-        private Gtk.Menu _menu;
 
         public ButtonWithMenu.from_icon_name (string icon_name, Gtk.IconSize size) {
             this ();
@@ -212,9 +191,6 @@ namespace Marlin.View.Chrome {
         }
 
         protected new void popup_menu (Gdk.EventButton? ev = null) {
-            if (has_fetcher)
-                fetch_menu ();
-
             try {
                 menu.popup (null,
                             null,
@@ -228,11 +204,6 @@ namespace Marlin.View.Chrome {
 
         protected void popdown_menu () {
             menu.popdown ();
-        }
-
-        private void fetch_menu () {
-            _menu = fetcher ();
-            update_menu_properties ();
         }
 
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
