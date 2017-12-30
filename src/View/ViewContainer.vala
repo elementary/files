@@ -112,10 +112,6 @@ namespace Marlin.View {
             overlay_statusbar = new OverlayBar (this);
             browser = new Browser ();
 
-            /* Override background color to support transparency on overlay widgets */
-            Gdk.RGBA transparent = {0, 0, 0, 0};
-            override_background_color (0, transparent);
-
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             connect_signals ();
         }
