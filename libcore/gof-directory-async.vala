@@ -49,10 +49,6 @@ public class Async : Object {
     /* we're looking for particular path keywords like *\/icons* .icons ... */
     public bool uri_contains_keypath_icons = false;
 
-    /* for auto-sizing Miller columns */
-    public string longest_file_name = "";
-    public bool track_longest_name = false;
-
     public enum State {
         NOT_LOADED,
         LOADING,
@@ -615,7 +611,6 @@ public class Async : Object {
         }
 
         cancellable = new Cancellable ();
-        longest_file_name = "";
         permission_denied = false;
         can_load = true;
         files_count = 0;
@@ -697,13 +692,11 @@ public class Async : Object {
 
     private void after_load_file (GOF.File gof, bool show_hidden, GOFFileLoadedFunc? file_loaded_func) {
         if (!gof.is_hidden || show_hidden) {
-            if (track_longest_name)
-                update_longest_file_name (gof);
-
             if (file_loaded_func == null) {
                 file_loaded (gof);
-            } else
+            } else {
                 file_loaded_func (gof);
+            }
         }
     }
 
@@ -736,11 +729,6 @@ public class Async : Object {
             monitor_blocked = false;
             monitor.changed.connect (directory_changed);
         }
-    }
-
-    private void update_longest_file_name (GOF.File gof) {
-        if (longest_file_name.length < gof.basename.length)
-            longest_file_name = gof.basename;
     }
 
     public void load_hiddens () {
@@ -866,11 +854,6 @@ public class Async : Object {
                 sorted_dirs.insert_sorted (gof,
                     GOF.File.compare_by_display_name);
             }
-        }
-
-        if (track_longest_name && gof.basename.length > longest_file_name.length) {
-            longest_file_name = gof.basename;
-            done_loading ();
         }
     }
 
@@ -1036,12 +1019,6 @@ public class Async : Object {
                 if (dir != null) {
                     dir.file_deleted (dir.file);
                 }
-            }
-        }
-
-        foreach (var d in dirs) {
-            if (d.track_longest_name) {
-                d.list_cached_files ();
             }
         }
     }
