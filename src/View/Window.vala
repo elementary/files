@@ -66,7 +66,26 @@ namespace Marlin.View {
         public Granite.Widgets.DynamicNotebook tabs;
         private Gtk.Paned lside_pane;
         public Marlin.Places.Sidebar sidebar;
-        public ViewContainer? current_tab = null;
+
+        private unowned ViewContainer? previously_current_content = null;
+        private ViewTab? current_tab {
+            get {
+                return tabs != null ? (ViewTab)(tabs.current) : null;
+            }
+
+            set {
+                if (value != null && value is ViewTab) {
+                    previously_current_content = current_content;
+                    tabs.current = value;
+                }
+            }
+        }
+
+        public unowned ViewContainer? current_content {
+            get {
+                return current_tab != null ? current_tab.content : null;
+            }
+        }
 
         private bool tabs_restored = false;
         private bool restoring_tabs = false;
@@ -78,12 +97,12 @@ namespace Marlin.View {
 
         [Signal (action=true)]
         public virtual signal void go_back () {
-            current_tab.go_back ();
+            current_content.go_back ();
         }
 
         [Signal (action=true)]
         public virtual signal void go_up () {
-            current_tab.go_up ();
+            current_content.go_up ();
         }
 
         [Signal (action=true)]
@@ -203,19 +222,19 @@ namespace Marlin.View {
             top_menu.back.connect (on_go_back);
             top_menu.escape.connect (grab_focus);
             top_menu.path_change_request.connect ((loc, flag) => {
-                current_tab.is_frozen = false;
+                current_content.is_frozen = false;
                 uri_path_change_request (loc, flag);
             });
             top_menu.reload_request.connect (action_reload);
             top_menu.focus_location_request.connect ((loc) => {
-                current_tab.focus_location_if_in_current_directory (loc, true);
+                current_content.focus_location_if_in_current_directory (loc, true);
             });
             top_menu.focus_in_event.connect (() => {
-                current_tab.is_frozen = true;
+                current_content.is_frozen = true;
                 return true;
             });
             top_menu.focus_out_event.connect (() => {
-                current_tab.is_frozen = false;
+                current_content.is_frozen = false;
                 return true;
             });
 
@@ -281,28 +300,13 @@ namespace Marlin.View {
                 add_tab ();
             });
 
-            tabs.close_tab_requested.connect ((tab) => {
-                var view_container = (tab.page as ViewContainer);
-                tab.restore_data = view_container.location.get_uri ();
+             tabs.close_tab_requested.connect ((tab) => {
+                tab.restore_data = (tab.page as ViewContainer).location.get_uri ();
+                 return true;
+             });
 
-                /* If closing tab is current, set current_tab to null to ensure
-                 * closed ViewContainer is destroyed. It will be reassigned in tab_changed
-                 */
-                if (view_container == current_tab) {
-                    current_tab = null;
-                }
-
-                view_container.close ();
-
-                if (tabs.n_tabs == 1) {
-                    add_tab ();
-                }
-
-                return true;
-            });
-
-            tabs.tab_switched.connect ((old_tab, new_tab) => {
-                change_tab (tabs.get_tab_position (new_tab));
+            tabs.tab_switched.connect_after ((old_content, new_tab) => {
+                current_tab_changed (tabs.get_tab_position (new_tab));
             });
 
             tabs.tab_restored.connect ((label, restore_data, icon) => {
@@ -332,7 +336,7 @@ namespace Marlin.View {
             tabs.tab_removed.connect (on_tab_removed);
 
             sidebar.request_focus.connect (() => {
-                return !current_tab.locked_focus && !top_menu.locked_focus;
+                return !current_content.locked_focus && !top_menu.locked_focus;
             });
 
             sidebar.sync_needed.connect (() => {
@@ -385,35 +389,37 @@ namespace Marlin.View {
             return result;
         }
 
-        private void on_tab_removed () {
+        private void on_tab_removed (Granite.Widgets.Tab _tab) {
+            (_tab as ViewTab).close ();
+
             if (tabs.n_tabs == 0) {
                 add_tab ();
             }
         }
 
         private void on_go_forward (int n = 1) {
-            current_tab.go_forward (n);
+            current_content.go_forward (n);
         }
         private void on_go_back (int n = 1) {
-            current_tab.go_back (n);
+            current_content.go_back (n);
         }
 
         private void open_new_container (GLib.File loc, Marlin.OpenFlag flag) {
             switch (flag) {
                 case Marlin.OpenFlag.NEW_TAB:
-                    add_tab (loc, current_tab.view_mode);
+                    add_tab (loc, current_content.view_mode);
                     break;
                 case Marlin.OpenFlag.NEW_WINDOW:
-                    add_window (loc, current_tab.view_mode);
+                    add_window (loc, current_content.view_mode);
                     break;
                 default:
                     break;
-            }
-        }
+           }
+       }
 
         public GOF.AbstractSlot? get_active_slot () {
-            if (current_tab != null) {
-                return current_tab.get_current_slot ();
+            if (current_content != null) {
+                return current_content.get_current_slot ();
             } else {
                 return null;
             }
@@ -423,35 +429,30 @@ namespace Marlin.View {
             this.title = title;
         }
 
-        public void change_tab (int offset) {
-            if (restoring_tabs) {
+        public void current_tab_changed (int index) {
+            if (restoring_tabs ||
+                index < 0 ||
+                (current_tab != null && index == tabs.get_tab_position (current_tab))) {
+
                 return;
             }
 
-            ViewContainer? old_tab = current_tab;
-            current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
+            var new_tab = (ViewTab)(tabs.get_tab_by_index (index));
+            var new_content = new_tab.content;
 
-            if (current_tab == null || old_tab == current_tab) {
-                return;
-            }
-
-            if (old_tab != null) {
-                old_tab.set_active_state (false);
+            if (previously_current_content is ViewContainer) {
+                previously_current_content.set_active_state (false);
             }
             /* ViewContainer will update topmenu once successfully loaded */
-#if 0
-            /* sync selection - to be reimplemented if needed*/
-            if (cur_slot.dir_view != null && current_tab.can_show_folder);
-                cur_slot.dir_view.sync_selection();
-#endif
             /* sync sidebar selection */
-            loading_uri (current_tab.uri);
-            current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
-            top_menu.working = current_tab.is_frozen;
+            loading_uri (new_content.uri);
+            new_content.set_active_state (true, false); /* changing tab should not cause animated scrolling */
+            top_menu.working = new_content.is_frozen;
         }
 
         public void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             var file = get_file_from_uri (uri);
+
             if (file != null) {
                 add_tab (file, mode);
             } else {
@@ -460,82 +461,50 @@ namespace Marlin.View {
         }
 
         public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
-                             Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
-            mode = real_mode (mode);
-            var content = new View.ViewContainer (this);
-            var tab = new Granite.Widgets.Tab ("", null, content);
-            tab.ellipsize_mode = Pango.EllipsizeMode.MIDDLE;
+                             Marlin.ViewMode _mode = Marlin.ViewMode.PREFERRED) {
 
-            content.tab_name_changed.connect ((tab_name) => {
-                Idle.add (() => {
-                    tab.label = check_for_tab_with_same_name (content);
-                    return false;
-                });
-            });
+            var mode = real_mode (_mode);
 
-            content.loading.connect ((is_loading) => {
-                tab.working = is_loading;
-                update_top_menu ();
-            });
-
-            content.active.connect (() => {
-                update_top_menu ();
-            });
-
-            content.add_view (mode, location);
-
-            change_tab ((int)tabs.insert_tab (tab, -1));
+            var tab = new ViewTab (this);
+            tabs.insert_tab (tab, -1);
             tabs.current = tab;
+
+            tab.updated.connect (() => {
+                update_top_menu ();
+            });
+
+            tab.check_for_tab_with_same_name.connect (check_for_tab_with_same_name);
+
+            tab.open (location, mode);
         }
 
-        private string check_for_tab_with_same_name (ViewContainer vc) {
-            string name = vc.tab_name;
+        private void check_for_tab_with_same_name (ViewTab tab) {
+            string new_name = tab.basename;
 
-            if (name == Marlin.INVALID_TAB_NAME) {
-                return name;
-            }
+            if (new_name != Marlin.INVALID_TAB_NAME) {
+                string check_path = Uri.unescape_string (tab.uri);
+                foreach (Granite.Widgets.Tab tb in tabs.tabs) {
+                    ViewTab vt = (ViewTab)tb;
 
-            string path = Uri.unescape_string (vc.uri);
-            string new_name = name;
+                    if (vt != tab) {
+                        string compare_path = Uri.unescape_string (vt.uri);
+                        string compare_basename = vt.basename;
+                        if (compare_basename == new_name && compare_path != check_path) {
+                            if (compare_basename == vt.label) {
+                                Idle.add_full (GLib.Priority.LOW, () => {
+                                    /* Trigger relabelling of conflicting tab (but not before this function finishes) */
+                                    check_for_tab_with_same_name (vt);
+                                    return false;
+                                });
+                            }
 
-            foreach (Granite.Widgets.Tab tab in tabs.tabs) {
-                var content = (ViewContainer)(tab.page);
-                if (content != vc) {
-                    string content_path = Uri.unescape_string (content.uri);
-                    if (content.tab_name == name && content_path != path) {
-                        if (content.tab_name == tab.label) {
-                            Idle.add_full (GLib.Priority.LOW, () => {
-                                /* Trigger relabelling of conflicting tab (but not before this function finishes) */
-                                content.tab_name_changed (content.tab_name);
-                                return false;
-                            });
+                            new_name = PF.FileUtils.disambiguate_name (new_name, check_path, compare_path); /*Also relabel this tab */
                         }
-
-                        new_name = disambiguate_name (name, path, content_path); /*Also relabel this tab */
                     }
                 }
             }
 
-            return new_name;
-        }
-
-        private string disambiguate_name (string name, string path, string conflict_path) {
-            string prefix = "";
-            string prefix_conflict = "";
-            string path_temp = path;
-            string conflict_path_temp = conflict_path;
-
-            /* Add parent directories until path and conflict path differ */
-            while (prefix == prefix_conflict) {
-                var parent_path= PF.FileUtils.get_parent_path_from_path (path_temp);
-                var parent_conflict_path = PF.FileUtils.get_parent_path_from_path (conflict_path_temp);
-                prefix = Path.get_basename (parent_path) + Path.DIR_SEPARATOR_S + prefix;
-                prefix_conflict = Path.get_basename (parent_conflict_path) + Path.DIR_SEPARATOR_S + prefix_conflict;
-                path_temp= parent_path;
-                conflict_path_temp = parent_conflict_path;
-            }
-
-            return prefix + name;
+            tab.label = new_name;
         }
 
         public void bookmark_uri (string uri, string? name = null) {
@@ -595,8 +564,7 @@ namespace Marlin.View {
 
         private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
             /* Do not initiate search while slot is frozen e.g. during loading */
-            if (current_tab == null || current_tab.is_frozen) {
-                return;
+            if (current_content == null || current_content.is_frozen) {                return;
             }
 
             top_menu.enter_search_mode ();
@@ -627,13 +595,15 @@ namespace Marlin.View {
                 warning ("Too rapid reloading suppressed");
                 return;
             }
-            current_tab.reload ();
+
+            current_content.reload ();
             sidebar.reload ();
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
             string mode_string = param.get_string ();
-            Marlin.ViewMode mode = Marlin.ViewMode.MILLER_COLUMNS;
+            Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED;
+
             switch (mode_string) {
                 case "ICON":
                     mode = Marlin.ViewMode.ICON;
@@ -650,8 +620,8 @@ namespace Marlin.View {
                 default:
                     break;
             }
-            current_tab.change_view_mode (mode);
-            /* ViewContainer takes care of changing appearance */
+
+            current_tab.mode = mode;            /* ViewContainer takes care of changing appearance */
         }
 
         private void action_go_to (GLib.SimpleAction action, GLib.Variant? param) {
@@ -677,15 +647,15 @@ namespace Marlin.View {
                     break;
 
                 case "UP":
-                    current_tab.go_up ();
+                    current_content.go_up ();
                     break;
 
                 case "FORWARD":
-                    current_tab.go_forward ();
+                    current_content.go_forward ();
                     break;
 
                 case "BACK":
-                    current_tab.go_back ();
+                    current_content.go_back ();
                     break;
 
                 default:
@@ -695,18 +665,18 @@ namespace Marlin.View {
 
         private void action_zoom (GLib.SimpleAction action, GLib.Variant? param) {
             if (current_tab != null) {
-                assert (current_tab.view != null);
+                assert (current_content.view != null);
                 switch (param.get_string ()) {
                     case "ZOOM_IN":
-                        current_tab.view.zoom_in ();
+                        current_content.view.zoom_in ();
                         break;
 
                     case "ZOOM_OUT":
-                        current_tab.view.zoom_out ();
+                        current_content.view.zoom_out ();
                         break;
 
                     case "ZOOM_NORMAL":
-                        current_tab.view.zoom_normal ();
+                        current_content.view.zoom_normal ();
                         break;
 
                     default:
@@ -772,8 +742,8 @@ namespace Marlin.View {
 
         public static void after_undo_redo (void  *data) {
             var window = data as Marlin.View.Window;
-            if (window.current_tab.slot.directory.is_recent) {
-                window.current_tab.reload ();
+            if (window.current_content.slot.directory.is_recent) {
+                window.current_content.reload ();
             }
 
             window.doing_undo_redo = false;
@@ -825,7 +795,7 @@ namespace Marlin.View {
                     return mode;
 
                 case Marlin.ViewMode.CURRENT:
-                    return current_tab.view_mode;
+                    return current_content.view_mode;
 
                 default:
                     break;
@@ -960,14 +930,13 @@ namespace Marlin.View {
             }
 
             tabs.current = tabs.get_tab_by_index (active_tab_position);
-            change_tab (active_tab_position);
 
             string path = "";
-            if (current_tab != null) {
-                path = current_tab.get_tip_uri ();
+            if (current_content != null) {
+                path = current_content.get_tip_uri ();
 
                 if (path == null || path == "") {
-                    path = current_tab.get_root_uri ();
+                    path = current_content.get_root_uri ();
                 }
             }
 
@@ -1009,21 +978,21 @@ namespace Marlin.View {
         }
 
         private void update_top_menu () {
-            if (restoring_tabs || current_tab == null) {
+            if (restoring_tabs || current_content == null) {
                 return;
             }
 
             /* Update browser buttons */
-            top_menu.set_back_menu (current_tab.get_go_back_path_list ());
-            top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
-            top_menu.can_go_back = current_tab.can_go_back;
-            top_menu.can_go_forward = (current_tab.can_show_folder && current_tab.can_go_forward);
-            top_menu.working = current_tab.is_loading;
+            top_menu.set_back_menu (current_content.get_go_back_path_list ());
+            top_menu.set_forward_menu (current_content.get_go_forward_path_list ());
+            top_menu.can_go_back = current_content.can_go_back;
+            top_menu.can_go_forward = (current_content.can_show_folder && current_content.can_go_forward);
+            top_menu.working = current_content.is_loading;
 
             /* Update viewmode switch, action state and settings */
-            var mode = current_tab.view_mode;
+            var mode = current_content.view_mode;
             view_switcher.mode = mode;
-            view_switcher.sensitive = current_tab.can_show_folder;
+            view_switcher.sensitive = current_content.can_show_folder;
             get_action ("view_mode").set_state (mode_strings [(int)mode]);
             Preferences.settings.set_enum ("default-viewmode", mode);
         }
@@ -1035,27 +1004,26 @@ namespace Marlin.View {
         }
 
         public void mount_removed (Mount mount) {
-            debug ("Mount %s removed", mount.get_name ());
             GLib.File root = mount.get_root ();
 
-            foreach (var page in tabs.get_children ()) {
-                var view_container = page as Marlin.View.ViewContainer;
-                GLib.File location = view_container.location;
+            foreach (var tab in tabs.tabs) {
+                var vt = (ViewTab)tab;
+                var location = vt.location;
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
-                    if (view_container == current_tab) {
-                        view_container.focus_location (File.new_for_path (Eel.get_real_user_home ()));
+                    if (vt == current_tab) {
+                        vt.location = File.new_for_path (Eel.get_real_user_home ());
                     } else {
-                        remove_tab (view_container);
+                        tab.close ();
                     }
                 }
             }
         }
 
-        private void file_path_change_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
-            /* ViewContainer deals with non-existent or unmounted directories
-             * and locations that are not directories */
-            if (restoring_tabs) {
+        public void file_path_change_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
+             /* ViewContainer deals with non-existent or unmounted directories
+              * and locations that are not directories */
+             if (restoring_tabs) {
                 return;
             }
 
@@ -1064,7 +1032,7 @@ namespace Marlin.View {
                 /* Focus_location will not unnecessarily load the current directory if location is
                  * normal file in the current directory, otherwise it will call user_path_change_request
                  */
-                current_tab.focus_location (loc);
+                current_tab.location = loc;
             } else {
                 open_new_container (loc, flag);
             }
@@ -1084,8 +1052,8 @@ namespace Marlin.View {
         private File? get_file_from_uri (string uri) {
             /* Sanitize path removes file:// scheme if present, but GOF.Directory.Async will replace it */
             string? current_uri = null;
-            if (current_tab != null && current_tab.location != null) {
-                current_uri = current_tab.location.get_uri ();
+            if (current_content != null && current_content.location != null) {
+                current_uri = current_content.location.get_uri ();
             }
 
             string path = PF.FileUtils.sanitize_path (uri, current_uri);

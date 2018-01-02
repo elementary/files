@@ -351,7 +351,7 @@ namespace FM {
         }
 
         ~AbstractDirectoryView () {
-            debug ("ADV destruct");
+            debug ("--- DESTRUCT --- ADV destruct");
         }
 
         public bool is_in_recent () {
