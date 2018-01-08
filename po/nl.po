@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-01-08 19:53+0000\n"
-"Last-Translator: Dieter Debast <dieter_debast@hotmail.com>\n"
+"PO-Revision-Date: 2018-01-09 00:16+0000\n"
+"Last-Translator: Adriaan Groenenboom <radix+github@gboom.nl>\n"
 "Language-Team: Dutch <https://weblate.elementary.io/projects/files/files/nl/>"
 "\n"
 "Language: nl\n"
@@ -1137,7 +1137,7 @@ msgstr "Oorspronkelijke locatie kon niet worden bepaald"
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Open de prullenbak en herstel handmatig"
 
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
