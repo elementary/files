@@ -40,9 +40,6 @@ namespace Marlin.View.Chrome {
         uint animation_timeout_id = 0;
         protected Gee.Collection<BreadcrumbElement>? old_elements;
 
-        /* RTL support */
-        bool is_RTL = false;
-
         protected Gtk.StyleContext button_context;
         protected Gtk.StyleContext button_context_active;
         protected const int BREAD_SPACING = 12;
@@ -55,24 +52,21 @@ namespace Marlin.View.Chrome {
     /** Construction **/
     /******************/
         construct {
-            is_RTL = Gtk.get_locale_direction () == Gtk.TextDirection.RTL;
             truncate_multiline = true;
-            configure_style ();
-            breadcrumb_icons = new BreadcrumbIconList (button_context);
+            weak Gtk.StyleContext style_context = get_style_context ();
+            style_context.add_class ("pathbar");
+            Granite.Widgets.Utils.set_theming (this, ".noradius-button{border-radius:0px;}", null,
+                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            breadcrumb_icons = new BreadcrumbIconList (style_context);
 
             elements = new Gee.ArrayList<BreadcrumbElement> ();
             old_elements = new Gee.ArrayList<BreadcrumbElement> ();
             connect_signals ();
 
             minimum_width = 100;
-        }
-
-        protected virtual void configure_style () {
-            button_context = get_style_context ();
-            button_context.add_class ("pathbar");
-
-            Granite.Widgets.Utils.set_theming (this, ".noradius-button{border-radius:0px;}", null,
-                                               Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            notify["scale-factor"].connect (() => {
+                breadcrumb_icons.scale = scale_factor;
+            });
         }
 
         protected virtual void connect_signals () {
@@ -392,8 +386,9 @@ namespace Marlin.View.Chrome {
             var l = (int)displayed_breadcrumbs.length ();
             var w = displayed_breadcrumbs.first ().data.natural_width;
             if (l > 1) {
-                var state = button_context.get_state ();
-                var padding = button_context.get_padding (state);
+                weak Gtk.StyleContext style_context = get_style_context ();
+                var state = style_context.get_state ();
+                var padding = style_context.get_padding (state);
                 w += (l -1) * (MINIMUM_BREADCRUMB_WIDTH + padding.left + padding.right);
 
                 /* Allow extra space for last breadcrumb */
@@ -445,6 +440,7 @@ namespace Marlin.View.Chrome {
         protected BreadcrumbElement? get_element_from_coordinates (int x, int y) {
             double width = get_allocated_width () - ICON_WIDTH;
             double height = get_allocated_height ();
+            var is_RTL = Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ();
             double x_render = is_RTL ? width : 0;
             foreach (BreadcrumbElement element in elements) {
                 if (element.display) {
@@ -485,10 +481,10 @@ namespace Marlin.View.Chrome {
                                                                Gee.ArrayList<BreadcrumbElement> newelements) {
             /* Ensure the breadcrumb texts are escaped strings whether or not the parameter newpath was supplied escaped */
             string newpath = PF.FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
-            newelements.add (new BreadcrumbElement (protocol, this, button_context));
+            newelements.add (new BreadcrumbElement (protocol, this, get_style_context ()));
             foreach (string dir in newpath.split (Path.DIR_SEPARATOR_S)) {
                 if (dir != "")
-                    newelements.add (new BreadcrumbElement (dir, this, button_context));
+                    newelements.add (new BreadcrumbElement (dir, this, get_style_context ()));
             }
             set_element_icons (protocol, newelements);
             replace_elements (newelements);
@@ -501,8 +497,7 @@ namespace Marlin.View.Chrome {
 
             foreach (BreadcrumbIconInfo icon in breadcrumb_icons.get_list ()) {
                 if (icon.protocol && protocol.has_prefix (icon.path)) {
-                    newelements[0].set_icon (icon.icon, breadcrumb_icons.scale);
-                    newelements[0].set_icon_name (icon.icon_name);
+                    newelements[0].set_icon (icon);
                     newelements[0].text_for_display = icon.text_displayed;
                     newelements[0].text_is_displayed = (icon.text_displayed != null);
                     break;
@@ -523,8 +518,7 @@ namespace Marlin.View.Chrome {
                             newelements[j].display = false;
 
                         newelements[h].display = true;
-                        newelements[h].set_icon (icon.icon, breadcrumb_icons.scale);
-                        newelements[h].set_icon_name (icon.icon_name);
+                        newelements[h].set_icon (icon);
                         newelements[h].text_is_displayed = (icon.text_displayed != null) || !icon.break_loop;
                         newelements[h].text_for_display = icon.text_displayed;
 
@@ -613,19 +607,20 @@ namespace Marlin.View.Chrome {
         }
 
         public override bool draw (Cairo.Context cr) {
+            weak Gtk.StyleContext style_context = get_style_context ();
             if (button_context_active == null) {
                 button_context_active = new Gtk.StyleContext ();
-                button_context_active.set_path(button_context.get_path ());
+                button_context_active.set_path(style_context.get_path ());
                 button_context_active.set_state (Gtk.StateFlags.ACTIVE);
             }
-            is_RTL = ((this.get_style_context ().get_state () & Gtk.StateFlags.DIR_RTL) > 0);
-            var state = button_context.get_state ();
-            var padding = button_context.get_padding (state);
+            var state = style_context.get_state ();
+            var is_RTL = Gtk.StateFlags.DIR_RTL in state;
+            var padding = style_context.get_padding (state);
             base.draw (cr);
             double height = get_allocated_height ();
             double width = get_allocated_width ();
 
-            int scale = get_style_context ().get_scale ();
+            int scale = style_context.get_scale ();
             if (breadcrumb_icons.scale != scale) {
                 breadcrumb_icons.scale = scale;
 
@@ -636,7 +631,10 @@ namespace Marlin.View.Chrome {
                 set_element_icons (protocol, elements);
             }
 
-            Gtk.Border border = button_context_active.get_margin (Gtk.StateFlags.ACTIVE);
+            style_context.save ();
+            style_context.set_state (Gtk.StateFlags.ACTIVE);
+            Gtk.Border border = style_context.get_margin (state);
+            style_context.restore ();
 
             if (!is_focus) {
                 double margin = border.top;
@@ -666,7 +664,7 @@ namespace Marlin.View.Chrome {
                 cr.save ();
                 /* Really draw the elements */
                 foreach (BreadcrumbElement element in displayed_breadcrumbs) {
-                    x_render = element.draw (cr, x_render, margin, height_marged, button_context, is_RTL, scale, this);
+                    x_render = element.draw (cr, x_render, margin, height_marged, this);
                     /* save element x axis position */
                     if (is_RTL) {
                         element.x = x_render + element.real_width;
@@ -678,7 +676,7 @@ namespace Marlin.View.Chrome {
                 if (old_elements != null) {
                     foreach (BreadcrumbElement element in old_elements) {
                         if (element.display) {
-                            x_render = element.draw (cr, x_render, margin, height_marged, button_context, is_RTL, scale, this);
+                            x_render = element.draw (cr, x_render, margin, height_marged, this);
                             /* save element x axis position */
                             if (is_RTL) {
                                 element.x = x_render + element.real_width;
