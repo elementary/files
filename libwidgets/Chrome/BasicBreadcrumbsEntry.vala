@@ -610,7 +610,7 @@ namespace Marlin.View.Chrome {
             weak Gtk.StyleContext style_context = get_style_context ();
             if (button_context_active == null) {
                 button_context_active = new Gtk.StyleContext ();
-                button_context_active.set_path(style_context.get_path ());
+                button_context_active.set_path (style_context.get_path ());
                 button_context_active.set_state (Gtk.StateFlags.ACTIVE);
             }
             var state = style_context.get_state ();
