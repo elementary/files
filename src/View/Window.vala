@@ -315,7 +315,7 @@ namespace Marlin.View {
 
             tabs.tab_moved.connect ((tab, x, y) => {
                 var vc = tab.page as ViewContainer;
-                ((Marlin.Application) application).create_window (vc.location, real_mode (vc.view_mode), x, y);
+                ((Marlin.Application) application).create_window ({vc.location}, real_mode (vc.view_mode), x, y);
                 /* A crash occurs if the original tab is removed while processing the signal */
                 GLib.Idle.add (() => {
                     remove_tab (vc);
@@ -450,7 +450,26 @@ namespace Marlin.View {
             top_menu.working = current_tab.is_frozen;
         }
 
-        public void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+        public void open_tabs (File[]? files = null, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+            if (files == null || files.length == 0 || files[0] == null) {
+                /* Restore session if not root and settings allow */
+                if (Posix.getuid () == 0 ||
+                    !Preferences.settings.get_boolean ("restore-tabs") ||
+                    restore_tabs () < 1) {
+
+                    /* Open a tab pointing at the default location if no tabs restored*/
+                    var location = File.new_for_path (Eel.get_real_user_home ());
+                    add_tab (location, mode);
+                }
+            } else {
+                /* Open tabs at each requested location */
+                foreach (var file in files) {
+                    add_tab (file, mode);
+                }
+            }
+        }
+
+        private void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             var file = get_file_from_uri (uri);
             if (file != null) {
                 add_tab (file, mode);
@@ -459,7 +478,7 @@ namespace Marlin.View {
             }
         }
 
-        public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
+        private void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
@@ -561,7 +580,7 @@ namespace Marlin.View {
                                  Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                                  int x = -1, int y = -1) {
 
-            ((Marlin.Application) application).create_window (location, real_mode (mode), x, y);
+            ((Marlin.Application) application).create_window ({location}, real_mode (mode), x, y);
         }
 
         private void undo_actions_set_insensitive () {
