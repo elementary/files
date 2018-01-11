@@ -1320,7 +1320,7 @@ namespace Marlin.Places {
                             var app = Marlin.Application.get ();
                             app.create_window (location);
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
-                            window.add_tab (location, Marlin.ViewMode.CURRENT);
+                            window.open_single_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
                             window.uri_path_change_request (location.get_uri ());
                         }
