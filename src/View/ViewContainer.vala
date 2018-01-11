@@ -311,11 +311,11 @@ namespace Marlin.View {
 
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
-                    this.window.add_tab (loc, view_mode);
+                    window.open_single_tab (loc, view_mode);
                     break;
 
                 case Marlin.OpenFlag.NEW_WINDOW:
-                    this.window.add_window (loc, view_mode);
+                    window.add_window (loc, view_mode);
                     break;
 
                 default:

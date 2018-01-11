@@ -409,7 +409,31 @@ namespace Marlin.View {
             top_menu.working = current_tab.is_frozen;
         }
 
-        public void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+        /** Convenience function for opening a single tab **/
+        public void open_single_tab (File? file = null, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+            open_tabs ({file}, mode);
+        }
+
+        public void open_tabs (File[]? files = null, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+            if (files == null || files.length == 0 || files[0] == null) {
+                /* Restore session if not root and settings allow */
+                if (Posix.getuid () == 0 ||
+                    !Preferences.settings.get_boolean ("restore-tabs") ||
+                    restore_tabs () < 1) {
+
+                    /* Open a tab pointing at the default location if no tabs restored*/
+                    var location = File.new_for_path (Eel.get_real_user_home ());
+                    add_tab (location, mode);
+                }
+            } else {
+                /* Open tabs at each requested location */
+                foreach (var file in files) {
+                    add_tab (file, mode);
+                }
+            }
+        }
+
+        private void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             var file = get_file_from_uri (uri);
             if (file != null) {
                 add_tab (file, mode);
@@ -418,7 +442,7 @@ namespace Marlin.View {
             }
         }
 
-        public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
+        private void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
