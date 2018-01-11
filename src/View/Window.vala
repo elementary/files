@@ -77,11 +77,6 @@ namespace Marlin.View {
         public signal void free_space_change ();
 
         [Signal (action=true)]
-        public virtual signal void go_back () {
-            current_tab.go_back ();
-        }
-
-        [Signal (action=true)]
         public virtual signal void go_up () {
             current_tab.go_up ();
         }
@@ -199,8 +194,8 @@ namespace Marlin.View {
             /* Connect and abstract signals to local ones
             /*/
 
-            top_menu.forward.connect (on_go_forward);
-            top_menu.back.connect (on_go_back);
+            top_menu.forward.connect (() => {current_tab.go_forward ();});
+            top_menu.back.connect (() => {current_tab.go_back ();});
             top_menu.escape.connect (grab_focus);
             top_menu.path_change_request.connect ((loc, flag) => {
                 current_tab.is_frozen = false;
@@ -220,7 +215,6 @@ namespace Marlin.View {
             });
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
-            button_press_event.connect_after (on_button_press_event);
 
             /* Toggle focus between sidebar and view using unmodified Tab key, unless location
              * bar in focus. */
@@ -357,45 +351,10 @@ namespace Marlin.View {
             }
         }
 
-        private bool on_button_press_event (Gdk.EventButton event) {
-            Gdk.ModifierType mods = event.state & Gtk.accelerator_get_default_mod_mask ();
-            bool result = false;
-            switch (event.button) {
-                /* Extra mouse button actions */
-                case 6:
-                case 8:
-                    if (mods == 0) {
-                        result = true;
-                        on_go_back ();
-                    }
-                    break;
-
-                case 7:
-                case 9:
-                    if (mods == 0) {
-                        result = true;
-                        on_go_forward ();
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-
-            return result;
-        }
-
         private void on_tab_removed () {
             if (tabs.n_tabs == 0) {
                 add_tab ();
             }
-        }
-
-        private void on_go_forward (int n = 1) {
-            current_tab.go_forward (n);
-        }
-        private void on_go_back (int n = 1) {
-            current_tab.go_back (n);
         }
 
         private void open_new_container (GLib.File loc, Marlin.OpenFlag flag) {
