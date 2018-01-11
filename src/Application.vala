@@ -199,11 +199,11 @@ public class Marlin.Application : Granite.Application {
 
         /* Open application */
         if (open_in_tab || files == null) {
-             create_window (files);
+             create_windows (files);
         } else {
             /* Open windows with tab at each requested location. */
             foreach (var file in files) {
-                create_window ({file});
+                create_window (file);
             }
         }
 
@@ -268,10 +268,17 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
     }
 
+    public Marlin.View.Window? create_window (File? location = null,
+                                              Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
+                                              int x = -1, int y = -1) {
+
+        return create_windows ({location}, viewmode, x, y);
+    }
+
     /* All window creation should be done via this function */
-    public Marlin.View.Window? create_window (File[] locations = {},
-                                             Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
-                                             int x = -1, int y = -1) {
+    public Marlin.View.Window? create_windows (File[] locations = {},
+                                               Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
+                                               int x = -1, int y = -1) {
         if (this.get_windows ().length () >= MAX_WINDOWS) {
             return null;
         }
@@ -306,7 +313,7 @@ public class Marlin.Application : Granite.Application {
 
         /* New window will not size or show itself if new_win_rect is not null */
         win = new Marlin.View.Window (this, screen, new_win_rect == null);
-        this.add_window (win as Gtk.Window);
+        add_window (win as Gtk.Window);
         plugins.interface_loaded (win as Gtk.Widget);
 
         win.open_tabs (locations, viewmode);

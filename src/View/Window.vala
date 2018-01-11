@@ -309,7 +309,7 @@ namespace Marlin.View {
 
             tabs.tab_moved.connect ((tab, x, y) => {
                 var vc = tab.page as ViewContainer;
-                ((Marlin.Application) application).create_window ({vc.location}, real_mode (vc.view_mode), x, y);
+                ((Marlin.Application) application).create_window (vc.location, real_mode (vc.view_mode), x, y);
                 /* A crash occurs if the original tab is removed while processing the signal */
                 GLib.Idle.add (() => {
                     remove_tab (vc);
@@ -407,6 +407,11 @@ namespace Marlin.View {
             loading_uri (current_tab.uri);
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
             top_menu.working = current_tab.is_frozen;
+        }
+
+        /** Convenience function for opening a single tab **/
+        public void open_single_tab (File? file = null, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+            open_tabs ({file}, mode);
         }
 
         public void open_tabs (File[]? files = null, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
@@ -539,7 +544,7 @@ namespace Marlin.View {
                                  Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                                  int x = -1, int y = -1) {
 
-            ((Marlin.Application) application).create_window ({location}, real_mode (mode), x, y);
+            ((Marlin.Application) application).create_window (location, real_mode (mode), x, y);
         }
 
         private void undo_actions_set_insensitive () {
