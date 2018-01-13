@@ -196,16 +196,18 @@ public class Marlin.Application : Granite.Application {
                 files += (file);
             }
         }
+
         /* Open application */
-        if (create_new_window) {
-            var win = create_window (null);
-            win.add_tab (); /* Default tab */
-        } else if (open_in_tab) {
-            open_tabs (files);
+        if (open_in_tab || files == null) {
+             create_windows (files);
         } else {
-            open_windows (files);
+            /* Open windows with tab at each requested location. */
+            foreach (var file in files) {
+                create_window (file);
+            }
         }
-        return Posix.EXIT_SUCCESS;
+
+        return get_windows ().length () > 0 ? Posix.EXIT_SUCCESS : Posix.EXIT_FAILURE;
     }
 
     public override void quit_mainloop () {
@@ -266,21 +268,17 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
     }
 
-    private void open_windows (File[]? files) {
-        if (files == null)
-            open_tabs (null); /* open_tabs () will restore saved tabs or default tab depending on preference */
-        else {
-            /* Open windows with tab at each requested location. */
-            foreach (var file in files) {
-                create_window (file);
-            }
-        }
+    public Marlin.View.Window? create_window (File? location = null,
+                                              Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
+                                              int x = -1, int y = -1) {
+
+        return create_windows ({location}, viewmode, x, y);
     }
 
     /* All window creation should be done via this function */
-    public Marlin.View.Window? create_window (File? location,
-                                             Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
-                                             int x = -1, int y = -1) {
+    public Marlin.View.Window? create_windows (File[] locations = {},
+                                               Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
+                                               int x = -1, int y = -1) {
         if (this.get_windows ().length () >= MAX_WINDOWS) {
             return null;
         }
@@ -315,12 +313,10 @@ public class Marlin.Application : Granite.Application {
 
         /* New window will not size or show itself if new_win_rect is not null */
         win = new Marlin.View.Window (this, screen, new_win_rect == null);
-        this.add_window (win as Gtk.Window);
+        add_window (win as Gtk.Window);
         plugins.interface_loaded (win as Gtk.Widget);
 
-        if (location != null) {
-            win.add_tab (location, viewmode);
-        }
+        win.open_tabs (locations, viewmode);
 
         if (new_win_rect != null) {
             move_resize_window (win, new_win_rect);
@@ -330,41 +326,6 @@ public class Marlin.Application : Granite.Application {
         win.present ();
 
         return win;
-    }
-
-    private void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ()) {
-        Marlin.View.Window window = null;
-
-        /* Get the first window, if any, else create a new window */
-        if (windows_exist ()) {
-            window = (this.get_windows ()).data as Marlin.View.Window;
-            window.present ();
-        } else {
-            window = create_window (null); /* Do not add a tab on creation */
-            if (window == null) { /* Maximum number of windows reached */
-                return;
-            }
-        }
-        if (files == null) {
-            /* Restore session if not root and settings allow */
-            if (Posix.getuid () == 0 ||
-                !Preferences.settings.get_boolean ("restore-tabs") ||
-                window.restore_tabs () < 1) {
-
-                /* Open a tab pointing at the default location if no tabs restored*/
-                var location = File.new_for_path (Eel.get_real_user_home ());
-                window.add_tab (location, Marlin.ViewMode.PREFERRED);
-            }
-        } else {
-            /* Open tabs at each requested location */
-            foreach (var file in files)
-                window.add_tab (file, Marlin.ViewMode.PREFERRED);
-        }
-    }
-
-    private bool windows_exist () {
-        unowned List<weak Gtk.Window> windows = this.get_windows ();
-        return (windows != null && windows.data != null);
     }
 
     private void move_resize_window (Gtk.Window win, Gdk.Rectangle? rect) {
