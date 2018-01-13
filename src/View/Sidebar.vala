@@ -952,7 +952,7 @@ namespace Marlin.Places {
                 if (uri != null) {
                     GOF.File file = GOF.File.get_by_uri (uri);
                     if (file.ensure_query_info ()) {
-                        file.accepts_drop (drag_list, context, out action);
+                        PF.FileUtils.file_accepts_drop (file, drag_list, context, out action);
                     } else {
                         warning ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
                     }
