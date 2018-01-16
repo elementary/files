@@ -1440,9 +1440,9 @@ namespace Marlin.Places {
 
         private new void popup_menu (Gdk.EventButton? event) {
             if (popupmenu == null) {
-                var item_open = new Gtk.MenuItem.with_mnemonic (_("Open"));
-                item_open.activate.connect (open_shortcut_cb);
-                item_open.show ();
+                var popupmenu_open = new Gtk.MenuItem.with_mnemonic (_("Open"));
+                popupmenu_open.activate.connect (open_shortcut_cb);
+                popupmenu_open.show ();
 
                 popupmenu_open_in_new_tab_item = new Gtk.MenuItem.with_mnemonic (_("Open in New _Tab"));
                 popupmenu_open_in_new_tab_item.activate.connect (open_shortcut_in_new_tab_cb);
@@ -1485,7 +1485,7 @@ namespace Marlin.Places {
                 popupmenu_drive_property_item.show ();
 
                 popupmenu = new Gtk.Menu ();
-                popupmenu.append (item_open);
+                popupmenu.append (popupmenu_open);
                 popupmenu.append (popupmenu_open_in_new_tab_item);
                 popupmenu.append (popupmenu_open_in_new_window_item);
                 popupmenu.append (popupmenu_separator_item1);
