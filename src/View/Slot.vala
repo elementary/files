@@ -398,9 +398,6 @@ namespace Marlin.View {
 
             if (directory != null) {
                 directory.cancel ();
-            }
-
-            if (directory != null) {
                 disconnect_dir_signals ();
             }
 
