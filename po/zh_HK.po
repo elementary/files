@@ -3,32 +3,33 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-05-07 10:52+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2018-01-20 00:04+0000\n"
+"Last-Translator: Wendel Hime <wendelhime@hotmail.com>\n"
+"Language-Team: zh (generated) "
+"<https://weblate.elementary.io/projects/files/files/zh_HK/>\n"
+"Language: zh_HK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr ""
+msgstr "FTP Publico"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
-msgstr ""
+msgstr "FTP (com login)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Protocolo de arquivamento da Apple)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -44,7 +45,7 @@ msgstr ""
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr ""
+msgstr "Conectando..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -55,87 +56,87 @@ msgstr ""
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr ""
+msgstr "A pasta \"%s\" não pode ser aberta em \"%s\"."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr ""
+msgstr "O servidor em \"%s\" não pode ser encontrado."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
-msgstr ""
+msgstr "Tente novamente"
 
 #: ../src/marlin-connect-server-dialog.c:392
 msgid "Please verify your user details."
-msgstr ""
+msgstr "Por favor, verifique os detalhes do seu usuario."
 
 #: ../src/marlin-connect-server-dialog.c:422
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #: ../src/marlin-connect-server-dialog.c:760
 #: ../src/marlin-connect-server-dialog.c:1153
 msgid "C_onnect"
-msgstr ""
+msgstr "C_onecte"
 
 #: ../src/marlin-connect-server-dialog.c:888
 msgid "Connect to Server"
-msgstr ""
+msgstr "Conectar com o Servidor"
 
 #: ../src/marlin-connect-server-dialog.c:906
 msgid "Server Details"
-msgstr ""
+msgstr "Detalhes do Servidor"
 
 #: ../src/marlin-connect-server-dialog.c:930
 msgid "_Server:"
-msgstr ""
+msgstr "_Servidor:"
 
 #: ../src/marlin-connect-server-dialog.c:950
 msgid "_Port:"
-msgstr ""
+msgstr "_Porta:"
 
 #: ../src/marlin-connect-server-dialog.c:968
 msgid "_Type:"
-msgstr ""
+msgstr "_Tipo:"
 
 #: ../src/marlin-connect-server-dialog.c:1037
 msgid "Sh_are:"
-msgstr ""
+msgstr "Compartilhar:"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr ""
+msgstr "_Diretorio:"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
-msgstr ""
+msgstr "Detalhes do Usuário"
 
 #: ../src/marlin-connect-server-dialog.c:1093
 msgid "_Domain name:"
-msgstr ""
+msgstr "_Nome do Domínio:"
 
 #: ../src/marlin-connect-server-dialog.c:1108
 msgid "_User name:"
-msgstr ""
+msgstr "_Nome do Usuário:"
 
 #: ../src/marlin-connect-server-dialog.c:1123
 msgid "Pass_word:"
-msgstr ""
+msgstr "Senha:"
 
 #: ../src/marlin-connect-server-dialog.c:1139
 msgid "_Remember this password"
-msgstr ""
+msgstr "_Lembrar essa senha"
 
 #: ../src/marlin-connect-server-dialog.c:1242
 msgid "Operation cancelled"
-msgstr ""
+msgstr "Operação cancelada"
 
 #: ../libcore/marlin-file-conflict-dialog.c:145
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr ""
+msgstr "Mesclar diretórios \"%s\"?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:375
@@ -143,6 +144,9 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"Durante a mesclagem sera solicitada a confirmação antes de substituir "
+"qualquer arquivo no diretório em que existe conflito com os arquivos que "
+"estão sendo copiados."
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:380
