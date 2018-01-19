@@ -1067,7 +1067,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.go_to::SERVER", {"<Alt>C"});
             application.set_accels_for_action ("win.go_to::UP", {"<Alt>Up"});
             application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right", "XF86Forward"});
-            application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left", "BackSpace", "XF86Back"});
+            application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left", "XF86Back"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
         }
     }
