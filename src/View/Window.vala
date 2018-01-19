@@ -39,8 +39,7 @@ namespace Marlin.View {
             {"info", action_info, "s"},
             {"view_mode", action_view_mode, "s", "'MILLER'"},
             {"show_hidden", null, null, "false", change_state_show_hidden},
-            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails},
-            {"show_sidebar", null ,  null, "false", change_state_show_sidebar}
+            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
 
         public GLib.SimpleActionGroup win_actions;
@@ -113,7 +112,6 @@ namespace Marlin.View {
 
             if (is_first_window) {
                 /*Preference bindings */
-                Preferences.settings.bind ("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
                 Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
             }
 
@@ -156,6 +154,7 @@ namespace Marlin.View {
             sidebar = new Marlin.Places.Sidebar (this, Posix.getuid () == 0);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+            lside_pane.position = Preferences.settings.get_int ("sidebar-width");
             lside_pane.show ();
             lside_pane.pack1 (sidebar, false, false);
             lside_pane.pack2 (tabs, true, false);
@@ -165,23 +164,10 @@ namespace Marlin.View {
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
             get_action ("show_remote_thumbnails").set_state (Preferences.settings.get_boolean ("show-remote-thumbnails"));
 
-            var show_sidebar_pref = Preferences.settings.get_boolean ("show-sidebar");
-            get_action ("show_sidebar").set_state (show_sidebar_pref);
-            show_sidebar (true);
-
             if (is_first_window) {
                 window_position = Gtk.WindowPosition.CENTER;
             } else { /* Allow new window created by tab dragging to be positioned where dropped */
                 window_position = Gtk.WindowPosition.NONE;
-            }
-        }
-
-        public void show_sidebar (bool show = true) {
-            var show_sidebar = (get_action ("show_sidebar")).state.get_boolean ();
-            if (show && show_sidebar) {
-                lside_pane.position = Preferences.settings.get_int ("sidebar-width");
-            } else {
-                lside_pane.position = 0;
             }
         }
 
@@ -753,15 +739,6 @@ namespace Marlin.View {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
             Preferences.settings.set_boolean ("show-remote-thumbnails", state);
-        }
-
-        private void change_state_show_sidebar (GLib.SimpleAction action) {
-            bool state = !action.state.get_boolean ();
-            action.set_state (new GLib.Variant.boolean (state));
-            if (!state) {
-                Preferences.settings.set_int ("sidebar-width", lside_pane.position);
-            }
-            show_sidebar (state);
         }
 
         private void connect_to_server () {
