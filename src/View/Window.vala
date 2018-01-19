@@ -110,7 +110,12 @@ namespace Marlin.View {
             build_window ();
 
             connect_signals ();
-            make_bindings ();
+
+            if (is_first_window) {
+                /*Preference bindings */
+                Preferences.settings.bind ("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
+                Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
+            }
 
             if (show_window) { /* otherwise Application will size and show window */
                 if (Preferences.settings.get_boolean ("maximized")) {
@@ -325,14 +330,6 @@ namespace Marlin.View {
             });
 
             sidebar.path_change_request.connect (uri_path_change_request);
-        }
-
-        private void make_bindings () {
-            if (is_first_window) {
-                /*Preference bindings */
-                Preferences.settings.bind ("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
-                Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
-            }
         }
 
         private void on_tab_removed () {
