@@ -344,8 +344,6 @@ namespace Marlin.View {
 
                 /* keyboard shortcuts bindings */
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_back", 0);
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Back"), 0, "go_back", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Forward"), 0, "go_forward", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
             }
@@ -1108,7 +1106,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.go_to::SERVER", {"<Alt>C"});
             application.set_accels_for_action ("win.go_to::UP", {"<Alt>Up"});
             application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right"});
-            application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left"});
+            application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left", "BackSpace", "XF86Back"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
         }
     }
