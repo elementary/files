@@ -77,11 +77,6 @@ namespace Marlin.View {
         public signal void free_space_change ();
 
         [Signal (action=true)]
-        public virtual signal void go_up () {
-            current_tab.go_up ();
-        }
-
-        [Signal (action=true)]
         public virtual signal void edit_path () {
             action_edit_path ();
         }
@@ -344,7 +339,6 @@ namespace Marlin.View {
 
                 /* keyboard shortcuts bindings */
                 unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Forward"), 0, "go_forward", 0);
                 Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
             }
         }
@@ -1105,7 +1099,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.go_to::NETWORK", {"<Alt>N"});
             application.set_accels_for_action ("win.go_to::SERVER", {"<Alt>C"});
             application.set_accels_for_action ("win.go_to::UP", {"<Alt>Up"});
-            application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right"});
+            application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right", "XF86Forward"});
             application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left", "BackSpace", "XF86Back"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
         }
