@@ -32,6 +32,7 @@ namespace Marlin.View {
             {"redo", action_redo},
             {"bookmark", action_bookmark},
             {"find", action_find},
+            {"edit_path", action_edit_path},
             {"tab", action_tab, "s"},
             {"go_to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
@@ -75,11 +76,6 @@ namespace Marlin.View {
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
         public signal void free_space_change ();
-
-        [Signal (action=true)]
-        public virtual signal void edit_path () {
-            action_edit_path ();
-        }
 
         public Window (Marlin.Application application, Gdk.Screen myscreen, bool show_window = true) {
             Object (
@@ -336,10 +332,6 @@ namespace Marlin.View {
                 /*Preference bindings */
                 Preferences.settings.bind ("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
                 Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
-
-                /* keyboard shortcuts bindings */
-                unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
             }
         }
 
@@ -1082,6 +1074,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
             application.set_accels_for_action ("win.find", {"<Ctrl>F"});
+            application.set_accels_for_action ("win.edit_path", {"<Alt>L"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
