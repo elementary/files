@@ -189,7 +189,6 @@ namespace Marlin.Places {
             col.set_attributes (crt, "visible", Column.NOT_CATEGORY);
 
             var crpb = new Gtk.CellRendererPixbuf (); /* Icon for bookmark or device */
-            crpb.follow_state = true;
             crpb.stock_size = Gtk.IconSize.MENU;
             crpb.ypad = BOOKMARK_YPAD;
             col.pack_start (crpb, false);
@@ -224,7 +223,6 @@ namespace Marlin.Places {
 
             crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button (hidden while ejecting or unmounted) */
             this.eject_spinner_cell_renderer = crpb;
-            crpb.follow_state = true;
             crpb.stock_size = Gtk.IconSize.MENU;
             crpb.gicon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
             crpb.xpad = ICON_XPAD;
