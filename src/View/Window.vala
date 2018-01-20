@@ -32,14 +32,14 @@ namespace Marlin.View {
             {"redo", action_redo},
             {"bookmark", action_bookmark},
             {"find", action_find},
+            {"edit_path", action_edit_path},
             {"tab", action_tab, "s"},
             {"go_to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
             {"info", action_info, "s"},
             {"view_mode", action_view_mode, "s", "'MILLER'"},
             {"show_hidden", null, null, "false", change_state_show_hidden},
-            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails},
-            {"show_sidebar", null ,  null, "false", change_state_show_sidebar}
+            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
 
         public GLib.SimpleActionGroup win_actions;
@@ -76,16 +76,6 @@ namespace Marlin.View {
         public signal void folder_deleted (GLib.File location);
         public signal void free_space_change ();
 
-        [Signal (action=true)]
-        public virtual signal void go_up () {
-            current_tab.go_up ();
-        }
-
-        [Signal (action=true)]
-        public virtual signal void edit_path () {
-            action_edit_path ();
-        }
-
         public Window (Marlin.Application application, Gdk.Screen myscreen, bool show_window = true) {
             Object (
                 application: application,
@@ -119,7 +109,11 @@ namespace Marlin.View {
             build_window ();
 
             connect_signals ();
-            make_bindings ();
+
+            if (is_first_window) {
+                /*Preference bindings */
+                Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
+            }
 
             if (show_window) { /* otherwise Application will size and show window */
                 if (Preferences.settings.get_boolean ("maximized")) {
@@ -160,6 +154,7 @@ namespace Marlin.View {
             sidebar = new Marlin.Places.Sidebar (this, Posix.getuid () == 0);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+            lside_pane.position = Preferences.settings.get_int ("sidebar-width");
             lside_pane.show ();
             lside_pane.pack1 (sidebar, false, false);
             lside_pane.pack2 (tabs, true, false);
@@ -169,23 +164,10 @@ namespace Marlin.View {
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
             get_action ("show_remote_thumbnails").set_state (Preferences.settings.get_boolean ("show-remote-thumbnails"));
 
-            var show_sidebar_pref = Preferences.settings.get_boolean ("show-sidebar");
-            get_action ("show_sidebar").set_state (show_sidebar_pref);
-            show_sidebar (true);
-
             if (is_first_window) {
                 window_position = Gtk.WindowPosition.CENTER;
             } else { /* Allow new window created by tab dragging to be positioned where dropped */
                 window_position = Gtk.WindowPosition.NONE;
-            }
-        }
-
-        public void show_sidebar (bool show = true) {
-            var show_sidebar = (get_action ("show_sidebar")).state.get_boolean ();
-            if (show && show_sidebar) {
-                lside_pane.position = Preferences.settings.get_int ("sidebar-width");
-            } else {
-                lside_pane.position = 0;
             }
         }
 
@@ -334,21 +316,6 @@ namespace Marlin.View {
             });
 
             sidebar.path_change_request.connect (uri_path_change_request);
-        }
-
-        private void make_bindings () {
-            if (is_first_window) {
-                /*Preference bindings */
-                Preferences.settings.bind ("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
-                Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
-
-                /* keyboard shortcuts bindings */
-                unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_back", 0);
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Back"), 0, "go_back", 0);
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Forward"), 0, "go_forward", 0);
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
-            }
         }
 
         private void on_tab_removed () {
@@ -774,15 +741,6 @@ namespace Marlin.View {
             Preferences.settings.set_boolean ("show-remote-thumbnails", state);
         }
 
-        private void change_state_show_sidebar (GLib.SimpleAction action) {
-            bool state = !action.state.get_boolean ();
-            action.set_state (new GLib.Variant.boolean (state));
-            if (!state) {
-                Preferences.settings.set_int ("sidebar-width", lside_pane.position);
-            }
-            show_sidebar (state);
-        }
-
         private void connect_to_server () {
             var dialog = new Marlin.ConnectServer.Dialog ((Gtk.Window) this);
             dialog.show ();
@@ -1090,6 +1048,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
             application.set_accels_for_action ("win.find", {"<Ctrl>F"});
+            application.set_accels_for_action ("win.edit_path", {"<Alt>L"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
@@ -1107,8 +1066,8 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.go_to::NETWORK", {"<Alt>N"});
             application.set_accels_for_action ("win.go_to::SERVER", {"<Alt>C"});
             application.set_accels_for_action ("win.go_to::UP", {"<Alt>Up"});
-            application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right"});
-            application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left"});
+            application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right", "XF86Forward"});
+            application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left", "XF86Back"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
         }
     }
