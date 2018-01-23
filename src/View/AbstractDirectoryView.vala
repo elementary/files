@@ -1447,8 +1447,9 @@ namespace FM {
                 var target_list = new Gtk.TargetList (drag_targets);
                 var actions = file_drag_actions;
 
-                if (drag_button == 3)
+                if (drag_button == Gdk.BUTTON_SECONDARY) {
                     actions |= Gdk.DragAction.ASK;
+                }
 
                 context = Gtk.drag_begin_with_coordinates (widget,
                                 target_list,
@@ -1491,7 +1492,13 @@ namespace FM {
                                        uint info,
                                        uint timestamp) {
 
-            drag_file_list = get_selected_files_for_transfer ();
+            /* get file list only once in case view changes location automatically
+             * while dragging (which loses file selection.
+             */
+
+            if (drag_file_list == null) {
+                drag_file_list = get_selected_files_for_transfer ();
+            }
 
             if (drag_file_list == null) {
                 return;
@@ -1740,8 +1747,11 @@ namespace FM {
                     if (current_target_type == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
                         current_suggested_action = Gdk.DragAction.COPY;
                         current_actions = current_suggested_action;
-                    } else
-                        current_actions = file.accepts_drop (drop_file_list, context, out current_suggested_action);
+                    } else {
+                        current_actions = PF.FileUtils.file_accepts_drop (file,
+                                                                      drop_file_list, context,
+                                                                      out current_suggested_action);
+                    }
 
                     highlight_drop_file (drop_target_file, current_actions, path);
 
@@ -3269,7 +3279,6 @@ namespace FM {
                         case ClickZone.HELPER:
                             if (linear_select_required && is_selected) {
                                 linear_select_path (path);
-                                result = true;  /* Do not pass to default handler which would Rubberband */
                             } else {
                                 previous_selection_was_linear = false;
                                 previous_linear_selection_path = null;
@@ -3282,7 +3291,7 @@ namespace FM {
                                 }
                             }
 
-
+                            result = true; /* Prevent rubberbanding and deselection of other paths */
                             break;
 
                         case ClickZone.EXPANDER:
