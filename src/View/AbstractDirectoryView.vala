@@ -3279,7 +3279,6 @@ namespace FM {
                         case ClickZone.HELPER:
                             if (linear_select_required && selected_files.length () > 0) {
                                 linear_select_path (path);
-                                result = true;  /* Do not pass to default handler which would Rubberband */
                             } else {
                                 previous_selection_was_linear = false;
                                 previous_linear_selection_path = null;
@@ -3292,7 +3291,7 @@ namespace FM {
                                 }
                             }
 
-
+                            result = true; /* Prevent rubberbanding and deselection of other paths */
                             break;
 
                         case ClickZone.EXPANDER:
