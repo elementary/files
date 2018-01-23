@@ -320,10 +320,8 @@ public class Marlin.Application : Granite.Application {
 
         if (new_win_rect != null) {
             move_resize_window (win, new_win_rect);
-            win.show ();
+            win.present ();
         }
-
-        win.present ();
 
         return win;
     }
@@ -339,6 +337,5 @@ public class Marlin.Application : Granite.Application {
         if (rect.width > 0 && rect.height > 0) {
             win.resize (rect.width, rect.height);
         }
-        win.show ();
     }
 }

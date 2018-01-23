@@ -85,6 +85,16 @@
       <summary>Window height.</summary>
       <description>Default window height.</description>
     </key>
+    <key type="i" name="window-x">
+      <default>-1</default>
+      <summary>Window x position</summary>
+      <description>Horizontal position of last closed window</description>
+    </key>
+    <key type="i" name="window-y">
+      <default>-1</default>
+      <summary>Window y position</summary>
+      <description>Vertical position of last closed window</description>
+    </key>
     <key type="b" name="maximized">
       <default>false</default>
       <summary>Whether the navigation window should be maximized.</summary>

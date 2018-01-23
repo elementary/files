@@ -122,7 +122,19 @@ namespace Marlin.View {
 
                 default_width = Preferences.settings.get_int ("window-width");
                 default_height = Preferences.settings.get_int ("window-height");
-                show ();
+
+                if (is_first_window) {
+                    var default_x = Preferences.settings.get_int ("window-x");
+                    var default_y = Preferences.settings.get_int ("window-y");
+
+                    if (default_x > 0 && default_y > 0) {
+                        default_x = default_x.clamp (0, screen.get_width () - default_width);
+                        default_y = default_y.clamp (0, screen.get_height () - default_height);
+                        move (default_x, default_y);
+                    }
+                }
+
+                present ();
             }
         }
 
@@ -804,10 +816,14 @@ namespace Marlin.View {
             Preferences.settings.set_int ("sidebar-width", sidebar_width);
 
             if (is_maximized == false) {
-                int width, height;
+                int width, height, x, y;
                 get_size (out width, out height);
                 Preferences.settings.set_int ("window-width", width);
                 Preferences.settings.set_int ("window-height", height);
+
+                get_position (out x, out y);
+                Preferences.settings.set_int ("window-x", x);
+                Preferences.settings.set_int ("window-y", y);
             }
 
             Preferences.settings.set_boolean ("maximized", is_maximized);
