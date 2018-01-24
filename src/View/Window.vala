@@ -50,7 +50,6 @@ namespace Marlin.View {
             "MILLER"
         };
 
-        public bool show_window { get; construct; }
         public uint window_number { get; construct; }
 
         public bool is_first_window {
@@ -76,13 +75,12 @@ namespace Marlin.View {
         public signal void folder_deleted (GLib.File location);
         public signal void free_space_change ();
 
-        public Window (Marlin.Application application, Gdk.Screen myscreen, bool show_window = true) {
+        public Window (Marlin.Application application, Gdk.Screen myscreen = Gdk.Screen.get_default ()) {
             Object (
                 application: application,
                 height_request: 300,
                 icon_name: "system-file-manager",
                 screen: myscreen,
-                show_window: show_window,
                 title: _(Marlin.APP_TITLE),
                 width_request: 500,
                 window_number: application.window_count
@@ -115,27 +113,27 @@ namespace Marlin.View {
                 Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
             }
 
-            if (show_window) { /* otherwise Application will size and show window */
-                if (Preferences.settings.get_boolean ("maximized")) {
-                    maximize ();
-                }
-
-                default_width = Preferences.settings.get_int ("window-width");
-                default_height = Preferences.settings.get_int ("window-height");
-
-                if (is_first_window) {
-                    var default_x = Preferences.settings.get_int ("window-x");
-                    var default_y = Preferences.settings.get_int ("window-y");
-
-                    if (default_x > 0 && default_y > 0) {
-                        default_x = default_x.clamp (0, screen.get_width () - default_width);
-                        default_y = default_y.clamp (0, screen.get_height () - default_height);
-                        move (default_x, default_y);
-                    }
-                }
-
-                present ();
+            if (Preferences.settings.get_boolean ("maximized")) {
+                maximize ();
             }
+
+            default_width = Preferences.settings.get_int ("window-width");
+            default_height = Preferences.settings.get_int ("window-height");
+
+            if (is_first_window) {
+                var default_x = Preferences.settings.get_int ("window-x");
+                var default_y = Preferences.settings.get_int ("window-y");
+warning ("default_x %i, default_y %i", default_x, default_y);
+                if (default_x > 0 && default_y > 0) {
+                    default_x = default_x.clamp (0, screen.get_width () - default_width);
+                    default_y = default_y.clamp (0, screen.get_height () - default_height);
+                    move (default_x, default_y);
+                }
+            } else {
+warning ("Not first");
+            }
+
+            present ();
         }
 
         private void build_window () {
