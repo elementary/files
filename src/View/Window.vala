@@ -108,29 +108,37 @@ namespace Marlin.View {
 
             connect_signals ();
 
-            if (is_first_window) {
-                /*Preference bindings */
-                Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
-            }
-
-            if (Preferences.settings.get_boolean ("maximized")) {
-                maximize ();
-            }
-
             default_width = Preferences.settings.get_int ("window-width");
             default_height = Preferences.settings.get_int ("window-height");
 
             if (is_first_window) {
-                var default_x = Preferences.settings.get_int ("window-x");
-                var default_y = Preferences.settings.get_int ("window-y");
-warning ("default_x %i, default_y %i", default_x, default_y);
-                if (default_x > 0 && default_y > 0) {
-                    default_x = default_x.clamp (0, screen.get_width () - default_width);
-                    default_y = default_y.clamp (0, screen.get_height () - default_height);
+                Preferences.settings.bind ("sidebar-width", lside_pane,
+                                           "position", SettingsBindFlags.DEFAULT);
+
+                var state = (Marlin.WindowState)(Preferences.settings.get_enum ("window-state"));
+
+                if (state.is_maximized ()) {
+                    maximize ();
+                } else {
+                    var default_x = Preferences.settings.get_int ("window-x");
+                    var default_y = Preferences.settings.get_int ("window-y");
+
+                    int shadow_size = 64; // An approximation. TODO retrieve from style context?
+
+                    // Will be created as a normal window even if saved tiled so allow for added shadow
+                    // and approximate a tiled window on restoration
+                    if (state == Marlin.WindowState.TILED_START ||
+                        state == Marlin.WindowState.TILED_END) {
+
+                        default_x -= shadow_size;
+                        default_y -= shadow_size;
+
+                        default_width += shadow_size * 2;
+                        default_height += shadow_size * 2;
+                    }
+
                     move (default_x, default_y);
                 }
-            } else {
-warning ("Not first");
             }
 
             present ();
@@ -173,12 +181,6 @@ warning ("Not first");
             /** Apply preferences */
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
             get_action ("show_remote_thumbnails").set_state (Preferences.settings.get_boolean ("show-remote-thumbnails"));
-
-            if (is_first_window) {
-                window_position = Gtk.WindowPosition.CENTER;
-            } else { /* Allow new window created by tab dragging to be positioned where dropped */
-                window_position = Gtk.WindowPosition.NONE;
-            }
         }
 
         private void connect_signals () {
@@ -248,10 +250,7 @@ warning ("Not first");
 
 
             window_state_event.connect ((event) => {
-                if ((bool) event.changed_mask & Gdk.WindowState.MAXIMIZED) {
-                    Preferences.settings.set_boolean("maximized",
-                                                     (bool) get_window ().get_state () & Gdk.WindowState.MAXIMIZED);
-                } else if ((bool) event.changed_mask & Gdk.WindowState.ICONIFIED) {
+                if ((bool) event.changed_mask & Gdk.WindowState.ICONIFIED) {
                     top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
                 }
 
@@ -813,18 +812,24 @@ warning ("Not first");
             sidebar_width = int.max (sidebar_width, min_width);
             Preferences.settings.set_int ("sidebar-width", sidebar_width);
 
-            if (is_maximized == false) {
-                int width, height, x, y;
-                get_size (out width, out height);
-                Preferences.settings.set_int ("window-width", width);
-                Preferences.settings.set_int ("window-height", height);
+            int width, height, x, y;
 
-                get_position (out x, out y);
-                Preferences.settings.set_int ("window-x", x);
-                Preferences.settings.set_int ("window-y", y);
-            }
+            // Includes shadow for normal windows (but not maximized or tiled)
+            get_size (out width, out height);
+            get_position (out x, out y);
 
-            Preferences.settings.set_boolean ("maximized", is_maximized);
+            var gdk_state = get_window ().get_state ();
+            // If window is tiled, is it on left (start = true) or right (start = false)?
+            var start = x + width < screen.get_width ();
+
+            Preferences.settings.set_enum ("window-state",
+                                           Marlin.WindowState.from_gdk_window_state (gdk_state, start));
+
+            Preferences.settings.set_int ("window-width", width);
+            Preferences.settings.set_int ("window-height", height);
+
+            Preferences.settings.set_int ("window-x", x);
+            Preferences.settings.set_int ("window-y", y);
         }
 
         private void save_tabs () {
