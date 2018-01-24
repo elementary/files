@@ -27,7 +27,6 @@ namespace Marlin.View {
         private uint reload_timeout_id = 0;
         private uint path_change_timeout_id = 0;
         private bool original_reload_request = false;
-        private bool has_autosized = false;
 
         private const string EMPTY_MESSAGE = _("This Folder Is Empty");
         private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
@@ -154,8 +153,33 @@ namespace Marlin.View {
         private void on_directory_done_loading (GOF.Directory.Async dir) {
             directory_loaded (dir);
 
+            /*  Column View requires slots to determine their own width (other views' width determined by Window */
             if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
-                autosize_slot ();
+
+                if (dir.is_empty ()) { /* No files in the file cache */
+                    Pango.Rectangle extents;
+                    var layout = dir_view.create_pango_layout (null);
+                    layout.set_markup (get_empty_message (), -1);
+                    layout.get_extents (null, out extents);
+                    width = (int) Pango.units_to_double (extents.width);
+                } else {
+                    width = preferred_column_width;
+                }
+
+                width += dir_view.icon_size + 64; /* allow some extra room for icon padding and right margin*/
+
+                /* Allow extra room for MESSAGE_CLASS styling of special messages */
+                if (dir.is_empty () || dir.permission_denied) {
+                    width += width;
+                }
+
+                size_change ();
+                hpane.set_position (width);
+                colpane.show_all ();
+
+                if (colpane.get_realized ()) {
+                    colpane.queue_draw ();
+                }
             }
 
             is_frozen = false;
@@ -179,12 +203,6 @@ namespace Marlin.View {
             assert (directory != null);
 
             connect_dir_signals ();
-
-            has_autosized = false;
-
-            if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
-                directory.track_longest_name = true;
-            }
         }
 
         /* This delay in passing on the path change request is necessary to prevent occasional crashes
@@ -212,43 +230,6 @@ namespace Marlin.View {
             } else {
                 new_container_request (loc, flag);
             }
-        }
-
-        public void autosize_slot () {
-            if (dir_view == null || has_autosized) {
-                return;
-            }
-
-            Pango.Layout layout = dir_view.create_pango_layout (null);
-
-            if (directory.is_empty ()) { /* No files in the file cache */
-                layout.set_markup (get_empty_message (), -1);
-            } else {
-                layout.set_markup (GLib.Markup.escape_text (directory.longest_file_name), -1);
-            }
-            Pango.Rectangle extents;
-            layout.get_extents (null, out extents);
-
-            width = (int) Pango.units_to_double (extents.width)
-                  + dir_view.icon_size
-                  + 64; /* allow some extra room for icon padding and right margin*/
-
-            /* Allow extra room for MESSAGE_CLASS styling of special messages */
-            if (directory.is_empty () || directory.permission_denied) {
-                width += width;
-            }
-
-            width = width.clamp (preferred_column_width, preferred_column_width * 3);
-
-            size_change ();
-            hpane.set_position (width);
-            colpane.show_all ();
-
-            if (colpane.get_realized ()) {
-                colpane.queue_draw ();
-            }
-
-            has_autosized = true;
         }
 
         public override void user_path_change_request (GLib.File loc, bool make_root = true) {

@@ -174,6 +174,7 @@ namespace FM {
                         break;
                 }
             }
+
             return base.on_view_key_press_event (event);
         }
 

@@ -196,16 +196,18 @@ public class Marlin.Application : Granite.Application {
                 files += (file);
             }
         }
+
         /* Open application */
-        if (create_new_window) {
-            var win = create_window (null);
-            win.add_tab (); /* Default tab */
-        } else if (open_in_tab) {
-            open_tabs (files);
+        if (open_in_tab || files == null) {
+             create_windows (files);
         } else {
-            open_windows (files);
+            /* Open windows with tab at each requested location. */
+            foreach (var file in files) {
+                create_window (file);
+            }
         }
-        return Posix.EXIT_SUCCESS;
+
+        return get_windows ().length () > 0 ? Posix.EXIT_SUCCESS : Posix.EXIT_FAILURE;
     }
 
     public override void quit_mainloop () {
@@ -266,118 +268,26 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
     }
 
-    private void open_windows (File[]? files) {
-        if (files == null)
-            open_tabs (null); /* open_tabs () will restore saved tabs or default tab depending on preference */
-        else {
-            /* Open windows with tab at each requested location. */
-            foreach (var file in files) {
-                create_window (file);
-            }
-        }
+    public Marlin.View.Window? create_window (File? location = null,
+                                              Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
+                                              int x = -1, int y = -1) {
+
+        return create_windows ({location}, viewmode, x, y);
     }
 
     /* All window creation should be done via this function */
-    public Marlin.View.Window? create_window (File? location,
-                                             Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
-                                             int x = -1, int y = -1) {
+    public Marlin.View.Window? create_windows (File[] locations = {},
+                                               Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
+                                               int x = -1, int y = -1) {
         if (this.get_windows ().length () >= MAX_WINDOWS) {
             return null;
         }
 
-        Marlin.View.Window win;
-        Gdk.Rectangle? new_win_rect = null;
-        Gdk.Screen screen = Gdk.Screen.get_default ();
-        var aw = this.get_active_window ();
-        if (aw != null) {
-            /* This is not the first window - determine size and position of new window */
-            int w, h;
-            aw.get_size (out w, out h);
-            /* Calculate difference between the visible width of the window and the width returned by Gtk+,
-             * which might include client side decorations (shadow) in some versions (bug 756618).
-             * Assumes top_menu stretches full visible width. */
-            var tm_aw = ((Marlin.View.Window)aw).top_menu.get_allocated_width ();
-            int shadow_width = (w - tm_aw) / 2;
-            shadow_width -= 10; //Allow a small gap between adjacent windows
-            screen = aw.get_screen ();
-            if (x <= 0 || y <= 0) {
-                /* Place holder for auto-tiling code. If missing then new window will be placed
-                 * at the default position (centre of screen) */
-            } else { /* New window is a dropped tab */
-                /* Move new window so that centre of upper edge just inside the window is at mouse
-                 * cursor position. This makes it easier for used to readjust window position with mouse if required.
-                 */
-                x -= (shadow_width + w / 2);
-                y -= (shadow_width + 6);
-                new_win_rect = {x, y, w, h};
-            }
-        }
-
-        /* New window will not size or show itself if new_win_rect is not null */
-        win = new Marlin.View.Window (this, screen, new_win_rect == null);
-        this.add_window (win as Gtk.Window);
+        var win = new Marlin.View.Window (this);
+        add_window (win as Gtk.Window);
         plugins.interface_loaded (win as Gtk.Widget);
-
-        if (location != null) {
-            win.add_tab (location, viewmode);
-        }
-
-        if (new_win_rect != null) {
-            move_resize_window (win, new_win_rect);
-            win.show ();
-        }
-
-        win.present ();
+        win.open_tabs (locations, viewmode);
 
         return win;
-    }
-
-    private void open_tabs (File[]? files, Gdk.Screen screen = Gdk.Screen.get_default ()) {
-        Marlin.View.Window window = null;
-
-        /* Get the first window, if any, else create a new window */
-        if (windows_exist ()) {
-            window = (this.get_windows ()).data as Marlin.View.Window;
-            window.present ();
-        } else {
-            window = create_window (null); /* Do not add a tab on creation */
-            if (window == null) { /* Maximum number of windows reached */
-                return;
-            }
-        }
-        if (files == null) {
-            /* Restore session if not root and settings allow */
-            if (Posix.getuid () == 0 ||
-                !Preferences.settings.get_boolean ("restore-tabs") ||
-                window.restore_tabs () < 1) {
-
-                /* Open a tab pointing at the default location if no tabs restored*/
-                var location = File.new_for_path (Eel.get_real_user_home ());
-                window.add_tab (location, Marlin.ViewMode.PREFERRED);
-            }
-        } else {
-            /* Open tabs at each requested location */
-            foreach (var file in files)
-                window.add_tab (file, Marlin.ViewMode.PREFERRED);
-        }
-    }
-
-    private bool windows_exist () {
-        unowned List<weak Gtk.Window> windows = this.get_windows ();
-        return (windows != null && windows.data != null);
-    }
-
-    private void move_resize_window (Gtk.Window win, Gdk.Rectangle? rect) {
-        if (rect == null) {
-            return;
-        }
-
-        if (rect.x > 0 && rect.y > 0) {
-            win.move (rect.x, rect.y);
-        }
-        if (rect.width > 0 && rect.height > 0) {
-            win.resize (rect.width, rect.height);
-        }
-        win.show ();
     }
 }
