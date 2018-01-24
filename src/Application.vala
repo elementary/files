@@ -283,62 +283,11 @@ public class Marlin.Application : Granite.Application {
             return null;
         }
 
-        Marlin.View.Window win;
-        Gdk.Rectangle? new_win_rect = null;
-        Gdk.Screen screen = Gdk.Screen.get_default ();
-        var aw = this.get_active_window ();
-        if (aw != null) {
-            /* This is not the first window - determine size and position of new window */
-            int w, h;
-            aw.get_size (out w, out h);
-            /* Calculate difference between the visible width of the window and the width returned by Gtk+,
-             * which might include client side decorations (shadow) in some versions (bug 756618).
-             * Assumes top_menu stretches full visible width. */
-            var tm_aw = ((Marlin.View.Window)aw).top_menu.get_allocated_width ();
-            int shadow_width = (w - tm_aw) / 2;
-            shadow_width -= 10; //Allow a small gap between adjacent windows
-            screen = aw.get_screen ();
-            if (x <= 0 || y <= 0) {
-                /* Place holder for auto-tiling code. If missing then new window will be placed
-                 * at the default position (centre of screen) */
-            } else { /* New window is a dropped tab */
-                /* Move new window so that centre of upper edge just inside the window is at mouse
-                 * cursor position. This makes it easier for used to readjust window position with mouse if required.
-                 */
-                x -= (shadow_width + w / 2);
-                y -= (shadow_width + 6);
-                new_win_rect = {x, y, w, h};
-            }
-        }
-
-        /* New window will not size or show itself if new_win_rect is not null */
-        win = new Marlin.View.Window (this, screen, new_win_rect == null);
+        var win = new Marlin.View.Window (this);
         add_window (win as Gtk.Window);
         plugins.interface_loaded (win as Gtk.Widget);
-
         win.open_tabs (locations, viewmode);
 
-        if (new_win_rect != null) {
-            move_resize_window (win, new_win_rect);
-            win.show ();
-        }
-
-        win.present ();
-
         return win;
-    }
-
-    private void move_resize_window (Gtk.Window win, Gdk.Rectangle? rect) {
-        if (rect == null) {
-            return;
-        }
-
-        if (rect.x > 0 && rect.y > 0) {
-            win.move (rect.x, rect.y);
-        }
-        if (rect.width > 0 && rect.height > 0) {
-            win.resize (rect.width, rect.height);
-        }
-        win.show ();
     }
 }
