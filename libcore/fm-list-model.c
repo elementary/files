@@ -268,9 +268,8 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
     case FM_LIST_MODEL_PIXBUF:
         g_value_init (value, GDK_TYPE_PIXBUF);
         if (file != NULL) {
-            gof_file_update_icon (file, model->details->icon_size);
-            if (file->pix != NULL)
-                g_value_set_object(value, file->pix);
+            /* It is not model's job to update file when getting value */
+            g_value_set_object(value, file->pix);
         }
         break;
 
@@ -744,6 +743,7 @@ fm_list_model_add_file (FMListModel *model, GOFFile *file,
             }
         }
     }
+
     file_entry->ptr = g_sequence_insert_sorted (files, file_entry,
                                                 fm_list_model_file_entry_compare_func, model);
 

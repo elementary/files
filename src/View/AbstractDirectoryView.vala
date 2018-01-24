@@ -666,6 +666,7 @@ namespace FM {
         }
 
         public void prepare_reload (GOF.Directory.Async dir) {
+            disconnect_directory_loading_handlers (dir);
             cancel ();
             clear ();
             connect_directory_loading_handlers (dir);
@@ -1340,7 +1341,7 @@ namespace FM {
                 /* Check whether the deleted file is the directory */
                 var file_dir = GOF.Directory.Async.cache_lookup (file.location);
                 if (file_dir != null) {
-                    file_dir.purge_dir_from_cache ();
+                    /* Async cache managed elsewhere*/
                     slot.folder_deleted (file, file_dir);
                 }
             }

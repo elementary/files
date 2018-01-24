@@ -21,7 +21,6 @@
 void add_gof_file_tests () {
     /* loading */
     Test.add_func ("/GOFFile/new_existing_local_folder", existing_local_folder_test);
-    Test.add_func ("/GOFFile/gof_file_cache", gof_file_cache_test);
     Test.add_func ("/GOFFile/new_non_existent_local", new_non_existent_local_test);
     Test.add_func ("/GOFFile/new_hidden_local", new_hidden_local_test);
     Test.add_func ("/GOFFile/new_symlink_local", new_symlink_local_test);
@@ -62,36 +61,6 @@ void existing_local_folder_test () {
     assert (info.get_display_name () == basename);
 }
 
-void gof_file_cache_test () {
-    string parent_path = "/usr";
-    string basename = "share";
-    string path = Path.build_filename (parent_path, basename);
-    string uri = "file://" + path;
-
-    GOF.File? file = GOF.File.get_by_commandline_arg (path);
-    assert (file.ref_count == 2);
-
-    GOF.File? file2 = GOF.File.get_by_uri (uri);
-    assert (file == file2);
-    assert (file.ref_count == 3);
-    assert (file2.ref_count == 3);
-
-    file.remove_from_caches ();
-    assert (file.ref_count == 2);
-    assert (file2.ref_count == 2);
-
-    file2.remove_from_caches ();
-    assert (file.ref_count == 2);
-    assert (file2.ref_count == 2);
-
-    GOF.File? file3 = GOF.File.get_by_uri (uri);
-    assert (file != file3);
-    assert (file.ref_count == 2);
-    assert (file3.ref_count == 2);
-
-    file3.remove_from_caches ();
-    assert (file3.ref_count == 1);
-}
 
 void new_non_existent_local_test () {
     string basename = get_real_time ().to_string ();
@@ -153,7 +122,9 @@ void new_symlink_local_test () {
 
     file.query_update ();
     assert (file.info != null);
-    assert (file.get_symlink_target () == path);
+
+    string target = file.get_symlink_target ();
+    assert (target == path);
     assert (file.is_symlink ());
     assert (!file.is_directory);
     assert (!file.is_hidden);

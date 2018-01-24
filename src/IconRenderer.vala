@@ -46,21 +46,27 @@ namespace Marlin {
             }
         }
 
-        public GOF.File? file {
+        private GOF.File? _file = null;
+        public GOF.File file {
             get {
                 return _file;
             }
+
             set {
-                _file = value;
-                if (_file != null) {
-                    _file.update_icon (icon_size);
+
+                /* Dummy rows in expanded empty folder result in null file */
+                if (value != null && (_file == null || (icon_size != value.pix_size))) {
+                    value.update_icon (icon_size);
+
                 }
+
+                _file = value;
             }
         }
 
         private bool show_emblems = true;
         private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
-        private GOF.File? _file;
+
         private Marlin.IconSize icon_size;
         public int helper_x {get; private set;}
         public int helper_y {get; private set;}

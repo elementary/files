@@ -211,7 +211,6 @@ reap_old_icon (LoadableIconKey *key, gpointer value, gpointer user_info)
 
     icon = (MarlinIconInfo *) value;
 
-    g_debug ("reap %s? ", icon->icon_name);
     if (icon->pixbuf && G_IS_OBJECT (icon->pixbuf) && G_OBJECT (icon->pixbuf)->ref_count == 1) {
         if (time_now - icon->last_use_time > reap_time * 6) {
             return TRUE;
@@ -376,7 +375,6 @@ marlin_icon_info_lookup (GIcon *icon, int size)
         icon_info = g_hash_table_lookup (loadable_icon_cache, &lookup_key);
 
         if (icon_info != NULL) {
-            g_debug ("CACHED %s loadable %s\n", G_STRFUNC, g_icon_to_string (icon));
             return g_object_ref (icon_info);
         }
 
@@ -436,7 +434,6 @@ marlin_icon_info_lookup (GIcon *icon, int size)
 
         icon_info = g_hash_table_lookup (themed_icon_cache, &lookup_key);
         if (icon_info) {
-            g_debug ("CACHED %s themed icon %s\n", G_STRFUNC, filename);
             gtk_icon_info_free (gtkicon_info);
             return g_object_ref (icon_info);
         }
@@ -453,7 +450,6 @@ marlin_icon_info_lookup (GIcon *icon, int size)
     } else {
         GtkIconInfo *gtk_icon_info;
 
-        g_debug ("%s ELSE ... %s", G_STRFUNC, g_icon_to_string (icon));
         gtk_icon_info = gtk_icon_theme_lookup_by_gicon (marlin_icon_info_get_gtk_icon_theme (),
                                                         icon,
                                                         size,

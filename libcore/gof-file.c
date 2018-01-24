@@ -29,11 +29,6 @@
 #include "fm-list-model.h"
 #include "pantheon-files-core.h"
 
-
-G_LOCK_DEFINE_STATIC (file_cache_mutex);
-
-static GHashTable   *file_cache;
-
 G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 
 #define SORT_LAST_CHAR1 '.'
@@ -94,10 +89,11 @@ gof_file_new (GFile *location, GFile *dir)
     GOFFile *file;
 
     file = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
-    file->location = g_object_ref (location);
+    file->location = g_file_dup (location);
     file->uri = g_file_get_uri (location);
+
     if (dir != NULL)
-        file->directory = g_object_ref (dir);
+        file->directory = g_file_dup (dir);
     else
         file->directory = NULL;
 
@@ -118,8 +114,6 @@ gof_file_icon_changed (GOFFile *file)
             if (!file->is_hidden || gof_preferences_get_show_hidden_files (gof_preferences_get_default ())) {
                 g_signal_emit_by_name (dir, "icon-changed", file);
             }
-
-            g_object_unref (dir);
         }
     }
     g_signal_emit_by_name (file, "icon_changed");
@@ -660,11 +654,13 @@ gof_file_update_icon_internal (GOFFile *file, gint size)
  */
 void gof_file_update_icon (GOFFile *file, gint size)
 {
-    if (size <= 1)
+    if (size <= 1) {
         return;
+    }
 
-    if (!(file->pix == NULL || file->pix_size != size))
+    if ((file->flags == GOF_FILE_THUMB_STATE_READY) && !(file->pix == NULL || file->pix_size != size)) {
         return;
+    }
 
     gof_file_update_icon_internal (file, size);
 }
@@ -835,8 +831,9 @@ gof_file_query_thumbnail_update (GOFFile *file)
     gchar    *md5_hash;
 
     /* Silently ignore invalid requests */
-    if (file->pix_size <= 1)
+    if (file->pix_size <= 1) {
         return;
+    }
 
     if (gof_file_get_thumbnail_path (file) == NULL) {
         /* get the thumbnail path from md5 filename */
@@ -871,20 +868,6 @@ void gof_file_update_trash_info (GOFFile *file)
         g_time_val_from_iso8601 (time_string, &g_trash_time);
         file->trash_time = g_trash_time.tv_sec;
     }
-}
-
-void gof_file_remove_from_caches (GOFFile *file)
-{
-    /* remove from file_cache */
-    if (file_cache != NULL && g_hash_table_remove (file_cache, file->location))
-        g_debug ("remove from file_cache %s", file->uri);
-
-    /* remove from directory_cache */
-    if (file->directory && G_OBJECT (file->directory)->ref_count > 0) {
-        gof_directory_async_remove_file_from_cache (file);
-    }
-
-    file->is_gone = TRUE;
 }
 
 static void gof_file_init (GOFFile *file) {
@@ -928,14 +911,9 @@ static void gof_file_finalize (GObject* obj) {
 
     file = GOF_FILE (obj);
 
-    if (!(G_IS_FILE (file->location))) {
-        g_warning ("Invalid file location on finalize for %s", file->basename);
-    } else {
-        g_object_unref (file->location);
-    }
-
     g_clear_object (&file->info);
     _g_object_unref0 (file->directory);
+    _g_object_unref0 (file->location);
     _g_free0 (file->uri);
     _g_free0(file->basename);
     _g_free0(file->utf8_collation_key);
@@ -1117,10 +1095,14 @@ gof_file_compare_for_sort_internal (GOFFile *file1,
                                     gboolean reversed)
 {
     if (directories_first) {
-        if (gof_file_is_folder (file1) && !gof_file_is_folder (file2))
-            return -1;
-        if (gof_file_is_folder (file2) && !gof_file_is_folder (file1))
-            return 1;
+        gboolean folder1 = gof_file_is_folder (file1);
+        gboolean folder2 = gof_file_is_folder (file2);
+
+        if (folder1 ) {
+            return folder2 ? 0 : -1;
+        }
+
+        return !folder2 ? 0 : 1;
     }
 
     return 0;
@@ -1133,6 +1115,7 @@ gof_file_compare_for_sort (GOFFile *file1,
                            gboolean directories_first,
                            gboolean reversed)
 {
+
     int result;
 
     if (file1 == file2) {
@@ -1145,9 +1128,6 @@ gof_file_compare_for_sort (GOFFile *file1,
         switch (sort_type) {
         case FM_LIST_MODEL_FILENAME:
             result = compare_by_display_name (file1, file2);
-            /*if (result == 0) {
-              result = compare_by_directory_name (file_1, file_2);
-              }*/
             break;
         case FM_LIST_MODEL_SIZE:
             result = compare_by_size (file1, file2);
@@ -1406,28 +1386,6 @@ gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state)
     gof_file_icon_changed (file);
 }
 
-GOFFile* gof_file_cache_lookup (GFile *location)
-{
-    GOFFile *cached_file = NULL;
-
-    g_return_val_if_fail (G_IS_FILE (location), NULL);
-
-    /* allocate the GOFFile cache on-demand */
-    if (G_UNLIKELY (file_cache == NULL))
-    {
-        G_LOCK (file_cache_mutex);
-        file_cache = g_hash_table_new_full (g_file_hash,
-                                            (GEqualFunc) g_file_equal,
-                                            (GDestroyNotify) g_object_unref,
-                                            (GDestroyNotify) g_object_unref);
-        G_UNLOCK (file_cache_mutex);
-    }
-    if (file_cache != NULL)
-        cached_file = g_hash_table_lookup (file_cache, location);
-
-    return _g_object_ref0 (cached_file);
-}
-
 void
 gof_file_set_expanded (GOFFile *file, gboolean expanded) {
     g_return_if_fail (file != NULL && file->is_directory);
@@ -1439,32 +1397,23 @@ gof_file_get (GFile *location)
 {
     GFile *parent;
     GOFFile *file = NULL;
-    GOFDirectoryAsync *dir = NULL;
+    GOFDirectoryAsync *dir;
 
-    g_return_val_if_fail (location != NULL && G_IS_FILE (location), NULL);
+    dir = NULL;
+    parent = g_file_get_parent (location);
 
-    if ((parent = g_file_get_parent (location)) != NULL) {
+    if (parent != NULL) {
+        /* Before creating new file lookup in async cache */
         dir = gof_directory_async_cache_lookup (parent);
-        if (dir != NULL) {
-            file = gof_directory_async_file_hash_lookup_location (dir, location);
-            g_object_unref (dir);
-        }
     }
 
-    if (file == NULL)
-        file = gof_file_cache_lookup (location);
+    if (dir != NULL) {
+        file = gof_directory_async_file_cache_find_or_insert (dir, location, FALSE);
+    }
 
     if (file == NULL) {
         file = gof_file_new (location, parent);
-        /* TODO Move file_cache to GOF.Directory.Async */
-        G_LOCK (file_cache_mutex);
-        if (file_cache != NULL)
-            g_hash_table_insert (file_cache, g_object_ref (location), g_object_ref (file));
-        G_UNLOCK (file_cache_mutex);
     }
-
-    if (parent)
-        g_object_unref (parent);
 
     return (file);
 }
@@ -1820,9 +1769,6 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
         dir = gof_directory_async_cache_lookup (file->directory);
     }
 
-    gof_file_remove_from_caches (file);
-    file->is_gone = FALSE;
-
     g_object_unref (file->location);
     file->location = g_object_ref (new_location);
 
@@ -1838,10 +1784,7 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     file->flags = 0;
 
     gof_file_query_update (file);
-
-    g_object_unref (dir);
 }
-
 
 gboolean
 gof_file_can_set_owner (GOFFile *file)

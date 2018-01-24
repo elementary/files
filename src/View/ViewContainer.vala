@@ -256,6 +256,7 @@ namespace Marlin.View {
         public void change_view_mode (Marlin.ViewMode mode, GLib.File? loc = null) {
             var aslot = get_current_slot ();
             assert (aslot != null);
+
             if (loc == null) {
                 loc = location;
             }

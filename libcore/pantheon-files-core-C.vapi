@@ -32,11 +32,11 @@ namespace FM
         public void add_file(GOF.File file, GOF.Directory.Async dir);
         public bool remove_file (GOF.File file, GOF.Directory.Async dir);
         public void file_changed (GOF.File file, GOF.Directory.Async dir);
-        public GOF.File? file_for_path (Gtk.TreePath path);
         public static GLib.Type get_type ();
         public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
         public bool get_tree_iter_from_file (GOF.File file, GOF.Directory.Async directory, out Gtk.TreeIter iter);
-        public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file);
+        public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async? directory, out unowned GOF.File? file);
+        public GOF.File? file_for_path (Gtk.TreePath path);
         public GOF.File? file_for_iter (Gtk.TreeIter iter);
         public void clear ();
         public signal void subdirectory_unloaded (GOF.Directory.Async directory);
@@ -253,11 +253,9 @@ namespace GOF {
         public static GOF.File @get(GLib.File location);
         public static GOF.File? get_by_uri (string uri);
         public static GOF.File? get_by_commandline_arg (string arg);
-        public static File cache_lookup (GLib.File file);
         public static void list_free (GLib.List<GOF.File> files);
         public static GLib.Mount? get_mount_at (GLib.File location);
 
-        public void remove_from_caches ();
         public bool is_gone;
         public GLib.File location;
         public GLib.File target_location;
@@ -300,7 +298,7 @@ namespace GOF {
 
         public unowned string get_display_name ();
         public unowned GLib.File get_target_location ();
-        public string get_symlink_target ();
+        public unowned string get_symlink_target ();
         public unowned string? get_ftype ();
         public string? get_formated_time (string attr);
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);

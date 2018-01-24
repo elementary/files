@@ -96,7 +96,7 @@ Async load_populated_local_test (string test_dir_path, MainLoop loop) {
 
     var dir = setup_temp_async (test_dir_path, n_files);
 
-    assert (dir.ref_count == 1); //First ref replaced by toggle ref;
+    assert (dir.ref_count == 2); //Cache ref + local variable ref.
 
     dir.file_loaded.connect (() => {
         file_loaded_signal_count++;
@@ -161,7 +161,7 @@ Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
         if (loads < n_loads) {
             loads++;
             dir.cancel ();
-            dir.reload ();
+            dir.will_reload ();
         } else {
             assert (dir.files_count == n_files);
             assert (dir.can_load);

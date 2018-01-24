@@ -92,7 +92,7 @@ namespace Marlin.View {
         }
 
         ~Slot () {
-            debug ("Slot destruct");
+            debug ("Slot destruct"); /* Directory may already be deleted in which case uri = null */
         }
 
         private void connect_slot_signals () {
@@ -142,12 +142,12 @@ namespace Marlin.View {
 
         private void connect_dir_signals () {
             directory.done_loading.connect (on_directory_done_loading);
-            directory.need_reload.connect (on_directory_need_reload);
+            directory.will_reload.connect (on_directory_will_reload);
         }
 
         private void disconnect_dir_signals () {
             directory.done_loading.disconnect (on_directory_done_loading);
-            directory.need_reload.disconnect (on_directory_need_reload);
+            directory.will_reload.disconnect (on_directory_will_reload);
         }
 
         private void on_directory_done_loading (GOF.Directory.Async dir) {
@@ -185,39 +185,13 @@ namespace Marlin.View {
             is_frozen = false;
         }
 
-        private void on_directory_need_reload (GOF.Directory.Async dir, bool original_request) {
+        private void on_directory_will_reload (GOF.Directory.Async dir) {
             if (!is_frozen) {
                 dir_view.prepare_reload (dir); /* clear model but do not change directory */
                 /* view and slot are unfrozen when done loading signal received */
                 is_frozen = true;
                 path_changed ();
-                /* if original_request false, leave original_load_request as it is (it may already be true
-                 * if reloading in response to reload button press). */
-                if (original_request) {
-                    original_reload_request = true;
-                }
-                /* Only need to initialise directory once - the slot that originally received the
-                 * reload request does this */
-                if (original_reload_request) {
-                    schedule_reload ();
-                    original_reload_request = false;
-                }
             }
-        }
-
-        private void schedule_reload () {
-            /* Allow time for other slots showing this directory to prepare for reload.
-             * Also a delay is needed when a mount is added and trash reloads. */
-            if (reload_timeout_id > 0) {
-                warning ("Path change request received too rapidly");
-                return;
-            }
-
-            reload_timeout_id = Timeout.add (100, ()=> {
-                directory.reload ();
-                reload_timeout_id = 0;
-                return false;
-            });
         }
 
         private void set_up_directory (GLib.File loc) {
@@ -267,6 +241,7 @@ namespace Marlin.View {
             path_changed ();
             /* ViewContainer listens to this signal takes care of updating appearance */
             dir_view.change_directory (old_dir, directory);
+
             initialize_directory ();
         }
 
@@ -286,7 +261,7 @@ namespace Marlin.View {
                 original_reload_request = true;
                 /* Propagate reload signal to any other slot showing this directory indicating it is not
                  * the original signal */
-                directory.need_reload (false);
+                directory.will_reload ();
             }
         }
 
@@ -362,7 +337,7 @@ namespace Marlin.View {
         }
 
         public override unowned GOF.AbstractSlot? get_current_slot () {
-            return this as GOF.AbstractSlot;
+            return (!)this;
         }
 
         public unowned FM.AbstractDirectoryView? get_directory_view () {
