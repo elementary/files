@@ -206,7 +206,6 @@ namespace FM {
         /* Cursors for different areas */
         private Gdk.Cursor editable_cursor;
         private Gdk.Cursor activatable_cursor;
-        private Gdk.Cursor blank_cursor;
         private Gdk.Cursor selectable_cursor;
 
         private GLib.List<GLib.AppInfo> open_with_apps;
@@ -300,7 +299,6 @@ namespace FM {
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
-            blank_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "crosshair");
 
             var app = (Marlin.Application.get ());
             clipboard = app.get_clipboard_manager ();
