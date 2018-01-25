@@ -393,22 +393,11 @@ namespace Marlin.View {
             }
         }
 
-        public override void cancel () {
+        public override void close () {
             cancel_timeouts ();
 
             if (directory != null) {
                 directory.cancel ();
-            }
-
-            if (dir_view != null) {
-                dir_view.cancel ();
-            }
-        }
-
-        public override void close () {
-            cancel ();
-
-            if (directory != null) {
                 disconnect_dir_signals ();
             }
 

@@ -7,8 +7,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-12-15 00:11+0000\n"
-"Last-Translator: Liffindra Angga Zaaldian <liffindra.zaaldian@icloud.com>\n"
+"PO-Revision-Date: 2018-01-24 00:03+0000\n"
+"Last-Translator: Deo Valiandro. M <vaeloox@gmail.com>\n"
 "Language-Team: Indonesian "
 "<https://weblate.elementary.io/projects/files/files/id/>\n"
 "Language: id\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.17.1\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -33,7 +33,7 @@ msgstr "FTP (dengan login)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
+msgstr "AFP (Protokol Pengarsipan Apple)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -252,7 +252,7 @@ msgstr "Terakhir diubah:"
 #: ../libcore/marlin-file-conflict-dialog.c:283
 #: ../libcore/marlin-file-conflict-dialog.c:492
 msgid "Replace with"
-msgstr "Timpa dengan"
+msgstr "Ganti dengan"
 
 #: ../libcore/marlin-file-conflict-dialog.c:312
 #: ../libcore/marlin-file-conflict-dialog.c:517
@@ -318,11 +318,11 @@ msgstr "Gabung (_M)"
 
 #: ../libcore/marlin-file-operations.c:206
 msgid "Merge _All"
-msgstr "Gabung Semu_a"
+msgstr "Gabung_Semua"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "Salin S_aja"
+msgstr "Salin_Saja"
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
@@ -551,7 +551,7 @@ msgstr "Terjadi error sewaktu mendapatkan informasi berkas pada folder \"%B\"."
 #: ../libcore/marlin-file-operations.c:1622
 #: ../libcore/marlin-file-operations.c:3736
 msgid "_Skip files"
-msgstr "Lewati berka_s"
+msgstr "Lewati_berkas"
 
 #: ../libcore/marlin-file-operations.c:1643
 msgid ""
