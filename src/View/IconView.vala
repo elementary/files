@@ -173,11 +173,6 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        public override void sync_selection () {
-            /* Not implemented - needed? No current bug reports */
-        }
-
-        /* Only call from base update_selected_files_and_menu */
         protected override void get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files) {
             GLib.List<GOF.File> list = null;
             tree.selected_foreach ((tree, path) => {
