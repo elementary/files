@@ -502,7 +502,6 @@ namespace FM {
 
         public unowned GLib.List<GOF.File> get_selected_files () {
             update_selected_files_and_menu ();
-
             return selected_files;
         }
 
@@ -3517,7 +3516,7 @@ namespace FM {
         protected void update_selected_files_and_menu () {
             if (selected_files_invalid) {
                 selected_files = null;
-                prepend_selected_files_from_model (selected_files);
+                get_selected_files_from_model (out selected_files);
                 selected_files.reverse ();
                 selected_files_invalid = false;
                 update_menu_actions ();
@@ -3615,10 +3614,11 @@ namespace FM {
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
-        protected abstract void prepend_selected_files_from_model (GLib.List<GOF.File> selected_files);
+        protected abstract void get_selected_files_from_model (out GLib.List<GOF.File> selected_files);
         protected abstract uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
+
         protected abstract void scroll_to_cell (Gtk.TreePath? path,
                                                 bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path,

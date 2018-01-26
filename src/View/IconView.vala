@@ -178,17 +178,20 @@ namespace FM {
         }
 
         /* Only call from base update_selected_files_and_menu */
-        protected override void prepend_selected_files_from_model (GLib.List<GOF.File> selected_files) {
+        protected override void get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
+            GLib.List<GOF.File> list = null;
             tree.selected_foreach ((tree, path) => {
                 GOF.File? file;
                 file = model.file_for_path (path);
 
                 if (file != null) {
-                    selected_files.prepend (file);
+                    list.prepend (file);
                 } else {
                     critical ("Null file in model");
                 }
             });
+
+            selected_files = list.copy ();
         }
 
         protected override bool view_has_focus () {
