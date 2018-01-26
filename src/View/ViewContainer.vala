@@ -581,6 +581,7 @@ namespace Marlin.View {
         }
 
         private void on_slot_selection_changed (GLib.List<GOF.File> files) {
+warning ("slot selection changed");
             overlay_statusbar.selection_changed (files);
         }
 
@@ -616,7 +617,7 @@ namespace Marlin.View {
                 default:
                     break;
             }
-
+warning ("returning %s", result.to_string ());
             return result;
         }
     }

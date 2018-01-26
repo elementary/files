@@ -22,7 +22,6 @@ namespace FM {
         /** Miller View support */
         bool awaiting_double_click = false;
         uint double_click_timeout_id = 0;
-        private unowned GOF.File? selected_folder = null;
 
         public ColumnView (Marlin.View.Slot _slot) {
             base (_slot);
@@ -96,7 +95,7 @@ namespace FM {
                 case Gdk.Key.Right:
                 case Gdk.Key.BackSpace:
                     if (no_mods) {
-                        /* Pass event to MillerView */ 
+                        /* Pass event to MillerView */
                         slot.colpane.key_press_event (event);
                         return true;
                     }
@@ -120,14 +119,17 @@ namespace FM {
         }
 
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
-            unowned GOF.File? file;
-            if (selected_files != null) {
-                file = selected_files.data;
-            } else {
-                file = null;
+            GOF.File? file = null;
+            GOF.File? selected_folder = null;
+            Gtk.TreeIter? iter = null;
+
+            if (path != null) {
+                model.get_iter (out iter, path);
             }
 
-            selected_folder = null;
+            if (iter != null) {
+                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
+            }
 
             if (file == null || !file.is_folder () || !Preferences.settings.get_boolean ("single-click")) {
                 return base.handle_primary_button_click (event, path);

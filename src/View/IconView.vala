@@ -70,6 +70,7 @@ namespace FM {
         protected override void connect_tree_signals () {
             tree.selection_changed.connect (on_view_selection_changed);
         }
+
         protected override void disconnect_tree_signals () {
             tree.selection_changed.disconnect (on_view_selection_changed);
         }
@@ -176,20 +177,18 @@ namespace FM {
             /* Not implemented - needed? No current bug reports */
         }
 
-        protected override void update_selected_files () {
-            selected_files = null;
-
+        /* Only call from base update_selected_files_and_menu */
+        protected override void prepend_selected_files_from_model (GLib.List<GOF.File> selected_files) {
             tree.selected_foreach ((tree, path) => {
                 GOF.File? file;
                 file = model.file_for_path (path);
 
-                if (file != null)
+                if (file != null) {
                     selected_files.prepend (file);
-                else
+                } else {
                     critical ("Null file in model");
+                }
             });
-
-            selected_files.reverse ();
         }
 
         protected override bool view_has_focus () {

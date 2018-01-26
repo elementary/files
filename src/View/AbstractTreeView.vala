@@ -179,9 +179,7 @@ namespace FM {
             /* Not implemented - needed? No current bug reports. */
         }
 
-        protected override void update_selected_files () {
-            selected_files = null;
-
+        protected override void prepend_selected_files_from_model (GLib.List<GOF.File> selected_files) {
             tree.get_selection ().selected_foreach ((model, path, iter) => {
                 GOF.File? file; /* can be null if click on blank row in list view */
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
@@ -189,7 +187,6 @@ namespace FM {
                     selected_files.prepend (file);
                 }
             });
-            selected_files.reverse ();
         }
 
         protected override bool view_has_focus () {
