@@ -121,11 +121,6 @@
       <summary>Confirm trash</summary>
       <description>Confirm trash</description>
     </key>
-    <key type="s" name="previewer-path">
-      <default>''</default>
-      <summary>Path of the previewer.</summary>
-      <description>Path of the previewer or executable name (if path already definied in PATH environnment variable). If no path is set, then the space bindkey would just activate the selected items instead of previewing them</description>
-    </key>
     <key type="b" name="restore-tabs">
       <default>true</default>
       <summary>Whether to restore tabs on start up</summary>

@@ -165,9 +165,6 @@ namespace FM {
         uint freeze_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
 
-        /**TODO** Support for preview see bug #1380139 */
-        private string? previewer = null;
-
         /* Free space signal support */
         uint add_remove_file_timeout_id = 0;
         bool signal_free_space_change = false;
@@ -206,7 +203,6 @@ namespace FM {
         /* Cursors for different areas */
         private Gdk.Cursor editable_cursor;
         private Gdk.Cursor activatable_cursor;
-        private Gdk.Cursor blank_cursor;
         private Gdk.Cursor selectable_cursor;
 
         private GLib.List<GLib.AppInfo> open_with_apps;
@@ -300,7 +296,6 @@ namespace FM {
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
-            blank_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "crosshair");
 
             var app = (Marlin.Application.get ());
             clipboard = app.get_clipboard_manager ();
@@ -565,29 +560,6 @@ namespace FM {
                 }
             } else
                 warning ("Cannot open files in trash");
-        }
-
-        protected void preview_selected_items () {
-            if (previewer == null)  /* At present this is the case! */
-                activate_selected_items (Marlin.OpenFlag.DEFAULT);
-            else {
-                unowned GLib.List<GOF.File>? selection = get_selected_files ();
-
-                if (selection == null)
-                    return;
-
-                Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
-                GLib.List<GLib.File> location_list = null;
-                GOF.File file = selection.data;
-                location_list.prepend (file.location);
-                Gdk.AppLaunchContext context = screen.get_display ().get_app_launch_context ();
-                try {
-                    GLib.AppInfo previewer_app = GLib.AppInfo.create_from_commandline (previewer, null, 0);
-                    previewer_app.launch (location_list, context as GLib.AppLaunchContext);
-                } catch (GLib.Error error) {
-                    Eel.show_error_dialog (_("Failed to preview"), error.message, null);
-                }
-            }
         }
 
         public void select_gof_file (GOF.File file) {
@@ -2747,17 +2719,11 @@ namespace FM {
                     break;
 
                 case Gdk.Key.space:
-                    if (view_has_focus ()) {
-                        if (only_shift_pressed  && !in_trash) {
-                            activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        } else if (no_mods) {
-                            preview_selected_items ();
-                        } else {
-                            return false;
-                        }
-
+                    if (view_has_focus () && !in_trash) {
+                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
                         return true;
                     }
+
                     break;
 
                 case Gdk.Key.Return:

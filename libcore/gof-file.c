@@ -2111,38 +2111,6 @@ gof_file_get_display_target_uri (GOFFile *file)
     return uri;
 }
 
-const gchar *
-gof_file_get_preview_path(GOFFile* file)
-{
-    gchar* thumbnail_path = gof_file_get_thumbnail_path(file);
-    gchar* new_thumbnail_path = NULL;
-    gchar** thumbnail_path_split = NULL;
-
-    if (thumbnail_path != NULL)
-    {
-        /* Construct new path to large thumbnail based on $XDG_CACHE_HOME */
-        thumbnail_path_split = g_strsplit(thumbnail_path, G_DIR_SEPARATOR_S, -1);
-        uint l;
-        l = g_strv_length(thumbnail_path_split);
-        if(l > 2)
-        {
-            new_thumbnail_path = g_strjoin(G_DIR_SEPARATOR_S, g_get_user_cache_dir (), "thumbnails/large", thumbnail_path_split[l-1], NULL);
-
-            if(!g_file_test(new_thumbnail_path, G_FILE_TEST_EXISTS))
-            {
-                new_thumbnail_path = g_strdup(thumbnail_path);
-            }
-        }
-        else
-        {
-            g_critical("Thumbnailer is not FD.o compliant?");
-            new_thumbnail_path = g_strdup(thumbnail_path);
-        }
-        g_strfreev(thumbnail_path_split);
-    }
-    return new_thumbnail_path;
-}
-
 gboolean
 gof_file_can_unmount (GOFFile *file)
 {
