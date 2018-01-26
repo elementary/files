@@ -48,6 +48,7 @@ namespace FM {
                 double_click_timeout_id = 0;
                 awaiting_double_click = false;
                 is_frozen = false;
+
                 if (should_activate) { /* button already released */
                     activate_selected_items ();
                 }

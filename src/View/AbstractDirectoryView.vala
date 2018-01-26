@@ -2975,7 +2975,6 @@ namespace FM {
                         target_file = file;
                     }
 
-
                     item_hovered (target_file);
                     hover_path = path;
                 }
@@ -3636,8 +3635,8 @@ namespace FM {
         protected abstract void thaw_tree ();
         protected new abstract void freeze_child_notify ();
         protected new abstract void thaw_child_notify ();
-        protected virtual void connect_tree_signals () {}
-        protected virtual void disconnect_tree_signals () {}
+        protected abstract void connect_tree_signals () {}
+        protected abstract void disconnect_tree_signals () {}
         protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper);
 
 /** Unimplemented methods
