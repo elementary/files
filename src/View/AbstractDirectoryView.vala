@@ -37,6 +37,7 @@ namespace FM {
 
         const string MESSAGE_CLASS = "h2";
         const int MAX_TEMPLATES = 32;
+        const uint MAX_ACTIVATE = 10;
 
         const Gtk.TargetEntry [] drag_targets = {
             {"text/plain", Gtk.TargetFlags.SAME_APP, Marlin.TargetType.STRING},
@@ -525,41 +526,29 @@ namespace FM {
 
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
 
-            if (nb_elem == 1) {
-                activate_file (selection.data, screen, flag, true);
-                return;
-            }
-
             if (!in_trash) {
-                /* launch each selected file individually ignoring selections greater than 10
-                 * Do not launch with new instances of this app - open according to flag instead
-                 */
-                if (nb_elem < 10 && (default_app == null || app_is_this_app (default_app))) {
-                    foreach (GOF.File file in selection) {
-                        /* Prevent too rapid activation of files - causes New Tab to crash for example */
-                        if (file.is_folder ()) {
-                            /* By default, multiple folders open in new tabs */
-                            if (flag == Marlin.OpenFlag.DEFAULT)
-                                flag = Marlin.OpenFlag.NEW_TAB;
-
-                            GLib.Idle.add (() => {
-                                activate_file (file, screen, flag, false);
-                                return false;
-                            });
-                        } else
-                            GLib.Idle.add (() => {
-                                open_file (file, screen, null);
-                                return false;
-                            });
-                    }
-                } else if (default_app != null) {
-                    GLib.Idle.add (() => {
-                        open_files_with (default_app, selection);
-                        return false;
-                    });
+                if (nb_elem > MAX_ACTIVATE) {
+                    /* Better to ask for confirmation rather than refuse? */
+                    Eel.show_warning_dialog (_("Too many files"),
+                                             _("Will not activate more than %u files at once").printf (MAX_ACTIVATE),
+                                             window as Gtk.Window);
+                    return;
                 }
-            } else
+
+                if (default_app != null && !app_is_this_app (default_app)) {
+                    open_files_with (default_app, selection);
+                    return;
+                }
+
+                while (selection != null && selection.data != null) {
+                    /* By default, multiple folders open in new tabs */
+                    var flg = flag == Marlin.OpenFlag.DEFAULT ? Marlin.OpenFlag.NEW_TAB : flag;
+                    activate_file (selection.data, screen, flg, false);
+                    selection = selection.next;
+                }
+            } else {
                 warning ("Cannot open files in trash");
+            }
         }
 
         public void select_gof_file (GOF.File file) {
@@ -760,18 +749,21 @@ namespace FM {
 
 
         private void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
-            if (is_frozen)
+            if (is_frozen) {
                 return;
+            }
 
             GOF.File file = _file;
-            if (in_recent)
+            if (in_recent) {
                 file = GOF.File.get_by_uri (file.get_display_target_uri ());
+            }
 
             default_app = Marlin.MimeActions.get_default_application_for_file (file);
-            GLib.File location = file.get_target_location ();
+            GLib.File location = file.get_target_location ().dup ();
 
-            if (screen == null)
+            if (screen == null) {
                 screen = Eel.gtk_widget_get_screen (this);
+            }
 
             if (file.is_folder () ||
                 file.get_ftype () == "inode/directory" ||
@@ -780,34 +772,28 @@ namespace FM {
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
                     case Marlin.OpenFlag.NEW_WINDOW:
+                        /* Do not open new tab or window for trash subfolder */
+                        if (!in_trash) {
+                            path_change_request (location, flag, true);
+                        }
 
-                        path_change_request (location, flag, true);
                         break;
 
                     default:
-                        if (only_one_file)
+                        if (only_one_file) {
                             load_location (location);
+                        }
 
                         break;
                 }
-            } else if (!in_trash) {
-                if (only_one_file) {
-                    if (file.is_root_network_folder ()) {
-                        load_location (location);
-                    } else if (file.is_executable ()) {
-                        var content_type = file.get_ftype ();
-
-                        if (GLib.ContentType.is_a (content_type, "text/plain")) {
-                            open_file (file, screen, default_app);
-                        } else {
-                            file.execute (screen, null, null);
-                        }
-                    } else {
-                        open_file (file, screen, default_app);
-                    }
+            } else if (!in_trash && only_one_file) {
+                var content_type = file.get_ftype ();
+                if (file.is_executable () && !GLib.ContentType.is_a (content_type, "text/plain")) {
+                        file.execute (screen, null, null);
+                } else {
+                    /* Do not execute scripts and desktop files by default */
+                    open_file (file, screen, default_app);
                 }
-            } else {
-                warning ("Cannot open file in trash");
             }
         }
 
@@ -836,7 +822,9 @@ namespace FM {
                 err_msg2 = _("Cannot identify file type to open");
             } else if (!slot.directory.can_open_files) {
                 err_msg2 = "Cannot open files with this protocol (%s)".printf (slot.directory.scheme);
-            } else if (!slot.directory.can_stream_files && (content_type.contains ("video") || content_type.contains ("audio"))) {
+            } else if (!slot.directory.can_stream_files && (content_type.contains ("video") ||
+                       content_type.contains ("audio"))) {
+
                 err_msg2 = "Cannot stream from this protocol (%s)".printf (slot.directory.scheme);
             }
 
