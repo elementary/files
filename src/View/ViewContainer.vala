@@ -580,8 +580,7 @@ namespace Marlin.View {
             overlay_statusbar.update_hovered (file);
         }
 
-        private void on_slot_selection_changed (GLib.List<GOF.File> files) {
-warning ("slot selection changed");
+        private void on_slot_selection_changed (GLib.List<unowned GOF.File> files) {
             overlay_statusbar.selection_changed (files);
         }
 
@@ -617,7 +616,7 @@ warning ("slot selection changed");
                 default:
                     break;
             }
-warning ("returning %s", result.to_string ());
+
             return result;
         }
     }

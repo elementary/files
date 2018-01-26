@@ -213,7 +213,7 @@ namespace FM {
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
             count of the file object.*/
-        private GLib.List<GOF.File> selected_files = null;
+        private GLib.List<unowned GOF.File> selected_files = null;
         private bool selected_files_invalid = true;
 
         /* support for linear selection mode in icon view */
@@ -293,7 +293,7 @@ namespace FM {
 
         public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
         public signal void item_hovered (GOF.File? file);
-        public signal void selection_changed (GLib.List<GOF.File> gof_file);
+        public signal void selection_changed (GLib.List<unowned GOF.File> gof_file);
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -2974,6 +2974,8 @@ namespace FM {
                     } else {
                         target_file = file;
                     }
+
+
                     item_hovered (target_file);
                     hover_path = path;
                 }
@@ -3360,6 +3362,11 @@ namespace FM {
                 }
             }
 
+            Idle.add (() => {
+                update_selected_files_and_menu ();
+                return false;
+            });
+
             should_activate = false;
             should_deselect = false;
             click_path = null;
@@ -3614,7 +3621,7 @@ namespace FM {
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
-        protected abstract void get_selected_files_from_model (out GLib.List<GOF.File> selected_files);
+        protected abstract void get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files);
         protected abstract uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);

@@ -178,7 +178,7 @@ namespace FM {
         }
 
         /* Only call from base update_selected_files_and_menu */
-        protected override void get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
+        protected override void get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files) {
             GLib.List<GOF.File> list = null;
             tree.selected_foreach ((tree, path) => {
                 GOF.File? file;
