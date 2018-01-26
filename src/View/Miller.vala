@@ -548,13 +548,6 @@ namespace Marlin.View {
             ((Marlin.View.Slot)(current_slot)).reload (non_local_only);
         }
 
-        public override void cancel () {
-            slot_list.@foreach ((slot) => {
-                if (slot != null)
-                    slot.cancel ();
-            });
-        }
-
         public override void close () {
             if (scroll_to_slot_timeout_id > 0) {
                 GLib.Source.remove (scroll_to_slot_timeout_id);
