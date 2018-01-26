@@ -3552,7 +3552,6 @@ namespace FM {
             all_selected = false;
         }
 
-        public virtual void sync_selection () {}
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual void linear_select_path (Gtk.TreePath path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
