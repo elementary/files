@@ -477,8 +477,6 @@ namespace FM {
                 }
             }
 
-            all_selected = count == slot.files_count;
-
             connect_tree_signals ();
             on_view_selection_changed (); /* Update selected files and menu actions */
         }
@@ -2772,6 +2770,8 @@ namespace FM {
 
                 case Gdk.Key.a:
                     if (control_pressed) {
+                        update_selected_files_and_menu (); /* Ensure all_selected correct */
+
                         if (all_selected) {
                             unselect_all ();
                         } else {
@@ -3498,6 +3498,7 @@ namespace FM {
                 selected_files_invalid = false;
                 update_menu_actions ();
                 selection_changed (selected_files);
+                all_selected = selected_files.length () == slot.directory.files_count;
             }
         }
 
@@ -3552,20 +3553,16 @@ namespace FM {
                         unselect_path (p);
                     }
                 }
-
-                all_selected = false;
             }
         }
 
         public void select_all () {
             tree_select_all ();
-            all_selected = true;
             update_selected_files_and_menu ();
         }
 
         public void unselect_all () {
             tree_unselect_all ();
-            all_selected = false;
             update_selected_files_and_menu ();
         }
 
