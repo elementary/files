@@ -3557,11 +3557,13 @@ namespace FM {
         public void select_all () {
             tree_select_all ();
             all_selected = true;
+            update_selected_files_and_menu ();
         }
 
         public void unselect_all () {
             tree_unselect_all ();
             all_selected = false;
+            update_selected_files_and_menu ();
         }
 
         public virtual void highlight_path (Gtk.TreePath? path) {}
