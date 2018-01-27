@@ -2796,9 +2796,10 @@ namespace FM {
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
 
+                    unowned GLib.List<GOF.File> selection = get_selected_files ();
                     if (only_alt_pressed && keyval == Gdk.Key.Down) {
                         /* Only open a single selected folder */
-                        unowned GLib.List<GOF.File> selection = get_selected_files ();
+
                         if (selection != null &&
                             selection.length () == 1 &&
                             selection.data.is_folder ()) {
@@ -3219,6 +3220,8 @@ namespace FM {
                              */
 
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
+                                update_selected_files_and_menu ();
+
                                 if (linear_select_required && selected_files.length () > 0) {
                                     linear_select_path (path);
                                     result = true;  /* Do not pass to default handler which would Rubberband */
