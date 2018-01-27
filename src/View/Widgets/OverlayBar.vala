@@ -51,7 +51,7 @@ namespace Marlin.View {
             cancel ();
         }
 
-        public void selection_changed (GLib.List<GOF.File> files) {
+        public void selection_changed (GLib.List<unowned GOF.File> files) {
             cancel ();
             visible = false;
 

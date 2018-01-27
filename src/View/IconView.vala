@@ -70,6 +70,7 @@ namespace FM {
         protected override void connect_tree_signals () {
             tree.selection_changed.connect (on_view_selection_changed);
         }
+
         protected override void disconnect_tree_signals () {
             tree.selection_changed.disconnect (on_view_selection_changed);
         }
@@ -172,20 +173,20 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override void update_selected_files () {
-            selected_files = null;
-
+        protected override void get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files) {
+            GLib.List<GOF.File> list = null;
             tree.selected_foreach ((tree, path) => {
                 GOF.File? file;
                 file = model.file_for_path (path);
 
-                if (file != null)
-                    selected_files.prepend (file);
-                else
+                if (file != null) {
+                    list.prepend (file);
+                } else {
                     critical ("Null file in model");
+                }
             });
 
-            selected_files.reverse ();
+            selected_files = list.copy ();
         }
 
         protected override bool view_has_focus () {
