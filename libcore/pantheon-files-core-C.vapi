@@ -325,7 +325,6 @@ namespace GOF {
         public void query_thumbnail_update ();
         public bool ensure_query_info ();
         public unowned string? get_thumbnail_path();
-        public string? get_preview_path();
         public bool can_set_owner ();
         public bool can_set_group ();
         public bool can_set_permissions ();
