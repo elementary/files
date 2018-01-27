@@ -3493,12 +3493,12 @@ namespace FM {
         protected void update_selected_files_and_menu () {
             if (selected_files_invalid) {
                 selected_files = null;
-                get_selected_files_from_model (out selected_files);
+                var selected_count = get_selected_files_from_model (out selected_files);
+                all_selected = selected_count == slot.directory.files_count;
                 selected_files.reverse ();
                 selected_files_invalid = false;
                 update_menu_actions ();
                 selection_changed (selected_files);
-                all_selected = selected_files.length () == slot.directory.files_count;
             }
         }
 
@@ -3589,7 +3589,7 @@ namespace FM {
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
-        protected abstract void get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files);
+        protected abstract uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files);
         protected abstract uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);

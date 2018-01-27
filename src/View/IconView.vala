@@ -173,20 +173,24 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override void get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files) {
+        protected override uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files) {
             GLib.List<GOF.File> list = null;
+            uint count = 0;
+
             tree.selected_foreach ((tree, path) => {
                 GOF.File? file;
                 file = model.file_for_path (path);
 
                 if (file != null) {
                     list.prepend (file);
+                    count++;
                 } else {
                     critical ("Null file in model");
                 }
             });
 
             selected_files = list.copy ();
+            return count;
         }
 
         protected override bool view_has_focus () {
