@@ -175,10 +175,6 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        public override void sync_selection () {
-            /* Not implemented - needed? No current bug reports. */
-        }
-
         protected override void update_selected_files () {
             selected_files = null;
 
