@@ -373,14 +373,9 @@ namespace Marlin.View {
             if (old_tab != null) {
                 old_tab.set_active_state (false);
             }
-            /* ViewContainer will update topmenu once successfully loaded */
-#if 0
-            /* sync selection - to be reimplemented if needed*/
-            if (cur_slot.dir_view != null && current_tab.can_show_folder);
-                cur_slot.dir_view.sync_selection();
-#endif
-            /* sync sidebar selection */
+
             loading_uri (current_tab.uri);
+
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
             top_menu.working = current_tab.is_frozen;
         }
