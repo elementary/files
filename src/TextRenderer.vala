@@ -293,34 +293,8 @@ namespace Marlin {
             if (selected || this.background != null) {
                 int x0 = cell_area.x + x_offset;
                 int y0 = cell_area.y + y_offset;
-                int x1 = x0 + focus_rect_width;
-                int y1 = y0 + focus_rect_height;
 
-                if (x1 >= cell_area.x + cell_area.width) {
-                    x1 = cell_area.x + cell_area.width - 1;
-                }
-
-                cr.move_to (x0 + border_radius, y0);
-                cr.line_to (x1 - border_radius, y0);
-                cr.curve_to (x1 - border_radius, y0, x1, y0, x1, y0 + border_radius);
-                cr.line_to (x1, y1 - border_radius);
-                cr.curve_to (x1, y1 - border_radius, x1, y1, x1 - border_radius, y1);
-                cr.line_to (x0 + border_radius, y1);
-                cr.curve_to (x0 + border_radius, y1, x0, y1, x0, y1 - border_radius);
-                cr.line_to (x0, y0 + border_radius);
-                cr.curve_to (x0, y0 + border_radius, x0, y0, x0 + border_radius, y0);
-
-                Gdk.RGBA color ={};
-                if (background != null && !selected) {
-                    if (!color.parse (background)) {
-                        critical ("Can't parse this color value: %s", background);
-                        color = style_context.get_background_color (state);
-                    }
-                } else
-                    color = style_context.get_background_color (state);
-
-                Gdk.cairo_set_source_rgba (cr, color);
-                cr.fill ();
+                style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
             }
 
             /* Icons are highlighted when focussed - there is no focus indicator on text */
