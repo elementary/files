@@ -579,7 +579,7 @@ namespace Marlin.View {
             overlay_statusbar.update_hovered (file);
         }
 
-        private void on_slot_selection_changed (GLib.List<GOF.File> files) {
+        private void on_slot_selection_changed (GLib.List<unowned GOF.File> files) {
             overlay_statusbar.selection_changed (files);
         }
 

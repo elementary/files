@@ -3,16 +3,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-05-04 19:51+0000\n"
-"Last-Translator: Rokar ✌ <Unknown>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2018-02-05 00:11+0000\n"
+"Last-Translator: Rokar <mail@rokar.de>\n"
+"Language-Team: Kurdish "
+"<https://weblate.elementary.io/projects/files/files/ku/>\n"
+"Language: ku\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -36,7 +37,7 @@ msgstr "Parvekirina Windowsê"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
+msgstr "WebDAV HTTP"
 
 #: ../src/marlin-connect-server-dialog.c:133
 msgid "Secure WebDAV (HTTPS)"
@@ -315,7 +316,7 @@ msgstr ""
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] "%'d çirke"
+msgstr[0] "%'d çirk"
 msgstr[1] "%'d çirke"
 
 #: ../libcore/marlin-file-operations.c:301
@@ -331,14 +332,14 @@ msgstr[1] ""
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d saet"
-msgstr[1] "%'d saet"
+msgstr[1] "%'d saete"
 
 #: ../libcore/marlin-file-operations.c:319
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "kêmzêde %'d saet"
-msgstr[1] "kêmzêde %'d saet"
+msgstr[1] "kêmzêde %'d saete"
 
 #: ../libcore/marlin-file-operations.c:395
 #, c-format
@@ -512,7 +513,7 @@ msgstr[1] ""
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T cep"
-msgstr[1] "%T cep"
+msgstr[1] "%T cepe"
 
 #: ../libcore/marlin-file-operations.c:1606
 #: ../libcore/marlin-file-operations.c:1640
@@ -1560,7 +1561,7 @@ msgstr ""
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u peldank"
-msgstr[1] "%u peldank"
+msgstr[1] "%u peldanke"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -2078,7 +2079,7 @@ msgstr ""
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr ""
+msgstr "Çav li pelên xwe le bigere"
 
 #: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
