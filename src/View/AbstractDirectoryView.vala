@@ -331,7 +331,8 @@ namespace FM {
                 connect_drag_drop_signals (view);
                 view.add_events (Gdk.EventMask.POINTER_MOTION_MASK |
                                  Gdk.EventMask.ENTER_NOTIFY_MASK |
-                                 Gdk.EventMask.LEAVE_NOTIFY_MASK);
+                                 Gdk.EventMask.LEAVE_NOTIFY_MASK |
+                                 Gdk.EventMask.FOCUS_CHANGE_MASK);
 
                 view.motion_notify_event.connect (on_motion_notify_event);
                 view.leave_notify_event.connect (on_leave_notify_event);
@@ -339,6 +340,16 @@ namespace FM {
                 view.button_press_event.connect (on_view_button_press_event);
                 view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
+
+                view.focus_out_event.connect (() => {
+                    view.get_style_context ().add_class ("dim-label");
+                    return false;
+                });
+
+                view.focus_in_event.connect (() => {
+                    view.get_style_context ().remove_class ("dim-label");
+                    return false;
+                });
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */

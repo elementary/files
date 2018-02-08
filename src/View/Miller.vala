@@ -23,7 +23,6 @@ namespace Marlin.View {
         /* Need private copy of initial location as Miller
          * does not have its own Asyncdirectory object */
         private GLib.File root_location;
-
         private Gtk.Box colpane;
 
         uint scroll_to_slot_timeout_id = 0;
@@ -58,6 +57,7 @@ namespace Marlin.View {
             });
 
             colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+            colpane.get_style_context ().add_class ("titlebar");
 
             scrolled_window = new Gtk.ScrolledWindow (null, null);
             scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.NEVER);
