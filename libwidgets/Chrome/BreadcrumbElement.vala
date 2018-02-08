@@ -21,10 +21,7 @@
 public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
     private const int ICON_MARGIN = 3;
-    private string icon_name; /*For testing */
-    private Gdk.Pixbuf? icon = null;
-    private int icon_width;
-    private int icon_half_height;
+    private unowned BreadcrumbIconInfo? icon_info = null;
 
     public string? text {get; private set;}
     private double text_width;
@@ -35,8 +32,8 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
     public double natural_width {
         get {
-            if (icon != null) {
-                return text_width + icon_width + 2 * ICON_MARGIN + padding.left + padding.right;
+            if (icon_info != null) {
+                return text_width + icon_info.icon_width + 2 * ICON_MARGIN + padding.left + padding.right;
             } else {
                 return text_width + padding.left + padding.right;
             }
@@ -67,7 +64,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         }
     }
 
-    private Gtk.Border padding = Gtk.Border ();
+    private Gtk.Border padding;
     private Pango.Layout layout;
     private Gtk.Widget widget;
 
@@ -78,19 +75,19 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         text_for_display = Uri.unescape_string (text);
     }
 
-    public void set_icon (Gdk.Pixbuf icon_, int icon_scale) {
-        icon = icon_;
-        icon_width = icon.get_width () / icon_scale;
-        icon_half_height = icon.get_height () / (2 * icon_scale);
-    }
-    public void set_icon_name (string icon_name_) {
-        icon_name = icon_name_;
+    public void set_icon (BreadcrumbIconInfo icon_info) {
+        this.icon_info = icon_info;
     }
 
-    public double draw (Cairo.Context cr, double x, double y, double height, Gtk.StyleContext button_context, bool is_RTL, int scale, Gtk.Widget widget) {
+    public double draw (Cairo.Context cr, double x, double y, double height, Gtk.Widget widget) {
+        weak Gtk.StyleContext button_context = widget.get_style_context ();
         var state = button_context.get_state ();
+        var is_RTL = Gtk.StateFlags.DIR_RTL in state;
+        var scale = widget.scale_factor;
+        button_context.save ();
         if (pressed) {
             state |= Gtk.StateFlags.ACTIVE;
+            button_context.set_state (state);
         }
 
         padding = button_context.get_padding (state);
@@ -108,9 +105,9 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         var width = this.real_width;
         var frame_width = width - padding.right;
 
-        var iw = icon != null ? icon_width + 2 * ICON_MARGIN : 0;
+        var iw = icon_info != null ? icon_info.icon_width + 2 * ICON_MARGIN : 0;
         var room_for_text = text_is_displayed;
-        var room_for_icon = true;
+        var room_for_icon = icon_info != null ? true : false;
 
         var layout_width = (width - padding.left - padding.right);
         if (layout_width < iw) {
@@ -153,7 +150,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.clip ();
         }
 
-        if (pressed) { /* Highlight the breadcrumb */
+        if (pressed) {/* Highlight the breadcrumb */
             cr.save ();
             double base_x, left_x, right_x, arrow_right_x;
             base_x = x;
@@ -180,17 +177,14 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.close_path ();
 
             cr.clip ();
-            button_context.save ();
-            button_context.set_state (Gtk.StateFlags.ACTIVE);
             button_context.render_background (cr, left_x, y, width + height + 2 * line_width, height);
             button_context.render_frame (cr, 0, y, widget.get_allocated_width (), height);
-            button_context.restore ();
             cr.restore ();
         }
 
         /* Draw the text and icon (if present and there is room) */
-        Gdk.Pixbuf? icon_to_draw = icon;
-        if (icon != null && (state & Gtk.StateFlags.BACKDROP) > 0) {
+        Gdk.Pixbuf? icon_to_draw = icon_info != null ? icon_info.icon : null;
+        if (icon_to_draw != null && (state & Gtk.StateFlags.BACKDROP) > 0) {
             icon_to_draw = Eel.gdk_pixbuf_lucent (icon_to_draw, 50);
         }
 
@@ -208,8 +202,8 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     double draw_scale = 1.0 / scale; 
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
-                                                Math.round ((x - ICON_MARGIN - icon_width) * scale),
-                                                Math.round ((y_half_height - icon_half_height) * scale));
+                                                Math.round ((x - ICON_MARGIN - icon_info.icon_width) * scale),
+                                                Math.round ((y_half_height - icon_info.icon_height/2) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text) {
@@ -233,7 +227,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
                                                 Math.round ((x + ICON_MARGIN) * scale),
-                                                Math.round ((y_half_height - icon_half_height) * scale));
+                                                Math.round ((y_half_height - icon_info.icon_height/2) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text) {
@@ -259,9 +253,6 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.rotate (Math.PI_4);
             button_context.save ();
             button_context.add_class ("noradius-button");
-            if (pressed)
-                button_context.set_state (Gtk.StateFlags.ACTIVE);
-
             button_context.render_frame (cr, -height / 2, -height / 2, height, height);
             button_context.restore ();
             cr.restore ();
@@ -273,9 +264,6 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.rotate (Math.PI_4);
             button_context.save ();
             button_context.add_class ("noradius-button");
-            if (pressed) {
-                button_context.set_state (Gtk.StateFlags.ACTIVE);
-            }
             button_context.render_frame (cr, -height / 2, -height / 2, height, height);
             button_context.restore ();
             cr.restore ();
@@ -288,6 +276,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             x += half_height;
         }
 
+        button_context.restore ();
         return x;
     }
 
@@ -303,8 +292,8 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
     /** To help testing **/
     public string get_icon_name () {
-        if (icon_name != null) {
-            return icon_name;
+        if (icon_info != null) {
+            return icon_info.path;
         } else {
             return "null";
         }

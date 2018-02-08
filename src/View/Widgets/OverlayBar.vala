@@ -51,7 +51,7 @@ namespace Marlin.View {
             cancel ();
         }
 
-        public void selection_changed (GLib.List<GOF.File> files) {
+        public void selection_changed (GLib.List<unowned GOF.File> files) {
             cancel ();
             visible = false;
 
@@ -79,14 +79,16 @@ namespace Marlin.View {
         public void update_hovered (GOF.File? file) {
             hover_cancel (); /* This will stop and hide spinner, and reset the hover timeout */
 
-            if (!showbar)
-                return;
+            if (!showbar ||
+                (file != null && goffile != null && file.location.equal (goffile.location))) {
 
-            if (file == null) {
-                visible = false;
+                return;
             }
 
             hover_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
+                deep_count_cancel ();
+                cancel_cancellable ();
+
                 GLib.List<GOF.File> list = null;
                 if (file != null) {
                     bool matched = false;
@@ -118,31 +120,38 @@ namespace Marlin.View {
 *         **/
         public void cancel () {
             hover_cancel ();
+            deep_count_cancel ();
+
             if (update_timeout_id > 0) {
                 GLib.Source.remove (update_timeout_id);
                 update_timeout_id = 0;
-            }
-        }
-
-        private void hover_cancel() {
-            /* Do not cancel updating of selected files when hovered file changes */
-            if (hover_timeout_id > 0) {
-                GLib.Source.remove (hover_timeout_id);
-                hover_timeout_id = 0;
-            }
-            if (deep_count_timeout_id > 0) {
-                GLib.Source.remove (deep_count_timeout_id);
-                deep_count_timeout_id = 0;
             }
 
             cancel_cancellable ();
             active = false;
         }
 
+        private void hover_cancel () {
+            /* Do not cancel updating of selected files when hovered file changes */
+            if (hover_timeout_id > 0) {
+                GLib.Source.remove (hover_timeout_id);
+                hover_timeout_id = 0;
+            }
+        }
+
+        private void deep_count_cancel () {
+            /* Do not cancel updating of selected files when hovered file changes */
+            if (deep_count_timeout_id > 0) {
+                GLib.Source.remove (deep_count_timeout_id);
+                deep_count_timeout_id = 0;
+            }
+        }
+
         private void cancel_cancellable () {
             /* if we're still collecting image info or deep counting, cancel */
             if (cancellable != null) {
                 cancellable.cancel ();
+                cancellable = null;
             }
         }
 
@@ -230,6 +239,7 @@ namespace Marlin.View {
             cancel ();
             /* Show the spinner immediately to indicate that something will happen if hover long enough */
             active = true;
+            deep_count_cancel ();
 
             deep_count_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, 1000, () => {
                 deep_counter = new Marlin.DeepCount (goffile.location);

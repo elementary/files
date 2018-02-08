@@ -56,6 +56,7 @@ public class CustomFileChooserDialog : Object {
         chooser_dialog = dialog;
         chooser_dialog.can_focus = true;
         chooser_dialog.deletable = false;
+        chooser_dialog.local_only = false;
 
         var settings = new Settings ("io.elementary.files.preferences");
         is_single_click = settings.get_boolean ("single-click");

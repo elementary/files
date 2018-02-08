@@ -32,14 +32,14 @@ namespace Marlin.View {
             {"redo", action_redo},
             {"bookmark", action_bookmark},
             {"find", action_find},
+            {"edit_path", action_edit_path},
             {"tab", action_tab, "s"},
             {"go_to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
             {"info", action_info, "s"},
             {"view_mode", action_view_mode, "s", "'MILLER'"},
             {"show_hidden", null, null, "false", change_state_show_hidden},
-            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails},
-            {"show_sidebar", null ,  null, "false", change_state_show_sidebar}
+            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
 
         public GLib.SimpleActionGroup win_actions;
@@ -50,7 +50,6 @@ namespace Marlin.View {
             "MILLER"
         };
 
-        public bool show_window { get; construct; }
         public uint window_number { get; construct; }
 
         public bool is_first_window {
@@ -76,28 +75,12 @@ namespace Marlin.View {
         public signal void folder_deleted (GLib.File location);
         public signal void free_space_change ();
 
-        [Signal (action=true)]
-        public virtual signal void go_back () {
-            current_tab.go_back ();
-        }
-
-        [Signal (action=true)]
-        public virtual signal void go_up () {
-            current_tab.go_up ();
-        }
-
-        [Signal (action=true)]
-        public virtual signal void edit_path () {
-            action_edit_path ();
-        }
-
-        public Window (Marlin.Application application, Gdk.Screen myscreen, bool show_window = true) {
+        public Window (Marlin.Application application, Gdk.Screen myscreen = Gdk.Screen.get_default ()) {
             Object (
                 application: application,
                 height_request: 300,
                 icon_name: "system-file-manager",
                 screen: myscreen,
-                show_window: show_window,
                 title: _(Marlin.APP_TITLE),
                 width_request: 500,
                 window_number: application.window_count
@@ -124,17 +107,19 @@ namespace Marlin.View {
             build_window ();
 
             connect_signals ();
-            make_bindings ();
 
-            if (show_window) { /* otherwise Application will size and show window */
-                if (Preferences.settings.get_boolean ("maximized")) {
-                    maximize ();
-                } else {
-                    resize (Preferences.settings.get_int ("window-width"),
-                            Preferences.settings.get_int ("window-height"));
-                }
-                show ();
+            if (is_first_window) {
+                /*Preference bindings */
+                Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
             }
+
+            if (Preferences.settings.get_boolean ("maximized")) {
+                maximize ();
+            }
+
+            default_width = Preferences.settings.get_int ("window-width");
+            default_height = Preferences.settings.get_int ("window-height");
+            show ();
         }
 
         private void build_window () {
@@ -165,6 +150,7 @@ namespace Marlin.View {
             sidebar = new Marlin.Places.Sidebar (this, Posix.getuid () == 0);
 
             lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL);
+            lside_pane.position = Preferences.settings.get_int ("sidebar-width");
             lside_pane.show ();
             lside_pane.pack1 (sidebar, false, false);
             lside_pane.pack2 (tabs, true, false);
@@ -174,23 +160,10 @@ namespace Marlin.View {
             get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
             get_action ("show_remote_thumbnails").set_state (Preferences.settings.get_boolean ("show-remote-thumbnails"));
 
-            var show_sidebar_pref = Preferences.settings.get_boolean ("show-sidebar");
-            get_action ("show_sidebar").set_state (show_sidebar_pref);
-            show_sidebar (true);
-
             if (is_first_window) {
                 window_position = Gtk.WindowPosition.CENTER;
             } else { /* Allow new window created by tab dragging to be positioned where dropped */
                 window_position = Gtk.WindowPosition.NONE;
-            }
-        }
-
-        public void show_sidebar (bool show = true) {
-            var show_sidebar = (get_action ("show_sidebar")).state.get_boolean ();
-            if (show && show_sidebar) {
-                lside_pane.position = Preferences.settings.get_int ("sidebar-width");
-            } else {
-                lside_pane.position = 0;
             }
         }
 
@@ -199,8 +172,8 @@ namespace Marlin.View {
             /* Connect and abstract signals to local ones
             /*/
 
-            top_menu.forward.connect (on_go_forward);
-            top_menu.back.connect (on_go_back);
+            top_menu.forward.connect (() => {current_tab.go_forward ();});
+            top_menu.back.connect (() => {current_tab.go_back ();});
             top_menu.escape.connect (grab_focus);
             top_menu.path_change_request.connect ((loc, flag) => {
                 current_tab.is_frozen = false;
@@ -220,7 +193,6 @@ namespace Marlin.View {
             });
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
-            button_press_event.connect_after (on_button_press_event);
 
             /* Toggle focus between sidebar and view using unmodified Tab key, unless location
              * bar in focus. */
@@ -342,60 +314,10 @@ namespace Marlin.View {
             sidebar.path_change_request.connect (uri_path_change_request);
         }
 
-        private void make_bindings () {
-            if (is_first_window) {
-                /*Preference bindings */
-                Preferences.settings.bind ("show-sidebar", sidebar, "visible", SettingsBindFlags.GET);
-                Preferences.settings.bind ("sidebar-width", lside_pane, "position", SettingsBindFlags.DEFAULT);
-
-                /* keyboard shortcuts bindings */
-                unowned Gtk.BindingSet binding_set = Gtk.BindingSet.by_class (get_class ());
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("BackSpace"), 0, "go_back", 0);
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Back"), 0, "go_back", 0);
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("XF86Forward"), 0, "go_forward", 0);
-                Gtk.BindingEntry.add_signal (binding_set, Gdk.keyval_from_name ("L"), Gdk.ModifierType.CONTROL_MASK, "edit_path", 0);
-            }
-        }
-
-        private bool on_button_press_event (Gdk.EventButton event) {
-            Gdk.ModifierType mods = event.state & Gtk.accelerator_get_default_mod_mask ();
-            bool result = false;
-            switch (event.button) {
-                /* Extra mouse button actions */
-                case 6:
-                case 8:
-                    if (mods == 0) {
-                        result = true;
-                        on_go_back ();
-                    }
-                    break;
-
-                case 7:
-                case 9:
-                    if (mods == 0) {
-                        result = true;
-                        on_go_forward ();
-                    }
-                    break;
-
-                default:
-                    break;
-            }
-
-            return result;
-        }
-
         private void on_tab_removed () {
             if (tabs.n_tabs == 0) {
                 add_tab ();
             }
-        }
-
-        private void on_go_forward (int n = 1) {
-            current_tab.go_forward (n);
-        }
-        private void on_go_back (int n = 1) {
-            current_tab.go_back (n);
         }
 
         private void open_new_container (GLib.File loc, Marlin.OpenFlag flag) {
@@ -438,19 +360,38 @@ namespace Marlin.View {
             if (old_tab != null) {
                 old_tab.set_active_state (false);
             }
-            /* ViewContainer will update topmenu once successfully loaded */
-#if 0
-            /* sync selection - to be reimplemented if needed*/
-            if (cur_slot.dir_view != null && current_tab.can_show_folder);
-                cur_slot.dir_view.sync_selection();
-#endif
-            /* sync sidebar selection */
+
             loading_uri (current_tab.uri);
+
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
             top_menu.working = current_tab.is_frozen;
         }
 
-        public void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+        /** Convenience function for opening a single tab **/
+        public void open_single_tab (File? file = null, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+            open_tabs ({file}, mode);
+        }
+
+        public void open_tabs (File[]? files = null, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
+            if (files == null || files.length == 0 || files[0] == null) {
+                /* Restore session if not root and settings allow */
+                if (Posix.getuid () == 0 ||
+                    !Preferences.settings.get_boolean ("restore-tabs") ||
+                    restore_tabs () < 1) {
+
+                    /* Open a tab pointing at the default location if no tabs restored*/
+                    var location = File.new_for_path (Eel.get_real_user_home ());
+                    add_tab (location, mode);
+                }
+            } else {
+                /* Open tabs at each requested location */
+                foreach (var file in files) {
+                    add_tab (file, mode);
+                }
+            }
+        }
+
+        private void add_tab_by_uri (string uri, Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             var file = get_file_from_uri (uri);
             if (file != null) {
                 add_tab (file, mode);
@@ -459,7 +400,7 @@ namespace Marlin.View {
             }
         }
 
-        public void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
+        private void add_tab (File location = File.new_for_commandline_arg (Environment.get_home_dir ()),
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
@@ -791,15 +732,6 @@ namespace Marlin.View {
             Preferences.settings.set_boolean ("show-remote-thumbnails", state);
         }
 
-        private void change_state_show_sidebar (GLib.SimpleAction action) {
-            bool state = !action.state.get_boolean ();
-            action.set_state (new GLib.Variant.boolean (state));
-            if (!state) {
-                Preferences.settings.set_int ("sidebar-width", lside_pane.position);
-            }
-            show_sidebar (state);
-        }
-
         private void connect_to_server () {
             var dialog = new Marlin.ConnectServer.Dialog ((Gtk.Window) this);
             dialog.show ();
@@ -1107,6 +1039,7 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
             application.set_accels_for_action ("win.find", {"<Ctrl>F"});
+            application.set_accels_for_action ("win.edit_path", {"<Alt>L"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
@@ -1124,8 +1057,8 @@ namespace Marlin.View {
             application.set_accels_for_action ("win.go_to::NETWORK", {"<Alt>N"});
             application.set_accels_for_action ("win.go_to::SERVER", {"<Alt>C"});
             application.set_accels_for_action ("win.go_to::UP", {"<Alt>Up"});
-            application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right"});
-            application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left"});
+            application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right", "XF86Forward"});
+            application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left", "XF86Back"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
         }
     }

@@ -97,7 +97,7 @@ namespace Marlin.View {
 
         public bool is_loading {get; private set; default = false;}
 
-        public OverlayBar overlay_statusbar;
+        private OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
@@ -112,10 +112,6 @@ namespace Marlin.View {
             overlay_statusbar = new OverlayBar (this);
             browser = new Browser ();
 
-            /* Override background color to support transparency on overlay widgets */
-            Gdk.RGBA transparent = {0, 0, 0, 0};
-            override_background_color (0, transparent);
-
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
             connect_signals ();
         }
@@ -125,10 +121,11 @@ namespace Marlin.View {
         }
 
         private void connect_signals () {
-            enter_notify_event.connect (on_enter_notify_event);
             loading.connect ((loading) => {
                 is_loading = loading;
             });
+
+            button_press_event.connect (on_button_press_event);
         }
 
         private void connect_window_signals () {
@@ -313,11 +310,11 @@ namespace Marlin.View {
 
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
-                    this.window.add_tab (loc, view_mode);
+                    window.open_single_tab (loc, view_mode);
                     break;
 
                 case Marlin.OpenFlag.NEW_WINDOW:
-                    this.window.add_window (loc, view_mode);
+                    window.add_window (loc, view_mode);
                     break;
 
                 default:
@@ -581,16 +578,36 @@ namespace Marlin.View {
             overlay_statusbar.update_hovered (file);
         }
 
-        private void on_slot_selection_changed (GLib.List<GOF.File> files) {
+        private void on_slot_selection_changed (GLib.List<unowned GOF.File> files) {
             overlay_statusbar.selection_changed (files);
         }
 
-        private bool on_enter_notify_event () {
-            /* Before the status bar is entered a leave event is triggered on the view, which
-             * causes the statusbar to disappear. To block this we just cancel the update.
-             */
-            overlay_statusbar.cancel ();
-            return false;
+        private bool on_button_press_event (Gdk.EventButton event) {
+            Gdk.ModifierType mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            bool result = false;
+            switch (event.button) {
+                /* Extra mouse button actions */
+                case 6:
+                case 8:
+                    if (mods == 0) {
+                        result = true;
+                        go_back ();
+                    }
+                    break;
+
+                case 7:
+                case 9:
+                    if (mods == 0) {
+                        result = true;
+                        go_forward ();
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+
+            return result;
         }
     }
 }

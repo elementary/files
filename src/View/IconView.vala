@@ -70,6 +70,7 @@ namespace FM {
         protected override void connect_tree_signals () {
             tree.selection_changed.connect (on_view_selection_changed);
         }
+
         protected override void disconnect_tree_signals () {
             tree.selection_changed.disconnect (on_view_selection_changed);
         }
@@ -172,24 +173,20 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        public override void sync_selection () {
-            /* Not implemented - needed? No current bug reports */
-        }
-
-        protected override void update_selected_files () {
-            selected_files = null;
-
+        protected override void get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files) {
+            GLib.List<GOF.File> list = null;
             tree.selected_foreach ((tree, path) => {
                 GOF.File? file;
                 file = model.file_for_path (path);
 
-                if (file != null)
-                    selected_files.prepend (file);
-                else
+                if (file != null) {
+                    list.prepend (file);
+                } else {
                     critical ("Null file in model");
+                }
             });
 
-            selected_files.reverse ();
+            selected_files = list.copy ();
         }
 
         protected override bool view_has_focus () {
@@ -199,8 +196,8 @@ namespace FM {
         protected override uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
-            unowned Gtk.TreePath? p = null;
-            unowned Gtk.CellRenderer? r;
+            Gtk.TreePath? p = null;
+            Gtk.CellRenderer? r;
             uint zone;
             int x, y;
             path = null;
@@ -247,7 +244,8 @@ namespace FM {
                     bool on_helper = false;
                     GOF.File? file = model.file_for_path (p);
                     if (file != null) {
-                        bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
+                        /* RTL has no effect on is_on_icon in IconView so just pass false */
+                        bool on_icon = is_on_icon (x, y, rect, file.pix, false, ref on_helper);
 
                         if (on_helper) {
                             zone = ClickZone.HELPER;
@@ -456,7 +454,7 @@ namespace FM {
             }
         }
 
-        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper) {
+        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
             int x_offset = x - area.x;
             int y_offset = y - area.y;
 
