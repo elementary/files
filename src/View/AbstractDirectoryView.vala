@@ -2954,6 +2954,7 @@ namespace FM {
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
             item_hovered (null); /* Ensure overlay statusbar disappears */
+            hover_path = null;
             return false;
         }
 
@@ -3493,6 +3494,7 @@ namespace FM {
         protected void update_selected_files_and_menu () {
             if (selected_files_invalid) {
                 selected_files = null;
+
                 var selected_count = get_selected_files_from_model (out selected_files);
                 all_selected = selected_count == slot.directory.files_count;
                 selected_files.reverse ();
