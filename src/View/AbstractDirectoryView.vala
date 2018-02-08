@@ -2954,6 +2954,7 @@ namespace FM {
 
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
             item_hovered (null); /* Ensure overlay statusbar disappears */
+            hover_path = null;
             return false;
         }
 
