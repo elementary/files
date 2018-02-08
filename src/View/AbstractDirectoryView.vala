@@ -477,8 +477,6 @@ namespace FM {
                 }
             }
 
-            all_selected = count == slot.files_count;
-
             connect_tree_signals ();
             on_view_selection_changed (); /* Update selected files and menu actions */
         }
@@ -2772,6 +2770,8 @@ namespace FM {
 
                 case Gdk.Key.a:
                     if (control_pressed) {
+                        update_selected_files_and_menu (); /* Ensure all_selected correct */
+
                         if (all_selected) {
                             unselect_all ();
                         } else {
@@ -3494,7 +3494,9 @@ namespace FM {
         protected void update_selected_files_and_menu () {
             if (selected_files_invalid) {
                 selected_files = null;
-                get_selected_files_from_model (out selected_files);
+
+                var selected_count = get_selected_files_from_model (out selected_files);
+                all_selected = selected_count == slot.directory.files_count;
                 selected_files.reverse ();
                 selected_files_invalid = false;
                 update_menu_actions ();
@@ -3553,20 +3555,16 @@ namespace FM {
                         unselect_path (p);
                     }
                 }
-
-                all_selected = false;
             }
         }
 
         public void select_all () {
             tree_select_all ();
-            all_selected = true;
             update_selected_files_and_menu ();
         }
 
         public void unselect_all () {
             tree_unselect_all ();
-            all_selected = false;
             update_selected_files_and_menu ();
         }
 
@@ -3593,7 +3591,7 @@ namespace FM {
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
-        protected abstract void get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files);
+        protected abstract uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files);
         protected abstract uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
