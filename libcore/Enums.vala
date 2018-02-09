@@ -42,9 +42,9 @@ namespace Marlin {
         }
 
         public static Marlin.WindowState from_gdk_window_state (Gdk.WindowState state, bool start = true) {
-            if ((state & (Gdk.WindowState.MAXIMIZED | Gdk.WindowState.FULLSCREEN)) > 0) {
+            if (Gdk.WindowState.MAXIMIZED in state || Gdk.WindowState.FULLSCREEN in state) {
                 return Marlin.WindowState.MAXIMIZED;
-            } else if ((state & (Gdk.WindowState.TILED)) > 0) {
+            } else if (Gdk.WindowState.TILED in state) {
                 return start ? Marlin.WindowState.TILED_START : Marlin.WindowState.TILED_END;
             } else {
                 return Marlin.WindowState.NORMAL;

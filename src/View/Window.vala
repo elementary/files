@@ -250,7 +250,7 @@ namespace Marlin.View {
 
 
             window_state_event.connect ((event) => {
-                if ((bool) event.changed_mask & Gdk.WindowState.ICONIFIED) {
+                if (Gdk.WindowState.ICONIFIED in event.changed_mask) {
                     top_menu.cancel (); /* Cancel any ongoing search query else interface may freeze on uniconifying */
                 }
 
