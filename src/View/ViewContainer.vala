@@ -325,7 +325,8 @@ namespace Marlin.View {
             }
         }
 
-        private void on_slot_new_container_request (GLib.File loc, Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT) {
+        private void on_slot_new_container_request (GLib.File loc,
+                                                    Marlin.OpenFlag flag = Marlin.OpenFlag.NEW_ROOT) {
             open_location (loc, flag);
         }
 
