@@ -97,7 +97,7 @@ namespace Marlin.View {
 
         public bool is_loading {get; private set; default = false;}
 
-        public OverlayBar overlay_statusbar;
+        private OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
@@ -121,7 +121,6 @@ namespace Marlin.View {
         }
 
         private void connect_signals () {
-            enter_notify_event.connect (on_enter_notify_event);
             loading.connect ((loading) => {
                 is_loading = loading;
             });
@@ -582,14 +581,6 @@ namespace Marlin.View {
 
         private void on_slot_selection_changed (GLib.List<unowned GOF.File> files) {
             overlay_statusbar.selection_changed (files);
-        }
-
-        private bool on_enter_notify_event () {
-            /* Before the status bar is entered a leave event is triggered on the view, which
-             * causes the statusbar to disappear. To block this we just cancel the update.
-             */
-            overlay_statusbar.cancel ();
-            return false;
         }
 
         private bool on_button_press_event (Gdk.EventButton event) {
