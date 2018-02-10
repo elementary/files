@@ -1356,7 +1356,7 @@ confirm_empty_trash (EmptyTrashJob *job)
 
     GList *files = job->trash_dirs;
 
-    if (g_list_length (files) >= 1) {
+    if (files != NULL && g_list_first (files) != NULL) {
         if (g_file_has_uri_scheme (files->data, "trash")) {
                 /* Empty all trash */
                 prompt = f (_("Permanently delete all items from Trash?"));
@@ -1999,6 +1999,7 @@ delete_job (GIOSchedulerJob *io_job,
     gboolean must_confirm_delete_in_trash;
     gboolean must_confirm_delete;
     int files_skipped;
+    int job_files;
 
     common = (CommonJob *)job;
     common->io_job = io_job;
@@ -2015,9 +2016,12 @@ delete_job (GIOSchedulerJob *io_job,
     must_confirm_delete_in_trash = FALSE;
     must_confirm_delete = FALSE;
     files_skipped = 0;
+    job_files = 0;
 
     for (l = job->files; l != NULL; l = l->next) {
         file = l->data;
+
+        job_files++;
 
         if (job->try_trash && g_file_has_uri_scheme (file, "trash")) {
             must_confirm_delete_in_trash = TRUE;
@@ -2059,7 +2063,7 @@ delete_job (GIOSchedulerJob *io_job,
     g_list_free (to_trash_files);
     g_list_free (to_delete_files);
 
-    if (files_skipped == g_list_length (job->files)) {
+    if (files_skipped == job_files) {
         /* User has skipped all files, report user cancel */
         job->user_cancel = TRUE;
     }
@@ -5742,6 +5746,7 @@ marlin_file_operations_copy_move_link   (GList                  *files,
     for (p = files; p != NULL; p = p->next) {
         if (!g_file_has_uri_scheme ((GFile* )p->data, "burn")) {
             have_nonmapping_source = TRUE;
+            break;
         }
     }
 
