@@ -242,34 +242,13 @@ namespace Marlin {
                                                                   manager.files,
                                                                   prefix);
                     break;
+
                 case ClipboardTarget.UTF8_STRING: /* Not clear what this is for */
-                    var str = manager.file_list_to_string ();
-                    sd.set_text (str, str.length);
+                    DndHandler.set_selection_text_from_file_list (sd, manager.files, "");
                     break;
                 default:
                     assert_not_reached ();
             }
-        }
-
-        private string file_list_to_string () {
-            var sb = new StringBuilder ("");
-            uint count = 0;
-            uint file_count = files.length ();
-            foreach (var file in files) {
-                var loc = file.location;
-                var pn = loc.get_parse_name ();
-                if (pn != null) {
-                    sb.append (pn);
-                } else {
-                    sb.append (loc.get_uri ());
-                }
-
-                if (count < file_count) {
-                    sb.append ("\n");
-                }
-                count++;
-            }
-            return sb.str;
         }
 
         public static void clear_callback (Gtk.Clipboard cb, void* parent) {

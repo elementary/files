@@ -283,7 +283,23 @@ namespace Marlin {
                                                               string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
+            set_stringbuilder_from_file_list (sb, file_list, prefix);
+            selection_data.@set (selection_data.get_target (),
+                                 8,
+                                 sb.data);
 
+        }
+        public static void set_selection_text_from_file_list (Gtk.SelectionData selection_data,
+                                                              GLib.List<GOF.File> file_list,
+                                                              string prefix = "") {
+
+            GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
+            set_stringbuilder_from_file_list (sb, file_list, prefix);
+            selection_data.set_text (sb.str, (int)(sb.len));
+
+        }
+
+        private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb, GLib.List<GOF.File> file_list, string prefix) {
             if (file_list != null && file_list.data != null && file_list.data is GOF.File) {
                 bool in_recent = file_list.data.is_recent_uri_scheme ();
 
@@ -295,11 +311,6 @@ namespace Marlin {
             } else {
                 warning ("Invalid file list for drag and drop ignored");
             }
-
-            selection_data.@set (selection_data.get_target (),
-                                 8,
-                                 sb.data);
-
         }
     }
 }
