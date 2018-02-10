@@ -424,6 +424,8 @@ namespace Marlin.View {
                                                        _("The file selected no longer exists."));
                     can_show_folder = false;
                 }
+            } else {
+                view.select_first_for_empty_selection ();
             }
 
             if (can_show_folder) {
