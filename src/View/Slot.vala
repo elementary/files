@@ -34,10 +34,10 @@ namespace Marlin.View {
         private const string DENIED_MESSAGE = _("Access Denied");
 
         public bool is_active {get; protected set;}
-        public int files_count {
+        public int displayed_files_count {
             get {
                 if (directory != null && directory.state == GOF.Directory.Async.State.LOADED) {
-                    return (int)(directory.files_count);
+                    return (int)(directory.displayed_files_count);
                 }
 
                 return -1;
