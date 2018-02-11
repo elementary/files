@@ -516,19 +516,14 @@ namespace FM {
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
                                                 GLib.List<GOF.File> selection = get_selected_files ()) {
-            if (is_frozen) {
-                return;
-            }
 
-            uint nb_elem = selection.length ();
-
-            if (nb_elem < 1) {
+            if (is_frozen || selection == null) {
                 return;
             }
 
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
 
-            if (nb_elem == 1) {
+            if (selection.first ().next == null) { // Only one selected
                 activate_file (selection.data, screen, flag, true);
                 return;
             }
@@ -537,7 +532,9 @@ namespace FM {
                 /* launch each selected file individually ignoring selections greater than 10
                  * Do not launch with new instances of this app - open according to flag instead
                  */
-                if (nb_elem < 10 && (default_app == null || app_is_this_app (default_app))) {
+                if (selection.nth_data (11) == null &&  // Less than 10 items
+                   (default_app == null || app_is_this_app (default_app))) {
+
                     foreach (GOF.File file in selection) {
                         /* Prevent too rapid activation of files - causes New Tab to crash for example */
                         if (file.is_folder ()) {
@@ -2088,7 +2085,7 @@ namespace FM {
                         open_with_submenu.append_section (null, apps_section);
                 }
 
-                if (selection.length () == 1) {
+                if (selection != null && selection.first ().next == null) { // Only one selected
                     var other_app_menu = new GLib.Menu ();
                     other_app_menu.append ( _("Other Application"), "selection.open_with_other_app");
                     open_with_submenu.append_section (null, other_app_menu);
@@ -2142,8 +2139,8 @@ namespace FM {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file;
 
-            uint selection_count = selection.length ();
-            bool more_than_one_selected = (selection_count > 1);
+            bool is_selected = selection != null;
+            bool more_than_one_selected = (is_selected && selection.first ().next != null);
             bool single_folder = false;
             bool only_folders = selection_only_contains_folders (selection);
             bool can_rename = false;
@@ -2153,7 +2150,7 @@ namespace FM {
             bool can_paste_into = false;
             bool can_bookmark = false;
 
-            if (selection_count > 0) {
+            if (is_selected) {
                 file = selection.data;
                 if (file != null) {
                     single_folder = (!more_than_one_selected && file.is_folder ());
@@ -2177,17 +2174,17 @@ namespace FM {
 
             can_copy = file.is_readable ();
             can_open = can_open_file (file);
-            can_show_properties = !(in_recent && selection_count > 1);
+            can_show_properties = !(in_recent && more_than_one_selected);
 
             action_set_enabled (common_actions, "paste_into", can_paste_into);
             action_set_enabled (common_actions, "open_in", only_folders);
-            action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
-            action_set_enabled (selection_actions, "view_in_location", selection_count > 0);
-            action_set_enabled (selection_actions, "open", selection_count == 1 && can_open);
+            action_set_enabled (selection_actions, "rename", is_selected && !more_than_one_selected && can_rename);
+            action_set_enabled (selection_actions, "view_in_location", is_selected);
+            action_set_enabled (selection_actions, "open", is_selected && !more_than_one_selected && can_open);
             action_set_enabled (selection_actions, "open_with_app", can_open);
             action_set_enabled (selection_actions, "open_with_default", can_open);
             action_set_enabled (selection_actions, "open_with_other_app", can_open);
-            action_set_enabled (selection_actions, "cut", is_writable && selection_count > 0);
+            action_set_enabled (selection_actions, "cut", is_writable && is_selected);
             action_set_enabled (selection_actions, "trash", is_writable && slot.directory.has_trash_dirs);
             action_set_enabled (selection_actions, "delete", is_writable);
             action_set_enabled (common_actions, "properties", can_show_properties);
@@ -2801,7 +2798,7 @@ namespace FM {
                         /* Only open a single selected folder */
 
                         if (selection != null &&
-                            selection.length () == 1 &&
+                            selection.first ().next == null &&
                             selection.data.is_folder ()) {
 
                             load_location (selection.data.location);
@@ -2830,7 +2827,7 @@ namespace FM {
                             Gtk.TreeIter? iter = null;
                             /* Do not try to select invalid path */
                             if (model.get_iter (out iter, path)) {
-                                if (only_shift_pressed && selected_files.length () > 0) {
+                                if (only_shift_pressed && selected_files != null) {
                                     linear_select_path (path);
                                 } else if (no_mods) {
                                     unselect_path (old_path);
@@ -3161,6 +3158,7 @@ namespace FM {
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
             bool linear_select_required = false;
+            bool is_selected = selected_files != null;
 
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
@@ -3239,7 +3237,7 @@ namespace FM {
                             break;
 
                         case ClickZone.HELPER:
-                            if (linear_select_required && selected_files.length () > 0) {
+                            if (linear_select_required && is_selected) {
                                 linear_select_path (path);
                             } else {
                                 previous_selection_was_linear = false;
