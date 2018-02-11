@@ -279,7 +279,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void context_menu  (Gtk.Widget? widget, GLib.List<unowned GOF.File> selected_files) {
-        if (selected_files.length () < 1 || widget == null || ignore_dir) {
+        if (selected_files == null || widget == null || ignore_dir) {
             return;
         }
 
