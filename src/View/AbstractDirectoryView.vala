@@ -2669,18 +2669,20 @@ namespace FM {
                 previous_selection_was_linear = false;
             }
 
+            bool res = false;
+
             switch (keyval) {
                 case Gdk.Key.F10:
                     if (only_control_pressed) {
                         show_or_queue_context_menu (event);
-                        return true;
+                        res = true;
                     }
                     break;
 
                 case Gdk.Key.F2:
                     if (no_mods && selection_actions.get_action_enabled ("rename")) {
                         rename_selected_file ();
-                        return true;
+                        res = true;
                     }
                     break;
 
@@ -2694,20 +2696,20 @@ namespace FM {
                     } else if (no_mods || is_admin) {
                         /* If already in trash or running as root, permanently delete the file */
                         trash_or_delete_selected_files (in_trash || is_admin);
-                        return true;
+                        res = true;;
                     } else if (only_shift_pressed) {
                         trash_or_delete_selected_files (true);
-                        return true;
+                        res = true;;
                     } else if (only_shift_pressed && !renaming) {
                         delete_selected_files ();
-                        return true;
+                        res = true;
                     }
                     break;
 
                 case Gdk.Key.space:
                     if (view_has_focus () && !in_trash) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        return true;
+                        res = true;
                     }
 
                     break;
@@ -2715,7 +2717,7 @@ namespace FM {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                     if (in_trash) {
-                        return false;
+                        break;
                     } else if (in_recent) {
                         activate_selected_items (Marlin.OpenFlag.DEFAULT);
                     } else if (only_shift_pressed) {
@@ -2725,10 +2727,11 @@ namespace FM {
                     } else if (no_mods) {
                          activate_selected_items (Marlin.OpenFlag.DEFAULT);
                     } else {
-                        return false;
+                        break;
                     }
 
-                    return true;
+                    res = true;
+                    break;
 
                 case Gdk.Key.minus:
                     if (only_alt_pressed) {
@@ -2737,8 +2740,9 @@ namespace FM {
                             unselect_path (path);
                         }
 
-                        return true;
+                        res = true;
                     }
+
                     break;
 
                 case Gdk.Key.Escape:
@@ -2752,7 +2756,7 @@ namespace FM {
                 case Gdk.Key.MenuKB:
                     if (no_mods) {
                         show_context_menu (event);
-                        return true;
+                        res = true;
                     }
 
                     break;
@@ -2760,7 +2764,7 @@ namespace FM {
                 case Gdk.Key.N:
                     if (control_pressed) {
                         new_empty_folder ();
-                        return true;
+                        res = true;
                     }
 
                     break;
@@ -2775,7 +2779,7 @@ namespace FM {
                             select_all ();
                         }
 
-                        return true;
+                        res = true;
                     }
 
                     break;
@@ -2783,7 +2787,7 @@ namespace FM {
                 case Gdk.Key.A:
                     if (control_pressed) {
                         invert_selection ();
-                        return true;
+                        res = true;
                     }
 
                     break;
@@ -2802,10 +2806,10 @@ namespace FM {
                             selection.data.is_folder ()) {
 
                             load_location (selection.data.location);
-                            return true;
-                        } else {
-                            return false;
+                            res = true;
                         }
+
+                        break;
                     }
 
                     if (linear_select_required) { /* Only true for Icon View */
@@ -2834,12 +2838,14 @@ namespace FM {
                                     select_path (path, true);  /* Cursor follows */
                                 }
                             }
-                            return true;
+
+                            res = true;
                         }
                     } else {
                         previous_selection_was_linear = false;
                         previous_linear_selection_path = null;
                     }
+
                     break;
 
                 case Gdk.Key.c:
@@ -2855,8 +2861,9 @@ namespace FM {
                             common_actions.activate_action ("copy", null);
                         }
 
-                        return true;
+                        res = true;
                     }
+
                     break;
 
                 case Gdk.Key.v:
@@ -2871,8 +2878,10 @@ namespace FM {
                                                      _("You do not have permission to change this location"),
                                                      window as Gtk.Window);
                         }
-                        return true;
+
+                        res = true;
                     }
+
                     break;
 
                 case Gdk.Key.x:
@@ -2884,15 +2893,22 @@ namespace FM {
                                                      _("You do not have permission to change this location"),
                                                      window as Gtk.Window);
                         }
-                        return true;
+
+                        res = true;
                     }
+
                     break;
 
                 default:
                     break;
             }
 
-            return false;
+            Idle.add (() => {
+                update_selected_files_and_menu ();
+                return false;
+            });
+
+            return res;
         }
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
