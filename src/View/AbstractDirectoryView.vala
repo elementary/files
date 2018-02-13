@@ -2677,6 +2677,7 @@ namespace FM {
                         show_or_queue_context_menu (event);
                         res = true;
                     }
+
                     break;
 
                 case Gdk.Key.F2:
@@ -2684,6 +2685,7 @@ namespace FM {
                         rename_selected_file ();
                         res = true;
                     }
+
                     break;
 
                 case Gdk.Key.Delete:
@@ -2704,6 +2706,7 @@ namespace FM {
                         delete_selected_files ();
                         res = true;
                     }
+
                     break;
 
                 case Gdk.Key.space:
@@ -2810,6 +2813,10 @@ namespace FM {
                         }
 
                         break;
+                    }
+
+                    if (no_mods) {
+                        unselect_all ();
                     }
 
                     if (linear_select_required) { /* Only true for Icon View */
