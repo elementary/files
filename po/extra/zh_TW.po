@@ -8,35 +8,38 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2016-10-14 15:46+0000\n"
+"PO-Revision-Date: 2018-02-13 09:30+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
+"Language-Team: Chinese (Traditional) "
+"<https://weblate.elementary.io/projects/files/extra/zh_TW/>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 msgid "Files"
 msgstr "檔案"
 
 msgid "Browse your files"
-msgstr ""
+msgstr "瀏覽您的檔案"
 
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr ""
+msgstr "folder;manager;explore;disk;filesystem;資料夾;管理員;探索;磁碟;檔案系統;"
 
 msgid "File Manager"
-msgstr ""
+msgstr "檔案管理員"
 
 msgid "New Window"
-msgstr ""
+msgstr "新視窗"
 
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "以管理員身份新開視窗"
 
 msgid "About Files"
-msgstr ""
+msgstr "關於《檔案》"
 
 msgid "Browse and manage files and folders"
 msgstr "瀏覽、管理檔案及資料夾"
@@ -51,24 +54,24 @@ msgstr ""
 "、或是使用 FTP、SFTP、AFP、Webdav、或 Windows 網路芳鄰等遠端上，都能存取您的所有檔案。"
 
 msgid "Improved networking support"
-msgstr ""
+msgstr "改善網路連線支持"
 
 msgid "Correct window geometry when snapping to left or right"
-msgstr ""
+msgstr "當附貼至左側或右側時校正視窗的幾何形態"
 
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
-msgstr ""
+msgstr "當「揭開指標」設定啟用時，若按下 Ctrl 鍵不會取消重新命名"
 
 msgid "Switching input language cancels actions"
-msgstr ""
+msgstr "切換輸入語言會取消動作"
 
 msgid "Various crash fixes"
-msgstr ""
+msgstr "多項崩潰修正"
 
 msgid "New translations"
-msgstr ""
+msgstr "新翻譯"
 
 msgid "Minor bug fixes"
 msgstr "小臭蟲修正"
@@ -76,28 +79,28 @@ msgstr "小臭蟲修正"
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
-msgstr ""
+msgstr "網頁瀏覽器如 Firefox 現在會記住最近使用的下載資料夾"
 
 msgid "Remember preferred zoom level"
-msgstr ""
+msgstr "記住偏好的遠近層級"
 
 msgid "Improved input method support"
-msgstr ""
+msgstr "改善的輸入法支援"
 
 msgid "910x640 minimum window size"
-msgstr ""
+msgstr "910x640 最小視窗大小"
 
 msgid "Security fixes"
-msgstr ""
+msgstr "安全性修正"
 
 msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgstr "允許視窗之間的分頁拖放"
 
 msgid "Merge search functionality into Ctrl+F"
-msgstr ""
+msgstr "將搜尋功能合併至 Ctrl+F"
 
 msgid "Improved translation support"
-msgstr ""
+msgstr "改善的翻譯支援"
 
 msgid "Fix appdata release dates"
 msgstr "修正 appdata 發行日期"
@@ -115,7 +118,7 @@ msgid "Translation updates"
 msgstr "翻譯更新"
 
 msgid "Run Pantheon Files as Administrator"
-msgstr ""
+msgstr "以管理員身份執行 Pantheon 檔案"
 
 msgid "Authentication is required to run Files as Administrator"
-msgstr ""
+msgstr "若要以管理員身份執行必須通過身份核對"
