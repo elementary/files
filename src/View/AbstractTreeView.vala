@@ -175,17 +175,21 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override void update_selected_files () {
-            selected_files = null;
+        protected override uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files) {
+            uint count = 0;
 
+            GLib.List<GOF.File> list = null;
             tree.get_selection ().selected_foreach ((model, path, iter) => {
                 GOF.File? file; /* can be null if click on blank row in list view */
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 if (file != null) {
-                    selected_files.prepend (file);
+                    list.prepend (file);
+                    count++;
                 }
             });
-            selected_files.reverse ();
+
+            selected_files = list.copy ();
+            return count;
         }
 
         protected override bool view_has_focus () {

@@ -210,7 +210,9 @@ namespace FM {
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
             count of the file object.*/
-        protected GLib.List<GOF.File> selected_files = null;
+        private GLib.List<unowned GOF.File> selected_files = null;
+        private bool selected_files_invalid = true;
+
         /* support for linear selection mode in icon view */
         protected bool previous_selection_was_linear = false;
         protected Gtk.TreePath? previous_linear_selection_path = null;
@@ -243,7 +245,7 @@ namespace FM {
                     clipboard.changed.disconnect (on_clipboard_changed);
                     view.key_press_event.disconnect (on_view_key_press_event);
                 } else if (!value && _is_frozen) {
-                    /* Ensure selected files and menu actions are up to date */
+                    /* Ensure selected files and menu actions will be updated */
                     connect_tree_signals ();
                     on_view_selection_changed ();
 
@@ -288,7 +290,7 @@ namespace FM {
 
         public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
         public signal void item_hovered (GOF.File? file);
-        public signal void selection_changed (GLib.List<GOF.File> gof_file);
+        public signal void selection_changed (GLib.List<unowned GOF.File> gof_file);
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -475,8 +477,6 @@ namespace FM {
                 }
             }
 
-            all_selected = count == slot.files_count;
-
             connect_tree_signals ();
             on_view_selection_changed (); /* Update selected files and menu actions */
         }
@@ -496,6 +496,7 @@ namespace FM {
         }
 
         public unowned GLib.List<GOF.File> get_selected_files () {
+            update_selected_files_and_menu ();
             return selected_files;
         }
 
@@ -515,17 +516,14 @@ namespace FM {
     /** Operations on selections */
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
                                                 GLib.List<GOF.File> selection = get_selected_files ()) {
-            if (is_frozen)
-                return;
 
-            uint nb_elem = selection.length ();
-
-            if (nb_elem < 1)
+            if (is_frozen || selection == null) {
                 return;
+            }
 
             unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
 
-            if (nb_elem == 1) {
+            if (selection.first ().next == null) { // Only one selected
                 activate_file (selection.data, screen, flag, true);
                 return;
             }
@@ -534,7 +532,9 @@ namespace FM {
                 /* launch each selected file individually ignoring selections greater than 10
                  * Do not launch with new instances of this app - open according to flag instead
                  */
-                if (nb_elem < 10 && (default_app == null || app_is_this_app (default_app))) {
+                if (selection.nth_data (11) == null &&  // Less than 10 items
+                   (default_app == null || app_is_this_app (default_app))) {
+
                     foreach (GOF.File file in selection) {
                         /* Prevent too rapid activation of files - causes New Tab to crash for example */
                         if (file.is_folder ()) {
@@ -2085,7 +2085,7 @@ namespace FM {
                         open_with_submenu.append_section (null, apps_section);
                 }
 
-                if (selection.length () == 1) {
+                if (selection != null && selection.first ().next == null) { // Only one selected
                     var other_app_menu = new GLib.Menu ();
                     other_app_menu.append ( _("Other Application"), "selection.open_with_other_app");
                     open_with_submenu.append_section (null, other_app_menu);
@@ -2139,8 +2139,8 @@ namespace FM {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file;
 
-            uint selection_count = selection.length ();
-            bool more_than_one_selected = (selection_count > 1);
+            bool is_selected = selection != null;
+            bool more_than_one_selected = (is_selected && selection.first ().next != null);
             bool single_folder = false;
             bool only_folders = selection_only_contains_folders (selection);
             bool can_rename = false;
@@ -2150,7 +2150,7 @@ namespace FM {
             bool can_paste_into = false;
             bool can_bookmark = false;
 
-            if (selection_count > 0) {
+            if (is_selected) {
                 file = selection.data;
                 if (file != null) {
                     single_folder = (!more_than_one_selected && file.is_folder ());
@@ -2174,17 +2174,17 @@ namespace FM {
 
             can_copy = file.is_readable ();
             can_open = can_open_file (file);
-            can_show_properties = !(in_recent && selection_count > 1);
+            can_show_properties = !(in_recent && more_than_one_selected);
 
             action_set_enabled (common_actions, "paste_into", can_paste_into);
             action_set_enabled (common_actions, "open_in", only_folders);
-            action_set_enabled (selection_actions, "rename", selection_count == 1 && can_rename);
-            action_set_enabled (selection_actions, "view_in_location", selection_count > 0);
-            action_set_enabled (selection_actions, "open", selection_count == 1 && can_open);
+            action_set_enabled (selection_actions, "rename", is_selected && !more_than_one_selected && can_rename);
+            action_set_enabled (selection_actions, "view_in_location", is_selected);
+            action_set_enabled (selection_actions, "open", is_selected && !more_than_one_selected && can_open);
             action_set_enabled (selection_actions, "open_with_app", can_open);
             action_set_enabled (selection_actions, "open_with_default", can_open);
             action_set_enabled (selection_actions, "open_with_other_app", can_open);
-            action_set_enabled (selection_actions, "cut", is_writable && selection_count > 0);
+            action_set_enabled (selection_actions, "cut", is_writable && is_selected);
             action_set_enabled (selection_actions, "trash", is_writable && slot.directory.has_trash_dirs);
             action_set_enabled (selection_actions, "delete", is_writable);
             action_set_enabled (common_actions, "properties", can_show_properties);
@@ -2571,6 +2571,7 @@ namespace FM {
          */
         private unowned GLib.List<GOF.File> get_files_for_action () {
             unowned GLib.List<GOF.File> action_files = null;
+            update_selected_files_and_menu ();
 
             if (selected_files == null)
                 action_files.prepend (slot.directory.file);
@@ -2593,23 +2594,8 @@ namespace FM {
             activate_selected_items (Marlin.OpenFlag.DEFAULT);
         }
 
-        uint update_selected_timeout_id = 0;
-        protected virtual void on_view_selection_changed () {
-            /* updating selecting file list is expensive for large selections so throttle */
-            if (update_selected_timeout_id == 0) {
-                after_selected_files_changed (); /* Make sure first update happens immediately */
-                update_selected_timeout_id = Timeout.add_full (GLib.Priority.LOW, 100, () => {
-                    update_selected_timeout_id = 0;
-                    after_selected_files_changed ();
-                    return false;
-                });
-            }
-        }
-
-        private void after_selected_files_changed () {
-            update_selected_files ();
-            update_menu_actions ();
-            selection_changed (get_selected_files ());
+        protected void on_view_selection_changed () {
+            selected_files_invalid = true;
         }
 
 /** Keyboard event handling **/
@@ -2781,6 +2767,8 @@ namespace FM {
 
                 case Gdk.Key.a:
                     if (control_pressed) {
+                        update_selected_files_and_menu (); /* Ensure all_selected correct */
+
                         if (all_selected) {
                             unselect_all ();
                         } else {
@@ -2805,11 +2793,12 @@ namespace FM {
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
 
+                    unowned GLib.List<GOF.File> selection = get_selected_files ();
                     if (only_alt_pressed && keyval == Gdk.Key.Down) {
                         /* Only open a single selected folder */
-                        unowned GLib.List<GOF.File> selection = get_selected_files ();
+
                         if (selection != null &&
-                            selection.length () == 1 &&
+                            selection.first ().next == null &&
                             selection.data.is_folder ()) {
 
                             load_location (selection.data.location);
@@ -2838,7 +2827,7 @@ namespace FM {
                             Gtk.TreeIter? iter = null;
                             /* Do not try to select invalid path */
                             if (model.get_iter (out iter, path)) {
-                                if (only_shift_pressed && selected_files.length () > 0) {
+                                if (only_shift_pressed && selected_files != null) {
                                     linear_select_path (path);
                                 } else if (no_mods) {
                                     unselect_path (old_path);
@@ -2951,6 +2940,7 @@ namespace FM {
                     } else {
                         target_file = file;
                     }
+
                     item_hovered (target_file);
                     hover_path = path;
                 }
@@ -3168,6 +3158,7 @@ namespace FM {
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
             bool linear_select_required = false;
+            bool is_selected = selected_files != null;
 
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
@@ -3228,6 +3219,8 @@ namespace FM {
                              */
 
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
+                                update_selected_files_and_menu ();
+
                                 if (linear_select_required && selected_files.length () > 0) {
                                     linear_select_path (path);
                                     result = true;  /* Do not pass to default handler which would Rubberband */
@@ -3244,7 +3237,7 @@ namespace FM {
                             break;
 
                         case ClickZone.HELPER:
-                            if (linear_select_required && selected_files.length () > 0) {
+                            if (linear_select_required && is_selected) {
                                 linear_select_path (path);
                             } else {
                                 previous_selection_was_linear = false;
@@ -3297,7 +3290,7 @@ namespace FM {
 
                     unblock_drag_and_drop ();
                     /* Ensure selected files list and menu actions are updated before context menu shown */
-                    after_selected_files_changed ();
+                    update_selected_files_and_menu ();
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -3311,28 +3304,38 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
-            if (dnd_disabled)
+            if (dnd_disabled) {
                 unblock_drag_and_drop ();
+            }
 
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.
              * Under both these circumstances, 'should_activate' will be false */
-            if (renaming || !view_has_focus ())
+            if (renaming || !view_has_focus ()) {
                 return true;
+            }
 
             slot.active (should_scroll);
 
             Gtk.Widget widget = get_real_view ();
             int x = (int)event.x;
             int y = (int)event.y;
+
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
-                if (should_activate)
+                if (should_activate) {
                     activate_selected_items (Marlin.OpenFlag.DEFAULT);
-                else if (should_deselect && click_path != null)
+                } else if (should_deselect && click_path != null) {
                     unselect_path (click_path);
+                }
             }
+
+            Idle.add (() => {
+                update_selected_files_and_menu ();
+                return false;
+            });
+
             should_activate = false;
             should_deselect = false;
             click_path = null;
@@ -3486,6 +3489,19 @@ namespace FM {
             }
         }
 
+        protected void update_selected_files_and_menu () {
+            if (selected_files_invalid) {
+                selected_files = null;
+
+                var selected_count = get_selected_files_from_model (out selected_files);
+                all_selected = selected_count == slot.directory.files_count;
+                selected_files.reverse ();
+                selected_files_invalid = false;
+                update_menu_actions ();
+                selection_changed (selected_files);
+            }
+        }
+
         protected virtual bool expand_collapse (Gtk.TreePath? path) {
             item_hovered (null);
             return true;
@@ -3507,7 +3523,6 @@ namespace FM {
             cancel_drag_timer ();
             cancel_timeout (ref drag_scroll_timer_id);
             cancel_timeout (ref add_remove_file_timeout_id);
-            cancel_timeout (ref update_selected_timeout_id);
             /* List View will take care of unloading subdirectories */
         }
 
@@ -3538,19 +3553,17 @@ namespace FM {
                         unselect_path (p);
                     }
                 }
-
-                all_selected = false;
             }
         }
 
         public void select_all () {
             tree_select_all ();
-            all_selected = true;
+            update_selected_files_and_menu ();
         }
 
         public void unselect_all () {
             tree_unselect_all ();
-            all_selected = false;
+            update_selected_files_and_menu ();
         }
 
         public virtual void highlight_path (Gtk.TreePath? path) {}
@@ -3576,10 +3589,11 @@ namespace FM {
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
-        protected abstract void update_selected_files ();
+        protected abstract uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files);
         protected abstract uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
+
         protected abstract void scroll_to_cell (Gtk.TreePath? path,
                                                 bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path,

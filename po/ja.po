@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-01-27 00:02+0000\n"
+"PO-Revision-Date: 2018-02-15 00:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
@@ -57,7 +57,7 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"サポートされているサーバ形式のリストをロード出来ません。\n"
+"サポートされているサーバ形式のリストをロードできません。\n"
 "gvfs がインストールされているか確認してください。"
 
 #: ../src/marlin-connect-server-dialog.c:282
@@ -447,7 +447,7 @@ msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1384
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "ゴミ箱から \"%B\" を完全に削除しますか？"
+msgstr "ゴミ箱から \"%B\" を完全に削除してもよろしいですか？"
 
 #: ../libcore/marlin-file-operations.c:1387
 #, c-format
@@ -457,7 +457,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "選択された %'d 個のアイテムをゴミ箱から完全に削除しますか？"
+msgstr[0] "選択された %'d 個のアイテムをゴミ箱から完全に削除してもよろしいですか？"
 
 #: ../libcore/marlin-file-operations.c:1397
 #: ../libcore/marlin-file-operations.c:1477
@@ -495,14 +495,14 @@ msgstr "ゴミ箱を空にする (_T)"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "\"%B\" を完全に削除しますか？"
+msgstr "\"%B\" を完全に削除してもよろしいですか？"
 
 #: ../libcore/marlin-file-operations.c:1468
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "選択された %'d 個のアイテムを完全に削除しますか？"
+msgstr[0] "選択された %'d 個のアイテムを完全に削除してもよろしいですか？"
 
 #: ../libcore/marlin-file-operations.c:1493
 #: ../libcore/marlin-file-operations.c:1525
