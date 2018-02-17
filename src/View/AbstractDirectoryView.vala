@@ -2397,7 +2397,7 @@ namespace FM {
 
             /* Views with a large number of files take longer to redraw (especially IconView) so
              * we wait longer for scrolling to stop before updating the thumbnails */
-            uint delay = uint.min (50 + slot.directory.files_count / 10, 500);
+            uint delay = uint.min (50 + slot.displayed_files_count / 10, 500);
             thumbnail_source_id = GLib.Timeout.add (delay, () => {
 
                 /* compute visible item range */
@@ -3517,7 +3517,7 @@ namespace FM {
                 selected_files = null;
 
                 var selected_count = get_selected_files_from_model (out selected_files);
-                all_selected = selected_count == slot.directory.files_count;
+                all_selected = selected_count == slot.displayed_files_count;
                 selected_files.reverse ();
                 selected_files_invalid = false;
                 update_menu_actions ();
