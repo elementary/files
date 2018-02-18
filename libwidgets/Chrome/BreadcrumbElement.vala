@@ -21,7 +21,7 @@
 public class Marlin.View.Chrome.BreadcrumbElement : Object {
 
     private const int ICON_MARGIN = 3;
-    private unowned BreadcrumbIconInfo? icon_info = null;
+    private BreadcrumbIconInfo? icon_info = null;
 
     public string? text {get; private set;}
     private double text_width;
@@ -199,7 +199,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             } else {
                 if (room_for_icon) {
                     cr.save ();
-                    double draw_scale = 1.0 / scale; 
+                    double draw_scale = 1.0 / scale;
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
                                                 Math.round ((x - ICON_MARGIN - icon_info.icon_width) * scale),
@@ -223,7 +223,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             } else {
                 if (room_for_icon) {
                     cr.save ();
-                    double draw_scale = 1.0 / scale; 
+                    double draw_scale = 1.0 / scale;
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
                                                 Math.round ((x + ICON_MARGIN) * scale),
