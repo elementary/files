@@ -2816,7 +2816,7 @@ namespace FM {
                     }
 
                     if (no_mods) {
-                        unselect_all ();
+                        unselect_others ();
                     }
 
                     if (linear_select_required) { /* Only true for Icon View */
@@ -2851,6 +2851,7 @@ namespace FM {
                     } else {
                         previous_selection_was_linear = false;
                         previous_linear_selection_path = null;
+
                     }
 
                     break;
@@ -3589,6 +3590,11 @@ namespace FM {
             update_selected_files_and_menu ();
         }
 
+        public void unselect_others () {
+            tree_unselect_others ();
+            update_selected_files_and_menu ();
+        }
+
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual void linear_select_path (Gtk.TreePath path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
@@ -3600,6 +3606,7 @@ namespace FM {
         public abstract Gtk.TreePath? get_path_at_cursor ();
         public abstract void tree_select_all ();
         public abstract void tree_unselect_all ();
+        public virtual void tree_unselect_others () {}
         public abstract void select_path (Gtk.TreePath? path, bool cursor_follows = false);
         public abstract void unselect_path (Gtk.TreePath? path);
         public abstract bool path_is_selected (Gtk.TreePath? path);

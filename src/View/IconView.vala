@@ -142,6 +142,13 @@ namespace FM {
             tree.unselect_all ();
         }
 
+        public override void tree_unselect_others () {
+            Gtk.TreePath path = null;
+            tree.get_cursor (out path, null);
+            tree.unselect_all ();
+            select_path (path, true);
+        }
+
         /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
          * It would take an exponentially long time. Use "select_files" function in parent class.
          */
