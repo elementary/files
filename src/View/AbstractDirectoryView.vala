@@ -2816,10 +2816,10 @@ namespace FM {
                     }
 
                     if (no_mods) {
+                        /* Deselect all except under cursor (works differently for Gtk.IconView and Gtk.TreeView) */
                         unselect_others ();
-                    }
-
-                    if (linear_select_required) { /* Only true for Icon View */
+                        previous_linear_selection_path = null;
+                    } else if (linear_select_required) { /* Only true for Icon View */
                         Gtk.TreePath? path = get_path_at_cursor ();
 
                         if (path != null) {
@@ -2840,9 +2840,6 @@ namespace FM {
                             if (model.get_iter (out iter, path)) {
                                 if (only_shift_pressed && selected_files != null) {
                                     linear_select_path (path);
-                                } else if (no_mods) {
-                                    unselect_path (old_path);
-                                    select_path (path, true);  /* Cursor follows */
                                 }
                             }
 
@@ -2851,7 +2848,6 @@ namespace FM {
                     } else {
                         previous_selection_was_linear = false;
                         previous_linear_selection_path = null;
-
                     }
 
                     break;
