@@ -2737,10 +2737,23 @@ namespace FM {
                     break;
 
                 case Gdk.Key.minus:
-                    if (only_alt_pressed) {
+                    if (alt_pressed && control_pressed) {
                         Gtk.TreePath? path = get_path_at_cursor ();
                         if (path != null && path_is_selected (path)) {
                             unselect_path (path);
+                        }
+
+                        res = true;
+                    }
+
+                    break;
+
+                case Gdk.Key.plus:
+                case Gdk.Key.equal: /* Do not require Shift as well (otherwise 4 key shortcut)  */
+                    if (alt_pressed && control_pressed) {
+                        Gtk.TreePath? path = get_path_at_cursor ();
+                        if (path != null && !path_is_selected (path)) {
+                            select_path (path);
                         }
 
                         res = true;
@@ -2840,10 +2853,9 @@ namespace FM {
                             if (model.get_iter (out iter, path)) {
                                 if (only_shift_pressed && selected_files != null) {
                                     linear_select_path (path);
+                                    res = true;
                                 }
                             }
-
-                            res = true;
                         }
                     } else {
                         previous_selection_was_linear = false;
