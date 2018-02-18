@@ -58,7 +58,7 @@ public class Async : Object {
     public State state {get; private set;}
 
     private HashTable<GLib.File,GOF.File> file_hash;
-    public uint files_count {get; private set;}
+    public uint displayed_files_count {get; private set;}
 
     public bool permission_denied = false;
     public bool network_available = true;
@@ -550,7 +550,7 @@ public class Async : Object {
         file_hash.remove_all ();
         monitor = null;
         sorted_dirs = null;
-        files_count = 0;
+        displayed_files_count = 0;
         can_load = false;
         state = State.NOT_LOADED;
         loaded_from_cache = false;
@@ -575,6 +575,7 @@ public class Async : Object {
         }
 
         state = State.LOADING;
+        displayed_files_count = 0;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
         foreach (GOF.File gof in file_hash.get_values ()) {
             if (gof != null) {
@@ -613,7 +614,7 @@ public class Async : Object {
         cancellable = new Cancellable ();
         permission_denied = false;
         can_load = true;
-        files_count = 0;
+        displayed_files_count = 0;
         state = State.LOADING;
         bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
 
@@ -656,7 +657,6 @@ public class Async : Object {
 
                             file_hash.insert (gof.location, gof);
                             after_load_file (gof, show_hidden, file_loaded_func);
-                            files_count++;
                         }
                     }
                 } catch (Error e) {
@@ -692,6 +692,8 @@ public class Async : Object {
 
     private void after_load_file (GOF.File gof, bool show_hidden, GOFFileLoadedFunc? file_loaded_func) {
         if (!gof.is_hidden || show_hidden) {
+            displayed_files_count++;
+
             if (file_loaded_func == null) {
                 file_loaded (gof);
             } else {

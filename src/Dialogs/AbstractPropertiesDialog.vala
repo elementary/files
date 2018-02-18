@@ -127,7 +127,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         }
 
         /* Only show the stack switcher when there's more than a single tab */
-        if (stack.get_children ().length () > 1) {
+        if (stack.get_children () != null) {
             stack_switcher.show ();
         }
     }

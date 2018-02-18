@@ -62,7 +62,7 @@ Async load_non_existent_local_test (string test_dir_path, MainLoop loop) {
 
     var dir = Async.from_gfile (gfile);
     dir.done_loading.connect (() => {
-        assert (dir.files_count == 0);
+        assert (dir.displayed_files_count == 0);
         assert (!dir.can_load);
         assert (!dir.file.is_connected);
         assert (!dir.file.is_mounted);
@@ -78,7 +78,7 @@ Async load_empty_local_test (string test_dir_path, MainLoop loop) {
     var dir = setup_temp_async (test_dir_path, 0);
 
     dir.done_loading.connect (() => {
-        assert (dir.files_count == 0);
+        assert (dir.displayed_files_count == 0);
         assert (dir.can_load);
         assert (dir.file.is_connected);
         assert (!dir.file.is_mounted);
@@ -103,7 +103,7 @@ Async load_populated_local_test (string test_dir_path, MainLoop loop) {
     });
 
     dir.done_loading.connect (() => {
-        assert (dir.files_count == n_files);
+        assert (dir.displayed_files_count == n_files);
         assert (dir.can_load);
         assert (dir.state == Async.State.LOADED);
         assert (file_loaded_signal_count == n_files);
@@ -131,7 +131,7 @@ Async load_cached_local_test (string test_dir_path, MainLoop loop) {
             assert (!dir.loaded_from_cache);
             dir.init ();
         } else {
-            assert (dir.files_count == n_files);
+            assert (dir.displayed_files_count == n_files);
             assert (dir.can_load);
             assert (dir.state == Async.State.LOADED);
             assert (file_loaded_signal_count == n_files);
@@ -163,7 +163,7 @@ Async reload_populated_local_test (string test_dir_path, MainLoop loop) {
             dir.cancel ();
             dir.reload ();
         } else {
-            assert (dir.files_count == n_files);
+            assert (dir.displayed_files_count == n_files);
             assert (dir.can_load);
             assert (dir.state == Async.State.LOADED);
             assert (dir.ref_count == ref_count_before_reload);
