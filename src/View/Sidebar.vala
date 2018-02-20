@@ -1872,57 +1872,7 @@ namespace Marlin.Places {
             bool success = false;
             GLib.MountOperation mount_op = new GLib.MountOperation ();
 
-            if (mount != null) {
-                if (allow_eject) {
-                    mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
-                                                      mount_op,
-                                                      null,
-                                                      (obj, res) => {
-                        try {
-                            success = mount.eject_with_operation.end (res);
-                        } catch (GLib.Error error) {
-                            warning ("Error ejecting mount: %s", error.message);
-                        } finally {
-                            finish_eject_or_unmount (row_ref, success);
-                        }
-                    });
-                } else {
-                    mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
-                                                        mount_op,
-                                                        null,
-                                                        (obj, res) => {
-                        try {
-                            success = mount.unmount_with_operation.end (res);
-                        } catch (GLib.Error error) {
-                            warning ("Error while unmounting mount %s", error.message);
-                        } finally {
-                            finish_eject_or_unmount (row_ref, success);
-                        }
-                    });
-                }
-
-                return;
-            }
-
-            if (volume != null) {
-                volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
-                                                   mount_op,
-                                                   null,
-                                                   (obj, res) => {
-                    try {
-                        success = volume.eject_with_operation.end (res);
-                    } catch (GLib.Error error) {
-                        warning ("Error ejecting volume: %s", error.message);
-                    } finally {
-                        finish_eject_or_unmount (row_ref, success);
-                    }
-                });
-
-                return;
-            }
-
             if (drive != null) {
-
                 if (get_allow_stop (drive)) {
                     drive.stop.begin (GLib.MountUnmountFlags.NONE,
                                       mount_op,
@@ -1942,7 +1892,8 @@ namespace Marlin.Places {
                             warning ("Could not stop drive");
                         }
                     });
-                } else {
+                    return;
+                } else if (allow_eject && drive.can_eject ()) {
                     drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                       mount_op,
                                                       null,
@@ -1955,8 +1906,55 @@ namespace Marlin.Places {
                             finish_eject_or_unmount (row_ref, success);
                         }
                     });
-
+                    return;
                 }
+            }
+
+            if (mount != null) {
+                if (allow_eject && mount.can_eject ()) {
+                    mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                      mount_op,
+                                                      null,
+                                                      (obj, res) => {
+                        try {
+                            success = mount.eject_with_operation.end (res);
+                        } catch (GLib.Error error) {
+                            warning ("Error ejecting mount: %s", error.message);
+                        } finally {
+                            finish_eject_or_unmount (row_ref, success);
+                        }
+                    });
+                    return;
+                } else if (mount.can_unmount ()) {
+                    mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                        mount_op,
+                                                        null,
+                                                        (obj, res) => {
+                        try {
+                            success = mount.unmount_with_operation.end (res);
+                        } catch (GLib.Error error) {
+                            warning ("Error while unmounting mount %s", error.message);
+                        } finally {
+                            finish_eject_or_unmount (row_ref, success);
+                        }
+                    });
+                    return;
+                }
+            }
+
+            if (volume != null && volume.can_eject ()) {
+                volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                   mount_op,
+                                                   null,
+                                                   (obj, res) => {
+                    try {
+                        success = volume.eject_with_operation.end (res);
+                    } catch (GLib.Error error) {
+                        warning ("Error ejecting volume: %s", error.message);
+                    } finally {
+                        finish_eject_or_unmount (row_ref, success);
+                    }
+                });
 
                 return;
             }
@@ -2032,8 +2030,9 @@ namespace Marlin.Places {
             Timeout.add (100, ()=>{
                 uint val;
 
-                if (!rowref.valid ())
+                if (!rowref.valid ()) {
                     return false;
+                }
 
                 store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
                 if (!spinner_active) {
@@ -2045,7 +2044,7 @@ namespace Marlin.Places {
                 return true;
             });
 
-            do_unmount_or_eject (mount, volume, drive, rowref, can_eject && allow_eject);
+            do_unmount_or_eject (mount, volume, drive, rowref, allow_eject);
             return true;
         }
 
@@ -2253,13 +2252,11 @@ namespace Marlin.Places {
 
             if (mount != null) {
                 can_unmount = mount.can_unmount ();
-                return;
             }
 
             if (drive != null) {
                 can_eject = drive.can_eject ();
                 can_stop = drive.can_stop ();
-                return;
             }
 
             if (volume != null) {
@@ -2317,20 +2314,22 @@ namespace Marlin.Places {
         }
 
         private bool get_allow_stop (Drive drive) {
-            if (!drive.can_stop ()) {
-                return false;
-            }
+            bool res = false;
 
-            uint mounts = 0;
-            /* Only stop drive if there are no mounted volumes on it */
-            foreach (var vol in drive.get_volumes ()) {
-                if (vol.get_mount () != null) {
-                    mounts++;
+            if (drive.can_stop ()) {
+                uint mounts = 0;
+                /* Only stop drive if there are no mounted volumes on it */
+                foreach (var vol in drive.get_volumes ()) {
+                    if (vol.get_mount () != null) {
+                        mounts++;
+                    }
                 }
+
+                /* If we are unmounting the last mount then drive may be stopped */
+                res = mounts <= 1;
             }
 
-            /* If we are unmounting the last mount then drive may be stopped */
-            return mounts <= 1;
+            return res;
         }
 
         private void check_popup_sensitivity () {
