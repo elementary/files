@@ -3247,7 +3247,7 @@ namespace FM {
                                     unselect_path (path);
                                 } else {
                                     should_deselect = false;
-                                    select_path (path);  /* Cursor follows */
+                                    select_path (path, true);  /* Cursor follow and selection preserved */
                                 }
                             }
 
