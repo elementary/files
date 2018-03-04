@@ -967,7 +967,7 @@ namespace FM {
             }
             /* Start to rename the file once we get signal that it has been added to model */
             view.slot.directory.file_added.connect_after (view.after_new_file_added);
-            view.unblock_directory_monitor ();;
+            view.unblock_directory_monitor ();
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
@@ -2698,10 +2698,10 @@ namespace FM {
                     } else if (no_mods || is_admin) {
                         /* If already in trash or running as root, permanently delete the file */
                         trash_or_delete_selected_files (in_trash || is_admin);
-                        res = true;;
+                        res = true;
                     } else if (only_shift_pressed) {
                         trash_or_delete_selected_files (true);
-                        res = true;;
+                        res = true;
                     } else if (only_shift_pressed && !renaming) {
                         delete_selected_files ();
                         res = true;
