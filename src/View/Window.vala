@@ -746,7 +746,7 @@ namespace Marlin.View {
         }
 
         private void connect_to_server () {
-            var dialog = new Marlin.ConnectServer.Dialog ((Gtk.Window) this);
+            var dialog = new PF.ConnectServerDialog (this);
             dialog.show ();
         }
 

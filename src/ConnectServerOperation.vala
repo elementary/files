@@ -20,9 +20,9 @@
 
 public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
 
-    private Marlin.ConnectServer.Dialog dialog;
+    private PF.ConnectServerDialog dialog;
 
-    public Operation (Marlin.ConnectServer.Dialog dialog) {
+    public Operation (PF.ConnectServerDialog dialog) {
         this.dialog = dialog;
         this.set_parent (dialog);
 
