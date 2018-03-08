@@ -23,12 +23,13 @@
 namespace GOF.Directory {
 
 public class Async : Object {
-
     private static HashTable<GLib.File,GOF.Directory.Async> directory_cache;
+    private static HashTable<GLib.File,GOF.Directory.Async> pending_cache;
     private static Mutex dir_cache_lock;
 
     static construct {
         directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
+        pending_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
         dir_cache_lock = GLib.Mutex ();
     }
 
@@ -115,14 +116,7 @@ public class Async : Object {
     public bool loaded_from_cache {get; private set; default = false;}
 
     private Async (GLib.File _file) {
-        /* Ensure uri is correctly escaped and has scheme */
-        var escaped_uri = PF.FileUtils.escape_uri (_file.get_uri ());
-        scheme = Uri.parse_scheme (escaped_uri);
-        if (scheme == null) {
-            scheme = Marlin.ROOT_FS_URI;
-            escaped_uri = scheme + escaped_uri;
-        }
-        location = GLib.File.new_for_uri (escaped_uri);
+        location = _file;
         file = GOF.File.get (location);
         selected_file = null;
 
@@ -140,10 +134,13 @@ public class Async : Object {
         can_stream_files = !("ftp sftp mtp".contains (scheme));
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
+
+        pending_cache.insert (location.dup (), this);
     }
 
     ~Async () {
         debug ("Async destruct %s", file.uri);
+
         if (is_trash)
             disconnect_volume_monitor_signals ();
     }
@@ -426,9 +423,8 @@ public class Async : Object {
             this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
             this.unref (); /* Make the toggle ref the only ref */
 
+            pending_cache.remove (location);
             dir_cache_lock.unlock ();
-
-
         }
 
         /* The following can run on reloading */
@@ -1043,10 +1039,19 @@ public class Async : Object {
 
     public static Async from_gfile (GLib.File file) {
         assert (file != null);
+        /* Ensure uri is correctly escaped and has scheme */
+        var escaped_uri = PF.FileUtils.escape_uri (file.get_uri ());
+        var scheme = Uri.parse_scheme (escaped_uri);
+        if (scheme == null) {
+            scheme = Marlin.ROOT_FS_URI;
+            escaped_uri = scheme + escaped_uri;
+        }
+
+        var gfile = GLib.File.new_for_uri (escaped_uri);
         /* Note: cache_lookup creates directory_cache if necessary */
-        Async?  dir = cache_lookup (file);
+        Async?  dir = cache_lookup (gfile);
         /* Both local and non-local files can be cached */
-        return dir ?? new Async (file);
+        return dir ?? new Async (gfile);
     }
 
     public static Async from_file (GOF.File gof) {
@@ -1074,6 +1079,10 @@ public class Async : Object {
         dir_cache_lock.@lock ();
         cached_dir = directory_cache.lookup (file);
         dir_cache_lock.unlock ();
+
+        if (cached_dir == null) {
+            cached_dir = pending_cache.lookup (file);
+        }
 
         if (cached_dir != null) {
             if (cached_dir is Async && cached_dir.file != null) {
