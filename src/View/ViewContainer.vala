@@ -117,7 +117,7 @@ namespace Marlin.View {
         }
 
         ~ViewContainer () {
-            debug ("ViewContainer destruct");
+            warning ("ViewContainer destruct");
         }
 
         private void connect_signals () {
@@ -154,8 +154,14 @@ namespace Marlin.View {
         }
 
         public void close () {
-            disconnect_signals ();
+            close_view_slot ();
+        }
+
+        private void close_view_slot () {
+            /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
             view.close ();
+            content_item = null; /* Make sure old slot and directory view are destroyed */
+            view = null; /* Pre-requisite for add view */
         }
 
         public Gtk.Widget? content {
@@ -268,11 +274,7 @@ namespace Marlin.View {
 
         private void before_mode_change () {
             store_selection ();
-            /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
-            view.close ();
-            disconnect_slot_signals (view);
-            content = null; /* Make sure old slot and directory view are destroyed */
-            view = null; /* Pre-requisite for add view */
+            close_view_slot ();
             loading (false);
         }
 

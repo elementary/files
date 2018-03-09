@@ -36,11 +36,15 @@ namespace Marlin.View {
         private uint hover_timeout_id = 0;
         private Marlin.DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
-
+        private WeakNotify h;
         public bool showbar = false;
 
         public OverlayBar (Gtk.Overlay overlay) {
             base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
+
+            /* Temporary workaround for bug in Granite.OverlayBar resulting in circular reference */
+            overlay.weak_ref (() => {});
+            overlay.unref ();
 
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             label = "";
@@ -49,6 +53,7 @@ namespace Marlin.View {
 
         ~OverlayBar () {
             cancel ();
+            debug ("OverlayBar destruct");
         }
 
         public void selection_changed (GLib.List<unowned GOF.File> files) {

@@ -35,6 +35,9 @@ namespace Marlin.View {
             forward_stack = new Stack<string> ();
         }
 
+        ~Browser () {
+            debug ("Browser destruct");
+        }
         /**
          * Use this method to track an uri location in
          * the back/forward stacks
@@ -45,7 +48,7 @@ namespace Marlin.View {
                 if (uri != null) {
                     /* Only record if the uri has changed other than by use of forward or back buttons */
                     /* If the forward or back buttons were pressed then the current uri would already have
-                     * been made equal to the new uri */ 
+                     * been made equal to the new uri */
                     if (current_uri != uri) {
                         forward_stack.clear ();
                         back_stack.push (current_uri);
