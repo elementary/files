@@ -28,8 +28,8 @@ public class Async : Object {
     private static Mutex dir_cache_lock;
 
     static construct {
-        directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
-        pending_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
+        directory_cache = new HashTable<GLib.File, unowned GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
+        pending_cache = new HashTable<GLib.File, unowned GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
         dir_cache_lock = GLib.Mutex ();
     }
 
@@ -139,8 +139,6 @@ public class Async : Object {
         can_stream_files = !("ftp sftp mtp".contains (scheme));
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
-
-        pending_cache.insert (creation_key, this);
     }
 
     ~Async () {
@@ -426,10 +424,11 @@ public class Async : Object {
 
             directory_cache.insert (creation_key, this);
             this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-            this.unref (); /* Make the toggle ref the only ref */
+//            this.unref (); /* Make the toggle ref the only ref */
 
             if (!creation_key.equal (location)) {
                 directory_cache.insert (location.dup (), this);
+//                this.unref ();
             }
 
             pending_cache.remove (creation_key);
@@ -516,7 +515,7 @@ public class Async : Object {
 
             if (!dir.removed_from_cache) {
                 dir.@ref (); /* Add back ref removed when cached so toggle ref not removed */
-                dir.remove_dir_from_cache ();
+                Async.remove_dir_from_cache (dir);
             }
 
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
@@ -1060,7 +1059,12 @@ public class Async : Object {
         /* Note: cache_lookup creates directory_cache if necessary */
         Async?  dir = cache_lookup (gfile);
         /* Both local and non-local files can be cached */
-        return dir ?? new Async (gfile);
+        if (dir == null) {
+            dir = new Async (gfile);
+            pending_cache.insert (gfile, dir);
+        }
+
+        return dir;
     }
 
     public static Async from_file (GOF.File gof) {
@@ -1123,25 +1127,26 @@ public class Async : Object {
         return parent != null ? cache_lookup (parent) : cache_lookup (file);
     }
 
-    public bool remove_dir_from_cache () {
-        removed_from_cache = true;
-        if (directory_cache.remove (creation_key)) {
-            directory_cache.remove (location);
+    public static bool remove_dir_from_cache (Async dir) {
+        if (directory_cache.remove (dir.creation_key)) {
+            directory_cache.remove (dir.location);
+            dir.removed_from_cache = true;
             return true;
         }
 
         return false;
     }
 
-    public bool purge_dir_from_cache () {
-        var removed = remove_dir_from_cache ();
+    public static bool purge_dir_from_cache (Async dir) {
+        var removed = Async.remove_dir_from_cache (dir);
         /* We have to remove the dir's subfolders from cache too */
         if (removed) {
-            foreach (var gfile in file_hash.get_keys ()) {
+            foreach (var gfile in dir.file_hash.get_keys ()) {
                 assert (gfile != null);
-                var dir = cache_lookup (gfile);
-                if (dir != null)
-                    dir.remove_dir_from_cache ();
+                var d = cache_lookup (gfile);
+                if (d != null) {
+                    Async.remove_dir_from_cache (d);
+                }
             }
         }
 
