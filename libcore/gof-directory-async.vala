@@ -42,9 +42,10 @@ public class Async : Object {
     private const int QUERY_INFO_TIMEOUT_SEC = 20;
     private const int MOUNT_TIMEOUT_SEC = 60;
 
-    public GLib.File location;
+    public GLib.File creation_key {get; construct;}
+    public GLib.File location {get; private set;}
     public GLib.File? selected_file {get; private set;}
-    public GOF.File file;
+    public GOF.File file {get; private set;}
     public int icon_size = 32;
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
@@ -116,6 +117,10 @@ public class Async : Object {
     public bool loaded_from_cache {get; private set; default = false;}
 
     private Async (GLib.File _file) {
+        Object (
+            creation_key: _file
+        );
+
         location = _file;
         file = GOF.File.get (location);
         selected_file = null;
@@ -135,7 +140,7 @@ public class Async : Object {
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
 
-        pending_cache.insert (location.dup (), this);
+        pending_cache.insert (creation_key, this);
     }
 
     ~Async () {
@@ -419,11 +424,15 @@ public class Async : Object {
 
             dir_cache_lock.@lock ();
 
-            directory_cache.insert (location.dup (), this);
+            directory_cache.insert (creation_key, this);
             this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
             this.unref (); /* Make the toggle ref the only ref */
 
-            pending_cache.remove (location);
+            if (!creation_key.equal (location)) {
+                directory_cache.insert (location.dup (), this);
+            }
+
+            pending_cache.remove (creation_key);
             dir_cache_lock.unlock ();
         }
 
@@ -1116,7 +1125,12 @@ public class Async : Object {
 
     public bool remove_dir_from_cache () {
         removed_from_cache = true;
-        return directory_cache.remove (location);
+        if (directory_cache.remove (creation_key)) {
+            directory_cache.remove (location);
+            return true;
+        }
+
+        return false;
     }
 
     public bool purge_dir_from_cache () {
