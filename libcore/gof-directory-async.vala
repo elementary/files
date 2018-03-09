@@ -23,8 +23,8 @@
 namespace GOF.Directory {
 
 public class Async : Object {
-    private static HashTable<GLib.File,GOF.Directory.Async> directory_cache;
-    private static HashTable<GLib.File,GOF.Directory.Async> pending_cache;
+    private static HashTable<GLib.File, unowned GOF.Directory.Async> directory_cache;
+    private static HashTable<GLib.File, unowned GOF.Directory.Async> pending_cache;
     private static Mutex dir_cache_lock;
 
     static construct {
@@ -424,11 +424,9 @@ public class Async : Object {
 
             directory_cache.insert (creation_key, this);
             this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-//            this.unref (); /* Make the toggle ref the only ref */
 
             if (!creation_key.equal (location)) {
                 directory_cache.insert (location.dup (), this);
-//                this.unref ();
             }
 
             pending_cache.remove (creation_key);
@@ -514,7 +512,6 @@ public class Async : Object {
             debug ("Async is last toggle_ref_notify %s", dir.file.uri);
 
             if (!dir.removed_from_cache) {
-                dir.@ref (); /* Add back ref removed when cached so toggle ref not removed */
                 Async.remove_dir_from_cache (dir);
             }
 
