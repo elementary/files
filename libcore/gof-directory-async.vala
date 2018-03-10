@@ -1058,7 +1058,9 @@ public class Async : Object {
         /* Both local and non-local files can be cached */
         if (dir == null) {
             dir = new Async (gfile);
+            dir_cache_lock.@lock ();
             pending_cache.insert (gfile, dir);
+            dir_cache_lock.unlock ();
         }
 
         return dir;
@@ -1087,12 +1089,8 @@ public class Async : Object {
         }
 
         dir_cache_lock.@lock ();
-        cached_dir = directory_cache.lookup (file);
+        cached_dir = directory_cache.lookup (file) ?? pending_cache.lookup (file);
         dir_cache_lock.unlock ();
-
-        if (cached_dir == null) {
-            cached_dir = pending_cache.lookup (file);
-        }
 
         if (cached_dir != null) {
             if (cached_dir is Async && cached_dir.file != null) {
