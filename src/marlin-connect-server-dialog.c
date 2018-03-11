@@ -462,7 +462,7 @@ marlin_connect_server_dialog_display_location_async (MarlinConnectServerDialog *
 
     //g_message ("ConnectServer display location %s", g_file_get_uri (location));
     //marlin_application_create_window_from_gfile (marlin_application_new (), location, gtk_widget_get_screen (widget));
-    //g_signal_emit_by_name (MARLIN_VIEW_WINDOW (self->details->parent_window)->current_tab, "path-changed", location);
+    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (self->details->parent_window)->current_tab, "path-changed", location);
 
     g_simple_async_result_complete (display_location_res);
     g_object_unref (display_location_res);

@@ -42,10 +42,6 @@ namespace Marlin.View {
         public OverlayBar (Gtk.Overlay overlay) {
             base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
 
-            /* Temporary workaround for bug in Granite.OverlayBar resulting in circular reference */
-            overlay.weak_ref (() => {});
-            overlay.unref ();
-
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             label = "";
             hide.connect (cancel);

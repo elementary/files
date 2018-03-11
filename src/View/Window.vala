@@ -65,7 +65,7 @@ namespace Marlin.View {
         public Granite.Widgets.DynamicNotebook tabs;
         private Gtk.Paned lside_pane;
         public Marlin.Places.Sidebar sidebar;
-        private ViewContainer? current_tab = null;
+        public ViewContainer? current_tab = null; /* Used by connect server dialog only - to be refactored */
 
         private bool tabs_restored = false;
         private bool restoring_tabs = false;

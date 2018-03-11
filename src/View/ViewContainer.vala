@@ -117,7 +117,7 @@ namespace Marlin.View {
         }
 
         ~ViewContainer () {
-            warning ("ViewContainer destruct");
+            debug ("ViewContainer destruct");
         }
 
         private void connect_signals () {
@@ -155,6 +155,11 @@ namespace Marlin.View {
 
         public void close () {
             close_view_slot ();
+
+            /* Need to force destruction because of circular reference.
+             * (https://github.com/elementary/granite/issues/110).
+             * Note: causes fatal warning in terminal. */
+            destroy ();
         }
 
         private void close_view_slot () {
