@@ -189,7 +189,6 @@ namespace Marlin.Places {
             col.set_attributes (crt, "visible", Column.NOT_CATEGORY);
 
             var crpb = new Gtk.CellRendererPixbuf (); /* Icon for bookmark or device */
-            crpb.follow_state = true;
             crpb.stock_size = Gtk.IconSize.MENU;
             crpb.ypad = BOOKMARK_YPAD;
             col.pack_start (crpb, false);
@@ -224,7 +223,6 @@ namespace Marlin.Places {
 
             crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button (hidden while ejecting or unmounted) */
             this.eject_spinner_cell_renderer = crpb;
-            crpb.follow_state = true;
             crpb.stock_size = Gtk.IconSize.MENU;
             crpb.gicon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
             crpb.xpad = ICON_XPAD;
@@ -952,7 +950,7 @@ namespace Marlin.Places {
                 if (uri != null) {
                     GOF.File file = GOF.File.get_by_uri (uri);
                     if (file.ensure_query_info ()) {
-                        file.accepts_drop (drag_list, context, out action);
+                        PF.FileUtils.file_accepts_drop (file, drag_list, context, out action);
                     } else {
                         warning ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
                     }
@@ -1320,7 +1318,7 @@ namespace Marlin.Places {
                             var app = Marlin.Application.get ();
                             app.create_window (location);
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
-                            window.add_tab (location, Marlin.ViewMode.CURRENT);
+                            window.open_single_tab (location, Marlin.ViewMode.CURRENT);
                         } else {
                             window.uri_path_change_request (location.get_uri ());
                         }
@@ -1438,95 +1436,69 @@ namespace Marlin.Places {
             }
         }
 
-/* POPUP MENU FUNCTIONS */
-
-        private void build_popup_menu () {
-            if (popupmenu != null)
-                return;
-
-            popupmenu = new Gtk.Menu ();
-
-            var item = new Gtk.ImageMenuItem.with_mnemonic (_("Open"));
-            var image = new Gtk.Image.from_icon_name ("document-open", Gtk.IconSize.MENU);
-
-            item.set_image (image);
-            item.activate.connect (open_shortcut_cb);
-            item.show ();
-            popupmenu.append (item);
-
-            item = new Gtk.ImageMenuItem.with_mnemonic (_("Open in New _Tab"));
-            popupmenu_open_in_new_tab_item = item;
-            item.activate.connect (open_shortcut_in_new_tab_cb);
-            item.show ();
-            popupmenu.append (item);
-
-            item = new Gtk.ImageMenuItem.with_mnemonic (_("Open in New _Window"));
-            popupmenu_open_in_new_window_item = item;
-            item.activate.connect (open_shortcut_in_new_window_cb);
-            item.show ();
-            popupmenu.append (item);
-
-            popupmenu_separator_item1 = new Gtk.SeparatorMenuItem ();
-            popupmenu.append (popupmenu_separator_item1);
-
-            item = new Gtk.ImageMenuItem.with_label (_("Remove"));
-            popupmenu_remove_item = item;
-            image = new Gtk.Image.from_icon_name ("list-remove", Gtk.IconSize.MENU);
-            item.set_image (image);
-            item.activate.connect (remove_shortcut_cb);
-            item.show ();
-            popupmenu.append (item);
-
-            item = new Gtk.ImageMenuItem.with_label (_("Rename"));
-            popupmenu_rename_item = item;
-            item.activate.connect (rename_shortcut_cb);
-            item.show ();
-            popupmenu.append (item);
-
-            popupmenu_separator_item2 = new Gtk.SeparatorMenuItem ();
-            popupmenu.append (popupmenu_separator_item2);
-
-            item = new Gtk.ImageMenuItem.with_mnemonic (_("_Mount"));
-            popupmenu_mount_item = item;
-            item.activate.connect (mount_shortcut_cb);
-            item.show ();
-            popupmenu.append (item);
-
-            item = new Gtk.ImageMenuItem.with_mnemonic (_("_Unmount"));
-            popupmenu_unmount_item = item;
-            item.activate.connect (unmount_shortcut_cb);
-            item.show ();
-            popupmenu.append (item);
-
-            item = new Gtk.ImageMenuItem.with_mnemonic (_("_Eject"));
-            popupmenu_eject_item = item;
-            item.activate.connect (eject_shortcut_cb);
-            item.show ();
-            popupmenu.append (item);
-
-            /* Empty Trash menu item */
-            item = new Gtk.ImageMenuItem.with_mnemonic (_("Empty _Trash"));
-            popupmenu_empty_trash_item = item;
-            item.activate.connect (empty_trash_cb);
-            item.show ();
-            popupmenu.append (item);
-
-            /* Drive property menu item */
-            item = new Gtk.ImageMenuItem.with_mnemonic (_("Properties"));
-            popupmenu_drive_property_item = item;
-            item.activate.connect (show_drive_info_cb);
-            item.show ();
-            popupmenu.append (item);
-
-            check_popup_sensitivity ();
-        }
-
-        private void update_popup_menu () {
-            build_popup_menu ();
-        }
-
         private new void popup_menu (Gdk.EventButton? event) {
-            update_popup_menu ();
+            if (popupmenu == null) {
+                var popupmenu_open = new Gtk.MenuItem.with_mnemonic (_("Open"));
+                popupmenu_open.activate.connect (open_shortcut_cb);
+                popupmenu_open.show ();
+
+                popupmenu_open_in_new_tab_item = new Gtk.MenuItem.with_mnemonic (_("Open in New _Tab"));
+                popupmenu_open_in_new_tab_item.activate.connect (open_shortcut_in_new_tab_cb);
+                popupmenu_open_in_new_tab_item.show ();
+
+                popupmenu_open_in_new_window_item = new Gtk.MenuItem.with_mnemonic (_("Open in New _Window"));
+                popupmenu_open_in_new_window_item.activate.connect (open_shortcut_in_new_window_cb);
+                popupmenu_open_in_new_window_item.show ();
+
+                popupmenu_separator_item1 = new Gtk.SeparatorMenuItem ();
+
+                popupmenu_remove_item = new Gtk.MenuItem.with_label (_("Remove"));
+                popupmenu_remove_item.activate.connect (remove_shortcut_cb);
+                popupmenu_remove_item.show ();
+
+                popupmenu_rename_item = new Gtk.MenuItem.with_label (_("Rename"));
+                popupmenu_rename_item.activate.connect (rename_shortcut_cb);
+                popupmenu_rename_item.show ();
+
+                popupmenu_separator_item2 = new Gtk.SeparatorMenuItem ();
+
+                popupmenu_mount_item = new Gtk.MenuItem.with_mnemonic (_("_Mount"));
+                popupmenu_mount_item.activate.connect (mount_shortcut_cb);
+                popupmenu_mount_item.show ();
+
+                popupmenu_unmount_item = new Gtk.MenuItem.with_mnemonic (_("_Unmount"));
+                popupmenu_unmount_item.activate.connect (unmount_shortcut_cb);
+                popupmenu_unmount_item.show ();
+
+                popupmenu_eject_item = new Gtk.MenuItem.with_mnemonic (_("_Eject"));
+                popupmenu_eject_item.activate.connect (eject_shortcut_cb);
+                popupmenu_eject_item.show ();
+
+                popupmenu_empty_trash_item = new Gtk.MenuItem.with_mnemonic (_("Empty _Trash"));
+                popupmenu_empty_trash_item.activate.connect (empty_trash_cb);
+                popupmenu_empty_trash_item.show ();
+
+                popupmenu_drive_property_item = new Gtk.MenuItem.with_mnemonic (_("Properties"));
+                popupmenu_drive_property_item.activate.connect (show_drive_info_cb);
+                popupmenu_drive_property_item.show ();
+
+                popupmenu = new Gtk.Menu ();
+                popupmenu.append (popupmenu_open);
+                popupmenu.append (popupmenu_open_in_new_tab_item);
+                popupmenu.append (popupmenu_open_in_new_window_item);
+                popupmenu.append (popupmenu_separator_item1);
+                popupmenu.append (popupmenu_remove_item);
+                popupmenu.append (popupmenu_rename_item);
+                popupmenu.append (popupmenu_separator_item2);
+                popupmenu.append (popupmenu_mount_item);
+                popupmenu.append (popupmenu_unmount_item);
+                popupmenu.append (popupmenu_eject_item);
+                popupmenu.append (popupmenu_empty_trash_item);
+                popupmenu.append (popupmenu_drive_property_item);
+
+                check_popup_sensitivity ();
+            }
+
             Eel.pop_up_context_menu (popupmenu,
                                      Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
                                      Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,

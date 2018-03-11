@@ -298,8 +298,6 @@ namespace GOF {
         public bool is_smb_server ();
         public uint flags;
 
-        public Gdk.DragAction accepts_drop (GLib.List<GLib.File> file_list, Gdk.DragContext context, out Gdk.DragAction suggested_action_return);
-
         public unowned string get_display_name ();
         public unowned GLib.File get_target_location ();
         public string get_symlink_target ();
@@ -327,7 +325,6 @@ namespace GOF {
         public void query_thumbnail_update ();
         public bool ensure_query_info ();
         public unowned string? get_thumbnail_path();
-        public string? get_preview_path();
         public bool can_set_owner ();
         public bool can_set_group ();
         public bool can_set_permissions ();

@@ -200,11 +200,6 @@ gboolean        gof_file_is_desktop_file (GOFFile *file);
 void            gof_file_set_expanded (GOFFile *file, gboolean expanded);
 gchar           *gof_file_list_to_string (GList *list, gsize *len);
 
-gboolean        gof_file_same_filesystem (GOFFile *file_a, GOFFile *file_b);
-GdkDragAction   gof_file_accepts_drop (GOFFile          *file,
-                                       GList            *file_list,
-                                       GdkDragContext   *context,
-                                       GdkDragAction    *suggested_action_return);
 void            gof_file_open_single (GOFFile *file, GdkScreen *screen, GAppInfo *app_info);
 gboolean        gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info);
 gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info);
@@ -232,7 +227,6 @@ GMount*         gof_file_get_mount_at (GFile* target);
  **/
 #define gof_file_get_thumb_state(file) (GOF_FILE ((file))->flags & GOF_FILE_THUMB_STATE_MASK)
 const gchar* gof_file_get_thumbnail_path (GOFFile *file);
-const gchar* gof_file_get_preview_path (GOFFile *file);
 gboolean        gof_file_can_set_owner (GOFFile *file);
 gboolean        gof_file_can_set_group (GOFFile *file);
 GList           *gof_file_get_settable_group_names (GOFFile *file);

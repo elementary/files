@@ -245,6 +245,7 @@ namespace Marlin.View {
             slot.colpane.key_press_event.connect (on_key_pressed);
             slot.path_changed.connect (on_slot_path_changed);
             slot.directory_loaded.connect (on_slot_directory_loaded);
+            slot.item_hovered.connect (on_slot_item_hovered);
         }
 
         private void disconnect_slot_signals (Slot slot) {
@@ -257,6 +258,8 @@ namespace Marlin.View {
             slot.colpane.key_press_event.disconnect (on_key_pressed);
             slot.path_changed.disconnect (on_slot_path_changed);
             slot.directory_loaded.disconnect (on_slot_directory_loaded);
+            slot.item_hovered.disconnect (on_slot_item_hovered);
+
         }
 
         private void on_miller_slot_request (Marlin.View.Slot slot, GLib.File loc, bool make_root) {
@@ -319,6 +322,10 @@ namespace Marlin.View {
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
+        }
+
+        private void on_slot_item_hovered (GOF.File? file) {
+            item_hovered (file);
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
@@ -546,13 +553,6 @@ namespace Marlin.View {
 
         public override void reload (bool non_local_only = false) {
             ((Marlin.View.Slot)(current_slot)).reload (non_local_only);
-        }
-
-        public override void cancel () {
-            slot_list.@foreach ((slot) => {
-                if (slot != null)
-                    slot.cancel ();
-            });
         }
 
         public override void close () {

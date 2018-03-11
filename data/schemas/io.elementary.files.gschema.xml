@@ -21,6 +21,12 @@
     <value value="1" nick="locale"/>
     <value value="2" nick="informal"/>
   </enum>
+  <enum id="windowstate">
+    <value value="0" nick="normal"/>
+    <value value="1" nick="tiled-start"/>
+    <value value="2" nick="tiled-end"/>
+    <value value="3" nick="maximized"/>
+  </enum>
 
   <schema path="/io/elementary/files/preferences/" id="io.elementary.files.preferences">
     <key type="b" name="show-remote-thumbnails">
@@ -85,10 +91,20 @@
       <summary>Window height.</summary>
       <description>Default window height.</description>
     </key>
-    <key type="b" name="maximized">
-      <default>false</default>
-      <summary>Whether the navigation window should be maximized.</summary>
-      <description>Whether the navigation window should be maximized by default.</description>
+    <key type="i" name="window-x">
+      <default>-1</default>
+      <summary>Window x position</summary>
+      <description>Horizontal position of last closed window</description>
+    </key>
+    <key type="i" name="window-y">
+      <default>-1</default>
+      <summary>Window y position</summary>
+      <description>Vertical position of last closed window</description>
+    </key>
+    <key name="window-state" enum="windowstate">
+      <default>'normal'</default>
+      <summary>Window state</summary>
+      <description>State of last closed window (Normal, tiled left, tiled right or maximized).</description>
     </key>
     <key type="i" name="sidebar-width">
       <default>191</default>
@@ -104,11 +120,6 @@
       <default>true</default>
       <summary>Confirm trash</summary>
       <description>Confirm trash</description>
-    </key>
-    <key type="s" name="previewer-path">
-      <default>''</default>
-      <summary>Path of the previewer.</summary>
-      <description>Path of the previewer or executable name (if path already definied in PATH environnment variable). If no path is set, then the space bindkey would just activate the selected items instead of previewing them</description>
     </key>
     <key type="b" name="restore-tabs">
       <default>true</default>

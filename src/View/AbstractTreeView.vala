@@ -21,7 +21,7 @@ namespace FM {
     public abstract class AbstractTreeView : AbstractDirectoryView {
         const int ICON_XPAD = 6;
 
-        protected Gtk.TreeView tree;
+        protected FM.TreeView tree;
         protected Gtk.TreeViewColumn name_column;
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
@@ -88,7 +88,7 @@ namespace FM {
         }
 
         protected override Gtk.Widget? create_view () {
-            tree = new Gtk.TreeView ();
+            tree = new FM.TreeView ();
             tree.set_model (model);
             tree.set_headers_visible (false);
             tree.set_rules_hint (true);
@@ -175,21 +175,21 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        public override void sync_selection () {
-            /* Not implemented - needed? No current bug reports. */
-        }
+        protected override uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files) {
+            uint count = 0;
 
-        protected override void update_selected_files () {
-            selected_files = null;
-
+            GLib.List<GOF.File> list = null;
             tree.get_selection ().selected_foreach ((model, path, iter) => {
                 GOF.File? file; /* can be null if click on blank row in list view */
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 if (file != null) {
-                    selected_files.prepend (file);
+                    list.prepend (file);
+                    count++;
                 }
             });
-            selected_files.reverse ();
+
+            selected_files = list.copy ();
+            return count;
         }
 
         protected override bool view_has_focus () {
@@ -236,20 +236,23 @@ namespace FM {
 
                 if (file == null) {
                     zone = ClickZone.INVALID;
-                } else if (x < rect.x + ICON_XPAD + icon_size) { /* cannot be on name */
-                    bool on_helper = false;
-                    bool on_icon = is_on_icon (x, y, rect, file.pix, ref on_helper);
+                } else {
+                    var rtl = (get_direction () == Gtk.TextDirection.RTL);
+                    if (rtl ? (x > rect.x + rect.width - ICON_XPAD - icon_size) : (x < rect.x + ICON_XPAD + icon_size)) { /* cannot be on name */
+                        bool on_helper = false;
+                        bool on_icon = is_on_icon (x, y, rect, file.pix, rtl, ref on_helper);
 
-                    if (on_helper) {
-                        zone = ClickZone.HELPER;
-                    } else if (on_icon) {
-                        zone = ClickZone.ICON;
+                        if (on_helper) {
+                            zone = ClickZone.HELPER;
+                        } else if (on_icon) {
+                            zone = ClickZone.ICON;
 
-                    } else {
-                        zone = ClickZone.EXPANDER;
+                        } else {
+                            zone = ClickZone.EXPANDER;
+                        }
+                    } else if (!is_blank) {
+                            zone = ClickZone.NAME;
                     }
-                } else if (!is_blank) {
-                        zone = ClickZone.NAME;
                 }
             } else if (c != name_column)
                 zone = ClickZone.INVALID; /* Cause unselect all to occur on other columns*/
@@ -333,29 +336,67 @@ namespace FM {
             tree.thaw_child_notify ();
         }
 
-        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, ref bool on_helper) {
-            int x_offset = x - area.x;
+        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
+            int x_offset;
+            int pix_x_offset;
             int y_offset = y - area.y;
-
-            /* Area.width includes name as well. Assume area for icon is square */
-            int pix_x_offset = (area.height - pix.width) / 2;
             int pix_y_offset = (area.height - pix.height) / 2;
+            on_helper = false;
+
+            if (rtl) {
+                x_offset = area.x + area.width - (x + ICON_XPAD);
+
+                /* Area.width includes name as well. Assume area for icon is square */
+                pix_x_offset = (area.height - pix.width) / 2;
+            } else {
+                x_offset = x + ICON_XPAD - area.x;
+
+                /* Area.width includes name as well. Assume area for icon is square */
+                pix_x_offset = (area.height - pix.width) / 2;
+            }
 
             bool on_icon =  (x_offset >= pix_x_offset &&
                              x_offset <= pix_x_offset + pix.width  &&
                              y_offset >= pix_y_offset &&
                              y_offset <= pix_y_offset + pix.height);
 
-            on_helper = false;
-
-            if (icon_renderer.selection_helpers) {
+            if (icon_renderer.selection_helpers && on_icon) {
                 int hs = icon_renderer.helper_size;
-                on_helper = (on_icon &&
-                             x_offset <= int.max (pix_x_offset + hs, hs) &&
-                             y_offset <= int.max (pix_y_offset + hs, hs));
+                if (y_offset <= int.max (pix_y_offset + hs, hs)) {
+                    if (rtl) {
+                        on_helper = (x_offset >= pix.width + pix_x_offset - hs);
+                    } else {
+                        on_helper = (x_offset <= pix_x_offset + hs);
+                    }
+                }
             }
 
             return on_icon;
+        }
+    }
+
+    protected class TreeView : Gtk.TreeView {
+        /* Override base class in order to disable the Gtk.TreeView local search functionality */
+        public override bool key_press_event (Gdk.EventKey event) {
+            /* We still need the base class to handle cursor keys first */
+            switch (event.keyval) {
+                case Gdk.Key.Up:
+                case Gdk.Key.Down:
+                case Gdk.Key.KP_Up:
+                case Gdk.Key.KP_Down:
+                case Gdk.Key.Page_Up:
+                case Gdk.Key.Page_Down:
+                case Gdk.Key.KP_Page_Up:
+                case Gdk.Key.KP_Page_Down:
+                case Gdk.Key.Home:
+                case Gdk.Key.End:
+
+                    return base.key_press_event (event);
+
+                default:
+
+                    return false; // Pass event to Window handler.
+            }
         }
     }
 }

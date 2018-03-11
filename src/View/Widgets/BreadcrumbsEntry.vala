@@ -276,9 +276,9 @@ namespace Marlin.View.Chrome {
             if (el != null && drop_file_list != null) {
                 el.pressed = true;
                 drop_target_file = get_target_location (x, y);
-                current_actions = drop_target_file.accepts_drop (drop_file_list,
-                                                                 context,
-                                                                 out current_suggested_action);
+                current_actions = PF.FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
+                                                                  context,
+                                                                  out current_suggested_action);
             }
 
             Gdk.drag_status (context, current_suggested_action, time);
@@ -329,7 +329,7 @@ namespace Marlin.View.Chrome {
                 current_suggested_action = 0;
                 drop_target_file = get_target_location (x, y);
                 if (drop_target_file != null) {
-                    current_actions = drop_target_file.accepts_drop (drop_file_list,
+                    current_actions = PF.FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
                                                                      context,
                                                                      out current_suggested_action);
 
@@ -475,7 +475,8 @@ namespace Marlin.View.Chrome {
             /* Append list of directories at the same level */
             if (dir.can_load) {
                 unowned List<GOF.File>? sorted_dirs = dir.get_sorted_dirs ();
-                if (sorted_dirs.length () > 0) {
+
+                if (sorted_dirs != null) {
                     menu.append (new Gtk.SeparatorMenuItem ());
                     foreach (var gof in sorted_dirs) {
                         var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());

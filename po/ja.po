@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-09-03 00:23+0000\n"
-"Last-Translator: Ryo Nakano <rmfmada3q@gmail.com>\n"
+"PO-Revision-Date: 2018-03-07 00:09+0000\n"
+"Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
 "Language: ja\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -57,13 +57,13 @@ msgid ""
 "Can't load the supported server method list.\n"
 "Please check your gvfs installation."
 msgstr ""
-"サポートされているサーバ形式のリストをロード出来ません。\n"
+"サポートされているサーバ形式のリストをロードできません。\n"
 "gvfs がインストールされているか確認してください。"
 
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "フォルダー \"%s\" を \"%s\" 上で開けません。"
+msgstr "フォルダ \"%s\" を \"%s\" 上で開けません。"
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
@@ -113,7 +113,7 @@ msgstr "共有する場所 (_A):"
 
 #: ../src/marlin-connect-server-dialog.c:1052
 msgid "_Folder:"
-msgstr "フォルダー(_F):"
+msgstr "フォルダ (_F):"
 
 #: ../src/marlin-connect-server-dialog.c:1070
 msgid "User Details"
@@ -143,7 +143,7 @@ msgstr "操作はキャンセルされました"
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "フォルダー \"%s\" をマージしますか？"
+msgstr "フォルダ \"%s\" をマージしますか？"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:375
@@ -181,7 +181,7 @@ msgstr "置き換えることでフォルダ内のファイルがすべて削除
 #: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "フォルダー \"%s\" を置き換えますか？"
+msgstr "フォルダ \"%s\" を置き換えますか？"
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
 #: ../libcore/marlin-file-conflict-dialog.c:397
@@ -457,8 +457,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-"選択された %'d 個のアイテムをゴミ箱から完全に削除してもよろしいですか?"
+msgstr[0] "選択された %'d 個のアイテムをゴミ箱から完全に削除してもよろしいですか？"
 
 #: ../libcore/marlin-file-operations.c:1397
 #: ../libcore/marlin-file-operations.c:1477
@@ -503,7 +502,7 @@ msgstr "\"%B\" を完全に削除してもよろしいですか？"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "選択された %'d 個のアイテムを完全に削除してもよろしいですか?"
+msgstr[0] "選択された %'d 個のアイテムを完全に削除してもよろしいですか？"
 
 #: ../libcore/marlin-file-operations.c:1493
 #: ../libcore/marlin-file-operations.c:1525
@@ -535,16 +534,14 @@ msgstr "削除中にエラーが発生しました。"
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
-msgstr "フォルダー \"%B\" 内のファイルを参照する権限がないため削除できません。"
+msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないため削除できません。"
 
 #: ../libcore/marlin-file-operations.c:1613
 #: ../libcore/marlin-file-operations.c:2732
 #: ../libcore/marlin-file-operations.c:3727
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
-"フォルダー \"%B\" 内のファイルについて情報を取得する際にエラーが発生しまし"
-"た。"
+msgstr "フォルダ \"%B\" 内のファイルについて情報を取得する際にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:1622
 #: ../libcore/marlin-file-operations.c:3736
@@ -555,17 +552,17 @@ msgstr "ファイルをスキップ (_S)"
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr "フォルダー \"%B\" を参照する権限がないためフォルダを削除できません。"
+msgstr "フォルダ \"%B\" を参照する権限がないためフォルダを削除できません。"
 
 #: ../libcore/marlin-file-operations.c:1646
 #: ../libcore/marlin-file-operations.c:2771
 #: ../libcore/marlin-file-operations.c:3772
 msgid "There was an error reading the folder \"%B\"."
-msgstr "フォルダー \"%B\" を読み込む際にエラーが発生しました。"
+msgstr "フォルダ \"%B\" を読み込む際にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:1680
 msgid "Could not remove the folder %B."
-msgstr "フォルダー \"%B\" を削除できませんでした。"
+msgstr "フォルダ \"%B\" を削除できませんでした。"
 
 #: ../libcore/marlin-file-operations.c:1757
 msgid "There was an error deleting %B."
@@ -724,13 +721,13 @@ msgstr "ファイルをゴミ箱へ移動する際にエラーが発生しまし
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
-msgstr "フォルダー \"%B\" 内のファイルを参照する権限がないため操作できません。"
+msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないため操作できません。"
 
 #: ../libcore/marlin-file-operations.c:2768
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
-msgstr "フォルダー \"%B\" を参照する権限がないため操作できません。"
+msgstr "フォルダ \"%B\" を参照する権限がないため操作できません。"
 
 #: ../libcore/marlin-file-operations.c:2844
 msgid ""
@@ -751,7 +748,7 @@ msgstr "\"%B\" へのコピー中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:2951
 msgid "You do not have permissions to access the destination folder."
-msgstr "転送先のフォルダーにアクセスする権限がありません。"
+msgstr "転送先のフォルダにアクセスする権限がありません。"
 
 #: ../libcore/marlin-file-operations.c:2953
 msgid "There was an error getting information about the destination."
@@ -759,7 +756,7 @@ msgstr "転送先の情報を取得する際にエラーが発生しました。
 
 #: ../libcore/marlin-file-operations.c:2990
 msgid "The destination is not a folder."
-msgstr "転送先はフォルダーではありません。"
+msgstr "転送先はフォルダではありません。"
 
 #: ../libcore/marlin-file-operations.c:3023
 msgid ""
@@ -837,24 +834,23 @@ msgstr[0] "%S / %S — 残り %T (%S/秒)"
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
-msgstr "フォルダー \"%B\" をコピー先に作成する権限がないためコピーできません。"
+msgstr "フォルダ \"%B\" をコピー先に作成する権限がないためコピーできません。"
 
 #: ../libcore/marlin-file-operations.c:3594
 msgid "There was an error creating the folder \"%B\"."
-msgstr "フォルダー \"%B\" を作成する際にエラーが発生しました。"
+msgstr "フォルダ \"%B\" を作成する際にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:3724
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
-msgstr ""
-"フォルダー \"%B\" 内のファイルを参照する権限がないためコピーできません。"
+msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないためコピーできません。"
 
 #: ../libcore/marlin-file-operations.c:3769
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
-msgstr "フォルダー \"%B\" を参照する権限がないためコピーできません。"
+msgstr "フォルダ \"%B\" を参照する権限がないためコピーできません。"
 
 #: ../libcore/marlin-file-operations.c:3814
 #: ../libcore/marlin-file-operations.c:4520
@@ -889,12 +885,12 @@ msgstr "フォルダを自身の中に移動することはできません。"
 #: ../libcore/marlin-file-operations.c:4273
 #: ../libcore/marlin-file-operations.c:4949
 msgid "You cannot copy a folder into itself."
-msgstr "フォルダーを自身の中にコピーすることはできません。"
+msgstr "フォルダを自身の中にコピーすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:4274
 #: ../libcore/marlin-file-operations.c:4950
 msgid "The destination folder is inside the source folder."
-msgstr "転送先のフォルダーが転送元のフォルダーの中にあります。"
+msgstr "転送先のフォルダが転送元のフォルダの中にあります。"
 
 #: ../libcore/marlin-file-operations.c:4305
 msgid "You cannot move a file over itself."
@@ -991,7 +987,7 @@ msgstr "ゴミ箱にファイルをコピーすることはできません"
 
 #: ../libcore/marlin-file-operations.c:6145
 msgid "untitled folder"
-msgstr "新しいフォルダー"
+msgstr "名称未設定フォルダ"
 
 #: ../libcore/marlin-file-operations.c:6153
 msgid "new file"
@@ -999,7 +995,7 @@ msgstr "新しいファイル"
 
 #: ../libcore/marlin-file-operations.c:6324
 msgid "Error while creating directory %B."
-msgstr "フォルダー %B の作成中にエラーが発生しました。"
+msgstr "フォルダ %B の作成中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:6326
 msgid "Error while creating file %B."
@@ -1008,7 +1004,7 @@ msgstr "ファイル %B の作成中にエラーが発生しました。"
 #: ../libcore/marlin-file-operations.c:6328
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "%F 内にフォルダーを作成する際にエラーが発生しました。"
+msgstr "%F 内にフォルダを作成する際にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:6650
 msgid "Emptying the trash"
@@ -1212,7 +1208,7 @@ msgstr "空のファイル '%s' を作成"
 #: ../libcore/marlin-undostack-manager.c:1449
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr "新しいフォルダー '%s' を作成"
+msgstr "新しいフォルダ '%s' を作成"
 
 #: ../libcore/marlin-undostack-manager.c:1457
 #, c-format
@@ -1295,7 +1291,7 @@ msgstr "テンプレートからのファイルの作成を元に戻す (_U)"
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "%d 個のフォルダーの作成を元に戻す (_U)"
+msgstr[0] "%d 個のフォルダの作成を元に戻す (_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1587
 #, c-format
@@ -1381,7 +1377,7 @@ msgstr "テンプレートからのファイル作成をやり直す (_R)"
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "%d 個のフォルダーの作成をやり直す (_R)"
+msgstr[0] "%d 個のフォルダの作成をやり直す (_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1682
 #, c-format
@@ -1488,7 +1484,7 @@ msgstr "他のアプリケーション"
 
 #: ../src/View/AbstractDirectoryView.vala:2355
 msgid "Untitled %s"
-msgstr "無題 %s"
+msgstr "名称未設定 %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2689
 #: ../src/View/AbstractDirectoryView.vala:2872
@@ -1515,7 +1511,7 @@ msgstr "ここにファイルをペーストできません"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
-msgstr "このフォルダーを再読み込み"
+msgstr "このフォルダを再読み込み"
 
 #: ../src/View/Widgets/LocationBar.vala:189
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
@@ -1545,7 +1541,7 @@ msgstr " 選択"
 #: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] "%u フォルダー"
+msgstr[0] "%u フォルダ"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1745,11 +1741,11 @@ msgstr "プロパティ"
 
 #: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
 msgid "This Folder Does Not Exist"
-msgstr "このフォルダーは存在しません"
+msgstr "このフォルダは存在しません"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr "フォルダー \"%s\" が見つかりません。"
+msgstr "フォルダ \"%s\" が見つかりません。"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -1757,7 +1753,7 @@ msgstr "作成"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
-msgstr "フォルダー \"%s\" を作成します"
+msgstr "フォルダ \"%s\" を作成します"
 
 #: ../src/View/DirectoryNotFound.vala:44
 msgid ""
@@ -1771,7 +1767,7 @@ msgstr ""
 
 #: ../src/View/Slot.vala:32
 msgid "This Folder Is Empty"
-msgstr "このフォルダーは空です"
+msgstr "このフォルダは空です"
 
 #: ../src/View/Slot.vala:33
 msgid "Trash Is Empty"
@@ -1791,7 +1787,7 @@ msgstr "(管理者)"
 
 #: ../src/View/ViewContainer.vala:407
 msgid "You cannot create a folder here."
-msgstr "ここにフォルダーを作成できません。"
+msgstr "ここにフォルダを作成できません。"
 
 #: ../src/View/ViewContainer.vala:410
 msgid "The network is unavailable"
@@ -1803,7 +1799,7 @@ msgstr "このフォルダに到達するためにはネットワークが必要
 
 #: ../src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
-msgstr "このフォルダーはあなたのものではありません"
+msgstr "このフォルダはあなたのものではありません"
 
 #: ../src/View/ViewContainer.vala:414
 msgid "You don't have permission to view this folder."
@@ -1815,7 +1811,7 @@ msgstr "フォルダのマウントができません"
 
 #: ../src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
-msgstr "このフォルダーのサーバーに接続できませんでした。"
+msgstr "このフォルダのサーバーに接続できませんでした。"
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
@@ -1827,7 +1823,7 @@ msgstr "処理がタイムアウトしました。"
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
-msgstr "フォルダーを表示することができません"
+msgstr "フォルダを表示することができません"
 
 #: ../src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
@@ -1855,7 +1851,7 @@ msgstr "新しいウィンドウ"
 
 #: ../src/Application.vala:140
 msgid "Quit Files."
-msgstr "ファイルの終了"
+msgstr "ファイルを終了します。"
 
 #: ../src/Application.vala:142
 msgid "Enable debug logging"
@@ -2020,7 +2016,7 @@ msgstr "全員:"
 #: ../src/Dialogs/PropertiesWindow.vala:1140
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] "%u サブフォルダー"
+msgstr[0] "%u サブフォルダ"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1144
 #: ../src/Dialogs/PropertiesWindow.vala:1166
@@ -2214,12 +2210,11 @@ msgstr "MTP"
 
 #: ../libwidgets/View/SearchResults.vala:226
 msgid "In This Folder"
-msgstr "このフォルダー内"
+msgstr "このフォルダ内"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "このフォルダー内"
+msgstr "このフォルダ以下"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
@@ -2263,7 +2258,7 @@ msgstr "完全に削除"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr "親フォルダーを開く"
+msgstr "親フォルダを開く"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
@@ -2279,7 +2274,7 @@ msgstr "新規"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr "フォルダー"
+msgstr "フォルダ"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"

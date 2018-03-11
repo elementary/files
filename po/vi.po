@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-09-01 13:06+0000\n"
-"Last-Translator: huangshan307 <sonpham3798@gmail.com>\n"
+"PO-Revision-Date: 2017-12-30 00:08+0000\n"
+"Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese "
 "<https://weblate.elementary.io/projects/files/files/vi/>\n"
 "Language: vi\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -360,22 +360,22 @@ msgstr "Một liên kết đến %s"
 #: ../libcore/marlin-file-operations.c:415
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "%'dst liên kết đến %s"
 
 #: ../libcore/marlin-file-operations.c:419
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "%'dnd liên kết đến %s"
 
 #: ../libcore/marlin-file-operations.c:423
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "%'drd liên kết đến %s"
 
 #: ../libcore/marlin-file-operations.c:427
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "%'dth liên kết đến %s"
 
 #: ../libcore/marlin-file-operations.c:465
 msgid " (copy)"
@@ -448,7 +448,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1384
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr ""
+msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn \"%B\" ra khỏi thùng rác?"
 
 #: ../libcore/marlin-file-operations.c:1387
 #, c-format
@@ -458,60 +458,59 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bạn có chắc chắn muốn xoá vĩnh viễn %'d mục đã chọn ra khỏi thùng rác?"
 
 #: ../libcore/marlin-file-operations.c:1397
 #: ../libcore/marlin-file-operations.c:1477
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "Nếu bạn xóa một mục, nó sẽ bị mất vĩnh viễn."
 
 #: ../libcore/marlin-file-operations.c:1422
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Xóa vĩnh viễn tất cả các mục khỏi Thùng rác?"
 
 #: ../libcore/marlin-file-operations.c:1423
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Tất cả các mục trong tất cả các thư mục thùng rác, bao gồm những thư mục "
+"trên bất kỳ ổ đĩa gắn ngoài nào, sẽ bị xóa vĩnh viễn."
 
 #: ../libcore/marlin-file-operations.c:1426
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Xóa vĩnh viễn tất cả các mục khỏi Thùng rác trên gắn kết này?"
 
 #: ../libcore/marlin-file-operations.c:1427
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "Tất cả các mục trong thùng rác trên gắn kết này sẽ bị xóa vĩnh viễn."
 
 #: ../libcore/marlin-file-operations.c:1438
 #: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
 msgid "Empty _Trash"
-msgstr "Đổ thùng rác"
+msgstr "Làm sạch thùng rác"
 
 #: ../libcore/marlin-file-operations.c:1465
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn \"%B\"?"
 
 #: ../libcore/marlin-file-operations.c:1468
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Bạn có chắc chắn muốn xóa vĩnh viễn %'d mục đã chọn không?"
 
 #: ../libcore/marlin-file-operations.c:1493
 #: ../libcore/marlin-file-operations.c:1525
 msgid "Deleting files"
-msgstr ""
+msgstr "Đang xóa tập tin"
 
 #: ../libcore/marlin-file-operations.c:1519
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d còn lại để xóa"
 
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
@@ -527,7 +526,7 @@ msgstr[1] ""
 #: ../libcore/marlin-file-operations.c:1756
 #: ../libcore/marlin-file-operations.c:2673
 msgid "Error while deleting."
-msgstr ""
+msgstr "Có lỗi trong khi xóa."
 
 #: ../libcore/marlin-file-operations.c:1610
 msgid ""
@@ -583,7 +582,7 @@ msgstr[1] ""
 #: ../libcore/marlin-file-operations.c:1949
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "Không thể di chuyển tập tin vào thùng rác hoặc xóa nó"
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid "It is not permitted to trash or delete files on a read only filesystem."
@@ -603,7 +602,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "Không thể di chuyển tệp vào thùng rác. Hãy thử xóa nó ngay lập tức?"
 
 #: ../libcore/marlin-file-operations.c:1956
 msgid ""
@@ -613,7 +612,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "Không thể di chuyển tệp vào thùng rác. Cố gắng xóa nó?"
 
 #: ../libcore/marlin-file-operations.c:1961
 msgid ""
@@ -1078,7 +1077,7 @@ msgstr ""
 
 #: ../libcore/marlin-undostack-manager.c:636
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Mở thư mục thùng rác và khôi phục bằng tay"
 
 #: ../libcore/marlin-undostack-manager.c:1225
 #, c-format
@@ -1202,22 +1201,22 @@ msgstr ""
 #: ../libcore/marlin-undostack-manager.c:1442
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "Tạo một tập tin trống '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1449
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "Tạo một thư mục mới '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1457
 #, c-format
 msgid "Move %d items to trash"
-msgstr ""
+msgstr "Di chuyển %d mục đến thùng rác"
 
 #: ../libcore/marlin-undostack-manager.c:1463
 #, c-format
 msgid "Move '%s' to trash"
-msgstr ""
+msgstr "Di chuyển '%s' đến thùng rác"
 
 #: ../libcore/marlin-undostack-manager.c:1476
 #, c-format
@@ -1280,7 +1279,6 @@ msgstr[1] ""
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] ""
-msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1575
 msgid "_Undo creation of an empty file"
@@ -1379,7 +1377,6 @@ msgstr[1] ""
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] ""
-msgstr[1] ""
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
@@ -1455,12 +1452,12 @@ msgstr[1] ""
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
 msgid "Previous"
-msgstr ""
+msgstr "Trước đó"
 
 #: ../filechooser-module/FileChooserDialog.vala:76
 #: ../src/View/Widgets/TopMenu.vala:69
 msgid "Next"
-msgstr ""
+msgstr "Kế tiếp"
 
 #: ../src/View/AbstractDirectoryView.vala:581
 msgid "Failed to preview"
@@ -1468,11 +1465,11 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Không thể mở tập tin này"
 
 #: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Không thể xác định loại tập tin để mở"
 
 #: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Cannot drop this file"
@@ -1492,16 +1489,16 @@ msgstr ""
 
 #: ../src/View/AbstractDirectoryView.vala:2022
 msgid "Open in %s"
-msgstr ""
+msgstr "Mở trong %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
-msgstr ""
+msgstr "Mở trong"
 
 #: ../src/View/AbstractDirectoryView.vala:2034
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
 msgid "Open with"
-msgstr ""
+msgstr "Mở với"
 
 #: ../src/View/AbstractDirectoryView.vala:2094
 msgid "Other Application"
@@ -1536,7 +1533,7 @@ msgstr ""
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
-msgstr ""
+msgstr "Tải lại thư mục này"
 
 #: ../src/View/Widgets/LocationBar.vala:189
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
@@ -1612,15 +1609,15 @@ msgstr ""
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Mở trong Tab mới"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open in New Window"
-msgstr ""
+msgstr "Mở trong cửa số mới"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Mở trong ứng dụng khác…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1680,7 +1677,7 @@ msgstr "Mở thư mục cá nhân"
 
 #: ../src/View/Sidebar.vala:538
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Xem danh sách các tập tin đã sử dụng gần đây"
 
 #: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
 msgid "Trash"
@@ -1688,7 +1685,7 @@ msgstr "Thùng rác"
 
 #: ../src/View/Sidebar.vala:571
 msgid "Open the Trash"
-msgstr ""
+msgstr "Mở Thùng rác"
 
 #: ../src/View/Sidebar.vala:576
 msgid "Devices"
@@ -1730,11 +1727,11 @@ msgstr "Không thể chạy %s"
 
 #: ../src/View/Sidebar.vala:1474
 msgid "Open"
-msgstr ""
+msgstr "Mở"
 
 #: ../src/View/Sidebar.vala:1482
 msgid "Open in New _Tab"
-msgstr "Mở trong _tab mới"
+msgstr "Mở trong _Tab mới"
 
 #: ../src/View/Sidebar.vala:1488
 msgid "Open in New _Window"
@@ -1746,7 +1743,7 @@ msgstr "Bỏ"
 
 #: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr ""
+msgstr "Đổi tên"
 
 #: ../src/View/Sidebar.vala:1513
 msgid "_Mount"
@@ -1798,7 +1795,7 @@ msgstr ""
 
 #: ../src/View/Slot.vala:34
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Không có tệp tin gần đây"
 
 #: ../src/View/Slot.vala:35
 msgid "Access Denied"
@@ -1826,7 +1823,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:414
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Bạn không có quyền xem thư mục này."
 
 #: ../src/View/ViewContainer.vala:416
 msgid "Unable to Mount Folder"
@@ -1834,7 +1831,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Không thể kết nối đến máy chủ cho thư mục này."
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
@@ -1901,7 +1898,7 @@ msgstr "Không có gì trong bộ nhớ nháp để dán"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "Thông tin"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:58
 msgid "General"
@@ -1937,12 +1934,12 @@ msgstr ""
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Thuộc tính đĩa"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:78
 #: ../src/Dialogs/PropertiesWindow.vala:561
 msgid "Location:"
-msgstr ""
+msgstr "Vị trí:"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:85
 msgid "Format:"
@@ -1954,7 +1951,7 @@ msgstr "Đặt làm mặc định"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
-msgstr ""
+msgstr "Các quyền"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "Actual Size Could Be Larger"
@@ -1981,7 +1978,7 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:494
 msgid "Contains:"
-msgstr ""
+msgstr "Bao gồm:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:516
 msgid "Created:"
@@ -1989,7 +1986,7 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:525
 msgid "Modified:"
-msgstr ""
+msgstr "Sửa đổi:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:536
 msgid "Deleted:"
@@ -2001,19 +1998,19 @@ msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
-msgstr ""
+msgstr "Độ phân giải:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
-msgstr ""
+msgstr "Mục tiêu:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:579
 msgid "Original Location:"
-msgstr ""
+msgstr "Vị trí gốc ban đầu:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr ""
+msgstr "Ứng dụng khác…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2022,16 +2019,16 @@ msgstr "Mở bằng:"
 #: ../src/Dialogs/PropertiesWindow.vala:864
 #: ../src/Dialogs/PropertiesWindow.vala:874
 msgid "Owner:"
-msgstr ""
+msgstr "Người sở hữu:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:868
 #: ../src/Dialogs/PropertiesWindow.vala:877
 msgid "Group:"
-msgstr ""
+msgstr "Nhóm:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:880
 msgid "Everyone:"
-msgstr ""
+msgstr "Mọi người:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1140
 msgid "%u subfolder"
@@ -2085,11 +2082,11 @@ msgstr "Hủy tất cả các hoạt động đang diễn ra"
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr ""
+msgstr "Duyệt tập tin  của bạn"
 
 #: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
-msgstr ""
+msgstr "Trình quản lý tập tin"
 
 #: ../src/DesktopLauncher.vala:23
 msgid "New _Window"
@@ -2101,7 +2098,7 @@ msgstr ""
 
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
-msgstr ""
+msgstr "Tập tin"
 
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
@@ -2109,19 +2106,19 @@ msgstr ""
 
 #: ../src/Utils/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Không một ứng dụng nào có thể mở tất cả các loại tệp này"
 
 #: ../src/Utils/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Không thể mở tập tin"
 
 #: ../src/Utils/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Không thể mở uris"
 
 #: ../src/Utils/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Không thể mở tệp hoặc uris với ứng dụng này"
 
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
@@ -2133,7 +2130,7 @@ msgstr ""
 
 #: ../libcore/FileUtils.vala:345
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Không thể đổi tên thành '%s'"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
@@ -2189,15 +2186,15 @@ msgstr ""
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr ""
+msgstr "Xem dạng lưới"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "Xem dạng danh sách"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr ""
+msgstr "Xem dạng cột"
 
 #: ../libwidgets/Resources.vala:58
 msgid "AFP"
@@ -2225,7 +2222,7 @@ msgstr ""
 
 #: ../libwidgets/Resources.vala:66
 msgid "Recent"
-msgstr ""
+msgstr "Gần đây"
 
 #: ../libwidgets/Resources.vala:67
 msgid "MTP"
@@ -2249,11 +2246,11 @@ msgstr ""
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Kết nối đến máy chủ…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Kết nối với máy chủ tập tin mạng"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
@@ -2277,11 +2274,11 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
-msgstr ""
+msgstr "Xóa vĩnh viễn"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Mở thư mục cha"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
@@ -2289,23 +2286,23 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "Di chuyển vào Thùng rác"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr ""
+msgstr "Mới"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr ""
+msgstr "Thư mục"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr ""
+msgstr "Tập tin trống"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Hiển thị tập tin ẩn"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
@@ -2313,7 +2310,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr ""
+msgstr "Tab mới"
 
 #: ../src/View/directory_view_popup.ui:91
 msgid "Terminal"
@@ -2321,7 +2318,7 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:106
 msgid "Bookmark"
-msgstr ""
+msgstr "Đánh dấu chỉ mục"
 
 #: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
@@ -2337,23 +2334,23 @@ msgstr ""
 
 #: ../src/View/directory_view_popup.ui:128
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Dán vào Thư mục"
 
 #: ../src/View/directory_view_popup.ui:135
 msgid "Sort by"
-msgstr ""
+msgstr "Sắp xếp theo"
 
 #: ../src/View/directory_view_popup.ui:138
 msgid "Name"
-msgstr ""
+msgstr "Tên"
 
 #: ../src/View/directory_view_popup.ui:153
 msgid "Date"
-msgstr ""
+msgstr "Ngày"
 
 #: ../src/View/directory_view_popup.ui:160
 msgid "Reversed Order"
-msgstr ""
+msgstr "Lệnh đảo ngược"
 
 #~ msgid "translator-credits"
 #~ msgstr ""
