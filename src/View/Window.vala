@@ -418,7 +418,6 @@ namespace Marlin.View {
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
 
-
             var tab = new Granite.Widgets.Tab ("", null, content);
             tab.ellipsize_mode = Pango.EllipsizeMode.MIDDLE;
 
@@ -439,7 +438,6 @@ namespace Marlin.View {
             content.active.connect (() => {
                 update_top_menu ();
             });
-
 
             content.add_view (mode, location);
             change_tab ((int)tabs.insert_tab (tab, -1));
