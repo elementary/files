@@ -24,12 +24,10 @@ namespace GOF.Directory {
 
 public class Async : Object {
     private static HashTable<GLib.File, unowned GOF.Directory.Async> directory_cache;
-    private static HashTable<GLib.File, unowned GOF.Directory.Async> pending_cache;
     private static Mutex dir_cache_lock;
 
     static construct {
         directory_cache = new HashTable<GLib.File, unowned GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
-        pending_cache = new HashTable<GLib.File, unowned GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
         dir_cache_lock = GLib.Mutex ();
     }
 
@@ -408,6 +406,8 @@ public class Async : Object {
                                                                            file.is_connected.to_string (),
                                                                            file.is_mounted.to_string (),
                                                                            file.exists.to_string ());
+
+            directory_cache.remove (creation_key);
             after_loading (file_loaded_func);
             return;
         }
@@ -422,14 +422,12 @@ public class Async : Object {
 
             dir_cache_lock.@lock ();
 
-            directory_cache.insert (creation_key, this);
             this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
 
             if (!creation_key.equal (location)) {
                 directory_cache.insert (location.dup (), this);
             }
 
-            pending_cache.remove (creation_key);
             dir_cache_lock.unlock ();
         }
 
@@ -448,25 +446,23 @@ public class Async : Object {
 
         set_confirm_trash ();
 
-        if (can_load) {
-            uri_contains_keypath_icons = PF.FileUtils.is_icon_path (file.uri);
-            if (file_loaded_func == null && is_local) {
-                try {
-                    monitor = location.monitor_directory (0);
-                    monitor.rate_limit = 100;
-                    monitor.changed.connect (directory_changed);
-                } catch (IOError e) {
-                    last_error_message = e.message;
-                    if (!(e is IOError.NOT_MOUNTED)) {
-                        /* Will fail for remote filesystems - not an error */
-                        debug ("directory monitor failed: %s %s", e.message, file.uri);
-                    }
+        uri_contains_keypath_icons = PF.FileUtils.is_icon_path (file.uri);
+        if (file_loaded_func == null && is_local) {
+            try {
+                monitor = location.monitor_directory (0);
+                monitor.rate_limit = 100;
+                monitor.changed.connect (directory_changed);
+            } catch (IOError e) {
+                last_error_message = e.message;
+                if (!(e is IOError.NOT_MOUNTED)) {
+                    /* Will fail for remote filesystems - not an error */
+                    debug ("directory monitor failed: %s %s", e.message, file.uri);
                 }
             }
+        }
 
-            if (is_trash) {
-                connect_volume_monitor_signals ();
-            }
+        if (is_trash) {
+            connect_volume_monitor_signals ();
         }
 
         yield list_directory_async (file_loaded_func);
@@ -1059,7 +1055,7 @@ public class Async : Object {
         if (dir == null) {
             dir = new Async (gfile);
             dir_cache_lock.@lock ();
-            pending_cache.insert (gfile, dir);
+            directory_cache.insert (dir.creation_key, dir);
             dir_cache_lock.unlock ();
         }
 
@@ -1089,7 +1085,7 @@ public class Async : Object {
         }
 
         dir_cache_lock.@lock ();
-        cached_dir = directory_cache.lookup (file) ?? pending_cache.lookup (file);
+        cached_dir = directory_cache.lookup (file);
         dir_cache_lock.unlock ();
 
         if (cached_dir != null) {
