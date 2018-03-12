@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-03-12 00:47+0000\n"
+"PO-Revision-Date: 2018-03-14 00:02+0000\n"
 "Last-Translator: Zorgo <zorgo@syndicate.sk>\n"
 "Language-Team: Slovak "
 "<https://weblate.elementary.io/projects/files/files/sk/>\n"
@@ -629,7 +629,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "Nie je možné presunúť súbor do koša. Skúste ich odstrániť okamžite."
+msgstr "Nie je možné presunúť súbor do koša. Skúsiť ho odstrániť okamžite?"
 
 #: ../libcore/marlin-file-operations.c:1956
 msgid ""
