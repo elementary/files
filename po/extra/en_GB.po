@@ -35,9 +35,6 @@ msgstr "File Manager"
 msgid "New Window"
 msgstr "New Window"
 
-msgid "New Window As Administrator"
-msgstr "New Window As Administrator"
-
 msgid "About Files"
 msgstr "About Files"
 

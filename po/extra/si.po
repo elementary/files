@@ -32,9 +32,6 @@ msgstr "ගොනු කළමනාකරු"
 msgid "New Window"
 msgstr "නව කවුළුව"
 
-msgid "New Window As Administrator"
-msgstr "පරිපාලක ලෙස නව කවුළුව"
-
 msgid "About Files"
 msgstr "ගොනු සම්බන්දව"
 

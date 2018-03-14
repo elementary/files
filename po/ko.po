@@ -2066,10 +2066,6 @@ msgstr "파일 관리자"
 msgid "New _Window"
 msgstr "새 창(_W)"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "관리자 권한으로 새 창 열기"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "파일"

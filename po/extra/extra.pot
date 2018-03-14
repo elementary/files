@@ -32,9 +32,6 @@ msgstr ""
 msgid "New Window"
 msgstr ""
 
-msgid "New Window As Administrator"
-msgstr ""
-
 msgid "Browse and manage files and folders"
 msgstr ""
 

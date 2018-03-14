@@ -36,9 +36,6 @@ msgstr "Failų tvarkytuvė"
 msgid "New Window"
 msgstr "Naujas langas"
 
-msgid "New Window As Administrator"
-msgstr "Naujas langas administratoriaus teisėmis"
-
 msgid "About Files"
 msgstr "Apie Failus"
 

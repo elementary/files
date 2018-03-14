@@ -34,9 +34,6 @@ msgstr "Pengelola Berkas"
 msgid "New Window"
 msgstr "Jendela Baru"
 
-msgid "New Window As Administrator"
-msgstr "Jendela Baru Sebagai Administrator"
-
 msgid "About Files"
 msgstr "Tentang Berkas"
 

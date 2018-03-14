@@ -2163,10 +2163,6 @@ msgstr "Gestionnaire de fichiers"
 msgid "New _Window"
 msgstr "Nouvelle fenêtre"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Nouvelle fenêtre en tant qu'_administrateur"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Fichiers"

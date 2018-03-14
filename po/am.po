@@ -2105,10 +2105,6 @@ msgstr "የፋይል አስተዳዳሪ"
 msgid "New _Window"
 msgstr "አዲስ _መስኮት"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "አዲስ መስኮት እንደ _አስተዳዳሪ"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "ፋይሎች"

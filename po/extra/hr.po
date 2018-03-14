@@ -36,9 +36,6 @@ msgstr "Upravitelj datoteka"
 msgid "New Window"
 msgstr "Novi prozor"
 
-msgid "New Window As Administrator"
-msgstr "Novi prozor kao Administrator"
-
 msgid "About Files"
 msgstr "O Datotekama"
 

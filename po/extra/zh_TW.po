@@ -35,9 +35,6 @@ msgstr "檔案管理員"
 msgid "New Window"
 msgstr "新視窗"
 
-msgid "New Window As Administrator"
-msgstr "以管理員身份新開視窗"
-
 msgid "About Files"
 msgstr "關於《檔案》"
 

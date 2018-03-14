@@ -35,9 +35,6 @@ msgstr "Bestandsbeheer"
 msgid "New Window"
 msgstr "Nieuw venster"
 
-msgid "New Window As Administrator"
-msgstr "Nieuw venster als beheerder"
-
 msgid "About Files"
 msgstr "Over Bestanden"
 

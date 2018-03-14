@@ -2126,10 +2126,6 @@ msgstr "Fájlkezelő"
 msgid "New _Window"
 msgstr "Új _ablak"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Új ablak nyitása _adminisztátorként"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Fájlkezelő"

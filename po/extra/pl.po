@@ -38,9 +38,6 @@ msgstr "Menedżer plików"
 msgid "New Window"
 msgstr "Nowe okno"
 
-msgid "New Window As Administrator"
-msgstr "Nowe okno jako administrator"
-
 msgid "About Files"
 msgstr "O Plikach"
 

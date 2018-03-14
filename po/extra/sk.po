@@ -33,9 +33,6 @@ msgstr "Správca súborov"
 msgid "New Window"
 msgstr "Nové okno"
 
-msgid "New Window As Administrator"
-msgstr "Nové okno v režime správcu"
-
 msgid "About Files"
 msgstr "O aplikácii Súbory"
 

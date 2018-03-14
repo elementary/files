@@ -2064,10 +2064,6 @@ msgstr "مدیر پرونده"
 msgid "New _Window"
 msgstr "پنجره _جدید"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "پنجره جدید به عنوان کاربر ارشد"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "فایلز"

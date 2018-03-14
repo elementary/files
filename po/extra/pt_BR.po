@@ -32,9 +32,6 @@ msgstr "Gerenciador de arquivos"
 msgid "New Window"
 msgstr "Nova janela"
 
-msgid "New Window As Administrator"
-msgstr "Nova janela como administrador"
-
 msgid "About Files"
 msgstr "Sobre Arquivos"
 

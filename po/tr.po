@@ -2131,10 +2131,6 @@ msgstr "Dosya Yöneticisi"
 msgid "New _Window"
 msgstr "Yeni _Pencere"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "_Yönetici Olarak Yeni Pencere"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Dosyalar"
