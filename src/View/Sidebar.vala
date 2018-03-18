@@ -1011,7 +1011,7 @@ namespace Marlin.Places {
                     && info == TargetType.TEXT_URI_LIST) {
 
                     string s = (string)(selection_data.get_data ());
-                    drag_list = EelGFile.list_new_from_string (s);
+                    drag_list = PF.FileUtils.files_from_uris (s);
                 } else {
                     if (info == TargetType.GTK_TREE_MODEL_ROW) {
                         Gtk.TreePath path;
