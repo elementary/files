@@ -146,14 +146,6 @@ namespace Marlin
         public static uint themed_icon_cache_info ();
         public static void set_reap_time (uint milliseconds);
     }
-    [CCode (cheader_filename = "marlin-trash-monitor.h")]
-    public abstract class TrashMonitor : GLib.Object
-    {
-        public static TrashMonitor get();
-        public static bool is_empty ();
-        public static GLib.Icon get_icon ();
-        public signal void trash_state_changed (bool new_state);
-    }
 
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public struct UndoMenuData {
