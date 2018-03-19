@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
 "PO-Revision-Date: 2018-03-19 20:39+0000\n"
-"Last-Translator: anonymous <noreply@weblate.org>\n"
+"Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish "
 "<https://weblate.elementary.io/projects/files/files/da/>\n"
 "Language: da\n"
@@ -2291,9 +2291,8 @@ msgid "Bookmarks"
 msgstr "Bogmærker"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
-msgstr "Seneste"
+msgstr "Senest anvendte"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
