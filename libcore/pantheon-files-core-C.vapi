@@ -89,17 +89,10 @@ namespace EelGtk.Widget {
     public Gdk.Screen get_screen ();
 }
 
-[CCode (cprefix = "EelGFile", lower_case_cprefix = "eel_g_file_", cheader_filename = "eel-gio-extensions.h")]
-namespace EelGFile {
-    public static GLib.List<GLib.File> list_new_from_string (string filelist);
-}
-
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_")]
 namespace Eel {
     [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public unowned Gdk.Screen gtk_widget_get_screen (Gtk.Widget? widget);
 
     [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);

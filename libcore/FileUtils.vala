@@ -21,6 +21,30 @@ namespace PF.FileUtils {
      **/
     const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
 
+    public GLib.List<GLib.File> files_from_uris (string uris) {
+        var result = new GLib.List<GLib.File> ();
+        var uri_list = GLib.Uri.list_extract_uris (uris);
+        foreach (unowned string uri in uri_list) {
+            result.append (GLib.File.new_for_uri (uri));
+        }
+
+        return result;
+    }
+
+    internal GLib.KeyFile key_file_from_file (GLib.File file, GLib.Cancellable? cancellable = null) throws GLib.Error {
+        var keyfile = new GLib.KeyFile ();
+        try {
+            uint8[] contents;
+            string etag_out;
+            file.load_contents (cancellable, out contents, out etag_out);
+            keyfile.load_from_data ((string) contents, contents.length, GLib.KeyFileFlags.KEEP_COMMENTS|GLib.KeyFileFlags.KEEP_TRANSLATIONS);
+        } catch (Error e) {
+            throw e;
+        }
+
+        return keyfile;
+    }
+
     public File? get_file_for_path (string? path) {
         string? new_path = sanitize_path (path);
 
