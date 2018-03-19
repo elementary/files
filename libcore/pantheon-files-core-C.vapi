@@ -125,14 +125,6 @@ namespace Eel {
     public string? str_double_underscores (string? str);
 }
 
-[CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]
-namespace EelPango {
-    public unowned Pango.AttrList attr_list_small();
-    public unowned Pango.AttrList attr_list_small_italic();
-    public unowned Pango.AttrList attr_list_italic();
-    public unowned Pango.AttrList attr_list_big();
-}
-
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
