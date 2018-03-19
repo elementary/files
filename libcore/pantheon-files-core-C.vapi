@@ -124,20 +124,6 @@ namespace Marlin
     [CCode (cheader_filename = "marlin-file-utilities.h")]
     public string get_accel_map_file ();
 
-    [CCode (cheader_filename = "marlin-icon-info.h")]
-    public class IconInfo : GLib.Object {
-        public static IconInfo? lookup (GLib.Icon icon, int size);
-        public static IconInfo? lookup_from_name (string icon_name, int size);
-        public Gdk.Pixbuf? get_pixbuf_nodefault ();
-        public Gdk.Pixbuf? get_pixbuf_at_size (int size);
-        public static void clear_caches ();
-        public static void remove_cache (string path, int size);
-        /* Use for testing only */
-        public static uint loadable_icon_cache_info ();
-        public static uint themed_icon_cache_info ();
-        public static void set_reap_time (uint milliseconds);
-    }
-
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public struct UndoMenuData {
         string undo_label;
