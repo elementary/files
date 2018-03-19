@@ -453,7 +453,7 @@ public class Async : Object {
             this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
 
             if (!creation_key.equal (location) || Async.directory_cache.lookup (location) == null) {
-                Async.directory_cache.insert (location.dup (), this);
+                Async.directory_cache.insert (location, this);
             }
 
             Async.dir_cache_lock.unlock ();
