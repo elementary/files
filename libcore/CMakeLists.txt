@@ -25,6 +25,7 @@ vala_precompile(VALA_C ${PKGNAME}
     PluginManager.vala
     Plugin.vala
     SoundManager.vala
+    TrashMonitor.vala
 PACKAGES
     granite
     gtk+-3.0
@@ -63,7 +64,6 @@ set (C_SOURCE_FILES
     marlin-exec.c
     gof-file.c
     marlin-icon-info.c
-    marlin-trash-monitor.c
     ${VALA_C})
 
 set (C_HEADER_FILES
@@ -84,8 +84,7 @@ set (C_HEADER_FILES
     marlin-progress-info.h
     marlin-progress-info-manager.h
     marlin-icon-info.h
-    fm-list-model.h
-    marlin-trash-monitor.h)
+    fm-list-model.h)
 
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig/)
