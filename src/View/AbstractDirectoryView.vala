@@ -472,12 +472,11 @@ namespace FM {
                 select_source_handler = 0;
             }
 
-            Gtk.TreeIter iter;
             disconnect_tree_signals (); /* Avoid unnecessary signal processing */
             unselect_all ();
 
             uint count = 0;
-
+            Gtk.TreeIter? iter;
             foreach (GOF.File f in files_to_select) {
                 /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
                 if (model.get_first_iter_for_file (f, out iter)) {
@@ -590,7 +589,7 @@ namespace FM {
         }
 
         public void select_gof_file (GOF.File file) {
-            Gtk.TreeIter iter;
+            Gtk.TreeIter? iter;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 return; /* file not in model */
             }
@@ -600,7 +599,7 @@ namespace FM {
         }
 
         protected void select_and_scroll_to_gof_file (GOF.File file) {
-            Gtk.TreeIter iter;
+            Gtk.TreeIter? iter;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 return; /* file not in model */
             }
@@ -610,7 +609,7 @@ namespace FM {
         }
 
         protected void add_gof_file_to_selection (GOF.File file) {
-            Gtk.TreeIter iter;
+            Gtk.TreeIter? iter;
             if (!model.get_first_iter_for_file (file, out iter)) {
                 return; /* file not in model */
             }
@@ -1381,7 +1380,7 @@ namespace FM {
                 schedule_thumbnail_timeout ();
             }
 
-            model.size = icon_size;
+            model.icon_size = icon_size;
             change_zoom_level ();
         }
 
