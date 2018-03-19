@@ -116,15 +116,6 @@ namespace Eel {
 
     [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
-
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf create_spotlight_pixbuf (Gdk.Pixbuf source_pixbuf);
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf create_colorized_pixbuf (Gdk.Pixbuf source_pixbuf, Gdk.RGBA color);
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf create_darkened_pixbuf (Gdk.Pixbuf source_pixbuf, int saturation, int darken);
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf gdk_pixbuf_lucent (Gdk.Pixbuf source_pixbuf, int percent);
 }
 
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]

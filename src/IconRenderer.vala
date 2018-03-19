@@ -118,12 +118,12 @@ namespace Marlin {
 
             if (clipboard.has_cutted_file (file)) {
                 /* 50% translucent for cutted files */
-                pb = Eel.gdk_pixbuf_lucent (pixbuf, 50);
+                pb = PF.PixbufUtils.lucent (pixbuf, 50);
             }
             if (file.is_hidden) {
                 /* 75% translucent for hidden files */
-                pb = Eel.gdk_pixbuf_lucent (pixbuf, 75);
-                pb = Eel.create_darkened_pixbuf (pb, 150, 200);
+                pb = PF.PixbufUtils.lucent (pixbuf, 75);
+                pb = PF.PixbufUtils.darken (pb, 150, 200);
             }
 
             var style_context = widget.get_parent ().get_style_context ();
@@ -148,13 +148,13 @@ namespace Marlin {
 
                         /* if background-color is black something probably is wrong */
                         if (color.red != 0 || color.green != 0 || color.blue != 0) {
-                            pb = Eel.create_colorized_pixbuf (pb, color);
+                            pb = PF.PixbufUtils.colorize (pb, color);
                         }
                     }
                 }
 
                 if (prelit || focused) {
-                    pb = Eel.create_spotlight_pixbuf (pb);
+                    pb = PF.PixbufUtils.lighten (pb);
                 }
             }
 
