@@ -36,6 +36,7 @@ vala_precompile(VALA_C ${PKGNAME}
     UserUtils.vala
     IconInfo.vala
     Thumbnailer.vala
+    ListModel.vala
 PACKAGES
     granite
     gtk+-3.0
@@ -63,7 +64,6 @@ set (C_SOURCE_FILES
     marlin-file-operations.c
     marlin-undostack-manager.c
     marlin-file-changes-queue.c
-    fm-list-model.c
     gof-file.c
     ${VALA_C})
 
@@ -73,8 +73,7 @@ set (C_HEADER_FILES
     marlin-file-operations.h
     marlin-undostack-manager.h
     marlin-file-changes-queue.h
-    marlin-icons.h
-    fm-list-model.h)
+    marlin-icons.h)
 
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig/)

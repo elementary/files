@@ -25,7 +25,6 @@
 #include <gio/gdesktopappinfo.h>
 
 #include "marlin-icons.h"
-#include "fm-list-model.h"
 #include "pantheon-files-core.h"
 
 
@@ -392,7 +391,7 @@ gof_file_update (GOFFile *file)
     /* metadata */
     if (file->is_directory) {
         if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-column-id"))
-            file->sort_column_id = fm_list_model_get_column_id_from_string (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-column-id"));
+            file->sort_column_id = fm_list_model_column_id_from_string (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-column-id"));
         if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-reversed"))
             file->sort_order = !g_strcmp0 (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-reversed"), "true") ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING;
     }
@@ -873,7 +872,7 @@ static void gof_file_init (GOFFile *file) {
     file->target_gof = NULL;
     file->thumbnail_path = NULL;
 
-    file->sort_column_id = FM_LIST_MODEL_FILENAME;
+    file->sort_column_id = FM_LIST_MODEL_COLUMN_ID_FILENAME;
     file->sort_order = GTK_SORT_ASCENDING;
 
     file->is_expanded = FALSE;
@@ -1099,25 +1098,25 @@ gof_file_compare_for_sort (GOFFile *file1,
 
     if (result == 0) {
         switch (sort_type) {
-        case FM_LIST_MODEL_FILENAME:
+        case FM_LIST_MODEL_COLUMN_ID_FILENAME:
             result = compare_by_display_name (file1, file2);
             /*if (result == 0) {
               result = compare_by_directory_name (file_1, file_2);
               }*/
             break;
-        case FM_LIST_MODEL_SIZE:
+        case FM_LIST_MODEL_COLUMN_ID_SIZE:
             result = compare_by_size (file1, file2);
             if (result == 0) {
                 result = compare_by_display_name (file1, file2);
             }
             break;
-        case FM_LIST_MODEL_TYPE:
+        case FM_LIST_MODEL_COLUMN_ID_TYPE:
             result = compare_by_type (file1, file2);
             if (result == 0) {
                 result = compare_by_display_name (file1, file2);
             }
             break;
-        case FM_LIST_MODEL_MODIFIED:
+        case FM_LIST_MODEL_COLUMN_ID_MODIFIED:
             result = compare_by_time (file1, file2);
             if (result == 0) {
                 result = compare_by_display_name (file1, file2);

@@ -259,6 +259,8 @@ public class GOF.File : GLib.Object {
     public bool is_smb_uri_scheme ();
     public bool is_recent_uri_scheme ();
 
+    public int compare_for_sort (GOF.File other, int sort_type, bool directories_first, bool reversed);
+
     public string get_display_target_uri () {
         string? targ_uri = info.get_attribute_as_string (GLib.FileAttribute.STANDARD_TARGET_URI);
         if (targ_uri != null) {
