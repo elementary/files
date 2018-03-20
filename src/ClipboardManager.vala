@@ -156,7 +156,7 @@ namespace Marlin {
                 return;
             }
 
-            var file_list = PF.FileUtils.files_from_uris (text);
+            var file_list = EelGFile.list_new_from_string (text);
 
             if (file_list != null) {
                 FileOperations.copy_move_link (file_list,

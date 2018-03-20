@@ -521,7 +521,7 @@ namespace FM {
                 return;
             }
 
-            unowned Gdk.Screen screen = get_screen ();
+            unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
 
             if (selection.first ().next == null) { // Only one selected
                 activate_file (selection.data, screen, flag, true);
@@ -771,7 +771,7 @@ namespace FM {
             GLib.File location = file.get_target_location ();
 
             if (screen == null)
-                screen = get_screen ();
+                screen = Eel.gtk_widget_get_screen (this);
 
             if (file.is_folder () ||
                 file.get_ftype () == "inode/directory" ||
@@ -1091,7 +1091,7 @@ namespace FM {
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-            unowned Gdk.Screen screen = get_screen ();
+            unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
             file.execute (screen, null, null);
         }
 
@@ -1576,7 +1576,7 @@ namespace FM {
                 /* We don't have the drop data - extract uri list from selection data */
                 string? text;
                 if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    drop_file_list = PF.FileUtils.files_from_uris (text);
+                    drop_file_list = EelGFile.list_new_from_string (text);
                     drop_data_ready = true;
                 }
             }
