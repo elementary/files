@@ -23,6 +23,7 @@
 #include <sys/stat.h>
 #include <glib/gi18n.h>
 #include "eel-fcts.h"
+#include "eel-gio-extensions.h"
 #include "marlin-exec.h"
 #include "marlin-icons.h"
 #include "fm-list-model.h"
@@ -428,7 +429,7 @@ gof_file_update (GOFFile *file)
 
         /* query a key file for the .desktop file */
         //TODO make cancellable & error
-        key_file = pf_file_utils_key_file_from_file (file->location, NULL, NULL);
+        key_file = eel_g_file_query_key_file (file->location, NULL, NULL);
         if (key_file != NULL)
         {
             /* read the icon name from the .desktop file */
@@ -1209,7 +1210,7 @@ gof_files_get_location_list (GList *files)
     for (l=files; l != NULL; l=l->next) {
         file = (GOFFile *) l->data;
         if (file != NULL && file->location != NULL) {
-            gfile_list = g_list_prepend (gfile_list, g_object_ref (file->location));
+            gfile_list = g_list_prepend (gfile_list, eel_g_file_ref (file->location));
         }
     }
 
@@ -1616,7 +1617,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
 
     if (gof_file_is_desktop_file (file))
     {
-        key_file = pf_file_utils_key_file_from_file (file->location, NULL, &err);
+        key_file = eel_g_file_query_key_file (file->location, NULL, &err);
 
         if (key_file == NULL)
         {
@@ -1740,7 +1741,7 @@ gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info)
     succeed = g_app_info_launch (app_info, gfiles, G_APP_LAUNCH_CONTEXT (context), &error);
     print_error (error); /* also frees error */
 
-    g_list_free_full (gfiles, (GDestroyNotify) g_object_unref);
+    g_list_free_full (gfiles, (GDestroyNotify) eel_g_file_unref);
     g_object_unref (context);
 
     return succeed;

@@ -27,6 +27,7 @@
 #include <gio/gio.h>
 
 #include "marlin-exec.h"
+#include "eel-gio-extensions.h"
 
 
 /* parse GFile location using path if locale uri if native */
@@ -36,10 +37,7 @@ string_append_quoted_location (GString *string, GFile *file)
     gchar *quoted;
     gchar *location;
 
-    location = g_file_get_path (file);
-    if (location == NULL)
-        location = g_file_get_uri (file);
-
+    location = eel_g_file_get_location (file);
     quoted = g_shell_quote (location);
     g_string_append (string, quoted);
     g_free (quoted);
