@@ -31,13 +31,13 @@ namespace PF.FileUtils {
         return result;
     }
 
-    internal GLib.KeyFile key_file_from_file (GLib.File file, GLib.Cancellable? cancellable = null) throws GLib.Error {
+    public GLib.KeyFile key_file_from_file (GLib.File file, GLib.Cancellable? cancellable = null) throws GLib.Error {
         var keyfile = new GLib.KeyFile ();
         try {
             uint8[] contents;
             string etag_out;
             file.load_contents (cancellable, out contents, out etag_out);
-            keyfile.load_from_data ((string) contents, contents.length, GLib.KeyFileFlags.KEEP_COMMENTS|GLib.KeyFileFlags.KEEP_TRANSLATIONS);
+            keyfile.load_from_data ((string) contents, -1, GLib.KeyFileFlags.KEEP_COMMENTS|GLib.KeyFileFlags.KEEP_TRANSLATIONS);
         } catch (Error e) {
             throw e;
         }
