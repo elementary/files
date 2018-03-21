@@ -75,15 +75,15 @@ namespace PF.PixbufUtils {
             int dst_row = i * dst_row_stride;
             for (int j = 0; j < width; j++) {
                 var width_offset = j * channels;
-                uint r = (uint)original_pixels[src_row + width_offset];
-                uint g = (uint)original_pixels[src_row + width_offset + 1];
-                uint b = (uint)original_pixels[src_row + width_offset + 2];
-                uint intensity = (uint8) (r * 77 + g * 150 + b * 28) >> 8;
-                uint negalpha = ((uint8.MAX - (uint)saturation) * (uint)darken) >> 8;
-                uint alpha = ((uint)saturation * (uint)darken) >> 8;
-                target_pixels[dst_row + width_offset] = (uint8) (negalpha * intensity + alpha * r) >> 8;
-                target_pixels[dst_row + width_offset + 1] = (uint8) (negalpha * intensity + alpha * g) >> 8;
-                target_pixels[dst_row + width_offset + 2] = (uint8) (negalpha * intensity + alpha * b) >> 8;
+                uint8 r = original_pixels[src_row + width_offset];
+                uint8 g = original_pixels[src_row + width_offset + 1];
+                uint8 b = original_pixels[src_row + width_offset + 2];
+                uint8 intensity = (r * 77 + g * 150 + b * 28) >> 8;
+                uint8 negalpha = ((uint8.MAX - saturation) * darken) >> 8;
+                uint8 alpha = (saturation * darken) >> 8;
+                target_pixels[dst_row + width_offset] = (negalpha * intensity + alpha * r) >> 8;
+                target_pixels[dst_row + width_offset + 1] = (negalpha * intensity + alpha * g) >> 8;
+                target_pixels[dst_row + width_offset + 2] = (negalpha * intensity + alpha * b) >> 8;
                 if (has_alpha) {
                     target_pixels[dst_row + width_offset + 3] = original_pixels[src_row + width_offset + 3];
                 }
