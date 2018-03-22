@@ -51,15 +51,13 @@ public class Marlin.IconInfo : GLib.Object {
 
     public static Marlin.IconInfo? lookup (GLib.Icon icon, int size) {
         size = int.max (1, size);
+
         if (icon is GLib.LoadableIcon) {
             if (loadable_icon_cache == null) {
-                loadable_icon_cache = new GLib.HashTable<LoadableIconKey?, Marlin.IconInfo> (loadable_icon_key_hash, loadable_icon_key_equal);
+                loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Marlin.IconInfo> (LoadableIconKey.hash, LoadableIconKey.equal);
             }
 
-            var loadable_key = LoadableIconKey () {
-                icon = icon,
-                size = size
-            };
+            var loadable_key = new LoadableIconKey (icon, size);
 
             var icon_info = loadable_icon_cache.lookup (loadable_key);
             if (icon_info != null) {
@@ -87,7 +85,7 @@ public class Marlin.IconInfo : GLib.Object {
             return icon_info;
         } else if (icon is GLib.ThemedIcon) {
             if (themed_icon_cache == null) {
-                themed_icon_cache = new GLib.HashTable<ThemedIconKey?, Marlin.IconInfo> (themed_icon_key_hash, themed_icon_key_equal);
+                themed_icon_cache = new GLib.HashTable<ThemedIconKey, Marlin.IconInfo> (ThemedIconKey.hash, ThemedIconKey.equal);
             }
 
             var names = ((GLib.ThemedIcon) icon).get_names ();
@@ -102,10 +100,7 @@ public class Marlin.IconInfo : GLib.Object {
                 return new Marlin.IconInfo.for_pixbuf (null);
             }
 
-            var themed_key = ThemedIconKey () {
-                filename = filename,
-                size = size
-            };
+            var themed_key = new ThemedIconKey (filename, size);
 
             var icon_info = themed_icon_cache.lookup (themed_key);
             if (icon_info != null) {
@@ -221,43 +216,49 @@ public class Marlin.IconInfo : GLib.Object {
      * This is the part of the icon cache
      */
 
-    private static GLib.HashTable<LoadableIconKey?, Marlin.IconInfo> loadable_icon_cache;
-    private static GLib.HashTable<ThemedIconKey?, Marlin.IconInfo> themed_icon_cache;
+    private static GLib.HashTable<LoadableIconKey, Marlin.IconInfo> loadable_icon_cache;
+    private static GLib.HashTable<ThemedIconKey, Marlin.IconInfo> themed_icon_cache;
     private static uint reap_cache_timeout = 0;
     private static uint reap_time = 5000;
 
-    private struct LoadableIconKey {
+    private class LoadableIconKey {
         GLib.Icon icon;
         int size;
+
+        public LoadableIconKey (GLib.Icon _icon, int _size) {
+            icon = _icon;
+            size = _size;
+        }
+
+        public static uint hash (LoadableIconKey a) {
+            return a.icon.hash () ^ a.size;
+        }
+
+        public static bool equal (LoadableIconKey a, LoadableIconKey b) {
+            return (a.size == b.size && a.icon.equal (b.icon));
+        }
     }
 
-    private struct ThemedIconKey {
+    private class ThemedIconKey {
         string filename;
         int size;
-    }
 
-    private static uint loadable_icon_key_hash (LoadableIconKey? key) {
-        return (key.icon.hash () ^ key.size);
-    }
+        public ThemedIconKey (string _filename, int _size) {
+            filename = _filename;
+            size = _size;
+        }
 
-    private static bool loadable_icon_key_equal (LoadableIconKey? a, LoadableIconKey? b) {
-        return (a.size == b.size && a.icon.equal (b.icon));
-    }
+        public static uint hash (ThemedIconKey a) {
+            return a.filename.hash () ^ a.size;
+        }
 
-    private static uint themed_icon_key_hash (ThemedIconKey? key) {
-        return (key.filename.hash () ^ key.size);
-    }
-
-    private static bool themed_icon_key_equal (ThemedIconKey? a, ThemedIconKey? b) {
-        return (a.size == b.size && a.filename == b.filename);
+        public static bool equal (ThemedIconKey a, ThemedIconKey b) {
+            return (a.size == b.size && a.filename == b.filename);
+        }
     }
 
     public static void remove_cache (string path, int size) {
-        var loadable_key = LoadableIconKey () {
-            icon = new GLib.FileIcon (GLib.File.new_for_path (path)),
-            size = size
-        };
-
+        var loadable_key = new LoadableIconKey (new GLib.FileIcon (GLib.File.new_for_path (path)), size);
         loadable_icon_cache.remove (loadable_key);
     }
 
