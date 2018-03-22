@@ -89,17 +89,10 @@ namespace EelGtk.Widget {
     public Gdk.Screen get_screen ();
 }
 
-[CCode (cprefix = "EelGFile", lower_case_cprefix = "eel_g_file_", cheader_filename = "eel-gio-extensions.h")]
-namespace EelGFile {
-    public static GLib.List<GLib.File> list_new_from_string (string filelist);
-}
-
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_")]
 namespace Eel {
     [CCode (cheader_filename = "eel-gtk-extensions.h")]
     public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public unowned Gdk.Screen gtk_widget_get_screen (Gtk.Widget? widget);
 
     [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
@@ -123,23 +116,6 @@ namespace Eel {
 
     [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
-
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf create_spotlight_pixbuf (Gdk.Pixbuf source_pixbuf);
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf create_colorized_pixbuf (Gdk.Pixbuf source_pixbuf, Gdk.RGBA color);
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf create_darkened_pixbuf (Gdk.Pixbuf source_pixbuf, int saturation, int darken);
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf gdk_pixbuf_lucent (Gdk.Pixbuf source_pixbuf, int percent);
-}
-
-[CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]
-namespace EelPango {
-    public unowned Pango.AttrList attr_list_small();
-    public unowned Pango.AttrList attr_list_small_italic();
-    public unowned Pango.AttrList attr_list_italic();
-    public unowned Pango.AttrList attr_list_big();
 }
 
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
@@ -160,14 +136,6 @@ namespace Marlin
         public static uint loadable_icon_cache_info ();
         public static uint themed_icon_cache_info ();
         public static void set_reap_time (uint milliseconds);
-    }
-    [CCode (cheader_filename = "marlin-trash-monitor.h")]
-    public abstract class TrashMonitor : GLib.Object
-    {
-        public static TrashMonitor get();
-        public static bool is_empty ();
-        public static GLib.Icon get_icon ();
-        public signal void trash_state_changed (bool new_state);
     }
 
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
