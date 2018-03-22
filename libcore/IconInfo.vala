@@ -84,7 +84,7 @@ public class Marlin.IconInfo : GLib.Object {
                 loadable_icon_cache.insert (loadable_key, icon_info);
             }
 
-            return null;
+            return icon_info;
         } else if (icon is GLib.ThemedIcon) {
             if (themed_icon_cache == null) {
                 themed_icon_cache = new GLib.HashTable<ThemedIconKey?, Marlin.IconInfo> (themed_icon_key_hash, themed_icon_key_equal);
