@@ -79,7 +79,7 @@ public class Marlin.IconInfo : GLib.Object {
 
             if (pixbuf != null) {
                 icon_info = new IconInfo.for_pixbuf (pixbuf);
-                loadable_icon_cache.insert (loadable_key, icon_info);
+                loadable_icon_cache.insert (loadable_key.dup (), icon_info);
             }
 
             return icon_info;
@@ -108,7 +108,7 @@ public class Marlin.IconInfo : GLib.Object {
             }
 
             icon_info = new Marlin.IconInfo.for_icon_info (gtkicon_info);
-            themed_icon_cache.insert (themed_key, icon_info);
+            themed_icon_cache.insert (themed_key.dup (), icon_info);
             return icon_info;
         } else {
             var theme = get_icon_theme ();
@@ -221,9 +221,10 @@ public class Marlin.IconInfo : GLib.Object {
     private static uint reap_cache_timeout = 0;
     private static uint reap_time = 5000;
 
+    [Compact]
     private class LoadableIconKey {
-        private GLib.Icon icon;
-        private int size;
+        public GLib.Icon icon;
+        public int size;
 
         public LoadableIconKey (GLib.Icon _icon, int _size) {
             icon = _icon;
@@ -235,6 +236,10 @@ public class Marlin.IconInfo : GLib.Object {
             size = _size;
         }
 
+        public LoadableIconKey dup () {
+            return new LoadableIconKey (icon, size);
+        }
+
         public static uint hash (LoadableIconKey a) {
             return a.icon.hash () ^ a.size;
         }
@@ -244,13 +249,18 @@ public class Marlin.IconInfo : GLib.Object {
         }
     }
 
+    [Compact]
     private class ThemedIconKey {
-        private string filename;
-        private int size;
+        public string filename;
+        public int size;
 
         public ThemedIconKey (string _filename, int _size) {
             filename = _filename;
             size = _size;
+        }
+
+        public ThemedIconKey dup () {
+            return new ThemedIconKey (filename, size);
         }
 
         public static uint hash (ThemedIconKey a) {
