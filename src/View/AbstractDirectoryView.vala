@@ -2013,9 +2013,8 @@ namespace FM {
                     label = _("Run");
                     menu.append (label, "selection.open");
                 } else if (default_app != null) {
-                    var app_name = default_app.get_display_name ();
-                    if (app_name != Marlin.APP_TITLE) {
-                        label = (_("Open in %s")).printf (app_name);
+                    if (default_app.get_id () != GLib.Application.get_default ().application_id + ".desktop") {
+                        label = (_("Open in %s")).printf (default_app.get_display_name ());
                         menu.append (label, "selection.open_with_default");
                     }
                 }
