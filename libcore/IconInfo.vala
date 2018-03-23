@@ -222,11 +222,16 @@ public class Marlin.IconInfo : GLib.Object {
     private static uint reap_time = 5000;
 
     private class LoadableIconKey {
-        GLib.Icon icon;
-        int size;
+        private GLib.Icon icon;
+        private int size;
 
         public LoadableIconKey (GLib.Icon _icon, int _size) {
             icon = _icon;
+            size = _size;
+        }
+
+        public LoadableIconKey.from_path (string path, int _size) {
+            icon = new GLib.FileIcon (GLib.File.new_for_path (path));
             size = _size;
         }
 
@@ -240,8 +245,8 @@ public class Marlin.IconInfo : GLib.Object {
     }
 
     private class ThemedIconKey {
-        string filename;
-        int size;
+        private string filename;
+        private int size;
 
         public ThemedIconKey (string _filename, int _size) {
             filename = _filename;
@@ -258,7 +263,7 @@ public class Marlin.IconInfo : GLib.Object {
     }
 
     public static void remove_cache (string path, int size) {
-        var loadable_key = new LoadableIconKey (new GLib.FileIcon (GLib.File.new_for_path (path)), size);
+        var loadable_key = new LoadableIconKey.from_path (path, size);
         loadable_icon_cache.remove (loadable_key);
     }
 
