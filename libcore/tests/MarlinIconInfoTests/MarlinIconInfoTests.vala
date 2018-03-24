@@ -93,10 +93,12 @@ void loadable_cache_and_ref_test () {
     file.pix = null;
     file.query_update ();
     file.flags |= GOF.File.ThumbState.READY;
+    /* We need to provide our own thumbnail and path for CI */
+    file.thumbnail_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.jpg.thumb.png");
     file.update_icon (128);
     assert (file.pix.ref_count == 2); //Ref'd by file and cache.
 
-    /* We have not flagged THUMBNAIL_READY so a themed icon will be created */
+    /* We have flagged THUMBNAIL_READY so a loadable icon will be created */
     assert (Marlin.IconInfo.themed_icon_cache_info () == 0);
     assert (Marlin.IconInfo.loadable_icon_cache_info () == 1);
 

@@ -260,6 +260,7 @@ namespace GOF {
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
         public void get_folder_icon_from_uri_or_path ();
         public Marlin.IconInfo get_icon (int size, FileIconFlags flags);
+        public string thumbnail_path;
 
         public bool is_mounted;
         public bool exists;
