@@ -330,7 +330,6 @@ namespace Marlin {
         }
 
         private static void handle_ready_idle (Idle ready_idle) {
-
             foreach (string uri in ready_idle.uris) {
                 update_file_thumbstate (uri, GOF.File.ThumbState.READY);
             }
