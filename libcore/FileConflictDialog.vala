@@ -44,8 +44,8 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
     private GOF.File destination;
     private GOF.File dest_dir;
 
-    private Gtk.Label title_label;
-    private Gtk.Label subtitle_label;
+    private Gtk.Label primary_label;
+    private Gtk.Label secondary_label;
 
     private Gtk.Image source_image;
     private Gtk.Label source_size_label;
@@ -61,7 +61,9 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         Object (
             title: _("File conflict"),
             transient_for: parent,
-            deletable: false
+            deletable: false,
+            resizable: false,
+            skip_taskbar_hint: true
         );
 
         this.source = GOF.File.@get (source);
@@ -79,28 +81,42 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
     construct {
         var image = new Gtk.Image.from_icon_name ("dialog-warning", Gtk.IconSize.DIALOG);
         image.valign = Gtk.Align.START;
-        title_label = new Gtk.Label (null);
-        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-        title_label.xalign = 0;
-        subtitle_label = new Gtk.Label (null);
-        subtitle_label.xalign = 0;
+
+        primary_label = new Gtk.Label (null);
+        primary_label.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
+        primary_label.selectable = true;
+        primary_label.max_width_chars = 50;
+        primary_label.wrap = true;
+        primary_label.xalign = 0;
+
+        secondary_label = new Gtk.Label (null);
+        secondary_label.use_markup = true;
+        secondary_label.selectable = true;
+        secondary_label.max_width_chars = 50;
+        secondary_label.wrap = true;
+        secondary_label.xalign = 0;
 
         destination_image = new Gtk.Image ();
         destination_image.pixel_size = 64;
+
         var destination_label = new Gtk.Label ("<b>%s</b>".printf (_("Original file")));
         destination_label.margin_top = destination_label.margin_bottom = 6;
         destination_label.use_markup = true;
         destination_label.xalign = 0;
+
         var destination_size_title_label = new Gtk.Label (_("Size:"));
         destination_size_title_label.valign = Gtk.Align.END;
         destination_size_title_label.xalign = 1;
+
         destination_size_label = new Gtk.Label (null);
         destination_size_label.valign = Gtk.Align.END;
         destination_size_label.xalign = 0;
+
         var destination_type_title_label = new Gtk.Label (_("Type:"));
         destination_type_title_label.xalign = 1;
         destination_type_label = new Gtk.Label (null);
         destination_type_label.xalign = 0;
+
         var destination_time_title_label = new Gtk.Label (_("Last modified:"));
         destination_time_title_label.valign = Gtk.Align.START;
         destination_time_title_label.xalign = 1;
@@ -110,20 +126,25 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
 
         source_image = new Gtk.Image ();
         source_image.pixel_size = 64;
+
         var source_label = new Gtk.Label ("<b>%s</b>".printf (_("Replace with")));
         source_label.margin_bottom = 6;
         source_label.use_markup = true;
         source_label.xalign = 0;
+
         var source_size_title_label = new Gtk.Label (_("Size:"));
         source_size_title_label.valign = Gtk.Align.END;
         source_size_title_label.xalign = 1;
+
         source_size_label = new Gtk.Label (null);
         source_size_label.valign = Gtk.Align.END;
         source_size_label.xalign = 0;
+
         var source_type_title_label = new Gtk.Label (_("Type:"));
         source_type_title_label.xalign = 1;
         source_type_label = new Gtk.Label (null);
         source_type_label.xalign = 0;
+
         var source_time_title_label = new Gtk.Label (_("Last modified:"));
         source_time_title_label.valign = Gtk.Align.START;
         source_time_title_label.xalign = 1;
@@ -133,6 +154,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
 
         rename_entry = new Gtk.Entry ();
         rename_entry.hexpand = true;
+
         var reset_button = new Gtk.Button.with_label (_("Reset"));
 
         var expander_grid = new Gtk.Grid ();
@@ -150,11 +172,14 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
 
         add_button (_("_Skip"), ResponseType.SKIP);
         var rename_button = (Gtk.Button) add_button (_("Re_name"), ResponseType.RENAME);
+
         replace_button = (Gtk.Button) add_button (_("Replace"), ResponseType.REPLACE);
+        replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
         var comparison_grid = new Gtk.Grid ();
         comparison_grid.column_spacing = 6;
         comparison_grid.row_spacing = 0;
+        comparison_grid.margin_top = 18;
         comparison_grid.attach (destination_label, 0, 0, 3, 1);
         comparison_grid.attach (destination_image, 0, 1, 1, 3);
         comparison_grid.attach (destination_size_title_label, 1, 1, 1, 1);
@@ -175,17 +200,22 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
 
         var grid = new Gtk.Grid ();
         grid.margin = 12;
+        grid.margin_top = 0;
         grid.column_spacing = 12;
         grid.row_spacing = 6;
         grid.attach (image, 0, 0, 1, 2);
-        grid.attach (title_label, 1, 0, 1, 1);
-        grid.attach (subtitle_label, 1, 1, 1, 1);
+        grid.attach (primary_label, 1, 0, 1, 1);
+        grid.attach (secondary_label, 1, 1, 1, 1);
         grid.attach (comparison_grid, 1, 2, 1, 1);
         grid.attach (expander, 1, 3, 1, 1);
         grid.attach (apply_all_checkbutton, 1, 4, 1, 1);
+        grid.show_all ();
+
         get_content_area ().add (grid);
 
-        show_all ();
+        var action_area = get_action_area ();
+        action_area.margin = 6;
+        action_area.margin_top = 14;
 
         source_type_label.bind_property ("visible", source_type_title_label, "visible");
         destination_type_label.bind_property ("visible", destination_type_title_label, "visible");
@@ -259,7 +289,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         string message;
         if (destination.is_directory) {
             if (source.is_directory) {
-                title_label.label = _("Merge folder \"%s\"?").printf (dest_display_name);
+                primary_label.label = _("Merge folder \"%s\"?").printf (dest_display_name);
                 message_extra = _("Merging will ask for confirmation before replacing any files in the folder that conflict with the files being copied.");
                 if (source.modified > destination.modified) {
                     message = _("An older folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
@@ -269,12 +299,12 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
                     message = _("Another folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
                 }
             } else {
-                title_label.label = _("Replace folder \"%s\"?").printf (dest_display_name);
+                primary_label.label = _("Replace folder \"%s\"?").printf (dest_display_name);
                 message_extra = _("Replacing it will remove all files in the folder.");
                 message = _("A folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
             }
         } else {
-            title_label.label = _("Replace file \"%s\"?").printf (dest_display_name);
+            primary_label.label = _("Replace file \"%s\"?").printf (dest_display_name);
             message_extra = _("Replacing it will overwrite its content.");
 
             if (source.modified > destination.modified) {
@@ -286,7 +316,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
             }
         }
 
-        subtitle_label.label = "%s\n%s".printf (message, message_extra);
+        secondary_label.label = "%s %s".printf (message, message_extra);
         source_image.gicon = source.get_icon_pixbuf (64, true, GOF.FileIconFlags.USE_THUMBNAILS);
         source_size_label.label = source.format_size;
         source_time_label.label = source.formated_modified;
