@@ -1,0 +1,325 @@
+/* Copyright (c) 2018 elementary LLC (https://elementary.io)
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation, Inc.,; either version 2 of
+ * the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public
+ * License along with this program; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ */
+
+public class Marlin.FileConflictDialog : Gtk.Dialog {
+    public string new_name {
+        owned get {
+            return rename_entry.text;
+        }
+    }
+
+    public bool apply_to_all {
+        get {
+            return apply_all_checkbutton.active;
+        }
+    }
+
+    public enum ResponseType {
+        SKIP,
+        RENAME,
+        REPLACE
+    }
+
+    private string conflict_name;
+    private Gtk.Entry rename_entry;
+    private Gtk.Button replace_button;
+    private Gtk.CheckButton apply_all_checkbutton;
+
+    private GOF.File source;
+    private GOF.File destination;
+    private GOF.File dest_dir;
+
+    private Gtk.Label title_label;
+    private Gtk.Label subtitle_label;
+
+    private Gtk.Image source_image;
+    private Gtk.Label source_size_label;
+    private Gtk.Label source_type_label;
+    private Gtk.Label source_time_label;
+
+    private Gtk.Image destination_image;
+    private Gtk.Label destination_size_label;
+    private Gtk.Label destination_type_label;
+    private Gtk.Label destination_time_label;
+
+    public FileConflictDialog (Gtk.Window parent, GLib.File source, GLib.File destination, GLib.File dest_dir) {
+        Object (
+            title: _("File conflict"),
+            transient_for: parent,
+            deletable: false
+        );
+
+        this.source = GOF.File.@get (source);
+        this.destination = GOF.File.@get (destination);
+        this.dest_dir = GOF.File.@get (dest_dir);
+
+        var files = new GLib.List<GOF.File> ();
+        files.prepend (this.source);
+        files.prepend (this.destination);
+        files.prepend (this.dest_dir);
+
+        new GOF.CallWhenReady (files, file_list_ready_cb);
+    }
+
+    construct {
+        var image = new Gtk.Image.from_icon_name ("dialog-warning", Gtk.IconSize.DIALOG);
+        image.valign = Gtk.Align.START;
+        title_label = new Gtk.Label (null);
+        title_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        title_label.xalign = 0;
+        subtitle_label = new Gtk.Label (null);
+        subtitle_label.xalign = 0;
+
+        destination_image = new Gtk.Image ();
+        destination_image.pixel_size = 64;
+        var destination_label = new Gtk.Label ("<b>%s</b>".printf (_("Original file")));
+        destination_label.margin_top = destination_label.margin_bottom = 6;
+        destination_label.use_markup = true;
+        destination_label.xalign = 0;
+        var destination_size_title_label = new Gtk.Label (_("Size:"));
+        destination_size_title_label.valign = Gtk.Align.END;
+        destination_size_title_label.xalign = 1;
+        destination_size_label = new Gtk.Label (null);
+        destination_size_label.valign = Gtk.Align.END;
+        destination_size_label.xalign = 0;
+        var destination_type_title_label = new Gtk.Label (_("Type:"));
+        destination_type_title_label.xalign = 1;
+        destination_type_label = new Gtk.Label (null);
+        destination_type_label.xalign = 0;
+        var destination_time_title_label = new Gtk.Label (_("Last modified:"));
+        destination_time_title_label.valign = Gtk.Align.START;
+        destination_time_title_label.xalign = 1;
+        destination_time_label = new Gtk.Label (null);
+        destination_time_label.valign = Gtk.Align.START;
+        destination_time_label.xalign = 0;
+
+        source_image = new Gtk.Image ();
+        source_image.pixel_size = 64;
+        var source_label = new Gtk.Label ("<b>%s</b>".printf (_("Replace with")));
+        source_label.margin_bottom = 6;
+        source_label.use_markup = true;
+        source_label.xalign = 0;
+        var source_size_title_label = new Gtk.Label (_("Size:"));
+        source_size_title_label.valign = Gtk.Align.END;
+        source_size_title_label.xalign = 1;
+        source_size_label = new Gtk.Label (null);
+        source_size_label.valign = Gtk.Align.END;
+        source_size_label.xalign = 0;
+        var source_type_title_label = new Gtk.Label (_("Type:"));
+        source_type_title_label.xalign = 1;
+        source_type_label = new Gtk.Label (null);
+        source_type_label.xalign = 0;
+        var source_time_title_label = new Gtk.Label (_("Last modified:"));
+        source_time_title_label.valign = Gtk.Align.START;
+        source_time_title_label.xalign = 1;
+        source_time_label = new Gtk.Label (null);
+        source_time_label.valign = Gtk.Align.START;
+        source_time_label.xalign = 0;
+
+        rename_entry = new Gtk.Entry ();
+        rename_entry.hexpand = true;
+        var reset_button = new Gtk.Button.with_label (_("Reset"));
+
+        var expander_grid = new Gtk.Grid ();
+        expander_grid.margin_top = 6;
+        expander_grid.margin_bottom = 6;
+        expander_grid.column_spacing = 6;
+        expander_grid.orientation = Gtk.Orientation.HORIZONTAL;
+        expander_grid.add (rename_entry);
+        expander_grid.add (reset_button);
+
+        var expander = new Gtk.Expander.with_mnemonic (_("_Select a new name for the destination"));
+        expander.add (expander_grid);
+
+        apply_all_checkbutton = new Gtk.CheckButton.with_label (_("Apply this action to all files"));
+
+        add_button (_("_Skip"), ResponseType.SKIP);
+        var rename_button = (Gtk.Button) add_button (_("Re_name"), ResponseType.RENAME);
+        replace_button = (Gtk.Button) add_button (_("Replace"), ResponseType.REPLACE);
+
+        var comparison_grid = new Gtk.Grid ();
+        comparison_grid.column_spacing = 6;
+        comparison_grid.row_spacing = 0;
+        comparison_grid.attach (destination_label, 0, 0, 3, 1);
+        comparison_grid.attach (destination_image, 0, 1, 1, 3);
+        comparison_grid.attach (destination_size_title_label, 1, 1, 1, 1);
+        comparison_grid.attach (destination_size_label, 2, 1, 1, 1);
+        comparison_grid.attach (destination_type_title_label, 1, 2, 1, 1);
+        comparison_grid.attach (destination_type_label, 2, 2, 1, 1);
+        comparison_grid.attach (destination_time_title_label, 1, 3, 1, 1);
+        comparison_grid.attach (destination_time_label, 2, 3, 1, 1);
+
+        comparison_grid.attach (source_label, 0, 4, 3, 1);
+        comparison_grid.attach (source_image, 0, 5, 1, 3);
+        comparison_grid.attach (source_size_title_label, 1, 5, 1, 1);
+        comparison_grid.attach (source_size_label, 2, 5, 1, 1);
+        comparison_grid.attach (source_type_title_label, 1, 6, 1, 1);
+        comparison_grid.attach (source_type_label, 2, 6, 1, 1);
+        comparison_grid.attach (source_time_title_label, 1, 7, 1, 1);
+        comparison_grid.attach (source_time_label, 2, 7, 1, 1);
+
+        var grid = new Gtk.Grid ();
+        grid.margin = 12;
+        grid.column_spacing = 12;
+        grid.row_spacing = 6;
+        grid.attach (image, 0, 0, 1, 2);
+        grid.attach (title_label, 1, 0, 1, 1);
+        grid.attach (subtitle_label, 1, 1, 1, 1);
+        grid.attach (comparison_grid, 1, 2, 1, 1);
+        grid.attach (expander, 1, 3, 1, 1);
+        grid.attach (apply_all_checkbutton, 1, 4, 1, 1);
+        get_content_area ().add (grid);
+
+        show_all ();
+
+        source_type_label.bind_property ("visible", source_type_title_label, "visible");
+        destination_type_label.bind_property ("visible", destination_type_title_label, "visible");
+
+        expander.activate.connect (() => {
+            if (expander.expanded && rename_entry.text == conflict_name) {
+                rename_entry.grab_focus ();
+                int start_offset;
+                int end_offset;
+                PF.FileUtils.get_rename_region (conflict_name, out start_offset, out end_offset, false);
+                rename_entry.select_region (start_offset, end_offset);
+            }
+        });
+
+        rename_entry.changed.connect (() => {
+            /* The rename button is visible only if there's text
+             * in the entry.
+             */
+            if (rename_entry.text != "" && rename_entry.text != conflict_name) {
+                replace_button.hide ();
+                rename_button.show ();
+                apply_all_checkbutton.sensitive = false;
+                set_default_response (ResponseType.RENAME);
+            } else {
+                replace_button.show ();
+                rename_button.hide ();
+                apply_all_checkbutton.sensitive = true;
+                set_default_response (ResponseType.REPLACE);
+            }
+        });
+
+        reset_button.clicked.connect (() => {
+            rename_entry.text = conflict_name;
+            rename_entry.grab_focus ();
+            int start_offset;
+            int end_offset;
+            PF.FileUtils.get_rename_region (conflict_name, out start_offset, out end_offset, false);
+            rename_entry.select_region (start_offset, end_offset);
+        });
+
+        apply_all_checkbutton.bind_property ("active", expander, "sensitive", GLib.BindingFlags.INVERT_BOOLEAN);
+        apply_all_checkbutton.bind_property ("active", rename_button, "sensitive", GLib.BindingFlags.INVERT_BOOLEAN);
+        apply_all_checkbutton.toggled.connect (() => {
+            if (apply_all_checkbutton.active && rename_entry.text == "" && rename_entry.text != conflict_name) {
+                replace_button.hide ();
+                rename_button.show ();
+            } else {
+                rename_button.hide ();
+                replace_button.show ();
+            }
+        });
+    }
+
+    private void file_list_ready_cb (GLib.List<GOF.File> files) {
+        unowned string src_ftype = source.get_ftype ();
+        unowned string dest_ftype = destination.get_ftype ();
+        if (src_ftype == null) {
+            critical ("Could not determine file type of source file: %s", source.uri);
+        }
+
+        if (dest_ftype == null) {
+            critical ("Could not determine file type of source file: %s", destination.uri);
+        }
+
+        var should_show_type = src_ftype != dest_ftype;
+        unowned string dest_display_name = destination.get_display_name ();
+        unowned string dest_dir_display_name = dest_dir.get_display_name ();
+        conflict_name = dest_display_name;
+
+        string message_extra;
+        string message;
+        if (destination.is_directory) {
+            if (source.is_directory) {
+                title_label.label = _("Merge folder \"%s\"?").printf (dest_display_name);
+                message_extra = _("Merging will ask for confirmation before replacing any files in the folder that conflict with the files being copied.");
+                if (source.modified > destination.modified) {
+                    message = _("An older folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+                } else if (source.modified < destination.modified) {
+                    message = _("A newer folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+                } else {
+                    message = _("Another folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+                }
+            } else {
+                title_label.label = _("Replace folder \"%s\"?").printf (dest_display_name);
+                message_extra = _("Replacing it will remove all files in the folder.");
+                message = _("A folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+            }
+        } else {
+            title_label.label = _("Replace file \"%s\"?").printf (dest_display_name);
+            message_extra = _("Replacing it will overwrite its content.");
+
+            if (source.modified > destination.modified) {
+                message = _("An older file with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+            } else if (source.modified < destination.modified) {
+                message = _("A newer file with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+            } else {
+                message = _("Another file with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+            }
+        }
+
+        subtitle_label.label = "%s\n%s".printf (message, message_extra);
+        source_image.gicon = source.get_icon_pixbuf (64, true, GOF.FileIconFlags.USE_THUMBNAILS);
+        source_size_label.label = source.format_size;
+        source_time_label.label = source.formated_modified;
+        if (should_show_type && src_ftype != null) {
+            source_type_label.label = src_ftype;
+        } else {
+            source_type_label.visible = false;
+            source_type_label.no_show_all = true;
+        }
+
+        destination_image.gicon = destination.get_icon_pixbuf (64, true, GOF.FileIconFlags.USE_THUMBNAILS);
+        destination_size_label.label = destination.format_size;
+        destination_time_label.label = destination.formated_modified;
+        if (should_show_type && dest_ftype != null) {
+            destination_type_label.label = dest_ftype;
+        } else {
+            destination_type_label.visible = false;
+            destination_type_label.no_show_all = true;
+        }
+
+        /* Populate the entry */
+
+        rename_entry.text = conflict_name;
+        if (source.is_directory && destination.is_directory) {
+            replace_button.label = _("Merge");
+        }
+
+        source.changed.connect (() => {
+            source_image.gicon = source.get_icon_pixbuf (64, true, GOF.FileIconFlags.USE_THUMBNAILS);
+        });
+
+        destination.changed.connect (() => {
+            destination_image.gicon = destination.get_icon_pixbuf (64, true, GOF.FileIconFlags.USE_THUMBNAILS);
+        });
+    }
+}
