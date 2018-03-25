@@ -61,8 +61,8 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         Object (
             title: _("File conflict"),
             transient_for: parent,
-            resizable: false,
             deletable: false,
+            resizable: false,
             skip_taskbar_hint: true
         );
 
