@@ -587,7 +587,7 @@ gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     return NULL;
 }
 
-MarlinIconInfo *
+_MarlinIconInfo *
 gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
     MarlinIconInfo *icon = NULL;
