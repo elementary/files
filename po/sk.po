@@ -9,16 +9,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-02-23 08:19+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: Slovak <>\n"
+"PO-Revision-Date: 2018-03-14 00:02+0000\n"
+"Last-Translator: Zorgo <zorgo@syndicate.sk>\n"
+"Language-Team: Slovak "
+"<https://weblate.elementary.io/projects/files/files/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -628,7 +629,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "Nie je možné presunúť súbor do koša. Skúste ich odstrániť okamžite."
+msgstr "Nie je možné presunúť súbor do koša. Skúsiť ho odstrániť okamžite?"
 
 #: ../libcore/marlin-file-operations.c:1956
 msgid ""
@@ -1925,11 +1926,11 @@ msgstr "Nemožno sa pripojiť na server pre tento priečinok."
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Nie je možné zobraziť obsah adresára"
 
 #: ../src/View/ViewContainer.vala:420
 msgid "The operation timed out."
-msgstr ""
+msgstr "Vypršal čas operácie."
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
@@ -2231,19 +2232,19 @@ msgstr "Nie je možné premenovať na '%s'"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Dnes o %-H:%N"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Včera o %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A o %-H:%M"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A o %-I:%M %p"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2267,7 +2268,7 @@ msgstr "Zrušiť"
 
 #: ../libcore/gof-directory-async.vala:611
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Server neodpovedal v časovom limite"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
@@ -2330,18 +2331,16 @@ msgid "In This Folder"
 msgstr "V tomto priečinku"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "V tomto priečinku"
+msgstr "Pod týmto priečnikom"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
 msgstr "Záložky"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
-msgstr "Nedávno použité súbory"
+msgstr "Nedávno použité"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
