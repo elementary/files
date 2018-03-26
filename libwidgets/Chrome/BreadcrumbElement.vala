@@ -185,7 +185,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         /* Draw the text and icon (if present and there is room) */
         Gdk.Pixbuf? icon_to_draw = icon_info != null ? icon_info.icon : null;
         if (icon_to_draw != null && (state & Gtk.StateFlags.BACKDROP) > 0) {
-            icon_to_draw = Eel.gdk_pixbuf_lucent (icon_to_draw, 50);
+            icon_to_draw = PF.PixbufUtils.lucent (icon_to_draw, 50);
         }
 
         if (is_RTL) {

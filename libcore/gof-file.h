@@ -22,10 +22,11 @@
 
 #include <glib.h>
 #include <glib-object.h>
+#include <gtk/gtk.h>
 #include <gdk/gdk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <gio/gio.h>
-#include "marlin-icon-info.h"
+typedef void _MarlinIconInfo;
 
 G_BEGIN_DECLS
 
@@ -190,7 +191,7 @@ void            gof_file_list_free (GList *list);
 GList           *gof_file_list_ref (GList *list);
 GList           *gof_file_list_copy (GList *list);
 GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFileIconFlags flags);
-MarlinIconInfo  *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags);
+_MarlinIconInfo  *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags);
 gboolean        gof_file_is_writable (GOFFile *file);
 gboolean        gof_file_is_trashed (GOFFile *file);
 const gchar     *gof_file_get_symlink_target (GOFFile *file);
