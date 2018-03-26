@@ -47,7 +47,7 @@ namespace Marlin.Places {
         Marlin.View.Window window;
         Marlin.BookmarkList bookmarks;
         VolumeMonitor volume_monitor;
-        Marlin.TrashMonitor monitor;
+        unowned Marlin.TrashMonitor monitor;
         Gtk.IconTheme theme;
         GLib.Icon eject_icon;
 
@@ -156,7 +156,8 @@ namespace Marlin.Places {
             this.bookmarks = Marlin.BookmarkList.get_instance ();
             bookmarks.contents_changed.connect (update_places);
 
-            set_up_trash_monitor ();
+            monitor = Marlin.TrashMonitor.get_default ();
+            monitor.notify["is-empty"].connect (() => update_places ());
             this.volume_monitor = GLib.VolumeMonitor.@get ();
             connect_volume_monitor_signals ();
 
@@ -310,11 +311,6 @@ namespace Marlin.Places {
         private bool update_adjustment_val () {
             adjustment_val = ((this as Gtk.ScrolledWindow).get_vadjustment ()).value;
             return false;
-        }
-
-        private void set_up_trash_monitor () {
-            monitor = Marlin.TrashMonitor.get ();
-            monitor.trash_state_changed.connect (trash_state_changed_cb);
         }
 
         private void connect_volume_monitor_signals () {
@@ -544,8 +540,8 @@ namespace Marlin.Places {
                 add_place (Marlin.PlaceType.BUILT_IN,
                            iter,
                            _("Trash"),
-                           Marlin.TrashMonitor.get_icon (),
-                           Marlin.TRASH_URI,
+                           monitor.get_icon (),
+                           Marlin.TrashMonitor.URI,
                            null,
                            null,
                            null,
@@ -1011,7 +1007,7 @@ namespace Marlin.Places {
                     && info == TargetType.TEXT_URI_LIST) {
 
                     string s = (string)(selection_data.get_data ());
-                    drag_list = EelGFile.list_new_from_string (s);
+                    drag_list = PF.FileUtils.files_from_uris (s);
                 } else {
                     if (info == TargetType.GTK_TREE_MODEL_ROW) {
                         Gtk.TreePath path;
@@ -1477,6 +1473,7 @@ namespace Marlin.Places {
                 popupmenu_empty_trash_item = new Gtk.MenuItem.with_mnemonic (_("Empty _Trash"));
                 popupmenu_empty_trash_item.activate.connect (empty_trash_cb);
                 popupmenu_empty_trash_item.show ();
+                monitor.bind_property ("is-empty", popupmenu_empty_trash_item, "sensitive", GLib.BindingFlags.SYNC_CREATE|GLib.BindingFlags.INVERT_BOOLEAN);
 
                 popupmenu_drive_property_item = new Gtk.MenuItem.with_mnemonic (_("Properties"));
                 popupmenu_drive_property_item.activate.connect (show_drive_info_cb);
@@ -2239,11 +2236,6 @@ namespace Marlin.Places {
 
         }
 
-        private void trash_state_changed_cb (Marlin.TrashMonitor trash_monitor, bool state) {
-            update_places ();
-            check_popup_sensitivity ();
-        }
-
 /* CHECK FUNCTIONS */
         private void check_unmount_and_eject (Mount? mount,
                                               Volume? volume,
@@ -2352,7 +2344,7 @@ namespace Marlin.Places {
             /* Context menu shows Empty Trash for the Trash icon and for any mount with a native
              * file system whose trash contains files */
             bool show_empty_trash = (uri != null) &&
-                                    ((uri == Marlin.TRASH_URI) ||
+                                    ((uri == Marlin.TrashMonitor.URI) ||
                                     Marlin.FileOperations.has_trash_files (mount));
 
             popupmenu_separator_item2.visible = (show_eject || show_unmount ||
@@ -2365,8 +2357,6 @@ namespace Marlin.Places {
             popupmenu_eject_item.visible = show_eject;
             popupmenu_empty_trash_item.visible = show_empty_trash;
             popupmenu_drive_property_item.visible = show_property;
-
-            popupmenu_empty_trash_item.sensitive = !Marlin.TrashMonitor.is_empty ();
 
             bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);
             popupmenu_open_in_new_tab_item.visible = !is_plugin;
