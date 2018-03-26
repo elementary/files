@@ -532,7 +532,7 @@ namespace FM {
                 return;
             }
 
-            unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
+            unowned Gdk.Screen screen = get_screen ();
 
             if (selection.first ().next == null) { // Only one selected
                 activate_file (selection.data, screen, flag, true);
@@ -782,7 +782,7 @@ namespace FM {
             GLib.File location = file.get_target_location ();
 
             if (screen == null)
-                screen = Eel.gtk_widget_get_screen (this);
+                screen = get_screen ();
 
             if (file.is_folder () ||
                 file.get_ftype () == "inode/directory" ||
@@ -1102,7 +1102,7 @@ namespace FM {
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-            unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
+            unowned Gdk.Screen screen = get_screen ();
             file.execute (screen, null, null);
         }
 
@@ -1323,7 +1323,7 @@ namespace FM {
                 /* Check whether the deleted file is the directory */
                 var file_dir = GOF.Directory.Async.cache_lookup (file.location);
                 if (file_dir != null) {
-                    file_dir.purge_dir_from_cache ();
+                    GOF.Directory.Async.purge_dir_from_cache (file_dir);
                     slot.folder_deleted (file, file_dir);
                 }
             }
@@ -1587,7 +1587,7 @@ namespace FM {
                 /* We don't have the drop data - extract uri list from selection data */
                 string? text;
                 if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    drop_file_list = EelGFile.list_new_from_string (text);
+                    drop_file_list = PF.FileUtils.files_from_uris (text);
                     drop_data_ready = true;
                 }
             }
@@ -2024,9 +2024,8 @@ namespace FM {
                     label = _("Run");
                     menu.append (label, "selection.open");
                 } else if (default_app != null) {
-                    var app_name = default_app.get_display_name ();
-                    if (app_name != Marlin.APP_TITLE) {
-                        label = (_("Open in %s")).printf (app_name);
+                    if (default_app.get_id () != GLib.Application.get_default ().application_id + ".desktop") {
+                        label = (_("Open in %s")).printf (default_app.get_display_name ());
                         menu.append (label, "selection.open_with_default");
                     }
                 }
@@ -2390,8 +2389,8 @@ namespace FM {
                     return;
             }
 
-            cancel_thumbnailing (); /* cancels any existing timeout or thumbnail request */
-
+            /* Do not cancel existing requests to avoid missing thumbnails */
+            cancel_timeout (ref thumbnail_source_id);
             /* In order to improve performance of the Icon View when there are a large number of files,
              * we freeze child notifications while the view is being scrolled or resized.
              * The timeout is restarted for each scroll or size allocate event */
@@ -2445,8 +2444,9 @@ namespace FM {
                         path = model.get_path (iter);
 
                         if (file != null) {
+                            file.query_thumbnail_update ();  // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if (file.flags == GOF.File.ThumbState.UNKNOWN) {
+                            if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
                                 visible_files.prepend (file);
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                     actually_visible++;
