@@ -18,6 +18,7 @@ vala_precompile(VALA_C ${PKGNAME}
     BookmarkList.vala
     DndHandler.vala
     Enums.vala
+    PixbufUtils.vala
     FileUtils.vala
     gof-callwhenready.vala
     gof-directory-async.vala
@@ -25,6 +26,8 @@ vala_precompile(VALA_C ${PKGNAME}
     PluginManager.vala
     Plugin.vala
     SoundManager.vala
+    TrashMonitor.vala
+    IconInfo.vala
 PACKAGES
     granite
     gtk+-3.0
@@ -48,9 +51,6 @@ GENERATE_HEADER
 set (C_SOURCE_FILES
     eel-fcts.c
     eel-gtk-extensions.c
-    eel-gdk-pixbuf-extensions.c
-    eel-pango-extensions.c
-    eel-gio-extensions.c
     eel-stock-dialogs.c
     eel-string.c
     marlin-file-operations.c
@@ -63,16 +63,11 @@ set (C_SOURCE_FILES
     marlin-progress-info-manager.c
     marlin-exec.c
     gof-file.c
-    marlin-icon-info.c
-    marlin-trash-monitor.c
     ${VALA_C})
 
 set (C_HEADER_FILES
     eel-fcts.h
     eel-gtk-extensions.h
-    eel-gdk-pixbuf-extensions.h
-    eel-pango-extensions.h
-    eel-gio-extensions.h
     eel-stock-dialogs.h
     eel-string.h
     gof-file.h
@@ -85,9 +80,7 @@ set (C_HEADER_FILES
     marlin-icons.h
     marlin-progress-info.h
     marlin-progress-info-manager.h
-    marlin-icon-info.h
-    fm-list-model.h
-    marlin-trash-monitor.h)
+    fm-list-model.h)
 
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig/)
