@@ -51,7 +51,7 @@ namespace Marlin {
     public const string ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC = "edit-find-symbolic";
     public const string ICON_PATHBAR_PRIMARY_PATH_SYMBOLIC = "emblem-documents-symbolic";
     public const string ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC = "go-jump-symbolic";
-    public const string ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC = "view-refresh-symbolic";
+    public const string ICON_PATHBAR_SECONDARY_FIND_SYMBOLIC = "edit-find-symbolic";
 
     public const string OPEN_IN_TERMINAL_DESKTOP_ID = "open-pantheon-terminal-here.desktop";
 

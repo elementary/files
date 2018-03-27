@@ -48,7 +48,6 @@ namespace Marlin.View.Chrome
 
         uint focus_timeout_id = 0;
 
-        public signal void reload_request ();
         public signal void focus_file_request (File? file);
         public signal void escape ();
 
@@ -58,7 +57,7 @@ namespace Marlin.View.Chrome
             bread = _bread;
             search_results = new SearchResults (bread as Gtk.Widget);
             connect_additional_signals ();
-            show_refresh_icon ();
+            show_search_action_icon ();
         }
 
         private void connect_additional_signals () {
@@ -114,7 +113,7 @@ namespace Marlin.View.Chrome
             base.after_bread_focus_out_event (event);
             search_mode = false;
             hide_search_icon ();
-            show_refresh_icon ();
+            show_search_action_icon ();
             focus_out_event (event);
             return true;
         }
@@ -134,7 +133,7 @@ namespace Marlin.View.Chrome
             if (has_focus) {
                 bread.activate ();
             } else {
-                reload_request ();
+                enter_search_mode ();
             }
         }
 
@@ -181,9 +180,9 @@ namespace Marlin.View.Chrome
             bread.set_primary_icon_name (null);
         }
 
-        protected void show_refresh_icon () {
-            bread.set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC);
-            bread.set_action_icon_tooltip (_("Reload this folder"));
+        protected void show_search_action_icon () {
+            bread.set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_FIND_SYMBOLIC);
+            bread.set_action_icon_tooltip (_("Search for files or folders"));
         }
         private void show_placeholder () {
             bread.set_placeholder (_("Enter search term or path"));
