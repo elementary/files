@@ -216,7 +216,7 @@ namespace PF.FileUtils {
             split_protocol_from_path (cp, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
             if (scheme == "" && path.length > 0) {
-                string [] paths = path.split("/", 2);
+                string [] paths = path.split ("/", 2);
                 switch (paths[0]) {
                     // ignore home documents
                     case "~":
@@ -225,30 +225,30 @@ namespace PF.FileUtils {
                         break;
                     // process special parent dir
                     case "..":
-                        sb.assign(current_scheme);
-                        sb.append(Path.DIR_SEPARATOR_S);
-                        sb.append(get_parent_path_from_path (current_path));
+                        sb.assign (current_scheme);
+                        sb.append (Path.DIR_SEPARATOR_S);
+                        sb.append (get_parent_path_from_path (current_path));
                         if (paths.length > 1) {
-                            sb.append(Path.DIR_SEPARATOR_S);
-                            sb.append(paths[1]);
+                            sb.append (Path.DIR_SEPARATOR_S);
+                            sb.append (paths[1]);
                         }
                         break;
                     // process current dir
                     case ".":
-                        sb.assign(cp);
+                        sb.assign (cp);
                         if (paths.length > 1) {
-                            sb.append(Path.DIR_SEPARATOR_S);
-                            sb.append(paths[1]);
+                            sb.append (Path.DIR_SEPARATOR_S);
+                            sb.append (paths[1]);
                         }
                         break;
                     // process directory without root
                     default:
-                        sb.assign(cp);
-                        sb.append(Path.DIR_SEPARATOR_S);
-                        sb.append(paths[0]);
+                        sb.assign (cp);
+                        sb.append (Path.DIR_SEPARATOR_S);
+                        sb.append (paths[0]);
                         if (paths.length > 1) {
-                            sb.append(Path.DIR_SEPARATOR_S);
-                            sb.append(paths[1]);
+                            sb.append (Path.DIR_SEPARATOR_S);
+                            sb.append (paths[1]);
                         }
                         break;
                 }
@@ -268,7 +268,7 @@ namespace PF.FileUtils {
             path = path.replace ("//", "/");
         } while (path.contains ("//"));
 
-        string new_path = (scheme + path).replace("////", "///");
+        string new_path = (scheme + path).replace ("////", "///");
         if (new_path.length > 0) {
             /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
             if (!scheme.has_prefix (Marlin.ROOT_FS_URI) &&
@@ -277,7 +277,7 @@ namespace PF.FileUtils {
 
                 new_path = new_path.replace ("///", "//");
             }
-            new_path = new_path.replace("ssh:", "sftp:");
+            new_path = new_path.replace ("ssh:", "sftp:");
 
             if (path == "/" && !can_browse_scheme (scheme)) {
                 new_path = "";
@@ -322,10 +322,6 @@ namespace PF.FileUtils {
         if (Marlin.ROOT_FS_URI.has_prefix (protocol)) {
             protocol = "";
         }
-
-        //  if (!new_path.has_prefix (Path.DIR_SEPARATOR_S)) {
-        //      new_path = Path.DIR_SEPARATOR_S + new_path;
-        //  }
     }
 
     private bool valid_mtp_uri (string uri) {
