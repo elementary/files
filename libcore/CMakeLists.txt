@@ -20,6 +20,7 @@ vala_precompile(VALA_C ${PKGNAME}
     Enums.vala
     PixbufUtils.vala
     FileUtils.vala
+    FileConflictDialog.vala
     gof-callwhenready.vala
     gof-directory-async.vala
     gof-preferences.vala
@@ -57,7 +58,6 @@ set (C_SOURCE_FILES
     marlin-undostack-manager.c
     marlin-file-changes-queue.c
     marlin-file-utilities.c
-    marlin-file-conflict-dialog.c
     fm-list-model.c
     marlin-progress-info.c
     marlin-progress-info-manager.c
@@ -72,7 +72,6 @@ set (C_HEADER_FILES
     eel-string.h
     gof-file.h
     marlin-exec.h
-    marlin-file-conflict-dialog.h
     marlin-file-operations.h
     marlin-undostack-manager.h
     marlin-file-changes-queue.h

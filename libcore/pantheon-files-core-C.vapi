@@ -224,6 +224,7 @@ namespace GOF {
         public uint64 size;
         public string format_size;
         public int color;
+        public uint64 modified;
         public string formated_modified;
         public string formated_type;
         public string tagstype;
