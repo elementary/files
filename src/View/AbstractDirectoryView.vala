@@ -2375,8 +2375,8 @@ namespace FM {
                     return;
             }
 
-            cancel_thumbnailing (); /* cancels any existing timeout or thumbnail request */
-
+            /* Do not cancel existing requests to avoid missing thumbnails */
+            cancel_timeout (ref thumbnail_source_id);
             /* In order to improve performance of the Icon View when there are a large number of files,
              * we freeze child notifications while the view is being scrolled or resized.
              * The timeout is restarted for each scroll or size allocate event */
@@ -2430,8 +2430,9 @@ namespace FM {
                         path = model.get_path (iter);
 
                         if (file != null) {
+                            file.query_thumbnail_update ();  // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if (file.flags == GOF.File.ThumbState.UNKNOWN) {
+                            if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
                                 visible_files.prepend (file);
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                     actually_visible++;
