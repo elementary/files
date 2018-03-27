@@ -71,7 +71,9 @@ namespace FM {
             {"new", on_background_action_new, "s"},
             {"create_from", on_background_action_create_from, "s"},
             {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
-            {"reverse", on_background_action_reverse_changed, null, "false"}
+            {"reverse", on_background_action_reverse_changed, null, "false"},
+            {"show_hidden", null, null, "false", change_state_show_hidden},
+            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
 
         const GLib.ActionEntry [] common_entries = {
@@ -401,6 +403,9 @@ namespace FM {
             common_actions = new GLib.SimpleActionGroup ();
             common_actions.add_action_entries (common_entries, this);
             insert_action_group ("common", common_actions);
+
+            action_set_state (background_actions, "show_hidden", Preferences.settings.get_boolean ("show-hiddenfiles"));
+            action_set_state (background_actions, "show_remote_thumbnails", Preferences.settings.get_boolean ("show-remote-thumbnails"));
         }
 
         public void zoom_in () {
@@ -1117,6 +1122,13 @@ namespace FM {
 
         /** Background actions */
 
+        private void change_state_show_hidden (GLib.SimpleAction action) {
+            window.change_state_show_hidden (action);
+        }
+        private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
+            window.change_state_show_remote_thumbnails (action);
+        }
+
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
             switch (param.get_string ()) {
                 case "FOLDER":
@@ -1358,10 +1370,13 @@ namespace FM {
             if (!show) {
                 unblock_model ();
             }
+
+            action_set_state (background_actions, "show_hidden", show);
         }
 
         private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             show_remote_thumbnails = (prefs as GOF.Preferences).show_remote_thumbnails;
+            action_set_state (background_actions, "show_remote_thumbnails", show_remote_thumbnails);
             if (show_remote_thumbnails) {
                 slot.reload ();
             }
@@ -1930,6 +1945,7 @@ namespace FM {
 
             if (in_recent) {
                 menu.append_section (null, builder.get_object ("sort-by") as GLib.MenuModel);
+                menu.append_section (null, build_show_menu (builder));
                 return menu as MenuModel;
             }
 
@@ -1966,11 +1982,21 @@ namespace FM {
                 }
             }
 
+            menu.append_section (null, build_show_menu (builder));
+
             if (!in_network_root) {
                 menu.append_section (null, builder.get_object ("properties") as GLib.MenuModel);
             }
 
             return menu as MenuModel;
+        }
+
+        private GLib.MenuModel build_show_menu (Gtk.Builder builder) {
+            var show_menu = builder.get_object ("show") as GLib.Menu;
+            if (slot.directory.is_local || !slot.directory.can_open_files) {
+                show_menu.remove (1); /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
+            }
+            return show_menu;
         }
 
         private GLib.MenuModel? build_menu_open (ref Gtk.Builder builder) {

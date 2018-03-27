@@ -81,58 +81,16 @@ namespace Marlin.View.Chrome
             });
 
             view_switcher = switcher;
+            view_switcher.margin_end = 20;
             view_switcher.show_all ();
             pack_start (view_switcher);
 
             location_bar = new LocationBar ();
-            location_bar.margin_start = 20;
-            location_bar.margin_end = 12;
             connect_location_bar_signals ();
             location_bar.show_all ();
             pack_start (location_bar);
 
-            var menu_button = new Gtk.MenuButton ();
-            menu_button.image = new Gtk.Image.from_icon_name ("open-menu", Gtk.IconSize.LARGE_TOOLBAR);
-            menu_button.popup = build_popup_menu ();
-            menu_button.show_all ();
-            pack_start (menu_button);
-
             show ();
-        }
-
-        private Gtk.Menu build_popup_menu () {
-            var popup_menu = new Gtk.Menu ();
-
-            var hidden_files_item = new Gtk.CheckMenuItem.with_label (_ ("Show Hidden Files"));
-            var hidden_files_label = (Gtk.AccelLabel) hidden_files_item.get_child ();
-            hidden_files_label.set_accel(Gdk.Key.H, Gdk.ModifierType.CONTROL_MASK);
-            Preferences.settings.bind ("show-hiddenfiles", hidden_files_item,
-                "active", GLib.SettingsBindFlags.GET);
-            hidden_files_item.activate.connect (() => {
-                var show = !Preferences.settings.get_boolean ("show-hiddenfiles");
-                Preferences.settings.set_boolean ("show-hiddenfiles", show);
-            });
-            popup_menu.add (hidden_files_item);
-
-            var remote_thumbnails_item = new Gtk.CheckMenuItem.with_label (_ ("Show Remote Thumbnails"));
-            Preferences.settings.bind ("show-remote-thumbnails", remote_thumbnails_item,
-                "active", GLib.SettingsBindFlags.GET);
-            remote_thumbnails_item.activate.connect (() => {
-                var show = !Preferences.settings.get_boolean ("show-remote-thumbnails");
-                Preferences.settings.set_boolean ("show-remote-thumbnails", show);
-            });
-            popup_menu.add (remote_thumbnails_item);
-
-            popup_menu.add (new Gtk.SeparatorMenuItem ());
-
-            var reload_item = new Gtk.MenuItem.with_label (_ ("Reload This Folder"));
-            var reload_item_label = (Gtk.AccelLabel) reload_item.get_child ();
-            reload_item_label.set_accel(Gdk.Key.R, Gdk.ModifierType.CONTROL_MASK);
-            reload_item.activate.connect (() => reload_request ());
-            popup_menu.add (reload_item);
-
-            popup_menu.show_all ();
-            return popup_menu;
         }
 
         private void connect_location_bar_signals () {
