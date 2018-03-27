@@ -185,7 +185,7 @@ public class Marlin.Application : Granite.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            string path = PF.FileUtils.sanitize_path (filepath, null);
+            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir());
             GLib.File? file = null;
 
             if (path.length > 0) {
