@@ -56,7 +56,6 @@ namespace Marlin.View.Chrome
         public signal void focus_location_request (GLib.File? location);
         public signal void path_change_request (string path, Marlin.OpenFlag flag);
         public signal void escape ();
-        public signal void reload_request ();
 
         public TopMenu (ViewSwitcher switcher) {
             button_back = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-previous-symbolic", Gtk.IconSize.LARGE_TOOLBAR);
