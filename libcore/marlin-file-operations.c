@@ -5691,11 +5691,7 @@ create_job (GIOSchedulerJob *io_job,
     common = &job->common;
     common->io_job = io_job;
 
-#ifdef HAVE_TASKVIEW
-    taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
-#else
     marlin_progress_info_start (job->common.progress);
-#endif
 
     handled_invalid_filename = FALSE;
 
