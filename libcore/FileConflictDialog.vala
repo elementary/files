@@ -173,6 +173,8 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         add_button (_("_Skip"), ResponseType.SKIP);
         var rename_button = (Gtk.Button) add_button (_("Re_name"), ResponseType.RENAME);
 
+        add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+
         replace_button = (Gtk.Button) add_button (_("Replace"), ResponseType.REPLACE);
         replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
