@@ -854,7 +854,42 @@ gof_file_query_thumbnail_update (GOFFile *file)
         g_free (md5_hash);
     }
 
+    gof_file_check_stale_thumbnail(file);
+
     gof_file_update_icon_internal (file, file->pix_size);
+}
+
+void gof_file_check_stale_thumbnail (GOFFile *file)
+{
+    GFile       *thumbs;
+    GFileInfo   *info;
+    GError      *err = NULL;
+    guint64     file_changed;
+    guint64     thumb_changed;
+    const gchar *thumb_path;
+
+    thumb_path = gof_file_get_thumbnail_path (file);
+    thumbs = g_file_new_for_path (thumb_path);
+    info = g_file_query_info (thumbs, G_FILE_ATTRIBUTE_TIME_CHANGED, 0, NULL, &err);
+
+    if (err != NULL) {
+        print_error (err);
+        g_object_unref (info);
+        g_object_unref (thumbs);
+        return;
+    }
+
+    file_changed = g_file_info_get_attribute_uint64 (file->info, G_FILE_ATTRIBUTE_TIME_CHANGED);
+    thumb_changed = g_file_info_get_attribute_uint64 (info, G_FILE_ATTRIBUTE_TIME_CHANGED);
+
+    // thumb_changed more than 0 means attribute exists
+    // file_changed bigger than thumb_changed means file is recently modified
+    if (thumb_changed > 0 && file_changed > thumb_changed) {
+        g_unlink (thumb_path);
+    }
+
+    g_object_unref (info);
+    g_object_unref (thumbs);
 }
 
 void gof_file_update_trash_info (GOFFile *file)
