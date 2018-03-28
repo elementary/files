@@ -46,7 +46,6 @@
 #include "eel-string.h"
 
 #include "marlin-file-changes-queue.h"
-#include "marlin-file-conflict-dialog.h"
 #include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
@@ -3787,7 +3786,7 @@ do_run_conflict_dialog (gpointer _data)
                                               data->dest_dir);
     response = gtk_dialog_run (GTK_DIALOG (dialog));
 
-    if (response == CONFLICT_RESPONSE_RENAME) {
+    if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
         data->resp_data->new_name =
             marlin_file_conflict_dialog_get_new_name (MARLIN_FILE_CONFLICT_DIALOG (dialog));
     } else if (response != GTK_RESPONSE_CANCEL ||
@@ -4102,12 +4101,12 @@ retry:
             response->id == GTK_RESPONSE_DELETE_EVENT) {
             conflict_response_data_free (response);
             abort_job (job);
-        } else if (response->id == CONFLICT_RESPONSE_SKIP) {
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (response->apply_to_all) {
                 job->skip_all_conflict = TRUE;
             }
             conflict_response_data_free (response);
-        } else if (response->id == CONFLICT_RESPONSE_REPLACE) { /* merge/replace */
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE) { /* merge/replace */
             if (response->apply_to_all) {
                 if (is_merge) {
                     job->merge_all = TRUE;
@@ -4118,7 +4117,7 @@ retry:
             overwrite = TRUE;
             conflict_response_data_free (response);
             goto retry;
-        } else if (response->id == CONFLICT_RESPONSE_RENAME) {
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
             g_object_unref (dest);
             dest = get_target_file_for_display_name (dest_dir,
                                                      response->new_name);
@@ -4676,12 +4675,12 @@ retry:
             response->id == GTK_RESPONSE_DELETE_EVENT) {
             conflict_response_data_free (response);
             abort_job (job);
-        } else if (response->id == CONFLICT_RESPONSE_SKIP) {
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (response->apply_to_all) {
                 job->skip_all_conflict = TRUE;
             }
             conflict_response_data_free (response);
-        } else if (response->id == CONFLICT_RESPONSE_REPLACE) { /* merge/replace */
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE) { /* merge/replace */
             if (response->apply_to_all) {
                 if (is_merge) {
                     job->merge_all = TRUE;
@@ -4692,13 +4691,7 @@ retry:
             overwrite = TRUE;
             conflict_response_data_free (response);
             goto retry;
-        } else if (response->id == CONFLICT_RESPONSE_RENAME) {
-            g_object_unref (dest);
-            dest = get_target_file_for_display_name (dest_dir,
-                                                     response->new_name);
-            conflict_response_data_free (response);
-            goto retry;
-        } else if (response->id == CONFLICT_RESPONSE_RENAME) {
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
             g_object_unref (dest);
             dest = get_target_file_for_display_name (dest_dir,
                                                      response->new_name);
@@ -5698,11 +5691,7 @@ create_job (GIOSchedulerJob *io_job,
     common = &job->common;
     common->io_job = io_job;
 
-#ifdef HAVE_TASKVIEW
-    taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
-#else
     marlin_progress_info_start (job->common.progress);
-#endif
 
     handled_invalid_filename = FALSE;
 
