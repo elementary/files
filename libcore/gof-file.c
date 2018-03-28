@@ -854,7 +854,7 @@ gof_file_query_thumbnail_update (GOFFile *file)
         g_free (md5_hash);
     }
 
-    gof_file_check_stale_thumbnail(file);
+    gof_file_check_stale_thumbnail (file);
 
     gof_file_update_icon_internal (file, file->pix_size);
 }
