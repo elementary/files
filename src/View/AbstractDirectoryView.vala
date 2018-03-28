@@ -210,7 +210,7 @@ namespace FM {
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
             count of the file object.*/
-        private GLib.List<unowned GOF.File> selected_files = null;
+        protected GLib.List<unowned GOF.File> selected_files = null;
         private bool selected_files_invalid = true;
 
         /* support for linear selection mode in icon view */
@@ -2828,39 +2828,7 @@ namespace FM {
                         break;
                     }
 
-                    if (no_mods) {
-                        /* Deselect all except under cursor (works differently for Gtk.IconView and Gtk.TreeView) */
-                        unselect_others ();
-                        previous_linear_selection_path = null;
-                    } else if (linear_select_required) { /* Only true for Icon View */
-                        Gtk.TreePath? path = get_path_at_cursor ();
-
-                        if (path != null) {
-                            Gtk.TreePath old_path = path;
-
-                            if (event.keyval == Gdk.Key.Right) {
-                                path.next (); /* Does not check if path is valid */
-                            } else if (event.keyval == Gdk.Key.Left) {
-                                path.prev ();
-                            } else if (event.keyval == Gdk.Key.Up) {
-                                path = up (path);
-                            } else if (event.keyval == Gdk.Key.Down) {
-                                path = down (path);
-                            }
-
-                            Gtk.TreeIter? iter = null;
-                            /* Do not try to select invalid path */
-                            if (model.get_iter (out iter, path)) {
-                                if (only_shift_pressed && selected_files != null) {
-                                    linear_select_path (path);
-                                    res = true;
-                                }
-                            }
-                        }
-                    } else {
-                        previous_selection_was_linear = false;
-                        previous_linear_selection_path = null;
-                    }
+                    res = move_cursor (keyval, only_shift_pressed);
 
                     break;
 
@@ -3623,6 +3591,10 @@ namespace FM {
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top);
+
+        /* By default use the native widget cursor handling by returning false */
+        protected virtual bool move_cursor (uint keyval, bool only_shift_pressed) {return false;}
+
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
