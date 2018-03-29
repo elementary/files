@@ -19,6 +19,11 @@
 namespace FM {
     public class IconView : AbstractDirectoryView {
         protected new Gtk.IconView tree;
+        /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
+        protected bool previous_selection_was_linear = false;
+        protected Gtk.TreePath? previous_linear_selection_path = null;
+        protected int previous_linear_selection_direction = 0;
+        protected bool linear_select_required = false;
 
         public IconView (Marlin.View.Slot _slot) {
             assert (_slot != null);
@@ -294,12 +299,28 @@ namespace FM {
             tree.set_cursor (path, renderer, start_editing);
         }
 
+        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed,  bool only_shift_pressed) {
+            linear_select_required = only_shift_pressed;
+            if (linear_select_required) {
+                return true;
+            } else {
+                return base.will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed);
+            }
+        }
+
+        protected override bool handle_multi_select (Gtk.TreePath path) {
+            if (selected_files.length () > 0) {
+                linear_select_path (path);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         /* Override native Gtk.IconView cursor handling */
         protected override bool move_cursor (uint keyval, bool only_shift_pressed) {
             Gtk.TreePath? path = get_path_at_cursor ();
             if (path != null) {
-                Gtk.TreePath old_path = path;
-
                 if (keyval == Gdk.Key.Right) {
                     path.next (); /* Does not check if path is valid */
                 } else if (keyval == Gdk.Key.Left) {
@@ -380,7 +401,7 @@ namespace FM {
             tree.thaw_child_notify ();
         }
 
-        protected override void linear_select_path (Gtk.TreePath path) {
+        protected void linear_select_path (Gtk.TreePath path) {
             /* We override the native Gtk.IconView behaviour when selecting files with Shift-Click */
             /* We wish to emulate the behaviour of ListView and ColumnView. This depends on whether the */
             /* the previous selection was made with the Shift key pressed */
@@ -449,6 +470,7 @@ namespace FM {
                     unselect_path (p);
                 } while (p.compare (p2) != 0 && p.compare (last_selected) <= 0);
             }
+
             previous_selection_was_linear = true;
 
             selected_paths = tree.get_selected_items ();
