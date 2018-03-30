@@ -38,9 +38,7 @@ namespace Marlin.View {
         private uint deep_count_timeout_id = 0;
         public bool showbar = false;
 
-        public OverlayBar (Gtk.Overlay overlay) {
-            base (overlay); /* this adds the overlaybar to the overlay (ViewContainer) */
-
+        public OverlayBar () {
             buffer = new uint8[IMAGE_LOADER_BUFFER_SIZE];
             label = "";
             hide.connect (cancel);

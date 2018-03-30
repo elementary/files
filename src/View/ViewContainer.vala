@@ -109,7 +109,7 @@ namespace Marlin.View {
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win) {
             window = win;
-            overlay_statusbar = new OverlayBar (this);
+            overlay_statusbar = new OverlayBar ();
             browser = new Browser ();
 
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
@@ -155,17 +155,12 @@ namespace Marlin.View {
 
         public void close () {
             close_view_slot ();
-
-            /* Need to force destruction because of circular reference.
-             * (https://github.com/elementary/granite/issues/110).
-             * Note: causes fatal warning in terminal. */
-            destroy ();
         }
 
         private void close_view_slot () {
             /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
             view.close ();
-            content_item = null; /* Make sure old slot and directory view are destroyed */
+            content = null; /* Make sure old slot and directory view are destroyed */
             view = null; /* Pre-requisite for add view */
         }
 
