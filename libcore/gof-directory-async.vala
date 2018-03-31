@@ -23,12 +23,11 @@
 namespace GOF.Directory {
 
 public class Async : Object {
-
-    private static HashTable<GLib.File,GOF.Directory.Async> directory_cache;
+    private static HashTable<GLib.File, unowned GOF.Directory.Async> directory_cache;
     private static Mutex dir_cache_lock;
 
     static construct {
-        directory_cache = new HashTable<GLib.File,GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
+        directory_cache = new HashTable<GLib.File, unowned GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
         dir_cache_lock = GLib.Mutex ();
     }
 
@@ -41,9 +40,10 @@ public class Async : Object {
     private const int QUERY_INFO_TIMEOUT_SEC = 20;
     private const int MOUNT_TIMEOUT_SEC = 60;
 
-    public GLib.File location;
+    public GLib.File creation_key {get; construct;}
+    public GLib.File location {get; private set;}
     public GLib.File? selected_file {get; private set;}
-    public GOF.File file;
+    public GOF.File file {get; private set;}
     public int icon_size = 32;
 
     /* we're looking for particular path keywords like *\/icons* .icons ... */
@@ -115,14 +115,11 @@ public class Async : Object {
     public bool loaded_from_cache {get; private set; default = false;}
 
     private Async (GLib.File _file) {
-        /* Ensure uri is correctly escaped and has scheme */
-        var escaped_uri = PF.FileUtils.escape_uri (_file.get_uri ());
-        scheme = Uri.parse_scheme (escaped_uri);
-        if (scheme == null) {
-            scheme = Marlin.ROOT_FS_URI;
-            escaped_uri = scheme + escaped_uri;
-        }
-        location = GLib.File.new_for_uri (escaped_uri);
+        Object (
+            creation_key: _file
+        );
+
+        location = _file;
         file = GOF.File.get (location);
         selected_file = null;
 
@@ -144,6 +141,7 @@ public class Async : Object {
 
     ~Async () {
         debug ("Async destruct %s", file.uri);
+
         if (is_trash)
             disconnect_volume_monitor_signals ();
     }
@@ -408,6 +406,8 @@ public class Async : Object {
                                                                            file.is_connected.to_string (),
                                                                            file.is_mounted.to_string (),
                                                                            file.exists.to_string ());
+
+            directory_cache.remove (creation_key);
             after_loading (file_loaded_func);
             return;
         }
@@ -422,13 +422,13 @@ public class Async : Object {
 
             dir_cache_lock.@lock ();
 
-            directory_cache.insert (location.dup (), this);
             this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
-            this.unref (); /* Make the toggle ref the only ref */
+
+            if (!creation_key.equal (location)) {
+                directory_cache.insert (location.dup (), this);
+            }
 
             dir_cache_lock.unlock ();
-
-
         }
 
         /* The following can run on reloading */
@@ -446,25 +446,23 @@ public class Async : Object {
 
         set_confirm_trash ();
 
-        if (can_load) {
-            uri_contains_keypath_icons = PF.FileUtils.is_icon_path (file.uri);
-            if (file_loaded_func == null && is_local) {
-                try {
-                    monitor = location.monitor_directory (0);
-                    monitor.rate_limit = 100;
-                    monitor.changed.connect (directory_changed);
-                } catch (IOError e) {
-                    last_error_message = e.message;
-                    if (!(e is IOError.NOT_MOUNTED)) {
-                        /* Will fail for remote filesystems - not an error */
-                        debug ("directory monitor failed: %s %s", e.message, file.uri);
-                    }
+        uri_contains_keypath_icons = PF.FileUtils.is_icon_path (file.uri);
+        if (file_loaded_func == null && is_local) {
+            try {
+                monitor = location.monitor_directory (0);
+                monitor.rate_limit = 100;
+                monitor.changed.connect (directory_changed);
+            } catch (IOError e) {
+                last_error_message = e.message;
+                if (!(e is IOError.NOT_MOUNTED)) {
+                    /* Will fail for remote filesystems - not an error */
+                    debug ("directory monitor failed: %s %s", e.message, file.uri);
                 }
             }
+        }
 
-            if (is_trash) {
-                connect_volume_monitor_signals ();
-            }
+        if (is_trash) {
+            connect_volume_monitor_signals ();
         }
 
         yield list_directory_async (file_loaded_func);
@@ -510,8 +508,7 @@ public class Async : Object {
             debug ("Async is last toggle_ref_notify %s", dir.file.uri);
 
             if (!dir.removed_from_cache) {
-                dir.@ref (); /* Add back ref removed when cached so toggle ref not removed */
-                dir.remove_dir_from_cache ();
+                Async.remove_dir_from_cache (dir);
             }
 
             dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
@@ -1043,10 +1040,26 @@ public class Async : Object {
 
     public static Async from_gfile (GLib.File file) {
         assert (file != null);
+        /* Ensure uri is correctly escaped and has scheme */
+        var escaped_uri = PF.FileUtils.escape_uri (file.get_uri ());
+        var scheme = Uri.parse_scheme (escaped_uri);
+        if (scheme == null) {
+            scheme = Marlin.ROOT_FS_URI;
+            escaped_uri = scheme + escaped_uri;
+        }
+
+        var gfile = GLib.File.new_for_uri (escaped_uri);
         /* Note: cache_lookup creates directory_cache if necessary */
-        Async?  dir = cache_lookup (file);
+        Async?  dir = cache_lookup (gfile);
         /* Both local and non-local files can be cached */
-        return dir ?? new Async (file);
+        if (dir == null) {
+            dir = new Async (gfile);
+            dir_cache_lock.@lock ();
+            directory_cache.insert (dir.creation_key, dir);
+            dir_cache_lock.unlock ();
+        }
+
+        return dir;
     }
 
     public static Async from_file (GOF.File gof) {
@@ -1105,20 +1118,26 @@ public class Async : Object {
         return parent != null ? cache_lookup (parent) : cache_lookup (file);
     }
 
-    public bool remove_dir_from_cache () {
-        removed_from_cache = true;
-        return directory_cache.remove (location);
+    public static bool remove_dir_from_cache (Async dir) {
+        if (directory_cache.remove (dir.creation_key)) {
+            directory_cache.remove (dir.location);
+            dir.removed_from_cache = true;
+            return true;
+        }
+
+        return false;
     }
 
-    public bool purge_dir_from_cache () {
-        var removed = remove_dir_from_cache ();
+    public static bool purge_dir_from_cache (Async dir) {
+        var removed = Async.remove_dir_from_cache (dir);
         /* We have to remove the dir's subfolders from cache too */
         if (removed) {
-            foreach (var gfile in file_hash.get_keys ()) {
+            foreach (var gfile in dir.file_hash.get_keys ()) {
                 assert (gfile != null);
-                var dir = cache_lookup (gfile);
-                if (dir != null)
-                    dir.remove_dir_from_cache ();
+                var d = cache_lookup (gfile);
+                if (d != null) {
+                    Async.remove_dir_from_cache (d);
+                }
             }
         }
 

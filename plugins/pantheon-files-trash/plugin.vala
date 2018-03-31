@@ -16,13 +16,13 @@
 ***/
 
 public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
-    private TrashMonitor trash_monitor;
+    private unowned TrashMonitor trash_monitor;
     private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.InfoBar> infobars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.InfoBar>();
 
     public Trash () {
-        trash_monitor = TrashMonitor.get ();
-        trash_monitor.trash_state_changed.connect ((state) => {
-            /* state true = empty trash */
+        trash_monitor = TrashMonitor.get_default ();
+        trash_monitor.notify["is-empty"].connect (() => {
+            var state = trash_monitor.is_empty;
             var to_remove = new Gee.ArrayList<Gee.Map.Entry<GOF.AbstractSlot,Gtk.InfoBar>> ();
             foreach (var entry in infobars.entries) {
                 var infobar = entry.value;
@@ -82,10 +82,11 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 if (w is Gtk.Label)
                     (w as Gtk.Label).set_text (msg);
             }
-            infobar.set_response_sensitive (0, !TrashMonitor.is_empty () && file.basename == "/");
-            infobar.set_response_sensitive (1, !TrashMonitor.is_empty () && file.basename == "/");
+
+            infobar.set_response_sensitive (0, !trash_monitor.is_empty && file.basename == "/");
+            infobar.set_response_sensitive (1, !trash_monitor.is_empty && file.basename == "/");
             infobar.show_all ();
-            infobar.set_visible (!TrashMonitor.is_empty ());
+            infobar.set_visible (!trash_monitor.is_empty);
         } else if (infobar != null) {
             infobar.destroy ();
             infobars.unset (slot);

@@ -23,7 +23,7 @@
 #include "marlin-file-utilities.h"
 
 #include "gof-file.h"
-#include "eel-gio-extensions.h"
+#include "pantheon-files-core.h"
 #include "eel-stock-dialogs.h"
 #include <glib.h>
 #include <glib/gprintf.h>
