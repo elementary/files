@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-03-07 00:09+0000\n"
+"PO-Revision-Date: 2018-03-27 00:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
@@ -1503,7 +1503,7 @@ msgstr "ゴミ箱内のファイルをコピーできません"
 
 #: ../src/View/AbstractDirectoryView.vala:2839
 msgid "Cutting the selection instead"
-msgstr "代わりに選択を切り取り"
+msgstr "代わりに選択をカットする"
 
 #: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
@@ -1877,7 +1877,7 @@ msgstr "--quit オプションには URI を指定できません。"
 
 #: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
 msgid "There is nothing on the clipboard to paste"
-msgstr "クリップボード上に貼り付けるものがありません"
+msgstr "クリップボード上にペーストするものがありません"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -2302,11 +2302,11 @@ msgstr "ブックマーク"
 
 #: ../src/View/directory_view_popup.ui:113
 msgid "Paste"
-msgstr "貼り付け"
+msgstr "ペースト"
 
 #: ../src/View/directory_view_popup.ui:120
 msgid "Cut"
-msgstr "切り取り"
+msgstr "カット"
 
 #: ../src/View/directory_view_popup.ui:124
 msgid "Copy"

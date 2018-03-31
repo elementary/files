@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-03-01 12:39+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: Swedish <sv@li.org>\n"
+"PO-Revision-Date: 2018-03-19 00:01+0000\n"
+"Last-Translator: Smalbenet <smalbenet@gmail.com>\n"
+"Language-Team: Swedish "
+"<https://weblate.elementary.io/projects/files/files/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1079,7 +1080,7 @@ msgstr "Visa mer _information"
 
 #: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
 msgid "Inaccessible"
-msgstr ""
+msgstr "Otillgänglig"
 
 #: ../libcore/gof-file.c:377
 #, c-format
@@ -1511,7 +1512,7 @@ msgstr "Kan inte öppna denna filen"
 
 #: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Det går inte att identifiera filtyp som ska öppnas"
 
 #: ../src/View/AbstractDirectoryView.vala:1556
 msgid "Cannot drop this file"
@@ -1553,13 +1554,13 @@ msgstr "Namnlös %s"
 #: ../src/View/AbstractDirectoryView.vala:2689
 #: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Det går inte att ta bort filer härifrån"
 
 #: ../src/View/AbstractDirectoryView.vala:2690
 #: ../src/View/AbstractDirectoryView.vala:2860
 #: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Du har inte behörighet att ändra den här platsen"
 
 #: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
@@ -1571,7 +1572,7 @@ msgstr "Klipper ut markeringen istället"
 
 #: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Kan inte kopiera filer hit"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1580,7 +1581,7 @@ msgstr "Ladda om den här mappen"
 #: ../src/View/Widgets/LocationBar.vala:189
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
 msgid "Enter search term or path"
-msgstr ""
+msgstr "Ange sökord eller sökväg"
 
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid "%u folders"
@@ -1605,8 +1606,8 @@ msgstr " valda"
 #: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u mapp"
+msgstr[1] "%u mappar"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1643,11 +1644,11 @@ msgstr "okänd storlek"
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u fil är inte läsbar"
 
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u filer är inte läsbara"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open in New Tab"
@@ -1655,11 +1656,11 @@ msgstr "Öppna i ny flik"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:429
 msgid "Open in New Window"
-msgstr ""
+msgstr "Öppna i nytt fönster"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Öppna med annat program…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1856,11 +1857,11 @@ msgstr "Du kan inte skapa en mapp här."
 
 #: ../src/View/ViewContainer.vala:410
 msgid "The network is unavailable"
-msgstr ""
+msgstr "Nätverket är inte tillgängligt"
 
 #: ../src/View/ViewContainer.vala:411
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Ett fungerande nätverk behövs för att nå den här mappen"
 
 #: ../src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
@@ -1880,7 +1881,7 @@ msgstr "Kunde inte ansluta till den här mappens server"
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Kan inte visa mappinnehåll"
 
 #: ../src/View/ViewContainer.vala:420
 msgid "The operation timed out."
@@ -1888,7 +1889,7 @@ msgstr ""
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Det går inte att visa mappen"
 
 #: ../src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
@@ -1970,19 +1971,19 @@ msgstr "Kapacitet:"
 #: ../src/Dialogs/PropertiesWindow.vala:416
 #: ../src/Dialogs/PropertiesWindow.vala:452
 msgid "Unknown"
-msgstr ""
+msgstr "Okänd"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:156
 msgid "Available:"
-msgstr ""
+msgstr "Tillgängliga:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 msgid "Used:"
-msgstr ""
+msgstr "Använd:"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Diskegenskaper"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:78
 #: ../src/Dialogs/PropertiesWindow.vala:561
@@ -1991,7 +1992,7 @@ msgstr "Plats:"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:85
 msgid "Format:"
-msgstr ""
+msgstr "Format:"
 
 #: ../src/Dialogs/ChooseAppDialog.vala:40
 msgid "Set as default"
@@ -2003,7 +2004,7 @@ msgstr "Rättigheter"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Faktisk storlek kan vara större"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
@@ -2018,7 +2019,7 @@ msgstr "okänt"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr ""
+msgstr "Laddar…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
