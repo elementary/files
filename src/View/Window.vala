@@ -89,10 +89,6 @@ namespace Marlin.View {
             if (is_first_window) {
                 set_accelerators ();
             }
-
-            /* Ensure tab key works as desired (toggle between sidebar and view).  Other widgets/functions
-             * have other keyboard shortcuts (location bar, view mode etc) */
-            unset_focus_chain ();
         }
 
         construct {
@@ -213,23 +209,23 @@ namespace Marlin.View {
             /* Toggle focus between sidebar and view using unmodified Tab key, unless location
              * bar in focus. */
             key_press_event.connect_after ((event) => {
-                var mods = (event.state & Gtk.accelerator_get_default_mod_mask ());
-
                 switch (event.keyval) {
-                    case Gdk.Key.Tab:
-                    case Gdk.Key.KP_Tab:
-                        if (mods != 0 || top_menu.locked_focus) {
+                    case Gdk.Key.Left:
+                    case Gdk.Key.Right:
+                        /* Arrow events only reach here if ignored by views etc because of unhandled mods e.g. Ctrl+Alt.
+                         * Use these events to toggle focus between view and sidebar using keyboard only */
+                        if (top_menu.locked_focus) {
                             return false;
                         }
+
+                        if (event.keyval == Gdk.Key.Left) {
                         /* This works better than trying to use a focus chain */
-                        if (sidebar.has_focus) {
+                            sidebar.grab_focus ();
+                        } else {
                             current_tab.grab_focus ();
                             sidebar.sync_needed ();
-                        } else {
-                            sidebar.grab_focus ();
                         }
-
-                    return true;
+                        return true;
 
                     default:
                         /* Use find function instead of view interactive search */
