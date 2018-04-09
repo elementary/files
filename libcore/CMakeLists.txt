@@ -57,7 +57,6 @@ set (C_SOURCE_FILES
     marlin-file-operations.c
     marlin-undostack-manager.c
     marlin-file-changes-queue.c
-    marlin-file-utilities.c
     fm-list-model.c
     marlin-progress-info.c
     marlin-progress-info-manager.c
@@ -75,7 +74,6 @@ set (C_HEADER_FILES
     marlin-file-operations.h
     marlin-undostack-manager.h
     marlin-file-changes-queue.h
-    marlin-file-utilities.h
     marlin-icons.h
     marlin-progress-info.h
     marlin-progress-info-manager.h
