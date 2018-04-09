@@ -26,6 +26,7 @@ vala_precompile(VALA_C ${PKGNAME}
     gof-preferences.vala
     PluginManager.vala
     Plugin.vala
+    ProgressInfoManager.vala
     SoundManager.vala
     TrashMonitor.vala
     IconInfo.vala
@@ -59,7 +60,6 @@ set (C_SOURCE_FILES
     marlin-file-changes-queue.c
     fm-list-model.c
     marlin-progress-info.c
-    marlin-progress-info-manager.c
     marlin-exec.c
     gof-file.c
     ${VALA_C})
@@ -76,7 +76,6 @@ set (C_HEADER_FILES
     marlin-file-changes-queue.h
     marlin-icons.h
     marlin-progress-info.h
-    marlin-progress-info-manager.h
     fm-list-model.h)
 
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)

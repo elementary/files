@@ -38,7 +38,7 @@ public class Marlin.Progress.UIHandler : Object {
     private Marlin.Application application;
 
     public UIHandler (Marlin.Application app) {
-        this.manager = new Marlin.Progress.InfoManager ();
+        this.manager = Marlin.Progress.InfoManager.get_instance ();
         this.application = app;
 
         manager.new_progress_info.connect ((info) => {
@@ -55,18 +55,11 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
     public void cancel_all () {
-        unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
-        foreach (var info in infos) {
+        unowned List<weak Marlin.Progress.Info> infos = this.manager.get_all_infos ();
+        foreach (weak Marlin.Progress.Info info in infos) {
             info.cancel ();
         }
 
-    }
-
-    public uint get_active_info_count () {
-        return active_infos;
-    }
-    public unowned List<Marlin.Progress.Info> get_active_info_list () {
-        return manager.get_all_infos ();
     }
 
     private void progress_info_started_cb (Marlin.Progress.Info info) {
@@ -252,9 +245,9 @@ public class Marlin.Progress.UIHandler : Object {
                                           _("Cancel All In-progress Actions"));
 
             cancel_menuitem.item_activated.connect (() => {
-                unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
+                unowned List<weak Marlin.Progress.Info> infos = this.manager.get_all_infos ();
 
-                foreach (var info in infos)
+                foreach (weak Marlin.Progress.Info info in infos)
                     info.cancel ();
             });
 
@@ -299,9 +292,9 @@ public class Marlin.Progress.UIHandler : Object {
         double progress = 0;
         double current = 0;
         double total = 0;
-        unowned List<Marlin.Progress.Info> infos = this.manager.get_all_infos ();
+        unowned List<weak Marlin.Progress.Info> infos = this.manager.get_all_infos ();
 
-        foreach (var _info in infos) {
+        foreach (weak Marlin.Progress.Info _info in infos) {
             double c = _info.get_current ();
             double t = _info.get_total ();
 

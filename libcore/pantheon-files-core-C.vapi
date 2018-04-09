@@ -157,14 +157,6 @@ namespace Marlin
         public bool get_is_paused ();
         public GLib.Cancellable get_cancellable ();
     }
-
-    [CCode (cheader_filename = "marlin-progress-info-manager.h")]
-    public class Progress.InfoManager : GLib.Object {
-        public InfoManager ();
-        public signal void new_progress_info (Progress.Info info);
-        public void add_new_info (Progress.Info info);
-        public unowned GLib.List<Progress.Info> get_all_infos ();
-    }
 }
 
 [CCode (cprefix = "MarlinFile", lower_case_cprefix = "marlin_file_", cheader_filename = "marlin-file-changes-queue.h")]

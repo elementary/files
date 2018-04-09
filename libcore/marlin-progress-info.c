@@ -24,7 +24,7 @@
 #include <math.h>
 #include <glib/gi18n.h>
 #include "marlin-progress-info.h"
-#include "marlin-progress-info-manager.h"
+#include "pantheon-files-core.h"
 
 enum {
     CHANGED,
@@ -161,7 +161,7 @@ marlin_progress_info_init (MarlinProgressInfo *info)
 
     info->title = NULL;
 
-    manager = marlin_progress_info_manager_new ();
+    manager = marlin_progress_info_manager_get_instance ();
     marlin_progress_info_manager_add_new_info (manager, info);
     g_object_unref (manager);
 }
