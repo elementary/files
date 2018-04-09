@@ -60,7 +60,6 @@ set (C_SOURCE_FILES
     marlin-file-changes-queue.c
     fm-list-model.c
     marlin-progress-info.c
-    marlin-exec.c
     gof-file.c
     ${VALA_C})
 
@@ -70,7 +69,6 @@ set (C_HEADER_FILES
     eel-stock-dialogs.h
     eel-string.h
     gof-file.h
-    marlin-exec.h
     marlin-file-operations.h
     marlin-undostack-manager.h
     marlin-file-changes-queue.h
