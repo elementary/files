@@ -1605,7 +1605,7 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
     else
     {
         gchar  *location = g_file_get_path (file->location);
- 
+
         app_info = g_app_info_create_from_commandline (location, NULL, 0, &error);
         if (app_info == NULL)
         {
@@ -1627,97 +1627,6 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
 
     g_object_unref (app_info);
     return TRUE;
-}
-
-static gboolean
-gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
-{
-    GdkAppLaunchContext *context;
-    gboolean             succeed;
-    GList                path_list;
-    GError              *error = NULL;
-
-    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-
-    /* fake a path list */
-    path_list.data = file->location;
-    path_list.next = path_list.prev = NULL;
-
-    context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
-    succeed = g_app_info_launch (app_info, &path_list, G_APP_LAUNCH_CONTEXT (context), &error);
-
-    g_object_unref (context);
-
-    return succeed;
-}
-
-gboolean
-gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info)
-{
-    GdkAppLaunchContext *context;
-    gboolean             succeed;
-    GList               *gfiles;
-    GError              *error = NULL;
-
-    g_return_val_if_fail (files != NULL, FALSE);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-
-    context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
-
-    gfiles = gof_files_get_location_list (files);
-
-    succeed = g_app_info_launch (app_info, gfiles, G_APP_LAUNCH_CONTEXT (context), &error);
-    print_error (error); /* also frees error */
-
-    g_list_free_full (gfiles, (GDestroyNotify) g_object_unref);
-    g_object_unref (context);
-
-    return succeed;
-}
-
-gboolean
-gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info)
-{
-    GAppInfo    *app = NULL;
-    gboolean    succeed;
-    GError      *error = NULL;
-
-    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-
-    if (app_info != NULL)
-        app = g_app_info_dup (app_info);
-
-    /* Do not run executables if an app to open them with has been supplied */
-    if (app == NULL) {
-        /* check if we should execute the file */
-        if (gof_file_is_executable (file))
-            return gof_file_execute (file, screen, NULL, &error);
-        else
-            app = gof_file_get_default_handler (file);
-    }
-    if (app == NULL)
-    {
-        /* AppChooser dialog has already been shown by Marlin.MimeActions*/
-        return TRUE;
-    }
-
-    /* TODO allow launch of multiples same content type files */
-
-    succeed = gof_file_launch_with (file, screen, app);
-
-    /* TODO error */
-
-    g_object_unref (G_OBJECT (app));
-
-    return succeed;
-}
-
-void
-gof_file_open_single (GOFFile *file, GdkScreen *screen, GAppInfo *app_info)
-{
-    gof_file_launch (file, screen, app_info);
 }
 
 void
