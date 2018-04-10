@@ -155,14 +155,14 @@ marlin_progress_info_class_init (MarlinProgressInfoClass *klass)
 static void
 marlin_progress_info_init (MarlinProgressInfo *info)
 {
-    MarlinProgressInfoManager *manager;
+    PFProgressInfoManager *manager;
 
     info->cancellable = g_cancellable_new ();
 
     info->title = NULL;
 
-    manager = marlin_progress_info_manager_get_instance ();
-    marlin_progress_info_manager_add_new_info (manager, info);
+    manager = pf_progress_info_manager_get_instance ();
+    pf_progress_info_manager_add_new_info (manager, info);
     g_object_unref (manager);
 }
 

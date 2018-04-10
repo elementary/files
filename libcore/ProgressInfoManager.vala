@@ -16,13 +16,13 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class Marlin.Progress.InfoManager : GLib.Object {
+public class PF.Progress.InfoManager : GLib.Object {
     public signal void new_progress_info (Marlin.Progress.Info info);
 
-    private GLib.List<Marlin.Progress.Info> progress_infos;
+    private Gee.LinkedList<Marlin.Progress.Info> progress_infos;
 
-    private static Marlin.Progress.InfoManager progress_info_manager;
-    public static Marlin.Progress.InfoManager get_instance () {
+    private static PF.Progress.InfoManager progress_info_manager;
+    public static PF.Progress.InfoManager get_instance () {
         if (progress_info_manager == null) {
             progress_info_manager = new Progress.InfoManager ();
         }
@@ -31,16 +31,16 @@ public class Marlin.Progress.InfoManager : GLib.Object {
     }
 
     construct {
-        progress_infos = new GLib.List<Marlin.Progress.Info> ();
+        progress_infos = new Gee.LinkedList<Marlin.Progress.Info> ();
     }
 
     public void add_new_info (Marlin.Progress.Info info) {
-        if (progress_infos.find (info) != null) {
+        if (info in progress_infos) {
             warning ("Adding two times the same progress info object to the manager");
             return;
         }
 
-        progress_infos.prepend (info);
+        progress_infos.add (info);
         info.finished.connect (() => {
             progress_infos.remove (info);
         });
@@ -48,7 +48,7 @@ public class Marlin.Progress.InfoManager : GLib.Object {
         new_progress_info (info);
     }
 
-    public unowned GLib.List<weak Marlin.Progress.Info> get_all_infos () {
+    public Gee.LinkedList<Marlin.Progress.Info> get_all_infos () {
         return progress_infos;
     }
 }
