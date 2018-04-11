@@ -20,11 +20,13 @@ vala_precompile(VALA_C ${PKGNAME}
     Enums.vala
     PixbufUtils.vala
     FileUtils.vala
+    FileConflictDialog.vala
     gof-callwhenready.vala
     gof-directory-async.vala
     gof-preferences.vala
     PluginManager.vala
     Plugin.vala
+    ProgressInfoManager.vala
     SoundManager.vala
     TrashMonitor.vala
     IconInfo.vala
@@ -55,12 +57,8 @@ set (C_SOURCE_FILES
     marlin-file-operations.c
     marlin-undostack-manager.c
     marlin-file-changes-queue.c
-    marlin-file-utilities.c
-    marlin-file-conflict-dialog.c
     fm-list-model.c
     marlin-progress-info.c
-    marlin-progress-info-manager.c
-    marlin-exec.c
     gof-file.c
     ${VALA_C})
 
@@ -69,15 +67,11 @@ set (C_HEADER_FILES
     eel-stock-dialogs.h
     eel-string.h
     gof-file.h
-    marlin-exec.h
-    marlin-file-conflict-dialog.h
     marlin-file-operations.h
     marlin-undostack-manager.h
     marlin-file-changes-queue.h
-    marlin-file-utilities.h
     marlin-icons.h
     marlin-progress-info.h
-    marlin-progress-info-manager.h
     fm-list-model.h)
 
 configure_file (${CMAKE_CURRENT_SOURCE_DIR}/${PKGNAME}.pc.cmake ${CMAKE_CURRENT_BINARY_DIR}/${PKGNAME}.pc)

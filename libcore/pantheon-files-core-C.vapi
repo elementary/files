@@ -71,11 +71,6 @@ namespace Marlin {
     public delegate void CopyCallback (GLib.HashTable<GLib.File, void*>? debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
-
-    [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
-    namespace Dialogs {
-        public void show_error (void* data, GLib.Error? error, string format_string, ...);
-    }
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -118,9 +113,6 @@ namespace Eel {
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
-    [CCode (cheader_filename = "marlin-file-utilities.h")]
-    public string get_accel_map_file ();
-
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public struct UndoMenuData {
         string undo_label;
@@ -161,14 +153,6 @@ namespace Marlin
         public bool get_is_finished ();
         public bool get_is_paused ();
         public GLib.Cancellable get_cancellable ();
-    }
-
-    [CCode (cheader_filename = "marlin-progress-info-manager.h")]
-    public class Progress.InfoManager : GLib.Object {
-        public InfoManager ();
-        public signal void new_progress_info (Progress.Info info);
-        public void add_new_info (Progress.Info info);
-        public unowned GLib.List<Progress.Info> get_all_infos ();
     }
 }
 
@@ -221,6 +205,7 @@ namespace GOF {
         public uint64 size;
         public string format_size;
         public int color;
+        public uint64 modified;
         public string formated_modified;
         public string formated_type;
         public string tagstype;
