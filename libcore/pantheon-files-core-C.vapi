@@ -138,25 +138,6 @@ namespace Marlin
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void add_rename_action (GLib.File renamed_file, string original_name);
     }
-
-    [CCode (cheader_filename = "marlin-progress-info.h")]
-    public class Progress.Info : GLib.Object {
-        public Info ();
-        public signal void changed ();
-        public signal void started ();
-        public signal void finished ();
-        public signal void progress_changed ();
-        public void cancel ();
-        public string get_title ();
-        public string get_status ();
-        public string get_details ();
-        public double get_progress ();
-        public double get_current ();
-        public double get_total ();
-        public bool get_is_finished ();
-        public bool get_is_paused ();
-        public GLib.Cancellable get_cancellable ();
-    }
 }
 
 [CCode (cprefix = "MarlinFile", lower_case_cprefix = "marlin_file_", cheader_filename = "marlin-file-changes-queue.h")]

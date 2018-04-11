@@ -62,10 +62,10 @@ public class Marlin.Progress.UIHandler : Object {
 
     }
 
-    private void progress_info_started_cb (Marlin.Progress.Info info) {
+    private void progress_info_started_cb (PF.Progress.Info info) {
         application.hold ();
 
-        if (info == null || !(info is Marlin.Progress.Info) ||
+        if (info == null || !(info is PF.Progress.Info) ||
             info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
 
             application.release ();
@@ -78,7 +78,7 @@ public class Marlin.Progress.UIHandler : Object {
 
         var operation_running = false;
         Timeout.add_full (GLib.Priority.LOW, 500, () => {
-            if (info == null || !(info is Marlin.Progress.Info) ||
+            if (info == null || !(info is PF.Progress.Info) ||
                 info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
 
                 return false;
@@ -96,7 +96,7 @@ public class Marlin.Progress.UIHandler : Object {
         });
     }
 
-    private void add_progress_info_to_window (Marlin.Progress.Info info) {
+    private void add_progress_info_to_window (PF.Progress.Info info) {
         if (this.active_infos == 1) {
             /* This is the only active operation, present the window */
             add_to_window (info);
@@ -110,7 +110,7 @@ public class Marlin.Progress.UIHandler : Object {
 #endif
     }
 
-    private void add_to_window (Marlin.Progress.Info info) {
+    private void add_to_window (PF.Progress.Info info) {
         ensure_window ();
 
         var progress_widget = new Marlin.Progress.InfoWidget (info);
@@ -147,7 +147,7 @@ public class Marlin.Progress.UIHandler : Object {
         progress_window.set_transient_for (application.get_active_window ());
     }
 
-    private void progress_info_finished_cb (Marlin.Progress.Info info) {
+    private void progress_info_finished_cb (PF.Progress.Info info) {
         application.release ();
 
         if (active_infos > 0) {
@@ -176,7 +176,7 @@ public class Marlin.Progress.UIHandler : Object {
 #endif
     }
 
-    private void show_operation_complete_notification (Marlin.Progress.Info info, bool all_finished) {
+    private void show_operation_complete_notification (PF.Progress.Info info, bool all_finished) {
         if (info.get_cancellable ().is_cancelled ()) {
             return; /* No notification of cancellation action required */
         }
@@ -195,7 +195,7 @@ public class Marlin.Progress.UIHandler : Object {
     }
 
 #if HAVE_UNITY
-    private void update_unity_launcher (Marlin.Progress.Info info,
+    private void update_unity_launcher (PF.Progress.Info info,
                                         bool added) {
 
         if (this.quicklist_handler == null) {
@@ -255,7 +255,7 @@ public class Marlin.Progress.UIHandler : Object {
         }
     }
 
-    private void update_unity_launcher_entry (Marlin.Progress.Info info,
+    private void update_unity_launcher_entry (PF.Progress.Info info,
                                               Marlin.LauncherEntry marlin_lentry) {
         Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
 
