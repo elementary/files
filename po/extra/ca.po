@@ -35,9 +35,6 @@ msgstr "Gestor de fitxers"
 msgid "New Window"
 msgstr "Finestra nova"
 
-msgid "New Window As Administrator"
-msgstr "Finestra nova com a administrador"
-
 msgid "About Files"
 msgstr "Quant a Fitxers"
 

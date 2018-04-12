@@ -2190,10 +2190,6 @@ msgstr "Файловий менеджер"
 msgid "New _Window"
 msgstr "_Нове вікно"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Відкрити нове вікно як _Адміністратор"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Файли"

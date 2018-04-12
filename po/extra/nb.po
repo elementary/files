@@ -35,9 +35,6 @@ msgstr "Filbehandler"
 msgid "New Window"
 msgstr "Nytt vindu"
 
-msgid "New Window As Administrator"
-msgstr "Nytt vindu som administrator"
-
 msgid "About Files"
 msgstr "Om Filer"
 

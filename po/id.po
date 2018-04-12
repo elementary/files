@@ -2090,10 +2090,6 @@ msgstr "Pengelola Berkas"
 msgid "New _Window"
 msgstr "Jendela Baru (_W)"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Jendela Baru Sebagai _Administrator"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Berkas"

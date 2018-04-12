@@ -37,9 +37,6 @@ msgstr "Tiedostonhallinta"
 msgid "New Window"
 msgstr "Uusi ikkuna"
 
-msgid "New Window As Administrator"
-msgstr "Uusi ikkuna ylläpitäjän oikeuksin"
-
 msgid "About Files"
 msgstr "Tietoja - Tiedostot"
 

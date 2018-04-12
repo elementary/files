@@ -35,9 +35,6 @@ msgstr "Rêveberiya Pelan"
 msgid "New Window"
 msgstr "Paceya nû"
 
-msgid "New Window As Administrator"
-msgstr "Paceyek Nû Weke Rêvebir Veke"
-
 msgid "About Files"
 msgstr "Derbarê Pelan de"
 

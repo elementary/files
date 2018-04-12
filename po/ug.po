@@ -2084,10 +2084,6 @@ msgstr "ھۆججەت باشقۇرغۇچ"
 msgid "New _Window"
 msgstr "يېڭى كۆزنەك قۇرۇش(_W)"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "باشقۇرغۇچىلىق سالاھىيىتىدە يىڭى كۆزنەك قۇرۇش"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "ھۆججەتلەر"

@@ -2114,10 +2114,6 @@ msgstr "מנהל קבצים"
 msgid "New _Window"
 msgstr "_חלון חדש"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "חלון חדש כמנהל"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "קבצים"

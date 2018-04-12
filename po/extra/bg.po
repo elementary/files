@@ -32,9 +32,6 @@ msgstr "Файлов мениджър"
 msgid "New Window"
 msgstr "Нов прозорец"
 
-msgid "New Window As Administrator"
-msgstr "Нов прозорец като администратор"
-
 msgid "About Files"
 msgstr "Относно файловете"
 

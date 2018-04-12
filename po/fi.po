@@ -2141,10 +2141,6 @@ msgstr "Tiedostonhallinta"
 msgid "New _Window"
 msgstr "Uusi i_kkuna"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Uusi ikkuna _ylläpitäjän oikeuksin"
-
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
 msgstr "Tiedostot"

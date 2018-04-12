@@ -35,9 +35,6 @@ msgstr "파일 관리자"
 msgid "New Window"
 msgstr "새 창"
 
-msgid "New Window As Administrator"
-msgstr "관리자 권한으로 새 창 열기"
-
 msgid "About Files"
 msgstr "파일스 소개"
 

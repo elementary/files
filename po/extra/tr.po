@@ -32,9 +32,6 @@ msgstr "Dosya Yöneticisi"
 msgid "New Window"
 msgstr "Yeni Pencere"
 
-msgid "New Window As Administrator"
-msgstr "Yönetici Olarak Yeni Pencere"
-
 msgid "About Files"
 msgstr "Dosyalar Hakkında"
 
