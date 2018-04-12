@@ -22,8 +22,9 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <glib/gi18n.h>
+#include <gio/gdesktopappinfo.h>
+
 #include "eel-fcts.h"
-#include "marlin-exec.h"
 #include "marlin-icons.h"
 #include "fm-list-model.h"
 #include "pantheon-files-core.h"
@@ -587,7 +588,7 @@ gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     return NULL;
 }
 
-MarlinIconInfo *
+_MarlinIconInfo *
 gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 {
     MarlinIconInfo *icon = NULL;
@@ -1526,33 +1527,6 @@ gchar* gof_file_list_to_string (GList *list, gsize *len)
     return g_string_free (string, FALSE);
 }
 
-static gboolean
-gof_spawn_command_line_on_screen (char *cmd, GdkScreen *screen)
-{
-    GAppInfo *app;
-    GdkAppLaunchContext *ctx;
-    GError *error = NULL;
-    gboolean succeed = FALSE;
-
-    app = g_app_info_create_from_commandline (cmd, NULL, 0, &error);
-
-    if (app != NULL && screen != NULL) {
-        ctx = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
-
-        succeed = g_app_info_launch (app, NULL, G_APP_LAUNCH_CONTEXT (ctx), &error);
-
-        g_object_unref (app);
-        g_object_unref (ctx);
-    }
-
-    if (error != NULL) {
-        g_error_free (error);
-    }
-
-    return (succeed);
-}
-
-
 /**
  * gof_file_get_default_handler: imported from thunar
  * @file : a #GOFFile instance.
@@ -1592,18 +1566,9 @@ gof_file_get_default_handler (GOFFile *file)
 gboolean
 gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error)
 {
-    gboolean    result = FALSE;
-    GKeyFile    *key_file;
     GError      *err = NULL;
-    gchar       *icon = NULL;
-    gchar       *name;
-    gchar       *type;
-    gchar       *url;
-    gchar       *location;
-    gchar       *exec;
+    GAppInfo    *app_info = NULL;
 
-    gchar       *cmd = NULL;
-    gchar       *quoted_location;
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
     g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
@@ -1612,10 +1577,11 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
     /* only execute locale executable files */
     if (!g_file_is_native (file->location))
         return FALSE;
-    location = g_file_get_path (file->location);
 
     if (gof_file_is_desktop_file (file))
     {
+        GKeyFile         *key_file;
+
         key_file = pf_file_utils_key_file_from_file (file->location, NULL, &err);
 
         if (key_file == NULL)
@@ -1626,168 +1592,41 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
             return FALSE;
         }
 
-        type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                      G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
-
-        if (G_LIKELY (g_strcmp0 (type, "Application") == 0))
+        app_info = G_APP_INFO (g_desktop_app_info_new_from_keyfile (key_file));
+        if (app_info == NULL)
         {
-            exec = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                          G_KEY_FILE_DESKTOP_KEY_EXEC, NULL);
-            if (G_LIKELY (exec != NULL))
-            {
-                /* parse other fields */
-                name = g_key_file_get_locale_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                                     G_KEY_FILE_DESKTOP_KEY_NAME, NULL,
-                                                     NULL);
-                icon = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                              G_KEY_FILE_DESKTOP_KEY_ICON, NULL);
-
-                cmd = marlin_exec_parse (exec, file_list, icon, name, location);
-
-                _g_free0 (name);
-                _g_free0 (icon);
-                _g_free0 (exec);
-            }
-            else
-            {
-                /// TRANSLATORS: `Exec' is a field name in a .desktop file. Don't translate it.
-                g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
-                             _("No Exec field specified"));
-            }
-        }
-        else if (g_strcmp0 (type, "Link") == 0)
-        {
-            url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                         G_KEY_FILE_DESKTOP_KEY_URL, NULL);
-            if (G_LIKELY (url != NULL))
-            {
-                GOFFile *link = gof_file_get_by_commandline_arg (url);
-                result = gof_file_launch (link, screen, NULL);
-                g_object_unref (link);
-                return (result);
-            }
-            else
-            {
-                /// TRANSLATORS: `Exec' is a field name in a .desktop file. Don't translate it.
-                g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
-                             _("No URL field specified"));
-            }
-        }
-        else
-        {
-            g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
-                         _("Invalid desktop file"));
+            g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, _("Failed to parse the desktop file"));
+            g_key_file_free (key_file);
+            return FALSE;
         }
 
-        _g_free0 (type);
         g_key_file_free (key_file);
     }
     else
     {
-        quoted_location = g_shell_quote (location);
-        cmd = marlin_exec_auto_parse (quoted_location, file_list);
-        _g_free0 (quoted_location);
+        gchar  *location = g_file_get_path (file->location);
+
+        app_info = g_app_info_create_from_commandline (location, NULL, 0, &error);
+        if (app_info == NULL)
+        {
+            g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, _("Failed to create command from file: %s"), err->message);
+            g_error_free (err);
+            g_free (location);
+            return FALSE;
+        }
+
+        g_free (location);
     }
 
-    if (cmd != NULL) {
-        result = gof_spawn_command_line_on_screen (cmd, screen);
-    }
-
-    _g_free0 (location);
-    _g_free0 (cmd);
-
-    return result;
-}
-
-static gboolean
-gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
-{
-    GdkAppLaunchContext *context;
-    gboolean             succeed;
-    GList                path_list;
-    GError              *error = NULL;
-
-    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-
-    /* fake a path list */
-    path_list.data = file->location;
-    path_list.next = path_list.prev = NULL;
-
-    context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
-    succeed = g_app_info_launch (app_info, &path_list, G_APP_LAUNCH_CONTEXT (context), &error);
-
-    g_object_unref (context);
-
-    return succeed;
-}
-
-gboolean
-gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info)
-{
-    GdkAppLaunchContext *context;
-    gboolean             succeed;
-    GList               *gfiles;
-    GError              *error = NULL;
-
-    g_return_val_if_fail (files != NULL, FALSE);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-
-    context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
-
-    gfiles = gof_files_get_location_list (files);
-
-    succeed = g_app_info_launch (app_info, gfiles, G_APP_LAUNCH_CONTEXT (context), &error);
-    print_error (error); /* also frees error */
-
-    g_list_free_full (gfiles, (GDestroyNotify) g_object_unref);
-    g_object_unref (context);
-
-    return succeed;
-}
-
-gboolean
-gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info)
-{
-    GAppInfo    *app = NULL;
-    gboolean    succeed;
-    GError      *error = NULL;
-
-    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-
-    if (app_info != NULL)
-        app = g_app_info_dup (app_info);
-
-    /* Do not run executables if an app to open them with has been supplied */
-    if (app == NULL) {
-        /* check if we should execute the file */
-        if (gof_file_is_executable (file))
-            return gof_file_execute (file, screen, NULL, &error);
-        else
-            app = gof_file_get_default_handler (file);
-    }
-    if (app == NULL)
+    if (!g_app_info_launch (app_info, file_list, NULL, &err))
     {
-        /* AppChooser dialog has already been shown by Marlin.MimeActions*/
-        return TRUE;
+        g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, _("Unable to Launch Desktop File: %s"), err->message);
+        g_error_free (err);
+        return FALSE;
     }
 
-    /* TODO allow launch of multiples same content type files */
-
-    succeed = gof_file_launch_with (file, screen, app);
-
-    /* TODO error */
-
-    g_object_unref (G_OBJECT (app));
-
-    return succeed;
-}
-
-void
-gof_file_open_single (GOFFile *file, GdkScreen *screen, GAppInfo *app_info)
-{
-    gof_file_launch (file, screen, app_info);
+    g_object_unref (app_info);
+    return TRUE;
 }
 
 void

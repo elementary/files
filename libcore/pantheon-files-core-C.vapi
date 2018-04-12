@@ -71,11 +71,6 @@ namespace Marlin {
     public delegate void CopyCallback (GLib.HashTable<GLib.File, void*>? debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
-
-    [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
-    namespace Dialogs {
-        public void show_error (void* data, GLib.Error? error, string format_string, ...);
-    }
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -121,23 +116,6 @@ namespace Eel {
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
-    [CCode (cheader_filename = "marlin-file-utilities.h")]
-    public string get_accel_map_file ();
-
-    [CCode (cheader_filename = "marlin-icon-info.h")]
-    public class IconInfo : GLib.Object {
-        public static IconInfo? lookup (GLib.Icon icon, int size);
-        public static IconInfo? lookup_from_name (string icon_name, int size);
-        public Gdk.Pixbuf? get_pixbuf_nodefault ();
-        public Gdk.Pixbuf? get_pixbuf_at_size (int size);
-        public static void clear_caches ();
-        public static void remove_cache (string path, int size);
-        /* Use for testing only */
-        public static uint loadable_icon_cache_info ();
-        public static uint themed_icon_cache_info ();
-        public static void set_reap_time (uint milliseconds);
-    }
-
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public struct UndoMenuData {
         string undo_label;
@@ -159,33 +137,6 @@ namespace Marlin
         public void undo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void add_rename_action (GLib.File renamed_file, string original_name);
-    }
-
-    [CCode (cheader_filename = "marlin-progress-info.h")]
-    public class Progress.Info : GLib.Object {
-        public Info ();
-        public signal void changed ();
-        public signal void started ();
-        public signal void finished ();
-        public signal void progress_changed ();
-        public void cancel ();
-        public string get_title ();
-        public string get_status ();
-        public string get_details ();
-        public double get_progress ();
-        public double get_current ();
-        public double get_total ();
-        public bool get_is_finished ();
-        public bool get_is_paused ();
-        public GLib.Cancellable get_cancellable ();
-    }
-
-    [CCode (cheader_filename = "marlin-progress-info-manager.h")]
-    public class Progress.InfoManager : GLib.Object {
-        public InfoManager ();
-        public signal void new_progress_info (Progress.Info info);
-        public void add_new_info (Progress.Info info);
-        public unowned GLib.List<Progress.Info> get_all_infos ();
     }
 }
 
@@ -238,6 +189,7 @@ namespace GOF {
         public uint64 size;
         public string format_size;
         public int color;
+        public uint64 modified;
         public string formated_modified;
         public string formated_type;
         public string tagstype;
@@ -274,6 +226,7 @@ namespace GOF {
         public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
         public void get_folder_icon_from_uri_or_path ();
         public Marlin.IconInfo get_icon (int size, FileIconFlags flags);
+        public string thumbnail_path;
 
         public bool is_mounted;
         public bool exists;
