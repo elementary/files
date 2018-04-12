@@ -17,9 +17,9 @@
  */
 
 public class PF.Progress.InfoManager : GLib.Object {
-    public signal void new_progress_info (Marlin.Progress.Info info);
+    public signal void new_progress_info (PF.Progress.Info info);
 
-    private Gee.LinkedList<Marlin.Progress.Info> progress_infos;
+    private Gee.LinkedList<PF.Progress.Info> progress_infos;
 
     private static PF.Progress.InfoManager progress_info_manager;
     public static PF.Progress.InfoManager get_instance () {
@@ -31,10 +31,10 @@ public class PF.Progress.InfoManager : GLib.Object {
     }
 
     construct {
-        progress_infos = new Gee.LinkedList<Marlin.Progress.Info> ();
+        progress_infos = new Gee.LinkedList<PF.Progress.Info> ();
     }
 
-    public void add_new_info (Marlin.Progress.Info info) {
+    public void add_new_info (PF.Progress.Info info) {
         if (info in progress_infos) {
             warning ("Adding two times the same progress info object to the manager");
             return;
@@ -48,7 +48,7 @@ public class PF.Progress.InfoManager : GLib.Object {
         new_progress_info (info);
     }
 
-    public Gee.LinkedList<Marlin.Progress.Info> get_all_infos () {
+    public Gee.LinkedList<PF.Progress.Info> get_all_infos () {
         return progress_infos;
     }
 }
