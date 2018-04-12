@@ -16,6 +16,8 @@ vala_precompile(VALA_C pantheon-filestrash
 PACKAGES
     gtk+-3.0
     gee-0.8
+    posix
+    linux
     pantheon-files-core-C
     pantheon-files-core
 OPTIONS

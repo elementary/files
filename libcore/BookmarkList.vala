@@ -47,7 +47,7 @@ namespace Marlin {
             /* Get the user config directory
              * When running under pkexec determine real user from PKEXEC_UID
              */
-            string? user_home = Eel.get_real_user_home ();
+            string? user_home = PF.UserUtils.get_real_user_home ();
             string config_dir;
 
             if (user_home != null) {
@@ -231,7 +231,7 @@ namespace Marlin {
             /* Do not insert bookmark for home or filesystem root (already have builtins) */
             var path = bm.gof_file.location.get_path ();
 
-            if ((path == Eel.get_real_user_home () || path == Path.DIR_SEPARATOR_S)) {
+            if ((path == PF.UserUtils.get_real_user_home () || path == Path.DIR_SEPARATOR_S)) {
                 return;
             }
 
