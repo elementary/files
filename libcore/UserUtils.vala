@@ -80,26 +80,24 @@ namespace PF.UserUtils {
         return false;
     }
 
-    public bool get_group_id_from_group_name (string group_name, out Posix.uid_t? gid) {
+    public Posix.uid_t? get_group_id_from_group_name (string group_name) {
         unowned Posix.Group? group = Posix.getgrnam (group_name);
         if (group == null) {
-            gid = null;
-            return false;
+            return null;
         }
 
-        gid = group.gr_gid;
-        return true;
+        Posix.uid_t? uid = group.gr_gid;
+        return uid;
     }
 
-    public bool get_user_id_from_user_name (string user_name, out Posix.uid_t? uid) {
+    public Posix.uid_t? get_user_id_from_user_name (string user_name) {
         unowned Posix.Passwd? password_info = Posix.getpwnam (user_name);
         if (password_info == null) {
-            uid = null;
-            return false;
+            return null;
         }
 
-        uid = password_info.pw_uid;
-        return true;
+        Posix.uid_t? uid = password_info.pw_uid;
+        return uid;
     }
 
     public unowned string? get_user_home_from_user_uid (Posix.uid_t uid) {
@@ -111,28 +109,31 @@ namespace PF.UserUtils {
         return password_info.pw_dir;
     }
 
-    public bool get_id_from_digit_string (string digit_string, out Posix.uid_t? id) {
+    public Posix.uid_t? get_id_from_digit_string (string digit_string) {
         char c;
+        long id;
         /*
          * Only accept string if it has one integer with nothing
          * afterwards.
          */
         if (digit_string.scanf ("%ld%c", out id, out c) != 1) {
-            id = null;
-            return false;
+            return null;
         }
 
-        return true;
+        Posix.uid_t? uid = id;
+        return uid;
     }
 
     public string get_real_user_home () {
         unowned string? real_uid_s = GLib.Environ.get_variable (GLib.Environ.get (), "PKEXEC_UID");
-        Posix.uid_t? scanned_id = null;
 
-        if (real_uid_s != null && get_id_from_digit_string (real_uid_s, out scanned_id)) {
-            return get_user_home_from_user_uid (scanned_id);
-        } else {
-            return GLib.Environment.get_home_dir ();
+        if (real_uid_s != null) {
+            Posix.uid_t? scanned_id = get_id_from_digit_string (real_uid_s);
+            if (scanned_id != null) {
+                return get_user_home_from_user_uid (scanned_id);
+            }
         }
+
+        return GLib.Environment.get_home_dir ();
     }
 }

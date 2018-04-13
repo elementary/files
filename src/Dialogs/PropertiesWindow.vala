@@ -808,7 +808,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private void combo_owner_changed (Gtk.ComboBox combo) {
         Gtk.TreeIter iter;
         string user;
-        Posix.uid_t uid;
+        Posix.uid_t? uid = null;
 
         if (!combo.get_active_iter(out iter))
             return;
@@ -820,9 +820,14 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return;
         }
 
-        if (!PF.UserUtils.get_user_id_from_user_name (user, out uid)
-            && !PF.UserUtils.get_id_from_digit_string (user, out uid)) {
+        uid = PF.UserUtils.get_user_id_from_user_name (user);
+        if (uid == null) {
+            uid = PF.UserUtils.get_id_from_digit_string (user);
+        }
+
+        if (uid == null) {
             critical ("user doesn t exit");
+            return;
         }
 
         if (uid == goffile.uid)
@@ -835,7 +840,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     private void combo_group_changed (Gtk.ComboBox combo) {
         Gtk.TreeIter iter;
         string group;
-        Posix.uid_t gid;
+        Posix.uid_t? gid;
 
         if (!combo.get_active_iter(out iter))
             return;
@@ -848,8 +853,13 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         /* match gid from name */
-        if (!PF.UserUtils.get_group_id_from_group_name (group, out gid)
-            && !PF.UserUtils.get_id_from_digit_string (group, out gid)) {
+
+        gid = PF.UserUtils.get_group_id_from_group_name (group);
+        if (gid == null) {
+            gid = PF.UserUtils.get_id_from_digit_string (group);
+        }
+
+        if (gid == null) {
             critical ("group doesn t exit");
             return;
         }
