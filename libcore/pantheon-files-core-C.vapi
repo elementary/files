@@ -91,21 +91,6 @@ namespace Eel {
     [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
 
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string? get_date_as_string (uint64 d, string format);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public GLib.List? get_user_names ();
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_user_id_from_user_name (string *user_name, out int uid);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string? get_real_user_home ();
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_group_id_from_group_name (string *group_name, out int gid);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_id_from_digit_string (string digit_str, out int id);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string format_size (uint64 size);
-
     [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
 }

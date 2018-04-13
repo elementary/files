@@ -258,7 +258,7 @@ namespace PF.FileUtils {
         if (path.length > 0) {
             if (scheme == "" && (path.has_prefix ("~/") || path == "~")) {
                 sb.erase (0, 1);
-                sb.prepend (Eel.get_real_user_home ());
+                sb.prepend (PF.UserUtils.get_real_user_home ());
             }
         }
 

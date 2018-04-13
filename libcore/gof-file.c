@@ -24,7 +24,6 @@
 #include <glib/gi18n.h>
 #include <gio/gdesktopappinfo.h>
 
-#include "eel-fcts.h"
 #include "marlin-icons.h"
 #include "fm-list-model.h"
 #include "pantheon-files-core.h"
@@ -1239,7 +1238,7 @@ gof_file_is_writable (GOFFile *file)
     } else if (file->has_permissions) {
         return ((file->permissions & S_IWOTH) > 0) ||
                ((file->permissions & S_IWUSR) > 0) && (file->uid < 0 || file->uid == geteuid ()) ||
-               ((file->permissions & S_IWGRP) > 0) && eel_user_in_group (file->group);
+               ((file->permissions & S_IWGRP) > 0) && pf_user_utils_user_in_group (file->group);
     } else {
         return TRUE;  /* We will just have to assume we can write to the file */
     }
@@ -1265,7 +1264,7 @@ gof_file_is_readable (GOFFile *file)
     } else if (file->has_permissions) {
         return (file->permissions & S_IROTH) ||
                (file->permissions & S_IRUSR) && (file->uid < 0 || file->uid == geteuid ()) ||
-               (file->permissions & S_IRGRP) && eel_user_in_group (file->group);
+               (file->permissions & S_IRGRP) && pf_user_utils_user_in_group (file->group);
     } else {
         return TRUE;  /* We will just have to assume we can read the file */
     }
@@ -1749,10 +1748,10 @@ gof_file_get_settable_group_names (GOFFile *file)
 
     if (user_id == 0) {
         /* Root is allowed to set group to anything. */
-        result = eel_get_all_group_names ();
+        result = pf_user_utils_get_all_group_names ();
     } else if (user_id == (uid_t) file->uid) {
         /* Owner is allowed to set group to any that owner is member of. */
-        result = eel_get_group_names_for_user ();
+        result = pf_user_utils_get_group_names_for_user ();
     } else {
         g_warning ("unhandled case in %s", G_STRFUNC);
     }

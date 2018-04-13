@@ -389,7 +389,7 @@ namespace Marlin.View {
                     restore_tabs () < 1) {
 
                     /* Open a tab pointing at the default location if no tabs restored*/
-                    var location = File.new_for_path (Eel.get_real_user_home ());
+                    var location = File.new_for_path (PF.UserUtils.get_real_user_home ());
                     add_tab (location, mode);
                 }
             } else {
@@ -507,7 +507,7 @@ namespace Marlin.View {
             tab.close ();
         }
 
-        public void add_window (File location = File.new_for_path (Eel.get_real_user_home ()),
+        public void add_window (File location = File.new_for_path (PF.UserUtils.get_real_user_home ()),
                                  Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                                  int x = -1, int y = -1) {
 
@@ -611,7 +611,7 @@ namespace Marlin.View {
                     break;
 
                 case "HOME":
-                    uri_path_change_request ("file://" + Eel.get_real_user_home ());
+                    uri_path_change_request ("file://" + PF.UserUtils.get_real_user_home ());
                     break;
 
                 case "TRASH":
@@ -838,7 +838,7 @@ namespace Marlin.View {
                 /* ViewContainer is responsible for returning valid uris */
                 vb.add ("(uss)",
                         view_container.view_mode,
-                        view_container.get_root_uri () ?? Eel.get_real_user_home (),
+                        view_container.get_root_uri () ?? PF.UserUtils.get_real_user_home (),
                         view_container.get_tip_uri () ?? ""
                        );
             }
@@ -995,7 +995,7 @@ namespace Marlin.View {
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == current_tab) {
-                        view_container.focus_location (File.new_for_path (Eel.get_real_user_home ()));
+                        view_container.focus_location (File.new_for_path (PF.UserUtils.get_real_user_home ()));
                     } else {
                         remove_tab (view_container);
                     }
