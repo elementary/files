@@ -22,6 +22,7 @@ namespace FM
             PIXBUF,
             FILENAME,
             SIZE,
+            SCALE_FACTOR,
             TYPE,
             MODIFIED,
             NUM_COLUMNS
@@ -177,6 +178,7 @@ namespace GOF {
         public string tagstype;
         public Gdk.Pixbuf? pix;
         public int pix_size;
+        public int pix_scale;
         public int width;
         public int height;
         public int sort_column_id;
@@ -205,9 +207,9 @@ namespace GOF {
         public string get_symlink_target ();
         public unowned string? get_ftype ();
         public string? get_formated_time (string attr);
-        public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
+        public Gdk.Pixbuf get_icon_pixbuf (int size, int scale, bool forced_size, FileIconFlags flags);
         public void get_folder_icon_from_uri_or_path ();
-        public Marlin.IconInfo get_icon (int size, FileIconFlags flags);
+        public Marlin.IconInfo get_icon (int size, int scale, FileIconFlags flags);
         public string thumbnail_path;
 
         public bool is_mounted;
@@ -222,7 +224,7 @@ namespace GOF {
 
         public void update ();
         public void update_type ();
-        public void update_icon (int size);
+        public void update_icon (int size, int scale);
         public void update_desktop_file ();
         public void query_update ();
         public void query_thumbnail_update ();

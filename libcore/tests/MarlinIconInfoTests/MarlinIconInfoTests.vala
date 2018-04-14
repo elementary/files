@@ -30,10 +30,10 @@ void goffile_icon_update_test () {
     assert (file != null);
     file.query_update ();
     assert (file.pix == null);
-    file.update_icon (128);
+    file.update_icon (128, 1);
     assert (file.pix != null);
     assert (file.pix_size == 128);
-    file.update_icon (32);
+    file.update_icon (32, 1);
     assert (file.pix_size == 32);
 }
 
@@ -48,14 +48,14 @@ void themed_cache_and_ref_test () {
     file.query_update ();
     /* file.pix might exist if tests run while Files instance also recently runn and displayed test image */
     file.pix = null;
-    file.update_icon (128);
+    file.update_icon (128, 1);
     assert (file.pix.ref_count == 2); //Ref'd by file and cache.
 
     /* We have not flagged THUMBNAIL_READY so a themed icon will be created */
     assert (Marlin.IconInfo.themed_icon_cache_info () == 1);
     assert (Marlin.IconInfo.loadable_icon_cache_info () == 0);
 
-    file.update_icon (32);
+    file.update_icon (32, 1);
 
     /* A new cache entry is made for different size */
     assert (Marlin.IconInfo.themed_icon_cache_info () == 2);
@@ -95,14 +95,14 @@ void loadable_cache_and_ref_test () {
     file.flags |= GOF.File.ThumbState.READY;
     /* We need to provide our own thumbnail and path for CI */
     file.thumbnail_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.jpg.thumb.png");
-    file.update_icon (128);
+    file.update_icon (128, 1);
     assert (file.pix.ref_count == 2); //Ref'd by file and cache.
 
     /* We have flagged THUMBNAIL_READY so a loadable icon will be created */
     assert (Marlin.IconInfo.themed_icon_cache_info () == 0);
     assert (Marlin.IconInfo.loadable_icon_cache_info () == 1);
 
-    file.update_icon (32);
+    file.update_icon (32, 1);
 
     /* A new cache entry is made for different size */
     assert (Marlin.IconInfo.loadable_icon_cache_info () == 2);

@@ -2553,7 +2553,7 @@ namespace FM {
                      z++) {
 
                     s = Marlin.zoom_level_to_icon_size ((Marlin.ZoomLevel)z);
-                    Marlin.IconInfo.remove_cache (path, s);
+                    Marlin.IconInfo.remove_cache (path, s, get_scale_factor ());
                 }
             }
         }
