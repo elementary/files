@@ -71,6 +71,10 @@
             <attribute name='label' translatable='yes'>Show Remote Thumbnails</attribute>
             <attribute name='action'>background.show_remote_thumbnails</attribute>
         </item>
+        <item>
+            <attribute name='label' translatable='yes'>Reload</attribute>
+            <attribute name='action'>background.reload</attribute>
+        </item>
     </menu>
 
     <menu id='open-in'>

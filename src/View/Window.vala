@@ -191,7 +191,6 @@ namespace Marlin.View {
                 current_tab.is_frozen = false;
                 uri_path_change_request (loc, flag);
             });
-            top_menu.reload_request.connect (action_reload);
             top_menu.focus_location_request.connect ((loc) => {
                 current_tab.focus_location_if_in_current_directory (loc, true);
             });
@@ -577,8 +576,7 @@ namespace Marlin.View {
                 warning ("Too rapid reloading suppressed");
                 return;
             }
-            current_tab.reload ();
-            sidebar.reload ();
+            reload ();
         }
 
         private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
@@ -776,6 +774,11 @@ namespace Marlin.View {
 
         public new GLib.SimpleActionGroup get_action_group () {
             return this.win_actions;
+        }
+
+        public void reload () {
+            current_tab.reload ();
+            sidebar.reload ();
         }
 
         public void quit () {

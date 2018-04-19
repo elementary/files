@@ -73,7 +73,8 @@ namespace FM {
             {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
             {"show_hidden", null, null, "false", change_state_show_hidden},
-            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
+            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails},
+            {"reload", on_background_action_reload}
         };
 
         const GLib.ActionEntry [] common_entries = {
@@ -873,7 +874,7 @@ namespace FM {
                                                            this);
             }
 
-            /* If in recent "folder" we need to refresh the view. */
+            /* If in recent "folder" we need to reload the view. */
             if (in_recent) {
                 slot.reload ();
             }
@@ -1122,6 +1123,9 @@ namespace FM {
         }
         private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
             window.change_state_show_remote_thumbnails (action);
+        }
+        private void on_background_action_reload (GLib.SimpleAction action) {
+            window.reload ();
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
