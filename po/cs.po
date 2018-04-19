@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-04-14 11:48+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"PO-Revision-Date: 2018-04-20 00:11+0000\n"
+"Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
+"Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/>"
+"\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1088,7 +1089,7 @@ msgstr "Zobrazit více _detailů"
 
 #: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
 msgid "Inaccessible"
-msgstr ""
+msgstr "Nedosažitelný"
 
 #: ../libcore/gof-file.c:377
 #, c-format
@@ -1588,13 +1589,13 @@ msgstr "Nepojmenovaný soubor %s"
 #: ../src/View/AbstractDirectoryView.vala:2689
 #: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Nelze odstranit soubory z tohoto místa"
 
 #: ../src/View/AbstractDirectoryView.vala:2690
 #: ../src/View/AbstractDirectoryView.vala:2860
 #: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Nemáte oprávnění měnit toto umístění"
 
 #: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
@@ -1606,7 +1607,7 @@ msgstr "Místo toho vyjmout výběr"
 
 #: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Na toto místo nelze vložit soubory"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1669,7 +1670,7 @@ msgstr "%u soubory, "
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/Widgets/OverlayBar.vala:303
 msgid "%s approx."
-msgstr ""
+msgstr "%s přibl."
 
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/Widgets/OverlayBar.vala:306
@@ -1679,11 +1680,11 @@ msgstr "neznámá velikost"
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u soubor nečitelný"
 
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u souborů nečitelných"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:422
 msgid "Open in New Tab"
@@ -1887,15 +1888,15 @@ msgstr "(jako Administrátor)"
 
 #: ../src/View/ViewContainer.vala:407
 msgid "You cannot create a folder here."
-msgstr "Zde nelze vytvořit složku"
+msgstr "Zde nelze vytvořit složku."
 
 #: ../src/View/ViewContainer.vala:410
 msgid "The network is unavailable"
-msgstr ""
+msgstr "Síť není k dispozici"
 
 #: ../src/View/ViewContainer.vala:411
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Pro přístup k této složce je potřeba funkgující síť"
 
 #: ../src/View/ViewContainer.vala:413
 msgid "This Folder Does Not Belong to You"
@@ -1915,15 +1916,15 @@ msgstr "Pro tuto složku se nepodařilo připojit k serveru."
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Nelze zobrazit obsah složky"
 
 #: ../src/View/ViewContainer.vala:420
 msgid "The operation timed out."
-msgstr ""
+msgstr "Vypršel časový limit operace."
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Nelze zobrazit složku"
 
 #: ../src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
@@ -1993,7 +1994,7 @@ msgstr "Zavřít"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:137
 msgid "Device Usage"
-msgstr ""
+msgstr "Využití zařízení"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:153
 msgid "Capacity:"
@@ -2038,7 +2039,7 @@ msgstr "Oprávnění"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Skutečná velikost může být větší"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
@@ -2053,7 +2054,7 @@ msgstr "neznámý"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr ""
+msgstr "Načítání…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
