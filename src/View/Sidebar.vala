@@ -282,7 +282,7 @@ namespace Marlin.Places {
             tree_view.popup_menu.connect (popup_menu_cb);
             tree_view.button_press_event.connect (button_press_event_cb);
             tree_view.button_release_event.connect (button_release_event_cb);
-            tree_view.key_press_event.connect (key_press_event_cb);
+            tree_view.key_press_event.connect (on_tree_view_key_press_event);
 
             tree_view.row_expanded.connect (category_row_expanded_event_cb);
             tree_view.row_collapsed.connect (category_row_collapsed_event_cb);
@@ -483,7 +483,7 @@ namespace Marlin.Places {
 
             /* Add Home BUILTIN */
             try {
-                mount_uri = GLib.Filename.to_uri (Eel.get_real_user_home (), null);
+                mount_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
             }
             catch (ConvertError e) {
                 mount_uri = "";
@@ -1459,7 +1459,7 @@ namespace Marlin.Places {
                 popupmenu_separator_item2 = new Gtk.SeparatorMenuItem ();
 
                 popupmenu_mount_item = new Gtk.MenuItem.with_mnemonic (_("_Mount"));
-                popupmenu_mount_item.activate.connect (mount_shortcut_cb);
+                popupmenu_mount_item.activate.connect (mount_selected_shortcut);
                 popupmenu_mount_item.show ();
 
                 popupmenu_unmount_item = new Gtk.MenuItem.with_mnemonic (_("_Unmount"));
@@ -1496,10 +1496,7 @@ namespace Marlin.Places {
                 check_popup_sensitivity ();
             }
 
-            Eel.pop_up_context_menu (popupmenu,
-                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     event);
+            popupmenu.popup_at_pointer (event);
         }
 
         /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */
@@ -1684,25 +1681,55 @@ namespace Marlin.Places {
          * We trap button 3 to bring up a popup menu, and button 2 to
          * open in a new tab.
          */
-        private bool key_press_event_cb (Gtk.Widget widget, Gdk.EventKey event) {
-            Gdk.ModifierType modifiers = Gtk.accelerator_get_default_mod_mask ();
-            if (event.keyval == Gdk.Key.Down
-             && (event.state & modifiers) == Gdk.ModifierType.MOD1_MASK)
-                return eject_or_unmount_selection ();
+        private bool on_tree_view_key_press_event (Gtk.Widget widget, Gdk.EventKey event) {
+            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            var no_mods = mods == 0;
+            var only_alt_pressed = mods == Gdk.ModifierType.MOD1_MASK;
 
-            if (event.keyval == Gdk.Key.F2 && (event.state & modifiers) == 0) {
-                rename_selected_bookmark ();
-                return true;
+            switch (event.keyval) {
+                case Gdk.Key.Down:
+                    if (only_alt_pressed) {
+                        return eject_or_unmount_selection ();
+                    }
+
+                    break;
+
+                case Gdk.Key.Up:
+                    if (only_alt_pressed) {
+                        mount_selected_shortcut ();
+                        return true;
+                    }
+
+                    break;
+
+                case Gdk.Key.Right:
+                    if (no_mods) {
+                        expand_collapse_category (true);
+                        return true;
+                    }
+
+                    break;
+
+                case Gdk.Key.Left:
+                    if (no_mods) {
+                        expand_collapse_category (false);
+                        return true;
+                    }
+
+                    break;
+
+                case Gdk.Key.F2:
+                    if (no_mods) {
+                        rename_selected_bookmark ();
+                        return true;
+                    }
+
+                    break;
+
+                default:
+                    break;
             }
 
-            if (event.keyval == Gdk.Key.Right && (event.state & modifiers) == 0) {
-                expand_collapse_category (true);
-                return true;
-            }
-            if (event.keyval == Gdk.Key.Left && (event.state & modifiers) == 0) {
-                expand_collapse_category (false);
-                return true;
-            }
             return false;
         }
 
@@ -2053,7 +2080,7 @@ namespace Marlin.Places {
             open_shortcut_from_menu (Marlin.OpenFlag.NEW_TAB);
         }
 
-        private void mount_shortcut_cb (Gtk.MenuItem item) {
+        private void mount_selected_shortcut () {
             Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
                 return;

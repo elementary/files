@@ -21,13 +21,13 @@
 
 public class Marlin.Progress.InfoWidget : Gtk.Box {
 
-    private Marlin.Progress.Info info;
+    private PF.Progress.Info info;
 
     Gtk.Widget status;          /* Gtk.Label */
     Gtk.Widget details;         /* Gtk.Label */
     Gtk.Widget progress_bar;
 
-    public InfoWidget (Marlin.Progress.Info info) {
+    public InfoWidget (PF.Progress.Info info) {
         this.info = info;
 
         build_and_show_widget ();

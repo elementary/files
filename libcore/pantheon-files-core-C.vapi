@@ -71,11 +71,6 @@ namespace Marlin {
     public delegate void CopyCallback (GLib.HashTable<GLib.File, void*>? debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
-
-    [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
-    namespace Dialogs {
-        public void show_error (void* data, GLib.Error? error, string format_string, ...);
-    }
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -91,28 +86,10 @@ namespace EelGtk.Widget {
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_")]
 namespace Eel {
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
-
     [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
     [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string? get_date_as_string (uint64 d, string format);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public GLib.List? get_user_names ();
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_user_id_from_user_name (string *user_name, out int uid);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string? get_real_user_home ();
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_group_id_from_group_name (string *group_name, out int gid);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_id_from_digit_string (string digit_str, out int id);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string format_size (uint64 size);
 
     [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
@@ -121,9 +98,6 @@ namespace Eel {
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
-    [CCode (cheader_filename = "marlin-file-utilities.h")]
-    public string get_accel_map_file ();
-
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public struct UndoMenuData {
         string undo_label;
@@ -145,33 +119,6 @@ namespace Marlin
         public void undo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void add_rename_action (GLib.File renamed_file, string original_name);
-    }
-
-    [CCode (cheader_filename = "marlin-progress-info.h")]
-    public class Progress.Info : GLib.Object {
-        public Info ();
-        public signal void changed ();
-        public signal void started ();
-        public signal void finished ();
-        public signal void progress_changed ();
-        public void cancel ();
-        public string get_title ();
-        public string get_status ();
-        public string get_details ();
-        public double get_progress ();
-        public double get_current ();
-        public double get_total ();
-        public bool get_is_finished ();
-        public bool get_is_paused ();
-        public GLib.Cancellable get_cancellable ();
-    }
-
-    [CCode (cheader_filename = "marlin-progress-info-manager.h")]
-    public class Progress.InfoManager : GLib.Object {
-        public InfoManager ();
-        public signal void new_progress_info (Progress.Info info);
-        public void add_new_info (Progress.Info info);
-        public unowned GLib.List<Progress.Info> get_all_infos ();
     }
 }
 

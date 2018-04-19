@@ -33,8 +33,6 @@
 
 #include "marlin-file-operations.h"
 
-#include "marlin-progress-info.h"
-
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gdk/gdk.h>
@@ -55,7 +53,7 @@ typedef struct {
     GtkWindow *parent_window;
     int screen_num;
     int inhibit_cookie;
-    MarlinProgressInfo *progress;
+    PFProgressInfo *progress;
     GCancellable *cancellable;
     GHashTable *skip_files;
     GHashTable *skip_readdir_error;
@@ -891,8 +889,8 @@ init_common (JobTypes jobtype,
         g_object_add_weak_pointer (parent_window, &common->parent_window);
     }
 
-    common->progress = marlin_progress_info_new ();
-    common->cancellable = marlin_progress_info_get_cancellable (common->progress);
+    common->progress = pf_progress_info_new ();
+    common->cancellable = pf_progress_info_get_cancellable (common->progress);
     common->time = g_timer_new ();
     common->inhibit_cookie = -1;
     common->screen_num = 0;
@@ -908,7 +906,7 @@ init_common (JobTypes jobtype,
 static void
 finalize_common (CommonJob *common)
 {
-    marlin_progress_info_finish (common->progress);
+    pf_progress_info_finish (common->progress);
     if (common->inhibit_cookie != -1) {
         gtk_application_uninhibit (GTK_APPLICATION (g_application_get_default ()),
                                    common->inhibit_cookie);
@@ -1113,12 +1111,12 @@ run_simple_dialog_va (CommonJob *job,
     g_ptr_array_add (ptr_array, NULL);
     data->button_titles = (const char **)g_ptr_array_free (ptr_array, FALSE);
 
-    marlin_progress_info_pause (job->progress);
+    pf_progress_info_pause (job->progress);
     g_io_scheduler_job_send_to_mainloop (job->io_job,
                                          do_run_simple_dialog,
                                          data,
                                          NULL);
-    marlin_progress_info_resume (job->progress);
+    pf_progress_info_resume (job->progress);
     res = data->result;
 
     g_free (data->button_titles);
@@ -1383,13 +1381,13 @@ report_delete_progress (CommonJob *job,
                                 files_left),
                       files_left);
 
-    marlin_progress_info_take_status (job->progress,
+    pf_progress_info_take_status (job->progress,
                                       f (_("Deleting files")));
 
     elapsed = g_timer_elapsed (job->time, NULL);
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE) {
 
-        marlin_progress_info_set_details (job->progress, files_left_s);
+        pf_progress_info_set_details (job->progress, files_left_s);
     } else {
         char *details, *time_left_s;
         transfer_rate = transfer_info->num_files / elapsed;
@@ -1403,7 +1401,7 @@ report_delete_progress (CommonJob *job,
                          remaining_time);
 
         details = g_strconcat (files_left_s, "\xE2\x80\x94", time_left_s, NULL);
-        marlin_progress_info_take_details (job->progress, details);
+        pf_progress_info_take_details (job->progress, details);
 
         g_free (time_left_s);
     }
@@ -1411,7 +1409,7 @@ report_delete_progress (CommonJob *job,
     g_free (files_left_s);
 
     if (source_info->num_files != 0) {
-        marlin_progress_info_set_progress (job->progress, transfer_info->num_files, source_info->num_files);
+        pf_progress_info_set_progress (job->progress, transfer_info->num_files, source_info->num_files);
     }
 }
 
@@ -1698,17 +1696,17 @@ report_trash_progress (CommonJob *job,
 
     files_left = total_files - files_trashed;
 
-    marlin_progress_info_take_status (job->progress,
+    pf_progress_info_take_status (job->progress,
                                       f (_("Moving files to trash")));
 
     s = f (ngettext ("%'d file left to trash",
                      "%'d files left to trash",
                      files_left),
            files_left);
-    marlin_progress_info_take_details (job->progress, s);
+    pf_progress_info_take_details (job->progress, s);
 
     if (total_files != 0) {
-        marlin_progress_info_set_progress (job->progress, files_trashed, total_files);
+        pf_progress_info_set_progress (job->progress, files_trashed, total_files);
     }
 }
 
@@ -1916,7 +1914,7 @@ delete_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
-    marlin_progress_info_start (job->common.progress);
+    pf_progress_info_start (job->common.progress);
 
     to_trash_files = NULL;
     to_delete_files = NULL;
@@ -2376,8 +2374,8 @@ report_count_progress (CommonJob *job,
         break;
     }
 
-    marlin_progress_info_take_details (job->progress, s);
-    marlin_progress_info_pulse_progress (job->progress);
+    pf_progress_info_take_details (job->progress, s);
+    pf_progress_info_pulse_progress (job->progress);
 }
 
 static void
@@ -2890,7 +2888,7 @@ report_copy_progress (CopyMoveJob *copy_job,
 
     if (s != NULL)
     {
-        marlin_progress_info_take_status (job->progress, s);
+        pf_progress_info_take_status (job->progress, s);
     }
 
 
@@ -2907,7 +2905,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         char *s;
         /// TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
         s = f (_("%S of %S"), transfer_info->num_bytes, total_size);
-        marlin_progress_info_take_details (job->progress, s);
+        pf_progress_info_take_details (job->progress, s);
     } else {
         char *s;
         remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
@@ -2922,10 +2920,10 @@ report_copy_progress (CopyMoveJob *copy_job,
                transfer_info->num_bytes, total_size,
                remaining_time,
                (goffset)transfer_rate);
-        marlin_progress_info_take_details (job->progress, s);
+        pf_progress_info_take_details (job->progress, s);
     }
 
-    marlin_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
+    pf_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
 }
 
 static int
@@ -3824,13 +3822,13 @@ run_conflict_dialog (CommonJob *job,
     resp_data->new_name = NULL;
     data->resp_data = resp_data;
 
-    marlin_progress_info_pause (job->progress);
+    pf_progress_info_pause (job->progress);
     g_io_scheduler_job_send_to_mainloop (job->io_job,
                                          do_run_conflict_dialog,
                                          data,
                                          NULL);
 
-    marlin_progress_info_resume (job->progress);
+    pf_progress_info_resume (job->progress);
     g_slice_free (ConflictDialogData, data);
     g_timer_continue (job->time);
 
@@ -4383,7 +4381,7 @@ copy_job (GIOSchedulerJob *io_job,
 
     dest_fs_id = NULL;
 
-    marlin_progress_info_start (job->common.progress);
+    pf_progress_info_start (job->common.progress);
     scan_sources (job->files,
                   &source_info,
                   common,
@@ -4481,13 +4479,13 @@ report_move_progress (CopyMoveJob *move_job, int total, int left)
     job = (CommonJob *)move_job;
     s = f (_("Preparing to move to \"%B\""), move_job->destination);
 
-    marlin_progress_info_take_status (job->progress, s);
-    marlin_progress_info_take_details (job->progress,
+    pf_progress_info_take_status (job->progress, s);
+    pf_progress_info_take_details (job->progress,
                                        f (ngettext ("Preparing to move %'d file",
                                                     "Preparing to move %'d files",
                                                     left), left));
 
-    marlin_progress_info_pulse_progress (job->progress);
+    pf_progress_info_pulse_progress (job->progress);
 }
 
 typedef struct {
@@ -4900,7 +4898,7 @@ move_job (GIOSchedulerJob *io_job,
 
     fallbacks = NULL;
 
-    marlin_progress_info_start (job->common.progress);
+    pf_progress_info_start (job->common.progress);
     verify_destination (&job->common,
                         job->destination,
                         &dest_fs_id,
@@ -5013,13 +5011,13 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
     job = (CommonJob *)link_job;
     s = f (_("Creating links in \"%B\""), link_job->destination);
 
-    marlin_progress_info_take_status (job->progress, s);
-    marlin_progress_info_take_details (job->progress,
+    pf_progress_info_take_status (job->progress, s);
+    pf_progress_info_take_details (job->progress,
                                        f (ngettext ("Making link to %'d file",
                                                     "Making links to %'d files",
                                                     left), left));
 
-    marlin_progress_info_set_progress (job->progress, left, total);
+    pf_progress_info_set_progress (job->progress, left, total);
 }
 
 static char *
@@ -5240,7 +5238,7 @@ link_job (GIOSchedulerJob *io_job,
 
     dest_fs_type = NULL;
 
-    marlin_progress_info_start (job->common.progress);
+    pf_progress_info_start (job->common.progress);
     verify_destination (&job->common,
                         job->destination,
                         NULL,
@@ -5401,7 +5399,7 @@ set_permissions_file (SetPermissionsJob *job,
 
     common = (CommonJob *)job;
 
-    marlin_progress_info_pulse_progress (common->progress);
+    pf_progress_info_pulse_progress (common->progress);
     free_info = FALSE;
     if (info == NULL) {
         free_info = TRUE;
@@ -5480,8 +5478,8 @@ set_permissions_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
-    marlin_progress_info_start (job->common.progress);
-    marlin_progress_info_set_status (common->progress, _("Setting permissions"));
+    pf_progress_info_start (job->common.progress);
+    pf_progress_info_set_status (common->progress, _("Setting permissions"));
     set_permissions_file (job, job->file, NULL);
 
     g_io_scheduler_job_send_to_mainloop_async (io_job,
@@ -5691,11 +5689,7 @@ create_job (GIOSchedulerJob *io_job,
     common = &job->common;
     common->io_job = io_job;
 
-#ifdef HAVE_TASKVIEW
-    taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
-#else
-    marlin_progress_info_start (job->common.progress);
-#endif
+    pf_progress_info_start (job->common.progress);
 
     handled_invalid_filename = FALSE;
 
@@ -6145,7 +6139,7 @@ empty_trash_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
-    marlin_progress_info_start (job->common.progress);
+    pf_progress_info_start (job->common.progress);
     if (confirm_empty_trash (job)) {
         for (l = job->trash_dirs;
              l != NULL && !job_aborted (common);
