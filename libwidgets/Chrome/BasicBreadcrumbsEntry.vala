@@ -23,6 +23,22 @@ namespace Marlin.View.Chrome {
         public enum TargetType {
             TEXT_URI_LIST,
         }
+
+        public string? action_icon_name {
+            get {
+                return get_icon_name (Gtk.EntryIconPosition.SECONDARY);
+            }
+            set {
+                if (value != null) {
+                    set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, value);
+                    secondary_icon_activatable = true;
+                    secondary_icon_sensitive = true;
+                } else {
+                    hide_action_icon ();
+                }
+            }
+        }
+
         public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
         public const double MINIMUM_BREADCRUMB_WIDTH = 12;
         public const double COMPLETION_ALPHA = 0.5;
@@ -99,18 +115,6 @@ namespace Marlin.View.Chrome {
             return get_path_from_element (null);
         }
 
-        protected void set_action_icon_name (string? icon_name) {
-            if (icon_name != null) {
-                set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, icon_name);
-                secondary_icon_activatable = true;
-                secondary_icon_sensitive = true;
-            } else {
-                hide_action_icon ();
-            }
-        }
-        public string? get_action_icon_name () {
-            return get_icon_name (Gtk.EntryIconPosition.SECONDARY);
-        }
         protected void set_action_icon_tooltip (string? tip) {
             if (secondary_icon_pixbuf != null && tip != null && tip.length > 0) {
                 set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tip);
@@ -154,13 +158,13 @@ namespace Marlin.View.Chrome {
         }
 
         public void show_default_action_icon () {
-            set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC);
+            action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC;
             set_default_action_icon_tooltip ();
         }
 
         public void hide_default_action_icon () {
             set_action_icon_tooltip ("");
-            set_action_icon_name (null);
+            action_icon_name = null;
         }
         public void set_default_action_icon_tooltip () {
             set_action_icon_tooltip (_("Navigate to %s").printf (get_entry_text ()));
