@@ -69,6 +69,7 @@ namespace Marlin.View.Chrome
             search_results.first_match_found.connect (on_search_results_first_match_found);
             search_results.realize.connect (on_search_results_realize);
             search_results.exit.connect (on_search_results_exit);
+            search_results.notify["working"].connect (on_search_results_working_changed);
         }
 
         private void on_search_results_file_selected (GLib.File file) {
@@ -107,6 +108,14 @@ namespace Marlin.View.Chrome
             } else {
                 bread.set_entry_text (bread.get_breadcrumbs_path ());
                 enter_navigate_mode ();
+            }
+        }
+
+        private void on_search_results_working_changed () {
+            if (search_results.working) {
+                show_working_icon ();
+            } else {
+                hide_working_icon ();
             }
         }
 
@@ -169,12 +178,14 @@ namespace Marlin.View.Chrome
             base.show_navigate_icon ();
         }
         protected void show_search_icon () {
+            bread.get_style_context ().remove_class ("spin");
             bread.set_primary_icon_name (Marlin.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
         }
         protected void hide_search_icon () {
             bread.set_primary_icon_name (null);
         }
         protected void show_path_icon () {
+            bread.get_style_context ().remove_class ("spin");
             bread.set_primary_icon_name (Marlin.ICON_PATHBAR_PRIMARY_PATH_SYMBOLIC);
         }
         protected void hide_path_icon () {
@@ -182,6 +193,7 @@ namespace Marlin.View.Chrome
         }
 
         protected void show_refresh_icon () {
+            bread.get_style_context ().remove_class ("spin");
             bread.set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC);
             bread.set_action_icon_tooltip (_("Reload this folder"));
         }
@@ -190,6 +202,16 @@ namespace Marlin.View.Chrome
         }
         private void hide_placeholder () {
             bread.set_placeholder ("");
+        }
+
+        private void show_working_icon () {
+            bread.set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_WORKING_SYMBOLIC);
+            bread.set_action_icon_tooltip (_("Searching…"));
+            bread.get_style_context ().add_class ("spin");
+        }
+
+        private void hide_working_icon () {
+            show_refresh_icon ();
         }
 
         public bool enter_search_mode () {
