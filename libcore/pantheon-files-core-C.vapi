@@ -205,7 +205,7 @@ namespace GOF {
         public string get_symlink_target ();
         public unowned string? get_ftype ();
         public string? get_formated_time (string attr);
-        public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
+        public Gdk.Pixbuf get_icon_pixbuf (int size, FileIconFlags flags);
         public void get_folder_icon_from_uri_or_path ();
         public Marlin.IconInfo get_icon (int size, FileIconFlags flags);
         public string thumbnail_path;

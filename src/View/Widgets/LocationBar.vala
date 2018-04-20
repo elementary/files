@@ -1,23 +1,23 @@
-/***
-    Copyright (c) 2010 mathijshenquet
-    Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
-
-    Marlin is free software; you can redistribute it and/or
-    modify it under the terms of the GNU General Public License as
-    published by the Free Software Foundation; either version 2 of the
-    License, or (at your option) any later version.
-
-    Marlin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    General Public License for more details.
-
-    You should have received a copy of the GNU General Public
-    License along with this program; see the file COPYING.  If not,
-    write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-    Boston, MA 02110-1335 USA.
-
-***/
+/*
+* Copyright (c) 2018 elementary LLC (https://elementary.io)
+*               2011 Lucas Baudin <xapantu@gmail.com>
+*               2010 mathijshenquet
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 2 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*/
 
 namespace Marlin.View.Chrome
 {
@@ -69,6 +69,7 @@ namespace Marlin.View.Chrome
             search_results.first_match_found.connect (on_search_results_first_match_found);
             search_results.realize.connect (on_search_results_realize);
             search_results.exit.connect (on_search_results_exit);
+            search_results.notify["working"].connect (on_search_results_working_changed);
         }
 
         private void on_search_results_file_selected (GLib.File file) {
@@ -107,6 +108,14 @@ namespace Marlin.View.Chrome
             } else {
                 bread.set_entry_text (bread.get_breadcrumbs_path ());
                 enter_navigate_mode ();
+            }
+        }
+
+        private void on_search_results_working_changed () {
+            if (search_results.working) {
+                show_working_icon ();
+            } else {
+                hide_working_icon ();
             }
         }
 
@@ -169,12 +178,14 @@ namespace Marlin.View.Chrome
             base.show_navigate_icon ();
         }
         protected void show_search_icon () {
+            bread.get_style_context ().remove_class ("spin");
             bread.set_primary_icon_name (Marlin.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
         }
         protected void hide_search_icon () {
             bread.set_primary_icon_name (null);
         }
         protected void show_path_icon () {
+            bread.get_style_context ().remove_class ("spin");
             bread.set_primary_icon_name (Marlin.ICON_PATHBAR_PRIMARY_PATH_SYMBOLIC);
         }
         protected void hide_path_icon () {
@@ -182,14 +193,25 @@ namespace Marlin.View.Chrome
         }
 
         protected void show_refresh_icon () {
+            bread.get_style_context ().remove_class ("spin");
             bread.set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC);
             bread.set_action_icon_tooltip (_("Reload this folder"));
         }
         private void show_placeholder () {
-            bread.set_placeholder (_("Enter search term or path"));
+            bread.set_placeholder (_("Search or Type Path"));
         }
         private void hide_placeholder () {
             bread.set_placeholder ("");
+        }
+
+        private void show_working_icon () {
+            bread.set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_WORKING_SYMBOLIC);
+            bread.set_action_icon_tooltip (_("Searching…"));
+            bread.get_style_context ().add_class ("spin");
+        }
+
+        private void hide_working_icon () {
+            show_refresh_icon ();
         }
 
         public bool enter_search_mode () {
