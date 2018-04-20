@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-04-20 21:45+0000\n"
+"PO-Revision-Date: 2018-04-21 00:10+0000\n"
 "Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
 "Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/>"
 "\n"
@@ -530,9 +530,9 @@ msgstr[2] "zbývá smazat %'d souborů"
 #: ../libcore/marlin-file-operations.c:1538
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] "zbývá %T"
-msgstr[1] "zbývají %T"
-msgstr[2] "zbývá %T"
+msgstr[0] "%T zbývá"
+msgstr[1] "%T zbývají"
+msgstr[2] "%T zbývá"
 
 #: ../libcore/marlin-file-operations.c:1606
 #: ../libcore/marlin-file-operations.c:1640
