@@ -1,23 +1,23 @@
-/***
-    Copyright (c) 2010 mathijshenquet
-    Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
-
-    Marlin is free software; you can redistribute it and/or
-    modify it under the terms of the GNU General Public License as
-    published by the Free Software Foundation; either version 2 of the
-    License, or (at your option) any later version.
-
-    Marlin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    General Public License for more details.
-
-    You should have received a copy of the GNU General Public
-    License along with this program; see the file COPYING.  If not,
-    write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
-    Boston, MA 02110-1335 USA.
-
-***/
+/*
+* Copyright (c) 2018 elementary LLC (https://elementary.io)
+*               2011 Lucas Baudin <xapantu@gmail.com>
+*               2010 mathijshenquet
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 2 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*/
 
 namespace Marlin.View.Chrome
 {
@@ -186,7 +186,7 @@ namespace Marlin.View.Chrome
             bread.set_action_icon_tooltip (_("Reload this folder"));
         }
         private void show_placeholder () {
-            bread.set_placeholder (_("Enter search term or path"));
+            bread.set_placeholder (_("Search or Type Path"));
         }
         private void hide_placeholder () {
             bread.set_placeholder ("");
