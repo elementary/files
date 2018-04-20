@@ -190,7 +190,7 @@ GList           *gof_file_get_location_list (GList *files);
 void            gof_file_list_free (GList *list);
 GList           *gof_file_list_ref (GList *list);
 GList           *gof_file_list_copy (GList *list);
-GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFileIconFlags flags);
+GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, gint size, GOFFileIconFlags flags);
 _MarlinIconInfo  *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags);
 gboolean        gof_file_is_writable (GOFFile *file);
 gboolean        gof_file_is_trashed (GOFFile *file);
