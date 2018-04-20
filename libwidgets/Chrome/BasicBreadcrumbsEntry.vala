@@ -1,22 +1,22 @@
-/***
-    Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
-
-    Marlin is free software; you can redistribute it and/or
-    modify it under the terms of the GNU General Public License as
-    published by the Free Software Foundation; either version 2 of the
-    License, or (at your option) any later version.
-
-    Marlin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    General Public License for more details.
-
-    You should have received a copy of the GNU General Public
-    License along with this program; see the file COPYING.  If not,
-    write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
-    Boston, MA 02110-1335 USA.
-
-***/
+/*
+* Copyright (c) 2018 elementary LLC (https://elementary.io)
+*               2011 Lucas Baudin <xapantu@gmail.com>
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 2 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*/
 
 namespace Marlin.View.Chrome {
     public class BasicBreadcrumbsEntry : Gtk.Entry, Navigatable  {
@@ -49,8 +49,6 @@ namespace Marlin.View.Chrome {
 
         protected bool context_menu_showing = false;
 
-    /** Construction **/
-    /******************/
         construct {
             truncate_multiline = true;
             weak Gtk.StyleContext style_context = get_style_context ();
@@ -282,7 +280,7 @@ namespace Marlin.View.Chrome {
                 set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {
                 set_entry_cursor (null);
-                set_tooltip_text (_("Enter search term or path"));
+                set_tooltip_text (_("Search or Type Path"));
             }
 
             if (tip != null) {
