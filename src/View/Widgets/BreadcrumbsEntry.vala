@@ -33,7 +33,7 @@ namespace Marlin.View.Chrome {
          * user enter /home/user/a, we will search for "a". */
         string to_search = "";
 
-        public bool search_mode = false; // Used to suppress activate events while searching
+        public bool search_mode { get; set; default = false; } // Used to suppress activate events while searching
 
         /** Drag and drop support **/
         protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);

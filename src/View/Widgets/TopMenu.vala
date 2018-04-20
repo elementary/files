@@ -28,6 +28,7 @@ namespace Marlin.View.Chrome
         public LocationBar? location_bar;
         public Chrome.ButtonWithMenu button_forward;
         public Chrome.ButtonWithMenu button_back;
+        private Gtk.ToggleButton find_button;
 
         public bool locked_focus {get; private set; default = false;}
 
@@ -70,8 +71,7 @@ namespace Marlin.View.Chrome
             button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             button_forward.show_all ();
             pack_start (button_forward);
-
-
+            
             button_forward.slow_press.connect (() => {
                 forward (1);
             });
@@ -89,6 +89,22 @@ namespace Marlin.View.Chrome
             connect_location_bar_signals ();
             location_bar.show_all ();
             pack_start (location_bar);
+
+            find_button = new Gtk.ToggleButton ();
+            find_button.image = new Gtk.Image.from_icon_name ("edit-find", Gtk.IconSize.LARGE_TOOLBAR);
+            find_button.tooltip_text = _("Find…");
+            find_button.show_all ();
+            find_button.toggled.connect (() => {
+                if (find_button.active) {
+                    enter_search_mode ();
+                } else {
+                    cancel ();
+                }
+            });
+
+            pack_end (find_button);
+
+            location_bar.bread.bind_property ("search-mode", find_button, "active", BindingFlags.SYNC_CREATE);
 
             show ();
         }
