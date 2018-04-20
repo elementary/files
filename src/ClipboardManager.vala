@@ -139,7 +139,6 @@ namespace Marlin {
 
             if (text == null) {
                 warning ("Empty selection data in Marlin.ClipboardManager contents_received");
-                Dialogs.show_error (widget, null, _("There is nothing on the clipboard to paste"));
                 return;
             }
 
@@ -152,11 +151,10 @@ namespace Marlin {
                 text = text.substring (3);
             } else {
                 warning ("Invalid selection data in Marlin.ClipboardManager contents_received");
-                Dialogs.show_error (widget, null, _("There is nothing on the clipboard to paste"));
                 return;
             }
 
-            var file_list = EelGFile.list_new_from_string (text);
+            var file_list = PF.FileUtils.files_from_uris (text);
 
             if (file_list != null) {
                 FileOperations.copy_move_link (file_list,

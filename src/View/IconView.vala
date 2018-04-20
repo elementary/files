@@ -19,6 +19,11 @@
 namespace FM {
     public class IconView : AbstractDirectoryView {
         protected new Gtk.IconView tree;
+        /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
+        protected bool previous_selection_was_linear = false;
+        protected Gtk.TreePath? previous_linear_selection_path = null;
+        protected int previous_linear_selection_direction = 0;
+        protected bool linear_select_required = false;
 
         public IconView (Marlin.View.Slot _slot) {
             assert (_slot != null);
@@ -140,6 +145,13 @@ namespace FM {
 
         public override void tree_unselect_all () {
             tree.unselect_all ();
+        }
+
+        public override void tree_unselect_others () {
+            Gtk.TreePath path = null;
+            tree.get_cursor (out path, null);
+            tree.unselect_all ();
+            select_path (path, true);
         }
 
         /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
@@ -287,6 +299,58 @@ namespace FM {
             tree.set_cursor (path, renderer, start_editing);
         }
 
+        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed,  bool only_shift_pressed) {
+            linear_select_required = only_shift_pressed;
+            if (linear_select_required) {
+                return true;
+            } else {
+                return base.will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed);
+            }
+        }
+
+        protected override bool handle_multi_select (Gtk.TreePath path) {
+            if (selected_files.length () > 0) {
+                linear_select_path (path);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        /* Override native Gtk.IconView cursor handling */
+        protected override bool move_cursor (uint keyval, bool only_shift_pressed) {
+            Gtk.TreePath? path = get_path_at_cursor ();
+            if (path != null) {
+                if (keyval == Gdk.Key.Right) {
+                    path.next (); /* Does not check if path is valid */
+                } else if (keyval == Gdk.Key.Left) {
+                    path.prev ();
+                } else if (keyval == Gdk.Key.Up) {
+                    path = up (path);
+                } else if (keyval == Gdk.Key.Down) {
+                    path = down (path);
+                }
+
+                Gtk.TreeIter? iter = null;
+                /* Do not try to select invalid path */
+                if (model.get_iter (out iter, path)) {
+                    if (only_shift_pressed && selected_files != null) {
+                        linear_select_path (path);
+                    } else {
+                        unselect_all ();
+                        set_cursor (path, false, true, false);
+                        previous_linear_selection_path = path;
+                    }
+                }
+            } else {
+                path = new Gtk.TreePath.from_indices (0);
+                set_cursor (path, false, true, false);
+                previous_linear_selection_path = path;
+            }
+
+            return true;
+        }
+
         public override void set_cursor (Gtk.TreePath? path,
                                          bool start_editing,
                                          bool select,
@@ -337,7 +401,7 @@ namespace FM {
             tree.thaw_child_notify ();
         }
 
-        protected override void linear_select_path (Gtk.TreePath path) {
+        protected void linear_select_path (Gtk.TreePath path) {
             /* We override the native Gtk.IconView behaviour when selecting files with Shift-Click */
             /* We wish to emulate the behaviour of ListView and ColumnView. This depends on whether the */
             /* the previous selection was made with the Shift key pressed */
@@ -347,6 +411,7 @@ namespace FM {
                 critical ("Ignoring attempt to select null path in linear_select_path");
                 return;
             }
+
             if (previous_linear_selection_path != null && path.compare (previous_linear_selection_path) == 0) {
                 /* Ignore if repeat click on same file as before. We keep the previous linear selection direction. */
                 return;
@@ -405,6 +470,7 @@ namespace FM {
                     unselect_path (p);
                 } while (p.compare (p2) != 0 && p.compare (last_selected) <= 0);
             }
+
             previous_selection_was_linear = true;
 
             selected_paths = tree.get_selected_items ();
@@ -421,6 +487,7 @@ namespace FM {
                 critical ("Linear selection did not become end point - this should not happen!");
                 previous_linear_selection_direction = 0;
             }
+
             previous_linear_selection_path = path.copy ();
             /* Ensure cursor in correct place, regardless of any selections made in this function */
             tree.set_cursor (path, null, false);

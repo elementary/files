@@ -210,13 +210,8 @@ namespace FM {
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
             count of the file object.*/
-        private GLib.List<unowned GOF.File> selected_files = null;
+        protected GLib.List<unowned GOF.File> selected_files = null;
         private bool selected_files_invalid = true;
-
-        /* support for linear selection mode in icon view */
-        protected bool previous_selection_was_linear = false;
-        protected Gtk.TreePath? previous_linear_selection_path = null;
-        protected int previous_linear_selection_direction = 0;
 
         private GLib.List<GLib.File> templates = null;
 
@@ -521,7 +516,7 @@ namespace FM {
                 return;
             }
 
-            unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
+            unowned Gdk.Screen screen = get_screen ();
 
             if (selection.first ().next == null) { // Only one selected
                 activate_file (selection.data, screen, flag, true);
@@ -771,7 +766,7 @@ namespace FM {
             GLib.File location = file.get_target_location ();
 
             if (screen == null)
-                screen = Eel.gtk_widget_get_screen (this);
+                screen = get_screen ();
 
             if (file.is_folder () ||
                 file.get_ftype () == "inode/directory" ||
@@ -967,7 +962,7 @@ namespace FM {
             }
             /* Start to rename the file once we get signal that it has been added to model */
             view.slot.directory.file_added.connect_after (view.after_new_file_added);
-            view.unblock_directory_monitor ();;
+            view.unblock_directory_monitor ();
         }
 
         /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
@@ -1091,7 +1086,7 @@ namespace FM {
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-            unowned Gdk.Screen screen = Eel.gtk_widget_get_screen (this);
+            unowned Gdk.Screen screen = get_screen ();
             file.execute (screen, null, null);
         }
 
@@ -1312,7 +1307,7 @@ namespace FM {
                 /* Check whether the deleted file is the directory */
                 var file_dir = GOF.Directory.Async.cache_lookup (file.location);
                 if (file_dir != null) {
-                    file_dir.purge_dir_from_cache ();
+                    GOF.Directory.Async.purge_dir_from_cache (file_dir);
                     slot.folder_deleted (file, file_dir);
                 }
             }
@@ -1576,7 +1571,7 @@ namespace FM {
                 /* We don't have the drop data - extract uri list from selection data */
                 string? text;
                 if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-                    drop_file_list = EelGFile.list_new_from_string (text);
+                    drop_file_list = PF.FileUtils.files_from_uris (text);
                     drop_data_ready = true;
                 }
             }
@@ -1829,10 +1824,7 @@ namespace FM {
                 /* Override style MESSAGE_CLASS of view when it is empty */
                 if (slot.directory.is_empty ())
                     menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
-                Eel.pop_up_context_menu (menu,
-                                         Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                         Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                         (Gdk.EventButton) event);
+                menu.popup_at_pointer (event);
             }
         }
 
@@ -2013,9 +2005,8 @@ namespace FM {
                     label = _("Run");
                     menu.append (label, "selection.open");
                 } else if (default_app != null) {
-                    var app_name = default_app.get_display_name ();
-                    if (app_name != Marlin.APP_TITLE) {
-                        label = (_("Open in %s")).printf (app_name);
+                    if (default_app.get_id () != GLib.Application.get_default ().application_id + ".desktop") {
+                        label = (_("Open in %s")).printf (default_app.get_display_name ());
                         menu.append (label, "selection.open_with_default");
                     }
                 }
@@ -2379,8 +2370,8 @@ namespace FM {
                     return;
             }
 
-            cancel_thumbnailing (); /* cancels any existing timeout or thumbnail request */
-
+            /* Do not cancel existing requests to avoid missing thumbnails */
+            cancel_timeout (ref thumbnail_source_id);
             /* In order to improve performance of the Icon View when there are a large number of files,
              * we freeze child notifications while the view is being scrolled or resized.
              * The timeout is restarted for each scroll or size allocate event */
@@ -2434,8 +2425,9 @@ namespace FM {
                         path = model.get_path (iter);
 
                         if (file != null) {
+                            file.query_thumbnail_update ();  // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if (file.flags == GOF.File.ThumbState.UNKNOWN) {
+                            if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
                                 visible_files.prepend (file);
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                     actually_visible++;
@@ -2658,30 +2650,25 @@ namespace FM {
             bool other_mod_pressed = (((mods & ~Gdk.ModifierType.SHIFT_MASK) & ~Gdk.ModifierType.CONTROL_MASK) != 0);
             bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
             bool only_alt_pressed = alt_pressed && ((mods & ~Gdk.ModifierType.MOD1_MASK) == 0);
-
             bool in_trash = slot.location.has_uri_scheme ("trash");
             bool in_recent = slot.location.has_uri_scheme ("recent");
-
-            /* Implement linear selection in Icon View with cursor keys */
-            bool linear_select_required = (no_mods || only_shift_pressed) && this is IconView;
-
-            if (!linear_select_required || !only_shift_pressed) {
-                previous_selection_was_linear = false;
-            }
+            bool res = false;
 
             switch (keyval) {
                 case Gdk.Key.F10:
                     if (only_control_pressed) {
                         show_or_queue_context_menu (event);
-                        return true;
+                        res = true;
                     }
+
                     break;
 
                 case Gdk.Key.F2:
                     if (no_mods && selection_actions.get_action_enabled ("rename")) {
                         rename_selected_file ();
-                        return true;
+                        res = true;
                     }
+
                     break;
 
                 case Gdk.Key.Delete:
@@ -2694,20 +2681,21 @@ namespace FM {
                     } else if (no_mods || is_admin) {
                         /* If already in trash or running as root, permanently delete the file */
                         trash_or_delete_selected_files (in_trash || is_admin);
-                        return true;
+                        res = true;
                     } else if (only_shift_pressed) {
                         trash_or_delete_selected_files (true);
-                        return true;
+                        res = true;
                     } else if (only_shift_pressed && !renaming) {
                         delete_selected_files ();
-                        return true;
+                        res = true;
                     }
+
                     break;
 
                 case Gdk.Key.space:
                     if (view_has_focus () && !in_trash) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        return true;
+                        res = true;
                     }
 
                     break;
@@ -2715,7 +2703,7 @@ namespace FM {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
                     if (in_trash) {
-                        return false;
+                        break;
                     } else if (in_recent) {
                         activate_selected_items (Marlin.OpenFlag.DEFAULT);
                     } else if (only_shift_pressed) {
@@ -2725,20 +2713,35 @@ namespace FM {
                     } else if (no_mods) {
                          activate_selected_items (Marlin.OpenFlag.DEFAULT);
                     } else {
-                        return false;
+                        break;
                     }
 
-                    return true;
+                    res = true;
+                    break;
 
                 case Gdk.Key.minus:
-                    if (only_alt_pressed) {
+                    if (alt_pressed && control_pressed) {
                         Gtk.TreePath? path = get_path_at_cursor ();
                         if (path != null && path_is_selected (path)) {
                             unselect_path (path);
                         }
 
-                        return true;
+                        res = true;
                     }
+
+                    break;
+
+                case Gdk.Key.plus:
+                case Gdk.Key.equal: /* Do not require Shift as well (otherwise 4 key shortcut)  */
+                    if (alt_pressed && control_pressed) {
+                        Gtk.TreePath? path = get_path_at_cursor ();
+                        if (path != null && !path_is_selected (path)) {
+                            select_path (path);
+                        }
+
+                        res = true;
+                    }
+
                     break;
 
                 case Gdk.Key.Escape:
@@ -2752,7 +2755,7 @@ namespace FM {
                 case Gdk.Key.MenuKB:
                     if (no_mods) {
                         show_context_menu (event);
-                        return true;
+                        res = true;
                     }
 
                     break;
@@ -2760,7 +2763,7 @@ namespace FM {
                 case Gdk.Key.N:
                     if (control_pressed) {
                         new_empty_folder ();
-                        return true;
+                        res = true;
                     }
 
                     break;
@@ -2775,7 +2778,7 @@ namespace FM {
                             select_all ();
                         }
 
-                        return true;
+                        res = true;
                     }
 
                     break;
@@ -2783,7 +2786,7 @@ namespace FM {
                 case Gdk.Key.A:
                     if (control_pressed) {
                         invert_selection ();
-                        return true;
+                        res = true;
                     }
 
                     break;
@@ -2792,7 +2795,6 @@ namespace FM {
                 case Gdk.Key.Down:
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
-
                     unowned GLib.List<GOF.File> selection = get_selected_files ();
                     if (only_alt_pressed && keyval == Gdk.Key.Down) {
                         /* Only open a single selected folder */
@@ -2802,44 +2804,14 @@ namespace FM {
                             selection.data.is_folder ()) {
 
                             load_location (selection.data.location);
-                            return true;
-                        } else {
-                            return false;
+                            res = true;
                         }
+
+                        break;
                     }
 
-                    if (linear_select_required) { /* Only true for Icon View */
-                        Gtk.TreePath? path = get_path_at_cursor ();
+                    res = move_cursor (keyval, only_shift_pressed);
 
-                        if (path != null) {
-                            Gtk.TreePath old_path = path;
-
-                            if (event.keyval == Gdk.Key.Right) {
-                                path.next (); /* Does not check if path is valid */
-                            } else if (event.keyval == Gdk.Key.Left) {
-                                path.prev ();
-                            } else if (event.keyval == Gdk.Key.Up) {
-                                path = up (path);
-                            } else if (event.keyval == Gdk.Key.Down) {
-                                path = down (path);
-                            }
-
-                            Gtk.TreeIter? iter = null;
-                            /* Do not try to select invalid path */
-                            if (model.get_iter (out iter, path)) {
-                                if (only_shift_pressed && selected_files != null) {
-                                    linear_select_path (path);
-                                } else if (no_mods) {
-                                    unselect_path (old_path);
-                                    select_path (path, true);  /* Cursor follows */
-                                }
-                            }
-                            return true;
-                        }
-                    } else {
-                        previous_selection_was_linear = false;
-                        previous_linear_selection_path = null;
-                    }
                     break;
 
                 case Gdk.Key.c:
@@ -2855,8 +2827,9 @@ namespace FM {
                             common_actions.activate_action ("copy", null);
                         }
 
-                        return true;
+                        res = true;
                     }
+
                     break;
 
                 case Gdk.Key.v:
@@ -2871,8 +2844,10 @@ namespace FM {
                                                      _("You do not have permission to change this location"),
                                                      window as Gtk.Window);
                         }
-                        return true;
+
+                        res = true;
                     }
+
                     break;
 
                 case Gdk.Key.x:
@@ -2884,15 +2859,22 @@ namespace FM {
                                                      _("You do not have permission to change this location"),
                                                      window as Gtk.Window);
                         }
-                        return true;
+
+                        res = true;
                     }
+
                     break;
 
                 default:
                     break;
             }
 
-            return false;
+            Idle.add (() => {
+                update_selected_files_and_menu ();
+                return false;
+            });
+
+            return res;
         }
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
@@ -3157,8 +3139,6 @@ namespace FM {
             bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
-            bool linear_select_required = false;
-            bool is_selected = selected_files != null;
 
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
@@ -3167,16 +3147,8 @@ namespace FM {
 
             /* Handle un-modified clicks or control-clicks here else pass on.
              */
-            linear_select_required = false;
-            if (!no_mods && !only_control_pressed) {
-                if (only_shift_pressed && (this is IconView)) {
-                    linear_select_required = true;
-                } else {
-                    previous_selection_was_linear = false;
-                    return false;
-                }
-            } else {
-                previous_selection_was_linear = false;
+            if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
+                return false;
             }
 
             if (!path_selected && click_zone != ClickZone.HELPER) {
@@ -3220,35 +3192,21 @@ namespace FM {
 
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
                                 update_selected_files_and_menu ();
-
-                                if (linear_select_required && selected_files.length () > 0) {
-                                    linear_select_path (path);
-                                    result = true;  /* Do not pass to default handler which would Rubberband */
-                                } else {
-                                    previous_selection_was_linear = false;
-                                }
+                                result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
                             }
 
-                            previous_linear_selection_path = path.copy ();
-
                             break;
 
                         case ClickZone.HELPER:
-                            if (linear_select_required && is_selected) {
-                                linear_select_path (path);
+                            /* Only for selecting individual files so ignore any mods */
+                            if (path_selected) {
+                                unselect_path (path);
                             } else {
-                                previous_selection_was_linear = false;
-                                previous_linear_selection_path = null;
-
-                                if (path_selected) {
-                                    unselect_path (path);
-                                } else {
-                                    should_deselect = false;
-                                    select_path (path);  /* Cursor follows */
-                                }
+                                should_deselect = false;
+                                select_path (path, true);  /* Cursor follow and selection preserved */
                             }
 
                             result = true; /* Prevent rubberbanding and deselection of other paths */
@@ -3299,7 +3257,6 @@ namespace FM {
                     break;
             }
 
-            previous_linear_selection_path = path != null ? path.copy () : null;
             return result;
         }
 
@@ -3566,8 +3523,12 @@ namespace FM {
             update_selected_files_and_menu ();
         }
 
+        public void unselect_others () {
+            tree_unselect_others ();
+            update_selected_files_and_menu ();
+        }
+
         public virtual void highlight_path (Gtk.TreePath? path) {}
-        protected virtual void linear_select_path (Gtk.TreePath path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
 
@@ -3577,6 +3538,7 @@ namespace FM {
         public abstract Gtk.TreePath? get_path_at_cursor ();
         public abstract void tree_select_all ();
         public abstract void tree_unselect_all ();
+        public virtual void tree_unselect_others () {}
         public abstract void select_path (Gtk.TreePath? path, bool cursor_follows = false);
         public abstract void unselect_path (Gtk.TreePath? path);
         public abstract bool path_is_selected (Gtk.TreePath? path);
@@ -3585,6 +3547,24 @@ namespace FM {
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top);
+
+        /* By default use the native widget cursor handling by returning false */
+        protected virtual bool move_cursor (uint keyval, bool only_shift_pressed) {
+            return false;
+        }
+
+        protected virtual bool will_handle_button_press (bool no_mods, bool only_control_pressed,  bool only_shift_pressed) {
+            if (!no_mods && !only_control_pressed) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        /* Multi-select could be by rubberbanding or modified clicking. Returning false
+         * invokes the default widget handler.  IconView requires special handler */
+        protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
+
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();

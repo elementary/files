@@ -115,14 +115,14 @@ namespace Marlin.View {
         }
 
         private void connect_dir_view_signals () {
-            dir_view.path_change_request.connect (schedule_path_change_request);
+            dir_view.path_change_request.connect (on_dir_view_path_change_request);
             dir_view.size_allocate.connect (on_dir_view_size_allocate);
             dir_view.item_hovered.connect (on_dir_view_item_hovered);
             dir_view.selection_changed.connect (on_dir_view_selection_changed);
         }
 
         private void disconnect_dir_view_signals () {
-            dir_view.path_change_request.disconnect (schedule_path_change_request);
+            dir_view.path_change_request.disconnect (on_dir_view_path_change_request);
             dir_view.size_allocate.disconnect (on_dir_view_size_allocate);
             dir_view.item_hovered.disconnect (on_dir_view_item_hovered);
             dir_view.selection_changed.disconnect (on_dir_view_selection_changed);
@@ -229,21 +229,6 @@ namespace Marlin.View {
             assert (directory != null);
 
             connect_dir_signals ();
-        }
-
-        /* This delay in passing on the path change request is necessary to prevent occasional crashes
-         * due to undiagnosed bug.
-         */
-        private void schedule_path_change_request (GLib.File loc, Marlin.OpenFlag flag, bool make_root) {
-            if (path_change_timeout_id > 0) {
-                warning ("Path change request received too rapidly");
-                return;
-            }
-            path_change_timeout_id = GLib.Timeout.add (20, () => {
-                on_dir_view_path_change_request (loc, flag, make_root);
-                path_change_timeout_id = 0;
-                return false;
-            });
         }
 
         private void on_dir_view_path_change_request (GLib.File loc, Marlin.OpenFlag flag, bool make_root) {

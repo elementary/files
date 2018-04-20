@@ -33,12 +33,6 @@
 
 #include "marlin-file-operations.h"
 
-#ifdef ENABLE_TASKVIEW
-#include <libtaskview/taskview.h>
-#else
-#include "marlin-progress-info.h"
-#endif
-
 #include <glib/gi18n.h>
 #include <glib/gstdio.h>
 #include <gdk/gdk.h>
@@ -50,7 +44,6 @@
 #include "eel-string.h"
 
 #include "marlin-file-changes-queue.h"
-#include "marlin-file-conflict-dialog.h"
 #include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
@@ -60,11 +53,7 @@ typedef struct {
     GtkWindow *parent_window;
     int screen_num;
     int inhibit_cookie;
-#ifdef ENABLE_TASKVIEW
-    TaskviewIO *tv_io;
-#else
-    MarlinProgressInfo *progress;
-#endif
+    PFProgressInfo *progress;
     GCancellable *cancellable;
     GHashTable *skip_files;
     GHashTable *skip_readdir_error;
@@ -199,7 +188,6 @@ static char * query_fs_type (GFile *file,
 static void
 marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs);
 
-#ifndef ENABLE_TASKVIEW
 /* keep in time with format_time()
  *
  * This counts and outputs the number of “time units”
@@ -239,7 +227,6 @@ seconds_count_format_time_units (int seconds)
 
     return hours;
 }
-#endif
 
 static char *
 format_time (int seconds)
@@ -885,14 +872,6 @@ f (const char *format, ...) {
     return res;
 }
 
-#ifdef ENABLE_TASKVIEW
-static void
-cancel_callback (TaskviewGeneric *origin, GError **error, CommonJob *job)
-{
-    g_cancellable_cancel (job->cancellable);
-}
-#endif
-
 #define op_job_new(jobtype, __type, parent_window) ((__type *)(init_common (jobtype, sizeof(__type), parent_window)))
 
 static gpointer
@@ -910,43 +889,8 @@ init_common (JobTypes jobtype,
         g_object_add_weak_pointer (parent_window, &common->parent_window);
     }
 
-#ifdef ENABLE_TASKVIEW
-    gint tv_type;
-    const gchar *tv_icon;
-
-    switch (jobtype) {
-    case JOB_COPY:
-        tv_type = TASKVIEW_IO_COPY;
-        tv_icon = "folder-copy";
-        break;
-
-    case JOB_MOVE:
-        tv_type = TASKVIEW_IO_MOVE;
-        tv_icon = "folder-move";
-        break;
-
-    case JOB_DELETE:
-        tv_type = TASKVIEW_IO_DELETE;
-        tv_icon = "user-trash-full";
-        break;
-
-    default:
-        tv_type = TASKVIEW_IO_UNKNOWN;
-        tv_icon = "file-manager";
-    }
-
-    common->tv_io = g_object_new (TASKVIEW_TYPE_IO,
-                                  "state", TASKVIEW_PREPARING,
-                                  "type", tv_type,
-                                  "icon", tv_icon,
-                                  "callback-cancel", cancel_callback,
-                                  "user-data", common,
-                                  NULL);
-    common->cancellable = g_cancellable_new ();
-#else
-    common->progress = marlin_progress_info_new ();
-    common->cancellable = marlin_progress_info_get_cancellable (common->progress);
-#endif
+    common->progress = pf_progress_info_new ();
+    common->cancellable = pf_progress_info_get_cancellable (common->progress);
     common->time = g_timer_new ();
     common->inhibit_cookie = -1;
     common->screen_num = 0;
@@ -962,11 +906,7 @@ init_common (JobTypes jobtype,
 static void
 finalize_common (CommonJob *common)
 {
-#ifdef ENABLE_TASKVIEW
-    g_object_set (common->tv_io, "state", TASKVIEW_FINISHED, NULL);
-#else
-    marlin_progress_info_finish (common->progress);
-#endif
+    pf_progress_info_finish (common->progress);
     if (common->inhibit_cookie != -1) {
         gtk_application_uninhibit (GTK_APPLICATION (g_application_get_default ()),
                                    common->inhibit_cookie);
@@ -991,11 +931,7 @@ finalize_common (CommonJob *common)
                                     common->undo_redo_data);
     // End UNDO-REDO
 
-#ifdef ENABLE_TASKVIEW
-    g_object_unref (common->tv_io);
-#else
     g_object_unref (common->progress);
-#endif
     g_object_unref (common->cancellable);
     g_free (common);
 }
@@ -1175,20 +1111,12 @@ run_simple_dialog_va (CommonJob *job,
     g_ptr_array_add (ptr_array, NULL);
     data->button_titles = (const char **)g_ptr_array_free (ptr_array, FALSE);
 
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io, "state", TASKVIEW_ERROR, NULL);
-#else
-    marlin_progress_info_pause (job->progress);
-#endif
+    pf_progress_info_pause (job->progress);
     g_io_scheduler_job_send_to_mainloop (job->io_job,
                                          do_run_simple_dialog,
                                          data,
                                          NULL);
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io, "state", TASKVIEW_RUNNING, NULL);
-#else
-    marlin_progress_info_resume (job->progress);
-#endif
+    pf_progress_info_resume (job->progress);
     res = data->result;
 
     g_free (data->button_titles);
@@ -1428,14 +1356,6 @@ report_delete_progress (CommonJob *job,
                         SourceInfo *source_info,
                         TransferInfo *transfer_info)
 {
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io,
-                  "description", _("Deleting files"),
-                  "state", TASKVIEW_RUNNING,
-                  "processed-items", (guint64) transfer_info->num_files,
-                  "total-items", (guint64) source_info->num_files,
-                  NULL);
-#else
     int files_left;
     double elapsed, transfer_rate;
     int remaining_time;
@@ -1461,13 +1381,13 @@ report_delete_progress (CommonJob *job,
                                 files_left),
                       files_left);
 
-    marlin_progress_info_take_status (job->progress,
+    pf_progress_info_take_status (job->progress,
                                       f (_("Deleting files")));
 
     elapsed = g_timer_elapsed (job->time, NULL);
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE) {
 
-        marlin_progress_info_set_details (job->progress, files_left_s);
+        pf_progress_info_set_details (job->progress, files_left_s);
     } else {
         char *details, *time_left_s;
         transfer_rate = transfer_info->num_files / elapsed;
@@ -1481,7 +1401,7 @@ report_delete_progress (CommonJob *job,
                          remaining_time);
 
         details = g_strconcat (files_left_s, "\xE2\x80\x94", time_left_s, NULL);
-        marlin_progress_info_take_details (job->progress, details);
+        pf_progress_info_take_details (job->progress, details);
 
         g_free (time_left_s);
     }
@@ -1489,9 +1409,8 @@ report_delete_progress (CommonJob *job,
     g_free (files_left_s);
 
     if (source_info->num_files != 0) {
-        marlin_progress_info_set_progress (job->progress, transfer_info->num_files, source_info->num_files);
+        pf_progress_info_set_progress (job->progress, transfer_info->num_files, source_info->num_files);
     }
-#endif
 }
 
 static void delete_file (CommonJob *job, GFile *file,
@@ -1772,32 +1691,23 @@ report_trash_progress (CommonJob *job,
                        int files_trashed,
                        int total_files)
 {
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io,
-                  "description", _("Moving files to trash"),
-                  "state", TASKVIEW_RUNNING,
-                  "processed-items", (guint64) files_trashed,
-                  "total-items", (guint64) total_files,
-                  NULL);
-#else
     int files_left;
     char *s;
 
     files_left = total_files - files_trashed;
 
-    marlin_progress_info_take_status (job->progress,
+    pf_progress_info_take_status (job->progress,
                                       f (_("Moving files to trash")));
 
     s = f (ngettext ("%'d file left to trash",
                      "%'d files left to trash",
                      files_left),
            files_left);
-    marlin_progress_info_take_details (job->progress, s);
+    pf_progress_info_take_details (job->progress, s);
 
     if (total_files != 0) {
-        marlin_progress_info_set_progress (job->progress, files_trashed, total_files);
+        pf_progress_info_set_progress (job->progress, files_trashed, total_files);
     }
-#endif
 }
 
 
@@ -2004,11 +1914,7 @@ delete_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
-#ifdef ENABLE_TASKVIEW
-    taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
-#else
-    marlin_progress_info_start (job->common.progress);
-#endif
+    pf_progress_info_start (job->common.progress);
 
     to_trash_files = NULL;
     to_delete_files = NULL;
@@ -2468,20 +2374,8 @@ report_count_progress (CommonJob *job,
         break;
     }
 
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io,
-                  "state", TASKVIEW_PREPARING,
-                  "description", s,
-                  "total-items", (guint64) source_info->num_files,
-                  "total-size", (guint64) source_info->num_bytes,
-                  //"type", is_move ? TASKVIEW_IO_MOVE : TASKVIEW_IO_COPY,
-                  NULL);
-    g_free (s);
-#else
-    marlin_progress_info_take_details (job->progress, s);
-    marlin_progress_info_pulse_progress (job->progress);
-#endif
-
+    pf_progress_info_take_details (job->progress, s);
+    pf_progress_info_pulse_progress (job->progress);
 }
 
 static void
@@ -2914,11 +2808,9 @@ report_copy_progress (CopyMoveJob *copy_job,
     CommonJob *job;
     gboolean is_move;
     int files_left;
-#ifndef ENABLE_TASKVIEW
     goffset total_size;
     double elapsed, transfer_rate;
     int remaining_time;
-#endif
     guint64 now;
     gchar *s = NULL;
 
@@ -2994,34 +2886,9 @@ report_copy_progress (CopyMoveJob *copy_job,
         }
     }
 
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io,
-                  "state", TASKVIEW_RUNNING,
-                  "processed-items", (guint64) transfer_info->num_files,
-                  "total-items", (guint64) source_info->num_files,
-                  "processed-size", (guint64) transfer_info->num_bytes,
-                  "total-size", (guint64) source_info->num_bytes,
-                  "type", is_move ? TASKVIEW_IO_MOVE : TASKVIEW_IO_COPY,
-                  NULL);
-
     if (s != NULL)
     {
-        taskview_generic_set_description (TASKVIEW_GENERIC (job->tv_io), s);
-        g_free (s);
-    }
-
-    // FIXME: current-file?
-    if (copy_job->destination != NULL) {
-        gchar *current_item = g_file_get_uri (copy_job->destination);
-        g_object_set (job->tv_io,
-                      "current-item", current_item,
-                      NULL);
-        g_free (current_item);
-    }
-#else
-    if (s != NULL)
-    {
-        marlin_progress_info_take_status (job->progress, s);
+        pf_progress_info_take_status (job->progress, s);
     }
 
 
@@ -3038,7 +2905,7 @@ report_copy_progress (CopyMoveJob *copy_job,
         char *s;
         /// TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
         s = f (_("%S of %S"), transfer_info->num_bytes, total_size);
-        marlin_progress_info_take_details (job->progress, s);
+        pf_progress_info_take_details (job->progress, s);
     } else {
         char *s;
         remaining_time = (total_size - transfer_info->num_bytes) / transfer_rate;
@@ -3053,11 +2920,10 @@ report_copy_progress (CopyMoveJob *copy_job,
                transfer_info->num_bytes, total_size,
                remaining_time,
                (goffset)transfer_rate);
-        marlin_progress_info_take_details (job->progress, s);
+        pf_progress_info_take_details (job->progress, s);
     }
 
-    marlin_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
-#endif
+    pf_progress_info_set_progress (job->progress, transfer_info->num_bytes, total_size);
 }
 
 static int
@@ -3918,7 +3784,7 @@ do_run_conflict_dialog (gpointer _data)
                                               data->dest_dir);
     response = gtk_dialog_run (GTK_DIALOG (dialog));
 
-    if (response == CONFLICT_RESPONSE_RENAME) {
+    if (response == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
         data->resp_data->new_name =
             marlin_file_conflict_dialog_get_new_name (MARLIN_FILE_CONFLICT_DIALOG (dialog));
     } else if (response != GTK_RESPONSE_CANCEL ||
@@ -3956,22 +3822,14 @@ run_conflict_dialog (CommonJob *job,
     resp_data->new_name = NULL;
     data->resp_data = resp_data;
 
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io, "state", TASKVIEW_PAUSED, NULL);
-#else
-    marlin_progress_info_pause (job->progress);
-#endif
+    pf_progress_info_pause (job->progress);
     g_io_scheduler_job_send_to_mainloop (job->io_job,
                                          do_run_conflict_dialog,
                                          data,
                                          NULL);
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io, "state", TASKVIEW_RUNNING, NULL);
-#else
-    marlin_progress_info_resume (job->progress);
-#endif
-    g_slice_free (ConflictDialogData, data);
 
+    pf_progress_info_resume (job->progress);
+    g_slice_free (ConflictDialogData, data);
     g_timer_continue (job->time);
 
     return resp_data;
@@ -4241,12 +4099,12 @@ retry:
             response->id == GTK_RESPONSE_DELETE_EVENT) {
             conflict_response_data_free (response);
             abort_job (job);
-        } else if (response->id == CONFLICT_RESPONSE_SKIP) {
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (response->apply_to_all) {
                 job->skip_all_conflict = TRUE;
             }
             conflict_response_data_free (response);
-        } else if (response->id == CONFLICT_RESPONSE_REPLACE) { /* merge/replace */
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE) { /* merge/replace */
             if (response->apply_to_all) {
                 if (is_merge) {
                     job->merge_all = TRUE;
@@ -4257,7 +4115,7 @@ retry:
             overwrite = TRUE;
             conflict_response_data_free (response);
             goto retry;
-        } else if (response->id == CONFLICT_RESPONSE_RENAME) {
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
             g_object_unref (dest);
             dest = get_target_file_for_display_name (dest_dir,
                                                      response->new_name);
@@ -4523,12 +4381,7 @@ copy_job (GIOSchedulerJob *io_job,
 
     dest_fs_id = NULL;
 
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
-#else
-    marlin_progress_info_start (job->common.progress);
-#endif
-
+    pf_progress_info_start (job->common.progress);
     scan_sources (job->files,
                   &source_info,
                   common,
@@ -4626,22 +4479,13 @@ report_move_progress (CopyMoveJob *move_job, int total, int left)
     job = (CommonJob *)move_job;
     s = f (_("Preparing to move to \"%B\""), move_job->destination);
 
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io,
-                  "state", TASKVIEW_PREPARING,
-                  "description", s,
-                  "progress", (gint) -1,
-                  NULL);
-    g_free (s);
-#else
-    marlin_progress_info_take_status (job->progress, s);
-    marlin_progress_info_take_details (job->progress,
+    pf_progress_info_take_status (job->progress, s);
+    pf_progress_info_take_details (job->progress,
                                        f (ngettext ("Preparing to move %'d file",
                                                     "Preparing to move %'d files",
                                                     left), left));
 
-    marlin_progress_info_pulse_progress (job->progress);
-#endif
+    pf_progress_info_pulse_progress (job->progress);
 }
 
 typedef struct {
@@ -4829,12 +4673,12 @@ retry:
             response->id == GTK_RESPONSE_DELETE_EVENT) {
             conflict_response_data_free (response);
             abort_job (job);
-        } else if (response->id == CONFLICT_RESPONSE_SKIP) {
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (response->apply_to_all) {
                 job->skip_all_conflict = TRUE;
             }
             conflict_response_data_free (response);
-        } else if (response->id == CONFLICT_RESPONSE_REPLACE) { /* merge/replace */
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE) { /* merge/replace */
             if (response->apply_to_all) {
                 if (is_merge) {
                     job->merge_all = TRUE;
@@ -4845,13 +4689,7 @@ retry:
             overwrite = TRUE;
             conflict_response_data_free (response);
             goto retry;
-        } else if (response->id == CONFLICT_RESPONSE_RENAME) {
-            g_object_unref (dest);
-            dest = get_target_file_for_display_name (dest_dir,
-                                                     response->new_name);
-            conflict_response_data_free (response);
-            goto retry;
-        } else if (response->id == CONFLICT_RESPONSE_RENAME) {
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
             g_object_unref (dest);
             dest = get_target_file_for_display_name (dest_dir,
                                                      response->new_name);
@@ -5060,12 +4898,7 @@ move_job (GIOSchedulerJob *io_job,
 
     fallbacks = NULL;
 
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
-#else
-    marlin_progress_info_start (job->common.progress);
-#endif
-
+    pf_progress_info_start (job->common.progress);
     verify_destination (&job->common,
                         job->destination,
                         &dest_fs_id,
@@ -5178,21 +5011,13 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
     job = (CommonJob *)link_job;
     s = f (_("Creating links in \"%B\""), link_job->destination);
 
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->tv_io,
-                  "state", TASKVIEW_RUNNING,
-                  "description", s,
-                  NULL);
-    g_free (s);
-#else
-    marlin_progress_info_take_status (job->progress, s);
-    marlin_progress_info_take_details (job->progress,
+    pf_progress_info_take_status (job->progress, s);
+    pf_progress_info_take_details (job->progress,
                                        f (ngettext ("Making link to %'d file",
                                                     "Making links to %'d files",
                                                     left), left));
 
-    marlin_progress_info_set_progress (job->progress, left, total);
-#endif
+    pf_progress_info_set_progress (job->progress, left, total);
 }
 
 static char *
@@ -5413,12 +5238,7 @@ link_job (GIOSchedulerJob *io_job,
 
     dest_fs_type = NULL;
 
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, NULL);
-#else
-    marlin_progress_info_start (job->common.progress);
-#endif
-
+    pf_progress_info_start (job->common.progress);
     verify_destination (&job->common,
                         job->destination,
                         NULL,
@@ -5579,12 +5399,7 @@ set_permissions_file (SetPermissionsJob *job,
 
     common = (CommonJob *)job;
 
-#ifdef ENABLE_TASKVIEW
-    taskview_generic_set_progress (TASKVIEW_GENERIC (common->tv_io), -1);
-#else
-    marlin_progress_info_pulse_progress (common->progress);
-#endif
-
+    pf_progress_info_pulse_progress (common->progress);
     free_info = FALSE;
     if (info == NULL) {
         free_info = TRUE;
@@ -5663,12 +5478,8 @@ set_permissions_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->common.tv_io, "state", TASKVIEW_RUNNING, "description", _("Setting permissions"), NULL);
-#else
-    marlin_progress_info_start (job->common.progress);
-    marlin_progress_info_set_status (common->progress, _("Setting permissions"));
-#endif
+    pf_progress_info_start (job->common.progress);
+    pf_progress_info_set_status (common->progress, _("Setting permissions"));
     set_permissions_file (job, job->file, NULL);
 
     g_io_scheduler_job_send_to_mainloop_async (io_job,
@@ -5878,11 +5689,7 @@ create_job (GIOSchedulerJob *io_job,
     common = &job->common;
     common->io_job = io_job;
 
-#ifdef HAVE_TASKVIEW
-    taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
-#else
-    marlin_progress_info_start (job->common.progress);
-#endif
+    pf_progress_info_start (job->common.progress);
 
     handled_invalid_filename = FALSE;
 
@@ -6332,12 +6139,7 @@ empty_trash_job (GIOSchedulerJob *io_job,
     common = (CommonJob *)job;
     common->io_job = io_job;
 
-#ifdef ENABLE_TASKVIEW
-    taskview_generic_set_state (TASKVIEW_GENERIC (job->common.tv_io), TASKVIEW_RUNNING);
-#else
-    marlin_progress_info_start (job->common.progress);
-#endif
-
+    pf_progress_info_start (job->common.progress);
     if (confirm_empty_trash (job)) {
         for (l = job->trash_dirs;
              l != NULL && !job_aborted (common);
@@ -6395,9 +6197,6 @@ marlin_file_operations_empty_trash_dirs (GtkWidget *parent_window, GList *dirs)
 {
     EmptyTrashJob *job;
     job = op_job_new (JOB_EMPTY_TRASH, EmptyTrashJob, parent_window);
-#ifdef ENABLE_TASKVIEW
-    g_object_set (job->common.tv_io, "description", _("Emptying the trash"), NULL);
-#endif
 
     job->done_callback = NULL;
     job->done_callback_data = NULL;

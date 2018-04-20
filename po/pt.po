@@ -9,16 +9,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2017-05-06 12:42+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: Português <>\n"
-"Language: \n"
+"PO-Revision-Date: 2018-03-16 00:03+0000\n"
+"Last-Translator: Nuno Tomás <nvctsyler@gmail.com>\n"
+"Language-Team: Portuguese "
+"<https://weblate.elementary.io/projects/files/files/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -517,7 +518,7 @@ msgstr[1] ""
 #: ../libcore/marlin-file-operations.c:1493
 #: ../libcore/marlin-file-operations.c:1525
 msgid "Deleting files"
-msgstr "A eliminar ficheiros..."
+msgstr "A eliminar ficheiros"
 
 #: ../libcore/marlin-file-operations.c:1519
 #, c-format
@@ -1483,8 +1484,8 @@ msgstr[1] "_Refazer a alteração recursiva de permissões de %d itens"
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "_Refazer a alteração de permissões de %d item"
-msgstr[1] "_Refazer a alteração de permissões de %d item"
+msgstr[0] "Refazer a alteração de permissões do item %d"
+msgstr[1] "Refazer a alteração de permissões dos itens %d"
 
 #: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
@@ -1668,7 +1669,7 @@ msgstr "Abrir numa Nova Janela"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "Abrir com outra Aplicação..."
+msgstr "Abrir com outra aplicação…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1684,7 +1685,7 @@ msgstr "Executar"
 
 #: ../src/View/Window.vala:205
 msgid "Files isn't your default file manager."
-msgstr "O Files não é o gestor de ficheiros do sistema"
+msgstr "O Ficheiros não é o seu gestor de ficheiros predefinido."
 
 #: ../src/View/Window.vala:211
 msgid "Set as Default"
@@ -1889,11 +1890,11 @@ msgstr "Não é possível conetar ao servidor para esta diretoria."
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Impossível Mostrar os Conteúdos da Pasta"
 
 #: ../src/View/ViewContainer.vala:420
 msgid "The operation timed out."
-msgstr ""
+msgstr "A operação excedeu o tempo."
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
@@ -1925,7 +1926,7 @@ msgstr "Nova Janela"
 
 #: ../src/Application.vala:140
 msgid "Quit Files."
-msgstr "Sair"
+msgstr "Sair do Ficheiros."
 
 #: ../src/Application.vala:142
 msgid "Enable debug logging"
@@ -2192,19 +2193,19 @@ msgstr "Impossível mudar o nome para '%s'"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Hoje às %-H:%M"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Ontem às %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A às %-H:%M"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A às %-I:%M %p"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2228,7 +2229,7 @@ msgstr "Cancelar"
 
 #: ../libcore/gof-directory-async.vala:611
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "O servidor não respondeu no tempo esperado"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
@@ -2291,18 +2292,16 @@ msgid "In This Folder"
 msgstr "Nesta Pasta"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "Nesta Pasta"
+msgstr "Abaixo Desta Pasta"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
 msgstr "Marcadores"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
-msgstr "Recentes"
+msgstr "Usados recentemente"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"

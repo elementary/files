@@ -9,8 +9,9 @@ configure_file_translation(io.elementary.files.desktop.in ${CMAKE_CURRENT_BINARY
 configure_file_translation(io.elementary.files.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.appdata.xml ${CMAKE_SOURCE_DIR}/po/)
 configure_file_translation(${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.policy.xml.in ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.policy ${CMAKE_SOURCE_DIR}/po/)
 
-install (FILES ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.appdata.xml DESTINATION share/appdata)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.appdata.xml DESTINATION share/metainfo)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.desktop DESTINATION share/applications)
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.service DESTINATION share/dbus-1/services/)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.FileManager1.service DESTINATION share/dbus-1/services/)
 install (PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files-pkexec DESTINATION bin)
 install (FILES ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.policy DESTINATION share/polkit-1/actions/)
