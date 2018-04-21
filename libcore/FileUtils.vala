@@ -604,10 +604,6 @@ namespace PF.FileUtils {
         }
     }
 
-    public bool is_icon_path (string path) {
-        return "/icons" in path || "/.icons" in path;
-    }
-
     public bool location_is_in_trash (GLib.File location) {
         var uri = location.get_uri ();
         var scheme = Uri.parse_scheme (uri);
