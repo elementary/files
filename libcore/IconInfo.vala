@@ -68,7 +68,7 @@ public class Marlin.IconInfo : GLib.Object {
             Gdk.Pixbuf pixbuf = null;
             if ((width >= 1 || width == -1) && (height >= 1 || height == -1)) {
                 try {
-                    pixbuf = new Gdk.Pixbuf.from_file_at_scale (str_icon, size * scale, size * scale, true);
+                    pixbuf = new Gdk.Pixbuf.from_file_at_scale (str_icon, int.min (size, width) * scale, int.min (size, height) * scale, true);
                 } catch (Error e) {
                     critical (e.message);
                 }
