@@ -68,7 +68,7 @@ public class Marlin.IconInfo : GLib.Object {
             Gdk.Pixbuf pixbuf = null;
             if ((width >= 1 || width == -1) && (height >= 1 || height == -1)) {
                 try {
-                    pixbuf = new Gdk.Pixbuf.from_file_at_size (str_icon, int.min (width, size * scale), int.min (height, size * scale));
+                    pixbuf = new Gdk.Pixbuf.from_file_at_scale (str_icon, size * scale, size * scale, true);
                 } catch (Error e) {
                     critical (e.message);
                 }
@@ -217,7 +217,7 @@ public class Marlin.IconInfo : GLib.Object {
         }
 
         public static bool equal (LoadableIconKey a, LoadableIconKey b) {
-            return (a.size == b.size && a.icon.equal (b.icon));
+            return (a.size == b.size && a.scale == b.scale && a.icon.equal (b.icon));
         }
     }
 
