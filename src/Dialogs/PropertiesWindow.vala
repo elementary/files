@@ -186,7 +186,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         update_selection_size (); /* Start counting first to get number of selected files and folders */
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
-        var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), false, GOF.FileIconFlags.NONE);
+        var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), GOF.FileIconFlags.NONE);
         var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
         overlay_emblems (file_icon, goffile.emblems_list);
 

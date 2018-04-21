@@ -623,13 +623,13 @@ gof_file_get_icon (GOFFile *file, int size, int scale, GOFFileIconFlags flags)
 }
 
 GdkPixbuf *
-gof_file_get_icon_pixbuf (GOFFile *file, gint size, gint scale, gboolean force_size, GOFFileIconFlags flags)
+gof_file_get_icon_pixbuf (GOFFile *file, gint size, gint scale, GOFFileIconFlags flags)
 {
     MarlinIconInfo *nicon;
     GdkPixbuf *pix;
     g_return_val_if_fail (size >= 1, NULL);
     nicon = gof_file_get_icon (file, size, scale, flags);
-    pix = marlin_icon_info_get_pixbuf_force_size (nicon, size * scale, force_size);
+    pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
 
     if (nicon) {
         g_object_unref (nicon);
@@ -649,7 +649,6 @@ gof_file_update_icon_internal (GOFFile *file, gint size, gint scale)
     _g_object_unref0 (file->pix);
     /* make sure we always got a non null pixbuf of the specified size */
     file->pix = gof_file_get_icon_pixbuf (file, size, scale,
-                                          gof_preferences_get_force_icon_size (gof_preferences_get_default ()),
                                           GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     file->pix_size = size;
     file->pix_scale = scale;

@@ -144,34 +144,6 @@ public class Marlin.IconInfo : GLib.Object {
         return pixbuf;
     }
 
-    public Gdk.Pixbuf get_pixbuf_force_size (int size, bool force_size) {
-        if (force_size) {
-            return get_pixbuf_at_size (size);
-        } else {
-            return get_pixbuf_nodefault ();
-        }
-    }
-
-    public Gdk.Pixbuf? get_pixbuf_at_size (int forced_size) {
-        var pixbuf = get_pixbuf_nodefault ();
-        if (pixbuf == null) {
-            return null;
-        }
-
-        var w = pixbuf.get_width ();
-        var h = pixbuf.get_height ();
-        var s = int.max (w, h);
-        if (s == forced_size) {
-            return pixbuf;
-        }
-
-        if (w >= h) {
-            return pixbuf.scale_simple (forced_size, -1, Gdk.InterpType.BILINEAR);
-        } else {
-            return pixbuf.scale_simple (-1, forced_size, Gdk.InterpType.BILINEAR);
-        }
-    }
-
     /*
      * Use for testing only
      */
