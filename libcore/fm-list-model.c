@@ -268,7 +268,7 @@ fm_list_model_get_value (GtkTreeModel *tree_model, GtkTreeIter *iter, int column
     case FM_LIST_MODEL_PIXBUF:
         g_value_init (value, GDK_TYPE_PIXBUF);
         if (file != NULL) {
-            gof_file_update_icon (file, model->details->icon_size);
+            gof_file_update_icon (file, model->details->icon_size, file->pix_scale);
             if (file->pix != NULL)
                 g_value_set_object(value, file->pix);
         }
