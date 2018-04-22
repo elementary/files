@@ -211,7 +211,8 @@ namespace Marlin.View.Chrome
         }
 
         private void hide_working_icon () {
-            show_refresh_icon ();
+            bread.get_style_context ().remove_class ("spin");
+            bread.action_icon_name = null;
         }
 
         public bool enter_search_mode () {
