@@ -355,7 +355,7 @@ gof_file_update_formated_type (GOFFile *file)
 }
 
 static void
-gof_file_update_icon_internal (GOFFile *file, gint size);
+gof_file_update_icon_internal (GOFFile *file, gint size, gint scale);
 
 void
 gof_file_update_type (GOFFile *file)
@@ -365,8 +365,8 @@ gof_file_update_type (GOFFile *file)
     gof_file_update_formated_type (file);
     /* update icon */
     file->icon = g_content_type_get_icon (ftype);
-    if (file->pix_size > 1)
-        gof_file_update_icon_internal (file, file->pix_size);
+    if (file->pix_size > 1 && file->pix_scale > 0)
+        gof_file_update_icon_internal (file, file->pix_size, file->pix_scale);
 
     gof_file_icon_changed (file);
 }
@@ -565,22 +565,22 @@ gof_file_update (GOFFile *file)
 }
 
 static MarlinIconInfo *
-gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
+gof_file_get_special_icon (GOFFile *file, int size, int scale, GOFFileIconFlags flags)
 {
     g_return_val_if_fail (size >= 1, NULL);
 
     if (file->custom_icon_name != NULL) {
         if (g_path_is_absolute (file->custom_icon_name))
-            return marlin_icon_info_lookup_from_path (file->custom_icon_name, size);
+            return marlin_icon_info_lookup_from_path (file->custom_icon_name, size, scale);
         else
-            return marlin_icon_info_lookup_from_name (file->custom_icon_name, size);
+            return marlin_icon_info_lookup_from_name (file->custom_icon_name, size, scale);
     }
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
         && file->flags == GOF_FILE_THUMB_STATE_READY) {
         const gchar *thumb_path = gof_file_get_thumbnail_path (file);
 
         if (thumb_path != NULL) {
-            return marlin_icon_info_lookup_from_path (thumb_path, size);
+            return marlin_icon_info_lookup_from_path (thumb_path, size, scale);
         }
     }
 
@@ -588,7 +588,7 @@ gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
 }
 
 _MarlinIconInfo *
-gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
+gof_file_get_icon (GOFFile *file, int size, int scale, GOFFileIconFlags flags)
 {
     MarlinIconInfo *icon = NULL;
     GIcon *gicon;
@@ -596,7 +596,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     g_return_val_if_fail (file, NULL);
     g_return_val_if_fail (size >= 1, NULL);
 
-    icon = gof_file_get_special_icon (file, size, flags);
+    icon = gof_file_get_special_icon (file, size, scale, flags);
     if (icon != NULL && !marlin_icon_info_is_fallback (icon))
         return icon;
     _g_object_unref0 (icon);
@@ -609,26 +609,26 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     }
 
     if (gicon != NULL) {
-        icon = marlin_icon_info_lookup (gicon, size);
+        icon = marlin_icon_info_lookup (gicon, size, scale);
         if (icon != NULL && marlin_icon_info_is_fallback(icon)) {
             g_object_unref (icon);
-            icon = marlin_icon_info_get_generic_icon (size);
+            icon = marlin_icon_info_get_generic_icon (size, scale);
         }
         g_object_unref (gicon);
     } else {
-        icon = marlin_icon_info_get_generic_icon (size);
+        icon = marlin_icon_info_get_generic_icon (size, scale);
     }
 
     return icon;
 }
 
 GdkPixbuf *
-gof_file_get_icon_pixbuf (GOFFile *file, gint size, GOFFileIconFlags flags)
+gof_file_get_icon_pixbuf (GOFFile *file, gint size, gint scale, GOFFileIconFlags flags)
 {
     MarlinIconInfo *nicon;
     GdkPixbuf *pix;
     g_return_val_if_fail (size >= 1, NULL);
-    nicon = gof_file_get_icon (file, size, flags);
+    nicon = gof_file_get_icon (file, size, scale, flags);
     pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
 
     if (nicon) {
@@ -642,28 +642,30 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, GOFFileIconFlags flags)
 }
 
 static void
-gof_file_update_icon_internal (GOFFile *file, gint size)
+gof_file_update_icon_internal (GOFFile *file, gint size, gint scale)
 {
     g_return_if_fail (size >= 1);
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
     /* make sure we always got a non null pixbuf of the specified size */
-    file->pix = gof_file_get_icon_pixbuf (file, size, GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
+    file->pix = gof_file_get_icon_pixbuf (file, size, scale,
+                                          GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     file->pix_size = size;
+    file->pix_scale = scale;
 }
 
 /* This function is used by the icon renderer and fm-list-model.
  * Store the pixbuf and update it only for size change.
  */
-void gof_file_update_icon (GOFFile *file, gint size)
+void gof_file_update_icon (GOFFile *file, gint size, gint scale)
 {
     if (size <= 1)
         return;
 
-    if (!(file->pix == NULL || file->pix_size != size))
+    if (!(file->pix == NULL || file->pix_size != size || file->pix_scale != scale))
         return;
 
-    gof_file_update_icon_internal (file, size);
+    gof_file_update_icon_internal (file, size, scale);
 }
 
 void gof_file_update_desktop_file (GOFFile *file)
@@ -832,7 +834,7 @@ gof_file_query_thumbnail_update (GOFFile *file)
     gchar    *md5_hash;
 
     /* Silently ignore invalid requests */
-    if (file->pix_size <= 1)
+    if (file->pix_size <= 1 || file->pix_scale <= 0)
         return;
 
     if (gof_file_get_thumbnail_path (file) == NULL) {
@@ -841,7 +843,7 @@ gof_file_query_thumbnail_update (GOFFile *file)
         base_name = g_strdup_printf ("%s.png", md5_hash);
 
         /* Use $XDG_CACHE_HOME specified thumbnail directory instead of hard coding */
-        if (file->pix_size <= 128) {
+        if (file->pix_size * file->pix_scale <= 128) {
             file->thumbnail_path = g_build_filename (g_get_user_cache_dir (), "thumbnails",
                                                      "normal", base_name, NULL);
         } else {
@@ -852,7 +854,7 @@ gof_file_query_thumbnail_update (GOFFile *file)
         g_free (md5_hash);
     }
 
-    gof_file_update_icon_internal (file, file->pix_size);
+    gof_file_update_icon_internal (file, file->pix_size, file->pix_scale);
 }
 
 void gof_file_update_trash_info (GOFFile *file)
@@ -910,6 +912,7 @@ static void gof_file_init (GOFFile *file) {
 
     file->flags = GOF_FILE_THUMB_STATE_UNKNOWN;
     file->pix_size = -1;
+    file->pix_scale = -1;
 
     file->target_gof = NULL;
     file->thumbnail_path = NULL;
@@ -1669,6 +1672,7 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     _g_free0 (file->basename);
     file->basename = g_file_get_basename (file->location);
     file->pix_size = -1;
+    file->pix_scale = -1;
     _g_free0 (file->thumbnail_path);
     file->flags = 0;
 
