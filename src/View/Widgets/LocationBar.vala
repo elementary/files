@@ -194,7 +194,7 @@ namespace Marlin.View.Chrome
 
         protected void show_refresh_icon () {
             bread.get_style_context ().remove_class ("spin");
-            bread.set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC);
+            bread.action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC;
             bread.set_action_icon_tooltip (_("Reload this folder"));
         }
         private void show_placeholder () {
@@ -205,7 +205,7 @@ namespace Marlin.View.Chrome
         }
 
         private void show_working_icon () {
-            bread.set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_WORKING_SYMBOLIC);
+            bread.action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_WORKING_SYMBOLIC;
             bread.set_action_icon_tooltip (_("Searching…"));
             bread.get_style_context ().add_class ("spin");
         }
