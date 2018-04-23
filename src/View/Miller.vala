@@ -92,8 +92,8 @@ namespace Marlin.View {
             total_width += new_slot.width;
 
             colpane.set_size_request (total_width, -1);
+
             nest_slot_in_host_slot (new_slot, host);
-            connect_slot_signals (new_slot);
             slot_list.append (new_slot);
             new_slot.active (scroll, animate); /* This will set the new slot to be current_slot. Must do this before loading */
         }
@@ -112,11 +112,13 @@ namespace Marlin.View {
             hpane1.pack2 (box1, true, true);
             hpane1.show_all ();
 
+            connect_slot_signals (slot);
+
             if (host != null) {
                 truncate_list_after_slot (host);
                 host.select_gof_file (slot.file);
                 host.colpane.add (hpane1);
-                slot.directory.init ();
+                slot.initialize_directory ();
             } else
                 this.colpane.add (hpane1);
         }
