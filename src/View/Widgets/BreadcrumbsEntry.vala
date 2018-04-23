@@ -532,7 +532,6 @@ namespace Marlin.View.Chrome {
         protected override bool on_focus_in (Gdk.EventFocus event) {
             if (search_mode) {
                 return true;
-                
             }
 
             return base.on_focus_in (event);
