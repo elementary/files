@@ -1185,20 +1185,9 @@ namespace FM {
                     activate_selected_items (Marlin.OpenFlag.NEW_WINDOW, get_files_for_action ());
                     break;
 
-                case "TERMINAL":
-                    open_selected_in_terminal (get_files_for_action ());
-                    break;
-
                 default:
                     break;
             }
-        }
-
-        private void open_selected_in_terminal (GLib.List<GOF.File> selection = get_selected_files ()) {
-            var terminal = new GLib.DesktopAppInfo (Marlin.OPEN_IN_TERMINAL_DESKTOP_ID);
-
-            if (terminal != null)
-                open_files_with (terminal, selection);
         }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2017,10 +2006,11 @@ namespace FM {
             app_submenu = build_submenu_open_with_applications (ref builder, selection);
 
             if (app_submenu != null && app_submenu.get_n_items () > 0) {
-                if (selected_file.is_folder () || selected_file.is_root_network_folder ())
+                if (selected_file.is_folder () || selected_file.is_root_network_folder ()) {
                     label =  _("Open in");
-                else
+                } else {
                     label = _("Open with");
+                }
 
                 menu.append_submenu (label, app_submenu);
             }
@@ -2034,14 +2024,11 @@ namespace FM {
             var open_with_submenu = new GLib.Menu ();
             open_with_apps = null;
 
-            int index = -1;
-
             if (common_actions.get_action_enabled ("open_in")) {
                 open_with_submenu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
-                if (!selection.data.is_mountable () && !selection.data.is_root_network_folder ())
-                    open_with_submenu.append_section (null, builder.get_object ("open-in-terminal") as GLib.MenuModel);
-                else
+                if (selection.data.is_mountable () || selection.data.is_root_network_folder ()) {
                     return open_with_submenu;
+                }
             }
 
             if (can_open_file (selection.data)) {
@@ -2049,33 +2036,34 @@ namespace FM {
                 if (selection.data.is_executable () == false) {
                     filter_default_app_from_open_with_apps ();
                 }
+
                 filter_this_app_from_open_with_apps ();
 
                 if (open_with_apps != null) {
                     var apps_section = new GLib.Menu ();
+                    int index = -1;
+                    int count = 0;
                     string last_label = "";
-                    open_with_apps.@foreach ((app) => {
+                    string last_exec = "";
+
+                    foreach (var app in open_with_apps) {
+                        index++;
                         if (app != null && app is AppInfo) {
                             var label = app.get_display_name ();
-                            /* The following mainly applies to Nautilus, whose display name is also "Files" */
-                            if (label == "Files") {
-                                label = app.get_executable ();
-                                label = label[0].toupper ().to_string () + label.substring (1);
-                            }
-
-                            /* Do not show same name twice - some apps have more than one .desktop file
-                             * with the same name (e.g. Nautilus)
-                             */
-                            if (label != last_label) {
-                                index++;
+                            var exec = app.get_executable ().split (" ")[0];
+                            if (label != last_label || exec != last_exec) {
                                 apps_section.append (label, "selection.open_with_app::" + index.to_string ());
-                                last_label = label.dup ();
+                                count++;
                             }
-                        }
-                    });
 
-                    if (index >= 0)
+                            last_label = label.dup ();
+                            last_exec = exec.dup ();
+                        }
+                    };
+
+                    if (count >= 0) {
                         open_with_submenu.append_section (null, apps_section);
+                    }
                 }
 
                 if (selection != null && selection.first ().next == null) { // Only one selected
@@ -2084,6 +2072,7 @@ namespace FM {
                     open_with_submenu.append_section (null, other_app_menu);
                 }
             }
+
             return open_with_submenu as GLib.MenuModel;
         }
 
