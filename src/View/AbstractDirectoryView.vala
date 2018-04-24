@@ -2068,7 +2068,7 @@ namespace FM {
 
                 if (selection != null && selection.first ().next == null) { // Only one selected
                     var other_app_menu = new GLib.Menu ();
-                    other_app_menu.append ( _("Other Application"), "selection.open_with_other_app");
+                    other_app_menu.append ( _("Other Application…"), "selection.open_with_other_app");
                     open_with_submenu.append_section (null, other_app_menu);
                 }
             }
