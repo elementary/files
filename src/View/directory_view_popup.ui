@@ -86,14 +86,6 @@
         </item>
     </menu>
 
-    <menu id='open-in-terminal'>
-        <item>
-            <attribute name='label' translatable='yes'>Terminal</attribute>
-            <attribute name='action'>common.open_in</attribute>
-            <attribute name="target">TERMINAL</attribute>
-        </item>
-    </menu>
-
     <menu id='properties'>
         <item>
             <attribute name='label' translatable='yes'>Properties</attribute>
