@@ -46,7 +46,7 @@ public class PF.Progress.Info : GLib.Object {
     private bool progress_at_idle;
 
     public Info () {
-    
+
     }
 
     construct {
@@ -120,7 +120,7 @@ public class PF.Progress.Info : GLib.Object {
         if (activity_mode) {
             return -1;
         } else {
-            return progress;
+            return total;
         }
     }
 
@@ -186,7 +186,7 @@ public class PF.Progress.Info : GLib.Object {
             current_percent = double.max (current_percent, 0);
         }
 
-        /* 
+        /*
          * Emit on switch from activity mode
          * Emit on change of 0.5 percent
          */

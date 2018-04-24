@@ -30,6 +30,7 @@ vala_precompile(VALA_C ${PKGNAME}
     ProgressInfoManager.vala
     SoundManager.vala
     TrashMonitor.vala
+    UserUtils.vala
     IconInfo.vala
 PACKAGES
     granite
@@ -40,6 +41,7 @@ PACKAGES
     libcanberra
     pantheon-files-core-C
     posix
+    linux
     zeitgeist-2.0
 OPTIONS
     --vapidir=${CMAKE_CURRENT_SOURCE_DIR}/
@@ -52,8 +54,6 @@ GENERATE_HEADER
 )
 
 set (C_SOURCE_FILES
-    eel-fcts.c
-    eel-gtk-extensions.c
     eel-stock-dialogs.c
     eel-string.c
     marlin-file-operations.c
@@ -64,8 +64,6 @@ set (C_SOURCE_FILES
     ${VALA_C})
 
 set (C_HEADER_FILES
-    eel-fcts.h
-    eel-gtk-extensions.h
     eel-stock-dialogs.h
     eel-string.h
     gof-file.h

@@ -483,7 +483,7 @@ namespace Marlin.Places {
 
             /* Add Home BUILTIN */
             try {
-                mount_uri = GLib.Filename.to_uri (Eel.get_real_user_home (), null);
+                mount_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
             }
             catch (ConvertError e) {
                 mount_uri = "";
@@ -1496,10 +1496,7 @@ namespace Marlin.Places {
                 check_popup_sensitivity ();
             }
 
-            Eel.pop_up_context_menu (popupmenu,
-                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     event);
+            popupmenu.popup_at_pointer (event);
         }
 
         /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */
