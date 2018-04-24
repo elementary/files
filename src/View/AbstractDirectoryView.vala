@@ -2041,36 +2041,23 @@ namespace FM {
 
                 if (open_with_apps != null) {
                     var apps_section = new GLib.Menu ();
-                    string last_label = "";
                     int index = -1;
                     int count = 0;
+                    string last_label = "";
+                    string last_exec = "";
 
                     foreach (var app in open_with_apps) {
                         index++;
                         if (app != null && app is AppInfo) {
                             var label = app.get_display_name ();
-                            /* The following mainly applies to Nautilus, whose display name is also "Files" */
-                            if (label == "Files") {
-                                label = app.get_executable ();
-                                label = label[0].toupper ().to_string () + label.substring (1);
-                            }
-
-                            /* If a terminal appears in this list, and is not the elementary app show executable name */
-                            if (label == "Terminal") {
-                                var exec = app.get_executable ();
-                                if (!exec.contains ("elementary")) {
-                                    label = exec[0].toupper ().to_string () + exec.substring (1);
-                                }
-                            }
-
-                            /* Do not show same name twice - some apps have more than one .desktop file
-                             * with the same name (e.g. Nautilus)
-                             */
-                            if (label != last_label) {
+                            var exec = app.get_executable ().split (" ")[0];
+                            if (label != last_label || exec != last_exec) {
                                 apps_section.append (label, "selection.open_with_app::" + index.to_string ());
-                                last_label = label.dup ();
                                 count++;
                             }
+
+                            last_label = label.dup ();
+                            last_exec = exec.dup ();
                         }
                     };
 
