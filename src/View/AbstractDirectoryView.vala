@@ -2038,10 +2038,9 @@ namespace FM {
 
             if (common_actions.get_action_enabled ("open_in")) {
                 open_with_submenu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
-                if (!selection.data.is_mountable () && !selection.data.is_root_network_folder ())
-                    open_with_submenu.append_section (null, builder.get_object ("open-in-terminal") as GLib.MenuModel);
-                else
+                if (selection.data.is_mountable () || selection.data.is_root_network_folder ()) {
                     return open_with_submenu;
+                }
             }
 
             if (can_open_file (selection.data)) {
@@ -2049,18 +2048,27 @@ namespace FM {
                 if (selection.data.is_executable () == false) {
                     filter_default_app_from_open_with_apps ();
                 }
+
                 filter_this_app_from_open_with_apps ();
 
                 if (open_with_apps != null) {
                     var apps_section = new GLib.Menu ();
                     string last_label = "";
-                    open_with_apps.@foreach ((app) => {
+                    foreach (var app in open_with_apps) {
                         if (app != null && app is AppInfo) {
                             var label = app.get_display_name ();
                             /* The following mainly applies to Nautilus, whose display name is also "Files" */
                             if (label == "Files") {
                                 label = app.get_executable ();
                                 label = label[0].toupper ().to_string () + label.substring (1);
+                            }
+
+                            /* If a terminal appears in this list, and is not the elementary app show executable name */
+                            if (label == "Terminal") {
+                                var exec = app.get_executable ();
+                                if (!exec.contains ("elementary")) {
+                                    label = exec[0].toupper ().to_string () + exec.substring (1);
+                                }
                             }
 
                             /* Do not show same name twice - some apps have more than one .desktop file
@@ -2072,7 +2080,7 @@ namespace FM {
                                 last_label = label.dup ();
                             }
                         }
-                    });
+                    };
 
                     if (index >= 0)
                         open_with_submenu.append_section (null, apps_section);
