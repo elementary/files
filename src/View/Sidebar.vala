@@ -1896,42 +1896,21 @@ namespace Marlin.Places {
             bool success = false;
             GLib.MountOperation mount_op = new GLib.MountOperation ();
 
-            if (drive != null) {
-                if (get_allow_stop (drive)) {
-                    drive.stop.begin (GLib.MountUnmountFlags.NONE,
-                                      mount_op,
-                                      null,
-                                      (obj, res) => {
-                        try {
-                            success = drive.stop.end (res);
-                        } catch (GLib.Error error) {
-                            warning ("Error stopping drive: %s", error.message);
-                        } finally {
-                            finish_eject_or_unmount (row_ref, success);
-                        }
+            if (drive != null && allow_eject && drive.can_eject ()) {
+                drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                  mount_op,
+                                                  null,
+                                                  (obj, res) => {
+                    try {
+                        success = drive.eject_with_operation.end (res);
+                    } catch (GLib.Error error) {
+                        warning ("Error ejecting mount: %s", error.message);
+                    } finally {
+                        finish_eject_or_unmount (row_ref, success, drive);
+                    }
+                });
 
-                        if (success) {
-                            show_can_safely_remove ();
-                        } else {
-                            warning ("Could not stop drive");
-                        }
-                    });
-                    return;
-                } else if (allow_eject && drive.can_eject ()) {
-                    drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
-                                                      mount_op,
-                                                      null,
-                                                      (obj, res) => {
-                        try {
-                            success = drive.eject_with_operation.end (res);
-                        } catch (GLib.Error error) {
-                            warning ("Error ejecting mount: %s", error.message);
-                        } finally {
-                            finish_eject_or_unmount (row_ref, success);
-                        }
-                    });
-                    return;
-                }
+                return;
             }
 
             if (mount != null) {
@@ -1945,9 +1924,10 @@ namespace Marlin.Places {
                         } catch (GLib.Error error) {
                             warning ("Error ejecting mount: %s", error.message);
                         } finally {
-                            finish_eject_or_unmount (row_ref, success);
+                            finish_eject_or_unmount (row_ref, success, drive);
                         }
                     });
+
                     return;
                 } else if (mount.can_unmount ()) {
                     mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
@@ -1959,9 +1939,10 @@ namespace Marlin.Places {
                         } catch (GLib.Error error) {
                             warning ("Error while unmounting mount %s", error.message);
                         } finally {
-                            finish_eject_or_unmount (row_ref, success);
+                            finish_eject_or_unmount (row_ref, success, drive);
                         }
                     });
+
                     return;
                 }
             }
@@ -1976,7 +1957,7 @@ namespace Marlin.Places {
                     } catch (GLib.Error error) {
                         warning ("Error ejecting volume: %s", error.message);
                     } finally {
-                        finish_eject_or_unmount (row_ref, success);
+                        finish_eject_or_unmount (row_ref, success, drive);
                     }
                 });
 
@@ -1984,7 +1965,7 @@ namespace Marlin.Places {
             }
 
             warning ("No drive, volume or mount to eject");
-            finish_eject_or_unmount (row_ref, false);
+            finish_eject_or_unmount (row_ref, false, drive);
         }
 
         private void show_can_safely_remove () {
@@ -1992,8 +1973,9 @@ namespace Marlin.Places {
             warning ("Drive has been stopped or ejected - can be safely removed");
         }
 
-        private void finish_eject_or_unmount (Gtk.TreeRowReference? row_ref, bool success) {
+        private void finish_eject_or_unmount (Gtk.TreeRowReference? row_ref, bool success, Drive? drive) {
             ejecting_or_unmounting = false;
+
             if (row_ref != null && row_ref.valid ()) {
                 Gtk.TreeIter iter;
                 if (store.get_iter (out iter, row_ref.get_path ())) {
@@ -2002,6 +1984,25 @@ namespace Marlin.Places {
                 }
             } else {
                 warning ("No row ref");
+            }
+
+            if (success && drive != null && get_allow_stop (drive)) {
+                drive.stop.begin (GLib.MountUnmountFlags.NONE,
+                                  null,
+                                  null,
+                                  (obj, res) => {
+                    try {
+                        success = drive.stop.end (res);
+                    } catch (GLib.Error error) {
+                        warning ("Error stopping drive: %s", error.message);
+                    }
+
+                    if (success) {
+                        show_can_safely_remove ();
+                    } else {
+                        warning ("Could not stop drive");
+                    }
+                });
             }
             /* Delay reconnecting volume monitor - we do not need to respond to signals consequent on
              * our own actions that may still be in the pipeline */
@@ -2344,8 +2345,8 @@ namespace Marlin.Places {
                     }
                 }
 
-                /* If we are unmounting the last mount then drive may be stopped */
-                res = mounts <= 1;
+                /* Drive may be stopped if no mounts */
+                res = mounts == 0;
             }
 
             return res;
