@@ -17,9 +17,6 @@
  */
 
 public class Marlin.IconInfo : GLib.Object {
-    // TODO: Replace me with real scale factor and adapt the widgets
-    private const int SCALE = 1;
-
     private int64 last_use_time;
     private Gdk.Pixbuf? pixbuf;
     private string icon_name;
@@ -49,7 +46,7 @@ public class Marlin.IconInfo : GLib.Object {
         pixbuf = null;
     }
 
-    public static Marlin.IconInfo? lookup (GLib.Icon icon, int size) {
+    public static Marlin.IconInfo? lookup (GLib.Icon icon, int size, int scale) {
         size = int.max (1, size);
 
         if (icon is GLib.LoadableIcon) {
@@ -57,7 +54,7 @@ public class Marlin.IconInfo : GLib.Object {
                 loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Marlin.IconInfo> (LoadableIconKey.hash, LoadableIconKey.equal);
             }
 
-            var loadable_key = new LoadableIconKey (icon, size);
+            var loadable_key = new LoadableIconKey (icon, size, scale);
 
             var icon_info = loadable_icon_cache.lookup (loadable_key);
             if (icon_info != null) {
@@ -71,7 +68,7 @@ public class Marlin.IconInfo : GLib.Object {
             Gdk.Pixbuf pixbuf = null;
             if ((width >= 1 || width == -1) && (height >= 1 || height == -1)) {
                 try {
-                    pixbuf = new Gdk.Pixbuf.from_file_at_size (str_icon, int.min (width, size * SCALE), int.min (height, size * SCALE));
+                    pixbuf = new Gdk.Pixbuf.from_file_at_scale (str_icon, int.min (size, width) * scale, int.min (size, height) * scale, true);
                 } catch (Error e) {
                     critical (e.message);
                 }
@@ -90,7 +87,7 @@ public class Marlin.IconInfo : GLib.Object {
 
             var names = ((GLib.ThemedIcon) icon).get_names ();
             var theme = get_icon_theme ();
-            var gtkicon_info = theme.choose_icon_for_scale (names, size, SCALE, 0);
+            var gtkicon_info = theme.choose_icon_for_scale (names, size, scale, 0);
             if (gtkicon_info == null) {
                 return new Marlin.IconInfo.for_pixbuf (null);
             }
@@ -100,7 +97,7 @@ public class Marlin.IconInfo : GLib.Object {
                 return new Marlin.IconInfo.for_pixbuf (null);
             }
 
-            var themed_key = new ThemedIconKey (filename, size);
+            var themed_key = new ThemedIconKey (filename, size, scale);
 
             var icon_info = themed_icon_cache.lookup (themed_key);
             if (icon_info != null) {
@@ -113,7 +110,7 @@ public class Marlin.IconInfo : GLib.Object {
         } else {
             var theme = get_icon_theme ();
             try {
-                var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, SCALE, Gtk.IconLookupFlags.GENERIC_FALLBACK);
+                var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, scale, Gtk.IconLookupFlags.GENERIC_FALLBACK);
                 var pixbuf = gtk_icon_info.load_icon ();
                 return new Marlin.IconInfo.for_pixbuf (pixbuf);
             } catch (Error e) {
@@ -123,19 +120,19 @@ public class Marlin.IconInfo : GLib.Object {
         }
     }
 
-    public static Marlin.IconInfo? get_generic_icon (int size) {
+    public static Marlin.IconInfo? get_generic_icon (int size, int scale) {
         var generic_icon = new GLib.ThemedIcon ("text-x-generic");
-        return IconInfo.lookup (generic_icon, size);
+        return IconInfo.lookup (generic_icon, size, scale);
     }
 
-    public static Marlin.IconInfo? lookup_from_name (string icon_name, int size) {
+    public static Marlin.IconInfo? lookup_from_name (string icon_name, int size, int scale) {
         var themed_icon = new GLib.ThemedIcon (icon_name);
-        return Marlin.IconInfo.lookup (themed_icon, size);
+        return Marlin.IconInfo.lookup (themed_icon, size, scale);
     }
 
-    public static Marlin.IconInfo? lookup_from_path (string path, int size) {
+    public static Marlin.IconInfo? lookup_from_path (string path, int size, int scale) {
         var file_icon = new GLib.FileIcon (GLib.File.new_for_path (path));
-        return Marlin.IconInfo.lookup (file_icon, size);
+        return Marlin.IconInfo.lookup (file_icon, size, scale);
     }
 
     public bool is_fallback () {
@@ -145,34 +142,6 @@ public class Marlin.IconInfo : GLib.Object {
     public Gdk.Pixbuf? get_pixbuf_nodefault () {
         last_use_time = GLib.get_monotonic_time ();
         return pixbuf;
-    }
-
-    public Gdk.Pixbuf get_pixbuf_force_size (int size, bool force_size) {
-        if (force_size) {
-            return get_pixbuf_at_size (size);
-        } else {
-            return get_pixbuf_nodefault ();
-        }
-    }
-
-    public Gdk.Pixbuf? get_pixbuf_at_size (int forced_size) {
-        var pixbuf = get_pixbuf_nodefault ();
-        if (pixbuf == null) {
-            return null;
-        }
-
-        var w = pixbuf.get_width ();
-        var h = pixbuf.get_height ();
-        var s = int.max (w, h);
-        if (s == forced_size) {
-            return pixbuf;
-        }
-
-        if (w >= h) {
-            return pixbuf.scale_simple (forced_size, -1, Gdk.InterpType.BILINEAR);
-        } else {
-            return pixbuf.scale_simple (-1, forced_size, Gdk.InterpType.BILINEAR);
-        }
     }
 
     /*
@@ -225,19 +194,22 @@ public class Marlin.IconInfo : GLib.Object {
     private class LoadableIconKey {
         public GLib.Icon icon;
         public int size;
+        public int scale;
 
-        public LoadableIconKey (GLib.Icon _icon, int _size) {
+        public LoadableIconKey (GLib.Icon _icon, int _size, int _scale) {
             icon = _icon;
             size = _size;
+            scale = _scale;
         }
 
-        public LoadableIconKey.from_path (string path, int _size) {
+        public LoadableIconKey.from_path (string path, int _size, int _scale) {
             icon = new GLib.FileIcon (GLib.File.new_for_path (path));
             size = _size;
+            scale = _scale;
         }
 
         public LoadableIconKey dup () {
-            return new LoadableIconKey (icon, size);
+            return new LoadableIconKey (icon, size, scale);
         }
 
         public static uint hash (LoadableIconKey a) {
@@ -245,7 +217,7 @@ public class Marlin.IconInfo : GLib.Object {
         }
 
         public static bool equal (LoadableIconKey a, LoadableIconKey b) {
-            return (a.size == b.size && a.icon.equal (b.icon));
+            return (a.size == b.size && a.scale == b.scale && a.icon.equal (b.icon));
         }
     }
 
@@ -253,27 +225,29 @@ public class Marlin.IconInfo : GLib.Object {
     private class ThemedIconKey {
         public string filename;
         public int size;
+        public int scale;
 
-        public ThemedIconKey (string _filename, int _size) {
+        public ThemedIconKey (string _filename, int _size, int _scale) {
             filename = _filename;
             size = _size;
+            scale = _scale;
         }
 
         public ThemedIconKey dup () {
-            return new ThemedIconKey (filename, size);
+            return new ThemedIconKey (filename, size, scale);
         }
 
         public static uint hash (ThemedIconKey a) {
-            return a.filename.hash () ^ a.size;
+            return a.filename.hash () ^ (a.size * a.scale);
         }
 
         public static bool equal (ThemedIconKey a, ThemedIconKey b) {
-            return (a.size == b.size && a.filename == b.filename);
+            return (a.size == b.size && a.scale == b.scale && a.filename == b.filename);
         }
     }
 
-    public static void remove_cache (string path, int size) {
-        var loadable_key = new LoadableIconKey.from_path (path, size);
+    public static void remove_cache (string path, int size, int scale) {
+        var loadable_key = new LoadableIconKey.from_path (path, size, scale);
         loadable_icon_cache.remove (loadable_key);
     }
 

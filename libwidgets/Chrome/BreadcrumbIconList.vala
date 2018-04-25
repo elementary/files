@@ -169,7 +169,7 @@ namespace Marlin.View.Chrome {
             }
 
             /* home */
-            dir = Eel.get_real_user_home ();
+            dir = PF.UserUtils.get_real_user_home ();
             if (dir.contains (Path.DIR_SEPARATOR_S)) {
                 var icon = new BreadcrumbIconInfo.special_directory (dir, Marlin.ICON_GO_HOME_SYMBOLIC);
                 icon.break_loop = true;
