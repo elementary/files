@@ -22,6 +22,7 @@ namespace FM
             PIXBUF,
             FILENAME,
             SIZE,
+            SCALE_FACTOR,
             TYPE,
             MODIFIED,
             NUM_COLUMNS
@@ -71,11 +72,6 @@ namespace Marlin {
     public delegate void CopyCallback (GLib.HashTable<GLib.File, void*>? debuting_uris, void* pointer);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void DeleteCallback (bool user_cancel, void* callback_data);
-
-    [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_dialogs_", cheader_filename = "eel-stock-dialogs.h")]
-    namespace Dialogs {
-        public void show_error (void* data, GLib.Error? error, string format_string, ...);
-    }
 }
 
 [CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
@@ -89,87 +85,20 @@ namespace EelGtk.Widget {
     public Gdk.Screen get_screen ();
 }
 
-[CCode (cprefix = "EelGFile", lower_case_cprefix = "eel_g_file_", cheader_filename = "eel-gio-extensions.h")]
-namespace EelGFile {
-    public static GLib.List<GLib.File> list_new_from_string (string filelist);
-}
-
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_")]
 namespace Eel {
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public unowned Gdk.Screen gtk_widget_get_screen (Gtk.Widget? widget);
-
     [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
     [CCode (cheader_filename = "eel-stock-dialogs.h")]
     public unowned Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
 
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string? get_date_as_string (uint64 d, string format);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public GLib.List? get_user_names ();
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_user_id_from_user_name (string *user_name, out int uid);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string? get_real_user_home ();
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_group_id_from_group_name (string *group_name, out int gid);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_id_from_digit_string (string digit_str, out int id);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string format_size (uint64 size);
-
     [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
-
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf create_spotlight_pixbuf (Gdk.Pixbuf source_pixbuf);
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf create_colorized_pixbuf (Gdk.Pixbuf source_pixbuf, Gdk.RGBA color);
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf create_darkened_pixbuf (Gdk.Pixbuf source_pixbuf, int saturation, int darken);
-    [CCode (cheader_filename = "eel-gdk-pixbuf-extensions.h")]
-    public Gdk.Pixbuf gdk_pixbuf_lucent (Gdk.Pixbuf source_pixbuf, int percent);
-}
-
-[CCode (cprefix = "EelPango", lower_case_cprefix = "eel_pango_", cheader_filename = "eel-pango-extensions.h")]
-namespace EelPango {
-    public unowned Pango.AttrList attr_list_small();
-    public unowned Pango.AttrList attr_list_small_italic();
-    public unowned Pango.AttrList attr_list_italic();
-    public unowned Pango.AttrList attr_list_big();
 }
 
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
-    [CCode (cheader_filename = "marlin-file-utilities.h")]
-    public string get_accel_map_file ();
-
-    [CCode (cheader_filename = "marlin-icon-info.h")]
-    public class IconInfo : GLib.Object {
-        public static IconInfo? lookup (GLib.Icon icon, int size);
-        public static IconInfo? lookup_from_name (string icon_name, int size);
-        public Gdk.Pixbuf? get_pixbuf_nodefault ();
-        public Gdk.Pixbuf? get_pixbuf_at_size (int size);
-        public static void clear_caches ();
-        public static void remove_cache (string path, int size);
-        /* Use for testing only */
-        public static uint loadable_icon_cache_info ();
-        public static uint themed_icon_cache_info ();
-        public static void set_reap_time (uint milliseconds);
-    }
-    [CCode (cheader_filename = "marlin-trash-monitor.h")]
-    public abstract class TrashMonitor : GLib.Object
-    {
-        public static TrashMonitor get();
-        public static bool is_empty ();
-        public static GLib.Icon get_icon ();
-        public signal void trash_state_changed (bool new_state);
-    }
-
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public struct UndoMenuData {
         string undo_label;
@@ -191,33 +120,6 @@ namespace Marlin
         public void undo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void add_rename_action (GLib.File renamed_file, string original_name);
-    }
-
-    [CCode (cheader_filename = "marlin-progress-info.h")]
-    public class Progress.Info : GLib.Object {
-        public Info ();
-        public signal void changed ();
-        public signal void started ();
-        public signal void finished ();
-        public signal void progress_changed ();
-        public void cancel ();
-        public string get_title ();
-        public string get_status ();
-        public string get_details ();
-        public double get_progress ();
-        public double get_current ();
-        public double get_total ();
-        public bool get_is_finished ();
-        public bool get_is_paused ();
-        public GLib.Cancellable get_cancellable ();
-    }
-
-    [CCode (cheader_filename = "marlin-progress-info-manager.h")]
-    public class Progress.InfoManager : GLib.Object {
-        public InfoManager ();
-        public signal void new_progress_info (Progress.Info info);
-        public void add_new_info (Progress.Info info);
-        public unowned GLib.List<Progress.Info> get_all_infos ();
     }
 }
 
@@ -270,11 +172,13 @@ namespace GOF {
         public uint64 size;
         public string format_size;
         public int color;
+        public uint64 modified;
         public string formated_modified;
         public string formated_type;
         public string tagstype;
         public Gdk.Pixbuf? pix;
         public int pix_size;
+        public int pix_scale;
         public int width;
         public int height;
         public int sort_column_id;
@@ -303,9 +207,10 @@ namespace GOF {
         public string get_symlink_target ();
         public unowned string? get_ftype ();
         public string? get_formated_time (string attr);
-        public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
+        public Gdk.Pixbuf get_icon_pixbuf (int size, int scale, FileIconFlags flags);
         public void get_folder_icon_from_uri_or_path ();
-        public Marlin.IconInfo get_icon (int size, FileIconFlags flags);
+        public Marlin.IconInfo get_icon (int size, int scale, FileIconFlags flags);
+        public string thumbnail_path;
 
         public bool is_mounted;
         public bool exists;
@@ -319,7 +224,7 @@ namespace GOF {
 
         public void update ();
         public void update_type ();
-        public void update_icon (int size);
+        public void update_icon (int size, int scale);
         public void update_desktop_file ();
         public void query_update ();
         public void query_thumbnail_update ();

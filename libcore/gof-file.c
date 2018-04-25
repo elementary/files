@@ -22,9 +22,8 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <glib/gi18n.h>
-#include "eel-fcts.h"
-#include "eel-gio-extensions.h"
-#include "marlin-exec.h"
+#include <gio/gdesktopappinfo.h>
+
 #include "marlin-icons.h"
 #include "fm-list-model.h"
 #include "pantheon-files-core.h"
@@ -356,7 +355,7 @@ gof_file_update_formated_type (GOFFile *file)
 }
 
 static void
-gof_file_update_icon_internal (GOFFile *file, gint size);
+gof_file_update_icon_internal (GOFFile *file, gint size, gint scale);
 
 void
 gof_file_update_type (GOFFile *file)
@@ -366,8 +365,8 @@ gof_file_update_type (GOFFile *file)
     gof_file_update_formated_type (file);
     /* update icon */
     file->icon = g_content_type_get_icon (ftype);
-    if (file->pix_size > 1)
-        gof_file_update_icon_internal (file, file->pix_size);
+    if (file->pix_size > 1 && file->pix_scale > 0)
+        gof_file_update_icon_internal (file, file->pix_size, file->pix_scale);
 
     gof_file_icon_changed (file);
 }
@@ -429,7 +428,7 @@ gof_file_update (GOFFile *file)
 
         /* query a key file for the .desktop file */
         //TODO make cancellable & error
-        key_file = eel_g_file_query_key_file (file->location, NULL, NULL);
+        key_file = pf_file_utils_key_file_from_file (file->location, NULL, NULL);
         if (key_file != NULL)
         {
             /* read the icon name from the .desktop file */
@@ -566,30 +565,30 @@ gof_file_update (GOFFile *file)
 }
 
 static MarlinIconInfo *
-gof_file_get_special_icon (GOFFile *file, int size, GOFFileIconFlags flags)
+gof_file_get_special_icon (GOFFile *file, int size, int scale, GOFFileIconFlags flags)
 {
     g_return_val_if_fail (size >= 1, NULL);
 
     if (file->custom_icon_name != NULL) {
         if (g_path_is_absolute (file->custom_icon_name))
-            return marlin_icon_info_lookup_from_path (file->custom_icon_name, size);
+            return marlin_icon_info_lookup_from_path (file->custom_icon_name, size, scale);
         else
-            return marlin_icon_info_lookup_from_name (file->custom_icon_name, size);
+            return marlin_icon_info_lookup_from_name (file->custom_icon_name, size, scale);
     }
     if (flags & GOF_FILE_ICON_FLAGS_USE_THUMBNAILS
         && file->flags == GOF_FILE_THUMB_STATE_READY) {
         const gchar *thumb_path = gof_file_get_thumbnail_path (file);
 
         if (thumb_path != NULL) {
-            return marlin_icon_info_lookup_from_path (thumb_path, size);
+            return marlin_icon_info_lookup_from_path (thumb_path, size, scale);
         }
     }
 
     return NULL;
 }
 
-MarlinIconInfo *
-gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
+_MarlinIconInfo *
+gof_file_get_icon (GOFFile *file, int size, int scale, GOFFileIconFlags flags)
 {
     MarlinIconInfo *icon = NULL;
     GIcon *gicon;
@@ -597,7 +596,7 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     g_return_val_if_fail (file, NULL);
     g_return_val_if_fail (size >= 1, NULL);
 
-    icon = gof_file_get_special_icon (file, size, flags);
+    icon = gof_file_get_special_icon (file, size, scale, flags);
     if (icon != NULL && !marlin_icon_info_is_fallback (icon))
         return icon;
     _g_object_unref0 (icon);
@@ -610,27 +609,27 @@ gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags)
     }
 
     if (gicon != NULL) {
-        icon = marlin_icon_info_lookup (gicon, size);
+        icon = marlin_icon_info_lookup (gicon, size, scale);
         if (icon != NULL && marlin_icon_info_is_fallback(icon)) {
             g_object_unref (icon);
-            icon = marlin_icon_info_get_generic_icon (size);
+            icon = marlin_icon_info_get_generic_icon (size, scale);
         }
         g_object_unref (gicon);
     } else {
-        icon = marlin_icon_info_get_generic_icon (size);
+        icon = marlin_icon_info_get_generic_icon (size, scale);
     }
 
     return icon;
 }
 
 GdkPixbuf *
-gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFileIconFlags flags)
+gof_file_get_icon_pixbuf (GOFFile *file, gint size, gint scale, GOFFileIconFlags flags)
 {
     MarlinIconInfo *nicon;
     GdkPixbuf *pix;
     g_return_val_if_fail (size >= 1, NULL);
-    nicon = gof_file_get_icon (file, size, flags);
-    pix = marlin_icon_info_get_pixbuf_force_size (nicon, size, force_size);
+    nicon = gof_file_get_icon (file, size, scale, flags);
+    pix = marlin_icon_info_get_pixbuf_nodefault (nicon);
 
     if (nicon) {
         g_object_unref (nicon);
@@ -643,30 +642,30 @@ gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFile
 }
 
 static void
-gof_file_update_icon_internal (GOFFile *file, gint size)
+gof_file_update_icon_internal (GOFFile *file, gint size, gint scale)
 {
     g_return_if_fail (size >= 1);
     /* destroy pixbuff if already present */
     _g_object_unref0 (file->pix);
     /* make sure we always got a non null pixbuf of the specified size */
-    file->pix = gof_file_get_icon_pixbuf (file, size,
-                                          gof_preferences_get_force_icon_size (gof_preferences_get_default ()),
+    file->pix = gof_file_get_icon_pixbuf (file, size, scale,
                                           GOF_FILE_ICON_FLAGS_USE_THUMBNAILS);
     file->pix_size = size;
+    file->pix_scale = scale;
 }
 
 /* This function is used by the icon renderer and fm-list-model.
  * Store the pixbuf and update it only for size change.
  */
-void gof_file_update_icon (GOFFile *file, gint size)
+void gof_file_update_icon (GOFFile *file, gint size, gint scale)
 {
     if (size <= 1)
         return;
 
-    if (!(file->pix == NULL || file->pix_size != size))
+    if (!(file->pix == NULL || file->pix_size != size || file->pix_scale != scale))
         return;
 
-    gof_file_update_icon_internal (file, size);
+    gof_file_update_icon_internal (file, size, scale);
 }
 
 void gof_file_update_desktop_file (GOFFile *file)
@@ -835,7 +834,7 @@ gof_file_query_thumbnail_update (GOFFile *file)
     gchar    *md5_hash;
 
     /* Silently ignore invalid requests */
-    if (file->pix_size <= 1)
+    if (file->pix_size <= 1 || file->pix_scale <= 0)
         return;
 
     if (gof_file_get_thumbnail_path (file) == NULL) {
@@ -844,7 +843,7 @@ gof_file_query_thumbnail_update (GOFFile *file)
         base_name = g_strdup_printf ("%s.png", md5_hash);
 
         /* Use $XDG_CACHE_HOME specified thumbnail directory instead of hard coding */
-        if (file->pix_size <= 128) {
+        if (file->pix_size * file->pix_scale <= 128) {
             file->thumbnail_path = g_build_filename (g_get_user_cache_dir (), "thumbnails",
                                                      "normal", base_name, NULL);
         } else {
@@ -855,7 +854,7 @@ gof_file_query_thumbnail_update (GOFFile *file)
         g_free (md5_hash);
     }
 
-    gof_file_update_icon_internal (file, file->pix_size);
+    gof_file_update_icon_internal (file, file->pix_size, file->pix_scale);
 }
 
 void gof_file_update_trash_info (GOFFile *file)
@@ -913,6 +912,7 @@ static void gof_file_init (GOFFile *file) {
 
     file->flags = GOF_FILE_THUMB_STATE_UNKNOWN;
     file->pix_size = -1;
+    file->pix_scale = -1;
 
     file->target_gof = NULL;
     file->thumbnail_path = NULL;
@@ -1210,7 +1210,7 @@ gof_files_get_location_list (GList *files)
     for (l=files; l != NULL; l=l->next) {
         file = (GOFFile *) l->data;
         if (file != NULL && file->location != NULL) {
-            gfile_list = g_list_prepend (gfile_list, eel_g_file_ref (file->location));
+            gfile_list = g_list_prepend (gfile_list, g_object_ref (file->location));
         }
     }
 
@@ -1239,7 +1239,7 @@ gof_file_is_writable (GOFFile *file)
     } else if (file->has_permissions) {
         return ((file->permissions & S_IWOTH) > 0) ||
                ((file->permissions & S_IWUSR) > 0) && (file->uid < 0 || file->uid == geteuid ()) ||
-               ((file->permissions & S_IWGRP) > 0) && eel_user_in_group (file->group);
+               ((file->permissions & S_IWGRP) > 0) && pf_user_utils_user_in_group (file->group);
     } else {
         return TRUE;  /* We will just have to assume we can write to the file */
     }
@@ -1265,7 +1265,7 @@ gof_file_is_readable (GOFFile *file)
     } else if (file->has_permissions) {
         return (file->permissions & S_IROTH) ||
                (file->permissions & S_IRUSR) && (file->uid < 0 || file->uid == geteuid ()) ||
-               (file->permissions & S_IRGRP) && eel_user_in_group (file->group);
+               (file->permissions & S_IRGRP) && pf_user_utils_user_in_group (file->group);
     } else {
         return TRUE;  /* We will just have to assume we can read the file */
     }
@@ -1527,33 +1527,6 @@ gchar* gof_file_list_to_string (GList *list, gsize *len)
     return g_string_free (string, FALSE);
 }
 
-static gboolean
-gof_spawn_command_line_on_screen (char *cmd, GdkScreen *screen)
-{
-    GAppInfo *app;
-    GdkAppLaunchContext *ctx;
-    GError *error = NULL;
-    gboolean succeed = FALSE;
-
-    app = g_app_info_create_from_commandline (cmd, NULL, 0, &error);
-
-    if (app != NULL && screen != NULL) {
-        ctx = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
-
-        succeed = g_app_info_launch (app, NULL, G_APP_LAUNCH_CONTEXT (ctx), &error);
-
-        g_object_unref (app);
-        g_object_unref (ctx);
-    }
-
-    if (error != NULL) {
-        g_error_free (error);
-    }
-
-    return (succeed);
-}
-
-
 /**
  * gof_file_get_default_handler: imported from thunar
  * @file : a #GOFFile instance.
@@ -1593,18 +1566,9 @@ gof_file_get_default_handler (GOFFile *file)
 gboolean
 gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error)
 {
-    gboolean    result = FALSE;
-    GKeyFile    *key_file;
     GError      *err = NULL;
-    gchar       *icon = NULL;
-    gchar       *name;
-    gchar       *type;
-    gchar       *url;
-    gchar       *location;
-    gchar       *exec;
+    GAppInfo    *app_info = NULL;
 
-    gchar       *cmd = NULL;
-    gchar       *quoted_location;
 
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
     g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
@@ -1613,11 +1577,12 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
     /* only execute locale executable files */
     if (!g_file_is_native (file->location))
         return FALSE;
-    location = g_file_get_path (file->location);
 
     if (gof_file_is_desktop_file (file))
     {
-        key_file = eel_g_file_query_key_file (file->location, NULL, &err);
+        GKeyFile         *key_file;
+
+        key_file = pf_file_utils_key_file_from_file (file->location, NULL, &err);
 
         if (key_file == NULL)
         {
@@ -1627,168 +1592,41 @@ gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **e
             return FALSE;
         }
 
-        type = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                      G_KEY_FILE_DESKTOP_KEY_TYPE, NULL);
-
-        if (G_LIKELY (g_strcmp0 (type, "Application") == 0))
+        app_info = G_APP_INFO (g_desktop_app_info_new_from_keyfile (key_file));
+        if (app_info == NULL)
         {
-            exec = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                          G_KEY_FILE_DESKTOP_KEY_EXEC, NULL);
-            if (G_LIKELY (exec != NULL))
-            {
-                /* parse other fields */
-                name = g_key_file_get_locale_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                                     G_KEY_FILE_DESKTOP_KEY_NAME, NULL,
-                                                     NULL);
-                icon = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                              G_KEY_FILE_DESKTOP_KEY_ICON, NULL);
-
-                cmd = marlin_exec_parse (exec, file_list, icon, name, location);
-
-                _g_free0 (name);
-                _g_free0 (icon);
-                _g_free0 (exec);
-            }
-            else
-            {
-                /// TRANSLATORS: `Exec' is a field name in a .desktop file. Don't translate it.
-                g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
-                             _("No Exec field specified"));
-            }
-        }
-        else if (g_strcmp0 (type, "Link") == 0)
-        {
-            url = g_key_file_get_string (key_file, G_KEY_FILE_DESKTOP_GROUP,
-                                         G_KEY_FILE_DESKTOP_KEY_URL, NULL);
-            if (G_LIKELY (url != NULL))
-            {
-                GOFFile *link = gof_file_get_by_commandline_arg (url);
-                result = gof_file_launch (link, screen, NULL);
-                g_object_unref (link);
-                return (result);
-            }
-            else
-            {
-                /// TRANSLATORS: `Exec' is a field name in a .desktop file. Don't translate it.
-                g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
-                             _("No URL field specified"));
-            }
-        }
-        else
-        {
-            g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL,
-                         _("Invalid desktop file"));
+            g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, _("Failed to parse the desktop file"));
+            g_key_file_free (key_file);
+            return FALSE;
         }
 
-        _g_free0 (type);
         g_key_file_free (key_file);
     }
     else
     {
-        quoted_location = g_shell_quote (location);
-        cmd = marlin_exec_auto_parse (quoted_location, file_list);
-        _g_free0 (quoted_location);
+        gchar  *location = g_file_get_path (file->location);
+
+        app_info = g_app_info_create_from_commandline (location, NULL, 0, &error);
+        if (app_info == NULL)
+        {
+            g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, _("Failed to create command from file: %s"), err->message);
+            g_error_free (err);
+            g_free (location);
+            return FALSE;
+        }
+
+        g_free (location);
     }
 
-    if (cmd != NULL) {
-        result = gof_spawn_command_line_on_screen (cmd, screen);
-    }
-
-    _g_free0 (location);
-    _g_free0 (cmd);
-
-    return result;
-}
-
-static gboolean
-gof_file_launch_with (GOFFile  *file, GdkScreen *screen, GAppInfo* app_info)
-{
-    GdkAppLaunchContext *context;
-    gboolean             succeed;
-    GList                path_list;
-    GError              *error = NULL;
-
-    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-
-    /* fake a path list */
-    path_list.data = file->location;
-    path_list.next = path_list.prev = NULL;
-
-    context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
-    succeed = g_app_info_launch (app_info, &path_list, G_APP_LAUNCH_CONTEXT (context), &error);
-
-    g_object_unref (context);
-
-    return succeed;
-}
-
-gboolean
-gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info)
-{
-    GdkAppLaunchContext *context;
-    gboolean             succeed;
-    GList               *gfiles;
-    GError              *error = NULL;
-
-    g_return_val_if_fail (files != NULL, FALSE);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-
-    context = gdk_display_get_app_launch_context (gdk_screen_get_display (screen));
-
-    gfiles = gof_files_get_location_list (files);
-
-    succeed = g_app_info_launch (app_info, gfiles, G_APP_LAUNCH_CONTEXT (context), &error);
-    print_error (error); /* also frees error */
-
-    g_list_free_full (gfiles, (GDestroyNotify) eel_g_file_unref);
-    g_object_unref (context);
-
-    return succeed;
-}
-
-gboolean
-gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info)
-{
-    GAppInfo    *app = NULL;
-    gboolean    succeed;
-    GError      *error = NULL;
-
-    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
-    g_return_val_if_fail (GDK_IS_SCREEN (screen), FALSE);
-
-    if (app_info != NULL)
-        app = g_app_info_dup (app_info);
-
-    /* Do not run executables if an app to open them with has been supplied */
-    if (app == NULL) {
-        /* check if we should execute the file */
-        if (gof_file_is_executable (file))
-            return gof_file_execute (file, screen, NULL, &error);
-        else
-            app = gof_file_get_default_handler (file);
-    }
-    if (app == NULL)
+    if (!g_app_info_launch (app_info, file_list, NULL, &err))
     {
-        /* AppChooser dialog has already been shown by Marlin.MimeActions*/
-        return TRUE;
+        g_set_error (error, G_FILE_ERROR, G_FILE_ERROR_INVAL, _("Unable to Launch Desktop File: %s"), err->message);
+        g_error_free (err);
+        return FALSE;
     }
 
-    /* TODO allow launch of multiples same content type files */
-
-    succeed = gof_file_launch_with (file, screen, app);
-
-    /* TODO error */
-
-    g_object_unref (G_OBJECT (app));
-
-    return succeed;
-}
-
-void
-gof_file_open_single (GOFFile *file, GdkScreen *screen, GAppInfo *app_info)
-{
-    gof_file_launch (file, screen, app_info);
+    g_object_unref (app_info);
+    return TRUE;
 }
 
 void
@@ -1834,6 +1672,7 @@ gof_file_update_existing (GOFFile *file, GFile *new_location)
     _g_free0 (file->basename);
     file->basename = g_file_get_basename (file->location);
     file->pix_size = -1;
+    file->pix_scale = -1;
     _g_free0 (file->thumbnail_path);
     file->flags = 0;
 
@@ -1911,10 +1750,10 @@ gof_file_get_settable_group_names (GOFFile *file)
 
     if (user_id == 0) {
         /* Root is allowed to set group to anything. */
-        result = eel_get_all_group_names ();
+        result = pf_user_utils_get_all_group_names ();
     } else if (user_id == (uid_t) file->uid) {
         /* Owner is allowed to set group to any that owner is member of. */
-        result = eel_get_group_names_for_user ();
+        result = pf_user_utils_get_group_names_for_user ();
     } else {
         g_warning ("unhandled case in %s", G_STRFUNC);
     }

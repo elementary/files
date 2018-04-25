@@ -47,7 +47,7 @@ namespace Marlin.Places {
         Marlin.View.Window window;
         Marlin.BookmarkList bookmarks;
         VolumeMonitor volume_monitor;
-        Marlin.TrashMonitor monitor;
+        unowned Marlin.TrashMonitor monitor;
         Gtk.IconTheme theme;
         GLib.Icon eject_icon;
 
@@ -156,7 +156,8 @@ namespace Marlin.Places {
             this.bookmarks = Marlin.BookmarkList.get_instance ();
             bookmarks.contents_changed.connect (update_places);
 
-            set_up_trash_monitor ();
+            monitor = Marlin.TrashMonitor.get_default ();
+            monitor.notify["is-empty"].connect (() => update_places ());
             this.volume_monitor = GLib.VolumeMonitor.@get ();
             connect_volume_monitor_signals ();
 
@@ -281,7 +282,7 @@ namespace Marlin.Places {
             tree_view.popup_menu.connect (popup_menu_cb);
             tree_view.button_press_event.connect (button_press_event_cb);
             tree_view.button_release_event.connect (button_release_event_cb);
-            tree_view.key_press_event.connect (key_press_event_cb);
+            tree_view.key_press_event.connect (on_tree_view_key_press_event);
 
             tree_view.row_expanded.connect (category_row_expanded_event_cb);
             tree_view.row_collapsed.connect (category_row_collapsed_event_cb);
@@ -310,11 +311,6 @@ namespace Marlin.Places {
         private bool update_adjustment_val () {
             adjustment_val = ((this as Gtk.ScrolledWindow).get_vadjustment ()).value;
             return false;
-        }
-
-        private void set_up_trash_monitor () {
-            monitor = Marlin.TrashMonitor.get ();
-            monitor.trash_state_changed.connect (trash_state_changed_cb);
         }
 
         private void connect_volume_monitor_signals () {
@@ -487,7 +483,7 @@ namespace Marlin.Places {
 
             /* Add Home BUILTIN */
             try {
-                mount_uri = GLib.Filename.to_uri (Eel.get_real_user_home (), null);
+                mount_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
             }
             catch (ConvertError e) {
                 mount_uri = "";
@@ -544,8 +540,8 @@ namespace Marlin.Places {
                 add_place (Marlin.PlaceType.BUILT_IN,
                            iter,
                            _("Trash"),
-                           Marlin.TrashMonitor.get_icon (),
-                           Marlin.TRASH_URI,
+                           monitor.get_icon (),
+                           Marlin.TrashMonitor.URI,
                            null,
                            null,
                            null,
@@ -1011,7 +1007,7 @@ namespace Marlin.Places {
                     && info == TargetType.TEXT_URI_LIST) {
 
                     string s = (string)(selection_data.get_data ());
-                    drag_list = EelGFile.list_new_from_string (s);
+                    drag_list = PF.FileUtils.files_from_uris (s);
                 } else {
                     if (info == TargetType.GTK_TREE_MODEL_ROW) {
                         Gtk.TreePath path;
@@ -1463,7 +1459,7 @@ namespace Marlin.Places {
                 popupmenu_separator_item2 = new Gtk.SeparatorMenuItem ();
 
                 popupmenu_mount_item = new Gtk.MenuItem.with_mnemonic (_("_Mount"));
-                popupmenu_mount_item.activate.connect (mount_shortcut_cb);
+                popupmenu_mount_item.activate.connect (mount_selected_shortcut);
                 popupmenu_mount_item.show ();
 
                 popupmenu_unmount_item = new Gtk.MenuItem.with_mnemonic (_("_Unmount"));
@@ -1477,6 +1473,7 @@ namespace Marlin.Places {
                 popupmenu_empty_trash_item = new Gtk.MenuItem.with_mnemonic (_("Empty _Trash"));
                 popupmenu_empty_trash_item.activate.connect (empty_trash_cb);
                 popupmenu_empty_trash_item.show ();
+                monitor.bind_property ("is-empty", popupmenu_empty_trash_item, "sensitive", GLib.BindingFlags.SYNC_CREATE|GLib.BindingFlags.INVERT_BOOLEAN);
 
                 popupmenu_drive_property_item = new Gtk.MenuItem.with_mnemonic (_("Properties"));
                 popupmenu_drive_property_item.activate.connect (show_drive_info_cb);
@@ -1499,10 +1496,7 @@ namespace Marlin.Places {
                 check_popup_sensitivity ();
             }
 
-            Eel.pop_up_context_menu (popupmenu,
-                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     event);
+            popupmenu.popup_at_pointer (event);
         }
 
         /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */
@@ -1687,25 +1681,55 @@ namespace Marlin.Places {
          * We trap button 3 to bring up a popup menu, and button 2 to
          * open in a new tab.
          */
-        private bool key_press_event_cb (Gtk.Widget widget, Gdk.EventKey event) {
-            Gdk.ModifierType modifiers = Gtk.accelerator_get_default_mod_mask ();
-            if (event.keyval == Gdk.Key.Down
-             && (event.state & modifiers) == Gdk.ModifierType.MOD1_MASK)
-                return eject_or_unmount_selection ();
+        private bool on_tree_view_key_press_event (Gtk.Widget widget, Gdk.EventKey event) {
+            var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+            var no_mods = mods == 0;
+            var only_alt_pressed = mods == Gdk.ModifierType.MOD1_MASK;
 
-            if (event.keyval == Gdk.Key.F2 && (event.state & modifiers) == 0) {
-                rename_selected_bookmark ();
-                return true;
+            switch (event.keyval) {
+                case Gdk.Key.Down:
+                    if (only_alt_pressed) {
+                        return eject_or_unmount_selection ();
+                    }
+
+                    break;
+
+                case Gdk.Key.Up:
+                    if (only_alt_pressed) {
+                        mount_selected_shortcut ();
+                        return true;
+                    }
+
+                    break;
+
+                case Gdk.Key.Right:
+                    if (no_mods) {
+                        expand_collapse_category (true);
+                        return true;
+                    }
+
+                    break;
+
+                case Gdk.Key.Left:
+                    if (no_mods) {
+                        expand_collapse_category (false);
+                        return true;
+                    }
+
+                    break;
+
+                case Gdk.Key.F2:
+                    if (no_mods) {
+                        rename_selected_bookmark ();
+                        return true;
+                    }
+
+                    break;
+
+                default:
+                    break;
             }
 
-            if (event.keyval == Gdk.Key.Right && (event.state & modifiers) == 0) {
-                expand_collapse_category (true);
-                return true;
-            }
-            if (event.keyval == Gdk.Key.Left && (event.state & modifiers) == 0) {
-                expand_collapse_category (false);
-                return true;
-            }
             return false;
         }
 
@@ -2056,7 +2080,7 @@ namespace Marlin.Places {
             open_shortcut_from_menu (Marlin.OpenFlag.NEW_TAB);
         }
 
-        private void mount_shortcut_cb (Gtk.MenuItem item) {
+        private void mount_selected_shortcut () {
             Gtk.TreeIter iter;
             if (!get_selected_iter (out iter))
                 return;
@@ -2209,11 +2233,6 @@ namespace Marlin.Places {
 
         }
 
-        private void trash_state_changed_cb (Marlin.TrashMonitor trash_monitor, bool state) {
-            update_places ();
-            check_popup_sensitivity ();
-        }
-
 /* CHECK FUNCTIONS */
         private void check_unmount_and_eject (Mount? mount,
                                               Volume? volume,
@@ -2322,7 +2341,7 @@ namespace Marlin.Places {
             /* Context menu shows Empty Trash for the Trash icon and for any mount with a native
              * file system whose trash contains files */
             bool show_empty_trash = (uri != null) &&
-                                    ((uri == Marlin.TRASH_URI) ||
+                                    ((uri == Marlin.TrashMonitor.URI) ||
                                     Marlin.FileOperations.has_trash_files (mount));
 
             popupmenu_separator_item2.visible = (show_eject || show_unmount ||
@@ -2335,8 +2354,6 @@ namespace Marlin.Places {
             popupmenu_eject_item.visible = show_eject;
             popupmenu_empty_trash_item.visible = show_empty_trash;
             popupmenu_drive_property_item.visible = show_property;
-
-            popupmenu_empty_trash_item.sensitive = !Marlin.TrashMonitor.is_empty ();
 
             bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);
             popupmenu_open_in_new_tab_item.visible = !is_plugin;

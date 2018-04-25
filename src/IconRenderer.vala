@@ -53,7 +53,7 @@ namespace Marlin {
             set {
                 _file = value;
                 if (_file != null) {
-                    _file.update_icon (icon_size);
+                    _file.update_icon (icon_size, icon_scale);
                 }
             }
         }
@@ -62,6 +62,7 @@ namespace Marlin {
         private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
         private GOF.File? _file;
         private Marlin.IconSize icon_size;
+        private int icon_scale = 1;
         public int helper_x {get; private set;}
         public int helper_y {get; private set;}
         private unowned Gdk.Pixbuf? pixbuf {
@@ -83,12 +84,18 @@ namespace Marlin {
                 return;
             }
 
+            var new_scale = widget.get_scale_factor ();
+            if (icon_scale != new_scale) {
+                icon_scale = new_scale;
+                _file.update_icon (icon_size, icon_scale);
+            }
+
             Gdk.Pixbuf? pb = pixbuf;
 
             var pix_rect = Gdk.Rectangle ();
 
-            pix_rect.width = pixbuf.get_width ();
-            pix_rect.height = pixbuf.get_height ();
+            pix_rect.width = pixbuf.get_width ()/icon_scale;
+            pix_rect.height = pixbuf.get_height ()/icon_scale;
             pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
             pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
@@ -110,7 +117,7 @@ namespace Marlin {
             }
 
             if (special_icon_name != null) {
-                var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size);
+                var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
                 if (nicon != null) {
                     pb = nicon.get_pixbuf_nodefault ();
                 }
@@ -118,12 +125,12 @@ namespace Marlin {
 
             if (clipboard.has_cutted_file (file)) {
                 /* 50% translucent for cutted files */
-                pb = Eel.gdk_pixbuf_lucent (pixbuf, 50);
+                pb = PF.PixbufUtils.lucent (pixbuf, 50);
             }
             if (file.is_hidden) {
                 /* 75% translucent for hidden files */
-                pb = Eel.gdk_pixbuf_lucent (pixbuf, 75);
-                pb = Eel.create_darkened_pixbuf (pb, 150, 200);
+                pb = PF.PixbufUtils.lucent (pixbuf, 75);
+                pb = PF.PixbufUtils.darken (pb, 150, 200);
             }
 
             var style_context = widget.get_parent ().get_style_context ();
@@ -148,13 +155,13 @@ namespace Marlin {
 
                         /* if background-color is black something probably is wrong */
                         if (color.red != 0 || color.green != 0 || color.blue != 0) {
-                            pb = Eel.create_colorized_pixbuf (pb, color);
+                            pb = PF.PixbufUtils.colorize (pb, color);
                         }
                     }
                 }
 
                 if (prelit || focused) {
-                    pb = Eel.create_spotlight_pixbuf (pb);
+                    pb = PF.PixbufUtils.lighten (pb);
                 }
             }
 
@@ -162,7 +169,9 @@ namespace Marlin {
                 return;
             }
 
-            style_context.render_icon (cr, pb, draw_rect.x, draw_rect.y);
+            cr.scale (1.0/icon_scale, 1.0/icon_scale);
+            style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
+            //cr.scale (icon_scale, icon_scale);
             style_context.restore ();
 
             /* Do not show selection helpers or emblems for very small icons */
@@ -183,7 +192,7 @@ namespace Marlin {
                     helper_size = Marlin.IconSize.LARGE_EMBLEM > int.max (pixbuf.get_width (), pixbuf.get_height ()) / 2 ?
                                   Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
 
-                    var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, helper_size);
+                    var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, helper_size, icon_scale);
                     Gdk.Pixbuf? pix = null;
 
                     if (nicon != null) {
@@ -207,7 +216,7 @@ namespace Marlin {
                         helper_x = helper_area.x;
                         helper_y = helper_area.y;
 
-                        Gdk.cairo_set_source_pixbuf (cr, pix, helper_x, helper_y);
+                        style_context.render_icon (cr, pix, helper_x * icon_scale, helper_y * icon_scale);
                         cr.paint ();
                     }
                 }
@@ -227,7 +236,7 @@ namespace Marlin {
                     }
 
                     Gdk.Pixbuf? pix = null;
-                    var nicon = Marlin.IconInfo.lookup_from_name (emblem, helper_size);
+                    var nicon = Marlin.IconInfo.lookup_from_name (emblem, helper_size, icon_scale);
 
                     if (nicon == null) {
                         continue;
@@ -251,11 +260,23 @@ namespace Marlin {
                         emblem_area.x = (background_area.x + background_area.width) - helper_size;
                     }
 
-                    Gdk.cairo_set_source_pixbuf (cr, pix, emblem_area.x, emblem_area.y);
+                    style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
                     cr.paint ();
                     pos++;
                 }
             }
+        }
+
+        public virtual void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
+            int scale_factor = widget.get_scale_factor ();
+            minimum_size = pixbuf.get_width ()/scale_factor;
+            natural_size = minimum_size;
+        }
+
+        public virtual void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
+            int scale_factor = widget.get_scale_factor ();
+            minimum_size = pixbuf.get_height ()/scale_factor;
+            natural_size = minimum_size;
         }
 
         /* We still have to implement this even though it is deprecated */
@@ -272,9 +293,15 @@ namespace Marlin {
                 return;
             }
 
+            var new_scale = widget.get_scale_factor ();
+            if (icon_scale != new_scale) {
+                icon_scale = new_scale;
+                _file.update_icon (icon_size, icon_scale);
+            }
 
-            int pixbuf_width = pixbuf.get_width ();
-            int pixbuf_height = pixbuf.get_height ();
+            int scale_factor = widget.get_scale_factor ();
+            int pixbuf_width = pixbuf.get_width ()/scale_factor;
+            int pixbuf_height = pixbuf.get_height ()/scale_factor;
 
             int calc_width = pixbuf_width;
             int calc_height = pixbuf_height;

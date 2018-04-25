@@ -185,7 +185,7 @@ public class Marlin.Application : Granite.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            string path = PF.FileUtils.sanitize_path (filepath, null);
+            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir());
             GLib.File? file = null;
 
             if (path.length > 0) {
@@ -262,8 +262,6 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("date-format",
                                    GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("force-icon-size",
-                                   GOF.Preferences.get_default (), "force-icon-size", GLib.SettingsBindFlags.DEFAULT);
         Preferences.gnome_interface_settings.bind ("clock-format",
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
     }
