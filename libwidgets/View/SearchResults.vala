@@ -136,8 +136,8 @@ namespace Marlin.View.Chrome
         public SearchResults (Gtk.Widget parent_widget)
         {
             Object (resizable: false,
-                    type_hint: Gdk.WindowTypeHint.COMBO,
-                    type: Gtk.WindowType.POPUP);
+                    type_hint: Gdk.WindowTypeHint.DND,
+                    decorated: false);
 
             parent = parent_widget;
         }
