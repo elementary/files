@@ -528,14 +528,17 @@ namespace FM {
         protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
             int x_offset = x - area.x;
             int y_offset = y - area.y;
+            int scale_factor = get_scale_factor ();
+            int pix_width = pix.width/scale_factor;
+            int pix_height = pix.height/scale_factor;
 
-            int pix_x_offset = (area.width - pix.width) / 2;
-            int pix_y_offset = (area.height - pix.height) / 2;
+            int pix_x_offset = (area.width - pix_width) / 2;
+            int pix_y_offset = (area.height - pix_height) / 2;
 
             bool on_icon =  (x_offset >= pix_x_offset &&
-                             x_offset <= pix_x_offset + pix.width  &&
+                             x_offset <= pix_x_offset + pix_width  &&
                              y_offset >= pix_y_offset &&
-                             y_offset <= pix_y_offset + pix.height);
+                             y_offset <= pix_y_offset + pix_height);
 
             on_helper = false;
 
