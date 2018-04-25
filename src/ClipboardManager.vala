@@ -139,7 +139,6 @@ namespace Marlin {
 
             if (text == null) {
                 warning ("Empty selection data in Marlin.ClipboardManager contents_received");
-                Dialogs.show_error (widget, null, _("There is nothing on the clipboard to paste"));
                 return;
             }
 
@@ -152,7 +151,6 @@ namespace Marlin {
                 text = text.substring (3);
             } else {
                 warning ("Invalid selection data in Marlin.ClipboardManager contents_received");
-                Dialogs.show_error (widget, null, _("There is nothing on the clipboard to paste"));
                 return;
             }
 

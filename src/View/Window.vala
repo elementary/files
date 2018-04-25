@@ -89,10 +89,6 @@ namespace Marlin.View {
             if (is_first_window) {
                 set_accelerators ();
             }
-
-            /* Ensure tab key works as desired (toggle between sidebar and view).  Other widgets/functions
-             * have other keyboard shortcuts (location bar, view mode etc) */
-            unset_focus_chain ();
         }
 
         construct {
@@ -213,23 +209,23 @@ namespace Marlin.View {
             /* Toggle focus between sidebar and view using unmodified Tab key, unless location
              * bar in focus. */
             key_press_event.connect_after ((event) => {
-                var mods = (event.state & Gtk.accelerator_get_default_mod_mask ());
-
                 switch (event.keyval) {
-                    case Gdk.Key.Tab:
-                    case Gdk.Key.KP_Tab:
-                        if (mods != 0 || top_menu.locked_focus) {
+                    case Gdk.Key.Left:
+                    case Gdk.Key.Right:
+                        /* Arrow events only reach here if ignored by views etc because of unhandled mods e.g. Ctrl+Alt.
+                         * Use these events to toggle focus between view and sidebar using keyboard only */
+                        if (top_menu.locked_focus) {
                             return false;
                         }
+
+                        if (event.keyval == Gdk.Key.Left) {
                         /* This works better than trying to use a focus chain */
-                        if (sidebar.has_focus) {
+                            sidebar.grab_focus ();
+                        } else {
                             current_tab.grab_focus ();
                             sidebar.sync_needed ();
-                        } else {
-                            sidebar.grab_focus ();
                         }
-
-                    return true;
+                        return true;
 
                     default:
                         /* Use find function instead of view interactive search */
@@ -393,7 +389,7 @@ namespace Marlin.View {
                     restore_tabs () < 1) {
 
                     /* Open a tab pointing at the default location if no tabs restored*/
-                    var location = File.new_for_path (Eel.get_real_user_home ());
+                    var location = File.new_for_path (PF.UserUtils.get_real_user_home ());
                     add_tab (location, mode);
                 }
             } else {
@@ -511,7 +507,7 @@ namespace Marlin.View {
             tab.close ();
         }
 
-        public void add_window (File location = File.new_for_path (Eel.get_real_user_home ()),
+        public void add_window (File location = File.new_for_path (PF.UserUtils.get_real_user_home ()),
                                  Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                                  int x = -1, int y = -1) {
 
@@ -615,7 +611,7 @@ namespace Marlin.View {
                     break;
 
                 case "HOME":
-                    uri_path_change_request ("file://" + Eel.get_real_user_home ());
+                    uri_path_change_request ("file://" + PF.UserUtils.get_real_user_home ());
                     break;
 
                 case "TRASH":
@@ -842,7 +838,7 @@ namespace Marlin.View {
                 /* ViewContainer is responsible for returning valid uris */
                 vb.add ("(uss)",
                         view_container.view_mode,
-                        view_container.get_root_uri () ?? Eel.get_real_user_home (),
+                        view_container.get_root_uri () ?? PF.UserUtils.get_real_user_home (),
                         view_container.get_tip_uri () ?? ""
                        );
             }
@@ -999,7 +995,7 @@ namespace Marlin.View {
 
                 if (location == null || location.has_prefix (root) || location.equal (root)) {
                     if (view_container == current_tab) {
-                        view_container.focus_location (File.new_for_path (Eel.get_real_user_home ()));
+                        view_container.focus_location (File.new_for_path (PF.UserUtils.get_real_user_home ()));
                     } else {
                         remove_tab (view_container);
                     }

@@ -94,8 +94,9 @@ namespace Marlin.View.Chrome
         const int MAX_DEPTH = 5;
         const int DELAY_ADDING_RESULTS = 150;
 
+        public bool working { get; private set; default = false; }
+
         private new Gtk.Widget parent;
-        protected bool working { get; private set; default = false; }
         protected int n_results { get; private set; default = 0; }
 
         File current_root;

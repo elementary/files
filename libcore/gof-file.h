@@ -88,6 +88,7 @@ struct _GOFFile {
     gchar           *custom_icon_name;
     GdkPixbuf       *pix;
     gint            pix_size;
+    gint            pix_scale;
     gint            width;
     gint            height;
     guint64         modified;
@@ -166,7 +167,7 @@ void            gof_file_update (GOFFile *file);
 void            gof_file_query_update (GOFFile *file);
 gboolean        gof_file_ensure_query_info (GOFFile *file);
 void            gof_file_update_type (GOFFile *file);
-void            gof_file_update_icon (GOFFile *file, gint size);
+void            gof_file_update_icon (GOFFile *file, gint size, gint scale);
 void            gof_file_update_desktop_file (GOFFile *file);
 void            gof_file_update_trash_info (GOFFile *file);
 void            gof_file_update_emblem (GOFFile *file);
@@ -190,8 +191,8 @@ GList           *gof_file_get_location_list (GList *files);
 void            gof_file_list_free (GList *list);
 GList           *gof_file_list_ref (GList *list);
 GList           *gof_file_list_copy (GList *list);
-GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, gint size, gboolean force_size, GOFFileIconFlags flags);
-_MarlinIconInfo  *gof_file_get_icon (GOFFile *file, int size, GOFFileIconFlags flags);
+GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, gint size, gint scale, GOFFileIconFlags flags);
+_MarlinIconInfo  *gof_file_get_icon (GOFFile *file, int size, int scale, GOFFileIconFlags flags);
 gboolean        gof_file_is_writable (GOFFile *file);
 gboolean        gof_file_is_trashed (GOFFile *file);
 const gchar     *gof_file_get_symlink_target (GOFFile *file);
@@ -201,9 +202,6 @@ gboolean        gof_file_is_desktop_file (GOFFile *file);
 void            gof_file_set_expanded (GOFFile *file, gboolean expanded);
 gchar           *gof_file_list_to_string (GList *list, gsize *len);
 
-void            gof_file_open_single (GOFFile *file, GdkScreen *screen, GAppInfo *app_info);
-gboolean        gof_file_launch_files (GList *files, GdkScreen *screen, GAppInfo* app_info);
-gboolean        gof_file_launch (GOFFile  *file, GdkScreen *screen, GAppInfo *app_info);
 gboolean        gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error);
 GAppInfo        *gof_file_get_default_handler (GOFFile *file);
 
