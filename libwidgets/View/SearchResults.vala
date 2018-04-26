@@ -135,6 +135,9 @@ namespace Marlin.View.Chrome
 
         public SearchResults (Gtk.Widget parent_widget)
         {
+            /* WindowTypeHint.DND seems the only hint that
+             * works for this specific case
+             */
             Object (resizable: false,
                     type_hint: Gdk.WindowTypeHint.DND,
                     decorated: false);
