@@ -40,7 +40,7 @@ set (COMMON_DEPS
     gio-2.0
     gio-unix-2.0
     pango>=1.1.2
-    gtk+-3.0>=3.14
+    gtk+-3.0>=3.22
     gmodule-2.0
     gail-3.0
     gee-0.8

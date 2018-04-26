@@ -44,7 +44,6 @@ namespace Marlin {
             }
         }
 
-        public new string background { set; private get;}
         public GOF.File? file {set; private get;}
         private int _item_width = -1;
         public int item_width {
@@ -290,11 +289,23 @@ namespace Marlin {
             get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
 
             /* render the background if selected or colorized */
-            if (selected || this.background != null) {
+            if (selected) {
+                int x0 = cell_area.x + x_offset;
+                int y0 = cell_area.y + y_offset;
+                style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
+            } else if (this.background_set) {
                 int x0 = cell_area.x + x_offset;
                 int y0 = cell_area.y + y_offset;
 
-                style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
+                var provider = new Gtk.CssProvider ();
+                try {
+                    provider.load_from_data ("* { background-color: %s; }".printf (background_rgba.to_string ()));
+                    style_context.add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                    style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
+                    style_context.remove_provider (provider);
+                } catch (Error e) {
+                    critical (e.message);
+                }
             }
 
             /* Icons are highlighted when focussed - there is no focus indicator on text */

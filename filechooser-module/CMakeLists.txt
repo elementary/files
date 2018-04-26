@@ -27,6 +27,8 @@ vala_precompile (VALA_C ${MODULE_NAME}
 PACKAGES
     gtk+-3.0
     granite
+    posix
+    linux
     pantheon-files-widgets
     pantheon-files-core
     pantheon-files-core-C
