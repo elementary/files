@@ -40,6 +40,7 @@ namespace FM
         public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file);
         public GOF.File? file_for_iter (Gtk.TreeIter iter);
         public void clear ();
+        public void set_should_sort_directories_first (bool directories_first);
         public signal void subdirectory_unloaded (GOF.Directory.Async directory);
     }
 }
