@@ -294,7 +294,7 @@ namespace FM {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
-            var app = (Marlin.Application.get ());
+            var app = (Marlin.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
 
@@ -1996,7 +1996,7 @@ namespace FM {
                     label = _("Run");
                     menu.append (label, "selection.open");
                 } else if (default_app != null) {
-                    if (default_app.get_id () != GLib.Application.get_default ().application_id + ".desktop") {
+                    if (default_app.get_id () != Marlin.APP_ID + ".desktop") {
                         label = (_("Open in %s")).printf (default_app.get_display_name ());
                         menu.append (label, "selection.open_with_default");
                     }
