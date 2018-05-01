@@ -20,10 +20,7 @@
              Darin Adler <darin@bentspoon.com>,
              Julián Unrrein <junrrein@gmail.com>
 ***/
-
-private Marlin.Application application_singleton = null;
-
-public class Marlin.Application : Granite.Application {
+public class Marlin.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
     private Marlin.Progress.UIHandler progress_handler;
@@ -40,21 +37,7 @@ public class Marlin.Application : Granite.Application {
     construct {
         /* Needed by Glib.Application */
         this.application_id = Marlin.APP_ID;  //Ensures an unique instance.
-        this.flags = ApplicationFlags.HANDLES_COMMAND_LINE;
-
-        /* Needed by Granite.Application */
-        this.program_name = _(Marlin.APP_TITLE);
-        this.exec_name = APP_NAME;
-        this.build_version = Config.VERSION;
-
-        application_singleton = this;
-    }
-
-    public static new unowned Application get () {
-        if (application_singleton == null)
-            application_singleton = new Marlin.Application ();
-
-        return application_singleton;
+        this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
     }
 
     public override void startup () {
