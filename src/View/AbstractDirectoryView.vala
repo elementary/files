@@ -235,7 +235,6 @@ namespace FM {
                      * of selected files (e.g. OverlayBar critical errors)
                      */
                     disconnect_tree_signals ();
-
                     size_allocate.disconnect (on_size_allocate);
                     clipboard.changed.disconnect (on_clipboard_changed);
                     view.key_press_event.disconnect (on_view_key_press_event);
@@ -1053,11 +1052,13 @@ namespace FM {
         }
 
         private void rename_selected_file () {
-            if (selected_files == null)
+            if (selected_files == null) {
                 return;
+            }
 
-            if (selected_files.next != null)
+            if (selected_files.next != null) {
                 warning ("Cannot rename multiple files (yet) - renaming first only");
+            }
 
             /**TODO** invoke batch renamer see bug #1014122*/
 
@@ -2996,6 +2997,7 @@ namespace FM {
             if (!renaming || proposed_name == new_name) {
                 return;
             }
+
             proposed_name = "";
             if (new_name != "") {
                 var path = new Gtk.TreePath.from_string (path_string);
@@ -3019,6 +3021,7 @@ namespace FM {
                 warning ("No new name");
                 on_name_editing_canceled ();
             }
+
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
