@@ -268,14 +268,24 @@ namespace Marlin {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            int scale_factor = widget.get_scale_factor ();
-            minimum_size = pixbuf.get_width () / scale_factor;
+            var new_scale = widget.get_scale_factor ();
+            if (icon_scale != new_scale) {
+                icon_scale = new_scale;
+                _file.update_icon (icon_size, icon_scale);
+            }
+
+            minimum_size = pixbuf.get_width () / icon_scale;
             natural_size = minimum_size;
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            int scale_factor = widget.get_scale_factor ();
-            minimum_size = int.max (helper_size + helper_size / 2, pixbuf.get_height () / scale_factor);
+            var new_scale = widget.get_scale_factor ();
+            if (icon_scale != new_scale) {
+                icon_scale = new_scale;
+                _file.update_icon (icon_size, icon_scale);
+            }
+
+            minimum_size = int.max (helper_size + helper_size / 2, pixbuf.get_height () / icon_scale);
             natural_size = minimum_size;
         }
 
