@@ -70,7 +70,7 @@ namespace Marlin {
                 return _file != null ? _file.pix : null;
             }
         }
-        private double scale;
+
         private ClipboardManager clipboard;
 
         construct {
