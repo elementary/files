@@ -1466,10 +1466,11 @@ namespace FM {
 
             GOF.File file = drag_file_list.first ().data;
 
-            if (file != null && file.pix != null)
-                Gtk.drag_set_icon_pixbuf (context, file.pix, 0, 0);
-            else
+            if (file != null && file.pix != null) {
+                Gtk.drag_set_icon_gicon (context, file.pix, 0, 0);
+            } else {
                 Gtk.drag_set_icon_name (context, "stock-file", 0, 0);
+            }
 
             Marlin.DndHandler.set_selection_data_from_file_list (selection_data, drag_file_list);
         }
