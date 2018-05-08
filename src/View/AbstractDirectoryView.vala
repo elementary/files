@@ -35,7 +35,6 @@ namespace FM {
             INVALID
         }
 
-        const string MESSAGE_CLASS = "h2";
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
@@ -622,8 +621,10 @@ namespace FM {
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
             var style_context = get_style_context ();
-            if (style_context.has_class (MESSAGE_CLASS))
-                style_context.remove_class (MESSAGE_CLASS);
+            if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+                style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
+                style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
+            }
 
             cancel ();
             clear ();
@@ -1814,7 +1815,7 @@ namespace FM {
 
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
-                /* Override style MESSAGE_CLASS of view when it is empty */
+                /* Override style Granite.STYLE_CLASS_H2_LABEL of view when it is empty */
                 if (slot.directory.is_empty ())
                     menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
                 menu.popup_at_pointer (event);
@@ -3051,8 +3052,10 @@ namespace FM {
             if (slot.directory.is_empty ()) {
                 Pango.Layout layout = create_pango_layout (null);
 
-                if (!style_context.has_class (MESSAGE_CLASS))
-                    style_context.add_class (MESSAGE_CLASS);
+                if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+                    style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
+                    style_context.add_class (Gtk.STYLE_CLASS_VIEW);
+                }
 
                 layout.set_markup (slot.get_empty_message (), -1);
 
@@ -3067,8 +3070,9 @@ namespace FM {
                 get_style_context ().render_layout (cr, x, y, layout);
 
                 return true;
-            } else if (style_context.has_class (MESSAGE_CLASS)) {
-                style_context.remove_class (MESSAGE_CLASS);
+            } else if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+                style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
+                style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
             }
 
             return false;
