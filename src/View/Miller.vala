@@ -196,7 +196,7 @@ namespace Marlin.View {
                      * Go_up requests make_root false - previous directory will be selected
                      */
                     if (make_root) {
-                        first_slot.select_first_for_empty_selection ();
+                        first_slot.focus_first_for_empty_selection (false); /* Do not select (match behaviour of other views) */
                     }
                 }
             }
@@ -408,7 +408,7 @@ namespace Marlin.View {
 
             if (to_activate != null) {
                 to_activate.active ();
-                to_activate.select_first_for_empty_selection ();
+                to_activate.focus_first_for_empty_selection (true); /* Selects as well as focusses */
             }
 
             return false;
@@ -527,8 +527,8 @@ namespace Marlin.View {
             current_slot.select_glib_files (files, focus_location);
         }
 
-        public override void select_first_for_empty_selection () {
-            current_slot.select_first_for_empty_selection ();
+        public override void focus_first_for_empty_selection (bool select = true) {
+            current_slot.focus_first_for_empty_selection (select);
         }
 
         public override void zoom_in () {

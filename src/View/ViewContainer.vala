@@ -425,7 +425,7 @@ namespace Marlin.View {
                     can_show_folder = false;
                 }
             } else {
-                view.select_first_for_empty_selection ();
+                view.focus_first_for_empty_selection (false);  /* Does not select */
             }
 
             if (can_show_folder) {
@@ -522,6 +522,7 @@ namespace Marlin.View {
                     return;
                 }
             } else if (no_path_change) { /* not in current, do not navigate to it*/
+                view.focus_first_for_empty_selection (false); /* Just focus first file */
                 return;
             }
             /* Attempt to navigate to the location */
