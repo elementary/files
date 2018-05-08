@@ -17,8 +17,8 @@
 
 [DBus (name = "io.elementary.files.db")]
 interface MarlinDaemon : Object {
-    public abstract async Variant get_uri_infos (string raw_uri) throws IOError;
-    public abstract async bool record_uris (Variant[] entries, string directory)    throws IOError;
+    public abstract async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError;
+    public abstract async bool record_uris (Variant[] entries, string directory) throws GLib.DBusError, GLib.IOError;
 
 }
 

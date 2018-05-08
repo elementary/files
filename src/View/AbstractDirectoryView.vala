@@ -35,7 +35,6 @@ namespace FM {
             INVALID
         }
 
-        const string MESSAGE_CLASS = "h2";
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
@@ -235,7 +234,6 @@ namespace FM {
                      * of selected files (e.g. OverlayBar critical errors)
                      */
                     disconnect_tree_signals ();
-
                     size_allocate.disconnect (on_size_allocate);
                     clipboard.changed.disconnect (on_clipboard_changed);
                     view.key_press_event.disconnect (on_view_key_press_event);
@@ -294,7 +292,7 @@ namespace FM {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
-            var app = (Marlin.Application.get ());
+            var app = (Marlin.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
 
@@ -623,8 +621,10 @@ namespace FM {
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
             var style_context = get_style_context ();
-            if (style_context.has_class (MESSAGE_CLASS))
-                style_context.remove_class (MESSAGE_CLASS);
+            if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+                style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
+                style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
+            }
 
             cancel ();
             clear ();
@@ -1053,11 +1053,13 @@ namespace FM {
         }
 
         private void rename_selected_file () {
-            if (selected_files == null)
+            if (selected_files == null) {
                 return;
+            }
 
-            if (selected_files.next != null)
+            if (selected_files.next != null) {
                 warning ("Cannot rename multiple files (yet) - renaming first only");
+            }
 
             /**TODO** invoke batch renamer see bug #1014122*/
 
@@ -1465,10 +1467,11 @@ namespace FM {
 
             GOF.File file = drag_file_list.first ().data;
 
-            if (file != null && file.pix != null)
-                Gtk.drag_set_icon_pixbuf (context, file.pix, 0, 0);
-            else
+            if (file != null && file.pix != null) {
+                Gtk.drag_set_icon_gicon (context, file.pix, 0, 0);
+            } else {
                 Gtk.drag_set_icon_name (context, "stock-file", 0, 0);
+            }
 
             Marlin.DndHandler.set_selection_data_from_file_list (selection_data, drag_file_list);
         }
@@ -1812,7 +1815,7 @@ namespace FM {
 
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
-                /* Override style MESSAGE_CLASS of view when it is empty */
+                /* Override style Granite.STYLE_CLASS_H2_LABEL of view when it is empty */
                 if (slot.directory.is_empty ())
                     menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
                 menu.popup_at_pointer (event);
@@ -1996,7 +1999,7 @@ namespace FM {
                     label = _("Run");
                     menu.append (label, "selection.open");
                 } else if (default_app != null) {
-                    if (default_app.get_id () != GLib.Application.get_default ().application_id + ".desktop") {
+                    if (default_app.get_id () != Marlin.APP_ID + ".desktop") {
                         label = (_("Open in %s")).printf (default_app.get_display_name ());
                         menu.append (label, "selection.open_with_default");
                     }
@@ -2996,6 +2999,7 @@ namespace FM {
             if (!renaming || proposed_name == new_name) {
                 return;
             }
+
             proposed_name = "";
             if (new_name != "") {
                 var path = new Gtk.TreePath.from_string (path_string);
@@ -3019,6 +3023,7 @@ namespace FM {
                 warning ("No new name");
                 on_name_editing_canceled ();
             }
+
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
@@ -3047,8 +3052,10 @@ namespace FM {
             if (slot.directory.is_empty ()) {
                 Pango.Layout layout = create_pango_layout (null);
 
-                if (!style_context.has_class (MESSAGE_CLASS))
-                    style_context.add_class (MESSAGE_CLASS);
+                if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+                    style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
+                    style_context.add_class (Gtk.STYLE_CLASS_VIEW);
+                }
 
                 layout.set_markup (slot.get_empty_message (), -1);
 
@@ -3063,8 +3070,9 @@ namespace FM {
                 get_style_context ().render_layout (cr, x, y, layout);
 
                 return true;
-            } else if (style_context.has_class (MESSAGE_CLASS)) {
-                style_context.remove_class (MESSAGE_CLASS);
+            } else if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+                style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
+                style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
             }
 
             return false;
