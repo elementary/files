@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-03-27 00:01+0000\n"
+"PO-Revision-Date: 2018-05-07 00:02+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
@@ -50,7 +50,7 @@ msgstr "セキュア WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "接続中..."
+msgstr "接続しています..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -507,13 +507,13 @@ msgstr[0] "選択された %'d 個のアイテムを完全に削除してもよ�
 #: ../libcore/marlin-file-operations.c:1493
 #: ../libcore/marlin-file-operations.c:1525
 msgid "Deleting files"
-msgstr "ファイルを削除中"
+msgstr "ファイルを削除しています"
 
 #: ../libcore/marlin-file-operations.c:1519
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "残り %'d 個のファイルを削除中"
+msgstr[0] "残り %'d 個のファイルを削除しています"
 
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
@@ -641,11 +641,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
-msgstr "ファイルをゴミ箱へ移動中"
+msgstr "ファイルをゴミ箱へ移動しています"
 
 #: ../libcore/marlin-file-operations.c:2158
 msgid "Deleting Files"
-msgstr "ファイルを削除中"
+msgstr "ファイルを削除しています"
 
 #: ../libcore/marlin-file-operations.c:2227
 msgid "Unable to eject %V"
@@ -680,25 +680,25 @@ msgstr "%s をマウントできません"
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "%'d 個のファイル (%S) をコピーする準備中"
+msgstr[0] "%'d 個のファイル (%S) をコピーする準備をしています"
 
 #: ../libcore/marlin-file-operations.c:2614
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "%'d 個のファイル (%S) を移動する準備中"
+msgstr[0] "%'d 個のファイル (%S) を移動する準備をしています"
 
 #: ../libcore/marlin-file-operations.c:2620
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "%'d 個のファイル (%S) を削除する準備中"
+msgstr[0] "%'d 個のファイル (%S) を削除する準備をしています"
 
 #: ../libcore/marlin-file-operations.c:2626
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備中"
+msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備をしています"
 
 #: ../libcore/marlin-file-operations.c:2669
 #: ../libcore/marlin-file-operations.c:3587
@@ -775,46 +775,46 @@ msgstr "転送先は読み込み専用です。"
 
 #: ../libcore/marlin-file-operations.c:3114
 msgid "Moving \"%B\" to \"%B\""
-msgstr "\"%B\" を \"%B\" へ移動中"
+msgstr "\"%B\" を \"%B\" へ移動しています"
 
 #: ../libcore/marlin-file-operations.c:3115
 msgid "Copying \"%B\" to \"%B\""
-msgstr "\"%B\" を \"%B\" へコピー中"
+msgstr "\"%B\" を \"%B\" へコピーしています"
 
 #: ../libcore/marlin-file-operations.c:3119
 msgid "Duplicating \"%B\""
-msgstr "\"%B\" の複製中"
+msgstr "\"%B\" を複製しています"
 
 #: ../libcore/marlin-file-operations.c:3123
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へ移動中"
+msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へ移動しています"
 
 #: ../libcore/marlin-file-operations.c:3126
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へコピー中"
+msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へコピーしています"
 
 #: ../libcore/marlin-file-operations.c:3133
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "%'d 個のファイルを \"%B\" 内で複製中"
+msgstr[0] "%'d 個のファイルを \"%B\" 内で複製しています"
 
 #: ../libcore/marlin-file-operations.c:3142
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" へ移動中"
+msgstr[0] "%'d 個のファイルを \"%B\" へ移動しています"
 
 #: ../libcore/marlin-file-operations.c:3146
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" へコピー中"
+msgstr[0] "%'d 個のファイルを \"%B\" へコピーしています"
 
 #: ../libcore/marlin-file-operations.c:3151
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "%'d 個のファイルを複製中"
+msgstr[0] "%'d 個のファイルを複製しています"
 
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
 #: ../libcore/marlin-file-operations.c:3202
@@ -919,17 +919,17 @@ msgstr "%Bへのファイルコピーでエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:4822
 msgid "Copying Files"
-msgstr "ファイルをコピー中"
+msgstr "ファイルをコピーしています"
 
 #: ../libcore/marlin-file-operations.c:4848
 msgid "Preparing to move to \"%B\""
-msgstr "\"%B\" へ移動する準備中"
+msgstr "\"%B\" へ移動する準備をしています"
 
 #: ../libcore/marlin-file-operations.c:4860
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "%'d 個のファイルを移動させる準備中"
+msgstr[0] "%'d 個のファイルを移動させる準備をしています"
 
 #: ../libcore/marlin-file-operations.c:5108
 #, c-format
@@ -943,17 +943,17 @@ msgstr "%F 内にファイルを移動する際にエラーが発生しました
 
 #: ../libcore/marlin-file-operations.c:5371
 msgid "Moving Files"
-msgstr "ファイルを移動中"
+msgstr "ファイルを移動しています"
 
 #: ../libcore/marlin-file-operations.c:5400
 msgid "Creating links in \"%B\""
-msgstr "\"%B\" 内でリンクを作成中"
+msgstr "\"%B\" 内でリンクを作成しています"
 
 #: ../libcore/marlin-file-operations.c:5411
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "%'d 個のファイルへのリンクを作成中"
+msgstr[0] "%'d 個のファイルへのリンクを作成しています"
 
 #: ../libcore/marlin-file-operations.c:5552
 msgid "Error while creating link to %B."
@@ -1017,23 +1017,23 @@ msgstr "ゴミ箱を空にしています"
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
-msgstr "準備中"
+msgstr "準備しています"
 
 #: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
 msgid "Today at %-I:%M %p"
-msgstr "今日 %p %I:%M"
+msgstr "今日の %p %I:%M"
 
 #: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
 msgid "Yesterday at %-I:%M %p"
-msgstr "昨日 %p %I:%M"
+msgstr "昨日の %p %I:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr "%B%d日 %A %p %I:%M"
+msgstr "%B%d日の %A %p %I:%M"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%Y/%m/%d %A %p %I:%M"
+msgstr "%Y/%m/%d日の %A %p %I:%M"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
@@ -1909,7 +1909,7 @@ msgstr "不明"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:156
 msgid "Available:"
-msgstr "利用可能："
+msgstr "利用可能:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 msgid "Used:"
@@ -1953,7 +1953,7 @@ msgstr "不明"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "読み込み中…"
+msgstr "読み込んでいます…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -1961,7 +1961,7 @@ msgstr "決定することができませんでした"
 
 #: ../src/Dialogs/PropertiesWindow.vala:494
 msgid "Contains:"
-msgstr "内容："
+msgstr "内容:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:516
 msgid "Created:"
@@ -1973,7 +1973,7 @@ msgstr "更新日時:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:536
 msgid "Deleted:"
-msgstr "削除："
+msgstr "削除:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:546
 msgid "Mimetype:"
@@ -2016,13 +2016,13 @@ msgstr "全員:"
 #: ../src/Dialogs/PropertiesWindow.vala:1140
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] "%u サブフォルダ"
+msgstr[0] "%u 個のサブフォルダ"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1144
 #: ../src/Dialogs/PropertiesWindow.vala:1166
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] "%u ファイル"
+msgstr[0] "%u 個のファイル"
 
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1149

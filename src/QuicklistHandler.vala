@@ -104,7 +104,8 @@ namespace Marlin {
                     menuitem.property_set ("label", bookmark.label);
                     menuitem.item_activated.connect (() => {
                         var location = bookmark.get_location ();
-                        Marlin.Application.get ().create_window (location);
+                        var app = (Marlin.Application)(GLib.Application.get_default ());
+                        app.create_window (location);
                     });
 
                     ql.child_add_position (menuitem, index);

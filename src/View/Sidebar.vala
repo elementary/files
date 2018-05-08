@@ -1318,7 +1318,7 @@ namespace Marlin.Places {
                     if (mount != null) {
                         var location = mount.get_root ();
                         if (flags == Marlin.OpenFlag.NEW_WINDOW) {
-                            var app = Marlin.Application.get ();
+                            var app = (Marlin.Application)(GLib.Application.get_default ());
                             app.create_window (location);
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                             window.open_single_tab (location, Marlin.ViewMode.CURRENT);
