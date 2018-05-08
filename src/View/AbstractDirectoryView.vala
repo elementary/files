@@ -419,11 +419,11 @@ namespace FM {
             zoom_level = get_normal_zoom_level ();
         }
 
-        public void select_first_for_empty_selection () {
+        public void focus_first_for_empty_selection (bool select) {
             if (selected_files == null) {
                 Idle.add_full (GLib.Priority.LOW, () => {
                     if (!tree_frozen) {
-                        set_cursor (new Gtk.TreePath.from_indices (0), false, true, true);
+                        set_cursor (new Gtk.TreePath.from_indices (0), false, select, true);
                         return false;
                     } else {
                         return true;
@@ -463,11 +463,15 @@ namespace FM {
 
             foreach (GOF.File f in files) {
                 /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
-               if (model.get_first_iter_for_file (f, out iter)) {
+                if (model.get_first_iter_for_file (f, out iter)) {
                     count++;
                     var path = model.get_path (iter);
                     select_path (path, focus != null && focus.equal (f.location));  /* Cursor follows if matches focus location*/
                 }
+            }
+
+            if (count == 0) {
+                focus_first_for_empty_selection (false);
             }
 
             connect_tree_signals ();
