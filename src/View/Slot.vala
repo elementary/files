@@ -57,8 +57,6 @@ namespace Marlin.View {
             get {
                 return dir_view == null || dir_view.is_frozen;
             }
-
-            default = true;
         }
 
         public override bool locked_focus {
@@ -89,6 +87,8 @@ namespace Marlin.View {
             make_view ();
             connect_dir_view_signals ();
             connect_slot_signals ();
+
+            is_frozen = true;
         }
 
         ~Slot () {
