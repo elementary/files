@@ -44,7 +44,11 @@ public class PantheonModule.FileChooserDialog : GLib.Object {
             }
 
             return true;
+#if VALA_0_42
+        });
+#else
         }, null);
+#endif
     }
 }
 
