@@ -369,7 +369,7 @@ namespace FM {
                              y_offset >= pix_y_offset &&
                              y_offset <= pix_y_offset + pix_height);
 
-            if (icon_renderer.selection_helpers && on_icon) {
+            if (on_icon) {
                 int hs = icon_renderer.helper_size;
 
                 if (y_offset <= int.max (pix_y_offset + hs, hs)) {
