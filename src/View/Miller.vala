@@ -85,17 +85,28 @@ namespace Marlin.View {
 
         /** Creates a new slot in the host slot hpane */
         public void add_location (GLib.File loc, Marlin.View.Slot? host = null, bool scroll = true, bool animate = true) {
-            Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
-            /* Notify view container of path change - will set tab to working and change pathbar */
-            path_changed ();
-            new_slot.slot_number = (host != null) ? host.slot_number + 1 : 0;
-            total_width += new_slot.width;
+            Marlin.View.Slot new_slot;
+            int new_slot_number = (host != null) ? host.slot_number + 1 : 0;
+            /* Do not create a new slot if we do not need to */
+            if (slot_list.length () > (uint)new_slot_number) {
+                new_slot = (Marlin.View.Slot)(slot_list.nth_data (new_slot_number));
+                truncate_list_after_slot (new_slot);
+                /* This ensures that the ViewContainer receives "path changed" and "done loading" signals in the correct order */
+                new_slot.user_path_change_request (loc, false);
+            } else {
+                /* Notify view container of path change - will set tab to working and change pathbar */
+                path_changed ();
+                new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
+                total_width += new_slot.width;
+                new_slot.slot_number = new_slot_number;
+                colpane.set_size_request (total_width, -1);
+                nest_slot_in_host_slot (new_slot, host); /* Truncates slot_list if required */
+                connect_slot_signals (new_slot);
+                slot_list.append (new_slot);
+            }
 
-            colpane.set_size_request (total_width, -1);
-            nest_slot_in_host_slot (new_slot, host);
-            connect_slot_signals (new_slot);
-            slot_list.append (new_slot);
             new_slot.active (scroll, animate); /* This will set the new slot to be current_slot. Must do this before loading */
+
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {
@@ -122,8 +133,9 @@ namespace Marlin.View {
         }
 
         private void truncate_list_after_slot (Marlin.View.Slot slot) {
-            if (slot_list.length () <= 0)
+            if (slot_list.length () <= 0) {
                 return;
+            }
 
             uint n = slot.slot_number;
 
@@ -263,13 +275,19 @@ namespace Marlin.View {
         }
 
         private void on_miller_slot_request (Marlin.View.Slot slot, GLib.File loc, bool make_root) {
-            if (make_root) {
-                /* Start a new tree with root at loc */
-                change_path (loc, true);
-            } else {
-                /* Just add another column to the end. */
-                add_location (loc, slot);
-            }
+            path_changed ();
+
+            Idle.add (() => {
+                if (make_root) {
+                    /* Start a new tree with root at loc */
+                    change_path (loc, true);
+                } else {
+                    /* Just add another column to the end. */
+                    add_location (loc, slot);
+                }
+
+                return false;
+            });
         }
 
         private bool on_slot_horizontal_scroll_event (double delta_x) {
