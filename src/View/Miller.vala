@@ -106,7 +106,6 @@ namespace Marlin.View {
             }
 
             new_slot.active (scroll, animate); /* This will set the new slot to be current_slot. Must do this before loading */
-
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {
