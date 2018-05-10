@@ -275,19 +275,13 @@ namespace Marlin.View {
         }
 
         private void on_miller_slot_request (Marlin.View.Slot slot, GLib.File loc, bool make_root) {
-            path_changed ();
-
-            Idle.add (() => {
-                if (make_root) {
-                    /* Start a new tree with root at loc */
-                    change_path (loc, true);
-                } else {
-                    /* Just add another column to the end. */
-                    add_location (loc, slot);
-                }
-
-                return false;
-            });
+            if (make_root) {
+                /* Start a new tree with root at loc */
+                change_path (loc, true);
+            } else {
+                /* Just add another column to the end. */
+                add_location (loc, slot);
+            }
         }
 
         private bool on_slot_horizontal_scroll_event (double delta_x) {
