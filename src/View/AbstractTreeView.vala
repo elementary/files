@@ -290,10 +290,12 @@ namespace FM {
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top) {
-            if (path == null)
+            if (path == null) {
                 return;
+            }
 
             Gtk.TreeSelection selection = tree.get_selection ();
+            bool no_selection = selected_files == null;
 
             if (!select) {
                 selection.changed.disconnect (on_view_selection_changed);
@@ -304,6 +306,12 @@ namespace FM {
             set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
 
             if (!select) {
+                /* When just focusing first for empty selection we do not want the row selected.
+                 * This makes behaviour consistent with Icon View */
+                if (no_selection) {
+                    unselect_path (path);  /* Reverse automatic selection by set_cursor_on_cell for TreeView */
+                }
+
                 selection.changed.connect (on_view_selection_changed);
             }
         }

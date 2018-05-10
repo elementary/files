@@ -35,7 +35,7 @@ namespace Marlin {
             get_real_editable ().key_press_event.connect (on_key_press_event);
         }
 
-        public bool on_key_press_event (Gdk.EventKey event) {
+        public virtual bool on_key_press_event (Gdk.EventKey event) {
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
 
@@ -44,7 +44,7 @@ namespace Marlin {
                 case Gdk.Key.KP_Enter:
                     /*  Only end rename with unmodified Enter. This is to allow use of Ctrl-Enter
                      *  to commit Chinese/Japanese characters when using some input methods, without ending rename.
-                     */ 
+                     */
                     if (mods == 0) {
                         end_editing (false);
                         return true;

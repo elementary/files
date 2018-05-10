@@ -70,7 +70,7 @@ namespace Marlin {
                 return _file != null ? _file.pix : null;
             }
         }
-        private double scale;
+
         private ClipboardManager clipboard;
 
         construct {
@@ -267,67 +267,43 @@ namespace Marlin {
             }
         }
 
-        public virtual void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            int scale_factor = widget.get_scale_factor ();
-            minimum_size = pixbuf.get_width ()/scale_factor;
-            natural_size = minimum_size;
-        }
-
-        public virtual void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            int scale_factor = widget.get_scale_factor ();
-            minimum_size = pixbuf.get_height ()/scale_factor;
-            natural_size = minimum_size;
-        }
-
-        /* We still have to implement this even though it is deprecated */
-        public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
-                                       out int x_offset, out int y_offset,
-                                       out int width, out int height) {
-
-            width = -1;
-            height = -1;
-            x_offset = 0;
-            y_offset = 0;
-
-            if (pixbuf == null || !(pixbuf is Gdk.Pixbuf)) {
-                return;
-            }
-
+        public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
             var new_scale = widget.get_scale_factor ();
             if (icon_scale != new_scale) {
                 icon_scale = new_scale;
                 _file.update_icon (icon_size, icon_scale);
             }
 
-            int scale_factor = widget.get_scale_factor ();
-            int pixbuf_width = pixbuf.get_width ()/scale_factor;
-            int pixbuf_height = pixbuf.get_height ()/scale_factor;
+            minimum_size = pixbuf.get_width () / icon_scale;
+            natural_size = minimum_size;
+        }
 
-            int calc_width = pixbuf_width;
-            int calc_height = pixbuf_height;
-
-            if (cell_area != null && pixbuf_width > 0 && pixbuf_height > 0) {
-                float xalign, yalign;
-                bool rtl = widget.get_direction () == Gtk.TextDirection.RTL;
-                get_alignment (out xalign, out yalign);
-                x_offset = (int)(rtl ? (1.0 -xalign) : xalign) * (cell_area.width - calc_width);
-                x_offset = int.max (x_offset, 0);
-                y_offset = (int)(yalign * (cell_area.height - calc_height));
-                y_offset = int.max (y_offset, 0);
-            } else {
-                x_offset = 0;
-                y_offset = 0;
+        public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
+            var new_scale = widget.get_scale_factor ();
+            if (icon_scale != new_scale) {
+                icon_scale = new_scale;
+                _file.update_icon (icon_size, icon_scale);
             }
 
-            /* Even if the last new pixbuf corresponding to the last requested icon_size isn't generated
-               yet, we can still determine its dimensions. This allow to asyncronously load the thumbnails
-               pixbuf */
+            minimum_size = int.max (helper_size + helper_size / 2, pixbuf.get_height () / icon_scale);
+            natural_size = minimum_size;
+        }
 
-            int s = int.max (pixbuf_width, pixbuf_height);
-            scale = double.min (1.0, (double)icon_size / s); /* scaling to make pix required icon_size (not taking into account screen scaling) */
+        /* We still have to implement this even though it is deprecated, else compiler complains.
+         * It is not called (in Juno)  */
+        public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
+                                       out int x_offset, out int y_offset,
+                                       out int width, out int height) {
 
-            width = (int)(calc_width * scale);
-            height = (int)(calc_height * scale);
+            /* Just return some default values for offsets */
+            x_offset = 0;
+            y_offset = 0;
+            int mw, nw, mh, nh;
+            get_preferred_width (widget, out mw, out nw);
+            get_preferred_height (widget, out mh, out nh);
+
+            width = nw;
+            height = nh;
         }
     }
 }
