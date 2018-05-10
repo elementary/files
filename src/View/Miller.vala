@@ -44,8 +44,6 @@ namespace Marlin.View {
             get {
                 return current_slot == null || current_slot.is_frozen;
             }
-
-            default = true;
         }
 
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
@@ -72,6 +70,8 @@ namespace Marlin.View {
             content_box.show_all ();
 
             make_view ();
+
+            is_frozen = true;
         }
 
         ~Miller () {
