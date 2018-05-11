@@ -87,7 +87,7 @@ public class Marlin.IconInfo : GLib.Object {
 
             var names = ((GLib.ThemedIcon) icon).get_names ();
             var theme = get_icon_theme ();
-            var gtkicon_info = theme.choose_icon_for_scale (names, size, scale, 0);
+            var gtkicon_info = theme.choose_icon_for_scale (names, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
             if (gtkicon_info == null) {
                 return new Marlin.IconInfo.for_pixbuf (null);
             }
