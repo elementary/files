@@ -540,14 +540,10 @@ namespace FM {
                              y_offset >= pix_y_offset &&
                              y_offset <= pix_y_offset + pix_height);
 
-            on_helper = false;
-
-            if (icon_renderer.selection_helpers) {
-                int hs = icon_renderer.helper_size;
-                on_helper = (on_icon &&
-                             x_offset <= int.max (pix_x_offset + hs, hs) &&
-                             y_offset <= int.max (pix_y_offset + hs, hs));
-            }
+            int hs = icon_renderer.helper_size;
+            on_helper = (on_icon &&
+                         x_offset <= int.max (pix_x_offset + hs, hs) &&
+                         y_offset <= int.max (pix_y_offset + hs, hs));
 
             return on_icon;
         }

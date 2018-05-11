@@ -33,7 +33,6 @@ namespace Marlin {
         public Marlin.IconSize helper_size {get; private set; default = Marlin.IconSize.EMBLEM;}
         public bool follow_state {get; set;}
         public GOF.File drop_file {get; set;}
-        public bool selection_helpers {get; set; default = true;}
 
         public Marlin.ZoomLevel zoom_level {
             get {
@@ -171,14 +170,10 @@ namespace Marlin {
 
             cr.scale (1.0/icon_scale, 1.0/icon_scale);
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
-            //cr.scale (icon_scale, icon_scale);
             style_context.restore ();
 
             /* Do not show selection helpers or emblems for very small icons */
-            if (selection_helpers &&
-                (selected || prelit) &&
-                file != drop_file) {
-
+            if ((selected || prelit) && file != drop_file) {
                 special_icon_name = null;
                 if (selected && prelit) {
                     special_icon_name = "selection-remove";
