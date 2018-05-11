@@ -93,8 +93,8 @@ namespace Marlin {
 
             var pix_rect = Gdk.Rectangle ();
 
-            pix_rect.width = pixbuf.get_width ()/icon_scale;
-            pix_rect.height = pixbuf.get_height ()/icon_scale;
+            pix_rect.width = pixbuf.get_width () / icon_scale;
+            pix_rect.height = pixbuf.get_height () / icon_scale;
             pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
             pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
@@ -168,7 +168,7 @@ namespace Marlin {
                 return;
             }
 
-            cr.scale (1.0/icon_scale, 1.0/icon_scale);
+            cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
             style_context.restore ();
 
