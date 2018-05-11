@@ -174,21 +174,16 @@ namespace Marlin.View.Chrome
         }
 
         protected override void show_navigate_icon () {
-            show_path_icon ();
+            show_search_icon ();
             base.show_navigate_icon ();
         }
+
         protected void show_search_icon () {
             bread.get_style_context ().remove_class ("spin");
             bread.set_primary_icon_name (Marlin.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
         }
+
         protected void hide_search_icon () {
-            bread.set_primary_icon_name (null);
-        }
-        protected void show_path_icon () {
-            bread.get_style_context ().remove_class ("spin");
-            bread.set_primary_icon_name (Marlin.ICON_PATHBAR_PRIMARY_PATH_SYMBOLIC);
-        }
-        protected void hide_path_icon () {
             bread.set_primary_icon_name (null);
         }
 
@@ -197,9 +192,11 @@ namespace Marlin.View.Chrome
             bread.action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC;
             bread.set_action_icon_tooltip (_("Reload this folder"));
         }
+
         private void show_placeholder () {
             bread.set_placeholder (_("Search or Type Path"));
         }
+
         private void hide_placeholder () {
             bread.set_placeholder ("");
         }
@@ -253,7 +250,7 @@ namespace Marlin.View.Chrome
         private void switch_to_search_mode () {
             search_mode = true;
             hide_navigate_icon ();
-            hide_path_icon ();
+            hide_search_icon ();
             show_search_icon ();
             /* Next line ensures that the pathbar not lose focus when the mouse if over the sidebar,
              * which would normally grab the focus */
