@@ -366,7 +366,9 @@ namespace FM {
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
+            (GOF.Preferences.get_default ()).notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
+            model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
             model.sort_column_changed.connect (on_sort_column_changed);
@@ -1360,6 +1362,11 @@ namespace FM {
             if (show_remote_thumbnails) {
                 slot.reload ();
             }
+        }
+
+        private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            var sort_directories_first = (prefs as GOF.Preferences).sort_directories_first;
+            model.set_should_sort_directories_first (sort_directories_first);
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {

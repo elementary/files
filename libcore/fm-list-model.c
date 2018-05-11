@@ -538,7 +538,7 @@ fm_list_model_file_entry_compare_func (gconstpointer a,
 
         result = gof_file_compare_for_sort (file_entry1->file, file_entry2->file,
                                             model->details->sort_id,
-                                            TRUE,
+                                            model->details->sort_directories_first,  /* Get value from GOF.Preferences */
                                             (model->details->order == GTK_SORT_DESCENDING));
 
     } else if (file_entry1->file == NULL || file_entry1->file->location == NULL) {
@@ -1146,6 +1146,7 @@ fm_list_model_init (FMListModel *model)
     model->details->stamp = g_random_int ();
     model->details->sort_id = FM_LIST_MODEL_FILENAME;
     model->details->order = GTK_SORT_ASCENDING;
+    model->details->sort_directories_first = TRUE;
 }
 
 static void
