@@ -448,6 +448,7 @@ namespace Marlin.View {
                 browser.record_uri (null);
             }
 
+            refresh_slot_info (slot.location);
             loading (false); /* Will cause topmenu to update */
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }

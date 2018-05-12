@@ -235,6 +235,7 @@ public class Marlin.Application : Gtk.Application {
         Preferences.marlin_list_view_settings = new Settings ("io.elementary.files.list-view");
         Preferences.marlin_column_view_settings = new Settings ("io.elementary.files.column-view");
         Preferences.gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
+        Preferences.gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
 
         /* Bind settings with GOFPreferences */
         Preferences.settings.bind ("show-hiddenfiles",
@@ -247,6 +248,8 @@ public class Marlin.Application : Gtk.Application {
                                    GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
         Preferences.gnome_interface_settings.bind ("clock-format",
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
+        Preferences.gtk_file_chooser_settings.bind ("sort-directories-first",
+                                   GOF.Preferences.get_default (), "sort-directories-first", GLib.SettingsBindFlags.GET);
     }
 
     public Marlin.View.Window? create_window (File? location = null,
