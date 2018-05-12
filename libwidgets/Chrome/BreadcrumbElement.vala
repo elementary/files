@@ -172,9 +172,6 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         } else {
             x += padding.left;
             x -= Math.sin (offset*Math.PI_2) * width;
-            if (x < 0) {
-                layout_width += x; /* Do not include space outside LH edge of entry */
-            }
         }
 
         if (layout_width < iw) {
@@ -224,9 +221,14 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                 }
             }
         } else {
+            cr.save ();
+            /* Supress drawing outside widget */
+            cr.rectangle (0.0, 0.0, widget.get_allocated_width (), widget.get_allocated_height ());
+            cr.clip ();
+
             if (icon_to_draw == null) {
                 if (room_for_text) {
-                    button_context.render_layout (cr, double.max (0.0, x),
+                    button_context.render_layout (cr, x,
                                                   y_half_height - text_half_height, layout);
                 }
             } else {
@@ -235,15 +237,17 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     double draw_scale = 1.0 / scale;
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
-                                                double.max (0.0, Math.round ((x + ICON_MARGIN) * scale)),
+                                                Math.round ((x + ICON_MARGIN) * scale),
                                                 Math.round ((y_half_height - icon_info.icon_height/2) * scale));
                     cr.restore ();
                 }
                 if (text_is_displayed && room_for_text && x > 0) {
-                    button_context.render_layout (cr, double.max (0.0, x + iw),
+                    button_context.render_layout (cr, x + iw,
                                                   y_half_height - text_half_height, layout);
                 }
             }
+
+            cr.restore ();
         }
 
         /* Move to end of breadcrumb */
