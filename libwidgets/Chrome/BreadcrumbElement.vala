@@ -226,7 +226,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         } else {
             if (icon_to_draw == null) {
                 if (room_for_text) {
-                    button_context.render_layout (cr, x,
+                    button_context.render_layout (cr, double.max (0.0, x),
                                                   y_half_height - text_half_height, layout);
                 }
             } else {
@@ -235,12 +235,12 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                     double draw_scale = 1.0 / scale;
                     cr.scale (draw_scale, draw_scale);
                     button_context.render_icon (cr, icon_to_draw,
-                                                Math.round ((x + ICON_MARGIN) * scale),
+                                                double.max (0.0, Math.round ((x + ICON_MARGIN) * scale)),
                                                 Math.round ((y_half_height - icon_info.icon_height/2) * scale));
                     cr.restore ();
                 }
-                if (text_is_displayed && room_for_text) {
-                    button_context.render_layout (cr, x + iw,
+                if (text_is_displayed && room_for_text && x > 0) {
+                    button_context.render_layout (cr, double.max (0.0, x + iw),
                                                   y_half_height - text_half_height, layout);
                 }
             }
@@ -265,7 +265,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             button_context.render_frame (cr, -height / 2, -height / 2, height, height);
             button_context.restore ();
             cr.restore ();
-        } else if (x > 0) { /* Avoid drawing outside LH edge of entry */
+        } else if (x > height / 4) { /* Avoid drawing outside LH edge of entry */
             cr.save ();
             cr.translate (x - height / 4, y + height / 2);
             cr.rectangle (0, -height / 2 + line_width, height, height - 2 * line_width);
