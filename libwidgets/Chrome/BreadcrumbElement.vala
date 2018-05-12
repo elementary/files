@@ -105,29 +105,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
         var width = this.real_width;
         var frame_width = width - padding.right;
 
-        var iw = icon_info != null ? icon_info.icon_width + 2 * ICON_MARGIN : 0;
-        var room_for_text = text_is_displayed;
-        var room_for_icon = icon_info != null ? true : false;
-
-        var layout_width = (width - padding.left - padding.right);
-        if (layout_width < iw) {
-            room_for_icon = false;
-            iw = 0;
-            if (layout_width >= 0) {
-                layout.set_width (Pango.units_from_double (layout_width));
-            } else {
-                room_for_text = false;
-            }
-        } else {
-            layout_width -= iw;
-            if (layout_width >= 0) {
-                layout.set_width (Pango.units_from_double (layout_width));
-            } else {
-                room_for_text = false;
-            }
-        }
-
-        /* Erase area for drawing */
+        /* Erase area for drawing and outline */
         if (offset > 0.0) {
             double x_frame_width, x_half_height, x_frame_width_half_height;
             if (is_RTL) {
@@ -182,15 +160,48 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             cr.restore ();
         }
 
-        /* Draw the text and icon (if present and there is room) */
+        /* Determine space available for icon and text */
+        var iw = icon_info != null ? icon_info.icon_width + 2 * ICON_MARGIN : 0;
+        var room_for_text = text_is_displayed;
+        var room_for_icon = icon_info != null ? true : false;
+        double layout_width = (width - padding.left - padding.right);
+
+        if (is_RTL) {
+            x -= padding.left;
+            x += Math.sin (offset*Math.PI_2) * width;
+        } else {
+            x += padding.left;
+            x -= Math.sin (offset*Math.PI_2) * width;
+            if (x < 0) {
+                layout_width += x; /* Do not include space outside LH edge of entry */
+            }
+        }
+
+        if (layout_width < iw) {
+            room_for_icon = false;
+            iw = 0;
+            if (layout_width >= 0) {
+                layout.set_width (Pango.units_from_double (layout_width));
+            } else {
+                room_for_text = false;
+            }
+        } else {
+            layout_width -= iw;
+            if (layout_width >= 0) {
+                layout.set_width (Pango.units_from_double (layout_width));
+            } else {
+                room_for_text = false;
+            }
+        }
+
+        /* Get icon pixbuf and fade if appropriate */
         Gdk.Pixbuf? icon_to_draw = icon_info != null ? icon_info.icon : null;
         if (icon_to_draw != null && (state & Gtk.StateFlags.BACKDROP) > 0) {
             icon_to_draw = PF.PixbufUtils.lucent (icon_to_draw, 50);
         }
 
+        /* Draw the text and icon (if present and there is room) */
         if (is_RTL) {
-            x -= padding.left;
-            x += Math.sin (offset*Math.PI_2) * width;
             if (icon_to_draw == null) {
                 if (room_for_text) {
                     button_context.render_layout (cr, x - width,
@@ -213,8 +224,6 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
                 }
             }
         } else {
-            x += padding.left;
-            x -= Math.sin (offset*Math.PI_2) * width;
             if (icon_to_draw == null) {
                 if (room_for_text) {
                     button_context.render_layout (cr, x,
@@ -256,7 +265,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
             button_context.render_frame (cr, -height / 2, -height / 2, height, height);
             button_context.restore ();
             cr.restore ();
-        } else {
+        } else if (x > 0) { /* Avoid drawing outside LH edge of entry */
             cr.save ();
             cr.translate (x - height / 4, y + height / 2);
             cr.rectangle (0, -height / 2 + line_width, height, height - 2 * line_width);
