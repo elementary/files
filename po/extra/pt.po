@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2018-05-05 00:10+0000\n"
-"Last-Translator: Gonçalo Ferreira <monxalo@gmail.com>\n"
+"PO-Revision-Date: 2018-05-11 18:58+0000\n"
+"Last-Translator: Pedro Ferreira <pmaf.ferreira@gmail.com>\n"
 "Language-Team: Portuguese "
 "<https://weblate.elementary.io/projects/files/extra/pt/>\n"
 "Language: pt\n"
@@ -24,10 +24,10 @@ msgid "Files"
 msgstr "Ficheiros"
 
 msgid "Browse your files"
-msgstr ""
+msgstr "Gestão de ficheiros"
 
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr ""
+msgstr "folder;manager;explore;disk;filesystem;"
 
 msgid "File Manager"
 msgstr "Gestor de Ficheiros"
@@ -57,24 +57,26 @@ msgstr ""
 "de FTP, SFTP, AFP, Webdav ou Windows share."
 
 msgid "Improved networking support"
-msgstr ""
+msgstr "Suporte a rede melhorado"
 
 msgid "Correct window geometry when snapping to left or right"
-msgstr ""
+msgstr "Corrigir a geometria da janela ao ancorar à esquerda ou direita"
 
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
 msgstr ""
+"Pressionar Ctrl já não cancela o renomear enquanto a opção \"Revelar "
+"Ponteiro\" está ativa"
 
 msgid "Switching input language cancels actions"
-msgstr ""
+msgstr "Trocar idioma de entrada cancela ações"
 
 msgid "Various crash fixes"
-msgstr ""
+msgstr "Várias correções de crashes"
 
 msgid "New translations"
-msgstr ""
+msgstr "Novas traduções"
 
 msgid "Minor bug fixes"
 msgstr "Pequenas correções de erros"
@@ -83,27 +85,29 @@ msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr ""
+"Navegadores de internet como o Firefox agora recordam a diretoria de "
+"descargas usada mais recentemente"
 
 msgid "Remember preferred zoom level"
-msgstr ""
+msgstr "Lembrar o nível de zoom preferido"
 
 msgid "Improved input method support"
-msgstr ""
+msgstr "Suporte melhorado para método de entrada"
 
 msgid "910x640 minimum window size"
-msgstr ""
+msgstr "Tamanho mínimo de janela 910x640"
 
 msgid "Security fixes"
-msgstr ""
+msgstr "Correções de segurança"
 
 msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgstr "Habilita arrastar e soltar separadores entre janelas"
 
 msgid "Merge search functionality into Ctrl+F"
-msgstr ""
+msgstr "Adiciona função de procura em Ctrl+F"
 
 msgid "Improved translation support"
-msgstr ""
+msgstr "Suporte de tradução melhorado"
 
 msgid "Fix appdata release dates"
 msgstr "Corrigidas datas de release da appdata"
@@ -121,7 +125,7 @@ msgid "Translation updates"
 msgstr "Atualização de traduções"
 
 msgid "Run Pantheon Files as Administrator"
-msgstr ""
+msgstr "Executar Ficheiros como Administrador"
 
 msgid "Authentication is required to run Files as Administrator"
-msgstr ""
+msgstr "Autenticação é necessária para executar Ficheiros como Administrador"
