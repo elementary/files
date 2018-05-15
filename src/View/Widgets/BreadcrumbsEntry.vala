@@ -529,14 +529,6 @@ namespace Marlin.View.Chrome {
             return true;
         }
 
-        protected override bool on_focus_in (Gdk.EventFocus event) {
-            if (search_mode) {
-                return true;
-            }
-
-            return base.on_focus_in (event);
-        }
-
         private BreadcrumbElement? mark_pressed_element (Gdk.EventButton event) {
             reset_elements_states ();
             BreadcrumbElement? el = get_element_from_coordinates ((int) event.x, (int) event.y);
