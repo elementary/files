@@ -304,11 +304,6 @@ namespace Marlin.View.Chrome {
                 });
                 return true;
             } else {
-                var window = get_toplevel () as Gtk.Window;
-                if (window != null && !window.has_toplevel_focus) {
-                    return true;
-                }
-
                 /* This the delayed propagated event */
                 focus_out_timeout_id = 0;
                 base.focus_out_event (event);
