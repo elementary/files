@@ -39,7 +39,6 @@ namespace FM {
             tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_columns (-1);
             tree.set_reorderable (false);
-            tree.set_item_padding (3);
 
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.ICON);
             set_up_name_renderer ();
