@@ -251,8 +251,9 @@ namespace FM {
                             zone = ClickZone.NAME;
                     }
                 }
-            } else if (c != name_column)
+            } else if (c != name_column) {
                 zone = ClickZone.INVALID; /* Cause unselect all to occur on other columns*/
+            }
 
             return zone;
         }
