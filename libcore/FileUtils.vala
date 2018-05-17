@@ -751,6 +751,13 @@ namespace PF.FileUtils {
                 filesystem_a == filesystem_b);
 
     }
+
+    public void remove_thumbnail_paths_for_uri (string uri) {
+        string hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, uri);
+        string base_name = "%s.png".printf (hash);
+        GLib.FileUtils.unlink (Path.build_filename (Environment.get_user_cache_dir (), "thumbnails", "normal", base_name));
+        GLib.FileUtils.unlink (Path.build_filename (Environment.get_user_cache_dir (), "thumbnails", "large", base_name));
+    }
 }
 
 namespace Marlin {
