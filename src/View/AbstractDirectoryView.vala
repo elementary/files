@@ -855,16 +855,17 @@ namespace FM {
                 locations.reverse ();
 
                 slot.directory.block_monitor ();
-                if (delete_immediately)
+                if (delete_immediately) {
                     Marlin.FileOperations.@delete (locations,
                                                    window as Gtk.Window,
                                                    after_trash_or_delete,
                                                    this);
-                else
+                } else {
                     Marlin.FileOperations.trash_or_delete (locations,
                                                            window as Gtk.Window,
                                                            after_trash_or_delete,
                                                            this);
+                }
             }
 
             /* If in recent "folder" we need to refresh the view. */
@@ -988,22 +989,6 @@ namespace FM {
             if (selection != null) {
                 trash_or_delete_files (selection, true, delete_immediately);
             }
-        }
-
-        private void delete_selected_files () {
-            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
-            if (selection == null)
-                return;
-
-            GLib.List<GLib.File> locations = null;
-
-            selection.@foreach ((file) => {
-                locations.prepend (file.location);
-            });
-
-            locations.reverse ();
-            slot.directory.block_monitor ();
-            Marlin.FileOperations.@delete (locations, window as Gtk.Window, after_trash_or_delete, this);
         }
 
 /** Signal Handlers */
@@ -2670,16 +2655,8 @@ namespace FM {
                         Eel.show_warning_dialog (_("Cannot remove files from here"),
                                                  _("You do not have permission to change this location"),
                                                  window as Gtk.Window);
-                        break;
-                    } else if (no_mods || is_admin) {
-                        /* If already in trash or running as root, permanently delete the file */
-                        trash_or_delete_selected_files (in_trash || is_admin);
-                        res = true;
-                    } else if (only_shift_pressed) {
-                        trash_or_delete_selected_files (true);
-                        res = true;
-                    } else if (only_shift_pressed && !renaming) {
-                        delete_selected_files ();
+                    } else if (!renaming) {
+                        trash_or_delete_selected_files (in_trash || is_admin || only_shift_pressed);
                         res = true;
                     }
 
