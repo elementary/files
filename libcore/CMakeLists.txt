@@ -55,7 +55,6 @@ GENERATE_HEADER
 )
 
 set (C_SOURCE_FILES
-    #eel-stock-dialogs.c
     eel-string.c
     marlin-file-operations.c
     marlin-undostack-manager.c
@@ -65,7 +64,6 @@ set (C_SOURCE_FILES
     ${VALA_C})
 
 set (C_HEADER_FILES
-    #eel-stock-dialogs.h
     eel-string.h
     gof-file.h
     marlin-file-operations.h

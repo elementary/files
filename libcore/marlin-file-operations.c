@@ -40,7 +40,6 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "eel-stock-dialogs.h"
 #include "eel-string.h"
 
 #include "marlin-file-changes-queue.h"
