@@ -82,8 +82,8 @@ namespace PF.FileUtils {
 
         foreach (GOF.File goffile in unhandled_files) {
             var message = _("Could not determine original location of \"%s\" ").printf (goffile.get_display_name ());
-            Eel.show_warning_dialog (message, _("The item cannot be restored from trash"),
-                                     (widget is Gtk.Window) ? widget as Gtk.Window : null );
+            PF.Dialogs.show_warning_dialog (message, _("The item cannot be restored from trash"),
+                                            (widget is Gtk.Window) ? widget as Gtk.Window : null );
         }
 
         original_dirs_hash.foreach ((original_dir, dir_files) => {
@@ -433,9 +433,9 @@ namespace PF.FileUtils {
                                                                   original_name);
             } catch (Error e) {
                 warning ("Rename error");
-                Eel.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
-                                       e.message,
-                                       null);
+                PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
+                                              e.message,
+                                              null);
                 new_location = null;
 
                 if (dir != null) {
