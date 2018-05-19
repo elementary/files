@@ -2808,6 +2808,7 @@ namespace FM {
                     break;
 
                 case Gdk.Key.c:
+                case Gdk.Key.C:
                     if (only_control_pressed) {
                     /* Should not copy files in the trash - cut instead */
                         if (in_trash) {
@@ -2826,6 +2827,7 @@ namespace FM {
                     break;
 
                 case Gdk.Key.v:
+                case Gdk.Key.V:
                     if (only_control_pressed) {
                         if (!in_recent && is_writable) {
                             /* Will drop any existing selection and paste into current directory */
@@ -2844,6 +2846,7 @@ namespace FM {
                     break;
 
                 case Gdk.Key.x:
+                case Gdk.Key.X:
                     if (only_control_pressed) {
                         if (is_writable) {
                             selection_actions.activate_action ("cut", null);
