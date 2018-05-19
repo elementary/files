@@ -71,6 +71,7 @@ namespace FM {
             {"create_from", on_background_action_create_from, "s"},
             {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
+            {"folders_first", on_background_action_folders_first_changed, null, "true"},
             {"show_hidden", null, null, "false", change_state_show_hidden},
             {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
@@ -1144,8 +1145,14 @@ namespace FM {
             string sort = val.get_string ();
             set_sort (sort, false);
         }
+
         private void on_background_action_reverse_changed (GLib.SimpleAction action, GLib.Variant? val) {
             set_sort (null, true);
+        }
+
+        private void on_background_action_folders_first_changed (GLib.SimpleAction action, GLib.Variant? val) {
+            var prefs = GOF.Preferences.get_default ();
+            prefs.sort_directories_first = !prefs.sort_directories_first;
         }
 
         private void set_sort (string? col_name, bool reverse) {
@@ -2190,6 +2197,8 @@ namespace FM {
                 action_set_state (background_actions, "sort_by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
                 action_set_state (background_actions, "reverse", val);
+                val = new GLib.Variant.boolean (GOF.Preferences.get_default ().sort_directories_first);
+                action_set_state (background_actions, "folders_first", val);
             }
         }
 
