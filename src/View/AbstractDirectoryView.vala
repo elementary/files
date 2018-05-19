@@ -832,7 +832,7 @@ namespace FM {
 
             bool success = err_msg2.length < 1;
             if (!success && show_error_dialog) {
-                Eel.show_warning_dialog (err_msg1, err_msg2, window);
+                PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, window);
             }
 
             return success;
@@ -1541,8 +1541,9 @@ namespace FM {
                         /* Setup the XdndDirectSave property on the source window */
                         dnd_handler.set_source_uri (context, uri);
                         ok_to_drop = true;
-                    } else
-                        Eel.show_error_dialog (_("Cannot drop this file"), _("Invalid file name provided"), null);
+                    } else {
+                        PF.Dialogs.show_error_dialog (_("Cannot drop this file"), _("Invalid file name provided"), window);
+                    }
                 }
             } else
                 ok_to_drop = (target != Gdk.Atom.NONE);
@@ -2676,9 +2677,9 @@ namespace FM {
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
                     if (!is_writable) {
-                        Eel.show_warning_dialog (_("Cannot remove files from here"),
-                                                 _("You do not have permission to change this location"),
-                                                 window as Gtk.Window);
+                        PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
+                                                        _("You do not have permission to change this location"),
+                                                        window as Gtk.Window);
                         break;
                     } else if (no_mods || is_admin) {
                         /* If already in trash or running as root, permanently delete the file */
@@ -2817,12 +2818,13 @@ namespace FM {
                     break;
 
                 case Gdk.Key.c:
+                case Gdk.Key.C:
                     if (only_control_pressed) {
                     /* Should not copy files in the trash - cut instead */
                         if (in_trash) {
-                            Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
-                                                     _("Cutting the selection instead"),
-                                                     window as Gtk.Window);
+                            PF.Dialogs.show_warning_dialog (_("Cannot copy files that are in the trash"),
+                                                            _("Cutting the selection instead"),
+                                                            window as Gtk.Window);
 
                             selection_actions.activate_action ("cut", null);
                         } else {
@@ -2835,6 +2837,7 @@ namespace FM {
                     break;
 
                 case Gdk.Key.v:
+                case Gdk.Key.V:
                     if (only_control_pressed) {
                         if (!in_recent && is_writable) {
                             /* Will drop any existing selection and paste into current directory */
@@ -2842,9 +2845,9 @@ namespace FM {
                             unselect_all ();
                             common_actions.activate_action ("paste_into", null);
                         } else {
-                            Eel.show_warning_dialog (_("Cannot paste files here"),
-                                                     _("You do not have permission to change this location"),
-                                                     window as Gtk.Window);
+                            PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
+                                                            _("You do not have permission to change this location"),
+                                                            window as Gtk.Window);
                         }
 
                         res = true;
@@ -2853,13 +2856,14 @@ namespace FM {
                     break;
 
                 case Gdk.Key.x:
+                case Gdk.Key.X:
                     if (only_control_pressed) {
                         if (is_writable) {
                             selection_actions.activate_action ("cut", null);
                         } else {
-                            Eel.show_warning_dialog (_("Cannot remove files from here"),
-                                                     _("You do not have permission to change this location"),
-                                                     window as Gtk.Window);
+                            PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
+                                                            _("You do not have permission to change this location"),
+                                                            window as Gtk.Window);
                         }
 
                         res = true;
