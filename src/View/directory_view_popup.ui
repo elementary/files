@@ -152,10 +152,8 @@
                     <attribute name='label' translatable='yes'>Reversed Order</attribute>
                     <attribute name='action'>background.reverse</attribute>
                 </item>
-            </section>
-            <section>
                 <item>
-                    <attribute name='label' translatable='yes'>Folders First</attribute>
+                    <attribute name='label' translatable='yes'>Folders Before Files</attribute>
                     <attribute name='action'>background.folders_first</attribute>
                 </item>
             </section>
