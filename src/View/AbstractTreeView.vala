@@ -252,7 +252,7 @@ namespace FM {
                     }
                 }
             } else if (c != name_column) {
-                zone = ClickZone.INVALID; /* Cause unselect all to occur on other columns*/
+                zone = ClickZone.BLANK_NO_PATH; /* Cause unselect all to occur on other columns and allow rubberbanding */
             }
 
             return zone;
