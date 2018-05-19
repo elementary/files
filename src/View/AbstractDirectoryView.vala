@@ -186,6 +186,7 @@ namespace FM {
         protected Gtk.TreePath? click_path = null;
         protected uint click_zone = ClickZone.ICON;
         protected uint previous_click_zone = ClickZone.ICON;
+        protected Gdk.Event? last_button_press = null;
 
         /* Cursors for different areas */
         private Gdk.Cursor editable_cursor;
@@ -3099,6 +3100,8 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
+            last_button_press = event.copy ();
+
             if (renaming) {
                 /* Cancel renaming */
                 name_renderer.end_editing (true);
@@ -3279,7 +3282,10 @@ namespace FM {
 
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
-                if (should_activate) {
+                var delay = last_button_press != null ? event.get_time () - last_button_press.get_time () : 0;
+                var long_press = Gtk.Settings.get_default ().gtk_long_press_time;
+
+                if (should_activate && delay < long_press) {
                     activate_selected_items (Marlin.OpenFlag.DEFAULT);
                 } else if (should_deselect && click_path != null) {
                     unselect_path (click_path);
@@ -3294,6 +3300,7 @@ namespace FM {
             should_activate = false;
             should_deselect = false;
             click_path = null;
+            last_button_press = null;
             return false;
         }
 
