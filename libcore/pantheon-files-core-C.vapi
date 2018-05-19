@@ -88,11 +88,6 @@ namespace EelGtk.Widget {
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_")]
 namespace Eel {
-    [CCode (cheader_filename = "eel-stock-dialogs.h")]
-    public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-    [CCode (cheader_filename = "eel-stock-dialogs.h")]
-    public unowned Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-
     [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
 }
