@@ -711,7 +711,9 @@ public class Async : Object {
             done_loading ();
         }
 
-        file.set_expanded (true);
+        if (file.is_directory) { /* Fails for non-existent directories */
+            file.set_expanded (true);
+        }
     }
 
     public void block_monitor () {
@@ -1117,8 +1119,10 @@ public class Async : Object {
     }
 
     public static bool remove_dir_from_cache (Async dir) {
-        dir.file.is_expanded = false;
-        dir.file.changed ();
+        if (dir.file.is_directory) {
+            dir.file.is_expanded = false;
+            dir.file.changed ();
+        }
 
         if (directory_cache.remove (dir.creation_key)) {
             directory_cache.remove (dir.location);
