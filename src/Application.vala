@@ -249,7 +249,7 @@ public class Marlin.Application : Gtk.Application {
         Preferences.gnome_interface_settings.bind ("clock-format",
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
         Preferences.gtk_file_chooser_settings.bind ("sort-directories-first",
-                                   GOF.Preferences.get_default (), "sort-directories-first", GLib.SettingsBindFlags.GET);
+                                   GOF.Preferences.get_default (), "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
     public Marlin.View.Window? create_window (File? location = null,

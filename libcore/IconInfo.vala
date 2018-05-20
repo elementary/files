@@ -247,8 +247,10 @@ public class Marlin.IconInfo : GLib.Object {
     }
 
     public static void remove_cache (string path, int size, int scale) {
-        var loadable_key = new LoadableIconKey.from_path (path, size, scale);
-        loadable_icon_cache.remove (loadable_key);
+        if (loadable_icon_cache != null) {
+            var loadable_key = new LoadableIconKey.from_path (path, size, scale);
+            loadable_icon_cache.remove (loadable_key);
+        }
     }
 
     private static bool end_reap_cache_timeout () {
