@@ -30,7 +30,6 @@ public class CustomFileChooserDialog : Object {
     private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_revealer" };
     private const string[] GTK_FILTERCHOOSER_PATH = { "extra_and_filters", "filter_combo_hbox" };
     private const string[] GTK_TREEVIEW_PATH = { "browse_files_stack", "browse_files_swin", "browse_files_tree_view" };
-    private const string PLACES_SIDEBAR_PATH = "places_sidebar";
 
     private unowned Gtk.FileChooserDialog chooser_dialog;
     private unowned Gtk.Widget rootwidget;
@@ -212,8 +211,10 @@ public class CustomFileChooserDialog : Object {
         (w1 as Gtk.Container).get_children ().foreach ((paned) => {
             (paned as Gtk.Container).get_children ().foreach ((w2) => {
                 if (w2 is Gtk.PlacesSidebar) {
-                    (w2 as Gtk.PlacesSidebar).show_desktop = false;
-                    (w2 as Gtk.PlacesSidebar).show_enter_location = false;
+                    var sidebar = (Gtk.PlacesSidebar)w2;
+                    sidebar.show_desktop = false;
+                    sidebar.show_enter_location = false;
+                    sidebar.show_recent = true;
                 } else {
                     transform_w2_container (w2);
                 }
