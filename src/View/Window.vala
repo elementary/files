@@ -65,7 +65,7 @@ namespace Marlin.View {
         public Granite.Widgets.DynamicNotebook tabs;
         private Gtk.Paned lside_pane;
         public Marlin.Places.Sidebar sidebar;
-        public ViewContainer? current_tab = null;
+        public ViewContainer? current_tab = null; /* Used by connect server dialog only - to be refactored */
 
         private bool tabs_restored = false;
         private bool restoring_tabs = false;
@@ -273,8 +273,6 @@ namespace Marlin.View {
                     current_tab = null;
                 }
 
-                view_container.close ();
-
                 if (tabs.n_tabs == 1) {
                     add_tab ();
                 }
@@ -323,7 +321,9 @@ namespace Marlin.View {
             sidebar.path_change_request.connect (uri_path_change_request);
         }
 
-        private void on_tab_removed () {
+        private void on_tab_removed (Granite.Widgets.Tab tab) {
+            (tab.page as ViewContainer).close ();
+
             if (tabs.n_tabs == 0) {
                 add_tab ();
             }
@@ -413,12 +413,15 @@ namespace Marlin.View {
                              Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED) {
             mode = real_mode (mode);
             var content = new View.ViewContainer (this);
+
             var tab = new Granite.Widgets.Tab ("", null, content);
             tab.ellipsize_mode = Pango.EllipsizeMode.MIDDLE;
 
             content.tab_name_changed.connect ((tab_name) => {
+                /* Adding a reference to content in the closure
+                   prevents destruction of viewcontainer when tab closed */
                 Idle.add (() => {
-                    tab.label = check_for_tab_with_same_name (content);
+                    tab.label = check_current_for_tab_with_same_name ();
                     return false;
                 });
             });
@@ -433,12 +436,16 @@ namespace Marlin.View {
             });
 
             content.add_view (mode, location);
-
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
         }
 
-        private string check_for_tab_with_same_name (ViewContainer vc) {
+        private string check_current_for_tab_with_same_name () {
+            var vc = current_tab;
+            if (vc == null) {
+                return "";
+            }
+
             string name = vc.tab_name;
 
             if (name == Marlin.INVALID_TAB_NAME) {

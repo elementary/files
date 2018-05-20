@@ -35,6 +35,9 @@ namespace Marlin.View {
             forward_stack = new Stack<string> ();
         }
 
+        ~Browser () {
+            debug ("Browser destruct");
+        }
         /**
          * Use this method to track an uri location in
          * the back/forward stacks
