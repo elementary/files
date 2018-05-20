@@ -42,9 +42,9 @@ namespace Marlin {
             } else if (drop_target.is_executable ()) {
                 GLib.Error error;
                 if (!drop_target.execute (widget.get_screen (), drop_file_list, out error)) {
-                    Eel.show_error_dialog (_("Failed to execute \"%s\"").printf (drop_target.get_display_name ()),
-                                           error.message,
-                                           null);
+                    PF.Dialogs.show_error_dialog (_("Failed to execute \"%s\"").printf (drop_target.get_display_name ()),
+                                                  error.message,
+                                                  null);
                     return false;
                 } else
                     return true;
