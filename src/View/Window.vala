@@ -296,12 +296,8 @@ namespace Marlin.View {
 
             tabs.tab_moved.connect ((tab, x, y) => {
                 var vc = tab.page as ViewContainer;
+                application.window_added.connect_after (remove_tab_after_new_window);
                 ((Marlin.Application) application).create_window (vc.location, real_mode (vc.view_mode), x, y);
-                /* A crash occurs if the original tab is removed while processing the signal */
-                GLib.Idle.add (() => {
-                    remove_tab (vc);
-                    return false;
-                });
             });
 
 
@@ -321,6 +317,15 @@ namespace Marlin.View {
             });
 
             sidebar.path_change_request.connect (uri_path_change_request);
+        }
+
+        private void remove_tab_after_new_window () {
+            var vc = current_tab;
+            if (vc != null) {
+                remove_tab (vc);
+            }
+
+            application.window_added.disconnect (remove_tab_after_new_window);
         }
 
         private void on_tab_removed () {
