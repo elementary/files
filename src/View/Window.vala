@@ -418,7 +418,7 @@ namespace Marlin.View {
 
             content.tab_name_changed.connect ((tab_name) => {
                 Idle.add (() => {
-                    tab.label = check_for_tab_with_same_name (content);
+                    tab.label = check_for_tab_with_same_name ();
                     return false;
                 });
             });
@@ -438,7 +438,12 @@ namespace Marlin.View {
             tabs.current = tab;
         }
 
-        private string check_for_tab_with_same_name (ViewContainer vc) {
+        private string check_for_tab_with_same_name () {
+            var vc = current_tab;
+            if (vc == null) {
+                return "";
+            }
+
             string name = vc.tab_name;
 
             if (name == Marlin.INVALID_TAB_NAME) {
