@@ -19,8 +19,6 @@
 namespace FM {
     /* Implement common features of ColumnView and ListView */
     public abstract class AbstractTreeView : AbstractDirectoryView {
-        const int ICON_XPAD = 6;
-
         protected FM.TreeView tree;
         protected Gtk.TreeViewColumn name_column;
 
@@ -59,7 +57,6 @@ namespace FM {
 
         protected void set_up_icon_renderer () {
             icon_renderer.set_property ("follow-state",  true);
-            icon_renderer.xpad = ICON_XPAD;
         }
 
         protected void set_up_view () {
@@ -238,7 +235,7 @@ namespace FM {
                     zone = ClickZone.INVALID;
                 } else {
                     var rtl = (get_direction () == Gtk.TextDirection.RTL);
-                    if (rtl ? (x > rect.x + rect.width - ICON_XPAD - icon_size) : (x < rect.x + ICON_XPAD + icon_size)) { /* cannot be on name */
+                    if (rtl ? (x > rect.x + rect.width - icon_size) : (x < rect.x + icon_size)) { /* cannot be on name */
                         bool on_helper = false;
                         bool on_icon = is_on_icon (x, y, rect, file.pix, rtl, ref on_helper);
 
@@ -290,10 +287,12 @@ namespace FM {
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top) {
-            if (path == null)
+            if (path == null) {
                 return;
+            }
 
             Gtk.TreeSelection selection = tree.get_selection ();
+            bool no_selection = selected_files == null;
 
             if (!select) {
                 selection.changed.disconnect (on_view_selection_changed);
@@ -304,6 +303,12 @@ namespace FM {
             set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
 
             if (!select) {
+                /* When just focusing first for empty selection we do not want the row selected.
+                 * This makes behaviour consistent with Icon View */
+                if (no_selection) {
+                    unselect_path (path);  /* Reverse automatic selection by set_cursor_on_cell for TreeView */
+                }
+
                 selection.changed.connect (on_view_selection_changed);
             }
         }
@@ -337,34 +342,39 @@ namespace FM {
         }
 
         protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
+            int scale = get_scale_factor ();
+            int pix_height = pix.height / scale;
+            int pix_width = pix.width / scale;
             int x_offset;
             int pix_x_offset;
             int y_offset = y - area.y;
-            int pix_y_offset = (area.height - pix.height) / 2;
+            int pix_y_offset = (area.height - pix_height) / 2;
             on_helper = false;
 
+
             if (rtl) {
-                x_offset = area.x + area.width - (x + ICON_XPAD);
+                x_offset = area.x + area.width - x;
 
                 /* Area.width includes name as well. Assume area for icon is square */
-                pix_x_offset = (area.height - pix.width) / 2;
+                pix_x_offset = (area.height - pix_width) / 2;
             } else {
-                x_offset = x + ICON_XPAD - area.x;
+                x_offset = (x - area.x);
 
                 /* Area.width includes name as well. Assume area for icon is square */
-                pix_x_offset = (area.height - pix.width) / 2;
+                pix_x_offset = (area.height - pix_width) / 2;
             }
 
             bool on_icon =  (x_offset >= pix_x_offset &&
-                             x_offset <= pix_x_offset + pix.width  &&
+                             x_offset <= pix_x_offset + pix_width  &&
                              y_offset >= pix_y_offset &&
-                             y_offset <= pix_y_offset + pix.height);
+                             y_offset <= pix_y_offset + pix_height);
 
-            if (icon_renderer.selection_helpers && on_icon) {
+            if (on_icon) {
                 int hs = icon_renderer.helper_size;
+
                 if (y_offset <= int.max (pix_y_offset + hs, hs)) {
                     if (rtl) {
-                        on_helper = (x_offset >= pix.width + pix_x_offset - hs);
+                        on_helper = (x_offset >= pix_width + pix_x_offset - hs);
                     } else {
                         on_helper = (x_offset <= pix_x_offset + hs);
                     }

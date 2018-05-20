@@ -35,7 +35,6 @@ namespace FM {
             INVALID
         }
 
-        const string MESSAGE_CLASS = "h2";
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
@@ -72,6 +71,7 @@ namespace FM {
             {"create_from", on_background_action_create_from, "s"},
             {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
+            {"folders_first", on_background_action_folders_first_changed, null, "true"},
             {"show_hidden", null, null, "false", change_state_show_hidden},
             {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
@@ -180,19 +180,7 @@ namespace FM {
         /* UI options for button press handling */
         protected bool activate_on_blank = true;
         protected bool right_margin_unselects_all = false;
-        public bool _single_click_mode = true;
-        public bool single_click_mode {
-            get {
-                return _single_click_mode;
-            }
-
-            set {
-                _single_click_mode = value;
-                if (icon_renderer != null) {
-                    icon_renderer.selection_helpers = _single_click_mode;
-                }
-            }
-        }
+        public bool single_click_mode { get; set; }
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
@@ -235,7 +223,6 @@ namespace FM {
                      * of selected files (e.g. OverlayBar critical errors)
                      */
                     disconnect_tree_signals ();
-
                     size_allocate.disconnect (on_size_allocate);
                     clipboard.changed.disconnect (on_clipboard_changed);
                     view.key_press_event.disconnect (on_view_key_press_event);
@@ -294,7 +281,7 @@ namespace FM {
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
             selectable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default");
 
-            var app = (Marlin.Application.get ());
+            var app = (Marlin.Application)(GLib.Application.get_default ());
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
 
@@ -380,7 +367,9 @@ namespace FM {
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
+            (GOF.Preferences.get_default ()).notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
+            model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
             model.sort_column_changed.connect (on_sort_column_changed);
@@ -421,11 +410,11 @@ namespace FM {
             zoom_level = get_normal_zoom_level ();
         }
 
-        public void select_first_for_empty_selection () {
+        public void focus_first_for_empty_selection (bool select) {
             if (selected_files == null) {
                 Idle.add_full (GLib.Priority.LOW, () => {
                     if (!tree_frozen) {
-                        set_cursor (new Gtk.TreePath.from_indices (0), false, true, true);
+                        set_cursor (new Gtk.TreePath.from_indices (0), false, select, true);
                         return false;
                     } else {
                         return true;
@@ -465,11 +454,15 @@ namespace FM {
 
             foreach (GOF.File f in files) {
                 /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
-               if (model.get_first_iter_for_file (f, out iter)) {
+                if (model.get_first_iter_for_file (f, out iter)) {
                     count++;
                     var path = model.get_path (iter);
                     select_path (path, focus != null && focus.equal (f.location));  /* Cursor follows if matches focus location*/
                 }
+            }
+
+            if (count == 0) {
+                focus_first_for_empty_selection (false);
             }
 
             connect_tree_signals ();
@@ -623,8 +616,10 @@ namespace FM {
 
         public void change_directory (GOF.Directory.Async old_dir, GOF.Directory.Async new_dir) {
             var style_context = get_style_context ();
-            if (style_context.has_class (MESSAGE_CLASS))
-                style_context.remove_class (MESSAGE_CLASS);
+            if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+                style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
+                style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
+            }
 
             cancel ();
             clear ();
@@ -837,7 +832,7 @@ namespace FM {
 
             bool success = err_msg2.length < 1;
             if (!success && show_error_dialog) {
-                Eel.show_warning_dialog (err_msg1, err_msg2, window);
+                PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, window);
             }
 
             return success;
@@ -1053,11 +1048,13 @@ namespace FM {
         }
 
         private void rename_selected_file () {
-            if (selected_files == null)
+            if (selected_files == null) {
                 return;
+            }
 
-            if (selected_files.next != null)
+            if (selected_files.next != null) {
                 warning ("Cannot rename multiple files (yet) - renaming first only");
+            }
 
             /**TODO** invoke batch renamer see bug #1014122*/
 
@@ -1148,8 +1145,14 @@ namespace FM {
             string sort = val.get_string ();
             set_sort (sort, false);
         }
+
         private void on_background_action_reverse_changed (GLib.SimpleAction action, GLib.Variant? val) {
             set_sort (null, true);
+        }
+
+        private void on_background_action_folders_first_changed (GLib.SimpleAction action, GLib.Variant? val) {
+            var prefs = GOF.Preferences.get_default ();
+            prefs.sort_directories_first = !prefs.sort_directories_first;
         }
 
         private void set_sort (string? col_name, bool reverse) {
@@ -1368,6 +1371,11 @@ namespace FM {
             }
         }
 
+        private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            var sort_directories_first = (prefs as GOF.Preferences).sort_directories_first;
+            model.set_should_sort_directories_first (sort_directories_first);
+        }
+
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
             dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
@@ -1465,10 +1473,11 @@ namespace FM {
 
             GOF.File file = drag_file_list.first ().data;
 
-            if (file != null && file.pix != null)
-                Gtk.drag_set_icon_pixbuf (context, file.pix, 0, 0);
-            else
+            if (file != null && file.pix != null) {
+                Gtk.drag_set_icon_gicon (context, file.pix, 0, 0);
+            } else {
                 Gtk.drag_set_icon_name (context, "stock-file", 0, 0);
+            }
 
             Marlin.DndHandler.set_selection_data_from_file_list (selection_data, drag_file_list);
         }
@@ -1532,8 +1541,9 @@ namespace FM {
                         /* Setup the XdndDirectSave property on the source window */
                         dnd_handler.set_source_uri (context, uri);
                         ok_to_drop = true;
-                    } else
-                        Eel.show_error_dialog (_("Cannot drop this file"), _("Invalid file name provided"), null);
+                    } else {
+                        PF.Dialogs.show_error_dialog (_("Cannot drop this file"), _("Invalid file name provided"), window);
+                    }
                 }
             } else
                 ok_to_drop = (target != Gdk.Atom.NONE);
@@ -1812,7 +1822,7 @@ namespace FM {
 
                 menu.set_screen (null);
                 menu.attach_to_widget (this, null);
-                /* Override style MESSAGE_CLASS of view when it is empty */
+                /* Override style Granite.STYLE_CLASS_H2_LABEL of view when it is empty */
                 if (slot.directory.is_empty ())
                     menu.get_style_context ().add_class (Gtk.STYLE_CLASS_CONTEXT_MENU);
                 menu.popup_at_pointer (event);
@@ -1996,7 +2006,7 @@ namespace FM {
                     label = _("Run");
                     menu.append (label, "selection.open");
                 } else if (default_app != null) {
-                    if (default_app.get_id () != GLib.Application.get_default ().application_id + ".desktop") {
+                    if (default_app.get_id () != Marlin.APP_ID + ".desktop") {
                         label = (_("Open in %s")).printf (default_app.get_display_name ());
                         menu.append (label, "selection.open_with_default");
                     }
@@ -2187,6 +2197,8 @@ namespace FM {
                 action_set_state (background_actions, "sort_by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
                 action_set_state (background_actions, "reverse", val);
+                val = new GLib.Variant.boolean (GOF.Preferences.get_default ().sort_directories_first);
+                action_set_state (background_actions, "folders_first", val);
             }
         }
 
@@ -2665,9 +2677,9 @@ namespace FM {
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
                     if (!is_writable) {
-                        Eel.show_warning_dialog (_("Cannot remove files from here"),
-                                                 _("You do not have permission to change this location"),
-                                                 window as Gtk.Window);
+                        PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
+                                                        _("You do not have permission to change this location"),
+                                                        window as Gtk.Window);
                         break;
                     } else if (no_mods || is_admin) {
                         /* If already in trash or running as root, permanently delete the file */
@@ -2806,12 +2818,13 @@ namespace FM {
                     break;
 
                 case Gdk.Key.c:
+                case Gdk.Key.C:
                     if (only_control_pressed) {
                     /* Should not copy files in the trash - cut instead */
                         if (in_trash) {
-                            Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
-                                                     _("Cutting the selection instead"),
-                                                     window as Gtk.Window);
+                            PF.Dialogs.show_warning_dialog (_("Cannot copy files that are in the trash"),
+                                                            _("Cutting the selection instead"),
+                                                            window as Gtk.Window);
 
                             selection_actions.activate_action ("cut", null);
                         } else {
@@ -2824,6 +2837,7 @@ namespace FM {
                     break;
 
                 case Gdk.Key.v:
+                case Gdk.Key.V:
                     if (only_control_pressed) {
                         if (!in_recent && is_writable) {
                             /* Will drop any existing selection and paste into current directory */
@@ -2831,9 +2845,9 @@ namespace FM {
                             unselect_all ();
                             common_actions.activate_action ("paste_into", null);
                         } else {
-                            Eel.show_warning_dialog (_("Cannot paste files here"),
-                                                     _("You do not have permission to change this location"),
-                                                     window as Gtk.Window);
+                            PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
+                                                            _("You do not have permission to change this location"),
+                                                            window as Gtk.Window);
                         }
 
                         res = true;
@@ -2842,13 +2856,14 @@ namespace FM {
                     break;
 
                 case Gdk.Key.x:
+                case Gdk.Key.X:
                     if (only_control_pressed) {
                         if (is_writable) {
                             selection_actions.activate_action ("cut", null);
                         } else {
-                            Eel.show_warning_dialog (_("Cannot remove files from here"),
-                                                     _("You do not have permission to change this location"),
-                                                     window as Gtk.Window);
+                            PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
+                                                            _("You do not have permission to change this location"),
+                                                            window as Gtk.Window);
                         }
 
                         res = true;
@@ -2996,6 +3011,7 @@ namespace FM {
             if (!renaming || proposed_name == new_name) {
                 return;
             }
+
             proposed_name = "";
             if (new_name != "") {
                 var path = new Gtk.TreePath.from_string (path_string);
@@ -3019,6 +3035,7 @@ namespace FM {
                 warning ("No new name");
                 on_name_editing_canceled ();
             }
+
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
@@ -3047,8 +3064,10 @@ namespace FM {
             if (slot.directory.is_empty ()) {
                 Pango.Layout layout = create_pango_layout (null);
 
-                if (!style_context.has_class (MESSAGE_CLASS))
-                    style_context.add_class (MESSAGE_CLASS);
+                if (!style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+                    style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
+                    style_context.add_class (Gtk.STYLE_CLASS_VIEW);
+                }
 
                 layout.set_markup (slot.get_empty_message (), -1);
 
@@ -3063,8 +3082,9 @@ namespace FM {
                 get_style_context ().render_layout (cr, x, y, layout);
 
                 return true;
-            } else if (style_context.has_class (MESSAGE_CLASS)) {
-                style_context.remove_class (MESSAGE_CLASS);
+            } else if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
+                style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
+                style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
             }
 
             return false;

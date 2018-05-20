@@ -21,12 +21,14 @@ namespace GOF {
 
     public class Preferences : Object {
 
-        public const string TAGS_COLORS[10] = { null, "#fff394", "#ffc27d", "#a3907c", "#d1ff82", "#8cd5ff", "#e29ffc", "#ff8c82", "#d4d4d4", "#95a3ab" };
+        public const string TAGS_COLORS[10] = { null, "#fff394", "#ffc27d", "#a3907c", "#d1ff82", "#8cd5ff", "#e4c6fa", "#ff8c82", "#d4d4d4", "#95a3ab" };
 
         public bool show_hidden_files {get; set; default=false;}
         public bool show_remote_thumbnails {set; get; default=false;}
         public bool confirm_trash {set; get; default=true;}
         public bool force_icon_size {set; get; default=true;}
+        public bool sort_directories_first { get; set; default = true; }
+
         public string date_format {set; get; default="iso";}
         public string clock_format {set; get; default="24h";}
 

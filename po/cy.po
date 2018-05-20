@@ -3,25 +3,26 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2016-12-21 08:25+0000\n"
-"Last-Translator: Christopher Griffiths <chris@cgriff.co.uk>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2018-05-01 00:03+0000\n"
+"Last-Translator: Ciaran Ainsworth <cda@whistlingkappa.com>\n"
+"Language-Team: Welsh <https://weblate.elementary.io/projects/files/files/cy/>"
+"\n"
+"Language: cy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : (n != 8 && n != 11) ? "
-"2 : 3;\n"
+"Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : "
+"(n==3) ? 3 :(n==6) ? 4 : 5;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
-msgstr ""
+msgstr "SSH"
 
 #: ../src/marlin-connect-server-dialog.c:122
 msgid "Public FTP"
-msgstr ""
+msgstr "FTP Cyhoeddus"
 
 #: ../src/marlin-connect-server-dialog.c:124
 msgid "FTP (with login)"
@@ -29,7 +30,7 @@ msgstr "FTP (gyda mewngofnodiad)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr ""
+msgstr "AFP (Protocol Ffeilio Apple)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
