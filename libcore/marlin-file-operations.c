@@ -40,7 +40,6 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "eel-stock-dialogs.h"
 #include "eel-string.h"
 
 #include "marlin-file-changes-queue.h"
@@ -1056,8 +1055,8 @@ do_run_simple_dialog (gpointer _data)
     }
 
     if (data->details_text) {
-        eel_gtk_message_dialog_set_details_label (GTK_MESSAGE_DIALOG (dialog),
-                                                  data->details_text);
+        pf_dialogs_gtk_message_dialog_set_details_label (GTK_MESSAGE_DIALOG (dialog),
+                                                         data->details_text);
     }
 
     /* Run it. */
@@ -2079,9 +2078,9 @@ unmount_mount_callback (GObject *source_object,
             } else {
                 primary = f (_("Unable to unmount %V"), source_object);
             }
-            eel_show_error_dialog (primary,
-                                   error->message,
-                                   data->parent_window);
+            pf_dialogs_show_error_dialog (primary,
+                                          error->message,
+                                          data->parent_window);
             g_free (primary);
         }
     }
@@ -2274,9 +2273,9 @@ volume_mount_cb (GObject *source_object,
             name = g_volume_get_name (G_VOLUME (source_object));
             primary = g_strdup_printf (_("Unable to mount %s"), name);
             g_free (name);
-            eel_show_error_dialog (primary,
-                                   error->message,
-                                   NULL);
+            pf_dialogs_show_error_dialog (primary,
+                                          error->message,
+                                          NULL);
             g_free (primary);
         }
         g_error_free (error);
@@ -5578,9 +5577,9 @@ marlin_file_operations_copy_move_link   (GList                  *files,
         if (g_file_has_uri_scheme (target_dir, "trash")) {
             char *primary = f (_("Cannot copy into trash."));
             char *secondary = f (_("It is not permitted to copy files into the trash"));
-            eel_show_error_dialog (primary,
-                                   secondary,
-                                   parent_window);
+            pf_dialogs_show_error_dialog (primary,
+                                          secondary,
+                                          parent_window);
 
             if (done_callback != NULL)
                 ((MarlinDeleteCallback)done_callback) (TRUE, done_callback_data);
