@@ -386,7 +386,6 @@ namespace Marlin.View {
 
         public void on_slot_directory_loaded (GOF.Directory.Async dir) {
             can_show_folder = dir.can_load;
-
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
                 if (!dir.file.exists) {

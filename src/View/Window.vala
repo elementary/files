@@ -295,9 +295,17 @@ namespace Marlin.View {
             });
 
             tabs.tab_moved.connect ((tab, x, y) => {
+                /* Called when tab dragged out of notebook */
                 var vc = tab.page as ViewContainer;
-                application.window_added.connect_after (remove_tab_after_new_window);
                 ((Marlin.Application) application).create_window (vc.location, real_mode (vc.view_mode), x, y);
+
+                /* Need significant delay before removing tab from window due to undiagnosed race conditions
+                 * causing crashing when draggin a duplicate tab. Use generous delay to cover slower hardware. */
+
+                Timeout.add (500, () => {
+                    remove_tab (vc);
+                    return false;
+                });
             });
 
 
@@ -317,15 +325,6 @@ namespace Marlin.View {
             });
 
             sidebar.path_change_request.connect (uri_path_change_request);
-        }
-
-        private void remove_tab_after_new_window () {
-            var vc = current_tab;
-            if (vc != null) {
-                remove_tab (vc);
-            }
-
-            application.window_added.disconnect (remove_tab_after_new_window);
         }
 
         private void on_tab_removed () {
@@ -359,14 +358,13 @@ namespace Marlin.View {
             this.title = title;
         }
 
-        public void change_tab (int offset) {
+        private void change_tab (int offset) {
             if (restoring_tabs) {
                 return;
             }
 
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
-
             if (current_tab == null || old_tab == current_tab) {
                 return;
             }
@@ -376,7 +374,6 @@ namespace Marlin.View {
             }
 
             loading_uri (current_tab.uri);
-
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
             top_menu.working = current_tab.is_frozen;
         }
@@ -507,13 +504,14 @@ namespace Marlin.View {
         }
 
         public void remove_tab (ViewContainer view_container) {
-            actual_remove_tab (tabs.get_tab_by_widget (view_container as Gtk.Widget));
+            var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
+            if (tab != null) {
+                actual_remove_tab (tab);
+            }
         }
 
         private void actual_remove_tab (Granite.Widgets.Tab tab) {
-            /* signal for restore_data to be set and a new tab to be created if this is last tab */
-            tabs.close_tab_requested (tab);
-            /* now close the tab */
+            /* close_tab_signal will be emitted first.  Tab actually closes if this returns true */
             tab.close ();
         }
 
