@@ -3258,7 +3258,7 @@ namespace FM {
                             break;
 
                         case ClickZone.INVALID:
-                            result = true; /* Prevent rubberbanding */
+                            result = false; /* Allow rubberbanding */
                             break;
 
                         default:
