@@ -106,7 +106,11 @@ namespace Marlin {
             string? special_icon_name = null;
             if (file == drop_file) {
                 flags |= Gtk.CellRendererState.PRELIT;
-                special_icon_name = "folder-drag-accept";
+                if (file.is_directory) {
+                    special_icon_name = "folder-drag-accept";
+                } else {
+                    special_icon_name = "process-working-symbolic";
+                }
 
             } else if (file.is_directory) {
                 bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0;
