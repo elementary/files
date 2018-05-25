@@ -233,7 +233,7 @@ public class Marlin.MimeActions {
 
     public static void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
         /* Note: This function should be only called if file_to_open is not an executable or it is not
-         * intended to execute it (AbstractDirectoryView takes care of this) */ 
+         * intended to execute it (AbstractDirectoryView takes care of this) */
         if (app == null) {
             var choice = choose_app_for_glib_file (file_to_open, parent);
             if (choice != null) {
@@ -257,8 +257,8 @@ public class Marlin.MimeActions {
         var win = get_toplevel_window (parent);
 
         if (app_info == null) {
-            Eel.show_error_dialog (_("Multiple file types selected"),
-                                   _("No single app can open all these types of file"), win);
+            PF.Dialogs.show_error_dialog (_("Multiple file types selected"),
+                                          _("No single app can open all these types of file"), win);
         } else {
             GLib.List<GLib.File> files_to_open = null;
             foreach (var gof in gofs_to_open) {
@@ -285,7 +285,7 @@ public class Marlin.MimeActions {
             try {
                 app.launch (files_to_open, null);
             } catch (GLib.Error e) {
-                Eel.show_error_dialog (_("Failed to open files"), e.message, win);
+                PF.Dialogs.show_error_dialog (_("Failed to open files"), e.message, win);
             }
         } else if (app.supports_uris ()) {
             GLib.List<string> uris = null;
@@ -295,10 +295,10 @@ public class Marlin.MimeActions {
             try {
                 app.launch_uris (uris, null);
             } catch (GLib.Error e) {
-                Eel.show_error_dialog (_("Failed to open uris"), e.message, win);
+                PF.Dialogs.show_error_dialog (_("Failed to open uris"), e.message, win);
             }
         } else {
-            Eel.show_error_dialog (_("Unable to open files or uris with this app"), "", win);
+            PF.Dialogs.show_error_dialog (_("Unable to open files or uris with this app"), "", win);
         }
     }
 

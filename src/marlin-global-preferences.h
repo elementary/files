@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)  
+    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -22,4 +22,5 @@ GSettings  *marlin_icon_view_settings;
 GSettings  *marlin_list_view_settings;
 GSettings  *marlin_column_view_settings;
 GSettings  *gnome_interface_settings;
+GSettings  *gtk_file_chooser_settings;
 #endif

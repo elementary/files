@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-04-21 00:10+0000\n"
+"PO-Revision-Date: 2018-05-20 00:01+0000\n"
 "Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
 "Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/>"
 "\n"
@@ -38,7 +38,7 @@ msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
-msgstr "Sdílený svazek Windows"
+msgstr "Sdílení Windows"
 
 #: ../src/marlin-connect-server-dialog.c:131
 msgid "WebDAV (HTTP)"
@@ -143,7 +143,7 @@ msgstr "Operace zrušena"
 #: ../libcore/marlin-file-conflict-dialog.c:372
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Sloučit složku \"%s\"?"
+msgstr "Sloučit složku „%s“?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:149
 #: ../libcore/marlin-file-conflict-dialog.c:375
@@ -181,7 +181,7 @@ msgstr "Nahrazením se odstraní všechny soubory ve složce."
 #: ../libcore/marlin-file-conflict-dialog.c:395
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Nahradit složku \"%s\"?"
+msgstr "Nahradit složku „%s“?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:171
 #: ../libcore/marlin-file-conflict-dialog.c:397
@@ -193,7 +193,7 @@ msgstr "Složka se stejným názvem již existuje v „%s“."
 #: ../libcore/marlin-file-conflict-dialog.c:402
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "Nahradit soubor \"%s\"?"
+msgstr "Nahradit soubor „%s“?"
 
 #: ../libcore/marlin-file-conflict-dialog.c:178
 #: ../libcore/marlin-file-conflict-dialog.c:404
@@ -204,19 +204,19 @@ msgstr "Při nahrazení se přepíše jeho obsah."
 #: ../libcore/marlin-file-conflict-dialog.c:408
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Starší soubor se stejným názvem již existuje v \"%s\"."
+msgstr "Starší soubor se stejným názvem již existuje v „%s“."
 
 #: ../libcore/marlin-file-conflict-dialog.c:186
 #: ../libcore/marlin-file-conflict-dialog.c:412
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Novější soubor se stejným názvem již existuje v \"%s\"."
+msgstr "Novější soubor se stejným názvem již existuje v „%s“."
 
 #: ../libcore/marlin-file-conflict-dialog.c:190
 #: ../libcore/marlin-file-conflict-dialog.c:416
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Jiný soubor se stejným názvem již existuje v \"%s\"."
+msgstr "Jiný soubor se stejným názvem již existuje v „%s“."
 
 #: ../libcore/marlin-file-conflict-dialog.c:252
 #: ../libcore/marlin-file-conflict-dialog.c:471
@@ -604,8 +604,8 @@ msgstr "Soubor nelze odstranit nebo přesunout do koše"
 #: ../libcore/marlin-file-operations.c:1947
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
-"Některé soubory nelze odstranit nebo přesunout do koše, protože souborový "
-"systém je pouze pro čtení."
+"Nelze odstranit nebo přesunout do koše soubory v souborovém systému, který "
+"je jen pro čtení."
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
@@ -1009,7 +1009,7 @@ msgstr "Chyba při vytváření odkazu na %B."
 
 #: ../libcore/marlin-file-operations.c:5554
 msgid "Symbolic links only supported for local files"
-msgstr "Symbolické odkazy jsou podporovány pouze pro místní soubory"
+msgstr "Symbolické odkazy jsou podporovány jen pro místní soubory"
 
 #: ../libcore/marlin-file-operations.c:5557
 msgid "The target doesn't support symbolic links."
@@ -1580,7 +1580,7 @@ msgstr "Otevřít s"
 
 #: ../src/View/AbstractDirectoryView.vala:2094
 msgid "Other Application"
-msgstr "Jiná Aplikace"
+msgstr "Jiná aplikace"
 
 #: ../src/View/AbstractDirectoryView.vala:2355
 msgid "Untitled %s"
@@ -1712,11 +1712,11 @@ msgstr "Spouštění"
 
 #: ../src/View/Window.vala:205
 msgid "Files isn't your default file manager."
-msgstr "Tento Správce souborů není váš výchozí"
+msgstr "Soubory nejsou váš výchozí správce souborů."
 
 #: ../src/View/Window.vala:211
 msgid "Set as Default"
-msgstr "Nastavit jako Výchozí"
+msgstr "Nastavit jako výchozí"
 
 #: ../src/View/Window.vala:217
 msgid "Ignore"
@@ -1847,7 +1847,7 @@ msgstr "Tato složka neexistuje"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr "Složka \"%s\" nenalezena."
+msgstr "Složka „%s“ nenalezena."
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -1855,7 +1855,7 @@ msgstr "Vytvořit"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
-msgstr "Vytvořit složku \"%s\""
+msgstr "Vytvořit složku „%s“"
 
 #: ../src/View/DirectoryNotFound.vala:44
 msgid ""
@@ -1864,6 +1864,7 @@ msgid ""
 "%s"
 msgstr ""
 "Selhalo vytvoření složky\n"
+"\n"
 "%s"
 
 #: ../src/View/Slot.vala:32
@@ -1884,7 +1885,7 @@ msgstr "Přístup odepřen"
 
 #: ../src/View/ViewContainer.vala:388
 msgid "(as Administrator)"
-msgstr "(jako Administrátor)"
+msgstr "(jako administrátor)"
 
 #: ../src/View/ViewContainer.vala:407
 msgid "You cannot create a folder here."
@@ -1952,7 +1953,7 @@ msgstr "Nové okno"
 
 #: ../src/Application.vala:140
 msgid "Quit Files."
-msgstr "Ukončit Správce souborů"
+msgstr "Ukončit Soubory."
 
 #: ../src/Application.vala:142
 msgid "Enable debug logging"
@@ -2154,7 +2155,7 @@ msgstr "Operace se soubory"
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
 #: ../src/ProgressUIHandler.vala:192
 msgid "Completed %s"
-msgstr "Dokončeno"
+msgstr "Dokončeno %s"
 
 #: ../src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
@@ -2210,7 +2211,7 @@ msgstr "Nepodařilo se otevřít soubory nebo uri pomocí této aplikace"
 
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
-msgstr "Nelze zjistit původní umístění \"%s\" "
+msgstr "Nelze zjistit původní umístění „%s“ "
 
 #: ../libcore/FileUtils.vala:61
 msgid "The item cannot be restored from trash"
@@ -2238,7 +2239,7 @@ msgstr "%A v %-I:%M %p"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr "Nepodařilo se spustit \"%s\""
+msgstr "Nepodařilo se spustit „%s“"
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
@@ -2334,7 +2335,7 @@ msgstr "Nedávno použité"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Připojit k Serveru..."
+msgstr "Připojit k serveru…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"

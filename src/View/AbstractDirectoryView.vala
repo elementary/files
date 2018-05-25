@@ -71,6 +71,7 @@ namespace FM {
             {"create_from", on_background_action_create_from, "s"},
             {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
+            {"folders_first", on_background_action_folders_first_changed, null, "true"},
             {"show_hidden", null, null, "false", change_state_show_hidden},
             {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
@@ -80,7 +81,8 @@ namespace FM {
             {"paste_into", on_common_action_paste_into},
             {"open_in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark},
-            {"properties", on_common_action_properties}
+            {"properties", on_common_action_properties},
+            {"copy_link", on_common_action_copy_link}
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -179,19 +181,7 @@ namespace FM {
         /* UI options for button press handling */
         protected bool activate_on_blank = true;
         protected bool right_margin_unselects_all = false;
-        public bool _single_click_mode = true;
-        public bool single_click_mode {
-            get {
-                return _single_click_mode;
-            }
-
-            set {
-                _single_click_mode = value;
-                if (icon_renderer != null) {
-                    icon_renderer.selection_helpers = _single_click_mode;
-                }
-            }
-        }
+        public bool single_click_mode { get; set; }
         protected bool should_activate = false;
         protected bool should_scroll = true;
         protected bool should_deselect = false;
@@ -378,7 +368,9 @@ namespace FM {
 
             (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
+            (GOF.Preferences.get_default ()).notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
+            model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
             model.sort_column_changed.connect (on_sort_column_changed);
@@ -841,7 +833,7 @@ namespace FM {
 
             bool success = err_msg2.length < 1;
             if (!success && show_error_dialog) {
-                Eel.show_warning_dialog (err_msg1, err_msg2, window);
+                PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, window);
             }
 
             return success;
@@ -1154,8 +1146,14 @@ namespace FM {
             string sort = val.get_string ();
             set_sort (sort, false);
         }
+
         private void on_background_action_reverse_changed (GLib.SimpleAction action, GLib.Variant? val) {
             set_sort (null, true);
+        }
+
+        private void on_background_action_folders_first_changed (GLib.SimpleAction action, GLib.Variant? val) {
+            var prefs = GOF.Preferences.get_default ();
+            prefs.sort_directories_first = !prefs.sort_directories_first;
         }
 
         private void set_sort (string? col_name, bool reverse) {
@@ -1200,6 +1198,10 @@ namespace FM {
             new Marlin.View.PropertiesWindow (get_files_for_action (), this, window);
         }
 
+        private void on_common_action_copy_link (GLib.SimpleAction action, GLib.Variant? param) {
+            clipboard.copy_link_files (get_selected_files_for_transfer (get_files_for_action ()));
+        }
+
         private void on_common_action_copy (GLib.SimpleAction action, GLib.Variant? param) {
             clipboard.copy_files (get_selected_files_for_transfer (get_files_for_action ()));
         }
@@ -1234,14 +1236,15 @@ namespace FM {
         private void on_common_action_paste_into (GLib.SimpleAction action, GLib.Variant? param) {
             var file = get_files_for_action ().nth_data (0);
 
-            if (file != null && clipboard.can_paste) {
+            if (file != null && clipboard.can_paste && !(clipboard.files_linked && in_trash)) {
                 GLib.File target;
                 GLib.Callback? call_back;
 
-                if (file.is_folder () && !clipboard.has_file (file))
+                if (file.is_folder () && !clipboard.has_file (file)) {
                     target = file.get_target_location ();
-                else
+                } else {
                     target = slot.location;
+                }
 
                 if (target.has_uri_scheme ("trash")) {
                     /* Pasting files into trash is equivalent to trash or delete action */
@@ -1372,6 +1375,11 @@ namespace FM {
             if (show_remote_thumbnails) {
                 slot.reload ();
             }
+        }
+
+        private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            var sort_directories_first = (prefs as GOF.Preferences).sort_directories_first;
+            model.set_should_sort_directories_first (sort_directories_first);
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
@@ -1539,8 +1547,9 @@ namespace FM {
                         /* Setup the XdndDirectSave property on the source window */
                         dnd_handler.set_source_uri (context, uri);
                         ok_to_drop = true;
-                    } else
-                        Eel.show_error_dialog (_("Cannot drop this file"), _("Invalid file name provided"), null);
+                    } else {
+                        PF.Dialogs.show_error_dialog (_("Cannot drop this file"), _("Invalid file name provided"), window);
+                    }
                 }
             } else
                 ok_to_drop = (target != Gdk.Atom.NONE);
@@ -1851,9 +1860,10 @@ namespace FM {
                 /* In trash, only show context menu when all selected files are in root folder */
                 if (valid_selection_for_restore ()) {
                     menu.append_section (null, builder.get_object ("popup-trash-selection") as GLib.Menu);
-
                     clipboard_menu.remove (1); /* Copy */
+                    clipboard_menu.remove (1); /* Copy Link*/
                     clipboard_menu.remove (1); /* Paste (index updated by previous line) */
+                    clipboard_menu.remove (1); /* Paste Link (index updated by previous line) */
                     menu.append_section (null, clipboard_menu);
 
                     menu.append_section (null, builder.get_object ("properties") as GLib.Menu);
@@ -1867,7 +1877,9 @@ namespace FM {
                 menu.append_section (null, builder.get_object ("forget") as GLib.Menu);
 
                 clipboard_menu.remove (0); /* Cut */
+                clipboard_menu.remove (1); /* Copy as Link */
                 clipboard_menu.remove (1); /* Paste */
+                clipboard_menu.remove (1); /* Paste Link */
 
                 menu.append_section (null, clipboard_menu);
 
@@ -1890,8 +1902,14 @@ namespace FM {
                      */
                     if (!action_get_enabled (common_actions, "paste_into") ||
                         clipboard == null || !clipboard.can_paste) {
-
-                        clipboard_menu.remove (2);
+                        clipboard_menu.remove (3); /* Paste into*/
+                        clipboard_menu.remove (3); /* Past Link into*/
+                    } else {
+                        if (clipboard.files_linked) {
+                            clipboard_menu.remove (3); /* Paste into*/
+                        } else {
+                            clipboard_menu.remove (4); /* Paste Link into*/
+                        }
                     }
 
                     menu.append_section (null, clipboard_menu);
@@ -1947,7 +1965,11 @@ namespace FM {
             if (!in_network_root) {
                 /* If something is pastable in the clipboard, show the option even if it is not enabled */
                 if (clipboard != null && clipboard.can_paste) {
-                    menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
+                    if (clipboard.files_linked) {
+                        menu.append_section (null, builder.get_object ("paste-link") as GLib.MenuModel);
+                    } else {
+                        menu.append_section (null, builder.get_object ("paste") as GLib.MenuModel);
+                    }
                 }
 
                 GLib.MenuModel? template_menu = build_menu_templates ();
@@ -2179,6 +2201,7 @@ namespace FM {
             action_set_enabled (common_actions, "properties", can_show_properties);
             action_set_enabled (common_actions, "bookmark", can_bookmark);
             action_set_enabled (common_actions, "copy", !in_trash && can_copy);
+            action_set_enabled (common_actions, "copy_link", !in_trash && !in_recent && can_copy);
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
 
             update_default_app (selection);
@@ -2194,6 +2217,8 @@ namespace FM {
                 action_set_state (background_actions, "sort_by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
                 action_set_state (background_actions, "reverse", val);
+                val = new GLib.Variant.boolean (GOF.Preferences.get_default ().sort_directories_first);
+                action_set_state (background_actions, "folders_first", val);
             }
         }
 
@@ -2672,9 +2697,9 @@ namespace FM {
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
                     if (!is_writable) {
-                        Eel.show_warning_dialog (_("Cannot remove files from here"),
-                                                 _("You do not have permission to change this location"),
-                                                 window as Gtk.Window);
+                        PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
+                                                        _("You do not have permission to change this location"),
+                                                        window as Gtk.Window);
                         break;
                     } else if (no_mods || is_admin) {
                         /* If already in trash or running as root, permanently delete the file */
@@ -2813,16 +2838,25 @@ namespace FM {
                     break;
 
                 case Gdk.Key.c:
+                case Gdk.Key.C:
                     if (only_control_pressed) {
-                    /* Should not copy files in the trash - cut instead */
-                        if (in_trash) {
-                            Eel.show_warning_dialog (_("Cannot copy files that are in the trash"),
-                                                     _("Cutting the selection instead"),
-                                                     window as Gtk.Window);
+                        /* Caps Lock interferes with `shift_pressed` boolean so use another way */
+                        var caps_on = Gdk.Keymap.get_default ().get_caps_lock_state ();
+                        var cap_c = keyval == Gdk.Key.C;
 
-                            selection_actions.activate_action ("cut", null);
+                        if (caps_on != cap_c) { /* Shift key pressed */
+                            common_actions.activate_action ("copy_link", null);
                         } else {
-                            common_actions.activate_action ("copy", null);
+                        /* Should not copy files in the trash - cut instead */
+                            if (in_trash) {
+                                PF.Dialogs.show_warning_dialog (_("Cannot copy files that are in the trash"),
+                                                                _("Cutting the selection instead"),
+                                                                window as Gtk.Window);
+
+                                selection_actions.activate_action ("cut", null);
+                            } else {
+                                common_actions.activate_action ("copy", null);
+                            }
                         }
 
                         res = true;
@@ -2831,6 +2865,7 @@ namespace FM {
                     break;
 
                 case Gdk.Key.v:
+                case Gdk.Key.V:
                     if (only_control_pressed) {
                         if (!in_recent && is_writable) {
                             /* Will drop any existing selection and paste into current directory */
@@ -2838,9 +2873,9 @@ namespace FM {
                             unselect_all ();
                             common_actions.activate_action ("paste_into", null);
                         } else {
-                            Eel.show_warning_dialog (_("Cannot paste files here"),
-                                                     _("You do not have permission to change this location"),
-                                                     window as Gtk.Window);
+                            PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
+                                                            _("You do not have permission to change this location"),
+                                                            window as Gtk.Window);
                         }
 
                         res = true;
@@ -2849,13 +2884,14 @@ namespace FM {
                     break;
 
                 case Gdk.Key.x:
+                case Gdk.Key.X:
                     if (only_control_pressed) {
                         if (is_writable) {
                             selection_actions.activate_action ("cut", null);
                         } else {
-                            Eel.show_warning_dialog (_("Cannot remove files from here"),
-                                                     _("You do not have permission to change this location"),
-                                                     window as Gtk.Window);
+                            PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
+                                                            _("You do not have permission to change this location"),
+                                                            window as Gtk.Window);
                         }
 
                         res = true;
@@ -3222,7 +3258,7 @@ namespace FM {
                             break;
 
                         case ClickZone.INVALID:
-                            result = true; /* Prevent rubberbanding */
+                            result = false; /* Allow rubberbanding */
                             break;
 
                         default:

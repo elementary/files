@@ -321,26 +321,30 @@ namespace FM {
         protected override bool move_cursor (uint keyval, bool only_shift_pressed) {
             Gtk.TreePath? path = get_path_at_cursor ();
             if (path != null) {
-                if (keyval == Gdk.Key.Right) {
-                    path.next (); /* Does not check if path is valid */
-                } else if (keyval == Gdk.Key.Left) {
-                    path.prev ();
-                } else if (keyval == Gdk.Key.Up) {
-                    path = up (path);
-                } else if (keyval == Gdk.Key.Down) {
-                    path = down (path);
-                }
-
-                Gtk.TreeIter? iter = null;
-                /* Do not try to select invalid path */
-                if (model.get_iter (out iter, path)) {
-                    if (only_shift_pressed && selected_files != null) {
-                        linear_select_path (path);
-                    } else {
-                        unselect_all ();
-                        set_cursor (path, false, true, false);
-                        previous_linear_selection_path = path;
+                if (path_is_selected (path)) {
+                    if (keyval == Gdk.Key.Right) {
+                        path.next (); /* Does not check if path is valid */
+                    } else if (keyval == Gdk.Key.Left) {
+                        path.prev ();
+                    } else if (keyval == Gdk.Key.Up) {
+                        path = up (path);
+                    } else if (keyval == Gdk.Key.Down) {
+                        path = down (path);
                     }
+
+                    Gtk.TreeIter? iter = null;
+                    /* Do not try to select invalid path */
+                    if (model.get_iter (out iter, path)) {
+                        if (only_shift_pressed && selected_files != null) {
+                            linear_select_path (path);
+                        } else {
+                            unselect_all ();
+                            set_cursor (path, false, true, false);
+                            previous_linear_selection_path = path;
+                        }
+                    }
+                } else {
+                    set_cursor (path, false, true, false); /* Select without moving if only focussed */
                 }
             } else {
                 path = new Gtk.TreePath.from_indices (0);
@@ -540,14 +544,10 @@ namespace FM {
                              y_offset >= pix_y_offset &&
                              y_offset <= pix_y_offset + pix_height);
 
-            on_helper = false;
-
-            if (icon_renderer.selection_helpers) {
-                int hs = icon_renderer.helper_size;
-                on_helper = (on_icon &&
-                             x_offset <= int.max (pix_x_offset + hs, hs) &&
-                             y_offset <= int.max (pix_y_offset + hs, hs));
-            }
+            int hs = icon_renderer.helper_size;
+            on_helper = (on_icon &&
+                         x_offset <= int.max (pix_x_offset + hs, hs) &&
+                         y_offset <= int.max (pix_y_offset + hs, hs));
 
             return on_icon;
         }
