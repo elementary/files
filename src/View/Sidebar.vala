@@ -1322,7 +1322,7 @@ namespace Marlin.Places {
                 }
                 catch (GLib.Error error) {
                     var primary = _("Error mounting volume %s").printf (volume.get_name ());
-                    Eel.show_error_dialog (primary, error.message, null);
+                    PF.Dialogs.show_error_dialog (primary, error.message, window);
                 }
             });
         }
@@ -1337,7 +1337,7 @@ namespace Marlin.Places {
                     }
                     catch (GLib.Error error) {
                             var primary = _("Unable to start %s").printf (drive.get_name ());
-                            Eel.show_error_dialog (primary, error.message, null);
+                            PF.Dialogs.show_error_dialog (primary, error.message, window);
                     }
                 }
             );
