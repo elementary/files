@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-02-09 00:02+0000\n"
+"PO-Revision-Date: 2018-05-25 16:42+0000\n"
 "Last-Translator: Furkan Ege Öztürk <furkanegeozturk@galatasaray.net>\n"
 "Language-Team: Turkish "
 "<https://weblate.elementary.io/projects/files/files/tr/>\n"
@@ -2272,9 +2272,8 @@ msgid "In This Folder"
 msgstr "Bu klasörde"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "Bu klasörde"
+msgstr "Bu Klasörde"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"

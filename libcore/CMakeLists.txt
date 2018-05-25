@@ -33,6 +33,7 @@ vala_precompile(VALA_C ${PKGNAME}
     TrashMonitor.vala
     UserUtils.vala
     IconInfo.vala
+    Thumbnailer.vala
 PACKAGES
     granite
     gtk+-3.0
