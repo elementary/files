@@ -32,12 +32,14 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
     public enum ResponseType {
         SKIP,
         RENAME,
-        REPLACE
+        REPLACE,
+        NEWEST
     }
 
     private string conflict_name;
     private Gtk.Entry rename_entry;
     private Gtk.Button replace_button;
+    private Gtk.Button keep_newest_button;
     private Gtk.CheckButton apply_all_checkbutton;
 
     private GOF.File source;
@@ -174,6 +176,9 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         var rename_button = (Gtk.Button) add_button (_("Re_name"), ResponseType.RENAME);
 
         add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+
+        keep_newest_button = (Gtk.Button) add_button (_("Keep Newest"), ResponseType.NEWEST);
+        keep_newest_button.set_tooltip_text (_("Skip if original was modified more recently"));
 
         replace_button = (Gtk.Button) add_button (_("Replace"), ResponseType.REPLACE);
         replace_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);

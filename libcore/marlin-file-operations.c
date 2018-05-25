@@ -4103,7 +4103,15 @@ retry:
                 job->skip_all_conflict = TRUE;
             }
             conflict_response_data_free (response);
-        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE) { /* merge/replace */
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE ||
+                   response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
+
+            if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
+                pf_file_utils_compare_modification_dates (src, dest) < 1) { /* destination not older */
+
+                goto out;/* Skip this one */
+            }
+
             if (response->apply_to_all) {
                 if (is_merge) {
                     job->merge_all = TRUE;
@@ -4123,9 +4131,7 @@ retry:
         } else {
             g_assert_not_reached ();
         }
-    }
-
-    else if (overwrite &&
+    } else if (overwrite &&
              IS_IO_ERROR (error, IS_DIRECTORY)) {
 
         g_error_free (error);
@@ -4133,11 +4139,9 @@ retry:
         if (remove_target_recursively (job, src, dest, dest)) {
             goto retry;
         }
-    }
+    } else if (IS_IO_ERROR (error, WOULD_RECURSE) ||
+             IS_IO_ERROR (error, WOULD_MERGE)) { /* Needs to recurse */
 
-    /* Needs to recurse */
-    else if (IS_IO_ERROR (error, WOULD_RECURSE) ||
-             IS_IO_ERROR (error, WOULD_MERGE)) {
         is_merge = error->code == G_IO_ERROR_WOULD_MERGE;
         would_recurse = error->code == G_IO_ERROR_WOULD_RECURSE;
         g_error_free (error);
@@ -4214,14 +4218,9 @@ retry:
 
         g_object_unref (dest);
         return;
-    }
-
-    else if (IS_IO_ERROR (error, CANCELLED)) {
+    } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
-    }
-
-    /* Other error */
-    else {
+    } else { /* Other error */
         if (job->skip_all_error) {
             g_error_free (error);
             goto out;
@@ -4677,7 +4676,15 @@ retry:
                 job->skip_all_conflict = TRUE;
             }
             conflict_response_data_free (response);
-        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE) { /* merge/replace */
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE ||
+                   response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
+
+            if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
+                pf_file_utils_compare_modification_dates (src, dest) < 1) { /* destination not older */
+
+                goto out;/* Skip this one */
+            }
+
             if (response->apply_to_all) {
                 if (is_merge) {
                     job->merge_all = TRUE;
