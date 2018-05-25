@@ -57,7 +57,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
     private Gtk.Label destination_type_label;
     private Gtk.Label destination_time_label;
 
-    public FileConflictDialog (Gtk.Window parent, GLib.File source, GLib.File destination, GLib.File dest_dir) {
+    public FileConflictDialog (Gtk.Window parent, GLib.File _source, GLib.File _destination, GLib.File _dest_dir) {
         Object (
             title: _("File conflict"),
             transient_for: parent,
@@ -66,14 +66,24 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
             skip_taskbar_hint: true
         );
 
-        this.source = GOF.File.@get (source);
-        this.destination = GOF.File.@get (destination);
-        this.dest_dir = GOF.File.@get (dest_dir);
+        source = GOF.File.@get (_source);
+        destination = GOF.File.@get (_destination);
+        destination.query_update ();
+        var thumbnailer = Marlin.Thumbnailer.get ();
+        thumbnailer.finished.connect (() => {
+            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (), GOF.FileIconFlags.USE_THUMBNAILS);
+        });
+
+        thumbnailer.queue_file (destination, null, false);
+        destination_size_label.label = destination.format_size;
+        destination_time_label.label = destination.formated_modified;
+
+        dest_dir = GOF.File.@get (_dest_dir);
 
         var files = new GLib.List<GOF.File> ();
-        files.prepend (this.source);
-        files.prepend (this.destination);
-        files.prepend (this.dest_dir);
+        files.prepend (source);
+        files.prepend (destination);
+        files.prepend (dest_dir);
 
         new GOF.CallWhenReady (files, file_list_ready_cb);
     }
@@ -329,9 +339,6 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
             source_type_label.no_show_all = true;
         }
 
-        destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (), GOF.FileIconFlags.USE_THUMBNAILS);
-        destination_size_label.label = destination.format_size;
-        destination_time_label.label = destination.formated_modified;
         if (should_show_type && dest_ftype != null) {
             destination_type_label.label = dest_ftype;
         } else {
