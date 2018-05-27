@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
 "PO-Revision-Date: 2018-05-27 09:10+0000\n"
-"Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
+"Last-Translator: Csepi Árpád <banderaszkormos@gmail.com>\n"
 "Language-Team: Hungarian "
 "<https://weblate.elementary.io/projects/files/files/hu/>\n"
 "Language: hu\n"
@@ -2169,11 +2169,11 @@ msgstr "Nem lehet átnevezni erre: '%s'"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Ma ekkor %-H:%M"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Tegnap ekkor %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
