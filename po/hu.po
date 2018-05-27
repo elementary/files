@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
 "PO-Revision-Date: 2018-05-27 09:03+0000\n"
-"Last-Translator: Csepi Árpád <banderaszkormos@gmail.com>\n"
+"Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian "
 "<https://weblate.elementary.io/projects/files/files/hu/>\n"
 "Language: hu\n"
@@ -2141,7 +2141,7 @@ msgstr "Több fájltípus van kiválasztva"
 
 #: ../src/Utils/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Nincs alkalmazás, ami meg tudná nyitni ezeket a fájltípusokat"
 
 #: ../src/Utils/MimeActions.vala:288
 msgid "Failed to open files"
