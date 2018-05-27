@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-05-27 08:53+0000\n"
-"Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
+"PO-Revision-Date: 2018-05-27 08:55+0000\n"
+"Last-Translator: Csepi Árpád <banderaszkormos@gmail.com>\n"
 "Language-Team: Hungarian "
 "<https://weblate.elementary.io/projects/files/files/hu/>\n"
 "Language: hu\n"
@@ -1867,11 +1867,11 @@ msgstr "Nem lehet csatlakozni a szerverhez ezért a mappáért"
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Nem sikerült megjeleníteni a mappa tartalmát"
 
 #: ../src/View/ViewContainer.vala:420
 msgid "The operation timed out."
-msgstr ""
+msgstr "A művelet lejárt."
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
