@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-05-27 09:12+0000\n"
+"PO-Revision-Date: 2018-05-28 00:00+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian "
 "<https://weblate.elementary.io/projects/files/files/hu/>\n"
@@ -35,7 +35,7 @@ msgstr "FTP (bejelentkezéssel)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple Irattározás Protokoll)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -642,7 +642,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" A fájl véglegesen törlődik."
+" A fájl törlésével az véglegesen el lesz távolítva"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
@@ -1008,7 +1008,7 @@ msgstr "Nem lehet a kukába másolni."
 
 #: ../libcore/marlin-file-operations.c:6004
 msgid "It is not permitted to copy files into the trash"
-msgstr "Fájlok kukába másolása nem engedélyezett."
+msgstr "A fájlok Kukába másolása nem engedélyezett"
 
 #: ../libcore/marlin-file-operations.c:6145
 msgid "untitled folder"
@@ -1383,29 +1383,29 @@ msgstr[1] "%d elem tulajdonosmódosításának visszavonása"
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "%d ele_m másolása mégis"
-msgstr[1] "%d ele_m másolása mégis"
+msgstr[0] "%d ele_m másolása újra"
+msgstr[1] "%d ele_m másolása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1656
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "%d elem _kettőzése mégis"
-msgstr[1] "%d elem _kettőzése mégis"
+msgstr[0] "%d elem _kettőzése újra"
+msgstr[1] "%d elem _kettőzése újra"
 
 #: ../libcore/marlin-undostack-manager.c:1661
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "%d elem át_helyezése mégis"
-msgstr[1] "%d elem át_helyezése mégis"
+msgstr[0] "%d elem át_helyezése újra"
+msgstr[1] "%d elem át_helyezése újra"
 
 #: ../libcore/marlin-undostack-manager.c:1666
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "%d elem át_nevezése mégis"
-msgstr[1] "%d elem át_nevezése mégis"
+msgstr[0] "%d elem át_nevezése újra"
+msgstr[1] "%d elem át_nevezése újra"
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
@@ -1419,64 +1419,64 @@ msgstr "Ü_res sablonfájl létrehozása mégis"
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "%d _mappa létrehozása mégis"
-msgstr[1] "%d _mappa létrehozása mégis"
+msgstr[0] "%d _mappa létrehozása újra"
+msgstr[1] "%d _mappa létrehozása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1682
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "%d elem kukába át_helyezése mégis"
-msgstr[1] "%d elem kukába át_helyezése mégis"
+msgstr[0] "%d elem kukába át_helyezése újra"
+msgstr[1] "%d elem kukába át_helyezése újra"
 
 #: ../libcore/marlin-undostack-manager.c:1687
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "%d elem kukából való _helyreállítása mégis"
-msgstr[1] "%d elem kukából való _helyreállítása mégis"
+msgstr[0] "%d elem kukából való _helyreállítása újra"
+msgstr[1] "%d elem kukából való _helyreállítása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1692
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "%d elemre mutató _link létrehozása mégis"
-msgstr[1] "%d elemre mutató _link létrehozása mégis"
+msgstr[0] "%d elemre mutató _link létrehozása újra"
+msgstr[1] "%d elemre mutató _link létrehozása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1697
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "%d elem _törlése mégis"
-msgstr[1] "%d elem _törlése mégis"
+msgstr[0] "%d elem _törlése újra"
+msgstr[1] "%d elem _törlése újra"
 
 #: ../libcore/marlin-undostack-manager.c:1702
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "%d elem rekurzív jogosultságmódosítása mégis"
-msgstr[1] "%d elem rekurzív jogosultságmódosítása mégis"
+msgstr[0] "%d elem rekurzív jogosultságmódosítása újra"
+msgstr[1] "%d elem rekurzív jogosultságmódosítása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "%d elem jogosultságmódosítása mégis"
-msgstr[1] "%d elem jogosultságmódosítása mégis"
+msgstr[0] "%d elem jogosultságmódosítása újra"
+msgstr[1] "%d elem jogosultságmódosítása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] "%d elem csoportmódosítása mégis"
-msgstr[1] "%d elem csoportmódosítása mégis"
+msgstr[0] "%d elem csoportmódosítása újra"
+msgstr[1] "%d elem csoportmódosítása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1718
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] "%d elem tulajdonosmódosítása mégis"
-msgstr[1] "%d elem tulajdonosmódosítása mégis"
+msgstr[0] "%d elem tulajdonosmódosítása újra"
+msgstr[1] "%d elem tulajdonosmódosítása újra"
 
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
@@ -1522,7 +1522,7 @@ msgstr "%s -ben megnyitás"
 
 #: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
-msgstr "Nyissa meg ezzel:"
+msgstr "Megnyitás ebben"
 
 #: ../src/View/AbstractDirectoryView.vala:2034
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
@@ -1550,7 +1550,7 @@ msgstr "Nincs engedélye az elérési út megváltoztatására"
 
 #: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
-msgstr "A kukában levő fájlok nem másolhatóak."
+msgstr "A kukában levő fájlok nem másolhatóak"
 
 #: ../src/View/AbstractDirectoryView.vala:2839
 msgid "Cutting the selection instead"
@@ -1646,7 +1646,7 @@ msgstr "Megnyitás új ablakban"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "Megnyitás másik alkalmazással"
+msgstr "Megnyitás másik alkalmazással…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1662,7 +1662,7 @@ msgstr "Végrehajtás"
 
 #: ../src/View/Window.vala:205
 msgid "Files isn't your default file manager."
-msgstr "A Fájlkezelő nem az alapértelmezett fájlkezelője"
+msgstr "A Fájlkezelő nem az alapértelmezett fájlkezelője."
 
 #: ../src/View/Window.vala:211
 msgid "Set as Default"
@@ -1797,7 +1797,7 @@ msgstr "Ez a mappa nem létezik"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr "A „%s” mappa nem található"
+msgstr "A(z) „%s” mappa nem található."
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -1863,7 +1863,7 @@ msgstr "Mappa nem csatolható"
 
 #: ../src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
-msgstr "Nem lehet csatlakozni a szerverhez ezért a mappáért"
+msgstr "Nem lehet csatlakozni a szerverhez ehhez a mappához."
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
@@ -1995,8 +1995,8 @@ msgstr "Az aktuális méret nagyobb lehet"
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i fájl nem lesz olvasható a jogosultságok miatt vagy egyéb hibák."
-msgstr[1] "%i fájl nem lesz olvasható a jogosultságok miatt vagy egyéb hibák."
+msgstr[0] "%i fájl nem lesz olvasható a jogosultságok vagy egyéb hibák miatt."
+msgstr[1] "%i fájl nem lesz olvasható a jogosultságok vagy egyéb hibák miatt."
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
 #: ../src/Dialogs/PropertiesWindow.vala:279
@@ -2005,7 +2005,7 @@ msgstr "ismeretlen"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "Betöltés..."
+msgstr "Betöltés…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2045,7 +2045,7 @@ msgstr "Eredeti hely:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Egyéb alkalmazás..."
+msgstr "Egyéb alkalmazás…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2281,7 +2281,7 @@ msgstr "Nemrég használt"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Kapcsolódás a szerverhez..."
+msgstr "Kapcsolódás a szerverhez…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
