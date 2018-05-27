@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-05-27 09:10+0000\n"
-"Last-Translator: Csepi Árpád <banderaszkormos@gmail.com>\n"
+"PO-Revision-Date: 2018-05-27 09:11+0000\n"
+"Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian "
 "<https://weblate.elementary.io/projects/files/files/hu/>\n"
 "Language: hu\n"
@@ -2177,11 +2177,11 @@ msgstr "Tegnap ekkor %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A ekkor %-H:%M"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A ekkor %-I:%M %p"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
