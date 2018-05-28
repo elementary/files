@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-05-24 00:08+0000\n"
+"PO-Revision-Date: 2018-05-28 18:28+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
@@ -68,7 +68,7 @@ msgstr "フォルダ \"%s\" を \"%s\" 上で開けません。"
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "\"%s\" のサーバーが見つかりません。"
+msgstr "\"%s\" のサーバーが見つかりませんでした。"
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
@@ -1731,7 +1731,7 @@ msgstr "このフォルダは存在しません"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr "フォルダ \"%s\" が見つかりません。"
+msgstr "フォルダ \"%s\" が見つかりませんでした。"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -1817,7 +1817,7 @@ msgstr "このフォルダのサーバーが見つかりませんでした。"
 
 #: ../src/View/ViewContainer.vala:433
 msgid "File not Found"
-msgstr "ファイルが見つかりません"
+msgstr "ファイルが見つかりませんでした"
 
 #: ../src/View/ViewContainer.vala:434
 msgid "The file selected no longer exists."
@@ -2044,7 +2044,7 @@ msgstr "コピーダイアログを表示"
 
 #: ../src/ProgressUIHandler.vala:252
 msgid "Cancel All In-progress Actions"
-msgstr "進行しているすべてのアクションをキャンセル"
+msgstr "進行しているすべての操作をキャンセル"
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
