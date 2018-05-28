@@ -17,26 +17,29 @@
 
 public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     private unowned TrashMonitor trash_monitor;
-    private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.InfoBar> infobars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.InfoBar>();
+    private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.ActionBar> actionbars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.ActionBar>();
+
+    private Gtk.Button delete_button;
+    private Gtk.Button restore_button;
 
     public Trash () {
         trash_monitor = TrashMonitor.get_default ();
         trash_monitor.notify["is-empty"].connect (() => {
             var state = trash_monitor.is_empty;
-            var to_remove = new Gee.ArrayList<Gee.Map.Entry<GOF.AbstractSlot,Gtk.InfoBar>> ();
-            foreach (var entry in infobars.entries) {
-                var infobar = entry.value;
-                if (infobar.get_parent () != null) {
-                    infobar.set_response_sensitive (0, !state);
-                    infobar.set_response_sensitive (1, !state);
-                    infobar.set_visible (!state);
+            var to_remove = new Gee.ArrayList<Gee.Map.Entry<GOF.AbstractSlot,Gtk.ActionBar>> ();
+            foreach (var entry in actionbars.entries) {
+                var actionbar = entry.value;
+                if (actionbar.get_parent () != null) {
+                    restore_button.sensitive = !state;
+                    delete_button.sensitive = !state;
+                    actionbar.set_visible (!state);
                 } else {
                     to_remove.add (entry);
                 }
             }
             foreach (var closed in to_remove) {
                 closed.value.destroy ();
-                infobars.unset (closed.key);
+                actionbars.unset (closed.key);
             }
         });
     }
@@ -45,51 +48,40 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
         unowned GOF.File file = ((Object[]) user_data)[2] as GOF.File;
         assert (((Object[]) user_data)[1] is GOF.AbstractSlot);
         unowned GOF.AbstractSlot slot = ((Object[]) user_data)[1] as GOF.AbstractSlot;
-        Gtk.InfoBar? infobar = infobars.@get (slot);
+        Gtk.ActionBar? actionbar = actionbars.@get (slot);
         /* Ignore directories other than trash and ignore reloading trash */
         if (file.location.get_uri_scheme () == "trash") {
-            /* Only add infobar once */
-            if (infobar == null) {
-                infobar = new Gtk.InfoBar ();
-                (infobar.get_content_area () as Gtk.Box).add (new Gtk.Label (null));
-                infobar.add_button (_("Restore All"), 0);
-                infobar.add_button (_("Empty the Trash"), 1);
+            /* Only add actionbar once */
+            if (actionbar == null) {
+                actionbar = new Gtk.ActionBar ();
+                restore_button = new Gtk.Button.with_label (_("Restore All"));
+                delete_button = new Gtk.Button.with_label (_("Empty the Trash"));
 
-                infobar.response.connect ((self, response) => {
-                    switch (response) {
-                        case 0:
-                            slot.set_all_selected (true);
-                            unowned GLib.List<GOF.File> selection = slot.get_selected_files ();
-                            PF.FileUtils.restore_files_from_trash (selection, window);
-                            break;
-                        case 1:
-                            Marlin.FileOperations.empty_trash (self);
-                            break;
-                    }
+                actionbar.pack_end (delete_button);
+                actionbar.pack_end (restore_button);
+
+                restore_button.clicked.connect (() => {
+                    slot.set_all_selected (true);
+                    unowned GLib.List<GOF.File> selection = slot.get_selected_files ();
+                    PF.FileUtils.restore_files_from_trash (selection, window);
                 });
 
-                slot.add_extra_widget (infobar);
-                infobars.@set (slot, infobar);
-            }
-            infobar.set_message_type (file.basename == "/" ? Gtk.MessageType.INFO :  Gtk.MessageType.WARNING);
-            string msg;
-            if (file.basename == "/")
-                msg = _("These items may be restored or deleted from the trash.");
-            else
-                msg = _("Cannot restore or delete unless in root folder");
+                delete_button.clicked.connect (() => {
+                    Marlin.FileOperations.empty_trash (delete_button);
+                });
 
-            foreach (Gtk.Widget w in (infobar.get_content_area ()).get_children ()) {
-                if (w is Gtk.Label)
-                    (w as Gtk.Label).set_text (msg);
+                slot.add_extra_widget (actionbar);
+                actionbars.@set (slot, actionbar);
             }
 
-            infobar.set_response_sensitive (0, !trash_monitor.is_empty && file.basename == "/");
-            infobar.set_response_sensitive (1, !trash_monitor.is_empty && file.basename == "/");
-            infobar.show_all ();
-            infobar.set_visible (!trash_monitor.is_empty);
-        } else if (infobar != null) {
-            infobar.destroy ();
-            infobars.unset (slot);
+            restore_button.sensitive = !trash_monitor.is_empty && file.basename == "/";
+            restore_button.sensitive = !trash_monitor.is_empty && file.basename == "/";
+
+            actionbar.show_all ();
+            actionbar.set_visible (!trash_monitor.is_empty);
+        } else if (actionbar != null) {
+            actionbar.destroy ();
+            actionbars.unset (slot);
         }
     }
 }
