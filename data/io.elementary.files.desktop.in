@@ -12,12 +12,8 @@ MimeType=inode/directory;
 Categories=System;Utility;Core;GTK;FileTools;FileManager;
 X-GNOME-Gettext-Domain=io.elementary.files
 X-GNOME-UsesNotifications=true
-Actions=WindowNew;Root;
+Actions=WindowNew;
 
 [Desktop Action WindowNew]
 _Name=New Window
 Exec=io.elementary.files -n
-
-[Desktop Action Root]
-_Name=New Window As Administrator
-Exec=io.elementary.files-pkexec
