@@ -258,6 +258,7 @@ namespace Marlin.View.Chrome
             if (current_operation != null) {
                 current_operation.cancel ();
             }
+
             clear ();
         }
 
@@ -382,6 +383,7 @@ namespace Marlin.View.Chrome
                 return true;
             } else {
                 cancel ();
+                exit ();
                 return false;
             }
         }
