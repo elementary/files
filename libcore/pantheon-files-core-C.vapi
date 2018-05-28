@@ -22,6 +22,7 @@ namespace FM
             PIXBUF,
             FILENAME,
             SIZE,
+            SCALE_FACTOR,
             TYPE,
             MODIFIED,
             NUM_COLUMNS
@@ -39,6 +40,7 @@ namespace FM
         public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file);
         public GOF.File? file_for_iter (Gtk.TreeIter iter);
         public void clear ();
+        public void set_should_sort_directories_first (bool directories_first);
         public signal void subdirectory_unloaded (GOF.Directory.Async directory);
     }
 }
@@ -86,29 +88,6 @@ namespace EelGtk.Widget {
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_")]
 namespace Eel {
-    [CCode (cheader_filename = "eel-gtk-extensions.h")]
-    public void pop_up_context_menu (Gtk.Menu menu, int16 offset_x, int16 offset_y, Gdk.EventButton event);
-
-    [CCode (cheader_filename = "eel-stock-dialogs.h")]
-    public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-    [CCode (cheader_filename = "eel-stock-dialogs.h")]
-    public unowned Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string? get_date_as_string (uint64 d, string format);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public GLib.List? get_user_names ();
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_user_id_from_user_name (string *user_name, out int uid);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string? get_real_user_home ();
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_group_id_from_group_name (string *group_name, out int gid);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public bool get_id_from_digit_string (string digit_str, out int id);
-    [CCode (cheader_filename = "eel-fcts.h")]
-    public string format_size (uint64 size);
-
     [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
 }
@@ -116,9 +95,6 @@ namespace Eel {
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
-    [CCode (cheader_filename = "marlin-file-utilities.h")]
-    public string get_accel_map_file ();
-
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public struct UndoMenuData {
         string undo_label;
@@ -140,33 +116,6 @@ namespace Marlin
         public void undo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void add_rename_action (GLib.File renamed_file, string original_name);
-    }
-
-    [CCode (cheader_filename = "marlin-progress-info.h")]
-    public class Progress.Info : GLib.Object {
-        public Info ();
-        public signal void changed ();
-        public signal void started ();
-        public signal void finished ();
-        public signal void progress_changed ();
-        public void cancel ();
-        public string get_title ();
-        public string get_status ();
-        public string get_details ();
-        public double get_progress ();
-        public double get_current ();
-        public double get_total ();
-        public bool get_is_finished ();
-        public bool get_is_paused ();
-        public GLib.Cancellable get_cancellable ();
-    }
-
-    [CCode (cheader_filename = "marlin-progress-info-manager.h")]
-    public class Progress.InfoManager : GLib.Object {
-        public InfoManager ();
-        public signal void new_progress_info (Progress.Info info);
-        public void add_new_info (Progress.Info info);
-        public unowned GLib.List<Progress.Info> get_all_infos ();
     }
 }
 
@@ -225,6 +174,7 @@ namespace GOF {
         public string tagstype;
         public Gdk.Pixbuf? pix;
         public int pix_size;
+        public int pix_scale;
         public int width;
         public int height;
         public int sort_column_id;
@@ -253,9 +203,9 @@ namespace GOF {
         public string get_symlink_target ();
         public unowned string? get_ftype ();
         public string? get_formated_time (string attr);
-        public Gdk.Pixbuf get_icon_pixbuf (int size, bool forced_size, FileIconFlags flags);
+        public Gdk.Pixbuf get_icon_pixbuf (int size, int scale, FileIconFlags flags);
         public void get_folder_icon_from_uri_or_path ();
-        public Marlin.IconInfo get_icon (int size, FileIconFlags flags);
+        public Marlin.IconInfo get_icon (int size, int scale, FileIconFlags flags);
         public string thumbnail_path;
 
         public bool is_mounted;
@@ -270,7 +220,7 @@ namespace GOF {
 
         public void update ();
         public void update_type ();
-        public void update_icon (int size);
+        public void update_icon (int size, int scale);
         public void update_desktop_file ();
         public void query_update ();
         public void query_thumbnail_update ();

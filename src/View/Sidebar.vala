@@ -483,7 +483,7 @@ namespace Marlin.Places {
 
             /* Add Home BUILTIN */
             try {
-                mount_uri = GLib.Filename.to_uri (Eel.get_real_user_home (), null);
+                mount_uri = GLib.Filename.to_uri (PF.UserUtils.get_real_user_home (), null);
             }
             catch (ConvertError e) {
                 mount_uri = "";
@@ -1311,7 +1311,7 @@ namespace Marlin.Places {
                     if (mount != null) {
                         var location = mount.get_root ();
                         if (flags == Marlin.OpenFlag.NEW_WINDOW) {
-                            var app = Marlin.Application.get ();
+                            var app = (Marlin.Application)(GLib.Application.get_default ());
                             app.create_window (location);
                         } else if (flags == Marlin.OpenFlag.NEW_TAB) {
                             window.open_single_tab (location, Marlin.ViewMode.CURRENT);
@@ -1322,7 +1322,7 @@ namespace Marlin.Places {
                 }
                 catch (GLib.Error error) {
                     var primary = _("Error mounting volume %s").printf (volume.get_name ());
-                    Eel.show_error_dialog (primary, error.message, null);
+                    PF.Dialogs.show_error_dialog (primary, error.message, window);
                 }
             });
         }
@@ -1337,7 +1337,7 @@ namespace Marlin.Places {
                     }
                     catch (GLib.Error error) {
                             var primary = _("Unable to start %s").printf (drive.get_name ());
-                            Eel.show_error_dialog (primary, error.message, null);
+                            PF.Dialogs.show_error_dialog (primary, error.message, window);
                     }
                 }
             );
@@ -1496,10 +1496,7 @@ namespace Marlin.Places {
                 check_popup_sensitivity ();
             }
 
-            Eel.pop_up_context_menu (popupmenu,
-                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     Marlin.DEFAULT_POPUP_MENU_DISPLACEMENT,
-                                     event);
+            popupmenu.popup_at_pointer (event);
         }
 
         /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */

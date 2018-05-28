@@ -39,7 +39,11 @@ public class MarlinTags : Object {
     protected static Sqlite.Database db;
 
     public MarlinTags () {
-        openMarlinDB ();
+        try {
+            openMarlinDB ();
+        } catch (GLib.Error e) {
+            critical ("Unable to open color tag database - %s", e.message);
+        }
     }
 
     protected static void fatal (string op, int res) {
@@ -56,7 +60,7 @@ public class MarlinTags : Object {
         return 0;
     }
 
-    public bool openMarlinDB () {
+    public bool openMarlinDB () throws GLib.DBusError, GLib.IOError {
         File home_dir = File.new_for_path (Environment.get_home_dir ());
         File data_dir = home_dir.get_child (".config").get_child ("marlin");
 
@@ -65,7 +69,7 @@ public class MarlinTags : Object {
                 data_dir.make_directory_with_parents (null);
             }
         } catch (Error err) {
-            warning ("Unable to create data directory %s: %s", data_dir.get_path (), err.message);
+            throw new GLib.IOError.FAILED ("Unable to create data directory %s: %s", data_dir.get_path (), err.message);
         }
 
         string marlin_db_path = data_dir.get_child ("marlin.db").get_path ();
@@ -115,7 +119,7 @@ public class MarlinTags : Object {
         return true;
     }
 
-    public async bool record_uris (Variant[] locations, string directory) {
+    public async bool record_uris (Variant[] locations, string directory) throws GLib.DBusError, GLib.IOError {
         var sql = "";
         var cmd = "INSERT OR REPLACE INTO tags (uri, content_type, color, modified_time, dir) VALUES ('%s', '%s', %s, %s, '%s');\n";
 
@@ -143,7 +147,7 @@ public class MarlinTags : Object {
         return input.replace ("'", "''");
     }
 
-    public async Variant get_uri_infos (string raw_uri) {
+    public async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError {
         Idle.add (get_uri_infos.callback);
         yield;
         var uri = escape (raw_uri);
@@ -174,7 +178,7 @@ public class MarlinTags : Object {
         return vb.end ();
     }
 
-    public async bool deleteEntry (string uri) {
+    public async bool deleteEntry (string uri) throws GLib.DBusError, GLib.IOError {
         Idle.add (deleteEntry.callback);
         yield;
         string c = "delete from tags where uri='" + uri + "'";
@@ -190,7 +194,7 @@ public class MarlinTags : Object {
 
 /************* Used for maintenance only *************/
 
-    public bool showTable (string table) {
+    public bool showTable (string table) throws GLib.DBusError, GLib.IOError {
         stdout.printf ("showTable\n");
         string consult = "select * from " + table;
         int rc = db.exec (consult, show_table_callback, null);
@@ -203,7 +207,7 @@ public class MarlinTags : Object {
         return true;
     }
 
-    public bool clearDB () {
+    public bool clearDB () throws GLib.DBusError, GLib.IOError {
         string c = "delete from tags";
         int   rc = db.exec (c, null, null);
 

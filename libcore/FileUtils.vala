@@ -82,8 +82,8 @@ namespace PF.FileUtils {
 
         foreach (GOF.File goffile in unhandled_files) {
             var message = _("Could not determine original location of \"%s\" ").printf (goffile.get_display_name ());
-            Eel.show_warning_dialog (message, _("The item cannot be restored from trash"),
-                                     (widget is Gtk.Window) ? widget as Gtk.Window : null );
+            PF.Dialogs.show_warning_dialog (message, _("The item cannot be restored from trash"),
+                                            (widget is Gtk.Window) ? widget as Gtk.Window : null );
         }
 
         original_dirs_hash.foreach ((original_dir, dir_files) => {
@@ -258,7 +258,7 @@ namespace PF.FileUtils {
         if (path.length > 0) {
             if (scheme == "" && (path.has_prefix ("~/") || path == "~")) {
                 sb.erase (0, 1);
-                sb.prepend (Eel.get_real_user_home ());
+                sb.prepend (PF.UserUtils.get_real_user_home ());
             }
         }
 
@@ -433,9 +433,9 @@ namespace PF.FileUtils {
                                                                   original_name);
             } catch (Error e) {
                 warning ("Rename error");
-                Eel.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
-                                       e.message,
-                                       null);
+                PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
+                                              e.message,
+                                              null);
                 new_location = null;
 
                 if (dir != null) {
@@ -602,10 +602,6 @@ namespace PF.FileUtils {
             default :
                 return false;
         }
-    }
-
-    public bool is_icon_path (string path) {
-        return "/icons" in path || "/.icons" in path;
     }
 
     public bool location_is_in_trash (GLib.File location) {

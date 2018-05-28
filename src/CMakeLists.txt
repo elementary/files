@@ -40,7 +40,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         QuicklistHandler.vala
         ClipboardManager.vala
         IconRenderer.vala
-        Thumbnailer.vala
         Dialogs/AbstractPropertiesDialog.vala
         Dialogs/ChooseAppDialog.vala
         Dialogs/PropertiesWindow.vala
@@ -80,6 +79,8 @@ IF (WITH_UNITY AND UNITY_FOUND)
         granite
         unity
         plank
+        posix
+        linux
         pantheon-files-core
         pantheon-files-core-C
         pantheon-files-widgets
@@ -106,7 +107,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         TextRenderer.vala
         ClipboardManager.vala
         IconRenderer.vala
-        Thumbnailer.vala
         Dialogs/AbstractPropertiesDialog.vala
         Dialogs/ChooseAppDialog.vala
         Dialogs/PropertiesWindow.vala
@@ -149,6 +149,8 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         pantheon-files-core-C
         pantheon-files-widgets
         marlin
+        posix
+        linux
         zeitgeist-2.0
     GENERATE_HEADER
         marlin-vala

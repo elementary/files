@@ -33,7 +33,6 @@ namespace Marlin {
         public Marlin.IconSize helper_size {get; private set; default = Marlin.IconSize.EMBLEM;}
         public bool follow_state {get; set;}
         public GOF.File drop_file {get; set;}
-        public bool selection_helpers {get; set; default = true;}
 
         public Marlin.ZoomLevel zoom_level {
             get {
@@ -53,7 +52,7 @@ namespace Marlin {
             set {
                 _file = value;
                 if (_file != null) {
-                    _file.update_icon (icon_size);
+                    _file.update_icon (icon_size, icon_scale);
                 }
             }
         }
@@ -62,6 +61,7 @@ namespace Marlin {
         private Marlin.ZoomLevel _zoom_level = Marlin.ZoomLevel.NORMAL;
         private GOF.File? _file;
         private Marlin.IconSize icon_size;
+        private int icon_scale = 1;
         public int helper_x {get; private set;}
         public int helper_y {get; private set;}
         private unowned Gdk.Pixbuf? pixbuf {
@@ -69,7 +69,7 @@ namespace Marlin {
                 return _file != null ? _file.pix : null;
             }
         }
-        private double scale;
+
         private ClipboardManager clipboard;
 
         construct {
@@ -83,12 +83,18 @@ namespace Marlin {
                 return;
             }
 
+            var new_scale = widget.get_scale_factor ();
+            if (icon_scale != new_scale) {
+                icon_scale = new_scale;
+                _file.update_icon (icon_size, icon_scale);
+            }
+
             Gdk.Pixbuf? pb = pixbuf;
 
             var pix_rect = Gdk.Rectangle ();
 
-            pix_rect.width = pixbuf.get_width ();
-            pix_rect.height = pixbuf.get_height ();
+            pix_rect.width = pixbuf.get_width () / icon_scale;
+            pix_rect.height = pixbuf.get_height () / icon_scale;
             pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
             pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
 
@@ -110,7 +116,7 @@ namespace Marlin {
             }
 
             if (special_icon_name != null) {
-                var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size);
+                var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
                 if (nicon != null) {
                     pb = nicon.get_pixbuf_nodefault ();
                 }
@@ -162,14 +168,12 @@ namespace Marlin {
                 return;
             }
 
-            style_context.render_icon (cr, pb, draw_rect.x, draw_rect.y);
+            cr.scale (1.0 / icon_scale, 1.0 / icon_scale);
+            style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
             style_context.restore ();
 
             /* Do not show selection helpers or emblems for very small icons */
-            if (selection_helpers &&
-                (selected || prelit) &&
-                file != drop_file) {
-
+            if ((selected || prelit) && file != drop_file) {
                 special_icon_name = null;
                 if (selected && prelit) {
                     special_icon_name = "selection-remove";
@@ -183,7 +187,7 @@ namespace Marlin {
                     helper_size = Marlin.IconSize.LARGE_EMBLEM > int.max (pixbuf.get_width (), pixbuf.get_height ()) / 2 ?
                                   Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
 
-                    var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, helper_size);
+                    var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, helper_size, icon_scale);
                     Gdk.Pixbuf? pix = null;
 
                     if (nicon != null) {
@@ -207,7 +211,7 @@ namespace Marlin {
                         helper_x = helper_area.x;
                         helper_y = helper_area.y;
 
-                        Gdk.cairo_set_source_pixbuf (cr, pix, helper_x, helper_y);
+                        style_context.render_icon (cr, pix, helper_x * icon_scale, helper_y * icon_scale);
                         cr.paint ();
                     }
                 }
@@ -227,7 +231,7 @@ namespace Marlin {
                     }
 
                     Gdk.Pixbuf? pix = null;
-                    var nicon = Marlin.IconInfo.lookup_from_name (emblem, helper_size);
+                    var nicon = Marlin.IconInfo.lookup_from_name (emblem, helper_size, icon_scale);
 
                     if (nicon == null) {
                         continue;
@@ -251,56 +255,50 @@ namespace Marlin {
                         emblem_area.x = (background_area.x + background_area.width) - helper_size;
                     }
 
-                    Gdk.cairo_set_source_pixbuf (cr, pix, emblem_area.x, emblem_area.y);
+                    style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
                     cr.paint ();
                     pos++;
                 }
             }
         }
 
-        /* We still have to implement this even though it is deprecated */
+        public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
+            var new_scale = widget.get_scale_factor ();
+            if (icon_scale != new_scale) {
+                icon_scale = new_scale;
+                _file.update_icon (icon_size, icon_scale);
+            }
+
+            minimum_size = pixbuf.get_width () / icon_scale;
+            natural_size = minimum_size;
+        }
+
+        public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
+            var new_scale = widget.get_scale_factor ();
+            if (icon_scale != new_scale) {
+                icon_scale = new_scale;
+                _file.update_icon (icon_size, icon_scale);
+            }
+
+            minimum_size = int.max (helper_size + helper_size / 2, pixbuf.get_height () / icon_scale);
+            natural_size = minimum_size;
+        }
+
+        /* We still have to implement this even though it is deprecated, else compiler complains.
+         * It is not called (in Juno)  */
         public override void get_size (Gtk.Widget widget, Gdk.Rectangle? cell_area,
                                        out int x_offset, out int y_offset,
                                        out int width, out int height) {
 
-            width = -1;
-            height = -1;
+            /* Just return some default values for offsets */
             x_offset = 0;
             y_offset = 0;
+            int mw, nw, mh, nh;
+            get_preferred_width (widget, out mw, out nw);
+            get_preferred_height (widget, out mh, out nh);
 
-            if (pixbuf == null || !(pixbuf is Gdk.Pixbuf)) {
-                return;
-            }
-
-
-            int pixbuf_width = pixbuf.get_width ();
-            int pixbuf_height = pixbuf.get_height ();
-
-            int calc_width = pixbuf_width;
-            int calc_height = pixbuf_height;
-
-            if (cell_area != null && pixbuf_width > 0 && pixbuf_height > 0) {
-                float xalign, yalign;
-                bool rtl = widget.get_direction () == Gtk.TextDirection.RTL;
-                get_alignment (out xalign, out yalign);
-                x_offset = (int)(rtl ? (1.0 -xalign) : xalign) * (cell_area.width - calc_width);
-                x_offset = int.max (x_offset, 0);
-                y_offset = (int)(yalign * (cell_area.height - calc_height));
-                y_offset = int.max (y_offset, 0);
-            } else {
-                x_offset = 0;
-                y_offset = 0;
-            }
-
-            /* Even if the last new pixbuf corresponding to the last requested icon_size isn't generated
-               yet, we can still determine its dimensions. This allow to asyncronously load the thumbnails
-               pixbuf */
-
-            int s = int.max (pixbuf_width, pixbuf_height);
-            scale = double.min (1.0, (double)icon_size / s); /* scaling to make pix required icon_size (not taking into account screen scaling) */
-
-            width = (int)(calc_width * scale);
-            height = (int)(calc_height * scale);
+            width = nw;
+            height = nh;
         }
     }
 }

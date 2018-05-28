@@ -1,28 +1,44 @@
-/***
-    Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
-
-    Marlin is free software; you can redistribute it and/or
-    modify it under the terms of the GNU General Public License as
-    published by the Free Software Foundation; either version 2 of the
-    License, or (at your option) any later version.
-
-    Marlin is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    General Public License for more details.
-
-    You should have received a copy of the GNU General Public
-    License along with this program; see the file COPYING.  If not,
-    write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
-    Boston, MA 02110-1335 USA.
-
-***/
+/*
+* Copyright (c) 2018 elementary LLC (https://elementary.io)
+*               2011 Lucas Baudin <xapantu@gmail.com>
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 2 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*/
 
 namespace Marlin.View.Chrome {
     public class BasicBreadcrumbsEntry : Gtk.Entry, Navigatable  {
         public enum TargetType {
             TEXT_URI_LIST,
         }
+
+        public string? action_icon_name {
+            get {
+                return get_icon_name (Gtk.EntryIconPosition.SECONDARY);
+            }
+            set {
+                if (value != null) {
+                    set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, value);
+                    secondary_icon_activatable = true;
+                    secondary_icon_sensitive = true;
+                } else {
+                    hide_action_icon ();
+                }
+            }
+        }
+
         public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
         public const double MINIMUM_BREADCRUMB_WIDTH = 12;
         public const double COMPLETION_ALPHA = 0.5;
@@ -49,8 +65,6 @@ namespace Marlin.View.Chrome {
 
         protected bool context_menu_showing = false;
 
-    /** Construction **/
-    /******************/
         construct {
             truncate_multiline = true;
             weak Gtk.StyleContext style_context = get_style_context ();
@@ -101,18 +115,6 @@ namespace Marlin.View.Chrome {
             return get_path_from_element (null);
         }
 
-        protected void set_action_icon_name (string? icon_name) {
-            if (icon_name != null) {
-                set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, icon_name);
-                secondary_icon_activatable = true;
-                secondary_icon_sensitive = true;
-            } else {
-                hide_action_icon ();
-            }
-        }
-        public string? get_action_icon_name () {
-            return get_icon_name (Gtk.EntryIconPosition.SECONDARY);
-        }
         protected void set_action_icon_tooltip (string? tip) {
             if (secondary_icon_pixbuf != null && tip != null && tip.length > 0) {
                 set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tip);
@@ -156,13 +158,13 @@ namespace Marlin.View.Chrome {
         }
 
         public void show_default_action_icon () {
-            set_action_icon_name (Marlin.ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC);
+            action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC;
             set_default_action_icon_tooltip ();
         }
 
         public void hide_default_action_icon () {
             set_action_icon_tooltip ("");
-            set_action_icon_name (null);
+            action_icon_name = null;
         }
         public void set_default_action_icon_tooltip () {
             set_action_icon_tooltip (_("Navigate to %s").printf (get_entry_text ()));
@@ -282,7 +284,7 @@ namespace Marlin.View.Chrome {
                 set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {
                 set_entry_cursor (null);
-                set_tooltip_text (_("Enter search term or path"));
+                set_tooltip_text (_("Search or Type Path"));
             }
 
             if (tip != null) {
@@ -366,7 +368,7 @@ namespace Marlin.View.Chrome {
 
         /** Returns a list of breadcrumbs that are displayed in natural order - that is, the breadcrumb at the start
           * of the pathbar is at the start of the list
-         **/  
+         **/
         public double get_displayed_breadcrumbs_natural_width (out GLib.List<BreadcrumbElement> displayed_breadcrumbs) {
             double total_width = 0.0;
             displayed_breadcrumbs = null;
@@ -396,7 +398,7 @@ namespace Marlin.View.Chrome {
             }
 
             /* Allow enough space after the breadcrumbs for secondary icon and entry */
-            w += 2 * YPAD + MINIMUM_LOCATION_BAR_ENTRY_WIDTH + ICON_WIDTH; 
+            w += 2 * YPAD + MINIMUM_LOCATION_BAR_ENTRY_WIDTH + ICON_WIDTH;
 
             return (int) (w);
         }
@@ -654,7 +656,7 @@ namespace Marlin.View.Chrome {
                 double total_arrow_width = displayed_breadcrumbs.length () * (height_marged / 2 + padding.left);
                 width_marged -= total_arrow_width;
                 if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
-                    var unfixed = displayed_breadcrumbs.length () - 2; 
+                    var unfixed = displayed_breadcrumbs.length () - 2;
                     if (unfixed > 0) {
                         width_marged -= unfixed * MINIMUM_BREADCRUMB_WIDTH;
                     }

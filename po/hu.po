@@ -9,16 +9,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2016-10-07 08:33+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: Hungarian <gnome-hu-list-request@gnome.org>\n"
+"PO-Revision-Date: 2018-05-28 00:00+0000\n"
+"Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
+"Language-Team: Hungarian "
+"<https://weblate.elementary.io/projects/files/files/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -34,7 +35,7 @@ msgstr "FTP (bejelentkezéssel)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple Irattározás Protokoll)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -641,7 +642,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" A fájl véglegesen törlődik."
+" A fájl törlésével az véglegesen el lesz távolítva"
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
@@ -1007,7 +1008,7 @@ msgstr "Nem lehet a kukába másolni."
 
 #: ../libcore/marlin-file-operations.c:6004
 msgid "It is not permitted to copy files into the trash"
-msgstr "Fájlok kukába másolása nem engedélyezett."
+msgstr "A fájlok Kukába másolása nem engedélyezett"
 
 #: ../libcore/marlin-file-operations.c:6145
 msgid "untitled folder"
@@ -1065,7 +1066,7 @@ msgstr "Több _részlet megjelenítése"
 
 #: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
 msgid "Inaccessible"
-msgstr ""
+msgstr "Hozzáférhetetlen"
 
 #: ../libcore/gof-file.c:377
 #, c-format
@@ -1382,29 +1383,29 @@ msgstr[1] "%d elem tulajdonosmódosításának visszavonása"
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "%d ele_m másolása mégis"
-msgstr[1] "%d ele_m másolása mégis"
+msgstr[0] "%d ele_m másolása újra"
+msgstr[1] "%d ele_m másolása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1656
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "%d elem _kettőzése mégis"
-msgstr[1] "%d elem _kettőzése mégis"
+msgstr[0] "%d elem _kettőzése újra"
+msgstr[1] "%d elem _kettőzése újra"
 
 #: ../libcore/marlin-undostack-manager.c:1661
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "%d elem át_helyezése mégis"
-msgstr[1] "%d elem át_helyezése mégis"
+msgstr[0] "%d elem át_helyezése újra"
+msgstr[1] "%d elem át_helyezése újra"
 
 #: ../libcore/marlin-undostack-manager.c:1666
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "%d elem át_nevezése mégis"
-msgstr[1] "%d elem át_nevezése mégis"
+msgstr[0] "%d elem át_nevezése újra"
+msgstr[1] "%d elem át_nevezése újra"
 
 #: ../libcore/marlin-undostack-manager.c:1670
 msgid "_Redo creation of an empty file"
@@ -1418,64 +1419,64 @@ msgstr "Ü_res sablonfájl létrehozása mégis"
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "%d _mappa létrehozása mégis"
-msgstr[1] "%d _mappa létrehozása mégis"
+msgstr[0] "%d _mappa létrehozása újra"
+msgstr[1] "%d _mappa létrehozása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1682
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "%d elem kukába át_helyezése mégis"
-msgstr[1] "%d elem kukába át_helyezése mégis"
+msgstr[0] "%d elem kukába át_helyezése újra"
+msgstr[1] "%d elem kukába át_helyezése újra"
 
 #: ../libcore/marlin-undostack-manager.c:1687
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "%d elem kukából való _helyreállítása mégis"
-msgstr[1] "%d elem kukából való _helyreállítása mégis"
+msgstr[0] "%d elem kukából való _helyreállítása újra"
+msgstr[1] "%d elem kukából való _helyreállítása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1692
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "%d elemre mutató _link létrehozása mégis"
-msgstr[1] "%d elemre mutató _link létrehozása mégis"
+msgstr[0] "%d elemre mutató _link létrehozása újra"
+msgstr[1] "%d elemre mutató _link létrehozása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1697
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "%d elem _törlése mégis"
-msgstr[1] "%d elem _törlése mégis"
+msgstr[0] "%d elem _törlése újra"
+msgstr[1] "%d elem _törlése újra"
 
 #: ../libcore/marlin-undostack-manager.c:1702
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "%d elem rekurzív jogosultságmódosítása mégis"
-msgstr[1] "%d elem rekurzív jogosultságmódosítása mégis"
+msgstr[0] "%d elem rekurzív jogosultságmódosítása újra"
+msgstr[1] "%d elem rekurzív jogosultságmódosítása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "%d elem jogosultságmódosítása mégis"
-msgstr[1] "%d elem jogosultságmódosítása mégis"
+msgstr[0] "%d elem jogosultságmódosítása újra"
+msgstr[1] "%d elem jogosultságmódosítása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] "%d elem csoportmódosítása mégis"
-msgstr[1] "%d elem csoportmódosítása mégis"
+msgstr[0] "%d elem csoportmódosítása újra"
+msgstr[1] "%d elem csoportmódosítása újra"
 
 #: ../libcore/marlin-undostack-manager.c:1718
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] "%d elem tulajdonosmódosítása mégis"
-msgstr[1] "%d elem tulajdonosmódosítása mégis"
+msgstr[0] "%d elem tulajdonosmódosítása újra"
+msgstr[1] "%d elem tulajdonosmódosítása újra"
 
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:64
@@ -1521,7 +1522,7 @@ msgstr "%s -ben megnyitás"
 
 #: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Open in"
-msgstr "Nyissa meg ezzel:"
+msgstr "Megnyitás ebben"
 
 #: ../src/View/AbstractDirectoryView.vala:2034
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:461
@@ -1539,17 +1540,17 @@ msgstr "Névtelen %s"
 #: ../src/View/AbstractDirectoryView.vala:2689
 #: ../src/View/AbstractDirectoryView.vala:2872
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "A fájlok nem távolíthatók el innen"
 
 #: ../src/View/AbstractDirectoryView.vala:2690
 #: ../src/View/AbstractDirectoryView.vala:2860
 #: ../src/View/AbstractDirectoryView.vala:2873
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Nincs engedélye az elérési út megváltoztatására"
 
 #: ../src/View/AbstractDirectoryView.vala:2838
 msgid "Cannot copy files that are in the trash"
-msgstr "A kukában levő fájlok nem másolhatóak."
+msgstr "A kukában levő fájlok nem másolhatóak"
 
 #: ../src/View/AbstractDirectoryView.vala:2839
 msgid "Cutting the selection instead"
@@ -1557,7 +1558,7 @@ msgstr "A kijelöltek kivágása inkább"
 
 #: ../src/View/AbstractDirectoryView.vala:2859
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Fájlok beillesztése itt nem lehetséges"
 
 #: ../src/View/Widgets/LocationBar.vala:186
 msgid "Reload this folder"
@@ -1591,8 +1592,8 @@ msgstr " kiválasztva"
 #: ../src/Dialogs/PropertiesWindow.vala:1162
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u mappa"
+msgstr[1] "%u mappa"
 
 #: ../src/View/Widgets/OverlayBar.vala:246
 msgid "%u items selected (%s)"
@@ -1629,7 +1630,7 @@ msgstr "ismeretlen méret"
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u fájl nem olvasható"
 
 #: ../src/View/Widgets/OverlayBar.vala:310
 msgid "%u files not readable"
@@ -1645,7 +1646,7 @@ msgstr "Megnyitás új ablakban"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:468
 msgid "Open in Other Application…"
-msgstr "Megnyitás másik alkalmazással"
+msgstr "Megnyitás másik alkalmazással…"
 
 #: ../src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -1661,7 +1662,7 @@ msgstr "Végrehajtás"
 
 #: ../src/View/Window.vala:205
 msgid "Files isn't your default file manager."
-msgstr "A Fájlkezelő nem az alapértelmezett fájlkezelője"
+msgstr "A Fájlkezelő nem az alapértelmezett fájlkezelője."
 
 #: ../src/View/Window.vala:211
 msgid "Set as Default"
@@ -1796,7 +1797,7 @@ msgstr "Ez a mappa nem létezik"
 
 #: ../src/View/DirectoryNotFound.vala:28
 msgid "The folder \"%s\" can't be found."
-msgstr "A „%s” mappa nem található"
+msgstr "A(z) „%s” mappa nem található."
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -1862,19 +1863,19 @@ msgstr "Mappa nem csatolható"
 
 #: ../src/View/ViewContainer.vala:417
 msgid "Could not connect to the server for this folder."
-msgstr "Nem lehet csatlakozni a szerverhez ezért a mappáért"
+msgstr "Nem lehet csatlakozni a szerverhez ehhez a mappához."
 
 #: ../src/View/ViewContainer.vala:419
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Nem sikerült megjeleníteni a mappa tartalmát"
 
 #: ../src/View/ViewContainer.vala:420
 msgid "The operation timed out."
-msgstr ""
+msgstr "A művelet időtúllépés miatt megszakadt."
 
 #: ../src/View/ViewContainer.vala:422
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Nem lehet a mappát megjeleníteni"
 
 #: ../src/View/ViewContainer.vala:423
 msgid "The server for this folder could not be located."
@@ -1994,8 +1995,8 @@ msgstr "Az aktuális méret nagyobb lehet"
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] "%i fájl nem lesz olvasható a jogosultságok miatt vagy egyéb hibák."
-msgstr[1] "%i fájl nem lesz olvasható a jogosultságok miatt vagy egyéb hibák."
+msgstr[0] "%i fájl nem lesz olvasható a jogosultságok vagy egyéb hibák miatt."
+msgstr[1] "%i fájl nem lesz olvasható a jogosultságok vagy egyéb hibák miatt."
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
 #: ../src/Dialogs/PropertiesWindow.vala:279
@@ -2004,7 +2005,7 @@ msgstr "ismeretlen"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "Betöltés..."
+msgstr "Betöltés…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -2044,7 +2045,7 @@ msgstr "Eredeti hely:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr "Egyéb alkalmazás..."
+msgstr "Egyéb alkalmazás…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
@@ -2067,31 +2068,31 @@ msgstr "Mindenki:"
 #: ../src/Dialogs/PropertiesWindow.vala:1140
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u almappa"
+msgstr[1] "%u almappa"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1144
 #: ../src/Dialogs/PropertiesWindow.vala:1166
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u fájl"
+msgstr[1] "%u fájl"
 
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1149
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1170
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u kijelölt elem"
+msgstr[1] "%u kijelölt elem"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/Dialogs/PropertiesWindow.vala:1172
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
 msgid "File Operations"
@@ -2116,7 +2117,7 @@ msgstr "Összes folyamatban lévő művelet megszakítása"
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr "Böngéssze a fájljait"
+msgstr "Tallózzon a fájlok között"
 
 #: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
@@ -2132,27 +2133,27 @@ msgstr "Új ablak nyitása _adminisztátorként"
 
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
-msgstr "Fájlkezelő"
+msgstr "Fájlok"
 
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Több fájltípus van kiválasztva"
 
 #: ../src/Utils/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Nincs alkalmazás, ami meg tudná nyitni ezeket a fájltípusokat"
 
 #: ../src/Utils/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Nem sikerült megnyitni a fájlokat"
 
 #: ../src/Utils/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "URI megnyitása sikertelen"
 
 #: ../src/Utils/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Nem lehet megnyitni a fájlokat és URI-kat ezzel az alkalmazással"
 
 #: ../libcore/FileUtils.vala:60
 msgid "Could not determine original location of \"%s\" "
@@ -2168,19 +2169,19 @@ msgstr "Nem lehet átnevezni erre: '%s'"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Ma ekkor %-H:%M"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Tegnap ekkor %-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A ekkor %-H:%M"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A ekkor %-I:%M %p"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2204,7 +2205,7 @@ msgstr "Mégse"
 
 #: ../libcore/gof-directory-async.vala:611
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "A szerver nem válaszolt határidőn belül"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
 msgid "Navigate to %s"
@@ -2267,22 +2268,20 @@ msgid "In This Folder"
 msgstr "Ebben a mappában"
 
 #: ../libwidgets/View/SearchResults.vala:231
-#, fuzzy
 msgid "Below This Folder"
-msgstr "Ebben a mappában"
+msgstr "Ezen mappa alatt"
 
 #: ../libwidgets/View/SearchResults.vala:236
 msgid "Bookmarks"
 msgstr "Könyvjelzők"
 
 #: ../libwidgets/View/SearchResults.vala:241
-#, fuzzy
 msgid "Recently used"
-msgstr "Előzmények"
+msgstr "Nemrég használt"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Kapcsolódás a szerverhez..."
+msgstr "Kapcsolódás a szerverhez…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"

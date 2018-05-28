@@ -30,6 +30,7 @@
 #include <locale.h>
 #include <gdk/gdk.h>
 #include "marlin-file-changes-queue.h"
+#include "pantheon-files-core.h"
 
 struct _MarlinUndoActionData
 {
@@ -640,9 +641,9 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
                 g_list_free (gfiles_in_trash);
                 marlin_file_changes_consume_changes (TRUE);
             } else {
-                eel_show_error_dialog (_("Original location could not be determined"),
-                                       _("Open trash folder and restore manually"),
-                                       gtk_widget_get_toplevel (parent_view));
+                pf_dialogs_show_error_dialog (_("Original location could not be determined"),
+                                              _("Open trash folder and restore manually"),
+                                              gtk_widget_get_toplevel (parent_view));
             }
             g_hash_table_destroy (files_to_restore);
 

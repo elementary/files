@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-06 13:44-0700\n"
-"PO-Revision-Date: 2018-03-27 00:01+0000\n"
+"PO-Revision-Date: 2018-05-24 00:08+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
@@ -50,7 +50,7 @@ msgstr "セキュア WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "接続中..."
+msgstr "接続しています..."
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
@@ -150,15 +150,13 @@ msgstr "フォルダ \"%s\" をマージしますか？"
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
-msgstr ""
-"マージをする際に、重複するファイルを転送元のファイルで置き換えるか確認がなさ"
-"れます。"
+msgstr "マージをする時に、重複するファイルを転送元のファイルで置き換えるか確認がなされます。"
 
 #: ../libcore/marlin-file-conflict-dialog.c:154
 #: ../libcore/marlin-file-conflict-dialog.c:380
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" 内に同じ名前のより古いフォルダが既に存在しています。"
+msgstr "\"%s\" 内に同じ名前のより古いフォルダがすでに存在しています。"
 
 #: ../libcore/marlin-file-conflict-dialog.c:158
 #: ../libcore/marlin-file-conflict-dialog.c:384
@@ -303,7 +301,7 @@ msgstr "すべて削除 (_A)"
 
 #: ../libcore/marlin-file-operations.c:203
 msgid "_Replace"
-msgstr "置き換える (_R)"
+msgstr "置き換え (_R)"
 
 #: ../libcore/marlin-file-operations.c:204
 msgid "Replace _All"
@@ -319,7 +317,7 @@ msgstr "すべてマージ (_A)"
 
 #: ../libcore/marlin-file-operations.c:207
 msgid "Copy _Anyway"
-msgstr "無条件にコピー (_A)"
+msgstr "とにかくコピー (_A)"
 
 #: ../libcore/marlin-file-operations.c:296
 #, c-format
@@ -507,13 +505,13 @@ msgstr[0] "選択された %'d 個のアイテムを完全に削除してもよ�
 #: ../libcore/marlin-file-operations.c:1493
 #: ../libcore/marlin-file-operations.c:1525
 msgid "Deleting files"
-msgstr "ファイルを削除中"
+msgstr "ファイルを削除しています"
 
 #: ../libcore/marlin-file-operations.c:1519
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] "残り %'d 個のファイルを削除中"
+msgstr[0] "残り %'d 個のファイルを削除しています"
 
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
@@ -541,7 +539,7 @@ msgstr "フォルダ \"%B\" 内のファイルを参照する権限がないた�
 #: ../libcore/marlin-file-operations.c:3727
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr "フォルダ \"%B\" 内のファイルについて情報を取得する際にエラーが発生しました。"
+msgstr "フォルダ \"%B\" 内のファイルについての情報を取得中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:1622
 #: ../libcore/marlin-file-operations.c:3736
@@ -558,7 +556,7 @@ msgstr "フォルダ \"%B\" を参照する権限がないためフォルダを�
 #: ../libcore/marlin-file-operations.c:2771
 #: ../libcore/marlin-file-operations.c:3772
 msgid "There was an error reading the folder \"%B\"."
-msgstr "フォルダ \"%B\" を読み込む際にエラーが発生しました。"
+msgstr "フォルダ \"%B\" の読み込み中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:1680
 msgid "Could not remove the folder %B."
@@ -566,46 +564,40 @@ msgstr "フォルダ \"%B\" を削除できませんでした。"
 
 #: ../libcore/marlin-file-operations.c:1757
 msgid "There was an error deleting %B."
-msgstr "%B を削除する際にエラーが発生しました。"
+msgstr "%B の削除中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:1837
 #: ../libcore/marlin-file-operations.c:1849
 msgid "Moving files to trash"
-msgstr "ファイルをゴミ箱へ移動中"
+msgstr "ファイルをゴミ箱へ移動しています"
 
 #: ../libcore/marlin-file-operations.c:1851
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "残り %'d 個のファイルをゴミ箱へ移動中"
+msgstr[0] "残り %'d 個のファイルをゴミ箱へ移動しています"
 
 #: ../libcore/marlin-file-operations.c:1946
 #: ../libcore/marlin-file-operations.c:1949
 #: ../libcore/marlin-file-operations.c:1952
 msgid "Cannot move file to trash or delete it"
-msgstr "ゴミ箱へファイルを移動したり、削除したりできません"
+msgstr "ファイルをゴミ箱へ移動または削除できませんでした"
 
 #: ../libcore/marlin-file-operations.c:1947
 msgid "It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
-"読み取り専用ファイルシステムにあるファイルをゴミ箱へ移動したり削除することは"
-"できません。"
+msgstr "読み取り専用ファイルシステムにあるファイルをゴミ箱へ移動したり削除したりすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:1950
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr ""
-"書き込み権限を持っていないフォルダにあるファイルをゴミ箱へ移動したり削除する"
-"ことはできません。"
+msgstr "書き込み権限を持っていないフォルダにあるファイルをゴミ箱へ移動したり削除したりすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:1953
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr ""
-"書き込み権限を持っていないフォルダをゴミ箱へ移動したり削除することはできませ"
-"ん。"
+msgstr "書き込み権限を持っていないフォルダをゴミ箱へ移動したり削除したりすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:1955
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -615,9 +607,7 @@ msgstr "ゴミ箱へファイルを移動できません。すぐに削除して
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr ""
-"このファイルはゴミ箱へ移動させることができません。詳細については、下記を参照"
-"してください。"
+msgstr "このファイルはゴミ箱へ移動させることができませんでした。詳細については、下記を参照してください。"
 
 #: ../libcore/marlin-file-operations.c:1960
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -627,9 +617,7 @@ msgstr "ファイルをゴミ箱に移動できません。削除をしてみま
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
-"このファイルはゴミ箱に移動することができません。削除することもできないでしょ"
-"う。"
+msgstr "このファイルはゴミ箱に移動することができませんでした。削除することもできない可能性もあります。"
 
 #: ../libcore/marlin-file-operations.c:1966
 msgid ""
@@ -641,11 +629,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2156
 msgid "Trashing Files"
-msgstr "ファイルをゴミ箱へ移動中"
+msgstr "ファイルをゴミ箱へ移動しています"
 
 #: ../libcore/marlin-file-operations.c:2158
 msgid "Deleting Files"
-msgstr "ファイルを削除中"
+msgstr "ファイルを削除しています"
 
 #: ../libcore/marlin-file-operations.c:2227
 msgid "Unable to eject %V"
@@ -663,9 +651,7 @@ msgstr "アンマウントする前にゴミ箱を空にしますか？"
 msgid ""
 "In order to regain the free space on this volume the trash must be emptied. "
 "All trashed items on the volume will be permanently lost."
-msgstr ""
-"このデバイス上の空き領域を増やすにはゴミ箱を空にする必要があります。その際ゴ"
-"ミ箱内にあるすべてのアイテムは完全に削除されます。"
+msgstr "このデバイス上の空き領域を増やすにはゴミ箱を空にする必要があります。ゴミ箱内にあるすべてのアイテムは完全に削除されます。"
 
 #: ../libcore/marlin-file-operations.c:2416
 msgid "Do _not Empty Trash"
@@ -680,25 +666,25 @@ msgstr "%s をマウントできません"
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "%'d 個のファイル (%S) をコピーする準備中"
+msgstr[0] "%'d 個のファイル (%S) をコピーする準備をしています"
 
 #: ../libcore/marlin-file-operations.c:2614
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "%'d 個のファイル (%S) を移動する準備中"
+msgstr[0] "%'d 個のファイル (%S) を移動する準備をしています"
 
 #: ../libcore/marlin-file-operations.c:2620
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "%'d 個のファイル (%S) を削除する準備中"
+msgstr[0] "%'d 個のファイル (%S) を削除する準備をしています"
 
 #: ../libcore/marlin-file-operations.c:2626
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
-msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備中"
+msgstr[0] "%'d 個のファイルをゴミ箱に移動する準備をしています"
 
 #: ../libcore/marlin-file-operations.c:2669
 #: ../libcore/marlin-file-operations.c:3587
@@ -715,7 +701,7 @@ msgstr "移動中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:2675
 msgid "Error while moving files to trash."
-msgstr "ファイルをゴミ箱へ移動する際にエラーが発生しました。"
+msgstr "ファイルをゴミ箱へ移動中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:2729
 msgid ""
@@ -737,7 +723,7 @@ msgstr "ファイル \"%B\" を参照する権限がないため操作できま�
 
 #: ../libcore/marlin-file-operations.c:2847
 msgid "There was an error getting information about \"%B\"."
-msgstr "\"%B\" の情報を取得する際にエラーが発生しました。"
+msgstr "\"%B\" についての情報を取得中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:2947
 #: ../libcore/marlin-file-operations.c:2989
@@ -752,7 +738,7 @@ msgstr "転送先のフォルダにアクセスする権限がありません。
 
 #: ../libcore/marlin-file-operations.c:2953
 msgid "There was an error getting information about the destination."
-msgstr "転送先の情報を取得する際にエラーが発生しました。"
+msgstr "転送先の情報を取得中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:2990
 msgid "The destination is not a folder."
@@ -775,46 +761,46 @@ msgstr "転送先は読み込み専用です。"
 
 #: ../libcore/marlin-file-operations.c:3114
 msgid "Moving \"%B\" to \"%B\""
-msgstr "\"%B\" を \"%B\" へ移動中"
+msgstr "\"%B\" を \"%B\" へ移動しています"
 
 #: ../libcore/marlin-file-operations.c:3115
 msgid "Copying \"%B\" to \"%B\""
-msgstr "\"%B\" を \"%B\" へコピー中"
+msgstr "\"%B\" を \"%B\" へコピーしています"
 
 #: ../libcore/marlin-file-operations.c:3119
 msgid "Duplicating \"%B\""
-msgstr "\"%B\" の複製中"
+msgstr "\"%B\" を複製しています"
 
 #: ../libcore/marlin-file-operations.c:3123
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へ移動中"
+msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へ移動しています"
 
 #: ../libcore/marlin-file-operations.c:3126
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へコピー中"
+msgstr[0] "%'d 個のファイルを \"%B\" 内から \"%B\" へコピーしています"
 
 #: ../libcore/marlin-file-operations.c:3133
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "%'d 個のファイルを \"%B\" 内で複製中"
+msgstr[0] "%'d 個のファイルを \"%B\" 内で複製しています"
 
 #: ../libcore/marlin-file-operations.c:3142
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" へ移動中"
+msgstr[0] "%'d 個のファイルを \"%B\" へ移動しています"
 
 #: ../libcore/marlin-file-operations.c:3146
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "%'d 個のファイルを \"%B\" へコピー中"
+msgstr[0] "%'d 個のファイルを \"%B\" へコピーしています"
 
 #: ../libcore/marlin-file-operations.c:3151
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
-msgstr[0] "%'d 個のファイルを複製中"
+msgstr[0] "%'d 個のファイルを複製しています"
 
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
 #: ../libcore/marlin-file-operations.c:3202
@@ -838,7 +824,7 @@ msgstr "フォルダ \"%B\" をコピー先に作成する権限がないため�
 
 #: ../libcore/marlin-file-operations.c:3594
 msgid "There was an error creating the folder \"%B\"."
-msgstr "フォルダ \"%B\" を作成する際にエラーが発生しました。"
+msgstr "フォルダ \"%B\" の作成中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:3724
 msgid ""
@@ -870,7 +856,7 @@ msgstr "\"%B\" のコピー中にエラーが発生しました。"
 #: ../libcore/marlin-file-operations.c:3901
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr "既に存在しているフォルダ %F からファイルを削除できませんでした。"
+msgstr "すでに存在しているフォルダ %F からファイルを削除できませんでした。"
 
 #: ../libcore/marlin-file-operations.c:3942
 #, c-format
@@ -880,12 +866,12 @@ msgstr "すでに存在しているファイル %F を削除できませんで�
 #: ../libcore/marlin-file-operations.c:4272
 #: ../libcore/marlin-file-operations.c:4948
 msgid "You cannot move a folder into itself."
-msgstr "フォルダを自身の中に移動することはできません。"
+msgstr "フォルダをそれ自身の中に移動することはできません。"
 
 #: ../libcore/marlin-file-operations.c:4273
 #: ../libcore/marlin-file-operations.c:4949
 msgid "You cannot copy a folder into itself."
-msgstr "フォルダを自身の中にコピーすることはできません。"
+msgstr "フォルダをそれ自身の中にコピーすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:4274
 #: ../libcore/marlin-file-operations.c:4950
@@ -894,11 +880,11 @@ msgstr "転送先のフォルダが転送元のフォルダの中にあります
 
 #: ../libcore/marlin-file-operations.c:4305
 msgid "You cannot move a file over itself."
-msgstr "ファイルを自身の上に移動することはできません。"
+msgstr "ファイルをそれ自身に移動することはできません。"
 
 #: ../libcore/marlin-file-operations.c:4306
 msgid "You cannot copy a file over itself."
-msgstr "ファイルを自身の上にコピーすることはできません。"
+msgstr "ファイルをそれ自身にコピーすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:4307
 msgid "The source file would be overwritten by the destination."
@@ -915,21 +901,21 @@ msgstr "\"%B\"をここにはコピーできません。"
 
 #: ../libcore/marlin-file-operations.c:4595
 msgid "There was an error copying the file into %B."
-msgstr "%Bへのファイルコピーでエラーが発生しました。"
+msgstr "%B へのファイルのコピー中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:4822
 msgid "Copying Files"
-msgstr "ファイルをコピー中"
+msgstr "ファイルをコピーしています"
 
 #: ../libcore/marlin-file-operations.c:4848
 msgid "Preparing to move to \"%B\""
-msgstr "\"%B\" へ移動する準備中"
+msgstr "\"%B\" へ移動する準備をしています"
 
 #: ../libcore/marlin-file-operations.c:4860
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
-msgstr[0] "%'d 個のファイルを移動させる準備中"
+msgstr[0] "%'d 個のファイルを移動する準備をしています"
 
 #: ../libcore/marlin-file-operations.c:5108
 #, c-format
@@ -939,25 +925,25 @@ msgstr "\"%F\" の移動中にエラーが発生しました。"
 #: ../libcore/marlin-file-operations.c:5109
 #, c-format
 msgid "There was an error moving the file into %F."
-msgstr "%F 内にファイルを移動する際にエラーが発生しました。"
+msgstr "%F 内へのファイルの移動中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:5371
 msgid "Moving Files"
-msgstr "ファイルを移動中"
+msgstr "ファイルを移動しています"
 
 #: ../libcore/marlin-file-operations.c:5400
 msgid "Creating links in \"%B\""
-msgstr "\"%B\" 内でリンクを作成中"
+msgstr "\"%B\" 内でリンクを作成しています"
 
 #: ../libcore/marlin-file-operations.c:5411
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "%'d 個のファイルへのリンクを作成中"
+msgstr[0] "%'d 個のファイルへのリンクを作成しています"
 
 #: ../libcore/marlin-file-operations.c:5552
 msgid "Error while creating link to %B."
-msgstr "%B へのリンク作成中にエラーが発生しました。"
+msgstr "%B へのリンクの作成中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:5554
 msgid "Symbolic links only supported for local files"
@@ -970,12 +956,12 @@ msgstr "リンクの作成先はシンボリックリンクをサポートして
 #: ../libcore/marlin-file-operations.c:5560
 #, c-format
 msgid "There was an error creating the symlink in %F."
-msgstr "%F 内へシンボリックリンクを作成している際にエラーが発生しました。"
+msgstr "%F 内へのシンボリックリンクの作成中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:5888
 #: ../libcore/marlin-file-operations.c:5891
 msgid "Setting permissions"
-msgstr "パーミッションを設定中"
+msgstr "パーミッションを設定しています"
 
 #: ../libcore/marlin-file-operations.c:6003
 msgid "Cannot copy into trash."
@@ -1004,7 +990,7 @@ msgstr "ファイル %B の作成中にエラーが発生しました。"
 #: ../libcore/marlin-file-operations.c:6328
 #, c-format
 msgid "There was an error creating the directory in %F."
-msgstr "%F 内にフォルダを作成する際にエラーが発生しました。"
+msgstr "%F 内へのフォルダの作成中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:6650
 msgid "Emptying the trash"
@@ -1017,23 +1003,23 @@ msgstr "ゴミ箱を空にしています"
 #: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
 #: ../libcore/marlin-progress-info.c:229
 msgid "Preparing"
-msgstr "準備中"
+msgstr "準備しています"
 
 #: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
 msgid "Today at %-I:%M %p"
-msgstr "今日 %p %I:%M"
+msgstr "今日の%p%-I:%M"
 
 #: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
 msgid "Yesterday at %-I:%M %p"
-msgstr "昨日 %p %I:%M"
+msgstr "昨日の%p%-I:%M"
 
 #: ../libcore/eel-fcts.c:93
 msgid "%a %-d %b at %-I:%M %p"
-msgstr "%B%d日 %A %p %I:%M"
+msgstr "%b月%-d日 (%a) の%p%-I:%M"
 
 #: ../libcore/eel-fcts.c:97
 msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%Y/%m/%d %A %p %I:%M"
+msgstr "%Y年%b月%-d日 (%a) の%p%-I:%M"
 
 #: ../libcore/eel-stock-dialogs.c:34
 msgid "Show more _details"
@@ -1063,7 +1049,7 @@ msgstr "URL フィールドが指定されていません"
 
 #: ../libcore/gof-file.c:2000
 msgid "Invalid desktop file"
-msgstr "不正なデスクトップファイル"
+msgstr "無効なデスクトップファイルです"
 
 #: ../libcore/gof-file.c:2295
 msgid "Slashes are not allowed in filenames"
@@ -1101,7 +1087,7 @@ msgstr "複製した %d 個のアイテムの削除"
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "'%d' 個のアイテムを '%s' へ戻す"
+msgstr "%d 個のアイテムを '%s' へ戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1250
 #, c-format
@@ -1112,28 +1098,28 @@ msgstr "'%s' を '%s' へ戻す"
 #: ../libcore/marlin-undostack-manager.c:1426
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "名前 '%s' を '%s' へ変更"
+msgstr "'%s' を '%s' へ名前を変更"
 
 #: ../libcore/marlin-undostack-manager.c:1278
 #: ../libcore/marlin-undostack-manager.c:1473
 #, c-format
 msgid "Restore %d items from trash"
-msgstr "%d 個のアイテムをゴミ箱から戻す"
+msgstr "%d 個のアイテムをゴミ箱から元の場所に戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1286
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr "'%s' を '%s' へ戻す"
+msgstr "'%s' を '%s' へ元に戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "'%d' 個のアイテムをゴミ箱に戻す"
+msgstr "%d 個のアイテムをゴミ箱に戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1300
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "'%s'をゴミ箱へ戻す"
+msgstr "'%s' をゴミ箱へ戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1309
 #, c-format
@@ -1168,7 +1154,7 @@ msgstr "所有者 '%s' を '%s' へ戻す"
 #: ../libcore/marlin-undostack-manager.c:1388
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr "'%d' 個のアイテムを '%s' へコピー"
+msgstr "%d 個のアイテムを '%s' へコピー"
 
 #: ../libcore/marlin-undostack-manager.c:1392
 #, c-format
@@ -1459,7 +1445,7 @@ msgstr "無効なファイル名が入力されました"
 
 #: ../src/View/AbstractDirectoryView.vala:2011
 msgid "Invalid"
-msgstr "不正"
+msgstr "無効"
 
 #: ../src/View/AbstractDirectoryView.vala:2017
 msgid "Run"
@@ -1573,7 +1559,7 @@ msgstr "約 %s"
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/Widgets/OverlayBar.vala:306
 msgid "unknown size"
-msgstr "不明サイズ"
+msgstr "不明なサイズ"
 
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/Widgets/OverlayBar.vala:310
@@ -1610,7 +1596,7 @@ msgstr "実行"
 
 #: ../src/View/Window.vala:205
 msgid "Files isn't your default file manager."
-msgstr "ファイルはデフォルトファイルマネージャーになっていません。"
+msgstr "\"ファイル\" はデフォルトのファイルマネージャーになっていません。"
 
 #: ../src/View/Window.vala:211
 msgid "Set as Default"
@@ -1650,11 +1636,11 @@ msgstr "ホーム"
 
 #: ../src/View/Sidebar.vala:523
 msgid "Open your personal folder"
-msgstr "ユーザーのホームフォルダを開く"
+msgstr "ユーザーのホームフォルダを開きます"
 
 #: ../src/View/Sidebar.vala:538
 msgid "View the list of recently used files"
-msgstr "最近使用したファイルの一覧を表示"
+msgstr "最近使用したファイルの一覧を表示します"
 
 #: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
 msgid "Trash"
@@ -1662,7 +1648,7 @@ msgstr "ゴミ箱"
 
 #: ../src/View/Sidebar.vala:571
 msgid "Open the Trash"
-msgstr "ゴミ箱を開く"
+msgstr "ゴミ箱を開きます"
 
 #: ../src/View/Sidebar.vala:576
 msgid "Devices"
@@ -1692,7 +1678,7 @@ msgstr "ネットワーク全体"
 
 #: ../src/View/Sidebar.vala:741
 msgid "Browse the contents of the network"
-msgstr "ネットワークの内容を表示"
+msgstr "ネットワークの内容を表示します"
 
 #: ../src/View/Sidebar.vala:874
 msgid "(%s Free of %s)"
@@ -1843,7 +1829,7 @@ msgstr "プログラムのバージョンを表示します。"
 
 #: ../src/Application.vala:136
 msgid "Open uri(s) in new tab"
-msgstr "URL を新しいタブで開く"
+msgstr "URI を新しいタブで開く"
 
 #: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -1909,7 +1895,7 @@ msgstr "不明"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:156
 msgid "Available:"
-msgstr "利用可能："
+msgstr "利用可能:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 msgid "Used:"
@@ -1953,7 +1939,7 @@ msgstr "不明"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr "読み込み中…"
+msgstr "読み込んでいます…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
@@ -1961,7 +1947,7 @@ msgstr "決定することができませんでした"
 
 #: ../src/Dialogs/PropertiesWindow.vala:494
 msgid "Contains:"
-msgstr "内容："
+msgstr "内容:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:516
 msgid "Created:"
@@ -1973,11 +1959,11 @@ msgstr "更新日時:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:536
 msgid "Deleted:"
-msgstr "削除："
+msgstr "削除:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:546
 msgid "Mimetype:"
-msgstr "Mime-Type:"
+msgstr "Mime タイプ:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
@@ -2016,13 +2002,13 @@ msgstr "全員:"
 #: ../src/Dialogs/PropertiesWindow.vala:1140
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] "%u サブフォルダ"
+msgstr[0] "%u 個のサブフォルダ"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1144
 #: ../src/Dialogs/PropertiesWindow.vala:1166
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] "%u ファイル"
+msgstr[0] "%u 個のファイル"
 
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1149
@@ -2114,19 +2100,19 @@ msgstr "'%s' へ名前を変更できません"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Today at %-H:%M"
-msgstr "今日の%-H時%M分"
+msgstr "今日の%-H:%M"
 
 #: ../libcore/FileUtils.vala:444
 msgid "Yesterday at %-H:%M"
-msgstr "昨日の%-H時%M分"
+msgstr "昨日の%-H:%M"
 
 #: ../libcore/FileUtils.vala:453
 msgid "%A at %-H:%M"
-msgstr "%Aの%-H時%M分"
+msgstr "%Aの%-H:%M"
 
 #: ../libcore/FileUtils.vala:455
 msgid "%A at %-I:%M %p"
-msgstr "%A の %-I:%M %p"
+msgstr "%Aの%p%-I:%M"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2250,7 +2236,7 @@ msgstr "ルートフォルダでない場合、復元や削除はできません
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr "ゴミ箱を復元する"
+msgstr "ゴミ箱から復元する"
 
 #: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
