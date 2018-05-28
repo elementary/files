@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-06 13:44-0700\n"
+"POT-Creation-Date: 2018-05-29 00:40+0100\n"
 "PO-Revision-Date: 2018-03-23 00:03+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
-"Language-Team: Danish "
-"<https://weblate.elementary.io/projects/files/files/da/>\n"
+"Language-Team: Danish <https://weblate.elementary.io/projects/files/files/da/"
+">\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,378 +82,262 @@ msgstr "Kontrollér venligst dine brugerdetajler."
 msgid "Continue"
 msgstr "Fortsæt"
 
-#: ../src/marlin-connect-server-dialog.c:760
-#: ../src/marlin-connect-server-dialog.c:1153
+#: ../src/marlin-connect-server-dialog.c:749
+#: ../src/marlin-connect-server-dialog.c:1142
 msgid "C_onnect"
 msgstr "_Tilslut"
 
-#: ../src/marlin-connect-server-dialog.c:888
+#: ../src/marlin-connect-server-dialog.c:877
 msgid "Connect to Server"
 msgstr "Forbind til server"
 
-#: ../src/marlin-connect-server-dialog.c:906
+#: ../src/marlin-connect-server-dialog.c:895
 msgid "Server Details"
 msgstr "Serverdetaljer"
 
-#: ../src/marlin-connect-server-dialog.c:930
+#: ../src/marlin-connect-server-dialog.c:919
 msgid "_Server:"
 msgstr "_Server:"
 
-#: ../src/marlin-connect-server-dialog.c:950
+#: ../src/marlin-connect-server-dialog.c:939
 msgid "_Port:"
 msgstr "_Port:"
 
-#: ../src/marlin-connect-server-dialog.c:968
+#: ../src/marlin-connect-server-dialog.c:957
 msgid "_Type:"
 msgstr "_Type:"
 
-#: ../src/marlin-connect-server-dialog.c:1037
+#: ../src/marlin-connect-server-dialog.c:1026
 msgid "Sh_are:"
 msgstr "_Deling:"
 
-#: ../src/marlin-connect-server-dialog.c:1052
+#: ../src/marlin-connect-server-dialog.c:1041
 msgid "_Folder:"
 msgstr "_Mappe:"
 
-#: ../src/marlin-connect-server-dialog.c:1070
+#: ../src/marlin-connect-server-dialog.c:1059
 msgid "User Details"
 msgstr "Brugerdetaljer"
 
-#: ../src/marlin-connect-server-dialog.c:1093
+#: ../src/marlin-connect-server-dialog.c:1082
 msgid "_Domain name:"
 msgstr "_Domænenavn:"
 
-#: ../src/marlin-connect-server-dialog.c:1108
+#: ../src/marlin-connect-server-dialog.c:1097
 msgid "_User name:"
 msgstr "_Brugernavn:"
 
-#: ../src/marlin-connect-server-dialog.c:1123
+#: ../src/marlin-connect-server-dialog.c:1112
 msgid "Pass_word:"
 msgstr "_Adgangskode:"
 
-#: ../src/marlin-connect-server-dialog.c:1139
+#: ../src/marlin-connect-server-dialog.c:1128
 msgid "_Remember this password"
 msgstr "_Husk denne adgangskode"
 
-#: ../src/marlin-connect-server-dialog.c:1242
+#: ../src/marlin-connect-server-dialog.c:1231
 msgid "Operation cancelled"
 msgstr "Handlingen blev afbrudt"
 
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
+#: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
+msgid "Inaccessible"
+msgstr "Utilgængelig"
+
+#: ../libcore/gof-file.c:347
 #, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Flet mappen \"%s\"?"
+msgid "link to %s"
+msgstr "henvisning til %s"
 
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Ved fletning vil der blive bedt om bekræftelse før der overskrives filer i "
-"mappen, som er i konflikt med dem, der flyttes."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
+#: ../libcore/gof-file.c:1590
 #, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "En ældre mappe med det samme navn findes allerede i \"%s\"."
+msgid "Failed to parse the desktop file: %s"
+msgstr "Kunne ikke fortolke desktop filen: %s"
 
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "En nyere mappe med det samme navn findes allerede i \"%s\"."
+#: ../libcore/gof-file.c:1598
+#, fuzzy
+msgid "Failed to parse the desktop file"
+msgstr "Kunne ikke fortolke desktop filen: %s"
 
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "En anden mappe med det samme navn findes allerede i \"%s\"."
+#: ../libcore/gof-file.c:1612
+#, fuzzy, c-format
+msgid "Failed to create command from file: %s"
+msgstr "Kunne ikke fortolke desktop filen: %s"
 
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "Ved erstatning vil alle filer i mappen blive fjernet."
+#: ../libcore/gof-file.c:1623
+#, fuzzy, c-format
+msgid "Unable to Launch Desktop File: %s"
+msgstr "Kunne ikke fortolke desktop filen: %s"
 
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Erstat mappen \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "En mappe med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Erstat filen \"%s\"?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "Ved erstatning vil dens indhold blive overskrevet."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "En ældre fil med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "En nyere fil med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "En anden fil med det samme navn findes allerede i \"%s\"."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Oprindelig fil"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/Dialogs/PropertiesWindow.vala:484
-msgid "Size:"
-msgstr "Størrelse:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/Dialogs/PropertiesWindow.vala:491
-msgid "Type:"
-msgstr "Type:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Sidst ændret:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Erstat med"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Flet"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "_Vælg et nyt navn til destinationen"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Nulstil"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Udfør denne handling på alle filer"
-
-#: ../libcore/marlin-file-conflict-dialog.c:748
-#: ../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-operations.c:154
+#: ../libcore/FileConflictDialog.vala:183
 msgid "_Skip"
 msgstr "_Spring over"
 
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "_Omdøb"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Erstat"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Filkonflikt"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (ugyldig Unicode)"
-
-#: ../libcore/marlin-file-operations.c:200
+#: ../libcore/marlin-file-operations.c:155
 msgid "S_kip All"
 msgstr "Spring _alle over"
 
-#: ../libcore/marlin-file-operations.c:201
+#: ../libcore/marlin-file-operations.c:156
 msgid "_Retry"
 msgstr "_Prøv igen"
 
-#: ../libcore/marlin-file-operations.c:202
+#: ../libcore/marlin-file-operations.c:157
 msgid "Delete _All"
 msgstr "Slet _alle"
 
-#: ../libcore/marlin-file-operations.c:203
+#: ../libcore/marlin-file-operations.c:158
 msgid "_Replace"
 msgstr "_Erstat"
 
-#: ../libcore/marlin-file-operations.c:204
+#: ../libcore/marlin-file-operations.c:159
 msgid "Replace _All"
 msgstr "Erstat _alle"
 
-#: ../libcore/marlin-file-operations.c:205
+#: ../libcore/marlin-file-operations.c:160
 msgid "_Merge"
 msgstr "_Flet"
 
-#: ../libcore/marlin-file-operations.c:206
+#: ../libcore/marlin-file-operations.c:161
 msgid "Merge _All"
 msgstr "Flet _alle"
 
-#: ../libcore/marlin-file-operations.c:207
+#: ../libcore/marlin-file-operations.c:162
 msgid "Copy _Anyway"
 msgstr "Kopiér _alligevel"
 
-#: ../libcore/marlin-file-operations.c:296
+#: ../libcore/marlin-file-operations.c:243
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d sekund"
 msgstr[1] "%'d sekunder"
 
-#: ../libcore/marlin-file-operations.c:301
-#: ../libcore/marlin-file-operations.c:312
+#: ../libcore/marlin-file-operations.c:248
+#: ../libcore/marlin-file-operations.c:259
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minut"
 msgstr[1] "%'d minutter"
 
-#: ../libcore/marlin-file-operations.c:311
+#: ../libcore/marlin-file-operations.c:258
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d time"
 msgstr[1] "%'d timer"
 
-#: ../libcore/marlin-file-operations.c:319
+#: ../libcore/marlin-file-operations.c:266
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "ca. %'d time"
 msgstr[1] "ca. %'d timer"
 
-#: ../libcore/marlin-file-operations.c:395
+#: ../libcore/marlin-file-operations.c:342
 #, c-format
 msgid "Link to %s"
 msgstr "Henvisning til %s"
 
-#: ../libcore/marlin-file-operations.c:399
+#: ../libcore/marlin-file-operations.c:346
 #, c-format
 msgid "Another link to %s"
 msgstr "En anden henvisning til %s"
 
-#: ../libcore/marlin-file-operations.c:415
+#: ../libcore/marlin-file-operations.c:362
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d. henvisning til %s"
 
-#: ../libcore/marlin-file-operations.c:419
+#: ../libcore/marlin-file-operations.c:366
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d. henvisning til %s"
 
-#: ../libcore/marlin-file-operations.c:423
+#: ../libcore/marlin-file-operations.c:370
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d. henvisning til %s"
 
-#: ../libcore/marlin-file-operations.c:427
+#: ../libcore/marlin-file-operations.c:374
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d. henvisning til %s"
 
-#: ../libcore/marlin-file-operations.c:465
+#: ../libcore/marlin-file-operations.c:412
 msgid " (copy)"
 msgstr " (kopier)"
 
-#: ../libcore/marlin-file-operations.c:467
+#: ../libcore/marlin-file-operations.c:414
 msgid " (another copy)"
 msgstr " (en anden kopi)"
 
-#: ../libcore/marlin-file-operations.c:470
-#: ../libcore/marlin-file-operations.c:472
-#: ../libcore/marlin-file-operations.c:474
-#: ../libcore/marlin-file-operations.c:484
+#: ../libcore/marlin-file-operations.c:417
+#: ../libcore/marlin-file-operations.c:419
+#: ../libcore/marlin-file-operations.c:421
+#: ../libcore/marlin-file-operations.c:431
 msgid "th copy)"
 msgstr ". kopi)"
 
-#: ../libcore/marlin-file-operations.c:477
+#: ../libcore/marlin-file-operations.c:424
 msgid "st copy)"
 msgstr ". kopi)"
 
-#: ../libcore/marlin-file-operations.c:479
+#: ../libcore/marlin-file-operations.c:426
 msgid "nd copy)"
 msgstr ". kopi)"
 
-#: ../libcore/marlin-file-operations.c:481
+#: ../libcore/marlin-file-operations.c:428
 msgid "rd copy)"
 msgstr ". kopi)"
 
-#: ../libcore/marlin-file-operations.c:498
+#: ../libcore/marlin-file-operations.c:445
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (kopi)%s"
 
-#: ../libcore/marlin-file-operations.c:500
+#: ../libcore/marlin-file-operations.c:447
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (en anden kopi)%s"
 
-#: ../libcore/marlin-file-operations.c:503
-#: ../libcore/marlin-file-operations.c:505
-#: ../libcore/marlin-file-operations.c:507
-#: ../libcore/marlin-file-operations.c:521
+#: ../libcore/marlin-file-operations.c:450
+#: ../libcore/marlin-file-operations.c:452
+#: ../libcore/marlin-file-operations.c:454
+#: ../libcore/marlin-file-operations.c:468
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'d. kopi)%s"
 
-#: ../libcore/marlin-file-operations.c:515
+#: ../libcore/marlin-file-operations.c:462
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'d. kopi)%s"
 
-#: ../libcore/marlin-file-operations.c:517
+#: ../libcore/marlin-file-operations.c:464
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'d. kopi)%s"
 
-#: ../libcore/marlin-file-operations.c:519
+#: ../libcore/marlin-file-operations.c:466
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'d. kopi)%s"
 
-#: ../libcore/marlin-file-operations.c:619
+#: ../libcore/marlin-file-operations.c:566
 msgid " ("
 msgstr " ("
 
-#: ../libcore/marlin-file-operations.c:627
+#: ../libcore/marlin-file-operations.c:574
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: ../libcore/marlin-file-operations.c:1384
+#: ../libcore/marlin-file-operations.c:1251
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Er du sikker på at du vil slette \"%B\" permanent fra papirkurven?"
 
-#: ../libcore/marlin-file-operations.c:1387
+#: ../libcore/marlin-file-operations.c:1254
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -467,16 +351,16 @@ msgstr[1] ""
 "Er du sikker på at du vil slette de %'d valgte elementer fra papirkurven "
 "permanent?"
 
-#: ../libcore/marlin-file-operations.c:1397
-#: ../libcore/marlin-file-operations.c:1477
+#: ../libcore/marlin-file-operations.c:1264
+#: ../libcore/marlin-file-operations.c:1344
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Hvis du sletter et element, vil det gå tabt permanent."
 
-#: ../libcore/marlin-file-operations.c:1422
+#: ../libcore/marlin-file-operations.c:1289
 msgid "Permanently delete all items from Trash?"
 msgstr "Slet alle elementer fra papirkurven permanent?"
 
-#: ../libcore/marlin-file-operations.c:1423
+#: ../libcore/marlin-file-operations.c:1290
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -484,25 +368,24 @@ msgstr ""
 "Alle elementer i papirkurven, inklusiv dem der er på eksterne monterede "
 "drev, vil blive slettet permanent."
 
-#: ../libcore/marlin-file-operations.c:1426
+#: ../libcore/marlin-file-operations.c:1293
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr "Slet alle elementer fra papirkurven på dette drev?"
 
-#: ../libcore/marlin-file-operations.c:1427
+#: ../libcore/marlin-file-operations.c:1294
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 "Alle elementer i papirkurven på dette drev, vil blive slettet permanent."
 
-#: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
+#: ../libcore/marlin-file-operations.c:1305 ../src/View/Sidebar.vala:1473
 msgid "Empty _Trash"
 msgstr "_Tøm papirkurven"
 
-#: ../libcore/marlin-file-operations.c:1465
+#: ../libcore/marlin-file-operations.c:1332
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Er du sikker på at du permanent vil slette \"%B\"?"
 
-#: ../libcore/marlin-file-operations.c:1468
+#: ../libcore/marlin-file-operations.c:1335
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -511,35 +394,34 @@ msgstr[0] "Er du sikker på, at du permanent vil slette %'d valgt element?"
 msgstr[1] ""
 "Er du sikker på, at du permanent vil slette de %'d valgte elementer?"
 
-#: ../libcore/marlin-file-operations.c:1493
-#: ../libcore/marlin-file-operations.c:1525
-msgid "Deleting files"
-msgstr "Sletter filer"
-
-#: ../libcore/marlin-file-operations.c:1519
+#: ../libcore/marlin-file-operations.c:1378
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d resterende fil at slette"
 msgstr[1] "%'d resterende filer at slette"
 
+#: ../libcore/marlin-file-operations.c:1384
+msgid "Deleting files"
+msgstr "Sletter filer"
+
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:1538
+#: ../libcore/marlin-file-operations.c:1397
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T tilbage"
 msgstr[1] "%T tilbage"
 
-#: ../libcore/marlin-file-operations.c:1606
-#: ../libcore/marlin-file-operations.c:1640
-#: ../libcore/marlin-file-operations.c:1679
-#: ../libcore/marlin-file-operations.c:1756
-#: ../libcore/marlin-file-operations.c:2673
+#: ../libcore/marlin-file-operations.c:1464
+#: ../libcore/marlin-file-operations.c:1498
+#: ../libcore/marlin-file-operations.c:1537
+#: ../libcore/marlin-file-operations.c:1614
+#: ../libcore/marlin-file-operations.c:2404
 msgid "Error while deleting."
 msgstr "Fejl ved sletning."
 
-#: ../libcore/marlin-file-operations.c:1610
+#: ../libcore/marlin-file-operations.c:1468
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -547,64 +429,63 @@ msgstr ""
 "Filerne i mappen \"%B\" kan ikke slettes fordi du ikke har tilladelse til at "
 "se dem."
 
-#: ../libcore/marlin-file-operations.c:1613
-#: ../libcore/marlin-file-operations.c:2732
-#: ../libcore/marlin-file-operations.c:3727
+#: ../libcore/marlin-file-operations.c:1471
+#: ../libcore/marlin-file-operations.c:2463
+#: ../libcore/marlin-file-operations.c:3430
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "Der opstod en fejl ved indhenting af informationer om filerne i mappen \"%B"
 "\"."
 
-#: ../libcore/marlin-file-operations.c:1622
-#: ../libcore/marlin-file-operations.c:3736
+#: ../libcore/marlin-file-operations.c:1480
+#: ../libcore/marlin-file-operations.c:3439
 msgid "_Skip files"
 msgstr "_Spring filer over"
 
-#: ../libcore/marlin-file-operations.c:1643
+#: ../libcore/marlin-file-operations.c:1501
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
 "Mappen \"%B\" kan ikke slettes fordi du ikke har tilladelse til at læse den."
 
-#: ../libcore/marlin-file-operations.c:1646
-#: ../libcore/marlin-file-operations.c:2771
-#: ../libcore/marlin-file-operations.c:3772
+#: ../libcore/marlin-file-operations.c:1504
+#: ../libcore/marlin-file-operations.c:2502
+#: ../libcore/marlin-file-operations.c:3475
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Der opstod en fejl under læsning af mappen \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:1680
+#: ../libcore/marlin-file-operations.c:1538
 msgid "Could not remove the folder %B."
 msgstr "Kunne ikke fjerne mappen %B."
 
-#: ../libcore/marlin-file-operations.c:1757
+#: ../libcore/marlin-file-operations.c:1615
 msgid "There was an error deleting %B."
 msgstr "Der opstod en fejl under sletning af %B."
 
-#: ../libcore/marlin-file-operations.c:1837
-#: ../libcore/marlin-file-operations.c:1849
+#: ../libcore/marlin-file-operations.c:1699
 msgid "Moving files to trash"
 msgstr "Flytter filer til papirkurven"
 
-#: ../libcore/marlin-file-operations.c:1851
+#: ../libcore/marlin-file-operations.c:1701
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d fil tilbage at smide i papirkurv"
 msgstr[1] "%'d filer tilbage at smide i papirkurv"
 
-#: ../libcore/marlin-file-operations.c:1946
-#: ../libcore/marlin-file-operations.c:1949
-#: ../libcore/marlin-file-operations.c:1952
+#: ../libcore/marlin-file-operations.c:1795
+#: ../libcore/marlin-file-operations.c:1798
+#: ../libcore/marlin-file-operations.c:1801
 msgid "Cannot move file to trash or delete it"
 msgstr "Kan ikke flytte filen til papirkurven eller slette den"
 
-#: ../libcore/marlin-file-operations.c:1947
+#: ../libcore/marlin-file-operations.c:1796
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr "Det er ikke tilladt at slette filer på et skrivebeskyttet filsystem."
 
-#: ../libcore/marlin-file-operations.c:1950
+#: ../libcore/marlin-file-operations.c:1799
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -612,18 +493,18 @@ msgstr ""
 "Det er ikke tilladt at slette filer i mapper du ikke har skrivetilladelse "
 "til."
 
-#: ../libcore/marlin-file-operations.c:1953
+#: ../libcore/marlin-file-operations.c:1802
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr "Det er ikke tilladt at slette mapper du ikke har skrivetilladelse til."
 
-#: ../libcore/marlin-file-operations.c:1955
+#: ../libcore/marlin-file-operations.c:1804
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 "Kan ikke flytte filen til papirkurven. Prøv at slette den med det samme?"
 
-#: ../libcore/marlin-file-operations.c:1956
+#: ../libcore/marlin-file-operations.c:1805
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
@@ -631,11 +512,11 @@ msgstr ""
 "Filen kunne ikke flyttes til papirkurven. Se detaljer nedenfor for "
 "yderligere information."
 
-#: ../libcore/marlin-file-operations.c:1960
+#: ../libcore/marlin-file-operations.c:1809
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "Kan ikke flytte filen til papirkurven. Prøv at slette den?"
 
-#: ../libcore/marlin-file-operations.c:1961
+#: ../libcore/marlin-file-operations.c:1810
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
@@ -643,7 +524,7 @@ msgstr ""
 "Denne fil kunne ikke flyttes til papirkurven. Du kan muligvis heller ikke "
 "slette den."
 
-#: ../libcore/marlin-file-operations.c:1966
+#: ../libcore/marlin-file-operations.c:1815
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -651,89 +532,73 @@ msgstr ""
 "\n"
 " Sletning af en fil fjerner den permanent"
 
-#: ../libcore/marlin-file-operations.c:2156
+#: ../libcore/marlin-file-operations.c:2005
 msgid "Trashing Files"
 msgstr "Flytter filer til papirkurven"
 
-#: ../libcore/marlin-file-operations.c:2158
+#: ../libcore/marlin-file-operations.c:2007
 msgid "Deleting Files"
 msgstr "Sletter filer"
 
-#: ../libcore/marlin-file-operations.c:2227
+#: ../libcore/marlin-file-operations.c:2076
 msgid "Unable to eject %V"
 msgstr "Kan ikke skubbe %V ud"
 
-#: ../libcore/marlin-file-operations.c:2229
+#: ../libcore/marlin-file-operations.c:2078
 msgid "Unable to unmount %V"
 msgstr "Kunne ikke afmontere %V"
 
-#: ../libcore/marlin-file-operations.c:2408
-msgid "Do you want to empty the trash before you unmount?"
-msgstr "Ønsker du at tømme papirkurven før du afmonterer?"
-
-#: ../libcore/marlin-file-operations.c:2410
-msgid ""
-"In order to regain the free space on this volume the trash must be emptied. "
-"All trashed items on the volume will be permanently lost."
-msgstr ""
-"For at få den frie plads tilbage på enheden skal papirkurven tømmes. Alle "
-"elementer i papirkurven på denne enhed vil permanent gå tabt."
-
-#: ../libcore/marlin-file-operations.c:2416
-msgid "Do _not Empty Trash"
-msgstr "Tøm _ikke papirkurven"
-
-#: ../libcore/marlin-file-operations.c:2530
+#: ../libcore/marlin-file-operations.c:2273
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Kan ikke montere %s"
 
-#: ../libcore/marlin-file-operations.c:2608
+#: ../libcore/marlin-file-operations.c:2351
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Forbereder kopiering af %'d fil (%S)"
 msgstr[1] "Forbereder kopiering af %'d filer (%S)"
 
-#: ../libcore/marlin-file-operations.c:2614
+#: ../libcore/marlin-file-operations.c:2357
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Forbereder flytning af %'d fil (%S)"
 msgstr[1] "Forbereder flytning af %'d filer (%S)"
 
-#: ../libcore/marlin-file-operations.c:2620
+#: ../libcore/marlin-file-operations.c:2363
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Forbereder sletning af %'d fil (%S)"
 msgstr[1] "Forbereder sletning af %'d filer (%S)"
 
-#: ../libcore/marlin-file-operations.c:2626
+#: ../libcore/marlin-file-operations.c:2369
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Forbereder kassering af %'d fil"
 msgstr[1] "Forbereder kassering af %'d filer"
 
-#: ../libcore/marlin-file-operations.c:2669
-#: ../libcore/marlin-file-operations.c:3587
-#: ../libcore/marlin-file-operations.c:3719
-#: ../libcore/marlin-file-operations.c:3764
+#: ../libcore/marlin-file-operations.c:2400
+#: ../libcore/marlin-file-operations.c:3290
+#: ../libcore/marlin-file-operations.c:3422
+#: ../libcore/marlin-file-operations.c:3467
 msgid "Error while copying."
 msgstr "Fejl ved kopiering."
 
-#: ../libcore/marlin-file-operations.c:2671
-#: ../libcore/marlin-file-operations.c:3717
-#: ../libcore/marlin-file-operations.c:3762
+#: ../libcore/marlin-file-operations.c:2402
+#: ../libcore/marlin-file-operations.c:3420
+#: ../libcore/marlin-file-operations.c:3465
 msgid "Error while moving."
 msgstr "Fejl ved flytning."
 
-#: ../libcore/marlin-file-operations.c:2675
+#: ../libcore/marlin-file-operations.c:2406
 msgid "Error while moving files to trash."
 msgstr "Fejl ved flytning af filer til papirkurven."
 
-#: ../libcore/marlin-file-operations.c:2729
+#: ../libcore/marlin-file-operations.c:2460
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -741,7 +606,7 @@ msgstr ""
 "Filer i mappen \"%B\" kan ikke håndteres fordi du ikke har tilladelse til at "
 "se dem."
 
-#: ../libcore/marlin-file-operations.c:2768
+#: ../libcore/marlin-file-operations.c:2499
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -749,37 +614,37 @@ msgstr ""
 "Mappen \"%B\" kan ikke håndteres fordi du ikke har tilladelse til at læse "
 "den."
 
-#: ../libcore/marlin-file-operations.c:2844
+#: ../libcore/marlin-file-operations.c:2575
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Filen \"%B\" kan ikke håndteres fordi du ikke har tilladelse til at læse den."
 
-#: ../libcore/marlin-file-operations.c:2847
+#: ../libcore/marlin-file-operations.c:2578
 msgid "There was an error getting information about \"%B\"."
 msgstr "Der opstod en fejl ved indhentning af information om \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:2947
-#: ../libcore/marlin-file-operations.c:2989
-#: ../libcore/marlin-file-operations.c:3022
-#: ../libcore/marlin-file-operations.c:3052
+#: ../libcore/marlin-file-operations.c:2678
+#: ../libcore/marlin-file-operations.c:2720
+#: ../libcore/marlin-file-operations.c:2753
+#: ../libcore/marlin-file-operations.c:2783
 msgid "Error while copying to \"%B\"."
 msgstr "Fejl ved kopiering til \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:2951
+#: ../libcore/marlin-file-operations.c:2682
 msgid "You do not have permissions to access the destination folder."
 msgstr "Du har ikke tilladelse til at tilgå destinationsmappen."
 
-#: ../libcore/marlin-file-operations.c:2953
+#: ../libcore/marlin-file-operations.c:2684
 msgid "There was an error getting information about the destination."
 msgstr "Der opstod en fejl ved indhentning af information om destinationen."
 
-#: ../libcore/marlin-file-operations.c:2990
+#: ../libcore/marlin-file-operations.c:2721
 msgid "The destination is not a folder."
 msgstr "Destinationen er ikke en mappe."
 
-#: ../libcore/marlin-file-operations.c:3023
+#: ../libcore/marlin-file-operations.c:2754
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -787,58 +652,58 @@ msgstr ""
 "Der er ikke tilstrækkelig plads på destinationen. Prøv at fjerne filer for "
 "at gøre plads."
 
-#: ../libcore/marlin-file-operations.c:3025
+#: ../libcore/marlin-file-operations.c:2756
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Der er %S tilgængelig, men %S kræves."
 
-#: ../libcore/marlin-file-operations.c:3053
+#: ../libcore/marlin-file-operations.c:2784
 msgid "The destination is read-only."
 msgstr "Destinationen er skrivebeskyttet."
 
-#: ../libcore/marlin-file-operations.c:3114
+#: ../libcore/marlin-file-operations.c:2843
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Flytter \"%B\" til \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3115
+#: ../libcore/marlin-file-operations.c:2844
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Kopierer \"%B\" til \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3119
+#: ../libcore/marlin-file-operations.c:2848
 msgid "Duplicating \"%B\""
 msgstr "Duplikerer \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3123
+#: ../libcore/marlin-file-operations.c:2852
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Flytter %'d fil (i \"%B\") til \"%B\""
 msgstr[1] "Flytter %'d filer (i \"%B\") til \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3126
+#: ../libcore/marlin-file-operations.c:2855
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopierer %'d fil (i \"%B\") til \"%B\""
 msgstr[1] "Kopierer %'d filer (i \"%B\") til \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3133
+#: ../libcore/marlin-file-operations.c:2862
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Duplikerer %'d fil (i \"%B\")"
 msgstr[1] "Duplikerer %'d filer (i \"%B\")"
 
-#: ../libcore/marlin-file-operations.c:3142
+#: ../libcore/marlin-file-operations.c:2871
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Flytter %'d fil til \"%B\""
 msgstr[1] "Flytter %'d filer til \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3146
+#: ../libcore/marlin-file-operations.c:2875
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopierer %'d fil til \"%B\""
 msgstr[1] "Kopierer %'d filer til \"%B\""
 
-#: ../libcore/marlin-file-operations.c:3151
+#: ../libcore/marlin-file-operations.c:2880
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -846,7 +711,7 @@ msgstr[0] "Duplikerer %'d fil"
 msgstr[1] "Duplikerer %'d filer"
 
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
-#: ../libcore/marlin-file-operations.c:3202
+#: ../libcore/marlin-file-operations.c:2906
 #, c-format
 msgid "%S of %S"
 msgstr "%S af %S"
@@ -854,13 +719,13 @@ msgstr "%S af %S"
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
 #. / "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:3212
+#: ../libcore/marlin-file-operations.c:2916
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S af %S - %T tilbage (%S/sek)"
 msgstr[1] "%S af %S - %T tilbage (%S/sek)"
 
-#: ../libcore/marlin-file-operations.c:3591
+#: ../libcore/marlin-file-operations.c:3294
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -868,11 +733,11 @@ msgstr ""
 "Mappen \"%B\" kan ikke kopieres fordi du ikke har tilladelse til at oprette "
 "den på destinationen."
 
-#: ../libcore/marlin-file-operations.c:3594
+#: ../libcore/marlin-file-operations.c:3297
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Der opstod en fejl under oprettelse af mappen \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:3724
+#: ../libcore/marlin-file-operations.c:3427
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -880,611 +745,547 @@ msgstr ""
 "Filer i mappen \"%B\" kan ikke kopieres fordi du ikke har tilladelse til at "
 "se dem."
 
-#: ../libcore/marlin-file-operations.c:3769
+#: ../libcore/marlin-file-operations.c:3472
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 "Mappen \"%B\" kan ikke kopieres fordi du ikke har tilladelse til at læse den."
 
-#: ../libcore/marlin-file-operations.c:3814
-#: ../libcore/marlin-file-operations.c:4520
+#: ../libcore/marlin-file-operations.c:3517
+#: ../libcore/marlin-file-operations.c:4156
 msgid "Error while moving \"%B\"."
 msgstr "Fejl ved flytning af \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:3815
+#: ../libcore/marlin-file-operations.c:3518
 msgid "Could not remove the source folder."
 msgstr "Kunne ikke fjerne kildemappen."
 
-#: ../libcore/marlin-file-operations.c:3900
-#: ../libcore/marlin-file-operations.c:3941
-#: ../libcore/marlin-file-operations.c:4522
+#: ../libcore/marlin-file-operations.c:3603
+#: ../libcore/marlin-file-operations.c:3644
+#: ../libcore/marlin-file-operations.c:4158
 msgid "Error while copying \"%B\"."
 msgstr "Fejl ved kopiering af \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:3901
+#: ../libcore/marlin-file-operations.c:3604
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Kunne ikke fjerne filer fra den allerede eksisterende mappe %F."
 
-#: ../libcore/marlin-file-operations.c:3942
+#: ../libcore/marlin-file-operations.c:3645
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Kunne ikke fjerne den allerede eksisterende fil %F."
 
-#: ../libcore/marlin-file-operations.c:4272
-#: ../libcore/marlin-file-operations.c:4948
+#: ../libcore/marlin-file-operations.c:3919
+#: ../libcore/marlin-file-operations.c:4570
 msgid "You cannot move a folder into itself."
 msgstr "Du kan ikke flytte en mappe ind i den selv."
 
-#: ../libcore/marlin-file-operations.c:4273
-#: ../libcore/marlin-file-operations.c:4949
+#: ../libcore/marlin-file-operations.c:3920
+#: ../libcore/marlin-file-operations.c:4571
 msgid "You cannot copy a folder into itself."
 msgstr "Du kan ikke kopiere en mappe ind i den selv."
 
-#: ../libcore/marlin-file-operations.c:4274
-#: ../libcore/marlin-file-operations.c:4950
+#: ../libcore/marlin-file-operations.c:3921
+#: ../libcore/marlin-file-operations.c:4572
 msgid "The destination folder is inside the source folder."
 msgstr "Destinationsmappen er inden i kildemappen."
 
-#: ../libcore/marlin-file-operations.c:4305
+#: ../libcore/marlin-file-operations.c:3952
 msgid "You cannot move a file over itself."
 msgstr "Du kan ikke flytte en fil ind i den selv."
 
-#: ../libcore/marlin-file-operations.c:4306
+#: ../libcore/marlin-file-operations.c:3953
 msgid "You cannot copy a file over itself."
 msgstr "Du kan ikke kopiere en fil ind i den selv."
 
-#: ../libcore/marlin-file-operations.c:4307
+#: ../libcore/marlin-file-operations.c:3954
 msgid "The source file would be overwritten by the destination."
 msgstr "Kildefilen ville blive overskrevet af destinationen."
 
-#: ../libcore/marlin-file-operations.c:4524
+#: ../libcore/marlin-file-operations.c:4160
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "Kunne ikke fjerne den allerede eksisterende fil med det samme navn i %F."
 
-#: ../libcore/marlin-file-operations.c:4594
+#: ../libcore/marlin-file-operations.c:4230
 msgid "Cannot copy \"%B\" here."
 msgstr "Kan ikke kopiere \"%B\" hertil."
 
-#: ../libcore/marlin-file-operations.c:4595
+#: ../libcore/marlin-file-operations.c:4231
 msgid "There was an error copying the file into %B."
 msgstr "Der opstod en fejl under kopiering af filen til %B."
 
-#: ../libcore/marlin-file-operations.c:4822
+#: ../libcore/marlin-file-operations.c:4453
 msgid "Copying Files"
 msgstr "Kopierer filer"
 
-#: ../libcore/marlin-file-operations.c:4848
+#: ../libcore/marlin-file-operations.c:4479
 msgid "Preparing to move to \"%B\""
 msgstr "Forbereder flytning til \"%B\""
 
-#: ../libcore/marlin-file-operations.c:4860
+#: ../libcore/marlin-file-operations.c:4483
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Forbereder flytning af %'d fil"
 msgstr[1] "Forbereder flytning af %'d filer"
 
-#: ../libcore/marlin-file-operations.c:5108
+#: ../libcore/marlin-file-operations.c:4724
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr "Fejl under flytning af \"%F\"."
 
-#: ../libcore/marlin-file-operations.c:5109
+#: ../libcore/marlin-file-operations.c:4725
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Der opstod en fejl under flytning af filen ind i %F."
 
-#: ../libcore/marlin-file-operations.c:5371
+#: ../libcore/marlin-file-operations.c:4982
 msgid "Moving Files"
 msgstr "Flytter filer"
 
-#: ../libcore/marlin-file-operations.c:5400
+#: ../libcore/marlin-file-operations.c:5011
 msgid "Creating links in \"%B\""
 msgstr "Opretter henvisninger i \"%B\""
 
-#: ../libcore/marlin-file-operations.c:5411
+#: ../libcore/marlin-file-operations.c:5015
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Opretter henvisning til %'d fil"
 msgstr[1] "Opretter henvisninger til %'d filer"
 
-#: ../libcore/marlin-file-operations.c:5552
+#: ../libcore/marlin-file-operations.c:5155
 msgid "Error while creating link to %B."
 msgstr "Fejl ved oprettelse af henvisning til %B."
 
-#: ../libcore/marlin-file-operations.c:5554
+#: ../libcore/marlin-file-operations.c:5157
 msgid "Symbolic links only supported for local files"
 msgstr "Symbolske henvisninger understøttes kun for lokale filer"
 
-#: ../libcore/marlin-file-operations.c:5557
+#: ../libcore/marlin-file-operations.c:5160
 msgid "The target doesn't support symbolic links."
 msgstr "Destinationen understøtter ikke symbolske henvisninger."
 
-#: ../libcore/marlin-file-operations.c:5560
+#: ../libcore/marlin-file-operations.c:5163
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Der opstod en fejl under oprettelse af den symbolske henvisning i %F."
 
-#: ../libcore/marlin-file-operations.c:5888
-#: ../libcore/marlin-file-operations.c:5891
+#: ../libcore/marlin-file-operations.c:5481
 msgid "Setting permissions"
 msgstr "Ændrer tilladelser"
 
-#: ../libcore/marlin-file-operations.c:6003
+#: ../libcore/marlin-file-operations.c:5577
 msgid "Cannot copy into trash."
 msgstr "Kan ikke kopiere til papirkurven."
 
-#: ../libcore/marlin-file-operations.c:6004
+#: ../libcore/marlin-file-operations.c:5578
 msgid "It is not permitted to copy files into the trash"
 msgstr "Det er ikke tilladt at kopiere filer til papirkurven"
 
-#: ../libcore/marlin-file-operations.c:6145
+#: ../libcore/marlin-file-operations.c:5716
 msgid "untitled folder"
 msgstr "mappe uden navn"
 
-#: ../libcore/marlin-file-operations.c:6153
+#: ../libcore/marlin-file-operations.c:5724
 msgid "new file"
 msgstr "ny fil"
 
-#: ../libcore/marlin-file-operations.c:6324
+#: ../libcore/marlin-file-operations.c:5895
 msgid "Error while creating directory %B."
 msgstr "Fejl ved oprettelse af mappen %B."
 
-#: ../libcore/marlin-file-operations.c:6326
+#: ../libcore/marlin-file-operations.c:5897
 msgid "Error while creating file %B."
 msgstr "Fejl ved oprettelse af filen %B."
 
-#: ../libcore/marlin-file-operations.c:6328
+#: ../libcore/marlin-file-operations.c:5899
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Der opstod en fejl under oprettelse af mappen i %F."
 
-#: ../libcore/marlin-file-operations.c:6650
-msgid "Emptying the trash"
-msgstr "Tømmer papirkurven"
-
-#: ../libcore/marlin-file-operations.c:6662
+#: ../libcore/marlin-file-operations.c:6209
 msgid "Emptying Trash"
 msgstr "Tømmer papirkurven"
 
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Forbereder"
-
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
-msgid "Today at %-I:%M %p"
-msgstr "I dag klokken %H:%M"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
-msgid "Yesterday at %-I:%M %p"
-msgstr "I går klokken %H:%M"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d. %b kl. %H:%M"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%a %-d. %b %Y kl. %H:%M"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Vis flere _detaljer"
-
-#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
-msgid "Inaccessible"
-msgstr "Utilgængelig"
-
-#: ../libcore/gof-file.c:377
-#, c-format
-msgid "link to %s"
-msgstr "henvisning til %s"
-
-#: ../libcore/gof-file.c:1938
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Kunne ikke fortolke desktop filen: %s"
-
-#: ../libcore/gof-file.c:1975
-msgid "No Exec field specified"
-msgstr "Intet 'Exec' felt angivet"
-
-#: ../libcore/gof-file.c:1994
-msgid "No URL field specified"
-msgstr "Intet URL-felt angivet"
-
-#: ../libcore/gof-file.c:2000
-msgid "Invalid desktop file"
-msgstr "Ugyldig skrivebordsfil"
-
-#: ../libcore/gof-file.c:2295
-msgid "Slashes are not allowed in filenames"
-msgstr "Skråstreger er ikke tilladt i filnavne"
-
-#: ../libcore/gof-file.c:2315
-msgid "Toplevel files cannot be renamed"
-msgstr "Topniveau-filer kan ikke omdøbes"
-
-#: ../libcore/marlin-undostack-manager.c:635
+#: ../libcore/marlin-undostack-manager.c:644
 msgid "Original location could not be determined"
 msgstr "Kunne ikke fastslå original placering"
 
-#: ../libcore/marlin-undostack-manager.c:636
+#: ../libcore/marlin-undostack-manager.c:645
 msgid "Open trash folder and restore manually"
 msgstr "Åbn papirkurven og gendan manuelt"
 
-#: ../libcore/marlin-undostack-manager.c:1225
+#: ../libcore/marlin-undostack-manager.c:1236
 #, c-format
 msgid "Delete %d copied items"
 msgstr "Slet %d kopierede elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
+#: ../libcore/marlin-undostack-manager.c:1239
+#: ../libcore/marlin-undostack-manager.c:1249
+#: ../libcore/marlin-undostack-manager.c:1280
 #, c-format
 msgid "Delete '%s'"
 msgstr "Slet \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1235
+#: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "Slet %d redundante elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1246
+#: ../libcore/marlin-undostack-manager.c:1257
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "Flyt %d elementer tilbage til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1250
+#: ../libcore/marlin-undostack-manager.c:1261
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "Flyt \"%s\" tilbage til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
+#: ../libcore/marlin-undostack-manager.c:1270
+#: ../libcore/marlin-undostack-manager.c:1437
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "Omdøb \"%s\" til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
+#: ../libcore/marlin-undostack-manager.c:1289
+#: ../libcore/marlin-undostack-manager.c:1484
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "Gendan %d elementer fra papirkurven"
 
-#: ../libcore/marlin-undostack-manager.c:1286
+#: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "Gendan \"%s\" til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1297
+#: ../libcore/marlin-undostack-manager.c:1308
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "Flyt %d elementer tilbage til papirkurv"
 
-#: ../libcore/marlin-undostack-manager.c:1300
+#: ../libcore/marlin-undostack-manager.c:1311
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "Flyt \"%s\" tilbage til papirkurven"
 
-#: ../libcore/marlin-undostack-manager.c:1309
+#: ../libcore/marlin-undostack-manager.c:1320
 #, c-format
 msgid "Delete links to %d items"
 msgstr "Slet henvisninger til %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1312
+#: ../libcore/marlin-undostack-manager.c:1323
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Slet henvisning til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1322
+#: ../libcore/marlin-undostack-manager.c:1333
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "Genopret oprindelige rettigheder af elementerne indeholdt i \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1330
+#: ../libcore/marlin-undostack-manager.c:1341
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "Gendan de oprindelige tilladelser for \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1339
+#: ../libcore/marlin-undostack-manager.c:1350
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "Gendan gruppen for \"%s\" til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1349
+#: ../libcore/marlin-undostack-manager.c:1360
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "Gendan ejer af \"%s\" til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1388
+#: ../libcore/marlin-undostack-manager.c:1399
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "Kopiér %d elementer til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1392
+#: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "Kopiér \"%s\" til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1400
+#: ../libcore/marlin-undostack-manager.c:1411
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "%d redundante elementer i \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1405
+#: ../libcore/marlin-undostack-manager.c:1416
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "Duplikér \"%s\" i \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1413
+#: ../libcore/marlin-undostack-manager.c:1424
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "Flyt %d elementer til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1417
+#: ../libcore/marlin-undostack-manager.c:1428
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "Flyt \"%s\" til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1435
+#: ../libcore/marlin-undostack-manager.c:1446
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Opret ny fil \"%s\" fra skabelon "
 
-#: ../libcore/marlin-undostack-manager.c:1442
+#: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Opret tom fil \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1449
+#: ../libcore/marlin-undostack-manager.c:1460
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Opret ny mappe \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1457
+#: ../libcore/marlin-undostack-manager.c:1468
 #, c-format
 msgid "Move %d items to trash"
 msgstr "Flyt %d elementer til papirkurven"
 
-#: ../libcore/marlin-undostack-manager.c:1463
+#: ../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "Flyt \"%s\" til papirkurven"
 
-#: ../libcore/marlin-undostack-manager.c:1476
+#: ../libcore/marlin-undostack-manager.c:1487
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "Gendan \"%s\" fra papirkurven"
 
-#: ../libcore/marlin-undostack-manager.c:1485
+#: ../libcore/marlin-undostack-manager.c:1496
 #, c-format
 msgid "Create links to %d items"
 msgstr "Opret henvisning til %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1488
+#: ../libcore/marlin-undostack-manager.c:1499
 #, c-format
 msgid "Create link to '%s'"
 msgstr "Opret henvisning til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1497
+#: ../libcore/marlin-undostack-manager.c:1508
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "Angiv tilladelserne for elementerne inkluderet i \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1505
+#: ../libcore/marlin-undostack-manager.c:1516
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "Angiv tilladelser for \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1514
+#: ../libcore/marlin-undostack-manager.c:1525
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "Sæt gruppen for \"%s\" til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1524
+#: ../libcore/marlin-undostack-manager.c:1535
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "Sæt ejeren af \"%s\" til \"%s\""
 
-#: ../libcore/marlin-undostack-manager.c:1556
+#: ../libcore/marlin-undostack-manager.c:1567
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "_Fortryd kopiering af %d element"
 msgstr[1] "_Fortryd kopiering af %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1561
+#: ../libcore/marlin-undostack-manager.c:1572
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "_Fortryd duplikering af %d element"
 msgstr[1] "_Fortryd duplikering af %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1566
+#: ../libcore/marlin-undostack-manager.c:1577
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "_Fortryd flytning af %d element"
 msgstr[1] "_Fortryd flytning af %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1571
+#: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "_Fortryd omdøbning af %d element"
 msgstr[1] "_Fortryd omdøbning af %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1575
+#: ../libcore/marlin-undostack-manager.c:1586
 msgid "_Undo creation of an empty file"
 msgstr "_Fortryd oprettelse af tom fil"
 
-#: ../libcore/marlin-undostack-manager.c:1578
+#: ../libcore/marlin-undostack-manager.c:1589
 msgid "_Undo creation of a file from template"
 msgstr "_Fotryd oprettelse af fil fra skabelon"
 
-#: ../libcore/marlin-undostack-manager.c:1582
+#: ../libcore/marlin-undostack-manager.c:1593
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "_Fortryd oprettelse af %d mappe"
 msgstr[1] "_Fortryd oprettelse af %d mapper"
 
-#: ../libcore/marlin-undostack-manager.c:1587
+#: ../libcore/marlin-undostack-manager.c:1598
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "_Fortryd flytning af %d element til papirkurven"
 msgstr[1] "_Fortryd flytning af %d elementer til papirkurven"
 
-#: ../libcore/marlin-undostack-manager.c:1592
+#: ../libcore/marlin-undostack-manager.c:1603
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "_Fortryd gendannelse af %d element fra papirkurven"
 msgstr[1] "_Fortryd gendannelse af %d elementer fra papirkurven"
 
-#: ../libcore/marlin-undostack-manager.c:1597
+#: ../libcore/marlin-undostack-manager.c:1608
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "_Fortryd oprettelse af henvisning til %d element"
 msgstr[1] "_Fortryd oprettelse af henvisninger til %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1602
+#: ../libcore/marlin-undostack-manager.c:1613
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "_Fortryd sletning af %d element"
 msgstr[1] "_Fortryd sletning af %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1607
+#: ../libcore/marlin-undostack-manager.c:1618
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] "Fortryd rekursiv tilladelsesændring for %d element"
 msgstr[1] "Fortryd rekursiv rettighedsændring for %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1613
+#: ../libcore/marlin-undostack-manager.c:1624
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "Fortryd ændring af tilladelser på %d element"
 msgstr[1] "Fortryd ændring af tilladelser på %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1618
+#: ../libcore/marlin-undostack-manager.c:1629
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "Fortryd ændring af gruppe for %d element"
 msgstr[1] "Fortryd ændring af gruppe for %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1623
+#: ../libcore/marlin-undostack-manager.c:1634
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "Fortryd ændring af ejer for %d element"
 msgstr[1] "Fortryd ændring af ejer for %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1651
+#: ../libcore/marlin-undostack-manager.c:1662
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "_Gentag kopiering af %d element"
 msgstr[1] "_Gentag kopiering af %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1656
+#: ../libcore/marlin-undostack-manager.c:1667
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "_Gentag duplikering af %d element"
 msgstr[1] "_Gentag duplikering af %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1661
+#: ../libcore/marlin-undostack-manager.c:1672
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "_Gentag flytning af %d element"
 msgstr[1] "_Gentag flytning af %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1666
+#: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "_Gentag omdøbning af %d element"
 msgstr[1] "_Gentag omdøbning af %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1670
+#: ../libcore/marlin-undostack-manager.c:1681
 msgid "_Redo creation of an empty file"
 msgstr "_Gentag oprettelse af tom fil"
 
-#: ../libcore/marlin-undostack-manager.c:1673
+#: ../libcore/marlin-undostack-manager.c:1684
 msgid "_Redo creation of a file from template"
 msgstr "_Gentag oprettelse af fil fra skabelon"
 
-#: ../libcore/marlin-undostack-manager.c:1677
+#: ../libcore/marlin-undostack-manager.c:1688
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "_Gentag oprettelse af %d mappe"
 msgstr[1] "_Gentag oprettelse af %d mapper"
 
-#: ../libcore/marlin-undostack-manager.c:1682
+#: ../libcore/marlin-undostack-manager.c:1693
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "_Gentag flytning af %d element til papirkurv"
 msgstr[1] "_Gentag flytning af %d elementer til papirkurv"
 
-#: ../libcore/marlin-undostack-manager.c:1687
+#: ../libcore/marlin-undostack-manager.c:1698
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "_Gentag gendannelse af %d element fra papirkurv"
 msgstr[1] "_Gentag gendannelse af %d elementer fra papirkurv"
 
-#: ../libcore/marlin-undostack-manager.c:1692
+#: ../libcore/marlin-undostack-manager.c:1703
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "_Gentag oprettelse af henvisning til %d element"
 msgstr[1] "_Gentag oprettelse af henvisninger til %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1697
+#: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "_Gentag sletning af %d element"
 msgstr[1] "_Gentag sletning af %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1702
+#: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] "Gentag rekursiv ændring af tilladelserne på %d element"
 msgstr[1] "Gentag rekursiv ændring af tilladelserne på %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1708
+#: ../libcore/marlin-undostack-manager.c:1719
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "Gentag ændring af tilladelserne på %d element"
 msgstr[1] "Gentag ændring af tilladelserne på %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1713
+#: ../libcore/marlin-undostack-manager.c:1724
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "_Gentag ændring af gruppe for %d element"
 msgstr[1] "_Gentag ændring af gruppe for %d elementer"
 
-#: ../libcore/marlin-undostack-manager.c:1718
+#: ../libcore/marlin-undostack-manager.c:1729
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
@@ -1501,310 +1302,76 @@ msgstr "Forrige"
 msgid "Next"
 msgstr "Næste"
 
-#: ../src/View/AbstractDirectoryView.vala:581
-msgid "Failed to preview"
-msgstr "Forhåndsvisning fejlede"
-
-#: ../src/View/AbstractDirectoryView.vala:832
+#: ../src/View/AbstractDirectoryView.vala:816
 msgid "Cannot open this file"
 msgstr "Kan ikke åbne denne fil"
 
-#: ../src/View/AbstractDirectoryView.vala:845
+#: ../src/View/AbstractDirectoryView.vala:829
 msgid "Cannot identify file type to open"
 msgstr "Kan ikke identificere filen som skal åbnes"
 
-#: ../src/View/AbstractDirectoryView.vala:1556
+#: ../src/View/AbstractDirectoryView.vala:1564
 msgid "Cannot drop this file"
 msgstr "Kan ikke droppe denne fil"
 
-#: ../src/View/AbstractDirectoryView.vala:1556
+#: ../src/View/AbstractDirectoryView.vala:1564
 msgid "Invalid file name provided"
 msgstr "Ugyldigt filnavn angivet"
 
-#: ../src/View/AbstractDirectoryView.vala:2011
+#: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Invalid"
 msgstr "Ugyldig"
 
-#: ../src/View/AbstractDirectoryView.vala:2017
+#: ../src/View/AbstractDirectoryView.vala:2038
 msgid "Run"
 msgstr "Kør"
 
-#: ../src/View/AbstractDirectoryView.vala:2022
+#: ../src/View/AbstractDirectoryView.vala:2042
 msgid "Open in %s"
 msgstr "Åbn i %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2032
+#: ../src/View/AbstractDirectoryView.vala:2052
 msgid "Open in"
 msgstr "Åben i"
 
-#: ../src/View/AbstractDirectoryView.vala:2034
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:461
+#: ../src/View/AbstractDirectoryView.vala:2054
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open with"
 msgstr "Åbn med"
 
-#: ../src/View/AbstractDirectoryView.vala:2094
-msgid "Other Application"
-msgstr "Andet program"
+#: ../src/View/AbstractDirectoryView.vala:2113
+#: ../src/Dialogs/PropertiesWindow.vala:602
+msgid "Other Application…"
+msgstr "Andet program…"
 
-#: ../src/View/AbstractDirectoryView.vala:2355
+#: ../src/View/AbstractDirectoryView.vala:2377
 msgid "Untitled %s"
 msgstr "Unavngivet %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2689
-#: ../src/View/AbstractDirectoryView.vala:2872
+#: ../src/View/AbstractDirectoryView.vala:2713
+#: ../src/View/AbstractDirectoryView.vala:2905
 msgid "Cannot remove files from here"
 msgstr "Kan ikke fjerne filer herfra"
 
-#: ../src/View/AbstractDirectoryView.vala:2690
-#: ../src/View/AbstractDirectoryView.vala:2860
-#: ../src/View/AbstractDirectoryView.vala:2873
+#: ../src/View/AbstractDirectoryView.vala:2714
+#: ../src/View/AbstractDirectoryView.vala:2890
+#: ../src/View/AbstractDirectoryView.vala:2906
 msgid "You do not have permission to change this location"
 msgstr "Du har ikke rettigheder til at ændre denne placering"
 
-#: ../src/View/AbstractDirectoryView.vala:2838
+#: ../src/View/AbstractDirectoryView.vala:2865
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikke kopiere filer der er i papirkurven"
 
-#: ../src/View/AbstractDirectoryView.vala:2839
+#: ../src/View/AbstractDirectoryView.vala:2866
 msgid "Cutting the selection instead"
 msgstr "Klipper det markerede i stedet"
 
-#: ../src/View/AbstractDirectoryView.vala:2859
+#: ../src/View/AbstractDirectoryView.vala:2889
 msgid "Cannot paste files here"
 msgstr "Kan ikke indsætte filer her"
 
-#: ../src/View/Widgets/LocationBar.vala:186
-msgid "Reload this folder"
-msgstr "Genindlæs denne mappe"
-
-#: ../src/View/Widgets/LocationBar.vala:189
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
-msgid "Enter search term or path"
-msgstr "Indtast søgeterm eller sti"
-
-#: ../src/View/Widgets/OverlayBar.vala:230
-msgid "%u folders"
-msgstr "%u mapper"
-
-#: ../src/View/Widgets/OverlayBar.vala:232
-#: ../src/View/Widgets/OverlayBar.vala:240
-msgid " and %u other item (%s) selected"
-msgstr " og %u yderligere element (%s) er valgt"
-
-#: ../src/View/Widgets/OverlayBar.vala:233
-#: ../src/View/Widgets/OverlayBar.vala:241
-msgid " and %u other items (%s) selected"
-msgstr " og %u yderligere elementer (%s) er valgt"
-
-#: ../src/View/Widgets/OverlayBar.vala:236
-#: ../src/View/Widgets/OverlayBar.vala:244
-msgid " selected"
-msgstr " valgt"
-
-#: ../src/View/Widgets/OverlayBar.vala:238
-#: ../src/Dialogs/PropertiesWindow.vala:1162
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] "%u mappe"
-msgstr[1] "%u mapper"
-
-#: ../src/View/Widgets/OverlayBar.vala:246
-msgid "%u items selected (%s)"
-msgstr "%u elementer valgt (%s)"
-
-#. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/Widgets/OverlayBar.vala:287
-msgid "%u sub-folder, "
-msgstr "%u undermappe, "
-
-#: ../src/View/Widgets/OverlayBar.vala:287
-msgid "%u sub-folders, "
-msgstr "%u undermapper, "
-
-#. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/Widgets/OverlayBar.vala:293
-msgid "%u file, "
-msgstr "%u fil, "
-
-#: ../src/View/Widgets/OverlayBar.vala:293
-msgid "%u files, "
-msgstr "%u filer, "
-
-#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/Widgets/OverlayBar.vala:303
-msgid "%s approx."
-msgstr "%s cirka."
-
-#. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/Widgets/OverlayBar.vala:306
-msgid "unknown size"
-msgstr "ukendt størrelse"
-
-#. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/Widgets/OverlayBar.vala:310
-msgid "%u file not readable"
-msgstr "%u fil kan ikke læses"
-
-#: ../src/View/Widgets/OverlayBar.vala:310
-msgid "%u files not readable"
-msgstr "%u filer kan ikke læses"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
-msgid "Open in New Tab"
-msgstr "Åbn i nyt faneblad"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
-msgid "Open in New Window"
-msgstr "Åbn i nyt vindue"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
-msgid "Open in Other Application…"
-msgstr "Åbn i andet program…"
-
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Læs"
-
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Skriv"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Kør"
-
-#: ../src/View/Window.vala:205
-msgid "Files isn't your default file manager."
-msgstr "Filer er ikke dit standard filhåndteringsprogram."
-
-#: ../src/View/Window.vala:211
-msgid "Set as Default"
-msgstr "Brug som standard"
-
-#: ../src/View/Window.vala:217
-msgid "Ignore"
-msgstr "Ignorér"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Filnavn"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Størrelse"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Type"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Ændret"
-
-#: ../src/View/Sidebar.vala:503
-msgid "Personal"
-msgstr "Personlig"
-
-#: ../src/View/Sidebar.vala:504
-msgid "Your common places and bookmarks"
-msgstr "Dine almindelige steder og bogmærker"
-
-#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:373
-msgid "Home"
-msgstr "Hjem"
-
-#: ../src/View/Sidebar.vala:523
-msgid "Open your personal folder"
-msgstr "Åbn din personlige mappe"
-
-#: ../src/View/Sidebar.vala:538
-msgid "View the list of recently used files"
-msgstr "Se listen med de seneste filer"
-
-#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
-msgid "Trash"
-msgstr "Papirkurv"
-
-#: ../src/View/Sidebar.vala:571
-msgid "Open the Trash"
-msgstr "Åben papirkurven"
-
-#: ../src/View/Sidebar.vala:576
-msgid "Devices"
-msgstr "Enheder"
-
-#: ../src/View/Sidebar.vala:577
-msgid "Your local partitions and devices"
-msgstr "Dine lokale partitioner og enheder"
-
-#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:375
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:68
-msgid "File System"
-msgstr "Filsystem"
-
-#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
-msgid "Network"
-msgstr "Netværk"
-
-#: ../src/View/Sidebar.vala:702
-msgid "Your network places"
-msgstr "Dine netværkssteder"
-
-#: ../src/View/Sidebar.vala:734
-msgid "Entire Network"
-msgstr "Hele netværk"
-
-#: ../src/View/Sidebar.vala:741
-msgid "Browse the contents of the network"
-msgstr "Gennemse indholdet af netværket"
-
-#: ../src/View/Sidebar.vala:874
-msgid "(%s Free of %s)"
-msgstr "(%s ledig ud af %s)"
-
-#: ../src/View/Sidebar.vala:1370
-msgid "Unable to start %s"
-msgstr "Kan ikke starte %s"
-
-#: ../src/View/Sidebar.vala:1474
-msgid "Open"
-msgstr "Åbn"
-
-#: ../src/View/Sidebar.vala:1482
-msgid "Open in New _Tab"
-msgstr "Åbn i nyt _faneblad"
-
-#: ../src/View/Sidebar.vala:1488
-msgid "Open in New _Window"
-msgstr "Åbn i nyt _vindue"
-
-#: ../src/View/Sidebar.vala:1496
-msgid "Remove"
-msgstr "Fjern"
-
-#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Omdøb"
-
-#: ../src/View/Sidebar.vala:1513
-msgid "_Mount"
-msgstr "_Montér"
-
-#: ../src/View/Sidebar.vala:1519
-msgid "_Unmount"
-msgstr "_Afmontér"
-
-#: ../src/View/Sidebar.vala:1525
-msgid "_Eject"
-msgstr "_Skub ud"
-
-#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Egenskaber"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Exist"
 msgstr "Denne mappe eksisterer ikke"
 
@@ -1830,103 +1397,331 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/Slot.vala:32
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Filnavn"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:149
+msgid "Size"
+msgstr "Størrelse"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:154
+msgid "Type"
+msgstr "Type"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Ændret"
+
+#: ../src/View/Sidebar.vala:481
+msgid "Personal"
+msgstr "Personlig"
+
+#: ../src/View/Sidebar.vala:482
+msgid "Your common places and bookmarks"
+msgstr "Dine almindelige steder og bogmærker"
+
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:363
+msgid "Home"
+msgstr "Hjem"
+
+#: ../src/View/Sidebar.vala:501
+msgid "Open your personal folder"
+msgstr "Åbn din personlige mappe"
+
+#: ../src/View/Sidebar.vala:516
+msgid "View the list of recently used files"
+msgstr "Se listen med de seneste filer"
+
+#: ../src/View/Sidebar.vala:542 ../libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr "Papirkurv"
+
+#: ../src/View/Sidebar.vala:549
+msgid "Open the Trash"
+msgstr "Åben papirkurven"
+
+#: ../src/View/Sidebar.vala:554
+msgid "Devices"
+msgstr "Enheder"
+
+#: ../src/View/Sidebar.vala:555
+msgid "Your local partitions and devices"
+msgstr "Dine lokale partitioner og enheder"
+
+#: ../src/View/Sidebar.vala:561 ../src/View/ViewContainer.vala:365
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:68
+msgid "File System"
+msgstr "Filsystem"
+
+#: ../src/View/Sidebar.vala:679 ../libwidgets/Resources.vala:62
+msgid "Network"
+msgstr "Netværk"
+
+#: ../src/View/Sidebar.vala:680
+msgid "Your network places"
+msgstr "Dine netværkssteder"
+
+#: ../src/View/Sidebar.vala:712
+msgid "Entire Network"
+msgstr "Hele netværk"
+
+#: ../src/View/Sidebar.vala:719
+msgid "Browse the contents of the network"
+msgstr "Gennemse indholdet af netværket"
+
+#: ../src/View/Sidebar.vala:852
+msgid "(%s Free of %s)"
+msgstr "(%s ledig ud af %s)"
+
+#: ../src/View/Sidebar.vala:1324
+msgid "Error mounting volume %s"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1339
+msgid "Unable to start %s"
+msgstr "Kan ikke starte %s"
+
+#: ../src/View/Sidebar.vala:1437
+msgid "Open"
+msgstr "Åbn"
+
+#: ../src/View/Sidebar.vala:1441
+msgid "Open in New _Tab"
+msgstr "Åbn i nyt _faneblad"
+
+#: ../src/View/Sidebar.vala:1445
+msgid "Open in New _Window"
+msgstr "Åbn i nyt _vindue"
+
+#: ../src/View/Sidebar.vala:1451
+msgid "Remove"
+msgstr "Fjern"
+
+#: ../src/View/Sidebar.vala:1455 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Omdøb"
+
+#: ../src/View/Sidebar.vala:1461
+msgid "_Mount"
+msgstr "_Montér"
+
+#: ../src/View/Sidebar.vala:1465
+msgid "_Unmount"
+msgstr "_Afmontér"
+
+#: ../src/View/Sidebar.vala:1469
+msgid "_Eject"
+msgstr "_Skub ud"
+
+#: ../src/View/Sidebar.vala:1478 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:91
+msgid "Properties"
+msgstr "Egenskaber"
+
+#: ../src/View/Slot.vala:31
 msgid "This Folder Is Empty"
 msgstr "Denne mappe er tom"
 
-#: ../src/View/Slot.vala:33
+#: ../src/View/Slot.vala:32
 msgid "Trash Is Empty"
 msgstr "Papirkurven er tom"
 
-#: ../src/View/Slot.vala:34
+#: ../src/View/Slot.vala:33
 msgid "There Are No Recent Files"
 msgstr "Der er ikke nogen seneste filer"
 
-#: ../src/View/Slot.vala:35
+#: ../src/View/Slot.vala:34
 msgid "Access Denied"
 msgstr "Adgang nægtet"
 
-#: ../src/View/ViewContainer.vala:388
+#: ../src/View/ViewContainer.vala:378
 msgid "(as Administrator)"
 msgstr "(som Administrator)"
 
-#: ../src/View/ViewContainer.vala:407
+#: ../src/View/ViewContainer.vala:397
 msgid "You cannot create a folder here."
 msgstr "Du kan ikke oprette en mappe her."
 
-#: ../src/View/ViewContainer.vala:410
+#: ../src/View/ViewContainer.vala:400
 msgid "The network is unavailable"
 msgstr "Netværket er utilgængeligt"
 
-#: ../src/View/ViewContainer.vala:411
+#: ../src/View/ViewContainer.vala:401
 msgid "A working network is needed to reach this folder"
 msgstr "Der kræves et fungerende netværk for at kunne nå denne mappe"
 
-#: ../src/View/ViewContainer.vala:413
+#: ../src/View/ViewContainer.vala:403
 msgid "This Folder Does Not Belong to You"
 msgstr "Denne mappe tilhører ikke dig"
 
-#: ../src/View/ViewContainer.vala:414
+#: ../src/View/ViewContainer.vala:404
 msgid "You don't have permission to view this folder."
 msgstr "Du har ikke tilladelse til at se denne mappe."
 
-#: ../src/View/ViewContainer.vala:416
+#: ../src/View/ViewContainer.vala:406
 msgid "Unable to Mount Folder"
 msgstr "Kan ikke montere mappe"
 
-#: ../src/View/ViewContainer.vala:417
+#: ../src/View/ViewContainer.vala:407
 msgid "Could not connect to the server for this folder."
 msgstr "Kunne ikke oprette forbindelse til serveren for denne mappe."
 
-#: ../src/View/ViewContainer.vala:419
+#: ../src/View/ViewContainer.vala:409
 msgid "Unable to Display Folder Contents"
 msgstr "Kan ikke vise mappeindhold"
 
-#: ../src/View/ViewContainer.vala:420
+#: ../src/View/ViewContainer.vala:410
 msgid "The operation timed out."
 msgstr "Handlingen fik timeout."
 
-#: ../src/View/ViewContainer.vala:422
+#: ../src/View/ViewContainer.vala:412
 msgid "Unable to Show Folder"
 msgstr "Kan ikke vise mappe"
 
-#: ../src/View/ViewContainer.vala:423
+#: ../src/View/ViewContainer.vala:413
 msgid "The server for this folder could not be located."
 msgstr "Kan ikke finde serveren for denne mappe."
 
-#: ../src/View/ViewContainer.vala:433
+#: ../src/View/ViewContainer.vala:423
 msgid "File not Found"
 msgstr "Filen blev ikke fundet"
 
-#: ../src/View/ViewContainer.vala:434
+#: ../src/View/ViewContainer.vala:424
 msgid "The file selected no longer exists."
 msgstr "Den valgte fil eksisterer ikke længere."
 
-#: ../src/Application.vala:134
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Tab"
+msgstr "Åbn i nyt faneblad"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:427
+msgid "Open in New Window"
+msgstr "Åbn i nyt vindue"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:466
+msgid "Open in Other Application…"
+msgstr "Åbn i andet program…"
+
+#: ../src/View/Widgets/LocationBar.vala:193
+msgid "Reload this folder"
+msgstr "Genindlæs denne mappe"
+
+#: ../src/View/Widgets/LocationBar.vala:197
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Search or Type Path"
+msgstr ""
+
+#: ../src/View/Widgets/LocationBar.vala:206
+#, fuzzy
+msgid "Searching…"
+msgstr "Indlæser…"
+
+#: ../src/View/Widgets/OverlayBar.vala:216
+msgid "%u folders"
+msgstr "%u mapper"
+
+#: ../src/View/Widgets/OverlayBar.vala:218
+#: ../src/View/Widgets/OverlayBar.vala:226
+msgid " and %u other item (%s) selected"
+msgstr " og %u yderligere element (%s) er valgt"
+
+#: ../src/View/Widgets/OverlayBar.vala:219
+#: ../src/View/Widgets/OverlayBar.vala:227
+msgid " and %u other items (%s) selected"
+msgstr " og %u yderligere elementer (%s) er valgt"
+
+#: ../src/View/Widgets/OverlayBar.vala:222
+#: ../src/View/Widgets/OverlayBar.vala:230
+msgid " selected"
+msgstr " valgt"
+
+#: ../src/View/Widgets/OverlayBar.vala:224
+#: ../src/Dialogs/PropertiesWindow.vala:1173
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] "%u mappe"
+msgstr[1] "%u mapper"
+
+#: ../src/View/Widgets/OverlayBar.vala:232
+msgid "%u items selected (%s)"
+msgstr "%u elementer valgt (%s)"
+
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
+#: ../src/View/Widgets/OverlayBar.vala:274
+msgid "%u sub-folder, "
+msgstr "%u undermappe, "
+
+#: ../src/View/Widgets/OverlayBar.vala:274
+msgid "%u sub-folders, "
+msgstr "%u undermapper, "
+
+#. / TRANSLATORS: %u will be substituted by the number of readable files
+#: ../src/View/Widgets/OverlayBar.vala:280
+msgid "%u file, "
+msgstr "%u fil, "
+
+#: ../src/View/Widgets/OverlayBar.vala:280
+msgid "%u files, "
+msgstr "%u filer, "
+
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: ../src/View/Widgets/OverlayBar.vala:290
+msgid "%s approx."
+msgstr "%s cirka."
+
+#. / TRANSLATORS: 'size' refers to disk space
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "unknown size"
+msgstr "ukendt størrelse"
+
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
+#: ../src/View/Widgets/OverlayBar.vala:297
+msgid "%u file not readable"
+msgstr "%u fil kan ikke læses"
+
+#: ../src/View/Widgets/OverlayBar.vala:297
+msgid "%u files not readable"
+msgstr "%u filer kan ikke læses"
+
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Læs"
+
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Skriv"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Kør"
+
+#: ../src/Application.vala:118
 msgid "Show the version of the program."
 msgstr "Vis programmets version."
 
-#: ../src/Application.vala:136
+#: ../src/Application.vala:120
 msgid "Open uri(s) in new tab"
 msgstr "Åbn URI(er) i nyt faneblad"
 
-#: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:122 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Nyt vindue"
 
-#: ../src/Application.vala:140
+#: ../src/Application.vala:124
 msgid "Quit Files."
 msgstr "Luk Filer."
 
-#: ../src/Application.vala:142
+#: ../src/Application.vala:126
 msgid "Enable debug logging"
 msgstr "Aktiver logning af debuginformation"
 
-#: ../src/Application.vala:145
+#: ../src/Application.vala:129
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:132
 msgid ""
 "\n"
 "\n"
@@ -1936,62 +1731,65 @@ msgstr ""
 "\n"
 "Navigér filsystemet med filhåndteringen"
 
-#: ../src/Application.vala:175
+#: ../src/Application.vala:159
 msgid "--quit cannot be used with URIs."
 msgstr "--quit kan ikke bruges med URI'er."
 
-#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
-msgid "There is nothing on the clipboard to paste"
-msgstr "Der er intet i udklipsholderen at indsætte"
+#: ../src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr "Gennemse dine filer"
+
+#: ../src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr "Filhåndtering"
+
+#: ../src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr "Nyt _vindue"
+
+#: ../src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr "Nyt vindue som _Administrator"
+
+#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Filer"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
 msgstr "Info"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:58
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
 msgstr "Generelt"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:77
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:76
 msgid "Close"
 msgstr "Luk"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:137
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:136
 msgid "Device Usage"
 msgstr "Enhedsforbrug"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:153
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:152
 msgid "Capacity:"
 msgstr "Kapacitet:"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:154
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:157
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:160
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:153
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 #: ../src/Dialogs/PropertiesWindow.vala:416
 #: ../src/Dialogs/PropertiesWindow.vala:452
 msgid "Unknown"
 msgstr "Ukendt"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Available:"
 msgstr "Tilgængelig:"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Used:"
 msgstr "I brug:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Diskegenskaber"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Lokation:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Format:"
 
 #: ../src/Dialogs/ChooseAppDialog.vala:40
 msgid "Set as default"
@@ -2026,6 +1824,18 @@ msgstr "Indlæser…"
 msgid "Could not be determined"
 msgstr "Kunne ikke bestemmes"
 
+#: ../src/Dialogs/PropertiesWindow.vala:484
+#: ../libcore/FileConflictDialog.vala:117
+#: ../libcore/FileConflictDialog.vala:145
+msgid "Size:"
+msgstr "Størrelse:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:491
+#: ../libcore/FileConflictDialog.vala:125
+#: ../libcore/FileConflictDialog.vala:153
+msgid "Type:"
+msgstr "Type:"
+
 #: ../src/Dialogs/PropertiesWindow.vala:494
 msgid "Contains:"
 msgstr "Indeholder:"
@@ -2050,6 +1860,11 @@ msgstr "MIME-type:"
 msgid "Resolution:"
 msgstr "Opløsning:"
 
+#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+msgid "Location:"
+msgstr "Lokation:"
+
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
 msgstr "Mål:"
@@ -2058,97 +1873,81 @@ msgstr "Mål:"
 msgid "Original Location:"
 msgstr "Original placering:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:602
-msgid "Other Application…"
-msgstr "Andet program…"
-
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
 msgstr "Åbn med:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:864
-#: ../src/Dialogs/PropertiesWindow.vala:874
+#: ../src/Dialogs/PropertiesWindow.vala:875
+#: ../src/Dialogs/PropertiesWindow.vala:885
 msgid "Owner:"
 msgstr "Ejer:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:868
-#: ../src/Dialogs/PropertiesWindow.vala:877
+#: ../src/Dialogs/PropertiesWindow.vala:879
+#: ../src/Dialogs/PropertiesWindow.vala:888
 msgid "Group:"
 msgstr "Gruppe:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:880
+#: ../src/Dialogs/PropertiesWindow.vala:891
 msgid "Everyone:"
 msgstr "Alle:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1140
+#: ../src/Dialogs/PropertiesWindow.vala:1151
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u undermappe"
 msgstr[1] "%u undermapper"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1144
-#: ../src/Dialogs/PropertiesWindow.vala:1166
+#: ../src/Dialogs/PropertiesWindow.vala:1155
+#: ../src/Dialogs/PropertiesWindow.vala:1177
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u fil"
 msgstr[1] "%u filer"
 
 #. /TRANSLATORS: folders, files
-#: ../src/Dialogs/PropertiesWindow.vala:1149
+#: ../src/Dialogs/PropertiesWindow.vala:1160
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1170
+#: ../src/Dialogs/PropertiesWindow.vala:1181
 msgid "%u selected item"
 msgid_plural "%u selected items"
 msgstr[0] "%u valgt post"
 msgstr[1] "%u valgte poster"
 
 #. /TRANSLATORS: total (folders, files)
-#: ../src/Dialogs/PropertiesWindow.vala:1172
+#: ../src/Dialogs/PropertiesWindow.vala:1183
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Diskegenskaber"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Format:"
+
+#: ../src/ProgressUIHandler.vala:131 ../src/ProgressUIHandler.vala:191
 msgid "File Operations"
 msgstr "Filhandlinger"
 
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
+#: ../src/ProgressUIHandler.vala:185
 msgid "Completed %s"
 msgstr "Fuldførte %s"
 
-#: ../src/ProgressUIHandler.vala:195
+#: ../src/ProgressUIHandler.vala:188
 msgid "All file operations have ended"
 msgstr "Alle filhandlinger er afsluttet"
 
-#: ../src/ProgressUIHandler.vala:240
+#: ../src/ProgressUIHandler.vala:233
 msgid "Show Copy Dialog"
 msgstr "Vis kopiéringsdialog"
 
-#: ../src/ProgressUIHandler.vala:252
+#: ../src/ProgressUIHandler.vala:245
 msgid "Cancel All In-progress Actions"
 msgstr "Afbryd alle igangværende handlinger"
-
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr "Gennemse dine filer"
-
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr "Filhåndtering"
-
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr "Nyt _vindue"
-
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Nyt vindue som _Administrator"
-
-#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Filer"
 
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
@@ -2170,34 +1969,6 @@ msgstr "Kunne ikke åbne uri'er"
 msgid "Unable to open files or uris with this app"
 msgstr "Kunne ikke åbne filer eller uri'er med dette program"
 
-#: ../libcore/FileUtils.vala:60
-msgid "Could not determine original location of \"%s\" "
-msgstr "Kunne ikke bestemme den originale placering af \"%s\" "
-
-#: ../libcore/FileUtils.vala:61
-msgid "The item cannot be restored from trash"
-msgstr "Elementet kan ikke genskabes fra papirkurven"
-
-#: ../libcore/FileUtils.vala:345
-msgid "Could not rename to '%s'"
-msgstr "Kunne ikke omdøbe til \"%s\""
-
-#: ../libcore/FileUtils.vala:436
-msgid "Today at %-H:%M"
-msgstr "I dag kl. %-H:%M"
-
-#: ../libcore/FileUtils.vala:444
-msgid "Yesterday at %-H:%M"
-msgstr "I går kl. %-H:%M"
-
-#: ../libcore/FileUtils.vala:453
-msgid "%A at %-H:%M"
-msgstr "%A kl. %-H:%M"
-
-#: ../libcore/FileUtils.vala:455
-msgid "%A at %-I:%M %p"
-msgstr "%A kl. %-I:%M"
-
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "Kunne ikke udføre \"%s\""
@@ -2214,19 +1985,161 @@ msgstr "Kopiér hertil"
 msgid "Link Here"
 msgstr "Henvis hertil"
 
-#: ../libcore/DndHandler.vala:98
+#: ../libcore/DndHandler.vala:98 ../libcore/FileConflictDialog.vala:186
 msgid "Cancel"
 msgstr "Annuller"
 
-#: ../libcore/gof-directory-async.vala:611
+#: ../libcore/FileConflictDialog.vala:62
+msgid "File conflict"
+msgstr "Filkonflikt"
+
+#: ../libcore/FileConflictDialog.vala:112
+msgid "Original file"
+msgstr "Oprindelig fil"
+
+#: ../libcore/FileConflictDialog.vala:130
+#: ../libcore/FileConflictDialog.vala:158
+msgid "Last modified:"
+msgstr "Sidst ændret:"
+
+#: ../libcore/FileConflictDialog.vala:140
+msgid "Replace with"
+msgstr "Erstat med"
+
+#: ../libcore/FileConflictDialog.vala:168
+msgid "Reset"
+msgstr "Nulstil"
+
+#: ../libcore/FileConflictDialog.vala:178
+msgid "_Select a new name for the destination"
+msgstr "_Vælg et nyt navn til destinationen"
+
+#: ../libcore/FileConflictDialog.vala:181
+msgid "Apply this action to all files"
+msgstr "Udfør denne handling på alle filer"
+
+#: ../libcore/FileConflictDialog.vala:184
+msgid "Re_name"
+msgstr "_Omdøb"
+
+#: ../libcore/FileConflictDialog.vala:188
+msgid "Replace"
+msgstr "Erstat"
+
+#: ../libcore/FileConflictDialog.vala:304
+msgid "Merge folder \"%s\"?"
+msgstr "Flet mappen \"%s\"?"
+
+#: ../libcore/FileConflictDialog.vala:305
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Ved fletning vil der blive bedt om bekræftelse før der overskrives filer i "
+"mappen, som er i konflikt med dem, der flyttes."
+
+#: ../libcore/FileConflictDialog.vala:307
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "En ældre mappe med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/FileConflictDialog.vala:309
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "En nyere mappe med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/FileConflictDialog.vala:311
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "En anden mappe med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/FileConflictDialog.vala:314
+msgid "Replace folder \"%s\"?"
+msgstr "Erstat mappen \"%s\"?"
+
+#: ../libcore/FileConflictDialog.vala:315
+msgid "Replacing it will remove all files in the folder."
+msgstr "Ved erstatning vil alle filer i mappen blive fjernet."
+
+#: ../libcore/FileConflictDialog.vala:316
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "En mappe med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/FileConflictDialog.vala:319
+msgid "Replace file \"%s\"?"
+msgstr "Erstat filen \"%s\"?"
+
+#: ../libcore/FileConflictDialog.vala:320
+msgid "Replacing it will overwrite its content."
+msgstr "Ved erstatning vil dens indhold blive overskrevet."
+
+#: ../libcore/FileConflictDialog.vala:323
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "En ældre fil med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/FileConflictDialog.vala:325
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "En nyere fil med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/FileConflictDialog.vala:327
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "En anden fil med det samme navn findes allerede i \"%s\"."
+
+#: ../libcore/FileConflictDialog.vala:353
+msgid "Merge"
+msgstr "Flet"
+
+#: ../libcore/FileUtils.vala:84
+msgid "Could not determine original location of \"%s\" "
+msgstr "Kunne ikke bestemme den originale placering af \"%s\" "
+
+#: ../libcore/FileUtils.vala:85
+msgid "The item cannot be restored from trash"
+msgstr "Elementet kan ikke genskabes fra papirkurven"
+
+#: ../libcore/FileUtils.vala:436
+msgid "Could not rename to '%s'"
+msgstr "Kunne ikke omdøbe til \"%s\""
+
+#: ../libcore/FileUtils.vala:527
+msgid "Today at %-H:%M"
+msgstr "I dag kl. %-H:%M"
+
+#: ../libcore/FileUtils.vala:529
+msgid "Today at %-I:%M %p"
+msgstr "I dag klokken %H:%M"
+
+#: ../libcore/FileUtils.vala:535
+msgid "Yesterday at %-H:%M"
+msgstr "I går kl. %-H:%M"
+
+#: ../libcore/FileUtils.vala:537
+msgid "Yesterday at %-I:%M %p"
+msgstr "I går klokken %H:%M"
+
+#: ../libcore/FileUtils.vala:544
+msgid "%A at %-H:%M"
+msgstr "%A kl. %-H:%M"
+
+#: ../libcore/FileUtils.vala:546
+msgid "%A at %-I:%M %p"
+msgstr "%A kl. %-I:%M"
+
+#: ../libcore/ProgressInfo.vala:63 ../libcore/ProgressInfo.vala:71
+#: ../libcore/ProgressInfo.vala:79
+msgid "Preparing"
+msgstr "Forbereder"
+
+#: ../libcore/StockDialogs.vala:39
+msgid "Show more _details"
+msgstr "Vis flere _detaljer"
+
+#: ../libcore/gof-directory-async.vala:659
 msgid "Server did not respond within time limit"
 msgstr "Serveren svarede ikke indenfor tidsgrænsen"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:170
 msgid "Navigate to %s"
 msgstr "Navigér til %s"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:283
 msgid "Go to %s"
 msgstr "Gå til %s"
 
@@ -2278,19 +2191,19 @@ msgstr "Seneste"
 msgid "MTP"
 msgstr "MTP"
 
-#: ../libwidgets/View/SearchResults.vala:226
+#: ../libwidgets/View/SearchResults.vala:227
 msgid "In This Folder"
 msgstr "I denne mappe"
 
-#: ../libwidgets/View/SearchResults.vala:231
+#: ../libwidgets/View/SearchResults.vala:232
 msgid "Below This Folder"
 msgstr "Under denne mappe"
 
-#: ../libwidgets/View/SearchResults.vala:236
+#: ../libwidgets/View/SearchResults.vala:237
 msgid "Bookmarks"
 msgstr "Bogmærker"
 
-#: ../libwidgets/View/SearchResults.vala:241
+#: ../libwidgets/View/SearchResults.vala:242
 msgid "Recently used"
 msgstr "Senest anvendte"
 
@@ -2362,45 +2275,123 @@ msgstr "Vis fjern-miniaturer"
 msgid "New Tab"
 msgstr "Nyt faneblad"
 
-#: ../src/View/directory_view_popup.ui:91
-msgid "Terminal"
-msgstr "Terminal"
-
-#: ../src/View/directory_view_popup.ui:106
+#: ../src/View/directory_view_popup.ui:98
 msgid "Bookmark"
 msgstr "Bogmærke"
 
-#: ../src/View/directory_view_popup.ui:113
+#: ../src/View/directory_view_popup.ui:105
 msgid "Paste"
 msgstr "Indsæt"
 
-#: ../src/View/directory_view_popup.ui:120
+#: ../src/View/directory_view_popup.ui:111
+#, fuzzy
+msgid "Paste Link"
+msgstr "Indsæt"
+
+#: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
 msgstr "Klip"
 
-#: ../src/View/directory_view_popup.ui:124
+#: ../src/View/directory_view_popup.ui:122
 msgid "Copy"
 msgstr "Kopiér"
 
-#: ../src/View/directory_view_popup.ui:128
+#: ../src/View/directory_view_popup.ui:126
+msgid "Copy as Link"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Indsæt i mappen"
 
-#: ../src/View/directory_view_popup.ui:135
+#: ../src/View/directory_view_popup.ui:134
+#, fuzzy
+msgid "Paste Link into Folder"
+msgstr "Indsæt i mappen"
+
+#: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
 msgstr "Sorter efter"
 
-#: ../src/View/directory_view_popup.ui:138
+#: ../src/View/directory_view_popup.ui:144
 msgid "Name"
 msgstr "Navn"
 
-#: ../src/View/directory_view_popup.ui:153
+#: ../src/View/directory_view_popup.ui:159
 msgid "Date"
 msgstr "Dato"
 
-#: ../src/View/directory_view_popup.ui:160
+#: ../src/View/directory_view_popup.ui:166
 msgid "Reversed Order"
 msgstr "Omvendt rækkefølge"
+
+#: ../src/View/directory_view_popup.ui:170
+msgid "Folders Before Files"
+msgstr ""
+
+#~ msgid " (invalid Unicode)"
+#~ msgstr " (ugyldig Unicode)"
+
+#~ msgid "Do you want to empty the trash before you unmount?"
+#~ msgstr "Ønsker du at tømme papirkurven før du afmonterer?"
+
+#~ msgid ""
+#~ "In order to regain the free space on this volume the trash must be "
+#~ "emptied. All trashed items on the volume will be permanently lost."
+#~ msgstr ""
+#~ "For at få den frie plads tilbage på enheden skal papirkurven tømmes. Alle "
+#~ "elementer i papirkurven på denne enhed vil permanent gå tabt."
+
+#~ msgid "Do _not Empty Trash"
+#~ msgstr "Tøm _ikke papirkurven"
+
+#~ msgid "Emptying the trash"
+#~ msgstr "Tømmer papirkurven"
+
+#~ msgid "%a %-d %b at %-I:%M %p"
+#~ msgstr "%a %-d. %b kl. %H:%M"
+
+#~ msgid "%a %-d %b %Y at %-I:%M %p"
+#~ msgstr "%a %-d. %b %Y kl. %H:%M"
+
+#~ msgid "No Exec field specified"
+#~ msgstr "Intet 'Exec' felt angivet"
+
+#~ msgid "No URL field specified"
+#~ msgstr "Intet URL-felt angivet"
+
+#~ msgid "Invalid desktop file"
+#~ msgstr "Ugyldig skrivebordsfil"
+
+#~ msgid "Slashes are not allowed in filenames"
+#~ msgstr "Skråstreger er ikke tilladt i filnavne"
+
+#~ msgid "Toplevel files cannot be renamed"
+#~ msgstr "Topniveau-filer kan ikke omdøbes"
+
+#~ msgid "Failed to preview"
+#~ msgstr "Forhåndsvisning fejlede"
+
+#~ msgid "Other Application"
+#~ msgstr "Andet program"
+
+#~ msgid "Enter search term or path"
+#~ msgstr "Indtast søgeterm eller sti"
+
+#~ msgid "Files isn't your default file manager."
+#~ msgstr "Filer er ikke dit standard filhåndteringsprogram."
+
+#~ msgid "Set as Default"
+#~ msgstr "Brug som standard"
+
+#~ msgid "Ignore"
+#~ msgstr "Ignorér"
+
+#~ msgid "There is nothing on the clipboard to paste"
+#~ msgstr "Der er intet i udklipsholderen at indsætte"
+
+#~ msgid "Terminal"
+#~ msgstr "Terminal"
 
 #~ msgid "About _Files"
 #~ msgstr "Om _Filer"

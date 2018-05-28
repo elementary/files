@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-06 13:44-0700\n"
+"POT-Creation-Date: 2018-05-29 00:40+0100\n"
 "PO-Revision-Date: 2018-05-28 00:00+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
-"Language-Team: Hungarian "
-"<https://weblate.elementary.io/projects/files/files/hu/>\n"
+"Language-Team: Hungarian <https://weblate.elementary.io/projects/files/files/"
+"hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,378 +83,262 @@ msgstr "Ellenőrizze a felhasználói adatait."
 msgid "Continue"
 msgstr "Folytatás"
 
-#: ../src/marlin-connect-server-dialog.c:760
-#: ../src/marlin-connect-server-dialog.c:1153
+#: ../src/marlin-connect-server-dialog.c:749
+#: ../src/marlin-connect-server-dialog.c:1142
 msgid "C_onnect"
 msgstr "K_apcsolódás"
 
-#: ../src/marlin-connect-server-dialog.c:888
+#: ../src/marlin-connect-server-dialog.c:877
 msgid "Connect to Server"
 msgstr "Kapcsolódás a kiszolgálóhoz"
 
-#: ../src/marlin-connect-server-dialog.c:906
+#: ../src/marlin-connect-server-dialog.c:895
 msgid "Server Details"
 msgstr "Kiszolgáló részletei"
 
-#: ../src/marlin-connect-server-dialog.c:930
+#: ../src/marlin-connect-server-dialog.c:919
 msgid "_Server:"
 msgstr "_Kiszolgáló:"
 
-#: ../src/marlin-connect-server-dialog.c:950
+#: ../src/marlin-connect-server-dialog.c:939
 msgid "_Port:"
 msgstr "_Port:"
 
-#: ../src/marlin-connect-server-dialog.c:968
+#: ../src/marlin-connect-server-dialog.c:957
 msgid "_Type:"
 msgstr "_Típus:"
 
-#: ../src/marlin-connect-server-dialog.c:1037
+#: ../src/marlin-connect-server-dialog.c:1026
 msgid "Sh_are:"
 msgstr "Meg_osztás:"
 
-#: ../src/marlin-connect-server-dialog.c:1052
+#: ../src/marlin-connect-server-dialog.c:1041
 msgid "_Folder:"
 msgstr "_Mappa:"
 
-#: ../src/marlin-connect-server-dialog.c:1070
+#: ../src/marlin-connect-server-dialog.c:1059
 msgid "User Details"
 msgstr "Felhasználói adatok"
 
-#: ../src/marlin-connect-server-dialog.c:1093
+#: ../src/marlin-connect-server-dialog.c:1082
 msgid "_Domain name:"
 msgstr "_Tartománynév:"
 
-#: ../src/marlin-connect-server-dialog.c:1108
+#: ../src/marlin-connect-server-dialog.c:1097
 msgid "_User name:"
 msgstr "_Felhasználónév:"
 
-#: ../src/marlin-connect-server-dialog.c:1123
+#: ../src/marlin-connect-server-dialog.c:1112
 msgid "Pass_word:"
 msgstr "_Jelszó:"
 
-#: ../src/marlin-connect-server-dialog.c:1139
+#: ../src/marlin-connect-server-dialog.c:1128
 msgid "_Remember this password"
 msgstr "_Emlékezzen erre a jelszóra"
 
-#: ../src/marlin-connect-server-dialog.c:1242
+#: ../src/marlin-connect-server-dialog.c:1231
 msgid "Operation cancelled"
 msgstr "A művelet megszakítva"
 
-#: ../libcore/marlin-file-conflict-dialog.c:145
-#: ../libcore/marlin-file-conflict-dialog.c:372
+#: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
+msgid "Inaccessible"
+msgstr "Hozzáférhetetlen"
+
+#: ../libcore/gof-file.c:347
 #, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Egyesíti a(z) „%s” mappát?"
+msgid "link to %s"
+msgstr "link erre: %s"
 
-#: ../libcore/marlin-file-conflict-dialog.c:149
-#: ../libcore/marlin-file-conflict-dialog.c:375
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Az egyesítés a mappában található, a másolandó fájlokkal ütköző fájlok "
-"felülírása előtt megerősítést kér."
-
-#: ../libcore/marlin-file-conflict-dialog.c:154
-#: ../libcore/marlin-file-conflict-dialog.c:380
+#: ../libcore/gof-file.c:1590
 #, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Már létezik ilyen nevű régebbi mappa „%s” alatt."
+msgid "Failed to parse the desktop file: %s"
+msgstr "A fájl elemzése sikertelen: %s"
 
-#: ../libcore/marlin-file-conflict-dialog.c:158
-#: ../libcore/marlin-file-conflict-dialog.c:384
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy újabb, ugyan ilyen nevű mappa itt: „%s”."
+#: ../libcore/gof-file.c:1598
+#, fuzzy
+msgid "Failed to parse the desktop file"
+msgstr "A fájl elemzése sikertelen: %s"
 
-#: ../libcore/marlin-file-conflict-dialog.c:162
-#: ../libcore/marlin-file-conflict-dialog.c:388
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy másik, ugyan ilyen nevű mappa itt: „%s”."
+#: ../libcore/gof-file.c:1612
+#, fuzzy, c-format
+msgid "Failed to create command from file: %s"
+msgstr "A fájl elemzése sikertelen: %s"
 
-#: ../libcore/marlin-file-conflict-dialog.c:167
-#: ../libcore/marlin-file-conflict-dialog.c:393
-msgid "Replacing it will remove all files in the folder."
-msgstr "Cseréjével az összes fájl a mappában el lesz távolítva."
+#: ../libcore/gof-file.c:1623
+#, fuzzy, c-format
+msgid "Unable to Launch Desktop File: %s"
+msgstr "A fájl elemzése sikertelen: %s"
 
-#: ../libcore/marlin-file-conflict-dialog.c:169
-#: ../libcore/marlin-file-conflict-dialog.c:395
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Lecseréli a(z) „%s” mappát?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:171
-#: ../libcore/marlin-file-conflict-dialog.c:397
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy ugyan ilyen nevű mappa itt: „%s”."
-
-#: ../libcore/marlin-file-conflict-dialog.c:176
-#: ../libcore/marlin-file-conflict-dialog.c:402
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Felülírja a(z) \"%s\" fájlt?"
-
-#: ../libcore/marlin-file-conflict-dialog.c:178
-#: ../libcore/marlin-file-conflict-dialog.c:404
-msgid "Replacing it will overwrite its content."
-msgstr "Cseréjével a fájl tartalma felül lesz írva."
-
-#: ../libcore/marlin-file-conflict-dialog.c:182
-#: ../libcore/marlin-file-conflict-dialog.c:408
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Már létezik egy régebbi, ugyanilyen nevű fájl itt: „%s”."
-
-#: ../libcore/marlin-file-conflict-dialog.c:186
-#: ../libcore/marlin-file-conflict-dialog.c:412
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Már létezik egy újabb, ugyanilyen nevű fájl itt: „%s”."
-
-#: ../libcore/marlin-file-conflict-dialog.c:190
-#: ../libcore/marlin-file-conflict-dialog.c:416
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Már létezik egy másik, ugyanilyen nevű fájl itt: „%s”."
-
-#: ../libcore/marlin-file-conflict-dialog.c:252
-#: ../libcore/marlin-file-conflict-dialog.c:471
-msgid "Original file"
-msgstr "Eredeti fájl"
-
-#: ../libcore/marlin-file-conflict-dialog.c:253
-#: ../libcore/marlin-file-conflict-dialog.c:284
-#: ../libcore/marlin-file-conflict-dialog.c:472
-#: ../libcore/marlin-file-conflict-dialog.c:493
-#: ../src/Dialogs/PropertiesWindow.vala:484
-msgid "Size:"
-msgstr "Méret:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:256
-#: ../libcore/marlin-file-conflict-dialog.c:287
-#: ../libcore/marlin-file-conflict-dialog.c:475
-#: ../libcore/marlin-file-conflict-dialog.c:496
-#: ../src/Dialogs/PropertiesWindow.vala:491
-msgid "Type:"
-msgstr "Típus:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:259
-#: ../libcore/marlin-file-conflict-dialog.c:290
-#: ../libcore/marlin-file-conflict-dialog.c:478
-#: ../libcore/marlin-file-conflict-dialog.c:499
-msgid "Last modified:"
-msgstr "Utoljára módosítva:"
-
-#: ../libcore/marlin-file-conflict-dialog.c:283
-#: ../libcore/marlin-file-conflict-dialog.c:492
-msgid "Replace with"
-msgstr "Cserélje erre"
-
-#: ../libcore/marlin-file-conflict-dialog.c:312
-#: ../libcore/marlin-file-conflict-dialog.c:517
-msgid "Merge"
-msgstr "Egyesítés"
-
-#: ../libcore/marlin-file-conflict-dialog.c:711
-msgid "_Select a new name for the destination"
-msgstr "A_dja meg a cél új nevét"
-
-#: ../libcore/marlin-file-conflict-dialog.c:725
-msgid "Reset"
-msgstr "Alapállapot"
-
-#: ../libcore/marlin-file-conflict-dialog.c:737
-msgid "Apply this action to all files"
-msgstr "Művelet alkalmazása az összes fájlra"
-
-#: ../libcore/marlin-file-conflict-dialog.c:748
-#: ../libcore/marlin-file-operations.c:199
+#: ../libcore/marlin-file-operations.c:154
+#: ../libcore/FileConflictDialog.vala:183
 msgid "_Skip"
 msgstr "_Kihagyás"
 
-#: ../libcore/marlin-file-conflict-dialog.c:753
-msgid "Re_name"
-msgstr "Át_nevezés"
-
-#: ../libcore/marlin-file-conflict-dialog.c:759
-msgid "Replace"
-msgstr "Felülírás"
-
-#: ../libcore/marlin-file-conflict-dialog.c:832
-msgid "File conflict"
-msgstr "Fájlütközés"
-
-#: ../libcore/eel-vfs-extensions.c:71
-msgid " (invalid Unicode)"
-msgstr " (érvénytelen Unicode)"
-
-#: ../libcore/marlin-file-operations.c:200
+#: ../libcore/marlin-file-operations.c:155
 msgid "S_kip All"
 msgstr "Összes ki_hagyása"
 
-#: ../libcore/marlin-file-operations.c:201
+#: ../libcore/marlin-file-operations.c:156
 msgid "_Retry"
 msgstr "_Újra"
 
-#: ../libcore/marlin-file-operations.c:202
+#: ../libcore/marlin-file-operations.c:157
 msgid "Delete _All"
 msgstr "Öss_zes törlése"
 
-#: ../libcore/marlin-file-operations.c:203
+#: ../libcore/marlin-file-operations.c:158
 msgid "_Replace"
 msgstr "_Kicserél"
 
-#: ../libcore/marlin-file-operations.c:204
+#: ../libcore/marlin-file-operations.c:159
 msgid "Replace _All"
 msgstr "_Összes cseréje"
 
-#: ../libcore/marlin-file-operations.c:205
+#: ../libcore/marlin-file-operations.c:160
 msgid "_Merge"
 msgstr "Össz_efésülés"
 
-#: ../libcore/marlin-file-operations.c:206
+#: ../libcore/marlin-file-operations.c:161
 msgid "Merge _All"
 msgstr "Összes össze_fésülése"
 
-#: ../libcore/marlin-file-operations.c:207
+#: ../libcore/marlin-file-operations.c:162
 msgid "Copy _Anyway"
 msgstr "Másolás mi_ndenképp"
 
-#: ../libcore/marlin-file-operations.c:296
+#: ../libcore/marlin-file-operations.c:243
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d másodperc"
 msgstr[1] "%'d másodperc"
 
-#: ../libcore/marlin-file-operations.c:301
-#: ../libcore/marlin-file-operations.c:312
+#: ../libcore/marlin-file-operations.c:248
+#: ../libcore/marlin-file-operations.c:259
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d perc"
 msgstr[1] "%'d perc"
 
-#: ../libcore/marlin-file-operations.c:311
+#: ../libcore/marlin-file-operations.c:258
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d óra"
 msgstr[1] "%'d óra"
 
-#: ../libcore/marlin-file-operations.c:319
+#: ../libcore/marlin-file-operations.c:266
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "megközelítőleg %'d óra"
 msgstr[1] "megközelítőleg %'d óra"
 
-#: ../libcore/marlin-file-operations.c:395
+#: ../libcore/marlin-file-operations.c:342
 #, c-format
 msgid "Link to %s"
 msgstr "Link erre: %s"
 
-#: ../libcore/marlin-file-operations.c:399
+#: ../libcore/marlin-file-operations.c:346
 #, c-format
 msgid "Another link to %s"
 msgstr "Még egy link erre: %s"
 
-#: ../libcore/marlin-file-operations.c:415
+#: ../libcore/marlin-file-operations.c:362
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d. link erre: %s"
 
-#: ../libcore/marlin-file-operations.c:419
+#: ../libcore/marlin-file-operations.c:366
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d. link erre: %s"
 
-#: ../libcore/marlin-file-operations.c:423
+#: ../libcore/marlin-file-operations.c:370
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d. link erre: %s"
 
-#: ../libcore/marlin-file-operations.c:427
+#: ../libcore/marlin-file-operations.c:374
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d. link erre: %s"
 
-#: ../libcore/marlin-file-operations.c:465
+#: ../libcore/marlin-file-operations.c:412
 msgid " (copy)"
 msgstr " (másolat)"
 
-#: ../libcore/marlin-file-operations.c:467
+#: ../libcore/marlin-file-operations.c:414
 msgid " (another copy)"
 msgstr " (még egy másolat)"
 
-#: ../libcore/marlin-file-operations.c:470
-#: ../libcore/marlin-file-operations.c:472
-#: ../libcore/marlin-file-operations.c:474
-#: ../libcore/marlin-file-operations.c:484
+#: ../libcore/marlin-file-operations.c:417
+#: ../libcore/marlin-file-operations.c:419
+#: ../libcore/marlin-file-operations.c:421
+#: ../libcore/marlin-file-operations.c:431
 msgid "th copy)"
 msgstr ". másolat)"
 
-#: ../libcore/marlin-file-operations.c:477
+#: ../libcore/marlin-file-operations.c:424
 msgid "st copy)"
 msgstr ". másolat)"
 
-#: ../libcore/marlin-file-operations.c:479
+#: ../libcore/marlin-file-operations.c:426
 msgid "nd copy)"
 msgstr ". másolat)"
 
-#: ../libcore/marlin-file-operations.c:481
+#: ../libcore/marlin-file-operations.c:428
 msgid "rd copy)"
 msgstr ". másolat)"
 
-#: ../libcore/marlin-file-operations.c:498
+#: ../libcore/marlin-file-operations.c:445
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (másolat)%s"
 
-#: ../libcore/marlin-file-operations.c:500
+#: ../libcore/marlin-file-operations.c:447
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (még egy másolat)%s"
 
-#: ../libcore/marlin-file-operations.c:503
-#: ../libcore/marlin-file-operations.c:505
-#: ../libcore/marlin-file-operations.c:507
-#: ../libcore/marlin-file-operations.c:521
+#: ../libcore/marlin-file-operations.c:450
+#: ../libcore/marlin-file-operations.c:452
+#: ../libcore/marlin-file-operations.c:454
+#: ../libcore/marlin-file-operations.c:468
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'d. másolat)%s"
 
-#: ../libcore/marlin-file-operations.c:515
+#: ../libcore/marlin-file-operations.c:462
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'d. másolat)%s"
 
-#: ../libcore/marlin-file-operations.c:517
+#: ../libcore/marlin-file-operations.c:464
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'d. másolat)%s"
 
-#: ../libcore/marlin-file-operations.c:519
+#: ../libcore/marlin-file-operations.c:466
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'d. másolat)%s"
 
-#: ../libcore/marlin-file-operations.c:619
+#: ../libcore/marlin-file-operations.c:566
 msgid " ("
 msgstr " ("
 
-#: ../libcore/marlin-file-operations.c:627
+#: ../libcore/marlin-file-operations.c:574
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: ../libcore/marlin-file-operations.c:1384
+#: ../libcore/marlin-file-operations.c:1251
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Biztosan véglegesen törölni akarja a következőt a Kukából: „%B”?"
 
-#: ../libcore/marlin-file-operations.c:1387
+#: ../libcore/marlin-file-operations.c:1254
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -465,16 +349,16 @@ msgid_plural ""
 msgstr[0] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet a Kukából?"
 msgstr[1] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet a Kukából?"
 
-#: ../libcore/marlin-file-operations.c:1397
-#: ../libcore/marlin-file-operations.c:1477
+#: ../libcore/marlin-file-operations.c:1264
+#: ../libcore/marlin-file-operations.c:1344
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Ha töröl egy elemet, akkor az véglegesen elvész."
 
-#: ../libcore/marlin-file-operations.c:1422
+#: ../libcore/marlin-file-operations.c:1289
 msgid "Permanently delete all items from Trash?"
 msgstr "Végleg törli az összes elemet a kukából?"
 
-#: ../libcore/marlin-file-operations.c:1423
+#: ../libcore/marlin-file-operations.c:1290
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -482,24 +366,23 @@ msgstr ""
 "A kuka összes könyvtárában, beleértve a csatolt meghajtókat is, minden adat "
 "törlődni fog."
 
-#: ../libcore/marlin-file-operations.c:1426
+#: ../libcore/marlin-file-operations.c:1293
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr "Végleg törli az összes elemet a kukából ezen a köteten?"
 
-#: ../libcore/marlin-file-operations.c:1427
+#: ../libcore/marlin-file-operations.c:1294
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Minden elem a kukából ezen a köteten végleg törölve lesz."
 
-#: ../libcore/marlin-file-operations.c:1438
-#: ../libcore/marlin-file-operations.c:2418 ../src/View/Sidebar.vala:1532
+#: ../libcore/marlin-file-operations.c:1305 ../src/View/Sidebar.vala:1473
 msgid "Empty _Trash"
 msgstr "_Kuka ürítése"
 
-#: ../libcore/marlin-file-operations.c:1465
+#: ../libcore/marlin-file-operations.c:1332
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Biztosan véglegesen törölni akarja a következőt: „%B”?"
 
-#: ../libcore/marlin-file-operations.c:1468
+#: ../libcore/marlin-file-operations.c:1335
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -507,99 +390,97 @@ msgid_plural ""
 msgstr[0] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet?"
 msgstr[1] "Biztosan véglegesen törölni akarja a kijelölt %'d elemet?"
 
-#: ../libcore/marlin-file-operations.c:1493
-#: ../libcore/marlin-file-operations.c:1525
-msgid "Deleting files"
-msgstr "Fájlok törlése"
-
-#: ../libcore/marlin-file-operations.c:1519
+#: ../libcore/marlin-file-operations.c:1378
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d fájl törlése van hátra"
 msgstr[1] "%'d fájl törlése van hátra"
 
+#: ../libcore/marlin-file-operations.c:1384
+msgid "Deleting files"
+msgstr "Fájlok törlése"
+
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:1538
+#: ../libcore/marlin-file-operations.c:1397
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T van hátra"
 msgstr[1] "%T van hátra"
 
-#: ../libcore/marlin-file-operations.c:1606
-#: ../libcore/marlin-file-operations.c:1640
-#: ../libcore/marlin-file-operations.c:1679
-#: ../libcore/marlin-file-operations.c:1756
-#: ../libcore/marlin-file-operations.c:2673
+#: ../libcore/marlin-file-operations.c:1464
+#: ../libcore/marlin-file-operations.c:1498
+#: ../libcore/marlin-file-operations.c:1537
+#: ../libcore/marlin-file-operations.c:1614
+#: ../libcore/marlin-file-operations.c:2404
 msgid "Error while deleting."
 msgstr "Hiba törléskor."
 
-#: ../libcore/marlin-file-operations.c:1610
+#: ../libcore/marlin-file-operations.c:1468
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
 "A(z) „%B” mappa fájljai nem törölhetők, mert nincs jogosultsága látni azokat."
 
-#: ../libcore/marlin-file-operations.c:1613
-#: ../libcore/marlin-file-operations.c:2732
-#: ../libcore/marlin-file-operations.c:3727
+#: ../libcore/marlin-file-operations.c:1471
+#: ../libcore/marlin-file-operations.c:2463
+#: ../libcore/marlin-file-operations.c:3430
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 "Hiba történt a(z) „%B” mappa fájljaival kapcsolatos információk lekérésekor."
 
-#: ../libcore/marlin-file-operations.c:1622
-#: ../libcore/marlin-file-operations.c:3736
+#: ../libcore/marlin-file-operations.c:1480
+#: ../libcore/marlin-file-operations.c:3439
 msgid "_Skip files"
 msgstr "Fájlok _kihagyása"
 
-#: ../libcore/marlin-file-operations.c:1643
+#: ../libcore/marlin-file-operations.c:1501
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "A(z) „%B” mappa nem törölhető, mert nincs rá olvasási joga."
 
-#: ../libcore/marlin-file-operations.c:1646
-#: ../libcore/marlin-file-operations.c:2771
-#: ../libcore/marlin-file-operations.c:3772
+#: ../libcore/marlin-file-operations.c:1504
+#: ../libcore/marlin-file-operations.c:2502
+#: ../libcore/marlin-file-operations.c:3475
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Hiba történt a(z) „%B” mappa olvasása közben."
 
-#: ../libcore/marlin-file-operations.c:1680
+#: ../libcore/marlin-file-operations.c:1538
 msgid "Could not remove the folder %B."
 msgstr "A(z) %B mappa nem távolítható el."
 
-#: ../libcore/marlin-file-operations.c:1757
+#: ../libcore/marlin-file-operations.c:1615
 msgid "There was an error deleting %B."
 msgstr "Hiba történt a(z) %B törlése közben."
 
-#: ../libcore/marlin-file-operations.c:1837
-#: ../libcore/marlin-file-operations.c:1849
+#: ../libcore/marlin-file-operations.c:1699
 msgid "Moving files to trash"
 msgstr "Fájlok áthelyezése a Kukába"
 
-#: ../libcore/marlin-file-operations.c:1851
+#: ../libcore/marlin-file-operations.c:1701
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "%'d fájl maradt Kukába való áthelyezésből"
 msgstr[1] "%'d fájl maradt Kukába való áthelyezésből"
 
-#: ../libcore/marlin-file-operations.c:1946
-#: ../libcore/marlin-file-operations.c:1949
-#: ../libcore/marlin-file-operations.c:1952
+#: ../libcore/marlin-file-operations.c:1795
+#: ../libcore/marlin-file-operations.c:1798
+#: ../libcore/marlin-file-operations.c:1801
 msgid "Cannot move file to trash or delete it"
 msgstr "A fájlt nem lehet törölni vagy áthelyezni a kukába"
 
-#: ../libcore/marlin-file-operations.c:1947
+#: ../libcore/marlin-file-operations.c:1796
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Nem lehet a fájlokat törölni vagy áthelyezni a kukába egy csak olvasható "
 "kötetről."
 
-#: ../libcore/marlin-file-operations.c:1950
+#: ../libcore/marlin-file-operations.c:1799
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -607,7 +488,7 @@ msgstr ""
 "Nem lehet fájlokat törölni vagy áthelyezni a kukába egy olyan könyvtárból "
 "amire nincs írási jogosultsága."
 
-#: ../libcore/marlin-file-operations.c:1953
+#: ../libcore/marlin-file-operations.c:1802
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
@@ -615,28 +496,28 @@ msgstr ""
 "Nem lehet törölni vagy áthelyezni a kukába olyan könyvtárakat amikre nincs "
 "írási jogosultsága."
 
-#: ../libcore/marlin-file-operations.c:1955
+#: ../libcore/marlin-file-operations.c:1804
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "A fájlt nem lehet áthelyezni a kukába. Megpróbálja végleg törölni?"
 
-#: ../libcore/marlin-file-operations.c:1956
+#: ../libcore/marlin-file-operations.c:1805
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
 "Ezt a fájlt nem lehet a kukába helyezni. A részleteket lejjebb láthatod."
 
-#: ../libcore/marlin-file-operations.c:1960
+#: ../libcore/marlin-file-operations.c:1809
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "A fájl nem helyezhető a kukába. Megpróbálja törölni?"
 
-#: ../libcore/marlin-file-operations.c:1961
+#: ../libcore/marlin-file-operations.c:1810
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr "Ez a fájl nem helyezhető a kukába. Valószínűleg törölni sem tudja."
 
-#: ../libcore/marlin-file-operations.c:1966
+#: ../libcore/marlin-file-operations.c:1815
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -644,89 +525,73 @@ msgstr ""
 "\n"
 " A fájl törlésével az véglegesen el lesz távolítva"
 
-#: ../libcore/marlin-file-operations.c:2156
+#: ../libcore/marlin-file-operations.c:2005
 msgid "Trashing Files"
 msgstr "Fájlok Kukába helyezése"
 
-#: ../libcore/marlin-file-operations.c:2158
+#: ../libcore/marlin-file-operations.c:2007
 msgid "Deleting Files"
 msgstr "Fájlok törlése"
 
-#: ../libcore/marlin-file-operations.c:2227
+#: ../libcore/marlin-file-operations.c:2076
 msgid "Unable to eject %V"
 msgstr "A eszköz (%V) nem adható ki"
 
-#: ../libcore/marlin-file-operations.c:2229
+#: ../libcore/marlin-file-operations.c:2078
 msgid "Unable to unmount %V"
 msgstr "A kötet (%V) nem választható le"
 
-#: ../libcore/marlin-file-operations.c:2408
-msgid "Do you want to empty the trash before you unmount?"
-msgstr "Leválasztás előtt ki legyen ürítve a Kuka?"
-
-#: ../libcore/marlin-file-operations.c:2410
-msgid ""
-"In order to regain the free space on this volume the trash must be emptied. "
-"All trashed items on the volume will be permanently lost."
-msgstr ""
-"A szabad hely visszanyerése érdekében a tárolón ki kell üríteni a Kukát. A "
-"Kuka összes eleme a tárolón véglegesen elvész."
-
-#: ../libcore/marlin-file-operations.c:2416
-msgid "Do _not Empty Trash"
-msgstr "_Ne ürítse a Kukát"
-
-#: ../libcore/marlin-file-operations.c:2530
+#: ../libcore/marlin-file-operations.c:2273
 #, c-format
 msgid "Unable to mount %s"
 msgstr "A(z) %s nem csatolható"
 
-#: ../libcore/marlin-file-operations.c:2608
+#: ../libcore/marlin-file-operations.c:2351
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Felkészülés %'d fájl másolására (%S)"
 msgstr[1] "Felkészülés %'d fájl másolására (%S)"
 
-#: ../libcore/marlin-file-operations.c:2614
+#: ../libcore/marlin-file-operations.c:2357
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Felkészülés %'d fájl áthelyezésére (%S)"
 msgstr[1] "Felkészülés %'d fájl áthelyezésére (%S)"
 
-#: ../libcore/marlin-file-operations.c:2620
+#: ../libcore/marlin-file-operations.c:2363
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Felkészülés %'d fájl törlésére (%S)"
 msgstr[1] "Felkészülés %'d fájl törlésére (%S)"
 
-#: ../libcore/marlin-file-operations.c:2626
+#: ../libcore/marlin-file-operations.c:2369
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Felkészülés %'d fájl áthelyezésére a Kukába"
 msgstr[1] "Felkészülés %'d fájl áthelyezésére a Kukába"
 
-#: ../libcore/marlin-file-operations.c:2669
-#: ../libcore/marlin-file-operations.c:3587
-#: ../libcore/marlin-file-operations.c:3719
-#: ../libcore/marlin-file-operations.c:3764
+#: ../libcore/marlin-file-operations.c:2400
+#: ../libcore/marlin-file-operations.c:3290
+#: ../libcore/marlin-file-operations.c:3422
+#: ../libcore/marlin-file-operations.c:3467
 msgid "Error while copying."
 msgstr "Hiba másoláskor."
 
-#: ../libcore/marlin-file-operations.c:2671
-#: ../libcore/marlin-file-operations.c:3717
-#: ../libcore/marlin-file-operations.c:3762
+#: ../libcore/marlin-file-operations.c:2402
+#: ../libcore/marlin-file-operations.c:3420
+#: ../libcore/marlin-file-operations.c:3465
 msgid "Error while moving."
 msgstr "Hiba áthelyezéskor."
 
-#: ../libcore/marlin-file-operations.c:2675
+#: ../libcore/marlin-file-operations.c:2406
 msgid "Error while moving files to trash."
 msgstr "Hiba a fájlok Kukába helyezésekor."
 
-#: ../libcore/marlin-file-operations.c:2729
+#: ../libcore/marlin-file-operations.c:2460
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -734,42 +599,42 @@ msgstr ""
 "A(z) \"%B\" mappa fájljai nem másolhatók, mert nincs jogosultsága látni "
 "azokat."
 
-#: ../libcore/marlin-file-operations.c:2768
+#: ../libcore/marlin-file-operations.c:2499
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "A(z) \"%B\" mappa nem kezelhető, mert nincs rá olvasási joga."
 
-#: ../libcore/marlin-file-operations.c:2844
+#: ../libcore/marlin-file-operations.c:2575
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr "A(z) \"%B\" fájl nem kezelhető, mert nincs rá olvasási joga."
 
-#: ../libcore/marlin-file-operations.c:2847
+#: ../libcore/marlin-file-operations.c:2578
 msgid "There was an error getting information about \"%B\"."
 msgstr "Hiba történt az információkéréskor a következőről: \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:2947
-#: ../libcore/marlin-file-operations.c:2989
-#: ../libcore/marlin-file-operations.c:3022
-#: ../libcore/marlin-file-operations.c:3052
+#: ../libcore/marlin-file-operations.c:2678
+#: ../libcore/marlin-file-operations.c:2720
+#: ../libcore/marlin-file-operations.c:2753
+#: ../libcore/marlin-file-operations.c:2783
 msgid "Error while copying to \"%B\"."
 msgstr "Hiba a(z) \"%B\" helyre másoláskor."
 
-#: ../libcore/marlin-file-operations.c:2951
+#: ../libcore/marlin-file-operations.c:2682
 msgid "You do not have permissions to access the destination folder."
 msgstr "Nincs jogosultsága elérni a célmappát."
 
-#: ../libcore/marlin-file-operations.c:2953
+#: ../libcore/marlin-file-operations.c:2684
 msgid "There was an error getting information about the destination."
 msgstr "Hiba történt információk kérésekor a célról."
 
-#: ../libcore/marlin-file-operations.c:2990
+#: ../libcore/marlin-file-operations.c:2721
 msgid "The destination is not a folder."
 msgstr "A cél nem egy mappa."
 
-#: ../libcore/marlin-file-operations.c:3023
+#: ../libcore/marlin-file-operations.c:2754
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -777,58 +642,58 @@ msgstr ""
 "A célon nincs elég hely. Próbáljon meg néhány fájl eltávolításával helyet "
 "felszabadítani."
 
-#: ../libcore/marlin-file-operations.c:3025
+#: ../libcore/marlin-file-operations.c:2756
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "%S érhető el, de %S szükséges."
 
-#: ../libcore/marlin-file-operations.c:3053
+#: ../libcore/marlin-file-operations.c:2784
 msgid "The destination is read-only."
 msgstr "A cél írásvédett."
 
-#: ../libcore/marlin-file-operations.c:3114
+#: ../libcore/marlin-file-operations.c:2843
 msgid "Moving \"%B\" to \"%B\""
 msgstr "„%B” áthelyezése ide: „%B”"
 
-#: ../libcore/marlin-file-operations.c:3115
+#: ../libcore/marlin-file-operations.c:2844
 msgid "Copying \"%B\" to \"%B\""
 msgstr "„%B” másolása ide: „%B”"
 
-#: ../libcore/marlin-file-operations.c:3119
+#: ../libcore/marlin-file-operations.c:2848
 msgid "Duplicating \"%B\""
 msgstr "„%B” kettőzése"
 
-#: ../libcore/marlin-file-operations.c:3123
+#: ../libcore/marlin-file-operations.c:2852
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d fájl áthelyezése (ebben: „%B”) a következőbe: „%B”"
 msgstr[1] "%'d fájl áthelyezése (ebben: „%B”) a következőbe: „%B”"
 
-#: ../libcore/marlin-file-operations.c:3126
+#: ../libcore/marlin-file-operations.c:2855
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d fájl másolása (ebben: „%B”) a következőbe: „%B”"
 msgstr[1] "%'d fájl másolása (ebben: „%B”) a következőbe: „%B”"
 
-#: ../libcore/marlin-file-operations.c:3133
+#: ../libcore/marlin-file-operations.c:2862
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "%'d fájl kettőzése (ebben: „%B”)"
 msgstr[1] "%'d fájl kettőzése (ebben: „%B”))"
 
-#: ../libcore/marlin-file-operations.c:3142
+#: ../libcore/marlin-file-operations.c:2871
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "%'d fájl áthelyezése ide „%B”"
 msgstr[1] "%'d fájl áthelyezése ide „%B”"
 
-#: ../libcore/marlin-file-operations.c:3146
+#: ../libcore/marlin-file-operations.c:2875
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "%'d fájl másolása ide „%B”"
 msgstr[1] "%'d fájl másolása ide „%B”"
 
-#: ../libcore/marlin-file-operations.c:3151
+#: ../libcore/marlin-file-operations.c:2880
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -836,7 +701,7 @@ msgstr[0] "%'d fájl megkettőzése"
 msgstr[1] "%'d fájl megkettőzése"
 
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
-#: ../libcore/marlin-file-operations.c:3202
+#: ../libcore/marlin-file-operations.c:2906
 #, c-format
 msgid "%S of %S"
 msgstr "%S, összesen: %S"
@@ -844,24 +709,24 @@ msgstr "%S, összesen: %S"
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
 #. / "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:3212
+#: ../libcore/marlin-file-operations.c:2916
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S, összesen: %S — %T van hátra (%S/mp)"
 msgstr[1] "%S, összesen: %S — %T van hátra (%S/mp)"
 
-#: ../libcore/marlin-file-operations.c:3591
+#: ../libcore/marlin-file-operations.c:3294
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
 "A(z) \"%B\" mappa nem másolható, mert nincs joga létrehozni azt a célon."
 
-#: ../libcore/marlin-file-operations.c:3594
+#: ../libcore/marlin-file-operations.c:3297
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Hiba történt a(z) \"%B\" mappa létrehozásakor."
 
-#: ../libcore/marlin-file-operations.c:3724
+#: ../libcore/marlin-file-operations.c:3427
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -869,609 +734,545 @@ msgstr ""
 "A(z) \"%B\" mappa fájljai nem másolhatók, mert nincs jogosultsága látni "
 "azokat."
 
-#: ../libcore/marlin-file-operations.c:3769
+#: ../libcore/marlin-file-operations.c:3472
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr "A(z) \"%B\" mappa nem másolható, mert nincs rá olvasási joga."
 
-#: ../libcore/marlin-file-operations.c:3814
-#: ../libcore/marlin-file-operations.c:4520
+#: ../libcore/marlin-file-operations.c:3517
+#: ../libcore/marlin-file-operations.c:4156
 msgid "Error while moving \"%B\"."
 msgstr "Hiba a(z) \"%B\" áthelyezésekor."
 
-#: ../libcore/marlin-file-operations.c:3815
+#: ../libcore/marlin-file-operations.c:3518
 msgid "Could not remove the source folder."
 msgstr "A forrásmappa nem távolítható el."
 
-#: ../libcore/marlin-file-operations.c:3900
-#: ../libcore/marlin-file-operations.c:3941
-#: ../libcore/marlin-file-operations.c:4522
+#: ../libcore/marlin-file-operations.c:3603
+#: ../libcore/marlin-file-operations.c:3644
+#: ../libcore/marlin-file-operations.c:4158
 msgid "Error while copying \"%B\"."
 msgstr "Hiba a(z) \"%B\" másolásakor."
 
-#: ../libcore/marlin-file-operations.c:3901
+#: ../libcore/marlin-file-operations.c:3604
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Nem távolíthatók el fájlok a már létező %F mappából."
 
-#: ../libcore/marlin-file-operations.c:3942
+#: ../libcore/marlin-file-operations.c:3645
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "A már létező %F fájl nem távolítható el."
 
-#: ../libcore/marlin-file-operations.c:4272
-#: ../libcore/marlin-file-operations.c:4948
+#: ../libcore/marlin-file-operations.c:3919
+#: ../libcore/marlin-file-operations.c:4570
 msgid "You cannot move a folder into itself."
 msgstr "Nem lehet egy mappát önmagába áthelyezni."
 
-#: ../libcore/marlin-file-operations.c:4273
-#: ../libcore/marlin-file-operations.c:4949
+#: ../libcore/marlin-file-operations.c:3920
+#: ../libcore/marlin-file-operations.c:4571
 msgid "You cannot copy a folder into itself."
 msgstr "Nem lehet egy mappát önmagára másolni."
 
-#: ../libcore/marlin-file-operations.c:4274
-#: ../libcore/marlin-file-operations.c:4950
+#: ../libcore/marlin-file-operations.c:3921
+#: ../libcore/marlin-file-operations.c:4572
 msgid "The destination folder is inside the source folder."
 msgstr "A célmappa a forrásmappán belül van."
 
-#: ../libcore/marlin-file-operations.c:4305
+#: ../libcore/marlin-file-operations.c:3952
 msgid "You cannot move a file over itself."
 msgstr "A fájl nem mozgatható önmagára."
 
-#: ../libcore/marlin-file-operations.c:4306
+#: ../libcore/marlin-file-operations.c:3953
 msgid "You cannot copy a file over itself."
 msgstr "Nem másolhatja a fájlt saját magára."
 
-#: ../libcore/marlin-file-operations.c:4307
+#: ../libcore/marlin-file-operations.c:3954
 msgid "The source file would be overwritten by the destination."
 msgstr "A forrásfájlt felülírná a célfájl."
 
-#: ../libcore/marlin-file-operations.c:4524
+#: ../libcore/marlin-file-operations.c:4160
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "A(z) „%F” mappában található azonos nevű fájl nem törölhető."
 
-#: ../libcore/marlin-file-operations.c:4594
+#: ../libcore/marlin-file-operations.c:4230
 msgid "Cannot copy \"%B\" here."
 msgstr "\"%B\" nem másolható ide."
 
-#: ../libcore/marlin-file-operations.c:4595
+#: ../libcore/marlin-file-operations.c:4231
 msgid "There was an error copying the file into %B."
 msgstr "Hiba a fájl %B-be másolásakor."
 
-#: ../libcore/marlin-file-operations.c:4822
+#: ../libcore/marlin-file-operations.c:4453
 msgid "Copying Files"
 msgstr "Fájlok másolása"
 
-#: ../libcore/marlin-file-operations.c:4848
+#: ../libcore/marlin-file-operations.c:4479
 msgid "Preparing to move to \"%B\""
 msgstr "Felkészülés \"%B\" mappába való mozgatáshoz"
 
-#: ../libcore/marlin-file-operations.c:4860
+#: ../libcore/marlin-file-operations.c:4483
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Felkészülés %'d fájl áthelyezésére"
 msgstr[1] "Felkészülés %'d fájl áthelyezésére"
 
-#: ../libcore/marlin-file-operations.c:5108
+#: ../libcore/marlin-file-operations.c:4724
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr "Hiba a \"%F\" áthelyezésekor."
 
-#: ../libcore/marlin-file-operations.c:5109
+#: ../libcore/marlin-file-operations.c:4725
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Hiba történt a fájl %F mappába helyezésekor."
 
-#: ../libcore/marlin-file-operations.c:5371
+#: ../libcore/marlin-file-operations.c:4982
 msgid "Moving Files"
 msgstr "Fájlok áthelyezése"
 
-#: ../libcore/marlin-file-operations.c:5400
+#: ../libcore/marlin-file-operations.c:5011
 msgid "Creating links in \"%B\""
 msgstr "Linkek létrehozása itt: „%B”"
 
-#: ../libcore/marlin-file-operations.c:5411
+#: ../libcore/marlin-file-operations.c:5015
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Link létrehozása %'d fájlra"
 msgstr[1] "Linkek létrehozása %'d fájlokra"
 
-#: ../libcore/marlin-file-operations.c:5552
+#: ../libcore/marlin-file-operations.c:5155
 msgid "Error while creating link to %B."
 msgstr "Hiba a link létrehozásakor a következőre: \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:5554
+#: ../libcore/marlin-file-operations.c:5157
 msgid "Symbolic links only supported for local files"
 msgstr "A szimbolikus linkek csak helyi fájlokhoz támogatottak"
 
-#: ../libcore/marlin-file-operations.c:5557
+#: ../libcore/marlin-file-operations.c:5160
 msgid "The target doesn't support symbolic links."
 msgstr "A cél nem támogatja a szimbolikus linkeket."
 
-#: ../libcore/marlin-file-operations.c:5560
+#: ../libcore/marlin-file-operations.c:5163
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Hiba történt a szimbolikus link létrehozásakor a következőben: %F."
 
-#: ../libcore/marlin-file-operations.c:5888
-#: ../libcore/marlin-file-operations.c:5891
+#: ../libcore/marlin-file-operations.c:5481
 msgid "Setting permissions"
 msgstr "Jogosultságok beállítása"
 
-#: ../libcore/marlin-file-operations.c:6003
+#: ../libcore/marlin-file-operations.c:5577
 msgid "Cannot copy into trash."
 msgstr "Nem lehet a kukába másolni."
 
-#: ../libcore/marlin-file-operations.c:6004
+#: ../libcore/marlin-file-operations.c:5578
 msgid "It is not permitted to copy files into the trash"
 msgstr "A fájlok Kukába másolása nem engedélyezett"
 
-#: ../libcore/marlin-file-operations.c:6145
+#: ../libcore/marlin-file-operations.c:5716
 msgid "untitled folder"
 msgstr "névtelen mappa"
 
-#: ../libcore/marlin-file-operations.c:6153
+#: ../libcore/marlin-file-operations.c:5724
 msgid "new file"
 msgstr "új fájl"
 
-#: ../libcore/marlin-file-operations.c:6324
+#: ../libcore/marlin-file-operations.c:5895
 msgid "Error while creating directory %B."
 msgstr "Hiba a következő könyvtár létrehozásakor: %B."
 
-#: ../libcore/marlin-file-operations.c:6326
+#: ../libcore/marlin-file-operations.c:5897
 msgid "Error while creating file %B."
 msgstr "Hiba a következő fájl létrehozásakor: %B."
 
-#: ../libcore/marlin-file-operations.c:6328
+#: ../libcore/marlin-file-operations.c:5899
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Hiba a könyvtár létrehozásakor a következőben: %F."
 
-#: ../libcore/marlin-file-operations.c:6650
-msgid "Emptying the trash"
-msgstr "A kuka ürítése folyamatban"
-
-#: ../libcore/marlin-file-operations.c:6662
+#: ../libcore/marlin-file-operations.c:6209
 msgid "Emptying Trash"
 msgstr "Kuka ürítése"
 
-#: ../libcore/marlin-progress-info.c:193 ../libcore/marlin-progress-info.c:211
-#: ../libcore/marlin-progress-info.c:229
-msgid "Preparing"
-msgstr "Felkészülés"
-
-#: ../libcore/eel-fcts.c:85 ../libcore/FileUtils.vala:438
-msgid "Today at %-I:%M %p"
-msgstr "Ma %-k.%M-kor"
-
-#: ../libcore/eel-fcts.c:89 ../libcore/FileUtils.vala:446
-msgid "Yesterday at %-I:%M %p"
-msgstr "Tegnap %-k.%M-kor"
-
-#: ../libcore/eel-fcts.c:93
-msgid "%a %-d %b at %-I:%M %p"
-msgstr "%a %-d %b - %-I:%M %p"
-
-#: ../libcore/eel-fcts.c:97
-msgid "%a %-d %b %Y at %-I:%M %p"
-msgstr "%Y. %b %d. %a. %H%M-kor"
-
-#: ../libcore/eel-stock-dialogs.c:34
-msgid "Show more _details"
-msgstr "Több _részlet megjelenítése"
-
-#: ../libcore/gof-file.c:362 ../libcore/gof-file.c:535
-msgid "Inaccessible"
-msgstr "Hozzáférhetetlen"
-
-#: ../libcore/gof-file.c:377
-#, c-format
-msgid "link to %s"
-msgstr "link erre: %s"
-
-#: ../libcore/gof-file.c:1938
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "A fájl elemzése sikertelen: %s"
-
-#: ../libcore/gof-file.c:1975
-msgid "No Exec field specified"
-msgstr "Nincs Exec mező megadva"
-
-#: ../libcore/gof-file.c:1994
-msgid "No URL field specified"
-msgstr "Nincs URL megadva"
-
-#: ../libcore/gof-file.c:2000
-msgid "Invalid desktop file"
-msgstr "Érvénytelen .desktop fájl"
-
-#: ../libcore/gof-file.c:2295
-msgid "Slashes are not allowed in filenames"
-msgstr "A fájlnevek nem tartalmazhatnak osztásjelet"
-
-#: ../libcore/gof-file.c:2315
-msgid "Toplevel files cannot be renamed"
-msgstr "A felső szintű fájlok nem nevezhetők át"
-
-#: ../libcore/marlin-undostack-manager.c:635
+#: ../libcore/marlin-undostack-manager.c:644
 msgid "Original location could not be determined"
 msgstr "Az eredeti hely ismeretlen"
 
-#: ../libcore/marlin-undostack-manager.c:636
+#: ../libcore/marlin-undostack-manager.c:645
 msgid "Open trash folder and restore manually"
 msgstr "Kézi helyreállítás a Kuka megnyitásával"
 
-#: ../libcore/marlin-undostack-manager.c:1225
+#: ../libcore/marlin-undostack-manager.c:1236
 #, c-format
 msgid "Delete %d copied items"
 msgstr "%d másolt elem törlése"
 
-#: ../libcore/marlin-undostack-manager.c:1228
-#: ../libcore/marlin-undostack-manager.c:1238
-#: ../libcore/marlin-undostack-manager.c:1269
+#: ../libcore/marlin-undostack-manager.c:1239
+#: ../libcore/marlin-undostack-manager.c:1249
+#: ../libcore/marlin-undostack-manager.c:1280
 #, c-format
 msgid "Delete '%s'"
 msgstr "„%s” törlése"
 
-#: ../libcore/marlin-undostack-manager.c:1235
+#: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr "%d duplikált elem törlése"
 
-#: ../libcore/marlin-undostack-manager.c:1246
+#: ../libcore/marlin-undostack-manager.c:1257
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr "%d elem visszahelyezése ide: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1250
+#: ../libcore/marlin-undostack-manager.c:1261
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr "„%s” helyreállítása ide: „%s”"
 
-#: ../libcore/marlin-undostack-manager.c:1259
-#: ../libcore/marlin-undostack-manager.c:1426
+#: ../libcore/marlin-undostack-manager.c:1270
+#: ../libcore/marlin-undostack-manager.c:1437
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr "„%s” átnevezése erre: „%s”"
 
-#: ../libcore/marlin-undostack-manager.c:1278
-#: ../libcore/marlin-undostack-manager.c:1473
+#: ../libcore/marlin-undostack-manager.c:1289
+#: ../libcore/marlin-undostack-manager.c:1484
 #, c-format
 msgid "Restore %d items from trash"
 msgstr "%d elem helyreállítása a kukából"
 
-#: ../libcore/marlin-undostack-manager.c:1286
+#: ../libcore/marlin-undostack-manager.c:1297
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr "„%s” visszaállítása erre: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1297
+#: ../libcore/marlin-undostack-manager.c:1308
 #, c-format
 msgid "Move %d items back to trash"
 msgstr "%d elem visszahelyezése a kukába"
 
-#: ../libcore/marlin-undostack-manager.c:1300
+#: ../libcore/marlin-undostack-manager.c:1311
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr "„%s” visszahelyezése a kukába"
 
-#: ../libcore/marlin-undostack-manager.c:1309
+#: ../libcore/marlin-undostack-manager.c:1320
 #, c-format
 msgid "Delete links to %d items"
 msgstr "Linkek törlése %d elemre"
 
-#: ../libcore/marlin-undostack-manager.c:1312
+#: ../libcore/marlin-undostack-manager.c:1323
 #, c-format
 msgid "Delete link to '%s'"
 msgstr "Erre mutató link: „%s”"
 
-#: ../libcore/marlin-undostack-manager.c:1322
+#: ../libcore/marlin-undostack-manager.c:1333
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr "„%s” által tartalmazott elemek eredeti jogosultságainak helyreállítása"
 
-#: ../libcore/marlin-undostack-manager.c:1330
+#: ../libcore/marlin-undostack-manager.c:1341
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr "„%s” eredeti jogosultságainak helyreállítása"
 
-#: ../libcore/marlin-undostack-manager.c:1339
+#: ../libcore/marlin-undostack-manager.c:1350
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr "„%s” csoportjának visszaállítása erre: „%s”"
 
-#: ../libcore/marlin-undostack-manager.c:1349
+#: ../libcore/marlin-undostack-manager.c:1360
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr "„%s” tulajdonságának visszaállítása erre: „%s”"
 
-#: ../libcore/marlin-undostack-manager.c:1388
+#: ../libcore/marlin-undostack-manager.c:1399
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr "%d elem másolása ide: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1392
+#: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr "„%s” másolása ide: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1400
+#: ../libcore/marlin-undostack-manager.c:1411
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr "%d duplikált elem itt: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1405
+#: ../libcore/marlin-undostack-manager.c:1416
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr "„%s” kettőzése itt: „%s”"
 
-#: ../libcore/marlin-undostack-manager.c:1413
+#: ../libcore/marlin-undostack-manager.c:1424
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr "%d elem mozgatása ide: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1417
+#: ../libcore/marlin-undostack-manager.c:1428
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr "„%s” áthelyezése ide: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1435
+#: ../libcore/marlin-undostack-manager.c:1446
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr "Új „%s” fájl létrehozása sablonból "
 
-#: ../libcore/marlin-undostack-manager.c:1442
+#: ../libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr "Üres fájl létrehozása: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1449
+#: ../libcore/marlin-undostack-manager.c:1460
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr "Új mappa létrehozása: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1457
+#: ../libcore/marlin-undostack-manager.c:1468
 #, c-format
 msgid "Move %d items to trash"
 msgstr "%d elem áthelyezése a kukába"
 
-#: ../libcore/marlin-undostack-manager.c:1463
+#: ../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Move '%s' to trash"
 msgstr "„%s” áthelyezés a kukába"
 
-#: ../libcore/marlin-undostack-manager.c:1476
+#: ../libcore/marlin-undostack-manager.c:1487
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr "„%s” visszaállítása a kukából"
 
-#: ../libcore/marlin-undostack-manager.c:1485
+#: ../libcore/marlin-undostack-manager.c:1496
 #, c-format
 msgid "Create links to %d items"
 msgstr "Hivatkozása létrehozása %d elemre"
 
-#: ../libcore/marlin-undostack-manager.c:1488
+#: ../libcore/marlin-undostack-manager.c:1499
 #, c-format
 msgid "Create link to '%s'"
 msgstr "Hivatkozás létrehozása erre: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1497
+#: ../libcore/marlin-undostack-manager.c:1508
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr "„%s” által tartalmazott elemek jogosultságainak beállítása"
 
-#: ../libcore/marlin-undostack-manager.c:1505
+#: ../libcore/marlin-undostack-manager.c:1516
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr "„%s” jogosultságainak beállítása"
 
-#: ../libcore/marlin-undostack-manager.c:1514
+#: ../libcore/marlin-undostack-manager.c:1525
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr "„%s” csoportjának beállítása erre: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1524
+#: ../libcore/marlin-undostack-manager.c:1535
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr "„%s” tulajdonosának beállítása erre: %s"
 
-#: ../libcore/marlin-undostack-manager.c:1556
+#: ../libcore/marlin-undostack-manager.c:1567
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] "%d ele_m másolásának visszavonása"
 msgstr[1] "%d ele_m másolásának visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1561
+#: ../libcore/marlin-undostack-manager.c:1572
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] "%d fájl _kettőzésének visszavonása"
 msgstr[1] "%d fájl _kettőzésének visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1566
+#: ../libcore/marlin-undostack-manager.c:1577
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] "%d elem át_helyezésének visszavonása"
 msgstr[1] "%d elem át_helyezésének visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1571
+#: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] "%d elem át_nevezésének visszavonása"
 msgstr[1] "%d elem át_nevezésének visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1575
+#: ../libcore/marlin-undostack-manager.c:1586
 msgid "_Undo creation of an empty file"
 msgstr "Ü_res fájl létrehozásának visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1578
+#: ../libcore/marlin-undostack-manager.c:1589
 msgid "_Undo creation of a file from template"
 msgstr "Ü_res sablonfájl létrehozásának visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1582
+#: ../libcore/marlin-undostack-manager.c:1593
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] "%d ü_res mappa létrehozásának visszavonása"
 msgstr[1] "%d ü_res mappa létrehozásának visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1587
+#: ../libcore/marlin-undostack-manager.c:1598
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "%d elem kukába át_helyezésének visszavonása"
 msgstr[1] "%d elem kukába át_helyezésének visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1592
+#: ../libcore/marlin-undostack-manager.c:1603
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] "%d elem kukából való _helyreállításának visszavonása"
 msgstr[1] "%d elem kukából való _helyreállításának visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1597
+#: ../libcore/marlin-undostack-manager.c:1608
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "%d elemre mutató _link létrehozásának visszavonása"
 msgstr[1] "%d elemre mutató _link létrehozásának visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1602
+#: ../libcore/marlin-undostack-manager.c:1613
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] "%d elem _törlésének visszavonása"
 msgstr[1] "%d elem _törlésének visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1607
+#: ../libcore/marlin-undostack-manager.c:1618
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] "%d elem rekurzív jogosultságmódosításának visszavonása"
 msgstr[1] "%d elem rekurzív jogosultságmódosításának visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1613
+#: ../libcore/marlin-undostack-manager.c:1624
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] "%d elem jogosultságmódosításának visszavonása"
 msgstr[1] "%d elem jogosultságmódosításának visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1618
+#: ../libcore/marlin-undostack-manager.c:1629
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] "%d elem csoportmódosításának visszavonása"
 msgstr[1] "%d elem csoportmódosításának visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1623
+#: ../libcore/marlin-undostack-manager.c:1634
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] "%d elem tulajdonosmódosításának visszavonása"
 msgstr[1] "%d elem tulajdonosmódosításának visszavonása"
 
-#: ../libcore/marlin-undostack-manager.c:1651
+#: ../libcore/marlin-undostack-manager.c:1662
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] "%d ele_m másolása újra"
 msgstr[1] "%d ele_m másolása újra"
 
-#: ../libcore/marlin-undostack-manager.c:1656
+#: ../libcore/marlin-undostack-manager.c:1667
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] "%d elem _kettőzése újra"
 msgstr[1] "%d elem _kettőzése újra"
 
-#: ../libcore/marlin-undostack-manager.c:1661
+#: ../libcore/marlin-undostack-manager.c:1672
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] "%d elem át_helyezése újra"
 msgstr[1] "%d elem át_helyezése újra"
 
-#: ../libcore/marlin-undostack-manager.c:1666
+#: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] "%d elem át_nevezése újra"
 msgstr[1] "%d elem át_nevezése újra"
 
-#: ../libcore/marlin-undostack-manager.c:1670
+#: ../libcore/marlin-undostack-manager.c:1681
 msgid "_Redo creation of an empty file"
 msgstr "Ü_res fájl létrehozása mégis"
 
-#: ../libcore/marlin-undostack-manager.c:1673
+#: ../libcore/marlin-undostack-manager.c:1684
 msgid "_Redo creation of a file from template"
 msgstr "Ü_res sablonfájl létrehozása mégis"
 
-#: ../libcore/marlin-undostack-manager.c:1677
+#: ../libcore/marlin-undostack-manager.c:1688
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "%d _mappa létrehozása újra"
 msgstr[1] "%d _mappa létrehozása újra"
 
-#: ../libcore/marlin-undostack-manager.c:1682
+#: ../libcore/marlin-undostack-manager.c:1693
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "%d elem kukába át_helyezése újra"
 msgstr[1] "%d elem kukába át_helyezése újra"
 
-#: ../libcore/marlin-undostack-manager.c:1687
+#: ../libcore/marlin-undostack-manager.c:1698
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] "%d elem kukából való _helyreállítása újra"
 msgstr[1] "%d elem kukából való _helyreállítása újra"
 
-#: ../libcore/marlin-undostack-manager.c:1692
+#: ../libcore/marlin-undostack-manager.c:1703
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] "%d elemre mutató _link létrehozása újra"
 msgstr[1] "%d elemre mutató _link létrehozása újra"
 
-#: ../libcore/marlin-undostack-manager.c:1697
+#: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] "%d elem _törlése újra"
 msgstr[1] "%d elem _törlése újra"
 
-#: ../libcore/marlin-undostack-manager.c:1702
+#: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] "%d elem rekurzív jogosultságmódosítása újra"
 msgstr[1] "%d elem rekurzív jogosultságmódosítása újra"
 
-#: ../libcore/marlin-undostack-manager.c:1708
+#: ../libcore/marlin-undostack-manager.c:1719
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] "%d elem jogosultságmódosítása újra"
 msgstr[1] "%d elem jogosultságmódosítása újra"
 
-#: ../libcore/marlin-undostack-manager.c:1713
+#: ../libcore/marlin-undostack-manager.c:1724
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] "%d elem csoportmódosítása újra"
 msgstr[1] "%d elem csoportmódosítása újra"
 
-#: ../libcore/marlin-undostack-manager.c:1718
+#: ../libcore/marlin-undostack-manager.c:1729
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
@@ -1488,310 +1289,76 @@ msgstr "Előző"
 msgid "Next"
 msgstr "Következő"
 
-#: ../src/View/AbstractDirectoryView.vala:581
-msgid "Failed to preview"
-msgstr "Nincs előnézet"
-
-#: ../src/View/AbstractDirectoryView.vala:832
+#: ../src/View/AbstractDirectoryView.vala:816
 msgid "Cannot open this file"
 msgstr "Ez a fájl nem nyitható meg"
 
-#: ../src/View/AbstractDirectoryView.vala:845
+#: ../src/View/AbstractDirectoryView.vala:829
 msgid "Cannot identify file type to open"
 msgstr "Nem azonosítható be a fájltípus a megnyitáshoz"
 
-#: ../src/View/AbstractDirectoryView.vala:1556
+#: ../src/View/AbstractDirectoryView.vala:1564
 msgid "Cannot drop this file"
 msgstr "A fájlt nem lehet elejteni"
 
-#: ../src/View/AbstractDirectoryView.vala:1556
+#: ../src/View/AbstractDirectoryView.vala:1564
 msgid "Invalid file name provided"
 msgstr "Érvénytelen fájlnév megadva"
 
-#: ../src/View/AbstractDirectoryView.vala:2011
+#: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Invalid"
 msgstr "Érvénytelen"
 
-#: ../src/View/AbstractDirectoryView.vala:2017
+#: ../src/View/AbstractDirectoryView.vala:2038
 msgid "Run"
 msgstr "Futtatás"
 
-#: ../src/View/AbstractDirectoryView.vala:2022
+#: ../src/View/AbstractDirectoryView.vala:2042
 msgid "Open in %s"
 msgstr "%s -ben megnyitás"
 
-#: ../src/View/AbstractDirectoryView.vala:2032
+#: ../src/View/AbstractDirectoryView.vala:2052
 msgid "Open in"
 msgstr "Megnyitás ebben"
 
-#: ../src/View/AbstractDirectoryView.vala:2034
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:461
+#: ../src/View/AbstractDirectoryView.vala:2054
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open with"
 msgstr "Megnyitás ezzel"
 
-#: ../src/View/AbstractDirectoryView.vala:2094
-msgid "Other Application"
-msgstr "Más alkalmazás"
+#: ../src/View/AbstractDirectoryView.vala:2113
+#: ../src/Dialogs/PropertiesWindow.vala:602
+msgid "Other Application…"
+msgstr "Egyéb alkalmazás…"
 
-#: ../src/View/AbstractDirectoryView.vala:2355
+#: ../src/View/AbstractDirectoryView.vala:2377
 msgid "Untitled %s"
 msgstr "Névtelen %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2689
-#: ../src/View/AbstractDirectoryView.vala:2872
+#: ../src/View/AbstractDirectoryView.vala:2713
+#: ../src/View/AbstractDirectoryView.vala:2905
 msgid "Cannot remove files from here"
 msgstr "A fájlok nem távolíthatók el innen"
 
-#: ../src/View/AbstractDirectoryView.vala:2690
-#: ../src/View/AbstractDirectoryView.vala:2860
-#: ../src/View/AbstractDirectoryView.vala:2873
+#: ../src/View/AbstractDirectoryView.vala:2714
+#: ../src/View/AbstractDirectoryView.vala:2890
+#: ../src/View/AbstractDirectoryView.vala:2906
 msgid "You do not have permission to change this location"
 msgstr "Nincs engedélye az elérési út megváltoztatására"
 
-#: ../src/View/AbstractDirectoryView.vala:2838
+#: ../src/View/AbstractDirectoryView.vala:2865
 msgid "Cannot copy files that are in the trash"
 msgstr "A kukában levő fájlok nem másolhatóak"
 
-#: ../src/View/AbstractDirectoryView.vala:2839
+#: ../src/View/AbstractDirectoryView.vala:2866
 msgid "Cutting the selection instead"
 msgstr "A kijelöltek kivágása inkább"
 
-#: ../src/View/AbstractDirectoryView.vala:2859
+#: ../src/View/AbstractDirectoryView.vala:2889
 msgid "Cannot paste files here"
 msgstr "Fájlok beillesztése itt nem lehetséges"
 
-#: ../src/View/Widgets/LocationBar.vala:186
-msgid "Reload this folder"
-msgstr "A mappa újratöltése"
-
-#: ../src/View/Widgets/LocationBar.vala:189
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:291
-msgid "Enter search term or path"
-msgstr "Keresőkifejezés vagy út megadása"
-
-#: ../src/View/Widgets/OverlayBar.vala:230
-msgid "%u folders"
-msgstr "%u mappa"
-
-#: ../src/View/Widgets/OverlayBar.vala:232
-#: ../src/View/Widgets/OverlayBar.vala:240
-msgid " and %u other item (%s) selected"
-msgstr " és %u egyéb elem (%s) kiválasztva"
-
-#: ../src/View/Widgets/OverlayBar.vala:233
-#: ../src/View/Widgets/OverlayBar.vala:241
-msgid " and %u other items (%s) selected"
-msgstr " és %u további (%s) elem kiválasztva"
-
-#: ../src/View/Widgets/OverlayBar.vala:236
-#: ../src/View/Widgets/OverlayBar.vala:244
-msgid " selected"
-msgstr " kiválasztva"
-
-#: ../src/View/Widgets/OverlayBar.vala:238
-#: ../src/Dialogs/PropertiesWindow.vala:1162
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] "%u mappa"
-msgstr[1] "%u mappa"
-
-#: ../src/View/Widgets/OverlayBar.vala:246
-msgid "%u items selected (%s)"
-msgstr "%u elem kiválasztva (%s)"
-
-#. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/Widgets/OverlayBar.vala:287
-msgid "%u sub-folder, "
-msgstr "%u almappa, "
-
-#: ../src/View/Widgets/OverlayBar.vala:287
-msgid "%u sub-folders, "
-msgstr "%u almappa, "
-
-#. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/Widgets/OverlayBar.vala:293
-msgid "%u file, "
-msgstr "%u fájl, "
-
-#: ../src/View/Widgets/OverlayBar.vala:293
-msgid "%u files, "
-msgstr "%u fájl, "
-
-#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/Widgets/OverlayBar.vala:303
-msgid "%s approx."
-msgstr "Körülbelül %s."
-
-#. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/Widgets/OverlayBar.vala:306
-msgid "unknown size"
-msgstr "ismeretlen méret"
-
-#. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/Widgets/OverlayBar.vala:310
-msgid "%u file not readable"
-msgstr "%u fájl nem olvasható"
-
-#: ../src/View/Widgets/OverlayBar.vala:310
-msgid "%u files not readable"
-msgstr "%u fájl nem olvasható"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:422
-msgid "Open in New Tab"
-msgstr "Megnyitás új lapon"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:429
-msgid "Open in New Window"
-msgstr "Megnyitás új ablakban"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:468
-msgid "Open in Other Application…"
-msgstr "Megnyitás másik alkalmazással…"
-
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Olvasás"
-
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Írás"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Végrehajtás"
-
-#: ../src/View/Window.vala:205
-msgid "Files isn't your default file manager."
-msgstr "A Fájlkezelő nem az alapértelmezett fájlkezelője."
-
-#: ../src/View/Window.vala:211
-msgid "Set as Default"
-msgstr "Beállítás alapértelmezésként"
-
-#: ../src/View/Window.vala:217
-msgid "Ignore"
-msgstr "Mellőzés"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Fájlnév"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:143
-msgid "Size"
-msgstr "Méret"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:148
-msgid "Type"
-msgstr "Típus"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Módosítva"
-
-#: ../src/View/Sidebar.vala:503
-msgid "Personal"
-msgstr "Személyes"
-
-#: ../src/View/Sidebar.vala:504
-msgid "Your common places and bookmarks"
-msgstr "Saját mappái és könyvjelzői"
-
-#: ../src/View/Sidebar.vala:516 ../src/View/ViewContainer.vala:373
-msgid "Home"
-msgstr "Saját mappa"
-
-#: ../src/View/Sidebar.vala:523
-msgid "Open your personal folder"
-msgstr "Személyes mappa megnyitása"
-
-#: ../src/View/Sidebar.vala:538
-msgid "View the list of recently used files"
-msgstr "A nemrég használt fájlok megtekintése"
-
-#: ../src/View/Sidebar.vala:564 ../libwidgets/Resources.vala:65
-msgid "Trash"
-msgstr "Kuka"
-
-#: ../src/View/Sidebar.vala:571
-msgid "Open the Trash"
-msgstr "Kuka megnyitása"
-
-#: ../src/View/Sidebar.vala:576
-msgid "Devices"
-msgstr "Eszközök"
-
-#: ../src/View/Sidebar.vala:577
-msgid "Your local partitions and devices"
-msgstr "Helyi partíciók és eszközök"
-
-#: ../src/View/Sidebar.vala:583 ../src/View/ViewContainer.vala:375
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:68
-msgid "File System"
-msgstr "Fájlrendszer"
-
-#: ../src/View/Sidebar.vala:701 ../libwidgets/Resources.vala:62
-msgid "Network"
-msgstr "Hálózat"
-
-#: ../src/View/Sidebar.vala:702
-msgid "Your network places"
-msgstr "Hálózati helyek"
-
-#: ../src/View/Sidebar.vala:734
-msgid "Entire Network"
-msgstr "Egész hálózaton"
-
-#: ../src/View/Sidebar.vala:741
-msgid "Browse the contents of the network"
-msgstr "A hálózat tartalmának tallózása"
-
-#: ../src/View/Sidebar.vala:874
-msgid "(%s Free of %s)"
-msgstr "(%s szabad ennyiből: %s)"
-
-#: ../src/View/Sidebar.vala:1370
-msgid "Unable to start %s"
-msgstr "A(z) %s nem indítható"
-
-#: ../src/View/Sidebar.vala:1474
-msgid "Open"
-msgstr "Megnyitás"
-
-#: ../src/View/Sidebar.vala:1482
-msgid "Open in New _Tab"
-msgstr "Megnyitás új _lapon"
-
-#: ../src/View/Sidebar.vala:1488
-msgid "Open in New _Window"
-msgstr "Megnyitás új _ablakban"
-
-#: ../src/View/Sidebar.vala:1496
-msgid "Remove"
-msgstr "Eltávolítás"
-
-#: ../src/View/Sidebar.vala:1504 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Átnevezés"
-
-#: ../src/View/Sidebar.vala:1513
-msgid "_Mount"
-msgstr "_Csatolás"
-
-#: ../src/View/Sidebar.vala:1519
-msgid "_Unmount"
-msgstr "_Leválasztás"
-
-#: ../src/View/Sidebar.vala:1525
-msgid "_Eject"
-msgstr "_Kiadás"
-
-#: ../src/View/Sidebar.vala:1539 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:99
-msgid "Properties"
-msgstr "Tulajdonságok"
-
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:406
+#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Exist"
 msgstr "Ez a mappa nem létezik"
 
@@ -1817,103 +1384,331 @@ msgstr ""
 "\n"
 "%s"
 
-#: ../src/View/Slot.vala:32
+#: ../src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Fájlnév"
+
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:149
+msgid "Size"
+msgstr "Méret"
+
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:154
+msgid "Type"
+msgstr "Típus"
+
+#: ../src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Módosítva"
+
+#: ../src/View/Sidebar.vala:481
+msgid "Personal"
+msgstr "Személyes"
+
+#: ../src/View/Sidebar.vala:482
+msgid "Your common places and bookmarks"
+msgstr "Saját mappái és könyvjelzői"
+
+#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:363
+msgid "Home"
+msgstr "Saját mappa"
+
+#: ../src/View/Sidebar.vala:501
+msgid "Open your personal folder"
+msgstr "Személyes mappa megnyitása"
+
+#: ../src/View/Sidebar.vala:516
+msgid "View the list of recently used files"
+msgstr "A nemrég használt fájlok megtekintése"
+
+#: ../src/View/Sidebar.vala:542 ../libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr "Kuka"
+
+#: ../src/View/Sidebar.vala:549
+msgid "Open the Trash"
+msgstr "Kuka megnyitása"
+
+#: ../src/View/Sidebar.vala:554
+msgid "Devices"
+msgstr "Eszközök"
+
+#: ../src/View/Sidebar.vala:555
+msgid "Your local partitions and devices"
+msgstr "Helyi partíciók és eszközök"
+
+#: ../src/View/Sidebar.vala:561 ../src/View/ViewContainer.vala:365
+#: ../src/Dialogs/VolumePropertiesWindow.vala:44
+#: ../libwidgets/Resources.vala:68
+msgid "File System"
+msgstr "Fájlrendszer"
+
+#: ../src/View/Sidebar.vala:679 ../libwidgets/Resources.vala:62
+msgid "Network"
+msgstr "Hálózat"
+
+#: ../src/View/Sidebar.vala:680
+msgid "Your network places"
+msgstr "Hálózati helyek"
+
+#: ../src/View/Sidebar.vala:712
+msgid "Entire Network"
+msgstr "Egész hálózaton"
+
+#: ../src/View/Sidebar.vala:719
+msgid "Browse the contents of the network"
+msgstr "A hálózat tartalmának tallózása"
+
+#: ../src/View/Sidebar.vala:852
+msgid "(%s Free of %s)"
+msgstr "(%s szabad ennyiből: %s)"
+
+#: ../src/View/Sidebar.vala:1324
+msgid "Error mounting volume %s"
+msgstr ""
+
+#: ../src/View/Sidebar.vala:1339
+msgid "Unable to start %s"
+msgstr "A(z) %s nem indítható"
+
+#: ../src/View/Sidebar.vala:1437
+msgid "Open"
+msgstr "Megnyitás"
+
+#: ../src/View/Sidebar.vala:1441
+msgid "Open in New _Tab"
+msgstr "Megnyitás új _lapon"
+
+#: ../src/View/Sidebar.vala:1445
+msgid "Open in New _Window"
+msgstr "Megnyitás új _ablakban"
+
+#: ../src/View/Sidebar.vala:1451
+msgid "Remove"
+msgstr "Eltávolítás"
+
+#: ../src/View/Sidebar.vala:1455 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Átnevezés"
+
+#: ../src/View/Sidebar.vala:1461
+msgid "_Mount"
+msgstr "_Csatolás"
+
+#: ../src/View/Sidebar.vala:1465
+msgid "_Unmount"
+msgstr "_Leválasztás"
+
+#: ../src/View/Sidebar.vala:1469
+msgid "_Eject"
+msgstr "_Kiadás"
+
+#: ../src/View/Sidebar.vala:1478 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:91
+msgid "Properties"
+msgstr "Tulajdonságok"
+
+#: ../src/View/Slot.vala:31
 msgid "This Folder Is Empty"
 msgstr "Ez a mappa üres"
 
-#: ../src/View/Slot.vala:33
+#: ../src/View/Slot.vala:32
 msgid "Trash Is Empty"
 msgstr "A kuka üres"
 
-#: ../src/View/Slot.vala:34
+#: ../src/View/Slot.vala:33
 msgid "There Are No Recent Files"
 msgstr "Nincsenek előzmények"
 
-#: ../src/View/Slot.vala:35
+#: ../src/View/Slot.vala:34
 msgid "Access Denied"
 msgstr "Hozzáférés megtagadva"
 
-#: ../src/View/ViewContainer.vala:388
+#: ../src/View/ViewContainer.vala:378
 msgid "(as Administrator)"
 msgstr "(Adminisztrátorként)"
 
-#: ../src/View/ViewContainer.vala:407
+#: ../src/View/ViewContainer.vala:397
 msgid "You cannot create a folder here."
 msgstr "Ide nem hozható létre mappa."
 
-#: ../src/View/ViewContainer.vala:410
+#: ../src/View/ViewContainer.vala:400
 msgid "The network is unavailable"
 msgstr "A hálózat elérhetetlen"
 
-#: ../src/View/ViewContainer.vala:411
+#: ../src/View/ViewContainer.vala:401
 msgid "A working network is needed to reach this folder"
 msgstr "Egy működő hálózat szükséges ennek a mappának az eléréshez"
 
-#: ../src/View/ViewContainer.vala:413
+#: ../src/View/ViewContainer.vala:403
 msgid "This Folder Does Not Belong to You"
 msgstr "Ez a mappa nem önhöz tartozik"
 
-#: ../src/View/ViewContainer.vala:414
+#: ../src/View/ViewContainer.vala:404
 msgid "You don't have permission to view this folder."
 msgstr "Nincs jogosultsága, hogy megnézze ezt a könyvtárat."
 
-#: ../src/View/ViewContainer.vala:416
+#: ../src/View/ViewContainer.vala:406
 msgid "Unable to Mount Folder"
 msgstr "Mappa nem csatolható"
 
-#: ../src/View/ViewContainer.vala:417
+#: ../src/View/ViewContainer.vala:407
 msgid "Could not connect to the server for this folder."
 msgstr "Nem lehet csatlakozni a szerverhez ehhez a mappához."
 
-#: ../src/View/ViewContainer.vala:419
+#: ../src/View/ViewContainer.vala:409
 msgid "Unable to Display Folder Contents"
 msgstr "Nem sikerült megjeleníteni a mappa tartalmát"
 
-#: ../src/View/ViewContainer.vala:420
+#: ../src/View/ViewContainer.vala:410
 msgid "The operation timed out."
 msgstr "A művelet időtúllépés miatt megszakadt."
 
-#: ../src/View/ViewContainer.vala:422
+#: ../src/View/ViewContainer.vala:412
 msgid "Unable to Show Folder"
 msgstr "Nem lehet a mappát megjeleníteni"
 
-#: ../src/View/ViewContainer.vala:423
+#: ../src/View/ViewContainer.vala:413
 msgid "The server for this folder could not be located."
 msgstr "Nem található a mappához tartozó szerver."
 
-#: ../src/View/ViewContainer.vala:433
+#: ../src/View/ViewContainer.vala:423
 msgid "File not Found"
 msgstr "Fájl nem található"
 
-#: ../src/View/ViewContainer.vala:434
+#: ../src/View/ViewContainer.vala:424
 msgid "The file selected no longer exists."
 msgstr "A kiválasztott fájl már nem létezik."
 
-#: ../src/Application.vala:134
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+msgid "Open in New Tab"
+msgstr "Megnyitás új lapon"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:427
+msgid "Open in New Window"
+msgstr "Megnyitás új ablakban"
+
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:466
+msgid "Open in Other Application…"
+msgstr "Megnyitás másik alkalmazással…"
+
+#: ../src/View/Widgets/LocationBar.vala:193
+msgid "Reload this folder"
+msgstr "A mappa újratöltése"
+
+#: ../src/View/Widgets/LocationBar.vala:197
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+msgid "Search or Type Path"
+msgstr ""
+
+#: ../src/View/Widgets/LocationBar.vala:206
+#, fuzzy
+msgid "Searching…"
+msgstr "Betöltés…"
+
+#: ../src/View/Widgets/OverlayBar.vala:216
+msgid "%u folders"
+msgstr "%u mappa"
+
+#: ../src/View/Widgets/OverlayBar.vala:218
+#: ../src/View/Widgets/OverlayBar.vala:226
+msgid " and %u other item (%s) selected"
+msgstr " és %u egyéb elem (%s) kiválasztva"
+
+#: ../src/View/Widgets/OverlayBar.vala:219
+#: ../src/View/Widgets/OverlayBar.vala:227
+msgid " and %u other items (%s) selected"
+msgstr " és %u további (%s) elem kiválasztva"
+
+#: ../src/View/Widgets/OverlayBar.vala:222
+#: ../src/View/Widgets/OverlayBar.vala:230
+msgid " selected"
+msgstr " kiválasztva"
+
+#: ../src/View/Widgets/OverlayBar.vala:224
+#: ../src/Dialogs/PropertiesWindow.vala:1173
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] "%u mappa"
+msgstr[1] "%u mappa"
+
+#: ../src/View/Widgets/OverlayBar.vala:232
+msgid "%u items selected (%s)"
+msgstr "%u elem kiválasztva (%s)"
+
+#. / TRANSLATORS: %u will be substituted by the number of sub folders
+#: ../src/View/Widgets/OverlayBar.vala:274
+msgid "%u sub-folder, "
+msgstr "%u almappa, "
+
+#: ../src/View/Widgets/OverlayBar.vala:274
+msgid "%u sub-folders, "
+msgstr "%u almappa, "
+
+#. / TRANSLATORS: %u will be substituted by the number of readable files
+#: ../src/View/Widgets/OverlayBar.vala:280
+msgid "%u file, "
+msgstr "%u fájl, "
+
+#: ../src/View/Widgets/OverlayBar.vala:280
+msgid "%u files, "
+msgstr "%u fájl, "
+
+#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
+#: ../src/View/Widgets/OverlayBar.vala:290
+msgid "%s approx."
+msgstr "Körülbelül %s."
+
+#. / TRANSLATORS: 'size' refers to disk space
+#: ../src/View/Widgets/OverlayBar.vala:293
+msgid "unknown size"
+msgstr "ismeretlen méret"
+
+#. / TRANSLATORS: %u will be substituted by the number of unreadable files
+#: ../src/View/Widgets/OverlayBar.vala:297
+msgid "%u file not readable"
+msgstr "%u fájl nem olvasható"
+
+#: ../src/View/Widgets/OverlayBar.vala:297
+msgid "%u files not readable"
+msgstr "%u fájl nem olvasható"
+
+#: ../src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Olvasás"
+
+#: ../src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Írás"
+
+#: ../src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Végrehajtás"
+
+#: ../src/Application.vala:118
 msgid "Show the version of the program."
 msgstr "A program verziószámának megjelenítése."
 
-#: ../src/Application.vala:136
+#: ../src/Application.vala:120
 msgid "Open uri(s) in new tab"
 msgstr "URI cím(ek) megjelenítése új lapon"
 
-#: ../src/Application.vala:138 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:122 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Új ablak"
 
-#: ../src/Application.vala:140
+#: ../src/Application.vala:124
 msgid "Quit Files."
 msgstr "Kilépés a fájlkezelőből."
 
-#: ../src/Application.vala:142
+#: ../src/Application.vala:126
 msgid "Enable debug logging"
 msgstr "Hibakereső naplózás engedélyezése"
 
-#: ../src/Application.vala:145
+#: ../src/Application.vala:129
 msgid "[URI...]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:148
+#: ../src/Application.vala:132
 msgid ""
 "\n"
 "\n"
@@ -1923,62 +1718,65 @@ msgstr ""
 "\n"
 "A fájlrendszer böngészése a fájlkezelővel"
 
-#: ../src/Application.vala:175
+#: ../src/Application.vala:159
 msgid "--quit cannot be used with URIs."
 msgstr "a --quit nem használható URI-címekkel."
 
-#: ../src/ClipboardManager.vala:142 ../src/ClipboardManager.vala:155
-msgid "There is nothing on the clipboard to paste"
-msgstr "A vágólapról nincs mit beilleszteni"
+#: ../src/DesktopLauncher.vala:21
+msgid "Browse your files"
+msgstr "Tallózzon a fájlok között"
+
+#: ../src/DesktopLauncher.vala:22
+msgid "File Manager"
+msgstr "Fájlkezelő"
+
+#: ../src/DesktopLauncher.vala:23
+msgid "New _Window"
+msgstr "Új _ablak"
+
+#: ../src/DesktopLauncher.vala:24
+msgid "New Window As _Administrator"
+msgstr "Új ablak nyitása _adminisztátorként"
+
+#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Fájlok"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
 msgstr "Infó"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:58
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
 msgstr "Általános"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:77
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:76
 msgid "Close"
 msgstr "Bezárás"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:137
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:136
 msgid "Device Usage"
 msgstr "Eszközhasználat"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:153
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:152
 msgid "Capacity:"
 msgstr "Kapacitás:"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:154
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:157
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:160
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:153
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
 #: ../src/Dialogs/PropertiesWindow.vala:416
 #: ../src/Dialogs/PropertiesWindow.vala:452
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Available:"
 msgstr "Elérhető:"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
+#: ../src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Used:"
 msgstr "Használva:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
-msgid "Disk Properties"
-msgstr "Lemez tulajdonságok"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
-#: ../src/Dialogs/PropertiesWindow.vala:561
-msgid "Location:"
-msgstr "Elérési út:"
-
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
-msgid "Format:"
-msgstr "Formátum:"
 
 #: ../src/Dialogs/ChooseAppDialog.vala:40
 msgid "Set as default"
@@ -2011,6 +1809,18 @@ msgstr "Betöltés…"
 msgid "Could not be determined"
 msgstr "Nem lehet meghatározni"
 
+#: ../src/Dialogs/PropertiesWindow.vala:484
+#: ../libcore/FileConflictDialog.vala:117
+#: ../libcore/FileConflictDialog.vala:145
+msgid "Size:"
+msgstr "Méret:"
+
+#: ../src/Dialogs/PropertiesWindow.vala:491
+#: ../libcore/FileConflictDialog.vala:125
+#: ../libcore/FileConflictDialog.vala:153
+msgid "Type:"
+msgstr "Típus:"
+
 #: ../src/Dialogs/PropertiesWindow.vala:494
 msgid "Contains:"
 msgstr "Tartalmazza:"
@@ -2035,6 +1845,11 @@ msgstr "Pantonimtípus:"
 msgid "Resolution:"
 msgstr "Felbontás:"
 
+#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+msgid "Location:"
+msgstr "Elérési út:"
+
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
 msgstr "Cél:"
@@ -2043,97 +1858,81 @@ msgstr "Cél:"
 msgid "Original Location:"
 msgstr "Eredeti hely:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:602
-msgid "Other Application…"
-msgstr "Egyéb alkalmazás…"
-
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
 msgstr "Megnyitás ezzel:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:864
-#: ../src/Dialogs/PropertiesWindow.vala:874
+#: ../src/Dialogs/PropertiesWindow.vala:875
+#: ../src/Dialogs/PropertiesWindow.vala:885
 msgid "Owner:"
 msgstr "Tulajdonos:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:868
-#: ../src/Dialogs/PropertiesWindow.vala:877
+#: ../src/Dialogs/PropertiesWindow.vala:879
+#: ../src/Dialogs/PropertiesWindow.vala:888
 msgid "Group:"
 msgstr "Csoport:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:880
+#: ../src/Dialogs/PropertiesWindow.vala:891
 msgid "Everyone:"
 msgstr "Mindenki:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1140
+#: ../src/Dialogs/PropertiesWindow.vala:1151
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u almappa"
 msgstr[1] "%u almappa"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1144
-#: ../src/Dialogs/PropertiesWindow.vala:1166
+#: ../src/Dialogs/PropertiesWindow.vala:1155
+#: ../src/Dialogs/PropertiesWindow.vala:1177
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u fájl"
 msgstr[1] "%u fájl"
 
 #. /TRANSLATORS: folders, files
-#: ../src/Dialogs/PropertiesWindow.vala:1149
+#: ../src/Dialogs/PropertiesWindow.vala:1160
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1170
+#: ../src/Dialogs/PropertiesWindow.vala:1181
 msgid "%u selected item"
 msgid_plural "%u selected items"
 msgstr[0] "%u kijelölt elem"
 msgstr[1] "%u kijelölt elem"
 
 #. /TRANSLATORS: total (folders, files)
-#: ../src/Dialogs/PropertiesWindow.vala:1172
+#: ../src/Dialogs/PropertiesWindow.vala:1183
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: ../src/ProgressUIHandler.vala:138 ../src/ProgressUIHandler.vala:198
+#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+msgid "Disk Properties"
+msgstr "Lemez tulajdonságok"
+
+#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+msgid "Format:"
+msgstr "Formátum:"
+
+#: ../src/ProgressUIHandler.vala:131 ../src/ProgressUIHandler.vala:191
 msgid "File Operations"
 msgstr "Fájlműveletek"
 
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:192
+#: ../src/ProgressUIHandler.vala:185
 msgid "Completed %s"
 msgstr "%s befejezett"
 
-#: ../src/ProgressUIHandler.vala:195
+#: ../src/ProgressUIHandler.vala:188
 msgid "All file operations have ended"
 msgstr "Minden fájlművelet véget ért"
 
-#: ../src/ProgressUIHandler.vala:240
+#: ../src/ProgressUIHandler.vala:233
 msgid "Show Copy Dialog"
 msgstr "Másolási ablak megjelenítése"
 
-#: ../src/ProgressUIHandler.vala:252
+#: ../src/ProgressUIHandler.vala:245
 msgid "Cancel All In-progress Actions"
 msgstr "Összes folyamatban lévő művelet megszakítása"
-
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr "Tallózzon a fájlok között"
-
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr "Fájlkezelő"
-
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr "Új _ablak"
-
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Új ablak nyitása _adminisztátorként"
-
-#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Fájlok"
 
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
@@ -2155,34 +1954,6 @@ msgstr "URI megnyitása sikertelen"
 msgid "Unable to open files or uris with this app"
 msgstr "Nem lehet megnyitni a fájlokat és URI-kat ezzel az alkalmazással"
 
-#: ../libcore/FileUtils.vala:60
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nem határozható meg „%s” eredeti helye "
-
-#: ../libcore/FileUtils.vala:61
-msgid "The item cannot be restored from trash"
-msgstr "Az elem nem állítható helyre a Kukából"
-
-#: ../libcore/FileUtils.vala:345
-msgid "Could not rename to '%s'"
-msgstr "Nem lehet átnevezni erre: '%s'"
-
-#: ../libcore/FileUtils.vala:436
-msgid "Today at %-H:%M"
-msgstr "Ma ekkor %-H:%M"
-
-#: ../libcore/FileUtils.vala:444
-msgid "Yesterday at %-H:%M"
-msgstr "Tegnap ekkor %-H:%M"
-
-#: ../libcore/FileUtils.vala:453
-msgid "%A at %-H:%M"
-msgstr "%A ekkor %-H:%M"
-
-#: ../libcore/FileUtils.vala:455
-msgid "%A at %-I:%M %p"
-msgstr "%A ekkor %-I:%M %p"
-
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "\"%s\" futtatása sikertelen"
@@ -2199,19 +1970,161 @@ msgstr "Másolás ide"
 msgid "Link Here"
 msgstr "Link ide"
 
-#: ../libcore/DndHandler.vala:98
+#: ../libcore/DndHandler.vala:98 ../libcore/FileConflictDialog.vala:186
 msgid "Cancel"
 msgstr "Mégse"
 
-#: ../libcore/gof-directory-async.vala:611
+#: ../libcore/FileConflictDialog.vala:62
+msgid "File conflict"
+msgstr "Fájlütközés"
+
+#: ../libcore/FileConflictDialog.vala:112
+msgid "Original file"
+msgstr "Eredeti fájl"
+
+#: ../libcore/FileConflictDialog.vala:130
+#: ../libcore/FileConflictDialog.vala:158
+msgid "Last modified:"
+msgstr "Utoljára módosítva:"
+
+#: ../libcore/FileConflictDialog.vala:140
+msgid "Replace with"
+msgstr "Cserélje erre"
+
+#: ../libcore/FileConflictDialog.vala:168
+msgid "Reset"
+msgstr "Alapállapot"
+
+#: ../libcore/FileConflictDialog.vala:178
+msgid "_Select a new name for the destination"
+msgstr "A_dja meg a cél új nevét"
+
+#: ../libcore/FileConflictDialog.vala:181
+msgid "Apply this action to all files"
+msgstr "Művelet alkalmazása az összes fájlra"
+
+#: ../libcore/FileConflictDialog.vala:184
+msgid "Re_name"
+msgstr "Át_nevezés"
+
+#: ../libcore/FileConflictDialog.vala:188
+msgid "Replace"
+msgstr "Felülírás"
+
+#: ../libcore/FileConflictDialog.vala:304
+msgid "Merge folder \"%s\"?"
+msgstr "Egyesíti a(z) „%s” mappát?"
+
+#: ../libcore/FileConflictDialog.vala:305
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Az egyesítés a mappában található, a másolandó fájlokkal ütköző fájlok "
+"felülírása előtt megerősítést kér."
+
+#: ../libcore/FileConflictDialog.vala:307
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Már létezik ilyen nevű régebbi mappa „%s” alatt."
+
+#: ../libcore/FileConflictDialog.vala:309
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Már létezik egy újabb, ugyan ilyen nevű mappa itt: „%s”."
+
+#: ../libcore/FileConflictDialog.vala:311
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Már létezik egy másik, ugyan ilyen nevű mappa itt: „%s”."
+
+#: ../libcore/FileConflictDialog.vala:314
+msgid "Replace folder \"%s\"?"
+msgstr "Lecseréli a(z) „%s” mappát?"
+
+#: ../libcore/FileConflictDialog.vala:315
+msgid "Replacing it will remove all files in the folder."
+msgstr "Cseréjével az összes fájl a mappában el lesz távolítva."
+
+#: ../libcore/FileConflictDialog.vala:316
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Már létezik egy ugyan ilyen nevű mappa itt: „%s”."
+
+#: ../libcore/FileConflictDialog.vala:319
+msgid "Replace file \"%s\"?"
+msgstr "Felülírja a(z) \"%s\" fájlt?"
+
+#: ../libcore/FileConflictDialog.vala:320
+msgid "Replacing it will overwrite its content."
+msgstr "Cseréjével a fájl tartalma felül lesz írva."
+
+#: ../libcore/FileConflictDialog.vala:323
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Már létezik egy régebbi, ugyanilyen nevű fájl itt: „%s”."
+
+#: ../libcore/FileConflictDialog.vala:325
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Már létezik egy újabb, ugyanilyen nevű fájl itt: „%s”."
+
+#: ../libcore/FileConflictDialog.vala:327
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Már létezik egy másik, ugyanilyen nevű fájl itt: „%s”."
+
+#: ../libcore/FileConflictDialog.vala:353
+msgid "Merge"
+msgstr "Egyesítés"
+
+#: ../libcore/FileUtils.vala:84
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nem határozható meg „%s” eredeti helye "
+
+#: ../libcore/FileUtils.vala:85
+msgid "The item cannot be restored from trash"
+msgstr "Az elem nem állítható helyre a Kukából"
+
+#: ../libcore/FileUtils.vala:436
+msgid "Could not rename to '%s'"
+msgstr "Nem lehet átnevezni erre: '%s'"
+
+#: ../libcore/FileUtils.vala:527
+msgid "Today at %-H:%M"
+msgstr "Ma ekkor %-H:%M"
+
+#: ../libcore/FileUtils.vala:529
+msgid "Today at %-I:%M %p"
+msgstr "Ma %-k.%M-kor"
+
+#: ../libcore/FileUtils.vala:535
+msgid "Yesterday at %-H:%M"
+msgstr "Tegnap ekkor %-H:%M"
+
+#: ../libcore/FileUtils.vala:537
+msgid "Yesterday at %-I:%M %p"
+msgstr "Tegnap %-k.%M-kor"
+
+#: ../libcore/FileUtils.vala:544
+msgid "%A at %-H:%M"
+msgstr "%A ekkor %-H:%M"
+
+#: ../libcore/FileUtils.vala:546
+msgid "%A at %-I:%M %p"
+msgstr "%A ekkor %-I:%M %p"
+
+#: ../libcore/ProgressInfo.vala:63 ../libcore/ProgressInfo.vala:71
+#: ../libcore/ProgressInfo.vala:79
+msgid "Preparing"
+msgstr "Felkészülés"
+
+#: ../libcore/StockDialogs.vala:39
+msgid "Show more _details"
+msgstr "Több _részlet megjelenítése"
+
+#: ../libcore/gof-directory-async.vala:659
 msgid "Server did not respond within time limit"
 msgstr "A szerver nem válaszolt határidőn belül"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:174
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:170
 msgid "Navigate to %s"
 msgstr "Navigáljon ide: %s"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:283
 msgid "Go to %s"
 msgstr "Ugrás ide: %s"
 
@@ -2263,19 +2176,19 @@ msgstr "Előzmények"
 msgid "MTP"
 msgstr "MTP"
 
-#: ../libwidgets/View/SearchResults.vala:226
+#: ../libwidgets/View/SearchResults.vala:227
 msgid "In This Folder"
 msgstr "Ebben a mappában"
 
-#: ../libwidgets/View/SearchResults.vala:231
+#: ../libwidgets/View/SearchResults.vala:232
 msgid "Below This Folder"
 msgstr "Ezen mappa alatt"
 
-#: ../libwidgets/View/SearchResults.vala:236
+#: ../libwidgets/View/SearchResults.vala:237
 msgid "Bookmarks"
 msgstr "Könyvjelzők"
 
-#: ../libwidgets/View/SearchResults.vala:241
+#: ../libwidgets/View/SearchResults.vala:242
 msgid "Recently used"
 msgstr "Nemrég használt"
 
@@ -2347,45 +2260,123 @@ msgstr "Távoli miniatűrök megjelenítése"
 msgid "New Tab"
 msgstr "Új lap"
 
-#: ../src/View/directory_view_popup.ui:91
-msgid "Terminal"
-msgstr "Terminál"
-
-#: ../src/View/directory_view_popup.ui:106
+#: ../src/View/directory_view_popup.ui:98
 msgid "Bookmark"
 msgstr "Könyvjelző"
 
-#: ../src/View/directory_view_popup.ui:113
+#: ../src/View/directory_view_popup.ui:105
 msgid "Paste"
 msgstr "Beillesztés"
 
-#: ../src/View/directory_view_popup.ui:120
+#: ../src/View/directory_view_popup.ui:111
+#, fuzzy
+msgid "Paste Link"
+msgstr "Beillesztés"
+
+#: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
 msgstr "Kivágás"
 
-#: ../src/View/directory_view_popup.ui:124
+#: ../src/View/directory_view_popup.ui:122
 msgid "Copy"
 msgstr "Másolás"
 
-#: ../src/View/directory_view_popup.ui:128
+#: ../src/View/directory_view_popup.ui:126
+msgid "Copy as Link"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Beillesztés mappába"
 
-#: ../src/View/directory_view_popup.ui:135
+#: ../src/View/directory_view_popup.ui:134
+#, fuzzy
+msgid "Paste Link into Folder"
+msgstr "Beillesztés mappába"
+
+#: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
 msgstr "Rendezés"
 
-#: ../src/View/directory_view_popup.ui:138
+#: ../src/View/directory_view_popup.ui:144
 msgid "Name"
 msgstr "Név"
 
-#: ../src/View/directory_view_popup.ui:153
+#: ../src/View/directory_view_popup.ui:159
 msgid "Date"
 msgstr "Dátum"
 
-#: ../src/View/directory_view_popup.ui:160
+#: ../src/View/directory_view_popup.ui:166
 msgid "Reversed Order"
 msgstr "Fordított sorrend"
+
+#: ../src/View/directory_view_popup.ui:170
+msgid "Folders Before Files"
+msgstr ""
+
+#~ msgid " (invalid Unicode)"
+#~ msgstr " (érvénytelen Unicode)"
+
+#~ msgid "Do you want to empty the trash before you unmount?"
+#~ msgstr "Leválasztás előtt ki legyen ürítve a Kuka?"
+
+#~ msgid ""
+#~ "In order to regain the free space on this volume the trash must be "
+#~ "emptied. All trashed items on the volume will be permanently lost."
+#~ msgstr ""
+#~ "A szabad hely visszanyerése érdekében a tárolón ki kell üríteni a Kukát. "
+#~ "A Kuka összes eleme a tárolón véglegesen elvész."
+
+#~ msgid "Do _not Empty Trash"
+#~ msgstr "_Ne ürítse a Kukát"
+
+#~ msgid "Emptying the trash"
+#~ msgstr "A kuka ürítése folyamatban"
+
+#~ msgid "%a %-d %b at %-I:%M %p"
+#~ msgstr "%a %-d %b - %-I:%M %p"
+
+#~ msgid "%a %-d %b %Y at %-I:%M %p"
+#~ msgstr "%Y. %b %d. %a. %H%M-kor"
+
+#~ msgid "No Exec field specified"
+#~ msgstr "Nincs Exec mező megadva"
+
+#~ msgid "No URL field specified"
+#~ msgstr "Nincs URL megadva"
+
+#~ msgid "Invalid desktop file"
+#~ msgstr "Érvénytelen .desktop fájl"
+
+#~ msgid "Slashes are not allowed in filenames"
+#~ msgstr "A fájlnevek nem tartalmazhatnak osztásjelet"
+
+#~ msgid "Toplevel files cannot be renamed"
+#~ msgstr "A felső szintű fájlok nem nevezhetők át"
+
+#~ msgid "Failed to preview"
+#~ msgstr "Nincs előnézet"
+
+#~ msgid "Other Application"
+#~ msgstr "Más alkalmazás"
+
+#~ msgid "Enter search term or path"
+#~ msgstr "Keresőkifejezés vagy út megadása"
+
+#~ msgid "Files isn't your default file manager."
+#~ msgstr "A Fájlkezelő nem az alapértelmezett fájlkezelője."
+
+#~ msgid "Set as Default"
+#~ msgstr "Beállítás alapértelmezésként"
+
+#~ msgid "Ignore"
+#~ msgstr "Mellőzés"
+
+#~ msgid "There is nothing on the clipboard to paste"
+#~ msgstr "A vágólapról nincs mit beilleszteni"
+
+#~ msgid "Terminal"
+#~ msgstr "Terminál"
 
 #~ msgid "About _Files"
 #~ msgstr "_Files névjegye"
