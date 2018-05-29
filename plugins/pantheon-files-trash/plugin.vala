@@ -112,7 +112,7 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                     }
                 });
 
-                slot.add_extra_widget (actionbar);
+                slot.add_extra_action_widget (actionbar);
                 actionbars.@set (slot, actionbar);
             }
 
