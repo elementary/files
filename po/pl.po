@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2017-11-11 08:25+0000\n"
-"Last-Translator: anonymous <noreply@weblate.org>\n"
-"Language-Team: Polish <https://weblate.elementary.io/projects/files/files/pl/"
-">\n"
+"PO-Revision-Date: 2018-05-29 04:17+0000\n"
+"Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
+"Language-Team: Polish "
+"<https://weblate.elementary.io/projects/files/files/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -155,19 +155,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Nie udało się przetworzyć pliku .desktop: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Nie udało się przetworzyć pliku .desktop: %s"
+msgstr "Nie udało się przetworzyć pliku pulpitu"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Nie udało się przetworzyć pliku .desktop: %s"
+msgstr "Nie udało się utworzyć polecenia z pliku: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Nie udało się przetworzyć pliku .desktop: %s"
+msgstr "Nie udało się uruchomić pliku pulpitu: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1530,7 +1529,7 @@ msgstr "(%s wolne z %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Błąd montowania wolumenu %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1664,12 +1663,11 @@ msgstr "Odśwież ten katalog"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Szukaj lub wpisz położenie"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "Wczytywanie…"
+msgstr "Wyszukiwanie…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2345,9 +2343,8 @@ msgid "Paste"
 msgstr "Wklej"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Wklej"
+msgstr "Wklej odnośnik"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2359,16 +2356,15 @@ msgstr "Kopiuj"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Kopiuj jako odnośnik"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Wklej do katalogu"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Wklej do katalogu"
+msgstr "Wklej odnośnik do katalogu"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2388,7 +2384,7 @@ msgstr "Odwrócona kolejność"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Katalogi przed plikami"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (nieprawidłowe kodowanie Unikod)"
