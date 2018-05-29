@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2017-07-10 18:28+0000\n"
+"PO-Revision-Date: 2018-05-30 00:03+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
-"Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/files/"
-"lt/>\n"
+"Language-Team: Lithuanian "
+"<https://weblate.elementary.io/projects/files/files/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.14\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || "
+"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -155,19 +155,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Nepavyko išnagrinėti darbalaukio failo: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Nepavyko išnagrinėti darbalaukio failo: %s"
+msgstr "Nepavyko išnagrinėti darbalaukio failo"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Nepavyko išnagrinėti darbalaukio failo: %s"
+msgstr "Nepavyko sukurti komandos iš failo: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Nepavyko išnagrinėti darbalaukio failo: %s"
+msgstr "Nepavyko paleisti darbalaukio failo: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1530,7 +1529,7 @@ msgstr "(%s laisva iš %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Klaida, prijungiant tomą %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1664,12 +1663,11 @@ msgstr "Įkelti šį aplanką iš naujo"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Atlikite paiešką arba įrašykite kelią"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "Įkeliama…"
+msgstr "Ieškoma…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2340,9 +2338,8 @@ msgid "Paste"
 msgstr "Įdėti"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Įdėti"
+msgstr "Įdėti nuorodą"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2354,16 +2351,15 @@ msgstr "Kopijuoti"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Kopijuoti kaip nuorodą"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Įdėti į aplanką"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Įdėti į aplanką"
+msgstr "Įdėti nuorodą į aplanką"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
