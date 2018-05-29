@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-05-28 18:28+0000\n"
+"PO-Revision-Date: 2018-05-29 10:08+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
-"Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
-"ja/>\n"
+"Language-Team: Japanese "
+"<https://weblate.elementary.io/projects/files/files/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -154,19 +154,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "デスクトップファイル \"%s\" を解析できませんでした"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "デスクトップファイル \"%s\" を解析できませんでした"
+msgstr "デスクトップファイルを解析できませんでした"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "デスクトップファイル \"%s\" を解析できませんでした"
+msgstr "ファイルからコマンドを作成できませんでした: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "デスクトップファイル \"%s\" を解析できませんでした"
+msgstr "デスクトップファイルを実行できませんでした: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1417,7 +1416,7 @@ msgstr "( %s 空き / %s )"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "ボリューム %s のマウントエラー"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1551,12 +1550,11 @@ msgstr "このフォルダを再読み込み"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "検索するかパスを入力してください"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "読み込んでいます…"
+msgstr "検索しています…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2218,9 +2216,8 @@ msgid "Paste"
 msgstr "ペースト"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "ペースト"
+msgstr "リンクをペースト"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2232,16 +2229,15 @@ msgstr "コピー"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "リンクとしてコピー"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "フォルダの中にペースト"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "フォルダの中にペースト"
+msgstr "フォルダの中にリンクをペースト"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2261,7 +2257,7 @@ msgstr "逆順"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "ファイルの前にフォルダを表示"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (不正な Unicode です)"
