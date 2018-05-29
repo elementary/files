@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-03-23 00:03+0000\n"
+"PO-Revision-Date: 2018-05-29 19:30+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
-"Language-Team: Danish <https://weblate.elementary.io/projects/files/files/da/"
-">\n"
+"Language-Team: Danish "
+"<https://weblate.elementary.io/projects/files/files/da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -154,19 +154,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Kunne ikke fortolke desktop filen: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Kunne ikke fortolke desktop filen: %s"
+msgstr "Kunne ikke fortolke desktop filen"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Kunne ikke fortolke desktop filen: %s"
+msgstr "Kunne ikke oprette kommando fra fil: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Kunne ikke fortolke desktop filen: %s"
+msgstr "Kan ikke Starte Desktopfilen: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1477,7 +1476,7 @@ msgstr "(%s ledig ud af %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Fejl ved montering af drev %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1611,12 +1610,11 @@ msgstr "Genindlæs denne mappe"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Søg eller Skriv Sti"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "Indlæser…"
+msgstr "Søger…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2284,9 +2282,8 @@ msgid "Paste"
 msgstr "Indsæt"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Indsæt"
+msgstr "Indsæt Link"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2298,16 +2295,15 @@ msgstr "Kopiér"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Kopier som Link"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Indsæt i mappen"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Indsæt i mappen"
+msgstr "Indsæt Link i Mappen"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2327,7 +2323,7 @@ msgstr "Omvendt rækkefølge"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Mapper før Filer"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (ugyldig Unicode)"
