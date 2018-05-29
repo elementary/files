@@ -16,10 +16,10 @@
 ***/
 
 public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
-    private const string RESTORE_ALL = _("Restore All");
-    private const string DELETE_ALL = _("Empty the Trash");
-    private const string RESTORE_SELECTED = (_("Restore Selected"));
-    private const string DELETE_SELECTED = (_("Delete Selected"));
+    private const string RESTORE_ALL = N_("Restore All");
+    private const string DELETE_ALL = N_("Empty the Trash");
+    private const string RESTORE_SELECTED = N_("Restore Selected");
+    private const string DELETE_SELECTED = N_("Delete Selected");
 
     private unowned TrashMonitor trash_monitor;
     private bool trash_is_empty = false;
@@ -62,10 +62,10 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 actionbar = new Gtk.ActionBar ();
                 actionbar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
 
-                restore_button = new Gtk.Button.with_label (RESTORE_ALL);
+                restore_button = new Gtk.Button.with_label (_(RESTORE_ALL));
                 restore_button.valign = Gtk.Align.CENTER;
 
-                delete_button = new Gtk.Button.with_label (DELETE_ALL);
+                delete_button = new Gtk.Button.with_label (_(DELETE_ALL));
                 delete_button.margin = 6;
                 delete_button.margin_start = 0;
                 delete_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
@@ -78,7 +78,7 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 actionbar.pack_end (restore_button);
 
                 restore_button.clicked.connect (() => {
-                    if (restore_button.label == RESTORE_ALL) {
+                    if (restore_button.label == _(RESTORE_ALL)) {
                         slot.set_all_selected (true);
                     }
 
@@ -87,7 +87,7 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 });
 
                 delete_button.clicked.connect (() => {
-                    if (delete_button.label == DELETE_ALL) {
+                    if (delete_button.label == _(DELETE_ALL)) {
                         Marlin.FileOperations.empty_trash (delete_button);
                     } else {
                         GLib.List<GLib.File> to_delete = null;
@@ -104,11 +104,11 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
 
                 slot.selection_changed.connect_after ((files) => {
                     if (files == null) {
-                        restore_button.label = RESTORE_ALL;
-                        delete_button.label = DELETE_ALL;
+                        restore_button.label = _(RESTORE_ALL);
+                        delete_button.label = _(DELETE_ALL);
                     } else {
-                        restore_button.label = RESTORE_SELECTED;
-                        delete_button.label = DELETE_SELECTED;
+                        restore_button.label = _(RESTORE_SELECTED);
+                        delete_button.label = _(DELETE_SELECTED);
                     }
                 });
 
