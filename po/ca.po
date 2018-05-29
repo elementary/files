@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-02-22 00:08+0000\n"
+"PO-Revision-Date: 2018-05-29 13:40+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://weblate.elementary.io/projects/files/files/"
-"ca/>\n"
+"Language-Team: Catalan "
+"<https://weblate.elementary.io/projects/files/files/ca/>\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -154,19 +154,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
+msgstr "Ha fallat analitzar el fitxer d'escriptori"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
+msgstr "Ha fallat crear l'ordre des del fitxer: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "No s'ha pogut analitzar el fitxer d'escriptori: %s"
+msgstr "No es pot llançar el fitxer d'escriptori: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1483,7 +1482,7 @@ msgstr "(%s lliure de %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Error muntant el volum %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1617,12 +1616,11 @@ msgstr "Recarrega aquesta carpeta"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Cerqueu o escriviu-ne el camí"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "S'està carregant…"
+msgstr "S'està cercant…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2289,9 +2287,8 @@ msgid "Paste"
 msgstr "Enganxa"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Enganxa"
+msgstr "Enganxa l'enllaç"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2303,16 +2300,15 @@ msgstr "Copia"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Copia com a enllaç"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Enganxa a la carpeta"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Enganxa a la carpeta"
+msgstr "Enganxa l'enllaç a la carpeta"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2332,7 +2328,7 @@ msgstr "Ordre invers"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Les carpetes davant dels fitxers"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (Unicode no vàlid)"
