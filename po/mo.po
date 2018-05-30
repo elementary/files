@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-05-30 00:03+0000\n"
+"PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan "
 "<https://weblate.elementary.io/projects/files/files/mo/>\n"
@@ -1345,7 +1345,7 @@ msgstr "Deschide cu"
 #: ../src/View/AbstractDirectoryView.vala:2113
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr ""
+msgstr "Alte aplicații…"
 
 #: ../src/View/AbstractDirectoryView.vala:2377
 msgid "Untitled %s"
@@ -1824,7 +1824,7 @@ msgstr "Se încarcă…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
-msgstr ""
+msgstr "Nu s-a putut determina"
 
 #: ../src/Dialogs/PropertiesWindow.vala:484
 #: ../libcore/FileConflictDialog.vala:117
@@ -1840,156 +1840,156 @@ msgstr "Tipul:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:494
 msgid "Contains:"
-msgstr ""
+msgstr "Conține:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:516
 msgid "Created:"
-msgstr ""
+msgstr "Creată:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:525
 msgid "Modified:"
-msgstr ""
+msgstr "Modificat:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:536
 msgid "Deleted:"
-msgstr ""
+msgstr "Șters:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:546
 msgid "Mimetype:"
-msgstr ""
+msgstr "Tip Mime:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
-msgstr ""
+msgstr "Rezoluție:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:561
 #: ../src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
-msgstr ""
+msgstr "Localizare:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
-msgstr ""
+msgstr "Ţintă:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:579
 msgid "Original Location:"
-msgstr ""
+msgstr "Locația originală:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:622
 msgid "Open with:"
-msgstr ""
+msgstr "Deschide cu:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:875
 #: ../src/Dialogs/PropertiesWindow.vala:885
 msgid "Owner:"
-msgstr ""
+msgstr "Proprietar:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:879
 #: ../src/Dialogs/PropertiesWindow.vala:888
 msgid "Group:"
-msgstr ""
+msgstr "Grup:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:891
 msgid "Everyone:"
-msgstr ""
+msgstr "Toata lumea:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1151
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u subdosar"
+msgstr[1] "%u subdosare"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1155
 #: ../src/Dialogs/PropertiesWindow.vala:1177
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u fișier"
+msgstr[1] "%u fișiere"
 
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1160
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1181
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u element selectat"
+msgstr[1] "%u elemente selectate"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/Dialogs/PropertiesWindow.vala:1183
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Proprietăți disc"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:85
 msgid "Format:"
-msgstr ""
+msgstr "Formatul:"
 
 #: ../src/ProgressUIHandler.vala:131 ../src/ProgressUIHandler.vala:191
 msgid "File Operations"
-msgstr ""
+msgstr "Operații de fișiere"
 
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
 #: ../src/ProgressUIHandler.vala:185
 msgid "Completed %s"
-msgstr ""
+msgstr "Completat %s"
 
 #: ../src/ProgressUIHandler.vala:188
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Toate operațiile de fișiere s-au încheiat"
 
 #: ../src/ProgressUIHandler.vala:233
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Afișați dialogul de copiere"
 
 #: ../src/ProgressUIHandler.vala:245
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Anulați toate acțiunile în curs de desfășurare"
 
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Sunt selectate mai multe tipuri de fișiere"
 
 #: ../src/Utils/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Nicio aplicație unică nu poate deschide toate aceste tipuri de fișiere"
 
 #: ../src/Utils/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Eroare la deschiderea fișierelor"
 
 #: ../src/Utils/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Eroare de deschidere uris"
 
 #: ../src/Utils/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Imposibil de deschis fișiere sau uris cu această aplicație"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Nu a reușit să se execute \"%s\""
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
-msgstr ""
+msgstr "Mutați aici"
 
 #: ../libcore/DndHandler.vala:94
 msgid "Copy Here"
-msgstr ""
+msgstr "Copiați aici"
 
 #: ../libcore/DndHandler.vala:95
 msgid "Link Here"
-msgstr ""
+msgstr "Link aici"
 
 #: ../libcore/DndHandler.vala:98 ../libcore/FileConflictDialog.vala:186
 msgid "Cancel"
-msgstr ""
+msgstr "Anulează"
 
 #: ../libcore/FileConflictDialog.vala:62
 msgid "File conflict"
@@ -2090,19 +2090,19 @@ msgstr "Fuzionare"
 
 #: ../libcore/FileUtils.vala:84
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "Nu s-a putut determina locația inițială a \"%s\" "
 
 #: ../libcore/FileUtils.vala:85
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Elementul nu poate fi restabilit din coșul de gunoi"
 
 #: ../libcore/FileUtils.vala:436
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Nu s-a putut redenumi '%s'"
 
 #: ../libcore/FileUtils.vala:527
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Astăzi la % -H:%M"
 
 #: ../libcore/FileUtils.vala:529
 msgid "Today at %-I:%M %p"
@@ -2110,7 +2110,7 @@ msgstr "Astăzi la %-I:%M %p"
 
 #: ../libcore/FileUtils.vala:535
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Ieri la %-H:%M"
 
 #: ../libcore/FileUtils.vala:537
 msgid "Yesterday at %-I:%M %p"
@@ -2118,11 +2118,11 @@ msgstr "Ieri la %-I:%M %p"
 
 #: ../libcore/FileUtils.vala:544
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A la %-H:%M"
 
 #: ../libcore/FileUtils.vala:546
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A la %-I:%M %p"
 
 #: ../libcore/ProgressInfo.vala:63 ../libcore/ProgressInfo.vala:71
 #: ../libcore/ProgressInfo.vala:79
@@ -2135,199 +2135,199 @@ msgstr "Afișați mai multe _ detalii"
 
 #: ../libcore/gof-directory-async.vala:659
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Serverul nu a răspuns în limita de timp"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:170
 msgid "Navigate to %s"
-msgstr ""
+msgstr "Navigați la %s"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:283
 msgid "Go to %s"
-msgstr ""
+msgstr "Mergi la %s"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Tastați o rută"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr ""
+msgstr "Vizualizați ca Grilă"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "Vedeți ca Listă"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr ""
+msgstr "Vedeți în Columnă"
 
 #: ../libwidgets/Resources.vala:58
 msgid "AFP"
-msgstr ""
+msgstr "AFP"
 
 #: ../libwidgets/Resources.vala:59
 msgid "DAV"
-msgstr ""
+msgstr "DAV"
 
 #: ../libwidgets/Resources.vala:60
 msgid "DAVS"
-msgstr ""
+msgstr "DAVS"
 
 #: ../libwidgets/Resources.vala:61
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: ../libwidgets/Resources.vala:63
 msgid "SFTP"
-msgstr ""
+msgstr "SFTP"
 
 #: ../libwidgets/Resources.vala:64
 msgid "SMB"
-msgstr ""
+msgstr "smb"
 
 #: ../libwidgets/Resources.vala:66
 msgid "Recent"
-msgstr ""
+msgstr "Recente"
 
 #: ../libwidgets/Resources.vala:67
 msgid "MTP"
-msgstr ""
+msgstr "mtp"
 
 #: ../libwidgets/View/SearchResults.vala:227
 msgid "In This Folder"
-msgstr ""
+msgstr "În acest dosar"
 
 #: ../libwidgets/View/SearchResults.vala:232
 msgid "Below This Folder"
-msgstr ""
+msgstr "Sub acest dosar"
 
 #: ../libwidgets/View/SearchResults.vala:237
 msgid "Bookmarks"
-msgstr ""
+msgstr "Marcaje"
 
 #: ../libwidgets/View/SearchResults.vala:242
 msgid "Recently used"
-msgstr ""
+msgstr "Folosit recent"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr ""
+msgstr "Conectare la Server…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr ""
+msgstr "Conectați-vă la un server de fișiere de rețea"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
-msgstr ""
+msgstr "Restaurați tot"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:56
 msgid "Empty the Trash"
-msgstr ""
+msgstr "Golește gunoiul"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr ""
+msgstr "Aceste elemente pot fi restaurate sau șterse din coșul de gunoi."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Nu se poate restaura sau șterge decât în dosarul rădăcină"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Restaurați din Coșul de gunoi"
 
 #: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
-msgstr ""
+msgstr "Șterge Permanent"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Deschideți dosarul părinte"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Șterge din istoric"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "Aruncă la gunoi"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr ""
+msgstr "Nou"
 
 #: ../src/View/directory_view_popup.ui:53
 msgid "Folder"
-msgstr ""
+msgstr "Carpetă"
 
 #: ../src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr ""
+msgstr "Fișier gol"
 
 #: ../src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Arată fișierele ascunse"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Afișați miniaturile de la distanță"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr ""
+msgstr "Filă nouă"
 
 #: ../src/View/directory_view_popup.ui:98
 msgid "Bookmark"
-msgstr ""
+msgstr "Semne de carte"
 
 #: ../src/View/directory_view_popup.ui:105
 msgid "Paste"
-msgstr ""
+msgstr "Lipește"
 
 #: ../src/View/directory_view_popup.ui:111
 msgid "Paste Link"
-msgstr ""
+msgstr "Lipește Link"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
-msgstr ""
+msgstr "Taie"
 
 #: ../src/View/directory_view_popup.ui:122
 msgid "Copy"
-msgstr ""
+msgstr "Copie"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Copiați ca legătură"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Lipiți în carpetă"
 
 #: ../src/View/directory_view_popup.ui:134
 msgid "Paste Link into Folder"
-msgstr ""
+msgstr "Inserați o legătură în carpetă"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
-msgstr ""
+msgstr "Filtrează după"
 
 #: ../src/View/directory_view_popup.ui:144
 msgid "Name"
-msgstr ""
+msgstr "Nume"
 
 #: ../src/View/directory_view_popup.ui:159
 msgid "Date"
-msgstr ""
+msgstr "Dată"
 
 #: ../src/View/directory_view_popup.ui:166
 msgid "Reversed Order"
-msgstr ""
+msgstr "Ordinul inversat"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Carpete înainte de fișiere"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (Unicod nevalid)"
