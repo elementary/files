@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-05-30 00:03+0000\n"
+"PO-Revision-Date: 2018-05-30 15:52+0000\n"
 "Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
 "Language-Team: Russian "
 "<https://weblate.elementary.io/projects/files/files/ru/>\n"
@@ -1518,7 +1518,7 @@ msgstr "(%s свободно из %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Ошибка при монтировании тома %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1652,12 +1652,11 @@ msgstr "Обновить эту папку"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Ищите или введите путь"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "Загрузка…"
+msgstr "Поиск…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2333,9 +2332,8 @@ msgid "Paste"
 msgstr "Вставить"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Вставить"
+msgstr "Вставить ссылку"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2347,16 +2345,15 @@ msgstr "Копировать"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Копировать ссылку"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Вставить в папку"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Вставить в папку"
+msgstr "Вставить ссылку в папку"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2376,7 +2373,7 @@ msgstr "В обратном порядке"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Папки перед файлами"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (некорректные символы)"
