@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-05-29 04:17+0000\n"
+"PO-Revision-Date: 2018-05-30 00:03+0000\n"
 "Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
 "Language-Team: Polish "
 "<https://weblate.elementary.io/projects/files/files/pl/>\n"
@@ -138,7 +138,7 @@ msgstr "_Zapamiętaj hasło"
 
 #: ../src/marlin-connect-server-dialog.c:1231
 msgid "Operation cancelled"
-msgstr "Anulowano działanie"
+msgstr "Działanie zostało anulowane"
 
 #: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
 msgid "Inaccessible"

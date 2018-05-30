@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-05-29 10:08+0000\n"
+"PO-Revision-Date: 2018-05-30 00:03+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
@@ -2145,7 +2145,7 @@ msgstr "サーバーへ接続…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
-msgstr "ネットワークファイルサーバーへ接続"
+msgstr "ネットワークファイルサーバーへ接続します"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:55
 msgid "Restore All"
@@ -2157,7 +2157,7 @@ msgstr "ゴミ箱を空にする"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr "これらの項目は復元またはゴミ箱から削除することができます。"
+msgstr "これらの項目はゴミ箱から復元または削除することができます。"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"

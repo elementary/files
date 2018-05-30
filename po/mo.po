@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-05-28 18:28+0000\n"
+"PO-Revision-Date: 2018-05-30 00:03+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
-"Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
-"mo/>\n"
+"Language-Team: Moldovan "
+"<https://weblate.elementary.io/projects/files/files/mo/>\n"
 "Language: mo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -147,19 +147,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Eroare la analizarea fișierului de pe desktop: %s 1"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "Eroare la analizarea fișierului de pe desktop: %s 1"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Eroare la analizarea fișierului de pe desktop: %s 1"
+msgstr "Eroare la crearea comenzii din fișier: %s 1"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Eroare la analizarea fișierului de pe desktop: %s 1"
+msgstr "Imposibil de lansat fișierul desktop: %s 1"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1481,7 +1480,7 @@ msgstr "(%s Gratuit %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Eroare la montarea volumului %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1615,11 +1614,11 @@ msgstr "Reîncărcați acest dosar"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Căutați sau tastați ruta"
 
 #: ../src/View/Widgets/LocationBar.vala:206
 msgid "Searching…"
-msgstr ""
+msgstr "În căutare…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -1740,43 +1739,43 @@ msgstr "- quit nu poate fi folosit cu URI."
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr ""
+msgstr "Răsfoiți fișierele"
 
 #: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
-msgstr ""
+msgstr "Manager de fișiere"
 
 #: ../src/DesktopLauncher.vala:23
 msgid "New _Window"
-msgstr ""
+msgstr "Fereastră_nouă"
 
 #: ../src/DesktopLauncher.vala:24
 msgid "New Window As _Administrator"
-msgstr ""
+msgstr "Fereastră nouă ca administrator"
 
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
-msgstr ""
+msgstr "Fișiere"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "Informații"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
-msgstr ""
+msgstr "Mod General"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:76
 msgid "Close"
-msgstr ""
+msgstr "Închide"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:136
 msgid "Device Usage"
-msgstr ""
+msgstr "Utilizarea dispozitivului"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:152
 msgid "Capacity:"
-msgstr ""
+msgstr "Capacitate:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:153
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:156
@@ -1784,42 +1783,44 @@ msgstr ""
 #: ../src/Dialogs/PropertiesWindow.vala:416
 #: ../src/Dialogs/PropertiesWindow.vala:452
 msgid "Unknown"
-msgstr ""
+msgstr "Necunoscut"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Available:"
-msgstr ""
+msgstr "Disponibil:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Used:"
-msgstr ""
+msgstr "Folosit:"
 
 #: ../src/Dialogs/ChooseAppDialog.vala:40
 msgid "Set as default"
-msgstr ""
+msgstr "Setați ca implicit"
 
 #: ../src/Dialogs/PropertiesWindow.vala:220
 msgid "Permissions"
-msgstr ""
+msgstr "Permisiuni"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Dimensiunea reală ar putea fi mai mare"
 
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"%i Fișierul nu a putut fi citit din cauza permisiunilor sau a altor erori."
 msgstr[1] ""
+"%i Fișierele nu a putut fi citite din cauza permisiunilor sau a altor erori."
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
 #: ../src/Dialogs/PropertiesWindow.vala:279
 msgid "unknown"
-msgstr ""
+msgstr "necunoscut"
 
 #: ../src/Dialogs/PropertiesWindow.vala:427
 msgid "Loading…"
-msgstr ""
+msgstr "Se încarcă…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"

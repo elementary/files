@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2017-09-02 11:13+0000\n"
+"PO-Revision-Date: 2018-05-30 07:23+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
-"Language-Team: Hebrew <https://weblate.elementary.io/projects/files/files/he/"
-">\n"
+"Language-Team: Hebrew "
+"<https://weblate.elementary.io/projects/files/files/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -154,19 +154,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "פענוח קובץ שולחן העבודה נכשל: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "פענוח קובץ שולחן העבודה נכשל: %s"
+msgstr "פענוח קובץ שולחן העבודה נכשל"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "פענוח קובץ שולחן העבודה נכשל: %s"
+msgstr "יצירת פקודה מקובץ נכשלה: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "פענוח קובץ שולחן העבודה נכשל: %s"
+msgstr "לא ניתן להפעיל את קובץ שולחן העבודה: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1452,7 +1451,7 @@ msgstr "(%s פנויים מתוך %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "עיגון הכרך %s נכשל"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1586,12 +1585,11 @@ msgstr "רענון תיקייה זו"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "ניתן לחפש או להקליד נתיב"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "בטעינה…"
+msgstr "מתבצע חיפוש…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2257,9 +2255,8 @@ msgid "Paste"
 msgstr "הדבקה"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "הדבקה"
+msgstr "הדבקת קישור"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2271,16 +2268,15 @@ msgstr "העתקה"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "העתקה כקישור"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "הדבקה לתיקייה"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "הדבקה לתיקייה"
+msgstr "הדבקת קישור לתוך תיקייה"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2300,7 +2296,7 @@ msgstr "סדר הפוך"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "תיקיות לפני קבצים"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (יוניקוד לא תקני)"
