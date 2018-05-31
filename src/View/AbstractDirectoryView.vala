@@ -178,6 +178,9 @@ namespace FM {
         /* Support for zoom by smooth scrolling */
         private double total_delta_y = 0.0;
 
+        /* Support for keeping cursor position after delete */
+        private Gtk.TreePath deleted_path;
+
         /* UI options for button press handling */
         protected bool activate_on_blank = true;
         protected bool right_margin_unselects_all = false;
@@ -446,7 +449,6 @@ namespace FM {
         }
 
         private void select_file_paths (GLib.List<GOF.File> files, GLib.File? focus) {
-
             Gtk.TreeIter iter;
             disconnect_tree_signals (); /* Avoid unnecessary signal processing */
             unselect_all ();
@@ -838,6 +840,7 @@ namespace FM {
 
             return success;
         }
+
         private void trash_or_delete_files (GLib.List<GOF.File> file_list,
                                             bool delete_if_already_in_trash,
                                             bool delete_immediately) {
@@ -852,6 +855,10 @@ namespace FM {
                     locations.prepend (file.location);
                 });
             }
+
+            Gtk.TreeIter? iter = null;
+            model.get_first_iter_for_file (file_list.first ().data, out iter);
+            deleted_path = model.get_path (iter);
 
             if (locations != null) {
                 locations.reverse ();
@@ -969,7 +976,13 @@ namespace FM {
                 return;
             }
 
-            view.unblock_directory_monitor ();
+            /* Need to use Idle else cursor gets reset to null after setting to delete_path */
+            Idle.add (() => {
+                view.set_cursor (view.deleted_path, false, false, false);
+                view.unblock_directory_monitor ();
+                return false;
+            });
+
         }
 
         private void unblock_directory_monitor () {
@@ -1437,7 +1450,7 @@ namespace FM {
 
 /** Handle TreeModel events */
         protected virtual void on_row_deleted (Gtk.TreePath path) {
-                unselect_all ();
+            unselect_all ();
         }
 
 /** Handle clipboard signal */
