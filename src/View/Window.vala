@@ -296,6 +296,8 @@ namespace Marlin.View {
 
             tabs.tab_moved.connect ((tab, x, y) => {
                 var vc = tab.page as ViewContainer;
+                /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
+                vc.close ();
                 ((Marlin.Application) application).create_window (vc.location, real_mode (vc.view_mode), x, y);
                 /* A crash occurs if the original tab is removed while processing the signal */
                 GLib.Idle.add (() => {
@@ -416,9 +418,10 @@ namespace Marlin.View {
             var tab = new Granite.Widgets.Tab ("", null, content);
             tab.ellipsize_mode = Pango.EllipsizeMode.MIDDLE;
 
+            /* Capturing ViewContainer reference in closure prevents its proper destruction */
             content.tab_name_changed.connect ((tab_name) => {
                 Idle.add (() => {
-                    tab.label = check_for_tab_with_same_name (content);
+                    tab.label = check_for_tab_with_same_name ();
                     return false;
                 });
             });
@@ -438,15 +441,18 @@ namespace Marlin.View {
             tabs.current = tab;
         }
 
-        private string check_for_tab_with_same_name (ViewContainer vc) {
-            string name = vc.tab_name;
+        private string check_for_tab_with_same_name () {
+            assert_nonnull (current_tab);
+
+            var vc = current_tab;
+            var name = vc.tab_name;
 
             if (name == Marlin.INVALID_TAB_NAME) {
-                return name;
+                 return name;
             }
 
-            string path = Uri.unescape_string (vc.uri);
-            string new_name = name;
+            var path = Uri.unescape_string (vc.uri);
+            var new_name = name;
 
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
                 var content = (ViewContainer)(tab.page);
