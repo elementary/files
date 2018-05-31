@@ -8,38 +8,41 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2016-08-10 13:29+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Hungarian <hu@li.org>\n"
+"PO-Revision-Date: 2018-05-28 00:00+0000\n"
+"Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
+"Language-Team: Hungarian "
+"<https://weblate.elementary.io/projects/files/extra/hu/>\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 msgid "Files"
-msgstr ""
+msgstr "Fájlok"
 
 msgid "Browse your files"
-msgstr ""
+msgstr "Tallózzon a fájlok között"
 
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr ""
+msgstr "mappa;kezelő;felfedező;tárhely;fájlrendszer;"
 
 msgid "File Manager"
-msgstr ""
+msgstr "Fájlkezelő"
 
 msgid "New Window"
-msgstr ""
+msgstr "Új ablak"
 
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "Új ablak rendszergazdaként"
 
 msgid "About Files"
-msgstr ""
+msgstr "A Fájlkezelőről"
 
 msgid "Browse and manage files and folders"
-msgstr ""
+msgstr "Fájlok és mappák böngészése és kezelése"
 
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
@@ -47,73 +50,83 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
+"Könnyedén másolhat, áthelyezhet és átnevezhet fájlokat, vagy használhat "
+"mappákat a szervezéshez. Könnyen megtalálhatja fájljait akár a lista-, rács- "
+"vagy oszlopnézetet választja. Elérheti adatait akár helyi, akár külső "
+"eszközön vagy FTP, SFTP, AFP, Webdav vagy Windows share szolgáltatáson "
+"keresztül is."
 
 msgid "Improved networking support"
-msgstr ""
+msgstr "Továbbfejlesztett hálózati támogatás"
 
 msgid "Correct window geometry when snapping to left or right"
-msgstr ""
+msgstr "Javított ablak geometria, balra vagy jobbra ugrásnál"
 
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
 msgstr ""
+"A Ctrl megnyomása már nem szakítja meg az átnevezést mikor a \"Mutató "
+"kijelzése\" opció aktív"
 
 msgid "Switching input language cancels actions"
-msgstr ""
+msgstr "A bemeneti nyelv váltása megszakít műveleteket"
 
 msgid "Various crash fixes"
-msgstr ""
+msgstr "Különbőző összeomlásos hibák javítása"
 
 msgid "New translations"
-msgstr ""
+msgstr "Új fordítások"
 
 msgid "Minor bug fixes"
-msgstr ""
+msgstr "Kisebb hibajavítások"
 
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr ""
+"Webböngészők, mint a Firefox most már emlékeznek a legutóbb használt "
+"letöltési könyvtárra"
 
 msgid "Remember preferred zoom level"
-msgstr ""
+msgstr "Az előnyben részesített nagyítási szint megőrződik"
 
 msgid "Improved input method support"
-msgstr ""
+msgstr "Javított beviteli mód támogatás"
 
 msgid "910x640 minimum window size"
-msgstr ""
+msgstr "910x640 a minimum ablakméret"
 
 msgid "Security fixes"
-msgstr ""
+msgstr "Biztonsági javítások"
 
 msgid "Enable drag and drop tabs between windows"
-msgstr ""
+msgstr "Engedélyezve a húzd és ejtsd fülek az ablakok között"
 
 msgid "Merge search functionality into Ctrl+F"
-msgstr ""
+msgstr "A keresési lehetőségek egyesítése a Ctrl+F funkcióba"
 
 msgid "Improved translation support"
-msgstr ""
+msgstr "Javított fordítási támogatás"
 
 msgid "Fix appdata release dates"
-msgstr ""
+msgstr "Javítva az alkalmazás kiadási dátumai"
 
 msgid "Improve file opening over Samba shares"
-msgstr ""
+msgstr "Javított fájlmegnyitási lehetőség Samba megosztáson keresztül"
 
 msgid "Fix a crash when restoring items from the Trash"
-msgstr ""
+msgstr "Javítva a Kukában visszaállítás művelet közben összeomlást okozó hiba"
 
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
+msgstr "Javított vágás/másolás/beillesztés érzékenység a helyi menüben"
 
 msgid "Translation updates"
-msgstr ""
+msgstr "Fordítási frissítések"
 
 msgid "Run Pantheon Files as Administrator"
-msgstr ""
+msgstr "Pantheon Fájlkezelő futtatása rendszergazdaként"
 
 msgid "Authentication is required to run Files as Administrator"
 msgstr ""
+"A Fájlkezelő rendszergazdaként történő futtatásához hitelesítés szükséges"
