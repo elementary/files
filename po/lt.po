@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-05-30 00:03+0000\n"
+"PO-Revision-Date: 2018-05-30 09:17+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian "
 "<https://weblate.elementary.io/projects/files/files/lt/>\n"
@@ -2379,7 +2379,7 @@ msgstr "Atvirkštine tvarka"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Pirma aplankai, po to failai"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (netinkamas Unikodas)"
