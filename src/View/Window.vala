@@ -301,10 +301,7 @@ namespace Marlin.View {
                 vc.close ();
                 ((Marlin.Application) application).create_window (vc.location, real_mode (vc.view_mode), x, y);
 
-                /* Need significant delay before removing tab from window due to undiagnosed race conditions
-                 * causing crashing when draggin a duplicate tab. Use generous delay to cover slower hardware. */
-
-                Timeout.add (500, () => {
+                Idle.add (() => {
                     remove_tab (vc);
                     return false;
                 });
