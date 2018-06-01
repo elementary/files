@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-05-30 00:03+0000\n"
+"PO-Revision-Date: 2018-06-02 00:05+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
@@ -1533,11 +1533,11 @@ msgstr "選択したファイルは存在しません。"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:420
 msgid "Open in New Tab"
-msgstr "新しいタブを開く"
+msgstr "新しいタブで開く"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:427
 msgid "Open in New Window"
-msgstr "新しいウィンドウを開く"
+msgstr "新しいウィンドウで開く"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:466
 msgid "Open in Other Application…"
