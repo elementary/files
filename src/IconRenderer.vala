@@ -109,7 +109,7 @@ namespace Marlin {
                 if (file.is_directory) {
                     special_icon_name = "folder-drag-accept";
                 } else {
-                    special_icon_name = "process-working-symbolic";
+                    special_icon_name = "system-run";
                 }
 
             } else if (file.is_directory) {
