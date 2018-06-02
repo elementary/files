@@ -295,10 +295,10 @@ public class Marlin.MimeActions {
             try {
                 app.launch_uris (uris, null);
             } catch (GLib.Error e) {
-                PF.Dialogs.show_error_dialog (_("Failed to open uris"), e.message, win);
+                PF.Dialogs.show_error_dialog (_("Could not open URIs"), e.message, win);
             }
         } else {
-            PF.Dialogs.show_error_dialog (_("Unable to open files or uris with this app"), "", win);
+            PF.Dialogs.show_error_dialog (_("Could not open files or URIs with this app"), "", win);
         }
     }
 
