@@ -9,16 +9,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2017-09-25 11:00+0000\n"
+"PO-Revision-Date: 2018-06-02 19:21+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
-"Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
-"files/files/nb/>\n"
+"Language-Team: Norwegian Bokmål "
+"<https://weblate.elementary.io/projects/files/files/nb/>\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1473,11 +1473,11 @@ msgstr "Bla igjennom innholdet på nettverket"
 
 #: ../src/View/Sidebar.vala:852
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s ledig av %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Feil ved montering av diskområde %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1611,7 +1611,7 @@ msgstr "Last inn mappe på nytt"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Søk eller skriv inn sti"
 
 #: ../src/View/Widgets/LocationBar.vala:206
 #, fuzzy
@@ -1679,7 +1679,7 @@ msgstr "ukjent størrelse"
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
 #: ../src/View/Widgets/OverlayBar.vala:297
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u ulesbare filer"
 
 #: ../src/View/Widgets/OverlayBar.vala:297
 msgid "%u files not readable"
@@ -1806,7 +1806,7 @@ msgstr "Faktisk størrelse kan være større"
 #: ../src/Dialogs/PropertiesWindow.vala:241
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
+msgstr[0] "%i fil kunne ikke leses på grunn av feil tilganger eller andre feil."
 msgstr[1] ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:260
@@ -1852,7 +1852,7 @@ msgstr "Slettet:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:546
 msgid "Mimetype:"
-msgstr ""
+msgstr "MIME-type:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:553
 msgid "Resolution:"
@@ -1961,11 +1961,11 @@ msgstr "Klarte ikke å åpne filer"
 
 #: ../src/Utils/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Klarte ikke å åpne URI-er"
 
 #: ../src/Utils/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Klarte ikke å åpne filer eller URI-er med dette programmet"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2296,7 +2296,7 @@ msgstr "Kopier"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Kopier som lenke"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
@@ -2325,7 +2325,7 @@ msgstr "Omvendt rekkefølge"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Mapper før filer"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (ugyldig Unicode)"
