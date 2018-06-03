@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2017-11-14 06:40+0000\n"
+"PO-Revision-Date: 2018-06-03 06:48+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
-"Language-Team: Korean <https://weblate.elementary.io/projects/files/files/ko/"
-">\n"
+"Language-Team: Korean "
+"<https://weblate.elementary.io/projects/files/files/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -154,19 +154,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "데스크탑 파일: %s의 구문 분석에 실패하였습니다"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "데스크탑 파일: %s의 구문 분석에 실패하였습니다"
+msgstr "데스크톱 파일의 구문 분석을 못했습니다"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "데스크탑 파일: %s의 구문 분석에 실패하였습니다"
+msgstr "파일에서 명령을 작성하지 못했습니다: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "데스크탑 파일: %s의 구문 분석에 실패하였습니다"
+msgstr "데스크톱 파일을 실행하지 못했습니다: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1408,7 +1407,7 @@ msgstr "(%s 사용 가능, 전체 크기 %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "볼륨 %s의 마운트 중에 오류가 생겼습니다"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1542,12 +1541,11 @@ msgstr "이 폴더를 다시 볼러 옴"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "검색 또는 경로 입력"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "불러오는 중…"
+msgstr "검색하고 있습니다…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2208,9 +2206,8 @@ msgid "Paste"
 msgstr "붙여 넣기"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "붙여 넣기"
+msgstr "링크 붙여 넣기"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2222,16 +2219,15 @@ msgstr "복사"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "링크 복사하기"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "폴더로 복사하기"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "폴더로 복사하기"
+msgstr "링크를 폴더에 복사하기"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2251,7 +2247,7 @@ msgstr "거꾸로"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "파일 이전 폴더"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (잘못된 유니코드)"
