@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-06-05 00:40+0000\n"
+"PO-Revision-Date: 2018-06-06 00:08+0000\n"
 "Last-Translator: Cesar Vergara <cesarvergarab@gmail.com>\n"
 "Language-Team: Spanish "
 "<https://weblate.elementary.io/projects/files/files/es/>\n"
@@ -1643,7 +1643,7 @@ msgstr " y %u otros elementos (%s) seleccionados"
 #: ../src/View/Widgets/OverlayBar.vala:222
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid " selected"
-msgstr " seleccionadas"
+msgstr " seleccionadas(os)"
 
 #: ../src/View/Widgets/OverlayBar.vala:224
 #: ../src/Dialogs/PropertiesWindow.vala:1173
