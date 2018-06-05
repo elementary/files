@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-06-02 00:05+0000\n"
+"PO-Revision-Date: 2018-06-06 00:08+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian "
 "<https://weblate.elementary.io/projects/files/files/hu/>\n"
@@ -1971,7 +1971,7 @@ msgstr "Link ide"
 
 #: ../libcore/DndHandler.vala:98 ../libcore/FileConflictDialog.vala:186
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Mégsem"
 
 #: ../libcore/FileConflictDialog.vala:62
 msgid "File conflict"
