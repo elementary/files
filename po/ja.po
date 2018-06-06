@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-06-02 00:05+0000\n"
+"PO-Revision-Date: 2018-06-07 00:09+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
@@ -85,7 +85,7 @@ msgstr "続行"
 #: ../src/marlin-connect-server-dialog.c:749
 #: ../src/marlin-connect-server-dialog.c:1142
 msgid "C_onnect"
-msgstr "接続 (_O)"
+msgstr "接続(_O)"
 
 #: ../src/marlin-connect-server-dialog.c:877
 msgid "Connect to Server"
@@ -97,23 +97,23 @@ msgstr "サーバー情報"
 
 #: ../src/marlin-connect-server-dialog.c:919
 msgid "_Server:"
-msgstr "サーバー (_S):"
+msgstr "サーバー(_S):"
 
 #: ../src/marlin-connect-server-dialog.c:939
 msgid "_Port:"
-msgstr "ポート番号 (_P):"
+msgstr "ポート番号(_P):"
 
 #: ../src/marlin-connect-server-dialog.c:957
 msgid "_Type:"
-msgstr "種類 (_T):"
+msgstr "種類(_T):"
 
 #: ../src/marlin-connect-server-dialog.c:1026
 msgid "Sh_are:"
-msgstr "共有する場所 (_A):"
+msgstr "共有する場所(_A):"
 
 #: ../src/marlin-connect-server-dialog.c:1041
 msgid "_Folder:"
-msgstr "フォルダ (_F):"
+msgstr "フォルダ(_F):"
 
 #: ../src/marlin-connect-server-dialog.c:1059
 msgid "User Details"
@@ -121,19 +121,19 @@ msgstr "ユーザー情報"
 
 #: ../src/marlin-connect-server-dialog.c:1082
 msgid "_Domain name:"
-msgstr "ドメイン名 (_D):"
+msgstr "ドメイン名(_D):"
 
 #: ../src/marlin-connect-server-dialog.c:1097
 msgid "_User name:"
-msgstr "ユーザー名 (_U):"
+msgstr "ユーザー名(_U):"
 
 #: ../src/marlin-connect-server-dialog.c:1112
 msgid "Pass_word:"
-msgstr "パスワード (_W):"
+msgstr "パスワード(_W):"
 
 #: ../src/marlin-connect-server-dialog.c:1128
 msgid "_Remember this password"
-msgstr "このパスワードを記憶する (_R)"
+msgstr "このパスワードを記憶する(_R)"
 
 #: ../src/marlin-connect-server-dialog.c:1231
 msgid "Operation cancelled"
@@ -170,39 +170,39 @@ msgstr "デスクトップファイルを実行できませんでした: %s"
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
 msgid "_Skip"
-msgstr "スキップ (_S)"
+msgstr "スキップ(_S)"
 
 #: ../libcore/marlin-file-operations.c:155
 msgid "S_kip All"
-msgstr "すべてスキップ (_K)"
+msgstr "すべてスキップ(_K)"
 
 #: ../libcore/marlin-file-operations.c:156
 msgid "_Retry"
-msgstr "再試行 (_R)"
+msgstr "再試行(_R)"
 
 #: ../libcore/marlin-file-operations.c:157
 msgid "Delete _All"
-msgstr "すべて削除 (_A)"
+msgstr "すべて削除(_A)"
 
 #: ../libcore/marlin-file-operations.c:158
 msgid "_Replace"
-msgstr "置き換え (_R)"
+msgstr "置き換え(_R)"
 
 #: ../libcore/marlin-file-operations.c:159
 msgid "Replace _All"
-msgstr "すべて置き換え (_A)"
+msgstr "すべて置き換え(_A)"
 
 #: ../libcore/marlin-file-operations.c:160
 msgid "_Merge"
-msgstr "マージ (_M)"
+msgstr "マージ(_M)"
 
 #: ../libcore/marlin-file-operations.c:161
 msgid "Merge _All"
-msgstr "すべてマージ (_A)"
+msgstr "すべてマージ(_A)"
 
 #: ../libcore/marlin-file-operations.c:162
 msgid "Copy _Anyway"
-msgstr "とにかくコピー (_A)"
+msgstr "とにかくコピー(_A)"
 
 #: ../libcore/marlin-file-operations.c:243
 #, c-format
@@ -374,7 +374,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1305 ../src/View/Sidebar.vala:1473
 msgid "Empty _Trash"
-msgstr "ゴミ箱を空にする (_T)"
+msgstr "ゴミ箱を空にする(_T)"
 
 #: ../libcore/marlin-file-operations.c:1332
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -429,7 +429,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:1480
 #: ../libcore/marlin-file-operations.c:3439
 msgid "_Skip files"
-msgstr "ファイルをスキップ (_S)"
+msgstr "ファイルをスキップ(_S)"
 
 #: ../libcore/marlin-file-operations.c:1501
 msgid ""
@@ -1063,63 +1063,63 @@ msgstr "所有者 '%s' を '%s' に設定"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] "%d 個のアイテムのコピーを元に戻す (_U)"
+msgstr[0] "%d 個のアイテムのコピーを元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1572
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "%d 個のアイテムの複製を元に戻す (_U)"
+msgstr[0] "%d 個のアイテムの複製を元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1577
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] "%d 個のアイテムの移動を元に戻す (_U)"
+msgstr[0] "%d 個のアイテムの移動を元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1582
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] "%d 個のアイテムの名前の変更を元に戻す (_U)"
+msgstr[0] "%d 個のアイテムの名前の変更を元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1586
 msgid "_Undo creation of an empty file"
-msgstr "空のファイルの作成を元に戻す (_U)"
+msgstr "空のファイルの作成を元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1589
 msgid "_Undo creation of a file from template"
-msgstr "テンプレートからのファイルの作成を元に戻す (_U)"
+msgstr "テンプレートからのファイルの作成を元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1593
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] "%d 個のフォルダの作成を元に戻す (_U)"
+msgstr[0] "%d 個のフォルダの作成を元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1598
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "%d 個のアイテムのゴミ箱への移動を元に戻す (_U)"
+msgstr[0] "%d 個のアイテムのゴミ箱への移動を元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1603
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "%d 個のゴミ箱からの復元を元に戻す (_U)"
+msgstr[0] "%d 個のアイテムのゴミ箱からの復元を元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1608
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "%d 個へのリンクの作成を元に戻す (_U)"
+msgstr[0] "%d 個へのリンクの作成を元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1613
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "%d 個のアイテムの削除を元に戻す (_U)"
+msgstr[0] "%d 個のアイテムの削除を元に戻す(_U)"
 
 #: ../libcore/marlin-undostack-manager.c:1618
 #, c-format
@@ -1149,63 +1149,63 @@ msgstr[0] "%d 個のアイテムの所有者変更を元に戻す"
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "%d 個のアイテムのコピーをやり直す (_R)"
+msgstr[0] "%d 個のアイテムのコピーをやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1667
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "%d 個のアイテムの複製をやり直す (_R)"
+msgstr[0] "%d 個のアイテムの複製をやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1672
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "%d 個のアイテムの移動をやり直す (_R)"
+msgstr[0] "%d 個のアイテムの移動をやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1677
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "%d 個のアイテムの名前の変更をやり直す (_R)"
+msgstr[0] "%d 個のアイテムの名前の変更をやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1681
 msgid "_Redo creation of an empty file"
-msgstr "空のファイルの作成をやり直す (_R)"
+msgstr "空のファイルの作成をやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1684
 msgid "_Redo creation of a file from template"
-msgstr "テンプレートからのファイル作成をやり直す (_R)"
+msgstr "テンプレートからのファイル作成をやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1688
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
-msgstr[0] "%d 個のフォルダの作成をやり直す (_R)"
+msgstr[0] "%d 個のフォルダの作成をやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1693
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "%d 個のアイテムのゴミ箱への移動をやり直す (_R)"
+msgstr[0] "%d 個のアイテムのゴミ箱への移動をやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1698
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "%d 個のアイテムのゴミ箱からの復元をやり直す (_R)"
+msgstr[0] "%d 個のアイテムのゴミ箱からの復元をやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1703
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "%d 個のアイテムへのリンク作成をやり直す (_R)"
+msgstr[0] "%d 個のアイテムへのリンク作成をやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "%d 個のアイテムの削除をやり直す (_R)"
+msgstr[0] "%d 個のアイテムの削除をやり直す(_R)"
 
 #: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
@@ -1428,11 +1428,11 @@ msgstr "開く"
 
 #: ../src/View/Sidebar.vala:1441
 msgid "Open in New _Tab"
-msgstr "新しいタブで開く (_T)"
+msgstr "新しいタブで開く(_T)"
 
 #: ../src/View/Sidebar.vala:1445
 msgid "Open in New _Window"
-msgstr "新しいウィンドウで開く (_W)"
+msgstr "新しいウィンドウで開く(_W)"
 
 #: ../src/View/Sidebar.vala:1451
 msgid "Remove"
@@ -1444,15 +1444,15 @@ msgstr "名前の変更"
 
 #: ../src/View/Sidebar.vala:1461
 msgid "_Mount"
-msgstr "マウント (_M)"
+msgstr "マウント(_M)"
 
 #: ../src/View/Sidebar.vala:1465
 msgid "_Unmount"
-msgstr "アンマウント (_U)"
+msgstr "アンマウント(_U)"
 
 #: ../src/View/Sidebar.vala:1469
 msgid "_Eject"
-msgstr "取り出し (_E)"
+msgstr "取り出し(_E)"
 
 #: ../src/View/Sidebar.vala:1478 ../src/Dialogs/PropertiesWindow.vala:121
 #: ../src/View/directory_view_popup.ui:91
@@ -1686,7 +1686,7 @@ msgstr "新しいウィンドウ(_W)"
 
 #: ../src/DesktopLauncher.vala:24
 msgid "New Window As _Administrator"
-msgstr "新しい管理者ウインドウ (_A)"
+msgstr "新しい管理者ウインドウ(_A)"
 
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
@@ -1944,7 +1944,7 @@ msgstr "リセット"
 
 #: ../libcore/FileConflictDialog.vala:178
 msgid "_Select a new name for the destination"
-msgstr "置き換え先の新しい名前を選択 (_S)"
+msgstr "置き換え先の新しい名前を選択(_S)"
 
 #: ../libcore/FileConflictDialog.vala:181
 msgid "Apply this action to all files"
@@ -1952,7 +1952,7 @@ msgstr "この操作をすべてのファイルに適用"
 
 #: ../libcore/FileConflictDialog.vala:184
 msgid "Re_name"
-msgstr "名前の変更 (_N)"
+msgstr "名前の変更(_N)"
 
 #: ../libcore/FileConflictDialog.vala:188
 msgid "Replace"
@@ -2061,7 +2061,7 @@ msgstr "準備しています"
 
 #: ../libcore/StockDialogs.vala:39
 msgid "Show more _details"
-msgstr "詳細を表示 (_D)"
+msgstr "詳細を表示(_D)"
 
 #: ../libcore/gof-directory-async.vala:659
 msgid "Server did not respond within time limit"
@@ -2165,7 +2165,7 @@ msgstr "ルートフォルダでない場合、復元や削除はできません
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr "ゴミ箱から復元する"
+msgstr "ゴミ箱から復元"
 
 #: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
