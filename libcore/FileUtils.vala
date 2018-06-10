@@ -625,7 +625,7 @@ namespace PF.FileUtils {
 
         suggested_action_return = Gdk.DragAction.PRIVATE;
 
-        if (drop_file_list == null || drop_file_list.data == null)  {
+        if (drop_file_list == null || drop_file_list.data == null) {
             return Gdk.DragAction.DEFAULT;
         }
 

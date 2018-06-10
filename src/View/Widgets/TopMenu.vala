@@ -21,8 +21,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-namespace Marlin.View.Chrome
-{
+namespace Marlin.View.Chrome {
     public class TopMenu : Gtk.HeaderBar {
         public ViewSwitcher? view_switcher;
         public LocationBar? location_bar;

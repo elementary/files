@@ -16,10 +16,8 @@
     Authors :
 ***/
 
-namespace Marlin.View.Chrome
-{
-    public class SearchResults : Gtk.Window, Searchable
-    {
+namespace Marlin.View.Chrome {
+    public class SearchResults : Gtk.Window, Searchable {
         /* The order of these categories governs the order in which matches appear in the search view.
          * The category represents a first level sort.  Within a category the matches sort alphabetically on name */
         private enum Category {
@@ -52,8 +50,7 @@ namespace Marlin.View.Chrome
             }
         }
 
-        class Match : Object
-        {
+        class Match : Object {
             public string name { get; construct; }
             public string mime { get; construct; }
             public string path_string { get; construct; }
@@ -81,7 +78,7 @@ namespace Marlin.View.Chrome
             }
 
             public Match.ellipsis (SearchResults.Category category) {
-                Object (name: "...",
+                Object (name: "…",
                         mime: "",
                         icon: null,
                         path_string: "",
@@ -133,8 +130,7 @@ namespace Marlin.View.Chrome
         Gtk.TreeModelFilter filter;
         Gtk.ScrolledWindow scroll;
 
-        public SearchResults (Gtk.Widget parent_widget)
-        {
+        public SearchResults (Gtk.Widget parent_widget) {
             Object (resizable: false,
                     type_hint: Gdk.WindowTypeHint.COMBO,
                     type: Gtk.WindowType.POPUP);
@@ -142,8 +138,7 @@ namespace Marlin.View.Chrome
             parent = parent_widget;
         }
 
-        construct
-        {
+        construct {
             var template = new Zeitgeist.Event ();
 
             var template_subject  = new Zeitgeist.Subject ();
@@ -262,8 +257,7 @@ namespace Marlin.View.Chrome
             clear ();
         }
 
-        public void search (string term, File folder)
-        {
+        public void search (string term, File folder) {
             device = Gtk.get_current_event_device ();
             search_term = term.normalize ().casefold ();
 
@@ -466,8 +460,7 @@ namespace Marlin.View.Chrome
             return parent.key_press_event (event);
         }
 
-        void select_first ()
-        {
+        void select_first () {
             Gtk.TreeIter iter;
             list.get_iter_first (out iter);
 
@@ -484,8 +477,7 @@ namespace Marlin.View.Chrome
             scroll.vadjustment.@value = 0;
         }
 
-        void select_last ()
-        {
+        void select_last () {
             File file;
             Gtk.TreeIter iter;
 
@@ -508,8 +500,7 @@ namespace Marlin.View.Chrome
             } while (list.iter_previous (ref iter));
         }
 
-        void select_adjacent (bool up)
-        {
+        void select_adjacent (bool up) {
             File? file = null;
             Gtk.TreeIter iter, parent;
             get_iter_at_cursor (out iter);
@@ -550,8 +541,7 @@ namespace Marlin.View.Chrome
             select_iter (iter);
         }
 
-        bool list_empty ()
-        {
+        bool list_empty () {
             Gtk.TreeIter iter;
             for (var valid = list.get_iter_first (out iter); valid; valid = list.iter_next (ref iter)) {
                 if (list.iter_has_child (iter))
@@ -561,8 +551,7 @@ namespace Marlin.View.Chrome
             return true;
         }
 
-        int n_matches (out int n_headers = null)
-        {
+        int n_matches (out int n_headers = null) {
             var matches = 0;
             n_headers = 0;
 
@@ -578,8 +567,7 @@ namespace Marlin.View.Chrome
             return matches;
         }
 
-        void resize_popup ()
-        {
+        void resize_popup () {
             var parent_window = parent.get_window ();
             if (parent_window == null)
                 return;
@@ -626,8 +614,7 @@ namespace Marlin.View.Chrome
             resize (width_request, height_request);
         }
 
-        bool get_iter_at_cursor (out Gtk.TreeIter iter)
-        {
+        bool get_iter_at_cursor (out Gtk.TreeIter iter) {
             Gtk.TreePath? path = null;
             Gtk.TreeIter filter_iter = Gtk.TreeIter ();
             iter = Gtk.TreeIter ();
@@ -641,16 +628,14 @@ namespace Marlin.View.Chrome
             return true;
         }
 
-        void select_iter (Gtk.TreeIter iter)
-        {
+        void select_iter (Gtk.TreeIter iter) {
             filter.convert_child_iter_to_iter (out iter, iter);
 
             var path = filter.get_path (iter);
             view.set_cursor (path, null, false);
         }
 
-        void popup ()
-        {
+        void popup () {
             if (get_mapped ()) {
                 return;
             }
@@ -673,8 +658,7 @@ namespace Marlin.View.Chrome
             connect_view_cursor_changed_signal ();
         }
 
-        void popdown ()
-        {
+        void popdown () {
             /* Paired with connect function in popup () */
             disconnect_view_cursor_changed_signal ();
             if (is_grabbing) {
@@ -694,8 +678,7 @@ namespace Marlin.View.Chrome
             hide ();
         }
 
-        void add_results (Gee.List<Match> new_results, Gtk.TreeIter parent)
-        {
+        void add_results (Gee.List<Match> new_results, Gtk.TreeIter parent) {
             if (current_operation.is_cancelled ()) {
                 return;
             }
@@ -786,8 +769,7 @@ namespace Marlin.View.Chrome
             }
         }
 
-        void accept (Gtk.TreeIter? accepted = null, bool activate = false)
-        {
+        void accept (Gtk.TreeIter? accepted = null, bool activate = false) {
             if (list_empty ()) {
                 Gdk.beep ();
                 return;
@@ -825,8 +807,7 @@ namespace Marlin.View.Chrome
             }
         }
 
-        File? get_file_at_iter (Gtk.TreeIter? iter)
-        {
+        File? get_file_at_iter (Gtk.TreeIter? iter) {
             if (iter == null) {
                 get_iter_at_cursor (out iter);
             }
@@ -838,8 +819,7 @@ namespace Marlin.View.Chrome
             return file;
         }
 
-        protected void clear ()
-        {
+        protected void clear () {
             /* Disconnect the cursor-changed signal so that it does not get emitted when entries removed
              * causing incorrect files to get selected in icon view */
             bool was_popped_up = has_popped_up ();
@@ -862,10 +842,7 @@ namespace Marlin.View.Chrome
             }
         }
 
-
-
-        bool send_search_finished ()
-        {
+        bool send_search_finished () {
             if (!local_search_finished || !global_search_finished || !allow_adding_results) {
                 return false;
             }
@@ -991,8 +968,7 @@ namespace Marlin.View.Chrome
             }
         }
 
-        async void get_zg_results (string term)
-        {
+        async void get_zg_results (string term) {
             global_search_finished = false;
 
             Zeitgeist.ResultSet results;
@@ -1093,13 +1069,11 @@ namespace Marlin.View.Chrome
             return n.contains (term);
         }
 
-        string get_category_header (string title)
-        {
+        string get_category_header (string title) {
             return "<span weight='bold' %s>%s</span>".printf (get_pango_grey_color_string (), title);
         }
 
-        string get_pango_grey_color_string ()
-        {
+        string get_pango_grey_color_string () {
             Gdk.RGBA rgba;
             string color = "";
             var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);

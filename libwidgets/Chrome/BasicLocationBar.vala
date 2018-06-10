@@ -19,8 +19,7 @@
 
 ***/
 
-namespace Marlin.View.Chrome
-{
+namespace Marlin.View.Chrome {
     public class BasicLocationBar : Gtk.Box, Locatable {
         private Navigatable bread;
         protected Gtk.Widget widget;
@@ -91,7 +90,7 @@ namespace Marlin.View.Chrome
                 bread.hide_action_icon ();
             } else {
                 bread.set_placeholder ("");
-                bread.set_default_action_icon_tooltip (); 
+                bread.set_default_action_icon_tooltip ();
             }
         }
 
@@ -111,7 +110,7 @@ namespace Marlin.View.Chrome
         protected virtual void on_bread_activate_path (string path, Marlin.OpenFlag flag) {
             /* Navigatable is responsible for providing a valid path or empty string
              * and for translating e.g. ~/ */
-            path_change_request (path, flag); 
+            path_change_request (path, flag);
         }
 
         protected virtual void show_navigate_icon () {

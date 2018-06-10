@@ -19,7 +19,7 @@
 */
 
 namespace Marlin.View.Chrome {
-    public class BasicBreadcrumbsEntry : Gtk.Entry, Navigatable  {
+    public class BasicBreadcrumbsEntry : Gtk.Entry, Navigatable {
         public enum TargetType {
             TEXT_URI_LIST,
         }

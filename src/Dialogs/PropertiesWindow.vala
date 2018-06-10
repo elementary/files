@@ -935,7 +935,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if (files == null)
             return null;
 
-        foreach (GOF.File gof in files){
+        foreach (GOF.File gof in files) {
             if (uid == -1 && gof != null) {
                 uid = gof.uid;
                 continue;

@@ -36,7 +36,7 @@ namespace GOF {
         public GOF.File file {
             get {return directory.file;}
         }
-        public GLib.File location  {
+        public GLib.File location {
             get {return directory.location;}
         }
         public string uri {
