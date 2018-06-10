@@ -126,7 +126,7 @@ public class Marlin.Application : Gtk.Application {
                         N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
         options [5] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
-                        null, N_("[URI...]") };
+                        null, N_("[URI…]") };
         options [6] = { null };
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));

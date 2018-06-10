@@ -314,7 +314,7 @@ public class Async : Object {
                 });
             }
 
-            debug ("mounting ....");
+            debug ("mounting…");
             res =yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
         } catch (Error e) {
             last_error_message = e.message;

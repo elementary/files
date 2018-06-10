@@ -18,7 +18,6 @@
 ***/
 
 namespace Marlin.View {
-
     public class OverlayBar : Granite.Widgets.OverlayBar {
         const int IMAGE_LOADER_BUFFER_SIZE = 8192;
         const int STATUS_UPDATE_DELAY = 200;
@@ -365,8 +364,7 @@ namespace Marlin.View {
             label = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
         }
 
-        private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable)
-        {
+        private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable) {
             ssize_t read = 1;
             uint count = 0;
             while (!image_size_loaded  && read > 0 && !cancellable.is_cancelled ()) {

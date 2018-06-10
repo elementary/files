@@ -18,8 +18,7 @@
 
 ***/
 
-namespace Marlin.View
-{
+namespace Marlin.View {
     public class DirectoryNotFound : Marlin.View.Welcome {
         public GOF.Directory.Async dir_saved;
         public ViewContainer ctab;

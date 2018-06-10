@@ -19,8 +19,7 @@
 * Boston, MA 02110-1301 USA
 */
 
-namespace Marlin.View.Chrome
-{
+namespace Marlin.View.Chrome {
     public class LocationBar : BasicLocationBar {
         private BreadcrumbsEntry bread;
         private SearchResults search_results;
