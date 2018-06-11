@@ -243,7 +243,7 @@ namespace Marlin {
 
                     pix = nicon.get_pixbuf_nodefault ();
 
-                    if  (pix == null) {
+                    if (pix == null) {
                         continue;
                     }
 

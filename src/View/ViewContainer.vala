@@ -425,7 +425,7 @@ namespace Marlin.View {
                     can_show_folder = false;
                 }
             } else {
-                view.focus_first_for_empty_selection (false);  /* Does not select */
+                view.focus_first_for_empty_selection (false); /* Does not select */
             }
 
             if (can_show_folder) {

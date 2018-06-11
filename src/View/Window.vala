@@ -720,7 +720,7 @@ namespace Marlin.View {
             update_undo_actions ();
         }
 
-        public static void after_undo_redo (void  *data) {
+        public static void after_undo_redo (void *data) {
             var window = data as Marlin.View.Window;
             if (window.current_tab.slot.directory.is_recent) {
                 window.current_tab.reload ();

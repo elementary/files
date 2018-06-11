@@ -56,7 +56,7 @@ namespace FM {
         }
 
         protected void set_up_icon_renderer () {
-            icon_renderer.set_property ("follow-state",  true);
+            icon_renderer.set_property ("follow-state", true);
         }
 
         protected void set_up_view () {
@@ -145,7 +145,7 @@ namespace FM {
                         selected_paths.prepend (p);
                     });
                     /* Ensure cursor follows last selection */
-                    tree.set_cursor (path, null, false);  /* This selects path but unselects rest! */
+                    tree.set_cursor (path, null, false); /* This selects path but unselects rest! */
 
                     selected_paths.@foreach ((p) => {
                        selection.select_path (p);
@@ -307,7 +307,7 @@ namespace FM {
                 /* When just focusing first for empty selection we do not want the row selected.
                  * This makes behaviour consistent with Icon View */
                 if (no_selection) {
-                    unselect_path (path);  /* Reverse automatic selection by set_cursor_on_cell for TreeView */
+                    unselect_path (path); /* Reverse automatic selection by set_cursor_on_cell for TreeView */
                 }
 
                 selection.changed.connect (on_view_selection_changed);
@@ -365,10 +365,10 @@ namespace FM {
                 pix_x_offset = (area.height - pix_width) / 2;
             }
 
-            bool on_icon =  (x_offset >= pix_x_offset &&
-                             x_offset <= pix_x_offset + pix_width  &&
-                             y_offset >= pix_y_offset &&
-                             y_offset <= pix_y_offset + pix_height);
+            bool on_icon = (x_offset >= pix_x_offset &&
+                            x_offset <= pix_x_offset + pix_width  &&
+                            y_offset >= pix_y_offset &&
+                            y_offset <= pix_y_offset + pix_height);
 
             if (on_icon) {
                 int hs = icon_renderer.helper_size;

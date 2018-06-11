@@ -80,7 +80,7 @@ namespace Marlin.View {
 
         protected override void make_view () {
             current_slot = null;
-            add_location (root_location, null);  /* current slot gets set by this */
+            add_location (root_location, null); /* current slot gets set by this */
         }
 
         /** Creates a new slot in the host slot hpane */
@@ -473,7 +473,7 @@ namespace Marlin.View {
             int offset = slot.slot_number < slot_list.length () -1 ? 90 : 0;
             int val = page_size - (width + slot.width + offset);
 
-            if (val < 0) {  /*scroll left until right hand edge of active slot is in view*/
+            if (val < 0) { /*scroll left until right hand edge of active slot is in view*/
                 new_value = -val;
             }
 

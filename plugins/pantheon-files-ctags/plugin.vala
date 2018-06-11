@@ -218,7 +218,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 file.color = int.parse (row_iter.next_value ().get_string ());
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
-                file.icon_changed ();  /* Just need to trigger redraw - the underlying GFile has not changed */
+                file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
 
                 if (is_user_dir &&
                     file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified) {
@@ -278,7 +278,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    public override void context_menu  (Gtk.Widget? widget, GLib.List<unowned GOF.File> selected_files) {
+    public override void context_menu (Gtk.Widget? widget, GLib.List<unowned GOF.File> selected_files) {
         if (selected_files == null || widget == null || ignore_dir) {
             return;
         }
