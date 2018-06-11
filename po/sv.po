@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-06-11 19:42+0000\n"
+"PO-Revision-Date: 2018-06-12 00:03+0000\n"
 "Last-Translator: Richard Sjöqvist <richard@spiro.se>\n"
 "Language-Team: Swedish "
 "<https://weblate.elementary.io/projects/files/files/sv/>\n"
@@ -415,7 +415,7 @@ msgstr[1] "%T återstår"
 #: ../libcore/marlin-file-operations.c:1614
 #: ../libcore/marlin-file-operations.c:2404
 msgid "Error while deleting."
-msgstr "Ett fel uppstod vid raderingen"
+msgstr "Ett fel uppstod vid raderingen."
 
 #: ../libcore/marlin-file-operations.c:1468
 msgid ""
@@ -885,7 +885,7 @@ msgstr "Kan inte kopiera till papperskorgen."
 
 #: ../libcore/marlin-file-operations.c:5578
 msgid "It is not permitted to copy files into the trash"
-msgstr "Det är inte tillåtet att kopiera filter till papperskorgen."
+msgstr "Det är inte tillåtet att kopiera filer till papperskorgen"
 
 #: ../libcore/marlin-file-operations.c:5716
 msgid "untitled folder"
@@ -1558,7 +1558,7 @@ msgstr "Den här mappen tillhör inte dig"
 
 #: ../src/View/ViewContainer.vala:404
 msgid "You don't have permission to view this folder."
-msgstr "Du saknar rättigheter för att se innehållet i denna mapp"
+msgstr "Du saknar rättigheter för att se innehållet i denna mapp."
 
 #: ../src/View/ViewContainer.vala:406
 msgid "Unable to Mount Folder"
@@ -1566,7 +1566,7 @@ msgstr "Kunde inte montera mappen"
 
 #: ../src/View/ViewContainer.vala:407
 msgid "Could not connect to the server for this folder."
-msgstr "Kunde inte ansluta till den här mappens server"
+msgstr "Kunde inte ansluta till den här mappens server."
 
 #: ../src/View/ViewContainer.vala:409
 msgid "Unable to Display Folder Contents"
@@ -1706,7 +1706,7 @@ msgstr "Öppna uri(s) i en ny tab"
 
 #: ../src/Application.vala:122 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Nytt fönster"
+msgstr "Nytt Fönster"
 
 #: ../src/Application.vala:124
 msgid "Quit Files."
