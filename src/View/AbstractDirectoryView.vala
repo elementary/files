@@ -1815,7 +1815,7 @@ namespace FM {
             drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                    drag_delay,
                                                    () => {
-                on_drag_timeout_button_release((Gdk.EventButton)event);
+                on_drag_timeout_button_release ((Gdk.EventButton)event);
                 return false;
             });
         }

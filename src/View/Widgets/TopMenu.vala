@@ -131,7 +131,7 @@ namespace Marlin.View.Chrome {
                                */
                 var item = new Gtk.MenuItem.with_label (PF.FileUtils.sanitize_path (path));
                 item.activate.connect (() => {
-                    back(cn);
+                    back (cn);
                 });
                 back_menu.insert (item, -1);
             }

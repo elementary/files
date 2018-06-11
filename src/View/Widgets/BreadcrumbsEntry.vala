@@ -220,7 +220,7 @@ namespace Marlin.View.Chrome {
          * @param file The file you want to load
          *
          **/
-        private void on_file_loaded(GOF.File file) {
+        private void on_file_loaded (GOF.File file) {
             string file_display_name = file.get_display_name ();
             if (file_display_name.length > to_search.length) {
                 if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
@@ -479,7 +479,7 @@ namespace Marlin.View.Chrome {
                 if (sorted_dirs != null) {
                     menu.append (new Gtk.SeparatorMenuItem ());
                     foreach (var gof in sorted_dirs) {
-                        var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
+                        var menuitem = new Gtk.MenuItem.with_label (gof.get_display_name ());
                         menuitem.set_data ("location", gof.uri);
                         menu.append (menuitem);
                         menuitem.activate.connect ((mi) => {

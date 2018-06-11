@@ -396,7 +396,7 @@ namespace Marlin {
             /* if job is SAVE then subsequent pending saves and loads are redundant
              * if job is LOAD then any pending changes requiring saving will be lost
              * so we can clear pending jobs */
-            pending_ops.clear();
+            pending_ops.clear ();
             /* block queue until job processed */
             pending_ops.push_head (pending);
 

@@ -479,12 +479,12 @@ public class Async : Object {
     }
 
     private void connect_volume_monitor_signals () {
-        var vm = VolumeMonitor.get();
+        var vm = VolumeMonitor.get ();
         vm.mount_changed.connect (on_mount_changed);
         vm.mount_added.connect (on_mount_changed);
     }
     private void disconnect_volume_monitor_signals () {
-        var vm = VolumeMonitor.get();
+        var vm = VolumeMonitor.get ();
         vm.mount_changed.disconnect (on_mount_changed);
         vm.mount_added.disconnect (on_mount_changed);
     }
@@ -1172,7 +1172,7 @@ public class Async : Object {
         if (sorted_dirs != null)
             return sorted_dirs;
 
-        foreach (var gof in file_hash.get_values()) { /* returns owned values */
+        foreach (var gof in file_hash.get_values ()) { /* returns owned values */
             if (!gof.is_hidden && (gof.is_folder () || gof.is_smb_server ())) {
                 sorted_dirs.prepend (gof);
             }

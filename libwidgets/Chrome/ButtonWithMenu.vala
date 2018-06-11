@@ -235,7 +235,7 @@ namespace Marlin.View.Chrome {
             else {
                 x += allocation.x;
                 x -= menu_allocation.width;
-                x += this.get_allocated_width();
+                x += this.get_allocated_width ();
             }
 
             /* Bottom or top?*/

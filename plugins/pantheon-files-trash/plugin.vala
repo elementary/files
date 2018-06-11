@@ -17,7 +17,7 @@
 
 public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     private unowned TrashMonitor trash_monitor;
-    private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.InfoBar> infobars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.InfoBar>();
+    private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.InfoBar> infobars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.InfoBar> ();
 
     public Trash () {
         trash_monitor = TrashMonitor.get_default ();

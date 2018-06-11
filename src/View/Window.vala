@@ -746,7 +746,7 @@ namespace Marlin.View {
             dialog.show ();
         }
 
-        void show_app_help() {
+        void show_app_help () {
             try {
                 Gtk.show_uri (screen, Marlin.HELP_URL, -1);
             } catch (Error e) {
