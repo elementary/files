@@ -189,7 +189,7 @@ namespace Marlin.View.Chrome {
             icon_info_list.add (icon);
         }
 
-        private void make_icons() {
+        private void make_icons () {
             context.save ();
             context.set_state (Gtk.StateFlags.NORMAL);
 

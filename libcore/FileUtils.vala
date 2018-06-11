@@ -182,7 +182,7 @@ namespace PF.FileUtils {
     }
 
     public string? escape_uri (string uri, bool allow_utf8 = true) {
-        string rc = reserved_chars.replace("#", "").replace ("*","");
+        string rc = reserved_chars.replace ("#", "").replace ("*","");
         return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
     }
 

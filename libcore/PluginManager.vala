@@ -149,9 +149,9 @@ public class Marlin.PluginManager : Object {
 
         /* We don't want our modules to ever unload */
         module.make_resident ();
-        Plugins.Base plug = module_init();
+        Plugins.Base plug = module_init ();
 
-        debug ("Loaded module source: '%s'", module.name());
+        debug ("Loaded module source: '%s'", module.name ());
 
         if (plug != null)
             plugin_hash.set (file_path, plug);
@@ -167,7 +167,7 @@ public class Marlin.PluginManager : Object {
             string name = keyfile.get_string ("Plugin", "Name");
 
             load_module (Path.build_filename (parent, keyfile.get_string ("Plugin", "File")), name);
-        } catch(Error e) {
+        } catch (Error e) {
             warning ("Couldn't open thie keyfile: %s, %s", path, e.message);
         }
     }

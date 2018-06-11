@@ -157,7 +157,7 @@ public class MarlinTags : Object {
         int rc = db.prepare_v2 ("select modified_time, content_type, color from tags where uri='%s'".printf (uri),
                                 -1, out stmt);
         assert (rc == Sqlite.OK);
-        rc = stmt.step();
+        rc = stmt.step ();
         vb.open (new VariantType ("as"));
 
         switch (rc) {
@@ -279,7 +279,7 @@ public class MarlinTags : Object {
         }
 
         if (!has_column ("tags", "dir")) {
-            message("upgrade_database: adding dir column to tags");
+            message ("upgrade_database: adding dir column to tags");
 
             if (!add_column ("tags", "dir", "TEXT")) {
                 warning ("UPGRADE_ERROR");

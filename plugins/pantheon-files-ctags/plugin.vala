@@ -408,7 +408,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             cr.move_to (x, y+h);
             cr.rel_line_to (w, -h);
             cr.set_source_rgba (0,0,0,0.6);
-            cr.stroke();
+            cr.stroke ();
 
             cr.close_path ();
         }
