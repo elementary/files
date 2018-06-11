@@ -49,7 +49,7 @@ namespace PF.FileUtils {
         string? new_path = sanitize_path (path);
 
         if (new_path != null && new_path.length > 0) {
-            return  File.new_for_commandline_arg (new_path);
+            return File.new_for_commandline_arg (new_path);
         } else {
             return null;
         }

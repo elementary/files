@@ -327,7 +327,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             goffile = GOF.File.@get (new_location);
             files.first ().data = goffile;
         } else {
-            reset_entry_text ();  //resets entry to old name
+            reset_entry_text (); //resets entry to old name
         }
     }
 

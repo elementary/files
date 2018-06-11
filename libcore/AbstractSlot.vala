@@ -64,7 +64,7 @@ namespace GOF {
         public signal void directory_loaded (GOF.Directory.Async dir);
         public signal void item_hovered (GOF.File? file);
 
-        public  void add_extra_widget (Gtk.Widget widget) {
+        public void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);
         }
 

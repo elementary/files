@@ -161,7 +161,7 @@ namespace Marlin.View.Chrome {
                 current_completion_dir.init (on_file_loaded);
             } else {
 
-                if (current_completion_dir != null  && current_completion_dir.can_load) {
+                if (current_completion_dir != null && current_completion_dir.can_load) {
                     clear_completion ();
                     /* Completion text set by on_file_loaded () */
                     current_completion_dir.init (on_file_loaded);
@@ -293,7 +293,7 @@ namespace Marlin.View.Chrome {
             Gtk.TargetList list = null;
             bool ok_to_drop = false;
 
-            Gdk.Atom target = Gtk.drag_dest_find_target  (this, context, list);
+            Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
 
             ok_to_drop = (target != Gdk.Atom.NONE);
             if (ok_to_drop) {
@@ -334,14 +334,14 @@ namespace Marlin.View.Chrome {
                                                                      out current_suggested_action);
 
                     if ((current_actions & file_drag_actions) != 0) {
-                        success = dnd_handler.handle_file_drag_actions  (this,
-                                                                         this.get_toplevel () as Gtk.ApplicationWindow,
-                                                                         context,
-                                                                         drop_target_file,
-                                                                         drop_file_list,
-                                                                         current_actions,
-                                                                         current_suggested_action,
-                                                                         timestamp);
+                        success = dnd_handler.handle_file_drag_actions (this,
+                                                                        this.get_toplevel () as Gtk.ApplicationWindow,
+                                                                        context,
+                                                                        drop_target_file,
+                                                                        drop_file_list,
+                                                                        current_actions,
+                                                                        current_suggested_action,
+                                                                        timestamp);
                     }
                 }
                 Gtk.drag_finish (context, success, false, timestamp);

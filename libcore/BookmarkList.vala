@@ -359,7 +359,7 @@ namespace Marlin {
             delete_items_with_uri (bookmark.get_uri ());
         }
 
-        private  void start_monitoring_bookmarks_file () {
+        private void start_monitoring_bookmarks_file () {
             GLib.File file = get_bookmarks_file ();
             try {
                 monitor = file.monitor (GLib.FileMonitorFlags.SEND_MOVED, null);

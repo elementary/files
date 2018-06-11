@@ -49,9 +49,7 @@ namespace Marlin.View.Chrome {
         }
 
         public signal void forward (int steps);
-        public signal void back (int steps);  /* TODO combine using negative step */
-
-
+        public signal void back (int steps); /* TODO combine using negative step */
         public signal void focus_location_request (GLib.File? location);
         public signal void path_change_request (string path, Marlin.OpenFlag flag);
         public signal void escape ();

@@ -167,11 +167,11 @@ namespace Marlin {
         }
 
         public override unowned Gtk.CellEditable? start_editing (Gdk.Event? event,
-                                                           Gtk.Widget widget,
-                                                           string  path,
-                                                           Gdk.Rectangle  background_area,
-                                                           Gdk.Rectangle  cell_area,
-                                                           Gtk.CellRendererState flags) {
+                                                                 Gtk.Widget widget,
+                                                                 string  path,
+                                                                 Gdk.Rectangle background_area,
+                                                                 Gdk.Rectangle cell_area,
+                                                                 Gtk.CellRendererState flags) {
 
             if (!visible || mode != Gtk.CellRendererMode.EDITABLE)
                 return null;

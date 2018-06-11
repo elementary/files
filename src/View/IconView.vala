@@ -68,7 +68,7 @@ namespace FM {
         }
 
         protected void set_up_icon_renderer () {
-            icon_renderer.set_property ("follow-state",  true);
+            icon_renderer.set_property ("follow-state", true);
         }
 
 
@@ -159,7 +159,7 @@ namespace FM {
          */
         public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
             if (path != null) {
-                tree.select_path (path);  /* This selects path but does not unselect the rest (unlike TreeView) */
+                tree.select_path (path); /* This selects path but does not unselect the rest (unlike TreeView) */
 
                 if (cursor_follows) {
                     tree.set_cursor (path, null, false);
@@ -227,7 +227,7 @@ namespace FM {
 
             if (r != null) {
                 Gdk.Rectangle rect, area;
-                tree.get_cell_rect  (p, r, out rect);
+                tree.get_cell_rect (p, r, out rect);
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
                 /* rectangles are in bin window coordinates - need to adjust event y coordinate
@@ -299,7 +299,7 @@ namespace FM {
             tree.set_cursor (path, renderer, start_editing);
         }
 
-        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed,  bool only_shift_pressed) {
+        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed, bool only_shift_pressed) {
             linear_select_required = only_shift_pressed;
             if (linear_select_required) {
                 return true;
@@ -539,10 +539,10 @@ namespace FM {
             int pix_x_offset = (area.width - pix_width) / 2;
             int pix_y_offset = (area.height - pix_height) / 2;
 
-            bool on_icon =  (x_offset >= pix_x_offset &&
-                             x_offset <= pix_x_offset + pix_width  &&
-                             y_offset >= pix_y_offset &&
-                             y_offset <= pix_y_offset + pix_height);
+            bool on_icon = (x_offset >= pix_x_offset &&
+                            x_offset <= pix_x_offset + pix_width  &&
+                            y_offset >= pix_y_offset &&
+                            y_offset <= pix_y_offset + pix_height);
 
             int hs = icon_renderer.helper_size;
             on_helper = (on_icon &&

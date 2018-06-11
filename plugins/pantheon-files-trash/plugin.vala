@@ -71,7 +71,7 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 slot.add_extra_widget (infobar);
                 infobars.@set (slot, infobar);
             }
-            infobar.set_message_type (file.basename == "/" ? Gtk.MessageType.INFO :  Gtk.MessageType.WARNING);
+            infobar.set_message_type (file.basename == "/" ? Gtk.MessageType.INFO : Gtk.MessageType.WARNING);
             string msg;
             if (file.basename == "/")
                 msg = _("These items may be restored or deleted from the trash.");

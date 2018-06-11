@@ -182,7 +182,7 @@ public class MarlinTags : Object {
         Idle.add (deleteEntry.callback);
         yield;
         string c = "delete from tags where uri='" + uri + "'";
-        int   rc = db.exec (c, null, null);
+        int rc = db.exec (c, null, null);
 
         if (rc != Sqlite.OK) {
             warning ("[deleteEntry: SQL error]  %d, %s\n", rc, db.errmsg ());
@@ -209,7 +209,7 @@ public class MarlinTags : Object {
 
     public bool clearDB () throws GLib.DBusError, GLib.IOError {
         string c = "delete from tags";
-        int   rc = db.exec (c, null, null);
+        int rc = db.exec (c, null, null);
 
         if (rc != Sqlite.OK) {
             warning ("[clearDB: SQL error]  %d, %s\n", rc, db.errmsg ());

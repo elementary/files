@@ -141,7 +141,7 @@ namespace Marlin.View.Chrome {
         construct {
             var template = new Zeitgeist.Event ();
 
-            var template_subject  = new Zeitgeist.Subject ();
+            var template_subject = new Zeitgeist.Subject ();
             template_subject.manifestation = Zeitgeist.NFO.FILE_DATA_OBJECT;
             template.add_subject (template_subject);
 
@@ -247,7 +247,7 @@ namespace Marlin.View.Chrome {
         }
 
         /** Search interface functions **/
-        public  void cancel () {
+        public void cancel () {
             /* popdown first to avoid unwanted cursor change signals */
             popdown ();
             if (current_operation != null) {
@@ -391,7 +391,7 @@ namespace Marlin.View.Chrome {
             if (path != null) {
                 filter.get_iter (out iter, path);
                 filter.convert_iter_to_child_iter (out iter, iter);
-                accept (iter, e.button > 1);  /* This will call cancel () */
+                accept (iter, e.button > 1); /* This will call cancel () */
             }
             return true;
         }
@@ -592,7 +592,7 @@ namespace Marlin.View.Chrome {
 
             if (visible && items + headers <= 1 && !working) {
                 hide ();
-            } else if (!visible && items + headers > 1  && !working) {
+            } else if (!visible && items + headers > 1 && !working) {
                 popup ();
             }
 
