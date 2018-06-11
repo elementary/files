@@ -168,7 +168,7 @@ public class Marlin.Application : Gtk.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir());
+            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir ());
             GLib.File? file = null;
 
             if (path.length > 0) {
