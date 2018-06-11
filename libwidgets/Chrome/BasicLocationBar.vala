@@ -127,7 +127,7 @@ namespace Marlin.View.Chrome {
         }
 
         public void set_display_path (string path) {
-            display_path = path;  /* Will also change breadcrumbs */
+            display_path = path; /* Will also change breadcrumbs */
         }
 
         public string get_display_path () {

@@ -201,7 +201,7 @@ namespace Marlin.View {
                                                 goffile.format_size);
 
                     if (type != null && type.substring (0, 6) == "image/" &&     /* file is image and */
-                        (goffile.width > 0 ||                                     /* resolution already determined  or*/
+                        (goffile.width > 0 ||                                    /* resolution already determined  or */
                         !((type in Marlin.SKIP_IMAGES) || goffile.width < 0))) { /* resolution can be determined. */
 
                         load_resolution.begin (goffile);
@@ -367,7 +367,7 @@ namespace Marlin.View {
         private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable) {
             ssize_t read = 1;
             uint count = 0;
-            while (!image_size_loaded  && read > 0 && !cancellable.is_cancelled ()) {
+            while (!image_size_loaded && read > 0 && !cancellable.is_cancelled ()) {
                 try {
                     read = yield stream.read_async (buffer, 0, cancellable);
                     count++;

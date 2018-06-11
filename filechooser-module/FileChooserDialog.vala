@@ -241,7 +241,7 @@ public class CustomFileChooserDialog : Object {
                 });
 
                 (w2 as Gtk.Container).remove (w3);
-            } else if (w3.get_name () ==  "list_and_preview_box") { /* file browser list and preview box */
+            } else if (w3.get_name () == "list_and_preview_box") { /* file browser list and preview box */
                 var tv = find_tree_view (w3);
                 if (tv != null) {
                     /* set its click behaviour the same as io.elementary.files setting */
