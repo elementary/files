@@ -43,8 +43,9 @@ public class Marlin.Application : Gtk.Application {
     public override void startup () {
         base.startup ();
 
-        if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG)
+        if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG) {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
+        }
 
         message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
 
@@ -146,8 +147,9 @@ public class Marlin.Application : Gtk.Application {
         }
 
         /* Handle arguments */
-        if (debug)
+        if (debug) {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
+        }
 
         if (version) {
             cmd.print ("io.elementary.files %s\n", Config.VERSION);
@@ -202,8 +204,9 @@ public class Marlin.Application : Gtk.Application {
 
     public new void quit () {
         /* Protect against holding Ctrl-Q down */
-        if (quitting)
+        if (quitting) {
             return;
+        }
 
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();

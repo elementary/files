@@ -387,13 +387,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             int x0 = btnw+5;
             int xpad = 9;
 
-            for (i=1; i<=10; i++) {
-                if (i==1)
-                    DrawCross (cr,xpad + x0*i, y0+1, btnw-2, btnh-2);
-                else {
-                    DrawRoundedRectangle (cr,xpad + x0*i, y0, btnw, btnh, "stroke", i-1);
-                    DrawRoundedRectangle (cr,xpad + x0*i, y0, btnw, btnh, "fill", i-1);
-                    DrawGradientOverlay (cr,xpad + x0*i, y0, btnw, btnh);
+            for (i = 1; i <= 10; i++) {
+                if (i == 1) {
+                    DrawCross (cr, xpad + x0 * i, y0 + 1, btnw - 2, btnh - 2);
+                } else {
+                    DrawRoundedRectangle (cr, xpad + x0 * i, y0, btnw, btnh, "stroke", i - 1);
+                    DrawRoundedRectangle (cr, xpad + x0 * i, y0, btnw, btnh, "fill", i - 1);
+                    DrawGradientOverlay (cr, xpad + x0 * i, y0, btnw, btnh);
                 }
             }
 
@@ -422,11 +422,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             int radius_y=2;
             double ARC_TO_BEZIER = 0.55228475;
 
-            if (radius_x > w - radius_x)
+            if (radius_x > w - radius_x) {
                 radius_x = w / 2;
+            }
 
-            if (radius_y > h - radius_y)
+            if (radius_y > h - radius_y) {
                 radius_y = h / 2;
+            }
 
             /* approximate (quite close) the arc using a bezier curve */
             double ca = ARC_TO_BEZIER * radius_x;

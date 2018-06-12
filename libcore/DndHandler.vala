@@ -46,8 +46,9 @@ namespace Marlin {
                                                   error.message,
                                                   null);
                     return false;
-                } else
+                } else {
                     return true;
+                }
             }
             return false;
         }
@@ -63,8 +64,9 @@ namespace Marlin {
             var loop = new GLib.MainLoop (null, false);
 
             ask_menu.deactivate.connect (() => {
-                if (loop.is_running ())
+                if (loop.is_running ()) {
                     loop.quit ();
+                }
 
                 remove_action (win);
             });
@@ -158,8 +160,9 @@ namespace Marlin {
                 if (GLib.Path.DIR_SEPARATOR.to_string () in name) {
                     warning ("invalid source filename");
                     return null; /* not a valid filename */
-                } else
+                } else {
                     return name;
+                }
             } else {
                 warning ("source file does not exist");
                 return null;
@@ -205,8 +208,9 @@ namespace Marlin {
                 }
             }
 
-            if (!success)
+            if (!success) {
                 set_source_uri (context, "");
+            }
 
             return success;
         }
@@ -215,8 +219,9 @@ namespace Marlin {
             string [] parts = (selection.get_text ()).split ("\n");
 
             /* _NETSCAPE_URL looks like this: "$URL\n$TITLE" - should be 2 parts */
-            if (parts.length != 2)
+            if (parts.length != 2) {
                 return false;
+            }
 
             /* NETSCAPE URLs are not currently handled.  No current bug reports */
             return false;

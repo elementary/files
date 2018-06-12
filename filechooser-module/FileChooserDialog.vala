@@ -198,8 +198,9 @@ public class CustomFileChooserDialog : Object {
                         (w0 as Gtk.Container).remove (w1);
                     } else {
                         (w1 as Gtk.Container).get_children ().foreach ((w5) => {
-                            if (w5.get_name () == GTK_FILTERCHOOSER_PATH[1])
+                            if (w5.get_name () == GTK_FILTERCHOOSER_PATH[1]) {
                                (w1 as Gtk.Container).remove (w5);
+                            }
                         });
                     }
                 }
@@ -303,8 +304,9 @@ public class CustomFileChooserDialog : Object {
             var combo_box = new Gtk.ComboBoxText ();
             combo_box.changed.connect (() => {
                 chooser_dialog.list_filters ().foreach ((filter) => {
-                    if (filter.get_filter_name () == combo_box.get_active_text ())
+                    if (filter.get_filter_name () == combo_box.get_active_text ()) {
                         chooser_dialog.set_filter (filter);
+                    }
                 });
             });
 

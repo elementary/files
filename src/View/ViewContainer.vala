@@ -539,16 +539,18 @@ namespace Marlin.View {
 
         public string get_root_uri () {
             string path = "";
-            if (view != null)
+            if (view != null) {
                 path = view.get_root_uri () ?? "";
+            }
 
             return path;
         }
 
         public string get_tip_uri () {
             string path = "";
-            if (view != null)
+            if (view != null) {
                 path = view.get_tip_uri () ?? "";
+            }
 
             return path;
         }
@@ -572,10 +574,11 @@ namespace Marlin.View {
 
         public new void grab_focus () {
             is_frozen = false;
-            if (can_show_folder && view != null)
+            if (can_show_folder && view != null) {
                 view.grab_focus ();
-            else
+            } else {
                 content.grab_focus ();
+            }
         }
 
         private void on_slot_item_hovered (GOF.File? file) {
