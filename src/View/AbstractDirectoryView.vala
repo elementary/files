@@ -460,7 +460,7 @@ namespace FM {
                 if (model.get_first_iter_for_file (f, out iter)) {
                     count++;
                     var path = model.get_path (iter);
-                    select_path (path, focus != null && focus.equal (f.location));  /* Cursor follows if matches focus location*/
+                    select_path (path, focus != null && focus.equal (f.location)); /* Cursor follows if matches focus location*/
                 }
             }
 
@@ -523,7 +523,7 @@ namespace FM {
                 /* launch each selected file individually ignoring selections greater than 10
                  * Do not launch with new instances of this app - open according to flag instead
                  */
-                if (selection.nth_data (11) == null &&  // Less than 10 items
+                if (selection.nth_data (11) == null && // Less than 10 items
                    (default_app == null || app_is_this_app (default_app))) {
 
                     foreach (GOF.File file in selection) {
@@ -1325,7 +1325,7 @@ namespace FM {
             handle_free_space_change ();
         }
 
-        private void  on_directory_done_loading (GOF.Directory.Async dir) {
+        private void on_directory_done_loading (GOF.Directory.Async dir) {
             /* Should only be called on directory creation or reload */
             disconnect_directory_loading_handlers (dir);
             in_trash = slot.directory.is_trash;
@@ -1547,7 +1547,7 @@ namespace FM {
             string? uri = null;
             bool ok_to_drop = false;
 
-            Gdk.Atom target = Gtk.drag_dest_find_target  (get_real_view (), context, list);
+            Gdk.Atom target = Gtk.drag_dest_find_target (get_real_view (), context, list);
 
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
                 GOF.File? target_file = get_drop_target_file (x, y, null);
@@ -1601,15 +1601,15 @@ namespace FM {
                 if (current_actions != Gdk.DragAction.DEFAULT) {
                     switch (info) {
                         case Marlin.TargetType.XDND_DIRECT_SAVE0:
-                            success = dnd_handler.handle_xdnddirectsave  (context,
-                                                                          drop_target_file,
-                                                                           selection_data);
+                            success = dnd_handler.handle_xdnddirectsave (context,
+                                                                         drop_target_file,
+                                                                         selection_data);
                             break;
 
                         case Marlin.TargetType.NETSCAPE_URL:
-                            success = dnd_handler.handle_netscape_url  (context,
-                                                                        drop_target_file,
-                                                                        selection_data);
+                            success = dnd_handler.handle_netscape_url (context,
+                                                                       drop_target_file,
+                                                                       selection_data);
                             break;
 
                         case Marlin.TargetType.TEXT_URI_LIST:
@@ -1619,14 +1619,14 @@ namespace FM {
 
                                 select_added_files = true;
 
-                                success = dnd_handler.handle_file_drag_actions  (get_real_view (),
-                                                                                 window,
-                                                                                 context,
-                                                                                 drop_target_file,
-                                                                                 drop_file_list,
-                                                                                 current_actions,
-                                                                                 current_suggested_action,
-                                                                                 timestamp);
+                                success = dnd_handler.handle_file_drag_actions (get_real_view (),
+                                                                                window,
+                                                                                context,
+                                                                                drop_target_file,
+                                                                                drop_file_list,
+                                                                                current_actions,
+                                                                                current_suggested_action,
+                                                                                timestamp);
                             }
                             break;
 
@@ -1777,7 +1777,7 @@ namespace FM {
             }
 
             /* Set the icon_renderer drop-file if there is an action */
-            drop_file =  can_drop ? drop_file : null;
+            drop_file = can_drop ? drop_file : null;
             icon_renderer.set_property ("drop-file", drop_file);
 
             highlight_path (can_drop ? path : null);
@@ -1815,7 +1815,7 @@ namespace FM {
             drag_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                    drag_delay,
                                                    () => {
-                on_drag_timeout_button_release((Gdk.EventButton)event);
+                on_drag_timeout_button_release ((Gdk.EventButton)event);
                 return false;
             });
         }
@@ -2049,7 +2049,7 @@ namespace FM {
 
             if (app_submenu != null && app_submenu.get_n_items () > 0) {
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ()) {
-                    label =  _("Open in");
+                    label = _("Open in");
                 } else {
                     label = _("Open with");
                 }
@@ -2461,7 +2461,7 @@ namespace FM {
                         path = model.get_path (iter);
 
                         if (file != null) {
-                            file.query_thumbnail_update ();  // Ensure thumbstate up to date
+                            file.query_thumbnail_update (); // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
                             if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
                                 visible_files.prepend (file);
@@ -3143,12 +3143,12 @@ namespace FM {
 
         protected void block_drag_and_drop () {
             drag_data = view.get_data ("gtk-site-data");
-            GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0,  null, null, drag_data);
+            GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
             dnd_disabled = true;
         }
 
         protected void unblock_drag_and_drop () {
-            GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0,  null, null, drag_data);
+            GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
             dnd_disabled = false;
         }
 
@@ -3209,7 +3209,7 @@ namespace FM {
                 }
                 /* If modifier pressed then default handler determines selection */
                 if (no_mods && !on_blank) {
-                    select_path (path, true);  /* Cursor follows */
+                    select_path (path, true); /* Cursor follows */
                 }
             }
 
@@ -3233,9 +3233,9 @@ namespace FM {
                         case ClickZone.NAME:
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
                             /* determine whether should activate on key release (unless pointer moved)*/
-                            should_activate =  no_mods &&
-                                               (!on_blank || activate_on_blank) &&
-                                               (single_click_mode || double_click_event);
+                            should_activate = no_mods &&
+                                              (!on_blank || activate_on_blank) &&
+                                              (single_click_mode || double_click_event);
 
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
@@ -3258,7 +3258,7 @@ namespace FM {
                                 unselect_path (path);
                             } else {
                                 should_deselect = false;
-                                select_path (path, true);  /* Cursor follow and selection preserved */
+                                select_path (path, true); /* Cursor follow and selection preserved */
                             }
 
                             result = true; /* Prevent rubberbanding and deselection of other paths */
@@ -3280,7 +3280,7 @@ namespace FM {
 
                     break;
 
-                case Gdk.BUTTON_MIDDLE:  // button 2
+                case Gdk.BUTTON_MIDDLE: // button 2
                     if (path_is_selected (path)) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
                         result = true;
@@ -3605,7 +3605,7 @@ namespace FM {
             return false;
         }
 
-        protected virtual bool will_handle_button_press (bool no_mods, bool only_control_pressed,  bool only_shift_pressed) {
+        protected virtual bool will_handle_button_press (bool no_mods, bool only_control_pressed, bool only_shift_pressed) {
             if (!no_mods && !only_control_pressed) {
                 return false;
             } else {

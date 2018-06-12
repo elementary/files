@@ -184,7 +184,7 @@ namespace Marlin {
                                            Gtk.SelectionData selection) {
             bool success = false;
 
-            if (selection.get_length ()  == 1 && selection.get_format () == 8) {
+            if (selection.get_length () == 1 && selection.get_format () == 8) {
                 uchar result = selection.get_data ()[0];
 
                 switch (result) {
@@ -306,7 +306,7 @@ namespace Marlin {
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
                     sb.append (target);
-                    sb.append ("\r\n");  /* Drop onto Filezilla does not work without the "\r" */
+                    sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
                 });
             } else {
                 warning ("Invalid file list for drag and drop ignored");

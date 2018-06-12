@@ -161,7 +161,7 @@ namespace Marlin.View.Chrome {
                 current_completion_dir.init (on_file_loaded);
             } else {
 
-                if (current_completion_dir != null  && current_completion_dir.can_load) {
+                if (current_completion_dir != null && current_completion_dir.can_load) {
                     clear_completion ();
                     /* Completion text set by on_file_loaded () */
                     current_completion_dir.init (on_file_loaded);
@@ -220,7 +220,7 @@ namespace Marlin.View.Chrome {
          * @param file The file you want to load
          *
          **/
-        private void on_file_loaded(GOF.File file) {
+        private void on_file_loaded (GOF.File file) {
             string file_display_name = file.get_display_name ();
             if (file_display_name.length > to_search.length) {
                 if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
@@ -293,7 +293,7 @@ namespace Marlin.View.Chrome {
             Gtk.TargetList list = null;
             bool ok_to_drop = false;
 
-            Gdk.Atom target = Gtk.drag_dest_find_target  (this, context, list);
+            Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
 
             ok_to_drop = (target != Gdk.Atom.NONE);
             if (ok_to_drop) {
@@ -334,14 +334,14 @@ namespace Marlin.View.Chrome {
                                                                      out current_suggested_action);
 
                     if ((current_actions & file_drag_actions) != 0) {
-                        success = dnd_handler.handle_file_drag_actions  (this,
-                                                                         this.get_toplevel () as Gtk.ApplicationWindow,
-                                                                         context,
-                                                                         drop_target_file,
-                                                                         drop_file_list,
-                                                                         current_actions,
-                                                                         current_suggested_action,
-                                                                         timestamp);
+                        success = dnd_handler.handle_file_drag_actions (this,
+                                                                        this.get_toplevel () as Gtk.ApplicationWindow,
+                                                                        context,
+                                                                        drop_target_file,
+                                                                        drop_file_list,
+                                                                        current_actions,
+                                                                        current_suggested_action,
+                                                                        timestamp);
                     }
                 }
                 Gtk.drag_finish (context, success, false, timestamp);
@@ -479,7 +479,7 @@ namespace Marlin.View.Chrome {
                 if (sorted_dirs != null) {
                     menu.append (new Gtk.SeparatorMenuItem ());
                     foreach (var gof in sorted_dirs) {
-                        var menuitem = new Gtk.MenuItem.with_label(gof.get_display_name ());
+                        var menuitem = new Gtk.MenuItem.with_label (gof.get_display_name ());
                         menuitem.set_data ("location", gof.uri);
                         menu.append (menuitem);
                         menuitem.activate.connect ((mi) => {

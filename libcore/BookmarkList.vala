@@ -359,7 +359,7 @@ namespace Marlin {
             delete_items_with_uri (bookmark.get_uri ());
         }
 
-        private  void start_monitoring_bookmarks_file () {
+        private void start_monitoring_bookmarks_file () {
             GLib.File file = get_bookmarks_file ();
             try {
                 monitor = file.monitor (GLib.FileMonitorFlags.SEND_MOVED, null);
@@ -396,7 +396,7 @@ namespace Marlin {
             /* if job is SAVE then subsequent pending saves and loads are redundant
              * if job is LOAD then any pending changes requiring saving will be lost
              * so we can clear pending jobs */
-            pending_ops.clear();
+            pending_ops.clear ();
             /* block queue until job processed */
             pending_ops.push_head (pending);
 
