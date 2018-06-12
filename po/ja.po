@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-06-10 00:11+0000\n"
+"PO-Revision-Date: 2018-06-13 00:07+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
 "Language-Team: Japanese "
 "<https://weblate.elementary.io/projects/files/files/ja/>\n"
@@ -133,7 +133,7 @@ msgstr "パスワード(_W):"
 
 #: ../src/marlin-connect-server-dialog.c:1128
 msgid "_Remember this password"
-msgstr "このパスワードを記憶する(_R)"
+msgstr "このパスワードを記憶(_R)"
 
 #: ../src/marlin-connect-server-dialog.c:1231
 msgid "Operation cancelled"
