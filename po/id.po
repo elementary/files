@@ -7,10 +7,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-01-24 00:03+0000\n"
-"Last-Translator: Deo Valiandro. M <vaeloox@gmail.com>\n"
-"Language-Team: Indonesian <https://weblate.elementary.io/projects/files/"
-"files/id/>\n"
+"PO-Revision-Date: 2018-06-12 06:15+0000\n"
+"Last-Translator: Eri Hidayat <eriwhidayat@gmail.com>\n"
+"Language-Team: Indonesian "
+"<https://weblate.elementary.io/projects/files/files/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -153,19 +153,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Gagal untuk mengurai berkas desktop: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Gagal untuk mengurai berkas desktop: %s"
+msgstr "Gagal untuk mengurai berkas desktop"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Gagal untuk mengurai berkas desktop: %s"
+msgstr "Gagal membuat perintah dari berkas: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Gagal untuk mengurai berkas desktop: %s"
+msgstr "Tidak bisa membuka berkas desktop: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1428,7 +1427,7 @@ msgstr "(%s Bebas dari %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Kesalahan pemasangan volume %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1562,12 +1561,11 @@ msgstr "Muat ulang folder ini"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Cari atau Ketik Jalur"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "Memuat…"
+msgstr "Mencari…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2232,9 +2230,8 @@ msgid "Paste"
 msgstr "Tempel"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Tempel"
+msgstr "Tempel Tautan"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2246,16 +2243,15 @@ msgstr "Salin"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Salin sebagai Tautan"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Tempel ke Dalam Folder"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Tempel ke Dalam Folder"
+msgstr "Tempel Tautan ke dalam Folder"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2275,7 +2271,7 @@ msgstr "Urutan Terbalik"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Folder-folder Sebelum Berkas-berkas"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (unicode tidak sah)"
