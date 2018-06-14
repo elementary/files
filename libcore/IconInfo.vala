@@ -87,7 +87,7 @@ public class Marlin.IconInfo : GLib.Object {
 
             var names = ((GLib.ThemedIcon) icon).get_names ();
             var theme = get_icon_theme ();
-            var gtkicon_info = theme.choose_icon_for_scale (names, size, scale, 0);
+            var gtkicon_info = theme.choose_icon_for_scale (names, size, scale, Gtk.IconLookupFlags.FORCE_SIZE);
             if (gtkicon_info == null) {
                 return new Marlin.IconInfo.for_pixbuf (null);
             }
@@ -247,8 +247,10 @@ public class Marlin.IconInfo : GLib.Object {
     }
 
     public static void remove_cache (string path, int size, int scale) {
-        var loadable_key = new LoadableIconKey.from_path (path, size, scale);
-        loadable_icon_cache.remove (loadable_key);
+        if (loadable_icon_cache != null) {
+            var loadable_key = new LoadableIconKey.from_path (path, size, scale);
+            loadable_icon_cache.remove (loadable_key);
+        }
     }
 
     private static bool end_reap_cache_timeout () {

@@ -44,8 +44,6 @@ namespace Marlin.View {
             get {
                 return current_slot == null || current_slot.is_frozen;
             }
-
-            default = true;
         }
 
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
@@ -72,6 +70,8 @@ namespace Marlin.View {
             content_box.show_all ();
 
             make_view ();
+
+            is_frozen = true;
         }
 
         ~Miller () {
@@ -80,7 +80,7 @@ namespace Marlin.View {
 
         protected override void make_view () {
             current_slot = null;
-            add_location (root_location, null);  /* current slot gets set by this */
+            add_location (root_location, null); /* current slot gets set by this */
         }
 
         /** Creates a new slot in the host slot hpane */
@@ -196,7 +196,7 @@ namespace Marlin.View {
                      * Go_up requests make_root false - previous directory will be selected
                      */
                     if (make_root) {
-                        first_slot.select_first_for_empty_selection ();
+                        first_slot.focus_first_for_empty_selection (false); /* Do not select (match behaviour of other views) */
                     }
                 }
             }
@@ -408,7 +408,7 @@ namespace Marlin.View {
 
             if (to_activate != null) {
                 to_activate.active ();
-                to_activate.select_first_for_empty_selection ();
+                to_activate.focus_first_for_empty_selection (true); /* Selects as well as focusses */
             }
 
             return false;
@@ -473,7 +473,7 @@ namespace Marlin.View {
             int offset = slot.slot_number < slot_list.length () -1 ? 90 : 0;
             int val = page_size - (width + slot.width + offset);
 
-            if (val < 0) {  /*scroll left until right hand edge of active slot is in view*/
+            if (val < 0) { /*scroll left until right hand edge of active slot is in view*/
                 new_value = -val;
             }
 
@@ -527,8 +527,8 @@ namespace Marlin.View {
             current_slot.select_glib_files (files, focus_location);
         }
 
-        public override void select_first_for_empty_selection () {
-            current_slot.select_first_for_empty_selection ();
+        public override void focus_first_for_empty_selection (bool select = true) {
+            current_slot.focus_first_for_empty_selection (select);
         }
 
         public override void zoom_in () {

@@ -20,9 +20,7 @@
 
 ***/
 
-namespace Marlin.View
-{
-
+namespace Marlin.View {
     public static int show_dialog (string message, Gtk.MessageType type, Gtk.ButtonsType buttons) {
         var dialog = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL,
                                             type, buttons, "%s", message);

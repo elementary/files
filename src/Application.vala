@@ -20,10 +20,7 @@
              Darin Adler <darin@bentspoon.com>,
              Julián Unrrein <junrrein@gmail.com>
 ***/
-
-private Marlin.Application application_singleton = null;
-
-public class Marlin.Application : Granite.Application {
+public class Marlin.Application : Gtk.Application {
 
     private VolumeMonitor volume_monitor;
     private Marlin.Progress.UIHandler progress_handler;
@@ -39,22 +36,8 @@ public class Marlin.Application : Granite.Application {
 
     construct {
         /* Needed by Glib.Application */
-        this.application_id = Marlin.APP_ID;  //Ensures an unique instance.
-        this.flags = ApplicationFlags.HANDLES_COMMAND_LINE;
-
-        /* Needed by Granite.Application */
-        this.program_name = _(Marlin.APP_TITLE);
-        this.exec_name = APP_NAME;
-        this.build_version = Config.VERSION;
-
-        application_singleton = this;
-    }
-
-    public static new unowned Application get () {
-        if (application_singleton == null)
-            application_singleton = new Marlin.Application ();
-
-        return application_singleton;
+        this.application_id = Marlin.APP_ID; //Ensures an unique instance.
+        this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
     }
 
     public override void startup () {
@@ -143,7 +126,7 @@ public class Marlin.Application : Granite.Application {
                         N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
         options [5] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
-                        null, N_("[URI...]") };
+                        null, N_("[URI…]") };
         options [6] = { null };
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
@@ -185,7 +168,7 @@ public class Marlin.Application : Granite.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir());
+            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir ());
             GLib.File? file = null;
 
             if (path.length > 0) {
@@ -252,6 +235,7 @@ public class Marlin.Application : Granite.Application {
         Preferences.marlin_list_view_settings = new Settings ("io.elementary.files.list-view");
         Preferences.marlin_column_view_settings = new Settings ("io.elementary.files.column-view");
         Preferences.gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
+        Preferences.gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
 
         /* Bind settings with GOFPreferences */
         Preferences.settings.bind ("show-hiddenfiles",
@@ -264,6 +248,8 @@ public class Marlin.Application : Granite.Application {
                                    GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
         Preferences.gnome_interface_settings.bind ("clock-format",
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
+        Preferences.gtk_file_chooser_settings.bind ("sort-directories-first",
+                                   GOF.Preferences.get_default (), "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
     public Marlin.View.Window? create_window (File? location = null,

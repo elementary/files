@@ -40,7 +40,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
         QuicklistHandler.vala
         ClipboardManager.vala
         IconRenderer.vala
-        Thumbnailer.vala
         Dialogs/AbstractPropertiesDialog.vala
         Dialogs/ChooseAppDialog.vala
         Dialogs/PropertiesWindow.vala
@@ -109,7 +108,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         TextRenderer.vala
         ClipboardManager.vala
         IconRenderer.vala
-        Thumbnailer.vala
         Dialogs/AbstractPropertiesDialog.vala
         Dialogs/ChooseAppDialog.vala
         Dialogs/PropertiesWindow.vala

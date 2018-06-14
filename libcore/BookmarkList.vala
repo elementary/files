@@ -21,7 +21,7 @@
 
 namespace Marlin {
 
-    public class BookmarkList : GLib.Object{
+    public class BookmarkList : GLib.Object {
 
         enum JobType {
             LOAD = 1,
@@ -76,7 +76,7 @@ namespace Marlin {
                 try {
                     file.create (GLib.FileCreateFlags.NONE, null);
                 }
-                catch (GLib.Error error){
+                catch (GLib.Error error) {
                     critical ("Could not create bookmarks file: %s", error.message);
                 }
 
@@ -105,7 +105,7 @@ namespace Marlin {
 
        private void add_special_directory (GLib.UserDirectory user_dir, ref GLib.List<string> uris) {
             string? dir_s = Environment.get_user_special_dir (user_dir);
- 
+
             if (dir_s != null)
                 uris.prepend ("file://" + dir_s);
         }
@@ -119,11 +119,11 @@ namespace Marlin {
             add_special_directory (UserDirectory.PICTURES, ref uris);
             add_special_directory (UserDirectory.TEMPLATES, ref uris);
             add_special_directory (UserDirectory.VIDEOS, ref uris);
-           
+
             uris.reverse ();
             insert_uris_at_end (uris);
         }
- 
+
         public static BookmarkList get_instance () {
             if (instance == null)
                 instance = new BookmarkList ();
@@ -159,7 +159,7 @@ namespace Marlin {
             });
             save_bookmarks_file ();
         }
- 
+
         public bool contains (Marlin.Bookmark bm) {
             return (list.find_custom (bm, Marlin.Bookmark.compare_with) != null);
         }
@@ -359,7 +359,7 @@ namespace Marlin {
             delete_items_with_uri (bookmark.get_uri ());
         }
 
-        private  void start_monitoring_bookmarks_file () {
+        private void start_monitoring_bookmarks_file () {
             GLib.File file = get_bookmarks_file ();
             try {
                 monitor = file.monitor (GLib.FileMonitorFlags.SEND_MOVED, null);
@@ -396,7 +396,7 @@ namespace Marlin {
             /* if job is SAVE then subsequent pending saves and loads are redundant
              * if job is LOAD then any pending changes requiring saving will be lost
              * so we can clear pending jobs */
-            pending_ops.clear();
+            pending_ops.clear ();
             /* block queue until job processed */
             pending_ops.push_head (pending);
 

@@ -40,6 +40,7 @@ namespace FM
         public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file);
         public GOF.File? file_for_iter (Gtk.TreeIter iter);
         public void clear ();
+        public void set_should_sort_directories_first (bool directories_first);
         public signal void subdirectory_unloaded (GOF.Directory.Async directory);
     }
 }
@@ -87,11 +88,6 @@ namespace EelGtk.Widget {
 
 [CCode (cprefix = "Eel", lower_case_cprefix = "eel_")]
 namespace Eel {
-    [CCode (cheader_filename = "eel-stock-dialogs.h")]
-    public unowned Gtk.Dialog show_warning_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-    [CCode (cheader_filename = "eel-stock-dialogs.h")]
-    public unowned Gtk.Dialog show_error_dialog (string primary_text, string secondary_text, Gtk.Window? parent);
-
     [CCode (cheader_filename = "eel-string.h")]
     public string? str_double_underscores (string? str);
 }

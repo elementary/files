@@ -58,7 +58,7 @@ namespace Marlin.View.Chrome {
             Gtk.IconInfo? gtk_icon_info = null;
             var scale = context.get_scale ();
             if (gicon != null) {
-                gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, Gtk.IconLookupFlags.FORCE_SYMBOLIC);
+                gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC);
             } else {
                 throw new GLib.IOError.NOT_INITIALIZED ("the gicon field is empty!");
             }
@@ -78,7 +78,7 @@ namespace Marlin.View.Chrome {
 
         public void set_path (string path) {
             this.path = path;
-            if (path != null && path != Path.DIR_SEPARATOR_S) {
+            if (path != null) { /* We deal with path = "\" */
                 if (path == Path.DIR_SEPARATOR_S) {
                     exploded = { Path.DIR_SEPARATOR_S };
                 } else {
@@ -189,7 +189,7 @@ namespace Marlin.View.Chrome {
             icon_info_list.add (icon);
         }
 
-        private void make_icons() {
+        private void make_icons () {
             context.save ();
             context.set_state (Gtk.StateFlags.NORMAL);
 

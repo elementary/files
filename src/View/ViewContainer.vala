@@ -424,6 +424,8 @@ namespace Marlin.View {
                                                        _("The file selected no longer exists."));
                     can_show_folder = false;
                 }
+            } else {
+                view.focus_first_for_empty_selection (false); /* Does not select */
             }
 
             if (can_show_folder) {
@@ -446,6 +448,7 @@ namespace Marlin.View {
                 browser.record_uri (null);
             }
 
+            refresh_slot_info (slot.location);
             loading (false); /* Will cause topmenu to update */
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
@@ -520,6 +523,7 @@ namespace Marlin.View {
                     return;
                 }
             } else if (no_path_change) { /* not in current, do not navigate to it*/
+                view.focus_first_for_empty_selection (false); /* Just focus first file */
                 return;
             }
             /* Attempt to navigate to the location */

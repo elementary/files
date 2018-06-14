@@ -36,7 +36,7 @@ namespace GOF {
         public GOF.File file {
             get {return directory.file;}
         }
-        public GLib.File location  {
+        public GLib.File location {
             get {return directory.location;}
         }
         public string uri {
@@ -64,7 +64,7 @@ namespace GOF {
         public signal void directory_loaded (GOF.Directory.Async dir);
         public signal void item_hovered (GOF.File? file);
 
-        public  void add_extra_widget (Gtk.Widget widget) {
+        public void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);
         }
 
@@ -83,7 +83,7 @@ namespace GOF {
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc, bool make_root);
 
-        public abstract void select_first_for_empty_selection ();
+        public abstract void focus_first_for_empty_selection (bool select);
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
         protected abstract void make_view ();
         public abstract void close ();

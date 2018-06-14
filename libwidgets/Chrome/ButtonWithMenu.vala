@@ -121,8 +121,8 @@ namespace Marlin.View.Chrome {
 
             mnemonic_activate.connect (on_mnemonic_activate);
 
-            events |= Gdk.EventMask.BUTTON_PRESS_MASK
-                   |  Gdk.EventMask.BUTTON_RELEASE_MASK;
+            events |= Gdk.EventMask.BUTTON_PRESS_MASK |
+                      Gdk.EventMask.BUTTON_RELEASE_MASK;
 
             button_press_event.connect (on_button_press_event);
             button_release_event.connect (on_button_release_event);
@@ -235,7 +235,7 @@ namespace Marlin.View.Chrome {
             else {
                 x += allocation.x;
                 x -= menu_allocation.width;
-                x += this.get_allocated_width();
+                x += this.get_allocated_width ();
             }
 
             /* Bottom or top?*/

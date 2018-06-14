@@ -720,7 +720,7 @@ namespace Marlin.View {
             update_undo_actions ();
         }
 
-        public static void after_undo_redo (void  *data) {
+        public static void after_undo_redo (void *data) {
             var window = data as Marlin.View.Window;
             if (window.current_tab.slot.directory.is_recent) {
                 window.current_tab.reload ();
@@ -746,7 +746,7 @@ namespace Marlin.View {
             dialog.show ();
         }
 
-        void show_app_help() {
+        void show_app_help () {
             try {
                 Gtk.show_uri (screen, Marlin.HELP_URL, -1);
             } catch (Error e) {

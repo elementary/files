@@ -19,7 +19,7 @@
 */
 
 namespace Marlin.View.Chrome {
-    public class BasicBreadcrumbsEntry : Gtk.Entry, Navigatable  {
+    public class BasicBreadcrumbsEntry : Gtk.Entry, Navigatable {
         public enum TargetType {
             TEXT_URI_LIST,
         }
@@ -59,7 +59,7 @@ namespace Marlin.View.Chrome {
         protected Gtk.StyleContext button_context;
         protected Gtk.StyleContext button_context_active;
         protected const int BREAD_SPACING = 12;
-        protected const double YPAD = 0;            /* y padding */
+        protected const double YPAD = 0; /* y padding */
 
         private Gdk.Window? entry_window = null;
 
@@ -368,7 +368,7 @@ namespace Marlin.View.Chrome {
 
         /** Returns a list of breadcrumbs that are displayed in natural order - that is, the breadcrumb at the start
           * of the pathbar is at the start of the list
-         **/  
+         **/
         public double get_displayed_breadcrumbs_natural_width (out GLib.List<BreadcrumbElement> displayed_breadcrumbs) {
             double total_width = 0.0;
             displayed_breadcrumbs = null;
@@ -398,7 +398,7 @@ namespace Marlin.View.Chrome {
             }
 
             /* Allow enough space after the breadcrumbs for secondary icon and entry */
-            w += 2 * YPAD + MINIMUM_LOCATION_BAR_ENTRY_WIDTH + ICON_WIDTH; 
+            w += 2 * YPAD + MINIMUM_LOCATION_BAR_ENTRY_WIDTH + ICON_WIDTH;
 
             return (int) (w);
         }
@@ -468,7 +468,7 @@ namespace Marlin.View.Chrome {
             string newpath = "";
 
             foreach (BreadcrumbElement element in elements) {
-                    string s = element.text;  /* element text should be an escaped string */
+                    string s = element.text; /* element text should be an escaped string */
                     newpath += (s + Path.DIR_SEPARATOR_S);
 
                     if (el != null && element == el)
@@ -628,7 +628,7 @@ namespace Marlin.View.Chrome {
 
                 string protocol = "";
                 if (elements.size > 0) {
-                    protocol  = elements[0].text;
+                    protocol = elements[0].text;
                 }
                 set_element_icons (protocol, elements);
             }
@@ -656,7 +656,7 @@ namespace Marlin.View.Chrome {
                 double total_arrow_width = displayed_breadcrumbs.length () * (height_marged / 2 + padding.left);
                 width_marged -= total_arrow_width;
                 if (max_width > width_marged) { /* let's check if the breadcrumbs are bigger than the widget */
-                    var unfixed = displayed_breadcrumbs.length () - 2; 
+                    var unfixed = displayed_breadcrumbs.length () - 2;
                     if (unfixed > 0) {
                         width_marged -= unfixed * MINIMUM_BREADCRUMB_WIDTH;
                     }
