@@ -49,7 +49,7 @@ namespace PF.FileUtils {
         string? new_path = sanitize_path (path);
 
         if (new_path != null && new_path.length > 0) {
-            return  File.new_for_commandline_arg (new_path);
+            return File.new_for_commandline_arg (new_path);
         } else {
             return null;
         }
@@ -182,7 +182,7 @@ namespace PF.FileUtils {
     }
 
     public string? escape_uri (string uri, bool allow_utf8 = true) {
-        string rc = reserved_chars.replace("#", "").replace ("*","");
+        string rc = reserved_chars.replace ("#", "").replace ("*","");
         return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
     }
 
@@ -625,7 +625,7 @@ namespace PF.FileUtils {
 
         suggested_action_return = Gdk.DragAction.PRIVATE;
 
-        if (drop_file_list == null || drop_file_list.data == null)  {
+        if (drop_file_list == null || drop_file_list.data == null) {
             return Gdk.DragAction.DEFAULT;
         }
 

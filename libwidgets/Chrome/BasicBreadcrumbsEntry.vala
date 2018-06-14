@@ -19,7 +19,7 @@
 */
 
 namespace Marlin.View.Chrome {
-    public class BasicBreadcrumbsEntry : Gtk.Entry, Navigatable  {
+    public class BasicBreadcrumbsEntry : Gtk.Entry, Navigatable {
         public enum TargetType {
             TEXT_URI_LIST,
         }
@@ -59,7 +59,7 @@ namespace Marlin.View.Chrome {
         protected Gtk.StyleContext button_context;
         protected Gtk.StyleContext button_context_active;
         protected const int BREAD_SPACING = 12;
-        protected const double YPAD = 0;            /* y padding */
+        protected const double YPAD = 0; /* y padding */
 
         private Gdk.Window? entry_window = null;
 
@@ -468,7 +468,7 @@ namespace Marlin.View.Chrome {
             string newpath = "";
 
             foreach (BreadcrumbElement element in elements) {
-                    string s = element.text;  /* element text should be an escaped string */
+                    string s = element.text; /* element text should be an escaped string */
                     newpath += (s + Path.DIR_SEPARATOR_S);
 
                     if (el != null && element == el)
@@ -628,7 +628,7 @@ namespace Marlin.View.Chrome {
 
                 string protocol = "";
                 if (elements.size > 0) {
-                    protocol  = elements[0].text;
+                    protocol = elements[0].text;
                 }
                 set_element_icons (protocol, elements);
             }

@@ -150,7 +150,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             files.prepend (file);
         }
 
-        count = files.length();
+        count = files.length ();
 
         if (count < 1 ) {
             critical ("Properties Window constructor called with empty file list");
@@ -327,7 +327,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             goffile = GOF.File.@get (new_location);
             files.first ().data = goffile;
         } else {
-            reset_entry_text ();  //resets entry to old name
+            reset_entry_text (); //resets entry to old name
         }
     }
 
@@ -394,7 +394,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if (loc == null)
             path = "/";
         else
-            path = loc.get_parse_name();
+            path = loc.get_parse_name ();
 
         return path;
     }
@@ -543,7 +543,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         var ftype = filetype (file);
 
-        var mimetype_key = new KeyLabel (_("Mimetype:"));
+        var mimetype_key = new KeyLabel (_("MIME type:"));
         var mimetype_value = new ValueLabel (ftype);
         info_grid.attach (mimetype_key, 0, n, 1, 1);
         info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
@@ -569,7 +569,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         if (count == 1 && file.info.get_is_symlink ()) {
             var key_label = new KeyLabel (_("Target:"));
-            var value_label = new ValueLabel (file.info.get_symlink_target());
+            var value_label = new ValueLabel (file.info.get_symlink_target ());
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
@@ -782,7 +782,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 perm_code_should_update = true;
                 int n = 0;
                 foreach (GOF.File gof in files) {
-                    if (gof.can_set_permissions() && gof.permissions != perm) {
+                    if (gof.can_set_permissions () && gof.permissions != perm) {
                         gof.permissions = perm;
 
                         /* update permission label once */
@@ -810,7 +810,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         string user;
         Posix.uid_t? uid = null;
 
-        if (!combo.get_active_iter(out iter))
+        if (!combo.get_active_iter (out iter))
             return;
 
         store_users.get (iter, 0, out user);
@@ -842,7 +842,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         string group;
         Posix.uid_t? gid;
 
-        if (!combo.get_active_iter(out iter))
+        if (!combo.get_active_iter (out iter))
             return;
 
         store_groups.get (iter, 0, out group);
@@ -935,7 +935,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if (files == null)
             return null;
 
-        foreach (GOF.File gof in files){
+        foreach (GOF.File gof in files) {
             if (uid == -1 && gof != null) {
                 uid = gof.uid;
                 continue;
@@ -981,15 +981,15 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             Gtk.TreeIter iter;
 
             store_users = new Gtk.ListStore (1, typeof (string));
-            users = PF.UserUtils.get_user_names();
+            users = PF.UserUtils.get_user_names ();
             int owner_index = -1;
             int i = 0;
             foreach (var user in users) {
                 if (user == goffile.owner) {
                     owner_index = i;
                 }
-                store_users.append(out iter);
-                store_users.set(iter, 0, user);
+                store_users.append (out iter);
+                store_users.set (iter, 0, user);
                 i++;
             }
 

@@ -91,7 +91,7 @@ public class Marlin.DeepCount : Object {
             finished ();
     }
 
-    public void cancel ()  {
+    public void cancel () {
         cancellable.cancel ();
     }
 }

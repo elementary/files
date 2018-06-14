@@ -23,8 +23,8 @@
 /*** One instance of this class is owned by the application and handles UI for file transfers initiated by
  *   of the app windows.  Feedback is provided by a dialog window which appears if a transfer takes longer than
  *   approximately 1 second. The unity launcher is also updated if present and a notification is sent of the
- *   completion of the operation unless it was cancelled by the user. 
-***/ 
+ *   completion of the operation unless it was cancelled by the user.
+***/
 public class Marlin.Progress.UIHandler : Object {
 
     private PF.Progress.InfoManager manager = null;
@@ -156,7 +156,7 @@ public class Marlin.Progress.UIHandler : Object {
              * so that the active application window has time to refocus (if the application itself is focussed)
              * after progress window dialog is hidden. We have to wait until the dialog is hidden
              * because it steals focus from the application main window. This also means that a notification
-             * is only sent after last operation finishes and the progress window closes. 
+             * is only sent after last operation finishes and the progress window closes.
              * FIXME: Avoid use of a timeout by not using a dialog for progress window or otherwise.*/
             Timeout.add (100, () => {
                 if (!application.get_active_window ().has_toplevel_focus) {

@@ -36,7 +36,7 @@ public class Marlin.Application : Gtk.Application {
 
     construct {
         /* Needed by Glib.Application */
-        this.application_id = Marlin.APP_ID;  //Ensures an unique instance.
+        this.application_id = Marlin.APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
     }
 
@@ -126,7 +126,7 @@ public class Marlin.Application : Gtk.Application {
                         N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
         options [5] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
-                        null, N_("[URI...]") };
+                        null, N_("[URI…]") };
         options [6] = { null };
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
@@ -168,7 +168,7 @@ public class Marlin.Application : Gtk.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir());
+            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir ());
             GLib.File? file = null;
 
             if (path.length > 0) {
