@@ -116,10 +116,11 @@ namespace FM {
         public override Gtk.TreePath? get_path_at_pos (int x, int y) {
             Gtk.TreePath? path = null;
 
-            if (x >= 0 && y >= 0 && tree.get_dest_row_at_pos (x, y, out path, null))
+            if (x >= 0 && y >= 0 && tree.get_dest_row_at_pos (x, y, out path, null)) {
                 return path;
-            else
+            } else {
                 return null;
+            }
         }
 
         public override void tree_select_all () {
@@ -154,15 +155,17 @@ namespace FM {
             }
         }
         public override void unselect_path (Gtk.TreePath? path) {
-            if (path != null)
+            if (path != null) {
                 tree.get_selection ().unselect_path (path);
+            }
         }
 
         public override bool path_is_selected (Gtk.TreePath? path) {
-            if (path != null)
+            if (path != null) {
                 return tree.get_selection ().path_is_selected (path);
-            else
+            } else {
                 return false;
+            }
         }
 
         public override bool get_visible_range (out Gtk.TreePath? start_path,

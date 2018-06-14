@@ -37,11 +37,12 @@ namespace Marlin.View {
                 try {
                     success = dir.location.make_directory_with_parents (null);
                 } catch (Error e) {
-                    if (e is IOError.EXISTS)
+                    if (e is IOError.EXISTS) {
                         success = true;
-                    else
+                    } else {
                         show_dialog (_("Failed to create the folder\n\n%s").printf (e.message),
                                      Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE);
+                    }
                 }
 
                 if (success) {

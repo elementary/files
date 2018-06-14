@@ -81,10 +81,11 @@ public class Async : Object {
 
     private unowned string gio_attrs {
         get {
-            if (scheme == "network" || scheme == "computer" || scheme == "smb")
+            if (scheme == "network" || scheme == "computer" || scheme == "smb") {
                 return "*";
-            else
+            } else {
                 return GOF.File.GIO_DEFAULT_ATTRIBUTES;
+            }
         }
     }
 
@@ -139,8 +140,9 @@ public class Async : Object {
     ~Async () {
         debug ("Async destruct %s", file.uri);
 
-        if (is_trash)
+        if (is_trash) {
             disconnect_volume_monitor_signals ();
+        }
     }
 
     /** Views call the following function with null parameter - file_loaded and done_loading
@@ -739,20 +741,22 @@ public class Async : Object {
 
     public void update_files () {
         foreach (GOF.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null
-                && (!gof.is_hidden || Preferences.get_default ().show_hidden_files))
+            if (gof != null && gof.info != null &&
+                (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
                 gof.update ();
+            }
         }
     }
 
     public void update_desktop_files () {
         foreach (GOF.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null
-                && (!gof.is_hidden || Preferences.get_default ().show_hidden_files)
-                && gof.is_desktop)
+            if (gof != null && gof.info != null &&
+                (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
+                gof.is_desktop) {
 
                 gof.update_desktop_file ();
+            }
         }
     }
 
@@ -782,9 +786,9 @@ public class Async : Object {
             if (result == null) {
                 result = new GOF.File (file, location);
                 file_hash.insert (file, result);
-            }
-            else if (update_hash)
+            } else if (update_hash) {
                 file_hash.insert (file, result);
+            }
         }
 
         return (!) result;
@@ -900,8 +904,9 @@ public class Async : Object {
                 list_fchanges_count++;
             }
             return;
-        } else
+        } else {
             real_directory_changed (_file, other_file, event);
+        }
     }
 
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
@@ -1065,8 +1070,9 @@ public class Async : Object {
     public static void remove_file_from_cache (GOF.File gof) {
         assert (gof != null);
         Async? dir = cache_lookup (gof.directory);
-        if (dir != null)
+        if (dir != null) {
             dir.file_hash.remove (gof.location);
+        }
     }
 
     public static Async? cache_lookup (GLib.File? file) {
@@ -1169,8 +1175,9 @@ public class Async : Object {
             return null;
         }
 
-        if (sorted_dirs != null)
+        if (sorted_dirs != null) {
             return sorted_dirs;
+        }
 
         foreach (var gof in file_hash.get_values ()) { /* returns owned values */
             if (!gof.is_hidden && (gof.is_folder () || gof.is_smb_server ())) {
