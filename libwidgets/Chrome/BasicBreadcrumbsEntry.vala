@@ -270,8 +270,9 @@ namespace Marlin.View.Chrome {
         }
 
         bool after_motion_notify (Gdk.EventMotion event) {
-            if (is_focus)
+            if (is_focus) {
                 return false;
+            }
 
             string? tip = null;
             if (secondary_icon_pixbuf != null) {
@@ -471,8 +472,9 @@ namespace Marlin.View.Chrome {
                     string s = element.text; /* element text should be an escaped string */
                     newpath += (s + Path.DIR_SEPARATOR_S);
 
-                    if (el != null && element == el)
+                    if (el != null && element == el) {
                         break;
+                    }
             }
 
             return PF.FileUtils.sanitize_path (newpath);
@@ -485,9 +487,11 @@ namespace Marlin.View.Chrome {
             string newpath = PF.FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
             newelements.add (new BreadcrumbElement (protocol, this, get_style_context ()));
             foreach (string dir in newpath.split (Path.DIR_SEPARATOR_S)) {
-                if (dir != "")
+                if (dir != "") {
                     newelements.add (new BreadcrumbElement (dir, this, get_style_context ()));
+                }
             }
+
             set_element_icons (protocol, newelements);
             replace_elements (newelements);
         }
@@ -512,20 +516,23 @@ namespace Marlin.View.Chrome {
                             found = false;
                             break;
                         }
+
                         h = i;
                     }
 
                     if (found) {
-                        for (int j = 0; j < h; j++)
+                        for (int j = 0; j < h; j++) {
                             newelements[j].display = false;
+                        }
 
                         newelements[h].display = true;
                         newelements[h].set_icon (icon);
                         newelements[h].text_is_displayed = (icon.text_displayed != null) || !icon.break_loop;
                         newelements[h].text_for_display = icon.text_displayed;
 
-                        if (icon.break_loop)
+                        if (icon.break_loop) {
                             break;
+                        }
                     }
                 }
             }
