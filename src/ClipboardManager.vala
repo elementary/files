@@ -43,6 +43,7 @@ namespace Marlin {
         private GLib.List<GOF.File> files = null;
 
         private bool files_cutted = false;
+        public bool files_linked {get; private set; default = false;}
 
         /** Returns TRUE if the contents of the clipboard can be pasted into a folder.
         **/
@@ -90,11 +91,15 @@ namespace Marlin {
         }
 
         public void copy_files (GLib.List<GOF.File> files) {
-            transfer_files (true, files);
+            transfer_files (true, false, files);
+        }
+
+        public void copy_link_files (GLib.List<GOF.File> files) {
+            transfer_files (true, true, files);
         }
 
         public void cut_files (GLib.List<GOF.File> files) {
-            transfer_files (false, files);
+            transfer_files (false, false, files);
         }
 
         /**
@@ -149,6 +154,9 @@ namespace Marlin {
             } else if (text.has_prefix ("cut")) {
                 action = Gdk.DragAction.MOVE;
                 text = text.substring (3);
+            } else if (text.has_prefix ("link")) {
+                action = Gdk.DragAction.LINK;
+                text = text.substring (4);
             } else {
                 warning ("Invalid selection data in Marlin.ClipboardManager contents_received");
                 return;
@@ -203,9 +211,10 @@ namespace Marlin {
          * Sets the clipboard to contain @files_for_transfer and marks them to be copied
          * or moved according to @copy when the user pastes from the clipboard.
         **/
-        private void transfer_files (bool copy, GLib.List<GOF.File> files_for_transfer) {
+        private void transfer_files (bool copy, bool link, GLib.List<GOF.File> files_for_transfer) {
             release_pending_files ();
             files_cutted = !copy;
+            files_linked = link;
 
             /* setup the new file list */
             foreach (var file in files_for_transfer) {
@@ -235,7 +244,7 @@ namespace Marlin {
 
             switch (target_info) {
                 case ClipboardTarget.GNOME_COPIED_FILES:
-                    string prefix = manager.files_cutted ? "cut" : "copy";
+                    string prefix = manager.files_cutted ? "cut" : (manager.files_linked ? "link" : "copy");
                     DndHandler.set_selection_data_from_file_list (sd,
                                                                   manager.files,
                                                                   prefix);

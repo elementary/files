@@ -49,7 +49,6 @@ namespace Marlin {
     public const string ICON_RECENT = "document-open-recent";
     public const string ICON_RECENT_SYMBOLIC = "document-open-recent-symbolic";
     public const string ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC = "edit-find-symbolic";
-    public const string ICON_PATHBAR_PRIMARY_PATH_SYMBOLIC = "emblem-documents-symbolic";
     public const string ICON_PATHBAR_SECONDARY_NAVIGATE_SYMBOLIC = "go-jump-symbolic";
     public const string ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC = "view-refresh-symbolic";
     public const string ICON_PATHBAR_SECONDARY_WORKING_SYMBOLIC = "process-working-symbolic";
@@ -125,7 +124,7 @@ namespace Marlin {
                 return Marlin.FTP_URI;
             case Marlin.PROTOCOL_NAME_SFTP:
                 return Marlin.SFTP_URI;
-            case  Marlin.PROTOCOL_NAME_AFP:
+            case Marlin.PROTOCOL_NAME_AFP:
                 return Marlin.AFP_URI;
             case Marlin.PROTOCOL_NAME_DAV:
                 return Marlin.DAV_URI;

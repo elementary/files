@@ -61,11 +61,6 @@
         The default viewmode to be used when opening a new tab or window
       </description>
     </key>
-    <key name="sidebar-zoom-level" enum="io.elementary.files.ZoomLevel">
-      <default>'smallest'</default>
-      <summary>Size of the icons in the Places sidebar</summary>
-      <description>Zoom level used by the places sidebar.</description>
-    </key>
     <key type="b" name="sidebar-cat-personal-expander">
       <default>true</default>
       <summary>Categorie personal expander</summary>

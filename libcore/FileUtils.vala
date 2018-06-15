@@ -49,7 +49,7 @@ namespace PF.FileUtils {
         string? new_path = sanitize_path (path);
 
         if (new_path != null && new_path.length > 0) {
-            return  File.new_for_commandline_arg (new_path);
+            return File.new_for_commandline_arg (new_path);
         } else {
             return null;
         }
@@ -82,8 +82,8 @@ namespace PF.FileUtils {
 
         foreach (GOF.File goffile in unhandled_files) {
             var message = _("Could not determine original location of \"%s\" ").printf (goffile.get_display_name ());
-            Eel.show_warning_dialog (message, _("The item cannot be restored from trash"),
-                                     (widget is Gtk.Window) ? widget as Gtk.Window : null );
+            PF.Dialogs.show_warning_dialog (message, _("The item cannot be restored from trash"),
+                                            (widget is Gtk.Window) ? widget as Gtk.Window : null );
         }
 
         original_dirs_hash.foreach ((original_dir, dir_files) => {
@@ -182,7 +182,7 @@ namespace PF.FileUtils {
     }
 
     public string? escape_uri (string uri, bool allow_utf8 = true) {
-        string rc = reserved_chars.replace("#", "").replace ("*","");
+        string rc = reserved_chars.replace ("#", "").replace ("*","");
         return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
     }
 
@@ -338,17 +338,19 @@ namespace PF.FileUtils {
     }
 
     public string get_smb_share_from_uri (string uri) {
-        if (!(Uri.parse_scheme (uri) == "smb"))
+        if (!(Uri.parse_scheme (uri) == "smb")) {
             return (uri);
+        }
 
         string [] uri_parts = uri.split (Path.DIR_SEPARATOR_S);
 
-        if (uri_parts.length < 4)
+        if (uri_parts.length < 4) {
             return uri;
-        else {
+        } else {
             var sb = new StringBuilder ();
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++) {
                 sb.append (uri_parts [i] + Path.DIR_SEPARATOR_S);
+            }
 
             return sb.str;
         }
@@ -433,9 +435,9 @@ namespace PF.FileUtils {
                                                                   original_name);
             } catch (Error e) {
                 warning ("Rename error");
-                Eel.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
-                                       e.message,
-                                       null);
+                PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
+                                              e.message,
+                                              null);
                 new_location = null;
 
                 if (dir != null) {
@@ -625,7 +627,7 @@ namespace PF.FileUtils {
 
         suggested_action_return = Gdk.DragAction.PRIVATE;
 
-        if (drop_file_list == null || drop_file_list.data == null)  {
+        if (drop_file_list == null || drop_file_list.data == null) {
             return Gdk.DragAction.DEFAULT;
         }
 

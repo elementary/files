@@ -64,12 +64,27 @@ namespace Marlin {
             return textview.get_text ();
         }
 
+        public override bool on_key_press_event (Gdk.EventKey event) {
+            /* Ensure rename cancelled on cursor Up/Down */
+            switch (event.keyval) {
+                case Gdk.Key.Up:
+                case Gdk.Key.Down:
+                    end_editing (true);
+                    return true;
+
+                default:
+                    break;
+            }
+
+            return base.on_key_press_event (event);
+        }
+
         /** Gtk.Editable interface */
 
         public override void select_region (int start_pos, int end_pos) {
             /* Cannot select textview region here because it is not realised yet and the selected region
              * will be overridden when keyboard focus is grabbed after realising. So just remember start and end.
-             */  
+             */
             select_start = start_pos;
             select_end = end_pos;
         }
