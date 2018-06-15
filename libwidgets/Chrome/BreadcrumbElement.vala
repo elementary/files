@@ -28,7 +28,7 @@ public class Marlin.View.Chrome.BreadcrumbElement : Object {
     private double text_half_height;
 
     public double offset = 0;
-    public double x  = 0;
+    public double x = 0;
 
     public double natural_width {
         get {
