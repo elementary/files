@@ -62,10 +62,11 @@ namespace FM {
                     col.set_resizable (false);
                     col.set_expand (false);
                     col.min_width = 24;
-                    if (k == FM.ListModel.ColumnID.SIZE || k == FM.ListModel.ColumnID.MODIFIED)
+                    if (k == FM.ListModel.ColumnID.SIZE || k == FM.ListModel.ColumnID.MODIFIED) {
                         renderer.@set ("xalign", 1.0f);
-                    else
+                    } else {
                         renderer.@set ("xalign", 0.0f);
+                    }
 
                     tree.append_column (col);
                 }
@@ -97,8 +98,9 @@ namespace FM {
         private void set_path_expanded (Gtk.TreePath path, bool expanded) {
             GOF.File? file = model.file_for_path (path);
 
-            if (file != null)
+            if (file != null) {
                 file.set_expanded (expanded);
+            }
         }
 
         private void schedule_model_unload_directories () {
@@ -111,20 +113,22 @@ namespace FM {
             foreach (var rowref in subdirectories_to_unload) {
                 Gtk.TreeIter? iter = null;
                 Gtk.TreePath path;
-                if (rowref.valid ())
+                if (rowref.valid ()) {
                     path = rowref.get_path ();
-                else {
+                } else {
                     warning ("TreeRowRef invalid when unloading subdirectory");
                     continue;
                 }
 
-                if (((Gtk.TreeView)tree).is_row_expanded (path))
+                if (((Gtk.TreeView)tree).is_row_expanded (path)) {
                     continue;
+                }
 
-                if (model.get_iter (out iter, path) && iter != null)
+                if (model.get_iter (out iter, path) && iter != null) {
                         model.unload_subdirectory (iter);
-                else
+                } else {
                     warning ("Subdirectory to unload not found in model");
+                }
             }
 
             subdirectories_to_unload.@foreach ((rowref) => {
@@ -147,14 +151,14 @@ namespace FM {
             bool shift_pressed = ((event.state & Gdk.ModifierType.SHIFT_MASK) != 0);
 
             if (!control_pressed && !shift_pressed) {
-
                 switch (event.keyval) {
                     case Gdk.Key.Right:
                         Gtk.TreePath? path = null;
                         tree.get_cursor (out path, null);
 
-                        if (path != null)
+                        if (path != null) {
                             tree.expand_row (path, false);
+                        }
 
                         return true;
 
@@ -163,11 +167,13 @@ namespace FM {
                         tree.get_cursor (out path, null);
 
                         if (path != null) {
-                            if (tree.is_row_expanded (path))
+                            if (tree.is_row_expanded (path)) {
                                 tree.collapse_row (path);
-                            else if (path.up ())
+                            } else if (path.up ()) {
                                 tree.collapse_row (path);
+                            }
                         }
+
                         return true;
 
                     default:
@@ -197,11 +203,13 @@ namespace FM {
             minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_list_view_settings.get_enum ("minimum-zoom-level");
             maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_list_view_settings.get_enum ("maximum-zoom-level");
 
-            if (zoom_level < minimum_zoom)
+            if (zoom_level < minimum_zoom) {
                 zoom_level = minimum_zoom;
+            }
 
-            if (zoom_level > maximum_zoom)
+            if (zoom_level > maximum_zoom) {
                 zoom_level = maximum_zoom;
+            }
 
             return (Marlin.ZoomLevel)zoom;
         }
@@ -233,15 +241,17 @@ namespace FM {
                 disconnect_directory_handlers (dir);
                 /* Release our reference on dir */
                 loaded_subdirectories.remove (dir);
-            } else
+            } else {
                 warning ("List View: directory null in remove_subdirectory");
+            }
         }
 
         protected override bool expand_collapse (Gtk.TreePath? path) {
-            if (tree.is_row_expanded (path))
+            if (tree.is_row_expanded (path)) {
                 tree.collapse_row (path);
-            else
+            } else {
                 tree.expand_row (path, false);
+            }
 
             return true;
         }
@@ -250,8 +260,9 @@ namespace FM {
             Gtk.TreePath? path = model.get_path (iter);
             Gtk.TreeIter start = iter;
 
-            if (path == null)
+            if (path == null) {
                 return false;
+            }
 
             if (recurse && tree.is_row_expanded (path)) {
                 Gtk.TreeIter? child_iter = null;
@@ -261,9 +272,9 @@ namespace FM {
                 }
             }
 
-            if (model.iter_next (ref iter))
+            if (model.iter_next (ref iter)) {
                 return true;
-            else {
+            } else {
                 Gtk.TreeIter? parent = null;
                 if (model.iter_parent (out parent, start)) {
                     iter = parent;

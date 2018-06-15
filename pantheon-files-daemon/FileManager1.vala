@@ -25,12 +25,12 @@ public class FileManager1 : Object {
     }
 
     [DBus (name = "ShowItems")]
-    public void show_items (string[] uris, string startup_id)  throws DBusError, IOError {
+    public void show_items (string[] uris, string startup_id) throws DBusError, IOError {
         open_items_and_folders (uris, startup_id);
     }
 
     [DBus (name = "ShowItemProperties")]
-    public void show_item_properties (string[] uris, string startup_id)  throws DBusError, IOError {
+    public void show_item_properties (string[] uris, string startup_id) throws DBusError, IOError {
         var msg = "ShowItemProperties method not currently supported by Files.";
         throw new DBusError.NOT_SUPPORTED (msg);
     }

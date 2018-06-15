@@ -46,8 +46,9 @@ namespace Marlin {
         }
 
         public static unowned QuicklistHandler get_singleton () {
-            if (quicklisthandler_singleton == null)
+            if (quicklisthandler_singleton == null) {
                 quicklisthandler_singleton = new QuicklistHandler ();
+            }
 
             return quicklisthandler_singleton;
         }
@@ -76,8 +77,9 @@ namespace Marlin {
                 var unity_lentry = marlin_lentry.entry;
                 Dbusmenu.Menuitem ql = unity_lentry.quicklist;
 
-                if (ql == null)
+                if (ql == null) {
                     break;
+                }
 
                 foreach (var menuitem in marlin_lentry.bookmark_quicklists) {
                     ql.child_delete (menuitem);
@@ -93,8 +95,9 @@ namespace Marlin {
             for (int index = 0; index < bookmark_count; index++) {
                 var bookmark = bookmarks.item_at (index);
 
-                if (bookmark.uri_known_not_to_exist ())
+                if (bookmark.uri_known_not_to_exist ()) {
                     continue;
+                }
 
                 foreach (var marlin_lentry in this.launcher_entries) {
                     var unity_lentry = marlin_lentry.entry;
