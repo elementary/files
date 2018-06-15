@@ -44,10 +44,11 @@ namespace Marlin {
         }
 
         public override void set_line_wrap (bool wrap) {
-            if (!wrap)
+            if (!wrap) {
                 textview.set_wrap_mode (Gtk.WrapMode.NONE);
-            else
+            } else {
                 textview.set_wrap_mode (Gtk.WrapMode.CHAR);
+            }
         }
 
         public override void set_line_wrap_mode (Pango.WrapMode mode) {
@@ -99,10 +100,11 @@ namespace Marlin {
 
             buffer.get_iter_at_offset (out ins, start_pos);
 
-            if (end_pos > 0)
+            if (end_pos > 0) {
                 buffer.get_iter_at_offset (out bound, end_pos);
-            else
+            } else {
                 buffer.get_end_iter (out bound);
+            }
 
             buffer.select_range (ins, bound);
         }
@@ -114,10 +116,11 @@ namespace Marlin {
 
             buffer.get_iter_at_offset (out start, start_pos);
 
-            if (end_pos > 0)
+            if (end_pos > 0) {
                 buffer.get_iter_at_offset (out end, end_pos);
-            else
+            } else {
                 buffer.get_end_iter (out end);
+            }
 
             buffer.delete_range (start, end);
         }
@@ -137,10 +140,11 @@ namespace Marlin {
 
             buffer.get_iter_at_offset (out start, start_pos);
 
-            if (end_pos > 0)
+            if (end_pos > 0) {
                 buffer.get_iter_at_offset (out end, end_pos);
-            else
+            } else {
                 buffer.get_end_iter (out end);
+            }
 
             return buffer.get_text (start, end, false);
         }

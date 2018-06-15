@@ -19,7 +19,6 @@
 * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 */
 
-
 void add_file_utils_tests () {
     /* Sanitize path */
     Test.add_func ("/FileUtils/sanitize_null_abs_path", () => {
@@ -49,7 +48,7 @@ void add_file_utils_tests () {
 
 int main (string[] args) {
     Test.init (ref args);
-    
+
     add_file_utils_tests ();
     return Test.run ();
 }

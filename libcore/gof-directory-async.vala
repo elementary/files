@@ -81,10 +81,11 @@ public class Async : Object {
 
     private unowned string gio_attrs {
         get {
-            if (scheme == "network" || scheme == "computer" || scheme == "smb")
+            if (scheme == "network" || scheme == "computer" || scheme == "smb") {
                 return "*";
-            else
+            } else {
                 return GOF.File.GIO_DEFAULT_ATTRIBUTES;
+            }
         }
     }
 
@@ -139,8 +140,9 @@ public class Async : Object {
     ~Async () {
         debug ("Async destruct %s", file.uri);
 
-        if (is_trash)
+        if (is_trash) {
             disconnect_volume_monitor_signals ();
+        }
     }
 
     /** Views call the following function with null parameter - file_loaded and done_loading
@@ -314,7 +316,7 @@ public class Async : Object {
                 });
             }
 
-            debug ("mounting ....");
+            debug ("mounting…");
             res =yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, mount_op, cancellable);
         } catch (Error e) {
             last_error_message = e.message;
@@ -479,12 +481,12 @@ public class Async : Object {
     }
 
     private void connect_volume_monitor_signals () {
-        var vm = VolumeMonitor.get();
+        var vm = VolumeMonitor.get ();
         vm.mount_changed.connect (on_mount_changed);
         vm.mount_added.connect (on_mount_changed);
     }
     private void disconnect_volume_monitor_signals () {
-        var vm = VolumeMonitor.get();
+        var vm = VolumeMonitor.get ();
         vm.mount_changed.disconnect (on_mount_changed);
         vm.mount_added.disconnect (on_mount_changed);
     }
@@ -739,20 +741,22 @@ public class Async : Object {
 
     public void update_files () {
         foreach (GOF.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null
-                && (!gof.is_hidden || Preferences.get_default ().show_hidden_files))
+            if (gof != null && gof.info != null &&
+                (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
                 gof.update ();
+            }
         }
     }
 
     public void update_desktop_files () {
         foreach (GOF.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null
-                && (!gof.is_hidden || Preferences.get_default ().show_hidden_files)
-                && gof.is_desktop)
+            if (gof != null && gof.info != null &&
+                (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
+                gof.is_desktop) {
 
                 gof.update_desktop_file ();
+            }
         }
     }
 
@@ -782,9 +786,9 @@ public class Async : Object {
             if (result == null) {
                 result = new GOF.File (file, location);
                 file_hash.insert (file, result);
-            }
-            else if (update_hash)
+            } else if (update_hash) {
                 file_hash.insert (file, result);
+            }
         }
 
         return (!) result;
@@ -881,8 +885,8 @@ public class Async : Object {
     }
 
     private struct fchanges {
-        GLib.File           file;
-        FileMonitorEvent    event;
+        GLib.File file;
+        FileMonitorEvent event;
     }
     private List <fchanges?> list_fchanges = null;
     private uint list_fchanges_count = 0;
@@ -900,8 +904,9 @@ public class Async : Object {
                 list_fchanges_count++;
             }
             return;
-        } else
+        } else {
             real_directory_changed (_file, other_file, event);
+        }
     }
 
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
@@ -1046,7 +1051,7 @@ public class Async : Object {
 
         var gfile = GLib.File.new_for_uri (escaped_uri);
         /* Note: cache_lookup creates directory_cache if necessary */
-        Async?  dir = cache_lookup (gfile);
+        Async? dir = cache_lookup (gfile);
         /* Both local and non-local files can be cached */
         if (dir == null) {
             dir = new Async (gfile);
@@ -1065,14 +1070,15 @@ public class Async : Object {
     public static void remove_file_from_cache (GOF.File gof) {
         assert (gof != null);
         Async? dir = cache_lookup (gof.directory);
-        if (dir != null)
+        if (dir != null) {
             dir.file_hash.remove (gof.location);
+        }
     }
 
     public static Async? cache_lookup (GLib.File? file) {
         Async? cached_dir = null;
 
-        if (directory_cache == null) {  // Only happens once on startup.  Async gets added on creation
+        if (directory_cache == null) { // Only happens once on startup.  Async gets added on creation
             return null;
         }
 
@@ -1089,7 +1095,7 @@ public class Async : Object {
                 debug ("found cached dir %s", cached_dir.file.uri);
                 if (cached_dir.file.info == null && cached_dir.can_load) {
                     debug ("updating cached file info");
-                    cached_dir.file.query_update ();  /* This is synchronous and causes blocking */
+                    cached_dir.file.query_update (); /* This is synchronous and causes blocking */
                 }
             } else {
                 critical ("Invalid directory found in cache");
@@ -1169,10 +1175,11 @@ public class Async : Object {
             return null;
         }
 
-        if (sorted_dirs != null)
+        if (sorted_dirs != null) {
             return sorted_dirs;
+        }
 
-        foreach (var gof in file_hash.get_values()) { /* returns owned values */
+        foreach (var gof in file_hash.get_values ()) { /* returns owned values */
             if (!gof.is_hidden && (gof.is_folder () || gof.is_smb_server ())) {
                 sorted_dirs.prepend (gof);
             }
