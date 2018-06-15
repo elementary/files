@@ -63,11 +63,12 @@ namespace FM {
             minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_column_view_settings.get_enum ("minimum-zoom-level");
             maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_column_view_settings.get_enum ("maximum-zoom-level");
 
-            if (zoom_level < minimum_zoom)
+            if (zoom_level < minimum_zoom) {
                 zoom_level = minimum_zoom;
-
-            if (zoom_level > maximum_zoom)
+            }
+            if (zoom_level > maximum_zoom) {
                 zoom_level = maximum_zoom;
+            }
 
             return (Marlin.ZoomLevel)zoom;
         }
@@ -115,8 +116,9 @@ namespace FM {
             if (Preferences.settings.get_boolean ("single-click") && awaiting_double_click) {
                 should_activate = true; /* will activate when times out */
                 return true;
-            } else
+            } else {
                 return base.on_view_button_release_event (event);
+            }
         }
 
         protected override bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
@@ -141,9 +143,9 @@ namespace FM {
 
             if (event.type == Gdk.EventType.BUTTON_PRESS) {
                 /* Ignore second GDK_BUTTON_PRESS event of double-click */
-                if (awaiting_double_click)
+                if (awaiting_double_click) {
                     result = true;
-                else {
+                } else {
                     /*  ... store clicked folder and start double-click timeout */
                     awaiting_double_click = true;
                     is_frozen = true;
@@ -156,8 +158,9 @@ namespace FM {
                 should_activate = false;
                 cancel_await_double_click ();
 
-                if (selected_folder != null)
+                if (selected_folder != null) {
                     load_root_location (selected_folder.get_target_location ());
+                }
 
                 result = true;
             }
