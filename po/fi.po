@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2017-10-15 07:05+0000\n"
+"PO-Revision-Date: 2018-06-02 00:05+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
-"Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
-"fi/>\n"
+"Language-Team: Finnish "
+"<https://weblate.elementary.io/projects/files/files/fi/>\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -154,19 +154,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Desktop-tiedoston jäsennys epäonnistui: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Desktop-tiedoston jäsennys epäonnistui: %s"
+msgstr "Desktop-tiedoston jäsentäminen epäonnistui"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Desktop-tiedoston jäsennys epäonnistui: %s"
+msgstr "Komennon luominen tiedostosta epäonnistui: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Desktop-tiedoston jäsennys epäonnistui: %s"
+msgstr "Desktop-tiedoston käynnistäminen epäonnistui: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1476,7 +1475,7 @@ msgstr "(vapaana %s, kokonaistila %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Virhe liittäessä taltiota %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1610,12 +1609,11 @@ msgstr "Päivitä tämä kansio"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Etsi tai kirjoita polku"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "Ladataan…"
+msgstr "Etsitään…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2283,9 +2281,8 @@ msgid "Paste"
 msgstr "Liitä"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Liitä"
+msgstr "Liitä linkki"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2297,16 +2294,15 @@ msgstr "Kopioi"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Kopioi linkkinä"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Liitä kansioon"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Liitä kansioon"
+msgstr "Liitä linkki kansioon"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2326,7 +2322,7 @@ msgstr "Käänteinen järjestys"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Kansiot ennen tiedostoja"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (virheellistä Unicodea)"

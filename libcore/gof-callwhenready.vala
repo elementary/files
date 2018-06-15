@@ -36,13 +36,15 @@ public class GOF.CallWhenReady : Object {
             if (gof.info == null) {
                 call_when_ready_list.prepend (gof);
                 query_info_async.begin (gof, file_ready);
-            } else
+            } else {
                 count++;
+            }
         }
 
         /* we didn't need to queue anything, all the infos were available */
-        if (count > 0 && count == files.length () && f != null)
+        if (count > 0 && count == files.length () && f != null) {
             f (files);
+        }
 
         callwhenready_cache.prepend (this);
     }
@@ -62,22 +64,28 @@ public class GOF.CallWhenReady : Object {
             gof.info = yield gof.location.query_info_async (gio_default_attributes,
                                                             FileQueryInfoFlags.NONE,
                                                             Priority.DEFAULT);
-            if (fqi != null)
+            if (fqi != null) {
                 fqi (gof);
+            }
         } catch (Error err) {
             debug ("query info failed, %s %s", err.message, gof.uri);
-            if (err is IOError.NOT_FOUND)
+            if (err is IOError.NOT_FOUND) {
                 gof.exists = false;
-            if (err is IOError.NOT_MOUNTED)
+            }
+
+            if (err is IOError.NOT_MOUNTED) {
                 gof.is_mounted = false;
+            }
         }
 
         call_when_ready_list.remove (gof);
         if (call_when_ready_list == null) {
             debug ("call when ready OK - empty list");
-            if (f != null)
+            if (f != null) {
                 f (files);
+            }
         }
+
         callwhenready_cache.remove (this);
     }
 }

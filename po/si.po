@@ -3,16 +3,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2015-12-18 20:00+0000\n"
-"Last-Translator: Launchpad Translations Administrators <Unknown>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2018-06-10 00:11+0000\n"
+"Last-Translator: Gamunu Balagalla <gamunu.balagalla@gmail.com>\n"
+"Language-Team: Sinhala "
+"<https://weblate.elementary.io/projects/files/files/si/>\n"
+"Language: si\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -1660,7 +1661,7 @@ msgstr ""
 
 #: ../src/Application.vala:122 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr ""
+msgstr "නව කවුළුව"
 
 #: ../src/Application.vala:124
 msgid "Quit Files."
@@ -1687,11 +1688,11 @@ msgstr ""
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr ""
+msgstr "ඔබේ ගොනු විමසන්න"
 
 #: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
-msgstr ""
+msgstr "ගොනු කළමනාකරු"
 
 #: ../src/DesktopLauncher.vala:23
 msgid "New _Window"
@@ -1703,7 +1704,7 @@ msgstr ""
 
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
-msgstr ""
+msgstr "ගොනු"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"

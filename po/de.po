@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-02-01 00:09+0000\n"
-"Last-Translator: Artem Anufrij <artem.anufrij@live.de>\n"
-"Language-Team: German <https://weblate.elementary.io/projects/files/files/de/"
-">\n"
+"PO-Revision-Date: 2018-06-04 00:08+0000\n"
+"Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
+"Language-Team: German "
+"<https://weblate.elementary.io/projects/files/files/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -154,19 +154,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: %s"
+msgstr "Die Desktop-Datei konnte nicht analysiert werden"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: %s"
+msgstr "Befehl aus Datei konnte nicht erstellt werden: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Das Lesen der Desktop-Datei ist fehlgeschlagen: %s"
+msgstr "Desktop-Datei kann nicht gestartet werden: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -738,8 +737,8 @@ msgstr "%S von %S"
 #: ../libcore/marlin-file-operations.c:2916
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S von %S — noch %T (%S/Sekunde)"
-msgstr[1] "%S von %S — noch %T (%S/Sekunde)"
+msgstr[0] "%S von %S — noch %T (%S/Sek)"
+msgstr[1] "%S von %S — noch %T (%S/Sek)"
 
 #: ../libcore/marlin-file-operations.c:3294
 msgid ""
@@ -1506,7 +1505,7 @@ msgstr "(%s frei von %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Fehler beim Einhängen des Datenträgers %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1642,12 +1641,11 @@ msgstr "Ordner neu laden"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Suche oder Pfad eingeben"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "Laden …"
+msgstr "Suchen…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2323,9 +2321,8 @@ msgid "Paste"
 msgstr "Einfügen"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Einfügen"
+msgstr "Verknüpfung einfügen"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2337,16 +2334,15 @@ msgstr "Kopieren"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Als Verknüpfung kopieren"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "In Ordner einfügen"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "In Ordner einfügen"
+msgstr "Verknüpfung in Ordner einfügen"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2366,7 +2362,7 @@ msgstr "Umgekehrte Reihenfolge"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Ordner vor Dateien"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (ungültiger Unicode)"

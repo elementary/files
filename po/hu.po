@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-05-29 11:17+0000\n"
+"PO-Revision-Date: 2018-06-15 00:00+0000\n"
 "Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
 "Language-Team: Hungarian "
 "<https://weblate.elementary.io/projects/files/files/hu/>\n"
@@ -35,7 +35,7 @@ msgstr "FTP (bejelentkezéssel)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Irattározás Protokoll)"
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -64,12 +64,12 @@ msgstr ""
 #: ../src/marlin-connect-server-dialog.c:282
 #, c-format
 msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "A(z) „%s” mappa nem nyitható meg ezen: „%s”."
+msgstr "A(z)\"%s\" mappa nem nyitható meg itt \"%s\"."
 
 #: ../src/marlin-connect-server-dialog.c:292
 #, c-format
 msgid "The server at \"%s\" cannot be found."
-msgstr "A kiszolgáló nem található itt: „%s”."
+msgstr "A kiszolgáló nem található itt: \"%s\"."
 
 #: ../src/marlin-connect-server-dialog.c:327
 msgid "Try Again"
@@ -147,12 +147,12 @@ msgstr "Hozzáférhetetlen"
 #: ../libcore/gof-file.c:347
 #, c-format
 msgid "link to %s"
-msgstr "link erre: %s"
+msgstr "hivatkozás erre: %s"
 
 #: ../libcore/gof-file.c:1590
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "A fájl elemzése sikertelen: %s"
+msgstr "Az asztali fájl elemzése sikertelen: %s"
 
 #: ../libcore/gof-file.c:1598
 msgid "Failed to parse the desktop file"
@@ -237,32 +237,32 @@ msgstr[1] "megközelítőleg %'d óra"
 #: ../libcore/marlin-file-operations.c:342
 #, c-format
 msgid "Link to %s"
-msgstr "Link erre: %s"
+msgstr "Hivatkozás erre: %s"
 
 #: ../libcore/marlin-file-operations.c:346
 #, c-format
 msgid "Another link to %s"
-msgstr "Még egy link erre: %s"
+msgstr "Még egy hivatkozás erre: %s"
 
 #: ../libcore/marlin-file-operations.c:362
 #, c-format
 msgid "%'dst link to %s"
-msgstr "%'d. link erre: %s"
+msgstr "%'d. hivatkozás erre: %s"
 
 #: ../libcore/marlin-file-operations.c:366
 #, c-format
 msgid "%'dnd link to %s"
-msgstr "%'d. link erre: %s"
+msgstr "%'d. hivatkozás erre: %s"
 
 #: ../libcore/marlin-file-operations.c:370
 #, c-format
 msgid "%'drd link to %s"
-msgstr "%'d. link erre: %s"
+msgstr "%'d. hivatkozás erre: %s"
 
 #: ../libcore/marlin-file-operations.c:374
 #, c-format
 msgid "%'dth link to %s"
-msgstr "%'d. link erre: %s"
+msgstr "%'d. hivatkozás erre: %s"
 
 #: ../libcore/marlin-file-operations.c:412
 msgid " (copy)"
@@ -916,7 +916,7 @@ msgstr "%d másolt elem törlése"
 #: ../libcore/marlin-undostack-manager.c:1280
 #, c-format
 msgid "Delete '%s'"
-msgstr "„%s” törlése"
+msgstr "A(z) '%s' törlése"
 
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
@@ -931,13 +931,13 @@ msgstr "%d elem visszahelyezése ide: %s"
 #: ../libcore/marlin-undostack-manager.c:1261
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr "„%s” helyreállítása ide: „%s”"
+msgstr "A(z) '%s' helyreállítása ide: '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1270
 #: ../libcore/marlin-undostack-manager.c:1437
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr "„%s” átnevezése erre: „%s”"
+msgstr "A(z) '%s' átnevezése erre: '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1289
 #: ../libcore/marlin-undostack-manager.c:1484
@@ -958,7 +958,7 @@ msgstr "%d elem visszahelyezése a kukába"
 #: ../libcore/marlin-undostack-manager.c:1311
 #, c-format
 msgid "Move '%s' back to trash"
-msgstr "„%s” visszahelyezése a kukába"
+msgstr "A(z) '%s' visszahelyezése a kukába"
 
 #: ../libcore/marlin-undostack-manager.c:1320
 #, c-format
@@ -968,27 +968,28 @@ msgstr "Linkek törlése %d elemre"
 #: ../libcore/marlin-undostack-manager.c:1323
 #, c-format
 msgid "Delete link to '%s'"
-msgstr "Erre mutató link: „%s”"
+msgstr "Erre mutató hivatkozás: '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1333
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "„%s” által tartalmazott elemek eredeti jogosultságainak helyreállítása"
+msgstr ""
+"A(z) '%s' által tartalmazott elemek eredeti jogosultságainak helyreállítása"
 
 #: ../libcore/marlin-undostack-manager.c:1341
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr "„%s” eredeti jogosultságainak helyreállítása"
+msgstr "A(z) '%s' eredeti jogosultságainak helyreállítása"
 
 #: ../libcore/marlin-undostack-manager.c:1350
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "„%s” csoportjának visszaállítása erre: „%s”"
+msgstr "A(z) '%s' csoportjának visszaállítása erre: '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1360
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr "„%s” tulajdonságának visszaállítása erre: „%s”"
+msgstr "A(z) '%s' tulajdonságának visszaállítása erre: '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1399
 #, c-format
@@ -998,12 +999,12 @@ msgstr "%d elem másolása ide: %s"
 #: ../libcore/marlin-undostack-manager.c:1403
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr "„%s” másolása ide: %s"
+msgstr "A(z) '%s' másolása ide: '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1411
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "%d duplikált elem itt: %s"
+msgstr "%d duplikált elem itt: '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1416
 #, c-format
@@ -1018,7 +1019,7 @@ msgstr "%d elem mozgatása ide: %s"
 #: ../libcore/marlin-undostack-manager.c:1428
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr "„%s” áthelyezése ide: %s"
+msgstr "A(z) '%s' áthelyezése ide: '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1446
 #, c-format
@@ -1043,12 +1044,12 @@ msgstr "%d elem áthelyezése a kukába"
 #: ../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "„%s” áthelyezés a kukába"
+msgstr "A(z) '%s' áthelyezés a kukába"
 
 #: ../libcore/marlin-undostack-manager.c:1487
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr "„%s” visszaállítása a kukából"
+msgstr "A(z) '%s' visszaállítása a kukából"
 
 #: ../libcore/marlin-undostack-manager.c:1496
 #, c-format
@@ -1063,12 +1064,12 @@ msgstr "Hivatkozás létrehozása erre: %s"
 #: ../libcore/marlin-undostack-manager.c:1508
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "„%s” által tartalmazott elemek jogosultságainak beállítása"
+msgstr "A(z) '%s' által tartalmazott elemek jogosultságainak beállítása"
 
 #: ../libcore/marlin-undostack-manager.c:1516
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr "„%s” jogosultságainak beállítása"
+msgstr "A(z) '%s' jogosultságainak beállítása"
 
 #: ../libcore/marlin-undostack-manager.c:1525
 #, c-format
@@ -1314,7 +1315,7 @@ msgstr "Futtatás"
 
 #: ../src/View/AbstractDirectoryView.vala:2042
 msgid "Open in %s"
-msgstr "%s -ben megnyitás"
+msgstr "Megnyitás ebben: %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2052
 msgid "Open in"
@@ -1371,7 +1372,7 @@ msgstr "Létrehozás"
 
 #: ../src/View/DirectoryNotFound.vala:30
 msgid "Create the folder \"%s\""
-msgstr "„%s” mappa létrehozása"
+msgstr "A(z) \"%s\" mappa létrehozása"
 
 #: ../src/View/DirectoryNotFound.vala:44
 msgid ""
@@ -1463,7 +1464,7 @@ msgstr "(%s szabad ennyiből: %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr "Hiba a %s kötet felcsatolása közben"
+msgstr "Hiba a(z) %s kötet csatolása közben"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1524,7 +1525,7 @@ msgstr "Hozzáférés megtagadva"
 
 #: ../src/View/ViewContainer.vala:378
 msgid "(as Administrator)"
-msgstr "(Adminisztrátorként)"
+msgstr "(Rendszergazdaként)"
 
 #: ../src/View/ViewContainer.vala:397
 msgid "You cannot create a folder here."
@@ -1734,11 +1735,11 @@ msgstr "Új _ablak"
 
 #: ../src/DesktopLauncher.vala:24
 msgid "New Window As _Administrator"
-msgstr "Új ablak nyitása _adminisztátorként"
+msgstr "Új ablak nyitása _rendszergazdaként"
 
 #: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
 msgid "Files"
-msgstr "Fájlok"
+msgstr "Fájlkezelő"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
@@ -1954,7 +1955,7 @@ msgstr "Nem lehet megnyitni a fájlokat és URI-kat ezzel az alkalmazással"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr "\"%s\" futtatása sikertelen"
+msgstr "A(z) \"%s\" futtatása sikertelen"
 
 #: ../libcore/DndHandler.vala:93
 msgid "Move Here"
@@ -1970,7 +1971,7 @@ msgstr "Link ide"
 
 #: ../libcore/DndHandler.vala:98 ../libcore/FileConflictDialog.vala:186
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Mégsem"
 
 #: ../libcore/FileConflictDialog.vala:62
 msgid "File conflict"
@@ -2071,7 +2072,7 @@ msgstr "Egyesítés"
 
 #: ../libcore/FileUtils.vala:84
 msgid "Could not determine original location of \"%s\" "
-msgstr "Nem határozható meg „%s” eredeti helye "
+msgstr "Nem határozható meg a(z) \"%s\" eredeti helye "
 
 #: ../libcore/FileUtils.vala:85
 msgid "The item cannot be restored from trash"
@@ -2268,7 +2269,7 @@ msgstr "Beillesztés"
 
 #: ../src/View/directory_view_popup.ui:111
 msgid "Paste Link"
-msgstr "Link beillesztése"
+msgstr "Hivatkozás beillesztése"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2288,7 +2289,7 @@ msgstr "Beillesztés mappába"
 
 #: ../src/View/directory_view_popup.ui:134
 msgid "Paste Link into Folder"
-msgstr "Link beillesztése mappába"
+msgstr "Hivatkozás beillesztése mappába"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"

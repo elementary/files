@@ -23,8 +23,8 @@
 /*** One instance of this class is owned by the application and handles UI for file transfers initiated by
  *   of the app windows.  Feedback is provided by a dialog window which appears if a transfer takes longer than
  *   approximately 1 second. The unity launcher is also updated if present and a notification is sent of the
- *   completion of the operation unless it was cancelled by the user. 
-***/ 
+ *   completion of the operation unless it was cancelled by the user.
+***/
 public class Marlin.Progress.UIHandler : Object {
 
     private PF.Progress.InfoManager manager = null;
@@ -156,7 +156,7 @@ public class Marlin.Progress.UIHandler : Object {
              * so that the active application window has time to refocus (if the application itself is focussed)
              * after progress window dialog is hidden. We have to wait until the dialog is hidden
              * because it steals focus from the application main window. This also means that a notification
-             * is only sent after last operation finishes and the progress window closes. 
+             * is only sent after last operation finishes and the progress window closes.
              * FIXME: Avoid use of a timeout by not using a dialog for progress window or otherwise.*/
             Timeout.add (100, () => {
                 if (!application.get_active_window ().has_toplevel_focus) {
@@ -201,17 +201,20 @@ public class Marlin.Progress.UIHandler : Object {
         if (this.quicklist_handler == null) {
             this.quicklist_handler = QuicklistHandler.get_singleton ();
 
-            if (this.quicklist_handler == null)
+            if (this.quicklist_handler == null) {
                 return;
+            }
 
             build_unity_quicklist ();
         }
 
-        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries)
+        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
             update_unity_launcher_entry (info, marlin_lentry);
+        }
 
-        if (added)
+        if (added) {
             info.progress_changed.connect (unity_progress_changed);
+        }
     }
 
     private void build_unity_quicklist () {
@@ -247,8 +250,9 @@ public class Marlin.Progress.UIHandler : Object {
             cancel_menuitem.item_activated.connect (() => {
                 var infos = this.manager.get_all_infos ();
 
-                foreach (var info in infos)
+                foreach (var info in infos) {
                     info.cancel ();
+                }
             });
 
             marlin_lentry.progress_quicklists.append (cancel_menuitem);
@@ -298,21 +302,25 @@ public class Marlin.Progress.UIHandler : Object {
             double c = _info.get_current ();
             double t = _info.get_total ();
 
-            if (c < 0)
+            if (c < 0) {
                 c = 0;
+            }
 
-            if (t <= 0)
+            if (t <= 0) {
                 continue;
+            }
 
             current += c;
             total += t;
         }
 
-        if (current >= 0 && total > 0)
+        if (current >= 0 && total > 0) {
             progress = current / total;
+        }
 
-        if (progress > 1.0)
+        if (progress > 1.0) {
             progress = 1.0;
+        }
 
         foreach (Marlin.LauncherEntry marlin_lentry in this.quicklist_handler.launcher_entries) {
             Unity.LauncherEntry unity_lentry = marlin_lentry.entry;

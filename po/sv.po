@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-03-19 00:01+0000\n"
-"Last-Translator: Smalbenet <smalbenet@gmail.com>\n"
-"Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
-"sv/>\n"
+"PO-Revision-Date: 2018-06-12 00:03+0000\n"
+"Last-Translator: Richard Sjöqvist <richard@spiro.se>\n"
+"Language-Team: Swedish "
+"<https://weblate.elementary.io/projects/files/files/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -151,22 +151,21 @@ msgstr "länk till %s"
 #: ../libcore/gof-file.c:1590
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Misslyckades med att hämta skrivbordsfilen: %s"
+msgstr "Misslyckades att läsa filen: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Misslyckades med att hämta skrivbordsfilen: %s"
+msgstr "Misslyckades att läsa filen"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Misslyckades med att hämta skrivbordsfilen: %s"
+msgstr "Misslyckades att skapa kommando från filen: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Misslyckades med att hämta skrivbordsfilen: %s"
+msgstr "Misslyckades att starta filen: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -416,7 +415,7 @@ msgstr[1] "%T återstår"
 #: ../libcore/marlin-file-operations.c:1614
 #: ../libcore/marlin-file-operations.c:2404
 msgid "Error while deleting."
-msgstr "Ett fel uppstod vid raderingen"
+msgstr "Ett fel uppstod vid raderingen."
 
 #: ../libcore/marlin-file-operations.c:1468
 msgid ""
@@ -886,7 +885,7 @@ msgstr "Kan inte kopiera till papperskorgen."
 
 #: ../libcore/marlin-file-operations.c:5578
 msgid "It is not permitted to copy files into the trash"
-msgstr "Det är inte tillåtet att kopiera filter till papperskorgen."
+msgstr "Det är inte tillåtet att kopiera filer till papperskorgen"
 
 #: ../libcore/marlin-file-operations.c:5716
 msgid "untitled folder"
@@ -1343,7 +1342,7 @@ msgstr "Öppna med"
 #: ../src/View/AbstractDirectoryView.vala:2113
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
-msgstr ""
+msgstr "Annat program…"
 
 #: ../src/View/AbstractDirectoryView.vala:2377
 msgid "Untitled %s"
@@ -1478,7 +1477,7 @@ msgstr "(%s ledigt av %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Det gick inte att montera volymen %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1559,7 +1558,7 @@ msgstr "Den här mappen tillhör inte dig"
 
 #: ../src/View/ViewContainer.vala:404
 msgid "You don't have permission to view this folder."
-msgstr "Du saknar rättigheter för att se innehållet i denna mapp"
+msgstr "Du saknar rättigheter för att se innehållet i denna mapp."
 
 #: ../src/View/ViewContainer.vala:406
 msgid "Unable to Mount Folder"
@@ -1567,7 +1566,7 @@ msgstr "Kunde inte montera mappen"
 
 #: ../src/View/ViewContainer.vala:407
 msgid "Could not connect to the server for this folder."
-msgstr "Kunde inte ansluta till den här mappens server"
+msgstr "Kunde inte ansluta till den här mappens server."
 
 #: ../src/View/ViewContainer.vala:409
 msgid "Unable to Display Folder Contents"
@@ -1575,7 +1574,7 @@ msgstr "Kan inte visa mappinnehåll"
 
 #: ../src/View/ViewContainer.vala:410
 msgid "The operation timed out."
-msgstr ""
+msgstr "Åtgärden tog för lång tid."
 
 #: ../src/View/ViewContainer.vala:412
 msgid "Unable to Show Folder"
@@ -1612,12 +1611,11 @@ msgstr "Ladda om den här mappen"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Sök eller skriv sökväg"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "Laddar…"
+msgstr "Söker…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -1670,7 +1668,7 @@ msgstr "%u filer, "
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/Widgets/OverlayBar.vala:290
 msgid "%s approx."
-msgstr ""
+msgstr "ungefär %s."
 
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/Widgets/OverlayBar.vala:293
@@ -1708,7 +1706,7 @@ msgstr "Öppna uri(s) i en ny tab"
 
 #: ../src/Application.vala:122 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Nytt fönster"
+msgstr "Nytt Fönster"
 
 #: ../src/Application.vala:124
 msgid "Quit Files."
@@ -1821,7 +1819,7 @@ msgstr "Laddar…"
 
 #: ../src/Dialogs/PropertiesWindow.vala:458
 msgid "Could not be determined"
-msgstr ""
+msgstr "Kunde inte uppskattas"
 
 #: ../src/Dialogs/PropertiesWindow.vala:484
 #: ../libcore/FileConflictDialog.vala:117
@@ -1849,7 +1847,7 @@ msgstr "Ändrad:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:536
 msgid "Deleted:"
-msgstr ""
+msgstr "Raderad:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:546
 msgid "Mimetype:"
@@ -1866,7 +1864,7 @@ msgstr "Plats:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:571
 msgid "Target:"
-msgstr ""
+msgstr "Mål:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:579
 msgid "Original Location:"
@@ -1893,31 +1891,31 @@ msgstr "Alla:"
 #: ../src/Dialogs/PropertiesWindow.vala:1151
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u undermapp"
+msgstr[1] "%u undermappar"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1155
 #: ../src/Dialogs/PropertiesWindow.vala:1177
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u fil"
+msgstr[1] "%u filer"
 
 #. /TRANSLATORS: folders, files
 #: ../src/Dialogs/PropertiesWindow.vala:1160
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1181
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u valt objekt"
+msgstr[1] "%u valda objekt"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/Dialogs/PropertiesWindow.vala:1183
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
@@ -1934,11 +1932,11 @@ msgstr "Filåtgärder"
 #. / TRANSLATORS: %s will be replaced by the title of the file operation
 #: ../src/ProgressUIHandler.vala:185
 msgid "Completed %s"
-msgstr ""
+msgstr "Slutförde %s"
 
 #: ../src/ProgressUIHandler.vala:188
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Alla åtgärder har slutförts"
 
 #: ../src/ProgressUIHandler.vala:233
 msgid "Show Copy Dialog"
@@ -1950,23 +1948,23 @@ msgstr "Avbryt alla pågående åtgärder"
 
 #: ../src/Utils/MimeActions.vala:260
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Multipla filtyper valda"
 
 #: ../src/Utils/MimeActions.vala:261
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Inget enskilt program kan öppna samtliga dessa filtyper"
 
 #: ../src/Utils/MimeActions.vala:288
 msgid "Failed to open files"
-msgstr ""
+msgstr "Misslyckades att öppna filer"
 
 #: ../src/Utils/MimeActions.vala:298
 msgid "Failed to open uris"
-msgstr ""
+msgstr "Misslyckades att öppna sökvägar"
 
 #: ../src/Utils/MimeActions.vala:301
 msgid "Unable to open files or uris with this app"
-msgstr ""
+msgstr "Detta program kan inte öppna filen eller sökvägen"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2099,27 +2097,27 @@ msgstr "Kunde inte döpa om till '%s'"
 
 #: ../libcore/FileUtils.vala:527
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Idag %-H:%M"
 
 #: ../libcore/FileUtils.vala:529
 msgid "Today at %-I:%M %p"
-msgstr "Idag kl. %H.%M"
+msgstr "Idag %H.%M"
 
 #: ../libcore/FileUtils.vala:535
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Igår %-H:%M"
 
 #: ../libcore/FileUtils.vala:537
 msgid "Yesterday at %-I:%M %p"
-msgstr "Igår kl. %H.%M"
+msgstr "Igår %H.%M"
 
 #: ../libcore/FileUtils.vala:544
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A %-H:%M"
 
 #: ../libcore/FileUtils.vala:546
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A %-I:%M %p"
 
 #: ../libcore/ProgressInfo.vala:63 ../libcore/ProgressInfo.vala:71
 #: ../libcore/ProgressInfo.vala:79
@@ -2132,7 +2130,7 @@ msgstr "Visa mer _information"
 
 #: ../libcore/gof-directory-async.vala:659
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Servern svarade inte inom tidsgränsen"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:170
 msgid "Navigate to %s"
@@ -2144,7 +2142,7 @@ msgstr "Gå till %s"
 
 #: ../libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "Skriv sökväg"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2188,25 +2186,23 @@ msgstr "Senaste"
 
 #: ../libwidgets/Resources.vala:67
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: ../libwidgets/View/SearchResults.vala:227
 msgid "In This Folder"
 msgstr "I denna mapp"
 
 #: ../libwidgets/View/SearchResults.vala:232
-#, fuzzy
 msgid "Below This Folder"
-msgstr "I denna mapp"
+msgstr "Under denna mapp"
 
 #: ../libwidgets/View/SearchResults.vala:237
 msgid "Bookmarks"
 msgstr "Bokmärken"
 
 #: ../libwidgets/View/SearchResults.vala:242
-#, fuzzy
 msgid "Recently used"
-msgstr "Senaste"
+msgstr "Senaste använda"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2226,11 +2222,11 @@ msgstr "Töm papperskorgen"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:77
 msgid "These items may be restored or deleted from the trash."
-msgstr "Dessa objekt kan återskapas eller raderas från papperskorgen"
+msgstr "Dessa objekt kan återskapas eller raderas från papperskorgen."
 
 #: ../plugins/pantheon-files-trash/plugin.vala:79
 msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+msgstr "Kan inte återställa eller radera om ej i root-mapp"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2242,7 +2238,7 @@ msgstr "Radera permanent"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Öppna mappen ovan"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
@@ -2270,7 +2266,7 @@ msgstr "Visa dolda filer"
 
 #: ../src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr ""
+msgstr "Visa externa miniatyrbilder"
 
 #: ../src/View/directory_view_popup.ui:78
 msgid "New Tab"
@@ -2285,9 +2281,8 @@ msgid "Paste"
 msgstr "Klistra in"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Klistra in"
+msgstr "Klistra in länk"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2299,16 +2294,15 @@ msgstr "Kopiera"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Kopiera som länk"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Klistra in i mapp"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Klistra in i mapp"
+msgstr "Klistra in länk i mapp"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2328,7 +2322,7 @@ msgstr "Omvänd ordning"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Mappar före filer"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (ogiltig Unicode)"

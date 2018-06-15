@@ -24,10 +24,11 @@ namespace GOF {
         public GOF.Directory.Async? directory {
             get {
                 AbstractSlot? current = get_current_slot ();
-                if (current != null)
+                if (current != null) {
                     return current._directory;
-                else
+                } else {
                     return null;
+                }
             }
 
             protected set {_directory = value;}
@@ -36,7 +37,7 @@ namespace GOF {
         public GOF.File file {
             get {return directory.file;}
         }
-        public GLib.File location  {
+        public GLib.File location {
             get {return directory.location;}
         }
         public string uri {
@@ -64,7 +65,7 @@ namespace GOF {
         public signal void directory_loaded (GOF.Directory.Async dir);
         public signal void item_hovered (GOF.File? file);
 
-        public  void add_extra_widget (Gtk.Widget widget) {
+        public void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);
         }
 
