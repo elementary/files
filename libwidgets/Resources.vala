@@ -124,7 +124,7 @@ namespace Marlin {
                 return Marlin.FTP_URI;
             case Marlin.PROTOCOL_NAME_SFTP:
                 return Marlin.SFTP_URI;
-            case  Marlin.PROTOCOL_NAME_AFP:
+            case Marlin.PROTOCOL_NAME_AFP:
                 return Marlin.AFP_URI;
             case Marlin.PROTOCOL_NAME_DAV:
                 return Marlin.DAV_URI;

@@ -82,7 +82,7 @@ namespace Marlin.View.Chrome {
             icon_sv = new GLib.Variant.string ("ICON");
 
             list = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.MENU);
-            list.tooltip_text  = _("View as List");
+            list.tooltip_text = _("View as List");
             switcher.append (list);
             list_sv = new GLib.Variant.string ("LIST");
 

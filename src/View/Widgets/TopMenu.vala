@@ -21,8 +21,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-namespace Marlin.View.Chrome
-{
+namespace Marlin.View.Chrome {
     public class TopMenu : Gtk.HeaderBar {
         public ViewSwitcher? view_switcher;
         public LocationBar? location_bar;
@@ -50,9 +49,7 @@ namespace Marlin.View.Chrome
         }
 
         public signal void forward (int steps);
-        public signal void back (int steps);  /* TODO combine using negative step */
-
-
+        public signal void back (int steps); /* TODO combine using negative step */
         public signal void focus_location_request (GLib.File? location);
         public signal void path_change_request (string path, Marlin.OpenFlag flag);
         public signal void escape ();
@@ -134,7 +131,7 @@ namespace Marlin.View.Chrome
                                */
                 var item = new Gtk.MenuItem.with_label (PF.FileUtils.sanitize_path (path));
                 item.activate.connect (() => {
-                    back(cn);
+                    back (cn);
                 });
                 back_menu.insert (item, -1);
             }

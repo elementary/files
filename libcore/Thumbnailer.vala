@@ -153,7 +153,7 @@ namespace Marlin {
 
         public new static Thumbnailer? @get () {
             if (instance == null) {
-                instance =  new Thumbnailer ();
+                instance = new Thumbnailer ();
                 instance.init ();
             }
             return instance;

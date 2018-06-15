@@ -21,7 +21,7 @@
 
 namespace Marlin {
 
-    public class BookmarkList : GLib.Object{
+    public class BookmarkList : GLib.Object {
 
         enum JobType {
             LOAD = 1,
@@ -76,7 +76,7 @@ namespace Marlin {
                 try {
                     file.create (GLib.FileCreateFlags.NONE, null);
                 }
-                catch (GLib.Error error){
+                catch (GLib.Error error) {
                     critical ("Could not create bookmarks file: %s", error.message);
                 }
 
@@ -105,9 +105,10 @@ namespace Marlin {
 
        private void add_special_directory (GLib.UserDirectory user_dir, ref GLib.List<string> uris) {
             string? dir_s = Environment.get_user_special_dir (user_dir);
- 
-            if (dir_s != null)
+
+            if (dir_s != null) {
                 uris.prepend ("file://" + dir_s);
+            }
         }
 
        private void add_special_directories () {
@@ -119,14 +120,15 @@ namespace Marlin {
             add_special_directory (UserDirectory.PICTURES, ref uris);
             add_special_directory (UserDirectory.TEMPLATES, ref uris);
             add_special_directory (UserDirectory.VIDEOS, ref uris);
-           
+
             uris.reverse ();
             insert_uris_at_end (uris);
         }
- 
+
         public static BookmarkList get_instance () {
-            if (instance == null)
+            if (instance == null) {
                 instance = new BookmarkList ();
+            }
 
             return instance;
         }
@@ -159,7 +161,7 @@ namespace Marlin {
             });
             save_bookmarks_file ();
         }
- 
+
         public bool contains (Marlin.Bookmark bm) {
             return (list.find_custom (bm, Marlin.Bookmark.compare_with) != null);
         }
@@ -186,8 +188,9 @@ namespace Marlin {
                 }
             }
 
-            if (list_changed)
+            if (list_changed) {
                 save_bookmarks_file ();
+            }
         }
 
         public uint length () {
@@ -249,8 +252,9 @@ namespace Marlin {
 
         private void schedule_job (JobType job) {
             pending_ops.push_head (job);
-            if (pending_ops.length == 1)
+            if (pending_ops.length == 1) {
                 process_next_op ();
+            }
         }
 
         private void load_bookmarks_file_async () {
@@ -291,23 +295,26 @@ namespace Marlin {
             uint count = 0;
             string [] lines = contents.split ("\n");
             foreach (string line in lines) {
-                if (line[0] == '\0' || line[0] == ' ')
+                if (line[0] == '\0' || line[0] == ' ') {
                     continue; /* ignore blank lines */
+                }
 
                 string [] parts = line.split (" ", 2);
-                if (parts.length == 2)
+                if (parts.length == 2) {
                     append_internal (new Marlin.Bookmark.from_uri (parts [0], parts [1]));
-                else
+                } else {
                     append_internal (new Marlin.Bookmark.from_uri (parts [0]));
+                }
 
                 count++;
             }
 
             list.@foreach (start_monitoring_bookmark);
 
-            if (list.length () > count)
+            if (list.length () > count) {
                 /* renew bookmark that was deleted when bookmarks file was changed externally */
                 save_bookmarks_file ();
+            }
         }
 
         private void save_bookmarks_file_async () {
@@ -346,9 +353,11 @@ namespace Marlin {
                                                        GLib.File? other_file,
                                                        GLib.FileMonitorEvent event_type) {
 
-            if (event_type == GLib.FileMonitorEvent.CHANGED
-                || event_type == GLib.FileMonitorEvent.CREATED)
+            if (event_type == GLib.FileMonitorEvent.CHANGED ||
+                event_type == GLib.FileMonitorEvent.CREATED) {
+
                 load_bookmarks_file ();
+            }
         }
 
         private void bookmark_in_list_changed_callback (Marlin.Bookmark bookmark) {
@@ -359,7 +368,7 @@ namespace Marlin {
             delete_items_with_uri (bookmark.get_uri ());
         }
 
-        private  void start_monitoring_bookmarks_file () {
+        private void start_monitoring_bookmarks_file () {
             GLib.File file = get_bookmarks_file ();
             try {
                 monitor = file.monitor (GLib.FileMonitorFlags.SEND_MOVED, null);
@@ -372,8 +381,9 @@ namespace Marlin {
         }
 
         private void stop_monitoring_bookmarks_file () {
-            if (monitor == null)
+            if (monitor == null) {
                 return;
+            }
 
             monitor.cancel ();
             monitor.changed.disconnect (bookmarks_file_changed_call_back);
@@ -396,7 +406,7 @@ namespace Marlin {
             /* if job is SAVE then subsequent pending saves and loads are redundant
              * if job is LOAD then any pending changes requiring saving will be lost
              * so we can clear pending jobs */
-            pending_ops.clear();
+            pending_ops.clear ();
             /* block queue until job processed */
             pending_ops.push_head (pending);
 
@@ -416,10 +426,11 @@ namespace Marlin {
 
         private void op_processed_call_back () {
             pending_ops.pop_tail (); /* remove job just completed */
-            if (!pending_ops.is_empty ())
+            if (!pending_ops.is_empty ()) {
                 process_next_op ();
-            else
+            } else {
                 start_monitoring_bookmarks_file ();
+            }
         }
     }
 }

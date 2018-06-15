@@ -50,8 +50,9 @@ public class Marlin.DeepCount : Object {
 
             while (true) {
                 var files = yield e.next_files_async (1024, Priority.LOW, cancellable);
-                if (files == null)
+                if (files == null) {
                     break;
+                }
 
                 foreach (var f in files) {
                     unowned string name = f.get_name ();
@@ -69,8 +70,12 @@ public class Marlin.DeepCount : Object {
                      * includes overhead size so we don't use it for those here
                      */
                     /* Network files may not have allocated size attribute so ignore zero result */
-                    if (allocated_size > 0 && allocated_size < file_size && f.get_file_type () != FileType.DIRECTORY)
+                    if (allocated_size > 0 &&
+                        allocated_size < file_size &&
+                        f.get_file_type () != FileType.DIRECTORY) {
+
                         file_size = allocated_size;
+                    }
 
                     total_size += file_size;
                     mutex.unlock ();
@@ -87,11 +92,12 @@ public class Marlin.DeepCount : Object {
 
         directories.remove (directory);
 
-        if (directories == null)
+        if (directories == null) {
             finished ();
+        }
     }
 
-    public void cancel ()  {
+    public void cancel () {
         cancellable.cancel ();
     }
 }
