@@ -36,10 +36,12 @@ namespace Granite.Widgets {
             get_allocation (out vba);
 
             if (pix != null) {
-                if (orientation == Gtk.Orientation.HORIZONTAL)
-                    Gdk.cairo_set_source_pixbuf (cr, pix, vba.width/2 - wpix/2, 0);
-                else
-                    Gdk.cairo_set_source_pixbuf (cr, pix, 3, vba.height/2 - hpix/2);
+                if (orientation == Gtk.Orientation.HORIZONTAL) {
+                    Gdk.cairo_set_source_pixbuf (cr, pix, vba.width / 2 - wpix / 2, 0);
+                } else {
+                    Gdk.cairo_set_source_pixbuf (cr, pix, 3, vba.height / 2 - hpix / 2);
+                }
+
                 cr.paint ();
             }
 
@@ -51,10 +53,12 @@ namespace Granite.Widgets {
             wpix = pix.get_width ();
             hpix = pix.get_height ();
 
-            if (orientation == Gtk.Orientation.HORIZONTAL)
+            if (orientation == Gtk.Orientation.HORIZONTAL) {
                 set_size_request (-1, hpix);
-            else
-                set_size_request (wpix+6, -1);
+            } else {
+                set_size_request (wpix + 6, -1);
+            }
+
             queue_draw ();
         }
     }

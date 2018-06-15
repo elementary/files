@@ -168,15 +168,17 @@ namespace FM {
         }
 
         public override void unselect_path (Gtk.TreePath? path) {
-            if (path != null)
+            if (path != null) {
                 tree.unselect_path (path);
+            }
         }
 
         public override bool path_is_selected (Gtk.TreePath? path) {
-            if (path != null)
+            if (path != null) {
                 return tree.path_is_selected (path);
-            else
+            } else {
                 return false;
+            }
         }
 
         public override bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path) {
@@ -359,8 +361,9 @@ namespace FM {
                                          bool start_editing,
                                          bool select,
                                          bool scroll_to_top) {
-            if (path == null)
+            if (path == null) {
                 return;
+            }
 
             if (!select) {
                 tree.selection_changed.disconnect (on_view_selection_changed);

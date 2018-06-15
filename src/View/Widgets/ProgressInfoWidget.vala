@@ -94,9 +94,10 @@ public class Marlin.Progress.InfoWidget : Gtk.Box {
     private void update_progress () {
         double progress = this.info.get_progress ();
 
-        if (progress < 0)
+        if (progress < 0) {
             (this.progress_bar as Gtk.ProgressBar).pulse ();
-        else
+        } else {
             (this.progress_bar as Gtk.ProgressBar).set_fraction (progress);
+        }
     }
 }

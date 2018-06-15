@@ -137,29 +137,37 @@ namespace Marlin {
     }
 
     public static ZoomLevel zoom_level_get_nearest_from_value (int size) {
-        if (size <= IconSize.SMALLEST)
+        if (size <= IconSize.SMALLEST) {
             return ZoomLevel.SMALLEST;
+        }
 
-        if (size <= IconSize.SMALLER)
+        if (size <= IconSize.SMALLER) {
             return ZoomLevel.SMALLER;
+        }
 
-        if (size <= IconSize.SMALL)
+        if (size <= IconSize.SMALL) {
             return ZoomLevel.SMALL;
+        }
 
-        if (size <= IconSize.NORMAL)
+        if (size <= IconSize.NORMAL) {
             return ZoomLevel.NORMAL;
+        }
 
-        if (size <= IconSize.LARGE)
+        if (size <= IconSize.LARGE) {
             return ZoomLevel.LARGE;
+        }
 
-        if (size <= IconSize.LARGER)
+        if (size <= IconSize.LARGER) {
             return ZoomLevel.LARGER;
+        }
 
-        if (size <= IconSize.HUGE)
+        if (size <= IconSize.HUGE) {
             return ZoomLevel.HUGE;
+        }
 
-        if (size <= IconSize.HUGER)
+        if (size <= IconSize.HUGER) {
             return ZoomLevel.HUGER;
+        }
 
         return ZoomLevel.LARGEST;
     }
