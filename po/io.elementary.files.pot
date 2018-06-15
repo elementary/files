@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-19 14:49-0700\n"
+"POT-Creation-Date: 2018-05-29 00:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,7 +164,7 @@ msgid "Unable to Launch Desktop File: %s"
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:154
-#: ../libcore/FileConflictDialog.vala:173
+#: ../libcore/FileConflictDialog.vala:183
 msgid "_Skip"
 msgstr ""
 
@@ -1263,72 +1263,72 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:813
+#: ../src/View/AbstractDirectoryView.vala:816
 msgid "Cannot open this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:826
+#: ../src/View/AbstractDirectoryView.vala:829
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1545
+#: ../src/View/AbstractDirectoryView.vala:1564
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1545
+#: ../src/View/AbstractDirectoryView.vala:1564
 msgid "Invalid file name provided"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2000
+#: ../src/View/AbstractDirectoryView.vala:2032
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2006
+#: ../src/View/AbstractDirectoryView.vala:2038
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2010
+#: ../src/View/AbstractDirectoryView.vala:2042
 msgid "Open in %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2020
+#: ../src/View/AbstractDirectoryView.vala:2052
 msgid "Open in"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2022
+#: ../src/View/AbstractDirectoryView.vala:2054
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:459
 msgid "Open with"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2081
+#: ../src/View/AbstractDirectoryView.vala:2113
 #: ../src/Dialogs/PropertiesWindow.vala:602
 msgid "Other Application…"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2344
+#: ../src/View/AbstractDirectoryView.vala:2377
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2680
-#: ../src/View/AbstractDirectoryView.vala:2864
+#: ../src/View/AbstractDirectoryView.vala:2713
+#: ../src/View/AbstractDirectoryView.vala:2905
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2681
-#: ../src/View/AbstractDirectoryView.vala:2849
-#: ../src/View/AbstractDirectoryView.vala:2865
+#: ../src/View/AbstractDirectoryView.vala:2714
+#: ../src/View/AbstractDirectoryView.vala:2890
+#: ../src/View/AbstractDirectoryView.vala:2906
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2825
+#: ../src/View/AbstractDirectoryView.vala:2865
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2826
+#: ../src/View/AbstractDirectoryView.vala:2866
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2848
+#: ../src/View/AbstractDirectoryView.vala:2889
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -1359,11 +1359,11 @@ msgstr ""
 msgid "Filename"
 msgstr ""
 
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:135
+#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:149
 msgid "Size"
 msgstr ""
 
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:140
+#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:154
 msgid "Type"
 msgstr ""
 
@@ -1777,14 +1777,14 @@ msgid "Could not be determined"
 msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:484
-#: ../libcore/FileConflictDialog.vala:107
-#: ../libcore/FileConflictDialog.vala:135
+#: ../libcore/FileConflictDialog.vala:117
+#: ../libcore/FileConflictDialog.vala:145
 msgid "Size:"
 msgstr ""
 
 #: ../src/Dialogs/PropertiesWindow.vala:491
-#: ../libcore/FileConflictDialog.vala:115
-#: ../libcore/FileConflictDialog.vala:143
+#: ../libcore/FileConflictDialog.vala:125
+#: ../libcore/FileConflictDialog.vala:153
 msgid "Type:"
 msgstr ""
 
@@ -1937,7 +1937,7 @@ msgstr ""
 msgid "Link Here"
 msgstr ""
 
-#: ../libcore/DndHandler.vala:98 ../libcore/FileConflictDialog.vala:176
+#: ../libcore/DndHandler.vala:98 ../libcore/FileConflictDialog.vala:186
 msgid "Cancel"
 msgstr ""
 
@@ -1945,94 +1945,94 @@ msgstr ""
 msgid "File conflict"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:102
+#: ../libcore/FileConflictDialog.vala:112
 msgid "Original file"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:120
-#: ../libcore/FileConflictDialog.vala:148
+#: ../libcore/FileConflictDialog.vala:130
+#: ../libcore/FileConflictDialog.vala:158
 msgid "Last modified:"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:130
+#: ../libcore/FileConflictDialog.vala:140
 msgid "Replace with"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:158
+#: ../libcore/FileConflictDialog.vala:168
 msgid "Reset"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:168
+#: ../libcore/FileConflictDialog.vala:178
 msgid "_Select a new name for the destination"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:171
+#: ../libcore/FileConflictDialog.vala:181
 msgid "Apply this action to all files"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:174
+#: ../libcore/FileConflictDialog.vala:184
 msgid "Re_name"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:178
+#: ../libcore/FileConflictDialog.vala:188
 msgid "Replace"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:294
+#: ../libcore/FileConflictDialog.vala:304
 msgid "Merge folder \"%s\"?"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:295
+#: ../libcore/FileConflictDialog.vala:305
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:297
+#: ../libcore/FileConflictDialog.vala:307
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:299
+#: ../libcore/FileConflictDialog.vala:309
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:301
+#: ../libcore/FileConflictDialog.vala:311
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:304
+#: ../libcore/FileConflictDialog.vala:314
 msgid "Replace folder \"%s\"?"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:305
+#: ../libcore/FileConflictDialog.vala:315
 msgid "Replacing it will remove all files in the folder."
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:306
+#: ../libcore/FileConflictDialog.vala:316
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:309
+#: ../libcore/FileConflictDialog.vala:319
 msgid "Replace file \"%s\"?"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:310
+#: ../libcore/FileConflictDialog.vala:320
 msgid "Replacing it will overwrite its content."
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:313
+#: ../libcore/FileConflictDialog.vala:323
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:315
+#: ../libcore/FileConflictDialog.vala:325
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:317
+#: ../libcore/FileConflictDialog.vala:327
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:346
+#: ../libcore/FileConflictDialog.vala:353
 msgid "Merge"
 msgstr ""
 
@@ -2233,34 +2233,46 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:112
+#: ../src/View/directory_view_popup.ui:111
+msgid "Paste Link"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:116
+#: ../src/View/directory_view_popup.ui:122
 msgid "Copy"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:120
-msgid "Paste into Folder"
-msgstr ""
-
-#: ../src/View/directory_view_popup.ui:127
-msgid "Sort by"
+#: ../src/View/directory_view_popup.ui:126
+msgid "Copy as Link"
 msgstr ""
 
 #: ../src/View/directory_view_popup.ui:130
+msgid "Paste into Folder"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:134
+msgid "Paste Link into Folder"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:141
+msgid "Sort by"
+msgstr ""
+
+#: ../src/View/directory_view_popup.ui:144
 msgid "Name"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:145
+#: ../src/View/directory_view_popup.ui:159
 msgid "Date"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:152
+#: ../src/View/directory_view_popup.ui:166
 msgid "Reversed Order"
 msgstr ""
 
-#: ../src/View/directory_view_popup.ui:156
+#: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
 msgstr ""

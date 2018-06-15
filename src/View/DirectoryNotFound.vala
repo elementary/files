@@ -18,13 +18,12 @@
 
 ***/
 
-namespace Marlin.View
-{
+namespace Marlin.View {
     public class DirectoryNotFound : Marlin.View.Welcome {
         public GOF.Directory.Async dir_saved;
         public ViewContainer ctab;
 
-        public DirectoryNotFound(GOF.Directory.Async dir, ViewContainer tab) {
+        public DirectoryNotFound (GOF.Directory.Async dir, ViewContainer tab) {
             base (_("This Folder Does Not Exist"), _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));
 
             append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
@@ -38,11 +37,12 @@ namespace Marlin.View
                 try {
                     success = dir.location.make_directory_with_parents (null);
                 } catch (Error e) {
-                    if (e is IOError.EXISTS)
+                    if (e is IOError.EXISTS) {
                         success = true;
-                    else
+                    } else {
                         show_dialog (_("Failed to create the folder\n\n%s").printf (e.message),
                                      Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE);
+                    }
                 }
 
                 if (success) {

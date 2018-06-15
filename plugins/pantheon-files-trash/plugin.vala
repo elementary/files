@@ -17,7 +17,7 @@
 
 public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     private unowned TrashMonitor trash_monitor;
-    private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.InfoBar> infobars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.InfoBar>();
+    private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.InfoBar> infobars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.InfoBar> ();
 
     public Trash () {
         trash_monitor = TrashMonitor.get_default ();
@@ -71,16 +71,18 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                 slot.add_extra_widget (infobar);
                 infobars.@set (slot, infobar);
             }
-            infobar.set_message_type (file.basename == "/" ? Gtk.MessageType.INFO :  Gtk.MessageType.WARNING);
+            infobar.set_message_type (file.basename == "/" ? Gtk.MessageType.INFO : Gtk.MessageType.WARNING);
             string msg;
-            if (file.basename == "/")
+            if (file.basename == "/") {
                 msg = _("These items may be restored or deleted from the trash.");
-            else
+            } else {
                 msg = _("Cannot restore or delete unless in root folder");
+            }
 
             foreach (Gtk.Widget w in (infobar.get_content_area ()).get_children ()) {
-                if (w is Gtk.Label)
+                if (w is Gtk.Label) {
                     (w as Gtk.Label).set_text (msg);
+                }
             }
 
             infobar.set_response_sensitive (0, !trash_monitor.is_empty && file.basename == "/");
