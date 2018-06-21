@@ -19,6 +19,7 @@ install(FILES ${CMAKE_BINARY_DIR}/dropbox.plug DESTINATION ${PLUGIN_DIR}/)
 
 find_package(PkgConfig)
 pkg_check_modules(DROPBOX REQUIRED
+    granite
     gtk+-3.0
     gee-0.8
     glib-2.0
