@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2017-07-10 14:56+0000\n"
-"Last-Translator: Mattias Ezequiel Mignone <memignone@gmail.com>\n"
-"Language-Team: English (Canada) <https://l10n.elementary.io/projects/files/"
-"files/en_CA/>\n"
+"PO-Revision-Date: 2018-06-22 12:48+0000\n"
+"Last-Translator: Shawn <syst3mfailur3@gmail.com>\n"
+"Language-Team: English (Canada) "
+"<https://weblate.elementary.io/projects/files/files/en_CA/>\n"
 "Language: en_CA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.14\n"
+"X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -154,19 +154,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Failed to parse the desktop file: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Failed to parse the desktop file: %s"
+msgstr "Failed to parse the desktop file"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Failed to parse the desktop file: %s"
+msgstr "Failed to create command from file: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Failed to parse the desktop file: %s"
+msgstr "Unable to Launch Desktop File: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1479,7 +1478,7 @@ msgstr "(%s Free of %s)"
 
 #: ../src/View/Sidebar.vala:1324
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Error mounting volume %s"
 
 #: ../src/View/Sidebar.vala:1339
 msgid "Unable to start %s"
@@ -1613,12 +1612,11 @@ msgstr "Reload this folder"
 #: ../src/View/Widgets/LocationBar.vala:197
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Search or Type Path"
 
 #: ../src/View/Widgets/LocationBar.vala:206
-#, fuzzy
 msgid "Searching…"
-msgstr "Loading…"
+msgstr "Searching…"
 
 #: ../src/View/Widgets/OverlayBar.vala:216
 msgid "%u folders"
@@ -2284,9 +2282,8 @@ msgid "Paste"
 msgstr "Paste"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Paste"
+msgstr "Paste Link"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2298,16 +2295,15 @@ msgstr "Copy"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Copy as Link"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Paste into Folder"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Paste into Folder"
+msgstr "Paste Link into Folder"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2327,7 +2323,7 @@ msgstr "Reversed Order"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Folders Before Files"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (invalid Unicode)"
