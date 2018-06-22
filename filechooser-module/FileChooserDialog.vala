@@ -30,7 +30,6 @@ public class CustomFileChooserDialog : Object {
     private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_revealer" };
     private const string[] GTK_FILTERCHOOSER_PATH = { "extra_and_filters", "filter_combo_hbox" };
     private const string[] GTK_TREEVIEW_PATH = { "browse_files_stack", "browse_files_swin", "browse_files_tree_view" };
-    private const string PLACES_SIDEBAR_PATH = "places_sidebar";
 
     private unowned Gtk.FileChooserDialog chooser_dialog;
     private unowned Gtk.Widget rootwidget;
@@ -199,8 +198,9 @@ public class CustomFileChooserDialog : Object {
                         (w0 as Gtk.Container).remove (w1);
                     } else {
                         (w1 as Gtk.Container).get_children ().foreach ((w5) => {
-                            if (w5.get_name () == GTK_FILTERCHOOSER_PATH[1])
+                            if (w5.get_name () == GTK_FILTERCHOOSER_PATH[1]) {
                                (w1 as Gtk.Container).remove (w5);
+                            }
                         });
                     }
                 }
@@ -212,8 +212,10 @@ public class CustomFileChooserDialog : Object {
         (w1 as Gtk.Container).get_children ().foreach ((paned) => {
             (paned as Gtk.Container).get_children ().foreach ((w2) => {
                 if (w2 is Gtk.PlacesSidebar) {
-                    (w2 as Gtk.PlacesSidebar).show_desktop = false;
-                    (w2 as Gtk.PlacesSidebar).show_enter_location = false;
+                    var sidebar = (Gtk.PlacesSidebar)w2;
+                    sidebar.show_desktop = false;
+                    sidebar.show_enter_location = false;
+                    sidebar.show_recent = true;
                 } else {
                     transform_w2_container (w2);
                 }
@@ -240,7 +242,7 @@ public class CustomFileChooserDialog : Object {
                 });
 
                 (w2 as Gtk.Container).remove (w3);
-            } else if (w3.get_name () ==  "list_and_preview_box") { /* file browser list and preview box */
+            } else if (w3.get_name () == "list_and_preview_box") { /* file browser list and preview box */
                 var tv = find_tree_view (w3);
                 if (tv != null) {
                     /* set its click behaviour the same as io.elementary.files setting */
@@ -302,8 +304,9 @@ public class CustomFileChooserDialog : Object {
             var combo_box = new Gtk.ComboBoxText ();
             combo_box.changed.connect (() => {
                 chooser_dialog.list_filters ().foreach ((filter) => {
-                    if (filter.get_filter_name () == combo_box.get_active_text ())
+                    if (filter.get_filter_name () == combo_box.get_active_text ()) {
                         chooser_dialog.set_filter (filter);
+                    }
                 });
             });
 

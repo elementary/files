@@ -106,6 +106,12 @@
             <attribute name='action'>common.paste_into</attribute>
         </item>
     </menu>
+    <menu id='paste-link'>
+        <item>
+            <attribute name='label' translatable='yes'>Paste Link</attribute>
+            <attribute name='action'>common.paste_into</attribute>
+        </item>
+    </menu>
 
     <menu id='clipboard-selection'>
         <item>
@@ -117,7 +123,15 @@
             <attribute name='action'>common.copy</attribute>
         </item>
         <item>
+            <attribute name='label' translatable='yes'>Copy as Link</attribute>
+            <attribute name='action'>common.copy_link</attribute>
+        </item>
+        <item>
             <attribute name='label' translatable='yes'>Paste into Folder</attribute>
+            <attribute name='action'>common.paste_into</attribute>
+        </item>
+        <item>
+            <attribute name='label' translatable='yes'>Paste Link into Folder</attribute>
             <attribute name='action'>common.paste_into</attribute>
         </item>
     </menu>
@@ -151,6 +165,10 @@
                 <item>
                     <attribute name='label' translatable='yes'>Reversed Order</attribute>
                     <attribute name='action'>background.reverse</attribute>
+                </item>
+                <item>
+                    <attribute name='label' translatable='yes'>Folders Before Files</attribute>
+                    <attribute name='action'>background.folders_first</attribute>
                 </item>
             </section>
         </submenu>

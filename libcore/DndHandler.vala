@@ -42,12 +42,13 @@ namespace Marlin {
             } else if (drop_target.is_executable ()) {
                 GLib.Error error;
                 if (!drop_target.execute (widget.get_screen (), drop_file_list, out error)) {
-                    Eel.show_error_dialog (_("Failed to execute \"%s\"").printf (drop_target.get_display_name ()),
-                                           error.message,
-                                           null);
+                    PF.Dialogs.show_error_dialog (_("Failed to execute \"%s\"").printf (drop_target.get_display_name ()),
+                                                  error.message,
+                                                  null);
                     return false;
-                } else
+                } else {
                     return true;
+                }
             }
             return false;
         }
@@ -63,8 +64,9 @@ namespace Marlin {
             var loop = new GLib.MainLoop (null, false);
 
             ask_menu.deactivate.connect (() => {
-                if (loop.is_running ())
+                if (loop.is_running ()) {
                     loop.quit ();
+                }
 
                 remove_action (win);
             });
@@ -158,8 +160,9 @@ namespace Marlin {
                 if (GLib.Path.DIR_SEPARATOR.to_string () in name) {
                     warning ("invalid source filename");
                     return null; /* not a valid filename */
-                } else
+                } else {
                     return name;
+                }
             } else {
                 warning ("source file does not exist");
                 return null;
@@ -184,7 +187,7 @@ namespace Marlin {
                                            Gtk.SelectionData selection) {
             bool success = false;
 
-            if (selection.get_length ()  == 1 && selection.get_format () == 8) {
+            if (selection.get_length () == 1 && selection.get_format () == 8) {
                 uchar result = selection.get_data ()[0];
 
                 switch (result) {
@@ -205,8 +208,9 @@ namespace Marlin {
                 }
             }
 
-            if (!success)
+            if (!success) {
                 set_source_uri (context, "");
+            }
 
             return success;
         }
@@ -215,8 +219,9 @@ namespace Marlin {
             string [] parts = (selection.get_text ()).split ("\n");
 
             /* _NETSCAPE_URL looks like this: "$URL\n$TITLE" - should be 2 parts */
-            if (parts.length != 2)
+            if (parts.length != 2) {
                 return false;
+            }
 
             /* NETSCAPE URLs are not currently handled.  No current bug reports */
             return false;
@@ -306,7 +311,7 @@ namespace Marlin {
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
                     sb.append (target);
-                    sb.append ("\r\n");  /* Drop onto Filezilla does not work without the "\r" */
+                    sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
                 });
             } else {
                 warning ("Invalid file list for drag and drop ignored");
