@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-29 00:40+0100\n"
+"POT-Creation-Date: 2018-06-27 08:24-0700\n"
 "PO-Revision-Date: 2018-06-13 00:07+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock@gmail.com>\n"
-"Language-Team: Japanese "
-"<https://weblate.elementary.io/projects/files/files/ja/>\n"
+"Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
+"ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -372,7 +372,7 @@ msgstr ""
 "このマウントされたドライブ上のゴミ箱にあるすべてのアイテムは、完全に削除され"
 "ます。"
 
-#: ../libcore/marlin-file-operations.c:1305 ../src/View/Sidebar.vala:1473
+#: ../libcore/marlin-file-operations.c:1305 ../src/View/Sidebar.vala:1510
 msgid "Empty _Trash"
 msgstr "ゴミ箱を空にする(_T)"
 
@@ -423,7 +423,8 @@ msgstr "フォルダー \"%B\" 内のファイルを参照する権限がない�
 #: ../libcore/marlin-file-operations.c:3430
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr "フォルダー \"%B\" 内のファイルについての情報を取得中にエラーが発生しました。"
+msgstr ""
+"フォルダー \"%B\" 内のファイルについての情報を取得中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:1480
 #: ../libcore/marlin-file-operations.c:3439
@@ -476,13 +477,17 @@ msgstr ""
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr "書き込み権限を持っていないフォルダーにあるファイルをゴミ箱へ移動したり削除したりすることはできません。"
+msgstr ""
+"書き込み権限を持っていないフォルダーにあるファイルをゴミ箱へ移動したり削除し"
+"たりすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:1802
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr "書き込み権限を持っていないフォルダーをゴミ箱へ移動したり削除したりすることはできません。"
+msgstr ""
+"書き込み権限を持っていないフォルダーをゴミ箱へ移動したり削除したりすることは"
+"できません。"
 
 #: ../libcore/marlin-file-operations.c:1804
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -707,7 +712,8 @@ msgstr "フォルダー \"%B\" の作成中にエラーが発生しました。"
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
-msgstr "フォルダー \"%B\" 内のファイルを参照する権限がないためコピーできません。"
+msgstr ""
+"フォルダー \"%B\" 内のファイルを参照する権限がないためコピーできません。"
 
 #: ../libcore/marlin-file-operations.c:3472
 msgid ""
@@ -733,7 +739,8 @@ msgstr "\"%B\" のコピー中にエラーが発生しました。"
 #: ../libcore/marlin-file-operations.c:3604
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
-msgstr "すでに存在しているフォルダー \"%F\" からファイルを削除できませんでした。"
+msgstr ""
+"すでに存在しているフォルダー \"%F\" からファイルを削除できませんでした。"
 
 #: ../libcore/marlin-file-operations.c:3645
 #, c-format
@@ -1227,101 +1234,101 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "%d 個のアイテムの所有者変更をやり直す"
 
 #: ../filechooser-module/FileChooserDialog.vala:72
-#: ../src/View/Widgets/TopMenu.vala:64
+#: ../src/View/Widgets/TopMenu.vala:61
 msgid "Previous"
 msgstr "前へ戻る"
 
 #: ../filechooser-module/FileChooserDialog.vala:76
-#: ../src/View/Widgets/TopMenu.vala:69
+#: ../src/View/Widgets/TopMenu.vala:66
 msgid "Next"
 msgstr "次へ進む"
 
-#: ../src/View/AbstractDirectoryView.vala:816
+#: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
 msgstr "このファイルを開けません"
 
-#: ../src/View/AbstractDirectoryView.vala:829
+#: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
 msgstr "ファイルタイプを識別できません"
 
-#: ../src/View/AbstractDirectoryView.vala:1564
+#: ../src/View/AbstractDirectoryView.vala:1597
 msgid "Cannot drop this file"
 msgstr "このファイルを削除できません"
 
-#: ../src/View/AbstractDirectoryView.vala:1564
+#: ../src/View/AbstractDirectoryView.vala:1597
 msgid "Invalid file name provided"
 msgstr "無効なファイル名が入力されました"
 
-#: ../src/View/AbstractDirectoryView.vala:2032
+#: ../src/View/AbstractDirectoryView.vala:2082
 msgid "Invalid"
 msgstr "無効"
 
-#: ../src/View/AbstractDirectoryView.vala:2038
+#: ../src/View/AbstractDirectoryView.vala:2088
 msgid "Run"
 msgstr "実行"
 
-#: ../src/View/AbstractDirectoryView.vala:2042
+#: ../src/View/AbstractDirectoryView.vala:2092
 msgid "Open in %s"
 msgstr "%s で開く"
 
-#: ../src/View/AbstractDirectoryView.vala:2052
+#: ../src/View/AbstractDirectoryView.vala:2102
 msgid "Open in"
 msgstr "指定した方法で開く"
 
-#: ../src/View/AbstractDirectoryView.vala:2054
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+#: ../src/View/AbstractDirectoryView.vala:2104
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:466
 msgid "Open with"
 msgstr "このアプリケーションで開く"
 
-#: ../src/View/AbstractDirectoryView.vala:2113
-#: ../src/Dialogs/PropertiesWindow.vala:602
+#: ../src/View/AbstractDirectoryView.vala:2163
+#: ../src/Dialogs/PropertiesWindow.vala:616
 msgid "Other Application…"
 msgstr "他のアプリケーション…"
 
-#: ../src/View/AbstractDirectoryView.vala:2377
+#: ../src/View/AbstractDirectoryView.vala:2435
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2713
-#: ../src/View/AbstractDirectoryView.vala:2905
+#: ../src/View/AbstractDirectoryView.vala:2774
+#: ../src/View/AbstractDirectoryView.vala:2966
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: ../src/View/AbstractDirectoryView.vala:2714
-#: ../src/View/AbstractDirectoryView.vala:2890
-#: ../src/View/AbstractDirectoryView.vala:2906
+#: ../src/View/AbstractDirectoryView.vala:2775
+#: ../src/View/AbstractDirectoryView.vala:2951
+#: ../src/View/AbstractDirectoryView.vala:2967
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更するパーミッションがありません"
 
-#: ../src/View/AbstractDirectoryView.vala:2865
+#: ../src/View/AbstractDirectoryView.vala:2926
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: ../src/View/AbstractDirectoryView.vala:2866
+#: ../src/View/AbstractDirectoryView.vala:2927
 msgid "Cutting the selection instead"
 msgstr "代わりに選択をカットする"
 
-#: ../src/View/AbstractDirectoryView.vala:2889
+#: ../src/View/AbstractDirectoryView.vala:2950
 msgid "Cannot paste files here"
 msgstr "ここにファイルをペーストできません"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:396
+#: ../src/View/DirectoryNotFound.vala:27 ../src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Exist"
 msgstr "このフォルダーは存在しません"
 
-#: ../src/View/DirectoryNotFound.vala:28
+#: ../src/View/DirectoryNotFound.vala:27
 msgid "The folder \"%s\" can't be found."
 msgstr "フォルダー \"%s\" が見つかりません。"
 
-#: ../src/View/DirectoryNotFound.vala:30
+#: ../src/View/DirectoryNotFound.vala:29
 msgid "Create"
 msgstr "作成"
 
-#: ../src/View/DirectoryNotFound.vala:30
+#: ../src/View/DirectoryNotFound.vala:29
 msgid "Create the folder \"%s\""
 msgstr "フォルダー \"%s\" を作成します"
 
-#: ../src/View/DirectoryNotFound.vala:44
+#: ../src/View/DirectoryNotFound.vala:43
 msgid ""
 "Failed to create the folder\n"
 "\n"
@@ -1347,109 +1354,109 @@ msgstr "形式"
 msgid "Modified"
 msgstr "変更日時"
 
-#: ../src/View/Sidebar.vala:481
+#: ../src/View/Sidebar.vala:486
 msgid "Personal"
 msgstr "パーソナル"
 
-#: ../src/View/Sidebar.vala:482
+#: ../src/View/Sidebar.vala:487
 msgid "Your common places and bookmarks"
 msgstr "一般的な場所とブックマーク"
 
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:363
+#: ../src/View/Sidebar.vala:499 ../src/View/ViewContainer.vala:363
 msgid "Home"
 msgstr "ホーム"
 
-#: ../src/View/Sidebar.vala:501
+#: ../src/View/Sidebar.vala:506
 msgid "Open your personal folder"
 msgstr "ユーザーのホームフォルダーを開きます"
 
-#: ../src/View/Sidebar.vala:516
+#: ../src/View/Sidebar.vala:521
 msgid "View the list of recently used files"
 msgstr "最近使用したファイルの一覧を表示します"
 
-#: ../src/View/Sidebar.vala:542 ../libwidgets/Resources.vala:65
+#: ../src/View/Sidebar.vala:547 ../libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "ゴミ箱"
 
-#: ../src/View/Sidebar.vala:549
+#: ../src/View/Sidebar.vala:554
 msgid "Open the Trash"
 msgstr "ゴミ箱を開きます"
 
-#: ../src/View/Sidebar.vala:554
+#: ../src/View/Sidebar.vala:559
 msgid "Devices"
 msgstr "デバイス"
 
-#: ../src/View/Sidebar.vala:555
+#: ../src/View/Sidebar.vala:560
 msgid "Your local partitions and devices"
 msgstr "ローカルのディスクドライブと接続されたデバイス"
 
-#: ../src/View/Sidebar.vala:561 ../src/View/ViewContainer.vala:365
+#: ../src/View/Sidebar.vala:566 ../src/View/ViewContainer.vala:365
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "ファイルシステム"
 
-#: ../src/View/Sidebar.vala:679 ../libwidgets/Resources.vala:62
+#: ../src/View/Sidebar.vala:687 ../libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "ネットワーク"
 
-#: ../src/View/Sidebar.vala:680
+#: ../src/View/Sidebar.vala:688
 msgid "Your network places"
 msgstr "ネットワーク上の場所"
 
-#: ../src/View/Sidebar.vala:712
+#: ../src/View/Sidebar.vala:720
 msgid "Entire Network"
 msgstr "ネットワーク全体"
 
-#: ../src/View/Sidebar.vala:719
+#: ../src/View/Sidebar.vala:727
 msgid "Browse the contents of the network"
 msgstr "ネットワークの内容を表示します"
 
-#: ../src/View/Sidebar.vala:852
+#: ../src/View/Sidebar.vala:861
 msgid "(%s Free of %s)"
 msgstr "( %s 空き / %s )"
 
-#: ../src/View/Sidebar.vala:1324
+#: ../src/View/Sidebar.vala:1357
 msgid "Error mounting volume %s"
 msgstr "ボリューム %s のマウントエラー"
 
-#: ../src/View/Sidebar.vala:1339
+#: ../src/View/Sidebar.vala:1372
 msgid "Unable to start %s"
 msgstr "%s を起動できません"
 
-#: ../src/View/Sidebar.vala:1437
+#: ../src/View/Sidebar.vala:1474
 msgid "Open"
 msgstr "開く"
 
-#: ../src/View/Sidebar.vala:1441
+#: ../src/View/Sidebar.vala:1478
 msgid "Open in New _Tab"
 msgstr "新しいタブで開く(_T)"
 
-#: ../src/View/Sidebar.vala:1445
+#: ../src/View/Sidebar.vala:1482
 msgid "Open in New _Window"
 msgstr "新しいウィンドウで開く(_W)"
 
-#: ../src/View/Sidebar.vala:1451
+#: ../src/View/Sidebar.vala:1488
 msgid "Remove"
 msgstr "削除"
 
-#: ../src/View/Sidebar.vala:1455 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1492 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "名前の変更"
 
-#: ../src/View/Sidebar.vala:1461
+#: ../src/View/Sidebar.vala:1498
 msgid "_Mount"
 msgstr "マウント(_M)"
 
-#: ../src/View/Sidebar.vala:1465
+#: ../src/View/Sidebar.vala:1502
 msgid "_Unmount"
 msgstr "アンマウント(_U)"
 
-#: ../src/View/Sidebar.vala:1469
+#: ../src/View/Sidebar.vala:1506
 msgid "_Eject"
 msgstr "取り出し(_E)"
 
-#: ../src/View/Sidebar.vala:1478 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/Sidebar.vala:1515 ../src/Dialogs/PropertiesWindow.vala:121
 #: ../src/View/directory_view_popup.ui:91
 msgid "Properties"
 msgstr "プロパティ"
@@ -1526,94 +1533,94 @@ msgstr "ファイルが見つかりませんでした"
 msgid "The file selected no longer exists."
 msgstr "選択したファイルは存在しません。"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:426
 msgid "Open in New Tab"
 msgstr "新しいタブで開く"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:427
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:433
 msgid "Open in New Window"
 msgstr "新しいウィンドウで開く"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:466
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:473
 msgid "Open in Other Application…"
 msgstr "他のアプリケーションで開く…"
 
-#: ../src/View/Widgets/LocationBar.vala:193
+#: ../src/View/Widgets/LocationBar.vala:192
 msgid "Reload this folder"
 msgstr "このフォルダーを再読み込み"
 
-#: ../src/View/Widgets/LocationBar.vala:197
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+#: ../src/View/Widgets/LocationBar.vala:196
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
 msgstr "検索するかパスを入力してください"
 
-#: ../src/View/Widgets/LocationBar.vala:206
+#: ../src/View/Widgets/LocationBar.vala:205
 msgid "Searching…"
 msgstr "検索しています…"
 
-#: ../src/View/Widgets/OverlayBar.vala:216
+#: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
 msgstr "%u フォルダー"
 
-#: ../src/View/Widgets/OverlayBar.vala:218
+#: ../src/View/Widgets/OverlayBar.vala:217
 #: ../src/View/Widgets/OverlayBar.vala:226
 msgid " and %u other item (%s) selected"
 msgstr " と 他の %u アイテムが選択されています (%s)"
 
-#: ../src/View/Widgets/OverlayBar.vala:219
+#: ../src/View/Widgets/OverlayBar.vala:218
 #: ../src/View/Widgets/OverlayBar.vala:227
 msgid " and %u other items (%s) selected"
 msgstr " と 他の %u アイテムが選択されています (%s)"
 
-#: ../src/View/Widgets/OverlayBar.vala:222
+#: ../src/View/Widgets/OverlayBar.vala:221
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid " selected"
 msgstr " が選択されています"
 
 #: ../src/View/Widgets/OverlayBar.vala:224
-#: ../src/Dialogs/PropertiesWindow.vala:1173
+#: ../src/Dialogs/PropertiesWindow.vala:1222
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u フォルダー"
 
-#: ../src/View/Widgets/OverlayBar.vala:232
+#: ../src/View/Widgets/OverlayBar.vala:233
 msgid "%u items selected (%s)"
 msgstr "%u アイテムが選択されています (%s)"
 
 #. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/Widgets/OverlayBar.vala:274
+#: ../src/View/Widgets/OverlayBar.vala:277
 msgid "%u sub-folder, "
 msgstr "%u サブフォルダー、 "
 
-#: ../src/View/Widgets/OverlayBar.vala:274
+#: ../src/View/Widgets/OverlayBar.vala:277
 msgid "%u sub-folders, "
 msgstr "%u サブフォルダー、 "
 
 #. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/Widgets/OverlayBar.vala:280
+#: ../src/View/Widgets/OverlayBar.vala:283
 msgid "%u file, "
 msgstr "%u ファイル、 "
 
-#: ../src/View/Widgets/OverlayBar.vala:280
+#: ../src/View/Widgets/OverlayBar.vala:283
 msgid "%u files, "
 msgstr "%u ファイル、 "
 
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/Widgets/OverlayBar.vala:290
+#: ../src/View/Widgets/OverlayBar.vala:293
 msgid "%s approx."
 msgstr "約 %s"
 
 #. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/Widgets/OverlayBar.vala:293
+#: ../src/View/Widgets/OverlayBar.vala:296
 msgid "unknown size"
 msgstr "不明なサイズ"
 
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/Widgets/OverlayBar.vala:297
+#: ../src/View/Widgets/OverlayBar.vala:300
 msgid "%u file not readable"
 msgstr "%u ファイルが読み込めません"
 
-#: ../src/View/Widgets/OverlayBar.vala:297
+#: ../src/View/Widgets/OverlayBar.vala:300
 msgid "%u files not readable"
 msgstr "%u ファイルが読み込めません"
 
@@ -1629,31 +1636,32 @@ msgstr "書き込み"
 msgid "Execute"
 msgstr "実行"
 
-#: ../src/Application.vala:118
+#: ../src/Application.vala:119
 msgid "Show the version of the program."
 msgstr "プログラムのバージョンを表示します。"
 
-#: ../src/Application.vala:120
+#: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
 msgstr "URI を新しいタブで開く"
 
-#: ../src/Application.vala:122 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "新しいウィンドウ"
 
-#: ../src/Application.vala:124
+#: ../src/Application.vala:125
 msgid "Quit Files."
 msgstr "ファイルを終了します。"
 
-#: ../src/Application.vala:126
+#: ../src/Application.vala:127
 msgid "Enable debug logging"
 msgstr "デバックログを有効にする"
 
-#: ../src/Application.vala:129
-msgid "[URI...]"
+#: ../src/Application.vala:130
+#, fuzzy
+msgid "[URI…]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:132
+#: ../src/Application.vala:133
 msgid ""
 "\n"
 "\n"
@@ -1663,7 +1671,7 @@ msgstr ""
 "\n"
 "ファイルマネージャーでファイルシステムを閲覧します"
 
-#: ../src/Application.vala:159
+#: ../src/Application.vala:161
 msgid "--quit cannot be used with URIs."
 msgstr "--quit オプションには URI を指定できません。"
 
@@ -1710,8 +1718,8 @@ msgstr "容量:"
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:153
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:156
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
-#: ../src/Dialogs/PropertiesWindow.vala:416
-#: ../src/Dialogs/PropertiesWindow.vala:452
+#: ../src/Dialogs/PropertiesWindow.vala:430
+#: ../src/Dialogs/PropertiesWindow.vala:466
 msgid "Unknown"
 msgstr "不明"
 
@@ -1727,123 +1735,124 @@ msgstr "使用済み:"
 msgid "Set as default"
 msgstr "デフォルトに設定"
 
-#: ../src/Dialogs/PropertiesWindow.vala:220
+#: ../src/Dialogs/PropertiesWindow.vala:221
 msgid "Permissions"
 msgstr "パーミッション"
 
-#: ../src/Dialogs/PropertiesWindow.vala:241
+#: ../src/Dialogs/PropertiesWindow.vala:242
 msgid "Actual Size Could Be Larger"
 msgstr "実際のサイズはより大きい可能性があります"
 
-#: ../src/Dialogs/PropertiesWindow.vala:241
+#: ../src/Dialogs/PropertiesWindow.vala:242
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 "%i 個のファイルがパーミッションまたはその他のエラーにより読み込めません。"
 
-#: ../src/Dialogs/PropertiesWindow.vala:260
-#: ../src/Dialogs/PropertiesWindow.vala:279
+#: ../src/Dialogs/PropertiesWindow.vala:261
+#: ../src/Dialogs/PropertiesWindow.vala:280
 msgid "unknown"
 msgstr "不明"
 
-#: ../src/Dialogs/PropertiesWindow.vala:427
+#: ../src/Dialogs/PropertiesWindow.vala:441
 msgid "Loading…"
 msgstr "読み込んでいます…"
 
-#: ../src/Dialogs/PropertiesWindow.vala:458
+#: ../src/Dialogs/PropertiesWindow.vala:472
 msgid "Could not be determined"
 msgstr "決定することができませんでした"
 
-#: ../src/Dialogs/PropertiesWindow.vala:484
+#: ../src/Dialogs/PropertiesWindow.vala:498
 #: ../libcore/FileConflictDialog.vala:117
 #: ../libcore/FileConflictDialog.vala:145
 msgid "Size:"
 msgstr "サイズ:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:491
+#: ../src/Dialogs/PropertiesWindow.vala:505
 #: ../libcore/FileConflictDialog.vala:125
 #: ../libcore/FileConflictDialog.vala:153
 msgid "Type:"
 msgstr "種類:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:494
+#: ../src/Dialogs/PropertiesWindow.vala:508
 msgid "Contains:"
 msgstr "内容:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:516
+#: ../src/Dialogs/PropertiesWindow.vala:530
 msgid "Created:"
 msgstr "作成日時:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:525
+#: ../src/Dialogs/PropertiesWindow.vala:539
 msgid "Modified:"
 msgstr "更新日時:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:536
+#: ../src/Dialogs/PropertiesWindow.vala:550
 msgid "Deleted:"
 msgstr "削除:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:546
-msgid "Mimetype:"
+#: ../src/Dialogs/PropertiesWindow.vala:560
+#, fuzzy
+msgid "MIME type:"
 msgstr "Mime タイプ:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:553
+#: ../src/Dialogs/PropertiesWindow.vala:567
 msgid "Resolution:"
 msgstr "解像度:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/PropertiesWindow.vala:575
 #: ../src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr "場所:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:571
+#: ../src/Dialogs/PropertiesWindow.vala:585
 msgid "Target:"
 msgstr "ターゲット:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:579
+#: ../src/Dialogs/PropertiesWindow.vala:593
 msgid "Original Location:"
 msgstr "元の場所:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:622
+#: ../src/Dialogs/PropertiesWindow.vala:636
 msgid "Open with:"
 msgstr "このアプリケーションで開く:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:875
-#: ../src/Dialogs/PropertiesWindow.vala:885
+#: ../src/Dialogs/PropertiesWindow.vala:903
+#: ../src/Dialogs/PropertiesWindow.vala:913
 msgid "Owner:"
 msgstr "所有者:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:879
-#: ../src/Dialogs/PropertiesWindow.vala:888
+#: ../src/Dialogs/PropertiesWindow.vala:907
+#: ../src/Dialogs/PropertiesWindow.vala:916
 msgid "Group:"
 msgstr "グループ:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:891
+#: ../src/Dialogs/PropertiesWindow.vala:919
 msgid "Everyone:"
 msgstr "全員:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1151
+#: ../src/Dialogs/PropertiesWindow.vala:1200
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u 個のサブフォルダー"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1155
-#: ../src/Dialogs/PropertiesWindow.vala:1177
+#: ../src/Dialogs/PropertiesWindow.vala:1204
+#: ../src/Dialogs/PropertiesWindow.vala:1226
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u 個のファイル"
 
 #. /TRANSLATORS: folders, files
-#: ../src/Dialogs/PropertiesWindow.vala:1160
+#: ../src/Dialogs/PropertiesWindow.vala:1209
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1181
+#: ../src/Dialogs/PropertiesWindow.vala:1230
 msgid "%u selected item"
 msgid_plural "%u selected items"
 msgstr[0] "%u 個の選択項目"
 
 #. /TRANSLATORS: total (folders, files)
-#: ../src/Dialogs/PropertiesWindow.vala:1183
+#: ../src/Dialogs/PropertiesWindow.vala:1232
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
@@ -1868,51 +1877,53 @@ msgstr "%s の完了"
 msgid "All file operations have ended"
 msgstr "すべてのファイル操作が完了しました"
 
-#: ../src/ProgressUIHandler.vala:233
+#: ../src/ProgressUIHandler.vala:236
 msgid "Show Copy Dialog"
 msgstr "コピーダイアログを表示"
 
-#: ../src/ProgressUIHandler.vala:245
+#: ../src/ProgressUIHandler.vala:248
 msgid "Cancel All In-progress Actions"
 msgstr "進行しているすべての操作をキャンセル"
 
-#: ../src/Utils/MimeActions.vala:260
+#: ../src/Utils/MimeActions.vala:275
 msgid "Multiple file types selected"
 msgstr "複数のファイルタイプが選択されています"
 
-#: ../src/Utils/MimeActions.vala:261
+#: ../src/Utils/MimeActions.vala:276
 msgid "No single app can open all these types of file"
 msgstr "これらすべてのファイルタイプを開くことができるアプリがありません"
 
-#: ../src/Utils/MimeActions.vala:288
+#: ../src/Utils/MimeActions.vala:303
 msgid "Failed to open files"
 msgstr "ファイルを開くことに失敗しました"
 
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "URI を開くことに失敗しました"
+#: ../src/Utils/MimeActions.vala:313
+#, fuzzy
+msgid "Could not open URIs"
+msgstr "'%s' へ名前を変更できません"
 
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
+#: ../src/Utils/MimeActions.vala:316
+#, fuzzy
+msgid "Could not open files or URIs with this app"
 msgstr "このアプリでファイルまたは URI を開けません"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "\"%s\" を実行できません"
 
-#: ../libcore/DndHandler.vala:93
+#: ../libcore/DndHandler.vala:95
 msgid "Move Here"
 msgstr "ここへ移動"
 
-#: ../libcore/DndHandler.vala:94
+#: ../libcore/DndHandler.vala:96
 msgid "Copy Here"
 msgstr "ここへコピー"
 
-#: ../libcore/DndHandler.vala:95
+#: ../libcore/DndHandler.vala:97
 msgid "Link Here"
 msgstr "ここへリンク"
 
-#: ../libcore/DndHandler.vala:98 ../libcore/FileConflictDialog.vala:186
+#: ../libcore/DndHandler.vala:100 ../libcore/FileConflictDialog.vala:186
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -2021,31 +2032,31 @@ msgstr "\"%s\" があった元の場所を特定できませんでした "
 msgid "The item cannot be restored from trash"
 msgstr "ゴミ箱からアイテムを復元できません"
 
-#: ../libcore/FileUtils.vala:436
+#: ../libcore/FileUtils.vala:438
 msgid "Could not rename to '%s'"
 msgstr "'%s' へ名前を変更できません"
 
-#: ../libcore/FileUtils.vala:527
+#: ../libcore/FileUtils.vala:529
 msgid "Today at %-H:%M"
 msgstr "今日の%-H:%M"
 
-#: ../libcore/FileUtils.vala:529
+#: ../libcore/FileUtils.vala:531
 msgid "Today at %-I:%M %p"
 msgstr "今日の%p%-I:%M"
 
-#: ../libcore/FileUtils.vala:535
+#: ../libcore/FileUtils.vala:537
 msgid "Yesterday at %-H:%M"
 msgstr "昨日の%-H:%M"
 
-#: ../libcore/FileUtils.vala:537
+#: ../libcore/FileUtils.vala:539
 msgid "Yesterday at %-I:%M %p"
 msgstr "昨日の%p%-I:%M"
 
-#: ../libcore/FileUtils.vala:544
+#: ../libcore/FileUtils.vala:546
 msgid "%A at %-H:%M"
 msgstr "%Aの%-H:%M"
 
-#: ../libcore/FileUtils.vala:546
+#: ../libcore/FileUtils.vala:548
 msgid "%A at %-I:%M %p"
 msgstr "%Aの%p%-I:%M"
 
@@ -2058,7 +2069,7 @@ msgstr "準備しています"
 msgid "Show more _details"
 msgstr "詳細を表示(_D)"
 
-#: ../libcore/gof-directory-async.vala:659
+#: ../libcore/gof-directory-async.vala:661
 msgid "Server did not respond within time limit"
 msgstr "サーバーは制限時間内に応答しませんでした"
 
@@ -2066,7 +2077,7 @@ msgstr "サーバーは制限時間内に応答しませんでした"
 msgid "Navigate to %s"
 msgstr "%s へ移動"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:283
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:284
 msgid "Go to %s"
 msgstr "%s へ移動"
 
@@ -2118,19 +2129,19 @@ msgstr "最近使用したアイテム"
 msgid "MTP"
 msgstr "MTP"
 
-#: ../libwidgets/View/SearchResults.vala:227
+#: ../libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
 msgstr "このフォルダー内"
 
-#: ../libwidgets/View/SearchResults.vala:232
+#: ../libwidgets/View/SearchResults.vala:227
 msgid "Below This Folder"
 msgstr "このフォルダー以下"
 
-#: ../libwidgets/View/SearchResults.vala:237
+#: ../libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
 msgstr "ブックマーク"
 
-#: ../libwidgets/View/SearchResults.vala:242
+#: ../libwidgets/View/SearchResults.vala:237
 msgid "Recently used"
 msgstr "最近使用したアイテム"
 
@@ -2253,6 +2264,9 @@ msgstr "逆順"
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
 msgstr "ファイルの前にフォルダーを表示"
+
+#~ msgid "Failed to open uris"
+#~ msgstr "URI を開くことに失敗しました"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (不正な Unicode です)"
