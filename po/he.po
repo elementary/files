@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-05-30 07:23+0000\n"
+"PO-Revision-Date: 2018-06-28 05:16+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://weblate.elementary.io/projects/files/files/he/"
 ">\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1691,7 +1691,6 @@ msgid "Enable debug logging"
 msgstr "Enable debug logging"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
@@ -1825,9 +1824,8 @@ msgid "Deleted:"
 msgstr "מועד המחיקה:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
-msgstr "סוג Mime:"
+msgstr "סוג MIME:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:567
 msgid "Resolution:"
@@ -1935,12 +1933,10 @@ msgid "Failed to open files"
 msgstr "פתיחת הקבצים נכשלה"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "לא ניתן לשנות את השם ל־‚%s‘"
+msgstr "לא ניתן לפתוח כתובות"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
 msgstr "לא ניתן לפתוח קבצים או כתובות עם יישום זה"
 
