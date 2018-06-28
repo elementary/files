@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-06-03 06:48+0000\n"
+"PO-Revision-Date: 2018-06-29 00:05+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://weblate.elementary.io/projects/files/files/ko/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1646,9 +1646,8 @@ msgid "Enable debug logging"
 msgstr "디버그 로깅 사용"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
-msgstr "[URI...]"
+msgstr "[URI…]"
 
 #: ../src/Application.vala:133
 msgid ""
@@ -1779,9 +1778,8 @@ msgid "Deleted:"
 msgstr "제거:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
-msgstr "마임 형식:"
+msgstr "MIME 형식:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:567
 msgid "Resolution:"
@@ -1886,12 +1884,10 @@ msgid "Failed to open files"
 msgstr "파일을 열 수 없습니다"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "'%s'로 이름을 바꿀 수 없습니다"
+msgstr "URI를 열 수 없습니다"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
 msgstr "이 앱으로는 파일이나 URI를 열 수 없습니다"
 
