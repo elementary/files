@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-06-01 00:07+0000\n"
+"PO-Revision-Date: 2018-06-29 21:05+0000\n"
 "Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
-"Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/"
-">\n"
+"Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/>"
+"\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1753,7 +1753,6 @@ msgid "Enable debug logging"
 msgstr "Vypisovat ladicí zprávy"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI…]"
 
@@ -1888,9 +1887,8 @@ msgid "Deleted:"
 msgstr "Smazáno:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
-msgstr "Typ obsahu:"
+msgstr "MIME typ obsahu:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:567
 msgid "Resolution:"
@@ -2001,14 +1999,12 @@ msgid "Failed to open files"
 msgstr "Nepodařilo se otevřít soubory"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Přejmenování na '%s' se nezdařilo"
+msgstr "Nelze otevřít tyto URI"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Nepodařilo se otevřít soubory nebo uri pomocí této aplikace"
+msgstr "Nelze otevřít soubory nebo URI s touto aplikací"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
