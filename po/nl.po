@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-06-07 00:09+0000\n"
+"PO-Revision-Date: 2018-06-30 00:03+0000\n"
 "Last-Translator: Dieter Debast <dieter_debast@hotmail.com>\n"
-"Language-Team: Dutch <https://weblate.elementary.io/projects/files/files/nl/"
-">\n"
+"Language-Team: Dutch <https://weblate.elementary.io/projects/files/files/nl/>"
+"\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1735,7 +1735,6 @@ msgid "Enable debug logging"
 msgstr "Debuglogging inschakelen"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI…]"
 
@@ -1978,9 +1977,8 @@ msgid "Failed to open files"
 msgstr ""
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Kan niet hernoemen naar '%s'"
+msgstr "Kon URIs niet openen"
 
 #: ../src/Utils/MimeActions.vala:316
 msgid "Could not open files or URIs with this app"
