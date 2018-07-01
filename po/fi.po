@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-06-02 00:05+0000\n"
+"PO-Revision-Date: 2018-07-02 00:06+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
 "fi/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -1851,9 +1851,8 @@ msgid "Deleted:"
 msgstr "Poistettu:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
-msgstr "Mime-tyyppi:"
+msgstr "MIME-tyyppi:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:567
 msgid "Resolution:"
