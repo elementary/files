@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-06-02 01:16+0000\n"
+"PO-Revision-Date: 2018-07-05 12:52+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/files/files/fr/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -1735,9 +1735,8 @@ msgid "Enable debug logging"
 msgstr "Activer le débogage"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
-msgstr "[URI...]"
+msgstr "[URI…]"
 
 #: ../src/Application.vala:133
 msgid ""
@@ -1873,7 +1872,6 @@ msgid "Deleted:"
 msgstr "Supprimé :"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "Type MIME :"
 
@@ -1983,14 +1981,12 @@ msgid "Failed to open files"
 msgstr "Impossible d'ouvrir les fichiers"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Impossible de renommer en '%s'"
+msgstr "Impossible d'ouvrir les URIs"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Impossible d'ouvrir les fichiers ou uris avec cette application"
+msgstr "Impossible d'ouvrir les fichiers ou URIs avec cette application"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
