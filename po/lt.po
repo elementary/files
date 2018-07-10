@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-06-30 10:02+0000\n"
+"PO-Revision-Date: 2018-07-11 00:08+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://weblate.elementary.io/projects/files/"
 "files/lt/>\n"
@@ -1394,7 +1394,7 @@ msgstr "Atverti naudojant"
 #: ../src/View/AbstractDirectoryView.vala:2163
 #: ../src/Dialogs/PropertiesWindow.vala:616
 msgid "Other Application…"
-msgstr "Kitą programą…"
+msgstr "Kita programa…"
 
 #: ../src/View/AbstractDirectoryView.vala:2435
 msgid "Untitled %s"
