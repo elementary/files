@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-07-02 00:06+0000\n"
+"PO-Revision-Date: 2018-07-13 00:03+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -453,53 +453,45 @@ msgstr "\"%B\" の削除中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:1699
 msgid "Moving files to trash"
-msgstr "ファイルをゴミ箱へ移動しています"
+msgstr "ファイルをゴミ箱に移動しています"
 
 #: ../libcore/marlin-file-operations.c:1701
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] "残り %'d 個のファイルをゴミ箱へ移動しています"
+msgstr[0] "残り %'d 個のファイルをゴミ箱に移動しています"
 
 #: ../libcore/marlin-file-operations.c:1795
 #: ../libcore/marlin-file-operations.c:1798
 #: ../libcore/marlin-file-operations.c:1801
 msgid "Cannot move file to trash or delete it"
-msgstr "ファイルをゴミ箱へ移動または削除できませんでした"
+msgstr "ファイルをゴミ箱に移動または削除できませんでした"
 
 #: ../libcore/marlin-file-operations.c:1796
 msgid "It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
-"読み取り専用ファイルシステムにあるファイルをゴミ箱へ移動したり削除したりする"
-"ことはできません。"
+msgstr "読み取り専用ファイルシステムにあるファイルをゴミ箱に移動したり削除したりすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:1799
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr ""
-"書き込み権限を持っていないフォルダーにあるファイルをゴミ箱へ移動したり削除し"
-"たりすることはできません。"
+msgstr "書き込み権限を持っていないフォルダーにあるファイルをゴミ箱に移動したり削除したりすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:1802
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr ""
-"書き込み権限を持っていないフォルダーをゴミ箱へ移動したり削除したりすることは"
-"できません。"
+msgstr "書き込み権限を持っていないフォルダーをゴミ箱に移動したり削除したりすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:1804
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "ゴミ箱へファイルを移動できません。すぐに削除してみますか？"
+msgstr "ファイルをゴミ箱に移動できません。すぐに削除してみますか？"
 
 #: ../libcore/marlin-file-operations.c:1805
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr ""
-"このファイルはゴミ箱へ移動させることができませんでした。詳細については、下記"
-"を参照してください。"
+msgstr "このファイルはゴミ箱に移動させることができませんでした。詳細については、下記を参照してください。"
 
 #: ../libcore/marlin-file-operations.c:1809
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -523,7 +515,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2005
 msgid "Trashing Files"
-msgstr "ファイルをゴミ箱へ移動しています"
+msgstr "ファイルをゴミ箱に移動しています"
 
 #: ../libcore/marlin-file-operations.c:2007
 msgid "Deleting Files"
@@ -581,7 +573,7 @@ msgstr "移動中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:2406
 msgid "Error while moving files to trash."
-msgstr "ファイルをゴミ箱へ移動中にエラーが発生しました。"
+msgstr "ファイルをゴミ箱に移動中にエラーが発生しました。"
 
 #: ../libcore/marlin-file-operations.c:2460
 msgid ""
@@ -1019,12 +1011,12 @@ msgstr "新しいフォルダー '%s' を作成"
 #: ../libcore/marlin-undostack-manager.c:1468
 #, c-format
 msgid "Move %d items to trash"
-msgstr "%d 個のアイテムをゴミ箱へ移動"
+msgstr "%d 個のアイテムをゴミ箱に移動"
 
 #: ../libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "Move '%s' to trash"
-msgstr "'%s' をゴミ箱へ移動"
+msgstr "'%s' をゴミ箱に移動"
 
 #: ../libcore/marlin-undostack-manager.c:1487
 #, c-format
@@ -1642,7 +1634,7 @@ msgstr "プログラムのバージョンを表示します。"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
-msgstr "URI を新しいタブで開く"
+msgstr "URI を新しいタブで開きます"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -1654,7 +1646,7 @@ msgstr "ファイルを終了します。"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
-msgstr "デバックログを有効にする"
+msgstr "デバックログを有効にします"
 
 #: ../src/Application.vala:130
 msgid "[URI…]"
@@ -2183,7 +2175,7 @@ msgstr "履歴から削除"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr "ゴミ箱へ移動"
+msgstr "ゴミ箱に移動"
 
 #: ../src/View/directory_view_popup.ui:51
 msgid "New"
