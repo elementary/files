@@ -1619,7 +1619,7 @@ msgid "Execute"
 msgstr "執行"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "顯示此程式的版本。"
 
 #: ../src/Application.vala:121
@@ -1631,7 +1631,7 @@ msgid "New Window"
 msgstr "新視窗"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "退出「檔案」。"
 
 #: ../src/Application.vala:127

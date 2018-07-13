@@ -1684,7 +1684,7 @@ msgid "Execute"
 msgstr "Végrehajtás"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "A program verziószámának megjelenítése."
 
 #: ../src/Application.vala:121
@@ -1696,7 +1696,7 @@ msgid "New Window"
 msgstr "Új ablak"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Kilépés a fájlkezelőből."
 
 #: ../src/Application.vala:127

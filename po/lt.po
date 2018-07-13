@@ -1750,7 +1750,7 @@ msgid "Execute"
 msgstr "Vykdyti"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Rodyti programos versiją."
 
 #: ../src/Application.vala:121
@@ -1762,7 +1762,7 @@ msgid "New Window"
 msgstr "Naujas langas"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Išeiti iš failų."
 
 #: ../src/Application.vala:127

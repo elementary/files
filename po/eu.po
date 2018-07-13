@@ -1681,7 +1681,7 @@ msgid "Execute"
 msgstr "Exekutatu"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Erakutsi programaren bertsioa."
 
 #: ../src/Application.vala:121
@@ -1693,7 +1693,7 @@ msgid "New Window"
 msgstr ""
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Irten Files-etik."
 
 #: ../src/Application.vala:127

@@ -1656,7 +1656,7 @@ msgid "Execute"
 msgstr "செயல்படுத்து"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "நிரல் பதிப்பை காட்டு."
 
 #: ../src/Application.vala:121
@@ -1668,7 +1668,7 @@ msgid "New Window"
 msgstr ""
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr ""
 
 #: ../src/Application.vala:127

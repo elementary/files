@@ -1696,7 +1696,7 @@ msgid "Execute"
 msgstr "Kør"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Vis programmets version."
 
 #: ../src/Application.vala:121
@@ -1708,7 +1708,7 @@ msgid "New Window"
 msgstr "Nyt vindue"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Luk Filer."
 
 #: ../src/Application.vala:127

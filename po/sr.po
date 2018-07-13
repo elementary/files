@@ -1675,7 +1675,7 @@ msgid "Execute"
 msgstr "Извршите"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Прикажи верзију програма."
 
 #: ../src/Application.vala:121
@@ -1687,7 +1687,7 @@ msgid "New Window"
 msgstr ""
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Угаси Датетеке."
 
 #: ../src/Application.vala:127

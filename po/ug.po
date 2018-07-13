@@ -1641,7 +1641,7 @@ msgid "Execute"
 msgstr "ئىجرا قىلىش"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "پروگراممىنىڭ نەشرىنى كۆرسىتىش"
 
 #: ../src/Application.vala:121
@@ -1653,7 +1653,7 @@ msgid "New Window"
 msgstr "يىڭى كۆزنەك"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "ھۆججەتتىن چىكىنىش"
 
 #: ../src/Application.vala:127

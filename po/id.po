@@ -1646,7 +1646,7 @@ msgid "Execute"
 msgstr "Menjalankan"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Tampilkan versi program."
 
 #: ../src/Application.vala:121
@@ -1658,7 +1658,7 @@ msgid "New Window"
 msgstr "Jendela Baru"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Keluar Pengelola Berkas."
 
 #: ../src/Application.vala:127
