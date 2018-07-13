@@ -1706,7 +1706,7 @@ msgid "Execute"
 msgstr "Execução"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Mostra a versão do programa."
 
 #: ../src/Application.vala:121
@@ -1718,7 +1718,7 @@ msgid "New Window"
 msgstr "Nova janela"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Encerrar Files."
 
 #: ../src/Application.vala:127

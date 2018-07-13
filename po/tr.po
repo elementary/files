@@ -1689,7 +1689,7 @@ msgid "Execute"
 msgstr "Çalıştır"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Uygulamanın sürümünü göster."
 
 #: ../src/Application.vala:121
@@ -1701,7 +1701,7 @@ msgid "New Window"
 msgstr "Yeni Pencere"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Files'dan çık."
 
 #: ../src/Application.vala:127

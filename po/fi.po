@@ -1695,7 +1695,7 @@ msgid "Execute"
 msgstr "Suoritus"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Näytä ohjelman versio."
 
 #: ../src/Application.vala:121
@@ -1707,7 +1707,7 @@ msgid "New Window"
 msgstr "Uusi ikkuna"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Lopeta Files-tiedostonhallinta."
 
 #: ../src/Application.vala:127

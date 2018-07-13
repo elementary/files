@@ -1718,7 +1718,7 @@ msgid "Execute"
 msgstr "Εκτέλεση"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Εμφάνιση της έκδοσης του προγράμματος."
 
 #: ../src/Application.vala:121
@@ -1730,7 +1730,7 @@ msgid "New Window"
 msgstr "Νέο παράθυρο"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Έξοδος από τα Αρχεία"
 
 #: ../src/Application.vala:127

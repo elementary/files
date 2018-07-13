@@ -1655,7 +1655,7 @@ msgid "Execute"
 msgstr "Thực thi"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Hiển thị phiên bản."
 
 #: ../src/Application.vala:121
@@ -1667,7 +1667,7 @@ msgid "New Window"
 msgstr ""
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Thoát Tập tin"
 
 #: ../src/Application.vala:127

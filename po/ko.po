@@ -1626,7 +1626,7 @@ msgid "Execute"
 msgstr "실행"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "프로그램의 버전을 보입니다."
 
 #: ../src/Application.vala:121
@@ -1638,7 +1638,7 @@ msgid "New Window"
 msgstr "새 창"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "닫기."
 
 #: ../src/Application.vala:127

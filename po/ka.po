@@ -1658,7 +1658,7 @@ msgid "Execute"
 msgstr ""
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "პროგრამის ვერსიის ჩვენება."
 
 #: ../src/Application.vala:121
@@ -1670,7 +1670,7 @@ msgid "New Window"
 msgstr "ახალი ფანჯარა"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "ფაილებიდან გამოსვლა"
 
 #: ../src/Application.vala:127

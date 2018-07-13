@@ -1700,7 +1700,7 @@ msgid "Execute"
 msgstr "Execută"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Afișați versiunea programului."
 
 #: ../src/Application.vala:121
@@ -1712,7 +1712,7 @@ msgid "New Window"
 msgstr "Nouă fereastră"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Ieșiți din Fișiere."
 
 #: ../src/Application.vala:127

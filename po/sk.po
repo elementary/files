@@ -1744,7 +1744,7 @@ msgid "Execute"
 msgstr "Spustiť"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Zobraziť verziu programu."
 
 #: ../src/Application.vala:121
@@ -1756,7 +1756,7 @@ msgid "New Window"
 msgstr "Nové okno"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Zavrieť aplikáciu."
 
 #: ../src/Application.vala:127

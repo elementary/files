@@ -1703,8 +1703,8 @@ msgid "Execute"
 msgstr "Execute"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
-msgstr "Show the version of the program."
+msgid "Show the version of the program"
+msgstr "Show the version of the program"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1715,8 +1715,8 @@ msgid "New Window"
 msgstr "New Window"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
-msgstr "Quit Files."
+msgid "Quit Files"
+msgstr "Quit Files"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
