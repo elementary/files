@@ -1785,7 +1785,7 @@ msgid "Execute"
 msgstr "Izvajanje"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Pokaži različico programa."
 
 #: ../src/Application.vala:121
@@ -1797,7 +1797,7 @@ msgid "New Window"
 msgstr "Novo okno"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Zapri Datoteke."
 
 #: ../src/Application.vala:127

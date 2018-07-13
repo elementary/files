@@ -1693,7 +1693,7 @@ msgid "Execute"
 msgstr "Käivitamine"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Programmi versiooni näitamine."
 
 #: ../src/Application.vala:121
@@ -1705,7 +1705,7 @@ msgid "New Window"
 msgstr "Uues aknas"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Välju Failidest"
 
 #: ../src/Application.vala:127

@@ -1750,7 +1750,7 @@ msgid "Execute"
 msgstr "Uruchom"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Wypisuje informacje o wersji programu."
 
 #: ../src/Application.vala:121
@@ -1762,7 +1762,7 @@ msgid "New Window"
 msgstr "Nowe okno"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Opuść menedżer plików."
 
 #: ../src/Application.vala:127
