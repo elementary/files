@@ -2185,10 +2185,14 @@ namespace FM {
             int count = 0;
 
             templates.@foreach ((template) => {
-                var label = template.get_basename ();
+            	var label = template.get_basename ();
                 var ftype = template.query_file_type (GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
                 if (ftype == GLib.FileType.DIRECTORY) {
-                    var submenu = new GLib.MenuItem.submenu (_("Templates"), templates_submenu);
+                	if (template == template_folder) {
+                		label = _("Templates");
+                	}
+
+                    var submenu = new GLib.MenuItem.submenu (label, templates_submenu);
                     templates_menu.append_item (submenu);
                     templates_submenu = new GLib.Menu ();
                 } else {
