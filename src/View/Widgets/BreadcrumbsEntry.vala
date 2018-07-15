@@ -177,8 +177,9 @@ namespace Marlin.View.Chrome {
         }
 
         protected void complete () {
-            if (completion_text.length == 0)
+            if (completion_text.length == 0) {
                 return;
+            }
 
             string path = text + completion_text;
             /* If there are multiple results, tab as far as we can, otherwise do the entire result */
@@ -231,11 +232,13 @@ namespace Marlin.View.Chrome {
                         string file_complet = file_display_name.slice (to_search.length, file_display_name.length);
                         string to_add = "";
                         for (int i = 0; i < int.min (completion_text.length, file_complet.length); i++) {
-                            if (completion_text[i] == file_complet[i])
+                            if (completion_text[i] == file_complet[i]) {
                                 to_add += completion_text[i].to_string ();
-                            else
+                            } else {
                                 break;
+                            }
                         }
+
                         set_completion_text (to_add);
                         multiple_completions = true;
                     }
@@ -261,15 +264,17 @@ namespace Marlin.View.Chrome {
             if (!drop_data_ready) {
                 Gtk.TargetList list = null;
                 Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
-                if (target != Gdk.Atom.NONE)
+                if (target != Gdk.Atom.NONE) {
                     Gtk.drag_get_data (this, context, target, time); /* emits "drag_data_received" */
+                }
             }
 
             Gtk.drag_unhighlight (this);
             GLib.Signal.stop_emission_by_name (this, "drag-motion");
 
-            foreach (BreadcrumbElement element in elements)
+            foreach (BreadcrumbElement element in elements) {
                 element.pressed = false;
+            }
 
             var el = get_element_from_coordinates (x, y);
             current_suggested_action = Gdk.DragAction.DEFAULT;
@@ -379,10 +384,11 @@ namespace Marlin.View.Chrome {
 
             var style_context = get_style_context ();
             var padding = style_context.get_padding (style_context.get_state ());
-            if (clicked_element.x - BREAD_SPACING < 0)
+            if (clicked_element.x - BREAD_SPACING < 0) {
                 menu_x_root = event.x_root - event.x + clicked_element.x;
-            else
+            } else {
                 menu_x_root = event.x_root - event.x + clicked_element.x - BREAD_SPACING;
+            }
 
             menu_y_root = event.y_root - event.y + get_allocated_height () - padding.bottom - padding.top;
 
@@ -443,8 +449,9 @@ namespace Marlin.View.Chrome {
                     menu_item.set_data ("appinfo", app_info);
                     Icon icon;
                     icon = app_info.get_icon ();
-                    if (icon == null)
+                    if (icon == null) {
                         icon = new ThemedIcon ("application-x-executable");
+                    }
 
                     menu_item.set_image (new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU));
                     menu_item.always_show_image = true;

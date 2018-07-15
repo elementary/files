@@ -108,8 +108,9 @@ namespace Marlin {
                              null,
                              0,
                              tooltip);
-            if (cb != null)
+            if (cb != null) {
                 store.@set (iter, Column.PLUGIN_CALLBACK, cb);
+            }
 
         }
 

@@ -58,29 +58,33 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
 
         try {
             if (gof_files == null) {
-                if (current_directory == null)
+                if (current_directory == null) {
                     return;
+                }
 
                 files = new File[0];
                 files += current_directory.location;
 
                 string? mimetype = current_directory.get_ftype ();
 
-                if (mimetype == null)
+                if (mimetype == null) {
                     return;
+                }
 
                 contracts = Granite.Services.ContractorProxy.get_contracts_by_mime (mimetype);
             } else {
                 files = get_file_array (gof_files);
                 var mimetypes = get_mimetypes (gof_files);
-                if (mimetypes.length > 0)
+                if (mimetypes.length > 0) {
                     contracts = Granite.Services.ContractorProxy.get_contracts_by_mimelist (mimetypes);
+                }
             }
 
             assert (files != null);
 
-            if (contracts == null)
+            if (contracts == null) {
                 return;
+            }
 
             for (int i = 0; i < contracts.size; i++) {
                 var contract = contracts.get (i);
@@ -121,8 +125,9 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
         foreach (var file in files) {
             var ftype = file.get_ftype ();
 
-            if (ftype != null)
+            if (ftype != null) {
                 mimetypes += ftype;
+            }
         }
 
         return mimetypes;
@@ -133,10 +138,11 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
 
         foreach (var file in files) {
             if (file.location != null) {
-                if (file.location.get_uri_scheme () == "recent")
+                if (file.location.get_uri_scheme () == "recent") {
                     file_array += GLib.File.new_for_uri (file.get_display_target_uri ());
-                else
+                } else {
                     file_array += file.location;
+                }
             }
         }
 

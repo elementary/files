@@ -29,8 +29,9 @@ public class Marlin.MimeActions {
         if (app == null) {
             string uri_scheme = file.location.get_uri_scheme ();
 
-            if (uri_scheme != null)
+            if (uri_scheme != null) {
                 app = AppInfo.get_default_for_uri_scheme (uri_scheme);
+            }
         }
 
         return app;
@@ -57,8 +58,10 @@ public class Marlin.MimeActions {
             }
 
             if (file_compare_by_mime_type (file, previous_file) == 0 &&
-                file_compare_by_parent_uri (file, previous_file) == 0)
+                file_compare_by_parent_uri (file, previous_file) == 0) {
+
                 continue;
+            }
 
             var one_app = get_default_application_for_file (file);
 
@@ -67,19 +70,22 @@ public class Marlin.MimeActions {
                 break;
             }
 
-            if (app == null)
+            if (app == null) {
                 app = one_app;
+            }
 
             previous_file = file;
         }
+
         return app;
     }
 
     public static List<AppInfo> get_applications_for_file (GOF.File file) {
         List<AppInfo> result = null;
         string? type = file.get_ftype ();
-        if (type == null)
+        if (type == null) {
             return result;
+        }
 
         result = AppInfo.get_all_for_type (type);
         string uri_scheme = file.location.get_uri_scheme ();
@@ -87,12 +93,14 @@ public class Marlin.MimeActions {
         if (uri_scheme != null) {
             var uri_handler = AppInfo.get_default_for_uri_scheme (uri_scheme);
 
-            if (uri_handler != null)
+            if (uri_handler != null) {
                 result.prepend (uri_handler);
+            }
         }
 
-        if (!file_has_local_path (file))
+        if (!file_has_local_path (file)) {
             filter_non_uri_apps (result);
+        }
 
         result.sort (application_compare_by_name);
 
@@ -106,12 +114,14 @@ public class Marlin.MimeActions {
         if (uri_scheme != null) {
             var uri_handler = AppInfo.get_default_for_uri_scheme (uri_scheme);
 
-            if (uri_handler != null)
+            if (uri_handler != null) {
                 result.prepend (uri_handler);
+            }
         }
 
-        if (!file_has_local_path (file))
+        if (!file_has_local_path (file)) {
             result = filter_non_uri_apps (result);
+        }
 
         result.sort (application_compare_by_name);
         return result;
@@ -124,6 +134,7 @@ public class Marlin.MimeActions {
         files.@foreach ((file) => {
             sorted_files.prepend (file);
         });
+
         sorted_files.sort (file_compare_by_mime_type);
 
         List<AppInfo> result = null;
@@ -137,20 +148,23 @@ public class Marlin.MimeActions {
             }
 
             if (file_compare_by_mime_type (file, previous_file) == 0 &&
-                file_compare_by_parent_uri (file, previous_file) == 0)
+                file_compare_by_parent_uri (file, previous_file) == 0) {
+
                 continue;
+            }
 
             List<AppInfo> one_result = get_applications_for_file (file);
             one_result.sort (application_compare_by_id);
 
-            if (result != null)
+            if (result != null) {
                 result = intersect_application_lists (result, one_result);
-
-            else
+            } else {
                 result = one_result.copy ();
+            }
 
-            if (result == null)
+            if (result == null) {
                 return null;
+            }
 
             previous_file = file;
         }
@@ -196,6 +210,7 @@ public class Marlin.MimeActions {
                 uri_apps.append (app);
             }
         }
+
         return uri_apps;
     }
 

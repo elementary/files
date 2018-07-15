@@ -1,13 +1,40 @@
-language: generic
+---
+
+language: node_js
+
+node_js:
+  - lts/*
+
+sudo: required
 
 services:
- - docker
+  - docker
 
-env:
- - DEPENDENCY_PACKAGES="cmake elementary-icon-theme libcanberra-dev libdbus-glib-1-dev libgail-3-dev libgee-0.8-dev libglib2.0-dev libgranite-dev libgtk-3-dev libnotify-dev libpango1.0-dev libplank-dev libsqlite3-dev libunity-dev libzeitgeist-2.0-dev valac"
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libstdc++-5-dev
+
+cache:
+  directories:
+    - /tmp/liftoff
+
+matrix:
+  include:
+    - env: DIST=juno
+
+before_install:
+  - docker pull ubuntu:18.04
 
 install:
- - docker pull elementary/docker:juno-unstable
- - docker run -v "$PWD":/tmp/build-dir elementary/docker:juno-unstable /bin/sh -c "apt-get update && apt-get -y install $DEPENDENCY_PACKAGES && cd /tmp/build-dir && mkdir build && cd build && cmake .. && env CTEST_OUTPUT_ON_FAILURE=true make all test"
+  - npm install @elementaryos/houston
+
 script:
- - echo BUILDS PASSED
+  - houston ci
+    --type system-app
+    --name-appstream io.elementary.files.desktop
+    --name-domain io.elementary.files
+    --name-human Files
+    --distribution $DIST

@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-29 00:40+0100\n"
-"PO-Revision-Date: 2018-05-30 15:52+0000\n"
+"POT-Creation-Date: 2018-06-27 08:24-0700\n"
+"PO-Revision-Date: 2018-06-30 13:11+0000\n"
 "Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
-"Language-Team: Russian "
-"<https://weblate.elementary.io/projects/files/files/ru/>\n"
+"Language-Team: Russian <https://weblate.elementary.io/projects/files/files/"
+"ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
 "4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -386,7 +386,7 @@ msgstr ""
 "Все файлы с этого носителя, находящиеся в корзине, будут безвозвратно "
 "удалены."
 
-#: ../libcore/marlin-file-operations.c:1305 ../src/View/Sidebar.vala:1473
+#: ../libcore/marlin-file-operations.c:1305 ../src/View/Sidebar.vala:1510
 msgid "Empty _Trash"
 msgstr "О_чистить корзину"
 
@@ -1334,101 +1334,101 @@ msgstr[1] "Повторить изменение владельца %d объе�
 msgstr[2] "Повторить изменение владельца %d объектов"
 
 #: ../filechooser-module/FileChooserDialog.vala:72
-#: ../src/View/Widgets/TopMenu.vala:64
+#: ../src/View/Widgets/TopMenu.vala:61
 msgid "Previous"
 msgstr "Назад"
 
 #: ../filechooser-module/FileChooserDialog.vala:76
-#: ../src/View/Widgets/TopMenu.vala:69
+#: ../src/View/Widgets/TopMenu.vala:66
 msgid "Next"
 msgstr "Далее"
 
-#: ../src/View/AbstractDirectoryView.vala:816
+#: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
 msgstr "Не удалось открыть этот файл"
 
-#: ../src/View/AbstractDirectoryView.vala:829
+#: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
 msgstr "Не удалось определить тип файла для открытия"
 
-#: ../src/View/AbstractDirectoryView.vala:1564
+#: ../src/View/AbstractDirectoryView.vala:1597
 msgid "Cannot drop this file"
 msgstr "Не удаётся поместить этот файл"
 
-#: ../src/View/AbstractDirectoryView.vala:1564
+#: ../src/View/AbstractDirectoryView.vala:1597
 msgid "Invalid file name provided"
 msgstr "Недопустимое имя файла"
 
-#: ../src/View/AbstractDirectoryView.vala:2032
+#: ../src/View/AbstractDirectoryView.vala:2082
 msgid "Invalid"
 msgstr "Недоступно"
 
-#: ../src/View/AbstractDirectoryView.vala:2038
+#: ../src/View/AbstractDirectoryView.vala:2088
 msgid "Run"
 msgstr "Выполнить"
 
-#: ../src/View/AbstractDirectoryView.vala:2042
+#: ../src/View/AbstractDirectoryView.vala:2092
 msgid "Open in %s"
 msgstr "Открыть в «%s»"
 
-#: ../src/View/AbstractDirectoryView.vala:2052
+#: ../src/View/AbstractDirectoryView.vala:2102
 msgid "Open in"
 msgstr "Открыть в"
 
-#: ../src/View/AbstractDirectoryView.vala:2054
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+#: ../src/View/AbstractDirectoryView.vala:2104
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:466
 msgid "Open with"
 msgstr "Открыть в"
 
-#: ../src/View/AbstractDirectoryView.vala:2113
-#: ../src/Dialogs/PropertiesWindow.vala:602
+#: ../src/View/AbstractDirectoryView.vala:2163
+#: ../src/Dialogs/PropertiesWindow.vala:616
 msgid "Other Application…"
 msgstr "Другое приложение…"
 
-#: ../src/View/AbstractDirectoryView.vala:2377
+#: ../src/View/AbstractDirectoryView.vala:2435
 msgid "Untitled %s"
 msgstr "Безымянный %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2713
-#: ../src/View/AbstractDirectoryView.vala:2905
+#: ../src/View/AbstractDirectoryView.vala:2774
+#: ../src/View/AbstractDirectoryView.vala:2966
 msgid "Cannot remove files from here"
 msgstr "Не удалось удалить файлы отсюда"
 
-#: ../src/View/AbstractDirectoryView.vala:2714
-#: ../src/View/AbstractDirectoryView.vala:2890
-#: ../src/View/AbstractDirectoryView.vala:2906
+#: ../src/View/AbstractDirectoryView.vala:2775
+#: ../src/View/AbstractDirectoryView.vala:2951
+#: ../src/View/AbstractDirectoryView.vala:2967
 msgid "You do not have permission to change this location"
 msgstr "У вас нет прав на изменение этого расположения"
 
-#: ../src/View/AbstractDirectoryView.vala:2865
+#: ../src/View/AbstractDirectoryView.vala:2926
 msgid "Cannot copy files that are in the trash"
 msgstr "Невозможно копировать файлы, находящиеся в корзине"
 
-#: ../src/View/AbstractDirectoryView.vala:2866
+#: ../src/View/AbstractDirectoryView.vala:2927
 msgid "Cutting the selection instead"
 msgstr "Вырезать невыделенное"
 
-#: ../src/View/AbstractDirectoryView.vala:2889
+#: ../src/View/AbstractDirectoryView.vala:2950
 msgid "Cannot paste files here"
 msgstr "Не удалось вставить файлы сюда"
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:396
+#: ../src/View/DirectoryNotFound.vala:27 ../src/View/ViewContainer.vala:396
 msgid "This Folder Does Not Exist"
 msgstr "Эта папка не существует"
 
-#: ../src/View/DirectoryNotFound.vala:28
+#: ../src/View/DirectoryNotFound.vala:27
 msgid "The folder \"%s\" can't be found."
 msgstr "Папка «%s» не найдена."
 
-#: ../src/View/DirectoryNotFound.vala:30
+#: ../src/View/DirectoryNotFound.vala:29
 msgid "Create"
 msgstr "Создать"
 
-#: ../src/View/DirectoryNotFound.vala:30
+#: ../src/View/DirectoryNotFound.vala:29
 msgid "Create the folder \"%s\""
 msgstr "Создать папку «%s»"
 
-#: ../src/View/DirectoryNotFound.vala:44
+#: ../src/View/DirectoryNotFound.vala:43
 msgid ""
 "Failed to create the folder\n"
 "\n"
@@ -1454,109 +1454,109 @@ msgstr "Тип"
 msgid "Modified"
 msgstr "Изменён"
 
-#: ../src/View/Sidebar.vala:481
+#: ../src/View/Sidebar.vala:486
 msgid "Personal"
 msgstr "Личное"
 
-#: ../src/View/Sidebar.vala:482
+#: ../src/View/Sidebar.vala:487
 msgid "Your common places and bookmarks"
 msgstr "Ваши общие места и закладки"
 
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:363
+#: ../src/View/Sidebar.vala:499 ../src/View/ViewContainer.vala:363
 msgid "Home"
 msgstr "Домашняя папка"
 
-#: ../src/View/Sidebar.vala:501
+#: ../src/View/Sidebar.vala:506
 msgid "Open your personal folder"
 msgstr "Открыть вашу личную папку"
 
-#: ../src/View/Sidebar.vala:516
+#: ../src/View/Sidebar.vala:521
 msgid "View the list of recently used files"
 msgstr "Посмотреть список недавно использованных файлов"
 
-#: ../src/View/Sidebar.vala:542 ../libwidgets/Resources.vala:65
+#: ../src/View/Sidebar.vala:547 ../libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Корзина"
 
-#: ../src/View/Sidebar.vala:549
+#: ../src/View/Sidebar.vala:554
 msgid "Open the Trash"
 msgstr "Открыть корзину"
 
-#: ../src/View/Sidebar.vala:554
+#: ../src/View/Sidebar.vala:559
 msgid "Devices"
 msgstr "Устройства"
 
-#: ../src/View/Sidebar.vala:555
+#: ../src/View/Sidebar.vala:560
 msgid "Your local partitions and devices"
 msgstr "Ваши локальные разделы и устройства"
 
-#: ../src/View/Sidebar.vala:561 ../src/View/ViewContainer.vala:365
+#: ../src/View/Sidebar.vala:566 ../src/View/ViewContainer.vala:365
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Файловая система"
 
-#: ../src/View/Sidebar.vala:679 ../libwidgets/Resources.vala:62
+#: ../src/View/Sidebar.vala:687 ../libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Обзор сети"
 
-#: ../src/View/Sidebar.vala:680
+#: ../src/View/Sidebar.vala:688
 msgid "Your network places"
 msgstr "Ваше сетевое окружение"
 
-#: ../src/View/Sidebar.vala:712
+#: ../src/View/Sidebar.vala:720
 msgid "Entire Network"
 msgstr "Вся сеть"
 
-#: ../src/View/Sidebar.vala:719
+#: ../src/View/Sidebar.vala:727
 msgid "Browse the contents of the network"
 msgstr "Обзор содержимого сети"
 
-#: ../src/View/Sidebar.vala:852
+#: ../src/View/Sidebar.vala:861
 msgid "(%s Free of %s)"
 msgstr "(%s свободно из %s)"
 
-#: ../src/View/Sidebar.vala:1324
+#: ../src/View/Sidebar.vala:1357
 msgid "Error mounting volume %s"
 msgstr "Ошибка при монтировании тома %s"
 
-#: ../src/View/Sidebar.vala:1339
+#: ../src/View/Sidebar.vala:1372
 msgid "Unable to start %s"
 msgstr "Не удалось запустить %s"
 
-#: ../src/View/Sidebar.vala:1437
+#: ../src/View/Sidebar.vala:1474
 msgid "Open"
 msgstr "Открыть"
 
-#: ../src/View/Sidebar.vala:1441
+#: ../src/View/Sidebar.vala:1478
 msgid "Open in New _Tab"
 msgstr "Открыть в новой _вкладке"
 
-#: ../src/View/Sidebar.vala:1445
+#: ../src/View/Sidebar.vala:1482
 msgid "Open in New _Window"
 msgstr "Открыть в _новом окне"
 
-#: ../src/View/Sidebar.vala:1451
+#: ../src/View/Sidebar.vala:1488
 msgid "Remove"
 msgstr "Удалить"
 
-#: ../src/View/Sidebar.vala:1455 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1492 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Переименовать"
 
-#: ../src/View/Sidebar.vala:1461
+#: ../src/View/Sidebar.vala:1498
 msgid "_Mount"
 msgstr "_Подключить"
 
-#: ../src/View/Sidebar.vala:1465
+#: ../src/View/Sidebar.vala:1502
 msgid "_Unmount"
 msgstr "_Отключить"
 
-#: ../src/View/Sidebar.vala:1469
+#: ../src/View/Sidebar.vala:1506
 msgid "_Eject"
 msgstr "_Извлечь"
 
-#: ../src/View/Sidebar.vala:1478 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/Sidebar.vala:1515 ../src/Dialogs/PropertiesWindow.vala:121
 #: ../src/View/directory_view_popup.ui:91
 msgid "Properties"
 msgstr "Свойства"
@@ -1633,96 +1633,96 @@ msgstr "Файл не найден"
 msgid "The file selected no longer exists."
 msgstr "Выбранный файл больше не существует."
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:426
 msgid "Open in New Tab"
 msgstr "Открыть в новой вкладке"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:427
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:433
 msgid "Open in New Window"
 msgstr "Открыть в новом окне"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:466
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:473
 msgid "Open in Other Application…"
 msgstr "Открыть в другом приложении…"
 
-#: ../src/View/Widgets/LocationBar.vala:193
+#: ../src/View/Widgets/LocationBar.vala:192
 msgid "Reload this folder"
 msgstr "Обновить эту папку"
 
-#: ../src/View/Widgets/LocationBar.vala:197
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+#: ../src/View/Widgets/LocationBar.vala:196
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
 msgstr "Ищите или введите путь"
 
-#: ../src/View/Widgets/LocationBar.vala:206
+#: ../src/View/Widgets/LocationBar.vala:205
 msgid "Searching…"
 msgstr "Поиск…"
 
-#: ../src/View/Widgets/OverlayBar.vala:216
+#: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
 msgstr "%u папок"
 
-#: ../src/View/Widgets/OverlayBar.vala:218
+#: ../src/View/Widgets/OverlayBar.vala:217
 #: ../src/View/Widgets/OverlayBar.vala:226
 msgid " and %u other item (%s) selected"
 msgstr " и %u другой элемент (%s) выбран"
 
-#: ../src/View/Widgets/OverlayBar.vala:219
+#: ../src/View/Widgets/OverlayBar.vala:218
 #: ../src/View/Widgets/OverlayBar.vala:227
 msgid " and %u other items (%s) selected"
 msgstr " и %u других элементов (%s) выбрано"
 
-#: ../src/View/Widgets/OverlayBar.vala:222
+#: ../src/View/Widgets/OverlayBar.vala:221
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid " selected"
 msgstr " выбрано"
 
 #: ../src/View/Widgets/OverlayBar.vala:224
-#: ../src/Dialogs/PropertiesWindow.vala:1173
+#: ../src/Dialogs/PropertiesWindow.vala:1222
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u папка"
 msgstr[1] "%u папки"
 msgstr[2] "%u папок"
 
-#: ../src/View/Widgets/OverlayBar.vala:232
+#: ../src/View/Widgets/OverlayBar.vala:233
 msgid "%u items selected (%s)"
 msgstr "%u элементов выбрано (%s)"
 
 #. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/Widgets/OverlayBar.vala:274
+#: ../src/View/Widgets/OverlayBar.vala:277
 msgid "%u sub-folder, "
 msgstr "%u подпапка, "
 
-#: ../src/View/Widgets/OverlayBar.vala:274
+#: ../src/View/Widgets/OverlayBar.vala:277
 msgid "%u sub-folders, "
 msgstr "%u подпапки, "
 
 #. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/Widgets/OverlayBar.vala:280
+#: ../src/View/Widgets/OverlayBar.vala:283
 msgid "%u file, "
 msgstr "%u файл, "
 
-#: ../src/View/Widgets/OverlayBar.vala:280
+#: ../src/View/Widgets/OverlayBar.vala:283
 msgid "%u files, "
 msgstr "%u файлы, "
 
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/Widgets/OverlayBar.vala:290
+#: ../src/View/Widgets/OverlayBar.vala:293
 msgid "%s approx."
 msgstr "примерно %s."
 
 #. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/Widgets/OverlayBar.vala:293
+#: ../src/View/Widgets/OverlayBar.vala:296
 msgid "unknown size"
 msgstr "неизвестный размер"
 
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/Widgets/OverlayBar.vala:297
+#: ../src/View/Widgets/OverlayBar.vala:300
 msgid "%u file not readable"
 msgstr "%u нечитаемый файл"
 
-#: ../src/View/Widgets/OverlayBar.vala:297
+#: ../src/View/Widgets/OverlayBar.vala:300
 msgid "%u files not readable"
 msgstr "%u нечитаемых файлов"
 
@@ -1738,31 +1738,31 @@ msgstr "Запись"
 msgid "Execute"
 msgstr "Выполнение"
 
-#: ../src/Application.vala:118
-msgid "Show the version of the program."
+#: ../src/Application.vala:119
+msgid "Show the version of the program"
 msgstr "Показать версию программы."
 
-#: ../src/Application.vala:120
+#: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
 msgstr "Открыть uri в новой вкладке"
 
-#: ../src/Application.vala:122 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Новое окно"
 
-#: ../src/Application.vala:124
-msgid "Quit Files."
+#: ../src/Application.vala:125
+msgid "Quit Files"
 msgstr "Выйти."
 
-#: ../src/Application.vala:126
+#: ../src/Application.vala:127
 msgid "Enable debug logging"
 msgstr "Включить журналирование в целях отладки"
 
-#: ../src/Application.vala:129
-msgid "[URI...]"
+#: ../src/Application.vala:130
+msgid "[URI…]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:132
+#: ../src/Application.vala:133
 msgid ""
 "\n"
 "\n"
@@ -1772,7 +1772,7 @@ msgstr ""
 "\n"
 "Просмотр файловой системы в файловом менеджере"
 
-#: ../src/Application.vala:159
+#: ../src/Application.vala:161
 msgid "--quit cannot be used with URIs."
 msgstr "параметр --quit нельзя использовать с адресами (URI)."
 
@@ -1819,8 +1819,8 @@ msgstr "Ёмкость:"
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:153
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:156
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
-#: ../src/Dialogs/PropertiesWindow.vala:416
-#: ../src/Dialogs/PropertiesWindow.vala:452
+#: ../src/Dialogs/PropertiesWindow.vala:430
+#: ../src/Dialogs/PropertiesWindow.vala:466
 msgid "Unknown"
 msgstr "неизвестно"
 
@@ -1836,15 +1836,15 @@ msgstr "Использовано:"
 msgid "Set as default"
 msgstr "Установить по умолчанию"
 
-#: ../src/Dialogs/PropertiesWindow.vala:220
+#: ../src/Dialogs/PropertiesWindow.vala:221
 msgid "Permissions"
 msgstr "Права доступа"
 
-#: ../src/Dialogs/PropertiesWindow.vala:241
+#: ../src/Dialogs/PropertiesWindow.vala:242
 msgid "Actual Size Could Be Larger"
 msgstr "Фактический размер может быть больше"
 
-#: ../src/Dialogs/PropertiesWindow.vala:241
+#: ../src/Dialogs/PropertiesWindow.vala:242
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
@@ -1854,95 +1854,95 @@ msgstr[1] ""
 msgstr[2] ""
 "%i файлов не могут быть прочитаны из-за прав доступа или других ошибок."
 
-#: ../src/Dialogs/PropertiesWindow.vala:260
-#: ../src/Dialogs/PropertiesWindow.vala:279
+#: ../src/Dialogs/PropertiesWindow.vala:261
+#: ../src/Dialogs/PropertiesWindow.vala:280
 msgid "unknown"
 msgstr "неизвестно"
 
-#: ../src/Dialogs/PropertiesWindow.vala:427
+#: ../src/Dialogs/PropertiesWindow.vala:441
 msgid "Loading…"
 msgstr "Загрузка…"
 
-#: ../src/Dialogs/PropertiesWindow.vala:458
+#: ../src/Dialogs/PropertiesWindow.vala:472
 msgid "Could not be determined"
 msgstr "Не удалось определить"
 
-#: ../src/Dialogs/PropertiesWindow.vala:484
+#: ../src/Dialogs/PropertiesWindow.vala:498
 #: ../libcore/FileConflictDialog.vala:117
 #: ../libcore/FileConflictDialog.vala:145
 msgid "Size:"
 msgstr "Размер:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:491
+#: ../src/Dialogs/PropertiesWindow.vala:505
 #: ../libcore/FileConflictDialog.vala:125
 #: ../libcore/FileConflictDialog.vala:153
 msgid "Type:"
 msgstr "Тип:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:494
+#: ../src/Dialogs/PropertiesWindow.vala:508
 msgid "Contains:"
 msgstr "Содержит:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:516
+#: ../src/Dialogs/PropertiesWindow.vala:530
 msgid "Created:"
 msgstr "Создан:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:525
+#: ../src/Dialogs/PropertiesWindow.vala:539
 msgid "Modified:"
 msgstr "Изменён:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:536
+#: ../src/Dialogs/PropertiesWindow.vala:550
 msgid "Deleted:"
 msgstr "Удалён:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:546
-msgid "Mimetype:"
+#: ../src/Dialogs/PropertiesWindow.vala:560
+msgid "MIME type:"
 msgstr "MIME-тип:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:553
+#: ../src/Dialogs/PropertiesWindow.vala:567
 msgid "Resolution:"
 msgstr "Разрешение:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/PropertiesWindow.vala:575
 #: ../src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr "Адрес:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:571
+#: ../src/Dialogs/PropertiesWindow.vala:585
 msgid "Target:"
 msgstr "Цель:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:579
+#: ../src/Dialogs/PropertiesWindow.vala:593
 msgid "Original Location:"
 msgstr "Исходное расположение:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:622
+#: ../src/Dialogs/PropertiesWindow.vala:636
 msgid "Open with:"
 msgstr "Открывать с помощью:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:875
-#: ../src/Dialogs/PropertiesWindow.vala:885
+#: ../src/Dialogs/PropertiesWindow.vala:903
+#: ../src/Dialogs/PropertiesWindow.vala:913
 msgid "Owner:"
 msgstr "Владелец:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:879
-#: ../src/Dialogs/PropertiesWindow.vala:888
+#: ../src/Dialogs/PropertiesWindow.vala:907
+#: ../src/Dialogs/PropertiesWindow.vala:916
 msgid "Group:"
 msgstr "Группа:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:891
+#: ../src/Dialogs/PropertiesWindow.vala:919
 msgid "Everyone:"
 msgstr "Все:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1151
+#: ../src/Dialogs/PropertiesWindow.vala:1200
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u подпапка"
 msgstr[1] "%u подпапки"
 msgstr[2] "%u подпапок"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1155
-#: ../src/Dialogs/PropertiesWindow.vala:1177
+#: ../src/Dialogs/PropertiesWindow.vala:1204
+#: ../src/Dialogs/PropertiesWindow.vala:1226
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u файл"
@@ -1950,11 +1950,11 @@ msgstr[1] "%u файла"
 msgstr[2] "%u файлов"
 
 #. /TRANSLATORS: folders, files
-#: ../src/Dialogs/PropertiesWindow.vala:1160
+#: ../src/Dialogs/PropertiesWindow.vala:1209
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1181
+#: ../src/Dialogs/PropertiesWindow.vala:1230
 msgid "%u selected item"
 msgid_plural "%u selected items"
 msgstr[0] "%u выбранный элемент"
@@ -1962,7 +1962,7 @@ msgstr[1] "%u выбранных элемента"
 msgstr[2] "%u выбранных элементов"
 
 #. /TRANSLATORS: total (folders, files)
-#: ../src/Dialogs/PropertiesWindow.vala:1183
+#: ../src/Dialogs/PropertiesWindow.vala:1232
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
@@ -1987,51 +1987,51 @@ msgstr "Выполнено %s"
 msgid "All file operations have ended"
 msgstr "Все операции с файлами завершены"
 
-#: ../src/ProgressUIHandler.vala:233
+#: ../src/ProgressUIHandler.vala:236
 msgid "Show Copy Dialog"
 msgstr "Показать диалог копирования"
 
-#: ../src/ProgressUIHandler.vala:245
+#: ../src/ProgressUIHandler.vala:248
 msgid "Cancel All In-progress Actions"
 msgstr "Отменить все выполняемые операции"
 
-#: ../src/Utils/MimeActions.vala:260
+#: ../src/Utils/MimeActions.vala:275
 msgid "Multiple file types selected"
 msgstr "Выбраны файлы нескольких типов"
 
-#: ../src/Utils/MimeActions.vala:261
+#: ../src/Utils/MimeActions.vala:276
 msgid "No single app can open all these types of file"
 msgstr "Ни одно приложение не может открыть все эти типы файлов"
 
-#: ../src/Utils/MimeActions.vala:288
+#: ../src/Utils/MimeActions.vala:303
 msgid "Failed to open files"
 msgstr "Не удалось открыть файлы"
 
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "Не удалось открыть идентефикаторы"
+#: ../src/Utils/MimeActions.vala:313
+msgid "Could not open URIs"
+msgstr "Не удается открыть идентификаторы"
 
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
+#: ../src/Utils/MimeActions.vala:316
+msgid "Could not open files or URIs with this app"
 msgstr "Не удалось открыть файлы или идентификаторы с помощью этого приложения"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "Не удалось запустить «%s»"
 
-#: ../libcore/DndHandler.vala:93
+#: ../libcore/DndHandler.vala:95
 msgid "Move Here"
 msgstr "Переместить сюда"
 
-#: ../libcore/DndHandler.vala:94
+#: ../libcore/DndHandler.vala:96
 msgid "Copy Here"
 msgstr "Копировать сюда"
 
-#: ../libcore/DndHandler.vala:95
+#: ../libcore/DndHandler.vala:97
 msgid "Link Here"
 msgstr "Создать ссылку здесь"
 
-#: ../libcore/DndHandler.vala:98 ../libcore/FileConflictDialog.vala:186
+#: ../libcore/DndHandler.vala:100 ../libcore/FileConflictDialog.vala:186
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -2140,31 +2140,31 @@ msgstr "Не удалось определить исходное располо
 msgid "The item cannot be restored from trash"
 msgstr "Объект не может быть восстановлен из корзины"
 
-#: ../libcore/FileUtils.vala:436
+#: ../libcore/FileUtils.vala:438
 msgid "Could not rename to '%s'"
 msgstr "Невозможно изменить название на «%s»"
 
-#: ../libcore/FileUtils.vala:527
+#: ../libcore/FileUtils.vala:529
 msgid "Today at %-H:%M"
 msgstr "Сегодня в %-H:%M"
 
-#: ../libcore/FileUtils.vala:529
+#: ../libcore/FileUtils.vala:531
 msgid "Today at %-I:%M %p"
 msgstr "Сегодня в %H:%M"
 
-#: ../libcore/FileUtils.vala:535
+#: ../libcore/FileUtils.vala:537
 msgid "Yesterday at %-H:%M"
 msgstr "Вчера в %-H:%M"
 
-#: ../libcore/FileUtils.vala:537
+#: ../libcore/FileUtils.vala:539
 msgid "Yesterday at %-I:%M %p"
 msgstr "Вчера в %H:%M"
 
-#: ../libcore/FileUtils.vala:544
+#: ../libcore/FileUtils.vala:546
 msgid "%A at %-H:%M"
 msgstr "%A, в %-H:%M"
 
-#: ../libcore/FileUtils.vala:546
+#: ../libcore/FileUtils.vala:548
 msgid "%A at %-I:%M %p"
 msgstr "%A, %H:%M"
 
@@ -2177,7 +2177,7 @@ msgstr "Идёт подготовка"
 msgid "Show more _details"
 msgstr "Показать по_дробности"
 
-#: ../libcore/gof-directory-async.vala:659
+#: ../libcore/gof-directory-async.vala:661
 msgid "Server did not respond within time limit"
 msgstr "Сервер не ответил в течение срока"
 
@@ -2185,7 +2185,7 @@ msgstr "Сервер не ответил в течение срока"
 msgid "Navigate to %s"
 msgstr "Перейти к %s"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:283
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:284
 msgid "Go to %s"
 msgstr "Перейти к %s"
 
@@ -2237,19 +2237,19 @@ msgstr "Недавние"
 msgid "MTP"
 msgstr "MTP"
 
-#: ../libwidgets/View/SearchResults.vala:227
+#: ../libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
 msgstr "В этой папке"
 
-#: ../libwidgets/View/SearchResults.vala:232
+#: ../libwidgets/View/SearchResults.vala:227
 msgid "Below This Folder"
 msgstr "Ниже этой папки"
 
-#: ../libwidgets/View/SearchResults.vala:237
+#: ../libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
 msgstr "Закладки"
 
-#: ../libwidgets/View/SearchResults.vala:242
+#: ../libwidgets/View/SearchResults.vala:237
 msgid "Recently used"
 msgstr "Недавние"
 
@@ -2374,6 +2374,9 @@ msgstr "В обратном порядке"
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
 msgstr "Папки перед файлами"
+
+#~ msgid "Failed to open uris"
+#~ msgstr "Не удалось открыть идентефикаторы"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (некорректные символы)"
