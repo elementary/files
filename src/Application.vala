@@ -36,15 +36,16 @@ public class Marlin.Application : Gtk.Application {
 
     construct {
         /* Needed by Glib.Application */
-        this.application_id = Marlin.APP_ID;  //Ensures an unique instance.
+        this.application_id = Marlin.APP_ID; //Ensures an unique instance.
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
     }
 
     public override void startup () {
         base.startup ();
 
-        if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG)
+        if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG) {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
+        }
 
         message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
 
@@ -115,18 +116,18 @@ public class Marlin.Application : Gtk.Application {
 
         OptionEntry[] options = new OptionEntry [7];
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
-                        N_("Show the version of the program."), null };
+                        N_("Show the version of the program"), null };
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
                         N_("Open uri(s) in new tab"), null };
         options [2] = { "new-window", 'n', 0, OptionArg.NONE, out create_new_window,
                         N_("New Window"), null };
         options [3] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
-                        N_("Quit Files."), null };
+                        N_("Quit Files"), null };
         options [4] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
                         N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
         options [5] = { "", 0, 0, OptionArg.STRING_ARRAY, ref remaining,
-                        null, N_("[URI...]") };
+                        null, N_("[URI…]") };
         options [6] = { null };
 
         var context = new OptionContext (_("\n\nBrowse the file system with the file manager"));
@@ -146,8 +147,9 @@ public class Marlin.Application : Gtk.Application {
         }
 
         /* Handle arguments */
-        if (debug)
+        if (debug) {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
+        }
 
         if (version) {
             cmd.print ("io.elementary.files %s\n", Config.VERSION);
@@ -168,7 +170,7 @@ public class Marlin.Application : Gtk.Application {
 
         /* Convert remaining arguments to GFiles */
         foreach (string filepath in remaining) {
-            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir());
+            string path = PF.FileUtils.sanitize_path (filepath, GLib.Environment.get_current_dir ());
             GLib.File? file = null;
 
             if (path.length > 0) {
@@ -202,8 +204,9 @@ public class Marlin.Application : Gtk.Application {
 
     public new void quit () {
         /* Protect against holding Ctrl-Q down */
-        if (quitting)
+        if (quitting) {
             return;
+        }
 
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();
@@ -235,6 +238,7 @@ public class Marlin.Application : Gtk.Application {
         Preferences.marlin_list_view_settings = new Settings ("io.elementary.files.list-view");
         Preferences.marlin_column_view_settings = new Settings ("io.elementary.files.column-view");
         Preferences.gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
+        Preferences.gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
 
         /* Bind settings with GOFPreferences */
         Preferences.settings.bind ("show-hiddenfiles",
@@ -247,6 +251,8 @@ public class Marlin.Application : Gtk.Application {
                                    GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
         Preferences.gnome_interface_settings.bind ("clock-format",
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
+        Preferences.gtk_file_chooser_settings.bind ("sort-directories-first",
+                                   GOF.Preferences.get_default (), "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
     public Marlin.View.Window? create_window (File? location = null,

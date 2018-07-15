@@ -138,7 +138,7 @@ namespace Marlin.Places {
         }
 
         public Sidebar (Marlin.View.Window window, bool local_only = false) {
-            init ();  /* creates the Gtk.TreeModel store. */
+            init (); /* creates the Gtk.TreeModel store. */
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
@@ -348,8 +348,9 @@ namespace Marlin.Places {
         }
 
         private void get_eject_icon () {
-            if (eject_icon == null)
+            if (eject_icon == null) {
                 eject_icon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
+            }
         }
 
         protected Gtk.TreeIter? add_category (Marlin.PlaceType place_type, string name, string tooltip) {
@@ -477,10 +478,11 @@ namespace Marlin.Places {
             this.last_selected_uri = null;
             this.n_builtins_before = 0;
 
-            if ((tree_view.get_selection ()).get_selected (null, out iter))
+            if ((tree_view.get_selection ()).get_selected (null, out iter)) {
                 store.@get (iter, Column.URI, &last_selected_uri);
-            else
+            } else {
                 last_selected_uri = null;
+            }
 
             store.clear ();
 
@@ -610,8 +612,9 @@ namespace Marlin.Places {
             /* add all volumes that are not associated with a drive */
             volumes = volume_monitor.get_volumes ();
             foreach (Volume volume in volumes) {
-                if (volume.get_drive () != null)
+                if (volume.get_drive () != null) {
                     continue;
+                }
 
                 var mount = volume.get_mount ();
                 if (mount != null) {
@@ -647,12 +650,14 @@ namespace Marlin.Places {
             GLib.List<Mount> network_mounts = null;
             var mounts = volume_monitor.get_mounts ();
             foreach (Mount mount in mounts) {
-                if (mount.is_shadowed ())
+                if (mount.is_shadowed ()) {
                     continue;
+                }
 
                 var volume = mount.get_volume ();
-                if (volume != null)
+                if (volume != null) {
                     continue;
+                }
 
                 root = mount.get_root ();
                 if (root.is_native ()) {
@@ -731,10 +736,11 @@ namespace Marlin.Places {
             expander_init_pref_state (tree_view);
 
             /* select any previously selected place or any place matching slot location */
-            if (last_selected_uri != null)
+            if (last_selected_uri != null) {
                 set_matching_selection (this.last_selected_uri);
-            else
-                set_matching_selection  (slot_location);
+            } else {
+                set_matching_selection (slot_location);
+            }
         }
 
         private void add_bookmark (Gtk.TreeIter iter, Marlin.Bookmark bm, uint index) {
@@ -910,9 +916,11 @@ namespace Marlin.Places {
                     store.get_iter (out iter, drag_row_ref.get_path ());
                     remove_bookmark_iter (iter);
                 }
+
                 return true;
-            } else
+            } else {
                 return false;
+            }
         }
 
         private void drag_end_callback (Gdk.DragContext context) {
@@ -924,28 +932,35 @@ namespace Marlin.Places {
                                            int x,
                                            int y,
                                            uint time) {
-            if (!received_drag_data
-             && !get_drag_data (tree_view, context, time))
+            if (!received_drag_data &&
+                !get_drag_data (tree_view, context, time)) {
+
                     return false;
+            }
 
             Gtk.TreeViewDropPosition pos;
             Gtk.TreePath path;
-            if (!compute_drop_position (tree_view, x, y, out path, out pos))
+            if (!compute_drop_position (tree_view, x, y, out path, out pos)) {
                 return false;
+            }
 
             Gdk.DragAction action = Gdk.DragAction.DEFAULT;
-            if (pos == Gtk.TreeViewDropPosition.BEFORE
-             || pos == Gtk.TreeViewDropPosition.AFTER) {
-                if (received_drag_data
-                 && drag_data_info == TargetType.GTK_TREE_MODEL_ROW) {
+
+            if (pos == Gtk.TreeViewDropPosition.BEFORE ||
+                pos == Gtk.TreeViewDropPosition.AFTER) {
+
+                if (received_drag_data &&
+                    drag_data_info == TargetType.GTK_TREE_MODEL_ROW) {
+
                     action = Gdk.DragAction.MOVE;
                     internal_drag_started = true;
-                }
-                else if (drag_list != null
-                      && can_accept_files_as_bookmarks (drag_list))
+
+                } else if (drag_list != null &&
+                           can_accept_files_as_bookmarks (drag_list)) {
+
                     action = Gdk.DragAction.COPY;
-            }
-            else if (drag_list != null && path != null) {
+                }
+            } else if (drag_list != null && path != null) {
                 Gtk.TreeIter iter;
                 store.get_iter (out iter, path);
                 string uri;
@@ -985,16 +1000,18 @@ namespace Marlin.Places {
             return retval;
         }
 
-        private  bool get_drag_data (Gtk.TreeView tree_view,
-                                     Gdk.DragContext context,
-                                     uint32 time) {
+        private bool get_drag_data (Gtk.TreeView tree_view,
+                                    Gdk.DragContext context,
+                                    uint32 time) {
+
             var target_list = Gtk.drag_dest_get_target_list (tree_view);
             var target = Gtk.drag_dest_find_target (tree_view,
                                                     context,
                                                     target_list);
 
-            if (target == Gdk.Atom.NONE)
+            if (target == Gdk.Atom.NONE) {
                 return false;
+            }
 
             Gtk.drag_get_data ((Gtk.Widget)tree_view, context, target, time);
             return true;
@@ -1010,8 +1027,8 @@ namespace Marlin.Places {
             if (!received_drag_data) {
                 this.drag_list = null;
                 this.drag_row_ref = null;
-                if (selection_data.get_target () != Gdk.Atom.NONE
-                    && info == TargetType.TEXT_URI_LIST) {
+                if (selection_data.get_target () != Gdk.Atom.NONE &&
+                    info == TargetType.TEXT_URI_LIST) {
 
                     string s = (string)(selection_data.get_data ());
                     drag_list = PF.FileUtils.files_from_uris (s);
@@ -1022,14 +1039,16 @@ namespace Marlin.Places {
                         drag_row_ref = new Gtk.TreeRowReference (store, path);
                     }
                 }
+
                 received_drag_data = true;
                 drag_data_info = info;
             }
 
             GLib.Signal.stop_emission_by_name (widget, "drag-data-received");
 
-            if (!drop_occurred) /* called from drag_motion_callback */
+            if (!drop_occurred) { /* called from drag_motion_callback */
                 return;
+            }
 
             drop_occurred = false;
             bool success = process_drop (context, x, y, info);
@@ -1048,14 +1067,17 @@ namespace Marlin.Places {
                     return false;
                 }
 
-                if (drop_pos == Gtk.TreeViewDropPosition.BEFORE
-                 || drop_pos == Gtk.TreeViewDropPosition.AFTER)
+                if (drop_pos == Gtk.TreeViewDropPosition.BEFORE ||
+                    drop_pos == Gtk.TreeViewDropPosition.AFTER) {
+
                     return process_drop_between (iter, drop_pos, info);
-                else
+                } else {
                     return process_drop_onto (iter, context, info);
+                }
             } else {
                 warning ("compute drop position failed after drop onto sidebar");
             }
+
             return false;
         }
 
@@ -1128,7 +1150,7 @@ namespace Marlin.Places {
             }
         }
 
-        private  bool can_accept_file_as_bookmark (GLib.File file) {
+        private bool can_accept_file_as_bookmark (GLib.File file) {
             return file.query_exists (null) && window.can_bookmark_uri (file.get_uri ());
         }
 
@@ -1138,9 +1160,11 @@ namespace Marlin.Places {
          */
             int count = 0;
             items.@foreach ((file) => {
-                if (can_accept_file_as_bookmark (file))
+                if (can_accept_file_as_bookmark (file)) {
                     count++;
+                }
             });
+
             return count > 0 && count <= MAX_BOOKMARKS_DROPPED;
         }
 
@@ -1152,8 +1176,9 @@ namespace Marlin.Places {
 
             GLib.List<string> uris = null;
             drag_list.@foreach ((file) => {
-                if (can_accept_file_as_bookmark (file))
+                if (can_accept_file_as_bookmark (file)) {
                     uris.prepend (file.get_uri ());
+                }
             });
 
             if (uris != null) {
@@ -1173,7 +1198,7 @@ namespace Marlin.Places {
             bookmarks.insert_uri_at_end (uri, label);
         }
 
-        private  bool drag_scroll_timer () {
+        private bool drag_scroll_timer () {
             Gtk.Adjustment adjustment;
             double val;
             int offset;
@@ -1191,8 +1216,9 @@ namespace Marlin.Places {
                 window.get_geometry (null, null, out w, out h);
                 /* check if we are near the edge (vertical) */
                 offset = y - (2 * 20);
-                if (offset > 0)
+                if (offset > 0) {
                     offset = int.max (y - (h - 2 * 20), 0);
+                }
 
                 /* change the vertical adjustment appropriately */
                 if (offset != 0) {
@@ -1208,9 +1234,9 @@ namespace Marlin.Places {
                 }
                 /* check if we are near the edge (horizontal) */
                  offset = x - (2 * 20);
-                 if (offset > 0)
+                if (offset > 0) {
                     offset = int.max (x - (w - 2 * 20), 0);
-
+                }
                 /* change the horizontal adjustment appropriately */
                 if (offset != 0) {
                     /* determine the horizontal adjustment */
@@ -1272,12 +1298,14 @@ namespace Marlin.Places {
         private void open_selected_bookmark (Gtk.TreeModel model,
                                              Gtk.TreePath path,
                                              Marlin.OpenFlag open_flag) {
-            if (path == null)
+            if (path == null) {
                 return;
+            }
 
             Gtk.TreeIter iter;
-            if (!store.get_iter (out iter, path))
+            if (!store.get_iter (out iter, path)) {
                 return;
+            }
 
             string? uri = null;
             Marlin.PluginCallbackFunc? f = null;
@@ -1296,12 +1324,14 @@ namespace Marlin.Places {
                             Column.DRIVE, out drive,
                             Column.VOLUME, out volume);
 
-                if (volume != null && !mounting)
+                if (volume != null && !mounting) {
                     mount_volume (volume, mount_op, open_flag);
 
-                else if (drive != null && volume == null
-                        && (drive.can_start () || drive.can_start_degraded ()))
+                } else if (drive != null && volume == null &&
+                           (drive.can_start () || drive.can_start_degraded ())) {
+
                     start_drive (drive, mount_op);
+                }
             }
         }
 
@@ -1328,7 +1358,7 @@ namespace Marlin.Places {
                     }
                 } catch (GLib.Error error) {
                     var primary = _("Error mounting volume %s").printf (volume.get_name ());
-                    Eel.show_error_dialog (primary, error.message, null);
+                    PF.Dialogs.show_error_dialog (primary, error.message, window);
                 }
             });
         }
@@ -1343,7 +1373,7 @@ namespace Marlin.Places {
                     }
                     catch (GLib.Error error) {
                             var primary = _("Unable to start %s").printf (drive.get_name ());
-                            Eel.show_error_dialog (primary, error.message, null);
+                            PF.Dialogs.show_error_dialog (primary, error.message, window);
                     }
                 }
             );
@@ -1351,11 +1381,11 @@ namespace Marlin.Places {
 
         private void rename_selected_bookmark () {
             Gtk.TreeIter iter;
-            if (!get_selected_iter ( out iter))
+            if (!get_selected_iter ( out iter)) {
                 return;
-
-            if (!bookmark_at_iter (iter))
+            } else if (!bookmark_at_iter (iter)) {
                  return;
+            }
 
             var path = store.get_path (iter);
             var column = tree_view.get_column (0);
@@ -1372,18 +1402,21 @@ namespace Marlin.Places {
 
         private void remove_selected_bookmarks () {
             Gtk.TreeIter iter;
-            if (!get_selected_iter (out iter))
+            if (!get_selected_iter (out iter)) {
                 return;
+            }
 
             remove_bookmark_iter (iter);
         }
 
         private void remove_bookmark_iter (Gtk.TreeIter? iter) {
-            if (iter == null)
+            if (iter == null) {
                 return;
+            }
 
-            if (!bookmark_at_iter (iter))
+            if (!bookmark_at_iter (iter)) {
                  return;
+            }
 
             uint index;
             store.@get (iter, Column.INDEX, out index);
@@ -1398,8 +1431,9 @@ namespace Marlin.Places {
                 store.get_iter (out iter, drag_row_ref.get_path ());
                 drag_row_ref = null;
 
-                if (!bookmark_at_iter (iter))
+                if (!bookmark_at_iter (iter)) {
                     return;
+                }
 
                 uint old_position;
                 store.@get (iter, Column.INDEX, out old_position);
@@ -1513,7 +1547,7 @@ namespace Marlin.Places {
 
 /* TREEVIEW FUNCTIONS */
 
-        private  bool get_selected_iter (out Gtk.TreeIter iter) {
+        private bool get_selected_iter (out Gtk.TreeIter iter) {
             return (tree_view.get_selection ()).get_selected (null, out iter);
         }
 
@@ -1525,8 +1559,9 @@ namespace Marlin.Places {
 
             var selection = tree_view.get_selection ();
             selection.unselect_all ();
-            if (location == null)
+            if (location == null) {
                 return;
+            }
 
             var file1 = GLib.File.new_for_path (location);
 
@@ -1539,8 +1574,9 @@ namespace Marlin.Places {
                 while (child_valid) {
                     string uri;
                     store.@get (child_iter, Column.URI, out uri);
-                    if (uri == null)
+                    if (uri == null) {
                         break;
+                    }
 
                     var file2 = GLib.File.new_for_path (uri);
                     if (file1.equal (file2)) {
@@ -1550,8 +1586,10 @@ namespace Marlin.Places {
                         valid = false; /* escape from outer loop */
                         break;
                     }
+
                     child_valid = store.iter_next (ref child_iter);
                 }
+
                 valid = valid && store.iter_next (ref iter);
             }
         }
@@ -1605,22 +1643,25 @@ namespace Marlin.Places {
 
         private void expander_init_pref_state (Gtk.TreeView tree_view) {
             var path = new Gtk.TreePath.from_indices (0,-1);
-            if (Preferences.settings.get_boolean ("sidebar-cat-personal-expander"))
+            if (Preferences.settings.get_boolean ("sidebar-cat-personal-expander")) {
                 tree_view.expand_row (path, false);
-            else
+            } else {
                 tree_view.collapse_row (path);
+            }
 
             path = new Gtk.TreePath.from_indices (1,-1);
-            if (Preferences.settings.get_boolean ("sidebar-cat-devices-expander"))
+            if (Preferences.settings.get_boolean ("sidebar-cat-devices-expander")) {
                 tree_view.expand_row (path, false);
-            else
+            } else {
                 tree_view.collapse_row (path);
+            }
 
             path = new Gtk.TreePath.from_indices (2,-1);
-            if (Preferences.settings.get_boolean ("sidebar-cat-network-expander"))
+            if (Preferences.settings.get_boolean ("sidebar-cat-network-expander")) {
                 tree_view.expand_row (path, false);
-            else
+            } else {
                 tree_view.collapse_row (path);
+            }
         }
 
         private void category_renderer_func (Gtk.CellLayout layout,
@@ -1753,15 +1794,16 @@ namespace Marlin.Places {
         private bool button_press_event_cb (Gtk.Widget widget, Gdk.EventButton event) {
             click_path = null;
             var tree_view = widget as Gtk.TreeView;
-            if (event.window != tree_view.get_bin_window ())
+            if (event.window != tree_view.get_bin_window ()) {
                 return true;
-
-            if (renaming)
+            } else if (renaming) {
                 return true;
+            }
 
             Gtk.TreePath? path = get_path_at_click_position (event);
-            if (path == null)
+            if (path == null) {
                 return false;
+            }
 
             this.click_path = path.copy ();
 
@@ -1771,26 +1813,30 @@ namespace Marlin.Places {
                  * is a valid area.
                  */
                     if (path != null && category_at_path (path)) {
-                        if (tree_view.is_row_expanded (path))
+                        if (tree_view.is_row_expanded (path)) {
                             tree_view.collapse_row (path);
-                        else
+                        } else {
                             tree_view.expand_row (path, false);
+                        }
 
                         return true;
-                    } else if (!bookmark_at_path (path))
+                    } else if (!bookmark_at_path (path)) {
                         block_drag_and_drop ();
+                    }
 
                     break;
 
                 case Gdk.BUTTON_SECONDARY:
-                    if (path != null && !category_at_path (path))
+                    if (path != null && !category_at_path (path)) {
                         popup_menu (event);
+                    }
 
                     break;
 
                 case Gdk.BUTTON_MIDDLE:
-                    if (path != null && !category_at_path (path))
+                    if (path != null && !category_at_path (path)) {
                         open_selected_bookmark (store, path, Marlin.OpenFlag.NEW_TAB);
+                    }
 
                     break;
             }
@@ -1812,8 +1858,9 @@ namespace Marlin.Places {
                 unblock_drag_and_drop ();
             }
 
-            if (renaming)
+            if (renaming) {
                 return true;
+            }
 
             if (over_eject_button (event)) {
                 eject_or_unmount_bookmark (path,true);
@@ -1821,14 +1868,16 @@ namespace Marlin.Places {
             }
 
             if (event.button ==1) {
-                if (event.window != tree_view.get_bin_window ())
+                if (event.window != tree_view.get_bin_window ()) {
                     return false;
+                }
 
                 if (path != null) {
-                    if ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0)
+                    if ((event.state & Gdk.ModifierType.CONTROL_MASK) != 0) {
                         open_selected_bookmark (store, path, Marlin.OpenFlag.NEW_TAB);
-                    else
+                    } else {
                         open_selected_bookmark (store, path, Marlin.OpenFlag.DEFAULT);
+                    }
                 }
             }
 
@@ -1862,14 +1911,16 @@ namespace Marlin.Places {
 
             int cell_x, cell_y;
             if (tree_view.get_path_at_pos (x, y, out path, out column, out cell_x, out cell_y)) {
-                if (path == null)
+                if (path == null) {
                     return false;
+                }
 
                 store.get_iter (out iter, path);
                 store.@get (iter, Column.CAN_EJECT, out show_eject);
 
-                if (!show_eject || ejecting_or_unmounting)
+                if (!show_eject || ejecting_or_unmounting) {
                     return false;
+                }
 
                 tree_view.style_get ("horizontal-separator", out hseparator, null);
                 /* reload the cell attributes for this particular row */
@@ -1877,8 +1928,9 @@ namespace Marlin.Places {
                 column.cell_get_position (eject_spinner_cell_renderer, out x_offset, out width);
 
                 x_offset += width - hseparator - eject_button_size;
-                if (cell_x - x_offset >= 0 && cell_x - x_offset <= eject_button_size)
+                if (cell_x - x_offset >= 0 && cell_x - x_offset <= eject_button_size) {
                     return true;
+                }
             }
 
             return false;
@@ -2075,10 +2127,11 @@ namespace Marlin.Places {
 
         private bool eject_or_unmount_selection () {
             Gtk.TreeIter iter;
-            if (!get_selected_iter (out iter))
+            if (!get_selected_iter (out iter)) {
                 return false;
-            else
+            } else {
                 return eject_or_unmount_bookmark (store.get_path (iter), true);
+            }
         }
 
 /* POPUP MENU CALLBACK FUNCTIONS */
@@ -2103,13 +2156,15 @@ namespace Marlin.Places {
 
         private void mount_selected_shortcut () {
             Gtk.TreeIter iter;
-            if (!get_selected_iter (out iter))
+            if (!get_selected_iter (out iter)) {
                 return;
+            }
 
             Volume volume;
             store.@get (iter, Column.VOLUME, out volume);
-            if (volume != null)
+            if (volume != null) {
                 Marlin.FileOperations.mount_volume (null, volume, false);
+            }
          }
 
         private void remove_shortcut_cb (Gtk.MenuItem item) {
@@ -2123,8 +2178,9 @@ namespace Marlin.Places {
         private void show_drive_info_cb (Gtk.MenuItem item) {
             Gtk.TreeIter iter;
 
-            if (!get_selected_iter (out iter))
+            if (!get_selected_iter (out iter)) {
                 return;
+            }
 
             Mount mount;
             Volume volume;
@@ -2140,10 +2196,8 @@ namespace Marlin.Places {
                 Marlin.FileOperations.mount_volume_full (null, volume, false, (vol, win) => {
                     new Marlin.View.VolumePropertiesWindow (vol.get_mount (), (Gtk.Window) win);
                 }, window);
-            } else {
-                if (mount != null || uri == "file:///") {
-                    new Marlin.View.VolumePropertiesWindow (mount, window);
-                }
+            } else if (mount != null || uri == "file:///") {
+                new Marlin.View.VolumePropertiesWindow (mount, window);
             }
         }
 
@@ -2167,8 +2221,9 @@ namespace Marlin.Places {
 
         private void empty_trash_cb (Gtk.MenuItem item) {
             Gtk.TreeIter iter;
-            if (!get_selected_iter (out iter))
+            if (!get_selected_iter (out iter)) {
                 return;
+            }
 
             Mount mount;
             string uri;
@@ -2176,12 +2231,13 @@ namespace Marlin.Places {
                         Column.URI, out uri,
                         Column.MOUNT, out mount);
 
-            if (mount != null)
+            if (mount != null) {
                 /* A particular mount was clicked - empty only the trash on the mount */
                 empty_trash_on_mount (mount);
-            else
+            } else {
                 /* Trash icon was clicked - empty all trash directories, including any mounted. */
                 Marlin.FileOperations.empty_trash (window);
+            }
         }
 
 /* VOLUME MONITOR CALLBACK FUNCTIONS */
@@ -2217,21 +2273,24 @@ namespace Marlin.Places {
         }
 
         private void drive_changed_callback (VolumeMonitor volume_monitor, Drive drive) {
-            if (ejecting_or_unmounting)
+            if (ejecting_or_unmounting) {
                 return;
+            }
 
             if (!drive.is_media_check_automatic ()) {
                 drive.poll_for_media.begin (null, (obj, res) => {
                     try {
-                        if (drive.poll_for_media.end (res))
+                        if (drive.poll_for_media.end (res)) {
                             eject_drive_if_no_media (drive);
+                        }
                     }
                     catch (GLib.Error e) {
                         warning ("Could not poll for media");
                     }
                 });
-            } else
+            } else {
                  eject_drive_if_no_media (drive);
+            }
         }
 
         private void eject_drive_if_no_media (Drive drive) {
@@ -2241,7 +2300,6 @@ namespace Marlin.Places {
                 drive.can_poll_for_media () &&
                 !drive.has_media () &&
                 drive.can_eject ()) {
-
                 do_unmount_or_eject (null, null, drive, null, drive.can_eject ());
             }
         }
@@ -2353,12 +2411,14 @@ namespace Marlin.Places {
         }
 
         private void check_popup_sensitivity () {
-            if (popupmenu == null)
+            if (popupmenu == null) {
                 return;
+            }
 
             Gtk.TreeIter iter;
-            if (!get_selected_iter (out iter))
+            if (!get_selected_iter (out iter)) {
                 return;
+            }
 
             Marlin.PlaceType type;
             Drive drive;
@@ -2428,13 +2488,15 @@ namespace Marlin.Places {
                 Gtk.TreeIter iter;
                 store.get_iter (out iter, path);
                 return bookmark_at_iter (iter);
-            } else
+            } else {
                 return false;
+            }
         }
 
         private bool bookmark_at_iter (Gtk.TreeIter? iter) {
-            if (iter == null)
+            if (iter == null) {
                 return false;
+            }
 
             bool is_bookmark;
             store.@get (iter, Column.BOOKMARK, out is_bookmark, -1);
@@ -2466,6 +2528,5 @@ namespace Marlin.Places {
                                                 Gdk.DragAction.MOVE);
             dnd_disabled = false;
         }
-
     }
 }

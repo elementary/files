@@ -27,10 +27,11 @@ namespace Marlin {
         private string custom_name = "";
         public string label {
             get {
-                if (custom_name != "")
+                if (custom_name != "") {
                     return custom_name;
-                else
+                } else {
                     return this.gof_file.get_display_name ();
+                }
             }
 
             set {
@@ -51,8 +52,9 @@ namespace Marlin {
         };
 
         private Bookmark (GOF.File gof_file, string? label = null) {
-            if (label != null)
+            if (label != null) {
                 this.label = label;
+            }
 
             this.gof_file = gof_file;
             connect_file ();
@@ -79,15 +81,17 @@ namespace Marlin {
         }
 
         public GLib.Icon get_icon () {
-            if (gof_file.icon == null)
+            if (gof_file.icon == null) {
                 gof_file.get_folder_icon_from_uri_or_path ();
+            }
 
             return gof_file.icon;
         }
 
         public bool uri_known_not_to_exist () {
-            if (!gof_file.location.is_native ())
+            if (!gof_file.location.is_native ()) {
                 return false;
+            }
 
             string path_name = gof_file.location.get_path ();
             return !GLib.FileUtils.test (path_name, GLib.FileTest.EXISTS);
