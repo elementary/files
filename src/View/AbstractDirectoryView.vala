@@ -3309,7 +3309,6 @@ namespace FM {
                              */
 
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
-                                update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 unblock_drag_and_drop ();
@@ -3366,7 +3365,6 @@ namespace FM {
 
                     unblock_drag_and_drop ();
                     /* Ensure selected files list and menu actions are updated before context menu shown */
-                    update_selected_files_and_menu ();
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -3400,16 +3398,20 @@ namespace FM {
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 if (should_activate) {
-                    activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                    /* Need Idle else can crash with rapid clicking (avoid nested signals) */
+                    Idle.add (() => {
+                        activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                        return false;
+                    });
                 } else if (should_deselect && click_path != null) {
                     unselect_path (click_path);
+                    /* Only need to update selected files if changed by this handler */
+                    Idle.add (() => {
+                        update_selected_files_and_menu ();
+                        return false;
+                    });
                 }
             }
-
-            Idle.add (() => {
-                update_selected_files_and_menu ();
-                return false;
-            });
 
             should_activate = false;
             should_deselect = false;
