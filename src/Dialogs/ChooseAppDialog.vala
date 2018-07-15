@@ -29,7 +29,7 @@ class PF.ChooseAppDialog : Object {
     public ChooseAppDialog (Gtk.Window? parent, GLib.File file_to_open) {
         Object (parent: parent, file_to_open: file_to_open);
     }
-    
+
     construct {
         dialog = new Gtk.AppChooserDialog (parent, Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT, file_to_open);
         dialog.deletable = false;
