@@ -959,7 +959,7 @@ namespace Marlin.Places {
                         if (file.ensure_query_info ()) {
                             PF.FileUtils.file_accepts_drop (file, drag_list, context, out action);
                         } else {
-                            warning ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
+                            debug ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
                         }
                     }
                 }
