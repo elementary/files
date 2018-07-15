@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-06-29 00:05+0000\n"
+"PO-Revision-Date: 2018-07-15 00:10+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://weblate.elementary.io/projects/files/files/he/"
 ">\n"
@@ -1672,7 +1672,7 @@ msgstr "הפעלה"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Show the version of the program"
+msgstr "הצגת גרסת התכנית"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1684,7 +1684,7 @@ msgstr "חלון חדש"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Quit Files"
+msgstr "יציאה מקבצים"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
