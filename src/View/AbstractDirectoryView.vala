@@ -3347,10 +3347,13 @@ namespace FM {
                     break;
 
                 case Gdk.BUTTON_MIDDLE: // button 2
-                    if (path_is_selected (path)) {
-                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        result = true;
+                    if (!path_is_selected (path)) {
+                        select_path (path, true);
                     }
+
+                    should_activate = true;
+                    unblock_drag_and_drop ();
+                    result = true;
 
                     break;
 
@@ -3401,7 +3404,10 @@ namespace FM {
                 if (should_activate) {
                     /* Need Idle else can crash with rapid clicking (avoid nested signals) */
                     Idle.add (() => {
-                        activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                        var flag = event.button == Gdk.BUTTON_MIDDLE ? Marlin.OpenFlag.NEW_TAB :
+                                                                       Marlin.OpenFlag.DEFAULT;
+
+                        activate_selected_items (flag);
                         return false;
                     });
                 } else if (should_deselect && click_path != null) {
