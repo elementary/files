@@ -51,8 +51,9 @@ public class Marlin.PluginManager : Object {
             load_plugins ();
 
             /* Monitor plugin dirs */
-            foreach (string path in plugin_dirs)
+            foreach (string path in plugin_dirs) {
                 set_directory_monitor (path);
+            }
         }
     }
 
@@ -76,8 +77,9 @@ public class Marlin.PluginManager : Object {
     }
 
     private async void on_plugin_directory_change (File file, File? other_file, FileMonitorEvent event) {
-        if (update_queued)
+        if (update_queued) {
             return;
+        }
 
         update_queued = true;
 
@@ -108,8 +110,9 @@ public class Marlin.PluginManager : Object {
                 string file_name = info.get_name ();
                 var plugin_file = dir.get_child_for_display_name (file_name);
 
-                if (file_name.has_suffix (".plug"))
+                if (file_name.has_suffix (".plug")) {
                     load_plugin_keyfile (plugin_file.get_path (), path);
+                }
 
                 info = enumerator.next_file ();
             }
@@ -149,15 +152,17 @@ public class Marlin.PluginManager : Object {
 
         /* We don't want our modules to ever unload */
         module.make_resident ();
-        Plugins.Base plug = module_init();
+        Plugins.Base plug = module_init ();
 
-        debug ("Loaded module source: '%s'", module.name());
+        debug ("Loaded module source: '%s'", module.name ());
 
-        if (plug != null)
+        if (plug != null) {
             plugin_hash.set (file_path, plug);
+        }
 
-        if (in_available)
+        if (in_available) {
             names.add (name);
+        }
     }
 
     void load_plugin_keyfile (string path, string parent) {
@@ -167,7 +172,7 @@ public class Marlin.PluginManager : Object {
             string name = keyfile.get_string ("Plugin", "Name");
 
             load_module (Path.build_filename (parent, keyfile.get_string ("Plugin", "File")), name);
-        } catch(Error e) {
+        } catch (Error e) {
             warning ("Couldn't open thie keyfile: %s, %s", path, e.message);
         }
     }
@@ -175,11 +180,13 @@ public class Marlin.PluginManager : Object {
     public void hook_context_menu (Gtk.Widget menu, List<unowned GOF.File> files) {
         drop_menu_references (menu);
 
-        if (menu is Gtk.Menu)
+        if (menu is Gtk.Menu) {
             drop_plugin_menuitems (menu as Gtk.Menu);
+        }
 
-        foreach (var plugin in plugin_hash.values)
+        foreach (var plugin in plugin_hash.values) {
             plugin.context_menu (menu, files);
+        }
     }
 
     private void drop_plugin_menuitems (Gtk.Menu menu) {
@@ -187,41 +194,48 @@ public class Marlin.PluginManager : Object {
 
         assert (plugin_menu != null);
 
-        foreach (var menu_item in menuitem_references)
+        foreach (var menu_item in menuitem_references) {
             menu_item.parent.remove (menu_item);
+        }
 
         menuitem_references.clear ();
     }
 
     [Version (deprecated = true, deprecated_since = "0.2", replacement = "Marlin.PluginManager.drop_plugin_menuitems")]
     private void drop_menu_references (Gtk.Widget menu) {
-        if (menus == null)
+        if (menus == null) {
             return;
+        }
 
-        foreach (var item in menus)
+        foreach (var item in menus) {
             item.destroy ();
+        }
 
         menus = null;
     }
 
     public void ui (Gtk.UIManager data) {
-        foreach (var plugin in plugin_hash.values)
+        foreach (var plugin in plugin_hash.values) {
             plugin.ui (data);
+        }
     }
 
     public void directory_loaded (void* path) {
-        foreach (var plugin in plugin_hash.values)
+        foreach (var plugin in plugin_hash.values) {
             plugin.directory_loaded (path);
+        }
     }
 
     public void interface_loaded (Gtk.Widget win) {
-        foreach (var plugin in plugin_hash.values)
+        foreach (var plugin in plugin_hash.values) {
             plugin.interface_loaded (win);
+        }
     }
 
     public void update_sidebar (Gtk.Widget widget) {
-        foreach (var plugin in plugin_hash.values)
+        foreach (var plugin in plugin_hash.values) {
             plugin.update_sidebar (widget);
+        }
     }
 
     public void update_file_info (GOF.File file) {

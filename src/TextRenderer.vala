@@ -98,12 +98,13 @@ namespace Marlin {
             set_widget (widget);
             Gtk.StateFlags state = widget.get_state_flags ();
 
-            if ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED)
+            if ((flags & Gtk.CellRendererState.SELECTED) == Gtk.CellRendererState.SELECTED) {
                 state |= Gtk.StateFlags.SELECTED;
-            else if ((flags & Gtk.CellRendererState.PRELIT) == Gtk.CellRendererState.PRELIT)
+            } else if ((flags & Gtk.CellRendererState.PRELIT) == Gtk.CellRendererState.PRELIT) {
                 state = Gtk.StateFlags.PRELIGHT;
-            else
+            } else {
                 state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
+            }
 
             set_up_layout (text, cell_area.width);
 
@@ -167,14 +168,15 @@ namespace Marlin {
         }
 
         public override unowned Gtk.CellEditable? start_editing (Gdk.Event? event,
-                                                           Gtk.Widget widget,
-                                                           string  path,
-                                                           Gdk.Rectangle  background_area,
-                                                           Gdk.Rectangle  cell_area,
-                                                           Gtk.CellRendererState flags) {
+                                                                 Gtk.Widget widget,
+                                                                 string  path,
+                                                                 Gdk.Rectangle background_area,
+                                                                 Gdk.Rectangle cell_area,
+                                                                 Gtk.CellRendererState flags) {
 
-            if (!visible || mode != Gtk.CellRendererMode.EDITABLE)
+            if (!visible || mode != Gtk.CellRendererMode.EDITABLE) {
                 return null;
+            }
 
             float xalign, yalign;
             get_alignment (out xalign, out yalign);
@@ -209,12 +211,14 @@ namespace Marlin {
             Pango.FontMetrics metrics;
             Pango.Context context;
 
-            if (_widget == widget)
+            if (_widget == widget) {
                 return;
+            }
 
             /* disconnect from the previously set widget */
-            if (widget != null)
+            if (widget != null) {
                 disconnect_widget_signals ();
+            }
 
             widget = _widget;
 

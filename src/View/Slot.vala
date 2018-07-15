@@ -48,7 +48,7 @@ namespace Marlin.View {
             get {return ctab.window;}
         }
 
-        public  override bool is_frozen {
+        public override bool is_frozen {
             set {
                 dir_view.is_frozen = value;
                 frozen_changed (value);

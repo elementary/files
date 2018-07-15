@@ -198,8 +198,9 @@ public class CustomFileChooserDialog : Object {
                         (w0 as Gtk.Container).remove (w1);
                     } else {
                         (w1 as Gtk.Container).get_children ().foreach ((w5) => {
-                            if (w5.get_name () == GTK_FILTERCHOOSER_PATH[1])
+                            if (w5.get_name () == GTK_FILTERCHOOSER_PATH[1]) {
                                (w1 as Gtk.Container).remove (w5);
+                            }
                         });
                     }
                 }
@@ -241,7 +242,7 @@ public class CustomFileChooserDialog : Object {
                 });
 
                 (w2 as Gtk.Container).remove (w3);
-            } else if (w3.get_name () ==  "list_and_preview_box") { /* file browser list and preview box */
+            } else if (w3.get_name () == "list_and_preview_box") { /* file browser list and preview box */
                 var tv = find_tree_view (w3);
                 if (tv != null) {
                     /* set its click behaviour the same as io.elementary.files setting */
@@ -303,8 +304,9 @@ public class CustomFileChooserDialog : Object {
             var combo_box = new Gtk.ComboBoxText ();
             combo_box.changed.connect (() => {
                 chooser_dialog.list_filters ().foreach ((filter) => {
-                    if (filter.get_filter_name () == combo_box.get_active_text ())
+                    if (filter.get_filter_name () == combo_box.get_active_text ()) {
                         chooser_dialog.set_filter (filter);
+                    }
                 });
             });
 
