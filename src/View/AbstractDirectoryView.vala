@@ -3309,6 +3309,7 @@ namespace FM {
                              */
 
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
+                                update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 unblock_drag_and_drop ();
