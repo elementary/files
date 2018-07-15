@@ -141,7 +141,7 @@ namespace Marlin.View.Chrome {
         construct {
             var template = new Zeitgeist.Event ();
 
-            var template_subject  = new Zeitgeist.Subject ();
+            var template_subject = new Zeitgeist.Subject ();
             template_subject.manifestation = Zeitgeist.NFO.FILE_DATA_OBJECT;
             template.add_subject (template_subject);
 
@@ -247,7 +247,7 @@ namespace Marlin.View.Chrome {
         }
 
         /** Search interface functions **/
-        public  void cancel () {
+        public void cancel () {
             /* popdown first to avoid unwanted cursor change signals */
             popdown ();
             if (current_operation != null) {
@@ -323,8 +323,9 @@ namespace Marlin.View.Chrome {
 
                 var it = waiting_results.map_iterator ();
 
-                while (it.next ())
+                while (it.next ()) {
                     add_results (it.get_value (), it.get_key ());
+                }
 
                 send_search_finished ();
                 return false;
@@ -361,8 +362,9 @@ namespace Marlin.View.Chrome {
             Gtk.TreePath? path = null;
             var selected_paths = view.get_selection ().get_selected_rows (null);
 
-            if (selected_paths != null)
+            if (selected_paths != null) {
                 path = selected_paths.data;
+            }
 
             if (path != null) {
                 filter.get_iter (out iter, path);
@@ -391,7 +393,7 @@ namespace Marlin.View.Chrome {
             if (path != null) {
                 filter.get_iter (out iter, path);
                 filter.convert_iter_to_child_iter (out iter, iter);
-                accept (iter, e.button > 1);  /* This will call cancel () */
+                accept (iter, e.button > 1); /* This will call cancel () */
             }
             return true;
         }
@@ -442,12 +444,15 @@ namespace Marlin.View.Chrome {
                     var up = event.keyval == Gdk.Key.Up;
 
                     if (view.get_selection ().count_selected_rows () < 1) {
-                        if (up)
+                        if (up) {
                             select_last ();
-                        else
+                        } else {
                             select_first ();
+                        }
+
                         return true;
                     }
+
                     select_adjacent (up);
                     return true;
                 case Gdk.Key.Escape:
@@ -465,8 +470,9 @@ namespace Marlin.View.Chrome {
             list.get_iter_first (out iter);
 
             do {
-                if (!list.iter_has_child (iter))
+                if (!list.iter_has_child (iter)) {
                     continue;
+                }
 
                 list.iter_nth_child (out iter, iter, 0);
                 select_iter (iter);
@@ -484,16 +490,17 @@ namespace Marlin.View.Chrome {
             list.iter_nth_child (out iter, null, filter.iter_n_children (null) - 1);
 
             do {
-                if (!list.iter_has_child (iter))
+                if (!list.iter_has_child (iter)) {
                     continue;
+                }
 
                 list.iter_nth_child (out iter, iter, list.iter_n_children (iter) - 1);
-
                 list.@get (iter, 3, out file);
 
                 /* catch the case when we land on an ellipsis */
-                if (file == null)
+                if (file == null) {
                     list.iter_previous (ref iter);
+                }
 
                 select_iter (iter);
                 break;
@@ -520,10 +527,11 @@ namespace Marlin.View.Chrome {
 
             do {
                 if (up ? !list.iter_previous (ref parent) : !list.iter_next (ref parent)) {
-                    if (up)
+                    if (up) {
                         select_last ();
-                    else
+                    } else {
                         select_first ();
+                    }
 
                     return;
                 }
@@ -534,8 +542,9 @@ namespace Marlin.View.Chrome {
             /* make sure we haven't hit an ellipsis */
             if (up) {
                 list.@get (iter, 3, out file);
-                if (file == null)
+                if (file == null) {
                     list.iter_previous (ref iter);
+                }
             }
 
             select_iter (iter);
@@ -544,8 +553,9 @@ namespace Marlin.View.Chrome {
         bool list_empty () {
             Gtk.TreeIter iter;
             for (var valid = list.get_iter_first (out iter); valid; valid = list.iter_next (ref iter)) {
-                if (list.iter_has_child (iter))
+                if (list.iter_has_child (iter)) {
                     return false;
+                }
             }
 
             return true;
@@ -558,8 +568,9 @@ namespace Marlin.View.Chrome {
             Gtk.TreeIter iter;
             for (var valid = list.get_iter_first (out iter); valid; valid = list.iter_next (ref iter)) {
                 var n_children = list.iter_n_children (iter);
-                if (n_children > 0)
+                if (n_children > 0) {
                     n_headers++;
+                }
 
                 matches += n_children;
             }
@@ -569,8 +580,9 @@ namespace Marlin.View.Chrome {
 
         void resize_popup () {
             var parent_window = parent.get_window ();
-            if (parent_window == null)
+            if (parent_window == null) {
                 return;
+            }
 
             int x, y;
             Gtk.Allocation parent_alloc;
@@ -592,21 +604,23 @@ namespace Marlin.View.Chrome {
 
             if (visible && items + headers <= 1 && !working) {
                 hide ();
-            } else if (!visible && items + headers > 1  && !working) {
+            } else if (!visible && items + headers > 1 && !working) {
                 popup ();
             }
 
             int total = int.max ((items + headers), 2);
             var height = total * (cell_height + separator_height);
-            if (x < workarea.x)
+            if (x < workarea.x) {
                 x = workarea.x;
-            else if (x + width_request > workarea.x + workarea.width)
+            } else if (x + width_request > workarea.x + workarea.width) {
                 x = workarea.x + workarea.width - width_request;
+            }
 
             y += parent_alloc.height;
 
-            if (y + height > workarea.y + workarea.height)
+            if (y + height > workarea.y + workarea.height) {
                 height = workarea.y + workarea.height - y - 12;
+            }
 
             scroll.set_min_content_height (height);
             set_size_request (int.min (parent_alloc.width, workarea.width), height);
@@ -621,8 +635,9 @@ namespace Marlin.View.Chrome {
 
             view.get_cursor (out path, null);
 
-            if (path == null || !filter.get_iter (out filter_iter, path))
+            if (path == null || !filter.get_iter (out filter_iter, path)) {
                 return false;
+            }
 
             filter.convert_iter_to_child_iter (out iter, filter_iter);
             return true;
@@ -690,6 +705,7 @@ namespace Marlin.View.Chrome {
                     list = new Gee.LinkedList<Match> ();
                     waiting_results.@set (parent, list);
                 }
+
                 list.insert_all (list.size, new_results);
                 return;
             }
@@ -701,8 +717,9 @@ namespace Marlin.View.Chrome {
                 if (parent == zeitgeist_results) {
                     var already_added = false;
 
-                    for (var valid = list.iter_nth_child (out iter, local_results, 0); valid;
-                        valid = list.iter_next (ref iter)) {
+                    for (var valid = list.iter_nth_child (out iter, local_results, 0);
+                         valid;
+                         valid = list.iter_next (ref iter)) {
 
                         list.@get (iter, 3, out file);
 
@@ -713,8 +730,9 @@ namespace Marlin.View.Chrome {
                     }
 
                     if (!already_added) {
-                        for (var valid = list.iter_nth_child (out iter, deep_results, 0); valid;
-                            valid = list.iter_next (ref iter)) {
+                        for (var valid = list.iter_nth_child (out iter, deep_results, 0);
+                             valid;
+                             valid = list.iter_next (ref iter)) {
 
                             list.@get (iter, 3, out file);
 
@@ -730,8 +748,9 @@ namespace Marlin.View.Chrome {
                     }
                 } else if (parent == local_results) {
                     /* remove current search result from global if in global results */
-                    for (var valid = list.iter_nth_child (out iter, zeitgeist_results, 0); valid;
-                        valid = list.iter_next (ref iter)) {
+                    for (var valid = list.iter_nth_child (out iter, zeitgeist_results, 0);
+                         valid;
+                         valid = list.iter_next (ref iter)) {
 
                         list.@get (iter, 3, out file);
 
@@ -742,8 +761,9 @@ namespace Marlin.View.Chrome {
                     }
                 } else if (parent == deep_results) {
                     /* remove deep search result from from global if in global results */
-                    for (var valid = list.iter_nth_child (out iter, zeitgeist_results, 0); valid;
-                        valid = list.iter_next (ref iter)) {
+                    for (var valid = list.iter_nth_child (out iter, zeitgeist_results, 0);
+                         valid;
+                         valid = list.iter_next (ref iter)) {
 
                         list.@get (iter, 3, out file);
 
@@ -776,8 +796,9 @@ namespace Marlin.View.Chrome {
             }
 
             bool valid_iter = true ;
-            if (accepted == null)
+            if (accepted == null) {
                 valid_iter = get_iter_at_cursor (out accepted);
+            }
 
             if (!valid_iter) {
                 Gdk.beep ();
@@ -813,8 +834,9 @@ namespace Marlin.View.Chrome {
             }
 
             File? file = null;
-            if (iter != null)
+            if (iter != null) {
                 list.@get (iter, 3, out file);
+            }
 
             return file;
         }
@@ -828,9 +850,13 @@ namespace Marlin.View.Chrome {
             }
 
             Gtk.TreeIter parent, iter;
-            for (var valid = list.get_iter_first (out parent); valid; valid = list.iter_next (ref parent)) {
-                if (!list.iter_nth_child (out iter, parent, 0))
+            for (var valid = list.get_iter_first (out parent);
+                 valid;
+                 valid = list.iter_next (ref parent)) {
+
+                if (!list.iter_nth_child (out iter, parent, 0)) {
                     continue;
+                }
 
                 while (list.remove (ref iter));
             }

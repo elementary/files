@@ -78,10 +78,11 @@ namespace Marlin.View {
                 }
             }
 
-            if (n <= 1)
+            if (n <= 1) {
                 return uri;
-            else
-                return go_back (n-1);
+            } else {
+                return go_back (n - 1);
+            }
         }
 
         public string? go_forward (uint n = 1) {
@@ -94,10 +95,11 @@ namespace Marlin.View {
                 }
             }
 
-            if (n <= 1)
+            if (n <= 1) {
                 return uri;
-            else
+            } else {
                 return go_forward (n-1);
+            }
         }
 
         public bool get_can_go_back () {

@@ -64,10 +64,11 @@ namespace Marlin.View.Chrome {
         }
 
         public BasicLocationBar (Navigatable? _bread = null) {
-            if (_bread == null)
+            if (_bread == null) {
                 bread = new BasicBreadcrumbsEntry ();
-            else
+            } else {
                 bread = _bread;
+            }
 
             widget = _bread as Gtk.Widget;
             pack_start (bread, true, true, 0);
@@ -127,7 +128,7 @@ namespace Marlin.View.Chrome {
         }
 
         public void set_display_path (string path) {
-            display_path = path;  /* Will also change breadcrumbs */
+            display_path = path; /* Will also change breadcrumbs */
         }
 
         public string get_display_path () {

@@ -134,8 +134,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         /* Connect signal before creating any DeepCount directories */
         this.destroy.connect (() => {
-            foreach (var dir in deep_count_directories)
+            foreach (var dir in deep_count_directories) {
                 dir.cancel ();
+            }
         });
 
         /* The properties window may outlive the passed-in file object
@@ -150,7 +151,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             files.prepend (file);
         }
 
-        count = files.length();
+        count = files.length ();
 
         if (count < 1 ) {
             critical ("Properties Window constructor called with empty file list");
@@ -275,8 +276,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
                     total_size += d.total_size;
                     size_warning = d.file_not_read;
-                    if (file_count + uncounted_folders == size_warning)
+                    if (file_count + uncounted_folders == size_warning) {
                         size_value.label = _("unknown");
+                    }
 
                     folder_count += d.dirs_count;
                     file_count += d.files_count;
@@ -327,7 +329,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             goffile = GOF.File.@get (new_location);
             files.first ().data = goffile;
         } else {
-            reset_entry_text ();  //resets entry to old name
+            reset_entry_text (); //resets entry to old name
         }
     }
 
@@ -341,8 +343,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
     private string? get_common_ftype () {
         string? ftype = null;
-        if (files == null)
+        if (files == null) {
             return null;
+        }
 
         foreach (GOF.File gof in files) {
             var gof_ftype = gof.get_ftype ();
@@ -350,8 +353,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 ftype = gof_ftype;
                 continue;
             }
-            if (ftype != gof_ftype)
+
+            if (ftype != gof_ftype) {
                 return null;
+            }
         }
 
         return ftype;
@@ -361,13 +366,17 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         File? loc = null;
         foreach (GOF.File gof in files) {
             if (loc == null && gof != null) {
-                if (gof.directory == null)
+                if (gof.directory == null) {
                     return false;
+                }
+
                 loc = gof.directory;
                 continue;
             }
-            if (!loc.equal (gof.directory))
+
+            if (!loc.equal (gof.directory)) {
                 return false;
+            }
         }
 
         return true;
@@ -387,14 +396,19 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 loc = get_parent_loc (gof.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH));
                 continue;
             }
-            if (gof != null && !loc.equal (get_parent_loc (gof.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH))))
+
+            if (gof != null &&
+                !loc.equal (get_parent_loc (gof.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)))) {
+
                 return null;
+            }
         }
 
-        if (loc == null)
+        if (loc == null) {
             path = "/";
-        else
-            path = loc.get_parse_name();
+        } else {
+            path = loc.get_parse_name ();
+        }
 
         return path;
     }
@@ -569,7 +583,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         if (count == 1 && file.info.get_is_symlink ()) {
             var key_label = new KeyLabel (_("Target:"));
-            var value_label = new ValueLabel (file.info.get_symlink_target());
+            var value_label = new ValueLabel (file.info.get_symlink_target ());
             info_grid.attach (key_label, 0, n, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT, 3, 1);
             n++;
@@ -638,14 +652,19 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private bool should_show_device_usage () {
-        if (files_contain_a_directory)
+        if (files_contain_a_directory) {
             return true;
+        }
+
         if (count == 1) {
-            if (goffile.can_unmount ())
+            if (goffile.can_unmount ()) {
                 return true;
+            }
+
             var rootfs_loc = File.new_for_uri ("file:///");
-            if (goffile.get_target_location ().equal (rootfs_loc))
+            if (goffile.get_target_location ().equal (rootfs_loc)) {
                 return true;
+            }
         }
 
         return false;
@@ -703,8 +722,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
     private uint32 get_perm_from_chmod_unit (uint32 vfs_perm, int nb,
                                              int chmod, Permissions.Type pt) {
-        if (nb > 7 || nb < 0)
+        if (nb > 7 || nb < 0) {
             critical ("erroned chmod code %d %d", chmod, nb);
+        }
 
         int[] chmod_types = { 4, 2, 1};
 
@@ -712,8 +732,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         for (; i<3; i++) {
             int div = nb / chmod_types[i];
             int modulo = nb % chmod_types[i];
-            if (div >= 1)
+            if (div >= 1) {
                 vfs_perm |= vfs_perms[pt,i];
+            }
+
             nb = modulo;
         }
 
@@ -782,7 +804,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 perm_code_should_update = true;
                 int n = 0;
                 foreach (GOF.File gof in files) {
-                    if (gof.can_set_permissions() && gof.permissions != perm) {
+                    if (gof.can_set_permissions () && gof.permissions != perm) {
                         gof.permissions = perm;
 
                         /* update permission label once */
@@ -810,8 +832,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         string user;
         Posix.uid_t? uid = null;
 
-        if (!combo.get_active_iter(out iter))
+        if (!combo.get_active_iter (out iter)) {
             return;
+        }
 
         store_users.get (iter, 0, out user);
 
@@ -830,11 +853,13 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return;
         }
 
-        if (uid == goffile.uid)
+        if (uid == goffile.uid) {
             return;
+        }
 
-        foreach (GOF.File gof in files)
+        foreach (GOF.File gof in files) {
             file_set_attributes.begin (gof, FileAttribute.UNIX_UID, (uint32) uid);
+        }
     }
 
     private void combo_group_changed (Gtk.ComboBox combo) {
@@ -842,8 +867,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         string group;
         Posix.uid_t? gid;
 
-        if (!combo.get_active_iter(out iter))
+        if (!combo.get_active_iter (out iter)) {
             return;
+        }
 
         store_groups.get (iter, 0, out group);
 
@@ -864,11 +890,13 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             return;
         }
 
-        if (gid == goffile.gid)
+        if (gid == goffile.gid) {
             return;
+        }
 
-        foreach (GOF.File gof in files)
+        foreach (GOF.File gof in files) {
             file_set_attributes.begin (gof, FileAttribute.UNIX_GID, (uint32) gid);
+        }
     }
 
     private Gtk.Grid construct_perm_panel () {
@@ -923,50 +951,60 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private bool selection_can_set_owner () {
-        foreach (GOF.File gof in files)
-            if (!gof.can_set_owner ())
+        foreach (GOF.File gof in files) {
+            if (!gof.can_set_owner ()) {
                 return false;
+            }
+        }
 
         return true;
     }
 
     private string? get_common_owner () {
         int uid = -1;
-        if (files == null)
+        if (files == null) {
             return null;
+        }
 
         foreach (GOF.File gof in files) {
             if (uid == -1 && gof != null) {
                 uid = gof.uid;
                 continue;
             }
-            if (gof != null && uid != gof.uid)
+
+            if (gof != null && uid != gof.uid) {
                 return null;
+            }
         }
 
         return goffile.info.get_attribute_string (FileAttribute.OWNER_USER);
     }
 
     private bool selection_can_set_group () {
-        foreach (GOF.File gof in files)
-            if (!gof.can_set_group ())
+        foreach (GOF.File gof in files) {
+            if (!gof.can_set_group ()) {
                 return false;
+            }
+        }
 
         return true;
     }
 
     private string? get_common_group () {
         int gid = -1;
-        if (files == null)
+        if (files == null) {
             return null;
+        }
 
         foreach (GOF.File gof in files) {
             if (gid == -1 && gof != null) {
                 gid = gof.gid;
                 continue;
             }
-            if (gof != null && gid != gof.gid)
+
+            if (gof != null && gid != gof.gid) {
                 return null;
+            }
         }
 
         return goffile.info.get_attribute_string (FileAttribute.OWNER_GROUP);
@@ -981,15 +1019,15 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             Gtk.TreeIter iter;
 
             store_users = new Gtk.ListStore (1, typeof (string));
-            users = PF.UserUtils.get_user_names();
+            users = PF.UserUtils.get_user_names ();
             int owner_index = -1;
             int i = 0;
             foreach (var user in users) {
                 if (user == goffile.owner) {
                     owner_index = i;
                 }
-                store_users.append(out iter);
-                store_users.set(iter, 0, user);
+                store_users.append (out iter);
+                store_users.set (iter, 0, user);
                 i++;
             }
 
@@ -1005,18 +1043,21 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             var renderer = new Gtk.CellRendererText ();
             combo.pack_start (renderer, true);
             combo.add_attribute (renderer, "text", 0);
-            if (owner_index == -1)
+            if (owner_index == -1) {
                 combo.set_active (0);
-            else
+            } else {
                 combo.set_active (owner_index);
+            }
 
             combo.changed.connect (combo_owner_changed);
 
             choice = (Gtk.Widget) combo;
         } else {
             string? common_owner = get_common_owner ();
-            if (common_owner == null)
+            if (common_owner == null) {
                 common_owner = "--";
+            }
+
             choice = (Gtk.Widget) new Gtk.Label (common_owner);
             choice.set_halign (Gtk.Align.START);
         }
@@ -1041,6 +1082,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 if (group == goffile.group) {
                     group_index = i;
                 }
+
                 store_groups.append (out iter);
                 store_groups.set (iter, 0, group);
                 i++;
@@ -1059,18 +1101,21 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             combo.pack_start (renderer, true);
             combo.add_attribute (renderer, "text", 0);
 
-            if (group_index == -1)
+            if (group_index == -1) {
                 combo.set_active (0);
-            else
+            } else {
                 combo.set_active (group_index);
+            }
 
             combo.changed.connect (combo_group_changed);
 
             choice = (Gtk.Widget) combo;
         } else {
             string? common_group = get_common_group ();
-            if (common_group == null)
+            if (common_group == null) {
                 common_group = "--";
+            }
+
             choice = (Gtk.Widget) new Gtk.Label (common_group);
             choice.set_halign (Gtk.Align.START);
         }
@@ -1082,8 +1127,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
     private Icon ensure_icon (AppInfo app) {
         Icon icon = app.get_icon ();
-        if (icon == null)
+        if (icon == null) {
             icon = new ThemedIcon ("application-x-executable");
+        }
 
         return icon;
     }
@@ -1093,8 +1139,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         string app_label;
         AppInfo? app;
 
-        if (!combo.get_active_iter (out iter))
+        if (!combo.get_active_iter (out iter)) {
             return;
+        }
 
         store_apps.get (iter,
                         AppsColumn.LABEL, out app_label,
@@ -1112,9 +1159,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             }
         } else {
             try {
-                foreach (var mime in mimes)
+                foreach (var mime in mimes) {
                     app.set_as_default_for_type (mime);
-
+                }
             } catch (Error e) {
                 critical ("Couldn't set as default: %s", e.message);
             }
@@ -1122,8 +1169,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     public static uint64 file_real_size (GOF.File gof) {
-        if (!gof.is_connected)
+        if (!gof.is_connected) {
             return 0;
+        }
 
         uint64 file_size = gof.size;
         if (gof.location is GLib.File) {
@@ -1133,8 +1181,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 /* Check for sparse file, allocated size will be smaller, for normal files allocated size
                  * includes overhead size so we don't use it for those here
                  */
-                if (allocated_size > 0 && allocated_size < file_size && !gof.is_directory)
+                if (allocated_size > 0 && allocated_size < file_size && !gof.is_directory) {
                     file_size = allocated_size;
+                }
             } catch (Error err) {
                 debug ("%s", err.message);
                 gof.is_connected = false;

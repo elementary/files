@@ -218,7 +218,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 file.color = int.parse (row_iter.next_value ().get_string ());
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
-                file.icon_changed ();  /* Just need to trigger redraw - the underlying GFile has not changed */
+                file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
 
                 if (is_user_dir &&
                     file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified) {
@@ -278,7 +278,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    public override void context_menu  (Gtk.Widget? widget, GLib.List<unowned GOF.File> selected_files) {
+    public override void context_menu (Gtk.Widget? widget, GLib.List<unowned GOF.File> selected_files) {
         if (selected_files == null || widget == null || ignore_dir) {
             return;
         }
@@ -387,13 +387,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             int x0 = btnw+5;
             int xpad = 9;
 
-            for (i=1; i<=10; i++) {
-                if (i==1)
-                    DrawCross (cr,xpad + x0*i, y0+1, btnw-2, btnh-2);
-                else {
-                    DrawRoundedRectangle (cr,xpad + x0*i, y0, btnw, btnh, "stroke", i-1);
-                    DrawRoundedRectangle (cr,xpad + x0*i, y0, btnw, btnh, "fill", i-1);
-                    DrawGradientOverlay (cr,xpad + x0*i, y0, btnw, btnh);
+            for (i = 1; i <= 10; i++) {
+                if (i == 1) {
+                    DrawCross (cr, xpad + x0 * i, y0 + 1, btnw - 2, btnh - 2);
+                } else {
+                    DrawRoundedRectangle (cr, xpad + x0 * i, y0, btnw, btnh, "stroke", i - 1);
+                    DrawRoundedRectangle (cr, xpad + x0 * i, y0, btnw, btnh, "fill", i - 1);
+                    DrawGradientOverlay (cr, xpad + x0 * i, y0, btnw, btnh);
                 }
             }
 
@@ -408,7 +408,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             cr.move_to (x, y+h);
             cr.rel_line_to (w, -h);
             cr.set_source_rgba (0,0,0,0.6);
-            cr.stroke();
+            cr.stroke ();
 
             cr.close_path ();
         }
@@ -422,11 +422,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             int radius_y=2;
             double ARC_TO_BEZIER = 0.55228475;
 
-            if (radius_x > w - radius_x)
+            if (radius_x > w - radius_x) {
                 radius_x = w / 2;
+            }
 
-            if (radius_y > h - radius_y)
+            if (radius_y > h - radius_y) {
                 radius_y = h / 2;
+            }
 
             /* approximate (quite close) the arc using a bezier curve */
             double ca = ARC_TO_BEZIER * radius_x;

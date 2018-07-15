@@ -201,17 +201,20 @@ public class Marlin.Progress.UIHandler : Object {
         if (this.quicklist_handler == null) {
             this.quicklist_handler = QuicklistHandler.get_singleton ();
 
-            if (this.quicklist_handler == null)
+            if (this.quicklist_handler == null) {
                 return;
+            }
 
             build_unity_quicklist ();
         }
 
-        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries)
+        foreach (var marlin_lentry in this.quicklist_handler.launcher_entries) {
             update_unity_launcher_entry (info, marlin_lentry);
+        }
 
-        if (added)
+        if (added) {
             info.progress_changed.connect (unity_progress_changed);
+        }
     }
 
     private void build_unity_quicklist () {
@@ -247,8 +250,9 @@ public class Marlin.Progress.UIHandler : Object {
             cancel_menuitem.item_activated.connect (() => {
                 var infos = this.manager.get_all_infos ();
 
-                foreach (var info in infos)
+                foreach (var info in infos) {
                     info.cancel ();
+                }
             });
 
             marlin_lentry.progress_quicklists.append (cancel_menuitem);
@@ -298,21 +302,25 @@ public class Marlin.Progress.UIHandler : Object {
             double c = _info.get_current ();
             double t = _info.get_total ();
 
-            if (c < 0)
+            if (c < 0) {
                 c = 0;
+            }
 
-            if (t <= 0)
+            if (t <= 0) {
                 continue;
+            }
 
             current += c;
             total += t;
         }
 
-        if (current >= 0 && total > 0)
+        if (current >= 0 && total > 0) {
             progress = current / total;
+        }
 
-        if (progress > 1.0)
+        if (progress > 1.0) {
             progress = 1.0;
+        }
 
         foreach (Marlin.LauncherEntry marlin_lentry in this.quicklist_handler.launcher_entries) {
             Unity.LauncherEntry unity_lentry = marlin_lentry.entry;
