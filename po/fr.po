@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-07-05 12:52+0000\n"
+"PO-Revision-Date: 2018-07-16 00:03+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/files/files/fr/"
 ">\n"
@@ -1716,7 +1716,7 @@ msgstr "Exécution"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Afficher la version du programme."
+msgstr "Afficher la version du programme"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1728,7 +1728,7 @@ msgstr "Nouvelle fenêtre"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Quitter Fichiers."
+msgstr "Quitter Fichiers"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
