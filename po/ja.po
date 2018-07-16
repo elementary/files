@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 08:24-0700\n"
+"POT-Creation-Date: 2018-07-16 08:29-0700\n"
 "PO-Revision-Date: 2018-07-15 00:10+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
@@ -469,19 +469,25 @@ msgstr "ファイルをゴミ箱に移動または削除できませんでした
 
 #: ../libcore/marlin-file-operations.c:1796
 msgid "It is not permitted to trash or delete files on a read only filesystem."
-msgstr "読み取り専用ファイルシステムにあるファイルをゴミ箱に移動したり削除したりすることはできません。"
+msgstr ""
+"読み取り専用ファイルシステムにあるファイルをゴミ箱に移動したり削除したりする"
+"ことはできません。"
 
 #: ../libcore/marlin-file-operations.c:1799
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
-msgstr "書き込み権限を持っていないフォルダーにあるファイルをゴミ箱に移動したり削除したりすることはできません。"
+msgstr ""
+"書き込み権限を持っていないフォルダーにあるファイルをゴミ箱に移動したり削除し"
+"たりすることはできません。"
 
 #: ../libcore/marlin-file-operations.c:1802
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
-msgstr "書き込み権限を持っていないフォルダーをゴミ箱に移動したり削除したりすることはできません。"
+msgstr ""
+"書き込み権限を持っていないフォルダーをゴミ箱に移動したり削除したりすることは"
+"できません。"
 
 #: ../libcore/marlin-file-operations.c:1804
 msgid "Cannot move file to trash. Try to delete it immediately?"
@@ -491,7 +497,9 @@ msgstr "ファイルをゴミ箱に移動できません。すぐに削除して
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
-msgstr "このファイルはゴミ箱に移動させることができませんでした。詳細については、下記を参照してください。"
+msgstr ""
+"このファイルはゴミ箱に移動させることができませんでした。詳細については、下記"
+"を参照してください。"
 
 #: ../libcore/marlin-file-operations.c:1809
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -1277,30 +1285,34 @@ msgstr "このアプリケーションで開く"
 msgid "Other Application…"
 msgstr "他のアプリケーション…"
 
-#: ../src/View/AbstractDirectoryView.vala:2435
+#: ../src/View/AbstractDirectoryView.vala:2192
+msgid "Templates"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
 msgstr "名称未設定 %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2774
-#: ../src/View/AbstractDirectoryView.vala:2966
+#: ../src/View/AbstractDirectoryView.vala:2778
+#: ../src/View/AbstractDirectoryView.vala:2970
 msgid "Cannot remove files from here"
 msgstr "ここからファイルを移動できません"
 
-#: ../src/View/AbstractDirectoryView.vala:2775
-#: ../src/View/AbstractDirectoryView.vala:2951
-#: ../src/View/AbstractDirectoryView.vala:2967
+#: ../src/View/AbstractDirectoryView.vala:2779
+#: ../src/View/AbstractDirectoryView.vala:2955
+#: ../src/View/AbstractDirectoryView.vala:2971
 msgid "You do not have permission to change this location"
 msgstr "この場所を変更するパーミッションがありません"
 
-#: ../src/View/AbstractDirectoryView.vala:2926
+#: ../src/View/AbstractDirectoryView.vala:2930
 msgid "Cannot copy files that are in the trash"
 msgstr "ゴミ箱内のファイルをコピーできません"
 
-#: ../src/View/AbstractDirectoryView.vala:2927
+#: ../src/View/AbstractDirectoryView.vala:2931
 msgid "Cutting the selection instead"
 msgstr "代わりに選択項目を切り取る"
 
-#: ../src/View/AbstractDirectoryView.vala:2950
+#: ../src/View/AbstractDirectoryView.vala:2954
 msgid "Cannot paste files here"
 msgstr "ここにファイルを貼り付けできません"
 
