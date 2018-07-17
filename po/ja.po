@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-16 08:29-0700\n"
-"PO-Revision-Date: 2018-07-15 00:10+0000\n"
+"PO-Revision-Date: 2018-07-17 01:29+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -1287,7 +1287,7 @@ msgstr "他のアプリケーション…"
 
 #: ../src/View/AbstractDirectoryView.vala:2192
 msgid "Templates"
-msgstr ""
+msgstr "テンプレート"
 
 #: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
