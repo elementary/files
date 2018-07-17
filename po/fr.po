@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-16 08:29-0700\n"
-"PO-Revision-Date: 2018-07-16 00:03+0000\n"
+"PO-Revision-Date: 2018-07-17 06:34+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/files/files/fr/"
 ">\n"
@@ -1364,7 +1364,7 @@ msgstr "Autre application…"
 
 #: ../src/View/AbstractDirectoryView.vala:2192
 msgid "Templates"
-msgstr ""
+msgstr "Modèles"
 
 #: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"

@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-16 08:29-0700\n"
-"PO-Revision-Date: 2018-06-28 01:14+0000\n"
-"Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
+"PO-Revision-Date: 2018-07-17 13:33+0000\n"
+"Last-Translator: Daniel Foré <daniel@elementary.io>\n"
 "Language-Team: Polish <https://weblate.elementary.io/projects/files/files/pl/"
 ">\n"
 "Language: pl\n"
@@ -1398,7 +1398,7 @@ msgstr "Inny program…"
 
 #: ../src/View/AbstractDirectoryView.vala:2192
 msgid "Templates"
-msgstr ""
+msgstr "Szablony"
 
 #: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
@@ -1755,7 +1755,7 @@ msgstr "Uruchom"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Wypisuje informacje o wersji programu."
+msgstr "Wypisuje informacje o wersji programu"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1767,7 +1767,7 @@ msgstr "Nowe okno"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Opuść menedżer plików."
+msgstr "Opuść menedżer plików"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
