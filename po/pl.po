@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-16 08:29-0700\n"
-"PO-Revision-Date: 2018-06-28 01:14+0000\n"
+"PO-Revision-Date: 2018-07-17 00:51+0000\n"
 "Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
 "Language-Team: Polish <https://weblate.elementary.io/projects/files/files/pl/"
 ">\n"
@@ -1398,7 +1398,7 @@ msgstr "Inny program…"
 
 #: ../src/View/AbstractDirectoryView.vala:2192
 msgid "Templates"
-msgstr ""
+msgstr "Szablony"
 
 #: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
