@@ -1,6 +1,5 @@
-LIB_VER = PROJECT_VER
-LIB = shared_library (
-    LIBNAME,
+CORE_LIB = shared_library (
+    CORE_LIB_NAME,
     'AbstractSidebar.vala',
     'AbstractSlot.vala',
     'Bookmark.vala',
@@ -24,26 +23,26 @@ LIB = shared_library (
     'IconInfo.vala',
     'Thumbnailer.vala',
 
-    'eel-string.c,
+    'eel-string.c',
     'marlin-file-operations.c',
     'marlin-undostack-manager.c',
     'marlin-file-changes-queue.c',
     'fm-list-model.c',
     'gof-file.c',
 
-    dependencies : CORE_DEPS,
+    dependencies : CORE_LIB_DEPS,
     install: true,
     install_dir: [true, true, true],
-    version: LIBVER,
+    version: CORE_LIB_VER,
     soversion: '0'
 )
 
 pkg = import ('pkgconfig')
 pkg.generate (
     description: 'Core functions for io.elementary.files',
-    filebase: LIBNAME,
-    libraries: lib,
-    name: LIBNAME,
-    version: LIBVER,
-    requires: CORE_DEPS
+    filebase: CORE_LIB_NAME,
+    libraries: CORE_LIB,
+    name: CORE_LIB_NAME,
+    version: CORE_LIB_VER,
+    requires: CORE_LIB_DEPS
 )

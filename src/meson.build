@@ -1,25 +1,13 @@
-if USE_UNITY and PLANK.found ()
-    PLANK_0_11 = dependency ('plank', version: '>=0.10.9', required: false)
-    if PLANK_0_11.found ()
-        add_project_arguments (
-            '--define=HAVE_PLANK_0_11',
-            language: 'vala'
-        )
-    endif
-endif
-
-COMMON_DEPS = [
-    CORE_DEPS,
-    dependency ('gio-unix-2.0'),
-    dependency ('sqlite3'),
+deps = [
+    CORE_LIB_DEPS,
     dependency ('dbus-glib-1'),
     dependency ('zeitgeist-2.0')
 ]
 
 if USE_UNITY
-    SRC_DEPS = [COMMON_DEPS, UNITY, PLANK]
+    SRC_DEPS = [deps, UNITY, PLANK]
 else
-    SRC_DEPS = COMMON_DEPS
+    SRC_DEPS = deps
 endif
 
 COMMON_SRC = [
@@ -64,31 +52,24 @@ COMMON_SRC = [
         'View/Widgets/TopMenu.vala'
 ]
 
-executable (
-	meson.project_name (),
-	COMMON_SRC,
-
-	dependencies : SRC_DEPS,
-	install: true
-)
-
 #IF USE_UNITY
-#    executable (
-#        meson.project_name (),
-#        COMMON_SRC,
+    executable (
+        meson.project_name (),
+        COMMON_SRC,
 
-#        dependencies : [COMMON_DEPS, UNITY, PLANK],
-#        install: true,
-#        link_with: lib
-#    )
+        dependencies : SRC_DEPS,
+        install: true,
+        link_with: [CORE_LIB, WIDGET_LIB]
+    )
 #else
 #    executable (
 #        meson.project_name (),
 #        COMMON_SRC,
 #        'QuicklistHandler.vala',
 
-#        dependencies : COMMON_DEPS,
+#        dependencies : SRC_DEPS,
 #        install: true,
-#        link_with: lib
+#        link_with: CORE_LIB,
+#        link_with: WIDGET_LIB
 #    )
 #endif
