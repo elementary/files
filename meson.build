@@ -1,12 +1,11 @@
-project ('io.elementary.files',
-         'vala', 'c',
-         version: '0.3.6',
-         meson_version: '>= 0.42.0'
-)
+project ('io.elementary.files', 'vala', 'c', meson_version: '>= 0.42.0')
 
-shortname = 'files'
-domain = 'io.elementary.'
-schema_path = '/io/elementary/' + shortname + '/'
+PROJECT_VER = '0.3.6'
+DOMAIN = 'io.elementary.'
+SHORTNAME = 'files'
+LIBNAME = meson.project_name () + '-core'
+SCHEMA_PATH = '/io/elementary/' + SHORTNAME + '/'
+
 vala_version_required = '0.34.0'
 i18n = import ('i18n')
 vala = meson.get_compiler('vala')
@@ -27,7 +26,7 @@ if USE_UNITY
         language: 'vala'
     )
 
-    plank = dependency ('plank', required: true)
+    PLANK = dependency ('plank', required: true)
 endif
 
 add_global_arguments (
@@ -36,28 +35,19 @@ add_global_arguments (
     language:'c'
 )
 
-COMMON_DEPS = [
-    'granite>=0.3.0',
-    'glib-2.0>=2.29.0',
-    'gthread-2.0',
-    'gio-2.0',
-    'gio-unix-2.0',
-    'pango>=1.1.2',
-    'gtk+-3.0>=3.22',
-    'gmodule-2.0',
-    'gail-3.0',
-    'gee-0.8',
-    'sqlite3',
-    'dbus-glib-1',
-    'libcanberra>=0.30',
-    'zeitgeist-2.0'
+CORE_DEPS = [
+    dependency ('glib-2.0', version: '>=2.29.0'),
+    dependency ('gthread-2.0'),
+    dependency ('gio-2.0'),
+    dependency ('pango', version: '>=1.1.2'),
+    dependency ('gtk+-3.0', version: '>=3.4.0'),
+    dependency ('gail-3.0'),
+    dependency ('gee-0.8'),
+    dependency ('gmodule-2.0'),
+    dependency ('sqlite3'),
+    dependency ('libcanberra', version: '>=0.30'),
+    dependency ('granite', version: '>=0.3.0')
 ]
-
-if WITH_UNITY and UNITY.found ()
-    DEPS = [COMMON_DEPS, plank]
-else
-    DEPS = COMMON_DEPS
-endif
 
 
 if get_option ('MODULE_ONLY')
