@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-16 08:29-0700\n"
-"PO-Revision-Date: 2018-07-20 09:22+0000\n"
+"PO-Revision-Date: 2018-07-21 00:07+0000\n"
 "Last-Translator: Nils K <slx@nilsk.net>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
 "files/files/nb/>\n"
@@ -1701,7 +1701,7 @@ msgstr "Kjøre"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Vis programversjon."
+msgstr "Vis programversjon"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1713,7 +1713,7 @@ msgstr "Nytt vindu"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Lukk program."
+msgstr "Lukk program"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
@@ -1808,9 +1808,8 @@ msgstr "Faktisk størrelse kan være større"
 #: ../src/Dialogs/PropertiesWindow.vala:242
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-"%i fil kunne ikke leses på grunn av feil tilganger eller andre feil."
-msgstr[1] ""
+msgstr[0] "%i fil kunne ikke leses på grunn av feil tilganger eller andre feil."
+msgstr[1] "%i filer kunne ikke leses på grunn av feil tilganger eller andre feil."
 
 #: ../src/Dialogs/PropertiesWindow.vala:261
 #: ../src/Dialogs/PropertiesWindow.vala:280
