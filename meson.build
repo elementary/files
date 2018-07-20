@@ -18,13 +18,16 @@ endif
 dependency('gtk+-3.0', version: '>=3.22', required: true)
 
 UNITY = dependency ('unity', version: '>=4.0.0', required: false)
+WITH_UNITY = get_option ('WITH_UNITY')
 USE_UNITY = WITH_UNITY and UNITY.found ()
 
 if USE_UNITY
     add_project_arguments (
-        '--define=HAVE_UNITY'
+        '--define=HAVE_UNITY',
         language: 'vala'
     )
+
+    plank = dependency ('plank', required: true)
 endif
 
 add_global_arguments (
@@ -56,20 +59,23 @@ else
     DEPS = COMMON_DEPS
 endif
 
-if MODULE_ONLY
+
+if get_option ('MODULE_ONLY')
     subdir ('filechooser-module')
-elseif LIB_ONLY
-    subdir ('libcore')
-    subdir ('libwidgets')
 else
-    subdir ('src')
-    subdir ('data')
-    subdir ('pantheon-files-daemon')
-    subdir ('libcore')
-    subdir ('libwidgets')
-    subdir ('plugins')
-    subdir ('filechooser-module')
-    meson.add_install_script('meson/post_install.py')
+    if get_option ('LIB_ONLY')
+        subdir ('libcore')
+        subdir ('libwidgets')
+    else
+        subdir ('src')
+        subdir ('data')
+        subdir ('pantheon-files-daemon')
+        subdir ('libcore')
+        subdir ('libwidgets')
+        subdir ('plugins')
+        subdir ('filechooser-module')
+        meson.add_install_script('meson/post_install.py')
+    endif
 endif
 
 subdir ('po')
