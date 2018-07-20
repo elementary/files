@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-16 08:29-0700\n"
-"PO-Revision-Date: 2018-07-02 00:06+0000\n"
+"PO-Revision-Date: 2018-07-21 00:07+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
 "fi/>\n"
@@ -1344,7 +1344,7 @@ msgstr "Muu sovellus…"
 
 #: ../src/View/AbstractDirectoryView.vala:2192
 msgid "Templates"
-msgstr ""
+msgstr "Mallit"
 
 #: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
