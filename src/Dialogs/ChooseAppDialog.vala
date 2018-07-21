@@ -19,51 +19,100 @@
 * Authored by: Jeremy Wootten <jeremy@elementaryos.org>
 */
 
-class PF.ChooseAppDialog : Object {
-    Gtk.AppChooserDialog dialog;
-    Gtk.CheckButton check_default;
+class PF.ChooseAppDialog : Gtk.Dialog {
+    private Gtk.AppChooserWidget app_chooser;
+    private Gtk.CheckButton check_default;
+    private string content_type;
 
     public GLib.File file_to_open { get; construct; }
-    public Gtk.Window parent { get; construct; }
 
     public ChooseAppDialog (Gtk.Window? parent, GLib.File file_to_open) {
-        Object (parent: parent, file_to_open: file_to_open);
+        Object (transient_for: parent,
+                resizable: false,
+                deletable: false,
+                window_position: Gtk.WindowPosition.CENTER_ON_PARENT,
+                destroy_with_parent: true,
+                file_to_open: file_to_open
+        );
     }
 
     construct {
-        dialog = new Gtk.AppChooserDialog (parent, Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT, file_to_open);
-        dialog.deletable = false;
+        /* Called from view so corresponding GOF.File must exist and already have content type */
+        content_type = (GOF.File.@get (file_to_open)).get_ftype ();
 
-        var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
+        app_chooser = new Gtk.AppChooserWidget (content_type);
+        app_chooser.show_default = true;
         app_chooser.show_recommended = true;
+        app_chooser.show_fallback = true;
+        app_chooser.show_other = false;
 
         check_default = new Gtk.CheckButton.with_label (_("Set as default"));
         check_default.active = true;
-        check_default.show ();
 
-        var action_area = dialog.get_action_area () as Gtk.ButtonBox;
+        var content_area = get_content_area () as Gtk.Container;
+        var grid = new Gtk.Grid ();
+        grid.orientation = Gtk.Orientation.VERTICAL;
+        grid.margin = 12;
+        grid.row_spacing = 6;
+        grid.add (app_chooser);
+
+        var show_grid = new Gtk.Grid ();
+        show_grid.orientation = Gtk.Orientation.HORIZONTAL;
+        show_grid.column_spacing = 12;
+
+        var show_label = new Gtk.Label (_("Show Other Applications"));
+        show_label.tooltip_text = _("Show applications that may not be suitable for this file type");
+
+        var show_switch = new Gtk.Switch ();
+        show_switch.active = false;
+        show_switch.state = false;
+
+        show_grid.add (show_label);
+        show_grid.add (show_switch);
+
+        grid.add (show_grid);
+        content_area.add (grid);
+
+        add_button (_("Select"), Gtk.ResponseType.OK);
+        add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+
+        var action_area = get_action_area () as Gtk.ButtonBox;
         action_area.add (check_default);
         action_area.set_child_secondary (check_default, true);
 
-        dialog.show ();
+        show_switch.notify["active"].connect (() => {
+            var show_all = show_switch.get_active ();
+
+            app_chooser.show_default = !show_all;
+            app_chooser.show_recommended = !show_all;
+            app_chooser.show_fallback = !show_all;
+            app_chooser.show_other = show_all;
+
+            check_default.active = !show_all;
+        });
+
+        app_chooser.application_activated.connect (() => {
+            response (Gtk.ResponseType.OK);
+        });
     }
 
     public AppInfo? get_app_info () {
         AppInfo? app = null;
-        int response = dialog.run ();
+        show_all ();
+        int response =run ();
         if (response == Gtk.ResponseType.OK) {
-            app = dialog.get_app_info ();
-            if (check_default.get_active ()) {
+            app = app_chooser.get_app_info ();
+            if (check_default.active) {
                 try {
-                    var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE, FileQueryInfoFlags.NONE, null);
-                    app.set_as_default_for_type (info.get_content_type ());
+                    app.set_as_default_for_type (content_type);
                 }
                 catch (GLib.Error error) {
                     critical ("Could not set as default: %s", error.message);
                 }
             }
         }
-        dialog.destroy ();
+
+        destroy ();
         return app;
     }
 }
