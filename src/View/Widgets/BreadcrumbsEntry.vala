@@ -189,11 +189,19 @@ namespace Marlin.View.Chrome {
         }
 
         private void completed (string txt) {
-            string? newpath = PF.FileUtils.sanitize_path (txt, current_dir_path);
+            var gfile = PF.FileUtils.get_file_for_path (txt); /* Sanitizes path */
+            var newpath = gfile.get_path ();
+
             /* If path changed, update breadcrumbs and continue editing */
             if (newpath != null) {
+                /* If completed, then GOF File must exist */
+                if ((GOF.File.@get (gfile)).is_directory) {
+                    newpath += GLib.Path.DIR_SEPARATOR_S;
+                }
+
                 set_entry_text (newpath);
             }
+
             set_completion_text ("");
         }
 
