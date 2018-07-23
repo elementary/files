@@ -56,44 +56,42 @@ class PF.ChooseAppDialog : Gtk.Dialog {
         grid.row_spacing = 6;
         grid.add (app_chooser);
 
-        var show_grid = new Gtk.Grid ();
-        show_grid.orientation = Gtk.Orientation.HORIZONTAL;
-        show_grid.column_spacing = 12;
+        var show_text = _("View other applications");
+        var hide_text = _("Hide other applications");
 
-        var show_label = new Gtk.Label (_("Show Other Applications"));
-        show_label.tooltip_text = _("Show applications that may not be suitable for this file type");
+        var show_button = new Gtk.Button.with_label (show_text);
+        show_button.tooltip_text = _("Show or hide applications that may not be suitable for this file type");
 
-        var show_switch = new Gtk.Switch ();
-        show_switch.active = false;
-        show_switch.state = false;
-
-        show_grid.add (show_label);
-        show_grid.add (show_switch);
-
-        grid.add (show_grid);
+        grid.add (show_button);
         content_area.add (grid);
 
-        add_button (_("Select"), Gtk.ResponseType.OK);
-        add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+        var cancel_button = add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
+        var ok_button = add_button (_("Select"), Gtk.ResponseType.OK);
 
         var action_area = get_action_area () as Gtk.ButtonBox;
         action_area.add (check_default);
         action_area.set_child_secondary (check_default, true);
 
-        show_switch.notify["active"].connect (() => {
-            var show_all = show_switch.get_active ();
+        show_button.clicked.connect (() => {
+            var show_other = app_chooser.show_other;
+            app_chooser.show_default = show_other;
+            app_chooser.show_recommended = show_other;
+            app_chooser.show_fallback = show_other;
+            app_chooser.show_other = !show_other;
 
-            app_chooser.show_default = !show_all;
-            app_chooser.show_recommended = !show_all;
-            app_chooser.show_fallback = !show_all;
-            app_chooser.show_other = show_all;
-
-            check_default.active = !show_all;
+            show_other = app_chooser.show_other;
+            show_button.label = show_other ? hide_text : show_text;
+            check_default.active = !show_other;
+            if (show_other) {
+                cancel_button.grab_focus ();
+            }
         });
 
         app_chooser.application_activated.connect (() => {
             response (Gtk.ResponseType.OK);
         });
+
+        set_focus_child (app_chooser);
     }
 
     public AppInfo? get_app_info () {
