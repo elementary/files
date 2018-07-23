@@ -52,7 +52,7 @@ COMMON_SRC = [
         'View/Widgets/TopMenu.vala'
 ]
 
-#IF USE_UNITY
+if USE_UNITY
     executable (
         meson.project_name (),
         COMMON_SRC,
@@ -61,15 +61,14 @@ COMMON_SRC = [
         install: true,
         link_with: [CORE_LIB, WIDGET_LIB]
     )
-#else
-#    executable (
-#        meson.project_name (),
-#        COMMON_SRC,
-#        'QuicklistHandler.vala',
+else
+    executable (
+        meson.project_name (),
+        COMMON_SRC,
+        'QuicklistHandler.vala',
 
-#        dependencies : SRC_DEPS,
-#        install: true,
-#        link_with: CORE_LIB,
-#        link_with: WIDGET_LIB
-#    )
-#endif
+        dependencies : SRC_DEPS,
+        install: true,
+        link_with: [CORE_LIB, WIDGET_LIB]
+    )
+endif
