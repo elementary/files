@@ -52,7 +52,7 @@ class PF.ChooseAppDialog : Gtk.Dialog {
         var content_area = get_content_area () as Gtk.Container;
         var grid = new Gtk.Grid ();
         grid.orientation = Gtk.Orientation.VERTICAL;
-        grid.margin = 12;
+        grid.margin_start = grid.margin_end = 12;
         grid.row_spacing = 6;
         grid.add (app_chooser);
 
@@ -69,6 +69,9 @@ class PF.ChooseAppDialog : Gtk.Dialog {
         var ok_button = add_button (_("Select"), Gtk.ResponseType.OK);
 
         var action_area = get_action_area () as Gtk.ButtonBox;
+        action_area.margin_start = action_area.margin_end =  12;
+        action_area.margin_bottom = action_area.margin_top = 6;
+
         action_area.add (check_default);
         action_area.set_child_secondary (check_default, true);
 
