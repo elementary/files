@@ -26,15 +26,15 @@ configure_file (
     input: meson.project_name () + '.service.meson.in',
     output: meson.project_name () + '.service',
     configuration: config_data,
-	install: true,
-	install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services')
+    install: true,
+    install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services')
 )
 
 configure_file (
     input: meson.project_name () + '-filemanager1.service.meson.in',
     output: meson.project_name () + '.Filemanager1.service',
     configuration: config_data,
-	install: true,
+    install: true,
     install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services')
 )
 
@@ -42,7 +42,7 @@ configure_file (
     input: meson.project_name () + '-pkexec.meson.in',
     output: meson.project_name () + '-pkexec',
     configuration: config_data,
-	install: true,
+    install: true,
     install_dir: get_option('bindir')
 )
 
@@ -57,6 +57,16 @@ i18n.merge_file (
     type: 'xml'
 )
 
+install_data (
+    join_paths(meson.current_source_dir (), 'icons', 'poof.png'),
+    install_dir: join_paths(get_option('datadir'), 'pixmaps', meson.project_name ())
+)
+
+install_data (
+    join_paths (meson.current_source_dir (),'schemas', meson.project_name() + '.gschema.xml'),
+    install_dir: join_paths(get_option('datadir'), 'glib-2.0', 'schemas')
+)
+
 test (
     'Validate desktop file',
     find_program ('desktop-file-validate'),
@@ -69,6 +79,4 @@ test (
     args: ['validate', join_paths (meson.current_build_dir (), meson.project_name () + '.appdata.xml')]
 )
 
-subdir ('icons')
-subdir ('schemas')
 
