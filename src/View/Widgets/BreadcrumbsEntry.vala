@@ -228,6 +228,10 @@ namespace Marlin.View.Chrome {
          *
          **/
         private void on_file_loaded (GOF.File file) {
+            if (!file.is_directory) {
+                return;
+            }
+
             string file_display_name = file.get_display_name ();
             if (file_display_name.length > to_search.length) {
                 if (file_display_name.ascii_ncasecmp (to_search, to_search.length) == 0) {
