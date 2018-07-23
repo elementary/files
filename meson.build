@@ -8,6 +8,7 @@ SHORTNAME = 'files'
 CORE_LIB_NAME = meson.project_name () + '-core'
 WIDGET_LIB_NAME = meson.project_name () + '-widgets'
 SCHEMA_PATH = '/io/elementary/' + SHORTNAME + '/'
+PLUGIN_DIR = join_paths(get_option('libdir'), meson.project_name (), 'plugins', 'core')
 
 vala_version_required = '0.34.0'
 i18n = import ('i18n')
