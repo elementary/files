@@ -1,4 +1,5 @@
 WIDGET_DEPS = [COMMON_DEPS, dependency ('zeitgeist-2.0')]
+
 WIDGET_LIB = shared_library (
     WIDGET_LIB_NAME,
     'Interfaces/LocatableInterface.vala',
@@ -16,13 +17,14 @@ WIDGET_LIB = shared_library (
     'Resources.vala',
     'Welcome.vala',
 
-    dependencies : WIDGET_DEPS,
+    dependencies : [WIDGET_DEPS, C_CORE_DEP, OTHER_DEPS],
 
     install: true,
     install_dir: [true, true, true],
     version: WIDGET_LIB_VER,
     soversion: '0',
-    link_with: CORE_LIB
+	include_directories: CORE_INC,
+	link_with: CORE_LIB
 )
 
 pkg = import ('pkgconfig')

@@ -75,24 +75,27 @@ CORE_LIB_DEPS = [
     dependency ('libcanberra', version: '>=0.30'),
 ]
 
+CORE_INC = include_directories ('libcore')
+C_CORE_VAPI = vala.find_library('pantheon-files-core-C', dirs: join_paths (meson.source_root (), 'libcore'))
+C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
 
-if get_option ('MODULE_ONLY')
-    subdir ('filechooser-module')
-else
-    if get_option ('LIB_ONLY')
+#if get_option ('MODULE_ONLY')
+#    subdir ('filechooser-module')
+#else
+#    if get_option ('LIB_ONLY')
         subdir ('libcore')
         subdir ('libwidgets')
-    else
-        subdir ('libcore')
-        subdir ('libwidgets')
-        subdir ('src')
-        subdir ('data')
-        subdir ('pantheon-files-daemon')
-        subdir ('plugins')
-        subdir ('filechooser-module')
-        meson.add_install_script('meson/post_install.py')
-    endif
-endif
+#    else
+#        subdir ('libcore')
+#        subdir ('libwidgets')
+#        subdir ('src')
+#        subdir ('data')
+#        subdir ('pantheon-files-daemon')
+#        subdir ('plugins')
+#        subdir ('filechooser-module')
+#        meson.add_install_script('meson/post_install.py')
+#    endif
+#endif
 
-subdir ('po')
+#subdir ('po')
 

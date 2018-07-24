@@ -1,6 +1,3 @@
-C_CORE_VAPI = vala.find_library('pantheon-files-core-C', dirs: meson.current_source_dir ())
-C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
-
 CORE_LIB = shared_library (
     CORE_LIB_NAME,
     'AbstractSidebar.vala',
@@ -40,3 +37,10 @@ CORE_LIB = shared_library (
     soversion: '0',
 )
 
+pkg = import ('pkgconfig')
+pkg.generate (
+    libraries: CORE_LIB,
+    description: 'Core library io.elementary.files and io.elementary.filechooser',
+    filebase: OLD_NAME,
+	name: 'lib'+ OLD_NAME
+)
