@@ -1,3 +1,14 @@
+[CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "config.h")]
+namespace Config {
+    public const string GETTEXT_PACKAGE;
+    public const string UI_DIR;
+    public const string VERSION;
+    public const string PLUGIN_DIR;
+    public const string TESTDATA_DIR;
+    public const string APP_NAME;
+    public const string TERMINAL_NAME;
+}
+
 [CCode (cprefix = "FM", lower_case_cprefix = "fm_", cheader_filename = "fm-list-model.h")]
 namespace FM
 {
