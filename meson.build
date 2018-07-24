@@ -5,7 +5,9 @@ CORE_LIB_VER = '0.3.6'
 WIDGET_LIB_VER = '0.3.6'
 DOMAIN = 'io.elementary.'
 SHORTNAME = 'files'
-CORE_LIB_NAME = meson.project_name () + '-core'
+OLD_NAME = 'pantheon-files'
+CORE_LIB_NAME = OLD_NAME + '-core'
+C_LIB_NAME = CORE_LIB_NAME +'-C'
 WIDGET_LIB_NAME = meson.project_name () + '-widgets'
 SCHEMA_PATH = '/io/elementary/' + SHORTNAME + '/'
 PLUGIN_DIR = join_paths(get_option('libdir'), meson.project_name (), 'plugins', 'core')
@@ -14,12 +16,11 @@ MODULE_LIBDIR = join_paths(get_option('libdir'), 'gtk-3.0', 'modules')
 vala_version_required = '0.34.0'
 i18n = import ('i18n')
 vala = meson.get_compiler('vala')
+cc = meson.get_compiler('c')
 
 if not vala.version().version_compare('>= @0@'.format(vala_version_required))
     error('Valac >= @0@ required!'.format(vala_version_required))
 endif
-
-dependency('gtk+-3.0', version: '>=3.22', required: true)
 
 UNITY = dependency ('unity', version: '>=4.0.0', required: false)
 WITH_UNITY = get_option ('WITH_UNITY')
@@ -52,18 +53,23 @@ add_global_arguments (
 
 COMMON_DEPS = [
     dependency ('glib-2.0', version: '>=2.29.0'),
-    dependency ('gthread-2.0'),
     dependency ('gio-2.0'),
-    dependency ('gail-3.0'),
     dependency ('gee-0.8'),
     dependency ('gmodule-2.0'),
     dependency ('granite', version: '>=0.3.0'),
-    dependency ('gtk+-3.0', version: '>=3.4.0'),
+	dependency('gtk+-3.0', version: '>=3.22', required: true),
     dependency ('gio-unix-2.0')
 ]
 
+POSIX = vala.find_library('posix')
+LINUX = vala.find_library('linux')
+MATH = cc.find_library('m')
+
+OTHER_DEPS = declare_dependency (dependencies: [POSIX, LINUX, MATH])
+
 CORE_LIB_DEPS = [
     COMMON_DEPS,
+	OTHER_DEPS,
     dependency ('pango', version: '>=1.1.2'),
     dependency ('sqlite3'),
     dependency ('libcanberra', version: '>=0.30'),

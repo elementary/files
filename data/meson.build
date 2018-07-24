@@ -1,6 +1,6 @@
 i18n.merge_file (
     'desktop',
-    input: meson.project_name () + 'desktop.in',
+    input: meson.project_name () + '.desktop.in',
     output: meson.project_name () + '.desktop',
     install: true,
     install_dir: join_paths (get_option ('datadir'), 'applications'),

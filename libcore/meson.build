@@ -1,3 +1,6 @@
+C_CORE_VAPI = vala.find_library('pantheon-files-core-C', dirs: meson.current_source_dir ())
+C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
+
 CORE_LIB = shared_library (
     CORE_LIB_NAME,
     'AbstractSidebar.vala',
@@ -30,19 +33,10 @@ CORE_LIB = shared_library (
     'fm-list-model.c',
     'gof-file.c',
 
-    dependencies : CORE_LIB_DEPS,
+    dependencies : [CORE_LIB_DEPS, C_CORE_DEP, OTHER_DEPS],
     install: true,
     install_dir: [true, true, true],
     version: CORE_LIB_VER,
-    soversion: '0'
+    soversion: '0',
 )
 
-pkg = import ('pkgconfig')
-pkg.generate (
-    description: 'Core functions for io.elementary.files',
-    filebase: CORE_LIB_NAME,
-    libraries: CORE_LIB,
-    name: CORE_LIB_NAME,
-    version: CORE_LIB_VER,
-    requires: CORE_LIB_DEPS
-)
