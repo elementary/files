@@ -24,6 +24,7 @@
 #include <glib/gi18n.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
+#include "marlin-connect-server-dialog.h"
 
 #include "marlin-vala.h"
 
@@ -460,8 +461,6 @@ marlin_connect_server_dialog_display_location_async (MarlinConnectServerDialog *
                                    callback, user_data,
                                    marlin_connect_server_dialog_display_location_async);
 
-    //g_message ("ConnectServer display location %s", g_file_get_uri (location));
-    //marlin_application_create_window_from_gfile (marlin_application_new (), location, gtk_widget_get_screen (widget));
     g_signal_emit_by_name (MARLIN_VIEW_WINDOW (self->details->parent_window)->current_tab, "path-changed", location);
 
     g_simple_async_result_complete (display_location_res);

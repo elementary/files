@@ -1,0 +1,11 @@
+#ifndef H_CONFIG_H
+#define H_CONFIG_H
+
+#define VERSION "@version@"
+#define PLUGIN_DIR "@plugin_dir@"
+#define UI_DIR "@ui_dir@"
+#define APP_NAME "@app_name@"
+#define TERMINAL_NAME "@terminal_name@"
+
+#define HAVE_DBUS
+#endif

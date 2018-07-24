@@ -4,33 +4,40 @@ deps = [
     dependency ('zeitgeist-2.0')
 ]
 
+MARLIN_VAPI = vala.find_library('marlin', dirs: meson.current_source_dir ())
+MARLIN_DEP = declare_dependency (dependencies: [MARLIN_VAPI])
+
 if USE_UNITY
     SRC_DEPS = [deps, UNITY, PLANK]
 else
     SRC_DEPS = deps
 endif
 
-COMMON_SRC = [
-        'Application.vala',
+LIB_SRC = shared_library (
+		'marlin-vala',
         'ConnectServerOperation.vala',
-        'main.vala',
+        'Application.vala',
         'marlin-deep-count.vala',
         'ProgressUIHandler.vala',
+		'QuicklistHandler.vala',
         'TextRenderer.vala',
-        'QuicklistHandler.vala',
         'ClipboardManager.vala',
         'IconRenderer.vala',
-        'Dialogs/AbstractPropertiesDialog.vala',
+        'ZeitgeistManager.vala',
+
+		'Dialogs/AbstractPropertiesDialog.vala',
         'Dialogs/ChooseAppDialog.vala',
         'Dialogs/PropertiesWindow.vala',
         'Dialogs/VolumePropertiesWindow.vala',
+
         'Utils/MimeActions.vala',
         'Utils/Permissions.vala',
+
+		'View/Window.vala',
         'View/ColumnView.vala',
         'View/AbstractTreeView.vala',
         'View/IconView.vala',
         'View/ListView.vala',
-        'ZeitgeistManager.vala',
         'View/DirectoryNotFound.vala',
         'View/AbstractDirectoryView.vala',
         'View/Window.vala',
@@ -39,6 +46,7 @@ COMMON_SRC = [
         'View/Sidebar.vala',
         'View/Slot.vala',
         'View/Miller.vala',
+
         'View/Widgets/AbstractEditableLabel.vala',
         'View/Widgets/BreadcrumbsEntry.vala',
         'View/Widgets/DiskRenderer.vala',
@@ -49,26 +57,36 @@ COMMON_SRC = [
         'View/Widgets/PermissionButton.vala',
         'View/Widgets/ProgressInfoWidget.vala',
         'View/Widgets/SingleLineEditableLabel.vala',
-        'View/Widgets/TopMenu.vala'
-]
+        'View/Widgets/TopMenu.vala',
 
-if USE_UNITY
-    executable (
-        meson.project_name (),
-        COMMON_SRC,
+		'marlin-connect-server-dialog.c',
 
-        dependencies : SRC_DEPS,
-        install: true,
-        link_with: [CORE_LIB, WIDGET_LIB]
-    )
-else
-    executable (
-        meson.project_name (),
-        COMMON_SRC,
-        'QuicklistHandler.vala',
+		dependencies : [SRC_DEPS, C_CORE_DEP, MARLIN_DEP, OTHER_DEPS],
+		include_directories: [CORE_INC, WIDGET_INC],
+#		vala_header: 'marlin-vala.h',
+		install: false,
+		link_with: [CORE_LIB, WIDGET_LIB]
+)
 
-        dependencies : SRC_DEPS,
-        install: true,
-        link_with: [CORE_LIB, WIDGET_LIB]
-    )
-endif
+config_data = configuration_data()
+config_data.set('plugin_dir', PLUGIN_DIR)
+config_data.set('version', PROJECT_VER)
+config_data.set('ui_dir', join_paths(meson.current_source_dir (), 'View'))
+config_data.set('app_name', meson.project_name ())
+config_data.set('terminal_name', TERMINAL_NAME)
+
+configure_file (
+    input: 'config.h.in',
+    output: 'config.h',
+    configuration: config_data
+)
+
+executable (
+	meson.project_name (),
+	'main.vala',
+
+	dependencies : [SRC_DEPS, C_CORE_DEP, MARLIN_DEP, OTHER_DEPS],
+	include_directories: [CORE_INC, WIDGET_INC],
+	install: true,
+	link_with: [CORE_LIB, WIDGET_LIB, LIB_SRC]
+)

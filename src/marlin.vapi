@@ -1,4 +1,15 @@
-public void marlin_toolbar_editor_dialog_show (Marlin.View.Window mvw);
+//public void marlin_toolbar_editor_dialog_show (Marlin.View.Window mvw);
+
+[CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "config.h")]
+namespace Config {
+    public const string GETTEXT_PACKAGE;
+    public const string UI_DIR;
+    public const string VERSION;
+    public const string PLUGIN_DIR;
+    public const string TESTDATA_DIR;
+    public const string APP_NAME;
+    public const string TERMINAL_NAME;
+}
 
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
 namespace Preferences {
@@ -10,9 +21,7 @@ namespace Preferences {
     public GLib.Settings gtk_file_chooser_settings;
 }
 
-
 namespace Marlin {
-
     [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]
     namespace ConnectServer {
         [CCode (cheader_filename = "marlin-connect-server-dialog.h")]

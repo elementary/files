@@ -155,7 +155,7 @@ namespace Marlin.View {
             tabs.allow_restoring = true;
             tabs.allow_duplication = true;
             tabs.allow_new_window = true;
-            tabs.group_name = APP_NAME;
+            tabs.group_name = Config.APP_NAME;
 
             this.configure_event.connect_after ((e) => {
                 tabs.set_size_request (e.width / 2, -1);
@@ -507,7 +507,7 @@ namespace Marlin.View {
             tab.close ();
         }
 
-        public void add_window (File location = File.new_for_path (PF.UserUtils.get_real_user_home ()),
+        public void add_window (GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
                                  Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                                  int x = -1, int y = -1) {
 

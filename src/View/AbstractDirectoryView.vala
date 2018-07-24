@@ -2404,7 +2404,7 @@ namespace FM {
         private bool app_is_this_app (AppInfo ai) {
             string exec_name = ai.get_executable ();
 
-            return (exec_name == APP_NAME || exec_name == TERMINAL_NAME);
+            return (exec_name == Config.APP_NAME || exec_name == Config.TERMINAL_NAME);
         }
 
         private void filter_default_app_from_open_with_apps () {

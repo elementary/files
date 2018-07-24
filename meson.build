@@ -8,10 +8,11 @@ SHORTNAME = 'files'
 OLD_NAME = 'pantheon-files'
 CORE_LIB_NAME = OLD_NAME + '-core'
 C_LIB_NAME = CORE_LIB_NAME +'-C'
-WIDGET_LIB_NAME = meson.project_name () + '-widgets'
+WIDGET_LIB_NAME = OLD_NAME + '-widgets'
 SCHEMA_PATH = '/io/elementary/' + SHORTNAME + '/'
 PLUGIN_DIR = join_paths(get_option('libdir'), meson.project_name (), 'plugins', 'core')
 MODULE_LIBDIR = join_paths(get_option('libdir'), 'gtk-3.0', 'modules')
+TERMINAL_NAME = 'pantheon-terminal'
 
 vala_version_required = '0.34.0'
 i18n = import ('i18n')
@@ -76,19 +77,25 @@ CORE_LIB_DEPS = [
 ]
 
 CORE_INC = include_directories ('libcore')
+WIDGET_INC = include_directories ('libwidgets')
+#SRC_INC = include_directories ('src')
+
 C_CORE_VAPI = vala.find_library('pantheon-files-core-C', dirs: join_paths (meson.source_root (), 'libcore'))
 C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
+
+#WIDGET_VAPI = vala.find_library('pantheon-files-core-C', dirs: join_paths (meson.source_root (), 'libcore'))
+#WIDGET_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
 
 #if get_option ('MODULE_ONLY')
 #    subdir ('filechooser-module')
 #else
 #    if get_option ('LIB_ONLY')
-        subdir ('libcore')
-        subdir ('libwidgets')
-#    else
 #        subdir ('libcore')
 #        subdir ('libwidgets')
-#        subdir ('src')
+#    else
+        subdir ('libcore')
+        subdir ('libwidgets')
+        subdir ('src')
 #        subdir ('data')
 #        subdir ('pantheon-files-daemon')
 #        subdir ('plugins')
