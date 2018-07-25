@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-07-09 00:10+0000\n"
-"Last-Translator: Daniel Zvir <zvir.daniel@seznam.cz>\n"
+"POT-Creation-Date: 2018-07-16 08:29-0700\n"
+"PO-Revision-Date: 2018-07-22 00:03+0000\n"
+"Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
 "Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/>"
 "\n"
 "Language: cs\n"
@@ -151,7 +151,7 @@ msgstr "odkaz na %s"
 #: ../libcore/gof-file.c:1590
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "Selhalo zpracování souboru vstupu pracovního prostředí: %s"
+msgstr "Selhalo zpracování souboru .desktop: %s"
 
 #: ../libcore/gof-file.c:1598
 msgid "Failed to parse the desktop file"
@@ -863,9 +863,9 @@ msgstr "Vytváří se odkazy v \"%B\""
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] "Vytváří se odkaz k %'d souboru"
-msgstr[1] "Vytváří se odkazy k %'d souborům"
-msgstr[2] "Vytváří se odkazy k %'d souborům"
+msgstr[0] "Vytváří se odkaz na %'d soubor"
+msgstr[1] "Vytváří se odkazy na %'d soubory"
+msgstr[2] "Vytváří se odkazy na %'d souborů"
 
 #: ../libcore/marlin-file-operations.c:5155
 msgid "Error while creating link to %B."
@@ -1379,30 +1379,34 @@ msgstr "Otevřít s"
 msgid "Other Application…"
 msgstr "Jiná aplikace…"
 
-#: ../src/View/AbstractDirectoryView.vala:2435
+#: ../src/View/AbstractDirectoryView.vala:2192
+msgid "Templates"
+msgstr "Šablony"
+
+#: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
 msgstr "Nepojmenovaný soubor %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2774
-#: ../src/View/AbstractDirectoryView.vala:2966
+#: ../src/View/AbstractDirectoryView.vala:2778
+#: ../src/View/AbstractDirectoryView.vala:2970
 msgid "Cannot remove files from here"
 msgstr "Nelze odstranit soubory z tohoto místa"
 
-#: ../src/View/AbstractDirectoryView.vala:2775
-#: ../src/View/AbstractDirectoryView.vala:2951
-#: ../src/View/AbstractDirectoryView.vala:2967
+#: ../src/View/AbstractDirectoryView.vala:2779
+#: ../src/View/AbstractDirectoryView.vala:2955
+#: ../src/View/AbstractDirectoryView.vala:2971
 msgid "You do not have permission to change this location"
 msgstr "Nemáte oprávnění měnit toto umístění"
 
-#: ../src/View/AbstractDirectoryView.vala:2926
+#: ../src/View/AbstractDirectoryView.vala:2930
 msgid "Cannot copy files that are in the trash"
 msgstr "Nelze kopírovat soubory, které se nacházejí v koši"
 
-#: ../src/View/AbstractDirectoryView.vala:2927
+#: ../src/View/AbstractDirectoryView.vala:2931
 msgid "Cutting the selection instead"
 msgstr "Místo toho vyjmout výběr"
 
-#: ../src/View/AbstractDirectoryView.vala:2950
+#: ../src/View/AbstractDirectoryView.vala:2954
 msgid "Cannot paste files here"
 msgstr "Na toto místo nelze vložit soubory"
 
@@ -1734,7 +1738,7 @@ msgstr "Spouštění"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Zobrazit verzi programu."
+msgstr "Zobrazit verzi programu"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1746,7 +1750,7 @@ msgstr "Nové okno"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Ukončit Soubory."
+msgstr "Ukončit Soubory"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
