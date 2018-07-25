@@ -1,5 +1,5 @@
 PLUG_NAME = 'pantheon-files-contractor'
-
+INSTALL_DIR = join_paths(PLUGIN_DIR, 'core')
 PLUG_DEPS = [
     COMMON_DEPS
 ]
@@ -9,26 +9,17 @@ SRC = [
 ]
 
 PLUG_LIB = shared_library (
-    meson.project_name (),
+    PLUG_NAME,
     SRC,
 
     dependencies : [DEPS, C_CORE_DEP],
 	include_directories: CORE_INC,
     install: true,
+	install_dir: INSTALL_DIR,
 	link_with: [CORE_LIB]
 )
 
-pkg = import ('pkgconfig')
-pkg.generate (
-    description: 'io.elementary.files plugin for Contractor functions',
-    filebase: PLUG_NAME,
-    libraries: PLUG_LIB,
-    name: PLUG_NAME,
-    version: PROJECT_VER,
-    requires: PLUG_DEPS
-)
-
 install_data (
-	'contractor.plug',
-	install_dir: PLUGIN_DIR
+    'contractor.plug',
+	install_dir: INSTALL_DIR
 )

@@ -10,7 +10,7 @@ SRC = [
 ]
 
 executable (
-    meson.project_name (),
+    meson.project_name () + '-daemon',
     SRC,
 
     dependencies : DEPS,

@@ -28,8 +28,10 @@ configure_file (
 
 # Need to compile as library in order to handle mutual dependency between vala and c files #
 # FIXME Find better way or port c file to vala #
-LIB_SRC = shared_library (
-		'marlin-vala',
+LIB_NAME = 'marlin-vala'
+LIB_SRC = static_library (
+		LIB_NAME,
+
         'ConnectServerOperation.vala',
         'Application.vala',
         'marlin-deep-count.vala',
@@ -90,5 +92,5 @@ executable (
 	dependencies : [SRC_DEPS, C_CORE_DEP, MARLIN_DEP, OTHER_DEPS],
 	include_directories: [CORE_INC, WIDGET_INC],
 	install: true,
-	link_with: [CORE_LIB, WIDGET_LIB, LIB_SRC]
+	link_with: [CORE_LIB, WIDGET_LIB, LIB_SRC],
 )

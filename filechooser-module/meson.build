@@ -1,8 +1,4 @@
-MODULE_NAME = '"pantheon-filechooser-module'
-
-MODULE_DEPS = [
-    COMMON_DEPS,
-]
+MODULE_NAME = 'pantheon-filechooser-module'
 
 SRC = [
     'FileChooserDialog.vala',
@@ -10,10 +6,10 @@ SRC = [
 ]
 
 MODULE_LIB = shared_library (
-    meson.project_name (),
+    MODULE_NAME,
     SRC,
 
-    dependencies : [DEPS, C_CORE_DEP],
+    dependencies : [CORE_LIB_DEPS, C_CORE_DEP],
     include_directories: [CORE_INC, WIDGET_INC],
     install: true,
     install_dir: MODULE_LIBDIR,

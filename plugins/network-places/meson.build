@@ -9,25 +9,17 @@ SRC = [
 ]
 
 PLUG_LIB = shared_library (
-    meson.project_name (),
+    PLUG_NAME,
     SRC,
 
     dependencies : [DEPS, C_CORE_DEP],
+	include_directories: [CORE_INC, SRC_INC],
     install: true,
-    link_with: [CORE_LIB, WIDGET_LIB]
-)
-
-pkg = import ('pkgconfig')
-pkg.generate (
-    description: 'io.elementary.files plugin for networking functions',
-    filebase: PLUG_NAME,
-    libraries: PLUG_LIB,
-    name: PLUG_NAME,
-    version: PROJECT_VER,
-    requires: PLUG_DEPS
+	install_dir: INSTALL_DIR,
+	link_with: [CORE_LIB, LIB_SRC]
 )
 
 install_data (
     PLUG_NAME + '.plug',
-    install_dir: PLUGIN_DIR
+    install_dir: INSTALL_DIR
 )
