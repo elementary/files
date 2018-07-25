@@ -47,7 +47,6 @@ namespace Marlin.View {
         }
 
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
-            base.init ();
             this.ctab = ctab;
             this.root_location = loc;
 
@@ -66,7 +65,8 @@ namespace Marlin.View {
             viewport.add (this.colpane);
 
             scrolled_window.add (viewport);
-            content_box.pack_start (scrolled_window);
+            add_overlay (scrolled_window);
+
             content_box.show_all ();
 
             make_view ();
