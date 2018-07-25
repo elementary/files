@@ -17,6 +17,17 @@
     <binary>io.elementary.files-daemon</binary>
     <binary>io.elementary.files-pkexec</binary>
   </provides>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/elementary/files/master/data/screenshot-grid.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/elementary/files/master/data/screenshot-list.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/elementary/files/master/data/screenshot-column.png</image>
+    </screenshot>
+  </screenshots>
   <content_rating type="oars-1.1">
     <content_attribute id="violence-cartoon">none</content_attribute>
     <content_attribute id="violence-fantasy">none</content_attribute>

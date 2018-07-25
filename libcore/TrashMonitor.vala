@@ -45,7 +45,9 @@ public class Marlin.TrashMonitor : GLib.Object {
             critical (e.message);
         }
 
-        update_info.begin ();
+        update_info.begin (() => { /* Ensure a notify signal is emitted when first set accurately */
+            notify_property ("is-empty");
+        });
     }
 
     public GLib.Icon get_icon () {
