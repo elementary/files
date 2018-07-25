@@ -76,7 +76,6 @@ namespace Marlin.View {
         public signal void size_change ();
 
         public Slot (GLib.File _location, Marlin.View.ViewContainer _ctab, Marlin.ViewMode _mode) {
-            base.init ();
             ctab = _ctab;
             mode = _mode;
             is_active = false;
@@ -295,8 +294,9 @@ namespace Marlin.View {
                     break;
             }
 
+            /* Miller View creates its own overlay and handles packing of the directory view */
             if (mode != Marlin.ViewMode.MILLER_COLUMNS) {
-                content_box.pack_start (dir_view, true, true, 0);
+                add_overlay (dir_view);
             }
         }
 
