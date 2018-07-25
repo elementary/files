@@ -461,7 +461,7 @@ marlin_connect_server_dialog_display_location_async (MarlinConnectServerDialog *
                                    callback, user_data,
                                    marlin_connect_server_dialog_display_location_async);
 
-    g_signal_emit_by_name (MARLIN_VIEW_WINDOW (self->details->parent_window)->current_tab, "path-changed", location);
+    marlin_view_window_uri_path_change_request (MARLIN_VIEW_WINDOW (self->details->parent_window),g_file_get_uri (location), MARLIN_OPEN_FLAG_DEFAULT);
 
     g_simple_async_result_complete (display_location_res);
     g_object_unref (display_location_res);

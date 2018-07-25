@@ -10,8 +10,8 @@ CORE_LIB_NAME = OLD_NAME + '-core'
 C_LIB_NAME = CORE_LIB_NAME +'-C'
 WIDGET_LIB_NAME = OLD_NAME + '-widgets'
 SCHEMA_PATH = '/io/elementary/' + SHORTNAME + '/'
-PLUGIN_DIR = join_paths(get_option('libdir'), meson.project_name (), 'plugins', 'core')
-MODULE_LIBDIR = join_paths(get_option('libdir'), 'gtk-3.0', 'modules')
+PLUGIN_DIR = join_paths(get_option('prefix'), get_option ('libdir'), meson.project_name (), 'plugins')
+MODULE_LIBDIR = join_paths(get_option('prefix'), get_option ('libdir'), 'gtk-3.0', 'modules')
 TERMINAL_NAME = 'pantheon-terminal'
 
 vala_version_required = '0.34.0'
