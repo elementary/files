@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-07-05 12:52+0000\n"
+"POT-Creation-Date: 2018-07-16 08:29-0700\n"
+"PO-Revision-Date: 2018-07-17 06:34+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/files/files/fr/"
 ">\n"
@@ -1362,30 +1362,34 @@ msgstr "Ouvrir avec"
 msgid "Other Application…"
 msgstr "Autre application…"
 
-#: ../src/View/AbstractDirectoryView.vala:2435
+#: ../src/View/AbstractDirectoryView.vala:2192
+msgid "Templates"
+msgstr "Modèles"
+
+#: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
 msgstr "Sans titre %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2774
-#: ../src/View/AbstractDirectoryView.vala:2966
+#: ../src/View/AbstractDirectoryView.vala:2778
+#: ../src/View/AbstractDirectoryView.vala:2970
 msgid "Cannot remove files from here"
 msgstr "Impossible de supprimer les fichiers d'ici"
 
-#: ../src/View/AbstractDirectoryView.vala:2775
-#: ../src/View/AbstractDirectoryView.vala:2951
-#: ../src/View/AbstractDirectoryView.vala:2967
+#: ../src/View/AbstractDirectoryView.vala:2779
+#: ../src/View/AbstractDirectoryView.vala:2955
+#: ../src/View/AbstractDirectoryView.vala:2971
 msgid "You do not have permission to change this location"
 msgstr "Vous n'avez pas l'autorisation de modifier ce répertoire"
 
-#: ../src/View/AbstractDirectoryView.vala:2926
+#: ../src/View/AbstractDirectoryView.vala:2930
 msgid "Cannot copy files that are in the trash"
 msgstr "Impossible de copier des fichiers qui sont dans la corbeille"
 
-#: ../src/View/AbstractDirectoryView.vala:2927
+#: ../src/View/AbstractDirectoryView.vala:2931
 msgid "Cutting the selection instead"
 msgstr "Couper la sélection à la place"
 
-#: ../src/View/AbstractDirectoryView.vala:2950
+#: ../src/View/AbstractDirectoryView.vala:2954
 msgid "Cannot paste files here"
 msgstr "Impossible de coller des fichiers ici"
 
@@ -1716,7 +1720,7 @@ msgstr "Exécution"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Afficher la version du programme."
+msgstr "Afficher la version du programme"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1728,7 +1732,7 @@ msgstr "Nouvelle fenêtre"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Quitter Fichiers."
+msgstr "Quitter Fichiers"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
