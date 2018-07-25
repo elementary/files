@@ -1,23 +1,3 @@
-i18n.merge_file (
-    'desktop',
-    input: meson.project_name () + '.desktop.in',
-    output: meson.project_name () + '.desktop',
-    install: true,
-    install_dir: join_paths (get_option ('datadir'), 'applications'),
-    po_dir: join_paths (meson.source_root (), 'po', 'extra'),
-    type: 'desktop'
-)
-
-i18n.merge_file (
-    'appdata',
-    input: meson.project_name () + '.appdata.xml.in',
-    output: meson.project_name () + '.appdata.xml',
-    install: true,
-    install_dir: join_paths (get_option ('datadir'), 'metainfo'),
-    po_dir: join_paths (meson.source_root (), 'po', 'extra'),
-    type: 'xml'
-)
-
 config_data = configuration_data()
 config_data.set ('install_prefix', get_option ('prefix'))
 config_data.set ('bin_dir', get_option ('bindir'))
@@ -46,13 +26,39 @@ configure_file (
     install_dir: get_option('bindir')
 )
 
-i18n.merge_file (
-    'policy',
+configure_file (
     input: meson.project_name () + '.policy.xml.meson.in.in',
-    output: meson.project_name () + '.policy',
+    output: meson.project_name () + '.policy.xml.meson.in',
     configuration: config_data,
+    install: false,
+)
+
+i18n.merge_file (
+    'appdata',
+    input: join_paths(meson.current_build_dir (), meson.project_name () + '.policy.xml.meson.in'),
+    output: meson.project_name () + '.policy',
     install: true,
     install_dir: join_paths(get_option('datadir'), 'polkit-1', 'actions'),
+    po_dir: join_paths (meson.source_root (), 'po', 'extra'),
+    type: 'xml'
+)
+
+i18n.merge_file (
+    'desktop',
+    input: meson.project_name () + '.desktop.in',
+    output: meson.project_name () + '.desktop',
+    install: true,
+    install_dir: join_paths (get_option ('datadir'), 'applications'),
+    po_dir: join_paths (meson.source_root (), 'po', 'extra'),
+    type: 'desktop'
+)
+
+i18n.merge_file (
+    'appdata',
+    input: meson.project_name () + '.appdata.xml.in',
+    output: meson.project_name () + '.appdata.xml',
+    install: true,
+    install_dir: join_paths (get_option ('datadir'), 'metainfo'),
     po_dir: join_paths (meson.source_root (), 'po', 'extra'),
     type: 'xml'
 )
