@@ -1,7 +1,7 @@
 PLUG_NAME = 'pantheon-files-contractor'
 
 PLUG_DEPS = [
-    COMMON_DEPS,
+    COMMON_DEPS
 ]
 
 SRC = [
@@ -12,7 +12,8 @@ PLUG_LIB = shared_library (
     meson.project_name (),
     SRC,
 
-    dependencies : DEPS,
+    dependencies : [DEPS, C_CORE_DEP],
+	include_directories: CORE_INC,
     install: true,
 	link_with: [CORE_LIB]
 )

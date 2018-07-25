@@ -12,7 +12,7 @@ PLUG_LIB = shared_library (
     meson.project_name (),
     SRC,
 
-    dependencies : DEPS,
+    dependencies : [DEPS, C_CORE_DEP],
     install: true,
     link_with: [CORE_LIB, WIDGET_LIB]
 )

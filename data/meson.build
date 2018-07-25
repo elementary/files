@@ -26,21 +26,22 @@ configure_file (
     install_dir: get_option('bindir')
 )
 
-configure_file (
+policy_in = configure_file (
     input: meson.project_name () + '.policy.xml.meson.in.in',
     output: meson.project_name () + '.policy.xml.meson.in',
     configuration: config_data,
     install: false,
 )
 
-i18n.merge_file (
-    'appdata',
-    input: join_paths(meson.current_build_dir (), meson.project_name () + '.policy.xml.meson.in'),
-    output: meson.project_name () + '.policy',
-    install: true,
-    install_dir: join_paths(get_option('datadir'), 'polkit-1', 'actions'),
-    po_dir: join_paths (meson.source_root (), 'po', 'extra'),
-    type: 'xml'
+# i18.merge does not work with policy files out of the box so use custom target #
+#FIXME Convert to i18.merge when possible #
+custom_target(
+   'policy',
+  input : [join_paths (meson.source_root (), 'po', 'extra'), policy_in],
+  output : meson.project_name () + '.policy',
+  command : ['intltool-merge', '-x', '@INPUT@', '@OUTPUT@'],
+  install : true,
+  install_dir : join_paths(get_option('datadir'), 'polkit-1', 'actions')
 )
 
 i18n.merge_file (
