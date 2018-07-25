@@ -1324,6 +1324,10 @@ namespace FM {
             model.remove_file (file, dir);
 
             remove_marlin_icon_info_cache (file);
+            if (file.get_thumbnail_path () != null) {
+                PF.FileUtils.remove_thumbnail_paths_for_uri (file.uri);
+            }
+
             if (file.is_folder ()) {
                 /* Check whether the deleted file is the directory */
                 var file_dir = GOF.Directory.Async.cache_lookup (file.location);
