@@ -78,13 +78,9 @@ CORE_LIB_DEPS = [
 
 CORE_INC = include_directories ('libcore')
 WIDGET_INC = include_directories ('libwidgets')
-#SRC_INC = include_directories ('src')
 
 C_CORE_VAPI = vala.find_library('pantheon-files-core-C', dirs: join_paths (meson.source_root (), 'libcore'))
 C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
-
-#WIDGET_VAPI = vala.find_library('pantheon-files-core-C', dirs: join_paths (meson.source_root (), 'libcore'))
-#WIDGET_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
 
 #if get_option ('MODULE_ONLY')
 #    subdir ('filechooser-module')
@@ -100,9 +96,9 @@ C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
         subdir ('pantheon-files-daemon')
         subdir ('plugins')
         subdir ('filechooser-module')
-#        meson.add_install_script('meson/post_install.py')
+        meson.add_install_script('meson/post_install.py')
 #    endif
 #endif
 
-#subdir ('po')
+subdir ('po')
 
