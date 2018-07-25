@@ -113,7 +113,7 @@ namespace Marlin {
                 }
 
             } else if (file.is_directory) {
-                bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0;
+                bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0 || file.is_expanded;
                 if (expanded) {
                     special_icon_name = "folder-open";
                 }
