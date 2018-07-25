@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 08:24-0700\n"
+"POT-Creation-Date: 2018-07-16 08:29-0700\n"
 "PO-Revision-Date: 2018-01-05 01:19+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.elementary.io/projects/"
@@ -1264,30 +1264,34 @@ msgstr "打开方式"
 msgid "Other Application…"
 msgstr "其他应用…"
 
-#: ../src/View/AbstractDirectoryView.vala:2435
+#: ../src/View/AbstractDirectoryView.vala:2192
+msgid "Templates"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
 msgstr "未命名 %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2774
-#: ../src/View/AbstractDirectoryView.vala:2966
+#: ../src/View/AbstractDirectoryView.vala:2778
+#: ../src/View/AbstractDirectoryView.vala:2970
 msgid "Cannot remove files from here"
 msgstr "无法从此处删除文件"
 
-#: ../src/View/AbstractDirectoryView.vala:2775
-#: ../src/View/AbstractDirectoryView.vala:2951
-#: ../src/View/AbstractDirectoryView.vala:2967
+#: ../src/View/AbstractDirectoryView.vala:2779
+#: ../src/View/AbstractDirectoryView.vala:2955
+#: ../src/View/AbstractDirectoryView.vala:2971
 msgid "You do not have permission to change this location"
 msgstr "您没有更改此目录的权限"
 
-#: ../src/View/AbstractDirectoryView.vala:2926
+#: ../src/View/AbstractDirectoryView.vala:2930
 msgid "Cannot copy files that are in the trash"
 msgstr "无法复制回收站中的文件"
 
-#: ../src/View/AbstractDirectoryView.vala:2927
+#: ../src/View/AbstractDirectoryView.vala:2931
 msgid "Cutting the selection instead"
 msgstr "更改选中项为剪切"
 
-#: ../src/View/AbstractDirectoryView.vala:2950
+#: ../src/View/AbstractDirectoryView.vala:2954
 msgid "Cannot paste files here"
 msgstr "无法在此处粘贴文件"
 
@@ -1617,7 +1621,7 @@ msgid "Execute"
 msgstr "执行"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "显示程序版本。"
 
 #: ../src/Application.vala:121
@@ -1629,7 +1633,7 @@ msgid "New Window"
 msgstr "新建窗口"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "退出"
 
 #: ../src/Application.vala:127

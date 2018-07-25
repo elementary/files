@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 08:24-0700\n"
+"POT-Creation-Date: 2018-07-16 08:29-0700\n"
 "PO-Revision-Date: 2016-12-12 07:21+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -1287,30 +1287,34 @@ msgstr "بىلەن ئىچىش"
 msgid "Other Application…"
 msgstr "باشقا ئەپلەر...."
 
-#: ../src/View/AbstractDirectoryView.vala:2435
+#: ../src/View/AbstractDirectoryView.vala:2192
+msgid "Templates"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
 msgstr "ئىسىمسىز %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2774
-#: ../src/View/AbstractDirectoryView.vala:2966
+#: ../src/View/AbstractDirectoryView.vala:2778
+#: ../src/View/AbstractDirectoryView.vala:2970
 msgid "Cannot remove files from here"
 msgstr "بۇ يەردىن ھۆججەتلەرنى يۆتكىگىلى بولمىدى"
 
-#: ../src/View/AbstractDirectoryView.vala:2775
-#: ../src/View/AbstractDirectoryView.vala:2951
-#: ../src/View/AbstractDirectoryView.vala:2967
+#: ../src/View/AbstractDirectoryView.vala:2779
+#: ../src/View/AbstractDirectoryView.vala:2955
+#: ../src/View/AbstractDirectoryView.vala:2971
 msgid "You do not have permission to change this location"
 msgstr "سىزنىڭ بۇ ئورۇننى ئۆزگەرتىش سالاھىيىتىڭىز يوق"
 
-#: ../src/View/AbstractDirectoryView.vala:2926
+#: ../src/View/AbstractDirectoryView.vala:2930
 msgid "Cannot copy files that are in the trash"
 msgstr "ئەخلەت چېلىكىدىكى ھۆججەتلەرنى كۆپەيتكىلى بولمايدۇ"
 
-#: ../src/View/AbstractDirectoryView.vala:2927
+#: ../src/View/AbstractDirectoryView.vala:2931
 msgid "Cutting the selection instead"
 msgstr "تاللانغان مەزمۇننى كىسىش"
 
-#: ../src/View/AbstractDirectoryView.vala:2950
+#: ../src/View/AbstractDirectoryView.vala:2954
 msgid "Cannot paste files here"
 msgstr "ھۆججەتلەرنى بۇ يەرگە چاپلىغىلى بولمىدى"
 
@@ -1641,7 +1645,7 @@ msgid "Execute"
 msgstr "ئىجرا قىلىش"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "پروگراممىنىڭ نەشرىنى كۆرسىتىش"
 
 #: ../src/Application.vala:121
@@ -1653,7 +1657,7 @@ msgid "New Window"
 msgstr "يىڭى كۆزنەك"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "ھۆججەتتىن چىكىنىش"
 
 #: ../src/Application.vala:127

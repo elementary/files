@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-05-12 00:02+0000\n"
-"Last-Translator: Pedro Ferreira <pmaf.ferreira@gmail.com>\n"
+"POT-Creation-Date: 2018-07-16 08:29-0700\n"
+"PO-Revision-Date: 2018-07-21 00:07+0000\n"
+"Last-Translator: Christophe Silva <Christophesilva80@gmail.com>\n"
 "Language-Team: Portuguese <https://weblate.elementary.io/projects/files/"
 "files/pt/>\n"
 "Language: pt\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -35,7 +35,7 @@ msgstr "FTP (com autenticação)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
+msgstr "AFP (Protocolo de arquivamento da Apple)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -155,19 +155,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Erro ao analisar o ficheiro: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Erro ao analisar o ficheiro: %s"
+msgstr "Falha ao analisar o arquivo da área de trabalho"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
 msgstr "Erro ao analisar o ficheiro: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Erro ao analisar o ficheiro: %s"
+msgstr "Não é possível iniciar o arquivo: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1354,30 +1353,34 @@ msgstr "Abrir com"
 msgid "Other Application…"
 msgstr "Outra Aplicação…"
 
-#: ../src/View/AbstractDirectoryView.vala:2435
+#: ../src/View/AbstractDirectoryView.vala:2192
+msgid "Templates"
+msgstr "Modelos"
+
+#: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
 msgstr "%s Sem Nome"
 
-#: ../src/View/AbstractDirectoryView.vala:2774
-#: ../src/View/AbstractDirectoryView.vala:2966
+#: ../src/View/AbstractDirectoryView.vala:2778
+#: ../src/View/AbstractDirectoryView.vala:2970
 msgid "Cannot remove files from here"
 msgstr "Não é possível remover ficheiros daqui"
 
-#: ../src/View/AbstractDirectoryView.vala:2775
-#: ../src/View/AbstractDirectoryView.vala:2951
-#: ../src/View/AbstractDirectoryView.vala:2967
+#: ../src/View/AbstractDirectoryView.vala:2779
+#: ../src/View/AbstractDirectoryView.vala:2955
+#: ../src/View/AbstractDirectoryView.vala:2971
 msgid "You do not have permission to change this location"
 msgstr "Não tem permissões para mudar este local"
 
-#: ../src/View/AbstractDirectoryView.vala:2926
+#: ../src/View/AbstractDirectoryView.vala:2930
 msgid "Cannot copy files that are in the trash"
 msgstr "Não é possivel copiar ficheiros que estão no lixo"
 
-#: ../src/View/AbstractDirectoryView.vala:2927
+#: ../src/View/AbstractDirectoryView.vala:2931
 msgid "Cutting the selection instead"
 msgstr "Então cortar a seleção"
 
-#: ../src/View/AbstractDirectoryView.vala:2950
+#: ../src/View/AbstractDirectoryView.vala:2954
 msgid "Cannot paste files here"
 msgstr "Não pode colar ficheiros aqui"
 
@@ -1487,7 +1490,7 @@ msgstr "(%s Livres de %s)"
 
 #: ../src/View/Sidebar.vala:1357
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Erro ao montar o volume %s"
 
 #: ../src/View/Sidebar.vala:1372
 msgid "Unable to start %s"
@@ -1621,12 +1624,11 @@ msgstr "Recarregar esta pasta"
 #: ../src/View/Widgets/LocationBar.vala:196
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Pesquisar ou digitar caminho"
 
 #: ../src/View/Widgets/LocationBar.vala:205
-#, fuzzy
 msgid "Searching…"
-msgstr "A carregar…"
+msgstr "A procurar…"
 
 #: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
@@ -1708,7 +1710,7 @@ msgid "Execute"
 msgstr "Executar"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Mostrar a versão da aplicação."
 
 #: ../src/Application.vala:121
@@ -1720,7 +1722,7 @@ msgid "New Window"
 msgstr "Nova Janela"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Sair do Ficheiros."
 
 #: ../src/Application.vala:127
@@ -1978,9 +1980,8 @@ msgid "Could not open URIs"
 msgstr "Impossível mudar o nome para '%s'"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Não é possível abrir ficheiros ou uris com esta aplicação"
+msgstr "Não é possível abrir ficheiros ou URL's com esta aplicação"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2297,9 +2298,8 @@ msgid "Paste"
 msgstr "Colar"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Colar"
+msgstr "Colar Hiperligação"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2311,16 +2311,15 @@ msgstr "Copiar"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Copiar como Hiperligação"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Colar nesta Pasta"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Colar nesta Pasta"
+msgstr "Colar Hiperligação nesta Pasta"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2340,7 +2339,7 @@ msgstr "Ordem Inversa"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Colocar Pastas Antes dos Ficheiros"
 
 #~ msgid "Failed to open uris"
 #~ msgstr "Falha ao abrir uris"
