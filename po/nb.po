@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-06-02 19:21+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"POT-Creation-Date: 2018-07-16 08:29-0700\n"
+"PO-Revision-Date: 2018-07-21 00:07+0000\n"
+"Last-Translator: Nils K <slx@nilsk.net>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
 "files/files/nb/>\n"
 "Language: nb\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -155,19 +155,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Kunne ikke tolke skrivebordsfil: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Kunne ikke tolke skrivebordsfil: %s"
+msgstr "Kunne ikke tolke skrivebordsfilen"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Kunne ikke tolke skrivebordsfil: %s"
+msgstr "Kunne lage kommando fra fil: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Kunne ikke tolke skrivebordsfil: %s"
+msgstr "Kunne ikke starte skrivebordsfil: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1344,30 +1343,34 @@ msgstr "Åpne med"
 msgid "Other Application…"
 msgstr "Annet program…"
 
-#: ../src/View/AbstractDirectoryView.vala:2435
+#: ../src/View/AbstractDirectoryView.vala:2192
+msgid "Templates"
+msgstr "Maler"
+
+#: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
 msgstr "Uten navn %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2774
-#: ../src/View/AbstractDirectoryView.vala:2966
+#: ../src/View/AbstractDirectoryView.vala:2778
+#: ../src/View/AbstractDirectoryView.vala:2970
 msgid "Cannot remove files from here"
 msgstr "Filer kan ikke fjernes herfra"
 
-#: ../src/View/AbstractDirectoryView.vala:2775
-#: ../src/View/AbstractDirectoryView.vala:2951
-#: ../src/View/AbstractDirectoryView.vala:2967
+#: ../src/View/AbstractDirectoryView.vala:2779
+#: ../src/View/AbstractDirectoryView.vala:2955
+#: ../src/View/AbstractDirectoryView.vala:2971
 msgid "You do not have permission to change this location"
 msgstr "Du har ikke tilgang til å endre denne plasseringen"
 
-#: ../src/View/AbstractDirectoryView.vala:2926
+#: ../src/View/AbstractDirectoryView.vala:2930
 msgid "Cannot copy files that are in the trash"
 msgstr "Kan ikke kopiere filer som er i papirkurven"
 
-#: ../src/View/AbstractDirectoryView.vala:2927
+#: ../src/View/AbstractDirectoryView.vala:2931
 msgid "Cutting the selection instead"
 msgstr "Klipper ut utvalget i stedet"
 
-#: ../src/View/AbstractDirectoryView.vala:2950
+#: ../src/View/AbstractDirectoryView.vala:2954
 msgid "Cannot paste files here"
 msgstr "Filer kan ikke limes inn her"
 
@@ -1614,9 +1617,8 @@ msgid "Search or Type Path"
 msgstr "Søk eller skriv inn sti"
 
 #: ../src/View/Widgets/LocationBar.vala:205
-#, fuzzy
 msgid "Searching…"
-msgstr "Laster…"
+msgstr "Søker…"
 
 #: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
@@ -1699,7 +1701,7 @@ msgstr "Kjøre"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Vis programversjon."
+msgstr "Vis programversjon"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1711,14 +1713,13 @@ msgstr "Nytt vindu"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Lukk program."
+msgstr "Lukk program"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
 msgstr "Aktiver feilsøkingslogg"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI …]"
 
@@ -1807,9 +1808,8 @@ msgstr "Faktisk størrelse kan være større"
 #: ../src/Dialogs/PropertiesWindow.vala:242
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-"%i fil kunne ikke leses på grunn av feil tilganger eller andre feil."
-msgstr[1] ""
+msgstr[0] "%i fil kunne ikke leses på grunn av feil tilganger eller andre feil."
+msgstr[1] "%i filer kunne ikke leses på grunn av feil tilganger eller andre feil."
 
 #: ../src/Dialogs/PropertiesWindow.vala:261
 #: ../src/Dialogs/PropertiesWindow.vala:280
@@ -1853,7 +1853,6 @@ msgid "Deleted:"
 msgstr "Slettet:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "MIME-type:"
 
@@ -1963,14 +1962,12 @@ msgid "Failed to open files"
 msgstr "Klarte ikke å åpne filer"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Kunne ikke endre navnet til  '%s'"
+msgstr "Kunne ikke åpne URI-ene"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Klarte ikke å åpne filer eller URI-er med dette programmet"
+msgstr "Klarte ikke å åpne filer eller URI-er med denne appen"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2197,16 +2194,14 @@ msgid "In This Folder"
 msgstr "I denne mappen"
 
 #: ../libwidgets/View/SearchResults.vala:227
-#, fuzzy
 msgid "Below This Folder"
-msgstr "I denne mappen"
+msgstr "Under denne mappen"
 
 #: ../libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
 msgstr "Bokmerker"
 
 #: ../libwidgets/View/SearchResults.vala:237
-#, fuzzy
 msgid "Recently used"
 msgstr "Nylig brukt"
 
@@ -2287,9 +2282,8 @@ msgid "Paste"
 msgstr "Lim inn"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Lim inn"
+msgstr "Lim inn lenke"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2308,9 +2302,8 @@ msgid "Paste into Folder"
 msgstr "Lim inn i mappe"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Lim inn i mappe"
+msgstr "Lim inn lenke i mappe"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
