@@ -932,52 +932,46 @@ namespace Marlin.Places {
                                            int x,
                                            int y,
                                            uint time) {
-            if (!received_drag_data &&
-                !get_drag_data (tree_view, context, time)) {
 
-                    return false;
-            }
-
-            Gtk.TreeViewDropPosition pos;
-            Gtk.TreePath path;
-            if (!compute_drop_position (tree_view, x, y, out path, out pos)) {
-                return false;
-            }
-
+            Gtk.TreeViewDropPosition pos = Gtk.TreeViewDropPosition.BEFORE;
+            Gtk.TreePath? path = null;
             Gdk.DragAction action = Gdk.DragAction.DEFAULT;
 
-            if (pos == Gtk.TreeViewDropPosition.BEFORE ||
-                pos == Gtk.TreeViewDropPosition.AFTER) {
+            if ((received_drag_data || get_drag_data (tree_view, context, time)) &&
+                 compute_drop_position (tree_view, x, y, out path, out pos)) {
 
-                if (received_drag_data &&
-                    drag_data_info == TargetType.GTK_TREE_MODEL_ROW) {
+                if (pos == Gtk.TreeViewDropPosition.BEFORE ||
+                    pos == Gtk.TreeViewDropPosition.AFTER) {
 
-                    action = Gdk.DragAction.MOVE;
-                    internal_drag_started = true;
+                    if (received_drag_data &&
+                        drag_data_info == TargetType.GTK_TREE_MODEL_ROW) {
 
-                } else if (drag_list != null &&
-                           can_accept_files_as_bookmarks (drag_list)) {
+                        action = Gdk.DragAction.MOVE;
+                        internal_drag_started = true;
+                    } else if (drag_list != null &&
+                               can_accept_files_as_bookmarks (drag_list)) {
 
-                    action = Gdk.DragAction.COPY;
-                }
-            } else if (drag_list != null && path != null) {
-                Gtk.TreeIter iter;
-                store.get_iter (out iter, path);
-                string uri;
-                this.store.@get (iter, Column.URI, out uri);
-                if (uri != null) {
-                    GOF.File file = GOF.File.get_by_uri (uri);
-                    if (file.ensure_query_info ()) {
-                        PF.FileUtils.file_accepts_drop (file, drag_list, context, out action);
-                    } else {
-                        warning ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
+                        action = Gdk.DragAction.COPY;
+                    }
+                } else if (drag_list != null && path != null) {
+                    Gtk.TreeIter iter;
+                    store.get_iter (out iter, path);
+                    string uri;
+                    this.store.@get (iter, Column.URI, out uri);
+                    if (uri != null) {
+                        GOF.File file = GOF.File.get_by_uri (uri);
+                        if (file.ensure_query_info ()) {
+                            PF.FileUtils.file_accepts_drop (file, drag_list, context, out action);
+                        } else {
+                            debug ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
+                        }
                     }
                 }
+
+                tree_view.set_drag_dest_row (path, pos);
             }
 
-            tree_view.set_drag_dest_row (path, pos);
             GLib.Signal.stop_emission_by_name (tree_view, "drag-motion");
-
             Gdk.drag_status (context, action, time);
 
             /* start the drag autoscroll timer if not already running */
@@ -987,6 +981,7 @@ namespace Marlin.Places {
                                                               50,
                                                               drag_scroll_timer);
             }
+
             return true;
         }
 
