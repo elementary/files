@@ -71,6 +71,9 @@ namespace Marlin.View.Chrome {
     /** Overridden Navigatable interface functions **/
     /************************************************/
         public override bool on_key_press_event (Gdk.EventKey event) {
+            autocompleted = false;
+            multiple_completions = false;
+
             switch (event.keyval) {
                 case Gdk.Key.Return:
                 case Gdk.Key.KP_Enter:
@@ -128,6 +131,7 @@ namespace Marlin.View.Chrome {
             if (txt == null || txt.length < 1) {
                 return;
             }
+
             to_search = "";
             /* don't use get_basename (), it will return "folder" for "/folder/" */
             int last_slash = txt.last_index_of_char ('/');
@@ -143,12 +147,9 @@ namespace Marlin.View.Chrome {
 
         private void do_completion (string path) {
             File? file = PF.FileUtils.get_file_for_path (PF.FileUtils.sanitize_path (path, current_dir_path));
-            if (file == null) {
+            if (file == null || autocompleted) {
                 return;
             }
-
-            autocompleted = false;
-            multiple_completions = false;
 
             if (file.has_parent (null)) {
                 file = file.get_parent ();
@@ -159,13 +160,10 @@ namespace Marlin.View.Chrome {
             if (current_completion_dir == null || !file.equal (current_completion_dir.location)) {
                 current_completion_dir = GOF.Directory.Async.from_gfile (file);
                 current_completion_dir.init (on_file_loaded);
-            } else {
-
-                if (current_completion_dir != null && current_completion_dir.can_load) {
-                    clear_completion ();
-                    /* Completion text set by on_file_loaded () */
-                    current_completion_dir.init (on_file_loaded);
-                }
+            } else if (current_completion_dir != null && current_completion_dir.can_load) {
+                clear_completion ();
+                /* Completion text set by on_file_loaded () */
+                current_completion_dir.init (on_file_loaded);
             }
         }
 
@@ -191,11 +189,19 @@ namespace Marlin.View.Chrome {
         }
 
         private void completed (string txt) {
-            string? newpath = PF.FileUtils.sanitize_path (txt, current_dir_path);
+            var gfile = PF.FileUtils.get_file_for_path (txt); /* Sanitizes path */
+            var newpath = gfile.get_path ();
+
             /* If path changed, update breadcrumbs and continue editing */
             if (newpath != null) {
+                /* If completed, then GOF File must exist */
+                if ((GOF.File.@get (gfile)).is_directory) {
+                    newpath += GLib.Path.DIR_SEPARATOR_S;
+                }
+
                 set_entry_text (newpath);
             }
+
             set_completion_text ("");
         }
 
@@ -243,14 +249,20 @@ namespace Marlin.View.Chrome {
                         multiple_completions = true;
                     }
 
-                    /* autocompletion is case insensitive so we have to change the first completed
-                     * parts: the entry.text.
-                     */
                     string? str = null;
                     if (text.length >= 1) {
                         str = text.slice (0, text.length - to_search.length);
                     }
-                    if (str != null && !multiple_completions) {
+
+                    if (str == null) {
+                        return;
+                    }
+
+                    /* autocompletion is case insensitive so we have to change the first completed
+                     * parts to the match the filename (if unique match and if the user did not
+                     * deliberately enter an uppercase character).
+                     */
+                    if (!multiple_completions && !(to_search.down () != to_search)) {
                         set_text (str + file_display_name.slice (0, to_search.length));
                     }
                 }
