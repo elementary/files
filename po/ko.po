@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-06-29 00:05+0000\n"
+"POT-Creation-Date: 2018-07-16 08:29-0700\n"
+"PO-Revision-Date: 2018-07-17 18:47+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://weblate.elementary.io/projects/files/files/ko/"
 ">\n"
@@ -634,7 +634,7 @@ msgstr "\"%B\"을(를) \"%B\"(으)로 옮기는 중"
 
 #: ../libcore/marlin-file-operations.c:2844
 msgid "Copying \"%B\" to \"%B\""
-msgstr "\"%B\"을(를) \"%B\"(으)로 복사하는 중"
+msgstr "\"%B\"을(를) \"%B\"에 복사하고 있습니다"
 
 #: ../libcore/marlin-file-operations.c:2848
 msgid "Duplicating \"%B\""
@@ -648,7 +648,7 @@ msgstr[0] "%'d 개의 파일을 (\"%B\"에서) \"%B\"(으)로 옮기는 중"
 #: ../libcore/marlin-file-operations.c:2855
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "%'d 개의 파일을 (\"%B\"에서) \"%B\"(으)로 복사하는 중"
+msgstr[0] "%'d 개의 파일을 (\"%B\"에서) \"%B\"에 복사하고 있습니다"
 
 #: ../libcore/marlin-file-operations.c:2862
 msgid "Duplicating %'d file (in \"%B\")"
@@ -663,7 +663,7 @@ msgstr[0] "%'d 개의 파일을 \"%B\"(으)로 옮기는 중"
 #: ../libcore/marlin-file-operations.c:2875
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "%'d 개의 파일을 \"%B\"(으)로 복사하는 중"
+msgstr[0] "%'d 개의 파일을 \"%B\"에 복사하고 있습니다"
 
 #: ../libcore/marlin-file-operations.c:2880
 #, c-format
@@ -724,7 +724,7 @@ msgstr "원본 폴더를 지울 수 없습니다."
 #: ../libcore/marlin-file-operations.c:3644
 #: ../libcore/marlin-file-operations.c:4158
 msgid "Error while copying \"%B\"."
-msgstr "\"%B\"을(를) 복사하는 중 오류가 발생하였습니다."
+msgstr "\"%B\"을(를) 복사하던 중 오류가 생겼습니다."
 
 #: ../libcore/marlin-file-operations.c:3604
 #, c-format
@@ -778,7 +778,7 @@ msgstr "파일을 다음으로 복사하는중에 오류가 생겼습니다 %B."
 
 #: ../libcore/marlin-file-operations.c:4453
 msgid "Copying Files"
-msgstr "파일을 복사하는 중"
+msgstr "파일 복사하기"
 
 #: ../libcore/marlin-file-operations.c:4479
 msgid "Preparing to move to \"%B\""
@@ -1274,30 +1274,34 @@ msgstr "다른 프로그램으로 열기"
 msgid "Other Application…"
 msgstr "기타 애플리케이션…"
 
-#: ../src/View/AbstractDirectoryView.vala:2435
+#: ../src/View/AbstractDirectoryView.vala:2192
+msgid "Templates"
+msgstr "템플릿"
+
+#: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
 msgstr "이름 없는 %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2774
-#: ../src/View/AbstractDirectoryView.vala:2966
+#: ../src/View/AbstractDirectoryView.vala:2778
+#: ../src/View/AbstractDirectoryView.vala:2970
 msgid "Cannot remove files from here"
 msgstr "이곳의 파일을 제거할 수 없습니다"
 
-#: ../src/View/AbstractDirectoryView.vala:2775
-#: ../src/View/AbstractDirectoryView.vala:2951
-#: ../src/View/AbstractDirectoryView.vala:2967
+#: ../src/View/AbstractDirectoryView.vala:2779
+#: ../src/View/AbstractDirectoryView.vala:2955
+#: ../src/View/AbstractDirectoryView.vala:2971
 msgid "You do not have permission to change this location"
 msgstr "이 위치를 바꿀 수 있는 권한이 없습니다"
 
-#: ../src/View/AbstractDirectoryView.vala:2926
+#: ../src/View/AbstractDirectoryView.vala:2930
 msgid "Cannot copy files that are in the trash"
 msgstr "휴지통에 있는 파일은 복사할 수 없습니다"
 
-#: ../src/View/AbstractDirectoryView.vala:2927
+#: ../src/View/AbstractDirectoryView.vala:2931
 msgid "Cutting the selection instead"
 msgstr "대신 선택한 항목을 잘라냅니다"
 
-#: ../src/View/AbstractDirectoryView.vala:2950
+#: ../src/View/AbstractDirectoryView.vala:2954
 msgid "Cannot paste files here"
 msgstr "이곳에 파일을 붙여 넣을 수 없습니다"
 
@@ -1626,7 +1630,7 @@ msgid "Execute"
 msgstr "실행"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "프로그램의 버전을 보입니다."
 
 #: ../src/Application.vala:121
@@ -1638,7 +1642,7 @@ msgid "New Window"
 msgstr "새 창"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "닫기."
 
 #: ../src/Application.vala:127

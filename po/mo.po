@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 08:24-0700\n"
+"POT-Creation-Date: 2018-07-16 08:29-0700\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -1347,30 +1347,34 @@ msgstr "Deschide cu"
 msgid "Other Application…"
 msgstr "Alte aplicații…"
 
-#: ../src/View/AbstractDirectoryView.vala:2435
+#: ../src/View/AbstractDirectoryView.vala:2192
+msgid "Templates"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
 msgstr "Fără titlu %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2774
-#: ../src/View/AbstractDirectoryView.vala:2966
+#: ../src/View/AbstractDirectoryView.vala:2778
+#: ../src/View/AbstractDirectoryView.vala:2970
 msgid "Cannot remove files from here"
 msgstr "Nu pot fi eliminate fișiere de aici"
 
-#: ../src/View/AbstractDirectoryView.vala:2775
-#: ../src/View/AbstractDirectoryView.vala:2951
-#: ../src/View/AbstractDirectoryView.vala:2967
+#: ../src/View/AbstractDirectoryView.vala:2779
+#: ../src/View/AbstractDirectoryView.vala:2955
+#: ../src/View/AbstractDirectoryView.vala:2971
 msgid "You do not have permission to change this location"
 msgstr "Nu aveți permisiunea de a modifica această locație"
 
-#: ../src/View/AbstractDirectoryView.vala:2926
+#: ../src/View/AbstractDirectoryView.vala:2930
 msgid "Cannot copy files that are in the trash"
 msgstr "Nu se pot copia fișierele din coșul de gunoi"
 
-#: ../src/View/AbstractDirectoryView.vala:2927
+#: ../src/View/AbstractDirectoryView.vala:2931
 msgid "Cutting the selection instead"
 msgstr "Tăiați selecția în loc"
 
-#: ../src/View/AbstractDirectoryView.vala:2950
+#: ../src/View/AbstractDirectoryView.vala:2954
 msgid "Cannot paste files here"
 msgstr "Nu se pot lipi fișiere aici"
 
@@ -1700,7 +1704,7 @@ msgid "Execute"
 msgstr "Execută"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Afișați versiunea programului."
 
 #: ../src/Application.vala:121
@@ -1712,7 +1716,7 @@ msgid "New Window"
 msgstr "Nouă fereastră"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Ieșiți din Fișiere."
 
 #: ../src/Application.vala:127

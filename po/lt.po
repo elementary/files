@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-27 08:24-0700\n"
-"PO-Revision-Date: 2018-07-11 00:08+0000\n"
+"POT-Creation-Date: 2018-07-16 08:29-0700\n"
+"PO-Revision-Date: 2018-07-17 20:22+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://weblate.elementary.io/projects/files/"
 "files/lt/>\n"
@@ -1396,30 +1396,34 @@ msgstr "Atverti naudojant"
 msgid "Other Application…"
 msgstr "Kita programa…"
 
-#: ../src/View/AbstractDirectoryView.vala:2435
+#: ../src/View/AbstractDirectoryView.vala:2192
+msgid "Templates"
+msgstr "Šablonai"
+
+#: ../src/View/AbstractDirectoryView.vala:2439
 msgid "Untitled %s"
 msgstr "Be pavadinimo %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2774
-#: ../src/View/AbstractDirectoryView.vala:2966
+#: ../src/View/AbstractDirectoryView.vala:2778
+#: ../src/View/AbstractDirectoryView.vala:2970
 msgid "Cannot remove files from here"
 msgstr "Failai negali būti iš čia pašalinti"
 
-#: ../src/View/AbstractDirectoryView.vala:2775
-#: ../src/View/AbstractDirectoryView.vala:2951
-#: ../src/View/AbstractDirectoryView.vala:2967
+#: ../src/View/AbstractDirectoryView.vala:2779
+#: ../src/View/AbstractDirectoryView.vala:2955
+#: ../src/View/AbstractDirectoryView.vala:2971
 msgid "You do not have permission to change this location"
 msgstr "Jūs neturite leidimų keisti šios vietos"
 
-#: ../src/View/AbstractDirectoryView.vala:2926
+#: ../src/View/AbstractDirectoryView.vala:2930
 msgid "Cannot copy files that are in the trash"
 msgstr "Nepavyksta nukopijuoti failų, kurie yra šiukšlinėje"
 
-#: ../src/View/AbstractDirectoryView.vala:2927
+#: ../src/View/AbstractDirectoryView.vala:2931
 msgid "Cutting the selection instead"
 msgstr "Vietoj to, iškerpamas pasirinkimas"
 
-#: ../src/View/AbstractDirectoryView.vala:2950
+#: ../src/View/AbstractDirectoryView.vala:2954
 msgid "Cannot paste files here"
 msgstr "Failai negali būti čia įdėti"
 
@@ -1750,7 +1754,7 @@ msgid "Execute"
 msgstr "Vykdyti"
 
 #: ../src/Application.vala:119
-msgid "Show the version of the program."
+msgid "Show the version of the program"
 msgstr "Rodyti programos versiją."
 
 #: ../src/Application.vala:121
@@ -1762,7 +1766,7 @@ msgid "New Window"
 msgstr "Naujas langas"
 
 #: ../src/Application.vala:125
-msgid "Quit Files."
+msgid "Quit Files"
 msgstr "Išeiti iš failų."
 
 #: ../src/Application.vala:127
