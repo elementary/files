@@ -24,10 +24,11 @@ namespace GOF {
         public GOF.Directory.Async? directory {
             get {
                 AbstractSlot? current = get_current_slot ();
-                if (current != null)
+                if (current != null) {
                     return current._directory;
-                else
+                } else {
                     return null;
+                }
             }
 
             protected set {_directory = value;}
@@ -52,7 +53,9 @@ namespace GOF {
         public virtual bool is_frozen {get; set; default = true;}
 
         protected Gtk.Box extra_location_widgets;
+        protected Gtk.Box extra_action_widgets;
         protected Gtk.Box content_box;
+        public Gtk.Overlay overlay {get; protected set;}
         protected int slot_number;
         protected int width;
 
@@ -68,10 +71,23 @@ namespace GOF {
             extra_location_widgets.pack_start (widget);
         }
 
-        protected void init () {
+        public void add_extra_action_widget (Gtk.Widget widget) {
+            extra_action_widgets.pack_start (widget);
+        }
+
+        public void add_overlay (Gtk.Widget widget) {
+            overlay = new Gtk.Overlay ();
+            content_box.pack_start (overlay, true, true, 0);
+            overlay.add (widget);
+        }
+
+        construct {
             content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
             extra_location_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
-            (content_box as Gtk.Box).pack_start (extra_location_widgets, false, false, 0);
+            content_box.pack_start (extra_location_widgets, false, false, 0);
+
+            extra_action_widgets = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
+            content_box.pack_end (extra_action_widgets, false, false, 0);
             slot_number = -1;
         }
 

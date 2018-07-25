@@ -43,8 +43,9 @@ public class Marlin.Application : Gtk.Application {
     public override void startup () {
         base.startup ();
 
-        if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG)
+        if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG) {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
+        }
 
         message ("Report any issues/bugs you might find to https://github.com/elementary/files/issues");
 
@@ -115,13 +116,13 @@ public class Marlin.Application : Gtk.Application {
 
         OptionEntry[] options = new OptionEntry [7];
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
-                        N_("Show the version of the program."), null };
+                        N_("Show the version of the program"), null };
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
                         N_("Open uri(s) in new tab"), null };
         options [2] = { "new-window", 'n', 0, OptionArg.NONE, out create_new_window,
                         N_("New Window"), null };
         options [3] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
-                        N_("Quit Files."), null };
+                        N_("Quit Files"), null };
         options [4] = { "debug", 'd', 0, OptionArg.NONE, ref debug,
                         N_("Enable debug logging"), null };
         /* "" = G_OPTION_REMAINING: Catches the remaining arguments */
@@ -146,8 +147,9 @@ public class Marlin.Application : Gtk.Application {
         }
 
         /* Handle arguments */
-        if (debug)
+        if (debug) {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.DEBUG;
+        }
 
         if (version) {
             cmd.print ("io.elementary.files %s\n", Config.VERSION);
@@ -202,8 +204,9 @@ public class Marlin.Application : Gtk.Application {
 
     public new void quit () {
         /* Protect against holding Ctrl-Q down */
-        if (quitting)
+        if (quitting) {
             return;
+        }
 
         quitting = true;
         unowned List<Gtk.Window> window_list = this.get_windows ();

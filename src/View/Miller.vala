@@ -47,7 +47,6 @@ namespace Marlin.View {
         }
 
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
-            base.init ();
             this.ctab = ctab;
             this.root_location = loc;
 
@@ -66,7 +65,8 @@ namespace Marlin.View {
             viewport.add (this.colpane);
 
             scrolled_window.add (viewport);
-            content_box.pack_start (scrolled_window);
+            add_overlay (scrolled_window);
+
             content_box.show_all ();
 
             make_view ();
@@ -117,13 +117,15 @@ namespace Marlin.View {
                 host.select_gof_file (slot.file);
                 host.colpane.add (hpane1);
                 slot.directory.init ();
-            } else
+            } else {
                 this.colpane.add (hpane1);
+            }
         }
 
         private void truncate_list_after_slot (Marlin.View.Slot slot) {
-            if (slot_list.length () <= 0)
+            if (slot_list.length () <= 0) {
                 return;
+            }
 
             uint n = slot.slot_number;
 
@@ -212,8 +214,9 @@ namespace Marlin.View {
                 truncate_list_after_slot (root);
                 string [] dirs = relative_path.split (Path.DIR_SEPARATOR_S);
                 string last_uri = root.uri;
-                if (last_uri.has_suffix (Path.DIR_SEPARATOR_S))
+                if (last_uri.has_suffix (Path.DIR_SEPARATOR_S)) {
                     last_uri = last_uri.slice (0, -1);
+                }
 
                 foreach (string d in dirs) {
                     if (d.length > 0) {
@@ -293,8 +296,9 @@ namespace Marlin.View {
 
         private void on_slot_folder_deleted (Slot slot, GOF.File file, GOF.Directory.Async dir) {
             Slot? next_slot = slot_list.nth_data (slot.slot_number +1);
-            if (next_slot != null && next_slot.directory == dir)
+            if (next_slot != null && next_slot.directory == dir) {
                 truncate_list_after_slot (slot);
+            }
         }
 
         /** Called in response to slot active signal.
@@ -303,10 +307,11 @@ namespace Marlin.View {
         private void on_slot_active (GOF.AbstractSlot aslot, bool scroll = true, bool animate = true) {
             Marlin.View.Slot slot;
 
-            if (!(aslot is Marlin.View.Slot))
+            if (!(aslot is Marlin.View.Slot)) {
                 return;
-            else
+            } else {
                 slot = aslot as Marlin.View.Slot;
+            }
 
             if (scroll) {
                 schedule_scroll_to_slot (slot, animate);
@@ -314,8 +319,9 @@ namespace Marlin.View {
 
             if (this.current_slot != slot) {
                 slot_list.@foreach ((s) => {
-                    if (s != slot)
+                    if (s != slot) {
                         s.inactive ();
+                    }
                 });
 
                 current_slot = slot;
@@ -336,13 +342,15 @@ namespace Marlin.View {
 
                 slot_list.@foreach ((s) => {
                     i ++;
-                    if (s.directory.file.is_hidden && hidden <= 0)
+                    if (s.directory.file.is_hidden && hidden <= 0) {
                         hidden = i;
+                    }
                 });
 
                 /* Return if no hidden folder found or only first folder hidden */
-                if (hidden <= 0)
+                if (hidden <= 0) {
                     return;
+                }
 
                 /* Remove hidden slots and make the slot before the first hidden slot active */
                 Marlin.View.Slot slot = slot_list.nth_data (hidden - 1);
@@ -353,37 +361,43 @@ namespace Marlin.View {
 
         private bool on_key_pressed (Gtk.Widget box, Gdk.EventKey event) {
             /* Only handle unmodified keys */
-            if ((event.state & Gtk.accelerator_get_default_mod_mask ()) > 0)
+            if ((event.state & Gtk.accelerator_get_default_mod_mask ()) > 0) {
                 return false;
+            }
 
             int current_position = slot_list.index (current_slot);
 
-            if (slot_list.nth_data (current_position).get_directory_view ().renaming)
+            if (slot_list.nth_data (current_position).get_directory_view ().renaming) {
                 return false;
+            }
 
             Marlin.View.Slot to_activate = null;
 
             switch (event.keyval) {
                 case Gdk.Key.Left:
-                    if (current_position > 0)
+                    if (current_position > 0) {
                         to_activate = slot_list.nth_data (current_position - 1);
+                    }
 
                     break;
 
                 case Gdk.Key.Right:
-                    if (current_slot.get_selected_files () == null)
+                    if (current_slot.get_selected_files () == null) {
                         return true;
+                    }
 
                     GOF.File? selected_file = current_slot.get_selected_files ().data;
 
-                    if (selected_file == null)
+                    if (selected_file == null) {
                         return true;
+                    }
 
                     GLib.File current_location = selected_file.location;
                     GLib.File? next_location = null;
 
-                    if (current_position < slot_list.length () - 1)
+                    if (current_position < slot_list.length () - 1) {
                         next_location = slot_list.nth_data (current_position + 1).location;
+                    }
 
                     if (next_location != null && next_location.equal (current_location)) {
                         to_activate = slot_list.nth_data (current_position + 1);
@@ -391,15 +405,17 @@ namespace Marlin.View {
                         add_location (current_location, current_slot);
                         return true;
                     }
+
                     break;
 
                 case Gdk.Key.BackSpace:
-                        if (current_position > 0)
+                        if (current_position > 0) {
                             truncate_list_after_slot (slot_list.nth_data (current_position - 1));
-                        else {
+                        } else {
                             ctab.go_up ();
                             return true;
                         }
+
                     break;
 
                 default:
@@ -489,7 +505,6 @@ namespace Marlin.View {
                 /* On startup the adjustment setting is not always effective because of a race condition. If not, try later.*/
                 return hadj.get_value () == new_value;
             }
-
         }
 
         public override unowned GOF.AbstractSlot? get_current_slot () {
@@ -500,12 +515,12 @@ namespace Marlin.View {
             return ((Marlin.View.Slot)(current_slot)).get_selected_files ();
         }
 
-
         public override void set_active_state (bool set_active, bool animate = true) {
-            if (set_active)
+            if (set_active) {
                 current_slot.active (true, animate);
-            else
+            } else {
                 current_slot.inactive ();
+            }
         }
 
         public override string? get_tip_uri () {
@@ -559,9 +574,11 @@ namespace Marlin.View {
             if (scroll_to_slot_timeout_id > 0) {
                 GLib.Source.remove (scroll_to_slot_timeout_id);
             }
+
             slot_list.@foreach ((slot) => {
-                if (slot != null)
+                if (slot != null) {
                     slot.close ();
+                }
             });
         }
 

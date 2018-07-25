@@ -295,10 +295,13 @@ namespace Marlin.View {
             });
 
             tabs.tab_moved.connect ((tab, x, y) => {
+                /* Called when tab dragged out of notebook */
                 var vc = tab.page as ViewContainer;
+                /* Close view now to disconnect signal handler closures which can trigger after slot destruction */
+                vc.close ();
                 ((Marlin.Application) application).create_window (vc.location, real_mode (vc.view_mode), x, y);
-                /* A crash occurs if the original tab is removed while processing the signal */
-                GLib.Idle.add (() => {
+
+                Idle.add (() => {
                     remove_tab (vc);
                     return false;
                 });
@@ -354,14 +357,13 @@ namespace Marlin.View {
             this.title = title;
         }
 
-        public void change_tab (int offset) {
+        private void change_tab (int offset) {
             if (restoring_tabs) {
                 return;
             }
 
             ViewContainer? old_tab = current_tab;
             current_tab = (tabs.get_tab_by_index (offset)).page as ViewContainer;
-
             if (current_tab == null || old_tab == current_tab) {
                 return;
             }
@@ -371,7 +373,6 @@ namespace Marlin.View {
             }
 
             loading_uri (current_tab.uri);
-
             current_tab.set_active_state (true, false); /* changing tab should not cause animated scrolling */
             top_menu.working = current_tab.is_frozen;
         }
@@ -416,9 +417,10 @@ namespace Marlin.View {
             var tab = new Granite.Widgets.Tab ("", null, content);
             tab.ellipsize_mode = Pango.EllipsizeMode.MIDDLE;
 
+            /* Capturing ViewContainer reference in closure prevents its proper destruction */
             content.tab_name_changed.connect ((tab_name) => {
                 Idle.add (() => {
-                    tab.label = check_for_tab_with_same_name (content);
+                    tab.label = check_for_tab_with_same_name ();
                     return false;
                 });
             });
@@ -438,15 +440,18 @@ namespace Marlin.View {
             tabs.current = tab;
         }
 
-        private string check_for_tab_with_same_name (ViewContainer vc) {
-            string name = vc.tab_name;
+        private string check_for_tab_with_same_name () {
+            assert_nonnull (current_tab);
+
+            var vc = current_tab;
+            var name = vc.tab_name;
 
             if (name == Marlin.INVALID_TAB_NAME) {
-                return name;
+                 return name;
             }
 
-            string path = Uri.unescape_string (vc.uri);
-            string new_name = name;
+            var path = Uri.unescape_string (vc.uri);
+            var new_name = name;
 
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
                 var content = (ViewContainer)(tab.page);
@@ -497,13 +502,14 @@ namespace Marlin.View {
         }
 
         public void remove_tab (ViewContainer view_container) {
-            actual_remove_tab (tabs.get_tab_by_widget (view_container as Gtk.Widget));
+            var tab = tabs.get_tab_by_widget (view_container as Gtk.Widget);
+            if (tab != null) {
+                actual_remove_tab (tab);
+            }
         }
 
         private void actual_remove_tab (Granite.Widgets.Tab tab) {
-            /* signal for restore_data to be set and a new tab to be created if this is last tab */
-            tabs.close_tab_requested (tab);
-            /* now close the tab */
+            /* close_tab_signal will be emitted first.  Tab actually closes if this returns true */
             tab.close ();
         }
 

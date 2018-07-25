@@ -163,12 +163,12 @@ namespace Marlin.View {
 
             if (files != null) {
                 if (files.data != null) {
-                    if (files.next == null)
+                    if (files.next == null) {
                         /* list contain only one element */
                         goffile = files.first ().data;
-                    else
+                    } else {
                         scan_list (files);
-
+                    }
                     /* There is a race between load_resolution and file_real_size for setting status.
                      * On first hover, file_real_size wins.  On second hover load_resolution
                      * wins because we remembered the resolution. So only set status with string returned by
@@ -213,22 +213,25 @@ namespace Marlin.View {
             } else { /* hovering over multiple selection */
                 if (folders_count > 1) {
                     str = _("%u folders").printf (folders_count);
-                    if (files_count > 0)
+                    if (files_count > 0) {
                         str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size (files_size)),
                                          _(" and %u other items (%s) selected").printf (files_count, format_size (files_size)),
                                          files_count);
-                    else
+                    } else {
                         str += _(" selected");
+                    }
                 } else if (folders_count == 1) {
                     str = _("%u folder").printf (folders_count);
-                    if (files_count > 0)
+                    if (files_count > 0) {
                         str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size (files_size)),
                                          _(" and %u other items (%s) selected").printf (files_count, format_size (files_size)),
                                          files_count);
-                    else
+                    } else {
                         str += _(" selected");
-                } else /* folder_count = 0 and files_count > 0 */
+                    }
+                } else { /* folder_count = 0 and files_count > 0 */
                     str = _("%u items selected (%s)").printf (files_count, format_size (files_size));
+                }
             }
 
             return str;
@@ -255,6 +258,7 @@ namespace Marlin.View {
                     }
                     active = false;
                 });
+
                 deep_count_timeout_id = 0;
                 return false;
             });
@@ -300,8 +304,9 @@ namespace Marlin.View {
         }
 
         private void scan_list (GLib.List<GOF.File>? files) {
-            if (files == null)
+            if (files == null) {
                 return;
+            }
 
             foreach (var gof in files) {
                 if (gof != null && gof is GOF.File) {
@@ -379,11 +384,13 @@ namespace Marlin.View {
                         critical ("Could not determine resolution of file type %s", goffile.get_ftype ());
                         break;
                     }
+
                     loader.write (buffer);
 
                 } catch (IOError e) {
-                    if (!(e is IOError.CANCELLED))
+                    if (!(e is IOError.CANCELLED)) {
                         warning (e.message);
+                    }
                 } catch (Gdk.PixbufError e) {
                     /* errors while loading are expected, we only need to know the size */
                 } catch (FileError e) {

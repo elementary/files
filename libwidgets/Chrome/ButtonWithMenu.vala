@@ -154,8 +154,9 @@ namespace Marlin.View.Chrome {
         private bool on_button_press_event (Gdk.EventButton ev) {
             /* If the button is kept pressed, don't make the user wait when there's no action */
             int max_press_time = LONG_PRESS_TIME;
-            if (ev.button == 1 || ev.button == 3)
+            if (ev.button == 1 || ev.button == 3) {
                 active = true;
+            }
 
             if (timeout == 0 && ev.button == 1) {
                 last_click_time = ev.time;
@@ -231,8 +232,7 @@ namespace Marlin.View.Chrome {
                 x += allocation.x;
                 x -= menu_allocation.width / 2;
                 x += allocation.width / 2;
-            }
-            else {
+            } else {
                 x += allocation.x;
                 x -= menu_allocation.width;
                 x += this.get_allocated_width ();
@@ -262,19 +262,22 @@ namespace Marlin.View.Chrome {
                  * if that's the case
                  */
 
-                if (x + menu_allocation.width > parent_window_xf)
+                if (x + menu_allocation.width > parent_window_xf) {
                     x = parent_window_xf - menu_allocation.width; // Move to left
+                }
 
-                if (x < parent_window_x0)
+                if (x < parent_window_x0) {
                     x = parent_window_x0; // Move to right
+                }
             }
 
             y += allocation.y;
 
-            if (y + height >= menu.attach_widget.get_screen ().get_height ())
+            if (y + height >= menu.attach_widget.get_screen ().get_height ()) {
                 y -= height;
-            else
+            } else {
                 y += allocation.height;
+            }
 
             push_in = true;
         }

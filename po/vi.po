@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-29 00:40+0100\n"
+"POT-Creation-Date: 2018-07-25 13:09-0700\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -83,60 +83,60 @@ msgstr "Xin hãy kiểm tra lại chi tiết đăng nhập."
 msgid "Continue"
 msgstr "Tiếp tục"
 
-#: ../src/marlin-connect-server-dialog.c:749
-#: ../src/marlin-connect-server-dialog.c:1142
+#: ../src/marlin-connect-server-dialog.c:747
+#: ../src/marlin-connect-server-dialog.c:1140
 msgid "C_onnect"
 msgstr "_Kết nối"
 
-#: ../src/marlin-connect-server-dialog.c:877
+#: ../src/marlin-connect-server-dialog.c:875
 msgid "Connect to Server"
 msgstr "Kết nối đến máy chủ"
 
-#: ../src/marlin-connect-server-dialog.c:895
+#: ../src/marlin-connect-server-dialog.c:893
 msgid "Server Details"
 msgstr "Chi tiết máy chủ"
 
-#: ../src/marlin-connect-server-dialog.c:919
+#: ../src/marlin-connect-server-dialog.c:917
 msgid "_Server:"
 msgstr "_Máy chủ:"
 
-#: ../src/marlin-connect-server-dialog.c:939
+#: ../src/marlin-connect-server-dialog.c:937
 msgid "_Port:"
 msgstr "_Cổng:"
 
-#: ../src/marlin-connect-server-dialog.c:957
+#: ../src/marlin-connect-server-dialog.c:955
 msgid "_Type:"
 msgstr "_Kiểu:"
 
-#: ../src/marlin-connect-server-dialog.c:1026
+#: ../src/marlin-connect-server-dialog.c:1024
 msgid "Sh_are:"
 msgstr "_Chia sẻ:"
 
-#: ../src/marlin-connect-server-dialog.c:1041
+#: ../src/marlin-connect-server-dialog.c:1039
 msgid "_Folder:"
 msgstr "_Thư mục:"
 
-#: ../src/marlin-connect-server-dialog.c:1059
+#: ../src/marlin-connect-server-dialog.c:1057
 msgid "User Details"
 msgstr "Chi tiết người dùng"
 
-#: ../src/marlin-connect-server-dialog.c:1082
+#: ../src/marlin-connect-server-dialog.c:1080
 msgid "_Domain name:"
 msgstr "_Tên miền:"
 
-#: ../src/marlin-connect-server-dialog.c:1097
+#: ../src/marlin-connect-server-dialog.c:1095
 msgid "_User name:"
 msgstr "_Tên đăng nhập:"
 
-#: ../src/marlin-connect-server-dialog.c:1112
+#: ../src/marlin-connect-server-dialog.c:1110
 msgid "Pass_word:"
 msgstr "Mật_khẩu:"
 
-#: ../src/marlin-connect-server-dialog.c:1128
+#: ../src/marlin-connect-server-dialog.c:1126
 msgid "_Remember this password"
 msgstr "_Nhớ mật khẩu"
 
-#: ../src/marlin-connect-server-dialog.c:1231
+#: ../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
 msgstr "Thao tác bị hủy"
 
@@ -330,11 +330,11 @@ msgstr ""
 msgid " (%'d"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1251
+#: ../libcore/marlin-file-operations.c:1252
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn \"%B\" ra khỏi thùng rác?"
 
-#: ../libcore/marlin-file-operations.c:1254
+#: ../libcore/marlin-file-operations.c:1255
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -345,16 +345,16 @@ msgid_plural ""
 msgstr[0] ""
 "Bạn có chắc chắn muốn xoá vĩnh viễn %'d mục đã chọn ra khỏi thùng rác?"
 
-#: ../libcore/marlin-file-operations.c:1264
-#: ../libcore/marlin-file-operations.c:1344
+#: ../libcore/marlin-file-operations.c:1265
+#: ../libcore/marlin-file-operations.c:1345
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Nếu bạn xóa một mục, nó sẽ bị mất vĩnh viễn."
 
-#: ../libcore/marlin-file-operations.c:1289
+#: ../libcore/marlin-file-operations.c:1290
 msgid "Permanently delete all items from Trash?"
 msgstr "Xóa vĩnh viễn tất cả các mục khỏi Thùng rác?"
 
-#: ../libcore/marlin-file-operations.c:1290
+#: ../libcore/marlin-file-operations.c:1291
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -362,317 +362,317 @@ msgstr ""
 "Tất cả các mục trong tất cả các thư mục thùng rác, bao gồm những thư mục "
 "trên bất kỳ ổ đĩa gắn ngoài nào, sẽ bị xóa vĩnh viễn."
 
-#: ../libcore/marlin-file-operations.c:1293
+#: ../libcore/marlin-file-operations.c:1294
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr "Xóa vĩnh viễn tất cả các mục khỏi Thùng rác trên gắn kết này?"
 
-#: ../libcore/marlin-file-operations.c:1294
+#: ../libcore/marlin-file-operations.c:1295
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Tất cả các mục trong thùng rác trên gắn kết này sẽ bị xóa vĩnh viễn."
 
-#: ../libcore/marlin-file-operations.c:1305 ../src/View/Sidebar.vala:1473
+#: ../libcore/marlin-file-operations.c:1306 ../src/View/Sidebar.vala:1513
 msgid "Empty _Trash"
 msgstr "Làm sạch thùng rác"
 
-#: ../libcore/marlin-file-operations.c:1332
+#: ../libcore/marlin-file-operations.c:1333
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn \"%B\"?"
 
-#: ../libcore/marlin-file-operations.c:1335
+#: ../libcore/marlin-file-operations.c:1336
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
 msgstr[0] "Bạn có chắc chắn muốn xóa vĩnh viễn %'d mục đã chọn không?"
 
-#: ../libcore/marlin-file-operations.c:1378
+#: ../libcore/marlin-file-operations.c:1379
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "%'d còn lại để xóa"
 
-#: ../libcore/marlin-file-operations.c:1384
+#: ../libcore/marlin-file-operations.c:1385
 msgid "Deleting files"
 msgstr "Đang xóa tập tin"
 
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:1397
+#: ../libcore/marlin-file-operations.c:1398
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:1464
-#: ../libcore/marlin-file-operations.c:1498
-#: ../libcore/marlin-file-operations.c:1537
-#: ../libcore/marlin-file-operations.c:1614
-#: ../libcore/marlin-file-operations.c:2404
+#: ../libcore/marlin-file-operations.c:1465
+#: ../libcore/marlin-file-operations.c:1499
+#: ../libcore/marlin-file-operations.c:1538
+#: ../libcore/marlin-file-operations.c:1615
+#: ../libcore/marlin-file-operations.c:2405
 msgid "Error while deleting."
 msgstr "Có lỗi trong khi xóa."
 
-#: ../libcore/marlin-file-operations.c:1468
+#: ../libcore/marlin-file-operations.c:1469
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1471
-#: ../libcore/marlin-file-operations.c:2463
-#: ../libcore/marlin-file-operations.c:3430
+#: ../libcore/marlin-file-operations.c:1472
+#: ../libcore/marlin-file-operations.c:2464
+#: ../libcore/marlin-file-operations.c:3431
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1480
-#: ../libcore/marlin-file-operations.c:3439
+#: ../libcore/marlin-file-operations.c:1481
+#: ../libcore/marlin-file-operations.c:3440
 msgid "_Skip files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1501
+#: ../libcore/marlin-file-operations.c:1502
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1504
-#: ../libcore/marlin-file-operations.c:2502
-#: ../libcore/marlin-file-operations.c:3475
+#: ../libcore/marlin-file-operations.c:1505
+#: ../libcore/marlin-file-operations.c:2503
+#: ../libcore/marlin-file-operations.c:3476
 msgid "There was an error reading the folder \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1538
+#: ../libcore/marlin-file-operations.c:1539
 msgid "Could not remove the folder %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1615
+#: ../libcore/marlin-file-operations.c:1616
 msgid "There was an error deleting %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1699
+#: ../libcore/marlin-file-operations.c:1700
 msgid "Moving files to trash"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1701
+#: ../libcore/marlin-file-operations.c:1702
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:1795
-#: ../libcore/marlin-file-operations.c:1798
-#: ../libcore/marlin-file-operations.c:1801
+#: ../libcore/marlin-file-operations.c:1796
+#: ../libcore/marlin-file-operations.c:1799
+#: ../libcore/marlin-file-operations.c:1802
 msgid "Cannot move file to trash or delete it"
 msgstr "Không thể di chuyển tập tin vào thùng rác hoặc xóa nó"
 
-#: ../libcore/marlin-file-operations.c:1796
+#: ../libcore/marlin-file-operations.c:1797
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1799
+#: ../libcore/marlin-file-operations.c:1800
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1802
+#: ../libcore/marlin-file-operations.c:1803
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1804
+#: ../libcore/marlin-file-operations.c:1805
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr "Không thể di chuyển tệp vào thùng rác. Hãy thử xóa nó ngay lập tức?"
 
-#: ../libcore/marlin-file-operations.c:1805
+#: ../libcore/marlin-file-operations.c:1806
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1809
+#: ../libcore/marlin-file-operations.c:1810
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "Không thể di chuyển tệp vào thùng rác. Cố gắng xóa nó?"
 
-#: ../libcore/marlin-file-operations.c:1810
+#: ../libcore/marlin-file-operations.c:1811
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:1815
+#: ../libcore/marlin-file-operations.c:1816
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2005
+#: ../libcore/marlin-file-operations.c:2006
 msgid "Trashing Files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2007
+#: ../libcore/marlin-file-operations.c:2008
 msgid "Deleting Files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2076
+#: ../libcore/marlin-file-operations.c:2077
 msgid "Unable to eject %V"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2078
+#: ../libcore/marlin-file-operations.c:2079
 msgid "Unable to unmount %V"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2273
+#: ../libcore/marlin-file-operations.c:2274
 #, c-format
 msgid "Unable to mount %s"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2351
+#: ../libcore/marlin-file-operations.c:2352
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2357
+#: ../libcore/marlin-file-operations.c:2358
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2363
+#: ../libcore/marlin-file-operations.c:2364
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2369
+#: ../libcore/marlin-file-operations.c:2370
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2400
-#: ../libcore/marlin-file-operations.c:3290
-#: ../libcore/marlin-file-operations.c:3422
-#: ../libcore/marlin-file-operations.c:3467
+#: ../libcore/marlin-file-operations.c:2401
+#: ../libcore/marlin-file-operations.c:3291
+#: ../libcore/marlin-file-operations.c:3423
+#: ../libcore/marlin-file-operations.c:3468
 msgid "Error while copying."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2402
-#: ../libcore/marlin-file-operations.c:3420
-#: ../libcore/marlin-file-operations.c:3465
+#: ../libcore/marlin-file-operations.c:2403
+#: ../libcore/marlin-file-operations.c:3421
+#: ../libcore/marlin-file-operations.c:3466
 msgid "Error while moving."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2406
+#: ../libcore/marlin-file-operations.c:2407
 msgid "Error while moving files to trash."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2460
+#: ../libcore/marlin-file-operations.c:2461
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2499
+#: ../libcore/marlin-file-operations.c:2500
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2575
+#: ../libcore/marlin-file-operations.c:2576
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2578
+#: ../libcore/marlin-file-operations.c:2579
 msgid "There was an error getting information about \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2678
-#: ../libcore/marlin-file-operations.c:2720
-#: ../libcore/marlin-file-operations.c:2753
-#: ../libcore/marlin-file-operations.c:2783
+#: ../libcore/marlin-file-operations.c:2679
+#: ../libcore/marlin-file-operations.c:2721
+#: ../libcore/marlin-file-operations.c:2754
+#: ../libcore/marlin-file-operations.c:2784
 msgid "Error while copying to \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2682
+#: ../libcore/marlin-file-operations.c:2683
 msgid "You do not have permissions to access the destination folder."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2684
+#: ../libcore/marlin-file-operations.c:2685
 msgid "There was an error getting information about the destination."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2721
+#: ../libcore/marlin-file-operations.c:2722
 msgid "The destination is not a folder."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2754
+#: ../libcore/marlin-file-operations.c:2755
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2756
+#: ../libcore/marlin-file-operations.c:2757
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2784
+#: ../libcore/marlin-file-operations.c:2785
 msgid "The destination is read-only."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2843
+#: ../libcore/marlin-file-operations.c:2844
 msgid "Moving \"%B\" to \"%B\""
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2844
+#: ../libcore/marlin-file-operations.c:2845
 msgid "Copying \"%B\" to \"%B\""
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2848
+#: ../libcore/marlin-file-operations.c:2849
 msgid "Duplicating \"%B\""
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:2852
+#: ../libcore/marlin-file-operations.c:2853
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2855
+#: ../libcore/marlin-file-operations.c:2856
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2862
+#: ../libcore/marlin-file-operations.c:2863
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2871
+#: ../libcore/marlin-file-operations.c:2872
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2875
+#: ../libcore/marlin-file-operations.c:2876
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:2880
+#: ../libcore/marlin-file-operations.c:2881
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -680,7 +680,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
-#: ../libcore/marlin-file-operations.c:2906
+#: ../libcore/marlin-file-operations.c:2907
 #, c-format
 msgid "%S of %S"
 msgstr ""
@@ -688,190 +688,190 @@ msgstr ""
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
 #. / "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:2916
+#: ../libcore/marlin-file-operations.c:2917
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:3294
+#: ../libcore/marlin-file-operations.c:3295
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3297
+#: ../libcore/marlin-file-operations.c:3298
 msgid "There was an error creating the folder \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3427
+#: ../libcore/marlin-file-operations.c:3428
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3472
+#: ../libcore/marlin-file-operations.c:3473
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3517
-#: ../libcore/marlin-file-operations.c:4156
+#: ../libcore/marlin-file-operations.c:3518
+#: ../libcore/marlin-file-operations.c:4157
 msgid "Error while moving \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3518
+#: ../libcore/marlin-file-operations.c:3519
 msgid "Could not remove the source folder."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3603
-#: ../libcore/marlin-file-operations.c:3644
-#: ../libcore/marlin-file-operations.c:4158
+#: ../libcore/marlin-file-operations.c:3604
+#: ../libcore/marlin-file-operations.c:3645
+#: ../libcore/marlin-file-operations.c:4159
 msgid "Error while copying \"%B\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3604
+#: ../libcore/marlin-file-operations.c:3605
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3645
+#: ../libcore/marlin-file-operations.c:3646
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3919
-#: ../libcore/marlin-file-operations.c:4570
-msgid "You cannot move a folder into itself."
-msgstr ""
-
 #: ../libcore/marlin-file-operations.c:3920
 #: ../libcore/marlin-file-operations.c:4571
-msgid "You cannot copy a folder into itself."
+msgid "You cannot move a folder into itself."
 msgstr ""
 
 #: ../libcore/marlin-file-operations.c:3921
 #: ../libcore/marlin-file-operations.c:4572
+msgid "You cannot copy a folder into itself."
+msgstr ""
+
+#: ../libcore/marlin-file-operations.c:3922
+#: ../libcore/marlin-file-operations.c:4573
 msgid "The destination folder is inside the source folder."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3952
+#: ../libcore/marlin-file-operations.c:3953
 msgid "You cannot move a file over itself."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3953
+#: ../libcore/marlin-file-operations.c:3954
 msgid "You cannot copy a file over itself."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:3954
+#: ../libcore/marlin-file-operations.c:3955
 msgid "The source file would be overwritten by the destination."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4160
+#: ../libcore/marlin-file-operations.c:4161
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4230
+#: ../libcore/marlin-file-operations.c:4231
 msgid "Cannot copy \"%B\" here."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4231
+#: ../libcore/marlin-file-operations.c:4232
 msgid "There was an error copying the file into %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4453
+#: ../libcore/marlin-file-operations.c:4454
 msgid "Copying Files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4479
+#: ../libcore/marlin-file-operations.c:4480
 msgid "Preparing to move to \"%B\""
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4483
+#: ../libcore/marlin-file-operations.c:4484
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:4724
+#: ../libcore/marlin-file-operations.c:4725
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4725
+#: ../libcore/marlin-file-operations.c:4726
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:4982
+#: ../libcore/marlin-file-operations.c:4983
 msgid "Moving Files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5011
+#: ../libcore/marlin-file-operations.c:5012
 msgid "Creating links in \"%B\""
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5015
+#: ../libcore/marlin-file-operations.c:5016
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../libcore/marlin-file-operations.c:5155
+#: ../libcore/marlin-file-operations.c:5156
 msgid "Error while creating link to %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5157
+#: ../libcore/marlin-file-operations.c:5158
 msgid "Symbolic links only supported for local files"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5160
+#: ../libcore/marlin-file-operations.c:5161
 msgid "The target doesn't support symbolic links."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5163
+#: ../libcore/marlin-file-operations.c:5164
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5481
+#: ../libcore/marlin-file-operations.c:5482
 msgid "Setting permissions"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5577
+#: ../libcore/marlin-file-operations.c:5578
 msgid "Cannot copy into trash."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5578
+#: ../libcore/marlin-file-operations.c:5579
 msgid "It is not permitted to copy files into the trash"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5716
+#: ../libcore/marlin-file-operations.c:5717
 msgid "untitled folder"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5724
+#: ../libcore/marlin-file-operations.c:5725
 msgid "new file"
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5895
+#: ../libcore/marlin-file-operations.c:5896
 msgid "Error while creating directory %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5897
+#: ../libcore/marlin-file-operations.c:5898
 msgid "Error while creating file %B."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:5899
+#: ../libcore/marlin-file-operations.c:5900
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr ""
 
-#: ../libcore/marlin-file-operations.c:6209
+#: ../libcore/marlin-file-operations.c:6210
 msgid "Emptying Trash"
 msgstr ""
 
@@ -1254,101 +1254,105 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: ../filechooser-module/FileChooserDialog.vala:72
-#: ../src/View/Widgets/TopMenu.vala:64
+#: ../src/View/Widgets/TopMenu.vala:61
 msgid "Previous"
 msgstr "Trước đó"
 
 #: ../filechooser-module/FileChooserDialog.vala:76
-#: ../src/View/Widgets/TopMenu.vala:69
+#: ../src/View/Widgets/TopMenu.vala:66
 msgid "Next"
 msgstr "Kế tiếp"
 
-#: ../src/View/AbstractDirectoryView.vala:816
+#: ../src/View/AbstractDirectoryView.vala:832
 msgid "Cannot open this file"
 msgstr "Không thể mở tập tin này"
 
-#: ../src/View/AbstractDirectoryView.vala:829
+#: ../src/View/AbstractDirectoryView.vala:845
 msgid "Cannot identify file type to open"
 msgstr "Không thể xác định loại tập tin để mở"
 
-#: ../src/View/AbstractDirectoryView.vala:1564
+#: ../src/View/AbstractDirectoryView.vala:1580
 msgid "Cannot drop this file"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:1564
+#: ../src/View/AbstractDirectoryView.vala:1580
 msgid "Invalid file name provided"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2032
+#: ../src/View/AbstractDirectoryView.vala:2065
 msgid "Invalid"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2038
+#: ../src/View/AbstractDirectoryView.vala:2071
 msgid "Run"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2042
+#: ../src/View/AbstractDirectoryView.vala:2075
 msgid "Open in %s"
 msgstr "Mở trong %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2052
+#: ../src/View/AbstractDirectoryView.vala:2085
 msgid "Open in"
 msgstr "Mở trong"
 
-#: ../src/View/AbstractDirectoryView.vala:2054
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:459
+#: ../src/View/AbstractDirectoryView.vala:2087
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:478
 msgid "Open with"
 msgstr "Mở với"
 
-#: ../src/View/AbstractDirectoryView.vala:2113
-#: ../src/Dialogs/PropertiesWindow.vala:602
+#: ../src/View/AbstractDirectoryView.vala:2146
+#: ../src/Dialogs/PropertiesWindow.vala:616
 msgid "Other Application…"
 msgstr "Ứng dụng khác…"
 
-#: ../src/View/AbstractDirectoryView.vala:2377
+#: ../src/View/AbstractDirectoryView.vala:2175
+msgid "Templates"
+msgstr ""
+
+#: ../src/View/AbstractDirectoryView.vala:2422
 msgid "Untitled %s"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2713
-#: ../src/View/AbstractDirectoryView.vala:2905
+#: ../src/View/AbstractDirectoryView.vala:2761
+#: ../src/View/AbstractDirectoryView.vala:2945
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2714
-#: ../src/View/AbstractDirectoryView.vala:2890
-#: ../src/View/AbstractDirectoryView.vala:2906
+#: ../src/View/AbstractDirectoryView.vala:2762
+#: ../src/View/AbstractDirectoryView.vala:2930
+#: ../src/View/AbstractDirectoryView.vala:2946
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2865
+#: ../src/View/AbstractDirectoryView.vala:2905
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2866
+#: ../src/View/AbstractDirectoryView.vala:2906
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2889
+#: ../src/View/AbstractDirectoryView.vala:2929
 msgid "Cannot paste files here"
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.vala:28 ../src/View/ViewContainer.vala:396
+#: ../src/View/DirectoryNotFound.vala:27 ../src/View/ViewContainer.vala:397
 msgid "This Folder Does Not Exist"
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.vala:28
+#: ../src/View/DirectoryNotFound.vala:27
 msgid "The folder \"%s\" can't be found."
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.vala:30
+#: ../src/View/DirectoryNotFound.vala:29
 msgid "Create"
 msgstr "Tạo"
 
-#: ../src/View/DirectoryNotFound.vala:30
+#: ../src/View/DirectoryNotFound.vala:29
 msgid "Create the folder \"%s\""
 msgstr ""
 
-#: ../src/View/DirectoryNotFound.vala:44
+#: ../src/View/DirectoryNotFound.vala:43
 msgid ""
 "Failed to create the folder\n"
 "\n"
@@ -1371,109 +1375,109 @@ msgstr "Loại"
 msgid "Modified"
 msgstr "Sửa đổi"
 
-#: ../src/View/Sidebar.vala:481
+#: ../src/View/Sidebar.vala:490
 msgid "Personal"
 msgstr "Cá nhân"
 
-#: ../src/View/Sidebar.vala:482
+#: ../src/View/Sidebar.vala:491
 msgid "Your common places and bookmarks"
 msgstr "Vị trí và đánh dấu của bạn"
 
-#: ../src/View/Sidebar.vala:494 ../src/View/ViewContainer.vala:363
+#: ../src/View/Sidebar.vala:503 ../src/View/ViewContainer.vala:364
 msgid "Home"
 msgstr "Nhà riêng"
 
-#: ../src/View/Sidebar.vala:501
+#: ../src/View/Sidebar.vala:510
 msgid "Open your personal folder"
 msgstr "Mở thư mục cá nhân"
 
-#: ../src/View/Sidebar.vala:516
+#: ../src/View/Sidebar.vala:525
 msgid "View the list of recently used files"
 msgstr "Xem danh sách các tập tin đã sử dụng gần đây"
 
-#: ../src/View/Sidebar.vala:542 ../libwidgets/Resources.vala:65
+#: ../src/View/Sidebar.vala:551 ../libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Thùng rác"
 
-#: ../src/View/Sidebar.vala:549
+#: ../src/View/Sidebar.vala:558
 msgid "Open the Trash"
 msgstr "Mở Thùng rác"
 
-#: ../src/View/Sidebar.vala:554
+#: ../src/View/Sidebar.vala:563
 msgid "Devices"
 msgstr "Thiết bị"
 
-#: ../src/View/Sidebar.vala:555
+#: ../src/View/Sidebar.vala:564
 msgid "Your local partitions and devices"
 msgstr "Thiết bị và phân vùng nội bộ của bạn"
 
-#: ../src/View/Sidebar.vala:561 ../src/View/ViewContainer.vala:365
+#: ../src/View/Sidebar.vala:570 ../src/View/ViewContainer.vala:366
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Hệ thống tập tin"
 
-#: ../src/View/Sidebar.vala:679 ../libwidgets/Resources.vala:62
+#: ../src/View/Sidebar.vala:691 ../libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Mạng"
 
-#: ../src/View/Sidebar.vala:680
+#: ../src/View/Sidebar.vala:692
 msgid "Your network places"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:712
+#: ../src/View/Sidebar.vala:724
 msgid "Entire Network"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:719
+#: ../src/View/Sidebar.vala:731
 msgid "Browse the contents of the network"
 msgstr "Duyệt nội dung bên trong của mạng"
 
-#: ../src/View/Sidebar.vala:852
+#: ../src/View/Sidebar.vala:865
 msgid "(%s Free of %s)"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1324
+#: ../src/View/Sidebar.vala:1360
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1339
+#: ../src/View/Sidebar.vala:1375
 msgid "Unable to start %s"
 msgstr "Không thể chạy %s"
 
-#: ../src/View/Sidebar.vala:1437
+#: ../src/View/Sidebar.vala:1477
 msgid "Open"
 msgstr "Mở"
 
-#: ../src/View/Sidebar.vala:1441
+#: ../src/View/Sidebar.vala:1481
 msgid "Open in New _Tab"
 msgstr "Mở trong _Tab mới"
 
-#: ../src/View/Sidebar.vala:1445
+#: ../src/View/Sidebar.vala:1485
 msgid "Open in New _Window"
 msgstr "Mở trong _cửa sổ mới"
 
-#: ../src/View/Sidebar.vala:1451
+#: ../src/View/Sidebar.vala:1491
 msgid "Remove"
 msgstr "Bỏ"
 
-#: ../src/View/Sidebar.vala:1455 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1495 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Đổi tên"
 
-#: ../src/View/Sidebar.vala:1461
+#: ../src/View/Sidebar.vala:1501
 msgid "_Mount"
 msgstr "_Gắn kết"
 
-#: ../src/View/Sidebar.vala:1465
+#: ../src/View/Sidebar.vala:1505
 msgid "_Unmount"
 msgstr "_Bỏ gắn kết"
 
-#: ../src/View/Sidebar.vala:1469
+#: ../src/View/Sidebar.vala:1509
 msgid "_Eject"
 msgstr "Đẩy _ra"
 
-#: ../src/View/Sidebar.vala:1478 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/Sidebar.vala:1518 ../src/Dialogs/PropertiesWindow.vala:121
 #: ../src/View/directory_view_popup.ui:91
 msgid "Properties"
 msgstr "Thuộc tính"
@@ -1494,151 +1498,151 @@ msgstr "Không có tệp tin gần đây"
 msgid "Access Denied"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:378
+#: ../src/View/ViewContainer.vala:379
 msgid "(as Administrator)"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:397
+#: ../src/View/ViewContainer.vala:398
 msgid "You cannot create a folder here."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:400
+#: ../src/View/ViewContainer.vala:401
 msgid "The network is unavailable"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:401
+#: ../src/View/ViewContainer.vala:402
 msgid "A working network is needed to reach this folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:403
+#: ../src/View/ViewContainer.vala:404
 msgid "This Folder Does Not Belong to You"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:404
+#: ../src/View/ViewContainer.vala:405
 msgid "You don't have permission to view this folder."
 msgstr "Bạn không có quyền xem thư mục này."
 
-#: ../src/View/ViewContainer.vala:406
+#: ../src/View/ViewContainer.vala:407
 msgid "Unable to Mount Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:407
+#: ../src/View/ViewContainer.vala:408
 msgid "Could not connect to the server for this folder."
 msgstr "Không thể kết nối đến máy chủ cho thư mục này."
 
-#: ../src/View/ViewContainer.vala:409
+#: ../src/View/ViewContainer.vala:410
 msgid "Unable to Display Folder Contents"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:410
+#: ../src/View/ViewContainer.vala:411
 msgid "The operation timed out."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:412
+#: ../src/View/ViewContainer.vala:413
 msgid "Unable to Show Folder"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:413
+#: ../src/View/ViewContainer.vala:414
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:423
+#: ../src/View/ViewContainer.vala:424
 msgid "File not Found"
 msgstr ""
 
-#: ../src/View/ViewContainer.vala:424
+#: ../src/View/ViewContainer.vala:425
 msgid "The file selected no longer exists."
 msgstr ""
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:420
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:438
 msgid "Open in New Tab"
 msgstr "Mở trong Tab mới"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:427
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Window"
 msgstr "Mở trong cửa số mới"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:466
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:485
 msgid "Open in Other Application…"
 msgstr "Mở trong ứng dụng khác…"
 
-#: ../src/View/Widgets/LocationBar.vala:193
+#: ../src/View/Widgets/LocationBar.vala:192
 msgid "Reload this folder"
 msgstr "Tải lại thư mục này"
 
-#: ../src/View/Widgets/LocationBar.vala:197
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:287
+#: ../src/View/Widgets/LocationBar.vala:196
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
 msgstr ""
 
-#: ../src/View/Widgets/LocationBar.vala:206
+#: ../src/View/Widgets/LocationBar.vala:205
 msgid "Searching…"
 msgstr ""
 
-#: ../src/View/Widgets/OverlayBar.vala:216
+#: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
 msgstr ""
 
-#: ../src/View/Widgets/OverlayBar.vala:218
+#: ../src/View/Widgets/OverlayBar.vala:217
 #: ../src/View/Widgets/OverlayBar.vala:226
 msgid " and %u other item (%s) selected"
 msgstr ""
 
-#: ../src/View/Widgets/OverlayBar.vala:219
+#: ../src/View/Widgets/OverlayBar.vala:218
 #: ../src/View/Widgets/OverlayBar.vala:227
 msgid " and %u other items (%s) selected"
 msgstr ""
 
-#: ../src/View/Widgets/OverlayBar.vala:222
+#: ../src/View/Widgets/OverlayBar.vala:221
 #: ../src/View/Widgets/OverlayBar.vala:230
 msgid " selected"
 msgstr ""
 
 #: ../src/View/Widgets/OverlayBar.vala:224
-#: ../src/Dialogs/PropertiesWindow.vala:1173
+#: ../src/Dialogs/PropertiesWindow.vala:1222
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/View/Widgets/OverlayBar.vala:232
+#: ../src/View/Widgets/OverlayBar.vala:233
 msgid "%u items selected (%s)"
 msgstr ""
 
 #. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/Widgets/OverlayBar.vala:274
+#: ../src/View/Widgets/OverlayBar.vala:277
 msgid "%u sub-folder, "
 msgstr ""
 
-#: ../src/View/Widgets/OverlayBar.vala:274
+#: ../src/View/Widgets/OverlayBar.vala:277
 msgid "%u sub-folders, "
 msgstr ""
 
 #. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/Widgets/OverlayBar.vala:280
+#: ../src/View/Widgets/OverlayBar.vala:283
 msgid "%u file, "
 msgstr ""
 
-#: ../src/View/Widgets/OverlayBar.vala:280
+#: ../src/View/Widgets/OverlayBar.vala:283
 msgid "%u files, "
 msgstr ""
 
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/Widgets/OverlayBar.vala:290
+#: ../src/View/Widgets/OverlayBar.vala:293
 msgid "%s approx."
 msgstr ""
 
 #. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/Widgets/OverlayBar.vala:293
+#: ../src/View/Widgets/OverlayBar.vala:296
 msgid "unknown size"
 msgstr ""
 
 #. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/Widgets/OverlayBar.vala:297
+#: ../src/View/Widgets/OverlayBar.vala:300
 msgid "%u file not readable"
 msgstr ""
 
-#: ../src/View/Widgets/OverlayBar.vala:297
+#: ../src/View/Widgets/OverlayBar.vala:300
 msgid "%u files not readable"
 msgstr ""
 
@@ -1654,38 +1658,39 @@ msgstr "Ghi"
 msgid "Execute"
 msgstr "Thực thi"
 
-#: ../src/Application.vala:118
-msgid "Show the version of the program."
+#: ../src/Application.vala:119
+msgid "Show the version of the program"
 msgstr "Hiển thị phiên bản."
 
-#: ../src/Application.vala:120
+#: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
 msgstr "Mở (các) uri trong tab mới"
 
-#: ../src/Application.vala:122 ../src/View/directory_view_popup.ui:83
+#: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr ""
 
-#: ../src/Application.vala:124
-msgid "Quit Files."
+#: ../src/Application.vala:125
+msgid "Quit Files"
 msgstr "Thoát Tập tin"
 
-#: ../src/Application.vala:126
+#: ../src/Application.vala:127
 msgid "Enable debug logging"
 msgstr "Cho phép ghi chép gỡ lỗi"
 
-#: ../src/Application.vala:129
-msgid "[URI...]"
+#: ../src/Application.vala:130
+#, fuzzy
+msgid "[URI…]"
 msgstr "[URI...]"
 
-#: ../src/Application.vala:132
+#: ../src/Application.vala:133
 msgid ""
 "\n"
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
 
-#: ../src/Application.vala:159
+#: ../src/Application.vala:161
 msgid "--quit cannot be used with URIs."
 msgstr ""
 
@@ -1732,8 +1737,8 @@ msgstr ""
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:153
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:156
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:159
-#: ../src/Dialogs/PropertiesWindow.vala:416
-#: ../src/Dialogs/PropertiesWindow.vala:452
+#: ../src/Dialogs/PropertiesWindow.vala:430
+#: ../src/Dialogs/PropertiesWindow.vala:466
 msgid "Unknown"
 msgstr ""
 
@@ -1749,126 +1754,126 @@ msgstr ""
 msgid "Set as default"
 msgstr "Đặt làm mặc định"
 
-#: ../src/Dialogs/PropertiesWindow.vala:220
+#: ../src/Dialogs/PropertiesWindow.vala:221
 msgid "Permissions"
 msgstr "Các quyền"
 
-#: ../src/Dialogs/PropertiesWindow.vala:241
+#: ../src/Dialogs/PropertiesWindow.vala:242
 msgid "Actual Size Could Be Larger"
 msgstr ""
 
-#: ../src/Dialogs/PropertiesWindow.vala:241
+#: ../src/Dialogs/PropertiesWindow.vala:242
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/Dialogs/PropertiesWindow.vala:260
-#: ../src/Dialogs/PropertiesWindow.vala:279
+#: ../src/Dialogs/PropertiesWindow.vala:261
+#: ../src/Dialogs/PropertiesWindow.vala:280
 msgid "unknown"
 msgstr ""
 
-#: ../src/Dialogs/PropertiesWindow.vala:427
+#: ../src/Dialogs/PropertiesWindow.vala:441
 msgid "Loading…"
 msgstr ""
 
-#: ../src/Dialogs/PropertiesWindow.vala:458
+#: ../src/Dialogs/PropertiesWindow.vala:472
 msgid "Could not be determined"
 msgstr ""
 
-#: ../src/Dialogs/PropertiesWindow.vala:484
+#: ../src/Dialogs/PropertiesWindow.vala:498
 #: ../libcore/FileConflictDialog.vala:117
 #: ../libcore/FileConflictDialog.vala:145
 msgid "Size:"
 msgstr "Kích thước:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:491
+#: ../src/Dialogs/PropertiesWindow.vala:505
 #: ../libcore/FileConflictDialog.vala:125
 #: ../libcore/FileConflictDialog.vala:153
 msgid "Type:"
 msgstr "Loại:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:494
+#: ../src/Dialogs/PropertiesWindow.vala:508
 msgid "Contains:"
 msgstr "Bao gồm:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:516
+#: ../src/Dialogs/PropertiesWindow.vala:530
 msgid "Created:"
 msgstr ""
 
-#: ../src/Dialogs/PropertiesWindow.vala:525
+#: ../src/Dialogs/PropertiesWindow.vala:539
 msgid "Modified:"
 msgstr "Sửa đổi:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:536
+#: ../src/Dialogs/PropertiesWindow.vala:550
 msgid "Deleted:"
 msgstr ""
 
-#: ../src/Dialogs/PropertiesWindow.vala:546
-msgid "Mimetype:"
+#: ../src/Dialogs/PropertiesWindow.vala:560
+msgid "MIME type:"
 msgstr ""
 
-#: ../src/Dialogs/PropertiesWindow.vala:553
+#: ../src/Dialogs/PropertiesWindow.vala:567
 msgid "Resolution:"
 msgstr "Độ phân giải:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:561
+#: ../src/Dialogs/PropertiesWindow.vala:575
 #: ../src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr "Vị trí:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:571
+#: ../src/Dialogs/PropertiesWindow.vala:585
 msgid "Target:"
 msgstr "Mục tiêu:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:579
+#: ../src/Dialogs/PropertiesWindow.vala:593
 msgid "Original Location:"
 msgstr "Vị trí gốc ban đầu:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:622
+#: ../src/Dialogs/PropertiesWindow.vala:636
 msgid "Open with:"
 msgstr "Mở bằng:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:875
-#: ../src/Dialogs/PropertiesWindow.vala:885
+#: ../src/Dialogs/PropertiesWindow.vala:903
+#: ../src/Dialogs/PropertiesWindow.vala:913
 msgid "Owner:"
 msgstr "Người sở hữu:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:879
-#: ../src/Dialogs/PropertiesWindow.vala:888
+#: ../src/Dialogs/PropertiesWindow.vala:907
+#: ../src/Dialogs/PropertiesWindow.vala:916
 msgid "Group:"
 msgstr "Nhóm:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:891
+#: ../src/Dialogs/PropertiesWindow.vala:919
 msgid "Everyone:"
 msgstr "Mọi người:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1151
+#: ../src/Dialogs/PropertiesWindow.vala:1200
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../src/Dialogs/PropertiesWindow.vala:1155
-#: ../src/Dialogs/PropertiesWindow.vala:1177
+#: ../src/Dialogs/PropertiesWindow.vala:1204
+#: ../src/Dialogs/PropertiesWindow.vala:1226
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] ""
 msgstr[1] ""
 
 #. /TRANSLATORS: folders, files
-#: ../src/Dialogs/PropertiesWindow.vala:1160
+#: ../src/Dialogs/PropertiesWindow.vala:1209
 msgid "%s, %s"
 msgstr ""
 
-#: ../src/Dialogs/PropertiesWindow.vala:1181
+#: ../src/Dialogs/PropertiesWindow.vala:1230
 msgid "%u selected item"
 msgid_plural "%u selected items"
 msgstr[0] ""
 msgstr[1] ""
 
 #. /TRANSLATORS: total (folders, files)
-#: ../src/Dialogs/PropertiesWindow.vala:1183
+#: ../src/Dialogs/PropertiesWindow.vala:1232
 msgid "%s (%s, %s)"
 msgstr ""
 
@@ -1893,51 +1898,53 @@ msgstr ""
 msgid "All file operations have ended"
 msgstr ""
 
-#: ../src/ProgressUIHandler.vala:233
+#: ../src/ProgressUIHandler.vala:236
 msgid "Show Copy Dialog"
 msgstr "Hiển thị hộp thoại Sao chép"
 
-#: ../src/ProgressUIHandler.vala:245
+#: ../src/ProgressUIHandler.vala:248
 msgid "Cancel All In-progress Actions"
 msgstr "Hủy tất cả các hoạt động đang diễn ra"
 
-#: ../src/Utils/MimeActions.vala:260
+#: ../src/Utils/MimeActions.vala:275
 msgid "Multiple file types selected"
 msgstr ""
 
-#: ../src/Utils/MimeActions.vala:261
+#: ../src/Utils/MimeActions.vala:276
 msgid "No single app can open all these types of file"
 msgstr "Không một ứng dụng nào có thể mở tất cả các loại tệp này"
 
-#: ../src/Utils/MimeActions.vala:288
+#: ../src/Utils/MimeActions.vala:303
 msgid "Failed to open files"
 msgstr "Không thể mở tập tin"
 
-#: ../src/Utils/MimeActions.vala:298
-msgid "Failed to open uris"
-msgstr "Không thể mở uris"
+#: ../src/Utils/MimeActions.vala:313
+#, fuzzy
+msgid "Could not open URIs"
+msgstr "Không thể đổi tên thành '%s'"
 
-#: ../src/Utils/MimeActions.vala:301
-msgid "Unable to open files or uris with this app"
+#: ../src/Utils/MimeActions.vala:316
+#, fuzzy
+msgid "Could not open files or URIs with this app"
 msgstr "Không thể mở tệp hoặc uris với ứng dụng này"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr ""
 
-#: ../libcore/DndHandler.vala:93
+#: ../libcore/DndHandler.vala:95
 msgid "Move Here"
 msgstr ""
 
-#: ../libcore/DndHandler.vala:94
+#: ../libcore/DndHandler.vala:96
 msgid "Copy Here"
 msgstr ""
 
-#: ../libcore/DndHandler.vala:95
+#: ../libcore/DndHandler.vala:97
 msgid "Link Here"
 msgstr ""
 
-#: ../libcore/DndHandler.vala:98 ../libcore/FileConflictDialog.vala:186
+#: ../libcore/DndHandler.vala:100 ../libcore/FileConflictDialog.vala:186
 msgid "Cancel"
 msgstr "Thôi"
 
@@ -2046,31 +2053,31 @@ msgstr ""
 msgid "The item cannot be restored from trash"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:436
+#: ../libcore/FileUtils.vala:438
 msgid "Could not rename to '%s'"
 msgstr "Không thể đổi tên thành '%s'"
 
-#: ../libcore/FileUtils.vala:527
+#: ../libcore/FileUtils.vala:529
 msgid "Today at %-H:%M"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:529
+#: ../libcore/FileUtils.vala:531
 msgid "Today at %-I:%M %p"
 msgstr "Hôm nay lúc %-I:%M %p"
 
-#: ../libcore/FileUtils.vala:535
+#: ../libcore/FileUtils.vala:537
 msgid "Yesterday at %-H:%M"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:537
+#: ../libcore/FileUtils.vala:539
 msgid "Yesterday at %-I:%M %p"
 msgstr "Hôm qua lúc %-I:%M %p"
 
-#: ../libcore/FileUtils.vala:544
+#: ../libcore/FileUtils.vala:546
 msgid "%A at %-H:%M"
 msgstr ""
 
-#: ../libcore/FileUtils.vala:546
+#: ../libcore/FileUtils.vala:548
 msgid "%A at %-I:%M %p"
 msgstr ""
 
@@ -2083,7 +2090,7 @@ msgstr ""
 msgid "Show more _details"
 msgstr ""
 
-#: ../libcore/gof-directory-async.vala:659
+#: ../libcore/gof-directory-async.vala:661
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -2091,7 +2098,7 @@ msgstr ""
 msgid "Navigate to %s"
 msgstr ""
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:283
+#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:284
 msgid "Go to %s"
 msgstr "Đi tới %s"
 
@@ -2143,19 +2150,19 @@ msgstr "Gần đây"
 msgid "MTP"
 msgstr ""
 
-#: ../libwidgets/View/SearchResults.vala:227
+#: ../libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
 msgstr ""
 
-#: ../libwidgets/View/SearchResults.vala:232
+#: ../libwidgets/View/SearchResults.vala:227
 msgid "Below This Folder"
 msgstr ""
 
-#: ../libwidgets/View/SearchResults.vala:237
+#: ../libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
 msgstr ""
 
-#: ../libwidgets/View/SearchResults.vala:242
+#: ../libwidgets/View/SearchResults.vala:237
 msgid "Recently used"
 msgstr ""
 
@@ -2167,21 +2174,22 @@ msgstr "Kết nối đến máy chủ…"
 msgid "Connect to a network file server"
 msgstr "Kết nối với máy chủ tập tin mạng"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:55
+#: ../plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
 msgstr ""
 
-#: ../plugins/pantheon-files-trash/plugin.vala:56
+#: ../plugins/pantheon-files-trash/plugin.vala:20
 msgid "Empty the Trash"
 msgstr ""
 
-#: ../plugins/pantheon-files-trash/plugin.vala:77
-msgid "These items may be restored or deleted from the trash."
+#: ../plugins/pantheon-files-trash/plugin.vala:21
+msgid "Restore Selected"
 msgstr ""
 
-#: ../plugins/pantheon-files-trash/plugin.vala:79
-msgid "Cannot restore or delete unless in root folder"
-msgstr ""
+#: ../plugins/pantheon-files-trash/plugin.vala:22
+#, fuzzy
+msgid "Delete Selected"
+msgstr "Xóa _Tất cả"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2279,6 +2287,9 @@ msgstr "Lệnh đảo ngược"
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
 msgstr ""
+
+#~ msgid "Failed to open uris"
+#~ msgstr "Không thể mở uris"
 
 #~ msgid " (invalid Unicode)"
 #~ msgstr " (Unicode không hợp lệ)"

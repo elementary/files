@@ -25,7 +25,7 @@
 using Marlin;
 
 namespace Marlin.View {
-    public class ViewContainer : Gtk.Overlay {
+    public class ViewContainer : Gtk.Bin {
 
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
@@ -97,7 +97,7 @@ namespace Marlin.View {
 
         public bool is_loading {get; private set; default = false;}
 
-        private OverlayBar overlay_statusbar;
+        private Marlin.View.OverlayBar overlay_statusbar;
         private Browser browser;
         private GLib.List<GLib.File>? selected_locations = null;
 
@@ -109,7 +109,6 @@ namespace Marlin.View {
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win) {
             window = win;
-            overlay_statusbar = new OverlayBar (this);
             browser = new Browser ();
 
             set_events (Gdk.EventMask.ENTER_NOTIFY_MASK | Gdk.EventMask.LEAVE_NOTIFY_MASK);
@@ -231,9 +230,7 @@ namespace Marlin.View {
             assert (view == null);
             assert (loc != null);
 
-            overlay_statusbar.cancel ();
             view_mode = mode;
-            overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
 
             if (mode == Marlin.ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this, mode);
@@ -241,10 +238,14 @@ namespace Marlin.View {
                 this.view = new Slot (loc, this, mode);
             }
 
+            overlay_statusbar = new Marlin.View.OverlayBar (view.overlay);
+            overlay_statusbar.showbar = view_mode != Marlin.ViewMode.LIST;
+
             connect_slot_signals (this.view);
             directory_is_loading (loc);
             slot.initialize_directory ();
             show_all ();
+
             /* NOTE: slot is created inactive to avoid bug during restoring multiple tabs
              * The slot becomes active when the tab becomes current */
         }
@@ -386,7 +387,6 @@ namespace Marlin.View {
 
         public void on_slot_directory_loaded (GOF.Directory.Async dir) {
             can_show_folder = dir.can_load;
-
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
                 if (!dir.file.exists) {
@@ -539,16 +539,18 @@ namespace Marlin.View {
 
         public string get_root_uri () {
             string path = "";
-            if (view != null)
+            if (view != null) {
                 path = view.get_root_uri () ?? "";
+            }
 
             return path;
         }
 
         public string get_tip_uri () {
             string path = "";
-            if (view != null)
+            if (view != null) {
                 path = view.get_tip_uri () ?? "";
+            }
 
             return path;
         }
@@ -572,10 +574,11 @@ namespace Marlin.View {
 
         public new void grab_focus () {
             is_frozen = false;
-            if (can_show_folder && view != null)
+            if (can_show_folder && view != null) {
                 view.grab_focus ();
-            else
+            } else {
                 content.grab_focus ();
+            }
         }
 
         private void on_slot_item_hovered (GOF.File? file) {

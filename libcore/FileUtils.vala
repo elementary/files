@@ -338,17 +338,19 @@ namespace PF.FileUtils {
     }
 
     public string get_smb_share_from_uri (string uri) {
-        if (!(Uri.parse_scheme (uri) == "smb"))
+        if (!(Uri.parse_scheme (uri) == "smb")) {
             return (uri);
+        }
 
         string [] uri_parts = uri.split (Path.DIR_SEPARATOR_S);
 
-        if (uri_parts.length < 4)
+        if (uri_parts.length < 4) {
             return uri;
-        else {
+        } else {
             var sb = new StringBuilder ();
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++) {
                 sb.append (uri_parts [i] + Path.DIR_SEPARATOR_S);
+            }
 
             return sb.str;
         }
@@ -750,6 +752,13 @@ namespace PF.FileUtils {
         return (filesystem_a != null && filesystem_b != null &&
                 filesystem_a == filesystem_b);
 
+    }
+
+    public void remove_thumbnail_paths_for_uri (string uri) {
+        string hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, uri);
+        string base_name = "%s.png".printf (hash);
+        GLib.FileUtils.unlink (Path.build_filename (Environment.get_user_cache_dir (), "thumbnails", "normal", base_name));
+        GLib.FileUtils.unlink (Path.build_filename (Environment.get_user_cache_dir (), "thumbnails", "large", base_name));
     }
 }
 

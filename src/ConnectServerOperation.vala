@@ -51,10 +51,11 @@ public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
                                               (source, result) => {
             bool res = this.dialog.fill_details_async.end (result);
 
-            if (res)
+            if (res) {
                 reply (MountOperationResult.HANDLED);
-            else
+            } else {
                 reply (MountOperationResult.ABORTED);
+            }
         });
     }
 }
