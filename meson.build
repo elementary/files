@@ -99,7 +99,7 @@ C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
         subdir ('data')
         subdir ('pantheon-files-daemon')
         subdir ('plugins')
-#        subdir ('filechooser-module')
+        subdir ('filechooser-module')
 #        meson.add_install_script('meson/post_install.py')
 #    endif
 #endif
