@@ -1,2 +1,0 @@
-#!/bin/sh
-pkexec "@install_prefix@/@bin_dir@/io.elementary.files"

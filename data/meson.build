@@ -1,9 +1,10 @@
 config_data = configuration_data()
 config_data.set ('install_prefix', get_option ('prefix'))
 config_data.set ('bin_dir', get_option ('bindir'))
+config_data.set ('exec_name', meson.project_name ())
 
 configure_file (
-    input: meson.project_name () + '.service.meson.in',
+    input: meson.project_name () + '.service.in',
     output: meson.project_name () + '.service',
     configuration: config_data,
     install: true,
@@ -11,7 +12,7 @@ configure_file (
 )
 
 configure_file (
-    input: meson.project_name () + '-filemanager1.service.meson.in',
+    input: meson.project_name () + '-filemanager1.service.in',
     output: meson.project_name () + '.Filemanager1.service',
     configuration: config_data,
     install: true,
@@ -19,7 +20,7 @@ configure_file (
 )
 
 configure_file (
-    input: meson.project_name () + '-pkexec.meson.in',
+    input: meson.project_name () + '-pkexec.in',
     output: meson.project_name () + '-pkexec',
     configuration: config_data,
     install: true,
@@ -27,8 +28,22 @@ configure_file (
 )
 
 policy_in = configure_file (
-    input: meson.project_name () + '.policy.xml.meson.in.in',
-    output: meson.project_name () + '.policy.xml.meson.in',
+    input: meson.project_name () + '.policy.xml.in.in',
+    output: '@BASENAME@',
+    configuration: config_data,
+    install: false,
+)
+
+desktop_in = configure_file (
+    input: meson.project_name () + '.desktop.in.in',
+    output: '@BASENAME@',
+    configuration: config_data,
+    install: false,
+)
+
+appdata_in = configure_file (
+    input: meson.project_name () + '.appdata.xml.in.in',
+    output: '@BASENAME@',
     configuration: config_data,
     install: false,
 )
@@ -46,7 +61,7 @@ custom_target(
 
 i18n.merge_file (
     'desktop',
-    input: meson.project_name () + '.desktop.in',
+    input: desktop_in,
     output: meson.project_name () + '.desktop',
     install: true,
     install_dir: join_paths (get_option ('datadir'), 'applications'),
@@ -56,7 +71,7 @@ i18n.merge_file (
 
 i18n.merge_file (
     'appdata',
-    input: meson.project_name () + '.appdata.xml.in',
+    input: appdata_in,
     output: meson.project_name () + '.appdata.xml',
     install: true,
     install_dir: join_paths (get_option ('datadir'), 'metainfo'),

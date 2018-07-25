@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=org.freedesktop.FileManager1
-Exec=@install_prefix@/@bin_dir@/io.elementary.files-daemon

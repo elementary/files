@@ -1,3 +1,0 @@
-[D-BUS Service]
-Name=io.elementary.files.db
-Exec=@install_prefix@/@bin_dir@/io.elementary.files-daemon

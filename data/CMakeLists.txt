@@ -3,7 +3,7 @@ include (Translations)
 configure_file(io.elementary.files.service.cmake ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.service)
 configure_file(io.elementary.files-filemanager1.service.cmake ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.FileManager1.service)
 configure_file(io.elementary.files-pkexec.cmake ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files-pkexec)
-configure_file(io.elementary.files.policy.xml.in.in ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.policy.xml.in)
+configure_file(io.elementary.files.policy.cmake.xml.in.in ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.policy.xml.in)
 
 configure_file_translation(io.elementary.files.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.desktop ${CMAKE_SOURCE_DIR}/po/)
 configure_file_translation(io.elementary.files.appdata.xml.in ${CMAKE_CURRENT_BINARY_DIR}/io.elementary.files.appdata.xml ${CMAKE_SOURCE_DIR}/po/)
