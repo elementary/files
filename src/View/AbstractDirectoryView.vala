@@ -23,17 +23,28 @@
 */
 
 namespace FM {
-    public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
+    public enum ClickZone {
+        EXPANDER,
+        HELPER,
+        ICON,
+        NAME,
+        BLANK_PATH,
+        BLANK_NO_PATH,
+        INVALID
+    }
 
-        protected enum ClickZone {
-            EXPANDER,
-            HELPER,
-            ICON,
-            NAME,
-            BLANK_PATH,
-            BLANK_NO_PATH,
-            INVALID
+    public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
+        protected struct LastButtonPressData {
+            uint32 event_time;
+            bool should_select;
+            bool should_deselect;
+            bool should_activate;
+            bool should_scroll;
+            Gtk.TreePath? path;
+            ClickZone zone;
         }
+
+        protected LastButtonPressData click_data;
 
         const int MAX_TEMPLATES = 32;
 
@@ -187,13 +198,7 @@ namespace FM {
         protected bool activate_on_blank = true;
         protected bool right_margin_unselects_all = false;
         public bool single_click_mode { get; set; }
-        protected bool should_activate = false;
-        protected bool should_scroll = true;
-        protected bool should_deselect = false;
-        protected Gtk.TreePath? click_path = null;
-        protected uint click_zone = ClickZone.ICON;
-        protected uint previous_click_zone = ClickZone.ICON;
-        protected Gdk.Event? last_button_press = null;
+        protected uint previous_hover_zone = ClickZone.ICON;
 
         /* Cursors for different areas */
         private Gdk.Cursor editable_cursor;
@@ -280,6 +285,18 @@ namespace FM {
         public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
         public signal void item_hovered (GOF.File? file);
         public signal void selection_changed (GLib.List<unowned GOF.File> gof_file);
+
+        construct {
+            click_data = LastButtonPressData () {
+                event_time = int32.MAX,
+                should_select = false,
+                should_deselect = false,
+                should_activate = false,
+                should_scroll = false,
+                path = null,
+                zone = ClickZone.INVALID
+            };
+        }
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -765,7 +782,7 @@ namespace FM {
     /** File operations */
 
 
-        private void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
+        protected void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
             if (is_frozen) {
                 return;
             }
@@ -1445,7 +1462,7 @@ namespace FM {
 
             if (Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 cancel_drag_timer ();
-                should_activate = false;
+                click_data.should_activate = false;
                 var target_list = new Gtk.TargetList (drag_targets);
                 var actions = file_drag_actions;
 
@@ -1487,7 +1504,7 @@ namespace FM {
 
         private void on_drag_begin (Gdk.DragContext context) {
             drag_has_begun = true;
-            should_activate = false;
+            click_data.should_activate = false;
         }
 
         private void on_drag_data_get (Gdk.DragContext context,
@@ -2976,11 +2993,11 @@ namespace FM {
                 return true;
             }
 
-            click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
+            var hover_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
 
-            if (click_zone != previous_click_zone) {
+            if (hover_zone != previous_hover_zone) {
                 var win = view.get_window ();
-                switch (click_zone) {
+                switch (hover_zone) {
                     case ClickZone.ICON:
                     case ClickZone.NAME:
                         if (single_click_mode) {
@@ -2993,7 +3010,7 @@ namespace FM {
                         break;
                 }
 
-                previous_click_zone = click_zone;
+                previous_hover_zone = hover_zone;
             }
 
             if (is_frozen) {
@@ -3186,7 +3203,7 @@ namespace FM {
         }
 
         protected virtual bool handle_secondary_button_click (Gdk.EventButton event) {
-            should_scroll = false;
+            click_data.should_scroll = false;
             show_or_queue_context_menu (event);
             return true;
         }
@@ -3203,7 +3220,13 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
-            last_button_press = event.copy ();
+            click_data.should_activate = false;
+            click_data.should_deselect = false;
+            click_data.should_scroll = false;
+            click_data.path = null;
+            click_data.zone = ClickZone.INVALID;
+
+            click_data.event_time = event.get_time ();
 
             if (renaming) {
                 /* Cancel renaming */
@@ -3224,15 +3247,15 @@ namespace FM {
             drag_x = (int)(event.x);
             drag_y = (int)(event.y);
 
-            click_zone = get_event_position_info (event, out path, true);
+            click_data.zone = get_event_position_info (event, out path, true);
 
             /* certain positions fake a no path blank zone */
-            if (click_zone == ClickZone.BLANK_NO_PATH && path != null) {
+            if (click_data.zone == ClickZone.BLANK_NO_PATH && path != null) {
                 unselect_path (path);
                 path = null;
             }
 
-            click_path = path;
+            click_data.path = path;
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
@@ -3242,7 +3265,7 @@ namespace FM {
             bool only_control_pressed = control_pressed && !other_mod_pressed; /* Shift can be pressed */
             bool only_shift_pressed = shift_pressed && !control_pressed && !other_mod_pressed;
             bool path_selected = (path != null ? path_is_selected (path) : false);
-            bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
+            bool on_blank = (click_data.zone == ClickZone.BLANK_NO_PATH || click_data.zone == ClickZone.BLANK_PATH);
 
             /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
              * dragging on blank areas
@@ -3255,39 +3278,41 @@ namespace FM {
                 return false;
             }
 
-            if (!path_selected && click_zone != ClickZone.HELPER) {
+            if (!path_selected && click_data.zone != ClickZone.HELPER) {
                 if (no_mods) {
                     unselect_all ();
                 }
                 /* If modifier pressed then default handler determines selection */
                 if (no_mods && !on_blank) {
-                    select_path (path, true); /* Cursor follows */
+                    set_cursor (path, false, false, false); /* Just move Cursor */
                 }
             }
 
             bool result = false; // default false so events get passed to Window
-            should_activate = false;
-            should_scroll = true;
+            click_data.should_activate = false;
+            click_data.should_scroll = true;
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY: // button 1
                     /* Control-click should deselect previously selected path on key release (unless
                      * pointer moves)
                      */
-                    should_deselect = only_control_pressed && path_selected;
+                    click_data.should_deselect = only_control_pressed && path_selected;
+                    click_data.should_select = !path_selected;
 
-                    switch (click_zone) {
+                    switch (click_data.zone) {
                         case ClickZone.BLANK_NO_PATH:
                             break;
 
                         case ClickZone.BLANK_PATH:
                         case ClickZone.ICON:
                         case ClickZone.NAME:
+                            result = true;
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
                             /* determine whether should activate on key release (unless pointer moved)*/
-                            should_activate = no_mods &&
-                                              (!on_blank || activate_on_blank) &&
-                                              (single_click_mode || double_click_event);
+                            click_data.should_activate = no_mods &&
+                                                               (!on_blank || activate_on_blank) &&
+                                                               (single_click_mode || double_click_event);
 
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
@@ -3295,8 +3320,11 @@ namespace FM {
                              */
 
                             if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
-                                update_selected_files_and_menu ();
-                                result = only_shift_pressed && handle_multi_select (path);
+                                if (no_mods) {
+                                    result = false; /* Native handler for rubberbanding */
+                                } else {
+                                    result = (only_shift_pressed && handle_multi_select (path));
+                                }
                             } else {
                                 unblock_drag_and_drop ();
                                 result = handle_primary_button_click (event, path);
@@ -3309,7 +3337,6 @@ namespace FM {
                             if (path_selected) {
                                 unselect_path (path);
                             } else {
-                                should_deselect = false;
                                 select_path (path, true); /* Cursor follow and selection preserved */
                             }
 
@@ -3332,21 +3359,13 @@ namespace FM {
 
                     break;
 
-                case Gdk.BUTTON_MIDDLE: // button 2
-                    if (path_is_selected (path)) {
-                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        result = true;
-                    }
-
-                    break;
-
                 case Gdk.BUTTON_SECONDARY: // button 3
-                    if (click_zone == ClickZone.NAME ||
-                        click_zone == ClickZone.BLANK_PATH ||
-                        click_zone == ClickZone.ICON) {
+                    if (click_data.zone == ClickZone.NAME ||
+                        click_data.zone == ClickZone.BLANK_PATH ||
+                        click_data.zone == ClickZone.ICON) {
 
                         select_path (path);
-                    } else if (click_zone == ClickZone.INVALID) {
+                    } else if (click_data.zone == ClickZone.INVALID) {
                         unselect_all ();
                     }
 
@@ -3377,7 +3396,7 @@ namespace FM {
                 return true;
             }
 
-            slot.active (should_scroll);
+            slot.active (click_data.should_scroll);
 
             Gtk.Widget widget = get_real_view ();
             int x = (int)event.x;
@@ -3385,13 +3404,16 @@ namespace FM {
 
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
-                var delay = last_button_press != null ? event.get_time () - last_button_press.get_time () : 0;
+                var delay = uint32.max (event.get_time () - click_data.event_time, 0);
                 var long_press = Gtk.Settings.get_default ().gtk_long_press_time;
 
-                if (should_activate && delay < long_press) {
-                    activate_selected_items (Marlin.OpenFlag.DEFAULT);
-                } else if (should_deselect && click_path != null) {
-                    unselect_path (click_path);
+                if (click_data.should_activate && delay < long_press) {
+                    select_path (click_data.path);
+                    activate_selected_items (event.button == Gdk.BUTTON_MIDDLE ? Marlin.OpenFlag.NEW_TAB : Marlin.OpenFlag.DEFAULT);
+                } else if (click_data.should_deselect) { /* will not be true for null path */
+                    unselect_path (click_data.path);
+                } else if (click_data.should_select && (delay > long_press || !single_click_mode)) {
+                    select_path (click_data.path);
                 }
             }
 
@@ -3400,10 +3422,7 @@ namespace FM {
                 return false;
             });
 
-            should_activate = false;
-            should_deselect = false;
-            click_path = null;
-            last_button_press = null;
+            /* Leave click_data in place for in case of delayed use by Column View */
             return false;
         }
 
@@ -3678,7 +3697,7 @@ namespace FM {
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
         protected abstract uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files);
-        protected abstract uint get_event_position_info (Gdk.EventButton event,
+        protected abstract ClickZone get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);
 

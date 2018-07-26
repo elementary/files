@@ -210,12 +210,12 @@ namespace FM {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (Gdk.EventButton event,
+        protected override ClickZone get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.TreePath? p = null;
             Gtk.CellRenderer? r;
-            uint zone;
+            ClickZone zone;
             int x, y;
             path = null;
 
