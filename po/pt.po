@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-21 00:07+0000\n"
+"PO-Revision-Date: 2018-07-26 01:06+0000\n"
 "Last-Translator: Christophe Silva <Christophesilva80@gmail.com>\n"
 "Language-Team: Portuguese <https://weblate.elementary.io/projects/files/"
 "files/pt/>\n"
@@ -1730,7 +1730,6 @@ msgid "Enable debug logging"
 msgstr "Ativar registos de depuração"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
@@ -1865,7 +1864,6 @@ msgid "Deleted:"
 msgstr "Apagado:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "Tipo MIME:"
 
@@ -1975,9 +1973,8 @@ msgid "Failed to open files"
 msgstr "Ocorreu um erro ao abrir os ficheiros"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Impossível mudar o nome para '%s'"
+msgstr "Não foi possível abrir o(s) URL(s)"
 
 #: ../src/Utils/MimeActions.vala:316
 msgid "Could not open files or URIs with this app"
@@ -2238,14 +2235,12 @@ msgid "Empty the Trash"
 msgstr "Esvaziar o Lixo"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Restaurar Todos"
+msgstr "Restaurar a Seleção"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " seleccionados"
+msgstr "Eliminar a Seleção"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
