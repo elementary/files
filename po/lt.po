@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-26 14:24+0000\n"
+"PO-Revision-Date: 2018-07-26 21:26+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://weblate.elementary.io/projects/files/"
 "files/lt/>\n"
@@ -212,6 +212,7 @@ msgid_plural "%'d seconds"
 msgstr[0] "%'d sekundė"
 msgstr[1] "%'d sekundės"
 msgstr[2] "%'d sekundžių"
+msgstr[3] "%'d sekundė"
 
 #: ../libcore/marlin-file-operations.c:248
 #: ../libcore/marlin-file-operations.c:259
@@ -221,6 +222,7 @@ msgid_plural "%'d minutes"
 msgstr[0] "%'d minutė"
 msgstr[1] "%'d minutės"
 msgstr[2] "%'d minučių"
+msgstr[3] "%'d minutė"
 
 #: ../libcore/marlin-file-operations.c:258
 #, c-format
@@ -229,6 +231,7 @@ msgid_plural "%'d hours"
 msgstr[0] "%'d valanda"
 msgstr[1] "%'d valandos"
 msgstr[2] "%'d valandų"
+msgstr[3] "%'d valanda"
 
 #: ../libcore/marlin-file-operations.c:266
 #, c-format
@@ -237,6 +240,7 @@ msgid_plural "approximately %'d hours"
 msgstr[0] "maždaug %'d valanda"
 msgstr[1] "maždaug %'d valandos"
 msgstr[2] "maždaug %'d valandų"
+msgstr[3] "maždaug %'d valanda"
 
 #: ../libcore/marlin-file-operations.c:342
 #, c-format
@@ -350,12 +354,13 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"Ar tikrai norite negrąžinamai ištrinti %'d pasirinktą elementą iš šiukšlinės?"
+"Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą iš šiukšlinės?"
 msgstr[1] ""
-"Ar tikrai norite negrąžinamai ištrinti %'d pasirinktus elementus iš "
-"šiukšlinės?"
+"Ar tikrai norite negrįžtamai ištrinti %'d pažymėtus elementus iš šiukšlinės?"
 msgstr[2] ""
-"Ar tikrai norite negrąžinamai ištrinti %'d pasirinktų elementų iš šiukšlinės?"
+"Ar tikrai norite negrįžtamai ištrinti %'d pažymėtų elementų iš šiukšlinės?"
+msgstr[3] ""
+"Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą iš šiukšlinės?"
 
 #: ../libcore/marlin-file-operations.c:1265
 #: ../libcore/marlin-file-operations.c:1345
@@ -398,9 +403,10 @@ msgstr "Ar tikrai norite negrįžtamai ištrinti „%B“?"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Ar tikrai norite negrįžtamai ištrinti %'d pasirinktą elementą?"
-msgstr[1] "Ar tikrai norite negrįžtamai ištrinti %'d pasirinktus elementus?"
-msgstr[2] "Ar tikrai norite negrįžtamai ištrinti %'d pasirinktų elementų?"
+msgstr[0] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą?"
+msgstr[1] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtus elementus?"
+msgstr[2] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtų elementų?"
+msgstr[3] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą?"
 
 #: ../libcore/marlin-file-operations.c:1379
 #, c-format
@@ -1972,6 +1978,7 @@ msgid_plural "%u selected items"
 msgstr[0] "%u pažymėtas elementas"
 msgstr[1] "%u pažymėti elementai"
 msgstr[2] "%u pažymėtų elementų"
+msgstr[3] "%u pažymėtas elementas"
 
 #. /TRANSLATORS: total (folders, files)
 #: ../src/Dialogs/PropertiesWindow.vala:1232
