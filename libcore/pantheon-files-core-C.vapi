@@ -62,6 +62,7 @@ namespace Marlin {
         static void new_file (Gtk.Widget parent_view, Gdk.Point? target_point, string parent_dir, string? target_filename, string? initial_contents, int length, Marlin.CreateCallback? create_callback = null, void* done_callback_data = null);
         static void new_file_from_template (Gtk.Widget parent_view, Gdk.Point? target_point, GLib.File parent_dir, string? target_filename, GLib.File template, Marlin.CreateCallback? create_callback = null, void* done_callback_data = null);
     }
+
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void MountCallback (GLib.Volume volume, void* callback_data_object);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
@@ -115,6 +116,16 @@ namespace Marlin
         public void undo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void add_rename_action (GLib.File renamed_file, string original_name);
+    }
+
+    [CCode (cprefix = "MarlinConnectServerDialog", lower_case_cprefix = "marlin_connect_server_dialog", cheader_filename = "marlin-connect-server-dialog.h")]
+    public class ConnectServerDialog : Gtk.Dialog {
+        public ConnectServerDialog (Gtk.Window parent);
+        public static void show (Gtk.Widget widget);
+        public async void display_location (GLib.File location);
+        public async void fill_details (string default_user, string default_domain, GLib.AskPasswordFlags flags);
+
+        public signal void path_change_request (string path);
     }
 }
 

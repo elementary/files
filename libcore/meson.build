@@ -29,6 +29,7 @@ CORE_LIB = shared_library (
     'marlin-file-changes-queue.c',
     'fm-list-model.c',
     'gof-file.c',
+	'marlin-connect-server-dialog.c',
 
     dependencies : [CORE_LIB_DEPS, C_CORE_DEP, OTHER_DEPS],
     install: true,
