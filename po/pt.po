@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-26 01:06+0000\n"
+"PO-Revision-Date: 2018-07-26 12:29+0000\n"
 "Last-Translator: Christophe Silva <Christophesilva80@gmail.com>\n"
 "Language-Team: Portuguese <https://weblate.elementary.io/projects/files/"
 "files/pt/>\n"
@@ -1681,7 +1681,7 @@ msgstr "%u ficheiros, "
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/Widgets/OverlayBar.vala:293
 msgid "%s approx."
-msgstr "aproximadamente %s"
+msgstr "aproximadamente %s."
 
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/Widgets/OverlayBar.vala:296
@@ -1711,7 +1711,7 @@ msgstr "Executar"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Mostrar a versão da aplicação."
+msgstr "Mostrar a versão da aplicação"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1723,7 +1723,7 @@ msgstr "Nova Janela"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Sair do Ficheiros."
+msgstr "Sair da aplicação Ficheiros"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
@@ -2220,7 +2220,7 @@ msgstr "Usados recentemente"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Ligar a Servidor..."
+msgstr "Ligar a Servidor…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
