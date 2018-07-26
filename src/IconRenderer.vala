@@ -93,10 +93,13 @@ namespace Marlin {
 
             var pix_rect = Gdk.Rectangle ();
 
-            pix_rect.width = (pixbuf.get_width ()  + Marlin.IconSize.EMBLEM / 2)/ icon_scale;
-            pix_rect.height = (pixbuf.get_height ()  + Marlin.IconSize.EMBLEM / 2)/ icon_scale;
-            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
-            pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
+            var emblem_halfwidth = Marlin.IconSize.EMBLEM / 2;
+            pix_rect.width = (pixbuf.get_width () + emblem_halfwidth) / icon_scale;
+            pix_rect.height = (pixbuf.get_height () + emblem_halfwidth) / icon_scale;
+
+            pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width + emblem_halfwidth) / 2;
+            pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height + emblem_halfwidth) / 2;
+
 
             var draw_rect = Gdk.Rectangle ();
             if (!cell_area.intersect (pix_rect, out draw_rect)) {
