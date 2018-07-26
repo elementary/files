@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-17 11:28+0000\n"
+"PO-Revision-Date: 2018-07-26 06:27+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://weblate.elementary.io/projects/files/files/he/"
 ">\n"
@@ -2199,14 +2199,12 @@ msgid "Empty the Trash"
 msgstr "פינוי סל האשפה"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "שחזור הכול"
+msgstr "שחזור אלו שנבחרו"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " נבחרו"
+msgstr "מחיקת אלו שנבחרו"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
