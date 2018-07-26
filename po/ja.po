@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-17 01:29+0000\n"
+"PO-Revision-Date: 2018-07-26 03:12+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -2162,14 +2162,12 @@ msgid "Empty the Trash"
 msgstr "ゴミ箱を空にする"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "すべて元に戻す"
+msgstr "選択項目を元に戻す"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " が選択されています"
+msgstr "選択項目を削除"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
