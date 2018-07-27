@@ -118,14 +118,17 @@ namespace Marlin
         public void add_rename_action (GLib.File renamed_file, string original_name);
     }
 
-    [CCode (cprefix = "MarlinConnectServerDialog", lower_case_cprefix = "marlin_connect_server_dialog", cheader_filename = "marlin-connect-server-dialog.h")]
-    public class ConnectServerDialog : Gtk.Dialog {
-        public ConnectServerDialog (Gtk.Window parent);
-        public static void show (Gtk.Widget widget);
-        public async void display_location (GLib.File location);
-        public async void fill_details (string default_user, string default_domain, GLib.AskPasswordFlags flags);
-
-        public signal void path_change_request (string path);
+    [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]
+    namespace ConnectServer {
+        [CCode (cheader_filename = "marlin-connect-server-dialog.h")]
+        public class Dialog : Gtk.Dialog {
+            public Dialog (Gtk.Window window);
+            public async bool display_location_async (GLib.File location) throws GLib.Error;
+            public async bool fill_details_async (GLib.MountOperation operation,
+                                                 string default_user,
+                                                 string default_domain,
+                                                 GLib.AskPasswordFlags flags);
+        }
     }
 }
 
@@ -140,7 +143,6 @@ namespace MarlinFile {
 
 [CCode (cprefix = "GOF", lower_case_cprefix = "gof_", ref_function = "gof_file_ref", unref_function = "gof_file_unref")]
 namespace GOF {
-
     [CCode (cheader_filename = "gof-file.h")]
     public class File : GLib.Object {
         [CCode (cheader_filename = "gof-file.h")]

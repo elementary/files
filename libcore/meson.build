@@ -4,6 +4,7 @@ CORE_LIB = shared_library (
     'AbstractSlot.vala',
     'Bookmark.vala',
     'BookmarkList.vala',
+    'ConnectServerOperation.vala',
     'DndHandler.vala',
     'Enums.vala',
     'PixbufUtils.vala',
@@ -29,7 +30,7 @@ CORE_LIB = shared_library (
     'marlin-file-changes-queue.c',
     'fm-list-model.c',
     'gof-file.c',
-	'marlin-connect-server-dialog.c',
+    'marlin-connect-server-dialog.c',
 
     dependencies : [CORE_LIB_DEPS, C_CORE_DEP, OTHER_DEPS],
     install: true,
@@ -43,5 +44,5 @@ pkg.generate (
     libraries: CORE_LIB,
     description: 'Core library io.elementary.files and io.elementary.filechooser',
     filebase: OLD_NAME,
-	name: 'lib'+ OLD_NAME
+    name: 'lib'+ OLD_NAME
 )

@@ -462,6 +462,7 @@ marlin_connect_server_dialog_display_location_async (MarlinConnectServerDialog *
                                                      GAsyncReadyCallback callback,
                                                      gpointer user_data)
 {
+g_warning ("display location async enter");
     GtkWidget *widget = GTK_WIDGET (self);
 
     display_location_res =
@@ -470,6 +471,7 @@ marlin_connect_server_dialog_display_location_async (MarlinConnectServerDialog *
                                    marlin_connect_server_dialog_display_location_async);
 
     //marlin_view_window_uri_path_change_request (MARLIN_VIEW_WINDOW (self->details->parent_window),g_file_get_uri (location), MARLIN_OPEN_FLAG_DEFAULT);
+g_warning ("emit path change request");
     g_signal_emit_by_name (self, "path-change-request", g_file_get_uri (location), MARLIN_OPEN_FLAG_DEFAULT);
 
     g_simple_async_result_complete (display_location_res);
@@ -508,6 +510,7 @@ display_location_async_cb (GObject *source,
     } else {
         gtk_widget_destroy (GTK_WIDGET (dialog));
     }
+g_warning ("display location cb finish");
 }
 
 static void
@@ -731,7 +734,7 @@ connect_dialog_response_cb (MarlinConnectServerDialog *dialog,
                             gpointer data)
 {
     GError *error;
-
+g_warning ("connect dialog response cb");
     switch (response_id) {
     case RESPONSE_CONNECT:
         connect_to_server_or_finish_fill (dialog);

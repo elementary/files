@@ -91,16 +91,16 @@ C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
 #        subdir ('libwidgets')
 #    else
         subdir ('libcore')
-#        subdir ('libwidgets')
-#        subdir ('src')
+        subdir ('libwidgets')
+        subdir ('src')
 
-#		subdir ('data')
-#		subdir ('pantheon-files-daemon')
-#		subdir ('plugins')
+		subdir ('data')
+		subdir ('pantheon-files-daemon')
+		subdir ('plugins')
 
-#        subdir ('filechooser-module')
+        subdir ('filechooser-module')
 
-#        meson.add_install_script('meson/post_install.py')
+        meson.add_install_script('meson/post_install.py')
 #    endif
 #endif
 

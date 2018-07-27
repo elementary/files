@@ -32,7 +32,6 @@ LIB_NAME = 'marlin-vala'
 LIB_SRC = static_library (
 		LIB_NAME,
 
-        'ConnectServerOperation.vala',
         'Application.vala',
         'marlin-deep-count.vala',
         'ProgressUIHandler.vala',
@@ -76,7 +75,7 @@ LIB_SRC = static_library (
         'View/Widgets/SingleLineEditableLabel.vala',
         'View/Widgets/TopMenu.vala',
 
-		'marlin-connect-server-dialog.c',
+#		'marlin-connect-server-dialog.c',
 
 		dependencies : [SRC_DEPS, C_CORE_DEP, MARLIN_DEP, OTHER_DEPS],
 		include_directories: [CORE_INC, WIDGET_INC],
