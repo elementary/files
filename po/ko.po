@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-26 16:06+0000\n"
+"PO-Revision-Date: 2018-07-26 21:26+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://weblate.elementary.io/projects/files/files/ko/"
 ">\n"
@@ -330,7 +330,7 @@ msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1252
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "휴지통에서 \"%B\"을(를) 완전히 삭제하시겠습니까?"
+msgstr "휴지통에서 \"%B\" 파일을 완전히 지우시겠습니까?"
 
 #: ../libcore/marlin-file-operations.c:1255
 #, c-format
@@ -340,7 +340,7 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] "정말로 휴지통에서 선택한 항목 %'d 개를 완전히 삭제하시겠습니까?"
+msgstr[0] "정말로 휴지통에서 선택한 항목 %'d 개를 완전히 지우시겠습니까?"
 
 #: ../libcore/marlin-file-operations.c:1265
 #: ../libcore/marlin-file-operations.c:1345
@@ -361,7 +361,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1294
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr "이 장비와 휴지통에 연결된 모든 내용을 다 지우실 건가요?"
+msgstr "이 장비와 휴지통에 연결된 모든 항목을 완전히 다 지우시겠습니까?"
 
 #: ../libcore/marlin-file-operations.c:1295
 msgid "All items in the trash on this mount, will be permanently deleted."
@@ -373,14 +373,14 @@ msgstr "휴지통 비우기(_T)"
 
 #: ../libcore/marlin-file-operations.c:1333
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "정말로 \"%B\"을(를) 완전히 삭제하시겠습니까?"
+msgstr "정말로 \"%B\" 파일을 완전히 지우시겠습니까?"
 
 #: ../libcore/marlin-file-operations.c:1336
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "정말로 선택한 항목 %'d개를 완전히 삭제하시겠습니까?"
+msgstr[0] "정말로 선택한 항목 %'d개를 완전히 지우시겠습니까?"
 
 #: ../libcore/marlin-file-operations.c:1379
 #, c-format
@@ -545,7 +545,7 @@ msgstr[0] "파일 %'d개(%S) 옮길 준비 중"
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "파일 %'d개(%S) 삭제 준비 중"
+msgstr[0] "파일 %'d개(%S) 지울 준비 중"
 
 #: ../libcore/marlin-file-operations.c:2370
 #, c-format
@@ -879,14 +879,14 @@ msgstr "휴지통을 열어 수동으로 복구하기"
 #: ../libcore/marlin-undostack-manager.c:1236
 #, c-format
 msgid "Delete %d copied items"
-msgstr "%d개의 복사된 항목들을 제거"
+msgstr "복사한 항목 %d개 제거"
 
 #: ../libcore/marlin-undostack-manager.c:1239
 #: ../libcore/marlin-undostack-manager.c:1249
 #: ../libcore/marlin-undostack-manager.c:1280
 #, c-format
 msgid "Delete '%s'"
-msgstr "'%s' 삭제"
+msgstr "'%s' 지우기"
 
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
@@ -2163,7 +2163,7 @@ msgstr "휴지통에서 복구 시키기"
 
 #: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
-msgstr "완전히 삭제"
+msgstr "완전히 지우기"
 
 #: ../src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"

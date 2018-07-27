@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-21 00:07+0000\n"
+"PO-Revision-Date: 2018-07-26 21:26+0000\n"
 "Last-Translator: Nils K <slx@nilsk.net>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
 "files/files/nb/>\n"
@@ -2224,14 +2224,12 @@ msgid "Empty the Trash"
 msgstr "Tøm papirkurven"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Gjenopprett alle"
+msgstr "Gjenopprett valgte"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " valgt"
+msgstr "Slett valgte"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
