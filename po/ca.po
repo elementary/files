@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-27 11:46+0000\n"
+"PO-Revision-Date: 2018-07-28 00:09+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://weblate.elementary.io/projects/files/files/"
 "ca/>\n"
@@ -366,18 +366,18 @@ msgid ""
 "drives, will be permanently deleted."
 msgstr ""
 "Tots els elements dels directoris de la paperera, inclosos els que siguin a "
-"qualsevol dispositiu extern muntat, s'esborraran permanentment."
+"qualsevol dispositiu extern muntat, se suprimiran permanentment."
 
 #: ../libcore/marlin-file-operations.c:1294
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
-"Voleu esborrar permanentment tots els elements de la paperera d'aquest punt "
+"Voleu suprimir permanentment tots els elements de la paperera d'aquest punt "
 "de muntatge?"
 
 #: ../libcore/marlin-file-operations.c:1295
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
-"Tots els elements de la paperera d'aquest punt de muntatge s'esborraran "
+"Tots els elements de la paperera d'aquest punt de muntatge se suprimiran "
 "permanentment."
 
 #: ../libcore/marlin-file-operations.c:1306 ../src/View/Sidebar.vala:1513
@@ -386,16 +386,15 @@ msgstr "Buida la _paperera"
 
 #: ../libcore/marlin-file-operations.c:1333
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Esteu segur que voleu esborrrar «%B» permanentment?"
+msgstr "Segur que voleu suprimir «%B» permanentment?"
 
 #: ../libcore/marlin-file-operations.c:1336
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Esteu segur que voleu suprimir permanentment l'element seleccionat?"
-msgstr[1] ""
-"Esteu segur que voleu suprimir permanentment els %'d elements seleccionats?"
+msgstr[0] "Segur que voleu suprimir permanentment l'element seleccionat?"
+msgstr[1] "Segur que voleu suprimir permanentment els %'d elements seleccionats?"
 
 #: ../libcore/marlin-file-operations.c:1379
 #, c-format
@@ -496,14 +495,14 @@ msgid ""
 "not have write privileges."
 msgstr ""
 "No està permès enviar a la paperera o suprimir un fitxer dins de carpetes "
-"per les quals no tingueu privilegis d’escriptura."
+"per a les quals no tingueu privilegis d’escriptura."
 
 #: ../libcore/marlin-file-operations.c:1803
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr ""
-"No està permès enviar a la paperera o suprimir carpetes per les quals no "
+"No està permès enviar a la paperera o suprimir carpetes per a les quals no "
 "tingueu privilegis d’escriptura."
 
 #: ../libcore/marlin-file-operations.c:1805
@@ -928,7 +927,7 @@ msgstr "Obre la carpeta de la paperera i fes-ne la restauració maunalment"
 #: ../libcore/marlin-undostack-manager.c:1236
 #, c-format
 msgid "Delete %d copied items"
-msgstr "Elimina els %d elements copiats"
+msgstr "Suprimeix els %d elements copiats"
 
 #: ../libcore/marlin-undostack-manager.c:1239
 #: ../libcore/marlin-undostack-manager.c:1249
@@ -940,7 +939,7 @@ msgstr "Suprimeix «%s»"
 #: ../libcore/marlin-undostack-manager.c:1246
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr "Elimina els %d elements duplicats"
+msgstr "Suprimeix els %d elements duplicats"
 
 #: ../libcore/marlin-undostack-manager.c:1257
 #, c-format
@@ -982,7 +981,7 @@ msgstr "Retorna «%s» a la paperera"
 #: ../libcore/marlin-undostack-manager.c:1320
 #, c-format
 msgid "Delete links to %d items"
-msgstr "Elimina els enllaços de %d elements"
+msgstr "Suprimeix els enllaços de %d elements"
 
 #: ../libcore/marlin-undostack-manager.c:1323
 #, c-format
@@ -1167,8 +1166,8 @@ msgstr[1] "_Desfés la creació d'enllaços a %d elements"
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Desfés l'eliminació d'%d element"
-msgstr[1] "_Desfés l'eliminació de %d elements"
+msgstr[0] "_Desfés la supressió d'%d element"
+msgstr[1] "_Desfés la supressió de %d elements"
 
 #: ../libcore/marlin-undostack-manager.c:1618
 #, c-format
@@ -1266,8 +1265,8 @@ msgstr[1] "_Refés la creació d'enllaços a %d elements"
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Refés l'eliminació d'%d element"
-msgstr[1] "_Refés l'eliminació de %d elements"
+msgstr[0] "_Refés la supressió d'%d element"
+msgstr[1] "_Refés la supressió de %d elements"
 
 #: ../libcore/marlin-undostack-manager.c:1713
 #, c-format
@@ -1719,7 +1718,7 @@ msgstr "Finestra nova"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Surt."
+msgstr "Surt del Fitxers"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
@@ -1857,7 +1856,7 @@ msgstr "Modificat:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:550
 msgid "Deleted:"
-msgstr "Eliminat:"
+msgstr "Suprimit:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
 msgid "MIME type:"
