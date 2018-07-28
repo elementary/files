@@ -44,6 +44,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         Dialogs/ChooseAppDialog.vala
         Dialogs/PropertiesWindow.vala
         Dialogs/VolumePropertiesWindow.vala
+        Dialogs/ConnectServerDialog.vala
         Utils/MimeActions.vala
         Utils/Permissions.vala
         View/ColumnView.vala
@@ -165,7 +166,6 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 add_executable (${CMAKE_PROJECT_NAME}
-    marlin-connect-server-dialog.c
     ${VALA_C} )
 
 target_link_libraries (${CMAKE_PROJECT_NAME} m pantheon-files-core pantheon-files-widgets ${DEPS_LIBRARIES})

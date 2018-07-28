@@ -14,19 +14,26 @@
     with this program. If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-/* See src/marlin-connect-server-dialog.c */
-extern void marlin_connect_server_dialog_show (Gtk.Widget widget);
+/* See src/Dialogs/ConnectServerDialog.vala */
+extern unowned Gtk.Dialog pf_connect_server_dialog_new (Gtk.Window window);
 
 public class Files.Plugins.NetworkPlaces : Marlin.Plugins.Base {
 
     public override void directory_loaded (void* user_data) {
     }
 
+    private static void connect_callback (Gtk.Widget widget) {
+        var toplevel = widget.get_toplevel ();
+        if (toplevel.is_toplevel ()) {
+            var dialog = pf_connect_server_dialog_new ((Gtk.Window) toplevel);
+        }
+    }
+
     public override void update_sidebar (Gtk.Widget widget) {
         var sidebar = widget as Marlin.AbstractSidebar;
         sidebar.add_extra_network_item (_("Connect to Server…"), _("Connect to a network file server"),
                                          new ThemedIcon.with_default_fallbacks ("network-server"),
-                                         marlin_connect_server_dialog_show);
+                                         connect_callback);
     }
 }
 
