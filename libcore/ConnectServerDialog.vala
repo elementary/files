@@ -96,6 +96,8 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
     private Gtk.Entry password_entry;
     private Gtk.CheckButton remember_checkbutton;
     private Gtk.Button connect_button;
+    private Gtk.Button continue_button;
+    private Gtk.Button cancel_button;
     private Granite.HeaderLabel user_header_label;
 
     private Gtk.Image info_image;
@@ -105,11 +107,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
     private GLib.Cancellable mount_cancellable;
 
-    private GLib.Task? fill_callback;
-    private GLib.AskPasswordFlags fill_flags;
-    private GLib.MountOperation fill_operation;
-
-    public signal void show_uri_request (string uri, Marlin.OpenFlag flag);
+    public string server_uri {get; private set; default = "";}
 
     public ConnectServerDialog (Gtk.Window window) {
         Object (
@@ -187,8 +185,39 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         remember_checkbutton = new Gtk.CheckButton.with_label (_("Remember this password"));
         password_entry.bind_property ("visible", remember_checkbutton, "visible", GLib.BindingFlags.DEFAULT);
 
-        add_button (_("Cancel"), Gtk.ResponseType.CANCEL);
-        connect_button = (Gtk.Button) add_button (_("Connect"), Gtk.ResponseType.OK);
+        cancel_button = new Gtk.Button.with_label (_("Cancel"));
+        cancel_button.show ();
+        cancel_button.clicked.connect (on_cancel_clicked);
+
+        connect_button = new Gtk.Button.with_label (_("Connect"));
+        connect_button.no_show_all = true;
+        connect_button.show ();
+        connect_button.clicked.connect (on_connect_clicked);
+
+        continue_button = new Gtk.Button.with_label (_("Continue"));
+        continue_button.no_show_all = true;
+        continue_button.hide ();
+        continue_button.clicked.connect (on_continue_clicked);
+
+        ((Gtk.Container)(get_action_area ())).add (cancel_button);
+        ((Gtk.Container)(get_action_area ())).add (connect_button);
+        ((Gtk.Container)(get_action_area ())).add (continue_button);
+
+        key_press_event.connect ((e) => {
+            switch (e.keyval) {
+                case Gdk.Key.Return:
+                case Gdk.Key.KP_Enter:
+                    connect_button.clicked ();
+                    return true;
+
+                default:
+                    return false;
+            }
+        });
+
+        key_release_event.connect ((e) => {
+            return true;
+        });
 
         var grid = new Gtk.Grid ();
         grid.margin = 12;
@@ -284,44 +313,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         domain_entry.visible = WidgetsFlag.DOMAIN in method_info.flags;
     }
 
-    private void request_additional_details (GLib.AskPasswordFlags flags,
-                                             string default_user,
-                                             string default_domain) {
-        type_combobox.sensitive = false;
-
-        info_image.icon_name = "dialog-warning";
-        info_bar.message_type = Gtk.MessageType.WARNING;
-        info_label.label = _("Please verify your user details.");
-        info_bar.no_show_all = false;
-        info_bar.show_all ();
-
-        if (GLib.AskPasswordFlags.NEED_PASSWORD in flags) {
-            password_entry.get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
-        }
-
-        if (GLib.AskPasswordFlags.NEED_USERNAME in flags) {
-            if (default_user != null && default_user != "") {
-                user_entry.text = default_user;
-            } else {
-                user_entry.get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
-            }
-        }
-
-        if (GLib.AskPasswordFlags.NEED_DOMAIN in flags) {
-            if (default_domain != null && default_domain != "") {
-                domain_entry.text = default_domain;
-            } else {
-                domain_entry.get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
-            }
-        }
-
-        connect_button.label = _("Continue");
-        if (!(GLib.AskPasswordFlags.SAVING_SUPPORTED in flags)) {
-            remember_checkbutton.sensitive = false;
-            remember_checkbutton.active = false;
-        }
-    }
-
     private async void connect_to_server () {
         Gtk.TreeIter iter;
         if (!type_combobox.get_active_iter (out iter)) {
@@ -370,11 +361,10 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         var operation = new Marlin.ConnectServer.Operation (this);
         mount_cancellable = new GLib.Cancellable ();
         try {
+            server_uri = uri;
             yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, operation, mount_cancellable);
         } catch (GLib.IOError.ALREADY_MOUNTED e) {
-            /* volume is mounted, show it */
-            show_uri_request (location.get_uri (), Marlin.OpenFlag.DEFAULT);
-//            ((Marlin.View.Window) transient_for).uri_path_change_request (location.get_uri ());
+            /* not an error - just show it */
         } catch (Error e) {
             stack.visible_child_name = "content";
 
@@ -384,34 +374,39 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
             info_bar.no_show_all = false;
             info_bar.show_all ();
             connect_button.label = _("Try Again");
+            return;
         }
+
+        response (Gtk.ResponseType.OK);
+        return;
     }
 
-    public async bool fill_details_async (GLib.MountOperation operation,
+    /* Called back from ConnectServerOperation.vala during the mount operation if info missing */
+    public async bool fill_details_async (GLib.MountOperation mount_operation,
                                           string default_user,
                                           string default_domain,
-                                          GLib.AskPasswordFlags flags) {
-        var set_flags = flags;
-        if (GLib.AskPasswordFlags.NEED_PASSWORD in flags) {
+                                          GLib.AskPasswordFlags askpassword_flags) {
+        var set_flags = askpassword_flags;
+        if (GLib.AskPasswordFlags.NEED_PASSWORD in askpassword_flags) {
             var password = password_entry.text;
             if (password != null && password != "") {
-                operation.password = password;
+                mount_operation.password = password;
                 set_flags ^= GLib.AskPasswordFlags.NEED_PASSWORD;
             }
         }
 
-        if (GLib.AskPasswordFlags.NEED_USERNAME in flags) {
+        if (GLib.AskPasswordFlags.NEED_USERNAME in askpassword_flags) {
             var username = user_entry.text;
             if (username != null && username != "") {
-                operation.username = username;
+                mount_operation.username = username;
                 set_flags ^= GLib.AskPasswordFlags.NEED_USERNAME;
             }
         }
 
-        if (GLib.AskPasswordFlags.NEED_DOMAIN in flags) {
+        if (GLib.AskPasswordFlags.NEED_DOMAIN in askpassword_flags) {
             var domain = domain_entry.text;
             if (domain != null && domain != "") {
-                operation.domain = domain;
+                mount_operation.domain = domain;
                 set_flags ^= GLib.AskPasswordFlags.NEED_DOMAIN;
             }
         }
@@ -419,54 +414,99 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         var need_mask = GLib.AskPasswordFlags.NEED_PASSWORD
                         | GLib.AskPasswordFlags.NEED_USERNAME
                         | GLib.AskPasswordFlags.NEED_DOMAIN;
+
         if ((set_flags & need_mask) == 0) {
-            return true;
-        } else {
-            fill_callback = (GLib.Task)fill_details_async.callback;
-            fill_operation = operation;
-            fill_flags = flags;
-
-            stack.visible_child_name = "content";
-            request_additional_details (set_flags, default_user, default_domain);
-            yield;
-            try {
-                return fill_callback.propagate_boolean ();
-            } catch (Error e) {
-                critical (e.message);
-                return false;
-            }
-        }
-    }
-
-    public override void response (int response_id) {
-        if (response_id != Gtk.ResponseType.OK) {
-            destroy ();
+            return true; /* HANDLED */
         }
 
-        if (fill_callback == null) {
-            connect_to_server.begin ();
+        stack.visible_child_name = "content";
+        type_combobox.sensitive = false;
+        info_image.icon_name = "dialog-warning";
+        info_bar.message_type = Gtk.MessageType.WARNING;
+        info_label.label = _("Please verify your user details.");
+        info_bar.no_show_all = false;
+        info_bar.show_all ();
+
+        if (GLib.AskPasswordFlags.NEED_PASSWORD in askpassword_flags) {
+            password_entry.get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
+        }
+
+        if (GLib.AskPasswordFlags.NEED_USERNAME in askpassword_flags) {
+            if (default_user != null && default_user != "") {
+                user_entry.text = default_user;
+            } else {
+                user_entry.get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
+            }
+        }
+
+        if (GLib.AskPasswordFlags.NEED_DOMAIN in askpassword_flags) {
+            if (default_domain != null && default_domain != "") {
+                domain_entry.text = default_domain;
+            } else {
+                domain_entry.get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
+            }
+        }
+
+        if (!(GLib.AskPasswordFlags.SAVING_SUPPORTED in askpassword_flags)) {
+            remember_checkbutton.sensitive = false;
+            remember_checkbutton.active = false;
+        }
+
+        var loop = new MainLoop ();
+        connect_button.hide ();
+        continue_button.set_data ("loop", loop);
+        continue_button.show ();
+        loop.run ();
+        continue_button.set_data ("loop", null);
+        continue_button.hide ();
+
+        if (mount_cancellable.is_cancelled ()) {
+            connect_button.show ();
+            return false; /* ABORT */
         } else {
-            if (GLib.AskPasswordFlags.NEED_PASSWORD in fill_flags) {
-                fill_operation.password = password_entry.text;
+            if (GLib.AskPasswordFlags.NEED_PASSWORD in askpassword_flags) {
+                mount_operation.password = password_entry.text;
             }
 
-            if (GLib.AskPasswordFlags.NEED_USERNAME in fill_flags) {
-                fill_operation.username = user_entry.text;
+            if (GLib.AskPasswordFlags.NEED_USERNAME in askpassword_flags) {
+                mount_operation.username = user_entry.text;
             }
 
-            if (GLib.AskPasswordFlags.NEED_DOMAIN in fill_flags) {
-                fill_operation.domain = domain_entry.text;
+            if (GLib.AskPasswordFlags.NEED_DOMAIN in askpassword_flags) {
+                mount_operation.domain = domain_entry.text;
             }
 
-            if (GLib.AskPasswordFlags.SAVING_SUPPORTED in fill_flags) {
-                fill_operation.password_save = remember_checkbutton.active ? GLib.PasswordSave.PERMANENTLY : GLib.PasswordSave.NEVER;
+            if (GLib.AskPasswordFlags.SAVING_SUPPORTED in askpassword_flags) {
+                mount_operation.password_save = remember_checkbutton.active ? GLib.PasswordSave.PERMANENTLY : GLib.PasswordSave.NEVER;
             }
 
             stack.visible_child_name = "connecting";
-            fill_callback.return_boolean (true);
-            fill_operation = null;
-            fill_flags = 0;
-            fill_callback = null;
+            connect_button.clicked ();
+            return true;
+        }
+    }
+
+    private void on_connect_clicked () {
+        connect_to_server.begin ();
+    }
+
+    private void on_cancel_clicked () {
+        void* loop = continue_button.get_data ("loop");
+        if (loop != null) {
+            ((MainLoop)loop).quit ();
+        }
+
+       if (mount_cancellable != null && !mount_cancellable.is_cancelled ()) {
+            mount_cancellable.cancel ();
+        } else {
+            response (Gtk.ResponseType.CANCEL);
+        }
+    }
+
+    private void on_continue_clicked () {
+        void* loop = continue_button.get_data ("loop");
+        if (loop != null) {
+            ((MainLoop)loop).quit ();
         }
     }
 }
