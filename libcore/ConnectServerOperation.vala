@@ -20,17 +20,15 @@
 
 public class Marlin.ConnectServer.Operation : Gtk.MountOperation {
 
-    private Marlin.ConnectServer.Dialog dialog;
+    private PF.ConnectServerDialog dialog;
 
-    public Operation (Marlin.ConnectServer.Dialog dialog) {
-warning ("new Marlin Mount Op");
+    public Operation (PF.ConnectServerDialog dialog) {
         this.dialog = dialog;
         this.set_parent (dialog);
 
         /* Turn the parent's modal functionality off because the mount operation needs to take over */
         this.dialog.modal = false;
         this.reply.connect ( (result) => {
-warning ("op reply");
            this.dialog.modal = true;
         });
     }
@@ -48,21 +46,16 @@ warning ("op reply");
                                        string default_user,
                                        string default_domain,
                                        AskPasswordFlags flags) {
-warning ("ask_password enter");
-        dialog.fill_details_async.begin (this, default_user, default_domain, flags,
-                                   (source, result) => {
-            bool res = dialog.fill_details_async.end (result);
+
+        this.dialog.fill_details_async.begin (this, default_user, default_domain, flags,
+                                              (source, result) => {
+            bool res = this.dialog.fill_details_async.end (result);
 
             if (res) {
-warning ("password HANDLED");
                 reply (MountOperationResult.HANDLED);
             } else {
-warning ("password ABORTED");
                 reply (MountOperationResult.ABORTED);
             }
         });
-
-warning ("ask_password leave");
-
     }
 }

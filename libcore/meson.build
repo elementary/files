@@ -5,6 +5,7 @@ CORE_LIB = shared_library (
     'Bookmark.vala',
     'BookmarkList.vala',
     'ConnectServerOperation.vala',
+    'ConnectServerDialog.vala',
     'DndHandler.vala',
     'Enums.vala',
     'PixbufUtils.vala',
@@ -30,7 +31,6 @@ CORE_LIB = shared_library (
     'marlin-file-changes-queue.c',
     'fm-list-model.c',
     'gof-file.c',
-    'marlin-connect-server-dialog.c',
 
     dependencies : [CORE_LIB_DEPS, C_CORE_DEP, OTHER_DEPS],
     install: true,
