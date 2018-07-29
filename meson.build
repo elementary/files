@@ -24,7 +24,7 @@ if not vala.version().version_compare('>= @0@'.format(vala_version_required))
 endif
 
 UNITY = dependency ('unity', version: '>=4.0.0', required: false)
-WITH_UNITY = get_option ('WITH_UNITY')
+WITH_UNITY = get_option ('with-unity')
 USE_UNITY = WITH_UNITY and UNITY.found ()
 
 if USE_UNITY
@@ -79,30 +79,51 @@ CORE_LIB_DEPS = [
 CORE_INC = include_directories ('libcore')
 WIDGET_INC = include_directories ('libwidgets')
 SRC_INC = include_directories ('src')
+ROOT_INC = include_directories ('.')
 
 C_CORE_VAPI = vala.find_library('pantheon-files-core-C', dirs: join_paths (meson.source_root (), 'libcore'))
 C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
 
-#if get_option ('MODULE_ONLY')
-#    subdir ('filechooser-module')
-#else
-#    if get_option ('LIB_ONLY')
-#        subdir ('libcore')
-#        subdir ('libwidgets')
-#    else
-        subdir ('libcore')
-        subdir ('libwidgets')
-        subdir ('src')
+config_data = configuration_data()
+config_data.set('plugin_dir', PLUGIN_DIR)
+config_data.set('version', PROJECT_VER)
+config_data.set('ui_dir', join_paths(meson.current_source_dir (), 'View'))
+config_data.set('testdata_dir', join_paths(meson.source_root (), 'data', 'tests'))
+config_data.set('app_name', meson.project_name ())
+config_data.set('terminal_name', TERMINAL_NAME)
 
-        subdir ('data')
-        subdir ('pantheon-files-daemon')
-        subdir ('plugins')
+configure_file (
+    input: 'config.h.in',
+    output: 'config.h',
+    configuration: config_data
+)
 
-        subdir ('filechooser-module')
+#Everything requires the libraries to build
+subdir ('libcore')
+subdir ('libwidgets')
 
-        meson.add_install_script('meson/post_install.py')
-#    endif
-#endif
+#FIXME Meson bug (?) Everything gets compiled regardless of meson config option
+# when build directory first built. Repeat runs of ninja respect option
+LIB_ONLY = get_option ('only-libraries')
+MODULE_ONLY = get_option ('only-filechooser-module')
+
+if LIB_ONLY
+	subdir_done ()
+endif
+
+
+if MODULE_ONLY
+	subdir (filechooser-module)
+	subdir_done ()
+endif
+
+subdir ('src')
+subdir ('data')
+subdir ('pantheon-files-daemon')
+subdir ('plugins')
+subdir ('filechooser-module')
+meson.add_install_script('meson/post_install.py')
 
 subdir ('po')
+
 

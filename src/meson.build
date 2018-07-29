@@ -13,20 +13,6 @@ else
     SRC_DEPS = deps
 endif
 
-config_data = configuration_data()
-config_data.set('plugin_dir', PLUGIN_DIR)
-config_data.set('version', PROJECT_VER)
-config_data.set('ui_dir', join_paths(meson.current_source_dir (), 'View'))
-config_data.set('testdata_dir', join_paths(meson.source_root (), 'data', 'tests'))
-config_data.set('app_name', meson.project_name ())
-config_data.set('terminal_name', TERMINAL_NAME)
-
-configure_file (
-    input: 'config.h.in',
-    output: 'config.h',
-    configuration: config_data
-)
-
 executable (
 	meson.project_name (),
 	'main.vala',
@@ -75,7 +61,7 @@ executable (
 	'View/Widgets/TopMenu.vala',
 
 	dependencies : [SRC_DEPS, C_CORE_DEP, MARLIN_DEP, OTHER_DEPS],
-	include_directories: [CORE_INC, WIDGET_INC],
+	include_directories: [ROOT_INC, CORE_INC, WIDGET_INC],
 	install: true,
 	link_with: [CORE_LIB, WIDGET_LIB]
 )
