@@ -370,10 +370,14 @@ namespace Marlin.Places {
                                                    uint index,
                                                    string? tooltip = null) {
 
-            bool show_eject, show_unmount;
-            check_unmount_and_eject (mount, volume, drive, out show_unmount, out show_eject);
-            if (show_unmount || show_eject) {
-                    assert (place_type != Marlin.PlaceType.BOOKMARK);
+            bool show_eject, show_unmount, can_stop;
+            check_unmount_and_eject (mount, volume, drive,
+                                     out show_unmount,
+                                     out show_eject,
+                                     out can_stop);
+
+            if (show_unmount || show_eject || can_stop) {
+                assert (place_type != Marlin.PlaceType.BOOKMARK);
             }
 
             bool show_eject_button = false;
@@ -928,52 +932,46 @@ namespace Marlin.Places {
                                            int x,
                                            int y,
                                            uint time) {
-            if (!received_drag_data &&
-                !get_drag_data (tree_view, context, time)) {
 
-                    return false;
-            }
-
-            Gtk.TreeViewDropPosition pos;
-            Gtk.TreePath path;
-            if (!compute_drop_position (tree_view, x, y, out path, out pos)) {
-                return false;
-            }
-
+            Gtk.TreeViewDropPosition pos = Gtk.TreeViewDropPosition.BEFORE;
+            Gtk.TreePath? path = null;
             Gdk.DragAction action = Gdk.DragAction.DEFAULT;
 
-            if (pos == Gtk.TreeViewDropPosition.BEFORE ||
-                pos == Gtk.TreeViewDropPosition.AFTER) {
+            if ((received_drag_data || get_drag_data (tree_view, context, time)) &&
+                 compute_drop_position (tree_view, x, y, out path, out pos)) {
 
-                if (received_drag_data &&
-                    drag_data_info == TargetType.GTK_TREE_MODEL_ROW) {
+                if (pos == Gtk.TreeViewDropPosition.BEFORE ||
+                    pos == Gtk.TreeViewDropPosition.AFTER) {
 
-                    action = Gdk.DragAction.MOVE;
-                    internal_drag_started = true;
+                    if (received_drag_data &&
+                        drag_data_info == TargetType.GTK_TREE_MODEL_ROW) {
 
-                } else if (drag_list != null &&
-                           can_accept_files_as_bookmarks (drag_list)) {
+                        action = Gdk.DragAction.MOVE;
+                        internal_drag_started = true;
+                    } else if (drag_list != null &&
+                               can_accept_files_as_bookmarks (drag_list)) {
 
-                    action = Gdk.DragAction.COPY;
-                }
-            } else if (drag_list != null && path != null) {
-                Gtk.TreeIter iter;
-                store.get_iter (out iter, path);
-                string uri;
-                this.store.@get (iter, Column.URI, out uri);
-                if (uri != null) {
-                    GOF.File file = GOF.File.get_by_uri (uri);
-                    if (file.ensure_query_info ()) {
-                        PF.FileUtils.file_accepts_drop (file, drag_list, context, out action);
-                    } else {
-                        warning ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
+                        action = Gdk.DragAction.COPY;
+                    }
+                } else if (drag_list != null && path != null) {
+                    Gtk.TreeIter iter;
+                    store.get_iter (out iter, path);
+                    string uri;
+                    this.store.@get (iter, Column.URI, out uri);
+                    if (uri != null) {
+                        GOF.File file = GOF.File.get_by_uri (uri);
+                        if (file.ensure_query_info ()) {
+                            PF.FileUtils.file_accepts_drop (file, drag_list, context, out action);
+                        } else {
+                            debug ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
+                        }
                     }
                 }
+
+                tree_view.set_drag_dest_row (path, pos);
             }
 
-            tree_view.set_drag_dest_row (path, pos);
             GLib.Signal.stop_emission_by_name (tree_view, "drag-motion");
-
             Gdk.drag_status (context, action, time);
 
             /* start the drag autoscroll timer if not already running */
@@ -983,6 +981,7 @@ namespace Marlin.Places {
                                                               50,
                                                               drag_scroll_timer);
             }
+
             return true;
         }
 
@@ -1352,8 +1351,7 @@ namespace Marlin.Places {
                             window.uri_path_change_request (location.get_uri ());
                         }
                     }
-                }
-                catch (GLib.Error error) {
+                } catch (GLib.Error error) {
                     var primary = _("Error mounting volume %s").printf (volume.get_name ());
                     PF.Dialogs.show_error_dialog (primary, error.message, window);
                 }
@@ -1860,7 +1858,7 @@ namespace Marlin.Places {
             }
 
             if (over_eject_button (event)) {
-                eject_or_unmount_bookmark (path);
+                eject_or_unmount_bookmark (path,true);
                 return false;
             }
 
@@ -1891,41 +1889,6 @@ namespace Marlin.Places {
         }
 
 /* MOUNT UNMOUNT AND EJECT FUNCTIONS */
-
-         private void do_unmount (Mount? mount, Gtk.TreeRowReference? row_ref = null, bool can_eject = false) {
-            /* Ignore signals generated by our own eject and unmount actins */
-            disconnect_volume_monitor_signals ();
-
-            if (mount == null) {
-                finish_eject_or_unmount (row_ref, false);
-                return;
-            }
-            /* Do not offer to empty trash every time - this can be done
-             * from the context menu if needed */
-            ejecting_or_unmounting = true;
-            var volume = mount.get_volume ();
-
-            GLib.MountOperation mount_op = new Gtk.MountOperation (window as Gtk.Window);
-            mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
-                                                mount_op,
-                                                null,
-                                                (obj, res) => {
-                bool success = false;
-                try {
-                    success = mount.unmount_with_operation.end (res);
-                    if (success && can_eject) {
-                        /* Eject associated volume after unmount if appropriate.
-                         * Keep volume monitor disconnected */
-                        do_eject (null, volume, null, row_ref);
-                    } else {
-                        finish_eject_or_unmount (row_ref, success);
-                    }
-                } catch (GLib.Error error) {
-                    debug ("Error while unmounting");
-                    finish_eject_or_unmount (row_ref, false);
-                }
-            });
-         }
 
         private void empty_trash_on_mount (Mount? mount, Gtk.TreeRowReference? row_ref = null) {
             Marlin.FileOperations.empty_trash_for_mount (this, mount);
@@ -1968,78 +1931,125 @@ namespace Marlin.Places {
             return false;
         }
 
-        private void do_eject (GLib.Mount? mount, GLib.Volume? volume, GLib.Drive? drive, Gtk.TreeRowReference? row_ref = null) {
+        private void do_unmount_or_eject (GLib.Mount? mount,
+                                          GLib.Volume? volume,
+                                          GLib.Drive? drive,
+                                          Gtk.TreeRowReference? row_ref,
+                                          bool allow_eject) {
+
             /* Ignore signals generated by our own eject and unmount actins */
             disconnect_volume_monitor_signals ();
-
+            ejecting_or_unmounting = true;
+            bool success = false;
             GLib.MountOperation mount_op = new GLib.MountOperation ();
-            if (drive != null) {
-                ejecting_or_unmounting = true;
+
+            if (drive != null && allow_eject && drive.can_eject ()) {
                 drive.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
                                                   mount_op,
                                                   null,
                                                   (obj, res) => {
-                    bool success = false;
                     try {
                         success = drive.eject_with_operation.end (res);
+                    } catch (GLib.Error error) {
+                        warning ("Error ejecting mount: %s", error.message);
+                    } finally {
+                        finish_eject_or_unmount (row_ref, success, drive);
                     }
-                    catch (GLib.Error error) {
-                        warning ("Error ejecting drive: %s", error.message);
-                    }
-                    finish_eject_or_unmount (row_ref, success);
                 });
 
-                return;
-            }
-
-            if (volume != null) {
-                ejecting_or_unmounting = true;
-                volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
-                                                   mount_op,
-                                                   null,
-                                                   (obj, res) => {
-                    bool success = false;
-                    try {
-                        success = volume.eject_with_operation.end (res);
-                    }
-                    catch (GLib.Error error) {
-                        warning ("Error ejecting volume: %s", error.message);
-                    }
-                    finish_eject_or_unmount (row_ref, success);
-                });
                 return;
             }
 
             if (mount != null) {
-                ejecting_or_unmounting = true;
-                mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
-                                                  mount_op,
-                                                  null,
-                                                  (obj, res) => {
-                    bool success = false;
-                    try {
-                        success = mount.eject_with_operation.end (res);
-                    }
-                    catch (GLib.Error error) {
-                        warning ("Error ejecting mount: %s", error.message);
-                    }
+                if (allow_eject && mount.can_eject ()) {
+                    mount.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                      mount_op,
+                                                      null,
+                                                      (obj, res) => {
+                        try {
+                            success = mount.eject_with_operation.end (res);
+                        } catch (GLib.Error error) {
+                            warning ("Error ejecting mount: %s", error.message);
+                        } finally {
+                            finish_eject_or_unmount (row_ref, success, drive);
+                        }
+                    });
 
-                    finish_eject_or_unmount (row_ref, success);
+                    return;
+                } else if (mount.can_unmount ()) {
+                    mount.unmount_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                        mount_op,
+                                                        null,
+                                                        (obj, res) => {
+                        try {
+                            success = mount.unmount_with_operation.end (res);
+                        } catch (GLib.Error error) {
+                            warning ("Error while unmounting mount %s", error.message);
+                        } finally {
+                            finish_eject_or_unmount (row_ref, success, drive);
+                        }
+                    });
+
+                    return;
+                }
+            }
+
+            if (volume != null && volume.can_eject ()) {
+                volume.eject_with_operation.begin (GLib.MountUnmountFlags.NONE,
+                                                   mount_op,
+                                                   null,
+                                                   (obj, res) => {
+                    try {
+                        success = volume.eject_with_operation.end (res);
+                    } catch (GLib.Error error) {
+                        warning ("Error ejecting volume: %s", error.message);
+                    } finally {
+                        finish_eject_or_unmount (row_ref, success, drive);
+                    }
                 });
+
                 return;
             }
 
-            finish_eject_or_unmount (row_ref, false);
+            warning ("No drive, volume or mount to eject");
+            finish_eject_or_unmount (row_ref, false, drive);
         }
 
-        private void finish_eject_or_unmount (Gtk.TreeRowReference? row_ref, bool success) {
+        private void show_can_safely_remove () {
+            /* This is a placeholder for any user notification that is required */
+            warning ("Drive has been stopped or ejected - can be safely removed");
+        }
+
+        private void finish_eject_or_unmount (Gtk.TreeRowReference? row_ref, bool success, Drive? drive) {
             ejecting_or_unmounting = false;
+
             if (row_ref != null && row_ref.valid ()) {
                 Gtk.TreeIter iter;
                 if (store.get_iter (out iter, row_ref.get_path ())) {
                     store.@set (iter, Column.SHOW_SPINNER, false);
                     store.@set (iter, Column.SHOW_EJECT, !success); /* continue to show eject if did not succeed */
                 }
+            } else {
+                warning ("No row ref");
+            }
+
+            if (success && drive != null && get_allow_stop (drive)) {
+                drive.stop.begin (GLib.MountUnmountFlags.NONE,
+                                  null,
+                                  null,
+                                  (obj, res) => {
+                    try {
+                        success = drive.stop.end (res);
+                    } catch (GLib.Error error) {
+                        warning ("Error stopping drive: %s", error.message);
+                    }
+
+                    if (success) {
+                        show_can_safely_remove ();
+                    } else {
+                        warning ("Could not stop drive");
+                    }
+                });
             }
             /* Delay reconnecting volume monitor - we do not need to respond to signals consequent on
              * our own actions that may still be in the pipeline */
@@ -2050,7 +2060,7 @@ namespace Marlin.Places {
             });
         }
 
-        private bool eject_or_unmount_bookmark (Gtk.TreePath? path, bool allow_eject = true) {
+        private bool eject_or_unmount_bookmark (Gtk.TreePath? path, bool allow_eject) {
             if (path == null || ejecting_or_unmounting) {
                 return false;
             }
@@ -2064,6 +2074,7 @@ namespace Marlin.Places {
             Volume volume;
             Drive drive;
             bool spinner_active;
+
             store.@get (iter,
                         Column.MOUNT, out mount,
                         Column.VOLUME, out volume,
@@ -2075,10 +2086,13 @@ namespace Marlin.Places {
                 return true;
             }
 
-            bool can_unmount, can_eject;
-            check_unmount_and_eject (mount, volume, drive, out can_unmount, out can_eject);
+            bool can_unmount, can_eject, can_stop;
+            check_unmount_and_eject (mount, volume, drive,
+                                     out can_unmount,
+                                     out can_eject,
+                                     out can_stop);
 
-            if (!(can_eject || can_unmount)) {
+            if (!(can_eject || can_unmount || can_stop)) {
                 return false;
             }
 
@@ -2102,13 +2116,7 @@ namespace Marlin.Places {
                 return true;
             });
 
-            if (can_unmount) {
-                do_unmount (mount, rowref, can_eject && allow_eject);
-                /* Drive changed callback will eject the drive if appropriate */
-            } else if (can_eject) {
-                do_eject (mount, volume, drive, rowref);
-            }
-
+            do_unmount_or_eject (mount, volume, drive, rowref, allow_eject);
             return true;
         }
 
@@ -2117,7 +2125,7 @@ namespace Marlin.Places {
             if (!get_selected_iter (out iter)) {
                 return false;
             } else {
-                return eject_or_unmount_bookmark (store.get_path (iter));
+                return eject_or_unmount_bookmark (store.get_path (iter), true);
             }
         }
 
@@ -2287,8 +2295,7 @@ namespace Marlin.Places {
                 drive.can_poll_for_media () &&
                 !drive.has_media () &&
                 drive.can_eject ()) {
-
-                do_eject (null, null, drive, null);
+                do_unmount_or_eject (null, null, drive, null, drive.can_eject ());
             }
         }
 
@@ -2309,21 +2316,24 @@ namespace Marlin.Places {
         private void check_unmount_and_eject (Mount? mount,
                                               Volume? volume,
                                               Drive? drive,
-                                              out bool show_unmount,
-                                              out bool show_eject) {
-            show_unmount = false;
-            show_eject = false;
+                                              out bool can_unmount,
+                                              out bool can_eject,
+                                              out bool can_stop) {
+            can_unmount = false;
+            can_eject = false;
+            can_stop = false;
 
             if (mount != null) {
-                show_unmount = mount.can_unmount ();
+                can_unmount = mount.can_unmount ();
             }
 
             if (drive != null) {
-                show_eject = drive.can_eject ();
+                can_eject = drive.can_eject ();
+                can_stop = drive.can_stop ();
             }
 
             if (volume != null) {
-                show_eject = show_eject || volume.can_eject ();
+                can_eject = can_eject || volume.can_eject ();
             }
         }
 
@@ -2343,7 +2353,10 @@ namespace Marlin.Places {
             show_start = false;
             show_stop = false;
 
-            check_unmount_and_eject (mount, volume, drive, out show_unmount, out show_eject);
+            check_unmount_and_eject (mount, volume, drive,
+                                     out show_unmount,
+                                     out show_eject,
+                                     out show_stop);
 
             if (drive != null) {
                 if (drive.is_media_removable () &&
@@ -2354,7 +2367,6 @@ namespace Marlin.Places {
                 }
 
                 show_start = drive.can_start ()|| drive.can_start_degraded ();
-                show_stop = drive.can_stop ();
 
                 /* Show_stop option is not currently used. Moreover, this can give an incorrect
                  * indication (e.g. for NTFS partitions) */
@@ -2372,6 +2384,25 @@ namespace Marlin.Places {
             if (show_eject && show_unmount) {
                 show_eject = false;
             }
+        }
+
+        private bool get_allow_stop (Drive drive) {
+            bool res = false;
+
+            if (drive.can_stop ()) {
+                uint mounts = 0;
+                /* Only stop drive if there are no mounted volumes on it */
+                foreach (var vol in drive.get_volumes ()) {
+                    if (vol.get_mount () != null) {
+                        mounts++;
+                    }
+                }
+
+                /* Drive may be stopped if no mounts */
+                res = mounts == 0;
+            }
+
+            return res;
         }
 
         private void check_popup_sensitivity () {

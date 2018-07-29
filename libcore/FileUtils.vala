@@ -770,6 +770,13 @@ namespace PF.FileUtils {
 
         return mod_a == mod_b ? 0 : mod_a > mod_b ? 1 : -1;
     }
+    
+    public void remove_thumbnail_paths_for_uri (string uri) {
+        string hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, uri);
+        string base_name = "%s.png".printf (hash);
+        GLib.FileUtils.unlink (Path.build_filename (Environment.get_user_cache_dir (), "thumbnails", "normal", base_name));
+        GLib.FileUtils.unlink (Path.build_filename (Environment.get_user_cache_dir (), "thumbnails", "large", base_name));
+    }
 }
 
 namespace Marlin {
