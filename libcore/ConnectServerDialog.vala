@@ -105,7 +105,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
     private Gtk.Stack stack;
 
-    private GLib.Cancellable mount_cancellable;
+    private GLib.Cancellable? mount_cancellable;
 
     public string server_uri {get; private set; default = "";}
 
@@ -395,6 +395,8 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
             info_bar.show_all ();
             connect_button.label = _("Try Again");
             return;
+        } finally {
+            mount_cancellable = null;
         }
 
         response (Gtk.ResponseType.OK);
