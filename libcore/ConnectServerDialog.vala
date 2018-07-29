@@ -111,9 +111,15 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
     public ConnectServerDialog (Gtk.Window window) {
         Object (
-            transient_for: window,
-            title: _("Connect to Server")
+            transient_for: window
         );
+
+        var t = new Gtk.Label (_("Connect to Server"));
+        /*FIXME Appropriate style class */
+        t.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        set_titlebar (t);
+        show_all ();
+        type_combobox.active = 0;
     }
 
     construct {
@@ -123,6 +129,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         info_bar = new Gtk.InfoBar ();
         info_bar.message_type = Gtk.MessageType.INFO;
         info_bar.no_show_all = true;
+        info_bar.hide ();
 
         var info_grid = new Gtk.Grid ();
         info_grid.orientation = Gtk.Orientation.HORIZONTAL;
@@ -220,7 +227,8 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         });
 
         var grid = new Gtk.Grid ();
-        grid.margin = 12;
+        grid.margin_start = grid.margin_end = 12;
+        grid.margin_bottom = 6;
         grid.orientation = Gtk.Orientation.VERTICAL;
         grid.row_spacing = 6;
         grid.column_spacing = 12;
@@ -277,7 +285,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         stack.add_named (connecting_grid, "connecting");
 
         get_content_area ().add (stack);
-        show_all ();
 
         /* skip methods that don't have corresponding gvfs uri schemes */
         unowned string[] supported_schemes = GLib.Vfs.get_default ().get_supported_uri_schemes ();
@@ -292,7 +299,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         }
 
         type_combobox.changed.connect (() => type_changed ());
-        type_combobox.active = 0;
     }
 
     private void type_changed () {
@@ -487,6 +493,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
     }
 
     private void on_connect_clicked () {
+        info_bar.hide ();
         connect_to_server.begin ();
     }
 
