@@ -47,7 +47,6 @@ namespace Marlin.View {
         }
 
         public Miller (GLib.File loc, Marlin.View.ViewContainer ctab, Marlin.ViewMode mode) {
-            base.init ();
             this.ctab = ctab;
             this.root_location = loc;
 
@@ -66,7 +65,8 @@ namespace Marlin.View {
             viewport.add (this.colpane);
 
             scrolled_window.add (viewport);
-            content_box.pack_start (scrolled_window);
+            add_overlay (scrolled_window);
+
             content_box.show_all ();
 
             make_view ();
@@ -92,8 +92,8 @@ namespace Marlin.View {
             total_width += new_slot.width;
 
             colpane.set_size_request (total_width, -1);
+
             nest_slot_in_host_slot (new_slot, host);
-            connect_slot_signals (new_slot);
             slot_list.append (new_slot);
             new_slot.active (scroll, animate); /* This will set the new slot to be current_slot. Must do this before loading */
         }
@@ -112,11 +112,13 @@ namespace Marlin.View {
             hpane1.pack2 (box1, true, true);
             hpane1.show_all ();
 
+            connect_slot_signals (slot);
+
             if (host != null) {
                 truncate_list_after_slot (host);
                 host.select_gof_file (slot.file);
                 host.colpane.add (hpane1);
-                slot.directory.init ();
+                slot.initialize_directory ();
             } else {
                 this.colpane.add (hpane1);
             }
@@ -243,6 +245,7 @@ namespace Marlin.View {
             slot.active.connect (on_slot_active);
             slot.horizontal_scroll_event.connect (on_slot_horizontal_scroll_event);
             slot.miller_slot_request.connect (on_miller_slot_request);
+            slot.new_container_request.connect (on_new_container_request);
             slot.size_change.connect (update_total_width);
             slot.folder_deleted.connect (on_slot_folder_deleted);
             slot.colpane.key_press_event.connect (on_key_pressed);
@@ -256,6 +259,7 @@ namespace Marlin.View {
             slot.active.disconnect (on_slot_active);
             slot.horizontal_scroll_event.disconnect (on_slot_horizontal_scroll_event);
             slot.miller_slot_request.disconnect (on_miller_slot_request);
+            slot.new_container_request.disconnect (on_new_container_request);
             slot.size_change.disconnect (update_total_width);
             slot.folder_deleted.disconnect (on_slot_folder_deleted);
             slot.colpane.key_press_event.disconnect (on_key_pressed);
@@ -273,6 +277,10 @@ namespace Marlin.View {
                 /* Just add another column to the end. */
                 add_location (loc, slot);
             }
+        }
+
+        private void on_new_container_request (GLib.File loc, Marlin.OpenFlag flag) {
+            new_container_request (loc, flag);
         }
 
         private bool on_slot_horizontal_scroll_event (double delta_x) {
