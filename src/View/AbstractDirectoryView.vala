@@ -3311,15 +3311,15 @@ namespace FM {
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
                             /* determine whether should activate on key release (unless pointer moved)*/
                             click_data.should_activate = no_mods &&
-                                                               (!on_blank || activate_on_blank) &&
-                                                               (single_click_mode || double_click_event);
+                                                         (!on_blank || activate_on_blank) &&
+                                                         (single_click_mode || double_click_event);
 
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
                              * the item is unselected or activate_on_blank is not enabled.
                              */
 
-                            if (!no_mods || (on_blank && (!activate_on_blank || !path_selected))) {
+                            if (!no_mods || (on_blank && !(activate_on_blank && path_selected))) {
                                 if (no_mods) {
                                     result = false; /* Native handler for rubberbanding */
                                 } else {
@@ -3409,7 +3409,11 @@ namespace FM {
 
                 if (click_data.should_activate && delay < long_press) {
                     select_path (click_data.path);
-                    activate_selected_items (event.button == Gdk.BUTTON_MIDDLE ? Marlin.OpenFlag.NEW_TAB : Marlin.OpenFlag.DEFAULT);
+                    if (event.button == Gdk.BUTTON_MIDDLE) {
+                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
+                    } else {
+                        activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                    }
                 } else if (click_data.should_deselect) { /* will not be true for null path */
                     unselect_path (click_data.path);
                 } else if (click_data.should_select && (delay > long_press || !single_click_mode)) {
@@ -3698,8 +3702,8 @@ namespace FM {
         protected abstract bool view_has_focus ();
         protected abstract uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files);
         protected abstract ClickZone get_event_position_info (Gdk.EventButton event,
-                                                         out Gtk.TreePath? path,
-                                                         bool rubberband = false);
+                                                              out Gtk.TreePath? path,
+                                                              bool rubberband = false);
 
         protected abstract void scroll_to_cell (Gtk.TreePath? path,
                                                 bool scroll_to_top);
@@ -3713,7 +3717,11 @@ namespace FM {
         protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
-        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper);
+        protected abstract bool is_on_icon (int x, int y,
+                                            Gdk.Rectangle area,
+                                            Gdk.Pixbuf pix,
+                                            bool rtl,
+                                            ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear
