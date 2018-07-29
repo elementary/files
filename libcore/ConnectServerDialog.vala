@@ -146,6 +146,17 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         var server_label = new Gtk.Label (_("Server:"));
         server_label.xalign = 1;
         server_entry = new Gtk.Entry ();
+
+        server_entry.focus_in_event.connect (() => {
+            connect_button.sensitive = false;
+            return false;
+        });
+
+        server_entry.focus_out_event.connect (() => {
+            connect_button.sensitive = server_entry.text != "";
+            return false;
+        });
+
         var port_label = new Gtk.Label (_("Port:"));
         port_label.xalign = 1;
         port_spinbutton = new Gtk.SpinButton.with_range (0, ushort.MAX, 1);
