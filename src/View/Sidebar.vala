@@ -126,6 +126,7 @@ namespace Marlin.Places {
         public signal bool request_focus ();
         public signal void sync_needed ();
         public signal void path_change_request (string uri, Marlin.OpenFlag flag);
+        public signal void connect_server_request ();
 
         public new void grab_focus () {
             tree_view.grab_focus ();
@@ -730,7 +731,13 @@ namespace Marlin.Places {
                            0,
                            _("Browse the contents of the network"));
 
-                plugins.update_sidebar ((Gtk.Widget)this); /* Add "Connect Server plugin */
+                /* Add ConnectServer BUILTIN */
+                add_extra_network_item (_("Connect Server"), _("Connect to a network server"), new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
+
+                /* No longer needed at present as no other sidebar plugins.
+                 * Commenting out to avoid old plugin getting installed.
+                 * Package needs to remove old plugin.*/
+                //plugins.update_sidebar ((Gtk.Widget)this);
             }
 
             expander_init_pref_state (tree_view);
@@ -741,6 +748,10 @@ namespace Marlin.Places {
             } else {
                 set_matching_selection (slot_location);
             }
+        }
+
+        private static void side_bar_connect_server (Gtk.Widget widget) {
+            ((Sidebar)widget).connect_server_request ();
         }
 
         private void add_bookmark (Gtk.TreeIter iter, Marlin.Bookmark bm, uint index) {
