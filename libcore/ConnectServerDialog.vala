@@ -115,8 +115,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         );
 
         var t = new Gtk.Label (_("Connect to Server"));
-        /*FIXME Appropriate style class */
-        t.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+        t.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
         set_titlebar (t);
         show_all ();
         type_combobox.active = 0;
@@ -132,7 +131,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         info_bar.hide ();
 
         var info_grid = new Gtk.Grid ();
-        info_grid.orientation = Gtk.Orientation.HORIZONTAL;
         info_image = new Gtk.Image ();
         info_image.icon_size = Gtk.IconSize.SMALL_TOOLBAR;
         info_label = new Gtk.Label (null);
@@ -145,16 +143,10 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
         var server_label = new Gtk.Label (_("Server:"));
         server_label.xalign = 1;
+
         server_entry = new Gtk.Entry ();
-
-        server_entry.focus_in_event.connect (() => {
-            connect_button.sensitive = false;
-            return false;
-        });
-
-        server_entry.focus_out_event.connect (() => {
-            connect_button.sensitive = server_entry.text != "";
-            return false;
+        server_entry.changed.connect (() => {
+            connect_button.sensitive = valid_server_uri (server_entry.text);
         });
 
         var port_label = new Gtk.Label (_("Port:"));
@@ -208,34 +200,29 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         cancel_button.clicked.connect (on_cancel_clicked);
 
         connect_button = new Gtk.Button.with_label (_("Connect"));
+        connect_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        connect_button.can_default = true;
         connect_button.no_show_all = true;
         connect_button.show ();
-        connect_button.clicked.connect (on_connect_clicked);
+        connect_button.activate.connect (on_connect_clicked);
 
         continue_button = new Gtk.Button.with_label (_("Continue"));
+        continue_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+        continue_button.can_default = true;
         continue_button.no_show_all = true;
-        continue_button.hide ();
         continue_button.clicked.connect (on_continue_clicked);
 
-        ((Gtk.Container)(get_action_area ())).add (cancel_button);
-        ((Gtk.Container)(get_action_area ())).add (connect_button);
-        ((Gtk.Container)(get_action_area ())).add (continue_button);
+        var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
+        button_box.layout_style = Gtk.ButtonBoxStyle.END;
+        button_box.margin_top = 12;
 
-        key_press_event.connect ((e) => {
-            switch (e.keyval) {
-                case Gdk.Key.Return:
-                case Gdk.Key.KP_Enter:
-                    connect_button.clicked ();
-                    return true;
+        cancel_button.margin = 3;
+        connect_button.margin = 3;
+        continue_button.margin = 3;
 
-                default:
-                    return false;
-            }
-        });
-
-        key_release_event.connect ((e) => {
-            return true;
-        });
+        button_box.add (cancel_button);
+        button_box.add (connect_button);
+        button_box.add (continue_button);
 
         var grid = new Gtk.Grid ();
         grid.margin_start = grid.margin_end = 12;
@@ -263,15 +250,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         grid.attach (password_entry, 1, 8, 3, 1);
         grid.attach (remember_checkbutton, 1, 9, 3, 1);
 
-        var label_sizegroup = new Gtk.SizeGroup (Gtk.SizeGroupMode.HORIZONTAL);
-        label_sizegroup.add_widget (server_label);
-        label_sizegroup.add_widget (type_label);
-        label_sizegroup.add_widget (share_label);
-        label_sizegroup.add_widget (folder_label);
-        label_sizegroup.add_widget (domain_label);
-        label_sizegroup.add_widget (user_label);
-        label_sizegroup.add_widget (password_label);
-
         var content_grid = new Gtk.Grid ();
         content_grid.orientation = Gtk.Orientation.VERTICAL;
         content_grid.add (info_bar);
@@ -296,6 +274,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         stack.add_named (connecting_grid, "connecting");
 
         get_content_area ().add (stack);
+        get_content_area ().add (button_box);
 
         /* skip methods that don't have corresponding gvfs uri schemes */
         unowned string[] supported_schemes = GLib.Vfs.get_default ().get_supported_uri_schemes ();
@@ -328,6 +307,30 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         user_entry.visible = WidgetsFlag.USER in method_info.flags;
         password_entry.visible = WidgetsFlag.USER in method_info.flags;
         domain_entry.visible = WidgetsFlag.DOMAIN in method_info.flags;
+
+        password_entry.activates_default = password_entry.visible;
+        user_entry.activates_default = user_entry.visible && !password_entry.visible;
+        server_entry.activates_default = !user_entry.visible;
+        share_entry.activates_default = server_entry.activates_default;
+
+        server_entry.changed ();
+
+        show_connect_button (true);
+    }
+
+    private void show_connect_button (bool show_connect) {
+        connect_button.visible = show_connect;
+        continue_button.visible = !show_connect;
+        if (show_connect) {
+            connect_button.grab_default ();
+        } else {
+            continue_button.grab_default ();
+        }
+    }
+
+    private bool valid_server_uri (string uri) {
+        /* TODO Find a better way of validating server entry */
+        return uri.length > 3;
     }
 
     private async void connect_to_server () {
@@ -470,12 +473,11 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         }
 
         var loop = new MainLoop ();
-        connect_button.hide ();
         continue_button.set_data ("loop", loop);
-        continue_button.show ();
+        show_connect_button (false);
         loop.run ();
         continue_button.set_data ("loop", null);
-        continue_button.hide ();
+        show_connect_button (true);
 
         if (mount_cancellable.is_cancelled ()) {
             connect_button.show ();
