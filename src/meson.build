@@ -17,6 +17,7 @@ config_data = configuration_data()
 config_data.set('plugin_dir', PLUGIN_DIR)
 config_data.set('version', PROJECT_VER)
 config_data.set('ui_dir', join_paths(meson.current_source_dir (), 'View'))
+config_data.set('testdata_dir', join_paths(meson.source_root (), 'data', 'tests'))
 config_data.set('app_name', meson.project_name ())
 config_data.set('terminal_name', TERMINAL_NAME)
 

@@ -58,7 +58,7 @@ COMMON_DEPS = [
     dependency ('gee-0.8'),
     dependency ('gmodule-2.0'),
     dependency ('granite', version: '>=0.3.0'),
-	dependency('gtk+-3.0', version: '>=3.22', required: true),
+    dependency('gtk+-3.0', version: '>=3.22', required: true),
     dependency ('gio-unix-2.0')
 ]
 
@@ -70,7 +70,7 @@ OTHER_DEPS = declare_dependency (dependencies: [POSIX, LINUX, MATH])
 
 CORE_LIB_DEPS = [
     COMMON_DEPS,
-	OTHER_DEPS,
+    OTHER_DEPS,
     dependency ('pango', version: '>=1.1.2'),
     dependency ('sqlite3'),
     dependency ('libcanberra', version: '>=0.30'),
@@ -94,9 +94,9 @@ C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
         subdir ('libwidgets')
         subdir ('src')
 
-		subdir ('data')
-		subdir ('pantheon-files-daemon')
-		subdir ('plugins')
+        subdir ('data')
+        subdir ('pantheon-files-daemon')
+        subdir ('plugins')
 
         subdir ('filechooser-module')
 

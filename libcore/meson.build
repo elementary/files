@@ -46,3 +46,5 @@ pkg.generate (
     filebase: OLD_NAME,
     name: 'lib'+ OLD_NAME
 )
+
+subdir ('tests')
