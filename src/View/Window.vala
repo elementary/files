@@ -137,6 +137,7 @@ namespace Marlin.View {
                 }
             }
 
+            loading_uri.connect (update_labels);
             present ();
         }
 
@@ -1009,9 +1010,9 @@ namespace Marlin.View {
             Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
-        public void update_labels (string tab_name) {
-            set_title (tab_name);
-            top_menu.update_location_bar (tab_name);
+        private void update_labels (string uri) {
+            set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
+            top_menu.update_location_bar (uri);
         }
 
         public void mount_removed (Mount mount) {

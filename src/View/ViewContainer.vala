@@ -359,8 +359,7 @@ namespace Marlin.View {
 
         private void refresh_slot_info (GLib.File loc) {
             update_tab_name ();
-            window.loading_uri (loc.get_uri ());
-            window.update_labels (tab_name);
+            window.loading_uri (loc.get_uri ()); /* Updates labels as well */
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
