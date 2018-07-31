@@ -99,12 +99,8 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
     private Gtk.Button continue_button;
     private Gtk.Button cancel_button;
     private Granite.HeaderLabel user_header_label;
-
-    private Gtk.Image info_image;
     private Gtk.Label info_label;
-
     private Gtk.Stack stack;
-
     private GLib.Cancellable? mount_cancellable;
 
     public string server_uri {get; private set; default = "";}
@@ -128,19 +124,11 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         info_bar = new Gtk.InfoBar ();
         info_bar.message_type = Gtk.MessageType.INFO;
         info_bar.no_show_all = true;
+        info_label = new Gtk.Label (null);
+        info_bar.get_content_area ().add (info_label);
         info_bar.hide ();
 
-        var info_grid = new Gtk.Grid ();
-        info_image = new Gtk.Image ();
-        info_image.icon_size = Gtk.IconSize.SMALL_TOOLBAR;
-        info_label = new Gtk.Label (null);
-        info_grid.add (info_image);
-        info_grid.add (info_label);
-
-        info_bar.get_content_area ().add (info_grid);
-
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
-
         var server_label = new Gtk.Label (_("Server:"));
         server_label.xalign = 1;
 
@@ -205,6 +193,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         connect_button.no_show_all = true;
         connect_button.show ();
         connect_button.activate.connect (on_connect_clicked);
+        connect_button.clicked.connect (on_connect_clicked);
 
         continue_button = new Gtk.Button.with_label (_("Continue"));
         continue_button.get_style_context ().add_class (Gtk.STYLE_CLASS_SUGGESTED_ACTION);
@@ -388,7 +377,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         } catch (Error e) {
             stack.visible_child_name = "content";
 
-            info_image.icon_name = "dialog-error";
             info_bar.message_type = Gtk.MessageType.ERROR;
             info_label.label = e.message;
             info_bar.no_show_all = false;
@@ -443,7 +431,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
         stack.visible_child_name = "content";
         type_combobox.sensitive = false;
-        info_image.icon_name = "dialog-warning";
         info_bar.message_type = Gtk.MessageType.WARNING;
         info_label.label = _("Please verify your user details.");
         info_bar.no_show_all = false;
