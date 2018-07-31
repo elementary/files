@@ -124,6 +124,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         info_bar = new Gtk.InfoBar ();
         info_bar.message_type = Gtk.MessageType.INFO;
         info_bar.no_show_all = true;
+        info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
         info_label = new Gtk.Label (null);
         info_bar.get_content_area ().add (info_label);
         info_bar.hide ();
@@ -133,9 +134,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         server_label.xalign = 1;
 
         server_entry = new Gtk.Entry ();
-        server_entry.changed.connect (() => {
-            connect_button.sensitive = valid_server_uri (server_entry.text);
-        });
 
         var port_label = new Gtk.Label (_("Port:"));
         port_label.xalign = 1;
@@ -192,7 +190,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         connect_button.can_default = true;
         connect_button.no_show_all = true;
         connect_button.show ();
-        connect_button.activate.connect (on_connect_clicked);
         connect_button.clicked.connect (on_connect_clicked);
 
         continue_button = new Gtk.Button.with_label (_("Continue"));
@@ -278,6 +275,26 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         }
 
         type_combobox.changed.connect (() => type_changed ());
+
+        server_entry.changed.connect (() => {
+            connect_button.sensitive = valid_entries ();
+        });
+
+        user_entry.changed.connect (() => {
+            connect_button.sensitive = valid_entries ();
+            remove_needs_attention (user_entry);
+        });
+
+        domain_entry.changed.connect (() => {
+            connect_button.sensitive = valid_entries ();
+            remove_needs_attention (domain_entry);
+        });
+
+        password_entry.changed.connect (() => {
+            connect_button.sensitive = valid_entries ();
+            remove_needs_attention (password_entry);
+        });
+
     }
 
     private void type_changed () {
@@ -302,24 +319,98 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         server_entry.activates_default = !user_entry.visible;
         share_entry.activates_default = server_entry.activates_default;
 
-        server_entry.changed ();
-
-        show_connect_button (true);
+        show_connect_button ();
+        info_bar.visible = false;
     }
 
-    private void show_connect_button (bool show_connect) {
-        connect_button.visible = show_connect;
-        continue_button.visible = !show_connect;
-        if (show_connect) {
-            connect_button.grab_default ();
+    private void show_connect_button () {
+        connect_button.visible = true;
+        continue_button.visible = false;
+        connect_button.sensitive = valid_entries ();
+        connect_button.grab_default ();
+    }
+
+    private void show_continue_button () {
+        connect_button.visible = false;
+        continue_button.visible = true;
+        continue_button.sensitive = false; /* something has to change */
+        continue_button.grab_default ();
+    }
+
+    private void show_connecting (bool show_connecting) {
+        if (show_connecting) {
+            info_bar.hide ();
+            stack.visible_child_name = "connecting";
+            connect_button.visible = false;
+            connect_button.sensitive = false;
+            continue_button.visible = false;
+            continue_button.sensitive = false;
         } else {
-            continue_button.grab_default ();
+            stack.visible_child_name = "content";
+            show_connect_button ();
         }
     }
 
-    private bool valid_server_uri (string uri) {
+    private void verify_details () {
+        var loop = new MainLoop ();
+        continue_button.set_data ("loop", loop);
+        type_combobox.sensitive = false;
+        info_bar.message_type = Gtk.MessageType.WARNING;
+        info_label.label = _("Please verify your user details.");
+        show_continue_button ();
+        show_info ();
+        loop.run ();
+
+        continue_button.set_data ("loop", null);
+        show_connect_button ();
+    }
+
+    private void error (string error_message) {
+        info_bar.message_type = Gtk.MessageType.ERROR;
+        info_label.label = error_message;
+        show_info ();
+    }
+
+    private void show_info () {
+        show_connecting (false);
+        info_bar.no_show_all = false;
+        info_bar.show_all ();
+    }
+
+    private bool valid_server () {
         /* TODO Find a better way of validating server entry */
-        return uri.length > 3;
+        return server_entry.text.length > 3;
+    }
+
+    private bool valid_user () {
+        return !needs_attention (password_entry);
+    }
+
+    private bool valid_domain () {
+        return !needs_attention (domain_entry);
+    }
+
+    private bool valid_password () {
+        return !needs_attention (password_entry);
+    }
+
+    private bool valid_entries () {
+        info_bar.visible = false;
+        return valid_server () && valid_user () && valid_domain () && valid_password ();
+    }
+
+    private bool needs_attention (Gtk.Entry entry) {
+        return entry.visible && entry.get_style_context ().has_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
+    }
+
+    private void remove_needs_attention (Gtk.Entry entry) {
+        if (entry.get_style_context ().has_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION)) {
+            entry.get_style_context ().remove_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
+        }
+    }
+
+    private void add_needs_attention (Gtk.Entry entry) {
+        entry.get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
     }
 
     private async void connect_to_server () {
@@ -366,22 +457,16 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
         uri += folder;
         var location = File.new_for_uri (uri);
-        stack.visible_child_name = "connecting";
+
         var operation = new Marlin.ConnectServer.Operation (this);
         mount_cancellable = new GLib.Cancellable ();
         try {
             server_uri = uri;
             yield location.mount_enclosing_volume (GLib.MountMountFlags.NONE, operation, mount_cancellable);
         } catch (GLib.IOError.ALREADY_MOUNTED e) {
-            /* not an error - just show it */
+            /* not an error - just navigate to location */
         } catch (Error e) {
-            stack.visible_child_name = "content";
-
-            info_bar.message_type = Gtk.MessageType.ERROR;
-            info_label.label = e.message;
-            info_bar.no_show_all = false;
-            info_bar.show_all ();
-            connect_button.label = _("Try Again");
+            error (e.message);
             return;
         } finally {
             mount_cancellable = null;
@@ -429,22 +514,15 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
             return true; /* HANDLED */
         }
 
-        stack.visible_child_name = "content";
-        type_combobox.sensitive = false;
-        info_bar.message_type = Gtk.MessageType.WARNING;
-        info_label.label = _("Please verify your user details.");
-        info_bar.no_show_all = false;
-        info_bar.show_all ();
-
         if (GLib.AskPasswordFlags.NEED_PASSWORD in askpassword_flags) {
-            password_entry.get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
+            add_needs_attention (password_entry);
         }
 
         if (GLib.AskPasswordFlags.NEED_USERNAME in askpassword_flags) {
             if (default_user != null && default_user != "") {
                 user_entry.text = default_user;
             } else {
-                user_entry.get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
+                add_needs_attention (user_entry);
             }
         }
 
@@ -452,7 +530,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
             if (default_domain != null && default_domain != "") {
                 domain_entry.text = default_domain;
             } else {
-                domain_entry.get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
+                add_needs_attention (domain_entry);
             }
         }
 
@@ -461,15 +539,9 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
             remember_checkbutton.active = false;
         }
 
-        var loop = new MainLoop ();
-        continue_button.set_data ("loop", loop);
-        show_connect_button (false);
-        loop.run ();
-        continue_button.set_data ("loop", null);
-        show_connect_button (true);
+        verify_details (); /* This blocks current main loop until continue button clicked/activated */
 
         if (mount_cancellable.is_cancelled ()) {
-            connect_button.show ();
             return false; /* ABORT */
         } else {
             if (GLib.AskPasswordFlags.NEED_PASSWORD in askpassword_flags) {
@@ -488,20 +560,19 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
                 mount_operation.password_save = remember_checkbutton.active ? GLib.PasswordSave.PERMANENTLY : GLib.PasswordSave.NEVER;
             }
 
-            stack.visible_child_name = "connecting";
-            connect_button.clicked ();
             return true;
         }
     }
 
     private void on_connect_clicked () {
-        info_bar.hide ();
+        show_connecting (true);
         connect_to_server.begin ();
     }
 
     private void on_cancel_clicked () {
         void* loop = continue_button.get_data ("loop");
         if (loop != null) {
+            type_combobox.sensitive = true;
             ((MainLoop)loop).quit ();
         }
 
