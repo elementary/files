@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-21 00:07+0000\n"
+"PO-Revision-Date: 2018-07-30 00:07+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
 "fi/>\n"
@@ -2227,14 +2227,12 @@ msgid "Empty the Trash"
 msgstr "Tyhjennä roskakori"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Palauta kaikki"
+msgstr "Palauta valitut"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " valittu"
+msgstr "Poista valitut"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
