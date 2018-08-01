@@ -16,6 +16,8 @@ vala_precompile(VALA_C ${PKGNAME}
     AbstractSlot.vala
     Bookmark.vala
     BookmarkList.vala
+    ConnectServerDialog.vala
+    ConnectServerOperation.vala
     DndHandler.vala
     Enums.vala
     PixbufUtils.vala
