@@ -325,6 +325,7 @@ namespace Marlin.View {
             });
 
             sidebar.path_change_request.connect (uri_path_change_request);
+            sidebar.connect_server_request.connect (connect_to_server);
         }
 
         private void on_tab_removed () {
@@ -537,7 +538,7 @@ namespace Marlin.View {
             tab.close ();
         }
 
-        public void add_window (File location = File.new_for_path (PF.UserUtils.get_real_user_home ()),
+        public void add_window (GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
                                  Marlin.ViewMode mode = Marlin.ViewMode.PREFERRED,
                                  int x = -1, int y = -1) {
 
@@ -772,8 +773,18 @@ namespace Marlin.View {
         }
 
         private void connect_to_server () {
-            var dialog = new Marlin.ConnectServer.Dialog ((Gtk.Window) this);
-            dialog.show ();
+            var dialog = new PF.ConnectServerDialog ((Gtk.Window) this);
+            string server_uri = "";
+
+            if (dialog.run () == Gtk.ResponseType.OK) {
+                server_uri = dialog.server_uri;
+            }
+
+            dialog.destroy ();
+
+            if (server_uri != "") {
+                uri_path_change_request (dialog.server_uri, Marlin.OpenFlag.DEFAULT);
+            }
         }
 
         void show_app_help () {
