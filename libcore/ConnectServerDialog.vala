@@ -123,7 +123,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
         info_bar = new Gtk.InfoBar ();
         info_bar.message_type = Gtk.MessageType.INFO;
-        info_bar.no_show_all = true;
         info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
         info_label = new Gtk.Label (null);
         info_bar.get_content_area ().add (info_label);
@@ -371,13 +370,12 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
     private void show_info () {
         show_connecting (false);
-        info_bar.no_show_all = false;
-        info_bar.show_all ();
+        info_bar.revealed = true;
     }
 
     private void dismiss_info () {
         info_label.label = "";
-        info_bar.hide ();
+        info_bar.revealed = false;
     }
 
     private bool valid_server () {
@@ -400,7 +398,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
     private bool valid_entries () {
         bool valid = valid_server () && valid_user () && valid_domain () && valid_password ();
-        info_bar.visible = !(valid || info_label.label.length < 1);
+        info_bar.revealed = !(valid || info_label.label.length < 1);
         return valid;
     }
 
