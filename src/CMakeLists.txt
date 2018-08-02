@@ -32,7 +32,6 @@ add_definitions (${CFLAGS} -O2)
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
         Application.vala
-        ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
         ProgressUIHandler.vala
@@ -100,7 +99,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
 ELSE (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
         Application.vala
-        ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
         ProgressUIHandler.vala
@@ -165,8 +163,8 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
 ENDIF (WITH_UNITY AND UNITY_FOUND)
 
 add_executable (${CMAKE_PROJECT_NAME}
-    marlin-connect-server-dialog.c
-    ${VALA_C} )
+    ${VALA_C}
+)
 
 target_link_libraries (${CMAKE_PROJECT_NAME} m pantheon-files-core pantheon-files-widgets ${DEPS_LIBRARIES})
 add_dependencies (${CMAKE_PROJECT_NAME} pantheon-files-core pantheon-files-widgets)
