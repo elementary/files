@@ -153,7 +153,9 @@ namespace Marlin {
                 if (selected) {
                     state = Gtk.StateFlags.SELECTED;
                     state |= widget.get_state_flags ();
+                }
 
+                if (focused) {
                     var bg = style_context.get_property ("background-color", state);
 
                     if (bg.holds (typeof (Gdk.RGBA))) {
@@ -164,10 +166,6 @@ namespace Marlin {
                             pb = PF.PixbufUtils.colorize (pb, color);
                         }
                     }
-                }
-
-                if (prelit || focused) {
-                    pb = PF.PixbufUtils.lighten (pb);
                 }
             }
 
