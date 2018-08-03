@@ -623,7 +623,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         private void add_needs_attention () {
             if (!get_style_context ().has_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION)) {
                 get_style_context ().add_class (Gtk.STYLE_CLASS_NEEDS_ATTENTION);
-                set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "dialog-warning");
+                set_icon_from_icon_name (Gtk.EntryIconPosition.SECONDARY, "dialog-warning-symbolic");
             }
         }
     }
