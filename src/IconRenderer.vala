@@ -107,30 +107,39 @@ namespace Marlin {
             }
 
             string? special_icon_name = null;
-            if (file == drop_file) {
-                flags |= Gtk.CellRendererState.PRELIT;
-                if (file.is_directory) {
-                    special_icon_name = "folder-drag-accept";
+            string suffix = "";
+            bool is_drop_file = (file == drop_file);
+
+            if (file.is_directory) {
+                var names = ((GLib.ThemedIcon) file.icon).get_names ();
+                if (names.length > 0) {
+                    special_icon_name = names[0];
                 } else {
-                    special_icon_name = "system-run";
+                    special_icon_name = "folder";
                 }
 
-            } else if (file.is_directory) {
                 bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0 || file.is_expanded;
+
                 if (expanded) {
-                    var names = ((GLib.ThemedIcon) file.icon).get_names ();
-                    if (names.length > 0) {
-                        special_icon_name = names[0] + "-open";
-                    } else {
-                        special_icon_name = "folder-open";
-                    }
+                    suffix = "-open";
+                } else if (is_drop_file) {
+                    suffix = "-drag-accept";
                 }
+            } else if (is_drop_file) {
+                special_icon_name = "system-run";
+            }
+
+            if (is_drop_file) {
+                flags |= Gtk.CellRendererState.PRELIT;
             }
 
             if (special_icon_name != null) {
+                special_icon_name = special_icon_name + suffix;
                 var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
                 if (nicon != null) {
                     pb = nicon.get_pixbuf_nodefault ();
+                } else {
+                    special_icon_name = null;
                 }
             }
 
