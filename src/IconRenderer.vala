@@ -118,7 +118,12 @@ namespace Marlin {
             } else if (file.is_directory) {
                 bool expanded = (flags & Gtk.CellRendererState.EXPANDED) > 0 || file.is_expanded;
                 if (expanded) {
-                    special_icon_name = "folder-open";
+                    var names = ((GLib.ThemedIcon) file.icon).get_names ();
+                    if (names.length > 0) {
+                        special_icon_name = names[0] + "-open";
+                    } else {
+                        special_icon_name = "folder-open";
+                    }
                 }
             }
 
