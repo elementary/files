@@ -167,6 +167,10 @@ namespace Marlin {
                         }
                     }
                 }
+
+                if (prelit || focused) {
+                    pb = PF.PixbufUtils.lighten (pb);
+                }
             }
 
             if (pb == null) {
