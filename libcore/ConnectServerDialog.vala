@@ -318,7 +318,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
     private void show_connect_button () {
         connect_button.visible = true;
         continue_button.visible = false;
-        connect_button.sensitive = false;
+        connect_button.sensitive = valid_entries ();
         connect_button.grab_default ();
     }
 
@@ -386,7 +386,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
     private bool valid_password () {
         /* Assume if password entry visible then a password is mandatory */
-        return !(password_entry.needs_attention || (password_entry.visible && password_entry.text.length < 1));
+        return !password_entry.needs_attention;
     }
 
     private bool valid_entries () {
