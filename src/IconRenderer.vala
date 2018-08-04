@@ -170,8 +170,7 @@ namespace Marlin {
                 }
 
                 if (selected && focused) {
-                    var selected_state = Gtk.StateFlags.SELECTED;
-                    var bg = style_context.get_property ("background-color", selected_state |= widget.get_state_flags ());
+                    var bg = style_context.get_property ("background-color", state);
 
                     if (bg.holds (typeof (Gdk.RGBA))) {
                         var color = (Gdk.RGBA) bg;
