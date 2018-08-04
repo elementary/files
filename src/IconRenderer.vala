@@ -169,8 +169,9 @@ namespace Marlin {
                     state |= widget.get_state_flags ();
                 }
 
-                if (focused) {
-                    var bg = style_context.get_property ("background-color", state);
+                if (selected && focused) {
+                    var selected_state = Gtk.StateFlags.SELECTED;
+                    var bg = style_context.get_property ("background-color", selected_state |= widget.get_state_flags ());
 
                     if (bg.holds (typeof (Gdk.RGBA))) {
                         var color = (Gdk.RGBA) bg;
@@ -182,7 +183,7 @@ namespace Marlin {
                     }
                 }
 
-                if (prelit || focused) {
+                if (prelit) {
                     pb = PF.PixbufUtils.lighten (pb);
                 }
             }
@@ -197,7 +198,7 @@ namespace Marlin {
             style_context.restore ();
 
             /* Do not show selection helpers or emblems for very small icons */
-            if ((selected || prelit) && file != drop_file) {
+            if ((focused || selected || prelit) && file != drop_file) {
                 helper_size = Marlin.IconSize.LARGE_EMBLEM > (int.max (pixbuf.get_width (), pixbuf.get_height ()) / icon_scale) / 2 ?
                               Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
 
@@ -206,7 +207,7 @@ namespace Marlin {
                     special_icon_name = "selection-remove";
                 } else if (selected) {
                     special_icon_name = "selection-checked";
-                } else if (prelit) {
+                } else if (prelit || focused) {
                     special_icon_name = "selection-add";
                 }
 
@@ -234,7 +235,6 @@ namespace Marlin {
 
                         helper_x = helper_area.x;
                         helper_y = helper_area.y;
-
                         style_context.render_icon (cr, pix, helper_x * icon_scale, helper_y * icon_scale);
                         cr.paint ();
                     }

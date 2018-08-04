@@ -298,6 +298,7 @@ namespace FM {
                                                     bool scroll_to_top) {
             scroll_to_cell (path, scroll_to_top);
             tree.set_cursor (path, renderer, start_editing);
+            tree.cell_area.set_focus_cell (icon_renderer);
         }
 
         protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed, bool only_shift_pressed) {
