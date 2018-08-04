@@ -200,6 +200,10 @@ namespace FM {
         public bool single_click_mode { get; set; }
         protected uint previous_hover_zone = ClickZone.ICON;
 
+        /* Support for long press select in single-click mode */
+        private uint select_timeout_id = 0;
+        private Gtk.TreePath? pending_select_path = null;
+
         /* Cursors for different areas */
         private Gdk.Cursor editable_cursor;
         private Gdk.Cursor activatable_cursor;
@@ -1503,6 +1507,8 @@ namespace FM {
     /** Handle Drag source signals*/
 
         private void on_drag_begin (Gdk.DragContext context) {
+            cancel_timeout (ref select_timeout_id);
+            select_path (pending_select_path, true);
             drag_has_begun = true;
             click_data.should_activate = false;
         }
@@ -3199,7 +3205,27 @@ namespace FM {
         }
 
         protected virtual bool handle_primary_button_click (Gdk.EventButton event, Gtk.TreePath? path) {
+            if (single_click_mode) {
+                schedule_select (event, path);
+            }
             return true;
+        }
+
+        private void schedule_select (Gdk.EventButton event, Gtk.TreePath? path) {
+            cancel_timeout (ref select_timeout_id);
+            pending_select_path = null;
+
+            if (path == null) {
+                return;
+            }
+
+            pending_select_path = path.copy ();
+            select_timeout_id = Timeout.add (Gtk.Settings.get_default ().gtk_long_press_time, () => {
+                select_timeout_id = 0;
+                select_path (pending_select_path);
+                pending_select_path = null;
+                return false;
+            });
         }
 
         protected virtual bool handle_secondary_button_click (Gdk.EventButton event) {
@@ -3384,6 +3410,8 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
+            cancel_timeout (ref select_timeout_id);
+
             if (dnd_disabled) {
                 unblock_drag_and_drop ();
             }
