@@ -169,7 +169,7 @@ namespace Marlin {
 
         public override unowned Gtk.CellEditable? start_editing (Gdk.Event? event,
                                                                  Gtk.Widget widget,
-                                                                 string  path,
+                                                                 string path,
                                                                  Gdk.Rectangle background_area,
                                                                  Gdk.Rectangle cell_area,
                                                                  Gtk.CellRendererState flags) {
