@@ -183,7 +183,7 @@ namespace Marlin {
                     }
                 }
 
-                if (prelit) {
+                if (prelit) { /* Do not lighten if just focussed */
                     pb = PF.PixbufUtils.lighten (pb);
                 }
             }
@@ -199,15 +199,20 @@ namespace Marlin {
 
             /* Do not show selection helpers or emblems for very small icons */
             if ((focused || selected || prelit) && file != drop_file) {
-                helper_size = Marlin.IconSize.LARGE_EMBLEM > (int.max (pixbuf.get_width (), pixbuf.get_height ()) / icon_scale) / 2 ?
-                              Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
+                if (focused &&!(selected || prelit)) {
+                    /* Always use small helper to show focus (use smaller?) to minimise obscuration of icon*/
+                    helper_size = Marlin.IconSize.EMBLEM;
+                } else {
+                    helper_size = Marlin.IconSize.LARGE_EMBLEM > (int.max (pixbuf.get_width (), pixbuf.get_height ()) / icon_scale) / 2 ?
+                                  Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
+                }
 
                 special_icon_name = null;
                 if (selected && prelit) {
                     special_icon_name = "selection-remove";
                 } else if (selected) {
                     special_icon_name = "selection-checked";
-                } else if (prelit || focused) {
+                } else if (prelit || focused) { /* grey helper to show focus position */
                     special_icon_name = "selection-add";
                 }
 
