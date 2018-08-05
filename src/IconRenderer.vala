@@ -198,13 +198,9 @@ namespace Marlin {
 
             /* Do not show selection helpers or emblems for very small icons */
             if ((focused || selected || prelit) && file != drop_file) {
-                if (focused &&!(selected || prelit)) {
-                    /* Always use small helper to show focus (use smaller?) to minimise obscuration of icon*/
-                    helper_size = Marlin.IconSize.EMBLEM;
-                } else {
-                    helper_size = Marlin.IconSize.LARGE_EMBLEM > (int.max (pixbuf.get_width (), pixbuf.get_height ()) / icon_scale) / 2 ?
-                                  Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
-                }
+               var half_icon_size = int.min (pixbuf.get_width (), pixbuf.get_height ()) / icon_scale / 2;
+               helper_size = Marlin.IconSize.LARGE_EMBLEM > half_icon_size ?
+                             Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
 
                 special_icon_name = null;
                 if (selected && prelit) {
