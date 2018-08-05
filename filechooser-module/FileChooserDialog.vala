@@ -55,7 +55,8 @@ public class CustomFileChooserDialog : Object {
         chooser_dialog = dialog;
         chooser_dialog.can_focus = true;
         chooser_dialog.deletable = false;
-        chooser_dialog.local_only = false;
+        /* If not local only during creation, strange bug occurs on fresh installs */
+        chooser_dialog.local_only = true;
 
         var settings = new Settings ("io.elementary.files.preferences");
         is_single_click = settings.get_boolean ("single-click");
@@ -77,7 +78,6 @@ public class CustomFileChooserDialog : Object {
         button_forward.sensitive = false;
 
         var location_bar = new Marlin.View.Chrome.BasicLocationBar ();
-        location_bar.set_display_path (chooser_dialog.get_current_folder_uri ());
         location_bar.hexpand = true;
 
         header_bar.pack_start (button_back);
@@ -92,19 +92,23 @@ public class CustomFileChooserDialog : Object {
         chooser_dialog.set_titlebar (header_bar);
         chooser_dialog.show_all ();
 
+        /* Connect signals */
         button_back.clicked.connect (() => {
+            /* require history not to contain nulls */
             is_previous = true;
             chooser_dialog.set_current_folder_uri (previous_paths.pop_head ());
         });
 
         button_forward.clicked.connect (() => {
+            /* require history not to contain nulls */
             is_button_next = true;
             chooser_dialog.set_current_folder_uri (next_paths.pop_head ());
         });
 
         chooser_dialog.current_folder_changed.connect (() => {
-            var previous_path = current_path;
-            current_path = chooser_dialog.get_current_folder_uri ();
+            var previous_path = current_path  ?? Environment.get_home_dir ();
+            current_path = chooser_dialog.get_current_folder_uri () ?? Environment.get_home_dir ();
+
             if (previous_path == null || previous_path == current_path) {
                 location_bar.set_display_path (current_path);
                 return;
@@ -126,21 +130,27 @@ public class CustomFileChooserDialog : Object {
             button_forward.sensitive = !next_paths.is_empty ();
             location_bar.set_display_path (current_path);
         });
-
         chooser_dialog.unrealize.connect (() => {
-            chooser_settings.set_string ("last-folder-uri", location_bar.get_display_path ());
+            var last_path = location_bar.get_display_path () ?? Environment.get_home_dir ();
+            chooser_settings.set_string ("last-folder-uri", last_path);
         });
 
         location_bar.path_change_request.connect ((uri) => {
-            chooser_dialog.set_current_folder (uri);
+            if (uri != null) {
+                chooser_dialog.set_current_folder (uri);
+            }
+            /* OK to set to not local only now.*/
+            chooser_dialog.local_only = false;
         });
 
         /* Try to provide a syntactically valid path or fallback to user home directory
          * The setting will be valid except after a fresh install or if the user
          * edits the setting to an invalid path. */
 
-        var last_folder = PF.FileUtils.sanitize_path (chooser_settings.get_string ("last-folder-uri"),
-                                                      Environment.get_home_dir ());
+        var last_folder = chooser_settings.get_string ("last-folder-uri");
+        if (last_folder.length < 1) {
+            last_folder = Environment.get_home_dir ();
+        }
 
         chooser_dialog.set_current_folder_uri (last_folder);
     }
