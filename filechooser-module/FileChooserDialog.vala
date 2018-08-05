@@ -135,7 +135,14 @@ public class CustomFileChooserDialog : Object {
             chooser_dialog.set_current_folder (uri);
         });
 
-        chooser_dialog.set_current_folder_uri (chooser_settings.get_string ("last-folder-uri"));
+        /* Try to provide a syntactically valid path or fallback to user home directory
+         * The setting will be valid except after a fresh install or if the user
+         * edits the setting to an invalid path. */
+
+        var last_folder = PF.FileUtils.sanitize_path (chooser_settings.get_string ("last-folder-uri"),
+                                                      Environment.get_home_dir ());
+
+        chooser_dialog.set_current_folder_uri (last_folder);
     }
 
     /*
