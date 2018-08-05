@@ -110,9 +110,6 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
             transient_for: window
         );
 
-        var t = new Gtk.Label (_("Connect to Server"));
-        t.get_style_context ().add_class (Granite.STYLE_CLASS_PRIMARY_LABEL);
-        set_titlebar (t);
         show_all ();
         type_combobox.active = 0;
     }
@@ -121,13 +118,13 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         deletable = false;
         resizable = false;
 
+        info_label = new Gtk.Label (null);
+
         info_bar = new Gtk.InfoBar ();
         info_bar.message_type = Gtk.MessageType.INFO;
-        info_bar.no_show_all = true;
+        info_bar.revealed = false;
         info_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_FRAME);
-        info_label = new Gtk.Label (null);
         info_bar.get_content_area ().add (info_label);
-        info_bar.hide ();
 
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 
@@ -191,50 +188,41 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
         var button_box = new Gtk.ButtonBox (Gtk.Orientation.HORIZONTAL);
         button_box.layout_style = Gtk.ButtonBoxStyle.END;
-        button_box.margin_top = 12;
-
-        cancel_button.margin = 3;
-        connect_button.margin = 3;
-        continue_button.margin = 3;
-
+        button_box.margin_top = 24;
+        button_box.spacing = 6;
         button_box.add (cancel_button);
         button_box.add (connect_button);
         button_box.add (continue_button);
 
         var grid = new Gtk.Grid ();
-        grid.margin_start = grid.margin_end = 12;
-        grid.margin_bottom = 6;
         grid.row_spacing = 6;
-        grid.column_spacing = 3;
-        grid.attach (server_header_label, 0, 0, 6, 1);
+        grid.column_spacing = 6;
+        grid.attach (info_bar, 0, 0, 6, 1);
 
-        grid.attach (server_label, 0, 1, 1, 1);
-        grid.attach (server_entry, 1, 1, 3, 1);
-        grid.attach (port_label, 4, 1, 1, 1);
-        grid.attach (port_spinbutton, 5, 1, 1, 1);
-        grid.attach (type_label, 0, 2, 1, 1);
-        grid.attach (type_combobox, 1, 2, 3, 1);
+        grid.attach (server_header_label, 0, 1, 6, 1);
 
-        grid.attach (share_label, 0, 3, 1, 1);
-        grid.attach (share_entry, 1, 3, 3, 1);
-        grid.attach (folder_label, 0, 4, 1, 1);
-        grid.attach (folder_entry, 1, 4, 5, 1);
+        grid.attach (server_label, 0, 2);
+        grid.attach (server_entry, 1, 2, 3, 1);
+        grid.attach (port_label, 4, 2);
+        grid.attach (port_spinbutton, 5, 2);
+        grid.attach (type_label, 0, 3);
+        grid.attach (type_combobox, 1, 3, 5, 1);
 
-        grid.attach (user_header_label, 0, 5, 6, 1);
+        grid.attach (share_label, 0, 4);
+        grid.attach (share_entry, 1, 4, 3, 1);
+        grid.attach (folder_label, 0, 5);
+        grid.attach (folder_entry, 1, 5, 5, 1);
 
-        grid.attach (domain_label, 0, 6, 1, 1);
-        grid.attach (domain_entry, 1, 6, 5, 1);
-        grid.attach (user_label, 0, 7, 1, 1);
-        grid.attach (user_entry, 1, 7, 5, 1);
-        grid.attach (password_label, 0, 8, 1, 1);
-        grid.attach (password_entry, 1, 8, 5, 1);
+        grid.attach (user_header_label, 0, 6, 6, 1);
 
-        grid.attach (remember_checkbutton, 0, 9, 5, 1);
+        grid.attach (domain_label, 0, 7);
+        grid.attach (domain_entry, 1, 7, 5, 1);
+        grid.attach (user_label, 0, 8);
+        grid.attach (user_entry, 1, 8, 5, 1);
+        grid.attach (password_label, 0, 9);
+        grid.attach (password_entry, 1, 9, 5, 1);
 
-        var content_grid = new Gtk.Grid ();
-        content_grid.orientation = Gtk.Orientation.VERTICAL;
-        content_grid.add (info_bar);
-        content_grid.add (grid);
+        grid.attach (remember_checkbutton, 1, 10, 4, 1);
 
         var connecting_spinner = new Gtk.Spinner ();
         connecting_spinner.start ();
@@ -251,11 +239,15 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
         stack = new Gtk.Stack ();
         stack.transition_type = Gtk.StackTransitionType.SLIDE_LEFT_RIGHT;
-        stack.add_named (content_grid, "content");
+        stack.add_named (grid, "content");
         stack.add_named (connecting_grid, "connecting");
 
-        get_content_area ().add (stack);
-        get_content_area ().add (button_box);
+        var content_area = get_content_area ();
+        content_area.border_width = 0;
+        content_area.margin_end = content_area.margin_start = 12;
+        content_area.margin_bottom = 2;
+        content_area.add (stack);
+        content_area.add (button_box);
 
         /* skip methods that don't have corresponding gvfs uri schemes */
         unowned string[] supported_schemes = GLib.Vfs.get_default ().get_supported_uri_schemes ();
@@ -314,7 +306,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         share_entry.activates_default = server_entry.activates_default;
 
         show_connect_button ();
-        info_bar.visible = false;
+        info_bar.revealed = false;
 
     }
 
@@ -334,7 +326,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
     private void show_connecting (bool show_connecting) {
         if (show_connecting) {
-            info_bar.hide ();
+            info_bar.revealed = false;
             stack.visible_child_name = "connecting";
             connect_button.visible = false;
             connect_button.sensitive = false;
@@ -368,8 +360,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
     private void show_info () {
         show_connecting (false);
-        info_bar.no_show_all = false;
-        info_bar.show_all ();
+        info_bar.revealed = true;
     }
 
     private bool valid_server () {
@@ -390,7 +381,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
     }
 
     private bool valid_entries () {
-        info_bar.visible = false;
+        info_bar.revealed = false;
         return valid_server () && valid_user () && valid_domain () && valid_password ();
     }
 
@@ -623,12 +614,13 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         public DetailLabel (string label, Gtk.Widget linked_widget) {
            Object (
                 label: label,
-                xalign: 0,
                 linked_widget: linked_widget
             );
+        }
 
+        construct {
+            xalign = 1;
             linked_widget.bind_property ("visible", this, "visible", GLib.BindingFlags.SYNC_CREATE);
-
         }
     }
 }

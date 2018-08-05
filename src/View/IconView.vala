@@ -542,7 +542,7 @@ namespace FM {
             int pix_y_offset = (area.height - pix_height) / 2;
 
             bool on_icon = (x_offset >= pix_x_offset &&
-                            x_offset <= pix_x_offset + pix_width  &&
+                            x_offset <= pix_x_offset + pix_width &&
                             y_offset >= pix_y_offset &&
                             y_offset <= pix_y_offset + pix_height);
 
