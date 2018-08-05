@@ -3302,15 +3302,20 @@ namespace FM {
                             break;
 
                         case ClickZone.HELPER:
-                            /* Only for selecting individual files so ignore any mods */
-                            if (path_selected) {
-                                unselect_path (path);
+                            bool multi_select = only_control_pressed || only_shift_pressed;
+                            if (multi_select) { /* Treat like modified click on icon */
+                                update_selected_files_and_menu ();
+                                result = only_shift_pressed && handle_multi_select (path);
                             } else {
-                                should_deselect = false;
-                                select_path (path, true); /* Cursor follow and selection preserved */
-                            }
+                                if (path_selected) {
+                                    unselect_path (path);
+                                } else {
+                                    should_deselect = false;
+                                    select_path (path, true); /* Cursor follow and selection preserved */
+                                }
 
-                            result = true; /* Prevent rubberbanding and deselection of other paths */
+                                result = true; /* Prevent rubberbanding and deselection of other paths */
+                            }
                             break;
 
                         case ClickZone.EXPANDER:
