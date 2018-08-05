@@ -202,7 +202,6 @@ namespace FM {
 
         /* Support for long press select in single-click mode */
         private uint select_timeout_id = 0;
-        private Gtk.TreePath? pending_select_path = null;
 
         /* Cursors for different areas */
         private Gdk.Cursor editable_cursor;
@@ -1508,7 +1507,7 @@ namespace FM {
 
         private void on_drag_begin (Gdk.DragContext context) {
             cancel_timeout (ref select_timeout_id);
-            select_path (pending_select_path, true);
+            select_path (click_data.path, true);
             drag_has_begun = true;
             click_data.should_activate = false;
         }
@@ -3213,17 +3212,20 @@ namespace FM {
 
         private void schedule_select (Gdk.EventButton event, Gtk.TreePath? path) {
             cancel_timeout (ref select_timeout_id);
-            pending_select_path = null;
 
             if (path == null) {
                 return;
             }
 
-            pending_select_path = path.copy ();
             select_timeout_id = Timeout.add (Gtk.Settings.get_default ().gtk_long_press_time, () => {
                 select_timeout_id = 0;
-                select_path (pending_select_path);
-                pending_select_path = null;
+                /* This timeout is cancelled on button release or drag so click_data.path should always be valid
+                 * but check anyway.  */
+                if (click_data.path != null) {
+                    select_path (click_data.path);
+                }
+                click_data.should_activate = false; /* This only runs if selecting instead of activating */
+                click_data.should_select = false; /* No need to select again on button release */
                 return false;
             });
         }
@@ -3246,10 +3248,10 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
+            cancel_timeout (ref select_timeout_id); /* In case second button pressed before first released */
             click_data.should_activate = false;
             click_data.should_deselect = false;
             click_data.should_scroll = false;
-            click_data.path = null;
             click_data.zone = ClickZone.INVALID;
 
             click_data.event_time = event.get_time ();
@@ -3280,8 +3282,6 @@ namespace FM {
                 unselect_path (path);
                 path = null;
             }
-
-            click_data.path = path;
 
             var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
             bool no_mods = (mods == 0);
@@ -3317,6 +3317,7 @@ namespace FM {
             bool result = false; // default false so events get passed to Window
             click_data.should_activate = false;
             click_data.should_scroll = true;
+            click_data.path = path != null ? path.copy () : null;
 
             switch (event.button) {
                 case Gdk.BUTTON_PRIMARY: // button 1
@@ -3367,7 +3368,7 @@ namespace FM {
                                 if (path_selected) {
                                     unselect_path (path);
                                 } else {
-                                    should_deselect = false;
+                                    click_data.should_deselect = false;
                                     select_path (path, true); /* Cursor follow and selection preserved */
                                 }
 
@@ -3438,10 +3439,7 @@ namespace FM {
 
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
-                var delay = uint32.max (event.get_time () - click_data.event_time, 0);
-                var long_press = Gtk.Settings.get_default ().gtk_long_press_time;
-
-                if (click_data.should_activate && delay < long_press) {
+                if (click_data.should_activate) {
                     select_path (click_data.path);
                     if (event.button == Gdk.BUTTON_MIDDLE) {
                         activate_selected_items (Marlin.OpenFlag.NEW_TAB);
@@ -3450,7 +3448,7 @@ namespace FM {
                     }
                 } else if (click_data.should_deselect) { /* will not be true for null path */
                     unselect_path (click_data.path);
-                } else if (click_data.should_select && (delay > long_press || !single_click_mode)) {
+                } else if (click_data.should_select && !single_click_mode) {
                     select_path (click_data.path);
                 }
             }
