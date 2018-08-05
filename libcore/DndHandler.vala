@@ -288,30 +288,35 @@ namespace Marlin {
                                                               string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            set_stringbuilder_from_file_list (sb, file_list, prefix);
+            set_stringbuilder_from_file_list (sb, file_list, prefix, false);  /* Use escaped paths */
+            sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
             selection_data.@set (selection_data.get_target (),
                                  8,
                                  sb.data);
 
         }
+
         public static void set_selection_text_from_file_list (Gtk.SelectionData selection_data,
                                                               GLib.List<GOF.File> file_list,
                                                               string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            set_stringbuilder_from_file_list (sb, file_list, prefix);
-            selection_data.set_text (sb.str, (int)(sb.len));
-
+            set_stringbuilder_from_file_list (sb, file_list, prefix, true); /* Use sanitized paths */
+            selection_data.set_text (sb.str, (int)(sb.len)); /* Do not want new line at end */
         }
 
-        private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb, GLib.List<GOF.File> file_list, string prefix) {
+        private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb, GLib.List<GOF.File> file_list,
+                                                              string prefix, bool sanitize_path = false) {
             if (file_list != null && file_list.data != null && file_list.data is GOF.File) {
                 bool in_recent = file_list.data.is_recent_uri_scheme ();
 
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
+                    if (sanitize_path) {
+                        target = PF.FileUtils.sanitize_path (target);
+                    }
+
                     sb.append (target);
-                    sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
                 });
             } else {
                 warning ("Invalid file list for drag and drop ignored");
