@@ -88,6 +88,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
     private Gtk.InfoBar info_bar;
     private DetailEntry server_entry;
     private Gtk.SpinButton port_spinbutton;
+    private Gtk.Revealer port_revealer;
     private DetailEntry share_entry;
     private Gtk.ComboBox type_combobox;
     private DetailEntry folder_entry;
@@ -131,13 +132,20 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         server_entry = new DetailEntry (_("Server name or IP address"));
         var server_label = new DetailLabel (_("Server:"), server_entry);
 
+        port_revealer = new Gtk.Revealer ();
+        /* Without a transition, the window width shrinks when the child is hidden */
+        port_revealer.transition_type = Gtk.RevealerTransitionType.CROSSFADE;
+        port_revealer.transition_duration = 500;
+        var port_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 6);
         port_spinbutton = new Gtk.SpinButton.with_range (0, ushort.MAX, 1);
         port_spinbutton.digits = 0;
         port_spinbutton.numeric = true;
         port_spinbutton.update_policy = Gtk.SpinButtonUpdatePolicy.IF_VALID;
         var port_label = new DetailLabel (_("Port:"), port_spinbutton);
         port_label.xalign = 1;
-
+        port_box.add (port_label);
+        port_box.add (port_spinbutton);
+        port_revealer.add (port_box);
 
         var type_store = new Gtk.ListStore (2, typeof (MethodInfo), typeof (string));
         type_combobox = new Gtk.ComboBox.with_model (type_store);
@@ -203,8 +211,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
 
         grid.attach (server_label, 0, 2);
         grid.attach (server_entry, 1, 2, 3, 1);
-        grid.attach (port_label, 4, 2);
-        grid.attach (port_spinbutton, 5, 2);
+        grid.attach (port_revealer, 5, 2);
         grid.attach (type_label, 0, 3);
         grid.attach (type_combobox, 1, 3, 5, 1);
 
@@ -297,9 +304,9 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         Value val;
         type_combobox.get_model ().get_value (iter, 0, out val);
         MethodInfo* method_info = (MethodInfo*)val.get_boxed ();
-        share_entry.visible = WidgetsFlag.SHARE in method_info.flags;
-        port_spinbutton.sensitive = WidgetsFlag.PORT in method_info.flags;
+        port_revealer.set_reveal_child (WidgetsFlag.PORT in method_info.flags);
         port_spinbutton.value = method_info.port;
+        share_entry.visible = WidgetsFlag.SHARE in method_info.flags;
         user_header_label.visible = WidgetsFlag.USER in method_info.flags || WidgetsFlag.DOMAIN in method_info.flags;
         user_entry.visible = WidgetsFlag.USER in method_info.flags;
         password_entry.visible = WidgetsFlag.USER in method_info.flags;
