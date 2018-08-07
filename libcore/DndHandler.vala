@@ -289,7 +289,6 @@ namespace Marlin {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
             set_stringbuilder_from_file_list (sb, file_list, prefix, false);  /* Use escaped paths */
-            sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
             selection_data.@set (selection_data.get_target (),
                                  8,
                                  sb.data);
@@ -302,7 +301,8 @@ namespace Marlin {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
             set_stringbuilder_from_file_list (sb, file_list, prefix, true); /* Use sanitized paths */
-            selection_data.set_text (sb.str, (int)(sb.len)); /* Do not want new line at end */
+            sb.truncate (sb.len - 2);  /* Do not want "\r\n" at end when pasting into text*/
+            selection_data.set_text (sb.str, (int)(sb.len));
         }
 
         private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb, GLib.List<GOF.File> file_list,
@@ -317,6 +317,7 @@ namespace Marlin {
                     }
 
                     sb.append (target);
+                    sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
                 });
             } else {
                 warning ("Invalid file list for drag and drop ignored");

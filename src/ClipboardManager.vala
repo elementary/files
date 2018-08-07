@@ -244,6 +244,7 @@ namespace Marlin {
 
             switch (target_info) {
                 case ClipboardTarget.GNOME_COPIED_FILES: /* Pasting into a file handler */
+warning ("gnome copied");
                     string prefix = manager.files_cutted ? "cut" : (manager.files_linked ? "link" : "copy");
                     DndHandler.set_selection_data_from_file_list (sd,
                                                                   manager.files,
@@ -251,6 +252,7 @@ namespace Marlin {
                     break;
 
                 case ClipboardTarget.UTF8_STRING: /* Pasting into a text handler */
+warning ("utf8 string");
                     DndHandler.set_selection_text_from_file_list (sd, manager.files, "");
                     break;
                 default:
