@@ -763,7 +763,6 @@ namespace FM {
 /*** Private methods */
     /** File operations */
 
-
         private void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
             if (is_frozen) {
                 return;
@@ -781,9 +780,9 @@ namespace FM {
                 screen = get_screen ();
             }
 
-            if (file.is_folder () ||
+            if (flag != Marlin.OpenFlag.APP && (file.is_folder () ||
                 file.get_ftype () == "inode/directory" ||
-                file.is_root_network_folder ()) {
+                file.is_root_network_folder ())) {
 
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
@@ -801,9 +800,7 @@ namespace FM {
                 }
             } else if (!in_trash) {
                 if (only_one_file) {
-                    if (file.is_root_network_folder ()) {
-                        load_location (location);
-                    } else if (file.is_executable ()) {
+                    if (file.is_executable ()) {
                         var content_type = file.get_ftype ();
 
                         if (GLib.ContentType.is_a (content_type, "text/plain")) {
@@ -1107,7 +1104,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
-            activate_selected_items (Marlin.OpenFlag.DEFAULT);
+            activate_selected_items (Marlin.OpenFlag.APP);
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2391,7 +2388,7 @@ namespace FM {
         private bool app_is_this_app (AppInfo ai) {
             string exec_name = ai.get_executable ();
 
-            return (exec_name == APP_NAME || exec_name == TERMINAL_NAME);
+            return (exec_name == APP_NAME);
         }
 
         private void filter_default_app_from_open_with_apps () {
