@@ -22,7 +22,7 @@
 */
 
 namespace Marlin.View {
-
+    public const double SWIPE_THRESHOLD = 50;
     public class Window : Gtk.ApplicationWindow {
         const GLib.ActionEntry [] win_entries = {
             {"new_window", action_new_window},
@@ -145,16 +145,16 @@ namespace Marlin.View {
             swipe_gesture.propagation_phase = Gtk.PropagationPhase.CAPTURE;
 
             swipe_gesture.swipe.connect ((p0, p1) => {
-                if (p1.abs () < p0.abs () / 3)  {
-                    if (p0 > 10) {
+                if (p1.abs () < p0.abs () / 3)  { /* Approximately horizontal */
+                    if (p0 > SWIPE_THRESHOLD) { /* Left to right */
                         win_actions.activate_action ("go_to", new GLib.Variant.string ("FORWARD"));
-                    } else if (p0 < -10) {
+                    } else if (p0 < -SWIPE_THRESHOLD) {  /* Right to left */
                         win_actions.activate_action ("go_to", new GLib.Variant.string ("BACK"));
                     }
-                } else if (p0.abs () < p1.abs () / 3)  {
-                    if (p1 > 10) {
-                        /* Downward swipe not assigned an action at present */
-                    } else if (p1 < -10) {
+                } else if (p0.abs () < p1.abs () / 3)  { /* Approximately vertical */
+                    if (p1 > SWIPE_THRESHOLD) {  /* top to bottom */
+                        /* No action assigned at present */
+                    } else if (p1 < -SWIPE_THRESHOLD) { /* bottom to top */
                         win_actions.activate_action ("go_to", new GLib.Variant.string ("UP"));
                     }
                 }
