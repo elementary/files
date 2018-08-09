@@ -75,6 +75,8 @@ namespace Marlin.View {
         public signal void folder_deleted (GLib.File location);
         public signal void free_space_change ();
 
+        private Gtk.GestureSwipe swipe_gesture;
+
         public Window (Marlin.Application application, Gdk.Screen myscreen = Gdk.Screen.get_default ()) {
             Object (
                 application: application,
@@ -136,6 +138,27 @@ namespace Marlin.View {
                     move (default_x, default_y);
                 }
             }
+
+            add_events (Gdk.EventMask.TOUCH_MASK | Gdk.EventMask.TOUCHPAD_GESTURE_MASK);
+            swipe_gesture = new Gtk.GestureSwipe (this);
+            swipe_gesture.button = Gdk.BUTTON_MIDDLE;
+            swipe_gesture.propagation_phase = Gtk.PropagationPhase.CAPTURE;
+
+            swipe_gesture.swipe.connect ((p0, p1) => {
+                if (p1.abs () < p0.abs () / 3)  {
+                    if (p0 > 10) {
+                        win_actions.activate_action ("go_to", new GLib.Variant.string ("FORWARD"));
+                    } else if (p0 < -10) {
+                        win_actions.activate_action ("go_to", new GLib.Variant.string ("BACK"));
+                    }
+                } else if (p0.abs () < p1.abs () / 3)  {
+                    if (p1 > 10) {
+                        /* Downward swipe not assigned an action at present */
+                    } else if (p1 < -10) {
+                        win_actions.activate_action ("go_to", new GLib.Variant.string ("UP"));
+                    }
+                }
+            });
 
             present ();
         }
