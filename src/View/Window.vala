@@ -76,6 +76,7 @@ namespace Marlin.View {
         public signal void free_space_change ();
 
         private Gtk.GestureSwipe swipe_gesture;
+        private Gtk.GestureMultiPress mp_gesture;
 
         public Window (Marlin.Application application, Gdk.Screen myscreen = Gdk.Screen.get_default ()) {
             Object (
@@ -140,8 +141,7 @@ namespace Marlin.View {
             }
 
             add_events (Gdk.EventMask.TOUCH_MASK | Gdk.EventMask.TOUCHPAD_GESTURE_MASK);
-            swipe_gesture = new Gtk.GestureSwipe (this);
-            swipe_gesture.button = Gdk.BUTTON_MIDDLE;
+            swipe_gesture = (Gtk.GestureSwipe)(new Object (typeof (Gtk.GestureSwipe), "n_points", 2, null));
             swipe_gesture.propagation_phase = Gtk.PropagationPhase.CAPTURE;
 
             swipe_gesture.swipe.connect ((p0, p1) => {
