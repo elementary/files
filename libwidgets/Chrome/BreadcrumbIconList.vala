@@ -113,17 +113,16 @@ namespace Marlin.View.Chrome {
             icon_info_list = new Gee.ArrayList<BreadcrumbIconInfo> ();
 
             /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_AFP));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("dav://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_DAV));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("davs://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_DAVS));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("ftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_FTP));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("network://", Marlin.ICON_NETWORK_SYMBOLIC, Marlin.PROTOCOL_NAME_NETWORK));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("sftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_SFTP));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("smb://", Marlin.ICON_NETWORK_SERVER_SYMBOLIC, Marlin.PROTOCOL_NAME_SMB));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("trash://", Marlin.ICON_TRASH_SYMBOLIC, Marlin.PROTOCOL_NAME_TRASH));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("recent://", Marlin.ICON_RECENT_SYMBOLIC, Marlin.PROTOCOL_NAME_RECENT));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("mtp://[", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_MTP));
-
+            add_protocol_directory ("afp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("dav", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("davs", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("ftp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("sftp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("mtp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("network", Marlin.ICON_NETWORK_SYMBOLIC);
+            add_protocol_directory ("smb", Marlin.ICON_NETWORK_SERVER_SYMBOLIC);
+            add_protocol_directory ("trash", Marlin.ICON_TRASH_SYMBOLIC);
+            add_protocol_directory ("recent", Marlin.ICON_RECENT_SYMBOLIC);
 
             /* music */
             string? dir;
@@ -187,6 +186,11 @@ namespace Marlin.View.Chrome {
             /* filesystem */
             var icon = new BreadcrumbIconInfo.special_directory (Path.DIR_SEPARATOR_S, Marlin.ICON_FILESYSTEM_SYMBOLIC);
             icon_info_list.add (icon);
+        }
+
+        private void add_protocol_directory (string protocol, string icon) {
+            var separator = "://" + (protocol == "mtp" ? "[" : "");
+            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory (protocol + separator, icon, protocol_to_name (protocol)));
         }
 
         private void make_icons () {
