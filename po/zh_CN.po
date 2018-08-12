@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-01-05 01:19+0000\n"
+"PO-Revision-Date: 2018-08-12 12:18+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.elementary.io/projects/"
-"files/files/zh_CN/>\n"
+"files/files/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -154,19 +154,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "解析桌面文件 %s 失败"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "解析桌面文件 %s 失败"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "解析桌面文件 %s 失败"
+msgstr "从文件 %s 创建指令失败"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "解析桌面文件 %s 失败"
+msgstr "启动桌面文件 %s 失败"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1266,7 +1265,7 @@ msgstr "其他应用…"
 
 #: ../src/View/AbstractDirectoryView.vala:2175
 msgid "Templates"
-msgstr ""
+msgstr "模板"
 
 #: ../src/View/AbstractDirectoryView.vala:2422
 msgid "Untitled %s"
@@ -1401,7 +1400,7 @@ msgstr "(%s 可用， 共计 %s)"
 
 #: ../src/View/Sidebar.vala:1360
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "加载卷 %s 出错"
 
 #: ../src/View/Sidebar.vala:1375
 msgid "Unable to start %s"
@@ -1535,12 +1534,11 @@ msgstr "重新载入"
 #: ../src/View/Widgets/LocationBar.vala:196
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
-msgstr ""
+msgstr "搜索或输入路径"
 
 #: ../src/View/Widgets/LocationBar.vala:205
-#, fuzzy
 msgid "Searching…"
-msgstr "正在载入…"
+msgstr "正在搜索…"
 
 #: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
@@ -1641,7 +1639,6 @@ msgid "Enable debug logging"
 msgstr "启动调试日志"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
@@ -1774,7 +1771,6 @@ msgid "Deleted:"
 msgstr "删除时间："
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "文件格式："
 
@@ -1881,12 +1877,10 @@ msgid "Failed to open files"
 msgstr "文件打开失败"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "无法重命名为 '%s'"
+msgstr "无法打开地址"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
 msgstr "无法使用此应用打开文件或地址"
 
@@ -2143,14 +2137,12 @@ msgid "Empty the Trash"
 msgstr "清空回收站"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "全部恢复"
+msgstr "恢复选中"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " 已选中"
+msgstr "删除选中"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2205,9 +2197,8 @@ msgid "Paste"
 msgstr "粘贴"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "粘贴"
+msgstr "粘贴链接"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2219,16 +2210,15 @@ msgstr "复制"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "复制为链接"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "粘贴到文件夹中"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "粘贴到文件夹中"
+msgstr "粘贴链接到文件夹"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2248,7 +2238,7 @@ msgstr "倒序"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "文件夹在前"
 
 #~ msgid "These items may be restored or deleted from the trash."
 #~ msgstr "这些项目可以恢复或从回收站删除。"
