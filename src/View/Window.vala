@@ -42,8 +42,6 @@ namespace Marlin.View {
             {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
 
-        public GLib.SimpleActionGroup win_actions;
-
         const string [] mode_strings = {
             "ICON",
             "LIST",
@@ -92,9 +90,7 @@ namespace Marlin.View {
         }
 
         construct {
-            win_actions = new GLib.SimpleActionGroup ();
-            win_actions.add_action_entries (win_entries, this);
-            insert_action_group ("win", win_actions);
+            add_action_entries (win_entries, this);
 
             undo_actions_set_insensitive ();
 
@@ -142,7 +138,7 @@ namespace Marlin.View {
         }
 
         private void build_window () {
-            view_switcher = new Chrome.ViewSwitcher (win_actions.lookup_action ("view_mode") as SimpleAction);
+            view_switcher = new Chrome.ViewSwitcher (lookup_action ("view_mode") as SimpleAction);
             view_switcher.mode = Preferences.settings.get_enum ("default-viewmode");
 
             top_menu = new Chrome.TopMenu (view_switcher);
@@ -233,7 +229,7 @@ namespace Marlin.View {
                         if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
                             /* Use printable characters to initiate search */
                             if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
-                                win_actions.activate_action ("find", null);
+                                activate_action ("find", null);
                                 key_press_event (event);
                                 return true;
                             }
@@ -796,7 +792,7 @@ namespace Marlin.View {
         }
 
         private GLib.SimpleAction? get_action (string action_name) {
-            return win_actions.lookup_action (action_name) as GLib.SimpleAction?;
+            return lookup_action (action_name) as GLib.SimpleAction?;
         }
 
         private Marlin.ViewMode real_mode (Marlin.ViewMode mode) {
@@ -813,10 +809,6 @@ namespace Marlin.View {
                     break;
             }
             return (Marlin.ViewMode)(Preferences.settings.get_enum ("default-viewmode"));
-        }
-
-        public new GLib.SimpleActionGroup get_action_group () {
-            return this.win_actions;
         }
 
         public void quit () {
