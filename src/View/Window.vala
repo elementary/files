@@ -1014,8 +1014,10 @@ namespace Marlin.View {
         }
 
         private void update_labels (string uri) {
-            set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
-            top_menu.update_location_bar (uri);
+            if (current_tab != null) { /* Can happen during restore */
+                set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
+                top_menu.update_location_bar (uri);
+            }
         }
 
         public void mount_removed (Mount mount) {
