@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-08-12 12:18+0000\n"
+"PO-Revision-Date: 2018-08-13 00:03+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -1624,7 +1624,7 @@ msgstr "显示程序版本。"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
-msgstr "在新标签中打开 URI"
+msgstr "在新标签中打开地址"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -1640,7 +1640,7 @@ msgstr "启动调试日志"
 
 #: ../src/Application.vala:130
 msgid "[URI…]"
-msgstr "[URI...]"
+msgstr "[地址...]"
 
 #: ../src/Application.vala:133
 msgid ""
@@ -1654,7 +1654,7 @@ msgstr ""
 
 #: ../src/Application.vala:161
 msgid "--quit cannot be used with URIs."
-msgstr "--quit 不能与 URI 一起使用。"
+msgstr "--quit 不能与地址一起使用。"
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
