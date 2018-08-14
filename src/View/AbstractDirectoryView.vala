@@ -740,14 +740,6 @@ namespace FM {
             return false;
         }
 
-        protected void show_or_queue_context_menu (Gdk.Event event) {
-            if (selected_files != null) {
-                queue_context_menu (event);
-            } else {
-                show_context_menu (event);
-            }
-        }
-
         protected unowned GLib.List<GOF.File> get_selected_files_for_transfer (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
             unowned GLib.List<GOF.File> list = null;
 
@@ -1415,7 +1407,7 @@ namespace FM {
     /** Handle popup menu events */
         private bool on_popup_menu () {
             Gdk.Event event = Gtk.get_current_event ();
-            show_or_queue_context_menu (event);
+            show_context_menu (event);
             return true;
         }
 
@@ -1423,11 +1415,6 @@ namespace FM {
         private bool on_drag_timeout_button_release (Gdk.EventButton event) {
             /* Only active during drag timeout */
             cancel_drag_timer ();
-
-            if (drag_button == Gdk.BUTTON_SECONDARY) {
-                show_context_menu (event);
-            }
-
             return true;
         }
 
@@ -1450,11 +1437,11 @@ namespace FM {
                 }
 
                 context = Gtk.drag_begin_with_coordinates (widget,
-                                target_list,
-                                actions,
-                                drag_button,
-                                (Gdk.Event) event,
-                                 x, y);
+                                                           target_list,
+                                                           actions,
+                                                           drag_button,
+                                                           (Gdk.Event) event,
+                                                            x, y);
                 return true;
             } else {
                 return false;
@@ -1846,6 +1833,7 @@ namespace FM {
         }
 
         protected void show_context_menu (Gdk.Event event) {
+            cancel_drag_timer ();
             /* select selection or background context menu */
             update_menu_actions ();
             var builder = new Gtk.Builder.from_file (Config.UI_DIR + "directory_view_popup.ui");
@@ -2742,7 +2730,7 @@ namespace FM {
             switch (keyval) {
                 case Gdk.Key.F10:
                     if (only_control_pressed) {
-                        show_or_queue_context_menu (event);
+                        show_context_menu (event);
                         res = true;
                     }
 
@@ -3183,7 +3171,6 @@ namespace FM {
 
         protected virtual bool handle_secondary_button_click (Gdk.EventButton event) {
             should_scroll = false;
-            show_or_queue_context_menu (event);
             return true;
         }
 
@@ -3349,9 +3336,10 @@ namespace FM {
                         unselect_all ();
                     }
 
-                    unblock_drag_and_drop ();
                     /* Ensure selected files list and menu actions are updated before context menu shown */
                     update_selected_files_and_menu ();
+                    unblock_drag_and_drop ();
+                    start_drag_timer (event);
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -3388,6 +3376,8 @@ namespace FM {
                     activate_selected_items (Marlin.OpenFlag.DEFAULT);
                 } else if (should_deselect && click_path != null) {
                     unselect_path (click_path);
+                } else if (event.button == Gdk.BUTTON_SECONDARY) {
+                    show_context_menu (event);
                 }
             }
 
