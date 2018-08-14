@@ -112,81 +112,39 @@ namespace Marlin.View.Chrome {
         construct {
             icon_info_list = new Gee.ArrayList<BreadcrumbIconInfo> ();
 
-            /* FIXME the string split of the path url is kinda too basic, we should use the Gile to split our uris and determine the protocol (if any) with g_uri_parse_scheme or g_file_get_uri_scheme */
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("afp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_AFP));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("dav://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_DAV));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("davs://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_DAVS));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("ftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_FTP));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("network://", Marlin.ICON_NETWORK_SYMBOLIC, Marlin.PROTOCOL_NAME_NETWORK));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("sftp://", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_SFTP));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("smb://", Marlin.ICON_NETWORK_SERVER_SYMBOLIC, Marlin.PROTOCOL_NAME_SMB));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("trash://", Marlin.ICON_TRASH_SYMBOLIC, Marlin.PROTOCOL_NAME_TRASH));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("recent://", Marlin.ICON_RECENT_SYMBOLIC, Marlin.PROTOCOL_NAME_RECENT));
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory ("mtp://[", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC, Marlin.PROTOCOL_NAME_MTP));
+            add_protocol_directory ("afp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("dav", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("davs", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("ftp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("sftp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("mtp", Marlin.ICON_FOLDER_REMOTE_SYMBOLIC);
+            add_protocol_directory ("network", Marlin.ICON_NETWORK_SYMBOLIC);
+            add_protocol_directory ("smb", Marlin.ICON_NETWORK_SERVER_SYMBOLIC);
+            add_protocol_directory ("trash", Marlin.ICON_TRASH_SYMBOLIC);
+            add_protocol_directory ("recent", Marlin.ICON_RECENT_SYMBOLIC);
 
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.MUSIC), Marlin.ICON_FOLDER_MUSIC_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.PICTURES), Marlin.ICON_FOLDER_PICTURES_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.VIDEOS), Marlin.ICON_FOLDER_VIDEOS_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.DOWNLOAD), Marlin.ICON_FOLDER_DOWNLOADS_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.DOCUMENTS), Marlin.ICON_FOLDER_DOCUMENTS_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.TEMPLATES), Marlin.ICON_FOLDER_TEMPLATES_SYMBOLIC);
+            add_special_directory (PF.UserUtils.get_real_user_home (), Marlin.ICON_GO_HOME_SYMBOLIC, true);
+            add_special_directory ("/media", Marlin.ICON_FILESYSTEM_SYMBOLIC, true);
+            add_special_directory (Path.DIR_SEPARATOR_S, Marlin.ICON_FILESYSTEM_SYMBOLIC);
+        }
 
-            /* music */
-            string? dir;
-            dir = Environment.get_user_special_dir (UserDirectory.MUSIC);
-            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
-                var icon = new BreadcrumbIconInfo.special_directory (dir, Marlin.ICON_FOLDER_MUSIC_SYMBOLIC);
+        private void add_protocol_directory (string protocol, string icon) {
+            var separator = "://" + (protocol == "mtp" ? "[" : "");
+            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory (protocol + separator, icon, protocol_to_name (protocol)));
+        }
+
+        private void add_special_directory (string? dir, string icon_name, bool break_loop = false) {
+            if (dir != null) {
+                var icon = new BreadcrumbIconInfo.special_directory (dir, icon_name);
+                icon.break_loop = break_loop;
                 icon_info_list.add (icon);
             }
-
-            /* image */
-            dir = Environment.get_user_special_dir (UserDirectory.PICTURES);
-            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
-                var icon = new BreadcrumbIconInfo.special_directory (dir, Marlin.ICON_FOLDER_PICTURES_SYMBOLIC);
-                icon_info_list.add (icon);
-            }
-
-            /* movie */
-            dir = Environment.get_user_special_dir (UserDirectory.VIDEOS);
-            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
-                var icon = new BreadcrumbIconInfo.special_directory (dir, Marlin.ICON_FOLDER_VIDEOS_SYMBOLIC);
-                icon_info_list.add (icon);
-            }
-
-            /* downloads */
-            dir = Environment.get_user_special_dir (UserDirectory.DOWNLOAD);
-            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
-                var icon = new BreadcrumbIconInfo.special_directory (dir, Marlin.ICON_FOLDER_DOWNLOADS_SYMBOLIC);
-                icon_info_list.add (icon);
-            }
-
-            /* documents */
-            dir = Environment.get_user_special_dir (UserDirectory.DOCUMENTS);
-            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
-                var icon = new BreadcrumbIconInfo.special_directory (dir, Marlin.ICON_FOLDER_DOCUMENTS_SYMBOLIC);
-                icon_info_list.add (icon);
-            }
-
-            /* templates */
-            dir = Environment.get_user_special_dir (UserDirectory.TEMPLATES);
-            if (dir != null && dir.contains (Path.DIR_SEPARATOR_S)) {
-                var icon = new BreadcrumbIconInfo.special_directory (dir, Marlin.ICON_FOLDER_TEMPLATES_SYMBOLIC);
-                icon_info_list.add (icon);
-            }
-
-            /* home */
-            dir = PF.UserUtils.get_real_user_home ();
-            if (dir.contains (Path.DIR_SEPARATOR_S)) {
-                var icon = new BreadcrumbIconInfo.special_directory (dir, Marlin.ICON_GO_HOME_SYMBOLIC);
-                icon.break_loop = true;
-                icon_info_list.add (icon);
-            }
-
-            /* media mounted volumes */
-            dir = "/media";
-            if (dir.contains (Path.DIR_SEPARATOR_S)) {
-                var icon = new BreadcrumbIconInfo.special_directory (dir, Marlin.ICON_FILESYSTEM_SYMBOLIC);
-                icon.break_loop = true;
-                icon_info_list.add (icon);
-            }
-
-            /* filesystem */
-            var icon = new BreadcrumbIconInfo.special_directory (Path.DIR_SEPARATOR_S, Marlin.ICON_FILESYSTEM_SYMBOLIC);
-            icon_info_list.add (icon);
         }
 
         private void make_icons () {
