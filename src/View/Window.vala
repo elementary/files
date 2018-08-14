@@ -22,7 +22,7 @@
 */
 
 namespace Marlin.View {
-
+    public const double SWIPE_THRESHOLD = 50;
     public class Window : Gtk.ApplicationWindow {
         const GLib.ActionEntry [] win_entries = {
             {"new_window", action_new_window},
@@ -72,6 +72,9 @@ namespace Marlin.View {
         public signal void loading_uri (string location);
         public signal void folder_deleted (GLib.File location);
         public signal void free_space_change ();
+
+        private Gtk.GestureSwipe swipe_gesture;
+        private Gtk.GestureMultiPress mp_gesture;
 
         public Window (Marlin.Application application, Gdk.Screen myscreen = Gdk.Screen.get_default ()) {
             Object (
@@ -132,6 +135,26 @@ namespace Marlin.View {
                     move (default_x, default_y);
                 }
             }
+
+            add_events (Gdk.EventMask.TOUCH_MASK | Gdk.EventMask.TOUCHPAD_GESTURE_MASK);
+            swipe_gesture = (Gtk.GestureSwipe)(new Object (typeof (Gtk.GestureSwipe), "n_points", 2, null));
+            swipe_gesture.propagation_phase = Gtk.PropagationPhase.CAPTURE;
+
+            swipe_gesture.swipe.connect ((p0, p1) => {
+                if (p1.abs () < p0.abs () / 3)  { /* Approximately horizontal */
+                    if (p0 > SWIPE_THRESHOLD) { /* Left to right */
+                        win_actions.activate_action ("go_to", new GLib.Variant.string ("FORWARD"));
+                    } else if (p0 < -SWIPE_THRESHOLD) {  /* Right to left */
+                        win_actions.activate_action ("go_to", new GLib.Variant.string ("BACK"));
+                    }
+                } else if (p0.abs () < p1.abs () / 3)  { /* Approximately vertical */
+                    if (p1 > SWIPE_THRESHOLD) {  /* top to bottom */
+                        /* No action assigned at present */
+                    } else if (p1 < -SWIPE_THRESHOLD) { /* bottom to top */
+                        win_actions.activate_action ("go_to", new GLib.Variant.string ("UP"));
+                    }
+                }
+            });
 
             present ();
         }
