@@ -55,17 +55,17 @@ namespace Marlin {
 
     public const string OPEN_IN_TERMINAL_DESKTOP_ID = "open-pantheon-terminal-here.desktop";
 
-    public const string PROTOCOL_NAME_AFP = _("AFP");
-    public const string PROTOCOL_NAME_DAV = _("DAV");
-    public const string PROTOCOL_NAME_DAVS = _("DAVS");
-    public const string PROTOCOL_NAME_FTP = _("FTP");
-    public const string PROTOCOL_NAME_NETWORK = _("Network");
-    public const string PROTOCOL_NAME_SFTP = _("SFTP");
-    public const string PROTOCOL_NAME_SMB = _("SMB");
-    public const string PROTOCOL_NAME_TRASH = _("Trash");
-    public const string PROTOCOL_NAME_RECENT = _("Recent");
-    public const string PROTOCOL_NAME_MTP = _("MTP");
-    public const string PROTOCOL_NAME_FILE = _("File System");
+    public const string PROTOCOL_NAME_AFP = N_("AFP");
+    public const string PROTOCOL_NAME_DAV = N_("DAV");
+    public const string PROTOCOL_NAME_DAVS = N_("DAVS");
+    public const string PROTOCOL_NAME_FTP = N_("FTP");
+    public const string PROTOCOL_NAME_NETWORK = N_("Network");
+    public const string PROTOCOL_NAME_SFTP = N_("SFTP");
+    public const string PROTOCOL_NAME_SMB = N_("SMB");
+    public const string PROTOCOL_NAME_TRASH = N_("Trash");
+    public const string PROTOCOL_NAME_RECENT = N_("Recent");
+    public const string PROTOCOL_NAME_MTP = N_("MTP");
+    public const string PROTOCOL_NAME_FILE = N_("File System");
 
     public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
     public const uint LOCATION_BAR_ANIMATION_TIME_MSEC = 300;
@@ -82,61 +82,29 @@ namespace Marlin {
 
         switch (s) {
             case "recent":
-                return Marlin.PROTOCOL_NAME_RECENT;
+                return _(Marlin.PROTOCOL_NAME_RECENT);
             case "trash":
-                return Marlin.PROTOCOL_NAME_TRASH;
+                return _(Marlin.PROTOCOL_NAME_TRASH);
             case "network":
-                return Marlin.PROTOCOL_NAME_NETWORK;
+                return _(Marlin.PROTOCOL_NAME_NETWORK);
             case "smb":
-                return Marlin.PROTOCOL_NAME_SMB;
+                return _(Marlin.PROTOCOL_NAME_SMB);
             case "ftp":
-                return Marlin.PROTOCOL_NAME_FTP;
+                return _(Marlin.PROTOCOL_NAME_FTP);
             case "sftp":
-                return Marlin.PROTOCOL_NAME_SFTP;
+                return _(Marlin.PROTOCOL_NAME_SFTP);
             case "afp":
-                return Marlin.PROTOCOL_NAME_AFP;
+                return _(Marlin.PROTOCOL_NAME_AFP);
             case "dav":
-                return Marlin.PROTOCOL_NAME_DAV;
+                return _(Marlin.PROTOCOL_NAME_DAV);
             case "davs":
-                return Marlin.PROTOCOL_NAME_DAVS;
+                return _(Marlin.PROTOCOL_NAME_DAVS);
             case "mtp":
-                return Marlin.PROTOCOL_NAME_MTP;
+                return _(Marlin.PROTOCOL_NAME_MTP);
             case "file":
-                return Marlin.PROTOCOL_NAME_FILE;
+                return _(Marlin.PROTOCOL_NAME_FILE);
             default:
                 return protocol;
         }
-    }
-
-    public string name_to_protocol_uri (string pname) {
-        /* Deal with protocol with or without : or / characters at the end */
-
-        switch (pname.strip ()) {
-            case Marlin.PROTOCOL_NAME_RECENT:
-                return Marlin.RECENT_URI;
-            case Marlin.PROTOCOL_NAME_TRASH:
-                return Marlin.TRASH_URI;
-            case Marlin.PROTOCOL_NAME_NETWORK:
-                return Marlin.NETWORK_URI;
-            case Marlin.PROTOCOL_NAME_SMB:
-                return Marlin.SMB_URI;
-            case Marlin.PROTOCOL_NAME_FTP:
-                return Marlin.FTP_URI;
-            case Marlin.PROTOCOL_NAME_SFTP:
-                return Marlin.SFTP_URI;
-            case Marlin.PROTOCOL_NAME_AFP:
-                return Marlin.AFP_URI;
-            case Marlin.PROTOCOL_NAME_DAV:
-                return Marlin.DAV_URI;
-            case Marlin.PROTOCOL_NAME_DAVS:
-                return Marlin.DAVS_URI;
-            default:
-                return "";
-        }
-    }
-
-    public string sanitize_protocol (string p) {
-        string pname = Marlin.protocol_to_name (p);
-        return Marlin.name_to_protocol_uri (pname);
     }
 }
