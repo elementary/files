@@ -49,6 +49,7 @@ namespace PF.Dialogs {
         scroll_box.add (details_view);
 
         var expander = new Gtk.Expander.with_mnemonic (_("Show more _details"));
+        expander.resize_toplevel = true;
         expander.add (scroll_box);
         expander.show_all ();
 
