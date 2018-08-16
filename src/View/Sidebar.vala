@@ -1529,7 +1529,7 @@ namespace Marlin.Places {
                 popupmenu_empty_trash_item.show ();
                 monitor.bind_property ("is-empty",
                                        popupmenu_empty_trash_item, "sensitive",
-                                       GLib.BindingFlags.SYNC_CREATE|GLib.BindingFlags.INVERT_BOOLEAN);
+                                       GLib.BindingFlags.SYNC_CREATE | GLib.BindingFlags.INVERT_BOOLEAN);
 
                 popupmenu_drive_property_item = new Gtk.MenuItem.with_mnemonic (_("Properties"));
                 popupmenu_drive_property_item.activate.connect (show_drive_info_cb);

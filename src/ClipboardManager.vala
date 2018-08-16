@@ -34,7 +34,7 @@ namespace Marlin {
 
         private static GLib.Quark marlin_clipboard_manager_quark;
         private static Gdk.Atom x_special_gnome_copied_files;
-        private const Gtk.TargetEntry[] clipboard_targets  = {
+        private const Gtk.TargetEntry[] clipboard_targets = {
             {"x-special/gnome-copied-files", 0, ClipboardTarget.GNOME_COPIED_FILES},
             {"UTF8_STRING", 0, ClipboardTarget.UTF8_STRING}
         };

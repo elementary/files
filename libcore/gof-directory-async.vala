@@ -379,8 +379,9 @@ public class Async : Object {
                         var default_port = PF.FileUtils.get_default_port_for_protocol (scheme);
                         var sc = yield scl.connect_to_uri_async (file.uri, default_port, cancellable);
                         success = (sc != null && sc.is_connected ());
-                        debug ("Socketclient is %s", sc == null ? "null" :
-                                                           (sc.is_connected () ? "connected" : "not connected"));
+                        debug ("Socketclient is %s",
+                                sc == null ? "null" : (sc.is_connected () ? "connected" : "not connected"));
+
                     } catch (GLib.Error e) {
                         last_error_message = e.message;
                         warning ("Error: could not connect to connectable %s - %s", file.uri, e.message);
