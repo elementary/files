@@ -143,7 +143,10 @@ namespace Marlin.View.Chrome {
 
         private void add_protocol_directory (string protocol, string icon) {
             var separator = "://" + (protocol == "mtp" ? "[" : "");
-            icon_info_list.add (new BreadcrumbIconInfo.protocol_directory (protocol + separator, icon, protocol_to_name (protocol)));
+            var info = new BreadcrumbIconInfo.protocol_directory (protocol + separator,
+                                                                  icon,
+                                                                  protocol_to_name (protocol));
+            icon_info_list.add (info);
         }
 
         private void add_special_directory (string? dir, string icon_name, bool break_loop = false) {
