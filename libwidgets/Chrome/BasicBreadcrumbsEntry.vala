@@ -427,7 +427,8 @@ namespace Marlin.View.Chrome {
             index = 0;
             foreach (BreadcrumbElement el in elements) {
                 if (++index < length && el.can_shrink) {
-                    el.display_width = (el.natural_width - MINIMUM_BREADCRUMB_WIDTH) * fraction_reduction + MINIMUM_BREADCRUMB_WIDTH;
+                    el.display_width = (el.natural_width - MINIMUM_BREADCRUMB_WIDTH) * fraction_reduction +
+                                        MINIMUM_BREADCRUMB_WIDTH;
                 }
             }
 
@@ -483,7 +484,8 @@ namespace Marlin.View.Chrome {
         private void make_element_list_from_protocol_and_path (string protocol,
                                                                string path,
                                                                Gee.ArrayList<BreadcrumbElement> newelements) {
-            /* Ensure the breadcrumb texts are escaped strings whether or not the parameter newpath was supplied escaped */
+            /* Ensure the breadcrumb texts are escaped strings whether or not
+             * the parameter newpath was supplied escaped */
             string newpath = PF.FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
             newelements.add (new BreadcrumbElement (protocol, this, get_style_context ()));
             foreach (string dir in newpath.split (Path.DIR_SEPARATOR_S)) {

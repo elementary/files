@@ -58,7 +58,8 @@ namespace Marlin.View.Chrome {
             Gtk.IconInfo? gtk_icon_info = null;
             var scale = context.get_scale ();
             if (gicon != null) {
-                gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC);
+                var flags = Gtk.IconLookupFlags.FORCE_SIZE | Gtk.IconLookupFlags.FORCE_SYMBOLIC;
+                gtk_icon_info = theme.lookup_by_gicon_for_scale (gicon, 16, scale, flags);
             } else {
                 throw new GLib.IOError.NOT_INITIALIZED ("the gicon field is empty!");
             }
@@ -123,12 +124,18 @@ namespace Marlin.View.Chrome {
             add_protocol_directory ("trash", Marlin.ICON_TRASH_SYMBOLIC);
             add_protocol_directory ("recent", Marlin.ICON_RECENT_SYMBOLIC);
 
-            add_special_directory (Environment.get_user_special_dir (UserDirectory.MUSIC), Marlin.ICON_FOLDER_MUSIC_SYMBOLIC);
-            add_special_directory (Environment.get_user_special_dir (UserDirectory.PICTURES), Marlin.ICON_FOLDER_PICTURES_SYMBOLIC);
-            add_special_directory (Environment.get_user_special_dir (UserDirectory.VIDEOS), Marlin.ICON_FOLDER_VIDEOS_SYMBOLIC);
-            add_special_directory (Environment.get_user_special_dir (UserDirectory.DOWNLOAD), Marlin.ICON_FOLDER_DOWNLOADS_SYMBOLIC);
-            add_special_directory (Environment.get_user_special_dir (UserDirectory.DOCUMENTS), Marlin.ICON_FOLDER_DOCUMENTS_SYMBOLIC);
-            add_special_directory (Environment.get_user_special_dir (UserDirectory.TEMPLATES), Marlin.ICON_FOLDER_TEMPLATES_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.MUSIC),
+                                   Marlin.ICON_FOLDER_MUSIC_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.PICTURES),
+                                   Marlin.ICON_FOLDER_PICTURES_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.VIDEOS),
+                                   Marlin.ICON_FOLDER_VIDEOS_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.DOWNLOAD),
+                                   Marlin.ICON_FOLDER_DOWNLOADS_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.DOCUMENTS),
+                                   Marlin.ICON_FOLDER_DOCUMENTS_SYMBOLIC);
+            add_special_directory (Environment.get_user_special_dir (UserDirectory.TEMPLATES),
+                                   Marlin.ICON_FOLDER_TEMPLATES_SYMBOLIC);
             add_special_directory (PF.UserUtils.get_real_user_home (), Marlin.ICON_GO_HOME_SYMBOLIC, true);
             add_special_directory ("/media", Marlin.ICON_FILESYSTEM_SYMBOLIC, true);
             add_special_directory (Path.DIR_SEPARATOR_S, Marlin.ICON_FILESYSTEM_SYMBOLIC);
