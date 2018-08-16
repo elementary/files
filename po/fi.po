@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-30 00:07+0000\n"
+"PO-Revision-Date: 2018-08-08 00:01+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
 "fi/>\n"
@@ -1719,7 +1719,6 @@ msgid "Enable debug logging"
 msgstr "Käytä vianjäljityksen lokitusta"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
@@ -1970,7 +1969,7 @@ msgstr "Nimen vaihtaminen muotoon '%s' epäonnistui"
 
 #: ../src/Utils/MimeActions.vala:316
 msgid "Could not open files or URIs with this app"
-msgstr ""
+msgstr "Tiedostojen tai URI:en avaaminen tällä sovelluksella ei onnistu"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""

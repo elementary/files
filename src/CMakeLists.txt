@@ -32,7 +32,6 @@ add_definitions (${CFLAGS} -O2)
 IF (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
         Application.vala
-        #ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
         ProgressUIHandler.vala
@@ -100,7 +99,6 @@ IF (WITH_UNITY AND UNITY_FOUND)
 ELSE (WITH_UNITY AND UNITY_FOUND)
     vala_precompile (VALA_C ${CMAKE_PROJECT_NAME}
         Application.vala
-        #ConnectServerOperation.vala
         main.vala
         marlin-deep-count.vala
         ProgressUIHandler.vala
