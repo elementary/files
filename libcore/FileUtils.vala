@@ -19,7 +19,8 @@ namespace PF.FileUtils {
     /**
      * Gets a properly escaped GLib.File for the given path
      **/
-    const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS + GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
+    const string reserved_chars = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
+                                   GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
 
     public GLib.List<GLib.File> files_from_uris (string uris) {
         var result = new GLib.List<GLib.File> ();
@@ -37,7 +38,8 @@ namespace PF.FileUtils {
             uint8[] contents;
             string etag_out;
             file.load_contents (cancellable, out contents, out etag_out);
-            keyfile.load_from_data ((string) contents, -1, GLib.KeyFileFlags.KEEP_COMMENTS|GLib.KeyFileFlags.KEEP_TRANSLATIONS);
+            keyfile.load_from_data ((string)contents, -1,
+                                    GLib.KeyFileFlags.KEEP_COMMENTS | GLib.KeyFileFlags.KEEP_TRANSLATIONS);
         } catch (Error e) {
             throw e;
         }
@@ -97,7 +99,9 @@ namespace PF.FileUtils {
         });
     }
 
-    private GLib.HashTable<GLib.File, GLib.List<GLib.File>> get_trashed_files_original_directories (GLib.List<GOF.File> files, out GLib.List<GOF.File> unhandled_files) {
+    private GLib.HashTable<GLib.File, GLib.List<GLib.File>>
+    get_trashed_files_original_directories (GLib.List<GOF.File> files, out GLib.List<GOF.File> unhandled_files) {
+
         var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (File.hash, File.equal);
         unhandled_files = null;
 
@@ -114,10 +118,12 @@ namespace PF.FileUtils {
                 var original_dir = get_trashed_file_original_folder (goffile);
                 if (original_dir != null) {
                     unowned GLib.List<GLib.File>? dir_files = null;
-                    dir_files = directories.lookup (original_dir); /* get list of files being restored to this original dir */
+                    /* get list of files being restored to this original dir */
+                    dir_files = directories.lookup (original_dir);
                     if (dir_files != null) {
                         directories.steal (original_dir);
                     }
+
                     dir_files.prepend (goffile.location);
                     directories.insert (original_dir, dir_files.copy ());
                 } else {
@@ -136,7 +142,8 @@ namespace PF.FileUtils {
         if (file.info == null) {
             if (file.location != null) {
                 try {
-                    info = file.location.query_info (GLib.FileAttribute.TRASH_ORIG_PATH, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
+                    info = file.location.query_info (GLib.FileAttribute.TRASH_ORIG_PATH,
+                                                     GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
                 } catch (GLib.Error e) {
                     debug ("Error querying info of trashed file %s - %s", file.uri, e.message);
                     return null;
@@ -418,7 +425,8 @@ namespace PF.FileUtils {
                 new_location= GLib.File.new_for_uri (n.get_uri ());
 
                 if (dir != null) {
-                    /* Notify directory of change.  Since only a single file is changed we bypass MarlinFileChangesQueue */
+                    /* Notify directory of change.
+                     * Since only a single file is changed we bypass MarlinFileChangesQueue */
                     /* Appending OK here since only one file */
                     GLib.List<GLib.File>added_files = null;
                     added_files.append (new_location);
@@ -528,7 +536,7 @@ namespace PF.FileUtils {
                 if (clock_is_24h) {
                     format_string = _("Today at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
                 } else {
-                    format_string = _("Today at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected (if available))
+                    format_string = _("Today at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected
                 }
 
                 break;
@@ -536,7 +544,7 @@ namespace PF.FileUtils {
                 if (clock_is_24h) {
                     format_string = _("Yesterday at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
                 } else {
-                    format_string = _("Yesterday at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected (if available))
+                    format_string = _("Yesterday at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected
                 }
 
                 break;
@@ -545,7 +553,7 @@ namespace PF.FileUtils {
                 if (clock_is_24h) {
                     format_string = _("%A at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
                 } else {
-                    format_string = _("%A at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected (if available))
+                    format_string = _("%A at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected
                 }
 
                 break;
@@ -757,8 +765,9 @@ namespace PF.FileUtils {
     public void remove_thumbnail_paths_for_uri (string uri) {
         string hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, uri);
         string base_name = "%s.png".printf (hash);
-        GLib.FileUtils.unlink (Path.build_filename (Environment.get_user_cache_dir (), "thumbnails", "normal", base_name));
-        GLib.FileUtils.unlink (Path.build_filename (Environment.get_user_cache_dir (), "thumbnails", "large", base_name));
+        string cache_dir = Environment.get_user_cache_dir ();
+        GLib.FileUtils.unlink (Path.build_filename (cache_dir, "thumbnails", "normal", base_name));
+        GLib.FileUtils.unlink (Path.build_filename (cache_dir, "thumbnails", "large", base_name));
     }
 }
 

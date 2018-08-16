@@ -42,7 +42,8 @@ namespace Marlin {
             } else if (drop_target.is_executable ()) {
                 GLib.Error error;
                 if (!drop_target.execute (widget.get_screen (), drop_file_list, out error)) {
-                    PF.Dialogs.show_error_dialog (_("Failed to execute \"%s\"").printf (drop_target.get_display_name ()),
+                    var target_name = drop_target.get_display_name ();
+                    PF.Dialogs.show_error_dialog (_("Failed to execute \"%s\"").printf (target_name),
                                                   error.message,
                                                   null);
                     return false;
@@ -102,7 +103,9 @@ namespace Marlin {
             return menu;
         }
 
-        private void build_and_append_menu_item (Gtk.Menu menu, string label, Gdk.DragAction? action, Gdk.DragAction possible_actions) {
+        private void build_and_append_menu_item (Gtk.Menu menu, string label, Gdk.DragAction? action,
+                                                 Gdk.DragAction possible_actions) {
+
             if ((possible_actions & action) != 0) {
                 var item = new Gtk.MenuItem.with_label (label);
 

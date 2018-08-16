@@ -29,7 +29,8 @@ namespace PF.Dialogs {
                                                                    string secondary_text,
                                                                    Gtk.Window? parent) {
         /* Use default button type "CLOSE" */
-        var dialog = new Granite.MessageDialog.with_image_from_icon_name (primary_text, secondary_text, "dialog-warning");
+        var dialog = new Granite.MessageDialog.with_image_from_icon_name (primary_text, secondary_text,
+                                                                          "dialog-warning");
         return display_dialog (dialog, parent);
     }
 

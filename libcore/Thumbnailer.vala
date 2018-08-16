@@ -79,7 +79,8 @@ namespace Marlin {
         public abstract async uint queue (string[] uris, string[] mime_types, string flavor,
                                           string scheduler, uint handle_to_unqueue) throws GLib.DBusError, GLib.IOError;
         public abstract async void dequeue (uint handle) throws GLib.DBusError, GLib.IOError;
-        public abstract void get_supported (out string[] uri_schemes, out string[] mime_types) throws GLib.DBusError, GLib.IOError;
+        public abstract void get_supported (out string[] uri_schemes,
+                                            out string[] mime_types) throws GLib.DBusError, GLib.IOError;
     }
 
     public class Thumbnailer : GLib.Object {
@@ -231,7 +232,8 @@ namespace Marlin {
             uint handle = request_handle_mapping.lookup (req);
             thumbnailer_lock.unlock ();
 
-            proxy.dequeue.begin (handle); /* hash tables will be updated when "finished" signal received. Errors ignored */
+            /* hash tables will be updated when "finished" signal received. Errors ignored */
+            proxy.dequeue.begin (handle);
         }
 
         private bool is_supported (GOF.File file) {
