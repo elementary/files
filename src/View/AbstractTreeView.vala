@@ -238,7 +238,8 @@ namespace FM {
                     zone = ClickZone.INVALID;
                 } else {
                     var rtl = (get_direction () == Gtk.TextDirection.RTL);
-                    if (rtl ? (x > rect.x + rect.width - icon_size) : (x < rect.x + icon_size)) { /* cannot be on name */
+                    if (rtl ? (x > rect.x + rect.width - icon_size) : (x < rect.x + icon_size)) {
+                        /* cannot be on name */
                         bool on_helper = false;
                         bool on_icon = is_on_icon (x, y, rect, file.pix, rtl, ref on_helper);
 
@@ -255,7 +256,8 @@ namespace FM {
                     }
                 }
             } else if (c != name_column) {
-                zone = ClickZone.BLANK_NO_PATH; /* Cause unselect all to occur on other columns and allow rubberbanding */
+                /* Cause unselect all to occur on other columns and allow rubberbanding */
+                zone = ClickZone.BLANK_NO_PATH;
             }
 
             return zone;
@@ -345,7 +347,9 @@ namespace FM {
             tree.thaw_child_notify ();
         }
 
-        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
+        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix,
+                                            bool rtl, ref bool on_helper) {
+
             int scale = get_scale_factor ();
             int pix_height = pix.height / scale;
             int pix_width = pix.width / scale;

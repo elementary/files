@@ -198,7 +198,8 @@ namespace Marlin {
 
             /* Do not show selection helpers or emblems for very small icons */
             if ((selected || prelit) && file != drop_file) {
-                helper_size = Marlin.IconSize.LARGE_EMBLEM > (int.max (pixbuf.get_width (), pixbuf.get_height ()) / icon_scale) / 2 ?
+                var max_dim = int.max (pixbuf.get_width (), pixbuf.get_height ());
+                helper_size = Marlin.IconSize.LARGE_EMBLEM > max_dim / icon_scale / 2 ?
                               Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
 
                 special_icon_name = null;
@@ -245,7 +246,8 @@ namespace Marlin {
             /* Still show emblems when selection helpers hidden in double click mode */
             /* How many emblems can be shown depends on icon icon_size (zoom lebel) */
             if (show_emblems) {
-                helper_size = Marlin.IconSize.LARGE_EMBLEM > (int.max (pixbuf.get_width (), pixbuf.get_height ())) / icon_scale / 3 ?
+                var max_dim = int.max (pixbuf.get_width (), pixbuf.get_height ());
+                helper_size = Marlin.IconSize.LARGE_EMBLEM > max_dim / icon_scale / 3 ?
                               Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
 
                 int pos = 0;
@@ -271,7 +273,8 @@ namespace Marlin {
 
                     emblem_area.y = draw_rect.y + draw_rect.height - helper_size + (int)ypad;
                     emblem_area.y -= helper_size * pos;
-                    emblem_area.x = (draw_rect.x + (pixbuf.get_width () + Marlin.IconSize.EMBLEM / 2) / icon_scale) - helper_size;
+                    emblem_area.x = (draw_rect.x + (pixbuf.get_width () + Marlin.IconSize.EMBLEM / 2) / icon_scale);
+                    emblem_area.x -= helper_size;
 
                     style_context.render_icon (cr, pix, emblem_area.x * icon_scale, emblem_area.y * icon_scale);
                     cr.paint ();
@@ -298,7 +301,9 @@ namespace Marlin {
                 _file.update_icon (icon_size, icon_scale);
             }
 
-            minimum_size = int.max (helper_size + helper_size / 2, pixbuf.get_height () / icon_scale + Marlin.IconSize.EMBLEM / 2);
+            minimum_size = int.max (helper_size + helper_size / 2,
+                                    pixbuf.get_height () / icon_scale + Marlin.IconSize.EMBLEM / 2);
+
             natural_size = minimum_size;
         }
 

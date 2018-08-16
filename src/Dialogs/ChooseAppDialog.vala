@@ -31,7 +31,9 @@ class PF.ChooseAppDialog : Object {
     }
 
     construct {
-        dialog = new Gtk.AppChooserDialog (parent, Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT, file_to_open);
+        dialog = new Gtk.AppChooserDialog (parent,
+                                           Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT,
+                                           file_to_open);
         dialog.deletable = false;
 
         var app_chooser = dialog.get_widget () as Gtk.AppChooserWidget;
@@ -55,7 +57,9 @@ class PF.ChooseAppDialog : Object {
             app = dialog.get_app_info ();
             if (check_default.get_active ()) {
                 try {
-                    var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE, FileQueryInfoFlags.NONE, null);
+                    var info = file_to_open.query_info (FileAttribute.STANDARD_CONTENT_TYPE,
+                                                        FileQueryInfoFlags.NONE, null);
+
                     app.set_as_default_for_type (info.get_content_type ());
                 }
                 catch (GLib.Error error) {

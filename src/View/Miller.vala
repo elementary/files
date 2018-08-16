@@ -84,7 +84,9 @@ namespace Marlin.View {
         }
 
         /** Creates a new slot in the host slot hpane */
-        public void add_location (GLib.File loc, Marlin.View.Slot? host = null, bool scroll = true, bool animate = true) {
+        public void add_location (GLib.File loc, Marlin.View.Slot? host = null,
+                                  bool scroll = true, bool animate = true) {
+
             Marlin.View.Slot new_slot = new Marlin.View.Slot (loc, ctab, Marlin.ViewMode.MILLER_COLUMNS);
             /* Notify view container of path change - will set tab to working and change pathbar */
             path_changed ();
@@ -95,7 +97,8 @@ namespace Marlin.View {
 
             nest_slot_in_host_slot (new_slot, host);
             slot_list.append (new_slot);
-            new_slot.active (scroll, animate); /* This will set the new slot to be current_slot. Must do this before loading */
+            /* This will set the new slot to be current_slot. Must do this before loading */
+            new_slot.active (scroll, animate);
         }
 
         private void nest_slot_in_host_slot (Marlin.View.Slot slot, Marlin.View.Slot? host) {
@@ -200,7 +203,8 @@ namespace Marlin.View {
                      * Go_up requests make_root false - previous directory will be selected
                      */
                     if (make_root) {
-                        first_slot.focus_first_for_empty_selection (false); /* Do not select (match behaviour of other views) */
+                        /* Do not select (match behaviour of other views) */
+                        first_slot.focus_first_for_empty_selection (false);
                     }
                 }
             }
@@ -490,7 +494,8 @@ namespace Marlin.View {
             int current_value = (int) this.hadj.get_value ();
             int new_value = current_value;
 
-            if (current_value > previous_width) { /*scroll right until left hand edge of slot before the active slot is in view*/
+            /* Scroll right until left hand edge of slot before the active slot is in view*/
+            if (current_value > previous_width) {
                 new_value = previous_width;
             }
 
@@ -510,7 +515,8 @@ namespace Marlin.View {
                 return true;
             } else { /* On startup we do not want to animate */
                 hadj.set_value (new_value);
-                /* On startup the adjustment setting is not always effective because of a race condition. If not, try later.*/
+                /* On startup the adjustment setting is not always effective because of a race condition.
+                 *  If not, try later.*/
                 return hadj.get_value () == new_value;
             }
         }

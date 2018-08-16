@@ -51,7 +51,8 @@ public class Marlin.Application : Gtk.Application {
 
         /* Only allow running with root privileges using pkexec, not using sudo */
         if (Posix.getuid () == 0 && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
-            warning ("Running Files as root using sudo is not possible. Please use the command: io.elementary.files-pkexec [folder]");
+            warning ("Running Files as root using sudo is not possible. " +
+                     "Please use the command: io.elementary.files-pkexec [folder]");
             quit ();
         };
 
@@ -241,18 +242,16 @@ public class Marlin.Application : Gtk.Application {
         Preferences.gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
 
         /* Bind settings with GOFPreferences */
-        Preferences.settings.bind ("show-hiddenfiles",
-                                   GOF.Preferences.get_default (), "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
+        var prefs = GOF.Preferences.get_default ();
+        Preferences.settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("show-remote-thumbnails",
-                                   GOF.Preferences.get_default (), "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("confirm-trash",
-                                   GOF.Preferences.get_default (), "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("date-format",
-                                   GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
+                                   prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
+        Preferences.settings.bind ("confirm-trash", prefs, "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
+        Preferences.settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
         Preferences.gnome_interface_settings.bind ("clock-format",
-                                   GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
+                                   prefs, "clock-format", GLib.SettingsBindFlags.GET);
         Preferences.gtk_file_chooser_settings.bind ("sort-directories-first",
-                                   GOF.Preferences.get_default (), "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
+                                   prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
     public Marlin.View.Window? create_window (File? location = null,

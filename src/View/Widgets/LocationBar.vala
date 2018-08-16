@@ -94,7 +94,8 @@ namespace Marlin.View.Chrome {
         }
 
         private void on_search_results_realize () {
-            (get_toplevel () as Gtk.Window).get_group ().add_window (search_results); /*Is this necessary every popup? */
+            /*Is this necessary every popup? */
+            (get_toplevel () as Gtk.Window).get_group ().add_window (search_results);
         }
         private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */

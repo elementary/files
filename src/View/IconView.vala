@@ -300,7 +300,9 @@ namespace FM {
             tree.set_cursor (path, renderer, start_editing);
         }
 
-        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed, bool only_shift_pressed) {
+        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed,
+                                                          bool only_shift_pressed) {
+
             linear_select_required = only_shift_pressed;
             if (linear_select_required) {
                 return true;
@@ -531,7 +533,9 @@ namespace FM {
             }
         }
 
-        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
+        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix,
+                                            bool rtl, ref bool on_helper) {
+
             int x_offset = x - area.x;
             int y_offset = y - area.y;
             int scale_factor = get_scale_factor ();

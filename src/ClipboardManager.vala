@@ -32,16 +32,15 @@ namespace Marlin {
             UTF8_STRING
         }
 
-        private static GLib.Quark marlin_clipboard_manager_quark = GLib.Quark.from_string ("marlin-clipboard-manager");
-        private static Gdk.Atom x_special_gnome_copied_files = Gdk.Atom.intern_static_string ("x-special/gnome-copied-files");
-        private const Gtk.TargetEntry[] clipboard_targets = {
+        private static GLib.Quark marlin_clipboard_manager_quark;
+        private static Gdk.Atom x_special_gnome_copied_files;
+        private const Gtk.TargetEntry[] clipboard_targets  = {
             {"x-special/gnome-copied-files", 0, ClipboardTarget.GNOME_COPIED_FILES},
             {"UTF8_STRING", 0, ClipboardTarget.UTF8_STRING}
         };
 
         private Gtk.Clipboard clipboard;
         private GLib.List<GOF.File> files = null;
-
         private bool files_cutted = false;
         public bool files_linked {get; private set; default = false;}
 
@@ -50,6 +49,11 @@ namespace Marlin {
         public bool can_paste {get; private set; default = false;}
 
         public signal void changed ();
+
+        static construct {
+            marlin_clipboard_manager_quark = GLib.Quark.from_string ("marlin-clipboard-manager");
+            x_special_gnome_copied_files = Gdk.Atom.intern_static_string ("x-special/gnome-copied-files");
+        }
 
         private ClipboardManager (Gtk.Clipboard _clipboard) {
             clipboard = _clipboard;

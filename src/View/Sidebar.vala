@@ -577,7 +577,8 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-            add_device_tooltip.begin (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI), update_cancellable);
+            add_device_tooltip.begin (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI),
+                                      update_cancellable);
 
             /* Add all connected drives */
             GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
@@ -732,7 +733,10 @@ namespace Marlin.Places {
                            _("Browse the contents of the network"));
 
                 /* Add ConnectServer BUILTIN */
-                add_extra_network_item (_("Connect Server"), _("Connect to a network server"), new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
+                add_extra_network_item (_("Connect Server"),
+                                        _("Connect to a network server"),
+                                        new ThemedIcon.with_default_fallbacks ("network-server"),
+                                        side_bar_connect_server);
 
                 /* No longer needed at present as no other sidebar plugins.
                  * Commenting out to avoid old plugin getting installed.
@@ -885,7 +889,10 @@ namespace Marlin.Places {
             string fs_type;
             var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
 
-            if (yield get_filesystem_space_and_type (root, out fs_capacity, out fs_free, out fs_type, update_cancellable)) {
+            if (yield get_filesystem_space_and_type (root,
+                                                     out fs_capacity, out fs_free, out fs_type,
+                                                     update_cancellable)) {
+
                 var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
                 if (rowref != null && rowref.valid ()) {
                     Gtk.TreeIter? itr = null;
@@ -974,7 +981,8 @@ namespace Marlin.Places {
                         if (file.ensure_query_info ()) {
                             PF.FileUtils.file_accepts_drop (file, drag_list, context, out action);
                         } else {
-                            debug ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
+                            debug ("Could not ensure query info for %s when dropping onto sidebar",
+                                   file.location.get_uri ());
                         }
                     }
                 }
@@ -1519,7 +1527,9 @@ namespace Marlin.Places {
                 popupmenu_empty_trash_item = new Gtk.MenuItem.with_mnemonic (_("Empty _Trash"));
                 popupmenu_empty_trash_item.activate.connect (empty_trash_cb);
                 popupmenu_empty_trash_item.show ();
-                monitor.bind_property ("is-empty", popupmenu_empty_trash_item, "sensitive", GLib.BindingFlags.SYNC_CREATE|GLib.BindingFlags.INVERT_BOOLEAN);
+                monitor.bind_property ("is-empty",
+                                       popupmenu_empty_trash_item, "sensitive",
+                                       GLib.BindingFlags.SYNC_CREATE|GLib.BindingFlags.INVERT_BOOLEAN);
 
                 popupmenu_drive_property_item = new Gtk.MenuItem.with_mnemonic (_("Properties"));
                 popupmenu_drive_property_item.activate.connect (show_drive_info_cb);
