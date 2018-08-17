@@ -3200,6 +3200,8 @@ namespace FM {
                 return true;
             }
 
+            grab_focus ();
+
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
