@@ -42,8 +42,6 @@ namespace Marlin.View {
             {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
 
-        public GLib.SimpleActionGroup win_actions;
-
         const string [] mode_strings = {
             "ICON",
             "LIST",
@@ -92,9 +90,7 @@ namespace Marlin.View {
         }
 
         construct {
-            win_actions = new GLib.SimpleActionGroup ();
-            win_actions.add_action_entries (win_entries, this);
-            insert_action_group ("win", win_actions);
+            add_action_entries (win_entries, this);
 
             undo_actions_set_insensitive ();
 
@@ -137,11 +133,12 @@ namespace Marlin.View {
                 }
             }
 
+            loading_uri.connect (update_labels);
             present ();
         }
 
         private void build_window () {
-            view_switcher = new Chrome.ViewSwitcher (win_actions.lookup_action ("view_mode") as SimpleAction);
+            view_switcher = new Chrome.ViewSwitcher (lookup_action ("view_mode") as SimpleAction);
             view_switcher.mode = Preferences.settings.get_enum ("default-viewmode");
 
             top_menu = new Chrome.TopMenu (view_switcher);
@@ -232,7 +229,7 @@ namespace Marlin.View {
                         if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
                             /* Use printable characters to initiate search */
                             if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
-                                win_actions.activate_action ("find", null);
+                                activate_action ("find", null);
                                 key_press_event (event);
                                 return true;
                             }
@@ -418,12 +415,13 @@ namespace Marlin.View {
             var tab = new Granite.Widgets.Tab ("", null, content);
             tab.ellipsize_mode = Pango.EllipsizeMode.MIDDLE;
 
-            /* Capturing ViewContainer reference in closure prevents its proper destruction */
+            change_tab ((int)tabs.insert_tab (tab, -1));
+            tabs.current = tab;
+            /* Capturing ViewContainer object reference in closure prevents its proper destruction
+             * so capture its unique id instead */
+            var id = content.id;
             content.tab_name_changed.connect ((tab_name) => {
-                Idle.add (() => {
-                    tab.label = check_for_tab_with_same_name ();
-                    return false;
-                });
+                set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
             });
 
             content.loading.connect ((is_loading) => {
@@ -436,43 +434,65 @@ namespace Marlin.View {
             });
 
             content.add_view (mode, location);
-
-            change_tab ((int)tabs.insert_tab (tab, -1));
-            tabs.current = tab;
         }
 
-        private string check_for_tab_with_same_name () {
-            assert_nonnull (current_tab);
-
-            var vc = current_tab;
-            var name = vc.tab_name;
-
-            if (name == Marlin.INVALID_TAB_NAME) {
-                 return name;
+        private string check_for_tab_with_same_name (int id, string path) {
+            if (path == Marlin.INVALID_TAB_NAME) {
+                 return path;
             }
 
-            var path = Uri.unescape_string (vc.uri);
-            var new_name = name;
-
+            var new_label = Path.get_basename (path);
             foreach (Granite.Widgets.Tab tab in tabs.tabs) {
                 var content = (ViewContainer)(tab.page);
-                if (content != vc) {
-                    string content_path = Uri.unescape_string (content.uri);
-                    if (content.tab_name == name && content_path != path) {
-                        if (content.tab_name == tab.label) {
-                            Idle.add_full (GLib.Priority.LOW, () => {
-                                /* Trigger relabelling of conflicting tab (but not before this function finishes) */
-                                content.tab_name_changed (content.tab_name);
-                                return false;
-                            });
+                if (content.id != id) {
+                    string content_path = content.tab_name;
+                    string content_label = Path.get_basename (content_path);
+                    if (tab.label == new_label) {
+                        if (content_path != path) {
+                            new_label = disambiguate_name (new_label, path, content_path); /*Relabel calling tab */
+                            if (content_label == tab.label) {
+                                /* Also relabel conflicting tab (but not before this function finishes) */
+                                Idle.add_full (GLib.Priority.LOW, () => {
+                                    set_tab_label (disambiguate_name (content_label, content_path, path), tab, content_path);
+                                    return false;
+                                });
+                            }
                         }
+                    } else if (content_label == new_label &&
+                               content_path == path &&
+                               content_label != tab.label) {
 
-                        new_name = disambiguate_name (name, path, content_path); /*Also relabel this tab */
+                        /* Revert to short label when possible */
+                        Idle.add_full (GLib.Priority.LOW, () => {
+                            set_tab_label (content_label, tab, content_path);
+                            return false;
+                        });
                     }
                 }
             }
 
-            return new_name;
+            return new_label;
+        }
+
+        /* Just to append "as Administrator" when appropriate */
+        private void set_tab_label (string label, Granite.Widgets.Tab tab, string? tooltip = null) {
+            string lab = label;
+            if (Posix.getuid () == 0) {
+                lab += (" " + _("(as Administrator)"));
+            }
+
+            tab.label = lab;
+
+            /* Needs change to Granite to allow (visible) tooltip amendment.
+             * This compiles because tab is a widget but the tootip is overridden by that set internally */
+            if (tooltip != null) {
+                var tt = tooltip;
+                if (Posix.getuid () == 0) {
+                    tt += (" " + _("(as Administrator)"));
+                }
+
+                tab.set_tooltip_text (tt);
+            }
         }
 
         private string disambiguate_name (string name, string path, string conflict_path) {
@@ -772,7 +792,7 @@ namespace Marlin.View {
         }
 
         private GLib.SimpleAction? get_action (string action_name) {
-            return win_actions.lookup_action (action_name) as GLib.SimpleAction?;
+            return lookup_action (action_name) as GLib.SimpleAction?;
         }
 
         private Marlin.ViewMode real_mode (Marlin.ViewMode mode) {
@@ -789,10 +809,6 @@ namespace Marlin.View {
                     break;
             }
             return (Marlin.ViewMode)(Preferences.settings.get_enum ("default-viewmode"));
-        }
-
-        public new GLib.SimpleActionGroup get_action_group () {
-            return this.win_actions;
         }
 
         public void quit () {
@@ -911,6 +927,7 @@ namespace Marlin.View {
                 /* Prevent too rapid loading of tabs which can cause crashes
                  * This may not be necessary with the Vala version of the views but does no harm
                  */
+                /*TODO Remove this after sufficient testing */
                 Thread.usleep (100000);
             }
 
@@ -996,10 +1013,11 @@ namespace Marlin.View {
             Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
-        public void update_labels (string new_path, string tab_name) {
-            assert (new_path != null && new_path != "");
-            set_title (tab_name);
-            top_menu.update_location_bar (new_path);
+        private void update_labels (string uri) {
+            if (current_tab != null) { /* Can happen during restore */
+                set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
+                top_menu.update_location_bar (uri);
+            }
         }
 
         public void mount_removed (Mount mount) {
