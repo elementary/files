@@ -8,17 +8,18 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2017-05-31 21:04+0000\n"
-"Last-Translator: Jernej Virag <Unknown>\n"
-"Language-Team: Slovenian <sl@li.org>\n"
+"PO-Revision-Date: 2018-08-18 13:56+0000\n"
+"Last-Translator: Jernej Virag <jernej@virag.si>\n"
+"Language-Team: Slovenian <https://weblate.elementary.io/projects/files/files/"
+"sl/>\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
-"%100==4 ? 3 : 0);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || "
+"n%100==4 ? 3 : 0);\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -154,19 +155,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Razčlenitev datoteke namizja je spodletelo: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Razčlenitev datoteke namizja je spodletelo: %s"
+msgstr "Branje datoteke namizja je spodletelo"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Razčlenitev datoteke namizja je spodletelo: %s"
+msgstr "Ni bilo mogoče ustvariti ukaza z datoteke: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Razčlenitev datoteke namizja je spodletelo: %s"
+msgstr "Ni bilo možno pognati datoteke: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1431,7 +1431,7 @@ msgstr "Drugo aplikacijo..."
 
 #: ../src/View/AbstractDirectoryView.vala:2175
 msgid "Templates"
-msgstr ""
+msgstr "Šablone"
 
 #: ../src/View/AbstractDirectoryView.vala:2422
 msgid "Untitled %s"
@@ -1566,7 +1566,7 @@ msgstr "(%s prosto od %s)"
 
 #: ../src/View/Sidebar.vala:1360
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Napaka pri priklapljanju %s"
 
 #: ../src/View/Sidebar.vala:1375
 msgid "Unable to start %s"
@@ -1700,12 +1700,11 @@ msgstr "Osveži to mapo"
 #: ../src/View/Widgets/LocationBar.vala:196
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Iskalni niz ali pot"
 
 #: ../src/View/Widgets/LocationBar.vala:205
-#, fuzzy
 msgid "Searching…"
-msgstr "Nalaganje ..."
+msgstr "Iskanje…"
 
 #: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
@@ -1809,9 +1808,8 @@ msgid "Enable debug logging"
 msgstr "Omogoči beleženje razhroščevanja"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
-msgstr "[URI ...]"
+msgstr "[URI…]"
 
 #: ../src/Application.vala:133
 msgid ""
@@ -1949,7 +1947,6 @@ msgid "Deleted:"
 msgstr "Izbrisano:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "MIME tip:"
 
@@ -2065,14 +2062,12 @@ msgid "Failed to open files"
 msgstr "Ni bilo mogoče odpreti datotek"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Ni bilo mogoče spremeniti imena v '%s'"
+msgstr "Ni bilo mogoče odpreti URIjev"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Datotek in naslovov ni bilo mogoče odpreti s to aplikacijo"
+msgstr "S to aplikacijo ni bilo mogoče odpreti datotek/URIjev"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2301,16 +2296,14 @@ msgid "In This Folder"
 msgstr "V tej mapi"
 
 #: ../libwidgets/View/SearchResults.vala:227
-#, fuzzy
 msgid "Below This Folder"
-msgstr "V tej mapi"
+msgstr "Pod to mapo"
 
 #: ../libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
 msgstr "Zaznamki"
 
 #: ../libwidgets/View/SearchResults.vala:237
-#, fuzzy
 msgid "Recently used"
 msgstr "Nedavne datoteke"
 
@@ -2331,14 +2324,12 @@ msgid "Empty the Trash"
 msgstr "Izprazni smeti"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Obnovi vse"
+msgstr "Obnovi izbrano"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " izbranih"
+msgstr "Izbriši izbrano"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2393,9 +2384,8 @@ msgid "Paste"
 msgstr "Prilepi"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Prilepi"
+msgstr "Prilepi povezavo"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2407,16 +2397,15 @@ msgstr "Kopiraj"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Kopiraj kot povezavo"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Prilepi v mapo"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Prilepi v mapo"
+msgstr "Prilepi povezavo v mapo"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2436,7 +2425,7 @@ msgstr "Obratni vrstni red"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Mape pred datotekami"
 
 #~ msgid "These items may be restored or deleted from the trash."
 #~ msgstr "Te predmete se lahko obnovi iz smeti."
