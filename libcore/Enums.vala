@@ -75,7 +75,8 @@ namespace Marlin {
         DEFAULT,
         NEW_ROOT,
         NEW_TAB,
-        NEW_WINDOW
+        NEW_WINDOW,
+        APP
     }
 
     public enum ZoomLevel {
