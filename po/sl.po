@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-08-18 13:56+0000\n"
+"PO-Revision-Date: 2018-08-19 00:02+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://weblate.elementary.io/projects/files/files/"
 "sl/>\n"
@@ -138,7 +138,7 @@ msgstr "_Zapomni si geslo"
 
 #: ../src/marlin-connect-server-dialog.c:1229
 msgid "Operation cancelled"
-msgstr "Opravilo je preklicano."
+msgstr "Opravilo je preklicano"
 
 #: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
 msgid "Inaccessible"
@@ -544,7 +544,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Brisanje datoteko trajno odstrani."
+" Brisanje datoteko trajno odstrani"
 
 #: ../libcore/marlin-file-operations.c:2006
 msgid "Trashing Files"
@@ -681,7 +681,7 @@ msgstr "Cilj je mogoče le brati."
 
 #: ../libcore/marlin-file-operations.c:2844
 msgid "Moving \"%B\" to \"%B\""
-msgstr "Premikanje \"%B\" v \"%B\"."
+msgstr "Premikanje \"%B\" v \"%B\""
 
 #: ../libcore/marlin-file-operations.c:2845
 msgid "Copying \"%B\" to \"%B\""
@@ -918,7 +918,7 @@ msgstr "V smeti se ne da kopirati."
 
 #: ../libcore/marlin-file-operations.c:5579
 msgid "It is not permitted to copy files into the trash"
-msgstr "Kopiranje v smeti ni mogoče."
+msgstr "Kopiranje v smeti ni mogoče"
 
 #: ../libcore/marlin-file-operations.c:5717
 msgid "untitled folder"
@@ -947,7 +947,7 @@ msgstr "Praznjenje smeti"
 
 #: ../libcore/marlin-undostack-manager.c:644
 msgid "Original location could not be determined"
-msgstr "Izvorne lokacije ni bilo mogoče določiti."
+msgstr "Izvorne lokacije ni bilo mogoče določiti"
 
 #: ../libcore/marlin-undostack-manager.c:645
 msgid "Open trash folder and restore manually"
