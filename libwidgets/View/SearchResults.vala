@@ -59,13 +59,12 @@ namespace Marlin.View.Chrome {
             public string sortkey { get; construct; }
 
             public Match (FileInfo info, string path_string, File parent, SearchResults.Category category) {
-                var _name = info.get_display_name ();
-                Object (name: Markup.escape_text (_name),
+                Object (name: Markup.escape_text (info.get_display_name ()),
                         mime: info.get_content_type (),
                         icon: info.get_icon (),
                         path_string: path_string,
                         file: parent.resolve_relative_path (info.get_name ()),
-                        sortkey: category.to_string () + _name);
+                        sortkey: category.to_string () + info.get_display_name ());
             }
 
             public Match.from_bookmark (Bookmark bookmark, SearchResults.Category category) {
@@ -900,7 +899,8 @@ namespace Marlin.View.Chrome {
                             FileAttribute.STANDARD_CONTENT_TYPE + "," +
                             FileAttribute.STANDARD_IS_HIDDEN + "," +
                             FileAttribute.STANDARD_TYPE + "," +
-                            FileAttribute.STANDARD_ICON;
+                            FileAttribute.STANDARD_ICON + "," +
+                            FileAttribute.STANDARD_TARGET_URI;
 
         void visit (string term, bool include_hidden, Cancellable cancel, File root_folder) {
             var folder = directory_queue.poll ();
@@ -959,7 +959,20 @@ namespace Marlin.View.Chrome {
                         } else {
                             cat = begins_with ? Category.DEEP_BEGINS : Category.DEEP_CONTAINS;
                         }
-                        new_results.add (new Match (info, path_string, folder, cat));
+
+                        File dir = folder;
+                        string ps = path_string;
+    `
+                        if (folder.has_uri_scheme ("recent")) {
+                            /* Modify match to work with recent:// folder */
+                            var target = info.get_attribute_as_string (GLib.FileAttribute.STANDARD_TARGET_URI);
+                            var uri = PF.FileUtils.get_parent_path_from_path (target);
+                            dir = File.new_for_uri (uri);
+                            ps = PF.FileUtils.limited_length_path (uri, 35);
+                            info.set_attribute_byte_string (FileAttribute.STANDARD_NAME, Path.get_basename (target));
+                        }
+
+                        new_results.add (new Match (info, ps, dir, cat));
                         category_count++;
                      }
                 }
