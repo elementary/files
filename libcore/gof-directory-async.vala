@@ -1,6 +1,6 @@
 /***
     Copyright (C) 2011 Marlin Developers
-                  2015-2017 elementary LLC (http://launchpad.net/elementary)
+                  2015-2018 elementary LLC (http://launchpad.net/elementary)
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
