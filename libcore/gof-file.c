@@ -490,7 +490,9 @@ gof_file_update (GOFFile *file)
                 !(strcmp (g_file_get_uri (file->target_location), "smb:///") == 0)) {
                 /* Show protocol after server name (lp:1184606) */
                 file->custom_display_name = g_strdup_printf ("%s (%s)", g_file_info_get_display_name (file->info),
-                                                                        g_utf8_strup (g_file_get_uri_scheme (file->target_location), -1));
+                                                                        g_file_get_uri_scheme (file->target_location));
+            } else if (file->target_location != NULL && file->directory != NULL && g_file_has_uri_scheme (file->directory, "recent")) {
+                file->custom_display_name = pf_file_utils_limited_length_path (g_file_get_path (file->target_location), 50);
             } else {
                 file->custom_display_name = g_strdup (g_file_info_get_display_name (file->info));
             }

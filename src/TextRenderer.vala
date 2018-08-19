@@ -151,8 +151,17 @@ namespace Marlin {
                 layout.set_wrap (this.wrap_mode);
                 layout.set_height (- MAX_LINES);
             }
-
-            layout.set_ellipsize (Pango.EllipsizeMode.END);
+            if (file.is_recent_uri_scheme ()) {
+                /* Need to see basename in path - and path is already limited in length */
+                if (is_list_view) {
+                    /* Need to stop name wrapping */
+                    layout.set_ellipsize (Pango.EllipsizeMode.START);
+                } else {
+                    layout.set_ellipsize (Pango.EllipsizeMode.NONE);
+                }
+            } else {
+                layout.set_ellipsize (Pango.EllipsizeMode.END);
+            }
 
             if (!is_list_view) {
                 layout.set_alignment (Pango.Alignment.CENTER);

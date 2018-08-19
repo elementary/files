@@ -76,6 +76,28 @@ namespace PF.FileUtils {
         return parent_path;
     }
 
+    public string limited_length_path (string full_path, int max_length) {
+        if (full_path.length < max_length) {
+            return full_path;
+        }
+
+        string[] tokens = full_path.split (Path.DIR_SEPARATOR_S, 10);
+        int n_tokens = tokens.length;
+        var basename = tokens[n_tokens - 1];
+        var current_length = basename.length;
+
+        var sb = new StringBuilder (tokens[n_tokens - 1]);
+        for (int i = n_tokens - 2; i >=0 && current_length <= max_length; i--) {
+            var chunk = tokens[i] + Path.DIR_SEPARATOR_S;
+            sb.prepend (chunk);
+            current_length += chunk.length;
+        }
+
+        sb.prepend ("…" + Path.DIR_SEPARATOR_S);
+
+        return sb.str;
+    }
+
     public void restore_files_from_trash (GLib.List<GOF.File> files, Gtk.Widget? widget) {
         GLib.List<GOF.File>? unhandled_files = null;
         var original_dirs_hash = get_trashed_files_original_directories (files, out unhandled_files);
