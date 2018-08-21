@@ -516,7 +516,7 @@ namespace Marlin.Places {
             if (recent_is_supported ()) {
                 add_place (Marlin.PlaceType.BUILT_IN,
                     iter,
-                    Marlin.PROTOCOL_NAME_RECENT,
+                    _(Marlin.PROTOCOL_NAME_RECENT),
                     new ThemedIcon (Marlin.ICON_RECENT),
                     Marlin.RECENT_URI,
                     null,
