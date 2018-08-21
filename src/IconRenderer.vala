@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2016 elementary LLC <https://elementary.io>
 
     Copyright (C) 2000  Red Hat, Inc.,  Jonathan Blandford <jrb@redhat.com>
     Copyright (c) 2011  ammonkey <am.monkeyd@gmail.com>
