@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2016 elementary LLC <https://elementary.io>
+    Copyright (c) 2016-2018 elementary LLC <https://elementary.io>
 
     Based on C code imported from Thunar
     Copyright (c) 2005-2006 Benedikt Meurer <benny@xfce.org>

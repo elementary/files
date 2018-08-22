@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2018 elementary LLC
+    Copyright (c) 2017-2018 elementary LLC <https://elementary.io>
 
     This file is part of Pantheon Files.
 
