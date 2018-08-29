@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-06-04 00:08+0000\n"
+"PO-Revision-Date: 2018-08-19 00:02+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://weblate.elementary.io/projects/files/files/de/"
 ">\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -34,7 +34,7 @@ msgstr "FTP (mit Anmeldung)"
 
 #: ../src/marlin-connect-server-dialog.c:127
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protokoll)"
+msgstr "AFP (Apple Filing Protocol)"
 
 #: ../src/marlin-connect-server-dialog.c:129
 msgid "Windows share"
@@ -1373,7 +1373,7 @@ msgstr "Andere Anwendung …"
 
 #: ../src/View/AbstractDirectoryView.vala:2175
 msgid "Templates"
-msgstr ""
+msgstr "Vorlagen"
 
 #: ../src/View/AbstractDirectoryView.vala:2422
 msgid "Untitled %s"
@@ -1732,7 +1732,7 @@ msgstr "Ausführen"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Die Versionsnummer des Programms anzeigen."
+msgstr "Versionsnummer des Programms anzeigen"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1744,16 +1744,15 @@ msgstr "Neues Fenster"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Dateiverwaltung beenden."
+msgstr "Dateiverwaltung beenden"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
 msgstr "Nachrichten zur Fehlerdiagnose anzeigen"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
-msgstr "[Adresse …]"
+msgstr "[Adresse…]"
 
 #: ../src/Application.vala:133
 msgid ""
@@ -1889,7 +1888,6 @@ msgid "Deleted:"
 msgstr "Gelöscht:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "MIME-Typ:"
 
@@ -2000,12 +1998,10 @@ msgid "Failed to open files"
 msgstr "Dateien konnten nicht geöffnet werden"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Zu »%s« umzubenennen ist fehlgeschlagen"
+msgstr "Adressen konnten nicht geöffnet werden"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
 msgstr ""
 "Mit dieser Anwendung können die Dateien bzw. Adressen nicht geöffnet werden"
@@ -2265,14 +2261,12 @@ msgid "Empty the Trash"
 msgstr "Papierkorb leeren"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Alle wiederherstellen"
+msgstr "Markierte wiederherstellen"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " ausgewählt"
+msgstr "Markierte löschen"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
