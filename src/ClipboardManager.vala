@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2016-2018 elementary LLC <https://elementary.io>
 
     Based on C code imported from Thunar
     Copyright (c) 2005-2006 Benedikt Meurer <benny@xfce.org>
@@ -243,14 +243,14 @@ namespace Marlin {
             }
 
             switch (target_info) {
-                case ClipboardTarget.GNOME_COPIED_FILES:
+                case ClipboardTarget.GNOME_COPIED_FILES: /* Pasting into a file handler */
                     string prefix = manager.files_cutted ? "cut" : (manager.files_linked ? "link" : "copy");
                     DndHandler.set_selection_data_from_file_list (sd,
                                                                   manager.files,
                                                                   prefix);
                     break;
 
-                case ClipboardTarget.UTF8_STRING: /* Not clear what this is for */
+                case ClipboardTarget.UTF8_STRING: /* Pasting into a text handler */
                     DndHandler.set_selection_text_from_file_list (sd, manager.files, "");
                     break;
                 default:

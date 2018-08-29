@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -740,14 +740,6 @@ namespace FM {
             return false;
         }
 
-        protected void show_or_queue_context_menu (Gdk.Event event) {
-            if (selected_files != null) {
-                queue_context_menu (event);
-            } else {
-                show_context_menu (event);
-            }
-        }
-
         protected unowned GLib.List<GOF.File> get_selected_files_for_transfer (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
             unowned GLib.List<GOF.File> list = null;
 
@@ -762,7 +754,6 @@ namespace FM {
 
 /*** Private methods */
     /** File operations */
-
 
         private void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
             if (is_frozen) {
@@ -781,9 +772,9 @@ namespace FM {
                 screen = get_screen ();
             }
 
-            if (file.is_folder () ||
+            if (flag != Marlin.OpenFlag.APP && (file.is_folder () ||
                 file.get_ftype () == "inode/directory" ||
-                file.is_root_network_folder ()) {
+                file.is_root_network_folder ())) {
 
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
@@ -801,9 +792,7 @@ namespace FM {
                 }
             } else if (!in_trash) {
                 if (only_one_file) {
-                    if (file.is_root_network_folder ()) {
-                        load_location (location);
-                    } else if (file.is_executable ()) {
+                    if (file.is_executable ()) {
                         var content_type = file.get_ftype ();
 
                         if (GLib.ContentType.is_a (content_type, "text/plain")) {
@@ -1107,7 +1096,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
-            activate_selected_items (Marlin.OpenFlag.DEFAULT);
+            activate_selected_items (Marlin.OpenFlag.APP);
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1418,7 +1407,7 @@ namespace FM {
     /** Handle popup menu events */
         private bool on_popup_menu () {
             Gdk.Event event = Gtk.get_current_event ();
-            show_or_queue_context_menu (event);
+            show_context_menu (event);
             return true;
         }
 
@@ -1426,11 +1415,6 @@ namespace FM {
         private bool on_drag_timeout_button_release (Gdk.EventButton event) {
             /* Only active during drag timeout */
             cancel_drag_timer ();
-
-            if (drag_button == Gdk.BUTTON_SECONDARY) {
-                show_context_menu (event);
-            }
-
             return true;
         }
 
@@ -1453,11 +1437,11 @@ namespace FM {
                 }
 
                 context = Gtk.drag_begin_with_coordinates (widget,
-                                target_list,
-                                actions,
-                                drag_button,
-                                (Gdk.Event) event,
-                                 x, y);
+                                                           target_list,
+                                                           actions,
+                                                           drag_button,
+                                                           (Gdk.Event) event,
+                                                            x, y);
                 return true;
             } else {
                 return false;
@@ -1849,6 +1833,7 @@ namespace FM {
         }
 
         protected void show_context_menu (Gdk.Event event) {
+            cancel_drag_timer ();
             /* select selection or background context menu */
             update_menu_actions ();
             var builder = new Gtk.Builder.from_file (Config.UI_DIR + "directory_view_popup.ui");
@@ -2391,7 +2376,7 @@ namespace FM {
         private bool app_is_this_app (AppInfo ai) {
             string exec_name = ai.get_executable ();
 
-            return (exec_name == APP_NAME || exec_name == TERMINAL_NAME);
+            return (exec_name == APP_NAME);
         }
 
         private void filter_default_app_from_open_with_apps () {
@@ -2745,7 +2730,7 @@ namespace FM {
             switch (keyval) {
                 case Gdk.Key.F10:
                     if (only_control_pressed) {
-                        show_or_queue_context_menu (event);
+                        show_context_menu (event);
                         res = true;
                     }
 
@@ -3186,7 +3171,6 @@ namespace FM {
 
         protected virtual bool handle_secondary_button_click (Gdk.EventButton event) {
             should_scroll = false;
-            show_or_queue_context_menu (event);
             return true;
         }
 
@@ -3355,8 +3339,11 @@ namespace FM {
                         unselect_all ();
                     }
 
-                    unblock_drag_and_drop ();
                     /* Ensure selected files list and menu actions are updated before context menu shown */
+                    update_selected_files_and_menu ();
+                    unblock_drag_and_drop ();
+                    start_drag_timer (event);
+                    
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -3405,6 +3392,8 @@ namespace FM {
                         update_selected_files_and_menu ();
                         return false;
                     });
+                } else if (event.button == Gdk.BUTTON_SECONDARY) {
+                    show_context_menu (event);
                 }
             }
 
