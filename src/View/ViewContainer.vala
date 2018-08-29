@@ -26,7 +26,17 @@ using Marlin;
 
 namespace Marlin.View {
     public class ViewContainer : Gtk.Bin {
+        private static int container_id;
 
+        protected static int get_next_container_id () {
+            return ++container_id;
+        }
+
+        static construct {
+            container_id = -1;
+        }
+
+        public int id {get; construct;}
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
         private Marlin.View.Window? _window = null;
@@ -105,6 +115,10 @@ namespace Marlin.View {
         public signal void loading (bool is_loading);
         public signal void active ();
         /* path-changed signal no longer used */
+
+        construct {
+            id = ViewContainer.get_next_container_id ();
+        }
 
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win) {
@@ -345,8 +359,7 @@ namespace Marlin.View {
 
         private void refresh_slot_info (GLib.File loc) {
             update_tab_name ();
-            window.loading_uri (loc.get_uri ());
-            window.update_labels (loc.get_parse_name (), tab_name);
+            window.loading_uri (loc.get_uri ()); /* Updates labels as well */
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
@@ -368,15 +381,13 @@ namespace Marlin.View {
                     } catch (ConvertError e) {}
 
                     if (tab_name == null) {
-                        tab_name = Path.get_basename (slot_path);
+                        tab_name = location.get_parse_name ();
                     }
                 }
             }
 
             if (tab_name == null) {
                 tab_name = Marlin.INVALID_TAB_NAME;
-            } else if (Posix.getuid () == 0) {
-                    tab_name = tab_name + " " + _("(as Administrator)");
             }
 
             this.tab_name = tab_name;
