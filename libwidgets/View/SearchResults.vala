@@ -962,7 +962,7 @@ namespace Marlin.View.Chrome {
 
                         File dir = folder;
                         string ps = path_string;
-    `
+
                         if (folder.has_uri_scheme ("recent")) {
                             /* Modify match to work with recent:// folder */
                             var target = info.get_attribute_as_string (GLib.FileAttribute.STANDARD_TARGET_URI);
