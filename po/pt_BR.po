@@ -8,9 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-08-29 05:56+0000\n"
-"Last-Translator: Israel Felipe de Lima Araújo S <israelita.felipe@gmail.com>"
-"\n"
+"PO-Revision-Date: 2018-08-29 05:57+0000\n"
+"Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -166,7 +165,7 @@ msgstr "Falha ao criar comando do arquivo: %s"
 #: ../libcore/gof-file.c:1623
 #, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Falha iniciar arquivo de desktop: %s"
+msgstr "Falha ao abrir o arquivo de desktop: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
