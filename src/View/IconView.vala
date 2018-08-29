@@ -298,6 +298,7 @@ namespace FM {
                                                     bool scroll_to_top) {
             scroll_to_cell (path, scroll_to_top);
             tree.set_cursor (path, renderer, start_editing);
+            tree.cell_area.set_focus_cell (icon_renderer);
         }
 
         protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed, bool only_shift_pressed) {
@@ -319,10 +320,10 @@ namespace FM {
         }
 
         /* Override native Gtk.IconView cursor handling */
-        protected override bool move_cursor (uint keyval, bool only_shift_pressed) {
+        protected override bool move_cursor (uint keyval, bool only_shift_pressed, bool only_control_pressed) {
             Gtk.TreePath? path = get_path_at_cursor ();
             if (path != null) {
-                if (path_is_selected (path)) {
+                if (path_is_selected (path) || only_control_pressed) {
                     if (keyval == Gdk.Key.Right) {
                         path.next (); /* Does not check if path is valid */
                     } else if (keyval == Gdk.Key.Left) {
@@ -339,9 +340,13 @@ namespace FM {
                         if (only_shift_pressed && selected_files != null) {
                             linear_select_path (path);
                         } else {
-                            unselect_all ();
-                            set_cursor (path, false, true, false);
                             previous_linear_selection_path = path;
+                            if (only_control_pressed) { /* Move cursor without select (like ListView) */
+                                set_cursor (path, false, false, false);
+                            } else {
+                                unselect_all ();
+                                set_cursor (path, false, true, false);
+                            }
                         }
                     }
                 } else {

@@ -169,7 +169,7 @@ namespace Marlin {
                     state |= widget.get_state_flags ();
                 }
 
-                if (focused) {
+                if (selected && focused) {
                     var bg = style_context.get_property ("background-color", state);
 
                     if (bg.holds (typeof (Gdk.RGBA))) {
@@ -182,7 +182,7 @@ namespace Marlin {
                     }
                 }
 
-                if (prelit || focused) {
+                if (prelit) { /* Do not lighten if just focussed */
                     pb = PF.PixbufUtils.lighten (pb);
                 }
             }
@@ -197,16 +197,17 @@ namespace Marlin {
             style_context.restore ();
 
             /* Do not show selection helpers or emblems for very small icons */
-            if ((selected || prelit) && file != drop_file) {
-                helper_size = Marlin.IconSize.LARGE_EMBLEM > (int.max (pixbuf.get_width (), pixbuf.get_height ()) / icon_scale) / 2 ?
-                              Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
+            if ((focused || selected || prelit) && file != drop_file) {
+               var half_icon_size = int.min (pixbuf.get_width (), pixbuf.get_height ()) / icon_scale / 2;
+               helper_size = Marlin.IconSize.LARGE_EMBLEM > half_icon_size ?
+                             Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM;
 
                 special_icon_name = null;
                 if (selected && prelit) {
                     special_icon_name = "selection-remove";
                 } else if (selected) {
                     special_icon_name = "selection-checked";
-                } else if (prelit) {
+                } else if (prelit || focused) { /* grey helper to show focus position */
                     special_icon_name = "selection-add";
                 }
 
@@ -234,7 +235,6 @@ namespace Marlin {
 
                         helper_x = helper_area.x;
                         helper_y = helper_area.y;
-
                         style_context.render_icon (cr, pix, helper_x * icon_scale, helper_y * icon_scale);
                         cr.paint ();
                     }
