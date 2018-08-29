@@ -9,7 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
 "PO-Revision-Date: 2018-08-29 05:56+0000\n"
-"Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
+"Last-Translator: Israel Felipe de Lima Araújo S <israelita.felipe@gmail.com>"
+"\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -158,14 +159,14 @@ msgid "Failed to parse the desktop file"
 msgstr "Falha ao analisar o arquivo desktop"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Falha ao analisar o arquivo de desktop: %s"
+msgstr "Falha ao criar comando do arquivo: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Falha ao analisar o arquivo de desktop: %s"
+msgstr "Falha iniciar arquivo de desktop: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -1489,7 +1490,7 @@ msgstr "(%s livre de %s)"
 
 #: ../src/View/Sidebar.vala:1360
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Erro ao montar volume %s"
 
 #: ../src/View/Sidebar.vala:1375
 msgid "Unable to start %s"
@@ -1582,7 +1583,7 @@ msgstr "Não foi possível conectar ao servidor para essa pasta."
 
 #: ../src/View/ViewContainer.vala:410
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Não é possível exibir o conteúdo da pasta"
 
 #: ../src/View/ViewContainer.vala:411
 msgid "The operation timed out."
