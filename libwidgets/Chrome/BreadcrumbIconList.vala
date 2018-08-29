@@ -1,4 +1,4 @@
-/* Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/pantheon-files)
+/* Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
