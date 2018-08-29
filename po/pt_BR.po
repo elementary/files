@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-08-29 05:57+0000\n"
+"PO-Revision-Date: 2018-08-29 05:58+0000\n"
 "Last-Translator: Israel Felipe de Lima Araújo S <israelita.felipe@gmail.com>"
 "\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
@@ -1624,12 +1624,11 @@ msgstr "Recarregar esta pasta"
 #: ../src/View/Widgets/LocationBar.vala:196
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Pesquisar ou digitar caminho"
 
 #: ../src/View/Widgets/LocationBar.vala:205
-#, fuzzy
 msgid "Searching…"
-msgstr "Carregando…"
+msgstr "Pesquisando…"
 
 #: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
@@ -1979,9 +1978,8 @@ msgid "Failed to open files"
 msgstr "Falha ao abrir arquivos"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Não foi possível renomear para '%s'"
+msgstr "Não foi possível abrir os URIs"
 
 #: ../src/Utils/MimeActions.vala:316
 #, fuzzy
