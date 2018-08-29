@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-08-26 00:04+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2018-08-29 15:13+0000\n"
+"Last-Translator: Robin Lahtinen <robin.lahtinen@gmail.com>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
 "fi/>\n"
 "Language: fi\n"
@@ -1015,7 +1015,7 @@ msgstr "Kopioi \"%s\" sijaintiin \"%s\""
 #: ../libcore/marlin-undostack-manager.c:1411
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Kopio %d kohteesta sijainnissa '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1416
 #, c-format
@@ -1167,8 +1167,8 @@ msgstr[1] "_Kumoa %d kohteen poisto"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kumoa %d kohteen rekursiivinen oikeuksien muutos"
+msgstr[1] "Kumoa %d kohteen rekursiiviset oikeuksien muutokset"
 
 #: ../libcore/marlin-undostack-manager.c:1624
 #, c-format
@@ -1266,8 +1266,8 @@ msgstr[1] "_Tee uudelleen %d kohteen poisto"
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tee uudelleen %d kohteen rekursiivinen oikeuksien muutos"
+msgstr[1] "Tee uudelleen %d kohteen rekursiivinen oikeuksien muutos"
 
 #: ../libcore/marlin-undostack-manager.c:1719
 #, c-format
