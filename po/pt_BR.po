@@ -9,7 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
 "PO-Revision-Date: 2018-08-29 05:57+0000\n"
-"Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
+"Last-Translator: Israel Felipe de Lima Araújo S <israelita.felipe@gmail.com>"
+"\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -1586,7 +1587,7 @@ msgstr "Não é possível exibir o conteúdo da pasta"
 
 #: ../src/View/ViewContainer.vala:411
 msgid "The operation timed out."
-msgstr ""
+msgstr "A operação expirou."
 
 #: ../src/View/ViewContainer.vala:413
 msgid "Unable to Show Folder"
