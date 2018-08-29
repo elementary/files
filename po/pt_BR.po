@@ -8,16 +8,18 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2017-02-12 16:46+0000\n"
-"Last-Translator: Leonardo Lemos <Unknown>\n"
-"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"PO-Revision-Date: 2018-08-29 05:31+0000\n"
+"Last-Translator: Israel Felipe de Lima Araújo S <israelita.felipe@gmail.com>"
+"\n"
+"Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
+"files/files/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -153,9 +155,8 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Falha ao analisar o arquivo de desktop: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Falha ao analisar o arquivo de desktop: %s"
+msgstr "Falha ao analisar o arquivo de desktop"
 
 #: ../libcore/gof-file.c:1612
 #, fuzzy, c-format
