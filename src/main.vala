@@ -15,7 +15,7 @@
 ***/
 
 public const string APP_NAME = "io.elementary.files";
-public const string TERMINAL_NAME = "pantheon-terminal";
+public const string TERMINAL_NAME = "io.elementary.terminal";
 
 public static int main (string[] args) {
     /* Initiliaze gettext support */

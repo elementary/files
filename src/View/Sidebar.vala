@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -516,7 +516,7 @@ namespace Marlin.Places {
             if (recent_is_supported ()) {
                 add_place (Marlin.PlaceType.BUILT_IN,
                     iter,
-                    Marlin.PROTOCOL_NAME_RECENT,
+                    _(Marlin.PROTOCOL_NAME_RECENT),
                     new ThemedIcon (Marlin.ICON_RECENT),
                     Marlin.RECENT_URI,
                     null,
