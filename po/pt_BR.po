@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-08-29 05:58+0000\n"
+"PO-Revision-Date: 2018-08-29 15:13+0000\n"
 "Last-Translator: Israel Felipe de Lima Araújo S <israelita.felipe@gmail.com>"
 "\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
@@ -1982,9 +1982,8 @@ msgid "Could not open URIs"
 msgstr "Não foi possível abrir os URIs"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Não foi possível abrir arquivos ou uris com esse aplicativo"
+msgstr "Não foi possível abrir arquivos ou URIs com esse aplicativo"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2117,7 +2116,7 @@ msgstr "Não foi possível renomear para '%s'"
 
 #: ../libcore/FileUtils.vala:529
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Hoje às %-H:%M"
 
 #: ../libcore/FileUtils.vala:531
 msgid "Today at %-I:%M %p"
@@ -2125,7 +2124,7 @@ msgstr "Hoje às %-I:%M %p"
 
 #: ../libcore/FileUtils.vala:537
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Ontem às %-H:%M"
 
 #: ../libcore/FileUtils.vala:539
 msgid "Yesterday at %-I:%M %p"
@@ -2133,7 +2132,7 @@ msgstr "Ontem às %-I:%M %p"
 
 #: ../libcore/FileUtils.vala:546
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A às %-H:%M"
 
 #: ../libcore/FileUtils.vala:548
 msgid "%A at %-I:%M %p"
@@ -2150,7 +2149,7 @@ msgstr "Exibir mais _detalhes"
 
 #: ../libcore/gof-directory-async.vala:661
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "O servidor não respondeu dentro do limite de tempo"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:170
 msgid "Navigate to %s"
@@ -2213,18 +2212,16 @@ msgid "In This Folder"
 msgstr "Nesta pasta"
 
 #: ../libwidgets/View/SearchResults.vala:227
-#, fuzzy
 msgid "Below This Folder"
-msgstr "Nesta pasta"
+msgstr "Abaixo desta pasta"
 
 #: ../libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
 msgstr "Favoritos"
 
 #: ../libwidgets/View/SearchResults.vala:237
-#, fuzzy
 msgid "Recently used"
-msgstr "Recente"
+msgstr "Usado recentemente"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
@@ -2305,9 +2302,8 @@ msgid "Paste"
 msgstr "Colar"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Colar"
+msgstr "Colar Link"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2319,16 +2315,15 @@ msgstr "Copiar"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Copiar como link"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Colar na pasta"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Colar na pasta"
+msgstr "Colar link na pasta"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2348,7 +2343,7 @@ msgstr "Ordem inversa"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Pastas Antes de Arquivos"
 
 #~ msgid "These items may be restored or deleted from the trash."
 #~ msgstr "Estes itens podem ser restaurados ou excluídos da lixeira"
