@@ -29,7 +29,8 @@
 namespace Marlin {
 
     public class IconRenderer : Gtk.CellRenderer {
-        public int helper_size {get; private set; default = (int)(Marlin.IconSize.EMBLEM);}
+        public Gdk.Rectangle helper_rect;
+        public Gdk.Rectangle hover_rect;
         public bool follow_state {get; set;}
         public GOF.File drop_file {get; set;}
 
@@ -71,6 +72,8 @@ namespace Marlin {
 
         construct {
             clipboard = Marlin.ClipboardManager.get_for_display ();
+            hover_rect = {0, 0, (int) Marlin.IconSize.NORMAL, (int) Marlin.IconSize.NORMAL};
+            helper_rect = {0, 0, (int) Marlin.IconSize.EMBLEM, (int) Marlin.IconSize.EMBLEM};
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -189,8 +192,8 @@ namespace Marlin {
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
             style_context.restore ();
 
-            int h_overlap = int.min (pix_rect.width, Marlin.IconSize.EMBLEM) / 2;
-            int v_overlap = int.min (pix_rect.height, Marlin.IconSize.EMBLEM) / 2;
+            int h_overlap = int.min (draw_rect.width, Marlin.IconSize.EMBLEM) / 2;
+            int v_overlap = int.min (draw_rect.height, Marlin.IconSize.EMBLEM) / 2;
 
             if ((selected || prelit) && file != drop_file) {
                 special_icon_name = null;
@@ -203,8 +206,11 @@ namespace Marlin {
                 }
 
                 if (special_icon_name != null) {
-                    helper_size = (int)(zoom_level <= Marlin.ZoomLevel.NORMAL ?
-                                                Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM);
+                    int helper_size = (int)(zoom_level <= Marlin.ZoomLevel.NORMAL ?
+                                            Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM);
+
+                    helper_rect.width = helper_size;
+                    helper_rect.height = helper_size;
 
                     var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, helper_size, icon_scale);
                     Gdk.Pixbuf? pix = null;
@@ -214,13 +220,17 @@ namespace Marlin {
                     }
 
                     if (pix != null) {
-                        var helper_area = Gdk.Rectangle ();
-                        helper_area.x = int.max (cell_area.x, draw_rect.x - helper_size + h_overlap);
-                        helper_area.y = int.max (cell_area.y, draw_rect.y - helper_size + v_overlap);
+                        helper_rect.x = int.max (cell_area.x, draw_rect.x - helper_size + h_overlap);
+                        helper_rect.y = int.max (cell_area.y, draw_rect.y - helper_size + v_overlap);
 
-                        style_context.render_icon (cr, pix, helper_area.x * icon_scale, helper_area.y * icon_scale);
+                        style_context.render_icon (cr, pix, helper_rect.x * icon_scale, helper_rect.y * icon_scale);
                         cr.paint ();
                     }
+                }
+
+                if (prelit) {
+                    /* Save position of icon that is being hovered */
+                    hover_rect = draw_rect;
                 }
             }
 
@@ -268,12 +278,12 @@ namespace Marlin {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int)icon_size + helper_size;
+            minimum_size = (int)icon_size + helper_rect.width;
             natural_size = minimum_size;
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int)icon_size + helper_size / 2;
+            minimum_size = (int)icon_size + helper_rect.height / 2;
             natural_size = minimum_size;
         }
 
