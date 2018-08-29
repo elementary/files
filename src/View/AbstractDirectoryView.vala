@@ -1822,25 +1822,13 @@ namespace FM {
         /*
          * (derived from thunar: thunar_standard_view_queue_popup)
          *
-         * Schedules a context menu popup in response to
-         * a right-click button event. Right-click events
-         * need to be handled in a special way, as the
+         * Right-click events need to be handled in a special way, as the
          * user may also start a drag using the right
          * mouse button and therefore this function
-         * schedules a timer, which - once expired -
-         * opens the context menu. If the user moves
+         * schedules a timer. If the user moves
          * the mouse prior to expiration, a right-click
-         * drag (with #GDK_ACTION_ASK) will be started
-         * instead.
+         * drag (with #GDK_ACTION_ASK) will be started.
         **/
-
-        private void queue_context_menu (Gdk.Event event) {
-            if (drag_timer_id > 0) { /* already queued */
-                return;
-            }
-
-            start_drag_timer (event);
-        }
 
         protected void start_drag_timer (Gdk.Event event) {
             connect_drag_timeout_motion_and_release_events ();
