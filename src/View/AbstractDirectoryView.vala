@@ -775,7 +775,7 @@ namespace FM {
 
 /*** Private methods */
     /** File operations */
-    
+
         protected void activate_file (GOF.File _file, Gdk.Screen? screen, Marlin.OpenFlag flag, bool only_one_file) {
             if (is_frozen) {
                 return;
@@ -3217,7 +3217,6 @@ namespace FM {
 
         protected virtual bool handle_secondary_button_click (Gdk.EventButton event) {
             click_data.should_scroll = false;
-            show_or_queue_context_menu (event);
             return true;
         }
 
