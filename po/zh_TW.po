@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-02-13 09:15+0000\n"
+"PO-Revision-Date: 2018-09-03 00:02+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
-"files/files/zh_TW/>\n"
+"files/files/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
@@ -154,9 +154,8 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "無法解析桌面檔：%s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "無法解析桌面檔：%s"
+msgstr "無法解析桌面檔"
 
 #: ../libcore/gof-file.c:1612
 #, fuzzy, c-format
