@@ -260,8 +260,6 @@ namespace FM {
                     bool on_helper = false;
                     GOF.File? file = model.file_for_path (p);
                     if (file != null) {
-                        /* In the case of GtkIconView, the y coordinate does not need adjusting for scrolling
-                         * in order to match the icon renderer */
                         bool on_icon = is_on_icon (x, y, ref on_helper);
 
                         if (on_helper) {

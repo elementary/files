@@ -240,8 +240,6 @@ namespace FM {
                     var rtl = (get_direction () == Gtk.TextDirection.RTL);
                     if (rtl ? (x > rect.x + rect.width - icon_size) : (x < rect.x + icon_size)) { /* cannot be on name */
                         bool on_helper = false;
-                        /* In the case of GtkTreeView, we must adjust for scrolling */
-                        y += (int)(get_vadjustment ().get_value ());
                         bool on_icon = is_on_icon (x, y, ref on_helper);
 
                         if (on_helper) {
