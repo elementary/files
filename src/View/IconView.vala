@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -529,29 +529,6 @@ namespace FM {
             } else {
                 return path;
             }
-        }
-
-        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
-            int x_offset = x - area.x;
-            int y_offset = y - area.y;
-            int scale_factor = get_scale_factor ();
-            int pix_width = pix.width/scale_factor;
-            int pix_height = pix.height/scale_factor;
-
-            int pix_x_offset = (area.width - pix_width) / 2;
-            int pix_y_offset = (area.height - pix_height) / 2;
-
-            bool on_icon = (x_offset >= pix_x_offset &&
-                            x_offset <= pix_x_offset + pix_width &&
-                            y_offset >= pix_y_offset &&
-                            y_offset <= pix_y_offset + pix_height);
-
-            int hs = icon_renderer.helper_size;
-            on_helper = (on_icon &&
-                         x_offset <= int.max (pix_x_offset + hs, hs) &&
-                         y_offset <= int.max (pix_y_offset + hs, hs));
-
-            return on_icon;
         }
 
         /* When Icon View is automatically adjusting column number it does not expose the actual number of

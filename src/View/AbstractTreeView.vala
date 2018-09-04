@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -343,49 +343,6 @@ namespace FM {
 
         protected override void thaw_child_notify () {
             tree.thaw_child_notify ();
-        }
-
-        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
-            int scale = get_scale_factor ();
-            int pix_height = pix.height / scale;
-            int pix_width = pix.width / scale;
-            int x_offset;
-            int pix_x_offset;
-            int y_offset = y - area.y;
-            int pix_y_offset = (area.height - pix_height) / 2;
-            on_helper = false;
-
-
-            if (rtl) {
-                x_offset = area.x + area.width - x;
-
-                /* Area.width includes name as well. Assume area for icon is square */
-                pix_x_offset = (area.height - pix_width) / 2;
-            } else {
-                x_offset = (x - area.x);
-
-                /* Area.width includes name as well. Assume area for icon is square */
-                pix_x_offset = (area.height - pix_width) / 2;
-            }
-
-            bool on_icon = (x_offset >= pix_x_offset &&
-                            x_offset <= pix_x_offset + pix_width &&
-                            y_offset >= pix_y_offset &&
-                            y_offset <= pix_y_offset + pix_height);
-
-            if (on_icon) {
-                int hs = icon_renderer.helper_size;
-
-                if (y_offset <= int.max (pix_y_offset + hs, hs)) {
-                    if (rtl) {
-                        on_helper = (x_offset >= pix_width + pix_x_offset - hs);
-                    } else {
-                        on_helper = (x_offset <= pix_x_offset + hs);
-                    }
-                }
-            }
-
-            return on_icon;
         }
     }
 

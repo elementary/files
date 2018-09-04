@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2018 elementary LLC (https://elementary.io)
+* Copyright (c) 2018 elementary LLC <https://elementary.io>
 *               2011 Lucas Baudin <xapantu@gmail.com>
 *               2010 mathijshenquet
 *

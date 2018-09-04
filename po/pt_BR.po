@@ -8,16 +8,17 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2017-02-12 16:46+0000\n"
-"Last-Translator: Leonardo Lemos <Unknown>\n"
-"Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
+"PO-Revision-Date: 2018-08-30 00:03+0000\n"
+"Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
+"files/files/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../src/marlin-connect-server-dialog.c:119
 msgid "SSH"
@@ -153,19 +154,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Falha ao analisar o arquivo de desktop: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Falha ao analisar o arquivo de desktop: %s"
+msgstr "Falha ao analisar o arquivo desktop"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Falha ao analisar o arquivo de desktop: %s"
+msgstr "Falha ao criar comando do arquivo: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Falha ao analisar o arquivo de desktop: %s"
+msgstr "Falha ao abrir o arquivo de desktop: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:183
@@ -536,7 +536,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Excluir um arquivo irá removê-lo permanentemente."
+" Excluir um arquivo irá removê-lo permanentemente"
 
 #: ../libcore/marlin-file-operations.c:2006
 msgid "Trashing Files"
@@ -1354,7 +1354,7 @@ msgstr "Outra aplicação…"
 
 #: ../src/View/AbstractDirectoryView.vala:2175
 msgid "Templates"
-msgstr ""
+msgstr "Modelos"
 
 #: ../src/View/AbstractDirectoryView.vala:2422
 msgid "Untitled %s"
@@ -1489,7 +1489,7 @@ msgstr "(%s livre de %s)"
 
 #: ../src/View/Sidebar.vala:1360
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Erro ao montar volume %s"
 
 #: ../src/View/Sidebar.vala:1375
 msgid "Unable to start %s"
@@ -1582,11 +1582,11 @@ msgstr "Não foi possível conectar ao servidor para essa pasta."
 
 #: ../src/View/ViewContainer.vala:410
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Não é possível exibir o conteúdo da pasta"
 
 #: ../src/View/ViewContainer.vala:411
 msgid "The operation timed out."
-msgstr ""
+msgstr "A operação expirou."
 
 #: ../src/View/ViewContainer.vala:413
 msgid "Unable to Show Folder"
@@ -1623,12 +1623,11 @@ msgstr "Recarregar esta pasta"
 #: ../src/View/Widgets/LocationBar.vala:196
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Pesquisar ou digitar caminho"
 
 #: ../src/View/Widgets/LocationBar.vala:205
-#, fuzzy
 msgid "Searching…"
-msgstr "Carregando…"
+msgstr "Pesquisando…"
 
 #: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
@@ -1711,7 +1710,7 @@ msgstr "Execução"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Mostra a versão do programa."
+msgstr "Exibir a versão do programa"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1723,16 +1722,15 @@ msgstr "Nova janela"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Encerrar Files."
+msgstr "Encerrar Files"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
 msgstr "Habilitar registros de depuração"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
-msgstr "[URI...]"
+msgstr "[URI…]"
 
 #: ../src/Application.vala:133
 msgid ""
@@ -1867,7 +1865,6 @@ msgid "Deleted:"
 msgstr "Removido:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "Tipo MIME:"
 
@@ -1978,14 +1975,12 @@ msgid "Failed to open files"
 msgstr "Falha ao abrir arquivos"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Não foi possível renomear para '%s'"
+msgstr "Não foi possível abrir os URIs"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Não foi possível abrir arquivos ou uris com esse aplicativo"
+msgstr "Não foi possível abrir arquivos ou URIs com esse aplicativo"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
@@ -2118,7 +2113,7 @@ msgstr "Não foi possível renomear para '%s'"
 
 #: ../libcore/FileUtils.vala:529
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Hoje às %-H:%M"
 
 #: ../libcore/FileUtils.vala:531
 msgid "Today at %-I:%M %p"
@@ -2126,7 +2121,7 @@ msgstr "Hoje às %-I:%M %p"
 
 #: ../libcore/FileUtils.vala:537
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Ontem às %-H:%M"
 
 #: ../libcore/FileUtils.vala:539
 msgid "Yesterday at %-I:%M %p"
@@ -2134,7 +2129,7 @@ msgstr "Ontem às %-I:%M %p"
 
 #: ../libcore/FileUtils.vala:546
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A às %-H:%M"
 
 #: ../libcore/FileUtils.vala:548
 msgid "%A at %-I:%M %p"
@@ -2151,7 +2146,7 @@ msgstr "Exibir mais _detalhes"
 
 #: ../libcore/gof-directory-async.vala:661
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "O servidor não respondeu dentro do limite de tempo"
 
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:170
 msgid "Navigate to %s"
@@ -2214,22 +2209,20 @@ msgid "In This Folder"
 msgstr "Nesta pasta"
 
 #: ../libwidgets/View/SearchResults.vala:227
-#, fuzzy
 msgid "Below This Folder"
-msgstr "Nesta pasta"
+msgstr "Abaixo desta pasta"
 
 #: ../libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
 msgstr "Favoritos"
 
 #: ../libwidgets/View/SearchResults.vala:237
-#, fuzzy
 msgid "Recently used"
-msgstr "Recente"
+msgstr "Usado recentemente"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Conectar ao servidor..."
+msgstr "Conectar ao servidor…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
@@ -2244,14 +2237,12 @@ msgid "Empty the Trash"
 msgstr "Esvaziar a lixeira"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Restaurar tudo"
+msgstr "Restaurar Selecionado"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " selecionado"
+msgstr "Excluir Selecionado"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2306,9 +2297,8 @@ msgid "Paste"
 msgstr "Colar"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Colar"
+msgstr "Colar Link"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2320,16 +2310,15 @@ msgstr "Copiar"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Copiar como link"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "Colar na pasta"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Colar na pasta"
+msgstr "Colar link na pasta"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2349,7 +2338,7 @@ msgstr "Ordem inversa"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Pastas Antes de Arquivos"
 
 #~ msgid "These items may be restored or deleted from the trash."
 #~ msgstr "Estes itens podem ser restaurados ou excluídos da lixeira"
