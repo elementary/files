@@ -231,12 +231,11 @@ namespace FM {
                 tree.get_cell_rect (p, r, out rect);
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
-                /* rectangles are in bin window coordinates - need to adjust event y coordinate
-                 * for vertical scrolling in order to accurately detect whicn area of item was
-                 * clicked on */
-                y -= (int)(get_vadjustment ().value);
-
                 if (r is Marlin.TextRenderer) {
+                    /* rectangles are in bin window coordinates - need to adjust event y coordinate
+                     * for vertical scrolling in order to accurately detect which area of TextRenderer was
+                     * clicked on */
+                    y -= (int)(get_vadjustment ().value);
                     Gtk.TreeIter iter;
                     model.get_iter (out iter, path);
                     string? text = null;
@@ -261,8 +260,9 @@ namespace FM {
                     bool on_helper = false;
                     GOF.File? file = model.file_for_path (p);
                     if (file != null) {
-                        /* RTL has no effect on is_on_icon in IconView so just pass false */
-                        bool on_icon = is_on_icon (x, y, rect, file.pix, false, ref on_helper);
+                        /* In the case of GtkIconView, the y coordinate does not need adjusting for scrolling
+                         * in order to match the icon renderer */
+                        bool on_icon = is_on_icon (x, y, ref on_helper);
 
                         if (on_helper) {
                             zone = ClickZone.HELPER;

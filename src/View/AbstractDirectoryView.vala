@@ -3654,7 +3654,8 @@ namespace FM {
             }
         }
 
-        protected bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
+        protected bool is_on_icon (int x, int y, ref bool on_helper) {
+            /* x and y must be in same coordinate system as used by the IconRenderer */
             Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
             bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
             on_helper = pointer_rect.intersect (icon_renderer.helper_rect, null);
