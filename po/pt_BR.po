@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-08-29 16:10+0000\n"
+"PO-Revision-Date: 2018-08-30 00:03+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
 "files/files/pt_BR/>\n"
@@ -536,7 +536,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Excluir um arquivo irá removê-lo permanentemente."
+" Excluir um arquivo irá removê-lo permanentemente"
 
 #: ../libcore/marlin-file-operations.c:2006
 msgid "Trashing Files"
@@ -1710,7 +1710,7 @@ msgstr "Execução"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Mostra a versão do programa."
+msgstr "Exibir a versão do programa"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1722,7 +1722,7 @@ msgstr "Nova janela"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Encerrar Files."
+msgstr "Encerrar Files"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
@@ -2222,7 +2222,7 @@ msgstr "Usado recentemente"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Conectar ao servidor..."
+msgstr "Conectar ao servidor…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
