@@ -531,29 +531,6 @@ namespace FM {
             }
         }
 
-        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
-            int x_offset = x - area.x;
-            int y_offset = y - area.y;
-            int scale_factor = get_scale_factor ();
-            int pix_width = pix.width/scale_factor;
-            int pix_height = pix.height/scale_factor;
-
-            int pix_x_offset = (area.width - pix_width) / 2;
-            int pix_y_offset = (area.height - pix_height) / 2;
-
-            bool on_icon = (x_offset >= pix_x_offset &&
-                            x_offset <= pix_x_offset + pix_width &&
-                            y_offset >= pix_y_offset &&
-                            y_offset <= pix_y_offset + pix_height);
-
-            int hs = icon_renderer.helper_size;
-            on_helper = (on_icon &&
-                         x_offset <= int.max (pix_x_offset + hs, hs) &&
-                         y_offset <= int.max (pix_y_offset + hs, hs));
-
-            return on_icon;
-        }
-
         /* When Icon View is automatically adjusting column number it does not expose the actual number of
          * columns (get_columns () returns -1). So we have to write our own method. This is the only way
          * (I can think of) that works on row 0.
