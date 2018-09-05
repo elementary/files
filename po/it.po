@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-09-05 22:30+0000\n"
-"Last-Translator: strozzascotte <marco.depaolini@gmail.com>\n"
+"PO-Revision-Date: 2018-09-05 22:31+0000\n"
+"Last-Translator: Federico <candiago@live.it>\n"
 "Language-Team: Italian <https://weblate.elementary.io/projects/files/files/"
 "it/>\n"
 "Language: it\n"
@@ -1485,7 +1485,7 @@ msgstr "(%s disponibile di %s)"
 
 #: ../src/View/Sidebar.vala:1360
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Errore nel montare il volume %s"
 
 #: ../src/View/Sidebar.vala:1375
 msgid "Unable to start %s"
@@ -1619,7 +1619,7 @@ msgstr "Ricarica questa cartella"
 #: ../src/View/Widgets/LocationBar.vala:196
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Ricerca od Inserisci il Path"
 
 #: ../src/View/Widgets/LocationBar.vala:205
 #, fuzzy
