@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-09-05 22:31+0000\n"
-"Last-Translator: Federico <candiago@live.it>\n"
+"PO-Revision-Date: 2018-09-05 22:32+0000\n"
+"Last-Translator: strozzascotte <marco.depaolini@gmail.com>\n"
 "Language-Team: Italian <https://weblate.elementary.io/projects/files/files/"
 "it/>\n"
 "Language: it\n"
@@ -1619,7 +1619,7 @@ msgstr "Ricarica questa cartella"
 #: ../src/View/Widgets/LocationBar.vala:196
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
-msgstr "Ricerca od Inserisci il Path"
+msgstr "Ricerca o inserisci il percorso"
 
 #: ../src/View/Widgets/LocationBar.vala:205
 #, fuzzy
