@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
 "PO-Revision-Date: 2018-09-05 22:32+0000\n"
-"Last-Translator: strozzascotte <marco.depaolini@gmail.com>\n"
+"Last-Translator: Federico <candiago@live.it>\n"
 "Language-Team: Italian <https://weblate.elementary.io/projects/files/files/"
 "it/>\n"
 "Language: it\n"
@@ -2314,7 +2314,7 @@ msgstr "Copia"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Copia come collegamento"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
@@ -2343,7 +2343,7 @@ msgstr "Ordine inverso"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Cartelle Prima dei File"
 
 #~ msgid "These items may be restored or deleted from the trash."
 #~ msgstr ""
