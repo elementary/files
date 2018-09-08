@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -3654,6 +3654,14 @@ namespace FM {
             }
         }
 
+        protected bool is_on_icon (int x, int y, ref bool on_helper) {
+            /* x and y must be in same coordinate system as used by the IconRenderer */
+            Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
+            bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
+            on_helper = pointer_rect.intersect (icon_renderer.helper_rect, null);
+            return on_icon;
+        }
+
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
          * invokes the default widget handler.  IconView requires special handler */
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
@@ -3679,7 +3687,6 @@ namespace FM {
         protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
-        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

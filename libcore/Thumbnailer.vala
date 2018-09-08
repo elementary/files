@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2016-2018 elementary LLC <https://elementary.io>
 
     Largely transcribed from marlin-thumbnailer
     Copyright (c) 2009-2011 Jannis Pohlmann <jannis@xfce.org>

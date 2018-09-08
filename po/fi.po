@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-08-08 00:01+0000\n"
-"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
+"PO-Revision-Date: 2018-09-05 00:00+0000\n"
+"Last-Translator: Veli-Pekka Samuli Finnilä <vpf@tuta.io>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
 "fi/>\n"
 "Language: fi\n"
@@ -662,11 +662,11 @@ msgstr "Kohdetta voi vain lukea."
 
 #: ../libcore/marlin-file-operations.c:2844
 msgid "Moving \"%B\" to \"%B\""
-msgstr "Siirretään ”%B” kohteeseen ”%B”."
+msgstr "Siirretään ”%B” kohteeseen ”%B”"
 
 #: ../libcore/marlin-file-operations.c:2845
 msgid "Copying \"%B\" to \"%B\""
-msgstr "Kopioidaan ”%B” kohteeseen ”%B”."
+msgstr "Kopioidaan ”%B” kohteeseen ”%B”"
 
 #: ../libcore/marlin-file-operations.c:2849
 msgid "Duplicating \"%B\""
@@ -862,7 +862,7 @@ msgstr "Virhe luotaessa linkkiä kohteeseen %B."
 
 #: ../libcore/marlin-file-operations.c:5158
 msgid "Symbolic links only supported for local files"
-msgstr "Symbolisia linkkejä voi käyttää vain paikallisten tiedostojen kanssa."
+msgstr "Symbolisia linkkejä voi käyttää vain paikallisten tiedostojen kanssa"
 
 #: ../libcore/marlin-file-operations.c:5161
 msgid "The target doesn't support symbolic links."
@@ -883,7 +883,7 @@ msgstr "Roskakoriin ei voi kopioida."
 
 #: ../libcore/marlin-file-operations.c:5579
 msgid "It is not permitted to copy files into the trash"
-msgstr "Tiedostojen kopiointi roskakoriin ei ole mahdollista."
+msgstr "Tiedostojen kopiointi roskakoriin ei ole sallittua"
 
 #: ../libcore/marlin-file-operations.c:5717
 msgid "untitled folder"
@@ -1015,7 +1015,7 @@ msgstr "Kopioi \"%s\" sijaintiin \"%s\""
 #: ../libcore/marlin-undostack-manager.c:1411
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "Kopio %d kohteesta sijainnissa '%s'"
 
 #: ../libcore/marlin-undostack-manager.c:1416
 #, c-format
@@ -1117,8 +1117,8 @@ msgstr[1] "_Kumoa %d kohteen siirto"
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Kumoa %d kohteen nimeäminen uudelleen"
-msgstr[1] "_Kumoa %d kohteen nimeäminen uudelleen"
+msgstr[0] "_Kumoa %d kohteen uudelleennimeäminen"
+msgstr[1] "_Kumoa %d kohteen uudelleennimeäminen"
 
 #: ../libcore/marlin-undostack-manager.c:1586
 msgid "_Undo creation of an empty file"
@@ -1167,8 +1167,8 @@ msgstr[1] "_Kumoa %d kohteen poisto"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Kumoa %d kohteen rekursiivinen oikeuksien muutos"
+msgstr[1] "Kumoa %d kohteen rekursiiviset oikeuksien muutokset"
 
 #: ../libcore/marlin-undostack-manager.c:1624
 #, c-format
@@ -1216,8 +1216,8 @@ msgstr[1] "_Tee uudelleen %d kohteen siirto"
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Tee uudelleen %d kohteen nimeäminen uudelleen"
-msgstr[1] "_Tee uudelleen %d kohteen nimeäminen uudelleen"
+msgstr[0] "_Tee uudelleen %d kohteen uudelleennimeäminen"
+msgstr[1] "_Tee uudelleen %d kohteen uudelleennimeäminen"
 
 #: ../libcore/marlin-undostack-manager.c:1681
 msgid "_Redo creation of an empty file"
@@ -1266,8 +1266,8 @@ msgstr[1] "_Tee uudelleen %d kohteen poisto"
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Tee uudelleen %d kohteen rekursiivinen oikeuksien muutos"
+msgstr[1] "Tee uudelleen %d kohteen rekursiivinen oikeuksien muutos"
 
 #: ../libcore/marlin-undostack-manager.c:1719
 #, c-format
@@ -1670,7 +1670,7 @@ msgstr "%u tiedostoa, "
 #. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: ../src/View/Widgets/OverlayBar.vala:293
 msgid "%s approx."
-msgstr "%s noin"
+msgstr "noin %s"
 
 #. / TRANSLATORS: 'size' refers to disk space
 #: ../src/View/Widgets/OverlayBar.vala:296
@@ -1700,7 +1700,7 @@ msgstr "Suoritus"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Näytä ohjelman versio."
+msgstr "Näytä ohjelman versio"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1712,7 +1712,7 @@ msgstr "Uusi ikkuna"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Lopeta Files-tiedostonhallinta."
+msgstr "Lopeta Tiedostot"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
@@ -1734,7 +1734,7 @@ msgstr ""
 
 #: ../src/Application.vala:161
 msgid "--quit cannot be used with URIs."
-msgstr "--quit ei voida käyttää URI:n kanssa"
+msgstr "--quit-valitsinta ei voi käyttää URI:n kanssa."
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
@@ -1963,9 +1963,8 @@ msgid "Failed to open files"
 msgstr "Tiedostojen avaaminen epäonnistui"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Nimen vaihtaminen muotoon '%s' epäonnistui"
+msgstr "URI:en avaaminen ei onnistunut"
 
 #: ../src/Utils/MimeActions.vala:316
 msgid "Could not open files or URIs with this app"
@@ -2094,7 +2093,7 @@ msgstr "Kohteen ”%s” alkuperäistä sijaintia ei voitu selvittää. "
 
 #: ../libcore/FileUtils.vala:85
 msgid "The item cannot be restored from trash"
-msgstr "Kohdetta ei voi palauttaa roskakorista."
+msgstr "Kohdetta ei voi palauttaa roskakorista"
 
 #: ../libcore/FileUtils.vala:438
 msgid "Could not rename to '%s'"
