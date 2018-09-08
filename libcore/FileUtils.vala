@@ -776,6 +776,23 @@ namespace PF.FileUtils {
 
     }
 
+    public int compare_modification_dates (GLib.File a, GLib.File b) {
+        GLib.FileInfo info_a;
+        GLib.FileInfo info_b;
+
+        try {
+            info_a = a.query_info (GLib.FileAttribute.TIME_MODIFIED, 0, null);
+            info_b = b.query_info (GLib.FileAttribute.TIME_MODIFIED, 0, null);
+        } catch (GLib.Error e) {
+            return 0;
+        }
+
+        var mod_a = info_a.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
+        var mod_b = info_b.get_attribute_uint64 (GLib.FileAttribute.TIME_MODIFIED);
+
+        return mod_a == mod_b ? 0 : mod_a > mod_b ? 1 : -1;
+    }
+    
     public void remove_thumbnail_paths_for_uri (string uri) {
         string hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, uri);
         string base_name = "%s.png".printf (hash);
