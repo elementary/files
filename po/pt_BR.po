@@ -8,9 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-08-29 15:13+0000\n"
-"Last-Translator: Israel Felipe de Lima Araújo S <israelita.felipe@gmail.com>"
-"\n"
+"PO-Revision-Date: 2018-08-30 00:03+0000\n"
+"Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -537,7 +536,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" Excluir um arquivo irá removê-lo permanentemente."
+" Excluir um arquivo irá removê-lo permanentemente"
 
 #: ../libcore/marlin-file-operations.c:2006
 msgid "Trashing Files"
@@ -1355,7 +1354,7 @@ msgstr "Outra aplicação…"
 
 #: ../src/View/AbstractDirectoryView.vala:2175
 msgid "Templates"
-msgstr ""
+msgstr "Modelos"
 
 #: ../src/View/AbstractDirectoryView.vala:2422
 msgid "Untitled %s"
@@ -1711,7 +1710,7 @@ msgstr "Execução"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Mostra a versão do programa."
+msgstr "Exibir a versão do programa"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1723,16 +1722,15 @@ msgstr "Nova janela"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Encerrar Files."
+msgstr "Encerrar Files"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
 msgstr "Habilitar registros de depuração"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
-msgstr "[URI...]"
+msgstr "[URI…]"
 
 #: ../src/Application.vala:133
 msgid ""
@@ -1867,7 +1865,6 @@ msgid "Deleted:"
 msgstr "Removido:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "Tipo MIME:"
 
@@ -2225,7 +2222,7 @@ msgstr "Usado recentemente"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to Server…"
-msgstr "Conectar ao servidor..."
+msgstr "Conectar ao servidor…"
 
 #: ../plugins/network-places/plugin.vala:27
 msgid "Connect to a network file server"
@@ -2240,14 +2237,12 @@ msgid "Empty the Trash"
 msgstr "Esvaziar a lixeira"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Restaurar tudo"
+msgstr "Restaurar Selecionado"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " selecionado"
+msgstr "Excluir Selecionado"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
