@@ -196,12 +196,12 @@ namespace FM {
             return tree.has_focus;
         }
 
-        protected override uint get_event_position_info (Gdk.EventButton event,
+        protected override ClickZone get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
             Gtk.TreePath? p = null;
             unowned Gtk.TreeViewColumn? c = null;
-            uint zone;
+            ClickZone zone;
             int x, y, cx, cy, depth;
             path = null;
 
@@ -264,7 +264,7 @@ namespace FM {
         protected override bool handle_secondary_button_click (Gdk.EventButton event) {
             /* In Column and List Views show background menu on all white space to allow
              * creation of new folder when view full. */
-            if (click_zone == ClickZone.BLANK_PATH) {
+            if (click_data.zone == ClickZone.BLANK_PATH) {
                 unselect_all ();
             }
             return base.handle_secondary_button_click (event);
