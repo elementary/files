@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-26 21:26+0000\n"
-"Last-Translator: Nils K <slx@nilsk.net>\n"
+"PO-Revision-Date: 2018-09-20 00:04+0000\n"
+"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
 "files/files/nb/>\n"
 "Language: nb\n"
@@ -51,7 +51,7 @@ msgstr "Sikker WebDAV (HTTPS)"
 
 #: ../src/marlin-connect-server-dialog.c:180
 msgid "Connecting..."
-msgstr "Kobler til..."
+msgstr "Kobler til…"
 
 #: ../src/marlin-connect-server-dialog.c:204
 msgid ""
