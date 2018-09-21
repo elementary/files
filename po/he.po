@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-21 17:15+0000\n"
+"PO-Revision-Date: 2018-09-22 00:10+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://weblate.elementary.io/projects/files/files/he/"
 ">\n"
@@ -2006,7 +2006,7 @@ msgstr "החלפה"
 
 #: ../libcore/FileConflictDialog.vala:309
 msgid "Merge folder \"%s\"?"
-msgstr "האם למזג את התיקייה \"%s\"?"
+msgstr "למזג את התיקייה „%s”?"
 
 #: ../libcore/FileConflictDialog.vala:310
 msgid ""
@@ -2018,19 +2018,19 @@ msgstr ""
 
 #: ../libcore/FileConflictDialog.vala:312
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "תיקייה ישנה יותר בעלת שם זהה קיימת תחת „%s“."
+msgstr "תיקייה ישנה יותר בעלת שם זהה קיימת תחת „%s”."
 
 #: ../libcore/FileConflictDialog.vala:314
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "תיקייה חדשה יותר בעלת שם זהה קיימת תחת „%s“."
+msgstr "תיקייה חדשה יותר בעלת שם זהה קיימת תחת „%s”."
 
 #: ../libcore/FileConflictDialog.vala:316
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "תיקייה אחרת בעלת שם זהה קיימת תחת „%s“."
+msgstr "תיקייה אחרת בעלת שם זהה קיימת תחת „%s”."
 
 #: ../libcore/FileConflictDialog.vala:319
 msgid "Replace folder \"%s\"?"
-msgstr "האם להחליף את התיקייה \"%s\"?"
+msgstr "להחליף את התיקייה „%s”?"
 
 #: ../libcore/FileConflictDialog.vala:320
 msgid "Replacing it will remove all files in the folder."
@@ -2038,11 +2038,11 @@ msgstr "פעולת ההחלפה תסיר את כל הקבצים בתיקייה."
 
 #: ../libcore/FileConflictDialog.vala:321
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "תיקייה בעלת שם זהה קיימת תחת „%s“."
+msgstr "תיקייה בעלת שם זהה קיימת תחת „%s”."
 
 #: ../libcore/FileConflictDialog.vala:324
 msgid "Replace file \"%s\"?"
-msgstr "האם להחליף את הקובץ \"%s\"?"
+msgstr "להחליף את הקובץ „%s”?"
 
 #: ../libcore/FileConflictDialog.vala:325
 msgid "Replacing it will overwrite its content."
@@ -2050,15 +2050,15 @@ msgstr "ההחלפה תשכתב את התוכן."
 
 #: ../libcore/FileConflictDialog.vala:328
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "קובץ ישן יותר בעל שם זהה קיים תחת „%s“."
+msgstr "קובץ ישן יותר בעל שם זהה קיים תחת „%s”."
 
 #: ../libcore/FileConflictDialog.vala:330
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "קובץ חדש יותר בעל שם זהה קיים תחת „%s“."
+msgstr "קובץ חדש יותר בעל שם זהה קיים תחת „%s”."
 
 #: ../libcore/FileConflictDialog.vala:332
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "קובץ אחר בעל שם זהה קיים תחת „%s“."
+msgstr "קובץ אחר בעל שם זהה קיים תחת „%s”."
 
 #: ../libcore/FileConflictDialog.vala:358
 msgid "Merge"
@@ -2066,7 +2066,7 @@ msgstr "מיזוג"
 
 #: ../libcore/FileUtils.vala:84
 msgid "Could not determine original location of \"%s\" "
-msgstr "לא ניתן לאתר את המיקום המקורי של „%s“ "
+msgstr "לא ניתן לאתר את המיקום המקורי של „%s” "
 
 #: ../libcore/FileUtils.vala:85
 msgid "The item cannot be restored from trash"
@@ -2074,7 +2074,7 @@ msgstr "לא ניתן לשחזר את הפריט מהאשפה"
 
 #: ../libcore/FileUtils.vala:438
 msgid "Could not rename to '%s'"
-msgstr "לא ניתן לשנות את השם ל־‚%s‘"
+msgstr "לא ניתן לשנות את השם ל־‚%s’"
 
 #: ../libcore/FileUtils.vala:529
 msgid "Today at %-H:%M"
@@ -2135,7 +2135,7 @@ msgstr "הצגה כרשימה"
 
 #: ../libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr "הצגה בטורים"
+msgstr "הצגה בעמודות"
 
 #: ../libwidgets/Resources.vala:58
 msgid "AFP"
