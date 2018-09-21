@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-05 22:43+0000\n"
-"Last-Translator: strozzascotte <marco.depaolini@gmail.com>\n"
+"PO-Revision-Date: 2018-09-21 17:34+0000\n"
+"Last-Translator: Marco De Paolini <marco.depaolini@gmail.com>\n"
 "Language-Team: Italian <https://weblate.elementary.io/projects/files/files/"
 "it/>\n"
 "Language: it\n"
@@ -1360,14 +1360,12 @@ msgid "Browse the contents of the network"
 msgstr "Esplora il contenuto della rete"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect Server"
-msgstr "Connetti al server"
+msgstr "Collega al server"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "Connetti a un file server di rete"
+msgstr "Collega a un server in rete"
 
 #: ../src/View/Sidebar.vala:876
 msgid "(%s Free of %s)"
@@ -1902,68 +1900,59 @@ msgstr "Dettagli del server"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Nome del server o indirizzo IP"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "_Server:"
+msgstr "Server:"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "_Porta:"
+msgstr "Porta:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Nome della condivisione sul server"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "_Condivisione:"
+msgstr "Condivisione:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Indirizzo della cartella condivisa sul server"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Cartella:"
+msgstr "Cartella:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "Dettagli utente"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Nuova finestra come _amministratore"
+msgstr "Nome del dominio di Windows"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "Nome _dominio:"
+msgstr "Nome del dominio:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "Nome dell'utente sul server"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "Nome _utente:"
+msgstr "Nome utente:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "Pass_word:"
+msgstr "Password:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Ricorda questa password"
+msgstr "Ricorda questa password"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -1971,18 +1960,16 @@ msgid "Cancel"
 msgstr "Annulla"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "C_onnetti"
+msgstr "Collega"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Continua"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "Connessione in corso..."
+msgstr "Collegamento in corso…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
@@ -2039,11 +2026,11 @@ msgstr "Rino_mina"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "Conservare il più recente"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Saltare se l'originale è stato modificato più recentemente"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
