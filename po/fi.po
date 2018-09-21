@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-05 00:00+0000\n"
-"Last-Translator: Veli-Pekka Samuli Finnilä <vpf@tuta.io>\n"
+"PO-Revision-Date: 2018-09-21 18:39+0000\n"
+"Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
 "fi/>\n"
 "Language: fi\n"
@@ -1355,12 +1355,10 @@ msgid "Browse the contents of the network"
 msgstr "Selaa verkon sisältöä"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect Server"
 msgstr "Yhdistä palvelimeen"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect to a network server"
 msgstr "Yhdistä verkkopalvelimeen"
 
@@ -1896,68 +1894,59 @@ msgstr "Palvelimen tiedot"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Palvelimen nimi tai IP-osoite"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "_Palvelin:"
+msgstr "Palvelin:"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "P_ortti:"
+msgstr "Portti:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Jaon nimi palvelimella"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "_Jako:"
+msgstr "Jako:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Polku jaettuun kansioon palvelimella"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Kansio:"
+msgstr "Kansio:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "Käyttäjän tiedot"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Uusi ikkuna _ylläpitäjän oikeuksin"
+msgstr "Windows-toimialueen nimi"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Toimialueen nimi:"
+msgstr "Toimialueen nimi:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "Käyttäjän nimi palvelimella"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "_Käyttäjätunnus:"
+msgstr "Käyttäjätunnus:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "Sala_sana:"
+msgstr "Salasana:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Muista salasana"
+msgstr "Muista salasana"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -1965,18 +1954,16 @@ msgid "Cancel"
 msgstr "Peru"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "_Yhdistä"
+msgstr "Yhdistä"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Jatka"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "Yhdistetään..."
+msgstr "Yhdistetään…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
@@ -2033,11 +2020,11 @@ msgstr "_Nimeä uudelleen"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "Säilytä uusin"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Ohita jos alkuperäistä on muokattu lähempänä nykyhetkeä"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
