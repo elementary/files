@@ -3329,10 +3329,13 @@ namespace FM {
                     break;
 
                 case Gdk.BUTTON_MIDDLE: // button 2
-                    if (path_is_selected (path)) {
-                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        result = true;
+                    if (!path_is_selected (path)) {
+                        select_path (path, true);
                     }
+
+                    should_activate = true;
+                    unblock_drag_and_drop ();
+                    result = true;
 
                     break;
 
@@ -3350,6 +3353,7 @@ namespace FM {
                     update_selected_files_and_menu ();
                     unblock_drag_and_drop ();
                     start_drag_timer (event);
+                    
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -3383,18 +3387,25 @@ namespace FM {
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 if (should_activate) {
-                    activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                    /* Need Idle else can crash with rapid clicking (avoid nested signals) */
+                    Idle.add (() => {
+                        var flag = event.button == Gdk.BUTTON_MIDDLE ? Marlin.OpenFlag.NEW_TAB :
+                                                                       Marlin.OpenFlag.DEFAULT;
+
+                        activate_selected_items (flag);
+                        return false;
+                    });
                 } else if (should_deselect && click_path != null) {
                     unselect_path (click_path);
+                    /* Only need to update selected files if changed by this handler */
+                    Idle.add (() => {
+                        update_selected_files_and_menu ();
+                        return false;
+                    });
                 } else if (event.button == Gdk.BUTTON_SECONDARY) {
                     show_context_menu (event);
                 }
             }
-
-            Idle.add (() => {
-                update_selected_files_and_menu ();
-                return false;
-            });
 
             should_activate = false;
             should_deselect = false;
