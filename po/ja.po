@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-22 00:49+0000\n"
+"PO-Revision-Date: 2018-09-23 00:06+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -1937,7 +1937,7 @@ msgstr "最終更新日時:"
 
 #: ../libcore/FileConflictDialog.vala:142
 msgid "Replace with"
-msgstr "置き換え元"
+msgstr "以下のファイルで置き換え"
 
 #: ../libcore/FileConflictDialog.vala:170
 msgid "Reset"
