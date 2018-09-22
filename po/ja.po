@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-08-19 00:02+0000\n"
+"PO-Revision-Date: 2018-09-22 00:49+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -1298,14 +1298,12 @@ msgid "Browse the contents of the network"
 msgstr "ネットワークの内容を表示します"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect Server"
 msgstr "サーバーへ接続"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "ネットワークファイルサーバーへ接続します"
+msgstr "ネットワークサーバーへ接続します"
 
 #: ../src/View/Sidebar.vala:876
 msgid "(%s Free of %s)"
@@ -1833,68 +1831,59 @@ msgstr "サーバー情報"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr ""
+msgstr "サーバー名または IP アドレス"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "サーバー(_S):"
+msgstr "サーバー:"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "ポート番号(_P):"
+msgstr "ポート番号:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "サーバー上の共有する場所の名前"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "共有する場所(_A):"
+msgstr "共有する場所:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "サーバー上の共有フォルダーのパス"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "フォルダー(_F):"
+msgstr "フォルダー:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "ユーザー情報"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "新しい管理者ウィンドウ(_A)"
+msgstr "Windows ドメイン名"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "ドメイン名(_D):"
+msgstr "ドメイン名:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "サーバー上のユーザー名"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "ユーザー名(_U):"
+msgstr "ユーザー名:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "パスワード(_W):"
+msgstr "パスワード:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "このパスワードを記憶(_R)"
+msgstr "このパスワードを記憶"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -1902,18 +1891,16 @@ msgid "Cancel"
 msgstr "キャンセル"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "接続(_O)"
+msgstr "接続"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "続行"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "接続しています..."
+msgstr "接続しています…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
@@ -1970,11 +1957,11 @@ msgstr "名前の変更(_N)"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "最新のものを保持"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "元のファイルがより最近に変更されていた場合コピーをスキップします"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
