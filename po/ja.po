@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-23 00:06+0000\n"
+"PO-Revision-Date: 2018-09-24 00:05+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -766,7 +766,7 @@ msgstr "元の場所が判別できませんでした"
 
 #: ../libcore/marlin-undostack-manager.c:645
 msgid "Open trash folder and restore manually"
-msgstr "ゴミ箱フォルダーを開き手動で復旧してください"
+msgstr "ゴミ箱フォルダーを開き手動で復元してください"
 
 #: ../libcore/marlin-undostack-manager.c:1236
 #, c-format
