@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-07-26 12:29+0000\n"
-"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
+"PO-Revision-Date: 2018-09-24 07:04+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/files/files/fr/"
 ">\n"
 "Language: fr\n"
@@ -1152,8 +1152,8 @@ msgstr[1] "_Rétablir la restauration depuis la corbeille des %d éléments"
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Rétablir la création de raccourçi vers %d élément"
-msgstr[1] "_Rétablir la création de raccourçi vers %d éléments"
+msgstr[0] "_Rétablir la création de raccourci vers %d élément"
+msgstr[1] "_Rétablir la création de raccourci vers %d éléments"
 
 #: ../libcore/marlin-undostack-manager.c:1708
 #, c-format
@@ -1193,7 +1193,7 @@ msgstr[1] "Rétablir le changement de propriétaire de %d fichiers"
 #: ../filechooser-module/FileChooserDialog.vala:72
 #: ../src/View/Widgets/TopMenu.vala:61
 msgid "Previous"
-msgstr "Précedent"
+msgstr "Précédent"
 
 #: ../filechooser-module/FileChooserDialog.vala:76
 #: ../src/View/Widgets/TopMenu.vala:66
@@ -1202,11 +1202,11 @@ msgstr "Suivant"
 
 #: ../src/View/AbstractDirectoryView.vala:821
 msgid "Cannot open this file"
-msgstr "Ce fichier ne peut etre ouvert"
+msgstr "Ce fichier ne peut pas être ouvert"
 
 #: ../src/View/AbstractDirectoryView.vala:834
 msgid "Cannot identify file type to open"
-msgstr "Le type du fichier à ouvrir ne peut etre identifié"
+msgstr "Le type du fichier à ouvrir ne peut pas être identifié"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
@@ -1222,7 +1222,7 @@ msgstr "Invalide"
 
 #: ../src/View/AbstractDirectoryView.vala:2060
 msgid "Run"
-msgstr "Éxécuter"
+msgstr "Exécuter"
 
 #: ../src/View/AbstractDirectoryView.vala:2064
 msgid "Open in %s"
@@ -1230,7 +1230,7 @@ msgstr "Ouvrir avec %s"
 
 #: ../src/View/AbstractDirectoryView.vala:2074
 msgid "Open in"
-msgstr "Ouvrir avec"
+msgstr "Ouvrir dans"
 
 #: ../src/View/AbstractDirectoryView.vala:2076
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:482
@@ -1385,7 +1385,7 @@ msgstr "Se connecter à un serveur de fichier distant"
 
 #: ../src/View/Sidebar.vala:876
 msgid "(%s Free of %s)"
-msgstr "%s libre sur %s"
+msgstr "(%s libre sur %s)"
 
 #: ../src/View/Sidebar.vala:1366
 msgid "Error mounting volume %s"
@@ -1656,7 +1656,7 @@ msgstr "Gestionnaire de fichiers"
 
 #: ../src/DesktopLauncher.vala:23
 msgid "New _Window"
-msgstr "Nouvelle fenêtre"
+msgstr "Nouvelle _fenêtre"
 
 #: ../src/DesktopLauncher.vala:24
 msgid "New Window As _Administrator"
@@ -1917,58 +1917,51 @@ msgstr "Détails du serveur"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Nom du serveur ou adresse IP"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "_Serveur :"
+msgstr "Serveur :"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "_Port :"
+msgstr "Port :"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Nom du partage sur le serveur"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "P_artage :"
+msgstr "Partage :"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Chemin du dossier partagé sur le serveur"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Dossier :"
+msgstr "Dossier :"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "Détails relatifs à l'utilisateur"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Nouvelle fenêtre en tant qu'_administrateur"
+msgstr "Nom de domaine Windows"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "Nom de _domaine :"
+msgstr "Nom de domaine :"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "Nom de l'utilisateur sur le serveur"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "Nom d'_utilisateur :"
+msgstr "Nom d'utilisateur :"
 
 #: ../libcore/ConnectServerDialog.vala:167
 #, fuzzy
@@ -2042,7 +2035,7 @@ msgstr "Réinitialiser"
 
 #: ../libcore/FileConflictDialog.vala:180
 msgid "_Select a new name for the destination"
-msgstr "Choi_sissez un nouveau nom pour la destination"
+msgstr "_Choisissez un nouveau nom pour la destination"
 
 #: ../libcore/FileConflictDialog.vala:183
 msgid "Apply this action to all files"
@@ -2054,11 +2047,11 @@ msgstr "Re_nommer"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "Conserver le plus récent"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Ignorer si l'original a été modifié plus récemment"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
@@ -2078,7 +2071,7 @@ msgstr ""
 
 #: ../libcore/FileConflictDialog.vala:312
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Un répertoire plus ancien avec ce nom existe déjà dans \"%s\"."
+msgstr "Un répertoire plus ancien avec ce nom existe déjà dans « %s »."
 
 #: ../libcore/FileConflictDialog.vala:314
 msgid "A newer folder with the same name already exists in \"%s\"."
@@ -2134,7 +2127,7 @@ msgstr "Impossible de restaurer l'élément depuis la corbeille"
 
 #: ../libcore/FileUtils.vala:438
 msgid "Could not rename to '%s'"
-msgstr "Impossible de renommer en '%s'"
+msgstr "Impossible de renommer en « %s »"
 
 #: ../libcore/FileUtils.vala:529
 msgid "Today at %-H:%M"
