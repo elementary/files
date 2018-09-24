@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
 "PO-Revision-Date: 2018-09-24 07:04+0000\n"
-"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
+"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/files/files/fr/"
 ">\n"
 "Language: fr\n"
@@ -1374,14 +1374,12 @@ msgid "Browse the contents of the network"
 msgstr "Parcourir le réseau"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect Server"
 msgstr "Se connecter au serveur"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "Se connecter à un serveur de fichier distant"
+msgstr "Se connecter à un serveur réseau"
 
 #: ../src/View/Sidebar.vala:876
 msgid "(%s Free of %s)"
@@ -1964,12 +1962,10 @@ msgid "User name:"
 msgstr "Nom d'utilisateur :"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
 msgstr "Mot de passe :"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
 msgstr "Se souvenir du mot de passe"
 
@@ -1979,18 +1975,16 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "Se connecter"
+msgstr "Connexion"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Continuer"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "Connexion en cours..."
+msgstr "Connexion en cours…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
