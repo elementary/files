@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-24 00:05+0000\n"
+"PO-Revision-Date: 2018-09-25 00:02+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -83,7 +83,7 @@ msgstr "すべてマージ(_A)"
 
 #: ../libcore/marlin-file-operations.c:162
 msgid "Copy _Anyway"
-msgstr "とにかくコピー(_A)"
+msgstr "強制的にコピー(_A)"
 
 #: ../libcore/marlin-file-operations.c:243
 #, c-format
