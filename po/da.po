@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-22 00:10+0000\n"
+"PO-Revision-Date: 2018-09-28 00:07+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://weblate.elementary.io/projects/files/files/da/"
 ">\n"
@@ -1919,9 +1919,8 @@ msgid "Path of shared folder on server"
 msgstr ""
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Mappe:"
+msgstr "Mappe:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
