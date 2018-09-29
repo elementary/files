@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-28 00:07+0000\n"
+"PO-Revision-Date: 2018-09-30 00:09+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://weblate.elementary.io/projects/files/files/da/"
 ">\n"
@@ -1907,16 +1907,15 @@ msgstr "Port:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Delt mappe's navn på serveren"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "_Deling:"
+msgstr "Delt mappe:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Delt mappe's sti på serveren"
 
 #: ../libcore/ConnectServerDialog.vala:154
 msgid "Folder:"
