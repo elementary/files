@@ -3343,7 +3343,7 @@ namespace FM {
                     update_selected_files_and_menu ();
                     unblock_drag_and_drop ();
                     start_drag_timer (event);
-                    
+
                     result = handle_secondary_button_click (event);
                     break;
 
