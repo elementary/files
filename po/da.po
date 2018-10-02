@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-02 09:17+0000\n"
+"PO-Revision-Date: 2018-10-03 00:10+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://weblate.elementary.io/projects/files/files/da/"
 ">\n"
@@ -2025,7 +2025,7 @@ msgstr "Behold Nyeste"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr "Spring over, hvis originalen blev ændret senere."
+msgstr "Spring over, hvis originalen blev ændret senere"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
