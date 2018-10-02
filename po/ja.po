@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-02 00:03+0000\n"
+"PO-Revision-Date: 2018-10-03 00:10+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -833,7 +833,7 @@ msgstr "'%s' へのリンクを削除"
 #: ../libcore/marlin-undostack-manager.c:1333
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "'%s' 内アイテムの権限を元に戻す"
+msgstr "'%s' 内のアイテムの権限を元に戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1341
 #, c-format
@@ -843,12 +843,12 @@ msgstr "'%s' の権限を元に戻す"
 #: ../libcore/marlin-undostack-manager.c:1350
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr "グループ '%s' を '%s' へ戻す"
+msgstr "'%s' のグループを '%s' へ戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1360
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr "所有者 '%s' を '%s' へ戻す"
+msgstr "'%s' の所有者を '%s' へ戻す"
 
 #: ../libcore/marlin-undostack-manager.c:1399
 #, c-format
@@ -933,12 +933,12 @@ msgstr "'%s' の権限を設定"
 #: ../libcore/marlin-undostack-manager.c:1525
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr "グループ '%s' を '%s' に設定"
+msgstr "'%s' のグループを '%s' に設定"
 
 #: ../libcore/marlin-undostack-manager.c:1535
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr "所有者 '%s' を '%s' に設定"
+msgstr "'%s' の所有者を '%s' に設定"
 
 #: ../libcore/marlin-undostack-manager.c:1567
 #, c-format
