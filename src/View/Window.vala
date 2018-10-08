@@ -391,6 +391,9 @@ namespace Marlin.View {
                     /* Open a tab pointing at the default location if no tabs restored*/
                     var location = File.new_for_path (PF.UserUtils.get_real_user_home ());
                     add_tab (location, mode);
+                    /* Ensure default tab's slot is active so it can be focused */
+                    current_tab = (ViewContainer)(tabs.current.page);
+                    current_tab.set_active_state (true, false);
                 }
             } else {
                 /* Open tabs at each requested location */
