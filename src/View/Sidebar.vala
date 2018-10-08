@@ -1864,7 +1864,7 @@ namespace Marlin.Places {
                 unblock_drag_and_drop ();
             }
 
-            if (renaming) {
+            if (renaming || !has_focus) { /*Ignore release if button pressed over different widget */
                 return true;
             }
 
