@@ -32,6 +32,8 @@ namespace Marlin {
     }
 
     public abstract class AbstractSidebar : Gtk.ScrolledWindow {
+        public signal void request_update ();
+
         public enum Column {
             NAME,
             URI,
