@@ -56,6 +56,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/ViewContainer.vala
         View/Browser.vala
         View/Sidebar.vala
+        View/PopupMenuBuilder.vala
         View/Slot.vala
         View/Miller.vala
         View/Widgets/AbstractEditableLabel.vala
