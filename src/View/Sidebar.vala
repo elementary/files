@@ -166,6 +166,7 @@ namespace Marlin.Places {
             this.show_all ();
 
             update_places ();
+            request_update.connect (update_places);
         }
 
         private void construct_tree_view () {
