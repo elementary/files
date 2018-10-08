@@ -734,10 +734,7 @@ namespace Marlin.Places {
                 /* Add ConnectServer BUILTIN */
                 add_extra_network_item (_("Connect Server"), _("Connect to a network server"), new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
 
-                /* No longer needed at present as no other sidebar plugins.
-                 * Commenting out to avoid old plugin getting installed.
-                 * Package needs to remove old plugin.*/
-                //plugins.update_sidebar ((Gtk.Widget)this);
+                plugins.update_sidebar ((Gtk.Widget)this);
             }
 
             expander_init_pref_state (tree_view);
