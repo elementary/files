@@ -223,15 +223,17 @@ namespace Marlin.Places {
                                 "active", Column.SHOW_SPINNER,
                                 "pulse", Column.SPINNER_PULSE);
 
-            crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button (hidden while ejecting or unmounted) */
+            crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
             this.eject_spinner_cell_renderer = crpb;
             crpb.stock_size = Gtk.IconSize.MENU;
-            crpb.gicon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
             crpb.xpad = ICON_XPAD;
             crpb.ypad = BOOKMARK_YPAD;
 
             col.pack_start (crpb, false);
-            col.set_attributes (crpb, "visible", Column.SHOW_EJECT);
+            col.set_attributes (crpb,
+                                "gicon", Column.ACTION_ICON);
+            //  col.set_attributes (crpb, "visible", Column.SHOW_EJECT);
+            //  TODO : Now the columns that can eject won't hide their icons
 
             var cre = new Granite.Widgets.CellRendererExpander (); /* Expander button for categories */
             expander_renderer = cre;
