@@ -140,6 +140,7 @@ namespace Marlin.Places {
 
         public Sidebar (Marlin.View.Window window, bool local_only = false) {
             init (); /* creates the Gtk.TreeModel store. */
+            plugins.sidebar_loaded ((Gtk.Widget)this);
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
@@ -1691,7 +1692,7 @@ namespace Marlin.Places {
                 if (disk_size > 0) {
                     /* Make disk space graphic same length whether or not eject button displayed */
                     var crd = renderer as Marlin.CellRendererDisk;
-                    if (!show_eject_button) {
+                    if (!show_eject_button || action_icon == null) {
                         crd.rpad = eject_button_size + ICON_XPAD * 2;
                     } else {
                         crd.rpad = 0;
