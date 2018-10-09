@@ -232,8 +232,6 @@ namespace Marlin.Places {
             col.pack_start (crpb, false);
             col.set_attributes (crpb,
                                 "gicon", Column.ACTION_ICON);
-            //  col.set_attributes (crpb, "visible", Column.SHOW_EJECT);
-            //  TODO : Now the columns that can eject won't hide their icons
 
             var cre = new Granite.Widgets.CellRendererExpander (); /* Expander button for categories */
             expander_renderer = cre;
@@ -2039,6 +2037,7 @@ namespace Marlin.Places {
                 if (store.get_iter (out iter, row_ref.get_path ())) {
                     store.@set (iter, Column.SHOW_SPINNER, false);
                     store.@set (iter, Column.SHOW_EJECT, !success); /* continue to show eject if did not succeed */
+                    store.@set (iter, Column.ACTION_ICON, new ThemedIcon.with_default_fallbacks ("media-eject-symbolic"));
                 }
             } else {
                 warning ("No row ref");
@@ -2110,6 +2109,7 @@ namespace Marlin.Places {
             var rowref = new Gtk.TreeRowReference (store, path);
             store.@set (iter, Column.SHOW_SPINNER, true);
             store.@set (iter, Column.SHOW_EJECT, false);
+            store.@set (iter, Column.ACTION_ICON, null);
             Timeout.add (100, ()=>{
                 uint val;
 
