@@ -1484,7 +1484,6 @@ namespace Marlin.Places {
                         Column.BOOKMARK, out is_bookmark
             );
             bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);
-            print (@"$type\n");
 
             bool show_mount, show_unmount, show_eject, show_rescan, show_format, show_start, show_stop;
             check_visibility (mount,
