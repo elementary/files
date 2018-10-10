@@ -70,9 +70,11 @@ public class PopupMenuBuilder : Object {
         return add_item (new Gtk.SeparatorMenuItem ());
     }
 
-    public PopupMenuBuilder add_item (Gtk.MenuItem menu_item, MenuitemCallback? callback = null) {
-        if (callback != null) {
-            menu_item.activate.connect (callback);
+    public PopupMenuBuilder add_item (Gtk.MenuItem menu_item, MenuitemCallback? cb = null) {
+        if (cb != null) {
+            menu_item.activate.connect ((menu_item) => {
+                cb (menu_item);
+            });
         }
 
         menu_item.show ();
