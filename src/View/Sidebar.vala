@@ -1692,7 +1692,7 @@ namespace Marlin.Places {
                 if (disk_size > 0) {
                     /* Make disk space graphic same length whether or not eject button displayed */
                     var crd = renderer as Marlin.CellRendererDisk;
-                    if (!show_eject_button || action_icon == null) {
+                    if (!show_eject_button) {
                         crd.rpad = eject_button_size + ICON_XPAD * 2;
                     } else {
                         crd.rpad = 0;
