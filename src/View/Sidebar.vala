@@ -1515,10 +1515,19 @@ namespace Marlin.Places {
                 .add_open_tab (open_shortcut_in_new_tab_cb)
                 .add_open_window (open_shortcut_in_new_window_cb);
 
-                if (is_bookmark) { menu.add_separator ().add_remove (remove_shortcut_cb).add_rename (rename_shortcut_cb); }
-                if (show_mount) { menu.add_separator ().add_mount (mount_selected_shortcut); }
-                if (show_unmount) { menu.add_separator ().add_unmount (unmount_shortcut_cb); }
-                if (show_eject) { menu.add_separator ().add_eject (eject_shortcut_cb); }
+                if (is_bookmark) {
+                    menu.add_separator ().add_remove (remove_shortcut_cb)
+                    .add_rename (rename_shortcut_cb);
+                }
+                if (show_mount) {
+                    menu.add_separator ().add_mount (mount_selected_shortcut);
+                }
+                if (show_unmount) {
+                    menu.add_separator ().add_unmount (unmount_shortcut_cb);
+                }
+                if (show_eject) {
+                    menu.add_separator ().add_eject (eject_shortcut_cb);
+                }
 
                 if (show_empty_trash) {
                     Gtk.MenuItem popupmenu_empty_trash_item;
