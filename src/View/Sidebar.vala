@@ -1463,9 +1463,9 @@ namespace Marlin.Places {
             }
         }
 
-        private void show_popup_menu (Gdk.EventButton? event) {
+        private void show_popup_menu (Gdk.EventButton? event, Gtk.TreePath? path = null) {
             Gtk.TreeIter iter;
-            if (!get_selected_iter (out iter)) {
+            if (!store.get_iter (out iter, path)) {
                 return;
             }
 
@@ -1813,8 +1813,7 @@ namespace Marlin.Places {
 
                 case Gdk.BUTTON_SECONDARY:
                     if (path != null && !category_at_path (path)) {
-                        //  Add idle to finish the event before open popup menu
-                        Idle.add (() => { show_popup_menu (event); return false; });
+                        show_popup_menu (event, path);
                     }
 
                     break;
