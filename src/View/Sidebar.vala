@@ -1519,12 +1519,15 @@ namespace Marlin.Places {
                     menu.add_separator ().add_remove (remove_shortcut_cb)
                     .add_rename (rename_shortcut_cb);
                 }
+
                 if (show_mount) {
                     menu.add_separator ().add_mount (mount_selected_shortcut);
                 }
+
                 if (show_unmount) {
                     menu.add_separator ().add_unmount (unmount_shortcut_cb);
                 }
+
                 if (show_eject) {
                     menu.add_separator ().add_eject (eject_shortcut_cb);
                 }
@@ -1538,7 +1541,9 @@ namespace Marlin.Places {
                     menu.add_item (popupmenu_empty_trash_item, empty_trash_cb);
                 }
 
-                if (show_property) { menu.add_property (show_drive_info_cb); }
+                if (show_property) {
+                    menu.add_property (show_drive_info_cb);
+                }
 
                 menu.build ().popup_at_pointer (event);
             }
