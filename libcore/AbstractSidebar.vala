@@ -117,10 +117,6 @@ namespace Marlin {
             if (cb != null) {
                 store.@set (iter, Column.PLUGIN_CALLBACK, cb);
             }
-
-            if (menu != null) {
-                store.@set (iter, Column.MENU_MODEL, menu);
-            }
         }
 
        protected abstract Gtk.TreeIter add_place (Marlin.PlaceType place_type,
