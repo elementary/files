@@ -1703,11 +1703,6 @@ namespace Marlin.Places {
             expander_update_pref_state (type, false);
         }
 
-        /* Callback used when the selection in the shortcuts tree changes */
-        //  private void selection_changed_cb () {
-        //      check_popup_sensitivity ();
-        //  }
-
         private void row_activated_callback (Gtk.TreePath path,
                                              Gtk.TreeViewColumn column) {
             open_selected_bookmark ((Gtk.TreeModel)store, path, 0);
