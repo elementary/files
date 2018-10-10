@@ -1487,15 +1487,15 @@ namespace Marlin.Places {
 
             bool show_mount, show_unmount, show_eject, show_rescan, show_format, show_start, show_stop;
             check_visibility (mount,
-                                volume,
-                                drive,
-                                out show_mount,
-                                out show_unmount,
-                                out show_eject,
-                                out show_rescan,
-                                out show_format,
-                                out show_start,
-                                out show_stop);
+                              volume,
+                              drive,
+                              out show_mount,
+                              out show_unmount,
+                              out show_eject,
+                              out show_rescan,
+                              out show_format,
+                              out show_start,
+                              out show_stop);
 
             /* Context menu shows Empty Trash for the Trash icon and for any mount with a native
                 * file system whose trash contains files */
