@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-11 01:51+0000\n"
-"Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
+"PO-Revision-Date: 2018-10-12 00:05+0000\n"
+"Last-Translator: Nils K <slx@nilsk.net>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
 "files/files/nb/>\n"
 "Language: nb\n"
@@ -1935,7 +1935,7 @@ msgstr "Domenenavn:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr "Navn på bruker på tjener"
+msgstr "Brukerens navn på tjeneren"
 
 #: ../libcore/ConnectServerDialog.vala:162
 msgid "User name:"
