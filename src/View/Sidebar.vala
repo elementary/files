@@ -453,7 +453,7 @@ namespace Marlin.Places {
 
             store.@set (
                 iter,
-                Column.ROW_TYPE, item.place_type,
+                Column.ROW_TYPE, PluginItem.place_type,
                 Column.URI, item.uri,
                 Column.DRIVE, item.drive,
                 Column.VOLUME, item.volume,
