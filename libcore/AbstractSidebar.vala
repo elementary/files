@@ -128,6 +128,8 @@ namespace Marlin {
                                                   Icon? action_icon = null) ;
     }
 
+    public abstract Gtk.TreeIter add_or_update_plugin_item (PluginItem item, Gtk.TreeIter? iter = null);
+
     public class PluginItem : Object {
         public const PlaceType place_type = PlaceType.PLUGIN_ITEM;
         public string name { get;set; }
