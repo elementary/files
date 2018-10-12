@@ -443,12 +443,10 @@ namespace Marlin.Places {
             Gtk.TreeIter parent;
             store.get_iter (out parent, network_category_reference.get_path ());
 
-            if (iter != null && !store.iter_is_valid (iter)) {
-                return iter;
-            }
-
             if (iter == null) {
                 store.append (out iter, parent);
+            } else if (!store.iter_is_valid (iter)) {
+                return iter;
             }
 
             store.@set (
