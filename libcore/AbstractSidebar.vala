@@ -128,6 +128,16 @@ namespace Marlin {
                                                   Icon? action_icon = null) ;
     }
 
+    /**
+     * Adds plugin item to TreeStore or update if a iter is present
+     *
+     * @param item is a {@link Marlin.AbstractSidebar.PluginItem} that resumes
+     * every column a plugin would need of the TreeStore
+     *
+     * @param iter receives the iterator that points to TreeModel to be updated
+     *
+     * @return TreeIter to be used later to update the item
+     */
     public abstract Gtk.TreeIter add_or_update_plugin_item (PluginItem item, Gtk.TreeIter? iter = null);
 
     public class PluginItem : Object {
