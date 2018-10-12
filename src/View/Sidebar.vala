@@ -210,15 +210,15 @@ namespace Marlin.Places {
                                 "active", Column.SHOW_SPINNER,
                                 "pulse", Column.SPINNER_PULSE);
 
-            crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button (hidden while ejecting or unmounted) */
+            crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
             this.eject_spinner_cell_renderer = crpb;
             crpb.stock_size = Gtk.IconSize.MENU;
-            crpb.gicon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
             crpb.xpad = ICON_XPAD;
             crpb.ypad = BOOKMARK_YPAD;
 
             col.pack_start (crpb, false);
-            col.set_attributes (crpb, "visible", Column.SHOW_EJECT);
+            col.set_attributes (crpb,
+                                "gicon", Column.ACTION_ICON);
 
             var cre = new Granite.Widgets.CellRendererExpander (); /* Expander button for categories */
             expander_renderer = cre;
@@ -354,7 +354,8 @@ namespace Marlin.Places {
                                                    Volume? volume,
                                                    Mount? mount,
                                                    uint index,
-                                                   string? tooltip = null) {
+                                                   string? tooltip = null,
+                                                   Icon? action_icon = null) {
 
             bool show_eject, show_unmount, can_stop;
             check_unmount_and_eject (mount, volume, drive,
@@ -371,11 +372,8 @@ namespace Marlin.Places {
                 show_eject_button = (show_unmount || show_eject);
             }
 
-            GLib.Icon eject;
             if (show_eject_button) {
-                eject = this.eject_icon;
-            } else {
-                eject = null;
+                action_icon = this.eject_icon;
             }
 
             GLib.Error error = null;
@@ -408,7 +406,7 @@ namespace Marlin.Places {
                             Column.IS_CATEGORY, is_category,
                             Column.NOT_CATEGORY, !is_category,
                             Column.TOOLTIP, tooltip,
-                            Column.EJECT_ICON, eject,
+                            Column.ACTION_ICON, action_icon,
                             Column.SHOW_SPINNER, false,
                             Column.SHOW_EJECT, show_eject_button,
                             Column.SPINNER_PULSE, 0,
@@ -2032,6 +2030,7 @@ namespace Marlin.Places {
                 if (store.get_iter (out iter, row_ref.get_path ())) {
                     store.@set (iter, Column.SHOW_SPINNER, false);
                     store.@set (iter, Column.SHOW_EJECT, !success); /* continue to show eject if did not succeed */
+                    store.@set (iter, Column.ACTION_ICON, new ThemedIcon.with_default_fallbacks ("media-eject-symbolic"));
                 }
             } else {
                 warning ("No row ref");
@@ -2103,6 +2102,7 @@ namespace Marlin.Places {
             var rowref = new Gtk.TreeRowReference (store, path);
             store.@set (iter, Column.SHOW_SPINNER, true);
             store.@set (iter, Column.SHOW_EJECT, false);
+            store.@set (iter, Column.ACTION_ICON, null);
             Timeout.add (100, ()=>{
                 uint val;
 
