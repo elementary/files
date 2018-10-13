@@ -472,7 +472,7 @@ namespace Marlin.Places {
                 Column.SHOW_EJECT, item.can_eject,
                 Column.FREE_SPACE, item.free_space,
                 Column.DISK_SIZE, item.disk_size,
-                Column.PLUGIN_CALLBACK, item.callback,
+                Column.PLUGIN_CALLBACK, item.cb,
                 Column.MENU_MODEL, item.menu_model
             );
 
