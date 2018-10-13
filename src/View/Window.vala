@@ -368,6 +368,7 @@ namespace Marlin.View {
 
             if (old_tab != null) {
                 old_tab.set_active_state (false);
+                old_tab.is_frozen = false;
             }
 
             loading_uri (current_tab.uri);
