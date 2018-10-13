@@ -60,6 +60,7 @@ typedef struct {
     gboolean skip_all_conflict;
     gboolean merge_all;
     gboolean replace_all;
+    gboolean keep_all_newest;
     gboolean delete_all;
     MarlinUndoActionData *undo_redo_data;
 } CommonJob;
@@ -881,7 +882,7 @@ init_common (JobTypes jobtype,
     CommonJob *common;
     GdkScreen *screen;
 
-    common = g_malloc0 (job_size);
+    common = g_malloc0 (job_size); /* Booleans default to false (0) */
 
     if (parent_window) {
         common->parent_window = parent_window;
@@ -4093,28 +4094,53 @@ retry:
             goto out;
         }
 
+        if (job->keep_all_newest) {
+            if (pf_file_utils_compare_modification_dates (src, dest) < 1) {
+                goto out;
+            } else {
+                overwrite = TRUE;
+                goto retry;
+            }
+        }
+
         response = run_conflict_dialog (job, src, dest, dest_dir);
 
         if (response->id == GTK_RESPONSE_CANCEL ||
             response->id == GTK_RESPONSE_DELETE_EVENT) {
             conflict_response_data_free (response);
             abort_job (job);
-        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
+        }
+
+        if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (response->apply_to_all) {
                 job->skip_all_conflict = TRUE;
             }
             conflict_response_data_free (response);
-        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE) { /* merge/replace */
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE ||
+                   response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
+
             if (response->apply_to_all) {
                 if (is_merge) {
                     job->merge_all = TRUE;
+                } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) {
+                    job->keep_all_newest = TRUE;
                 } else {
                     job->replace_all = TRUE;
                 }
             }
             overwrite = TRUE;
+
+            gboolean keep_dest;
+            keep_dest = response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
+                        pf_file_utils_compare_modification_dates (src, dest) < 1;
+
             conflict_response_data_free (response);
-            goto retry;
+
+            if (keep_dest) { /* destination is newer than source */
+                goto out;/* Skip this one */
+            } else {
+                goto retry; /* Overwrite conflicting destination file */
+            }
         } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
             g_object_unref (dest);
             dest = get_target_file_for_display_name (dest_dir,
@@ -4124,9 +4150,7 @@ retry:
         } else {
             g_assert_not_reached ();
         }
-    }
-
-    else if (overwrite &&
+    } else if (overwrite &&
              IS_IO_ERROR (error, IS_DIRECTORY)) {
 
         g_error_free (error);
@@ -4134,11 +4158,9 @@ retry:
         if (remove_target_recursively (job, src, dest, dest)) {
             goto retry;
         }
-    }
+    } else if (IS_IO_ERROR (error, WOULD_RECURSE) ||
+             IS_IO_ERROR (error, WOULD_MERGE)) { /* Needs to recurse */
 
-    /* Needs to recurse */
-    else if (IS_IO_ERROR (error, WOULD_RECURSE) ||
-             IS_IO_ERROR (error, WOULD_MERGE)) {
         is_merge = error->code == G_IO_ERROR_WOULD_MERGE;
         would_recurse = error->code == G_IO_ERROR_WOULD_RECURSE;
         g_error_free (error);
@@ -4215,14 +4237,9 @@ retry:
 
         g_object_unref (dest);
         return;
-    }
-
-    else if (IS_IO_ERROR (error, CANCELLED)) {
+    } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
-    }
-
-    /* Other error */
-    else {
+    } else { /* Other error */
         if (job->skip_all_error) {
             g_error_free (error);
             goto out;
@@ -4678,7 +4695,15 @@ retry:
                 job->skip_all_conflict = TRUE;
             }
             conflict_response_data_free (response);
-        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE) { /* merge/replace */
+        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE ||
+                   response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
+
+            if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
+                pf_file_utils_compare_modification_dates (src, dest) < 1) { /* destination not older */
+
+                goto out;/* Skip this one */
+            }
+
             if (response->apply_to_all) {
                 if (is_merge) {
                     job->merge_all = TRUE;
