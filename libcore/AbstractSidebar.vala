@@ -54,6 +54,7 @@ namespace Marlin {
             FREE_SPACE,
             DISK_SIZE,
             PLUGIN_CALLBACK,
+            MENU_MODEL,
             COUNT
         }
 
@@ -83,7 +84,8 @@ namespace Marlin {
                                         typeof (uint),              /* Spinner pulse */
                                         typeof (uint64),            /* Free space */
                                         typeof (uint64),            /* For disks, total size */
-                                        typeof (Marlin.PluginCallbackFunc)
+                                        typeof (Marlin.PluginCallbackFunc),
+                                        typeof (GLib.MenuModel)
                                         );
 
             content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
