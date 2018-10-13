@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-08 00:04+0000\n"
+"PO-Revision-Date: 2018-10-09 00:00+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -1293,7 +1293,7 @@ msgstr "ネットワーク全体"
 
 #: ../src/View/Sidebar.vala:732
 msgid "Browse the contents of the network"
-msgstr "ネットワークの内容を表示します"
+msgstr "ネットワークの内容を閲覧します"
 
 #: ../src/View/Sidebar.vala:735
 msgid "Connect Server"
