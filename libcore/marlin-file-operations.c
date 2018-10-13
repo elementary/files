@@ -60,6 +60,7 @@ typedef struct {
     gboolean skip_all_conflict;
     gboolean merge_all;
     gboolean replace_all;
+    gboolean keep_all_newest;
     gboolean delete_all;
     MarlinUndoActionData *undo_redo_data;
 } CommonJob;
@@ -881,7 +882,7 @@ init_common (JobTypes jobtype,
     CommonJob *common;
     GdkScreen *screen;
 
-    common = g_malloc0 (job_size);
+    common = g_malloc0 (job_size); /* Booleans default to false (0) */
 
     if (parent_window) {
         common->parent_window = parent_window;
@@ -4093,13 +4094,24 @@ retry:
             goto out;
         }
 
+        if (job->keep_all_newest) {
+            if (pf_file_utils_compare_modification_dates (src, dest) < 1) {
+                goto out;
+            } else {
+                overwrite = TRUE;
+                goto retry;
+            }
+        }
+
         response = run_conflict_dialog (job, src, dest, dest_dir);
 
         if (response->id == GTK_RESPONSE_CANCEL ||
             response->id == GTK_RESPONSE_DELETE_EVENT) {
             conflict_response_data_free (response);
             abort_job (job);
-        } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
+        }
+
+        if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (response->apply_to_all) {
                 job->skip_all_conflict = TRUE;
             }
@@ -4107,22 +4119,28 @@ retry:
         } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_REPLACE ||
                    response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) { /* merge/replace/newest */
 
-            if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
-                pf_file_utils_compare_modification_dates (src, dest) < 1) { /* destination not older */
-
-                goto out;/* Skip this one */
-            }
-
             if (response->apply_to_all) {
                 if (is_merge) {
                     job->merge_all = TRUE;
+                } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST) {
+                    job->keep_all_newest = TRUE;
                 } else {
                     job->replace_all = TRUE;
                 }
             }
             overwrite = TRUE;
+
+            gboolean keep_dest;
+            keep_dest = response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_NEWEST &&
+                        pf_file_utils_compare_modification_dates (src, dest) < 1;
+
             conflict_response_data_free (response);
-            goto retry;
+
+            if (keep_dest) { /* destination is newer than source */
+                goto out;/* Skip this one */
+            } else {
+                goto retry; /* Overwrite conflicting destination file */
+            }
         } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_RENAME) {
             g_object_unref (dest);
             dest = get_target_file_for_display_name (dest_dir,

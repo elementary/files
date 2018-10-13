@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-08-04 13:47+0000\n"
+"PO-Revision-Date: 2018-10-11 00:06+0000\n"
 "Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
 "Language-Team: Russian <https://weblate.elementary.io/projects/files/files/"
 "ru/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
@@ -1398,14 +1398,12 @@ msgid "Browse the contents of the network"
 msgstr "Обзор содержимого сети"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect Server"
-msgstr "Подключиться к серверу"
+msgstr "Подключить сервер"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "Подключиться к файловому серверу"
+msgstr "Подключиться к серверу"
 
 #: ../src/View/Sidebar.vala:876
 msgid "(%s Free of %s)"
@@ -1945,68 +1943,59 @@ msgstr "Сведения о сервере"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Имя или IP-адрес сервера"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "_Сервер:"
+msgstr "Сервер:"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "_Порт:"
+msgstr "Порт:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Имя ресурса на сервере"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "Р_есурс:"
+msgstr "Ресурс:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Путь к папке на сервере"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Папка:"
+msgstr "Папка:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "Сведения о пользователе"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Новое окно с правами _администратора"
+msgstr "Имя домена Windows"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Домен:"
+msgstr "Домен:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "Имя пользователя на сервере"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "_Имя пользователя:"
+msgstr "Имя пользователя:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "Паро_ль:"
+msgstr "Пароль:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Запомнить пароль"
+msgstr "Запомнить этот пароль"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -2014,16 +2003,14 @@ msgid "Cancel"
 msgstr "Отмена"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "П_одключить"
+msgstr "Подключиться"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Продолжить"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
 msgstr "Подключение…"
 
