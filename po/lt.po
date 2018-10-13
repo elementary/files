@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-25 13:09-0700\n"
-"PO-Revision-Date: 2018-07-26 21:26+0000\n"
+"POT-Creation-Date: 2018-09-19 09:07+0200\n"
+"PO-Revision-Date: 2018-09-22 09:13+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://weblate.elementary.io/projects/files/"
 "files/lt/>\n"
@@ -20,125 +20,6 @@ msgstr ""
 "n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
-
-#: ../src/marlin-connect-server-dialog.c:119
-msgid "SSH"
-msgstr "SSH"
-
-#: ../src/marlin-connect-server-dialog.c:122
-msgid "Public FTP"
-msgstr "Viešasis FTP"
-
-#: ../src/marlin-connect-server-dialog.c:124
-msgid "FTP (with login)"
-msgstr "FTP (su prisijungimu)"
-
-#: ../src/marlin-connect-server-dialog.c:127
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple failų persiuntimo protokolas)"
-
-#: ../src/marlin-connect-server-dialog.c:129
-msgid "Windows share"
-msgstr "Windows viešinys"
-
-#: ../src/marlin-connect-server-dialog.c:131
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: ../src/marlin-connect-server-dialog.c:133
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Saugus WebDAV (HTTPS)"
-
-#: ../src/marlin-connect-server-dialog.c:180
-msgid "Connecting..."
-msgstr "Jungiamasi..."
-
-#: ../src/marlin-connect-server-dialog.c:204
-msgid ""
-"Can't load the supported server method list.\n"
-"Please check your gvfs installation."
-msgstr ""
-"Nepavyko įkelti palaikomų prisijungimo būdų prie serverio sąrašo.\n"
-"Patikrinkite ar tinkamai įdiegta gvfs."
-
-#: ../src/marlin-connect-server-dialog.c:282
-#, c-format
-msgid "The folder \"%s\" cannot be opened on \"%s\"."
-msgstr "Aplankas „%s“, esantis „%s“ negali būti atvertas."
-
-#: ../src/marlin-connect-server-dialog.c:292
-#, c-format
-msgid "The server at \"%s\" cannot be found."
-msgstr "Serveris „%s“ nerastas."
-
-#: ../src/marlin-connect-server-dialog.c:327
-msgid "Try Again"
-msgstr "Bandyti dar kartą"
-
-#: ../src/marlin-connect-server-dialog.c:392
-msgid "Please verify your user details."
-msgstr "Patvirtinkite savo naudotojo informaciją."
-
-#: ../src/marlin-connect-server-dialog.c:422
-msgid "Continue"
-msgstr "Tęsti"
-
-#: ../src/marlin-connect-server-dialog.c:747
-#: ../src/marlin-connect-server-dialog.c:1140
-msgid "C_onnect"
-msgstr "Prisi_jungti"
-
-#: ../src/marlin-connect-server-dialog.c:875
-msgid "Connect to Server"
-msgstr "Prisijungti prie serverio"
-
-#: ../src/marlin-connect-server-dialog.c:893
-msgid "Server Details"
-msgstr "Serverio informacija"
-
-#: ../src/marlin-connect-server-dialog.c:917
-msgid "_Server:"
-msgstr "_Serveris:"
-
-#: ../src/marlin-connect-server-dialog.c:937
-msgid "_Port:"
-msgstr "_Prievadas:"
-
-#: ../src/marlin-connect-server-dialog.c:955
-msgid "_Type:"
-msgstr "_Tipas:"
-
-#: ../src/marlin-connect-server-dialog.c:1024
-msgid "Sh_are:"
-msgstr "_Viešinys:"
-
-#: ../src/marlin-connect-server-dialog.c:1039
-msgid "_Folder:"
-msgstr "_Aplankas:"
-
-#: ../src/marlin-connect-server-dialog.c:1057
-msgid "User Details"
-msgstr "Naudotojo informacija"
-
-#: ../src/marlin-connect-server-dialog.c:1080
-msgid "_Domain name:"
-msgstr "_Srities pavadinimas:"
-
-#: ../src/marlin-connect-server-dialog.c:1095
-msgid "_User name:"
-msgstr "_Naudotojo vardas:"
-
-#: ../src/marlin-connect-server-dialog.c:1110
-msgid "Pass_word:"
-msgstr "Sla_ptažodis:"
-
-#: ../src/marlin-connect-server-dialog.c:1126
-msgid "_Remember this password"
-msgstr "P_risiminti šį slaptažodį"
-
-#: ../src/marlin-connect-server-dialog.c:1229
-msgid "Operation cancelled"
-msgstr "Operacija atšaukta"
 
 #: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
 msgid "Inaccessible"
@@ -169,7 +50,7 @@ msgid "Unable to Launch Desktop File: %s"
 msgstr "Nepavyko paleisti darbalaukio failo: %s"
 
 #: ../libcore/marlin-file-operations.c:154
-#: ../libcore/FileConflictDialog.vala:183
+#: ../libcore/FileConflictDialog.vala:185
 msgid "_Skip"
 msgstr "_Praleisti"
 
@@ -390,7 +271,7 @@ msgstr ""
 "Visi šiame prijungime šiukšlinėje esantys elementai bus ištrinti visiems "
 "laikams."
 
-#: ../libcore/marlin-file-operations.c:1306 ../src/View/Sidebar.vala:1513
+#: ../libcore/marlin-file-operations.c:1306 ../src/View/Sidebar.vala:1519
 msgid "Empty _Trash"
 msgstr "Iš_valyti šiukšlinę"
 
@@ -783,7 +664,7 @@ msgstr ""
 "skaityti."
 
 #: ../libcore/marlin-file-operations.c:3518
-#: ../libcore/marlin-file-operations.c:4157
+#: ../libcore/marlin-file-operations.c:4161
 msgid "Error while moving \"%B\"."
 msgstr "Klaida perkeliant „%B“."
 
@@ -793,7 +674,7 @@ msgstr "Nepavyko pašalinti šaltinio aplanko."
 
 #: ../libcore/marlin-file-operations.c:3604
 #: ../libcore/marlin-file-operations.c:3645
-#: ../libcore/marlin-file-operations.c:4159
+#: ../libcore/marlin-file-operations.c:4163
 msgid "Error while copying \"%B\"."
 msgstr "Klaida kopijuojant „%B“."
 
@@ -808,17 +689,17 @@ msgid "Could not remove the already existing file %F."
 msgstr "Nepavyko pašalinti jau esančio failo %F."
 
 #: ../libcore/marlin-file-operations.c:3920
-#: ../libcore/marlin-file-operations.c:4571
+#: ../libcore/marlin-file-operations.c:4570
 msgid "You cannot move a folder into itself."
 msgstr "Negalima perkelti aplanko į jį patį."
 
 #: ../libcore/marlin-file-operations.c:3921
-#: ../libcore/marlin-file-operations.c:4572
+#: ../libcore/marlin-file-operations.c:4571
 msgid "You cannot copy a folder into itself."
 msgstr "Negalima nukopijuoti aplanko į jį patį."
 
 #: ../libcore/marlin-file-operations.c:3922
-#: ../libcore/marlin-file-operations.c:4573
+#: ../libcore/marlin-file-operations.c:4572
 msgid "The destination folder is inside the source folder."
 msgstr "Paskirties aplankas yra šaltinio aplanko viduje."
 
@@ -834,29 +715,29 @@ msgstr "Negalima kopijuoti failo į jį patį."
 msgid "The source file would be overwritten by the destination."
 msgstr "Šaltinio failas bus perrašytas paskirties failu."
 
-#: ../libcore/marlin-file-operations.c:4161
+#: ../libcore/marlin-file-operations.c:4165
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "Nepavyko pašalinti failo su tokiu pačiu pavadinimu, esančio aplanke %F."
 
-#: ../libcore/marlin-file-operations.c:4231
+#: ../libcore/marlin-file-operations.c:4230
 msgid "Cannot copy \"%B\" here."
 msgstr "Čia negalima nukopijuoti \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:4232
+#: ../libcore/marlin-file-operations.c:4231
 msgid "There was an error copying the file into %B."
 msgstr "Kopijuojant failą į %B, įvyko klaida."
 
-#: ../libcore/marlin-file-operations.c:4454
+#: ../libcore/marlin-file-operations.c:4453
 msgid "Copying Files"
 msgstr "Kopijuojami failai"
 
-#: ../libcore/marlin-file-operations.c:4480
+#: ../libcore/marlin-file-operations.c:4479
 msgid "Preparing to move to \"%B\""
 msgstr "Ruošiamasi perkelti į „%B“"
 
-#: ../libcore/marlin-file-operations.c:4484
+#: ../libcore/marlin-file-operations.c:4483
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -864,25 +745,25 @@ msgstr[0] "Ruošiamasi perkelti %'d failą"
 msgstr[1] "Ruošiamasi perkelti %'d failus"
 msgstr[2] "Ruošiamasi perkelti %'d failų"
 
-#: ../libcore/marlin-file-operations.c:4725
+#: ../libcore/marlin-file-operations.c:4732
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr "Klaida, perkeliant \"%F\"."
 
-#: ../libcore/marlin-file-operations.c:4726
+#: ../libcore/marlin-file-operations.c:4733
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Perkeliant failą į %F, įvyko klaida."
 
-#: ../libcore/marlin-file-operations.c:4983
+#: ../libcore/marlin-file-operations.c:4990
 msgid "Moving Files"
 msgstr "Perkeliami failai"
 
-#: ../libcore/marlin-file-operations.c:5012
+#: ../libcore/marlin-file-operations.c:5019
 msgid "Creating links in \"%B\""
 msgstr "Kuriamos nuorodos „%B“ aplanke"
 
-#: ../libcore/marlin-file-operations.c:5016
+#: ../libcore/marlin-file-operations.c:5023
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -890,57 +771,57 @@ msgstr[0] "Kuriama nuoroda į %'d failą"
 msgstr[1] "Kuriamos nuorodos į %'d failus"
 msgstr[2] "Kuriamos nuorodos į %'d failų"
 
-#: ../libcore/marlin-file-operations.c:5156
+#: ../libcore/marlin-file-operations.c:5163
 msgid "Error while creating link to %B."
 msgstr "Kuriant nuorodą į %B įvyko klaida."
 
-#: ../libcore/marlin-file-operations.c:5158
+#: ../libcore/marlin-file-operations.c:5165
 msgid "Symbolic links only supported for local files"
 msgstr "Simbolinės nuorodos yra palaikomos tik vietiniams failams"
 
-#: ../libcore/marlin-file-operations.c:5161
+#: ../libcore/marlin-file-operations.c:5168
 msgid "The target doesn't support symbolic links."
 msgstr "Paskirties vietą nepalaiko simbolinių nuorodų."
 
-#: ../libcore/marlin-file-operations.c:5164
+#: ../libcore/marlin-file-operations.c:5171
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Klaida, kuriant simbolinę nuorodą %F."
 
-#: ../libcore/marlin-file-operations.c:5482
+#: ../libcore/marlin-file-operations.c:5489
 msgid "Setting permissions"
 msgstr "Nustatomi leidimai"
 
-#: ../libcore/marlin-file-operations.c:5578
+#: ../libcore/marlin-file-operations.c:5585
 msgid "Cannot copy into trash."
 msgstr "Negalima kopijuoti į šiukšlinę."
 
-#: ../libcore/marlin-file-operations.c:5579
+#: ../libcore/marlin-file-operations.c:5586
 msgid "It is not permitted to copy files into the trash"
 msgstr "Nėra leidžiama kopijuoti failus į šiukšlinę"
 
-#: ../libcore/marlin-file-operations.c:5717
+#: ../libcore/marlin-file-operations.c:5724
 msgid "untitled folder"
 msgstr "bevardis aplankas"
 
-#: ../libcore/marlin-file-operations.c:5725
+#: ../libcore/marlin-file-operations.c:5732
 msgid "new file"
 msgstr "naujas failas"
 
-#: ../libcore/marlin-file-operations.c:5896
+#: ../libcore/marlin-file-operations.c:5903
 msgid "Error while creating directory %B."
 msgstr "Klaida kuriant katalogą %B."
 
-#: ../libcore/marlin-file-operations.c:5898
+#: ../libcore/marlin-file-operations.c:5905
 msgid "Error while creating file %B."
 msgstr "Klaida kuriant failą %B."
 
-#: ../libcore/marlin-file-operations.c:5900
+#: ../libcore/marlin-file-operations.c:5907
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Kuriant katalogą ties %F, įvyko klaida."
 
-#: ../libcore/marlin-file-operations.c:6210
+#: ../libcore/marlin-file-operations.c:6217
 msgid "Emptying Trash"
 msgstr "Išvaloma šiukšlinė"
 
@@ -1360,80 +1241,80 @@ msgstr "Ankstesnis"
 msgid "Next"
 msgstr "Kitas"
 
-#: ../src/View/AbstractDirectoryView.vala:832
+#: ../src/View/AbstractDirectoryView.vala:821
 msgid "Cannot open this file"
 msgstr "Nepavyksta atverti šio failo"
 
-#: ../src/View/AbstractDirectoryView.vala:845
+#: ../src/View/AbstractDirectoryView.vala:834
 msgid "Cannot identify file type to open"
 msgstr "Nepavyksta atpažinti norimo atverti failo tipą"
 
-#: ../src/View/AbstractDirectoryView.vala:1580
+#: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
 msgstr "Negalima numesti šio failo"
 
-#: ../src/View/AbstractDirectoryView.vala:1580
+#: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Invalid file name provided"
 msgstr "Pateiktas neteisingas failo pavadinimas"
 
-#: ../src/View/AbstractDirectoryView.vala:2065
+#: ../src/View/AbstractDirectoryView.vala:2054
 msgid "Invalid"
 msgstr "Neteisingas"
 
-#: ../src/View/AbstractDirectoryView.vala:2071
+#: ../src/View/AbstractDirectoryView.vala:2060
 msgid "Run"
 msgstr "Vykdyti"
 
-#: ../src/View/AbstractDirectoryView.vala:2075
+#: ../src/View/AbstractDirectoryView.vala:2064
 msgid "Open in %s"
 msgstr "Atverti naudojant %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2085
+#: ../src/View/AbstractDirectoryView.vala:2074
 msgid "Open in"
 msgstr "Kur atverti"
 
-#: ../src/View/AbstractDirectoryView.vala:2087
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:478
+#: ../src/View/AbstractDirectoryView.vala:2076
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:482
 msgid "Open with"
 msgstr "Atverti naudojant"
 
-#: ../src/View/AbstractDirectoryView.vala:2146
+#: ../src/View/AbstractDirectoryView.vala:2135
 #: ../src/Dialogs/PropertiesWindow.vala:616
 msgid "Other Application…"
 msgstr "Kita programa…"
 
-#: ../src/View/AbstractDirectoryView.vala:2175
+#: ../src/View/AbstractDirectoryView.vala:2164
 msgid "Templates"
 msgstr "Šablonai"
 
-#: ../src/View/AbstractDirectoryView.vala:2422
+#: ../src/View/AbstractDirectoryView.vala:2411
 msgid "Untitled %s"
 msgstr "Be pavadinimo %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2761
-#: ../src/View/AbstractDirectoryView.vala:2945
+#: ../src/View/AbstractDirectoryView.vala:2750
+#: ../src/View/AbstractDirectoryView.vala:2934
 msgid "Cannot remove files from here"
 msgstr "Failai negali būti iš čia pašalinti"
 
-#: ../src/View/AbstractDirectoryView.vala:2762
-#: ../src/View/AbstractDirectoryView.vala:2930
-#: ../src/View/AbstractDirectoryView.vala:2946
+#: ../src/View/AbstractDirectoryView.vala:2751
+#: ../src/View/AbstractDirectoryView.vala:2919
+#: ../src/View/AbstractDirectoryView.vala:2935
 msgid "You do not have permission to change this location"
 msgstr "Jūs neturite leidimų keisti šios vietos"
 
-#: ../src/View/AbstractDirectoryView.vala:2905
+#: ../src/View/AbstractDirectoryView.vala:2894
 msgid "Cannot copy files that are in the trash"
 msgstr "Nepavyksta nukopijuoti failų, kurie yra šiukšlinėje"
 
-#: ../src/View/AbstractDirectoryView.vala:2906
+#: ../src/View/AbstractDirectoryView.vala:2895
 msgid "Cutting the selection instead"
 msgstr "Vietoj to, iškerpamas pasirinkimas"
 
-#: ../src/View/AbstractDirectoryView.vala:2929
+#: ../src/View/AbstractDirectoryView.vala:2918
 msgid "Cannot paste files here"
 msgstr "Failai negali būti čia įdėti"
 
-#: ../src/View/DirectoryNotFound.vala:27 ../src/View/ViewContainer.vala:397
+#: ../src/View/DirectoryNotFound.vala:27 ../src/View/ViewContainer.vala:407
 msgid "This Folder Does Not Exist"
 msgstr "Šio aplanko nėra"
 
@@ -1475,109 +1356,117 @@ msgstr "Tipas"
 msgid "Modified"
 msgstr "Keista"
 
-#: ../src/View/Sidebar.vala:490
+#: ../src/View/Sidebar.vala:491
 msgid "Personal"
 msgstr "Asmeniniai"
 
-#: ../src/View/Sidebar.vala:491
+#: ../src/View/Sidebar.vala:492
 msgid "Your common places and bookmarks"
 msgstr "Jūsų dažniausiai lankomos vietos ir žymelės"
 
-#: ../src/View/Sidebar.vala:503 ../src/View/ViewContainer.vala:364
+#: ../src/View/Sidebar.vala:504 ../src/View/ViewContainer.vala:377
 msgid "Home"
 msgstr "Namų aplankas"
 
-#: ../src/View/Sidebar.vala:510
+#: ../src/View/Sidebar.vala:511
 msgid "Open your personal folder"
 msgstr "Atverti jūsų asmeninį aplanką"
 
-#: ../src/View/Sidebar.vala:525
+#: ../src/View/Sidebar.vala:526
 msgid "View the list of recently used files"
 msgstr "Žiūrėti neseniai naudotų failų sąrašą"
 
-#: ../src/View/Sidebar.vala:551 ../libwidgets/Resources.vala:65
+#: ../src/View/Sidebar.vala:552 ../libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Šiukšlinė"
 
-#: ../src/View/Sidebar.vala:558
+#: ../src/View/Sidebar.vala:559
 msgid "Open the Trash"
 msgstr "Atverti šiukšlinę"
 
-#: ../src/View/Sidebar.vala:563
+#: ../src/View/Sidebar.vala:564
 msgid "Devices"
 msgstr "Įrenginiai"
 
-#: ../src/View/Sidebar.vala:564
+#: ../src/View/Sidebar.vala:565
 msgid "Your local partitions and devices"
 msgstr "Jūsų vietiniai skaidiniai ir įrenginiai"
 
-#: ../src/View/Sidebar.vala:570 ../src/View/ViewContainer.vala:366
+#: ../src/View/Sidebar.vala:571 ../src/View/ViewContainer.vala:379
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Failų sistema"
 
-#: ../src/View/Sidebar.vala:691 ../libwidgets/Resources.vala:62
+#: ../src/View/Sidebar.vala:692 ../libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Tinklas"
 
-#: ../src/View/Sidebar.vala:692
+#: ../src/View/Sidebar.vala:693
 msgid "Your network places"
 msgstr "Jūsų tinklo vietos"
 
-#: ../src/View/Sidebar.vala:724
+#: ../src/View/Sidebar.vala:725
 msgid "Entire Network"
 msgstr "Visas tinklas"
 
-#: ../src/View/Sidebar.vala:731
+#: ../src/View/Sidebar.vala:732
 msgid "Browse the contents of the network"
 msgstr "Naršyti tinklo turinį"
 
-#: ../src/View/Sidebar.vala:865
+#: ../src/View/Sidebar.vala:735
+msgid "Connect Server"
+msgstr "Prisijungti prie serverio"
+
+#: ../src/View/Sidebar.vala:735
+msgid "Connect to a network server"
+msgstr "Prisijungti prie tinklo serverio"
+
+#: ../src/View/Sidebar.vala:876
 msgid "(%s Free of %s)"
 msgstr "(%s laisva iš %s)"
 
-#: ../src/View/Sidebar.vala:1360
+#: ../src/View/Sidebar.vala:1366
 msgid "Error mounting volume %s"
 msgstr "Klaida, prijungiant tomą %s"
 
-#: ../src/View/Sidebar.vala:1375
+#: ../src/View/Sidebar.vala:1381
 msgid "Unable to start %s"
 msgstr "Nepavyko paleisti %s"
 
-#: ../src/View/Sidebar.vala:1477
+#: ../src/View/Sidebar.vala:1483
 msgid "Open"
 msgstr "Atverti"
 
-#: ../src/View/Sidebar.vala:1481
+#: ../src/View/Sidebar.vala:1487
 msgid "Open in New _Tab"
 msgstr "Atverti naujoje _kortelėje"
 
-#: ../src/View/Sidebar.vala:1485
+#: ../src/View/Sidebar.vala:1491
 msgid "Open in New _Window"
 msgstr "Atverti naujame _lange"
 
-#: ../src/View/Sidebar.vala:1491
+#: ../src/View/Sidebar.vala:1497
 msgid "Remove"
 msgstr "Šalinti"
 
-#: ../src/View/Sidebar.vala:1495 ../src/View/directory_view_popup.ui:30
+#: ../src/View/Sidebar.vala:1501 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Pervadinti"
 
-#: ../src/View/Sidebar.vala:1501
+#: ../src/View/Sidebar.vala:1507
 msgid "_Mount"
 msgstr "Pri_jungti"
 
-#: ../src/View/Sidebar.vala:1505
+#: ../src/View/Sidebar.vala:1511
 msgid "_Unmount"
 msgstr "_Atjungti"
 
-#: ../src/View/Sidebar.vala:1509
+#: ../src/View/Sidebar.vala:1515
 msgid "_Eject"
 msgstr "_Išstumti"
 
-#: ../src/View/Sidebar.vala:1518 ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/Sidebar.vala:1524 ../src/Dialogs/PropertiesWindow.vala:121
 #: ../src/View/directory_view_popup.ui:91
 msgid "Properties"
 msgstr "Savybės"
@@ -1598,71 +1487,67 @@ msgstr "Nėra neseniai naudotų failų"
 msgid "Access Denied"
 msgstr "Prieiga negalima"
 
-#: ../src/View/ViewContainer.vala:379
-msgid "(as Administrator)"
-msgstr "(kaip administratorius)"
-
-#: ../src/View/ViewContainer.vala:398
+#: ../src/View/ViewContainer.vala:408
 msgid "You cannot create a folder here."
 msgstr "Jūs negalite čia sukurti aplanko."
 
-#: ../src/View/ViewContainer.vala:401
+#: ../src/View/ViewContainer.vala:411
 msgid "The network is unavailable"
 msgstr "Tinklas neprieinamas"
 
-#: ../src/View/ViewContainer.vala:402
+#: ../src/View/ViewContainer.vala:412
 msgid "A working network is needed to reach this folder"
 msgstr "Norint pasiekti šį aplanką, reikalingas veikiantis tinklo ryšys"
 
-#: ../src/View/ViewContainer.vala:404
+#: ../src/View/ViewContainer.vala:414
 msgid "This Folder Does Not Belong to You"
 msgstr "Šis aplankas jums nepriklauso"
 
-#: ../src/View/ViewContainer.vala:405
+#: ../src/View/ViewContainer.vala:415
 msgid "You don't have permission to view this folder."
 msgstr "Jūs neturite leidimo peržiūrėti šį aplanką."
 
-#: ../src/View/ViewContainer.vala:407
+#: ../src/View/ViewContainer.vala:417
 msgid "Unable to Mount Folder"
 msgstr "Nepavyksta prijungti aplanko"
 
-#: ../src/View/ViewContainer.vala:408
+#: ../src/View/ViewContainer.vala:418
 msgid "Could not connect to the server for this folder."
 msgstr "Nepavyko prisijungti prie šio aplanko serverio."
 
-#: ../src/View/ViewContainer.vala:410
+#: ../src/View/ViewContainer.vala:420
 msgid "Unable to Display Folder Contents"
 msgstr "Nepavyksta parodyti aplanko turinio"
 
-#: ../src/View/ViewContainer.vala:411
+#: ../src/View/ViewContainer.vala:421
 msgid "The operation timed out."
 msgstr "Pasibaigė operacijai skirtas laikas."
 
-#: ../src/View/ViewContainer.vala:413
+#: ../src/View/ViewContainer.vala:423
 msgid "Unable to Show Folder"
 msgstr "Nepavyko rodyti aplanko"
 
-#: ../src/View/ViewContainer.vala:414
+#: ../src/View/ViewContainer.vala:424
 msgid "The server for this folder could not be located."
 msgstr "Nepavyko nustatyti šio aplanko serverio."
 
-#: ../src/View/ViewContainer.vala:424
+#: ../src/View/ViewContainer.vala:434
 msgid "File not Found"
 msgstr "Failas nerastas"
 
-#: ../src/View/ViewContainer.vala:425
+#: ../src/View/ViewContainer.vala:435
 msgid "The file selected no longer exists."
 msgstr "Pasirinkto failo daugiau nebėra."
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:438
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:442
 msgid "Open in New Tab"
 msgstr "Atverti naujoje kortelėje"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:445
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Window"
 msgstr "Atverti naujame lange"
 
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:485
+#: ../src/View/Widgets/BreadcrumbsEntry.vala:489
 msgid "Open in Other Application…"
 msgstr "Atverti naudojant kitą programą…"
 
@@ -1758,6 +1643,10 @@ msgstr "Rašyti"
 #: ../src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
 msgstr "Vykdyti"
+
+#: ../src/View/Window.vala:481 ../src/View/Window.vala:491
+msgid "(as Administrator)"
+msgstr "(kaip administratorius)"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
@@ -1886,14 +1775,15 @@ msgid "Could not be determined"
 msgstr "Nepavyko nustatyti"
 
 #: ../src/Dialogs/PropertiesWindow.vala:498
-#: ../libcore/FileConflictDialog.vala:117
-#: ../libcore/FileConflictDialog.vala:145
+#: ../libcore/FileConflictDialog.vala:119
+#: ../libcore/FileConflictDialog.vala:147
 msgid "Size:"
 msgstr "Dydis:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:505
-#: ../libcore/FileConflictDialog.vala:125
-#: ../libcore/FileConflictDialog.vala:153
+#: ../libcore/ConnectServerDialog.vala:147
+#: ../libcore/FileConflictDialog.vala:127
+#: ../libcore/FileConflictDialog.vala:155
 msgid "Type:"
 msgstr "Tipas:"
 
@@ -2034,6 +1924,115 @@ msgstr "Nepavyko atverti URI"
 msgid "Could not open files or URIs with this app"
 msgstr "Naudojant šią programą, nepavyko atverti failų ar URI"
 
+#: ../libcore/ConnectServerDialog.vala:46
+msgid "Public FTP"
+msgstr "Viešasis FTP"
+
+#: ../libcore/ConnectServerDialog.vala:52
+msgid "FTP (with login)"
+msgstr "FTP (su prisijungimu)"
+
+#: ../libcore/ConnectServerDialog.vala:59
+msgid "SSH"
+msgstr "SSH"
+
+#: ../libcore/ConnectServerDialog.vala:65
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple failų persiuntimo protokolas)"
+
+#: ../libcore/ConnectServerDialog.vala:71
+msgid "Windows share"
+msgstr "Windows viešinys"
+
+#: ../libcore/ConnectServerDialog.vala:77
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: ../libcore/ConnectServerDialog.vala:84
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Saugus WebDAV (HTTPS)"
+
+#: ../libcore/ConnectServerDialog.vala:129
+msgid "Server Details"
+msgstr "Serverio informacija"
+
+#: ../libcore/ConnectServerDialog.vala:131
+msgid "Server name or IP address"
+msgstr "Serverio pavadinimas ar IP adresas"
+
+#: ../libcore/ConnectServerDialog.vala:132
+msgid "Server:"
+msgstr "Serveris:"
+
+#: ../libcore/ConnectServerDialog.vala:138
+msgid "Port:"
+msgstr "Prievadas:"
+
+#: ../libcore/ConnectServerDialog.vala:150
+msgid "Name of share on server"
+msgstr "Viešinio serveryje pavadinimas"
+
+#: ../libcore/ConnectServerDialog.vala:151
+msgid "Share:"
+msgstr "Viešinys:"
+
+#: ../libcore/ConnectServerDialog.vala:153
+msgid "Path of shared folder on server"
+msgstr "Kelias į bendrinamą aplanką serveryje"
+
+#: ../libcore/ConnectServerDialog.vala:154
+msgid "Folder:"
+msgstr "Aplankas:"
+
+#: ../libcore/ConnectServerDialog.vala:156
+msgid "User Details"
+msgstr "Naudotojo informacija"
+
+#: ../libcore/ConnectServerDialog.vala:158
+msgid "Name of Windows domain"
+msgstr "Windows srities pavadinimas"
+
+#: ../libcore/ConnectServerDialog.vala:159
+msgid "Domain name:"
+msgstr "Srities pavadinimas:"
+
+#: ../libcore/ConnectServerDialog.vala:161
+msgid "Name of user on server"
+msgstr "Naudotojo serveryje vardas"
+
+#: ../libcore/ConnectServerDialog.vala:162
+msgid "User name:"
+msgstr "Naudotojo vardas:"
+
+#: ../libcore/ConnectServerDialog.vala:167
+msgid "Password:"
+msgstr "Slaptažodis:"
+
+#: ../libcore/ConnectServerDialog.vala:169
+msgid "Remember this password"
+msgstr "Prisiminti šį slaptažodį"
+
+#: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
+#: ../libcore/FileConflictDialog.vala:188
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+#: ../libcore/ConnectServerDialog.vala:176
+msgid "Connect"
+msgstr "Prisijungti"
+
+#: ../libcore/ConnectServerDialog.vala:183
+msgid "Continue"
+msgstr "Tęsti"
+
+#: ../libcore/ConnectServerDialog.vala:230
+msgid "Connecting…"
+msgstr "Jungiamasi…"
+
+#: ../libcore/ConnectServerDialog.vala:346
+msgid "Please verify your user details."
+msgstr "Patvirtinkite savo naudotojo informaciją."
+
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
 msgstr "Nepavyko įvykdyti „%s“"
@@ -2050,52 +2049,56 @@ msgstr "Kopijuoti čia"
 msgid "Link Here"
 msgstr "Kurti nuorodą čia"
 
-#: ../libcore/DndHandler.vala:100 ../libcore/FileConflictDialog.vala:186
-msgid "Cancel"
-msgstr "Atsisakyti"
-
-#: ../libcore/FileConflictDialog.vala:62
+#: ../libcore/FileConflictDialog.vala:64
 msgid "File conflict"
 msgstr "Konfliktuojantys failai"
 
-#: ../libcore/FileConflictDialog.vala:112
+#: ../libcore/FileConflictDialog.vala:114
 msgid "Original file"
 msgstr "Pradinis failas"
 
-#: ../libcore/FileConflictDialog.vala:130
-#: ../libcore/FileConflictDialog.vala:158
+#: ../libcore/FileConflictDialog.vala:132
+#: ../libcore/FileConflictDialog.vala:160
 msgid "Last modified:"
 msgstr "Paskutinis pakeitimas:"
 
-#: ../libcore/FileConflictDialog.vala:140
+#: ../libcore/FileConflictDialog.vala:142
 msgid "Replace with"
 msgstr "Pakeisti į"
 
-#: ../libcore/FileConflictDialog.vala:168
+#: ../libcore/FileConflictDialog.vala:170
 msgid "Reset"
 msgstr "Atstatyti"
 
-#: ../libcore/FileConflictDialog.vala:178
+#: ../libcore/FileConflictDialog.vala:180
 msgid "_Select a new name for the destination"
 msgstr "_Pasirinkti naują pavadinimą paskirties elementui"
 
-#: ../libcore/FileConflictDialog.vala:181
+#: ../libcore/FileConflictDialog.vala:183
 msgid "Apply this action to all files"
 msgstr "Taikyti šį veiksmą visiems failams"
 
-#: ../libcore/FileConflictDialog.vala:184
+#: ../libcore/FileConflictDialog.vala:186
 msgid "Re_name"
 msgstr "Per_vadinti"
 
-#: ../libcore/FileConflictDialog.vala:188
+#: ../libcore/FileConflictDialog.vala:190
+msgid "Keep Newest"
+msgstr "Palikti naujausią"
+
+#: ../libcore/FileConflictDialog.vala:191
+msgid "Skip if original was modified more recently"
+msgstr "Praleisti, jei pradinis failas buvo modifikuotas vėlesniu laiku"
+
+#: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
 msgstr "Pakeisti"
 
-#: ../libcore/FileConflictDialog.vala:304
+#: ../libcore/FileConflictDialog.vala:309
 msgid "Merge folder \"%s\"?"
 msgstr "Sulieti aplanką „%s“?"
 
-#: ../libcore/FileConflictDialog.vala:305
+#: ../libcore/FileConflictDialog.vala:310
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -2103,51 +2106,51 @@ msgstr ""
 "Suliejant bus prašoma patvirtinti, ar norite perrašyti tame aplanke esančius "
 "failus, kurie konfliktuoja su perkeliamais, taip pat pavadintais failais."
 
-#: ../libcore/FileConflictDialog.vala:307
+#: ../libcore/FileConflictDialog.vala:312
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Senesnis aplankas tuo pačiu pavadinimu jau yra ties „%s“."
 
-#: ../libcore/FileConflictDialog.vala:309
+#: ../libcore/FileConflictDialog.vala:314
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Naujesnis aplankas tuo pačiu pavadinimu jau yra ties „%s“."
 
-#: ../libcore/FileConflictDialog.vala:311
+#: ../libcore/FileConflictDialog.vala:316
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Kitas aplankas tuo pačiu pavadinimu jau yra ties „%s“."
 
-#: ../libcore/FileConflictDialog.vala:314
+#: ../libcore/FileConflictDialog.vala:319
 msgid "Replace folder \"%s\"?"
 msgstr "Pakeisti aplanką „%s“?"
 
-#: ../libcore/FileConflictDialog.vala:315
+#: ../libcore/FileConflictDialog.vala:320
 msgid "Replacing it will remove all files in the folder."
 msgstr "Jį pakeitus, bus pašalinti visi tame aplanke esantys failai."
 
-#: ../libcore/FileConflictDialog.vala:316
+#: ../libcore/FileConflictDialog.vala:321
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Aplankas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
-#: ../libcore/FileConflictDialog.vala:319
+#: ../libcore/FileConflictDialog.vala:324
 msgid "Replace file \"%s\"?"
 msgstr "Pakeisti failą „%s“?"
 
-#: ../libcore/FileConflictDialog.vala:320
+#: ../libcore/FileConflictDialog.vala:325
 msgid "Replacing it will overwrite its content."
 msgstr "Pakeitus failą, bus perrašytas jo turinys."
 
-#: ../libcore/FileConflictDialog.vala:323
+#: ../libcore/FileConflictDialog.vala:328
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Senesnis failas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
-#: ../libcore/FileConflictDialog.vala:325
+#: ../libcore/FileConflictDialog.vala:330
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Naujesnis failas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
-#: ../libcore/FileConflictDialog.vala:327
+#: ../libcore/FileConflictDialog.vala:332
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Kitas failas tuo pačiu pavadinimu jau yra aplanke „%s“."
 
-#: ../libcore/FileConflictDialog.vala:353
+#: ../libcore/FileConflictDialog.vala:358
 msgid "Merge"
 msgstr "Sulieti"
 
@@ -2272,14 +2275,6 @@ msgstr "Žymelės"
 msgid "Recently used"
 msgstr "Paskiausiai naudoti"
 
-#: ../plugins/network-places/plugin.vala:27
-msgid "Connect to Server…"
-msgstr "Jungtis prie serverio…"
-
-#: ../plugins/network-places/plugin.vala:27
-msgid "Connect to a network file server"
-msgstr "Jungtis prie tinklo failų serverio"
-
 #: ../plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
 msgstr "Atkurti visus"
@@ -2391,6 +2386,31 @@ msgstr "Atvirkštine tvarka"
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
 msgstr "Pirma aplankai, po to failai"
+
+#~ msgid ""
+#~ "Can't load the supported server method list.\n"
+#~ "Please check your gvfs installation."
+#~ msgstr ""
+#~ "Nepavyko įkelti palaikomų prisijungimo būdų prie serverio sąrašo.\n"
+#~ "Patikrinkite ar tinkamai įdiegta gvfs."
+
+#~ msgid "The folder \"%s\" cannot be opened on \"%s\"."
+#~ msgstr "Aplankas „%s“, esantis „%s“ negali būti atvertas."
+
+#~ msgid "The server at \"%s\" cannot be found."
+#~ msgstr "Serveris „%s“ nerastas."
+
+#~ msgid "Try Again"
+#~ msgstr "Bandyti dar kartą"
+
+#~ msgid "_Type:"
+#~ msgstr "_Tipas:"
+
+#~ msgid "Operation cancelled"
+#~ msgstr "Operacija atšaukta"
+
+#~ msgid "Connect to Server…"
+#~ msgstr "Jungtis prie serverio…"
 
 #~ msgid "These items may be restored or deleted from the trash."
 #~ msgstr "Šie elementai gali būti atkurti arba ištinti iš šiukšlinės."
