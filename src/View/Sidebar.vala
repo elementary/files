@@ -1503,7 +1503,8 @@ namespace Marlin.Places {
             bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
 
             if (is_plugin) {
-                var menu = new PopupMenuBuilder ();
+                var menu = new PopupMenuBuilder ()
+                .add_open (open_shortcut_cb);
                 menu.build ().popup_at_pointer (event);
             } else {
                 var menu = new PopupMenuBuilder ()
