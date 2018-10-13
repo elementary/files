@@ -158,7 +158,7 @@ namespace Marlin {
         public uint64 free_space { get;set; default = 0; }
         public uint64 disk_size { get;set; default = 0; }
         public MenuModel? menu_model { get;set; }
-        public PluginCallbackFunc? callback { get;set; }
+        public PluginCallbackFunc? callback;
 
         public bool is_bookmark () {
             return place_type == Marlin.PlaceType.BOOKMARK;
