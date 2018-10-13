@@ -1504,8 +1504,7 @@ namespace Marlin.Places {
             bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
 
             if (is_plugin) {
-                var menu = new PopupMenuBuilder ();
-                menu.build ().popup_at_pointer (event);
+                /* TODO Implement sidebar plugin interface for context menu */
             } else {
                 var menu = new PopupMenuBuilder ()
                 .add_open (open_shortcut_cb)
