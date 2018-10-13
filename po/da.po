@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-22 00:10+0000\n"
+"PO-Revision-Date: 2018-10-03 00:10+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://weblate.elementary.io/projects/files/files/da/"
 ">\n"
@@ -1907,54 +1907,47 @@ msgstr "Port:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Delt mappe's navn på serveren"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "_Deling:"
+msgstr "Delt mappe:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Delt mappe's sti på serveren"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Mappe:"
+msgstr "Mappe:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "Brugerdetaljer"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Nyt vindue som _Administrator"
+msgstr "Navn på Windows domæne"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Domænenavn:"
+msgstr "Domænenavn:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "Navn på bruger på server"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "_Brugernavn:"
+msgstr "Brugernavn:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "_Adgangskode:"
+msgstr "Adgangskode:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Husk denne adgangskode"
+msgstr "Husk denne adgangskode"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -1962,18 +1955,16 @@ msgid "Cancel"
 msgstr "Annuller"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "_Tilslut"
+msgstr "Forbind"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Fortsæt"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "Opretter forbindelse ..."
+msgstr "Opretter forbindelse…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
@@ -2030,11 +2021,11 @@ msgstr "_Omdøb"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "Behold Nyeste"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Spring over, hvis originalen blev ændret senere"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"

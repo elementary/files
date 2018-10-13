@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-06-12 06:15+0000\n"
+"PO-Revision-Date: 2018-09-29 00:09+0000\n"
 "Last-Translator: Eri Hidayat <eriwhidayat@gmail.com>\n"
 "Language-Team: Indonesian <https://weblate.elementary.io/projects/files/"
 "files/id/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
@@ -1307,14 +1307,12 @@ msgid "Browse the contents of the network"
 msgstr "Jelajahi isi dari jaringan"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect Server"
-msgstr "Sambungkan ke Server"
+msgstr "Hubungkan Server"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "Sambungkan ke server berkas jaringan"
+msgstr "Hubungkan ke server jaringan"
 
 #: ../src/View/Sidebar.vala:876
 msgid "(%s Free of %s)"
@@ -1542,7 +1540,7 @@ msgstr "(sebagai Administrator)"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Tampilkan versi program."
+msgstr "Tampilkan versi program"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1554,14 +1552,13 @@ msgstr "Jendela Baru"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Keluar Pengelola Berkas."
+msgstr "Keluar Pengelola Berkas"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
 msgstr "Aktifkan pencatatan error"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
@@ -1695,9 +1692,8 @@ msgid "Deleted:"
 msgstr "Dihapus:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
-msgstr "Mimetype:"
+msgstr "Jenis MIME:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:567
 msgid "Resolution:"
@@ -1710,7 +1706,7 @@ msgstr "Lokasi:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:585
 msgid "Target:"
-msgstr "Target:"
+msgstr "Sasaran:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:593
 msgid "Original Location:"
@@ -1802,14 +1798,12 @@ msgid "Failed to open files"
 msgstr "Gagal membuka berkas"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Tidak dapat mengganti nama menjadi '%s'"
+msgstr "Tidak dapat membuka URI"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Tidak dapat membuka berkas atau uris dengan aplikasi ini"
+msgstr "Tidak dapat membuka berkas atau URI dengan aplikasi ini"
 
 #: ../libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -1845,68 +1839,59 @@ msgstr "Rincian Server"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Nama server atau alamat IP"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "_Server:"
+msgstr "Server:"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "_Port:"
+msgstr "Port:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Nama pembagian pada server"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "Berb_agi:"
+msgstr "Berbagi:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Jalur folder yang dibagikan di server"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Folder:"
+msgstr "Folder:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "Rincian Pengguna"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Jendela Baru Sebagai _Administrator"
+msgstr "Nama domain Windows"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Nama domain:"
+msgstr "Nama domain:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "Nama pengguna di server"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "_Nama pengguna:"
+msgstr "Nama pengguna:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "Kata kunci (_W):"
+msgstr "Kata sandi:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Ingat kata sandi ini"
+msgstr "Ingat kata sandi ini"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -1914,18 +1899,16 @@ msgid "Cancel"
 msgstr "Batal"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "Sambung (_O)"
+msgstr "Hubungkan"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Lanjutkan"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "Menyambung..."
+msgstr "Menghubungkan…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
@@ -1982,11 +1965,11 @@ msgstr "Ubah _nama"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "Tetap Terbaru"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Lewati jika berkas asli dimodifikasi lebi baru"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
@@ -2186,14 +2169,12 @@ msgid "Empty the Trash"
 msgstr "Kosongkan Tong Sampah"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Pulihkan Semua"
+msgstr "Pulihkan yang Terpilih"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " dipilih"
+msgstr "Hapus yang Terpilih"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"

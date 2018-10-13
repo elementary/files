@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-07-27 06:17+0000\n"
-"Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
-"Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/"
-">\n"
+"PO-Revision-Date: 2018-10-03 14:31+0000\n"
+"Last-Translator: Daniel Zvir <zvir.daniel@seznam.cz>\n"
+"Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/>"
+"\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1392,14 +1392,12 @@ msgid "Browse the contents of the network"
 msgstr "Procházet obsah sítě"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect Server"
-msgstr "Připojit k serveru"
+msgstr "Připojit server"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "Připojit k souborovému serveru"
+msgstr "Připojit k serveru v síti"
 
 #: ../src/View/Sidebar.vala:876
 msgid "(%s Free of %s)"
@@ -1936,68 +1934,59 @@ msgstr "Detaily o serveru"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Jméno serveru nebo IP adresa"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "_Server:"
+msgstr "Server:"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "_Port:"
+msgstr "Port:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Jméno sdílení na serveru"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "Sdíl_ení:"
+msgstr "Sdílet:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Cesta k sdílené složce na serveru"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Složka:"
+msgstr "Složka:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "Detaily o uživateli"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Nové _administrátorské okno"
+msgstr "Jméno domény Windows"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "Název _domény:"
+msgstr "Jméno domény:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "Jméno uživatele na serveru"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "_Uživatelské jméno:"
+msgstr "Uživatelské jméno:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "_Heslo:"
+msgstr "Heslo:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Zapamatovat si heslo"
+msgstr "Zapamatovat si heslo"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -2005,18 +1994,16 @@ msgid "Cancel"
 msgstr "Zrušit"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "_Připojit"
+msgstr "Připojit"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Pokračovat"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "Připojování..."
+msgstr "Připojování…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
@@ -2073,11 +2060,11 @@ msgstr "Přejme_novat"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "Udržovat nejnovější"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Přeskočit pokud byl originální soubor nedávno změněn"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
