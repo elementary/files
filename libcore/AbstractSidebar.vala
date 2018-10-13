@@ -126,47 +126,47 @@ namespace Marlin {
                                                   uint index,
                                                   string? tooltip = null,
                                                   Icon? action_icon = null) ;
-    }
 
-    /**
-     * Adds plugin item to TreeStore or update if a iter is present
-     *
-     * @param item is a {@link Marlin.AbstractSidebar.PluginItem} that resumes
-     * every column a plugin would need of the TreeStore
-     *
-     * @param iter receives the iterator that points to TreeModel to be updated
-     *
-     * @return TreeIter to be used later to update the item
-     */
-    public abstract Gtk.TreeIter add_or_update_plugin_item (PluginItem item, Gtk.TreeIter? iter = null);
+        /**
+         * Adds plugin item to TreeStore or update if a iter is present
+         *
+         * @param item is a {@link Marlin.AbstractSidebar.PluginItem} that resumes
+         * every column a plugin would need of the TreeStore
+         *
+         * @param iter receives the iterator that points to TreeModel to be updated
+         *
+         * @return TreeIter to be used later to update the item
+         */
+        public abstract Gtk.TreeIter add_or_update_plugin_item (PluginItem item, Gtk.TreeIter? iter = null);
 
-    public class PluginItem : Object {
-        public const PlaceType place_type = PlaceType.PLUGIN_ITEM;
-        public string name { get;set; }
-        public string? uri { get;set; }
-        public Drive? drive { get;set; }
-        public Volume? volume { get;set; }
-        public Mount? mount { get;set; }
-        public Icon? icon { get;set; }
-        public uint index { get;set; }
-        public bool can_eject { get;set; }
-        public string? tooltip { get;set; }
-        public Icon? action_icon { get; set; }
-        public bool show_spinner { get;set; default = false; }
-        public uint64 free_space { get;set; default = 0; }
-        public uint64 disk_size { get;set; default = 0; }
-        public MenuModel? menu_model { get;set; }
-        public PluginCallbackFunc? callback { get;set; }
+        public class PluginItem : Object {
+            public const PlaceType place_type = PlaceType.PLUGIN_ITEM;
+            public string name { get;set; }
+            public string? uri { get;set; }
+            public Drive? drive { get;set; }
+            public Volume? volume { get;set; }
+            public Mount? mount { get;set; }
+            public Icon? icon { get;set; }
+            public uint index { get;set; }
+            public bool can_eject { get;set; }
+            public string? tooltip { get;set; }
+            public Icon? action_icon { get; set; }
+            public bool show_spinner { get;set; default = false; }
+            public uint64 free_space { get;set; default = 0; }
+            public uint64 disk_size { get;set; default = 0; }
+            public MenuModel? menu_model { get;set; }
+            public PluginCallbackFunc? callback { get;set; }
 
-        public bool is_bookmark () {
-            return place_type == Marlin.PlaceType.BOOKMARK;
-        }
+            public bool is_bookmark () {
+                return place_type == Marlin.PlaceType.BOOKMARK;
+            }
 
-        public bool is_category () {
-            return (place_type == Marlin.PlaceType.BOOKMARKS_CATEGORY) ||
-                   (place_type == Marlin.PlaceType.PERSONAL_CATEGORY)  ||
-                   (place_type == Marlin.PlaceType.STORAGE_CATEGORY)   ||
-                   (place_type == Marlin.PlaceType.NETWORK_CATEGORY);
+            public bool is_category () {
+                return (place_type == Marlin.PlaceType.BOOKMARKS_CATEGORY) ||
+                    (place_type == Marlin.PlaceType.PERSONAL_CATEGORY)  ||
+                    (place_type == Marlin.PlaceType.STORAGE_CATEGORY)   ||
+                    (place_type == Marlin.PlaceType.NETWORK_CATEGORY);
+            }
         }
     }
 }
