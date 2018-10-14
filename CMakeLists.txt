@@ -25,7 +25,7 @@ option (MODULE_ONLY "Build only custom gtk filechooser dialog module" FALSE)
 
 find_package (Vala REQUIRED)
 include (ValaVersion)
-ensure_vala_version ("0.34.0" MINIMUM)
+ensure_vala_version ("0.40.0" MINIMUM)
 include (ValaPrecompile)
 
 find_package (PkgConfig)
@@ -34,7 +34,7 @@ OPTION (WITH_UNITY "Add Unity launcher support" ON)
 pkg_check_modules (UNITY unity>=4.0.0)
 
 set (COMMON_DEPS
-    granite>=0.3.0
+    granite>=5.0.0
     glib-2.0>=2.29.0
     gthread-2.0
     gio-2.0
