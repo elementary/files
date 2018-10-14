@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-30 00:09+0000\n"
+"PO-Revision-Date: 2018-10-14 11:28+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -31,12 +31,12 @@ msgstr "डेस्कटॉप फाईल :%s पार्स होऊ श�
 
 #: ../libcore/gof-file.c:1598
 msgid "Failed to parse the desktop file"
-msgstr ""
+msgstr "डेस्कटॉप फाइल विश्लेषित करण्यात अयशस्वी"
 
 #: ../libcore/gof-file.c:1612
 #, c-format
 msgid "Failed to create command from file: %s"
-msgstr ""
+msgstr "%s : फाइलमधून कमांड तयार करण्यात अयशस्वी"
 
 #: ../libcore/gof-file.c:1623
 #, c-format
