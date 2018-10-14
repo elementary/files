@@ -290,6 +290,29 @@ namespace Marlin.Places {
             return false;
         }
 
+        /**
+         * Increase spinner pulse while Column.SHOW_SPINNER is true
+         */
+        void start_spinner (Gtk.TreeIter iter) {
+            Timeout.add (100, ()=>{
+                uint val;
+                bool spinner_active;
+
+                if (!store.iter_is_valid (iter)) {
+                    return false;
+                }
+
+                store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
+                if (!spinner_active) {
+                    return false;
+                }
+
+                store.@get (iter, Column.SPINNER_PULSE, out val);
+                store.@set (iter, Column.SPINNER_PULSE, ++val);
+                return true;
+            });
+        }
+
         private bool focus_in_event_cb (Gdk.EventFocus event) {
             /* Restore saved adjustment value to prevent unexpected scrolling */
             ((this as Gtk.ScrolledWindow).get_vadjustment ()).set_value (adjustment_val);
@@ -2103,22 +2126,7 @@ namespace Marlin.Places {
             store.@set (iter, Column.SHOW_SPINNER, true);
             store.@set (iter, Column.SHOW_EJECT, false);
             store.@set (iter, Column.ACTION_ICON, null);
-            Timeout.add (100, ()=>{
-                uint val;
-
-                if (!rowref.valid ()) {
-                    return false;
-                }
-
-                store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
-                if (!spinner_active) {
-                    return false;
-                }
-
-                store.@get (iter, Column.SPINNER_PULSE, out val);
-                store.@set (iter, Column.SPINNER_PULSE, ++val);
-                return true;
-            });
+            start_spinner (iter);
 
             do_unmount_or_eject (mount, volume, drive, rowref, allow_eject);
             return true;
