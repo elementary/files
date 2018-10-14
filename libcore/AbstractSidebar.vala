@@ -143,34 +143,4 @@ namespace Marlin {
          */
         public abstract Gtk.TreeIter add_or_update_plugin_item (PluginItem item, Gtk.TreeIter? iter = null);
     }
-
-    public class PluginItem : Object {
-        public const PlaceType place_type = PlaceType.PLUGIN_ITEM;
-        public string name { get;set; }
-        public string? uri { get;set; }
-        public Drive? drive { get;set; }
-        public Volume? volume { get;set; }
-        public Mount? mount { get;set; }
-        public Icon? icon { get;set; }
-        public uint index { get;set; }
-        public bool can_eject { get;set; }
-        public string? tooltip { get;set; }
-        public Icon? action_icon { get; set; }
-        public bool show_spinner { get;set; default = false; }
-        public uint64 free_space { get;set; default = 0; }
-        public uint64 disk_size { get;set; default = 0; }
-        public MenuModel? menu_model { get;set; }
-        public PluginCallbackFunc? cb;
-
-        public bool is_bookmark () {
-            return place_type == Marlin.PlaceType.BOOKMARK;
-        }
-
-        public bool is_category () {
-            return (place_type == Marlin.PlaceType.BOOKMARKS_CATEGORY) ||
-                (place_type == Marlin.PlaceType.PERSONAL_CATEGORY)  ||
-                (place_type == Marlin.PlaceType.STORAGE_CATEGORY)   ||
-                (place_type == Marlin.PlaceType.NETWORK_CATEGORY);
-        }
-    }
 }
