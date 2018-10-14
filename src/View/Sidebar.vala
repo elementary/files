@@ -127,6 +127,7 @@ namespace Marlin.Places {
 
         public Sidebar (Marlin.View.Window window, bool local_only = false) {
             init (); /* creates the Gtk.TreeModel store. */
+            plugins.sidebar_loaded ((Gtk.Widget)this);
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
@@ -153,6 +154,7 @@ namespace Marlin.Places {
             this.show_all ();
 
             update_places ();
+            request_update.connect (update_places);
         }
 
         private void construct_tree_view () {
@@ -717,10 +719,7 @@ namespace Marlin.Places {
                 /* Add ConnectServer BUILTIN */
                 add_extra_network_item (_("Connect Server"), _("Connect to a network server"), new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
 
-                /* No longer needed at present as no other sidebar plugins.
-                 * Commenting out to avoid old plugin getting installed.
-                 * Package needs to remove old plugin.*/
-                //plugins.update_sidebar ((Gtk.Widget)this);
+                plugins.update_sidebar ((Gtk.Widget)this);
             }
 
             expander_init_pref_state (tree_view);
