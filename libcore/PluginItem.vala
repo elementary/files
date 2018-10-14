@@ -41,8 +41,8 @@ public class Marlin.PluginItem : Object {
 
     public bool is_category () {
         return (place_type == Marlin.PlaceType.BOOKMARKS_CATEGORY) ||
-            (place_type == Marlin.PlaceType.PERSONAL_CATEGORY)  ||
-            (place_type == Marlin.PlaceType.STORAGE_CATEGORY)   ||
-            (place_type == Marlin.PlaceType.NETWORK_CATEGORY);
+               (place_type == Marlin.PlaceType.PERSONAL_CATEGORY)  ||
+               (place_type == Marlin.PlaceType.STORAGE_CATEGORY)   ||
+               (place_type == Marlin.PlaceType.NETWORK_CATEGORY);
     }
 }
