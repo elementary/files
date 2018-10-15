@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-14 11:28+0000\n"
+"PO-Revision-Date: 2018-10-16 00:03+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -41,66 +41,66 @@ msgstr "%s : फाइलमधून कमांड तयार करण्�
 #: ../libcore/gof-file.c:1623
 #, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr ""
+msgstr "%s: डेस्कटॉप फाइल सुरु करण्यात अक्षम"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:185
 msgid "_Skip"
-msgstr ""
+msgstr "(_S)वगळा"
 
 #: ../libcore/marlin-file-operations.c:155
 msgid "S_kip All"
-msgstr ""
+msgstr "(_k)सर्व वगळा"
 
 #: ../libcore/marlin-file-operations.c:156
 msgid "_Retry"
-msgstr ""
+msgstr "(_R)पुन्हा प्रयत्न करा"
 
 #: ../libcore/marlin-file-operations.c:157
 msgid "Delete _All"
-msgstr ""
+msgstr "(_A)सर्व हटवा"
 
 #: ../libcore/marlin-file-operations.c:158
 msgid "_Replace"
-msgstr ""
+msgstr "(_R)बदला"
 
 #: ../libcore/marlin-file-operations.c:159
 msgid "Replace _All"
-msgstr ""
+msgstr "(_A)सर्व बदला"
 
 #: ../libcore/marlin-file-operations.c:160
 msgid "_Merge"
-msgstr ""
+msgstr "(_M)विलीन करा"
 
 #: ../libcore/marlin-file-operations.c:161
 msgid "Merge _All"
-msgstr ""
+msgstr "(_A)सर्व विलीन करा"
 
 #: ../libcore/marlin-file-operations.c:162
 msgid "Copy _Anyway"
-msgstr ""
+msgstr "(_A)तरीही कॉपी करा"
 
 #: ../libcore/marlin-file-operations.c:243
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d सेकंद"
+msgstr[1] "%'d सेकंद"
 
 #: ../libcore/marlin-file-operations.c:248
 #: ../libcore/marlin-file-operations.c:259
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d मिनिट"
+msgstr[1] "%'d  मिनिटे"
 
 #: ../libcore/marlin-file-operations.c:258
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d तास"
+msgstr[1] "%'d तास"
 
 #: ../libcore/marlin-file-operations.c:266
 #, c-format
