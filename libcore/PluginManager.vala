@@ -232,6 +232,12 @@ public class Marlin.PluginManager : Object {
         }
     }
 
+    public void sidebar_loaded (Gtk.Widget widget) {
+        foreach (var plugin in plugin_hash.values) {
+            plugin.sidebar_loaded (widget);
+        }
+    }
+
     public void update_sidebar (Gtk.Widget widget) {
         foreach (var plugin in plugin_hash.values) {
             plugin.update_sidebar (widget);
