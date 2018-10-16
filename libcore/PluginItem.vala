@@ -34,15 +34,4 @@ public class Marlin.PluginItem : Object {
     public uint64 disk_size { get; set; default = 0; }
     public MenuModel? menu_model { get; set; }
     public PluginCallbackFunc? cb;
-
-    public bool is_bookmark () {
-        return place_type == Marlin.PlaceType.BOOKMARK;
-    }
-
-    public bool is_category () {
-        return (place_type == Marlin.PlaceType.BOOKMARKS_CATEGORY) ||
-               (place_type == Marlin.PlaceType.PERSONAL_CATEGORY)  ||
-               (place_type == Marlin.PlaceType.STORAGE_CATEGORY)   ||
-               (place_type == Marlin.PlaceType.NETWORK_CATEGORY);
-    }
 }
