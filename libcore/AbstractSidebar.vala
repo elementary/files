@@ -139,8 +139,8 @@ namespace Marlin {
          *
          * @param TreeRowReference receives the row reference that points to TreeModel to be updated
          *
-         * @return TreeRowReference to be used later to update the item
+         * @return TreeRowReference to be used later to update the item or null if add or update failed
          */
-        public abstract Gtk.TreeRowReference add_or_update_plugin_item (PluginItem item, Gtk.TreeRowReference? rowref = null);
+        public abstract Gtk.TreeRowReference? add_or_update_plugin_item (PluginItem item, Gtk.TreeRowReference? rowref = null);
     }
 }

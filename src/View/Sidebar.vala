@@ -441,19 +441,23 @@ namespace Marlin.Places {
             return iter;
         }
 
-        public override Gtk.TreeRowReference add_or_update_plugin_item (PluginItem item, Gtk.TreeRowReference? rowref = null) {
-            Gtk.TreeRowReference row_reference = rowref;
+        public override Gtk.TreeRowReference? add_or_update_plugin_item (PluginItem item, Gtk.TreeRowReference? rowref = null) {
+            Gtk.TreeRowReference? row_reference = null;
             Gtk.TreeIter parent;
             Gtk.TreeIter iter;
             store.get_iter (out parent, network_category_reference.get_path ());
 
             if (rowref == null) {
                 store.append (out iter, parent);
-                row_reference = new Gtk.TreeRowReference (store, store.get_path (iter));
+                var path = store.get_path (iter);
+                if (path == null) {
+                    return null;
+                }
+                row_reference = new Gtk.TreeRowReference (store, path);
             } else if (rowref.valid ()) {
                 store.get_iter (out iter, rowref.get_path ());
             } else {
-                return rowref;
+                return null;
             }
 
             store.@set (
@@ -483,7 +487,7 @@ namespace Marlin.Places {
 
             start_spinner (iter);
 
-            return row_reference;
+            return rowref ?? row_reference;
         }
 
         public bool has_bookmark (string uri) {
