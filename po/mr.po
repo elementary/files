@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-16 00:03+0000\n"
+"PO-Revision-Date: 2018-10-17 00:06+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -106,13 +106,13 @@ msgstr[1] "%'d तास"
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "अंदाजे %'d तास"
+msgstr[1] "अंदाजे %'d तास"
 
 #: ../libcore/marlin-file-operations.c:342
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "%s चा दुवा"
 
 #: ../libcore/marlin-file-operations.c:346
 #, c-format
