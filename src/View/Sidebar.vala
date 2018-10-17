@@ -453,6 +453,10 @@ namespace Marlin.Places {
             Gtk.TreeIter parent;
             Gtk.TreeIter iter;
 
+            if (!categories.has_key (category)) {
+                return null;
+            }
+
             store.get_iter (out parent, categories[category].get_path ());
             store.append (out iter, parent);
 
