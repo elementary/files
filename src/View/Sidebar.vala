@@ -453,7 +453,7 @@ namespace Marlin.Places {
             Gtk.TreeIter parent;
             Gtk.TreeIter iter;
 
-            store.get_iter (out parent, network_category_reference.get_path ());
+            store.get_iter (out parent, categories[category].get_path ());
             store.append (out iter, parent);
 
             var path = store.get_path (iter);
