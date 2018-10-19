@@ -3669,7 +3669,7 @@ namespace FM {
             /* x and y must be in same coordinate system as used by the IconRenderer */
             Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
             bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
-            on_helper = pointer_rect.intersect (icon_renderer.helper_rect, null);
+            on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
             return on_icon;
         }
 

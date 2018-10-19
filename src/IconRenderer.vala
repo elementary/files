@@ -29,7 +29,7 @@
 namespace Marlin {
 
     public class IconRenderer : Gtk.CellRenderer {
-        public Gdk.Rectangle helper_rect;
+        public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
         public bool follow_state {get; set;}
         public GOF.File drop_file {get; set;}
@@ -73,7 +73,7 @@ namespace Marlin {
         construct {
             clipboard = Marlin.ClipboardManager.get_for_display ();
             hover_rect = {0, 0, (int) Marlin.IconSize.NORMAL, (int) Marlin.IconSize.NORMAL};
-            helper_rect = {0, 0, (int) Marlin.IconSize.EMBLEM, (int) Marlin.IconSize.EMBLEM};
+            hover_helper_rect = {0, 0, (int) Marlin.IconSize.EMBLEM, (int) Marlin.IconSize.EMBLEM};
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -205,6 +205,7 @@ namespace Marlin {
                     special_icon_name = "selection-add";
                 }
 
+                Gdk.Rectangle helper_rect = {0, 0, 1, 1};
                 if (special_icon_name != null) {
                     int helper_size = (int)(zoom_level <= Marlin.ZoomLevel.NORMAL ?
                                             Marlin.IconSize.EMBLEM : Marlin.IconSize.LARGE_EMBLEM);
@@ -231,6 +232,7 @@ namespace Marlin {
                 if (prelit) {
                     /* Save position of icon that is being hovered */
                     hover_rect = draw_rect;
+                    hover_helper_rect = helper_rect;
                 }
             }
 
@@ -278,12 +280,12 @@ namespace Marlin {
         }
 
         public override void get_preferred_width (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int)icon_size + helper_rect.width;
+            minimum_size = (int)icon_size + hover_helper_rect.width;
             natural_size = minimum_size;
         }
 
         public override void get_preferred_height (Gtk.Widget widget, out int minimum_size, out int natural_size) {
-            minimum_size = (int)icon_size + helper_rect.height / 2;
+            minimum_size = (int)icon_size + hover_helper_rect.height / 2;
             natural_size = minimum_size;
         }
 
