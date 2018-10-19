@@ -532,9 +532,19 @@ namespace Marlin.View {
             }
         }
 
+        private uint closing_timeout_id = 0;
         private void actual_remove_tab (Granite.Widgets.Tab tab) {
             /* close_tab_signal will be emitted first.  Tab actually closes if this returns true */
-            tab.close ();
+            /* Use timeout to limit rate of closing tab */
+            if (closing_timeout_id > 0) {
+                return;
+            }
+
+            closing_timeout_id = Timeout.add (50, () => {
+                tab.close ();
+                closing_timeout_id = 0;
+                return false;
+            });
         }
 
         public void add_window (GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
