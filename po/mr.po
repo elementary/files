@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-16 00:03+0000\n"
+"PO-Revision-Date: 2018-10-18 00:09+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -106,23 +106,23 @@ msgstr[1] "%'d तास"
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "अंदाजे %'d तास"
+msgstr[1] "अंदाजे %'d तास"
 
 #: ../libcore/marlin-file-operations.c:342
 #, c-format
 msgid "Link to %s"
-msgstr ""
+msgstr "%s चा दुवा"
 
 #: ../libcore/marlin-file-operations.c:346
 #, c-format
 msgid "Another link to %s"
-msgstr ""
+msgstr "%s चा दुसरा दुवा"
 
 #: ../libcore/marlin-file-operations.c:362
 #, c-format
 msgid "%'dst link to %s"
-msgstr ""
+msgstr "%s चा दुवा %'dst"
 
 #: ../libcore/marlin-file-operations.c:366
 #, c-format
@@ -206,11 +206,12 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:574
 #, c-format
 msgid " (%'d"
-msgstr ""
+msgstr " (%'d"
 
 #: ../libcore/marlin-file-operations.c:1252
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
+"आपल्याला खात्री आहे की आपण \"%B\" कचरापेटीमधून कायमस्वरुपी हटवू इच्छिता?"
 
 #: ../libcore/marlin-file-operations.c:1255
 #, c-format
@@ -221,22 +222,26 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
+"आपली खात्री आहे की आपण %'d निवडलेला पर्याय कचरापेटीमधून कायमचे हटवू इच्छिता?"
 msgstr[1] ""
+"आपली खात्री आहे की आपण %'d निवडलेले पर्याय कचरापेटीमधून कायमचे हटवू इच्छिता?"
 
 #: ../libcore/marlin-file-operations.c:1265
 #: ../libcore/marlin-file-operations.c:1345
 msgid "If you delete an item, it will be permanently lost."
-msgstr ""
+msgstr "आपण एखादा पर्याय हटविल्यास तो कायमचा गमावला जाईल."
 
 #: ../libcore/marlin-file-operations.c:1290
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "कचरापेटीमधून सर्व आयटम कायमचे हटवायचे?"
 
 #: ../libcore/marlin-file-operations.c:1291
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"बाह्य ड्राइवजवरील कचरा डिरेक्टरी सह सर्व कचरा डिरेक्टरीज मधील सर्वकाही कायमचे"
+" हटविले जाईल."
 
 #: ../libcore/marlin-file-operations.c:1294
 msgid "Permanently delete all items from Trash on this mount?"

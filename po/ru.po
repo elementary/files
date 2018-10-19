@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-11 00:06+0000\n"
+"PO-Revision-Date: 2018-10-19 00:07+0000\n"
 "Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
 "Language-Team: Russian <https://weblate.elementary.io/projects/files/files/"
 "ru/>\n"
@@ -2069,7 +2069,7 @@ msgstr "Переи_меновать"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "Оставить новый"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
