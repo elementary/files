@@ -103,7 +103,7 @@ namespace Marlin.View.Chrome {
             timeout = 0;
 
             realize.connect (() => {
-                get_top_level ().configure_event.connect (() => {
+                get_toplevel ().configure_event.connect (() => {
                     if (timeout > 0) {
                         Source.remove (timeout);
                         timeout = 0;
