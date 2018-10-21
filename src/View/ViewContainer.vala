@@ -400,7 +400,9 @@ namespace Marlin.View {
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
-                if (!dir.file.exists) {
+                if (dir.is_recent && !GOF.Preferences.get_default ().remember_history) {
+                    content = new Marlin.View.PrivacyModeOn (this);
+                } else if (!dir.file.exists) {
                     if (!dir.is_trash) {
                         content = new DirectoryNotFound (slot.directory, this);
                     } else {

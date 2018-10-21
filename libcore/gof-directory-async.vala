@@ -135,6 +135,12 @@ public class Async : Object {
         can_stream_files = !("ftp sftp mtp".contains (scheme));
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
+
+        if (is_recent) {
+           GOF.Preferences.get_default().notify["remember-history"].connect (() => {
+                need_reload (true);
+            });
+        }
     }
 
     ~Async () {
@@ -163,6 +169,15 @@ public class Async : Object {
 
         cancellable.cancel ();
         cancellable = new Cancellable ();
+
+        if (is_recent) {
+            if (!GOF.Preferences.get_default ().remember_history) {
+                state = State.NOT_LOADED;
+                can_load = false;
+                done_loading ();
+                return;
+            }
+        }
 
         /* If we already have a loaded file cache just list them */
         if (previous_state == State.LOADED) {
