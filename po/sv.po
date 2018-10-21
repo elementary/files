@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-20 00:03+0000\n"
+"PO-Revision-Date: 2018-10-22 00:03+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
 "sv/>\n"
@@ -1050,29 +1050,29 @@ msgstr[1] "_Ångra radering av %d objekt"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Ångra rekursiva behörighetsändringar för %d objekt"
-msgstr[1] "Ångra rekursiva behörighetsändringar för %d objekt"
+msgstr[0] "Ångra rekursiv ändring av rättigheter för %d objekt"
+msgstr[1] "Ångra rekursiv ändring av rättigheter för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1624
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Ångra behörighetsändringar för %d objekt"
-msgstr[1] "Ångra behörighetsändringar för %d objekt"
+msgstr[0] "Ångra ändring av rättigheter för %d objekt"
+msgstr[1] "Ångra ändring av rättigheter för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1629
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] "Ångra gruppändringar för %d objekt"
-msgstr[1] "Ångra gruppändringar för %d objekt"
+msgstr[0] "Ångra ändring av grupp för %d objekt"
+msgstr[1] "Ångra ändring av grupp för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1634
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] "Ångra ägarändringar för %d objekt"
-msgstr[1] "Ångra ägarändringar för %d objekt"
+msgstr[0] "Ångra ändring av ägare för %d objekt"
+msgstr[1] "Ångra ändring av ägare för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1662
 #, c-format
@@ -1149,15 +1149,15 @@ msgstr[1] "_Gör om radering av %d objekt"
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Gör om rekursiv ändring av behörigheter för %d objekt"
-msgstr[1] "Gör om rekursiv ändring av behörigheter för %d objekt"
+msgstr[0] "Gör om rekursiv ändring av rättigheter för %d objekt"
+msgstr[1] "Gör om rekursiv ändring av rättigheter för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1719
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Gör om ändring av behörigheter för %d objekt"
-msgstr[1] "Gör om ändring av behörigheter för %d objekt"
+msgstr[0] "Gör om ändring av rättigheter för %d objekt"
+msgstr[1] "Gör om ändring av rättigheter för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1724
 #, c-format
@@ -1591,7 +1591,7 @@ msgstr "(som administratör)"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Visa programversionen."
+msgstr "Visa programversionen"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1599,11 +1599,11 @@ msgstr "Öppna uri(s) i en ny tab"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Nytt Fönster"
+msgstr "Nytt fönster"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Avsluta Filer."
+msgstr "Avsluta Filer"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
