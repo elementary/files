@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-26 00:02+0000\n"
+"PO-Revision-Date: 2018-10-23 00:03+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://weblate.elementary.io/projects/files/files/"
 "ca/>\n"
@@ -419,7 +419,7 @@ msgid ""
 " Deleting a file removes it permanently"
 msgstr ""
 "\n"
-" La supressió d’un fitxer l’elimina permanentment"
+" La supressió d’un fitxer el suprimeix permanentment"
 
 #: ../libcore/marlin-file-operations.c:2006
 msgid "Trashing Files"
@@ -1241,7 +1241,7 @@ msgstr "%s sense nom"
 #: ../src/View/AbstractDirectoryView.vala:2750
 #: ../src/View/AbstractDirectoryView.vala:2934
 msgid "Cannot remove files from here"
-msgstr "No es poden eliminar fitxers des d'aquí"
+msgstr "No es poden suprimir fitxers des d'aquí"
 
 #: ../src/View/AbstractDirectoryView.vala:2751
 #: ../src/View/AbstractDirectoryView.vala:2919
@@ -1395,7 +1395,7 @@ msgstr "Obre en una _finestra nova"
 
 #: ../src/View/Sidebar.vala:1497
 msgid "Remove"
-msgstr "Elimina"
+msgstr "Suprimeix"
 
 #: ../src/View/Sidebar.vala:1501 ../src/View/directory_view_popup.ui:30
 msgid "Rename"
@@ -2247,7 +2247,7 @@ msgstr "Obre la carpeta superior"
 
 #: ../src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr "Elimina de l'historial"
+msgstr "Suprimeix de l'historial"
 
 #: ../src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
