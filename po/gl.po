@@ -8,20 +8,21 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2017-02-11 10:01+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: Galician <gl@li.org>\n"
+"PO-Revision-Date: 2018-10-23 00:03+0000\n"
+"Last-Translator: Pablo Varela <pablovarela182@gmail.com>\n"
+"Language-Team: Galician <https://weblate.elementary.io/projects/files/files/"
+"gl/>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
 msgid "Inaccessible"
-msgstr ""
+msgstr "Inaccesible"
 
 #: ../libcore/gof-file.c:347
 #, c-format
@@ -34,19 +35,18 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Non foi posíbel analizar o ficheiro de escritorio: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Non foi posíbel analizar o ficheiro de escritorio: %s"
+msgstr "Non foi posíbel analizar o ficheiro de escritorio"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Non foi posíbel analizar o ficheiro de escritorio: %s"
+msgstr "Erro ao crear o comando dende o ficheiro: %s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Non foi posíbel analizar o ficheiro de escritorio: %s"
+msgstr "Non foi posíbel Lanzar o Ficheiro de Escritorio: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:185
@@ -238,21 +238,24 @@ msgstr "Se elimina un elemento perderase para sempre."
 
 #: ../libcore/marlin-file-operations.c:1290
 msgid "Permanently delete all items from Trash?"
-msgstr ""
+msgstr "Eliminar permanentemente tódolos elementos do Lixo?"
 
 #: ../libcore/marlin-file-operations.c:1291
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Tódolos elementos en tódolos directorios de lixo, incluíndo aqueles en "
+"calquer disco externo montado, serán eliminados permanentemente."
 
 #: ../libcore/marlin-file-operations.c:1294
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "Eliminar permanentemente tódolos elementos do Lixo neste disco?"
 
 #: ../libcore/marlin-file-operations.c:1295
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
+"Tódolos elementos no lixo de este disco serán eliminados permanentemente."
 
 #: ../libcore/marlin-file-operations.c:1306 ../src/View/Sidebar.vala:1519
 msgid "Empty _Trash"
@@ -696,11 +699,11 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:4230
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "Non se pode copiar \"%B\" aquí."
 
 #: ../libcore/marlin-file-operations.c:4231
 msgid "There was an error copying the file into %B."
-msgstr ""
+msgstr "Houbo un erro copiando o ficheiro en %B."
 
 #: ../libcore/marlin-file-operations.c:4453
 msgid "Copying Files"
@@ -765,11 +768,11 @@ msgstr "Definir permisos"
 
 #: ../libcore/marlin-file-operations.c:5585
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "Non se pode copiar no lixo."
 
 #: ../libcore/marlin-file-operations.c:5586
 msgid "It is not permitted to copy files into the trash"
-msgstr ""
+msgstr "Non está permitido copiar ficheiros no lixo"
 
 #: ../libcore/marlin-file-operations.c:5724
 msgid "untitled folder"
@@ -798,11 +801,11 @@ msgstr "Baleirando o lixo"
 
 #: ../libcore/marlin-undostack-manager.c:644
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "A localización orixinal non poido ser determinada"
 
 #: ../libcore/marlin-undostack-manager.c:645
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "Abrir cartafol do lixo e restaurar manualmente"
 
 #: ../libcore/marlin-undostack-manager.c:1236
 #, c-format
