@@ -86,19 +86,6 @@ namespace Marlin.Places {
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, TargetType.TEXT_URI_LIST}
         };
 
-        Gtk.Menu popupmenu;
-        Gtk.MenuItem popupmenu_open_in_new_tab_item;
-        Gtk.MenuItem popupmenu_open_in_new_window_item;
-        Gtk.MenuItem popupmenu_remove_item;
-        Gtk.MenuItem popupmenu_rename_item;
-        Gtk.MenuItem popupmenu_separator_item1;
-        Gtk.MenuItem popupmenu_separator_item2;
-        Gtk.MenuItem popupmenu_mount_item;
-        Gtk.MenuItem popupmenu_unmount_item;
-        Gtk.MenuItem popupmenu_eject_item;
-        Gtk.MenuItem popupmenu_empty_trash_item;
-        Gtk.MenuItem popupmenu_drive_property_item;
-
         /* volume mounting - delayed open process */
         bool mounting = false;
 
@@ -140,6 +127,7 @@ namespace Marlin.Places {
 
         public Sidebar (Marlin.View.Window window, bool local_only = false) {
             init (); /* creates the Gtk.TreeModel store. */
+            plugins.sidebar_loaded ((Gtk.Widget)this);
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
@@ -166,6 +154,7 @@ namespace Marlin.Places {
             this.show_all ();
 
             update_places ();
+            request_update.connect (update_places);
         }
 
         private void construct_tree_view () {
@@ -223,15 +212,15 @@ namespace Marlin.Places {
                                 "active", Column.SHOW_SPINNER,
                                 "pulse", Column.SPINNER_PULSE);
 
-            crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button (hidden while ejecting or unmounted) */
+            crpb = new Gtk.CellRendererPixbuf (); /* Icon for eject button  (hidden while ejecting or unmounted) and another signs */
             this.eject_spinner_cell_renderer = crpb;
             crpb.stock_size = Gtk.IconSize.MENU;
-            crpb.gicon = new ThemedIcon.with_default_fallbacks ("media-eject-symbolic");
             crpb.xpad = ICON_XPAD;
             crpb.ypad = BOOKMARK_YPAD;
 
             col.pack_start (crpb, false);
-            col.set_attributes (crpb, "visible", Column.SHOW_EJECT);
+            col.set_attributes (crpb,
+                                "gicon", Column.ACTION_ICON);
 
             var cre = new Granite.Widgets.CellRendererExpander (); /* Expander button for categories */
             expander_renderer = cre;
@@ -279,8 +268,6 @@ namespace Marlin.Places {
             tree_view.drag_failed.connect (drag_failed_callback);
             tree_view.drag_end.connect (drag_end_callback);
 
-            (tree_view.get_selection ()).changed.connect (selection_changed_cb);
-            tree_view.popup_menu.connect (popup_menu_cb);
             tree_view.button_press_event.connect (button_press_event_cb);
             tree_view.button_release_event.connect (button_release_event_cb);
             tree_view.key_press_event.connect (on_tree_view_key_press_event);
@@ -301,6 +288,29 @@ namespace Marlin.Places {
             /* Signal Marlin.View.Window to synchronise sidebar with current tab */
             sync_needed ();
             return false;
+        }
+
+        /**
+         * Increase spinner pulse while Column.SHOW_SPINNER is true
+         */
+        void start_spinner (Gtk.TreeIter iter) {
+            Timeout.add (100, ()=>{
+                uint val;
+                bool spinner_active;
+
+                if (!store.iter_is_valid (iter)) {
+                    return false;
+                }
+
+                store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
+                if (!spinner_active) {
+                    return false;
+                }
+
+                store.@get (iter, Column.SPINNER_PULSE, out val);
+                store.@set (iter, Column.SPINNER_PULSE, ++val);
+                return true;
+            });
         }
 
         private bool focus_in_event_cb (Gdk.EventFocus event) {
@@ -369,7 +379,8 @@ namespace Marlin.Places {
                                                    Volume? volume,
                                                    Mount? mount,
                                                    uint index,
-                                                   string? tooltip = null) {
+                                                   string? tooltip = null,
+                                                   Icon? action_icon = null) {
 
             bool show_eject, show_unmount, can_stop;
             check_unmount_and_eject (mount, volume, drive,
@@ -386,11 +397,8 @@ namespace Marlin.Places {
                 show_eject_button = (show_unmount || show_eject);
             }
 
-            GLib.Icon eject;
             if (show_eject_button) {
-                eject = this.eject_icon;
-            } else {
-                eject = null;
+                action_icon = this.eject_icon;
             }
 
             GLib.Error error = null;
@@ -423,7 +431,7 @@ namespace Marlin.Places {
                             Column.IS_CATEGORY, is_category,
                             Column.NOT_CATEGORY, !is_category,
                             Column.TOOLTIP, tooltip,
-                            Column.EJECT_ICON, eject,
+                            Column.ACTION_ICON, action_icon,
                             Column.SHOW_SPINNER, false,
                             Column.SHOW_EJECT, show_eject_button,
                             Column.SPINNER_PULSE, 0,
@@ -734,10 +742,7 @@ namespace Marlin.Places {
                 /* Add ConnectServer BUILTIN */
                 add_extra_network_item (_("Connect Server"), _("Connect to a network server"), new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
 
-                /* No longer needed at present as no other sidebar plugins.
-                 * Commenting out to avoid old plugin getting installed.
-                 * Package needs to remove old plugin.*/
-                //plugins.update_sidebar ((Gtk.Widget)this);
+                plugins.update_sidebar ((Gtk.Widget)this);
             }
 
             expander_init_pref_state (tree_view);
@@ -1478,80 +1483,94 @@ namespace Marlin.Places {
             }
         }
 
-        private new void popup_menu (Gdk.EventButton? event) {
-            if (popupmenu == null) {
-                var popupmenu_open = new Gtk.MenuItem.with_mnemonic (_("Open"));
-                popupmenu_open.activate.connect (open_shortcut_cb);
-                popupmenu_open.show ();
-
-                popupmenu_open_in_new_tab_item = new Gtk.MenuItem.with_mnemonic (_("Open in New _Tab"));
-                popupmenu_open_in_new_tab_item.activate.connect (open_shortcut_in_new_tab_cb);
-                popupmenu_open_in_new_tab_item.show ();
-
-                popupmenu_open_in_new_window_item = new Gtk.MenuItem.with_mnemonic (_("Open in New _Window"));
-                popupmenu_open_in_new_window_item.activate.connect (open_shortcut_in_new_window_cb);
-                popupmenu_open_in_new_window_item.show ();
-
-                popupmenu_separator_item1 = new Gtk.SeparatorMenuItem ();
-
-                popupmenu_remove_item = new Gtk.MenuItem.with_label (_("Remove"));
-                popupmenu_remove_item.activate.connect (remove_shortcut_cb);
-                popupmenu_remove_item.show ();
-
-                popupmenu_rename_item = new Gtk.MenuItem.with_label (_("Rename"));
-                popupmenu_rename_item.activate.connect (rename_shortcut_cb);
-                popupmenu_rename_item.show ();
-
-                popupmenu_separator_item2 = new Gtk.SeparatorMenuItem ();
-
-                popupmenu_mount_item = new Gtk.MenuItem.with_mnemonic (_("_Mount"));
-                popupmenu_mount_item.activate.connect (mount_selected_shortcut);
-                popupmenu_mount_item.show ();
-
-                popupmenu_unmount_item = new Gtk.MenuItem.with_mnemonic (_("_Unmount"));
-                popupmenu_unmount_item.activate.connect (unmount_shortcut_cb);
-                popupmenu_unmount_item.show ();
-
-                popupmenu_eject_item = new Gtk.MenuItem.with_mnemonic (_("_Eject"));
-                popupmenu_eject_item.activate.connect (eject_shortcut_cb);
-                popupmenu_eject_item.show ();
-
-                popupmenu_empty_trash_item = new Gtk.MenuItem.with_mnemonic (_("Empty _Trash"));
-                popupmenu_empty_trash_item.activate.connect (empty_trash_cb);
-                popupmenu_empty_trash_item.show ();
-                monitor.bind_property ("is-empty", popupmenu_empty_trash_item, "sensitive", GLib.BindingFlags.SYNC_CREATE|GLib.BindingFlags.INVERT_BOOLEAN);
-
-                popupmenu_drive_property_item = new Gtk.MenuItem.with_mnemonic (_("Properties"));
-                popupmenu_drive_property_item.activate.connect (show_drive_info_cb);
-                popupmenu_drive_property_item.show ();
-
-                popupmenu = new Gtk.Menu ();
-                popupmenu.append (popupmenu_open);
-                popupmenu.append (popupmenu_open_in_new_tab_item);
-                popupmenu.append (popupmenu_open_in_new_window_item);
-                popupmenu.append (popupmenu_separator_item1);
-                popupmenu.append (popupmenu_remove_item);
-                popupmenu.append (popupmenu_rename_item);
-                popupmenu.append (popupmenu_separator_item2);
-                popupmenu.append (popupmenu_mount_item);
-                popupmenu.append (popupmenu_unmount_item);
-                popupmenu.append (popupmenu_eject_item);
-                popupmenu.append (popupmenu_empty_trash_item);
-                popupmenu.append (popupmenu_drive_property_item);
-
-                check_popup_sensitivity ();
+        private void show_popup_menu (Gdk.EventButton? event, Gtk.TreePath? path = null) {
+            Gtk.TreeIter iter;
+            if (!store.get_iter (out iter, path)) {
+                return;
             }
 
-            popupmenu.popup_at_pointer (event);
+            Marlin.PlaceType type;
+            Drive drive;
+            Volume volume;
+            Mount mount;
+            string uri;
+            bool is_bookmark;
+            store.@get (iter,
+                        Column.ROW_TYPE, out type,
+                        Column.DRIVE, out drive,
+                        Column.VOLUME, out volume,
+                        Column.MOUNT, out mount,
+                        Column.URI, out uri,
+                        Column.BOOKMARK, out is_bookmark
+            );
+            bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);
+
+            bool show_mount, show_unmount, show_eject, show_rescan, show_format, show_start, show_stop;
+            check_visibility (mount,
+                              volume,
+                              drive,
+                              out show_mount,
+                              out show_unmount,
+                              out show_eject,
+                              out show_rescan,
+                              out show_format,
+                              out show_start,
+                              out show_stop);
+
+            /* Context menu shows Empty Trash for the Trash icon and for any mount with a native
+                * file system whose trash contains files */
+            bool show_empty_trash = (uri != null) &&
+                                    ((uri == Marlin.TrashMonitor.URI) ||
+                                    Marlin.FileOperations.has_trash_files (mount));
+
+            bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
+
+            if (is_plugin) {
+                var menu = new PopupMenuBuilder ()
+                .add_open (open_shortcut_cb);
+                menu.build ().popup_at_pointer (event);
+            } else {
+                var menu = new PopupMenuBuilder ()
+                .add_open (open_shortcut_cb)
+                .add_separator ()
+                .add_open_tab (open_shortcut_in_new_tab_cb)
+                .add_open_window (open_shortcut_in_new_window_cb);
+
+                if (is_bookmark) {
+                    menu.add_separator ().add_remove (remove_shortcut_cb)
+                    .add_rename (rename_shortcut_cb);
+                }
+
+                if (show_mount) {
+                    menu.add_separator ().add_mount (mount_selected_shortcut);
+                }
+
+                if (show_unmount) {
+                    menu.add_separator ().add_unmount (unmount_shortcut_cb);
+                }
+
+                if (show_eject) {
+                    menu.add_separator ().add_eject (eject_shortcut_cb);
+                }
+
+                if (show_empty_trash) {
+                    Gtk.MenuItem popupmenu_empty_trash_item;
+                    popupmenu_empty_trash_item = new Gtk.MenuItem.with_mnemonic (_("Empty _Trash"));
+                    monitor.bind_property ("is-empty", popupmenu_empty_trash_item,
+                    "sensitive", GLib.BindingFlags.SYNC_CREATE|GLib.BindingFlags.INVERT_BOOLEAN);
+
+                    menu.add_item (popupmenu_empty_trash_item, empty_trash_cb);
+                }
+
+                if (show_property) {
+                    menu.add_property (show_drive_info_cb);
+                }
+
+                menu.build ().popup_at_pointer (event);
+            }
         }
 
-        /* Callback used for the GtkWidget::popup-menu signal of the shortcuts list */
-        private bool popup_menu_cb (Gtk.Widget widget) {
-            popup_menu (null);
-            return true;
-        }
-
-/* TREEVIEW FUNCTIONS */
+        /* TREEVIEW FUNCTIONS */
 
         private bool get_selected_iter (out Gtk.TreeIter iter) {
             return (tree_view.get_selection ()).get_selected (null, out iter);
@@ -1718,11 +1737,6 @@ namespace Marlin.Places {
             expander_update_pref_state (type, false);
         }
 
-        /* Callback used when the selection in the shortcuts tree changes */
-        private void selection_changed_cb () {
-            check_popup_sensitivity ();
-        }
-
         private void row_activated_callback (Gtk.TreePath path,
                                              Gtk.TreeViewColumn column) {
             open_selected_bookmark ((Gtk.TreeModel)store, path, 0);
@@ -1834,7 +1848,7 @@ namespace Marlin.Places {
 
                 case Gdk.BUTTON_SECONDARY:
                     if (path != null && !category_at_path (path)) {
-                        popup_menu (event);
+                        show_popup_menu (event, path);
                     }
 
                     break;
@@ -1864,7 +1878,7 @@ namespace Marlin.Places {
                 unblock_drag_and_drop ();
             }
 
-            if (renaming) {
+            if (renaming || !has_focus) { /*Ignore release if button pressed over different widget */
                 return true;
             }
 
@@ -2039,6 +2053,7 @@ namespace Marlin.Places {
                 if (store.get_iter (out iter, row_ref.get_path ())) {
                     store.@set (iter, Column.SHOW_SPINNER, false);
                     store.@set (iter, Column.SHOW_EJECT, !success); /* continue to show eject if did not succeed */
+                    store.@set (iter, Column.ACTION_ICON, new ThemedIcon.with_default_fallbacks ("media-eject-symbolic"));
                 }
             } else {
                 warning ("No row ref");
@@ -2110,22 +2125,8 @@ namespace Marlin.Places {
             var rowref = new Gtk.TreeRowReference (store, path);
             store.@set (iter, Column.SHOW_SPINNER, true);
             store.@set (iter, Column.SHOW_EJECT, false);
-            Timeout.add (100, ()=>{
-                uint val;
-
-                if (!rowref.valid ()) {
-                    return false;
-                }
-
-                store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
-                if (!spinner_active) {
-                    return false;
-                }
-
-                store.@get (iter, Column.SPINNER_PULSE, out val);
-                store.@set (iter, Column.SPINNER_PULSE, ++val);
-                return true;
-            });
+            store.@set (iter, Column.ACTION_ICON, null);
+            start_spinner (iter);
 
             do_unmount_or_eject (mount, volume, drive, rowref, allow_eject);
             return true;
@@ -2414,68 +2415,6 @@ namespace Marlin.Places {
             }
 
             return res;
-        }
-
-        private void check_popup_sensitivity () {
-            if (popupmenu == null) {
-                return;
-            }
-
-            Gtk.TreeIter iter;
-            if (!get_selected_iter (out iter)) {
-                return;
-            }
-
-            Marlin.PlaceType type;
-            Drive drive;
-            Volume volume;
-            Mount mount;
-            string uri;
-            bool is_bookmark;
-            store.@get (iter,
-                        Column.ROW_TYPE, out type,
-                        Column.DRIVE, out drive,
-                        Column.VOLUME, out volume,
-                        Column.MOUNT, out mount,
-                        Column.URI, out uri,
-                        Column.BOOKMARK, out is_bookmark);
-
-            popupmenu_remove_item.visible = is_bookmark;
-            popupmenu_rename_item.visible = is_bookmark;
-            popupmenu_separator_item1.visible = is_bookmark;
-
-            bool show_mount, show_unmount, show_eject, show_rescan, show_format, show_start, show_stop;
-            check_visibility (mount,
-                              volume,
-                              drive,
-                              out show_mount,
-                              out show_unmount,
-                              out show_eject,
-                              out show_rescan,
-                              out show_format,
-                              out show_start,
-                              out show_stop);
-
-            /* Context menu shows Empty Trash for the Trash icon and for any mount with a native
-             * file system whose trash contains files */
-            bool show_empty_trash = (uri != null) &&
-                                    ((uri == Marlin.TrashMonitor.URI) ||
-                                    Marlin.FileOperations.has_trash_files (mount));
-
-            popupmenu_separator_item2.visible = (show_eject || show_unmount ||
-                                                show_mount || show_empty_trash);
-
-            bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
-
-            popupmenu_mount_item.visible = show_mount;
-            popupmenu_unmount_item.visible = show_unmount;
-            popupmenu_eject_item.visible = show_eject;
-            popupmenu_empty_trash_item.visible = show_empty_trash;
-            popupmenu_drive_property_item.visible = show_property;
-
-            bool is_plugin = (type == Marlin.PlaceType.PLUGIN_ITEM);
-            popupmenu_open_in_new_tab_item.visible = !is_plugin;
-            popupmenu_open_in_new_window_item.visible = !is_plugin;
         }
 
         /**
