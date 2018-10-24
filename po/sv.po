@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-06-12 00:03+0000\n"
-"Last-Translator: Richard Sjöqvist <richard@spiro.se>\n"
+"PO-Revision-Date: 2018-10-22 00:03+0000\n"
+"Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/files/"
 "sv/>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
@@ -986,8 +986,8 @@ msgstr[1] "_Ångra kopiering av %d objekt"
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "Ångra duplicering av %d objekt"
-msgstr[1] "Ångra duplicering av %d objekt"
+msgstr[0] "_Ångra duplicering av %d objekt"
+msgstr[1] "_Ångra duplicering av %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1577
 #, c-format
@@ -1050,29 +1050,29 @@ msgstr[1] "_Ångra radering av %d objekt"
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "Ångra rekursiva behörighetsändringar för %d objekt"
-msgstr[1] "Ångra rekursiva behörighetsändringar för %d objekt"
+msgstr[0] "Ångra rekursiv ändring av rättigheter för %d objekt"
+msgstr[1] "Ångra rekursiv ändring av rättigheter för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1624
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Ångra behörighetsändringar för %d objekt"
-msgstr[1] "Ångra behörighetsändringar för %d objekt"
+msgstr[0] "Ångra ändring av rättigheter för %d objekt"
+msgstr[1] "Ångra ändring av rättigheter för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1629
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] "Ångra gruppändringar för %d objekt"
-msgstr[1] "Ångra gruppändringar för %d objekt"
+msgstr[0] "Ångra ändring av grupp för %d objekt"
+msgstr[1] "Ångra ändring av grupp för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1634
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] "Ångra ägarändringar för %d objekt"
-msgstr[1] "Ångra ägarändringar för %d objekt"
+msgstr[0] "Ångra ändring av ägare för %d objekt"
+msgstr[1] "Ångra ändring av ägare för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1662
 #, c-format
@@ -1149,15 +1149,15 @@ msgstr[1] "_Gör om radering av %d objekt"
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Gör om rekursiv ändring av behörigheter för %d objekt"
-msgstr[1] "Gör om rekursiv ändring av behörigheter för %d objekt"
+msgstr[0] "Gör om rekursiv ändring av rättigheter för %d objekt"
+msgstr[1] "Gör om rekursiv ändring av rättigheter för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1719
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Gör om ändring av behörigheter för %d objekt"
-msgstr[1] "Gör om ändring av behörigheter för %d objekt"
+msgstr[0] "Gör om ändring av rättigheter för %d objekt"
+msgstr[1] "Gör om ändring av rättigheter för %d objekt"
 
 #: ../libcore/marlin-undostack-manager.c:1724
 #, c-format
@@ -1227,7 +1227,7 @@ msgstr "Annat program…"
 
 #: ../src/View/AbstractDirectoryView.vala:2164
 msgid "Templates"
-msgstr ""
+msgstr "Mallar"
 
 #: ../src/View/AbstractDirectoryView.vala:2411
 msgid "Untitled %s"
@@ -1357,14 +1357,12 @@ msgid "Browse the contents of the network"
 msgstr "Bläddra i nätverkets innehåll"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect Server"
 msgstr "Anslut till server"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "Anslut till en nätverksfilserver"
+msgstr "Anslut till en nätverksserver"
 
 #: ../src/View/Sidebar.vala:876
 msgid "(%s Free of %s)"
@@ -1593,7 +1591,7 @@ msgstr "(som administratör)"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Visa programversionen."
+msgstr "Visa programversionen"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1601,18 +1599,17 @@ msgstr "Öppna uri(s) i en ny tab"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr "Nytt Fönster"
+msgstr "Nytt fönster"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Avsluta Filer."
+msgstr "Avsluta Filer"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
 msgstr "Aktivera felsöknings-loggning"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
@@ -1632,7 +1629,7 @@ msgstr "--quit kan inte användas med URI:er."
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr "Bläddra bland dina filer"
+msgstr "Bläddra genom dina filer"
 
 #: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
@@ -1747,7 +1744,6 @@ msgid "Deleted:"
 msgstr "Raderad:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "MIME-typ:"
 
@@ -1857,14 +1853,12 @@ msgid "Failed to open files"
 msgstr "Misslyckades att öppna filer"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "Kunde inte döpa om till '%s'"
+msgstr "Kunde inte öppna URI:erna"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Detta program kan inte öppna filen eller sökvägen"
+msgstr "Kunde inte öppna filer eller URI:er med det här programmet"
 
 #: ../libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -1900,68 +1894,59 @@ msgstr "Serverinformation"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Servernamn eller IP-adress"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "_Server:"
+msgstr "Server:"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "_Port:"
+msgstr "Port:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Namn på delad resurs på servern"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "Ut_delning:"
+msgstr "Delad resurs:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Sökväg till delad mapp på server"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Mapp:"
+msgstr "Mapp:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "Användarinformation"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Nytt fönster som _administratör"
+msgstr "Namn på Windows-domän"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Domännamn:"
+msgstr "Domännamn:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "Användarens namn på servern"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "_Användarnamn:"
+msgstr "Användarnamn:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "Lös_enord:"
+msgstr "Lösenord:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Spara lösenordet"
+msgstr "Kom ihåg detta lösenord"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -1969,18 +1954,16 @@ msgid "Cancel"
 msgstr "Avbryt"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "A_nslut"
+msgstr "Anslut"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Fortsätt"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "Ansluter..."
+msgstr "Ansluter…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
@@ -2037,11 +2020,11 @@ msgstr "Byt _namn"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "Behåll nyaste"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Hoppa över om originalet var modifierat mer nyligen"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
@@ -2237,14 +2220,12 @@ msgid "Empty the Trash"
 msgstr "Töm papperskorgen"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Återställ alla"
+msgstr "Återställ valda"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " valda"
+msgstr "Radera valda"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"

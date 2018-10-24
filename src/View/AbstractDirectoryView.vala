@@ -3300,6 +3300,7 @@ namespace FM {
                                     select_path (path, true); /* Cursor follow and selection preserved */
                                 }
 
+                                unblock_drag_and_drop ();
                                 result = true; /* Prevent rubberbanding and deselection of other paths */
                             }
                             break;
@@ -3334,7 +3335,8 @@ namespace FM {
                 case Gdk.BUTTON_SECONDARY: // button 3
                     if (click_zone == ClickZone.NAME ||
                         click_zone == ClickZone.BLANK_PATH ||
-                        click_zone == ClickZone.ICON) {
+                        click_zone == ClickZone.ICON ||
+                        click_zone == ClickZone.HELPER) {
 
                         select_path (path);
                     } else if (click_zone == ClickZone.INVALID) {
