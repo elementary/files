@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-18 00:09+0000\n"
+"PO-Revision-Date: 2018-10-26 00:03+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -127,49 +127,49 @@ msgstr "%s चा दुवा %'dst"
 #: ../libcore/marlin-file-operations.c:366
 #, c-format
 msgid "%'dnd link to %s"
-msgstr ""
+msgstr "%s चा दुवा %dnd"
 
 #: ../libcore/marlin-file-operations.c:370
 #, c-format
 msgid "%'drd link to %s"
-msgstr ""
+msgstr "%s चा दुवा %'drd"
 
 #: ../libcore/marlin-file-operations.c:374
 #, c-format
 msgid "%'dth link to %s"
-msgstr ""
+msgstr "%s चा दुवा %'dth"
 
 #: ../libcore/marlin-file-operations.c:412
 msgid " (copy)"
-msgstr ""
+msgstr " (प्रतिकृती)"
 
 #: ../libcore/marlin-file-operations.c:414
 msgid " (another copy)"
-msgstr ""
+msgstr " (दुसरी प्रतिकृती)"
 
 #: ../libcore/marlin-file-operations.c:417
 #: ../libcore/marlin-file-operations.c:419
 #: ../libcore/marlin-file-operations.c:421
 #: ../libcore/marlin-file-operations.c:431
 msgid "th copy)"
-msgstr ""
+msgstr "वी प्रतिकृती"
 
 #: ../libcore/marlin-file-operations.c:424
 msgid "st copy)"
-msgstr ""
+msgstr "वी प्रतिकृती)"
 
 #: ../libcore/marlin-file-operations.c:426
 msgid "nd copy)"
-msgstr ""
+msgstr "वी प्रतिकृती)"
 
 #: ../libcore/marlin-file-operations.c:428
 msgid "rd copy)"
-msgstr ""
+msgstr "वी प्रतिकृती)"
 
 #: ../libcore/marlin-file-operations.c:445
 #, c-format
 msgid "%s (copy)%s"
-msgstr ""
+msgstr "%s (प्रतिकृती)%s"
 
 #: ../libcore/marlin-file-operations.c:447
 #, c-format
