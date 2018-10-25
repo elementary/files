@@ -483,7 +483,12 @@ namespace FM {
         }
 
         public new void grab_focus () {
-            if (slot.is_active && view.get_realized ()) {
+            if (view.get_realized ()) {
+                /* In Column View, maybe clicked on an inactive column */
+                if (!slot.is_active) {
+                    set_active_slot ();
+                }
+
                 view.grab_focus ();
             }
         }
@@ -3199,6 +3204,8 @@ namespace FM {
             if (dnd_disabled && event.type == Gdk.EventType.BUTTON_PRESS) {
                 return true;
             }
+
+            grab_focus ();
 
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
