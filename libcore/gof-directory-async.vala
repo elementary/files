@@ -420,8 +420,8 @@ public class Async : Object {
                                                                            file.is_connected.to_string (),
                                                                            file.is_mounted.to_string (),
                                                                            file.exists.to_string ());
-
-            directory_cache.remove (creation_key);
+            Async.directory_cache.remove (creation_key);
+            is_ready = false;
             after_loading (file_loaded_func);
             return;
         }
@@ -434,15 +434,14 @@ public class Async : Object {
              * in some cases. dir_cache will always have been created via call to public static
              * functions from_file () or from_gfile (). Do not add toggle until cached. */
 
-            dir_cache_lock.@lock ();
-
+            Async.dir_cache_lock.@lock ();
             this.add_toggle_ref ((ToggleNotify) toggle_ref_notify);
 
-            if (!creation_key.equal (location)) {
-                directory_cache.insert (location.dup (), this);
+            if (!creation_key.equal (location) || Async.directory_cache.lookup (location) == null) {
+                Async.directory_cache.insert (location.dup (), this);
             }
 
-            dir_cache_lock.unlock ();
+            Async.dir_cache_lock.unlock ();
         }
 
         /* The following can run on reloading */
