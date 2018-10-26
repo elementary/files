@@ -17,19 +17,8 @@ addons:
     packages:
       - libstdc++-5-dev
 
-cache:
-  directories:
-    - /tmp/liftoff
-
-matrix:
-  include:
-    - env: DIST=juno
-
-before_install:
-  - docker pull ubuntu:18.04
-
 install:
-  - npm install @elementaryos/houston
+  - npm i -g @elementaryos/houston
 
 script:
   - houston ci
@@ -37,4 +26,3 @@ script:
     --name-appstream io.elementary.files.desktop
     --name-domain io.elementary.files
     --name-human Files
-    --distribution $DIST

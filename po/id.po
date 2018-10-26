@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-09-29 00:09+0000\n"
+"PO-Revision-Date: 2018-10-21 00:07+0000\n"
 "Last-Translator: Eri Hidayat <eriwhidayat@gmail.com>\n"
 "Language-Team: Indonesian <https://weblate.elementary.io/projects/files/"
 "files/id/>\n"
@@ -1177,7 +1177,7 @@ msgstr "Aplikasi Lain…"
 
 #: ../src/View/AbstractDirectoryView.vala:2164
 msgid "Templates"
-msgstr ""
+msgstr "Templet"
 
 #: ../src/View/AbstractDirectoryView.vala:2411
 msgid "Untitled %s"
