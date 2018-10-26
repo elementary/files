@@ -138,7 +138,6 @@ namespace Marlin {
                                         Gtk.Widget? widget = null,
                                         GLib.Callback? new_files_callback = null) {
 
-
             /* check whether the retrieval worked */
             string? text;
             if (!DndHandler.selection_data_is_uri_list (sd, Marlin.TargetType.TEXT_URI_LIST, out text)) {

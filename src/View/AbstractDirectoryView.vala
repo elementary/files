@@ -488,7 +488,12 @@ namespace FM {
         }
 
         public new void grab_focus () {
-            if (slot.is_active && view.get_realized ()) {
+            if (view.get_realized ()) {
+                /* In Column View, maybe clicked on an inactive column */
+                if (!slot.is_active) {
+                    set_active_slot ();
+                }
+
                 view.grab_focus ();
             }
         }
@@ -3214,6 +3219,8 @@ namespace FM {
                 return true;
             }
 
+            grab_focus ();
+
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
@@ -3312,6 +3319,7 @@ namespace FM {
                                     select_path (path, true); /* Cursor follow and selection preserved */
                                 }
 
+                                unblock_drag_and_drop ();
                                 result = true; /* Prevent rubberbanding and deselection of other paths */
                             }
                             break;
@@ -3346,7 +3354,8 @@ namespace FM {
                 case Gdk.BUTTON_SECONDARY: // button 3
                     if (click_zone == ClickZone.NAME ||
                         click_zone == ClickZone.BLANK_PATH ||
-                        click_zone == ClickZone.ICON) {
+                        click_zone == ClickZone.ICON ||
+                        click_zone == ClickZone.HELPER) {
 
                         select_path (path);
                     } else if (click_zone == ClickZone.INVALID) {
