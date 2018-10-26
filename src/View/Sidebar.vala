@@ -516,7 +516,7 @@ namespace Marlin.Places {
                        null,
                        null,
                        0,
-                       _("Open your personal folder") + " (Alt + Home)");
+                       Granite.markup_accel_tooltip ({"<Alt>Home"}, _("Open your personal folder")));
 
             n_builtins_before++;
 
@@ -564,7 +564,7 @@ namespace Marlin.Places {
                            null,
                            null,
                            index + n_builtins_before,
-                           _("Open the Trash") + " (Alt + T)");
+                           Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash")));
             }
 
             /* ADD STORAGE CATEGORY*/
@@ -737,10 +737,10 @@ namespace Marlin.Places {
                            null,
                            null,
                            0,
-                           _("Browse the contents of the network") + " (Alt + N)");
+                           Granite.markup_accel_tooltip ({"<Alt>N"}, _("Browse the contents of the network")));
 
                 /* Add ConnectServer BUILTIN */
-                add_extra_network_item (_("Connect Server"), _("Connect to a network server") + " (Alt + C)", new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
+                add_extra_network_item (_("Connect Server"), Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server")), new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
 
                 plugins.update_sidebar ((Gtk.Widget)this);
             }
