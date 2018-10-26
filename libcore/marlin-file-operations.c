@@ -739,6 +739,9 @@ custom_full_name_to_string (char *format, va_list va)
     GFile *file;
 
     file = va_arg (va, GFile *);
+    if (!G_IS_FILE (file)) {
+        return "???????";
+    }
 
     return g_file_get_parse_name (file);
 }
@@ -757,6 +760,10 @@ custom_basename_to_string (char *format, va_list va)
     char *name, *basename, *tmp;
 
     file = va_arg (va, GFile *);
+
+    if (!G_IS_FILE (file)) {
+        return "???????";
+    }
 
     info = g_file_query_info (file,
                               G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
@@ -840,6 +847,9 @@ custom_mount_to_string (char *format, va_list va)
     GMount *mount;
 
     mount = va_arg (va, GMount *);
+    if (!G_IS_MOUNT (mount)) {
+        return "???????";
+    }
     return g_mount_get_name (mount);
 }
 
@@ -1751,6 +1761,10 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
         file = l->data;
 
         error = NULL;
+        if (!G_IS_FILE (file)) {
+            (*files_skipped)++;
+            goto skip;
+        }
 
         mtime = marlin_undo_manager_get_file_modification_time (file);
 
@@ -2549,12 +2563,16 @@ scan_file (GFile *file,
     dirs = g_queue_new ();
 retry:
     error = NULL;
-    info = g_file_query_info (file,
-                              G_FILE_ATTRIBUTE_STANDARD_TYPE","
-                              G_FILE_ATTRIBUTE_STANDARD_SIZE,
-                              G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                              job->cancellable,
-                              &error);
+    info = NULL;
+
+    if (G_IS_FILE (file)) {
+        info = g_file_query_info (file,
+                                  G_FILE_ATTRIBUTE_STANDARD_TYPE","
+                                  G_FILE_ATTRIBUTE_STANDARD_SIZE,
+                                  G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                  job->cancellable,
+                                  &error);
+    }
 
     if (info) {
         count_file (info, job, source_info);
@@ -3030,6 +3048,11 @@ get_unique_target_file (GFile *src,
     GFile *dest;
     int max_length;
 
+    if (!G_IS_FILE (src) || !G_IS_FILE (dest_dir)) {
+        g_critical ("get_unique_target_file:  %s %s is not a file", !G_IS_FILE (src) ? "src" : "",  !G_IS_FILE (dest) ? "dest" : "");
+        return NULL;
+    }
+
     max_length = get_max_name_length (dest_dir);
 
     dest = NULL;
@@ -3147,6 +3170,12 @@ get_target_file (GFile *src,
     char *copyname;
 
     dest = NULL;
+
+    if (!G_IS_FILE (src) || !G_IS_FILE (dest_dir)) {
+        g_critical ("get_target_file: %s % is not a file", !G_IS_FILE (src) ? "src" : "",  G_IS_FILE (src) ? "and dest" : "");
+        return NULL;
+    }
+
     if (!same_fs) {
         info = g_file_query_info (src,
                                   G_FILE_ATTRIBUTE_STANDARD_COPY_NAME,
@@ -3260,9 +3289,11 @@ retry:
        copying the attributes, because we need to be sure we can write to it */
 
     error = NULL;
-    if (!g_file_make_directory (*dest, job->cancellable, &error)) {
-        if (IS_IO_ERROR (error, CANCELLED)) {
-            g_error_free (error);
+    if (!G_IS_FILE (*dest) || !g_file_make_directory (*dest, job->cancellable, &error)) {
+        if (!G_IS_FILE (*dest) || IS_IO_ERROR (error, CANCELLED)) {
+            if (error) {
+                g_error_free (error);
+            }
             return CREATE_DEST_DIR_FAILED;
         } else if (IS_IO_ERROR (error, INVALID_FILENAME) &&
                    !handled_invalid_filename) {
@@ -3894,6 +3925,8 @@ copy_move_file (CopyMoveJob *copy_job,
         return;
     }
 
+
+
     unique_name_nr = 1;
 
     /* another file in the same directory might have handled the invalid
@@ -3908,6 +3941,10 @@ copy_move_file (CopyMoveJob *copy_job,
         dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
     }
 
+    if (dest == NULL) {
+        *skipped_file = TRUE; /* Or aborted, but same-same */
+        return;
+    }
 
     /* Don't allow recursive move/copy into itself.
      * (We would get a file system error if we proceeded but it is nicer to
@@ -4316,7 +4353,7 @@ copy_files (CopyMoveJob *job,
         g_object_unref (source_dir);
     }
 
-    unique_names = (job->destination == NULL);
+    unique_names = (job->destination == NULL); /* Duplicating files */
     i = 0;
     for (l = job->files;
          l != NULL && !job_aborted (common);
@@ -4341,8 +4378,10 @@ copy_files (CopyMoveJob *job,
             dest = g_file_get_parent (src);
 
         }
+
         if (dest) {
             skipped_file = FALSE;
+
             copy_move_file (job, src, dest,
                             same_fs, unique_names,
                             &dest_fs_type,
@@ -4456,6 +4495,7 @@ marlin_file_operations_copy (GList *files,
                              MarlinCopyCallback  done_callback,
                              gpointer done_callback_data)
 {
+
     CopyMoveJob *job;
     job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
     //job->desktop_location = marlin_get_desktop_location ();
@@ -4990,6 +5030,7 @@ marlin_file_operations_move (GList *files,
                              MarlinCopyCallback  done_callback,
                              gpointer done_callback_data)
 {
+
     CopyMoveJob *job;
     job = op_job_new (JOB_MOVE, CopyMoveJob, parent_window);
     job->is_move = TRUE;
