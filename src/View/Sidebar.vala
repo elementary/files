@@ -516,7 +516,7 @@ namespace Marlin.Places {
                        null,
                        null,
                        0,
-                       _("Open your personal folder"));
+                       _("Open your personal folder") + " (Alt + Home)");
 
             n_builtins_before++;
 
@@ -564,7 +564,7 @@ namespace Marlin.Places {
                            null,
                            null,
                            index + n_builtins_before,
-                           _("Open the Trash"));
+                           _("Open the Trash") + " (Alt + T)");
             }
 
             /* ADD STORAGE CATEGORY*/
@@ -737,10 +737,10 @@ namespace Marlin.Places {
                            null,
                            null,
                            0,
-                           _("Browse the contents of the network"));
+                           _("Browse the contents of the network") + " (Alt + N)");
 
                 /* Add ConnectServer BUILTIN */
-                add_extra_network_item (_("Connect Server"), _("Connect to a network server"), new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
+                add_extra_network_item (_("Connect Server"), _("Connect to a network server") + " (Alt + C)", new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
 
                 plugins.update_sidebar ((Gtk.Widget)this);
             }
