@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
 "PO-Revision-Date: 2018-10-27 23:04+0000\n"
-"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
+"Last-Translator: Mehmet Zahit Yılmaz <darkmehmet3@gmail.com>\n"
 "Language-Team: Turkish <https://weblate.elementary.io/projects/files/files/"
 "tr/>\n"
 "Language: tr\n"
@@ -35,9 +35,8 @@ msgid "Failed to parse the desktop file: %s"
 msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
 
 #: ../libcore/gof-file.c:1598
-#, fuzzy
 msgid "Failed to parse the desktop file"
-msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
+msgstr "Masaüsütü dosyasını ayrıştırmada hata"
 
 #: ../libcore/gof-file.c:1612
 #, c-format
