@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-27 23:04+0000\n"
-"Last-Translator: Mehmet Zahit Yılmaz <darkmehmet3@gmail.com>\n"
+"PO-Revision-Date: 2018-10-28 00:06+0000\n"
+"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
 "Language-Team: Turkish <https://weblate.elementary.io/projects/files/files/"
 "tr/>\n"
 "Language: tr\n"
@@ -1183,7 +1183,7 @@ msgstr "Açmaya çalışılan dosya türü tanımlanamıyor"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Cannot drop this file"
-msgstr "Bu dosya bırakalamaz."
+msgstr "Bu dosya bırakılamaz"
 
 #: ../src/View/AbstractDirectoryView.vala:1568
 msgid "Invalid file name provided"
@@ -1213,7 +1213,7 @@ msgstr "Birlikte aç"
 #: ../src/View/AbstractDirectoryView.vala:2135
 #: ../src/Dialogs/PropertiesWindow.vala:616
 msgid "Other Application…"
-msgstr "Diğer Uygulama..."
+msgstr "Diğer Uygulama…"
 
 #: ../src/View/AbstractDirectoryView.vala:2164
 msgid "Templates"
@@ -1236,11 +1236,11 @@ msgstr "Bu yolu değiştirebilmek için gereken yetkiye sahip değilsin"
 
 #: ../src/View/AbstractDirectoryView.vala:2894
 msgid "Cannot copy files that are in the trash"
-msgstr "Çöpün içindeki dosyalar kopyalanamaz."
+msgstr "Çöpün içindeki dosyalar kopyalanamaz"
 
 #: ../src/View/AbstractDirectoryView.vala:2895
 msgid "Cutting the selection instead"
-msgstr "Seçilenin yerine kesiliyor."
+msgstr "Onun yerine seçilen kesiliyor"
 
 #: ../src/View/AbstractDirectoryView.vala:2918
 msgid "Cannot paste files here"
@@ -1294,7 +1294,7 @@ msgstr "Kişisel"
 
 #: ../src/View/Sidebar.vala:492
 msgid "Your common places and bookmarks"
-msgstr "Ortak yerler ve yer imleriniz."
+msgstr "Ortak yerleriniz ve yer imleriniz"
 
 #: ../src/View/Sidebar.vala:504 ../src/View/ViewContainer.vala:377
 msgid "Home"
@@ -1481,7 +1481,7 @@ msgstr "Yeni Pencerede Aç"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:489
 msgid "Open in Other Application…"
-msgstr "Başka Bir Uygulamayla Aç..."
+msgstr "Başka Bir Uygulamayla Aç…"
 
 #: ../src/View/Widgets/LocationBar.vala:192
 msgid "Reload this folder"
@@ -1581,7 +1581,7 @@ msgstr "(yönetici olarak)"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Uygulamanın sürümünü göster."
+msgstr "Uygulamanın sürümünü göster"
 
 #: ../src/Application.vala:121
 msgid "Open uri(s) in new tab"
@@ -1593,7 +1593,7 @@ msgstr "Yeni Pencere"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Files'dan çık."
+msgstr "Dosyalar'dan çık"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
