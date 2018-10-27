@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-10-20 00:03+0000\n"
-"Last-Translator: İbrahim Ethem Göl <ethem578@gmail.com>\n"
+"PO-Revision-Date: 2018-10-27 23:04+0000\n"
+"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
 "Language-Team: Turkish <https://weblate.elementary.io/projects/files/files/"
 "tr/>\n"
 "Language: tr\n"
@@ -40,14 +40,14 @@ msgid "Failed to parse the desktop file"
 msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
+msgstr "%s dosyasından komut oluşturma başarısız oldu"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "Masaüsütü dosyasını ayrıştırmada hata: %s"
+msgstr "Masaüstü dosyası başlatılamadı: %s"
 
 #: ../libcore/marlin-file-operations.c:154
 #: ../libcore/FileConflictDialog.vala:185
@@ -1348,14 +1348,12 @@ msgid "Browse the contents of the network"
 msgstr "Ağ içeriğine gözat"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect Server"
 msgstr "Sunucuya Bağlan"
 
 #: ../src/View/Sidebar.vala:735
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "Ağ dosya sunucusuna bağlan"
+msgstr "Ağ sunucusuna bağlan"
 
 #: ../src/View/Sidebar.vala:876
 msgid "(%s Free of %s)"
@@ -1493,12 +1491,11 @@ msgstr "Klasörü Yenile"
 #: ../src/View/Widgets/LocationBar.vala:196
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Dosya yolu yazın veya arayın"
 
 #: ../src/View/Widgets/LocationBar.vala:205
-#, fuzzy
 msgid "Searching…"
-msgstr "Yükleniyor…"
+msgstr "Arıyor…"
 
 #: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
@@ -1604,9 +1601,8 @@ msgid "Enable debug logging"
 msgstr "Hata ayıklama günlüğünü etkin kıl"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
-msgstr "[Adres...]"
+msgstr "[URI…]"
 
 #: ../src/Application.vala:133
 msgid ""
@@ -1624,7 +1620,7 @@ msgstr "--quit URI adresleriyle birlikte kullanılamaz."
 
 #: ../src/DesktopLauncher.vala:21
 msgid "Browse your files"
-msgstr "Dosyalarınızı tarayın"
+msgstr "Dosyalarınıza gözatın"
 
 #: ../src/DesktopLauncher.vala:22
 msgid "File Manager"
@@ -1739,9 +1735,8 @@ msgid "Deleted:"
 msgstr "Silindi:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
-msgstr "Mime türü:"
+msgstr "MIME türü:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:567
 msgid "Resolution:"
@@ -1849,14 +1844,12 @@ msgid "Failed to open files"
 msgstr "Dosyalar açılamadı"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "'%s' yeniden adlandırılamadı"
+msgstr "URIlar açılamadı"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
-msgstr "Dosyalar veya uri'ler bu uygulama ile açılamıyor"
+msgstr "Dosyalar veya URI'ler bu uygulama ile açılamıyor"
 
 #: ../libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -1895,65 +1888,56 @@ msgid "Server name or IP address"
 msgstr "Sunucu adı veya IP adresi"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "_Sunucu:"
+msgstr "Sunucu:"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "_Port:"
+msgstr "Port:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
 msgstr "Sunucudaki paylaşımın adı"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "P_aylaş:"
+msgstr "Paylaş:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
 msgstr "Sunucudaki paylaşılan klasörün yolu"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Dizin:"
+msgstr "Klasör:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "Kullanıcı Ayrıntıları"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "_Yönetici Olarak Yeni Pencere"
+msgstr "Windows çalışma alanının adı"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Alan adı:"
+msgstr "Çalışma alanı adı:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
 msgstr "Sunucudaki kullanıcının adı"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "_Kullanıcı adı:"
+msgstr "Kullanıcı adı:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "Par_ola:"
+msgstr "Şifre:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Bu parolayı hatırla"
+msgstr "Bu şifreyi hatırla"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -1961,18 +1945,16 @@ msgid "Cancel"
 msgstr "İptal"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "_Bağlan"
+msgstr "Bağlan"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Devam Et"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "Bağlanıyor..."
+msgstr "Bağlanıyor…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
@@ -2029,11 +2011,11 @@ msgstr "Ye_niden Adlandır"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "En yenisini tut"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Eğer orijinal daha yakın zamanda değiştirilmişse atla"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
@@ -2229,14 +2211,12 @@ msgid "Empty the Trash"
 msgstr "Çöpü Boşalt"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Tümünü Geri Döndür"
+msgstr "Seçilenleri Geri Yükle"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " seçili"
+msgstr "Seçilenleri Sil"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2291,9 +2271,8 @@ msgid "Paste"
 msgstr "Yapıştır"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "Yapıştır"
+msgstr "Bağlantı Yapıştır"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2312,9 +2291,8 @@ msgid "Paste into Folder"
 msgstr "Dizine Yapıştır"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "Dizine Yapıştır"
+msgstr "Bağlantıyı Klasöre Yapıştır"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2334,7 +2312,7 @@ msgstr "Tersine Düzen"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Dosyalardan Önce Klasörler"
 
 #~ msgid ""
 #~ "Can't load the supported server method list.\n"
