@@ -3191,7 +3191,7 @@ get_target_file (GFile *src,
     dest = NULL;
 
     if (!G_IS_FILE (src) || !G_IS_FILE (dest_dir)) {
-        g_critical ("get_target_file: %s % is not a file", !G_IS_FILE (src) ? "src" : "",  G_IS_FILE (src) ? "and dest" : "");
+        g_critical ("get_target_file: %s %s is not a file", !G_IS_FILE (src) ? "src" : "",  G_IS_FILE (src) ? "dest" : "");
         return NULL;
     }
 
