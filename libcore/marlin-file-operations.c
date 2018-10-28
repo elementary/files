@@ -3307,12 +3307,14 @@ retry:
     /* First create the directory, then copy stuff to it before
        copying the attributes, because we need to be sure we can write to it */
 
+    if (!G_IS_FILE (*dest)) {
+        return CREATE_DEST_DIR_FAILED;
+    }
+
     error = NULL;
-    if (!G_IS_FILE (*dest) || !g_file_make_directory (*dest, job->cancellable, &error)) {
-        if (!G_IS_FILE (*dest) || IS_IO_ERROR (error, CANCELLED)) {
-            if (error) {
-                g_error_free (error);
-            }
+    if (!g_file_make_directory (*dest, job->cancellable, &error)) {
+        if (IS_IO_ERROR (error, CANCELLED)) {
+            g_error_free (error);
             return CREATE_DEST_DIR_FAILED;
         } else if (IS_IO_ERROR (error, INVALID_FILENAME) &&
                    !handled_invalid_filename) {
