@@ -2882,7 +2882,7 @@ report_copy_progress (CopyMoveJob *copy_job,
                 s = g_strdup_printf (is_move ? _("Moving \"%s\" to \"%s\"") :
                        _("Copying \"%s\" to \"%s\""), srcname, destname);
             } else {
-                s = f (_("Duplicating \"%s\""), srcname);
+                s = g_strdup_printf (_("Duplicating \"%s\""), srcname);
             }
         } else if (copy_job->files != NULL && copy_job->files->next == NULL) {
             if (copy_job->destination != NULL) {
