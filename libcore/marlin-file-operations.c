@@ -3946,8 +3946,6 @@ copy_move_file (CopyMoveJob *copy_job,
         return;
     }
 
-
-
     unique_name_nr = 1;
 
     /* another file in the same directory might have handled the invalid
@@ -4402,7 +4400,6 @@ copy_files (CopyMoveJob *job,
 
         if (dest) {
             skipped_file = FALSE;
-
             copy_move_file (job, src, dest,
                             same_fs, unique_names,
                             &dest_fs_type,
