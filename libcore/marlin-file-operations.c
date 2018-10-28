@@ -753,13 +753,9 @@ custom_full_name_skip (va_list *va)
 }
 
 static char *
-custom_basename_to_string (char *format, va_list va)
-{
-    GFile *file;
+custom_basename_from_file (GFile *file) {
     GFileInfo *info;
     char *name, *basename, *tmp;
-
-    file = va_arg (va, GFile *);
 
     if (!G_IS_FILE (file)) {
         return "???????";
@@ -803,6 +799,18 @@ custom_basename_to_string (char *format, va_list va)
 
 
     return name;
+}
+
+static char *
+custom_basename_to_string (char *format, va_list va)
+{
+    GFile *file;
+    GFileInfo *info;
+    char *name, *basename, *tmp;
+
+    file = va_arg (va, GFile *);
+
+    return custom_basename_from_file (file);
 }
 
 static void
@@ -2832,6 +2840,8 @@ report_copy_progress (CopyMoveJob *copy_job,
     int remaining_time;
     guint64 now;
     gchar *s = NULL;
+    gchar *srcname = NULL;
+    gchar *destname = NULL;
 
     job = (CommonJob *)copy_job;
 
@@ -2844,13 +2854,22 @@ report_copy_progress (CopyMoveJob *copy_job,
         return;
     }
 
+    /* See https://github.com/elementary/files/issues/464. The job data may become invalid, possibly
+     * due to a race. */
+    if (!G_IS_FILE (copy_job->files->data) || ! G_IS_FILE (copy_job->destination)) {
+        return;
+    } else {
+        srcname = custom_basename_from_file ((GFile *)copy_job->files->data);
+        destname = custom_basename_from_file (copy_job->destination);
+    }
+
     transfer_info->last_report_time = now;
 
     files_left = source_info->num_files - transfer_info->num_files;
 
     /* Races and whatnot could cause this to be negative... */
     if (files_left < 0) {
-        files_left = 1;
+        return;
     }
 
     if (files_left != transfer_info->last_reported_files_left ||
@@ -2860,47 +2879,45 @@ report_copy_progress (CopyMoveJob *copy_job,
 
         if (source_info->num_files == 1) {
             if (copy_job->destination != NULL) {
-                s = f (is_move ? _("Moving \"%B\" to \"%B\"") :
-                       _("Copying \"%B\" to \"%B\""),
-                       (GFile *)copy_job->files->data,
-                       copy_job->destination);
+                s = g_strdup_printf (is_move ? _("Moving \"%s\" to \"%s\"") :
+                       _("Copying \"%s\" to \"%s\""), srcname, destname);
             } else {
-                s = f (_("Duplicating \"%B\""), (GFile *)copy_job->files->data);
+                s = f (_("Duplicating \"%s\""), srcname);
             }
         } else if (copy_job->files != NULL && copy_job->files->next == NULL) {
             if (copy_job->destination != NULL) {
-                s = f (is_move ? ngettext ("Moving %'d file (in \"%B\") to \"%B\"",
-                                           "Moving %'d files (in \"%B\") to \"%B\"",
-                                           files_left) :
-                       ngettext ("Copying %'d file (in \"%B\") to \"%B\"",
-                                 "Copying %'d files (in \"%B\") to \"%B\"",
-                                 files_left),
-                       files_left,
-                       (GFile *)copy_job->files->data,
-                       copy_job->destination);
+                s = g_strdup_printf (is_move ? ngettext ("Moving %'d file (in \"%s\") to \"%s\"",
+                                                         "Moving %'d files (in \"%s\") to \"%s\"",
+                                                          files_left) :
+                                               ngettext ("Copying %'d file (in \"%s\") to \"%s\"",
+                                                         "Copying %'d files (in \"%s\") to \"%s\"",
+                                                         files_left),
+                                     files_left,
+                                     srcname,
+                                     destname);
             } else {
-                s = f (ngettext ("Duplicating %'d file (in \"%B\")",
-                                 "Duplicating %'d files (in \"%B\")",
-                                 files_left),
-                       files_left,
-                       (GFile *)copy_job->files->data);
+                s = g_strdup_printf (ngettext ("Duplicating %'d file (in \"%s\")",
+                                               "Duplicating %'d files (in \"%s\")",
+                                               files_left),
+                                     files_left,
+                                     srcname,
+                                     destname);
             }
         } else {
             if (copy_job->destination != NULL) {
-                s = f (is_move?
-                       ngettext ("Moving %'d file to \"%B\"",
-                                 "Moving %'d files to \"%B\"",
-                                 files_left)
-                       :
-                       ngettext ("Copying %'d file to \"%B\"",
-                                 "Copying %'d files to \"%B\"",
-                                 files_left),
-                       files_left, copy_job->destination);
+                s = g_strdup_printf (is_move ? ngettext ("Moving %'d file to \"%s\"",
+                                                         "Moving %'d files to \"%s\"",
+                                                         files_left) :
+                                               ngettext ("Copying %'d file to \"%s\"",
+                                                         "Copying %'d files to \"%s\"",
+                                                         files_left),
+                                     files_left,
+                                     destname);
             } else {
-                s = f (ngettext ("Duplicating %'d file",
-                                 "Duplicating %'d files",
-                                 files_left),
-                       files_left);
+                s = g_strdup_printf (ngettext ("Duplicating %'d file",
+                                               "Duplicating %'d files",
+                                               files_left),
+                                     files_left);
             }
         }
     }
@@ -2910,6 +2927,8 @@ report_copy_progress (CopyMoveJob *copy_job,
         pf_progress_info_take_status (job->progress, s);
     }
 
+    g_free (srcname);
+    g_free (destname);
 
     total_size = MAX (source_info->num_bytes, transfer_info->num_bytes);
 
