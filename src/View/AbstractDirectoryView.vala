@@ -3213,7 +3213,6 @@ namespace FM {
             drag_y = (int)(event.y);
 
             click_zone = get_event_position_info (event, out path, true);
-
             /* certain positions fake a no path blank zone */
             if (click_zone == ClickZone.BLANK_NO_PATH && path != null) {
                 unselect_path (path);
@@ -3295,7 +3294,6 @@ namespace FM {
                         case ClickZone.HELPER:
                             bool multi_select = only_control_pressed || only_shift_pressed;
                             if (multi_select) { /* Treat like modified click on icon */
-                                update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 if (path_selected) {
@@ -3382,7 +3380,7 @@ namespace FM {
             Gtk.Widget widget = get_real_view ();
             int x = (int)event.x;
             int y = (int)event.y;
-
+            update_selected_files_and_menu ();
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 if (should_activate) {
