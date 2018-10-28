@@ -178,6 +178,30 @@ namespace Marlin {
                     }
                 }
 
+                if (prelit) {
+                    var width_ratio = (double)(cell_area.width - Marlin.IconSize.EMBLEM) / (double)(draw_rect.width);
+                    var height_ratio = (double)(cell_area.height - Marlin.IconSize.EMBLEM) / (double)(draw_rect.height);
+                    var scale_factor = (double.min (width_ratio, height_ratio)).clamp (1.0, 4.0);
+
+                    if (scale_factor > 2) {
+                        var scaled_pb = pb.scale_simple ((int)(pb.width * scale_factor),
+                                              (int)(pb.height * scale_factor),
+                                              Gdk.InterpType.HYPER);
+
+
+                        pix_rect.width = scaled_pb.width / icon_scale;
+                        pix_rect.height = scaled_pb.height / icon_scale;
+                        pix_rect.x = cell_area.x + (cell_area.width - pix_rect.width) / 2;
+                        pix_rect.y = cell_area.y + (cell_area.height - pix_rect.height) / 2;
+
+                        if (!cell_area.intersect (pix_rect, out draw_rect)) {
+                            return;
+                        } else {
+                            pb = scaled_pb;
+                        }
+                    }
+                }
+
                 if (prelit || focused) {
                     pb = PF.PixbufUtils.lighten (pb);
                 }
