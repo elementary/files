@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-09-03 00:02+0000\n"
+"PO-Revision-Date: 2018-10-30 09:14+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
 "files/files/zh_Hant/>\n"
@@ -39,14 +39,14 @@ msgid "Failed to parse the desktop file"
 msgstr "無法解析桌面檔"
 
 #: ../libcore/gof-file.c:1612
-#, fuzzy, c-format
+#, c-format
 msgid "Failed to create command from file: %s"
-msgstr "無法解析桌面檔：%s"
+msgstr "無法根據此檔案建立指令：%s"
 
 #: ../libcore/gof-file.c:1623
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "無法解析桌面檔：%s"
+msgstr "無法啟動桌面檔：%s"
 
 #: ../libcore/marlin-file-operations.c:155
 #: ../libcore/FileConflictDialog.vala:185
@@ -1148,7 +1148,7 @@ msgstr "其他應用程式…"
 
 #: ../src/View/AbstractDirectoryView.vala:2169
 msgid "Templates"
-msgstr ""
+msgstr "模本"
 
 #: ../src/View/AbstractDirectoryView.vala:2416
 msgid "Untitled %s"
@@ -1316,14 +1316,12 @@ msgid "Browse the contents of the network"
 msgstr "瀏覽網路的內容"
 
 #: ../src/View/Sidebar.vala:743
-#, fuzzy
 msgid "Connect Server"
-msgstr "連線至伺服器"
+msgstr "連線伺服器"
 
 #: ../src/View/Sidebar.vala:743
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "連接到網路檔案伺服器"
+msgstr "連接網路伺服器"
 
 #: ../src/View/Sidebar.vala:881
 msgid "(%s Free of %s)"
@@ -1331,7 +1329,7 @@ msgstr "(%s 可用，共 %s)"
 
 #: ../src/View/Sidebar.vala:1371
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "掛載 %s 儲存區時出錯"
 
 #: ../src/View/Sidebar.vala:1386
 msgid "Unable to start %s"
@@ -1424,12 +1422,11 @@ msgstr "重新載入此資料夾"
 #: ../src/View/Widgets/LocationBar.vala:196
 #: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
 msgid "Search or Type Path"
-msgstr ""
+msgstr "搜尋或輸入路徑"
 
 #: ../src/View/Widgets/LocationBar.vala:205
-#, fuzzy
 msgid "Searching…"
-msgstr "載入中…"
+msgstr "搜尋中…"
 
 #: ../src/View/Widgets/OverlayBar.vala:215
 msgid "%u folders"
@@ -1518,9 +1515,8 @@ msgid "Show the version of the program"
 msgstr "顯示此程式的版本。"
 
 #: ../src/Application.vala:121
-#, fuzzy
 msgid "Open one or more uris, each in a new tab"
-msgstr "在新的分頁開啟 URI"
+msgstr "以不同的新分頁開啟一個或多個 URI"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -1535,7 +1531,6 @@ msgid "Enable debug logging"
 msgstr "啟用除錯紀錄功能"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI...]"
 
@@ -1669,7 +1664,6 @@ msgid "Deleted:"
 msgstr "刪除時間："
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "MIME 類型："
 
@@ -1776,12 +1770,10 @@ msgid "Failed to open files"
 msgstr "無法開啟檔案"
 
 #: ../src/Utils/MimeActions.vala:313
-#, fuzzy
 msgid "Could not open URIs"
-msgstr "無法重新命名為「%s」"
+msgstr "無法開啟 URI"
 
 #: ../src/Utils/MimeActions.vala:316
-#, fuzzy
 msgid "Could not open files or URIs with this app"
 msgstr "無法使用此程式開啟檔案或 URI"
 
@@ -1819,68 +1811,59 @@ msgstr "伺服器詳細資料"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr ""
+msgstr "伺服器名稱或 IP 位址"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "伺服器(_S)："
+msgstr "伺服器："
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "連接埠(_P)："
+msgstr "連接埠："
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "伺服器上分享的名稱"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "分享(_A)："
+msgstr "分享："
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "伺服器上分享的資料夾路徑"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "資料夾(_F)："
+msgstr "資料夾："
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "使用者詳細資料"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "以管理員身分開啟新視窗(_A)"
+msgstr "Windows 網域的名稱"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "網域名稱(_D)："
+msgstr "網域名稱："
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "伺服器上使用者的名稱"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "使用者名稱(_U)："
+msgstr "使用者名稱："
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "密碼(_W)："
+msgstr "密碼："
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "記住此密碼(_R)"
+msgstr "記住此密碼"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -1888,18 +1871,16 @@ msgid "Cancel"
 msgstr "取消"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "連接(_O)"
+msgstr "連接"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "繼續"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "正在連線..."
+msgstr "正在連接…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
@@ -1956,11 +1937,11 @@ msgstr "重新命名(_N)"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "保留最新者"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "若原始檔案更近期有修改過則略過"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
@@ -2156,14 +2137,12 @@ msgid "Empty the Trash"
 msgstr "淨空垃圾筒"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "全部還原"
+msgstr "還原選取項目"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " 已選取"
+msgstr "刪除選取項目"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
@@ -2218,9 +2197,8 @@ msgid "Paste"
 msgstr "貼上"
 
 #: ../src/View/directory_view_popup.ui:111
-#, fuzzy
 msgid "Paste Link"
-msgstr "貼上"
+msgstr "貼上連結"
 
 #: ../src/View/directory_view_popup.ui:118
 msgid "Cut"
@@ -2232,16 +2210,15 @@ msgstr "複製"
 
 #: ../src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "複製為連結"
 
 #: ../src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
 msgstr "貼入資料夾中"
 
 #: ../src/View/directory_view_popup.ui:134
-#, fuzzy
 msgid "Paste Link into Folder"
-msgstr "貼入資料夾中"
+msgstr "貼上前往資料夾的連結"
 
 #: ../src/View/directory_view_popup.ui:141
 msgid "Sort by"
@@ -2261,7 +2238,7 @@ msgstr "相反順序"
 
 #: ../src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "資料夾放在檔案前"
 
 #~ msgid ""
 #~ "Can't load the supported server method list.\n"

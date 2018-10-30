@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-10-09 00:00+0000\n"
+"PO-Revision-Date: 2018-10-30 02:59+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -1535,9 +1535,8 @@ msgid "Show the version of the program"
 msgstr "プログラムのバージョンを表示します"
 
 #: ../src/Application.vala:121
-#, fuzzy
 msgid "Open one or more uris, each in a new tab"
-msgstr "URI を新しいタブで開きます"
+msgstr "一つ以上の URI を、それぞれ新しいタブで開きます"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
