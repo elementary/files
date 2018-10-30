@@ -118,7 +118,7 @@ public class Marlin.Application : Gtk.Application {
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
                         N_("Show the version of the program"), null };
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
-                        N_("Open one or more uris, each in a new tab"), null };
+                        N_("Open one or more URIs, each in their own tab"), null };
         options [2] = { "new-window", 'n', 0, OptionArg.NONE, out create_new_window,
                         N_("New Window"), null };
         options [3] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
