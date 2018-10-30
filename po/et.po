@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 14:34+0000\n"
+"POT-Creation-Date: 2018-10-30 09:23+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -1594,7 +1594,7 @@ msgstr "Programmi versiooni näitamine."
 
 #: ../src/Application.vala:121
 #, fuzzy
-msgid "Open one or more uris, each in a new tab"
+msgid "Open one or more URIs, each in a new tab"
 msgstr "URI-de avamine uues aknas"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83

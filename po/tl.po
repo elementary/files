@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 14:34+0000\n"
+"POT-Creation-Date: 2018-10-30 09:23+0000\n"
 "PO-Revision-Date: 2017-08-22 19:27+0000\n"
 "Last-Translator: anjelo del carmen <anjelo2009@live.com>\n"
 "Language-Team: Tagalog <https://weblate.elementary.io/projects/files/files/"
@@ -1572,7 +1572,7 @@ msgstr "Ipakita ang bersyon ng programa"
 
 #: ../src/Application.vala:121
 #, fuzzy
-msgid "Open one or more uris, each in a new tab"
+msgid "Open one or more URIs, each in a new tab"
 msgstr "Buksan ang (mga) uri sa bagong tab"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83

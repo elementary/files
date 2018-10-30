@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 14:34+0000\n"
+"POT-Creation-Date: 2018-10-30 09:23+0000\n"
 "PO-Revision-Date: 2018-10-30 09:14+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
@@ -1515,7 +1515,8 @@ msgid "Show the version of the program"
 msgstr "顯示此程式的版本。"
 
 #: ../src/Application.vala:121
-msgid "Open one or more uris, each in a new tab"
+#, fuzzy
+msgid "Open one or more URIs, each in a new tab"
 msgstr "以不同的新分頁開啟一個或多個 URI"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83

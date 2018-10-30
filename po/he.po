@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 14:34+0000\n"
+"POT-Creation-Date: 2018-10-30 09:23+0000\n"
 "PO-Revision-Date: 2018-10-30 06:05+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://weblate.elementary.io/projects/files/files/he/"
@@ -1569,7 +1569,8 @@ msgid "Show the version of the program"
 msgstr "הצגת גרסת התכנית"
 
 #: ../src/Application.vala:121
-msgid "Open one or more uris, each in a new tab"
+#, fuzzy
+msgid "Open one or more URIs, each in a new tab"
 msgstr "פתיחת כתובת אחת ומעלה, כל אחת בלשונית נפרדת"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
