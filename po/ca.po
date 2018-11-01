@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-10-23 00:03+0000\n"
+"PO-Revision-Date: 2018-10-30 14:47+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://weblate.elementary.io/projects/files/files/"
 "ca/>\n"
@@ -1600,9 +1600,8 @@ msgid "Show the version of the program"
 msgstr "Mostra la versió del programa."
 
 #: ../src/Application.vala:121
-#, fuzzy
 msgid "Open one or more uris, each in a new tab"
-msgstr "Obre els URI(s) en una pestanya nova"
+msgstr "Obre un o més URI, cada un en una pestanya nova"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-09-22 00:57+0000\n"
+"PO-Revision-Date: 2018-10-30 14:23+0000\n"
 "Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
 "Language-Team: Polish <https://weblate.elementary.io/projects/files/files/pl/"
 ">\n"
@@ -1648,9 +1648,8 @@ msgid "Show the version of the program"
 msgstr "Wypisuje informacje o wersji programu"
 
 #: ../src/Application.vala:121
-#, fuzzy
 msgid "Open one or more uris, each in a new tab"
-msgstr "Otwiera adresy URI w nowych kartach"
+msgstr "Otwórz jeden lub więcej adresów URI, każde w nowej karcie"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"

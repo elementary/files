@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-10-16 00:03+0000\n"
+"PO-Revision-Date: 2018-11-01 01:14+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
 "files/files/pt_BR/>\n"
@@ -27,7 +27,7 @@ msgstr "Inacessível"
 #: ../libcore/gof-file.c:347
 #, c-format
 msgid "link to %s"
-msgstr "ligação para %s"
+msgstr "vincular a %s"
 
 #: ../libcore/gof-file.c:1590
 #, c-format
@@ -1603,9 +1603,8 @@ msgid "Show the version of the program"
 msgstr "Exibir a versão do programa"
 
 #: ../src/Application.vala:121
-#, fuzzy
 msgid "Open one or more uris, each in a new tab"
-msgstr "Abrir uri(s) em nova aba"
+msgstr "Abra uma ou mais uris, cada uma em uma nova aba"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
