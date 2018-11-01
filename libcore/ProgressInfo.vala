@@ -134,7 +134,7 @@ public class PF.Progress.Info : GLib.Object {
     }
 
     public void finish () {
-        if (!is_finished) {
+        if (!is_finished && !cancellable.is_cancelled ()) { /* In case of race between cancel and finish */
             is_finished = true;
 
             finish_at_idle = true;
@@ -247,7 +247,9 @@ public class PF.Progress.Info : GLib.Object {
 
         if (finish_at_idle) {
             finish_at_idle = false;
-            finished ();
+            if (!cancellable.is_cancelled ()) { /* In case of race between cancel and finish */
+                finished ();
+            }
         }
 
         if (changed_at_idle) {
