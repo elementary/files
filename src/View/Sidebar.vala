@@ -127,6 +127,7 @@ namespace Marlin.Places {
 
         public Sidebar (Marlin.View.Window window, bool local_only = false) {
             init (); /* creates the Gtk.TreeModel store. */
+            plugins.sidebar_loaded ((Gtk.Widget)this);
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
@@ -153,6 +154,7 @@ namespace Marlin.Places {
             this.show_all ();
 
             update_places ();
+            request_update.connect (update_places);
         }
 
         private void construct_tree_view () {
@@ -286,6 +288,29 @@ namespace Marlin.Places {
             /* Signal Marlin.View.Window to synchronise sidebar with current tab */
             sync_needed ();
             return false;
+        }
+
+        /**
+         * Increase spinner pulse while Column.SHOW_SPINNER is true
+         */
+        void start_spinner (Gtk.TreeIter iter) {
+            Timeout.add (100, ()=>{
+                uint val;
+                bool spinner_active;
+
+                if (!store.iter_is_valid (iter)) {
+                    return false;
+                }
+
+                store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
+                if (!spinner_active) {
+                    return false;
+                }
+
+                store.@get (iter, Column.SPINNER_PULSE, out val);
+                store.@set (iter, Column.SPINNER_PULSE, ++val);
+                return true;
+            });
         }
 
         private bool focus_in_event_cb (Gdk.EventFocus event) {
@@ -491,7 +516,7 @@ namespace Marlin.Places {
                        null,
                        null,
                        0,
-                       _("Open your personal folder"));
+                       _("Open your personal folder") + " (Alt + Home)");
 
             n_builtins_before++;
 
@@ -539,7 +564,7 @@ namespace Marlin.Places {
                            null,
                            null,
                            index + n_builtins_before,
-                           _("Open the Trash"));
+                           _("Open the Trash") + " (Alt + T)");
             }
 
             /* ADD STORAGE CATEGORY*/
@@ -712,15 +737,12 @@ namespace Marlin.Places {
                            null,
                            null,
                            0,
-                           _("Browse the contents of the network"));
+                           _("Browse the contents of the network") + " (Alt + N)");
 
                 /* Add ConnectServer BUILTIN */
-                add_extra_network_item (_("Connect Server"), _("Connect to a network server"), new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
+                add_extra_network_item (_("Connect Server"), _("Connect to a network server") + " (Alt + C)", new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
 
-                /* No longer needed at present as no other sidebar plugins.
-                 * Commenting out to avoid old plugin getting installed.
-                 * Package needs to remove old plugin.*/
-                //plugins.update_sidebar ((Gtk.Widget)this);
+                plugins.update_sidebar ((Gtk.Widget)this);
             }
 
             expander_init_pref_state (tree_view);
@@ -1504,7 +1526,8 @@ namespace Marlin.Places {
             bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
 
             if (is_plugin) {
-                var menu = new PopupMenuBuilder ();
+                var menu = new PopupMenuBuilder ()
+                .add_open (open_shortcut_cb);
                 menu.build ().popup_at_pointer (event);
             } else {
                 var menu = new PopupMenuBuilder ()
@@ -2103,22 +2126,7 @@ namespace Marlin.Places {
             store.@set (iter, Column.SHOW_SPINNER, true);
             store.@set (iter, Column.SHOW_EJECT, false);
             store.@set (iter, Column.ACTION_ICON, null);
-            Timeout.add (100, ()=>{
-                uint val;
-
-                if (!rowref.valid ()) {
-                    return false;
-                }
-
-                store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
-                if (!spinner_active) {
-                    return false;
-                }
-
-                store.@get (iter, Column.SPINNER_PULSE, out val);
-                store.@set (iter, Column.SPINNER_PULSE, ++val);
-                return true;
-            });
+            start_spinner (iter);
 
             do_unmount_or_eject (mount, volume, drive, rowref, allow_eject);
             return true;
