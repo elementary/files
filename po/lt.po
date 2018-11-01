@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 09:07+0200\n"
-"PO-Revision-Date: 2018-07-26 21:26+0000\n"
+"POT-Creation-Date: 2018-10-29 14:34+0000\n"
+"PO-Revision-Date: 2018-10-30 22:21+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://weblate.elementary.io/projects/files/"
 "files/lt/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || n"
-"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || "
+"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
@@ -49,44 +49,44 @@ msgstr "Nepavyko sukurti komandos iš failo: %s"
 msgid "Unable to Launch Desktop File: %s"
 msgstr "Nepavyko paleisti darbalaukio failo: %s"
 
-#: ../libcore/marlin-file-operations.c:154
+#: ../libcore/marlin-file-operations.c:155
 #: ../libcore/FileConflictDialog.vala:185
 msgid "_Skip"
 msgstr "_Praleisti"
 
-#: ../libcore/marlin-file-operations.c:155
+#: ../libcore/marlin-file-operations.c:156
 msgid "S_kip All"
 msgstr "Praleisti _visus"
 
-#: ../libcore/marlin-file-operations.c:156
+#: ../libcore/marlin-file-operations.c:157
 msgid "_Retry"
 msgstr "_Bandyti vėl"
 
-#: ../libcore/marlin-file-operations.c:157
+#: ../libcore/marlin-file-operations.c:158
 msgid "Delete _All"
 msgstr "Ištrinti _visus"
 
-#: ../libcore/marlin-file-operations.c:158
+#: ../libcore/marlin-file-operations.c:159
 msgid "_Replace"
 msgstr "Pa_keisti"
 
-#: ../libcore/marlin-file-operations.c:159
+#: ../libcore/marlin-file-operations.c:160
 msgid "Replace _All"
 msgstr "Pakeisti _visus"
 
-#: ../libcore/marlin-file-operations.c:160
+#: ../libcore/marlin-file-operations.c:161
 msgid "_Merge"
 msgstr "_Sulieti"
 
-#: ../libcore/marlin-file-operations.c:161
+#: ../libcore/marlin-file-operations.c:162
 msgid "Merge _All"
 msgstr "Sulieti _visus"
 
-#: ../libcore/marlin-file-operations.c:162
+#: ../libcore/marlin-file-operations.c:163
 msgid "Copy _Anyway"
 msgstr "_Vis tiek kopijuoti"
 
-#: ../libcore/marlin-file-operations.c:243
+#: ../libcore/marlin-file-operations.c:244
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -95,8 +95,8 @@ msgstr[1] "%'d sekundės"
 msgstr[2] "%'d sekundžių"
 msgstr[3] "%'d sekundė"
 
-#: ../libcore/marlin-file-operations.c:248
-#: ../libcore/marlin-file-operations.c:259
+#: ../libcore/marlin-file-operations.c:249
+#: ../libcore/marlin-file-operations.c:260
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -105,7 +105,7 @@ msgstr[1] "%'d minutės"
 msgstr[2] "%'d minučių"
 msgstr[3] "%'d minutė"
 
-#: ../libcore/marlin-file-operations.c:258
+#: ../libcore/marlin-file-operations.c:259
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -114,7 +114,7 @@ msgstr[1] "%'d valandos"
 msgstr[2] "%'d valandų"
 msgstr[3] "%'d valanda"
 
-#: ../libcore/marlin-file-operations.c:266
+#: ../libcore/marlin-file-operations.c:267
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -123,110 +123,110 @@ msgstr[1] "maždaug %'d valandos"
 msgstr[2] "maždaug %'d valandų"
 msgstr[3] "maždaug %'d valanda"
 
-#: ../libcore/marlin-file-operations.c:342
+#: ../libcore/marlin-file-operations.c:343
 #, c-format
 msgid "Link to %s"
 msgstr "Nuoroda į %s"
 
-#: ../libcore/marlin-file-operations.c:346
+#: ../libcore/marlin-file-operations.c:347
 #, c-format
 msgid "Another link to %s"
 msgstr "Kita nuoroda į %s"
 
-#: ../libcore/marlin-file-operations.c:362
+#: ../libcore/marlin-file-operations.c:363
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d nuoroda į %s"
 
-#: ../libcore/marlin-file-operations.c:366
+#: ../libcore/marlin-file-operations.c:367
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d-ra nuoroda į %s"
 
-#: ../libcore/marlin-file-operations.c:370
+#: ../libcore/marlin-file-operations.c:371
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d-ia nuoroda į %s"
 
-#: ../libcore/marlin-file-operations.c:374
+#: ../libcore/marlin-file-operations.c:375
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d-a nuoroda į %s"
 
-#: ../libcore/marlin-file-operations.c:412
+#: ../libcore/marlin-file-operations.c:413
 msgid " (copy)"
 msgstr " (kopija)"
 
-#: ../libcore/marlin-file-operations.c:414
+#: ../libcore/marlin-file-operations.c:415
 msgid " (another copy)"
 msgstr " (kita kopija)"
 
-#: ../libcore/marlin-file-operations.c:417
-#: ../libcore/marlin-file-operations.c:419
-#: ../libcore/marlin-file-operations.c:421
-#: ../libcore/marlin-file-operations.c:431
+#: ../libcore/marlin-file-operations.c:418
+#: ../libcore/marlin-file-operations.c:420
+#: ../libcore/marlin-file-operations.c:422
+#: ../libcore/marlin-file-operations.c:432
 msgid "th copy)"
 msgstr "-a kopija)"
 
-#: ../libcore/marlin-file-operations.c:424
+#: ../libcore/marlin-file-operations.c:425
 msgid "st copy)"
 msgstr "-ma kopija)"
 
-#: ../libcore/marlin-file-operations.c:426
+#: ../libcore/marlin-file-operations.c:427
 msgid "nd copy)"
 msgstr "-ra kopija)"
 
-#: ../libcore/marlin-file-operations.c:428
+#: ../libcore/marlin-file-operations.c:429
 msgid "rd copy)"
 msgstr "-ia kopija)"
 
-#: ../libcore/marlin-file-operations.c:445
+#: ../libcore/marlin-file-operations.c:446
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (kopija)%s"
 
-#: ../libcore/marlin-file-operations.c:447
+#: ../libcore/marlin-file-operations.c:448
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (kita kopija)%s"
 
-#: ../libcore/marlin-file-operations.c:450
-#: ../libcore/marlin-file-operations.c:452
-#: ../libcore/marlin-file-operations.c:454
-#: ../libcore/marlin-file-operations.c:468
+#: ../libcore/marlin-file-operations.c:451
+#: ../libcore/marlin-file-operations.c:453
+#: ../libcore/marlin-file-operations.c:455
+#: ../libcore/marlin-file-operations.c:469
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'d-a kopija)%s"
 
-#: ../libcore/marlin-file-operations.c:462
+#: ../libcore/marlin-file-operations.c:463
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'d-ma kopija)%s"
 
-#: ../libcore/marlin-file-operations.c:464
+#: ../libcore/marlin-file-operations.c:465
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'d-ra kopija)%s"
 
-#: ../libcore/marlin-file-operations.c:466
+#: ../libcore/marlin-file-operations.c:467
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'d-ia kopija)%s"
 
-#: ../libcore/marlin-file-operations.c:566
+#: ../libcore/marlin-file-operations.c:567
 msgid " ("
 msgstr " ("
 
-#: ../libcore/marlin-file-operations.c:574
+#: ../libcore/marlin-file-operations.c:575
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: ../libcore/marlin-file-operations.c:1252
+#: ../libcore/marlin-file-operations.c:1253
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr "Ar tikrai norite negrąžinamai ištrinti „%B“ iš šiukšlinės?"
 
-#: ../libcore/marlin-file-operations.c:1255
+#: ../libcore/marlin-file-operations.c:1256
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -243,16 +243,16 @@ msgstr[2] ""
 msgstr[3] ""
 "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą iš šiukšlinės?"
 
-#: ../libcore/marlin-file-operations.c:1265
-#: ../libcore/marlin-file-operations.c:1345
+#: ../libcore/marlin-file-operations.c:1266
+#: ../libcore/marlin-file-operations.c:1346
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Jeigu ištrinsite failą, jis bus prarastas visiems laikams."
 
-#: ../libcore/marlin-file-operations.c:1290
+#: ../libcore/marlin-file-operations.c:1291
 msgid "Permanently delete all items from Trash?"
 msgstr "Ištrinti negrįžtamai viską iš Šiukšlinės?"
 
-#: ../libcore/marlin-file-operations.c:1291
+#: ../libcore/marlin-file-operations.c:1292
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -260,26 +260,26 @@ msgstr ""
 "Visi elementai visuose šiukšlinės kataloguose, įskaitant tuos, kurie yra bet "
 "kokiuose prijungtuose išoriniuose diskuose, bus visiems laikams ištrinti."
 
-#: ../libcore/marlin-file-operations.c:1294
+#: ../libcore/marlin-file-operations.c:1295
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
 "Ištrinti visus elementus iš šiukšlinės šiame prijungime visiems laikams?"
 
-#: ../libcore/marlin-file-operations.c:1295
+#: ../libcore/marlin-file-operations.c:1296
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 "Visi šiame prijungime šiukšlinėje esantys elementai bus ištrinti visiems "
 "laikams."
 
-#: ../libcore/marlin-file-operations.c:1306 ../src/View/Sidebar.vala:1519
+#: ../libcore/marlin-file-operations.c:1307 ../src/View/Sidebar.vala:1558
 msgid "Empty _Trash"
 msgstr "Iš_valyti šiukšlinę"
 
-#: ../libcore/marlin-file-operations.c:1333
+#: ../libcore/marlin-file-operations.c:1334
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Ar tikrai norite negrįžtamai ištrinti „%B“?"
 
-#: ../libcore/marlin-file-operations.c:1336
+#: ../libcore/marlin-file-operations.c:1337
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -289,7 +289,7 @@ msgstr[1] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtus elementus?"
 msgstr[2] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtų elementų?"
 msgstr[3] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą?"
 
-#: ../libcore/marlin-file-operations.c:1379
+#: ../libcore/marlin-file-operations.c:1380
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
@@ -297,28 +297,28 @@ msgstr[0] "Liko ištrinti %'d failą"
 msgstr[1] "Liko ištrinti %'d failus"
 msgstr[2] "Liko ištrinti %'d failų"
 
-#: ../libcore/marlin-file-operations.c:1385
+#: ../libcore/marlin-file-operations.c:1386
 msgid "Deleting files"
 msgstr "Ištrinami failai"
 
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:1398
+#: ../libcore/marlin-file-operations.c:1399
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "Liko %T"
 msgstr[1] "Liko %T"
 msgstr[2] "Liko %T"
 
-#: ../libcore/marlin-file-operations.c:1465
-#: ../libcore/marlin-file-operations.c:1499
-#: ../libcore/marlin-file-operations.c:1538
-#: ../libcore/marlin-file-operations.c:1615
-#: ../libcore/marlin-file-operations.c:2405
+#: ../libcore/marlin-file-operations.c:1466
+#: ../libcore/marlin-file-operations.c:1500
+#: ../libcore/marlin-file-operations.c:1539
+#: ../libcore/marlin-file-operations.c:1616
+#: ../libcore/marlin-file-operations.c:2406
 msgid "Error while deleting."
 msgstr "Klaida ištrinant."
 
-#: ../libcore/marlin-file-operations.c:1469
+#: ../libcore/marlin-file-operations.c:1470
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -326,43 +326,43 @@ msgstr ""
 "Aplanke „%B“ esančių failų negalima ištrinti, nes neturite teisių matyti "
 "aplanko failų."
 
-#: ../libcore/marlin-file-operations.c:1472
-#: ../libcore/marlin-file-operations.c:2464
-#: ../libcore/marlin-file-operations.c:3431
+#: ../libcore/marlin-file-operations.c:1473
+#: ../libcore/marlin-file-operations.c:2465
+#: ../libcore/marlin-file-operations.c:3432
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "Klaida gaunant informaciją apie aplanke „%B“ esančius failus."
 
-#: ../libcore/marlin-file-operations.c:1481
-#: ../libcore/marlin-file-operations.c:3440
+#: ../libcore/marlin-file-operations.c:1482
+#: ../libcore/marlin-file-operations.c:3441
 msgid "_Skip files"
 msgstr "_Praleisti failus"
 
-#: ../libcore/marlin-file-operations.c:1502
+#: ../libcore/marlin-file-operations.c:1503
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr "Aplanko „%B“ negalima ištrinti, nes neturite teisių jį skaityti."
 
-#: ../libcore/marlin-file-operations.c:1505
-#: ../libcore/marlin-file-operations.c:2503
-#: ../libcore/marlin-file-operations.c:3476
+#: ../libcore/marlin-file-operations.c:1506
+#: ../libcore/marlin-file-operations.c:2504
+#: ../libcore/marlin-file-operations.c:3477
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Klaida skaitant aplanką „%B“."
 
-#: ../libcore/marlin-file-operations.c:1539
+#: ../libcore/marlin-file-operations.c:1540
 msgid "Could not remove the folder %B."
 msgstr "Nepavyko pašalinti aplanko %B."
 
-#: ../libcore/marlin-file-operations.c:1616
+#: ../libcore/marlin-file-operations.c:1617
 msgid "There was an error deleting %B."
 msgstr "Klaida ištrinant aplanką %B."
 
-#: ../libcore/marlin-file-operations.c:1700
+#: ../libcore/marlin-file-operations.c:1701
 msgid "Moving files to trash"
 msgstr "Failai perkeliami į šiukšlinę"
 
-#: ../libcore/marlin-file-operations.c:1702
+#: ../libcore/marlin-file-operations.c:1703
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
@@ -370,19 +370,19 @@ msgstr[0] "Į šiukšlinę liko perkelti %'d failą"
 msgstr[1] "Į šiukšlinę liko perkelti %'d failus"
 msgstr[2] "Į šiukšlinę liko perkelti %'d failų"
 
-#: ../libcore/marlin-file-operations.c:1796
-#: ../libcore/marlin-file-operations.c:1799
-#: ../libcore/marlin-file-operations.c:1802
+#: ../libcore/marlin-file-operations.c:1797
+#: ../libcore/marlin-file-operations.c:1800
+#: ../libcore/marlin-file-operations.c:1803
 msgid "Cannot move file to trash or delete it"
 msgstr "Negalima perkelti failo į šiukšlinę ar jį ištrinti"
 
-#: ../libcore/marlin-file-operations.c:1797
+#: ../libcore/marlin-file-operations.c:1798
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Nėra leidžiama perkelti į šiukšlinę ar ištrinti failų, kurie yra tik "
 "skaitymui skirtoje failų sistemoje."
 
-#: ../libcore/marlin-file-operations.c:1800
+#: ../libcore/marlin-file-operations.c:1801
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -390,7 +390,7 @@ msgstr ""
 "Nėra  leidžiama perkelti į šiukšlinę ar ištrinti failus aplankuose, kuriems "
 "neturite rašymo teisių."
 
-#: ../libcore/marlin-file-operations.c:1803
+#: ../libcore/marlin-file-operations.c:1804
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
@@ -398,12 +398,12 @@ msgstr ""
 "Nėra  leidžiama perkelti į šiukšlinę ar ištrinti aplankus, kuriems neturite "
 "rašymo teisių."
 
-#: ../libcore/marlin-file-operations.c:1805
+#: ../libcore/marlin-file-operations.c:1806
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 "Nepavyksta perkelti failo į šiukšlinę. Pabandyti nedelsiant jį ištrinti?"
 
-#: ../libcore/marlin-file-operations.c:1806
+#: ../libcore/marlin-file-operations.c:1807
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
@@ -411,11 +411,11 @@ msgstr ""
 "Šio failo nepavyko perkelti į šiukšlinę. Išsamesnei informacijai, žiūrėkite "
 "žemiau."
 
-#: ../libcore/marlin-file-operations.c:1810
+#: ../libcore/marlin-file-operations.c:1811
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "Nepavyksta perkelti failo į šiukšlinę. Pabandyti jį ištrinti?"
 
-#: ../libcore/marlin-file-operations.c:1811
+#: ../libcore/marlin-file-operations.c:1812
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
@@ -423,7 +423,7 @@ msgstr ""
 "Šio failo nepavyko perkelti į šiukšlinę. Gali būti, kad taip pat negalėsite "
 "jo ištrinti."
 
-#: ../libcore/marlin-file-operations.c:1816
+#: ../libcore/marlin-file-operations.c:1817
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -431,28 +431,28 @@ msgstr ""
 "\n"
 " Failo ištrynimas pašalina jį visiems laikams"
 
-#: ../libcore/marlin-file-operations.c:2006
+#: ../libcore/marlin-file-operations.c:2007
 msgid "Trashing Files"
 msgstr "Failai perkeliami į šiukšlinę"
 
-#: ../libcore/marlin-file-operations.c:2008
+#: ../libcore/marlin-file-operations.c:2009
 msgid "Deleting Files"
 msgstr "Ištrinami failai"
 
-#: ../libcore/marlin-file-operations.c:2077
+#: ../libcore/marlin-file-operations.c:2078
 msgid "Unable to eject %V"
 msgstr "Nepavyko išstumti %V"
 
-#: ../libcore/marlin-file-operations.c:2079
+#: ../libcore/marlin-file-operations.c:2080
 msgid "Unable to unmount %V"
 msgstr "Nepavyko atjungti %V"
 
-#: ../libcore/marlin-file-operations.c:2274
+#: ../libcore/marlin-file-operations.c:2275
 #, c-format
 msgid "Unable to mount %s"
 msgstr "Nepavyko prijungti %s"
 
-#: ../libcore/marlin-file-operations.c:2352
+#: ../libcore/marlin-file-operations.c:2353
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
@@ -460,7 +460,7 @@ msgstr[0] "Ruošiamasi kopijuoti %'d failą (%S)"
 msgstr[1] "Ruošiamasi kopijuoti %'d failus (%S)"
 msgstr[2] "Ruošiamasi kopijuoti %'d failų (%S)"
 
-#: ../libcore/marlin-file-operations.c:2358
+#: ../libcore/marlin-file-operations.c:2359
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
@@ -468,7 +468,7 @@ msgstr[0] "Ruošiamasi perkelti %'d failą (%S)"
 msgstr[1] "Ruošiamasi perkelti %'d failus (%S)"
 msgstr[2] "Ruošiamasi perkelti %'d failų (%S)"
 
-#: ../libcore/marlin-file-operations.c:2364
+#: ../libcore/marlin-file-operations.c:2365
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
@@ -476,7 +476,7 @@ msgstr[0] "Ruošiamasi ištrinti %'d failą (%S)"
 msgstr[1] "Ruošiamasi ištrinti %'d failus (%S)"
 msgstr[2] "Ruošiamasi ištrinti %'d failų (%S)"
 
-#: ../libcore/marlin-file-operations.c:2370
+#: ../libcore/marlin-file-operations.c:2371
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
@@ -484,24 +484,24 @@ msgstr[0] "Ruošiamasi perkelti į šiukšlinę %'d failą"
 msgstr[1] "Ruošiamasi perkelti į šiukšlinę %'d failus"
 msgstr[2] "Ruošiamasi perkelti į šiukšlinę %'d failų"
 
-#: ../libcore/marlin-file-operations.c:2401
-#: ../libcore/marlin-file-operations.c:3291
-#: ../libcore/marlin-file-operations.c:3423
-#: ../libcore/marlin-file-operations.c:3468
+#: ../libcore/marlin-file-operations.c:2402
+#: ../libcore/marlin-file-operations.c:3292
+#: ../libcore/marlin-file-operations.c:3424
+#: ../libcore/marlin-file-operations.c:3469
 msgid "Error while copying."
 msgstr "Klaida kopijuojant."
 
-#: ../libcore/marlin-file-operations.c:2403
-#: ../libcore/marlin-file-operations.c:3421
-#: ../libcore/marlin-file-operations.c:3466
+#: ../libcore/marlin-file-operations.c:2404
+#: ../libcore/marlin-file-operations.c:3422
+#: ../libcore/marlin-file-operations.c:3467
 msgid "Error while moving."
 msgstr "Klaida perkeliant."
 
-#: ../libcore/marlin-file-operations.c:2407
+#: ../libcore/marlin-file-operations.c:2408
 msgid "Error while moving files to trash."
 msgstr "Klaida perkeliant failus į šiukšlinę."
 
-#: ../libcore/marlin-file-operations.c:2461
+#: ../libcore/marlin-file-operations.c:2462
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -509,7 +509,7 @@ msgstr ""
 "Aplanke \"%B\" esantys failai negali būti apdoroti, kadangi jūs neturite "
 "leidimų jų pamatyti."
 
-#: ../libcore/marlin-file-operations.c:2500
+#: ../libcore/marlin-file-operations.c:2501
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -517,37 +517,37 @@ msgstr ""
 "Aplankas „%B“ negali būti apdorotas, kadangi jūs neturite leidimų jo "
 "skaityti."
 
-#: ../libcore/marlin-file-operations.c:2576
+#: ../libcore/marlin-file-operations.c:2577
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Failas „%B“ negali būti apdorotas, kadangi jūs neturite leidimų jo skaityti."
 
-#: ../libcore/marlin-file-operations.c:2579
+#: ../libcore/marlin-file-operations.c:2580
 msgid "There was an error getting information about \"%B\"."
 msgstr "Gaunant informaciją apie „%B“ įvyko klaida."
 
-#: ../libcore/marlin-file-operations.c:2679
-#: ../libcore/marlin-file-operations.c:2721
-#: ../libcore/marlin-file-operations.c:2754
-#: ../libcore/marlin-file-operations.c:2784
+#: ../libcore/marlin-file-operations.c:2680
+#: ../libcore/marlin-file-operations.c:2722
+#: ../libcore/marlin-file-operations.c:2755
+#: ../libcore/marlin-file-operations.c:2785
 msgid "Error while copying to \"%B\"."
 msgstr "Klaida kopijuojant į „%B“."
 
-#: ../libcore/marlin-file-operations.c:2683
+#: ../libcore/marlin-file-operations.c:2684
 msgid "You do not have permissions to access the destination folder."
 msgstr "Neturite leidimų prieiti prie paskirties aplanko."
 
-#: ../libcore/marlin-file-operations.c:2685
+#: ../libcore/marlin-file-operations.c:2686
 msgid "There was an error getting information about the destination."
 msgstr "Klaida gaunant paskirties vietos informaciją."
 
-#: ../libcore/marlin-file-operations.c:2722
+#: ../libcore/marlin-file-operations.c:2723
 msgid "The destination is not a folder."
 msgstr "Ši paskirties vieta nėra aplankas."
 
-#: ../libcore/marlin-file-operations.c:2755
+#: ../libcore/marlin-file-operations.c:2756
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -555,63 +555,63 @@ msgstr ""
 "Paskirties vietoje nepakanka laisvos vietos. Pabandykite ten pašalinti "
 "kokius nors failus."
 
-#: ../libcore/marlin-file-operations.c:2757
+#: ../libcore/marlin-file-operations.c:2758
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "Yra laisva %S, tačiau reikia %S."
 
-#: ../libcore/marlin-file-operations.c:2785
+#: ../libcore/marlin-file-operations.c:2786
 msgid "The destination is read-only."
 msgstr "Paskirties vieta skirta tik skaitymui."
 
-#: ../libcore/marlin-file-operations.c:2844
+#: ../libcore/marlin-file-operations.c:2845
 msgid "Moving \"%B\" to \"%B\""
 msgstr "Perkeliama „%B“ į „%B“"
 
-#: ../libcore/marlin-file-operations.c:2845
+#: ../libcore/marlin-file-operations.c:2846
 msgid "Copying \"%B\" to \"%B\""
 msgstr "Kopijuojama „%B“ į „%B“"
 
-#: ../libcore/marlin-file-operations.c:2849
+#: ../libcore/marlin-file-operations.c:2850
 msgid "Duplicating \"%B\""
 msgstr "Kuriama „%B“ kopija"
 
-#: ../libcore/marlin-file-operations.c:2853
+#: ../libcore/marlin-file-operations.c:2854
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Perkeliamas %'d failas (\"%B\") į \"%B\""
 msgstr[1] "Perkeliami %'d failai (\"%B\") į \"%B\""
 msgstr[2] "Perkeliama %'d failų (\"%B\") į \"%B\""
 
-#: ../libcore/marlin-file-operations.c:2856
+#: ../libcore/marlin-file-operations.c:2857
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "Kopijuojamas %'d failas (\"%B\") į \"%B\""
 msgstr[1] "Kopijuojami %'d failai (\"%B\") į \"%B\""
 msgstr[2] "Kopijuojama %'d failų (\"%B\") į \"%B\""
 
-#: ../libcore/marlin-file-operations.c:2863
+#: ../libcore/marlin-file-operations.c:2864
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "Dubliuojamas %'d failas (\"%B\")"
 msgstr[1] "Dubliuojami %'d failas (\"%B\")"
 msgstr[2] "Dubliuojama %'d failų (\"%B\")"
 
-#: ../libcore/marlin-file-operations.c:2872
+#: ../libcore/marlin-file-operations.c:2873
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "Perkeliamas %'d failas į \"%B\""
 msgstr[1] "Perkeliami %'d failai į \"%B\""
 msgstr[2] "Perkeliama %'d failų į \"%B\""
 
-#: ../libcore/marlin-file-operations.c:2876
+#: ../libcore/marlin-file-operations.c:2877
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "Kopijuojamas %'d failas į \"%B\""
 msgstr[1] "Kopijuojami %'d failai į \"%B\""
 msgstr[2] "Kopijuojama %'d failų į \"%B\""
 
-#: ../libcore/marlin-file-operations.c:2881
+#: ../libcore/marlin-file-operations.c:2882
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -620,7 +620,7 @@ msgstr[1] "Dubliuojami %'d failai"
 msgstr[2] "Dubliuojama %'d failų"
 
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
-#: ../libcore/marlin-file-operations.c:2907
+#: ../libcore/marlin-file-operations.c:2908
 #, c-format
 msgid "%S of %S"
 msgstr "%S iš %S"
@@ -628,14 +628,14 @@ msgstr "%S iš %S"
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
 #. / "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:2917
+#: ../libcore/marlin-file-operations.c:2918
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S iš %S — liko %T (%S/sek.)"
 msgstr[1] "%S iš %S — liko %T (%S/sek.)"
 msgstr[2] "%S iš %S — liko %T (%S/sek.)"
 
-#: ../libcore/marlin-file-operations.c:3295
+#: ../libcore/marlin-file-operations.c:3296
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -643,11 +643,11 @@ msgstr ""
 "Aplanko „%s“ negalima nukopijuoti, kadangi neturite leidimų jo sukurti "
 "paskirties vietoje."
 
-#: ../libcore/marlin-file-operations.c:3298
+#: ../libcore/marlin-file-operations.c:3299
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Klaida kuriant aplanką „%B“."
 
-#: ../libcore/marlin-file-operations.c:3428
+#: ../libcore/marlin-file-operations.c:3429
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -655,7 +655,7 @@ msgstr ""
 "Aplanke „%B“ esančių failų negalima nukopijuoti, kadangi neturite leidimų jų "
 "matyti."
 
-#: ../libcore/marlin-file-operations.c:3473
+#: ../libcore/marlin-file-operations.c:3474
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -663,81 +663,81 @@ msgstr ""
 "Aplankas \"%B\" negali būti nukopijuotas, kadangi jūs neturite leidimų jo "
 "skaityti."
 
-#: ../libcore/marlin-file-operations.c:3518
-#: ../libcore/marlin-file-operations.c:4161
+#: ../libcore/marlin-file-operations.c:3519
+#: ../libcore/marlin-file-operations.c:4183
 msgid "Error while moving \"%B\"."
 msgstr "Klaida perkeliant „%B“."
 
-#: ../libcore/marlin-file-operations.c:3519
+#: ../libcore/marlin-file-operations.c:3520
 msgid "Could not remove the source folder."
 msgstr "Nepavyko pašalinti šaltinio aplanko."
 
-#: ../libcore/marlin-file-operations.c:3604
-#: ../libcore/marlin-file-operations.c:3645
-#: ../libcore/marlin-file-operations.c:4163
+#: ../libcore/marlin-file-operations.c:3605
+#: ../libcore/marlin-file-operations.c:3646
+#: ../libcore/marlin-file-operations.c:4185
 msgid "Error while copying \"%B\"."
 msgstr "Klaida kopijuojant „%B“."
 
-#: ../libcore/marlin-file-operations.c:3605
+#: ../libcore/marlin-file-operations.c:3606
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Nepavyko pašalinti failų iš jau esančio aplanko %F."
 
-#: ../libcore/marlin-file-operations.c:3646
+#: ../libcore/marlin-file-operations.c:3647
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Nepavyko pašalinti jau esančio failo %F."
 
-#: ../libcore/marlin-file-operations.c:3920
-#: ../libcore/marlin-file-operations.c:4570
+#: ../libcore/marlin-file-operations.c:3921
+#: ../libcore/marlin-file-operations.c:4592
 msgid "You cannot move a folder into itself."
 msgstr "Negalima perkelti aplanko į jį patį."
 
-#: ../libcore/marlin-file-operations.c:3921
-#: ../libcore/marlin-file-operations.c:4571
+#: ../libcore/marlin-file-operations.c:3922
+#: ../libcore/marlin-file-operations.c:4593
 msgid "You cannot copy a folder into itself."
 msgstr "Negalima nukopijuoti aplanko į jį patį."
 
-#: ../libcore/marlin-file-operations.c:3922
-#: ../libcore/marlin-file-operations.c:4572
+#: ../libcore/marlin-file-operations.c:3923
+#: ../libcore/marlin-file-operations.c:4594
 msgid "The destination folder is inside the source folder."
 msgstr "Paskirties aplankas yra šaltinio aplanko viduje."
 
-#: ../libcore/marlin-file-operations.c:3953
+#: ../libcore/marlin-file-operations.c:3954
 msgid "You cannot move a file over itself."
 msgstr "Negalima perkelti failo ant jo paties."
 
-#: ../libcore/marlin-file-operations.c:3954
+#: ../libcore/marlin-file-operations.c:3955
 msgid "You cannot copy a file over itself."
 msgstr "Negalima kopijuoti failo į jį patį."
 
-#: ../libcore/marlin-file-operations.c:3955
+#: ../libcore/marlin-file-operations.c:3956
 msgid "The source file would be overwritten by the destination."
 msgstr "Šaltinio failas bus perrašytas paskirties failu."
 
-#: ../libcore/marlin-file-operations.c:4165
+#: ../libcore/marlin-file-operations.c:4187
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr ""
 "Nepavyko pašalinti failo su tokiu pačiu pavadinimu, esančio aplanke %F."
 
-#: ../libcore/marlin-file-operations.c:4230
+#: ../libcore/marlin-file-operations.c:4252
 msgid "Cannot copy \"%B\" here."
 msgstr "Čia negalima nukopijuoti \"%B\"."
 
-#: ../libcore/marlin-file-operations.c:4231
+#: ../libcore/marlin-file-operations.c:4253
 msgid "There was an error copying the file into %B."
 msgstr "Kopijuojant failą į %B, įvyko klaida."
 
-#: ../libcore/marlin-file-operations.c:4453
+#: ../libcore/marlin-file-operations.c:4475
 msgid "Copying Files"
 msgstr "Kopijuojami failai"
 
-#: ../libcore/marlin-file-operations.c:4479
+#: ../libcore/marlin-file-operations.c:4501
 msgid "Preparing to move to \"%B\""
 msgstr "Ruošiamasi perkelti į „%B“"
 
-#: ../libcore/marlin-file-operations.c:4483
+#: ../libcore/marlin-file-operations.c:4505
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
@@ -745,25 +745,25 @@ msgstr[0] "Ruošiamasi perkelti %'d failą"
 msgstr[1] "Ruošiamasi perkelti %'d failus"
 msgstr[2] "Ruošiamasi perkelti %'d failų"
 
-#: ../libcore/marlin-file-operations.c:4732
+#: ../libcore/marlin-file-operations.c:4751
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr "Klaida, perkeliant \"%F\"."
 
-#: ../libcore/marlin-file-operations.c:4733
+#: ../libcore/marlin-file-operations.c:4752
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Perkeliant failą į %F, įvyko klaida."
 
-#: ../libcore/marlin-file-operations.c:4990
+#: ../libcore/marlin-file-operations.c:5009
 msgid "Moving Files"
 msgstr "Perkeliami failai"
 
-#: ../libcore/marlin-file-operations.c:5019
+#: ../libcore/marlin-file-operations.c:5038
 msgid "Creating links in \"%B\""
 msgstr "Kuriamos nuorodos „%B“ aplanke"
 
-#: ../libcore/marlin-file-operations.c:5023
+#: ../libcore/marlin-file-operations.c:5042
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
@@ -771,57 +771,57 @@ msgstr[0] "Kuriama nuoroda į %'d failą"
 msgstr[1] "Kuriamos nuorodos į %'d failus"
 msgstr[2] "Kuriamos nuorodos į %'d failų"
 
-#: ../libcore/marlin-file-operations.c:5163
+#: ../libcore/marlin-file-operations.c:5182
 msgid "Error while creating link to %B."
 msgstr "Kuriant nuorodą į %B įvyko klaida."
 
-#: ../libcore/marlin-file-operations.c:5165
+#: ../libcore/marlin-file-operations.c:5184
 msgid "Symbolic links only supported for local files"
 msgstr "Simbolinės nuorodos yra palaikomos tik vietiniams failams"
 
-#: ../libcore/marlin-file-operations.c:5168
+#: ../libcore/marlin-file-operations.c:5187
 msgid "The target doesn't support symbolic links."
 msgstr "Paskirties vietą nepalaiko simbolinių nuorodų."
 
-#: ../libcore/marlin-file-operations.c:5171
+#: ../libcore/marlin-file-operations.c:5190
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Klaida, kuriant simbolinę nuorodą %F."
 
-#: ../libcore/marlin-file-operations.c:5489
+#: ../libcore/marlin-file-operations.c:5508
 msgid "Setting permissions"
 msgstr "Nustatomi leidimai"
 
-#: ../libcore/marlin-file-operations.c:5585
+#: ../libcore/marlin-file-operations.c:5604
 msgid "Cannot copy into trash."
 msgstr "Negalima kopijuoti į šiukšlinę."
 
-#: ../libcore/marlin-file-operations.c:5586
+#: ../libcore/marlin-file-operations.c:5605
 msgid "It is not permitted to copy files into the trash"
 msgstr "Nėra leidžiama kopijuoti failus į šiukšlinę"
 
-#: ../libcore/marlin-file-operations.c:5724
+#: ../libcore/marlin-file-operations.c:5743
 msgid "untitled folder"
 msgstr "bevardis aplankas"
 
-#: ../libcore/marlin-file-operations.c:5732
+#: ../libcore/marlin-file-operations.c:5751
 msgid "new file"
 msgstr "naujas failas"
 
-#: ../libcore/marlin-file-operations.c:5903
+#: ../libcore/marlin-file-operations.c:5922
 msgid "Error while creating directory %B."
 msgstr "Klaida kuriant katalogą %B."
 
-#: ../libcore/marlin-file-operations.c:5905
+#: ../libcore/marlin-file-operations.c:5924
 msgid "Error while creating file %B."
 msgstr "Klaida kuriant failą %B."
 
-#: ../libcore/marlin-file-operations.c:5907
+#: ../libcore/marlin-file-operations.c:5926
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Kuriant katalogą ties %F, įvyko klaida."
 
-#: ../libcore/marlin-file-operations.c:6217
+#: ../libcore/marlin-file-operations.c:6236
 msgid "Emptying Trash"
 msgstr "Išvaloma šiukšlinė"
 
@@ -1231,86 +1231,86 @@ msgstr[0] "Grąžinti %d elemento savininko pakeitimą"
 msgstr[1] "Grąžinti %d elementų savininko pakeitimą"
 msgstr[2] "Grąžinti %d elementų savininko pakeitimą"
 
-#: ../filechooser-module/FileChooserDialog.vala:72
+#: ../filechooser-module/FileChooserDialog.vala:73
 #: ../src/View/Widgets/TopMenu.vala:61
 msgid "Previous"
 msgstr "Ankstesnis"
 
-#: ../filechooser-module/FileChooserDialog.vala:76
+#: ../filechooser-module/FileChooserDialog.vala:77
 #: ../src/View/Widgets/TopMenu.vala:66
 msgid "Next"
 msgstr "Kitas"
 
-#: ../src/View/AbstractDirectoryView.vala:821
+#: ../src/View/AbstractDirectoryView.vala:826
 msgid "Cannot open this file"
 msgstr "Nepavyksta atverti šio failo"
 
-#: ../src/View/AbstractDirectoryView.vala:834
+#: ../src/View/AbstractDirectoryView.vala:839
 msgid "Cannot identify file type to open"
 msgstr "Nepavyksta atpažinti norimo atverti failo tipą"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1573
 msgid "Cannot drop this file"
 msgstr "Negalima numesti šio failo"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1573
 msgid "Invalid file name provided"
 msgstr "Pateiktas neteisingas failo pavadinimas"
 
-#: ../src/View/AbstractDirectoryView.vala:2054
+#: ../src/View/AbstractDirectoryView.vala:2059
 msgid "Invalid"
 msgstr "Neteisingas"
 
-#: ../src/View/AbstractDirectoryView.vala:2060
+#: ../src/View/AbstractDirectoryView.vala:2065
 msgid "Run"
 msgstr "Vykdyti"
 
-#: ../src/View/AbstractDirectoryView.vala:2064
+#: ../src/View/AbstractDirectoryView.vala:2069
 msgid "Open in %s"
 msgstr "Atverti naudojant %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2074
+#: ../src/View/AbstractDirectoryView.vala:2079
 msgid "Open in"
 msgstr "Kur atverti"
 
-#: ../src/View/AbstractDirectoryView.vala:2076
+#: ../src/View/AbstractDirectoryView.vala:2081
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:482
 msgid "Open with"
 msgstr "Atverti naudojant"
 
-#: ../src/View/AbstractDirectoryView.vala:2135
+#: ../src/View/AbstractDirectoryView.vala:2140
 #: ../src/Dialogs/PropertiesWindow.vala:616
 msgid "Other Application…"
 msgstr "Kita programa…"
 
-#: ../src/View/AbstractDirectoryView.vala:2164
+#: ../src/View/AbstractDirectoryView.vala:2169
 msgid "Templates"
 msgstr "Šablonai"
 
-#: ../src/View/AbstractDirectoryView.vala:2411
+#: ../src/View/AbstractDirectoryView.vala:2416
 msgid "Untitled %s"
 msgstr "Be pavadinimo %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2750
-#: ../src/View/AbstractDirectoryView.vala:2934
+#: ../src/View/AbstractDirectoryView.vala:2755
+#: ../src/View/AbstractDirectoryView.vala:2939
 msgid "Cannot remove files from here"
 msgstr "Failai negali būti iš čia pašalinti"
 
-#: ../src/View/AbstractDirectoryView.vala:2751
-#: ../src/View/AbstractDirectoryView.vala:2919
-#: ../src/View/AbstractDirectoryView.vala:2935
+#: ../src/View/AbstractDirectoryView.vala:2756
+#: ../src/View/AbstractDirectoryView.vala:2924
+#: ../src/View/AbstractDirectoryView.vala:2940
 msgid "You do not have permission to change this location"
 msgstr "Jūs neturite leidimų keisti šios vietos"
 
-#: ../src/View/AbstractDirectoryView.vala:2894
+#: ../src/View/AbstractDirectoryView.vala:2899
 msgid "Cannot copy files that are in the trash"
 msgstr "Nepavyksta nukopijuoti failų, kurie yra šiukšlinėje"
 
-#: ../src/View/AbstractDirectoryView.vala:2895
+#: ../src/View/AbstractDirectoryView.vala:2900
 msgid "Cutting the selection instead"
 msgstr "Vietoj to, iškerpamas pasirinkimas"
 
-#: ../src/View/AbstractDirectoryView.vala:2918
+#: ../src/View/AbstractDirectoryView.vala:2923
 msgid "Cannot paste files here"
 msgstr "Failai negali būti čia įdėti"
 
@@ -1356,122 +1356,121 @@ msgstr "Tipas"
 msgid "Modified"
 msgstr "Keista"
 
-#: ../src/View/Sidebar.vala:491
+#: ../src/View/PopupMenuBuilder.vala:34
+msgid "Open"
+msgstr "Atverti"
+
+#: ../src/View/PopupMenuBuilder.vala:38
+msgid "Open in New _Tab"
+msgstr "Atverti naujoje _kortelėje"
+
+#: ../src/View/PopupMenuBuilder.vala:42
+msgid "Open in New _Window"
+msgstr "Atverti naujame _lange"
+
+#: ../src/View/PopupMenuBuilder.vala:46
+msgid "Remove"
+msgstr "Šalinti"
+
+#: ../src/View/PopupMenuBuilder.vala:50 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Pervadinti"
+
+#: ../src/View/PopupMenuBuilder.vala:54
+msgid "_Mount"
+msgstr "Pri_jungti"
+
+#: ../src/View/PopupMenuBuilder.vala:58
+msgid "_Unmount"
+msgstr "_Atjungti"
+
+#: ../src/View/PopupMenuBuilder.vala:62
+msgid "_Eject"
+msgstr "_Išstumti"
+
+#: ../src/View/PopupMenuBuilder.vala:66
+#: ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:91
+msgid "Properties"
+msgstr "Savybės"
+
+#: ../src/View/Sidebar.vala:499
 msgid "Personal"
 msgstr "Asmeniniai"
 
-#: ../src/View/Sidebar.vala:492
+#: ../src/View/Sidebar.vala:500
 msgid "Your common places and bookmarks"
 msgstr "Jūsų dažniausiai lankomos vietos ir žymelės"
 
-#: ../src/View/Sidebar.vala:504 ../src/View/ViewContainer.vala:377
+#: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:377
 msgid "Home"
 msgstr "Namų aplankas"
 
-#: ../src/View/Sidebar.vala:511
+#: ../src/View/Sidebar.vala:519
 msgid "Open your personal folder"
 msgstr "Atverti jūsų asmeninį aplanką"
 
-#: ../src/View/Sidebar.vala:526
+#: ../src/View/Sidebar.vala:534
 msgid "View the list of recently used files"
 msgstr "Žiūrėti neseniai naudotų failų sąrašą"
 
-#: ../src/View/Sidebar.vala:552 ../libwidgets/Resources.vala:65
+#: ../src/View/Sidebar.vala:560 ../libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Šiukšlinė"
 
-#: ../src/View/Sidebar.vala:559
+#: ../src/View/Sidebar.vala:567
 msgid "Open the Trash"
 msgstr "Atverti šiukšlinę"
 
-#: ../src/View/Sidebar.vala:564
+#: ../src/View/Sidebar.vala:572
 msgid "Devices"
 msgstr "Įrenginiai"
 
-#: ../src/View/Sidebar.vala:565
+#: ../src/View/Sidebar.vala:573
 msgid "Your local partitions and devices"
 msgstr "Jūsų vietiniai skaidiniai ir įrenginiai"
 
-#: ../src/View/Sidebar.vala:571 ../src/View/ViewContainer.vala:379
+#: ../src/View/Sidebar.vala:579 ../src/View/ViewContainer.vala:379
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Failų sistema"
 
-#: ../src/View/Sidebar.vala:692 ../libwidgets/Resources.vala:62
+#: ../src/View/Sidebar.vala:700 ../libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Tinklas"
 
-#: ../src/View/Sidebar.vala:693
+#: ../src/View/Sidebar.vala:701
 msgid "Your network places"
 msgstr "Jūsų tinklo vietos"
 
-#: ../src/View/Sidebar.vala:725
+#: ../src/View/Sidebar.vala:733
 msgid "Entire Network"
 msgstr "Visas tinklas"
 
-#: ../src/View/Sidebar.vala:732
+#: ../src/View/Sidebar.vala:740
 msgid "Browse the contents of the network"
 msgstr "Naršyti tinklo turinį"
 
-#: ../src/View/Sidebar.vala:735
-#, fuzzy
+#: ../src/View/Sidebar.vala:743
 msgid "Connect Server"
 msgstr "Prisijungti prie serverio"
 
-#: ../src/View/Sidebar.vala:735
-#, fuzzy
+#: ../src/View/Sidebar.vala:743
 msgid "Connect to a network server"
-msgstr "Jungtis prie tinklo failų serverio"
+msgstr "Prisijungti prie tinklo serverio"
 
-#: ../src/View/Sidebar.vala:876
+#: ../src/View/Sidebar.vala:881
 msgid "(%s Free of %s)"
 msgstr "(%s laisva iš %s)"
 
-#: ../src/View/Sidebar.vala:1366
+#: ../src/View/Sidebar.vala:1371
 msgid "Error mounting volume %s"
 msgstr "Klaida, prijungiant tomą %s"
 
-#: ../src/View/Sidebar.vala:1381
+#: ../src/View/Sidebar.vala:1386
 msgid "Unable to start %s"
 msgstr "Nepavyko paleisti %s"
-
-#: ../src/View/Sidebar.vala:1483
-msgid "Open"
-msgstr "Atverti"
-
-#: ../src/View/Sidebar.vala:1487
-msgid "Open in New _Tab"
-msgstr "Atverti naujoje _kortelėje"
-
-#: ../src/View/Sidebar.vala:1491
-msgid "Open in New _Window"
-msgstr "Atverti naujame _lange"
-
-#: ../src/View/Sidebar.vala:1497
-msgid "Remove"
-msgstr "Šalinti"
-
-#: ../src/View/Sidebar.vala:1501 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Pervadinti"
-
-#: ../src/View/Sidebar.vala:1507
-msgid "_Mount"
-msgstr "Pri_jungti"
-
-#: ../src/View/Sidebar.vala:1511
-msgid "_Unmount"
-msgstr "_Atjungti"
-
-#: ../src/View/Sidebar.vala:1515
-msgid "_Eject"
-msgstr "_Išstumti"
-
-#: ../src/View/Sidebar.vala:1524 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:91
-msgid "Properties"
-msgstr "Savybės"
 
 #: ../src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -1646,7 +1645,7 @@ msgstr "Rašyti"
 msgid "Execute"
 msgstr "Vykdyti"
 
-#: ../src/View/Window.vala:481 ../src/View/Window.vala:491
+#: ../src/View/Window.vala:484 ../src/View/Window.vala:494
 msgid "(as Administrator)"
 msgstr "(kaip administratorius)"
 
@@ -1655,8 +1654,8 @@ msgid "Show the version of the program"
 msgstr "Rodyti programos versiją."
 
 #: ../src/Application.vala:121
-msgid "Open uri(s) in new tab"
-msgstr "Atverti URI naujoje kortelėje"
+msgid "Open one or more uris, each in a new tab"
+msgstr "Atverti vieną ar daugiau URI, kiekvieną atskiroje kortelėje"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -1960,68 +1959,59 @@ msgstr "Serverio informacija"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Serverio pavadinimas ar IP adresas"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "_Serveris:"
+msgstr "Serveris:"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "_Prievadas:"
+msgstr "Prievadas:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Viešinio serveryje pavadinimas"
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "_Viešinys:"
+msgstr "Viešinys:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Kelias į bendrinamą aplanką serveryje"
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Aplankas:"
+msgstr "Aplankas:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
 msgstr "Naudotojo informacija"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Naujas langas _administratoriaus teisėmis"
+msgstr "Windows srities pavadinimas"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Srities pavadinimas:"
+msgstr "Srities pavadinimas:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "Naudotojo serveryje vardas"
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "_Naudotojo vardas:"
+msgstr "Naudotojo vardas:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "Sla_ptažodis:"
+msgstr "Slaptažodis:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "P_risiminti šį slaptažodį"
+msgstr "Prisiminti šį slaptažodį"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -2029,18 +2019,16 @@ msgid "Cancel"
 msgstr "Atsisakyti"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "Prisi_jungti"
+msgstr "Prisijungti"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Tęsti"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
-msgstr "Jungiamasi..."
+msgstr "Jungiamasi…"
 
 #: ../libcore/ConnectServerDialog.vala:346
 msgid "Please verify your user details."
@@ -2097,11 +2085,11 @@ msgstr "Per_vadinti"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "Palikti naujausią"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Praleisti, jei pradinis failas buvo modifikuotas vėlesniu laiku"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
@@ -2208,11 +2196,11 @@ msgstr "%A, %-k:%M"
 msgid "Preparing"
 msgstr "Ruošiama"
 
-#: ../libcore/StockDialogs.vala:39
+#: ../libcore/StockDialogs.vala:51
 msgid "Show more _details"
 msgstr "Rodyti daugiau _informacijos"
 
-#: ../libcore/gof-directory-async.vala:661
+#: ../libcore/gof-directory-async.vala:660
 msgid "Server did not respond within time limit"
 msgstr "Serveris neatsakė per tam tikrą laiko terminą"
 

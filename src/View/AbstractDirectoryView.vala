@@ -483,7 +483,12 @@ namespace FM {
         }
 
         public new void grab_focus () {
-            if (slot.is_active && view.get_realized ()) {
+            if (view.get_realized ()) {
+                /* In Column View, maybe clicked on an inactive column */
+                if (!slot.is_active) {
+                    set_active_slot ();
+                }
+
                 view.grab_focus ();
             }
         }
@@ -3210,13 +3215,14 @@ namespace FM {
                 return true;
             }
 
+            grab_focus ();
+
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
             drag_y = (int)(event.y);
 
             click_zone = get_event_position_info (event, out path, true);
-
             /* certain positions fake a no path blank zone */
             if (click_zone == ClickZone.BLANK_NO_PATH && path != null) {
                 unselect_path (path);
@@ -3298,7 +3304,6 @@ namespace FM {
                         case ClickZone.HELPER:
                             bool multi_select = only_control_pressed || only_shift_pressed;
                             if (multi_select) { /* Treat like modified click on icon */
-                                update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 if (path_selected) {
@@ -3308,6 +3313,7 @@ namespace FM {
                                     select_path (path, true); /* Cursor follow and selection preserved */
                                 }
 
+                                unblock_drag_and_drop ();
                                 result = true; /* Prevent rubberbanding and deselection of other paths */
                             }
                             break;
@@ -3342,7 +3348,8 @@ namespace FM {
                 case Gdk.BUTTON_SECONDARY: // button 3
                     if (click_zone == ClickZone.NAME ||
                         click_zone == ClickZone.BLANK_PATH ||
-                        click_zone == ClickZone.ICON) {
+                        click_zone == ClickZone.ICON ||
+                        click_zone == ClickZone.HELPER) {
 
                         select_path (path);
                     } else if (click_zone == ClickZone.INVALID) {
@@ -3353,7 +3360,7 @@ namespace FM {
                     update_selected_files_and_menu ();
                     unblock_drag_and_drop ();
                     start_drag_timer (event);
-                    
+
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -3383,7 +3390,7 @@ namespace FM {
             Gtk.Widget widget = get_real_view ();
             int x = (int)event.x;
             int y = (int)event.y;
-
+            update_selected_files_and_menu ();
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 if (should_activate) {
