@@ -28,7 +28,8 @@ namespace PF.PixbufUtils {
     }
 
     public Gdk.Pixbuf lighten (Gdk.Pixbuf src) {
-        GLib.return_val_if_fail ((!src.has_alpha && src.n_channels == 3) || (src.has_alpha && src.n_channels == 4), src);
+        GLib.return_val_if_fail ((!src.has_alpha && src.n_channels == 3) || (src.has_alpha && src.n_channels == 4),
+                                 src);
         GLib.return_val_if_fail (src.bits_per_sample == 8, src);
 
         var width = src.width;
@@ -38,18 +39,18 @@ namespace PF.PixbufUtils {
         var dest = new Gdk.Pixbuf (src.colorspace, src.has_alpha, src.bits_per_sample, width, height);
         var dst_row_stride = dest.rowstride;
         var src_row_stride = src.rowstride;
-        unowned uint8[] target_pixels = (uint8[])dest.pixels;
-        unowned uint8[] original_pixels = (uint8[])src.pixels;
+        unowned uint8[] target_pix = (uint8[])dest.pixels;
+        unowned uint8[] original_pix = (uint8[])src.pixels;
         for (int i = 0; i < height; i++) {
             int src_row = i * src_row_stride;
             int dst_row = i * dst_row_stride;
             for (int j = 0; j < width; j++) {
                 var width_offset = j * channels;
-                target_pixels[dst_row + width_offset] = lighten_component (original_pixels[src_row + width_offset]);
-                target_pixels[dst_row + width_offset + 1] = lighten_component (original_pixels[src_row + width_offset + 1]);
-                target_pixels[dst_row + width_offset + 2] = lighten_component (original_pixels[src_row + width_offset + 2]);
+                target_pix[dst_row + width_offset] = lighten_component (original_pix[src_row + width_offset]);
+                target_pix[dst_row + width_offset + 1] = lighten_component (original_pix[src_row + width_offset + 1]);
+                target_pix[dst_row + width_offset + 2] = lighten_component (original_pix[src_row + width_offset + 2]);
                 if (has_alpha) {
-                    target_pixels[dst_row + width_offset + 3] = original_pixels[src_row + width_offset + 3];
+                    target_pix[dst_row + width_offset + 3] = original_pix[src_row + width_offset + 3];
                 }
             }
         }
@@ -58,7 +59,8 @@ namespace PF.PixbufUtils {
     }
 
     public Gdk.Pixbuf darken (Gdk.Pixbuf src, uint8 saturation, uint8 darken) {
-        GLib.return_val_if_fail ((!src.has_alpha && src.n_channels == 3) || (src.has_alpha && src.n_channels == 4), src);
+        GLib.return_val_if_fail ((!src.has_alpha && src.n_channels == 3) || (src.has_alpha && src.n_channels == 4),
+                                 src);
         GLib.return_val_if_fail (src.bits_per_sample == 8, src);
 
         var width = src.width;
@@ -68,24 +70,24 @@ namespace PF.PixbufUtils {
         var dest = new Gdk.Pixbuf (src.colorspace, has_alpha, src.bits_per_sample, width, height);
         var dst_row_stride = dest.rowstride;
         var src_row_stride = src.rowstride;
-        unowned uint8[] target_pixels = (uint8[])dest.pixels;
-        unowned uint8[] original_pixels = (uint8[])src.pixels;
+        unowned uint8[] target_pix = (uint8[])dest.pixels;
+        unowned uint8[] original_pix = (uint8[])src.pixels;
         for (int i = 0; i < height; i++) {
             int src_row = i * src_row_stride;
             int dst_row = i * dst_row_stride;
             for (int j = 0; j < width; j++) {
                 var width_offset = j * channels;
-                uint8 r = original_pixels[src_row + width_offset];
-                uint8 g = original_pixels[src_row + width_offset + 1];
-                uint8 b = original_pixels[src_row + width_offset + 2];
+                uint8 r = original_pix[src_row + width_offset];
+                uint8 g = original_pix[src_row + width_offset + 1];
+                uint8 b = original_pix[src_row + width_offset + 2];
                 uint8 intensity = (r * 77 + g * 150 + b * 28) >> 8;
                 uint8 negalpha = ((uint8.MAX - saturation) * darken) >> 8;
                 uint8 alpha = (saturation * darken) >> 8;
-                target_pixels[dst_row + width_offset] = (negalpha * intensity + alpha * r) >> 8;
-                target_pixels[dst_row + width_offset + 1] = (negalpha * intensity + alpha * g) >> 8;
-                target_pixels[dst_row + width_offset + 2] = (negalpha * intensity + alpha * b) >> 8;
+                target_pix[dst_row + width_offset] = (negalpha * intensity + alpha * r) >> 8;
+                target_pix[dst_row + width_offset + 1] = (negalpha * intensity + alpha * g) >> 8;
+                target_pix[dst_row + width_offset + 2] = (negalpha * intensity + alpha * b) >> 8;
                 if (has_alpha) {
-                    target_pixels[dst_row + width_offset + 3] = original_pixels[src_row + width_offset + 3];
+                    target_pix[dst_row + width_offset + 3] = original_pix[src_row + width_offset + 3];
                 }
             }
         }
@@ -95,7 +97,9 @@ namespace PF.PixbufUtils {
 
     /* this routine colorizes the passed-in pixbuf by multiplying each pixel with the passed in color */
     public Gdk.Pixbuf colorize (Gdk.Pixbuf src, Gdk.RGBA color) {
-        GLib.return_val_if_fail ((!src.has_alpha && src.n_channels == 3) || (src.has_alpha && src.n_channels == 4), src);
+        GLib.return_val_if_fail ((!src.has_alpha && src.n_channels == 3) || (src.has_alpha && src.n_channels == 4),
+                                 src);
+
         GLib.return_val_if_fail (src.bits_per_sample == 8, src);
 
         var red_value = (uint8) GLib.Math.floor (color.red * uint8.MAX);
@@ -109,18 +113,18 @@ namespace PF.PixbufUtils {
         var dest = new Gdk.Pixbuf (src.colorspace, has_alpha, src.bits_per_sample, width, height);
         var dst_row_stride = dest.rowstride;
         var src_row_stride = src.rowstride;
-        unowned uint8[] target_pixels = (uint8[])dest.pixels;
-        unowned uint8[] original_pixels = (uint8[])src.pixels;
+        unowned uint8[] target_pix = (uint8[])dest.pixels;
+        unowned uint8[] original_pix = (uint8[])src.pixels;
         for (int i = 0; i < height; i++) {
             int src_row = i * src_row_stride;
             int dst_row = i * dst_row_stride;
             for (int j = 0; j < width; j++) {
                 var width_offset = j * channels;
-                target_pixels[dst_row + width_offset] = (original_pixels[src_row + width_offset] * red_value) >> 8;
-                target_pixels[dst_row + width_offset + 1] = (original_pixels[src_row + width_offset + 1] * green_value) >> 8;
-                target_pixels[dst_row + width_offset + 2] = (original_pixels[src_row + width_offset + 2] * blue_value) >> 8;
+                target_pix[dst_row + width_offset] = (original_pix[src_row + width_offset] * red_value) >> 8;
+                target_pix[dst_row + width_offset + 1] = (original_pix[src_row + width_offset + 1] * green_value) >> 8;
+                target_pix[dst_row + width_offset + 2] = (original_pix[src_row + width_offset + 2] * blue_value) >> 8;
                 if (has_alpha) {
-                    target_pixels[dst_row + width_offset + 3] = original_pixels[src_row + width_offset + 3];
+                    target_pix[dst_row + width_offset + 3] = original_pix[src_row + width_offset + 3];
                 }
             }
         }
@@ -137,17 +141,17 @@ namespace PF.PixbufUtils {
         var dest = new Gdk.Pixbuf (src.colorspace, true, src.bits_per_sample, width, height);
         var dst_row_stride = dest.rowstride;
         var src_row_stride = src.rowstride;
-        unowned uint8[] target_pixels = (uint8[])dest.pixels;
-        unowned uint8[] original_pixels = (uint8[])src.pixels;
+        unowned uint8[] target_pix = (uint8[])dest.pixels;
+        unowned uint8[] original_pix = (uint8[])src.pixels;
         if (has_alpha) {
             for (int i = 0; i < height; i++) {
                 int src_row = i * src_row_stride;
                 int dst_row = i * dst_row_stride;
                 for (int j = 0; j < width; j++) {
-                    target_pixels[dst_row + j*4] = original_pixels[src_row + j*4];
-                    target_pixels[dst_row + j*4 + 1] = original_pixels[src_row + j*4 + 1];
-                    target_pixels[dst_row + j*4 + 2] = original_pixels[src_row + j*4 + 2];
-                    target_pixels[dst_row + j*4 + 3] = (uint8)(((uint)original_pixels[src_row + j*4 + 3]) * percent / 100u);
+                    target_pix[dst_row + j*4] = original_pix[src_row + j*4];
+                    target_pix[dst_row + j*4 + 1] = original_pix[src_row + j*4 + 1];
+                    target_pix[dst_row + j*4 + 2] = original_pix[src_row + j*4 + 2];
+                    target_pix[dst_row + j*4 + 3] = (uint8)(((uint)original_pix[src_row + j*4 + 3]) * percent / 100u);
                 }
             }
         } else {
@@ -156,10 +160,10 @@ namespace PF.PixbufUtils {
                 int src_row = i * src_row_stride;
                 int dst_row = i * dst_row_stride;
                 for (int j = 0; j < width; j++) {
-                    target_pixels[dst_row + j*4] = original_pixels[src_row + j*3];
-                    target_pixels[dst_row + j*4 + 1] = original_pixels[src_row + j*3 + 1];
-                    target_pixels[dst_row + j*4 + 2] = original_pixels[src_row + j*3 + 2];
-                    target_pixels[dst_row + j*4 + 3] = (uint8)percent;
+                    target_pix[dst_row + j*4] = original_pix[src_row + j*3];
+                    target_pix[dst_row + j*4 + 1] = original_pix[src_row + j*3 + 1];
+                    target_pix[dst_row + j*4 + 2] = original_pix[src_row + j*3 + 2];
+                    target_pix[dst_row + j*4 + 3] = (uint8)percent;
                 }
             }
         }

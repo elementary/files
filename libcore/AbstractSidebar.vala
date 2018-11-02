@@ -95,9 +95,12 @@ namespace Marlin {
             content_box.show_all ();
         }
 
-        public void add_extra_network_item (string text, string tooltip, Icon? icon, Marlin.PluginCallbackFunc? cb) {
+        public void add_extra_network_item (string text, string tooltip,
+                                            Icon? icon, Marlin.PluginCallbackFunc? cb) {
+
             add_extra_item (network_category_reference, text, tooltip, icon, cb);
         }
+
 
         public void add_extra_item (Gtk.TreeRowReference category, string text, string tooltip, Icon? icon,
                                     Marlin.PluginCallbackFunc? cb, Icon? action_icon = null) {

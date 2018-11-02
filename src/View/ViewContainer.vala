@@ -409,19 +409,22 @@ namespace Marlin.View {
                     }
                 } else if (!dir.network_available) {
                     content = new Marlin.View.Welcome (_("The network is unavailable"),
-                                                       _("A working network is needed to reach this folder") + "\n\n" + dir.last_error_message);
+                                                       _("A working network is needed to reach this folder") + "\n\n" +
+                                                       dir.last_error_message);
                 } else if (dir.permission_denied) {
                     content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
                                                        _("You don't have permission to view this folder."));
                 } else if (!dir.file.is_connected) {
                     content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
-                                                       _("Could not connect to the server for this folder.") + "\n\n" + dir.last_error_message);
+                                                       _("Could not connect to the server for this folder.") + "\n\n" +
+                                                       dir.last_error_message);
                 } else if (slot.directory.state == GOF.Directory.Async.State.TIMED_OUT) {
                     content = new Marlin.View.Welcome (_("Unable to Display Folder Contents"),
                                                        _("The operation timed out.") + "\n\n" + dir.last_error_message);
                 } else {
                     content = new Marlin.View.Welcome (_("Unable to Show Folder"),
-                                                       _("The server for this folder could not be located.") + "\n\n" + dir.last_error_message);
+                                                       _("The server for this folder could not be located.") + "\n\n" +
+                                                       dir.last_error_message);
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
