@@ -128,7 +128,8 @@ public class Async : Object {
         scheme = location.get_uri_scheme ();
         is_trash = PF.FileUtils.location_is_in_trash (location);
         is_recent = (scheme == "recent");
-        is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme)); //Try lifting requirement for info on remote connections
+        //Try lifting requirement for info on remote connections
+        is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
         can_open_files = !("mtp".contains (scheme));
@@ -221,7 +222,9 @@ public class Async : Object {
             file.update ();
         }
 
-        debug ("success %s; enclosing mount %s", success.to_string (), file.mount != null ? file.mount.get_name () : "null");
+        debug ("success %s; enclosing mount %s", success.to_string (),
+                                                 file.mount != null ? file.mount.get_name () : "null");
+
         yield make_ready (is_no_info || success, file_loaded_func); /* Only place that should call this function */
     }
 
@@ -284,7 +287,8 @@ public class Async : Object {
         if (success) {
             debug ("got file info - updating");
             file.update ();
-            debug ("success %s; enclosing mount %s", success.to_string (), file.mount != null ? file.mount.get_name () : "null");
+            debug ("success %s; enclosing mount %s", success.to_string (),
+                                                     file.mount != null ? file.mount.get_name () : "null");
             return true;
         } else {
             debug ("Failed to get file info for %s", file.uri);
@@ -365,7 +369,8 @@ public class Async : Object {
             cancel_timeout (ref mount_timeout_id);
         }
 
-        debug ("success %s; enclosing mount %s", res.to_string (), file.mount != null ? file.mount.get_name () : "null");
+        debug ("success %s; enclosing mount %s", res.to_string (),
+                                                 file.mount != null ? file.mount.get_name () : "null");
         return res;
     }
 
@@ -386,9 +391,12 @@ public class Async : Object {
                         scl.set_timeout (CONNECT_SOCKET_TIMEOUT_SEC);
                         scl.set_tls (PF.FileUtils.get_is_tls_for_protocol (scheme));
                         debug ("Trying to connect to connectable");
-                        var sc = yield scl.connect_to_uri_async (file.uri, PF.FileUtils.get_default_port_for_protocol (scheme), cancellable);
+                        var default_port = PF.FileUtils.get_default_port_for_protocol (scheme);
+                        var sc = yield scl.connect_to_uri_async (file.uri, default_port, cancellable);
                         success = (sc != null && sc.is_connected ());
-                        debug ("Socketclient is %s", sc == null ? "null" : (sc.is_connected () ? "connected" : "not connected"));
+                        debug ("Socketclient is %s",
+                                sc == null ? "null" : (sc.is_connected () ? "connected" : "not connected"));
+
                     } catch (GLib.Error e) {
                         last_error_message = e.message;
                         warning ("Error: could not connect to connectable %s - %s", file.uri, e.message);
@@ -1190,7 +1198,8 @@ public class Async : Object {
     }
 
     public bool is_empty () {
-        return (state == State.LOADED && file_hash.size () == 0); /* only return true when loaded to avoid temporary appearance of empty message while loading */
+        /* only return true when loaded to avoid temporary appearance of empty message while loading */
+        return (state == State.LOADED && file_hash.size () == 0);
     }
 
     public unowned List<GOF.File>? get_sorted_dirs () {

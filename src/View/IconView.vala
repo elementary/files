@@ -298,7 +298,9 @@ namespace FM {
             tree.set_cursor (path, renderer, start_editing);
         }
 
-        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed, bool only_shift_pressed) {
+        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed,
+                                                          bool only_shift_pressed) {
+
             linear_select_required = only_shift_pressed;
             if (linear_select_required) {
                 return true;
