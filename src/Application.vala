@@ -239,6 +239,7 @@ public class Marlin.Application : Gtk.Application {
         Preferences.marlin_list_view_settings = new Settings ("io.elementary.files.list-view");
         Preferences.marlin_column_view_settings = new Settings ("io.elementary.files.column-view");
         Preferences.gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
+        Preferences.gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
         Preferences.gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
 
         /* Bind settings with GOFPreferences */
@@ -249,7 +250,9 @@ public class Marlin.Application : Gtk.Application {
         Preferences.settings.bind ("confirm-trash", prefs, "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
         Preferences.gnome_interface_settings.bind ("clock-format",
-                                   prefs, "clock-format", GLib.SettingsBindFlags.GET);
+                                   GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
+        Preferences.gnome_privacy_settings.bind ("remember-recent-files",
+                                   GOF.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
         Preferences.gtk_file_chooser_settings.bind ("sort-directories-first",
                                    prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
