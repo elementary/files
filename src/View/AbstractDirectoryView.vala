@@ -483,7 +483,7 @@ namespace FM {
             return open_with_apps;
         }
 
-        public unowned GLib.AppInfo get_default_app () {
+        public GLib.AppInfo get_default_app () {
             return default_app;
         }
 
@@ -2064,13 +2064,12 @@ namespace FM {
         }
 
         private GLib.MenuModel? build_menu_open (ref Gtk.Builder builder) {
-
             var menu = new GLib.Menu ();
             GLib.MenuModel? app_submenu;
 
             string label = _("Invalid");
-            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
-            unowned GOF.File selected_file = selection.data;
+            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GOF.File selected_file = selection.data;
 
             if (can_open_file (selected_file)) {
                 if (!selected_file.is_folder () && selected_file.is_executable ()) {
@@ -2114,6 +2113,7 @@ namespace FM {
 
             if (can_open_file (selection.data)) {
                 open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+
                 if (selection.data.is_executable () == false) {
                     filter_default_app_from_open_with_apps ();
                 }
