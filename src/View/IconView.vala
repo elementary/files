@@ -231,12 +231,11 @@ namespace FM {
                 tree.get_cell_rect (p, r, out rect);
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
-                /* rectangles are in bin window coordinates - need to adjust event y coordinate
-                 * for vertical scrolling in order to accurately detect whicn area of item was
-                 * clicked on */
-                y -= (int)(get_vadjustment ().value);
-
                 if (r is Marlin.TextRenderer) {
+                    /* rectangles are in bin window coordinates - need to adjust event y coordinate
+                     * for vertical scrolling in order to accurately detect which area of TextRenderer was
+                     * clicked on */
+                    y -= (int)(get_vadjustment ().value);
                     Gtk.TreeIter iter;
                     model.get_iter (out iter, path);
                     string? text = null;
@@ -261,8 +260,7 @@ namespace FM {
                     bool on_helper = false;
                     GOF.File? file = model.file_for_path (p);
                     if (file != null) {
-                        /* RTL has no effect on is_on_icon in IconView so just pass false */
-                        bool on_icon = is_on_icon (x, y, rect, file.pix, false, ref on_helper);
+                        bool on_icon = is_on_icon (x, y, ref on_helper);
 
                         if (on_helper) {
                             zone = ClickZone.HELPER;
@@ -300,7 +298,9 @@ namespace FM {
             tree.set_cursor (path, renderer, start_editing);
         }
 
-        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed, bool only_shift_pressed) {
+        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed,
+                                                          bool only_shift_pressed) {
+
             linear_select_required = only_shift_pressed;
             if (linear_select_required) {
                 return true;

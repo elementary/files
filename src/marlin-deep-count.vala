@@ -34,7 +34,11 @@ public class Marlin.DeepCount : Object {
 
     public DeepCount (File _file) {
         file = _file;
-        deep_count_attrs = FileAttribute.STANDARD_NAME + "," + FileAttribute.STANDARD_TYPE + "," + FileAttribute.STANDARD_SIZE + "," + FileAttribute.STANDARD_ALLOCATED_SIZE;
+        deep_count_attrs = string.join (",",
+                                        FileAttribute.STANDARD_NAME,
+                                        FileAttribute.STANDARD_TYPE,
+                                        FileAttribute.STANDARD_SIZE,
+                                        FileAttribute.STANDARD_ALLOCATED_SIZE);
         cancellable = new Cancellable ();
         process_directory.begin (file);
     }
@@ -46,7 +50,9 @@ public class Marlin.DeepCount : Object {
         try {
             /*bool exists = yield Utils.query_exists_async (directory);
               if (!exists) return;*/
-            var e = yield directory.enumerate_children_async (deep_count_attrs, FileQueryInfoFlags.NOFOLLOW_SYMLINKS, Priority.LOW, cancellable);
+            var e = yield directory.enumerate_children_async (deep_count_attrs,
+                                                              FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                                                              Priority.LOW, cancellable);
 
             while (true) {
                 var files = yield e.next_files_async (1024, Priority.LOW, cancellable);

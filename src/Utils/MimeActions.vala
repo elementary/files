@@ -37,10 +37,10 @@ public class Marlin.MimeActions {
         return app;
     }
 
-    public static AppInfo? get_default_application_for_files (GLib.List<unowned GOF.File> files) {
+    public static AppInfo? get_default_application_for_files (GLib.List<GOF.File> files) {
         assert (files != null);
         /* Need to make a new list to avoid corrupting the selection */
-        GLib.List<unowned GOF.File> sorted_files = null;
+        GLib.List<GOF.File> sorted_files = null;
         files.@foreach ((file) => {
             sorted_files.prepend (file);
         });
@@ -87,7 +87,10 @@ public class Marlin.MimeActions {
             return result;
         }
 
+        /* For some reason this may return null even when a default app exists (e.g. for
+         * compressed files */
         result = AppInfo.get_all_for_type (type);
+
         string uri_scheme = file.location.get_uri_scheme ();
 
         if (uri_scheme != null) {
@@ -96,6 +99,10 @@ public class Marlin.MimeActions {
             if (uri_handler != null) {
                 result.prepend (uri_handler);
             }
+        }
+
+        if (result == null) {
+            return null;
         }
 
         if (!file_has_local_path (file)) {
@@ -123,11 +130,15 @@ public class Marlin.MimeActions {
             result = filter_non_uri_apps (result);
         }
 
+        if (result == null) {
+            return null;
+        }
+
         result.sort (application_compare_by_name);
         return result;
     }
 
-    public static List<AppInfo>? get_applications_for_files (GLib.List<unowned GOF.File> files) {
+    public static List<AppInfo>? get_applications_for_files (GLib.List<GOF.File> files) {
         assert (files != null);
         /* Need to make a new list to avoid corrupting the selection */
         GLib.List<unowned GOF.File> sorted_files = null;
@@ -143,6 +154,10 @@ public class Marlin.MimeActions {
         foreach (unowned GOF.File file in sorted_files) {
             if (previous_file == null) {
                 result = get_applications_for_file (file);
+                if (result == null) {
+                    debug ("No application found for %s", file.get_ftype ());
+                    return null;
+                }
                 previous_file = file;
                 continue;
             }
@@ -167,6 +182,10 @@ public class Marlin.MimeActions {
             }
 
             previous_file = file;
+        }
+
+        if (result == null) {
+            return null;
         }
 
         result.sort (application_compare_by_name);
@@ -259,7 +278,9 @@ public class Marlin.MimeActions {
         }
     }
 
-    public static void open_multiple_gof_files_request (GLib.List<GOF.File> gofs_to_open, Gtk.Widget parent, AppInfo? app = null) {
+    public static void open_multiple_gof_files_request (GLib.List<GOF.File> gofs_to_open,
+                                                        Gtk.Widget parent,
+                                                        AppInfo? app = null) {
         /* Note: This function should be only called if files_to_open are not executables or it is not
          * intended to execute them (AbstractDirectoryView takes care of this) */
         AppInfo? app_info = null;
