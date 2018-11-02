@@ -36,7 +36,10 @@ namespace Marlin.View.Chrome {
         public bool search_mode = false; // Used to suppress activate events while searching
 
         /** Drag and drop support **/
-        protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
+        protected const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY |
+                                                            Gdk.DragAction.MOVE |
+                                                            Gdk.DragAction.LINK);
+
         private bool drop_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs in the drop data */
