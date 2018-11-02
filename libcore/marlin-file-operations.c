@@ -4109,6 +4109,7 @@ retry:
             response->id == GTK_RESPONSE_DELETE_EVENT) {
             conflict_response_data_free (response);
             abort_job (job);
+            goto out;
         }
 
         if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
@@ -4148,7 +4149,10 @@ retry:
             conflict_response_data_free (response);
             goto retry;
         } else {
-            g_assert_not_reached ();
+            /* Failsafe rather than crash */
+            conflict_response_data_free (response);
+            abort_job (job);
+            goto out;
         }
     } else if (overwrite &&
              IS_IO_ERROR (error, IS_DIRECTORY)) {
@@ -4690,6 +4694,7 @@ retry:
             response->id == GTK_RESPONSE_DELETE_EVENT) {
             conflict_response_data_free (response);
             abort_job (job);
+            goto out;
         } else if (response->id == MARLIN_FILE_CONFLICT_DIALOG_RESPONSE_TYPE_SKIP) {
             if (response->apply_to_all) {
                 job->skip_all_conflict = TRUE;
@@ -4722,11 +4727,12 @@ retry:
             conflict_response_data_free (response);
             goto retry;
         } else {
-            g_assert_not_reached ();
+            /* Failsafe rather than crash */
+            conflict_response_data_free (response);
+            abort_job (job);
+            goto out;
         }
-    }
-
-    else if (IS_IO_ERROR (error, WOULD_RECURSE) ||
+    } else if (IS_IO_ERROR (error, WOULD_RECURSE) ||
              IS_IO_ERROR (error, WOULD_MERGE) ||
              IS_IO_ERROR (error, NOT_SUPPORTED) ||
              (overwrite && IS_IO_ERROR (error, IS_DIRECTORY))) {
@@ -4736,14 +4742,9 @@ retry:
                                                 overwrite,
                                                 position);
         *fallback_files = g_list_prepend (*fallback_files, fallback);
-    }
-
-    else if (IS_IO_ERROR (error, CANCELLED)) {
+    } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
-    }
-
-    /* Other error */
-    else {
+    } else { /* Other error */
         if (job->skip_all_error) {
             goto out;
         }

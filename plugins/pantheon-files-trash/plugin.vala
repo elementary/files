@@ -24,12 +24,13 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     private unowned TrashMonitor trash_monitor;
     private bool trash_is_empty = false;
 
-    private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.ActionBar> actionbars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.ActionBar>();
+    private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.ActionBar> actionbars;
 
     private Gtk.Button delete_button;
     private Gtk.Button restore_button;
 
     public Trash () {
+        actionbars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.ActionBar> ();
         trash_monitor = TrashMonitor.get_default ();
         trash_monitor.notify["is-empty"].connect (() => {
             trash_is_empty = trash_monitor.is_empty;

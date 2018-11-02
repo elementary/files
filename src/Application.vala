@@ -51,7 +51,8 @@ public class Marlin.Application : Gtk.Application {
 
         /* Only allow running with root privileges using pkexec, not using sudo */
         if (Posix.getuid () == 0 && GLib.Environment.get_variable ("PKEXEC_UID") == null) {
-            warning ("Running Files as root using sudo is not possible. Please use the command: io.elementary.files-pkexec [folder]");
+            warning ("Running Files as root using sudo is not possible. " +
+                     "Please use the command: io.elementary.files-pkexec [folder]");
             quit ();
         };
 
@@ -118,7 +119,7 @@ public class Marlin.Application : Gtk.Application {
         options [0] = { "version", '\0', 0, OptionArg.NONE, ref version,
                         N_("Show the version of the program"), null };
         options [1] = { "tab", 't', 0, OptionArg.NONE, ref open_in_tab,
-                        N_("Open uri(s) in new tab"), null };
+                        N_("Open one or more uris, each in a new tab"), null };
         options [2] = { "new-window", 'n', 0, OptionArg.NONE, out create_new_window,
                         N_("New Window"), null };
         options [3] = { "quit", 'q', 0, OptionArg.NONE, ref kill_shell,
@@ -238,21 +239,22 @@ public class Marlin.Application : Gtk.Application {
         Preferences.marlin_list_view_settings = new Settings ("io.elementary.files.list-view");
         Preferences.marlin_column_view_settings = new Settings ("io.elementary.files.column-view");
         Preferences.gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
+        Preferences.gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
         Preferences.gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
 
         /* Bind settings with GOFPreferences */
-        Preferences.settings.bind ("show-hiddenfiles",
-                                   GOF.Preferences.get_default (), "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
+        var prefs = GOF.Preferences.get_default ();
+        Preferences.settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("show-remote-thumbnails",
-                                   GOF.Preferences.get_default (), "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("confirm-trash",
-                                   GOF.Preferences.get_default (), "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
-        Preferences.settings.bind ("date-format",
-                                   GOF.Preferences.get_default (), "date-format", GLib.SettingsBindFlags.DEFAULT);
+                                   prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
+        Preferences.settings.bind ("confirm-trash", prefs, "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
+        Preferences.settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
         Preferences.gnome_interface_settings.bind ("clock-format",
                                    GOF.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
+        Preferences.gnome_privacy_settings.bind ("remember-recent-files",
+                                   GOF.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
         Preferences.gtk_file_chooser_settings.bind ("sort-directories-first",
-                                   GOF.Preferences.get_default (), "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
+                                   prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 
     public Marlin.View.Window? create_window (File? location = null,

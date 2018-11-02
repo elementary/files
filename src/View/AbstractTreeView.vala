@@ -238,7 +238,8 @@ namespace FM {
                     zone = ClickZone.INVALID;
                 } else {
                     var rtl = (get_direction () == Gtk.TextDirection.RTL);
-                    if (rtl ? (x > rect.x + rect.width - icon_size) : (x < rect.x + icon_size)) { /* cannot be on name */
+                    if (rtl ? (x > rect.x + rect.width - icon_size) : (x < rect.x + icon_size)) {
+                        /* cannot be on name */
                         bool on_helper = false;
                         bool on_icon = is_on_icon (x, y, ref on_helper);
 
@@ -255,7 +256,8 @@ namespace FM {
                     }
                 }
             } else if (c != name_column) {
-                zone = ClickZone.BLANK_NO_PATH; /* Cause unselect all to occur on other columns and allow rubberbanding */
+                /* Cause unselect all to occur on other columns and allow rubberbanding */
+                zone = ClickZone.BLANK_NO_PATH;
             }
 
             return zone;
