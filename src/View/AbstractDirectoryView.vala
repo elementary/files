@@ -1325,13 +1325,19 @@ namespace FM {
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
+            file.exists = false;
             model.remove_file (file, dir);
 
             remove_marlin_icon_info_cache (file);
+
             if (file.get_thumbnail_path () != null) {
                 PF.FileUtils.remove_thumbnail_paths_for_uri (file.uri);
             }
-
+            
+            if (plugins != null) {
+                plugins.update_file_info (file);
+            }
+            
             if (file.is_folder ()) {
                 /* Check whether the deleted file is the directory */
                 var file_dir = GOF.Directory.Async.cache_lookup (file.location);
