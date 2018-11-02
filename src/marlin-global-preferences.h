@@ -22,5 +22,6 @@ GSettings  *marlin_icon_view_settings;
 GSettings  *marlin_list_view_settings;
 GSettings  *marlin_column_view_settings;
 GSettings  *gnome_interface_settings;
+GSettings  *gnome_privacy_settings;
 GSettings  *gtk_file_chooser_settings;
 #endif
