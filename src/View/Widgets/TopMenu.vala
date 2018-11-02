@@ -60,16 +60,15 @@ namespace Marlin.View.Chrome {
                                                                                 Gtk.IconSize.LARGE_TOOLBAR);
             button_forward = new Marlin.View.Chrome.ButtonWithMenu.from_icon_name ("go-next-symbolic",
                                                                                    Gtk.IconSize.LARGE_TOOLBAR);
-            button_back.tooltip_text = _("Previous");
+            button_back.tooltip_text = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
             button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             button_back.show_all ();
             pack_start (button_back);
 
-            button_forward.tooltip_text = _("Next");
+            button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
             button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             button_forward.show_all ();
             pack_start (button_forward);
-
 
             button_forward.slow_press.connect (() => {
                 forward (1);

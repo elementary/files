@@ -117,12 +117,12 @@ namespace Marlin.View.Chrome {
 
         protected void set_action_icon_tooltip (string? tip) {
             if (secondary_icon_pixbuf != null && tip != null && tip.length > 0) {
-                set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tip);
+                set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
             }
         }
         public string? get_action_icon_tooltip () {
             if (secondary_icon_pixbuf != null) {
-                return get_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY);
+                return get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
             } else {
                 return null;
             }
@@ -276,21 +276,21 @@ namespace Marlin.View.Chrome {
 
             string? tip = null;
             if (secondary_icon_pixbuf != null) {
-                tip = get_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY);
+                tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
             }
-            set_tooltip_text ("");
+            set_tooltip_markup ("");
             var el = get_element_from_coordinates ((int)event.x, (int)event.y);
             if (el != null) {
-                set_tooltip_text (_("Go to %s").printf (el.text_for_display));
+                set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
                 set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {
                 set_entry_cursor (null);
-                set_tooltip_text (_("Search or Type Path"));
+                set_tooltip_markup (_("Search or Type Path"));
             }
 
             if (tip != null) {
             /* We must reset the icon tooltip as the above line turns all tooltips off */
-                set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tip);
+                set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
             }
             return false;
         }
