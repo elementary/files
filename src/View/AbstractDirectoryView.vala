@@ -3216,8 +3216,8 @@ namespace FM {
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
             if (renaming) {
-                /* Cancel renaming */
-                name_renderer.end_editing (true);
+                /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
+                name_renderer.end_editing (false);
             }
 
             cancel_hover (); /* cancel overlay statusbar cancellables */
