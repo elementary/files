@@ -34,7 +34,7 @@ OPTION (WITH_UNITY "Add Unity launcher support" ON)
 pkg_check_modules (UNITY unity>=4.0.0)
 
 set (COMMON_DEPS
-    granite>=5.0.0
+    granite>=5.2.0
     glib-2.0>=2.29.0
     gthread-2.0
     gio-2.0
