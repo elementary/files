@@ -77,17 +77,17 @@ namespace Marlin.View.Chrome {
             switcher.halign = switcher.valign = Gtk.Align.CENTER;
 
             icon = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.MENU);
-            icon.tooltip_text = _("View as Grid")+" (Ctrl + 1)";
+            icon.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>1"}, _("View as Grid"));
             switcher.append (icon);
             icon_sv = new GLib.Variant.string ("ICON");
 
             list = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.MENU);
-            list.tooltip_text = _("View as List")+" (Ctrl + 2)";
+            list.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>2"}, _("View as List"));
             switcher.append (list);
             list_sv = new GLib.Variant.string ("LIST");
 
             miller = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.MENU);
-            miller.tooltip_text = _("View in Columns")+" (Ctrl + 3)";
+            miller.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>3"}, _("View in Columns"));
             switcher.append (miller);
             miller_sv = new GLib.Variant.string ("MILLER");
 
@@ -111,3 +111,4 @@ namespace Marlin.View.Chrome {
         }
     }
 }
+

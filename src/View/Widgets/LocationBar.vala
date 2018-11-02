@@ -189,7 +189,7 @@ namespace Marlin.View.Chrome {
         protected void show_refresh_icon () {
             bread.get_style_context ().remove_class ("spin");
             bread.action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC;
-            bread.set_action_icon_tooltip (_("Reload this folder") + " (Ctrl + R)");
+            bread.set_action_icon_tooltip (Granite.markup_accel_tooltip ({"F5", "<Ctrl>R"}, _("Reload this folder")));
         }
 
         private void show_placeholder () {
