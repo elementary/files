@@ -99,6 +99,20 @@ namespace Marlin.View.Chrome {
         private uint timeout = 0;
         private uint last_click_time = 0;
 
+        construct {
+            timeout = 0;
+
+            realize.connect (() => {
+                get_toplevel ().configure_event.connect (() => {
+                    if (timeout > 0) {
+                        Source.remove (timeout);
+                        timeout = 0;
+                    }
+
+                    return false;
+                });
+            });
+        }
 
         public ButtonWithMenu.from_icon_name (string icon_name, Gtk.IconSize size) {
             this ();

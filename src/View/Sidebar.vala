@@ -127,6 +127,7 @@ namespace Marlin.Places {
 
         public Sidebar (Marlin.View.Window window, bool local_only = false) {
             init (); /* creates the Gtk.TreeModel store. */
+            plugins.sidebar_loaded ((Gtk.Widget)this);
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
@@ -153,6 +154,7 @@ namespace Marlin.Places {
             this.show_all ();
 
             update_places ();
+            request_update.connect (update_places);
         }
 
         private void construct_tree_view () {
@@ -286,6 +288,29 @@ namespace Marlin.Places {
             /* Signal Marlin.View.Window to synchronise sidebar with current tab */
             sync_needed ();
             return false;
+        }
+
+        /**
+         * Increase spinner pulse while Column.SHOW_SPINNER is true
+         */
+        void start_spinner (Gtk.TreeIter iter) {
+            Timeout.add (100, ()=>{
+                uint val;
+                bool spinner_active;
+
+                if (!store.iter_is_valid (iter)) {
+                    return false;
+                }
+
+                store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
+                if (!spinner_active) {
+                    return false;
+                }
+
+                store.@get (iter, Column.SPINNER_PULSE, out val);
+                store.@set (iter, Column.SPINNER_PULSE, ++val);
+                return true;
+            });
         }
 
         private bool focus_in_event_cb (Gdk.EventFocus event) {
@@ -491,7 +516,7 @@ namespace Marlin.Places {
                        null,
                        null,
                        0,
-                       _("Open your personal folder"));
+                       Granite.markup_accel_tooltip ({"<Alt>Home"}, _("Open your personal folder")));
 
             n_builtins_before++;
 
@@ -539,7 +564,7 @@ namespace Marlin.Places {
                            null,
                            null,
                            index + n_builtins_before,
-                           _("Open the Trash"));
+                           Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash")));
             }
 
             /* ADD STORAGE CATEGORY*/
@@ -560,7 +585,8 @@ namespace Marlin.Places {
                                        0,
                                        null);
 
-            add_device_tooltip.begin (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI), update_cancellable);
+            add_device_tooltip.begin (last_iter, PF.FileUtils.get_file_for_path (Marlin.ROOT_FS_URI),
+                                      update_cancellable);
 
             /* Add all connected drives */
             GLib.List<GLib.Drive> drives = volume_monitor.get_connected_drives ();
@@ -712,15 +738,15 @@ namespace Marlin.Places {
                            null,
                            null,
                            0,
-                           _("Browse the contents of the network"));
+                           Granite.markup_accel_tooltip ({"<Alt>N"}, _("Browse the contents of the network")));
 
                 /* Add ConnectServer BUILTIN */
-                add_extra_network_item (_("Connect Server"), _("Connect to a network server"), new ThemedIcon.with_default_fallbacks ("network-server"), side_bar_connect_server);
-
-                /* No longer needed at present as no other sidebar plugins.
-                 * Commenting out to avoid old plugin getting installed.
-                 * Package needs to remove old plugin.*/
-                //plugins.update_sidebar ((Gtk.Widget)this);
+                add_extra_network_item (_("Connect Server"),
+                                        Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server")),
+                                        new ThemedIcon.with_default_fallbacks ("network-server"),
+                                        side_bar_connect_server);
+                                        
+                plugins.update_sidebar ((Gtk.Widget)this);
             }
 
             expander_init_pref_state (tree_view);
@@ -868,7 +894,10 @@ namespace Marlin.Places {
             string fs_type;
             var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
 
-            if (yield get_filesystem_space_and_type (root, out fs_capacity, out fs_free, out fs_type, update_cancellable)) {
+            if (yield get_filesystem_space_and_type (root,
+                                                     out fs_capacity, out fs_free, out fs_type,
+                                                     update_cancellable)) {
+
                 var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
                 if (rowref != null && rowref.valid ()) {
                     Gtk.TreeIter? itr = null;
@@ -957,7 +986,8 @@ namespace Marlin.Places {
                         if (file.ensure_query_info ()) {
                             PF.FileUtils.file_accepts_drop (file, drag_list, context, out action);
                         } else {
-                            debug ("Could not ensure query info for %s when dropping onto sidebar", file.location.get_uri ());
+                            debug ("Could not ensure query info for %s when dropping onto sidebar",
+                                   file.location.get_uri ());
                         }
                     }
                 }
@@ -1504,7 +1534,8 @@ namespace Marlin.Places {
             bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
 
             if (is_plugin) {
-                var menu = new PopupMenuBuilder ();
+                var menu = new PopupMenuBuilder ()
+                .add_open (open_shortcut_cb);
                 menu.build ().popup_at_pointer (event);
             } else {
                 var menu = new PopupMenuBuilder ()
@@ -1533,8 +1564,9 @@ namespace Marlin.Places {
                 if (show_empty_trash) {
                     Gtk.MenuItem popupmenu_empty_trash_item;
                     popupmenu_empty_trash_item = new Gtk.MenuItem.with_mnemonic (_("Empty _Trash"));
-                    monitor.bind_property ("is-empty", popupmenu_empty_trash_item,
-                    "sensitive", GLib.BindingFlags.SYNC_CREATE|GLib.BindingFlags.INVERT_BOOLEAN);
+                    monitor.bind_property ("is-empty",
+                                           popupmenu_empty_trash_item, "sensitive",
+                                           GLib.BindingFlags.SYNC_CREATE | GLib.BindingFlags.INVERT_BOOLEAN);
 
                     menu.add_item (popupmenu_empty_trash_item, empty_trash_cb);
                 }
@@ -2103,22 +2135,7 @@ namespace Marlin.Places {
             store.@set (iter, Column.SHOW_SPINNER, true);
             store.@set (iter, Column.SHOW_EJECT, false);
             store.@set (iter, Column.ACTION_ICON, null);
-            Timeout.add (100, ()=>{
-                uint val;
-
-                if (!rowref.valid ()) {
-                    return false;
-                }
-
-                store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
-                if (!spinner_active) {
-                    return false;
-                }
-
-                store.@get (iter, Column.SPINNER_PULSE, out val);
-                store.@set (iter, Column.SPINNER_PULSE, ++val);
-                return true;
-            });
+            start_spinner (iter);
 
             do_unmount_or_eject (mount, volume, drive, rowref, allow_eject);
             return true;

@@ -211,11 +211,12 @@ namespace Marlin.View {
                     schedule_deep_count ();
                 }
             } else { /* hovering over multiple selection */
+                var fsize = format_size (files_size);
                 if (folders_count > 1) {
                     str = _("%u folders").printf (folders_count);
                     if (files_count > 0) {
-                        str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size (files_size)),
-                                         _(" and %u other items (%s) selected").printf (files_count, format_size (files_size)),
+                        str += ngettext (_(" and %u other item (%s) selected").printf (files_count, fsize),
+                                         _(" and %u other items (%s) selected").printf (files_count, fsize),
                                          files_count);
                     } else {
                         str += _(" selected");
@@ -223,14 +224,15 @@ namespace Marlin.View {
                 } else if (folders_count == 1) {
                     str = _("%u folder").printf (folders_count);
                     if (files_count > 0) {
-                        str += ngettext (_(" and %u other item (%s) selected").printf (files_count, format_size (files_size)),
-                                         _(" and %u other items (%s) selected").printf (files_count, format_size (files_size)),
+
+                        str += ngettext (_(" and %u other item (%s) selected").printf (files_count, fsize),
+                                         _(" and %u other items (%s) selected").printf (files_count, fsize),
                                          files_count);
                     } else {
                         str += _(" selected");
                     }
                 } else { /* folder_count = 0 and files_count > 0 */
-                    str = _("%u items selected (%s)").printf (files_count, format_size (files_size));
+                    str = _("%u items selected (%s)").printf (files_count, fsize);
                 }
             }
 
@@ -369,7 +371,8 @@ namespace Marlin.View {
             label = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
         }
 
-        private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream, Cancellable cancellable) {
+        private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream,
+                                              Cancellable cancellable) {
             ssize_t read = 1;
             uint count = 0;
             while (!image_size_loaded && read > 0 && !cancellable.is_cancelled ()) {
