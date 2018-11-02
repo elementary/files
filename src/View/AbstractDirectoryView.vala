@@ -2693,30 +2693,40 @@ namespace FM {
 
             cancel_hover ();
 
-            uint keyval;
-            int eff_grp, level;
-            Gdk.ModifierType consumed_mods;
+            uint keyval = event.keyval;
+            Gdk.ModifierType consumed_mods = 0;
 
-            if (!Gdk.Keymap.get_default ().translate_keyboard_state (event.hardware_keycode,
-                                                                     event.state, event.group,
-                                                                     out keyval, out eff_grp,
-                                                                     out level, out consumed_mods)) {
-                warning ("translate keyboard state failed");
-                return false;
-            }
+            /* Leave standard ASCII alone, else try to get Latin hotkey from keyboard state */
+            /* This means that Latin hot keys for Latin Dvorak keyboards (e.g. Spanish Dvorak)
+             * will be in their Dvorak position, not their QWERTY position.
+             * For non-Latin (e.g. Cyrillic) keyboards however, the Latin hotkeys are mapped
+             * to the same position as on a Latin QWERTY keyboard. If the conversion fails, the unprocessed
+             * event.keyval is used. */
+            if (keyval > 127) {
+                int eff_grp, level;
 
-            keyval = 0;
-            for (uint key = 32; key < 128; key++) {
-                if (match_keycode (key, event.hardware_keycode, level)) {
-                    keyval = key;
-                    break;
+                if (!Gdk.Keymap.get_default ().translate_keyboard_state (event.hardware_keycode,
+                                                                         event.state, event.group,
+                                                                         out keyval, out eff_grp,
+                                                                         out level, out consumed_mods)) {
+                    warning ("translate keyboard state failed");
+                    keyval = event.keyval;
+                    consumed_mods = 0;
+                } else {
+                    keyval = 0;
+                    for (uint key = 32; key < 128; key++) {
+                        if (match_keycode (key, event.hardware_keycode, level)) {
+                            keyval = key;
+                            break;
+                        }
+                    }
+
+                    if (keyval == 0) {
+                        debug ("Could not match hardware code to ASCII hotkey");
+                        keyval = event.keyval;
+                        consumed_mods = 0;
+                    }
                 }
-            }
-
-            if (keyval == 0) {
-                debug ("Could not match hardware code to ASCII hotkey");
-                keyval = event.keyval;
-                consumed_mods = 0;
             }
 
             var mods = (event.state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
