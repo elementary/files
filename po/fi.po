@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-09-21 18:39+0000\n"
+"PO-Revision-Date: 2018-11-02 08:40+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
 "fi/>\n"
@@ -1593,9 +1593,8 @@ msgid "Show the version of the program"
 msgstr "Näytä ohjelman versio"
 
 #: ../src/Application.vala:121
-#, fuzzy
 msgid "Open one or more uris, each in a new tab"
-msgstr "Avaa URI-tunnisteet uusiin välilehtiin"
+msgstr "Avaa yksi tai useampi URI, jokainen omaan välilehteensä"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
 msgid "New Window"

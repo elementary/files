@@ -259,7 +259,9 @@ public class Marlin.MimeActions {
         }
     }
 
-    public static void open_multiple_gof_files_request (GLib.List<GOF.File> gofs_to_open, Gtk.Widget parent, AppInfo? app = null) {
+    public static void open_multiple_gof_files_request (GLib.List<GOF.File> gofs_to_open,
+                                                        Gtk.Widget parent,
+                                                        AppInfo? app = null) {
         /* Note: This function should be only called if files_to_open are not executables or it is not
          * intended to execute them (AbstractDirectoryView takes care of this) */
         AppInfo? app_info = null;
