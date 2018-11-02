@@ -73,7 +73,8 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         destination.query_update ();
         var thumbnailer = Marlin.Thumbnailer.get ();
         thumbnailer.finished.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (), GOF.FileIconFlags.USE_THUMBNAILS);
+            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
+                                                                   GOF.FileIconFlags.USE_THUMBNAILS);
         });
 
         thumbnailer.queue_file (destination, null, false);
@@ -298,38 +299,38 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         }
 
         var should_show_type = src_ftype != dest_ftype;
-        unowned string dest_display_name = destination.get_display_name ();
-        unowned string dest_dir_display_name = dest_dir.get_display_name ();
-        conflict_name = dest_display_name;
+        unowned string dest_name = destination.get_display_name ();
+        unowned string dest_dir_name = dest_dir.get_display_name ();
+        conflict_name = dest_name;
 
         string message_extra;
         string message;
         if (destination.is_directory) {
             if (source.is_directory) {
-                primary_label.label = _("Merge folder \"%s\"?").printf (dest_display_name);
+                primary_label.label = _("Merge folder \"%s\"?").printf (dest_name);
                 message_extra = _("Merging will ask for confirmation before replacing any files in the folder that conflict with the files being copied.");
                 if (source.modified > destination.modified) {
-                    message = _("An older folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+                    message = _("An older folder with the same name already exists in \"%s\".").printf (dest_dir_name);
                 } else if (source.modified < destination.modified) {
-                    message = _("A newer folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+                    message = _("A newer folder with the same name already exists in \"%s\".").printf (dest_dir_name);
                 } else {
-                    message = _("Another folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+                    message = _("Another folder with the same name already exists in \"%s\".").printf (dest_dir_name);
                 }
             } else {
-                primary_label.label = _("Replace folder \"%s\"?").printf (dest_display_name);
+                primary_label.label = _("Replace folder \"%s\"?").printf (dest_name);
                 message_extra = _("Replacing it will remove all files in the folder.");
-                message = _("A folder with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+                message = _("A folder with the same name already exists in \"%s\".").printf (dest_dir_name);
             }
         } else {
-            primary_label.label = _("Replace file \"%s\"?").printf (dest_display_name);
+            primary_label.label = _("Replace file \"%s\"?").printf (dest_name);
             message_extra = _("Replacing it will overwrite its content.");
 
             if (source.modified > destination.modified) {
-                message = _("An older file with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+                message = _("An older file with the same name already exists in \"%s\".").printf (dest_dir_name);
             } else if (source.modified < destination.modified) {
-                message = _("A newer file with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+                message = _("A newer file with the same name already exists in \"%s\".").printf (dest_dir_name);
             } else {
-                message = _("Another file with the same name already exists in \"%s\".").printf (dest_dir_display_name);
+                message = _("Another file with the same name already exists in \"%s\".").printf (dest_dir_name);
             }
         }
 
@@ -363,7 +364,8 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         });
 
         destination.changed.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (), GOF.FileIconFlags.USE_THUMBNAILS);
+            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
+                                                                   GOF.FileIconFlags.USE_THUMBNAILS);
         });
     }
 }

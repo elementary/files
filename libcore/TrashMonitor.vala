@@ -56,7 +56,8 @@ public class Marlin.TrashMonitor : GLib.Object {
 
     private async void update_info () {
         try {
-            var info = yield trash_file.query_info_async (GLib.FileAttribute.STANDARD_ICON + "," + GLib.FileAttribute.TRASH_ITEM_COUNT, GLib.FileQueryInfoFlags.NONE);
+            var attribs = GLib.FileAttribute.STANDARD_ICON + "," + GLib.FileAttribute.TRASH_ITEM_COUNT;
+            var info = yield trash_file.query_info_async (attribs, GLib.FileQueryInfoFlags.NONE);
             var new_icon = info.get_icon ();
             if (new_icon != null) {
                 icon = new_icon;
