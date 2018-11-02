@@ -27,7 +27,9 @@ public class CustomFileChooserDialog : Object {
     private const int BUTTON_RESPONSE = -6;
 
     /* Paths to widgets */
-    private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box", "browse_header_revealer" };
+    private const string[] GTK_PATHBAR_PATH = { "widget", "browse_widgets_box", "browse_files_box",
+                                                "browse_header_revealer" };
+
     private const string[] GTK_FILTERCHOOSER_PATH = { "extra_and_filters", "filter_combo_hbox" };
     private const string[] GTK_TREEVIEW_PATH = { "browse_files_stack", "browse_files_swin", "browse_files_tree_view" };
 

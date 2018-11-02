@@ -114,8 +114,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
     }
 
-    private uint folder_count = 0; /* Count of folders current NOT including top level (selected) folders (to match OverlayBar)*/
-    private uint file_count; /* Count of files current including top level (selected) files other than folders */
+    /* Count of folders current NOT including top level (selected) folders (to match OverlayBar)*/
+    private uint folder_count = 0;
+    /* Count of files current including top level (selected) files other than folders */
+    private uint file_count;
 
     public PropertiesWindow (GLib.List<GOF.File> _files, FM.AbstractDirectoryView _view, Gtk.Window parent) {
         base (_("Properties"), parent);
@@ -239,7 +241,12 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
             size_warning_image.halign = Gtk.Align.START;
             size_warning_image.hexpand = true;
-            size_warning_image.tooltip_markup = "<b>" + _("Actual Size Could Be Larger") + "</b>" + "\n" + ngettext ("%i file could not be read due to permissions or other errors.", "%i files could not be read due to permissions or other errors.", (ulong) size_warning).printf (size_warning);
+            var warning = ngettext ("%i file could not be read due to permissions or other errors.",
+                                    "%i files could not be read due to permissions or other errors.",
+                                    (ulong) size_warning).printf (size_warning);
+
+            size_warning_image.tooltip_markup = "<b>" + _("Actual Size Could Be Larger") + "</b>" + "\n" + warning
+                                                ;
             info_grid.attach_next_to (size_warning_image, size_value, Gtk.PositionType.RIGHT);
             info_grid.show_all ();
         }
@@ -449,9 +456,11 @@ public class PropertiesWindow : AbstractPropertiesDialog {
             string location_folder = original_location.slice (0, -(file_name.length)).replace ("%20", " ");
             string location_name = location_folder.slice (7, -1);
 
-            return "<a href=\"" + Markup.escape_text (location_folder) + "\">" + Markup.escape_text (location_name) + "</a>";
+            return "<a href=\"" + Markup.escape_text (location_folder) +
+                   "\">" + Markup.escape_text (location_name) + "</a>";
         } else {
-            return "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) + "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>";
+            return "<a href=\"" + Markup.escape_text (file.directory.get_uri ()) +
+                   "\">" + Markup.escape_text (file.directory.get_parse_name ()) + "</a>";
         }
     }
 
@@ -460,7 +469,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH) != null) {
             var trash_orig_loc = get_common_trash_orig ();
             if (trash_orig_loc != null) {
-                return "<a href=\"" + get_parent_loc (file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH)).get_uri () + "\">" + trash_orig_loc + "</a>";
+                var orig_pth = file.info.get_attribute_byte_string (FileAttribute.TRASH_ORIG_PATH);
+                return "<a href=\"" + get_parent_loc (orig_pth).get_uri () + "\">" + trash_orig_loc + "</a>";
             }
         }
         return _("Unknown");
@@ -525,7 +535,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         int n = 4;
 
         if (count == 1) {
-            var time_created = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_CREATED);
+            var time_created = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                                    FileAttribute.TIME_CREATED);
             if (time_created != "") {
                 var key_label = new KeyLabel (_("Created:"));
                 var value_label = new ValueLabel (time_created);
@@ -534,7 +545,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 n++;
             }
 
-            var time_modified = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TIME_MODIFIED);
+            var time_modified = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                                     FileAttribute.TIME_MODIFIED);
             if (time_modified != "") {
                 var key_label = new KeyLabel (_("Modified:"));
                 var value_label = new ValueLabel (time_modified);
@@ -545,7 +557,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         if (count == 1 && file.is_trashed ()) {
-            var deletion_date = PF.FileUtils.get_formatted_time_attribute_from_info (file.info, FileAttribute.TRASH_DELETION_DATE);
+            var deletion_date = PF.FileUtils.get_formatted_time_attribute_from_info (file.info,
+                                                                                     FileAttribute.TRASH_DELETION_DATE);
             if (deletion_date != "") {
                 var key_label = new KeyLabel (_("Deleted:"));
                 var value_label = new ValueLabel (deletion_date);
@@ -1227,7 +1240,8 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         }
 
         if (files > 0 && folders > 0) {
-            string total_txt = (ngettext ("%u selected item", "%u selected items", folders + files)).printf (folders + files);
+            var total = folders + files;
+            string total_txt = (ngettext ("%u selected item", "%u selected items", total)).printf (total);
             ///TRANSLATORS: total (folders, files)
             return _("%s (%s, %s)").printf (total_txt, folders_txt, files_txt);
         } else if (files > 0) {
@@ -1255,7 +1269,9 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if ((header_title is Gtk.Entry) && !view.is_in_recent ()) {
             int start_offset= 0, end_offset = -1;
 
-            PF.FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset, goffile.is_folder ());
+            PF.FileUtils.get_rename_region (goffile.info.get_name (), out start_offset, out end_offset,
+                                            goffile.is_folder ());
+
             (header_title as Gtk.Entry).select_region (start_offset, end_offset);
         }
 

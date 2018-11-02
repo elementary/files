@@ -24,7 +24,8 @@ namespace Marlin.View {
         public ViewContainer ctab;
 
         public DirectoryNotFound (GOF.Directory.Async dir, ViewContainer tab) {
-            base (_("This Folder Does Not Exist"), _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));
+            base (_("This Folder Does Not Exist"),
+                  _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));
 
             append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
 
