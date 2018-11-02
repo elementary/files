@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 09:07+0200\n"
+"POT-Creation-Date: 2018-10-29 14:34+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -48,177 +48,177 @@ msgstr "Töölaua faili %s analüüsimine ebaõnnestus"
 msgid "Unable to Launch Desktop File: %s"
 msgstr "Töölaua faili %s analüüsimine ebaõnnestus"
 
-#: ../libcore/marlin-file-operations.c:154
+#: ../libcore/marlin-file-operations.c:155
 #: ../libcore/FileConflictDialog.vala:185
 msgid "_Skip"
 msgstr "_Jäta vahele"
 
-#: ../libcore/marlin-file-operations.c:155
+#: ../libcore/marlin-file-operations.c:156
 msgid "S_kip All"
 msgstr "_Jäta kõik vahele"
 
-#: ../libcore/marlin-file-operations.c:156
+#: ../libcore/marlin-file-operations.c:157
 msgid "_Retry"
 msgstr "P_roovi uuesti"
 
-#: ../libcore/marlin-file-operations.c:157
+#: ../libcore/marlin-file-operations.c:158
 msgid "Delete _All"
 msgstr "Kustuta _kõik"
 
-#: ../libcore/marlin-file-operations.c:158
+#: ../libcore/marlin-file-operations.c:159
 msgid "_Replace"
 msgstr "_Asenda"
 
-#: ../libcore/marlin-file-operations.c:159
+#: ../libcore/marlin-file-operations.c:160
 msgid "Replace _All"
 msgstr "Asenda _kõik"
 
-#: ../libcore/marlin-file-operations.c:160
+#: ../libcore/marlin-file-operations.c:161
 msgid "_Merge"
 msgstr "_Liida"
 
-#: ../libcore/marlin-file-operations.c:161
+#: ../libcore/marlin-file-operations.c:162
 msgid "Merge _All"
 msgstr "Liida _kõik"
 
-#: ../libcore/marlin-file-operations.c:162
+#: ../libcore/marlin-file-operations.c:163
 msgid "Copy _Anyway"
 msgstr "_Kopeeri ikka"
 
-#: ../libcore/marlin-file-operations.c:243
+#: ../libcore/marlin-file-operations.c:244
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d sekund"
 msgstr[1] "%'d sekundit"
 
-#: ../libcore/marlin-file-operations.c:248
-#: ../libcore/marlin-file-operations.c:259
+#: ../libcore/marlin-file-operations.c:249
+#: ../libcore/marlin-file-operations.c:260
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
 msgstr[0] "%'d minut"
 msgstr[1] "%'d minutit"
 
-#: ../libcore/marlin-file-operations.c:258
+#: ../libcore/marlin-file-operations.c:259
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d tund"
 msgstr[1] "%'d tundi"
 
-#: ../libcore/marlin-file-operations.c:266
+#: ../libcore/marlin-file-operations.c:267
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "ligikaudu %'d tund"
 msgstr[1] "ligikaudu %'d tundi"
 
-#: ../libcore/marlin-file-operations.c:342
+#: ../libcore/marlin-file-operations.c:343
 #, c-format
 msgid "Link to %s"
 msgstr "Viit > %s"
 
-#: ../libcore/marlin-file-operations.c:346
+#: ../libcore/marlin-file-operations.c:347
 #, c-format
 msgid "Another link to %s"
 msgstr "Veel üks viit -> %s"
 
-#: ../libcore/marlin-file-operations.c:362
+#: ../libcore/marlin-file-operations.c:363
 #, c-format
 msgid "%'dst link to %s"
 msgstr "%'d. viit failile %s"
 
-#: ../libcore/marlin-file-operations.c:366
+#: ../libcore/marlin-file-operations.c:367
 #, c-format
 msgid "%'dnd link to %s"
 msgstr "%'d. viit failile %s"
 
-#: ../libcore/marlin-file-operations.c:370
+#: ../libcore/marlin-file-operations.c:371
 #, c-format
 msgid "%'drd link to %s"
 msgstr "%'d. viit failile %s"
 
-#: ../libcore/marlin-file-operations.c:374
+#: ../libcore/marlin-file-operations.c:375
 #, c-format
 msgid "%'dth link to %s"
 msgstr "%'d. viit failile %s"
 
-#: ../libcore/marlin-file-operations.c:412
+#: ../libcore/marlin-file-operations.c:413
 msgid " (copy)"
 msgstr " (koopia)"
 
-#: ../libcore/marlin-file-operations.c:414
+#: ../libcore/marlin-file-operations.c:415
 msgid " (another copy)"
 msgstr " (veel üks koopia)"
 
-#: ../libcore/marlin-file-operations.c:417
-#: ../libcore/marlin-file-operations.c:419
-#: ../libcore/marlin-file-operations.c:421
-#: ../libcore/marlin-file-operations.c:431
+#: ../libcore/marlin-file-operations.c:418
+#: ../libcore/marlin-file-operations.c:420
+#: ../libcore/marlin-file-operations.c:422
+#: ../libcore/marlin-file-operations.c:432
 msgid "th copy)"
 msgstr "koopia)"
 
-#: ../libcore/marlin-file-operations.c:424
+#: ../libcore/marlin-file-operations.c:425
 msgid "st copy)"
 msgstr "koopia)"
 
-#: ../libcore/marlin-file-operations.c:426
+#: ../libcore/marlin-file-operations.c:427
 msgid "nd copy)"
 msgstr "koopia)"
 
-#: ../libcore/marlin-file-operations.c:428
+#: ../libcore/marlin-file-operations.c:429
 msgid "rd copy)"
 msgstr "koopia)"
 
-#: ../libcore/marlin-file-operations.c:445
+#: ../libcore/marlin-file-operations.c:446
 #, c-format
 msgid "%s (copy)%s"
 msgstr "%s (koopia)%s"
 
-#: ../libcore/marlin-file-operations.c:447
+#: ../libcore/marlin-file-operations.c:448
 #, c-format
 msgid "%s (another copy)%s"
 msgstr "%s (veel üks koopia)%s"
 
-#: ../libcore/marlin-file-operations.c:450
-#: ../libcore/marlin-file-operations.c:452
-#: ../libcore/marlin-file-operations.c:454
-#: ../libcore/marlin-file-operations.c:468
+#: ../libcore/marlin-file-operations.c:451
+#: ../libcore/marlin-file-operations.c:453
+#: ../libcore/marlin-file-operations.c:455
+#: ../libcore/marlin-file-operations.c:469
 #, c-format
 msgid "%s (%'dth copy)%s"
 msgstr "%s (%'d koopia)%s"
 
-#: ../libcore/marlin-file-operations.c:462
+#: ../libcore/marlin-file-operations.c:463
 #, c-format
 msgid "%s (%'dst copy)%s"
 msgstr "%s (%'d koopia)%s"
 
-#: ../libcore/marlin-file-operations.c:464
+#: ../libcore/marlin-file-operations.c:465
 #, c-format
 msgid "%s (%'dnd copy)%s"
 msgstr "%s (%'d koopia)%s"
 
-#: ../libcore/marlin-file-operations.c:466
+#: ../libcore/marlin-file-operations.c:467
 #, c-format
 msgid "%s (%'drd copy)%s"
 msgstr "%s (%'d koopia)%s"
 
-#: ../libcore/marlin-file-operations.c:566
+#: ../libcore/marlin-file-operations.c:567
 msgid " ("
 msgstr " ("
 
-#: ../libcore/marlin-file-operations.c:574
+#: ../libcore/marlin-file-operations.c:575
 #, c-format
 msgid " (%'d"
 msgstr " (%'d"
 
-#: ../libcore/marlin-file-operations.c:1252
+#: ../libcore/marlin-file-operations.c:1253
 msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
 msgstr ""
 "Oled sa kindel, et soovid prügikastist faili \"%B\" jäädavalt kustutada?"
 
-#: ../libcore/marlin-file-operations.c:1255
+#: ../libcore/marlin-file-operations.c:1256
 #, c-format
 msgid ""
 "Are you sure you want to permanently delete the %'d selected item from the "
@@ -229,16 +229,16 @@ msgid_plural ""
 msgstr[0] "Oled sa kindel, et soovid %'d faili jäädavalt kustutada?"
 msgstr[1] "Oled sa kindel, et soovid %'d faili jäädavalt kustutada?"
 
-#: ../libcore/marlin-file-operations.c:1265
-#: ../libcore/marlin-file-operations.c:1345
+#: ../libcore/marlin-file-operations.c:1266
+#: ../libcore/marlin-file-operations.c:1346
 msgid "If you delete an item, it will be permanently lost."
 msgstr "Faili jäädavalt kustutades pole seda hiljem võimalik taastada."
 
-#: ../libcore/marlin-file-operations.c:1290
+#: ../libcore/marlin-file-operations.c:1291
 msgid "Permanently delete all items from Trash?"
 msgstr "Soovid kõik prügikastis olevad failid jäädavalt kustutada?"
 
-#: ../libcore/marlin-file-operations.c:1291
+#: ../libcore/marlin-file-operations.c:1292
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
@@ -246,24 +246,24 @@ msgstr ""
 "Kõik prügikastis olevad failid ning haagitud ketastelt prügikasti tõstetud "
 "failid kustutatakse jäädavalt."
 
-#: ../libcore/marlin-file-operations.c:1294
+#: ../libcore/marlin-file-operations.c:1295
 msgid "Permanently delete all items from Trash on this mount?"
 msgstr ""
 "Soovid kõik sellelt kettalt prügikasti tõstetud failid jäädavalt kustutada?"
 
-#: ../libcore/marlin-file-operations.c:1295
+#: ../libcore/marlin-file-operations.c:1296
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Kõik sellelt ketta prügikasti tõstetud failid kustutatakse jäädavalt."
 
-#: ../libcore/marlin-file-operations.c:1306 ../src/View/Sidebar.vala:1519
+#: ../libcore/marlin-file-operations.c:1307 ../src/View/Sidebar.vala:1558
 msgid "Empty _Trash"
 msgstr "_Tühjenda prügikast"
 
-#: ../libcore/marlin-file-operations.c:1333
+#: ../libcore/marlin-file-operations.c:1334
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Oled sa kindel, et soovid faili \"%B\" jäädavalt kustutada?"
 
-#: ../libcore/marlin-file-operations.c:1336
+#: ../libcore/marlin-file-operations.c:1337
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
@@ -271,34 +271,34 @@ msgid_plural ""
 msgstr[0] "Oled sa kindel, et soovid %'d faili jäädavalt kustutada?"
 msgstr[1] "Oled sa kindel, et soovid %'d kirjet jäädavalt kustutada?"
 
-#: ../libcore/marlin-file-operations.c:1379
+#: ../libcore/marlin-file-operations.c:1380
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
 msgstr[0] "Kustutada on veel jäänud %'d fail"
 msgstr[1] "Kustutada on veel jäänud %'d faili"
 
-#: ../libcore/marlin-file-operations.c:1385
+#: ../libcore/marlin-file-operations.c:1386
 msgid "Deleting files"
 msgstr "Failide kustutamine"
 
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:1398
+#: ../libcore/marlin-file-operations.c:1399
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T jäänud"
 msgstr[1] "%T jäänud"
 
-#: ../libcore/marlin-file-operations.c:1465
-#: ../libcore/marlin-file-operations.c:1499
-#: ../libcore/marlin-file-operations.c:1538
-#: ../libcore/marlin-file-operations.c:1615
-#: ../libcore/marlin-file-operations.c:2405
+#: ../libcore/marlin-file-operations.c:1466
+#: ../libcore/marlin-file-operations.c:1500
+#: ../libcore/marlin-file-operations.c:1539
+#: ../libcore/marlin-file-operations.c:1616
+#: ../libcore/marlin-file-operations.c:2406
 msgid "Error while deleting."
 msgstr "Kustutamisel tekkis viga."
 
-#: ../libcore/marlin-file-operations.c:1469
+#: ../libcore/marlin-file-operations.c:1470
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
@@ -306,19 +306,19 @@ msgstr ""
 "Kaustas \"%B\" asuvaid faile pole võimalik kustutada, kuna sul pole selleks "
 "piisavalt õiguseid."
 
-#: ../libcore/marlin-file-operations.c:1472
-#: ../libcore/marlin-file-operations.c:2464
-#: ../libcore/marlin-file-operations.c:3431
+#: ../libcore/marlin-file-operations.c:1473
+#: ../libcore/marlin-file-operations.c:2465
+#: ../libcore/marlin-file-operations.c:3432
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
 msgstr "Kaustas \"%B\" asuvate failide andmete hankimisel tekkis viga."
 
-#: ../libcore/marlin-file-operations.c:1481
-#: ../libcore/marlin-file-operations.c:3440
+#: ../libcore/marlin-file-operations.c:1482
+#: ../libcore/marlin-file-operations.c:3441
 msgid "_Skip files"
 msgstr "_Jäta failid vahele"
 
-#: ../libcore/marlin-file-operations.c:1502
+#: ../libcore/marlin-file-operations.c:1503
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
@@ -326,61 +326,61 @@ msgstr ""
 "Kaustas \"%B\" asuvaid faile pole võimalik kustutada, kuna sul pole nende "
 "lugemiseks piisavalt õiguseid."
 
-#: ../libcore/marlin-file-operations.c:1505
-#: ../libcore/marlin-file-operations.c:2503
-#: ../libcore/marlin-file-operations.c:3476
+#: ../libcore/marlin-file-operations.c:1506
+#: ../libcore/marlin-file-operations.c:2504
+#: ../libcore/marlin-file-operations.c:3477
 msgid "There was an error reading the folder \"%B\"."
 msgstr "Kausta \"%B\" lugemisel tekkis viga."
 
-#: ../libcore/marlin-file-operations.c:1539
+#: ../libcore/marlin-file-operations.c:1540
 msgid "Could not remove the folder %B."
 msgstr "Kausta %B pole võimalik kustutada."
 
-#: ../libcore/marlin-file-operations.c:1616
+#: ../libcore/marlin-file-operations.c:1617
 msgid "There was an error deleting %B."
 msgstr "%B kustutamisel tekkis viga."
 
-#: ../libcore/marlin-file-operations.c:1700
+#: ../libcore/marlin-file-operations.c:1701
 msgid "Moving files to trash"
 msgstr "Failide panemine prügikasti"
 
-#: ../libcore/marlin-file-operations.c:1702
+#: ../libcore/marlin-file-operations.c:1703
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "Prügikasti on veel panna %'d fail"
 msgstr[1] "Prügikasti on veel panna %'d faili"
 
-#: ../libcore/marlin-file-operations.c:1796
-#: ../libcore/marlin-file-operations.c:1799
-#: ../libcore/marlin-file-operations.c:1802
+#: ../libcore/marlin-file-operations.c:1797
+#: ../libcore/marlin-file-operations.c:1800
+#: ../libcore/marlin-file-operations.c:1803
 msgid "Cannot move file to trash or delete it"
 msgstr "Faili kustutamine või prügikasti panek ebaõnnestus"
 
-#: ../libcore/marlin-file-operations.c:1797
+#: ../libcore/marlin-file-operations.c:1798
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
 "Ainult lugemisõigestuega failisüsteemi failide kustutamine on keelatud."
 
-#: ../libcore/marlin-file-operations.c:1800
+#: ../libcore/marlin-file-operations.c:1801
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
 "Kirjutamisõigusteta kaustades olevate failide kustutamine pole lubatud."
 
-#: ../libcore/marlin-file-operations.c:1803
+#: ../libcore/marlin-file-operations.c:1804
 msgid ""
 "It is not permitted to trash or delete folders for which you do not have "
 "write privileges."
 msgstr "Kirjutamisõigusteta kaustade kustutamine on keelatud."
 
-#: ../libcore/marlin-file-operations.c:1805
+#: ../libcore/marlin-file-operations.c:1806
 msgid "Cannot move file to trash. Try to delete it immediately?"
 msgstr ""
 "Faili panemine prügikasti ebaõnnestus. Soovid hoopis jäädavalt kustutada?"
 
-#: ../libcore/marlin-file-operations.c:1806
+#: ../libcore/marlin-file-operations.c:1807
 msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
@@ -388,11 +388,11 @@ msgstr ""
 "Faili panemine prügikasti ebaõnnestus. Täpsema informatsiooni jaoks vaata "
 "allolevat informatsiooni."
 
-#: ../libcore/marlin-file-operations.c:1810
+#: ../libcore/marlin-file-operations.c:1811
 msgid "Cannot move file to trash.  Try to delete it?"
 msgstr "Faili panemine prügikasti ebaõnnestus. Soovid selle hoopis kustutada?"
 
-#: ../libcore/marlin-file-operations.c:1811
+#: ../libcore/marlin-file-operations.c:1812
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
@@ -400,7 +400,7 @@ msgstr ""
 "Faili panemine prügikasti ebaõnnestus. Arvatavasti pole seda võimalik ka "
 "kustutada."
 
-#: ../libcore/marlin-file-operations.c:1816
+#: ../libcore/marlin-file-operations.c:1817
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
@@ -408,73 +408,73 @@ msgstr ""
 "\n"
 " Faili kustutamisel kaob see jäädavalt"
 
-#: ../libcore/marlin-file-operations.c:2006
+#: ../libcore/marlin-file-operations.c:2007
 msgid "Trashing Files"
 msgstr "Failide viskamine prügikasti"
 
-#: ../libcore/marlin-file-operations.c:2008
+#: ../libcore/marlin-file-operations.c:2009
 msgid "Deleting Files"
 msgstr "Failide kustutamine"
 
-#: ../libcore/marlin-file-operations.c:2077
+#: ../libcore/marlin-file-operations.c:2078
 msgid "Unable to eject %V"
 msgstr "%V väljastamine pole võimalik"
 
-#: ../libcore/marlin-file-operations.c:2079
+#: ../libcore/marlin-file-operations.c:2080
 msgid "Unable to unmount %V"
 msgstr "%V lahtihaakimine pole võimalik"
 
-#: ../libcore/marlin-file-operations.c:2274
+#: ../libcore/marlin-file-operations.c:2275
 #, c-format
 msgid "Unable to mount %s"
 msgstr "%s haakimine ebaõnnestus"
 
-#: ../libcore/marlin-file-operations.c:2352
+#: ../libcore/marlin-file-operations.c:2353
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
 msgstr[0] "Ettevalmistused %'d faili kopeerimiseks (%S)"
 msgstr[1] "Ettevalmistused %'d faili kopeerimiseks (%S)"
 
-#: ../libcore/marlin-file-operations.c:2358
+#: ../libcore/marlin-file-operations.c:2359
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
 msgstr[0] "Ettevalmistused %'d faili ümbertõstmiseks (%S)"
 msgstr[1] "Ettevalmistused %'d faili ümbertõstmiseks (%S)"
 
-#: ../libcore/marlin-file-operations.c:2364
+#: ../libcore/marlin-file-operations.c:2365
 #, c-format
 msgid "Preparing to delete %'d file (%S)"
 msgid_plural "Preparing to delete %'d files (%S)"
 msgstr[0] "Ettevalmistused %'d faili kustutamiseks (%S)"
 msgstr[1] "Ettevalmistused %'d faili kustutamiseks (%S)"
 
-#: ../libcore/marlin-file-operations.c:2370
+#: ../libcore/marlin-file-operations.c:2371
 #, c-format
 msgid "Preparing to trash %'d file"
 msgid_plural "Preparing to trash %'d files"
 msgstr[0] "Ettevalmistused %'d faili panemiseks prügikasti"
 msgstr[1] "Ettevalmistused %'d faili panemiseks prügikasti"
 
-#: ../libcore/marlin-file-operations.c:2401
-#: ../libcore/marlin-file-operations.c:3291
-#: ../libcore/marlin-file-operations.c:3423
-#: ../libcore/marlin-file-operations.c:3468
+#: ../libcore/marlin-file-operations.c:2402
+#: ../libcore/marlin-file-operations.c:3292
+#: ../libcore/marlin-file-operations.c:3424
+#: ../libcore/marlin-file-operations.c:3469
 msgid "Error while copying."
 msgstr "Kopeerimisel ilmnes probleem."
 
-#: ../libcore/marlin-file-operations.c:2403
-#: ../libcore/marlin-file-operations.c:3421
-#: ../libcore/marlin-file-operations.c:3466
+#: ../libcore/marlin-file-operations.c:2404
+#: ../libcore/marlin-file-operations.c:3422
+#: ../libcore/marlin-file-operations.c:3467
 msgid "Error while moving."
 msgstr "Liigutamisel ilmnes probleem."
 
-#: ../libcore/marlin-file-operations.c:2407
+#: ../libcore/marlin-file-operations.c:2408
 msgid "Error while moving files to trash."
 msgstr "Faile prügikasti pannes ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:2461
+#: ../libcore/marlin-file-operations.c:2462
 msgid ""
 "Files in the folder \"%B\" cannot be handled because you do not have "
 "permissions to see them."
@@ -482,7 +482,7 @@ msgstr ""
 "Kaustas \"%B\" olevaid faile pole võimalik muuta, kuna sul puuduvad õigused "
 "nende failide nägemiseks."
 
-#: ../libcore/marlin-file-operations.c:2500
+#: ../libcore/marlin-file-operations.c:2501
 msgid ""
 "The folder \"%B\" cannot be handled because you do not have permissions to "
 "read it."
@@ -490,37 +490,37 @@ msgstr ""
 "Kaustas \"%B\" olevaid faile pole võimalik muuta, kuna sul puuduvad selle "
 "kausta jaoks lugemise õigused."
 
-#: ../libcore/marlin-file-operations.c:2576
+#: ../libcore/marlin-file-operations.c:2577
 msgid ""
 "The file \"%B\" cannot be handled because you do not have permissions to "
 "read it."
 msgstr ""
 "Faili \"%B\" pole võimalik muuta, kuna sul puuduvad selle lugemiseks õigused."
 
-#: ../libcore/marlin-file-operations.c:2579
+#: ../libcore/marlin-file-operations.c:2580
 msgid "There was an error getting information about \"%B\"."
 msgstr "\"%B\" andmete hankimisel ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:2679
-#: ../libcore/marlin-file-operations.c:2721
-#: ../libcore/marlin-file-operations.c:2754
-#: ../libcore/marlin-file-operations.c:2784
+#: ../libcore/marlin-file-operations.c:2680
+#: ../libcore/marlin-file-operations.c:2722
+#: ../libcore/marlin-file-operations.c:2755
+#: ../libcore/marlin-file-operations.c:2785
 msgid "Error while copying to \"%B\"."
 msgstr "Asukohta \"%B\" kopeerimisel ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:2683
+#: ../libcore/marlin-file-operations.c:2684
 msgid "You do not have permissions to access the destination folder."
 msgstr "Sihtkausta pole võimalik avada, kuna sul puuduvad vajalikud õigused."
 
-#: ../libcore/marlin-file-operations.c:2685
+#: ../libcore/marlin-file-operations.c:2686
 msgid "There was an error getting information about the destination."
 msgstr "Sihtkausta andmete hankimisel ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:2722
+#: ../libcore/marlin-file-operations.c:2723
 msgid "The destination is not a folder."
 msgstr "Asukoht ei ole kaust."
 
-#: ../libcore/marlin-file-operations.c:2755
+#: ../libcore/marlin-file-operations.c:2756
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
@@ -528,58 +528,58 @@ msgstr ""
 "Asukohas pole piisavalt vaba ruumi. Vaba ruumi tekitamiseks kustuta mõningad "
 "ebavajalikud failid."
 
-#: ../libcore/marlin-file-operations.c:2757
+#: ../libcore/marlin-file-operations.c:2758
 #, c-format
 msgid "There is %S available, but %S is required."
 msgstr "%S on saadaval, kuid vaja on %S."
 
-#: ../libcore/marlin-file-operations.c:2785
+#: ../libcore/marlin-file-operations.c:2786
 msgid "The destination is read-only."
 msgstr "Asukoht on kirjutuskaitstud."
 
-#: ../libcore/marlin-file-operations.c:2844
+#: ../libcore/marlin-file-operations.c:2845
 msgid "Moving \"%B\" to \"%B\""
 msgstr "\"%B\" liigutamine asukohta \"%B\""
 
-#: ../libcore/marlin-file-operations.c:2845
+#: ../libcore/marlin-file-operations.c:2846
 msgid "Copying \"%B\" to \"%B\""
 msgstr "\"%B\" kopeerimine asukohta \"%B\""
 
-#: ../libcore/marlin-file-operations.c:2849
+#: ../libcore/marlin-file-operations.c:2850
 msgid "Duplicating \"%B\""
 msgstr "\"%B\" dubleerimine"
 
-#: ../libcore/marlin-file-operations.c:2853
+#: ../libcore/marlin-file-operations.c:2854
 msgid "Moving %'d file (in \"%B\") to \"%B\""
 msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d faili liigutamine (asukohast \"%B\") asukohta \"%B\""
 msgstr[1] "%'d faili ümbertõstmine (asukohast \"%B\") asukohta \"%B\""
 
-#: ../libcore/marlin-file-operations.c:2856
+#: ../libcore/marlin-file-operations.c:2857
 msgid "Copying %'d file (in \"%B\") to \"%B\""
 msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
 msgstr[0] "%'d faili kopeerimine (asukohast \"%B\") asukohta \"%B\""
 msgstr[1] "%'d faili kopeerimine (asukohast \"%B\") asukohta \"%B\""
 
-#: ../libcore/marlin-file-operations.c:2863
+#: ../libcore/marlin-file-operations.c:2864
 msgid "Duplicating %'d file (in \"%B\")"
 msgid_plural "Duplicating %'d files (in \"%B\")"
 msgstr[0] "%'d faili dubleerimine (asukohas \"%B\")"
 msgstr[1] "%'d faili dubleerimine (asukohas \"%B\")"
 
-#: ../libcore/marlin-file-operations.c:2872
+#: ../libcore/marlin-file-operations.c:2873
 msgid "Moving %'d file to \"%B\""
 msgid_plural "Moving %'d files to \"%B\""
 msgstr[0] "%'d faili liigutamine asukohta \"%B\""
 msgstr[1] "%'d faili ümbertõstmine asukohta \"%B\""
 
-#: ../libcore/marlin-file-operations.c:2876
+#: ../libcore/marlin-file-operations.c:2877
 msgid "Copying %'d file to \"%B\""
 msgid_plural "Copying %'d files to \"%B\""
 msgstr[0] "%'d faili kopeerimineasukohta \"%B\""
 msgstr[1] "%'d faili kopeerimine asukohta \"%B\""
 
-#: ../libcore/marlin-file-operations.c:2881
+#: ../libcore/marlin-file-operations.c:2882
 #, c-format
 msgid "Duplicating %'d file"
 msgid_plural "Duplicating %'d files"
@@ -587,7 +587,7 @@ msgstr[0] "%'d faili dubleerimine"
 msgstr[1] "%'d faili dubleerimine"
 
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
-#: ../libcore/marlin-file-operations.c:2907
+#: ../libcore/marlin-file-operations.c:2908
 #, c-format
 msgid "%S of %S"
 msgstr "%S %S-st"
@@ -595,13 +595,13 @@ msgstr "%S %S-st"
 #. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
 #. / "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:2917
+#: ../libcore/marlin-file-operations.c:2918
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
 msgstr[0] "%S %S-st, jäänud %T (%S/s)"
 msgstr[1] "%S %S-st, jäänud %T (%S/s)"
 
-#: ../libcore/marlin-file-operations.c:3295
+#: ../libcore/marlin-file-operations.c:3296
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "create it in the destination."
@@ -609,11 +609,11 @@ msgstr ""
 "Kausta \"%B\" pole võimalik kopeerida, kuna sul puuduvad vajalikud asukoha "
 "õigused."
 
-#: ../libcore/marlin-file-operations.c:3298
+#: ../libcore/marlin-file-operations.c:3299
 msgid "There was an error creating the folder \"%B\"."
 msgstr "Kataloogi \"%B\" loomisel ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:3428
+#: ../libcore/marlin-file-operations.c:3429
 msgid ""
 "Files in the folder \"%B\" cannot be copied because you do not have "
 "permissions to see them."
@@ -621,7 +621,7 @@ msgstr ""
 "Kaustas \"%B\" olevaid faile pole võimalik kopeerida, kuna sul pole "
 "piisavalt õigusi nende nägemiseks."
 
-#: ../libcore/marlin-file-operations.c:3473
+#: ../libcore/marlin-file-operations.c:3474
 msgid ""
 "The folder \"%B\" cannot be copied because you do not have permissions to "
 "read it."
@@ -629,162 +629,162 @@ msgstr ""
 "Kaustas \"%B\" olevaid faile pole võimalik kopeerida, kuna sul pole "
 "piisavalt õigusi nende lugemiseks."
 
-#: ../libcore/marlin-file-operations.c:3518
-#: ../libcore/marlin-file-operations.c:4161
+#: ../libcore/marlin-file-operations.c:3519
+#: ../libcore/marlin-file-operations.c:4183
 msgid "Error while moving \"%B\"."
 msgstr "\"%B\" liigutamisel ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:3519
+#: ../libcore/marlin-file-operations.c:3520
 msgid "Could not remove the source folder."
 msgstr "Lähtekausta pole võimalik kustutada."
 
-#: ../libcore/marlin-file-operations.c:3604
-#: ../libcore/marlin-file-operations.c:3645
-#: ../libcore/marlin-file-operations.c:4163
+#: ../libcore/marlin-file-operations.c:3605
+#: ../libcore/marlin-file-operations.c:3646
+#: ../libcore/marlin-file-operations.c:4185
 msgid "Error while copying \"%B\"."
 msgstr "\"%B\" kopeerimisel ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:3605
+#: ../libcore/marlin-file-operations.c:3606
 #, c-format
 msgid "Could not remove files from the already existing folder %F."
 msgstr "Juba olemasolevast kaustast %F pole võimalik faile eemaldada."
 
-#: ../libcore/marlin-file-operations.c:3646
+#: ../libcore/marlin-file-operations.c:3647
 #, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Juba olemasolevat faili %F pole võimalik eemaldada."
 
-#: ../libcore/marlin-file-operations.c:3920
-#: ../libcore/marlin-file-operations.c:4570
+#: ../libcore/marlin-file-operations.c:3921
+#: ../libcore/marlin-file-operations.c:4592
 msgid "You cannot move a folder into itself."
 msgstr "Kausta pole võimalik iseendasse ümbertõsta."
 
-#: ../libcore/marlin-file-operations.c:3921
-#: ../libcore/marlin-file-operations.c:4571
+#: ../libcore/marlin-file-operations.c:3922
+#: ../libcore/marlin-file-operations.c:4593
 msgid "You cannot copy a folder into itself."
 msgstr "Kausta pole võimalik iseendasse kopeerida."
 
-#: ../libcore/marlin-file-operations.c:3922
-#: ../libcore/marlin-file-operations.c:4572
+#: ../libcore/marlin-file-operations.c:3923
+#: ../libcore/marlin-file-operations.c:4594
 msgid "The destination folder is inside the source folder."
 msgstr "Sihtkaust asub lähtekausta sees."
 
-#: ../libcore/marlin-file-operations.c:3953
+#: ../libcore/marlin-file-operations.c:3954
 msgid "You cannot move a file over itself."
 msgstr "Faili pole võimalik iseendale ümbertõsta."
 
-#: ../libcore/marlin-file-operations.c:3954
+#: ../libcore/marlin-file-operations.c:3955
 msgid "You cannot copy a file over itself."
 msgstr "Faili pole võimalik iseendale kopeerida."
 
-#: ../libcore/marlin-file-operations.c:3955
+#: ../libcore/marlin-file-operations.c:3956
 msgid "The source file would be overwritten by the destination."
 msgstr "Asukoht võib lähtefaili üle kirjutada."
 
-#: ../libcore/marlin-file-operations.c:4165
+#: ../libcore/marlin-file-operations.c:4187
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
 msgstr "Asukohas %F olemasolevat sama nimega faili pole võimalik eemaldada."
 
-#: ../libcore/marlin-file-operations.c:4230
+#: ../libcore/marlin-file-operations.c:4252
 msgid "Cannot copy \"%B\" here."
 msgstr "\"%B\" kopeerimine siia pole võimalik."
 
-#: ../libcore/marlin-file-operations.c:4231
+#: ../libcore/marlin-file-operations.c:4253
 msgid "There was an error copying the file into %B."
 msgstr "Faili kopeerimisel sihtkohta %B ilmnes probleem."
 
-#: ../libcore/marlin-file-operations.c:4453
+#: ../libcore/marlin-file-operations.c:4475
 msgid "Copying Files"
 msgstr "Failide kopeerimine"
 
-#: ../libcore/marlin-file-operations.c:4479
+#: ../libcore/marlin-file-operations.c:4501
 msgid "Preparing to move to \"%B\""
 msgstr "\"%B\" ettevalmistamine ümbertõstmiseks."
 
-#: ../libcore/marlin-file-operations.c:4483
+#: ../libcore/marlin-file-operations.c:4505
 #, c-format
 msgid "Preparing to move %'d file"
 msgid_plural "Preparing to move %'d files"
 msgstr[0] "Ettevalmistused %'d faili ümbertõstmiseks"
 msgstr[1] "Ettevalmistused %'d faili ümbertõstmiseks"
 
-#: ../libcore/marlin-file-operations.c:4732
+#: ../libcore/marlin-file-operations.c:4751
 #, c-format
 msgid "Error while moving \"%F\"."
 msgstr "\"%F\" liigutamisel ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:4733
+#: ../libcore/marlin-file-operations.c:4752
 #, c-format
 msgid "There was an error moving the file into %F."
 msgstr "Faili liigutamisel asukohta %F ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:4990
+#: ../libcore/marlin-file-operations.c:5009
 msgid "Moving Files"
 msgstr "Failide ümbertõstmine"
 
-#: ../libcore/marlin-file-operations.c:5019
+#: ../libcore/marlin-file-operations.c:5038
 msgid "Creating links in \"%B\""
 msgstr "Viitade loomine asukohta \"%B\""
 
-#: ../libcore/marlin-file-operations.c:5023
+#: ../libcore/marlin-file-operations.c:5042
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
 msgstr[0] "Viida loomine %'d failile"
 msgstr[1] "Viitade loomine %'d failile"
 
-#: ../libcore/marlin-file-operations.c:5163
+#: ../libcore/marlin-file-operations.c:5182
 msgid "Error while creating link to %B."
 msgstr "Viida loomisel asukohta \"%B\" ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:5165
+#: ../libcore/marlin-file-operations.c:5184
 msgid "Symbolic links only supported for local files"
 msgstr "Nimeviidad on toetatud ainult kohalike failide korral"
 
-#: ../libcore/marlin-file-operations.c:5168
+#: ../libcore/marlin-file-operations.c:5187
 msgid "The target doesn't support symbolic links."
 msgstr "Asukoht ei toeta nimeviitasid."
 
-#: ../libcore/marlin-file-operations.c:5171
+#: ../libcore/marlin-file-operations.c:5190
 #, c-format
 msgid "There was an error creating the symlink in %F."
 msgstr "Nimeviida loomisel asukohta %F ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:5489
+#: ../libcore/marlin-file-operations.c:5508
 msgid "Setting permissions"
 msgstr "Õiguste seadistamine"
 
-#: ../libcore/marlin-file-operations.c:5585
+#: ../libcore/marlin-file-operations.c:5604
 msgid "Cannot copy into trash."
 msgstr "Prügikasti kopeerimine pole võimalik."
 
-#: ../libcore/marlin-file-operations.c:5586
+#: ../libcore/marlin-file-operations.c:5605
 msgid "It is not permitted to copy files into the trash"
 msgstr "Failide kopeerimine prügikasti pole võimalik."
 
-#: ../libcore/marlin-file-operations.c:5724
+#: ../libcore/marlin-file-operations.c:5743
 msgid "untitled folder"
 msgstr "Nimetu kaust"
 
-#: ../libcore/marlin-file-operations.c:5732
+#: ../libcore/marlin-file-operations.c:5751
 msgid "new file"
 msgstr "uus fail"
 
-#: ../libcore/marlin-file-operations.c:5903
+#: ../libcore/marlin-file-operations.c:5922
 msgid "Error while creating directory %B."
 msgstr "Kausta %B loomisel ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:5905
+#: ../libcore/marlin-file-operations.c:5924
 msgid "Error while creating file %B."
 msgstr "Faili %B loomisel ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:5907
+#: ../libcore/marlin-file-operations.c:5926
 #, c-format
 msgid "There was an error creating the directory in %F."
 msgstr "Kausta loomisel asukohta %F ilmnes viga."
 
-#: ../libcore/marlin-file-operations.c:6217
+#: ../libcore/marlin-file-operations.c:6236
 msgid "Emptying Trash"
 msgstr "Prügikasti tühjendamine"
 
@@ -1168,86 +1168,86 @@ msgid_plural "Redo change owner of %d items"
 msgstr[0] "_Tee uuesti %d faili omaniku muutmine"
 msgstr[1] "_Tee uuesti %d faili omaniku muutmine"
 
-#: ../filechooser-module/FileChooserDialog.vala:72
+#: ../filechooser-module/FileChooserDialog.vala:73
 #: ../src/View/Widgets/TopMenu.vala:61
 msgid "Previous"
 msgstr "Eelmine"
 
-#: ../filechooser-module/FileChooserDialog.vala:76
+#: ../filechooser-module/FileChooserDialog.vala:77
 #: ../src/View/Widgets/TopMenu.vala:66
 msgid "Next"
 msgstr "Järgmine"
 
-#: ../src/View/AbstractDirectoryView.vala:821
+#: ../src/View/AbstractDirectoryView.vala:826
 msgid "Cannot open this file"
 msgstr "Selle faili avamine pole võimalik"
 
-#: ../src/View/AbstractDirectoryView.vala:834
+#: ../src/View/AbstractDirectoryView.vala:839
 msgid "Cannot identify file type to open"
 msgstr "Avatava faili formaati pole võimalik tuvastada"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1573
 msgid "Cannot drop this file"
 msgstr "Faili ümbertõstmine pole võimalik"
 
-#: ../src/View/AbstractDirectoryView.vala:1568
+#: ../src/View/AbstractDirectoryView.vala:1573
 msgid "Invalid file name provided"
 msgstr "Vigane faili nimi"
 
-#: ../src/View/AbstractDirectoryView.vala:2054
+#: ../src/View/AbstractDirectoryView.vala:2059
 msgid "Invalid"
 msgstr "Vigane"
 
-#: ../src/View/AbstractDirectoryView.vala:2060
+#: ../src/View/AbstractDirectoryView.vala:2065
 msgid "Run"
 msgstr "Käivita"
 
-#: ../src/View/AbstractDirectoryView.vala:2064
+#: ../src/View/AbstractDirectoryView.vala:2069
 msgid "Open in %s"
 msgstr "Ava rakendusega %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2074
+#: ../src/View/AbstractDirectoryView.vala:2079
 msgid "Open in"
 msgstr "Ava..."
 
-#: ../src/View/AbstractDirectoryView.vala:2076
+#: ../src/View/AbstractDirectoryView.vala:2081
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:482
 msgid "Open with"
 msgstr "Ava koos"
 
-#: ../src/View/AbstractDirectoryView.vala:2135
+#: ../src/View/AbstractDirectoryView.vala:2140
 #: ../src/Dialogs/PropertiesWindow.vala:616
 msgid "Other Application…"
 msgstr "Teine rakendus…"
 
-#: ../src/View/AbstractDirectoryView.vala:2164
+#: ../src/View/AbstractDirectoryView.vala:2169
 msgid "Templates"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2411
+#: ../src/View/AbstractDirectoryView.vala:2416
 msgid "Untitled %s"
 msgstr "Nimetu %s"
 
-#: ../src/View/AbstractDirectoryView.vala:2750
-#: ../src/View/AbstractDirectoryView.vala:2934
+#: ../src/View/AbstractDirectoryView.vala:2755
+#: ../src/View/AbstractDirectoryView.vala:2939
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2751
-#: ../src/View/AbstractDirectoryView.vala:2919
-#: ../src/View/AbstractDirectoryView.vala:2935
+#: ../src/View/AbstractDirectoryView.vala:2756
+#: ../src/View/AbstractDirectoryView.vala:2924
+#: ../src/View/AbstractDirectoryView.vala:2940
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: ../src/View/AbstractDirectoryView.vala:2894
+#: ../src/View/AbstractDirectoryView.vala:2899
 msgid "Cannot copy files that are in the trash"
 msgstr "Prügikastis olevate failide kopeerimine pole võimalik."
 
-#: ../src/View/AbstractDirectoryView.vala:2895
+#: ../src/View/AbstractDirectoryView.vala:2900
 msgid "Cutting the selection instead"
 msgstr "Valitud failide lõikamine"
 
-#: ../src/View/AbstractDirectoryView.vala:2918
+#: ../src/View/AbstractDirectoryView.vala:2923
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -1293,122 +1293,123 @@ msgstr "Tüüp"
 msgid "Modified"
 msgstr "Muudetud"
 
-#: ../src/View/Sidebar.vala:491
+#: ../src/View/PopupMenuBuilder.vala:34
+msgid "Open"
+msgstr "Avamine rakendusega..."
+
+#: ../src/View/PopupMenuBuilder.vala:38
+msgid "Open in New _Tab"
+msgstr "Ava uues _kaardis"
+
+#: ../src/View/PopupMenuBuilder.vala:42
+msgid "Open in New _Window"
+msgstr "Ava uues _aknas"
+
+#: ../src/View/PopupMenuBuilder.vala:46
+msgid "Remove"
+msgstr "Eemalda järjehoidjatest"
+
+#: ../src/View/PopupMenuBuilder.vala:50 ../src/View/directory_view_popup.ui:30
+msgid "Rename"
+msgstr "Muuda nime"
+
+#: ../src/View/PopupMenuBuilder.vala:54
+msgid "_Mount"
+msgstr "_Haagi"
+
+#: ../src/View/PopupMenuBuilder.vala:58
+msgid "_Unmount"
+msgstr "_Haagi lahti"
+
+#: ../src/View/PopupMenuBuilder.vala:62
+msgid "_Eject"
+msgstr "_Väljasta"
+
+#: ../src/View/PopupMenuBuilder.vala:66
+#: ../src/Dialogs/PropertiesWindow.vala:121
+#: ../src/View/directory_view_popup.ui:91
+msgid "Properties"
+msgstr "Omadused"
+
+#: ../src/View/Sidebar.vala:499
 msgid "Personal"
 msgstr "Isiklik"
 
-#: ../src/View/Sidebar.vala:492
+#: ../src/View/Sidebar.vala:500
 msgid "Your common places and bookmarks"
 msgstr "Üldised kaustad ja lemmikud"
 
-#: ../src/View/Sidebar.vala:504 ../src/View/ViewContainer.vala:377
+#: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:377
 msgid "Home"
 msgstr "Kodu"
 
-#: ../src/View/Sidebar.vala:511
+#: ../src/View/Sidebar.vala:519
 msgid "Open your personal folder"
 msgstr "Ava kodukaust"
 
-#: ../src/View/Sidebar.vala:526
+#: ../src/View/Sidebar.vala:534
 msgid "View the list of recently used files"
 msgstr "Hiljuti kasutatud failide vaatamine"
 
-#: ../src/View/Sidebar.vala:552 ../libwidgets/Resources.vala:65
+#: ../src/View/Sidebar.vala:560 ../libwidgets/Resources.vala:65
 msgid "Trash"
 msgstr "Prügi"
 
-#: ../src/View/Sidebar.vala:559
+#: ../src/View/Sidebar.vala:567
 msgid "Open the Trash"
 msgstr "Vaata prügikastis olevaid faile"
 
-#: ../src/View/Sidebar.vala:564
+#: ../src/View/Sidebar.vala:572
 msgid "Devices"
 msgstr "Seadmed"
 
-#: ../src/View/Sidebar.vala:565
+#: ../src/View/Sidebar.vala:573
 msgid "Your local partitions and devices"
 msgstr "Kohalikud partitsioonid ja seadmed"
 
-#: ../src/View/Sidebar.vala:571 ../src/View/ViewContainer.vala:379
+#: ../src/View/Sidebar.vala:579 ../src/View/ViewContainer.vala:379
 #: ../src/Dialogs/VolumePropertiesWindow.vala:44
 #: ../libwidgets/Resources.vala:68
 msgid "File System"
 msgstr "Failisüsteem"
 
-#: ../src/View/Sidebar.vala:692 ../libwidgets/Resources.vala:62
+#: ../src/View/Sidebar.vala:700 ../libwidgets/Resources.vala:62
 msgid "Network"
 msgstr "Võrk"
 
-#: ../src/View/Sidebar.vala:693
+#: ../src/View/Sidebar.vala:701
 msgid "Your network places"
 msgstr "Sinu võrgu asukohad"
 
-#: ../src/View/Sidebar.vala:725
+#: ../src/View/Sidebar.vala:733
 msgid "Entire Network"
 msgstr "Kogu võrk"
 
-#: ../src/View/Sidebar.vala:732
+#: ../src/View/Sidebar.vala:740
 msgid "Browse the contents of the network"
 msgstr "Sirvi võrgus olevaid ressursse"
 
-#: ../src/View/Sidebar.vala:735
+#: ../src/View/Sidebar.vala:743
 #, fuzzy
 msgid "Connect Server"
 msgstr "Ühendu serveriga"
 
-#: ../src/View/Sidebar.vala:735
+#: ../src/View/Sidebar.vala:743
 #, fuzzy
 msgid "Connect to a network server"
 msgstr "Võrgus oleva failiserveriga ühendamine…"
 
-#: ../src/View/Sidebar.vala:876
+#: ../src/View/Sidebar.vala:881
 msgid "(%s Free of %s)"
 msgstr "(%s vaba %s-st)"
 
-#: ../src/View/Sidebar.vala:1366
+#: ../src/View/Sidebar.vala:1371
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: ../src/View/Sidebar.vala:1381
+#: ../src/View/Sidebar.vala:1386
 msgid "Unable to start %s"
 msgstr "%s käivitamine ebaõnnestus"
-
-#: ../src/View/Sidebar.vala:1483
-msgid "Open"
-msgstr "Avamine rakendusega..."
-
-#: ../src/View/Sidebar.vala:1487
-msgid "Open in New _Tab"
-msgstr "Ava uues _kaardis"
-
-#: ../src/View/Sidebar.vala:1491
-msgid "Open in New _Window"
-msgstr "Ava uues _aknas"
-
-#: ../src/View/Sidebar.vala:1497
-msgid "Remove"
-msgstr "Eemalda järjehoidjatest"
-
-#: ../src/View/Sidebar.vala:1501 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Muuda nime"
-
-#: ../src/View/Sidebar.vala:1507
-msgid "_Mount"
-msgstr "_Haagi"
-
-#: ../src/View/Sidebar.vala:1511
-msgid "_Unmount"
-msgstr "_Haagi lahti"
-
-#: ../src/View/Sidebar.vala:1515
-msgid "_Eject"
-msgstr "_Väljasta"
-
-#: ../src/View/Sidebar.vala:1524 ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:91
-msgid "Properties"
-msgstr "Omadused"
 
 #: ../src/View/Slot.vala:31
 msgid "This Folder Is Empty"
@@ -1583,7 +1584,7 @@ msgstr "Muutmine"
 msgid "Execute"
 msgstr "Käivitamine"
 
-#: ../src/View/Window.vala:481 ../src/View/Window.vala:491
+#: ../src/View/Window.vala:484 ../src/View/Window.vala:494
 msgid "(as Administrator)"
 msgstr "- juurkasutajana"
 
@@ -1592,7 +1593,8 @@ msgid "Show the version of the program"
 msgstr "Programmi versiooni näitamine."
 
 #: ../src/Application.vala:121
-msgid "Open uri(s) in new tab"
+#, fuzzy
+msgid "Open one or more uris, each in a new tab"
 msgstr "URI-de avamine uues aknas"
 
 #: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
@@ -2147,11 +2149,11 @@ msgstr ""
 msgid "Preparing"
 msgstr "Ettevalmistamine"
 
-#: ../libcore/StockDialogs.vala:39
+#: ../libcore/StockDialogs.vala:51
 msgid "Show more _details"
 msgstr "_Näita üksikasjalisemalt"
 
-#: ../libcore/gof-directory-async.vala:661
+#: ../libcore/gof-directory-async.vala:660
 msgid "Server did not respond within time limit"
 msgstr ""
 

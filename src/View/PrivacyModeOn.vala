@@ -19,35 +19,27 @@
 ***/
 
 namespace Marlin.View {
-    public class DirectoryNotFound : Marlin.View.Welcome {
+    public class PrivacyModeOn : Marlin.View.Welcome {
         public GOF.Directory.Async dir_saved;
         public ViewContainer ctab;
+        public bool remember_history {get; set;}
 
-        public DirectoryNotFound (GOF.Directory.Async dir, ViewContainer tab) {
-            base (_("This Folder Does Not Exist"),
-                  _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));
+        public PrivacyModeOn (ViewContainer tab) {
+            base (_("Privacy mode is on"), _("No recent files are remembered"));
 
-            append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
-
-            dir_saved = dir;
-            ctab = tab;
+            append ("preferences-system-privacy", _("Change security settings"),
+                    _("Open the system security and privacy settings app"));
 
             this.activated.connect ((index) => {
-                bool success = false;
-
-                try {
-                    success = dir.location.make_directory_with_parents (null);
-                } catch (Error e) {
-                    if (e is IOError.EXISTS) {
-                        success = true;
-                    } else {
-                        show_dialog (_("Failed to create the folder\n\n%s").printf (e.message),
-                                     Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE);
-                    }
-                }
-
-                if (success) {
-                    ctab.reload ();
+                switch (index) {
+                    case 0:
+                        var ctx = get_window ().get_display ().get_app_launch_context ();
+                        try {
+                            AppInfo.launch_default_for_uri ("settings://security", ctx);
+                        } catch (Error e) {
+                            critical ("No default security app found");
+                        }
+                        break;
                 }
             });
 

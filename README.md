@@ -14,7 +14,7 @@ You'll need the following dependencies:
 * libgail-3-dev
 * libgee-0.8-dev
 * libglib2.0-dev
-* libgranite-dev
+* libgranite-dev >= 5.2.0
 * libgtk-3-dev
 * libnotify-dev
 * libpango1.0-dev

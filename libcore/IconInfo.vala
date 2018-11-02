@@ -51,7 +51,8 @@ public class Marlin.IconInfo : GLib.Object {
 
         if (icon is GLib.LoadableIcon) {
             if (loadable_icon_cache == null) {
-                loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Marlin.IconInfo> (LoadableIconKey.hash, LoadableIconKey.equal);
+                loadable_icon_cache = new GLib.HashTable<LoadableIconKey, Marlin.IconInfo> (LoadableIconKey.hash,
+                                                                                            LoadableIconKey.equal);
             }
 
             var loadable_key = new LoadableIconKey (icon, size, scale);
@@ -68,7 +69,8 @@ public class Marlin.IconInfo : GLib.Object {
             Gdk.Pixbuf pixbuf = null;
             if ((width >= 1 || width == -1) && (height >= 1 || height == -1)) {
                 try {
-                    pixbuf = new Gdk.Pixbuf.from_file_at_scale (str_icon, int.min (size, width) * scale, int.min (size, height) * scale, true);
+                    pixbuf = new Gdk.Pixbuf.from_file_at_scale (str_icon, int.min (size, width) * scale,
+                                                                int.min (size, height) * scale, true);
                 } catch (Error e) {
                     critical (e.message);
                 }
@@ -82,7 +84,8 @@ public class Marlin.IconInfo : GLib.Object {
             return icon_info;
         } else if (icon is GLib.ThemedIcon) {
             if (themed_icon_cache == null) {
-                themed_icon_cache = new GLib.HashTable<ThemedIconKey, Marlin.IconInfo> (ThemedIconKey.hash, ThemedIconKey.equal);
+                themed_icon_cache = new GLib.HashTable<ThemedIconKey, Marlin.IconInfo> (ThemedIconKey.hash,
+                                                                                        ThemedIconKey.equal);
             }
 
             var names = ((GLib.ThemedIcon) icon).get_names ();
@@ -110,7 +113,8 @@ public class Marlin.IconInfo : GLib.Object {
         } else {
             var theme = get_icon_theme ();
             try {
-                var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, scale, Gtk.IconLookupFlags.GENERIC_FALLBACK);
+                var gtk_icon_info = theme.lookup_by_gicon_for_scale (icon, size, scale,
+                                                                     Gtk.IconLookupFlags.GENERIC_FALLBACK);
                 var pixbuf = gtk_icon_info.load_icon ();
                 return new Marlin.IconInfo.for_pixbuf (pixbuf);
             } catch (Error e) {

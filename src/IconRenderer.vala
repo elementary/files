@@ -191,7 +191,6 @@ namespace Marlin {
 
             style_context.render_icon (cr, pb, draw_rect.x * icon_scale, draw_rect.y * icon_scale);
             style_context.restore ();
-
             int h_overlap = int.min (draw_rect.width, Marlin.IconSize.EMBLEM) / 2;
             int v_overlap = int.min (draw_rect.height, Marlin.IconSize.EMBLEM) / 2;
 
