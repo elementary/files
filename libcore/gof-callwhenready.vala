@@ -55,7 +55,9 @@ public class GOF.CallWhenReady : Object {
 
     /**TODO** move this to GOF.File */
 
-    private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size,standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*";
+    private unowned string gio_default_attributes = "standard::is-hidden,standard::is-backup,standard::is-symlink," +
+    "standard::type,standard::name,standard::display-name,standard::fast-content-type,standard::size," +
+    "standard::symlink-target,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*";
 
     private delegate void func_query_info (GOF.File gof);
 

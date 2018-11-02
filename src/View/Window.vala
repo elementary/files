@@ -172,8 +172,9 @@ namespace Marlin.View {
             add (lside_pane);
 
             /** Apply preferences */
-            get_action ("show_hidden").set_state (Preferences.settings.get_boolean ("show-hiddenfiles"));
-            get_action ("show_remote_thumbnails").set_state (Preferences.settings.get_boolean ("show-remote-thumbnails"));
+            var prefs = Preferences.settings;
+            get_action ("show_hidden").set_state (prefs.get_boolean ("show-hiddenfiles"));
+            get_action ("show_remote_thumbnails").set_state (prefs.get_boolean ("show-remote-thumbnails"));
         }
 
         private void connect_signals () {
@@ -374,6 +375,7 @@ namespace Marlin.View {
 
             if (old_tab != null) {
                 old_tab.set_active_state (false);
+                old_tab.is_frozen = false;
             }
 
             loading_uri (current_tab.uri);
@@ -462,7 +464,8 @@ namespace Marlin.View {
                             if (content_label == tab.label) {
                                 /* Also relabel conflicting tab (but not before this function finishes) */
                                 Idle.add_full (GLib.Priority.LOW, () => {
-                                    set_tab_label (disambiguate_name (content_label, content_path, path), tab, content_path);
+                                    var unique_name = disambiguate_name (content_label, content_path, path);
+                                    set_tab_label (unique_name, tab, content_path);
                                     return false;
                                 });
                             }
@@ -1068,7 +1071,8 @@ namespace Marlin.View {
         public void uri_path_change_request (string p, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT) {
             var file = get_file_from_uri (p);
             if (file != null) {
-                /* Have to escape path and use File.new_for_uri () to correctly handle paths with certain characters such as "#" */
+                /* Have to escape path and use File.new_for_uri () to correctly handle paths
+                 * with certain characters such as "#" */
                 file_path_change_request (file, flag);
             } else {
                 warning ("Cannot browse %s", p);
