@@ -7,6 +7,7 @@ namespace Preferences {
     public GLib.Settings marlin_list_view_settings;
     public GLib.Settings marlin_column_view_settings;
     public GLib.Settings gnome_interface_settings;
+    public GLib.Settings gnome_privacy_settings;
     public GLib.Settings gtk_file_chooser_settings;
 }
 
