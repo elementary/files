@@ -1333,11 +1333,11 @@ namespace FM {
             if (file.get_thumbnail_path () != null) {
                 PF.FileUtils.remove_thumbnail_paths_for_uri (file.uri);
             }
-            
+
             if (plugins != null) {
                 plugins.update_file_info (file);
             }
-            
+
             if (file.is_folder ()) {
                 /* Check whether the deleted file is the directory */
                 var file_dir = GOF.Directory.Async.cache_lookup (file.location);
@@ -3329,7 +3329,8 @@ namespace FM {
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 if (path_selected) {
-                                    unselect_path (path);
+                                    /* Don't deselect yet, may drag */
+                                    should_deselect = true;
                                 } else {
                                     should_deselect = false;
                                     select_path (path, true); /* Cursor follow and selection preserved */
@@ -3373,7 +3374,7 @@ namespace FM {
                         click_zone == ClickZone.ICON ||
                         click_zone == ClickZone.HELPER) {
 
-                        select_path (path);
+                        select_path (path); /* Note: secondary click does not toggle selection */
                     } else if (click_zone == ClickZone.INVALID) {
                         unselect_all ();
                     }
