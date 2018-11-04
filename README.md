@@ -1,5 +1,4 @@
 # Files Dropbox plugin
-[![Bountysource](https://www.bountysource.com/badge/tracker?tracker_id=65602118)
 
 ## Building, Testing, and Installation
 
@@ -22,10 +21,10 @@ To install the 64-bit Dropbox client these instructions are from the Dropbox web
 
     Open a terminal and run:
 
-    `cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -`
+    cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 
     Next, run the Dropbox daemon from the newly created .dropbox-dist folder.
-    `~/.dropbox-dist/dropboxd`
+    ~/.dropbox-dist/dropboxd
 
    If you're running Dropbox on your server for the first time, you'll be asked to copy and paste a link
    in a working browser to create a new account or add your server to an existing account.
@@ -39,15 +38,15 @@ Create a clean build environment in the root of the source tree and move to it.
 ```
 Configure the build environment:
 
-    `cmake -DCMAKE_INSTALL_PREFIX=/usr ..`
+    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
 
 Install the plugin:
 
-    `sudo make install`
+    sudo make install
 
 Run Files, either from the desktop or in the terminal with:
 
-    `io.elementary.files`
+    io.elementary.files
 
 Navigate to the ~/Dropbox folder.  If you are connected to Dropbox then status icons will appear
 againt the items and the context menu contains additional Dropbox related items.  You may wish
