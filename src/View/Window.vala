@@ -769,13 +769,12 @@ namespace Marlin.View {
             update_undo_actions ();
         }
 
-        public static void after_undo_redo (void *data) {
-            var window = data as Marlin.View.Window;
-            if (window.current_tab.slot.directory.is_recent) {
-                window.current_tab.reload ();
+        public void after_undo_redo () {
+            if (current_tab.slot.directory.is_recent) {
+                current_tab.reload ();
             }
 
-            window.doing_undo_redo = false;
+            doing_undo_redo = false;
         }
 
         public void change_state_show_hidden (GLib.SimpleAction action) {
