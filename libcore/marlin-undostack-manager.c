@@ -86,9 +86,10 @@ struct _MarlinUndoActionData
 
 };
 
-struct _MarlinUndoManagerPrivate
+struct _MarlinUndoManager
 {
-    /* Private fields */
+    GObject parent_instance;
+
     GQueue      *stack;
     guint       undo_levels;
     guint       index;
@@ -98,8 +99,7 @@ struct _MarlinUndoManagerPrivate
     gboolean    confirm_delete;
 };
 
-#define MARLIN_UNDO_MANAGER_GET_PRIVATE(o)  \
-    (G_TYPE_INSTANCE_GET_PRIVATE ((o), TYPE_MARLIN_UNDO_MANAGER, MarlinUndoManagerPrivate))
+G_DEFINE_TYPE (MarlinUndoManager, marlin_undo_manager, G_TYPE_OBJECT);
 
 enum {
     REQUEST_MENU_UPDATE,
@@ -127,14 +127,8 @@ static void marlin_undo_manager_get_property (GObject *object,
 /* *****************************************************************
    Destructors prototypes
 ***************************************************************** */
-static void marlin_undo_manager_finalize (GObject *object);
 
 static void marlin_undo_manager_dispose (GObject *object);
-
-/* *****************************************************************
-   Type definition
-***************************************************************** */
-G_DEFINE_TYPE (MarlinUndoManager, marlin_undo_manager, G_TYPE_OBJECT);
 
 /* *****************************************************************
    Private methods prototypes
@@ -142,26 +136,26 @@ G_DEFINE_TYPE (MarlinUndoManager, marlin_undo_manager, G_TYPE_OBJECT);
 
 static void stack_clear_n_oldest (GQueue *stack, guint n);
 
-static void stack_fix_size (MarlinUndoManagerPrivate *priv);
+static void stack_fix_size (MarlinUndoManager *self);
 
-static gboolean can_undo (MarlinUndoManagerPrivate *priv);
+static gboolean can_undo (MarlinUndoManager *self);
 
-static gboolean can_redo (MarlinUndoManagerPrivate *priv);
+static gboolean can_redo (MarlinUndoManager *self);
 
-static void stack_push_action (MarlinUndoManagerPrivate *priv,
+static void stack_push_action (MarlinUndoManager *self,
                                MarlinUndoActionData *action);
 
 static MarlinUndoActionData
-* stack_scroll_left (MarlinUndoManagerPrivate *priv);
+* stack_scroll_left (MarlinUndoManager *self);
 
 static MarlinUndoActionData
-* stack_scroll_right (MarlinUndoManagerPrivate *priv);
+* stack_scroll_right (MarlinUndoManager *self);
 
 static MarlinUndoActionData
-* get_next_redo_action (MarlinUndoManagerPrivate *priv);
+* get_next_redo_action (MarlinUndoManager *self);
 
 static MarlinUndoActionData
-* get_next_undo_action (MarlinUndoManagerPrivate *priv);
+* get_next_undo_action (MarlinUndoManager *self);
 
 static gchar *get_undo_label (MarlinUndoActionData *action);
 
@@ -190,11 +184,11 @@ static void undo_redo_done_delete_callback (gboolean user_cancel, gpointer callb
 static void undo_redo_done_create_callback (GFile * new_file,
                                             gpointer callback_data);
 
-static void clear_redo_actions (MarlinUndoManagerPrivate *priv);
+static void clear_redo_actions (MarlinUndoManager *self);
 
 static gchar *get_first_target_short_name (MarlinUndoActionData *action);
 
-static GList *construct_gfile_list (const GList *urilist, GFile *parent);
+static GList *construct_gfile_list (GList *urilist, GFile *parent);
 
 static GList *construct_gfile_list_from_uri (char *uri);
 
@@ -219,9 +213,6 @@ marlin_undo_manager_class_init (MarlinUndoManagerClass *klass)
     GParamSpec *undo_levels;
     GParamSpec *confirm_delete;
     GObjectClass *g_object_class;
-
-    /* Add private structure */
-    g_type_class_add_private (klass, sizeof (MarlinUndoManagerPrivate));
 
     /* Create properties */
     undo_levels = g_param_spec_uint ("undo-levels", "undo levels",
@@ -256,54 +247,40 @@ marlin_undo_manager_class_init (MarlinUndoManagerClass *klass)
 
     /* Hook deconstructors */
     g_object_class->dispose = marlin_undo_manager_dispose;
-    g_object_class->finalize = marlin_undo_manager_finalize;
 }
 
 static void
 marlin_undo_manager_init (MarlinUndoManager *self)
 {
-    MarlinUndoManagerPrivate *priv;
-
-    priv = MARLIN_UNDO_MANAGER_GET_PRIVATE (self);
-
-    self->priv = priv;
-
     /* Initialize private fields */
-    priv->stack = g_queue_new ();
-    g_mutex_init (&priv->mutex);
-    priv->index = 0;
-    priv->dispose_has_run = FALSE;
-    priv->undo_redo_flag = FALSE;
-    priv->confirm_delete = FALSE;
+    self->stack = g_queue_new ();
+    g_mutex_init (&self->mutex);
+    self->index = 0;
+    self->dispose_has_run = FALSE;
+    self->undo_redo_flag = FALSE;
+    self->confirm_delete = FALSE;
 }
 
 static void
 marlin_undo_manager_dispose (GObject *object)
 {
     MarlinUndoManager *self = MARLIN_UNDO_MANAGER (object);
-    MarlinUndoManagerPrivate *priv = self->priv;
 
-    if (priv->dispose_has_run)
+    if (self->dispose_has_run)
         return;
 
-    g_mutex_lock (&priv->mutex);
+    g_mutex_lock (&self->mutex);
 
     /* Free each undoable action in the stack and the stack itself */
-    undostack_dispose_all (priv->stack);
-    g_queue_free (priv->stack);
-    g_mutex_unlock (&priv->mutex);
+    undostack_dispose_all (self->stack);
+    g_queue_free (self->stack);
+    g_mutex_unlock (&self->mutex);
 
-    g_mutex_clear (&priv->mutex);
+    g_mutex_clear (&self->mutex);
 
-    priv->dispose_has_run = TRUE;
+    self->dispose_has_run = TRUE;
 
     G_OBJECT_CLASS (marlin_undo_manager_parent_class)->dispose (object);
-}
-
-static void
-marlin_undo_manager_finalize (GObject * object)
-{
-    G_OBJECT_CLASS (marlin_undo_manager_parent_class)->finalize (object);
 }
 
 /* *****************************************************************
@@ -313,25 +290,24 @@ static void
 marlin_undo_manager_set_property (GObject *object, guint prop_id,
                                   const GValue *value, GParamSpec *pspec)
 {
-    g_return_if_fail (IS_MARLIN_UNDO_MANAGER (object));
-
-    MarlinUndoManager *manager = MARLIN_UNDO_MANAGER (object);
-    MarlinUndoManagerPrivate *priv = manager->priv;
+    MarlinUndoManager *self = MARLIN_UNDO_MANAGER (object);
     guint new_undo_levels;
+
+    g_return_if_fail (MARLIN_IS_UNDO_MANAGER (object));
 
     switch (prop_id) {
     case PROP_UNDO_LEVELS:
         new_undo_levels = g_value_get_uint (value);
-        if (new_undo_levels > 0 && (priv->undo_levels != new_undo_levels)) {
-            priv->undo_levels = new_undo_levels;
-            g_mutex_lock (&priv->mutex);
-            stack_fix_size (priv);
-            g_mutex_unlock (&priv->mutex);
-            do_menu_update (manager);
+        if (new_undo_levels > 0 && (self->undo_levels != new_undo_levels)) {
+            self->undo_levels = new_undo_levels;
+            g_mutex_lock (&self->mutex);
+            stack_fix_size (self);
+            g_mutex_unlock (&self->mutex);
+            do_menu_update (self);
         }
         break;
     case PROP_CONFIRM_DELETE:
-        priv->confirm_delete = g_value_get_boolean (value);
+        self->confirm_delete = g_value_get_boolean (value);
         break;
     default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -343,14 +319,13 @@ static void
 marlin_undo_manager_get_property (GObject *object, guint prop_id,
                                   GValue *value, GParamSpec *pspec)
 {
-    g_return_if_fail (IS_MARLIN_UNDO_MANAGER (object));
+    MarlinUndoManager *self = MARLIN_UNDO_MANAGER (object);
 
-    MarlinUndoManager *manager = MARLIN_UNDO_MANAGER (object);
-    MarlinUndoManagerPrivate *priv = manager->priv;
+    g_return_if_fail (MARLIN_IS_UNDO_MANAGER (object));
 
     switch (prop_id) {
     case PROP_UNDO_LEVELS:
-        g_value_set_uint (value, priv->undo_levels);
+        g_value_set_uint (value, self->undo_levels);
         break;
 
     default:
@@ -383,10 +358,9 @@ marlin_undo_manager_instance (void)
 gboolean
 marlin_undo_manager_is_undo_redo (MarlinUndoManager *manager)
 {
-    if (manager->priv->undo_redo_flag)
-        return TRUE;
+    g_return_val_if_fail (MARLIN_IS_UNDO_MANAGER (manager), FALSE);
 
-    return FALSE;
+    return manager->undo_redo_flag;
 }
 
 /*void
@@ -399,7 +373,7 @@ marlin_undo_manager_is_undo_redo (MarlinUndoManager *manager)
  * Redoes the last file operation
 ** ****************************************************************/
 void
-marlin_undo_manager_redo (MarlinUndoManager *manager,
+marlin_undo_manager_redo (MarlinUndoManager *self,
                           GtkWidget *parent_view,
                           MarlinUndoFinishCallback cb,
                           gpointer callback_data)
@@ -409,24 +383,25 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
     char *new_name;
     char *puri;
     GFile *fparent;
-    MarlinUndoManagerPrivate *priv = manager->priv;
 
-    g_mutex_lock (&priv->mutex);
+    g_return_if_fail (MARLIN_IS_UNDO_MANAGER (self));
 
-    MarlinUndoActionData *action = stack_scroll_left (priv);
+    g_mutex_lock (&self->mutex);
+
+    MarlinUndoActionData *action = stack_scroll_left (self);
 
     /* Action will be NULL if redo is not possible */
     if (action != NULL) {
         action->locked = TRUE;
     }
 
-    g_mutex_unlock (&priv->mutex);
+    g_mutex_unlock (&self->mutex);
 
-    do_menu_update (manager);
+    do_menu_update (self);
 
     if (action != NULL) {
         action->locked = TRUE;      /* Remember to unlock when redo is finished */
-        priv->undo_redo_flag = TRUE;
+        self->undo_redo_flag = TRUE;
         switch (action->type) {
         case MARLIN_UNDO_COPY:
             uris = construct_gfile_list (action->sources, action->src_dir);
@@ -436,18 +411,6 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
 
             g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
-#if 0
-        case MARLIN_UNDO_CREATEFILEFROMTEMPLATE:
-            puri = get_uri_parent (action->target_uri);
-            new_name = get_uri_basename (action->target_uri);
-            marlin_file_operations_new_file_from_template (NULL,
-                                                           NULL,
-                                                           puri,
-                                                           new_name, action->template, undo_redo_done_create_callback, action);
-            g_free (puri);
-            g_free (new_name);
-            break;
-#endif
         case MARLIN_UNDO_DUPLICATE:
             uris = construct_gfile_list (action->sources, action->src_dir);
             marlin_file_operations_copy_move_link (uris, NULL, NULL,
@@ -494,7 +457,7 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
             if (g_hash_table_size (action->trashed) > 0) {
                 GList *uri_to_trash = g_hash_table_get_keys (action->trashed);
                 uris = uri_list_to_gfile_list (uri_to_trash);
-                priv->undo_redo_flag = TRUE;
+                self->undo_redo_flag = TRUE;
                 marlin_file_operations_trash_or_delete
                     (uris, NULL, undo_redo_done_delete_callback, action);
                 g_list_free (uri_to_trash);
@@ -509,41 +472,9 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
 
             g_list_free_full (uris, g_object_unref); /* marlin-file-operation takes deep copy */
             break;
-#if 0
-        case MARLIN_UNDO_SETPERMISSIONS:
-            file = gof_file_get_by_uri (action->target_uri);
-            marlin_file_set_permissions (file,
-                                         action->new_permissions, undo_redo_done_rename_callback, action);
-            g_object_unref (file);
-            break;
-        case MARLIN_UNDO_RECURSIVESETPERMISSIONS:
-            puri = g_file_get_uri (action->dest_dir);
-            marlin_file_set_permissions_recursive (puri,
-                                                   action->file_permissions,
-                                                   action->file_mask,
-                                                   action->dir_permissions,
-                                                   action->dir_mask, undo_redo_op_callback, action);
-            g_free (puri);
-            break;
-        case MARLIN_UNDO_CHANGEGROUP:
-            file = gof_file_get_by_uri (action->target_uri);
-            marlin_file_set_group (file,
-                                   action->new_group_name_or_id,
-                                   undo_redo_done_rename_callback, action);
-            g_object_unref (file);
-            break;
-        case MARLIN_UNDO_CHANGEOWNER:
-            file = gof_file_get_by_uri (action->target_uri);
-            marlin_file_set_owner (file,
-                                   action->new_user_name_or_id,
-                                   undo_redo_done_rename_callback, action);
-            g_object_unref (file);
-            break;
-#endif
-
         case MARLIN_UNDO_DELETE:
         default:
-            priv->undo_redo_flag = FALSE;
+            self->undo_redo_flag = FALSE;
             break;                  /* We shouldn't be here */
         }
     }
@@ -556,29 +487,30 @@ marlin_undo_manager_redo (MarlinUndoManager *manager,
  * Undoes the last file operation
 ** ****************************************************************/
 void
-marlin_undo_manager_undo (MarlinUndoManager *manager,
+marlin_undo_manager_undo (MarlinUndoManager *self,
                           GtkWidget *parent_view,
                           MarlinUndoFinishCallback cb,
                           gpointer done_callback_data)
 {
     GList *uris = NULL;
     GHashTable *files_to_restore;
-    MarlinUndoManagerPrivate *priv = manager->priv;
 
-    g_mutex_lock (&priv->mutex);
+    g_return_if_fail (MARLIN_IS_UNDO_MANAGER (self));
 
-    MarlinUndoActionData *action = stack_scroll_right (priv);
+    g_mutex_lock (&self->mutex);
+
+    MarlinUndoActionData *action = stack_scroll_right (self);
 
     if (action != NULL) {
         action->locked = TRUE;
     }
 
-    g_mutex_unlock (&priv->mutex);
+    g_mutex_unlock (&self->mutex);
 
-    do_menu_update (manager);
+    do_menu_update (self);
 
     if (action != NULL) {
-        priv->undo_redo_flag = TRUE;
+        self->undo_redo_flag = TRUE;
         switch (action->type) {
         case MARLIN_UNDO_CREATEEMPTYFILE:
         /*case MARLIN_UNDO_CREATEFILEFROMTEMPLATE:*/
@@ -591,23 +523,20 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
                 uris = construct_gfile_list (action->destinations, action->dest_dir);
                 uris = g_list_reverse (uris); // Deleting must be done in reverse
             }
-            if (priv->confirm_delete) {
+            if (self->confirm_delete) {
                 marlin_file_operations_delete (uris, NULL,
                                                undo_redo_done_delete_callback, action);
                 g_list_free_full (uris, g_object_unref);
             } else {
                 /* We skip the confirmation message
                 */
-                GList *f;
-                for (f = uris; f != NULL; f = f->next) {
-                    char *name;
-                    name = g_file_get_uri (f->data);
-                    g_free (name);
-                    g_file_delete (f->data, NULL, NULL);
-                    marlin_file_changes_queue_file_removed (f->data);
-                    g_object_unref (f->data);
+                for (GList *f = uris; f != NULL; f = f->next) {
+                    GFile *file = (GFile *)f->data;
+                    g_file_delete (file, NULL, NULL);
+                    marlin_file_changes_queue_file_removed (file);
                 }
-                g_list_free (uris);
+
+                g_list_free_full (uris, g_object_unref);
                 marlin_file_changes_consume_changes (TRUE);
 
                 /* Here we must do what's necessary for the callback */
@@ -623,21 +552,20 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
         case MARLIN_UNDO_MOVETOTRASH:
             files_to_restore = retrieve_files_to_restore (action->trashed);
             if (g_hash_table_size (files_to_restore) > 0) {
-                GList *l;
                 GList *gfiles_in_trash = g_hash_table_get_keys (files_to_restore);
-                GFile *item;
-                GFile *dest;
-                char *value;
 
-                for (l = gfiles_in_trash; l != NULL; l = l->next) {
-                    item = l->data;
-                    value = g_hash_table_lookup (files_to_restore, item);
-                    dest = g_file_new_for_uri (value);
+                for (GList *l = gfiles_in_trash; l != NULL; l = l->next) {
+                    GFile *item = (GFile *)l->data;
+                    const char *value = g_hash_table_lookup (files_to_restore, item);
+                    GFile *dest = g_file_new_for_uri (value);
+
                     g_file_move (item, dest,
                                  G_FILE_COPY_NOFOLLOW_SYMLINKS, NULL, NULL, NULL, NULL);
                     marlin_file_changes_queue_file_moved (item, dest);
+
                     g_object_unref (dest);
                 }
+
                 g_list_free (gfiles_in_trash);
                 marlin_file_changes_consume_changes (TRUE);
             } else {
@@ -645,6 +573,7 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
                                               _("Open trash folder and restore manually"),
                                               gtk_widget_get_toplevel (parent_view));
             }
+
             g_hash_table_destroy (files_to_restore);
 
             /* Here we must do what's necessary for the callback */
@@ -665,57 +594,9 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
                                                  undo_redo_done_rename_callback,
                                                  action);
             break;
-
-#if 0
-        case MARLIN_UNDO_SETPERMISSIONS:
-            file = gof_file_get_by_uri (action->target_uri);
-            marlin_file_set_permissions (file,
-                                         action->current_permissions,
-                                         undo_redo_done_rename_callback, action);
-            g_object_unref (file);
-            break;
-        case MARLIN_UNDO_RECURSIVESETPERMISSIONS:
-            if (g_hash_table_size (action->original_permissions) > 0) {
-                GList *gfiles_list =
-                    g_hash_table_get_keys (action->original_permissions);
-                guint32 *perm;
-                GList *l;
-                GFile *dest;
-                char *item;
-
-                for (l = gfiles_list; l != NULL; l = l->next) {
-                    item = l->data;
-                    perm = g_hash_table_lookup (action->original_permissions, item);
-                    dest = g_file_new_for_uri (item);
-                    g_file_set_attribute_uint32 (dest,
-                                                 G_FILE_ATTRIBUTE_UNIX_MODE,
-                                                 *perm, G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, NULL, NULL);
-                    g_object_unref (dest);
-                }
-
-                g_list_free (gfiles_list);
-                /* Here we must do what's necessary for the callback */
-                undo_redo_done_transfer_callback (NULL, action);
-            }
-            break;
-        case MARLIN_UNDO_CHANGEGROUP:
-            file = gof_file_get_by_uri (action->target_uri);
-            marlin_file_set_group (file,
-                                   action->original_group_name_or_id,
-                                   undo_redo_done_rename_callback, action);
-            g_object_unref (file);
-            break;
-        case MARLIN_UNDO_CHANGEOWNER:
-            file = gof_file_get_by_uri (action->target_uri);
-            marlin_file_set_owner (file,
-                                   action->original_user_name_or_id,
-                                   undo_redo_done_rename_callback, action);
-            g_object_unref (file);
-            break;
-#endif
         case MARLIN_UNDO_DELETE:
         default:
-            priv->undo_redo_flag = FALSE;
+            self->undo_redo_flag = FALSE;
             break;                  /* We shouldn't be here */
         }
     }
@@ -728,11 +609,9 @@ marlin_undo_manager_undo (MarlinUndoManager *manager,
  * Adds an operation to the stack
 ** ****************************************************************/
 void
-marlin_undo_manager_add_action (MarlinUndoManager *manager,
+marlin_undo_manager_add_action (MarlinUndoManager *self,
                                 MarlinUndoActionData *action)
 {
-    MarlinUndoManagerPrivate *priv = manager->priv;
-
     if (!action)
         return;
 
@@ -741,17 +620,17 @@ marlin_undo_manager_add_action (MarlinUndoManager *manager,
         return;
     }
 
-    action->manager = manager;
+    action->manager = self;
 
-    g_mutex_lock (&priv->mutex);
-    stack_push_action (priv, action);
-    g_mutex_unlock (&priv->mutex);
+    g_mutex_lock (&self->mutex);
+    stack_push_action (self, action);
+    g_mutex_unlock (&self->mutex);
 
-    do_menu_update (manager);
+    do_menu_update (self);
 }
 
 void
-marlin_undo_manager_add_rename_action (MarlinUndoManager* manager,
+marlin_undo_manager_add_rename_action (MarlinUndoManager* self,
                                        GFile* new_file,
                                        const char* original_name) {
 
@@ -765,7 +644,7 @@ marlin_undo_manager_add_rename_action (MarlinUndoManager* manager,
     data->new_uri = g_file_get_uri (new_file);
     data->is_valid = TRUE;
 
-    marlin_undo_manager_add_action (manager, data);
+    marlin_undo_manager_add_action (self, data);
 }
 
 static GList *
@@ -773,16 +652,15 @@ get_all_trashed_items (GQueue *stack)
 {
     MarlinUndoActionData *action = NULL;
     GList *trash = NULL;
-    GList *keys;
-    GList *l;
-    GQueue *tmp_stack = g_queue_copy(stack);
+    GQueue *tmp_stack = g_queue_copy (stack);
 
     while ((action = (MarlinUndoActionData *) g_queue_pop_tail (tmp_stack)) != NULL) {
         if (action->trashed) {
-            keys = g_hash_table_get_keys (action->trashed);
-            for (l = keys; l != NULL; l=l->next) {
-                trash = g_list_prepend(trash, l->data);
+            GList *keys = g_hash_table_get_keys (action->trashed);
+            for (GList *l = keys; l != NULL; l = l->next) {
+                trash = g_list_prepend (trash, l->data);
             }
+
             g_list_free (keys);
         }
     }
@@ -792,20 +670,16 @@ get_all_trashed_items (GQueue *stack)
 }
 
 static gboolean
-is_destination_uri_action_partof_trashed(GList *trash, GList *g)
+is_destination_uri_action_partof_trashed (GList *trash, GList *g)
 {
-    GList *l;
-    char *uri;
-
-    for (l = trash; l != NULL; l=l->next) {
-        for (; g != NULL; g=g->next) {
-            //printf ("destinations: %s\n", g_file_get_uri(l->data));
-            uri = g_file_get_uri(g->data);
+    for (GList *l = trash; l != NULL; l = l->next) {
+        for (; g != NULL; g = g->next) {
+            gchar *uri = g_file_get_uri (g->data);
             if (!strcmp (uri, l->data)) {
-                //printf ("GG %s\nZZ %s\n", uri, l->data);
                 g_free (uri);
                 return TRUE;
             }
+
             g_free (uri);
         }
     }
@@ -816,19 +690,15 @@ is_destination_uri_action_partof_trashed(GList *trash, GList *g)
  * Callback after emptying the trash
 ** ****************************************************************/
 void
-marlin_undo_manager_trash_has_emptied (MarlinUndoManager *manager)
+marlin_undo_manager_trash_has_emptied (MarlinUndoManager *self)
 {
-    //amtest
-    //printf("%s\n", G_STRFUNC);
-    MarlinUndoManagerPrivate *priv = manager->priv;
-
     /* Clear actions from the oldest to the newest move to trash */
-    g_mutex_lock (&priv->mutex);
-    clear_redo_actions (priv);
+    g_mutex_lock (&self->mutex);
+    clear_redo_actions (self);
     MarlinUndoActionData *action = NULL;
 
     GList *g;
-    GQueue *tmp_stack = g_queue_copy(priv->stack);
+    GQueue *tmp_stack = g_queue_copy(self->stack);
     GList *trash = get_all_trashed_items (tmp_stack);
     while ((action = (MarlinUndoActionData *) g_queue_pop_tail (tmp_stack)) != NULL)
     {
@@ -838,19 +708,19 @@ marlin_undo_manager_trash_has_emptied (MarlinUndoManager *manager)
             g = construct_gfile_list (action->destinations, action->dest_dir);
             /* remove action for trashed item uris == destination action */
             if (is_destination_uri_action_partof_trashed(trash, g)) {
-                g_queue_remove (priv->stack, action);
+                g_queue_remove (self->stack, action);
                 continue;
             }
         }
         if (action->type == MARLIN_UNDO_MOVETOTRASH) {
             //printf ("detected MARLIN_UNDO_MOVETOTRASH\n");
-            g_queue_remove (priv->stack, action);
+            g_queue_remove (self->stack, action);
         }
     }
 
     g_queue_free (tmp_stack);
-    g_mutex_unlock (&priv->mutex);
-    do_menu_update (manager);
+    g_mutex_unlock (&self->mutex);
+    do_menu_update (self);
 }
 
 /** ****************************************************************
@@ -1110,16 +980,16 @@ marlin_undo_manager_data_set_rename_information (MarlinUndoActionData *data,
 ***************************************************************** */
 
 static MarlinUndoActionData *
-stack_scroll_right (MarlinUndoManagerPrivate *priv)
+stack_scroll_right (MarlinUndoManager *self)
 {
     gpointer data = NULL;
 
-    if (!can_undo (priv))
+    if (!can_undo (self))
         return NULL;
 
-    data = g_queue_peek_nth (priv->stack, priv->index);
-    if (priv->index < g_queue_get_length (priv->stack)) {
-        priv->index++;
+    data = g_queue_peek_nth (self->stack, self->index);
+    if (self->index < g_queue_get_length (self->stack)) {
+        self->index++;
     }
 
     return data;
@@ -1127,15 +997,15 @@ stack_scroll_right (MarlinUndoManagerPrivate *priv)
 
 /** ---------------------------------------------------------------- */
 static MarlinUndoActionData *
-stack_scroll_left (MarlinUndoManagerPrivate *priv)
+stack_scroll_left (MarlinUndoManager *self)
 {
     gpointer data = NULL;
 
-    if (!can_redo (priv))
+    if (!can_redo (self))
         return NULL;
 
-    priv->index--;
-    data = g_queue_peek_nth (priv->stack, priv->index);
+    self->index--;
+    data = g_queue_peek_nth (self->stack, self->index);
 
     return data;
 }
@@ -1145,9 +1015,8 @@ static void
 stack_clear_n_oldest (GQueue *stack, guint n)
 {
     MarlinUndoActionData *action;
-    guint i;
 
-    for (i = 0; i < n; i++) {
+    for (guint i = 0; i < n; i++) {
         if ((action = (MarlinUndoActionData *) g_queue_pop_tail (stack)) == NULL)
             break;
         if (action->locked) {
@@ -1160,46 +1029,46 @@ stack_clear_n_oldest (GQueue *stack, guint n)
 
 /** ---------------------------------------------------------------- */
 static void
-stack_fix_size (MarlinUndoManagerPrivate *priv)
+stack_fix_size (MarlinUndoManager *self)
 {
-    guint length = g_queue_get_length (priv->stack);
+    guint length = g_queue_get_length (self->stack);
 
-    if (length > priv->undo_levels) {
-        if (priv->index > (priv->undo_levels + 1)) {
+    if (length > self->undo_levels) {
+        if (self->index > (self->undo_levels + 1)) {
             /* If the index will fall off the stack
              * move it back to the maximum position */
-            priv->index = priv->undo_levels + 1;
+            self->index = self->undo_levels + 1;
         }
-        stack_clear_n_oldest (priv->stack, length - (priv->undo_levels));
+        stack_clear_n_oldest (self->stack, length - (self->undo_levels));
     }
 }
 
 /** ---------------------------------------------------------------- */
 static void
-clear_redo_actions (MarlinUndoManagerPrivate *priv)
+clear_redo_actions (MarlinUndoManager *self)
 {
-    while (priv->index > 0) {
+    while (self->index > 0) {
         MarlinUndoActionData *head = (MarlinUndoActionData *)
-            g_queue_pop_head (priv->stack);
+            g_queue_pop_head (self->stack);
         free_undo_action (head, NULL);
-        priv->index--;
+        self->index--;
     }
 }
 
 /** ---------------------------------------------------------------- */
 static void
-stack_push_action (MarlinUndoManagerPrivate *priv,
+stack_push_action (MarlinUndoManager *self,
                    MarlinUndoActionData *action)
 {
     guint length;
 
-    clear_redo_actions (priv);
+    clear_redo_actions (self);
 
-    g_queue_push_head (priv->stack, (gpointer) action);
-    length = g_queue_get_length (priv->stack);
+    g_queue_push_head (self->stack, (gpointer) action);
+    length = g_queue_get_length (self->stack);
 
-    if (length > priv->undo_levels) {
-        stack_fix_size (priv);
+    if (length > self->undo_levels) {
+        stack_fix_size (self);
     }
 }
 
@@ -1757,7 +1626,7 @@ undo_redo_done_transfer_callback (GHashTable * debuting_uris, gpointer data)
     }
 
     MarlinUndoManager *manager = action->manager;
-    manager->priv->undo_redo_flag = FALSE;
+    manager->undo_redo_flag = FALSE;
 
     /* Update menus */
     do_menu_update (action->manager);
@@ -1817,12 +1686,10 @@ free_undo_action (gpointer data, gpointer user_data)
     g_free (action->new_user_name_or_id);
 
     if (action->sources) {
-        g_list_foreach (action->sources, (GFunc) g_free, NULL);
-        g_list_free (action->sources);
+        g_list_free_full (action->sources, g_free);
     }
     if (action->destinations) {
-        g_list_foreach (action->destinations, (GFunc) g_free, NULL);
-        g_list_free (action->destinations);
+        g_list_free_full (action->destinations, g_free);
     }
 
     if (action->trashed) {
@@ -1851,33 +1718,33 @@ undostack_dispose_all (GQueue * queue)
 
 /** ---------------------------------------------------------------- */
 static gboolean
-can_undo (MarlinUndoManagerPrivate * priv)
+can_undo (MarlinUndoManager * self)
 {
-    return (get_next_undo_action (priv) != NULL);
+    return (get_next_undo_action (self) != NULL);
 }
 
 /** ---------------------------------------------------------------- */
 static gboolean
-can_redo (MarlinUndoManagerPrivate * priv)
+can_redo (MarlinUndoManager * self)
 {
-    return (get_next_redo_action (priv) != NULL);
+    return (get_next_redo_action (self) != NULL);
 }
 
 /** ---------------------------------------------------------------- */
 static MarlinUndoActionData *
-get_next_redo_action (MarlinUndoManagerPrivate * priv)
+get_next_redo_action (MarlinUndoManager * self)
 {
-    if (g_queue_is_empty (priv->stack)) {
+    if (g_queue_is_empty (self->stack)) {
         return NULL;
     }
 
-    if (priv->index == 0) {
+    if (self->index == 0) {
         /* ... no redo actions */
         return NULL;
     }
 
-    MarlinUndoActionData *action = g_queue_peek_nth (priv->stack,
-                                                     priv->index - 1);
+    MarlinUndoActionData *action = g_queue_peek_nth (self->stack,
+                                                     self->index - 1);
 
     if (action->locked) {
         return NULL;
@@ -1888,20 +1755,20 @@ get_next_redo_action (MarlinUndoManagerPrivate * priv)
 
 /** ---------------------------------------------------------------- */
 static MarlinUndoActionData *
-get_next_undo_action (MarlinUndoManagerPrivate * priv)
+get_next_undo_action (MarlinUndoManager *self)
 {
-    if (g_queue_is_empty (priv->stack)) {
+    if (g_queue_is_empty (self->stack)) {
         return NULL;
     }
 
-    guint stack_size = g_queue_get_length (priv->stack);
+    guint stack_size = g_queue_get_length (self->stack);
 
-    if (priv->index == stack_size) {
+    if (self->index == stack_size) {
         return NULL;
     }
 
-    MarlinUndoActionData *action = g_queue_peek_nth (priv->stack,
-                                                     priv->index);
+    MarlinUndoActionData *action = g_queue_peek_nth (self->stack,
+                                                     self->index);
 
     if (action->locked) {
         return NULL;
@@ -1912,32 +1779,31 @@ get_next_undo_action (MarlinUndoManagerPrivate * priv)
 
 /** ---------------------------------------------------------------- */
 static void
-do_menu_update (MarlinUndoManager *manager)
+do_menu_update (MarlinUndoManager *self)
 {
-    g_return_if_fail (manager);
+    g_return_if_fail (self);
 
     MarlinUndoActionData *action;
-    MarlinUndoManagerPrivate *priv = manager->priv;
     MarlinUndoMenuData *data = g_slice_new0 (MarlinUndoMenuData);
 
-    g_mutex_lock (&priv->mutex);
+    g_mutex_lock (&self->mutex);
 
-    action = get_next_undo_action (priv);
+    action = get_next_undo_action (self);
     if (action != NULL) {
         data->undo_label = get_undo_label (action);
         data->undo_description = get_undo_description (action);
     }
 
-    action = get_next_redo_action (priv);
+    action = get_next_redo_action (self);
     if (action != NULL) {
         data->redo_label = get_redo_label (action);
         data->redo_description = get_redo_description (action);
     }
 
-    g_mutex_unlock (&priv->mutex);
+    g_mutex_unlock (&self->mutex);
 
     /* Update menus */
-    g_signal_emit (manager, signals[REQUEST_MENU_UPDATE], 0, data);
+    g_signal_emit (self, signals[REQUEST_MENU_UPDATE], 0, data);
 
     /* Free the signal data */
     // Note: we do not own labels and descriptions, they are part of the action.
@@ -1946,14 +1812,12 @@ do_menu_update (MarlinUndoManager *manager)
 
 /** ---------------------------------------------------------------- */
 static GList *
-construct_gfile_list (const GList * urilist, GFile * parent)
+construct_gfile_list (GList *urilist, GFile *parent)
 {
-    const GList *l;
     GList *file_list = NULL;
-    GFile *file;
 
-    for (l = urilist; l != NULL; l = l->next) {
-        file = g_file_get_child (parent, l->data);
+    for (GList *l = urilist; l != NULL; l = l->next) {
+        GFile *file = g_file_get_child (parent, l->data);
         file_list = g_list_prepend (file_list, file);
     }
 
@@ -1964,25 +1828,19 @@ construct_gfile_list (const GList * urilist, GFile * parent)
 static GList *
 construct_gfile_list_from_uri (char *uri)
 {
-    GList *file_list = NULL;
-    GFile *file;
+    GFile *file = g_file_new_for_uri (uri);
 
-    file = g_file_new_for_uri (uri);
-    file_list = g_list_prepend (file_list, file);
-
-    return file_list;
+    return g_list_prepend (NULL, file);
 }
 
 /** ---------------------------------------------------------------- */
 static GList *
 uri_list_to_gfile_list (GList * urilist)
 {
-    const GList *l;
     GList *file_list = NULL;
-    GFile *file;
 
-    for (l = urilist; l != NULL; l = l->next) {
-        file = g_file_new_for_uri (l->data);
+    for (GList *l = urilist; l != NULL; l = l->next) {
+        GFile *file = g_file_new_for_uri (l->data);
         file_list = g_list_prepend (file_list, file);
     }
 
@@ -2040,13 +1898,6 @@ retrieve_files_to_restore (GHashTable * trashed)
     GFileEnumerator *enumerator;
     GFileInfo *info;
     GFile *trash;
-    GFile *item;
-    guint64 mtime_item;
-    guint64 *mtime;
-    const char *origpath;
-    GFile *origfile;
-    char *origuri;
-    gpointer lookupvalue;
     GHashTable *to_restore;
 
     to_restore =
@@ -2060,10 +1911,6 @@ retrieve_files_to_restore (GHashTable * trashed)
                                             ","
                                             G_FILE_ATTRIBUTE_TIME_MODIFIED
                                             ",trash::orig-path", G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS, FALSE, NULL);
-
-    mtime = 0;
-
-
     //amtest
     /*guint nb;
       GList *l;*/
@@ -2074,23 +1921,22 @@ retrieve_files_to_restore (GHashTable * trashed)
         while ((info =
                 g_file_enumerator_next_file (enumerator, NULL, NULL)) != NULL) {
             /* Retrieve the original file uri */
-            origpath = g_file_info_get_attribute_byte_string (info, "trash::orig-path");
+            const char *origpath = g_file_info_get_attribute_byte_string (info, "trash::orig-path");
             if (origpath) {
-                origfile = g_file_new_for_path (origpath);
-                origuri = g_file_get_uri (origfile);
+                GFile *origfile = g_file_new_for_path (origpath);
+                char *origuri = g_file_get_uri (origfile);
+                gpointer lookupvalue;
+
                 g_object_unref (origfile);
 
                 lookupvalue = g_hash_table_lookup (trashed, origuri);
 
                 if (lookupvalue) {
                     //printf ("we got a MATCH\n");
-                    mtime = (guint64 *)
-                        lookupvalue;
-                    mtime_item =
-                        g_file_info_get_attribute_uint64
-                        (info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
+                    guint64 *mtime = (guint64 *) lookupvalue;
+                    guint64 mtime_item = g_file_info_get_attribute_uint64 (info, G_FILE_ATTRIBUTE_TIME_MODIFIED);
                     if (*mtime == mtime_item) {
-                        item = g_file_get_child (trash, g_file_info_get_name (info)); /* File in the trash */
+                        GFile *item = g_file_get_child (trash, g_file_info_get_name (info)); /* File in the trash */
                         g_hash_table_insert (to_restore, item, origuri);
                     }
                 } else {
@@ -2098,9 +1944,11 @@ retrieve_files_to_restore (GHashTable * trashed)
                 }
             }
         }
+
         g_file_enumerator_close (enumerator, FALSE, NULL);
         g_object_unref (enumerator);
     }
+
     g_object_unref (trash);
 
     return to_restore;
