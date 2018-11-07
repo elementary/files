@@ -1,6 +1,6 @@
 /*
 * Copyright (c) 2011 Marlin Developers (http://launchpad.net/marlin)
-* Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/pantheon-files)
+* Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 *
 * This program is free software; you can redistribute it and/or
 * modify it under the terms of the GNU General Public
@@ -76,7 +76,8 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         create_header_title ();
 
         var location_label = new KeyLabel (_("Location:"));
-        var location_value = new ValueLabel ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) + "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
+        var location_value = new ValueLabel ("<a href=\"" + Markup.escape_text (mount_root.get_uri ()) +
+                                             "\">" + Markup.escape_text (mount_root.get_parse_name ()) + "</a>");
 
         info_grid.attach (location_label, 0, 1, 1, 1);
         info_grid.attach_next_to (location_value, location_label, Gtk.PositionType.RIGHT);

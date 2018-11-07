@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -32,6 +32,8 @@ namespace Marlin {
     }
 
     public abstract class AbstractSidebar : Gtk.ScrolledWindow {
+        public signal void request_update ();
+
         public enum Column {
             NAME,
             URI,
@@ -47,7 +49,7 @@ namespace Marlin {
             IS_CATEGORY,
             NOT_CATEGORY,
             TOOLTIP,
-            EJECT_ICON,
+            ACTION_ICON,
             SHOW_SPINNER,
             SHOW_EJECT,
             SPINNER_PULSE,
@@ -91,11 +93,15 @@ namespace Marlin {
             content_box.show_all ();
         }
 
-        public void add_extra_network_item (string text, string tooltip, Icon? icon, Marlin.PluginCallbackFunc? cb) {
+        public void add_extra_network_item (string text, string tooltip,
+                                            Icon? icon, Marlin.PluginCallbackFunc? cb) {
+
             add_extra_item (network_category_reference, text, tooltip, icon, cb);
         }
 
-        public void add_extra_item (Gtk.TreeRowReference category, string text, string tooltip, Icon? icon, Marlin.PluginCallbackFunc? cb) {
+
+        public void add_extra_item (Gtk.TreeRowReference category, string text, string tooltip, Icon? icon,
+                                    Marlin.PluginCallbackFunc? cb, Icon? action_icon = null) {
             Gtk.TreeIter iter;
             store.get_iter (out iter, category.get_path ());
             iter = add_place (PlaceType.PLUGIN_ITEM,
@@ -107,11 +113,11 @@ namespace Marlin {
                              null,
                              null,
                              0,
-                             tooltip);
+                             tooltip,
+                             action_icon);
             if (cb != null) {
                 store.@set (iter, Column.PLUGIN_CALLBACK, cb);
             }
-
         }
 
        protected abstract Gtk.TreeIter add_place (Marlin.PlaceType place_type,
@@ -123,6 +129,7 @@ namespace Marlin {
                                                   Volume? volume,
                                                   Mount? mount,
                                                   uint index,
-                                                  string? tooltip = null) ;
+                                                  string? tooltip = null,
+                                                  Icon? action_icon = null) ;
     }
 }

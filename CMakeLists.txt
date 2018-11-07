@@ -13,8 +13,8 @@ set (GNOMELOCALEDIR "${CMAKE_INSTALL_PREFIX}/share/locale/")
 set (PLUGIN_DIR "${CMAKE_INSTALL_FULL_LIBDIR}/${CMAKE_PROJECT_NAME}/plugins/")
 set (UI_DIR "${CMAKE_INSTALL_PREFIX}/share/${CMAKE_PROJECT_NAME}/ui/")
 set (TESTDATA_DIR "${CMAKE_SOURCE_DIR}/data/tests")
-set (PACKAGE_VERSION 0.3.5)
-set (VERSION 0.3.5)
+set (PACKAGE_VERSION 4.0)
+set (VERSION 4.0)
 configure_file (${CMAKE_SOURCE_DIR}/config.h.cmake ${CMAKE_BINARY_DIR}/config.h)
 
 add_definitions ("-DGETTEXT_PACKAGE=\"${GETTEXT_PACKAGE}\"")
@@ -25,7 +25,7 @@ option (MODULE_ONLY "Build only custom gtk filechooser dialog module" FALSE)
 
 find_package (Vala REQUIRED)
 include (ValaVersion)
-ensure_vala_version ("0.34.0" MINIMUM)
+ensure_vala_version ("0.40.0" MINIMUM)
 include (ValaPrecompile)
 
 find_package (PkgConfig)
@@ -34,7 +34,7 @@ OPTION (WITH_UNITY "Add Unity launcher support" ON)
 pkg_check_modules (UNITY unity>=4.0.0)
 
 set (COMMON_DEPS
-    granite>=0.3.0
+    granite>=5.2.0
     glib-2.0>=2.29.0
     gthread-2.0
     gio-2.0

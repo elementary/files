@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -42,7 +42,8 @@ namespace Marlin {
             } else if (drop_target.is_executable ()) {
                 GLib.Error error;
                 if (!drop_target.execute (widget.get_screen (), drop_file_list, out error)) {
-                    PF.Dialogs.show_error_dialog (_("Failed to execute \"%s\"").printf (drop_target.get_display_name ()),
+                    var target_name = drop_target.get_display_name ();
+                    PF.Dialogs.show_error_dialog (_("Failed to execute \"%s\"").printf (target_name),
                                                   error.message,
                                                   null);
                     return false;
@@ -102,7 +103,9 @@ namespace Marlin {
             return menu;
         }
 
-        private void build_and_append_menu_item (Gtk.Menu menu, string label, Gdk.DragAction? action, Gdk.DragAction possible_actions) {
+        private void build_and_append_menu_item (Gtk.Menu menu, string label, Gdk.DragAction? action,
+                                                 Gdk.DragAction possible_actions) {
+
             if ((possible_actions & action) != 0) {
                 var item = new Gtk.MenuItem.with_label (label);
 
@@ -288,28 +291,34 @@ namespace Marlin {
                                                               string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            set_stringbuilder_from_file_list (sb, file_list, prefix);
+            set_stringbuilder_from_file_list (sb, file_list, prefix, false);  /* Use escaped paths */
             selection_data.@set (selection_data.get_target (),
                                  8,
                                  sb.data);
 
         }
+
         public static void set_selection_text_from_file_list (Gtk.SelectionData selection_data,
                                                               GLib.List<GOF.File> file_list,
                                                               string prefix = "") {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
-            set_stringbuilder_from_file_list (sb, file_list, prefix);
+            set_stringbuilder_from_file_list (sb, file_list, prefix, true); /* Use sanitized paths */
+            sb.truncate (sb.len - 2);  /* Do not want "\r\n" at end when pasting into text*/
             selection_data.set_text (sb.str, (int)(sb.len));
-
         }
 
-        private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb, GLib.List<GOF.File> file_list, string prefix) {
+        private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb, GLib.List<GOF.File> file_list,
+                                                              string prefix, bool sanitize_path = false) {
             if (file_list != null && file_list.data != null && file_list.data is GOF.File) {
                 bool in_recent = file_list.data.is_recent_uri_scheme ();
 
                 file_list.@foreach ((file) => {
                     var target = in_recent ? file.get_display_target_uri () : file.get_target_location ().get_uri ();
+                    if (sanitize_path) {
+                        target = PF.FileUtils.sanitize_path (target);
+                    }
+
                     sb.append (target);
                     sb.append ("\r\n"); /* Drop onto Filezilla does not work without the "\r" */
                 });

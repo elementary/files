@@ -51,11 +51,13 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/ListView.vala
         ZeitgeistManager.vala
         View/DirectoryNotFound.vala
+        View/PrivacyModeOn.vala
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
         View/Browser.vala
         View/Sidebar.vala
+        View/PopupMenuBuilder.vala
         View/Slot.vala
         View/Miller.vala
         View/Widgets/AbstractEditableLabel.vala
@@ -122,6 +124,7 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/ViewContainer.vala
         View/Browser.vala
         View/Sidebar.vala
+        View/PopupMenuBuilder.vala
         View/Slot.vala
         View/Miller.vala
         View/Widgets/AbstractEditableLabel.vala

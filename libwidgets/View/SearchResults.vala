@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -349,7 +349,8 @@ namespace Marlin.View.Chrome {
             var begins_with = false;
             foreach (var bookmark in BookmarkList.get_instance ().list) {
                 if (term_matches (search_term, bookmark.label, out begins_with)) {
-                    bookmarks_matched.add (new Match.from_bookmark (bookmark, begins_with ? Category.BOOKMARK_BEGINS : Category.BOOKMARK_CONTAINS));
+                    var category = begins_with ? Category.BOOKMARK_BEGINS : Category.BOOKMARK_CONTAINS;
+                    bookmarks_matched.add (new Match.from_bookmark (bookmark, category));
                 }
             }
 
@@ -1055,7 +1056,8 @@ namespace Marlin.View.Chrome {
                                 if (path_string == "") {
                                     path_string = parent.get_basename ();
                                 } else {
-                                    path_string = Path.build_path (Path.DIR_SEPARATOR_S, parent.get_basename (), path_string);
+                                    path_string = Path.build_path (Path.DIR_SEPARATOR_S, parent.get_basename (),
+                                                                   path_string);
                                 }
                             }
 
@@ -1069,7 +1071,8 @@ namespace Marlin.View.Chrome {
                             }
 
                             if (!found) {
-                                var info = yield file.query_info_async (ATTRIBUTES, 0, Priority.DEFAULT, current_operation);
+                                var info = yield file.query_info_async (ATTRIBUTES, 0, Priority.DEFAULT,
+                                                                        current_operation);
                                 var name = info.get_display_name ();
                                 cat = name.has_prefix (term) ? Category.ZEITGEIST_BEGINS : Category.ZEITGEIST_CONTAINS;
                                 matches.add (new Match (info, path_string, file.get_parent (), cat));
@@ -1105,7 +1108,12 @@ namespace Marlin.View.Chrome {
             var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
 
             if (colored) {
-                Gdk.Color gdk_color = { 0, (uint16) (rgba.red * 65536), (uint16) (rgba.green * 65536), (uint16) (rgba.blue * 65536) };
+                Gdk.Color gdk_color = { 0,
+                                       (uint16) (rgba.red * 65536),
+                                       (uint16) (rgba.green * 65536),
+                                       (uint16) (rgba.blue * 65536)
+                                      };
+
                 color = "color='%s'".printf (gdk_color.to_string ());
             }
 

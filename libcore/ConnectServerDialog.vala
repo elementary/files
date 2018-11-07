@@ -546,7 +546,8 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
             }
 
             if (GLib.AskPasswordFlags.SAVING_SUPPORTED in askpassword_flags) {
-                mount_operation.password_save = remember_checkbutton.active ? GLib.PasswordSave.PERMANENTLY : GLib.PasswordSave.NEVER;
+                mount_operation.password_save = remember_checkbutton.active ?
+                                                GLib.PasswordSave.PERMANENTLY : GLib.PasswordSave.NEVER;
             }
 
             connect_button.clicked (); /* The continue click justs quits new mainloop so now try connect again */

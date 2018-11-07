@@ -117,12 +117,12 @@ namespace Marlin.View.Chrome {
 
         protected void set_action_icon_tooltip (string? tip) {
             if (secondary_icon_pixbuf != null && tip != null && tip.length > 0) {
-                set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tip);
+                set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
             }
         }
         public string? get_action_icon_tooltip () {
             if (secondary_icon_pixbuf != null) {
-                return get_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY);
+                return get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
             } else {
                 return null;
             }
@@ -276,21 +276,21 @@ namespace Marlin.View.Chrome {
 
             string? tip = null;
             if (secondary_icon_pixbuf != null) {
-                tip = get_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY);
+                tip = get_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY);
             }
-            set_tooltip_text ("");
+            set_tooltip_markup ("");
             var el = get_element_from_coordinates ((int)event.x, (int)event.y);
             if (el != null) {
-                set_tooltip_text (_("Go to %s").printf (el.text_for_display));
+                set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
                 set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {
                 set_entry_cursor (null);
-                set_tooltip_text (_("Search or Type Path"));
+                set_tooltip_markup (_("Search or Type Path"));
             }
 
             if (tip != null) {
             /* We must reset the icon tooltip as the above line turns all tooltips off */
-                set_icon_tooltip_text (Gtk.EntryIconPosition.SECONDARY, tip);
+                set_icon_tooltip_markup (Gtk.EntryIconPosition.SECONDARY, tip);
             }
             return false;
         }
@@ -427,7 +427,8 @@ namespace Marlin.View.Chrome {
             index = 0;
             foreach (BreadcrumbElement el in elements) {
                 if (++index < length && el.can_shrink) {
-                    el.display_width = (el.natural_width - MINIMUM_BREADCRUMB_WIDTH) * fraction_reduction + MINIMUM_BREADCRUMB_WIDTH;
+                    el.display_width = (el.natural_width - MINIMUM_BREADCRUMB_WIDTH) * fraction_reduction +
+                                        MINIMUM_BREADCRUMB_WIDTH;
                 }
             }
 
@@ -483,7 +484,8 @@ namespace Marlin.View.Chrome {
         private void make_element_list_from_protocol_and_path (string protocol,
                                                                string path,
                                                                Gee.ArrayList<BreadcrumbElement> newelements) {
-            /* Ensure the breadcrumb texts are escaped strings whether or not the parameter newpath was supplied escaped */
+            /* Ensure the breadcrumb texts are escaped strings whether or not
+             * the parameter newpath was supplied escaped */
             string newpath = PF.FileUtils.escape_uri (Uri.unescape_string (path) ?? path);
             newelements.add (new BreadcrumbElement (protocol, this, get_style_context ()));
             foreach (string dir in newpath.split (Path.DIR_SEPARATOR_S)) {

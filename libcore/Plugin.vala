@@ -1,4 +1,4 @@
-/* Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/pantheon-files)
+/* Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -20,6 +20,7 @@ public abstract class Marlin.Plugins.Base {
     public virtual void directory_loaded (void* data) { }
     public virtual void context_menu (Gtk.Widget? widget, List<unowned GOF.File> files) { }
     public virtual void ui (Gtk.UIManager? widget) { }
+    public virtual void sidebar_loaded (Gtk.Widget widget) { }
     public virtual void update_sidebar (Gtk.Widget widget) { }
     public virtual void update_file_info (GOF.File file) { }
 

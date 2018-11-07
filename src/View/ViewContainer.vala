@@ -26,7 +26,17 @@ using Marlin;
 
 namespace Marlin.View {
     public class ViewContainer : Gtk.Bin {
+        private static int container_id;
 
+        protected static int get_next_container_id () {
+            return ++container_id;
+        }
+
+        static construct {
+            container_id = -1;
+        }
+
+        public int id {get; construct;}
         public Gtk.Widget? content_item;
         public bool can_show_folder { get; private set; default = false; }
         private Marlin.View.Window? _window = null;
@@ -105,6 +115,10 @@ namespace Marlin.View {
         public signal void loading (bool is_loading);
         public signal void active ();
         /* path-changed signal no longer used */
+
+        construct {
+            id = ViewContainer.get_next_container_id ();
+        }
 
         /* Initial location now set by Window.make_tab after connecting signals */
         public ViewContainer (Marlin.View.Window win) {
@@ -345,8 +359,7 @@ namespace Marlin.View {
 
         private void refresh_slot_info (GLib.File loc) {
             update_tab_name ();
-            window.loading_uri (loc.get_uri ());
-            window.update_labels (loc.get_parse_name (), tab_name);
+            window.loading_uri (loc.get_uri ()); /* Updates labels as well */
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
@@ -368,15 +381,13 @@ namespace Marlin.View {
                     } catch (ConvertError e) {}
 
                     if (tab_name == null) {
-                        tab_name = Path.get_basename (slot_path);
+                        tab_name = location.get_parse_name ();
                     }
                 }
             }
 
             if (tab_name == null) {
                 tab_name = Marlin.INVALID_TAB_NAME;
-            } else if (Posix.getuid () == 0) {
-                    tab_name = tab_name + " " + _("(as Administrator)");
             }
 
             this.tab_name = tab_name;
@@ -389,7 +400,9 @@ namespace Marlin.View {
             can_show_folder = dir.can_load;
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
-                if (!dir.file.exists) {
+                if (dir.is_recent && !GOF.Preferences.get_default ().remember_history) {
+                    content = new Marlin.View.PrivacyModeOn (this);
+                } else if (!dir.file.exists) {
                     if (!dir.is_trash) {
                         content = new DirectoryNotFound (slot.directory, this);
                     } else {
@@ -398,19 +411,22 @@ namespace Marlin.View {
                     }
                 } else if (!dir.network_available) {
                     content = new Marlin.View.Welcome (_("The network is unavailable"),
-                                                       _("A working network is needed to reach this folder") + "\n\n" + dir.last_error_message);
+                                                       _("A working network is needed to reach this folder") + "\n\n" +
+                                                       dir.last_error_message);
                 } else if (dir.permission_denied) {
                     content = new Marlin.View.Welcome (_("This Folder Does Not Belong to You"),
                                                        _("You don't have permission to view this folder."));
                 } else if (!dir.file.is_connected) {
                     content = new Marlin.View.Welcome (_("Unable to Mount Folder"),
-                                                       _("Could not connect to the server for this folder.") + "\n\n" + dir.last_error_message);
+                                                       _("Could not connect to the server for this folder.") + "\n\n" +
+                                                       dir.last_error_message);
                 } else if (slot.directory.state == GOF.Directory.Async.State.TIMED_OUT) {
                     content = new Marlin.View.Welcome (_("Unable to Display Folder Contents"),
                                                        _("The operation timed out.") + "\n\n" + dir.last_error_message);
                 } else {
                     content = new Marlin.View.Welcome (_("Unable to Show Folder"),
-                                                       _("The server for this folder could not be located.") + "\n\n" + dir.last_error_message);
+                                                       _("The server for this folder could not be located.") + "\n\n" +
+                                                       dir.last_error_message);
                 }
             /* Now deal with cases where file (s) within the loaded folder has to be selected */
             } else if (selected_locations != null) {
