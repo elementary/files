@@ -1,4 +1,2 @@
-mkdir build; cd build;
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-make; sudo make install
+See the README.md file for installation instructions.
 
