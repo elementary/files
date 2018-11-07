@@ -483,7 +483,7 @@ namespace FM {
             return open_with_apps;
         }
 
-        public unowned GLib.AppInfo get_default_app () {
+        public GLib.AppInfo get_default_app () {
             return default_app;
         }
 
@@ -1325,11 +1325,17 @@ namespace FM {
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
+            file.exists = false;
             model.remove_file (file, dir);
 
             remove_marlin_icon_info_cache (file);
+
             if (file.get_thumbnail_path () != null) {
                 PF.FileUtils.remove_thumbnail_paths_for_uri (file.uri);
+            }
+
+            if (plugins != null) {
+                plugins.update_file_info (file);
             }
 
             if (file.is_folder ()) {
@@ -2064,13 +2070,12 @@ namespace FM {
         }
 
         private GLib.MenuModel? build_menu_open (ref Gtk.Builder builder) {
-
             var menu = new GLib.Menu ();
             GLib.MenuModel? app_submenu;
 
             string label = _("Invalid");
-            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
-            unowned GOF.File selected_file = selection.data;
+            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GOF.File selected_file = selection.data;
 
             if (can_open_file (selected_file)) {
                 if (!selected_file.is_folder () && selected_file.is_executable ()) {
@@ -2114,6 +2119,7 @@ namespace FM {
 
             if (can_open_file (selection.data)) {
                 open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+
                 if (selection.data.is_executable () == false) {
                     filter_default_app_from_open_with_apps ();
                 }
@@ -3296,9 +3302,11 @@ namespace FM {
                         case ClickZone.NAME:
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
                             /* determine whether should activate on key release (unless pointer moved)*/
+                            update_selected_files_and_menu ();
+                            bool one_or_less = (selected_files == null || selected_files.next == null);
                             should_activate = no_mods &&
                                               (!on_blank || activate_on_blank) &&
-                                              (single_click_mode || double_click_event);
+                                              (single_click_mode && one_or_less  || double_click_event);
 
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
@@ -3321,7 +3329,8 @@ namespace FM {
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 if (path_selected) {
-                                    unselect_path (path);
+                                    /* Don't deselect yet, may drag */
+                                    should_deselect = true;
                                 } else {
                                     should_deselect = false;
                                     select_path (path, true); /* Cursor follow and selection preserved */
@@ -3365,7 +3374,7 @@ namespace FM {
                         click_zone == ClickZone.ICON ||
                         click_zone == ClickZone.HELPER) {
 
-                        select_path (path);
+                        select_path (path); /* Note: secondary click does not toggle selection */
                     } else if (click_zone == ClickZone.INVALID) {
                         unselect_all ();
                     }
@@ -3701,7 +3710,7 @@ namespace FM {
             /* x and y must be in same coordinate system as used by the IconRenderer */
             Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
             bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
-            on_helper = pointer_rect.intersect (icon_renderer.helper_rect, null);
+            on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
             return on_icon;
         }
 

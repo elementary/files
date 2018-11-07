@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-10-30 02:59+0000\n"
+"PO-Revision-Date: 2018-11-07 00:06+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -509,9 +509,7 @@ msgstr "転送先はフォルダーではありません。"
 msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
-msgstr ""
-"転送先の空き容量が足りません。容量を増やすためにはファイルを削除してみてくだ"
-"さい。"
+msgstr "転送先の空き容量が不足しています。容量を増やすためにはファイルを削除してみてください。"
 
 #: ../libcore/marlin-file-operations.c:2758
 #, c-format
@@ -1219,7 +1217,7 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
-"フォルダーの作成に失敗しました\n"
+"フォルダーを作成できませんでした\n"
 "\n"
 "%s"
 
@@ -1775,7 +1773,7 @@ msgstr "コピーダイアログを表示"
 
 #: ../src/ProgressUIHandler.vala:248
 msgid "Cancel All In-progress Actions"
-msgstr "進行しているすべての操作をキャンセル"
+msgstr "進行中のすべての操作をキャンセル"
 
 #: ../src/Utils/MimeActions.vala:275
 msgid "Multiple file types selected"
@@ -1787,7 +1785,7 @@ msgstr "これらすべてのファイルタイプを開くことができるア
 
 #: ../src/Utils/MimeActions.vala:303
 msgid "Failed to open files"
-msgstr "ファイルを開くことに失敗しました"
+msgstr "ファイルを開けませんでした"
 
 #: ../src/Utils/MimeActions.vala:313
 msgid "Could not open URIs"
@@ -1908,7 +1906,7 @@ msgstr "ユーザー情報が正しいか確認してください。"
 
 #: ../libcore/DndHandler.vala:45
 msgid "Failed to execute \"%s\""
-msgstr "\"%s\" を実行できません"
+msgstr "\"%s\" を実行できませんでした"
 
 #: ../libcore/DndHandler.vala:95
 msgid "Move Here"

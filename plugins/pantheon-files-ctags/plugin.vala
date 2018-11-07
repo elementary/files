@@ -19,6 +19,7 @@
 interface MarlinDaemon : Object {
     public abstract async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError;
     public abstract async bool record_uris (Variant[] entries, string directory) throws GLib.DBusError, GLib.IOError;
+    public abstract async bool deleteEntry (string uri) throws GLib.DBusError, GLib.IOError;
 
 }
 
@@ -204,6 +205,11 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
     private async void rreal_update_file_info (GOF.File file) {
         return_if_fail (file != null);
+
+        if (!file.exists) {
+            yield daemon.deleteEntry (file.uri);
+            return;
+        }
 
         try {
             var rc = yield daemon.get_uri_infos (file.uri);

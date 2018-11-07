@@ -204,39 +204,45 @@ namespace Marlin.View {
 
             undo_manager.request_menu_update.connect (undo_redo_menu_update_callback);
 
-            /* Toggle focus between sidebar and view using unmodified Tab key, unless location
-             * bar in focus. */
-            key_press_event.connect_after ((event) => {
+            key_press_event.connect ((event) => {
+                var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+                bool no_mods = (mods == 0);
+                bool shift_pressed = ((mods & Gdk.ModifierType.SHIFT_MASK) != 0);
+                bool only_shift_pressed = shift_pressed && ((mods & ~Gdk.ModifierType.SHIFT_MASK) == 0);
+
+                /* Use Tab to toggle View and Sidebar keyboard focus.  This works better than using a focus chain
+                 * because cannot tab out of location bar and also unwanted items tend to get focused.
+                 * There are other hotkeys for operating/focusing other widgets.
+                 * Using modified Arrow keys no longer works due to recent changes.  */
                 switch (event.keyval) {
-                    case Gdk.Key.Left:
-                    case Gdk.Key.Right:
-                        /* Arrow events only reach here if ignored by views etc because of unhandled mods e.g. Ctrl+Alt.
-                         * Use these events to toggle focus between view and sidebar using keyboard only */
+                    case Gdk.Key.Tab:
                         if (top_menu.locked_focus) {
                             return false;
                         }
 
-                        if (event.keyval == Gdk.Key.Left) {
-                        /* This works better than trying to use a focus chain */
-                            sidebar.grab_focus ();
-                        } else {
-                            current_tab.grab_focus ();
-                            sidebar.sync_needed ();
-                        }
-                        return true;
-
-                    default:
-                        /* Use find function instead of view interactive search */
-                        if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
-                            /* Use printable characters to initiate search */
-                            if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
-                                activate_action ("find", null);
-                                key_press_event (event);
-                                return true;
+                        if (no_mods || only_shift_pressed) {
+                            if (!sidebar.has_focus) {
+                                sidebar.grab_focus ();
+                            } else {
+                                current_tab.grab_focus ();
                             }
                         }
 
-                        break;
+                        return true;
+                }
+
+                return false;
+            });
+
+            key_press_event.connect_after ((event) => {
+                /* Use find function instead of view interactive search */
+                if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
+                    /* Use printable characters to initiate search */
+                    if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
+                        activate_action ("find", null);
+                        key_press_event (event);
+                        return true;
+                    }
                 }
 
                 return false;
@@ -535,9 +541,19 @@ namespace Marlin.View {
             }
         }
 
+        private uint closing_timeout_id = 0;
         private void actual_remove_tab (Granite.Widgets.Tab tab) {
             /* close_tab_signal will be emitted first.  Tab actually closes if this returns true */
-            tab.close ();
+            /* Use timeout to limit rate of closing tab */
+            if (closing_timeout_id > 0) {
+                return;
+            }
+
+            closing_timeout_id = Timeout.add (50, () => {
+                tab.close ();
+                closing_timeout_id = 0;
+                return false;
+            });
         }
 
         public void add_window (GLib.File location = GLib.File.new_for_path (PF.UserUtils.get_real_user_home ()),
@@ -753,13 +769,12 @@ namespace Marlin.View {
             update_undo_actions ();
         }
 
-        public static void after_undo_redo (void *data) {
-            var window = data as Marlin.View.Window;
-            if (window.current_tab.slot.directory.is_recent) {
-                window.current_tab.reload ();
+        public void after_undo_redo () {
+            if (current_tab.slot.directory.is_recent) {
+                current_tab.reload ();
             }
 
-            window.doing_undo_redo = false;
+            doing_undo_redo = false;
         }
 
         public void change_state_show_hidden (GLib.SimpleAction action) {

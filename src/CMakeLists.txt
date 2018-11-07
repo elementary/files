@@ -51,6 +51,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/ListView.vala
         ZeitgeistManager.vala
         View/DirectoryNotFound.vala
+        View/PrivacyModeOn.vala
         View/AbstractDirectoryView.vala
         View/Window.vala
         View/ViewContainer.vala
