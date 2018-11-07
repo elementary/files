@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-11-03 20:16+0000\n"
+"PO-Revision-Date: 2018-11-07 00:06+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -1773,7 +1773,7 @@ msgstr "コピーダイアログを表示"
 
 #: ../src/ProgressUIHandler.vala:248
 msgid "Cancel All In-progress Actions"
-msgstr "進行しているすべての操作をキャンセル"
+msgstr "進行中のすべての操作をキャンセル"
 
 #: ../src/Utils/MimeActions.vala:275
 msgid "Multiple file types selected"
