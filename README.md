@@ -12,10 +12,10 @@ You'll need the following dependencies:
 
 You will also need to have installed:
 
-* Pantheon Files
+* elementary Files
 * The 64-bit proprietary Dropbox command line client.
 
-Files is preinstalled in elementaryos or install the pantheon-files package.
+Files is preinstalled in elementary OS or install the pantheon-files package.
 
 To install the 64-bit Dropbox client these instructions are from the Dropbox website:
 
