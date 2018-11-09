@@ -449,7 +449,7 @@ namespace Marlin.Places {
             return iter;
         }
 
-        public override Gtk.TreeRowReference? add_plugin_item (PluginItem item, Marlin.PlaceType category) {
+        public override Gtk.TreeRowReference? add_plugin_item (SidebarPluginItem item, Marlin.PlaceType category) {
             Gtk.TreeIter parent;
             Gtk.TreeIter iter;
 
@@ -472,7 +472,7 @@ namespace Marlin.Places {
             return row_reference;
         }
 
-        public override bool update_plugin_item (PluginItem item, Gtk.TreeRowReference rowref) {
+        public override bool update_plugin_item (SidebarPluginItem item, Gtk.TreeRowReference rowref) {
             if (!rowref.valid ()) {
                 return false;
             }
@@ -485,10 +485,10 @@ namespace Marlin.Places {
             return true;
         }
 
-        private void set_plugin_item (PluginItem item, Gtk.TreeIter iter) {
+        private void set_plugin_item (SidebarPluginItem item, Gtk.TreeIter iter) {
             store.@set (
                 iter,
-                Column.ROW_TYPE, PluginItem.place_type,
+                Column.ROW_TYPE, SidebarPluginItem.place_type,
                 Column.URI, item.uri,
                 Column.DRIVE, item.drive,
                 Column.VOLUME, item.volume,
@@ -816,7 +816,7 @@ namespace Marlin.Places {
                                         Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server")),
                                         new ThemedIcon.with_default_fallbacks ("network-server"),
                                         side_bar_connect_server);
-                                        
+
                 plugins.update_sidebar ((Gtk.Widget)this);
             }
 

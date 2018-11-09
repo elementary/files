@@ -17,7 +17,7 @@
     Author(s):  Fernando da Silva Sousa <wild.nando@gmail.com>
 ***/
 
-public class Marlin.PluginItem : Object {
+public class Marlin.SidebarPluginItem : Object {
     public const PlaceType place_type = PlaceType.PLUGIN_ITEM;
     public string name { get; set; }
     public string? uri { get; set; }

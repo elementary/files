@@ -27,7 +27,7 @@ vala_precompile(VALA_C ${PKGNAME}
     gof-directory-async.vala
     gof-preferences.vala
     PluginManager.vala
-    PluginItem.vala
+    SidebarPluginItem.vala
     Plugin.vala
     ProgressInfo.vala
     ProgressInfoManager.vala
