@@ -366,9 +366,16 @@ namespace Marlin.Places {
         }
 
         protected Gtk.TreeIter? add_category (Marlin.PlaceType place_type, string name, string tooltip) {
-            Gtk.TreeIter iter = add_place (place_type, null,
-                              name, null, null, null, null, null,
-                              0, tooltip);
+            Gtk.TreeIter iter = add_place (place_type,
+                                           null,
+                                           name,
+                                           null,
+                                           null,
+                                           null,
+                                           null,
+                                           null,
+                                           0,
+                                           tooltip);
 
             var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
             if (rowref.valid ()) {
