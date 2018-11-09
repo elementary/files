@@ -292,9 +292,10 @@ namespace Marlin.Places {
         }
 
         /**
-         * Increase spinner pulse while Column.SHOW_SPINNER is true
+         * Check spinner's state on model and update view accordingly
          */
-        void start_spinner (Gtk.TreeIter iter) {
+        void update_spinner (Gtk.TreeIter iter) {
+            //  Increase spinner pulse while Column.SHOW_SPINNER is true
             Timeout.add (100, ()=>{
                 uint val;
                 bool spinner_active;
@@ -474,7 +475,7 @@ namespace Marlin.Places {
 
             var row_reference = new Gtk.TreeRowReference (store, path);
             set_plugin_item (item, iter);
-            start_spinner (iter);
+            update_spinner (iter);
 
             return row_reference;
         }
@@ -487,7 +488,7 @@ namespace Marlin.Places {
             Gtk.TreeIter iter;
             store.get_iter (out iter, rowref.get_path ());
             set_plugin_item (item, iter);
-            start_spinner (iter);
+            update_spinner (iter);
 
             return true;
         }
@@ -2213,7 +2214,7 @@ namespace Marlin.Places {
             store.@set (iter, Column.SHOW_SPINNER, true);
             store.@set (iter, Column.SHOW_EJECT, false);
             store.@set (iter, Column.ACTION_ICON, null);
-            start_spinner (iter);
+            update_spinner (iter);
 
             do_unmount_or_eject (mount, volume, drive, rowref, allow_eject);
             return true;
