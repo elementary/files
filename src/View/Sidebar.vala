@@ -69,6 +69,7 @@ namespace Marlin.Places {
         bool dragged_out_of_window;
         bool renaming = false;
         bool local_only;
+        Gee.HashMap<Marlin.PlaceType, Gtk.TreeRowReference> categories = new Gee.HashMap<Marlin.PlaceType, Gtk.TreeRowReference> ();
 
         /* Identifiers for target types */
         public enum TargetType {
@@ -291,9 +292,10 @@ namespace Marlin.Places {
         }
 
         /**
-         * Increase spinner pulse while Column.SHOW_SPINNER is true
+         * Check spinner's state on model and update view accordingly
          */
-        void start_spinner (Gtk.TreeIter iter) {
+        void update_spinner (Gtk.TreeIter iter) {
+            //  Increase spinner pulse while Column.SHOW_SPINNER is true
             Timeout.add (100, ()=>{
                 uint val;
                 bool spinner_active;
@@ -365,9 +367,23 @@ namespace Marlin.Places {
         }
 
         protected Gtk.TreeIter? add_category (Marlin.PlaceType place_type, string name, string tooltip) {
-            return add_place (place_type, null,
-                              name, null, null, null, null, null,
-                              0, tooltip);
+            Gtk.TreeIter iter = add_place (place_type,
+                                           null,
+                                           name,
+                                           null,
+                                           null,
+                                           null,
+                                           null,
+                                           null,
+                                           0,
+                                           tooltip);
+
+            var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
+            if (rowref.valid ()) {
+                categories[place_type] = rowref;
+            }
+
+            return iter;
         }
 
         protected override Gtk.TreeIter add_place (Marlin.PlaceType place_type,
@@ -439,6 +455,69 @@ namespace Marlin.Places {
                             Column.DISK_SIZE, (uint64)0);
 
             return iter;
+        }
+
+        public override Gtk.TreeRowReference? add_plugin_item (SidebarPluginItem item, Marlin.PlaceType category) {
+            Gtk.TreeIter parent;
+            Gtk.TreeIter iter;
+
+            if (!categories.has_key (category)) {
+                return null;
+            }
+
+            store.get_iter (out parent, categories[category].get_path ());
+            store.append (out iter, parent);
+
+            var path = store.get_path (iter);
+            if (path == null) {
+                return null;
+            }
+
+            var row_reference = new Gtk.TreeRowReference (store, path);
+            set_plugin_item (item, iter);
+            update_spinner (iter);
+
+            return row_reference;
+        }
+
+        public override bool update_plugin_item (SidebarPluginItem item, Gtk.TreeRowReference rowref) {
+            if (!rowref.valid ()) {
+                return false;
+            }
+
+            Gtk.TreeIter iter;
+            store.get_iter (out iter, rowref.get_path ());
+            set_plugin_item (item, iter);
+            update_spinner (iter);
+
+            return true;
+        }
+
+        private void set_plugin_item (SidebarPluginItem item, Gtk.TreeIter iter) {
+            store.@set (
+                iter,
+                Column.ROW_TYPE, SidebarPluginItem.place_type,
+                Column.URI, item.uri,
+                Column.DRIVE, item.drive,
+                Column.VOLUME, item.volume,
+                Column.MOUNT, item.mount,
+                Column.NAME, item.name,
+                Column.ICON, item.icon,
+                Column.INDEX, 0,
+                Column.CAN_EJECT, item.can_eject,
+                Column.NO_EJECT, !item.can_eject,
+                Column.BOOKMARK, false,
+                Column.IS_CATEGORY, false,
+                Column.NOT_CATEGORY, true,
+                Column.TOOLTIP, item.tooltip,
+                Column.ACTION_ICON, item.action_icon,
+                Column.SHOW_SPINNER, item.show_spinner,
+                Column.SHOW_EJECT, item.can_eject,
+                Column.FREE_SPACE, item.free_space,
+                Column.DISK_SIZE, item.disk_size,
+                Column.PLUGIN_CALLBACK, item.cb,
+                Column.MENU_MODEL, item.menu_model
+            );
         }
 
         public bool has_bookmark (string uri) {
@@ -745,7 +824,7 @@ namespace Marlin.Places {
                                         Granite.markup_accel_tooltip ({"<Alt>C"}, _("Connect to a network server")),
                                         new ThemedIcon.with_default_fallbacks ("network-server"),
                                         side_bar_connect_server);
-                                        
+
                 plugins.update_sidebar ((Gtk.Widget)this);
             }
 
@@ -2135,7 +2214,7 @@ namespace Marlin.Places {
             store.@set (iter, Column.SHOW_SPINNER, true);
             store.@set (iter, Column.SHOW_EJECT, false);
             store.@set (iter, Column.ACTION_ICON, null);
-            start_spinner (iter);
+            update_spinner (iter);
 
             do_unmount_or_eject (mount, volume, drive, rowref, allow_eject);
             return true;
