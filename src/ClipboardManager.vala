@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2016 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2016-2018 elementary LLC <https://elementary.io>
 
     Based on C code imported from Thunar
     Copyright (c) 2005-2006 Benedikt Meurer <benny@xfce.org>
@@ -32,8 +32,8 @@ namespace Marlin {
             UTF8_STRING
         }
 
-        private static GLib.Quark marlin_clipboard_manager_quark = GLib.Quark.from_string ("marlin-clipboard-manager");
-        private static Gdk.Atom x_special_gnome_copied_files = Gdk.Atom.intern_static_string ("x-special/gnome-copied-files");
+        private static GLib.Quark marlin_clipboard_manager_quark;
+        private static Gdk.Atom x_special_gnome_copied_files;
         private const Gtk.TargetEntry[] clipboard_targets = {
             {"x-special/gnome-copied-files", 0, ClipboardTarget.GNOME_COPIED_FILES},
             {"UTF8_STRING", 0, ClipboardTarget.UTF8_STRING}
@@ -41,7 +41,6 @@ namespace Marlin {
 
         private Gtk.Clipboard clipboard;
         private GLib.List<GOF.File> files = null;
-
         private bool files_cutted = false;
         public bool files_linked {get; private set; default = false;}
 
@@ -50,6 +49,11 @@ namespace Marlin {
         public bool can_paste {get; private set; default = false;}
 
         public signal void changed ();
+
+        static construct {
+            marlin_clipboard_manager_quark = GLib.Quark.from_string ("marlin-clipboard-manager");
+            x_special_gnome_copied_files = Gdk.Atom.intern_static_string ("x-special/gnome-copied-files");
+        }
 
         private ClipboardManager (Gtk.Clipboard _clipboard) {
             clipboard = _clipboard;
@@ -133,7 +137,6 @@ namespace Marlin {
                                         GLib.File target_file,
                                         Gtk.Widget? widget = null,
                                         GLib.Callback? new_files_callback = null) {
-
 
             /* check whether the retrieval worked */
             string? text;

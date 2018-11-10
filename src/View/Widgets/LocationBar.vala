@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2018 elementary LLC (https://elementary.io)
+* Copyright (c) 2018 elementary LLC <https://elementary.io>
 *               2011 Lucas Baudin <xapantu@gmail.com>
 *               2010 mathijshenquet
 *
@@ -94,7 +94,8 @@ namespace Marlin.View.Chrome {
         }
 
         private void on_search_results_realize () {
-            (get_toplevel () as Gtk.Window).get_group ().add_window (search_results); /*Is this necessary every popup? */
+            /*Is this necessary every popup? */
+            (get_toplevel () as Gtk.Window).get_group ().add_window (search_results);
         }
         private void on_search_results_exit (bool exit_navigate = true) {
             /* Search result widget ensures it has closed and released grab */
@@ -189,7 +190,7 @@ namespace Marlin.View.Chrome {
         protected void show_refresh_icon () {
             bread.get_style_context ().remove_class ("spin");
             bread.action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC;
-            bread.set_action_icon_tooltip (_("Reload this folder"));
+            bread.set_action_icon_tooltip (Granite.markup_accel_tooltip ({"F5", "<Ctrl>R"}, _("Reload this folder")));
         }
 
         private void show_placeholder () {

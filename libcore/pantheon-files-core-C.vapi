@@ -104,7 +104,7 @@ namespace Marlin
     }
 
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
-    public delegate void UndoFinishCallback (void *data);
+    public delegate void UndoFinishCallback ();
 
     [CCode (cheader_filename = "marlin-undostack-manager.h")]
     public class UndoManager : GLib.Object
@@ -141,9 +141,9 @@ namespace MarlinFile {
     public void changes_consume_changes (bool consume_all);
 }
 
-[CCode (cprefix = "GOF", lower_case_cprefix = "gof_", ref_function = "gof_file_ref", unref_function = "gof_file_unref")]
+[CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
 namespace GOF {
-    [CCode (cheader_filename = "gof-file.h")]
+    [CCode (cheader_filename = "gof-file.h", ref_function = "gof_file_ref", unref_function = "gof_file_unref")]
     public class File : GLib.Object {
         [CCode (cheader_filename = "gof-file.h")]
         public enum ThumbState {

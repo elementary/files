@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -83,7 +83,8 @@ namespace Marlin {
             entry.editing_done.connect (on_entry_editing_done);
         }
 
-        public override void get_preferred_height_for_width (Gtk.Widget widget, int width, out int minimum_size, out int natural_size) {
+        public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
+                                                             out int minimum_size, out int natural_size) {
             set_widget (widget);
             set_up_layout (text, width);
             natural_size = text_height + 4 * border_radius;

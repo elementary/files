@@ -18,6 +18,7 @@ CORE_LIB = shared_library (
     'Plugin.vala',
     'ProgressInfo.vala',
     'ProgressInfoManager.vala',
+    'SidebarPluginItem.vala',
     'SoundManager.vala',
     'StockDialogs.vala',
     'TrashMonitor.vala',

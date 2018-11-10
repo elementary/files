@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -35,7 +35,8 @@ namespace Marlin.View.Chrome {
         public abstract void reset ();
 
         public virtual void set_animation_visible (bool visible) {}
-        public abstract void set_placeholder (string placeholder); /*Note: This is not the same as the Gtk.Entry placeholder_text */
+        /*Note: This is not the same as the Gtk.Entry placeholder_text */
+        public abstract void set_placeholder (string placeholder);
         public abstract void show_default_action_icon ();
         public abstract void set_default_action_icon_tooltip ();
 

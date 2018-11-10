@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -231,12 +231,11 @@ namespace FM {
                 tree.get_cell_rect (p, r, out rect);
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
-                /* rectangles are in bin window coordinates - need to adjust event y coordinate
-                 * for vertical scrolling in order to accurately detect whicn area of item was
-                 * clicked on */
-                y -= (int)(get_vadjustment ().value);
-
                 if (r is Marlin.TextRenderer) {
+                    /* rectangles are in bin window coordinates - need to adjust event y coordinate
+                     * for vertical scrolling in order to accurately detect which area of TextRenderer was
+                     * clicked on */
+                    y -= (int)(get_vadjustment ().value);
                     Gtk.TreeIter iter;
                     model.get_iter (out iter, path);
                     string? text = null;
@@ -261,8 +260,7 @@ namespace FM {
                     bool on_helper = false;
                     GOF.File? file = model.file_for_path (p);
                     if (file != null) {
-                        /* RTL has no effect on is_on_icon in IconView so just pass false */
-                        bool on_icon = is_on_icon (x, y, rect, file.pix, false, ref on_helper);
+                        bool on_icon = is_on_icon (x, y, ref on_helper);
 
                         if (on_helper) {
                             zone = ClickZone.HELPER;
@@ -300,7 +298,9 @@ namespace FM {
             tree.set_cursor (path, renderer, start_editing);
         }
 
-        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed, bool only_shift_pressed) {
+        protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed,
+                                                          bool only_shift_pressed) {
+
             linear_select_required = only_shift_pressed;
             if (linear_select_required) {
                 return true;
@@ -529,29 +529,6 @@ namespace FM {
             } else {
                 return path;
             }
-        }
-
-        protected override bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper) {
-            int x_offset = x - area.x;
-            int y_offset = y - area.y;
-            int scale_factor = get_scale_factor ();
-            int pix_width = pix.width/scale_factor;
-            int pix_height = pix.height/scale_factor;
-
-            int pix_x_offset = (area.width - pix_width) / 2;
-            int pix_y_offset = (area.height - pix_height) / 2;
-
-            bool on_icon = (x_offset >= pix_x_offset &&
-                            x_offset <= pix_x_offset + pix_width &&
-                            y_offset >= pix_y_offset &&
-                            y_offset <= pix_y_offset + pix_height);
-
-            int hs = icon_renderer.helper_size;
-            on_helper = (on_icon &&
-                         x_offset <= int.max (pix_x_offset + hs, hs) &&
-                         y_offset <= int.max (pix_y_offset + hs, hs));
-
-            return on_icon;
         }
 
         /* When Icon View is automatically adjusting column number it does not expose the actual number of

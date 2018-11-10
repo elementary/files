@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2015-2017 elementary LLC (http://launchpad.net/elementary)
+    Copyright (c) 2015-2018 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify it
     under the terms of the GNU Lesser General Public License version 3, as published
@@ -371,9 +371,10 @@ namespace FM {
 
             get_vadjustment ().value_changed.connect_after (schedule_thumbnail_timeout);
 
-            (GOF.Preferences.get_default ()).notify["show-hidden-files"].connect (on_show_hidden_files_changed);
-            (GOF.Preferences.get_default ()).notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
-            (GOF.Preferences.get_default ()).notify["sort-directories-first"].connect (on_sort_directories_first_changed);
+            var prefs = (GOF.Preferences.get_default ());
+            prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
+            prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
+            prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
             model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
@@ -394,8 +395,11 @@ namespace FM {
             common_actions.add_action_entries (common_entries, this);
             insert_action_group ("common", common_actions);
 
-            action_set_state (background_actions, "show_hidden", Preferences.settings.get_boolean ("show-hiddenfiles"));
-            action_set_state (background_actions, "show_remote_thumbnails", Preferences.settings.get_boolean ("show-remote-thumbnails"));
+            action_set_state (background_actions, "show_hidden",
+                              Preferences.settings.get_boolean ("show-hiddenfiles"));
+
+            action_set_state (background_actions, "show_remote_thumbnails",
+                              Preferences.settings.get_boolean ("show-remote-thumbnails"));
         }
 
         public void zoom_in () {
@@ -462,7 +466,8 @@ namespace FM {
                 if (model.get_first_iter_for_file (f, out iter)) {
                     count++;
                     var path = model.get_path (iter);
-                    select_path (path, focus != null && focus.equal (f.location)); /* Cursor follows if matches focus location*/
+                    /* Cursor follows if matches focus location*/
+                    select_path (path, focus != null && focus.equal (f.location));
                 }
             }
 
@@ -478,12 +483,17 @@ namespace FM {
             return open_with_apps;
         }
 
-        public unowned GLib.AppInfo get_default_app () {
+        public GLib.AppInfo get_default_app () {
             return default_app;
         }
 
         public new void grab_focus () {
-            if (slot.is_active && view.get_realized ()) {
+            if (view.get_realized ()) {
+                /* In Column View, maybe clicked on an inactive column */
+                if (!slot.is_active) {
+                    set_active_slot ();
+                }
+
                 view.grab_focus ();
             }
         }
@@ -740,7 +750,9 @@ namespace FM {
             return false;
         }
 
-        protected unowned GLib.List<GOF.File> get_selected_files_for_transfer (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
+        protected unowned GLib.List<GOF.File>
+        get_selected_files_for_transfer (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
+
             unowned GLib.List<GOF.File> list = null;
 
             selection.@foreach ((file) => {
@@ -834,7 +846,9 @@ namespace FM {
                 err_msg2 = _("Cannot identify file type to open");
             } else if (!slot.directory.can_open_files) {
                 err_msg2 = "Cannot open files with this protocol (%s)".printf (slot.directory.scheme);
-            } else if (!slot.directory.can_stream_files && (content_type.contains ("video") || content_type.contains ("audio"))) {
+            } else if (!slot.directory.can_stream_files &&
+                       (content_type.contains ("video") || content_type.contains ("audio"))) {
+
                 err_msg2 = "Cannot stream from this protocol (%s)".printf (slot.directory.scheme);
             }
 
@@ -935,7 +949,8 @@ namespace FM {
         private void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
-            Marlin.FileOperations.new_folder (null, null, slot.location, (Marlin.CreateCallback?) create_file_done, this);
+            Marlin.FileOperations.new_folder (null, null, slot.location,
+                                             (Marlin.CreateCallback?) create_file_done, this);
         }
 
         private void after_new_file_added (GOF.File? file) {
@@ -1310,11 +1325,17 @@ namespace FM {
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
+            file.exists = false;
             model.remove_file (file, dir);
 
             remove_marlin_icon_info_cache (file);
+
             if (file.get_thumbnail_path () != null) {
                 PF.FileUtils.remove_thumbnail_paths_for_uri (file.uri);
+            }
+
+            if (plugins != null) {
+                plugins.update_file_info (file);
             }
 
             if (file.is_folder ()) {
@@ -1565,7 +1586,8 @@ namespace FM {
                         dnd_handler.set_source_uri (context, uri);
                         ok_to_drop = true;
                     } else {
-                        PF.Dialogs.show_error_dialog (_("Cannot drop this file"), _("Invalid file name provided"), window);
+                        PF.Dialogs.show_error_dialog (_("Cannot drop this file"),
+                                                      _("Invalid file name provided"), window);
                     }
                 }
             } else {
@@ -2041,19 +2063,19 @@ namespace FM {
         private GLib.MenuModel build_show_menu (Gtk.Builder builder) {
             var show_menu = builder.get_object ("show") as GLib.Menu;
             if (slot.directory.is_local || !slot.directory.can_open_files) {
-                show_menu.remove (1); /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
+                /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
+                show_menu.remove (1);
             }
             return show_menu;
         }
 
         private GLib.MenuModel? build_menu_open (ref Gtk.Builder builder) {
-
             var menu = new GLib.Menu ();
             GLib.MenuModel? app_submenu;
 
             string label = _("Invalid");
-            unowned GLib.List<unowned GOF.File> selection = get_files_for_action ();
-            unowned GOF.File selected_file = selection.data;
+            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GOF.File selected_file = selection.data;
 
             if (can_open_file (selected_file)) {
                 if (!selected_file.is_folder () && selected_file.is_executable ()) {
@@ -2097,6 +2119,7 @@ namespace FM {
 
             if (can_open_file (selection.data)) {
                 open_with_apps = Marlin.MimeActions.get_applications_for_files (selection);
+
                 if (selection.data.is_executable () == false) {
                     filter_default_app_from_open_with_apps ();
                 }
@@ -2688,30 +2711,40 @@ namespace FM {
 
             cancel_hover ();
 
-            uint keyval;
-            int eff_grp, level;
-            Gdk.ModifierType consumed_mods;
+            uint keyval = event.keyval;
+            Gdk.ModifierType consumed_mods = 0;
 
-            if (!Gdk.Keymap.get_default ().translate_keyboard_state (event.hardware_keycode,
-                                                                     event.state, event.group,
-                                                                     out keyval, out eff_grp,
-                                                                     out level, out consumed_mods)) {
-                warning ("translate keyboard state failed");
-                return false;
-            }
+            /* Leave standard ASCII alone, else try to get Latin hotkey from keyboard state */
+            /* This means that Latin hot keys for Latin Dvorak keyboards (e.g. Spanish Dvorak)
+             * will be in their Dvorak position, not their QWERTY position.
+             * For non-Latin (e.g. Cyrillic) keyboards however, the Latin hotkeys are mapped
+             * to the same position as on a Latin QWERTY keyboard. If the conversion fails, the unprocessed
+             * event.keyval is used. */
+            if (keyval > 127) {
+                int eff_grp, level;
 
-            keyval = 0;
-            for (uint key = 32; key < 128; key++) {
-                if (match_keycode (key, event.hardware_keycode, level)) {
-                    keyval = key;
-                    break;
+                if (!Gdk.Keymap.get_default ().translate_keyboard_state (event.hardware_keycode,
+                                                                         event.state, event.group,
+                                                                         out keyval, out eff_grp,
+                                                                         out level, out consumed_mods)) {
+                    warning ("translate keyboard state failed");
+                    keyval = event.keyval;
+                    consumed_mods = 0;
+                } else {
+                    keyval = 0;
+                    for (uint key = 32; key < 128; key++) {
+                        if (match_keycode (key, event.hardware_keycode, level)) {
+                            keyval = key;
+                            break;
+                        }
+                    }
+
+                    if (keyval == 0) {
+                        debug ("Could not match hardware code to ASCII hotkey");
+                        keyval = event.keyval;
+                        consumed_mods = 0;
+                    }
                 }
-            }
-
-            if (keyval == 0) {
-                debug ("Could not match hardware code to ASCII hotkey");
-                keyval = event.keyval;
-                consumed_mods = 0;
             }
 
             var mods = (event.state & ~consumed_mods) & Gtk.accelerator_get_default_mod_mask ();
@@ -3114,7 +3147,9 @@ namespace FM {
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
-        public void set_file_display_name (GLib.File old_location, string new_name, PF.FileUtils.RenameCallbackFunc? f) {
+        public void set_file_display_name (GLib.File old_location, string new_name,
+                                           PF.FileUtils.RenameCallbackFunc? f) {
+
             /* Wait for the file to be added to the model before trying to select and scroll to it */
             slot.directory.file_added.connect_after (after_renamed_file_added);
             PF.FileUtils.set_file_display_name (old_location, new_name, f);
@@ -3187,8 +3222,8 @@ namespace FM {
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
             if (renaming) {
-                /* Cancel renaming */
-                name_renderer.end_editing (true);
+                /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
+                name_renderer.end_editing (false);
             }
 
             cancel_hover (); /* cancel overlay statusbar cancellables */
@@ -3200,13 +3235,14 @@ namespace FM {
                 return true;
             }
 
+            grab_focus ();
+
             Gtk.TreePath? path = null;
             /* Remember position of click for detecting drag motion*/
             drag_x = (int)(event.x);
             drag_y = (int)(event.y);
 
             click_zone = get_event_position_info (event, out path, true);
-
             /* certain positions fake a no path blank zone */
             if (click_zone == ClickZone.BLANK_NO_PATH && path != null) {
                 unselect_path (path);
@@ -3266,9 +3302,11 @@ namespace FM {
                         case ClickZone.NAME:
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
                             /* determine whether should activate on key release (unless pointer moved)*/
+                            update_selected_files_and_menu ();
+                            bool one_or_less = (selected_files == null || selected_files.next == null);
                             should_activate = no_mods &&
                                               (!on_blank || activate_on_blank) &&
-                                              (single_click_mode || double_click_event);
+                                              (single_click_mode && one_or_less  || double_click_event);
 
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
@@ -3288,16 +3326,17 @@ namespace FM {
                         case ClickZone.HELPER:
                             bool multi_select = only_control_pressed || only_shift_pressed;
                             if (multi_select) { /* Treat like modified click on icon */
-                                update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 if (path_selected) {
-                                    unselect_path (path);
+                                    /* Don't deselect yet, may drag */
+                                    should_deselect = true;
                                 } else {
                                     should_deselect = false;
                                     select_path (path, true); /* Cursor follow and selection preserved */
                                 }
 
+                                unblock_drag_and_drop ();
                                 result = true; /* Prevent rubberbanding and deselection of other paths */
                             }
                             break;
@@ -3319,19 +3358,23 @@ namespace FM {
                     break;
 
                 case Gdk.BUTTON_MIDDLE: // button 2
-                    if (path_is_selected (path)) {
-                        activate_selected_items (Marlin.OpenFlag.NEW_TAB);
-                        result = true;
+                    if (!path_is_selected (path)) {
+                        select_path (path, true);
                     }
+
+                    should_activate = true;
+                    unblock_drag_and_drop ();
+                    result = true;
 
                     break;
 
                 case Gdk.BUTTON_SECONDARY: // button 3
                     if (click_zone == ClickZone.NAME ||
                         click_zone == ClickZone.BLANK_PATH ||
-                        click_zone == ClickZone.ICON) {
+                        click_zone == ClickZone.ICON ||
+                        click_zone == ClickZone.HELPER) {
 
-                        select_path (path);
+                        select_path (path); /* Note: secondary click does not toggle selection */
                     } else if (click_zone == ClickZone.INVALID) {
                         unselect_all ();
                     }
@@ -3340,6 +3383,7 @@ namespace FM {
                     update_selected_files_and_menu ();
                     unblock_drag_and_drop ();
                     start_drag_timer (event);
+
                     result = handle_secondary_button_click (event);
                     break;
 
@@ -3369,22 +3413,29 @@ namespace FM {
             Gtk.Widget widget = get_real_view ();
             int x = (int)event.x;
             int y = (int)event.y;
-
+            update_selected_files_and_menu ();
             /* Only take action if pointer has not moved */
             if (!Gtk.drag_check_threshold (widget, drag_x, drag_y, x, y)) {
                 if (should_activate) {
-                    activate_selected_items (Marlin.OpenFlag.DEFAULT);
+                    /* Need Idle else can crash with rapid clicking (avoid nested signals) */
+                    Idle.add (() => {
+                        var flag = event.button == Gdk.BUTTON_MIDDLE ? Marlin.OpenFlag.NEW_TAB :
+                                                                       Marlin.OpenFlag.DEFAULT;
+
+                        activate_selected_items (flag);
+                        return false;
+                    });
                 } else if (should_deselect && click_path != null) {
                     unselect_path (click_path);
+                    /* Only need to update selected files if changed by this handler */
+                    Idle.add (() => {
+                        update_selected_files_and_menu ();
+                        return false;
+                    });
                 } else if (event.button == Gdk.BUTTON_SECONDARY) {
                     show_context_menu (event);
                 }
             }
-
-            Idle.add (() => {
-                update_selected_files_and_menu ();
-                return false;
-            });
 
             should_activate = false;
             should_deselect = false;
@@ -3646,12 +3697,21 @@ namespace FM {
             return false;
         }
 
-        protected virtual bool will_handle_button_press (bool no_mods, bool only_control_pressed, bool only_shift_pressed) {
+        protected virtual bool will_handle_button_press (bool no_mods, bool only_control_pressed,
+                                                         bool only_shift_pressed) {
             if (!no_mods && !only_control_pressed) {
                 return false;
             } else {
                 return true;
             }
+        }
+
+        protected bool is_on_icon (int x, int y, ref bool on_helper) {
+            /* x and y must be in same coordinate system as used by the IconRenderer */
+            Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
+            bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
+            on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
+            return on_icon;
         }
 
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
@@ -3679,7 +3739,6 @@ namespace FM {
         protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
-        protected abstract bool is_on_icon (int x, int y, Gdk.Rectangle area, Gdk.Pixbuf pix, bool rtl, ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear
