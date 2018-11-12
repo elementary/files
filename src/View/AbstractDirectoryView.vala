@@ -1325,11 +1325,17 @@ namespace FM {
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
+            file.exists = false;
             model.remove_file (file, dir);
 
             remove_marlin_icon_info_cache (file);
+
             if (file.get_thumbnail_path () != null) {
                 PF.FileUtils.remove_thumbnail_paths_for_uri (file.uri);
+            }
+
+            if (plugins != null) {
+                plugins.update_file_info (file);
             }
 
             if (file.is_folder ()) {
@@ -1852,7 +1858,9 @@ namespace FM {
             cancel_drag_timer ();
             /* select selection or background context menu */
             update_menu_actions ();
-            var builder = new Gtk.Builder.from_file (Config.UI_DIR + "directory_view_popup.ui");
+            var builder = new Gtk.Builder.from_file (Path.build_path (Path.DIR_SEPARATOR_S,
+                                                                      Config.UI_DIR,
+                                                                      "directory_view_popup.ui"));
             GLib.MenuModel? model = null;
 
             if (get_selected_files () != null) {
@@ -2393,7 +2401,7 @@ namespace FM {
         private bool app_is_this_app (AppInfo ai) {
             string exec_name = ai.get_executable ();
 
-            return (exec_name == APP_NAME);
+            return (exec_name == Config.APP_NAME || exec_name == Config.TERMINAL_NAME);
         }
 
         private void filter_default_app_from_open_with_apps () {
@@ -3323,7 +3331,8 @@ namespace FM {
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
                                 if (path_selected) {
-                                    unselect_path (path);
+                                    /* Don't deselect yet, may drag */
+                                    should_deselect = true;
                                 } else {
                                     should_deselect = false;
                                     select_path (path, true); /* Cursor follow and selection preserved */
@@ -3367,7 +3376,7 @@ namespace FM {
                         click_zone == ClickZone.ICON ||
                         click_zone == ClickZone.HELPER) {
 
-                        select_path (path);
+                        select_path (path); /* Note: secondary click does not toggle selection */
                     } else if (click_zone == ClickZone.INVALID) {
                         unselect_all ();
                     }
@@ -3703,7 +3712,7 @@ namespace FM {
             /* x and y must be in same coordinate system as used by the IconRenderer */
             Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
             bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
-            on_helper = pointer_rect.intersect (icon_renderer.helper_rect, null);
+            on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
             return on_icon;
         }
 

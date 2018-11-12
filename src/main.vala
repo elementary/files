@@ -13,17 +13,13 @@
     You should have received a copy of the GNU General Public License along
     with this program. If not, see <http://www.gnu.org/licenses/>.
 ***/
-
-public const string APP_NAME = "io.elementary.files";
-public const string TERMINAL_NAME = "io.elementary.terminal";
-
 public static int main (string[] args) {
     /* Initiliaze gettext support */
     Intl.setlocale (LocaleCategory.ALL, "");
     Intl.textdomain (Config.GETTEXT_PACKAGE);
 
-    Environment.set_application_name (APP_NAME);
-    Environment.set_prgname (APP_NAME);
+    Environment.set_application_name (Config.APP_NAME);
+    Environment.set_prgname (Config.APP_NAME);
 
     var application = new Marlin.Application ();
 
