@@ -1782,29 +1782,27 @@ namespace Marlin.Places {
                                              Gtk.TreeModel model,
                                              Gtk.TreeIter iter) {
 
-            var crt = renderer as Gtk.CellRendererText;
+            var crd = renderer as Marlin.CellRendererDisk;
+            crd.is_disk = false;
+
             string text;
             bool is_category, show_eject_button;
             uint64 disk_size = 0;
+
             model.@get (iter, Column.NAME, out text,
                               Column.IS_CATEGORY, out is_category,
                               Column.DISK_SIZE, out disk_size,
                               Column.SHOW_EJECT, out show_eject_button, -1);
 
             if (is_category) {
-                crt.markup = "<b>" + text + "</b>";
-                crt.ypad = CATEGORY_YPAD;
+                crd.markup = "<b>" + text + "</b>";
+                crd.ypad = CATEGORY_YPAD;
             } else {
-                crt.markup = text;
-                crt.ypad = BOOKMARK_YPAD;
+                crd.markup = text;
+                crd.ypad = BOOKMARK_YPAD;
+
                 if (disk_size > 0) {
-                    /* Make disk space graphic same length whether or not eject button displayed */
-                    var crd = renderer as Marlin.CellRendererDisk;
-                    if (!show_eject_button) {
-                        crd.rpad = eject_button_size + ICON_XPAD * 2;
-                    } else {
-                        crd.rpad = 0;
-                    }
+                    crd.is_disk = true;
                 }
             }
         }
