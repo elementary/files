@@ -1858,7 +1858,9 @@ namespace FM {
             cancel_drag_timer ();
             /* select selection or background context menu */
             update_menu_actions ();
-            var builder = new Gtk.Builder.from_file (Config.UI_DIR + "directory_view_popup.ui");
+            var builder = new Gtk.Builder.from_file (Path.build_path (Path.DIR_SEPARATOR_S,
+                                                                      Config.UI_DIR,
+                                                                      "directory_view_popup.ui"));
             GLib.MenuModel? model = null;
 
             if (get_selected_files () != null) {

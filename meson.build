@@ -12,6 +12,7 @@ WIDGET_LIB_NAME = OLD_NAME + '-widgets'
 SCHEMA_PATH = '/io/elementary/' + SHORTNAME + '/'
 PLUGIN_DIR = join_paths(get_option('prefix'), get_option ('libdir'), meson.project_name (), 'plugins')
 MODULE_LIBDIR = join_paths(get_option('prefix'), get_option ('libdir'), 'gtk-3.0', 'modules')
+UI_DIR = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name (), 'ui')
 TERMINAL_NAME = 'pantheon-terminal'
 
 vala_version_required = '0.34.0'
@@ -87,7 +88,7 @@ C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
 config_data = configuration_data()
 config_data.set('plugin_dir', PLUGIN_DIR)
 config_data.set('version', PROJECT_VER)
-config_data.set('ui_dir', join_paths(meson.current_source_dir (), 'View'))
+config_data.set('ui_dir', UI_DIR)
 config_data.set('testdata_dir', join_paths(meson.source_root (), 'data', 'tests'))
 config_data.set('app_name', meson.project_name ())
 config_data.set('terminal_name', TERMINAL_NAME)
@@ -108,13 +109,13 @@ LIB_ONLY = get_option ('only-libraries')
 MODULE_ONLY = get_option ('only-filechooser-module')
 
 if LIB_ONLY
-	subdir_done ()
+    subdir_done ()
 endif
 
 
 if MODULE_ONLY
-	subdir (filechooser-module)
-	subdir_done ()
+    subdir (filechooser-module)
+    subdir_done ()
 endif
 
 subdir ('src')

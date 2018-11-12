@@ -67,3 +67,8 @@ executable (
     install: true,
     link_with: [CORE_LIB, WIDGET_LIB]
 )
+
+install_data (
+    join_paths(meson.current_source_dir (), 'View', 'directory_view_popup.ui'),
+    install_dir: UI_DIR
+)
