@@ -2,9 +2,9 @@ Source: pantheon-files
 Section: x11
 Priority: optional
 Maintainer: Cody Garver <cody@elementary.io>
-Vcs-Bzr: https://code.launchpad.net/~elementary-os/pantheon-files/deb-packaging
-Build-Depends: cmake (>= 2.8),
-               debhelper (>= 9),
+Build-Depends: meson,
+               debhelper (>= 10.5.1),
+               gettext,
                gnome-common,
                libcanberra-dev (>= 0.30),
                libdbus-glib-1-dev,
@@ -20,8 +20,8 @@ Build-Depends: cmake (>= 2.8),
                libunity-dev (>= 4.0.0),
                libzeitgeist-2.0-dev,
                valac (>= 0.28)
-Homepage: https://launchpad.net/pantheon-files
-Standards-Version: 3.9.5
+Homepage: https://github.com/elementary/files
+Standards-Version: 4.1.1
 
 Package: pantheon-files
 Architecture: any
