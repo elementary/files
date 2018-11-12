@@ -1,2 +1,2 @@
 #!/bin/sh
-pkexec "@install_prefix@/@bin_dir@/@exec_name@.files"
+pkexec "@exec_name@"
