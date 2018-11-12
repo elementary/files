@@ -1,13 +1,12 @@
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "config.h")]
 namespace Config {
     public const string GETTEXT_PACKAGE;
-    public const string PIXMAP_DIR;
     public const string UI_DIR;
-    public const string PACKAGE_VERSION;
     public const string VERSION;
-    public const string GNOMELOCALEDIR;
     public const string PLUGIN_DIR;
     public const string TESTDATA_DIR;
+    public const string APP_NAME;
+    public const string TERMINAL_NAME;
 }
 
 [CCode (cprefix = "FM", lower_case_cprefix = "fm_", cheader_filename = "fm-list-model.h")]
@@ -63,6 +62,7 @@ namespace Marlin {
         static void new_file (Gtk.Widget parent_view, Gdk.Point? target_point, string parent_dir, string? target_filename, string? initial_contents, int length, Marlin.CreateCallback? create_callback = null, void* done_callback_data = null);
         static void new_file_from_template (Gtk.Widget parent_view, Gdk.Point? target_point, GLib.File parent_dir, string? target_filename, GLib.File template, Marlin.CreateCallback? create_callback = null, void* done_callback_data = null);
     }
+
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
     public delegate void MountCallback (GLib.Volume volume, void* callback_data_object);
     [CCode (cheader_filename = "marlin-file-operations.h", has_target = false)]
@@ -117,6 +117,19 @@ namespace Marlin
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void add_rename_action (GLib.File renamed_file, string original_name);
     }
+
+//    [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]
+//    namespace ConnectServer {
+//        [CCode (cheader_filename = "marlin-connect-server-dialog.h")]
+//        public class Dialog : Gtk.Dialog {
+//            public Dialog (Gtk.Window window);
+//            public async bool display_location_async (GLib.File location) throws GLib.Error;
+//            public async bool fill_details_async (GLib.MountOperation operation,
+//                                                 string default_user,
+//                                                 string default_domain,
+//                                                 GLib.AskPasswordFlags flags);
+//        }
+//    }
 }
 
 [CCode (cprefix = "MarlinFile", lower_case_cprefix = "marlin_file_", cheader_filename = "marlin-file-changes-queue.h")]
@@ -130,7 +143,6 @@ namespace MarlinFile {
 
 [CCode (cprefix = "GOF", lower_case_cprefix = "gof_")]
 namespace GOF {
-
     [CCode (cheader_filename = "gof-file.h", ref_function = "gof_file_ref", unref_function = "gof_file_unref")]
     public class File : GLib.Object {
         [CCode (cheader_filename = "gof-file.h")]

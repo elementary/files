@@ -5,17 +5,17 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_group>elementary</project_group>
   <project_license>GPL-3.0+</project_license>
-  <_name>Files</_name>
-  <_summary>Browse and manage files and folders</_summary>
+  <name>Files</name>
+  <summary>Browse and manage files and folders</summary>
   <description>
-    <_p>
+    <p>
       Easily copy, move, and rename your files, or use folders to stay organized. Whether you like files in lists, grids or columns, you can always find them right away. Access all your files, whether locally, on an external device or remotely using FTP, SFTP, AFP, Webdav, or Windows share.
-    </_p>
+    </p>
   </description>
   <provides>
-    <binary>io.elementary.files</binary>
-    <binary>io.elementary.files-daemon</binary>
-    <binary>io.elementary.files-pkexec</binary>
+    <binary>@exec_name@</binary>
+    <binary>@exec_name@-daemon</binary>
+    <binary>@exec_name@-pkexec</binary>
   </provides>
   <screenshots>
     <screenshot type="default">
@@ -68,97 +68,97 @@
     <release version="0.3.5" date="2017-06-03" urgency="medium">
       <description>
         <ul>
-          <_li>Honor 12/24hr system setting</_li>
-          <_li>Distinguish between tabs with the same name</_li>
-          <_li>Support launching from other applications with a target file selected</_li>
-          <_li>New translations</_li>
-          <_li>Minor bug fixes</_li>
+          <li>Honor 12/24hr system setting</li>
+          <li>Distinguish between tabs with the same name</li>
+          <li>Support launching from other applications with a target file selected</li>
+          <li>New translations</li>
+          <li>Minor bug fixes</li>
         </ul>
       </description>
     </release>
     <release version="0.3.3" date="2017-04-10" urgency="medium">
       <description>
         <ul>
-          <_li>Improved networking support</_li>
-          <_li>Correct window geometry when snapping to left or right</_li>
-          <_li>Pressing Ctrl no longer cancels renaming while the "Reveal Pointer" setting is active</_li>
-          <_li>Switching input language cancels actions</_li>
-          <_li>Various crash fixes</_li>
-          <_li>New translations</_li>
-          <_li>Minor bug fixes</_li>
+          <li>Improved networking support</li>
+          <li>Correct window geometry when snapping to left or right</li>
+          <li>Pressing Ctrl no longer cancels renaming while the "Reveal Pointer" setting is active</li>
+          <li>Switching input language cancels actions</li>
+          <li>Various crash fixes</li>
+          <li>New translations</li>
+          <li>Minor bug fixes</li>
         </ul>
       </description>
     </release>
     <release version="0.3.2" date="2017-02-25" urgency="medium">
       <description>
         <ul>
-          <_li>Web browsers like Firefox now remember the most recently used downloads directory</_li>
-          <_li>Remember preferred zoom level</_li>
-          <_li>Improved input method support</_li>
-          <_li>910x640 minimum window size</_li>
-          <_li>Security fixes</_li>
-          <_li>Various crash fixes</_li>
-          <_li>New translations</_li>
-          <_li>Minor bug fixes</_li>
+          <li>Web browsers like Firefox now remember the most recently used downloads directory</li>
+          <li>Remember preferred zoom level</li>
+          <li>Improved input method support</li>
+          <li>910x640 minimum window size</li>
+          <li>Security fixes</li>
+          <li>Various crash fixes</li>
+          <li>New translations</li>
+          <li>Minor bug fixes</li>
         </ul>
       </description>
     </release>
     <release version="0.3.1.1" date="2017-01-25" urgency="medium">
       <description>
         <ul>
-          <_li>Enable drag and drop tabs between windows</_li>
-          <_li>Various crash fixes</_li>
-          <_li>New translations</_li>
-          <_li>Minor bug fixes</_li>
+          <li>Enable drag and drop tabs between windows</li>
+          <li>Various crash fixes</li>
+          <li>New translations</li>
+          <li>Minor bug fixes</li>
         </ul>
       </description>
     </release>
     <release version="0.3.1" date="2017-01-16" urgency="medium">
       <description>
         <ul>
-          <_li>Merge search functionality into Ctrl+F</_li>
-          <_li>Improved translation support</_li>
-          <_li>Various crash fixes</_li>
-          <_li>New translations</_li>
-          <_li>Minor bug fixes</_li>
+          <li>Merge search functionality into Ctrl+F</li>
+          <li>Improved translation support</li>
+          <li>Various crash fixes</li>
+          <li>New translations</li>
+          <li>Minor bug fixes</li>
         </ul>
       </description>
     </release>
     <release version="0.3.0.5" date="2016-12-16" urgency="medium">
       <description>
         <ul>
-          <_li>Minor bug fixes</_li>
+          <li>Minor bug fixes</li>
         </ul>
       </description>
     </release>
     <release version="0.3.0.4" date="2016-11-19" urgency="medium">
       <description>
         <ul>
-          <_li>Minor bug fixes</_li>
+          <li>Minor bug fixes</li>
         </ul>
       </description>
     </release>
     <release version="0.3.0.3.1" date="2016-10-10" urgency="medium">
       <description>
         <ul>
-          <_li>Fix appdata release dates</_li>
+          <li>Fix appdata release dates</li>
         </ul>
       </description>
     </release>
     <release version="0.3.0.3" date="2016-10-10" urgency="medium">
       <description>
         <ul>
-          <_li>Improve file opening over Samba shares</_li>
-          <_li>Fix a crash when restoring items from the Trash</_li>
-          <_li>Improve cut/copy/paste sensitivity in context menu</_li>
-          <_li>Translation updates</_li>
+          <li>Improve file opening over Samba shares</li>
+          <li>Fix a crash when restoring items from the Trash</li>
+          <li>Improve cut/copy/paste sensitivity in context menu</li>
+          <li>Translation updates</li>
         </ul>
       </description>
     </release>
     <release version="0.3.0.2" date="2016-09-01" urgency="medium">
       <description>
         <ul>
-          <_li>Minor bug fixes</_li>
+          <li>Minor bug fixes</li>
         </ul>
       </description>
     </release>
