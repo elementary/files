@@ -44,7 +44,7 @@ pkg = import ('pkgconfig')
 pkg.generate (
     libraries: CORE_LIB,
     description: 'Core library io.elementary.files and io.elementary.filechooser',
-    filebase: OLD_NAME,
+    filebase: CORE_LIB_NAME,
     name: 'lib'+ OLD_NAME
 )
 
