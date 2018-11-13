@@ -195,10 +195,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
             if (idle_consume_unknowns == 0) {
                 idle_consume_unknowns = Idle.add (() => {
-                                                  consume_unknowns_queue.begin ();
-                                                  idle_consume_unknowns = 0;
-                                                  return false;
-                                                  });
+                      consume_unknowns_queue.begin ();
+                      idle_consume_unknowns = 0;
+                      return GLib.Source.REMOVE;
+                  });
             }
         }
     }

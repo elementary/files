@@ -307,7 +307,7 @@ namespace Marlin.View {
 
                 Idle.add (() => {
                     remove_tab (vc);
-                    return false;
+                    return GLib.Source.REMOVE;
                 });
             });
 
@@ -466,7 +466,7 @@ namespace Marlin.View {
                                 Idle.add_full (GLib.Priority.LOW, () => {
                                     var unique_name = disambiguate_name (content_label, content_path, path);
                                     set_tab_label (unique_name, tab, content_path);
-                                    return false;
+                                    return GLib.Source.REMOVE;
                                 });
                             }
                         }
@@ -477,7 +477,7 @@ namespace Marlin.View {
                         /* Revert to short label when possible */
                         Idle.add_full (GLib.Priority.LOW, () => {
                             set_tab_label (content_label, tab, content_path);
-                            return false;
+                            return GLib.Source.REMOVE;
                         });
                     }
                 }

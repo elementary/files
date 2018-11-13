@@ -425,9 +425,9 @@ namespace FM {
                 Idle.add_full (GLib.Priority.LOW, () => {
                     if (!tree_frozen) {
                         set_cursor (new Gtk.TreePath.from_indices (0), false, select, true);
-                        return false;
+                        return GLib.Source.REMOVE;
                     } else {
-                        return true;
+                        return GLib.Source.CONTINUE;
                     }
                 });
             }
@@ -447,9 +447,9 @@ namespace FM {
             Idle.add_full (GLib.Priority.LOW, () => {
                 if (!tree_frozen) {
                     select_file_paths (file_list, focus);
-                    return false;
+                    return GLib.Source.REMOVE;
                 } else {
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
             });
         }
@@ -548,19 +548,19 @@ namespace FM {
 
                             GLib.Idle.add (() => {
                                 activate_file (file, screen, flag, false);
-                                return false;
+                                return GLib.Source.REMOVE;
                             });
                         } else {
                             GLib.Idle.add (() => {
                                 open_file (file, screen, null);
-                                return false;
+                                return GLib.Source.REMOVE;
                             });
                         }
                     }
                 } else if (default_app != null) {
                     GLib.Idle.add (() => {
                         open_files_with (default_app, selection);
-                        return false;
+                        return GLib.Source.REMOVE;
                     });
                 }
             } else {
@@ -1003,7 +1003,7 @@ namespace FM {
             Idle.add (() => {
                 view.set_cursor (view.deleted_path, false, false, false);
                 view.unblock_directory_monitor ();
-                return false;
+                return GLib.Source.REMOVE;
             });
 
         }
@@ -1013,7 +1013,7 @@ namespace FM {
              * and one via marlin-file-changes. */
             GLib.Idle.add_full (GLib.Priority.LOW, () => {
                 slot.directory.unblock_monitor ();
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -1256,7 +1256,7 @@ namespace FM {
                 });
 
                 view.select_glib_files_when_thawed (pasted_files_list, pasted_files_list.first ().data);
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -2982,7 +2982,7 @@ namespace FM {
 
             Idle.add (() => {
                 update_selected_files_and_menu ();
-                return false;
+                return GLib.Source.REMOVE;
             });
 
             return res;
@@ -3425,14 +3425,14 @@ namespace FM {
                                                                        Marlin.OpenFlag.DEFAULT;
 
                         activate_selected_items (flag);
-                        return false;
+                        return GLib.Source.REMOVE;
                     });
                 } else if (should_deselect && click_path != null) {
                     unselect_path (click_path);
                     /* Only need to update selected files if changed by this handler */
                     Idle.add (() => {
                         update_selected_files_and_menu ();
-                        return false;
+                        return GLib.Source.REMOVE;
                     });
                 } else if (event.button == Gdk.BUTTON_SECONDARY) {
                     show_context_menu (event);
