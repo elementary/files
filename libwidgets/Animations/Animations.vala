@@ -55,7 +55,7 @@ namespace Marlin.Animation {
                         Math.sin (((double) newvalue / (double) to_do) * Math.PI / 2) * to_do;
 
             old_adj_value = adj.value;
-            return true;
+            return GLib.Source.CONTINUE;
         });
     }
 }

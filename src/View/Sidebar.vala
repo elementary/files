@@ -311,7 +311,7 @@ namespace Marlin.Places {
 
                 store.@get (iter, Column.SPINNER_PULSE, out val);
                 store.@set (iter, Column.SPINNER_PULSE, ++val);
-                return true;
+                return GLib.Source.CONTINUE;
             });
         }
 

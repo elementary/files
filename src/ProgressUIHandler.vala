@@ -85,13 +85,13 @@ public class Marlin.Progress.UIHandler : Object {
             }
 
             if (info.get_is_paused ()) {
-                return true;
+                return GLib.Source.CONTINUE;
             } else if (operation_running && !info.get_is_finished ()) {
                 add_progress_info_to_window (info);
                 return GLib.Source.REMOVE;
             } else {
                 operation_running = true;
-                return true;
+                return GLib.Source.CONTINUE;
             }
         });
     }

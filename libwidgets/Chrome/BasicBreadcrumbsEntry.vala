@@ -303,6 +303,7 @@ namespace Marlin.View.Chrome {
                     focus_out_event (event);
                     return GLib.Source.REMOVE;
                 });
+
                 return true;
             } else {
                 /* This the delayed propagated event */
@@ -605,7 +606,7 @@ namespace Marlin.View.Chrome {
                     }
 
                     queue_draw ();
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
             });
 

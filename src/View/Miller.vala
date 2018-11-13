@@ -468,7 +468,7 @@ namespace Marlin.View {
                     scroll_to_slot_timeout_id = 0;
                     return GLib.Source.REMOVE;
                 } else {
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
             });
         }

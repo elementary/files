@@ -318,7 +318,7 @@ public class Async : Object {
 
                     return GLib.Source.REMOVE;
                 } else {
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
             });
 

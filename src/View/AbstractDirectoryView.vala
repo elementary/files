@@ -921,7 +921,7 @@ namespace FM {
                         return GLib.Source.REMOVE;
                     } else {
                         signal_free_space_change = true;
-                        return true;
+                        return GLib.Source.CONTINUE;
                     }
                 });
             } else {
@@ -2474,7 +2474,7 @@ namespace FM {
             freeze_child_notify ();
             freeze_source_id = Timeout.add (100, () => {
                 if (thumbnail_source_id > 0) {
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
                 thaw_child_notify ();
                 freeze_source_id = 0;
@@ -2616,7 +2616,7 @@ namespace FM {
 
                 scroll_if_near_edge (y, h, 20, get_vadjustment ());
                 scroll_if_near_edge (x, w, 20, get_hadjustment ());
-                return true;
+                return GLib.Source.CONTINUE;
             });
         }
 
@@ -3485,10 +3485,10 @@ namespace FM {
                 if (start_path == null || (count < 20 && start.compare (start_path) != 0)) {
                     start_path = start;
                     ok_next_time = false;
-                    return true;
+                    return GLib.Source.CONTINUE;
                 } else if (!ok_next_time) {
                     ok_next_time = true;
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
 
                 /* set cursor_on_cell also triggers editing-started */
