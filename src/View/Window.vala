@@ -552,7 +552,7 @@ namespace Marlin.View {
             closing_timeout_id = Timeout.add (50, () => {
                 tab.close ();
                 closing_timeout_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -611,7 +611,7 @@ namespace Marlin.View {
                 add_window ();
                 GLib.Timeout.add (500, () => {
                     adding_window = false;
-                    return false;
+                    return GLib.Source.REMOVE;
                 });
             }
         }

@@ -466,7 +466,7 @@ namespace Marlin.View {
             scroll_to_slot_timeout_id = GLib.Timeout.add (200, () => {
                 if (scroll_to_slot (slot, animate)) {
                     scroll_to_slot_timeout_id = 0;
-                    return false;
+                    return GLib.Source.REMOVE;
                 } else {
                     return true;
                 }

@@ -328,7 +328,7 @@ namespace Marlin.View.Chrome {
                 }
 
                 send_search_finished ();
-                return false;
+                return GLib.Source.REMOVE;
             });
 
             new Thread<void*> (null, () => {

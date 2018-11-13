@@ -183,7 +183,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         t_consume_knowns = Timeout.add (300, () => {
                                         consume_knowns_queue.begin ();
                                         t_consume_knowns = 0;
-                                        return false;
+                                        return GLib.Source.REMOVE;
                                         });
     }
 

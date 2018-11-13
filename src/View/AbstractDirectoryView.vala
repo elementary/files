@@ -918,7 +918,7 @@ namespace FM {
                     if (signal_free_space_change) {
                         add_remove_file_timeout_id = 0;
                         window.free_space_change ();
-                        return false;
+                        return GLib.Source.REMOVE;
                     } else {
                         signal_free_space_change = true;
                         return true;
@@ -1782,7 +1782,7 @@ namespace FM {
 
                             load_location (file.get_target_location ());
                             drag_enter_timer_id = 0;
-                            return false;
+                            return GLib.Source.REMOVE;
                         });
                     }
                 }
@@ -1850,7 +1850,7 @@ namespace FM {
                                                    drag_delay,
                                                    () => {
                 on_drag_timeout_button_release ((Gdk.EventButton)event);
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -2478,7 +2478,7 @@ namespace FM {
                 }
                 thaw_child_notify ();
                 freeze_source_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
 
             /* Views with a large number of files take longer to redraw (especially IconView) so
@@ -2545,7 +2545,7 @@ namespace FM {
 
                 /* This is the only place that new thumbnail files are created */
                 /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
-                 * and there has not been another event (which would zero the thumbnail_source_if) */
+                 * and there has not been another event (which would zero the thumbnail_source_id) */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 } else {
@@ -2554,7 +2554,7 @@ namespace FM {
 
                 thumbnail_source_id = 0;
 
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -2570,7 +2570,7 @@ namespace FM {
             draw_timeout_id = Timeout.add (100, () => {
                 draw_timeout_id = 0;
                 view.queue_draw ();
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -3494,7 +3494,7 @@ namespace FM {
                 /* set cursor_on_cell also triggers editing-started */
                 name_renderer.editable = true;
                 set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
-                return false;
+                return GLib.Source.REMOVE;
             });
 
         }

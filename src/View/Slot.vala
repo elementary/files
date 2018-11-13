@@ -212,10 +212,10 @@ namespace Marlin.View {
                 return;
             }
 
-            reload_timeout_id = Timeout.add (100, ()=> {
+            reload_timeout_id = Timeout.add (100, () => {
                 directory.reload ();
                 reload_timeout_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
