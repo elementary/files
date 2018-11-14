@@ -271,8 +271,9 @@ public class Async : Object {
                 cancellable.cancel ();
                 last_error_message = "Timed out while querying file info";
             }
+
             load_timeout_id = 0;
-            return false;
+            return GLib.Source.REMOVE;
         });
 
         bool success = yield query_info_async (file, null, cancellable);
@@ -315,9 +316,9 @@ public class Async : Object {
                     state = State.TIMED_OUT;
                     cancellable.cancel ();
 
-                    return false;
+                    return GLib.Source.REMOVE;
                 } else {
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
             });
 
@@ -651,7 +652,7 @@ public class Async : Object {
                         load_timeout_id = 0;
                         cancellable.cancel ();
                         load_timeout_id = 0;
-                        return false;
+                        return GLib.Source.REMOVE;
                     });
 
                     var files = yield e.next_files_async (1000, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
@@ -957,7 +958,7 @@ public class Async : Object {
             idle_consume_changes_id = Timeout.add (10, () => {
                 MarlinFile.changes_consume_changes (true);
                 idle_consume_changes_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
     }

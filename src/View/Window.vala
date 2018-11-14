@@ -152,7 +152,7 @@ namespace Marlin.View {
             tabs.allow_restoring = true;
             tabs.allow_duplication = true;
             tabs.allow_new_window = true;
-            tabs.group_name = APP_NAME;
+            tabs.group_name = Config.APP_NAME;
 
             this.configure_event.connect_after ((e) => {
                 tabs.set_size_request (e.width / 2, -1);
@@ -307,7 +307,7 @@ namespace Marlin.View {
 
                 Idle.add (() => {
                     remove_tab (vc);
-                    return false;
+                    return GLib.Source.REMOVE;
                 });
             });
 
@@ -466,7 +466,7 @@ namespace Marlin.View {
                                 Idle.add_full (GLib.Priority.LOW, () => {
                                     var unique_name = disambiguate_name (content_label, content_path, path);
                                     set_tab_label (unique_name, tab, content_path);
-                                    return false;
+                                    return GLib.Source.REMOVE;
                                 });
                             }
                         }
@@ -477,7 +477,7 @@ namespace Marlin.View {
                         /* Revert to short label when possible */
                         Idle.add_full (GLib.Priority.LOW, () => {
                             set_tab_label (content_label, tab, content_path);
-                            return false;
+                            return GLib.Source.REMOVE;
                         });
                     }
                 }
@@ -552,7 +552,7 @@ namespace Marlin.View {
             closing_timeout_id = Timeout.add (50, () => {
                 tab.close ();
                 closing_timeout_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -611,7 +611,7 @@ namespace Marlin.View {
                 add_window ();
                 GLib.Timeout.add (500, () => {
                     adding_window = false;
-                    return false;
+                    return GLib.Source.REMOVE;
                 });
             }
         }

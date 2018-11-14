@@ -425,9 +425,9 @@ namespace FM {
                 Idle.add_full (GLib.Priority.LOW, () => {
                     if (!tree_frozen) {
                         set_cursor (new Gtk.TreePath.from_indices (0), false, select, true);
-                        return false;
+                        return GLib.Source.REMOVE;
                     } else {
-                        return true;
+                        return GLib.Source.CONTINUE;
                     }
                 });
             }
@@ -447,9 +447,9 @@ namespace FM {
             Idle.add_full (GLib.Priority.LOW, () => {
                 if (!tree_frozen) {
                     select_file_paths (file_list, focus);
-                    return false;
+                    return GLib.Source.REMOVE;
                 } else {
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
             });
         }
@@ -548,19 +548,19 @@ namespace FM {
 
                             GLib.Idle.add (() => {
                                 activate_file (file, screen, flag, false);
-                                return false;
+                                return GLib.Source.REMOVE;
                             });
                         } else {
                             GLib.Idle.add (() => {
                                 open_file (file, screen, null);
-                                return false;
+                                return GLib.Source.REMOVE;
                             });
                         }
                     }
                 } else if (default_app != null) {
                     GLib.Idle.add (() => {
                         open_files_with (default_app, selection);
-                        return false;
+                        return GLib.Source.REMOVE;
                     });
                 }
             } else {
@@ -918,10 +918,10 @@ namespace FM {
                     if (signal_free_space_change) {
                         add_remove_file_timeout_id = 0;
                         window.free_space_change ();
-                        return false;
+                        return GLib.Source.REMOVE;
                     } else {
                         signal_free_space_change = true;
-                        return true;
+                        return GLib.Source.CONTINUE;
                     }
                 });
             } else {
@@ -1003,7 +1003,7 @@ namespace FM {
             Idle.add (() => {
                 view.set_cursor (view.deleted_path, false, false, false);
                 view.unblock_directory_monitor ();
-                return false;
+                return GLib.Source.REMOVE;
             });
 
         }
@@ -1013,7 +1013,7 @@ namespace FM {
              * and one via marlin-file-changes. */
             GLib.Idle.add_full (GLib.Priority.LOW, () => {
                 slot.directory.unblock_monitor ();
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -1256,7 +1256,7 @@ namespace FM {
                 });
 
                 view.select_glib_files_when_thawed (pasted_files_list, pasted_files_list.first ().data);
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -1782,7 +1782,7 @@ namespace FM {
 
                             load_location (file.get_target_location ());
                             drag_enter_timer_id = 0;
-                            return false;
+                            return GLib.Source.REMOVE;
                         });
                     }
                 }
@@ -1850,7 +1850,7 @@ namespace FM {
                                                    drag_delay,
                                                    () => {
                 on_drag_timeout_button_release ((Gdk.EventButton)event);
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -1858,7 +1858,9 @@ namespace FM {
             cancel_drag_timer ();
             /* select selection or background context menu */
             update_menu_actions ();
-            var builder = new Gtk.Builder.from_file (Config.UI_DIR + "directory_view_popup.ui");
+            var builder = new Gtk.Builder.from_file (Path.build_path (Path.DIR_SEPARATOR_S,
+                                                                      Config.UI_DIR,
+                                                                      "directory_view_popup.ui"));
             GLib.MenuModel? model = null;
 
             if (get_selected_files () != null) {
@@ -2399,7 +2401,7 @@ namespace FM {
         private bool app_is_this_app (AppInfo ai) {
             string exec_name = ai.get_executable ();
 
-            return (exec_name == APP_NAME);
+            return (exec_name == Config.APP_NAME || exec_name == Config.TERMINAL_NAME);
         }
 
         private void filter_default_app_from_open_with_apps () {
@@ -2472,11 +2474,11 @@ namespace FM {
             freeze_child_notify ();
             freeze_source_id = Timeout.add (100, () => {
                 if (thumbnail_source_id > 0) {
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
                 thaw_child_notify ();
                 freeze_source_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
 
             /* Views with a large number of files take longer to redraw (especially IconView) so
@@ -2543,7 +2545,7 @@ namespace FM {
 
                 /* This is the only place that new thumbnail files are created */
                 /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
-                 * and there has not been another event (which would zero the thumbnail_source_if) */
+                 * and there has not been another event (which would zero the thumbnail_source_id) */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 } else {
@@ -2552,7 +2554,7 @@ namespace FM {
 
                 thumbnail_source_id = 0;
 
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -2568,7 +2570,7 @@ namespace FM {
             draw_timeout_id = Timeout.add (100, () => {
                 draw_timeout_id = 0;
                 view.queue_draw ();
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -2614,7 +2616,7 @@ namespace FM {
 
                 scroll_if_near_edge (y, h, 20, get_vadjustment ());
                 scroll_if_near_edge (x, w, 20, get_hadjustment ());
-                return true;
+                return GLib.Source.CONTINUE;
             });
         }
 
@@ -2980,7 +2982,7 @@ namespace FM {
 
             Idle.add (() => {
                 update_selected_files_and_menu ();
-                return false;
+                return GLib.Source.REMOVE;
             });
 
             return res;
@@ -3423,14 +3425,14 @@ namespace FM {
                                                                        Marlin.OpenFlag.DEFAULT;
 
                         activate_selected_items (flag);
-                        return false;
+                        return GLib.Source.REMOVE;
                     });
                 } else if (should_deselect && click_path != null) {
                     unselect_path (click_path);
                     /* Only need to update selected files if changed by this handler */
                     Idle.add (() => {
                         update_selected_files_and_menu ();
-                        return false;
+                        return GLib.Source.REMOVE;
                     });
                 } else if (event.button == Gdk.BUTTON_SECONDARY) {
                     show_context_menu (event);
@@ -3483,16 +3485,16 @@ namespace FM {
                 if (start_path == null || (count < 20 && start.compare (start_path) != 0)) {
                     start_path = start;
                     ok_next_time = false;
-                    return true;
+                    return GLib.Source.CONTINUE;
                 } else if (!ok_next_time) {
                     ok_next_time = true;
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
 
                 /* set cursor_on_cell also triggers editing-started */
                 name_renderer.editable = true;
                 set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
-                return false;
+                return GLib.Source.REMOVE;
             });
 
         }

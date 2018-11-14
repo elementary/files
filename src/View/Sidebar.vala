@@ -301,17 +301,17 @@ namespace Marlin.Places {
                 bool spinner_active;
 
                 if (!store.iter_is_valid (iter)) {
-                    return false;
+                    return GLib.Source.REMOVE;
                 }
 
                 store.@get (iter, Column.SHOW_SPINNER, out spinner_active);
                 if (!spinner_active) {
-                    return false;
+                    return GLib.Source.REMOVE;
                 }
 
                 store.@get (iter, Column.SPINNER_PULSE, out val);
                 store.@set (iter, Column.SPINNER_PULSE, ++val);
-                return true;
+                return GLib.Source.CONTINUE;
             });
         }
 
@@ -2168,7 +2168,7 @@ namespace Marlin.Places {
             Timeout.add (300, () => {
                 connect_volume_monitor_signals ();
                 update_places ();
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 

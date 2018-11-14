@@ -9,6 +9,8 @@
 #cmakedefine GNOMELOCALEDIR "@GNOMELOCALEDIR@"
 #cmakedefine PLUGIN_DIR "@PLUGIN_DIR@"
 #cmakedefine TESTDATA_DIR "@TESTDATA_DIR@"
+#cmakedefine APP_NAME "@APP_NAME@"
+#cmakedefine TERMINAL_NAME "@TERMINAL_NAME@"
 
 #define HAVE_DBUS
 #endif
