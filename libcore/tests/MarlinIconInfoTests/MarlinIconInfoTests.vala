@@ -66,7 +66,7 @@ void themed_cache_and_ref_test () {
         /* Icons should NOT be reaped yet */
         assert (Marlin.IconInfo.themed_icon_cache_info () == 1);
         loop.quit ();
-        return false;
+        return GLib.Source.REMOVE;
     });
     loop.run ();
 
@@ -77,7 +77,7 @@ void themed_cache_and_ref_test () {
         /* Icon should be reaped by now */
         assert (Marlin.IconInfo.themed_icon_cache_info () == 0);
         loop.quit ();
-        return false;
+        return GLib.Source.REMOVE;
     });
     loop.run ();
 }
@@ -113,7 +113,7 @@ void loadable_cache_and_ref_test () {
         /* Icons should NOT be reaped yet */
         assert (Marlin.IconInfo.loadable_icon_cache_info () == 1);
         loop.quit ();
-        return false;
+        return GLib.Source.REMOVE;
     });
     loop.run ();
 
@@ -124,7 +124,7 @@ void loadable_cache_and_ref_test () {
         /* Icon should be reaped by now */
         assert (Marlin.IconInfo.loadable_icon_cache_info () == 0);
         loop.quit ();
-        return false;
+        return GLib.Source.REMOVE;
     });
     loop.run ();
 }

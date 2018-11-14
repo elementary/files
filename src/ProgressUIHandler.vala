@@ -81,17 +81,17 @@ public class Marlin.Progress.UIHandler : Object {
             if (info == null || !(info is PF.Progress.Info) ||
                 info.get_is_finished () || info.get_cancellable ().is_cancelled ()) {
 
-                return false;
+                return GLib.Source.REMOVE;
             }
 
             if (info.get_is_paused ()) {
-                return true;
+                return GLib.Source.CONTINUE;
             } else if (operation_running && !info.get_is_finished ()) {
                 add_progress_info_to_window (info);
-                return false;
+                return GLib.Source.REMOVE;
             } else {
                 operation_running = true;
-                return true;
+                return GLib.Source.CONTINUE;
             }
         });
     }
@@ -162,7 +162,8 @@ public class Marlin.Progress.UIHandler : Object {
                 if (!application.get_active_window ().has_toplevel_focus) {
                     show_operation_complete_notification (info, active_infos < 1);
                 }
-                return false;
+
+                return GLib.Source.REMOVE;
             });
         } else {
             warning ("Attempt to decrement zero active infos");

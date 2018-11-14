@@ -151,7 +151,7 @@ namespace FM {
                     is_frozen = true;
                     double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
                         not_double_click (event, path);
-                        return false;
+                        return GLib.Source.REMOVE;
                     });
                 }
             } else if (event.type == Gdk.EventType.@2BUTTON_PRESS) {

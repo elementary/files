@@ -301,8 +301,9 @@ namespace Marlin.View.Chrome {
                 /* Delay acting on focus out - may be temporary, due to keyboard layout change */
                 focus_out_timeout_id = GLib.Timeout.add (10, () => {
                     focus_out_event (event);
-                    return false;
+                    return GLib.Source.REMOVE;
                 });
+
                 return true;
             } else {
                 /* This the delayed propagated event */
@@ -594,18 +595,21 @@ namespace Marlin.View.Chrome {
                     foreach (BreadcrumbElement bread in els) {
                         bread.offset = final_offset;
                     }
+
                     old_elements = null;
                     queue_draw ();
                     animation_timeout_id = 0;
-                    return false;
+                    return GLib.Source.REMOVE;
                 } else {
                     foreach (BreadcrumbElement bread in els) {
                         bread.offset = anim_state;
                     }
+
                     queue_draw ();
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
             });
+
             return anim;
         }
 

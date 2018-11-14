@@ -39,14 +39,14 @@ namespace Marlin.Animation {
             /* If the user move it at the same time, just stop the animation */
             if (old_adj_value != adj.value) {
                 timeout_source_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             }
 
             if (newvalue >= to_do - 10) {
                 /* to be sure that there is not a little problem */
                 adj.value = final;
                 timeout_source_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             }
 
             newvalue += 10;
@@ -55,7 +55,7 @@ namespace Marlin.Animation {
                         Math.sin (((double) newvalue / (double) to_do) * Math.PI / 2) * to_do;
 
             old_adj_value = adj.value;
-            return true;
+            return GLib.Source.CONTINUE;
         });
     }
 }
