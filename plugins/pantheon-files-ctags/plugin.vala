@@ -183,7 +183,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         t_consume_knowns = Timeout.add (300, () => {
                                         consume_knowns_queue.begin ();
                                         t_consume_knowns = 0;
-                                        return false;
+                                        return GLib.Source.REMOVE;
                                         });
     }
 
@@ -195,10 +195,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
             if (idle_consume_unknowns == 0) {
                 idle_consume_unknowns = Idle.add (() => {
-                                                  consume_unknowns_queue.begin ();
-                                                  idle_consume_unknowns = 0;
-                                                  return false;
-                                                  });
+                      consume_unknowns_queue.begin ();
+                      idle_consume_unknowns = 0;
+                      return GLib.Source.REMOVE;
+                  });
             }
         }
     }
