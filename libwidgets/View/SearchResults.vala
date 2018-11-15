@@ -327,7 +327,7 @@ namespace Marlin.View.Chrome {
                 }
 
                 send_search_finished ();
-                return false;
+                return GLib.Source.REMOVE;
             });
 
             new Thread<void*> (null, () => {
@@ -993,7 +993,7 @@ namespace Marlin.View.Chrome {
                 /* use a closure here to get vala to pass the userdata that we actually want */
                 Idle.add (() => {
                     add_results (new_results, in_root ? local_results : deep_results);
-                    return false;
+                    return GLib.Source.REMOVE;
                 });
 
                 if (category_count >= MAX_RESULTS) {

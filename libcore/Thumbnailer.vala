@@ -280,7 +280,7 @@ namespace Marlin {
             /* TODO batch up errors? */
             idle.id = GLib.Idle.add_full (GLib.Priority.LOW, () => {
                 handle_error_idle (idle);
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -301,7 +301,7 @@ namespace Marlin {
                 /* TODO batch up errors? */
                 idle.id = GLib.Idle.add_full (GLib.Priority.HIGH, () => {
                     handle_ready_idle (idle);
-                    return false;
+                    return GLib.Source.REMOVE;
                 });
             } else {
                 warning ("no ready uris");
@@ -317,7 +317,7 @@ namespace Marlin {
             /* TODO batch up errors? */
             idle.id = GLib.Idle.add_full (GLib.Priority.LOW, () => {
                 handle_finished_idle (idle);
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 

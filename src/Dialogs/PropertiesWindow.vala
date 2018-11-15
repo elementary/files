@@ -835,7 +835,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
                 }
                 timeout_perm = 0;
 
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
     }

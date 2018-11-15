@@ -570,7 +570,7 @@ namespace Marlin.View.Chrome {
                     button_press_timeout_id = Timeout.add (Marlin.BUTTON_LONG_PRESS, () => {
                         load_right_click_menu (event, el);
                         button_press_timeout_id = 0;
-                        return false;
+                        return GLib.Source.REMOVE;
                     });
                 }
             }
