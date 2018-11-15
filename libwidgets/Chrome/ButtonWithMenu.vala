@@ -178,7 +178,7 @@ namespace Marlin.View.Chrome {
                     /* long click */
                     timeout = 0;
                     popup_menu (ev);
-                    return false;
+                    return GLib.Source.REMOVE;
                 });
             }
 

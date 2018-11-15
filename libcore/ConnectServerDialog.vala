@@ -88,6 +88,7 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
     private Gtk.InfoBar info_bar;
     private DetailEntry server_entry;
     private Gtk.SpinButton port_spinbutton;
+    private Gtk.Revealer port_revealer;
     private DetailEntry share_entry;
     private Gtk.ComboBox type_combobox;
     private DetailEntry folder_entry;
@@ -129,15 +130,31 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         var server_header_label = new Granite.HeaderLabel (_("Server Details"));
 
         server_entry = new DetailEntry (_("Server name or IP address"));
+        server_entry.hexpand = true;
+
         var server_label = new DetailLabel (_("Server:"), server_entry);
 
         port_spinbutton = new Gtk.SpinButton.with_range (0, ushort.MAX, 1);
         port_spinbutton.digits = 0;
         port_spinbutton.numeric = true;
         port_spinbutton.update_policy = Gtk.SpinButtonUpdatePolicy.IF_VALID;
+
         var port_label = new DetailLabel (_("Port:"), port_spinbutton);
         port_label.xalign = 1;
 
+        var port_grid = new Gtk.Grid ();
+        port_grid.column_spacing = 6;
+        port_grid.margin_start = 6;
+        port_grid.add (port_label);
+        port_grid.add (port_spinbutton);
+
+        port_revealer = new Gtk.Revealer ();
+        port_revealer.transition_type = Gtk.RevealerTransitionType.SLIDE_RIGHT;
+        port_revealer.add (port_grid);
+
+        var server_port_grid = new Gtk.Grid ();
+        server_port_grid.add (server_entry);
+        server_port_grid.add (port_revealer);
 
         var type_store = new Gtk.ListStore (2, typeof (MethodInfo), typeof (string));
         type_combobox = new Gtk.ComboBox.with_model (type_store);
@@ -197,32 +214,30 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         var grid = new Gtk.Grid ();
         grid.row_spacing = 6;
         grid.column_spacing = 6;
-        grid.attach (info_bar, 0, 0, 6, 1);
+        grid.attach (info_bar, 0, 0, 2, 1);
 
-        grid.attach (server_header_label, 0, 1, 6, 1);
+        grid.attach (server_header_label, 0, 1, 2, 1);
 
-        grid.attach (server_label, 0, 2);
-        grid.attach (server_entry, 1, 2, 3, 1);
-        grid.attach (port_label, 4, 2);
-        grid.attach (port_spinbutton, 5, 2);
-        grid.attach (type_label, 0, 3);
-        grid.attach (type_combobox, 1, 3, 5, 1);
+        grid.attach (type_label, 0, 2);
+        grid.attach (type_combobox, 1, 2);
+        grid.attach (server_label, 0, 3);
+        grid.attach (server_port_grid, 1, 3);
 
         grid.attach (share_label, 0, 4);
-        grid.attach (share_entry, 1, 4, 3, 1);
+        grid.attach (share_entry, 1, 4);
         grid.attach (folder_label, 0, 5);
-        grid.attach (folder_entry, 1, 5, 5, 1);
+        grid.attach (folder_entry, 1, 5);
 
-        grid.attach (user_header_label, 0, 6, 6, 1);
+        grid.attach (user_header_label, 0, 6, 2, 1);
 
         grid.attach (domain_label, 0, 7);
-        grid.attach (domain_entry, 1, 7, 5, 1);
+        grid.attach (domain_entry, 1, 7);
         grid.attach (user_label, 0, 8);
-        grid.attach (user_entry, 1, 8, 5, 1);
+        grid.attach (user_entry, 1, 8);
         grid.attach (password_label, 0, 9);
-        grid.attach (password_entry, 1, 9, 5, 1);
+        grid.attach (password_entry, 1, 9);
 
-        grid.attach (remember_checkbutton, 1, 10, 4, 1);
+        grid.attach (remember_checkbutton, 1, 10);
 
         var connecting_spinner = new Gtk.Spinner ();
         connecting_spinner.start ();
@@ -297,9 +312,9 @@ public class PF.ConnectServerDialog : Gtk.Dialog {
         Value val;
         type_combobox.get_model ().get_value (iter, 0, out val);
         MethodInfo* method_info = (MethodInfo*)val.get_boxed ();
-        share_entry.visible = WidgetsFlag.SHARE in method_info.flags;
-        port_spinbutton.sensitive = WidgetsFlag.PORT in method_info.flags;
+        port_revealer.reveal_child = WidgetsFlag.PORT in method_info.flags;
         port_spinbutton.value = method_info.port;
+        share_entry.visible = WidgetsFlag.SHARE in method_info.flags;
         user_header_label.visible = WidgetsFlag.USER in method_info.flags || WidgetsFlag.DOMAIN in method_info.flags;
         user_entry.visible = WidgetsFlag.USER in method_info.flags;
         password_entry.visible = WidgetsFlag.USER in method_info.flags;

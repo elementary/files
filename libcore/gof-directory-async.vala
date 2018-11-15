@@ -136,6 +136,12 @@ public class Async : Object {
         can_stream_files = !("ftp sftp mtp".contains (scheme));
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
+
+        if (is_recent) {
+           GOF.Preferences.get_default().notify["remember-history"].connect (() => {
+                need_reload (true);
+            });
+        }
     }
 
     ~Async () {
@@ -164,6 +170,15 @@ public class Async : Object {
 
         cancellable.cancel ();
         cancellable = new Cancellable ();
+
+        if (is_recent) {
+            if (!GOF.Preferences.get_default ().remember_history) {
+                state = State.NOT_LOADED;
+                can_load = false;
+                done_loading ();
+                return;
+            }
+        }
 
         /* If we already have a loaded file cache just list them */
         if (previous_state == State.LOADED) {
@@ -256,8 +271,9 @@ public class Async : Object {
                 cancellable.cancel ();
                 last_error_message = "Timed out while querying file info";
             }
+
             load_timeout_id = 0;
-            return false;
+            return GLib.Source.REMOVE;
         });
 
         bool success = yield query_info_async (file, null, cancellable);
@@ -300,9 +316,9 @@ public class Async : Object {
                     state = State.TIMED_OUT;
                     cancellable.cancel ();
 
-                    return false;
+                    return GLib.Source.REMOVE;
                 } else {
-                    return true;
+                    return GLib.Source.CONTINUE;
                 }
             });
 
@@ -636,7 +652,7 @@ public class Async : Object {
                         load_timeout_id = 0;
                         cancellable.cancel ();
                         load_timeout_id = 0;
-                        return false;
+                        return GLib.Source.REMOVE;
                     });
 
                     var files = yield e.next_files_async (1000, GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS, cancellable);
@@ -942,7 +958,7 @@ public class Async : Object {
             idle_consume_changes_id = Timeout.add (10, () => {
                 MarlinFile.changes_consume_changes (true);
                 idle_consume_changes_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
     }

@@ -56,6 +56,7 @@ namespace Marlin {
             FREE_SPACE,
             DISK_SIZE,
             PLUGIN_CALLBACK,
+            MENU_MODEL,
             COUNT
         }
 
@@ -85,7 +86,8 @@ namespace Marlin {
                                         typeof (uint),              /* Spinner pulse */
                                         typeof (uint64),            /* Free space */
                                         typeof (uint64),            /* For disks, total size */
-                                        typeof (Marlin.PluginCallbackFunc)
+                                        typeof (Marlin.PluginCallbackFunc),
+                                        typeof (GLib.MenuModel)
                                         );
 
             content_box = new Gtk.Box (Gtk.Orientation.VERTICAL, 0);
@@ -131,5 +133,27 @@ namespace Marlin {
                                                   uint index,
                                                   string? tooltip = null,
                                                   Icon? action_icon = null) ;
+
+        /**
+         * Adds plugin item to TreeStore
+         *
+         * @param a {@link Marlin.SidebarPluginItem}
+         *
+         * @param {@link Marlin.PlaceType} with the category it should be appended
+         *
+         * @return TreeRowReference to update later the item or null if add failed
+         */
+        public abstract Gtk.TreeRowReference? add_plugin_item (SidebarPluginItem item, Marlin.PlaceType category);
+
+         /**
+         * Update plugin item on TreeStore
+         *
+         * @param a {@link Marlin.SidebarPluginItem}
+         *
+         * @param TreeRowReference receives the row reference that points to TreeModel to be updated
+         *
+         * @return true if update was successful
+         */
+        public abstract bool update_plugin_item (SidebarPluginItem item, Gtk.TreeRowReference rowref);
     }
 }

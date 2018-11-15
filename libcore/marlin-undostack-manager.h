@@ -64,43 +64,8 @@ struct _MarlinUndoMenuData {
 typedef void
 (*MarlinUndoFinishCallback)(gpointer data);
 
-typedef struct _MarlinUndoManagerPrivate MarlinUndoManagerPrivate;
-
-typedef struct _MarlinUndoManager
-{
-    GObject parent_instance;
-
-    MarlinUndoManagerPrivate* priv;
-
-} MarlinUndoManager;
-
-typedef struct _MarlinUndoManagerClass
-{
-    GObjectClass parent_class;
-
-    void    (*request_menu_update)      (MarlinUndoManager *manager, MarlinUndoMenuData *data);
-
-} MarlinUndoManagerClass;
-
 #define TYPE_MARLIN_UNDO_MANAGER (marlin_undo_manager_get_type())
-
-#define MARLIN_UNDO_MANAGER(object) \
-    (G_TYPE_CHECK_INSTANCE_CAST((object), TYPE_MARLIN_UNDO_MANAGER, MarlinUndoManager))
-
-#define MARLIN_UNDO_MANAGER_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_CAST((klass), TYPE_MARLIN_UNDO_MANAGER, MarlinUndoManagerClass))
-
-#define IS_MARLIN_UNDO_MANAGER(object) \
-    (G_TYPE_CHECK_INSTANCE_TYPE((object), TYPE_MARLIN_UNDO_MANAGER))
-
-#define IS_MARLIN_UNDO_MANAGER_CLASS(klass) \
-    (G_TYPE_CHECK_CLASS_TYPE((klass), TYPE_MARLIN_UNDO_MANAGER))
-
-#define MARLIN_UNDO_MANAGER_GET_CLASS(object) \
-    (G_TYPE_INSTANCE_GET_CLASS((object), TYPE_MARLIN_UNDO_MANAGER, MarlinUndoManagerClass))
-
-GType
-marlin_undo_manager_get_type (void);
+G_DECLARE_FINAL_TYPE (MarlinUndoManager, marlin_undo_manager, MARLIN, UNDO_MANAGER, GObject)
 
 void
 marlin_undo_manager_add_action (MarlinUndoManager* manager,

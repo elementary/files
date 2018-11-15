@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-10-26 00:03+0000\n"
+"PO-Revision-Date: 2018-11-05 00:09+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -174,7 +174,7 @@ msgstr "%s (प्रतिकृती)%s"
 #: ../libcore/marlin-file-operations.c:448
 #, c-format
 msgid "%s (another copy)%s"
-msgstr ""
+msgstr "%s(दुसरी प्रत)%s"
 
 #: ../libcore/marlin-file-operations.c:451
 #: ../libcore/marlin-file-operations.c:453
@@ -182,7 +182,7 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:469
 #, c-format
 msgid "%s (%'dth copy)%s"
-msgstr ""
+msgstr "%s (%'dवी प्रत )%s"
 
 #: ../libcore/marlin-file-operations.c:463
 #, c-format

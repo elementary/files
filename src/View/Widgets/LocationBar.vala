@@ -274,7 +274,7 @@ namespace Marlin.View.Chrome {
             focus_timeout_id = GLib.Timeout.add (300, () => {
                 focus_file_request (file);
                 focus_timeout_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
     }

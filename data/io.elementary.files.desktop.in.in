@@ -1,0 +1,23 @@
+[Desktop Entry]
+Name=Files
+Comment=Browse your files
+Keywords=folder;manager;explore;disk;filesystem;
+GenericName=File Manager
+Exec=@exec_name@ %U
+Icon=system-file-manager
+Terminal=false
+StartupNotify=true
+Type=Application
+MimeType=inode/directory;
+Categories=System;
+X-GNOME-Gettext-Domain=@exec_name@
+X-GNOME-UsesNotifications=true
+Actions=WindowNew;Root;
+
+[Desktop Action WindowNew]
+Name=New Window
+Exec=@exec_name@ -n
+
+[Desktop Action Root]
+Name=New Window As Administrator
+Exec=@exec_name@-pkexec

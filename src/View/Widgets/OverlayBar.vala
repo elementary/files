@@ -67,7 +67,7 @@ namespace Marlin.View {
 
                 real_update (selected_files);
                 update_timeout_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -110,7 +110,7 @@ namespace Marlin.View {
                 }
 
                 hover_timeout_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 
@@ -262,7 +262,7 @@ namespace Marlin.View {
                 });
 
                 deep_count_timeout_id = 0;
-                return false;
+                return GLib.Source.REMOVE;
             });
         }
 

@@ -1,5 +1,3 @@
-public void marlin_toolbar_editor_dialog_show (Marlin.View.Window mvw);
-
 [CCode (cprefix = "", lower_case_cprefix = "", cheader_filename = "marlin-global-preferences.h")]
 namespace Preferences {
     public GLib.Settings settings;
@@ -7,9 +5,9 @@ namespace Preferences {
     public GLib.Settings marlin_list_view_settings;
     public GLib.Settings marlin_column_view_settings;
     public GLib.Settings gnome_interface_settings;
+    public GLib.Settings gnome_privacy_settings;
     public GLib.Settings gtk_file_chooser_settings;
 }
-
 
 namespace Marlin {
     [CCode (cheader_filename = "marlin-file-utilities.h")]
