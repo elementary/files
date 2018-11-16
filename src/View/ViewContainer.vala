@@ -112,7 +112,7 @@ namespace Marlin.View {
         private GLib.List<GLib.File>? selected_locations = null;
 
         public signal void tab_name_changed (string tab_name);
-        public signal void loading (bool is_loading);
+        public signal void loading (bool is_loading, bool is_active);
         public signal void active ();
         /* path-changed signal no longer used */
 
@@ -288,7 +288,7 @@ namespace Marlin.View {
             disconnect_slot_signals (view);
             content = null; /* Make sure old slot and directory view are destroyed */
             view = null; /* Pre-requisite for add view */
-            loading (false);
+            loading (false, false);
         }
 
         private void after_mode_change () {
@@ -317,7 +317,7 @@ namespace Marlin.View {
         }
 
         private void on_slot_active (GOF.AbstractSlot aslot, bool scroll, bool animate) {
-            refresh_slot_info (slot.location);
+            update_tab_name ();
         }
 
         private void open_location (GLib.File loc,
@@ -351,16 +351,10 @@ namespace Marlin.View {
         private void directory_is_loading (GLib.File loc) {
             overlay_statusbar.cancel ();
             overlay_statusbar.halign = Gtk.Align.END;
-            refresh_slot_info (loc);
+            update_tab_name ();
 
             can_show_folder = false;
-            loading (true);
-        }
-
-        private void refresh_slot_info (GLib.File loc) {
-            update_tab_name ();
-            window.loading_uri (loc.get_uri ()); /* Updates labels as well */
-            /* Do not update top menu (or record uri) unless folder loads successfully */
+            loading (true, true); /* Assume slot is active when initialised */
         }
 
        private void update_tab_name () {
@@ -464,8 +458,8 @@ namespace Marlin.View {
                 browser.record_uri (null);
             }
 
-            refresh_slot_info (slot.location);
-            loading (false); /* Will cause topmenu to update */
+            update_tab_name ();
+            loading (false, slot.get_active_state ()); /* Will cause topmenu to update if slot is active*/
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
 

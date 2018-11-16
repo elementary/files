@@ -347,6 +347,10 @@ namespace Marlin.View {
             }
         }
 
+        public override bool get_active_state () {
+            return is_active;
+        }
+
         public override unowned GOF.AbstractSlot? get_current_slot () {
             return this as GOF.AbstractSlot;
         }

@@ -537,6 +537,10 @@ namespace Marlin.View {
             }
         }
 
+        public override bool get_active_state () {
+            return current_slot.is_active;
+        }
+
         public override string? get_tip_uri () {
             if (slot_list != null &&
                 slot_list.last () != null &&

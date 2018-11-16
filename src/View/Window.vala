@@ -133,7 +133,7 @@ namespace Marlin.View {
                 }
             }
 
-            loading_uri.connect (update_labels);
+            loading_uri.connect (update_title_and_pathbar);
             present ();
         }
 
@@ -435,9 +435,13 @@ namespace Marlin.View {
                 set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
             });
 
-            content.loading.connect ((is_loading) => {
+            content.loading.connect ((is_loading, is_active) => {
                 tab.working = is_loading;
-                update_top_menu ();
+                /* Signal could arrive after a different slot is made active */
+                if (is_active) {
+                    update_top_menu ();
+                    update_title_and_pathbar (content.uri);
+                }
             });
 
             content.active.connect (() => {
@@ -1034,7 +1038,7 @@ namespace Marlin.View {
             Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
-        private void update_labels (string uri) {
+        private void update_title_and_pathbar (string uri) {
             if (current_tab != null) { /* Can happen during restore */
                 set_title (current_tab.tab_name); /* Not actually visible on elementaryos */
                 top_menu.update_location_bar (uri);
