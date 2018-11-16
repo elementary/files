@@ -279,13 +279,13 @@ namespace Marlin.View.Chrome {
             });
         }
 
-        public new void set_display_path (string uri) {
-            display_path = uri;
+        public override void set_display_path (string uri) {
+            base.set_display_path (uri);
             check_home ();
         }
 
         private void check_home () {
-            bread.hide_breadcrumbs = GLib.Filename.from_uri (display_path) == Environment.get_home_dir ();
+            bread.hide_breadcrumbs = GLib.Filename.from_uri (displayed_path) == Environment.get_home_dir ();
             if (bread.hide_breadcrumbs) {
                 show_placeholder ();
                 show_search_icon ();
