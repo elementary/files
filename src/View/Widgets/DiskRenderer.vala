@@ -26,12 +26,9 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
 
     // offset to left align disk usage graphic with the text
     private const int OFFSET = 2;
-    private const int TOTAL_BAR_HEIGHT = 6;
-    private const int FRAME_THICKNESS = 1;
-    private int level_bar_height;
+    private const int BAR_HEIGHT = 5;
 
     construct {
-        level_bar_height = TOTAL_BAR_HEIGHT - 2 * FRAME_THICKNESS;
         is_disk = false;
         disk_size = 0;
         free_space = 0;
@@ -48,23 +45,26 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
 
         var x = area.x += OFFSET;
         /* Draw bar on background area to allow room for space between bar and text */
-        var y = bg_area.y + bg_area.height - TOTAL_BAR_HEIGHT;
-        var total_width = area.width - OFFSET;
-        var bar_width = total_width - 2 * FRAME_THICKNESS;
-        uint fill_width = bar_width - (int) (((double) free_space / (double) disk_size) * (double) bar_width);
+        var y = bg_area.y + bg_area.height - BAR_HEIGHT - 2;
+        var total_width = area.width - OFFSET - 2;
+        uint fill_width = total_width - (int) (((double) free_space / (double) disk_size) * (double) total_width);
+
+
 
         var context = widget.get_style_context ();
 
         /* White full length and height background */
-        context.add_class ("level-bar");
-        context.render_background (cr, x, y, total_width, TOTAL_BAR_HEIGHT);
-
+        context.add_class ("storage-bar");
+        context.add_class ("trough");
+        context.render_background (cr, x, y, total_width, BAR_HEIGHT);
+        context.remove_class ("trough");
         /* Blue part of bar */
         context.add_class ("fill-block");
-        context.render_background (cr, x + FRAME_THICKNESS, y + FRAME_THICKNESS, fill_width , level_bar_height);
-        context.remove_class ("fill-block");
+        context.render_background (cr, x, y, fill_width , BAR_HEIGHT);
 
-        /* Black surround */
-        context.render_frame (cr, x, y, total_width, TOTAL_BAR_HEIGHT);
+        cr.rectangle (x, y, total_width, BAR_HEIGHT);
+        cr.set_line_width (1.0);
+        cr.set_source_rgba (0.0, 0.0, 0.0, 0.3);
+        cr.stroke ();
     }
 }
