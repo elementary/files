@@ -39,6 +39,7 @@ namespace Marlin.View.Chrome {
             }
         }
 
+        public bool hide_breadcrumbs { get; set; default = false; }
         public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
         public const double MINIMUM_BREADCRUMB_WIDTH = 12;
         public const double COMPLETION_ALPHA = 0.5;
@@ -651,7 +652,7 @@ namespace Marlin.View.Chrome {
             Gtk.Border border = style_context.get_margin (state);
             style_context.restore ();
 
-            if (!is_focus) {
+            if (!is_focus && !hide_breadcrumbs) {
                 double margin = border.top;
 
                 /* Ensure there is an editable area to the right of the breadcrumbs */
