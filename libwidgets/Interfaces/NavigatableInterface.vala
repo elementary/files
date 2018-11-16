@@ -42,5 +42,7 @@ namespace Marlin.View.Chrome {
 
         public abstract string get_entry_text ();
         public abstract int get_minimum_width ();
+
+        protected abstract void set_default_entry_tooltip ();
     }
 }

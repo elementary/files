@@ -285,7 +285,7 @@ namespace Marlin.View.Chrome {
                 set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {
                 set_entry_cursor (null);
-                set_tooltip_markup (_("Search or Type Path"));
+                set_default_entry_tooltip ();
             }
 
             if (tip != null) {
@@ -356,6 +356,10 @@ namespace Marlin.View.Chrome {
     /****************************/
         public void set_entry_cursor (Gdk.Cursor? cursor) {
             entry_window.set_cursor (cursor ?? new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text"));
+        }
+
+        protected virtual void set_default_entry_tooltip () {
+            set_tooltip_markup (_("Type Path"));
         }
 
 
