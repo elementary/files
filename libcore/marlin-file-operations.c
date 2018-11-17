@@ -2156,10 +2156,12 @@ dir_has_files (GFile *dir)
 
 static GList *
 prepend_if_exists (GList *list, GFile *file) {
-    if (file != NULL && G_IS_FILE (file) && g_file_query_exists (file, NULL))
+    if (file != NULL && G_IS_FILE (file) && g_file_query_exists (file, NULL)) {
         return g_list_prepend (list, file);
-    else
+    } else {
+        g_object_unref (file);
         return list;
+    }
 }
 
 static GList *
