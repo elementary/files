@@ -58,7 +58,7 @@ COMMON_DEPS = [
     dependency ('gio-2.0'),
     dependency ('gee-0.8'),
     dependency ('gmodule-2.0'),
-    dependency ('granite', version: '>=0.3.0'),
+    dependency ('granite', version: '>=5.2.0'),
     dependency('gtk+-3.0', version: '>=3.22', required: true),
     dependency ('gio-unix-2.0')
 ]
