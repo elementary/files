@@ -1111,7 +1111,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
-            activate_selected_items (Marlin.OpenFlag.APP);
+            activate_selected_items (Marlin.OpenFlag.APP, get_files_for_action ());
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
