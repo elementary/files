@@ -24,13 +24,13 @@ namespace Marlin {
         public signal void contents_changed ();
         public signal void deleted ();
 
-        private string custom_name = "";
+        private string? custom_name = null;
         public string label {
             get {
-                if (custom_name != "") {
+                if (custom_name != null && custom_name._strip () != "") {
                     return custom_name;
                 } else {
-                    return this.gof_file.get_display_name ();
+                    return gof_file.get_display_name ();
                 }
             }
 
@@ -40,7 +40,7 @@ namespace Marlin {
             }
         }
 
-        public GOF.File gof_file {get; private set;}
+        public GOF.File gof_file { get; private set; }
         private GLib.FileMonitor monitor;
 
         public static CompareFunc<Bookmark> compare_with = (a, b) => {
@@ -51,21 +51,20 @@ namespace Marlin {
             return a.gof_file.location.equal (b.gof_file.location) ? 0 : 1;
         };
 
-        private Bookmark (GOF.File gof_file, string? label = null) {
-            if (label != null) {
-                this.label = label;
-            }
-
+        public Bookmark (GOF.File gof_file, string? label = null) {
             this.gof_file = gof_file;
+            this.custom_name = label;
             connect_file ();
         }
 
         public Bookmark.from_uri (string uri, string? label = null) {
-            this (GOF.File.get_by_uri (uri), label);
+            this.gof_file = GOF.File.get_by_uri (uri);
+            this.custom_name = label;
+            connect_file ();
         }
 
         public Bookmark copy () {
-            return new Bookmark.from_uri (this.get_uri (), this.custom_name);
+            return new Bookmark (gof_file, this.custom_name);
         }
 
         public unowned GLib.File get_location () {
