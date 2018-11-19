@@ -28,14 +28,10 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
-typedef void (* MarlinCopyCallback)      (GHashTable *debuting_uris,
-                                          gpointer    callback_data);
 typedef void (* MarlinCreateCallback)    (GFile      *new_file,
                                           gpointer    callback_data);
-typedef void (* MarlinOpCallback)        (gpointer    callback_data);
 typedef void (* MarlinDeleteCallback)    (gboolean    user_cancel,
                                           gpointer    callback_data);
-typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
 
 
 /* Sidebar uses Marlin.FileOperations to mount volumes but handles unmounting itself */
@@ -101,22 +97,4 @@ void marlin_file_operations_new_file_from_template (GtkWidget               *par
                                                     MarlinCreateCallback     done_callback,
                                                     gpointer                 data);
 
-
-#if 0 /* Not currently used, but may be useful in future */
-void marlin_file_set_permissions_recursive (const char                     *directory,
-                                            guint32                         file_permissions,
-                                            guint32                         file_mask,
-                                            guint32                         folder_permissions,
-                                            guint32                         folder_mask,
-                                            MarlinOpCallback              callback,
-                                            gpointer                        callback_data);
-
-void marlin_file_operations_new_folder_with_name_recursive (GtkWidget *parent_view,
-                                             GdkPoint *target_point,
-                                             GFile *parent_dir,
-                                             gchar* folder_name,
-                                             MarlinCreateCallback done_callback,
-                                             gpointer done_callback_data);
-
-#endif
 #endif /* MARLIN_FILE_OPERATIONS_H */

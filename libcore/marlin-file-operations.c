@@ -46,6 +46,11 @@
 #include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
+typedef void (* MarlinCopyCallback)      (GHashTable *debuting_uris,
+                                          gpointer    callback_data);
+typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
+typedef void (* MarlinOpCallback)        (gpointer    callback_data);
+
 typedef struct {
     GIOSchedulerJob *io_job;
     GTimer *time;
