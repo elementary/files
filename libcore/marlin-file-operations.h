@@ -35,22 +35,20 @@ typedef void (* MarlinCreateCallback)    (GFile      *new_file,
 typedef void (* MarlinOpCallback)        (gpointer    callback_data);
 typedef void (* MarlinDeleteCallback)    (gboolean    user_cancel,
                                           gpointer    callback_data);
-typedef void (* MarlinMountCallback)     (GVolume    *volume,
-                                          GObject    *callback_data_object);
 typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
 
 
 /* Sidebar uses Marlin.FileOperations to mount volumes but handles unmounting itself */
-void marlin_file_operations_mount_volume  (GtkWindow                      *parent_window,
-                                           GVolume                        *volume,
-                                           gboolean                        allow_autorun);
+void marlin_file_operations_mount_volume  (GVolume   *volume,
+                                           GtkWindow *parent_window);
 
 
-void marlin_file_operations_mount_volume_full (GtkWindow                      *parent_window,
-                                               GVolume                        *volume,
-                                               gboolean                        allow_autorun,
-                                               MarlinMountCallback           mount_callback,
-                                               GObject                        *mount_callback_data_object);
+void marlin_file_operations_mount_volume_full (GVolume                        *volume,
+                                               GtkWindow                      *parent_window,
+                                               GAsyncReadyCallback             callback,
+                                               gpointer                        user_data);
+gboolean marlin_file_operations_mount_volume_full_finish (GAsyncResult  *result,
+                                                          GError       **error);
 
 void marlin_file_operations_trash_or_delete (GList                  *files,
                                              GtkWindow              *parent_window,
