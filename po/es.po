@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-11-20 20:46+0000\n"
-"Last-Translator: Cristian Molina <megatux@gmail.com>\n"
+"PO-Revision-Date: 2018-11-20 20:47+0000\n"
+"Last-Translator: alexis holguin <wholguinmor@uniminuto.edu.co>\n"
 "Language-Team: Spanish <https://weblate.elementary.io/projects/files/files/"
 "es/>\n"
 "Language: es\n"
@@ -1925,9 +1925,8 @@ msgid "Name of share on server"
 msgstr ""
 
 #: ../libcore/ConnectServerDialog.vala:151
-#, fuzzy
 msgid "Share:"
-msgstr "_Recurso compartido:"
+msgstr "Recurso compartido:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
@@ -1942,9 +1941,8 @@ msgid "User Details"
 msgstr "Detalles del usuario"
 
 #: ../libcore/ConnectServerDialog.vala:158
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "Ventana como _administrador nueva"
+msgstr "Nombre del dominio de Windows"
 
 #: ../libcore/ConnectServerDialog.vala:159
 #, fuzzy
