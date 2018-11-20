@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-06-06 00:08+0000\n"
-"Last-Translator: Cesar Vergara <cesarvergarab@gmail.com>\n"
+"PO-Revision-Date: 2018-11-20 20:42+0000\n"
+"Last-Translator: alexis holguin <wholguinmor@uniminuto.edu.co>\n"
 "Language-Team: Spanish <https://weblate.elementary.io/projects/files/files/"
 "es/>\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
@@ -1236,7 +1236,7 @@ msgstr "Otra aplicación…"
 
 #: ../src/View/AbstractDirectoryView.vala:2169
 msgid "Templates"
-msgstr ""
+msgstr "Plantillas"
 
 #: ../src/View/AbstractDirectoryView.vala:2416
 msgid "Untitled %s"
@@ -1404,9 +1404,8 @@ msgid "Browse the contents of the network"
 msgstr "Examinar los contenidos de la red"
 
 #: ../src/View/Sidebar.vala:743
-#, fuzzy
 msgid "Connect Server"
-msgstr "Conectarse con un servidor"
+msgstr "Conectar servidor"
 
 #: ../src/View/Sidebar.vala:743
 #, fuzzy
