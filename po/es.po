@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
 "PO-Revision-Date: 2018-11-20 20:42+0000\n"
-"Last-Translator: Rodrigo Lledó Milanca <rodhos92@gmail.com>\n"
+"Last-Translator: alexis holguin <wholguinmor@uniminuto.edu.co>\n"
 "Language-Team: Spanish <https://weblate.elementary.io/projects/files/files/"
 "es/>\n"
 "Language: es\n"
@@ -1404,9 +1404,8 @@ msgid "Browse the contents of the network"
 msgstr "Examinar los contenidos de la red"
 
 #: ../src/View/Sidebar.vala:743
-#, fuzzy
 msgid "Connect Server"
-msgstr "Conectarse con un servidor"
+msgstr "Conectar servidor"
 
 #: ../src/View/Sidebar.vala:743
 #, fuzzy
