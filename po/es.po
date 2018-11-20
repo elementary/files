@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
 "PO-Revision-Date: 2018-11-20 20:51+0000\n"
-"Last-Translator: Rodrigo Lledó Milanca <rodhos92@gmail.com>\n"
+"Last-Translator: alexis holguin <wholguinmor@uniminuto.edu.co>\n"
 "Language-Team: Spanish <https://weblate.elementary.io/projects/files/files/"
 "es/>\n"
 "Language: es\n"
@@ -2034,7 +2034,7 @@ msgstr "Re_nombrar"
 
 #: ../libcore/FileConflictDialog.vala:190
 msgid "Keep Newest"
-msgstr ""
+msgstr "Mantener más reciente"
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
