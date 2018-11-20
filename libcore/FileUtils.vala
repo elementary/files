@@ -94,7 +94,6 @@ namespace PF.FileUtils {
                                                       original_dir,
                                                       Gdk.DragAction.MOVE,
                                                       widget,
-                                                      null,
                                                       null);
         });
     }
