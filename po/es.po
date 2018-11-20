@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
 "PO-Revision-Date: 2018-11-20 20:51+0000\n"
-"Last-Translator: Cristian Molina <megatux@gmail.com>\n"
+"Last-Translator: Rodrigo Lledó Milanca <rodhos92@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.elementary.io/projects/files/files/"
 "es/>\n"
 "Language: es\n"
@@ -1948,7 +1948,7 @@ msgstr "Nombre del dominio:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
-msgstr ""
+msgstr "Nombre de usuario en el servidor"
 
 #: ../libcore/ConnectServerDialog.vala:162
 msgid "User name:"
@@ -2038,7 +2038,7 @@ msgstr ""
 
 #: ../libcore/FileConflictDialog.vala:191
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Saltar si el original se modificó más recientemente"
 
 #: ../libcore/FileConflictDialog.vala:193
 msgid "Replace"
