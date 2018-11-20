@@ -36,7 +36,6 @@ namespace Marlin {
                                                       drop_target.get_target_location (),
                                                       action,
                                                       widget,
-                                                      null,
                                                       null);
                 return true;
             } else if (drop_target.is_executable ()) {
