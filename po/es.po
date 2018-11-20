@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-11-20 20:47+0000\n"
-"Last-Translator: Rodrigo Lledó Milanca <rodhos92@gmail.com>\n"
+"PO-Revision-Date: 2018-11-20 20:51+0000\n"
+"Last-Translator: Cristian Molina <megatux@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.elementary.io/projects/files/files/"
 "es/>\n"
 "Language: es\n"
@@ -1601,7 +1601,7 @@ msgstr "(como administrador)"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Mostrar la versión del programa."
+msgstr "Mostrar la versión del programa"
 
 #: ../src/Application.vala:121
 msgid "Open one or more uris, each in a new tab"
@@ -1613,14 +1613,13 @@ msgstr "Ventana nueva"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Salir."
+msgstr "Salir de Archivos"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
 msgstr "Activar el registro de depuración"
 
 #: ../src/Application.vala:130
-#, fuzzy
 msgid "[URI…]"
 msgstr "[URI…]"
 
@@ -1758,7 +1757,6 @@ msgid "Deleted:"
 msgstr "Eliminación:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
-#, fuzzy
 msgid "MIME type:"
 msgstr "Tipo MIME:"
 
@@ -1922,7 +1920,7 @@ msgstr "Puerto:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
-msgstr ""
+msgstr "Nombre del recurso en el servidor"
 
 #: ../libcore/ConnectServerDialog.vala:151
 msgid "Share:"
@@ -1945,28 +1943,24 @@ msgid "Name of Windows domain"
 msgstr "Nombre del dominio de Windows"
 
 #: ../libcore/ConnectServerDialog.vala:159
-#, fuzzy
 msgid "Domain name:"
-msgstr "Nombre del _dominio:"
+msgstr "Nombre del dominio:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
 msgstr ""
 
 #: ../libcore/ConnectServerDialog.vala:162
-#, fuzzy
 msgid "User name:"
-msgstr "Nombre de _usuario:"
+msgstr "Nombre de usuario:"
 
 #: ../libcore/ConnectServerDialog.vala:167
-#, fuzzy
 msgid "Password:"
-msgstr "_Contraseña:"
+msgstr "Contraseña:"
 
 #: ../libcore/ConnectServerDialog.vala:169
-#, fuzzy
 msgid "Remember this password"
-msgstr "_Recordar esta contraseña"
+msgstr "Recordar esta contraseña"
 
 #: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
 #: ../libcore/FileConflictDialog.vala:188
@@ -1974,16 +1968,14 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #: ../libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Connect"
-msgstr "C_onectar"
+msgstr "Conectar"
 
 #: ../libcore/ConnectServerDialog.vala:183
 msgid "Continue"
 msgstr "Continuar"
 
 #: ../libcore/ConnectServerDialog.vala:230
-#, fuzzy
 msgid "Connecting…"
 msgstr "Conectando…"
 
@@ -2242,14 +2234,12 @@ msgid "Empty the Trash"
 msgstr "Vaciar la papelera"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Restaurar todo"
+msgstr "Restaurar lo seleccionado"
 
 #: ../plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr " seleccionadas(os)"
+msgstr "Eliminar lo seleccionado"
 
 #: ../src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
