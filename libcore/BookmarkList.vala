@@ -103,26 +103,27 @@ namespace Marlin {
             }
         }
 
-       private void add_special_directory (GLib.UserDirectory user_dir, ref GLib.List<string> uris) {
-            string? dir_s = Environment.get_user_special_dir (user_dir);
+        private void add_special_directories () {
+            const GLib.UserDirectory[] directories = {
+                GLib.UserDirectory.DOCUMENTS,
+                GLib.UserDirectory.DOWNLOAD,
+                GLib.UserDirectory.MUSIC,
+                GLib.UserDirectory.PUBLIC_SHARE,
+                GLib.UserDirectory.PICTURES,
+                GLib.UserDirectory.TEMPLATES,
+                GLib.UserDirectory.VIDEOS
+            };
 
-            if (dir_s != null) {
-                uris.prepend ("file://" + dir_s);
+            foreach (GLib.UserDirectory directory in directories) {
+                unowned string? dir_s = GLib.Environment.get_user_special_dir (directory);
+                if (dir_s != null) {
+                    var gof_file = GOF.File.get (GLib.File.new_for_path (dir_s));
+                    var bookmark = new Bookmark (gof_file);
+                    append_internal (bookmark);
+                }
             }
-        }
 
-       private void add_special_directories () {
-           GLib.List<string> uris = null;
-            add_special_directory (UserDirectory.DOCUMENTS, ref uris);
-            add_special_directory (UserDirectory.DOWNLOAD, ref uris);
-            add_special_directory (UserDirectory.MUSIC, ref uris);
-            add_special_directory (UserDirectory.PUBLIC_SHARE, ref uris);
-            add_special_directory (UserDirectory.PICTURES, ref uris);
-            add_special_directory (UserDirectory.TEMPLATES, ref uris);
-            add_special_directory (UserDirectory.VIDEOS, ref uris);
-
-            uris.reverse ();
-            insert_uris_at_end (uris);
+            save_bookmarks_file ();
         }
 
         public static BookmarkList get_instance () {
@@ -151,13 +152,6 @@ namespace Marlin {
             uris.@foreach ((uri) => {
                 insert_item_internal (new Bookmark.from_uri (uri, null), index);
                 index++;
-            });
-            save_bookmarks_file ();
-        }
-
-       public void insert_uris_at_end (GLib.List<string> uris) {
-            uris.@foreach ((uri) => {
-                append_internal (new Bookmark.from_uri (uri, null));
             });
             save_bookmarks_file ();
         }
@@ -276,12 +270,12 @@ namespace Marlin {
             });
         }
 
-        private unowned GLib.List<GOF.File> get_gof_file_list () {
-            unowned GLib.List<GOF.File> files = null;
+        private GLib.List<GOF.File> get_gof_file_list () {
+            GLib.List<GOF.File> files = null;
             list.@foreach ((bm) => {
                 files.prepend (bm.gof_file);
             });
-            return files;
+            return (owned) files;
         }
 
         private void files_ready (GLib.List<GOF.File> files) {
