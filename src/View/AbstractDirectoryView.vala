@@ -1096,7 +1096,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
-            activate_selected_items (Marlin.OpenFlag.APP);
+            activate_selected_items (Marlin.OpenFlag.APP, get_files_for_action ());
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
@@ -3120,7 +3120,14 @@ namespace FM {
 
                 if (new_name != original_name) {
                     proposed_name = new_name;
-                    set_file_display_name (file.location, new_name, after_rename);
+                    set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
+                        try {
+                            set_file_display_name.end (res);
+                        } catch (Error e) {
+                        }
+
+                        on_name_editing_canceled ();
+                    });
                 } else {
                     warning ("Name unchanged");
                     on_name_editing_canceled ();
@@ -3133,17 +3140,15 @@ namespace FM {
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
-        public void set_file_display_name (GLib.File old_location, string new_name,
-                                           PF.FileUtils.RenameCallbackFunc? f) {
-
+        public async GLib.File? set_file_display_name (GLib.File old_location, string new_name, GLib.Cancellable? cancellable = null) throws GLib.Error {
             /* Wait for the file to be added to the model before trying to select and scroll to it */
             slot.directory.file_added.connect_after (after_renamed_file_added);
-            PF.FileUtils.set_file_display_name (old_location, new_name, f);
+            try {
+                return yield PF.FileUtils.set_file_display_name (old_location, new_name, cancellable);
+            } catch (GLib.Error e) {
+                throw e;
+            }
         }
-
-        public void after_rename (GLib.File file, GLib.File? result_location, GLib.Error? e) {
-            on_name_editing_canceled ();
-         }
 
         private void after_renamed_file_added (GOF.File? new_file) {
             slot.directory.file_added.disconnect (after_renamed_file_added);

@@ -54,7 +54,7 @@ namespace Marlin {
         static void trash_or_delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback = null);
         static void @delete (GLib.List<GLib.File> locations, Gtk.Window window, DeleteCallback? callback = null);
         static bool has_trash_files (GLib.Mount mount);
-        static unowned GLib.List<unowned GLib.File> get_trash_dirs_for_mount (GLib.Mount mount);
+        static GLib.List<GLib.File> get_trash_dirs_for_mount (GLib.Mount mount);
         static void empty_trash (Gtk.Widget? widget);
         static void empty_trash_for_mount (Gtk.Widget? widget, GLib.Mount mount);
         static void copy_move_link (GLib.List<GLib.File> files, GLib.Array<Gdk.Point>? relative_item_points, GLib.File target_dir, Gdk.DragAction copy_action, Gtk.Widget? parent_view = null, CopyCallback? done_callback = null);
