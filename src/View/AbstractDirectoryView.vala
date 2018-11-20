@@ -886,13 +886,11 @@ namespace FM {
                 if (delete_immediately) {
                     Marlin.FileOperations.@delete (locations,
                                                    window as Gtk.Window,
-                                                   after_trash_or_delete,
-                                                   this);
+                                                   after_trash_or_delete);
                 } else {
                     Marlin.FileOperations.trash_or_delete (locations,
                                                            window as Gtk.Window,
-                                                           after_trash_or_delete,
-                                                           this);
+                                                           after_trash_or_delete);
                 }
             }
 
@@ -942,15 +940,13 @@ namespace FM {
                                             null,
                                             null,
                                             0,
-                                            (Marlin.CreateCallback?) create_file_done,
-                                            this);
+                                            create_file_done);
         }
 
         private void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
-            Marlin.FileOperations.new_folder (null, null, slot.location,
-                                             (Marlin.CreateCallback?) create_file_done, this);
+            Marlin.FileOperations.new_folder (null, null, slot.location, create_file_done);
         }
 
         private void after_new_file_added (GOF.File? file) {
@@ -975,34 +971,23 @@ namespace FM {
         }
 
 /** File operation callbacks */
-        static void create_file_done (GLib.File? new_file, void* data) {
-            var view = data as FM.AbstractDirectoryView;
-
+        [CCode (instance_pos = -1)]
+        public void create_file_done (GLib.File? new_file) {
             if (new_file == null) {
                 return;
             }
 
-            if (view == null) {
-                warning ("View invalid after creating file");
-                return;
-            }
             /* Start to rename the file once we get signal that it has been added to model */
-            view.slot.directory.file_added.connect_after (view.after_new_file_added);
-            view.unblock_directory_monitor ();
+            slot.directory.file_added.connect_after (after_new_file_added);
+            unblock_directory_monitor ();
         }
 
-        /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
-          * using this callback */
-        public static void after_trash_or_delete (bool user_cancel, void* data) {
-            var view = data as FM.AbstractDirectoryView;
-            if (view == null) {
-                return;
-            }
-
+        [CCode (instance_pos = -1)]
+        public void after_trash_or_delete (bool user_cancel) {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
-                view.set_cursor (view.deleted_path, false, false, false);
-                view.unblock_directory_monitor ();
+                set_cursor (deleted_path, false, false, false);
+                unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
             });
 
@@ -1111,7 +1096,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
-            activate_selected_items (Marlin.OpenFlag.APP);
+            activate_selected_items (Marlin.OpenFlag.APP, get_files_for_action ());
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
@@ -2439,8 +2424,7 @@ namespace FM {
                                                           slot.location,
                                                           new_name,
                                                           template,
-                                                          create_file_done,
-                                                          this);
+                                                          create_file_done);
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<GOF.File> files) {
@@ -3136,7 +3120,14 @@ namespace FM {
 
                 if (new_name != original_name) {
                     proposed_name = new_name;
-                    set_file_display_name (file.location, new_name, after_rename);
+                    set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
+                        try {
+                            set_file_display_name.end (res);
+                        } catch (Error e) {
+                        }
+
+                        on_name_editing_canceled ();
+                    });
                 } else {
                     warning ("Name unchanged");
                     on_name_editing_canceled ();
@@ -3149,17 +3140,15 @@ namespace FM {
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
-        public void set_file_display_name (GLib.File old_location, string new_name,
-                                           PF.FileUtils.RenameCallbackFunc? f) {
-
+        public async GLib.File? set_file_display_name (GLib.File old_location, string new_name, GLib.Cancellable? cancellable = null) throws GLib.Error {
             /* Wait for the file to be added to the model before trying to select and scroll to it */
             slot.directory.file_added.connect_after (after_renamed_file_added);
-            PF.FileUtils.set_file_display_name (old_location, new_name, f);
+            try {
+                return yield PF.FileUtils.set_file_display_name (old_location, new_name, cancellable);
+            } catch (GLib.Error e) {
+                throw e;
+            }
         }
-
-        public void after_rename (GLib.File file, GLib.File? result_location, GLib.Error? e) {
-            on_name_editing_canceled ();
-         }
 
         private void after_renamed_file_added (GOF.File? new_file) {
             slot.directory.file_added.disconnect (after_renamed_file_added);
