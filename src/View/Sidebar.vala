@@ -2256,7 +2256,7 @@ namespace Marlin.Places {
             Volume volume;
             store.@get (iter, Column.VOLUME, out volume);
             if (volume != null) {
-                Marlin.FileOperations.mount_volume (null, volume, false);
+                Marlin.FileOperations.mount_volume (volume);
             }
          }
 
@@ -2286,9 +2286,14 @@ namespace Marlin.Places {
             if (mount == null && volume != null) {
                 /* Mount the device if possible, defer showing the dialog after
                  * we're done */
-                Marlin.FileOperations.mount_volume_full (null, volume, false, (vol, win) => {
-                    new Marlin.View.VolumePropertiesWindow (vol.get_mount (), (Gtk.Window) win);
-                }, window);
+                Marlin.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
+                    try {
+                        Marlin.FileOperations.mount_volume_full.end (res);
+                        new Marlin.View.VolumePropertiesWindow (volume.get_mount (), window);
+                    } catch (Error e) {
+                        // Already handled
+                    }
+                });
             } else if (mount != null || uri == "file:///") {
                 new Marlin.View.VolumePropertiesWindow (mount, window);
             }
