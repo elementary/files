@@ -28,29 +28,23 @@
 #include <gtk/gtk.h>
 #include <gio/gio.h>
 
-typedef void (* MarlinCopyCallback)      (GHashTable *debuting_uris,
-                                          gpointer    callback_data);
 typedef void (* MarlinCreateCallback)    (GFile      *new_file,
                                           gpointer    callback_data);
-typedef void (* MarlinOpCallback)        (gpointer    callback_data);
 typedef void (* MarlinDeleteCallback)    (gboolean    user_cancel,
                                           gpointer    callback_data);
-typedef void (* MarlinMountCallback)     (GVolume    *volume,
-                                          GObject    *callback_data_object);
-typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
 
 
 /* Sidebar uses Marlin.FileOperations to mount volumes but handles unmounting itself */
-void marlin_file_operations_mount_volume  (GtkWindow                      *parent_window,
-                                           GVolume                        *volume,
-                                           gboolean                        allow_autorun);
+void marlin_file_operations_mount_volume  (GVolume   *volume,
+                                           GtkWindow *parent_window);
 
 
-void marlin_file_operations_mount_volume_full (GtkWindow                      *parent_window,
-                                               GVolume                        *volume,
-                                               gboolean                        allow_autorun,
-                                               MarlinMountCallback           mount_callback,
-                                               GObject                        *mount_callback_data_object);
+void marlin_file_operations_mount_volume_full (GVolume                        *volume,
+                                               GtkWindow                      *parent_window,
+                                               GAsyncReadyCallback             callback,
+                                               gpointer                        user_data);
+gboolean marlin_file_operations_mount_volume_full_finish (GAsyncResult  *result,
+                                                          GError       **error);
 
 void marlin_file_operations_trash_or_delete (GList                  *files,
                                              GtkWindow              *parent_window,
@@ -103,22 +97,4 @@ void marlin_file_operations_new_file_from_template (GtkWidget               *par
                                                     MarlinCreateCallback     done_callback,
                                                     gpointer                 data);
 
-
-#if 0 /* Not currently used, but may be useful in future */
-void marlin_file_set_permissions_recursive (const char                     *directory,
-                                            guint32                         file_permissions,
-                                            guint32                         file_mask,
-                                            guint32                         folder_permissions,
-                                            guint32                         folder_mask,
-                                            MarlinOpCallback              callback,
-                                            gpointer                        callback_data);
-
-void marlin_file_operations_new_folder_with_name_recursive (GtkWidget *parent_view,
-                                             GdkPoint *target_point,
-                                             GFile *parent_dir,
-                                             gchar* folder_name,
-                                             MarlinCreateCallback done_callback,
-                                             gpointer done_callback_data);
-
-#endif
 #endif /* MARLIN_FILE_OPERATIONS_H */

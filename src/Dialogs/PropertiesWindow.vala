@@ -323,20 +323,20 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if (new_name != "") {
             if (new_name != original_name) {
                 proposed_name = new_name;
-                view.set_file_display_name (file.location, new_name, after_rename);
+                view.set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
+                    GLib.File? new_location = null;
+                    try {
+                        new_location = view.set_file_display_name.end (res);
+                        reset_entry_text (new_location.get_basename ());
+                        goffile = GOF.File.@get (new_location);
+                        files.first ().data = goffile;
+                    } catch (Error e) {
+                        reset_entry_text (); //resets entry to old name
+                    }
+                });
             }
         } else {
             reset_entry_text ();
-        }
-    }
-
-    private void after_rename (GLib.File original_file, GLib.File? new_location) {
-        if (new_location != null) {
-            reset_entry_text (new_location.get_basename ());
-            goffile = GOF.File.@get (new_location);
-            files.first ().data = goffile;
-        } else {
-            reset_entry_text (); //resets entry to old name
         }
     }
 
