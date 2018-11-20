@@ -34,6 +34,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private uint idle_consume_unknowns = 0;
     private uint t_consume_knowns = 0;
     private Cancellable cancellable;
+    private GLib.List<GOF.File> current_selected_files;
 
     public CTags () {
         unknowns = new Queue<GOF.File> ();
@@ -90,7 +91,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         return false;
     }
 
-    public override void directory_loaded (void* user_data) {
+    public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
         cancellable.cancel ();
 
         if (idle_consume_unknowns > 0) {
@@ -101,7 +102,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         unknowns.clear ();
         cancellable = new Cancellable ();
 
-        directory = ((Object[]) user_data)[2] as GOF.File;
+        this.directory = directory;
         assert (directory != null);
         debug ("CTags Plugin dir %s", directory.uri);
         is_user_dir = f_is_user_dir (directory.uri);
@@ -284,15 +285,16 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget? widget, GLib.List<unowned GOF.File> selected_files) {
+    public override void context_menu (Gtk.Widget? widget, GLib.List<GOF.File> selected_files) {
         if (selected_files == null || widget == null || ignore_dir) {
             return;
         }
 
         var menu = widget as Gtk.Menu;
         var color_menu_item = new ColorWidget ();
+        current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
         color_menu_item.color_changed.connect ((ncolor) => {
-            set_color.begin (selected_files, ncolor);
+            set_color.begin (current_selected_files, ncolor);
         });
 
         add_menuitem (menu, new Gtk.SeparatorMenuItem ());
@@ -304,12 +306,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         menu_item.show ();
     }
 
-    private async void set_color (GLib.List<unowned GOF.File> files, int n) throws IOError {
-        var entries = new GenericArray<Variant> ();
-        GOF.File target_file;
+    private async void set_color (GLib.List<GOF.File> files, int n) throws IOError {
+        GenericArray<Variant> entries = null;
+        GOF.File target_file = null;
 
         foreach (unowned GOF.File file in files) {
-            if (file == null) {
+            if (!(file is GOF.File)) {
                 continue;
             }
 
@@ -320,17 +322,18 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             }
 
             target_file.color = n;
+            entries = new GenericArray<Variant> ();
             add_entry (target_file, entries);
         }
 
         if (entries != null) {
             try {
-                GOF.File first = (GOF.File) (files.data);
+                unowned GOF.File first = files.first ().data;
                 yield daemon.record_uris (entries.data, first.uri);
                 /* If the color of the target is set while in recent view, we have to
                  * update the recent view to reflect this */
                 if (first.location.has_uri_scheme ("recent")) {
-                    foreach (GOF.File file in files) {
+                    foreach (unowned GOF.File file in files) {
                         update_file_info (file);
                         file.icon_changed (); /* Just need to trigger redraw */
                     }

@@ -88,7 +88,6 @@ namespace Marlin.View {
                 deep_count_cancel ();
                 cancel_cancellable ();
 
-                GLib.List<GOF.File> list = null;
                 if (file != null) {
                     bool matched = false;
                     if (selected_files != null) {
@@ -102,6 +101,7 @@ namespace Marlin.View {
                     if (matched) {
                         real_update (selected_files);
                     } else {
+                        GLib.List<unowned GOF.File> list = null;
                         list.prepend (file);
                         real_update (list);
                     }
@@ -154,7 +154,7 @@ namespace Marlin.View {
             }
         }
 
-       private void real_update (GLib.List<GOF.File>? files) {
+       private void real_update (GLib.List<unowned GOF.File>? files) {
             goffile = null;
             folders_count = 0;
             files_count = 0;
@@ -305,12 +305,12 @@ namespace Marlin.View {
             }
         }
 
-        private void scan_list (GLib.List<GOF.File>? files) {
+        private void scan_list (GLib.List<unowned GOF.File>? files) {
             if (files == null) {
                 return;
             }
 
-            foreach (var gof in files) {
+            foreach (unowned GOF.File gof in files) {
                 if (gof != null && gof is GOF.File) {
                     if (gof.is_folder ()) {
                         folders_count++;
