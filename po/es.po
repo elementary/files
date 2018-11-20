@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-11-20 20:45+0000\n"
-"Last-Translator: alexis holguin <wholguinmor@uniminuto.edu.co>\n"
+"PO-Revision-Date: 2018-11-20 20:46+0000\n"
+"Last-Translator: Cristian Molina <megatux@gmail.com>\n"
 "Language-Team: Spanish <https://weblate.elementary.io/projects/files/files/"
 "es/>\n"
 "Language: es\n"
@@ -1910,17 +1910,15 @@ msgstr "Detalles del servidor"
 
 #: ../libcore/ConnectServerDialog.vala:131
 msgid "Server name or IP address"
-msgstr "Nombre de servidor o direccion IP"
+msgstr "Nombre de servidor o dirección IP"
 
 #: ../libcore/ConnectServerDialog.vala:132
-#, fuzzy
 msgid "Server:"
-msgstr "_Servidor:"
+msgstr "Servidor:"
 
 #: ../libcore/ConnectServerDialog.vala:138
-#, fuzzy
 msgid "Port:"
-msgstr "_Puerto:"
+msgstr "Puerto:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
@@ -1936,9 +1934,8 @@ msgid "Path of shared folder on server"
 msgstr ""
 
 #: ../libcore/ConnectServerDialog.vala:154
-#, fuzzy
 msgid "Folder:"
-msgstr "_Carpeta:"
+msgstr "Carpeta:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
