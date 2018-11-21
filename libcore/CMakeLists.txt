@@ -45,6 +45,7 @@ PACKAGES
     gmodule-2.0
     libcanberra
     pantheon-files-core-C
+    gof-file
     posix
     linux
     zeitgeist-2.0

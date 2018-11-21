@@ -85,6 +85,7 @@ IF (WITH_UNITY AND UNITY_FOUND)
         pantheon-files-core
         pantheon-files-core-C
         pantheon-files-widgets
+        gof-file
         marlin
         zeitgeist-2.0
     GENERATE_HEADER

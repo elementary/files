@@ -39,17 +39,18 @@ namespace Marlin {
                                                       null);
                 return true;
             } else if (drop_target.is_executable ()) {
-                GLib.Error error;
-                if (!drop_target.execute (widget.get_screen (), drop_file_list, out error)) {
-                    var target_name = drop_target.get_display_name ();
+                try {
+                    drop_target.execute (drop_file_list);
+                    return true;
+                } catch (Error e) {
+                    unowned string target_name = drop_target.get_display_name ();
                     PF.Dialogs.show_error_dialog (_("Failed to execute \"%s\"").printf (target_name),
-                                                  error.message,
+                                                  e.message,
                                                   null);
                     return false;
-                } else {
-                    return true;
                 }
             }
+
             return false;
         }
 

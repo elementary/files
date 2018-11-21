@@ -83,7 +83,8 @@ SRC_INC = include_directories ('src')
 ROOT_INC = include_directories ('.')
 
 C_CORE_VAPI = vala.find_library('pantheon-files-core-C', dirs: join_paths (meson.source_root (), 'libcore'))
-C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI])
+GOF_FILE_DEP = vala.find_library('gof-file', dirs: join_paths (meson.source_root (), 'libcore'))
+C_CORE_DEP = declare_dependency (dependencies: [C_CORE_VAPI, GOF_FILE_DEP])
 
 config_data = configuration_data()
 config_data.set('plugin_dir', PLUGIN_DIR)
