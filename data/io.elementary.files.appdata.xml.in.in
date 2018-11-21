@@ -61,7 +61,7 @@
     <release version="4.0" date="2018-10-16" urgency="medium">
       <description>
         <ul>
-          <_li>Over 100 major and minor bug fixes and improvements</_li>
+          <li>Over 100 major and minor bug fixes and improvements</li>
         </ul>
       </description>
     </release>
