@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-11-22 19:58+0000\n"
+"PO-Revision-Date: 2018-11-23 00:01+0000\n"
 "Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
 "Language-Team: Russian <https://weblate.elementary.io/projects/files/files/"
 "ru/>\n"
@@ -1634,7 +1634,7 @@ msgstr "(с правами администратора)"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Показать версию программы."
+msgstr "Показать версию программы"
 
 #: ../src/Application.vala:121
 msgid "Open one or more uris, each in a new tab"
@@ -1646,7 +1646,7 @@ msgstr "Новое окно"
 
 #: ../src/Application.vala:125
 msgid "Quit Files"
-msgstr "Выйти."
+msgstr "Выйти"
 
 #: ../src/Application.vala:127
 msgid "Enable debug logging"
