@@ -128,6 +128,7 @@ namespace Marlin.View.Chrome {
             check_home ();
             return true;
         }
+
         protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
             base.after_bread_focus_in_event (event);
             focus_in_event (event);
@@ -285,13 +286,20 @@ namespace Marlin.View.Chrome {
         }
 
         private void check_home () {
-            bread.hide_breadcrumbs = GLib.Filename.from_uri (displayed_path) == Environment.get_home_dir ();
-            if (bread.hide_breadcrumbs) {
-                show_placeholder ();
-                show_search_icon ();
-            } else {
-                hide_search_icon ();
+            try {
+                var filename = GLib.Filename.from_uri (displayed_path);
+                bread.hide_breadcrumbs = filename == Environment.get_home_dir ();
+                if (bread.hide_breadcrumbs) {
+                    show_placeholder ();
+                    show_search_icon ();
+                } else {
+                    hide_search_icon ();
+                }
+            } catch (Error e) {
+                /* May fail if display_path not yet set to valid path */
+                debug (e.message);
             }
+
         }
     }
 }

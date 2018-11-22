@@ -426,8 +426,7 @@ namespace Marlin.View {
             var tab = new Granite.Widgets.Tab ("", null, content);
             tab.ellipsize_mode = Pango.EllipsizeMode.MIDDLE;
 
-            change_tab ((int)tabs.insert_tab (tab, -1));
-            tabs.current = tab;
+
             /* Capturing ViewContainer object reference in closure prevents its proper destruction
              * so capture its unique id instead */
             var id = content.id;
@@ -449,6 +448,10 @@ namespace Marlin.View {
             });
 
             content.add_view (mode, location);
+
+            /* Need to have created a slot before changing tab to avoid a race where the topmenu can end up insensitive */
+            change_tab ((int)tabs.insert_tab (tab, -1));
+            tabs.current = tab;
         }
 
         private string check_for_tab_with_same_name (int id, string path) {
