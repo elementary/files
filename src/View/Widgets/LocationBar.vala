@@ -298,6 +298,8 @@ namespace Marlin.View.Chrome {
             } catch (Error e) {
                 /* May fail if display_path not yet set to valid path */
                 debug (e.message);
+                /* Ensure normal pathbar shown */
+                bread.hide_breadcrumbs = false;
             }
 
         }
