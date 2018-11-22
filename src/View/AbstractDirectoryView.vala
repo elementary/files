@@ -810,7 +810,7 @@ namespace FM {
                         if (GLib.ContentType.is_a (content_type, "text/plain")) {
                             open_file (file, screen, default_app);
                         } else {
-                            file.execute (screen, null, null);
+                            file.execute (null);
                         }
                     } else {
                         open_file (file, screen, default_app);
@@ -1091,8 +1091,7 @@ namespace FM {
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
             unowned GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-            unowned Gdk.Screen screen = get_screen ();
-            file.execute (screen, null, null);
+            file.execute (null);
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
