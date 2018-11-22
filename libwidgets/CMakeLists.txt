@@ -50,6 +50,7 @@ PACKAGES
     posix
     pantheon-files-core
     pantheon-files-core-C
+    gof-file
     zeitgeist-2.0
 OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore
