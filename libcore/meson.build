@@ -1,5 +1,16 @@
-CORE_LIB = shared_library (
-    CORE_LIB_NAME,
+pantheon_files_core_name = 'pantheon-files-core'
+
+pantheon_files_core_deps = [
+    common_deps,
+    posix_dep,
+    linux_dep,
+    math_dep,
+    pango_dep,
+    sqlite3_dep,
+    libcanberra_dep,
+]
+
+pantheon_files_core_vala_files = files(
     'AbstractSidebar.vala',
     'AbstractSlot.vala',
     'Bookmark.vala',
@@ -25,40 +36,62 @@ CORE_LIB = shared_library (
     'UserUtils.vala',
     'IconInfo.vala',
     'Thumbnailer.vala',
+)
 
+pantheon_files_core_c_files = files(
     'eel-string.c',
     'marlin-file-operations.c',
     'marlin-undostack-manager.c',
     'marlin-file-changes-queue.c',
     'fm-list-model.c',
     'gof-file.c',
-
-    dependencies : [CORE_LIB_DEPS, C_CORE_DEP, OTHER_DEPS],
-    install: true,
-    install_dir: [true, join_paths(get_option('prefix'), get_option('includedir'), CORE_LIB_NAME), true],
-    version: CORE_LIB_VER,
-    soversion: '0',
 )
 
-install_headers(
+pantheon_files_core_h_files = files(
     'eel-string.h',
     'marlin-file-operations.h',
     'marlin-undostack-manager.h',
     'marlin-file-changes-queue.h',
     'fm-list-model.h',
     'gof-file.h',
-
-    subdir: CORE_LIB_NAME
 )
 
-pkg = import ('pkgconfig')
-pkg.generate (
-    libraries: CORE_LIB,
+pantheon_files_core_files = [
+    pantheon_files_core_vala_files,
+    pantheon_files_core_c_files,
+    pantheon_files_core_h_files,
+]
+
+gof_file_dep = vala.find_library('gof-file', dirs: join_paths(meson.current_source_dir()))
+pantheon_file_core_c_dep = vala.find_library('pantheon-files-core-C', dirs: join_paths(meson.current_source_dir()))
+
+pantheon_files_core_library = shared_library(
+    pantheon_files_core_name,
+    pantheon_files_core_files,
+    dependencies : [ pantheon_files_core_deps, gof_file_dep, pantheon_file_core_c_dep ],
+    install: true,
+    install_dir: [true, join_paths(get_option('prefix'), get_option('includedir'), pantheon_files_core_name), true],
+    version: meson.project_version(),
+    soversion: '0',
+)
+
+install_headers(
+    pantheon_files_core_h_files,
+    subdir: pantheon_files_core_name
+)
+
+pantheon_files_core_dep = declare_dependency(
+    link_with: pantheon_files_core_library,
+    include_directories: include_directories('.'),
+    dependencies : [ pantheon_files_core_deps, gof_file_dep, pantheon_file_core_c_dep ],
+)
+
+pantheon_files_core_pkgconfig = pkg.generate(
+    libraries: pantheon_files_core_library,
+    filebase: pantheon_files_core_name,
+    name: 'elementary Files Core Library',
     description: 'Core library io.elementary.files and io.elementary.filechooser',
-    filebase: CORE_LIB_NAME,
-    name: 'lib'+ CORE_LIB_NAME,
-    version: CORE_LIB_VER,
-    subdirs: CORE_LIB_NAME
+    version: meson.project_version(),
 )
 
-subdir ('tests')
+subdir('tests')
