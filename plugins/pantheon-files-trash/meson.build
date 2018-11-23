@@ -13,10 +13,10 @@ PLUG_LIB = shared_library (
     SRC,
 
     dependencies : [DEPS, C_CORE_DEP],
-	include_directories: CORE_INC,
+    include_directories: CORE_INC,
     install: true,
-	install_dir: INSTALL_DIR,
-	link_with: [CORE_LIB]
+    install_dir: INSTALL_DIR,
+    link_with: [CORE_LIB]
 )
 
 install_data (
