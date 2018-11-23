@@ -1202,7 +1202,7 @@ public class Async : Object {
         return (state == State.LOADED && file_hash.size () == 0);
     }
 
-    public unowned List<GOF.File>? get_sorted_dirs () {
+    public unowned List<unowned GOF.File>? get_sorted_dirs () {
         if (state != State.LOADED) { /* Can happen if pathbar tries to load unloadable directory */
             return null;
         }

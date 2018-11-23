@@ -168,13 +168,13 @@ public class Marlin.MimeActions {
                 continue;
             }
 
-            List<AppInfo> one_result = get_applications_for_file (file);
+            GLib.List<AppInfo> one_result = get_applications_for_file (file);
             one_result.sort (application_compare_by_id);
 
             if (result != null) {
                 result = intersect_application_lists (result, one_result);
             } else {
-                result = one_result.copy ();
+                result = (owned) one_result;
             }
 
             if (result == null) {

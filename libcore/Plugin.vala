@@ -17,8 +17,8 @@
  */
 
 public abstract class Marlin.Plugins.Base {
-    public virtual void directory_loaded (void* data) { }
-    public virtual void context_menu (Gtk.Widget? widget, List<unowned GOF.File> files) { }
+    public virtual void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) { }
+    public virtual void context_menu (Gtk.Widget? widget, List<GOF.File> files) { }
     public virtual void ui (Gtk.UIManager? widget) { }
     public virtual void sidebar_loaded (Gtk.Widget widget) { }
     public virtual void update_sidebar (Gtk.Widget widget) { }
