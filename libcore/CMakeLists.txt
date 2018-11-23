@@ -1,6 +1,6 @@
 set (PKGNAME pantheon-files-core)
 set (PKGNAME_ PANTHEON_FILES_CORE)
-set (${PKGNAME_}_VERSION 0.1)
+set (${PKGNAME_}_VERSION 0.4.0)
 # increase when you broke the API
 
 set (${PKGNAME_}_SOVERSION 0)
