@@ -45,7 +45,8 @@ pkg.generate (
     libraries: CORE_LIB,
     description: 'Core library io.elementary.files and io.elementary.filechooser',
     filebase: CORE_LIB_NAME,
-    name: 'lib'+ OLD_NAME
+    name: 'lib'+ CORE_LIB_NAME,
+    version: CORE_LIB_VER
 )
 
 subdir ('tests')
