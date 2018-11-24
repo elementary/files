@@ -35,9 +35,20 @@ CORE_LIB = shared_library (
 
     dependencies : [CORE_LIB_DEPS, C_CORE_DEP, OTHER_DEPS],
     install: true,
-    install_dir: [true, true, true],
+    install_dir: [true, join_paths(get_option('prefix'), get_option('includedir'), CORE_LIB_NAME), true],
     version: CORE_LIB_VER,
     soversion: '0',
+)
+
+install_headers(
+    'eel-string.h',
+    'marlin-file-operations.h',
+    'marlin-undostack-manager.h',
+    'marlin-file-changes-queue.h',
+    'fm-list-model.h',
+    'gof-file.h',
+
+    subdir: CORE_LIB_NAME
 )
 
 pkg = import ('pkgconfig')
@@ -46,7 +57,8 @@ pkg.generate (
     description: 'Core library io.elementary.files and io.elementary.filechooser',
     filebase: CORE_LIB_NAME,
     name: 'lib'+ CORE_LIB_NAME,
-    version: CORE_LIB_VER
+    version: CORE_LIB_VER,
+    subdirs: CORE_LIB_NAME
 )
 
 subdir ('tests')
