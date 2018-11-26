@@ -1,8 +1,8 @@
 project ('io.elementary.files', 'vala', 'c', meson_version: '>= 0.42.0')
 
-PROJECT_VER = '0.3.6'
-CORE_LIB_VER = '0.3.6'
-WIDGET_LIB_VER = '0.3.6'
+PROJECT_VER = '0.4.0'
+CORE_LIB_VER = '0.4.0'
+WIDGET_LIB_VER = '0.4.0'
 DOMAIN = 'io.elementary.'
 SHORTNAME = 'files'
 OLD_NAME = 'pantheon-files'

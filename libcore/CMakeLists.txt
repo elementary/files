@@ -1,9 +1,8 @@
 set (PKGNAME pantheon-files-core)
-set (PKGNAME_ PANTHEON_FILES_CORE)
-set (${PKGNAME_}_VERSION 0.1)
+set (CORE_LIB_VERSION 0.4.0)
 # increase when you broke the API
 
-set (${PKGNAME_}_SOVERSION 0)
+set (CORE_SOVERSION 0)
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
@@ -117,8 +116,8 @@ link_directories (${LIB_PATHS})
 add_library (${PKGNAME} SHARED ${C_SOURCE_FILES})
 
 set_target_properties (${PKGNAME} PROPERTIES
-    VERSION ${PANTHEON_FILES_CORE_VERSION}
-    SOVERSION ${PANTHEON_FILES_CORE_SOVERSION})
+    VERSION ${CORE_LIB_VERSION}
+    SOVERSION ${CORE_SOVERSION})
 
 target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 
