@@ -131,7 +131,7 @@ namespace FM {
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
 
-        unowned GLib.List<GOF.File> drag_file_list = null;
+        GLib.List<GOF.File> drag_file_list = null;
         GOF.File? drop_target_file = null;
         Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
@@ -204,7 +204,7 @@ namespace FM {
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
             count of the file object.*/
-        protected GLib.List<unowned GOF.File> selected_files = null;
+        protected GLib.List<GOF.File> selected_files = null;
         private bool selected_files_invalid = true;
 
         private GLib.List<GLib.File> templates = null;
@@ -278,7 +278,7 @@ namespace FM {
 
         public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
         public signal void item_hovered (GOF.File? file);
-        public signal void selection_changed (GLib.List<unowned GOF.File> gof_file);
+        public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -750,18 +750,9 @@ namespace FM {
             return false;
         }
 
-        protected unowned GLib.List<GOF.File>
-        get_selected_files_for_transfer (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
-
-            unowned GLib.List<GOF.File> list = null;
-
-            selection.@foreach ((file) => {
-                list.prepend (file);
-            });
-
-            list.reverse ();
-
-            return list;
+        protected GLib.List<GOF.File>
+        get_selected_files_for_transfer (GLib.List<GOF.File> selection = get_selected_files ()) {
+            return selection.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
         }
 
 /*** Private methods */
@@ -810,7 +801,7 @@ namespace FM {
                         if (GLib.ContentType.is_a (content_type, "text/plain")) {
                             open_file (file, screen, default_app);
                         } else {
-                            file.execute (screen, null, null);
+                            file.execute (null);
                         }
                     } else {
                         open_file (file, screen, default_app);
@@ -1007,7 +998,7 @@ namespace FM {
          * when using keybindings. So we remember if the current selection
          * was already removed (but the view doesn't know about it yet).
          */
-            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
+            GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
                 trash_or_delete_files (selection, true, delete_immediately);
             }
@@ -1070,7 +1061,7 @@ namespace FM {
         }
 
         private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
-            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
+            GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             clipboard.cut_files (selection);
         }
 
@@ -1083,16 +1074,15 @@ namespace FM {
         }
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
-            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
+            GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             PF.FileUtils.restore_files_from_trash (selection, window);
 
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
-            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-            unowned Gdk.Screen screen = get_screen ();
-            file.execute (screen, null, null);
+            file.execute (null);
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1105,7 +1095,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_other_app () {
-            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
             open_file (file, null, null);
         }
@@ -1874,7 +1864,7 @@ namespace FM {
         }
 
         private bool valid_selection_for_edit () {
-            foreach (GOF.File file in get_selected_files ()) {
+            foreach (unowned GOF.File file in get_selected_files ()) {
                 if (file.is_root_network_folder ()) {
                     return false;
                 }
@@ -1884,7 +1874,7 @@ namespace FM {
         }
 
         private bool valid_selection_for_restore () {
-            foreach (GOF.File file in get_selected_files ()) {
+            foreach (unowned GOF.File file in get_selected_files ()) {
                 if (!(file.directory.get_basename () == "/")) {
                     return false;
                 }
@@ -2061,7 +2051,7 @@ namespace FM {
             GLib.MenuModel? app_submenu;
 
             string label = _("Invalid");
-            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File selected_file = selection.data;
 
             if (can_open_file (selected_file)) {
@@ -2199,7 +2189,7 @@ namespace FM {
                 return;
             }
 
-            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file;
 
             bool is_selected = selection != null;
@@ -2274,8 +2264,8 @@ namespace FM {
             }
         }
 
-        private void update_default_app (GLib.List<unowned GOF.File> selection) {
-            default_app = Marlin.MimeActions.get_default_application_for_files (get_files_for_action ());
+        private void update_default_app (GLib.List<GOF.File> selection) {
+            default_app = Marlin.MimeActions.get_default_application_for_files (selection);
             return;
         }
 
@@ -2643,8 +2633,8 @@ namespace FM {
         /* For actions on the background we need to return the current slot directory, but this
          * should not be added to the list of selected files
          */
-        private unowned GLib.List<GOF.File> get_files_for_action () {
-            unowned GLib.List<GOF.File> action_files = null;
+        private GLib.List<GOF.File> get_files_for_action () {
+            GLib.List<GOF.File> action_files = null;
             update_selected_files_and_menu ();
 
             if (selected_files == null) {
@@ -2653,15 +2643,13 @@ namespace FM {
                 selected_files.@foreach ((file) => {
                     var goffile = GOF.File.get_by_uri (file.get_display_target_uri ());
                     goffile.query_update ();
-                    action_files.prepend (goffile);
+                    action_files.append (goffile);
                 });
-
-                action_files.reverse ();
             } else {
-                action_files = selected_files;
+                action_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
             }
 
-            return action_files;
+            return (owned)action_files;
         }
 
         protected void on_view_items_activated () {
@@ -3713,7 +3701,7 @@ namespace FM {
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
-        protected abstract uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files);
+        protected abstract uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files);
         protected abstract uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);

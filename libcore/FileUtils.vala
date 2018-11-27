@@ -104,7 +104,7 @@ namespace PF.FileUtils {
         var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (File.hash, File.equal);
         unhandled_files = null;
 
-        foreach (GOF.File goffile in files) {
+        foreach (unowned GOF.File goffile in files) {
             /* Check it is a valid file (e.g. not a dummy row from list view) */
             if (goffile == null || goffile.location == null) {
                 continue;
@@ -116,15 +116,9 @@ namespace PF.FileUtils {
                 /* We are in trash root */
                 var original_dir = get_trashed_file_original_folder (goffile);
                 if (original_dir != null) {
-                    unowned GLib.List<GLib.File>? dir_files = null;
-                    /* get list of files being restored to this original dir */
-                    dir_files = directories.lookup (original_dir);
-                    if (dir_files != null) {
-                        directories.steal (original_dir);
-                    }
-
+                    GLib.List<GLib.File>? dir_files = directories.take (original_dir);
                     dir_files.prepend (goffile.location);
-                    directories.insert (original_dir, dir_files.copy ());
+                    directories.insert (original_dir, (owned)dir_files);
                 } else {
                     unhandled_files.prepend (goffile);
                 }
