@@ -29,21 +29,21 @@ configure_file(
 
 policy_in = configure_file(
     input: meson.project_name() + '.policy.xml.in.in',
-    output: '@BASENAME@',
+    output:  meson.project_name() + '.policy.xml.in',
     configuration: config_data,
     install: false,
 )
 
 desktop_in = configure_file(
     input: meson.project_name() + '.desktop.in.in',
-    output: '@BASENAME@',
+    output: meson.project_name() + '.desktop.in',
     configuration: config_data,
     install: false,
 )
 
 appdata_in = configure_file(
     input: meson.project_name() + '.appdata.xml.in.in',
-    output: '@BASENAME@',
+    output: meson.project_name() + '.appdata.xml.in',
     configuration: config_data,
     install: false,
 )

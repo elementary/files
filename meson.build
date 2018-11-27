@@ -13,7 +13,7 @@ plugin_dir = join_paths(get_option('prefix'), get_option('libdir'), meson.projec
 ui_dir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name(), 'ui')
 terminal_name = 'pantheon-terminal'
 
-add_global_arguments(
+add_project_arguments(
     ['-DGETTEXT_PACKAGE="' + meson.project_name() + '"',
     '-w'],
     language:'c'
@@ -33,8 +33,7 @@ endif
 #
 # Project dependencies
 #
-min_glib_version = '2.29'
-add_global_arguments('--target-glib='+min_glib_version, language: 'vala')
+min_glib_version = '2.40'
 
 glib_dep = dependency('glib-2.0', version: '>='+min_glib_version)
 gobject_dep = dependency('gobject-2.0', version: '>='+min_glib_version)
