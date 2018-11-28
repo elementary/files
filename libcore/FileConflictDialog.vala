@@ -74,7 +74,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         var thumbnailer = Marlin.Thumbnailer.get ();
         thumbnailer.finished.connect (() => {
             destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   GOF.FileIconFlags.USE_THUMBNAILS);
+                                                                   GOF.File.IconFlags.USE_THUMBNAILS);
         });
 
         thumbnailer.queue_file (destination, null, false);
@@ -335,7 +335,7 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         }
 
         secondary_label.label = "%s %s".printf (message, message_extra);
-        source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), GOF.FileIconFlags.USE_THUMBNAILS);
+        source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), GOF.File.IconFlags.USE_THUMBNAILS);
         source_size_label.label = source.format_size;
         source_time_label.label = source.formated_modified;
         if (should_show_type && src_ftype != null) {
@@ -360,12 +360,12 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         }
 
         source.changed.connect (() => {
-            source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), GOF.FileIconFlags.USE_THUMBNAILS);
+            source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), GOF.File.IconFlags.USE_THUMBNAILS);
         });
 
         destination.changed.connect (() => {
             destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   GOF.FileIconFlags.USE_THUMBNAILS);
+                                                                   GOF.File.IconFlags.USE_THUMBNAILS);
         });
     }
 }
