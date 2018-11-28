@@ -43,9 +43,7 @@ class PF.ChooseAppDialog : Object {
         check_default.active = true;
         check_default.show ();
 
-        var action_area = dialog.get_action_area () as Gtk.ButtonBox;
-        action_area.add (check_default);
-        action_area.set_child_secondary (check_default, true);
+        dialog.add_action_widget (check_default, Gtk.ResponseType.NONE);
 
         dialog.show ();
     }
@@ -67,6 +65,7 @@ class PF.ChooseAppDialog : Object {
                 }
             }
         }
+
         dialog.destroy ();
         return app;
     }
