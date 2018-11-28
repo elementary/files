@@ -227,13 +227,10 @@ public class Marlin.FileConflictDialog : Gtk.Dialog {
         grid.attach (comparison_grid, 1, 2, 1, 1);
         grid.attach (expander, 1, 3, 1, 1);
         grid.attach (apply_all_checkbutton, 1, 4, 1, 1);
+        grid.margin_bottom = 20;
         grid.show_all ();
 
         get_content_area ().add (grid);
-
-        var action_area = get_action_area ();
-        action_area.margin = 6;
-        action_area.margin_top = 14;
 
         source_type_label.bind_property ("visible", source_type_title_label, "visible");
         destination_type_label.bind_property ("visible", destination_type_title_label, "visible");

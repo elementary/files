@@ -388,11 +388,6 @@ namespace Marlin.View.Chrome {
             queue_draw ();
         }
 
-        public void right_click_menu_position_func (Gtk.Menu menu, out int x, out int y, out bool push_in) {
-            x = (int) menu_x_root;
-            y = (int) menu_y_root;
-            push_in = true;
-        }
     /** Context menu functions **/
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
@@ -428,11 +423,7 @@ namespace Marlin.View.Chrome {
             }
 
             menu.show_all ();
-            menu.popup (null,
-                        null,
-                        right_click_menu_position_func,
-                        0,
-                        event.time);
+            menu.popup_at_pointer (null);
 
             if (files_menu_dir != null) {
                 files_menu_dir.init ();
