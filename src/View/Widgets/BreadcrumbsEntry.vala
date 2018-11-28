@@ -455,16 +455,8 @@ namespace Marlin.View.Chrome {
             foreach (AppInfo app_info in app_info_list) {
                 if (app_info != null && app_info.get_executable () != Environment.get_application_name ()) {
                     at_least_one = true;
-                    var menu_item = new Gtk.ImageMenuItem.with_label (app_info.get_name ());
+                    var menu_item = new Gtk.MenuItem.with_label (app_info.get_name ());
                     menu_item.set_data ("appinfo", app_info);
-                    Icon icon;
-                    icon = app_info.get_icon ();
-                    if (icon == null) {
-                        icon = new ThemedIcon ("application-x-executable");
-                    }
-
-                    menu_item.set_image (new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU));
-                    menu_item.always_show_image = true;
                     menu_item.activate.connect (() => {
                         open_with_request (loc, app_info);
                     });
