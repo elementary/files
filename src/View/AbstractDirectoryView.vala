@@ -801,7 +801,11 @@ namespace FM {
                         if (GLib.ContentType.is_a (content_type, "text/plain")) {
                             open_file (file, screen, default_app);
                         } else {
-                            file.execute (null);
+                            try {
+                                file.execute (null);
+                            } catch (Error e) {
+                                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, window);
+                            }
                         }
                     } else {
                         open_file (file, screen, default_app);
@@ -1082,7 +1086,11 @@ namespace FM {
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
             GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-            file.execute (null);
+            try {
+                file.execute (null);
+            } catch (Error e) {
+                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, window);
+            }
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
