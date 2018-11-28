@@ -594,9 +594,8 @@ namespace Marlin.View.Chrome {
             x += parent_alloc.x;
             y += parent_alloc.y;
 
-            var screen = parent.get_screen ();
-            var monitor = screen.get_monitor_at_window (parent_window);
-            var workarea = screen.get_monitor_workarea (monitor);
+            var monitor = Gdk.Display.get_default ().get_monitor_at_window (parent_window);
+            var workarea = monitor.get_workarea ();
 
             int cell_height, separator_height, items, headers;
             view.style_get ("vertical-separator", out separator_height);

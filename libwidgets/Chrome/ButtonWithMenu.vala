@@ -224,8 +224,9 @@ namespace Marlin.View.Chrome {
         private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
             Gtk.Allocation menu_allocation;
             menu.get_allocation (out menu_allocation);
+            Gdk.Window? win = menu.attach_widget == null ? null :  menu.attach_widget.get_window ();
 
-            if (menu.attach_widget == null || menu.attach_widget.get_window () == null) {
+            if (win == null) {
                 /* Prevent null exception in weird cases */
                 x = 0;
                 y = 0;
@@ -233,7 +234,7 @@ namespace Marlin.View.Chrome {
                 return;
             }
 
-            menu.attach_widget.get_window ().get_origin (out x, out y);
+            win.get_origin (out x, out y);
 
             Gtk.Allocation allocation;
             menu.attach_widget.get_allocation (out allocation);
@@ -287,7 +288,10 @@ namespace Marlin.View.Chrome {
 
             y += allocation.y;
 
-            if (y + height >= menu.attach_widget.get_screen ().get_height ()) {
+            var monitor = Gdk.Display.get_default ().get_monitor_at_window (win);
+            var rect = monitor.get_geometry ();
+
+            if (y + height >= rect.height) {
                 y -= height;
             } else {
                 y += allocation.height;
