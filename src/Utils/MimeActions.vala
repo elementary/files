@@ -101,10 +101,6 @@ public class Marlin.MimeActions {
             }
         }
 
-        if (result == null) {
-            return null;
-        }
-
         if (!file_has_local_path (file)) {
             filter_non_uri_apps (result);
         }
@@ -128,10 +124,6 @@ public class Marlin.MimeActions {
 
         if (!file_has_local_path (file)) {
             result = filter_non_uri_apps (result);
-        }
-
-        if (result == null) {
-            return null;
         }
 
         result.sort (application_compare_by_name);
@@ -177,15 +169,11 @@ public class Marlin.MimeActions {
                 result = (owned) one_result;
             }
 
-            if (result == null) {
-                return null;
+            if (result.length () == 0) {
+                return result;
             }
 
             previous_file = file;
-        }
-
-        if (result == null) {
-            return null;
         }
 
         result.sort (application_compare_by_name);
