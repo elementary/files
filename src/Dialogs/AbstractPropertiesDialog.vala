@@ -63,15 +63,18 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         stack_switcher.stack = stack;
 
         layout = new Gtk.Grid ();
-        layout.margin = 12;
         layout.margin_top = 0;
         layout.column_spacing = 12;
         layout.row_spacing = 6;
         layout.attach (stack_switcher, 0, 1, 2, 1);
         layout.attach (stack, 0, 2, 2, 1);
+        layout.margin_bottom = 12;
 
-        ((Gtk.Box) get_content_area ()).add (layout);
-        ((Gtk.Box) get_action_area ()).margin = 6;
+        var content = get_content_area ();
+        content.add (layout);
+        content.margin_start = 12;
+        content.margin_end = 12;
+        content.margin_bottom = 6;
 
         add_button (_("Close"), Gtk.ResponseType.CLOSE);
         response.connect ((source, type) => {
@@ -86,7 +89,6 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
     protected void create_header_title () {
         header_title.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
         header_title.hexpand = true;
-        header_title.margin_top = 6;
         header_title.valign = Gtk.Align.CENTER;
         layout.attach (header_title, 1, 0, 1, 1);
     }
