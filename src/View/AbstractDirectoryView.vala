@@ -1816,14 +1816,6 @@ namespace FM {
          * instead.
         **/
 
-        private void queue_context_menu (Gdk.Event event) {
-            if (drag_timer_id > 0) { /* already queued */
-                return;
-            }
-
-            start_drag_timer (event);
-        }
-
         protected void start_drag_timer (Gdk.Event event) {
             connect_drag_timeout_motion_and_release_events ();
             var button_event = (Gdk.EventButton)event;
