@@ -662,10 +662,8 @@ namespace Marlin.View.Chrome {
             /* Ensure device grab and ungrab are paired */
             if (!is_grabbing && device != null) {
                 Gtk.device_grab_add (this, device, true);
-                device.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.BUTTON_PRESS_MASK
-                    | Gdk.EventMask.BUTTON_RELEASE_MASK
-                    | Gdk.EventMask.POINTER_MOTION_MASK,
-                    null, Gdk.CURRENT_TIME);
+                device.get_seat ().grab (get_window (), Gdk.SeatCapabilities.ALL_POINTING,
+                                         true, null, null, null);
 
                 is_grabbing = true;
             }
@@ -685,7 +683,7 @@ namespace Marlin.View.Chrome {
                     debug ("Reference to device was lost while grabbing - should not happen");
                 }
 
-                device.ungrab (Gdk.CURRENT_TIME);
+                device.get_seat ().ungrab ();
                 Gtk.device_grab_remove (this, device);
                 is_grabbing = false;
             }

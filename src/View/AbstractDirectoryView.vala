@@ -2674,7 +2674,7 @@ namespace FM {
           * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
         protected bool match_keycode (uint keyval, uint code, int level) {
             Gdk.KeymapKey [] keys;
-            Gdk.Keymap keymap = Gdk.Keymap.get_default ();
+            Gdk.Keymap keymap = Gdk.Keymap.get_for_display (get_display ());
             if (keymap.get_entries_for_keyval (keyval, out keys)) {
                 foreach (var key in keys) {
                     if (code == key.keycode && level == key.level) {
@@ -2705,10 +2705,12 @@ namespace FM {
             if (keyval > 127) {
                 int eff_grp, level;
 
-                if (!Gdk.Keymap.get_default ().translate_keyboard_state (event.hardware_keycode,
-                                                                         event.state, event.group,
-                                                                         out keyval, out eff_grp,
-                                                                         out level, out consumed_mods)) {
+                if (!Gdk.Keymap.get_for_display (get_display ()).translate_keyboard_state (
+                        event.hardware_keycode,
+                        event.state, event.group,
+                        out keyval, out eff_grp,
+                        out level, out consumed_mods)) {
+
                     warning ("translate keyboard state failed");
                     keyval = event.keyval;
                     consumed_mods = 0;
@@ -2898,7 +2900,7 @@ namespace FM {
                 case Gdk.Key.C:
                     if (only_control_pressed) {
                         /* Caps Lock interferes with `shift_pressed` boolean so use another way */
-                        var caps_on = Gdk.Keymap.get_default ().get_caps_lock_state ();
+                        var caps_on = Gdk.Keymap.get_for_display (get_display ()).get_caps_lock_state ();
                         var cap_c = keyval == Gdk.Key.C;
 
                         if (caps_on != cap_c) { /* Shift key pressed */
