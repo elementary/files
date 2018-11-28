@@ -206,98 +206,13 @@ namespace Marlin.View.Chrome {
         }
 
         protected new void popup_menu (Gdk.EventButton? ev = null) {
-            try {
-                menu.popup (null,
-                            null,
-                            get_menu_position,
-                            (ev == null) ? 0 : ev.button,
-                            (ev == null) ? Gtk.get_current_event_time () : ev.time);
-            } finally {
-                menu.select_first (false);
-            }
+            menu.popup_at_widget (this, Gdk.Gravity.SOUTH_WEST, Gdk.Gravity.NORTH_WEST, ev);
+
+            menu.select_first (false);
         }
 
         protected void popdown_menu () {
             menu.popdown ();
-        }
-
-        private void get_menu_position (Gtk.Menu menu, out int x, out int y, out bool push_in) {
-            Gtk.Allocation menu_allocation;
-            menu.get_allocation (out menu_allocation);
-            Gdk.Window? win = menu.attach_widget == null ? null :  menu.attach_widget.get_window ();
-
-            if (win == null) {
-                /* Prevent null exception in weird cases */
-                x = 0;
-                y = 0;
-                push_in = true;
-                return;
-            }
-
-            win.get_origin (out x, out y);
-
-            Gtk.Allocation allocation;
-            menu.attach_widget.get_allocation (out allocation);
-
-            /* Left, right or center??*/
-            if (horizontal_menu_position == HMenuPosition.RIGHT) {
-                x += allocation.x;
-
-            } else if (horizontal_menu_position == HMenuPosition.CENTER) {
-                x += allocation.x;
-                x -= menu_allocation.width / 2;
-                x += allocation.width / 2;
-            } else {
-                x += allocation.x;
-                x -= menu_allocation.width;
-                x += this.get_allocated_width ();
-            }
-
-            /* Bottom or top?*/
-            if (vertical_menu_position == VMenuPosition.TOP) {
-                y -= menu_allocation.height;
-                y -= this.get_allocated_height ();
-            }
-
-            int width, height;
-            menu.get_size_request (out width, out height);
-
-            if (horizontal_menu_position == HMenuPosition.INSIDE_WINDOW) {
-                /* Get window geometry */
-                var parent_widget = get_toplevel ();
-
-                Gtk.Allocation window_allocation;
-                parent_widget.get_allocation (out window_allocation);
-
-                parent_widget.get_window ().get_origin (out x, out y);
-                int parent_window_x0 = x;
-                int parent_window_xf = parent_window_x0 + window_allocation.width;
-
-                /* Now check if the menu is outside the window and un-center it
-                 * if that's the case
-                 */
-
-                if (x + menu_allocation.width > parent_window_xf) {
-                    x = parent_window_xf - menu_allocation.width; // Move to left
-                }
-
-                if (x < parent_window_x0) {
-                    x = parent_window_x0; // Move to right
-                }
-            }
-
-            y += allocation.y;
-
-            var monitor = Gdk.Display.get_default ().get_monitor_at_window (win);
-            var rect = monitor.get_geometry ();
-
-            if (y + height >= rect.height) {
-                y -= height;
-            } else {
-                y += allocation.height;
-            }
-
-            push_in = true;
         }
     }
 }
