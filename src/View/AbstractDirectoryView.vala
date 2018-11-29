@@ -801,7 +801,11 @@ namespace FM {
                         if (GLib.ContentType.is_a (content_type, "text/plain")) {
                             open_file (file, screen, default_app);
                         } else {
-                            file.execute (null);
+                            try {
+                                file.execute (null);
+                            } catch (Error e) {
+                                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, window);
+                            }
                         }
                     } else {
                         open_file (file, screen, default_app);
@@ -1082,7 +1086,11 @@ namespace FM {
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
             GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-            file.execute (null);
+            try {
+                file.execute (null);
+            } catch (Error e) {
+                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, window);
+            }
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1807,14 +1815,6 @@ namespace FM {
          * drag (with #GDK_ACTION_ASK) will be started
          * instead.
         **/
-
-        private void queue_context_menu (Gdk.Event event) {
-            if (drag_timer_id > 0) { /* already queued */
-                return;
-            }
-
-            start_drag_timer (event);
-        }
 
         protected void start_drag_timer (Gdk.Event event) {
             connect_drag_timeout_motion_and_release_events ();
@@ -2666,7 +2666,7 @@ namespace FM {
           * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
         protected bool match_keycode (uint keyval, uint code, int level) {
             Gdk.KeymapKey [] keys;
-            Gdk.Keymap keymap = Gdk.Keymap.get_default ();
+            Gdk.Keymap keymap = Gdk.Keymap.get_for_display (get_display ());
             if (keymap.get_entries_for_keyval (keyval, out keys)) {
                 foreach (var key in keys) {
                     if (code == key.keycode && level == key.level) {
@@ -2697,10 +2697,12 @@ namespace FM {
             if (keyval > 127) {
                 int eff_grp, level;
 
-                if (!Gdk.Keymap.get_default ().translate_keyboard_state (event.hardware_keycode,
-                                                                         event.state, event.group,
-                                                                         out keyval, out eff_grp,
-                                                                         out level, out consumed_mods)) {
+                if (!Gdk.Keymap.get_for_display (get_display ()).translate_keyboard_state (
+                        event.hardware_keycode,
+                        event.state, event.group,
+                        out keyval, out eff_grp,
+                        out level, out consumed_mods)) {
+
                     warning ("translate keyboard state failed");
                     keyval = event.keyval;
                     consumed_mods = 0;
@@ -2890,7 +2892,7 @@ namespace FM {
                 case Gdk.Key.C:
                     if (only_control_pressed) {
                         /* Caps Lock interferes with `shift_pressed` boolean so use another way */
-                        var caps_on = Gdk.Keymap.get_default ().get_caps_lock_state ();
+                        var caps_on = Gdk.Keymap.get_for_display (get_display ()).get_caps_lock_state ();
                         var cap_c = keyval == Gdk.Key.C;
 
                         if (caps_on != cap_c) { /* Shift key pressed */

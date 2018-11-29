@@ -594,9 +594,8 @@ namespace Marlin.View.Chrome {
             x += parent_alloc.x;
             y += parent_alloc.y;
 
-            var screen = parent.get_screen ();
-            var monitor = screen.get_monitor_at_window (parent_window);
-            var workarea = screen.get_monitor_workarea (monitor);
+            var monitor = Gdk.Display.get_default ().get_monitor_at_window (parent_window);
+            var workarea = monitor.get_workarea ();
 
             int cell_height, separator_height, items, headers;
             view.style_get ("vertical-separator", out separator_height);
@@ -663,10 +662,8 @@ namespace Marlin.View.Chrome {
             /* Ensure device grab and ungrab are paired */
             if (!is_grabbing && device != null) {
                 Gtk.device_grab_add (this, device, true);
-                device.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.BUTTON_PRESS_MASK
-                    | Gdk.EventMask.BUTTON_RELEASE_MASK
-                    | Gdk.EventMask.POINTER_MOTION_MASK,
-                    null, Gdk.CURRENT_TIME);
+                device.get_seat ().grab (get_window (), Gdk.SeatCapabilities.ALL_POINTING,
+                                         true, null, null, null);
 
                 is_grabbing = true;
             }
@@ -686,7 +683,7 @@ namespace Marlin.View.Chrome {
                     debug ("Reference to device was lost while grabbing - should not happen");
                 }
 
-                device.ungrab (Gdk.CURRENT_TIME);
+                device.get_seat ().ungrab ();
                 Gtk.device_grab_remove (this, device);
                 is_grabbing = false;
             }
