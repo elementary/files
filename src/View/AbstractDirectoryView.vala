@@ -2115,7 +2115,7 @@ namespace FM {
                         unowned string label = app_info.get_display_name ();
                         unowned string exec = app_info.get_executable ().split (" ")[0];
                         if (label != last_label || exec != last_exec) {
-                             var menu_item = new GLib.MenuItem (app_info.get_name (), "selection.open_with_app::" + index.to_string ());
+                             var menu_item = new GLib.MenuItem (app_info.get_name (), GLib.Action.print_detailed_name ("selection.open_with_app", new GLib.Variant.int32 (index)));
                             menu_item.set_icon (app_info.get_icon ());
                             apps_section.append_item (menu_item);
                             count++;
