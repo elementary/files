@@ -275,6 +275,8 @@ namespace Marlin.View {
             }
 
             if (mode != view_mode) {
+                view_mode = mode;
+                loading (false);
                 before_mode_change ();
                 add_view (mode, loc);
                 after_mode_change ();
@@ -288,7 +290,6 @@ namespace Marlin.View {
             disconnect_slot_signals (view);
             content = null; /* Make sure old slot and directory view are destroyed */
             view = null; /* Pre-requisite for add view */
-            loading (false);
         }
 
         private void after_mode_change () {

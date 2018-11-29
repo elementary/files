@@ -139,7 +139,7 @@ namespace Marlin.View {
 
         private void build_window () {
             view_switcher = new Chrome.ViewSwitcher (lookup_action ("view_mode") as SimpleAction);
-            view_switcher.mode = Preferences.settings.get_enum ("default-viewmode");
+            view_switcher.selected = Preferences.settings.get_enum ("default-viewmode");
 
             top_menu = new Chrome.TopMenu (view_switcher);
             top_menu.show_close_button = true;
@@ -647,8 +647,9 @@ namespace Marlin.View {
                     break;
 
                 default:
-                    break;
+                    return;
             }
+
             current_tab.change_view_mode (mode);
             /* ViewContainer takes care of changing appearance */
         }
@@ -1028,7 +1029,7 @@ namespace Marlin.View {
 
             /* Update viewmode switch, action state and settings */
             var mode = current_tab.view_mode;
-            view_switcher.mode = mode;
+            view_switcher.selected = mode;
             view_switcher.sensitive = current_tab.can_show_folder;
             get_action ("view_mode").set_state (mode_strings [(int)mode]);
             Preferences.settings.set_enum ("default-viewmode", mode);

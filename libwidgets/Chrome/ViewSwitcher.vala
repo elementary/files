@@ -22,92 +22,65 @@
 ***/
 
 namespace Marlin.View.Chrome {
-
-    public class ViewSwitcher : Gtk.Box {
-        public Granite.Widgets.ModeButton switcher;
-
-        private int _mode;
-        public int mode {
-            set {
-                Gtk.Widget target;
-                int active_index;
-
-                switch ((Marlin.ViewMode)value) {
-                case Marlin.ViewMode.LIST:
-                    target = list;
-                    active_index = 1;
-                    break;
-                case Marlin.ViewMode.MILLER_COLUMNS:
-                    target = miller;
-                    active_index = 2;
-                    break;
-                default:
-                    target = icon;
-                    active_index = 0;
-                    value = 0;
-                    break;
-                }
-
-                freeze_update = true;
-                switcher.set_active (active_index);
-                freeze_update = false;
-                _mode = value;
-            }
-            private get {
-                return _mode;
-            }
-        }
-
+    public class ViewSwitcher : Granite.Widgets.ModeButton {
+        private const int SWITCH_DELAY_MSEC = 200;
         private bool freeze_update = false;
-        private GLib.SimpleAction view_mode_action;
+        public GLib.SimpleAction view_mode_action { get; construct; }
+        private uint mode_change_timeout_id = 0;
+        private int last_selected;
 
-        private Gtk.Image icon;
-        private Gtk.Image list;
-        private Gtk.Image miller;
-
-        private GLib.Variant icon_sv;
-        private GLib.Variant list_sv;
-        private GLib.Variant miller_sv;
-
-        public ViewSwitcher (GLib.SimpleAction _view_mode_action) {
-            Object (orientation: Gtk.Orientation.HORIZONTAL);
-
-            this.view_mode_action = _view_mode_action;
-            switcher = new Granite.Widgets.ModeButton ();
-            switcher.halign = switcher.valign = Gtk.Align.CENTER;
-
-            icon = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.MENU);
+        construct {
+            /* Item 0 */
+            var icon = new Gtk.Image.from_icon_name ("view-grid-symbolic", Gtk.IconSize.BUTTON);
             icon.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>1"}, _("View as Grid"));
-            switcher.append (icon);
-            icon_sv = new GLib.Variant.string ("ICON");
+            append (icon);
 
-            list = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.MENU);
+            /* Item 1 */
+            var list = new Gtk.Image.from_icon_name ("view-list-symbolic", Gtk.IconSize.BUTTON);
             list.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>2"}, _("View as List"));
-            switcher.append (list);
-            list_sv = new GLib.Variant.string ("LIST");
+            append (list);
 
-            miller = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.MENU);
+            /* Item 2 */
+            var miller = new Gtk.Image.from_icon_name ("view-column-symbolic", Gtk.IconSize.BUTTON);
             miller.tooltip_markup = Granite.markup_accel_tooltip ({"<Ctrl>3"}, _("View in Columns"));
-            switcher.append (miller);
-            miller_sv = new GLib.Variant.string ("MILLER");
+            append (miller);
 
-            switcher.mode_changed.connect ((image) => {
-                if (freeze_update) {
+            mode_changed.connect (() => {
+                last_selected = selected;
+                if (mode_change_timeout_id > 0) {
                     return;
                 }
 
-                if (image == list) {
-                    view_mode_action.activate (list_sv);
-                } else if (image == miller) {
-                    view_mode_action.activate (miller_sv);
-                } else {
-                    view_mode_action.activate (icon_sv);
-                }
+                Timeout.add (SWITCH_DELAY_MSEC, () => {
+                    switch (last_selected) {
+                        case 0:
+                            view_mode_action.activate (new GLib.Variant.string ("ICON"));
+                            break;
+                        case 1:
+                            view_mode_action.activate (new GLib.Variant.string ("LIST"));
+                            break;
+                        case 2:
+                            view_mode_action.activate (new GLib.Variant.string ("MILLER"));
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    mode_change_timeout_id = 0;
+                    return Source.REMOVE;
+                });
             });
 
-            switcher.sensitive = true;
+            margin_top = 4;
+            margin_bottom = 4;
+        }
 
-            pack_start (switcher, true, true, 0);
+        public ViewSwitcher (GLib.SimpleAction _view_mode_action) {
+            Object (
+                orientation: Gtk.Orientation.HORIZONTAL,
+                view_mode_action: _view_mode_action
+            );
         }
     }
 }
