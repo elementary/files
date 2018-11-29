@@ -2102,14 +2102,14 @@ namespace FM {
 
                 filter_this_app_from_open_with_apps ();
 
-                if (open_with_apps.length () > 0) {
+                if (open_with_apps.data != null) {
                     var apps_section = new GLib.Menu ();
                     int index = -1;
                     int count = 0;
                     string last_label = "";
                     string last_exec = "";
 
-                    foreach (var app_info in open_with_apps) {
+                    foreach (unowned AppInfo app_info in open_with_apps) {
                         index++;
                         /* Ensure no duplicate items */
                         unowned string label = app_info.get_display_name ();
@@ -2121,8 +2121,8 @@ namespace FM {
                             count++;
                         }
 
-                        last_label = label.dup ();
-                        last_exec = exec.dup ();
+                        last_label = label;
+                        last_exec = exec;
                     };
 
                     if (count >= 0) {
