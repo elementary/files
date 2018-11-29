@@ -956,7 +956,6 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         perm_grid.attach (perm_button_other, 1, 5, 2, 1);
         perm_grid.attach (l_perm, 1, 6, 1, 1);
         perm_grid.attach (perm_code, 2, 6, 1, 1);
-        perm_grid.margin_top = 12;
 
         update_perm_grid_toggle_states (goffile.permissions);
 
