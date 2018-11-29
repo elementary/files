@@ -388,6 +388,11 @@ namespace Marlin.View.Chrome {
             queue_draw ();
         }
 
+        public void right_click_menu_position_func (Gtk.Menu menu, out int x, out int y, out bool push_in) {
+            x = (int) menu_x_root;
+            y = (int) menu_y_root;
+            push_in = true;
+        }
     /** Context menu functions **/
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {
@@ -423,7 +428,11 @@ namespace Marlin.View.Chrome {
             }
 
             menu.show_all ();
-            menu.popup_at_pointer (null);
+            menu.popup (null,
+                        null,
+                        right_click_menu_position_func,
+                        0,
+                        event.time);
 
             if (files_menu_dir != null) {
                 files_menu_dir.init ();
@@ -455,8 +464,16 @@ namespace Marlin.View.Chrome {
             foreach (AppInfo app_info in app_info_list) {
                 if (app_info != null && app_info.get_executable () != Environment.get_application_name ()) {
                     at_least_one = true;
-                    var menu_item = new Gtk.MenuItem.with_label (app_info.get_name ());
+                    var menu_item = new Gtk.ImageMenuItem.with_label (app_info.get_name ());
                     menu_item.set_data ("appinfo", app_info);
+                    Icon icon;
+                    icon = app_info.get_icon ();
+                    if (icon == null) {
+                        icon = new ThemedIcon ("application-x-executable");
+                    }
+
+                    menu_item.set_image (new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU));
+                    menu_item.always_show_image = true;
                     menu_item.activate.connect (() => {
                         open_with_request (loc, app_info);
                     });
