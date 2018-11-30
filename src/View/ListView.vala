@@ -110,7 +110,7 @@ namespace FM {
         }
 
         private bool unload_directories () {
-            foreach (var rowref in subdirectories_to_unload) {
+            foreach (unowned Gtk.TreeRowReference rowref in subdirectories_to_unload) {
                 Gtk.TreeIter? iter = null;
                 Gtk.TreePath path;
                 if (rowref.valid ()) {

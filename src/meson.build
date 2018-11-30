@@ -1,19 +1,13 @@
-deps = [
-    CORE_LIB_DEPS,
-    dependency ('dbus-glib-1'),
-    dependency ('zeitgeist-2.0')
+pantheon_files_deps = [
+    common_deps,
+    pantheon_files_widgets_dep,
+    unity_dep,
+    plank_dep,
+    zeitgeist_dep,
+    project_config_dep,
 ]
 
-MARLIN_VAPI = vala.find_library('marlin', dirs: meson.current_source_dir ())
-MARLIN_DEP = declare_dependency (dependencies: [MARLIN_VAPI])
-
-if USE_UNITY
-    SRC_DEPS = [deps, UNITY, PLANK]
-else
-    SRC_DEPS = deps
-endif
-
-executable (
+pantheon_files_exec = executable (
     meson.project_name (),
     'main.vala',
 
@@ -62,13 +56,14 @@ executable (
     'View/Widgets/SingleLineEditableLabel.vala',
     'View/Widgets/TopMenu.vala',
 
-    dependencies : [SRC_DEPS, C_CORE_DEP, MARLIN_DEP, OTHER_DEPS],
-    include_directories: [ROOT_INC, CORE_INC, WIDGET_INC],
+    dependencies : [
+        pantheon_files_deps,
+        vala.find_library('marlin', dirs: meson.current_source_dir ()),
+    ],
     install: true,
-    link_with: [CORE_LIB, WIDGET_LIB]
 )
 
 install_data (
     join_paths(meson.current_source_dir (), 'View', 'directory_view_popup.ui'),
-    install_dir: UI_DIR
+    install_dir: ui_dir
 )

@@ -49,7 +49,7 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     public Contractor () {
     }
 
-    public override void context_menu (Gtk.Widget? widget, List<unowned GOF.File> gof_files) {
+    public override void context_menu (Gtk.Widget? widget, List<GOF.File> gof_files) {
         menu = widget as Gtk.Menu;
         return_if_fail (menu != null);
 
@@ -109,8 +109,8 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
         menu = (Gtk.Menu) ui_manager.get_widget ("/selection");
     }
 
-    public override void directory_loaded (void* user_data) {
-        current_directory = ((Object[]) user_data)[2] as GOF.File;
+    public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
+        current_directory = directory;
     }
 
     private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
@@ -122,7 +122,7 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     private static string[] get_mimetypes (List<GOF.File> files) {
         string[] mimetypes = new string[0];
 
-        foreach (var file in files) {
+        foreach (unowned GOF.File file in files) {
             var ftype = file.get_ftype ();
 
             if (ftype != null) {
@@ -136,7 +136,7 @@ public class Marlin.Plugins.Contractor : Marlin.Plugins.Base {
     private static File[] get_file_array (List<GOF.File> files) {
         File[] file_array = new File[0];
 
-        foreach (var file in files) {
+        foreach (unowned GOF.File file in files) {
             if (file.location != null) {
                 if (file.location.get_uri_scheme () == "recent") {
                     file_array += GLib.File.new_for_uri (file.get_display_target_uri ());

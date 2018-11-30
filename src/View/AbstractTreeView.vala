@@ -88,7 +88,6 @@ namespace FM {
             tree = new FM.TreeView ();
             tree.set_model (model);
             tree.set_headers_visible (false);
-            tree.set_rules_hint (true);
             tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_rubber_banding (true);
 
@@ -175,7 +174,7 @@ namespace FM {
             return tree.get_visible_range (out start_path, out end_path);
         }
 
-        protected override uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files) {
+        protected override uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
             uint count = 0;
 
             GLib.List<GOF.File> list = null;
@@ -183,12 +182,12 @@ namespace FM {
                 GOF.File? file; /* can be null if click on blank row in list view */
                 model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
                 if (file != null) {
-                    list.prepend (file);
+                    list.prepend ((owned) file);
                     count++;
                 }
             });
 
-            selected_files = list.copy ();
+            selected_files = (owned)list;
             return count;
         }
 

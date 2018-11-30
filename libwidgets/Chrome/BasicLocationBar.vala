@@ -25,7 +25,7 @@ namespace Marlin.View.Chrome {
         protected Gtk.Widget widget;
         private int minimum_width = 100;
         private string _path;
-        protected string display_path {
+        protected string displayed_path {
             set {
                 if (value == null) {
                     critical ("Tried to set null path");
@@ -122,17 +122,17 @@ namespace Marlin.View.Chrome {
         }
 
         protected void show_breadcrumbs () {
-            bread.set_breadcrumbs_path (display_path);
+            bread.set_breadcrumbs_path (displayed_path);
             this.minimum_width = bread.get_minimum_width () + 48; /* Allow extra space for margins */
             this.set_size_request (this.minimum_width, -1);
         }
 
-        public void set_display_path (string path) {
-            display_path = path; /* Will also change breadcrumbs */
+        public virtual void set_display_path (string path) {
+            displayed_path = path; /* Will also change breadcrumbs */
         }
 
         public string get_display_path () {
-            return display_path;
+            return displayed_path;
         }
 
         public bool set_focussed () {

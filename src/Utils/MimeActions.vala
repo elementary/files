@@ -101,10 +101,6 @@ public class Marlin.MimeActions {
             }
         }
 
-        if (result == null) {
-            return null;
-        }
-
         if (!file_has_local_path (file)) {
             filter_non_uri_apps (result);
         }
@@ -128,10 +124,6 @@ public class Marlin.MimeActions {
 
         if (!file_has_local_path (file)) {
             result = filter_non_uri_apps (result);
-        }
-
-        if (result == null) {
-            return null;
         }
 
         result.sort (application_compare_by_name);
@@ -168,24 +160,20 @@ public class Marlin.MimeActions {
                 continue;
             }
 
-            List<AppInfo> one_result = get_applications_for_file (file);
+            GLib.List<AppInfo> one_result = get_applications_for_file (file);
             one_result.sort (application_compare_by_id);
 
             if (result != null) {
                 result = intersect_application_lists (result, one_result);
             } else {
-                result = one_result.copy ();
+                result = (owned) one_result;
             }
 
-            if (result == null) {
-                return null;
+            if (result.length () == 0) {
+                return result;
             }
 
             previous_file = file;
-        }
-
-        if (result == null) {
-            return null;
         }
 
         result.sort (application_compare_by_name);
