@@ -12,7 +12,7 @@ set(CFLAGS
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 include_directories(${CMAKE_BINARY_DIR}/libcore/)
 
-vala_precompile(VALA_C pantheon-filestrash
+vala_precompile(VALA_C pantheon-files-trash
     plugin.vala
 PACKAGES
     granite
@@ -30,10 +30,10 @@ OPTIONS
 )
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
-add_library(pantheon-filestrash SHARED
+add_library(pantheon-files-trash SHARED
     ${VALA_C})
-target_link_libraries(pantheon-filestrash ${DEPS_LIBRARIES} pantheon-files-core)
-add_dependencies(pantheon-filestrash pantheon-files-core)
-install(TARGETS pantheon-filestrash DESTINATION ${PLUGIN_DIR}/core/)
+target_link_libraries(pantheon-files-trash ${DEPS_LIBRARIES} pantheon-files-core)
+add_dependencies(pantheon-files-trash pantheon-files-core)
+install(TARGETS pantheon-files-trash DESTINATION ${PLUGIN_DIR}/core/)
 install(FILES pantheon-files-trash.plug DESTINATION ${PLUGIN_DIR}/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)

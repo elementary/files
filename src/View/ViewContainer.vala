@@ -441,18 +441,14 @@ namespace Marlin.View {
             if (can_show_folder) {
                 assert (view != null);
                 content = view.get_content_box ();
+                var directory = dir.file;
 
                 /* Only record valid folders (will also log Zeitgeist event) */
-                browser.record_uri (dir.file.uri); /* will ignore null changes i.e reloading*/
+                browser.record_uri (directory.uri); /* will ignore null changes i.e reloading*/
 
                 /* Notify plugins */
-                Object[] data = new Object[3];
-                data[0] = window;
                 /* infobars are added to the view, not the active slot */
-                data[1] = view;
-                data[2] = dir.file;
-
-                plugins.directory_loaded ((void*) data);
+                plugins.directory_loaded (window, view, directory);
             } else {
                 /* Save previous uri but do not record current one */
                 browser.record_uri (null);
@@ -464,12 +460,12 @@ namespace Marlin.View {
         }
 
         private void store_selection () {
-            unowned GLib.List<unowned GOF.File> selected_files = view.get_selected_files ();
+            unowned GLib.List<GOF.File> selected_files = view.get_selected_files ();
             selected_locations = null;
 
             if (selected_files != null) {
                 selected_files.@foreach ((file) => {
-                    selected_locations.prepend (GLib.File.new_for_uri (file.uri));
+                    selected_locations.prepend (file.location);
                 });
             }
         }

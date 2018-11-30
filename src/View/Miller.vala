@@ -224,7 +224,7 @@ namespace Marlin.View {
                     last_uri = last_uri.slice (0, -1);
                 }
 
-                foreach (string d in dirs) {
+                foreach (unowned string d in dirs) {
                     if (d.length > 0) {
                         last_uri = GLib.Path.build_path (Path.DIR_SEPARATOR_S, last_uri, d);
 
@@ -525,7 +525,7 @@ namespace Marlin.View {
             return current_slot;
         }
 
-        public override unowned GLib.List<unowned GOF.File>? get_selected_files () {
+        public override unowned GLib.List<GOF.File>? get_selected_files () {
             return ((Marlin.View.Slot)(current_slot)).get_selected_files ();
         }
 

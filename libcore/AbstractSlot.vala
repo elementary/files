@@ -92,7 +92,7 @@ namespace GOF {
         }
 
         public abstract void initialize_directory ();
-        public abstract unowned GLib.List<unowned GOF.File>? get_selected_files ();
+        public abstract unowned GLib.List<GOF.File>? get_selected_files ();
         public abstract void set_active_state (bool set_active, bool animate = true);
         public abstract bool get_active_state ();
         public abstract unowned AbstractSlot? get_current_slot ();

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-11-20 20:42+0000\n"
+"PO-Revision-Date: 2018-11-26 00:05+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -390,9 +390,7 @@ msgstr "ファイルをゴミ箱に移動できません。削除をしてみま
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
-"このファイルはゴミ箱に移動することができませんでした。削除することもできない"
-"可能性もあります。"
+msgstr "このファイルをゴミ箱に移動できませんでした。削除もできない可能性があります。"
 
 #: ../libcore/marlin-file-operations.c:1817
 msgid ""
@@ -1407,7 +1405,7 @@ msgstr "処理がタイムアウトしました。"
 
 #: ../src/View/ViewContainer.vala:423
 msgid "Unable to Show Folder"
-msgstr "フォルダーを表示することができません"
+msgstr "フォルダーを表示できません"
 
 #: ../src/View/ViewContainer.vala:424
 msgid "The server for this folder could not be located."

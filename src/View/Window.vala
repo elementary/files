@@ -872,7 +872,8 @@ namespace Marlin.View {
 
             var gdk_state = get_window ().get_state ();
             // If window is tiled, is it on left (start = true) or right (start = false)?
-            var start = x + width < screen.get_width ();
+            var rect = get_display ().get_monitor_at_point (x, y).get_geometry ();
+            var start = x + width < rect.width;
 
             Preferences.settings.set_enum ("window-state",
                                            Marlin.WindowState.from_gdk_window_state (gdk_state, start));

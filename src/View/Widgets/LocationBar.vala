@@ -301,7 +301,6 @@ namespace Marlin.View.Chrome {
                 /* Ensure normal pathbar shown */
                 bread.hide_breadcrumbs = false;
             }
-
         }
     }
 }

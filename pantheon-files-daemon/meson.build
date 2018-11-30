@@ -1,18 +1,16 @@
-DEPS = [
-    CORE_LIB_DEPS,
-    dependency ('libnotify', version: '>=0.7.2'),
-]
-
-SRC = [
+pantheon_files_daemon_files = files(
     'main.vala',
     'FileManager1.vala',
     'marlind-tagging.vala'
-]
+)
 
-executable (
-    meson.project_name () + '-daemon',
-    SRC,
+executable(
+    meson.project_name() + '-daemon',
+    pantheon_files_daemon_files,
 
-    dependencies : DEPS,
+    dependencies : [
+        pantheon_files_core_dep,
+        notify_dep
+    ],
     install: true,
 )
