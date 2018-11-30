@@ -207,12 +207,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private async void rreal_update_file_info (GOF.File file) {
         return_if_fail (file != null);
 
-        if (!file.exists) {
-            yield daemon.deleteEntry (file.uri);
-            return;
-        }
-
         try {
+            if (!file.exists) {
+                yield daemon.deleteEntry (file.uri);
+                return;
+            }
+
             var rc = yield daemon.get_uri_infos (file.uri);
 
             VariantIter iter = rc.iterator ();

@@ -126,10 +126,6 @@ public class Marlin.MimeActions {
             result = filter_non_uri_apps (result);
         }
 
-        if (result == null) {
-            return null;
-        }
-
         result.sort (application_compare_by_name);
         return result;
     }
@@ -172,6 +168,7 @@ public class Marlin.MimeActions {
             } else {
                 result = (owned) one_result;
             }
+
 
             if (result.data == null) {
                 return result;
