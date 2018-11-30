@@ -88,7 +88,6 @@ namespace FM {
             tree = new FM.TreeView ();
             tree.set_model (model);
             tree.set_headers_visible (false);
-            tree.set_rules_hint (true);
             tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
             tree.set_rubber_banding (true);
 
