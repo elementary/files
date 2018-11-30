@@ -465,7 +465,9 @@ namespace Marlin.View.Chrome {
                 if (app_info != null && app_info.get_executable () != Environment.get_application_name ()) {
                     at_least_one = true;
                      var item_grid = new Gtk.Grid ();
-                    item_grid.add (new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU));
+                    var img = new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU);
+                    img.pixel_size = 16;
+                    item_grid.add (img);
                     item_grid.add (new Gtk.Label (app_info.get_name ()));
                      var menu_item = new Gtk.MenuItem ();
                     menu_item.add (item_grid);
