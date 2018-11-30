@@ -456,8 +456,7 @@ public class Async : Object {
         /* The following can run on reloading */
         if (file.mount != null) {
             debug ("Directory has mount point");
-            unowned GLib.List? trash_dirs = null;
-            trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
+            var trash_dirs = Marlin.FileOperations.get_trash_dirs_for_mount (file.mount);
             has_trash_dirs = (trash_dirs != null);
         } else {
             has_trash_dirs = is_local;
@@ -1203,7 +1202,7 @@ public class Async : Object {
         return (state == State.LOADED && file_hash.size () == 0);
     }
 
-    public unowned List<GOF.File>? get_sorted_dirs () {
+    public unowned List<unowned GOF.File>? get_sorted_dirs () {
         if (state != State.LOADED) { /* Can happen if pathbar tries to load unloadable directory */
             return null;
         }

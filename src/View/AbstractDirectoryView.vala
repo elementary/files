@@ -131,7 +131,7 @@ namespace FM {
         Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
 
-        unowned GLib.List<GOF.File> drag_file_list = null;
+        GLib.List<GOF.File> drag_file_list = null;
         GOF.File? drop_target_file = null;
         Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
@@ -204,7 +204,7 @@ namespace FM {
         /*  Selected files are originally obtained with
             gtk_tree_model_get(): this function increases the reference
             count of the file object.*/
-        protected GLib.List<unowned GOF.File> selected_files = null;
+        protected GLib.List<GOF.File> selected_files = null;
         private bool selected_files_invalid = true;
 
         private GLib.List<GLib.File> templates = null;
@@ -278,7 +278,7 @@ namespace FM {
 
         public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
         public signal void item_hovered (GOF.File? file);
-        public signal void selection_changed (GLib.List<unowned GOF.File> gof_file);
+        public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -750,18 +750,9 @@ namespace FM {
             return false;
         }
 
-        protected unowned GLib.List<GOF.File>
-        get_selected_files_for_transfer (GLib.List<unowned GOF.File> selection = get_selected_files ()) {
-
-            unowned GLib.List<GOF.File> list = null;
-
-            selection.@foreach ((file) => {
-                list.prepend (file);
-            });
-
-            list.reverse ();
-
-            return list;
+        protected GLib.List<GOF.File>
+        get_selected_files_for_transfer (GLib.List<GOF.File> selection = get_selected_files ()) {
+            return selection.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
         }
 
 /*** Private methods */
@@ -810,7 +801,11 @@ namespace FM {
                         if (GLib.ContentType.is_a (content_type, "text/plain")) {
                             open_file (file, screen, default_app);
                         } else {
-                            file.execute (screen, null, null);
+                            try {
+                                file.execute (null);
+                            } catch (Error e) {
+                                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, window);
+                            }
                         }
                     } else {
                         open_file (file, screen, default_app);
@@ -886,13 +881,11 @@ namespace FM {
                 if (delete_immediately) {
                     Marlin.FileOperations.@delete (locations,
                                                    window as Gtk.Window,
-                                                   after_trash_or_delete,
-                                                   this);
+                                                   after_trash_or_delete);
                 } else {
                     Marlin.FileOperations.trash_or_delete (locations,
                                                            window as Gtk.Window,
-                                                           after_trash_or_delete,
-                                                           this);
+                                                           after_trash_or_delete);
                 }
             }
 
@@ -942,15 +935,13 @@ namespace FM {
                                             null,
                                             null,
                                             0,
-                                            (Marlin.CreateCallback?) create_file_done,
-                                            this);
+                                            create_file_done);
         }
 
         private void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
-            Marlin.FileOperations.new_folder (null, null, slot.location,
-                                             (Marlin.CreateCallback?) create_file_done, this);
+            Marlin.FileOperations.new_folder (null, null, slot.location, create_file_done);
         }
 
         private void after_new_file_added (GOF.File? file) {
@@ -975,34 +966,23 @@ namespace FM {
         }
 
 /** File operation callbacks */
-        static void create_file_done (GLib.File? new_file, void* data) {
-            var view = data as FM.AbstractDirectoryView;
-
+        [CCode (instance_pos = -1)]
+        public void create_file_done (GLib.File? new_file) {
             if (new_file == null) {
                 return;
             }
 
-            if (view == null) {
-                warning ("View invalid after creating file");
-                return;
-            }
             /* Start to rename the file once we get signal that it has been added to model */
-            view.slot.directory.file_added.connect_after (view.after_new_file_added);
-            view.unblock_directory_monitor ();
+            slot.directory.file_added.connect_after (after_new_file_added);
+            unblock_directory_monitor ();
         }
 
-        /** Must pass a pointer to an instance of FM.AbstractDirectoryView as 3rd parameter when
-          * using this callback */
-        public static void after_trash_or_delete (bool user_cancel, void* data) {
-            var view = data as FM.AbstractDirectoryView;
-            if (view == null) {
-                return;
-            }
-
+        [CCode (instance_pos = -1)]
+        public void after_trash_or_delete (bool user_cancel) {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
-                view.set_cursor (view.deleted_path, false, false, false);
-                view.unblock_directory_monitor ();
+                set_cursor (deleted_path, false, false, false);
+                unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
             });
 
@@ -1022,7 +1002,7 @@ namespace FM {
          * when using keybindings. So we remember if the current selection
          * was already removed (but the view doesn't know about it yet).
          */
-            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
+            GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
                 trash_or_delete_files (selection, true, delete_immediately);
             }
@@ -1085,7 +1065,7 @@ namespace FM {
         }
 
         private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
-            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
+            GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             clipboard.cut_files (selection);
         }
 
@@ -1098,20 +1078,23 @@ namespace FM {
         }
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
-            unowned GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
+            GLib.List<GOF.File> selection = get_selected_files_for_transfer ();
             PF.FileUtils.restore_files_from_trash (selection, window);
 
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
-            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
-            unowned Gdk.Screen screen = get_screen ();
-            file.execute (screen, null, null);
+            try {
+                file.execute (null);
+            } catch (Error e) {
+                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, window);
+            }
         }
 
         private void on_selection_action_open_with_default (GLib.SimpleAction action, GLib.Variant? param) {
-            activate_selected_items (Marlin.OpenFlag.APP);
+            activate_selected_items (Marlin.OpenFlag.APP, get_files_for_action ());
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1120,7 +1103,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_other_app () {
-            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file = selection.data as GOF.File;
             open_file (file, null, null);
         }
@@ -1833,14 +1816,6 @@ namespace FM {
          * instead.
         **/
 
-        private void queue_context_menu (Gdk.Event event) {
-            if (drag_timer_id > 0) { /* already queued */
-                return;
-            }
-
-            start_drag_timer (event);
-        }
-
         protected void start_drag_timer (Gdk.Event event) {
             connect_drag_timeout_motion_and_release_events ();
             var button_event = (Gdk.EventButton)event;
@@ -1889,7 +1864,7 @@ namespace FM {
         }
 
         private bool valid_selection_for_edit () {
-            foreach (GOF.File file in get_selected_files ()) {
+            foreach (unowned GOF.File file in get_selected_files ()) {
                 if (file.is_root_network_folder ()) {
                     return false;
                 }
@@ -1899,7 +1874,7 @@ namespace FM {
         }
 
         private bool valid_selection_for_restore () {
-            foreach (GOF.File file in get_selected_files ()) {
+            foreach (unowned GOF.File file in get_selected_files ()) {
                 if (!(file.directory.get_basename () == "/")) {
                     return false;
                 }
@@ -2076,7 +2051,7 @@ namespace FM {
             GLib.MenuModel? app_submenu;
 
             string label = _("Invalid");
-            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File selected_file = selection.data;
 
             if (can_open_file (selected_file)) {
@@ -2214,7 +2189,7 @@ namespace FM {
                 return;
             }
 
-            unowned GLib.List<GOF.File> selection = get_files_for_action ();
+            GLib.List<GOF.File> selection = get_files_for_action ();
             GOF.File file;
 
             bool is_selected = selection != null;
@@ -2289,8 +2264,8 @@ namespace FM {
             }
         }
 
-        private void update_default_app (GLib.List<unowned GOF.File> selection) {
-            default_app = Marlin.MimeActions.get_default_application_for_files (get_files_for_action ());
+        private void update_default_app (GLib.List<GOF.File> selection) {
+            default_app = Marlin.MimeActions.get_default_application_for_files (selection);
             return;
         }
 
@@ -2439,8 +2414,7 @@ namespace FM {
                                                           slot.location,
                                                           new_name,
                                                           template,
-                                                          create_file_done,
-                                                          this);
+                                                          create_file_done);
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<GOF.File> files) {
@@ -2659,8 +2633,8 @@ namespace FM {
         /* For actions on the background we need to return the current slot directory, but this
          * should not be added to the list of selected files
          */
-        private unowned GLib.List<GOF.File> get_files_for_action () {
-            unowned GLib.List<GOF.File> action_files = null;
+        private GLib.List<GOF.File> get_files_for_action () {
+            GLib.List<GOF.File> action_files = null;
             update_selected_files_and_menu ();
 
             if (selected_files == null) {
@@ -2669,15 +2643,13 @@ namespace FM {
                 selected_files.@foreach ((file) => {
                     var goffile = GOF.File.get_by_uri (file.get_display_target_uri ());
                     goffile.query_update ();
-                    action_files.prepend (goffile);
+                    action_files.append (goffile);
                 });
-
-                action_files.reverse ();
             } else {
-                action_files = selected_files;
+                action_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
             }
 
-            return action_files;
+            return (owned)action_files;
         }
 
         protected void on_view_items_activated () {
@@ -2694,7 +2666,7 @@ namespace FM {
           * any keyboard group or level (in order to allow for non-QWERTY keyboards) **/
         protected bool match_keycode (uint keyval, uint code, int level) {
             Gdk.KeymapKey [] keys;
-            Gdk.Keymap keymap = Gdk.Keymap.get_default ();
+            Gdk.Keymap keymap = Gdk.Keymap.get_for_display (get_display ());
             if (keymap.get_entries_for_keyval (keyval, out keys)) {
                 foreach (var key in keys) {
                     if (code == key.keycode && level == key.level) {
@@ -2725,10 +2697,12 @@ namespace FM {
             if (keyval > 127) {
                 int eff_grp, level;
 
-                if (!Gdk.Keymap.get_default ().translate_keyboard_state (event.hardware_keycode,
-                                                                         event.state, event.group,
-                                                                         out keyval, out eff_grp,
-                                                                         out level, out consumed_mods)) {
+                if (!Gdk.Keymap.get_for_display (get_display ()).translate_keyboard_state (
+                        event.hardware_keycode,
+                        event.state, event.group,
+                        out keyval, out eff_grp,
+                        out level, out consumed_mods)) {
+
                     warning ("translate keyboard state failed");
                     keyval = event.keyval;
                     consumed_mods = 0;
@@ -2918,7 +2892,7 @@ namespace FM {
                 case Gdk.Key.C:
                     if (only_control_pressed) {
                         /* Caps Lock interferes with `shift_pressed` boolean so use another way */
-                        var caps_on = Gdk.Keymap.get_default ().get_caps_lock_state ();
+                        var caps_on = Gdk.Keymap.get_for_display (get_display ()).get_caps_lock_state ();
                         var cap_c = keyval == Gdk.Key.C;
 
                         if (caps_on != cap_c) { /* Shift key pressed */
@@ -3136,7 +3110,14 @@ namespace FM {
 
                 if (new_name != original_name) {
                     proposed_name = new_name;
-                    set_file_display_name (file.location, new_name, after_rename);
+                    set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
+                        try {
+                            set_file_display_name.end (res);
+                        } catch (Error e) {
+                        }
+
+                        on_name_editing_canceled ();
+                    });
                 } else {
                     warning ("Name unchanged");
                     on_name_editing_canceled ();
@@ -3149,17 +3130,15 @@ namespace FM {
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
-        public void set_file_display_name (GLib.File old_location, string new_name,
-                                           PF.FileUtils.RenameCallbackFunc? f) {
-
+        public async GLib.File? set_file_display_name (GLib.File old_location, string new_name, GLib.Cancellable? cancellable = null) throws GLib.Error {
             /* Wait for the file to be added to the model before trying to select and scroll to it */
             slot.directory.file_added.connect_after (after_renamed_file_added);
-            PF.FileUtils.set_file_display_name (old_location, new_name, f);
+            try {
+                return yield PF.FileUtils.set_file_display_name (old_location, new_name, cancellable);
+            } catch (GLib.Error e) {
+                throw e;
+            }
         }
-
-        public void after_rename (GLib.File file, GLib.File? result_location, GLib.Error? e) {
-            on_name_editing_canceled ();
-         }
 
         private void after_renamed_file_added (GOF.File? new_file) {
             slot.directory.file_added.disconnect (after_renamed_file_added);
@@ -3724,7 +3703,7 @@ namespace FM {
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
-        protected abstract uint get_selected_files_from_model (out GLib.List<unowned GOF.File> selected_files);
+        protected abstract uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files);
         protected abstract uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false);

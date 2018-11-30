@@ -24,13 +24,13 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
     private unowned TrashMonitor trash_monitor;
     private bool trash_is_empty = false;
 
-    private Gee.HashMap<unowned GOF.AbstractSlot,Gtk.ActionBar> actionbars;
+    private Gee.HashMap<GOF.AbstractSlot,Gtk.ActionBar> actionbars;
 
     private Gtk.Button delete_button;
     private Gtk.Button restore_button;
 
     public Trash () {
-        actionbars = new Gee.HashMap<unowned GOF.AbstractSlot, Gtk.ActionBar> ();
+        actionbars = new Gee.HashMap<GOF.AbstractSlot, Gtk.ActionBar> ();
         trash_monitor = TrashMonitor.get_default ();
         trash_monitor.notify["is-empty"].connect (() => {
             trash_is_empty = trash_monitor.is_empty;
@@ -51,13 +51,10 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
         });
     }
 
-    public override void directory_loaded (void* user_data) {
-        unowned GOF.File file = ((Object[]) user_data)[2] as GOF.File;
-        assert (((Object[]) user_data)[1] is GOF.AbstractSlot);
-        unowned GOF.AbstractSlot slot = ((Object[]) user_data)[1] as GOF.AbstractSlot;
-        Gtk.ActionBar? actionbar = actionbars.@get (slot);
+    public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
+        Gtk.ActionBar? actionbar = actionbars.@get (view);
         /* Ignore directories other than trash and ignore reloading trash */
-        if (file.location.get_uri_scheme () == "trash") {
+        if (directory.location.get_uri_scheme () == "trash") {
             /* Only add actionbar once */
             if (actionbar == null) {
                 actionbar = new Gtk.ActionBar ();
@@ -80,10 +77,10 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
 
                 restore_button.clicked.connect (() => {
                     if (restore_button.label == _(RESTORE_ALL)) {
-                        slot.set_all_selected (true);
+                        view.set_all_selected (true);
                     }
 
-                    unowned GLib.List<GOF.File> selection = slot.get_selected_files ();
+                    unowned GLib.List<GOF.File> selection = view.get_selected_files ();
                     PF.FileUtils.restore_files_from_trash (selection, window);
                 });
 
@@ -92,18 +89,17 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                         Marlin.FileOperations.empty_trash (delete_button);
                     } else {
                         GLib.List<GLib.File> to_delete = null;
-                        foreach (GOF.File gof in slot.get_selected_files ()) {
+                        foreach (GOF.File gof in view.get_selected_files ()) {
                             to_delete.prepend (gof.location);
                         }
 
                         if (to_delete != null) {
-                            Gtk.Window window = (Gtk.Window)(delete_button.get_ancestor (typeof (Gtk.Window)));
                             Marlin.FileOperations.@delete (to_delete, window);
                         }
                     }
                 });
 
-                slot.selection_changed.connect_after ((files) => {
+                view.selection_changed.connect_after ((files) => {
                     if (files == null) {
                         restore_button.label = _(RESTORE_ALL);
                         delete_button.label = _(DELETE_ALL);
@@ -113,14 +109,14 @@ public class Marlin.Plugins.Trash : Marlin.Plugins.Base {
                     }
                 });
 
-                slot.add_extra_action_widget (actionbar);
-                actionbars.@set (slot, actionbar);
+                view.add_extra_action_widget (actionbar);
+                actionbars.@set (view, actionbar);
             }
 
             set_actionbar (actionbar);
         } else if (actionbar != null) {  /* not showing trash directory */
             actionbar.destroy ();
-            actionbars.unset (slot);
+            actionbars.unset (view);
         }
     }
 

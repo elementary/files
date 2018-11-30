@@ -46,6 +46,11 @@
 #include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
+typedef void (* MarlinCopyCallback)      (GHashTable *debuting_uris,
+                                          gpointer    callback_data);
+typedef void (* MarlinUnmountCallback)   (gpointer    callback_data);
+typedef void (* MarlinOpCallback)        (gpointer    callback_data);
+
 typedef struct {
     GIOSchedulerJob *io_job;
     GTimer *time;
@@ -2156,10 +2161,15 @@ dir_has_files (GFile *dir)
 
 static GList *
 prepend_if_exists (GList *list, GFile *file) {
-    if (file != NULL && G_IS_FILE (file) && g_file_query_exists (file, NULL))
-        return g_list_prepend (list, file);
-    else
-        return list;
+    if (file != NULL && G_IS_FILE (file)) {
+        if (g_file_query_exists (file, NULL)) {
+            return g_list_prepend (list, file);
+        }
+
+        g_object_unref (file);
+    }
+
+    return list;
 }
 
 static GList *
@@ -2243,102 +2253,61 @@ marlin_file_operations_has_trash_files (GMount *mount)
     return has_trash_files (mount);
 }
 
-static void
-mount_callback_data_notify (gpointer data,
-                            GObject *object)
+void
+marlin_file_operations_mount_volume_finish_silent (GObject *source_object,
+                                                   GAsyncResult *res,
+                                                   gpointer user_data)
 {
-    GMountOperation *mount_op;
-
-    mount_op = G_MOUNT_OPERATION (data);
-    g_object_set_data (G_OBJECT (mount_op), "mount-callback", NULL);
-    g_object_set_data (G_OBJECT (mount_op), "mount-callback-data", NULL);
-}
-
-static void
-volume_mount_cb (GObject *source_object,
-                 GAsyncResult *res,
-                 gpointer user_data)
-{
-    MarlinMountCallback mount_callback;
-    GObject *mount_callback_data_object;
-    GMountOperation *mount_op = user_data;
-    GError *error;
-    char *primary;
-    char *name;
-
-    error = NULL;
-    //TODO do we want autorun?
-    //marlin_allow_autorun_for_volume_finish (G_VOLUME (source_object));
-    if (!g_volume_mount_finish (G_VOLUME (source_object), res, &error)) {
-        if (error->code != G_IO_ERROR_FAILED_HANDLED) {
-            name = g_volume_get_name (G_VOLUME (source_object));
-            primary = g_strdup_printf (_("Unable to mount %s"), name);
-            g_free (name);
-            pf_dialogs_show_error_dialog (primary,
-                                          error->message,
-                                          NULL);
-            g_free (primary);
-        }
+    GError *error = NULL;
+    if (!marlin_file_operations_mount_volume_full_finish (res, &error)) {
         g_error_free (error);
     }
-
-    mount_callback = (MarlinMountCallback)
-        g_object_get_data (G_OBJECT (mount_op), "mount-callback");
-    mount_callback_data_object =
-        g_object_get_data (G_OBJECT (mount_op), "mount-callback-data");
-
-    if (mount_callback != NULL) {
-        (* mount_callback) (G_VOLUME (source_object),
-                            mount_callback_data_object);
-
-        if (mount_callback_data_object != NULL) {
-            g_object_weak_unref (mount_callback_data_object,
-                                 mount_callback_data_notify,
-                                 mount_op);
-        }
-    }
-
-    g_object_unref (mount_op);
 }
 
 void
-marlin_file_operations_mount_volume (GtkWindow *parent_window,
-                                     GVolume *volume,
-                                     gboolean allow_autorun)
+marlin_file_operations_mount_volume (GVolume *volume,
+                                     GtkWindow *parent_window)
 {
-    marlin_file_operations_mount_volume_full (parent_window, volume,
-                                              allow_autorun, NULL, NULL);
+    marlin_file_operations_mount_volume_full (volume,
+                                              parent_window,
+                                              marlin_file_operations_mount_volume_finish_silent,
+                                              NULL);
 }
 
 void
-marlin_file_operations_mount_volume_full (GtkWindow *parent_window,
-                                          GVolume *volume,
-                                          gboolean allow_autorun,
-                                          MarlinMountCallback mount_callback,
-                                          GObject *mount_callback_data_object)
+marlin_file_operations_mount_volume_full (GVolume *volume,
+                                          GtkWindow *parent_window,
+                                          GAsyncReadyCallback callback,
+                                          gpointer user_data)
 {
     GMountOperation *mount_op;
 
     mount_op = gtk_mount_operation_new (parent_window);
     g_mount_operation_set_password_save (mount_op, G_PASSWORD_SAVE_FOR_SESSION);
-    g_object_set_data (G_OBJECT (mount_op),
-                       "mount-callback",
-                       mount_callback);
 
-    if (mount_callback != NULL &&
-        mount_callback_data_object != NULL) {
-        g_object_weak_ref (mount_callback_data_object,
-                           mount_callback_data_notify,
-                           mount_op);
+    g_volume_mount (volume, 0, mount_op, NULL, callback, user_data);
+    g_object_unref (mount_op);
+}
+
+gboolean marlin_file_operations_mount_volume_full_finish (GAsyncResult  *result,
+                                                          GError       **error)
+{
+    GVolume *volume = G_VOLUME (g_async_result_get_source_object (result));
+    if (!g_volume_mount_finish (volume, result, error)) {
+        if (error != NULL && (*error)->code != G_IO_ERROR_FAILED_HANDLED) {
+            gchar *name = g_volume_get_name (volume);
+            gchar *primary = g_strdup_printf (_("Unable to mount %s"), name);
+            g_free (name);
+            pf_dialogs_show_error_dialog (primary, (*error)->message, NULL);
+            g_free (primary);
+        }
+
+        g_object_unref (volume);
+        return FALSE;
     }
-    g_object_set_data (G_OBJECT (mount_op),
-                       "mount-callback-data",
-                       mount_callback_data_object);
 
-    //TODO do we want autorun?
-    /*if (allow_autorun)
-        marlin_allow_autorun_for_volume (volume);*/
-    g_volume_mount (volume, 0, mount_op, NULL, volume_mount_cb, mount_op);
+    g_object_unref (volume);
+    return TRUE;
 }
 
 static void

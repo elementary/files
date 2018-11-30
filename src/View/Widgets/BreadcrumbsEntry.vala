@@ -500,11 +500,11 @@ namespace Marlin.View.Chrome {
         private void append_subdirectories (Gtk.Menu menu, GOF.Directory.Async dir) {
             /* Append list of directories at the same level */
             if (dir.can_load) {
-                unowned List<GOF.File>? sorted_dirs = dir.get_sorted_dirs ();
+                unowned List<unowned GOF.File>? sorted_dirs = dir.get_sorted_dirs ();
 
                 if (sorted_dirs != null) {
                     menu.append (new Gtk.SeparatorMenuItem ());
-                    foreach (var gof in sorted_dirs) {
+                    foreach (unowned GOF.File gof in sorted_dirs) {
                         var menuitem = new Gtk.MenuItem.with_label (gof.get_display_name ());
                         menuitem.set_data ("location", gof.uri);
                         menu.append (menuitem);
