@@ -25,6 +25,7 @@ namespace GOF.Directory {
 public class Async : Object {
     private static HashTable<GLib.File, unowned GOF.Directory.Async> directory_cache;
     private static Mutex dir_cache_lock;
+    private static int DESTRUCT_DELAY_SEC = 5;
 
     static construct {
         directory_cache = new HashTable<GLib.File, unowned GOF.Directory.Async> (GLib.File.hash, GLib.File.equal);
@@ -527,11 +528,17 @@ public class Async : Object {
             Async dir = (Async) object;
             debug ("Async is last toggle_ref_notify %s", dir.file.uri);
 
-            if (!dir.removed_from_cache) {
-                Async.remove_dir_from_cache (dir);
-            }
+            Timeout.add_seconds (DESTRUCT_DELAY_SEC, () => {
+                if (dir.ref_count <= 2) { /* The closure adds another ref */
+                    if (!dir.removed_from_cache) {
+                        Async.remove_dir_from_cache (dir);
+                    }
 
-            dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
+                    dir.remove_toggle_ref ((ToggleNotify) toggle_ref_notify);
+                }
+
+                return false;
+            });
         }
     }
 
