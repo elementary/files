@@ -125,6 +125,7 @@ namespace Marlin.View.Chrome {
             hide_search_icon ();
             show_refresh_icon ();
             focus_out_event (event);
+            check_home ();
             return true;
         }
         protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
@@ -276,6 +277,26 @@ namespace Marlin.View.Chrome {
                 focus_timeout_id = 0;
                 return GLib.Source.REMOVE;
             });
+        }
+
+        public override void set_display_path (string uri) {
+            base.set_display_path (uri);
+            check_home ();
+        }
+
+        private void check_home () {
+            try {
+                bread.hide_breadcrumbs = GLib.Filename.from_uri (displayed_path) == Environment.get_home_dir ();
+            } catch (Error e) {
+                bread.hide_breadcrumbs = false;
+            }
+
+            if (bread.hide_breadcrumbs) {
+                show_placeholder ();
+                show_search_icon ();
+            } else {
+                hide_search_icon ();
+            }
         }
     }
 }
