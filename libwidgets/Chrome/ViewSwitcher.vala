@@ -23,7 +23,7 @@
 
 namespace Marlin.View.Chrome {
     public class ViewSwitcher : Granite.Widgets.ModeButton {
-        private const int SWITCH_DELAY_MSEC = 200;
+        private const int SWITCH_DELAY_MSEC = 100;
         private bool freeze_update = false;
         public GLib.SimpleAction view_mode_action { get; construct; }
         private uint mode_change_timeout_id = 0;
@@ -51,7 +51,7 @@ namespace Marlin.View.Chrome {
                     return;
                 }
 
-                Timeout.add (SWITCH_DELAY_MSEC, () => {
+                mode_change_timeout_id = Timeout.add (SWITCH_DELAY_MSEC, () => {
                     switch (last_selected) {
                         case 0:
                             view_mode_action.activate (new GLib.Variant.string ("ICON"));
