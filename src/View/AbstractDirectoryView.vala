@@ -2083,7 +2083,6 @@ namespace FM {
 
         private GLib.MenuModel? build_submenu_open_with_applications (ref Gtk.Builder builder,
                                                                       GLib.List<GOF.File> selection) {
-
             var open_with_submenu = new GLib.Menu ();
             open_with_apps = null;
 
@@ -2103,26 +2102,27 @@ namespace FM {
 
                 filter_this_app_from_open_with_apps ();
 
-                if (open_with_apps != null) {
+                if (open_with_apps.data != null) {
                     var apps_section = new GLib.Menu ();
                     int index = -1;
                     int count = 0;
                     string last_label = "";
                     string last_exec = "";
 
-                    foreach (var app in open_with_apps) {
+                    foreach (unowned AppInfo app_info in open_with_apps) {
                         index++;
-                        if (app != null && app is AppInfo) {
-                            var label = app.get_display_name ();
-                            var exec = app.get_executable ().split (" ")[0];
-                            if (label != last_label || exec != last_exec) {
-                                apps_section.append (label, "selection.open_with_app::" + index.to_string ());
-                                count++;
-                            }
-
-                            last_label = label.dup ();
-                            last_exec = exec.dup ();
+                        /* Ensure no duplicate items */
+                        unowned string label = app_info.get_display_name ();
+                        unowned string exec = app_info.get_executable ().split (" ")[0];
+                        if (label != last_label || exec != last_exec) {
+                             var menu_item = new GLib.MenuItem (app_info.get_name (), GLib.Action.print_detailed_name ("selection.open_with_app", new GLib.Variant.int32 (index)));
+                            menu_item.set_icon (app_info.get_icon ());
+                            apps_section.append_item (menu_item);
+                            count++;
                         }
+
+                        last_label = label;
+                        last_exec = exec;
                     };
 
                     if (count >= 0) {
