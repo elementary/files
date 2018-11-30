@@ -113,8 +113,8 @@ namespace GOF {
         public virtual Gtk.Widget get_content_box () {
             return content_box as Gtk.Widget;
         }
-        public virtual string? get_root_uri () {return directory.file.uri;}
-        public virtual string? get_tip_uri () {return null;}
+        public virtual string get_root_uri () {return directory.file.uri;}
+        public virtual string get_tip_uri () {return "";}
         public virtual bool get_realized () {return content_box.get_realized ();}
 
     }

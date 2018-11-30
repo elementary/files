@@ -434,17 +434,13 @@ namespace Marlin.View {
                 set_tab_label (check_for_tab_with_same_name (id, tab_name), tab, tab_name);
             });
 
-            content.loading.connect ((is_loading, is_active) => {
+            content.loading.connect ((is_loading) => {
                 tab.working = is_loading;
-                /* Signal could arrive after a different slot is made active */
-                if (is_active) {
-                    update_top_menu ();
-                    update_title_and_pathbar (content.uri);
-                }
+                on_loading_or_active (content);
             });
 
             content.active.connect (() => {
-                update_top_menu ();
+                on_loading_or_active (content);
             });
 
             content.add_view (mode, location);
@@ -452,6 +448,28 @@ namespace Marlin.View {
             /* Need to have created a slot before changing tab to avoid a race where the topmenu can end up insensitive */
             change_tab ((int)tabs.insert_tab (tab, -1));
             tabs.current = tab;
+        }
+
+        private void on_loading_or_active (ViewContainer content) {
+            if (restoring_tabs || current_tab == null || content != current_tab) {
+                return;
+            }
+
+            /* Update browser buttons */
+            top_menu.set_back_menu (current_tab.get_go_back_path_list ());
+            top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
+            top_menu.can_go_back = current_tab.can_go_back;
+            top_menu.can_go_forward = (current_tab.can_show_folder && current_tab.can_go_forward);
+            top_menu.working = current_tab.is_loading;
+
+            /* Update viewmode switch, action state and settings */
+            var mode = current_tab.view_mode;
+            view_switcher.mode = mode;
+            view_switcher.sensitive = current_tab.can_show_folder;
+            get_action ("view_mode").set_state (mode_strings [(int)mode]);
+            Preferences.settings.set_enum ("default-viewmode", mode);
+
+            update_title_and_pathbar (content.uri);
         }
 
         private string check_for_tab_with_same_name (int id, string path) {
@@ -900,8 +918,8 @@ namespace Marlin.View {
                 /* ViewContainer is responsible for returning valid uris */
                 vb.add ("(uss)",
                         view_container.view_mode,
-                        view_container.get_root_uri () ?? PF.UserUtils.get_real_user_home (),
-                        view_container.get_tip_uri () ?? ""
+                        view_container.get_root_uri (),
+                        view_container.get_tip_uri ()
                        );
             }
 
@@ -952,12 +970,6 @@ namespace Marlin.View {
                 mode = Marlin.ViewMode.INVALID;
                 root_uri = null;
                 tip_uri = null;
-
-                /* Prevent too rapid loading of tabs which can cause crashes
-                 * This may not be necessary with the Vala version of the views but does no harm
-                 */
-                /*TODO Remove this after sufficient testing */
-                Thread.usleep (100000);
             }
 
             restoring_tabs = false;
@@ -976,17 +988,13 @@ namespace Marlin.View {
             tabs.current = tabs.get_tab_by_index (active_tab_position);
             change_tab (active_tab_position);
 
-            string path = "";
-            if (current_tab != null) {
-                path = current_tab.get_tip_uri ();
+            var path = current_tab.get_tip_uri ();
 
-                if (path == null || path == "") {
-                    path = current_tab.get_root_uri ();
-                }
+            if (path != "") {
+                /* Current tab is a Miller View - set path to tip location */
+                top_menu.update_location_bar (path, false);
             }
 
-            /* Render the final path in the location bar without animation */
-            top_menu.update_location_bar (path, false);
             return tabs_added;
         }
 
@@ -1020,26 +1028,6 @@ namespace Marlin.View {
             } else {
                 warning ("Invalid tip uri for Miller View %s", unescaped_tip_uri);
             }
-        }
-
-        private void update_top_menu () {
-            if (restoring_tabs || current_tab == null) {
-                return;
-            }
-
-            /* Update browser buttons */
-            top_menu.set_back_menu (current_tab.get_go_back_path_list ());
-            top_menu.set_forward_menu (current_tab.get_go_forward_path_list ());
-            top_menu.can_go_back = current_tab.can_go_back;
-            top_menu.can_go_forward = (current_tab.can_show_folder && current_tab.can_go_forward);
-            top_menu.working = current_tab.is_loading;
-
-            /* Update viewmode switch, action state and settings */
-            var mode = current_tab.view_mode;
-            view_switcher.mode = mode;
-            view_switcher.sensitive = current_tab.can_show_folder;
-            get_action ("view_mode").set_state (mode_strings [(int)mode]);
-            Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
         private void update_title_and_pathbar (string uri) {

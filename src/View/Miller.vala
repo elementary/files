@@ -541,18 +541,15 @@ namespace Marlin.View {
             return current_slot.is_active;
         }
 
-        public override string? get_tip_uri () {
-            if (slot_list != null &&
-                slot_list.last () != null &&
-                slot_list.last ().data is GOF.AbstractSlot) {
-
+        public override string get_tip_uri () {
+            if (slot_list.length () > 1) { /* Length is small */
                 return slot_list.last ().data.uri;
             } else {
-                return null;
+                return "";
             }
         }
 
-        public override string? get_root_uri () {
+        public override string get_root_uri () {
             return root_location.get_uri ();
         }
 

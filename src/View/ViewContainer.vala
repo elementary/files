@@ -112,7 +112,7 @@ namespace Marlin.View {
         private GLib.List<GLib.File>? selected_locations = null;
 
         public signal void tab_name_changed (string tab_name);
-        public signal void loading (bool is_loading, bool is_active);
+        public signal void loading (bool is_loading);
         public signal void active ();
         /* path-changed signal no longer used */
 
@@ -288,7 +288,7 @@ namespace Marlin.View {
             disconnect_slot_signals (view);
             content = null; /* Make sure old slot and directory view are destroyed */
             view = null; /* Pre-requisite for add view */
-            loading (false, false);
+            loading (false);
         }
 
         private void after_mode_change () {
@@ -354,7 +354,7 @@ namespace Marlin.View {
             update_tab_name ();
 
             can_show_folder = false;
-            loading (true, true); /* Assume slot is active when initialised */
+            loading (true);
         }
 
        private void update_tab_name () {
@@ -455,7 +455,7 @@ namespace Marlin.View {
             }
 
             update_tab_name ();
-            loading (false, slot.get_active_state ()); /* Will cause topmenu to update if slot is active*/
+            loading (false);
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */
         }
 
@@ -544,21 +544,11 @@ namespace Marlin.View {
         }
 
         public string get_root_uri () {
-            string path = "";
-            if (view != null) {
-                path = view.get_root_uri () ?? "";
-            }
-
-            return path;
+            return view != null ? view.get_root_uri () : PF.UserUtils.get_real_user_home ();
         }
 
         public string get_tip_uri () {
-            string path = "";
-            if (view != null) {
-                path = view.get_tip_uri () ?? "";
-            }
-
-            return path;
+            return view != null ? view.get_tip_uri () : "";
         }
 
         public void reload () {
