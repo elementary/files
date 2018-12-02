@@ -163,14 +163,14 @@ public class Marlin.MimeActions {
             GLib.List<AppInfo> one_result = get_applications_for_file (file);
             one_result.sort (application_compare_by_id);
 
-            if (result.data != null) {
+            if (result != null && result.data != null) {
                 result = intersect_application_lists (result, one_result);
             } else {
                 result = (owned) one_result;
             }
 
 
-            if (result.data == null) {
+            if (result == null || result.data == null) {
                 return result;
             }
 
