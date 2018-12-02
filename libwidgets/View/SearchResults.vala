@@ -94,6 +94,7 @@ namespace Marlin.View.Chrome {
         public bool working { get; private set; default = false; }
 
         private new Gtk.Widget parent;
+        private Gtk.ActionBar action_bar;
         protected int n_results { get; private set; default = 0; }
 
         File current_root;
@@ -239,7 +240,21 @@ namespace Marlin.View.Chrome {
 
             scroll.add (view);
             frame.add (scroll);
-            add (frame);
+            frame.expand = true; /* else shrinks inside grid */
+            var grid = new Gtk.Grid ();
+            grid.orientation = Gtk.Orientation.VERTICAL;
+            grid.add (frame);
+            add (grid);
+
+            action_bar = new Gtk.ActionBar ();
+            action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
+            var more_button = new Gtk.Button.from_icon_name ("view-more-symbolic", Gtk.IconSize.BUTTON);
+            more_button.sensitive = false;
+            more_button.tooltip_text = _("Show more");
+
+            action_bar.add (more_button);
+            action_bar.show_all ();
+            grid.add (action_bar);
 
             button_press_event.connect (on_button_press_event);
             view.button_press_event.connect (on_view_button_press_event);
@@ -609,7 +624,9 @@ namespace Marlin.View.Chrome {
             }
 
             int total = int.max ((items + headers), 2);
+
             var height = total * (cell_height + separator_height);
+
             if (x < workarea.x) {
                 x = workarea.x;
             } else if (x + width_request > workarea.x + workarea.width) {
@@ -617,12 +634,16 @@ namespace Marlin.View.Chrome {
             }
 
             y += parent_alloc.height;
+            Gtk.Allocation bar_alloc;
+            action_bar.get_allocation (out bar_alloc);
 
             if (y + height > workarea.y + workarea.height) {
-                height = workarea.y + workarea.height - y - 12;
+                height = workarea.y + workarea.height - y - 12 - bar_alloc.height;
             }
 
+
             scroll.set_min_content_height (height);
+
             set_size_request (int.min (parent_alloc.width, workarea.width), height);
             move (x, y);
             resize (width_request, height_request);
