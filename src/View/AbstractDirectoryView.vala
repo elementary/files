@@ -54,7 +54,7 @@ namespace FM {
         /* Menu Handling */
         const GLib.ActionEntry [] selection_entries = {
             {"open", on_selection_action_open_executable},
-            {"open_with_app", on_selection_action_open_with_app, "s"},
+            {"open-with-app", on_selection_action_open_with_app, "i"},
             {"open_with_default", on_selection_action_open_with_default},
             {"open_with_other_app", on_selection_action_open_with_other_app},
             {"rename", on_selection_action_rename},
@@ -1098,7 +1098,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
-            var index = int.parse (param.get_string ());
+            var index = param.get_int32 ();
             open_files_with (open_with_apps.nth_data ((uint)index), get_files_for_action ());
         }
 
@@ -2104,7 +2104,7 @@ namespace FM {
 
                 if (open_with_apps.data != null) {
                     var apps_section = new GLib.Menu ();
-                    int index = -1;
+                    int32 index = -1;
                     int count = 0;
                     string last_label = "";
                     string last_exec = "";
@@ -2115,7 +2115,9 @@ namespace FM {
                         unowned string label = app_info.get_display_name ();
                         unowned string exec = app_info.get_executable ().split (" ")[0];
                         if (label != last_label || exec != last_exec) {
-                             var menu_item = new GLib.MenuItem (app_info.get_name (), GLib.Action.print_detailed_name ("selection.open_with_app", new GLib.Variant.int32 (index)));
+                            var detailed_name = GLib.Action.print_detailed_name ("selection.open-with-app",
+                                                                                 new Variant.int32 (index));
+                            var menu_item = new GLib.MenuItem (app_info.get_name (), detailed_name);
                             menu_item.set_icon (app_info.get_icon ());
                             apps_section.append_item (menu_item);
                             count++;
