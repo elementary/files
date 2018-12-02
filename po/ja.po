@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-11-26 00:05+0000\n"
+"PO-Revision-Date: 2018-12-02 06:24+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -32,7 +32,7 @@ msgstr "%s へのリンク"
 #: ../libcore/gof-file.c:1590
 #, c-format
 msgid "Failed to parse the desktop file: %s"
-msgstr "デスクトップファイルを解析できませんでした：%s"
+msgstr "デスクトップファイルを解析できませんでした: %s"
 
 #: ../libcore/gof-file.c:1598
 msgid "Failed to parse the desktop file"
@@ -41,12 +41,12 @@ msgstr "デスクトップファイルを解析できませんでした"
 #: ../libcore/gof-file.c:1612
 #, c-format
 msgid "Failed to create command from file: %s"
-msgstr "ファイルからコマンドを作成できませんでした：%s"
+msgstr "ファイルからコマンドを作成できませんでした: %s"
 
 #: ../libcore/gof-file.c:1623
 #, c-format
 msgid "Unable to Launch Desktop File: %s"
-msgstr "デスクトップファイルを実行できませんでした：%s"
+msgstr "デスクトップファイルを実行できませんでした: %s"
 
 #: ../libcore/marlin-file-operations.c:155
 #: ../libcore/FileConflictDialog.vala:185
@@ -1602,7 +1602,7 @@ msgstr "デバイスの使用状況"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:152
 msgid "Capacity:"
-msgstr "容量："
+msgstr "容量:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:153
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:156
@@ -1614,11 +1614,11 @@ msgstr "不明"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Available:"
-msgstr "利用可能："
+msgstr "利用可能:"
 
 #: ../src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Used:"
-msgstr "使用済み："
+msgstr "使用済み:"
 
 #: ../src/Dialogs/ChooseAppDialog.vala:40
 msgid "Set as default"
@@ -1654,69 +1654,69 @@ msgstr "測定できませんでした"
 #: ../libcore/FileConflictDialog.vala:119
 #: ../libcore/FileConflictDialog.vala:147
 msgid "Size:"
-msgstr "サイズ："
+msgstr "サイズ:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:505
 #: ../libcore/ConnectServerDialog.vala:147
 #: ../libcore/FileConflictDialog.vala:127
 #: ../libcore/FileConflictDialog.vala:155
 msgid "Type:"
-msgstr "種類："
+msgstr "種類:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:508
 msgid "Contains:"
-msgstr "内容："
+msgstr "内容:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:530
 msgid "Created:"
-msgstr "作成日時："
+msgstr "作成日時:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:539
 msgid "Modified:"
-msgstr "更新日時："
+msgstr "更新日時:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:550
 msgid "Deleted:"
-msgstr "削除日時："
+msgstr "削除日時:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:560
 msgid "MIME type:"
-msgstr "MIME タイプ："
+msgstr "MIME タイプ:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:567
 msgid "Resolution:"
-msgstr "解像度："
+msgstr "解像度:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:575
 #: ../src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
-msgstr "場所："
+msgstr "場所:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:585
 msgid "Target:"
-msgstr "ターゲット："
+msgstr "ターゲット:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:593
 msgid "Original Location:"
-msgstr "元の場所："
+msgstr "元の場所:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:636
 msgid "Open with:"
-msgstr "このアプリケーションで開く："
+msgstr "このアプリケーションで開く:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:903
 #: ../src/Dialogs/PropertiesWindow.vala:913
 msgid "Owner:"
-msgstr "所有者："
+msgstr "所有者:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:907
 #: ../src/Dialogs/PropertiesWindow.vala:916
 msgid "Group:"
-msgstr "グループ："
+msgstr "グループ:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:919
 msgid "Everyone:"
-msgstr "全員："
+msgstr "全員:"
 
 #: ../src/Dialogs/PropertiesWindow.vala:1200
 msgid "%u subfolder"
@@ -1750,7 +1750,7 @@ msgstr "ディスクのプロパティ"
 
 #: ../src/Dialogs/VolumePropertiesWindow.vala:85
 msgid "Format:"
-msgstr "フォーマット："
+msgstr "フォーマット:"
 
 #: ../src/ProgressUIHandler.vala:131 ../src/ProgressUIHandler.vala:191
 msgid "File Operations"
@@ -1831,11 +1831,11 @@ msgstr "サーバー名または IP アドレス"
 
 #: ../libcore/ConnectServerDialog.vala:132
 msgid "Server:"
-msgstr "サーバー："
+msgstr "サーバー:"
 
 #: ../libcore/ConnectServerDialog.vala:138
 msgid "Port:"
-msgstr "ポート番号："
+msgstr "ポート番号:"
 
 #: ../libcore/ConnectServerDialog.vala:150
 msgid "Name of share on server"
@@ -1843,7 +1843,7 @@ msgstr "サーバー上の共有する場所の名前"
 
 #: ../libcore/ConnectServerDialog.vala:151
 msgid "Share:"
-msgstr "共有する場所："
+msgstr "共有する場所:"
 
 #: ../libcore/ConnectServerDialog.vala:153
 msgid "Path of shared folder on server"
@@ -1851,7 +1851,7 @@ msgstr "サーバー上の共有フォルダーのパス"
 
 #: ../libcore/ConnectServerDialog.vala:154
 msgid "Folder:"
-msgstr "フォルダー："
+msgstr "フォルダー:"
 
 #: ../libcore/ConnectServerDialog.vala:156
 msgid "User Details"
@@ -1863,7 +1863,7 @@ msgstr "Windows ドメイン名"
 
 #: ../libcore/ConnectServerDialog.vala:159
 msgid "Domain name:"
-msgstr "ドメイン名："
+msgstr "ドメイン名:"
 
 #: ../libcore/ConnectServerDialog.vala:161
 msgid "Name of user on server"
@@ -1871,11 +1871,11 @@ msgstr "サーバー上のユーザー名"
 
 #: ../libcore/ConnectServerDialog.vala:162
 msgid "User name:"
-msgstr "ユーザー名："
+msgstr "ユーザー名:"
 
 #: ../libcore/ConnectServerDialog.vala:167
 msgid "Password:"
-msgstr "パスワード："
+msgstr "パスワード:"
 
 #: ../libcore/ConnectServerDialog.vala:169
 msgid "Remember this password"
@@ -1929,7 +1929,7 @@ msgstr "元のファイル"
 #: ../libcore/FileConflictDialog.vala:132
 #: ../libcore/FileConflictDialog.vala:160
 msgid "Last modified:"
-msgstr "最終更新日時："
+msgstr "最終更新日時:"
 
 #: ../libcore/FileConflictDialog.vala:142
 msgid "Replace with"
