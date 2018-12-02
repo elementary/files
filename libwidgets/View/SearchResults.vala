@@ -114,6 +114,8 @@ namespace Marlin.View.Chrome {
 
         int current_count;
         int deep_count;
+        int max_results = MAX_RESULTS;
+        int max_depth = MAX_DEPTH;
 
         bool local_search_finished = false;
         bool global_search_finished = false;
@@ -249,7 +251,7 @@ namespace Marlin.View.Chrome {
             action_bar = new Gtk.ActionBar ();
             action_bar.get_style_context ().add_class (Gtk.STYLE_CLASS_INLINE_TOOLBAR);
             var more_button = new Gtk.Button.from_icon_name ("view-more-symbolic", Gtk.IconSize.BUTTON);
-            more_button.sensitive = false;
+            more_button.sensitive = true;
             more_button.tooltip_text = _("Show more");
 
             action_bar.add (more_button);
@@ -259,6 +261,11 @@ namespace Marlin.View.Chrome {
             button_press_event.connect (on_button_press_event);
             view.button_press_event.connect (on_view_button_press_event);
             key_press_event.connect (on_key_press_event);
+            more_button.clicked.connect (() => {
+                max_results += MAX_RESULTS;
+                max_depth += 1;
+                search (search_term, current_root);
+            });
         }
 
         /** Search interface functions **/
@@ -274,7 +281,11 @@ namespace Marlin.View.Chrome {
 
         public void search (string term, File folder) {
             device = Gtk.get_current_event_device ();
-            search_term = term.normalize ().casefold ();
+            if (term.normalize ().casefold () != search_term) {
+                search_term = term.normalize ().casefold ();
+                max_results = MAX_RESULTS;
+                max_depth = MAX_DEPTH;
+            }
 
             if (device != null && device.input_source == Gdk.InputSource.KEYBOARD) {
                 device = device.associated_device;
@@ -641,7 +652,6 @@ namespace Marlin.View.Chrome {
                 height = workarea.y + workarea.height - y - 12 - bar_alloc.height;
             }
 
-
             scroll.set_min_content_height (height);
 
             set_size_request (int.min (parent_alloc.width, workarea.width), height);
@@ -942,7 +952,7 @@ namespace Marlin.View.Chrome {
                 depth++;
             }
 
-            if (depth > MAX_DEPTH) {
+            if (depth > max_depth) {
                 return;
             }
 
@@ -961,7 +971,7 @@ namespace Marlin.View.Chrome {
             try {
                 while (!cancel.is_cancelled () &&
                        (info = enumerator.next_file (null)) != null &&
-                       category_count < MAX_RESULTS) {
+                       category_count < max_results) {
 
                     if (info.get_is_hidden () && !include_hidden) {
                         continue;
@@ -1001,13 +1011,13 @@ namespace Marlin.View.Chrome {
                     return GLib.Source.REMOVE;
                 });
 
-                if (category_count >= MAX_RESULTS) {
+                if (category_count >= max_results) {
                     cat = in_root ? Category.CURRENT_ELLIPSIS : Category.DEEP_ELLIPSIS;
                     new_results.add (new Match.ellipsis (cat));
                     return;
                 }
 
-                if (current_count >= MAX_RESULTS && deep_count >= MAX_RESULTS) {
+                if (current_count >= max_results && deep_count >= max_results) {
                     cancel.cancel ();
                 }
             }
@@ -1022,7 +1032,7 @@ namespace Marlin.View.Chrome {
                                                  new Zeitgeist.TimeRange.anytime (),
                                                  templates,
                                                  0, /* offset */
-                                                 MAX_RESULTS * 3,
+                                                 max_results * 3,
                                                  Zeitgeist.ResultType.MOST_POPULAR_SUBJECTS,
                                                  current_operation);
             } catch (IOError.CANCELLED e) {
@@ -1044,7 +1054,7 @@ namespace Marlin.View.Chrome {
             while (results.has_next () && !current_operation.is_cancelled () && !global_search_finished) {
                 var result = results.next_value ();
                 foreach (var subject in result.subjects.data) {
-                    if (i == MAX_RESULTS) {
+                    if (i == max_results) {
                         matches.add (new Match.ellipsis (Category.ZEITGEIST_ELLIPSIS));
                         global_search_finished = true;
                         break;
