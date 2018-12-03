@@ -162,7 +162,7 @@ namespace Marlin.View {
             label = "";
 
             if (files != null) {
-                if (files.data != null) {
+                if (files != null && files.data != null) {
                     if (files.next == null) {
                         /* list contain only one element */
                         goffile = files.first ().data;
