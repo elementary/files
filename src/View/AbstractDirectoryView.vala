@@ -2102,7 +2102,7 @@ namespace FM {
 
                 filter_this_app_from_open_with_apps ();
 
-                if (open_with_apps.data != null) {
+                if (open_with_apps != null && open_with_apps.data != null) {
                     var apps_section = new GLib.Menu ();
                     int32 index = -1;
                     int count = 0;
