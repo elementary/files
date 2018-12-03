@@ -139,7 +139,7 @@ namespace Marlin.View {
 
         private void build_window () {
             view_switcher = new Chrome.ViewSwitcher (lookup_action ("view-mode") as SimpleAction);
-            view_switcher.mode = Preferences.settings.get_enum ("default-viewmode");
+            view_switcher.selected = Preferences.settings.get_enum ("default-viewmode");
 
             top_menu = new Chrome.TopMenu (view_switcher);
             top_menu.show_close_button = true;
