@@ -600,7 +600,11 @@ namespace Marlin.View.Chrome {
 
             /* Should only reach here if view has been realized  or is being realized but is not yet realized */
             if (!view.get_realized ()) { /* Need to recall resize_popup to get correct cell height */
-                Idle.add (() => {resize_popup (); return false;});
+                Idle.add (() => {
+                    resize_popup ();
+                    return GLib.Source.REMOVE;
+                });
+
                 return;
             }
 
