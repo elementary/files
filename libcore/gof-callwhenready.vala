@@ -28,11 +28,11 @@ public class GOF.CallWhenReady : Object {
 
 
     public CallWhenReady (GLib.List<GOF.File> _files, call_when_ready_func? _f = null) {
-        files = _files.copy ();
+        files = _files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
         f = _f;
 
         int count = 0;
-        foreach (GOF.File gof in files) {
+        foreach (unowned GOF.File gof in files) {
             if (gof.info == null) {
                 call_when_ready_list.prepend (gof);
                 query_info_async.begin (gof, file_ready);
