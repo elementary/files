@@ -267,6 +267,7 @@ namespace FM {
         private bool all_selected = false;
 
         private Gtk.Widget view;
+        private Gdk.Seat? seat = null;
         private unowned Marlin.ClipboardManager clipboard;
         protected FM.ListModel model;
         protected Marlin.IconRenderer icon_renderer;
@@ -291,7 +292,31 @@ namespace FM {
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
 
+            /* Synchronise keyboard and pointer focus fileitems */
             icon_renderer = new Marlin.IconRenderer ();
+            icon_renderer.notify["focus-rect"].connect (() => {
+                if (icon_renderer.focus_rect == icon_renderer.hover_rect) {
+                    return;
+                }
+
+                if (seat != null) {
+                    int x, y;
+                    get_window().get_origin (out x, out y);
+                    x += icon_renderer.focus_rect.x;
+                    y += icon_renderer.focus_rect.y;
+                    seat.get_pointer ().warp (get_screen (), x, y);
+                }
+            });
+
+            icon_renderer.notify["hover-rect"].connect (() => {
+                if (icon_renderer.focus_rect == icon_renderer.hover_rect) {
+                    return;
+                }
+
+                var path = get_path_at_pos (icon_renderer.hover_rect.x, icon_renderer.hover_rect.y);
+                set_cursor (path, false, false, false);
+            });
+
             thumbnailer = Marlin.Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
@@ -2883,15 +2908,6 @@ namespace FM {
 
                     res = move_cursor (keyval, only_shift_pressed);
 
-                    Timeout.add (20, () => {
-                        int x, y;
-                        get_window().get_origin (out x, out y);
-                        x += icon_renderer.focus_rect.x;
-                        y += icon_renderer.focus_rect.y;
-                        event.get_seat ().get_pointer ().warp (event.get_screen (),
-                                                           x, y);
-                        return false;
-                    });
                     break;
 
                 case Gdk.Key.c:
@@ -2969,6 +2985,10 @@ namespace FM {
         }
 
         protected bool on_motion_notify_event (Gdk.EventMotion event) {
+            if (seat == null) {
+                seat = event.get_seat ();
+            }
+
             Gtk.TreePath? path = null;
 
             if (renaming) {
@@ -3027,6 +3047,7 @@ namespace FM {
         protected bool on_leave_notify_event (Gdk.EventCrossing event) {
             item_hovered (null); /* Ensure overlay statusbar disappears */
             hover_path = null;
+            seat = null;
             return false;
         }
 

@@ -30,8 +30,8 @@ namespace Marlin {
 
     public class IconRenderer : Gtk.CellRenderer {
         public Gdk.Rectangle hover_helper_rect;
-        public Gdk.Rectangle hover_rect;
-        public Gdk.Rectangle focus_rect;
+        public Gdk.Rectangle hover_rect {get; private set;}
+        public Gdk.Rectangle focus_rect {get; private set;}
         public bool follow_state {get; set;}
         public GOF.File drop_file {get; set;}
 
@@ -157,8 +157,9 @@ namespace Marlin {
             bool prelit = (flags & Gtk.CellRendererState.PRELIT) > 0;
             bool selected = (flags & Gtk.CellRendererState.SELECTED) > 0;
             bool focused = (flags & Gtk.CellRendererState.FOCUSED) > 0;
-            if (focused) {
-                focus_rect = {draw_rect.x, draw_rect.y, draw_rect.width, draw_rect.height} ;
+
+            if (focused && focus_rect != draw_rect) {
+                focus_rect = draw_rect ;
             }
 
             var state = Gtk.StateFlags.NORMAL;
@@ -234,7 +235,7 @@ namespace Marlin {
                     }
                 }
 
-                if (prelit) {
+                if (prelit && hover_rect != draw_rect) {
                     /* Save position of icon that is being hovered */
                     hover_rect = draw_rect;
                     hover_helper_rect = helper_rect;
