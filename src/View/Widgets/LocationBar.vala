@@ -23,6 +23,7 @@ namespace Marlin.View.Chrome {
     public class LocationBar : BasicLocationBar {
         private BreadcrumbsEntry bread;
         private SearchResults search_results;
+        private RecentSearchPopover search_history;
         private GLib.File? search_location = null;
 
         public bool search_mode {
@@ -56,12 +57,26 @@ namespace Marlin.View.Chrome {
             base (_bread as Navigatable);
             bread = _bread;
             search_results = new SearchResults (bread as Gtk.Widget);
+            search_history = new RecentSearchPopover ();
+            search_history.set_relative_to (bread);
+            search_history.set_pointing_to ({0, 0, 24, 24});
+            search_history.popdown ();
             connect_additional_signals ();
             show_refresh_icon ();
         }
 
         private void connect_additional_signals () {
             bread.open_with_request.connect (on_bread_open_with_request);
+            bread.primary_icon_press.connect ((event) => {
+                bread.hide_breadcrumbs = true;
+                bread.context_menu_showing = true;
+                search_history.popup ();
+            });
+
+            search_history.closed.connect (() => {
+                bread.context_menu_showing = false;
+            });
+
             search_results.file_selected.connect (on_search_results_file_selected);
             search_results.file_activated.connect (on_search_results_file_activated);
             search_results.cursor_changed.connect (on_search_results_cursor_changed);
@@ -72,6 +87,7 @@ namespace Marlin.View.Chrome {
         }
 
         private void on_search_results_file_selected (GLib.File file) {
+            search_history.add_search (search_results.search_term);
             /* Search result widget ensures it has closed and released grab */
             /* Returned result might be a link or a server */
             var gof = new GOF.File (file, null);
@@ -79,7 +95,9 @@ namespace Marlin.View.Chrome {
 
             path_change_request (gof.get_target_location ().get_uri ());
         }
+
         private void on_search_results_file_activated (GLib.File file) {
+            search_history.add_search (search_results.search_term);
             AppInfo? app = Marlin.MimeActions.get_default_application_for_glib_file (file);
             Marlin.MimeActions.open_glib_file_request (file, this, app);
             on_search_results_exit ();
@@ -120,6 +138,10 @@ namespace Marlin.View.Chrome {
         }
 
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
+            if (bread.context_menu_showing) {
+                return true;
+            }
+
             base.after_bread_focus_out_event (event);
             search_mode = false;
             hide_search_icon ();
@@ -296,6 +318,63 @@ namespace Marlin.View.Chrome {
                 show_search_icon ();
             } else {
                 hide_search_icon ();
+            }
+        }
+
+        private class RecentSearchPopover : Gtk.Popover {
+            class Search : Object {
+                public string term {get; construct;}
+                public int64 time {get; construct;}
+                public Search (string term) {
+                    Object (
+                        term: term,
+                        time: get_real_time ()
+                    );
+                }
+            }
+
+            private Gee.TreeSet<Search> recent_terms;
+            private ListStore store;
+            private Gtk.ListBox list_box;
+             construct {
+                list_box = new Gtk.ListBox ();
+                list_box.expand = true;
+                store = new GLib.ListStore (typeof (Search));
+                list_box.bind_model (store, (item) => {
+                    return new Gtk.Label (((Search)item).term);
+                });
+                 list_box.row_activated.connect (() => {
+                    warning ("row activated");
+                });
+                 add (list_box);
+                 recent_terms = new Gee.TreeSet<Search> ((s1, s2) => {
+                    return strcmp (s1.term, s2.term);
+                });
+                 show_all ();
+            }
+
+            public new void popup () {
+                update_list_store ();
+                Idle.add (() => {base.popup (); queue_resize (); return false;});
+            }
+
+             public void add_search (string term) {
+                var search = new Search (term);
+                if (recent_terms.contains (search)) {
+                    recent_terms.remove (search);
+                }
+                 recent_terms.add (search);
+            }
+
+             private void update_list_store () {
+                store.remove_all ();
+                 recent_terms.foreach ((search) => {
+                    store.append (search);
+                    return true;
+                });
+                 store.sort ((s1, s2) => {
+                    return (int)((((Search)s2).time - ((Search)s1).time).clamp (-1, 1));
+                });
             }
         }
     }

@@ -97,7 +97,7 @@ namespace Marlin.View.Chrome {
         protected int n_results { get; private set; default = 0; }
 
         File current_root;
-        string search_term = "";
+        public string search_term {get; private set; default = "";}
         Gee.Queue<File> directory_queue;
         ulong waiting_handler;
 

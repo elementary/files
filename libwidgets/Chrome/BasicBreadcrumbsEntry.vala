@@ -64,7 +64,7 @@ namespace Marlin.View.Chrome {
 
         private Gdk.Window? entry_window = null;
 
-        protected bool context_menu_showing = false;
+        public bool context_menu_showing {get; set; default = false;}
 
         construct {
             truncate_multiline = true;
@@ -309,12 +309,12 @@ namespace Marlin.View.Chrome {
             } else {
                 /* This the delayed propagated event */
                 focus_out_timeout_id = 0;
-                base.focus_out_event (event);
 
                 if (context_menu_showing) {
                     return true;
                 }
 
+                base.focus_out_event (event);
                 reset ();
                 return false;
             }
