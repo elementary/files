@@ -77,6 +77,11 @@ namespace Marlin.View.Chrome {
                 bread.context_menu_showing = false;
             });
 
+            search_history.search.connect ((term) => {
+                enter_search_mode ();
+                bread.text = term;
+            });
+
             search_results.file_selected.connect (on_search_results_file_selected);
             search_results.file_activated.connect (on_search_results_file_activated);
             search_results.cursor_changed.connect (on_search_results_cursor_changed);
@@ -150,6 +155,7 @@ namespace Marlin.View.Chrome {
             check_home ();
             return true;
         }
+
         protected override bool after_bread_focus_in_event (Gdk.EventFocus event) {
             base.after_bread_focus_in_event (event);
             focus_in_event (event);
@@ -336,21 +342,30 @@ namespace Marlin.View.Chrome {
             private Gee.TreeSet<Search> recent_terms;
             private ListStore store;
             private Gtk.ListBox list_box;
-             construct {
+
+            public signal void search (string term);
+
+            construct {
                 list_box = new Gtk.ListBox ();
                 list_box.expand = true;
                 store = new GLib.ListStore (typeof (Search));
                 list_box.bind_model (store, (item) => {
-                    return new Gtk.Label (((Search)item).term);
+                    var term = ((Search)item).term;
+                    return new Gtk.Label (term);
                 });
-                 list_box.row_activated.connect (() => {
-                    warning ("row activated");
+
+                list_box.row_activated.connect ((row) => {
+                    var item = store.get_item (row.get_index ());
+                    search (((Search)item).term);
                 });
-                 add (list_box);
-                 recent_terms = new Gee.TreeSet<Search> ((s1, s2) => {
+
+                add (list_box);
+
+                recent_terms = new Gee.TreeSet<Search> ((s1, s2) => {
                     return strcmp (s1.term, s2.term);
                 });
-                 show_all ();
+
+                show_all ();
             }
 
             public new void popup () {
@@ -358,21 +373,24 @@ namespace Marlin.View.Chrome {
                 Idle.add (() => {base.popup (); queue_resize (); return false;});
             }
 
-             public void add_search (string term) {
+            public void add_search (string term) {
                 var search = new Search (term);
                 if (recent_terms.contains (search)) {
                     recent_terms.remove (search);
                 }
-                 recent_terms.add (search);
+
+                recent_terms.add (search);
             }
 
-             private void update_list_store () {
+            private void update_list_store () {
                 store.remove_all ();
-                 recent_terms.foreach ((search) => {
+
+                recent_terms.foreach ((search) => {
                     store.append (search);
                     return true;
                 });
-                 store.sort ((s1, s2) => {
+
+                store.sort ((s1, s2) => {
                     return (int)((((Search)s2).time - ((Search)s1).time).clamp (-1, 1));
                 });
             }
