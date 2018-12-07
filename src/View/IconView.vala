@@ -317,37 +317,36 @@ namespace FM {
         }
 
         /* Override native Gtk.IconView cursor handling */
-        protected override bool move_cursor (uint keyval, bool only_shift_pressed) {
+        protected override bool move_cursor (uint keyval, bool only_shift_pressed, bool control_pressed) {
             Gtk.TreePath? path = get_path_at_cursor ();
             if (path != null) {
-                if (path_is_selected (path)) {
-                    if (keyval == Gdk.Key.Right) {
-                        path.next (); /* Does not check if path is valid */
-                    } else if (keyval == Gdk.Key.Left) {
-                        path.prev ();
-                    } else if (keyval == Gdk.Key.Up) {
-                        path = up (path);
-                    } else if (keyval == Gdk.Key.Down) {
-                        path = down (path);
-                    }
+                if (keyval == Gdk.Key.Right) {
+                    path.next (); /* Does not check if path is valid */
+                } else if (keyval == Gdk.Key.Left) {
+                    path.prev ();
+                } else if (keyval == Gdk.Key.Up) {
+                    path = up (path);
+                } else if (keyval == Gdk.Key.Down) {
+                    path = down (path);
+                }
 
-                    Gtk.TreeIter? iter = null;
-                    /* Do not try to select invalid path */
-                    if (model.get_iter (out iter, path)) {
-                        if (only_shift_pressed && selected_files != null) {
-                            linear_select_path (path);
-                        } else {
-                            unselect_all ();
-                            set_cursor (path, false, true, false);
-                            previous_linear_selection_path = path;
-                        }
+                Gtk.TreeIter? iter = null;
+                /* Do not try to select invalid path */
+                if (model.get_iter (out iter, path)) {
+                    if (only_shift_pressed && selected_files != null) {
+                        linear_select_path (path);
+                    } else if (control_pressed) {
+                        set_cursor (path, false, false, false);
+                        previous_linear_selection_path = path;
+                    } else {
+                        unselect_all ();
+                        set_cursor (path, false, true, false);
+                        previous_linear_selection_path = path;
                     }
-                } else {
-                    set_cursor (path, false, true, false); /* Select without moving if only focussed */
                 }
             } else {
                 path = new Gtk.TreePath.from_indices (0);
-                set_cursor (path, false, true, false);
+                set_cursor (path, false, !control_pressed, false);
                 previous_linear_selection_path = path;
             }
 
