@@ -31,6 +31,7 @@ namespace Marlin {
     public class IconRenderer : Gtk.CellRenderer {
         public Gdk.Rectangle hover_helper_rect;
         public Gdk.Rectangle hover_rect;
+        public Gdk.Rectangle focus_rect;
         public bool follow_state {get; set;}
         public GOF.File drop_file {get; set;}
 
@@ -74,6 +75,7 @@ namespace Marlin {
             clipboard = Marlin.ClipboardManager.get_for_display ();
             hover_rect = {0, 0, (int) Marlin.IconSize.NORMAL, (int) Marlin.IconSize.NORMAL};
             hover_helper_rect = {0, 0, (int) Marlin.IconSize.EMBLEM, (int) Marlin.IconSize.EMBLEM};
+            focus_rect = {0, 0, (int) Marlin.IconSize.NORMAL, (int) Marlin.IconSize.NORMAL};
         }
 
         public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle background_area,
@@ -155,6 +157,10 @@ namespace Marlin {
             bool prelit = (flags & Gtk.CellRendererState.PRELIT) > 0;
             bool selected = (flags & Gtk.CellRendererState.SELECTED) > 0;
             bool focused = (flags & Gtk.CellRendererState.FOCUSED) > 0;
+            if (focused) {
+                focus_rect = {draw_rect.x, draw_rect.y, draw_rect.width, draw_rect.height} ;
+            }
+
             var state = Gtk.StateFlags.NORMAL;
 
             if (!widget.sensitive || !this.sensitive) {

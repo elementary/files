@@ -2883,6 +2883,15 @@ namespace FM {
 
                     res = move_cursor (keyval, only_shift_pressed);
 
+                    Timeout.add (20, () => {
+                        int x, y;
+                        get_window().get_origin (out x, out y);
+                        x += icon_renderer.focus_rect.x;
+                        y += icon_renderer.focus_rect.y;
+                        event.get_seat ().get_pointer ().warp (event.get_screen (),
+                                                           x, y);
+                        return false;
+                    });
                     break;
 
                 case Gdk.Key.c:
