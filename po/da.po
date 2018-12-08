@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-12-08 21:19+0000\n"
+"PO-Revision-Date: 2018-12-09 00:01+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://weblate.elementary.io/projects/files/files/da/"
 ">\n"
@@ -1222,7 +1222,7 @@ msgstr "Åbn med"
 #: ../src/View/AbstractDirectoryView.vala:2140
 #: ../src/Dialogs/PropertiesWindow.vala:616
 msgid "Other Application…"
-msgstr "Andet program…"
+msgstr "Anden Applikation…"
 
 #: ../src/View/AbstractDirectoryView.vala:2169
 msgid "Templates"
@@ -1491,7 +1491,7 @@ msgstr "Åbn i nyt vindue"
 
 #: ../src/View/Widgets/BreadcrumbsEntry.vala:489
 msgid "Open in Other Application…"
-msgstr "Åbn i andet program…"
+msgstr "Åbn i en Anden Applikation…"
 
 #: ../src/View/Widgets/LocationBar.vala:192
 msgid "Reload this folder"
@@ -1591,7 +1591,7 @@ msgstr "(som Administrator)"
 
 #: ../src/Application.vala:119
 msgid "Show the version of the program"
-msgstr "Vis programmets version."
+msgstr "Vis versionen af programmet"
 
 #: ../src/Application.vala:121
 msgid "Open one or more uris, each in a new tab"
@@ -1848,7 +1848,7 @@ msgstr "Flere filtyper er valgt"
 
 #: ../src/Utils/MimeActions.vala:276
 msgid "No single app can open all these types of file"
-msgstr "Intet enkelt program kan åbne alle disse typer filer"
+msgstr "Ingen applikation kan åbne alle disse filtyper"
 
 #: ../src/Utils/MimeActions.vala:303
 msgid "Failed to open files"
