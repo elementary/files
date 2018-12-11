@@ -295,11 +295,7 @@ namespace FM {
             /* Synchronise keyboard and pointer focus fileitems */
             icon_renderer = new Marlin.IconRenderer ();
             icon_renderer.notify["focus-rect"].connect (() => {
-                if (icon_renderer.focus_rect == icon_renderer.hover_rect) {
-                    return;
-                }
-
-                if (seat != null) {
+                if (seat != null && icon_renderer.focus_rect != icon_renderer.hover_rect) {
                     int x, y;
                     get_window().get_origin (out x, out y);
                     x += icon_renderer.focus_rect.x;
@@ -309,12 +305,10 @@ namespace FM {
             });
 
             icon_renderer.notify["hover-rect"].connect (() => {
-                if (icon_renderer.focus_rect == icon_renderer.hover_rect) {
-                    return;
+                if (icon_renderer.focus_rect != icon_renderer.hover_rect) {
+                    var path = get_path_at_pos (icon_renderer.hover_rect.x, icon_renderer.hover_rect.y);
+                    set_cursor (path, false, false, false);
                 }
-
-                var path = get_path_at_pos (icon_renderer.hover_rect.x, icon_renderer.hover_rect.y);
-                set_cursor (path, false, false, false);
             });
 
             thumbnailer = Marlin.Thumbnailer.get ();
