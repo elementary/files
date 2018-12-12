@@ -2057,7 +2057,11 @@ namespace FM {
             if (slot.directory.is_local || !slot.directory.can_open_files) {
                 /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
                 show_menu.remove (1);
+            } else if (!slot.directory.is_local) {
+                /* Do not show "Hide Local Thumbnails" option when in remote folder */
+                show_menu.remove (2);
             }
+
             return show_menu;
         }
 
