@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-11-05 00:09+0000\n"
+"PO-Revision-Date: 2018-12-10 20:22+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -187,21 +187,21 @@ msgstr "%s (%'dवी प्रत )%s"
 #: ../libcore/marlin-file-operations.c:463
 #, c-format
 msgid "%s (%'dst copy)%s"
-msgstr ""
+msgstr "%s (%'dवी प्रत )%s"
 
 #: ../libcore/marlin-file-operations.c:465
 #, c-format
 msgid "%s (%'dnd copy)%s"
-msgstr ""
+msgstr "%s (%'dवी प्रत )%s"
 
 #: ../libcore/marlin-file-operations.c:467
 #, c-format
 msgid "%s (%'drd copy)%s"
-msgstr ""
+msgstr "%s (%'dवी प्रत )%s"
 
 #: ../libcore/marlin-file-operations.c:567
 msgid " ("
-msgstr ""
+msgstr " ("
 
 #: ../libcore/marlin-file-operations.c:575
 #, c-format
@@ -242,46 +242,46 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1295
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
+msgstr "या माउंटवरील कचरापेटीमधील सर्व आयटम कायमचे हटवायचे?"
 
 #: ../libcore/marlin-file-operations.c:1296
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "या माउंटवरील कचरापेटी मधील सर्व आयटम कायमचे हटविले जातील."
 
 #: ../libcore/marlin-file-operations.c:1307 ../src/View/Sidebar.vala:1558
 msgid "Empty _Trash"
-msgstr ""
+msgstr "कचरापेटी (_T)रिकामी करा"
 
 #: ../libcore/marlin-file-operations.c:1334
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr ""
+msgstr "आपल्याला खात्री आहे की आपण  \"%B\"कायमचे हटवू इच्छिता?"
 
 #: ../libcore/marlin-file-operations.c:1337
 #, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "आपणास खात्री आहे की आपण निवडलेले  %'d आयटम कायमचे हटवू इच्छिता? "
+msgstr[1] "आपणास खात्री आहे की आपण निवडलेले  %'d आयटम कायमचे हटवू इच्छिता? "
 
 #: ../libcore/marlin-file-operations.c:1380
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "हटविण्यासाठी %'d फाइल बाकी"
+msgstr[1] "%'d फाइल्स हटविण्यासाठी बाकी"
 
 #: ../libcore/marlin-file-operations.c:1386
 msgid "Deleting files"
-msgstr ""
+msgstr "फाइल्स हटवित आहे"
 
 #. / TRANSLATORS: %T will expand to a time like "2 minutes".
 #. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
 #: ../libcore/marlin-file-operations.c:1399
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "बाकी"
+msgstr[1] "बाकी"
 
 #: ../libcore/marlin-file-operations.c:1466
 #: ../libcore/marlin-file-operations.c:1500
@@ -289,7 +289,7 @@ msgstr[1] ""
 #: ../libcore/marlin-file-operations.c:1616
 #: ../libcore/marlin-file-operations.c:2406
 msgid "Error while deleting."
-msgstr ""
+msgstr "हटविताना त्रुटी."
 
 #: ../libcore/marlin-file-operations.c:1470
 msgid ""
