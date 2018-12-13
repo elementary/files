@@ -130,7 +130,7 @@ public class Marlin.MimeActions {
         return result;
     }
 
-    public static List<AppInfo>? get_applications_for_files (GLib.List<GOF.File> files) {
+    public static List<AppInfo> get_applications_for_files (GLib.List<GOF.File> files) {
         assert (files != null);
         /* Need to make a new list to avoid corrupting the selection */
         GLib.List<unowned GOF.File> sorted_files = null;
@@ -163,13 +163,14 @@ public class Marlin.MimeActions {
             GLib.List<AppInfo> one_result = get_applications_for_file (file);
             one_result.sort (application_compare_by_id);
 
-            if (result != null) {
+            if (result != null && result.data != null) {
                 result = intersect_application_lists (result, one_result);
             } else {
                 result = (owned) one_result;
             }
 
-            if (result.length () == 0) {
+
+            if (result == null || result.data == null) {
                 return result;
             }
 
