@@ -44,6 +44,8 @@ void add_file_utils_tests () {
     Test.add_func ("/FileUtils/file_for_zero_length_path", () => {
         assert (PF.FileUtils.get_file_for_path ("") == null);
     });
+
+    Test.add_func ("/FileUtils/limited_length_path", test_limited_length_path);
 }
 
 int main (string[] args) {
@@ -51,4 +53,40 @@ int main (string[] args) {
 
     add_file_utils_tests ();
     return Test.run ();
+}
+
+void test_limited_length_path () {
+    const int DEFAULT_LENGTH = 10;
+
+    // Test empty string
+    assert (PF.FileUtils.limited_length_path ("", DEFAULT_LENGTH) == "");
+
+    //  Test path
+    var path = "/foo/bar/baz/abc.txt";
+    var file_length = 7;
+    var baz_length = 11;
+    var bar_length = 15;
+    var foo_length = 19;
+    assert (PF.FileUtils.limited_length_path (path, foo_length) == "/foo/bar/baz/abc.txt");
+    assert (PF.FileUtils.limited_length_path (path, bar_length+1) == "…/foo/bar/baz/abc.txt");
+    assert (PF.FileUtils.limited_length_path (path, bar_length) == "…/bar/baz/abc.txt");
+    assert (PF.FileUtils.limited_length_path (path, baz_length+1) == "…/bar/baz/abc.txt");
+    assert (PF.FileUtils.limited_length_path (path, baz_length) == "…/baz/abc.txt");
+    assert (PF.FileUtils.limited_length_path (path, file_length+1)  == "…/baz/abc.txt");
+    assert (PF.FileUtils.limited_length_path (path, file_length)  == "…/abc.txt");
+    assert (PF.FileUtils.limited_length_path (path, 1)  == "…/abc.txt");
+    assert (PF.FileUtils.limited_length_path (path, 0)  == "…/abc.txt");
+
+    //  Test path smaller than limit
+    var res1 = PF.FileUtils.limited_length_path (path, 20);
+    var res2 = PF.FileUtils.limited_length_path (path, 50);
+    var res3 = PF.FileUtils.limited_length_path (path, 100);
+    assert (res1 == res2 && res2 == res3);
+
+    //  Test non-path
+    assert (PF.FileUtils.limited_length_path ("abc.txt", DEFAULT_LENGTH) == "abc.txt");
+
+    //  Test wrong path
+    var wrong_path = "abc.txt/foo";
+    assert (PF.FileUtils.limited_length_path ("abc.txt/foo", wrong_path.length+1) == "abc.txt/foo");
 }
