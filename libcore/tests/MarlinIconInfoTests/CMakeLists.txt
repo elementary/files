@@ -31,6 +31,7 @@ vala_precompile (VALA_TEST_C ${TEST_NAME}
     posix
     pantheon-files-core
     pantheon-files-core-C
+    gof-file
   OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
     --vapidir=${CMAKE_BINARY_DIR}/libcore/

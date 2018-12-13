@@ -27,6 +27,7 @@ PACKAGES
     pantheon-files-core-C
     pantheon-files-core
     pantheon-files-widgets
+    gof-file
 OPTIONS
     --thread
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/
@@ -38,4 +39,4 @@ add_library(pantheon-files-contractor SHARED
 target_link_libraries(pantheon-files-contractor pantheon-files-core pantheon-files-widgets)
 add_dependencies(pantheon-files-contractor pantheon-files-core pantheon-files-widgets)
 install(TARGETS pantheon-files-contractor DESTINATION ${PLUGIN_DIR}/core/)
-install(FILES contractor.plug DESTINATION ${PLUGIN_DIR}/core/)
+install(FILES pantheon-files-contractor.plug DESTINATION ${PLUGIN_DIR}/core/)

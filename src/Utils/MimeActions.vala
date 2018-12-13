@@ -101,10 +101,6 @@ public class Marlin.MimeActions {
             }
         }
 
-        if (result == null) {
-            return null;
-        }
-
         if (!file_has_local_path (file)) {
             filter_non_uri_apps (result);
         }
@@ -130,15 +126,11 @@ public class Marlin.MimeActions {
             result = filter_non_uri_apps (result);
         }
 
-        if (result == null) {
-            return null;
-        }
-
         result.sort (application_compare_by_name);
         return result;
     }
 
-    public static List<AppInfo>? get_applications_for_files (GLib.List<GOF.File> files) {
+    public static List<AppInfo> get_applications_for_files (GLib.List<GOF.File> files) {
         assert (files != null);
         /* Need to make a new list to avoid corrupting the selection */
         GLib.List<unowned GOF.File> sorted_files = null;
@@ -168,24 +160,21 @@ public class Marlin.MimeActions {
                 continue;
             }
 
-            List<AppInfo> one_result = get_applications_for_file (file);
+            GLib.List<AppInfo> one_result = get_applications_for_file (file);
             one_result.sort (application_compare_by_id);
 
-            if (result != null) {
+            if (result != null && result.data != null) {
                 result = intersect_application_lists (result, one_result);
             } else {
-                result = one_result.copy ();
+                result = (owned) one_result;
             }
 
-            if (result == null) {
-                return null;
+
+            if (result == null || result.data == null) {
+                return result;
             }
 
             previous_file = file;
-        }
-
-        if (result == null) {
-            return null;
         }
 
         result.sort (application_compare_by_name);

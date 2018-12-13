@@ -1,13 +1,9 @@
-TEST_NAME = 'GOFDirectoryAsyncTests'
-TEST_EXEC = executable (
-    TEST_NAME,
+directory_async_test_exec = executable (
+    'GOFDirectoryAsyncTests',
     'GOFDirectoryAsyncTests.vala',
 
-    dependencies : [CORE_LIB_DEPS, C_CORE_DEP, OTHER_DEPS],
-    include_directories: [CORE_INC],
+    dependencies : pantheon_files_core_dep,
     install: false,
-    link_with: [CORE_LIB]
 )
 
-test (TEST_NAME, TEST_EXEC)
-
+test ('GOFDirectoryAsyncTests', directory_async_test_exec)

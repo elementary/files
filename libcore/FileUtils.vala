@@ -94,7 +94,6 @@ namespace PF.FileUtils {
                                                       original_dir,
                                                       Gdk.DragAction.MOVE,
                                                       widget,
-                                                      null,
                                                       null);
         });
     }
@@ -105,7 +104,7 @@ namespace PF.FileUtils {
         var directories = new GLib.HashTable<GLib.File, GLib.List<GLib.File>> (File.hash, File.equal);
         unhandled_files = null;
 
-        foreach (GOF.File goffile in files) {
+        foreach (unowned GOF.File goffile in files) {
             /* Check it is a valid file (e.g. not a dummy row from list view) */
             if (goffile == null || goffile.location == null) {
                 continue;
@@ -117,15 +116,9 @@ namespace PF.FileUtils {
                 /* We are in trash root */
                 var original_dir = get_trashed_file_original_folder (goffile);
                 if (original_dir != null) {
-                    unowned GLib.List<GLib.File>? dir_files = null;
-                    /* get list of files being restored to this original dir */
-                    dir_files = directories.lookup (original_dir);
-                    if (dir_files != null) {
-                        directories.steal (original_dir);
-                    }
-
+                    GLib.List<GLib.File>? dir_files = directories.take (original_dir);
                     dir_files.prepend (goffile.location);
-                    directories.insert (original_dir, dir_files.copy ());
+                    directories.insert (original_dir, (owned)dir_files);
                 } else {
                     unhandled_files.prepend (goffile);
                 }
@@ -403,61 +396,49 @@ namespace PF.FileUtils {
         }
     }
 
-    /* Signature must be compatible with MarlinUndoStackManager undo and redo functions */
-    public delegate void RenameCallbackFunc (GLib.File old_location, GLib.File? new_location, GLib.Error? error);
+    public async GLib.File? set_file_display_name (GLib.File old_location, string new_name, GLib.Cancellable? cancellable = null) throws GLib.Error {
 
-    public void set_file_display_name (GLib.File old_location, string new_name, PF.FileUtils.RenameCallbackFunc? f) {
-
-        /** TODO Check validity of new name, make cancellable **/
+        /** TODO Check validity of new name **/
 
         GLib.File? new_location = null;
         GOF.Directory.Async? dir = GOF.Directory.Async.cache_lookup_parent (old_location);
-        string original_name = old_location.get_basename ();
+        string? original_name = old_location.get_basename ();
 
-        old_location.set_display_name_async.begin (new_name, 0, null, (obj, res) => {
-            try {
-                assert (obj is GLib.Object);
-                GLib.File? n = old_location.set_display_name_async.end (res);
-                /* Unless we decouple the new_file from the object returned by set_display_name_async
-                 * it can get corrupted when this thread exits when working with remote files, presumably
-                 * due to a bug in gvfs backend. This leads to obscure bugs in Files.
-                 */
-                new_location= GLib.File.new_for_uri (n.get_uri ());
+        try {
+            new_location = yield old_location.set_display_name_async (new_name, GLib.Priority.DEFAULT, cancellable);
 
-                if (dir != null) {
-                    /* Notify directory of change.
-                     * Since only a single file is changed we bypass MarlinFileChangesQueue */
-                    /* Appending OK here since only one file */
-                    GLib.List<GLib.File>added_files = null;
-                    added_files.append (new_location);
-                    GLib.List<GLib.File>removed_files = null;
-                    removed_files.append (old_location);
-                    GOF.Directory.Async.notify_files_removed (removed_files);
-                    GOF.Directory.Async.notify_files_added (added_files);
-                } else {
-                    warning ("Renamed file has no GOF.Directory.Async");
-                }
-
-                /* Register the change with the undo manager */
-                Marlin.UndoManager.instance ().add_rename_action (new_location,
-                                                                  original_name);
-            } catch (Error e) {
-                warning ("Rename error");
-                PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
-                                              e.message,
-                                              null);
-                new_location = null;
-
-                if (dir != null) {
-                    /* We emit this signal anyway so callers can know rename failed and disconnect */
-                    dir.file_added (null);
-                }
+            if (dir != null) {
+                /* Notify directory of change.
+                 * Since only a single file is changed we bypass MarlinFileChangesQueue */
+                /* Appending OK here since only one file */
+                var added_files = new GLib.List<GLib.File> ();
+                added_files.append (new_location);
+                var removed_files = new GLib.List<GLib.File> ();
+                removed_files.append (old_location);
+                GOF.Directory.Async.notify_files_removed (removed_files);
+                GOF.Directory.Async.notify_files_added (added_files);
+            } else {
+                warning ("Renamed file has no GOF.Directory.Async");
             }
-            /* PropertiesWindow also calls this function with a different callback */
-            if (f != null) {
-                f (old_location, new_location, null);
+
+            /* Register the change with the undo manager */
+            Marlin.UndoManager.instance ().add_rename_action (new_location,
+                                                              original_name);
+        } catch (Error e) {
+            warning ("Rename error");
+            PF.Dialogs.show_error_dialog (_("Could not rename to '%s'").printf (new_name),
+                                          e.message,
+                                          null);
+
+            if (dir != null) {
+                /* We emit this signal anyway so callers can know rename failed and disconnect */
+                dir.file_added (null);
             }
-        });
+
+            throw e;
+        }
+
+        return new_location;
     }
 
     public string get_formatted_time_attribute_from_info (GLib.FileInfo info, string attr) {

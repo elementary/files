@@ -19,6 +19,7 @@ namespace Marlin.View.Chrome {
     /* Interface implemented by BasicBreadcrumbsEntry and BreadCrumbsEntry */
     public interface Navigatable : Gtk.Widget {
         public abstract string? action_icon_name { get; set; }
+        public abstract bool hide_breadcrumbs { get; set; default = false; }
 
         public signal void entry_text_changed (string txt);
         public signal void activate_path (string path, Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT);
