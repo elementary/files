@@ -20,7 +20,19 @@
 ***/
 
 namespace Marlin {
+    public const string XDND_DIRECT_SAVE = "XdndDirectSave0";
+    public const string RAW = "application/octet-stream";
+    public const string NETSCAPE_URL = "_NETSCAPE_URL";
+    public const string TEXT_URI_LIST = "text/uri-list";
+    public const string TEXT_PLAIN = "text/plain";
+
     public class DndHandler : GLib.Object {
+        public Gdk.Atom XDND_DIRECT_SAVE_ATOM = Gdk.Atom.intern  (XDND_DIRECT_SAVE, false);
+        public Gdk.Atom RAW_ATOM = Gdk.Atom.intern (RAW, false);
+        public Gdk.Atom NETSCAPE_URL_ATOM = Gdk.Atom.intern  (NETSCAPE_URL, false);
+        public Gdk.Atom TEXT_URI_LIST_ATOM = Gdk.Atom.intern (TEXT_URI_LIST, false);
+        public Gdk.Atom TEXT_PLAIN_ATOM = Gdk.Atom.intern (TEXT_PLAIN, false);
+
         Gdk.DragAction chosen = Gdk.DragAction.DEFAULT;
 
         public DndHandler () {}
@@ -144,64 +156,68 @@ namespace Marlin {
         }
 
         public string? get_source_filename (Gdk.DragContext context) {
-            uchar []? data = null;
-            Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
-            Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
+            uint8[]? data = null;
+            Gdk.Atom? actual_property_type = null;
+            int actual_format = -1;
 
             bool exists = Gdk.property_get (context.get_source_window (),
-                                            property_name,
-                                            property_type,
+                                            XDND_DIRECT_SAVE_ATOM, /* property to get */
+                                            TEXT_PLAIN_ATOM, /* type to return as */
                                             0, /* offset into property to start getting */
                                             1024, /* max bytes of data to retrieve */
-                                            0, /* do not delete after retrieving */
-                                            null, null, /* actual property type and format got disregarded */
+                                            (int)false, /* do not delete after retrieving */
+                                            out actual_property_type, out actual_format, /* actual property type and format got disregarded */
                                             out data
                                            );
 
             if (exists && data != null) {
-                string name = DndHandler.data_to_string (data);
-                if (GLib.Path.DIR_SEPARATOR.to_string () in name) {
-                    warning ("invalid source filename");
-                    return null; /* not a valid filename */
-                } else {
-                    return name;
-                }
+                return DndHandler.data_to_string (data);
             } else {
-                warning ("source file does not exist");
+                warning ("Direct Save filename does not exist");
                 return null;
             }
         }
 
         public void set_source_uri (Gdk.DragContext context, string uri) {
-            debug ("DNDHANDLER: set source uri to %s", uri);
-            Gdk.Atom property_name = Gdk.Atom.intern_static_string ("XdndDirectSave0");
-            Gdk.Atom property_type = Gdk.Atom.intern_static_string ("text/plain");
+            warning ("DNDHANDLER: set source uri to %s", uri);
+//            xnd_uri = uri;
             Gdk.property_change (context.get_source_window (),
-                                 property_name,
-                                 property_type,
+                                 XDND_DIRECT_SAVE_ATOM,
+                                 TEXT_PLAIN_ATOM,
                                  8,
                                  Gdk.PropMode.REPLACE,
                                  uri.data,
-                                 uri.length);
+                                 uri.data.length);
+
+            /* Confirm properly set */
+warning ("confirm xdnd set to %s", get_source_filename (context));
         }
 
         public bool handle_xdnddirectsave (Gdk.DragContext context,
                                            GOF.File drop_target,
-                                           Gtk.SelectionData selection) {
+                                           Gtk.SelectionData selection,
+                                           uint timestamp,
+                                           Gtk.Widget widget) {
+warning ("handle xdnd");
+warning ("source xnd %s", get_source_filename (context));
+
             bool success = false;
 
             if (selection.get_length () == 1 && selection.get_format () == 8) {
                 uchar result = selection.get_data ()[0];
-
+warning ("result %s length of data %i", result.to_string (), (int)(selection.get_data ().length));
                 switch (result) {
                     case 'F':
+warning ("F");          Gtk.drag_get_data (widget, context, RAW_ATOM, timestamp);
                         /* No fallback for XdndDirectSave stage (3), result "F" ("Failed") yet */
-                        break;
+                        return false;
                     case 'E':
+warning ("E");
                         /* No fallback for XdndDirectSave stage (3), result "E" ("Error") yet.
                          * Note this result may be obtained even if the file was successfully saved */
                         break;
                     case 'S':
+warning ("S");
                         /* XdndDirectSave "Success" */
                         success = true;
                         break;
@@ -209,13 +225,22 @@ namespace Marlin {
                         warning ("Unhandled XdndDirectSave result %s", result.to_string ());
                         break;
                 }
+            } else {
+warning ("unrecognized format - length %u, format %u", selection.get_length (), selection.get_format ());
             }
 
-            if (!success) {
-                set_source_uri (context, "");
-            }
+//            if (!success) {
+//                set_source_uri (context, "");
+//            }
 
             return success;
+        }
+
+        public bool handle_raw_dnd_data (Gdk.DragContext context,
+                                           GOF.File drop_target,
+                                           Gtk.SelectionData selection) {
+warning ("handle raw data length %i target %s, source xdnd %s", (int)(selection.get_data ().length), drop_target.uri, get_source_filename (context));
+return false;
         }
 
         public bool handle_netscape_url (Gdk.DragContext context, GOF.File drop_target, Gtk.SelectionData selection) {
@@ -238,6 +263,7 @@ namespace Marlin {
                                               Gdk.DragAction possible_actions,
                                               Gdk.DragAction suggested_action,
                                               uint32 timestamp) {
+warning ("handle drag file actions");
 
             bool success = false;
             Gdk.DragAction action = suggested_action;
@@ -270,6 +296,8 @@ namespace Marlin {
                 selection_data.get_length () > 0) {
 
                 text = DndHandler.data_to_string (selection_data.get_data_with_length ());
+            } else if (info == Marlin.TargetType.XDND_DIRECT_SAVE) {
+warning ("NOT A URI LIST info is %u - XDND_DIRECT_SAVE", info);
             }
 
             debug ("DNDHANDLER selection data is uri list returning %s", (text != null).to_string ());
@@ -292,6 +320,7 @@ namespace Marlin {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
             set_stringbuilder_from_file_list (sb, file_list, prefix, false);  /* Use escaped paths */
+warning ("DnD handler set selection data");
             selection_data.@set (selection_data.get_target (),
                                  8,
                                  sb.data);

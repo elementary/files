@@ -203,14 +203,6 @@ namespace FM {
             minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_list_view_settings.get_enum ("minimum-zoom-level");
             maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_list_view_settings.get_enum ("maximum-zoom-level");
 
-            if (zoom_level < minimum_zoom) {
-                zoom_level = minimum_zoom;
-            }
-
-            if (zoom_level > maximum_zoom) {
-                zoom_level = maximum_zoom;
-            }
-
             return (Marlin.ZoomLevel)zoom;
         }
 

@@ -198,9 +198,10 @@ namespace Marlin {
     }
 
     public enum TargetType {
-        STRING,
+        TEXT_PLAIN,
         TEXT_URI_LIST,
-        XDND_DIRECT_SAVE0,
-        NETSCAPE_URL
+        XDND_DIRECT_SAVE,
+        NETSCAPE_URL,
+        RAW
     }
 }

@@ -63,12 +63,7 @@ namespace FM {
             minimum_zoom = (Marlin.ZoomLevel)Preferences.marlin_column_view_settings.get_enum ("minimum-zoom-level");
             maximum_zoom = (Marlin.ZoomLevel)Preferences.marlin_column_view_settings.get_enum ("maximum-zoom-level");
 
-            if (zoom_level < minimum_zoom) {
-                zoom_level = minimum_zoom;
-            }
-            if (zoom_level > maximum_zoom) {
-                zoom_level = maximum_zoom;
-            }
+
 
             return (Marlin.ZoomLevel)zoom;
         }
@@ -149,7 +144,7 @@ namespace FM {
                     /*  ... store clicked folder and start double-click timeout */
                     awaiting_double_click = true;
                     is_frozen = true;
-                    double_click_timeout_id = GLib.Timeout.add (drag_delay, () => {
+                    double_click_timeout_id = GLib.Timeout.add (300, () => {
                         not_double_click (event, path);
                         return GLib.Source.REMOVE;
                     });

@@ -60,6 +60,8 @@ IF (WITH_UNITY AND UNITY_FOUND)
         View/PopupMenuBuilder.vala
         View/Slot.vala
         View/Miller.vala
+        View/Helpers/ViewDndDestination.vala
+        View/Helpers/ViewDndSource.vala
         View/Widgets/AbstractEditableLabel.vala
         View/Widgets/BreadcrumbsEntry.vala
         View/Widgets/DiskRenderer.vala
@@ -128,6 +130,8 @@ ELSE (WITH_UNITY AND UNITY_FOUND)
         View/PopupMenuBuilder.vala
         View/Slot.vala
         View/Miller.vala
+        View/Helpers/ViewDndDestination.vala
+        View/Helpers/ViewDndSource.vala
         View/Widgets/AbstractEditableLabel.vala
         View/Widgets/BreadcrumbsEntry.vala
         View/Widgets/DiskRenderer.vala
