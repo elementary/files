@@ -45,6 +45,7 @@ namespace Marlin {
         const Gdk.DragAction file_drag_actions = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
 
         public signal void leave ();
+        public signal void dropped ();
 
         construct {
             dnd_handler = new Marlin.DndHandler ();
@@ -66,13 +67,12 @@ namespace Marlin {
             );
         }
 
-
         private bool on_drag_motion (Gdk.DragContext context,
                                      int x,
                                      int y,
                                      uint timestamp) {
             drag_in_progress = true;
-
+warning ("drag motion");
             if (!drag_data_ready && !get_drag_data (context, x, y, timestamp)) {
                 /* We don't have drag data already ... */
                 return false;
@@ -94,6 +94,7 @@ namespace Marlin {
                                    int x,
                                    int y,
                                    uint timestamp) {
+warning ("dest drop occurred");
 
             string? uri = null;
             bool ok_to_drop = false;
@@ -122,6 +123,7 @@ namespace Marlin {
                 ok_to_drop = (target != Gdk.Atom.NONE);
             }
 
+warning ("ok to drop %s", ok_to_drop.to_string ());
             if (ok_to_drop) {
                 drop_occurred = true;
                 /* request the drag data from the source (initiates
@@ -140,21 +142,18 @@ namespace Marlin {
                                             uint info,
                                             uint timestamp
                                             ) {
+warning ("dest drag data received");
             bool success = false;
             bool finished = true;
 
             if (!drag_data_ready) {
-                drag_data_ready = true;
-                /* We don't have the drag data - extract uri list from selection data */
+                /* extract uri list from selection data (XDndDirectSave etc set drag_data_ready true already) */
                 string? text;
                 if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
                     drag_file_list = PF.FileUtils.files_from_uris (text);
                     drag_data_ready = true;
-                } else if (info == Marlin.TargetType.XDND_DIRECT_SAVE ||
-                           info == Marlin.TargetType.NETSCAPE_URL) {
-
-                } else if (info == Marlin.TargetType.RAW) {
-                    warning ("RAW target");
+                } else {
+                    critical ("Unexpected drag data type");
                 }
             }
 
@@ -162,6 +161,7 @@ namespace Marlin {
                 if (current_actions != Gdk.DragAction.DEFAULT) {
                     switch (info) {
                         case Marlin.TargetType.XDND_DIRECT_SAVE:
+                            /* If XDndDirectSave fails need to fallback to another type so set finished false */
                             finished = dnd_handler.handle_xdnddirectsave (context,
                                                                          drop_target_file,
                                                                          selection_data,
@@ -170,12 +170,11 @@ namespace Marlin {
                             success = true;
                             break;
 
-//                        case Marlin.TargetType.RAW:
+                        case Marlin.TargetType.RAW:
 //                            success = dnd_handler.handle_raw_dnd_data (context,
 //                                                                       drop_target_file,
 //                                                                       sdata);
-
-//                            break;
+                            break;
 
                         case Marlin.TargetType.NETSCAPE_URL:
                             success = dnd_handler.handle_netscape_url (context,
@@ -185,11 +184,7 @@ namespace Marlin {
 
                         case Marlin.TargetType.TEXT_URI_LIST:
                             if ((current_actions & file_drag_actions) != 0) {
-//                                if (selected_files != null) {
-//                                    unselect_all ();
-//                                }
-
-//                                select_added_files = true;
+                                dropped ();
                                 success = dnd_handler.handle_file_drag_actions (real_view,
                                                                                 abstract_view.window,
                                                                                 context,
@@ -202,29 +197,35 @@ namespace Marlin {
 
                             break;
 
+                        case Marlin.TargetType.TEXT_PLAIN:
+                            warning ("TEXT PLAIN data received");
+                            break;
+
                         default:
                             break;
                     }
                 }
 
                 if (finished) {
-                    drop_occurred = false;
                     Gtk.drag_finish (context, success, false, timestamp);
+                    drop_occurred = false;
+                    drag_in_progress = false;
                     on_drag_leave ();
                 }
             }
         }
 
         private void on_drag_leave () {
-            drag_in_progress = false;
-            drag_file_list = null;
-            drop_target_file = null;
-            drag_data_ready = false;
-
-            current_suggested_action = Gdk.DragAction.DEFAULT;
-            current_actions = Gdk.DragAction.DEFAULT;
+            if (drag_in_progress) {
+                return;
+            }
 
             abstract_view.highlight_drop_file (drop_target_file, Gdk.DragAction.DEFAULT, null);
+            drop_target_file = null;
+            drag_file_list = null;
+            drag_data_ready = false;
+            current_suggested_action = Gdk.DragAction.DEFAULT;
+            current_actions = Gdk.DragAction.DEFAULT;
         }
 
         private bool get_drag_data (Gdk.DragContext context, int x, int y, uint timestamp) {
@@ -245,13 +246,13 @@ namespace Marlin {
                     file.is_writable ()) {
 
                     abstract_view.highlight_drop_file (file, current_suggested_action, path);
+                    drag_data_ready = true;
                     result = true;
                 } else {
                     debug ("cannot drop here");
                 }
             } else if (target != Gdk.Atom.NONE && drag_data == null) {
                 /* request the drag data from the source */
-warning ("dest drag get data request");
                 Gtk.drag_get_data (real_view, context, target, timestamp);
             }
 
@@ -265,10 +266,11 @@ warning ("dest drag get data request");
             string uri = file != null ? file.uri : "";
             string current_uri = drop_target_file != null ? drop_target_file.uri : "";
 
-            if (uri != current_uri) {
+            if (drop_target_file == null || uri != current_uri) {
                 if (drag_enter_timer_id > 0) {
                     Source.remove (drag_enter_timer_id);
                 }
+warning ("setting drop target file %s", file.uri);
                 drop_target_file = file;
                 current_actions = Gdk.DragAction.DEFAULT;
                 current_suggested_action = Gdk.DragAction.DEFAULT;
@@ -294,6 +296,7 @@ warning ("dest drag get data request");
                                                                      1000,
                                                                      () => {
                             if (drag_in_progress) {
+                                warning ("loading new location");
                                 abstract_view.load_location (file.get_target_location ());
                                 drag_enter_timer_id = 0;
                             }

@@ -265,7 +265,6 @@ namespace FM {
             recent = app.get_recent_manager ();
             icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
-//            dnd_handler = new Marlin.DndHandler ();
 
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
@@ -275,9 +274,6 @@ namespace FM {
             view.add_events (Gdk.EventMask.POINTER_MOTION_MASK |
                              Gdk.EventMask.ENTER_NOTIFY_MASK |
                              Gdk.EventMask.LEAVE_NOTIFY_MASK);
-
-            dnd_dest = new Marlin.ViewDndDestination (this, view);
-            dnd_source = new Marlin.ViewDndSource (this, view);
 
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
             activatable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "pointer");
@@ -346,6 +342,13 @@ namespace FM {
             });
 
             realize.connect (() => {
+                dnd_dest = new Marlin.ViewDndDestination (this, get_real_view ());
+                dnd_source = new Marlin.ViewDndSource (this, get_real_view ());
+                dnd_dest.dropped.connect (() => {
+                    unselect_all ();
+                    select_added_files = true;
+                });
+
                 clipboard.changed.connect (on_clipboard_changed);
                 on_clipboard_changed ();
             });
@@ -1691,7 +1694,7 @@ namespace FM {
         }
 
 
-        public void highlight_drop_file (GOF.File drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
+        public void highlight_drop_file (GOF.File? drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
             bool can_drop = (action > Gdk.DragAction.DEFAULT);
 
 //            if (drop_highlight != can_drop) {
@@ -3059,15 +3062,14 @@ namespace FM {
         }
 
         protected void block_drag_and_drop () {
-warning ("block dnd");
-            var real_view = get_real_view ();
-            drag_data = real_view.get_data ("gtk-site-data");
-            GLib.SignalHandler.block_matched (real_view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
+warning ("block DND");
+            drag_data = get_real_view ().get_data ("gtk-site-data");
+            GLib.SignalHandler.block_matched (get_real_view (), GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
             dnd_disabled = true;
         }
 
         protected void unblock_drag_and_drop () {
-warning ("unblock dnd");
+warning ("ubblobk DND");
             GLib.SignalHandler.unblock_matched (get_real_view (), GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
             dnd_disabled = false;
         }

@@ -180,7 +180,6 @@ namespace Marlin {
 
         public void set_source_uri (Gdk.DragContext context, string uri) {
             warning ("DNDHANDLER: set source uri to %s", uri);
-//            xnd_uri = uri;
             Gdk.property_change (context.get_source_window (),
                                  XDND_DIRECT_SAVE_ATOM,
                                  TEXT_PLAIN_ATOM,
@@ -188,9 +187,6 @@ namespace Marlin {
                                  Gdk.PropMode.REPLACE,
                                  uri.data,
                                  uri.data.length);
-
-            /* Confirm properly set */
-warning ("confirm xdnd set to %s", get_source_filename (context));
         }
 
         public bool handle_xdnddirectsave (Gdk.DragContext context,
@@ -198,18 +194,14 @@ warning ("confirm xdnd set to %s", get_source_filename (context));
                                            Gtk.SelectionData selection,
                                            uint timestamp,
                                            Gtk.Widget widget) {
-warning ("handle xdnd");
-warning ("source xnd %s", get_source_filename (context));
-
             bool success = false;
 
             if (selection.get_length () == 1 && selection.get_format () == 8) {
                 uchar result = selection.get_data ()[0];
-warning ("result %s length of data %i", result.to_string (), (int)(selection.get_data ().length));
                 switch (result) {
                     case 'F':
-warning ("F");          Gtk.drag_get_data (widget, context, RAW_ATOM, timestamp);
-                        /* No fallback for XdndDirectSave stage (3), result "F" ("Failed") yet */
+warning ("F");
+                        Gtk.drag_get_data (widget, context, RAW_ATOM, timestamp);
                         return false;
                     case 'E':
 warning ("E");
@@ -226,12 +218,8 @@ warning ("S");
                         break;
                 }
             } else {
-warning ("unrecognized format - length %u, format %u", selection.get_length (), selection.get_format ());
+                critical ("unrecognized format - length %u, format %u", selection.get_length (), selection.get_format ());
             }
-
-//            if (!success) {
-//                set_source_uri (context, "");
-//            }
 
             return success;
         }
@@ -239,8 +227,9 @@ warning ("unrecognized format - length %u, format %u", selection.get_length (), 
         public bool handle_raw_dnd_data (Gdk.DragContext context,
                                            GOF.File drop_target,
                                            Gtk.SelectionData selection) {
-warning ("handle raw data length %i target %s, source xdnd %s", (int)(selection.get_data ().length), drop_target.uri, get_source_filename (context));
-return false;
+
+            warning ("handle raw data length %i target %s, source xdnd %s", (int)(selection.get_data ().length), drop_target.uri, get_source_filename (context));
+            return false;
         }
 
         public bool handle_netscape_url (Gdk.DragContext context, GOF.File drop_target, Gtk.SelectionData selection) {
@@ -263,7 +252,7 @@ return false;
                                               Gdk.DragAction possible_actions,
                                               Gdk.DragAction suggested_action,
                                               uint32 timestamp) {
-warning ("handle drag file actions");
+warning ("handle file drag actions");
 
             bool success = false;
             Gdk.DragAction action = suggested_action;
@@ -296,8 +285,6 @@ warning ("handle drag file actions");
                 selection_data.get_length () > 0) {
 
                 text = DndHandler.data_to_string (selection_data.get_data_with_length ());
-            } else if (info == Marlin.TargetType.XDND_DIRECT_SAVE) {
-warning ("NOT A URI LIST info is %u - XDND_DIRECT_SAVE", info);
             }
 
             debug ("DNDHANDLER selection data is uri list returning %s", (text != null).to_string ());
@@ -320,7 +307,6 @@ warning ("NOT A URI LIST info is %u - XDND_DIRECT_SAVE", info);
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
             set_stringbuilder_from_file_list (sb, file_list, prefix, false);  /* Use escaped paths */
-warning ("DnD handler set selection data");
             selection_data.@set (selection_data.get_target (),
                                  8,
                                  sb.data);

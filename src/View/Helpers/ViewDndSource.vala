@@ -54,7 +54,6 @@ namespace Marlin {
         }
 
         public void begin_drag (int drag_button, Gdk.Event event) {
-warning ("gegin drag");
                 var target_list = new Gtk.TargetList (drag_targets);
                 var actions = file_drag_actions;
 
@@ -71,7 +70,7 @@ warning ("gegin drag");
         }
 
         private void on_drag_begin (Gdk.DragContext context) {
-warning ("on drag begin");
+            warning ("on drag begin");
         }
 
         private void on_drag_data_get (Gdk.DragContext context,
@@ -102,19 +101,17 @@ warning ("on drag begin");
                 Gtk.drag_set_icon_name (context, "stock-file", 0, 0);
             }
 
-warning ("setting selection data");
             Marlin.DndHandler.set_selection_data_from_file_list (selection_data, drag_file_list);
         }
 
         private void on_drag_data_delete (Gdk.DragContext  context) {
-warning ("source on drag fata delete");
+            warning ("source on drag fata delete");
         }
 
         private void on_drag_end (Gdk.DragContext  context) {
-warning ("drag end");
-//            on_drag_leave ();
             drag_has_begun = false;
             drop_occurred = false;
+            drag_file_list = null;
         }
 
 
