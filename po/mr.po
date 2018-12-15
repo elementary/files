@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-12-10 20:22+0000\n"
+"PO-Revision-Date: 2018-12-15 11:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -296,30 +296,33 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"फोल्डर \"%B\" मधील फाइल्स हटवल्या जाऊ शकत नाहीत कारण आपल्याला त्यांना "
+"पाहण्याची परवानगी नाही."
 
 #: ../libcore/marlin-file-operations.c:1473
 #: ../libcore/marlin-file-operations.c:2465
 #: ../libcore/marlin-file-operations.c:3432
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "फोल्डर \"%B\" मधील फायलींबद्दल माहिती मिळवताना एक त्रुटी आली."
 
 #: ../libcore/marlin-file-operations.c:1482
 #: ../libcore/marlin-file-operations.c:3441
 msgid "_Skip files"
-msgstr ""
+msgstr "(_S)फाइल्स वगळा"
 
 #: ../libcore/marlin-file-operations.c:1503
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
 msgstr ""
+"\"%B\" फोल्डर हटविला जाऊ शकत नाही कारण तुम्हाला ते वाचण्याची परवानगी नाही."
 
 #: ../libcore/marlin-file-operations.c:1506
 #: ../libcore/marlin-file-operations.c:2504
 #: ../libcore/marlin-file-operations.c:3477
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "\"%B\" फोल्डर वाचताना त्रुटी आली."
 
 #: ../libcore/marlin-file-operations.c:1540
 msgid "Could not remove the folder %B."
