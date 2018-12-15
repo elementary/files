@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-12-15 11:04+0000\n"
+"PO-Revision-Date: 2018-12-15 12:13+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -326,32 +326,34 @@ msgstr "\"%B\" फोल्डर वाचताना त्रुटी आ�
 
 #: ../libcore/marlin-file-operations.c:1540
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "फोल्डर %B काढू शकत नाही."
 
 #: ../libcore/marlin-file-operations.c:1617
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "%B हटवताना त्रुटी आली."
 
 #: ../libcore/marlin-file-operations.c:1701
 msgid "Moving files to trash"
-msgstr ""
+msgstr "फाइल्स कचर्यामध्ये टाकत आहे"
 
 #: ../libcore/marlin-file-operations.c:1703
 #, c-format
 msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d फाइल कचरापेटीमध्ये बाकी"
+msgstr[1] "%'d फाइल्स कचरापेटीमध्ये बाकी"
 
 #: ../libcore/marlin-file-operations.c:1797
 #: ../libcore/marlin-file-operations.c:1800
 #: ../libcore/marlin-file-operations.c:1803
 msgid "Cannot move file to trash or delete it"
-msgstr ""
+msgstr "फाइल कचर्यामध्ये हलवू शकत नाही किंवा हटवू शकत नाही"
 
 #: ../libcore/marlin-file-operations.c:1798
 msgid "It is not permitted to trash or delete files on a read only filesystem."
 msgstr ""
+"केवळ वाचनीय फायलीप्रणालीवरील फायल्स कचऱ्यात टाकण्याची किंवा हटविण्याची "
+"परवानगी नाही."
 
 #: ../libcore/marlin-file-operations.c:1801
 msgid ""
@@ -367,7 +369,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1806
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
+msgstr "फाइल कचऱ्यात टाकू शकत नाही. त्वरित ती हटवण्याचा प्रयत्न करायचा का?"
 
 #: ../libcore/marlin-file-operations.c:1807
 msgid ""
@@ -377,7 +379,7 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:1811
 msgid "Cannot move file to trash.  Try to delete it?"
-msgstr ""
+msgstr "फाइल कचऱ्यात टाकू शकत नाही.  ती हटवण्याचा प्रयत्न करायचा का?"
 
 #: ../libcore/marlin-file-operations.c:1812
 msgid ""
@@ -393,38 +395,38 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2007
 msgid "Trashing Files"
-msgstr ""
+msgstr "फाइल्स कचऱ्यात टाकत आहे"
 
 #: ../libcore/marlin-file-operations.c:2009
 msgid "Deleting Files"
-msgstr ""
+msgstr "फाइल्स हटवत आहे"
 
 #: ../libcore/marlin-file-operations.c:2078
 msgid "Unable to eject %V"
-msgstr ""
+msgstr "%V बाहेर काढण्यात अक्षम"
 
 #: ../libcore/marlin-file-operations.c:2080
 msgid "Unable to unmount %V"
-msgstr ""
+msgstr "%V अनमाउंट करण्यास अक्षम"
 
 #: ../libcore/marlin-file-operations.c:2275
 #, c-format
 msgid "Unable to mount %s"
-msgstr ""
+msgstr "%sमाउंट करण्यास अक्षम"
 
 #: ../libcore/marlin-file-operations.c:2353
 #, c-format
 msgid "Preparing to copy %'d file (%S)"
 msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d फाइल (%S) कॉपी करण्यास तयार करीत आहे"
+msgstr[1] "%'d फाइल्स (%S) कॉपी करण्यास तयार करीत आहे"
 
 #: ../libcore/marlin-file-operations.c:2359
 #, c-format
 msgid "Preparing to move %'d file (%S)"
 msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d फाइल(%S) हलविण्यास तयार करीत आहे"
+msgstr[1] "%'d फाइल्स (%S) हलविण्यास तयार करीत आहे"
 
 #: ../libcore/marlin-file-operations.c:2365
 #, c-format
@@ -445,17 +447,17 @@ msgstr[1] ""
 #: ../libcore/marlin-file-operations.c:3424
 #: ../libcore/marlin-file-operations.c:3469
 msgid "Error while copying."
-msgstr ""
+msgstr "कॉपी करताना त्रुटी."
 
 #: ../libcore/marlin-file-operations.c:2404
 #: ../libcore/marlin-file-operations.c:3422
 #: ../libcore/marlin-file-operations.c:3467
 msgid "Error while moving."
-msgstr ""
+msgstr "हलवताना त्रुटी."
 
 #: ../libcore/marlin-file-operations.c:2408
 msgid "Error while moving files to trash."
-msgstr ""
+msgstr "फायली कचरापेटीत हलविताना त्रुटी."
 
 #: ../libcore/marlin-file-operations.c:2462
 msgid ""
@@ -477,26 +479,26 @@ msgstr ""
 
 #: ../libcore/marlin-file-operations.c:2580
 msgid "There was an error getting information about \"%B\"."
-msgstr ""
+msgstr "\"%B\" बद्दल माहिती मिळविताना त्रुटी आली."
 
 #: ../libcore/marlin-file-operations.c:2680
 #: ../libcore/marlin-file-operations.c:2722
 #: ../libcore/marlin-file-operations.c:2755
 #: ../libcore/marlin-file-operations.c:2785
 msgid "Error while copying to \"%B\"."
-msgstr ""
+msgstr "\"%B\" वर कॉपी करताना त्रुटी आली."
 
 #: ../libcore/marlin-file-operations.c:2684
 msgid "You do not have permissions to access the destination folder."
-msgstr ""
+msgstr "आपल्याला गंतव्य फोल्डरमध्ये प्रवेश करण्याची परवानगी नाही."
 
 #: ../libcore/marlin-file-operations.c:2686
 msgid "There was an error getting information about the destination."
-msgstr ""
+msgstr "गंतव्यस्थानाबद्दल माहिती मिळवताना त्रुटी आली."
 
 #: ../libcore/marlin-file-operations.c:2723
 msgid "The destination is not a folder."
-msgstr ""
+msgstr "गंतव्य एक फोल्डर नाही."
 
 #: ../libcore/marlin-file-operations.c:2756
 msgid ""
@@ -507,23 +509,23 @@ msgstr ""
 #: ../libcore/marlin-file-operations.c:2758
 #, c-format
 msgid "There is %S available, but %S is required."
-msgstr ""
+msgstr "%S उपलब्ध आहे, परंतु %S आवश्यक आहे."
 
 #: ../libcore/marlin-file-operations.c:2786
 msgid "The destination is read-only."
-msgstr ""
+msgstr "गंतव्य केवळ वाचनीय आहे."
 
 #: ../libcore/marlin-file-operations.c:2845
 msgid "Moving \"%B\" to \"%B\""
-msgstr ""
+msgstr "\"%B\" \"%B\" वर हलवित आहे"
 
 #: ../libcore/marlin-file-operations.c:2846
 msgid "Copying \"%B\" to \"%B\""
-msgstr ""
+msgstr "\"%B\" \"%B\" वर कॉपी करत आहे"
 
 #: ../libcore/marlin-file-operations.c:2850
 msgid "Duplicating \"%B\""
-msgstr ""
+msgstr "\"%B\" डुप्लिकेट करीत आहे"
 
 #: ../libcore/marlin-file-operations.c:2854
 msgid "Moving %'d file (in \"%B\") to \"%B\""
