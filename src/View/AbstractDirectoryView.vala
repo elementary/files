@@ -106,31 +106,6 @@ namespace FM {
         protected Marlin.ZoomLevel maximum_zoom = Marlin.ZoomLevel.LARGEST;
         protected bool large_thumbnails = false;
 
-//        /* drop site support */
-//        bool _drop_highlight;
-//        bool drop_highlight {
-//            get {
-//                return _drop_highlight;
-//            }
-
-//            set {
-//                if (value != _drop_highlight) {
-//                    if (value) {
-//                        Gtk.drag_highlight (this);
-//                    } else {
-//                        Gtk.drag_unhighlight (this);
-//                    }
-//                }
-
-//                _drop_highlight = value;
-//            }
-//        }
-
-        private Gtk.SelectionData drag_data;
-
-        private bool drag_has_begun = false;
-        protected bool dnd_disabled = false;
-
         /* support for generating thumbnails */
         int thumbnail_request = -1;
         uint thumbnail_source_id = 0;
@@ -342,8 +317,8 @@ namespace FM {
             });
 
             realize.connect (() => {
-                dnd_dest = new Marlin.ViewDndDestination (this, get_real_view ());
-                dnd_source = new Marlin.ViewDndSource (this, get_real_view ());
+                dnd_dest = new Marlin.ViewDndDestination (this, view);
+                dnd_source = new Marlin.ViewDndSource (this, view);
                 dnd_dest.dropped.connect (() => {
                     unselect_all ();
                     select_added_files = true;
@@ -356,20 +331,20 @@ namespace FM {
             scroll_event.connect (on_scroll_event);
             get_vadjustment ().value_changed.connect_after (schedule_thumbnail_timeout);
 
-            add (view);
+            connect_directory_handlers (slot.directory);
 
+            add (view);
             set_up_zoom_level ();
             show_all ();
+
+            freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
         }
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             Object (
                 slot: _slot,
                 window: _slot.window
-                );
-
-            freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
-            connect_directory_handlers (slot.directory);
+            );
         }
 
         ~AbstractDirectoryView () {
@@ -663,10 +638,6 @@ namespace FM {
             }
 
             cancel_timeout (ref thumbnail_source_id);
-        }
-
-        protected bool is_drag_pending () {
-            return drag_has_begun;
         }
 
         protected bool selection_only_contains_folders (GLib.List<GOF.File> list) {
@@ -1378,14 +1349,6 @@ namespace FM {
             dir.load_hiddens ();
         }
 
-//    /** Handle popup menu events */
-//        private bool on_popup_menu () {
-
-//        }
-
-
-
-
 /** Handle TreeModel events */
         protected virtual void on_row_deleted (Gtk.TreePath path) {
             unselect_all ();
@@ -1402,268 +1365,7 @@ namespace FM {
             schedule_thumbnail_timeout ();
         }
 
-/** DRAG AND DROP */
-
-    /** Handle Drag source signals*/
-
-//        private void on_drag_begin (Gdk.DragContext context) {
-//            drag_has_begun = true;
-//            should_activate = false;
-//        }
-
-//        private void on_drag_data_get (Gdk.DragContext context,
-//                                       Gtk.SelectionData selection_data,
-//                                       uint info,
-//                                       uint timestamp) {
-
-//            /* get file list only once in case view changes location automatically
-//             * while dragging (which loses file selection.
-//             */
-
-//            if (drag_file_list == null) {
-//                drag_file_list = get_selected_files_for_transfer ();
-//            }
-
-//            if (drag_file_list == null) {
-//                return;
-//            }
-//warning ("drag data get");
-//            GOF.File file = drag_file_list.first ().data;
-
-//            if (file != null && file.pix != null) {
-//                Gtk.drag_set_icon_gicon (context, file.pix, 0, 0);
-//            } else {
-//                Gtk.drag_set_icon_name (context, "stock-file", 0, 0);
-//            }
-
-//            Marlin.DndHandler.set_selection_data_from_file_list (selection_data, drag_file_list);
-//        }
-
-//        private void on_drag_data_delete (Gdk.DragContext context) {
-//warning ("drag data delete");
-//            /* block real_view default handler because handled in on_drag_end */
-//            GLib.Signal.stop_emission_by_name (get_real_view (), "drag-data-delete");
-//        }
-
-//        private void on_drag_end (Gdk.DragContext context) {
-
-//        }
-
-/** Handle Drop target signals*/
-//        private bool on_drag_motion (Gdk.DragContext context,
-//                                     int x,
-//                                     int y,
-//                                     uint timestamp) {
-
-//            if (!drag_data_ready && !get_drag_data (context, x, y, timestamp)) {
-//                /* We don't have drag data already ... */
-//warning ("failed to get drag data");
-//                return false;
-//            } else {
-//                /* We have the drag data - check whether we can drop here*/
-//                check_destination_actions_and_target_file (context, x, y, timestamp);
-//            }
-
-//            if (drag_scroll_timer_id == 0) {
-//                start_drag_scroll_timer (context);
-//            }
-
-//warning ("current suggested action %s",  current_suggested_action.to_string ());
-//            Gdk.drag_status (context, current_suggested_action, timestamp);
-//            return true;
-//        }
-
-//        private bool on_drag_drop (Gdk.DragContext context,
-//                                   int x,
-//                                   int y,
-//                                   uint timestamp) {
-//warning ("on drag grop");
-
-//            Gtk.TargetList list = null;
-//            string? uri = null;
-//            bool ok_to_drop = false;
-
-////            Gdk.Atom target = Gtk.drag_dest_find_target (get_real_view (), context, list);
-//            Gdk.Atom target = Gtk.drag_dest_find_target (get_real_view (), context, null);
-
-//warning ("got target %s", target.name ());
-////            if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
-//            if (target == dnd_handler.XDND_DIRECT_SAVE_ATOM) {
-//warning ("dropped Xdnd");
-//                GOF.File? target_file = get_file_at_pos (x, y, null);
-//                if (target_file != null) {
-//                    /* get XdndDirectSave file name from DnD source window */
-//                    string? filename = dnd_handler.get_source_filename (context);
-//warning ("xdnd source file name %s", filename);
-//                    if (filename != null) {
-//                        /* Get uri of source file when dropped */
-//                        uri = target_file.get_target_location ().resolve_relative_path (filename).get_uri ();
-//                        /* Setup the XdndDirectSave property on the source window */
-//warning ("setting XdndDirectSave property on source to %s", uri);
-//                        dnd_handler.set_source_uri (context, uri);
-//                        ok_to_drop = true;
-//                    } else {
-//                        PF.Dialogs.show_error_dialog (_("Cannot drop this file"),
-//                                                      _("Invalid file name provided"), window);
-//                    }
-//                }
-
-//                ok_to_drop = true;
-////                drop_occurred = true;
-////                return false;
-//            } else {
-//                ok_to_drop = (target != Gdk.Atom.NONE);
-//            }
-
-//            if (ok_to_drop) {
-//                drop_occurred = true;
-//                /* request the drag data from the source (initiates
-//                 * saving in case of XdndDirectSave).*/
-//warning ("drag data get");
-//                Gtk.drag_get_data (get_real_view (), context, target, timestamp);
-//            }
-
-//            return ok_to_drop;
-//        }
-
-
-//        public Gtk.SelectionData sdata;
-//        private void on_drag_data_received (Gdk.DragContext context,
-//                                            int x,
-//                                            int y,
-//                                            Gtk.SelectionData selection_data,
-//                                            uint info,
-//                                            uint timestamp
-//                                            ) {
-//            bool success = false;
-//            bool finished = true;
-//warning ("drag data received info is %u, drag_data_ready %s, drop occurred %s", info, drag_data_ready.to_string (), drop_occurred.to_string ());
-//            if (!drag_data_ready) {
-//                sdata = selection_data.copy ();
-//                drag_data_ready = true;
-//                /* We don't have the drag data - extract uri list from selection data */
-//                string? text;
-//                if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
-//                    drop_file_list = PF.FileUtils.files_from_uris (text);
-//                    drag_data_ready = true;
-//                } else if (info == Marlin.TargetType.XDND_DIRECT_SAVE ||
-//                           info == Marlin.TargetType.NETSCAPE_URL) {
-
-//warning ("info xdnd drag data ready %s", drag_data_ready.to_string ());
-////                    drag_data_ready = true;
-//                } else if (info == Marlin.TargetType.RAW) {
-//warning ("RAW target");
-//                }
-//            }
-
-
-//            if (drop_occurred && drag_data_ready) {
-////            if (drop_occurred) {
-//                if (current_actions != Gdk.DragAction.DEFAULT) {
-//                    switch (info) {
-//                        case Marlin.TargetType.XDND_DIRECT_SAVE:
-//warning ("drag data received and dropped - xdnd");
-//                            finished = dnd_handler.handle_xdnddirectsave (context,
-//                                                                         drop_target_file,
-//                                                                         selection_data,
-//                                                                         timestamp,
-//                                                                         get_real_view ());
-//warning ("finished %s", finished.to_string ());
-//                            success = true;
-
-//                            break;
-
-//                        case Marlin.TargetType.RAW:
-//warning ("raw target type");
-//                            success = dnd_handler.handle_raw_dnd_data (context,
-//                                                                       drop_target_file,
-//                                                                       sdata);
-
-//                            break;
-
-//                        case Marlin.TargetType.NETSCAPE_URL:
-//                            success = dnd_handler.handle_netscape_url (context,
-//                                                                       drop_target_file,
-//                                                                       selection_data);
-//                            break;
-
-//                        case Marlin.TargetType.TEXT_URI_LIST:
-//                            if ((current_actions & file_drag_actions) != 0) {
-//                                if (selected_files != null) {
-//                                    unselect_all ();
-//                                }
-
-//                                select_added_files = true;
-//                                success = dnd_handler.handle_file_drag_actions (get_real_view (),
-//                                                                                window,
-//                                                                                context,
-//                                                                                drop_target_file,
-//                                                                                drop_file_list,
-//                                                                                current_actions,
-//                                                                                current_suggested_action,
-//                                                                                timestamp);
-//                            }
-
-//                            break;
-
-//                        default:
-//                            break;
-//                    }
-//                }
-
-//                if (finished) {
-//                    drop_occurred = false;
-//                    Gtk.drag_finish (context, success, false, timestamp);
-//warning ("calling on drag finish");
-//                    on_drag_finish (context, timestamp);
-//                }
-//            }
-//        }
-
-//        private void on_drag_leave (Gdk.DragContext context, uint timestamp) {
-//warning ("drag leave");
-//            /* reset the drop-file for the icon renderer */
-//            icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
-//            /* stop any running drag autoscroll timer */
-//            cancel_timeout (ref drag_scroll_timer_id);
-//            cancel_timeout (ref drag_enter_timer_id);
-
-//            /* disable the drop highlighting around the view */
-//            if (drop_highlight) {
-//                drop_highlight = false;
-//                queue_draw ();
-//            }
-
-//            /* disable the highlighting of the items in the view */
-//            highlight_path (null);
-
-//            /* Prepare to receive another drop */
-//            drag_data_ready = false;
-//        }
-
-//        private void on_drag_finish (Gdk.DragContext context, uint timestamp) {
-//warning ("drag leave");
-//            /* reset the drop-file for the icon renderer */
-//            icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
-//            /* stop any running drag autoscroll timer */
-//            cancel_timeout (ref drag_scroll_timer_id);
-//            cancel_timeout (ref drag_enter_timer_id);
-
-//            /* disable the drop highlighting around the view */
-//            if (drop_highlight) {
-//                drop_highlight = false;
-//                queue_draw ();
-//            }
-
-//            /* disable the highlighting of the items in the view */
-//            highlight_path (null);
-
-////            /* Prepare to receive another drop */
-//            drag_data_ready = false;
-//        }
-
 /** DnD helpers */
-
         public GOF.File? get_file_at_pos (int win_x, int win_y, out Gtk.TreePath? path_return) {
             Gtk.TreePath? path = get_path_at_pos (win_x, win_y);
             GOF.File? file = null;
@@ -1696,11 +1398,6 @@ namespace FM {
 
         public void highlight_drop_file (GOF.File? drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
             bool can_drop = (action > Gdk.DragAction.DEFAULT);
-
-//            if (drop_highlight != can_drop) {
-//                drop_highlight = can_drop;
-//                queue_draw ();
-//            }
 
             /* Set the icon_renderer drop-file if there is an action */
             drop_file = can_drop ? drop_file : null;
@@ -2439,24 +2136,6 @@ namespace FM {
         }
 
 
-//        public void start_drag_scroll_timer (Gdk.DragContext context) {
-//            drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
-//                                                          50,
-//                                                          () => {
-//                Gtk.Widget widget = (this as Gtk.Bin).get_child ();
-//                Gdk.Device pointer = context.get_device ();
-//                Gdk.Window window = widget.get_window ();
-//                int x, y, w, h;
-
-//                window.get_device_position (pointer, out x, out y, null);
-//                window.get_geometry (null, null, out w, out h);
-
-//                scroll_if_near_edge (y, h, 20, get_vadjustment ());
-//                scroll_if_near_edge (x, w, 20, get_hadjustment ());
-//                return GLib.Source.CONTINUE;
-//            });
-//        }
-
         public void scroll_window_near_edge (Gdk.Window window, int x, int y) {
                 int w, h;
                 window.get_geometry (null, null, out w, out h);
@@ -2464,7 +2143,7 @@ namespace FM {
                 scroll_if_near_edge (y, h, 20, get_vadjustment ());
                 scroll_if_near_edge (x, w, 20, get_hadjustment ());
         }
-//        private void scroll_if_near_edge (int pos, int dim, int threshold, Gtk.Adjustment adj) {
+
         private void scroll_if_near_edge (int pos, int dim, int threshold, Gtk.Adjustment adj) {
                 /* check if we are near the edge */
                 int band = 2 * threshold;
@@ -3061,19 +2740,6 @@ namespace FM {
             return true;
         }
 
-        protected void block_drag_and_drop () {
-warning ("block DND");
-            drag_data = get_real_view ().get_data ("gtk-site-data");
-            GLib.SignalHandler.block_matched (get_real_view (), GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
-            dnd_disabled = true;
-        }
-
-        protected void unblock_drag_and_drop () {
-warning ("ubblobk DND");
-            GLib.SignalHandler.unblock_matched (get_real_view (), GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
-            dnd_disabled = false;
-        }
-
         private uint drag_timer_id = 0;
         public void start_drag_timer (Gdk.EventButton button_event) {
             var real_view = get_real_view ();
@@ -3104,14 +2770,6 @@ warning ("ubblobk DND");
             }
 
             cancel_hover (); /* cancel overlay statusbar cancellables */
-
-            /* Ignore if second button pressed before first released - not permitted during rubberbanding.
-             * Multiple click produces an event without corresponding release event so do not block that.
-             */
-            if (dnd_disabled && event.type == Gdk.EventType.BUTTON_PRESS) {
-                return true;
-            }
-
             grab_focus ();
 
             Gtk.TreePath? path = null;
@@ -3137,13 +2795,7 @@ warning ("ubblobk DND");
             bool path_selected = (path != null ? path_is_selected (path) : false);
             bool on_blank = (click_zone == ClickZone.BLANK_NO_PATH || click_zone == ClickZone.BLANK_PATH);
 
-            /* Block drag and drop to allow rubberbanding and prevent unwanted effects of
-             * dragging on blank areas
-             */
-            block_drag_and_drop ();
-
-            /* Handle un-modified clicks or control-clicks here else pass on.
-             */
+            /* Handle un-modified clicks or control-clicks here else pass on. */
             if (!will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed)) {
                 return false;
             }
@@ -3158,12 +2810,12 @@ warning ("ubblobk DND");
                 }
             }
 
-            bool result = false; // default false so events get passed to Window
+            bool result = false; /* default false so events get passed to Window */
             should_activate = false;
             should_scroll = true;
 
             switch (event.button) {
-                case Gdk.BUTTON_PRIMARY: // button 1
+                case Gdk.BUTTON_PRIMARY: /* button 1 */
                     /* Control-click should deselect previously selected path on key release (unless
                      * pointer moves)
                      */
@@ -3193,7 +2845,7 @@ warning ("ubblobk DND");
                                 update_selected_files_and_menu ();
                                 result = only_shift_pressed && handle_multi_select (path);
                             } else {
-                                unblock_drag_and_drop ();
+                                start_drag_timer (event);
                                 result = handle_primary_button_click (event, path);
                             }
 
@@ -3212,7 +2864,6 @@ warning ("ubblobk DND");
                                     select_path (path, true); /* Cursor follow and selection preserved */
                                 }
 
-                                unblock_drag_and_drop ();
                                 result = true; /* Prevent rubberbanding and deselection of other paths */
                             }
                             break;
@@ -3233,18 +2884,17 @@ warning ("ubblobk DND");
 
                     break;
 
-                case Gdk.BUTTON_MIDDLE: // button 2
+                case Gdk.BUTTON_MIDDLE: /* button 2 */
                     if (!path_is_selected (path)) {
                         select_path (path, true);
                     }
 
                     should_activate = true;
-                    unblock_drag_and_drop ();
                     result = true;
 
                     break;
 
-                case Gdk.BUTTON_SECONDARY: // button 3
+                case Gdk.BUTTON_SECONDARY: /* button 3 */
                     if (click_zone == ClickZone.NAME ||
                         click_zone == ClickZone.BLANK_PATH ||
                         click_zone == ClickZone.ICON ||
@@ -3257,7 +2907,6 @@ warning ("ubblobk DND");
 
                     /* Ensure selected files list and menu actions are updated before context menu shown */
                     update_selected_files_and_menu ();
-                    unblock_drag_and_drop ();
                     start_drag_timer (event);
 
                     result = handle_secondary_button_click (event);
@@ -3272,10 +2921,6 @@ warning ("ubblobk DND");
         }
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
-            if (dnd_disabled) {
-                unblock_drag_and_drop ();
-            }
-
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
              * we do not want to refocus this view.

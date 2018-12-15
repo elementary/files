@@ -22,10 +22,8 @@ namespace Marlin {
         public unowned Gtk.Widget real_view { get; construct; }
         public Marlin.DndHandler dnd_handler { get; construct; }
 
-
-        private bool drag_has_begun = false;
-        private bool drop_occurred  = false;
         private GLib.List<GOF.File> drag_file_list = null;
+
 
         const Gtk.TargetEntry [] drag_targets = {
             {TEXT_PLAIN, Gtk.TargetFlags.SAME_APP, Marlin.TargetType.TEXT_PLAIN},
@@ -38,8 +36,9 @@ namespace Marlin {
 
         construct {
             dnd_handler = new Marlin.DndHandler ();
-            /* Set up as drag source */
-            Gtk.drag_source_set (real_view, Gdk.ModifierType.BUTTON1_MASK, drag_targets, file_drag_actions);
+            /* We do not set up as drag source as it interferes with rubberband selection.
+             * Instead, the abstract view calls "begin drag" when a drag is detected (and permitted).
+             * "begin drag" sets the appropriate target types and actions */
             real_view.drag_begin.connect (on_drag_begin);
             real_view.drag_data_get.connect (on_drag_data_get);
             real_view.drag_data_delete.connect (on_drag_data_delete);
@@ -70,7 +69,7 @@ namespace Marlin {
         }
 
         private void on_drag_begin (Gdk.DragContext context) {
-            warning ("on drag begin");
+            debug ("on drag begin");
         }
 
         private void on_drag_data_get (Gdk.DragContext context,
@@ -105,12 +104,10 @@ namespace Marlin {
         }
 
         private void on_drag_data_delete (Gdk.DragContext  context) {
-            warning ("source on drag fata delete");
+            debug ("source on drag fata delete");
         }
 
         private void on_drag_end (Gdk.DragContext  context) {
-            drag_has_begun = false;
-            drop_occurred = false;
             drag_file_list = null;
         }
 
