@@ -104,7 +104,7 @@ namespace Marlin {
                 GOF.File? target_file = abstract_view.get_file_at_pos (x, y, null);
                 if (target_file != null) {
                     /* get XdndDirectSave file name from DnD source window */
-                    string? filename = dnd_handler.get_source_filename (context);
+                    string? filename = dnd_handler.get_xdnd_property_data (context);
                     if (filename != null) {
                         /* Get uri of source file when dropped */
                         uri = target_file.get_target_location ().resolve_relative_path (filename).get_uri ();
@@ -133,6 +133,7 @@ namespace Marlin {
 
         }
 
+        Gtk.SelectionData sdata_copy;
         private void on_drag_data_received (Gdk.DragContext context,
                                             int x,
                                             int y,
@@ -145,9 +146,10 @@ namespace Marlin {
 
             if (!drag_data_ready) {
                 drag_data_ready = true;
+                sdata_copy = selection_data.copy ();
                 /* extract uri list from selection data (XDndDirectSave etc set drag_data_ready true already) */
                 string? text;
-                if (Marlin.DndHandler.selection_data_is_uri_list (selection_data, info, out text)) {
+                if (Marlin.DndHandler.selection_data_is_uri_list (sdata_copy, info, out text)) {
                     drag_file_list = PF.FileUtils.files_from_uris (text);
                 }
                 /* May need to deal with other data types here? */
@@ -174,7 +176,9 @@ namespace Marlin {
                         debug ("RAW data received");
                         success = dnd_handler.handle_raw_dnd_data (context,
                                                                    drop_target_file,
-                                                                   selection_data);
+                                                                   selection_data,
+                                                                   timestamp,
+                                                                   real_view);
                         break;
 
                     case Marlin.TargetType.NETSCAPE_URL:
@@ -313,7 +317,7 @@ namespace Marlin {
         }
 
         private bool is_valid_drop_folder (GOF.File file) {
-            /* Cannot drop onto a file onto its parent or onto itself */
+            /* Cannot drop a file onto its parent or onto itself */
             if (file.uri != abstract_view.slot.uri &&
                 drag_file_list != null &&
                 drag_file_list.index (file.location) < 0) {

@@ -155,7 +155,7 @@ namespace Marlin {
             }
         }
 
-        public string? get_source_filename (Gdk.DragContext context) {
+        public string? get_xdnd_property_data (Gdk.DragContext context) {
             uint8[]? data = null;
             Gdk.Atom? actual_property_type = null;
             int actual_format = -1;
@@ -179,7 +179,6 @@ namespace Marlin {
         }
 
         public void set_source_uri (Gdk.DragContext context, string uri) {
-            warning ("DNDHANDLER: set source uri to %s", uri);
             Gdk.property_change (context.get_source_window (),
                                  XDND_DIRECT_SAVE_ATOM,
                                  TEXT_PLAIN_ATOM,
@@ -200,17 +199,18 @@ namespace Marlin {
                 uchar result = selection.get_data ()[0];
                 switch (result) {
                     case 'F':
-warning ("F");
-                        Gtk.drag_get_data (widget, context, RAW_ATOM, timestamp);
+                        debug ("XDndDirectSave result 'F' - falling back to raw data");
+                        Idle.add (() => {Gtk.drag_get_data (widget, context, RAW_ATOM, timestamp); return false; });
                         return false;
                     case 'E':
-warning ("E");
+                        debug ("XDndDirectSave result 'E' - no fallback available");
                         /* No fallback for XdndDirectSave stage (3), result "E" ("Error") yet.
                          * Note this result may be obtained even if the file was successfully saved */
                         break;
                     case 'S':
-warning ("S");
+                        debug ("XDndDirectSave result 'S'");
                         /* XdndDirectSave "Success" */
+                        /* Source has successfully saved the dragged data to the destination folder*/
                         success = true;
                         break;
                     default:
@@ -225,11 +225,22 @@ warning ("S");
         }
 
         public bool handle_raw_dnd_data (Gdk.DragContext context,
-                                           GOF.File drop_target,
-                                           Gtk.SelectionData selection) {
+                                     GOF.File drop_target,
+                                     Gtk.SelectionData selection_data,
+                                     uint timestamp,
+                                     Gtk.Widget widget) {
 
-            warning ("handle raw data length %i target %s, source xdnd %s", (int)(selection.get_data ().length), drop_target.uri, get_source_filename (context));
-            return false;
+
+
+                Marlin.FileOperations.new_file (widget,
+                                                null,
+                                                drop_target.uri,
+                                                Path.get_basename (get_xdnd_property_data (context)),
+                                                (string*)(selection_data.get_data ()), /* must cast to string? to satisfy .vapi */
+                                                selection_data.get_length (),  /* Cannot use data.length - gives -1 */
+                                                null);
+
+            return true;
         }
 
         public bool handle_netscape_url (Gdk.DragContext context, GOF.File drop_target, Gtk.SelectionData selection) {
@@ -252,7 +263,6 @@ warning ("S");
                                               Gdk.DragAction possible_actions,
                                               Gdk.DragAction suggested_action,
                                               uint32 timestamp) {
-warning ("handle file drag actions");
 
             bool success = false;
             Gdk.DragAction action = suggested_action;
