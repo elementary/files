@@ -225,10 +225,11 @@ namespace Marlin {
         }
 
         public bool handle_raw_dnd_data (Gdk.DragContext context,
-                                     GOF.File drop_target,
-                                     Gtk.SelectionData selection_data,
-                                     uint timestamp,
-                                     Gtk.Widget widget) {
+                                         GOF.File drop_target,
+                                         Gtk.SelectionData selection_data,
+                                         uint timestamp,
+                                         Gtk.Widget widget,
+                                         Marlin.CreateCallback? create_callback) {
 
 
 
@@ -238,7 +239,25 @@ namespace Marlin {
                                                 Path.get_basename (get_xdnd_property_data (context)),
                                                 (string*)(selection_data.get_data ()), /* must cast to string? to satisfy .vapi */
                                                 selection_data.get_length (),  /* Cannot use data.length - gives -1 */
-                                                null);
+                                                create_callback);
+
+            return true;
+        }
+
+        public bool handle_plain_text (Gdk.DragContext context,
+                                       GOF.File drop_target,
+                                       Gtk.SelectionData selection_data,
+                                       uint timestamp,
+                                       Gtk.Widget widget,
+                                       Marlin.CreateCallback? rename_callback = null) {
+
+                Marlin.FileOperations.new_file (widget,
+                                                null,
+                                                drop_target.uri,
+                                                null, /* File will be given default name */
+                                                (string?)(selection_data.get_data ()),
+                                                selection_data.get_length (),
+                                                rename_callback);
 
             return true;
         }

@@ -178,7 +178,8 @@ namespace Marlin {
                                                                    drop_target_file,
                                                                    selection_data,
                                                                    timestamp,
-                                                                   real_view);
+                                                                   real_view,
+                                                                   null);
                         break;
 
                     case Marlin.TargetType.NETSCAPE_URL:
@@ -205,7 +206,13 @@ namespace Marlin {
                         break;
 
                     case Marlin.TargetType.TEXT_PLAIN:
-                        debug ("TEXT PLAIN data received");
+                        warning ("TEXT PLAIN data received");
+                        success = dnd_handler.handle_plain_text (context,
+                                                                 drop_target_file,
+                                                                 selection_data,
+                                                                 timestamp,
+                                                                 real_view,
+                                                                 abstract_view.create_file_done);
                         break;
 
                     default:
@@ -287,7 +294,8 @@ namespace Marlin {
                 if (file != null) {
                     if (current_target_type == dnd_handler.XDND_DIRECT_SAVE_ATOM ||
                         current_target_type == dnd_handler.NETSCAPE_URL_ATOM ||
-                        current_target_type == dnd_handler.RAW_ATOM) {
+                        current_target_type == dnd_handler.RAW_ATOM ||
+                        current_target_type == dnd_handler.TEXT_PLAIN_ATOM) {
 
                         current_suggested_action = Gdk.DragAction.COPY;
                         current_actions = current_suggested_action;
