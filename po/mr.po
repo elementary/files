@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-12-15 12:13+0000\n"
+"PO-Revision-Date: 2018-12-17 00:09+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -261,8 +261,8 @@ msgstr "आपल्याला खात्री आहे की आपण  
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "आपणास खात्री आहे की आपण निवडलेले  %'d आयटम कायमचे हटवू इच्छिता? "
-msgstr[1] "आपणास खात्री आहे की आपण निवडलेले  %'d आयटम कायमचे हटवू इच्छिता? "
+msgstr[0] "आपणास खात्री आहे की आपण निवडलेला  %'d आयटम कायमचे हटवू इच्छिता?"
+msgstr[1] "आपणास खात्री आहे की आपण निवडलेले  %'d आयटम कायमचे हटवू इच्छिता?"
 
 #: ../libcore/marlin-file-operations.c:1380
 #, c-format
@@ -280,8 +280,8 @@ msgstr "फाइल्स हटवित आहे"
 #: ../libcore/marlin-file-operations.c:1399
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] "बाकी"
-msgstr[1] "बाकी"
+msgstr[0] "%T बाकी"
+msgstr[1] "%T बाकी"
 
 #: ../libcore/marlin-file-operations.c:1466
 #: ../libcore/marlin-file-operations.c:1500
