@@ -118,12 +118,15 @@ namespace Marlin.View.Chrome {
 
     /** Search related functions **/
     /******************************/
-        public void set_primary_icon_name (string? icon_name) {
-            primary_icon_name = icon_name;
-        }
+        public void set_search_icon () {
+            primary_icon_name = Marlin.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC;
+            primary_icon_activatable = true;
+            string[] accels = {"<Ctrl>F"};
+            primary_icon_tooltip_markup = Granite.markup_accel_tooltip (accels, _("Search"));
 
-        public void hide_primary_icon () {
-            primary_icon_pixbuf = null;
+        }
+        public void set_primary_icon_activatable (string? icon_name) {
+            primary_icon_name = icon_name;
         }
 
     /** Completion related functions
@@ -393,6 +396,7 @@ namespace Marlin.View.Chrome {
             y = (int) menu_y_root;
             push_in = true;
         }
+
     /** Context menu functions **/
     /****************************/
         private void load_right_click_menu (Gdk.EventButton event, BreadcrumbElement clicked_element) {

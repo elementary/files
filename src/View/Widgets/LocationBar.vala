@@ -58,10 +58,15 @@ namespace Marlin.View.Chrome {
             search_results = new SearchResults (bread as Gtk.Widget);
             connect_additional_signals ();
             show_refresh_icon ();
+            bread.set_search_icon ();
         }
 
         private void connect_additional_signals () {
             bread.open_with_request.connect (on_bread_open_with_request);
+            bread.primary_icon_press.connect (() => {
+                enter_search_mode ();
+            });
+
             search_results.file_selected.connect (on_search_results_file_selected);
             search_results.file_activated.connect (on_search_results_file_activated);
             search_results.cursor_changed.connect (on_search_results_cursor_changed);
@@ -122,7 +127,6 @@ namespace Marlin.View.Chrome {
         protected override bool after_bread_focus_out_event (Gdk.EventFocus event) {
             base.after_bread_focus_out_event (event);
             search_mode = false;
-            hide_search_icon ();
             show_refresh_icon ();
             focus_out_event (event);
             check_home ();
@@ -161,7 +165,6 @@ namespace Marlin.View.Chrome {
                 if (txt.contains (Path.DIR_SEPARATOR_S)) {
                     switch_to_navigate_mode ();
                 } else {
-                    show_search_icon ();
                     search_results.search (txt, search_location);
                 }
             } else {
@@ -175,21 +178,12 @@ namespace Marlin.View.Chrome {
         }
 
         protected override void show_navigate_icon () {
-            show_search_icon ();
+            hide_working_icon ();
             base.show_navigate_icon ();
         }
 
-        protected void show_search_icon () {
-            bread.get_style_context ().remove_class ("spin");
-            bread.set_primary_icon_name (Marlin.ICON_PATHBAR_PRIMARY_FIND_SYMBOLIC);
-        }
-
-        protected void hide_search_icon () {
-            bread.set_primary_icon_name (null);
-        }
-
         protected void show_refresh_icon () {
-            bread.get_style_context ().remove_class ("spin");
+            hide_working_icon ();
             bread.action_icon_name = Marlin.ICON_PATHBAR_SECONDARY_REFRESH_SYMBOLIC;
             bread.set_action_icon_tooltip (Granite.markup_accel_tooltip ({"F5", "<Ctrl>R"}, _("Reload this folder")));
         }
@@ -244,15 +238,12 @@ namespace Marlin.View.Chrome {
         private void switch_to_navigate_mode () {
             search_mode = false;
             cancel_search ();
-            hide_search_icon ();
             show_navigate_icon ();
         }
 
         private void switch_to_search_mode () {
             search_mode = true;
             hide_navigate_icon ();
-            hide_search_icon ();
-            show_search_icon ();
             /* Next line ensures that the pathbar not lose focus when the mouse if over the sidebar,
              * which would normally grab the focus */
             after_bread_text_changed (bread.get_entry_text ());
@@ -293,9 +284,6 @@ namespace Marlin.View.Chrome {
 
             if (bread.hide_breadcrumbs) {
                 show_placeholder ();
-                show_search_icon ();
-            } else {
-                hide_search_icon ();
             }
         }
     }

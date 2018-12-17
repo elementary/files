@@ -660,9 +660,9 @@ namespace Marlin.View.Chrome {
                 double height_marged = height - 2 * margin;
                 double x_render;
                 if (is_RTL) {
-                    x_render = width - margin;
+                    x_render = width - margin - 24;
                 } else {
-                    x_render = margin;
+                    x_render = margin + 24;
                 }
                 GLib.List<BreadcrumbElement> displayed_breadcrumbs = null;
                 double max_width = get_displayed_breadcrumbs_natural_width (out displayed_breadcrumbs);
