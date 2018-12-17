@@ -254,9 +254,21 @@ public class Marlin.MimeActions {
         return get_default_application_for_file (GOF.File.@get (file));
     }
 
+    public static void open_web_link (GOF.File file) {
+        assert (file.is_web_link);
+
+        var uri = file.info.get_symlink_target ();
+        try {
+            AppInfo.launch_default_for_uri (uri, null);
+        } catch (Error e) {
+            warning ("Failed to open uri %s", uri);
+        }
+    }
+
     public static void open_glib_file_request (GLib.File file_to_open, Gtk.Widget parent, AppInfo? app = null) {
         /* Note: This function should be only called if file_to_open is not an executable or it is not
          * intended to execute it (AbstractDirectoryView takes care of this) */
+
         if (app == null) {
             var choice = choose_app_for_glib_file (file_to_open, parent);
             if (choice != null) {

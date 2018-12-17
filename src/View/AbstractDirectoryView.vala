@@ -711,7 +711,7 @@ namespace FM {
             }
 
             default_app = Marlin.MimeActions.get_default_application_for_file (file);
-            GLib.File location = file.get_target_location ();
+            var location = file.get_target_location ();
 
             if (screen == null) {
                 screen = get_screen ();
@@ -720,7 +720,6 @@ namespace FM {
             if (flag != Marlin.OpenFlag.APP && (file.is_folder () ||
                 file.get_ftype () == "inode/directory" ||
                 file.is_root_network_folder ())) {
-
                 switch (flag) {
                     case Marlin.OpenFlag.NEW_TAB:
                     case Marlin.OpenFlag.NEW_WINDOW:
@@ -760,7 +759,9 @@ namespace FM {
 
         /* Open all files through this */
         private void open_file (GOF.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
-            if (can_open_file (file, true)) {
+            if (file.is_web_link) {
+                Marlin.MimeActions.open_web_link (file);
+            } else if (can_open_file (file, true)) {
                 Marlin.MimeActions.open_glib_file_request (file.location, this, app_info);
             }
         }

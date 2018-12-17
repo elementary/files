@@ -83,6 +83,7 @@ struct _GOFFile {
     gboolean        is_directory;
     gboolean        is_hidden;
     gboolean        is_desktop;
+    gboolean        is_web_link;
     gboolean        is_expanded;
     GIcon           *icon;
     gchar           *custom_icon_name;

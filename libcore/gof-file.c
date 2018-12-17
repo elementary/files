@@ -482,6 +482,10 @@ gof_file_update (GOFFile *file)
         }
     }
 
+    if (file->is_web_link = pf_file_utils_is_web_link (file, NULL)) {
+        file->custom_icon_name = strdup ("applications-internet");
+    }
+
     if (file->custom_display_name == NULL) {
         /* Use custom_display_name to store default display name if there is no custom name */
         if (file->info && g_file_info_get_display_name (file->info) != NULL) {
@@ -704,7 +708,9 @@ void gof_file_update_emblem (GOFFile *file)
     }
 
     /* We hide lock emblems if in Recents, because files here are not real files and emblems would always shown. */
-    if (!gof_file_is_writable (file) && !g_file_has_uri_scheme (file->location, "recent")) {
+    if (!gof_file_is_writable (file) &&
+        !g_file_has_uri_scheme (file->location, "recent") &&
+        !file->is_web_link) {
         if (gof_file_is_readable (file))
             gof_file_add_emblem (file, "emblem-readonly");
         else

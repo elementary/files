@@ -49,6 +49,7 @@ public class GOF.File : GLib.Object {
     public bool is_hidden;
     public bool is_directory;
     public bool is_desktop;
+    public bool is_web_link;
     public bool is_expanded;
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;

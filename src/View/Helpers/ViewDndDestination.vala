@@ -183,10 +183,14 @@ namespace Marlin {
                         break;
 
                     case Marlin.TargetType.NETSCAPE_URL:
-                        debug ("NETSCAPE_URL data received");
+                        warning ("NETSCAPE_URL data received");
                         success = dnd_handler.handle_netscape_url (context,
                                                                    drop_target_file,
-                                                                   selection_data);
+                                                                   selection_data,
+                                                                   timestamp,
+                                                                   real_view,
+                                                                   current_actions,
+                                                                   current_suggested_action);
                         break;
 
                     case Marlin.TargetType.TEXT_URI_LIST:
@@ -249,7 +253,7 @@ namespace Marlin {
             current_target_type = target;
             /* Check if we can handle it yet */
             if (target == dnd_handler.XDND_DIRECT_SAVE_ATOM ||
-                target == Gdk.Atom.intern_static_string ("_NETSCAPE_URL") ||
+                target == dnd_handler.NETSCAPE_URL_ATOM ||
                 target == dnd_handler.RAW_ATOM) {
 
                 /* Determine file at current position (if any) */
@@ -293,11 +297,14 @@ namespace Marlin {
 
                 if (file != null) {
                     if (current_target_type == dnd_handler.XDND_DIRECT_SAVE_ATOM ||
-                        current_target_type == dnd_handler.NETSCAPE_URL_ATOM ||
                         current_target_type == dnd_handler.RAW_ATOM ||
                         current_target_type == dnd_handler.TEXT_PLAIN_ATOM) {
 
                         current_suggested_action = Gdk.DragAction.COPY;
+                        current_actions = current_suggested_action;
+                    } else if (current_target_type == dnd_handler.NETSCAPE_URL_ATOM) {
+
+                        current_suggested_action = Gdk.DragAction.LINK;
                         current_actions = current_suggested_action;
                     } else {
                         current_actions = PF.FileUtils.file_accepts_drop (file,

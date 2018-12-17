@@ -262,15 +262,43 @@ namespace Marlin {
             return true;
         }
 
-        public bool handle_netscape_url (Gdk.DragContext context, GOF.File drop_target, Gtk.SelectionData selection) {
-            string [] parts = (selection.get_text ()).split ("\n");
+        public bool handle_netscape_url (Gdk.DragContext context,
+                                         GOF.File drop_target,
+                                         Gtk.SelectionData selection_data,
+                                         uint timestamp,
+                                         Gtk.Widget widget,
+                                         Gdk.DragAction possible_actions,
+                                         Gdk.DragAction suggested_action) {
 
             /* _NETSCAPE_URL looks like this: "$URL\n$TITLE" - should be 2 parts */
-            if (parts.length != 2) {
+            string [] parts = ((string)(selection_data.get_data ())).split ("\n");
+            if (parts.length < 1 || parts.length > 2) {
+                warning ("Unexpected _NETSCAPE_URL data format");
                 return false;
             }
 
-            /* NETSCAPE URLs are not currently handled.  No current bug reports */
+            var basename = _("Web link to %s").printf (parts.length == 2 ? parts[1] : Path.get_basename (parts[0]));
+            var path = Path.build_path (Path.DIR_SEPARATOR_S, drop_target.uri, basename);
+            GLib.File file = GLib.File.new_for_uri (path);
+
+            switch (suggested_action) {
+                case Gdk.DragAction.LINK: /* Only creating a weblink is supported so far */
+                    if (drop_target.is_folder ()) {
+                        try {
+                            file.make_symbolic_link (parts[0], null);
+                        } catch (Error e) {
+                            warning ("Unable to make web link - %s", e.message);
+                            return false;
+                        }
+                    }
+
+                    break;
+
+                default:
+                    warning ("Can only handle link and copy actions for _NETSCAPE_URL target types");
+                    break;
+            }
+
             return false;
         }
 

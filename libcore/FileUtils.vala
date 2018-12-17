@@ -605,6 +605,25 @@ namespace PF.FileUtils {
                  uri.contains (GLib.Path.DIR_SEPARATOR_S + "Trash" + GLib.Path.DIR_SEPARATOR_S)));
     }
 
+    public bool is_web_link (GOF.File gof, out string? target) {
+        FileInfo info = gof.info;
+        var sym_target = info.get_symlink_target ();
+        target = null;
+
+        if (sym_target != null) {
+            target = sym_target;
+        } else {
+            return false;
+        }
+
+        var scheme = Uri.parse_scheme (sym_target);
+        if (scheme != null && scheme.has_prefix ("http")) {
+            return true;
+        }
+
+        return false;
+    }
+
     public Gdk.DragAction file_accepts_drop (GOF.File dest,
                                              GLib.List<GLib.File> drop_file_list, // read-only
                                              Gdk.DragContext context,
@@ -759,7 +778,7 @@ namespace PF.FileUtils {
 
         return mod_a == mod_b ? 0 : mod_a > mod_b ? 1 : -1;
     }
-    
+
     public void remove_thumbnail_paths_for_uri (string uri) {
         string hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, uri);
         string base_name = "%s.png".printf (hash);
