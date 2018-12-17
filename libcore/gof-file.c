@@ -708,6 +708,7 @@ void gof_file_update_emblem (GOFFile *file)
     }
 
     /* We hide lock emblems if in Recents, because files here are not real files and emblems would always shown. */
+    /* We hide unreadable emblem if weblink, because target is not real files and emblems would always shown. */
     if (!gof_file_is_writable (file) &&
         !g_file_has_uri_scheme (file->location, "recent") &&
         !file->is_web_link) {

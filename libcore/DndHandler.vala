@@ -27,9 +27,9 @@ namespace Marlin {
     public const string TEXT_PLAIN = "text/plain";
 
     public class DndHandler : GLib.Object {
-        public Gdk.Atom XDND_DIRECT_SAVE_ATOM = Gdk.Atom.intern  (XDND_DIRECT_SAVE, false);
+        public Gdk.Atom XDND_DIRECT_SAVE_ATOM = Gdk.Atom.intern (XDND_DIRECT_SAVE, false);
         public Gdk.Atom RAW_ATOM = Gdk.Atom.intern (RAW, false);
-        public Gdk.Atom NETSCAPE_URL_ATOM = Gdk.Atom.intern  (NETSCAPE_URL, false);
+        public Gdk.Atom NETSCAPE_URL_ATOM = Gdk.Atom.intern (NETSCAPE_URL, false);
         public Gdk.Atom TEXT_URI_LIST_ATOM = Gdk.Atom.intern (TEXT_URI_LIST, false);
         public Gdk.Atom TEXT_PLAIN_ATOM = Gdk.Atom.intern (TEXT_PLAIN, false);
 
@@ -230,8 +230,6 @@ namespace Marlin {
                                          uint timestamp,
                                          Gtk.Widget widget,
                                          Marlin.CreateCallback? create_callback) {
-
-
 
                 Marlin.FileOperations.new_file (widget,
                                                 null,

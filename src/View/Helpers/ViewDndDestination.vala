@@ -32,7 +32,7 @@ namespace Marlin {
         private GLib.List<GLib.File> drag_file_list = null; /* the list of URIs that are contained in the drag data */
         private Gdk.Atom current_target_type;
 
-        const Gtk.TargetEntry [] drop_targets = {
+        const Gtk.TargetEntry[] drop_targets = {
             {XDND_DIRECT_SAVE, Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.XDND_DIRECT_SAVE},
             {NETSCAPE_URL, Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.NETSCAPE_URL},
             {RAW, Gtk.TargetFlags.OTHER_APP, Marlin.TargetType.RAW},

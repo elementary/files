@@ -103,11 +103,11 @@ namespace Marlin {
             Marlin.DndHandler.set_selection_data_from_file_list (selection_data, drag_file_list);
         }
 
-        private void on_drag_data_delete (Gdk.DragContext  context) {
+        private void on_drag_data_delete (Gdk.DragContext context) {
             debug ("source on drag fata delete");
         }
 
-        private void on_drag_end (Gdk.DragContext  context) {
+        private void on_drag_end (Gdk.DragContext context) {
             drag_file_list = null;
         }
 

@@ -215,7 +215,7 @@ namespace FM {
 
         public Gtk.Widget view { get; construct; }
         public unowned Marlin.View.Slot slot { get; construct; }
-        public unowned Marlin.View.Window window  { get; construct; } /*For convenience - this can be derived from slot */
+        public unowned Marlin.View.Window window { get; construct; } /*For convenience - this can be derived from slot */
         protected unowned Gtk.RecentManager recent;
         private unowned Marlin.ClipboardManager clipboard;
         protected Marlin.IconRenderer icon_renderer;
@@ -2835,7 +2835,7 @@ namespace FM {
                             bool one_or_less = (selected_files == null || selected_files.next == null);
                             should_activate = no_mods &&
                                               (!on_blank || activate_on_blank) &&
-                                              (single_click_mode && one_or_less  || double_click_event);
+                                              (single_click_mode && one_or_less || double_click_event);
 
                             /* We need to decide whether to rubberband or drag&drop.
                              * Rubberband if modifer pressed or if not on the icon and either
