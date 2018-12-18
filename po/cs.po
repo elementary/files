@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-10-29 14:34+0000\n"
-"PO-Revision-Date: 2018-12-13 14:39+0000\n"
+"PO-Revision-Date: 2018-12-14 00:08+0000\n"
 "Last-Translator: Daniel Zvir <zvir.daniel@seznam.cz>\n"
 "Language-Team: Czech <https://weblate.elementary.io/projects/files/files/cs/>"
 "\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
 msgid "Inaccessible"
-msgstr "Nedosažitelný"
+msgstr "Nedostupný"
 
 #: ../libcore/gof-file.c:347
 #, c-format
