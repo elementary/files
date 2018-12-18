@@ -78,26 +78,56 @@ namespace PF.FileUtils {
         return parent_path;
     }
 
+    public const string ELLIPSIS = "…";
     public string limited_length_path (string full_path, int max_length) {
         if (full_path.length < max_length) {
             return full_path;
         }
 
-        string[] tokens = full_path.split (Path.DIR_SEPARATOR_S, 10);
-        int n_tokens = tokens.length;
-        var basename = tokens[n_tokens - 1];
-        var current_length = basename.length;
+        string path, protocol;
+        split_protocol_from_path (full_path, out protocol, out path);
 
-        var sb = new StringBuilder (tokens[n_tokens - 1]);
-        for (int i = n_tokens - 2; i >=0 && current_length <= max_length; i--) {
-            var chunk = tokens[i] + Path.DIR_SEPARATOR_S;
-            sb.prepend (chunk);
-            current_length += chunk.length;
+        string[] tokens = path.strip ().split (Path.DIR_SEPARATOR_S, 10);
+        int n_tokens = tokens.length;
+        bool has_protocol = protocol.length > 0;
+
+        if (has_protocol) {
+            if (max_length - protocol.length < 12) {
+                has_protocol = false;
+            } else {
+                max_length -= protocol.length;
+            }
         }
 
-        sb.prepend ("…" + Path.DIR_SEPARATOR_S);
+        var basename = tokens[n_tokens - 1];
+        var current_length = basename.length;
+        var sb = new StringBuilder (basename);
 
-        return sb.str;
+        for (int i = n_tokens - 2; i >= 0; i--) {
+            if (tokens[i].length == 0) {
+                continue;
+            }
+            var chunk = tokens[i] + Path.DIR_SEPARATOR_S;
+            current_length += chunk.length;
+            if (current_length > max_length) {
+                current_length -= chunk.length;
+                break;
+            } else {
+                sb.prepend (chunk);
+            }
+        }
+
+        sb.prepend (Path.DIR_SEPARATOR_S);
+
+        if (current_length + 1 < path.length) {
+            sb.prepend (ELLIPSIS);
+        }
+
+        if (has_protocol) {
+            sb.prepend (protocol);
+        }
+
+        return sb.str.replace ("///", "//");
     }
 
     public void restore_files_from_trash (GLib.List<GOF.File> files, Gtk.Widget? widget) {
@@ -781,7 +811,7 @@ namespace PF.FileUtils {
 
         return mod_a == mod_b ? 0 : mod_a > mod_b ? 1 : -1;
     }
-    
+
     public void remove_thumbnail_paths_for_uri (string uri) {
         string hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, uri);
         string base_name = "%s.png".printf (hash);
