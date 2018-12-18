@@ -6,12 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2017-07-04 08:41+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
-"Language-Team: Chinese (Simplified) "
-"<https://l10n.elementary.io/projects/files/extra/zh_CN/>\n"
+"Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
+"files/extra/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,105 +20,123 @@ msgstr ""
 "X-Generator: Weblate 2.14\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "文件"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "浏览文件"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "文件夹;管理;浏览;磁盘;文件系统;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "文件管理器"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "新建窗口"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "新建管理员窗口"
 
-msgid "About Files"
-msgstr "关于 文件"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "浏览和管理您的文件"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
-"用文件夹保持文件整洁有序，在自己喜欢的视图中快速找到文件，轻松完成复制、移动和删除文件等操作。无论是内置硬盘中的文件，还是外接设备、远程设备中的文件，统统"
-"不在话下。"
+"用文件夹保持文件整洁有序，在自己喜欢的视图中快速找到文件，轻松完成复制、移动"
+"和删除文件等操作。无论是内置硬盘中的文件，还是外接设备、远程设备中的文件，统"
+"统不在话下。"
 
-msgid "Improved networking support"
-msgstr "改善网络支持"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
+msgstr ""
 
-msgid "Correct window geometry when snapping to left or right"
-msgstr "修正窗口分屏时的几何状态"
+#~ msgid "About Files"
+#~ msgstr "关于 文件"
 
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
-msgstr "启用“显示指针”功能时，按下 Ctrl 不再打断重命名操作"
+#~ msgid "Improved networking support"
+#~ msgstr "改善网络支持"
 
-msgid "Switching input language cancels actions"
-msgstr "切换输入语言时不再打断其他操作"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "修正窗口分屏时的几何状态"
 
-msgid "Various crash fixes"
-msgstr "多项崩溃修复"
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr "启用“显示指针”功能时，按下 Ctrl 不再打断重命名操作"
 
-msgid "New translations"
-msgstr "更新翻译"
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "切换输入语言时不再打断其他操作"
 
-msgid "Minor bug fixes"
-msgstr "细节修复"
+#~ msgid "Various crash fixes"
+#~ msgstr "多项崩溃修复"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr "网页浏览器（如 Firefox）记忆常用下载位置"
+#~ msgid "New translations"
+#~ msgstr "更新翻译"
 
-msgid "Remember preferred zoom level"
-msgstr "记忆缩放等级"
+#~ msgid "Minor bug fixes"
+#~ msgstr "细节修复"
 
-msgid "Improved input method support"
-msgstr "改进输入法支持"
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr "网页浏览器（如 Firefox）记忆常用下载位置"
 
-msgid "910x640 minimum window size"
-msgstr "最小窗口尺寸 910x640"
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "记忆缩放等级"
 
-msgid "Security fixes"
-msgstr "安全修复"
+#~ msgid "Improved input method support"
+#~ msgstr "改进输入法支持"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "新增窗口间标签拖放"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "最小窗口尺寸 910x640"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Ctrl + F 打开搜索功能"
+#~ msgid "Security fixes"
+#~ msgstr "安全修复"
 
-msgid "Improved translation support"
-msgstr "改进翻译支持"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "新增窗口间标签拖放"
 
-msgid "Fix appdata release dates"
-msgstr "修正应用数据发布日期"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Ctrl + F 打开搜索功能"
 
-msgid "Improve file opening over Samba shares"
-msgstr "改善 Samba 分享中文件的打开速度"
+#~ msgid "Improved translation support"
+#~ msgstr "改进翻译支持"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "修复一个导致从回收站恢复项目时崩溃的 BUG"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "修正应用数据发布日期"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "提高上下文菜单中“剪切、复制、粘贴”的响应速度"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "改善 Samba 分享中文件的打开速度"
 
-msgid "Translation updates"
-msgstr "翻译更新"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "修复一个导致从回收站恢复项目时崩溃的 BUG"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "以管理员身份运行文件管理器"
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "提高上下文菜单中“剪切、复制、粘贴”的响应速度"
 
-msgid "Authentication is required to run Files as Administrator"
-msgstr "以管理员身份运行文件管理器需要进行验证"
+#~ msgid "Translation updates"
+#~ msgstr "翻译更新"
+
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "以管理员身份运行文件管理器"
+
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr "以管理员身份运行文件管理器需要进行验证"
