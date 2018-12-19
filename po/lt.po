@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
-"PO-Revision-Date: 2018-10-30 22:21+0000\n"
+"PO-Revision-Date: 2018-12-19 14:59+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://weblate.elementary.io/projects/files/"
 "files/lt/>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || n"
-"%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n%10>=2 && (n%100<10 || "
+"n%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3;\n"
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
@@ -26,7 +26,6 @@ msgid "Show the version of the program"
 msgstr "Rodyti programos versiją."
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Atverti vieną ar daugiau URI, kiekvieną atskiroje kortelėje"
 
@@ -348,9 +347,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Nepavyksta atverti šio failo"
+msgstr "Nepavyksta vykdyti šio failo"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
@@ -571,7 +569,7 @@ msgstr "Prieiga negalima"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Privatumo veiksena įjungta"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
