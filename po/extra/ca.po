@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
-"PO-Revision-Date: 2018-07-03 00:06+0000\n"
+"PO-Revision-Date: 2018-12-19 14:56+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://weblate.elementary.io/projects/files/extra/"
 "ca/>\n"
@@ -27,7 +27,7 @@ msgstr "Fitxers"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr "Navegueu pels vostres fitxers"
+msgstr "Navegueu pels fitxers"
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
@@ -68,8 +68,9 @@ msgstr ""
 "Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:166
+#, fuzzy
 msgid "elementary LLC."
-msgstr ""
+msgstr "elementary LLC."
 
 #~ msgid "About Files"
 #~ msgstr "Quant a Fitxers"
