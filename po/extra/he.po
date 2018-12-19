@@ -2,42 +2,51 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"PO-Revision-Date: 2018-12-19 08:25+0000\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: Hebrew <https://weblate.elementary.io/projects/files/extra/he/"
+">\n"
+"Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
-msgstr ""
+msgstr "קבצים"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr ""
+msgstr "ניווט בין הקבצים שלך"
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
+"תיקייה;תיקיה;ספריה;מנהל;מנווט;ניווט;עיון;מעיין;כונן;דיסק;מערכת "
+"קבצים;קובץ;קבצים;"
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
-msgstr ""
+msgstr "מנהל קבצים"
 
 #: data/io.elementary.files.desktop.in.in:8
 msgid "system-file-manager"
-msgstr ""
+msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
-msgstr ""
+msgstr "חלון חדש"
 
 #: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "חלון חדש בתור מנהל"
 
 #: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
-msgstr ""
+msgstr "ניווט בין וניהול של קבצים ותיקיות"
 
 #: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
@@ -46,7 +55,11 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
+"ניתן להעתיק, להעביר ולשנות שמות של הקבצים שלך. בין אם מעניין אותך לראות את "
+"הקבצים ברשימות, טבלאות או עמודות, תמיד ניתן למצוא אותם בהישג יד. לגשת לקבצים "
+"שלך, בין אם באופן מקומי, בהתקן חיצוני או בחיבור מרוחק דרך FTP,‏ SFTP,‏ AFP,‏ "
+"Webdav או שיתוף Windows."
 
 #: data/io.elementary.files.appdata.xml.in.in:166
 msgid "elementary LLC."
-msgstr ""
+msgstr "elementary בע״מ"
