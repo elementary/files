@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2018-12-19 14:56+0000\n"
-"Last-Translator: David M <rbndavid@gmail.com>\n"
+"Last-Translator: Mario Rodrigo <capitantrueno@gmail.com>\n"
 "Language-Team: Catalan <https://weblate.elementary.io/projects/files/extra/"
 "ca/>\n"
 "Language: ca\n"
@@ -39,7 +39,7 @@ msgstr "Gestor de fitxers"
 
 #: data/io.elementary.files.desktop.in.in:8
 msgid "system-file-manager"
-msgstr ""
+msgstr "administrador de fitxers del sistema"
 
 #: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
