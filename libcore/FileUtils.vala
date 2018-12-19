@@ -78,28 +78,28 @@ namespace PF.FileUtils {
         return parent_path;
     }
 
-    public const string ELLIPSIS = "…";
     public string limited_length_path (string full_path, int max_length) {
         if (full_path.length < max_length) {
             return full_path;
         }
 
+        const string ELLIPSIS = "…";
         string path, protocol;
         split_protocol_from_path (full_path, out protocol, out path);
 
-        string[] tokens = path.strip ().split (Path.DIR_SEPARATOR_S, 10);
-        int n_tokens = tokens.length;
+        var tokens = path.strip ().split (Path.DIR_SEPARATOR_S, 10);
+        var n_tokens = tokens.length;
+        var basename = tokens[n_tokens - 1];
         bool has_protocol = protocol.length > 0;
 
         if (has_protocol) {
-            if (max_length - protocol.length < 12) {
+            if (max_length - protocol.length < basename.length) {
                 has_protocol = false;
             } else {
                 max_length -= protocol.length;
             }
         }
 
-        var basename = tokens[n_tokens - 1];
         var current_length = basename.length;
         var sb = new StringBuilder (basename);
 
@@ -428,7 +428,6 @@ namespace PF.FileUtils {
                 }
 
                 return string.join (".", parts[1], parts[2]).reverse ();
-
 
             default:
                 break;
