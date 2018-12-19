@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2018-07-03 00:06+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://weblate.elementary.io/projects/files/extra/"
@@ -20,30 +20,40 @@ msgstr ""
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Fitxers"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Navegueu pels vostres fitxers"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "carpeta;gestor;explora;disc;sistema de fitxers;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Gestor de fitxers"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Finestra nova"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Finestra nova com a administrador"
 
-msgid "About Files"
-msgstr "Quant a Fitxers"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Gestioneu fitxers i carpetes"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -57,78 +67,85 @@ msgstr ""
 "de forma remota a través d'FTP, SFTP, AFP, WebDAV o d'un recurs compartit de "
 "Windows."
 
-msgid "Improved networking support"
-msgstr "Suport de xarxa millorat"
-
-msgid "Correct window geometry when snapping to left or right"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
 msgstr ""
-"Correcció de la geometria de la finestra en moviments d'esquerra a dreta"
 
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
-msgstr ""
-"Prémer Ctrl ja no cancel·la el canvi de nom mentre el paràmetre \"Revela el "
-"punter\" està actiu"
+#~ msgid "About Files"
+#~ msgstr "Quant a Fitxers"
 
-msgid "Switching input language cancels actions"
-msgstr "Canviar la llengua d'entrada cancel·la accions"
+#~ msgid "Improved networking support"
+#~ msgstr "Suport de xarxa millorat"
 
-msgid "Various crash fixes"
-msgstr "Diverses correccions de fallades"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr ""
+#~ "Correcció de la geometria de la finestra en moviments d'esquerra a dreta"
 
-msgid "New translations"
-msgstr "Traduccions noves"
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr ""
+#~ "Prémer Ctrl ja no cancel·la el canvi de nom mentre el paràmetre \"Revela "
+#~ "el punter\" està actiu"
 
-msgid "Minor bug fixes"
-msgstr "Correccions d'errors menors"
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "Canviar la llengua d'entrada cancel·la accions"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Els navegadors com ara el Firefox ara recorden el directori de baixades més "
-"usat recentment."
+#~ msgid "Various crash fixes"
+#~ msgstr "Diverses correccions de fallades"
 
-msgid "Remember preferred zoom level"
-msgstr "Recorda el nivell d'ampliació preferit."
+#~ msgid "New translations"
+#~ msgstr "Traduccions noves"
 
-msgid "Improved input method support"
-msgstr "S'ha millorat el suport del mètode d'entrada"
+#~ msgid "Minor bug fixes"
+#~ msgstr "Correccions d'errors menors"
 
-msgid "910x640 minimum window size"
-msgstr "910x640, mida mínima de la finestra"
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Els navegadors com ara el Firefox ara recorden el directori de baixades "
+#~ "més usat recentment."
 
-msgid "Security fixes"
-msgstr "Correccions de seguretat"
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "Recorda el nivell d'ampliació preferit."
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Habilita poder arrossegar i deixar anar pestanyes entre finestres."
+#~ msgid "Improved input method support"
+#~ msgstr "S'ha millorat el suport del mètode d'entrada"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Fusió de la funcionalitat de cerca amb Ctrl+F"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "910x640, mida mínima de la finestra"
 
-msgid "Improved translation support"
-msgstr "Millora del suport de traducció"
+#~ msgid "Security fixes"
+#~ msgstr "Correccions de seguretat"
 
-msgid "Fix appdata release dates"
-msgstr "Corregeix les datesde les dades de la versió"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "Habilita poder arrossegar i deixar anar pestanyes entre finestres."
 
-msgid "Improve file opening over Samba shares"
-msgstr "Millora l'obertura de fitxers a través de comparticions de Samba"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Fusió de la funcionalitat de cerca amb Ctrl+F"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Corregeix una fallada en restaurar elements de la paperera"
+#~ msgid "Improved translation support"
+#~ msgstr "Millora del suport de traducció"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
-"Millora la sensitivitat de retallar/copiar/enganxar del menú contextual"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Corregeix les datesde les dades de la versió"
 
-msgid "Translation updates"
-msgstr "Actualitzacions de traducció"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Millora l'obertura de fitxers a través de comparticions de Samba"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "Executa el Fitxers del Pantheon com a administrador"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "Corregeix una fallada en restaurar elements de la paperera"
 
-msgid "Authentication is required to run Files as Administrator"
-msgstr "Cal autenticació per executar el Fitxers com a administrador."
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr ""
+#~ "Millora la sensitivitat de retallar/copiar/enganxar del menú contextual"
+
+#~ msgid "Translation updates"
+#~ msgstr "Actualitzacions de traducció"
+
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "Executa el Fitxers del Pantheon com a administrador"
+
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr "Cal autenticació per executar el Fitxers com a administrador."
