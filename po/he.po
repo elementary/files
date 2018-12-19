@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
-"PO-Revision-Date: 2018-10-30 06:05+0000\n"
+"PO-Revision-Date: 2018-12-19 09:47+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://weblate.elementary.io/projects/files/files/he/"
 ">\n"
@@ -25,7 +25,6 @@ msgid "Show the version of the program"
 msgstr "הצגת גרסת התכנית"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "פתיחת כתובת אחת ומעלה, כל אחת בלשונית נפרדת"
 
@@ -341,9 +340,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "לא ניתן לפתוח קובץ זה"
+msgstr "לא ניתן להפעיל קובץ זה"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
@@ -564,19 +562,19 @@ msgstr "הגישה נדחתה"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "מצב פרטיות פעיל"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "אין קבצים אחרונים זכורים"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "שינוי הגדרות אבטחה"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "פתיחת יישום הגדרות האבטחה והפרטיות של המערכת"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
@@ -641,7 +639,7 @@ msgid "%u folders"
 msgstr "%u תיקיות"
 
 #: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
-#, fuzzy, c-format
+#, c-format
 msgid " and %u other item (%s) selected"
 msgstr " ופריט נוסף (%s) נבחרו"
 
@@ -660,7 +658,7 @@ msgid "%u items selected (%s)"
 msgstr "נבחרו %u פריטים (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:279
-#, fuzzy, c-format
+#, c-format
 msgid "%u sub-folder, "
 msgstr "תת־תיקייה אחת, "
 
@@ -670,7 +668,7 @@ msgid "%u sub-folders, "
 msgstr "%u תת־תיקיות, "
 
 #: src/View/Widgets/OverlayBar.vala:285
-#, fuzzy, c-format
+#, c-format
 msgid "%u file, "
 msgstr "קובץ אחד, "
 
@@ -689,7 +687,7 @@ msgid "unknown size"
 msgstr "גודל לא ידוע"
 
 #: src/View/Widgets/OverlayBar.vala:302
-#, fuzzy, c-format
+#, c-format
 msgid "%u file not readable"
 msgstr "קובץ אחד אינו קריא"
 
