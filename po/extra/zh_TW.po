@@ -6,12 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2018-02-13 09:30+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
-"Language-Team: Chinese (Traditional) "
-"<https://weblate.elementary.io/projects/files/extra/zh_TW/>\n"
+"Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
+"files/extra/zh_TW/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,105 +20,125 @@ msgstr ""
 "X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "檔案"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "瀏覽您的檔案"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr "folder;manager;explore;disk;filesystem;資料夾;管理員;探索;磁碟;檔案系統;"
+msgstr ""
+"folder;manager;explore;disk;filesystem;資料夾;管理員;探索;磁碟;檔案系統;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "檔案管理員"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "新視窗"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "以管理員身份新開視窗"
 
-msgid "About Files"
-msgstr "關於《檔案》"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "瀏覽、管理檔案及資料夾"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
-"輕鬆複製、移動和改名您的檔案，或使用資料夾來維持井然有序。無論您是希望用清單、柵格、或多欄的方式列出檔案，您都可以隨時找到它們。不管是在本機上、外接裝置上"
-"、或是使用 FTP、SFTP、AFP、Webdav、或 Windows 網路芳鄰等遠端上，都能存取您的所有檔案。"
+"輕鬆複製、移動和改名您的檔案，或使用資料夾來維持井然有序。無論您是希望用清"
+"單、柵格、或多欄的方式列出檔案，您都可以隨時找到它們。不管是在本機上、外接裝"
+"置上、或是使用 FTP、SFTP、AFP、Webdav、或 Windows 網路芳鄰等遠端上，都能存取"
+"您的所有檔案。"
 
-msgid "Improved networking support"
-msgstr "改善網路連線支持"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
+msgstr ""
 
-msgid "Correct window geometry when snapping to left or right"
-msgstr "當附貼至左側或右側時校正視窗的幾何形態"
+#~ msgid "About Files"
+#~ msgstr "關於《檔案》"
 
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
-msgstr "當「揭開指標」設定啟用時，若按下 Ctrl 鍵不會取消重新命名"
+#~ msgid "Improved networking support"
+#~ msgstr "改善網路連線支持"
 
-msgid "Switching input language cancels actions"
-msgstr "切換輸入語言會取消動作"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "當附貼至左側或右側時校正視窗的幾何形態"
 
-msgid "Various crash fixes"
-msgstr "多項崩潰修正"
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr "當「揭開指標」設定啟用時，若按下 Ctrl 鍵不會取消重新命名"
 
-msgid "New translations"
-msgstr "新翻譯"
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "切換輸入語言會取消動作"
 
-msgid "Minor bug fixes"
-msgstr "小臭蟲修正"
+#~ msgid "Various crash fixes"
+#~ msgstr "多項崩潰修正"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr "網頁瀏覽器如 Firefox 現在會記住最近使用的下載資料夾"
+#~ msgid "New translations"
+#~ msgstr "新翻譯"
 
-msgid "Remember preferred zoom level"
-msgstr "記住偏好的遠近層級"
+#~ msgid "Minor bug fixes"
+#~ msgstr "小臭蟲修正"
 
-msgid "Improved input method support"
-msgstr "改善的輸入法支援"
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr "網頁瀏覽器如 Firefox 現在會記住最近使用的下載資料夾"
 
-msgid "910x640 minimum window size"
-msgstr "910x640 最小視窗大小"
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "記住偏好的遠近層級"
 
-msgid "Security fixes"
-msgstr "安全性修正"
+#~ msgid "Improved input method support"
+#~ msgstr "改善的輸入法支援"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "允許視窗之間的分頁拖放"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "910x640 最小視窗大小"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "將搜尋功能合併至 Ctrl+F"
+#~ msgid "Security fixes"
+#~ msgstr "安全性修正"
 
-msgid "Improved translation support"
-msgstr "改善的翻譯支援"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "允許視窗之間的分頁拖放"
 
-msgid "Fix appdata release dates"
-msgstr "修正 appdata 發行日期"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "將搜尋功能合併至 Ctrl+F"
 
-msgid "Improve file opening over Samba shares"
-msgstr "改善 Samba 分享的檔案開啟"
+#~ msgid "Improved translation support"
+#~ msgstr "改善的翻譯支援"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "修正從垃圾桶中還原項目時的崩潰"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "修正 appdata 發行日期"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "改善情境選單中的剪下/複製/貼上敏感度"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "改善 Samba 分享的檔案開啟"
 
-msgid "Translation updates"
-msgstr "翻譯更新"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "修正從垃圾桶中還原項目時的崩潰"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "以管理員身份執行 Pantheon 檔案"
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "改善情境選單中的剪下/複製/貼上敏感度"
 
-msgid "Authentication is required to run Files as Administrator"
-msgstr "若要以管理員身份執行必須通過身份核對"
+#~ msgid "Translation updates"
+#~ msgstr "翻譯更新"
+
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "以管理員身份執行 Pantheon 檔案"
+
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr "若要以管理員身份執行必須通過身份核對"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-29 14:34+0000\n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2018-05-30 17:51+0000\n"
 "Last-Translator: Romanic Ion Nicușor <contact.romanic@gmail.com>\n"
 "Language-Team: Moldovan <https://weblate.elementary.io/projects/files/files/"
@@ -13,1615 +13,33 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.18\n"
 
-#: ../libcore/gof-file.c:332 ../libcore/gof-file.c:506
-msgid "Inaccessible"
-msgstr "Inaccesibil"
-
-#: ../libcore/gof-file.c:347
-#, c-format
-msgid "link to %s"
-msgstr "link către %s 1"
-
-#: ../libcore/gof-file.c:1590
-#, c-format
-msgid "Failed to parse the desktop file: %s"
-msgstr "Eroare la analizarea fișierului de pe desktop: %s 1"
-
-#: ../libcore/gof-file.c:1598
-msgid "Failed to parse the desktop file"
-msgstr "Eroare la analizarea fișierului de pe desktop: %s 1"
-
-#: ../libcore/gof-file.c:1612
-#, c-format
-msgid "Failed to create command from file: %s"
-msgstr "Eroare la crearea comenzii din fișier: %s 1"
-
-#: ../libcore/gof-file.c:1623
-#, c-format
-msgid "Unable to Launch Desktop File: %s"
-msgstr "Imposibil de lansat fișierul desktop: %s 1"
-
-#: ../libcore/marlin-file-operations.c:155
-#: ../libcore/FileConflictDialog.vala:185
-msgid "_Skip"
-msgstr "_Ocolire"
-
-#: ../libcore/marlin-file-operations.c:156
-msgid "S_kip All"
-msgstr "Sari peste tot"
-
-#: ../libcore/marlin-file-operations.c:157
-msgid "_Retry"
-msgstr "_Reîncearcă"
-
-#: ../libcore/marlin-file-operations.c:158
-msgid "Delete _All"
-msgstr "Șterge tot"
-
-#: ../libcore/marlin-file-operations.c:159
-msgid "_Replace"
-msgstr "_Înlocuește"
-
-#: ../libcore/marlin-file-operations.c:160
-msgid "Replace _All"
-msgstr "Înlocuiește_tot"
-
-#: ../libcore/marlin-file-operations.c:161
-msgid "_Merge"
-msgstr "_Fuzionează"
-
-#: ../libcore/marlin-file-operations.c:162
-msgid "Merge _All"
-msgstr "Fuzionează_tot"
-
-#: ../libcore/marlin-file-operations.c:163
-msgid "Copy _Anyway"
-msgstr "Copiază_oricum"
-
-#: ../libcore/marlin-file-operations.c:244
-#, c-format
-msgid "%'d second"
-msgid_plural "%'d seconds"
-msgstr[0] "%'d secundă"
-msgstr[1] "%'d secunde"
-
-#: ../libcore/marlin-file-operations.c:249
-#: ../libcore/marlin-file-operations.c:260
-#, c-format
-msgid "%'d minute"
-msgid_plural "%'d minutes"
-msgstr[0] "%'d minut"
-msgstr[1] "%'d 2 minute"
-
-#: ../libcore/marlin-file-operations.c:259
-#, c-format
-msgid "%'d hour"
-msgid_plural "%'d hours"
-msgstr[0] "%'d 1 oră"
-msgstr[1] "%'d 2 ore"
-
-#: ../libcore/marlin-file-operations.c:267
-#, c-format
-msgid "approximately %'d hour"
-msgid_plural "approximately %'d hours"
-msgstr[0] "aproximativ %'d oră"
-msgstr[1] "aproximativ %'d ore"
-
-#: ../libcore/marlin-file-operations.c:343
-#, c-format
-msgid "Link to %s"
-msgstr "Legătura la%s 1"
-
-#: ../libcore/marlin-file-operations.c:347
-#, c-format
-msgid "Another link to %s"
-msgstr "Un alt link către%s 1"
-
-#: ../libcore/marlin-file-operations.c:363
-#, c-format
-msgid "%'dst link to %s"
-msgstr "%d 1 primul link la%s 2"
-
-#: ../libcore/marlin-file-operations.c:367
-#, c-format
-msgid "%'dnd link to %s"
-msgstr "%'d 1nd legătura la%s 2"
-
-#: ../libcore/marlin-file-operations.c:371
-#, c-format
-msgid "%'drd link to %s"
-msgstr "%'d 1-a link către%s 2"
-
-#: ../libcore/marlin-file-operations.c:375
-#, c-format
-msgid "%'dth link to %s"
-msgstr "%'d link-ul la 1 la%s 2"
-
-#: ../libcore/marlin-file-operations.c:413
-msgid " (copy)"
-msgstr " (copie)"
-
-#: ../libcore/marlin-file-operations.c:415
-msgid " (another copy)"
-msgstr " (o altă copie)"
-
-#: ../libcore/marlin-file-operations.c:418
-#: ../libcore/marlin-file-operations.c:420
-#: ../libcore/marlin-file-operations.c:422
-#: ../libcore/marlin-file-operations.c:432
-msgid "th copy)"
-msgstr "th copie)"
-
-#: ../libcore/marlin-file-operations.c:425
-msgid "st copy)"
-msgstr "st copie)"
-
-#: ../libcore/marlin-file-operations.c:427
-msgid "nd copy)"
-msgstr "nd copie)"
-
-#: ../libcore/marlin-file-operations.c:429
-msgid "rd copy)"
-msgstr "rd copie)"
-
-#: ../libcore/marlin-file-operations.c:446
-#, c-format
-msgid "%s (copy)%s"
-msgstr "%s 1 (copie)%s 2"
-
-#: ../libcore/marlin-file-operations.c:448
-#, c-format
-msgid "%s (another copy)%s"
-msgstr "%s 1 (altă copie)%s 2"
-
-#: ../libcore/marlin-file-operations.c:451
-#: ../libcore/marlin-file-operations.c:453
-#: ../libcore/marlin-file-operations.c:455
-#: ../libcore/marlin-file-operations.c:469
-#, c-format
-msgid "%s (%'dth copy)%s"
-msgstr "%s 1 (%'d 2th copie)%s 3"
-
-#: ../libcore/marlin-file-operations.c:463
-#, c-format
-msgid "%s (%'dst copy)%s"
-msgstr "%s 1 (%'d 2st copie)%s 3"
-
-#: ../libcore/marlin-file-operations.c:465
-#, c-format
-msgid "%s (%'dnd copy)%s"
-msgstr "%s 1 (%'d 2nd copie)%s 3"
-
-#: ../libcore/marlin-file-operations.c:467
-#, c-format
-msgid "%s (%'drd copy)%s"
-msgstr "%s 1 (%'d 2rd copie)%s 3"
-
-#: ../libcore/marlin-file-operations.c:567
-msgid " ("
-msgstr " ("
-
-#: ../libcore/marlin-file-operations.c:575
-#, c-format
-msgid " (%'d"
-msgstr " (%'d 1"
-
-#: ../libcore/marlin-file-operations.c:1253
-msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-msgstr "Sigur doriți să ștergeți definitiv \"% B\" din coșul de gunoi?"
-
-#: ../libcore/marlin-file-operations.c:1256
-#, c-format
-msgid ""
-"Are you sure you want to permanently delete the %'d selected item from the "
-"trash?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items from the "
-"trash?"
-msgstr[0] ""
-"Sigur doriți să ștergeți definitiv elementul %'d 1 selectat din coșul de "
-"gunoi?"
-msgstr[1] ""
-"Sigur doriți să ștergeți definitiv elementul%'d 2 selectat din coșul de "
-"gunoi?"
-
-#: ../libcore/marlin-file-operations.c:1266
-#: ../libcore/marlin-file-operations.c:1346
-msgid "If you delete an item, it will be permanently lost."
-msgstr "Dacă ștergeți un element, acesta va fi pierdut definitiv."
-
-#: ../libcore/marlin-file-operations.c:1291
-msgid "Permanently delete all items from Trash?"
-msgstr ""
-"Permiteți ștergerea definitivă a tuturor articolelor din Coșul de gunoi?"
-
-#: ../libcore/marlin-file-operations.c:1292
-msgid ""
-"All items in all trash directories, including those on any mounted external "
-"drives, will be permanently deleted."
-msgstr ""
-"Toate elementele din toate directoarele de gunoi, inclusiv cele de pe orice "
-"unități externe montate, vor fi șterse definitiv."
-
-#: ../libcore/marlin-file-operations.c:1295
-msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
-"Ștergeți definitiv toate elementele din Coșul de gunoi pe acest suport?"
-
-#: ../libcore/marlin-file-operations.c:1296
-msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-"Toate elementele din coșul de gunoi de pe acest suport vor fi șterse "
-"definitiv."
-
-#: ../libcore/marlin-file-operations.c:1307 ../src/View/Sidebar.vala:1558
-msgid "Empty _Trash"
-msgstr "Goliți _Trash"
-
-#: ../libcore/marlin-file-operations.c:1334
-msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Sigur doriți să ștergeți definitiv \"%B\"?"
-
-#: ../libcore/marlin-file-operations.c:1337
-#, c-format
-msgid "Are you sure you want to permanently delete the %'d selected item?"
-msgid_plural ""
-"Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Sigur doriți să ștergeți definitiv elementul%'d 1 selectat?"
-msgstr[1] "Sigur doriți să ștergeți definitiv elementul%'d 2 selectat?"
-
-#: ../libcore/marlin-file-operations.c:1380
-#, c-format
-msgid "%'d file left to delete"
-msgid_plural "%'d files left to delete"
-msgstr[0] "%'d 1 fișier rămas pentru a fi șters"
-msgstr[1] "%'d 2 fișiere rămase pentru a fi șterse"
-
-#: ../libcore/marlin-file-operations.c:1386
-msgid "Deleting files"
-msgstr "Ștergerea fișierelor"
-
-#. / TRANSLATORS: %T will expand to a time like "2 minutes".
-#. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:1399
-msgid "%T left"
-msgid_plural "%T left"
-msgstr[0] "%T rămas"
-msgstr[1] "%T rămase"
-
-#: ../libcore/marlin-file-operations.c:1466
-#: ../libcore/marlin-file-operations.c:1500
-#: ../libcore/marlin-file-operations.c:1539
-#: ../libcore/marlin-file-operations.c:1616
-#: ../libcore/marlin-file-operations.c:2406
-msgid "Error while deleting."
-msgstr "Eroare la ștergere."
-
-#: ../libcore/marlin-file-operations.c:1470
-msgid ""
-"Files in the folder \"%B\" cannot be deleted because you do not have "
-"permissions to see them."
-msgstr ""
-"Fișierele din folderul \"%B\" nu pot fi șterse deoarece nu aveți permisiuni "
-"necesare."
-
-#: ../libcore/marlin-file-operations.c:1473
-#: ../libcore/marlin-file-operations.c:2465
-#: ../libcore/marlin-file-operations.c:3432
-msgid ""
-"There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
-"A apărut o eroare la obținerea de informații despre fișierele din folderul "
-"\"%B\"."
-
-#: ../libcore/marlin-file-operations.c:1482
-#: ../libcore/marlin-file-operations.c:3441
-msgid "_Skip files"
-msgstr "_Ocoliți fișiere"
-
-#: ../libcore/marlin-file-operations.c:1503
-msgid ""
-"The folder \"%B\" cannot be deleted because you do not have permissions to "
-"read it."
-msgstr ""
-"Dosarul \"%B\" nu poate fi șters deoarece nu aveți permisiuni să îl citiți."
-
-#: ../libcore/marlin-file-operations.c:1506
-#: ../libcore/marlin-file-operations.c:2504
-#: ../libcore/marlin-file-operations.c:3477
-msgid "There was an error reading the folder \"%B\"."
-msgstr "A apărut o eroare la citirea directorului \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:1540
-msgid "Could not remove the folder %B."
-msgstr "Nu s-a putut elimina folderul %B."
-
-#: ../libcore/marlin-file-operations.c:1617
-msgid "There was an error deleting %B."
-msgstr "A apărut o eroare la ștergerea %B."
-
-#: ../libcore/marlin-file-operations.c:1701
-msgid "Moving files to trash"
-msgstr "Mutarea fișierelor în coșul de gunoi"
-
-#: ../libcore/marlin-file-operations.c:1703
-#, c-format
-msgid "%'d file left to trash"
-msgid_plural "%'d files left to trash"
-msgstr[0] "%'d 1 fișier rămas în coșul de gunoi"
-msgstr[1] "%'d 2 fișiere rămase în coșul de gunoi"
-
-#: ../libcore/marlin-file-operations.c:1797
-#: ../libcore/marlin-file-operations.c:1800
-#: ../libcore/marlin-file-operations.c:1803
-msgid "Cannot move file to trash or delete it"
-msgstr "Nu puteți muta fișierul în coșul de gunoi sau îl puteți șterge"
-
-#: ../libcore/marlin-file-operations.c:1798
-msgid "It is not permitted to trash or delete files on a read only filesystem."
-msgstr ""
-"Nu este permisă ștergerea sau mutarea fișierelor dintr-un sistem de fișiere "
-"numai pentru citire."
-
-#: ../libcore/marlin-file-operations.c:1801
-msgid ""
-"It is not permitted to trash or delete files inside folders for which you do "
-"not have write privileges."
-msgstr ""
-"Nu este permisă ștergerea sau mutarea fișierelor din dosare pentru care nu "
-"aveți privilegii de scriere."
-
-#: ../libcore/marlin-file-operations.c:1804
-msgid ""
-"It is not permitted to trash or delete folders for which you do not have "
-"write privileges."
-msgstr ""
-"Nu este permisă ștergerea sau mutarea dosarelor pentru care nu aveți "
-"privilegii de scriere."
-
-#: ../libcore/marlin-file-operations.c:1806
-msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr ""
-"Nu se poate muta fișierul în coșul de gunoi. Încercați să o ștergeți imediat?"
-
-#: ../libcore/marlin-file-operations.c:1807
-msgid ""
-"This file could not be moved to trash. See details below for further "
-"information."
-msgstr ""
-"Acest fișier nu a putut fi mutat în coșul de gunoi. Pentru informații "
-"suplimentare, consultați detaliile de mai jos."
-
-#: ../libcore/marlin-file-operations.c:1811
-msgid "Cannot move file to trash.  Try to delete it?"
-msgstr "Nu se poate muta fișierul în coșul de gunoi. Încercați să o ștergeți?"
-
-#: ../libcore/marlin-file-operations.c:1812
-msgid ""
-"This file could not be moved to trash. You may not be able to delete it "
-"either."
-msgstr ""
-"Acest fișier nu a putut fi mutat în coșul de gunoi. Este posibil să nu "
-"puteți să o ștergeți."
-
-#: ../libcore/marlin-file-operations.c:1817
-msgid ""
-"\n"
-" Deleting a file removes it permanently"
-msgstr ""
-"\n"
-" Ștergerea unui fișier îl elimină definitiv"
-
-#: ../libcore/marlin-file-operations.c:2007
-msgid "Trashing Files"
-msgstr "Trasarea fișierelor"
-
-#: ../libcore/marlin-file-operations.c:2009
-msgid "Deleting Files"
-msgstr "Ștergerea fișierelor"
-
-#: ../libcore/marlin-file-operations.c:2078
-msgid "Unable to eject %V"
-msgstr "Imposibil de expulzat %V"
-
-#: ../libcore/marlin-file-operations.c:2080
-msgid "Unable to unmount %V"
-msgstr "Imposibil de demonstrat %V"
-
-#: ../libcore/marlin-file-operations.c:2275
-#, c-format
-msgid "Unable to mount %s"
-msgstr "Nu se poate monta %s 1"
-
-#: ../libcore/marlin-file-operations.c:2353
-#, c-format
-msgid "Preparing to copy %'d file (%S)"
-msgid_plural "Preparing to copy %'d files (%S)"
-msgstr[0] "Pregătirea pentru copierea fișierului %d 1 (%S 2)"
-msgstr[1] "Pregătirea pentru copierea fișierelor %d 1 (%S 2)"
-
-#: ../libcore/marlin-file-operations.c:2359
-#, c-format
-msgid "Preparing to move %'d file (%S)"
-msgid_plural "Preparing to move %'d files (%S)"
-msgstr[0] "Pregătirea pentru mutarea fișierului %'d 1 (%S 2)"
-msgstr[1] "Pregătirea pentru mutarea fișierelor %'d 3 (%S 4)"
-
-#: ../libcore/marlin-file-operations.c:2365
-#, c-format
-msgid "Preparing to delete %'d file (%S)"
-msgid_plural "Preparing to delete %'d files (%S)"
-msgstr[0] "Pregătirea pentru ștergerea fișierului %'d 1 (%S 2)"
-msgstr[1] "Pregătirea pentru ștergerea fișierelor %'d 3 (%S 4)"
-
-#: ../libcore/marlin-file-operations.c:2371
-#, c-format
-msgid "Preparing to trash %'d file"
-msgid_plural "Preparing to trash %'d files"
-msgstr[0] "Pregătiți pentru a încărca fișierul %'d 1"
-msgstr[1] "Pregătiți pentru a încărca fișierelor %'d 2"
-
-#: ../libcore/marlin-file-operations.c:2402
-#: ../libcore/marlin-file-operations.c:3292
-#: ../libcore/marlin-file-operations.c:3424
-#: ../libcore/marlin-file-operations.c:3469
-msgid "Error while copying."
-msgstr "Eroare la copiere."
-
-#: ../libcore/marlin-file-operations.c:2404
-#: ../libcore/marlin-file-operations.c:3422
-#: ../libcore/marlin-file-operations.c:3467
-msgid "Error while moving."
-msgstr "Eroare în timpul mișcării."
-
-#: ../libcore/marlin-file-operations.c:2408
-msgid "Error while moving files to trash."
-msgstr "Eroare la mutarea fișierelor în coșul de gunoi."
-
-#: ../libcore/marlin-file-operations.c:2462
-msgid ""
-"Files in the folder \"%B\" cannot be handled because you do not have "
-"permissions to see them."
-msgstr ""
-"Fișierele din folderul \"%B\" nu pot fi gestionate deoarece nu aveți "
-"permisiuni să le vedeți."
-
-#: ../libcore/marlin-file-operations.c:2501
-msgid ""
-"The folder \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"Dosarul \"%B\" nu poate fi manipulat deoarece nu aveți permisiune să îl "
-"citiți."
-
-#: ../libcore/marlin-file-operations.c:2577
-msgid ""
-"The file \"%B\" cannot be handled because you do not have permissions to "
-"read it."
-msgstr ""
-"Fișierul \"%B\" nu poate fi gestionat deoarece nu aveți permisiuni să îl "
-"citiți."
-
-#: ../libcore/marlin-file-operations.c:2580
-msgid "There was an error getting information about \"%B\"."
-msgstr "A apărut o eroare la obținerea informațiilor despre \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:2680
-#: ../libcore/marlin-file-operations.c:2722
-#: ../libcore/marlin-file-operations.c:2755
-#: ../libcore/marlin-file-operations.c:2785
-msgid "Error while copying to \"%B\"."
-msgstr "Eroare la copierea în \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:2684
-msgid "You do not have permissions to access the destination folder."
-msgstr "Nu aveți permisiuni de accesare a dosarului destinație."
-
-#: ../libcore/marlin-file-operations.c:2686
-msgid "There was an error getting information about the destination."
-msgstr "A apărut o eroare la obținerea de informații despre destinație."
-
-#: ../libcore/marlin-file-operations.c:2723
-msgid "The destination is not a folder."
-msgstr "Destinația nu este un dosar."
-
-#: ../libcore/marlin-file-operations.c:2756
-msgid ""
-"There is not enough space on the destination. Try to remove files to make "
-"space."
-msgstr ""
-"Nu există spațiu suficient în destinație. Încercați să eliminați fișierele "
-"pentru a face spațiu."
-
-#: ../libcore/marlin-file-operations.c:2758
-#, c-format
-msgid "There is %S available, but %S is required."
-msgstr "Există %S 1 disponibil, dar %S 2 este necesar."
-
-#: ../libcore/marlin-file-operations.c:2786
-msgid "The destination is read-only."
-msgstr "Destinația este numai pentru citire."
-
-#: ../libcore/marlin-file-operations.c:2845
-msgid "Moving \"%B\" to \"%B\""
-msgstr "Mutarea \"%B\" la \"%B\""
-
-#: ../libcore/marlin-file-operations.c:2846
-msgid "Copying \"%B\" to \"%B\""
-msgstr "Copiere \"%B\" la \"%B\""
-
-#: ../libcore/marlin-file-operations.c:2850
-msgid "Duplicating \"%B\""
-msgstr "Duplicarea \"%B\""
-
-#: ../libcore/marlin-file-operations.c:2854
-msgid "Moving %'d file (in \"%B\") to \"%B\""
-msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Mutarea fișierului %'d (în \"%B\") la \"%B\""
-msgstr[1] "Mutarea fișierelor %'d (în \"%B\") la \"%B\""
-
-#: ../libcore/marlin-file-operations.c:2857
-msgid "Copying %'d file (in \"%B\") to \"%B\""
-msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-msgstr[0] "Copierea fișierului %'d  (în \"%B\") la \"%B\""
-msgstr[1] "Copierea fișierelor %'d  (în \"%B\") la \"%B\""
-
-#: ../libcore/marlin-file-operations.c:2864
-msgid "Duplicating %'d file (in \"%B\")"
-msgid_plural "Duplicating %'d files (in \"%B\")"
-msgstr[0] "Duplicarea %'d fișierului (în \"%B\")"
-msgstr[1] "Duplicarea %'d fișierelor (în \"%B\")"
-
-#: ../libcore/marlin-file-operations.c:2873
-msgid "Moving %'d file to \"%B\""
-msgid_plural "Moving %'d files to \"%B\""
-msgstr[0] "Mutarea fișierului %'d în \"%B\""
-msgstr[1] "Mutarea fișierelor %'d în \"%B\""
-
-#: ../libcore/marlin-file-operations.c:2877
-msgid "Copying %'d file to \"%B\""
-msgid_plural "Copying %'d files to \"%B\""
-msgstr[0] "Copierea fișierului %'d în \"%B\""
-msgstr[1] "Copierea fișierelor %'d în \"%B\""
-
-#: ../libcore/marlin-file-operations.c:2882
-#, c-format
-msgid "Duplicating %'d file"
-msgid_plural "Duplicating %'d files"
-msgstr[0] "Duplicarea %'d 1 fișierului"
-msgstr[1] "Duplicarea %'d 2 fișierelor"
-
-#. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
-#: ../libcore/marlin-file-operations.c:2908
-#, c-format
-msgid "%S of %S"
-msgstr "%S 1 din %S 2"
-
-#. / TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
-#. / "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
-#. / The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
-#: ../libcore/marlin-file-operations.c:2918
-msgid "%S of %S — %T left (%S/sec)"
-msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S din %S — %T rămân (%S/sec)"
-msgstr[1] "%S din %S — %T rămâne (%S/sec)"
-
-#: ../libcore/marlin-file-operations.c:3296
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"create it in the destination."
-msgstr ""
-"Dosarul \"%B\" nu poate fi copiat deoarece nu aveți permisiuni să-l creați "
-"în locul de destinație."
-
-#: ../libcore/marlin-file-operations.c:3299
-msgid "There was an error creating the folder \"%B\"."
-msgstr "A apărut o eroare la crearea directorului \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:3429
-msgid ""
-"Files in the folder \"%B\" cannot be copied because you do not have "
-"permissions to see them."
-msgstr ""
-"Fișierele din folderul \"%B\" nu pot fi copiat pentru că nu aveți permisiuni "
-"să le vedeți."
-
-#: ../libcore/marlin-file-operations.c:3474
-msgid ""
-"The folder \"%B\" cannot be copied because you do not have permissions to "
-"read it."
-msgstr ""
-"Dosarul \"%B\" nu poate fi copiat deoarece nu aveți permisiuni să îl citiți."
-
-#: ../libcore/marlin-file-operations.c:3519
-#: ../libcore/marlin-file-operations.c:4183
-msgid "Error while moving \"%B\"."
-msgstr "Eroare la mutarea \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:3520
-msgid "Could not remove the source folder."
-msgstr "Nu s-a putut elimina dosarul sursă."
-
-#: ../libcore/marlin-file-operations.c:3605
-#: ../libcore/marlin-file-operations.c:3646
-#: ../libcore/marlin-file-operations.c:4185
-msgid "Error while copying \"%B\"."
-msgstr "Eroare la copierea \"%B\"."
-
-#: ../libcore/marlin-file-operations.c:3606
-#, c-format
-msgid "Could not remove files from the already existing folder %F."
-msgstr "Nu s-au putut elimina fișiere din dosarul existent %F 1."
-
-#: ../libcore/marlin-file-operations.c:3647
-#, c-format
-msgid "Could not remove the already existing file %F."
-msgstr "Nu s-a putut elimina fișierul deja existent %F 1."
-
-#: ../libcore/marlin-file-operations.c:3921
-#: ../libcore/marlin-file-operations.c:4592
-msgid "You cannot move a folder into itself."
-msgstr "Nu puteți muta un folder în sine."
-
-#: ../libcore/marlin-file-operations.c:3922
-#: ../libcore/marlin-file-operations.c:4593
-msgid "You cannot copy a folder into itself."
-msgstr "Nu puteți copia un dosar în sine."
-
-#: ../libcore/marlin-file-operations.c:3923
-#: ../libcore/marlin-file-operations.c:4594
-msgid "The destination folder is inside the source folder."
-msgstr "Dosarul destinație se află în interiorul directorului sursă."
-
-#: ../libcore/marlin-file-operations.c:3954
-msgid "You cannot move a file over itself."
-msgstr "Nu puteți muta un fișier peste el însuși."
-
-#: ../libcore/marlin-file-operations.c:3955
-msgid "You cannot copy a file over itself."
-msgstr "Nu puteți copia un fișier peste el însuși."
-
-#: ../libcore/marlin-file-operations.c:3956
-msgid "The source file would be overwritten by the destination."
-msgstr "Fișierul sursă ar fi suprascris de destinație."
-
-#: ../libcore/marlin-file-operations.c:4187
-#, c-format
-msgid "Could not remove the already existing file with the same name in %F."
-msgstr "Nu s-a putut elimina fișierul deja existent cu același nume în %F 1."
-
-#: ../libcore/marlin-file-operations.c:4252
-msgid "Cannot copy \"%B\" here."
-msgstr "Nu se poate copia \"%B\" aici."
-
-#: ../libcore/marlin-file-operations.c:4253
-msgid "There was an error copying the file into %B."
-msgstr "A apărut o eroare la copierea fișierului în %B."
-
-#: ../libcore/marlin-file-operations.c:4475
-msgid "Copying Files"
-msgstr "Copierea fișierelor"
-
-#: ../libcore/marlin-file-operations.c:4501
-msgid "Preparing to move to \"%B\""
-msgstr "Pregătirea pentru mutarea la \"%B\""
-
-#: ../libcore/marlin-file-operations.c:4505
-#, c-format
-msgid "Preparing to move %'d file"
-msgid_plural "Preparing to move %'d files"
-msgstr[0] "Pregătirea mutării %'d 1 fișier"
-msgstr[1] "Pregătirea mutării %'d 2 fișiere"
-
-#: ../libcore/marlin-file-operations.c:4751
-#, c-format
-msgid "Error while moving \"%F\"."
-msgstr "Eroare în timpul mutării \"%F1\"."
-
-#: ../libcore/marlin-file-operations.c:4752
-#, c-format
-msgid "There was an error moving the file into %F."
-msgstr "A apărut o eroare la mutarea fișierului %F 1."
-
-#: ../libcore/marlin-file-operations.c:5009
-msgid "Moving Files"
-msgstr "Mutarea fișierelor"
-
-#: ../libcore/marlin-file-operations.c:5038
-msgid "Creating links in \"%B\""
-msgstr "Crearea de linkuri în \"%B\""
-
-#: ../libcore/marlin-file-operations.c:5042
-#, c-format
-msgid "Making link to %'d file"
-msgid_plural "Making links to %'d files"
-msgstr[0] "Realizarea link-ului %'d 1 fișier"
-msgstr[1] "Realizarea link-ului %'d 2 fișiere"
-
-#: ../libcore/marlin-file-operations.c:5182
-msgid "Error while creating link to %B."
-msgstr "Eroare la crearea linkului la %B."
-
-#: ../libcore/marlin-file-operations.c:5184
-msgid "Symbolic links only supported for local files"
-msgstr "Conexiuni simbolice acceptate numai pentru fișierele locale"
-
-#: ../libcore/marlin-file-operations.c:5187
-msgid "The target doesn't support symbolic links."
-msgstr "Ținta nu acceptă legături simbolice."
-
-#: ../libcore/marlin-file-operations.c:5190
-#, c-format
-msgid "There was an error creating the symlink in %F."
-msgstr "A apărut o eroare la crearea simbolinkului în %F1."
-
-#: ../libcore/marlin-file-operations.c:5508
-msgid "Setting permissions"
-msgstr "Setați permisiunile"
-
-#: ../libcore/marlin-file-operations.c:5604
-msgid "Cannot copy into trash."
-msgstr "Nu se poate copia în coșul de gunoi."
-
-#: ../libcore/marlin-file-operations.c:5605
-msgid "It is not permitted to copy files into the trash"
-msgstr "Nu este permisă copierea fișierelor în coșul de gunoi"
-
-#: ../libcore/marlin-file-operations.c:5743
-msgid "untitled folder"
-msgstr "un dosar fără titlu"
-
-#: ../libcore/marlin-file-operations.c:5751
-msgid "new file"
-msgstr "fișier nou"
-
-#: ../libcore/marlin-file-operations.c:5922
-msgid "Error while creating directory %B."
-msgstr "Eroare la crearea directorului %B."
-
-#: ../libcore/marlin-file-operations.c:5924
-msgid "Error while creating file %B."
-msgstr "Eroare la crearea fișierului %B."
-
-#: ../libcore/marlin-file-operations.c:5926
-#, c-format
-msgid "There was an error creating the directory in %F."
-msgstr "A apărut o eroare la crearea directorului în %F 1."
-
-#: ../libcore/marlin-file-operations.c:6236
-msgid "Emptying Trash"
-msgstr "Golirea coșului de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:644
-msgid "Original location could not be determined"
-msgstr "Locația originală nu a putut fi determinată"
-
-#: ../libcore/marlin-undostack-manager.c:645
-msgid "Open trash folder and restore manually"
-msgstr "Deschideți coșul de gunoi și restaurați carpeta manual"
-
-#: ../libcore/marlin-undostack-manager.c:1236
-#, c-format
-msgid "Delete %d copied items"
-msgstr "Ștergeți %d 1 elemente copiate"
-
-#: ../libcore/marlin-undostack-manager.c:1239
-#: ../libcore/marlin-undostack-manager.c:1249
-#: ../libcore/marlin-undostack-manager.c:1280
-#, c-format
-msgid "Delete '%s'"
-msgstr "Șterge '%s 1'"
-
-#: ../libcore/marlin-undostack-manager.c:1246
-#, c-format
-msgid "Delete %d duplicated items"
-msgstr "Șterge %d 1 articole duplicate"
-
-#: ../libcore/marlin-undostack-manager.c:1257
-#, c-format
-msgid "Move %d items back to '%s'"
-msgstr "Mută %d 1 articole înapoi la '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1261
-#, c-format
-msgid "Move '%s' back to '%s'"
-msgstr "Mutați '%s 1' înapoi la '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1270
-#: ../libcore/marlin-undostack-manager.c:1437
-#, c-format
-msgid "Rename '%s' as '%s'"
-msgstr "Redenumiți '%s 1' ca '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1289
-#: ../libcore/marlin-undostack-manager.c:1484
-#, c-format
-msgid "Restore %d items from trash"
-msgstr "Restabiliți %d 1 articole din coșul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1297
-#, c-format
-msgid "Restore '%s' to '%s'"
-msgstr "Restaurați '%s 1' la '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1308
-#, c-format
-msgid "Move %d items back to trash"
-msgstr "Deplasați %d 1 elemente înapoi în coșul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1311
-#, c-format
-msgid "Move '%s' back to trash"
-msgstr "Mutați '%s 1'  înapoi în coșul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1320
-#, c-format
-msgid "Delete links to %d items"
-msgstr "Ștergeți linkurile către articole %d 1"
-
-#: ../libcore/marlin-undostack-manager.c:1323
-#, c-format
-msgid "Delete link to '%s'"
-msgstr "Ștergeți linkul la '%s 1'"
-
-#: ../libcore/marlin-undostack-manager.c:1333
-#, c-format
-msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
-"Restabiliți permisiunile originale ale articolelor închise în secțiunea '%s "
-"1'"
-
-#: ../libcore/marlin-undostack-manager.c:1341
-#, c-format
-msgid "Restore original permissions of '%s'"
-msgstr "Restaurați permisiunile originale ale '%s 1'"
-
-#: ../libcore/marlin-undostack-manager.c:1350
-#, c-format
-msgid "Restore group of '%s' to '%s'"
-msgstr "Restaurați grupul de '%s 1' la '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1360
-#, c-format
-msgid "Restore owner of '%s' to '%s'"
-msgstr "Restaurați proprietarul '%s 1'  la '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1399
-#, c-format
-msgid "Copy %d items to '%s'"
-msgstr "Copiați %d 1 elemente în '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1403
-#, c-format
-msgid "Copy '%s' to '%s'"
-msgstr "Copiați '%s 1' în '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1411
-#, c-format
-msgid "Duplicate of %d items in '%s'"
-msgstr "Duplicatre de %d 1 articole în '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1416
-#, c-format
-msgid "Duplicate '%s' in '%s'"
-msgstr "Duplicați '%s 1' în '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1424
-#, c-format
-msgid "Move %d items to '%s'"
-msgstr "Deplasați %d 1 elemente la '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1428
-#, c-format
-msgid "Move '%s' to '%s'"
-msgstr "Deplasați '%s 1' la  '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1446
-#, c-format
-msgid "Create new file '%s' from template "
-msgstr "Creați fișierul nou '%s 1' din șablon "
-
-#: ../libcore/marlin-undostack-manager.c:1453
-#, c-format
-msgid "Create an empty file '%s'"
-msgstr "Creați un fișier gol '%s 1'"
-
-#: ../libcore/marlin-undostack-manager.c:1460
-#, c-format
-msgid "Create a new folder '%s'"
-msgstr "Creați un nou folder '%s 1'"
-
-#: ../libcore/marlin-undostack-manager.c:1468
-#, c-format
-msgid "Move %d items to trash"
-msgstr "Deplasați %d 1 articole în coșul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1474
-#, c-format
-msgid "Move '%s' to trash"
-msgstr "Mutați '%s 1'  în coșul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1487
-#, c-format
-msgid "Restore '%s' from trash"
-msgstr "Restabiliți '%s 1' din coșul de gunoi"
-
-#: ../libcore/marlin-undostack-manager.c:1496
-#, c-format
-msgid "Create links to %d items"
-msgstr "Creați linkuri către %d 1 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1499
-#, c-format
-msgid "Create link to '%s'"
-msgstr "Creați un link către '%s 1'"
-
-#: ../libcore/marlin-undostack-manager.c:1508
-#, c-format
-msgid "Set permissions of items enclosed in '%s'"
-msgstr "Setați permisiunile pentru articolele închise în '%s 1'"
-
-#: ../libcore/marlin-undostack-manager.c:1516
-#, c-format
-msgid "Set permissions of '%s'"
-msgstr "Setați permisiunile pentru '%s 1'"
-
-#: ../libcore/marlin-undostack-manager.c:1525
-#, c-format
-msgid "Set group of '%s' to '%s'"
-msgstr "Setați grupul '%s 1' la '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1535
-#, c-format
-msgid "Set owner of '%s' to '%s'"
-msgstr "Setați proprietarul '%s 1'  la '%s 2'"
-
-#: ../libcore/marlin-undostack-manager.c:1567
-#, c-format
-msgid "_Undo copy of %d item"
-msgid_plural "_Undo copy of %d items"
-msgstr[0] "_O copie de %d 1 element"
-msgstr[1] "_O copie de %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1572
-#, c-format
-msgid "_Undo duplicate of %d item"
-msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "_Un duplicat de %d 1 articol"
-msgstr[1] "_Un duplicat de %d 2 articole"
-
-#: ../libcore/marlin-undostack-manager.c:1577
-#, c-format
-msgid "_Undo move of %d item"
-msgid_plural "_Undo move of %d items"
-msgstr[0] "_Anulați mutarea %d 1 articol"
-msgstr[1] "_Anulați mutarea %d 2 articole"
-
-#: ../libcore/marlin-undostack-manager.c:1582
-#, c-format
-msgid "_Undo rename of %d item"
-msgid_plural "_Undo rename of %d items"
-msgstr[0] "_Renunțați la redenumirea %d 1 articol"
-msgstr[1] "_Renunțați la redenumirea %d 2 articole"
-
-#: ../libcore/marlin-undostack-manager.c:1586
-msgid "_Undo creation of an empty file"
-msgstr "_Anulați crearea unui fișier gol"
-
-#: ../libcore/marlin-undostack-manager.c:1589
-msgid "_Undo creation of a file from template"
-msgstr "_Anulați crearea unui fișier din șablon"
-
-#: ../libcore/marlin-undostack-manager.c:1593
-#, c-format
-msgid "_Undo creation of %d folder"
-msgid_plural "_Undo creation of %d folders"
-msgstr[0] "_Anulați crearea directorului %d 1"
-msgstr[1] "_Anulați crearea directorului %d 2"
-
-#: ../libcore/marlin-undostack-manager.c:1598
-#, c-format
-msgid "_Undo move to trash of %d item"
-msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "_Anulați mutarea în coșul de gunoi a  %d 1 element"
-msgstr[1] "_Anulați mutarea în coșul de gunoi a  %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1603
-#, c-format
-msgid "_Undo restore from trash of %d item"
-msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "_Renunțați la restabilirea din coșul de gunoi a %d 1 articol"
-msgstr[1] "_Renunțați la restabilirea din coșul de gunoi a %d 2 articole"
-
-#: ../libcore/marlin-undostack-manager.c:1608
-#, c-format
-msgid "_Undo create link to %d item"
-msgid_plural "_Undo create link to %d items"
-msgstr[0] "_Anulați crearea linkului de %d 1 element"
-msgstr[1] "_Anulați crearea linkului de %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1613
-#, c-format
-msgid "_Undo delete of %d item"
-msgid_plural "_Undo delete of %d items"
-msgstr[0] "_Renunțați la ștergerea %d 1 articol"
-msgstr[1] "_Renunțați la ștergerea %d 2 articole"
-
-#: ../libcore/marlin-undostack-manager.c:1618
-#, c-format
-msgid "Undo recursive change permissions of %d item"
-msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-"Renunțați la permisiunile de modificare recursivă din articolul %d 1"
-msgstr[1] ""
-"Renunțați la permisiunile de modificare recursivă din articolul %d 2"
-
-#: ../libcore/marlin-undostack-manager.c:1624
-#, c-format
-msgid "Undo change permissions of %d item"
-msgid_plural "Undo change permissions of %d items"
-msgstr[0] "Respingerea permisiunilor de modificare a %d 1 element"
-msgstr[1] "Respingerea permisiunilor de modificare a %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1629
-#, c-format
-msgid "Undo change group of %d item"
-msgid_plural "Undo change group of %d items"
-msgstr[0] "Anulați grupul de modificări din %d 1 articol"
-msgstr[1] "Anulați grupul de modificări din %d 2 articole"
-
-#: ../libcore/marlin-undostack-manager.c:1634
-#, c-format
-msgid "Undo change owner of %d item"
-msgid_plural "Undo change owner of %d items"
-msgstr[0] "Renunțați la modificarea %d 1 element"
-msgstr[1] "Renunțați la modificarea %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1662
-#, c-format
-msgid "_Redo copy of %d item"
-msgid_plural "_Redo copy of %d items"
-msgstr[0] "_Faceți din nou copia %d 1  articol"
-msgstr[1] "_Faceți din nou copia %d 2  articole"
-
-#: ../libcore/marlin-undostack-manager.c:1667
-#, c-format
-msgid "_Redo duplicate of %d item"
-msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "_Redo duplicat de %d 1 element"
-msgstr[1] "_Redo duplicat de %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1672
-#, c-format
-msgid "_Redo move of %d item"
-msgid_plural "_Redo move of %d items"
-msgstr[0] "_Mutați înapoi a %d 1 elementului"
-msgstr[1] "_Mutați înapoi a %d 2 elementelor"
-
-#: ../libcore/marlin-undostack-manager.c:1677
-#, c-format
-msgid "_Redo rename of %d item"
-msgid_plural "_Redo rename of %d items"
-msgstr[0] "_Redenumiți %d 1 element"
-msgstr[1] "_Redenumiți %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1681
-msgid "_Redo creation of an empty file"
-msgstr "_ Crearea unui fișier gol"
-
-#: ../libcore/marlin-undostack-manager.c:1684
-msgid "_Redo creation of a file from template"
-msgstr "_Recrearea unui fișier din șablon"
-
-#: ../libcore/marlin-undostack-manager.c:1688
-#, c-format
-msgid "_Redo creation of %d folder"
-msgid_plural "_Redo creation of %d folders"
-msgstr[0] "_Crearea de %d 1 dosar"
-msgstr[1] "_Crearea de %d 2 dosare"
-
-#: ../libcore/marlin-undostack-manager.c:1693
-#, c-format
-msgid "_Redo move to trash of %d item"
-msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "_Mutați înapoi în coșul de gunoi a %d 1 element"
-msgstr[1] "_Mutați înapoi în coșul de gunoi a %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1698
-#, c-format
-msgid "_Redo restore from trash of %d item"
-msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "_Mutați restaurați din coșul de gunoi de %d 1 element"
-msgstr[1] "_Mutați restaurați din coșul de gunoi de %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1703
-#, c-format
-msgid "_Redo create link to %d item"
-msgid_plural "_Redo create link to %d items"
-msgstr[0] "_Redo crea link-ul la %d 1 element"
-msgstr[1] "_Redo crea link-ul la %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1708
-#, c-format
-msgid "_Redo delete of %d item"
-msgid_plural "_Redo delete of %d items"
-msgstr[0] "_Redo șterge %d 1 element"
-msgstr[1] "_Redo șterge %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1713
-#, c-format
-msgid "Redo recursive change permissions of %d item"
-msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "Refaceți permisiunile de modificare recursivă a %d 1 element"
-msgstr[1] "Refaceți permisiunile de modificare recursivă a %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1719
-#, c-format
-msgid "Redo change permissions of %d item"
-msgid_plural "Redo change permissions of %d items"
-msgstr[0] "Permiteți modificarea permisiunilor de modificare a %d 1 element"
-msgstr[1] "Permiteți modificarea permisiunilor de modificare a %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1724
-#, c-format
-msgid "Redo change group of %d item"
-msgid_plural "Redo change group of %d items"
-msgstr[0] "Redenumiți și schimbați grupul de %d 1 element"
-msgstr[1] "Redenumiți și schimbați grupul de %d 2 elemente"
-
-#: ../libcore/marlin-undostack-manager.c:1729
-#, c-format
-msgid "Redo change owner of %d item"
-msgid_plural "Redo change owner of %d items"
-msgstr[0] "Redenumește schimbarea proprietarului %d 1 element"
-msgstr[1] "Redenumește schimbarea proprietarului %d 2 elemente"
-
-#: ../filechooser-module/FileChooserDialog.vala:73
-#: ../src/View/Widgets/TopMenu.vala:61
-msgid "Previous"
-msgstr "Anterior"
-
-#: ../filechooser-module/FileChooserDialog.vala:77
-#: ../src/View/Widgets/TopMenu.vala:66
-msgid "Next"
-msgstr "Înainte"
-
-#: ../src/View/AbstractDirectoryView.vala:826
-msgid "Cannot open this file"
-msgstr "Nu se poate deschide acest fișier"
-
-#: ../src/View/AbstractDirectoryView.vala:839
-msgid "Cannot identify file type to open"
-msgstr "Nu se poate identifica tipul de fișier pentru a fi deschis"
-
-#: ../src/View/AbstractDirectoryView.vala:1573
-msgid "Cannot drop this file"
-msgstr "Nu puteți renunța la acest fișier"
-
-#: ../src/View/AbstractDirectoryView.vala:1573
-msgid "Invalid file name provided"
-msgstr "Numele de fișier furnizat nevalid"
-
-#: ../src/View/AbstractDirectoryView.vala:2059
-msgid "Invalid"
-msgstr "Nu este valid"
-
-#: ../src/View/AbstractDirectoryView.vala:2065
-msgid "Run"
-msgstr "Aleargă"
-
-#: ../src/View/AbstractDirectoryView.vala:2069
-msgid "Open in %s"
-msgstr "Deschide în %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2079
-msgid "Open in"
-msgstr "Deschide în"
-
-#: ../src/View/AbstractDirectoryView.vala:2081
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:482
-msgid "Open with"
-msgstr "Deschide cu"
-
-#: ../src/View/AbstractDirectoryView.vala:2140
-#: ../src/Dialogs/PropertiesWindow.vala:616
-msgid "Other Application…"
-msgstr "Alte aplicații…"
-
-#: ../src/View/AbstractDirectoryView.vala:2169
-msgid "Templates"
-msgstr ""
-
-#: ../src/View/AbstractDirectoryView.vala:2416
-msgid "Untitled %s"
-msgstr "Fără titlu %s"
-
-#: ../src/View/AbstractDirectoryView.vala:2755
-#: ../src/View/AbstractDirectoryView.vala:2939
-msgid "Cannot remove files from here"
-msgstr "Nu pot fi eliminate fișiere de aici"
-
-#: ../src/View/AbstractDirectoryView.vala:2756
-#: ../src/View/AbstractDirectoryView.vala:2924
-#: ../src/View/AbstractDirectoryView.vala:2940
-msgid "You do not have permission to change this location"
-msgstr "Nu aveți permisiunea de a modifica această locație"
-
-#: ../src/View/AbstractDirectoryView.vala:2899
-msgid "Cannot copy files that are in the trash"
-msgstr "Nu se pot copia fișierele din coșul de gunoi"
-
-#: ../src/View/AbstractDirectoryView.vala:2900
-msgid "Cutting the selection instead"
-msgstr "Tăiați selecția în loc"
-
-#: ../src/View/AbstractDirectoryView.vala:2923
-msgid "Cannot paste files here"
-msgstr "Nu se pot lipi fișiere aici"
-
-#: ../src/View/DirectoryNotFound.vala:27 ../src/View/ViewContainer.vala:407
-msgid "This Folder Does Not Exist"
-msgstr "Acest dosar nu există"
-
-#: ../src/View/DirectoryNotFound.vala:27
-msgid "The folder \"%s\" can't be found."
-msgstr "Dosarul \"%s\" nu poate fi găsit."
-
-#: ../src/View/DirectoryNotFound.vala:29
-msgid "Create"
-msgstr "Creează"
-
-#: ../src/View/DirectoryNotFound.vala:29
-msgid "Create the folder \"%s\""
-msgstr "Creați dosarul \"%s\""
-
-#: ../src/View/DirectoryNotFound.vala:43
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
-msgstr ""
-"Nu a reușit să se creeze folderul ↵\n"
-"↵\n"
-"%s"
-
-#: ../src/View/ListView.vala:26
-msgid "Filename"
-msgstr "Nume de fișier"
-
-#: ../src/View/ListView.vala:27 ../src/View/directory_view_popup.ui:149
-msgid "Size"
-msgstr "Mărime"
-
-#: ../src/View/ListView.vala:28 ../src/View/directory_view_popup.ui:154
-msgid "Type"
-msgstr "Tipul"
-
-#: ../src/View/ListView.vala:29
-msgid "Modified"
-msgstr "Modificat"
-
-#: ../src/View/PopupMenuBuilder.vala:34
-msgid "Open"
-msgstr "Deschide"
-
-#: ../src/View/PopupMenuBuilder.vala:38
-msgid "Open in New _Tab"
-msgstr "Deschideți într-un nou _Tab"
-
-#: ../src/View/PopupMenuBuilder.vala:42
-msgid "Open in New _Window"
-msgstr "Deschide intr-o nouă_ fereastră"
-
-#: ../src/View/PopupMenuBuilder.vala:46
-msgid "Remove"
-msgstr "Elimină"
-
-#: ../src/View/PopupMenuBuilder.vala:50 ../src/View/directory_view_popup.ui:30
-msgid "Rename"
-msgstr "Redenumește"
-
-#: ../src/View/PopupMenuBuilder.vala:54
-msgid "_Mount"
-msgstr "_Montează"
-
-#: ../src/View/PopupMenuBuilder.vala:58
-msgid "_Unmount"
-msgstr "_Dezmontează"
-
-#: ../src/View/PopupMenuBuilder.vala:62
-msgid "_Eject"
-msgstr "_Afară"
-
-#: ../src/View/PopupMenuBuilder.vala:66
-#: ../src/Dialogs/PropertiesWindow.vala:121
-#: ../src/View/directory_view_popup.ui:91
-msgid "Properties"
-msgstr "Proprietăți"
-
-#: ../src/View/Sidebar.vala:499
-msgid "Personal"
-msgstr "personal"
-
-#: ../src/View/Sidebar.vala:500
-msgid "Your common places and bookmarks"
-msgstr "Locuri comune și marcajele"
-
-#: ../src/View/Sidebar.vala:512 ../src/View/ViewContainer.vala:377
-msgid "Home"
-msgstr "Acasă"
-
-#: ../src/View/Sidebar.vala:519
-msgid "Open your personal folder"
-msgstr "Deschideți dosarul personal"
-
-#: ../src/View/Sidebar.vala:534
-msgid "View the list of recently used files"
-msgstr "Vizualizați lista fișierelor utilizate recent"
-
-#: ../src/View/Sidebar.vala:560 ../libwidgets/Resources.vala:65
-msgid "Trash"
-msgstr "Gunoi"
-
-#: ../src/View/Sidebar.vala:567
-msgid "Open the Trash"
-msgstr "Deschideți Coșul de gunoi"
-
-#: ../src/View/Sidebar.vala:572
-msgid "Devices"
-msgstr "Dispozitive"
-
-#: ../src/View/Sidebar.vala:573
-msgid "Your local partitions and devices"
-msgstr "Partițiile și dispozitivele locale"
-
-#: ../src/View/Sidebar.vala:579 ../src/View/ViewContainer.vala:379
-#: ../src/Dialogs/VolumePropertiesWindow.vala:44
-#: ../libwidgets/Resources.vala:68
-msgid "File System"
-msgstr "Sistemul de fișiere"
-
-#: ../src/View/Sidebar.vala:700 ../libwidgets/Resources.vala:62
-msgid "Network"
-msgstr "Reţea"
-
-#: ../src/View/Sidebar.vala:701
-msgid "Your network places"
-msgstr "Locurile dv. în rețea"
-
-#: ../src/View/Sidebar.vala:733
-msgid "Entire Network"
-msgstr "Toată rețeaua"
-
-#: ../src/View/Sidebar.vala:740
-msgid "Browse the contents of the network"
-msgstr "Răsfoiți conținutul rețelei"
-
-#: ../src/View/Sidebar.vala:743
-#, fuzzy
-msgid "Connect Server"
-msgstr "Conectare la server"
-
-#: ../src/View/Sidebar.vala:743
-#, fuzzy
-msgid "Connect to a network server"
-msgstr "Conectați-vă la un server de fișiere de rețea"
-
-#: ../src/View/Sidebar.vala:881
-msgid "(%s Free of %s)"
-msgstr "(%s Gratuit %s)"
-
-#: ../src/View/Sidebar.vala:1371
-msgid "Error mounting volume %s"
-msgstr "Eroare la montarea volumului %s"
-
-#: ../src/View/Sidebar.vala:1386
-msgid "Unable to start %s"
-msgstr "Imposibil de pornit %s"
-
-#: ../src/View/Slot.vala:31
-msgid "This Folder Is Empty"
-msgstr "Acest dosar este gol"
-
-#: ../src/View/Slot.vala:32
-msgid "Trash Is Empty"
-msgstr "Coșul de gunoi este gol"
-
-#: ../src/View/Slot.vala:33
-msgid "There Are No Recent Files"
-msgstr "Nu există fișiere recente"
-
-#: ../src/View/Slot.vala:34
-msgid "Access Denied"
-msgstr "Acces interzis"
-
-#: ../src/View/ViewContainer.vala:408
-msgid "You cannot create a folder here."
-msgstr "Nu puteți crea un dosar aici."
-
-#: ../src/View/ViewContainer.vala:411
-msgid "The network is unavailable"
-msgstr "Rețeaua nu este disponibilă"
-
-#: ../src/View/ViewContainer.vala:412
-msgid "A working network is needed to reach this folder"
-msgstr "Este necesar o rețea de lucru pentru a ajunge la acest dosar"
-
-#: ../src/View/ViewContainer.vala:414
-msgid "This Folder Does Not Belong to You"
-msgstr "Acest dosar nu este al tău"
-
-#: ../src/View/ViewContainer.vala:415
-msgid "You don't have permission to view this folder."
-msgstr "Nu aveți permisiunea de a vizualiza acest dosar."
-
-#: ../src/View/ViewContainer.vala:417
-msgid "Unable to Mount Folder"
-msgstr "Imposibil de montat dosarul"
-
-#: ../src/View/ViewContainer.vala:418
-msgid "Could not connect to the server for this folder."
-msgstr "Nu s-a putut conecta la server pentru acest dosar."
-
-#: ../src/View/ViewContainer.vala:420
-msgid "Unable to Display Folder Contents"
-msgstr "Conținutul folderelor nu poate fi afișat"
-
-#: ../src/View/ViewContainer.vala:421
-msgid "The operation timed out."
-msgstr "Operația a expirat."
-
-#: ../src/View/ViewContainer.vala:423
-msgid "Unable to Show Folder"
-msgstr "Folderul nu poate fi afișat"
-
-#: ../src/View/ViewContainer.vala:424
-msgid "The server for this folder could not be located."
-msgstr "Serverul pentru acest dosar nu a putut fi localizat."
-
-#: ../src/View/ViewContainer.vala:434
-msgid "File not Found"
-msgstr "Fișierul nu a fost găsit"
-
-#: ../src/View/ViewContainer.vala:435
-msgid "The file selected no longer exists."
-msgstr "Fișierul selectat nu mai există."
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:442
-msgid "Open in New Tab"
-msgstr "Deschideți într-o filă nouă"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:449
-msgid "Open in New Window"
-msgstr "Deschideți într-o nouă fereastră"
-
-#: ../src/View/Widgets/BreadcrumbsEntry.vala:489
-msgid "Open in Other Application…"
-msgstr "Deschideți cu altă aplicație …"
-
-#: ../src/View/Widgets/LocationBar.vala:192
-msgid "Reload this folder"
-msgstr "Reîncărcați acest dosar"
-
-#: ../src/View/Widgets/LocationBar.vala:196
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:288
-msgid "Search or Type Path"
-msgstr "Căutați sau tastați ruta"
-
-#: ../src/View/Widgets/LocationBar.vala:205
-msgid "Searching…"
-msgstr "În căutare…"
-
-#: ../src/View/Widgets/OverlayBar.vala:215
-msgid "%u folders"
-msgstr "%u dosare"
-
-#: ../src/View/Widgets/OverlayBar.vala:217
-#: ../src/View/Widgets/OverlayBar.vala:226
-msgid " and %u other item (%s) selected"
-msgstr " și %u alt element (% s) selectat"
-
-#: ../src/View/Widgets/OverlayBar.vala:218
-#: ../src/View/Widgets/OverlayBar.vala:227
-msgid " and %u other items (%s) selected"
-msgstr " și %u alte elemente (%s) selectate"
-
-#: ../src/View/Widgets/OverlayBar.vala:221
-#: ../src/View/Widgets/OverlayBar.vala:230
-msgid " selected"
-msgstr " selectat"
-
-#: ../src/View/Widgets/OverlayBar.vala:224
-#: ../src/Dialogs/PropertiesWindow.vala:1222
-msgid "%u folder"
-msgid_plural "%u folders"
-msgstr[0] "%u dosar"
-msgstr[1] "%u dosare"
-
-#: ../src/View/Widgets/OverlayBar.vala:233
-msgid "%u items selected (%s)"
-msgstr "%u elemente selectate (%s)"
-
-#. / TRANSLATORS: %u will be substituted by the number of sub folders
-#: ../src/View/Widgets/OverlayBar.vala:277
-msgid "%u sub-folder, "
-msgstr "%u sub-dosar, "
-
-#: ../src/View/Widgets/OverlayBar.vala:277
-msgid "%u sub-folders, "
-msgstr "%u sub-dosare, "
-
-#. / TRANSLATORS: %u will be substituted by the number of readable files
-#: ../src/View/Widgets/OverlayBar.vala:283
-msgid "%u file, "
-msgstr "%u fișier, "
-
-#: ../src/View/Widgets/OverlayBar.vala:283
-msgid "%u files, "
-msgstr "%u fișiere, "
-
-#. / TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: ../src/View/Widgets/OverlayBar.vala:293
-msgid "%s approx."
-msgstr "%s aproximativ."
-
-#. / TRANSLATORS: 'size' refers to disk space
-#: ../src/View/Widgets/OverlayBar.vala:296
-msgid "unknown size"
-msgstr "dimensiune necunoscută"
-
-#. / TRANSLATORS: %u will be substituted by the number of unreadable files
-#: ../src/View/Widgets/OverlayBar.vala:300
-msgid "%u file not readable"
-msgstr "%u fișierul nu poate fi citit"
-
-#: ../src/View/Widgets/OverlayBar.vala:300
-msgid "%u files not readable"
-msgstr "%u fișierele care nu pot fi citite"
-
-#: ../src/View/Widgets/PermissionButton.vala:38
-msgid "Read"
-msgstr "Citire"
-
-#: ../src/View/Widgets/PermissionButton.vala:42
-msgid "Write"
-msgstr "Scrie"
-
-#: ../src/View/Widgets/PermissionButton.vala:46
-msgid "Execute"
-msgstr "Execută"
-
-#: ../src/View/Window.vala:484 ../src/View/Window.vala:494
-msgid "(as Administrator)"
-msgstr "(ca Administrator)"
-
-#: ../src/Application.vala:119
+#: src/Application.vala:120
 msgid "Show the version of the program"
 msgstr "Afișați versiunea programului."
 
-#: ../src/Application.vala:121
+#: src/Application.vala:122
 #, fuzzy
-msgid "Open one or more uris, each in a new tab"
+msgid "Open one or more URIs, each in their own tab"
 msgstr "Deschide uri(s) în fila nouă"
 
-#: ../src/Application.vala:123 ../src/View/directory_view_popup.ui:83
+#: src/Application.vala:124
 msgid "New Window"
 msgstr "Nouă fereastră"
 
-#: ../src/Application.vala:125
+#: src/Application.vala:126
 msgid "Quit Files"
 msgstr "Ieșiți din Fișiere."
 
-#: ../src/Application.vala:127
+#: src/Application.vala:128
 msgid "Enable debug logging"
 msgstr "Activați curățarea registrului"
 
-#: ../src/Application.vala:130
+#: src/Application.vala:131
 #, fuzzy
 msgid "[URI…]"
 msgstr "[URI....]"
 
-#: ../src/Application.vala:133
+#: src/Application.vala:134
 msgid ""
 "\n"
 "\n"
@@ -1631,79 +49,80 @@ msgstr ""
 "\n"
 "Navigați în sistemul de fișiere cu managerul de fișiere"
 
-#: ../src/Application.vala:161
+#: src/Application.vala:162
 msgid "--quit cannot be used with URIs."
 msgstr "- quit nu poate fi folosit cu URI."
 
-#: ../src/DesktopLauncher.vala:21
-msgid "Browse your files"
-msgstr "Răsfoiți fișierele"
+#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:191
+msgid "File Operations"
+msgstr "Operații de fișiere"
 
-#: ../src/DesktopLauncher.vala:22
-msgid "File Manager"
-msgstr "Manager de fișiere"
+#: src/ProgressUIHandler.vala:185
+#, c-format
+msgid "Completed %s"
+msgstr "Completat %s"
 
-#: ../src/DesktopLauncher.vala:23
-msgid "New _Window"
-msgstr "Fereastră_nouă"
+#: src/ProgressUIHandler.vala:188
+msgid "All file operations have ended"
+msgstr "Toate operațiile de fișiere s-au încheiat"
 
-#: ../src/DesktopLauncher.vala:24
-msgid "New Window As _Administrator"
-msgstr "Fereastră nouă ca administrator"
+#: src/ProgressUIHandler.vala:236
+msgid "Show Copy Dialog"
+msgstr "Afișați dialogul de copiere"
 
-#: ../src/DesktopLauncher.vala:25 ../libwidgets/Resources.vala:22
-msgid "Files"
-msgstr "Fișiere"
+#: src/ProgressUIHandler.vala:248
+msgid "Cancel All In-progress Actions"
+msgstr "Anulați toate acțiunile în curs de desfășurare"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:49
+#: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
 msgstr "Informații"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:57
+#: src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
 msgstr "Mod General"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:76
+#: src/Dialogs/AbstractPropertiesDialog.vala:76
 msgid "Close"
 msgstr "Închide"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:136
+#: src/Dialogs/AbstractPropertiesDialog.vala:136
 msgid "Device Usage"
 msgstr "Utilizarea dispozitivului"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:152
+#: src/Dialogs/AbstractPropertiesDialog.vala:152
 msgid "Capacity:"
 msgstr "Capacitate:"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:153
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:156
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:159
-#: ../src/Dialogs/PropertiesWindow.vala:430
-#: ../src/Dialogs/PropertiesWindow.vala:466
+#: src/Dialogs/AbstractPropertiesDialog.vala:153
+#: src/Dialogs/AbstractPropertiesDialog.vala:156
+#: src/Dialogs/AbstractPropertiesDialog.vala:159
+#: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
 msgid "Unknown"
 msgstr "Necunoscut"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Available:"
 msgstr "Disponibil:"
 
-#: ../src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Used:"
 msgstr "Folosit:"
 
-#: ../src/Dialogs/ChooseAppDialog.vala:40
+#: src/Dialogs/ChooseAppDialog.vala:42
 msgid "Set as default"
 msgstr "Setați ca implicit"
 
-#: ../src/Dialogs/PropertiesWindow.vala:221
+#: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
+msgid "Properties"
+msgstr "Proprietăți"
+
+#: src/Dialogs/PropertiesWindow.vala:223
 msgid "Permissions"
 msgstr "Permisiuni"
 
-#: ../src/Dialogs/PropertiesWindow.vala:242
-msgid "Actual Size Could Be Larger"
-msgstr "Dimensiunea reală ar putea fi mai mare"
-
-#: ../src/Dialogs/PropertiesWindow.vala:242
+#: src/Dialogs/PropertiesWindow.vala:244
+#, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
@@ -1711,354 +130,826 @@ msgstr[0] ""
 msgstr[1] ""
 "%i Fișierele nu a putut fi citite din cauza permisiunilor sau a altor erori."
 
-#: ../src/Dialogs/PropertiesWindow.vala:261
-#: ../src/Dialogs/PropertiesWindow.vala:280
+#: src/Dialogs/PropertiesWindow.vala:248
+msgid "Actual Size Could Be Larger"
+msgstr "Dimensiunea reală ar putea fi mai mare"
+
+#: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
 msgid "unknown"
 msgstr "necunoscut"
 
-#: ../src/Dialogs/PropertiesWindow.vala:441
+#: src/Dialogs/PropertiesWindow.vala:448
 msgid "Loading…"
 msgstr "Se încarcă…"
 
-#: ../src/Dialogs/PropertiesWindow.vala:472
+#: src/Dialogs/PropertiesWindow.vala:482
 msgid "Could not be determined"
 msgstr "Nu s-a putut determina"
 
-#: ../src/Dialogs/PropertiesWindow.vala:498
-#: ../libcore/FileConflictDialog.vala:119
-#: ../libcore/FileConflictDialog.vala:147
+#: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
+#: libcore/FileConflictDialog.vala:148
 msgid "Size:"
 msgstr "Mărime:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:505
-#: ../libcore/ConnectServerDialog.vala:147
-#: ../libcore/FileConflictDialog.vala:127
-#: ../libcore/FileConflictDialog.vala:155
+#: src/Dialogs/PropertiesWindow.vala:515 libcore/ConnectServerDialog.vala:164
+#: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
 msgid "Type:"
 msgstr "Tipul:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:508
+#: src/Dialogs/PropertiesWindow.vala:518
 msgid "Contains:"
 msgstr "Conține:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:530
+#: src/Dialogs/PropertiesWindow.vala:541
 msgid "Created:"
 msgstr "Creată:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:539
+#: src/Dialogs/PropertiesWindow.vala:551
 msgid "Modified:"
 msgstr "Modificat:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:550
+#: src/Dialogs/PropertiesWindow.vala:563
 msgid "Deleted:"
 msgstr "Șters:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:560
+#: src/Dialogs/PropertiesWindow.vala:573
 #, fuzzy
 msgid "MIME type:"
 msgstr "Tip Mime:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:567
+#: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
 msgstr "Rezoluție:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:575
-#: ../src/Dialogs/VolumePropertiesWindow.vala:78
+#: src/Dialogs/PropertiesWindow.vala:588
+#: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
 msgstr "Localizare:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:585
+#: src/Dialogs/PropertiesWindow.vala:598
 msgid "Target:"
 msgstr "Ţintă:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:593
+#: src/Dialogs/PropertiesWindow.vala:606
 msgid "Original Location:"
 msgstr "Locația originală:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:636
+#: src/Dialogs/PropertiesWindow.vala:629
+#: src/View/AbstractDirectoryView.vala:2132
+msgid "Other Application…"
+msgstr "Alte aplicații…"
+
+#: src/Dialogs/PropertiesWindow.vala:649
 msgid "Open with:"
 msgstr "Deschide cu:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:903
-#: ../src/Dialogs/PropertiesWindow.vala:913
+#: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
 msgid "Owner:"
 msgstr "Proprietar:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:907
-#: ../src/Dialogs/PropertiesWindow.vala:916
+#: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
 msgid "Group:"
 msgstr "Grup:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:919
+#: src/Dialogs/PropertiesWindow.vala:932
 msgid "Everyone:"
 msgstr "Toata lumea:"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1200
+#: src/Dialogs/PropertiesWindow.vala:1213
+#, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u subdosar"
 msgstr[1] "%u subdosare"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1204
-#: ../src/Dialogs/PropertiesWindow.vala:1226
+#: src/Dialogs/PropertiesWindow.vala:1217
+#: src/Dialogs/PropertiesWindow.vala:1239
+#, c-format
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u fișier"
 msgstr[1] "%u fișiere"
 
-#. /TRANSLATORS: folders, files
-#: ../src/Dialogs/PropertiesWindow.vala:1209
+#: src/Dialogs/PropertiesWindow.vala:1222
+#, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: ../src/Dialogs/PropertiesWindow.vala:1230
+#: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
+#, c-format
+msgid "%u folder"
+msgid_plural "%u folders"
+msgstr[0] "%u dosar"
+msgstr[1] "%u dosare"
+
+#: src/Dialogs/PropertiesWindow.vala:1244
+#, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
 msgstr[0] "%u element selectat"
 msgstr[1] "%u elemente selectate"
 
-#. /TRANSLATORS: total (folders, files)
-#: ../src/Dialogs/PropertiesWindow.vala:1232
+#: src/Dialogs/PropertiesWindow.vala:1246
+#, c-format
 msgid "%s (%s, %s)"
 msgstr "%s (%s, %s)"
 
-#: ../src/Dialogs/VolumePropertiesWindow.vala:28
+#: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
 msgstr "Proprietăți disc"
 
-#: ../src/Dialogs/VolumePropertiesWindow.vala:85
+#: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/ViewContainer.vala:379
+#: src/View/Sidebar.vala:658 libwidgets/Resources.vala:68
+msgid "File System"
+msgstr "Sistemul de fișiere"
+
+#: src/Dialogs/VolumePropertiesWindow.vala:86
 msgid "Format:"
 msgstr "Formatul:"
 
-#: ../src/ProgressUIHandler.vala:131 ../src/ProgressUIHandler.vala:191
-msgid "File Operations"
-msgstr "Operații de fișiere"
-
-#. / TRANSLATORS: %s will be replaced by the title of the file operation
-#: ../src/ProgressUIHandler.vala:185
-msgid "Completed %s"
-msgstr "Completat %s"
-
-#: ../src/ProgressUIHandler.vala:188
-msgid "All file operations have ended"
-msgstr "Toate operațiile de fișiere s-au încheiat"
-
-#: ../src/ProgressUIHandler.vala:236
-msgid "Show Copy Dialog"
-msgstr "Afișați dialogul de copiere"
-
-#: ../src/ProgressUIHandler.vala:248
-msgid "Cancel All In-progress Actions"
-msgstr "Anulați toate acțiunile în curs de desfășurare"
-
-#: ../src/Utils/MimeActions.vala:275
+#: src/Utils/MimeActions.vala:285
 msgid "Multiple file types selected"
 msgstr "Sunt selectate mai multe tipuri de fișiere"
 
-#: ../src/Utils/MimeActions.vala:276
+#: src/Utils/MimeActions.vala:286
 msgid "No single app can open all these types of file"
 msgstr "Nicio aplicație unică nu poate deschide toate aceste tipuri de fișiere"
 
-#: ../src/Utils/MimeActions.vala:303
+#: src/Utils/MimeActions.vala:313
 msgid "Failed to open files"
 msgstr "Eroare la deschiderea fișierelor"
 
-#: ../src/Utils/MimeActions.vala:313
+#: src/Utils/MimeActions.vala:323
 #, fuzzy
 msgid "Could not open URIs"
 msgstr "Nu s-a putut redenumi '%s'"
 
-#: ../src/Utils/MimeActions.vala:316
+#: src/Utils/MimeActions.vala:326
 #, fuzzy
 msgid "Could not open files or URIs with this app"
 msgstr "Imposibil de deschis fișiere sau uris cu această aplicație"
 
-#: ../libcore/ConnectServerDialog.vala:46
+#: src/View/Window.vala:493 src/View/Window.vala:503
+msgid "(as Administrator)"
+msgstr "(ca Administrator)"
+
+#: src/View/ListView.vala:26
+msgid "Filename"
+msgstr "Nume de fișier"
+
+#: src/View/ListView.vala:27
+msgid "Size"
+msgstr "Mărime"
+
+#: src/View/ListView.vala:28
+msgid "Type"
+msgstr "Tipul"
+
+#: src/View/ListView.vala:29
+msgid "Modified"
+msgstr "Modificat"
+
+#: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:409
+msgid "This Folder Does Not Exist"
+msgstr "Acest dosar nu există"
+
+#: src/View/DirectoryNotFound.vala:28
+#, c-format
+msgid "The folder \"%s\" can't be found."
+msgstr "Dosarul \"%s\" nu poate fi găsit."
+
+#: src/View/DirectoryNotFound.vala:30
+msgid "Create"
+msgstr "Creează"
+
+#: src/View/DirectoryNotFound.vala:30
+#, c-format
+msgid "Create the folder \"%s\""
+msgstr "Creați dosarul \"%s\""
+
+#: src/View/DirectoryNotFound.vala:44
+#, c-format
+msgid ""
+"Failed to create the folder\n"
+"\n"
+"%s"
+msgstr ""
+"Nu a reușit să se creeze folderul ↵\n"
+"↵\n"
+"%s"
+
+#: src/View/AbstractDirectoryView.vala:807
+#: src/View/AbstractDirectoryView.vala:1092
+#, fuzzy
+msgid "Cannot execute this file"
+msgstr "Nu se poate deschide acest fișier"
+
+#: src/View/AbstractDirectoryView.vala:828
+msgid "Cannot open this file"
+msgstr "Nu se poate deschide acest fișier"
+
+#: src/View/AbstractDirectoryView.vala:841
+msgid "Cannot identify file type to open"
+msgstr "Nu se poate identifica tipul de fișier pentru a fi deschis"
+
+#: src/View/AbstractDirectoryView.vala:1571
+msgid "Cannot drop this file"
+msgstr "Nu puteți renunța la acest fișier"
+
+#: src/View/AbstractDirectoryView.vala:1572
+msgid "Invalid file name provided"
+msgstr "Numele de fișier furnizat nevalid"
+
+#: src/View/AbstractDirectoryView.vala:2052
+msgid "Invalid"
+msgstr "Nu este valid"
+
+#: src/View/AbstractDirectoryView.vala:2058
+msgid "Run"
+msgstr "Aleargă"
+
+#: src/View/AbstractDirectoryView.vala:2062
+#, c-format
+msgid "Open in %s"
+msgstr "Deschide în %s"
+
+#: src/View/AbstractDirectoryView.vala:2072
+msgid "Open in"
+msgstr "Deschide în"
+
+#: src/View/AbstractDirectoryView.vala:2074
+#: src/View/Widgets/BreadcrumbsEntry.vala:484
+msgid "Open with"
+msgstr "Deschide cu"
+
+#: src/View/AbstractDirectoryView.vala:2161
+msgid "Templates"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:2408
+#, c-format
+msgid "Untitled %s"
+msgstr "Fără titlu %s"
+
+#: src/View/AbstractDirectoryView.vala:2756
+#: src/View/AbstractDirectoryView.vala:2940
+msgid "Cannot remove files from here"
+msgstr "Nu pot fi eliminate fișiere de aici"
+
+#: src/View/AbstractDirectoryView.vala:2757
+#: src/View/AbstractDirectoryView.vala:2925
+#: src/View/AbstractDirectoryView.vala:2941
+msgid "You do not have permission to change this location"
+msgstr "Nu aveți permisiunea de a modifica această locație"
+
+#: src/View/AbstractDirectoryView.vala:2900
+msgid "Cannot copy files that are in the trash"
+msgstr "Nu se pot copia fișierele din coșul de gunoi"
+
+#: src/View/AbstractDirectoryView.vala:2901
+msgid "Cutting the selection instead"
+msgstr "Tăiați selecția în loc"
+
+#: src/View/AbstractDirectoryView.vala:2924
+msgid "Cannot paste files here"
+msgstr "Nu se pot lipi fișiere aici"
+
+#: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:591
+msgid "Home"
+msgstr "Acasă"
+
+#: src/View/ViewContainer.vala:410
+msgid "You cannot create a folder here."
+msgstr "Nu puteți crea un dosar aici."
+
+#: src/View/ViewContainer.vala:413
+msgid "The network is unavailable"
+msgstr "Rețeaua nu este disponibilă"
+
+#: src/View/ViewContainer.vala:414
+msgid "A working network is needed to reach this folder"
+msgstr "Este necesar o rețea de lucru pentru a ajunge la acest dosar"
+
+#: src/View/ViewContainer.vala:417
+msgid "This Folder Does Not Belong to You"
+msgstr "Acest dosar nu este al tău"
+
+#: src/View/ViewContainer.vala:418
+msgid "You don't have permission to view this folder."
+msgstr "Nu aveți permisiunea de a vizualiza acest dosar."
+
+#: src/View/ViewContainer.vala:420
+msgid "Unable to Mount Folder"
+msgstr "Imposibil de montat dosarul"
+
+#: src/View/ViewContainer.vala:421
+msgid "Could not connect to the server for this folder."
+msgstr "Nu s-a putut conecta la server pentru acest dosar."
+
+#: src/View/ViewContainer.vala:424
+msgid "Unable to Display Folder Contents"
+msgstr "Conținutul folderelor nu poate fi afișat"
+
+#: src/View/ViewContainer.vala:425
+msgid "The operation timed out."
+msgstr "Operația a expirat."
+
+#: src/View/ViewContainer.vala:427
+msgid "Unable to Show Folder"
+msgstr "Folderul nu poate fi afișat"
+
+#: src/View/ViewContainer.vala:428
+msgid "The server for this folder could not be located."
+msgstr "Serverul pentru acest dosar nu a putut fi localizat."
+
+#: src/View/ViewContainer.vala:439
+msgid "File not Found"
+msgstr "Fișierul nu a fost găsit"
+
+#: src/View/ViewContainer.vala:440
+msgid "The file selected no longer exists."
+msgstr "Fișierul selectat nu mai există."
+
+#: src/View/Sidebar.vala:578
+msgid "Personal"
+msgstr "personal"
+
+#: src/View/Sidebar.vala:579
+msgid "Your common places and bookmarks"
+msgstr "Locuri comune și marcajele"
+
+#: src/View/Sidebar.vala:598
+msgid "Open your personal folder"
+msgstr "Deschideți dosarul personal"
+
+#: src/View/Sidebar.vala:613
+msgid "View the list of recently used files"
+msgstr "Vizualizați lista fișierelor utilizate recent"
+
+#: src/View/Sidebar.vala:639 libwidgets/Resources.vala:65
+msgid "Trash"
+msgstr "Gunoi"
+
+#: src/View/Sidebar.vala:646
+msgid "Open the Trash"
+msgstr "Deschideți Coșul de gunoi"
+
+#: src/View/Sidebar.vala:651
+msgid "Devices"
+msgstr "Dispozitive"
+
+#: src/View/Sidebar.vala:652
+msgid "Your local partitions and devices"
+msgstr "Partițiile și dispozitivele locale"
+
+#: src/View/Sidebar.vala:780 libwidgets/Resources.vala:62
+msgid "Network"
+msgstr "Reţea"
+
+#: src/View/Sidebar.vala:781
+msgid "Your network places"
+msgstr "Locurile dv. în rețea"
+
+#: src/View/Sidebar.vala:813
+msgid "Entire Network"
+msgstr "Toată rețeaua"
+
+#: src/View/Sidebar.vala:820
+msgid "Browse the contents of the network"
+msgstr "Răsfoiți conținutul rețelei"
+
+#: src/View/Sidebar.vala:823
+#, fuzzy
+msgid "Connect Server"
+msgstr "Conectare la server"
+
+#: src/View/Sidebar.vala:824
+#, fuzzy
+msgid "Connect to a network server"
+msgstr "Conectați-vă la un server de fișiere de rețea"
+
+#: src/View/Sidebar.vala:964
+#, c-format
+msgid "(%s Free of %s)"
+msgstr "(%s Gratuit %s)"
+
+#: src/View/Sidebar.vala:1458
+#, c-format
+msgid "Error mounting volume %s"
+msgstr "Eroare la montarea volumului %s"
+
+#: src/View/Sidebar.vala:1473
+#, c-format
+msgid "Unable to start %s"
+msgstr "Imposibil de pornit %s"
+
+#: src/View/Sidebar.vala:1645
+msgid "Empty _Trash"
+msgstr "Goliți _Trash"
+
+#: src/View/Slot.vala:31
+msgid "This Folder Is Empty"
+msgstr "Acest dosar este gol"
+
+#: src/View/Slot.vala:32
+msgid "Trash Is Empty"
+msgstr "Coșul de gunoi este gol"
+
+#: src/View/Slot.vala:33
+msgid "There Are No Recent Files"
+msgstr "Nu există fișiere recente"
+
+#: src/View/Slot.vala:34
+msgid "Access Denied"
+msgstr "Acces interzis"
+
+#: src/View/PrivacyModeOn.vala:28
+msgid "Privacy mode is on"
+msgstr ""
+
+#: src/View/PrivacyModeOn.vala:28
+msgid "No recent files are remembered"
+msgstr ""
+
+#: src/View/PrivacyModeOn.vala:30
+msgid "Change security settings"
+msgstr ""
+
+#: src/View/PrivacyModeOn.vala:31
+msgid "Open the system security and privacy settings app"
+msgstr ""
+
+#: src/View/PopupMenuBuilder.vala:34
+msgid "Open"
+msgstr "Deschide"
+
+#: src/View/PopupMenuBuilder.vala:38
+msgid "Open in New _Tab"
+msgstr "Deschideți într-un nou _Tab"
+
+#: src/View/PopupMenuBuilder.vala:42
+msgid "Open in New _Window"
+msgstr "Deschide intr-o nouă_ fereastră"
+
+#: src/View/PopupMenuBuilder.vala:46
+msgid "Remove"
+msgstr "Elimină"
+
+#: src/View/PopupMenuBuilder.vala:50
+msgid "Rename"
+msgstr "Redenumește"
+
+#: src/View/PopupMenuBuilder.vala:54
+msgid "_Mount"
+msgstr "_Montează"
+
+#: src/View/PopupMenuBuilder.vala:58
+msgid "_Unmount"
+msgstr "_Dezmontează"
+
+#: src/View/PopupMenuBuilder.vala:62
+msgid "_Eject"
+msgstr "_Afară"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:445
+msgid "Open in New Tab"
+msgstr "Deschideți într-o filă nouă"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:452
+msgid "Open in New Window"
+msgstr "Deschideți într-o nouă fereastră"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:491
+msgid "Open in Other Application…"
+msgstr "Deschideți cu altă aplicație …"
+
+#: src/View/Widgets/LocationBar.vala:194
+msgid "Reload this folder"
+msgstr "Reîncărcați acest dosar"
+
+#: src/View/Widgets/LocationBar.vala:198
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
+msgid "Search or Type Path"
+msgstr "Căutați sau tastați ruta"
+
+#: src/View/Widgets/LocationBar.vala:207
+msgid "Searching…"
+msgstr "În căutare…"
+
+#: src/View/Widgets/OverlayBar.vala:216
+#, c-format
+msgid "%u folders"
+msgstr "%u dosare"
+
+#: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
+#, c-format
+msgid " and %u other item (%s) selected"
+msgstr " și %u alt element (% s) selectat"
+
+#: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
+#, c-format
+msgid " and %u other items (%s) selected"
+msgstr " și %u alte elemente (%s) selectate"
+
+#: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
+msgid " selected"
+msgstr " selectat"
+
+#: src/View/Widgets/OverlayBar.vala:235
+#, c-format
+msgid "%u items selected (%s)"
+msgstr "%u elemente selectate (%s)"
+
+#: src/View/Widgets/OverlayBar.vala:279
+#, c-format
+msgid "%u sub-folder, "
+msgstr "%u sub-dosar, "
+
+#: src/View/Widgets/OverlayBar.vala:279
+#, c-format
+msgid "%u sub-folders, "
+msgstr "%u sub-dosare, "
+
+#: src/View/Widgets/OverlayBar.vala:285
+#, c-format
+msgid "%u file, "
+msgstr "%u fișier, "
+
+#: src/View/Widgets/OverlayBar.vala:285
+#, c-format
+msgid "%u files, "
+msgstr "%u fișiere, "
+
+#: src/View/Widgets/OverlayBar.vala:295
+#, c-format
+msgid "%s approx."
+msgstr "%s aproximativ."
+
+#: src/View/Widgets/OverlayBar.vala:298
+msgid "unknown size"
+msgstr "dimensiune necunoscută"
+
+#: src/View/Widgets/OverlayBar.vala:302
+#, c-format
+msgid "%u file not readable"
+msgstr "%u fișierul nu poate fi citit"
+
+#: src/View/Widgets/OverlayBar.vala:302
+#, c-format
+msgid "%u files not readable"
+msgstr "%u fișierele care nu pot fi citite"
+
+#: src/View/Widgets/PermissionButton.vala:38
+msgid "Read"
+msgstr "Citire"
+
+#: src/View/Widgets/PermissionButton.vala:42
+msgid "Write"
+msgstr "Scrie"
+
+#: src/View/Widgets/PermissionButton.vala:46
+msgid "Execute"
+msgstr "Execută"
+
+#: src/View/Widgets/TopMenu.vala:63
+#: filechooser-module/FileChooserDialog.vala:75
+msgid "Previous"
+msgstr "Anterior"
+
+#: src/View/Widgets/TopMenu.vala:68
+#: filechooser-module/FileChooserDialog.vala:79
+msgid "Next"
+msgstr "Înainte"
+
+#: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
 msgstr "FTP public"
 
-#: ../libcore/ConnectServerDialog.vala:52
+#: libcore/ConnectServerDialog.vala:52
 msgid "FTP (with login)"
 msgstr "FTP (cu autentificare)"
 
-#: ../libcore/ConnectServerDialog.vala:59
+#: libcore/ConnectServerDialog.vala:59
 msgid "SSH"
 msgstr "SSH"
 
-#: ../libcore/ConnectServerDialog.vala:65
+#: libcore/ConnectServerDialog.vala:65
 msgid "AFP (Apple Filing Protocol)"
 msgstr "AFP (Protocol Prezentare Appel)"
 
-#: ../libcore/ConnectServerDialog.vala:71
+#: libcore/ConnectServerDialog.vala:71
 msgid "Windows share"
 msgstr "Comparte windows"
 
-#: ../libcore/ConnectServerDialog.vala:77
+#: libcore/ConnectServerDialog.vala:77
 msgid "WebDAV (HTTP)"
 msgstr "Web DAV (HTTP)"
 
-#: ../libcore/ConnectServerDialog.vala:84
+#: libcore/ConnectServerDialog.vala:84
 msgid "Secure WebDAV (HTTPS)"
 msgstr "Securitate WebDAV (HTTPS)"
 
-#: ../libcore/ConnectServerDialog.vala:129
+#: libcore/ConnectServerDialog.vala:130
 msgid "Server Details"
 msgstr "Detalii server"
 
-#: ../libcore/ConnectServerDialog.vala:131
+#: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
 msgstr ""
 
-#: ../libcore/ConnectServerDialog.vala:132
+#: libcore/ConnectServerDialog.vala:135
 #, fuzzy
 msgid "Server:"
 msgstr "_Servăr:"
 
-#: ../libcore/ConnectServerDialog.vala:138
+#: libcore/ConnectServerDialog.vala:142
 #, fuzzy
 msgid "Port:"
 msgstr "_Portul:"
 
-#: ../libcore/ConnectServerDialog.vala:150
+#: libcore/ConnectServerDialog.vala:167
 msgid "Name of share on server"
 msgstr ""
 
-#: ../libcore/ConnectServerDialog.vala:151
+#: libcore/ConnectServerDialog.vala:168
 #, fuzzy
 msgid "Share:"
 msgstr "Acțiune:"
 
-#: ../libcore/ConnectServerDialog.vala:153
+#: libcore/ConnectServerDialog.vala:170
 msgid "Path of shared folder on server"
 msgstr ""
 
-#: ../libcore/ConnectServerDialog.vala:154
+#: libcore/ConnectServerDialog.vala:171
 #, fuzzy
 msgid "Folder:"
 msgstr "_Dosar:"
 
-#: ../libcore/ConnectServerDialog.vala:156
+#: libcore/ConnectServerDialog.vala:173
 msgid "User Details"
 msgstr "Detalii utilizator"
 
-#: ../libcore/ConnectServerDialog.vala:158
+#: libcore/ConnectServerDialog.vala:175
 #, fuzzy
 msgid "Name of Windows domain"
 msgstr "Fereastră nouă ca administrator"
 
-#: ../libcore/ConnectServerDialog.vala:159
+#: libcore/ConnectServerDialog.vala:176
 #, fuzzy
 msgid "Domain name:"
 msgstr "_Numele domeniului:"
 
-#: ../libcore/ConnectServerDialog.vala:161
+#: libcore/ConnectServerDialog.vala:178
 msgid "Name of user on server"
 msgstr ""
 
-#: ../libcore/ConnectServerDialog.vala:162
+#: libcore/ConnectServerDialog.vala:179
 #, fuzzy
 msgid "User name:"
 msgstr "_Nume de utilizator:"
 
-#: ../libcore/ConnectServerDialog.vala:167
+#: libcore/ConnectServerDialog.vala:184
 #, fuzzy
 msgid "Password:"
 msgstr "Parola:"
 
-#: ../libcore/ConnectServerDialog.vala:169
+#: libcore/ConnectServerDialog.vala:186
 #, fuzzy
 msgid "Remember this password"
 msgstr "_Rețineți această parolă"
 
-#: ../libcore/ConnectServerDialog.vala:172 ../libcore/DndHandler.vala:100
-#: ../libcore/FileConflictDialog.vala:188
+#: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:101
+#: libcore/FileConflictDialog.vala:189
 msgid "Cancel"
 msgstr "Anulează"
 
-#: ../libcore/ConnectServerDialog.vala:176
+#: libcore/ConnectServerDialog.vala:193
 #, fuzzy
 msgid "Connect"
 msgstr "C_onectați"
 
-#: ../libcore/ConnectServerDialog.vala:183
+#: libcore/ConnectServerDialog.vala:200
 msgid "Continue"
 msgstr "Continuați"
 
-#: ../libcore/ConnectServerDialog.vala:230
+#: libcore/ConnectServerDialog.vala:245
 #, fuzzy
 msgid "Connecting…"
 msgstr "Conectare..."
 
-#: ../libcore/ConnectServerDialog.vala:346
+#: libcore/ConnectServerDialog.vala:364
 msgid "Please verify your user details."
 msgstr "Verificați detaliile utilizatorului."
 
-#: ../libcore/DndHandler.vala:45
+#: libcore/DndHandler.vala:47
+#, c-format
 msgid "Failed to execute \"%s\""
 msgstr "Nu a reușit să se execute \"%s\""
 
-#: ../libcore/DndHandler.vala:95
+#: libcore/DndHandler.vala:96
 msgid "Move Here"
 msgstr "Mutați aici"
 
-#: ../libcore/DndHandler.vala:96
+#: libcore/DndHandler.vala:97
 msgid "Copy Here"
 msgstr "Copiați aici"
 
-#: ../libcore/DndHandler.vala:97
+#: libcore/DndHandler.vala:98
 msgid "Link Here"
 msgstr "Link aici"
 
-#: ../libcore/FileConflictDialog.vala:64
+#: libcore/FileUtils.vala:86
+#, c-format
+msgid "Could not determine original location of \"%s\" "
+msgstr "Nu s-a putut determina locația inițială a \"%s\" "
+
+#: libcore/FileUtils.vala:87
+msgid "The item cannot be restored from trash"
+msgstr "Elementul nu poate fi restabilit din coșul de gunoi"
+
+#: libcore/FileUtils.vala:429
+#, c-format
+msgid "Could not rename to '%s'"
+msgstr "Nu s-a putut redenumi '%s'"
+
+#: libcore/FileUtils.vala:518
+msgid "Today at %-H:%M"
+msgstr "Astăzi la % -H:%M"
+
+#: libcore/FileUtils.vala:520
+msgid "Today at %-I:%M %p"
+msgstr "Astăzi la %-I:%M %p"
+
+#: libcore/FileUtils.vala:526
+msgid "Yesterday at %-H:%M"
+msgstr "Ieri la %-H:%M"
+
+#: libcore/FileUtils.vala:528
+msgid "Yesterday at %-I:%M %p"
+msgstr "Ieri la %-I:%M %p"
+
+#: libcore/FileUtils.vala:535
+msgid "%A at %-H:%M"
+msgstr "%A la %-H:%M"
+
+#: libcore/FileUtils.vala:537
+msgid "%A at %-I:%M %p"
+msgstr "%A la %-I:%M %p"
+
+#: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
 msgstr "Conflict între fișiere"
 
-#: ../libcore/FileConflictDialog.vala:114
+#: libcore/FileConflictDialog.vala:115
 msgid "Original file"
 msgstr "Fișier original"
 
-#: ../libcore/FileConflictDialog.vala:132
-#: ../libcore/FileConflictDialog.vala:160
+#: libcore/FileConflictDialog.vala:133 libcore/FileConflictDialog.vala:161
 msgid "Last modified:"
 msgstr "Modificat ultima dată:"
 
-#: ../libcore/FileConflictDialog.vala:142
+#: libcore/FileConflictDialog.vala:143
 msgid "Replace with"
 msgstr "Reemplasează cu"
 
-#: ../libcore/FileConflictDialog.vala:170
+#: libcore/FileConflictDialog.vala:171
 msgid "Reset"
 msgstr "Resetare"
 
-#: ../libcore/FileConflictDialog.vala:180
+#: libcore/FileConflictDialog.vala:181
 msgid "_Select a new name for the destination"
 msgstr "_Selectați un nume nou pentru destinație"
 
-#: ../libcore/FileConflictDialog.vala:183
+#: libcore/FileConflictDialog.vala:184
 msgid "Apply this action to all files"
 msgstr "Aplicați această acțiune la toate fișierele"
 
-#: ../libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:186
+msgid "_Skip"
+msgstr "_Ocolire"
+
+#: libcore/FileConflictDialog.vala:187
 msgid "Re_name"
 msgstr "Redenumiți"
 
-#: ../libcore/FileConflictDialog.vala:190
+#: libcore/FileConflictDialog.vala:191
 msgid "Keep Newest"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:191
+#: libcore/FileConflictDialog.vala:192
 msgid "Skip if original was modified more recently"
 msgstr ""
 
-#: ../libcore/FileConflictDialog.vala:193
+#: libcore/FileConflictDialog.vala:194
 msgid "Replace"
 msgstr "Înlocuește"
 
-#: ../libcore/FileConflictDialog.vala:309
+#: libcore/FileConflictDialog.vala:310
+#, c-format
 msgid "Merge folder \"%s\"?"
 msgstr "Fuzionar carpeta \"%s \"?"
 
-#: ../libcore/FileConflictDialog.vala:310
+#: libcore/FileConflictDialog.vala:311
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
@@ -2066,288 +957,1064 @@ msgstr ""
 "Îmbinarea va cere confirmarea înainte de a înlocui orice fișiere din "
 "folderul care se află în conflict cu fișierele copiate."
 
-#: ../libcore/FileConflictDialog.vala:312
+#: libcore/FileConflictDialog.vala:313
+#, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
 msgstr "Un dosar mai vechi cu același nume există deja în \"%s \"."
 
-#: ../libcore/FileConflictDialog.vala:314
+#: libcore/FileConflictDialog.vala:315
+#, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
 msgstr "Un folder mai nou cu același nume există deja în \"%s \"."
 
-#: ../libcore/FileConflictDialog.vala:316
+#: libcore/FileConflictDialog.vala:317
+#, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
 msgstr "Un alt dosar cu același nume există deja în \"%s \"."
 
-#: ../libcore/FileConflictDialog.vala:319
+#: libcore/FileConflictDialog.vala:320
+#, c-format
 msgid "Replace folder \"%s\"?"
 msgstr "Înlocuiți dosarul \"%s \"?"
 
-#: ../libcore/FileConflictDialog.vala:320
+#: libcore/FileConflictDialog.vala:321
 msgid "Replacing it will remove all files in the folder."
 msgstr "Înlocuirea acestuia va elimina toate fișierele din dosar."
 
-#: ../libcore/FileConflictDialog.vala:321
+#: libcore/FileConflictDialog.vala:322
+#, c-format
 msgid "A folder with the same name already exists in \"%s\"."
 msgstr "Un folder cu același nume există deja în \"%s \"."
 
-#: ../libcore/FileConflictDialog.vala:324
+#: libcore/FileConflictDialog.vala:325
+#, c-format
 msgid "Replace file \"%s\"?"
 msgstr "Înlocuiți fișierul \"%s \"?"
 
-#: ../libcore/FileConflictDialog.vala:325
+#: libcore/FileConflictDialog.vala:326
 msgid "Replacing it will overwrite its content."
 msgstr "Înlocuirea acestuia va schimba conținutul."
 
-#: ../libcore/FileConflictDialog.vala:328
+#: libcore/FileConflictDialog.vala:329
+#, c-format
 msgid "An older file with the same name already exists in \"%s\"."
 msgstr "Un fișier mai vechi cu același nume există deja în \"%s \"."
 
-#: ../libcore/FileConflictDialog.vala:330
+#: libcore/FileConflictDialog.vala:331
+#, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
 msgstr "Un fișier mai nou cu același nume există deja în \"%s 1\"."
 
-#: ../libcore/FileConflictDialog.vala:332
+#: libcore/FileConflictDialog.vala:333
+#, c-format
 msgid "Another file with the same name already exists in \"%s\"."
 msgstr "Un alt fișier cu același nume există deja în \"%s 1\"."
 
-#: ../libcore/FileConflictDialog.vala:358
+#: libcore/FileConflictDialog.vala:359
 msgid "Merge"
 msgstr "Fuzionare"
 
-#: ../libcore/FileUtils.vala:84
-msgid "Could not determine original location of \"%s\" "
-msgstr "Nu s-a putut determina locația inițială a \"%s\" "
-
-#: ../libcore/FileUtils.vala:85
-msgid "The item cannot be restored from trash"
-msgstr "Elementul nu poate fi restabilit din coșul de gunoi"
-
-#: ../libcore/FileUtils.vala:438
-msgid "Could not rename to '%s'"
-msgstr "Nu s-a putut redenumi '%s'"
-
-#: ../libcore/FileUtils.vala:529
-msgid "Today at %-H:%M"
-msgstr "Astăzi la % -H:%M"
-
-#: ../libcore/FileUtils.vala:531
-msgid "Today at %-I:%M %p"
-msgstr "Astăzi la %-I:%M %p"
-
-#: ../libcore/FileUtils.vala:537
-msgid "Yesterday at %-H:%M"
-msgstr "Ieri la %-H:%M"
-
-#: ../libcore/FileUtils.vala:539
-msgid "Yesterday at %-I:%M %p"
-msgstr "Ieri la %-I:%M %p"
-
-#: ../libcore/FileUtils.vala:546
-msgid "%A at %-H:%M"
-msgstr "%A la %-H:%M"
-
-#: ../libcore/FileUtils.vala:548
-msgid "%A at %-I:%M %p"
-msgstr "%A la %-I:%M %p"
-
-#: ../libcore/ProgressInfo.vala:63 ../libcore/ProgressInfo.vala:71
-#: ../libcore/ProgressInfo.vala:79
-msgid "Preparing"
-msgstr "Pregătirea"
-
-#: ../libcore/StockDialogs.vala:51
-msgid "Show more _details"
-msgstr "Afișați mai multe _ detalii"
-
-#: ../libcore/gof-directory-async.vala:660
+#: libcore/gof-directory-async.vala:683
 msgid "Server did not respond within time limit"
 msgstr "Serverul nu a răspuns în limita de timp"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:170
-msgid "Navigate to %s"
-msgstr "Navigați la %s"
+#: libcore/ProgressInfo.vala:63 libcore/ProgressInfo.vala:71
+#: libcore/ProgressInfo.vala:79
+msgid "Preparing"
+msgstr "Pregătirea"
 
-#: ../libwidgets/Chrome/BasicBreadcrumbsEntry.vala:284
-msgid "Go to %s"
-msgstr "Mergi la %s"
+#: libcore/StockDialogs.vala:52
+msgid "Show more _details"
+msgstr "Afișați mai multe _ detalii"
 
-#: ../libwidgets/Chrome/BasicLocationBar.vala:89
+#: libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
 msgstr "Tastați o rută"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:80
-msgid "View as Grid"
-msgstr "Vizualizați ca Grilă"
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
+#, c-format
+msgid "Navigate to %s"
+msgstr "Navigați la %s"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:85
-msgid "View as List"
-msgstr "Vedeți ca Listă"
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
+#, c-format
+msgid "Go to %s"
+msgstr "Mergi la %s"
 
-#: ../libwidgets/Chrome/ViewSwitcher.vala:90
-msgid "View in Columns"
-msgstr "Vedeți în Columnă"
-
-#: ../libwidgets/Resources.vala:58
-msgid "AFP"
-msgstr "AFP"
-
-#: ../libwidgets/Resources.vala:59
-msgid "DAV"
-msgstr "DAV"
-
-#: ../libwidgets/Resources.vala:60
-msgid "DAVS"
-msgstr "DAVS"
-
-#: ../libwidgets/Resources.vala:61
-msgid "FTP"
-msgstr "FTP"
-
-#: ../libwidgets/Resources.vala:63
-msgid "SFTP"
-msgstr "SFTP"
-
-#: ../libwidgets/Resources.vala:64
-msgid "SMB"
-msgstr "smb"
-
-#: ../libwidgets/Resources.vala:66
-msgid "Recent"
-msgstr "Recente"
-
-#: ../libwidgets/Resources.vala:67
-msgid "MTP"
-msgstr "mtp"
-
-#: ../libwidgets/View/SearchResults.vala:222
+#: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
 msgstr "În acest dosar"
 
-#: ../libwidgets/View/SearchResults.vala:227
+#: libwidgets/View/SearchResults.vala:227
 msgid "Below This Folder"
 msgstr "Sub acest dosar"
 
-#: ../libwidgets/View/SearchResults.vala:232
+#: libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
 msgstr "Marcaje"
 
-#: ../libwidgets/View/SearchResults.vala:237
+#: libwidgets/View/SearchResults.vala:237
 msgid "Recently used"
 msgstr "Folosit recent"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:19
+#: libwidgets/Chrome/ViewSwitcher.vala:80
+msgid "View as Grid"
+msgstr "Vizualizați ca Grilă"
+
+#: libwidgets/Chrome/ViewSwitcher.vala:85
+msgid "View as List"
+msgstr "Vedeți ca Listă"
+
+#: libwidgets/Chrome/ViewSwitcher.vala:90
+msgid "View in Columns"
+msgstr "Vedeți în Columnă"
+
+#: libwidgets/Resources.vala:22
+msgid "Files"
+msgstr "Fișiere"
+
+#: libwidgets/Resources.vala:58
+msgid "AFP"
+msgstr "AFP"
+
+#: libwidgets/Resources.vala:59
+msgid "DAV"
+msgstr "DAV"
+
+#: libwidgets/Resources.vala:60
+msgid "DAVS"
+msgstr "DAVS"
+
+#: libwidgets/Resources.vala:61
+msgid "FTP"
+msgstr "FTP"
+
+#: libwidgets/Resources.vala:63
+msgid "SFTP"
+msgstr "SFTP"
+
+#: libwidgets/Resources.vala:64
+msgid "SMB"
+msgstr "smb"
+
+#: libwidgets/Resources.vala:66
+msgid "Recent"
+msgstr "Recente"
+
+#: libwidgets/Resources.vala:67
+msgid "MTP"
+msgstr "mtp"
+
+#: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
 msgstr "Restaurați tot"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:20
+#: plugins/pantheon-files-trash/plugin.vala:20
 msgid "Empty the Trash"
 msgstr "Golește gunoiul"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:21
+#: plugins/pantheon-files-trash/plugin.vala:21
 #, fuzzy
 msgid "Restore Selected"
 msgstr "Restaurați tot"
 
-#: ../plugins/pantheon-files-trash/plugin.vala:22
+#: plugins/pantheon-files-trash/plugin.vala:22
 #, fuzzy
 msgid "Delete Selected"
 msgstr " selectat"
 
-#: ../src/View/directory_view_popup.ui:5
-msgid "Restore from Trash"
-msgstr "Restaurați din Coșul de gunoi"
+#~ msgid "Inaccessible"
+#~ msgstr "Inaccesibil"
 
-#: ../src/View/directory_view_popup.ui:9 ../src/View/directory_view_popup.ui:44
-msgid "Delete permanently"
-msgstr "Șterge Permanent"
+#~ msgid "link to %s"
+#~ msgstr "link către %s 1"
 
-#: ../src/View/directory_view_popup.ui:16
-msgid "Open Parent Folder"
-msgstr "Deschideți dosarul părinte"
+#~ msgid "Failed to parse the desktop file: %s"
+#~ msgstr "Eroare la analizarea fișierului de pe desktop: %s 1"
 
-#: ../src/View/directory_view_popup.ui:23
-msgid "Remove from History"
-msgstr "Șterge din istoric"
+#~ msgid "Failed to parse the desktop file"
+#~ msgstr "Eroare la analizarea fișierului de pe desktop: %s 1"
 
-#: ../src/View/directory_view_popup.ui:37
-msgid "Move to Trash"
-msgstr "Aruncă la gunoi"
+#~ msgid "Failed to create command from file: %s"
+#~ msgstr "Eroare la crearea comenzii din fișier: %s 1"
 
-#: ../src/View/directory_view_popup.ui:51
-msgid "New"
-msgstr "Nou"
+#~ msgid "Unable to Launch Desktop File: %s"
+#~ msgstr "Imposibil de lansat fișierul desktop: %s 1"
 
-#: ../src/View/directory_view_popup.ui:53
-msgid "Folder"
-msgstr "Carpetă"
+#~ msgid "S_kip All"
+#~ msgstr "Sari peste tot"
 
-#: ../src/View/directory_view_popup.ui:58
-msgid "Empty File"
-msgstr "Fișier gol"
+#~ msgid "_Retry"
+#~ msgstr "_Reîncearcă"
 
-#: ../src/View/directory_view_popup.ui:67
-msgid "Show Hidden Files"
-msgstr "Arată fișierele ascunse"
+#~ msgid "Delete _All"
+#~ msgstr "Șterge tot"
 
-#: ../src/View/directory_view_popup.ui:71
-msgid "Show Remote Thumbnails"
-msgstr "Afișați miniaturile de la distanță"
+#~ msgid "_Replace"
+#~ msgstr "_Înlocuește"
 
-#: ../src/View/directory_view_popup.ui:78
-msgid "New Tab"
-msgstr "Filă nouă"
+#~ msgid "Replace _All"
+#~ msgstr "Înlocuiește_tot"
 
-#: ../src/View/directory_view_popup.ui:98
-msgid "Bookmark"
-msgstr "Semne de carte"
+#~ msgid "_Merge"
+#~ msgstr "_Fuzionează"
 
-#: ../src/View/directory_view_popup.ui:105
-msgid "Paste"
-msgstr "Lipește"
+#~ msgid "Merge _All"
+#~ msgstr "Fuzionează_tot"
 
-#: ../src/View/directory_view_popup.ui:111
-msgid "Paste Link"
-msgstr "Lipește Link"
+#~ msgid "Copy _Anyway"
+#~ msgstr "Copiază_oricum"
 
-#: ../src/View/directory_view_popup.ui:118
-msgid "Cut"
-msgstr "Taie"
+#~ msgid "%'d second"
+#~ msgid_plural "%'d seconds"
+#~ msgstr[0] "%'d secundă"
+#~ msgstr[1] "%'d secunde"
 
-#: ../src/View/directory_view_popup.ui:122
-msgid "Copy"
-msgstr "Copie"
+#~ msgid "%'d minute"
+#~ msgid_plural "%'d minutes"
+#~ msgstr[0] "%'d minut"
+#~ msgstr[1] "%'d 2 minute"
 
-#: ../src/View/directory_view_popup.ui:126
-msgid "Copy as Link"
-msgstr "Copiați ca legătură"
+#~ msgid "%'d hour"
+#~ msgid_plural "%'d hours"
+#~ msgstr[0] "%'d 1 oră"
+#~ msgstr[1] "%'d 2 ore"
 
-#: ../src/View/directory_view_popup.ui:130
-msgid "Paste into Folder"
-msgstr "Lipiți în carpetă"
+#~ msgid "approximately %'d hour"
+#~ msgid_plural "approximately %'d hours"
+#~ msgstr[0] "aproximativ %'d oră"
+#~ msgstr[1] "aproximativ %'d ore"
 
-#: ../src/View/directory_view_popup.ui:134
-msgid "Paste Link into Folder"
-msgstr "Inserați o legătură în carpetă"
+#~ msgid "Link to %s"
+#~ msgstr "Legătura la%s 1"
 
-#: ../src/View/directory_view_popup.ui:141
-msgid "Sort by"
-msgstr "Filtrează după"
+#~ msgid "Another link to %s"
+#~ msgstr "Un alt link către%s 1"
 
-#: ../src/View/directory_view_popup.ui:144
-msgid "Name"
-msgstr "Nume"
+#~ msgid "%'dst link to %s"
+#~ msgstr "%d 1 primul link la%s 2"
 
-#: ../src/View/directory_view_popup.ui:159
-msgid "Date"
-msgstr "Dată"
+#~ msgid "%'dnd link to %s"
+#~ msgstr "%'d 1nd legătura la%s 2"
 
-#: ../src/View/directory_view_popup.ui:166
-msgid "Reversed Order"
-msgstr "Ordinul inversat"
+#~ msgid "%'drd link to %s"
+#~ msgstr "%'d 1-a link către%s 2"
 
-#: ../src/View/directory_view_popup.ui:170
-msgid "Folders Before Files"
-msgstr "Carpete înainte de fișiere"
+#~ msgid "%'dth link to %s"
+#~ msgstr "%'d link-ul la 1 la%s 2"
+
+#~ msgid " (copy)"
+#~ msgstr " (copie)"
+
+#~ msgid " (another copy)"
+#~ msgstr " (o altă copie)"
+
+#~ msgid "th copy)"
+#~ msgstr "th copie)"
+
+#~ msgid "st copy)"
+#~ msgstr "st copie)"
+
+#~ msgid "nd copy)"
+#~ msgstr "nd copie)"
+
+#~ msgid "rd copy)"
+#~ msgstr "rd copie)"
+
+#~ msgid "%s (copy)%s"
+#~ msgstr "%s 1 (copie)%s 2"
+
+#~ msgid "%s (another copy)%s"
+#~ msgstr "%s 1 (altă copie)%s 2"
+
+#~ msgid "%s (%'dth copy)%s"
+#~ msgstr "%s 1 (%'d 2th copie)%s 3"
+
+#~ msgid "%s (%'dst copy)%s"
+#~ msgstr "%s 1 (%'d 2st copie)%s 3"
+
+#~ msgid "%s (%'dnd copy)%s"
+#~ msgstr "%s 1 (%'d 2nd copie)%s 3"
+
+#~ msgid "%s (%'drd copy)%s"
+#~ msgstr "%s 1 (%'d 2rd copie)%s 3"
+
+#~ msgid " ("
+#~ msgstr " ("
+
+#~ msgid " (%'d"
+#~ msgstr " (%'d 1"
+
+#~ msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+#~ msgstr "Sigur doriți să ștergeți definitiv \"% B\" din coșul de gunoi?"
+
+#~ msgid ""
+#~ "Are you sure you want to permanently delete the %'d selected item from "
+#~ "the trash?"
+#~ msgid_plural ""
+#~ "Are you sure you want to permanently delete the %'d selected items from "
+#~ "the trash?"
+#~ msgstr[0] ""
+#~ "Sigur doriți să ștergeți definitiv elementul %'d 1 selectat din coșul de "
+#~ "gunoi?"
+#~ msgstr[1] ""
+#~ "Sigur doriți să ștergeți definitiv elementul%'d 2 selectat din coșul de "
+#~ "gunoi?"
+
+#~ msgid "If you delete an item, it will be permanently lost."
+#~ msgstr "Dacă ștergeți un element, acesta va fi pierdut definitiv."
+
+#~ msgid "Permanently delete all items from Trash?"
+#~ msgstr ""
+#~ "Permiteți ștergerea definitivă a tuturor articolelor din Coșul de gunoi?"
+
+#~ msgid ""
+#~ "All items in all trash directories, including those on any mounted "
+#~ "external drives, will be permanently deleted."
+#~ msgstr ""
+#~ "Toate elementele din toate directoarele de gunoi, inclusiv cele de pe "
+#~ "orice unități externe montate, vor fi șterse definitiv."
+
+#~ msgid "Permanently delete all items from Trash on this mount?"
+#~ msgstr ""
+#~ "Ștergeți definitiv toate elementele din Coșul de gunoi pe acest suport?"
+
+#~ msgid "All items in the trash on this mount, will be permanently deleted."
+#~ msgstr ""
+#~ "Toate elementele din coșul de gunoi de pe acest suport vor fi șterse "
+#~ "definitiv."
+
+#~ msgid "Are you sure you want to permanently delete \"%B\"?"
+#~ msgstr "Sigur doriți să ștergeți definitiv \"%B\"?"
+
+#~ msgid "Are you sure you want to permanently delete the %'d selected item?"
+#~ msgid_plural ""
+#~ "Are you sure you want to permanently delete the %'d selected items?"
+#~ msgstr[0] "Sigur doriți să ștergeți definitiv elementul%'d 1 selectat?"
+#~ msgstr[1] "Sigur doriți să ștergeți definitiv elementul%'d 2 selectat?"
+
+#~ msgid "%'d file left to delete"
+#~ msgid_plural "%'d files left to delete"
+#~ msgstr[0] "%'d 1 fișier rămas pentru a fi șters"
+#~ msgstr[1] "%'d 2 fișiere rămase pentru a fi șterse"
+
+#~ msgid "Deleting files"
+#~ msgstr "Ștergerea fișierelor"
+
+#~ msgid "%T left"
+#~ msgid_plural "%T left"
+#~ msgstr[0] "%T rămas"
+#~ msgstr[1] "%T rămase"
+
+#~ msgid "Error while deleting."
+#~ msgstr "Eroare la ștergere."
+
+#~ msgid ""
+#~ "Files in the folder \"%B\" cannot be deleted because you do not have "
+#~ "permissions to see them."
+#~ msgstr ""
+#~ "Fișierele din folderul \"%B\" nu pot fi șterse deoarece nu aveți "
+#~ "permisiuni necesare."
+
+#~ msgid ""
+#~ "There was an error getting information about the files in the folder \"%B"
+#~ "\"."
+#~ msgstr ""
+#~ "A apărut o eroare la obținerea de informații despre fișierele din "
+#~ "folderul \"%B\"."
+
+#~ msgid "_Skip files"
+#~ msgstr "_Ocoliți fișiere"
+
+#~ msgid ""
+#~ "The folder \"%B\" cannot be deleted because you do not have permissions "
+#~ "to read it."
+#~ msgstr ""
+#~ "Dosarul \"%B\" nu poate fi șters deoarece nu aveți permisiuni să îl "
+#~ "citiți."
+
+#~ msgid "There was an error reading the folder \"%B\"."
+#~ msgstr "A apărut o eroare la citirea directorului \"%B\"."
+
+#~ msgid "Could not remove the folder %B."
+#~ msgstr "Nu s-a putut elimina folderul %B."
+
+#~ msgid "There was an error deleting %B."
+#~ msgstr "A apărut o eroare la ștergerea %B."
+
+#~ msgid "Moving files to trash"
+#~ msgstr "Mutarea fișierelor în coșul de gunoi"
+
+#~ msgid "%'d file left to trash"
+#~ msgid_plural "%'d files left to trash"
+#~ msgstr[0] "%'d 1 fișier rămas în coșul de gunoi"
+#~ msgstr[1] "%'d 2 fișiere rămase în coșul de gunoi"
+
+#~ msgid "Cannot move file to trash or delete it"
+#~ msgstr "Nu puteți muta fișierul în coșul de gunoi sau îl puteți șterge"
+
+#~ msgid ""
+#~ "It is not permitted to trash or delete files on a read only filesystem."
+#~ msgstr ""
+#~ "Nu este permisă ștergerea sau mutarea fișierelor dintr-un sistem de "
+#~ "fișiere numai pentru citire."
+
+#~ msgid ""
+#~ "It is not permitted to trash or delete files inside folders for which you "
+#~ "do not have write privileges."
+#~ msgstr ""
+#~ "Nu este permisă ștergerea sau mutarea fișierelor din dosare pentru care "
+#~ "nu aveți privilegii de scriere."
+
+#~ msgid ""
+#~ "It is not permitted to trash or delete folders for which you do not have "
+#~ "write privileges."
+#~ msgstr ""
+#~ "Nu este permisă ștergerea sau mutarea dosarelor pentru care nu aveți "
+#~ "privilegii de scriere."
+
+#~ msgid "Cannot move file to trash. Try to delete it immediately?"
+#~ msgstr ""
+#~ "Nu se poate muta fișierul în coșul de gunoi. Încercați să o ștergeți "
+#~ "imediat?"
+
+#~ msgid ""
+#~ "This file could not be moved to trash. See details below for further "
+#~ "information."
+#~ msgstr ""
+#~ "Acest fișier nu a putut fi mutat în coșul de gunoi. Pentru informații "
+#~ "suplimentare, consultați detaliile de mai jos."
+
+#~ msgid "Cannot move file to trash.  Try to delete it?"
+#~ msgstr ""
+#~ "Nu se poate muta fișierul în coșul de gunoi. Încercați să o ștergeți?"
+
+#~ msgid ""
+#~ "This file could not be moved to trash. You may not be able to delete it "
+#~ "either."
+#~ msgstr ""
+#~ "Acest fișier nu a putut fi mutat în coșul de gunoi. Este posibil să nu "
+#~ "puteți să o ștergeți."
+
+#~ msgid ""
+#~ "\n"
+#~ " Deleting a file removes it permanently"
+#~ msgstr ""
+#~ "\n"
+#~ " Ștergerea unui fișier îl elimină definitiv"
+
+#~ msgid "Trashing Files"
+#~ msgstr "Trasarea fișierelor"
+
+#~ msgid "Deleting Files"
+#~ msgstr "Ștergerea fișierelor"
+
+#~ msgid "Unable to eject %V"
+#~ msgstr "Imposibil de expulzat %V"
+
+#~ msgid "Unable to unmount %V"
+#~ msgstr "Imposibil de demonstrat %V"
+
+#~ msgid "Unable to mount %s"
+#~ msgstr "Nu se poate monta %s 1"
+
+#~ msgid "Preparing to copy %'d file (%S)"
+#~ msgid_plural "Preparing to copy %'d files (%S)"
+#~ msgstr[0] "Pregătirea pentru copierea fișierului %d 1 (%S 2)"
+#~ msgstr[1] "Pregătirea pentru copierea fișierelor %d 1 (%S 2)"
+
+#~ msgid "Preparing to move %'d file (%S)"
+#~ msgid_plural "Preparing to move %'d files (%S)"
+#~ msgstr[0] "Pregătirea pentru mutarea fișierului %'d 1 (%S 2)"
+#~ msgstr[1] "Pregătirea pentru mutarea fișierelor %'d 3 (%S 4)"
+
+#~ msgid "Preparing to delete %'d file (%S)"
+#~ msgid_plural "Preparing to delete %'d files (%S)"
+#~ msgstr[0] "Pregătirea pentru ștergerea fișierului %'d 1 (%S 2)"
+#~ msgstr[1] "Pregătirea pentru ștergerea fișierelor %'d 3 (%S 4)"
+
+#~ msgid "Preparing to trash %'d file"
+#~ msgid_plural "Preparing to trash %'d files"
+#~ msgstr[0] "Pregătiți pentru a încărca fișierul %'d 1"
+#~ msgstr[1] "Pregătiți pentru a încărca fișierelor %'d 2"
+
+#~ msgid "Error while copying."
+#~ msgstr "Eroare la copiere."
+
+#~ msgid "Error while moving."
+#~ msgstr "Eroare în timpul mișcării."
+
+#~ msgid "Error while moving files to trash."
+#~ msgstr "Eroare la mutarea fișierelor în coșul de gunoi."
+
+#~ msgid ""
+#~ "Files in the folder \"%B\" cannot be handled because you do not have "
+#~ "permissions to see them."
+#~ msgstr ""
+#~ "Fișierele din folderul \"%B\" nu pot fi gestionate deoarece nu aveți "
+#~ "permisiuni să le vedeți."
+
+#~ msgid ""
+#~ "The folder \"%B\" cannot be handled because you do not have permissions "
+#~ "to read it."
+#~ msgstr ""
+#~ "Dosarul \"%B\" nu poate fi manipulat deoarece nu aveți permisiune să îl "
+#~ "citiți."
+
+#~ msgid ""
+#~ "The file \"%B\" cannot be handled because you do not have permissions to "
+#~ "read it."
+#~ msgstr ""
+#~ "Fișierul \"%B\" nu poate fi gestionat deoarece nu aveți permisiuni să îl "
+#~ "citiți."
+
+#~ msgid "There was an error getting information about \"%B\"."
+#~ msgstr "A apărut o eroare la obținerea informațiilor despre \"%B\"."
+
+#~ msgid "Error while copying to \"%B\"."
+#~ msgstr "Eroare la copierea în \"%B\"."
+
+#~ msgid "You do not have permissions to access the destination folder."
+#~ msgstr "Nu aveți permisiuni de accesare a dosarului destinație."
+
+#~ msgid "There was an error getting information about the destination."
+#~ msgstr "A apărut o eroare la obținerea de informații despre destinație."
+
+#~ msgid "The destination is not a folder."
+#~ msgstr "Destinația nu este un dosar."
+
+#~ msgid ""
+#~ "There is not enough space on the destination. Try to remove files to make "
+#~ "space."
+#~ msgstr ""
+#~ "Nu există spațiu suficient în destinație. Încercați să eliminați "
+#~ "fișierele pentru a face spațiu."
+
+#~ msgid "There is %S available, but %S is required."
+#~ msgstr "Există %S 1 disponibil, dar %S 2 este necesar."
+
+#~ msgid "The destination is read-only."
+#~ msgstr "Destinația este numai pentru citire."
+
+#~ msgid "Moving \"%B\" to \"%B\""
+#~ msgstr "Mutarea \"%B\" la \"%B\""
+
+#~ msgid "Copying \"%B\" to \"%B\""
+#~ msgstr "Copiere \"%B\" la \"%B\""
+
+#~ msgid "Duplicating \"%B\""
+#~ msgstr "Duplicarea \"%B\""
+
+#~ msgid "Moving %'d file (in \"%B\") to \"%B\""
+#~ msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+#~ msgstr[0] "Mutarea fișierului %'d (în \"%B\") la \"%B\""
+#~ msgstr[1] "Mutarea fișierelor %'d (în \"%B\") la \"%B\""
+
+#~ msgid "Copying %'d file (in \"%B\") to \"%B\""
+#~ msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+#~ msgstr[0] "Copierea fișierului %'d  (în \"%B\") la \"%B\""
+#~ msgstr[1] "Copierea fișierelor %'d  (în \"%B\") la \"%B\""
+
+#~ msgid "Duplicating %'d file (in \"%B\")"
+#~ msgid_plural "Duplicating %'d files (in \"%B\")"
+#~ msgstr[0] "Duplicarea %'d fișierului (în \"%B\")"
+#~ msgstr[1] "Duplicarea %'d fișierelor (în \"%B\")"
+
+#~ msgid "Moving %'d file to \"%B\""
+#~ msgid_plural "Moving %'d files to \"%B\""
+#~ msgstr[0] "Mutarea fișierului %'d în \"%B\""
+#~ msgstr[1] "Mutarea fișierelor %'d în \"%B\""
+
+#~ msgid "Copying %'d file to \"%B\""
+#~ msgid_plural "Copying %'d files to \"%B\""
+#~ msgstr[0] "Copierea fișierului %'d în \"%B\""
+#~ msgstr[1] "Copierea fișierelor %'d în \"%B\""
+
+#~ msgid "Duplicating %'d file"
+#~ msgid_plural "Duplicating %'d files"
+#~ msgstr[0] "Duplicarea %'d 1 fișierului"
+#~ msgstr[1] "Duplicarea %'d 2 fișierelor"
+
+#~ msgid "%S of %S"
+#~ msgstr "%S 1 din %S 2"
+
+#~ msgid "%S of %S — %T left (%S/sec)"
+#~ msgid_plural "%S of %S — %T left (%S/sec)"
+#~ msgstr[0] "%S din %S — %T rămân (%S/sec)"
+#~ msgstr[1] "%S din %S — %T rămâne (%S/sec)"
+
+#~ msgid ""
+#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
+#~ "create it in the destination."
+#~ msgstr ""
+#~ "Dosarul \"%B\" nu poate fi copiat deoarece nu aveți permisiuni să-l "
+#~ "creați în locul de destinație."
+
+#~ msgid "There was an error creating the folder \"%B\"."
+#~ msgstr "A apărut o eroare la crearea directorului \"%B\"."
+
+#~ msgid ""
+#~ "Files in the folder \"%B\" cannot be copied because you do not have "
+#~ "permissions to see them."
+#~ msgstr ""
+#~ "Fișierele din folderul \"%B\" nu pot fi copiat pentru că nu aveți "
+#~ "permisiuni să le vedeți."
+
+#~ msgid ""
+#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
+#~ "read it."
+#~ msgstr ""
+#~ "Dosarul \"%B\" nu poate fi copiat deoarece nu aveți permisiuni să îl "
+#~ "citiți."
+
+#~ msgid "Error while moving \"%B\"."
+#~ msgstr "Eroare la mutarea \"%B\"."
+
+#~ msgid "Could not remove the source folder."
+#~ msgstr "Nu s-a putut elimina dosarul sursă."
+
+#~ msgid "Error while copying \"%B\"."
+#~ msgstr "Eroare la copierea \"%B\"."
+
+#~ msgid "Could not remove files from the already existing folder %F."
+#~ msgstr "Nu s-au putut elimina fișiere din dosarul existent %F 1."
+
+#~ msgid "Could not remove the already existing file %F."
+#~ msgstr "Nu s-a putut elimina fișierul deja existent %F 1."
+
+#~ msgid "You cannot move a folder into itself."
+#~ msgstr "Nu puteți muta un folder în sine."
+
+#~ msgid "You cannot copy a folder into itself."
+#~ msgstr "Nu puteți copia un dosar în sine."
+
+#~ msgid "The destination folder is inside the source folder."
+#~ msgstr "Dosarul destinație se află în interiorul directorului sursă."
+
+#~ msgid "You cannot move a file over itself."
+#~ msgstr "Nu puteți muta un fișier peste el însuși."
+
+#~ msgid "You cannot copy a file over itself."
+#~ msgstr "Nu puteți copia un fișier peste el însuși."
+
+#~ msgid "The source file would be overwritten by the destination."
+#~ msgstr "Fișierul sursă ar fi suprascris de destinație."
+
+#~ msgid "Could not remove the already existing file with the same name in %F."
+#~ msgstr ""
+#~ "Nu s-a putut elimina fișierul deja existent cu același nume în %F 1."
+
+#~ msgid "Cannot copy \"%B\" here."
+#~ msgstr "Nu se poate copia \"%B\" aici."
+
+#~ msgid "There was an error copying the file into %B."
+#~ msgstr "A apărut o eroare la copierea fișierului în %B."
+
+#~ msgid "Copying Files"
+#~ msgstr "Copierea fișierelor"
+
+#~ msgid "Preparing to move to \"%B\""
+#~ msgstr "Pregătirea pentru mutarea la \"%B\""
+
+#~ msgid "Preparing to move %'d file"
+#~ msgid_plural "Preparing to move %'d files"
+#~ msgstr[0] "Pregătirea mutării %'d 1 fișier"
+#~ msgstr[1] "Pregătirea mutării %'d 2 fișiere"
+
+#~ msgid "Error while moving \"%F\"."
+#~ msgstr "Eroare în timpul mutării \"%F1\"."
+
+#~ msgid "There was an error moving the file into %F."
+#~ msgstr "A apărut o eroare la mutarea fișierului %F 1."
+
+#~ msgid "Moving Files"
+#~ msgstr "Mutarea fișierelor"
+
+#~ msgid "Creating links in \"%B\""
+#~ msgstr "Crearea de linkuri în \"%B\""
+
+#~ msgid "Making link to %'d file"
+#~ msgid_plural "Making links to %'d files"
+#~ msgstr[0] "Realizarea link-ului %'d 1 fișier"
+#~ msgstr[1] "Realizarea link-ului %'d 2 fișiere"
+
+#~ msgid "Error while creating link to %B."
+#~ msgstr "Eroare la crearea linkului la %B."
+
+#~ msgid "Symbolic links only supported for local files"
+#~ msgstr "Conexiuni simbolice acceptate numai pentru fișierele locale"
+
+#~ msgid "The target doesn't support symbolic links."
+#~ msgstr "Ținta nu acceptă legături simbolice."
+
+#~ msgid "There was an error creating the symlink in %F."
+#~ msgstr "A apărut o eroare la crearea simbolinkului în %F1."
+
+#~ msgid "Setting permissions"
+#~ msgstr "Setați permisiunile"
+
+#~ msgid "Cannot copy into trash."
+#~ msgstr "Nu se poate copia în coșul de gunoi."
+
+#~ msgid "It is not permitted to copy files into the trash"
+#~ msgstr "Nu este permisă copierea fișierelor în coșul de gunoi"
+
+#~ msgid "untitled folder"
+#~ msgstr "un dosar fără titlu"
+
+#~ msgid "new file"
+#~ msgstr "fișier nou"
+
+#~ msgid "Error while creating directory %B."
+#~ msgstr "Eroare la crearea directorului %B."
+
+#~ msgid "Error while creating file %B."
+#~ msgstr "Eroare la crearea fișierului %B."
+
+#~ msgid "There was an error creating the directory in %F."
+#~ msgstr "A apărut o eroare la crearea directorului în %F 1."
+
+#~ msgid "Emptying Trash"
+#~ msgstr "Golirea coșului de gunoi"
+
+#~ msgid "Original location could not be determined"
+#~ msgstr "Locația originală nu a putut fi determinată"
+
+#~ msgid "Open trash folder and restore manually"
+#~ msgstr "Deschideți coșul de gunoi și restaurați carpeta manual"
+
+#~ msgid "Delete %d copied items"
+#~ msgstr "Ștergeți %d 1 elemente copiate"
+
+#~ msgid "Delete '%s'"
+#~ msgstr "Șterge '%s 1'"
+
+#~ msgid "Delete %d duplicated items"
+#~ msgstr "Șterge %d 1 articole duplicate"
+
+#~ msgid "Move %d items back to '%s'"
+#~ msgstr "Mută %d 1 articole înapoi la '%s 2'"
+
+#~ msgid "Move '%s' back to '%s'"
+#~ msgstr "Mutați '%s 1' înapoi la '%s 2'"
+
+#~ msgid "Rename '%s' as '%s'"
+#~ msgstr "Redenumiți '%s 1' ca '%s 2'"
+
+#~ msgid "Restore %d items from trash"
+#~ msgstr "Restabiliți %d 1 articole din coșul de gunoi"
+
+#~ msgid "Restore '%s' to '%s'"
+#~ msgstr "Restaurați '%s 1' la '%s 2'"
+
+#~ msgid "Move %d items back to trash"
+#~ msgstr "Deplasați %d 1 elemente înapoi în coșul de gunoi"
+
+#~ msgid "Move '%s' back to trash"
+#~ msgstr "Mutați '%s 1'  înapoi în coșul de gunoi"
+
+#~ msgid "Delete links to %d items"
+#~ msgstr "Ștergeți linkurile către articole %d 1"
+
+#~ msgid "Delete link to '%s'"
+#~ msgstr "Ștergeți linkul la '%s 1'"
+
+#~ msgid "Restore original permissions of items enclosed in '%s'"
+#~ msgstr ""
+#~ "Restabiliți permisiunile originale ale articolelor închise în secțiunea "
+#~ "'%s 1'"
+
+#~ msgid "Restore original permissions of '%s'"
+#~ msgstr "Restaurați permisiunile originale ale '%s 1'"
+
+#~ msgid "Restore group of '%s' to '%s'"
+#~ msgstr "Restaurați grupul de '%s 1' la '%s 2'"
+
+#~ msgid "Restore owner of '%s' to '%s'"
+#~ msgstr "Restaurați proprietarul '%s 1'  la '%s 2'"
+
+#~ msgid "Copy %d items to '%s'"
+#~ msgstr "Copiați %d 1 elemente în '%s 2'"
+
+#~ msgid "Copy '%s' to '%s'"
+#~ msgstr "Copiați '%s 1' în '%s 2'"
+
+#~ msgid "Duplicate of %d items in '%s'"
+#~ msgstr "Duplicatre de %d 1 articole în '%s 2'"
+
+#~ msgid "Duplicate '%s' in '%s'"
+#~ msgstr "Duplicați '%s 1' în '%s 2'"
+
+#~ msgid "Move %d items to '%s'"
+#~ msgstr "Deplasați %d 1 elemente la '%s 2'"
+
+#~ msgid "Move '%s' to '%s'"
+#~ msgstr "Deplasați '%s 1' la  '%s 2'"
+
+#~ msgid "Create new file '%s' from template "
+#~ msgstr "Creați fișierul nou '%s 1' din șablon "
+
+#~ msgid "Create an empty file '%s'"
+#~ msgstr "Creați un fișier gol '%s 1'"
+
+#~ msgid "Create a new folder '%s'"
+#~ msgstr "Creați un nou folder '%s 1'"
+
+#~ msgid "Move %d items to trash"
+#~ msgstr "Deplasați %d 1 articole în coșul de gunoi"
+
+#~ msgid "Move '%s' to trash"
+#~ msgstr "Mutați '%s 1'  în coșul de gunoi"
+
+#~ msgid "Restore '%s' from trash"
+#~ msgstr "Restabiliți '%s 1' din coșul de gunoi"
+
+#~ msgid "Create links to %d items"
+#~ msgstr "Creați linkuri către %d 1 elemente"
+
+#~ msgid "Create link to '%s'"
+#~ msgstr "Creați un link către '%s 1'"
+
+#~ msgid "Set permissions of items enclosed in '%s'"
+#~ msgstr "Setați permisiunile pentru articolele închise în '%s 1'"
+
+#~ msgid "Set permissions of '%s'"
+#~ msgstr "Setați permisiunile pentru '%s 1'"
+
+#~ msgid "Set group of '%s' to '%s'"
+#~ msgstr "Setați grupul '%s 1' la '%s 2'"
+
+#~ msgid "Set owner of '%s' to '%s'"
+#~ msgstr "Setați proprietarul '%s 1'  la '%s 2'"
+
+#~ msgid "_Undo copy of %d item"
+#~ msgid_plural "_Undo copy of %d items"
+#~ msgstr[0] "_O copie de %d 1 element"
+#~ msgstr[1] "_O copie de %d 2 elemente"
+
+#~ msgid "_Undo duplicate of %d item"
+#~ msgid_plural "_Undo duplicate of %d items"
+#~ msgstr[0] "_Un duplicat de %d 1 articol"
+#~ msgstr[1] "_Un duplicat de %d 2 articole"
+
+#~ msgid "_Undo move of %d item"
+#~ msgid_plural "_Undo move of %d items"
+#~ msgstr[0] "_Anulați mutarea %d 1 articol"
+#~ msgstr[1] "_Anulați mutarea %d 2 articole"
+
+#~ msgid "_Undo rename of %d item"
+#~ msgid_plural "_Undo rename of %d items"
+#~ msgstr[0] "_Renunțați la redenumirea %d 1 articol"
+#~ msgstr[1] "_Renunțați la redenumirea %d 2 articole"
+
+#~ msgid "_Undo creation of an empty file"
+#~ msgstr "_Anulați crearea unui fișier gol"
+
+#~ msgid "_Undo creation of a file from template"
+#~ msgstr "_Anulați crearea unui fișier din șablon"
+
+#~ msgid "_Undo creation of %d folder"
+#~ msgid_plural "_Undo creation of %d folders"
+#~ msgstr[0] "_Anulați crearea directorului %d 1"
+#~ msgstr[1] "_Anulați crearea directorului %d 2"
+
+#~ msgid "_Undo move to trash of %d item"
+#~ msgid_plural "_Undo move to trash of %d items"
+#~ msgstr[0] "_Anulați mutarea în coșul de gunoi a  %d 1 element"
+#~ msgstr[1] "_Anulați mutarea în coșul de gunoi a  %d 2 elemente"
+
+#~ msgid "_Undo restore from trash of %d item"
+#~ msgid_plural "_Undo restore from trash of %d items"
+#~ msgstr[0] "_Renunțați la restabilirea din coșul de gunoi a %d 1 articol"
+#~ msgstr[1] "_Renunțați la restabilirea din coșul de gunoi a %d 2 articole"
+
+#~ msgid "_Undo create link to %d item"
+#~ msgid_plural "_Undo create link to %d items"
+#~ msgstr[0] "_Anulați crearea linkului de %d 1 element"
+#~ msgstr[1] "_Anulați crearea linkului de %d 2 elemente"
+
+#~ msgid "_Undo delete of %d item"
+#~ msgid_plural "_Undo delete of %d items"
+#~ msgstr[0] "_Renunțați la ștergerea %d 1 articol"
+#~ msgstr[1] "_Renunțați la ștergerea %d 2 articole"
+
+#~ msgid "Undo recursive change permissions of %d item"
+#~ msgid_plural "Undo recursive change permissions of %d items"
+#~ msgstr[0] ""
+#~ "Renunțați la permisiunile de modificare recursivă din articolul %d 1"
+#~ msgstr[1] ""
+#~ "Renunțați la permisiunile de modificare recursivă din articolul %d 2"
+
+#~ msgid "Undo change permissions of %d item"
+#~ msgid_plural "Undo change permissions of %d items"
+#~ msgstr[0] "Respingerea permisiunilor de modificare a %d 1 element"
+#~ msgstr[1] "Respingerea permisiunilor de modificare a %d 2 elemente"
+
+#~ msgid "Undo change group of %d item"
+#~ msgid_plural "Undo change group of %d items"
+#~ msgstr[0] "Anulați grupul de modificări din %d 1 articol"
+#~ msgstr[1] "Anulați grupul de modificări din %d 2 articole"
+
+#~ msgid "Undo change owner of %d item"
+#~ msgid_plural "Undo change owner of %d items"
+#~ msgstr[0] "Renunțați la modificarea %d 1 element"
+#~ msgstr[1] "Renunțați la modificarea %d 2 elemente"
+
+#~ msgid "_Redo copy of %d item"
+#~ msgid_plural "_Redo copy of %d items"
+#~ msgstr[0] "_Faceți din nou copia %d 1  articol"
+#~ msgstr[1] "_Faceți din nou copia %d 2  articole"
+
+#~ msgid "_Redo duplicate of %d item"
+#~ msgid_plural "_Redo duplicate of %d items"
+#~ msgstr[0] "_Redo duplicat de %d 1 element"
+#~ msgstr[1] "_Redo duplicat de %d 2 elemente"
+
+#~ msgid "_Redo move of %d item"
+#~ msgid_plural "_Redo move of %d items"
+#~ msgstr[0] "_Mutați înapoi a %d 1 elementului"
+#~ msgstr[1] "_Mutați înapoi a %d 2 elementelor"
+
+#~ msgid "_Redo rename of %d item"
+#~ msgid_plural "_Redo rename of %d items"
+#~ msgstr[0] "_Redenumiți %d 1 element"
+#~ msgstr[1] "_Redenumiți %d 2 elemente"
+
+#~ msgid "_Redo creation of an empty file"
+#~ msgstr "_ Crearea unui fișier gol"
+
+#~ msgid "_Redo creation of a file from template"
+#~ msgstr "_Recrearea unui fișier din șablon"
+
+#~ msgid "_Redo creation of %d folder"
+#~ msgid_plural "_Redo creation of %d folders"
+#~ msgstr[0] "_Crearea de %d 1 dosar"
+#~ msgstr[1] "_Crearea de %d 2 dosare"
+
+#~ msgid "_Redo move to trash of %d item"
+#~ msgid_plural "_Redo move to trash of %d items"
+#~ msgstr[0] "_Mutați înapoi în coșul de gunoi a %d 1 element"
+#~ msgstr[1] "_Mutați înapoi în coșul de gunoi a %d 2 elemente"
+
+#~ msgid "_Redo restore from trash of %d item"
+#~ msgid_plural "_Redo restore from trash of %d items"
+#~ msgstr[0] "_Mutați restaurați din coșul de gunoi de %d 1 element"
+#~ msgstr[1] "_Mutați restaurați din coșul de gunoi de %d 2 elemente"
+
+#~ msgid "_Redo create link to %d item"
+#~ msgid_plural "_Redo create link to %d items"
+#~ msgstr[0] "_Redo crea link-ul la %d 1 element"
+#~ msgstr[1] "_Redo crea link-ul la %d 2 elemente"
+
+#~ msgid "_Redo delete of %d item"
+#~ msgid_plural "_Redo delete of %d items"
+#~ msgstr[0] "_Redo șterge %d 1 element"
+#~ msgstr[1] "_Redo șterge %d 2 elemente"
+
+#~ msgid "Redo recursive change permissions of %d item"
+#~ msgid_plural "Redo recursive change permissions of %d items"
+#~ msgstr[0] "Refaceți permisiunile de modificare recursivă a %d 1 element"
+#~ msgstr[1] "Refaceți permisiunile de modificare recursivă a %d 2 elemente"
+
+#~ msgid "Redo change permissions of %d item"
+#~ msgid_plural "Redo change permissions of %d items"
+#~ msgstr[0] "Permiteți modificarea permisiunilor de modificare a %d 1 element"
+#~ msgstr[1] ""
+#~ "Permiteți modificarea permisiunilor de modificare a %d 2 elemente"
+
+#~ msgid "Redo change group of %d item"
+#~ msgid_plural "Redo change group of %d items"
+#~ msgstr[0] "Redenumiți și schimbați grupul de %d 1 element"
+#~ msgstr[1] "Redenumiți și schimbați grupul de %d 2 elemente"
+
+#~ msgid "Redo change owner of %d item"
+#~ msgid_plural "Redo change owner of %d items"
+#~ msgstr[0] "Redenumește schimbarea proprietarului %d 1 element"
+#~ msgstr[1] "Redenumește schimbarea proprietarului %d 2 elemente"
+
+#~ msgid "Browse your files"
+#~ msgstr "Răsfoiți fișierele"
+
+#~ msgid "File Manager"
+#~ msgstr "Manager de fișiere"
+
+#~ msgid "New _Window"
+#~ msgstr "Fereastră_nouă"
+
+#~ msgid "New Window As _Administrator"
+#~ msgstr "Fereastră nouă ca administrator"
+
+#~ msgid "Restore from Trash"
+#~ msgstr "Restaurați din Coșul de gunoi"
+
+#~ msgid "Delete permanently"
+#~ msgstr "Șterge Permanent"
+
+#~ msgid "Open Parent Folder"
+#~ msgstr "Deschideți dosarul părinte"
+
+#~ msgid "Remove from History"
+#~ msgstr "Șterge din istoric"
+
+#~ msgid "Move to Trash"
+#~ msgstr "Aruncă la gunoi"
+
+#~ msgid "New"
+#~ msgstr "Nou"
+
+#~ msgid "Folder"
+#~ msgstr "Carpetă"
+
+#~ msgid "Empty File"
+#~ msgstr "Fișier gol"
+
+#~ msgid "Show Hidden Files"
+#~ msgstr "Arată fișierele ascunse"
+
+#~ msgid "Show Remote Thumbnails"
+#~ msgstr "Afișați miniaturile de la distanță"
+
+#~ msgid "New Tab"
+#~ msgstr "Filă nouă"
+
+#~ msgid "Bookmark"
+#~ msgstr "Semne de carte"
+
+#~ msgid "Paste"
+#~ msgstr "Lipește"
+
+#~ msgid "Paste Link"
+#~ msgstr "Lipește Link"
+
+#~ msgid "Cut"
+#~ msgstr "Taie"
+
+#~ msgid "Copy"
+#~ msgstr "Copie"
+
+#~ msgid "Copy as Link"
+#~ msgstr "Copiați ca legătură"
+
+#~ msgid "Paste into Folder"
+#~ msgstr "Lipiți în carpetă"
+
+#~ msgid "Paste Link into Folder"
+#~ msgstr "Inserați o legătură în carpetă"
+
+#~ msgid "Sort by"
+#~ msgstr "Filtrează după"
+
+#~ msgid "Name"
+#~ msgstr "Nume"
+
+#~ msgid "Date"
+#~ msgstr "Dată"
+
+#~ msgid "Reversed Order"
+#~ msgstr "Ordinul inversat"
+
+#~ msgid "Folders Before Files"
+#~ msgstr "Carpete înainte de fișiere"
 
 #~ msgid ""
 #~ "Can't load the supported server method list.\n"
