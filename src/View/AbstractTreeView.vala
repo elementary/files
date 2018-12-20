@@ -53,6 +53,7 @@ namespace FM {
                                         "background", FM.ListModel.ColumnID.COLOR);
 
             tree.append_column (name_column);
+            tree.set_expander_column (name_column);
         }
 
         protected void set_up_icon_renderer () {

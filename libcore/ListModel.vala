@@ -16,7 +16,18 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable {
+namespace FM {
+public class FileEntry {
+    public unowned GOF.File file;
+    public Gee.TreeMap<GOF.File, GLib.SequenceIter<FM.FileEntry?>> reverse_map;    /* map from files to GSequenceIter's */
+    public unowned GOF.Directory.Async subdirectory = null;
+    public unowned FM.FileEntry parent = null;
+    public GLib.Sequence<FM.FileEntry?> files = null;
+    public GLib.SequenceIter<FM.FileEntry?> seq {get; set;}
+    public bool loaded = false;
+}
+
+public class ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.TreeSortable {
     public enum ColumnID {
         FILE_COLUMN,
         COLOR,
@@ -59,46 +70,36 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         }
     }
 
-    private struct FileEntry {
-        unowned GOF.File file;
-        Gee.TreeMap<GOF.File, GLib.SequenceIter<FileEntry?>> reverse_map;    /* map from files to GSequenceIter's */
-        unowned GOF.Directory.Async subdirectory;
-        unowned FileEntry* parent;
-        unowned GLib.Sequence<FileEntry?> files;
-        GLib.SequenceIter<FileEntry?> seq;
-        bool loaded;
-    }
-
     public signal void subdirectory_unloaded (GOF.Directory.Async directory);
 
     public bool has_child { get; set; default = false; }
     public int icon_size { get; set; default = 32; }
 
-    private GLib.Sequence<FileEntry?> files;
-    private Gee.TreeMap<GOF.File, GLib.SequenceIter<FileEntry?>> top_reverse_map;
-    private Gee.TreeMap<GOF.Directory.Async, GLib.SequenceIter<FileEntry?>> directory_reverse_map;
+    private GLib.Sequence<FM.FileEntry?> files;
+    private Gee.TreeMap<GOF.File, GLib.SequenceIter<FM.FileEntry?>> top_reverse_map;
+    private Gee.TreeMap<GOF.Directory.Async, GLib.SequenceIter<FM.FileEntry?>> directory_reverse_map;
     private int stamp;
     private bool sort_directories_first = true;
     private ColumnID sort_id;
     private Gtk.SortType order;
 
     construct {
-        files = new GLib.Sequence<FileEntry?> ();
-        top_reverse_map = new Gee.TreeMap<GOF.File, GLib.SequenceIter<FileEntry?>> ();
-        directory_reverse_map = new Gee.TreeMap<GOF.Directory.Async, GLib.SequenceIter<FileEntry?>> ();
+        files = new GLib.Sequence<FM.FileEntry?> ();
+        top_reverse_map = new Gee.TreeMap<GOF.File, GLib.SequenceIter<FM.FileEntry?>> ();
+        directory_reverse_map = new Gee.TreeMap<GOF.Directory.Async, GLib.SequenceIter<FM.FileEntry?>> ();
         stamp = (int)GLib.Random.next_int ();
         sort_id = ColumnID.FILENAME;
         order = Gtk.SortType.ASCENDING;
     }
 
-    private GLib.SequenceIter<FileEntry?> lookup_file (GOF.File file, GOF.Directory.Async? directory = null) {
-        GLib.SequenceIter<FileEntry?> parent_seq = null;
+    private GLib.SequenceIter<FM.FileEntry?> lookup_file (GOF.File file, GOF.Directory.Async? directory = null) {
+        GLib.SequenceIter<FM.FileEntry?> parent_seq = null;
         if (directory != null) {
             parent_seq = directory_reverse_map.get (directory);
         }
 
         if (parent_seq != null) {
-            unowned FileEntry entry = parent_seq.get ();
+            unowned FM.FileEntry entry = parent_seq.get ();
             return entry.reverse_map.get (file);
         } else {
             return top_reverse_map.get (file);
@@ -126,12 +127,12 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         seq.sort_changed (file_entry_compare_func);
         var pos_after = seq.get_position ();
 
-        unowned GLib.Sequence<FileEntry?> current_files = files;
+        unowned GLib.Sequence<FM.FileEntry?> current_files = files;
         /* The file moved, we need to send rows_reordered */
         if (pos_before != pos_after) {
             Gtk.TreeIter? iter = null;
             Gtk.TreePath parent_path = null;
-            unowned FileEntry* parent_file_entry = seq.get ().parent;
+            unowned FM.FileEntry parent_file_entry = seq.get ().parent;
             if (parent_file_entry == null) {
                 parent_path = new Gtk.TreePath ();
             } else {
@@ -171,7 +172,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         }
 
         foreach (var value in directory_reverse_map.values) {
-            unowned FileEntry dir_file_entry = value.get ();
+            unowned FM.FileEntry dir_file_entry = value.get ();
             var dir_seq = dir_file_entry.reverse_map.get (file);
             if (dir_seq != null) {
                 sequenceiter_to_treeiter (dir_seq, out iter);
@@ -196,7 +197,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         GOF.File? file = null;
         Gtk.TreeIter? iter;
         if (get_iter (out iter, path)) {
-            get (iter, ColumnID.FILE_COLUMN, ref file);
+            @get (iter, ColumnID.FILE_COLUMN, out file);
         }
 
         return file;
@@ -204,7 +205,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
 
     public GOF.File? file_for_iter (Gtk.TreeIter iter) {
         GOF.File? file = null;
-        get (iter, ColumnID.FILE_COLUMN, ref file);
+        get (iter, ColumnID.FILE_COLUMN, out file);
         return file;
     }
 
@@ -217,7 +218,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
             return false;
         }
 
-        unowned FileEntry file_entry = ((GLib.SequenceIter<FileEntry?>)iter.user_data).get ();
+        unowned FM.FileEntry file_entry = ((GLib.SequenceIter<FM.FileEntry?>)iter.user_data).get ();
         directory = file_entry.subdirectory;
         file = file_entry.file;
         return true;
@@ -231,7 +232,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
             return false;
         }
 
-        unowned FileEntry file_entry = ((GLib.SequenceIter<FileEntry?>)iter.user_data).get ();
+        unowned FM.FileEntry file_entry = ((GLib.SequenceIter<FM.FileEntry?>)iter.user_data).get ();
         if (file_entry.file == null || file_entry.subdirectory != null) {
             return false;
         }
@@ -239,12 +240,12 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         dir = GOF.Directory.Async.from_file (file_entry.file);
         file_entry.subdirectory = dir;
         directory_reverse_map.set (dir, file_entry.seq);
-        file_entry.reverse_map = new Gee.TreeMap<GOF.File, GLib.SequenceIter<FileEntry?>> ();
+        file_entry.reverse_map = new Gee.TreeMap<GOF.File, GLib.SequenceIter<FM.FileEntry?>> ();
         return true;
     }
 
     public bool unload_subdirectory (Gtk.TreeIter iter) {
-        unowned FileEntry file_entry = ((GLib.SequenceIter<FileEntry?>)iter.user_data).get ();
+        unowned FM.FileEntry file_entry = ((GLib.SequenceIter<FM.FileEntry?>)iter.user_data).get ();
         var subdir = file_entry.subdirectory;
         if (file_entry.file == null || subdir == null) {
             return false;
@@ -257,7 +258,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         /* Remove all children */
         while (file_entry.files.get_length () > 0) {
             var child_seq = file_entry.files.get_begin_iter ();
-            unowned FileEntry child_file_entry = child_seq.get ();
+            unowned FM.FileEntry child_file_entry = child_seq.get ();
             if (child_file_entry.file == null) {
                 /* Don't delete the dummy node */
                 break;
@@ -274,9 +275,9 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
 
     public bool add_file (GOF.File file, GOF.Directory.Async dir) {
         var parent_seq = directory_reverse_map.get (dir);
-        GLib.SequenceIter<FileEntry?> seq = null;
+        GLib.SequenceIter<FM.FileEntry?> seq = null;
         if (parent_seq != null) {
-            unowned FileEntry file_entry = parent_seq.get ();
+            unowned FM.FileEntry file_entry = parent_seq.get ();
             seq = file_entry.reverse_map.get (file);
         } else {
             seq = top_reverse_map.get (file);
@@ -286,16 +287,16 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
             return false;
         }
 
-        var file_entry = FileEntry ();
+        var file_entry = new FM.FileEntry ();
         file_entry.file = file;
 
-        unowned GLib.Sequence<FileEntry?> current_files = files;
+        unowned GLib.Sequence<FM.FileEntry?> current_files = files;
         var parent_hash = top_reverse_map;
         var replaced_dummy = false;
 
         if (parent_seq != null) {
-            unowned FileEntry parent_entry = parent_seq.get ();
-            file_entry.parent = &parent_entry;
+            unowned FM.FileEntry parent_entry = parent_seq.get ();
+            file_entry.parent = parent_entry;
             /* At this point we set loaded. Either we saw
              * "done" and ignored it waiting for this, or we do this
              * earlier, but then we replace the dummy row anyway,
@@ -306,7 +307,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
             /* maybe the dummy row */
             if (current_files.get_length () == 1) {
                 var dummy_seq = current_files.get_iter_at_pos (0);
-                unowned FileEntry dummy_entry = dummy_seq.get ();
+                unowned FM.FileEntry dummy_entry = dummy_seq.get ();
                 /* it is the dummy row  - replace it */
                 if (dummy_entry.file == null) {
                     dummy_seq.remove ();
@@ -330,8 +331,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         }
 
         if (file.is_folder ()) {
-            var file_entry_files = new GLib.Sequence<FileEntry?> ();
-            file_entry.files = file_entry_files;
+            file_entry.files = new GLib.Sequence<FM.FileEntry?> ();
             add_dummy_row (file_entry);
             row_has_child_toggled (path, iter);
         }
@@ -351,13 +351,13 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         return_val_if_fail (iter.stamp == stamp, null);
 
         var path = get_path (iter);
-        var seq = (GLib.SequenceIter<FileEntry?>)iter.user_data;
-        unowned FileEntry file_entry = seq.get ();
-        unowned GLib.Sequence<FileEntry?> entry_files = file_entry.files;
+        var seq = (GLib.SequenceIter<FM.FileEntry?>)iter.user_data;
+        unowned FM.FileEntry file_entry = seq.get ();
+        unowned GLib.Sequence<FM.FileEntry?> entry_files = file_entry.files;
         if (entry_files != null) {
             while (entry_files.get_length () > 0) {
                 var child_seq = entry_files.get_begin_iter ();
-                unowned FileEntry child_file_entry = child_seq.get ();
+                unowned FM.FileEntry child_file_entry = child_seq.get ();
                 if (child_file_entry.file != null) {
                     remove_file (child_file_entry.file, file_entry.subdirectory);
                 } else {
@@ -368,7 +368,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
             }
         }
 
-        unowned FileEntry* parent = file_entry.parent;
+        unowned FM.FileEntry parent = file_entry.parent;
         var file_entry_file = file_entry.file;
         if (file_entry_file != null) {
             if (parent != null) {
@@ -383,7 +383,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
             /* We need to do this before removing the last file to avoid
              * collapsing the row.
              */
-             add_dummy_row (*parent);
+             add_dummy_row (parent);
         }
 
         var subdir = file_entry.subdirectory;
@@ -406,12 +406,12 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         }
     }
 
-    private void clear_directory (GLib.Sequence<FileEntry?> dir_files) {
+    private void clear_directory (GLib.Sequence<FM.FileEntry?> dir_files) {
         var iter = Gtk.TreeIter ();
         while (dir_files.get_length () > 0) {
             var seq = dir_files.get_begin_iter ();
 
-            unowned FileEntry file_entry = seq.get ();
+            unowned FM.FileEntry file_entry = seq.get ();
             if (file_entry.files != null) {
                 clear_directory (file_entry.files);
             }
@@ -445,7 +445,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         }
     }
 
-    private void sequenceiter_to_treeiter (GLib.SequenceIter<FileEntry?> seq, out Gtk.TreeIter iter) {
+    private void sequenceiter_to_treeiter (GLib.SequenceIter<FM.FileEntry?> seq, out Gtk.TreeIter iter) {
         assert (!seq.is_end ());
         iter = Gtk.TreeIter ();
         iter.stamp = stamp;
@@ -453,11 +453,11 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
     }
 
     public bool get_iter (out Gtk.TreeIter iter, Gtk.TreePath path) {
-        unowned GLib.Sequence<FileEntry?> current_files = files;
+        unowned GLib.Sequence<FM.FileEntry?> current_files = files;
         var indices = path.get_indices ();
         var depth = path.get_depth ();
         iter = Gtk.TreeIter ();
-        GLib.SequenceIter<FileEntry?> seq = null;
+        GLib.SequenceIter<FM.FileEntry?> seq = null;
         for (int d = 0; d < depth; d++) {
             int i = indices[d];
 
@@ -477,7 +477,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         return_val_if_fail (iter.stamp == stamp, null);
 
         var path = new Gtk.TreePath ();
-        var seq = (GLib.SequenceIter<FileEntry?>)iter.user_data;
+        var seq = (GLib.SequenceIter<FM.FileEntry?>)iter.user_data;
 
         if (seq.is_end ()) {
             return null;
@@ -485,7 +485,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
 
         while (seq != null) {
             path.prepend_index (seq.get_position ());
-            unowned FileEntry file_entry = seq.get ();
+            unowned FM.FileEntry file_entry = seq.get ();
             if (file_entry.parent != null) {
                 seq = file_entry.parent.seq;
             } else {
@@ -498,12 +498,11 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
 
     public void get_value (Gtk.TreeIter iter, int column, out Value value) {
         assert (iter.stamp == stamp);
-        var seq = (GLib.SequenceIter<FileEntry?>)iter.user_data;
+        var seq = (GLib.SequenceIter<FM.FileEntry?>)iter.user_data;
         var file = seq.get ().file as GOF.File;
 
         return_if_fail (!seq.is_end ());
         return_if_fail (file != null);
-
         switch (column) {
             case ColumnID.FILE_COLUMN:
                 value = Value (typeof (GOF.File));
@@ -544,9 +543,9 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
     }
 
     public bool iter_children (out Gtk.TreeIter iter, Gtk.TreeIter? parent) {
-        unowned GLib.Sequence<FileEntry?> current_files = files;
+        unowned GLib.Sequence<FM.FileEntry?> current_files = files;
         if (parent != null) {
-            current_files = ((GLib.SequenceIter<FileEntry?>) parent.user_data).get ().files;
+            current_files = ((GLib.SequenceIter<FM.FileEntry?>) parent.user_data).get ().files;
         }
 
         iter = Gtk.TreeIter ();
@@ -565,14 +564,16 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
             return false;
         }
 
-        unowned FileEntry file_entry = ((GLib.SequenceIter<FileEntry?>)iter.user_data).get ();
-        return (file_entry.files != null && file_entry.files.get_length () > 0);
+        unowned FM.FileEntry file_entry = ((GLib.SequenceIter<FM.FileEntry?>)(iter.user_data)).get ();
+
+        bool has_child = (file_entry.files != null && file_entry.files.get_length () > 0);
+        return has_child;
     }
 
     public int iter_n_children (Gtk.TreeIter? iter) {
-        unowned GLib.Sequence<FileEntry?> current_files = files;
+        unowned GLib.Sequence<FM.FileEntry?> current_files = files;
         if (iter != null) {
-            current_files = ((GLib.SequenceIter<FileEntry?>) iter.user_data).get ().files;
+            current_files = ((GLib.SequenceIter<FM.FileEntry?>) iter.user_data).get ().files;
         }
 
         return current_files.get_length ();
@@ -580,16 +581,16 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
 
     public bool iter_next (ref Gtk.TreeIter iter) {
         return_val_if_fail (iter.stamp == stamp, false);
-        iter.user_data = ((GLib.SequenceIter<FileEntry?>)iter.user_data).next ();
+        iter.user_data = ((GLib.SequenceIter<FM.FileEntry?>)iter.user_data).next ();
 
-        return !((GLib.SequenceIter<FileEntry?>)iter.user_data).is_end ();
+        return !((GLib.SequenceIter<FM.FileEntry?>)iter.user_data).is_end ();
     }
 
     public bool iter_nth_child (out Gtk.TreeIter iter, Gtk.TreeIter? parent, int n) {
         iter = Gtk.TreeIter ();
-        unowned GLib.Sequence<FileEntry?> current_files = files;
+        unowned GLib.Sequence<FM.FileEntry?> current_files = files;
         if (parent != null) {
-            current_files = ((GLib.SequenceIter<FileEntry?>) parent.user_data).get ().files;
+            current_files = ((GLib.SequenceIter<FM.FileEntry?>) parent.user_data).get ().files;
         }
 
         var child  = current_files.get_iter_at_pos (n);
@@ -604,7 +605,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
 
     public bool iter_parent (out Gtk.TreeIter iter, Gtk.TreeIter child) {
         iter = Gtk.TreeIter ();
-        unowned FileEntry file_entry = ((GLib.SequenceIter<FileEntry?>) child.user_data).get ();
+        unowned FM.FileEntry file_entry = ((GLib.SequenceIter<FM.FileEntry?>) child.user_data).get ();
         if (file_entry.parent == null) {
             return false;
         }
@@ -633,11 +634,11 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
     }
 
     public void set_default_sort_func (owned Gtk.TreeIterCompareFunc sort_func) {
-        
+
     }
 
     public void set_sort_func (int sort_column_id, owned Gtk.TreeIterCompareFunc sort_func) {
-        
+
     }
 
     public void set_sort_column_id (int sort_column_id, Gtk.SortType order) {
@@ -648,7 +649,7 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
     }
 
     [CCode (instance_pos = -1)]
-    private int file_entry_compare_func (FileEntry? file_entry1, FileEntry? file_entry2) {
+    private int file_entry_compare_func (FM.FileEntry? file_entry1, FM.FileEntry? file_entry2) {
         var file1 = file_entry1.file;
         var file2 = file_entry2.file;
         if (file1 != null && file2 != null &&
@@ -661,10 +662,11 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         }
     }
 
-    private void add_dummy_row (FileEntry parent_entry) {
-        var dummy_file_entry = FileEntry ();
-        dummy_file_entry.parent = &parent_entry;
-        dummy_file_entry.seq = parent_entry.files.insert_sorted ((owned)dummy_file_entry, file_entry_compare_func);
+    private void add_dummy_row (FM.FileEntry parent_entry) {
+        var dummy_file_entry = new FM.FileEntry ();
+        dummy_file_entry.parent = parent_entry;
+        dummy_file_entry.seq = parent_entry.files.insert_sorted (dummy_file_entry, file_entry_compare_func);
+
         var iter = Gtk.TreeIter ();
         iter.stamp = stamp;
         iter.user_data = dummy_file_entry.seq;
@@ -672,17 +674,17 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         row_inserted (get_path (iter), iter);
     }
 
-    private void sort_file_entries (GLib.Sequence<FileEntry?> current_files, Gtk.TreePath path) {
+    private void sort_file_entries (GLib.Sequence<FM.FileEntry?> current_files, Gtk.TreePath path) {
         var length = current_files.get_length ();
         if (length < 1) {
             return;
         }
 
         /* generate old order of GSequenceIter's */
-        GLib.SequenceIter<FileEntry?>[] old_order = new GLib.SequenceIter<FileEntry?>[length];
+        GLib.SequenceIter<FM.FileEntry?>[] old_order = new GLib.SequenceIter<FM.FileEntry?>[length];
         for (int i = 0; i < length; i++) {
             var seq = current_files.get_iter_at_pos (i);
-            unowned FileEntry file_entry = seq.get ();
+            unowned FM.FileEntry file_entry = seq.get ();
             if (file_entry.files != null) {
                 path.append_index (i);
                 sort_file_entries (file_entry.files, path);
@@ -714,4 +716,5 @@ public class FM.ListModel : GLib.Object, Gtk.TreeModel, Gtk.TreeDragDest, Gtk.Tr
         var path = new Gtk.TreePath ();
         sort_file_entries (files, path);
     }
+}
 }
