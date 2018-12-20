@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
-"PO-Revision-Date: 2018-10-30 15:08+0000\n"
-"Last-Translator: Marco De Paolini <marco.depaolini@gmail.com>\n"
+"PO-Revision-Date: 2018-12-20 21:50+0000\n"
+"Last-Translator: Fabio Zaramella <fabiozaramella@hotmail.it>\n"
 "Language-Team: Italian <https://weblate.elementary.io/projects/files/files/"
 "it/>\n"
 "Language: it\n"
@@ -25,9 +25,8 @@ msgid "Show the version of the program"
 msgstr "Mostra la versione del programma"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Apri uno o più indirizzi URI in una nuova scheda"
+msgstr "Apri uno o più indirizzi URI, ognuno in una nuova scheda"
 
 #: src/Application.vala:124
 msgid "New Window"
@@ -344,9 +343,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Impossibile aprire questo file"
+msgstr "Impossibile eseguire questo file"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
@@ -567,19 +565,19 @@ msgstr "Accesso negato"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "La modalità Privacy è attiva"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "I file utilizzati di recente non vengono memorizzati"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Cambia le impostazioni sulla sicurezza"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Apri la voce sicurezza e privacy delle impostazioni di sistema"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
