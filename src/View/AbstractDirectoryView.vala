@@ -894,6 +894,7 @@ namespace FM {
         }
 
         private void add_file (GOF.File file, GOF.Directory.Async dir) {
+            assert (file != null);
             model.add_file (file, dir);
 
             if (select_added_files) {

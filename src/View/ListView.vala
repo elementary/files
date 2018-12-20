@@ -41,6 +41,8 @@ namespace FM {
         private void connect_additional_signals () {
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
+            tree.model.row_inserted.connect ((path,iter) => {
+            });
             model.subdirectory_unloaded.connect (on_model_subdirectory_unloaded);
         }
 
