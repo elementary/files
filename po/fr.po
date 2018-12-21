@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-11-16 08:39+0000\n"
+"PO-Revision-Date: 2018-12-21 08:21+0000\n"
 "Last-Translator: Corentin Noël <corentin@elementary.io>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/files/files/fr/"
 ">\n"
@@ -26,7 +26,6 @@ msgid "Show the version of the program"
 msgstr "Afficher la version du programme"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Ouvrir le(s) uri(s) dans un nouvel onglet"
 
@@ -130,14 +129,14 @@ msgid "Permissions"
 msgstr "Permissions"
 
 #: src/Dialogs/PropertiesWindow.vala:244
-#, fuzzy, c-format
+#, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
-"%s fichier ne peut être lu faute de permission suffisante ou d'autres "
+"%i fichier ne peut être lu faute de permission suffisante ou d'autres "
 "erreurs."
 msgstr[1] ""
-"%s fichiers ne peuvent être lus faute de permission suffisante ou d'autres "
+"%i fichiers ne peuvent être lus faute de permission suffisante ou d'autres "
 "erreurs."
 
 #: src/Dialogs/PropertiesWindow.vala:248
@@ -347,9 +346,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Ce fichier ne peut pas être ouvert"
+msgstr "Ce fichier ne peut pas être exécuté"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
@@ -570,19 +568,19 @@ msgstr "Accès refusé"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Le mode de protection de la vie privée est activé"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Aucun fichier récent ne sera stocké"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Modifier les paramètres de sécurité"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Ouvrir les paramètres de sécurité et vie privée"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
