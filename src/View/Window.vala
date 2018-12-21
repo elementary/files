@@ -109,10 +109,6 @@ namespace Marlin.View {
 
                 var state = (Marlin.WindowState)(Preferences.settings.get_enum ("window-state"));
 
-                GOF.Preferences.get_default ().notify["remember-history"].connect (() => {
-                    save_tabs (); /* Clear setting info now in case Files does not close properly */
-                });
-
                 if (state.is_maximized ()) {
                     maximize ();
                 } else {
@@ -903,20 +899,12 @@ namespace Marlin.View {
 
                 Preferences.settings.set_value ("tab-info-list", vb.end ());
                 Preferences.settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
-            } else {
-                Preferences.settings.set_value ("tab-info-list", vb.end ());
-                Preferences.settings.set_int ("active-tab-position", 0);
-            }
+            } /* Do not clear existing settings if history is off */
         }
 
         public uint restore_tabs () {
-            if (is_first_window && !GOF.Preferences.get_default ().remember_history) {
-                save_tabs ();  /* clears history from settings */
-                return 0;
-            }
-
-            /* Do not restore tabs more than once */
-            if (tabs_restored || !is_first_window) {
+            /* Do not restore tabs if history off nor more than once */
+            if (!GOF.Preferences.get_default ().remember_history || tabs_restored || !is_first_window) {
                 return 0;
             } else {
                 tabs_restored = true;
