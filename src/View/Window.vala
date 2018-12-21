@@ -109,6 +109,10 @@ namespace Marlin.View {
 
                 var state = (Marlin.WindowState)(Preferences.settings.get_enum ("window-state"));
 
+                GOF.Preferences.get_default ().notify["remember-history"].connect (() => {
+                    save_tabs (); /* Clear setting info now in case Files does not close properly */
+                });
+
                 if (state.is_maximized ()) {
                     maximize ();
                 } else {
@@ -880,29 +884,38 @@ namespace Marlin.View {
 
         private void save_tabs () {
             VariantBuilder vb = new VariantBuilder (new VariantType ("a(uss)"));
+            if (GOF.Preferences.get_default ().remember_history) {
+                foreach (var tab in tabs.tabs) {
+                    assert (tab != null);
+                    var view_container = tab.page as ViewContainer;
 
-            foreach (var tab in tabs.tabs) {
-                assert (tab != null);
-                var view_container = tab.page as ViewContainer;
+                    /* Do not save if "File does not exist" or "Does not belong to you" */
+                    if (!view_container.can_show_folder) {
+                        continue;
+                    }
 
-                /* Do not save if "File does not exist" or "Does not belong to you" */
-                if (!view_container.can_show_folder) {
-                    continue;
+                    /* ViewContainer is responsible for returning valid uris */
+                    vb.add ("(uss)",
+                            view_container.view_mode,
+                            view_container.get_root_uri () ?? PF.UserUtils.get_real_user_home (),
+                            view_container.get_tip_uri () ?? ""
+                           );
                 }
 
-                /* ViewContainer is responsible for returning valid uris */
-                vb.add ("(uss)",
-                        view_container.view_mode,
-                        view_container.get_root_uri () ?? PF.UserUtils.get_real_user_home (),
-                        view_container.get_tip_uri () ?? ""
-                       );
+                Preferences.settings.set_value ("tab-info-list", vb.end ());
+                Preferences.settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
+            } else {
+                Preferences.settings.set_value ("tab-info-list", vb.end ());
+                Preferences.settings.set_int ("active-tab-position", 0);
             }
-
-            Preferences.settings.set_value ("tab-info-list", vb.end ());
-            Preferences.settings.set_int ("active-tab-position", tabs.get_tab_position (tabs.current));
         }
 
         public uint restore_tabs () {
+            if (is_first_window && !GOF.Preferences.get_default ().remember_history) {
+                save_tabs ();  /* clears history from settings */
+                return 0;
+            }
+
             /* Do not restore tabs more than once */
             if (tabs_restored || !is_first_window) {
                 return 0;
