@@ -6,45 +6,55 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2017-08-16 12:18+0000\n"
 "Last-Translator: gogogogi <trebelnik2@gmail.com>\n"
-"Language-Team: Croatian "
-"<https://weblate.elementary.io/projects/files/extra/hr/>\n"
+"Language-Team: Croatian <https://weblate.elementary.io/projects/files/extra/"
+"hr/>\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
-"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Datoteke"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Pregledaj svoje datoteke"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "mapa;upravitelj;istraži;disk;datotečni sustav;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Upravitelj datoteka"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Novi prozor"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Novi prozor kao Administrator"
 
-msgid "About Files"
-msgstr "O Datotekama"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Pregledajte i upravljajte datotekama"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -57,75 +67,65 @@ msgstr ""
 "datotekama lokalno, na vanjskim uređajima ili udaljeno putem FTP, SFTP, AFP, "
 "Webdava, ili Windows dijeljenja."
 
-msgid "Improved networking support"
-msgstr "Poboljšana mrežna podrška"
-
-msgid "Correct window geometry when snapping to left or right"
-msgstr "Ispravljena geometrija prozora pri poravnanju u lijevo ili u desno"
-
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
 msgstr ""
 
-msgid "Switching input language cancels actions"
-msgstr ""
+#~ msgid "About Files"
+#~ msgstr "O Datotekama"
 
-msgid "Various crash fixes"
-msgstr "Razni popravci rušenja"
+#~ msgid "Improved networking support"
+#~ msgstr "Poboljšana mrežna podrška"
 
-msgid "New translations"
-msgstr "Novi prijevodi"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "Ispravljena geometrija prozora pri poravnanju u lijevo ili u desno"
 
-msgid "Minor bug fixes"
-msgstr "Manji popravci grešaka"
+#~ msgid "Various crash fixes"
+#~ msgstr "Razni popravci rušenja"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Web preglednici poput Firefoxa sada pamte posljednju korištenu mapu "
-"preuzimanja"
+#~ msgid "New translations"
+#~ msgstr "Novi prijevodi"
 
-msgid "Remember preferred zoom level"
-msgstr ""
+#~ msgid "Minor bug fixes"
+#~ msgstr "Manji popravci grešaka"
 
-msgid "Improved input method support"
-msgstr ""
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Web preglednici poput Firefoxa sada pamte posljednju korištenu mapu "
+#~ "preuzimanja"
 
-msgid "910x640 minimum window size"
-msgstr "910x640 najmanja veličina prozora"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "910x640 najmanja veličina prozora"
 
-msgid "Security fixes"
-msgstr "Sigurnosni popravci"
+#~ msgid "Security fixes"
+#~ msgstr "Sigurnosni popravci"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Omogući povlačenje i ispuštanje kartica između prozora"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "Omogući povlačenje i ispuštanje kartica između prozora"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
+#~ msgid "Improved translation support"
+#~ msgstr "Poboljšana podrška prijevoda"
 
-msgid "Improved translation support"
-msgstr "Poboljšana podrška prijevoda"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Popravi datume izdanja podataka palikacije"
 
-msgid "Fix appdata release dates"
-msgstr "Popravi datume izdanja podataka palikacije"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Poboljšaj otvaranje datoteka putem Samba dijeljenja"
 
-msgid "Improve file opening over Samba shares"
-msgstr "Poboljšaj otvaranje datoteka putem Samba dijeljenja"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "Popravi rušenje pri vraćanju stavki iz smeća"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Popravi rušenje pri vraćanju stavki iz smeća"
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr ""
+#~ "Poboljšaj izreži/kopiraj/zalijepi osjetljivost u sadržajnom izborniku"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
-"Poboljšaj izreži/kopiraj/zalijepi osjetljivost u sadržajnom izborniku"
+#~ msgid "Translation updates"
+#~ msgstr "Nadopune prijevoda"
 
-msgid "Translation updates"
-msgstr "Nadopune prijevoda"
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "Pokreni Pantheon datoteke kao Administrator"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "Pokreni Pantheon datoteke kao Administrator"
-
-msgid "Authentication is required to run Files as Administrator"
-msgstr "Potrebna je ovjera za pokretanje Datoteka kao Administratora"
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr "Potrebna je ovjera za pokretanje Datoteka kao Administratora"
