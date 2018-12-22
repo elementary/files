@@ -6,41 +6,52 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2017-01-24 09:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
+"Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Fișiere"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr ""
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr ""
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr ""
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr ""
 
-msgid "About Files"
-msgstr ""
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Răsfoieşte şi gestionează fişiere şi dosare"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -53,73 +64,37 @@ msgstr ""
 "locale, pe un disc extern sau la distanţa folosind FTP, SFTP, AFP, Webdav, "
 "sau partajare Windows."
 
-msgid "Improved networking support"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
 msgstr ""
 
-msgid "Correct window geometry when snapping to left or right"
-msgstr ""
+#~ msgid "Various crash fixes"
+#~ msgstr "Diferite remedieri de avarie"
 
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
-msgstr ""
+#~ msgid "New translations"
+#~ msgstr "Traduceri noi"
 
-msgid "Switching input language cancels actions"
-msgstr ""
+#~ msgid "Minor bug fixes"
+#~ msgstr "Remedieri minore de probleme"
 
-msgid "Various crash fixes"
-msgstr "Diferite remedieri de avarie"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Îmbină funcționalitatea căutare în Ctrl+F"
 
-msgid "New translations"
-msgstr "Traduceri noi"
+#~ msgid "Improved translation support"
+#~ msgstr "Suport traducere îmbunătăţit"
 
-msgid "Minor bug fixes"
-msgstr "Remedieri minore de probleme"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Repară appdata datele de lansare"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Imbunătăţeşte deschiderea fisierelor  partajate cu Samba"
 
-msgid "Remember preferred zoom level"
-msgstr ""
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "Repară o distrugere când se restaurează un articol din Coş"
 
-msgid "Improved input method support"
-msgstr ""
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr ""
+#~ "Imbunătăţeşte sensibilitatea taie/copiază/lipeşte in meniul contextual"
 
-msgid "910x640 minimum window size"
-msgstr ""
-
-msgid "Security fixes"
-msgstr ""
-
-msgid "Enable drag and drop tabs between windows"
-msgstr ""
-
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Îmbină funcționalitatea căutare în Ctrl+F"
-
-msgid "Improved translation support"
-msgstr "Suport traducere îmbunătăţit"
-
-msgid "Fix appdata release dates"
-msgstr "Repară appdata datele de lansare"
-
-msgid "Improve file opening over Samba shares"
-msgstr "Imbunătăţeşte deschiderea fisierelor  partajate cu Samba"
-
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Repară o distrugere când se restaurează un articol din Coş"
-
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
-"Imbunătăţeşte sensibilitatea taie/copiază/lipeşte in meniul contextual"
-
-msgid "Translation updates"
-msgstr "Actualizări traducere"
-
-msgid "Run Pantheon Files as Administrator"
-msgstr ""
-
-msgid "Authentication is required to run Files as Administrator"
-msgstr ""
+#~ msgid "Translation updates"
+#~ msgstr "Actualizări traducere"

@@ -6,12 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2018-06-01 00:07+0000\n"
 "Last-Translator: Jan Marek <janmarek28@gmail.com>\n"
-"Language-Team: Czech <https://weblate.elementary.io/projects/files/extra/cs/>"
-"\n"
+"Language-Team: Czech <https://weblate.elementary.io/projects/files/extra/cs/"
+">\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,30 +20,40 @@ msgstr ""
 "X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Soubory"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Procházejte své soubory"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "složka;správce;procházet;disk;souborový systém;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Správce souborů"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Nové okno"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Nové administrátorské okno"
 
-msgid "About Files"
-msgstr "O aplikaci Soubory"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Procházet a spravovat soubory a složky"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -56,78 +66,85 @@ msgstr ""
 "svým souborům lokálně, na externím úložišti, nebo vzdáleně pomocí FTP, SFTP, "
 "AFP, Webdav nebo sdílení Windows."
 
-msgid "Improved networking support"
-msgstr "Vylepšená podpora práce v síti"
-
-msgid "Correct window geometry when snapping to left or right"
-msgstr "Oprava geometrie okna, když je připnuto nalevo nebo napravo"
-
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
 msgstr ""
-"Stisknutí Ctrl již nezruší přejmenování, když je aktivována funkce \""
-"Zobrazit ukazatel\""
 
-msgid "Switching input language cancels actions"
-msgstr "Přepnutí vstupního jazyka zruší akce"
+#~ msgid "About Files"
+#~ msgstr "O aplikaci Soubory"
 
-msgid "Various crash fixes"
-msgstr "Několik oprav pádů"
+#~ msgid "Improved networking support"
+#~ msgstr "Vylepšená podpora práce v síti"
 
-msgid "New translations"
-msgstr "Nové překlady"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "Oprava geometrie okna, když je připnuto nalevo nebo napravo"
 
-msgid "Minor bug fixes"
-msgstr "Menší opravy chyb"
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr ""
+#~ "Stisknutí Ctrl již nezruší přejmenování, když je aktivována funkce "
+#~ "\"Zobrazit ukazatel\""
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Webové prohlížeče jako Firefox si nyní pamatují naposledy použitou složku "
-"pro stahování"
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "Přepnutí vstupního jazyka zruší akce"
 
-msgid "Remember preferred zoom level"
-msgstr "Pamatovat si preferovanou úroveň přiblížení"
+#~ msgid "Various crash fixes"
+#~ msgstr "Několik oprav pádů"
 
-msgid "Improved input method support"
-msgstr "Vylepšená podpora vstupních metod"
+#~ msgid "New translations"
+#~ msgstr "Nové překlady"
 
-msgid "910x640 minimum window size"
-msgstr "910x640 minimální velikost okna"
+#~ msgid "Minor bug fixes"
+#~ msgstr "Menší opravy chyb"
 
-msgid "Security fixes"
-msgstr "Bezpečnostní opravy"
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Webové prohlížeče jako Firefox si nyní pamatují naposledy použitou složku "
+#~ "pro stahování"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Povolit přetahování záložek mezi okny"
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "Pamatovat si preferovanou úroveň přiblížení"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Sloučit funkci hledání do Ctrl+F"
+#~ msgid "Improved input method support"
+#~ msgstr "Vylepšená podpora vstupních metod"
 
-msgid "Improved translation support"
-msgstr "Vylepšena podpora překladů"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "910x640 minimální velikost okna"
 
-msgid "Fix appdata release dates"
-msgstr "Oprava appdata dat vydání"
+#~ msgid "Security fixes"
+#~ msgstr "Bezpečnostní opravy"
 
-msgid "Improve file opening over Samba shares"
-msgstr "Vylepšeno otevírání souborů pomocí Samba sdílení"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "Povolit přetahování záložek mezi okny"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Oprava padání při obnově soborů z koše"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Sloučit funkci hledání do Ctrl+F"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Vylepšena citlivost vyjmout/kopírovat/vložit v kontextovém menu"
+#~ msgid "Improved translation support"
+#~ msgstr "Vylepšena podpora překladů"
 
-msgid "Translation updates"
-msgstr "Aktualizace překladů"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Oprava appdata dat vydání"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "Spustit Pantheon Files jako administrátor"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Vylepšeno otevírání souborů pomocí Samba sdílení"
 
-msgid "Authentication is required to run Files as Administrator"
-msgstr ""
-"Pro spuštění aplikace Soubory s administrátorskými právy je vyžadováno "
-"ověření"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "Oprava padání při obnově soborů z koše"
+
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "Vylepšena citlivost vyjmout/kopírovat/vložit v kontextovém menu"
+
+#~ msgid "Translation updates"
+#~ msgstr "Aktualizace překladů"
+
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "Spustit Pantheon Files jako administrátor"
+
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr ""
+#~ "Pro spuštění aplikace Soubory s administrátorskými právy je vyžadováno "
+#~ "ověření"
