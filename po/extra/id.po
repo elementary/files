@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2018-01-24 00:03+0000\n"
 "Last-Translator: Deo Valiandro. M <vaeloox@gmail.com>\n"
-"Language-Team: Indonesian "
-"<https://weblate.elementary.io/projects/files/extra/id/>\n"
+"Language-Team: Indonesian <https://weblate.elementary.io/projects/files/"
+"extra/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,30 +19,40 @@ msgstr ""
 "X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Berkas"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Jelajahi berkas Anda"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "folder;pengelola;jelajah;diska;berkas sistem;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Pengelola Berkas"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Jendela Baru"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Jendela Baru Sebagai Administrator"
 
-msgid "About Files"
-msgstr "Tentang Berkas"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Jelajahi dan kelola berkas dan folder"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -55,76 +65,85 @@ msgstr ""
 "semua berkas Anda, baik lokal, pada perangkat eksternal atau jarak jauh "
 "menggunakan FTP, SFTP, AFP, Webdav, atau Windows share."
 
-msgid "Improved networking support"
-msgstr "Peningkatan dukungan jaringan"
-
-msgid "Correct window geometry when snapping to left or right"
-msgstr "Perbaiki geometri jendela saat mengancingkan ke kiri atau kanan"
-
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
 msgstr ""
-"Menekan Ctrl tidak lagi membatalkan penggantian nama ketika pengaturan \""
-"Tampilkan Penunjuk\" menyala"
 
-msgid "Switching input language cancels actions"
-msgstr "Menukar bahasa masukan membatalkan semua tindakan"
+#~ msgid "About Files"
+#~ msgstr "Tentang Berkas"
 
-msgid "Various crash fixes"
-msgstr "Berbagai perbaikan pada kesalahan"
+#~ msgid "Improved networking support"
+#~ msgstr "Peningkatan dukungan jaringan"
 
-msgid "New translations"
-msgstr "Terjemahan baru"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "Perbaiki geometri jendela saat mengancingkan ke kiri atau kanan"
 
-msgid "Minor bug fixes"
-msgstr "Perbaikan kesalahan kecil"
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr ""
+#~ "Menekan Ctrl tidak lagi membatalkan penggantian nama ketika pengaturan "
+#~ "\"Tampilkan Penunjuk\" menyala"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Peramban web seperti Firefox sekarang mengingat direktori unduhan yang "
-"terakhir digunakan"
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "Menukar bahasa masukan membatalkan semua tindakan"
 
-msgid "Remember preferred zoom level"
-msgstr "Ingat tingkat perbesaran yang disukai"
+#~ msgid "Various crash fixes"
+#~ msgstr "Berbagai perbaikan pada kesalahan"
 
-msgid "Improved input method support"
-msgstr "Peningkatan dukungan metode masukan"
+#~ msgid "New translations"
+#~ msgstr "Terjemahan baru"
 
-msgid "910x640 minimum window size"
-msgstr "Ukuran jendela minimal 910x640"
+#~ msgid "Minor bug fixes"
+#~ msgstr "Perbaikan kesalahan kecil"
 
-msgid "Security fixes"
-msgstr "Perbaikan keamanan"
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Peramban web seperti Firefox sekarang mengingat direktori unduhan yang "
+#~ "terakhir digunakan"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Memungkinkan seret dan jatuhkan tab di antara jendela-jendela"
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "Ingat tingkat perbesaran yang disukai"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Gabungkan fungsi pencarian ke Ctrl+F"
+#~ msgid "Improved input method support"
+#~ msgstr "Peningkatan dukungan metode masukan"
 
-msgid "Improved translation support"
-msgstr "Peningkatan dukungan penerjemahan"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "Ukuran jendela minimal 910x640"
 
-msgid "Fix appdata release dates"
-msgstr "Menetapkan tanggal pelepasan appdata"
+#~ msgid "Security fixes"
+#~ msgstr "Perbaikan keamanan"
 
-msgid "Improve file opening over Samba shares"
-msgstr "Peningkatan pembukaan berkas pada Samba"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "Memungkinkan seret dan jatuhkan tab di antara jendela-jendela"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Perbaikan kesalahan saat memulihkan barang-barang dari Tempat Sampah"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Gabungkan fungsi pencarian ke Ctrl+F"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Peningkatan kepekaan potong/salin/tempel pada menu konteks"
+#~ msgid "Improved translation support"
+#~ msgstr "Peningkatan dukungan penerjemahan"
 
-msgid "Translation updates"
-msgstr "Pembaruan terjemahan"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Menetapkan tanggal pelepasan appdata"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "Jalankan Berkas Pantheon sebagai Administrator"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Peningkatan pembukaan berkas pada Samba"
 
-msgid "Authentication is required to run Files as Administrator"
-msgstr "Otentikasi diperlukan untuk menjalankan Berkas sebagai Administrator"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr ""
+#~ "Perbaikan kesalahan saat memulihkan barang-barang dari Tempat Sampah"
+
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "Peningkatan kepekaan potong/salin/tempel pada menu konteks"
+
+#~ msgid "Translation updates"
+#~ msgstr "Pembaruan terjemahan"
+
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "Jalankan Berkas Pantheon sebagai Administrator"
+
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr ""
+#~ "Otentikasi diperlukan untuk menjalankan Berkas sebagai Administrator"
