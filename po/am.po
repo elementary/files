@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"POT-Creation-Date: 2018-12-20 11:06-0800\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "የመተግበሪያውን እትም ማሳያ"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "መክፈቻ uri(s) በአዲስ ንዑስ መስኮት"
 
-#: src/Application.vala:124
+#: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr ""
 
@@ -120,6 +120,7 @@ msgid "Set as default"
 msgstr "እንደነባር ማዘጋጃ"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
+#: src/View/directory_view_popup.ui:91
 msgid "Properties"
 msgstr "ባህሪዎች"
 
@@ -298,11 +299,11 @@ msgstr "(እንደ አስተዳዳሪ)"
 msgid "Filename"
 msgstr "የፋይል ስም"
 
-#: src/View/ListView.vala:27
+#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:149
 msgid "Size"
 msgstr "መጠን"
 
-#: src/View/ListView.vala:28
+#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
 msgid "Type"
 msgstr "አይነት"
 
@@ -543,7 +544,7 @@ msgstr ""
 msgid "Unable to start %s"
 msgstr "ማስጀመር አልተቻለም %s"
 
-#: src/View/Sidebar.vala:1645
+#: src/View/Sidebar.vala:1645 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "ቆሻሻውን _ባዶ ማድረጊያ"
 
@@ -595,7 +596,7 @@ msgstr "በአዲስ _መስኮት መክፈቻ"
 msgid "Remove"
 msgstr "ማስወገጃ"
 
-#: src/View/PopupMenuBuilder.vala:50
+#: src/View/PopupMenuBuilder.vala:50 src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr ""
 
@@ -610,6 +611,112 @@ msgstr "_ማውረጃ"
 #: src/View/PopupMenuBuilder.vala:62
 msgid "_Eject"
 msgstr "_ማውጫ"
+
+#: src/View/directory_view_popup.ui:5
+#, fuzzy
+msgid "Restore from Trash"
+msgstr "እንደ ነበር መመለሻ '%s' ከቆሻሻ ማጠራቀሚያ ውስጥ"
+
+#: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
+#, fuzzy
+msgid "Delete permanently"
+msgstr " የተመረጠው"
+
+#: src/View/directory_view_popup.ui:16
+#, fuzzy
+msgid "Open Parent Folder"
+msgstr "የግል ፎልደር መክፈቻ"
+
+#: src/View/directory_view_popup.ui:23
+msgid "Remove from History"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:37
+#, fuzzy
+msgid "Move to Trash"
+msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ ማጠራቀሚያ"
+
+#: src/View/directory_view_popup.ui:51
+#, fuzzy
+msgid "New"
+msgstr "ኔትዎርክ"
+
+#: src/View/directory_view_popup.ui:53
+#, fuzzy
+msgid "Folder"
+msgstr "_ፎልደር :"
+
+#: src/View/directory_view_popup.ui:58
+#, fuzzy
+msgid "Empty File"
+msgstr "ፋይሎችን ኮፒ በማድረግ ላይ"
+
+#: src/View/directory_view_popup.ui:67
+#, fuzzy
+msgid "Show Hidden Files"
+msgstr "ፋይሎችን በማንቀሳቀስ ላይ"
+
+#: src/View/directory_view_popup.ui:71
+#, fuzzy
+msgid "Show Remote Thumbnails"
+msgstr "ተጨማሪ _ዝርዝር ማሳያ"
+
+#: src/View/directory_view_popup.ui:78
+#, fuzzy
+msgid "New Tab"
+msgstr "በ አዲስ ንዑስ መስኮት መክፈቻ"
+
+#: src/View/directory_view_popup.ui:98
+msgid "Bookmark"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:105
+msgid "Paste"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:111
+msgid "Paste Link"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:118
+msgid "Cut"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:122
+msgid "Copy"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:126
+msgid "Copy as Link"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:130
+msgid "Paste into Folder"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:134
+msgid "Paste Link into Folder"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:141
+msgid "Sort by"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:144
+msgid "Name"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:159
+msgid "Date"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:166
+msgid "Reversed Order"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:170
+msgid "Folders Before Files"
+msgstr ""
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Tab"
@@ -924,7 +1031,7 @@ msgstr "ለመድረሻው አዲስ ስም _ይምረጡ"
 msgid "Apply this action to all files"
 msgstr "ይህን ተግባር ለሁሉም ፋይሎች መፈጸሚያ"
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:160
 msgid "_Skip"
 msgstr "_መዝለሊያ"
 
@@ -1025,6 +1132,1025 @@ msgstr "በማዘጋጀት ላይ"
 msgid "Show more _details"
 msgstr "ተጨማሪ _ዝርዝር ማሳያ"
 
+#: libcore/marlin-file-operations.c:161
+msgid "S_kip All"
+msgstr "ሁሉንም መ_ዝለሊያ"
+
+#: libcore/marlin-file-operations.c:162
+msgid "_Retry"
+msgstr "_እንደገና መሞከሪያ"
+
+#: libcore/marlin-file-operations.c:163
+msgid "Delete _All"
+msgstr "ሁሉንም _ማጥፊያ"
+
+#: libcore/marlin-file-operations.c:164
+msgid "_Replace"
+msgstr "_መተኪያ"
+
+#: libcore/marlin-file-operations.c:165
+msgid "Replace _All"
+msgstr "ሁሉንም _መተኪያ"
+
+#: libcore/marlin-file-operations.c:166
+msgid "_Merge"
+msgstr "_ማዋሀጃ"
+
+#: libcore/marlin-file-operations.c:167
+msgid "Merge _All"
+msgstr "ሁሉንም _ማዋሀጃ"
+
+#: libcore/marlin-file-operations.c:168
+msgid "Copy _Anyway"
+msgstr "ለማንኛውም _ኮፒ ማድረጊያ"
+
+#: libcore/marlin-file-operations.c:249
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d ሰከንድ"
+msgstr[1] "%'d ሰከንዶች"
+
+#: libcore/marlin-file-operations.c:254 libcore/marlin-file-operations.c:265
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d ደቂቃ"
+msgstr[1] "%'d ደቂቆች"
+
+#: libcore/marlin-file-operations.c:264
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d ሰአት"
+msgstr[1] "%'d ሰአቶች"
+
+#: libcore/marlin-file-operations.c:272
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "በግምት %'d ሰአት"
+msgstr[1] "በግምት %'d ሰአቶች"
+
+#: libcore/marlin-file-operations.c:348
+#, c-format
+msgid "Link to %s"
+msgstr "አገናኝ ወደ %s"
+
+#: libcore/marlin-file-operations.c:352
+#, c-format
+msgid "Another link to %s"
+msgstr "ሌላ አገናኝ ወደ %s"
+
+#: libcore/marlin-file-operations.c:368
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'dኛ አገናኝ ወደ %s"
+
+#: libcore/marlin-file-operations.c:372
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'dኛ አገናኝ ወደ %s"
+
+#: libcore/marlin-file-operations.c:376
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'dኛ አገናኝ ወደ %s"
+
+#: libcore/marlin-file-operations.c:380
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'dኛ አገናኝ ወደ %s"
+
+#: libcore/marlin-file-operations.c:572
+msgid " ("
+msgstr " ("
+
+#: libcore/marlin-file-operations.c:580
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: libcore/marlin-file-operations.c:1258
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "በእርግጥ በቋሚነት ሊያጠፉት ይፈልጋሉ \"%B\" ከቆሻሻ ማጠራቀሚያው ውስጥ?"
+
+#: libcore/marlin-file-operations.c:1261
+#, fuzzy, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] "በእርግጥ በቋሚነት ሊያጠፉት ይፈልጋሉ \"%B\" ከቆሻሻ ማጠራቀሚያው ውስጥ?"
+msgstr[1] "በእርግጥ በቋሚነት ሊያጠፉት ይፈልጋሉ \"%B\" ከቆሻሻ ማጠራቀሚያው ውስጥ?"
+
+#: libcore/marlin-file-operations.c:1271 libcore/marlin-file-operations.c:1351
+msgid "If you delete an item, it will be permanently lost."
+msgstr "አንድን እቃ ካጠፉት በቋሚነት ይጠፋል"
+
+#: libcore/marlin-file-operations.c:1296
+#, fuzzy
+msgid "Permanently delete all items from Trash?"
+msgstr "እንደ ነበር መመለሻ %d እቃዎችን ከቆሻሻ ማጠራቀሚያ ውስጥ"
+
+#: libcore/marlin-file-operations.c:1297
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1300
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1301
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1339
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "በእርግጥ በቋሚነት ሊያጠፉት ይፈልጋሉ \"%B\"?"
+
+#: libcore/marlin-file-operations.c:1342
+#, fuzzy, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] "በእርግጥ በቋሚነት ሊያጠፉት ይፈልጋሉ \"%B\"?"
+msgstr[1] "በእርግጥ በቋሚነት ሊያጠፉት ይፈልጋሉ \"%B\"?"
+
+#: libcore/marlin-file-operations.c:1385
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "%'d ፋይል ቀርቷል ለማጥፋት"
+msgstr[1] "%'d ፋይሎች ቀርተዋል ለማጥፋት"
+
+#: libcore/marlin-file-operations.c:1391
+msgid "Deleting files"
+msgstr "ፋይሎቹን በማጥፋት ላይ"
+
+#: libcore/marlin-file-operations.c:1404
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "%T የቀረው"
+msgstr[1] "%Tየቀረው"
+
+#: libcore/marlin-file-operations.c:1471 libcore/marlin-file-operations.c:1505
+#: libcore/marlin-file-operations.c:1544 libcore/marlin-file-operations.c:1621
+#: libcore/marlin-file-operations.c:2375
+msgid "Error while deleting."
+msgstr "ስህተት ተፈጥሯል በማጥፋት ላይ እንዳለ"
+
+#: libcore/marlin-file-operations.c:1475
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr "በፎልደር ውስጥ ያሉትን ፋይሎች \"%B\" ማጥፋት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
+
+#: libcore/marlin-file-operations.c:1478 libcore/marlin-file-operations.c:2434
+#: libcore/marlin-file-operations.c:3401
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr "ስህተት ተፈጥሯል የፋይሎች እና የፎልደሮች መረጃ በሚፈለግበት ጊዜ \"%B\"."
+
+#: libcore/marlin-file-operations.c:1487 libcore/marlin-file-operations.c:3410
+msgid "_Skip files"
+msgstr "ፋይሎችን _መዝለያ"
+
+#: libcore/marlin-file-operations.c:1508
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr "ይህን ፎልደር \"%B\" ማጥፋት አይችሉም ምክንያቱም ፋይሉን ለማንበብ በቂ የሆነ ፍቃድ የሎትም"
+
+#: libcore/marlin-file-operations.c:1511 libcore/marlin-file-operations.c:2473
+#: libcore/marlin-file-operations.c:3446
+msgid "There was an error reading the folder \"%B\"."
+msgstr "ፎልደሩን በማንበብ ላይ እንዳለ ስህተት ተፈጥሯል \"%B\"."
+
+#: libcore/marlin-file-operations.c:1545
+msgid "Could not remove the folder %B."
+msgstr "ፎልደሩን ማስወገድ አልተቻለም %B."
+
+#: libcore/marlin-file-operations.c:1622
+msgid "There was an error deleting %B."
+msgstr "በማጥፋት ላይ እንዳለ ስህተት ተፈጥሯል %B."
+
+#: libcore/marlin-file-operations.c:1706
+msgid "Moving files to trash"
+msgstr "ፋይሎችን ወደ ቆሻሻ በማንቀሳቅስ ላይ"
+
+#: libcore/marlin-file-operations.c:1708
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "%'d ፋይል ቀርቷል በቆሻሻ ማጠራቀሚያ ውስጥ"
+msgstr[1] "%'d ፋይሎች ቀርተዋል በቆሻሻ ማጠራቀሚያ ውስጥ"
+
+#: libcore/marlin-file-operations.c:1802 libcore/marlin-file-operations.c:1805
+#: libcore/marlin-file-operations.c:1808
+#, fuzzy
+msgid "Cannot move file to trash or delete it"
+msgstr "ፋይሉን ወደራሱ ማንቀሳቀስ አይችሉም"
+
+#: libcore/marlin-file-operations.c:1803
+msgid "It is not permitted to trash or delete files on a read only filesystem."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1806
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1809
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1811
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1812
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1816
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1817
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1822
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:2012
+msgid "Trashing Files"
+msgstr "ፋይሎችን በማጥፋት ላይ"
+
+#: libcore/marlin-file-operations.c:2014
+msgid "Deleting Files"
+msgstr "ፋይሎችን በማጥፋት ላይ"
+
+#: libcore/marlin-file-operations.c:2083
+msgid "Unable to eject %V"
+msgstr "ማውጣት አልተቻለም %V"
+
+#: libcore/marlin-file-operations.c:2085
+msgid "Unable to unmount %V"
+msgstr "ማውረድ አልተቻለም %V"
+
+#: libcore/marlin-file-operations.c:2299
+#, c-format
+msgid "Unable to mount %s"
+msgstr "መጫን አልተቻለም %s"
+
+#: libcore/marlin-file-operations.c:2322
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "ኮፒ ለማድረግ በማሰናዳት ላይ %'d ፋይሉን (%S)"
+msgstr[1] "ኮፒ ለማድረግ በማሰናዳት ላይ %'d ፋይሎቹን (%S)"
+
+#: libcore/marlin-file-operations.c:2328
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "ለማንቀሳቀስ በማሰናዳት ላይ %'d ፋይሉን (%S)"
+msgstr[1] "ለማንቀሳቀስ በማሰናዳት ላይ %'d ፋይሎቹን (%S)"
+
+#: libcore/marlin-file-operations.c:2334
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "ለማጥፋት በማሰናዳት ላይ %'d ፋይሉን (%S)"
+msgstr[1] "ለማጥፋት በማሰናዳት ላይ %'d ፋይሎቹን (%S)"
+
+#: libcore/marlin-file-operations.c:2340
+#, fuzzy, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "በማዘጋጀት ላይ ለማንቀሳቀስ  ወደ %'d ፋይል"
+msgstr[1] "በማዘጋጀት ላይ ለማንቀሳቀስ ወደ %'d ፋይሎች"
+
+#: libcore/marlin-file-operations.c:2371 libcore/marlin-file-operations.c:3261
+#: libcore/marlin-file-operations.c:3393 libcore/marlin-file-operations.c:3438
+msgid "Error while copying."
+msgstr "ካፒ በማድረግ ላይ ስህተት ተፈጥሯል"
+
+#: libcore/marlin-file-operations.c:2373 libcore/marlin-file-operations.c:3391
+#: libcore/marlin-file-operations.c:3436
+msgid "Error while moving."
+msgstr "በማንቀሳቀስ ላይ ስህተት ተፈጥሯል"
+
+#: libcore/marlin-file-operations.c:2377
+msgid "Error while moving files to trash."
+msgstr "ፋይሎችን ወደ ቆሻሻ ማጠራቀሚያው ጋር በመውሰድ ላይ እንዳለ ስህተት ተፈጥሯል"
+
+#: libcore/marlin-file-operations.c:2431
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr "በፎልደሩ ውስጥ ያሉትን ፋይሎች \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
+
+#: libcore/marlin-file-operations.c:2470
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr "ይህን ፎልደር \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
+
+#: libcore/marlin-file-operations.c:2546
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr "ይህን ፋይል \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
+
+#: libcore/marlin-file-operations.c:2549
+msgid "There was an error getting information about \"%B\"."
+msgstr "ስህተት ተፈጥሯል መረጃ በማግኘት ላይ እንዳለ ስለ \"%B\"."
+
+#: libcore/marlin-file-operations.c:2649 libcore/marlin-file-operations.c:2691
+#: libcore/marlin-file-operations.c:2724 libcore/marlin-file-operations.c:2754
+msgid "Error while copying to \"%B\"."
+msgstr "ስህተት ተፈጥሯል ኮፒ በማድረግ ላይ እንዳለ \"%B\"."
+
+#: libcore/marlin-file-operations.c:2653
+msgid "You do not have permissions to access the destination folder."
+msgstr "መድረሻው ፎልደር ጋር ለመድረስ ፍቃድ የሎትም"
+
+#: libcore/marlin-file-operations.c:2655
+msgid "There was an error getting information about the destination."
+msgstr "ስለ መድረሻው መረጃ በማግኘት ላይ እንዳለ ስህተት ተፈጥሯል"
+
+#: libcore/marlin-file-operations.c:2692
+msgid "The destination is not a folder."
+msgstr "መድረሻው ፎልደር አይደለም"
+
+#: libcore/marlin-file-operations.c:2725
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr "በመድረሻው ውስጥ በቂ ባዶ ቦታ የለም በቂ ቦታ ለማግኘት ፋይሎች ማስወገድ አለብዎት"
+
+#: libcore/marlin-file-operations.c:2727
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:2755
+msgid "The destination is read-only."
+msgstr "መድረሻው ለንባብ - ብቻ ነው"
+
+#: libcore/marlin-file-operations.c:2814
+msgid "Moving \"%B\" to \"%B\""
+msgstr "በማንቀሳቀስ ላይ \"%B\" ወደ \"%B\""
+
+#: libcore/marlin-file-operations.c:2815
+msgid "Copying \"%B\" to \"%B\""
+msgstr "ኮፒ በማድረግ ላይ \"%B\" ወደ \"%B\""
+
+#: libcore/marlin-file-operations.c:2819
+msgid "Duplicating \"%B\""
+msgstr "በማባዛት ላይ \"%B\""
+
+#: libcore/marlin-file-operations.c:2823
+#, fuzzy
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "በማንቀሳቀስ ላይ \"%B\" ወደ \"%B\""
+msgstr[1] "በማንቀሳቀስ ላይ \"%B\" ወደ \"%B\""
+
+#: libcore/marlin-file-operations.c:2826
+#, fuzzy
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "ኮፒ በማድረግ ላይ \"%B\" ወደ \"%B\""
+msgstr[1] "ኮፒ በማድረግ ላይ \"%B\" ወደ \"%B\""
+
+#: libcore/marlin-file-operations.c:2833
+#, fuzzy
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "በማባዛት ላይ \"%B\""
+msgstr[1] "በማባዛት ላይ \"%B\""
+
+#: libcore/marlin-file-operations.c:2842
+#, fuzzy
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "በማንቀሳቀስ ላይ \"%B\" ወደ \"%B\""
+msgstr[1] "በማንቀሳቀስ ላይ \"%B\" ወደ \"%B\""
+
+#: libcore/marlin-file-operations.c:2846
+#, fuzzy
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "ኮፒ በማድረግ ላይ \"%B\" ወደ \"%B\""
+msgstr[1] "ኮፒ በማድረግ ላይ \"%B\" ወደ \"%B\""
+
+#: libcore/marlin-file-operations.c:2851
+#, fuzzy, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "በማባዛት ላይ \"%B\""
+msgstr[1] "በማባዛት ላይ \"%B\""
+
+#: libcore/marlin-file-operations.c:2877
+#, c-format
+msgid "%S of %S"
+msgstr "%S ከ %S"
+
+#: libcore/marlin-file-operations.c:2887
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S ከ %S — %T የቀረው (%S/sec)"
+msgstr[1] "%S ከ %S — %T የቀረው (%S/sec)"
+
+#: libcore/marlin-file-operations.c:3265
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"ይህን ፎልደር \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም በመድረሻው ላይ ፎልደሩን ለመፍጠር በቂ የሆነ ፍቃድ የሎትም"
+
+#: libcore/marlin-file-operations.c:3268
+msgid "There was an error creating the folder \"%B\"."
+msgstr "ፎልደር በመፍጠር ላይ ስህተት ተፈጥሯል \"%B\"."
+
+#: libcore/marlin-file-operations.c:3398
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"በፎልደሩ ውስጥ ያሉ ፋይሎችን \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም ፋይሎቹን ለማየት በቂ የሆነ ፍቃድ የሎትም"
+
+#: libcore/marlin-file-operations.c:3443
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr "ፎልደሩን \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም ለማንበብ ፍቃድ የሎትም"
+
+#: libcore/marlin-file-operations.c:3488 libcore/marlin-file-operations.c:4152
+msgid "Error while moving \"%B\"."
+msgstr "በማንቀሳቀስ ላይ እንዳለ ስህተት ተፈጥሯል \"%B\"."
+
+#: libcore/marlin-file-operations.c:3489
+msgid "Could not remove the source folder."
+msgstr "የፎልደሩን ምንጭ ማስወገድ አይቻልም"
+
+#: libcore/marlin-file-operations.c:3574 libcore/marlin-file-operations.c:3615
+#: libcore/marlin-file-operations.c:4154
+msgid "Error while copying \"%B\"."
+msgstr "ኮፒ በማድረግ ላይ እንዳለ ስህተት ተፈጥሯል \"%B\"."
+
+#: libcore/marlin-file-operations.c:3575
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "ፋይሉን ከነበረበት ፎልደር ውስጥ ማስወገድ አይችሉም %F."
+
+#: libcore/marlin-file-operations.c:3616
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "የነበረውን ፋይል ማስወገድ አይችሉም %F."
+
+#: libcore/marlin-file-operations.c:3890 libcore/marlin-file-operations.c:4561
+msgid "You cannot move a folder into itself."
+msgstr "ፎልደሩን ወደራሱ ማንቀሳቀስ አይችሉም"
+
+#: libcore/marlin-file-operations.c:3891 libcore/marlin-file-operations.c:4562
+msgid "You cannot copy a folder into itself."
+msgstr "ፎልደሩን ወደራሱ ኮፒ ማድረግ አይችሉም"
+
+#: libcore/marlin-file-operations.c:3892 libcore/marlin-file-operations.c:4563
+msgid "The destination folder is inside the source folder."
+msgstr "መደረሻው ፎልደር በፎልደሩ ምንጭ ውስጥ ነው"
+
+#: libcore/marlin-file-operations.c:3923
+msgid "You cannot move a file over itself."
+msgstr "ፋይሉን ወደራሱ ማንቀሳቀስ አይችሉም"
+
+#: libcore/marlin-file-operations.c:3924
+msgid "You cannot copy a file over itself."
+msgstr "ፋይሉን ወደራሱ ኮፒ ማድረግ አይችሉም"
+
+#: libcore/marlin-file-operations.c:3925
+msgid "The source file would be overwritten by the destination."
+msgstr "በመድረሻው ላይ የፋይሉ ምንጭ ተደርቦ ይጻፋል"
+
+#: libcore/marlin-file-operations.c:4156
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr "በዚህ ስም ቀደም ብሎ የነበረውን ፋይል ማጥፋት አልተቻለም ከ %F."
+
+#: libcore/marlin-file-operations.c:4221
+msgid "Cannot copy \"%B\" here."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:4222
+#, fuzzy
+msgid "There was an error copying the file into %B."
+msgstr "ስህተት ተፈጥሯል ፋይሉን በማንቀሳቀስ ላይ እንዳለ %F."
+
+#: libcore/marlin-file-operations.c:4444
+msgid "Copying Files"
+msgstr "ፋይሎችን ኮፒ በማድረግ ላይ"
+
+#: libcore/marlin-file-operations.c:4470
+msgid "Preparing to move to \"%B\""
+msgstr "በማዘጋጀት ላይ ለማንቀሳቀስ ወደ \"%B\""
+
+#: libcore/marlin-file-operations.c:4474
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "በማዘጋጀት ላይ ለማንቀሳቀስ  ወደ %'d ፋይል"
+msgstr[1] "በማዘጋጀት ላይ ለማንቀሳቀስ ወደ %'d ፋይሎች"
+
+#: libcore/marlin-file-operations.c:4720
+#, fuzzy, c-format
+msgid "Error while moving \"%F\"."
+msgstr "በማንቀሳቀስ ላይ እንዳለ ስህተት ተፈጥሯል \"%B\"."
+
+#: libcore/marlin-file-operations.c:4721
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "ስህተት ተፈጥሯል ፋይሉን በማንቀሳቀስ ላይ እንዳለ %F."
+
+#: libcore/marlin-file-operations.c:4978
+msgid "Moving Files"
+msgstr "ፋይሎችን በማንቀሳቀስ ላይ"
+
+#: libcore/marlin-file-operations.c:5007
+msgid "Creating links in \"%B\""
+msgstr "አገናኞች በመፍጠር ላይ ወደ \"%B\""
+
+#: libcore/marlin-file-operations.c:5011
+#, fuzzy, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "በማዘጋጀት ላይ ለማንቀሳቀስ  ወደ %'d ፋይል"
+msgstr[1] "በማዘጋጀት ላይ ለማንቀሳቀስ ወደ %'d ፋይሎች"
+
+#: libcore/marlin-file-operations.c:5151
+msgid "Error while creating link to %B."
+msgstr "ስህተት ተፈጥሯል አገናኝ በመፍጠር ላይ %B."
+
+#: libcore/marlin-file-operations.c:5153
+msgid "Symbolic links only supported for local files"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:5156
+msgid "The target doesn't support symbolic links."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:5159
+#, fuzzy, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "ዳይሬክቶሪ በመፍጠር ላይ እንዳለ ስህተት ተፈጥሯል %F."
+
+#: libcore/marlin-file-operations.c:5477
+msgid "Setting permissions"
+msgstr "ፍቃዶች በማሰናዳት ላይ"
+
+#: libcore/marlin-file-operations.c:5573
+#, fuzzy
+msgid "Cannot copy into trash."
+msgstr "ፎልደሩን ወደራሱ ኮፒ ማድረግ አይችሉም"
+
+#: libcore/marlin-file-operations.c:5574
+msgid "It is not permitted to copy files into the trash"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:5712
+msgid "untitled folder"
+msgstr "ያልተሰየመ ፎልደር"
+
+#: libcore/marlin-file-operations.c:5720
+msgid "new file"
+msgstr "አዲስ ፋይል"
+
+#: libcore/marlin-file-operations.c:5891
+msgid "Error while creating directory %B."
+msgstr "ዳይሬክቶሪ በመፍጠር ላይ እንዳለ ስህተት ተፈጥሯል %B."
+
+#: libcore/marlin-file-operations.c:5893
+msgid "Error while creating file %B."
+msgstr "ፋይል በመፍጠር ላይ እንዳለ ስህተት ተፈጥሯል %B."
+
+#: libcore/marlin-file-operations.c:5895
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "ዳይሬክቶሪ በመፍጠር ላይ እንዳለ ስህተት ተፈጥሯል %F."
+
+#: libcore/marlin-file-operations.c:6205
+msgid "Emptying Trash"
+msgstr "ቆሻሻ ማጠራቀሚያውን ባዶ በማድረግ ላይ"
+
+#: libcore/marlin-undostack-manager.c:580
+msgid "Original location could not be determined"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:581
+msgid "Open trash folder and restore manually"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1118
+#, c-format
+msgid "Delete %d copied items"
+msgstr "ማጥፊያ %d ኮፒ የተደረጉ እቃዎችን"
+
+#: libcore/marlin-undostack-manager.c:1121
+#: libcore/marlin-undostack-manager.c:1131
+#: libcore/marlin-undostack-manager.c:1162
+#, c-format
+msgid "Delete '%s'"
+msgstr "ማጥፊያ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1128
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "ማጥፊያ %d የተባዙ እቃዎችን"
+
+#: libcore/marlin-undostack-manager.c:1139
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "ማንቀሳቀሻ %d እቃዎችን ወደ ነበሩበት '%s'"
+
+#: libcore/marlin-undostack-manager.c:1143
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "ማንቀሳቀሻ '%s' ወደ ነበሩበት '%s'"
+
+#: libcore/marlin-undostack-manager.c:1152
+#: libcore/marlin-undostack-manager.c:1319
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "እንደገና መሰየሚያ '%s' እንደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1171
+#: libcore/marlin-undostack-manager.c:1366
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "እንደ ነበር መመለሻ %d እቃዎችን ከቆሻሻ ማጠራቀሚያ ውስጥ"
+
+#: libcore/marlin-undostack-manager.c:1179
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "እንደ ነበር መመለሻ '%s' ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1190
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "ማንቀሳቀሻ %d እቃዎቹን ወደ ቆሻሻ ማጠራቀሚያው ውስጥ"
+
+#: libcore/marlin-undostack-manager.c:1193
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ ማጠራቀሚያው ውስጥ"
+
+#: libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete links to %d items"
+msgstr "ማጥፊያ አገናኞችን ወደ %d እቃዎች"
+
+#: libcore/marlin-undostack-manager.c:1205
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "ማጥፊያ አገናኞችን ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1215
+#, fuzzy, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "ፍቃድ ማሰናጃ ተያይዘው ለሚገኙ እቃዎች በ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "እንደ ነበር መመለሻ ፍቃዶችን ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1232
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "እንደ ነበር መመለሻ ቡድኑን ከ '%s' ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1242
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "እንደነበር መመለሻ ባለቤቱን ከ '%s' ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1281
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "ኮፒ %d እቃዎችን ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1285
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "ኮፒ ማድረጊያ '%s' ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1293
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "ማባዥ %d እቃዎችን ከ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1298
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "ማባዛት '%s' በ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1306
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "ማንቀሳቀሻ %d እቃዎችን ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1310
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "ማንቀሳቀሻ '%s' ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1328
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "አዲስ ፋይል መፍጠሪያ '%s' ከ ቴምፕሌትስ "
+
+#: libcore/marlin-undostack-manager.c:1335
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "ባዶ ፋይል መፍጠሪያ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1342
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "አዲስ ፎልደር መፍጠሪያ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1350
+#, c-format
+msgid "Move %d items to trash"
+msgstr "ማንቀሳቀሻ %d እቃዎችን ወደ ቆሻሻ"
+
+#: libcore/marlin-undostack-manager.c:1356
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ ማጠራቀሚያ"
+
+#: libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "እንደ ነበር መመለሻ '%s' ከቆሻሻ ማጠራቀሚያ ውስጥ"
+
+#: libcore/marlin-undostack-manager.c:1378
+#, c-format
+msgid "Create links to %d items"
+msgstr "መፍጠሪያ አገናኝ ወደ %d እቃዎች"
+
+#: libcore/marlin-undostack-manager.c:1381
+#, c-format
+msgid "Create link to '%s'"
+msgstr "መፍጠሪያ አገናኝ ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "ፍቃድ ማሰናጃ ተያይዘው ለሚገኙ እቃዎች በ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1398
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "ፍቃዶችን ማሰናጃ ከ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1407
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "ቡድን ማሰናጃ ከ '%s' ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "ባለቤት ማሰናጃ ከ '%s' ወደ '%s'"
+
+#: libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_መተው ኮፒ ማድረግ %d እቃውን"
+msgstr[1] "_መተው ኮፒ ማድረግ %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1454
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_መተው የተደገመ %d እቃን"
+msgstr[1] "_መተው የተደገሙ %d እቃዎችን"
+
+#: libcore/marlin-undostack-manager.c:1459
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_መተው ማንቀሳቀስ %d እቃውን"
+msgstr[1] "_መተው ማንቀሳቀስ %d እቃዎችን"
+
+#: libcore/marlin-undostack-manager.c:1464
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_መተው እንደገና መሰየም %d እቃውን"
+msgstr[1] "_መተው እንደገና መሰየም %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1468
+msgid "_Undo creation of an empty file"
+msgstr "_መተው ባዶ ፋይል መፍጠሩን"
+
+#: libcore/marlin-undostack-manager.c:1471
+msgid "_Undo creation of a file from template"
+msgstr "_መተው ፋይል ከ ቴምፕሌት መፍጠሩን"
+
+#: libcore/marlin-undostack-manager.c:1475
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_መተው ፎልደር %d መፍጠሩን"
+msgstr[1] "_መተው ፎልደሮች %d መፍጠሩን"
+
+#: libcore/marlin-undostack-manager.c:1480
+#, fuzzy, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_መተው ማንቀሳቀስ %d እቃውን"
+msgstr[1] "_መተው ማንቀሳቀስ %d እቃዎችን"
+
+#: libcore/marlin-undostack-manager.c:1485
+#, fuzzy, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
+msgstr[1] "_መተው አገናኝ መፍጠሩን ለ %d እቃዎቹ"
+
+#: libcore/marlin-undostack-manager.c:1490
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
+msgstr[1] "_መተው አገናኝ መፍጠሩን ለ %d እቃዎቹ"
+
+#: libcore/marlin-undostack-manager.c:1495
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_መተው ማጥፋት %d እቃውን"
+msgstr[1] "_መተው ማጥፋት %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1500
+#, fuzzy, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1506
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1511
+#, fuzzy, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1516
+#, fuzzy, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1544
+#, fuzzy, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_መተው ኮፒ ማድረግ %d እቃውን"
+msgstr[1] "_መተው ኮፒ ማድረግ %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1549
+#, fuzzy, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_መተው የተደገመ %d እቃን"
+msgstr[1] "_መተው የተደገሙ %d እቃዎችን"
+
+#: libcore/marlin-undostack-manager.c:1554
+#, fuzzy, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_መተው ማንቀሳቀስ %d እቃውን"
+msgstr[1] "_መተው ማንቀሳቀስ %d እቃዎችን"
+
+#: libcore/marlin-undostack-manager.c:1559
+#, fuzzy, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_መተው እንደገና መሰየም %d እቃውን"
+msgstr[1] "_መተው እንደገና መሰየም %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1563
+#, fuzzy
+msgid "_Redo creation of an empty file"
+msgstr "_መተው ባዶ ፋይል መፍጠሩን"
+
+#: libcore/marlin-undostack-manager.c:1566
+#, fuzzy
+msgid "_Redo creation of a file from template"
+msgstr "_መተው ፋይል ከ ቴምፕሌት መፍጠሩን"
+
+#: libcore/marlin-undostack-manager.c:1570
+#, fuzzy, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_መተው ፎልደር %d መፍጠሩን"
+msgstr[1] "_መተው ፎልደሮች %d መፍጠሩን"
+
+#: libcore/marlin-undostack-manager.c:1575
+#, fuzzy, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_መተው ማንቀሳቀስ %d እቃውን"
+msgstr[1] "_መተው ማንቀሳቀስ %d እቃዎችን"
+
+#: libcore/marlin-undostack-manager.c:1580
+#, fuzzy, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
+msgstr[1] "_መተው አገናኝ መፍጠሩን ለ %d እቃዎቹ"
+
+#: libcore/marlin-undostack-manager.c:1585
+#, fuzzy, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
+msgstr[1] "_መተው አገናኝ መፍጠሩን ለ %d እቃዎቹ"
+
+#: libcore/marlin-undostack-manager.c:1590
+#, fuzzy, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_መተው ማጥፋት %d እቃውን"
+msgstr[1] "_መተው ማጥፋት %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1595
+#, fuzzy, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1601
+#, fuzzy, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1606
+#, fuzzy, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
+
+#: libcore/marlin-undostack-manager.c:1611
+#, fuzzy, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
+msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
+
+#: libcore/gof-file.c:332 libcore/gof-file.c:506
+msgid "Inaccessible"
+msgstr ""
+
+#: libcore/gof-file.c:347
+#, c-format
+msgid "link to %s"
+msgstr "አገናኝ ወደ %s"
+
 #: libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
 msgstr ""
@@ -1121,9 +2247,6 @@ msgstr " የተመረጠው"
 msgid "Delete Selected"
 msgstr " የተመረጠው"
 
-#~ msgid "link to %s"
-#~ msgstr "አገናኝ ወደ %s"
-
 #, fuzzy
 #~ msgid "Failed to parse the desktop file"
 #~ msgstr ""
@@ -1141,68 +2264,6 @@ msgstr " የተመረጠው"
 #, fuzzy
 #~ msgid "Unable to Launch Desktop File: %s"
 #~ msgstr "መጫን አልተቻለም %s"
-
-#~ msgid "S_kip All"
-#~ msgstr "ሁሉንም መ_ዝለሊያ"
-
-#~ msgid "_Retry"
-#~ msgstr "_እንደገና መሞከሪያ"
-
-#~ msgid "Delete _All"
-#~ msgstr "ሁሉንም _ማጥፊያ"
-
-#~ msgid "_Replace"
-#~ msgstr "_መተኪያ"
-
-#~ msgid "Replace _All"
-#~ msgstr "ሁሉንም _መተኪያ"
-
-#~ msgid "_Merge"
-#~ msgstr "_ማዋሀጃ"
-
-#~ msgid "Merge _All"
-#~ msgstr "ሁሉንም _ማዋሀጃ"
-
-#~ msgid "Copy _Anyway"
-#~ msgstr "ለማንኛውም _ኮፒ ማድረጊያ"
-
-#~ msgid "%'d second"
-#~ msgid_plural "%'d seconds"
-#~ msgstr[0] "%'d ሰከንድ"
-#~ msgstr[1] "%'d ሰከንዶች"
-
-#~ msgid "%'d minute"
-#~ msgid_plural "%'d minutes"
-#~ msgstr[0] "%'d ደቂቃ"
-#~ msgstr[1] "%'d ደቂቆች"
-
-#~ msgid "%'d hour"
-#~ msgid_plural "%'d hours"
-#~ msgstr[0] "%'d ሰአት"
-#~ msgstr[1] "%'d ሰአቶች"
-
-#~ msgid "approximately %'d hour"
-#~ msgid_plural "approximately %'d hours"
-#~ msgstr[0] "በግምት %'d ሰአት"
-#~ msgstr[1] "በግምት %'d ሰአቶች"
-
-#~ msgid "Link to %s"
-#~ msgstr "አገናኝ ወደ %s"
-
-#~ msgid "Another link to %s"
-#~ msgstr "ሌላ አገናኝ ወደ %s"
-
-#~ msgid "%'dst link to %s"
-#~ msgstr "%'dኛ አገናኝ ወደ %s"
-
-#~ msgid "%'dnd link to %s"
-#~ msgstr "%'dኛ አገናኝ ወደ %s"
-
-#~ msgid "%'drd link to %s"
-#~ msgstr "%'dኛ አገናኝ ወደ %s"
-
-#~ msgid "%'dth link to %s"
-#~ msgstr "%'dኛ አገናኝ ወደ %s"
 
 #~ msgid " (copy)"
 #~ msgstr " (ኮፒ)"
@@ -1239,411 +2300,6 @@ msgstr " የተመረጠው"
 
 #~ msgid "%s (%'drd copy)%s"
 #~ msgstr "%s (%'dኛ ኮፒ)%s"
-
-#~ msgid " ("
-#~ msgstr " ("
-
-#~ msgid " (%'d"
-#~ msgstr " (%'d"
-
-#~ msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-#~ msgstr "በእርግጥ በቋሚነት ሊያጠፉት ይፈልጋሉ \"%B\" ከቆሻሻ ማጠራቀሚያው ውስጥ?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "አንድን እቃ ካጠፉት በቋሚነት ይጠፋል"
-
-#~ msgid "Are you sure you want to permanently delete \"%B\"?"
-#~ msgstr "በእርግጥ በቋሚነት ሊያጠፉት ይፈልጋሉ \"%B\"?"
-
-#~ msgid "%'d file left to delete"
-#~ msgid_plural "%'d files left to delete"
-#~ msgstr[0] "%'d ፋይል ቀርቷል ለማጥፋት"
-#~ msgstr[1] "%'d ፋይሎች ቀርተዋል ለማጥፋት"
-
-#~ msgid "Deleting files"
-#~ msgstr "ፋይሎቹን በማጥፋት ላይ"
-
-#~ msgid "%T left"
-#~ msgid_plural "%T left"
-#~ msgstr[0] "%T የቀረው"
-#~ msgstr[1] "%Tየቀረው"
-
-#~ msgid "Error while deleting."
-#~ msgstr "ስህተት ተፈጥሯል በማጥፋት ላይ እንዳለ"
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be deleted because you do not have "
-#~ "permissions to see them."
-#~ msgstr "በፎልደር ውስጥ ያሉትን ፋይሎች \"%B\" ማጥፋት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
-
-#~ msgid ""
-#~ "There was an error getting information about the files in the folder \"%B"
-#~ "\"."
-#~ msgstr "ስህተት ተፈጥሯል የፋይሎች እና የፎልደሮች መረጃ በሚፈለግበት ጊዜ \"%B\"."
-
-#~ msgid "_Skip files"
-#~ msgstr "ፋይሎችን _መዝለያ"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be deleted because you do not have permissions "
-#~ "to read it."
-#~ msgstr "ይህን ፎልደር \"%B\" ማጥፋት አይችሉም ምክንያቱም ፋይሉን ለማንበብ በቂ የሆነ ፍቃድ የሎትም"
-
-#~ msgid "There was an error reading the folder \"%B\"."
-#~ msgstr "ፎልደሩን በማንበብ ላይ እንዳለ ስህተት ተፈጥሯል \"%B\"."
-
-#~ msgid "Could not remove the folder %B."
-#~ msgstr "ፎልደሩን ማስወገድ አልተቻለም %B."
-
-#~ msgid "There was an error deleting %B."
-#~ msgstr "በማጥፋት ላይ እንዳለ ስህተት ተፈጥሯል %B."
-
-#~ msgid "Moving files to trash"
-#~ msgstr "ፋይሎችን ወደ ቆሻሻ በማንቀሳቅስ ላይ"
-
-#~ msgid "%'d file left to trash"
-#~ msgid_plural "%'d files left to trash"
-#~ msgstr[0] "%'d ፋይል ቀርቷል በቆሻሻ ማጠራቀሚያ ውስጥ"
-#~ msgstr[1] "%'d ፋይሎች ቀርተዋል በቆሻሻ ማጠራቀሚያ ውስጥ"
-
-#~ msgid "Trashing Files"
-#~ msgstr "ፋይሎችን በማጥፋት ላይ"
-
-#~ msgid "Deleting Files"
-#~ msgstr "ፋይሎችን በማጥፋት ላይ"
-
-#~ msgid "Unable to eject %V"
-#~ msgstr "ማውጣት አልተቻለም %V"
-
-#~ msgid "Unable to unmount %V"
-#~ msgstr "ማውረድ አልተቻለም %V"
-
-#~ msgid "Unable to mount %s"
-#~ msgstr "መጫን አልተቻለም %s"
-
-#~ msgid "Preparing to copy %'d file (%S)"
-#~ msgid_plural "Preparing to copy %'d files (%S)"
-#~ msgstr[0] "ኮፒ ለማድረግ በማሰናዳት ላይ %'d ፋይሉን (%S)"
-#~ msgstr[1] "ኮፒ ለማድረግ በማሰናዳት ላይ %'d ፋይሎቹን (%S)"
-
-#~ msgid "Preparing to move %'d file (%S)"
-#~ msgid_plural "Preparing to move %'d files (%S)"
-#~ msgstr[0] "ለማንቀሳቀስ በማሰናዳት ላይ %'d ፋይሉን (%S)"
-#~ msgstr[1] "ለማንቀሳቀስ በማሰናዳት ላይ %'d ፋይሎቹን (%S)"
-
-#~ msgid "Preparing to delete %'d file (%S)"
-#~ msgid_plural "Preparing to delete %'d files (%S)"
-#~ msgstr[0] "ለማጥፋት በማሰናዳት ላይ %'d ፋይሉን (%S)"
-#~ msgstr[1] "ለማጥፋት በማሰናዳት ላይ %'d ፋይሎቹን (%S)"
-
-#~ msgid "Error while copying."
-#~ msgstr "ካፒ በማድረግ ላይ ስህተት ተፈጥሯል"
-
-#~ msgid "Error while moving."
-#~ msgstr "በማንቀሳቀስ ላይ ስህተት ተፈጥሯል"
-
-#~ msgid "Error while moving files to trash."
-#~ msgstr "ፋይሎችን ወደ ቆሻሻ ማጠራቀሚያው ጋር በመውሰድ ላይ እንዳለ ስህተት ተፈጥሯል"
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be handled because you do not have "
-#~ "permissions to see them."
-#~ msgstr "በፎልደሩ ውስጥ ያሉትን ፋይሎች \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be handled because you do not have permissions "
-#~ "to read it."
-#~ msgstr "ይህን ፎልደር \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
-
-#~ msgid ""
-#~ "The file \"%B\" cannot be handled because you do not have permissions to "
-#~ "read it."
-#~ msgstr "ይህን ፋይል \"%B\" ማየት አይችሉም ምክንያቱም በቂ የሆነ ፍቃድ የሎትም"
-
-#~ msgid "There was an error getting information about \"%B\"."
-#~ msgstr "ስህተት ተፈጥሯል መረጃ በማግኘት ላይ እንዳለ ስለ \"%B\"."
-
-#~ msgid "Error while copying to \"%B\"."
-#~ msgstr "ስህተት ተፈጥሯል ኮፒ በማድረግ ላይ እንዳለ \"%B\"."
-
-#~ msgid "You do not have permissions to access the destination folder."
-#~ msgstr "መድረሻው ፎልደር ጋር ለመድረስ ፍቃድ የሎትም"
-
-#~ msgid "There was an error getting information about the destination."
-#~ msgstr "ስለ መድረሻው መረጃ በማግኘት ላይ እንዳለ ስህተት ተፈጥሯል"
-
-#~ msgid "The destination is not a folder."
-#~ msgstr "መድረሻው ፎልደር አይደለም"
-
-#~ msgid ""
-#~ "There is not enough space on the destination. Try to remove files to make "
-#~ "space."
-#~ msgstr "በመድረሻው ውስጥ በቂ ባዶ ቦታ የለም በቂ ቦታ ለማግኘት ፋይሎች ማስወገድ አለብዎት"
-
-#~ msgid "The destination is read-only."
-#~ msgstr "መድረሻው ለንባብ - ብቻ ነው"
-
-#~ msgid "Moving \"%B\" to \"%B\""
-#~ msgstr "በማንቀሳቀስ ላይ \"%B\" ወደ \"%B\""
-
-#~ msgid "Copying \"%B\" to \"%B\""
-#~ msgstr "ኮፒ በማድረግ ላይ \"%B\" ወደ \"%B\""
-
-#~ msgid "Duplicating \"%B\""
-#~ msgstr "በማባዛት ላይ \"%B\""
-
-#~ msgid "%S of %S"
-#~ msgstr "%S ከ %S"
-
-#~ msgid "%S of %S — %T left (%S/sec)"
-#~ msgid_plural "%S of %S — %T left (%S/sec)"
-#~ msgstr[0] "%S ከ %S — %T የቀረው (%S/sec)"
-#~ msgstr[1] "%S ከ %S — %T የቀረው (%S/sec)"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
-#~ "create it in the destination."
-#~ msgstr ""
-#~ "ይህን ፎልደር \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም በመድረሻው ላይ ፎልደሩን ለመፍጠር በቂ የሆነ ፍቃድ የሎትም"
-
-#~ msgid "There was an error creating the folder \"%B\"."
-#~ msgstr "ፎልደር በመፍጠር ላይ ስህተት ተፈጥሯል \"%B\"."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be copied because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "በፎልደሩ ውስጥ ያሉ ፋይሎችን \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም ፋይሎቹን ለማየት በቂ የሆነ ፍቃድ የሎትም"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
-#~ "read it."
-#~ msgstr "ፎልደሩን \"%B\" ኮፒ ማድረግ አይችሉም ምክንያቱም ለማንበብ ፍቃድ የሎትም"
-
-#~ msgid "Error while moving \"%B\"."
-#~ msgstr "በማንቀሳቀስ ላይ እንዳለ ስህተት ተፈጥሯል \"%B\"."
-
-#~ msgid "Could not remove the source folder."
-#~ msgstr "የፎልደሩን ምንጭ ማስወገድ አይቻልም"
-
-#~ msgid "Error while copying \"%B\"."
-#~ msgstr "ኮፒ በማድረግ ላይ እንዳለ ስህተት ተፈጥሯል \"%B\"."
-
-#~ msgid "Could not remove files from the already existing folder %F."
-#~ msgstr "ፋይሉን ከነበረበት ፎልደር ውስጥ ማስወገድ አይችሉም %F."
-
-#~ msgid "Could not remove the already existing file %F."
-#~ msgstr "የነበረውን ፋይል ማስወገድ አይችሉም %F."
-
-#~ msgid "You cannot move a folder into itself."
-#~ msgstr "ፎልደሩን ወደራሱ ማንቀሳቀስ አይችሉም"
-
-#~ msgid "You cannot copy a folder into itself."
-#~ msgstr "ፎልደሩን ወደራሱ ኮፒ ማድረግ አይችሉም"
-
-#~ msgid "The destination folder is inside the source folder."
-#~ msgstr "መደረሻው ፎልደር በፎልደሩ ምንጭ ውስጥ ነው"
-
-#~ msgid "You cannot move a file over itself."
-#~ msgstr "ፋይሉን ወደራሱ ማንቀሳቀስ አይችሉም"
-
-#~ msgid "You cannot copy a file over itself."
-#~ msgstr "ፋይሉን ወደራሱ ኮፒ ማድረግ አይችሉም"
-
-#~ msgid "The source file would be overwritten by the destination."
-#~ msgstr "በመድረሻው ላይ የፋይሉ ምንጭ ተደርቦ ይጻፋል"
-
-#~ msgid "Could not remove the already existing file with the same name in %F."
-#~ msgstr "በዚህ ስም ቀደም ብሎ የነበረውን ፋይል ማጥፋት አልተቻለም ከ %F."
-
-#~ msgid "Copying Files"
-#~ msgstr "ፋይሎችን ኮፒ በማድረግ ላይ"
-
-#~ msgid "Preparing to move to \"%B\""
-#~ msgstr "በማዘጋጀት ላይ ለማንቀሳቀስ ወደ \"%B\""
-
-#~ msgid "Preparing to move %'d file"
-#~ msgid_plural "Preparing to move %'d files"
-#~ msgstr[0] "በማዘጋጀት ላይ ለማንቀሳቀስ  ወደ %'d ፋይል"
-#~ msgstr[1] "በማዘጋጀት ላይ ለማንቀሳቀስ ወደ %'d ፋይሎች"
-
-#~ msgid "There was an error moving the file into %F."
-#~ msgstr "ስህተት ተፈጥሯል ፋይሉን በማንቀሳቀስ ላይ እንዳለ %F."
-
-#~ msgid "Moving Files"
-#~ msgstr "ፋይሎችን በማንቀሳቀስ ላይ"
-
-#~ msgid "Creating links in \"%B\""
-#~ msgstr "አገናኞች በመፍጠር ላይ ወደ \"%B\""
-
-#~ msgid "Error while creating link to %B."
-#~ msgstr "ስህተት ተፈጥሯል አገናኝ በመፍጠር ላይ %B."
-
-#~ msgid "Setting permissions"
-#~ msgstr "ፍቃዶች በማሰናዳት ላይ"
-
-#~ msgid "untitled folder"
-#~ msgstr "ያልተሰየመ ፎልደር"
-
-#~ msgid "new file"
-#~ msgstr "አዲስ ፋይል"
-
-#~ msgid "Error while creating directory %B."
-#~ msgstr "ዳይሬክቶሪ በመፍጠር ላይ እንዳለ ስህተት ተፈጥሯል %B."
-
-#~ msgid "Error while creating file %B."
-#~ msgstr "ፋይል በመፍጠር ላይ እንዳለ ስህተት ተፈጥሯል %B."
-
-#~ msgid "There was an error creating the directory in %F."
-#~ msgstr "ዳይሬክቶሪ በመፍጠር ላይ እንዳለ ስህተት ተፈጥሯል %F."
-
-#~ msgid "Emptying Trash"
-#~ msgstr "ቆሻሻ ማጠራቀሚያውን ባዶ በማድረግ ላይ"
-
-#~ msgid "Delete %d copied items"
-#~ msgstr "ማጥፊያ %d ኮፒ የተደረጉ እቃዎችን"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "ማጥፊያ '%s'"
-
-#~ msgid "Delete %d duplicated items"
-#~ msgstr "ማጥፊያ %d የተባዙ እቃዎችን"
-
-#~ msgid "Move %d items back to '%s'"
-#~ msgstr "ማንቀሳቀሻ %d እቃዎችን ወደ ነበሩበት '%s'"
-
-#~ msgid "Move '%s' back to '%s'"
-#~ msgstr "ማንቀሳቀሻ '%s' ወደ ነበሩበት '%s'"
-
-#~ msgid "Rename '%s' as '%s'"
-#~ msgstr "እንደገና መሰየሚያ '%s' እንደ '%s'"
-
-#~ msgid "Restore %d items from trash"
-#~ msgstr "እንደ ነበር መመለሻ %d እቃዎችን ከቆሻሻ ማጠራቀሚያ ውስጥ"
-
-#~ msgid "Restore '%s' to '%s'"
-#~ msgstr "እንደ ነበር መመለሻ '%s' ወደ '%s'"
-
-#~ msgid "Move %d items back to trash"
-#~ msgstr "ማንቀሳቀሻ %d እቃዎቹን ወደ ቆሻሻ ማጠራቀሚያው ውስጥ"
-
-#~ msgid "Move '%s' back to trash"
-#~ msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ ማጠራቀሚያው ውስጥ"
-
-#~ msgid "Delete links to %d items"
-#~ msgstr "ማጥፊያ አገናኞችን ወደ %d እቃዎች"
-
-#~ msgid "Delete link to '%s'"
-#~ msgstr "ማጥፊያ አገናኞችን ወደ '%s'"
-
-#~ msgid "Restore original permissions of '%s'"
-#~ msgstr "እንደ ነበር መመለሻ ፍቃዶችን ወደ '%s'"
-
-#~ msgid "Restore group of '%s' to '%s'"
-#~ msgstr "እንደ ነበር መመለሻ ቡድኑን ከ '%s' ወደ '%s'"
-
-#~ msgid "Restore owner of '%s' to '%s'"
-#~ msgstr "እንደነበር መመለሻ ባለቤቱን ከ '%s' ወደ '%s'"
-
-#~ msgid "Copy %d items to '%s'"
-#~ msgstr "ኮፒ %d እቃዎችን ወደ '%s'"
-
-#~ msgid "Copy '%s' to '%s'"
-#~ msgstr "ኮፒ ማድረጊያ '%s' ወደ '%s'"
-
-#~ msgid "Duplicate of %d items in '%s'"
-#~ msgstr "ማባዥ %d እቃዎችን ከ '%s'"
-
-#~ msgid "Duplicate '%s' in '%s'"
-#~ msgstr "ማባዛት '%s' በ '%s'"
-
-#~ msgid "Move %d items to '%s'"
-#~ msgstr "ማንቀሳቀሻ %d እቃዎችን ወደ '%s'"
-
-#~ msgid "Move '%s' to '%s'"
-#~ msgstr "ማንቀሳቀሻ '%s' ወደ '%s'"
-
-#~ msgid "Create new file '%s' from template "
-#~ msgstr "አዲስ ፋይል መፍጠሪያ '%s' ከ ቴምፕሌትስ "
-
-#~ msgid "Create an empty file '%s'"
-#~ msgstr "ባዶ ፋይል መፍጠሪያ '%s'"
-
-#~ msgid "Create a new folder '%s'"
-#~ msgstr "አዲስ ፎልደር መፍጠሪያ '%s'"
-
-#~ msgid "Move %d items to trash"
-#~ msgstr "ማንቀሳቀሻ %d እቃዎችን ወደ ቆሻሻ"
-
-#~ msgid "Move '%s' to trash"
-#~ msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ ማጠራቀሚያ"
-
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "እንደ ነበር መመለሻ '%s' ከቆሻሻ ማጠራቀሚያ ውስጥ"
-
-#~ msgid "Create links to %d items"
-#~ msgstr "መፍጠሪያ አገናኝ ወደ %d እቃዎች"
-
-#~ msgid "Create link to '%s'"
-#~ msgstr "መፍጠሪያ አገናኝ ወደ '%s'"
-
-#~ msgid "Set permissions of items enclosed in '%s'"
-#~ msgstr "ፍቃድ ማሰናጃ ተያይዘው ለሚገኙ እቃዎች በ '%s'"
-
-#~ msgid "Set permissions of '%s'"
-#~ msgstr "ፍቃዶችን ማሰናጃ ከ '%s'"
-
-#~ msgid "Set group of '%s' to '%s'"
-#~ msgstr "ቡድን ማሰናጃ ከ '%s' ወደ '%s'"
-
-#~ msgid "Set owner of '%s' to '%s'"
-#~ msgstr "ባለቤት ማሰናጃ ከ '%s' ወደ '%s'"
-
-#~ msgid "_Undo copy of %d item"
-#~ msgid_plural "_Undo copy of %d items"
-#~ msgstr[0] "_መተው ኮፒ ማድረግ %d እቃውን"
-#~ msgstr[1] "_መተው ኮፒ ማድረግ %d እቃዎቹን"
-
-#~ msgid "_Undo duplicate of %d item"
-#~ msgid_plural "_Undo duplicate of %d items"
-#~ msgstr[0] "_መተው የተደገመ %d እቃን"
-#~ msgstr[1] "_መተው የተደገሙ %d እቃዎችን"
-
-#~ msgid "_Undo move of %d item"
-#~ msgid_plural "_Undo move of %d items"
-#~ msgstr[0] "_መተው ማንቀሳቀስ %d እቃውን"
-#~ msgstr[1] "_መተው ማንቀሳቀስ %d እቃዎችን"
-
-#~ msgid "_Undo rename of %d item"
-#~ msgid_plural "_Undo rename of %d items"
-#~ msgstr[0] "_መተው እንደገና መሰየም %d እቃውን"
-#~ msgstr[1] "_መተው እንደገና መሰየም %d እቃዎቹን"
-
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_መተው ባዶ ፋይል መፍጠሩን"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_መተው ፋይል ከ ቴምፕሌት መፍጠሩን"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_መተው ፎልደር %d መፍጠሩን"
-#~ msgstr[1] "_መተው ፎልደሮች %d መፍጠሩን"
-
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_መተው አገናኝ መፍጠሩን ለ %d እቃው"
-#~ msgstr[1] "_መተው አገናኝ መፍጠሩን ለ %d እቃዎቹ"
-
-#~ msgid "_Undo delete of %d item"
-#~ msgid_plural "_Undo delete of %d items"
-#~ msgstr[0] "_መተው ማጥፋት %d እቃውን"
-#~ msgstr[1] "_መተው ማጥፋት %d እቃዎቹን"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "መተው ፍቃድ መቀየሩን የ %d እቃውን"
-#~ msgstr[1] "መተው ፍቃድ መቀየሩን የ %d እቃዎቹን"
 
 #~ msgid "Browse your files"
 #~ msgstr "ፋይሎችን መቃኛ"

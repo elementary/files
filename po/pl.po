@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"POT-Creation-Date: 2018-12-20 11:06-0800\n"
 "PO-Revision-Date: 2018-10-30 14:23+0000\n"
 "Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
 "Language-Team: Polish <https://weblate.elementary.io/projects/files/files/pl/"
@@ -30,7 +30,7 @@ msgstr "Wypisuje informacje o wersji programu"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Otwórz jeden lub więcej adresów URI, każde w nowej karcie"
 
-#: src/Application.vala:124
+#: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Nowe okno"
 
@@ -121,6 +121,7 @@ msgid "Set as default"
 msgstr "Ustaw jako domyślną"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
+#: src/View/directory_view_popup.ui:91
 msgid "Properties"
 msgstr "Właściwości"
 
@@ -309,11 +310,11 @@ msgstr "(jako administrator)"
 msgid "Filename"
 msgstr "Nazwa pliku"
 
-#: src/View/ListView.vala:27
+#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:149
 msgid "Size"
 msgstr "Rozmiar"
 
-#: src/View/ListView.vala:28
+#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
 msgid "Type"
 msgstr "Typ"
 
@@ -553,7 +554,7 @@ msgstr "Błąd montowania wolumenu %s"
 msgid "Unable to start %s"
 msgstr "Nie można uruchomić %s"
 
-#: src/View/Sidebar.vala:1645
+#: src/View/Sidebar.vala:1645 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "Opróżnij _kosz"
 
@@ -605,7 +606,7 @@ msgstr "Otwórz w nowym _oknie"
 msgid "Remove"
 msgstr "Usuń"
 
-#: src/View/PopupMenuBuilder.vala:50
+#: src/View/PopupMenuBuilder.vala:50 src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Zmień nazwę"
 
@@ -620,6 +621,102 @@ msgstr "_Odmontuj"
 #: src/View/PopupMenuBuilder.vala:62
 msgid "_Eject"
 msgstr "_Wysuń"
+
+#: src/View/directory_view_popup.ui:5
+msgid "Restore from Trash"
+msgstr "Przywróć z kosza"
+
+#: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
+msgid "Delete permanently"
+msgstr "Usuń trwale"
+
+#: src/View/directory_view_popup.ui:16
+msgid "Open Parent Folder"
+msgstr "Otwórz katalog nadrzędny"
+
+#: src/View/directory_view_popup.ui:23
+msgid "Remove from History"
+msgstr "Usuń z historii"
+
+#: src/View/directory_view_popup.ui:37
+msgid "Move to Trash"
+msgstr "Przenieś do kosza"
+
+#: src/View/directory_view_popup.ui:51
+msgid "New"
+msgstr "Nowy"
+
+#: src/View/directory_view_popup.ui:53
+msgid "Folder"
+msgstr "Katalog"
+
+#: src/View/directory_view_popup.ui:58
+msgid "Empty File"
+msgstr "Pusty plik"
+
+#: src/View/directory_view_popup.ui:67
+msgid "Show Hidden Files"
+msgstr "Pokaż ukryte pliki"
+
+#: src/View/directory_view_popup.ui:71
+msgid "Show Remote Thumbnails"
+msgstr "Pokaż miniaturki w zasobie zdalnym"
+
+#: src/View/directory_view_popup.ui:78
+msgid "New Tab"
+msgstr "Nowa karta"
+
+#: src/View/directory_view_popup.ui:98
+msgid "Bookmark"
+msgstr "Zakładka"
+
+#: src/View/directory_view_popup.ui:105
+msgid "Paste"
+msgstr "Wklej"
+
+#: src/View/directory_view_popup.ui:111
+msgid "Paste Link"
+msgstr "Wklej odnośnik"
+
+#: src/View/directory_view_popup.ui:118
+msgid "Cut"
+msgstr "Wytnij"
+
+#: src/View/directory_view_popup.ui:122
+msgid "Copy"
+msgstr "Kopiuj"
+
+#: src/View/directory_view_popup.ui:126
+msgid "Copy as Link"
+msgstr "Kopiuj jako odnośnik"
+
+#: src/View/directory_view_popup.ui:130
+msgid "Paste into Folder"
+msgstr "Wklej do katalogu"
+
+#: src/View/directory_view_popup.ui:134
+msgid "Paste Link into Folder"
+msgstr "Wklej odnośnik do katalogu"
+
+#: src/View/directory_view_popup.ui:141
+msgid "Sort by"
+msgstr "Sortuj według"
+
+#: src/View/directory_view_popup.ui:144
+msgid "Name"
+msgstr "Nazwy"
+
+#: src/View/directory_view_popup.ui:159
+msgid "Date"
+msgstr "Daty"
+
+#: src/View/directory_view_popup.ui:166
+msgid "Reversed Order"
+msgstr "Odwrócona kolejność"
+
+#: src/View/directory_view_popup.ui:170
+msgid "Folders Before Files"
+msgstr "Katalogi przed plikami"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:445
 msgid "Open in New Tab"
@@ -923,7 +1020,7 @@ msgstr "_Wybór nowej nazwy dla pliku docelowego"
 msgid "Apply this action to all files"
 msgstr "Wykonaj tę czynność dla wszystkich plików"
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:160
 msgid "_Skip"
 msgstr "_Pomiń"
 
@@ -1026,6 +1123,1098 @@ msgstr "Przygotowywanie"
 msgid "Show more _details"
 msgstr "Wyświetlenie większej ilości _szczegółów"
 
+#: libcore/marlin-file-operations.c:161
+msgid "S_kip All"
+msgstr "P_omiń wszystkie"
+
+#: libcore/marlin-file-operations.c:162
+msgid "_Retry"
+msgstr "_Ponów"
+
+#: libcore/marlin-file-operations.c:163
+msgid "Delete _All"
+msgstr "U_suń wszystkie"
+
+#: libcore/marlin-file-operations.c:164
+msgid "_Replace"
+msgstr "_Zastąp"
+
+#: libcore/marlin-file-operations.c:165
+msgid "Replace _All"
+msgstr "Z_astąp wszystkie"
+
+#: libcore/marlin-file-operations.c:166
+msgid "_Merge"
+msgstr "_Połącz"
+
+#: libcore/marlin-file-operations.c:167
+msgid "Merge _All"
+msgstr "P_ołącz wszystkie"
+
+#: libcore/marlin-file-operations.c:168
+msgid "Copy _Anyway"
+msgstr "Skopiuj po_mimo tego"
+
+#: libcore/marlin-file-operations.c:249
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%d sekunda"
+msgstr[1] "%d sekundy"
+msgstr[2] "%d sekund"
+
+#: libcore/marlin-file-operations.c:254 libcore/marlin-file-operations.c:265
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%d minuta"
+msgstr[1] "%d minuty"
+msgstr[2] "%d minut"
+
+#: libcore/marlin-file-operations.c:264
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%d godzina"
+msgstr[1] "%d godziny"
+msgstr[2] "%d godzin"
+
+#: libcore/marlin-file-operations.c:272
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "w przybliżeniu %'d godzina"
+msgstr[1] "w przybliżeniu %'d godziny"
+msgstr[2] "w przybliżeniu %'d godzin"
+
+#: libcore/marlin-file-operations.c:348
+#, c-format
+msgid "Link to %s"
+msgstr "Dowiązanie do %s"
+
+#: libcore/marlin-file-operations.c:352
+#, c-format
+msgid "Another link to %s"
+msgstr "Kolejne dowiązanie do %s"
+
+#: libcore/marlin-file-operations.c:368
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'d. dowiązanie do %s"
+
+#: libcore/marlin-file-operations.c:372
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'d. dowiązanie do %s"
+
+#: libcore/marlin-file-operations.c:376
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'d. dowiązanie do %s"
+
+#: libcore/marlin-file-operations.c:380
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'d. dowiązanie do %s"
+
+#: libcore/marlin-file-operations.c:572
+msgid " ("
+msgstr " ("
+
+#: libcore/marlin-file-operations.c:580
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: libcore/marlin-file-operations.c:1258
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "Usunąć trwale „%B” z kosza?"
+
+#: libcore/marlin-file-operations.c:1261
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] "Usunąć trwale z kosza %'d zaznaczony element?"
+msgstr[1] "Usunąć trwale z kosza %'d zaznaczone elementy?"
+msgstr[2] "Usunąć trwale z kosza %'d zaznaczonych elementów?"
+
+#: libcore/marlin-file-operations.c:1271 libcore/marlin-file-operations.c:1351
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Element zostanie trwale usunięty."
+
+#: libcore/marlin-file-operations.c:1296
+msgid "Permanently delete all items from Trash?"
+msgstr "Trwale usunąć wszystkie pliki z Kosza?"
+
+#: libcore/marlin-file-operations.c:1297
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+"Wszystkie pliki w koszu także te na zamontowanych dyskach zewnętrznych "
+"zostaną trwale usunięte."
+
+#: libcore/marlin-file-operations.c:1300
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr "Trwale usunąć wszystkie pliki z tego nośnika znajdujące się w Koszu?"
+
+#: libcore/marlin-file-operations.c:1301
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+"Wszystkie pliki z tego nośnika znajdujące się w koszu zostaną trwale "
+"usunięte."
+
+#: libcore/marlin-file-operations.c:1339
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Usunąć trwale „%B”?"
+
+#: libcore/marlin-file-operations.c:1342
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] "Usunąć trwale %'d zaznaczony element?"
+msgstr[1] "Usunąć trwale %'d zaznaczone elementy?"
+msgstr[2] "Usunąć trwale %'d zaznaczonych elementów?"
+
+#: libcore/marlin-file-operations.c:1385
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "Pozostał %'d plik do usunięcia"
+msgstr[1] "Pozostały %'d pliki do usunięcia"
+msgstr[2] "Pozostało %'d plików do usunięcia"
+
+#: libcore/marlin-file-operations.c:1391
+msgid "Deleting files"
+msgstr "Usuwanie plików"
+
+#: libcore/marlin-file-operations.c:1404
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "Pozostała %T"
+msgstr[1] "Pozostały %T"
+msgstr[2] "Pozostało %T"
+
+#: libcore/marlin-file-operations.c:1471 libcore/marlin-file-operations.c:1505
+#: libcore/marlin-file-operations.c:1544 libcore/marlin-file-operations.c:1621
+#: libcore/marlin-file-operations.c:2375
+msgid "Error while deleting."
+msgstr "Wystąpił błąd podczas usuwania plików."
+
+#: libcore/marlin-file-operations.c:1475
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr ""
+"Pliki w katalogu „%B” nie mogą być usunięte ponieważ nie masz uprawnień do "
+"ich oglądania."
+
+#: libcore/marlin-file-operations.c:1478 libcore/marlin-file-operations.c:2434
+#: libcore/marlin-file-operations.c:3401
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr ""
+"Wystąpił błąd podczas uzyskiwania informacji na temat plików w katalogu „%B”."
+
+#: libcore/marlin-file-operations.c:1487 libcore/marlin-file-operations.c:3410
+msgid "_Skip files"
+msgstr "_Pomiń pliki"
+
+#: libcore/marlin-file-operations.c:1508
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr ""
+"Nie można usunąć katalogu „%B” z powodu braku uprawnień do jego odczytu."
+
+#: libcore/marlin-file-operations.c:1511 libcore/marlin-file-operations.c:2473
+#: libcore/marlin-file-operations.c:3446
+msgid "There was an error reading the folder \"%B\"."
+msgstr "Wystąpił błąd podczas odczytywania katalogu „%s”."
+
+#: libcore/marlin-file-operations.c:1545
+msgid "Could not remove the folder %B."
+msgstr "Nie można usunąć katalogu „%B”."
+
+#: libcore/marlin-file-operations.c:1622
+msgid "There was an error deleting %B."
+msgstr "Wystąpił błąd podczas usuwania %B."
+
+#: libcore/marlin-file-operations.c:1706
+msgid "Moving files to trash"
+msgstr "Przenoszenie plików do kosza"
+
+#: libcore/marlin-file-operations.c:1708
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "pozostał %'d element do usunięcia"
+msgstr[1] "Pozostały %'d pliki do usunięcia"
+msgstr[2] "Pozostało %'d plików do usunięcia"
+
+#: libcore/marlin-file-operations.c:1802 libcore/marlin-file-operations.c:1805
+#: libcore/marlin-file-operations.c:1808
+msgid "Cannot move file to trash or delete it"
+msgstr "Nie można przenieść do kosza ani usunąć pliku"
+
+#: libcore/marlin-file-operations.c:1803
+msgid "It is not permitted to trash or delete files on a read only filesystem."
+msgstr ""
+"Przeniesienie do kosza lub usunięcie pliku jest niedozwolone na systemach "
+"plików tylko do odczytu."
+
+#: libcore/marlin-file-operations.c:1806
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr ""
+"Nie jest dozwolone przenoszenie do kosza lub usuwanie plików w katalogach, "
+"dla których nie masz prawa zapisu."
+
+#: libcore/marlin-file-operations.c:1809
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr ""
+"Nie jest dozwolone przenoszenie do kosza lub usuwanie katalogów, dla których "
+"nie masz prawa zapisu."
+
+#: libcore/marlin-file-operations.c:1811
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr "Nie można przenieść pliku do kosza. Spróbować całkowicie usunąć plik?"
+
+#: libcore/marlin-file-operations.c:1812
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+"Ten plik nie może zostać przeniesiony do kosza. Zerknij niżej po więcej "
+"informacji."
+
+#: libcore/marlin-file-operations.c:1816
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr "Nie można przenieść pliku do kosza. Spróbować całkowicie usunąć plik?"
+
+#: libcore/marlin-file-operations.c:1817
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr ""
+"Ten plik nie może zostać przeniesiony do kosza. Możesz nie mieć możliwości "
+"usunięcia go."
+
+#: libcore/marlin-file-operations.c:1822
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+"\n"
+" Usunięcie pliku usuwa go na zawsze"
+
+#: libcore/marlin-file-operations.c:2012
+msgid "Trashing Files"
+msgstr "Przenoszenie plików do kosza"
+
+#: libcore/marlin-file-operations.c:2014
+msgid "Deleting Files"
+msgstr "Usuwanie plików"
+
+#: libcore/marlin-file-operations.c:2083
+msgid "Unable to eject %V"
+msgstr "Nie można wysunąć %V"
+
+#: libcore/marlin-file-operations.c:2085
+msgid "Unable to unmount %V"
+msgstr "Nie można odmontować %V"
+
+#: libcore/marlin-file-operations.c:2299
+#, c-format
+msgid "Unable to mount %s"
+msgstr "Nie można zamontować %s"
+
+#: libcore/marlin-file-operations.c:2322
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "Przygotowywanie do skopiowania %'d pliku (%S)"
+msgstr[1] "Przygotowywanie do skopiowania %'d plików (%S)"
+msgstr[2] "Przygotowywanie do skopiowania %'d plików (%S)"
+
+#: libcore/marlin-file-operations.c:2328
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "Przygotowywanie do przeniesienia %'d pliku (%S)"
+msgstr[1] "Przygotowywanie do przeniesienia %'d plików (%S)"
+msgstr[2] "Przygotowywanie do przeniesienia %'d plików (%S)"
+
+#: libcore/marlin-file-operations.c:2334
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "Przygotowywanie do usunięcia %'d pliku (%S)"
+msgstr[1] "Przygotowywanie do usunięcia %'d plików (%S)"
+msgstr[2] "Przygotowywanie do usunięcia %'d plików (%S)"
+
+#: libcore/marlin-file-operations.c:2340
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Przygotowywanie do przeniesienia %'d pliku do kosza"
+msgstr[1] "Przygotowywanie do przeniesienia %'d plików do kosza"
+msgstr[2] "Przygotowywanie do przeniesienia %'d plików do kosza"
+
+#: libcore/marlin-file-operations.c:2371 libcore/marlin-file-operations.c:3261
+#: libcore/marlin-file-operations.c:3393 libcore/marlin-file-operations.c:3438
+msgid "Error while copying."
+msgstr "Wystąpił błąd podczas kopiowania plików."
+
+#: libcore/marlin-file-operations.c:2373 libcore/marlin-file-operations.c:3391
+#: libcore/marlin-file-operations.c:3436
+msgid "Error while moving."
+msgstr "Wystąpił błąd podczas przenoszenia plików."
+
+#: libcore/marlin-file-operations.c:2377
+msgid "Error while moving files to trash."
+msgstr "Wystąpił błąd podczas przenoszenia plików do kosza."
+
+#: libcore/marlin-file-operations.c:2431
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Nie można przeprowadzić operacji na plikach w katalogu „%B” ponieważ nie "
+"masz uprawnień do ich oglądania."
+
+#: libcore/marlin-file-operations.c:2470
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Nie można przeprowadzić operacji na katalogu „%B” ponieważ nie masz "
+"uprawnień do jego odczytu."
+
+#: libcore/marlin-file-operations.c:2546
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Nie można przeprowadzić operacji na pliku „%B” ponieważ nie masz uprawnień "
+"do jego odczytu."
+
+#: libcore/marlin-file-operations.c:2549
+msgid "There was an error getting information about \"%B\"."
+msgstr "Wystąpił błąd podczas uzyskiwania informacji na temat „%B”."
+
+#: libcore/marlin-file-operations.c:2649 libcore/marlin-file-operations.c:2691
+#: libcore/marlin-file-operations.c:2724 libcore/marlin-file-operations.c:2754
+msgid "Error while copying to \"%B\"."
+msgstr "Wystąpił błąd podczas kopiowania do katalogu „%B”."
+
+#: libcore/marlin-file-operations.c:2653
+msgid "You do not have permissions to access the destination folder."
+msgstr "Brak uprawnień dostępu do położenia docelowego."
+
+#: libcore/marlin-file-operations.c:2655
+msgid "There was an error getting information about the destination."
+msgstr ""
+"Wystąpił błąd podczas pobierania informacji na temat położenia docelowego."
+
+#: libcore/marlin-file-operations.c:2692
+msgid "The destination is not a folder."
+msgstr "Położenie docelowe nie jest katalogiem."
+
+#: libcore/marlin-file-operations.c:2725
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"Nie ma wystarczającej ilości przestrzeni dyskowej na nośniku docelowym. "
+"Proszę usunąć część plików w celu odzyskania wolnej przestrzeni."
+
+#: libcore/marlin-file-operations.c:2727
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Dostępne %S, a wymagane jest %S."
+
+#: libcore/marlin-file-operations.c:2755
+msgid "The destination is read-only."
+msgstr "Położenie docelowe jest tylko do odczytu."
+
+#: libcore/marlin-file-operations.c:2814
+msgid "Moving \"%B\" to \"%B\""
+msgstr "Przenoszenie „%B” do położenia „%B”"
+
+#: libcore/marlin-file-operations.c:2815
+msgid "Copying \"%B\" to \"%B\""
+msgstr "Kopiowanie „%B” do położenia „%B”"
+
+#: libcore/marlin-file-operations.c:2819
+msgid "Duplicating \"%B\""
+msgstr "Powielanie „%B”"
+
+#: libcore/marlin-file-operations.c:2823
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Przenoszenie %'d pliku (w „%B”) do „%B”"
+msgstr[1] "Przenoszenie %'d plików (w „%B”) do „%B”"
+msgstr[2] "Przenoszenie %'d plików (w „%B”) do „%B”"
+
+#: libcore/marlin-file-operations.c:2826
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Kopiowanie %'d pliku (w „%B”) do „%B”"
+msgstr[1] "Kopiowanie %'d plików (w „%B”) do „%B”"
+msgstr[2] "Kopiowanie %'d plików (w „%B”) do „%B”"
+
+#: libcore/marlin-file-operations.c:2833
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Powielanie %'d pliku (w „%B”)"
+msgstr[1] "Powielanie %'d plików (w „%B”)"
+msgstr[2] "Powielanie %'d plików (w „%B”)"
+
+#: libcore/marlin-file-operations.c:2842
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "Przenoszenie %'d pliku do położenia „%B”"
+msgstr[1] "Przenoszenie %'d plików do położenia „%B”"
+msgstr[2] "Przenoszenie %'d plików do położenia „%B”"
+
+#: libcore/marlin-file-operations.c:2846
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "Kopiowanie %'d pliku do położenia „%B”"
+msgstr[1] "Kopiowanie %'d plików do położenia „%B”"
+msgstr[2] "Kopiowanie %'d plików do położenia „%B”"
+
+#: libcore/marlin-file-operations.c:2851
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "Powielanie %'d pliku"
+msgstr[1] "Powielanie %'d plików"
+msgstr[2] "Powielanie %'d plików"
+
+#: libcore/marlin-file-operations.c:2877
+#, c-format
+msgid "%S of %S"
+msgstr "%S z %S"
+
+#: libcore/marlin-file-operations.c:2887
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S z %S — pozostała %T (%S/s)"
+msgstr[1] "%S z %S — pozostały %T (%S/s)"
+msgstr[2] "%S z %S — pozostało %T (%S/s)"
+
+#: libcore/marlin-file-operations.c:3265
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"Katalog „%B” nie może zostać skopiowany, ponieważ nie masz uprawnień do jego "
+"utworzenia w miejscu docelowym."
+
+#: libcore/marlin-file-operations.c:3268
+msgid "There was an error creating the folder \"%B\"."
+msgstr "Wystąpił błąd podczas tworzenia katalogu „%B”."
+
+#: libcore/marlin-file-operations.c:3398
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Pliki w katalogu „%B” nie mogą zostać skopiowane, ponieważ nie masz "
+"uprawnień do ich wyświetlenia."
+
+#: libcore/marlin-file-operations.c:3443
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr ""
+"Katalog „%B” nie może zostać skopiowany, ponieważ nie masz uprawnień do jego "
+"odczytu."
+
+#: libcore/marlin-file-operations.c:3488 libcore/marlin-file-operations.c:4152
+msgid "Error while moving \"%B\"."
+msgstr "Wystąpił błąd podczas przenoszenia „%B”."
+
+#: libcore/marlin-file-operations.c:3489
+msgid "Could not remove the source folder."
+msgstr "Nie można usunąć katalogu źródłowego."
+
+#: libcore/marlin-file-operations.c:3574 libcore/marlin-file-operations.c:3615
+#: libcore/marlin-file-operations.c:4154
+msgid "Error while copying \"%B\"."
+msgstr "Wystąpił błąd podczas kopiowania „%B”."
+
+#: libcore/marlin-file-operations.c:3575
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "Nie można usunąć plików z istniejącego już katalogu „%F”."
+
+#: libcore/marlin-file-operations.c:3616
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "Nie można usunąć istniejącego pliku %F."
+
+#: libcore/marlin-file-operations.c:3890 libcore/marlin-file-operations.c:4561
+msgid "You cannot move a folder into itself."
+msgstr "Nie można przenieść katalogu do niego samego."
+
+#: libcore/marlin-file-operations.c:3891 libcore/marlin-file-operations.c:4562
+msgid "You cannot copy a folder into itself."
+msgstr "Nie można skopiować katalogu do niego samego."
+
+#: libcore/marlin-file-operations.c:3892 libcore/marlin-file-operations.c:4563
+msgid "The destination folder is inside the source folder."
+msgstr "Położenie docelowe jest katalogiem podrzędnym położenia źródłowego."
+
+#: libcore/marlin-file-operations.c:3923
+msgid "You cannot move a file over itself."
+msgstr "Nie można przenieść pliku zastępując go samym sobą."
+
+#: libcore/marlin-file-operations.c:3924
+msgid "You cannot copy a file over itself."
+msgstr "Nie można skopiować pliku zastępując go samym sobą."
+
+#: libcore/marlin-file-operations.c:3925
+msgid "The source file would be overwritten by the destination."
+msgstr "Plik źródłowy zostanie zastąpiony plikiem docelowym."
+
+#: libcore/marlin-file-operations.c:4156
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr "Nie można usunąć istniejącego już pliku o tej samej nazwie w %F."
+
+#: libcore/marlin-file-operations.c:4221
+msgid "Cannot copy \"%B\" here."
+msgstr "Nie można skopiować \"%B\" tutaj."
+
+#: libcore/marlin-file-operations.c:4222
+msgid "There was an error copying the file into %B."
+msgstr "Wystąpił błąd podczas kopiowania pliku do %B."
+
+#: libcore/marlin-file-operations.c:4444
+msgid "Copying Files"
+msgstr "Kopiowanie plików"
+
+#: libcore/marlin-file-operations.c:4470
+msgid "Preparing to move to \"%B\""
+msgstr "Przygotowywanie do przeniesienia do „%B”"
+
+#: libcore/marlin-file-operations.c:4474
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Przygotowywanie do przeniesienia %'d pliku"
+msgstr[1] "Przygotowywanie do przeniesienia %'d plików"
+msgstr[2] "Przygotowywanie do przeniesienia %'d plików"
+
+#: libcore/marlin-file-operations.c:4720
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr "Błąd podczas przenoszenia \"%F\"."
+
+#: libcore/marlin-file-operations.c:4721
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "Wystąpił błąd podczas przenoszenia pliku do katalogu %F."
+
+#: libcore/marlin-file-operations.c:4978
+msgid "Moving Files"
+msgstr "Przenoszenie plików"
+
+#: libcore/marlin-file-operations.c:5007
+msgid "Creating links in \"%B\""
+msgstr "Tworzenie dowiązań w „%B”"
+
+#: libcore/marlin-file-operations.c:5011
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Tworzenie dowiązania do %'d pliku"
+msgstr[1] "Tworzenie dowiązań do %'d plików"
+msgstr[2] "Tworzenie dowiązań do %'d plików"
+
+#: libcore/marlin-file-operations.c:5151
+msgid "Error while creating link to %B."
+msgstr "Wystąpił błąd podczas tworzenia dowiązania do „%B”."
+
+#: libcore/marlin-file-operations.c:5153
+msgid "Symbolic links only supported for local files"
+msgstr "Dowiązania symboliczne obsługują tylko pliki lokalne"
+
+#: libcore/marlin-file-operations.c:5156
+msgid "The target doesn't support symbolic links."
+msgstr "Położenie docelowe nie obsługuje dowiązań symbolicznych."
+
+#: libcore/marlin-file-operations.c:5159
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr ""
+"Wystąpił błąd podczas tworzenia dowiązania symbolicznego w katalogu %F."
+
+#: libcore/marlin-file-operations.c:5477
+msgid "Setting permissions"
+msgstr "Nadawanie uprawnień"
+
+#: libcore/marlin-file-operations.c:5573
+msgid "Cannot copy into trash."
+msgstr "Nie można skopiować do kosza."
+
+#: libcore/marlin-file-operations.c:5574
+msgid "It is not permitted to copy files into the trash"
+msgstr "Kopiowanie plików do kosza nie jest dozwolone"
+
+#: libcore/marlin-file-operations.c:5712
+msgid "untitled folder"
+msgstr "Nowy katalog"
+
+#: libcore/marlin-file-operations.c:5720
+msgid "new file"
+msgstr "Nowy plik"
+
+#: libcore/marlin-file-operations.c:5891
+msgid "Error while creating directory %B."
+msgstr "Wystąpił błąd podczas tworzenia katalogu %B."
+
+#: libcore/marlin-file-operations.c:5893
+msgid "Error while creating file %B."
+msgstr "Wystąpił błąd podczas tworzenia pliku %B."
+
+#: libcore/marlin-file-operations.c:5895
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "Wystąpił błąd podczas tworzenia katalogu w katalogu %F."
+
+#: libcore/marlin-file-operations.c:6205
+msgid "Emptying Trash"
+msgstr "Opróżnianie kosza"
+
+#: libcore/marlin-undostack-manager.c:580
+msgid "Original location could not be determined"
+msgstr "Nie można określić pierwotnego położenia"
+
+#: libcore/marlin-undostack-manager.c:581
+msgid "Open trash folder and restore manually"
+msgstr "Otwórz katalog kosza i przywróć ręcznie"
+
+#: libcore/marlin-undostack-manager.c:1118
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Usuń %d skopiowanych elementów"
+
+#: libcore/marlin-undostack-manager.c:1121
+#: libcore/marlin-undostack-manager.c:1131
+#: libcore/marlin-undostack-manager.c:1162
+#, c-format
+msgid "Delete '%s'"
+msgstr "Usuwa „%s”"
+
+#: libcore/marlin-undostack-manager.c:1128
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Usuń %d duplikatów"
+
+#: libcore/marlin-undostack-manager.c:1139
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Przenieś %d elementów z powrotem do „%s”"
+
+#: libcore/marlin-undostack-manager.c:1143
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Przenosi „%s” z powrotem do „%s”"
+
+#: libcore/marlin-undostack-manager.c:1152
+#: libcore/marlin-undostack-manager.c:1319
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Zmienia nazwę „%s” na „%s”"
+
+#: libcore/marlin-undostack-manager.c:1171
+#: libcore/marlin-undostack-manager.c:1366
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Przywróć %d obiektów z kosza"
+
+#: libcore/marlin-undostack-manager.c:1179
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Przywraca „%s” do położenia „%s”"
+
+#: libcore/marlin-undostack-manager.c:1190
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Przenieś %d elementów z powrotem do kosza"
+
+#: libcore/marlin-undostack-manager.c:1193
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Przenosi „%s” z powrotem do kosza"
+
+#: libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Usuń dowiązania do %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1205
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Usuwa dowiązanie do „%s”"
+
+#: libcore/marlin-undostack-manager.c:1215
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Przywraca pierwotne uprawnienia elementów zawartych w „%s”"
+
+#: libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Przywraca pierwotne uprawnienia elementu „%s”"
+
+#: libcore/marlin-undostack-manager.c:1232
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Przywraca grupę „%s” na „%s”"
+
+#: libcore/marlin-undostack-manager.c:1242
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Przywraca właściciela „%s” na „%s”"
+
+#: libcore/marlin-undostack-manager.c:1281
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Skopiuj %d elementów do „%s”"
+
+#: libcore/marlin-undostack-manager.c:1285
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Kopiuje „%s” do „%s”"
+
+#: libcore/marlin-undostack-manager.c:1293
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Powiela %d elementów w „%s”"
+
+#: libcore/marlin-undostack-manager.c:1298
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Powiela „%s” w „%s”"
+
+#: libcore/marlin-undostack-manager.c:1306
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Przenosi %d elementów do „%s”"
+
+#: libcore/marlin-undostack-manager.c:1310
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Przenosi „%s” do „%s”"
+
+#: libcore/marlin-undostack-manager.c:1328
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Tworzy nowy plik „%s” z szablonu "
+
+#: libcore/marlin-undostack-manager.c:1335
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Tworzy pusty plik „%s”"
+
+#: libcore/marlin-undostack-manager.c:1342
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Tworzy nowy katalog „%s”"
+
+#: libcore/marlin-undostack-manager.c:1350
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Przenosi %d elementów do kosza"
+
+#: libcore/marlin-undostack-manager.c:1356
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Przenosi „%s” do kosza"
+
+#: libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Przywraca „%s” z kosza"
+
+#: libcore/marlin-undostack-manager.c:1378
+#, c-format
+msgid "Create links to %d items"
+msgstr "Tworzy dowiązania do %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1381
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Tworzy dowiązanie do „%s”"
+
+#: libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Ustawia uprawnienia elementów zawartych w „%s”"
+
+#: libcore/marlin-undostack-manager.c:1398
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Ustanawia uprawnienia „%s”"
+
+#: libcore/marlin-undostack-manager.c:1407
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Ustanawia grupę „%s” na „%s”"
+
+#: libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Ustanawia właściciela „%s” na „%s”"
+
+#: libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Cofnij kopiowanie %d elementu"
+msgstr[1] "_Cofnij kopiowanie %d elementów"
+msgstr[2] "_Cofnij kopiowanie %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1454
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Cofnij duplikowanie %d elementu"
+msgstr[1] "_Cofnij duplikowanie %d elementów"
+msgstr[2] "_Cofnij duplikowanie %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1459
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Cofnij przeniesienie %d elementu"
+msgstr[1] "_Cofnij przeniesienie %d elementów"
+msgstr[2] "_Cofnij przeniesienie %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1464
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Cofnij zmianę nazwy %d elementu"
+msgstr[1] "_Cofnij zmianę nazwy %d elementów"
+msgstr[2] "_Cofnij zmianę nazwy %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1468
+msgid "_Undo creation of an empty file"
+msgstr "_Cofnij utworzenie pustego pliku"
+
+#: libcore/marlin-undostack-manager.c:1471
+msgid "_Undo creation of a file from template"
+msgstr "_Cofnij utworzenie pliku z szablonu"
+
+#: libcore/marlin-undostack-manager.c:1475
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Cofnij utworzenie katalogu"
+msgstr[1] "_Cofnij utworzenie %d katalogów"
+msgstr[2] "_Cofnij utworzenie %d katalogów"
+
+#: libcore/marlin-undostack-manager.c:1480
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Cofnij przeniesienie do kosza elementu"
+msgstr[1] "_Cofnij przeniesienie do kosza %d elementów"
+msgstr[2] "_Cofnij przeniesienie do kosza %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Cofnij przywrócenie elementu z kosza"
+msgstr[1] "_Cofnij przywrócenie z kosza %d elementów"
+msgstr[2] "_Cofnij przywrócenie z kosza %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1490
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Cofnij utworzenie aktywatora dla %d elementu"
+msgstr[1] "_Cofnij utworzenie aktywatora dla %d elementów"
+msgstr[2] "_Cofnij utworzenie aktywatora dla %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1495
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Cofnij usunięcie %d elementu"
+msgstr[1] "_Cofnij usunięcie %d elementów"
+msgstr[2] "_Cofnij usunięcie %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1500
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Cofnij zmianę uprawnień dla elementu i elementów w nim zawartych"
+msgstr[1] ""
+"Cofnij zmianę uprawnień dla %d elementów i elementów w nich zawartych"
+msgstr[2] ""
+"Cofnij zmianę uprawnień dla %d elementów i elementów w nich zawartych"
+
+#: libcore/marlin-undostack-manager.c:1506
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Cofnij zmianę uprawnień %d elementu"
+msgstr[1] "Cofnij zmianę uprawnień %d elementów"
+msgstr[2] "Confij zmianę uprawnień %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1511
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Cofnij zmianę grupy %d elementu"
+msgstr[1] "Cofnij zmianę grupy %d elementów"
+msgstr[2] "Cofnij zmianę grupy %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1516
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Confij zmianę właściciela %d elementu"
+msgstr[1] "Confij zmianę właściciela %d elementów"
+msgstr[2] "Confij zmianę właściciela %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1544
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Ponów kopiowanie elementu"
+msgstr[1] "_Ponów kopiowanie %d elementów"
+msgstr[2] "_Ponów kopiowanie %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1549
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Ponów powielenie elementu"
+msgstr[1] "_Ponów powielenie %d elementów"
+msgstr[2] "_Ponów powielenie %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1554
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Ponów przeniesienie elementu"
+msgstr[1] "_Ponów przeniesienie %d elementów"
+msgstr[2] "_Ponów przeniesienie %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Ponów zmianę nazwy elementu"
+msgstr[1] "_Ponów zmianę nazwy %d elementów"
+msgstr[2] "_Ponów zmianę nazwy %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1563
+msgid "_Redo creation of an empty file"
+msgstr "_Ponów utworzenie pustego pliku"
+
+#: libcore/marlin-undostack-manager.c:1566
+msgid "_Redo creation of a file from template"
+msgstr "_Ponów utworzenie pliku z szablonu"
+
+#: libcore/marlin-undostack-manager.c:1570
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Powtórz utworzenie katalogu"
+msgstr[1] "_Powtórz utworzenie %d katalogów"
+msgstr[2] "_Powtórz utworzenie %d katalogów"
+
+#: libcore/marlin-undostack-manager.c:1575
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Powtórz przeniesienie do kosza elementu"
+msgstr[1] "_Powtórz przeniesienie do kosza %d elementu"
+msgstr[2] "_Powtórz przeniesienie do kosza %d elementu"
+
+#: libcore/marlin-undostack-manager.c:1580
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Powtórz przywrócenie z kosza elementu"
+msgstr[1] "_Powtórz przywrócenie z kosza %d elementów"
+msgstr[2] "_Powtórz przywrócenie z kosza %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1585
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Ponów utworzenie dowiązania do elementu"
+msgstr[1] "_Ponów utworzenie dowiązań do %d elementów"
+msgstr[2] "_Ponów utworzenie dowiązań do %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Ponów usunięcie elementu"
+msgstr[1] "_Ponów usunięcie %d elementów"
+msgstr[2] "_Ponów usunięcie %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Ponów zmianę uprawnień elementu i elementów w nim zawartych"
+msgstr[1] "Ponów zmianę uprawnień %d elementów i elementów w nich zawartych"
+msgstr[2] "Ponów zmianę uprawnień %d elementów i elementów w nich zawartych"
+
+#: libcore/marlin-undostack-manager.c:1601
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Powtórz zmianę uprawnień do elementu"
+msgstr[1] "_Ponów zmianę uprawnień %d elementów"
+msgstr[2] "_Ponów zmianę uprawnień %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1606
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Ponów zmianę grupy elementu"
+msgstr[1] "Ponów zmianę grupy %d elementów"
+msgstr[2] "Ponów zmianę grupy %d elementów"
+
+#: libcore/marlin-undostack-manager.c:1611
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Ponów zmianę właściciela elementu"
+msgstr[1] "Ponów zmianę właściciela %d elementów"
+msgstr[2] "Ponów zmianę właściciela %d elementów"
+
+#: libcore/gof-file.c:332 libcore/gof-file.c:506
+msgid "Inaccessible"
+msgstr "Niedostępny"
+
+#: libcore/gof-file.c:347
+#, c-format
+msgid "link to %s"
+msgstr "dowiązanie do %s"
+
 #: libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
 msgstr "Podaj ścieżkę"
@@ -1120,12 +2309,6 @@ msgstr "Przywróć zaznaczone"
 msgid "Delete Selected"
 msgstr "Usuń zaznaczone"
 
-#~ msgid "Inaccessible"
-#~ msgstr "Niedostępny"
-
-#~ msgid "link to %s"
-#~ msgstr "dowiązanie do %s"
-
 #~ msgid "Failed to parse the desktop file: %s"
 #~ msgstr "Nie udało się przetworzyć pliku .desktop: %s"
 
@@ -1137,72 +2320,6 @@ msgstr "Usuń zaznaczone"
 
 #~ msgid "Unable to Launch Desktop File: %s"
 #~ msgstr "Nie udało się uruchomić pliku pulpitu: %s"
-
-#~ msgid "S_kip All"
-#~ msgstr "P_omiń wszystkie"
-
-#~ msgid "_Retry"
-#~ msgstr "_Ponów"
-
-#~ msgid "Delete _All"
-#~ msgstr "U_suń wszystkie"
-
-#~ msgid "_Replace"
-#~ msgstr "_Zastąp"
-
-#~ msgid "Replace _All"
-#~ msgstr "Z_astąp wszystkie"
-
-#~ msgid "_Merge"
-#~ msgstr "_Połącz"
-
-#~ msgid "Merge _All"
-#~ msgstr "P_ołącz wszystkie"
-
-#~ msgid "Copy _Anyway"
-#~ msgstr "Skopiuj po_mimo tego"
-
-#~ msgid "%'d second"
-#~ msgid_plural "%'d seconds"
-#~ msgstr[0] "%d sekunda"
-#~ msgstr[1] "%d sekundy"
-#~ msgstr[2] "%d sekund"
-
-#~ msgid "%'d minute"
-#~ msgid_plural "%'d minutes"
-#~ msgstr[0] "%d minuta"
-#~ msgstr[1] "%d minuty"
-#~ msgstr[2] "%d minut"
-
-#~ msgid "%'d hour"
-#~ msgid_plural "%'d hours"
-#~ msgstr[0] "%d godzina"
-#~ msgstr[1] "%d godziny"
-#~ msgstr[2] "%d godzin"
-
-#~ msgid "approximately %'d hour"
-#~ msgid_plural "approximately %'d hours"
-#~ msgstr[0] "w przybliżeniu %'d godzina"
-#~ msgstr[1] "w przybliżeniu %'d godziny"
-#~ msgstr[2] "w przybliżeniu %'d godzin"
-
-#~ msgid "Link to %s"
-#~ msgstr "Dowiązanie do %s"
-
-#~ msgid "Another link to %s"
-#~ msgstr "Kolejne dowiązanie do %s"
-
-#~ msgid "%'dst link to %s"
-#~ msgstr "%'d. dowiązanie do %s"
-
-#~ msgid "%'dnd link to %s"
-#~ msgstr "%'d. dowiązanie do %s"
-
-#~ msgid "%'drd link to %s"
-#~ msgstr "%'d. dowiązanie do %s"
-
-#~ msgid "%'dth link to %s"
-#~ msgstr "%'d. dowiązanie do %s"
 
 #~ msgid " (copy)"
 #~ msgstr " (kopia)"
@@ -1240,734 +2357,6 @@ msgstr "Usuń zaznaczone"
 #~ msgid "%s (%'drd copy)%s"
 #~ msgstr "%s (%'d. kopia)%s"
 
-#~ msgid " ("
-#~ msgstr " ("
-
-#~ msgid " (%'d"
-#~ msgstr " (%'d"
-
-#~ msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-#~ msgstr "Usunąć trwale „%B” z kosza?"
-
-#~ msgid ""
-#~ "Are you sure you want to permanently delete the %'d selected item from "
-#~ "the trash?"
-#~ msgid_plural ""
-#~ "Are you sure you want to permanently delete the %'d selected items from "
-#~ "the trash?"
-#~ msgstr[0] "Usunąć trwale z kosza %'d zaznaczony element?"
-#~ msgstr[1] "Usunąć trwale z kosza %'d zaznaczone elementy?"
-#~ msgstr[2] "Usunąć trwale z kosza %'d zaznaczonych elementów?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Element zostanie trwale usunięty."
-
-#~ msgid "Permanently delete all items from Trash?"
-#~ msgstr "Trwale usunąć wszystkie pliki z Kosza?"
-
-#~ msgid ""
-#~ "All items in all trash directories, including those on any mounted "
-#~ "external drives, will be permanently deleted."
-#~ msgstr ""
-#~ "Wszystkie pliki w koszu także te na zamontowanych dyskach zewnętrznych "
-#~ "zostaną trwale usunięte."
-
-#~ msgid "Permanently delete all items from Trash on this mount?"
-#~ msgstr ""
-#~ "Trwale usunąć wszystkie pliki z tego nośnika znajdujące się w Koszu?"
-
-#~ msgid "All items in the trash on this mount, will be permanently deleted."
-#~ msgstr ""
-#~ "Wszystkie pliki z tego nośnika znajdujące się w koszu zostaną trwale "
-#~ "usunięte."
-
-#~ msgid "Are you sure you want to permanently delete \"%B\"?"
-#~ msgstr "Usunąć trwale „%B”?"
-
-#~ msgid "Are you sure you want to permanently delete the %'d selected item?"
-#~ msgid_plural ""
-#~ "Are you sure you want to permanently delete the %'d selected items?"
-#~ msgstr[0] "Usunąć trwale %'d zaznaczony element?"
-#~ msgstr[1] "Usunąć trwale %'d zaznaczone elementy?"
-#~ msgstr[2] "Usunąć trwale %'d zaznaczonych elementów?"
-
-#~ msgid "%'d file left to delete"
-#~ msgid_plural "%'d files left to delete"
-#~ msgstr[0] "Pozostał %'d plik do usunięcia"
-#~ msgstr[1] "Pozostały %'d pliki do usunięcia"
-#~ msgstr[2] "Pozostało %'d plików do usunięcia"
-
-#~ msgid "Deleting files"
-#~ msgstr "Usuwanie plików"
-
-#~ msgid "%T left"
-#~ msgid_plural "%T left"
-#~ msgstr[0] "Pozostała %T"
-#~ msgstr[1] "Pozostały %T"
-#~ msgstr[2] "Pozostało %T"
-
-#~ msgid "Error while deleting."
-#~ msgstr "Wystąpił błąd podczas usuwania plików."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be deleted because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Pliki w katalogu „%B” nie mogą być usunięte ponieważ nie masz uprawnień "
-#~ "do ich oglądania."
-
-#~ msgid ""
-#~ "There was an error getting information about the files in the folder \"%B"
-#~ "\"."
-#~ msgstr ""
-#~ "Wystąpił błąd podczas uzyskiwania informacji na temat plików w katalogu "
-#~ "„%B”."
-
-#~ msgid "_Skip files"
-#~ msgstr "_Pomiń pliki"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be deleted because you do not have permissions "
-#~ "to read it."
-#~ msgstr ""
-#~ "Nie można usunąć katalogu „%B” z powodu braku uprawnień do jego odczytu."
-
-#~ msgid "There was an error reading the folder \"%B\"."
-#~ msgstr "Wystąpił błąd podczas odczytywania katalogu „%s”."
-
-#~ msgid "Could not remove the folder %B."
-#~ msgstr "Nie można usunąć katalogu „%B”."
-
-#~ msgid "There was an error deleting %B."
-#~ msgstr "Wystąpił błąd podczas usuwania %B."
-
-#~ msgid "Moving files to trash"
-#~ msgstr "Przenoszenie plików do kosza"
-
-#~ msgid "%'d file left to trash"
-#~ msgid_plural "%'d files left to trash"
-#~ msgstr[0] "pozostał %'d element do usunięcia"
-#~ msgstr[1] "Pozostały %'d pliki do usunięcia"
-#~ msgstr[2] "Pozostało %'d plików do usunięcia"
-
-#~ msgid "Cannot move file to trash or delete it"
-#~ msgstr "Nie można przenieść do kosza ani usunąć pliku"
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete files on a read only filesystem."
-#~ msgstr ""
-#~ "Przeniesienie do kosza lub usunięcie pliku jest niedozwolone na systemach "
-#~ "plików tylko do odczytu."
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete files inside folders for which you "
-#~ "do not have write privileges."
-#~ msgstr ""
-#~ "Nie jest dozwolone przenoszenie do kosza lub usuwanie plików w "
-#~ "katalogach, dla których nie masz prawa zapisu."
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete folders for which you do not have "
-#~ "write privileges."
-#~ msgstr ""
-#~ "Nie jest dozwolone przenoszenie do kosza lub usuwanie katalogów, dla "
-#~ "których nie masz prawa zapisu."
-
-#~ msgid "Cannot move file to trash. Try to delete it immediately?"
-#~ msgstr ""
-#~ "Nie można przenieść pliku do kosza. Spróbować całkowicie usunąć plik?"
-
-#~ msgid ""
-#~ "This file could not be moved to trash. See details below for further "
-#~ "information."
-#~ msgstr ""
-#~ "Ten plik nie może zostać przeniesiony do kosza. Zerknij niżej po więcej "
-#~ "informacji."
-
-#~ msgid "Cannot move file to trash.  Try to delete it?"
-#~ msgstr ""
-#~ "Nie można przenieść pliku do kosza. Spróbować całkowicie usunąć plik?"
-
-#~ msgid ""
-#~ "This file could not be moved to trash. You may not be able to delete it "
-#~ "either."
-#~ msgstr ""
-#~ "Ten plik nie może zostać przeniesiony do kosza. Możesz nie mieć "
-#~ "możliwości usunięcia go."
-
-#~ msgid ""
-#~ "\n"
-#~ " Deleting a file removes it permanently"
-#~ msgstr ""
-#~ "\n"
-#~ " Usunięcie pliku usuwa go na zawsze"
-
-#~ msgid "Trashing Files"
-#~ msgstr "Przenoszenie plików do kosza"
-
-#~ msgid "Deleting Files"
-#~ msgstr "Usuwanie plików"
-
-#~ msgid "Unable to eject %V"
-#~ msgstr "Nie można wysunąć %V"
-
-#~ msgid "Unable to unmount %V"
-#~ msgstr "Nie można odmontować %V"
-
-#~ msgid "Unable to mount %s"
-#~ msgstr "Nie można zamontować %s"
-
-#~ msgid "Preparing to copy %'d file (%S)"
-#~ msgid_plural "Preparing to copy %'d files (%S)"
-#~ msgstr[0] "Przygotowywanie do skopiowania %'d pliku (%S)"
-#~ msgstr[1] "Przygotowywanie do skopiowania %'d plików (%S)"
-#~ msgstr[2] "Przygotowywanie do skopiowania %'d plików (%S)"
-
-#~ msgid "Preparing to move %'d file (%S)"
-#~ msgid_plural "Preparing to move %'d files (%S)"
-#~ msgstr[0] "Przygotowywanie do przeniesienia %'d pliku (%S)"
-#~ msgstr[1] "Przygotowywanie do przeniesienia %'d plików (%S)"
-#~ msgstr[2] "Przygotowywanie do przeniesienia %'d plików (%S)"
-
-#~ msgid "Preparing to delete %'d file (%S)"
-#~ msgid_plural "Preparing to delete %'d files (%S)"
-#~ msgstr[0] "Przygotowywanie do usunięcia %'d pliku (%S)"
-#~ msgstr[1] "Przygotowywanie do usunięcia %'d plików (%S)"
-#~ msgstr[2] "Przygotowywanie do usunięcia %'d plików (%S)"
-
-#~ msgid "Preparing to trash %'d file"
-#~ msgid_plural "Preparing to trash %'d files"
-#~ msgstr[0] "Przygotowywanie do przeniesienia %'d pliku do kosza"
-#~ msgstr[1] "Przygotowywanie do przeniesienia %'d plików do kosza"
-#~ msgstr[2] "Przygotowywanie do przeniesienia %'d plików do kosza"
-
-#~ msgid "Error while copying."
-#~ msgstr "Wystąpił błąd podczas kopiowania plików."
-
-#~ msgid "Error while moving."
-#~ msgstr "Wystąpił błąd podczas przenoszenia plików."
-
-#~ msgid "Error while moving files to trash."
-#~ msgstr "Wystąpił błąd podczas przenoszenia plików do kosza."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be handled because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Nie można przeprowadzić operacji na plikach w katalogu „%B” ponieważ nie "
-#~ "masz uprawnień do ich oglądania."
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be handled because you do not have permissions "
-#~ "to read it."
-#~ msgstr ""
-#~ "Nie można przeprowadzić operacji na katalogu „%B” ponieważ nie masz "
-#~ "uprawnień do jego odczytu."
-
-#~ msgid ""
-#~ "The file \"%B\" cannot be handled because you do not have permissions to "
-#~ "read it."
-#~ msgstr ""
-#~ "Nie można przeprowadzić operacji na pliku „%B” ponieważ nie masz "
-#~ "uprawnień do jego odczytu."
-
-#~ msgid "There was an error getting information about \"%B\"."
-#~ msgstr "Wystąpił błąd podczas uzyskiwania informacji na temat „%B”."
-
-#~ msgid "Error while copying to \"%B\"."
-#~ msgstr "Wystąpił błąd podczas kopiowania do katalogu „%B”."
-
-#~ msgid "You do not have permissions to access the destination folder."
-#~ msgstr "Brak uprawnień dostępu do położenia docelowego."
-
-#~ msgid "There was an error getting information about the destination."
-#~ msgstr ""
-#~ "Wystąpił błąd podczas pobierania informacji na temat położenia docelowego."
-
-#~ msgid "The destination is not a folder."
-#~ msgstr "Położenie docelowe nie jest katalogiem."
-
-#~ msgid ""
-#~ "There is not enough space on the destination. Try to remove files to make "
-#~ "space."
-#~ msgstr ""
-#~ "Nie ma wystarczającej ilości przestrzeni dyskowej na nośniku docelowym. "
-#~ "Proszę usunąć część plików w celu odzyskania wolnej przestrzeni."
-
-#~ msgid "There is %S available, but %S is required."
-#~ msgstr "Dostępne %S, a wymagane jest %S."
-
-#~ msgid "The destination is read-only."
-#~ msgstr "Położenie docelowe jest tylko do odczytu."
-
-#~ msgid "Moving \"%B\" to \"%B\""
-#~ msgstr "Przenoszenie „%B” do położenia „%B”"
-
-#~ msgid "Copying \"%B\" to \"%B\""
-#~ msgstr "Kopiowanie „%B” do położenia „%B”"
-
-#~ msgid "Duplicating \"%B\""
-#~ msgstr "Powielanie „%B”"
-
-#~ msgid "Moving %'d file (in \"%B\") to \"%B\""
-#~ msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-#~ msgstr[0] "Przenoszenie %'d pliku (w „%B”) do „%B”"
-#~ msgstr[1] "Przenoszenie %'d plików (w „%B”) do „%B”"
-#~ msgstr[2] "Przenoszenie %'d plików (w „%B”) do „%B”"
-
-#~ msgid "Copying %'d file (in \"%B\") to \"%B\""
-#~ msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-#~ msgstr[0] "Kopiowanie %'d pliku (w „%B”) do „%B”"
-#~ msgstr[1] "Kopiowanie %'d plików (w „%B”) do „%B”"
-#~ msgstr[2] "Kopiowanie %'d plików (w „%B”) do „%B”"
-
-#~ msgid "Duplicating %'d file (in \"%B\")"
-#~ msgid_plural "Duplicating %'d files (in \"%B\")"
-#~ msgstr[0] "Powielanie %'d pliku (w „%B”)"
-#~ msgstr[1] "Powielanie %'d plików (w „%B”)"
-#~ msgstr[2] "Powielanie %'d plików (w „%B”)"
-
-#~ msgid "Moving %'d file to \"%B\""
-#~ msgid_plural "Moving %'d files to \"%B\""
-#~ msgstr[0] "Przenoszenie %'d pliku do położenia „%B”"
-#~ msgstr[1] "Przenoszenie %'d plików do położenia „%B”"
-#~ msgstr[2] "Przenoszenie %'d plików do położenia „%B”"
-
-#~ msgid "Copying %'d file to \"%B\""
-#~ msgid_plural "Copying %'d files to \"%B\""
-#~ msgstr[0] "Kopiowanie %'d pliku do położenia „%B”"
-#~ msgstr[1] "Kopiowanie %'d plików do położenia „%B”"
-#~ msgstr[2] "Kopiowanie %'d plików do położenia „%B”"
-
-#~ msgid "Duplicating %'d file"
-#~ msgid_plural "Duplicating %'d files"
-#~ msgstr[0] "Powielanie %'d pliku"
-#~ msgstr[1] "Powielanie %'d plików"
-#~ msgstr[2] "Powielanie %'d plików"
-
-#~ msgid "%S of %S"
-#~ msgstr "%S z %S"
-
-#~ msgid "%S of %S — %T left (%S/sec)"
-#~ msgid_plural "%S of %S — %T left (%S/sec)"
-#~ msgstr[0] "%S z %S — pozostała %T (%S/s)"
-#~ msgstr[1] "%S z %S — pozostały %T (%S/s)"
-#~ msgstr[2] "%S z %S — pozostało %T (%S/s)"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
-#~ "create it in the destination."
-#~ msgstr ""
-#~ "Katalog „%B” nie może zostać skopiowany, ponieważ nie masz uprawnień do "
-#~ "jego utworzenia w miejscu docelowym."
-
-#~ msgid "There was an error creating the folder \"%B\"."
-#~ msgstr "Wystąpił błąd podczas tworzenia katalogu „%B”."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be copied because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Pliki w katalogu „%B” nie mogą zostać skopiowane, ponieważ nie masz "
-#~ "uprawnień do ich wyświetlenia."
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
-#~ "read it."
-#~ msgstr ""
-#~ "Katalog „%B” nie może zostać skopiowany, ponieważ nie masz uprawnień do "
-#~ "jego odczytu."
-
-#~ msgid "Error while moving \"%B\"."
-#~ msgstr "Wystąpił błąd podczas przenoszenia „%B”."
-
-#~ msgid "Could not remove the source folder."
-#~ msgstr "Nie można usunąć katalogu źródłowego."
-
-#~ msgid "Error while copying \"%B\"."
-#~ msgstr "Wystąpił błąd podczas kopiowania „%B”."
-
-#~ msgid "Could not remove files from the already existing folder %F."
-#~ msgstr "Nie można usunąć plików z istniejącego już katalogu „%F”."
-
-#~ msgid "Could not remove the already existing file %F."
-#~ msgstr "Nie można usunąć istniejącego pliku %F."
-
-#~ msgid "You cannot move a folder into itself."
-#~ msgstr "Nie można przenieść katalogu do niego samego."
-
-#~ msgid "You cannot copy a folder into itself."
-#~ msgstr "Nie można skopiować katalogu do niego samego."
-
-#~ msgid "The destination folder is inside the source folder."
-#~ msgstr "Położenie docelowe jest katalogiem podrzędnym położenia źródłowego."
-
-#~ msgid "You cannot move a file over itself."
-#~ msgstr "Nie można przenieść pliku zastępując go samym sobą."
-
-#~ msgid "You cannot copy a file over itself."
-#~ msgstr "Nie można skopiować pliku zastępując go samym sobą."
-
-#~ msgid "The source file would be overwritten by the destination."
-#~ msgstr "Plik źródłowy zostanie zastąpiony plikiem docelowym."
-
-#~ msgid "Could not remove the already existing file with the same name in %F."
-#~ msgstr "Nie można usunąć istniejącego już pliku o tej samej nazwie w %F."
-
-#~ msgid "Cannot copy \"%B\" here."
-#~ msgstr "Nie można skopiować \"%B\" tutaj."
-
-#~ msgid "There was an error copying the file into %B."
-#~ msgstr "Wystąpił błąd podczas kopiowania pliku do %B."
-
-#~ msgid "Copying Files"
-#~ msgstr "Kopiowanie plików"
-
-#~ msgid "Preparing to move to \"%B\""
-#~ msgstr "Przygotowywanie do przeniesienia do „%B”"
-
-#~ msgid "Preparing to move %'d file"
-#~ msgid_plural "Preparing to move %'d files"
-#~ msgstr[0] "Przygotowywanie do przeniesienia %'d pliku"
-#~ msgstr[1] "Przygotowywanie do przeniesienia %'d plików"
-#~ msgstr[2] "Przygotowywanie do przeniesienia %'d plików"
-
-#~ msgid "Error while moving \"%F\"."
-#~ msgstr "Błąd podczas przenoszenia \"%F\"."
-
-#~ msgid "There was an error moving the file into %F."
-#~ msgstr "Wystąpił błąd podczas przenoszenia pliku do katalogu %F."
-
-#~ msgid "Moving Files"
-#~ msgstr "Przenoszenie plików"
-
-#~ msgid "Creating links in \"%B\""
-#~ msgstr "Tworzenie dowiązań w „%B”"
-
-#~ msgid "Making link to %'d file"
-#~ msgid_plural "Making links to %'d files"
-#~ msgstr[0] "Tworzenie dowiązania do %'d pliku"
-#~ msgstr[1] "Tworzenie dowiązań do %'d plików"
-#~ msgstr[2] "Tworzenie dowiązań do %'d plików"
-
-#~ msgid "Error while creating link to %B."
-#~ msgstr "Wystąpił błąd podczas tworzenia dowiązania do „%B”."
-
-#~ msgid "Symbolic links only supported for local files"
-#~ msgstr "Dowiązania symboliczne obsługują tylko pliki lokalne"
-
-#~ msgid "The target doesn't support symbolic links."
-#~ msgstr "Położenie docelowe nie obsługuje dowiązań symbolicznych."
-
-#~ msgid "There was an error creating the symlink in %F."
-#~ msgstr ""
-#~ "Wystąpił błąd podczas tworzenia dowiązania symbolicznego w katalogu %F."
-
-#~ msgid "Setting permissions"
-#~ msgstr "Nadawanie uprawnień"
-
-#~ msgid "Cannot copy into trash."
-#~ msgstr "Nie można skopiować do kosza."
-
-#~ msgid "It is not permitted to copy files into the trash"
-#~ msgstr "Kopiowanie plików do kosza nie jest dozwolone"
-
-#~ msgid "untitled folder"
-#~ msgstr "Nowy katalog"
-
-#~ msgid "new file"
-#~ msgstr "Nowy plik"
-
-#~ msgid "Error while creating directory %B."
-#~ msgstr "Wystąpił błąd podczas tworzenia katalogu %B."
-
-#~ msgid "Error while creating file %B."
-#~ msgstr "Wystąpił błąd podczas tworzenia pliku %B."
-
-#~ msgid "There was an error creating the directory in %F."
-#~ msgstr "Wystąpił błąd podczas tworzenia katalogu w katalogu %F."
-
-#~ msgid "Emptying Trash"
-#~ msgstr "Opróżnianie kosza"
-
-#~ msgid "Original location could not be determined"
-#~ msgstr "Nie można określić pierwotnego położenia"
-
-#~ msgid "Open trash folder and restore manually"
-#~ msgstr "Otwórz katalog kosza i przywróć ręcznie"
-
-#~ msgid "Delete %d copied items"
-#~ msgstr "Usuń %d skopiowanych elementów"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Usuwa „%s”"
-
-#~ msgid "Delete %d duplicated items"
-#~ msgstr "Usuń %d duplikatów"
-
-#~ msgid "Move %d items back to '%s'"
-#~ msgstr "Przenieś %d elementów z powrotem do „%s”"
-
-#~ msgid "Move '%s' back to '%s'"
-#~ msgstr "Przenosi „%s” z powrotem do „%s”"
-
-#~ msgid "Rename '%s' as '%s'"
-#~ msgstr "Zmienia nazwę „%s” na „%s”"
-
-#~ msgid "Restore %d items from trash"
-#~ msgstr "Przywróć %d obiektów z kosza"
-
-#~ msgid "Restore '%s' to '%s'"
-#~ msgstr "Przywraca „%s” do położenia „%s”"
-
-#~ msgid "Move %d items back to trash"
-#~ msgstr "Przenieś %d elementów z powrotem do kosza"
-
-#~ msgid "Move '%s' back to trash"
-#~ msgstr "Przenosi „%s” z powrotem do kosza"
-
-#~ msgid "Delete links to %d items"
-#~ msgstr "Usuń dowiązania do %d elementów"
-
-#~ msgid "Delete link to '%s'"
-#~ msgstr "Usuwa dowiązanie do „%s”"
-
-#~ msgid "Restore original permissions of items enclosed in '%s'"
-#~ msgstr "Przywraca pierwotne uprawnienia elementów zawartych w „%s”"
-
-#~ msgid "Restore original permissions of '%s'"
-#~ msgstr "Przywraca pierwotne uprawnienia elementu „%s”"
-
-#~ msgid "Restore group of '%s' to '%s'"
-#~ msgstr "Przywraca grupę „%s” na „%s”"
-
-#~ msgid "Restore owner of '%s' to '%s'"
-#~ msgstr "Przywraca właściciela „%s” na „%s”"
-
-#~ msgid "Copy %d items to '%s'"
-#~ msgstr "Skopiuj %d elementów do „%s”"
-
-#~ msgid "Copy '%s' to '%s'"
-#~ msgstr "Kopiuje „%s” do „%s”"
-
-#~ msgid "Duplicate of %d items in '%s'"
-#~ msgstr "Powiela %d elementów w „%s”"
-
-#~ msgid "Duplicate '%s' in '%s'"
-#~ msgstr "Powiela „%s” w „%s”"
-
-#~ msgid "Move %d items to '%s'"
-#~ msgstr "Przenosi %d elementów do „%s”"
-
-#~ msgid "Move '%s' to '%s'"
-#~ msgstr "Przenosi „%s” do „%s”"
-
-#~ msgid "Create new file '%s' from template "
-#~ msgstr "Tworzy nowy plik „%s” z szablonu "
-
-#~ msgid "Create an empty file '%s'"
-#~ msgstr "Tworzy pusty plik „%s”"
-
-#~ msgid "Create a new folder '%s'"
-#~ msgstr "Tworzy nowy katalog „%s”"
-
-#~ msgid "Move %d items to trash"
-#~ msgstr "Przenosi %d elementów do kosza"
-
-#~ msgid "Move '%s' to trash"
-#~ msgstr "Przenosi „%s” do kosza"
-
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "Przywraca „%s” z kosza"
-
-#~ msgid "Create links to %d items"
-#~ msgstr "Tworzy dowiązania do %d elementów"
-
-#~ msgid "Create link to '%s'"
-#~ msgstr "Tworzy dowiązanie do „%s”"
-
-#~ msgid "Set permissions of items enclosed in '%s'"
-#~ msgstr "Ustawia uprawnienia elementów zawartych w „%s”"
-
-#~ msgid "Set permissions of '%s'"
-#~ msgstr "Ustanawia uprawnienia „%s”"
-
-#~ msgid "Set group of '%s' to '%s'"
-#~ msgstr "Ustanawia grupę „%s” na „%s”"
-
-#~ msgid "Set owner of '%s' to '%s'"
-#~ msgstr "Ustanawia właściciela „%s” na „%s”"
-
-#~ msgid "_Undo copy of %d item"
-#~ msgid_plural "_Undo copy of %d items"
-#~ msgstr[0] "_Cofnij kopiowanie %d elementu"
-#~ msgstr[1] "_Cofnij kopiowanie %d elementów"
-#~ msgstr[2] "_Cofnij kopiowanie %d elementów"
-
-#~ msgid "_Undo duplicate of %d item"
-#~ msgid_plural "_Undo duplicate of %d items"
-#~ msgstr[0] "_Cofnij duplikowanie %d elementu"
-#~ msgstr[1] "_Cofnij duplikowanie %d elementów"
-#~ msgstr[2] "_Cofnij duplikowanie %d elementów"
-
-#~ msgid "_Undo move of %d item"
-#~ msgid_plural "_Undo move of %d items"
-#~ msgstr[0] "_Cofnij przeniesienie %d elementu"
-#~ msgstr[1] "_Cofnij przeniesienie %d elementów"
-#~ msgstr[2] "_Cofnij przeniesienie %d elementów"
-
-#~ msgid "_Undo rename of %d item"
-#~ msgid_plural "_Undo rename of %d items"
-#~ msgstr[0] "_Cofnij zmianę nazwy %d elementu"
-#~ msgstr[1] "_Cofnij zmianę nazwy %d elementów"
-#~ msgstr[2] "_Cofnij zmianę nazwy %d elementów"
-
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Cofnij utworzenie pustego pliku"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Cofnij utworzenie pliku z szablonu"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Cofnij utworzenie katalogu"
-#~ msgstr[1] "_Cofnij utworzenie %d katalogów"
-#~ msgstr[2] "_Cofnij utworzenie %d katalogów"
-
-#~ msgid "_Undo move to trash of %d item"
-#~ msgid_plural "_Undo move to trash of %d items"
-#~ msgstr[0] "_Cofnij przeniesienie do kosza elementu"
-#~ msgstr[1] "_Cofnij przeniesienie do kosza %d elementów"
-#~ msgstr[2] "_Cofnij przeniesienie do kosza %d elementów"
-
-#~ msgid "_Undo restore from trash of %d item"
-#~ msgid_plural "_Undo restore from trash of %d items"
-#~ msgstr[0] "_Cofnij przywrócenie elementu z kosza"
-#~ msgstr[1] "_Cofnij przywrócenie z kosza %d elementów"
-#~ msgstr[2] "_Cofnij przywrócenie z kosza %d elementów"
-
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Cofnij utworzenie aktywatora dla %d elementu"
-#~ msgstr[1] "_Cofnij utworzenie aktywatora dla %d elementów"
-#~ msgstr[2] "_Cofnij utworzenie aktywatora dla %d elementów"
-
-#~ msgid "_Undo delete of %d item"
-#~ msgid_plural "_Undo delete of %d items"
-#~ msgstr[0] "_Cofnij usunięcie %d elementu"
-#~ msgstr[1] "_Cofnij usunięcie %d elementów"
-#~ msgstr[2] "_Cofnij usunięcie %d elementów"
-
-#~ msgid "Undo recursive change permissions of %d item"
-#~ msgid_plural "Undo recursive change permissions of %d items"
-#~ msgstr[0] "Cofnij zmianę uprawnień dla elementu i elementów w nim zawartych"
-#~ msgstr[1] ""
-#~ "Cofnij zmianę uprawnień dla %d elementów i elementów w nich zawartych"
-#~ msgstr[2] ""
-#~ "Cofnij zmianę uprawnień dla %d elementów i elementów w nich zawartych"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Cofnij zmianę uprawnień %d elementu"
-#~ msgstr[1] "Cofnij zmianę uprawnień %d elementów"
-#~ msgstr[2] "Confij zmianę uprawnień %d elementów"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Cofnij zmianę grupy %d elementu"
-#~ msgstr[1] "Cofnij zmianę grupy %d elementów"
-#~ msgstr[2] "Cofnij zmianę grupy %d elementów"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Confij zmianę właściciela %d elementu"
-#~ msgstr[1] "Confij zmianę właściciela %d elementów"
-#~ msgstr[2] "Confij zmianę właściciela %d elementów"
-
-#~ msgid "_Redo copy of %d item"
-#~ msgid_plural "_Redo copy of %d items"
-#~ msgstr[0] "_Ponów kopiowanie elementu"
-#~ msgstr[1] "_Ponów kopiowanie %d elementów"
-#~ msgstr[2] "_Ponów kopiowanie %d elementów"
-
-#~ msgid "_Redo duplicate of %d item"
-#~ msgid_plural "_Redo duplicate of %d items"
-#~ msgstr[0] "_Ponów powielenie elementu"
-#~ msgstr[1] "_Ponów powielenie %d elementów"
-#~ msgstr[2] "_Ponów powielenie %d elementów"
-
-#~ msgid "_Redo move of %d item"
-#~ msgid_plural "_Redo move of %d items"
-#~ msgstr[0] "_Ponów przeniesienie elementu"
-#~ msgstr[1] "_Ponów przeniesienie %d elementów"
-#~ msgstr[2] "_Ponów przeniesienie %d elementów"
-
-#~ msgid "_Redo rename of %d item"
-#~ msgid_plural "_Redo rename of %d items"
-#~ msgstr[0] "_Ponów zmianę nazwy elementu"
-#~ msgstr[1] "_Ponów zmianę nazwy %d elementów"
-#~ msgstr[2] "_Ponów zmianę nazwy %d elementów"
-
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Ponów utworzenie pustego pliku"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Ponów utworzenie pliku z szablonu"
-
-#~ msgid "_Redo creation of %d folder"
-#~ msgid_plural "_Redo creation of %d folders"
-#~ msgstr[0] "_Powtórz utworzenie katalogu"
-#~ msgstr[1] "_Powtórz utworzenie %d katalogów"
-#~ msgstr[2] "_Powtórz utworzenie %d katalogów"
-
-#~ msgid "_Redo move to trash of %d item"
-#~ msgid_plural "_Redo move to trash of %d items"
-#~ msgstr[0] "_Powtórz przeniesienie do kosza elementu"
-#~ msgstr[1] "_Powtórz przeniesienie do kosza %d elementu"
-#~ msgstr[2] "_Powtórz przeniesienie do kosza %d elementu"
-
-#~ msgid "_Redo restore from trash of %d item"
-#~ msgid_plural "_Redo restore from trash of %d items"
-#~ msgstr[0] "_Powtórz przywrócenie z kosza elementu"
-#~ msgstr[1] "_Powtórz przywrócenie z kosza %d elementów"
-#~ msgstr[2] "_Powtórz przywrócenie z kosza %d elementów"
-
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Ponów utworzenie dowiązania do elementu"
-#~ msgstr[1] "_Ponów utworzenie dowiązań do %d elementów"
-#~ msgstr[2] "_Ponów utworzenie dowiązań do %d elementów"
-
-#~ msgid "_Redo delete of %d item"
-#~ msgid_plural "_Redo delete of %d items"
-#~ msgstr[0] "_Ponów usunięcie elementu"
-#~ msgstr[1] "_Ponów usunięcie %d elementów"
-#~ msgstr[2] "_Ponów usunięcie %d elementów"
-
-#~ msgid "Redo recursive change permissions of %d item"
-#~ msgid_plural "Redo recursive change permissions of %d items"
-#~ msgstr[0] "Ponów zmianę uprawnień elementu i elementów w nim zawartych"
-#~ msgstr[1] "Ponów zmianę uprawnień %d elementów i elementów w nich zawartych"
-#~ msgstr[2] "Ponów zmianę uprawnień %d elementów i elementów w nich zawartych"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Powtórz zmianę uprawnień do elementu"
-#~ msgstr[1] "_Ponów zmianę uprawnień %d elementów"
-#~ msgstr[2] "_Ponów zmianę uprawnień %d elementów"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Ponów zmianę grupy elementu"
-#~ msgstr[1] "Ponów zmianę grupy %d elementów"
-#~ msgstr[2] "Ponów zmianę grupy %d elementów"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Ponów zmianę właściciela elementu"
-#~ msgstr[1] "Ponów zmianę właściciela %d elementów"
-#~ msgstr[2] "Ponów zmianę właściciela %d elementów"
-
 #~ msgid "Browse your files"
 #~ msgstr "Przeglądaj swoje pliki"
 
@@ -1979,78 +2368,6 @@ msgstr "Usuń zaznaczone"
 
 #~ msgid "New Window As _Administrator"
 #~ msgstr "Nowe okno, jako _administrator"
-
-#~ msgid "Restore from Trash"
-#~ msgstr "Przywróć z kosza"
-
-#~ msgid "Delete permanently"
-#~ msgstr "Usuń trwale"
-
-#~ msgid "Open Parent Folder"
-#~ msgstr "Otwórz katalog nadrzędny"
-
-#~ msgid "Remove from History"
-#~ msgstr "Usuń z historii"
-
-#~ msgid "Move to Trash"
-#~ msgstr "Przenieś do kosza"
-
-#~ msgid "New"
-#~ msgstr "Nowy"
-
-#~ msgid "Folder"
-#~ msgstr "Katalog"
-
-#~ msgid "Empty File"
-#~ msgstr "Pusty plik"
-
-#~ msgid "Show Hidden Files"
-#~ msgstr "Pokaż ukryte pliki"
-
-#~ msgid "Show Remote Thumbnails"
-#~ msgstr "Pokaż miniaturki w zasobie zdalnym"
-
-#~ msgid "New Tab"
-#~ msgstr "Nowa karta"
-
-#~ msgid "Bookmark"
-#~ msgstr "Zakładka"
-
-#~ msgid "Paste"
-#~ msgstr "Wklej"
-
-#~ msgid "Paste Link"
-#~ msgstr "Wklej odnośnik"
-
-#~ msgid "Cut"
-#~ msgstr "Wytnij"
-
-#~ msgid "Copy"
-#~ msgstr "Kopiuj"
-
-#~ msgid "Copy as Link"
-#~ msgstr "Kopiuj jako odnośnik"
-
-#~ msgid "Paste into Folder"
-#~ msgstr "Wklej do katalogu"
-
-#~ msgid "Paste Link into Folder"
-#~ msgstr "Wklej odnośnik do katalogu"
-
-#~ msgid "Sort by"
-#~ msgstr "Sortuj według"
-
-#~ msgid "Name"
-#~ msgstr "Nazwy"
-
-#~ msgid "Date"
-#~ msgstr "Daty"
-
-#~ msgid "Reversed Order"
-#~ msgstr "Odwrócona kolejność"
-
-#~ msgid "Folders Before Files"
-#~ msgstr "Katalogi przed plikami"
 
 #~ msgid ""
 #~ "Can't load the supported server method list.\n"
