@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-12-23 00:05+0000\n"
+"PO-Revision-Date: 2018-12-24 00:06+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -512,14 +512,12 @@ msgid "Browse the contents of the network"
 msgstr ""
 
 #: src/View/Sidebar.vala:823
-#, fuzzy
 msgid "Connect Server"
 msgstr "सर्वरला कनेक्ट करा"
 
 #: src/View/Sidebar.vala:824
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "सर्वरला कनेक्ट करा"
+msgstr "नेटवर्क सर्वरला कनेक्ट करा"
 
 #: src/View/Sidebar.vala:964
 #, c-format
@@ -621,9 +619,8 @@ msgid "Remove from History"
 msgstr ""
 
 #: src/View/directory_view_popup.ui:37
-#, fuzzy
 msgid "Move to Trash"
-msgstr "फाइल्स कचर्यामध्ये टाकत आहे"
+msgstr "फाइल्स कचर्यामध्ये टाका"
 
 #: src/View/directory_view_popup.ui:51
 msgid "New"
@@ -905,18 +902,16 @@ msgid "Cancel"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:193
-#, fuzzy
 msgid "Connect"
-msgstr "जोडत आहे..."
+msgstr "जोडत आहे"
 
 #: libcore/ConnectServerDialog.vala:200
 msgid "Continue"
 msgstr "सुरु"
 
 #: libcore/ConnectServerDialog.vala:245
-#, fuzzy
 msgid "Connecting…"
-msgstr "जोडत आहे..."
+msgstr "जोडत आहे…"
 
 #: libcore/ConnectServerDialog.vala:364
 msgid "Please verify your user details."
@@ -1177,22 +1172,22 @@ msgid "Another link to %s"
 msgstr "%s चा दुसरा दुवा"
 
 #: libcore/marlin-file-operations.c:368
-#, fuzzy, c-format
+#, c-format
 msgid "%'dst link to %s"
 msgstr "%s चा दुवा %'dst"
 
 #: libcore/marlin-file-operations.c:372
-#, fuzzy, c-format
+#, c-format
 msgid "%'dnd link to %s"
-msgstr "%s चा दुवा %dnd"
+msgstr "%s चा दुवा %'dnd"
 
 #: libcore/marlin-file-operations.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "%'drd link to %s"
 msgstr "%s चा दुवा %'drd"
 
 #: libcore/marlin-file-operations.c:380
-#, fuzzy, c-format
+#, c-format
 msgid "%'dth link to %s"
 msgstr "%s चा दुवा %'dth"
 
@@ -1338,12 +1333,12 @@ msgstr ""
 "केवळ वाचनीय फायलीप्रणालीवरील फायल्स कचऱ्यात टाकण्याची किंवा हटविण्याची परवानगी नाही."
 
 #: libcore/marlin-file-operations.c:1806
-#, fuzzy
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"केवळ वाचनीय फायलीप्रणालीवरील फायल्स कचऱ्यात टाकण्याची किंवा हटविण्याची परवानगी नाही."
+"केवळ वाचनीय फायलीप्रणालीवरील फायल्स कचऱ्यात टाकण्याची किंवा हटविण्याची "
+"परवानगी नाही."
 
 #: libcore/marlin-file-operations.c:1809
 #, fuzzy
@@ -2197,7 +2192,7 @@ msgstr ""
 
 #: libwidgets/Resources.vala:22
 msgid "Files"
-msgstr ""
+msgstr "फायली"
 
 #: libwidgets/Resources.vala:58
 msgid "AFP"
