@@ -268,7 +268,7 @@ namespace FM {
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
-        protected FM.ListModel model;
+        protected FM.DirectoryModel model;
         protected Marlin.IconRenderer icon_renderer;
         protected unowned Marlin.View.Slot slot;
         protected unowned Marlin.View.Window window; /*For convenience - this can be derived from slot */
@@ -300,7 +300,7 @@ namespace FM {
 
                 draw_when_idle ();
             });
-            model = new FM.ListModel ();
+            model = new FM.DirectoryModel ();
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
 
@@ -1166,7 +1166,7 @@ namespace FM {
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 if (col_name != null) {
-                    sort_column_id = FM.ListModel.ColumnID.from_string (col_name);
+                    sort_column_id = FM.ColumnID.from_string (col_name);
                 }
 
                 if (reverse) {
@@ -1341,11 +1341,11 @@ namespace FM {
 
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
-                if (in_recent)
-                    model.set_sort_column_id (FM.ListModel.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
-                else if (slot.directory.file.info != null) {
-                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
-                }
+//                if (in_recent)
+//                    model.set_sort_column_id (FM.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
+//                else if (slot.directory.file.info != null) {
+//                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+//                }
             } else {
                 is_writable = false;
             }
@@ -2252,7 +2252,7 @@ namespace FM {
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 // We need proper casting to not get int.to_string ()
-                var column_name = ((FM.ListModel.ColumnID) sort_column_id).to_string ();
+                var column_name = ((FM.ColumnID) sort_column_id).to_string ();
                 GLib.Variant val = new GLib.Variant.string (column_name);
                 action_set_state (background_actions, "sort-by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
@@ -2507,7 +2507,7 @@ namespace FM {
 
                         }
                         /* check if we've reached the end of the visible range */
-                        if (path.compare (end_path) != 0) {
+                        if (path.get_depth () > 0 && path.compare (end_path) != 0) {
                             valid_iter = get_next_visible_iter (ref iter);
                         } else {
                             valid_iter = false;
@@ -3067,7 +3067,7 @@ namespace FM {
                 Gtk.TreeIter? iter = null;
                 model.get_iter (out iter, path);
                 GOF.File? file = null;
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
+                model.@get (iter, FM.ColumnID.FILE_COLUMN, out file);
                 int start_offset= 0, end_offset = -1;
                 /* Select whole name if the file is a folder, otherwise do not select the extension */
                 if (!file.is_folder ()) {
@@ -3101,7 +3101,7 @@ namespace FM {
                 model.get_iter (out iter, path);
 
                 GOF.File? file = null;
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
+                model.@get (iter, FM.ColumnID.FILE_COLUMN, out file);
 
                 /* Only rename if name actually changed */
                 /* Because GOF.File.rename does not work correctly for remote files we handle ourselves */
@@ -3495,7 +3495,7 @@ namespace FM {
             var info = new GLib.FileInfo ();
             var dir = slot.directory;
             // We need proper casting to not get int.to_string ()
-            string sort_col_s = ((FM.ListModel.ColumnID) sort_column_id).to_string ();
+            string sort_col_s = ((FM.ColumnID) sort_column_id).to_string ();
             string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
             info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
             info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);

@@ -33,7 +33,7 @@ namespace FM {
 
         protected virtual void create_and_set_up_name_column () {
             name_column = new Gtk.TreeViewColumn ();
-            name_column.set_sort_column_id (FM.ListModel.ColumnID.FILENAME);
+            name_column.set_sort_column_id (FM.ColumnID.FILENAME);
             name_column.set_expand (true);
             name_column.set_resizable (true);
 
@@ -44,16 +44,22 @@ namespace FM {
 
             name_column.pack_start (icon_renderer, false);
             name_column.set_attributes (icon_renderer,
-                                        "file", FM.ListModel.ColumnID.FILE_COLUMN);
+                                        "file", FM.ColumnID.FILE_COLUMN);
 
-            name_column.pack_start (name_renderer, true);
-            name_column.set_attributes (name_renderer,
-                                        "text", FM.ListModel.ColumnID.FILENAME,
-                                        "file", FM.ListModel.ColumnID.FILE_COLUMN,
-                                        "background", FM.ListModel.ColumnID.COLOR);
+            name_column.pack_end (name_renderer, false);
+            name_column.set_cell_data_func (name_renderer, set_file_from_icon_renderer);
 
             tree.append_column (name_column);
             tree.set_expander_column (name_column);
+        }
+
+        void set_file_from_icon_renderer (Gtk.CellLayout cell_layout,
+                                          Gtk.CellRenderer cell,
+                                          Gtk.TreeModel tree_model,
+                                          Gtk.TreeIter iter) {
+
+            ((Marlin.TextRenderer)(cell)).file = icon_renderer.file;
+
         }
 
         protected void set_up_icon_renderer () {
@@ -181,7 +187,7 @@ namespace FM {
             GLib.List<GOF.File> list = null;
             tree.get_selection ().selected_foreach ((model, path, iter) => {
                 GOF.File? file; /* can be null if click on blank row in list view */
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
+                model.@get (iter, FM.ColumnID.FILE_COLUMN, out file, -1);
                 if (file != null) {
                     list.prepend ((owned) file);
                     count++;

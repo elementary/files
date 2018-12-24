@@ -47,24 +47,26 @@ namespace FM {
         }
 
         private void append_extra_tree_columns () {
-            int fnc = FM.ListModel.ColumnID.FILENAME;
+            int fnc = FM.ColumnID.FILENAME;
 
             int preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
-            for (int k = fnc; k < FM.ListModel.ColumnID.NUM_COLUMNS; k++) {
+            for (int k = fnc; k < FM.ColumnID.NUM_COLUMNS; k++) {
                 if (k == fnc) {
                     /* name_column already created by AbstractTreeVIew */
                     name_column.set_title (column_titles [0]);
                     name_column.min_width = preferred_column_width;
                 } else {
                     var renderer = new Gtk.CellRendererText ();
-                    var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
-                                                                      renderer,
-                                                                      "text", k);
+                    var col = new Gtk.TreeViewColumn ();
+                    col.pack_end (renderer, true);
+                    col.set_title (column_titles [k - fnc]);
+                    var kk = (FM.ColumnID)k;
+                    col.set_cell_data_func (renderer, () => {set_file_data_from_icon_renderer (renderer, kk);});
                     col.set_sort_column_id (k);
                     col.set_resizable (false);
                     col.set_expand (false);
                     col.min_width = 24;
-                    if (k == FM.ListModel.ColumnID.SIZE || k == FM.ListModel.ColumnID.MODIFIED) {
+                    if (k == FM.ColumnID.SIZE || k == FM.ColumnID.MODIFIED) {
                         renderer.@set ("xalign", 1.0f);
                     } else {
                         renderer.@set ("xalign", 0.0f);
@@ -73,6 +75,29 @@ namespace FM {
                     tree.append_column (col);
                 }
             }
+        }
+
+        private void set_file_data_from_icon_renderer (Gtk.CellRendererText cell, FM.ColumnID col_id) {
+            string text = "";
+
+            switch (col_id) {
+                case FM.ColumnID.SIZE:
+                    text = icon_renderer.file.format_size;
+                    break;
+                case FM.ColumnID.TYPE:
+                    text = icon_renderer.file.formated_type;
+                    break;
+                case FM.ColumnID.MODIFIED:
+                    text = icon_renderer.file.formated_modified;
+                    break;
+                default:
+                    text = "??????";
+                    break;
+            }
+
+
+            ((Gtk.CellRendererText)(cell)).text = text;
+
         }
 
         private void on_row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {

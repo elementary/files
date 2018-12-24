@@ -45,6 +45,7 @@ namespace Marlin {
             }
         }
 
+//        private GOF.File? _file = null;
         public GOF.File? file {
             get {
                 return _file;

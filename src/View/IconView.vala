@@ -46,17 +46,24 @@ namespace FM {
             set_up_icon_renderer ();
 
             (tree as Gtk.CellLayout).pack_start (icon_renderer, false);
-            (tree as Gtk.CellLayout).pack_end (name_renderer, false);
+            (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ColumnID.FILE_COLUMN);
 
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "background", FM.ListModel.ColumnID.COLOR);
-            (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
+            (tree as Gtk.CellLayout).pack_end (name_renderer, false);
+            (tree as Gtk.CellLayout).set_cell_data_func (name_renderer, set_file_from_icon_renderer);
 
             connect_tree_signals ();
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
             });
+        }
+
+        void set_file_from_icon_renderer (Gtk.CellLayout cell_layout,
+                                          Gtk.CellRenderer cell,
+                                          Gtk.TreeModel tree_model,
+                                          Gtk.TreeIter iter) {
+
+            ((Marlin.TextRenderer)(cell)).file = icon_renderer.file;
+
         }
 
         protected override void set_up_name_renderer () {
@@ -196,7 +203,7 @@ namespace FM {
                     list.prepend ((owned)file);
                     count++;
                 } else {
-                    critical ("Null file in model");
+//                    critical ("Null file in model path %s", path.to_string ());
                 }
             });
 
@@ -230,17 +237,20 @@ namespace FM {
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
                 if (r is Marlin.TextRenderer) {
+
                     /* rectangles are in bin window coordinates - need to adjust event y coordinate
                      * for vertical scrolling in order to accurately detect which area of TextRenderer was
                      * clicked on */
                     y -= (int)(get_vadjustment ().value);
-                    Gtk.TreeIter iter;
-                    model.get_iter (out iter, path);
-                    string? text = null;
-                    model.@get (iter,
-                            FM.ListModel.ColumnID.FILENAME, out text);
-
-                    (r as Marlin.TextRenderer).set_up_layout (text, area.width);
+//                    Gtk.TreeIter iter;
+//                    model.get_iter (out iter, path);
+////                    string? text = null;
+//                    GOF.File? file = null;
+//                    model.@get (iter,
+//                            FM.ColumnID.FILE_COLUMN, out file);
+                    var file = model.file_for_path (path);
+                    (r as Marlin.TextRenderer).file = file;
+                    (r as Marlin.TextRenderer).set_up_layout ();
 
                     if (x >= rect.x &&
                         x <= rect.x + rect.width &&

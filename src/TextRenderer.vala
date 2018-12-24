@@ -22,6 +22,7 @@ namespace Marlin {
         const int MAX_LINES = 5;
         private int border_radius;
         private int double_border_radius;
+        private int aligned_width = -1;
 
         private Marlin.ZoomLevel _zoom_level;
         public Marlin.ZoomLevel zoom_level {
@@ -44,7 +45,20 @@ namespace Marlin {
             }
         }
 
-        public GOF.File? file {set; private get;}
+        public GOF.File? file {
+            set {
+                if (value != null) {
+                    text = value.get_display_name ();
+                    background = GOF.Preferences.TAGS_COLORS[value.color];
+                } else {
+                    text = "NULL";
+                    background = GOF.Preferences.TAGS_COLORS[0];
+                }
+
+//                set_up_layout ();
+            }
+        }
+
         private int _item_width = -1;
         public int item_width {
             set {
@@ -64,7 +78,7 @@ namespace Marlin {
         int char_height;
 
         Pango.Layout layout;
-        Gtk.Widget widget;
+        unowned Gtk.Widget widget;
         Marlin.AbstractEditableLabel entry;
 
         construct {
@@ -86,7 +100,10 @@ namespace Marlin {
         public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
                                                              out int minimum_size, out int natural_size) {
             set_widget (widget);
-            set_up_layout (text, width);
+            if (aligned_width != width) {
+                aligned_width = width;
+                set_up_layout ();
+            }
             natural_size = text_height + 4 * border_radius;
             minimum_size = natural_size;
         }
@@ -107,7 +124,7 @@ namespace Marlin {
                 state = widget.get_sensitive () ? Gtk.StateFlags.NORMAL : Gtk.StateFlags.INSENSITIVE;
             }
 
-            set_up_layout (text, cell_area.width);
+            set_up_layout ();
 
             var style_context = widget.get_parent ().get_style_context ();
             style_context.save ();
@@ -136,27 +153,18 @@ namespace Marlin {
             /* The render call should always be preceded by a set_property call
                from GTK. It should be safe to unreference or free the allocated
                memory here. */
-            file = null;
         }
 
-        public void set_up_layout (string? text, int cell_width) {
+//        private void set_up_layout (string? text, int cell_width) {
+        public void set_up_layout () {
+            if (layout == null || layout.get_text () == text) {
+                return;
+            }
+
+            var cell_width = aligned_width;
+
             if (text == null) {
                 text= " ";
-            }
-
-            if (is_list_view) {
-                layout.set_width ((cell_width - double_border_radius) * Pango.SCALE);
-                layout.set_height (- 1);
-            } else {
-                layout.set_width (wrap_width * Pango.SCALE);
-                layout.set_wrap (this.wrap_mode);
-                layout.set_height (- MAX_LINES);
-            }
-
-            layout.set_ellipsize (Pango.EllipsizeMode.END);
-
-            if (!is_list_view) {
-                layout.set_alignment (Pango.Alignment.CENTER);
             }
 
             layout.set_text (text, -1);
@@ -209,12 +217,12 @@ namespace Marlin {
         }
 
         private void set_widget (Gtk.Widget? _widget) {
-            Pango.FontMetrics metrics;
-            Pango.Context context;
-
             if (_widget == widget) {
                 return;
             }
+
+            Pango.FontMetrics metrics;
+            Pango.Context context;
 
             /* disconnect from the previously set widget */
             if (widget != null) {
@@ -231,6 +239,20 @@ namespace Marlin {
                 layout.set_single_paragraph_mode (true);
                 metrics = context.get_metrics (layout.get_font_description (), context.get_language ());
                 char_height = (metrics.get_ascent () + metrics.get_descent () + 512) >> 10;
+
+                if (is_list_view) {
+                    layout.set_width ((aligned_width - double_border_radius) * Pango.SCALE);
+                    layout.set_height (- 1);
+                } else {
+                    layout.set_width (wrap_width * Pango.SCALE);
+                    layout.set_wrap (this.wrap_mode);
+                    layout.set_height (- MAX_LINES);
+                }
+
+                layout.set_ellipsize (Pango.EllipsizeMode.END);
+                if (!is_list_view) {
+                    layout.set_alignment (Pango.Alignment.CENTER);
+                }
             } else {
                 layout = null;
                 char_height = 0;
@@ -250,7 +272,6 @@ namespace Marlin {
         private void invalidate () {
             disconnect_widget_signals ();
             set_widget (null);
-            file = null;
         }
 
         private void on_entry_editing_done () {
@@ -264,7 +285,6 @@ namespace Marlin {
                 string path = entry.get_data ("marlin-text-renderer-path");
                 edited (path, text);
             }
-            file = null;
         }
 
         private void draw_focus (Cairo.Context cr,
