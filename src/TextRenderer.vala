@@ -161,7 +161,7 @@ namespace Marlin {
                 return;
             }
 
-            var cell_width = aligned_width;
+//            var cell_width = aligned_width;
 
             if (text == null) {
                 text= " ";

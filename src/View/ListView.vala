@@ -62,7 +62,8 @@ namespace FM {
                     col.set_title (column_titles [k - fnc]);
                     var kk = (FM.ColumnID)k;
                     col.set_cell_data_func (renderer, () => {set_file_data_from_icon_renderer (renderer, kk);});
-                    col.set_sort_column_id (k);
+//                    col.set_sort_column_id (k);
+                    col.set_sort_column_id (FM.ColumnID.FILE_COLUMN);
                     col.set_resizable (false);
                     col.set_expand (false);
                     col.min_width = 24;

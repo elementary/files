@@ -1161,24 +1161,25 @@ namespace FM {
         }
 
         private void set_sort (string? col_name, bool reverse) {
-            int sort_column_id;
+warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
+            FM.ColumnID sort_column_id;
             Gtk.SortType sort_order;
 
-            if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-                if (col_name != null) {
-                    sort_column_id = FM.ColumnID.from_string (col_name);
-                }
-
-                if (reverse) {
-                    if (sort_order == Gtk.SortType.ASCENDING) {
-                        sort_order = Gtk.SortType.DESCENDING;
-                    } else {
-                        sort_order = Gtk.SortType.ASCENDING;
-                    }
-                }
-
-                model.set_sort_column_id (sort_column_id, sort_order);
+            model.get_order (out sort_column_id, out sort_order);
+            sort_column_id = FM.ColumnID.from_string (col_name);
+            if (sort_column_id == FM.ColumnID.INVALID) {
+                sort_column_id = FM.ColumnID.FILENAME;
             }
+
+            if (reverse) {
+                if (sort_order == Gtk.SortType.ASCENDING) {
+                    sort_order = Gtk.SortType.DESCENDING;
+                } else {
+                    sort_order = Gtk.SortType.ASCENDING;
+                }
+            }
+
+            model.set_order (sort_column_id, sort_order);
         }
 
         /** Common actions */
@@ -2250,7 +2251,8 @@ namespace FM {
             int sort_column_id;
             Gtk.SortType sort_order;
 
-            if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
+//            if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
+            if (model.get_order (out sort_column_id, out sort_order)) {
                 // We need proper casting to not get int.to_string ()
                 var column_name = ((FM.ColumnID) sort_column_id).to_string ();
                 GLib.Variant val = new GLib.Variant.string (column_name);
@@ -3488,7 +3490,8 @@ namespace FM {
             /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
              * the directory file metadata incorrectly (bug 1511307).
              */
-            if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order)) {
+//            if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order)) {
+            if (tree_frozen || !model.get_order (out sort_column_id, out sort_order)) {
                 return;
             }
 
