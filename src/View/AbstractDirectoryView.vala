@@ -2460,7 +2460,6 @@ warning ("on file deleted");
                 if (get_visible_range (out start_path, out end_path)) {
                     sp = start_path;
                     ep = end_path;
-
                     /* To improve performance for large folders we thumbnail files on either side of visible region
                      * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
                      * redraws necessary when scrolling */
@@ -2509,7 +2508,6 @@ warning ("on file deleted");
                 /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
                  * and there has not been another event (which would zero the thumbnail_source_id) */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
-warning ("queue thumbs");
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 } else {
                     draw_when_idle ();

@@ -483,7 +483,7 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
 //        return false;
 //    }
 
-    public Gtk.TreePath? get_path (Gtk.TreeIter iter) {
+//    public Gtk.TreePath? get_path (Gtk.TreeIter iter) {
 //        return_val_if_fail (iter.stamp == stamp, null);
 
 //        var path = new Gtk.TreePath ();
@@ -504,8 +504,8 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
 //        }
 
 //        return path;
-        return new Gtk.TreePath ();
-    }
+//        return new Gtk.TreePath ();
+//    }
 
 //    public new void @get (Gtk.TreeIter iter, ...) {
 //warning ("get");
