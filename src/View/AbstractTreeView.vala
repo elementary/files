@@ -136,6 +136,15 @@ namespace FM {
             tree.get_selection ().unselect_all ();
         }
 
+        public override Gtk.TreePath? get_single_selection () {
+            var selected_paths = tree.get_selection ().get_selected_rows (null);
+            if (selected_paths != null && selected_paths.next == null) {
+                return selected_paths.data;
+            } else {
+                return null;
+            }
+        }
+
         /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
          * It would take an exponentially long time. Use "select_files" function in parent class.
          */

@@ -187,6 +187,15 @@ namespace FM {
             }
         }
 
+        public override Gtk.TreePath? get_single_selection () {
+            var selected_paths = tree.get_selected_items ();
+            if (selected_paths.data != null && selected_paths.next == null) {
+                return selected_paths.data;
+            } else {
+                return null;
+            }
+        }
+
         public override bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path) {
             start_path = null;
             end_path = null;
