@@ -1151,7 +1151,7 @@ namespace FM {
         }
 
         private void on_background_action_sort_by_changed (GLib.SimpleAction action, GLib.Variant? val) {
-            string sort = val.get_string ();
+            var sort = FM.ColumnID.from_string (val.get_string ());
             set_sort (sort, false);
         }
 
@@ -1164,19 +1164,13 @@ namespace FM {
             prefs.sort_directories_first = !prefs.sort_directories_first;
         }
 
-        private void set_sort (string? col_name, bool reverse) {
-warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
-            FM.ColumnID sort_column_id;
-            bool dummy;
-
-            model.get_order (out sort_column_id, out dummy);
-            sort_column_id = FM.ColumnID.from_string (col_name);
-
-            if (sort_column_id == FM.ColumnID.INVALID) {
-                sort_column_id = FM.ColumnID.FILENAME;
+        private void set_sort (FM.ColumnID? col_id, bool? reverse) {
+            if (col_id == null) {
+                bool dummy;
+                model.get_order (out col_id, out dummy);
             }
 
-            model.set_order (sort_column_id, reverse);
+            model.set_order (col_id, reverse);
         }
 
         /** Common actions */
