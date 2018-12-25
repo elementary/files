@@ -280,6 +280,10 @@ namespace FM {
         public signal void item_hovered (GOF.File? file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
+        construct {
+            model = new FM.DirectoryModel ();
+        }
+
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
@@ -300,7 +304,8 @@ namespace FM {
 
                 draw_when_idle ();
             });
-            model = new FM.DirectoryModel ();
+
+//            model = new FM.DirectoryModel ();
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
 
@@ -376,7 +381,8 @@ namespace FM {
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
-            model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
+//            model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
+            model.sort_directories_first = (GOF.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
             model.sort_column_changed.connect (on_sort_column_changed);
@@ -1163,23 +1169,24 @@ namespace FM {
         private void set_sort (string? col_name, bool reverse) {
 warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
             FM.ColumnID sort_column_id;
-            Gtk.SortType sort_order;
+            bool dummy;
 
-            model.get_order (out sort_column_id, out sort_order);
+            model.get_order (out sort_column_id, out dummy);
             sort_column_id = FM.ColumnID.from_string (col_name);
+
             if (sort_column_id == FM.ColumnID.INVALID) {
                 sort_column_id = FM.ColumnID.FILENAME;
             }
 
-            if (reverse) {
-                if (sort_order == Gtk.SortType.ASCENDING) {
-                    sort_order = Gtk.SortType.DESCENDING;
-                } else {
-                    sort_order = Gtk.SortType.ASCENDING;
-                }
-            }
+//            if (reverse) {
+//                if (sort_order == Gtk.SortType.ASCENDING) {
+//                    sort_order = Gtk.SortType.DESCENDING;
+//                } else {
+//                    sort_order = Gtk.SortType.ASCENDING;
+//                }
+//            }
 
-            model.set_order (sort_column_id, sort_order);
+            model.set_order (sort_column_id, reverse);
         }
 
         /** Common actions */
@@ -1342,11 +1349,13 @@ warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
 
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
-//                if (in_recent)
-//                    model.set_sort_column_id (FM.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
-//                else if (slot.directory.file.info != null) {
-//                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
-//                }
+                if (in_recent)
+//                    model.set_order (FM.ColumnID.MODIFIED, Gtk.SortType.DESCENDING);
+                    model.set_order (FM.ColumnID.MODIFIED);
+                else if (slot.directory.file.info != null) {
+//                    model.set_order ((FM.ColumnID)(slot.directory.file.sort_column_id), slot.directory.file.sort_order);
+                    model.set_order ((FM.ColumnID)(slot.directory.file.sort_column_id));
+                }
             } else {
                 is_writable = false;
             }
@@ -1397,8 +1406,7 @@ warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            var sort_directories_first = (prefs as GOF.Preferences).sort_directories_first;
-            model.set_should_sort_directories_first (sort_directories_first);
+            model.sort_directories_first = (prefs as GOF.Preferences).sort_directories_first;
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
@@ -2249,16 +2257,18 @@ warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
 
         private void update_menu_actions_sort () {
             int sort_column_id;
-            Gtk.SortType sort_order;
+//            Gtk.SortType sort_order;
+            bool reversed;
 
 //            if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-            if (model.get_order (out sort_column_id, out sort_order)) {
+            if (model.get_order (out sort_column_id, out reversed)) {
                 // We need proper casting to not get int.to_string ()
                 var column_name = ((FM.ColumnID) sort_column_id).to_string ();
                 GLib.Variant val = new GLib.Variant.string (column_name);
                 action_set_state (background_actions, "sort-by", val);
-                val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
-                action_set_state (background_actions, "reverse", val);
+//                val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
+//                action_set_state (background_actions, "reverse", val);
+                action_set_state (background_actions, "reverse", reversed);
                 val = new GLib.Variant.boolean (GOF.Preferences.get_default ().sort_directories_first);
                 action_set_state (background_actions, "folders-first", val);
             }
@@ -3479,8 +3489,8 @@ warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
         }
 
         protected void on_sort_column_changed () {
-            int sort_column_id = 0;
-            Gtk.SortType sort_order = 0;
+            FM.ColumnID sort_column_id = FM.ColumnID.FILENAME;
+            bool reversed = false;
 
             /* Setting file attributes fails when root */
             if (Posix.getuid () == 0) {
@@ -3491,23 +3501,25 @@ warning ("ADV set sort %s, %s", col_name, reverse.to_string ());
              * the directory file metadata incorrectly (bug 1511307).
              */
 //            if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order)) {
-            if (tree_frozen || !model.get_order (out sort_column_id, out sort_order)) {
+            if (tree_frozen ||
+                !model.get_order (out sort_column_id, out reversed)) {
                 return;
             }
 
             var info = new GLib.FileInfo ();
             var dir = slot.directory;
             // We need proper casting to not get int.to_string ()
-            string sort_col_s = ((FM.ColumnID) sort_column_id).to_string ();
-            string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
-            info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
-            info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
+//            string sort_col_s = ((FM.ColumnID) sort_column_id).to_string ();
+//            string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
+//            string sort_order_s = (reversed ? "true" : "false");
+            info.set_attribute_string ("metadata::marlin-sort-column-id", sort_column_id.to_string ());
+            info.set_attribute_string ("metadata::marlin-sort-reversed", reversed.to_string ());
 
             /* Make sure directory file info matches metadata (bug 1511307).*/
-            dir.file.info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
-            dir.file.info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
+            dir.file.info.set_attribute_string ("metadata::marlin-sort-column-id", sort_column_id.to_string ());
+            dir.file.info.set_attribute_string ("metadata::marlin-sort-reversed", reversed.to_string ());
             dir.file.sort_column_id = sort_column_id;
-            dir.file.sort_order = sort_order;
+//            dir.file.sort_order = reversed;
 
             if (!is_admin) {
                 dir.location.set_attributes_async.begin (info,

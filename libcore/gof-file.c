@@ -392,8 +392,10 @@ gof_file_update (GOFFile *file)
     if (file->is_directory) {
         if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-column-id"))
             file->sort_column_id = fm_column_id_from_string (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-column-id"));
-        if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-reversed"))
-            file->sort_order = !g_strcmp0 (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-reversed"), "true") ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING;
+        if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-reversed")) {
+            file->reversed = !g_strcmp0 (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-reversed"), "true");
+            file->sort_order = file->reversed ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING;
+        }
     }
 
     if (g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_STANDARD_ICON)) {

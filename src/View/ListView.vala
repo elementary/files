@@ -18,21 +18,29 @@
 
 namespace FM {
     public class ListView : AbstractTreeView {
-
         /* We wait two seconds after row is collapsed to unload the subdirectory */
         const int COLLAPSE_TO_UNLOAD_DELAY = 2;
-
-        static string [] column_titles = {
-            _("Filename"),
-            _("Size"),
-            _("Type"),
-            _("Modified")
-        };
 
         /* ListView manages the loading and unloading of subdirectories displayed */
         private uint unload_file_timeout_id = 0;
         private GLib.List<Gtk.TreeRowReference> subdirectories_to_unload = null;
         private GLib.List<GOF.Directory.Async> loaded_subdirectories = null;
+
+        construct {
+            model.sort_order_changed.connect ((new_, reversed, old_) => {
+                foreach (Gtk.TreeViewColumn col in tree.get_columns ()) {
+                    FM.ColumnID id = col.get_data ("id");
+                    if (id == old_) {
+                        col.sort_indicator = false;
+                    }
+
+                    if (id == new_) {
+                        col.sort_indicator = true;
+                        col.sort_order = reversed ? Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
+                    }
+                }
+            });
+        }
 
         public ListView (Marlin.View.Slot _slot) {
             base (_slot);
@@ -47,35 +55,45 @@ namespace FM {
         }
 
         private void append_extra_tree_columns () {
-            int fnc = FM.ColumnID.FILENAME;
-
             int preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
-            for (int k = fnc; k < FM.ColumnID.NUM_COLUMNS; k++) {
-                if (k == fnc) {
-                    /* name_column already created by AbstractTreeVIew */
-                    name_column.set_title (column_titles [0]);
-                    name_column.min_width = preferred_column_width;
-                } else {
-                    var renderer = new Gtk.CellRendererText ();
-                    var col = new Gtk.TreeViewColumn ();
-                    col.pack_end (renderer, true);
-                    col.set_title (column_titles [k - fnc]);
-                    var kk = (FM.ColumnID)k;
-                    col.set_cell_data_func (renderer, () => {set_file_data_from_icon_renderer (renderer, kk);});
-//                    col.set_sort_column_id (k);
-                    col.set_sort_column_id (FM.ColumnID.FILE_COLUMN);
-                    col.set_resizable (false);
-                    col.set_expand (false);
-                    col.min_width = 24;
-                    if (k == FM.ColumnID.SIZE || k == FM.ColumnID.MODIFIED) {
-                        renderer.@set ("xalign", 1.0f);
-                    } else {
-                        renderer.@set ("xalign", 0.0f);
-                    }
+            name_column.title = _("Filename");
+            name_column.min_width = preferred_column_width;
+            name_column.clickable = true;
+            name_column.clicked.connect (on_column_clicked);
+            name_column.sort_indicator = true;
+            name_column.set_data ("id", FM.ColumnID.FILENAME);
 
-                    tree.append_column (col);
-                }
+            make_extra_column (FM.ColumnID.SIZE, _("Size"));
+            make_extra_column (FM.ColumnID.TYPE, _("Type"));
+            make_extra_column (FM.ColumnID.MODIFIED, ("_Modified"));
+        }
+
+        private void make_extra_column (FM.ColumnID id, string title) {
+            var renderer = new Gtk.CellRendererText ();
+            var col = new Gtk.TreeViewColumn ();
+            col.pack_end (renderer, true);
+            col.title = title;
+            col.set_data ("id", id);
+            col.set_cell_data_func (renderer, () => {set_file_data_from_icon_renderer (renderer, id);});
+            col.clickable = true;
+            col.clicked.connect (on_column_clicked);
+            col.sort_indicator = false;
+            col.set_resizable (false);
+            col.set_expand (false);
+            col.min_width = 24;
+
+            if (id == FM.ColumnID.SIZE || id == FM.ColumnID.MODIFIED) {
+                renderer.@set ("xalign", 1.0f);
+            } else {
+                renderer.@set ("xalign", 0.0f);
             }
+
+            tree.append_column (col);
+        }
+
+        private void on_column_clicked (Gtk.TreeViewColumn col) {
+            FM.ColumnID col_id = col.get_data ("id");;
+            model.set_order (col_id);
         }
 
         private void set_file_data_from_icon_renderer (Gtk.CellRendererText cell, FM.ColumnID col_id) {
@@ -319,5 +337,7 @@ namespace FM {
                 remove_subdirectory (dir);
             });
         }
+
+
     }
 }

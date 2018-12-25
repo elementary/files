@@ -33,8 +33,6 @@ namespace FM {
 
         protected virtual void create_and_set_up_name_column () {
             name_column = new Gtk.TreeViewColumn ();
-//            name_column.set_sort_column_id (FM.ColumnID.FILENAME);
-            name_column.set_sort_column_id (FM.ColumnID.FILE_COLUMN);
             name_column.set_expand (true);
             name_column.set_resizable (true);
 

@@ -20,7 +20,6 @@ namespace FM {
     public enum ColumnID {
         FILE_COLUMN, /* gof file */
         COLOR,  /* string */
-//        PIXBUF,  /* pixbuf */
         FILENAME,  /* string */
         SIZE,  /* string */
         TYPE,  /* string */
@@ -43,7 +42,7 @@ namespace FM {
                 case "modified":
                     return ColumnID.MODIFIED;
                 default:
-                    return ColumnID.INVALID;
+                    return ColumnID.FILENAME;
             }
         }
 
@@ -66,6 +65,7 @@ namespace FM {
 
 public interface DirectoryViewInterface : Object {
     public signal void subdirectory_unloaded (GOF.Directory.Async dir);
+    public signal void sort_order_changed (FM.ColumnID new_sort_property, bool reversed, FM.ColumnID old_sort_property);
 
     public abstract int icon_size { get; set; }
     public abstract bool has_child { get; set; }
@@ -73,7 +73,6 @@ public interface DirectoryViewInterface : Object {
     public abstract ColumnID sort_file_property { get; set; }
     public abstract bool reversed { get; set; }
 
-//    public abstract void set_should_sort_directories_first (bool dir_first);
     public abstract bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter? iter);
     public abstract bool add_file (GOF.File file, GOF.Directory.Async? dir = null);
     public abstract void file_changed (GOF.File file, GOF.Directory.Async? dir = null);
@@ -83,24 +82,11 @@ public interface DirectoryViewInterface : Object {
     public abstract bool load_subdirectory (Gtk.TreePath path, out GOF.Directory.Async? dir);
     public abstract bool unload_subdirectory (Gtk.TreeIter iter);
 
-    public abstract bool get_order (out FM.ColumnID sort_file_property, out Gtk.SortType sort_type);
-    public abstract void set_order (FM.ColumnID sort_file_property, Gtk.SortType sort_type);
+    /* 'reversed' indicates whether the sort should be the natural order for that property
+     * (defined by the sort function in gof.file) or not */
+    public abstract bool get_order (out FM.ColumnID sort_file_property, out bool reversed);
+    public abstract void set_order (FM.ColumnID sort_file_property, bool? reversed = null);
 }
-
-//public class FileEntry {
-//    public unowned GOF.File file;
-//    public Gee.TreeMap<GOF.File, GLib.SequenceIter<FM.FileEntry>> reverse_map;    /* map from files to GSequenceIter's */
-//    public unowned GOF.Directory.Async subdirectory = null;
-//    public FM.FileEntry parent = null;
-//    public GLib.Sequence<FM.FileEntry> files = null;
-//    public GLib.SequenceIter<FM.FileEntry> seq {get; set;}
-//    public bool loaded = false;
-
-//    public FileEntry () {
-//        reverse_map = new Gee.TreeMap<GOF.File, GLib.SequenceIter<FM.FileEntry>> ();
-//    }
-//}
-
 
 //    public signal void subdirectory_unloaded (GOF.Directory.Async directory);
 
@@ -108,52 +94,16 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
 
     public bool has_child { get; set; default = false; }
     public int icon_size { get; set; default = 32; }
-//    private bool _sort_directories_first = true;
-    public bool sort_directories_first { get; set; }
-//        get {
-//            return _sort_directories_first;
-//        }
-
-//        set {
-//            if (value != _sort_directories_first) {
-//                _sort_directories_first = value;
-//                sort ();
-//            }
-//        }
-//    }
-
-    public ColumnID sort_file_property { get; set; }
+    public ColumnID sort_file_property { get; set; default = FM.ColumnID.FILENAME;}
     public bool reversed { get; set; }
-
-//    private GLib.Sequence<FM.FileEntry> files;
-//    private Gee.TreeMap<GOF.File, GLib.SequenceIter<FM.FileEntry>> top_reverse_map;
-//    private Gee.TreeMap<GOF.Directory.Async, GLib.SequenceIter<FM.FileEntry>> directory_reverse_map;
-//    private int stamp;
-//    private bool sort_directories_first = true;
-//    private ColumnID sort_id;
-//    private Gtk.SortType order;
+    public bool sort_directories_first { get; set; default = true;}
 
     construct {
-//        files = new GLib.Sequence<FM.FileEntry> ();
-//        top_reverse_map = new Gee.TreeMap<GOF.File, GLib.SequenceIter<FM.FileEntry>> ();
-//        directory_reverse_map = new Gee.TreeMap<GOF.Directory.Async, GLib.SequenceIter<FM.FileEntry>> ();
-//        stamp = (int)GLib.Random.next_int ();
         set_column_types ({
               typeof (GOF.File), /* File object */
-//              typeof (string), /* Color */
-//              typeof (Gdk.Pixbuf), /* Icon Pixbuf */
-//              typeof (string), /* File name */
-//              typeof (string), /* File type */
-//              typeof (string), /* File size */
-//              typeof (string) /* Modification date */
             });
 
-//        sort_id = ColumnID.FILE_COLUMN;
-
-//        order = Gtk.SortType.ASCENDING;
-
         sort_file_property = ColumnID.FILENAME;
-        set_order (ColumnID.FILE_COLUMN, Gtk.SortType.ASCENDING);
         set_sort_func (ColumnID.FILE_COLUMN, directory_view_sort_func);
     }
 
@@ -168,10 +118,10 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
     public new bool get_sort_column_id (out int sort_col, out Gtk.SortType sort_type) {
         /* We do not want the normal method to be called externally */
         /* Externally, 'get_order ()' should be called */
+        sort_col = 0;
+        sort_type = 0;
         assert (false);
-        sort_col = 0; /* Keep compiler quiet */
-        sort_type = Gtk.SortType.ASCENDING;
-        return false; /* Indicate failure */
+        return true;
     }
 
     public new void set_sort_column_id (int sort_col, Gtk.SortType sort_type) {
@@ -180,21 +130,21 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         assert (false);
     }
 
-    public bool get_order (out FM.ColumnID sort_file_property, out Gtk.SortType sort_type) {
-        int col;
-        Gtk.SortType s_t;
-        var res = ((Gtk.TreeStore)(this)).get_sort_column_id (out col, out s_t);
-        sort_type = s_t;
+    public bool get_order (out FM.ColumnID sort_file_property, out bool reversed) {
+        reversed = this.reversed;
         sort_file_property = this.sort_file_property;
-        return res;
+        return true;
     }
 
-    public void set_order (FM.ColumnID _sort_file_property, Gtk.SortType sort_type) {
+    /* If called with explicit "reversed" use that else if column changed use "true" else toggle existing order */
+    public void set_order (FM.ColumnID _sort_file_property, bool? _reversed = null) {
         assert (_sort_file_property != FM.ColumnID.INVALID);
-warning ("set order");
+        var old_col = sort_file_property;
         sort_file_property = _sort_file_property;
-        ((Gtk.TreeStore)(this)).set_sort_column_id (FM.ColumnID.FILE_COLUMN, sort_type);
+        reversed = (_reversed == null ? (old_col == _sort_file_property ? !reversed : false) : _reversed);
+        ((Gtk.TreeStore)(this)).set_sort_column_id (FM.ColumnID.FILE_COLUMN, Gtk.SortType.ASCENDING);
         set_sort_func (ColumnID.FILE_COLUMN, directory_view_sort_func);
+        sort_order_changed (sort_file_property, reversed, old_col);
     }
 
 //    private GLib.SequenceIter<FM.FileEntry> lookup_file (GOF.File file, GOF.Directory.Async? directory = null) {
@@ -290,14 +240,14 @@ warning ("set order");
         return false;
     }
 
-    public void set_should_sort_directories_first (bool sort_directories_first) {
+//    public void set_should_sort_directories_first (bool sort_directories_first) {
 //        if (this.sort_directories_first == sort_directories_first) {
 //            return;
 //        }
 
 //        this.sort_directories_first = sort_directories_first;
 //        sort ();
-    }
+//    }
 
     public GOF.File? file_for_path (Gtk.TreePath path) {
         GOF.File? file = null;
@@ -541,20 +491,20 @@ warning ("set order");
 //        return ColumnID.NUM_COLUMNS;
 //    }
 
-    public Type get_column_type (int index) {
-        switch (index) {
-            case ColumnID.FILE_COLUMN:
-                return typeof (GOF.File);
+//    public Type get_column_type (int index) {
+//        switch (index) {
+//            case ColumnID.FILE_COLUMN:
+//                return typeof (GOF.File);
 //            case ColumnID.PIXBUF:
 //                return typeof (Gdk.Pixbuf);
-            default:
+//            default:
 //                if (index < ColumnID.NUM_COLUMNS) {
 //                    return typeof (string);
 //                } else {
-                    return GLib.Type.INVALID;
+//                    return GLib.Type.INVALID;
 //                }
-        }
-    }
+//        }
+//    }
 
 //    private void sequenceiter_to_treeiter (GLib.SequenceIter<FM.FileEntry> seq, out Gtk.TreeIter iter) {
 //        assert (!seq.is_end ());
