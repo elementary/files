@@ -2238,7 +2238,7 @@ namespace FM {
         }
 
         private void update_menu_actions_sort () {
-            int sort_column_id;
+            FM.ColumnID sort_column_id;
             bool reversed;
 
             if (model.get_order (out sort_column_id, out reversed)) {
