@@ -1104,10 +1104,13 @@ public class Async : Object {
     }
 
     public static void remove_file_from_cache (GOF.File gof) {
+warning ("remove file from cache");
         assert (gof != null);
         Async? dir = cache_lookup (gof.directory);
         if (dir != null) {
             dir.file_hash.remove (gof.location);
+warning ("signal file deleted");
+            dir.file_deleted (gof);
         }
     }
 

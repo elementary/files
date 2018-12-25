@@ -261,10 +261,9 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
     }
 
     public GOF.File? file_for_iter (Gtk.TreeIter iter) {
-//        GOF.File? file = null;
-//        get (iter, ColumnID.FILE_COLUMN, out file);
-//        return file;
-        return null;
+        GOF.File? file = null;
+        get (iter, ColumnID.FILE_COLUMN, out file);
+        return file;
     }
 
 //    public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file) {
@@ -399,72 +398,21 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         return true;
     }
 
-//    public uint get_length () {
-//        return files.get_length ();
-//    }
+    public bool remove_file (GOF.File file_a, GOF.Directory.Async? directory = null) {
+        GOF.File?  file_b = null;
+        bool valid_iter = false;
 
-//    public void clear () {
-//        clear_directory (files);
-//    }
+        @foreach ((model, path, iter) => {
+            model.@get (iter, FM.ColumnID.FILE_COLUMN, out file_b);
+            if (file_a == file_b) {
+                valid_iter = remove (ref iter);
+                return true;
+            } else {
+                return false;
+            }
+        });
 
-//    private void remove (Gtk.TreeIter iter) {
-//        return_val_if_fail (iter.stamp == stamp, null);
-
-//        var path = get_path (iter);
-//        var seq = (GLib.SequenceIter<FM.FileEntry>)iter.user_data;
-//        FM.FileEntry file_entry = seq.get ();
-//        unowned GLib.Sequence<FM.FileEntry> entry_files = file_entry.files;
-//        if (entry_files != null) {
-//            while (entry_files.get_length () > 0) {
-//                var child_seq = entry_files.get_begin_iter ();
-//                FM.FileEntry child_file_entry = child_seq.get ();
-//                if (child_file_entry.file != null) {
-//                    remove_file (child_file_entry.file, file_entry.subdirectory);
-//                } else {
-//                    path.append_index (0);
-//                    child_seq.remove ();
-//                    row_deleted (path);
-//                }
-//            }
-//        }
-
-//        FM.FileEntry parent = file_entry.parent;
-//        var file_entry_file = file_entry.file;
-//        if (file_entry_file != null) {
-//            if (parent != null) {
-//                parent.reverse_map.unset (file_entry_file);
-//            } else {
-//                top_reverse_map.unset (file_entry_file);
-//            }
-//        }
-
-//        if (parent != null && parent.files.get_length () == 1 && file_entry_file != null) {
-//            /* this is the last non-dummy child, add a dummy node */
-//            /* We need to do this before removing the last file to avoid
-//             * collapsing the row.
-//             */
-//             add_dummy_row (parent);
-//        }
-
-//        var subdir = file_entry.subdirectory;
-//        if (subdir != null) {
-//            subdirectory_unloaded (subdir);
-//            directory_reverse_map.unset (subdir);
-//        }
-
-//        seq.remove ();
-//        row_deleted (path);
-//    }
-
-    public bool remove_file (GOF.File file, GOF.Directory.Async? directory = null) {
-//        Gtk.TreeIter? iter;
-//        if (get_tree_iter_from_file (file, directory, out iter)) {
-//            remove (ref iter);
-//            return true;
-//        } else {
-//            return false;
-//        }
-        return true;
+        return valid_iter;
     }
 
 //    private void clear_directory (GLib.Sequence<FM.FileEntry> dir_files) {

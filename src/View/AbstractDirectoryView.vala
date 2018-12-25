@@ -872,9 +872,9 @@ namespace FM {
                 });
             }
 
-            Gtk.TreeIter? iter = null;
-            model.get_first_iter_for_file (file_list.first ().data, out iter);
-            deleted_path = model.get_path (iter);
+//            Gtk.TreeIter? iter = null;
+//            model.get_first_iter_for_file (file_list.first ().data, out iter);
+            deleted_path = get_selected_paths ().data;
 
             if (locations != null) {
                 locations.reverse ();
@@ -1298,6 +1298,7 @@ namespace FM {
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
+warning ("on file deleted");
             file.exists = false;
             model.remove_file (file, dir);
 
@@ -2508,6 +2509,7 @@ namespace FM {
                 /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
                  * and there has not been another event (which would zero the thumbnail_source_id) */
                 if (actually_visible > 0 && thumbnail_source_id > 0) {
+warning ("queue thumbs");
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 } else {
                     draw_when_idle ();
@@ -3640,9 +3642,7 @@ namespace FM {
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
          * invokes the default widget handler.  IconView requires special handler */
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
-        protected virtual Gtk.TreePath? get_single_selection () {
-            return null;
-        }
+        protected abstract Gtk.TreePath? get_single_selection ();
 
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
