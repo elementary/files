@@ -237,20 +237,10 @@ namespace FM {
                 area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
 
                 if (r is Marlin.TextRenderer) {
-
                     /* rectangles are in bin window coordinates - need to adjust event y coordinate
                      * for vertical scrolling in order to accurately detect which area of TextRenderer was
                      * clicked on */
                     y -= (int)(get_vadjustment ().value);
-//                    Gtk.TreeIter iter;
-//                    model.get_iter (out iter, path);
-////                    string? text = null;
-//                    GOF.File? file = null;
-//                    model.@get (iter,
-//                            FM.ColumnID.FILE_COLUMN, out file);
-                    var file = model.file_for_path (path);
-                    (r as Marlin.TextRenderer).file = file;
-                    (r as Marlin.TextRenderer).set_up_layout ();
 
                     if (x >= rect.x &&
                         x <= rect.x + rect.width &&
