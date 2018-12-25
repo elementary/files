@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-11-02 08:40+0000\n"
+"PO-Revision-Date: 2018-12-25 00:06+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
 "fi/>\n"
@@ -344,9 +344,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Tämän tiedoston avaaminen ei onnistu"
+msgstr "Tätä tiedostoa ei voida suorittaa"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
@@ -567,19 +566,19 @@ msgstr "Pääsy estetty"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Yksityisyystila on päällä"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Viimeisimpiä tiedostoja ei muisteta"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Vaihda turva-asetuksia"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Avaa järjestelmän turvallisuus- ja yksityisyyssovellus"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
