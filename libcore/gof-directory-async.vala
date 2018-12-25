@@ -801,7 +801,7 @@ public class Async : Object {
         file_hash.insert (gof.location, gof);
     }
 
-    public GOF.File file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
+    public GOF.File? file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
         assert (file != null);
         GOF.File? result = file_hash.lookup (file);
         /* Although file_hash.lookup returns an unowned value, Vala will add a reference
@@ -815,9 +815,12 @@ public class Async : Object {
             } else if (update_hash) {
                 file_hash.insert (file, result);
             }
+        } else {
+            result = null;
         }
 
-        return (!) result;
+//        return (!) result;
+        return result;
     }
 
     /**TODO** move this to GOF.File */
@@ -992,7 +995,9 @@ public class Async : Object {
             GOF.File? gof = null;
             if (parent_dir != null) {
                 gof = parent_dir.file_cache_find_or_insert (loc);
-                parent_dir.notify_file_changed (gof);
+                if (gof != null) {
+                    parent_dir.notify_file_changed (gof);
+                }
             }
 
             /* Has a background directory been changed (e.g. properties)? If so notify the view(s)*/
@@ -1008,8 +1013,10 @@ public class Async : Object {
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                GOF.File gof = dir.file_cache_find_or_insert (loc, true);
-                dir.notify_file_added (gof);
+                GOF.File? gof = dir.file_cache_find_or_insert (loc, true);
+                if (gof != null) {
+                    dir.notify_file_added (gof);
+                }
             }
         }
     }
@@ -1026,8 +1033,10 @@ public class Async : Object {
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                GOF.File gof = dir.file_cache_find_or_insert (loc);
-                dir.notify_file_removed (gof);
+                GOF.File? gof = dir.file_cache_find_or_insert (loc);
+                if (gof != null) {
+                    dir.notify_file_removed (gof);
+                }
                 found = false;
 
                 foreach (var d in dirs) {
