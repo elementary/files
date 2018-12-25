@@ -383,7 +383,7 @@ namespace FM {
             model.sort_directories_first = (GOF.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
-            model.sort_column_changed.connect (on_sort_column_changed);
+            model.sort_order_changed.connect (on_sort_order_changed);
         }
 
         private void set_up__menu_actions () {
@@ -3464,10 +3464,7 @@ namespace FM {
 
         }
 
-        protected void on_sort_column_changed () {
-            FM.ColumnID sort_column_id = FM.ColumnID.FILENAME;
-            bool reversed = false;
-
+        protected void on_sort_order_changed () {
             /* Setting file attributes fails when root */
             if (Posix.getuid () == 0) {
                 return;
@@ -3476,6 +3473,8 @@ namespace FM {
             /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
              * the directory file metadata incorrectly (bug 1511307).
              */
+            FM.ColumnID sort_column_id = FM.ColumnID.FILENAME;
+            bool reversed = false;
             if (tree_frozen ||
                 !model.get_order (out sort_column_id, out reversed)) {
                 return;
