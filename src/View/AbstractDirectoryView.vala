@@ -1263,7 +1263,7 @@ namespace FM {
                 is_writable = slot.directory.file.is_writable ();
             } else {
                 remove_marlin_icon_info_cache (file);
-                model.file_changed (file, dir);
+//                model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
                 if (slot.directory.is_local || (show_remote_thumbnails && slot.directory.can_open_files)) {
@@ -1278,7 +1278,7 @@ namespace FM {
         }
 
         private void on_directory_file_icon_changed (GOF.Directory.Async dir, GOF.File file) {
-            model.file_changed (file, dir);
+//            model.file_changed (file, dir);
             draw_when_idle ();
         }
 

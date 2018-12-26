@@ -23,8 +23,6 @@
  * If these assumptions prove false, then will have to add mechanisms for mapping files to rows and detecting duplicates
  */
 namespace FM {
-
-
 public interface DirectoryViewInterface : Object {
     public signal void subdirectory_unloaded (GOF.Directory.Async dir);
     public signal void sort_order_changed (FM.ColumnID new_sort_property, bool reversed, FM.ColumnID old_sort_property);
@@ -36,7 +34,6 @@ public interface DirectoryViewInterface : Object {
     public abstract bool reversed { get; set; }
 
     public abstract bool add_file (GOF.File file, GOF.Directory.Async? dir = null);
-    public abstract void file_changed (GOF.File file, GOF.Directory.Async? dir = null);
     public abstract bool remove_file (GOF.File file, GOF.Directory.Async? dir = null);
     public abstract bool remove_files (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null);
     public abstract Gtk.TreeRowReference? find_file_row (GOF.File file, GOF.Directory.Async? dir = null);
@@ -113,54 +110,6 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         ((Gtk.TreeStore)(this)).set_sort_column_id (FM.ColumnID.FILE_COLUMN, Gtk.SortType.ASCENDING);
         set_sort_func (ColumnID.FILE_COLUMN, directory_view_sort_func);
         sort_order_changed (sort_file_property, reversed, old_col);
-    }
-
-
-    public void file_changed (GOF.File file, GOF.Directory.Async? dir = null) {
-//        var seq = lookup_file (file, dir);
-//        if (seq == null) {
-//            return;
-//        }
-
-//        var pos_before = seq.get_position ();
-//        seq.sort_changed (file_entry_compare_func);
-//        var pos_after = seq.get_position ();
-
-//        unowned GLib.Sequence<FM.FileEntry> current_files = files;
-//        /* The file moved, we need to send rows_reordered */
-//        if (pos_before != pos_after) {
-//            Gtk.TreeIter? iter = null;
-//            Gtk.TreePath parent_path = null;
-//            FM.FileEntry parent_file_entry = seq.get ().parent;
-//            if (parent_file_entry == null) {
-//                parent_path = new Gtk.TreePath ();
-//            } else {
-//                sequenceiter_to_treeiter (parent_file_entry.seq, out iter);
-//                parent_path = get_path (iter);
-//                current_files = parent_file_entry.files;
-//            }
-
-//            var length = current_files.get_length ();
-//            var new_order = new int[length];
-//            int old = 0;
-//            for (int i = 0; i < length; ++i) {
-//                if (i == pos_after) {
-//                    new_order[i] = pos_before;
-//                } else {
-//                    if (old == pos_before) {
-//                        old++;
-//                    }
-
-//                    new_order[i] = old++;
-//                }
-//            }
-
-//            rows_reordered (parent_path, iter, new_order);
-//        }
-
-//        Gtk.TreeIter iter;
-//        sequenceiter_to_treeiter (seq, out iter);
-//        row_changed (get_path (iter), iter);
     }
 
     public GOF.File? file_for_path (Gtk.TreePath path) {
