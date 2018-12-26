@@ -120,7 +120,6 @@ struct _GOFFile {
 
     /* directory view settings */
     gint            sort_column_id;
-    GtkSortType     sort_order;
     gboolean        reversed;
 };
 

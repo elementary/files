@@ -394,7 +394,6 @@ gof_file_update (GOFFile *file)
             file->sort_column_id = fm_column_id_from_string (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-column-id"));
         if (g_file_info_has_attribute (file->info, "metadata::marlin-sort-reversed")) {
             file->reversed = !g_strcmp0 (g_file_info_get_attribute_string (file->info, "metadata::marlin-sort-reversed"), "true");
-            file->sort_order = file->reversed ? GTK_SORT_DESCENDING : GTK_SORT_ASCENDING;
         }
     }
 
@@ -875,7 +874,6 @@ static void gof_file_init (GOFFile *file) {
     file->thumbnail_path = NULL;
 
     file->sort_column_id = FM_COLUMN_ID_FILENAME;
-    file->sort_order = GTK_SORT_ASCENDING;
 
     file->is_expanded = FALSE;
 }

@@ -1335,9 +1335,9 @@ warning ("on file deleted");
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
                 if (in_recent)
-                    model.set_order (FM.ColumnID.MODIFIED);
+                    model.set_order (FM.ColumnID.MODIFIED, false);
                 else if (slot.directory.file.info != null) {
-                    model.set_order ((FM.ColumnID)(slot.directory.file.sort_column_id));
+                    model.set_order ((FM.ColumnID)(slot.directory.file.sort_column_id), slot.directory.file.reversed);
                 }
             } else {
                 is_writable = false;
@@ -2518,7 +2518,6 @@ warning ("on file deleted");
                 return GLib.Source.REMOVE;
             });
         }
-
 
 /** HELPER AND CONVENIENCE FUNCTIONS */
         /** This helps ensure that file item updates are reflected on screen without too many redraws **/

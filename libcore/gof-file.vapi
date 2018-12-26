@@ -44,7 +44,7 @@ public class GOF.File : GLib.Object {
     public int width;
     public int height;
     public int sort_column_id;
-    public Gtk.SortType sort_order;
+    public bool reversed;
     public GLib.FileType file_type;
     public bool is_hidden;
     public bool is_directory;

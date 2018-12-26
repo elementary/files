@@ -212,7 +212,7 @@ namespace FM {
                     list.prepend ((owned)file);
                     count++;
                 } else {
-//                    critical ("Null file in model path %s", path.to_string ());
+                    critical ("Null file in model path %s", path.to_string ());
                 }
             });
 

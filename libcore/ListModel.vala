@@ -431,9 +431,9 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
 //        }
 //    }
 
-    public Gtk.TreeModelFlags get_flags () {
-        return Gtk.TreeModelFlags.ITERS_PERSIST | Gtk.TreeModelFlags.LIST_ONLY;
-    }
+//    public Gtk.TreeModelFlags get_flags () {
+//        return Gtk.TreeModelFlags.ITERS_PERSIST | Gtk.TreeModelFlags.LIST_ONLY;
+//    }
 
 //    public int get_n_columns () {
 //        return ColumnID.NUM_COLUMNS;
@@ -512,13 +512,12 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
 //    }
 
     public new void get_value (Gtk.TreeIter iter, int column, out Value return_value) {
-//warning ("get value col %s", ((ColumnID)column).to_string ());
         Value file_value;
         get_value (iter, ColumnID.FILE_COLUMN, out file_value);
         if (column == ColumnID.FILE_COLUMN) {
             return_value = file_value;
-
         } else {
+            critical ("Invalid column request in get_value ()");
             return_value = Value (GLib.Type.INVALID);
         }
 
