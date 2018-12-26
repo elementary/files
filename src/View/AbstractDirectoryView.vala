@@ -570,33 +570,24 @@ namespace FM {
         }
 
         public void select_gof_file (GOF.File file) {
-            Gtk.TreeIter? iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
+            var row_ref = model.find_file_row (file);
+            if (row_ref != null) {
+                set_cursor (row_ref.get_path (), false, true, false);
             }
-
-            var path = model.get_path (iter);
-            set_cursor (path, false, true, false);
         }
 
         protected void select_and_scroll_to_gof_file (GOF.File file) {
-            Gtk.TreeIter? iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
+            var row_ref = model.find_file_row (file);
+            if (row_ref != null) {
+                set_cursor (row_ref.get_path (), false, true, true);
             }
-
-            var path = model.get_path (iter);
-            set_cursor (path, false, true, true);
         }
 
         protected void add_gof_file_to_selection (GOF.File file) {
-            Gtk.TreeIter? iter;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
+            var row_ref = model.find_file_row (file);
+            if (row_ref != null) {
+                select_path (row_ref.get_path ()); /* Cursor does not follow */
             }
-
-            var path = model.get_path (iter);
-            select_path (path); /* Cursor does not follow */
         }
 
     /** Directory signal handlers. */
