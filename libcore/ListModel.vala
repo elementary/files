@@ -78,8 +78,8 @@ public interface DirectoryViewInterface : Object {
     public abstract void file_changed (GOF.File file, GOF.Directory.Async? dir = null);
     public abstract bool remove_file (GOF.File file, GOF.Directory.Async? dir = null);
     public abstract bool remove_files (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null);
-//    public abstract bool find_file_path (GOF.File file, out Gtk.TreePath path, GOF.Directory.Async? dir = null);
-//    public abstract bool find_file_paths (GLib.Sequence<GOF.File> files, out Gtk.TreePath path, GOF.Directory.Async? dir = null);
+    public abstract Gtk.TreeRowReference? find_file_row (GOF.File file, GOF.Directory.Async? dir = null);
+    public abstract GLib.List<Gtk.TreeRowReference> find_file_rows (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null);
     public abstract GOF.File? file_for_path (Gtk.TreePath path);
     public abstract GOF.File? file_for_iter (Gtk.TreeIter iter);
     public abstract bool load_subdirectory (Gtk.TreePath path, out GOF.Directory.Async? dir);
@@ -339,18 +339,22 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         /* Should only need to pass through model once (or less) if all files are in model */
         GLib.List<Gtk.TreeRowReference> rows_to_remove = null;
 
-        GLib.SequenceIter seq_iter = files.get_begin_iter ();
+        GLib.SequenceIter<GOF.File> seq_iter = files.get_begin_iter ();
         while (!seq_iter.is_end ()) {
-            GOF.File file_a = (GOF.File)(GLib.Sequence.@get (seq_iter));
-            GOF.File? file_b = null;
+            GOF.File file_a = seq_iter.@get ();
+
             @foreach ((model, path, iter) => {
+                GOF.File? file_b = null;
                 model.@get (iter, FM.ColumnID.FILE_COLUMN, out file_b);
                 if (file_a == file_b) {
                     var row_ref = new Gtk.TreeRowReference (model, path);
                     rows_to_remove.prepend (row_ref);
                     seq_iter = seq_iter.next ();
+
                     if (seq_iter.is_end ()) {
                         return true;
+                    } else {
+                        file_a = seq_iter.@get ();
                     }
                 }
 
@@ -369,6 +373,48 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         }
 
         return valid;
+    }
+
+    public Gtk.TreeRowReference? find_file_row (GOF.File file_a, GOF.Directory.Async? dir = null) {
+        var files = new GLib.Sequence<GOF.File> ();
+        files.append (file_a);
+        GLib.List<Gtk.TreeRowReference> result = find_file_rows (files, dir);
+        if (result == null) {
+            return null;
+        } else {
+            return result.data;
+        }
+    }
+
+    public GLib.List<Gtk.TreeRowReference> find_file_rows (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null) {
+        files.sort (file_match_func);  /* Sort in same order as model */
+
+        GLib.List<Gtk.TreeRowReference> rows_found = null;
+
+        GLib.SequenceIter<GOF.File> seq_iter = files.get_begin_iter ();
+        while (!seq_iter.is_end ()) {
+            GOF.File file_a = seq_iter.@get ();
+            @foreach ((model, path, iter) => {
+                GOF.File? file_b = null;
+                model.@get (iter, FM.ColumnID.FILE_COLUMN, out file_b);
+                if (file_a.location.equal (file_b.location)) {
+                    var row_ref = new Gtk.TreeRowReference (model, path);
+                    rows_found.prepend (row_ref);
+                    seq_iter = seq_iter.next ();
+                    if (seq_iter.is_end ()) {
+                        return true;
+                    } else {
+                        file_a = seq_iter.@get ();
+                    }
+                }
+
+                return false;
+            });
+
+            seq_iter = seq_iter.next (); /* file was not in model */
+        }
+
+        return (owned)rows_found;
     }
 
 //    private void clear_directory (GLib.Sequence<FM.FileEntry> dir_files) {

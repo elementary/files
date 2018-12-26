@@ -438,7 +438,7 @@ namespace FM {
         }
 
         public void select_glib_files_when_thawed (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
-            GLib.List<GOF.File>? file_list = null;
+            var file_list =  new GLib.Sequence<GOF.File> ();
 
             location_list.@foreach ((loc) => {
                 file_list.prepend (GOF.File.@get (loc));
@@ -458,19 +458,17 @@ namespace FM {
             });
         }
 
-        private void select_file_paths (GLib.List<GOF.File> files, GLib.File? focus) {
+        private void select_file_paths (GLib.Sequence<GOF.File> files, GLib.File? focus) {
             disconnect_tree_signals (); /* Avoid unnecessary signal processing */
             unselect_all ();
-
+            GLib.List<Gtk.TreeRowReference> rows = model.find_file_rows (files);
             uint count = 0;
-            foreach (unowned GOF.File f in files) {
-                Gtk.TreeIter? iter;
-                /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
-                if (model.get_first_iter_for_file (f, out iter)) {
-                    count++;
-                    var path = model.get_path (iter);
-                    /* Cursor follows if matches focus location*/
+            foreach (Gtk.TreeRowReference row in rows) {
+                var path = row.get_path ();
+                GOF.File? f = model.file_for_path (path);
+                if (f != null) {
                     select_path (path, focus != null && focus.equal (f.location));
+                    count++;
                 }
             }
 
@@ -872,8 +870,6 @@ namespace FM {
                 });
             }
 
-//            Gtk.TreeIter? iter = null;
-//            model.get_first_iter_for_file (file_list.first ().data, out iter);
             deleted_path = get_selected_paths ().data;
 
             if (locations != null) {
@@ -1298,7 +1294,6 @@ namespace FM {
         private void on_directory_file_deleted (GOF.Directory.Async dir, GOF.File file) {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
-warning ("on file deleted");
             file.exists = false;
             model.remove_file (file, dir);
 
