@@ -174,7 +174,6 @@ namespace Marlin {
 
                         /* if background-color is black something probably is wrong */
                         if (color.red != 0 || color.green != 0 || color.blue != 0) {
-warning ("colorize %s", file.basename);
                             pb = PF.PixbufUtils.colorize (pb, color);
                         }
                     }

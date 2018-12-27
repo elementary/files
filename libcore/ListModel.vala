@@ -27,21 +27,21 @@ public interface DirectoryViewInterface : Object {
     public signal void subdirectory_unloaded (GOF.Directory.Async dir);
     public signal void sort_order_changed (FM.ColumnID new_sort_property, bool reversed, FM.ColumnID old_sort_property);
 
+    public abstract GOF.Directory.Async? root_dir { get; set; }
     public abstract int icon_size { get; set; }
     public abstract bool has_child { get; set; }
     public abstract bool sort_directories_first { get; set; }
     public abstract ColumnID sort_file_property { get; set; }
     public abstract bool reversed { get; set; }
 
-    public abstract bool add_file (GOF.File file, GOF.Directory.Async? dir = null);
+    public abstract bool add_file (GOF.File file, GOF.Directory.Async dir);
     public abstract bool remove_file (GOF.File file, GOF.Directory.Async? dir = null);
     public abstract bool remove_files (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null);
     public abstract Gtk.TreeRowReference? find_file_row (GOF.File file, GOF.Directory.Async? dir = null);
     public abstract GLib.List<Gtk.TreeRowReference> find_file_rows (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null);
     public abstract GOF.File? file_for_path (Gtk.TreePath path);
     public abstract GOF.File? file_for_iter (Gtk.TreeIter iter);
-    public abstract bool load_subdirectory (Gtk.TreePath path, out GOF.Directory.Async? dir);
-    public abstract bool unload_subdirectory (Gtk.TreeIter iter);
+    public abstract bool unload_subdirectory (Gtk.TreeRowReference row_ref);
 
     /* 'reversed' indicates whether the sort should be the natural order for that property
      * (defined by the sort function in gof.file) or not */
@@ -52,14 +52,16 @@ public interface DirectoryViewInterface : Object {
 //    public signal void subdirectory_unloaded (GOF.Directory.Async directory);
 
 public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
-
+    public GOF.Directory.Async? root_dir { get; set; }
     public bool has_child { get; set; default = false; }
     public int icon_size { get; set; default = 32; }
     public ColumnID sort_file_property { get; set; default = FM.ColumnID.FILENAME;}
     public bool reversed { get; set; }
     public bool sort_directories_first { get; set; default = true;}
 
+    private GLib.HashTable<string, Gtk.TreeRowReference> loaded_subdirectories;
     construct {
+        loaded_subdirectories = new HashTable<string, Gtk.TreeRowReference> (str_hash, str_equal);
         set_column_types ({
               typeof (GOF.File), /* File object */
             });
@@ -128,60 +130,66 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         return file;
     }
 
-    public bool load_subdirectory (Gtk.TreePath path, out GOF.Directory.Async? dir) {
-        dir = null;
-
-//        Gtk.TreeIter? iter;
-//        if (!get_iter (out iter, path)) {
-//            return false;
-//        }
-
-//        FM.FileEntry file_entry = ((GLib.SequenceIter<FM.FileEntry>)iter.user_data).get ();
-//        if (file_entry.file == null || file_entry.subdirectory != null) {
-//            return false;
-//        }
-
-//        dir = GOF.Directory.Async.from_file (file_entry.file);
-//        file_entry.subdirectory = dir;
-//        directory_reverse_map.set (dir, file_entry.seq);
-        return true;
-    }
-
-    public bool unload_subdirectory (Gtk.TreeIter iter) {
-//        FM.FileEntry file_entry = ((GLib.SequenceIter<FM.FileEntry>)iter.user_data).get ();
-//        var subdir = file_entry.subdirectory;
-//        if (file_entry.file == null || subdir == null) {
-//            return false;
-//        }
-
-//        subdir.cancel ();
-//        directory_reverse_map.unset (subdir);
-//        file_entry.loaded = false;
-
-//        /* Remove all children */
-//        while (file_entry.files.get_length () > 0) {
-//            var child_seq = file_entry.files.get_begin_iter ();
-//            FM.FileEntry child_file_entry = child_seq.get ();
-//            if (child_file_entry.file == null) {
-//                /* Don't delete the dummy node */
-//                break;
-//            } else {
-//                Gtk.TreeIter child_iter;
-//                sequenceiter_to_treeiter (child_seq, out child_iter);
-//                remove (ref child_iter);
-//            }
-//        }
-
-//        subdirectory_unloaded (subdir);
-        return true;
-    }
-
-    public bool add_file (GOF.File file, GOF.Directory.Async? dir = null) {
+    public bool unload_subdirectory (Gtk.TreeRowReference row_ref) {
         Gtk.TreeIter? iter = null;
-        append (out iter, null);
+        Gtk.TreeIter? child_iter = null;
+        var path = row_ref.get_path ();
+
+        if (path != null) {
+            get_iter (out iter, path);
+            if (iter != null) {
+                iter_children (out child_iter, iter);
+                while (iter_is_valid (child_iter)) {
+                    remove (ref child_iter);
+                }
+            }
+        }
+
+        add_dummy_row (ref iter);
+        GOF.File file = file_for_iter (iter);
+        loaded_subdirectories.remove (file.uri);
+        subdirectory_unloaded (GOF.Directory.Async.from_file (file));
+        return true;
+    }
+
+    public bool add_file (GOF.File file, GOF.Directory.Async dir) {
+        Gtk.TreeIter? iter = null;
+        Gtk.TreeIter? parent_iter = null;
+        Gtk.TreeIter? blank_iter = null;
+        Gtk.TreePath? path = null;
+
+        if (dir != null && root_dir != null && dir != root_dir) { /* add to subdirectory */
+            var parent_row = (Gtk.TreeRowReference)(loaded_subdirectories.lookup (dir.file.uri));
+            if (parent_row == null) {
+                parent_row = find_file_row (dir.file);
+                if (parent_row != null) {
+                    string key = dir.file.uri;
+                    loaded_subdirectories.insert (key, parent_row);
+
+                    path = parent_row.get_path ();
+                    var child_path = path.copy ();
+                    child_path.down ();
+                    get_iter (out blank_iter, child_path);
+                } else {
+                    critical ("Cannot add to  subdir");
+                    return false;
+                }
+            } else {
+                path = parent_row.get_path ();
+            }
+
+            get_iter (out parent_iter, path);
+        }
+
+        append (out iter, parent_iter);
         @set (iter, ColumnID.FILE_COLUMN, file, -1);
+
         if (file.is_folder ()) {
             add_dummy_row (ref iter);
+        }
+
+        if (blank_iter != null) { /* remove after adding another row else parent row will collapse */
+            remove (ref blank_iter);
         }
 
         return true;
@@ -256,17 +264,18 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
             @foreach ((model, path, iter) => {
                 GOF.File? file_b = null;
                 model.@get (iter, FM.ColumnID.FILE_COLUMN, out file_b);
-                if (file_a.location.equal (file_b.location)) {
-                    var row_ref = new Gtk.TreeRowReference (model, path);
-                    rows_found.prepend (row_ref);
-                    seq_iter = seq_iter.next ();
-                    if (seq_iter.is_end ()) {
-                        return true;
-                    } else {
-                        file_a = seq_iter.@get ();
+                if (file_b != null && !file_b.is_null) {
+                    if (file_a.location.equal (file_b.location)) {
+                        var row_ref = new Gtk.TreeRowReference (model, path);
+                        rows_found.prepend (row_ref);
+                        seq_iter = seq_iter.next ();
+                        if (seq_iter.is_end ()) {
+                            return true;
+                        } else {
+                            file_a = seq_iter.@get ();
+                        }
                     }
                 }
-
                 return false;
             });
 
@@ -275,22 +284,6 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
 
         return (owned)rows_found;
     }
-
-//    private void clear_directory (GLib.Sequence<FM.FileEntry> dir_files) {
-//        var iter = Gtk.TreeIter ();
-//        while (dir_files.get_length () > 0) {
-//            var seq = dir_files.get_begin_iter ();
-
-//            FM.FileEntry file_entry = seq.get ();
-//            if (file_entry.files != null) {
-//                clear_directory (file_entry.files);
-//            }
-
-//            iter.user_data = seq;
-//            iter.stamp = stamp;
-//            remove (ref iter);
-//        }
-//    }
 
     public new void get_value (Gtk.TreeIter iter, int column, out Value return_value) {
         Value file_value;
@@ -306,20 +299,7 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         return;
     }
 
-//    private void add_dummy_row (FM.FileEntry parent_entry) {
-//        var dummy_file_entry = new FM.FileEntry ();
-//        dummy_file_entry.parent = parent_entry;
-//        dummy_file_entry.seq = parent_entry.files.insert_sorted (dummy_file_entry, file_entry_compare_func);
-
-//        var iter = Gtk.TreeIter ();
-//        iter.stamp = stamp;
-//        iter.user_data = dummy_file_entry.seq;
-
-//        row_inserted (get_path (iter), iter);
-//    }
-
     private void add_dummy_row (ref Gtk.TreeIter parent_iter) {
-        var dummy_file = GOF.File.get_null ();
         Gtk.TreeIter? iter = null;
         append (out iter, parent_iter);
         @set (iter, ColumnID.FILE_COLUMN, null, -1);

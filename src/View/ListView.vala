@@ -52,6 +52,10 @@ namespace FM {
             tree.model.row_inserted.connect ((path,iter) => {
             });
             model.subdirectory_unloaded.connect (on_model_subdirectory_unloaded);
+
+            slot.notify["directory"].connect (() => {
+                model.root_dir = slot.directory;
+            });
         }
 
         private void append_extra_tree_columns () {
@@ -124,8 +128,8 @@ namespace FM {
         }
 
         private void on_row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
-            set_path_expanded (path, true);
             add_subdirectory_at_path (path);
+            set_path_expanded (path, true);
         }
 
         private void on_row_collapsed (Gtk.TreeIter iter, Gtk.TreePath path) {
@@ -161,23 +165,8 @@ namespace FM {
 
         private bool unload_directories () {
             foreach (unowned Gtk.TreeRowReference rowref in subdirectories_to_unload) {
-                Gtk.TreeIter? iter = null;
-                Gtk.TreePath path;
-                if (rowref.valid ()) {
-                    path = rowref.get_path ();
-                } else {
-                    warning ("TreeRowRef invalid when unloading subdirectory");
-                    continue;
-                }
-
-                if (((Gtk.TreeView)tree).is_row_expanded (path)) {
-                    continue;
-                }
-
-                if (model.get_iter (out iter, path) && iter != null) {
-                        model.unload_subdirectory (iter);
-                } else {
-                    warning ("Subdirectory to unload not found in model");
+                if (!tree.is_row_expanded (rowref.get_path ())) {
+                    model.unload_subdirectory (rowref);
                 }
             }
 
@@ -236,6 +225,7 @@ namespace FM {
 
         protected override Gtk.Widget? create_view () {
             model.set_property ("has-child", true);
+            model.root_dir = slot.directory;
             base.create_view ();
             tree.set_show_expanders (true);
             tree.set_headers_visible (true);
@@ -272,18 +262,21 @@ namespace FM {
         }
 
         private void add_subdirectory_at_path (Gtk.TreePath path) {
-            /* If a new subdirectory is loaded, connect it, load it
+            /* If a new subdirectory is to be loaded, connect it, load it
              * and add it to the list of subdirectories */
-            GOF.Directory.Async? dir = null;
-            if (model.load_subdirectory (path, out dir)) {
-                if (dir != null) {
-                    connect_directory_handlers (dir);
-                    dir.init ();
-                    /* Maintain our own reference on dir, independent of the model */
-                    /* Also needed for updating show hidden status */
-                    loaded_subdirectories.prepend (dir);
-                }
+            GOF.File file = model.file_for_path (path);
+            assert (file.is_directory);
+            var dir = GOF.Directory.Async.from_file (file);
+
+            if (loaded_subdirectories.find (dir) != null) {
+                return;
             }
+
+            connect_directory_handlers (dir);
+            Idle.add (() => {dir.init (); return Source.REMOVE;});
+            /* Maintain our own reference on dir, independent of the model */
+            /* Also needed for updating show hidden status */
+            loaded_subdirectories.prepend (dir);
         }
 
         private void remove_subdirectory (GOF.Directory.Async? dir) {
