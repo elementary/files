@@ -2,41 +2,49 @@ msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"PO-Revision-Date: 2018-12-24 00:06+0000\n"
+"Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
+"Language-Team: Marathi <https://weblate.elementary.io/projects/files/extra/"
+"mr/>\n"
+"Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
-msgstr ""
+msgstr "फायली"
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr ""
+msgstr "आपल्या फायली ब्राउझ करा"
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr ""
+msgstr "फोल्डर; व्यवस्थापक; एक्सप्लोर; डिस्क; फाइलसिस्टम;"
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
-msgstr ""
+msgstr "फाइल व्यवस्थापक"
 
 #: data/io.elementary.files.desktop.in.in:8
 msgid "system-file-manager"
-msgstr ""
+msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
-msgstr ""
+msgstr "नवीन विंडो"
 
 #: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "प्रशासक म्हणून नवीन विंडो"
 
 #: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
-msgstr ""
+msgstr "फायली आणि फोल्डर ब्राउझ आणि व्यवस्थापित करा"
 
 #: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
