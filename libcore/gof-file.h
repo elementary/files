@@ -117,6 +117,7 @@ struct _GOFFile {
     guint           flags;
     GList           *emblems_list;
     gboolean        is_gone;
+    gboolean        is_null;
 
     /* directory view settings */
     gint            sort_column_id;
@@ -173,6 +174,7 @@ void            gof_file_update_emblem (GOFFile *file);
 void            gof_file_get_folder_icon_from_uri_or_path (GOFFile *file);
 
 GOFFile*        gof_file_get (GFile *location);
+GOFFile*        gof_file_get_null ();
 GOFFile*        gof_file_cache_lookup (GFile *location);
 void            gof_file_remove_from_caches (GOFFile *file);
 

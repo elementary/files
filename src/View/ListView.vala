@@ -59,6 +59,7 @@ namespace FM {
             name_column.title = _("Filename");
             name_column.min_width = preferred_column_width;
             name_column.clickable = true;
+            name_column.expand = true;
             name_column.clicked.connect (on_column_clicked);
             name_column.sort_indicator = true;
             name_column.set_data ("id", FM.ColumnID.FILENAME);
@@ -98,20 +99,23 @@ namespace FM {
 
         private void set_file_data_from_icon_renderer (Gtk.CellRendererText cell, FM.ColumnID col_id) {
             string text = "";
+            if (icon_renderer.file != null) {
 
-            switch (col_id) {
-                case FM.ColumnID.SIZE:
-                    text = icon_renderer.file.format_size;
-                    break;
-                case FM.ColumnID.TYPE:
-                    text = icon_renderer.file.formated_type;
-                    break;
-                case FM.ColumnID.MODIFIED:
-                    text = icon_renderer.file.formated_modified;
-                    break;
-                default:
-                    text = "??????";
-                    break;
+                switch (col_id) {
+                    case FM.ColumnID.SIZE:
+                        text = icon_renderer.file.format_size;
+                        break;
+                    case FM.ColumnID.TYPE:
+                        text = icon_renderer.file.formated_type;
+                        break;
+                    case FM.ColumnID.MODIFIED:
+                        text = icon_renderer.file.formated_modified;
+                        break;
+                    default:
+                        text = "??????";
+                        break;
+                }
+
             }
 
 

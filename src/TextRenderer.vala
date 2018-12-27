@@ -45,7 +45,7 @@ namespace Marlin {
         }
 
         public GOF.File? file {set; private get;}
-        public new string text { get { return file != null ? file.get_display_name () : "NULL"; } }
+        public new string text { get { return file != null ? file.get_display_name () : ""; } }
         private int _item_width = -1;
         public int item_width {
             set {

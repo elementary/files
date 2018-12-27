@@ -87,11 +87,28 @@ get_icon_user_special_dirs(char *path)
 }
 
 GOFFile *
+gof_file_get_null ()
+{
+    GOFFile *file;
+    file = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
+    file->is_null = TRUE;
+    file->formated_type = g_strdup ("");
+    file->format_size = g_strdup ("");
+    file->formated_modified = g_strdup ("");
+    file->custom_display_name = g_strdup ("");
+    file->custom_icon_name = g_strdup ("");
+    file->basename = g_strdup ("");
+
+    return (file);
+}
+
+GOFFile *
 gof_file_new (GFile *location, GFile *dir)
 {
     GOFFile *file;
 
     file = (GOFFile*) g_object_new (GOF_TYPE_FILE, NULL);
+
     file->location = g_object_ref (location);
     file->uri = g_file_get_uri (location);
     if (dir != NULL)
@@ -107,6 +124,7 @@ gof_file_new (GFile *location, GFile *dir)
 void
 gof_file_icon_changed (GOFFile *file)
 {
+    g_return_if_fail (GOF_IS_FILE (file) &&  !file->is_null);
     GOFDirectoryAsync *dir = NULL;
 
     /* get the DirectoryAsync associated to the file */
@@ -321,6 +339,7 @@ gof_file_target_location_update (GOFFile *file)
 static void
 gof_file_update_size (GOFFile *file)
 {
+    g_return_if_fail (!file->is_null);
     g_free (file->format_size);
 
     if (gof_file_is_folder (file) || gof_file_is_root_network_folder (file)) {
@@ -335,6 +354,7 @@ gof_file_update_size (GOFFile *file)
 static void
 gof_file_update_formated_type (GOFFile *file)
 {
+    g_return_if_fail (!file->is_null);
     gchar *formated_type = NULL;
 
     _g_free0 (file->formated_type);
@@ -359,6 +379,7 @@ gof_file_update_icon_internal (GOFFile *file, gint size, gint scale);
 void
 gof_file_update_type (GOFFile *file)
 {
+    g_return_if_fail (!file->is_null);
     const gchar *ftype = gof_file_get_ftype (file);
 
     gof_file_update_formated_type (file);
@@ -374,6 +395,7 @@ gof_file_update_type (GOFFile *file)
 void
 gof_file_update (GOFFile *file)
 {
+    g_return_if_fail (!file->is_null);
     GKeyFile *key_file;
     gchar *p;
 
@@ -670,6 +692,7 @@ void gof_file_update_icon (GOFFile *file, gint size, gint scale)
 
 void gof_file_update_desktop_file (GOFFile *file)
 {
+    g_return_if_fail (!file->is_null);
     g_free (file->utf8_collation_key);
     file->utf8_collation_key = g_utf8_collate_key_for_filename  (gof_file_get_display_name (file), -1);
     gof_file_update_formated_type (file);
@@ -679,6 +702,7 @@ void gof_file_update_desktop_file (GOFFile *file)
 
 void gof_file_update_emblem (GOFFile *file)
 {
+    g_return_if_fail (!file->is_null);
     /* Do not try to add emblems to network and remote files (except smb) - can cause blocking io*/
     if (gof_file_is_other_uri_scheme (file) || gof_file_is_network_uri_scheme (file))
         return;
@@ -743,10 +767,12 @@ print_error (GError *error)
 static GFileInfo *
 gof_file_query_info (GOFFile *file)
 {
+    g_return_if_fail (!file->is_null);
     GFileInfo *info = NULL;
     GError *err = NULL;
 
     g_return_val_if_fail (G_IS_FILE (file->location), NULL);
+    g_return_if_fail (g_strcmp0 (g_file_get_basename (file->location), ""));
 
     file->is_mounted = TRUE;
     file->exists = TRUE;
@@ -773,6 +799,7 @@ gof_file_query_info (GOFFile *file)
 void
 gof_file_query_update (GOFFile *file)
 {
+    g_return_if_fail (!file->is_null);
     GFileInfo *info = NULL;
 
     if ((info = gof_file_query_info (file)) != NULL) {
@@ -786,6 +813,7 @@ gof_file_query_update (GOFFile *file)
 void
 gof_file_query_thumbnail_update (GOFFile *file)
 {
+    g_return_if_fail (!file->is_null);
     gchar    *base_name;
     gchar    *md5_hash;
 
@@ -858,6 +886,8 @@ static void gof_file_init (GOFFile *file) {
     file->formated_modified = NULL;
     file->custom_display_name = NULL;
     file->custom_icon_name = NULL;
+
+    file->is_null = FALSE;
     file->owner = NULL;
     file->group = NULL;
 
@@ -883,41 +913,41 @@ static void gof_file_finalize (GObject* obj) {
 
     file = GOF_FILE (obj);
 
-    if (!(G_IS_FILE (file->location))) {
-        g_warning ("Invalid file location on finalize for %s", file->basename);
-    } else {
+    if (!file->is_null) {
         g_object_unref (file->location);
-    }
 
-    g_clear_object (&file->info);
-    _g_object_unref0 (file->directory);
-    _g_free0 (file->uri);
+        g_clear_object (&file->info);
+        _g_object_unref0 (file->directory);
+
+        _g_object_unref0 (file->icon);
+        _g_object_unref0 (file->pix);
+
+        _g_free0 (file->custom_display_name);
+        _g_free0 (file->custom_icon_name);
+
+        _g_object_unref0 (file->target_location);
+        _g_object_unref0 (file->mount);
+        /* TODO remove the target_gof */
+        _g_free0 (file->thumbnail_path);
+
+        if (file->target_gof != NULL) {
+            _g_object_unref0 (file->target_gof);
+        }
+
+#ifndef NDEBUG
+        g_warn_if_fail (file->target_gof == NULL);
+#endif
+
+        _g_free0 (file->owner);
+        _g_free0 (file->group);
+
+        _g_free0 (file->uri);
+    }
     _g_free0(file->basename);
     _g_free0(file->utf8_collation_key);
     _g_free0(file->formated_type);
     _g_free0(file->format_size);
     _g_free0(file->formated_modified);
-    _g_object_unref0 (file->icon);
-    _g_object_unref0 (file->pix);
-
-    _g_free0 (file->custom_display_name);
-    _g_free0 (file->custom_icon_name);
-
-    _g_object_unref0 (file->target_location);
-    _g_object_unref0 (file->mount);
-    /* TODO remove the target_gof */
-    _g_free0 (file->thumbnail_path);
-
-    if (file->target_gof != NULL) {
-        _g_object_unref0 (file->target_gof);
-    }
-
-#ifndef NDEBUG
-    g_warn_if_fail (file->target_gof == NULL);
-#endif
-
-    _g_free0 (file->owner);
-    _g_free0 (file->group);
 
     G_OBJECT_CLASS (gof_file_parent_class)->finalize (obj);
 }
@@ -1212,6 +1242,7 @@ gboolean
 gof_file_is_readable (GOFFile *file)
 {
     g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+    g_return_if_fail (!file->is_null);
 
     if (file->target_gof && !g_file_equal (file->location, file->target_gof->location)) {
         return gof_file_is_readable (file->target_gof);
@@ -1261,7 +1292,7 @@ gof_file_is_desktop_file (GOFFile *file)
     const gchar *content_type;
     gboolean     is_desktop_file = FALSE;
 
-    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+    g_return_val_if_fail (GOF_IS_FILE (file) &&  !file->is_null, FALSE);
 
     if (file->info == NULL)
         return FALSE;
@@ -1291,7 +1322,7 @@ gof_file_is_executable (GOFFile *file)
     gboolean     can_execute = FALSE;
     const gchar *content_type;
 
-    g_return_val_if_fail (GOF_IS_FILE (file), FALSE);
+    g_return_val_if_fail (GOF_IS_FILE (file) &&  !file->is_null, FALSE);
 
     if (file->target_gof)
         return gof_file_is_executable (file->target_gof);
@@ -1353,7 +1384,11 @@ gof_file_get (GFile *location)
     GOFFile *file = NULL;
     GOFDirectoryAsync *dir = NULL;
 
-    g_return_val_if_fail (location != NULL && G_IS_FILE (location), NULL);
+    //g_return_val_if_fail (location != NULL && G_IS_FILE (location), NULL);
+
+    if (location == NULL) {
+
+    }
 
     if ((parent = g_file_get_parent (location)) != NULL) {
         dir = gof_directory_async_cache_lookup (parent);
@@ -1416,10 +1451,7 @@ gof_file_get_display_name (GOFFile *file)
 gboolean
 gof_file_is_folder (GOFFile *file)
 {
-    if (file == NULL) {
-        g_warning ("gof_file_is_folder () called with null file - ignoring");
-        return FALSE;
-    }
+    g_return_val_if_fail (file != NULL && !file->is_null, FALSE);
 
     /* TODO check this works for non-local files and other uri schemes*/
     if ((file->is_directory && !gof_file_is_root_network_folder (file)))
@@ -1472,6 +1504,8 @@ gof_file_get_ftype (GOFFile *file)
 const gchar *
 gof_file_get_thumbnail_path (GOFFile *file)
 {
+    g_return_if_fail (GOF_IS_FILE (file) &&  !file->is_null);
+
     if (file->thumbnail_path != NULL)
         return file->thumbnail_path;
     if (file->info != NULL && g_file_info_has_attribute (file->info, G_FILE_ATTRIBUTE_THUMBNAIL_PATH))

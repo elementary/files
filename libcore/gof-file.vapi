@@ -45,6 +45,7 @@ public class GOF.File : GLib.Object {
     public int height;
     public int sort_column_id;
     public bool reversed;
+    public bool is_null;
     public GLib.FileType file_type;
     public bool is_hidden;
     public bool is_directory;
@@ -65,7 +66,7 @@ public class GOF.File : GLib.Object {
     public GLib.Mount? mount;
     public bool is_connected;
 
-    public static GOF.File @get (GLib.File location);
+    public static GOF.File @get (GLib.File? location);
     public static GOF.File? get_by_uri (string uri) {
         var scheme = GLib.Uri.parse_scheme (uri);
         if (scheme == null) {
@@ -85,6 +86,8 @@ public class GOF.File : GLib.Object {
         return GOF.File.get (location);
     }
 
+    public static GOF.File get_null ();
+
     public static File cache_lookup (GLib.File file);
     public static void list_free (GLib.List<GOF.File> files);
     public static GLib.Mount? get_mount_at (GLib.File location) {
@@ -103,7 +106,7 @@ public class GOF.File : GLib.Object {
         return null;
     }
 
-    public File (GLib.File location, GLib.File? dir);
+    public File (GLib.File? location, GLib.File? dir);
     public void remove_from_caches ();
     public void set_expanded (bool expanded);
     public bool is_folder();

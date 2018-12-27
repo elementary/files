@@ -180,6 +180,10 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         Gtk.TreeIter? iter = null;
         append (out iter, null);
         @set (iter, ColumnID.FILE_COLUMN, file, -1);
+        if (file.is_folder ()) {
+            add_dummy_row (ref iter);
+        }
+
         return true;
     }
 
@@ -291,6 +295,7 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
     public new void get_value (Gtk.TreeIter iter, int column, out Value return_value) {
         Value file_value;
         get_value (iter, ColumnID.FILE_COLUMN, out file_value);
+
         if (column == ColumnID.FILE_COLUMN) {
             return_value = file_value;
         } else {
@@ -312,5 +317,13 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
 
 //        row_inserted (get_path (iter), iter);
 //    }
+
+    private void add_dummy_row (ref Gtk.TreeIter parent_iter) {
+        var dummy_file = GOF.File.get_null ();
+        Gtk.TreeIter? iter = null;
+        append (out iter, parent_iter);
+        @set (iter, ColumnID.FILE_COLUMN, null, -1);
+        row_inserted (get_path (iter), iter);
+    }
 }
 }
