@@ -78,7 +78,11 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         return file_match_func (file_a, file_b);
     }
 
-    private int file_match_func (GOF.File a, GOF.File b) {
+    private int file_match_func (GOF.File? a, GOF.File? b) {
+        if (a == null || b == null) {
+            return 0;
+        }
+
         return a.compare_for_sort (b, (int)sort_file_property, sort_directories_first, reversed);
     }
 
