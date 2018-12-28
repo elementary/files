@@ -300,13 +300,13 @@ namespace Marlin {
                 int x0 = cell_area.x + x_offset;
                 int y0 = cell_area.y + y_offset;
                 style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
-            } else if (this.background_set) {
+            } else if (file.color > 0) {
                 int x0 = cell_area.x + x_offset;
                 int y0 = cell_area.y + y_offset;
 
                 var provider = new Gtk.CssProvider ();
                 try {
-                    provider.load_from_data ("* { background-color: %s; }".printf (background_rgba.to_string ()));
+                    provider.load_from_data ("* { background-color: %s; }".printf (GOF.Preferences.TAGS_COLORS[file.color]));
                     style_context.add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
                     style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
                     style_context.remove_provider (provider);
