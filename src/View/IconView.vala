@@ -49,21 +49,12 @@ namespace FM {
             (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ColumnID.FILE_COLUMN);
 
             (tree as Gtk.CellLayout).pack_end (name_renderer, false);
-            (tree as Gtk.CellLayout).set_cell_data_func (name_renderer, set_file_from_icon_renderer);
+            (tree as Gtk.CellLayout).add_attribute (name_renderer, "file", FM.ColumnID.FILE_COLUMN);
 
             connect_tree_signals ();
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
             });
-        }
-
-        void set_file_from_icon_renderer (Gtk.CellLayout cell_layout,
-                                          Gtk.CellRenderer cell,
-                                          Gtk.TreeModel tree_model,
-                                          Gtk.TreeIter iter) {
-
-            ((Marlin.TextRenderer)(cell)).file = icon_renderer.file;
-
         }
 
         protected override void set_up_name_renderer () {

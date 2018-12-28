@@ -42,23 +42,13 @@ namespace FM {
             set_up_icon_renderer ();
 
             name_column.pack_start (icon_renderer, false);
-            name_column.set_attributes (icon_renderer,
-                                        "file", FM.ColumnID.FILE_COLUMN);
+            name_column.set_attributes (icon_renderer, "file", FM.ColumnID.FILE_COLUMN);
 
             name_column.pack_end (name_renderer, false);
-            name_column.set_cell_data_func (name_renderer, set_file_from_icon_renderer);
+            name_column.set_attributes (name_renderer, "file", FM.ColumnID.FILE_COLUMN);
 
             tree.append_column (name_column);
             tree.set_expander_column (name_column);
-        }
-
-        void set_file_from_icon_renderer (Gtk.CellLayout cell_layout,
-                                          Gtk.CellRenderer cell,
-                                          Gtk.TreeModel tree_model,
-                                          Gtk.TreeIter iter) {
-
-            ((Marlin.TextRenderer)(cell)).file = icon_renderer.file;
-
         }
 
         protected void set_up_icon_renderer () {

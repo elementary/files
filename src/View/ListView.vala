@@ -79,7 +79,11 @@ namespace FM {
             col.pack_end (renderer, true);
             col.title = title;
             col.set_data ("id", id);
-            col.set_cell_data_func (renderer, () => {set_file_data_from_icon_renderer (renderer, id);});
+            col.set_cell_data_func (renderer,
+                                    (layout, renderer, model, iter) => {
+                                        set_file_data (renderer, model, iter, id);
+                                    });
+
             col.clickable = true;
             col.clicked.connect (on_column_clicked);
             col.sort_indicator = false;
@@ -101,30 +105,27 @@ namespace FM {
             model.set_order (col_id);
         }
 
-        private void set_file_data_from_icon_renderer (Gtk.CellRendererText cell, FM.ColumnID col_id) {
-            string text = "";
-            if (icon_renderer.file != null) {
-
+        private void set_file_data (Gtk.CellRenderer cell, Gtk.TreeModel model, Gtk.TreeIter iter, FM.ColumnID col_id) {
+            string text = "??????";
+            GOF.File? file = null;
+            model.@get(iter, FM.ColumnID.FILE_COLUMN, out file);
+            if (file != null) {
                 switch (col_id) {
                     case FM.ColumnID.SIZE:
-                        text = icon_renderer.file.format_size;
+                        text = file.format_size;
                         break;
                     case FM.ColumnID.TYPE:
-                        text = icon_renderer.file.formated_type;
+                        text = file.formated_type;
                         break;
                     case FM.ColumnID.MODIFIED:
-                        text = icon_renderer.file.formated_modified;
+                        text = file.formated_modified;
                         break;
                     default:
-                        text = "??????";
                         break;
                 }
-
             }
 
-
             ((Gtk.CellRendererText)(cell)).text = text;
-
         }
 
         private void on_row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
