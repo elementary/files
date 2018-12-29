@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-12-24 00:06+0000\n"
+"PO-Revision-Date: 2018-12-30 00:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -245,84 +245,84 @@ msgstr[1] "%u फोल्डर"
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u निवडलेला आयटम"
+msgstr[1] "%u निवडलेले आयटम"
 
 #: src/Dialogs/PropertiesWindow.vala:1246
 #, c-format
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "डिस्क गुणधर्म"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/ViewContainer.vala:379
 #: src/View/Sidebar.vala:658 libwidgets/Resources.vala:68
 msgid "File System"
-msgstr ""
+msgstr "फाईल प्रणाली"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:86
 msgid "Format:"
-msgstr ""
+msgstr "स्वरूप:"
 
 #: src/Utils/MimeActions.vala:285
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "एकाधिक फाइल प्रकार निवडले"
 
 #: src/Utils/MimeActions.vala:286
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "या सर्व प्रकारच्या फाइल कोणतेही अॅप उघडू शकत नाही"
 
 #: src/Utils/MimeActions.vala:313
 msgid "Failed to open files"
-msgstr ""
+msgstr "फायली उघडण्यात अयशस्वी"
 
 #: src/Utils/MimeActions.vala:323
 msgid "Could not open URIs"
-msgstr ""
+msgstr "यूआरआय उघडू शकले नाही"
 
 #: src/Utils/MimeActions.vala:326
 msgid "Could not open files or URIs with this app"
-msgstr ""
+msgstr "या अॅपसह फायली किंवा यूआरआय उघडू शकत नाही"
 
 #: src/View/Window.vala:493 src/View/Window.vala:503
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(प्रशासक म्हणून)"
 
 #: src/View/ListView.vala:26
 msgid "Filename"
-msgstr ""
+msgstr "फाईलचे नाव"
 
 #: src/View/ListView.vala:27 src/View/directory_view_popup.ui:149
 msgid "Size"
-msgstr ""
+msgstr "आकार"
 
 #: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
 msgid "Type"
-msgstr ""
+msgstr "प्रकार"
 
 #: src/View/ListView.vala:29
 msgid "Modified"
-msgstr ""
+msgstr "सुधारित"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:409
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "हे फोल्डर अस्तित्वात नाही"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "फोल्डर \"%s\" सापडू शकत नाही."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
-msgstr ""
+msgstr "तयार करा"
 
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "\"%s\" फोल्डर तयार करा"
 
 #: src/View/DirectoryNotFound.vala:44
 #, c-format
@@ -331,11 +331,14 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"फोल्डर तयार करण्यात अयशस्वी\n"
+"\n"
+"%s"
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
 msgid "Cannot execute this file"
-msgstr ""
+msgstr "ही फाईल कार्यान्वित करू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
