@@ -1,7 +1,11 @@
-WIDGET_DEPS = [COMMON_DEPS, dependency ('zeitgeist-2.0')]
+pantheon_files_widgets_name = 'pantheon-files-widgets'
 
-WIDGET_LIB = shared_library (
-    WIDGET_LIB_NAME,
+pantheon_files_widgets_deps = [
+    common_deps,
+    zeitgeist_dep
+]
+
+pantheon_files_widgets_files = files(
     'Interfaces/LocatableInterface.vala',
     'Interfaces/NavigatableInterface.vala',
     'Chrome/BasicLocationBar.vala',
@@ -16,23 +20,30 @@ WIDGET_LIB = shared_library (
     'Animations/Animations.vala',
     'Resources.vala',
     'Welcome.vala',
+)
 
-    dependencies : [WIDGET_DEPS, C_CORE_DEP, OTHER_DEPS],
+pantheon_files_widgets_library = shared_library(
+    pantheon_files_widgets_name,
+    pantheon_files_widgets_files,
+    dependencies : [pantheon_files_core_dep, pantheon_files_widgets_deps],
 
     install: true,
     install_dir: [true, true, true],
-    version: WIDGET_LIB_VER,
+    version: meson.project_version(),
     soversion: '0',
-	include_directories: CORE_INC,
-	link_with: CORE_LIB
 )
 
-pkg = import ('pkgconfig')
-pkg.generate (
+pantheon_files_widgets_dep = declare_dependency(
+    link_with: pantheon_files_widgets_library,
+    include_directories: include_directories('.'),
+    dependencies : [pantheon_files_core_dep, pantheon_files_widgets_deps],
+)
+
+pkg.generate(
+    libraries: pantheon_files_widgets_library,
+    filebase: pantheon_files_widgets_name,
+    name: 'elementary Files Widgets Library',
     description: 'Common widgets for io.elementary.files and io.elementary.filechooser',
-    filebase: WIDGET_LIB_NAME,
-    libraries: WIDGET_LIB,
-    name: WIDGET_LIB_NAME,
-    version: WIDGET_LIB_VER,
-    requires: WIDGET_DEPS
+    version: meson.project_version(),
+    requires: [ pantheon_files_widgets_deps, pantheon_files_core_library],
 )

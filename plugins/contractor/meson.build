@@ -1,25 +1,14 @@
-PLUG_NAME = 'pantheon-files-contractor'
-INSTALL_DIR = join_paths(PLUGIN_DIR, 'core')
-PLUG_DEPS = [
-    COMMON_DEPS
-]
+contractor_plugin_dir = join_paths(plugin_dir, 'core')
 
-SRC = [
-    'plugin.vala'
-]
-
-PLUG_LIB = shared_library (
-    PLUG_NAME,
-    SRC,
-
-    dependencies : [DEPS, C_CORE_DEP],
-    include_directories: CORE_INC,
+shared_module(
+    'pantheon-files-contractor',
+    'plugin.vala',
+    dependencies : pantheon_files_core_dep,
     install: true,
-    install_dir: INSTALL_DIR,
-    link_with: [CORE_LIB]
+    install_dir: contractor_plugin_dir,
 )
 
-install_data (
+install_data(
     'pantheon-files-contractor.plug',
-    install_dir: INSTALL_DIR
+    install_dir: contractor_plugin_dir,
 )

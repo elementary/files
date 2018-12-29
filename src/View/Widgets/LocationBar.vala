@@ -285,7 +285,12 @@ namespace Marlin.View.Chrome {
         }
 
         private void check_home () {
-            bread.hide_breadcrumbs = GLib.Filename.from_uri (displayed_path) == Environment.get_home_dir ();
+            try {
+                bread.hide_breadcrumbs = GLib.Filename.from_uri (displayed_path) == Environment.get_home_dir ();
+            } catch (Error e) {
+                bread.hide_breadcrumbs = false;
+            }
+
             if (bread.hide_breadcrumbs) {
                 show_placeholder ();
                 show_search_icon ();

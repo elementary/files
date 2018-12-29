@@ -72,7 +72,7 @@ namespace Marlin {
                 remove_action (win);
             });
 
-            ask_menu.popup (null, null, null, 0, Gdk.CURRENT_TIME);
+            ask_menu.popup_at_pointer (null);
             loop.run ();
             Gtk.grab_remove (ask_menu);
 
