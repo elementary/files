@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-12-19 03:50+0000\n"
+"PO-Revision-Date: 2018-12-29 00:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -714,7 +714,7 @@ msgstr "他のアプリケーションで開く…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr "このフォルダーを再読み込み"
+msgstr "このフォルダーを再読み込みします"
 
 #: src/View/Widgets/LocationBar.vala:198
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
