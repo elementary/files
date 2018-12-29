@@ -19,7 +19,6 @@ public class GOF.File : GLib.Object {
 
     public signal void changed ();
     public signal void info_available ();
-    public signal void icon_changed ();
     public signal void destroy ();
 
     public bool is_gone;
@@ -330,6 +329,8 @@ public class GOF.File : GLib.Object {
 
         return true;
     }
+
+    public void icon_changed ();
 }
 
 

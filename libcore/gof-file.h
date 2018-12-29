@@ -130,8 +130,6 @@ struct _GOFFileClass {
     void            (* changed)             (GOFFile *file);
     void            (* destroy)             (GOFFile *file);
     void            (* info_available)      (GOFFile *file);
-    void            (* icon_changed)        (GOFFile *file);
-
 };
 
 #define GOF_FILE_GIO_DEFAULT_ATTRIBUTES "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::content-type,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed"

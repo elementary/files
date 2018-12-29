@@ -43,7 +43,6 @@ G_DEFINE_TYPE (GOFFile, gof_file, G_TYPE_OBJECT)
 enum {
     CHANGED,
     INFO_AVAILABLE,
-    ICON_CHANGED,
     DESTROY,
     LAST_SIGNAL
 };
@@ -121,7 +120,8 @@ gof_file_icon_changed (GOFFile *file)
             g_object_unref (dir);
         }
     }
-    g_signal_emit_by_name (file, "icon_changed");
+
+    g_signal_emit_by_name (file, "changed");
 }
 
 static void
@@ -956,14 +956,6 @@ static void gof_file_class_init (GOFFileClass * klass) {
                                              NULL, NULL,
                                              g_cclosure_marshal_VOID__VOID,
                                              G_TYPE_NONE, 0);
-
-    signals[ICON_CHANGED] = g_signal_new ("icon_changed",
-                                          G_TYPE_FROM_CLASS (klass),
-                                          G_SIGNAL_RUN_LAST,
-                                          G_STRUCT_OFFSET (GOFFileClass, icon_changed),
-                                          NULL, NULL,
-                                          g_cclosure_marshal_VOID__VOID,
-                                          G_TYPE_NONE, 0);
 }
 
 
