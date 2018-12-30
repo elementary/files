@@ -6,41 +6,52 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2017-04-05 20:24+0000\n"
 "Last-Translator: Borislav Asenov Krumov <Unknown>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Файлове"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Преглеждане на вашите файлове"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "папка;мениджър;разглеждане;диск;файлова система;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Файлов мениджър"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Нов прозорец"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Нов прозорец като администратор"
 
-msgid "About Files"
-msgstr "Относно файловете"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Разглеждайте и управлявайте файлове и папки"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -53,74 +64,37 @@ msgstr ""
 "си файлове независимо дали се намират локално, на външно устройство, или "
 "отдалечено, използвайки FTP, SFTP, AFP, Webdav, или споделяне през Windows."
 
-msgid "Improved networking support"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
 msgstr ""
 
-msgid "Correct window geometry when snapping to left or right"
-msgstr ""
+#~ msgid "About Files"
+#~ msgstr "Относно файловете"
 
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
-msgstr ""
+#~ msgid "Various crash fixes"
+#~ msgstr "Подобрения относно стабилността."
 
-msgid "Switching input language cancels actions"
-msgstr ""
+#~ msgid "Minor bug fixes"
+#~ msgstr "Поправки на дребни грешки"
 
-msgid "Various crash fixes"
-msgstr "Подобрения относно стабилността."
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Интернет браузъри като Firefox,вече запомнят последно зададените "
+#~ "директории за сваляне"
 
-msgid "New translations"
-msgstr ""
+#~ msgid "910x640 minimum window size"
+#~ msgstr "910х640 минимален размер на прозореца"
 
-msgid "Minor bug fixes"
-msgstr "Поправки на дребни грешки"
+#~ msgid "Security fixes"
+#~ msgstr "Подобрения в сигурността."
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Интернет браузъри като Firefox,вече запомнят последно зададените директории "
-"за сваляне"
+#~ msgid "Improved translation support"
+#~ msgstr "Подобрена преводаческа поддръжка."
 
-msgid "Remember preferred zoom level"
-msgstr ""
+#~ msgid "Translation updates"
+#~ msgstr "Промени по превода."
 
-msgid "Improved input method support"
-msgstr ""
-
-msgid "910x640 minimum window size"
-msgstr "910х640 минимален размер на прозореца"
-
-msgid "Security fixes"
-msgstr "Подобрения в сигурността."
-
-msgid "Enable drag and drop tabs between windows"
-msgstr ""
-
-msgid "Merge search functionality into Ctrl+F"
-msgstr ""
-
-msgid "Improved translation support"
-msgstr "Подобрена преводаческа поддръжка."
-
-msgid "Fix appdata release dates"
-msgstr ""
-
-msgid "Improve file opening over Samba shares"
-msgstr ""
-
-msgid "Fix a crash when restoring items from the Trash"
-msgstr ""
-
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr ""
-
-msgid "Translation updates"
-msgstr "Промени по превода."
-
-msgid "Run Pantheon Files as Administrator"
-msgstr ""
-
-msgid "Authentication is required to run Files as Administrator"
-msgstr "Нужно е потвърждение за да изпълните Файловете като Администратор"
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr "Нужно е потвърждение за да изпълните Файловете като Администратор"

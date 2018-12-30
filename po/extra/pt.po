@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2018-09-19 00:08+0000\n"
 "Last-Translator: Nuno Alexandre MS ribeiro <nuno.anarresti@gmail.com>\n"
 "Language-Team: Portuguese <https://weblate.elementary.io/projects/files/"
@@ -20,30 +20,40 @@ msgstr ""
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Ficheiros"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Gestão de ficheiros"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "pasta;gestão;explorar;disco;sistema de ficheiros;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Gestor de Ficheiros"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Nova Janela"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Nova Janela como Administrador"
 
-msgid "About Files"
-msgstr "Sobre Ficheiros"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Navegue e gerencie ficheiros e arquivos"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -56,76 +66,84 @@ msgstr ""
 "ficheiros, tanto localmente, como num disco externo ou remotamente através "
 "de FTP, SFTP, AFP, Webdav ou Windows share."
 
-msgid "Improved networking support"
-msgstr "Suporte a rede melhorado"
-
-msgid "Correct window geometry when snapping to left or right"
-msgstr "Corrigir a geometria da janela ao ancorar à esquerda ou direita"
-
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
 msgstr ""
-"Pressionar Ctrl já não cancela o renomear enquanto a opção \"Revelar "
-"Ponteiro\" está ativa"
 
-msgid "Switching input language cancels actions"
-msgstr "Trocar idioma de entrada cancela ações"
+#~ msgid "About Files"
+#~ msgstr "Sobre Ficheiros"
 
-msgid "Various crash fixes"
-msgstr "Várias correções de crashes"
+#~ msgid "Improved networking support"
+#~ msgstr "Suporte a rede melhorado"
 
-msgid "New translations"
-msgstr "Novas traduções"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "Corrigir a geometria da janela ao ancorar à esquerda ou direita"
 
-msgid "Minor bug fixes"
-msgstr "Pequenas correções de erros"
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr ""
+#~ "Pressionar Ctrl já não cancela o renomear enquanto a opção \"Revelar "
+#~ "Ponteiro\" está ativa"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Navegadores de internet como o Firefox agora recordam a diretoria de "
-"descargas usada mais recentemente"
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "Trocar idioma de entrada cancela ações"
 
-msgid "Remember preferred zoom level"
-msgstr "Lembrar o nível de zoom preferido"
+#~ msgid "Various crash fixes"
+#~ msgstr "Várias correções de crashes"
 
-msgid "Improved input method support"
-msgstr "Suporte melhorado para método de entrada"
+#~ msgid "New translations"
+#~ msgstr "Novas traduções"
 
-msgid "910x640 minimum window size"
-msgstr "Tamanho mínimo de janela 910x640"
+#~ msgid "Minor bug fixes"
+#~ msgstr "Pequenas correções de erros"
 
-msgid "Security fixes"
-msgstr "Correções de segurança"
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Navegadores de internet como o Firefox agora recordam a diretoria de "
+#~ "descargas usada mais recentemente"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Habilita arrastar e soltar separadores entre janelas"
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "Lembrar o nível de zoom preferido"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Adiciona função de procura em Ctrl+F"
+#~ msgid "Improved input method support"
+#~ msgstr "Suporte melhorado para método de entrada"
 
-msgid "Improved translation support"
-msgstr "Suporte de tradução melhorado"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "Tamanho mínimo de janela 910x640"
 
-msgid "Fix appdata release dates"
-msgstr "Corrigidas datas de release da appdata"
+#~ msgid "Security fixes"
+#~ msgstr "Correções de segurança"
 
-msgid "Improve file opening over Samba shares"
-msgstr "Melhorada a abertura de ficheiros em partilhas Samba"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "Habilita arrastar e soltar separadores entre janelas"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Corrigida falha ao restaurar do Lixo"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Adiciona função de procura em Ctrl+F"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Melhorada sensibilidade cortar/copiar/colar no menu de contexto"
+#~ msgid "Improved translation support"
+#~ msgstr "Suporte de tradução melhorado"
 
-msgid "Translation updates"
-msgstr "Atualização de traduções"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Corrigidas datas de release da appdata"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "Executar Ficheiros como Administrador"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Melhorada a abertura de ficheiros em partilhas Samba"
 
-msgid "Authentication is required to run Files as Administrator"
-msgstr "Autenticação é necessária para executar Ficheiros como Administrador"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "Corrigida falha ao restaurar do Lixo"
+
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "Melhorada sensibilidade cortar/copiar/colar no menu de contexto"
+
+#~ msgid "Translation updates"
+#~ msgstr "Atualização de traduções"
+
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "Executar Ficheiros como Administrador"
+
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr ""
+#~ "Autenticação é necessária para executar Ficheiros como Administrador"

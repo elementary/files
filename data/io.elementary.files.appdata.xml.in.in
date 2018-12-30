@@ -58,6 +58,38 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="4.1.1" date="2018-12-28" urgency="medium">
+      <description>
+        <ul>
+          <li>Fix Ctrl+Tab behavior</li>
+          <li>Fix building without Unity library</li>
+        </ul>
+      </description>
+    </release>
+    <release version="4.1.0" date="2018-12-27" urgency="medium">
+      <description>
+        <ul>
+          <li>Hide breadcrumbs and show placeholder and search icon in home folder</li>
+          <li>Style error dialogs</li>
+          <li>Right click fixes</li>
+          <li>Reload recent view when privacy setting changes</li>
+          <li>`Connect Server` fixes</li>
+          <li>Do not activate multiple files with single click</li>
+          <li>Use `Tab` to toggle View and Sidebar keyboard focus</li>
+          <li>Delete color tag database entries for trashed files</li>
+          <li>Throttle tab closing</li>
+          <li>`Ctrl` key fixes</li>
+          <li>Drag and drop fixes</li>
+          <li>Show icons in `Open with` menus</li>
+          <li>Tooltip fixes</li>
+          <li>Memory leak fixes</li>
+          <li>Crash fixes</li>
+          <li>Trash: respect sound setting</li>
+          <li>Localization fixes</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="4.0" date="2018-10-16" urgency="medium">
       <description>
         <ul>
