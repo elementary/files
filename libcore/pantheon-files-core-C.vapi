@@ -34,7 +34,7 @@ namespace FM
         public void add_file(GOF.File file, GOF.Directory.Async dir);
         public bool remove_file (GOF.File file, GOF.Directory.Async dir);
         public void file_changed (GOF.File file, GOF.Directory.Async dir);
-        public GOF.File? file_for_path (Gtk.TreePath path);
+        public unowned GOF.File? file_for_path (Gtk.TreePath path);
         public static GLib.Type get_type ();
         public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
         public bool get_tree_iter_from_file (GOF.File file, GOF.Directory.Async directory, out Gtk.TreeIter iter);

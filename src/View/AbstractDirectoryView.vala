@@ -214,6 +214,7 @@ namespace FM {
         private bool all_selected = false;
 
         public Gtk.Widget view { get; construct; }
+
         public unowned Marlin.View.Slot slot { get; construct; }
         public unowned Marlin.View.Window window { get; construct; } /*For convenience - this can be derived from slot */
         protected unowned Gtk.RecentManager recent;
@@ -1367,9 +1368,9 @@ namespace FM {
         }
 
 /** DnD helpers */
-        public GOF.File? get_file_at_pos (int win_x, int win_y, out Gtk.TreePath? path_return) {
+        public unowned GOF.File? get_file_at_pos (int win_x, int win_y, out Gtk.TreePath? path_return) {
             Gtk.TreePath? path = get_path_at_pos (win_x, win_y);
-            GOF.File? file = null;
+            unowned GOF.File? file = null;
 
             if (path != null) {
                 file = model.file_for_path (path);
@@ -2230,7 +2231,11 @@ namespace FM {
         }
 
         protected virtual bool on_view_key_press_event (Gdk.EventKey event) {
-            if (is_frozen || event.is_modifier == 1) {
+            if (event.is_modifier == 1) {
+                return false;
+            }
+
+            if (is_frozen) {
                 return true;
             }
 

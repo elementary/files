@@ -22,7 +22,7 @@ namespace Marlin {
         public unowned Gtk.Widget real_view { get; construct; }
         public Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         public Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
-        public GOF.File? drop_target_file {get; set; default = null;}
+        public GOF.File? drop_target_file { get; set; default = null; }
 
         private Marlin.DndHandler dnd_handler;
         private bool drag_in_progress = false;
@@ -71,6 +71,7 @@ namespace Marlin {
                                      int x,
                                      int y,
                                      uint timestamp) {
+
             drag_in_progress = true;
 
             if (!drag_data_ready && !get_drag_data (context, x, y, timestamp)) {
@@ -86,6 +87,7 @@ namespace Marlin {
             }
 
             Gdk.drag_status (context, current_suggested_action, timestamp);
+
             return true;
 
         }
@@ -281,11 +283,11 @@ namespace Marlin {
         private uint drag_enter_timer_id = 0;
         private void check_destination_actions_and_target_file (Gdk.DragContext context, int x, int y, uint timestamp) {
             Gtk.TreePath? path;
-            GOF.File? file = abstract_view.get_file_at_pos (x, y, out path);
+            unowned GOF.File? file = abstract_view.get_file_at_pos (x, y, out path);
             string uri = file != null ? file.uri : "";
             string current_uri = drop_target_file != null ? drop_target_file.uri : "";
 
-            if (drop_target_file == null || uri != current_uri) {
+            if (file != null) {
                 if (drag_enter_timer_id > 0) {
                     Source.remove (drag_enter_timer_id);
                     drag_enter_timer_id = 0;
@@ -307,8 +309,9 @@ namespace Marlin {
                         current_suggested_action = Gdk.DragAction.LINK;
                         current_actions = current_suggested_action;
                     } else {
-                        current_actions = PF.FileUtils.file_accepts_drop (file,
-                                                                          drag_file_list, context,
+                        current_actions = PF.FileUtils.file_accepts_drop (drop_target_file,
+                                                                          drag_file_list,
+                                                                          context,
                                                                           out current_suggested_action);
                     }
 

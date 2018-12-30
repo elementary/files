@@ -301,7 +301,7 @@ namespace Marlin.View.Chrome {
                 el.pressed = true;
                 drop_target_file = get_target_location (x, y);
                 current_actions = PF.FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
-                                                                  context,
+                                                                  context, /* Ignore modifiers for now */
                                                                   out current_suggested_action);
             }
 
@@ -354,7 +354,7 @@ namespace Marlin.View.Chrome {
                 drop_target_file = get_target_location (x, y);
                 if (drop_target_file != null) {
                     current_actions = PF.FileUtils.file_accepts_drop (drop_target_file, drop_file_list,
-                                                                     context,
+                                                                     context, /* Ignore modifiers for now */
                                                                      out current_suggested_action);
 
                     if ((current_actions & file_drag_actions) != 0) {

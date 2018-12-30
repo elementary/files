@@ -698,7 +698,6 @@ namespace PF.FileUtils {
         bool from_trash = false;
 
         foreach (var drop_file in drop_file_list) {
-
             if (location_is_in_trash (drop_file)) {
                 from_trash = true;
 
