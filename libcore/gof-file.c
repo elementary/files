@@ -363,8 +363,11 @@ gof_file_update_type (GOFFile *file)
     const gchar *ftype = gof_file_get_ftype (file);
 
     gof_file_update_formated_type (file);
+
+    g_return_if_fail (ftype != NULL);
     /* update icon */
     file->icon = g_content_type_get_icon (ftype);
+
     if (file->pix_size > 1 && file->pix_scale > 0)
         gof_file_update_icon_internal (file, file->pix_size, file->pix_scale);
 
