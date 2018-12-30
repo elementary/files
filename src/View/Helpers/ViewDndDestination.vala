@@ -313,6 +313,21 @@ namespace Marlin {
                                                                           drag_file_list,
                                                                           context,
                                                                           out current_suggested_action);
+
+                        if (current_actions > 0) {
+                            /* If <Alt> key held down suggest Gdk.DragAction.ASK if there are any valid actions */
+                            Gdk.ModifierType mods = 0;
+                            Gdk.Device device = Gtk.get_current_event_device ();
+                            if (device != null) {
+                                device.get_state (real_view.get_window (), null, out mods);
+                            }
+
+                            mods = mods & Gtk.accelerator_get_default_mod_mask ();
+                            if (mods == Gdk.ModifierType.MOD1_MASK) {
+                                current_actions |= Gdk.DragAction.ASK;
+                                current_suggested_action = Gdk.DragAction.ASK;
+                            }
+                        }
                     }
 
                     abstract_view.highlight_drop_file (drop_target_file, current_actions, path);
