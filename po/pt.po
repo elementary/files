@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-10-30 14:57+0000\n"
+"PO-Revision-Date: 2018-12-31 13:22+0000\n"
 "Last-Translator: Nuno Alexandre MS Ribeiro <nuno.anarresti@gmail.com>\n"
 "Language-Team: Portuguese <https://weblate.elementary.io/projects/files/"
 "files/pt/>\n"
@@ -26,7 +26,6 @@ msgid "Show the version of the program"
 msgstr "Mostrar a versão da aplicação"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Abrir um ou mais uri's, cada um num novo separador"
 
@@ -130,12 +129,11 @@ msgid "Permissions"
 msgstr "Permissões"
 
 #: src/Dialogs/PropertiesWindow.vala:244
-#, fuzzy, c-format
+#, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] "%u ficheiro não foi lido devido às suas permissões ou outro erro."
-msgstr[1] ""
-"%u ficheiros não foram lidos devido às suas permissões ou outro erro."
+msgstr[1] "%u ficheiros não foram lidos devido às suas permissões ou outro erro."
 
 #: src/Dialogs/PropertiesWindow.vala:248
 msgid "Actual Size Could Be Larger"
@@ -344,7 +342,6 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
 msgstr "Impossível abrir este ficheiro"
 
@@ -567,19 +564,19 @@ msgstr "Acesso Negado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "O modo de privacidade está ativado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Nenhum ficheiro recente será lembrado"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Alterar as configurações de segurança"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Abrir a aplicação de configuração de segurança do sistema e privacidade"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
