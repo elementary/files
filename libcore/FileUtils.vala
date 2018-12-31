@@ -709,12 +709,14 @@ namespace PF.FileUtils {
             var parent = drop_file.get_parent ();
 
             if (parent != null && parent.equal (target_location)) {
-                valid_actions &= Gdk.DragAction.LINK; // Only LINK is valid
+            /* Only LINK & COPY are valid - COPY will duplicate with new name */
+                valid_actions &= Gdk.DragAction.LINK | Gdk.DragAction.COPY;
+                suggested_action = Gdk.DragAction.LINK;
             }
 
             var scheme = drop_file.get_uri_scheme ();
             if (!scheme.has_prefix ("file")) {
-                valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
+                valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK non-local files
             }
 
             if (++count > MAX_FILES_CHECKED ||

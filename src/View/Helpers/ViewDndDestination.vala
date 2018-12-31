@@ -315,17 +315,22 @@ namespace Marlin {
                                                                           out current_suggested_action);
 
                         if (current_actions > 0) {
-                            /* If <Alt> key held down suggest Gdk.DragAction.ASK if there are any valid actions */
+                            /* If <Alt> key held down or dragged with secondary button,
+                             * suggest Gdk.DragAction.ASK if there are any valid actions */
                             Gdk.ModifierType mods = 0;
                             Gdk.Device device = Gtk.get_current_event_device ();
                             if (device != null) {
                                 device.get_state (real_view.get_window (), null, out mods);
                             }
 
+                            bool secondary_button = (mods & Gdk.ModifierType.BUTTON3_MASK) > 0;
                             mods = mods & Gtk.accelerator_get_default_mod_mask ();
-                            if (mods == Gdk.ModifierType.MOD1_MASK) {
-                                current_actions |= Gdk.DragAction.ASK;
-                                current_suggested_action = Gdk.DragAction.ASK;
+
+                            if ((mods == Gdk.ModifierType.MOD1_MASK || secondary_button) &&
+                                current_actions != Gdk.DragAction.DEFAULT) {
+
+                                    current_actions |= Gdk.DragAction.ASK;
+                                    current_suggested_action = Gdk.DragAction.ASK;
                             }
                         }
                     }
