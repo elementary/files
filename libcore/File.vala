@@ -970,7 +970,7 @@ public class GOF.File : GLib.Object {
         }
     }
 
-    private void add_emblem (string emblem) {
+    public void add_emblem (string emblem) {
         if (emblems_list != null) {
             foreach (unowned string emblem_item in emblems_list) {
                 if (emblem_item == emblem) {
