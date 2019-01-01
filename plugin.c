@@ -17,7 +17,7 @@
 
 #include <gtk/gtk.h>
 #include <glib/gi18n.h>
-#include <gof-file.h>
+#include <pantheon-files-core/pantheon-files-core.h>
 #include "g-util.h"
 #include "plugin.h"
 
