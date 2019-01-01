@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2018-10-21 09:01+0000\n"
 "Last-Translator: Fredrik B <frbo9002@gmail.com>\n"
 "Language-Team: Swedish <https://weblate.elementary.io/projects/files/extra/"
@@ -20,30 +20,40 @@ msgstr ""
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Filer"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Bläddra genom dina filer"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "mapp;hanterare;utforska;disk;filsystem;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Filhanterare"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Nytt fönster"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Nytt fönster som administratör"
 
-msgid "About Files"
-msgstr "Om Filer"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Bläddra igenom och hantera filer och mappar"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -56,76 +66,83 @@ msgstr ""
 "på en extern lagringsenhet eller via FTP, SFTP, AFP, Webdav eller Windows-"
 "delning."
 
-msgid "Improved networking support"
-msgstr "Förbättrat nätverksstöd"
-
-msgid "Correct window geometry when snapping to left or right"
-msgstr "Korrigera fönstergeometri vid fastsättning till vänster eller höger"
-
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
 msgstr ""
-"Att trycka Ctrl avbryter inte längre namnändring medan \"Visa pekare\"-"
-"inställningen är aktiv"
 
-msgid "Switching input language cancels actions"
-msgstr "Skifte av inmatningsspråk avbryter handlingar"
+#~ msgid "About Files"
+#~ msgstr "Om Filer"
 
-msgid "Various crash fixes"
-msgstr "Diverse kraschfixar"
+#~ msgid "Improved networking support"
+#~ msgstr "Förbättrat nätverksstöd"
 
-msgid "New translations"
-msgstr "Nya översättningar"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "Korrigera fönstergeometri vid fastsättning till vänster eller höger"
 
-msgid "Minor bug fixes"
-msgstr "Mindre buggfixar"
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr ""
+#~ "Att trycka Ctrl avbryter inte längre namnändring medan \"Visa pekare\"-"
+#~ "inställningen är aktiv"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Webbläsare såsom Firefox kommer nu komma ihåg den senaste använda "
-"nedladdningskatalogen"
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "Skifte av inmatningsspråk avbryter handlingar"
 
-msgid "Remember preferred zoom level"
-msgstr "Kom ihåg föredragen zoomnivå"
+#~ msgid "Various crash fixes"
+#~ msgstr "Diverse kraschfixar"
 
-msgid "Improved input method support"
-msgstr "Förbättrat stöd för inmatningsmetoder"
+#~ msgid "New translations"
+#~ msgstr "Nya översättningar"
 
-msgid "910x640 minimum window size"
-msgstr "910x640 minimum fönsterstorlek"
+#~ msgid "Minor bug fixes"
+#~ msgstr "Mindre buggfixar"
 
-msgid "Security fixes"
-msgstr "Säkerhetsfixar"
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Webbläsare såsom Firefox kommer nu komma ihåg den senaste använda "
+#~ "nedladdningskatalogen"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Aktivera dra och släpp-flikar mellan fönster"
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "Kom ihåg föredragen zoomnivå"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Slå ihop sökfunktionalitet i Ctrl+F"
+#~ msgid "Improved input method support"
+#~ msgstr "Förbättrat stöd för inmatningsmetoder"
 
-msgid "Improved translation support"
-msgstr "Förbättrat översättningsstöd"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "910x640 minimum fönsterstorlek"
 
-msgid "Fix appdata release dates"
-msgstr "Fixa utgivningsdatum för programdata"
+#~ msgid "Security fixes"
+#~ msgstr "Säkerhetsfixar"
 
-msgid "Improve file opening over Samba shares"
-msgstr "Förbättra filöppning över Samba-delningar"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "Aktivera dra och släpp-flikar mellan fönster"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Fix av kraschproblem när objekt återställs från papperskorgen"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Slå ihop sökfunktionalitet i Ctrl+F"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Förbättra klipp/kopiera/klistra-känslighet i genvägsmeny"
+#~ msgid "Improved translation support"
+#~ msgstr "Förbättrat översättningsstöd"
 
-msgid "Translation updates"
-msgstr "Översättningsuppdateringar"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Fixa utgivningsdatum för programdata"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "Kör Pantheon Filer som administratör"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Förbättra filöppning över Samba-delningar"
 
-msgid "Authentication is required to run Files as Administrator"
-msgstr "Autentisering krävs för att köra programmet Filer som administratör"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "Fix av kraschproblem när objekt återställs från papperskorgen"
+
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "Förbättra klipp/kopiera/klistra-känslighet i genvägsmeny"
+
+#~ msgid "Translation updates"
+#~ msgstr "Översättningsuppdateringar"
+
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "Kör Pantheon Filer som administratör"
+
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr "Autentisering krävs för att köra programmet Filer som administratör"
