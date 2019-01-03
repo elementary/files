@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-10-30 01:47+0000\n"
+"PO-Revision-Date: 2019-01-04 00:08+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
 "files/files/nb/>\n"
@@ -567,20 +567,21 @@ msgid "Access Denied"
 msgstr "Ingen tilgang"
 
 #: src/View/PrivacyModeOn.vala:28
+#, fuzzy
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Personvernsmodus er på"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Ingen nylige filer husket"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Endre sikkerhetsinnstillinger"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Åpne systemsikkerhet- og personvernsinnstillingsprogrammet"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
