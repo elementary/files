@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-09-26 06:12+0000\n"
+"PO-Revision-Date: 2019-01-02 19:23+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://weblate.elementary.io/projects/files/files/de/"
 ">\n"
@@ -25,9 +25,8 @@ msgid "Show the version of the program"
 msgstr "Versionsnummer des Programms anzeigen"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Adresse(n) in neuem Tab öffnen"
+msgstr "Öffnen Sie eine oder mehrere URIs, jede in einem eigenen Tab"
 
 #: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -348,9 +347,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Datei kann nicht geöffnet werden"
+msgstr "Datei kann nicht ausgeführt werden"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
@@ -574,19 +572,19 @@ msgstr "Zugriff verweigert"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Privater Modus ist aktiviert"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Es werden keine aktuellen Dateien gespeichert"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Sicherheitseinstellungen ändern"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Öffnen Sie die Einstellungen für Sicherheit & Datenschutz"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
