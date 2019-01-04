@@ -6,45 +6,56 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2017-06-18 20:24+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"PO-Revision-Date: 2018-12-19 11:59+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
-"Language-Team: Lithuanian "
-"<https://l10n.elementary.io/projects/files/extra/lt/>\n"
+"Language-Team: Lithuanian <https://weblate.elementary.io/projects/files/"
+"extra/lt/>\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 2.14\n"
+"Plural-Forms: nplurals=3; plural=(n % 10 == 1 && (n % 100 < 11 || n % 100 > "
+"19)) ? 0 : ((n % 10 >= 2 && n % 10 <= 9 && (n % 100 < 11 || n % 100 > 19)) ? "
+"1 : 2);\n"
+"X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Failai"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Naršyti failus"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "aplankas;tvarkytuvė;naršyti;diskas;failų sistema;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Failų tvarkytuvė"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr "system-file-manager"
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Naujas langas"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Naujas langas administratoriaus teisėmis"
 
-msgid "About Files"
-msgstr "Apie Failus"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Naršyti ir tvarkyti failus ir aplankus"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -57,77 +68,85 @@ msgstr ""
 "savo failus taip pat ir išoriniame įrenginyje bei nuotoliniu būdu, naudodami "
 "FTP, SFTP, AFP, Webdav, ar Windows viešinius."
 
-msgid "Improved networking support"
-msgstr "Patobulintas darbo tinkle palaikymas"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
+msgstr "elementary LLC."
 
-msgid "Correct window geometry when snapping to left or right"
-msgstr "Teisinga lango geometriją pritraukiant prie kairės ar dešinės"
+#~ msgid "About Files"
+#~ msgstr "Apie Failus"
 
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
-msgstr ""
-"Ctrl (Vald) paspaudimas daugiau nebeatšaukia pervadinimo, kol nustatymas "
-"\"Parodyti rodyklę\" yra aktyvus"
+#~ msgid "Improved networking support"
+#~ msgstr "Patobulintas darbo tinkle palaikymas"
 
-msgid "Switching input language cancels actions"
-msgstr "Įvesties kalbos perjungimas atšaukia veiksmus"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "Teisinga lango geometriją pritraukiant prie kairės ar dešinės"
 
-msgid "Various crash fixes"
-msgstr "Įvairių strigčių pataisymai"
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr ""
+#~ "Ctrl (Vald) paspaudimas daugiau nebeatšaukia pervadinimo, kol nustatymas "
+#~ "\"Parodyti rodyklę\" yra aktyvus"
 
-msgid "New translations"
-msgstr "Nauji vertimai"
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "Įvesties kalbos perjungimas atšaukia veiksmus"
 
-msgid "Minor bug fixes"
-msgstr "Smulkių klaidų pataisymai"
+#~ msgid "Various crash fixes"
+#~ msgstr "Įvairių strigčių pataisymai"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Saityno naršyklės, tokios kaip Firefox, dabar prisimins paskiausiai naudotą "
-"atsiuntimų katalogą"
+#~ msgid "New translations"
+#~ msgstr "Nauji vertimai"
 
-msgid "Remember preferred zoom level"
-msgstr "Prisiminti pageidaujamą mastelio lygį"
+#~ msgid "Minor bug fixes"
+#~ msgstr "Smulkių klaidų pataisymai"
 
-msgid "Improved input method support"
-msgstr "Patobulintas įvesties metodų palaikymas"
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Saityno naršyklės, tokios kaip Firefox, dabar prisimins paskiausiai "
+#~ "naudotą atsiuntimų katalogą"
 
-msgid "910x640 minimum window size"
-msgstr "910x640 mažiausias lango dydis"
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "Prisiminti pageidaujamą mastelio lygį"
 
-msgid "Security fixes"
-msgstr "Saugumo pataisymai"
+#~ msgid "Improved input method support"
+#~ msgstr "Patobulintas įvesties metodų palaikymas"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Įjungtas kortelių vilkimas tarp langų"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "910x640 mažiausias lango dydis"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Sujungtas paieškos funkcionalumas į Ctrl+F"
+#~ msgid "Security fixes"
+#~ msgstr "Saugumo pataisymai"
 
-msgid "Improved translation support"
-msgstr "Patobulintas vertimų palaikymas"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "Įjungtas kortelių vilkimas tarp langų"
 
-msgid "Fix appdata release dates"
-msgstr "Ištaisyti programos duomenų laidos datas"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Sujungtas paieškos funkcionalumas į Ctrl+F"
 
-msgid "Improve file opening over Samba shares"
-msgstr "Patobulinti failų atvėrimą per Samba viešinius"
+#~ msgid "Improved translation support"
+#~ msgstr "Patobulintas vertimų palaikymas"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Ištaisyti strigtį, kai iš šiukšlinės atkuriami elementai"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Ištaisyti programos duomenų laidos datas"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Patobulinti iškirpti/kopijuoti/įdėti jautrumą kontekstiniame meniu"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Patobulinti failų atvėrimą per Samba viešinius"
 
-msgid "Translation updates"
-msgstr "Vertimų atnaujinimai"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "Ištaisyti strigtį, kai iš šiukšlinės atkuriami elementai"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "Vykdyti Pantheon failus kaip administratorius"
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "Patobulinti iškirpti/kopijuoti/įdėti jautrumą kontekstiniame meniu"
 
-msgid "Authentication is required to run Files as Administrator"
-msgstr ""
-"Norint vykdyti Failus administratoriaus teisėmis, reikia nustatyti tapatybę"
+#~ msgid "Translation updates"
+#~ msgstr "Vertimų atnaujinimai"
+
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "Vykdyti Pantheon failus kaip administratorius"
+
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr ""
+#~ "Norint vykdyti Failus administratoriaus teisėmis, reikia nustatyti "
+#~ "tapatybę"
