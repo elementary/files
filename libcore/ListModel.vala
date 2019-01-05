@@ -58,6 +58,7 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
     public ColumnID sort_file_property { get; set; default = FM.ColumnID.FILENAME;}
     public bool reversed { get; set; }
     public bool sort_directories_first { get; set; default = true;}
+    private bool unsorted = false;
 
     private GLib.HashTable<string, Gtk.TreeRowReference> loaded_subdirectories;
     construct {
@@ -71,6 +72,10 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
     }
 
     private int directory_view_sort_func (Gtk.TreeModel model, Gtk.TreeIter iter_a, Gtk.TreeIter iter_b) {
+        if (unsorted) {
+            return 0;
+        }
+
         GOF.File file_a, file_b;
         model.@get (iter_a, ColumnID.FILE_COLUMN, out file_a);
         model.@get (iter_b, ColumnID.FILE_COLUMN, out file_b);
@@ -110,12 +115,17 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
     /* If called with explicit "reversed" use that else if column changed use "true" else toggle existing order */
     public void set_order (FM.ColumnID _sort_file_property, bool? _reversed = null) {
         assert (_sort_file_property != FM.ColumnID.INVALID);
+        unsorted = false;
         var old_col = sort_file_property;
         sort_file_property = _sort_file_property;
         reversed = (_reversed == null ? (old_col == _sort_file_property ? !reversed : false) : _reversed);
         ((Gtk.TreeStore)(this)).set_sort_column_id (FM.ColumnID.FILE_COLUMN, Gtk.SortType.ASCENDING);
         set_sort_func (ColumnID.FILE_COLUMN, directory_view_sort_func);
         sort_order_changed (sort_file_property, reversed, old_col);
+    }
+
+    public void unset_order () {
+        unsorted = true;
     }
 
     public GOF.File? file_for_path (Gtk.TreePath path) {
@@ -185,7 +195,7 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
             get_iter (out parent_iter, path);
         }
 
-        append (out iter, parent_iter);
+        insert (out iter, parent_iter, 0);
         @set (iter, ColumnID.FILE_COLUMN, file, -1);
 
         if (file.is_folder ()) {

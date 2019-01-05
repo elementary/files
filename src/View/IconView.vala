@@ -387,6 +387,7 @@ namespace FM {
             tree_frozen = true;
             tree.freeze_child_notify ();
             tree.set_model (null);
+            model.unset_order ();
         }
 
         protected override void thaw_tree () {
