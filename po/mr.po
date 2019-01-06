@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-12-30 00:04+0000\n"
+"PO-Revision-Date: 2019-01-02 06:05+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -342,19 +342,19 @@ msgstr "ही फाईल कार्यान्वित करू शक�
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
-msgstr ""
+msgstr "ही फाइल उघडू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:841
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "उघडण्यासाठी फाइल प्रकार ओळखू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:1571
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "ही फाईल सोडू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:1572
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "अवैध फाइल नाव प्रदान केले"
 
 #: src/View/AbstractDirectoryView.vala:2052
 msgid "Invalid"
