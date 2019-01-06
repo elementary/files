@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 elementary LLC (https://elementary.io)
+/* Copyright (c) 2018 -19 elementary LLC (https://elementary.io)
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License as
@@ -14,6 +14,8 @@
  * License along with this program; if not, write to the Free
  * Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02110-1301, USA.
+ *
+ * Author:  Jeremy Wootten <jeremy@elementaryos.org>
  */
 
 /* Uses Gtk.TreeStore instead of custom model to reduce code base to support */
@@ -48,8 +50,6 @@ public interface DirectoryViewInterface : Object {
     public abstract bool get_order (out FM.ColumnID sort_file_property, out bool reversed);
     public abstract void set_order (FM.ColumnID sort_file_property, bool? reversed = null);
 }
-
-//    public signal void subdirectory_unloaded (GOF.Directory.Async directory);
 
 public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
     public GOF.Directory.Async? root_dir { get; set; }
@@ -299,6 +299,7 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         return (owned)rows_found;
     }
 
+#if 0
     public new void get_value (Gtk.TreeIter iter, int column, out Value return_value) {
         Value file_value;
         get_value (iter, ColumnID.FILE_COLUMN, out file_value);
@@ -312,6 +313,7 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
 
         return;
     }
+#endif
 
     private void add_dummy_row (ref Gtk.TreeIter parent_iter) {
         Gtk.TreeIter? iter = null;

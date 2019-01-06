@@ -98,6 +98,10 @@ namespace Marlin {
                                      Gdk.Rectangle background_area,
                                      Gdk.Rectangle cell_area,
                                      Gtk.CellRendererState flags) {
+            if (file == null) {
+                return;
+            }
+
             set_widget (widget);
             Gtk.StateFlags state = widget.get_state_flags ();
 
@@ -266,6 +270,7 @@ namespace Marlin {
                 string path = entry.get_data ("marlin-text-renderer-path");
                 edited (path, text);
             }
+
             file = null;
         }
 
