@@ -99,6 +99,7 @@ namespace Marlin {
                                      Gdk.Rectangle cell_area,
                                      Gtk.CellRendererState flags) {
             if (file == null) {
+                critical ("Attempt to render null in TextRenderer");
                 return;
             }
 

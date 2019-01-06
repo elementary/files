@@ -1384,11 +1384,7 @@ gof_file_get (GFile *location)
     GOFFile *file = NULL;
     GOFDirectoryAsync *dir = NULL;
 
-    //g_return_val_if_fail (location != NULL && G_IS_FILE (location), NULL);
-
-    if (location == NULL) {
-
-    }
+    g_return_val_if_fail (location != NULL && G_IS_FILE (location), gof_file_get_null ());
 
     if ((parent = g_file_get_parent (location)) != NULL) {
         dir = gof_directory_async_cache_lookup (parent);

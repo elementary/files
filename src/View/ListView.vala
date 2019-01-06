@@ -92,9 +92,9 @@ namespace FM {
             col.min_width = 24;
 
             if (id == FM.ColumnID.SIZE || id == FM.ColumnID.MODIFIED) {
-                renderer.@set ("xalign", 1.0f);
+                renderer.xalign = 1.0f;
             } else {
-                renderer.@set ("xalign", 0.0f);
+                renderer.xalign = 0.0f;
             }
 
             tree.append_column (col);

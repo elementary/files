@@ -24,8 +24,8 @@
  *      Traversing model to find/remove file sets will be fast enough for general use
  * If these assumptions prove false, then will have to add mechanisms for mapping files to rows and detecting duplicates
  */
-namespace FM {
-public interface DirectoryViewInterface : Object {
+//namespace FM {
+public interface FM.DirectoryViewInterface : Object {
     public signal void subdirectory_unloaded (GOF.Directory.Async dir);
     public signal void sort_order_changed (FM.ColumnID new_sort_property, bool reversed, FM.ColumnID old_sort_property);
 
@@ -51,7 +51,7 @@ public interface DirectoryViewInterface : Object {
     public abstract void set_order (FM.ColumnID sort_file_property, bool? reversed = null);
 }
 
-public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
+public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface {
     public GOF.Directory.Async? root_dir { get; set; }
     public bool has_child { get; set; default = false; }
     public int icon_size { get; set; default = 32; }
@@ -61,11 +61,12 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
     private bool unsorted = false;
 
     private GLib.HashTable<string, Gtk.TreeRowReference> loaded_subdirectories;
+
     construct {
         loaded_subdirectories = new HashTable<string, Gtk.TreeRowReference> (str_hash, str_equal);
         set_column_types ({
-              typeof (GOF.File), /* File object */
-            });
+            typeof (GOF.File) /* File object */
+        });
 
         sort_file_property = ColumnID.FILENAME;
         set_sort_func (ColumnID.FILE_COLUMN, directory_view_sort_func);
@@ -246,7 +247,7 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         }
 
         bool valid = false;
-        foreach (Gtk.TreeRowReference row_ref in rows_to_remove) {
+        foreach (unowned Gtk.TreeRowReference row_ref in rows_to_remove) {
             Gtk.TreeIter iter;
             if (get_iter (out iter, row_ref.get_path ())) {
                 valid = remove (ref iter);
@@ -321,5 +322,4 @@ public class DirectoryModel : Gtk.TreeStore, DirectoryViewInterface {
         @set (iter, ColumnID.FILE_COLUMN, null, -1);
         row_inserted (get_path (iter), iter);
     }
-}
 }
