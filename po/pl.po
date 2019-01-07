@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2019-01-01 00:43+0000\n"
+"PO-Revision-Date: 2019-01-07 00:02+0000\n"
 "Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
 "Language-Team: Polish <https://weblate.elementary.io/projects/files/files/pl/"
 ">\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: src/Application.vala:120
 msgid "Show the version of the program"
-msgstr "Wypisuje informacje o wersji programu"
+msgstr "Wyświetl wersję programu"
 
 #: src/Application.vala:122
 msgid "Open one or more URIs, each in their own tab"
