@@ -177,7 +177,7 @@ public class Marlin.PluginManager : Object {
         }
     }
 
-    public void hook_context_menu (Gtk.Widget menu, List<unowned GOF.File> files) {
+    public void hook_context_menu (Gtk.Widget menu, List<GOF.File> files) {
         drop_menu_references (menu);
 
         if (menu is Gtk.Menu) {
@@ -220,9 +220,9 @@ public class Marlin.PluginManager : Object {
         }
     }
 
-    public void directory_loaded (void* path) {
+    public void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
         foreach (var plugin in plugin_hash.values) {
-            plugin.directory_loaded (path);
+            plugin.directory_loaded (window, view, directory);
         }
     }
 

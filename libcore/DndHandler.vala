@@ -36,21 +36,21 @@ namespace Marlin {
                                                       drop_target.get_target_location (),
                                                       action,
                                                       widget,
-                                                      null,
                                                       null);
                 return true;
             } else if (drop_target.is_executable ()) {
-                GLib.Error error;
-                if (!drop_target.execute (widget.get_screen (), drop_file_list, out error)) {
-                    var target_name = drop_target.get_display_name ();
+                try {
+                    drop_target.execute (drop_file_list);
+                    return true;
+                } catch (Error e) {
+                    unowned string target_name = drop_target.get_display_name ();
                     PF.Dialogs.show_error_dialog (_("Failed to execute \"%s\"").printf (target_name),
-                                                  error.message,
+                                                  e.message,
                                                   null);
                     return false;
-                } else {
-                    return true;
                 }
             }
+
             return false;
         }
 
@@ -72,7 +72,7 @@ namespace Marlin {
                 remove_action (win);
             });
 
-            ask_menu.popup (null, null, null, 0, Gdk.CURRENT_TIME);
+            ask_menu.popup_at_pointer (null);
             loop.run ();
             Gtk.grab_remove (ask_menu);
 

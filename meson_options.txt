@@ -1,3 +1,1 @@
-option('only-libraries', type : 'boolean', value : false, description : 'Build libcore and libwidgets only')
-option('only-filechooser-module', type : 'boolean', value : false, description : 'Build only custom gtk filechooser dialog module')
 option('with-unity', type : 'boolean', value : 'true', description : 'Add Unity launcher support')

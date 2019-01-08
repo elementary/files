@@ -165,7 +165,6 @@ GOFFile         *gof_file_new (GFile *location, GFile *dir);
 
 void            gof_file_update (GOFFile *file);
 void            gof_file_query_update (GOFFile *file);
-gboolean        gof_file_ensure_query_info (GOFFile *file);
 void            gof_file_update_type (GOFFile *file);
 void            gof_file_update_icon (GOFFile *file, gint size, gint scale);
 void            gof_file_update_desktop_file (GOFFile *file);
@@ -174,8 +173,6 @@ void            gof_file_update_emblem (GOFFile *file);
 void            gof_file_get_folder_icon_from_uri_or_path (GOFFile *file);
 
 GOFFile*        gof_file_get (GFile *location);
-GOFFile*        gof_file_get_by_uri (const char *uri);
-GOFFile*        gof_file_get_by_commandline_arg (const char *arg);
 GOFFile*        gof_file_cache_lookup (GFile *location);
 void            gof_file_remove_from_caches (GOFFile *file);
 
@@ -194,25 +191,17 @@ GList           *gof_file_list_copy (GList *list);
 GdkPixbuf       *gof_file_get_icon_pixbuf (GOFFile *file, gint size, gint scale, GOFFileIconFlags flags);
 _MarlinIconInfo  *gof_file_get_icon (GOFFile *file, int size, int scale, GOFFileIconFlags flags);
 gboolean        gof_file_is_writable (GOFFile *file);
-gboolean        gof_file_is_trashed (GOFFile *file);
-const gchar     *gof_file_get_symlink_target (GOFFile *file);
 gchar           *gof_file_get_formated_time (GOFFile *file, const char *attr);
 gboolean        gof_file_is_symlink (GOFFile *file);
 gboolean        gof_file_is_desktop_file (GOFFile *file);
 void            gof_file_set_expanded (GOFFile *file, gboolean expanded);
-gchar           *gof_file_list_to_string (GList *list, gsize *len);
-
-gboolean        gof_file_execute (GOFFile *file, GdkScreen *screen, GList *file_list, GError **error);
-GAppInfo        *gof_file_get_default_handler (GOFFile *file);
 
 void            gof_file_icon_changed (GOFFile *file);
 void            gof_file_rename (GOFFile *file,
                                  const char *new_name,
                                  GOFFileOperationCallback callback,
                                  gpointer callback_data);
-void            gof_file_set_thumb_state (GOFFile *file, GOFFileThumbState state);
 void            gof_file_add_emblem(GOFFile* file, const gchar* emblem);
-GMount*         gof_file_get_mount_at (GFile* target);
 
 /* To provide a wrapper around g_file_get_uri (not sure it is really useful tough) */
 #define gof_file_get_uri(obj) g_file_get_uri(obj->location)
@@ -226,21 +215,14 @@ GMount*         gof_file_get_mount_at (GFile* target);
  **/
 #define gof_file_get_thumb_state(file) (GOF_FILE ((file))->flags & GOF_FILE_THUMB_STATE_MASK)
 const gchar* gof_file_get_thumbnail_path (GOFFile *file);
-gboolean        gof_file_can_set_owner (GOFFile *file);
-gboolean        gof_file_can_set_group (GOFFile *file);
-GList           *gof_file_get_settable_group_names (GOFFile *file);
-gboolean        gof_file_can_set_permissions (GOFFile *file);
-char            *gof_file_get_permissions_as_string (GOFFile *file);
 
 gint            gof_file_compare_by_display_name (gconstpointer a, gconstpointer b);
 
-GFile           *gof_file_get_target_location (GOFFile *file);
 const gchar     *gof_file_get_display_name (GOFFile *file);
 gboolean        gof_file_is_folder (GOFFile *file);
 const gchar     *gof_file_get_ftype (GOFFile *file);
 
 void            gof_file_query_thumbnail_update (GOFFile *file);
-gboolean        gof_file_can_unmount (GOFFile *file);
 
 gboolean        gof_file_is_remote_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_root_network_folder (GOFFile *file);
@@ -250,8 +232,6 @@ gboolean        gof_file_is_recent_uri_scheme (GOFFile *file);
 gboolean        gof_file_is_smb_share (GOFFile *file);
 gboolean        gof_file_is_smb_server (GOFFile *file);
 gboolean        gof_file_is_mountable (GOFFile *file);
-
-char            *gof_file_get_display_target_uri (GOFFile *file);
 G_END_DECLS
 
 #endif /* GOF_FILE_H */
