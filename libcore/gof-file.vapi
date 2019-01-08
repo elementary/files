@@ -269,9 +269,9 @@ public class GOF.File : GLib.Object {
 
     public GLib.AppInfo? get_default_handler () {
         unowned string? content_type = get_ftype ();
-        bool must_support_uris = false;
+        bool must_support_uris = (location.get_path () == null);
         if (content_type != null) {
-            return GLib.AppInfo.get_default_for_type (content_type, location.get_path () != null);
+            return GLib.AppInfo.get_default_for_type (content_type, must_support_uris);
         }
 
         if (target_location != null) {
