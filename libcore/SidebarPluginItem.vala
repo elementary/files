@@ -33,5 +33,5 @@ public class Marlin.SidebarPluginItem : Object {
     public uint64 free_space { get; set; default = 0; }
     public uint64 disk_size { get; set; default = 0; }
     public MenuModel? menu_model { get; set; }
-    public PluginCallbackFunc? cb;
+    public PluginCallbackFunc? cb { get; set; }
 }
