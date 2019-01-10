@@ -23,7 +23,6 @@ PACKAGES
     linux
     pantheon-files-core-C
     pantheon-files-core
-    gof-file
 OPTIONS
     --thread
     --vapidir=${CMAKE_SOURCE_DIR}/libcore/

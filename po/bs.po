@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-20 11:06-0800\n"
+"POT-Creation-Date: 2019-01-09 09:21-0600\n"
 "PO-Revision-Date: 2018-11-11 00:08+0000\n"
 "Last-Translator: Elvis Mujanović <elvis.mujanovic@gmail.com>\n"
 "Language-Team: Bosnian <https://weblate.elementary.io/projects/files/files/"
@@ -300,7 +300,7 @@ msgstr "URI-je nije bilo moguće otvoriti"
 msgid "Could not open files or URIs with this app"
 msgstr "Nije bilo moguće otvoriti datoteke ili URI-je pomoću ove aplikacije"
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
 msgstr "(kao administrator)"
 
@@ -389,7 +389,7 @@ msgid "Open in"
 msgstr "Otvori u"
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr "Otvori pomoću"
 
@@ -537,22 +537,22 @@ msgstr "Poveži sa serverom"
 msgid "Connect to a network server"
 msgstr "Spoji se na mrežni server"
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s slobodno od %s)"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Greška prilikom montiranja nosioca podataka %s"
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Nije moguće pokrenuti %s"
 
-#: src/View/Sidebar.vala:1645 libcore/marlin-file-operations.c:1312
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "Isprazni _otpad"
 
@@ -716,26 +716,26 @@ msgstr "Obrnuti redoslijed"
 msgid "Folders Before Files"
 msgstr "Fascikle prije datoteka"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr "Pretraži ili ukucaj putanju"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr "Otvori u novom tabu"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr "Otvori u novom prozoru"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr "Otvori u drugoj aplikaciji…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
 msgstr "Ponovo učitaj ovu fasciklu"
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
-msgstr "Pretraži ili ukucaj putanju"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
@@ -2221,6 +2221,11 @@ msgstr "Vodi u %s"
 #, c-format
 msgid "Go to %s"
 msgstr "Idi u %s"
+
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#, fuzzy
+msgid "Type Path"
+msgstr "Ukucaj putanju"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
