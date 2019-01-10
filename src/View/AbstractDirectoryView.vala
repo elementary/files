@@ -558,9 +558,10 @@ namespace FM {
                         }
                     }
                 } else if (default_app != null) {
+                    var files_to_open = get_files_for_action ();
                     GLib.Idle.add (() => {
                         /* Because this is in another thread we need to copy the selection to ensure it remains valid */
-                        open_files_with (default_app, get_files_for_action ());
+                        open_files_with (default_app, files_to_open);
                         return GLib.Source.REMOVE;
                     });
                 }
