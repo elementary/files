@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"POT-Creation-Date: 2019-01-09 09:21-0600\n"
 "PO-Revision-Date: 2018-11-24 00:09+0000\n"
 "Last-Translator: Kirill Romanov <djaler1@gmail.com>\n"
 "Language-Team: Russian <https://weblate.elementary.io/projects/files/files/"
@@ -30,7 +30,7 @@ msgstr "Показать версию программы"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Открыть одну или несколько ссылок, каждую в новой вкладке"
 
-#: src/Application.vala:124
+#: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Новое окно"
 
@@ -121,6 +121,7 @@ msgid "Set as default"
 msgstr "Установить по умолчанию"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
+#: src/View/directory_view_popup.ui:91
 msgid "Properties"
 msgstr "Свойства"
 
@@ -299,7 +300,7 @@ msgstr "Не удается открыть идентификаторы"
 msgid "Could not open files or URIs with this app"
 msgstr "Не удалось открыть файлы или идентификаторы с помощью этого приложения"
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
 msgstr "(с правами администратора)"
 
@@ -307,11 +308,11 @@ msgstr "(с правами администратора)"
 msgid "Filename"
 msgstr "Имя файла"
 
-#: src/View/ListView.vala:27
+#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:149
 msgid "Size"
 msgstr "Размер"
 
-#: src/View/ListView.vala:28
+#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
 msgid "Type"
 msgstr "Тип"
 
@@ -388,7 +389,7 @@ msgid "Open in"
 msgstr "Открыть в"
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr "Открыть в"
 
@@ -536,22 +537,22 @@ msgstr "Подключить сервер"
 msgid "Connect to a network server"
 msgstr "Подключиться к серверу"
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s свободно из %s)"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Ошибка при монтировании тома %s"
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Не удалось запустить %s"
 
-#: src/View/Sidebar.vala:1645
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "О_чистить корзину"
 
@@ -603,7 +604,7 @@ msgstr "Открыть в _новом окне"
 msgid "Remove"
 msgstr "Удалить"
 
-#: src/View/PopupMenuBuilder.vala:50
+#: src/View/PopupMenuBuilder.vala:50 src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Переименовать"
 
@@ -619,26 +620,122 @@ msgstr "_Отключить"
 msgid "_Eject"
 msgstr "_Извлечь"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/directory_view_popup.ui:5
+msgid "Restore from Trash"
+msgstr "Восстановить из корзины"
+
+#: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
+msgid "Delete permanently"
+msgstr "Удалить безвозвратно"
+
+#: src/View/directory_view_popup.ui:16
+msgid "Open Parent Folder"
+msgstr "Открыть родительскую папку"
+
+#: src/View/directory_view_popup.ui:23
+msgid "Remove from History"
+msgstr "Удалить из истории"
+
+#: src/View/directory_view_popup.ui:37
+msgid "Move to Trash"
+msgstr "Переместить в корзину"
+
+#: src/View/directory_view_popup.ui:51
+msgid "New"
+msgstr "Создать"
+
+#: src/View/directory_view_popup.ui:53
+msgid "Folder"
+msgstr "Папку"
+
+#: src/View/directory_view_popup.ui:58
+msgid "Empty File"
+msgstr "Пустой файл"
+
+#: src/View/directory_view_popup.ui:67
+msgid "Show Hidden Files"
+msgstr "Показывать скрытые файлы"
+
+#: src/View/directory_view_popup.ui:71
+msgid "Show Remote Thumbnails"
+msgstr "Показать удалённые эскизы"
+
+#: src/View/directory_view_popup.ui:78
+msgid "New Tab"
+msgstr "Новой вкладке"
+
+#: src/View/directory_view_popup.ui:98
+msgid "Bookmark"
+msgstr "Добавить в закладки"
+
+#: src/View/directory_view_popup.ui:105
+msgid "Paste"
+msgstr "Вставить"
+
+#: src/View/directory_view_popup.ui:111
+msgid "Paste Link"
+msgstr "Вставить ссылку"
+
+#: src/View/directory_view_popup.ui:118
+msgid "Cut"
+msgstr "Вырезать"
+
+#: src/View/directory_view_popup.ui:122
+msgid "Copy"
+msgstr "Копировать"
+
+#: src/View/directory_view_popup.ui:126
+msgid "Copy as Link"
+msgstr "Копировать ссылку"
+
+#: src/View/directory_view_popup.ui:130
+msgid "Paste into Folder"
+msgstr "Вставить в папку"
+
+#: src/View/directory_view_popup.ui:134
+msgid "Paste Link into Folder"
+msgstr "Вставить ссылку в папку"
+
+#: src/View/directory_view_popup.ui:141
+msgid "Sort by"
+msgstr "Сортировать"
+
+#: src/View/directory_view_popup.ui:144
+msgid "Name"
+msgstr "Имя"
+
+#: src/View/directory_view_popup.ui:159
+msgid "Date"
+msgstr "Дата"
+
+#: src/View/directory_view_popup.ui:166
+msgid "Reversed Order"
+msgstr "В обратном порядке"
+
+#: src/View/directory_view_popup.ui:170
+msgid "Folders Before Files"
+msgstr "Папки перед файлами"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr "Ищите или введите путь"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr "Открыть в новой вкладке"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr "Открыть в новом окне"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr "Открыть в другом приложении…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
 msgstr "Обновить эту папку"
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
-msgstr "Ищите или введите путь"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
@@ -921,7 +1018,7 @@ msgstr "_Выберите имя, которое вы хотите назнач�
 msgid "Apply this action to all files"
 msgstr "Применить это действие ко всем файлам"
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:160
 msgid "_Skip"
 msgstr "_Пропустить"
 
@@ -1024,6 +1121,1087 @@ msgstr "Идёт подготовка"
 msgid "Show more _details"
 msgstr "Показать по_дробности"
 
+#: libcore/marlin-file-operations.c:161
+msgid "S_kip All"
+msgstr "Пропу_стить всё"
+
+#: libcore/marlin-file-operations.c:162
+msgid "_Retry"
+msgstr "Повто_рить"
+
+#: libcore/marlin-file-operations.c:163
+msgid "Delete _All"
+msgstr "Удалить _всё"
+
+#: libcore/marlin-file-operations.c:164
+msgid "_Replace"
+msgstr "_Заменить"
+
+#: libcore/marlin-file-operations.c:165
+msgid "Replace _All"
+msgstr "Заменить _всё"
+
+#: libcore/marlin-file-operations.c:166
+msgid "_Merge"
+msgstr "Сов_местить"
+
+#: libcore/marlin-file-operations.c:167
+msgid "Merge _All"
+msgstr "Совместить _всё"
+
+#: libcore/marlin-file-operations.c:168
+msgid "Copy _Anyway"
+msgstr "Копировать _всё равно"
+
+#: libcore/marlin-file-operations.c:249
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d секунда"
+msgstr[1] "%'d секунды"
+msgstr[2] "%'d секунд"
+
+#: libcore/marlin-file-operations.c:254 libcore/marlin-file-operations.c:265
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d минута"
+msgstr[1] "%'d минуты"
+msgstr[2] "%'d минут"
+
+#: libcore/marlin-file-operations.c:264
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d час"
+msgstr[1] "%'d часа"
+msgstr[2] "%'d часов"
+
+#: libcore/marlin-file-operations.c:272
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "примерно %'d час"
+msgstr[1] "примерно %'d часа"
+msgstr[2] "примерно %'d часов"
+
+#: libcore/marlin-file-operations.c:348
+#, c-format
+msgid "Link to %s"
+msgstr "Ссылка на %s"
+
+#: libcore/marlin-file-operations.c:352
+#, c-format
+msgid "Another link to %s"
+msgstr "Другая ссылка на %s"
+
+#: libcore/marlin-file-operations.c:368
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'d-я ссылка на %s"
+
+#: libcore/marlin-file-operations.c:372
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'d-я ссылка на %s"
+
+#: libcore/marlin-file-operations.c:376
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'d-я ссылка на %s"
+
+#: libcore/marlin-file-operations.c:380
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'d-я ссылка на %s"
+
+#: libcore/marlin-file-operations.c:572
+msgid " ("
+msgstr " ("
+
+#: libcore/marlin-file-operations.c:580
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: libcore/marlin-file-operations.c:1258
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "Вы действительно хотите безвозвратно удалить «%B» из корзины?"
+
+#: libcore/marlin-file-operations.c:1261
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] ""
+"Вы действительно хотите безвозвратно удалить %'d выделенный объект из "
+"корзины?"
+msgstr[1] ""
+"Вы действительно хотите безвозвратно удалить %'d выделенных объекта из "
+"корзины?"
+msgstr[2] ""
+"Вы действительно хотите безвозвратно удалить %'d выделенных объектов из "
+"корзины?"
+
+#: libcore/marlin-file-operations.c:1271 libcore/marlin-file-operations.c:1351
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Если вы удалите объект, вы больше не сможете его восстановить."
+
+#: libcore/marlin-file-operations.c:1296
+msgid "Permanently delete all items from Trash?"
+msgstr "Очистить корзину?"
+
+#: libcore/marlin-file-operations.c:1297
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+"Все файлы в корзине, включая находящиеся на внешних носителях, будут "
+"безвозвратно удалены."
+
+#: libcore/marlin-file-operations.c:1300
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr "Безвозвратно удалить файлы из корзины на этом носителе?"
+
+#: libcore/marlin-file-operations.c:1301
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+"Все файлы с этого носителя, находящиеся в корзине, будут безвозвратно "
+"удалены."
+
+#: libcore/marlin-file-operations.c:1339
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Вы действительно хотите безвозвратно удалить «%B»?"
+
+#: libcore/marlin-file-operations.c:1342
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] "Вы действительно хотите безвозвратно удалить %'d выделенный объект?"
+msgstr[1] ""
+"Вы действительно хотите безвозвратно удалить %'d выделенных объекта?"
+msgstr[2] ""
+"Вы действительно хотите безвозвратно удалить %'d выделенных объектов?"
+
+#: libcore/marlin-file-operations.c:1385
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "осталось удалить %'d файл"
+msgstr[1] "осталось удалить %'d файла"
+msgstr[2] "осталось удалить %'d файлов"
+
+#: libcore/marlin-file-operations.c:1391
+msgid "Deleting files"
+msgstr "Удаление файлов"
+
+#: libcore/marlin-file-operations.c:1404
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "Осталось %T"
+msgstr[1] "Осталось %T"
+msgstr[2] "Осталось %T"
+
+#: libcore/marlin-file-operations.c:1471 libcore/marlin-file-operations.c:1505
+#: libcore/marlin-file-operations.c:1544 libcore/marlin-file-operations.c:1621
+#: libcore/marlin-file-operations.c:2375
+msgid "Error while deleting."
+msgstr "Ошибка при удалении."
+
+#: libcore/marlin-file-operations.c:1475
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr ""
+"Нельзя удалить файлы в папке «%B», потому что у вас нет прав на их просмотр."
+
+#: libcore/marlin-file-operations.c:1478 libcore/marlin-file-operations.c:2434
+#: libcore/marlin-file-operations.c:3401
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr "Произошла ошибка при получении сведений о файлах в папке «%B»."
+
+#: libcore/marlin-file-operations.c:1487 libcore/marlin-file-operations.c:3410
+msgid "_Skip files"
+msgstr "_Пропустить файлы"
+
+#: libcore/marlin-file-operations.c:1508
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr "Нельзя удалить папку «%B», потому что у вас нет прав на её чтение."
+
+#: libcore/marlin-file-operations.c:1511 libcore/marlin-file-operations.c:2473
+#: libcore/marlin-file-operations.c:3446
+msgid "There was an error reading the folder \"%B\"."
+msgstr "Произошла ошибка при чтении папки «%B»."
+
+#: libcore/marlin-file-operations.c:1545
+msgid "Could not remove the folder %B."
+msgstr "Не удалось удалить папку %B."
+
+#: libcore/marlin-file-operations.c:1622
+msgid "There was an error deleting %B."
+msgstr "Произошла ошибка при удалении %B."
+
+#: libcore/marlin-file-operations.c:1706
+msgid "Moving files to trash"
+msgstr "Перемещение файлов в корзину"
+
+#: libcore/marlin-file-operations.c:1708
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "осталось удалить в корзину %'d файл"
+msgstr[1] "осталось удалить в корзину %'d файла"
+msgstr[2] "осталось удалить в корзину %'d файлов"
+
+#: libcore/marlin-file-operations.c:1802 libcore/marlin-file-operations.c:1805
+#: libcore/marlin-file-operations.c:1808
+msgid "Cannot move file to trash or delete it"
+msgstr "Не удаётся переместить файл в корзину или удалить его"
+
+#: libcore/marlin-file-operations.c:1803
+msgid "It is not permitted to trash or delete files on a read only filesystem."
+msgstr "Нельзя удалить файлы на файловой системе, доступной только для чтения."
+
+#: libcore/marlin-file-operations.c:1806
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr "Нельзя удалить файлы в папке, на которые у вас нет прав на запись."
+
+#: libcore/marlin-file-operations.c:1809
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr "Нельзя удалить папки, на которые у вас нет прав на запись."
+
+#: libcore/marlin-file-operations.c:1811
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr "Не удаётся переместить файл в корзину. Попытаться сразу удалить его?"
+
+#: libcore/marlin-file-operations.c:1812
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+"Этот файл не может быть перемещён в корзину. Смотрите ниже для получения "
+"дополнительной информации."
+
+#: libcore/marlin-file-operations.c:1816
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr "Не удаётся переместить файл в корзину. Попытаться удалить его?"
+
+#: libcore/marlin-file-operations.c:1817
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr ""
+"Этот файл не может быть перемещён в корзину. У вас нет возможности удалить "
+"его."
+
+#: libcore/marlin-file-operations.c:1822
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+"\n"
+" Удаление файла будет безвозвратным"
+
+#: libcore/marlin-file-operations.c:2012
+msgid "Trashing Files"
+msgstr "Перемещение файлов в корзину"
+
+#: libcore/marlin-file-operations.c:2014
+msgid "Deleting Files"
+msgstr "Удаление файлов"
+
+#: libcore/marlin-file-operations.c:2083
+msgid "Unable to eject %V"
+msgstr "Не удалось извлечь %V"
+
+#: libcore/marlin-file-operations.c:2085
+msgid "Unable to unmount %V"
+msgstr "Не удалось отключить %V"
+
+#: libcore/marlin-file-operations.c:2299
+#, c-format
+msgid "Unable to mount %s"
+msgstr "Не удалось подключить %s"
+
+#: libcore/marlin-file-operations.c:2322
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "Идёт подготовка к копированию %'d файла (%S)"
+msgstr[1] "Идёт подготовка к копированию %'d файлов (%S)"
+msgstr[2] "Идёт подготовка к копированию %'d файлов (%S)"
+
+#: libcore/marlin-file-operations.c:2328
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "Идёт подготовка к перемещению %'d файла (%S)"
+msgstr[1] "Идёт подготовка к перемещению %'d файлов (%S)"
+msgstr[2] "Идёт подготовка к перемещению %'d файлов (%S)"
+
+#: libcore/marlin-file-operations.c:2334
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "Идёт подготовка к удалению %'d файла (%S)"
+msgstr[1] "Идёт подготовка к удалению %'d файлов (%S)"
+msgstr[2] "Идёт подготовка к удалению %'d файлов (%S)"
+
+#: libcore/marlin-file-operations.c:2340
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Идёт подготовка к удалению %'d файла в корзину"
+msgstr[1] "Идёт подготовка к удалению %'d файлов в корзину"
+msgstr[2] "Идёт подготовка к удалению %'d файлов в корзину"
+
+#: libcore/marlin-file-operations.c:2371 libcore/marlin-file-operations.c:3261
+#: libcore/marlin-file-operations.c:3393 libcore/marlin-file-operations.c:3438
+msgid "Error while copying."
+msgstr "Ошибка при копировании."
+
+#: libcore/marlin-file-operations.c:2373 libcore/marlin-file-operations.c:3391
+#: libcore/marlin-file-operations.c:3436
+msgid "Error while moving."
+msgstr "Ошибка при перемещении."
+
+#: libcore/marlin-file-operations.c:2377
+msgid "Error while moving files to trash."
+msgstr "Ошибка при перемещении файлов в корзину."
+
+#: libcore/marlin-file-operations.c:2431
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Нельзя обработать файлы в папке «%B», потому что у вас нет прав на их "
+"просмотр."
+
+#: libcore/marlin-file-operations.c:2470
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr "Нельзя обработать папку «%B», потому что у вас нет прав на её чтение."
+
+#: libcore/marlin-file-operations.c:2546
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr "Нельзя обработать файл «%B», потому что у вас нет прав на его чтение."
+
+#: libcore/marlin-file-operations.c:2549
+msgid "There was an error getting information about \"%B\"."
+msgstr "Произошла ошибка при получении сведений о «%B»."
+
+#: libcore/marlin-file-operations.c:2649 libcore/marlin-file-operations.c:2691
+#: libcore/marlin-file-operations.c:2724 libcore/marlin-file-operations.c:2754
+msgid "Error while copying to \"%B\"."
+msgstr "Произошла ошибка при копировании в «%B»."
+
+#: libcore/marlin-file-operations.c:2653
+msgid "You do not have permissions to access the destination folder."
+msgstr "У вас нет прав на доступ к папке назначения."
+
+#: libcore/marlin-file-operations.c:2655
+msgid "There was an error getting information about the destination."
+msgstr "Произошла ошибка при получении сведений о месте назначения."
+
+#: libcore/marlin-file-operations.c:2692
+msgid "The destination is not a folder."
+msgstr "Место назначения не является папкой."
+
+#: libcore/marlin-file-operations.c:2725
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"Недостаточно места на устройстве назначения. Попробуйте удалить какие-нибудь "
+"файлы, чтобы освободить место."
+
+#: libcore/marlin-file-operations.c:2727
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Доступно %S, но требуется %S."
+
+#: libcore/marlin-file-operations.c:2755
+msgid "The destination is read-only."
+msgstr "Устройство назначения доступно только для чтения."
+
+#: libcore/marlin-file-operations.c:2814
+msgid "Moving \"%B\" to \"%B\""
+msgstr "Перемещение «%B» в «%B»"
+
+#: libcore/marlin-file-operations.c:2815
+msgid "Copying \"%B\" to \"%B\""
+msgstr "Копирование «%B» в «%B»"
+
+#: libcore/marlin-file-operations.c:2819
+msgid "Duplicating \"%B\""
+msgstr "Дублирование «%B»"
+
+#: libcore/marlin-file-operations.c:2823
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Перемещается %'d файл (из «%B») в «%B»"
+msgstr[1] "Перемещаются %'d файла (из «%B») в «%B»"
+msgstr[2] "Перемещается %'d файлов (из «%B») в «%B»"
+
+#: libcore/marlin-file-operations.c:2826
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Копируется %'d файл (из «%B») в «%B»"
+msgstr[1] "Копируются %'d файла (из «%B») в «%B»"
+msgstr[2] "Копируются %'d файлов (из «%B») в «%B»"
+
+#: libcore/marlin-file-operations.c:2833
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Дублируется %'d файл (из «%B») в «%B»"
+msgstr[1] "Дублируются %'d файла (из «%B») в «%B»"
+msgstr[2] "Дублируются %'d файлов (из «%B») в «%B»"
+
+#: libcore/marlin-file-operations.c:2842
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "%'d файл перемещается в «%B»"
+msgstr[1] "%'d файла перемещаются в «%B»"
+msgstr[2] "%'d файлов перемещаются в «%B»"
+
+#: libcore/marlin-file-operations.c:2846
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "%'d файл копируется в «%B»"
+msgstr[1] "%'d файла копируются в «%B»"
+msgstr[2] "%'d файлов копируются в «%B»"
+
+#: libcore/marlin-file-operations.c:2851
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "Дублируется %'d файл"
+msgstr[1] "Дублируются %'d файла"
+msgstr[2] "Дублируются %'d файлов"
+
+#: libcore/marlin-file-operations.c:2877
+#, c-format
+msgid "%S of %S"
+msgstr "%S из %S"
+
+#: libcore/marlin-file-operations.c:2887
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S из %S — осталось %T (%S/с)"
+msgstr[1] "%S из %S — осталось %T (%S/с)"
+msgstr[2] "%S из %S — осталось %T (%S/с)"
+
+#: libcore/marlin-file-operations.c:3265
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"Нельзя скопировать папку «%B», потому что у вас нет прав на её создание в "
+"месте назначения."
+
+#: libcore/marlin-file-operations.c:3268
+msgid "There was an error creating the folder \"%B\"."
+msgstr "Произошла ошибка при создании папки «%B»."
+
+#: libcore/marlin-file-operations.c:3398
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Нельзя скопировать файлы из папки «%B», потому что у вас нет прав на их "
+"просмотр."
+
+#: libcore/marlin-file-operations.c:3443
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr "Нельзя скопировать папку «%B», потому что у вас нет прав на её чтение."
+
+#: libcore/marlin-file-operations.c:3488 libcore/marlin-file-operations.c:4152
+msgid "Error while moving \"%B\"."
+msgstr "Произошла ошибка при перемещении «%B»."
+
+#: libcore/marlin-file-operations.c:3489
+msgid "Could not remove the source folder."
+msgstr "Невозможно удалить исходную папку."
+
+#: libcore/marlin-file-operations.c:3574 libcore/marlin-file-operations.c:3615
+#: libcore/marlin-file-operations.c:4154
+msgid "Error while copying \"%B\"."
+msgstr "Произошла ошибка при копировании «%B»."
+
+#: libcore/marlin-file-operations.c:3575
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "Не удалось удалить файлы из уже существующей папки %F."
+
+#: libcore/marlin-file-operations.c:3616
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "Невозможно удалить уже существующий файл %F."
+
+#: libcore/marlin-file-operations.c:3890 libcore/marlin-file-operations.c:4561
+msgid "You cannot move a folder into itself."
+msgstr "Нельзя переместить папку саму в себя."
+
+#: libcore/marlin-file-operations.c:3891 libcore/marlin-file-operations.c:4562
+msgid "You cannot copy a folder into itself."
+msgstr "Нельзя скопировать папку саму в себя."
+
+#: libcore/marlin-file-operations.c:3892 libcore/marlin-file-operations.c:4563
+msgid "The destination folder is inside the source folder."
+msgstr "Папка назначения находится внутри исходной папки."
+
+#: libcore/marlin-file-operations.c:3923
+msgid "You cannot move a file over itself."
+msgstr "Нельзя переместить файл сам в себя."
+
+#: libcore/marlin-file-operations.c:3924
+msgid "You cannot copy a file over itself."
+msgstr "Нельзя скопировать файл сам в себя."
+
+#: libcore/marlin-file-operations.c:3925
+msgid "The source file would be overwritten by the destination."
+msgstr "Исходный файл будет переписан файлом назначения."
+
+#: libcore/marlin-file-operations.c:4156
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr "Невозможно удалить уже существующий файл с тем же именем в %F."
+
+#: libcore/marlin-file-operations.c:4221
+msgid "Cannot copy \"%B\" here."
+msgstr "Невозможно скопировать «%B» сюда."
+
+#: libcore/marlin-file-operations.c:4222
+msgid "There was an error copying the file into %B."
+msgstr "Произошла ошибка во время копирования файла в «%B»."
+
+#: libcore/marlin-file-operations.c:4444
+msgid "Copying Files"
+msgstr "Копирование файлов"
+
+#: libcore/marlin-file-operations.c:4470
+msgid "Preparing to move to \"%B\""
+msgstr "Идёт подготовка к перемещению в «%B»"
+
+#: libcore/marlin-file-operations.c:4474
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Идёт подготовка к перемещению %'d файла"
+msgstr[1] "Идёт подготовка к перемещению %'d файлов"
+msgstr[2] "Идёт подготовка к перемещению %'d файлов"
+
+#: libcore/marlin-file-operations.c:4720
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr "Произошла ошибка при перемещении «%F»."
+
+#: libcore/marlin-file-operations.c:4721
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "Произошла ошибка при перемещении файла в %F."
+
+#: libcore/marlin-file-operations.c:4978
+msgid "Moving Files"
+msgstr "Перемещение файлов"
+
+#: libcore/marlin-file-operations.c:5007
+msgid "Creating links in \"%B\""
+msgstr "Создание ссылок в «%B»"
+
+#: libcore/marlin-file-operations.c:5011
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Идёт создание ссылки на %'d файл"
+msgstr[1] "Идёт создание ссылок на %'d файла"
+msgstr[2] "Идёт создание ссылок на %'d файлов"
+
+#: libcore/marlin-file-operations.c:5151
+msgid "Error while creating link to %B."
+msgstr "Произошла ошибка при создании ссылки на %B."
+
+#: libcore/marlin-file-operations.c:5153
+msgid "Symbolic links only supported for local files"
+msgstr "Символьные ссылки поддерживаются только для локальных файлов"
+
+#: libcore/marlin-file-operations.c:5156
+msgid "The target doesn't support symbolic links."
+msgstr "Место назначения не поддерживает символьные ссылки."
+
+#: libcore/marlin-file-operations.c:5159
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "Произошла ошибка при создании символьной ссылки в %F."
+
+#: libcore/marlin-file-operations.c:5477
+msgid "Setting permissions"
+msgstr "Установка прав доступа"
+
+#: libcore/marlin-file-operations.c:5573
+msgid "Cannot copy into trash."
+msgstr "Невозможно скопировать в корзину."
+
+#: libcore/marlin-file-operations.c:5574
+msgid "It is not permitted to copy files into the trash"
+msgstr "Копирование файлов в корзину запрещено"
+
+#: libcore/marlin-file-operations.c:5712
+msgid "untitled folder"
+msgstr "новая папка"
+
+#: libcore/marlin-file-operations.c:5720
+msgid "new file"
+msgstr "новый файл"
+
+#: libcore/marlin-file-operations.c:5891
+msgid "Error while creating directory %B."
+msgstr "Произошла ошибка при создании каталога %B."
+
+#: libcore/marlin-file-operations.c:5893
+msgid "Error while creating file %B."
+msgstr "Произошла ошибка при создании файла %B."
+
+#: libcore/marlin-file-operations.c:5895
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "Произошла ошибка при создании папки в %F."
+
+#: libcore/marlin-file-operations.c:6205
+msgid "Emptying Trash"
+msgstr "Очистка корзины"
+
+#: libcore/marlin-undostack-manager.c:580
+msgid "Original location could not be determined"
+msgstr "Невозможно определить исходное расположение"
+
+#: libcore/marlin-undostack-manager.c:581
+msgid "Open trash folder and restore manually"
+msgstr "Открыть корзину и восстановить вручную"
+
+#: libcore/marlin-undostack-manager.c:1118
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Удалить %d скопированных файлов"
+
+#: libcore/marlin-undostack-manager.c:1121
+#: libcore/marlin-undostack-manager.c:1131
+#: libcore/marlin-undostack-manager.c:1162
+#, c-format
+msgid "Delete '%s'"
+msgstr "Удалить «%s»"
+
+#: libcore/marlin-undostack-manager.c:1128
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Удалить %d дубликатов"
+
+#: libcore/marlin-undostack-manager.c:1139
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Переместить %d файлов обратно в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1143
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Переместить «%s» обратно в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1152
+#: libcore/marlin-undostack-manager.c:1319
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Переименовать «%s» в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1171
+#: libcore/marlin-undostack-manager.c:1366
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Восстановить %d файлов из корзины"
+
+#: libcore/marlin-undostack-manager.c:1179
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Восстановить «%s» в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1190
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Переместить %d файлов обратно в корзину"
+
+#: libcore/marlin-undostack-manager.c:1193
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Переместить «%s» обратно в корзину"
+
+#: libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Удалить ссылки на %d файлов"
+
+#: libcore/marlin-undostack-manager.c:1205
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Удалить ссылку на «%s»"
+
+#: libcore/marlin-undostack-manager.c:1215
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Восстановить исходные права доступа к элементам в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Восстановить исходные права доступа к «%s»"
+
+#: libcore/marlin-undostack-manager.c:1232
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Восстановить группу с «%s» на «%s»"
+
+#: libcore/marlin-undostack-manager.c:1242
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Восстановить владельца с «%s» на «%s»"
+
+#: libcore/marlin-undostack-manager.c:1281
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Копировать %d файлов в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1285
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Копировать «%s» в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1293
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Дублировать %d файлов в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1298
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Дублировать «%s» в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1306
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Переместить %d файлов в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1310
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Переместить «%s» в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1328
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Создать новый файл «%s» из шаблона "
+
+#: libcore/marlin-undostack-manager.c:1335
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Создать пустой файл «%s»"
+
+#: libcore/marlin-undostack-manager.c:1342
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Создать новую папку «%s»"
+
+#: libcore/marlin-undostack-manager.c:1350
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Переместить %d файлов в корзину"
+
+#: libcore/marlin-undostack-manager.c:1356
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Переместить «%s» в корзину"
+
+#: libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Восстановить «%s» из корзины"
+
+#: libcore/marlin-undostack-manager.c:1378
+#, c-format
+msgid "Create links to %d items"
+msgstr "Создать ссылки на %d файлов"
+
+#: libcore/marlin-undostack-manager.c:1381
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Создать ссылку на «%s»"
+
+#: libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Назначить права доступа к объектам в «%s»"
+
+#: libcore/marlin-undostack-manager.c:1398
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Установить права доступа «%s»"
+
+#: libcore/marlin-undostack-manager.c:1407
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Назначить «%s» группу «%s»"
+
+#: libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Назначить владельцем «%s» «%s»"
+
+#: libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "_Отменить копирование %d объекта"
+msgstr[1] "_Отменить копирование %d объектов"
+msgstr[2] "_Отменить копирование %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1454
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "_Отменить дублирование %d объекта"
+msgstr[1] "_Отменить дублирование %d объектов"
+msgstr[2] "_Отменить дублирование %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1459
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "_Отменить перемещение %d объекта"
+msgstr[1] "_Отменить перемещение %d объектов"
+msgstr[2] "_Отменить перемещение %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1464
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "_Отменить переименование %d объекта"
+msgstr[1] "_Отменить переименование %d объектов"
+msgstr[2] "_Отменить переименование %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1468
+msgid "_Undo creation of an empty file"
+msgstr "_Отменить создание пустого файла"
+
+#: libcore/marlin-undostack-manager.c:1471
+msgid "_Undo creation of a file from template"
+msgstr "_Отменить создание файла из шаблона"
+
+#: libcore/marlin-undostack-manager.c:1475
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Отменить создание %d папки"
+msgstr[1] "_Отменить создание %d папок"
+msgstr[2] "_Отменить создание %d папок"
+
+#: libcore/marlin-undostack-manager.c:1480
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "_Отменить перемещение %d объекта в корзину"
+msgstr[1] "_Отменить перемещение %d объектов в корзину"
+msgstr[2] "_Отменить перемещение %d объектов в корзину"
+
+#: libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "_Отменить восстановление %d объекта из корзины"
+msgstr[1] "_Отменить восстановление %d объектов из корзины"
+msgstr[2] "_Отменить восстановление %d объектов из корзины"
+
+#: libcore/marlin-undostack-manager.c:1490
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "_Отменить создание ссылки на %d объект"
+msgstr[1] "_Отменить создание ссылки на %d объекта"
+msgstr[2] "_Отменить создание ссылок на %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1495
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "_Отменить удаление %d объекта"
+msgstr[1] "_Отменить удаление %d объектов"
+msgstr[2] "_Отменить удаление %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1500
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Отменить рекурсивное изменение прав доступа к %d объекту"
+msgstr[1] "Отменить рекурсивное изменение прав доступа к %d объектам"
+msgstr[2] "Отменить рекурсивное изменение прав доступа к %d объектам"
+
+#: libcore/marlin-undostack-manager.c:1506
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Отменить изменение прав доступа к %d объекту"
+msgstr[1] "Отменить изменение прав доступа к %d объектам"
+msgstr[2] "Отменить изменение прав доступа к %d объектам"
+
+#: libcore/marlin-undostack-manager.c:1511
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Отменить изменение группы для %d объекта"
+msgstr[1] "Отменить изменение группы для %d объектов"
+msgstr[2] "Отменить изменение группы для %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1516
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Отменить изменение владельца для %d объекта"
+msgstr[1] "Отменить изменение владельца для %d объектов"
+msgstr[2] "Отменить изменение владельца для %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1544
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Повторить копирование %d объекта"
+msgstr[1] "_Повторить копирование %d объектов"
+msgstr[2] "_Повторить копирование %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1549
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Повторить дублирование %d объекта"
+msgstr[1] "_Повторить дублирование %d объектов"
+msgstr[2] "_Повторить дублирование %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1554
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Повторить перемещение %d объекта"
+msgstr[1] "_Повторить перемещение %d объектов"
+msgstr[2] "_Повторить перемещение %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Повторить переименование %d объекта"
+msgstr[1] "_Повторить переименование %d объектов"
+msgstr[2] "_Повторить переименование %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1563
+msgid "_Redo creation of an empty file"
+msgstr "_Повторить создание пустого файла"
+
+#: libcore/marlin-undostack-manager.c:1566
+msgid "_Redo creation of a file from template"
+msgstr "_Повторить создание файла из шаблона"
+
+#: libcore/marlin-undostack-manager.c:1570
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Повторить создание %d папки"
+msgstr[1] "_Повторить создание %d папок"
+msgstr[2] "_Повторить создание %d папок"
+
+#: libcore/marlin-undostack-manager.c:1575
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Повторить перемещение %d объекта в корзину"
+msgstr[1] "_Повторить перемещение %d объектов в корзину"
+msgstr[2] "_Повторить перемещение %d объектов в корзину"
+
+#: libcore/marlin-undostack-manager.c:1580
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Повторить восстановление %d объекта из корзины"
+msgstr[1] "_Повторить восстановление %d объектов из корзины"
+msgstr[2] "_Повторить восстановление %d объектов из корзины"
+
+#: libcore/marlin-undostack-manager.c:1585
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Повторить создание ссылок на %d объект"
+msgstr[1] "_Повторить создание ссылок на %d объекта"
+msgstr[2] "_Повторить создание ссылок на %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Повторить удаление %d объекта"
+msgstr[1] "_Повторить удаление %d объектов"
+msgstr[2] "_Повторить удаление %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Повторить рекурсивное изменение прав доступа к %d объекту"
+msgstr[1] "Повторить рекурсивное изменение прав доступа к %d объектам"
+msgstr[2] "Повторить рекурсивное изменение прав доступа к %d объектам"
+
+#: libcore/marlin-undostack-manager.c:1601
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Повторить изменение прав доступа к %d объекту"
+msgstr[1] "Повторить изменение прав доступа к %d объектам"
+msgstr[2] "Повторить изменение прав доступа к %d объектам"
+
+#: libcore/marlin-undostack-manager.c:1606
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Повторить изменение группы для %d объекта"
+msgstr[1] "Повторить изменение группы для %d объектов"
+msgstr[2] "Повторить изменение группы для %d объектов"
+
+#: libcore/marlin-undostack-manager.c:1611
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Повторить изменение владельца %d объекта"
+msgstr[1] "Повторить изменение владельца %d объектов"
+msgstr[2] "Повторить изменение владельца %d объектов"
+
+#: libcore/gof-file.c:332 libcore/gof-file.c:506
+msgid "Inaccessible"
+msgstr "Недоступно"
+
+#: libcore/gof-file.c:347
+#, c-format
+msgid "link to %s"
+msgstr "ссылка на %s"
+
 #: libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
 msgstr "Введите путь"
@@ -1037,6 +2215,11 @@ msgstr "Перейти к %s"
 #, c-format
 msgid "Go to %s"
 msgstr "Перейти к %s"
+
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#, fuzzy
+msgid "Type Path"
+msgstr "Введите путь"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
@@ -1118,12 +2301,6 @@ msgstr "Восстановить выбранное"
 msgid "Delete Selected"
 msgstr "Удалить выбранное"
 
-#~ msgid "Inaccessible"
-#~ msgstr "Недоступно"
-
-#~ msgid "link to %s"
-#~ msgstr "ссылка на %s"
-
 #~ msgid "Failed to parse the desktop file: %s"
 #~ msgstr "Ошибка обработки файла запуска: %s"
 
@@ -1135,72 +2312,6 @@ msgstr "Удалить выбранное"
 
 #~ msgid "Unable to Launch Desktop File: %s"
 #~ msgstr "Не удалось запустить desktop-файл: %s"
-
-#~ msgid "S_kip All"
-#~ msgstr "Пропу_стить всё"
-
-#~ msgid "_Retry"
-#~ msgstr "Повто_рить"
-
-#~ msgid "Delete _All"
-#~ msgstr "Удалить _всё"
-
-#~ msgid "_Replace"
-#~ msgstr "_Заменить"
-
-#~ msgid "Replace _All"
-#~ msgstr "Заменить _всё"
-
-#~ msgid "_Merge"
-#~ msgstr "Сов_местить"
-
-#~ msgid "Merge _All"
-#~ msgstr "Совместить _всё"
-
-#~ msgid "Copy _Anyway"
-#~ msgstr "Копировать _всё равно"
-
-#~ msgid "%'d second"
-#~ msgid_plural "%'d seconds"
-#~ msgstr[0] "%'d секунда"
-#~ msgstr[1] "%'d секунды"
-#~ msgstr[2] "%'d секунд"
-
-#~ msgid "%'d minute"
-#~ msgid_plural "%'d minutes"
-#~ msgstr[0] "%'d минута"
-#~ msgstr[1] "%'d минуты"
-#~ msgstr[2] "%'d минут"
-
-#~ msgid "%'d hour"
-#~ msgid_plural "%'d hours"
-#~ msgstr[0] "%'d час"
-#~ msgstr[1] "%'d часа"
-#~ msgstr[2] "%'d часов"
-
-#~ msgid "approximately %'d hour"
-#~ msgid_plural "approximately %'d hours"
-#~ msgstr[0] "примерно %'d час"
-#~ msgstr[1] "примерно %'d часа"
-#~ msgstr[2] "примерно %'d часов"
-
-#~ msgid "Link to %s"
-#~ msgstr "Ссылка на %s"
-
-#~ msgid "Another link to %s"
-#~ msgstr "Другая ссылка на %s"
-
-#~ msgid "%'dst link to %s"
-#~ msgstr "%'d-я ссылка на %s"
-
-#~ msgid "%'dnd link to %s"
-#~ msgstr "%'d-я ссылка на %s"
-
-#~ msgid "%'drd link to %s"
-#~ msgstr "%'d-я ссылка на %s"
-
-#~ msgid "%'dth link to %s"
-#~ msgstr "%'d-я ссылка на %s"
 
 #~ msgid " (copy)"
 #~ msgstr " (копия)"
@@ -1238,726 +2349,6 @@ msgstr "Удалить выбранное"
 #~ msgid "%s (%'drd copy)%s"
 #~ msgstr "%s (%'d-я копия)%s"
 
-#~ msgid " ("
-#~ msgstr " ("
-
-#~ msgid " (%'d"
-#~ msgstr " (%'d"
-
-#~ msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-#~ msgstr "Вы действительно хотите безвозвратно удалить «%B» из корзины?"
-
-#~ msgid ""
-#~ "Are you sure you want to permanently delete the %'d selected item from "
-#~ "the trash?"
-#~ msgid_plural ""
-#~ "Are you sure you want to permanently delete the %'d selected items from "
-#~ "the trash?"
-#~ msgstr[0] ""
-#~ "Вы действительно хотите безвозвратно удалить %'d выделенный объект из "
-#~ "корзины?"
-#~ msgstr[1] ""
-#~ "Вы действительно хотите безвозвратно удалить %'d выделенных объекта из "
-#~ "корзины?"
-#~ msgstr[2] ""
-#~ "Вы действительно хотите безвозвратно удалить %'d выделенных объектов из "
-#~ "корзины?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Если вы удалите объект, вы больше не сможете его восстановить."
-
-#~ msgid "Permanently delete all items from Trash?"
-#~ msgstr "Очистить корзину?"
-
-#~ msgid ""
-#~ "All items in all trash directories, including those on any mounted "
-#~ "external drives, will be permanently deleted."
-#~ msgstr ""
-#~ "Все файлы в корзине, включая находящиеся на внешних носителях, будут "
-#~ "безвозвратно удалены."
-
-#~ msgid "Permanently delete all items from Trash on this mount?"
-#~ msgstr "Безвозвратно удалить файлы из корзины на этом носителе?"
-
-#~ msgid "All items in the trash on this mount, will be permanently deleted."
-#~ msgstr ""
-#~ "Все файлы с этого носителя, находящиеся в корзине, будут безвозвратно "
-#~ "удалены."
-
-#~ msgid "Are you sure you want to permanently delete \"%B\"?"
-#~ msgstr "Вы действительно хотите безвозвратно удалить «%B»?"
-
-#~ msgid "Are you sure you want to permanently delete the %'d selected item?"
-#~ msgid_plural ""
-#~ "Are you sure you want to permanently delete the %'d selected items?"
-#~ msgstr[0] ""
-#~ "Вы действительно хотите безвозвратно удалить %'d выделенный объект?"
-#~ msgstr[1] ""
-#~ "Вы действительно хотите безвозвратно удалить %'d выделенных объекта?"
-#~ msgstr[2] ""
-#~ "Вы действительно хотите безвозвратно удалить %'d выделенных объектов?"
-
-#~ msgid "%'d file left to delete"
-#~ msgid_plural "%'d files left to delete"
-#~ msgstr[0] "осталось удалить %'d файл"
-#~ msgstr[1] "осталось удалить %'d файла"
-#~ msgstr[2] "осталось удалить %'d файлов"
-
-#~ msgid "Deleting files"
-#~ msgstr "Удаление файлов"
-
-#~ msgid "%T left"
-#~ msgid_plural "%T left"
-#~ msgstr[0] "Осталось %T"
-#~ msgstr[1] "Осталось %T"
-#~ msgstr[2] "Осталось %T"
-
-#~ msgid "Error while deleting."
-#~ msgstr "Ошибка при удалении."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be deleted because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Нельзя удалить файлы в папке «%B», потому что у вас нет прав на их "
-#~ "просмотр."
-
-#~ msgid ""
-#~ "There was an error getting information about the files in the folder \"%B"
-#~ "\"."
-#~ msgstr "Произошла ошибка при получении сведений о файлах в папке «%B»."
-
-#~ msgid "_Skip files"
-#~ msgstr "_Пропустить файлы"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be deleted because you do not have permissions "
-#~ "to read it."
-#~ msgstr "Нельзя удалить папку «%B», потому что у вас нет прав на её чтение."
-
-#~ msgid "There was an error reading the folder \"%B\"."
-#~ msgstr "Произошла ошибка при чтении папки «%B»."
-
-#~ msgid "Could not remove the folder %B."
-#~ msgstr "Не удалось удалить папку %B."
-
-#~ msgid "There was an error deleting %B."
-#~ msgstr "Произошла ошибка при удалении %B."
-
-#~ msgid "Moving files to trash"
-#~ msgstr "Перемещение файлов в корзину"
-
-#~ msgid "%'d file left to trash"
-#~ msgid_plural "%'d files left to trash"
-#~ msgstr[0] "осталось удалить в корзину %'d файл"
-#~ msgstr[1] "осталось удалить в корзину %'d файла"
-#~ msgstr[2] "осталось удалить в корзину %'d файлов"
-
-#~ msgid "Cannot move file to trash or delete it"
-#~ msgstr "Не удаётся переместить файл в корзину или удалить его"
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete files on a read only filesystem."
-#~ msgstr ""
-#~ "Нельзя удалить файлы на файловой системе, доступной только для чтения."
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete files inside folders for which you "
-#~ "do not have write privileges."
-#~ msgstr "Нельзя удалить файлы в папке, на которые у вас нет прав на запись."
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete folders for which you do not have "
-#~ "write privileges."
-#~ msgstr "Нельзя удалить папки, на которые у вас нет прав на запись."
-
-#~ msgid "Cannot move file to trash. Try to delete it immediately?"
-#~ msgstr ""
-#~ "Не удаётся переместить файл в корзину. Попытаться сразу удалить его?"
-
-#~ msgid ""
-#~ "This file could not be moved to trash. See details below for further "
-#~ "information."
-#~ msgstr ""
-#~ "Этот файл не может быть перемещён в корзину. Смотрите ниже для получения "
-#~ "дополнительной информации."
-
-#~ msgid "Cannot move file to trash.  Try to delete it?"
-#~ msgstr "Не удаётся переместить файл в корзину. Попытаться удалить его?"
-
-#~ msgid ""
-#~ "This file could not be moved to trash. You may not be able to delete it "
-#~ "either."
-#~ msgstr ""
-#~ "Этот файл не может быть перемещён в корзину. У вас нет возможности "
-#~ "удалить его."
-
-#~ msgid ""
-#~ "\n"
-#~ " Deleting a file removes it permanently"
-#~ msgstr ""
-#~ "\n"
-#~ " Удаление файла будет безвозвратным"
-
-#~ msgid "Trashing Files"
-#~ msgstr "Перемещение файлов в корзину"
-
-#~ msgid "Deleting Files"
-#~ msgstr "Удаление файлов"
-
-#~ msgid "Unable to eject %V"
-#~ msgstr "Не удалось извлечь %V"
-
-#~ msgid "Unable to unmount %V"
-#~ msgstr "Не удалось отключить %V"
-
-#~ msgid "Unable to mount %s"
-#~ msgstr "Не удалось подключить %s"
-
-#~ msgid "Preparing to copy %'d file (%S)"
-#~ msgid_plural "Preparing to copy %'d files (%S)"
-#~ msgstr[0] "Идёт подготовка к копированию %'d файла (%S)"
-#~ msgstr[1] "Идёт подготовка к копированию %'d файлов (%S)"
-#~ msgstr[2] "Идёт подготовка к копированию %'d файлов (%S)"
-
-#~ msgid "Preparing to move %'d file (%S)"
-#~ msgid_plural "Preparing to move %'d files (%S)"
-#~ msgstr[0] "Идёт подготовка к перемещению %'d файла (%S)"
-#~ msgstr[1] "Идёт подготовка к перемещению %'d файлов (%S)"
-#~ msgstr[2] "Идёт подготовка к перемещению %'d файлов (%S)"
-
-#~ msgid "Preparing to delete %'d file (%S)"
-#~ msgid_plural "Preparing to delete %'d files (%S)"
-#~ msgstr[0] "Идёт подготовка к удалению %'d файла (%S)"
-#~ msgstr[1] "Идёт подготовка к удалению %'d файлов (%S)"
-#~ msgstr[2] "Идёт подготовка к удалению %'d файлов (%S)"
-
-#~ msgid "Preparing to trash %'d file"
-#~ msgid_plural "Preparing to trash %'d files"
-#~ msgstr[0] "Идёт подготовка к удалению %'d файла в корзину"
-#~ msgstr[1] "Идёт подготовка к удалению %'d файлов в корзину"
-#~ msgstr[2] "Идёт подготовка к удалению %'d файлов в корзину"
-
-#~ msgid "Error while copying."
-#~ msgstr "Ошибка при копировании."
-
-#~ msgid "Error while moving."
-#~ msgstr "Ошибка при перемещении."
-
-#~ msgid "Error while moving files to trash."
-#~ msgstr "Ошибка при перемещении файлов в корзину."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be handled because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Нельзя обработать файлы в папке «%B», потому что у вас нет прав на их "
-#~ "просмотр."
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be handled because you do not have permissions "
-#~ "to read it."
-#~ msgstr ""
-#~ "Нельзя обработать папку «%B», потому что у вас нет прав на её чтение."
-
-#~ msgid ""
-#~ "The file \"%B\" cannot be handled because you do not have permissions to "
-#~ "read it."
-#~ msgstr ""
-#~ "Нельзя обработать файл «%B», потому что у вас нет прав на его чтение."
-
-#~ msgid "There was an error getting information about \"%B\"."
-#~ msgstr "Произошла ошибка при получении сведений о «%B»."
-
-#~ msgid "Error while copying to \"%B\"."
-#~ msgstr "Произошла ошибка при копировании в «%B»."
-
-#~ msgid "You do not have permissions to access the destination folder."
-#~ msgstr "У вас нет прав на доступ к папке назначения."
-
-#~ msgid "There was an error getting information about the destination."
-#~ msgstr "Произошла ошибка при получении сведений о месте назначения."
-
-#~ msgid "The destination is not a folder."
-#~ msgstr "Место назначения не является папкой."
-
-#~ msgid ""
-#~ "There is not enough space on the destination. Try to remove files to make "
-#~ "space."
-#~ msgstr ""
-#~ "Недостаточно места на устройстве назначения. Попробуйте удалить какие-"
-#~ "нибудь файлы, чтобы освободить место."
-
-#~ msgid "There is %S available, but %S is required."
-#~ msgstr "Доступно %S, но требуется %S."
-
-#~ msgid "The destination is read-only."
-#~ msgstr "Устройство назначения доступно только для чтения."
-
-#~ msgid "Moving \"%B\" to \"%B\""
-#~ msgstr "Перемещение «%B» в «%B»"
-
-#~ msgid "Copying \"%B\" to \"%B\""
-#~ msgstr "Копирование «%B» в «%B»"
-
-#~ msgid "Duplicating \"%B\""
-#~ msgstr "Дублирование «%B»"
-
-#~ msgid "Moving %'d file (in \"%B\") to \"%B\""
-#~ msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-#~ msgstr[0] "Перемещается %'d файл (из «%B») в «%B»"
-#~ msgstr[1] "Перемещаются %'d файла (из «%B») в «%B»"
-#~ msgstr[2] "Перемещается %'d файлов (из «%B») в «%B»"
-
-#~ msgid "Copying %'d file (in \"%B\") to \"%B\""
-#~ msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-#~ msgstr[0] "Копируется %'d файл (из «%B») в «%B»"
-#~ msgstr[1] "Копируются %'d файла (из «%B») в «%B»"
-#~ msgstr[2] "Копируются %'d файлов (из «%B») в «%B»"
-
-#~ msgid "Duplicating %'d file (in \"%B\")"
-#~ msgid_plural "Duplicating %'d files (in \"%B\")"
-#~ msgstr[0] "Дублируется %'d файл (из «%B») в «%B»"
-#~ msgstr[1] "Дублируются %'d файла (из «%B») в «%B»"
-#~ msgstr[2] "Дублируются %'d файлов (из «%B») в «%B»"
-
-#~ msgid "Moving %'d file to \"%B\""
-#~ msgid_plural "Moving %'d files to \"%B\""
-#~ msgstr[0] "%'d файл перемещается в «%B»"
-#~ msgstr[1] "%'d файла перемещаются в «%B»"
-#~ msgstr[2] "%'d файлов перемещаются в «%B»"
-
-#~ msgid "Copying %'d file to \"%B\""
-#~ msgid_plural "Copying %'d files to \"%B\""
-#~ msgstr[0] "%'d файл копируется в «%B»"
-#~ msgstr[1] "%'d файла копируются в «%B»"
-#~ msgstr[2] "%'d файлов копируются в «%B»"
-
-#~ msgid "Duplicating %'d file"
-#~ msgid_plural "Duplicating %'d files"
-#~ msgstr[0] "Дублируется %'d файл"
-#~ msgstr[1] "Дублируются %'d файла"
-#~ msgstr[2] "Дублируются %'d файлов"
-
-#~ msgid "%S of %S"
-#~ msgstr "%S из %S"
-
-#~ msgid "%S of %S — %T left (%S/sec)"
-#~ msgid_plural "%S of %S — %T left (%S/sec)"
-#~ msgstr[0] "%S из %S — осталось %T (%S/с)"
-#~ msgstr[1] "%S из %S — осталось %T (%S/с)"
-#~ msgstr[2] "%S из %S — осталось %T (%S/с)"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
-#~ "create it in the destination."
-#~ msgstr ""
-#~ "Нельзя скопировать папку «%B», потому что у вас нет прав на её создание в "
-#~ "месте назначения."
-
-#~ msgid "There was an error creating the folder \"%B\"."
-#~ msgstr "Произошла ошибка при создании папки «%B»."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be copied because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Нельзя скопировать файлы из папки «%B», потому что у вас нет прав на их "
-#~ "просмотр."
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
-#~ "read it."
-#~ msgstr ""
-#~ "Нельзя скопировать папку «%B», потому что у вас нет прав на её чтение."
-
-#~ msgid "Error while moving \"%B\"."
-#~ msgstr "Произошла ошибка при перемещении «%B»."
-
-#~ msgid "Could not remove the source folder."
-#~ msgstr "Невозможно удалить исходную папку."
-
-#~ msgid "Error while copying \"%B\"."
-#~ msgstr "Произошла ошибка при копировании «%B»."
-
-#~ msgid "Could not remove files from the already existing folder %F."
-#~ msgstr "Не удалось удалить файлы из уже существующей папки %F."
-
-#~ msgid "Could not remove the already existing file %F."
-#~ msgstr "Невозможно удалить уже существующий файл %F."
-
-#~ msgid "You cannot move a folder into itself."
-#~ msgstr "Нельзя переместить папку саму в себя."
-
-#~ msgid "You cannot copy a folder into itself."
-#~ msgstr "Нельзя скопировать папку саму в себя."
-
-#~ msgid "The destination folder is inside the source folder."
-#~ msgstr "Папка назначения находится внутри исходной папки."
-
-#~ msgid "You cannot move a file over itself."
-#~ msgstr "Нельзя переместить файл сам в себя."
-
-#~ msgid "You cannot copy a file over itself."
-#~ msgstr "Нельзя скопировать файл сам в себя."
-
-#~ msgid "The source file would be overwritten by the destination."
-#~ msgstr "Исходный файл будет переписан файлом назначения."
-
-#~ msgid "Could not remove the already existing file with the same name in %F."
-#~ msgstr "Невозможно удалить уже существующий файл с тем же именем в %F."
-
-#~ msgid "Cannot copy \"%B\" here."
-#~ msgstr "Невозможно скопировать «%B» сюда."
-
-#~ msgid "There was an error copying the file into %B."
-#~ msgstr "Произошла ошибка во время копирования файла в «%B»."
-
-#~ msgid "Copying Files"
-#~ msgstr "Копирование файлов"
-
-#~ msgid "Preparing to move to \"%B\""
-#~ msgstr "Идёт подготовка к перемещению в «%B»"
-
-#~ msgid "Preparing to move %'d file"
-#~ msgid_plural "Preparing to move %'d files"
-#~ msgstr[0] "Идёт подготовка к перемещению %'d файла"
-#~ msgstr[1] "Идёт подготовка к перемещению %'d файлов"
-#~ msgstr[2] "Идёт подготовка к перемещению %'d файлов"
-
-#~ msgid "Error while moving \"%F\"."
-#~ msgstr "Произошла ошибка при перемещении «%F»."
-
-#~ msgid "There was an error moving the file into %F."
-#~ msgstr "Произошла ошибка при перемещении файла в %F."
-
-#~ msgid "Moving Files"
-#~ msgstr "Перемещение файлов"
-
-#~ msgid "Creating links in \"%B\""
-#~ msgstr "Создание ссылок в «%B»"
-
-#~ msgid "Making link to %'d file"
-#~ msgid_plural "Making links to %'d files"
-#~ msgstr[0] "Идёт создание ссылки на %'d файл"
-#~ msgstr[1] "Идёт создание ссылок на %'d файла"
-#~ msgstr[2] "Идёт создание ссылок на %'d файлов"
-
-#~ msgid "Error while creating link to %B."
-#~ msgstr "Произошла ошибка при создании ссылки на %B."
-
-#~ msgid "Symbolic links only supported for local files"
-#~ msgstr "Символьные ссылки поддерживаются только для локальных файлов"
-
-#~ msgid "The target doesn't support symbolic links."
-#~ msgstr "Место назначения не поддерживает символьные ссылки."
-
-#~ msgid "There was an error creating the symlink in %F."
-#~ msgstr "Произошла ошибка при создании символьной ссылки в %F."
-
-#~ msgid "Setting permissions"
-#~ msgstr "Установка прав доступа"
-
-#~ msgid "Cannot copy into trash."
-#~ msgstr "Невозможно скопировать в корзину."
-
-#~ msgid "It is not permitted to copy files into the trash"
-#~ msgstr "Копирование файлов в корзину запрещено"
-
-#~ msgid "untitled folder"
-#~ msgstr "новая папка"
-
-#~ msgid "new file"
-#~ msgstr "новый файл"
-
-#~ msgid "Error while creating directory %B."
-#~ msgstr "Произошла ошибка при создании каталога %B."
-
-#~ msgid "Error while creating file %B."
-#~ msgstr "Произошла ошибка при создании файла %B."
-
-#~ msgid "There was an error creating the directory in %F."
-#~ msgstr "Произошла ошибка при создании папки в %F."
-
-#~ msgid "Emptying Trash"
-#~ msgstr "Очистка корзины"
-
-#~ msgid "Original location could not be determined"
-#~ msgstr "Невозможно определить исходное расположение"
-
-#~ msgid "Open trash folder and restore manually"
-#~ msgstr "Открыть корзину и восстановить вручную"
-
-#~ msgid "Delete %d copied items"
-#~ msgstr "Удалить %d скопированных файлов"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Удалить «%s»"
-
-#~ msgid "Delete %d duplicated items"
-#~ msgstr "Удалить %d дубликатов"
-
-#~ msgid "Move %d items back to '%s'"
-#~ msgstr "Переместить %d файлов обратно в «%s»"
-
-#~ msgid "Move '%s' back to '%s'"
-#~ msgstr "Переместить «%s» обратно в «%s»"
-
-#~ msgid "Rename '%s' as '%s'"
-#~ msgstr "Переименовать «%s» в «%s»"
-
-#~ msgid "Restore %d items from trash"
-#~ msgstr "Восстановить %d файлов из корзины"
-
-#~ msgid "Restore '%s' to '%s'"
-#~ msgstr "Восстановить «%s» в «%s»"
-
-#~ msgid "Move %d items back to trash"
-#~ msgstr "Переместить %d файлов обратно в корзину"
-
-#~ msgid "Move '%s' back to trash"
-#~ msgstr "Переместить «%s» обратно в корзину"
-
-#~ msgid "Delete links to %d items"
-#~ msgstr "Удалить ссылки на %d файлов"
-
-#~ msgid "Delete link to '%s'"
-#~ msgstr "Удалить ссылку на «%s»"
-
-#~ msgid "Restore original permissions of items enclosed in '%s'"
-#~ msgstr "Восстановить исходные права доступа к элементам в «%s»"
-
-#~ msgid "Restore original permissions of '%s'"
-#~ msgstr "Восстановить исходные права доступа к «%s»"
-
-#~ msgid "Restore group of '%s' to '%s'"
-#~ msgstr "Восстановить группу с «%s» на «%s»"
-
-#~ msgid "Restore owner of '%s' to '%s'"
-#~ msgstr "Восстановить владельца с «%s» на «%s»"
-
-#~ msgid "Copy %d items to '%s'"
-#~ msgstr "Копировать %d файлов в «%s»"
-
-#~ msgid "Copy '%s' to '%s'"
-#~ msgstr "Копировать «%s» в «%s»"
-
-#~ msgid "Duplicate of %d items in '%s'"
-#~ msgstr "Дублировать %d файлов в «%s»"
-
-#~ msgid "Duplicate '%s' in '%s'"
-#~ msgstr "Дублировать «%s» в «%s»"
-
-#~ msgid "Move %d items to '%s'"
-#~ msgstr "Переместить %d файлов в «%s»"
-
-#~ msgid "Move '%s' to '%s'"
-#~ msgstr "Переместить «%s» в «%s»"
-
-#~ msgid "Create new file '%s' from template "
-#~ msgstr "Создать новый файл «%s» из шаблона "
-
-#~ msgid "Create an empty file '%s'"
-#~ msgstr "Создать пустой файл «%s»"
-
-#~ msgid "Create a new folder '%s'"
-#~ msgstr "Создать новую папку «%s»"
-
-#~ msgid "Move %d items to trash"
-#~ msgstr "Переместить %d файлов в корзину"
-
-#~ msgid "Move '%s' to trash"
-#~ msgstr "Переместить «%s» в корзину"
-
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "Восстановить «%s» из корзины"
-
-#~ msgid "Create links to %d items"
-#~ msgstr "Создать ссылки на %d файлов"
-
-#~ msgid "Create link to '%s'"
-#~ msgstr "Создать ссылку на «%s»"
-
-#~ msgid "Set permissions of items enclosed in '%s'"
-#~ msgstr "Назначить права доступа к объектам в «%s»"
-
-#~ msgid "Set permissions of '%s'"
-#~ msgstr "Установить права доступа «%s»"
-
-#~ msgid "Set group of '%s' to '%s'"
-#~ msgstr "Назначить «%s» группу «%s»"
-
-#~ msgid "Set owner of '%s' to '%s'"
-#~ msgstr "Назначить владельцем «%s» «%s»"
-
-#~ msgid "_Undo copy of %d item"
-#~ msgid_plural "_Undo copy of %d items"
-#~ msgstr[0] "_Отменить копирование %d объекта"
-#~ msgstr[1] "_Отменить копирование %d объектов"
-#~ msgstr[2] "_Отменить копирование %d объектов"
-
-#~ msgid "_Undo duplicate of %d item"
-#~ msgid_plural "_Undo duplicate of %d items"
-#~ msgstr[0] "_Отменить дублирование %d объекта"
-#~ msgstr[1] "_Отменить дублирование %d объектов"
-#~ msgstr[2] "_Отменить дублирование %d объектов"
-
-#~ msgid "_Undo move of %d item"
-#~ msgid_plural "_Undo move of %d items"
-#~ msgstr[0] "_Отменить перемещение %d объекта"
-#~ msgstr[1] "_Отменить перемещение %d объектов"
-#~ msgstr[2] "_Отменить перемещение %d объектов"
-
-#~ msgid "_Undo rename of %d item"
-#~ msgid_plural "_Undo rename of %d items"
-#~ msgstr[0] "_Отменить переименование %d объекта"
-#~ msgstr[1] "_Отменить переименование %d объектов"
-#~ msgstr[2] "_Отменить переименование %d объектов"
-
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Отменить создание пустого файла"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Отменить создание файла из шаблона"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Отменить создание %d папки"
-#~ msgstr[1] "_Отменить создание %d папок"
-#~ msgstr[2] "_Отменить создание %d папок"
-
-#~ msgid "_Undo move to trash of %d item"
-#~ msgid_plural "_Undo move to trash of %d items"
-#~ msgstr[0] "_Отменить перемещение %d объекта в корзину"
-#~ msgstr[1] "_Отменить перемещение %d объектов в корзину"
-#~ msgstr[2] "_Отменить перемещение %d объектов в корзину"
-
-#~ msgid "_Undo restore from trash of %d item"
-#~ msgid_plural "_Undo restore from trash of %d items"
-#~ msgstr[0] "_Отменить восстановление %d объекта из корзины"
-#~ msgstr[1] "_Отменить восстановление %d объектов из корзины"
-#~ msgstr[2] "_Отменить восстановление %d объектов из корзины"
-
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "_Отменить создание ссылки на %d объект"
-#~ msgstr[1] "_Отменить создание ссылки на %d объекта"
-#~ msgstr[2] "_Отменить создание ссылок на %d объектов"
-
-#~ msgid "_Undo delete of %d item"
-#~ msgid_plural "_Undo delete of %d items"
-#~ msgstr[0] "_Отменить удаление %d объекта"
-#~ msgstr[1] "_Отменить удаление %d объектов"
-#~ msgstr[2] "_Отменить удаление %d объектов"
-
-#~ msgid "Undo recursive change permissions of %d item"
-#~ msgid_plural "Undo recursive change permissions of %d items"
-#~ msgstr[0] "Отменить рекурсивное изменение прав доступа к %d объекту"
-#~ msgstr[1] "Отменить рекурсивное изменение прав доступа к %d объектам"
-#~ msgstr[2] "Отменить рекурсивное изменение прав доступа к %d объектам"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Отменить изменение прав доступа к %d объекту"
-#~ msgstr[1] "Отменить изменение прав доступа к %d объектам"
-#~ msgstr[2] "Отменить изменение прав доступа к %d объектам"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Отменить изменение группы для %d объекта"
-#~ msgstr[1] "Отменить изменение группы для %d объектов"
-#~ msgstr[2] "Отменить изменение группы для %d объектов"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Отменить изменение владельца для %d объекта"
-#~ msgstr[1] "Отменить изменение владельца для %d объектов"
-#~ msgstr[2] "Отменить изменение владельца для %d объектов"
-
-#~ msgid "_Redo copy of %d item"
-#~ msgid_plural "_Redo copy of %d items"
-#~ msgstr[0] "_Повторить копирование %d объекта"
-#~ msgstr[1] "_Повторить копирование %d объектов"
-#~ msgstr[2] "_Повторить копирование %d объектов"
-
-#~ msgid "_Redo duplicate of %d item"
-#~ msgid_plural "_Redo duplicate of %d items"
-#~ msgstr[0] "_Повторить дублирование %d объекта"
-#~ msgstr[1] "_Повторить дублирование %d объектов"
-#~ msgstr[2] "_Повторить дублирование %d объектов"
-
-#~ msgid "_Redo move of %d item"
-#~ msgid_plural "_Redo move of %d items"
-#~ msgstr[0] "_Повторить перемещение %d объекта"
-#~ msgstr[1] "_Повторить перемещение %d объектов"
-#~ msgstr[2] "_Повторить перемещение %d объектов"
-
-#~ msgid "_Redo rename of %d item"
-#~ msgid_plural "_Redo rename of %d items"
-#~ msgstr[0] "_Повторить переименование %d объекта"
-#~ msgstr[1] "_Повторить переименование %d объектов"
-#~ msgstr[2] "_Повторить переименование %d объектов"
-
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Повторить создание пустого файла"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Повторить создание файла из шаблона"
-
-#~ msgid "_Redo creation of %d folder"
-#~ msgid_plural "_Redo creation of %d folders"
-#~ msgstr[0] "_Повторить создание %d папки"
-#~ msgstr[1] "_Повторить создание %d папок"
-#~ msgstr[2] "_Повторить создание %d папок"
-
-#~ msgid "_Redo move to trash of %d item"
-#~ msgid_plural "_Redo move to trash of %d items"
-#~ msgstr[0] "_Повторить перемещение %d объекта в корзину"
-#~ msgstr[1] "_Повторить перемещение %d объектов в корзину"
-#~ msgstr[2] "_Повторить перемещение %d объектов в корзину"
-
-#~ msgid "_Redo restore from trash of %d item"
-#~ msgid_plural "_Redo restore from trash of %d items"
-#~ msgstr[0] "_Повторить восстановление %d объекта из корзины"
-#~ msgstr[1] "_Повторить восстановление %d объектов из корзины"
-#~ msgstr[2] "_Повторить восстановление %d объектов из корзины"
-
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Повторить создание ссылок на %d объект"
-#~ msgstr[1] "_Повторить создание ссылок на %d объекта"
-#~ msgstr[2] "_Повторить создание ссылок на %d объектов"
-
-#~ msgid "_Redo delete of %d item"
-#~ msgid_plural "_Redo delete of %d items"
-#~ msgstr[0] "_Повторить удаление %d объекта"
-#~ msgstr[1] "_Повторить удаление %d объектов"
-#~ msgstr[2] "_Повторить удаление %d объектов"
-
-#~ msgid "Redo recursive change permissions of %d item"
-#~ msgid_plural "Redo recursive change permissions of %d items"
-#~ msgstr[0] "Повторить рекурсивное изменение прав доступа к %d объекту"
-#~ msgstr[1] "Повторить рекурсивное изменение прав доступа к %d объектам"
-#~ msgstr[2] "Повторить рекурсивное изменение прав доступа к %d объектам"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Повторить изменение прав доступа к %d объекту"
-#~ msgstr[1] "Повторить изменение прав доступа к %d объектам"
-#~ msgstr[2] "Повторить изменение прав доступа к %d объектам"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Повторить изменение группы для %d объекта"
-#~ msgstr[1] "Повторить изменение группы для %d объектов"
-#~ msgstr[2] "Повторить изменение группы для %d объектов"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Повторить изменение владельца %d объекта"
-#~ msgstr[1] "Повторить изменение владельца %d объектов"
-#~ msgstr[2] "Повторить изменение владельца %d объектов"
-
 #~ msgid "Browse your files"
 #~ msgstr "Обзор ваших файлов"
 
@@ -1969,78 +2360,6 @@ msgstr "Удалить выбранное"
 
 #~ msgid "New Window As _Administrator"
 #~ msgstr "Новое окно с правами _администратора"
-
-#~ msgid "Restore from Trash"
-#~ msgstr "Восстановить из корзины"
-
-#~ msgid "Delete permanently"
-#~ msgstr "Удалить безвозвратно"
-
-#~ msgid "Open Parent Folder"
-#~ msgstr "Открыть родительскую папку"
-
-#~ msgid "Remove from History"
-#~ msgstr "Удалить из истории"
-
-#~ msgid "Move to Trash"
-#~ msgstr "Переместить в корзину"
-
-#~ msgid "New"
-#~ msgstr "Создать"
-
-#~ msgid "Folder"
-#~ msgstr "Папку"
-
-#~ msgid "Empty File"
-#~ msgstr "Пустой файл"
-
-#~ msgid "Show Hidden Files"
-#~ msgstr "Показывать скрытые файлы"
-
-#~ msgid "Show Remote Thumbnails"
-#~ msgstr "Показать удалённые эскизы"
-
-#~ msgid "New Tab"
-#~ msgstr "Новой вкладке"
-
-#~ msgid "Bookmark"
-#~ msgstr "Добавить в закладки"
-
-#~ msgid "Paste"
-#~ msgstr "Вставить"
-
-#~ msgid "Paste Link"
-#~ msgstr "Вставить ссылку"
-
-#~ msgid "Cut"
-#~ msgstr "Вырезать"
-
-#~ msgid "Copy"
-#~ msgstr "Копировать"
-
-#~ msgid "Copy as Link"
-#~ msgstr "Копировать ссылку"
-
-#~ msgid "Paste into Folder"
-#~ msgstr "Вставить в папку"
-
-#~ msgid "Paste Link into Folder"
-#~ msgstr "Вставить ссылку в папку"
-
-#~ msgid "Sort by"
-#~ msgstr "Сортировать"
-
-#~ msgid "Name"
-#~ msgstr "Имя"
-
-#~ msgid "Date"
-#~ msgstr "Дата"
-
-#~ msgid "Reversed Order"
-#~ msgstr "В обратном порядке"
-
-#~ msgid "Folders Before Files"
-#~ msgstr "Папки перед файлами"
 
 #~ msgid ""
 #~ "Can't load the supported server method list.\n"

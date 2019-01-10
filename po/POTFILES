@@ -33,6 +33,8 @@ src/View/PrivacyModeOn.vala
 src/View/PopupMenuBuilder.vala
 src/View/Miller.vala
 
+src/View/directory_view_popup.ui
+
 src/View/Widgets/AbstractEditableLabel.vala
 src/View/Widgets/BreadcrumbsEntry.vala
 src/View/Widgets/DiskRenderer.vala
@@ -73,6 +75,13 @@ libcore/TrashMonitor.vala
 libcore/UserUtils.vala
 libcore/IconInfo.vala
 libcore/Thumbnailer.vala
+
+libcore/eel-string.c
+libcore/marlin-file-operations.c
+libcore/marlin-undostack-manager.c
+libcore/marlin-file-changes-queue.c
+libcore/fm-list-model.c
+libcore/gof-file.c
 
 libwidgets/Interfaces/LocatableInterface.vala
 libwidgets/Interfaces/NavigatableInterface.vala

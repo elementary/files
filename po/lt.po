@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-18 09:20-0800\n"
-"PO-Revision-Date: 2018-10-30 22:21+0000\n"
+"POT-Creation-Date: 2019-01-09 09:21-0600\n"
+"PO-Revision-Date: 2018-12-21 19:27+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://weblate.elementary.io/projects/files/"
 "files/lt/>\n"
@@ -26,11 +26,10 @@ msgid "Show the version of the program"
 msgstr "Rodyti programos versiją."
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Atverti vieną ar daugiau URI, kiekvieną atskiroje kortelėje"
 
-#: src/Application.vala:124
+#: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Naujas langas"
 
@@ -121,6 +120,7 @@ msgid "Set as default"
 msgstr "Nustatyti numatytąja"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
+#: src/View/directory_view_popup.ui:91
 msgid "Properties"
 msgstr "Savybės"
 
@@ -297,7 +297,7 @@ msgstr "Nepavyko atverti URI"
 msgid "Could not open files or URIs with this app"
 msgstr "Naudojant šią programą, nepavyko atverti failų ar URI"
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
 msgstr "(kaip administratorius)"
 
@@ -305,11 +305,11 @@ msgstr "(kaip administratorius)"
 msgid "Filename"
 msgstr "Failo pavadinimas"
 
-#: src/View/ListView.vala:27
+#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:149
 msgid "Size"
 msgstr "Dydis"
 
-#: src/View/ListView.vala:28
+#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
 msgid "Type"
 msgstr "Tipas"
 
@@ -348,9 +348,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Nepavyksta atverti šio failo"
+msgstr "Nepavyksta vykdyti šio failo"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
@@ -386,7 +385,7 @@ msgid "Open in"
 msgstr "Kur atverti"
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr "Atverti naudojant"
 
@@ -534,22 +533,22 @@ msgstr "Prisijungti prie serverio"
 msgid "Connect to a network server"
 msgstr "Prisijungti prie tinklo serverio"
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s laisva iš %s)"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Klaida, prijungiant tomą %s"
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Nepavyko paleisti %s"
 
-#: src/View/Sidebar.vala:1645
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "Iš_valyti šiukšlinę"
 
@@ -571,19 +570,19 @@ msgstr "Prieiga negalima"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Privatumo veiksena įjungta"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Jokie paskiausiai naudoti failai nėra įsimenami"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Keisti saugumo nustatymus"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Atverti sistemos saugumo ir privatumo nustatymų programą"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
@@ -601,7 +600,7 @@ msgstr "Atverti naujame _lange"
 msgid "Remove"
 msgstr "Šalinti"
 
-#: src/View/PopupMenuBuilder.vala:50
+#: src/View/PopupMenuBuilder.vala:50 src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Pervadinti"
 
@@ -617,26 +616,122 @@ msgstr "_Atjungti"
 msgid "_Eject"
 msgstr "_Išstumti"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/directory_view_popup.ui:5
+msgid "Restore from Trash"
+msgstr "Atkurti iš šiukšlinės"
+
+#: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
+msgid "Delete permanently"
+msgstr "Ištrinti visiems laikams"
+
+#: src/View/directory_view_popup.ui:16
+msgid "Open Parent Folder"
+msgstr "Atverti tėvinį aplanką"
+
+#: src/View/directory_view_popup.ui:23
+msgid "Remove from History"
+msgstr "Šalinti iš žurnalo"
+
+#: src/View/directory_view_popup.ui:37
+msgid "Move to Trash"
+msgstr "Perkelti į šiukšliadėžę"
+
+#: src/View/directory_view_popup.ui:51
+msgid "New"
+msgstr "Naujas"
+
+#: src/View/directory_view_popup.ui:53
+msgid "Folder"
+msgstr "Aplankas"
+
+#: src/View/directory_view_popup.ui:58
+msgid "Empty File"
+msgstr "Tuščias failas"
+
+#: src/View/directory_view_popup.ui:67
+msgid "Show Hidden Files"
+msgstr "Rodyti paslėptus failus"
+
+#: src/View/directory_view_popup.ui:71
+msgid "Show Remote Thumbnails"
+msgstr "Rodyti nuotolines miniatiūras"
+
+#: src/View/directory_view_popup.ui:78
+msgid "New Tab"
+msgstr "Nauja kortelė"
+
+#: src/View/directory_view_popup.ui:98
+msgid "Bookmark"
+msgstr "Žymelė"
+
+#: src/View/directory_view_popup.ui:105
+msgid "Paste"
+msgstr "Įdėti"
+
+#: src/View/directory_view_popup.ui:111
+msgid "Paste Link"
+msgstr "Įdėti nuorodą"
+
+#: src/View/directory_view_popup.ui:118
+msgid "Cut"
+msgstr "Iškirpti"
+
+#: src/View/directory_view_popup.ui:122
+msgid "Copy"
+msgstr "Kopijuoti"
+
+#: src/View/directory_view_popup.ui:126
+msgid "Copy as Link"
+msgstr "Kopijuoti kaip nuorodą"
+
+#: src/View/directory_view_popup.ui:130
+msgid "Paste into Folder"
+msgstr "Įdėti į aplanką"
+
+#: src/View/directory_view_popup.ui:134
+msgid "Paste Link into Folder"
+msgstr "Įdėti nuorodą į aplanką"
+
+#: src/View/directory_view_popup.ui:141
+msgid "Sort by"
+msgstr "Rikiuoti pagal"
+
+#: src/View/directory_view_popup.ui:144
+msgid "Name"
+msgstr "Pavadinimas"
+
+#: src/View/directory_view_popup.ui:159
+msgid "Date"
+msgstr "Data"
+
+#: src/View/directory_view_popup.ui:166
+msgid "Reversed Order"
+msgstr "Atvirkštine tvarka"
+
+#: src/View/directory_view_popup.ui:170
+msgid "Folders Before Files"
+msgstr "Pirma aplankai, po to failai"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr "Atlikite paiešką arba įrašykite kelią"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr "Atverti naujoje kortelėje"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr "Atverti naujame lange"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr "Atverti naudojant kitą programą…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
 msgstr "Įkelti šį aplanką iš naujo"
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
-msgstr "Atlikite paiešką arba įrašykite kelią"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
@@ -919,7 +1014,7 @@ msgstr "_Pasirinkti naują pavadinimą paskirties elementui"
 msgid "Apply this action to all files"
 msgstr "Taikyti šį veiksmą visiems failams"
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:160
 msgid "_Skip"
 msgstr "_Praleisti"
 
@@ -1022,6 +1117,1104 @@ msgstr "Ruošiama"
 msgid "Show more _details"
 msgstr "Rodyti daugiau _informacijos"
 
+#: libcore/marlin-file-operations.c:161
+msgid "S_kip All"
+msgstr "Praleisti _visus"
+
+#: libcore/marlin-file-operations.c:162
+msgid "_Retry"
+msgstr "_Bandyti vėl"
+
+#: libcore/marlin-file-operations.c:163
+msgid "Delete _All"
+msgstr "Ištrinti _visus"
+
+#: libcore/marlin-file-operations.c:164
+msgid "_Replace"
+msgstr "Pa_keisti"
+
+#: libcore/marlin-file-operations.c:165
+msgid "Replace _All"
+msgstr "Pakeisti _visus"
+
+#: libcore/marlin-file-operations.c:166
+msgid "_Merge"
+msgstr "_Sulieti"
+
+#: libcore/marlin-file-operations.c:167
+msgid "Merge _All"
+msgstr "Sulieti _visus"
+
+#: libcore/marlin-file-operations.c:168
+msgid "Copy _Anyway"
+msgstr "_Vis tiek kopijuoti"
+
+#: libcore/marlin-file-operations.c:249
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d sekundė"
+msgstr[1] "%'d sekundės"
+msgstr[2] "%'d sekundžių"
+msgstr[3] "%'d sekundė"
+
+#: libcore/marlin-file-operations.c:254 libcore/marlin-file-operations.c:265
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d minutė"
+msgstr[1] "%'d minutės"
+msgstr[2] "%'d minučių"
+msgstr[3] "%'d minutė"
+
+#: libcore/marlin-file-operations.c:264
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d valanda"
+msgstr[1] "%'d valandos"
+msgstr[2] "%'d valandų"
+msgstr[3] "%'d valanda"
+
+#: libcore/marlin-file-operations.c:272
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "maždaug %'d valanda"
+msgstr[1] "maždaug %'d valandos"
+msgstr[2] "maždaug %'d valandų"
+msgstr[3] "maždaug %'d valanda"
+
+#: libcore/marlin-file-operations.c:348
+#, c-format
+msgid "Link to %s"
+msgstr "Nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:352
+#, c-format
+msgid "Another link to %s"
+msgstr "Kita nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:368
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'d nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:372
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'d-ra nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:376
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'d-ia nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:380
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'d-a nuoroda į %s"
+
+#: libcore/marlin-file-operations.c:572
+msgid " ("
+msgstr " ("
+
+#: libcore/marlin-file-operations.c:580
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: libcore/marlin-file-operations.c:1258
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "Ar tikrai norite negrąžinamai ištrinti „%B“ iš šiukšlinės?"
+
+#: libcore/marlin-file-operations.c:1261
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] ""
+"Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą iš šiukšlinės?"
+msgstr[1] ""
+"Ar tikrai norite negrįžtamai ištrinti %'d pažymėtus elementus iš šiukšlinės?"
+msgstr[2] ""
+"Ar tikrai norite negrįžtamai ištrinti %'d pažymėtų elementų iš šiukšlinės?"
+msgstr[3] ""
+"Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą iš šiukšlinės?"
+
+#: libcore/marlin-file-operations.c:1271 libcore/marlin-file-operations.c:1351
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Jeigu ištrinsite failą, jis bus prarastas visiems laikams."
+
+#: libcore/marlin-file-operations.c:1296
+msgid "Permanently delete all items from Trash?"
+msgstr "Ištrinti negrįžtamai viską iš Šiukšlinės?"
+
+#: libcore/marlin-file-operations.c:1297
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+"Visi elementai visuose šiukšlinės kataloguose, įskaitant tuos, kurie yra bet "
+"kokiuose prijungtuose išoriniuose diskuose, bus visiems laikams ištrinti."
+
+#: libcore/marlin-file-operations.c:1300
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr ""
+"Ištrinti visus elementus iš šiukšlinės šiame prijungime visiems laikams?"
+
+#: libcore/marlin-file-operations.c:1301
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+"Visi šiame prijungime šiukšlinėje esantys elementai bus ištrinti visiems "
+"laikams."
+
+#: libcore/marlin-file-operations.c:1339
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Ar tikrai norite negrįžtamai ištrinti „%B“?"
+
+#: libcore/marlin-file-operations.c:1342
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą?"
+msgstr[1] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtus elementus?"
+msgstr[2] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtų elementų?"
+msgstr[3] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą?"
+
+#: libcore/marlin-file-operations.c:1385
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "Liko ištrinti %'d failą"
+msgstr[1] "Liko ištrinti %'d failus"
+msgstr[2] "Liko ištrinti %'d failų"
+
+#: libcore/marlin-file-operations.c:1391
+msgid "Deleting files"
+msgstr "Ištrinami failai"
+
+#: libcore/marlin-file-operations.c:1404
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "Liko %T"
+msgstr[1] "Liko %T"
+msgstr[2] "Liko %T"
+
+#: libcore/marlin-file-operations.c:1471 libcore/marlin-file-operations.c:1505
+#: libcore/marlin-file-operations.c:1544 libcore/marlin-file-operations.c:1621
+#: libcore/marlin-file-operations.c:2375
+msgid "Error while deleting."
+msgstr "Klaida ištrinant."
+
+#: libcore/marlin-file-operations.c:1475
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr ""
+"Aplanke „%B“ esančių failų negalima ištrinti, nes neturite teisių matyti "
+"aplanko failų."
+
+#: libcore/marlin-file-operations.c:1478 libcore/marlin-file-operations.c:2434
+#: libcore/marlin-file-operations.c:3401
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr "Klaida gaunant informaciją apie aplanke „%B“ esančius failus."
+
+#: libcore/marlin-file-operations.c:1487 libcore/marlin-file-operations.c:3410
+msgid "_Skip files"
+msgstr "_Praleisti failus"
+
+#: libcore/marlin-file-operations.c:1508
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr "Aplanko „%B“ negalima ištrinti, nes neturite teisių jį skaityti."
+
+#: libcore/marlin-file-operations.c:1511 libcore/marlin-file-operations.c:2473
+#: libcore/marlin-file-operations.c:3446
+msgid "There was an error reading the folder \"%B\"."
+msgstr "Klaida skaitant aplanką „%B“."
+
+#: libcore/marlin-file-operations.c:1545
+msgid "Could not remove the folder %B."
+msgstr "Nepavyko pašalinti aplanko %B."
+
+#: libcore/marlin-file-operations.c:1622
+msgid "There was an error deleting %B."
+msgstr "Klaida ištrinant aplanką %B."
+
+#: libcore/marlin-file-operations.c:1706
+msgid "Moving files to trash"
+msgstr "Failai perkeliami į šiukšlinę"
+
+#: libcore/marlin-file-operations.c:1708
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "Į šiukšlinę liko perkelti %'d failą"
+msgstr[1] "Į šiukšlinę liko perkelti %'d failus"
+msgstr[2] "Į šiukšlinę liko perkelti %'d failų"
+
+#: libcore/marlin-file-operations.c:1802 libcore/marlin-file-operations.c:1805
+#: libcore/marlin-file-operations.c:1808
+msgid "Cannot move file to trash or delete it"
+msgstr "Negalima perkelti failo į šiukšlinę ar jį ištrinti"
+
+#: libcore/marlin-file-operations.c:1803
+msgid "It is not permitted to trash or delete files on a read only filesystem."
+msgstr ""
+"Nėra leidžiama perkelti į šiukšlinę ar ištrinti failų, kurie yra tik "
+"skaitymui skirtoje failų sistemoje."
+
+#: libcore/marlin-file-operations.c:1806
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr ""
+"Nėra  leidžiama perkelti į šiukšlinę ar ištrinti failus aplankuose, kuriems "
+"neturite rašymo teisių."
+
+#: libcore/marlin-file-operations.c:1809
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr ""
+"Nėra  leidžiama perkelti į šiukšlinę ar ištrinti aplankus, kuriems neturite "
+"rašymo teisių."
+
+#: libcore/marlin-file-operations.c:1811
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr ""
+"Nepavyksta perkelti failo į šiukšlinę. Pabandyti nedelsiant jį ištrinti?"
+
+#: libcore/marlin-file-operations.c:1812
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+"Šio failo nepavyko perkelti į šiukšlinę. Išsamesnei informacijai, žiūrėkite "
+"žemiau."
+
+#: libcore/marlin-file-operations.c:1816
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr "Nepavyksta perkelti failo į šiukšlinę. Pabandyti jį ištrinti?"
+
+#: libcore/marlin-file-operations.c:1817
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr ""
+"Šio failo nepavyko perkelti į šiukšlinę. Gali būti, kad taip pat negalėsite "
+"jo ištrinti."
+
+#: libcore/marlin-file-operations.c:1822
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+"\n"
+" Failo ištrynimas pašalina jį visiems laikams"
+
+#: libcore/marlin-file-operations.c:2012
+msgid "Trashing Files"
+msgstr "Failai perkeliami į šiukšlinę"
+
+#: libcore/marlin-file-operations.c:2014
+msgid "Deleting Files"
+msgstr "Ištrinami failai"
+
+#: libcore/marlin-file-operations.c:2083
+msgid "Unable to eject %V"
+msgstr "Nepavyko išstumti %V"
+
+#: libcore/marlin-file-operations.c:2085
+msgid "Unable to unmount %V"
+msgstr "Nepavyko atjungti %V"
+
+#: libcore/marlin-file-operations.c:2299
+#, c-format
+msgid "Unable to mount %s"
+msgstr "Nepavyko prijungti %s"
+
+#: libcore/marlin-file-operations.c:2322
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "Ruošiamasi kopijuoti %'d failą (%S)"
+msgstr[1] "Ruošiamasi kopijuoti %'d failus (%S)"
+msgstr[2] "Ruošiamasi kopijuoti %'d failų (%S)"
+
+#: libcore/marlin-file-operations.c:2328
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "Ruošiamasi perkelti %'d failą (%S)"
+msgstr[1] "Ruošiamasi perkelti %'d failus (%S)"
+msgstr[2] "Ruošiamasi perkelti %'d failų (%S)"
+
+#: libcore/marlin-file-operations.c:2334
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "Ruošiamasi ištrinti %'d failą (%S)"
+msgstr[1] "Ruošiamasi ištrinti %'d failus (%S)"
+msgstr[2] "Ruošiamasi ištrinti %'d failų (%S)"
+
+#: libcore/marlin-file-operations.c:2340
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Ruošiamasi perkelti į šiukšlinę %'d failą"
+msgstr[1] "Ruošiamasi perkelti į šiukšlinę %'d failus"
+msgstr[2] "Ruošiamasi perkelti į šiukšlinę %'d failų"
+
+#: libcore/marlin-file-operations.c:2371 libcore/marlin-file-operations.c:3261
+#: libcore/marlin-file-operations.c:3393 libcore/marlin-file-operations.c:3438
+msgid "Error while copying."
+msgstr "Klaida kopijuojant."
+
+#: libcore/marlin-file-operations.c:2373 libcore/marlin-file-operations.c:3391
+#: libcore/marlin-file-operations.c:3436
+msgid "Error while moving."
+msgstr "Klaida perkeliant."
+
+#: libcore/marlin-file-operations.c:2377
+msgid "Error while moving files to trash."
+msgstr "Klaida perkeliant failus į šiukšlinę."
+
+#: libcore/marlin-file-operations.c:2431
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Aplanke \"%B\" esantys failai negali būti apdoroti, kadangi jūs neturite "
+"leidimų jų pamatyti."
+
+#: libcore/marlin-file-operations.c:2470
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Aplankas „%B“ negali būti apdorotas, kadangi jūs neturite leidimų jo "
+"skaityti."
+
+#: libcore/marlin-file-operations.c:2546
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Failas „%B“ negali būti apdorotas, kadangi jūs neturite leidimų jo skaityti."
+
+#: libcore/marlin-file-operations.c:2549
+msgid "There was an error getting information about \"%B\"."
+msgstr "Gaunant informaciją apie „%B“ įvyko klaida."
+
+#: libcore/marlin-file-operations.c:2649 libcore/marlin-file-operations.c:2691
+#: libcore/marlin-file-operations.c:2724 libcore/marlin-file-operations.c:2754
+msgid "Error while copying to \"%B\"."
+msgstr "Klaida kopijuojant į „%B“."
+
+#: libcore/marlin-file-operations.c:2653
+msgid "You do not have permissions to access the destination folder."
+msgstr "Neturite leidimų prieiti prie paskirties aplanko."
+
+#: libcore/marlin-file-operations.c:2655
+msgid "There was an error getting information about the destination."
+msgstr "Klaida gaunant paskirties vietos informaciją."
+
+#: libcore/marlin-file-operations.c:2692
+msgid "The destination is not a folder."
+msgstr "Ši paskirties vieta nėra aplankas."
+
+#: libcore/marlin-file-operations.c:2725
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"Paskirties vietoje nepakanka laisvos vietos. Pabandykite ten pašalinti "
+"kokius nors failus."
+
+#: libcore/marlin-file-operations.c:2727
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Yra laisva %S, tačiau reikia %S."
+
+#: libcore/marlin-file-operations.c:2755
+msgid "The destination is read-only."
+msgstr "Paskirties vieta skirta tik skaitymui."
+
+#: libcore/marlin-file-operations.c:2814
+msgid "Moving \"%B\" to \"%B\""
+msgstr "Perkeliama „%B“ į „%B“"
+
+#: libcore/marlin-file-operations.c:2815
+msgid "Copying \"%B\" to \"%B\""
+msgstr "Kopijuojama „%B“ į „%B“"
+
+#: libcore/marlin-file-operations.c:2819
+msgid "Duplicating \"%B\""
+msgstr "Kuriama „%B“ kopija"
+
+#: libcore/marlin-file-operations.c:2823
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Perkeliamas %'d failas (\"%B\") į \"%B\""
+msgstr[1] "Perkeliami %'d failai (\"%B\") į \"%B\""
+msgstr[2] "Perkeliama %'d failų (\"%B\") į \"%B\""
+
+#: libcore/marlin-file-operations.c:2826
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Kopijuojamas %'d failas (\"%B\") į \"%B\""
+msgstr[1] "Kopijuojami %'d failai (\"%B\") į \"%B\""
+msgstr[2] "Kopijuojama %'d failų (\"%B\") į \"%B\""
+
+#: libcore/marlin-file-operations.c:2833
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Dubliuojamas %'d failas (\"%B\")"
+msgstr[1] "Dubliuojami %'d failas (\"%B\")"
+msgstr[2] "Dubliuojama %'d failų (\"%B\")"
+
+#: libcore/marlin-file-operations.c:2842
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "Perkeliamas %'d failas į \"%B\""
+msgstr[1] "Perkeliami %'d failai į \"%B\""
+msgstr[2] "Perkeliama %'d failų į \"%B\""
+
+#: libcore/marlin-file-operations.c:2846
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "Kopijuojamas %'d failas į \"%B\""
+msgstr[1] "Kopijuojami %'d failai į \"%B\""
+msgstr[2] "Kopijuojama %'d failų į \"%B\""
+
+#: libcore/marlin-file-operations.c:2851
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "Dubliuojamas %'d failas"
+msgstr[1] "Dubliuojami %'d failai"
+msgstr[2] "Dubliuojama %'d failų"
+
+#: libcore/marlin-file-operations.c:2877
+#, c-format
+msgid "%S of %S"
+msgstr "%S iš %S"
+
+#: libcore/marlin-file-operations.c:2887
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S iš %S — liko %T (%S/sek.)"
+msgstr[1] "%S iš %S — liko %T (%S/sek.)"
+msgstr[2] "%S iš %S — liko %T (%S/sek.)"
+
+#: libcore/marlin-file-operations.c:3265
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"Aplanko „%s“ negalima nukopijuoti, kadangi neturite leidimų jo sukurti "
+"paskirties vietoje."
+
+#: libcore/marlin-file-operations.c:3268
+msgid "There was an error creating the folder \"%B\"."
+msgstr "Klaida kuriant aplanką „%B“."
+
+#: libcore/marlin-file-operations.c:3398
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Aplanke „%B“ esančių failų negalima nukopijuoti, kadangi neturite leidimų jų "
+"matyti."
+
+#: libcore/marlin-file-operations.c:3443
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr ""
+"Aplankas \"%B\" negali būti nukopijuotas, kadangi jūs neturite leidimų jo "
+"skaityti."
+
+#: libcore/marlin-file-operations.c:3488 libcore/marlin-file-operations.c:4152
+msgid "Error while moving \"%B\"."
+msgstr "Klaida perkeliant „%B“."
+
+#: libcore/marlin-file-operations.c:3489
+msgid "Could not remove the source folder."
+msgstr "Nepavyko pašalinti šaltinio aplanko."
+
+#: libcore/marlin-file-operations.c:3574 libcore/marlin-file-operations.c:3615
+#: libcore/marlin-file-operations.c:4154
+msgid "Error while copying \"%B\"."
+msgstr "Klaida kopijuojant „%B“."
+
+#: libcore/marlin-file-operations.c:3575
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "Nepavyko pašalinti failų iš jau esančio aplanko %F."
+
+#: libcore/marlin-file-operations.c:3616
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "Nepavyko pašalinti jau esančio failo %F."
+
+#: libcore/marlin-file-operations.c:3890 libcore/marlin-file-operations.c:4561
+msgid "You cannot move a folder into itself."
+msgstr "Negalima perkelti aplanko į jį patį."
+
+#: libcore/marlin-file-operations.c:3891 libcore/marlin-file-operations.c:4562
+msgid "You cannot copy a folder into itself."
+msgstr "Negalima nukopijuoti aplanko į jį patį."
+
+#: libcore/marlin-file-operations.c:3892 libcore/marlin-file-operations.c:4563
+msgid "The destination folder is inside the source folder."
+msgstr "Paskirties aplankas yra šaltinio aplanko viduje."
+
+#: libcore/marlin-file-operations.c:3923
+msgid "You cannot move a file over itself."
+msgstr "Negalima perkelti failo ant jo paties."
+
+#: libcore/marlin-file-operations.c:3924
+msgid "You cannot copy a file over itself."
+msgstr "Negalima kopijuoti failo į jį patį."
+
+#: libcore/marlin-file-operations.c:3925
+msgid "The source file would be overwritten by the destination."
+msgstr "Šaltinio failas bus perrašytas paskirties failu."
+
+#: libcore/marlin-file-operations.c:4156
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr ""
+"Nepavyko pašalinti failo su tokiu pačiu pavadinimu, esančio aplanke %F."
+
+#: libcore/marlin-file-operations.c:4221
+msgid "Cannot copy \"%B\" here."
+msgstr "Čia negalima nukopijuoti \"%B\"."
+
+#: libcore/marlin-file-operations.c:4222
+msgid "There was an error copying the file into %B."
+msgstr "Kopijuojant failą į %B, įvyko klaida."
+
+#: libcore/marlin-file-operations.c:4444
+msgid "Copying Files"
+msgstr "Kopijuojami failai"
+
+#: libcore/marlin-file-operations.c:4470
+msgid "Preparing to move to \"%B\""
+msgstr "Ruošiamasi perkelti į „%B“"
+
+#: libcore/marlin-file-operations.c:4474
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Ruošiamasi perkelti %'d failą"
+msgstr[1] "Ruošiamasi perkelti %'d failus"
+msgstr[2] "Ruošiamasi perkelti %'d failų"
+
+#: libcore/marlin-file-operations.c:4720
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr "Klaida, perkeliant \"%F\"."
+
+#: libcore/marlin-file-operations.c:4721
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr "Perkeliant failą į %F, įvyko klaida."
+
+#: libcore/marlin-file-operations.c:4978
+msgid "Moving Files"
+msgstr "Perkeliami failai"
+
+#: libcore/marlin-file-operations.c:5007
+msgid "Creating links in \"%B\""
+msgstr "Kuriamos nuorodos „%B“ aplanke"
+
+#: libcore/marlin-file-operations.c:5011
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Kuriama nuoroda į %'d failą"
+msgstr[1] "Kuriamos nuorodos į %'d failus"
+msgstr[2] "Kuriamos nuorodos į %'d failų"
+
+#: libcore/marlin-file-operations.c:5151
+msgid "Error while creating link to %B."
+msgstr "Kuriant nuorodą į %B įvyko klaida."
+
+#: libcore/marlin-file-operations.c:5153
+msgid "Symbolic links only supported for local files"
+msgstr "Simbolinės nuorodos yra palaikomos tik vietiniams failams"
+
+#: libcore/marlin-file-operations.c:5156
+msgid "The target doesn't support symbolic links."
+msgstr "Paskirties vietą nepalaiko simbolinių nuorodų."
+
+#: libcore/marlin-file-operations.c:5159
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "Klaida, kuriant simbolinę nuorodą %F."
+
+#: libcore/marlin-file-operations.c:5477
+msgid "Setting permissions"
+msgstr "Nustatomi leidimai"
+
+#: libcore/marlin-file-operations.c:5573
+msgid "Cannot copy into trash."
+msgstr "Negalima kopijuoti į šiukšlinę."
+
+#: libcore/marlin-file-operations.c:5574
+msgid "It is not permitted to copy files into the trash"
+msgstr "Nėra leidžiama kopijuoti failus į šiukšlinę"
+
+#: libcore/marlin-file-operations.c:5712
+msgid "untitled folder"
+msgstr "bevardis aplankas"
+
+#: libcore/marlin-file-operations.c:5720
+msgid "new file"
+msgstr "naujas failas"
+
+#: libcore/marlin-file-operations.c:5891
+msgid "Error while creating directory %B."
+msgstr "Klaida kuriant katalogą %B."
+
+#: libcore/marlin-file-operations.c:5893
+msgid "Error while creating file %B."
+msgstr "Klaida kuriant failą %B."
+
+#: libcore/marlin-file-operations.c:5895
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "Kuriant katalogą ties %F, įvyko klaida."
+
+#: libcore/marlin-file-operations.c:6205
+msgid "Emptying Trash"
+msgstr "Išvaloma šiukšlinė"
+
+#: libcore/marlin-undostack-manager.c:580
+msgid "Original location could not be determined"
+msgstr "Nepavyko nustatyti pradinę vietą"
+
+#: libcore/marlin-undostack-manager.c:581
+msgid "Open trash folder and restore manually"
+msgstr "Atverti šiukšlinės aplanką ir atkurti rankiniu būdu"
+
+#: libcore/marlin-undostack-manager.c:1118
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Ištrinti %d nukopijuotus elementus"
+
+#: libcore/marlin-undostack-manager.c:1121
+#: libcore/marlin-undostack-manager.c:1131
+#: libcore/marlin-undostack-manager.c:1162
+#, c-format
+msgid "Delete '%s'"
+msgstr "Ištrinti „%s“"
+
+#: libcore/marlin-undostack-manager.c:1128
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Pašalinti %d elementų kopijas"
+
+#: libcore/marlin-undostack-manager.c:1139
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Perkelti %d elementus atgal į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1143
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Perkelti „%s“ atgal į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1152
+#: libcore/marlin-undostack-manager.c:1319
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Pervadinti „%s“ į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1171
+#: libcore/marlin-undostack-manager.c:1366
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Atkurti %d elementus iš šiukšlinės"
+
+#: libcore/marlin-undostack-manager.c:1179
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Atkurti „%s“ į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1190
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Perkelti %d elementų atgal į šiukšlinę"
+
+#: libcore/marlin-undostack-manager.c:1193
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Perkelti „%s“ atgal į šiukšlinę"
+
+#: libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Ištrinti nuorodas į %d elementus"
+
+#: libcore/marlin-undostack-manager.c:1205
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Ištrinti nuorodą į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1215
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Atkurti elementų, esančių „%s“, pradinius leidimus"
+
+#: libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Atkurti pradinius „%s“ leidimus"
+
+#: libcore/marlin-undostack-manager.c:1232
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Atkurti „%s“ grupę į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1242
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Atkurti „%s“ savininką į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1281
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Kopijuoti %d elementų į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1285
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Kopijuoti „%s“ į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1293
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "%d elementų dubliavimas ties \"%s\""
+
+#: libcore/marlin-undostack-manager.c:1298
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Sukurti „%s“ kopiją aplanke „%s“"
+
+#: libcore/marlin-undostack-manager.c:1306
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Perkelti %d elementus į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1310
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Perkelti „%s“ į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1328
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Sukurti naują failą „%s“ iš šablono "
+
+#: libcore/marlin-undostack-manager.c:1335
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Sukurti tuščią failą „%s“"
+
+#: libcore/marlin-undostack-manager.c:1342
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Sukurti naują aplanką „%s“"
+
+#: libcore/marlin-undostack-manager.c:1350
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Perkelti %d elementus į šiukšlinę"
+
+#: libcore/marlin-undostack-manager.c:1356
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Perkelti „%s“ į šiukšlinę"
+
+#: libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Atkurti „%s“ iš šiukšlinės"
+
+#: libcore/marlin-undostack-manager.c:1378
+#, c-format
+msgid "Create links to %d items"
+msgstr "Sukurti nuorodas į %d elementus"
+
+#: libcore/marlin-undostack-manager.c:1381
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Sukurti nuorodą į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Nustatyti leidimus elementams, esantiems „%s“"
+
+#: libcore/marlin-undostack-manager.c:1398
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Nustatyti „%s“ leidimus"
+
+#: libcore/marlin-undostack-manager.c:1407
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Nustatyti „%s“ grupę į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Nustatyti „%s“ savininką į „%s“"
+
+#: libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "A_tšaukti %d elemento kopijavimą"
+msgstr[1] "A_tšaukti %d elementų kopijavimą"
+msgstr[2] "A_tšaukti %d elementų kopijavimą"
+
+#: libcore/marlin-undostack-manager.c:1454
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "A_tšaukti %d elemento dubliavimą"
+msgstr[1] "A_tšaukti %d elementų dubliavimą"
+msgstr[2] "A_tšaukti %d elementų dubliavimą"
+
+#: libcore/marlin-undostack-manager.c:1459
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "A_tšaukti %d elemento perkėlimą"
+msgstr[1] "A_tšaukti %d elementų perkėlimą"
+msgstr[2] "A_tšaukti %d elementų perkėlimą"
+
+#: libcore/marlin-undostack-manager.c:1464
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "A_tšaukti %d elemento pervadinimą"
+msgstr[1] "A_tšaukti %d elementų pervadinimą"
+msgstr[2] "A_tšaukti %d elementų pervadinimą"
+
+#: libcore/marlin-undostack-manager.c:1468
+msgid "_Undo creation of an empty file"
+msgstr "_Atšaukti tuščio failo sukūrimą"
+
+#: libcore/marlin-undostack-manager.c:1471
+msgid "_Undo creation of a file from template"
+msgstr "A_tšaukti failo iš šablono kūrimą"
+
+#: libcore/marlin-undostack-manager.c:1475
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "_Atšaukti %d aplanko sukūrimą"
+msgstr[1] "_Atšaukti %d aplankų sukūrimą"
+msgstr[2] "_Atšaukti %d aplankų sukūrimą"
+
+#: libcore/marlin-undostack-manager.c:1480
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "A_tšaukti %d elemento perkėlimą į šiukšlinę"
+msgstr[1] "A_tšaukti %d elementų perkėlimą į šiukšlinę"
+msgstr[2] "A_tšaukti %d elementų perkėlimą į šiukšlinę"
+
+#: libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "A_tšaukti %d elemento atkūrimą iš šiukšlinės"
+msgstr[1] "A_tšaukti %d elementų atkūrimą iš šiukšlinės"
+msgstr[2] "A_tšaukti %d elementų atkūrimą iš šiukšlinės"
+
+#: libcore/marlin-undostack-manager.c:1490
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "A_tšaukti nuorodos sukūrimą į %d elementą"
+msgstr[1] "A_tšaukti nuorodos sukūrimą į %d elementus"
+msgstr[2] "A_tšaukti nuorodos sukūrimą į %d elementų"
+
+#: libcore/marlin-undostack-manager.c:1495
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "A_tšaukti %d elemento ištrynimą"
+msgstr[1] "A_tšaukti %d elementų ištrynimą"
+msgstr[2] "A_tšaukti %d elementų ištrynimą"
+
+#: libcore/marlin-undostack-manager.c:1500
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Atšaukti rekursinį %d elemento leidimų pakeitimą"
+msgstr[1] "Atšaukti rekursinį %d elementų leidimų pakeitimą"
+msgstr[2] "Atšaukti rekursinį %d elementų leidimų pakeitimą"
+
+#: libcore/marlin-undostack-manager.c:1506
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Atšaukti %d elemento leidimų pakeitimą"
+msgstr[1] "Atšaukti %d elementų leidimų pakeitimą"
+msgstr[2] "Atšaukti %d elementų leidimų pakeitimą"
+
+#: libcore/marlin-undostack-manager.c:1511
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Atšaukti %d elemento grupės pakeitimą"
+msgstr[1] "Atšaukti %d elementų grupės pakeitimą"
+msgstr[2] "Atšaukti %d elementų grupės pakeitimą"
+
+#: libcore/marlin-undostack-manager.c:1516
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Atšaukti %d elemento savininko pakeitimą"
+msgstr[1] "Atšaukti %d elementų savininko pakeitimą"
+msgstr[2] "Atšaukti %d elementų savininko pakeitimą"
+
+#: libcore/marlin-undostack-manager.c:1544
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "_Grąžinti %d elemento kopijavimą"
+msgstr[1] "_Grąžinti %d elementų kopijavimą"
+msgstr[2] "_Grąžinti %d elementų kopijavimą"
+
+#: libcore/marlin-undostack-manager.c:1549
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "_Grąžinti %d elemento dubliavimą"
+msgstr[1] "_Grąžinti %d elementų dubliavimą"
+msgstr[2] "_Grąžinti %d elementų dubliavimą"
+
+#: libcore/marlin-undostack-manager.c:1554
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "_Grąžinti %d elemento perkėlimą"
+msgstr[1] "_Grąžinti %d elementų perkėlimą"
+msgstr[2] "_Grąžinti %d elementų perkėlimą"
+
+#: libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "_Grąžinti %d elemento pervadinimą"
+msgstr[1] "_Grąžinti %d elementų pervadinimą"
+msgstr[2] "_Grąžinti %d elementų pervadinimą"
+
+#: libcore/marlin-undostack-manager.c:1563
+msgid "_Redo creation of an empty file"
+msgstr "_Grąžinti tuščio failo sukūrimą"
+
+#: libcore/marlin-undostack-manager.c:1566
+msgid "_Redo creation of a file from template"
+msgstr "_Grąžinti failo iš šablono sukūrimą"
+
+#: libcore/marlin-undostack-manager.c:1570
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "_Grąžinti %d aplanko sukūrimą"
+msgstr[1] "_Grąžinti %d aplankų sukūrimą"
+msgstr[2] "_Grąžinti %d aplankų sukūrimą"
+
+#: libcore/marlin-undostack-manager.c:1575
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "_Grąžinti %d elemento perkėlimą į šiukšlinę"
+msgstr[1] "_Grąžinti %d elementų perkėlimą į šiukšlinę"
+msgstr[2] "_Grąžinti %d elementų perkėlimą į šiukšlinę"
+
+#: libcore/marlin-undostack-manager.c:1580
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "_Grąžinti %d elemento atkūrimą iš šiukšlinės"
+msgstr[1] "_Grąžinti %d elementų atkūrimą iš šiukšlinės"
+msgstr[2] "_Grąžinti %d elementų atkūrimą iš šiukšlinės"
+
+#: libcore/marlin-undostack-manager.c:1585
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "_Grąžinti nuorodos sukūrimą į %d elementą"
+msgstr[1] "_Grąžinti nuorodos sukūrimą į %d elementus"
+msgstr[2] "_Grąžinti nuorodos sukūrimą į %d elementų"
+
+#: libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "_Grąžinti %d elemento ištrynimą"
+msgstr[1] "_Grąžinti %d elementų ištrynimą"
+msgstr[2] "_Grąžinti %d elementų ištrynimą"
+
+#: libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Grąžinti rekursinį %d elemento leidimų pakeitimą"
+msgstr[1] "Grąžinti rekursinį %d elementų leidimų pakeitimą"
+msgstr[2] "Grąžinti rekursinį %d elementų leidimų pakeitimą"
+
+#: libcore/marlin-undostack-manager.c:1601
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Grąžinti %d elemento leidimų pakeitimą"
+msgstr[1] "Grąžinti %d elementų leidimų pakeitimą"
+msgstr[2] "Grąžinti %d elementų leidimų pakeitimą"
+
+#: libcore/marlin-undostack-manager.c:1606
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Grąžinti %d elemento grupės pakeitimą"
+msgstr[1] "Grąžinti %d elementų grupės pakeitimą"
+msgstr[2] "Grąžinti %d elementų grupės pakeitimą"
+
+#: libcore/marlin-undostack-manager.c:1611
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Grąžinti %d elemento savininko pakeitimą"
+msgstr[1] "Grąžinti %d elementų savininko pakeitimą"
+msgstr[2] "Grąžinti %d elementų savininko pakeitimą"
+
+#: libcore/gof-file.c:332 libcore/gof-file.c:506
+msgid "Inaccessible"
+msgstr "Neprieinamas"
+
+#: libcore/gof-file.c:347
+#, c-format
+msgid "link to %s"
+msgstr "nuoroda į %s"
+
 #: libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
 msgstr "Įrašykite kelią"
@@ -1035,6 +2228,11 @@ msgstr "Naršyti į %s"
 #, c-format
 msgid "Go to %s"
 msgstr "Pereiti į %s"
+
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#, fuzzy
+msgid "Type Path"
+msgstr "Įrašykite kelią"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
@@ -1116,12 +2314,6 @@ msgstr "Atkurti pažymėtus"
 msgid "Delete Selected"
 msgstr "Ištrinti pažymėtus"
 
-#~ msgid "Inaccessible"
-#~ msgstr "Neprieinamas"
-
-#~ msgid "link to %s"
-#~ msgstr "nuoroda į %s"
-
 #~ msgid "Failed to parse the desktop file: %s"
 #~ msgstr "Nepavyko išnagrinėti darbalaukio failo: %s"
 
@@ -1133,76 +2325,6 @@ msgstr "Ištrinti pažymėtus"
 
 #~ msgid "Unable to Launch Desktop File: %s"
 #~ msgstr "Nepavyko paleisti darbalaukio failo: %s"
-
-#~ msgid "S_kip All"
-#~ msgstr "Praleisti _visus"
-
-#~ msgid "_Retry"
-#~ msgstr "_Bandyti vėl"
-
-#~ msgid "Delete _All"
-#~ msgstr "Ištrinti _visus"
-
-#~ msgid "_Replace"
-#~ msgstr "Pa_keisti"
-
-#~ msgid "Replace _All"
-#~ msgstr "Pakeisti _visus"
-
-#~ msgid "_Merge"
-#~ msgstr "_Sulieti"
-
-#~ msgid "Merge _All"
-#~ msgstr "Sulieti _visus"
-
-#~ msgid "Copy _Anyway"
-#~ msgstr "_Vis tiek kopijuoti"
-
-#~ msgid "%'d second"
-#~ msgid_plural "%'d seconds"
-#~ msgstr[0] "%'d sekundė"
-#~ msgstr[1] "%'d sekundės"
-#~ msgstr[2] "%'d sekundžių"
-#~ msgstr[3] "%'d sekundė"
-
-#~ msgid "%'d minute"
-#~ msgid_plural "%'d minutes"
-#~ msgstr[0] "%'d minutė"
-#~ msgstr[1] "%'d minutės"
-#~ msgstr[2] "%'d minučių"
-#~ msgstr[3] "%'d minutė"
-
-#~ msgid "%'d hour"
-#~ msgid_plural "%'d hours"
-#~ msgstr[0] "%'d valanda"
-#~ msgstr[1] "%'d valandos"
-#~ msgstr[2] "%'d valandų"
-#~ msgstr[3] "%'d valanda"
-
-#~ msgid "approximately %'d hour"
-#~ msgid_plural "approximately %'d hours"
-#~ msgstr[0] "maždaug %'d valanda"
-#~ msgstr[1] "maždaug %'d valandos"
-#~ msgstr[2] "maždaug %'d valandų"
-#~ msgstr[3] "maždaug %'d valanda"
-
-#~ msgid "Link to %s"
-#~ msgstr "Nuoroda į %s"
-
-#~ msgid "Another link to %s"
-#~ msgstr "Kita nuoroda į %s"
-
-#~ msgid "%'dst link to %s"
-#~ msgstr "%'d nuoroda į %s"
-
-#~ msgid "%'dnd link to %s"
-#~ msgstr "%'d-ra nuoroda į %s"
-
-#~ msgid "%'drd link to %s"
-#~ msgstr "%'d-ia nuoroda į %s"
-
-#~ msgid "%'dth link to %s"
-#~ msgstr "%'d-a nuoroda į %s"
 
 #~ msgid " (copy)"
 #~ msgstr " (kopija)"
@@ -1240,735 +2362,6 @@ msgstr "Ištrinti pažymėtus"
 #~ msgid "%s (%'drd copy)%s"
 #~ msgstr "%s (%'d-ia kopija)%s"
 
-#~ msgid " ("
-#~ msgstr " ("
-
-#~ msgid " (%'d"
-#~ msgstr " (%'d"
-
-#~ msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-#~ msgstr "Ar tikrai norite negrąžinamai ištrinti „%B“ iš šiukšlinės?"
-
-#~ msgid ""
-#~ "Are you sure you want to permanently delete the %'d selected item from "
-#~ "the trash?"
-#~ msgid_plural ""
-#~ "Are you sure you want to permanently delete the %'d selected items from "
-#~ "the trash?"
-#~ msgstr[0] ""
-#~ "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą iš šiukšlinės?"
-#~ msgstr[1] ""
-#~ "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtus elementus iš "
-#~ "šiukšlinės?"
-#~ msgstr[2] ""
-#~ "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtų elementų iš šiukšlinės?"
-#~ msgstr[3] ""
-#~ "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą iš šiukšlinės?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Jeigu ištrinsite failą, jis bus prarastas visiems laikams."
-
-#~ msgid "Permanently delete all items from Trash?"
-#~ msgstr "Ištrinti negrįžtamai viską iš Šiukšlinės?"
-
-#~ msgid ""
-#~ "All items in all trash directories, including those on any mounted "
-#~ "external drives, will be permanently deleted."
-#~ msgstr ""
-#~ "Visi elementai visuose šiukšlinės kataloguose, įskaitant tuos, kurie yra "
-#~ "bet kokiuose prijungtuose išoriniuose diskuose, bus visiems laikams "
-#~ "ištrinti."
-
-#~ msgid "Permanently delete all items from Trash on this mount?"
-#~ msgstr ""
-#~ "Ištrinti visus elementus iš šiukšlinės šiame prijungime visiems laikams?"
-
-#~ msgid "All items in the trash on this mount, will be permanently deleted."
-#~ msgstr ""
-#~ "Visi šiame prijungime šiukšlinėje esantys elementai bus ištrinti visiems "
-#~ "laikams."
-
-#~ msgid "Are you sure you want to permanently delete \"%B\"?"
-#~ msgstr "Ar tikrai norite negrįžtamai ištrinti „%B“?"
-
-#~ msgid "Are you sure you want to permanently delete the %'d selected item?"
-#~ msgid_plural ""
-#~ "Are you sure you want to permanently delete the %'d selected items?"
-#~ msgstr[0] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą?"
-#~ msgstr[1] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtus elementus?"
-#~ msgstr[2] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtų elementų?"
-#~ msgstr[3] "Ar tikrai norite negrįžtamai ištrinti %'d pažymėtą elementą?"
-
-#~ msgid "%'d file left to delete"
-#~ msgid_plural "%'d files left to delete"
-#~ msgstr[0] "Liko ištrinti %'d failą"
-#~ msgstr[1] "Liko ištrinti %'d failus"
-#~ msgstr[2] "Liko ištrinti %'d failų"
-
-#~ msgid "Deleting files"
-#~ msgstr "Ištrinami failai"
-
-#~ msgid "%T left"
-#~ msgid_plural "%T left"
-#~ msgstr[0] "Liko %T"
-#~ msgstr[1] "Liko %T"
-#~ msgstr[2] "Liko %T"
-
-#~ msgid "Error while deleting."
-#~ msgstr "Klaida ištrinant."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be deleted because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Aplanke „%B“ esančių failų negalima ištrinti, nes neturite teisių matyti "
-#~ "aplanko failų."
-
-#~ msgid ""
-#~ "There was an error getting information about the files in the folder \"%B"
-#~ "\"."
-#~ msgstr "Klaida gaunant informaciją apie aplanke „%B“ esančius failus."
-
-#~ msgid "_Skip files"
-#~ msgstr "_Praleisti failus"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be deleted because you do not have permissions "
-#~ "to read it."
-#~ msgstr "Aplanko „%B“ negalima ištrinti, nes neturite teisių jį skaityti."
-
-#~ msgid "There was an error reading the folder \"%B\"."
-#~ msgstr "Klaida skaitant aplanką „%B“."
-
-#~ msgid "Could not remove the folder %B."
-#~ msgstr "Nepavyko pašalinti aplanko %B."
-
-#~ msgid "There was an error deleting %B."
-#~ msgstr "Klaida ištrinant aplanką %B."
-
-#~ msgid "Moving files to trash"
-#~ msgstr "Failai perkeliami į šiukšlinę"
-
-#~ msgid "%'d file left to trash"
-#~ msgid_plural "%'d files left to trash"
-#~ msgstr[0] "Į šiukšlinę liko perkelti %'d failą"
-#~ msgstr[1] "Į šiukšlinę liko perkelti %'d failus"
-#~ msgstr[2] "Į šiukšlinę liko perkelti %'d failų"
-
-#~ msgid "Cannot move file to trash or delete it"
-#~ msgstr "Negalima perkelti failo į šiukšlinę ar jį ištrinti"
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete files on a read only filesystem."
-#~ msgstr ""
-#~ "Nėra leidžiama perkelti į šiukšlinę ar ištrinti failų, kurie yra tik "
-#~ "skaitymui skirtoje failų sistemoje."
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete files inside folders for which you "
-#~ "do not have write privileges."
-#~ msgstr ""
-#~ "Nėra  leidžiama perkelti į šiukšlinę ar ištrinti failus aplankuose, "
-#~ "kuriems neturite rašymo teisių."
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete folders for which you do not have "
-#~ "write privileges."
-#~ msgstr ""
-#~ "Nėra  leidžiama perkelti į šiukšlinę ar ištrinti aplankus, kuriems "
-#~ "neturite rašymo teisių."
-
-#~ msgid "Cannot move file to trash. Try to delete it immediately?"
-#~ msgstr ""
-#~ "Nepavyksta perkelti failo į šiukšlinę. Pabandyti nedelsiant jį ištrinti?"
-
-#~ msgid ""
-#~ "This file could not be moved to trash. See details below for further "
-#~ "information."
-#~ msgstr ""
-#~ "Šio failo nepavyko perkelti į šiukšlinę. Išsamesnei informacijai, "
-#~ "žiūrėkite žemiau."
-
-#~ msgid "Cannot move file to trash.  Try to delete it?"
-#~ msgstr "Nepavyksta perkelti failo į šiukšlinę. Pabandyti jį ištrinti?"
-
-#~ msgid ""
-#~ "This file could not be moved to trash. You may not be able to delete it "
-#~ "either."
-#~ msgstr ""
-#~ "Šio failo nepavyko perkelti į šiukšlinę. Gali būti, kad taip pat "
-#~ "negalėsite jo ištrinti."
-
-#~ msgid ""
-#~ "\n"
-#~ " Deleting a file removes it permanently"
-#~ msgstr ""
-#~ "\n"
-#~ " Failo ištrynimas pašalina jį visiems laikams"
-
-#~ msgid "Trashing Files"
-#~ msgstr "Failai perkeliami į šiukšlinę"
-
-#~ msgid "Deleting Files"
-#~ msgstr "Ištrinami failai"
-
-#~ msgid "Unable to eject %V"
-#~ msgstr "Nepavyko išstumti %V"
-
-#~ msgid "Unable to unmount %V"
-#~ msgstr "Nepavyko atjungti %V"
-
-#~ msgid "Unable to mount %s"
-#~ msgstr "Nepavyko prijungti %s"
-
-#~ msgid "Preparing to copy %'d file (%S)"
-#~ msgid_plural "Preparing to copy %'d files (%S)"
-#~ msgstr[0] "Ruošiamasi kopijuoti %'d failą (%S)"
-#~ msgstr[1] "Ruošiamasi kopijuoti %'d failus (%S)"
-#~ msgstr[2] "Ruošiamasi kopijuoti %'d failų (%S)"
-
-#~ msgid "Preparing to move %'d file (%S)"
-#~ msgid_plural "Preparing to move %'d files (%S)"
-#~ msgstr[0] "Ruošiamasi perkelti %'d failą (%S)"
-#~ msgstr[1] "Ruošiamasi perkelti %'d failus (%S)"
-#~ msgstr[2] "Ruošiamasi perkelti %'d failų (%S)"
-
-#~ msgid "Preparing to delete %'d file (%S)"
-#~ msgid_plural "Preparing to delete %'d files (%S)"
-#~ msgstr[0] "Ruošiamasi ištrinti %'d failą (%S)"
-#~ msgstr[1] "Ruošiamasi ištrinti %'d failus (%S)"
-#~ msgstr[2] "Ruošiamasi ištrinti %'d failų (%S)"
-
-#~ msgid "Preparing to trash %'d file"
-#~ msgid_plural "Preparing to trash %'d files"
-#~ msgstr[0] "Ruošiamasi perkelti į šiukšlinę %'d failą"
-#~ msgstr[1] "Ruošiamasi perkelti į šiukšlinę %'d failus"
-#~ msgstr[2] "Ruošiamasi perkelti į šiukšlinę %'d failų"
-
-#~ msgid "Error while copying."
-#~ msgstr "Klaida kopijuojant."
-
-#~ msgid "Error while moving."
-#~ msgstr "Klaida perkeliant."
-
-#~ msgid "Error while moving files to trash."
-#~ msgstr "Klaida perkeliant failus į šiukšlinę."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be handled because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Aplanke \"%B\" esantys failai negali būti apdoroti, kadangi jūs neturite "
-#~ "leidimų jų pamatyti."
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be handled because you do not have permissions "
-#~ "to read it."
-#~ msgstr ""
-#~ "Aplankas „%B“ negali būti apdorotas, kadangi jūs neturite leidimų jo "
-#~ "skaityti."
-
-#~ msgid ""
-#~ "The file \"%B\" cannot be handled because you do not have permissions to "
-#~ "read it."
-#~ msgstr ""
-#~ "Failas „%B“ negali būti apdorotas, kadangi jūs neturite leidimų jo "
-#~ "skaityti."
-
-#~ msgid "There was an error getting information about \"%B\"."
-#~ msgstr "Gaunant informaciją apie „%B“ įvyko klaida."
-
-#~ msgid "Error while copying to \"%B\"."
-#~ msgstr "Klaida kopijuojant į „%B“."
-
-#~ msgid "You do not have permissions to access the destination folder."
-#~ msgstr "Neturite leidimų prieiti prie paskirties aplanko."
-
-#~ msgid "There was an error getting information about the destination."
-#~ msgstr "Klaida gaunant paskirties vietos informaciją."
-
-#~ msgid "The destination is not a folder."
-#~ msgstr "Ši paskirties vieta nėra aplankas."
-
-#~ msgid ""
-#~ "There is not enough space on the destination. Try to remove files to make "
-#~ "space."
-#~ msgstr ""
-#~ "Paskirties vietoje nepakanka laisvos vietos. Pabandykite ten pašalinti "
-#~ "kokius nors failus."
-
-#~ msgid "There is %S available, but %S is required."
-#~ msgstr "Yra laisva %S, tačiau reikia %S."
-
-#~ msgid "The destination is read-only."
-#~ msgstr "Paskirties vieta skirta tik skaitymui."
-
-#~ msgid "Moving \"%B\" to \"%B\""
-#~ msgstr "Perkeliama „%B“ į „%B“"
-
-#~ msgid "Copying \"%B\" to \"%B\""
-#~ msgstr "Kopijuojama „%B“ į „%B“"
-
-#~ msgid "Duplicating \"%B\""
-#~ msgstr "Kuriama „%B“ kopija"
-
-#~ msgid "Moving %'d file (in \"%B\") to \"%B\""
-#~ msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-#~ msgstr[0] "Perkeliamas %'d failas (\"%B\") į \"%B\""
-#~ msgstr[1] "Perkeliami %'d failai (\"%B\") į \"%B\""
-#~ msgstr[2] "Perkeliama %'d failų (\"%B\") į \"%B\""
-
-#~ msgid "Copying %'d file (in \"%B\") to \"%B\""
-#~ msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-#~ msgstr[0] "Kopijuojamas %'d failas (\"%B\") į \"%B\""
-#~ msgstr[1] "Kopijuojami %'d failai (\"%B\") į \"%B\""
-#~ msgstr[2] "Kopijuojama %'d failų (\"%B\") į \"%B\""
-
-#~ msgid "Duplicating %'d file (in \"%B\")"
-#~ msgid_plural "Duplicating %'d files (in \"%B\")"
-#~ msgstr[0] "Dubliuojamas %'d failas (\"%B\")"
-#~ msgstr[1] "Dubliuojami %'d failas (\"%B\")"
-#~ msgstr[2] "Dubliuojama %'d failų (\"%B\")"
-
-#~ msgid "Moving %'d file to \"%B\""
-#~ msgid_plural "Moving %'d files to \"%B\""
-#~ msgstr[0] "Perkeliamas %'d failas į \"%B\""
-#~ msgstr[1] "Perkeliami %'d failai į \"%B\""
-#~ msgstr[2] "Perkeliama %'d failų į \"%B\""
-
-#~ msgid "Copying %'d file to \"%B\""
-#~ msgid_plural "Copying %'d files to \"%B\""
-#~ msgstr[0] "Kopijuojamas %'d failas į \"%B\""
-#~ msgstr[1] "Kopijuojami %'d failai į \"%B\""
-#~ msgstr[2] "Kopijuojama %'d failų į \"%B\""
-
-#~ msgid "Duplicating %'d file"
-#~ msgid_plural "Duplicating %'d files"
-#~ msgstr[0] "Dubliuojamas %'d failas"
-#~ msgstr[1] "Dubliuojami %'d failai"
-#~ msgstr[2] "Dubliuojama %'d failų"
-
-#~ msgid "%S of %S"
-#~ msgstr "%S iš %S"
-
-#~ msgid "%S of %S — %T left (%S/sec)"
-#~ msgid_plural "%S of %S — %T left (%S/sec)"
-#~ msgstr[0] "%S iš %S — liko %T (%S/sek.)"
-#~ msgstr[1] "%S iš %S — liko %T (%S/sek.)"
-#~ msgstr[2] "%S iš %S — liko %T (%S/sek.)"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
-#~ "create it in the destination."
-#~ msgstr ""
-#~ "Aplanko „%s“ negalima nukopijuoti, kadangi neturite leidimų jo sukurti "
-#~ "paskirties vietoje."
-
-#~ msgid "There was an error creating the folder \"%B\"."
-#~ msgstr "Klaida kuriant aplanką „%B“."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be copied because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Aplanke „%B“ esančių failų negalima nukopijuoti, kadangi neturite leidimų "
-#~ "jų matyti."
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
-#~ "read it."
-#~ msgstr ""
-#~ "Aplankas \"%B\" negali būti nukopijuotas, kadangi jūs neturite leidimų jo "
-#~ "skaityti."
-
-#~ msgid "Error while moving \"%B\"."
-#~ msgstr "Klaida perkeliant „%B“."
-
-#~ msgid "Could not remove the source folder."
-#~ msgstr "Nepavyko pašalinti šaltinio aplanko."
-
-#~ msgid "Error while copying \"%B\"."
-#~ msgstr "Klaida kopijuojant „%B“."
-
-#~ msgid "Could not remove files from the already existing folder %F."
-#~ msgstr "Nepavyko pašalinti failų iš jau esančio aplanko %F."
-
-#~ msgid "Could not remove the already existing file %F."
-#~ msgstr "Nepavyko pašalinti jau esančio failo %F."
-
-#~ msgid "You cannot move a folder into itself."
-#~ msgstr "Negalima perkelti aplanko į jį patį."
-
-#~ msgid "You cannot copy a folder into itself."
-#~ msgstr "Negalima nukopijuoti aplanko į jį patį."
-
-#~ msgid "The destination folder is inside the source folder."
-#~ msgstr "Paskirties aplankas yra šaltinio aplanko viduje."
-
-#~ msgid "You cannot move a file over itself."
-#~ msgstr "Negalima perkelti failo ant jo paties."
-
-#~ msgid "You cannot copy a file over itself."
-#~ msgstr "Negalima kopijuoti failo į jį patį."
-
-#~ msgid "The source file would be overwritten by the destination."
-#~ msgstr "Šaltinio failas bus perrašytas paskirties failu."
-
-#~ msgid "Could not remove the already existing file with the same name in %F."
-#~ msgstr ""
-#~ "Nepavyko pašalinti failo su tokiu pačiu pavadinimu, esančio aplanke %F."
-
-#~ msgid "Cannot copy \"%B\" here."
-#~ msgstr "Čia negalima nukopijuoti \"%B\"."
-
-#~ msgid "There was an error copying the file into %B."
-#~ msgstr "Kopijuojant failą į %B, įvyko klaida."
-
-#~ msgid "Copying Files"
-#~ msgstr "Kopijuojami failai"
-
-#~ msgid "Preparing to move to \"%B\""
-#~ msgstr "Ruošiamasi perkelti į „%B“"
-
-#~ msgid "Preparing to move %'d file"
-#~ msgid_plural "Preparing to move %'d files"
-#~ msgstr[0] "Ruošiamasi perkelti %'d failą"
-#~ msgstr[1] "Ruošiamasi perkelti %'d failus"
-#~ msgstr[2] "Ruošiamasi perkelti %'d failų"
-
-#~ msgid "Error while moving \"%F\"."
-#~ msgstr "Klaida, perkeliant \"%F\"."
-
-#~ msgid "There was an error moving the file into %F."
-#~ msgstr "Perkeliant failą į %F, įvyko klaida."
-
-#~ msgid "Moving Files"
-#~ msgstr "Perkeliami failai"
-
-#~ msgid "Creating links in \"%B\""
-#~ msgstr "Kuriamos nuorodos „%B“ aplanke"
-
-#~ msgid "Making link to %'d file"
-#~ msgid_plural "Making links to %'d files"
-#~ msgstr[0] "Kuriama nuoroda į %'d failą"
-#~ msgstr[1] "Kuriamos nuorodos į %'d failus"
-#~ msgstr[2] "Kuriamos nuorodos į %'d failų"
-
-#~ msgid "Error while creating link to %B."
-#~ msgstr "Kuriant nuorodą į %B įvyko klaida."
-
-#~ msgid "Symbolic links only supported for local files"
-#~ msgstr "Simbolinės nuorodos yra palaikomos tik vietiniams failams"
-
-#~ msgid "The target doesn't support symbolic links."
-#~ msgstr "Paskirties vietą nepalaiko simbolinių nuorodų."
-
-#~ msgid "There was an error creating the symlink in %F."
-#~ msgstr "Klaida, kuriant simbolinę nuorodą %F."
-
-#~ msgid "Setting permissions"
-#~ msgstr "Nustatomi leidimai"
-
-#~ msgid "Cannot copy into trash."
-#~ msgstr "Negalima kopijuoti į šiukšlinę."
-
-#~ msgid "It is not permitted to copy files into the trash"
-#~ msgstr "Nėra leidžiama kopijuoti failus į šiukšlinę"
-
-#~ msgid "untitled folder"
-#~ msgstr "bevardis aplankas"
-
-#~ msgid "new file"
-#~ msgstr "naujas failas"
-
-#~ msgid "Error while creating directory %B."
-#~ msgstr "Klaida kuriant katalogą %B."
-
-#~ msgid "Error while creating file %B."
-#~ msgstr "Klaida kuriant failą %B."
-
-#~ msgid "There was an error creating the directory in %F."
-#~ msgstr "Kuriant katalogą ties %F, įvyko klaida."
-
-#~ msgid "Emptying Trash"
-#~ msgstr "Išvaloma šiukšlinė"
-
-#~ msgid "Original location could not be determined"
-#~ msgstr "Nepavyko nustatyti pradinę vietą"
-
-#~ msgid "Open trash folder and restore manually"
-#~ msgstr "Atverti šiukšlinės aplanką ir atkurti rankiniu būdu"
-
-#~ msgid "Delete %d copied items"
-#~ msgstr "Ištrinti %d nukopijuotus elementus"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Ištrinti „%s“"
-
-#~ msgid "Delete %d duplicated items"
-#~ msgstr "Pašalinti %d elementų kopijas"
-
-#~ msgid "Move %d items back to '%s'"
-#~ msgstr "Perkelti %d elementus atgal į „%s“"
-
-#~ msgid "Move '%s' back to '%s'"
-#~ msgstr "Perkelti „%s“ atgal į „%s“"
-
-#~ msgid "Rename '%s' as '%s'"
-#~ msgstr "Pervadinti „%s“ į „%s“"
-
-#~ msgid "Restore %d items from trash"
-#~ msgstr "Atkurti %d elementus iš šiukšlinės"
-
-#~ msgid "Restore '%s' to '%s'"
-#~ msgstr "Atkurti „%s“ į „%s“"
-
-#~ msgid "Move %d items back to trash"
-#~ msgstr "Perkelti %d elementų atgal į šiukšlinę"
-
-#~ msgid "Move '%s' back to trash"
-#~ msgstr "Perkelti „%s“ atgal į šiukšlinę"
-
-#~ msgid "Delete links to %d items"
-#~ msgstr "Ištrinti nuorodas į %d elementus"
-
-#~ msgid "Delete link to '%s'"
-#~ msgstr "Ištrinti nuorodą į „%s“"
-
-#~ msgid "Restore original permissions of items enclosed in '%s'"
-#~ msgstr "Atkurti elementų, esančių „%s“, pradinius leidimus"
-
-#~ msgid "Restore original permissions of '%s'"
-#~ msgstr "Atkurti pradinius „%s“ leidimus"
-
-#~ msgid "Restore group of '%s' to '%s'"
-#~ msgstr "Atkurti „%s“ grupę į „%s“"
-
-#~ msgid "Restore owner of '%s' to '%s'"
-#~ msgstr "Atkurti „%s“ savininką į „%s“"
-
-#~ msgid "Copy %d items to '%s'"
-#~ msgstr "Kopijuoti %d elementų į „%s“"
-
-#~ msgid "Copy '%s' to '%s'"
-#~ msgstr "Kopijuoti „%s“ į „%s“"
-
-#~ msgid "Duplicate of %d items in '%s'"
-#~ msgstr "%d elementų dubliavimas ties \"%s\""
-
-#~ msgid "Duplicate '%s' in '%s'"
-#~ msgstr "Sukurti „%s“ kopiją aplanke „%s“"
-
-#~ msgid "Move %d items to '%s'"
-#~ msgstr "Perkelti %d elementus į „%s“"
-
-#~ msgid "Move '%s' to '%s'"
-#~ msgstr "Perkelti „%s“ į „%s“"
-
-#~ msgid "Create new file '%s' from template "
-#~ msgstr "Sukurti naują failą „%s“ iš šablono "
-
-#~ msgid "Create an empty file '%s'"
-#~ msgstr "Sukurti tuščią failą „%s“"
-
-#~ msgid "Create a new folder '%s'"
-#~ msgstr "Sukurti naują aplanką „%s“"
-
-#~ msgid "Move %d items to trash"
-#~ msgstr "Perkelti %d elementus į šiukšlinę"
-
-#~ msgid "Move '%s' to trash"
-#~ msgstr "Perkelti „%s“ į šiukšlinę"
-
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "Atkurti „%s“ iš šiukšlinės"
-
-#~ msgid "Create links to %d items"
-#~ msgstr "Sukurti nuorodas į %d elementus"
-
-#~ msgid "Create link to '%s'"
-#~ msgstr "Sukurti nuorodą į „%s“"
-
-#~ msgid "Set permissions of items enclosed in '%s'"
-#~ msgstr "Nustatyti leidimus elementams, esantiems „%s“"
-
-#~ msgid "Set permissions of '%s'"
-#~ msgstr "Nustatyti „%s“ leidimus"
-
-#~ msgid "Set group of '%s' to '%s'"
-#~ msgstr "Nustatyti „%s“ grupę į „%s“"
-
-#~ msgid "Set owner of '%s' to '%s'"
-#~ msgstr "Nustatyti „%s“ savininką į „%s“"
-
-#~ msgid "_Undo copy of %d item"
-#~ msgid_plural "_Undo copy of %d items"
-#~ msgstr[0] "A_tšaukti %d elemento kopijavimą"
-#~ msgstr[1] "A_tšaukti %d elementų kopijavimą"
-#~ msgstr[2] "A_tšaukti %d elementų kopijavimą"
-
-#~ msgid "_Undo duplicate of %d item"
-#~ msgid_plural "_Undo duplicate of %d items"
-#~ msgstr[0] "A_tšaukti %d elemento dubliavimą"
-#~ msgstr[1] "A_tšaukti %d elementų dubliavimą"
-#~ msgstr[2] "A_tšaukti %d elementų dubliavimą"
-
-#~ msgid "_Undo move of %d item"
-#~ msgid_plural "_Undo move of %d items"
-#~ msgstr[0] "A_tšaukti %d elemento perkėlimą"
-#~ msgstr[1] "A_tšaukti %d elementų perkėlimą"
-#~ msgstr[2] "A_tšaukti %d elementų perkėlimą"
-
-#~ msgid "_Undo rename of %d item"
-#~ msgid_plural "_Undo rename of %d items"
-#~ msgstr[0] "A_tšaukti %d elemento pervadinimą"
-#~ msgstr[1] "A_tšaukti %d elementų pervadinimą"
-#~ msgstr[2] "A_tšaukti %d elementų pervadinimą"
-
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "_Atšaukti tuščio failo sukūrimą"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "A_tšaukti failo iš šablono kūrimą"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "_Atšaukti %d aplanko sukūrimą"
-#~ msgstr[1] "_Atšaukti %d aplankų sukūrimą"
-#~ msgstr[2] "_Atšaukti %d aplankų sukūrimą"
-
-#~ msgid "_Undo move to trash of %d item"
-#~ msgid_plural "_Undo move to trash of %d items"
-#~ msgstr[0] "A_tšaukti %d elemento perkėlimą į šiukšlinę"
-#~ msgstr[1] "A_tšaukti %d elementų perkėlimą į šiukšlinę"
-#~ msgstr[2] "A_tšaukti %d elementų perkėlimą į šiukšlinę"
-
-#~ msgid "_Undo restore from trash of %d item"
-#~ msgid_plural "_Undo restore from trash of %d items"
-#~ msgstr[0] "A_tšaukti %d elemento atkūrimą iš šiukšlinės"
-#~ msgstr[1] "A_tšaukti %d elementų atkūrimą iš šiukšlinės"
-#~ msgstr[2] "A_tšaukti %d elementų atkūrimą iš šiukšlinės"
-
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "A_tšaukti nuorodos sukūrimą į %d elementą"
-#~ msgstr[1] "A_tšaukti nuorodos sukūrimą į %d elementus"
-#~ msgstr[2] "A_tšaukti nuorodos sukūrimą į %d elementų"
-
-#~ msgid "_Undo delete of %d item"
-#~ msgid_plural "_Undo delete of %d items"
-#~ msgstr[0] "A_tšaukti %d elemento ištrynimą"
-#~ msgstr[1] "A_tšaukti %d elementų ištrynimą"
-#~ msgstr[2] "A_tšaukti %d elementų ištrynimą"
-
-#~ msgid "Undo recursive change permissions of %d item"
-#~ msgid_plural "Undo recursive change permissions of %d items"
-#~ msgstr[0] "Atšaukti rekursinį %d elemento leidimų pakeitimą"
-#~ msgstr[1] "Atšaukti rekursinį %d elementų leidimų pakeitimą"
-#~ msgstr[2] "Atšaukti rekursinį %d elementų leidimų pakeitimą"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Atšaukti %d elemento leidimų pakeitimą"
-#~ msgstr[1] "Atšaukti %d elementų leidimų pakeitimą"
-#~ msgstr[2] "Atšaukti %d elementų leidimų pakeitimą"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Atšaukti %d elemento grupės pakeitimą"
-#~ msgstr[1] "Atšaukti %d elementų grupės pakeitimą"
-#~ msgstr[2] "Atšaukti %d elementų grupės pakeitimą"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Atšaukti %d elemento savininko pakeitimą"
-#~ msgstr[1] "Atšaukti %d elementų savininko pakeitimą"
-#~ msgstr[2] "Atšaukti %d elementų savininko pakeitimą"
-
-#~ msgid "_Redo copy of %d item"
-#~ msgid_plural "_Redo copy of %d items"
-#~ msgstr[0] "_Grąžinti %d elemento kopijavimą"
-#~ msgstr[1] "_Grąžinti %d elementų kopijavimą"
-#~ msgstr[2] "_Grąžinti %d elementų kopijavimą"
-
-#~ msgid "_Redo duplicate of %d item"
-#~ msgid_plural "_Redo duplicate of %d items"
-#~ msgstr[0] "_Grąžinti %d elemento dubliavimą"
-#~ msgstr[1] "_Grąžinti %d elementų dubliavimą"
-#~ msgstr[2] "_Grąžinti %d elementų dubliavimą"
-
-#~ msgid "_Redo move of %d item"
-#~ msgid_plural "_Redo move of %d items"
-#~ msgstr[0] "_Grąžinti %d elemento perkėlimą"
-#~ msgstr[1] "_Grąžinti %d elementų perkėlimą"
-#~ msgstr[2] "_Grąžinti %d elementų perkėlimą"
-
-#~ msgid "_Redo rename of %d item"
-#~ msgid_plural "_Redo rename of %d items"
-#~ msgstr[0] "_Grąžinti %d elemento pervadinimą"
-#~ msgstr[1] "_Grąžinti %d elementų pervadinimą"
-#~ msgstr[2] "_Grąžinti %d elementų pervadinimą"
-
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "_Grąžinti tuščio failo sukūrimą"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "_Grąžinti failo iš šablono sukūrimą"
-
-#~ msgid "_Redo creation of %d folder"
-#~ msgid_plural "_Redo creation of %d folders"
-#~ msgstr[0] "_Grąžinti %d aplanko sukūrimą"
-#~ msgstr[1] "_Grąžinti %d aplankų sukūrimą"
-#~ msgstr[2] "_Grąžinti %d aplankų sukūrimą"
-
-#~ msgid "_Redo move to trash of %d item"
-#~ msgid_plural "_Redo move to trash of %d items"
-#~ msgstr[0] "_Grąžinti %d elemento perkėlimą į šiukšlinę"
-#~ msgstr[1] "_Grąžinti %d elementų perkėlimą į šiukšlinę"
-#~ msgstr[2] "_Grąžinti %d elementų perkėlimą į šiukšlinę"
-
-#~ msgid "_Redo restore from trash of %d item"
-#~ msgid_plural "_Redo restore from trash of %d items"
-#~ msgstr[0] "_Grąžinti %d elemento atkūrimą iš šiukšlinės"
-#~ msgstr[1] "_Grąžinti %d elementų atkūrimą iš šiukšlinės"
-#~ msgstr[2] "_Grąžinti %d elementų atkūrimą iš šiukšlinės"
-
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "_Grąžinti nuorodos sukūrimą į %d elementą"
-#~ msgstr[1] "_Grąžinti nuorodos sukūrimą į %d elementus"
-#~ msgstr[2] "_Grąžinti nuorodos sukūrimą į %d elementų"
-
-#~ msgid "_Redo delete of %d item"
-#~ msgid_plural "_Redo delete of %d items"
-#~ msgstr[0] "_Grąžinti %d elemento ištrynimą"
-#~ msgstr[1] "_Grąžinti %d elementų ištrynimą"
-#~ msgstr[2] "_Grąžinti %d elementų ištrynimą"
-
-#~ msgid "Redo recursive change permissions of %d item"
-#~ msgid_plural "Redo recursive change permissions of %d items"
-#~ msgstr[0] "Grąžinti rekursinį %d elemento leidimų pakeitimą"
-#~ msgstr[1] "Grąžinti rekursinį %d elementų leidimų pakeitimą"
-#~ msgstr[2] "Grąžinti rekursinį %d elementų leidimų pakeitimą"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Grąžinti %d elemento leidimų pakeitimą"
-#~ msgstr[1] "Grąžinti %d elementų leidimų pakeitimą"
-#~ msgstr[2] "Grąžinti %d elementų leidimų pakeitimą"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Grąžinti %d elemento grupės pakeitimą"
-#~ msgstr[1] "Grąžinti %d elementų grupės pakeitimą"
-#~ msgstr[2] "Grąžinti %d elementų grupės pakeitimą"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Grąžinti %d elemento savininko pakeitimą"
-#~ msgstr[1] "Grąžinti %d elementų savininko pakeitimą"
-#~ msgstr[2] "Grąžinti %d elementų savininko pakeitimą"
-
 #~ msgid "Browse your files"
 #~ msgstr "Naršyti failus"
 
@@ -1980,78 +2373,6 @@ msgstr "Ištrinti pažymėtus"
 
 #~ msgid "New Window As _Administrator"
 #~ msgstr "Naujas langas _administratoriaus teisėmis"
-
-#~ msgid "Restore from Trash"
-#~ msgstr "Atkurti iš šiukšlinės"
-
-#~ msgid "Delete permanently"
-#~ msgstr "Ištrinti visiems laikams"
-
-#~ msgid "Open Parent Folder"
-#~ msgstr "Atverti tėvinį aplanką"
-
-#~ msgid "Remove from History"
-#~ msgstr "Šalinti iš žurnalo"
-
-#~ msgid "Move to Trash"
-#~ msgstr "Perkelti į šiukšliadėžę"
-
-#~ msgid "New"
-#~ msgstr "Naujas"
-
-#~ msgid "Folder"
-#~ msgstr "Aplankas"
-
-#~ msgid "Empty File"
-#~ msgstr "Tuščias failas"
-
-#~ msgid "Show Hidden Files"
-#~ msgstr "Rodyti paslėptus failus"
-
-#~ msgid "Show Remote Thumbnails"
-#~ msgstr "Rodyti nuotolines miniatiūras"
-
-#~ msgid "New Tab"
-#~ msgstr "Nauja kortelė"
-
-#~ msgid "Bookmark"
-#~ msgstr "Žymelė"
-
-#~ msgid "Paste"
-#~ msgstr "Įdėti"
-
-#~ msgid "Paste Link"
-#~ msgstr "Įdėti nuorodą"
-
-#~ msgid "Cut"
-#~ msgstr "Iškirpti"
-
-#~ msgid "Copy"
-#~ msgstr "Kopijuoti"
-
-#~ msgid "Copy as Link"
-#~ msgstr "Kopijuoti kaip nuorodą"
-
-#~ msgid "Paste into Folder"
-#~ msgstr "Įdėti į aplanką"
-
-#~ msgid "Paste Link into Folder"
-#~ msgstr "Įdėti nuorodą į aplanką"
-
-#~ msgid "Sort by"
-#~ msgstr "Rikiuoti pagal"
-
-#~ msgid "Name"
-#~ msgstr "Pavadinimas"
-
-#~ msgid "Date"
-#~ msgstr "Data"
-
-#~ msgid "Reversed Order"
-#~ msgstr "Atvirkštine tvarka"
-
-#~ msgid "Folders Before Files"
-#~ msgstr "Pirma aplankai, po to failai"
 
 #~ msgid ""
 #~ "Can't load the supported server method list.\n"
