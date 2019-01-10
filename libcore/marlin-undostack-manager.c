@@ -22,7 +22,6 @@
 
 #include "marlin-undostack-manager.h"
 #include "marlin-file-operations.h"
-#include "gof-file.h"
 #include <gio/gio.h>
 #include <glib/gprintf.h>
 #include <glib-object.h>

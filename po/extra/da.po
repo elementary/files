@@ -6,12 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2018-03-21 20:39+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
-"Language-Team: Danish "
-"<https://weblate.elementary.io/projects/files/extra/da/>\n"
+"Language-Team: Danish <https://weblate.elementary.io/projects/files/extra/da/"
+">\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,30 +20,40 @@ msgstr ""
 "X-Generator: Weblate 2.18\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Filer"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Gennemse dine filer"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "mappe;håndtering;udforsk;gennemse;disk;filsystem;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Filhåndtering"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Nyt vindue"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Nyt vindue som administrator"
 
-msgid "About Files"
-msgstr "Om Filer"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Gennemse og håndter filer og mapper"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -56,75 +66,82 @@ msgstr ""
 "lokale eller på en ekstern enhed eller fjernt ve brug af FTP, SFTP, AFP, "
 "Webdav eller Windows-share."
 
-msgid "Improved networking support"
-msgstr "Forbedret netværkssupport"
-
-msgid "Correct window geometry when snapping to left or right"
-msgstr "Korrekt vinduesgeometri, når du snapper til venstre eller højre"
-
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
 msgstr ""
-"Hvis du trykker på Ctrl, annullerer du ikke længere navneændring, mens "
-"indstillingen \"Reveal Pointer\" er aktiv"
 
-msgid "Switching input language cancels actions"
-msgstr "Skift af input sprog annullerer handlinger"
+#~ msgid "About Files"
+#~ msgstr "Om Filer"
 
-msgid "Various crash fixes"
-msgstr "Diverse rettelser af nebrud"
+#~ msgid "Improved networking support"
+#~ msgstr "Forbedret netværkssupport"
 
-msgid "New translations"
-msgstr "Nye oversættelser"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "Korrekt vinduesgeometri, når du snapper til venstre eller højre"
 
-msgid "Minor bug fixes"
-msgstr "Mindre fejlrettelser"
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr ""
+#~ "Hvis du trykker på Ctrl, annullerer du ikke længere navneændring, mens "
+#~ "indstillingen \"Reveal Pointer\" er aktiv"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Webbrowsere såsom Firefox husker nu den seneste brugte downloadsmappe"
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "Skift af input sprog annullerer handlinger"
 
-msgid "Remember preferred zoom level"
-msgstr "Huske foretrukne zoomniveau"
+#~ msgid "Various crash fixes"
+#~ msgstr "Diverse rettelser af nebrud"
 
-msgid "Improved input method support"
-msgstr "Forbedret inputmetode-understøttelse"
+#~ msgid "New translations"
+#~ msgstr "Nye oversættelser"
 
-msgid "910x640 minimum window size"
-msgstr "910x640 minimum vinduesstørrelse"
+#~ msgid "Minor bug fixes"
+#~ msgstr "Mindre fejlrettelser"
 
-msgid "Security fixes"
-msgstr "Sikkerhedsrettelser"
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Webbrowsere såsom Firefox husker nu den seneste brugte downloadsmappe"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Aktivér træk-og-slip af faneblade mellem vinduer"
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "Huske foretrukne zoomniveau"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Før søgefaciliteter sammen i Ctrl+F"
+#~ msgid "Improved input method support"
+#~ msgstr "Forbedret inputmetode-understøttelse"
 
-msgid "Improved translation support"
-msgstr "Forbedret understøttelse af oversættelser"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "910x640 minimum vinduesstørrelse"
 
-msgid "Fix appdata release dates"
-msgstr "Ret programdata-udgivelsesdatoer"
+#~ msgid "Security fixes"
+#~ msgstr "Sikkerhedsrettelser"
 
-msgid "Improve file opening over Samba shares"
-msgstr "Forbedr filåbning over Samba-shares"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "Aktivér træk-og-slip af faneblade mellem vinduer"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Ret et nedbrud ved gendannelse af elementer fra papirkurven"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Før søgefaciliteter sammen i Ctrl+F"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Forbedr klip-/kopiér-/indsæt-følsomhed i genvejsmenu"
+#~ msgid "Improved translation support"
+#~ msgstr "Forbedret understøttelse af oversættelser"
 
-msgid "Translation updates"
-msgstr "Opdatering af oversættelse"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Ret programdata-udgivelsesdatoer"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "Kør Pantheon Filer som administrator"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Forbedr filåbning over Samba-shares"
 
-msgid "Authentication is required to run Files as Administrator"
-msgstr "Godkendelse er påkrævet for at køre Filer som administrator"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "Ret et nedbrud ved gendannelse af elementer fra papirkurven"
+
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "Forbedr klip-/kopiér-/indsæt-følsomhed i genvejsmenu"
+
+#~ msgid "Translation updates"
+#~ msgstr "Opdatering af oversættelse"
+
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "Kør Pantheon Filer som administrator"
+
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr "Godkendelse er påkrævet for at køre Filer som administrator"
