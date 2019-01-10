@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"POT-Creation-Date: 2019-01-09 09:21-0600\n"
 "PO-Revision-Date: 2016-09-16 09:17+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "Прикажи верзију програма."
 msgid "Open one or more URIs, each in their own tab"
 msgstr ""
 
-#: src/Application.vala:124
+#: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr ""
 
@@ -120,6 +120,7 @@ msgid "Set as default"
 msgstr "Подеси као подразумеван"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
+#: src/View/directory_view_popup.ui:91
 msgid "Properties"
 msgstr "Својства"
 
@@ -290,7 +291,7 @@ msgstr ""
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
 msgstr "(као Администратор)"
 
@@ -298,11 +299,11 @@ msgstr "(као Администратор)"
 msgid "Filename"
 msgstr "Назив датотеке"
 
-#: src/View/ListView.vala:27
+#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:149
 msgid "Size"
 msgstr "Величина"
 
-#: src/View/ListView.vala:28
+#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
 msgid "Type"
 msgstr "Тип"
 
@@ -378,7 +379,7 @@ msgid "Open in"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr ""
 
@@ -528,22 +529,22 @@ msgstr "Повежите се са сервером"
 msgid "Connect to a network server"
 msgstr "Повежите се са сервером"
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr ""
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Не могу да покренем %s"
 
-#: src/View/Sidebar.vala:1645
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "Избаци _смеће"
 
@@ -595,7 +596,7 @@ msgstr "Отвори у новом _прозору"
 msgid "Remove"
 msgstr "Уклони"
 
-#: src/View/PopupMenuBuilder.vala:50
+#: src/View/PopupMenuBuilder.vala:50 src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr ""
 
@@ -611,25 +612,130 @@ msgstr "_Демонтирај"
 msgid "_Eject"
 msgstr "_Избаци"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/directory_view_popup.ui:5
+#, fuzzy
+msgid "Restore from Trash"
+msgstr "Поврати %d ставке из смећа"
+
+#: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
+#, fuzzy
+msgid "Delete permanently"
+msgstr " одабрано"
+
+#: src/View/directory_view_popup.ui:16
+#, fuzzy
+msgid "Open Parent Folder"
+msgstr "Отвори личну фасциклу"
+
+#: src/View/directory_view_popup.ui:23
+msgid "Remove from History"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:37
+#, fuzzy
+msgid "Move to Trash"
+msgstr "Премештам датотеке у смеће"
+
+#: src/View/directory_view_popup.ui:51
+#, fuzzy
+msgid "New"
+msgstr "Мрежа"
+
+#: src/View/directory_view_popup.ui:53
+#, fuzzy
+msgid "Folder"
+msgstr "_Фасцикла:"
+
+#: src/View/directory_view_popup.ui:58
+#, fuzzy
+msgid "Empty File"
+msgstr "Угаси Датетеке."
+
+#: src/View/directory_view_popup.ui:67
+msgid "Show Hidden Files"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:71
+#, fuzzy
+msgid "Show Remote Thumbnails"
+msgstr "Прикажи више _детаља"
+
+#: src/View/directory_view_popup.ui:78
+#, fuzzy
+msgid "New Tab"
+msgstr "Отвори у новом језичку"
+
+#: src/View/directory_view_popup.ui:98
+msgid "Bookmark"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:105
+msgid "Paste"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:111
+msgid "Paste Link"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:118
+msgid "Cut"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:122
+msgid "Copy"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:126
+msgid "Copy as Link"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:130
+msgid "Paste into Folder"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:134
+msgid "Paste Link into Folder"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:141
+msgid "Sort by"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:144
+msgid "Name"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:159
+msgid "Date"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:166
+msgid "Reversed Order"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:170
+msgid "Folders Before Files"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr "Отвори у новом језичку"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr ""
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:207
@@ -924,7 +1030,7 @@ msgstr "_Изаберите нови назив за одредиште"
 msgid "Apply this action to all files"
 msgstr "Примени ову радњу за све датотеке"
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:160
 msgid "_Skip"
 msgstr "_Прескочи"
 
@@ -1027,6 +1133,1096 @@ msgstr ""
 msgid "Show more _details"
 msgstr "Прикажи више _детаља"
 
+#: libcore/marlin-file-operations.c:161
+msgid "S_kip All"
+msgstr "П_рескочи све"
+
+#: libcore/marlin-file-operations.c:162
+msgid "_Retry"
+msgstr "_Покушај поново"
+
+#: libcore/marlin-file-operations.c:163
+msgid "Delete _All"
+msgstr "Обриши _све"
+
+#: libcore/marlin-file-operations.c:164
+msgid "_Replace"
+msgstr "_Замени"
+
+#: libcore/marlin-file-operations.c:165
+msgid "Replace _All"
+msgstr "Замени _све"
+
+#: libcore/marlin-file-operations.c:166
+msgid "_Merge"
+msgstr "_Споји"
+
+#: libcore/marlin-file-operations.c:167
+msgid "Merge _All"
+msgstr "Споји _ све"
+
+#: libcore/marlin-file-operations.c:168
+msgid "Copy _Anyway"
+msgstr "Ипак _умножи"
+
+#: libcore/marlin-file-operations.c:249
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-file-operations.c:254 libcore/marlin-file-operations.c:265
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-file-operations.c:264
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-file-operations.c:272
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-file-operations.c:348
+#, c-format
+msgid "Link to %s"
+msgstr "Повежи са %s"
+
+#: libcore/marlin-file-operations.c:352
+#, c-format
+msgid "Another link to %s"
+msgstr "Још једна веза на %s"
+
+#: libcore/marlin-file-operations.c:368
+#, fuzzy, c-format
+msgid "%'dst link to %s"
+msgstr "веза до %s"
+
+#: libcore/marlin-file-operations.c:372
+#, fuzzy, c-format
+msgid "%'dnd link to %s"
+msgstr "веза до %s"
+
+#: libcore/marlin-file-operations.c:376
+#, fuzzy, c-format
+msgid "%'drd link to %s"
+msgstr "веза до %s"
+
+#: libcore/marlin-file-operations.c:380
+#, fuzzy, c-format
+msgid "%'dth link to %s"
+msgstr "веза до %s"
+
+#: libcore/marlin-file-operations.c:572
+msgid " ("
+msgstr " ("
+
+#: libcore/marlin-file-operations.c:580
+#, c-format
+msgid " (%'d"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1258
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+
+#: libcore/marlin-file-operations.c:1261
+#, fuzzy, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+msgstr[1] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+msgstr[2] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+
+#: libcore/marlin-file-operations.c:1271 libcore/marlin-file-operations.c:1351
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Ако обришете ставку, она ће бити неповратно изгубљена."
+
+#: libcore/marlin-file-operations.c:1296
+#, fuzzy
+msgid "Permanently delete all items from Trash?"
+msgstr "Поврати %d ставке из смећа"
+
+#: libcore/marlin-file-operations.c:1297
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1300
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1301
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1339
+#, fuzzy
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+
+#: libcore/marlin-file-operations.c:1342
+#, fuzzy, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+msgstr[1] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+msgstr[2] "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
+
+#: libcore/marlin-file-operations.c:1385
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-file-operations.c:1391
+msgid "Deleting files"
+msgstr "Бришем датотеке"
+
+#: libcore/marlin-file-operations.c:1404
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "%T преостаје"
+msgstr[1] ""
+msgstr[2] "преостаје %T"
+
+#: libcore/marlin-file-operations.c:1471 libcore/marlin-file-operations.c:1505
+#: libcore/marlin-file-operations.c:1544 libcore/marlin-file-operations.c:1621
+#: libcore/marlin-file-operations.c:2375
+msgid "Error while deleting."
+msgstr "Грешка при брисању."
+
+#: libcore/marlin-file-operations.c:1475
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr ""
+"Датотеке у фасцикли \"%B\" не могу  бити обрисане јер немате дозволе да их "
+"видите."
+
+#: libcore/marlin-file-operations.c:1478 libcore/marlin-file-operations.c:2434
+#: libcore/marlin-file-operations.c:3401
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr "Постоји грешка при добијању података о датотекама у фасцикли „%B“."
+
+#: libcore/marlin-file-operations.c:1487 libcore/marlin-file-operations.c:3410
+msgid "_Skip files"
+msgstr "_Прескочи датотеке"
+
+#: libcore/marlin-file-operations.c:1508
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr ""
+"Фасцикла „%B“ не може бити избрисана јер немате овлашћења да је читате."
+
+#: libcore/marlin-file-operations.c:1511 libcore/marlin-file-operations.c:2473
+#: libcore/marlin-file-operations.c:3446
+msgid "There was an error reading the folder \"%B\"."
+msgstr "Постоји грешка приликом читања фасцикле „%B“."
+
+#: libcore/marlin-file-operations.c:1545
+msgid "Could not remove the folder %B."
+msgstr "Није могуће уклонити фасциклу %B."
+
+#: libcore/marlin-file-operations.c:1622
+msgid "There was an error deleting %B."
+msgstr "Постоји грешка при брисању „%B“."
+
+#: libcore/marlin-file-operations.c:1706
+msgid "Moving files to trash"
+msgstr "Премештам датотеке у смеће"
+
+#: libcore/marlin-file-operations.c:1708
+#, fuzzy, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "Премештам датотеке у смеће"
+msgstr[1] "Премештам датотеке у смеће"
+msgstr[2] "Премештам датотеке у смеће"
+
+#: libcore/marlin-file-operations.c:1802 libcore/marlin-file-operations.c:1805
+#: libcore/marlin-file-operations.c:1808
+msgid "Cannot move file to trash or delete it"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1803
+msgid "It is not permitted to trash or delete files on a read only filesystem."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1806
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1809
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1811
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1812
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1816
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1817
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:1822
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:2012
+msgid "Trashing Files"
+msgstr "Шаљем датотеке у смеће"
+
+#: libcore/marlin-file-operations.c:2014
+msgid "Deleting Files"
+msgstr "Бришем датотеке"
+
+#: libcore/marlin-file-operations.c:2083
+msgid "Unable to eject %V"
+msgstr "Не могу да избацим %V"
+
+#: libcore/marlin-file-operations.c:2085
+msgid "Unable to unmount %V"
+msgstr "Не могу да демонтирам „%V“"
+
+#: libcore/marlin-file-operations.c:2299
+#, c-format
+msgid "Unable to mount %s"
+msgstr "Не могу да монтирам %s"
+
+#: libcore/marlin-file-operations.c:2322
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "Припрема умножавања %'d датотеке (%S)"
+msgstr[1] "Припрема умножавања %'d датотеке (%S)"
+msgstr[2] "Припрема умножавања %'d датотека (%S)"
+
+#: libcore/marlin-file-operations.c:2328
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "Припрема за премештање %'d датотеке (%S)"
+msgstr[1] "Припремам за премештање %'d датотеке (%S)"
+msgstr[2] "Припремам за премештање %'d датотека (%S)"
+
+#: libcore/marlin-file-operations.c:2334
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "Припрема за брисање %'d датотеке (%S)"
+msgstr[1] "Припрема за брисање %'d датотеке (%S)"
+msgstr[2] "Припрема за брисање %'d датотека (%S)"
+
+#: libcore/marlin-file-operations.c:2340
+#, fuzzy, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "Припрема за брисање %'d датотеке (%S)"
+msgstr[1] "Припрема за брисање %'d датотеке (%S)"
+msgstr[2] "Припрема за брисање %'d датотека (%S)"
+
+#: libcore/marlin-file-operations.c:2371 libcore/marlin-file-operations.c:3261
+#: libcore/marlin-file-operations.c:3393 libcore/marlin-file-operations.c:3438
+msgid "Error while copying."
+msgstr "Грешка приликом умножавања."
+
+#: libcore/marlin-file-operations.c:2373 libcore/marlin-file-operations.c:3391
+#: libcore/marlin-file-operations.c:3436
+msgid "Error while moving."
+msgstr "Грешка приликом премештања."
+
+#: libcore/marlin-file-operations.c:2377
+#, fuzzy
+msgid "Error while moving files to trash."
+msgstr "Премештам датотеке у смеће"
+
+#: libcore/marlin-file-operations.c:2431
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Није могуће руковати датотекама у фасцикли \"%B\" јер немате дозволе да их "
+"видите."
+
+#: libcore/marlin-file-operations.c:2470
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Није могуће руковати фасциклом \"%B\" јер немате дозволе за њено читање."
+
+#: libcore/marlin-file-operations.c:2546
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Није могуће руковати датотеком \"%B\" јер немате дозволе за њено читање."
+
+#: libcore/marlin-file-operations.c:2549
+msgid "There was an error getting information about \"%B\"."
+msgstr "Грешка приликом добављања података о „%B“."
+
+#: libcore/marlin-file-operations.c:2649 libcore/marlin-file-operations.c:2691
+#: libcore/marlin-file-operations.c:2724 libcore/marlin-file-operations.c:2754
+msgid "Error while copying to \"%B\"."
+msgstr "Грешка приликом умножавања у „%B“."
+
+#: libcore/marlin-file-operations.c:2653
+msgid "You do not have permissions to access the destination folder."
+msgstr "Немате овлашћења да приступите одредишној фасцикли."
+
+#: libcore/marlin-file-operations.c:2655
+msgid "There was an error getting information about the destination."
+msgstr "Дошло је до грешке приликом добављања података о одредишту."
+
+#: libcore/marlin-file-operations.c:2692
+msgid "The destination is not a folder."
+msgstr "Одредиште није фасцикла."
+
+#: libcore/marlin-file-operations.c:2725
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr "Нема довољно места у одредишту. Покушајте да уклоните неке датотеке."
+
+#: libcore/marlin-file-operations.c:2727
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Доступно је %S, а неопходно је %S."
+
+#: libcore/marlin-file-operations.c:2755
+msgid "The destination is read-only."
+msgstr "Одредиште је само за читање."
+
+#: libcore/marlin-file-operations.c:2814
+msgid "Moving \"%B\" to \"%B\""
+msgstr "Премештам „%B“ у „%B“"
+
+#: libcore/marlin-file-operations.c:2815
+msgid "Copying \"%B\" to \"%B\""
+msgstr "Умножавам „%B“ у „%B“"
+
+#: libcore/marlin-file-operations.c:2819
+msgid "Duplicating \"%B\""
+msgstr "Удвостручујем „%B“"
+
+#: libcore/marlin-file-operations.c:2823
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Премештам %'d датотеку (из „%B“) у „%B“"
+msgstr[1] "Премештам %'d датотеке (из „%B“) у „%B“"
+msgstr[2] "Премештам %'d датотека (из „%B“) у „%B“"
+
+#: libcore/marlin-file-operations.c:2826
+#, fuzzy
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Премештам %'d датотеку (из „%B“) у „%B“"
+msgstr[1] "Премештам %'d датотеке (из „%B“) у „%B“"
+msgstr[2] "Премештам %'d датотека (из „%B“) у „%B“"
+
+#: libcore/marlin-file-operations.c:2833
+#, fuzzy
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Премештам %'d датотеку (из „%B“) у „%B“"
+msgstr[1] "Премештам %'d датотеке (из „%B“) у „%B“"
+msgstr[2] "Премештам %'d датотека (из „%B“) у „%B“"
+
+#: libcore/marlin-file-operations.c:2842
+#, fuzzy
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "Премештам %'d датотеку (из „%B“) у „%B“"
+msgstr[1] "Премештам %'d датотеке (из „%B“) у „%B“"
+msgstr[2] "Премештам %'d датотека (из „%B“) у „%B“"
+
+#: libcore/marlin-file-operations.c:2846
+#, fuzzy
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "Умножавам „%B“ у „%B“"
+msgstr[1] "Умножавам „%B“ у „%B“"
+msgstr[2] "Умножавам „%B“ у „%B“"
+
+#: libcore/marlin-file-operations.c:2851
+#, fuzzy, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "Удвостручујем „%B“"
+msgstr[1] "Удвостручујем „%B“"
+msgstr[2] "Удвостручујем „%B“"
+
+#: libcore/marlin-file-operations.c:2877
+#, c-format
+msgid "%S of %S"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:2887
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-file-operations.c:3265
+#, fuzzy
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"Фасцикла „%B“ не може бити избрисана јер немате овлашћења да је читате."
+
+#: libcore/marlin-file-operations.c:3268
+#, fuzzy
+msgid "There was an error creating the folder \"%B\"."
+msgstr "Постоји грешка приликом читања фасцикле „%B“."
+
+#: libcore/marlin-file-operations.c:3398
+#, fuzzy
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Датотеке у фасцикли \"%B\" не могу  бити обрисане јер немате дозволе да их "
+"видите."
+
+#: libcore/marlin-file-operations.c:3443
+#, fuzzy
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr ""
+"Фасцикла „%B“ не може бити избрисана јер немате овлашћења да је читате."
+
+#: libcore/marlin-file-operations.c:3488 libcore/marlin-file-operations.c:4152
+#, fuzzy
+msgid "Error while moving \"%B\"."
+msgstr "Грешка приликом премештања."
+
+#: libcore/marlin-file-operations.c:3489
+#, fuzzy
+msgid "Could not remove the source folder."
+msgstr "Није могуће уклонити фасциклу %B."
+
+#: libcore/marlin-file-operations.c:3574 libcore/marlin-file-operations.c:3615
+#: libcore/marlin-file-operations.c:4154
+#, fuzzy
+msgid "Error while copying \"%B\"."
+msgstr "Грешка приликом умножавања у „%B“."
+
+#: libcore/marlin-file-operations.c:3575
+#, fuzzy, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "Није могуће уклонити фасциклу %B."
+
+#: libcore/marlin-file-operations.c:3616
+#, fuzzy, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "Није могуће уклонити фасциклу %B."
+
+#: libcore/marlin-file-operations.c:3890 libcore/marlin-file-operations.c:4561
+#, fuzzy
+msgid "You cannot move a folder into itself."
+msgstr "Није могуће уклонити фасциклу %B."
+
+#: libcore/marlin-file-operations.c:3891 libcore/marlin-file-operations.c:4562
+msgid "You cannot copy a folder into itself."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:3892 libcore/marlin-file-operations.c:4563
+#, fuzzy
+msgid "The destination folder is inside the source folder."
+msgstr "Одредиште није фасцикла."
+
+#: libcore/marlin-file-operations.c:3923
+msgid "You cannot move a file over itself."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:3924
+msgid "You cannot copy a file over itself."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:3925
+msgid "The source file would be overwritten by the destination."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:4156
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:4221
+msgid "Cannot copy \"%B\" here."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:4222
+#, fuzzy
+msgid "There was an error copying the file into %B."
+msgstr "Постоји грешка приликом читања фасцикле „%B“."
+
+#: libcore/marlin-file-operations.c:4444
+#, fuzzy
+msgid "Copying Files"
+msgstr "Шаљем датотеке у смеће"
+
+#: libcore/marlin-file-operations.c:4470
+#, fuzzy
+msgid "Preparing to move to \"%B\""
+msgstr "Припрема за премештање %'d датотеке (%S)"
+
+#: libcore/marlin-file-operations.c:4474
+#, fuzzy, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Припрема за премештање %'d датотеке (%S)"
+msgstr[1] "Припремам за премештање %'d датотеке (%S)"
+msgstr[2] "Припремам за премештање %'d датотека (%S)"
+
+#: libcore/marlin-file-operations.c:4720
+#, fuzzy, c-format
+msgid "Error while moving \"%F\"."
+msgstr "Грешка приликом премештања."
+
+#: libcore/marlin-file-operations.c:4721
+#, fuzzy, c-format
+msgid "There was an error moving the file into %F."
+msgstr "Постоји грешка приликом читања фасцикле „%B“."
+
+#: libcore/marlin-file-operations.c:4978
+#, fuzzy
+msgid "Moving Files"
+msgstr "Шаљем датотеке у смеће"
+
+#: libcore/marlin-file-operations.c:5007
+msgid "Creating links in \"%B\""
+msgstr ""
+
+#: libcore/marlin-file-operations.c:5011
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-file-operations.c:5151
+#, fuzzy
+msgid "Error while creating link to %B."
+msgstr "Грешка приликом умножавања у „%B“."
+
+#: libcore/marlin-file-operations.c:5153
+msgid "Symbolic links only supported for local files"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:5156
+msgid "The target doesn't support symbolic links."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:5159
+#, fuzzy, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr "Постоји грешка приликом читања фасцикле „%B“."
+
+#: libcore/marlin-file-operations.c:5477
+msgid "Setting permissions"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:5573
+msgid "Cannot copy into trash."
+msgstr ""
+
+#: libcore/marlin-file-operations.c:5574
+msgid "It is not permitted to copy files into the trash"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:5712
+#, fuzzy
+msgid "untitled folder"
+msgstr "%u фасцикле"
+
+#: libcore/marlin-file-operations.c:5720
+msgid "new file"
+msgstr ""
+
+#: libcore/marlin-file-operations.c:5891
+#, fuzzy
+msgid "Error while creating directory %B."
+msgstr "Грешка приликом умножавања у „%B“."
+
+#: libcore/marlin-file-operations.c:5893
+#, fuzzy
+msgid "Error while creating file %B."
+msgstr "Грешка приликом умножавања у „%B“."
+
+#: libcore/marlin-file-operations.c:5895
+#, fuzzy, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "Постоји грешка приликом читања фасцикле „%B“."
+
+#: libcore/marlin-file-operations.c:6205
+#, fuzzy
+msgid "Emptying Trash"
+msgstr "Избаци _смеће"
+
+#: libcore/marlin-undostack-manager.c:580
+msgid "Original location could not be determined"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:581
+msgid "Open trash folder and restore manually"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1118
+#, c-format
+msgid "Delete %d copied items"
+msgstr "Обришите %d копиране ставке"
+
+#: libcore/marlin-undostack-manager.c:1121
+#: libcore/marlin-undostack-manager.c:1131
+#: libcore/marlin-undostack-manager.c:1162
+#, c-format
+msgid "Delete '%s'"
+msgstr "Обришите „%s“"
+
+#: libcore/marlin-undostack-manager.c:1128
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Обришите %d дуплиране ставке"
+
+#: libcore/marlin-undostack-manager.c:1139
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "Померите %d ставке назад у '%s'"
+
+#: libcore/marlin-undostack-manager.c:1143
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "Премести '%s' назад у '%s'"
+
+#: libcore/marlin-undostack-manager.c:1152
+#: libcore/marlin-undostack-manager.c:1319
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Преименуј '%s' као '%s'"
+
+#: libcore/marlin-undostack-manager.c:1171
+#: libcore/marlin-undostack-manager.c:1366
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "Поврати %d ставке из смећа"
+
+#: libcore/marlin-undostack-manager.c:1179
+#, fuzzy, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "Преименуј '%s' као '%s'"
+
+#: libcore/marlin-undostack-manager.c:1190
+#, fuzzy, c-format
+msgid "Move %d items back to trash"
+msgstr "Померите %d ставке назад у '%s'"
+
+#: libcore/marlin-undostack-manager.c:1193
+#, fuzzy, c-format
+msgid "Move '%s' back to trash"
+msgstr "Премести '%s' назад у '%s'"
+
+#: libcore/marlin-undostack-manager.c:1202
+#, fuzzy, c-format
+msgid "Delete links to %d items"
+msgstr "Обришите %d копиране ставке"
+
+#: libcore/marlin-undostack-manager.c:1205
+#, fuzzy, c-format
+msgid "Delete link to '%s'"
+msgstr "Обришите „%s“"
+
+#: libcore/marlin-undostack-manager.c:1215
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1232
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1242
+#, fuzzy, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Преименуј '%s' као '%s'"
+
+#: libcore/marlin-undostack-manager.c:1281
+#, fuzzy, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Померите %d ставке назад у '%s'"
+
+#: libcore/marlin-undostack-manager.c:1285
+#, fuzzy, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Премести '%s' назад у '%s'"
+
+#: libcore/marlin-undostack-manager.c:1293
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1298
+#, fuzzy, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Преименуј '%s' као '%s'"
+
+#: libcore/marlin-undostack-manager.c:1306
+#, fuzzy, c-format
+msgid "Move %d items to '%s'"
+msgstr "Померите %d ставке назад у '%s'"
+
+#: libcore/marlin-undostack-manager.c:1310
+#, fuzzy, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Премести '%s' назад у '%s'"
+
+#: libcore/marlin-undostack-manager.c:1328
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1335
+#, fuzzy, c-format
+msgid "Create an empty file '%s'"
+msgstr "Направи фасциклу \"%s\""
+
+#: libcore/marlin-undostack-manager.c:1342
+#, fuzzy, c-format
+msgid "Create a new folder '%s'"
+msgstr "Направи фасциклу \"%s\""
+
+#: libcore/marlin-undostack-manager.c:1350
+#, fuzzy, c-format
+msgid "Move %d items to trash"
+msgstr "Поврати %d ставке из смећа"
+
+#: libcore/marlin-undostack-manager.c:1356
+#, fuzzy, c-format
+msgid "Move '%s' to trash"
+msgstr "Премештам датотеке у смеће"
+
+#: libcore/marlin-undostack-manager.c:1369
+#, fuzzy, c-format
+msgid "Restore '%s' from trash"
+msgstr "Поврати %d ставке из смећа"
+
+#: libcore/marlin-undostack-manager.c:1378
+#, fuzzy, c-format
+msgid "Create links to %d items"
+msgstr "Још једна веза на %s"
+
+#: libcore/marlin-undostack-manager.c:1381
+#, fuzzy, c-format
+msgid "Create link to '%s'"
+msgstr "Још једна веза на %s"
+
+#: libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1398
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1407
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1417
+#, fuzzy, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Премести '%s' назад у '%s'"
+
+#: libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1454
+#, fuzzy, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "Обришите %d дуплиране ставке"
+msgstr[1] "Обришите %d дуплиране ставке"
+msgstr[2] "Обришите %d дуплиране ставке"
+
+#: libcore/marlin-undostack-manager.c:1459
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1464
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1468
+msgid "_Undo creation of an empty file"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1471
+msgid "_Undo creation of a file from template"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1475
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1480
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1490
+#, fuzzy, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "Још једна веза на %s"
+msgstr[1] "Још једна веза на %s"
+msgstr[2] "Још једна веза на %s"
+
+#: libcore/marlin-undostack-manager.c:1495
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1500
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1506
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1511
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1516
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1544
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1549
+#, fuzzy, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "Обришите %d дуплиране ставке"
+msgstr[1] "Обришите %d дуплиране ставке"
+msgstr[2] "Обришите %d дуплиране ставке"
+
+#: libcore/marlin-undostack-manager.c:1554
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1563
+msgid "_Redo creation of an empty file"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1566
+msgid "_Redo creation of a file from template"
+msgstr ""
+
+#: libcore/marlin-undostack-manager.c:1570
+#, fuzzy, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "Одредиште није фасцикла."
+msgstr[1] "Одредиште није фасцикла."
+msgstr[2] "Одредиште није фасцикла."
+
+#: libcore/marlin-undostack-manager.c:1575
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1580
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1585
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1601
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1606
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/marlin-undostack-manager.c:1611
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: libcore/gof-file.c:332 libcore/gof-file.c:506
+msgid "Inaccessible"
+msgstr ""
+
+#: libcore/gof-file.c:347
+#, c-format
+msgid "link to %s"
+msgstr "веза до %s"
+
 #: libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
 msgstr ""
@@ -1040,6 +2236,11 @@ msgstr ""
 #, c-format
 msgid "Go to %s"
 msgstr ""
+
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#, fuzzy
+msgid "Type Path"
+msgstr "Тип"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
@@ -1123,9 +2324,6 @@ msgstr " одабрано"
 msgid "Delete Selected"
 msgstr " одабрано"
 
-#~ msgid "link to %s"
-#~ msgstr "веза до %s"
-
 #~ msgid "Failed to parse the desktop file: %s"
 #~ msgstr "Није могуће је обрадити датотеку радне површине: %s"
 
@@ -1140,36 +2338,6 @@ msgstr " одабрано"
 #, fuzzy
 #~ msgid "Unable to Launch Desktop File: %s"
 #~ msgstr "Није могуће је обрадити датотеку радне површине: %s"
-
-#~ msgid "S_kip All"
-#~ msgstr "П_рескочи све"
-
-#~ msgid "_Retry"
-#~ msgstr "_Покушај поново"
-
-#~ msgid "Delete _All"
-#~ msgstr "Обриши _све"
-
-#~ msgid "_Replace"
-#~ msgstr "_Замени"
-
-#~ msgid "Replace _All"
-#~ msgstr "Замени _све"
-
-#~ msgid "_Merge"
-#~ msgstr "_Споји"
-
-#~ msgid "Merge _All"
-#~ msgstr "Споји _ све"
-
-#~ msgid "Copy _Anyway"
-#~ msgstr "Ипак _умножи"
-
-#~ msgid "Link to %s"
-#~ msgstr "Повежи са %s"
-
-#~ msgid "Another link to %s"
-#~ msgstr "Још једна веза на %s"
 
 #~ msgid " (copy)"
 #~ msgstr " (умножак)"
@@ -1194,181 +2362,6 @@ msgstr " одабрано"
 
 #~ msgid "%s (another copy)%s"
 #~ msgstr "%s (неки умножак)%s"
-
-#~ msgid " ("
-#~ msgstr " ("
-
-#~ msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-#~ msgstr "Да ли сте сигурни да желите трајно да уклоните „%B“ из смећа?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Ако обришете ставку, она ће бити неповратно изгубљена."
-
-#~ msgid "Deleting files"
-#~ msgstr "Бришем датотеке"
-
-#~ msgid "%T left"
-#~ msgid_plural "%T left"
-#~ msgstr[0] "%T преостаје"
-#~ msgstr[1] ""
-#~ msgstr[2] "преостаје %T"
-
-#~ msgid "Error while deleting."
-#~ msgstr "Грешка при брисању."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be deleted because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Датотеке у фасцикли \"%B\" не могу  бити обрисане јер немате дозволе да "
-#~ "их видите."
-
-#~ msgid ""
-#~ "There was an error getting information about the files in the folder \"%B"
-#~ "\"."
-#~ msgstr "Постоји грешка при добијању података о датотекама у фасцикли „%B“."
-
-#~ msgid "_Skip files"
-#~ msgstr "_Прескочи датотеке"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be deleted because you do not have permissions "
-#~ "to read it."
-#~ msgstr ""
-#~ "Фасцикла „%B“ не може бити избрисана јер немате овлашћења да је читате."
-
-#~ msgid "There was an error reading the folder \"%B\"."
-#~ msgstr "Постоји грешка приликом читања фасцикле „%B“."
-
-#~ msgid "Could not remove the folder %B."
-#~ msgstr "Није могуће уклонити фасциклу %B."
-
-#~ msgid "There was an error deleting %B."
-#~ msgstr "Постоји грешка при брисању „%B“."
-
-#~ msgid "Moving files to trash"
-#~ msgstr "Премештам датотеке у смеће"
-
-#~ msgid "Trashing Files"
-#~ msgstr "Шаљем датотеке у смеће"
-
-#~ msgid "Deleting Files"
-#~ msgstr "Бришем датотеке"
-
-#~ msgid "Unable to eject %V"
-#~ msgstr "Не могу да избацим %V"
-
-#~ msgid "Unable to unmount %V"
-#~ msgstr "Не могу да демонтирам „%V“"
-
-#~ msgid "Unable to mount %s"
-#~ msgstr "Не могу да монтирам %s"
-
-#~ msgid "Preparing to copy %'d file (%S)"
-#~ msgid_plural "Preparing to copy %'d files (%S)"
-#~ msgstr[0] "Припрема умножавања %'d датотеке (%S)"
-#~ msgstr[1] "Припрема умножавања %'d датотеке (%S)"
-#~ msgstr[2] "Припрема умножавања %'d датотека (%S)"
-
-#~ msgid "Preparing to move %'d file (%S)"
-#~ msgid_plural "Preparing to move %'d files (%S)"
-#~ msgstr[0] "Припрема за премештање %'d датотеке (%S)"
-#~ msgstr[1] "Припремам за премештање %'d датотеке (%S)"
-#~ msgstr[2] "Припремам за премештање %'d датотека (%S)"
-
-#~ msgid "Preparing to delete %'d file (%S)"
-#~ msgid_plural "Preparing to delete %'d files (%S)"
-#~ msgstr[0] "Припрема за брисање %'d датотеке (%S)"
-#~ msgstr[1] "Припрема за брисање %'d датотеке (%S)"
-#~ msgstr[2] "Припрема за брисање %'d датотека (%S)"
-
-#~ msgid "Error while copying."
-#~ msgstr "Грешка приликом умножавања."
-
-#~ msgid "Error while moving."
-#~ msgstr "Грешка приликом премештања."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be handled because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Није могуће руковати датотекама у фасцикли \"%B\" јер немате дозволе да "
-#~ "их видите."
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be handled because you do not have permissions "
-#~ "to read it."
-#~ msgstr ""
-#~ "Није могуће руковати фасциклом \"%B\" јер немате дозволе за њено читање."
-
-#~ msgid ""
-#~ "The file \"%B\" cannot be handled because you do not have permissions to "
-#~ "read it."
-#~ msgstr ""
-#~ "Није могуће руковати датотеком \"%B\" јер немате дозволе за њено читање."
-
-#~ msgid "There was an error getting information about \"%B\"."
-#~ msgstr "Грешка приликом добављања података о „%B“."
-
-#~ msgid "Error while copying to \"%B\"."
-#~ msgstr "Грешка приликом умножавања у „%B“."
-
-#~ msgid "You do not have permissions to access the destination folder."
-#~ msgstr "Немате овлашћења да приступите одредишној фасцикли."
-
-#~ msgid "There was an error getting information about the destination."
-#~ msgstr "Дошло је до грешке приликом добављања података о одредишту."
-
-#~ msgid "The destination is not a folder."
-#~ msgstr "Одредиште није фасцикла."
-
-#~ msgid ""
-#~ "There is not enough space on the destination. Try to remove files to make "
-#~ "space."
-#~ msgstr ""
-#~ "Нема довољно места у одредишту. Покушајте да уклоните неке датотеке."
-
-#~ msgid "There is %S available, but %S is required."
-#~ msgstr "Доступно је %S, а неопходно је %S."
-
-#~ msgid "The destination is read-only."
-#~ msgstr "Одредиште је само за читање."
-
-#~ msgid "Moving \"%B\" to \"%B\""
-#~ msgstr "Премештам „%B“ у „%B“"
-
-#~ msgid "Copying \"%B\" to \"%B\""
-#~ msgstr "Умножавам „%B“ у „%B“"
-
-#~ msgid "Duplicating \"%B\""
-#~ msgstr "Удвостручујем „%B“"
-
-#~ msgid "Moving %'d file (in \"%B\") to \"%B\""
-#~ msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-#~ msgstr[0] "Премештам %'d датотеку (из „%B“) у „%B“"
-#~ msgstr[1] "Премештам %'d датотеке (из „%B“) у „%B“"
-#~ msgstr[2] "Премештам %'d датотека (из „%B“) у „%B“"
-
-#~ msgid "Delete %d copied items"
-#~ msgstr "Обришите %d копиране ставке"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "Обришите „%s“"
-
-#~ msgid "Delete %d duplicated items"
-#~ msgstr "Обришите %d дуплиране ставке"
-
-#~ msgid "Move %d items back to '%s'"
-#~ msgstr "Померите %d ставке назад у '%s'"
-
-#~ msgid "Move '%s' back to '%s'"
-#~ msgstr "Премести '%s' назад у '%s'"
-
-#~ msgid "Rename '%s' as '%s'"
-#~ msgstr "Преименуј '%s' као '%s'"
-
-#~ msgid "Restore %d items from trash"
-#~ msgstr "Поврати %d ставке из смећа"
 
 #~ msgid "Browse your files"
 #~ msgstr "Прегледајте Ваше датотеке"

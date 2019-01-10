@@ -303,17 +303,19 @@ namespace Marlin {
             get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
 
             /* render the background if selected or colorized */
-            if (selected) {
+            if (selected || this.background_set) {
                 int x0 = cell_area.x + x_offset;
                 int y0 = cell_area.y + y_offset;
-                style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
-            } else if (this.background_set) {
-                int x0 = cell_area.x + x_offset;
-                int y0 = cell_area.y + y_offset;
-
                 var provider = new Gtk.CssProvider ();
+                string data;
+                if (selected) {
+                    data = "* {border-radius: 5px;}";
+                } else {
+                    data = "* {border-radius: 5px; background-color: %s;}".printf (background_rgba.to_string ());
+                }
+
                 try {
-                    provider.load_from_data ("* { background-color: %s; }".printf (background_rgba.to_string ()));
+                    provider.load_from_data (data);
                     style_context.add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
                     style_context.render_background (cr, x0, y0, focus_rect_width, focus_rect_height);
                     style_context.remove_provider (provider);

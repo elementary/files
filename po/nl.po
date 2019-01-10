@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"POT-Creation-Date: 2019-01-09 09:21-0600\n"
 "PO-Revision-Date: 2018-09-01 00:07+0000\n"
 "Last-Translator: Dieter Debast <dieter_debast@hotmail.com>\n"
 "Language-Team: Dutch <https://weblate.elementary.io/projects/files/files/nl/"
@@ -29,7 +29,7 @@ msgstr "Toon programmaversie."
 msgid "Open one or more URIs, each in their own tab"
 msgstr "URI('s) in nieuwe tab openen"
 
-#: src/Application.vala:124
+#: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
 msgstr "Nieuw venster"
 
@@ -120,6 +120,7 @@ msgid "Set as default"
 msgstr "Instellen als standaard"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
+#: src/View/directory_view_popup.ui:91
 msgid "Properties"
 msgstr "Eigenschappen"
 
@@ -290,7 +291,7 @@ msgstr "Kon URIs niet openen"
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
 msgstr "(als Beheerder)"
 
@@ -298,11 +299,11 @@ msgstr "(als Beheerder)"
 msgid "Filename"
 msgstr "Bestandsnaam"
 
-#: src/View/ListView.vala:27
+#: src/View/ListView.vala:27 src/View/directory_view_popup.ui:149
 msgid "Size"
 msgstr "Grootte"
 
-#: src/View/ListView.vala:28
+#: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
 msgid "Type"
 msgstr "Type"
 
@@ -379,7 +380,7 @@ msgid "Open in"
 msgstr "Openen in"
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr "Openen met"
 
@@ -529,22 +530,22 @@ msgstr "Verbinden met server"
 msgid "Connect to a network server"
 msgstr "Verbinden met server"
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr ""
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Niet in staat %s te starten"
 
-#: src/View/Sidebar.vala:1645
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "Leeg _Prullenbak"
 
@@ -596,7 +597,7 @@ msgstr "Open in Nieuw _Venster"
 msgid "Remove"
 msgstr "Verwijder"
 
-#: src/View/PopupMenuBuilder.vala:50
+#: src/View/PopupMenuBuilder.vala:50 src/View/directory_view_popup.ui:30
 msgid "Rename"
 msgstr "Hernoemen"
 
@@ -612,26 +613,130 @@ msgstr "_Ontkoppelen"
 msgid "_Eject"
 msgstr "Uitw_erpen"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/directory_view_popup.ui:5
+msgid "Restore from Trash"
+msgstr "Herstel uit prullenbak"
+
+#: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
+#, fuzzy
+msgid "Delete permanently"
+msgstr ""
+"\n"
+" Een bestand verwijderen is permanent"
+
+#: src/View/directory_view_popup.ui:16
+#, fuzzy
+msgid "Open Parent Folder"
+msgstr "Plakken in map"
+
+#: src/View/directory_view_popup.ui:23
+msgid "Remove from History"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:37
+msgid "Move to Trash"
+msgstr "Verplaats naar prullenbak"
+
+#: src/View/directory_view_popup.ui:51
+msgid "New"
+msgstr "Nieuw"
+
+#: src/View/directory_view_popup.ui:53
+#, fuzzy
+msgid "Folder"
+msgstr "_Map:"
+
+#: src/View/directory_view_popup.ui:58
+msgid "Empty File"
+msgstr "Leeg bestand"
+
+#: src/View/directory_view_popup.ui:67
+#, fuzzy
+msgid "Show Hidden Files"
+msgstr "Verplaatsen van bestanden"
+
+#: src/View/directory_view_popup.ui:71
+#, fuzzy
+msgid "Show Remote Thumbnails"
+msgstr "Toon meer _details"
+
+#: src/View/directory_view_popup.ui:78
+msgid "New Tab"
+msgstr "Nieuwe tab"
+
+#: src/View/directory_view_popup.ui:98
+msgid "Bookmark"
+msgstr "Bladwijzer"
+
+#: src/View/directory_view_popup.ui:105
+msgid "Paste"
+msgstr "Plakken"
+
+#: src/View/directory_view_popup.ui:111
+msgid "Paste Link"
+msgstr "Link plakken"
+
+#: src/View/directory_view_popup.ui:118
+msgid "Cut"
+msgstr "Knippen"
+
+#: src/View/directory_view_popup.ui:122
+msgid "Copy"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:126
+#, fuzzy
+msgid "Copy as Link"
+msgstr "Link plakken"
+
+#: src/View/directory_view_popup.ui:130
+msgid "Paste into Folder"
+msgstr "Plakken in map"
+
+#: src/View/directory_view_popup.ui:134
+msgid "Paste Link into Folder"
+msgstr "Link plakken in map"
+
+#: src/View/directory_view_popup.ui:141
+msgid "Sort by"
+msgstr "Sorteer op"
+
+#: src/View/directory_view_popup.ui:144
+msgid "Name"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:159
+msgid "Date"
+msgstr ""
+
+#: src/View/directory_view_popup.ui:166
+msgid "Reversed Order"
+msgstr "Omgekeerde volgorde"
+
+#: src/View/directory_view_popup.ui:170
+msgid "Folders Before Files"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr "Openen in nieuw tabblad"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr "Openen in nieuw venster"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr "Openen in andere toepassing…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
 msgstr "Herlaad deze map"
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
-msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
@@ -925,7 +1030,7 @@ msgstr "_Selecteer een nieuwe naam voor de bestemming"
 msgid "Apply this action to all files"
 msgstr "Pas deze actie toe op alle bestanden"
 
-#: libcore/FileConflictDialog.vala:186
+#: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:160
 msgid "_Skip"
 msgstr "_Overslaan"
 
@@ -1029,6 +1134,1065 @@ msgstr "Bezig met voorbereiden"
 msgid "Show more _details"
 msgstr "Toon meer _details"
 
+#: libcore/marlin-file-operations.c:161
+msgid "S_kip All"
+msgstr "_Alles Overslaan"
+
+#: libcore/marlin-file-operations.c:162
+msgid "_Retry"
+msgstr "Opnieuw P_roberen"
+
+#: libcore/marlin-file-operations.c:163
+msgid "Delete _All"
+msgstr "Alles Ver_wijderen"
+
+#: libcore/marlin-file-operations.c:164
+msgid "_Replace"
+msgstr "Ve_rvangen"
+
+#: libcore/marlin-file-operations.c:165
+msgid "Replace _All"
+msgstr "_AllesVervangen"
+
+#: libcore/marlin-file-operations.c:166
+msgid "_Merge"
+msgstr "Sa_menvoegen"
+
+#: libcore/marlin-file-operations.c:167
+msgid "Merge _All"
+msgstr "_Alles Samenvoegen"
+
+#: libcore/marlin-file-operations.c:168
+msgid "Copy _Anyway"
+msgstr "_Toch Kopiëren"
+
+#: libcore/marlin-file-operations.c:249
+#, c-format
+msgid "%'d second"
+msgid_plural "%'d seconds"
+msgstr[0] "%'d seconde"
+msgstr[1] "%'d seconden"
+
+#: libcore/marlin-file-operations.c:254 libcore/marlin-file-operations.c:265
+#, c-format
+msgid "%'d minute"
+msgid_plural "%'d minutes"
+msgstr[0] "%'d minuut"
+msgstr[1] "%'d minuten"
+
+#: libcore/marlin-file-operations.c:264
+#, c-format
+msgid "%'d hour"
+msgid_plural "%'d hours"
+msgstr[0] "%'d uur"
+msgstr[1] "%'d uren"
+
+#: libcore/marlin-file-operations.c:272
+#, c-format
+msgid "approximately %'d hour"
+msgid_plural "approximately %'d hours"
+msgstr[0] "ongeveer %'d uur"
+msgstr[1] "ongeveer %'d uren"
+
+#: libcore/marlin-file-operations.c:348
+#, c-format
+msgid "Link to %s"
+msgstr "Verwijzing naar %s"
+
+#: libcore/marlin-file-operations.c:352
+#, c-format
+msgid "Another link to %s"
+msgstr "Nog een verwijzing naar %s"
+
+#: libcore/marlin-file-operations.c:368
+#, c-format
+msgid "%'dst link to %s"
+msgstr "%'de verwijzing naar %s"
+
+#: libcore/marlin-file-operations.c:372
+#, c-format
+msgid "%'dnd link to %s"
+msgstr "%'de verwijzing naar %s"
+
+#: libcore/marlin-file-operations.c:376
+#, c-format
+msgid "%'drd link to %s"
+msgstr "%'de verwijzing naar %s"
+
+#: libcore/marlin-file-operations.c:380
+#, c-format
+msgid "%'dth link to %s"
+msgstr "%'de verwijzing naar %s"
+
+#: libcore/marlin-file-operations.c:572
+msgid " ("
+msgstr " ("
+
+#: libcore/marlin-file-operations.c:580
+#, c-format
+msgid " (%'d"
+msgstr " (%'d"
+
+#: libcore/marlin-file-operations.c:1258
+msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
+msgstr ""
+"Bent u zeker dat u \"%B\" definitief uit de prullenbak wilt verwijderen?"
+
+#: libcore/marlin-file-operations.c:1261
+#, c-format
+msgid ""
+"Are you sure you want to permanently delete the %'d selected item from the "
+"trash?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items from the "
+"trash?"
+msgstr[0] ""
+"Weet u zeker dat u het geselecteerde item blijvend wilt verwijderen uit de "
+"prullenbak?"
+msgstr[1] ""
+"Weet u zeker dat u de %'d geselecteerde items blijvend wilt verwijderen uit "
+"de prullenbak?"
+
+#: libcore/marlin-file-operations.c:1271 libcore/marlin-file-operations.c:1351
+msgid "If you delete an item, it will be permanently lost."
+msgstr "Als u een bestand verwijdert, zal het definitief verloren gaan."
+
+#: libcore/marlin-file-operations.c:1296
+msgid "Permanently delete all items from Trash?"
+msgstr "Alle items permanent uit de prullenbak verwijderen?"
+
+#: libcore/marlin-file-operations.c:1297
+msgid ""
+"All items in all trash directories, including those on any mounted external "
+"drives, will be permanently deleted."
+msgstr ""
+"Alle items in all prullenbak mappen, inclusief die op alle gekoppelde "
+"externe schijven, worden permanent verwijderd."
+
+#: libcore/marlin-file-operations.c:1300
+msgid "Permanently delete all items from Trash on this mount?"
+msgstr ""
+"Alle items permanent uit de prullenbak op deze gekoppelde schijf verwijderen?"
+
+#: libcore/marlin-file-operations.c:1301
+msgid "All items in the trash on this mount, will be permanently deleted."
+msgstr ""
+"Alle items in de prullenbak op deze gekoppelde schijf, worden permanent "
+"verwijderd."
+
+#: libcore/marlin-file-operations.c:1339
+msgid "Are you sure you want to permanently delete \"%B\"?"
+msgstr "Bent u zeker dat u het bestand \"%B\" definitief wilt verwijderen?"
+
+#: libcore/marlin-file-operations.c:1342
+#, c-format
+msgid "Are you sure you want to permanently delete the %'d selected item?"
+msgid_plural ""
+"Are you sure you want to permanently delete the %'d selected items?"
+msgstr[0] ""
+"Weet u zeker dat u het geselecteerde item blijvend wilt verwijderen?"
+msgstr[1] ""
+"Weet u zeker dat u de %'d geselecteerde items permanent wilt verwijderen?"
+
+#: libcore/marlin-file-operations.c:1385
+#, c-format
+msgid "%'d file left to delete"
+msgid_plural "%'d files left to delete"
+msgstr[0] "%'d te verwijderen bestand over"
+msgstr[1] "%'d te verwijderen bestanden over"
+
+#: libcore/marlin-file-operations.c:1391
+msgid "Deleting files"
+msgstr "Bestanden verwijderen"
+
+#: libcore/marlin-file-operations.c:1404
+msgid "%T left"
+msgid_plural "%T left"
+msgstr[0] "%T resterend"
+msgstr[1] "%T resterend"
+
+#: libcore/marlin-file-operations.c:1471 libcore/marlin-file-operations.c:1505
+#: libcore/marlin-file-operations.c:1544 libcore/marlin-file-operations.c:1621
+#: libcore/marlin-file-operations.c:2375
+msgid "Error while deleting."
+msgstr "Fout bij het verwijderen."
+
+#: libcore/marlin-file-operations.c:1475
+msgid ""
+"Files in the folder \"%B\" cannot be deleted because you do not have "
+"permissions to see them."
+msgstr ""
+"Bestanden in de map ‘%B’ kunnen niet worden gewist omdat u geen rechten "
+"heeft om ze te zien."
+
+#: libcore/marlin-file-operations.c:1478 libcore/marlin-file-operations.c:2434
+#: libcore/marlin-file-operations.c:3401
+msgid ""
+"There was an error getting information about the files in the folder \"%B\"."
+msgstr ""
+"Er is een fout opgetreden bij het ophalen van de informatie van de bestanden "
+"in de map \"%B\"."
+
+#: libcore/marlin-file-operations.c:1487 libcore/marlin-file-operations.c:3410
+msgid "_Skip files"
+msgstr "Bestanden _overslaan"
+
+#: libcore/marlin-file-operations.c:1508
+msgid ""
+"The folder \"%B\" cannot be deleted because you do not have permissions to "
+"read it."
+msgstr ""
+"De map \"%B\" can niet verwijderd worden omdat u geen permissies om te lezen "
+"heeft."
+
+#: libcore/marlin-file-operations.c:1511 libcore/marlin-file-operations.c:2473
+#: libcore/marlin-file-operations.c:3446
+msgid "There was an error reading the folder \"%B\"."
+msgstr "Er is een fout opgetreden bij het lezen van de map \"%B\"."
+
+#: libcore/marlin-file-operations.c:1545
+msgid "Could not remove the folder %B."
+msgstr "Kon de map %B niet verwijderen."
+
+#: libcore/marlin-file-operations.c:1622
+msgid "There was an error deleting %B."
+msgstr "Er is een fout opgetreden bij het verwijderen van %B."
+
+#: libcore/marlin-file-operations.c:1706
+msgid "Moving files to trash"
+msgstr "Bestanden in de prullenbak gooien"
+
+#: libcore/marlin-file-operations.c:1708
+#, c-format
+msgid "%'d file left to trash"
+msgid_plural "%'d files left to trash"
+msgstr[0] "%'d bestand over om in de prullenbak te gooien"
+msgstr[1] "%'d bestanden over om in de prullenbak te gooien"
+
+#: libcore/marlin-file-operations.c:1802 libcore/marlin-file-operations.c:1805
+#: libcore/marlin-file-operations.c:1808
+msgid "Cannot move file to trash or delete it"
+msgstr "Kan het bestand niet verplaatsen naar de prullenbak of verwijderen"
+
+#: libcore/marlin-file-operations.c:1803
+msgid "It is not permitted to trash or delete files on a read only filesystem."
+msgstr ""
+"Het is niet toegestaan bestanden naar de prullenbak te verplaatsen of te "
+"verwijderen op een alleen-lezen bestandssysteem."
+
+#: libcore/marlin-file-operations.c:1806
+msgid ""
+"It is not permitted to trash or delete files inside folders for which you do "
+"not have write privileges."
+msgstr ""
+"Het is niet toegestaan om bestanden, die in mappen staan waarvoor je geen "
+"schrijfrechten hebt, naar de prullenbak te verplaatsen of te verwijderen."
+
+#: libcore/marlin-file-operations.c:1809
+msgid ""
+"It is not permitted to trash or delete folders for which you do not have "
+"write privileges."
+msgstr ""
+"Het is niet toegestaan om mappen, waar je geen schrijfrechten voor hebt, "
+"naar de prullenbak te verplaatsen of te verwijderen."
+
+#: libcore/marlin-file-operations.c:1811
+msgid "Cannot move file to trash. Try to delete it immediately?"
+msgstr ""
+"Kan bestand niet naar de prullenbak verplaatsen. Wilt u het bestand direct "
+"proberen te verwijderen?"
+
+#: libcore/marlin-file-operations.c:1812
+msgid ""
+"This file could not be moved to trash. See details below for further "
+"information."
+msgstr ""
+"Het bestand kan niet naar de prullenbak worden verplaatst. Zie hieronder "
+"voor meer informatie."
+
+#: libcore/marlin-file-operations.c:1816
+msgid "Cannot move file to trash.  Try to delete it?"
+msgstr ""
+"Kan bestand niet naar de prullenbak verplaatsen. Wilt u het bestand proberen "
+"te verwijderen?"
+
+#: libcore/marlin-file-operations.c:1817
+msgid ""
+"This file could not be moved to trash. You may not be able to delete it "
+"either."
+msgstr ""
+"Dit bestand kan niet naar de prullenbak worden verplaatst. Het kan mogelijks "
+"ook niet verwijderd worden."
+
+#: libcore/marlin-file-operations.c:1822
+msgid ""
+"\n"
+" Deleting a file removes it permanently"
+msgstr ""
+"\n"
+" Een bestand verwijderen is permanent"
+
+#: libcore/marlin-file-operations.c:2012
+msgid "Trashing Files"
+msgstr "Bestanden in prullenbak gooien"
+
+#: libcore/marlin-file-operations.c:2014
+msgid "Deleting Files"
+msgstr "Bestanden wissen"
+
+#: libcore/marlin-file-operations.c:2083
+msgid "Unable to eject %V"
+msgstr "Kan %V niet uitwerpen"
+
+#: libcore/marlin-file-operations.c:2085
+msgid "Unable to unmount %V"
+msgstr "Kan %V niet ontkoppelen"
+
+#: libcore/marlin-file-operations.c:2299
+#, c-format
+msgid "Unable to mount %s"
+msgstr "Kon %s niet aankoppelen"
+
+#: libcore/marlin-file-operations.c:2322
+#, c-format
+msgid "Preparing to copy %'d file (%S)"
+msgid_plural "Preparing to copy %'d files (%S)"
+msgstr[0] "Kopiëren van %'d bestand voorbereiden (%S)"
+msgstr[1] "Kopiëren van %'d bestanden voorbereiden (%S)"
+
+#: libcore/marlin-file-operations.c:2328
+#, c-format
+msgid "Preparing to move %'d file (%S)"
+msgid_plural "Preparing to move %'d files (%S)"
+msgstr[0] "Verplaatsen van %'d bestand voorbereiden (%S)"
+msgstr[1] "Verplaatsen van %'d bestanden voorbereiden (%S)"
+
+#: libcore/marlin-file-operations.c:2334
+#, c-format
+msgid "Preparing to delete %'d file (%S)"
+msgid_plural "Preparing to delete %'d files (%S)"
+msgstr[0] "Verwijderen van %'d bestand voorbereiden (%S)"
+msgstr[1] "Verwijderen van %'d bestanden voorbereiden (%S)"
+
+#: libcore/marlin-file-operations.c:2340
+#, c-format
+msgid "Preparing to trash %'d file"
+msgid_plural "Preparing to trash %'d files"
+msgstr[0] "In prullenbak gooien van %'d bestand voorbereiden"
+msgstr[1] "In prullenbak gooien van %'d bestanden voorbereiden"
+
+#: libcore/marlin-file-operations.c:2371 libcore/marlin-file-operations.c:3261
+#: libcore/marlin-file-operations.c:3393 libcore/marlin-file-operations.c:3438
+msgid "Error while copying."
+msgstr "Fout bij het kopiëren."
+
+#: libcore/marlin-file-operations.c:2373 libcore/marlin-file-operations.c:3391
+#: libcore/marlin-file-operations.c:3436
+msgid "Error while moving."
+msgstr "Fout bij het verplaatsen."
+
+#: libcore/marlin-file-operations.c:2377
+msgid "Error while moving files to trash."
+msgstr "Fout bij het verplaatsen naar de prullenbak."
+
+#: libcore/marlin-file-operations.c:2431
+msgid ""
+"Files in the folder \"%B\" cannot be handled because you do not have "
+"permissions to see them."
+msgstr ""
+"Bestanden in de map ‘%B’ kunnen niet worden afgehandeld omdat u geen rechten "
+"heeft om ze te zien."
+
+#: libcore/marlin-file-operations.c:2470
+msgid ""
+"The folder \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"De map \"%B\" kan niet worden afgehandeld omdat u er geen leesrechten voor "
+"heeft."
+
+#: libcore/marlin-file-operations.c:2546
+msgid ""
+"The file \"%B\" cannot be handled because you do not have permissions to "
+"read it."
+msgstr ""
+"Het bestand ‘%B’ kan niet worden afgehandeld omdat u er geen leesrechten "
+"voor heeft."
+
+#: libcore/marlin-file-operations.c:2549
+msgid "There was an error getting information about \"%B\"."
+msgstr "Er is een fout opgetreden bij het ophalen van informatie over ‘%B’."
+
+#: libcore/marlin-file-operations.c:2649 libcore/marlin-file-operations.c:2691
+#: libcore/marlin-file-operations.c:2724 libcore/marlin-file-operations.c:2754
+msgid "Error while copying to \"%B\"."
+msgstr "Fout bij het kopiëren naar \"%B\"."
+
+#: libcore/marlin-file-operations.c:2653
+msgid "You do not have permissions to access the destination folder."
+msgstr "U heeft geen permissies om de doelmap te benaderen."
+
+#: libcore/marlin-file-operations.c:2655
+msgid "There was an error getting information about the destination."
+msgstr ""
+"Er is een fout opgetreden bij het ophalen van de informatie over de "
+"bestemming."
+
+#: libcore/marlin-file-operations.c:2692
+msgid "The destination is not a folder."
+msgstr "De bestemming is geen map."
+
+#: libcore/marlin-file-operations.c:2725
+msgid ""
+"There is not enough space on the destination. Try to remove files to make "
+"space."
+msgstr ""
+"Er is niet genoeg ruimte op de bestemming. Probeer bestanden te verwijderen "
+"om ruimte vrij te maken."
+
+#: libcore/marlin-file-operations.c:2727
+#, c-format
+msgid "There is %S available, but %S is required."
+msgstr "Er is %S beschikbaar, maar %S is vereist."
+
+#: libcore/marlin-file-operations.c:2755
+msgid "The destination is read-only."
+msgstr "De bestemming is alleen-lezen."
+
+#: libcore/marlin-file-operations.c:2814
+msgid "Moving \"%B\" to \"%B\""
+msgstr "Verplaatsen van ‘%B’ naar ‘%B’"
+
+#: libcore/marlin-file-operations.c:2815
+msgid "Copying \"%B\" to \"%B\""
+msgstr "Kopiëren van ‘%B’ naar ‘%B’"
+
+#: libcore/marlin-file-operations.c:2819
+msgid "Duplicating \"%B\""
+msgstr "Dupliceren van ‘%B’"
+
+#: libcore/marlin-file-operations.c:2823
+msgid "Moving %'d file (in \"%B\") to \"%B\""
+msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Verplaatsen van %'d bestand (in ‘%B’) naar ‘%B’"
+msgstr[1] "Verplaatsen van %'d bestanden (in ‘%B’) naar ‘%B’"
+
+#: libcore/marlin-file-operations.c:2826
+msgid "Copying %'d file (in \"%B\") to \"%B\""
+msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
+msgstr[0] "Kopiëren van %'d bestand (in ‘%B’) naar ‘%B’"
+msgstr[1] "Kopiëren van %'d bestanden (in ‘%B’) naar ‘%B’"
+
+#: libcore/marlin-file-operations.c:2833
+msgid "Duplicating %'d file (in \"%B\")"
+msgid_plural "Duplicating %'d files (in \"%B\")"
+msgstr[0] "Dupliceren van %'d bestand (in ‘%B’)"
+msgstr[1] "Dupliceren van %'d bestanden (in ‘%B’)"
+
+#: libcore/marlin-file-operations.c:2842
+msgid "Moving %'d file to \"%B\""
+msgid_plural "Moving %'d files to \"%B\""
+msgstr[0] "Verplaatsen van %'d bestand naar ‘%B’"
+msgstr[1] "Verplaatsen van %'d bestanden naar ‘%B’"
+
+#: libcore/marlin-file-operations.c:2846
+msgid "Copying %'d file to \"%B\""
+msgid_plural "Copying %'d files to \"%B\""
+msgstr[0] "Kopiëren van %'d bestand naar ‘%B’"
+msgstr[1] "Kopiëren van %'d bestanden naar ‘%B’"
+
+#: libcore/marlin-file-operations.c:2851
+#, c-format
+msgid "Duplicating %'d file"
+msgid_plural "Duplicating %'d files"
+msgstr[0] "Dupliceren van %'d bestand"
+msgstr[1] "Dupliceren van %'d bestanden"
+
+#: libcore/marlin-file-operations.c:2877
+#, c-format
+msgid "%S of %S"
+msgstr "%S van %S"
+
+#: libcore/marlin-file-operations.c:2887
+msgid "%S of %S — %T left (%S/sec)"
+msgid_plural "%S of %S — %T left (%S/sec)"
+msgstr[0] "%S van %S — %T resterend (%S/sec)"
+msgstr[1] "%S van %S — %T resterend (%S/sec)"
+
+#: libcore/marlin-file-operations.c:3265
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"create it in the destination."
+msgstr ""
+"Kan de map ‘%B’ niet kopiëren omdat u geen rechten heeft om deze aan te "
+"maken in het doel."
+
+#: libcore/marlin-file-operations.c:3268
+msgid "There was an error creating the folder \"%B\"."
+msgstr "Er is een fout opgetreden bij het aanmaken van de map ‘%B’."
+
+#: libcore/marlin-file-operations.c:3398
+msgid ""
+"Files in the folder \"%B\" cannot be copied because you do not have "
+"permissions to see them."
+msgstr ""
+"Kan bestanden in de map ‘%B’ niet kopiëren omdat u geen rechten heeft om ze "
+"te zien."
+
+#: libcore/marlin-file-operations.c:3443
+msgid ""
+"The folder \"%B\" cannot be copied because you do not have permissions to "
+"read it."
+msgstr ""
+"Kan de map \"%B\" niet kopiëren omdat u er geen leesrechten voor heeft."
+
+#: libcore/marlin-file-operations.c:3488 libcore/marlin-file-operations.c:4152
+msgid "Error while moving \"%B\"."
+msgstr "Fout bij het verplaatsen van '%B'."
+
+#: libcore/marlin-file-operations.c:3489
+msgid "Could not remove the source folder."
+msgstr "Kon de bronmap niet verwijderen."
+
+#: libcore/marlin-file-operations.c:3574 libcore/marlin-file-operations.c:3615
+#: libcore/marlin-file-operations.c:4154
+msgid "Error while copying \"%B\"."
+msgstr "Fout bij het kopiëren van ‘%B’."
+
+#: libcore/marlin-file-operations.c:3575
+#, c-format
+msgid "Could not remove files from the already existing folder %F."
+msgstr "Kon bestanden niet verwijderen uit de reeds bestaande map %F."
+
+#: libcore/marlin-file-operations.c:3616
+#, c-format
+msgid "Could not remove the already existing file %F."
+msgstr "Kon het reeds bestaande bestand %F niet verwijderen."
+
+#: libcore/marlin-file-operations.c:3890 libcore/marlin-file-operations.c:4561
+msgid "You cannot move a folder into itself."
+msgstr "Een map kan niet naar zichzelf verplaatst worden."
+
+#: libcore/marlin-file-operations.c:3891 libcore/marlin-file-operations.c:4562
+msgid "You cannot copy a folder into itself."
+msgstr "Een map kan niet naar zichzelf gekopieerd worden."
+
+#: libcore/marlin-file-operations.c:3892 libcore/marlin-file-operations.c:4563
+msgid "The destination folder is inside the source folder."
+msgstr "De doelmap bevindt zich binnenin de bronmap."
+
+#: libcore/marlin-file-operations.c:3923
+msgid "You cannot move a file over itself."
+msgstr "Een bestand kan niet naar zichzelf verplaatst worden."
+
+#: libcore/marlin-file-operations.c:3924
+msgid "You cannot copy a file over itself."
+msgstr "Een bestand kan niet naar zichzelf gekopieerd worden."
+
+#: libcore/marlin-file-operations.c:3925
+msgid "The source file would be overwritten by the destination."
+msgstr "Het bronbestand zou door het doelbestand overschreven worden."
+
+#: libcore/marlin-file-operations.c:4156
+#, c-format
+msgid "Could not remove the already existing file with the same name in %F."
+msgstr "Kon het bestaande bestand met dezelfde naam in %F niet verwijderen."
+
+#: libcore/marlin-file-operations.c:4221
+msgid "Cannot copy \"%B\" here."
+msgstr "Kan \"%B\" hier niet kopiëren."
+
+#: libcore/marlin-file-operations.c:4222
+msgid "There was an error copying the file into %B."
+msgstr ""
+"Er is een fout opgetreden tijdens het kopiëren van het bestand naar %B."
+
+#: libcore/marlin-file-operations.c:4444
+msgid "Copying Files"
+msgstr "Bestanden kopiëren"
+
+#: libcore/marlin-file-operations.c:4470
+msgid "Preparing to move to \"%B\""
+msgstr "Verplaatsen naar \"%B\" voorbereiden"
+
+#: libcore/marlin-file-operations.c:4474
+#, c-format
+msgid "Preparing to move %'d file"
+msgid_plural "Preparing to move %'d files"
+msgstr[0] "Verplaatsen van %'d bestand voorbereiden"
+msgstr[1] "Verplaatsen van %'d bestanden voorbereiden"
+
+#: libcore/marlin-file-operations.c:4720
+#, c-format
+msgid "Error while moving \"%F\"."
+msgstr "Er is een fout opgetreden tijdens het verplaatsen van \"%F\"."
+
+#: libcore/marlin-file-operations.c:4721
+#, c-format
+msgid "There was an error moving the file into %F."
+msgstr ""
+"Er is een fout opgetreden tijdens het verplaatsen van het bestand naar %F."
+
+#: libcore/marlin-file-operations.c:4978
+msgid "Moving Files"
+msgstr "Verplaatsen van bestanden"
+
+#: libcore/marlin-file-operations.c:5007
+msgid "Creating links in \"%B\""
+msgstr "Aanmaken van verwijzingen in \"%B\""
+
+#: libcore/marlin-file-operations.c:5011
+#, c-format
+msgid "Making link to %'d file"
+msgid_plural "Making links to %'d files"
+msgstr[0] "Aanmaken van verwijzing naar %'d bestand"
+msgstr[1] "Aanmaken van verwijzingen naar %'d bestanden"
+
+#: libcore/marlin-file-operations.c:5151
+msgid "Error while creating link to %B."
+msgstr "Fout bij het aanmaken van een verwijzing naar %B."
+
+#: libcore/marlin-file-operations.c:5153
+msgid "Symbolic links only supported for local files"
+msgstr "Symbolische verwijzingen alleen ondersteund voor lokale bestanden"
+
+#: libcore/marlin-file-operations.c:5156
+msgid "The target doesn't support symbolic links."
+msgstr "Dit doel ondersteunt geen symbolische verwijzingen."
+
+#: libcore/marlin-file-operations.c:5159
+#, c-format
+msgid "There was an error creating the symlink in %F."
+msgstr ""
+"Er is een fout opgetreden bij het aanmaken van de symbolische verwijzing in "
+"%F."
+
+#: libcore/marlin-file-operations.c:5477
+msgid "Setting permissions"
+msgstr "Toegangsrechten instellen"
+
+#: libcore/marlin-file-operations.c:5573
+msgid "Cannot copy into trash."
+msgstr "Kan niet kopiëren naar prullenbak."
+
+#: libcore/marlin-file-operations.c:5574
+msgid "It is not permitted to copy files into the trash"
+msgstr "Het is niet toegestaan om bestanden te kopiëren naar de prullenbak"
+
+#: libcore/marlin-file-operations.c:5712
+msgid "untitled folder"
+msgstr "naamloze map"
+
+#: libcore/marlin-file-operations.c:5720
+msgid "new file"
+msgstr "nieuw bestand"
+
+#: libcore/marlin-file-operations.c:5891
+msgid "Error while creating directory %B."
+msgstr "Er is een fout opgetreden bij het aanmaken van de map %B."
+
+#: libcore/marlin-file-operations.c:5893
+msgid "Error while creating file %B."
+msgstr "Fout bij het maken van het bestand %B."
+
+#: libcore/marlin-file-operations.c:5895
+#, c-format
+msgid "There was an error creating the directory in %F."
+msgstr "Er is een fout opgetreden bij het aanmaken van de map %F."
+
+#: libcore/marlin-file-operations.c:6205
+msgid "Emptying Trash"
+msgstr "Bezig met prullenbak legen"
+
+#: libcore/marlin-undostack-manager.c:580
+msgid "Original location could not be determined"
+msgstr "Oorspronkelijke locatie kon niet worden bepaald"
+
+#: libcore/marlin-undostack-manager.c:581
+msgid "Open trash folder and restore manually"
+msgstr "Open de prullenbak en herstel handmatig"
+
+#: libcore/marlin-undostack-manager.c:1118
+#, c-format
+msgid "Delete %d copied items"
+msgstr "%d gekopieerde items verwijderen"
+
+#: libcore/marlin-undostack-manager.c:1121
+#: libcore/marlin-undostack-manager.c:1131
+#: libcore/marlin-undostack-manager.c:1162
+#, c-format
+msgid "Delete '%s'"
+msgstr "‘%s’ _verwijderen"
+
+#: libcore/marlin-undostack-manager.c:1128
+#, c-format
+msgid "Delete %d duplicated items"
+msgstr "Verwijder %d dubbele items"
+
+#: libcore/marlin-undostack-manager.c:1139
+#, c-format
+msgid "Move %d items back to '%s'"
+msgstr "%d items terugplaatsen naar ‘%s’"
+
+#: libcore/marlin-undostack-manager.c:1143
+#, c-format
+msgid "Move '%s' back to '%s'"
+msgstr "‘%s’ terugplaatsen naar ‘%s’"
+
+#: libcore/marlin-undostack-manager.c:1152
+#: libcore/marlin-undostack-manager.c:1319
+#, c-format
+msgid "Rename '%s' as '%s'"
+msgstr "Hernoem '%s' naar '%s'"
+
+#: libcore/marlin-undostack-manager.c:1171
+#: libcore/marlin-undostack-manager.c:1366
+#, c-format
+msgid "Restore %d items from trash"
+msgstr "%d items terugzetten uit prullenbak"
+
+#: libcore/marlin-undostack-manager.c:1179
+#, c-format
+msgid "Restore '%s' to '%s'"
+msgstr "'%s' terugzetten naar '%s'"
+
+#: libcore/marlin-undostack-manager.c:1190
+#, c-format
+msgid "Move %d items back to trash"
+msgstr "Verplaats %d items terug naar de prullenbak"
+
+#: libcore/marlin-undostack-manager.c:1193
+#, c-format
+msgid "Move '%s' back to trash"
+msgstr "Verplaats '%s' terug naar de prullenbak"
+
+#: libcore/marlin-undostack-manager.c:1202
+#, c-format
+msgid "Delete links to %d items"
+msgstr "Verwijder verwijzingen naar %d items"
+
+#: libcore/marlin-undostack-manager.c:1205
+#, c-format
+msgid "Delete link to '%s'"
+msgstr "Verwijder verwijzing naar '%s'"
+
+#: libcore/marlin-undostack-manager.c:1215
+#, c-format
+msgid "Restore original permissions of items enclosed in '%s'"
+msgstr "Herstel oorspronkelijke rechten van items in '%s'"
+
+#: libcore/marlin-undostack-manager.c:1223
+#, c-format
+msgid "Restore original permissions of '%s'"
+msgstr "Herstel oorspronkelijke rechten van '%s'"
+
+#: libcore/marlin-undostack-manager.c:1232
+#, c-format
+msgid "Restore group of '%s' to '%s'"
+msgstr "Herstel groep van '%s' naar '%s'"
+
+#: libcore/marlin-undostack-manager.c:1242
+#, c-format
+msgid "Restore owner of '%s' to '%s'"
+msgstr "Herstel eigenaar van '%s' naar '%s'"
+
+#: libcore/marlin-undostack-manager.c:1281
+#, c-format
+msgid "Copy %d items to '%s'"
+msgstr "Kopieer %d items naar '%s'"
+
+#: libcore/marlin-undostack-manager.c:1285
+#, c-format
+msgid "Copy '%s' to '%s'"
+msgstr "Kopieer ‘%s’ naar ‘%s’"
+
+#: libcore/marlin-undostack-manager.c:1293
+#, c-format
+msgid "Duplicate of %d items in '%s'"
+msgstr "Kopie van %d items in '%s'"
+
+#: libcore/marlin-undostack-manager.c:1298
+#, c-format
+msgid "Duplicate '%s' in '%s'"
+msgstr "Kopieer '%s' in '%s'"
+
+#: libcore/marlin-undostack-manager.c:1306
+#, c-format
+msgid "Move %d items to '%s'"
+msgstr "Verplaats %d items naar '%s'"
+
+#: libcore/marlin-undostack-manager.c:1310
+#, c-format
+msgid "Move '%s' to '%s'"
+msgstr "Verplaats ‘%s’ naar ‘%s’"
+
+#: libcore/marlin-undostack-manager.c:1328
+#, c-format
+msgid "Create new file '%s' from template "
+msgstr "Nieuw bestand ‘%s’ aanmaken vanaf sjabloon "
+
+#: libcore/marlin-undostack-manager.c:1335
+#, c-format
+msgid "Create an empty file '%s'"
+msgstr "Maak een leeg bestand '%s' aan"
+
+#: libcore/marlin-undostack-manager.c:1342
+#, c-format
+msgid "Create a new folder '%s'"
+msgstr "Maak een nieuwe map '%s' aan"
+
+#: libcore/marlin-undostack-manager.c:1350
+#, c-format
+msgid "Move %d items to trash"
+msgstr "Verplaats %d items naar de prullenbak"
+
+#: libcore/marlin-undostack-manager.c:1356
+#, c-format
+msgid "Move '%s' to trash"
+msgstr "Verplaats ‘%s’ naar de prullenbak"
+
+#: libcore/marlin-undostack-manager.c:1369
+#, c-format
+msgid "Restore '%s' from trash"
+msgstr "Herstel '%s' uit de prullenbak"
+
+#: libcore/marlin-undostack-manager.c:1378
+#, c-format
+msgid "Create links to %d items"
+msgstr "Maak verwijzingen naar '%d' items aan"
+
+#: libcore/marlin-undostack-manager.c:1381
+#, c-format
+msgid "Create link to '%s'"
+msgstr "Maak verwijzing naar '%s' aan"
+
+#: libcore/marlin-undostack-manager.c:1390
+#, c-format
+msgid "Set permissions of items enclosed in '%s'"
+msgstr "Stel rechten van items in '%s' in"
+
+#: libcore/marlin-undostack-manager.c:1398
+#, c-format
+msgid "Set permissions of '%s'"
+msgstr "Stel rechten van ‘%s’ in"
+
+#: libcore/marlin-undostack-manager.c:1407
+#, c-format
+msgid "Set group of '%s' to '%s'"
+msgstr "Verander groep van '%s' naar '%s'"
+
+#: libcore/marlin-undostack-manager.c:1417
+#, c-format
+msgid "Set owner of '%s' to '%s'"
+msgstr "Verander eigenaar van ‘%s’ in ‘%s’"
+
+#: libcore/marlin-undostack-manager.c:1449
+#, c-format
+msgid "_Undo copy of %d item"
+msgid_plural "_Undo copy of %d items"
+msgstr[0] "Kopiëren van %d onderdeel _ongedaan maken"
+msgstr[1] "Kopiëren van %d onderdelen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1454
+#, c-format
+msgid "_Undo duplicate of %d item"
+msgid_plural "_Undo duplicate of %d items"
+msgstr[0] "Dupliceren van %d onderdeel _ongedaan maken"
+msgstr[1] "Dupliceren van %d onderdelen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1459
+#, c-format
+msgid "_Undo move of %d item"
+msgid_plural "_Undo move of %d items"
+msgstr[0] "Verplaatsen van %d object _ongedaan maken"
+msgstr[1] "Verplaatsen van %d objecten _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1464
+#, c-format
+msgid "_Undo rename of %d item"
+msgid_plural "_Undo rename of %d items"
+msgstr[0] "Hernoemen van %d onderdeel _ongedaan maken"
+msgstr[1] "Hernoemen van %d onderdelen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1468
+msgid "_Undo creation of an empty file"
+msgstr "Aanmaken van leeg bestand _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1471
+msgid "_Undo creation of a file from template"
+msgstr "_Aanmaken van bestand met sjabloon ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1475
+#, c-format
+msgid "_Undo creation of %d folder"
+msgid_plural "_Undo creation of %d folders"
+msgstr[0] "Aanmaken van %d map _ongedaan maken"
+msgstr[1] "Aanmaken van %d mappen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1480
+#, c-format
+msgid "_Undo move to trash of %d item"
+msgid_plural "_Undo move to trash of %d items"
+msgstr[0] "Verplaaten van %d onderdeel naar prullenbak _ongedaan maken"
+msgstr[1] "Verplaaten van %d onderdelen naar prullenbak _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1485
+#, c-format
+msgid "_Undo restore from trash of %d item"
+msgid_plural "_Undo restore from trash of %d items"
+msgstr[0] "Uit prullenbak terugzetten van %d onderdeel _ongedaan maken"
+msgstr[1] "Uit prullenbak terugzetten van %d onderdelen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1490
+#, c-format
+msgid "_Undo create link to %d item"
+msgid_plural "_Undo create link to %d items"
+msgstr[0] "Aanmaken van verwijzing naar %d onderdeel _ongedaan maken"
+msgstr[1] "Aanmaken van verwijzing naar %d onderdelen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1495
+#, c-format
+msgid "_Undo delete of %d item"
+msgid_plural "_Undo delete of %d items"
+msgstr[0] "Verwijderen van %d onderdeel _ongedaan maken"
+msgstr[1] "Verwijderen van %d onderdelen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1500
+#, c-format
+msgid "Undo recursive change permissions of %d item"
+msgid_plural "Undo recursive change permissions of %d items"
+msgstr[0] "Recursief wijzigen rechten van %d onderdeel _ongedaan maken"
+msgstr[1] "Recursief wijzigen rechten van %d onderdelen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1506
+#, c-format
+msgid "Undo change permissions of %d item"
+msgid_plural "Undo change permissions of %d items"
+msgstr[0] "Wijzigen rechten van %d onderdeel _ongedaan maken"
+msgstr[1] "Wijzigen rechten van %d onderdelen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1511
+#, c-format
+msgid "Undo change group of %d item"
+msgid_plural "Undo change group of %d items"
+msgstr[0] "Wijzigen groep van %d onderdeel _ongedaan maken"
+msgstr[1] "Wijzigen groep van %d onderdelen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1516
+#, c-format
+msgid "Undo change owner of %d item"
+msgid_plural "Undo change owner of %d items"
+msgstr[0] "Wijzigen eigenaar van %d onderdeel _ongedaan maken"
+msgstr[1] "Wijzigen eigenaar van %d onderdelen _ongedaan maken"
+
+#: libcore/marlin-undostack-manager.c:1544
+#, c-format
+msgid "_Redo copy of %d item"
+msgid_plural "_Redo copy of %d items"
+msgstr[0] "Kopiëren van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Kopiëren van %d onderdelen op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1549
+#, c-format
+msgid "_Redo duplicate of %d item"
+msgid_plural "_Redo duplicate of %d items"
+msgstr[0] "Dupliceren van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Dupliceren van %d onderdelen op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1554
+#, c-format
+msgid "_Redo move of %d item"
+msgid_plural "_Redo move of %d items"
+msgstr[0] "Verplaatsen van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Verplaatsen van %d onderdelen op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1559
+#, c-format
+msgid "_Redo rename of %d item"
+msgid_plural "_Redo rename of %d items"
+msgstr[0] "Hernoemen van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Hernoemen van %d onderdelen op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1563
+msgid "_Redo creation of an empty file"
+msgstr "Aanmaken leeg bestand op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1566
+msgid "_Redo creation of a file from template"
+msgstr "Aanmaken bestand vanaf sjabloon op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1570
+#, c-format
+msgid "_Redo creation of %d folder"
+msgid_plural "_Redo creation of %d folders"
+msgstr[0] "Aanmaken van %d map op_nieuw uitvoeren"
+msgstr[1] "Aanmaken van %d mappen op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1575
+#, c-format
+msgid "_Redo move to trash of %d item"
+msgid_plural "_Redo move to trash of %d items"
+msgstr[0] "Verplaatsen van %d onderdeel naar prullenbak op_nieuw uitvoeren"
+msgstr[1] "Verplaatsen van %d onderdelen naar prullenbak op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1580
+#, c-format
+msgid "_Redo restore from trash of %d item"
+msgid_plural "_Redo restore from trash of %d items"
+msgstr[0] "Terugzetten van %d onderdeel uit de prullenbak op_nieuw uitvoeren"
+msgstr[1] "Terugzetten van %d onderdelen uit de prullenbak op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1585
+#, c-format
+msgid "_Redo create link to %d item"
+msgid_plural "_Redo create link to %d items"
+msgstr[0] "Aanmaken verwijzing naar %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Aanmaken verwijzing naar %d onderdelen op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1590
+#, c-format
+msgid "_Redo delete of %d item"
+msgid_plural "_Redo delete of %d items"
+msgstr[0] "Verwijderen van % item op_nieuw uitvoeren"
+msgstr[1] "Verwijderen van %d items op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1595
+#, c-format
+msgid "Redo recursive change permissions of %d item"
+msgid_plural "Redo recursive change permissions of %d items"
+msgstr[0] "Recursief wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Recursief wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1601
+#, c-format
+msgid "Redo change permissions of %d item"
+msgid_plural "Redo change permissions of %d items"
+msgstr[0] "Wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1606
+#, c-format
+msgid "Redo change group of %d item"
+msgid_plural "Redo change group of %d items"
+msgstr[0] "Wijzigen groep van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Wijzigen groep van %d onderdelen op_nieuw uitvoeren"
+
+#: libcore/marlin-undostack-manager.c:1611
+#, c-format
+msgid "Redo change owner of %d item"
+msgid_plural "Redo change owner of %d items"
+msgstr[0] "Wijzigen eigenaar van %d onderdeel op_nieuw uitvoeren"
+msgstr[1] "Wijzigen eigenaar van %d onderdelen op_nieuw uitvoeren"
+
+#: libcore/gof-file.c:332 libcore/gof-file.c:506
+msgid "Inaccessible"
+msgstr "Ontoegankelijk"
+
+#: libcore/gof-file.c:347
+#, c-format
+msgid "link to %s"
+msgstr "link naar %s"
+
 #: libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
 msgstr ""
@@ -1042,6 +2206,11 @@ msgstr ""
 #, c-format
 msgid "Go to %s"
 msgstr "Ga naar %s"
+
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#, fuzzy
+msgid "Type Path"
+msgstr "Type"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
@@ -1123,12 +2292,6 @@ msgstr "Selectie herstellen"
 msgid "Delete Selected"
 msgstr "Selectie verwijderen"
 
-#~ msgid "Inaccessible"
-#~ msgstr "Ontoegankelijk"
-
-#~ msgid "link to %s"
-#~ msgstr "link naar %s"
-
 #~ msgid "Failed to parse the desktop file: %s"
 #~ msgstr "Desktop-bestand verwerken is mislukt: %s"
 
@@ -1140,68 +2303,6 @@ msgstr "Selectie verwijderen"
 
 #~ msgid "Unable to Launch Desktop File: %s"
 #~ msgstr "Kon desktopbestand niet uitvoeren: %s"
-
-#~ msgid "S_kip All"
-#~ msgstr "_Alles Overslaan"
-
-#~ msgid "_Retry"
-#~ msgstr "Opnieuw P_roberen"
-
-#~ msgid "Delete _All"
-#~ msgstr "Alles Ver_wijderen"
-
-#~ msgid "_Replace"
-#~ msgstr "Ve_rvangen"
-
-#~ msgid "Replace _All"
-#~ msgstr "_AllesVervangen"
-
-#~ msgid "_Merge"
-#~ msgstr "Sa_menvoegen"
-
-#~ msgid "Merge _All"
-#~ msgstr "_Alles Samenvoegen"
-
-#~ msgid "Copy _Anyway"
-#~ msgstr "_Toch Kopiëren"
-
-#~ msgid "%'d second"
-#~ msgid_plural "%'d seconds"
-#~ msgstr[0] "%'d seconde"
-#~ msgstr[1] "%'d seconden"
-
-#~ msgid "%'d minute"
-#~ msgid_plural "%'d minutes"
-#~ msgstr[0] "%'d minuut"
-#~ msgstr[1] "%'d minuten"
-
-#~ msgid "%'d hour"
-#~ msgid_plural "%'d hours"
-#~ msgstr[0] "%'d uur"
-#~ msgstr[1] "%'d uren"
-
-#~ msgid "approximately %'d hour"
-#~ msgid_plural "approximately %'d hours"
-#~ msgstr[0] "ongeveer %'d uur"
-#~ msgstr[1] "ongeveer %'d uren"
-
-#~ msgid "Link to %s"
-#~ msgstr "Verwijzing naar %s"
-
-#~ msgid "Another link to %s"
-#~ msgstr "Nog een verwijzing naar %s"
-
-#~ msgid "%'dst link to %s"
-#~ msgstr "%'de verwijzing naar %s"
-
-#~ msgid "%'dnd link to %s"
-#~ msgstr "%'de verwijzing naar %s"
-
-#~ msgid "%'drd link to %s"
-#~ msgstr "%'de verwijzing naar %s"
-
-#~ msgid "%'dth link to %s"
-#~ msgstr "%'de verwijzing naar %s"
 
 #~ msgid " (copy)"
 #~ msgstr " (kopie)"
@@ -1239,704 +2340,6 @@ msgstr "Selectie verwijderen"
 #~ msgid "%s (%'drd copy)%s"
 #~ msgstr "%s (%'de kopie)%s"
 
-#~ msgid " ("
-#~ msgstr " ("
-
-#~ msgid " (%'d"
-#~ msgstr " (%'d"
-
-#~ msgid "Are you sure you want to permanently delete \"%B\" from the trash?"
-#~ msgstr ""
-#~ "Bent u zeker dat u \"%B\" definitief uit de prullenbak wilt verwijderen?"
-
-#~ msgid ""
-#~ "Are you sure you want to permanently delete the %'d selected item from "
-#~ "the trash?"
-#~ msgid_plural ""
-#~ "Are you sure you want to permanently delete the %'d selected items from "
-#~ "the trash?"
-#~ msgstr[0] ""
-#~ "Weet u zeker dat u het geselecteerde item blijvend wilt verwijderen uit "
-#~ "de prullenbak?"
-#~ msgstr[1] ""
-#~ "Weet u zeker dat u de %'d geselecteerde items blijvend wilt verwijderen "
-#~ "uit de prullenbak?"
-
-#~ msgid "If you delete an item, it will be permanently lost."
-#~ msgstr "Als u een bestand verwijdert, zal het definitief verloren gaan."
-
-#~ msgid "Permanently delete all items from Trash?"
-#~ msgstr "Alle items permanent uit de prullenbak verwijderen?"
-
-#~ msgid ""
-#~ "All items in all trash directories, including those on any mounted "
-#~ "external drives, will be permanently deleted."
-#~ msgstr ""
-#~ "Alle items in all prullenbak mappen, inclusief die op alle gekoppelde "
-#~ "externe schijven, worden permanent verwijderd."
-
-#~ msgid "Permanently delete all items from Trash on this mount?"
-#~ msgstr ""
-#~ "Alle items permanent uit de prullenbak op deze gekoppelde schijf "
-#~ "verwijderen?"
-
-#~ msgid "All items in the trash on this mount, will be permanently deleted."
-#~ msgstr ""
-#~ "Alle items in de prullenbak op deze gekoppelde schijf, worden permanent "
-#~ "verwijderd."
-
-#~ msgid "Are you sure you want to permanently delete \"%B\"?"
-#~ msgstr "Bent u zeker dat u het bestand \"%B\" definitief wilt verwijderen?"
-
-#~ msgid "Are you sure you want to permanently delete the %'d selected item?"
-#~ msgid_plural ""
-#~ "Are you sure you want to permanently delete the %'d selected items?"
-#~ msgstr[0] ""
-#~ "Weet u zeker dat u het geselecteerde item blijvend wilt verwijderen?"
-#~ msgstr[1] ""
-#~ "Weet u zeker dat u de %'d geselecteerde items permanent wilt verwijderen?"
-
-#~ msgid "%'d file left to delete"
-#~ msgid_plural "%'d files left to delete"
-#~ msgstr[0] "%'d te verwijderen bestand over"
-#~ msgstr[1] "%'d te verwijderen bestanden over"
-
-#~ msgid "Deleting files"
-#~ msgstr "Bestanden verwijderen"
-
-#~ msgid "%T left"
-#~ msgid_plural "%T left"
-#~ msgstr[0] "%T resterend"
-#~ msgstr[1] "%T resterend"
-
-#~ msgid "Error while deleting."
-#~ msgstr "Fout bij het verwijderen."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be deleted because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Bestanden in de map ‘%B’ kunnen niet worden gewist omdat u geen rechten "
-#~ "heeft om ze te zien."
-
-#~ msgid ""
-#~ "There was an error getting information about the files in the folder \"%B"
-#~ "\"."
-#~ msgstr ""
-#~ "Er is een fout opgetreden bij het ophalen van de informatie van de "
-#~ "bestanden in de map \"%B\"."
-
-#~ msgid "_Skip files"
-#~ msgstr "Bestanden _overslaan"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be deleted because you do not have permissions "
-#~ "to read it."
-#~ msgstr ""
-#~ "De map \"%B\" can niet verwijderd worden omdat u geen permissies om te "
-#~ "lezen heeft."
-
-#~ msgid "There was an error reading the folder \"%B\"."
-#~ msgstr "Er is een fout opgetreden bij het lezen van de map \"%B\"."
-
-#~ msgid "Could not remove the folder %B."
-#~ msgstr "Kon de map %B niet verwijderen."
-
-#~ msgid "There was an error deleting %B."
-#~ msgstr "Er is een fout opgetreden bij het verwijderen van %B."
-
-#~ msgid "Moving files to trash"
-#~ msgstr "Bestanden in de prullenbak gooien"
-
-#~ msgid "%'d file left to trash"
-#~ msgid_plural "%'d files left to trash"
-#~ msgstr[0] "%'d bestand over om in de prullenbak te gooien"
-#~ msgstr[1] "%'d bestanden over om in de prullenbak te gooien"
-
-#~ msgid "Cannot move file to trash or delete it"
-#~ msgstr "Kan het bestand niet verplaatsen naar de prullenbak of verwijderen"
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete files on a read only filesystem."
-#~ msgstr ""
-#~ "Het is niet toegestaan bestanden naar de prullenbak te verplaatsen of te "
-#~ "verwijderen op een alleen-lezen bestandssysteem."
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete files inside folders for which you "
-#~ "do not have write privileges."
-#~ msgstr ""
-#~ "Het is niet toegestaan om bestanden, die in mappen staan waarvoor je geen "
-#~ "schrijfrechten hebt, naar de prullenbak te verplaatsen of te verwijderen."
-
-#~ msgid ""
-#~ "It is not permitted to trash or delete folders for which you do not have "
-#~ "write privileges."
-#~ msgstr ""
-#~ "Het is niet toegestaan om mappen, waar je geen schrijfrechten voor hebt, "
-#~ "naar de prullenbak te verplaatsen of te verwijderen."
-
-#~ msgid "Cannot move file to trash. Try to delete it immediately?"
-#~ msgstr ""
-#~ "Kan bestand niet naar de prullenbak verplaatsen. Wilt u het bestand "
-#~ "direct proberen te verwijderen?"
-
-#~ msgid ""
-#~ "This file could not be moved to trash. See details below for further "
-#~ "information."
-#~ msgstr ""
-#~ "Het bestand kan niet naar de prullenbak worden verplaatst. Zie hieronder "
-#~ "voor meer informatie."
-
-#~ msgid "Cannot move file to trash.  Try to delete it?"
-#~ msgstr ""
-#~ "Kan bestand niet naar de prullenbak verplaatsen. Wilt u het bestand "
-#~ "proberen te verwijderen?"
-
-#~ msgid ""
-#~ "This file could not be moved to trash. You may not be able to delete it "
-#~ "either."
-#~ msgstr ""
-#~ "Dit bestand kan niet naar de prullenbak worden verplaatst. Het kan "
-#~ "mogelijks ook niet verwijderd worden."
-
-#~ msgid ""
-#~ "\n"
-#~ " Deleting a file removes it permanently"
-#~ msgstr ""
-#~ "\n"
-#~ " Een bestand verwijderen is permanent"
-
-#~ msgid "Trashing Files"
-#~ msgstr "Bestanden in prullenbak gooien"
-
-#~ msgid "Deleting Files"
-#~ msgstr "Bestanden wissen"
-
-#~ msgid "Unable to eject %V"
-#~ msgstr "Kan %V niet uitwerpen"
-
-#~ msgid "Unable to unmount %V"
-#~ msgstr "Kan %V niet ontkoppelen"
-
-#~ msgid "Unable to mount %s"
-#~ msgstr "Kon %s niet aankoppelen"
-
-#~ msgid "Preparing to copy %'d file (%S)"
-#~ msgid_plural "Preparing to copy %'d files (%S)"
-#~ msgstr[0] "Kopiëren van %'d bestand voorbereiden (%S)"
-#~ msgstr[1] "Kopiëren van %'d bestanden voorbereiden (%S)"
-
-#~ msgid "Preparing to move %'d file (%S)"
-#~ msgid_plural "Preparing to move %'d files (%S)"
-#~ msgstr[0] "Verplaatsen van %'d bestand voorbereiden (%S)"
-#~ msgstr[1] "Verplaatsen van %'d bestanden voorbereiden (%S)"
-
-#~ msgid "Preparing to delete %'d file (%S)"
-#~ msgid_plural "Preparing to delete %'d files (%S)"
-#~ msgstr[0] "Verwijderen van %'d bestand voorbereiden (%S)"
-#~ msgstr[1] "Verwijderen van %'d bestanden voorbereiden (%S)"
-
-#~ msgid "Preparing to trash %'d file"
-#~ msgid_plural "Preparing to trash %'d files"
-#~ msgstr[0] "In prullenbak gooien van %'d bestand voorbereiden"
-#~ msgstr[1] "In prullenbak gooien van %'d bestanden voorbereiden"
-
-#~ msgid "Error while copying."
-#~ msgstr "Fout bij het kopiëren."
-
-#~ msgid "Error while moving."
-#~ msgstr "Fout bij het verplaatsen."
-
-#~ msgid "Error while moving files to trash."
-#~ msgstr "Fout bij het verplaatsen naar de prullenbak."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be handled because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Bestanden in de map ‘%B’ kunnen niet worden afgehandeld omdat u geen "
-#~ "rechten heeft om ze te zien."
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be handled because you do not have permissions "
-#~ "to read it."
-#~ msgstr ""
-#~ "De map \"%B\" kan niet worden afgehandeld omdat u er geen leesrechten "
-#~ "voor heeft."
-
-#~ msgid ""
-#~ "The file \"%B\" cannot be handled because you do not have permissions to "
-#~ "read it."
-#~ msgstr ""
-#~ "Het bestand ‘%B’ kan niet worden afgehandeld omdat u er geen leesrechten "
-#~ "voor heeft."
-
-#~ msgid "There was an error getting information about \"%B\"."
-#~ msgstr "Er is een fout opgetreden bij het ophalen van informatie over ‘%B’."
-
-#~ msgid "Error while copying to \"%B\"."
-#~ msgstr "Fout bij het kopiëren naar \"%B\"."
-
-#~ msgid "You do not have permissions to access the destination folder."
-#~ msgstr "U heeft geen permissies om de doelmap te benaderen."
-
-#~ msgid "There was an error getting information about the destination."
-#~ msgstr ""
-#~ "Er is een fout opgetreden bij het ophalen van de informatie over de "
-#~ "bestemming."
-
-#~ msgid "The destination is not a folder."
-#~ msgstr "De bestemming is geen map."
-
-#~ msgid ""
-#~ "There is not enough space on the destination. Try to remove files to make "
-#~ "space."
-#~ msgstr ""
-#~ "Er is niet genoeg ruimte op de bestemming. Probeer bestanden te "
-#~ "verwijderen om ruimte vrij te maken."
-
-#~ msgid "There is %S available, but %S is required."
-#~ msgstr "Er is %S beschikbaar, maar %S is vereist."
-
-#~ msgid "The destination is read-only."
-#~ msgstr "De bestemming is alleen-lezen."
-
-#~ msgid "Moving \"%B\" to \"%B\""
-#~ msgstr "Verplaatsen van ‘%B’ naar ‘%B’"
-
-#~ msgid "Copying \"%B\" to \"%B\""
-#~ msgstr "Kopiëren van ‘%B’ naar ‘%B’"
-
-#~ msgid "Duplicating \"%B\""
-#~ msgstr "Dupliceren van ‘%B’"
-
-#~ msgid "Moving %'d file (in \"%B\") to \"%B\""
-#~ msgid_plural "Moving %'d files (in \"%B\") to \"%B\""
-#~ msgstr[0] "Verplaatsen van %'d bestand (in ‘%B’) naar ‘%B’"
-#~ msgstr[1] "Verplaatsen van %'d bestanden (in ‘%B’) naar ‘%B’"
-
-#~ msgid "Copying %'d file (in \"%B\") to \"%B\""
-#~ msgid_plural "Copying %'d files (in \"%B\") to \"%B\""
-#~ msgstr[0] "Kopiëren van %'d bestand (in ‘%B’) naar ‘%B’"
-#~ msgstr[1] "Kopiëren van %'d bestanden (in ‘%B’) naar ‘%B’"
-
-#~ msgid "Duplicating %'d file (in \"%B\")"
-#~ msgid_plural "Duplicating %'d files (in \"%B\")"
-#~ msgstr[0] "Dupliceren van %'d bestand (in ‘%B’)"
-#~ msgstr[1] "Dupliceren van %'d bestanden (in ‘%B’)"
-
-#~ msgid "Moving %'d file to \"%B\""
-#~ msgid_plural "Moving %'d files to \"%B\""
-#~ msgstr[0] "Verplaatsen van %'d bestand naar ‘%B’"
-#~ msgstr[1] "Verplaatsen van %'d bestanden naar ‘%B’"
-
-#~ msgid "Copying %'d file to \"%B\""
-#~ msgid_plural "Copying %'d files to \"%B\""
-#~ msgstr[0] "Kopiëren van %'d bestand naar ‘%B’"
-#~ msgstr[1] "Kopiëren van %'d bestanden naar ‘%B’"
-
-#~ msgid "Duplicating %'d file"
-#~ msgid_plural "Duplicating %'d files"
-#~ msgstr[0] "Dupliceren van %'d bestand"
-#~ msgstr[1] "Dupliceren van %'d bestanden"
-
-#~ msgid "%S of %S"
-#~ msgstr "%S van %S"
-
-#~ msgid "%S of %S — %T left (%S/sec)"
-#~ msgid_plural "%S of %S — %T left (%S/sec)"
-#~ msgstr[0] "%S van %S — %T resterend (%S/sec)"
-#~ msgstr[1] "%S van %S — %T resterend (%S/sec)"
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
-#~ "create it in the destination."
-#~ msgstr ""
-#~ "Kan de map ‘%B’ niet kopiëren omdat u geen rechten heeft om deze aan te "
-#~ "maken in het doel."
-
-#~ msgid "There was an error creating the folder \"%B\"."
-#~ msgstr "Er is een fout opgetreden bij het aanmaken van de map ‘%B’."
-
-#~ msgid ""
-#~ "Files in the folder \"%B\" cannot be copied because you do not have "
-#~ "permissions to see them."
-#~ msgstr ""
-#~ "Kan bestanden in de map ‘%B’ niet kopiëren omdat u geen rechten heeft om "
-#~ "ze te zien."
-
-#~ msgid ""
-#~ "The folder \"%B\" cannot be copied because you do not have permissions to "
-#~ "read it."
-#~ msgstr ""
-#~ "Kan de map \"%B\" niet kopiëren omdat u er geen leesrechten voor heeft."
-
-#~ msgid "Error while moving \"%B\"."
-#~ msgstr "Fout bij het verplaatsen van '%B'."
-
-#~ msgid "Could not remove the source folder."
-#~ msgstr "Kon de bronmap niet verwijderen."
-
-#~ msgid "Error while copying \"%B\"."
-#~ msgstr "Fout bij het kopiëren van ‘%B’."
-
-#~ msgid "Could not remove files from the already existing folder %F."
-#~ msgstr "Kon bestanden niet verwijderen uit de reeds bestaande map %F."
-
-#~ msgid "Could not remove the already existing file %F."
-#~ msgstr "Kon het reeds bestaande bestand %F niet verwijderen."
-
-#~ msgid "You cannot move a folder into itself."
-#~ msgstr "Een map kan niet naar zichzelf verplaatst worden."
-
-#~ msgid "You cannot copy a folder into itself."
-#~ msgstr "Een map kan niet naar zichzelf gekopieerd worden."
-
-#~ msgid "The destination folder is inside the source folder."
-#~ msgstr "De doelmap bevindt zich binnenin de bronmap."
-
-#~ msgid "You cannot move a file over itself."
-#~ msgstr "Een bestand kan niet naar zichzelf verplaatst worden."
-
-#~ msgid "You cannot copy a file over itself."
-#~ msgstr "Een bestand kan niet naar zichzelf gekopieerd worden."
-
-#~ msgid "The source file would be overwritten by the destination."
-#~ msgstr "Het bronbestand zou door het doelbestand overschreven worden."
-
-#~ msgid "Could not remove the already existing file with the same name in %F."
-#~ msgstr "Kon het bestaande bestand met dezelfde naam in %F niet verwijderen."
-
-#~ msgid "Cannot copy \"%B\" here."
-#~ msgstr "Kan \"%B\" hier niet kopiëren."
-
-#~ msgid "There was an error copying the file into %B."
-#~ msgstr ""
-#~ "Er is een fout opgetreden tijdens het kopiëren van het bestand naar %B."
-
-#~ msgid "Copying Files"
-#~ msgstr "Bestanden kopiëren"
-
-#~ msgid "Preparing to move to \"%B\""
-#~ msgstr "Verplaatsen naar \"%B\" voorbereiden"
-
-#~ msgid "Preparing to move %'d file"
-#~ msgid_plural "Preparing to move %'d files"
-#~ msgstr[0] "Verplaatsen van %'d bestand voorbereiden"
-#~ msgstr[1] "Verplaatsen van %'d bestanden voorbereiden"
-
-#~ msgid "Error while moving \"%F\"."
-#~ msgstr "Er is een fout opgetreden tijdens het verplaatsen van \"%F\"."
-
-#~ msgid "There was an error moving the file into %F."
-#~ msgstr ""
-#~ "Er is een fout opgetreden tijdens het verplaatsen van het bestand naar %F."
-
-#~ msgid "Moving Files"
-#~ msgstr "Verplaatsen van bestanden"
-
-#~ msgid "Creating links in \"%B\""
-#~ msgstr "Aanmaken van verwijzingen in \"%B\""
-
-#~ msgid "Making link to %'d file"
-#~ msgid_plural "Making links to %'d files"
-#~ msgstr[0] "Aanmaken van verwijzing naar %'d bestand"
-#~ msgstr[1] "Aanmaken van verwijzingen naar %'d bestanden"
-
-#~ msgid "Error while creating link to %B."
-#~ msgstr "Fout bij het aanmaken van een verwijzing naar %B."
-
-#~ msgid "Symbolic links only supported for local files"
-#~ msgstr "Symbolische verwijzingen alleen ondersteund voor lokale bestanden"
-
-#~ msgid "The target doesn't support symbolic links."
-#~ msgstr "Dit doel ondersteunt geen symbolische verwijzingen."
-
-#~ msgid "There was an error creating the symlink in %F."
-#~ msgstr ""
-#~ "Er is een fout opgetreden bij het aanmaken van de symbolische verwijzing "
-#~ "in %F."
-
-#~ msgid "Setting permissions"
-#~ msgstr "Toegangsrechten instellen"
-
-#~ msgid "Cannot copy into trash."
-#~ msgstr "Kan niet kopiëren naar prullenbak."
-
-#~ msgid "It is not permitted to copy files into the trash"
-#~ msgstr "Het is niet toegestaan om bestanden te kopiëren naar de prullenbak"
-
-#~ msgid "untitled folder"
-#~ msgstr "naamloze map"
-
-#~ msgid "new file"
-#~ msgstr "nieuw bestand"
-
-#~ msgid "Error while creating directory %B."
-#~ msgstr "Er is een fout opgetreden bij het aanmaken van de map %B."
-
-#~ msgid "Error while creating file %B."
-#~ msgstr "Fout bij het maken van het bestand %B."
-
-#~ msgid "There was an error creating the directory in %F."
-#~ msgstr "Er is een fout opgetreden bij het aanmaken van de map %F."
-
-#~ msgid "Emptying Trash"
-#~ msgstr "Bezig met prullenbak legen"
-
-#~ msgid "Original location could not be determined"
-#~ msgstr "Oorspronkelijke locatie kon niet worden bepaald"
-
-#~ msgid "Open trash folder and restore manually"
-#~ msgstr "Open de prullenbak en herstel handmatig"
-
-#~ msgid "Delete %d copied items"
-#~ msgstr "%d gekopieerde items verwijderen"
-
-#~ msgid "Delete '%s'"
-#~ msgstr "‘%s’ _verwijderen"
-
-#~ msgid "Delete %d duplicated items"
-#~ msgstr "Verwijder %d dubbele items"
-
-#~ msgid "Move %d items back to '%s'"
-#~ msgstr "%d items terugplaatsen naar ‘%s’"
-
-#~ msgid "Move '%s' back to '%s'"
-#~ msgstr "‘%s’ terugplaatsen naar ‘%s’"
-
-#~ msgid "Rename '%s' as '%s'"
-#~ msgstr "Hernoem '%s' naar '%s'"
-
-#~ msgid "Restore %d items from trash"
-#~ msgstr "%d items terugzetten uit prullenbak"
-
-#~ msgid "Restore '%s' to '%s'"
-#~ msgstr "'%s' terugzetten naar '%s'"
-
-#~ msgid "Move %d items back to trash"
-#~ msgstr "Verplaats %d items terug naar de prullenbak"
-
-#~ msgid "Move '%s' back to trash"
-#~ msgstr "Verplaats '%s' terug naar de prullenbak"
-
-#~ msgid "Delete links to %d items"
-#~ msgstr "Verwijder verwijzingen naar %d items"
-
-#~ msgid "Delete link to '%s'"
-#~ msgstr "Verwijder verwijzing naar '%s'"
-
-#~ msgid "Restore original permissions of items enclosed in '%s'"
-#~ msgstr "Herstel oorspronkelijke rechten van items in '%s'"
-
-#~ msgid "Restore original permissions of '%s'"
-#~ msgstr "Herstel oorspronkelijke rechten van '%s'"
-
-#~ msgid "Restore group of '%s' to '%s'"
-#~ msgstr "Herstel groep van '%s' naar '%s'"
-
-#~ msgid "Restore owner of '%s' to '%s'"
-#~ msgstr "Herstel eigenaar van '%s' naar '%s'"
-
-#~ msgid "Copy %d items to '%s'"
-#~ msgstr "Kopieer %d items naar '%s'"
-
-#~ msgid "Copy '%s' to '%s'"
-#~ msgstr "Kopieer ‘%s’ naar ‘%s’"
-
-#~ msgid "Duplicate of %d items in '%s'"
-#~ msgstr "Kopie van %d items in '%s'"
-
-#~ msgid "Duplicate '%s' in '%s'"
-#~ msgstr "Kopieer '%s' in '%s'"
-
-#~ msgid "Move %d items to '%s'"
-#~ msgstr "Verplaats %d items naar '%s'"
-
-#~ msgid "Move '%s' to '%s'"
-#~ msgstr "Verplaats ‘%s’ naar ‘%s’"
-
-#~ msgid "Create new file '%s' from template "
-#~ msgstr "Nieuw bestand ‘%s’ aanmaken vanaf sjabloon "
-
-#~ msgid "Create an empty file '%s'"
-#~ msgstr "Maak een leeg bestand '%s' aan"
-
-#~ msgid "Create a new folder '%s'"
-#~ msgstr "Maak een nieuwe map '%s' aan"
-
-#~ msgid "Move %d items to trash"
-#~ msgstr "Verplaats %d items naar de prullenbak"
-
-#~ msgid "Move '%s' to trash"
-#~ msgstr "Verplaats ‘%s’ naar de prullenbak"
-
-#~ msgid "Restore '%s' from trash"
-#~ msgstr "Herstel '%s' uit de prullenbak"
-
-#~ msgid "Create links to %d items"
-#~ msgstr "Maak verwijzingen naar '%d' items aan"
-
-#~ msgid "Create link to '%s'"
-#~ msgstr "Maak verwijzing naar '%s' aan"
-
-#~ msgid "Set permissions of items enclosed in '%s'"
-#~ msgstr "Stel rechten van items in '%s' in"
-
-#~ msgid "Set permissions of '%s'"
-#~ msgstr "Stel rechten van ‘%s’ in"
-
-#~ msgid "Set group of '%s' to '%s'"
-#~ msgstr "Verander groep van '%s' naar '%s'"
-
-#~ msgid "Set owner of '%s' to '%s'"
-#~ msgstr "Verander eigenaar van ‘%s’ in ‘%s’"
-
-#~ msgid "_Undo copy of %d item"
-#~ msgid_plural "_Undo copy of %d items"
-#~ msgstr[0] "Kopiëren van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Kopiëren van %d onderdelen _ongedaan maken"
-
-#~ msgid "_Undo duplicate of %d item"
-#~ msgid_plural "_Undo duplicate of %d items"
-#~ msgstr[0] "Dupliceren van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Dupliceren van %d onderdelen _ongedaan maken"
-
-#~ msgid "_Undo move of %d item"
-#~ msgid_plural "_Undo move of %d items"
-#~ msgstr[0] "Verplaatsen van %d object _ongedaan maken"
-#~ msgstr[1] "Verplaatsen van %d objecten _ongedaan maken"
-
-#~ msgid "_Undo rename of %d item"
-#~ msgid_plural "_Undo rename of %d items"
-#~ msgstr[0] "Hernoemen van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Hernoemen van %d onderdelen _ongedaan maken"
-
-#~ msgid "_Undo creation of an empty file"
-#~ msgstr "Aanmaken van leeg bestand _ongedaan maken"
-
-#~ msgid "_Undo creation of a file from template"
-#~ msgstr "_Aanmaken van bestand met sjabloon ongedaan maken"
-
-#~ msgid "_Undo creation of %d folder"
-#~ msgid_plural "_Undo creation of %d folders"
-#~ msgstr[0] "Aanmaken van %d map _ongedaan maken"
-#~ msgstr[1] "Aanmaken van %d mappen _ongedaan maken"
-
-#~ msgid "_Undo move to trash of %d item"
-#~ msgid_plural "_Undo move to trash of %d items"
-#~ msgstr[0] "Verplaaten van %d onderdeel naar prullenbak _ongedaan maken"
-#~ msgstr[1] "Verplaaten van %d onderdelen naar prullenbak _ongedaan maken"
-
-#~ msgid "_Undo restore from trash of %d item"
-#~ msgid_plural "_Undo restore from trash of %d items"
-#~ msgstr[0] "Uit prullenbak terugzetten van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Uit prullenbak terugzetten van %d onderdelen _ongedaan maken"
-
-#~ msgid "_Undo create link to %d item"
-#~ msgid_plural "_Undo create link to %d items"
-#~ msgstr[0] "Aanmaken van verwijzing naar %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Aanmaken van verwijzing naar %d onderdelen _ongedaan maken"
-
-#~ msgid "_Undo delete of %d item"
-#~ msgid_plural "_Undo delete of %d items"
-#~ msgstr[0] "Verwijderen van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Verwijderen van %d onderdelen _ongedaan maken"
-
-#~ msgid "Undo recursive change permissions of %d item"
-#~ msgid_plural "Undo recursive change permissions of %d items"
-#~ msgstr[0] "Recursief wijzigen rechten van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Recursief wijzigen rechten van %d onderdelen _ongedaan maken"
-
-#~ msgid "Undo change permissions of %d item"
-#~ msgid_plural "Undo change permissions of %d items"
-#~ msgstr[0] "Wijzigen rechten van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Wijzigen rechten van %d onderdelen _ongedaan maken"
-
-#~ msgid "Undo change group of %d item"
-#~ msgid_plural "Undo change group of %d items"
-#~ msgstr[0] "Wijzigen groep van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Wijzigen groep van %d onderdelen _ongedaan maken"
-
-#~ msgid "Undo change owner of %d item"
-#~ msgid_plural "Undo change owner of %d items"
-#~ msgstr[0] "Wijzigen eigenaar van %d onderdeel _ongedaan maken"
-#~ msgstr[1] "Wijzigen eigenaar van %d onderdelen _ongedaan maken"
-
-#~ msgid "_Redo copy of %d item"
-#~ msgid_plural "_Redo copy of %d items"
-#~ msgstr[0] "Kopiëren van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Kopiëren van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "_Redo duplicate of %d item"
-#~ msgid_plural "_Redo duplicate of %d items"
-#~ msgstr[0] "Dupliceren van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Dupliceren van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "_Redo move of %d item"
-#~ msgid_plural "_Redo move of %d items"
-#~ msgstr[0] "Verplaatsen van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Verplaatsen van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "_Redo rename of %d item"
-#~ msgid_plural "_Redo rename of %d items"
-#~ msgstr[0] "Hernoemen van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Hernoemen van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "_Redo creation of an empty file"
-#~ msgstr "Aanmaken leeg bestand op_nieuw uitvoeren"
-
-#~ msgid "_Redo creation of a file from template"
-#~ msgstr "Aanmaken bestand vanaf sjabloon op_nieuw uitvoeren"
-
-#~ msgid "_Redo creation of %d folder"
-#~ msgid_plural "_Redo creation of %d folders"
-#~ msgstr[0] "Aanmaken van %d map op_nieuw uitvoeren"
-#~ msgstr[1] "Aanmaken van %d mappen op_nieuw uitvoeren"
-
-#~ msgid "_Redo move to trash of %d item"
-#~ msgid_plural "_Redo move to trash of %d items"
-#~ msgstr[0] "Verplaatsen van %d onderdeel naar prullenbak op_nieuw uitvoeren"
-#~ msgstr[1] "Verplaatsen van %d onderdelen naar prullenbak op_nieuw uitvoeren"
-
-#~ msgid "_Redo restore from trash of %d item"
-#~ msgid_plural "_Redo restore from trash of %d items"
-#~ msgstr[0] ""
-#~ "Terugzetten van %d onderdeel uit de prullenbak op_nieuw uitvoeren"
-#~ msgstr[1] ""
-#~ "Terugzetten van %d onderdelen uit de prullenbak op_nieuw uitvoeren"
-
-#~ msgid "_Redo create link to %d item"
-#~ msgid_plural "_Redo create link to %d items"
-#~ msgstr[0] "Aanmaken verwijzing naar %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Aanmaken verwijzing naar %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "_Redo delete of %d item"
-#~ msgid_plural "_Redo delete of %d items"
-#~ msgstr[0] "Verwijderen van % item op_nieuw uitvoeren"
-#~ msgstr[1] "Verwijderen van %d items op_nieuw uitvoeren"
-
-#~ msgid "Redo recursive change permissions of %d item"
-#~ msgid_plural "Redo recursive change permissions of %d items"
-#~ msgstr[0] "Recursief wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Recursief wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "Redo change permissions of %d item"
-#~ msgid_plural "Redo change permissions of %d items"
-#~ msgstr[0] "Wijzigen rechten van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Wijzigen rechten van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "Redo change group of %d item"
-#~ msgid_plural "Redo change group of %d items"
-#~ msgstr[0] "Wijzigen groep van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Wijzigen groep van %d onderdelen op_nieuw uitvoeren"
-
-#~ msgid "Redo change owner of %d item"
-#~ msgid_plural "Redo change owner of %d items"
-#~ msgstr[0] "Wijzigen eigenaar van %d onderdeel op_nieuw uitvoeren"
-#~ msgstr[1] "Wijzigen eigenaar van %d onderdelen op_nieuw uitvoeren"
-
 #~ msgid "Browse your files"
 #~ msgstr "Bestanden doorbladeren"
 
@@ -1948,45 +2351,6 @@ msgstr "Selectie verwijderen"
 
 #~ msgid "New Window As _Administrator"
 #~ msgstr "Nieuw venster als _Administrator"
-
-#~ msgid "Restore from Trash"
-#~ msgstr "Herstel uit prullenbak"
-
-#~ msgid "Move to Trash"
-#~ msgstr "Verplaats naar prullenbak"
-
-#~ msgid "New"
-#~ msgstr "Nieuw"
-
-#~ msgid "Empty File"
-#~ msgstr "Leeg bestand"
-
-#~ msgid "New Tab"
-#~ msgstr "Nieuwe tab"
-
-#~ msgid "Bookmark"
-#~ msgstr "Bladwijzer"
-
-#~ msgid "Paste"
-#~ msgstr "Plakken"
-
-#~ msgid "Paste Link"
-#~ msgstr "Link plakken"
-
-#~ msgid "Cut"
-#~ msgstr "Knippen"
-
-#~ msgid "Paste into Folder"
-#~ msgstr "Plakken in map"
-
-#~ msgid "Paste Link into Folder"
-#~ msgstr "Link plakken in map"
-
-#~ msgid "Sort by"
-#~ msgstr "Sorteer op"
-
-#~ msgid "Reversed Order"
-#~ msgstr "Omgekeerde volgorde"
 
 #~ msgid ""
 #~ "Can't load the supported server method list.\n"
