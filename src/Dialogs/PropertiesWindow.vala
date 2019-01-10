@@ -189,7 +189,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         update_selection_size (); /* Start counting first to get number of selected files and folders */
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
-        var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), GOF.FileIconFlags.NONE);
+        var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
         var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
         overlay_emblems (file_icon, goffile.emblems_list);
 
@@ -323,20 +323,20 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         if (new_name != "") {
             if (new_name != original_name) {
                 proposed_name = new_name;
-                view.set_file_display_name (file.location, new_name, after_rename);
+                view.set_file_display_name.begin (file.location, new_name, null, (obj, res) => {
+                    GLib.File? new_location = null;
+                    try {
+                        new_location = view.set_file_display_name.end (res);
+                        reset_entry_text (new_location.get_basename ());
+                        goffile = GOF.File.@get (new_location);
+                        files.first ().data = goffile;
+                    } catch (Error e) {
+                        reset_entry_text (); //resets entry to old name
+                    }
+                });
             }
         } else {
             reset_entry_text ();
-        }
-    }
-
-    private void after_rename (GLib.File original_file, GLib.File? new_location) {
-        if (new_location != null) {
-            reset_entry_text (new_location.get_basename ());
-            goffile = GOF.File.@get (new_location);
-            files.first ().data = goffile;
-        } else {
-            reset_entry_text (); //resets entry to old name
         }
     }
 
@@ -974,7 +974,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private string? get_common_owner () {
-        int uid = -1;
+        uint32 uid = -1;
         if (files == null) {
             return null;
         }
@@ -1004,7 +1004,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private string? get_common_group () {
-        int gid = -1;
+        uint32 gid = -1;
         if (files == null) {
             return null;
         }

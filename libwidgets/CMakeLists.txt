@@ -1,9 +1,8 @@
 set (PKGNAME pantheon-files-widgets)
-set (PKGNAME_ PANTHEON_FILES_WIDGETS)
-set (${PKGNAME_}_VERSION 0.1)
+set (WIDGET_LIB_VERSION 0.4.0)
 # increase when you broke the API
 
-set (${PKGNAME_}_SOVERSION 0)
+set (WIDGET_SOVERSION 0)
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
@@ -73,8 +72,8 @@ add_library (${PKGNAME} SHARED ${VALA_C})
 add_dependencies (${PKGNAME} pantheon-files-core)
 
 set_target_properties (${PKGNAME} PROPERTIES
-    VERSION ${PANTHEON_FILES_WIDGETS_VERSION}
-    SOVERSION ${PANTHEON_FILES_WIDGETS_SOVERSION})
+    VERSION ${WIDGET_LIB_VERSION}
+    SOVERSION ${WIDGET_SOVERSION})
 
 install (TARGETS ${PKGNAME} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 target_link_libraries(${PKGNAME} pantheon-files-core ${DEPS_LIBRARIES})

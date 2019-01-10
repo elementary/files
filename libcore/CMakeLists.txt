@@ -1,9 +1,8 @@
 set (PKGNAME pantheon-files-core)
-set (PKGNAME_ PANTHEON_FILES_CORE)
-set (${PKGNAME_}_VERSION 0.1)
+set (CORE_LIB_VERSION 0.4.0)
 # increase when you broke the API
 
-set (${PKGNAME_}_SOVERSION 0)
+set (CORE_SOVERSION 0)
 set (PREFIX ${CMAKE_INSTALL_PREFIX})
 set (DOLLAR "$")
 # You hear that? It's kittens being killed by the gods of cmake
@@ -21,6 +20,7 @@ vala_precompile(VALA_C ${PKGNAME}
     DndHandler.vala
     Enums.vala
     PixbufUtils.vala
+    File.vala
     FileUtils.vala
     FileConflictDialog.vala
     gof-callwhenready.vala
@@ -64,12 +64,10 @@ set (C_SOURCE_FILES
     marlin-undostack-manager.c
     marlin-file-changes-queue.c
     fm-list-model.c
-    gof-file.c
     ${VALA_C})
 
 set (C_HEADER_FILES
     eel-string.h
-    gof-file.h
     marlin-file-operations.h
     marlin-undostack-manager.h
     marlin-file-changes-queue.h
@@ -91,7 +89,7 @@ pkg_check_modules(DEPS REQUIRED
     gthread-2.0
     gio-2.0
     pango>=1.1.2
-    gtk+-3.0>=3.4.0
+    gtk+-3.0>=3.22
     gail-3.0
     gee-0.8
     gmodule-2.0
@@ -116,8 +114,8 @@ link_directories (${LIB_PATHS})
 add_library (${PKGNAME} SHARED ${C_SOURCE_FILES})
 
 set_target_properties (${PKGNAME} PROPERTIES
-    VERSION ${PANTHEON_FILES_CORE_VERSION}
-    SOVERSION ${PANTHEON_FILES_CORE_SOVERSION})
+    VERSION ${CORE_LIB_VERSION}
+    SOVERSION ${CORE_SOVERSION})
 
 target_link_libraries (${PKGNAME} m ${DEPS_LIBRARIES})
 

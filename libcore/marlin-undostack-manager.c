@@ -22,7 +22,6 @@
 
 #include "marlin-undostack-manager.h"
 #include "marlin-file-operations.h"
-#include "gof-file.h"
 #include <gio/gio.h>
 #include <glib/gprintf.h>
 #include <glib-object.h>
@@ -176,8 +175,9 @@ static void undo_redo_done_transfer_callback (GHashTable *debuting_uris,
 
 static void undo_redo_op_callback (gpointer callback_data);
 
-static void undo_redo_done_rename_callback (GOFFile * file,
-                                            GFile * result_location, GError * error, gpointer callback_data);
+static void undo_redo_done_rename_callback (GFile        *file,
+                                            GAsyncResult *result,
+                                            gpointer      user_data);
 
 static void undo_redo_done_delete_callback (gboolean user_cancel, gpointer callback_data);
 
@@ -379,7 +379,7 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
                           gpointer callback_data)
 {
     GList *uris;
-    GOFFile *file;
+    GFile *file;
     char *new_name;
     char *puri;
     GFile *fparent;
@@ -431,10 +431,15 @@ marlin_undo_manager_redo (MarlinUndoManager *self,
             break;
 
         case MARLIN_UNDO_RENAME:
-            pf_file_utils_set_file_display_name (g_file_new_for_uri (action->old_uri),
-                                                 get_uri_basename (action->new_uri),
+            file = g_file_new_for_uri (action->old_uri);
+            new_name = get_uri_basename (action->new_uri);
+            pf_file_utils_set_file_display_name (file,
+                                                 new_name,
+                                                 NULL,
                                                  undo_redo_done_rename_callback,
                                                  action);
+            g_free (new_name);
+            g_object_unref (file);
             break;
 
         case MARLIN_UNDO_CREATEEMPTYFILE:
@@ -494,6 +499,8 @@ marlin_undo_manager_undo (MarlinUndoManager *self,
 {
     GList *uris = NULL;
     GHashTable *files_to_restore;
+    GFile *file;
+    gchar *new_name;
 
     g_return_if_fail (MARLIN_IS_UNDO_MANAGER (self));
 
@@ -589,10 +596,15 @@ marlin_undo_manager_undo (MarlinUndoManager *self,
             break;
 
         case MARLIN_UNDO_RENAME:
-            pf_file_utils_set_file_display_name (g_file_new_for_uri (action->new_uri),
-                                                 get_uri_basename (action->old_uri),
+            file = g_file_new_for_uri (action->new_uri);
+            new_name = get_uri_basename (action->old_uri);
+            pf_file_utils_set_file_display_name (file,
+                                                 new_name,
+                                                 NULL,
                                                  undo_redo_done_rename_callback,
                                                  action);
+            g_free (new_name);
+            g_object_unref (file);
             break;
         case MARLIN_UNDO_DELETE:
         default:
@@ -1655,10 +1667,18 @@ undo_redo_op_callback (gpointer callback_data)
 
 /** ---------------------------------------------------------------- */
 static void
-undo_redo_done_rename_callback (GOFFile * file,
-                                GFile * result_location, GError * error, gpointer callback_data)
+undo_redo_done_rename_callback (GFile        *file,
+                                GAsyncResult *result,
+                                gpointer      user_data)
 {
-    undo_redo_done_transfer_callback (NULL, callback_data);
+    GError *e = NULL;
+    GFile* res_file = pf_file_utils_set_file_display_name_finish (result, &e);
+    if (e != NULL) {
+        g_error_free (e);
+    }
+
+    g_object_unref (res_file);
+    undo_redo_done_transfer_callback (NULL, user_data);
 }
 
 /** ---------------------------------------------------------------- */

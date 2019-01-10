@@ -25,6 +25,7 @@ namespace PF {
 
     public class SoundManager : GLib.Object {
         private static SoundManager? instance = null;
+        private static Settings sound_settings;
         public static unowned SoundManager get_instance () {
             if (instance == null) {
                 instance = new SoundManager ();
@@ -33,6 +34,10 @@ namespace PF {
         }
 
         Canberra.Context? ca_context;
+
+        static construct {
+            sound_settings = new Settings ("org.gnome.desktop.sound");
+        }
 
         private SoundManager () {
             ca_context = null;
@@ -55,7 +60,10 @@ namespace PF {
             if (ca_context == null) {
                 return;
             }
-            ca_context.play (0, Canberra.PROP_EVENT_ID, pf_sound_id);
+
+            if (sound_settings.get_boolean ("event-sounds")) {
+                ca_context.play (0, Canberra.PROP_EVENT_ID, pf_sound_id);
+            }
         }
     }
 

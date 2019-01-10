@@ -135,7 +135,6 @@ public class Marlin.Progress.UIHandler : Object {
             this.progress_window.resizable = false;
             this.progress_window.deletable = false;
             this.progress_window.title = _("File Operations");
-            this.progress_window.set_wmclass ("file_progress", "Marlin");
             this.progress_window.icon_name = "system-file-manager";
 
             this.window_vbox = new Gtk.Box (Gtk.Orientation.VERTICAL, 5);

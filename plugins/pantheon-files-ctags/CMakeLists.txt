@@ -13,7 +13,7 @@ set(CFLAGS
 include_directories(${CMAKE_SOURCE_DIR}/libcore/)
 include_directories(${CMAKE_BINARY_DIR}/libcore/)
 
-vala_precompile(VALA_C pantheon-filesctags
+vala_precompile(VALA_C pantheon-files-ctags
     plugin.vala
 PACKAGES
     granite
@@ -30,10 +30,10 @@ OPTIONS
 )
 add_definitions(${CFLAGS})
 link_directories(${LIB_PATHS})
-add_library(pantheon-filesctags SHARED
+add_library(pantheon-files-ctags SHARED
     ${VALA_C})
-target_link_libraries(pantheon-filesctags ${DEPS_LIBRARIES} pantheon-files-core)
-add_dependencies(pantheon-filesctags pantheon-files-core)
-install(TARGETS pantheon-filesctags DESTINATION ${PLUGIN_DIR}/core/)
+target_link_libraries(pantheon-files-ctags ${DEPS_LIBRARIES} pantheon-files-core)
+add_dependencies(pantheon-files-ctags pantheon-files-core)
+install(TARGETS pantheon-files-ctags DESTINATION ${PLUGIN_DIR}/core/)
 install(FILES pantheon-files-ctags.plug DESTINATION ${PLUGIN_DIR}/core/)
 include_directories(${CMAKE_BINARY_DIR}/plugins/)

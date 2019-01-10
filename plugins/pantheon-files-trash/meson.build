@@ -1,25 +1,14 @@
-PLUG_NAME = 'pantheon-files-trash'
+trash_plugin_dir = join_paths(plugin_dir, 'core')
 
-PLUG_DEPS = [
-    COMMON_DEPS,
-]
-
-SRC = [
-    'plugin.vala'
-]
-
-PLUG_LIB = shared_library (
-    PLUG_NAME,
-    SRC,
-
-    dependencies : [DEPS, C_CORE_DEP],
-	include_directories: CORE_INC,
+shared_module(
+    'pantheon-files-trash',
+    'plugin.vala',
+    dependencies : pantheon_files_core_dep,
     install: true,
-	install_dir: INSTALL_DIR,
-	link_with: [CORE_LIB]
+    install_dir: trash_plugin_dir,
 )
 
-install_data (
-    PLUG_NAME + '.plug',
-    install_dir: INSTALL_DIR
+install_data(
+    'pantheon-files-trash.plug',
+    install_dir: trash_plugin_dir
 )

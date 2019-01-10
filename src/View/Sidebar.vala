@@ -905,9 +905,8 @@ namespace Marlin.Places {
             }
         }
 
-        private async bool get_filesystem_space_and_type (GLib.File root, out uint64 fs_capacity,
-                                                          out uint64 fs_free, out string type,
-                                                          Cancellable update_cancellable) {
+        private async bool get_filesystem_space_and_type (GLib.File root, Cancellable update_cancellable,
+                                                          out uint64 fs_capacity, out uint64 fs_free, out string type) {
             fs_capacity = 0;
             fs_free = 0;
             type = "";
@@ -973,9 +972,8 @@ namespace Marlin.Places {
             string fs_type;
             var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
 
-            if (yield get_filesystem_space_and_type (root,
-                                                     out fs_capacity, out fs_free, out fs_type,
-                                                     update_cancellable)) {
+            if (yield get_filesystem_space_and_type (root, update_cancellable,
+                                                     out fs_capacity, out fs_free, out fs_type)) {
 
                 var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
                 if (rowref != null && rowref.valid ()) {
@@ -2258,7 +2256,7 @@ namespace Marlin.Places {
             Volume volume;
             store.@get (iter, Column.VOLUME, out volume);
             if (volume != null) {
-                Marlin.FileOperations.mount_volume (null, volume, false);
+                Marlin.FileOperations.mount_volume (volume);
             }
          }
 
@@ -2288,9 +2286,14 @@ namespace Marlin.Places {
             if (mount == null && volume != null) {
                 /* Mount the device if possible, defer showing the dialog after
                  * we're done */
-                Marlin.FileOperations.mount_volume_full (null, volume, false, (vol, win) => {
-                    new Marlin.View.VolumePropertiesWindow (vol.get_mount (), (Gtk.Window) win);
-                }, window);
+                Marlin.FileOperations.mount_volume_full.begin (volume, null, (obj, res) => {
+                    try {
+                        Marlin.FileOperations.mount_volume_full.end (res);
+                        new Marlin.View.VolumePropertiesWindow (volume.get_mount (), window);
+                    } catch (Error e) {
+                        // Already handled
+                    }
+                });
             } else if (mount != null || uri == "file:///") {
                 new Marlin.View.VolumePropertiesWindow (mount, window);
             }
