@@ -20,6 +20,7 @@ vala_precompile(VALA_C ${PKGNAME}
     DndHandler.vala
     Enums.vala
     PixbufUtils.vala
+    File.vala
     FileUtils.vala
     FileConflictDialog.vala
     gof-callwhenready.vala
@@ -44,7 +45,6 @@ PACKAGES
     gmodule-2.0
     libcanberra
     pantheon-files-core-C
-    gof-file
     posix
     linux
     zeitgeist-2.0
@@ -64,12 +64,10 @@ set (C_SOURCE_FILES
     marlin-undostack-manager.c
     marlin-file-changes-queue.c
     fm-list-model.c
-    gof-file.c
     ${VALA_C})
 
 set (C_HEADER_FILES
     eel-string.h
-    gof-file.h
     marlin-file-operations.h
     marlin-undostack-manager.h
     marlin-file-changes-queue.h
