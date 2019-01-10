@@ -559,7 +559,8 @@ namespace FM {
                     }
                 } else if (default_app != null) {
                     GLib.Idle.add (() => {
-                        open_files_with (default_app, selection);
+                        /* Because this is in another thread we need to copy the selection to ensure it remains valid */
+                        open_files_with (default_app, get_files_for_action ());
                         return GLib.Source.REMOVE;
                     });
                 }
