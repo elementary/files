@@ -28,6 +28,7 @@
 #include <gtk/gtk.h>
 #include <glib.h>
 #include "fm-list-model.h"
+#include "pantheon-files-core.h"
 
 enum {
     SUBDIRECTORY_UNLOADED,
