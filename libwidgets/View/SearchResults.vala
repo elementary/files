@@ -585,43 +585,49 @@ namespace Marlin.View.Chrome {
                 return;
             }
 
-            int x, y;
-            Gtk.Allocation parent_alloc;
-
-            parent_window.get_origin (out x, out y);
-            parent.get_allocation (out parent_alloc);
-
-            x += parent_alloc.x;
-            y += parent_alloc.y;
-
-            var screen = parent.get_screen ();
-            var monitor = screen.get_monitor_at_window (parent_window);
-            var workarea = screen.get_monitor_workarea (monitor);
-
-            int cell_height, separator_height, items, headers;
-            view.style_get ("vertical-separator", out separator_height);
-            view.get_column (0).cell_get_size (null, null, null, null, out cell_height);
+            int items, headers = 0;
             items = n_matches (out headers);
 
             if (visible && items + headers <= 1 && !working) {
                 hide ();
             } else if (!visible && items + headers > 1 && !working) {
-                popup ();
+                popup (); /* On first call view gets realized after a delay */
             }
 
-            int total = int.max ((items + headers), 2);
-            var height = total * (cell_height + separator_height);
-            if (x < workarea.x) {
-                x = workarea.x;
-            } else if (x + width_request > workarea.x + workarea.width) {
-                x = workarea.x + workarea.width - width_request;
+            if (!visible) {
+                return; /* No need to resize */
             }
 
-            y += parent_alloc.height;
+            /* Should only reach here if view has been realized  or is being realized but is not yet realized */
+            if (!view.get_realized ()) { /* Need to recall resize_popup to get correct cell height */
+                Idle.add (() => {
+                    resize_popup ();
+                    return GLib.Source.REMOVE;
+                });
 
-            if (y + height > workarea.y + workarea.height) {
-                height = workarea.y + workarea.height - y - 12;
+                return;
             }
+
+            /* Ensure window remains fully on screen */
+            var workarea = Gdk.Display.get_default ()
+                                      .get_monitor_at_window (parent_window)
+                                      .get_workarea ();
+
+            int x, y;
+            Gtk.Allocation parent_alloc;
+            parent_window.get_origin (out x, out y);
+            parent.get_allocation (out parent_alloc);
+
+            x = (x + parent_alloc.x).clamp (workarea.x, workarea.x + workarea.width - width_request);
+            y += parent_alloc.y + parent_alloc.height;
+
+            int separator_height;
+            Gdk.Rectangle cell_area;
+            view.style_get ("vertical-separator", out separator_height);
+            view.get_cell_area (new Gtk.TreePath.from_indices (0), null, out cell_area);
+            var total = int.max ((items + headers), 2);
+            var height = total * (cell_area.height + separator_height);
+            height = height.clamp (0, workarea.y + workarea.height - y - 12);
 
             scroll.set_min_content_height (height);
             set_size_request (int.min (parent_alloc.width, workarea.width), height);
@@ -663,10 +669,8 @@ namespace Marlin.View.Chrome {
             /* Ensure device grab and ungrab are paired */
             if (!is_grabbing && device != null) {
                 Gtk.device_grab_add (this, device, true);
-                device.grab (get_window (), Gdk.GrabOwnership.WINDOW, true, Gdk.EventMask.BUTTON_PRESS_MASK
-                    | Gdk.EventMask.BUTTON_RELEASE_MASK
-                    | Gdk.EventMask.POINTER_MOTION_MASK,
-                    null, Gdk.CURRENT_TIME);
+                device.get_seat ().grab (get_window (), Gdk.SeatCapabilities.ALL_POINTING,
+                                         true, null, null, null);
 
                 is_grabbing = true;
             }
@@ -686,7 +690,7 @@ namespace Marlin.View.Chrome {
                     debug ("Reference to device was lost while grabbing - should not happen");
                 }
 
-                device.ungrab (Gdk.CURRENT_TIME);
+                device.get_seat ().ungrab ();
                 Gtk.device_grab_remove (this, device);
                 is_grabbing = false;
             }
