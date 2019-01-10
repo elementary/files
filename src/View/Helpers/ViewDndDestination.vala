@@ -284,8 +284,6 @@ namespace Marlin {
         private void check_destination_actions_and_target_file (Gdk.DragContext context, int x, int y, uint timestamp) {
             Gtk.TreePath? path;
             unowned GOF.File? file = abstract_view.get_file_at_pos (x, y, out path);
-            string uri = file != null ? file.uri : "";
-            string current_uri = drop_target_file != null ? drop_target_file.uri : "";
 
             if (file != null) {
                 if (drag_enter_timer_id > 0) {
