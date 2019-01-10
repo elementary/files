@@ -7,41 +7,52 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
 "PO-Revision-Date: 2017-02-22 22:49+0000\n"
 "Last-Translator: Michal Pospíšil <Unknown>\n"
 "Language-Team: Slovak <>\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Súbory"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Prehliadať vaše súbory"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "priečinok;správca;prehliadať;disk;systém súborov;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Správca súborov"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr ""
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Nové okno"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Nové okno v režime správcu"
 
-msgid "About Files"
-msgstr "O aplikácii Súbory"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Prehliadať a spravovať súbory a prečinky"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -55,72 +66,48 @@ msgstr ""
 "zariadení, prípadne vzdialene pomocou FTP, SFTP, AFP, Webdav alebo "
 "zdieľaného disku Windows."
 
-msgid "Improved networking support"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
 msgstr ""
 
-msgid "Correct window geometry when snapping to left or right"
-msgstr ""
+#~ msgid "About Files"
+#~ msgstr "O aplikácii Súbory"
 
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
-msgstr ""
+#~ msgid "Various crash fixes"
+#~ msgstr "Rôzne opravy chýb"
 
-msgid "Switching input language cancels actions"
-msgstr ""
+#~ msgid "New translations"
+#~ msgstr "Nové preklady"
 
-msgid "Various crash fixes"
-msgstr "Rôzne opravy chýb"
+#~ msgid "Minor bug fixes"
+#~ msgstr "Menšie opravy chýb"
 
-msgid "New translations"
-msgstr "Nové preklady"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr "Povoliť presúvanie kariet medzi oknami"
 
-msgid "Minor bug fixes"
-msgstr "Menšie opravy chýb"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Pridať funkciu vyhľadávania do Ctrl+F"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
+#~ msgid "Improved translation support"
+#~ msgstr "Zlepšená podpora prekladov"
 
-msgid "Remember preferred zoom level"
-msgstr ""
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Opraviť dátumy vydania dát aplikácie."
 
-msgid "Improved input method support"
-msgstr ""
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Zlepšiť otváranie súborov cez Samba zdieľania"
 
-msgid "910x640 minimum window size"
-msgstr ""
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr "Opraviť pád pri obnovovaní položiek z Koša"
 
-msgid "Security fixes"
-msgstr ""
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "Zlepšiť vystrihnúť/kopírovať/vložiť"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Povoliť presúvanie kariet medzi oknami"
+#~ msgid "Translation updates"
+#~ msgstr "Aktualizácie prekladu"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Pridať funkciu vyhľadávania do Ctrl+F"
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "Spustiť súbory Pantheonu ako správca"
 
-msgid "Improved translation support"
-msgstr "Zlepšená podpora prekladov"
-
-msgid "Fix appdata release dates"
-msgstr "Opraviť dátumy vydania dát aplikácie."
-
-msgid "Improve file opening over Samba shares"
-msgstr "Zlepšiť otváranie súborov cez Samba zdieľania"
-
-msgid "Fix a crash when restoring items from the Trash"
-msgstr "Opraviť pád pri obnovovaní položiek z Koša"
-
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Zlepšiť vystrihnúť/kopírovať/vložiť"
-
-msgid "Translation updates"
-msgstr "Aktualizácie prekladu"
-
-msgid "Run Pantheon Files as Administrator"
-msgstr "Spustiť súbory Pantheonu ako správca"
-
-msgid "Authentication is required to run Files as Administrator"
-msgstr "Vyžaduje sa povolenie pre beh aplikácie Súbory v režime správcu"
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr "Vyžaduje sa povolenie pre beh aplikácie Súbory v režime správcu"

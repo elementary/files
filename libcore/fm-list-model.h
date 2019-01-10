@@ -24,14 +24,14 @@
  *          Dave Camp <dave@ximian.com>
  */
 
+#ifndef FM_LIST_MODEL_H
+#define FM_LIST_MODEL_H
 
 #include <gtk/gtk.h>
 #include <gdk/gdk.h>
-#include "gof-file.h"
-#include "pantheon-files-core.h"
 
-#ifndef FM_LIST_MODEL_H
-#define FM_LIST_MODEL_H
+typedef struct _GOFFile GOFFile;
+typedef struct _GOFDirectoryAsync GOFDirectoryAsync;
 
 #define FM_TYPE_LIST_MODEL fm_list_model_get_type()
 #define FM_LIST_MODEL(obj) \
