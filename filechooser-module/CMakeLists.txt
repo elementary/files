@@ -32,7 +32,6 @@ PACKAGES
     pantheon-files-widgets
     pantheon-files-core
     pantheon-files-core-C
-    gof-file
 OPTIONS
     --vapidir=${CMAKE_SOURCE_DIR}/libcore
     --vapidir=${CMAKE_BINARY_DIR}/libcore
