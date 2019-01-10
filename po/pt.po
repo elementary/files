@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-10-30 14:57+0000\n"
+"POT-Creation-Date: 2019-01-09 09:21-0600\n"
+"PO-Revision-Date: 2018-12-31 13:22+0000\n"
 "Last-Translator: Nuno Alexandre MS Ribeiro <nuno.anarresti@gmail.com>\n"
 "Language-Team: Portuguese <https://weblate.elementary.io/projects/files/"
 "files/pt/>\n"
@@ -26,7 +26,6 @@ msgid "Show the version of the program"
 msgstr "Mostrar a versão da aplicação"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Abrir um ou mais uri's, cada um num novo separador"
 
@@ -130,7 +129,7 @@ msgid "Permissions"
 msgstr "Permissões"
 
 #: src/Dialogs/PropertiesWindow.vala:244
-#, fuzzy, c-format
+#, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] "%u ficheiro não foi lido devido às suas permissões ou outro erro."
@@ -293,7 +292,7 @@ msgstr "Não foi possível abrir o(s) URL(s)"
 msgid "Could not open files or URIs with this app"
 msgstr "Não é possível abrir ficheiros ou URL's com esta aplicação"
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
 msgstr "(como administrador)"
 
@@ -344,7 +343,6 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
 msgstr "Impossível abrir este ficheiro"
 
@@ -382,7 +380,7 @@ msgid "Open in"
 msgstr "Abrir em"
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr "Abrir com"
 
@@ -530,22 +528,22 @@ msgstr "Ligar ao Servidor"
 msgid "Connect to a network server"
 msgstr "Ligar a um servidor de rede"
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s Livres de %s)"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Erro ao montar o volume %s"
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Incapaz de iniciar %s"
 
-#: src/View/Sidebar.vala:1645 libcore/marlin-file-operations.c:1312
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "Esvaziar _lixo"
 
@@ -567,19 +565,20 @@ msgstr "Acesso Negado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "O modo de privacidade está ativado"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Nenhum ficheiro recente será lembrado"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Alterar as configurações de segurança"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
 msgstr ""
+"Abrir a aplicação de configuração de segurança do sistema e privacidade"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
@@ -709,26 +708,26 @@ msgstr "Ordem Inversa"
 msgid "Folders Before Files"
 msgstr "Colocar Pastas Antes dos Ficheiros"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr "Pesquisar ou digitar caminho"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr "Abrir num novo separador"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr "Abrir numa Nova Janela"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr "Abrir com outra aplicação…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
 msgstr "Recarregar esta pasta"
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
-msgstr "Pesquisar ou digitar caminho"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
@@ -2176,6 +2175,11 @@ msgstr "Navegar para %s"
 #, c-format
 msgid "Go to %s"
 msgstr "Ir para %s"
+
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#, fuzzy
+msgid "Type Path"
+msgstr "Escreva um caminho"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"

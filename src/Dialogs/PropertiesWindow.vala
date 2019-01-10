@@ -189,7 +189,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
         update_selection_size (); /* Start counting first to get number of selected files and folders */
 
         /* create some widgets first (may be hidden by update_selection_size ()) */
-        var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), GOF.FileIconFlags.NONE);
+        var file_pix = goffile.get_icon_pixbuf (48, get_scale_factor (), GOF.File.IconFlags.NONE);
         var file_icon = new Gtk.Image.from_gicon (file_pix, Gtk.IconSize.DIALOG);
         overlay_emblems (file_icon, goffile.emblems_list);
 
@@ -232,10 +232,10 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private void update_size_value () {
-        size_value.label = format_size ((int64) total_size);
+        size_value.label = format_size (total_size);
         contains_value.label = get_contains_value (folder_count, file_count);
         update_widgets_state ();
-        update_selection_usage (total_size);
+        update_storage_block_size (total_size, Granite.Widgets.StorageBar.ItemDescription.FILES);
 
         if (size_warning > 0) {
             var size_warning_image = new Gtk.Image.from_icon_name ("help-info-symbolic", Gtk.IconSize.MENU);
@@ -974,7 +974,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private string? get_common_owner () {
-        int uid = -1;
+        uint32 uid = -1;
         if (files == null) {
             return null;
         }
@@ -1004,7 +1004,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
     }
 
     private string? get_common_group () {
-        int gid = -1;
+        uint32 gid = -1;
         if (files == null) {
             return null;
         }

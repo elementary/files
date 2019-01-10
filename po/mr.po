@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-12-24 00:06+0000\n"
+"POT-Creation-Date: 2019-01-09 09:21-0600\n"
+"PO-Revision-Date: 2019-01-02 06:05+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -21,8 +21,7 @@ msgstr "प्रोग्रामची आवृत्ती दाखवा"
 
 #: src/Application.vala:122
 msgid "Open one or more URIs, each in their own tab"
-msgstr ""
-"प्रत्येक एक किंवा अधिक यूआरआय उघडा, प्रत्येक त्यांच्या स्वत: च्या टॅबमध्ये"
+msgstr "प्रत्येक एक किंवा अधिक यूआरआय उघडा, प्रत्येक त्यांच्या स्वत: च्या टॅबमध्ये"
 
 #: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -245,84 +244,84 @@ msgstr[1] "%u फोल्डर"
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u निवडलेला आयटम"
+msgstr[1] "%u निवडलेले आयटम"
 
 #: src/Dialogs/PropertiesWindow.vala:1246
 #, c-format
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "डिस्क गुणधर्म"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/ViewContainer.vala:379
 #: src/View/Sidebar.vala:658 libwidgets/Resources.vala:68
 msgid "File System"
-msgstr ""
+msgstr "फाईल प्रणाली"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:86
 msgid "Format:"
-msgstr ""
+msgstr "स्वरूप:"
 
 #: src/Utils/MimeActions.vala:285
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "एकाधिक फाइल प्रकार निवडले"
 
 #: src/Utils/MimeActions.vala:286
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "या सर्व प्रकारच्या फाइल कोणतेही अॅप उघडू शकत नाही"
 
 #: src/Utils/MimeActions.vala:313
 msgid "Failed to open files"
-msgstr ""
+msgstr "फायली उघडण्यात अयशस्वी"
 
 #: src/Utils/MimeActions.vala:323
 msgid "Could not open URIs"
-msgstr ""
+msgstr "यूआरआय उघडू शकले नाही"
 
 #: src/Utils/MimeActions.vala:326
 msgid "Could not open files or URIs with this app"
-msgstr ""
+msgstr "या अॅपसह फायली किंवा यूआरआय उघडू शकत नाही"
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(प्रशासक म्हणून)"
 
 #: src/View/ListView.vala:26
 msgid "Filename"
-msgstr ""
+msgstr "फाईलचे नाव"
 
 #: src/View/ListView.vala:27 src/View/directory_view_popup.ui:149
 msgid "Size"
-msgstr ""
+msgstr "आकार"
 
 #: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
 msgid "Type"
-msgstr ""
+msgstr "प्रकार"
 
 #: src/View/ListView.vala:29
 msgid "Modified"
-msgstr ""
+msgstr "सुधारित"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:409
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "हे फोल्डर अस्तित्वात नाही"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "फोल्डर \"%s\" सापडू शकत नाही."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
-msgstr ""
+msgstr "तयार करा"
 
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "\"%s\" फोल्डर तयार करा"
 
 #: src/View/DirectoryNotFound.vala:44
 #, c-format
@@ -331,27 +330,30 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"फोल्डर तयार करण्यात अयशस्वी\n"
+"\n"
+"%s"
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
 msgid "Cannot execute this file"
-msgstr ""
+msgstr "ही फाईल कार्यान्वित करू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
-msgstr ""
+msgstr "ही फाइल उघडू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:841
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "उघडण्यासाठी फाइल प्रकार ओळखू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:1571
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "ही फाईल सोडू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:1572
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "अवैध फाइल नाव प्रदान केले"
 
 #: src/View/AbstractDirectoryView.vala:2052
 msgid "Invalid"
@@ -371,7 +373,7 @@ msgid "Open in"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr ""
 
@@ -519,22 +521,22 @@ msgstr "सर्वरला कनेक्ट करा"
 msgid "Connect to a network server"
 msgstr "नेटवर्क सर्वरला कनेक्ट करा"
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr ""
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1645 libcore/marlin-file-operations.c:1312
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "कचरापेटी (_T)रिकामी करा"
 
@@ -698,25 +700,25 @@ msgstr ""
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr ""
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:207
@@ -1337,8 +1339,7 @@ msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
 msgstr ""
-"केवळ वाचनीय फायलीप्रणालीवरील फायल्स कचऱ्यात टाकण्याची किंवा हटविण्याची "
-"परवानगी नाही."
+"केवळ वाचनीय फायलीप्रणालीवरील फायल्स कचऱ्यात टाकण्याची किंवा हटविण्याची परवानगी नाही."
 
 #: libcore/marlin-file-operations.c:1809
 #, fuzzy
@@ -2161,6 +2162,11 @@ msgstr ""
 #, c-format
 msgid "Go to %s"
 msgstr ""
+
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#, fuzzy
+msgid "Type Path"
+msgstr "प्रकार"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"

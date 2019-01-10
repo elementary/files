@@ -1,4 +1,4 @@
-trash_plugin_dir = join_paths(plugin_dir, 'trash')
+trash_plugin_dir = join_paths(plugin_dir, 'core')
 
 shared_module(
     'pantheon-files-trash',
