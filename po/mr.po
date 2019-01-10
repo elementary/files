@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-12-17 00:09+0000\n"
+"POT-Creation-Date: 2019-01-09 09:21-0600\n"
+"PO-Revision-Date: 2019-01-02 06:05+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
 "mr/>\n"
@@ -17,27 +17,27 @@ msgstr ""
 
 #: src/Application.vala:120
 msgid "Show the version of the program"
-msgstr ""
+msgstr "प्रोग्रामची आवृत्ती दाखवा"
 
 #: src/Application.vala:122
 msgid "Open one or more URIs, each in their own tab"
-msgstr ""
+msgstr "प्रत्येक एक किंवा अधिक यूआरआय उघडा, प्रत्येक त्यांच्या स्वत: च्या टॅबमध्ये"
 
 #: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr ""
+msgstr "नवीन विंडो"
 
 #: src/Application.vala:126
 msgid "Quit Files"
-msgstr ""
+msgstr "फाइल्स बंद करा"
 
 #: src/Application.vala:128
 msgid "Enable debug logging"
-msgstr ""
+msgstr "डीबग लॉगिंग सक्षम करा"
 
 #: src/Application.vala:131
 msgid "[URI…]"
-msgstr ""
+msgstr "[URI…]"
 
 #: src/Application.vala:134
 msgid ""
@@ -45,280 +45,283 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"फाइल व्यवस्थापकासह फाइल सिस्टम ब्राउझ करा"
 
 #: src/Application.vala:162
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "--quit यूआरआयसह वापरले जाऊ शकत नाही."
 
 #: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:191
 msgid "File Operations"
-msgstr ""
+msgstr "फाइल ऑपरेशन्स"
 
 #: src/ProgressUIHandler.vala:185
 #, c-format
 msgid "Completed %s"
-msgstr ""
+msgstr "%s पूर्ण"
 
 #: src/ProgressUIHandler.vala:188
 msgid "All file operations have ended"
-msgstr ""
+msgstr "सर्व फाइल ऑपरेशन्स संपले आहेत"
 
 #: src/ProgressUIHandler.vala:236
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "कॉपी संवाद दाखवा"
 
 #: src/ProgressUIHandler.vala:248
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "सर्व चालू असलेल्या क्रिया रद्द करा"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "माहिती"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
-msgstr ""
+msgstr "साधारण"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:76
 msgid "Close"
-msgstr ""
+msgstr "बंद करा"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:136
 msgid "Device Usage"
-msgstr ""
+msgstr "डिव्हाइस वापर"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 msgid "Capacity:"
-msgstr ""
+msgstr "क्षमता:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:153
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
 msgid "Unknown"
-msgstr ""
+msgstr "अज्ञात"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Available:"
-msgstr ""
+msgstr "उपलब्ध:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Used:"
-msgstr ""
+msgstr "वापरलेली:"
 
 #: src/Dialogs/ChooseAppDialog.vala:42
 msgid "Set as default"
-msgstr ""
+msgstr "डीफॉल्ट म्हणून सेट करा"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
 #: src/View/directory_view_popup.ui:91
 msgid "Properties"
-msgstr ""
+msgstr "गुणधर्म"
 
 #: src/Dialogs/PropertiesWindow.vala:223
 msgid "Permissions"
-msgstr ""
+msgstr "परवानग्या"
 
 #: src/Dialogs/PropertiesWindow.vala:244
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "परवानग्या किंवा इतर त्रुटीमुळे %i फाइल वाचली जाऊ शकली नाही."
+msgstr[1] "परवानग्या किंवा इतर त्रुटींमुळे %i फायली वाचल्या जाऊ शकल्या नाहीत."
 
 #: src/Dialogs/PropertiesWindow.vala:248
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "वास्तविक आकार मोठा असू शकतो"
 
 #: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
 msgid "unknown"
-msgstr ""
+msgstr "अज्ञात"
 
 #: src/Dialogs/PropertiesWindow.vala:448
 msgid "Loading…"
-msgstr ""
+msgstr "लोड करीत आहे…"
 
 #: src/Dialogs/PropertiesWindow.vala:482
 msgid "Could not be determined"
-msgstr ""
+msgstr "निश्चित केले जाऊ शकत नाही"
 
 #: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
 msgid "Size:"
-msgstr ""
+msgstr "आकार:"
 
 #: src/Dialogs/PropertiesWindow.vala:515 libcore/ConnectServerDialog.vala:164
 #: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
 msgid "Type:"
-msgstr ""
+msgstr "प्रकार:"
 
 #: src/Dialogs/PropertiesWindow.vala:518
 msgid "Contains:"
-msgstr ""
+msgstr "समाविष्ट गोष्टी:"
 
 #: src/Dialogs/PropertiesWindow.vala:541
 msgid "Created:"
-msgstr ""
+msgstr "तयार केले:"
 
 #: src/Dialogs/PropertiesWindow.vala:551
 msgid "Modified:"
-msgstr ""
+msgstr "सुधारित:"
 
 #: src/Dialogs/PropertiesWindow.vala:563
 msgid "Deleted:"
-msgstr ""
+msgstr "हटविले:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
 msgid "MIME type:"
-msgstr ""
+msgstr "MIME प्रकार:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
-msgstr ""
+msgstr "रिझॉल्युशन:"
 
 #: src/Dialogs/PropertiesWindow.vala:588
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
-msgstr ""
+msgstr "स्थान:"
 
 #: src/Dialogs/PropertiesWindow.vala:598
 msgid "Target:"
-msgstr ""
+msgstr "लक्ष्य:"
 
 #: src/Dialogs/PropertiesWindow.vala:606
 msgid "Original Location:"
-msgstr ""
+msgstr "मूळ स्थान:"
 
 #: src/Dialogs/PropertiesWindow.vala:629
 #: src/View/AbstractDirectoryView.vala:2132
 msgid "Other Application…"
-msgstr ""
+msgstr "इतर अप्लिकेशन…"
 
 #: src/Dialogs/PropertiesWindow.vala:649
 msgid "Open with:"
-msgstr ""
+msgstr "च्या सहाय्याने उघडा:"
 
 #: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
 msgid "Owner:"
-msgstr ""
+msgstr "मालक:"
 
 #: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
 msgid "Group:"
-msgstr ""
+msgstr "गट:"
 
 #: src/Dialogs/PropertiesWindow.vala:932
 msgid "Everyone:"
-msgstr ""
+msgstr "प्रत्येकजण:"
 
 #: src/Dialogs/PropertiesWindow.vala:1213
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u सबफोल्डर"
+msgstr[1] "%u सबफोल्डर"
 
 #: src/Dialogs/PropertiesWindow.vala:1217
 #: src/Dialogs/PropertiesWindow.vala:1239
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u फाईल"
+msgstr[1] "%u फायली"
 
 #: src/Dialogs/PropertiesWindow.vala:1222
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u फोल्डर"
+msgstr[1] "%u फोल्डर"
 
 #: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u निवडलेला आयटम"
+msgstr[1] "%u निवडलेले आयटम"
 
 #: src/Dialogs/PropertiesWindow.vala:1246
 #, c-format
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "डिस्क गुणधर्म"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/ViewContainer.vala:379
 #: src/View/Sidebar.vala:658 libwidgets/Resources.vala:68
 msgid "File System"
-msgstr ""
+msgstr "फाईल प्रणाली"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:86
 msgid "Format:"
-msgstr ""
+msgstr "स्वरूप:"
 
 #: src/Utils/MimeActions.vala:285
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "एकाधिक फाइल प्रकार निवडले"
 
 #: src/Utils/MimeActions.vala:286
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "या सर्व प्रकारच्या फाइल कोणतेही अॅप उघडू शकत नाही"
 
 #: src/Utils/MimeActions.vala:313
 msgid "Failed to open files"
-msgstr ""
+msgstr "फायली उघडण्यात अयशस्वी"
 
 #: src/Utils/MimeActions.vala:323
 msgid "Could not open URIs"
-msgstr ""
+msgstr "यूआरआय उघडू शकले नाही"
 
 #: src/Utils/MimeActions.vala:326
 msgid "Could not open files or URIs with this app"
-msgstr ""
+msgstr "या अॅपसह फायली किंवा यूआरआय उघडू शकत नाही"
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(प्रशासक म्हणून)"
 
 #: src/View/ListView.vala:26
 msgid "Filename"
-msgstr ""
+msgstr "फाईलचे नाव"
 
 #: src/View/ListView.vala:27 src/View/directory_view_popup.ui:149
 msgid "Size"
-msgstr ""
+msgstr "आकार"
 
 #: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
 msgid "Type"
-msgstr ""
+msgstr "प्रकार"
 
 #: src/View/ListView.vala:29
 msgid "Modified"
-msgstr ""
+msgstr "सुधारित"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:409
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "हे फोल्डर अस्तित्वात नाही"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "फोल्डर \"%s\" सापडू शकत नाही."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
-msgstr ""
+msgstr "तयार करा"
 
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "\"%s\" फोल्डर तयार करा"
 
 #: src/View/DirectoryNotFound.vala:44
 #, c-format
@@ -327,27 +330,30 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"फोल्डर तयार करण्यात अयशस्वी\n"
+"\n"
+"%s"
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
 msgid "Cannot execute this file"
-msgstr ""
+msgstr "ही फाईल कार्यान्वित करू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
-msgstr ""
+msgstr "ही फाइल उघडू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:841
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "उघडण्यासाठी फाइल प्रकार ओळखू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:1571
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "ही फाईल सोडू शकत नाही"
 
 #: src/View/AbstractDirectoryView.vala:1572
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "अवैध फाइल नाव प्रदान केले"
 
 #: src/View/AbstractDirectoryView.vala:2052
 msgid "Invalid"
@@ -367,7 +373,7 @@ msgid "Open in"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr ""
 
@@ -508,31 +514,29 @@ msgid "Browse the contents of the network"
 msgstr ""
 
 #: src/View/Sidebar.vala:823
-#, fuzzy
 msgid "Connect Server"
 msgstr "सर्वरला कनेक्ट करा"
 
 #: src/View/Sidebar.vala:824
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "सर्वरला कनेक्ट करा"
+msgstr "नेटवर्क सर्वरला कनेक्ट करा"
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr ""
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1645 libcore/marlin-file-operations.c:1312
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "कचरापेटी (_T)रिकामी करा"
 
@@ -617,9 +621,8 @@ msgid "Remove from History"
 msgstr ""
 
 #: src/View/directory_view_popup.ui:37
-#, fuzzy
 msgid "Move to Trash"
-msgstr "फाइल्स कचर्यामध्ये टाकत आहे"
+msgstr "फाइल्स कचर्यामध्ये टाका"
 
 #: src/View/directory_view_popup.ui:51
 msgid "New"
@@ -697,25 +700,25 @@ msgstr ""
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr ""
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:207
@@ -901,18 +904,16 @@ msgid "Cancel"
 msgstr ""
 
 #: libcore/ConnectServerDialog.vala:193
-#, fuzzy
 msgid "Connect"
-msgstr "जोडत आहे..."
+msgstr "जोडत आहे"
 
 #: libcore/ConnectServerDialog.vala:200
 msgid "Continue"
 msgstr "सुरु"
 
 #: libcore/ConnectServerDialog.vala:245
-#, fuzzy
 msgid "Connecting…"
-msgstr "जोडत आहे..."
+msgstr "जोडत आहे…"
 
 #: libcore/ConnectServerDialog.vala:364
 msgid "Please verify your user details."
@@ -1173,22 +1174,22 @@ msgid "Another link to %s"
 msgstr "%s चा दुसरा दुवा"
 
 #: libcore/marlin-file-operations.c:368
-#, fuzzy, c-format
+#, c-format
 msgid "%'dst link to %s"
 msgstr "%s चा दुवा %'dst"
 
 #: libcore/marlin-file-operations.c:372
-#, fuzzy, c-format
+#, c-format
 msgid "%'dnd link to %s"
-msgstr "%s चा दुवा %dnd"
+msgstr "%s चा दुवा %'dnd"
 
 #: libcore/marlin-file-operations.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "%'drd link to %s"
 msgstr "%s चा दुवा %'drd"
 
 #: libcore/marlin-file-operations.c:380
-#, fuzzy, c-format
+#, c-format
 msgid "%'dth link to %s"
 msgstr "%s चा दुवा %'dth"
 
@@ -1334,7 +1335,6 @@ msgstr ""
 "केवळ वाचनीय फायलीप्रणालीवरील फायल्स कचऱ्यात टाकण्याची किंवा हटविण्याची परवानगी नाही."
 
 #: libcore/marlin-file-operations.c:1806
-#, fuzzy
 msgid ""
 "It is not permitted to trash or delete files inside folders for which you do "
 "not have write privileges."
@@ -2163,6 +2163,11 @@ msgstr ""
 msgid "Go to %s"
 msgstr ""
 
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+#, fuzzy
+msgid "Type Path"
+msgstr "प्रकार"
+
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
 msgstr ""
@@ -2193,7 +2198,7 @@ msgstr ""
 
 #: libwidgets/Resources.vala:22
 msgid "Files"
-msgstr ""
+msgstr "फायली"
 
 #: libwidgets/Resources.vala:58
 msgid "AFP"

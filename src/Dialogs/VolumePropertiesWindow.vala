@@ -82,16 +82,20 @@ public class VolumePropertiesWindow : AbstractPropertiesDialog {
         info_grid.attach (location_label, 0, 1, 1, 1);
         info_grid.attach_next_to (location_value, location_label, Gtk.PositionType.RIGHT);
 
+        uint64 used_space = 0;
+
         if (info != null && info.has_attribute (FileAttribute.FILESYSTEM_TYPE)) {
             var key_label = new KeyLabel (_("Format:"));
             var value_label = new ValueLabel (info.get_attribute_string (GLib.FileAttribute.FILESYSTEM_TYPE));
 
             info_grid.attach (key_label, 0, 2, 1, 1);
             info_grid.attach_next_to (value_label, key_label, Gtk.PositionType.RIGHT);
+
+            used_space = info.get_attribute_uint64 (GLib.FileAttribute.FILESYSTEM_USED);
         }
 
         create_storage_bar (info, 3);
-
+        update_storage_block_size (used_space, Granite.Widgets.StorageBar.ItemDescription.FILES);
         show_all ();
     }
 }
