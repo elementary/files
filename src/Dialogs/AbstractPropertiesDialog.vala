@@ -118,7 +118,6 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         } else {
             layout.attach (file_icon, 0, 0, 1, 1);
         }
-
     }
 
     protected void add_section (Gtk.Stack stack, string title, string name, Gtk.Container content) {
@@ -138,12 +137,16 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
 
         if (file_info != null &&
             file_info.has_attribute (FileAttribute.FILESYSTEM_SIZE) &&
-            file_info.has_attribute (FileAttribute.FILESYSTEM_FREE)) {
+            file_info.has_attribute (FileAttribute.FILESYSTEM_FREE) &&
+            file_info.has_attribute (FileAttribute.FILESYSTEM_USED)) {
 
             uint64 fs_capacity = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_SIZE);
             uint64 fs_used = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_USED);
+            uint64 fs_available = file_info.get_attribute_uint64 (FileAttribute.FILESYSTEM_FREE);
+            uint64 fs_reserved = fs_capacity - fs_used - fs_available;
 
-            storagebar = new Granite.Widgets.StorageBar.with_total_usage (fs_capacity, fs_used);
+            storagebar = new Granite.Widgets.StorageBar.with_total_usage (fs_capacity, fs_used + fs_reserved);
+            update_storage_block_size (fs_reserved, Granite.Widgets.StorageBar.ItemDescription.OTHER);
 
             info_grid.attach (storagebar, 0, line + 1, 4, 1);
         } else {
@@ -167,9 +170,10 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         }
     }
 
-    protected void update_selection_usage (uint64 size) {
+    protected void update_storage_block_size (uint64 size,
+                                              Granite.Widgets.StorageBar.ItemDescription item_description) {
         if (storagebar != null) {
-            storagebar.update_block_size (Granite.Widgets.StorageBar.ItemDescription.FILES, size);
+            storagebar.update_block_size (item_description, size);
         }
     }
 }
