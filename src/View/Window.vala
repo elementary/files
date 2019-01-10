@@ -25,21 +25,21 @@ namespace Marlin.View {
 
     public class Window : Gtk.ApplicationWindow {
         const GLib.ActionEntry [] win_entries = {
-            {"new_window", action_new_window},
+            {"new-window", action_new_window},
             {"quit", action_quit},
             {"refresh", action_reload},
             {"undo", action_undo},
             {"redo", action_redo},
             {"bookmark", action_bookmark},
             {"find", action_find},
-            {"edit_path", action_edit_path},
+            {"edit-path", action_edit_path},
             {"tab", action_tab, "s"},
-            {"go_to", action_go_to, "s"},
+            {"go-to", action_go_to, "s"},
             {"zoom", action_zoom, "s"},
             {"info", action_info, "s"},
-            {"view_mode", action_view_mode, "s", "'MILLER'"},
-            {"show_hidden", null, null, "false", change_state_show_hidden},
-            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
+            {"view-mode", action_view_mode, "s", "'MILLER'"},
+            {"show-hidden", null, null, "false", change_state_show_hidden},
+            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails}
         };
 
         const string [] mode_strings = {
@@ -138,7 +138,7 @@ namespace Marlin.View {
         }
 
         private void build_window () {
-            view_switcher = new Chrome.ViewSwitcher (lookup_action ("view_mode") as SimpleAction);
+            view_switcher = new Chrome.ViewSwitcher (lookup_action ("view-mode") as SimpleAction);
             view_switcher.mode = Preferences.settings.get_enum ("default-viewmode");
 
             top_menu = new Chrome.TopMenu (view_switcher);
@@ -173,8 +173,8 @@ namespace Marlin.View {
 
             /** Apply preferences */
             var prefs = Preferences.settings;
-            get_action ("show_hidden").set_state (prefs.get_boolean ("show-hiddenfiles"));
-            get_action ("show_remote_thumbnails").set_state (prefs.get_boolean ("show-remote-thumbnails"));
+            get_action ("show-hidden").set_state (prefs.get_boolean ("show-hiddenfiles"));
+            get_action ("show-remote-thumbnails").set_state (prefs.get_boolean ("show-remote-thumbnails"));
         }
 
         private void connect_signals () {
@@ -226,9 +226,11 @@ namespace Marlin.View {
                             } else {
                                 current_tab.grab_focus ();
                             }
+
+                            return true;
                         }
 
-                        return true;
+                        break;
                 }
 
                 return false;
@@ -1031,7 +1033,7 @@ namespace Marlin.View {
             var mode = current_tab.view_mode;
             view_switcher.mode = mode;
             view_switcher.sensitive = current_tab.can_show_folder;
-            get_action ("view_mode").set_state (mode_strings [(int)mode]);
+            get_action ("view-mode").set_state (mode_strings [(int)mode]);
             Preferences.settings.set_enum ("default-viewmode", mode);
         }
 
@@ -1111,31 +1113,31 @@ namespace Marlin.View {
 
         private void set_accelerators () {
             application.set_accels_for_action ("win.quit", {"<Ctrl>Q"});
-            application.set_accels_for_action ("win.new_window", {"<Ctrl>N"});
+            application.set_accels_for_action ("win.new-window", {"<Ctrl>N"});
             application.set_accels_for_action ("win.undo", {"<Ctrl>Z"});
             application.set_accels_for_action ("win.redo", {"<Ctrl><Shift>Z"});
             application.set_accels_for_action ("win.bookmark", {"<Ctrl>D"});
             application.set_accels_for_action ("win.find", {"<Ctrl>F"});
-            application.set_accels_for_action ("win.edit_path", {"<Ctrl>L"});
+            application.set_accels_for_action ("win.edit-path", {"<Ctrl>L"});
             application.set_accels_for_action ("win.tab::NEW", {"<Ctrl>T"});
             application.set_accels_for_action ("win.tab::CLOSE", {"<Ctrl>W"});
             application.set_accels_for_action ("win.tab::NEXT", {"<Ctrl>Page_Down", "<Ctrl>Tab"});
             application.set_accels_for_action ("win.tab::PREVIOUS", {"<Ctrl>Page_Up", "<Shift><Ctrl>Tab"});
-            application.set_accels_for_action ("win.view_mode::ICON", {"<Ctrl>1"});
-            application.set_accels_for_action ("win.view_mode::LIST", {"<Ctrl>2"});
-            application.set_accels_for_action ("win.view_mode::MILLER", {"<Ctrl>3"});
+            application.set_accels_for_action ("win.view-mode::ICON", {"<Ctrl>1"});
+            application.set_accels_for_action ("win.view-mode::LIST", {"<Ctrl>2"});
+            application.set_accels_for_action ("win.view-mode::MILLER", {"<Ctrl>3"});
             application.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
             application.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             application.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
-            application.set_accels_for_action ("win.show_hidden", {"<Ctrl>H"});
+            application.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
             application.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
-            application.set_accels_for_action ("win.go_to::HOME", {"<Alt>Home"});
-            application.set_accels_for_action ("win.go_to::TRASH", {"<Alt>T"});
-            application.set_accels_for_action ("win.go_to::NETWORK", {"<Alt>N"});
-            application.set_accels_for_action ("win.go_to::SERVER", {"<Alt>C"});
-            application.set_accels_for_action ("win.go_to::UP", {"<Alt>Up"});
-            application.set_accels_for_action ("win.go_to::FORWARD", {"<Alt>Right", "XF86Forward"});
-            application.set_accels_for_action ("win.go_to::BACK", {"<Alt>Left", "XF86Back"});
+            application.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
+            application.set_accels_for_action ("win.go-to::TRASH", {"<Alt>T"});
+            application.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
+            application.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
+            application.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
+            application.set_accels_for_action ("win.go-to::FORWARD", {"<Alt>Right", "XF86Forward"});
+            application.set_accels_for_action ("win.go-to::BACK", {"<Alt>Left", "XF86Back"});
             application.set_accels_for_action ("win.info::HELP", {"F1"});
         }
     }

@@ -17,6 +17,7 @@
 
 namespace Marlin {
 
+#if HAVE_UNITY
     public class LauncherEntry : Object {
         public Unity.LauncherEntry entry;
         public List<Dbusmenu.Menuitem> bookmark_quicklists = null;
@@ -118,4 +119,5 @@ namespace Marlin {
         }
 
     }
+#endif /* HAVE_UNITY */
 }

@@ -43,6 +43,8 @@ namespace FM
         public void clear ();
         public void set_should_sort_directories_first (bool directories_first);
         public signal void subdirectory_unloaded (GOF.Directory.Async directory);
+        public static string get_string_from_column_id (FM.ListModel.ColumnID id);
+        public static FM.ListModel.ColumnID get_column_id_from_string (string colstr);
     }
 }
 
