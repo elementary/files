@@ -226,9 +226,11 @@ namespace Marlin.View {
                             } else {
                                 current_tab.grab_focus ();
                             }
+
+                            return true;
                         }
 
-                        return true;
+                        break;
                 }
 
                 return false;
