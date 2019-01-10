@@ -905,9 +905,8 @@ namespace Marlin.Places {
             }
         }
 
-        private async bool get_filesystem_space_and_type (GLib.File root, out uint64 fs_capacity,
-                                                          out uint64 fs_free, out string type,
-                                                          Cancellable update_cancellable) {
+        private async bool get_filesystem_space_and_type (GLib.File root, Cancellable update_cancellable,
+                                                          out uint64 fs_capacity, out uint64 fs_free, out string type) {
             fs_capacity = 0;
             fs_free = 0;
             type = "";
@@ -973,9 +972,8 @@ namespace Marlin.Places {
             string fs_type;
             var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
 
-            if (yield get_filesystem_space_and_type (root,
-                                                     out fs_capacity, out fs_free, out fs_type,
-                                                     update_cancellable)) {
+            if (yield get_filesystem_space_and_type (root, update_cancellable,
+                                                     out fs_capacity, out fs_free, out fs_type)) {
 
                 var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
                 if (rowref != null && rowref.valid ()) {
