@@ -78,5 +78,6 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         /* Blue part of bar */
         context.add_class ("fill-block");
         context.render_background (cr, x, y, fill_width , BAR_HEIGHT);
+        context.remove_provider (CellRendererDisk.provider);
     }
 }
