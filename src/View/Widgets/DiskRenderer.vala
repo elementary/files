@@ -28,28 +28,11 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
     private const int OFFSET = 2;
     private const int BAR_HEIGHT = 5;
 
-    private const string CSS_DATA = """
-        .source-list.level-bar {
-            background-color: #fff;
-        }
-
-        .source-list.fill-block {
-            background-color: mix (@colorAccent, @base_color, 0.25);
-        }
-    """;
-
-    private static Gtk.CssProvider provider;
     construct {
         is_disk = false;
         disk_size = 0;
         free_space = 0;
 
-        provider = new Gtk.CssProvider ();
-        try {
-            provider.load_from_data (CSS_DATA);
-        } catch (Error e) {
-            critical (e.message);
-        }
     }
 
     public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
@@ -76,7 +59,6 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         uint fill_width = total_width - (int) (((double) free_space / (double) disk_size) * (double) total_width);
 
         var context = widget.get_style_context ();
-        context.add_provider (CellRendererDisk.provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         /* White full length and height background */
         context.add_class ("level-bar");
@@ -86,6 +68,5 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         /* Blue part of bar */
         context.add_class ("fill-block");
         context.render_background (cr, x, y, fill_width , BAR_HEIGHT);
-        context.remove_provider (CellRendererDisk.provider);
     }
 }
