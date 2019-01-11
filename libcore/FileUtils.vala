@@ -75,6 +75,7 @@ namespace PF.FileUtils {
         if (parent_path == Marlin.SMB_URI) {
             parent_path = parent_path + Path.DIR_SEPARATOR_S;
         }
+
         return parent_path;
     }
 
@@ -165,7 +166,7 @@ namespace PF.FileUtils {
         }
         StringBuilder sb = new StringBuilder (path);
         if (path.has_suffix (Path.DIR_SEPARATOR_S)) {
-            sb.erase (sb.str.length - 1,-1);
+            sb.erase (sb.str.length - 1, -1);
         }
         int last_separator = sb.str.last_index_of (Path.DIR_SEPARATOR_S);
         if (last_separator < 0) {
@@ -759,7 +760,7 @@ namespace PF.FileUtils {
 
         return mod_a == mod_b ? 0 : mod_a > mod_b ? 1 : -1;
     }
-    
+
     public void remove_thumbnail_paths_for_uri (string uri) {
         string hash = GLib.Checksum.compute_for_string (ChecksumType.MD5, uri);
         string base_name = "%s.png".printf (hash);
