@@ -20,7 +20,7 @@
 
 #include <glib.h>
 #include <glib-object.h>
-#include <pantheon-files-core.h>
+#include <pantheon-files-core/pantheon-files-core.h>
 
 #include "dropbox-command-client.h"
 #include "dropbox-hooks.h"
