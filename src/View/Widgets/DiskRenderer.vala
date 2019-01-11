@@ -52,6 +52,14 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         }
     }
 
+    public override void get_preferred_height_for_width (Gtk.Widget widget, int width,
+                                                         out int minimum_size, out int natural_size) {
+        int min, nat;
+        base.get_preferred_height_for_width (widget, width, out min, out nat);
+        natural_size = nat + BAR_HEIGHT;
+        minimum_size = min + BAR_HEIGHT;
+    }
+
     public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle bg_area,
                                  Gdk.Rectangle area, Gtk.CellRendererState flags) {
 
@@ -63,7 +71,7 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
 
         var x = area.x += OFFSET;
         /* Draw bar on background area to allow room for space between bar and text */
-        var y = bg_area.y + bg_area.height - BAR_HEIGHT - 2;
+        var y = bg_area.y + bg_area.height - BAR_HEIGHT - 3;
         var total_width = area.width - OFFSET - 2;
         uint fill_width = total_width - (int) (((double) free_space / (double) disk_size) * (double) total_width);
 
