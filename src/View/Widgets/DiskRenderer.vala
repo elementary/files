@@ -28,10 +28,28 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
     private const int OFFSET = 2;
     private const int BAR_HEIGHT = 5;
 
+    private const string CSS_DATA = """
+        .source-list.level-bar {
+            background-color: #fff;
+        }
+
+        .source-list.fill-block {
+            background-color: mix (@colorAccent, @base_color, 0.25);
+        }
+    """;
+
+    private static Gtk.CssProvider provider;
     construct {
         is_disk = false;
         disk_size = 0;
         free_space = 0;
+
+        provider = new Gtk.CssProvider ();
+        try {
+            provider.load_from_data (CSS_DATA);
+        } catch (Error e) {
+            critical (e.message);
+        }
     }
 
     public override void render (Cairo.Context cr, Gtk.Widget widget, Gdk.Rectangle bg_area,
@@ -49,22 +67,16 @@ public class Marlin.CellRendererDisk : Gtk.CellRendererText {
         var total_width = area.width - OFFSET - 2;
         uint fill_width = total_width - (int) (((double) free_space / (double) disk_size) * (double) total_width);
 
-
-
         var context = widget.get_style_context ();
+        context.add_provider (CellRendererDisk.provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         /* White full length and height background */
-        context.add_class ("storage-bar");
-        context.add_class ("trough");
+        context.add_class ("level-bar");
+        context.add_class ("frame");
         context.render_background (cr, x, y, total_width, BAR_HEIGHT);
-        context.remove_class ("trough");
+        context.render_frame (cr, x, y, total_width, BAR_HEIGHT);
         /* Blue part of bar */
         context.add_class ("fill-block");
         context.render_background (cr, x, y, fill_width , BAR_HEIGHT);
-
-        cr.rectangle (x, y, total_width, BAR_HEIGHT);
-        cr.set_line_width (1.0);
-        cr.set_source_rgba (0.0, 0.0, 0.0, 0.3);
-        cr.stroke ();
     }
 }
