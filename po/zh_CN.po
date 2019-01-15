@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-01-15 12:53+0000\n"
+"PO-Revision-Date: 2019-01-16 00:03+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: src/Application.vala:120
 msgid "Show the version of the program"
-msgstr "显示程序版本。"
+msgstr "显示程序版本"
 
 #: src/Application.vala:122
 msgid "Open one or more URIs, each in their own tab"
@@ -81,7 +81,7 @@ msgstr "取消所有正在进行的动作"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr "信息："
+msgstr "信息"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
@@ -93,7 +93,7 @@ msgstr "关闭"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:136
 msgid "Device Usage"
-msgstr "用量："
+msgstr "设备用量"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 msgid "Capacity:"
