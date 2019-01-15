@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2018-08-13 00:03+0000\n"
+"PO-Revision-Date: 2019-01-15 12:53+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://weblate.elementary.io/projects/"
 "files/files/zh_Hans/>\n"
@@ -25,9 +25,8 @@ msgid "Show the version of the program"
 msgstr "显示程序版本。"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
-msgstr "在新标签中打开地址"
+msgstr "在新标签中分别打开一个或多个地址"
 
 #: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -337,9 +336,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "不能打开此文件"
+msgstr "不能执行此文件"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
@@ -516,14 +514,12 @@ msgid "Browse the contents of the network"
 msgstr "浏览网络内容"
 
 #: src/View/Sidebar.vala:823
-#, fuzzy
 msgid "Connect Server"
-msgstr "连接到服务器"
+msgstr "连接服务器"
 
 #: src/View/Sidebar.vala:824
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "连接至网络文件服务器"
+msgstr "连接至网络服务器"
 
 #: src/View/Sidebar.vala:963
 #, c-format
@@ -562,19 +558,19 @@ msgstr "拒绝访问"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "隐私模式已启用"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "没有近期使用的文件记录"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "更改安全设置"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "打开系统安全与隐私设置界面"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
@@ -848,33 +844,29 @@ msgstr "服务器详情"
 
 #: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr ""
+msgstr "服务器名或 IP 地址"
 
 #: libcore/ConnectServerDialog.vala:135
-#, fuzzy
 msgid "Server:"
 msgstr "服务器："
 
 #: libcore/ConnectServerDialog.vala:142
-#, fuzzy
 msgid "Port:"
 msgstr "端口："
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Name of share on server"
-msgstr ""
+msgstr "服务器共享名称"
 
 #: libcore/ConnectServerDialog.vala:168
-#, fuzzy
 msgid "Share:"
 msgstr "共享："
 
 #: libcore/ConnectServerDialog.vala:170
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "服务器共享文件夹路径"
 
 #: libcore/ConnectServerDialog.vala:171
-#, fuzzy
 msgid "Folder:"
 msgstr "文件夹："
 
@@ -883,31 +875,26 @@ msgid "User Details"
 msgstr "用户详情"
 
 #: libcore/ConnectServerDialog.vala:175
-#, fuzzy
 msgid "Name of Windows domain"
-msgstr "新建管理员窗口"
+msgstr "Windows 域名名称"
 
 #: libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Domain name:"
 msgstr "域名："
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Name of user on server"
-msgstr ""
+msgstr "服务器共享用户名称"
 
 #: libcore/ConnectServerDialog.vala:179
-#, fuzzy
 msgid "User name:"
 msgstr "用户名："
 
 #: libcore/ConnectServerDialog.vala:184
-#, fuzzy
 msgid "Password:"
 msgstr "密码："
 
 #: libcore/ConnectServerDialog.vala:186
-#, fuzzy
 msgid "Remember this password"
 msgstr "记住此密码"
 
@@ -917,7 +904,6 @@ msgid "Cancel"
 msgstr "取消"
 
 #: libcore/ConnectServerDialog.vala:193
-#, fuzzy
 msgid "Connect"
 msgstr "连接"
 
@@ -926,9 +912,8 @@ msgid "Continue"
 msgstr "继续"
 
 #: libcore/ConnectServerDialog.vala:245
-#, fuzzy
 msgid "Connecting…"
-msgstr "正在连接..."
+msgstr "正在连接…"
 
 #: libcore/ConnectServerDialog.vala:364
 msgid "Please verify your user details."
@@ -1027,11 +1012,11 @@ msgstr "重命名"
 
 #: libcore/FileConflictDialog.vala:191
 msgid "Keep Newest"
-msgstr ""
+msgstr "保留最新"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "当原始文件有较新的修改时跳过"
 
 #: libcore/FileConflictDialog.vala:194
 msgid "Replace"
@@ -1185,24 +1170,24 @@ msgid "Another link to %s"
 msgstr "另一个到 %s 的链接"
 
 #: libcore/marlin-file-operations.c:368
-#, fuzzy, c-format
+#, c-format
 msgid "%'dst link to %s"
-msgstr "到 %s 的第 %'d 个链接"
+msgstr "至 %s 的第 %'d 个链接"
 
 #: libcore/marlin-file-operations.c:372
-#, fuzzy, c-format
+#, c-format
 msgid "%'dnd link to %s"
-msgstr "到 %s 的第 %'d 个链接"
+msgstr "至 %s 的第 %'d 个链接"
 
 #: libcore/marlin-file-operations.c:376
-#, fuzzy, c-format
+#, c-format
 msgid "%'drd link to %s"
-msgstr "到 %s 的第 %'d 个链接"
+msgstr "至 %s 的第 %'d 个链接"
 
 #: libcore/marlin-file-operations.c:380
-#, fuzzy, c-format
+#, c-format
 msgid "%'dth link to %s"
-msgstr "到 %s 的第 %'d 个链接"
+msgstr "至 %s 的第 %'d 个链接"
 
 #: libcore/marlin-file-operations.c:572
 msgid " ("
@@ -2093,9 +2078,8 @@ msgid "Go to %s"
 msgstr "转到 %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
-msgstr "输入位置"
+msgstr "输入路径"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
