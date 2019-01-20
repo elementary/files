@@ -41,6 +41,7 @@ pantheon_files_widgets_dep = declare_dependency(
 
 pkg.generate(
     libraries: pantheon_files_widgets_library,
+    subdirs:  pantheon_files_widgets_name,
     filebase: pantheon_files_widgets_name,
     name: 'elementary Files Widgets Library',
     description: 'Common widgets for io.elementary.files and io.elementary.filechooser',
