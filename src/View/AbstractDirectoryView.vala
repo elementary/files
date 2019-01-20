@@ -558,9 +558,9 @@ namespace FM {
                         }
                     }
                 } else if (default_app != null) {
-                    var files_to_open = get_files_for_action ();
+                    /* Because this is in another thread we need to copy the selection to ensure it remains valid */
+                    var files_to_open = selection.copy_deep ((GLib.CopyFunc)(GLib.Object.ref));
                     GLib.Idle.add (() => {
-                        /* Because this is in another thread we need to copy the selection to ensure it remains valid */
                         open_files_with (default_app, files_to_open);
                         return GLib.Source.REMOVE;
                     });
