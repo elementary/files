@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-01-04 00:08+0000\n"
+"PO-Revision-Date: 2019-01-12 00:09+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://weblate.elementary.io/projects/"
 "files/files/nb/>\n"
@@ -345,9 +345,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Kan ikke åpne denne filen"
+msgstr "Kan ikke kjøre denne filen"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
