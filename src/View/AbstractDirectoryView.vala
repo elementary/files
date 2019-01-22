@@ -73,7 +73,8 @@ namespace FM {
             {"reverse", on_background_action_reverse_changed, null, "false"},
             {"folders-first", on_background_action_folders_first_changed, null, "true"},
             {"show-hidden", null, null, "false", change_state_show_hidden},
-            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails}
+            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails},
+            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
         const GLib.ActionEntry [] common_entries = {
@@ -258,6 +259,7 @@ namespace FM {
         protected bool is_loading;
         protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = false;}
+        protected bool hide_local_thumbnails {get; set; default = false;}
         protected bool is_admin {
             get {
                 return (uint)Posix.getuid () == 0;
@@ -303,6 +305,7 @@ namespace FM {
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
+            Preferences.settings.bind ("hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "activate on blank" is enabled, matching existing UI
@@ -374,6 +377,7 @@ namespace FM {
             var prefs = (GOF.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
+            prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
             model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
@@ -400,6 +404,9 @@ namespace FM {
 
             action_set_state (background_actions, "show-remote-thumbnails",
                               Preferences.settings.get_boolean ("show-remote-thumbnails"));
+
+            action_set_state (background_actions, "hide-local-thumbnails",
+                              Preferences.settings.get_boolean ("hide-local-thumbnails"));
         }
 
         public void zoom_in () {
@@ -1125,8 +1132,13 @@ namespace FM {
         private void change_state_show_hidden (GLib.SimpleAction action) {
             window.change_state_show_hidden (action);
         }
+
         private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
             window.change_state_show_remote_thumbnails (action);
+        }
+
+        private void change_state_hide_local_thumbnails (GLib.SimpleAction action) {
+            window.change_state_hide_local_thumbnails (action);
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1292,7 +1304,7 @@ namespace FM {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if (slot.directory.is_local || (show_remote_thumbnails && slot.directory.can_open_files)) {
+                if ((slot.directory.is_local && !hide_local_thumbnails) || (show_remote_thumbnails && slot.directory.can_open_files)) {
                     thumbnailer.queue_file (file, null, large_thumbnails);
                     if (plugins != null) {
                         plugins.update_file_info (file);
@@ -1396,9 +1408,13 @@ namespace FM {
         private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             show_remote_thumbnails = (prefs as GOF.Preferences).show_remote_thumbnails;
             action_set_state (background_actions, "show-remote-thumbnails", show_remote_thumbnails);
-            if (show_remote_thumbnails) {
-                slot.reload ();
-            }
+            slot.reload ();
+        }
+
+        private void on_hide_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            hide_local_thumbnails = (prefs as GOF.Preferences).hide_local_thumbnails;
+            action_set_state (background_actions, "hide-local-thumbnails", hide_local_thumbnails);
+            slot.reload ();
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
@@ -2046,7 +2062,11 @@ namespace FM {
             if (slot.directory.is_local || !slot.directory.can_open_files) {
                 /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
                 show_menu.remove (1);
+            } else if (!slot.directory.is_local) {
+                /* Do not show "Hide Local Thumbnails" option when in remote folder */
+                show_menu.remove (2);
             }
+
             return show_menu;
         }
 
@@ -2435,6 +2455,7 @@ namespace FM {
 
             if (thumbnail_source_id != 0 ||
                 (!slot.directory.is_local && !show_remote_thumbnails) ||
+                (slot.directory.is_local && hide_local_thumbnails) ||
                  !slot.directory.can_open_files ||
                  slot.directory.is_loading ()) {
 
