@@ -177,11 +177,6 @@ public class GOF.File : GLib.Object {
             debug ("remove from file_cache %s", uri);
         }
 
-        /* remove from directory_cache */
-        /*if (directory && G_OBJECT (file->directory)->ref_count > 0) {
-            gof_directory_async_remove_file_from_cache (file);
-        }*/
-
         is_gone = true;
     }
 

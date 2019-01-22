@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2018-12-19 09:47+0000\n"
+"PO-Revision-Date: 2019-01-13 09:32+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://weblate.elementary.io/projects/files/files/he/"
 ">\n"
@@ -2140,7 +2140,6 @@ msgid "Go to %s"
 msgstr "מעבר אל %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
 msgstr "נא להקליד נתיב"
 

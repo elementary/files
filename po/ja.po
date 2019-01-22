@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2018-12-29 00:01+0000\n"
+"PO-Revision-Date: 2019-01-11 00:39+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
 "ja/>\n"
@@ -2101,7 +2101,6 @@ msgid "Go to %s"
 msgstr "%s へ移動"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
 msgstr "パスを入力してください"
 

@@ -75,6 +75,7 @@ namespace PF.FileUtils {
         if (parent_path == Marlin.SMB_URI) {
             parent_path = parent_path + Path.DIR_SEPARATOR_S;
         }
+
         return parent_path;
     }
 
@@ -217,7 +218,7 @@ namespace PF.FileUtils {
         }
         StringBuilder sb = new StringBuilder (path);
         if (path.has_suffix (Path.DIR_SEPARATOR_S)) {
-            sb.erase (sb.str.length - 1,-1);
+            sb.erase (sb.str.length - 1, -1);
         }
         int last_separator = sb.str.last_index_of (Path.DIR_SEPARATOR_S);
         if (last_separator < 0) {
@@ -566,26 +567,32 @@ namespace PF.FileUtils {
         switch (now_weekday - disp_weekday) {
             case 0:
                 if (clock_is_24h) {
-                    format_string = _("Today at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                    ///TRANSLATORS Used when 24h clock has been selected
+                    format_string = _("Today at %-H:%M");
                 } else {
-                    format_string = _("Today at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected
+                    ///TRANSLATORS Used when 12h clock has been selected
+                    format_string = _("Today at %-I:%M %p");
                 }
 
                 break;
             case 1:
                 if (clock_is_24h) {
-                    format_string = _("Yesterday at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                    ///TRANSLATORS Used when 24h clock has been selected
+                    format_string = _("Yesterday at %-H:%M");
                 } else {
-                    format_string = _("Yesterday at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected
+                    ///TRANSLATORS Used when 12h clock has been selected
+                    format_string = _("Yesterday at %-I:%M %p");
                 }
 
                 break;
 
             default:
                 if (clock_is_24h) {
-                    format_string = _("%A at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                    ///TRANSLATORS Used when 24h clock has been selected
+                    format_string = _("%A at %-H:%M");
                 } else {
-                    format_string = _("%A at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected
+                    ///TRANSLATORS Used when 12h clock has been selected
+                    format_string = _("%A at %-I:%M %p");
                 }
 
                 break;
