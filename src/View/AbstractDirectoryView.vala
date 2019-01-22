@@ -1283,6 +1283,8 @@ namespace FM {
             if (file != null) {
                 add_file (file, dir);
                 handle_free_space_change ();
+            } else {
+                critical ("Null file added");
             }
         }
 
@@ -1340,6 +1342,7 @@ namespace FM {
                     slot.folder_deleted (file, file_dir);
                 }
             }
+
             handle_free_space_change ();
         }
 
@@ -2508,10 +2511,10 @@ namespace FM {
                     /* iterate over the range to collect all files */
                     valid_iter = model.get_iter (out iter, start_path);
                     while (valid_iter && thumbnail_source_id > 0) {
-                        file = model.file_for_iter (iter); // Maybe null if dummy row
+                        file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
                         path = model.get_path (iter);
 
-                        if (file != null) {
+                        if (file != null && !file.is_gone) {
                             file.query_thumbnail_update (); // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
                             if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
