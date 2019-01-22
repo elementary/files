@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2018-12-20 00:10+0000\n"
+"PO-Revision-Date: 2019-01-14 16:28+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://weblate.elementary.io/projects/files/files/"
 "ca/>\n"
@@ -963,7 +963,7 @@ msgstr "Avui a les %-H.%M"
 
 #: libcore/FileUtils.vala:520
 msgid "Today at %-I:%M %p"
-msgstr "Avui a les %-H:%M"
+msgstr "Avui a les %-H.%M"
 
 #: libcore/FileUtils.vala:526
 msgid "Yesterday at %-H:%M"
@@ -971,7 +971,7 @@ msgstr "Ahir a les %-H.%M"
 
 #: libcore/FileUtils.vala:528
 msgid "Yesterday at %-I:%M %p"
-msgstr "Ahir a les %-H:%M"
+msgstr "Ahir a les %-H.%M"
 
 #: libcore/FileUtils.vala:535
 msgid "%A at %-H:%M"
@@ -979,7 +979,7 @@ msgstr "%A a les %-H.%M"
 
 #: libcore/FileUtils.vala:537
 msgid "%A at %-I:%M %p"
-msgstr "%A a les %-I.%M %p"
+msgstr "%A a les %-H.%M"
 
 #: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
@@ -2173,7 +2173,6 @@ msgid "Go to %s"
 msgstr "Vés a %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
 msgstr "Escriviu un camí"
 
