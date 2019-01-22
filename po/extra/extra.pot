@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"POT-Creation-Date: 2019-01-13 13:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,15 +34,16 @@ msgstr ""
 msgid "File Manager"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:8
+#. TRANSLATORS Do not translate icon name
+#: data/io.elementary.files.desktop.in.in:9
 msgid "system-file-manager"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:19
+#: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:23
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
 msgstr ""
 
@@ -58,6 +59,6 @@ msgid ""
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
 
-#: data/io.elementary.files.appdata.xml.in.in:166
+#: data/io.elementary.files.appdata.xml.in.in:217
 msgid "elementary LLC."
 msgstr ""
