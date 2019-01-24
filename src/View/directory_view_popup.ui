@@ -71,6 +71,10 @@
             <attribute name='label' translatable='yes'>Show Remote Thumbnails</attribute>
             <attribute name='action'>background.show-remote-thumbnails</attribute>
         </item>
+        <item>
+            <attribute name='label' translatable='yes'>Hide Local Thumbnails</attribute>
+            <attribute name='action'>background.hide-local-thumbnails</attribute>
+        </item>
     </menu>
 
     <menu id='open-in'>

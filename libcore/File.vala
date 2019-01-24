@@ -177,11 +177,6 @@ public class GOF.File : GLib.Object {
             debug ("remove from file_cache %s", uri);
         }
 
-        /* remove from directory_cache */
-        /*if (directory && G_OBJECT (file->directory)->ref_count > 0) {
-            gof_directory_async_remove_file_from_cache (file);
-        }*/
-
         is_gone = true;
     }
 
@@ -800,7 +795,7 @@ public class GOF.File : GLib.Object {
     public GLib.AppInfo? get_default_handler () {
         unowned string? content_type = get_ftype ();
         if (content_type != null) {
-            return GLib.AppInfo.get_default_for_type (content_type, location.get_path () != null);
+            return GLib.AppInfo.get_default_for_type (content_type, location.get_path () == null);
         }
 
         if (target_location != null) {
