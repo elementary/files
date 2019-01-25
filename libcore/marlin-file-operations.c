@@ -745,7 +745,8 @@ custom_full_name_to_string (char *format, va_list va)
 
     file = va_arg (va, GFile *);
     if (!G_IS_FILE (file)) {
-        return "???????";
+        g_critical ("Invalid file");
+        return strdup ("");
     }
 
     return g_file_get_parse_name (file);
@@ -763,7 +764,8 @@ custom_basename_from_file (GFile *file) {
     char *name, *basename, *tmp;
 
     if (!G_IS_FILE (file)) {
-        return "???????";
+        g_critical ("Invalid file");
+        return strdup ("");
     }
 
     info = g_file_query_info (file,
@@ -861,7 +863,8 @@ custom_mount_to_string (char *format, va_list va)
 
     mount = va_arg (va, GMount *);
     if (!G_IS_MOUNT (mount)) {
-        return "???????";
+        g_critical ("Invalid mount");
+        return strdup ("");
     }
     return g_mount_get_name (mount);
 }
