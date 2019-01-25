@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2018-12-09 00:01+0000\n"
+"PO-Revision-Date: 2019-01-25 18:40+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://weblate.elementary.io/projects/files/files/da/"
 ">\n"
@@ -25,9 +25,8 @@ msgid "Show the version of the program"
 msgstr "Vis versionen af programmet"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Åbn en eller flere uris, hver i en ny fane"
+msgstr "Åbn en eller flere URI'er, hver især i sin egen fane"
 
 #: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -129,13 +128,13 @@ msgid "Permissions"
 msgstr "Rettigheder"
 
 #: src/Dialogs/PropertiesWindow.vala:244
-#, fuzzy, c-format
+#, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
-"$i-filen kunne ikke læses grundet manglende rettigheder, eller andre fejl."
+"%i filen kunne ikke læses grundet manglende rettigheder, eller andre fejl."
 msgstr[1] ""
-"$i-filerne kunne ikke læses grundet manglende rettigheder, eller andre fejl."
+"%i filerne kunne ikke læses grundet manglende rettigheder, eller andre fejl."
 
 #: src/Dialogs/PropertiesWindow.vala:248
 msgid "Actual Size Could Be Larger"
@@ -344,9 +343,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Kan ikke åbne denne fil"
+msgstr "Kan ikke eksekvere denne fil"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
@@ -567,19 +565,19 @@ msgstr "Adgang nægtet"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Privat-tilstand er aktiveret"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Ingen nylige filer er husket"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Skift sikkerhedsindstillinger"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Åbn systemets sikkerheds- og privatlivsindstillinger-app"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
@@ -2169,9 +2167,8 @@ msgid "Go to %s"
 msgstr "Gå til %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
-msgstr "Indtast en sti"
+msgstr "Vælg en Sti"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
