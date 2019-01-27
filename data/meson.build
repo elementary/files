@@ -55,7 +55,7 @@ i18n.merge_file(
     input: policy_in,
     output: meson.project_name() + '.policy',
     po_dir: po_dir,
-    data_dirs: [join_paths(po_dir, 'its')],
+    data_dirs: po_dir,
     install: true,
     install_dir: join_paths(get_option('datadir'), 'applications'),
 )
