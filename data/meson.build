@@ -48,14 +48,14 @@ appdata_in = configure_file(
     install: false,
 )
 
-extra_po_dir = join_paths(meson.source_root(), 'po', 'extra')
+po_dir = join_paths(meson.source_root(), 'po')
 
 i18n.merge_file(
     'policy',
     input: policy_in,
     output: meson.project_name() + '.policy',
-    po_dir: extra_po_dir,
-    data_dirs: [join_paths(extra_po_dir, 'its')],
+    po_dir: po_dir,
+    data_dirs: [join_paths(po_dir, 'its')],
     install: true,
     install_dir: join_paths(get_option('datadir'), 'applications'),
 )
