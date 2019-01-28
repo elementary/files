@@ -57,7 +57,7 @@ i18n.merge_file(
     po_dir: po_dir,
     data_dirs: po_dir,
     install: true,
-    install_dir: join_paths(get_option('datadir'), 'applications'),
+    install_dir: join_paths(get_option('datadir'), 'polkit-1', 'actions'),
 )
 
 i18n.merge_file(
