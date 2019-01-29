@@ -516,26 +516,32 @@ namespace PF.FileUtils {
         switch (now_weekday - disp_weekday) {
             case 0:
                 if (clock_is_24h) {
-                    format_string = _("Today at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                    ///TRANSLATORS Used when 24h clock has been selected
+                    format_string = _("Today at %-H:%M");
                 } else {
-                    format_string = _("Today at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected
+                    ///TRANSLATORS Used when 12h clock has been selected
+                    format_string = _("Today at %-I:%M %p");
                 }
 
                 break;
             case 1:
                 if (clock_is_24h) {
-                    format_string = _("Yesterday at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                    ///TRANSLATORS Used when 24h clock has been selected
+                    format_string = _("Yesterday at %-H:%M");
                 } else {
-                    format_string = _("Yesterday at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected
+                    ///TRANSLATORS Used when 12h clock has been selected
+                    format_string = _("Yesterday at %-I:%M %p");
                 }
 
                 break;
 
             default:
                 if (clock_is_24h) {
-                    format_string = _("%A at %-H:%M"); ///TRANSLATORS Used when 24h clock has been selected
+                    ///TRANSLATORS Used when 24h clock has been selected
+                    format_string = _("%A at %-H:%M");
                 } else {
-                    format_string = _("%A at %-I:%M %p"); ///TRANSLATORS Used when 12h clock has been selected
+                    ///TRANSLATORS Used when 12h clock has been selected
+                    format_string = _("%A at %-I:%M %p");
                 }
 
                 break;
