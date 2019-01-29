@@ -54,11 +54,11 @@ namespace FM {
         /* Menu Handling */
         const GLib.ActionEntry [] selection_entries = {
             {"open", on_selection_action_open_executable},
-            {"open_with_app", on_selection_action_open_with_app, "s"},
-            {"open_with_default", on_selection_action_open_with_default},
-            {"open_with_other_app", on_selection_action_open_with_other_app},
+            {"open-with-app", on_selection_action_open_with_app, "u"},
+            {"open-with-default", on_selection_action_open_with_default},
+            {"open-with-other-app", on_selection_action_open_with_other_app},
             {"rename", on_selection_action_rename},
-            {"view_in_location", on_selection_action_view_in_location},
+            {"view-in-location", on_selection_action_view_in_location},
             {"forget", on_selection_action_forget},
             {"cut", on_selection_action_cut},
             {"trash", on_selection_action_trash},
@@ -68,21 +68,22 @@ namespace FM {
 
         const GLib.ActionEntry [] background_entries = {
             {"new", on_background_action_new, "s"},
-            {"create_from", on_background_action_create_from, "s"},
-            {"sort_by", on_background_action_sort_by_changed, "s", "'name'"},
+            {"create-from", on_background_action_create_from, "s"},
+            {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
-            {"folders_first", on_background_action_folders_first_changed, null, "true"},
-            {"show_hidden", null, null, "false", change_state_show_hidden},
-            {"show_remote_thumbnails", null, null, "false", change_state_show_remote_thumbnails}
+            {"folders-first", on_background_action_folders_first_changed, null, "true"},
+            {"show-hidden", null, null, "false", change_state_show_hidden},
+            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails},
+            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
         const GLib.ActionEntry [] common_entries = {
             {"copy", on_common_action_copy},
-            {"paste_into", on_common_action_paste_into},
-            {"open_in", on_common_action_open_in, "s"},
+            {"paste-into", on_common_action_paste_into},
+            {"open-in", on_common_action_open_in, "s"},
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
-            {"copy_link", on_common_action_copy_link}
+            {"copy-link", on_common_action_copy_link}
         };
 
         GLib.SimpleActionGroup common_actions;
@@ -223,7 +224,7 @@ namespace FM {
                 if (value && !_is_frozen) {
                     action_set_enabled (selection_actions, "cut", false);
                     action_set_enabled (common_actions, "copy", false);
-                    action_set_enabled (common_actions, "paste_into", false);
+                    action_set_enabled (common_actions, "paste-into", false);
 
                     /* Fix problems when navigating away from directory with large number
                      * of selected files (e.g. OverlayBar critical errors)
@@ -258,6 +259,7 @@ namespace FM {
         protected bool is_loading;
         protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = false;}
+        protected bool hide_local_thumbnails {get; set; default = false;}
         protected bool is_admin {
             get {
                 return (uint)Posix.getuid () == 0;
@@ -303,6 +305,7 @@ namespace FM {
             model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
+            Preferences.settings.bind ("hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "activate on blank" is enabled, matching existing UI
@@ -374,6 +377,7 @@ namespace FM {
             var prefs = (GOF.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
+            prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
             model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
@@ -395,11 +399,14 @@ namespace FM {
             common_actions.add_action_entries (common_entries, this);
             insert_action_group ("common", common_actions);
 
-            action_set_state (background_actions, "show_hidden",
+            action_set_state (background_actions, "show-hidden",
                               Preferences.settings.get_boolean ("show-hiddenfiles"));
 
-            action_set_state (background_actions, "show_remote_thumbnails",
+            action_set_state (background_actions, "show-remote-thumbnails",
                               Preferences.settings.get_boolean ("show-remote-thumbnails"));
+
+            action_set_state (background_actions, "hide-local-thumbnails",
+                              Preferences.settings.get_boolean ("hide-local-thumbnails"));
         }
 
         public void zoom_in () {
@@ -558,8 +565,10 @@ namespace FM {
                         }
                     }
                 } else if (default_app != null) {
+                    /* Because this is in another thread we need to copy the selection to ensure it remains valid */
+                    var files_to_open = selection.copy_deep ((GLib.CopyFunc)(GLib.Object.ref));
                     GLib.Idle.add (() => {
-                        open_files_with (default_app, selection);
+                        open_files_with (default_app, files_to_open);
                         return GLib.Source.REMOVE;
                     });
                 }
@@ -1098,8 +1107,7 @@ namespace FM {
         }
 
         private void on_selection_action_open_with_app (GLib.SimpleAction action, GLib.Variant? param) {
-            var index = int.parse (param.get_string ());
-            open_files_with (open_with_apps.nth_data ((uint)index), get_files_for_action ());
+            open_files_with (open_with_apps.nth_data (param.get_uint32 ()), get_files_for_action ());
         }
 
         private void on_selection_action_open_with_other_app () {
@@ -1124,8 +1132,13 @@ namespace FM {
         private void change_state_show_hidden (GLib.SimpleAction action) {
             window.change_state_show_hidden (action);
         }
+
         private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
             window.change_state_show_remote_thumbnails (action);
+        }
+
+        private void change_state_hide_local_thumbnails (GLib.SimpleAction action) {
+            window.change_state_hide_local_thumbnails (action);
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1272,6 +1285,8 @@ namespace FM {
             if (file != null) {
                 add_file (file, dir);
                 handle_free_space_change ();
+            } else {
+                critical ("Null file added");
             }
         }
 
@@ -1289,7 +1304,7 @@ namespace FM {
                 model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if (slot.directory.is_local || (show_remote_thumbnails && slot.directory.can_open_files)) {
+                if ((slot.directory.is_local && !hide_local_thumbnails) || (show_remote_thumbnails && slot.directory.can_open_files)) {
                     thumbnailer.queue_file (file, null, large_thumbnails);
                     if (plugins != null) {
                         plugins.update_file_info (file);
@@ -1329,6 +1344,7 @@ namespace FM {
                     slot.folder_deleted (file, file_dir);
                 }
             }
+
             handle_free_space_change ();
         }
 
@@ -1386,15 +1402,19 @@ namespace FM {
                 unblock_model ();
             }
 
-            action_set_state (background_actions, "show_hidden", show);
+            action_set_state (background_actions, "show-hidden", show);
         }
 
         private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             show_remote_thumbnails = (prefs as GOF.Preferences).show_remote_thumbnails;
-            action_set_state (background_actions, "show_remote_thumbnails", show_remote_thumbnails);
-            if (show_remote_thumbnails) {
-                slot.reload ();
-            }
+            action_set_state (background_actions, "show-remote-thumbnails", show_remote_thumbnails);
+            slot.reload ();
+        }
+
+        private void on_hide_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            hide_local_thumbnails = (prefs as GOF.Preferences).hide_local_thumbnails;
+            action_set_state (background_actions, "hide-local-thumbnails", hide_local_thumbnails);
+            slot.reload ();
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
@@ -1934,7 +1954,7 @@ namespace FM {
                      * selection menu definition in directory_view_popup.ui may necessitate changing
                      * the index below.
                      */
-                    if (!action_get_enabled (common_actions, "paste_into") ||
+                    if (!action_get_enabled (common_actions, "paste-into") ||
                         clipboard == null || !clipboard.can_paste) {
                         clipboard_menu.remove (3); /* Paste into*/
                         clipboard_menu.remove (3); /* Past Link into*/
@@ -2042,7 +2062,11 @@ namespace FM {
             if (slot.directory.is_local || !slot.directory.can_open_files) {
                 /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
                 show_menu.remove (1);
+            } else if (!slot.directory.is_local) {
+                /* Do not show "Hide Local Thumbnails" option when in remote folder */
+                show_menu.remove (2);
             }
+
             return show_menu;
         }
 
@@ -2061,7 +2085,7 @@ namespace FM {
                 } else if (default_app != null) {
                     if (default_app.get_id () != Marlin.APP_ID + ".desktop") {
                         label = (_("Open in %s")).printf (default_app.get_display_name ());
-                        menu.append (label, "selection.open_with_default");
+                        menu.append (label, "selection.open-with-default");
                     }
                 }
             }
@@ -2083,11 +2107,10 @@ namespace FM {
 
         private GLib.MenuModel? build_submenu_open_with_applications (ref Gtk.Builder builder,
                                                                       GLib.List<GOF.File> selection) {
-
             var open_with_submenu = new GLib.Menu ();
             open_with_apps = null;
 
-            if (common_actions.get_action_enabled ("open_in")) {
+            if (common_actions.get_action_enabled ("open-in")) {
                 open_with_submenu.append_section (null, builder.get_object ("open-in") as GLib.MenuModel);
                 if (selection.data.is_mountable () || selection.data.is_root_network_folder ()) {
                     return open_with_submenu;
@@ -2103,36 +2126,35 @@ namespace FM {
 
                 filter_this_app_from_open_with_apps ();
 
-                if (open_with_apps != null) {
+                if (open_with_apps != null && open_with_apps.data != null) {
                     var apps_section = new GLib.Menu ();
-                    int index = -1;
-                    int count = 0;
-                    string last_label = "";
-                    string last_exec = "";
+                    unowned string last_label = "";
+                    unowned string last_exec = "";
+                    uint count = 0;
 
-                    foreach (var app in open_with_apps) {
-                        index++;
-                        if (app != null && app is AppInfo) {
-                            var label = app.get_display_name ();
-                            var exec = app.get_executable ().split (" ")[0];
-                            if (label != last_label || exec != last_exec) {
-                                apps_section.append (label, "selection.open_with_app::" + index.to_string ());
-                                count++;
-                            }
-
-                            last_label = label.dup ();
-                            last_exec = exec.dup ();
+                    foreach (unowned AppInfo app_info in open_with_apps) {
+                        /* Ensure no duplicate items */
+                        unowned string label = app_info.get_display_name ();
+                        unowned string exec = app_info.get_executable ().split (" ")[0];
+                        if (label != last_label || exec != last_exec) {
+                             var menu_item = new GLib.MenuItem (label, GLib.Action.print_detailed_name ("selection.open-with-app", new GLib.Variant.uint32 (count)));
+                            menu_item.set_icon (app_info.get_icon ());
+                            apps_section.append_item (menu_item);
                         }
+
+                        last_label = label;
+                        last_exec = exec;
+                        count++;
                     };
 
-                    if (count >= 0) {
+                    if (apps_section.get_n_items () > 0) {
                         open_with_submenu.append_section (null, apps_section);
                     }
                 }
 
                 if (selection != null && selection.first ().next == null) { // Only one selected
                     var other_app_menu = new GLib.Menu ();
-                    other_app_menu.append ( _("Other Application…"), "selection.open_with_other_app");
+                    other_app_menu.append ( _("Other Application…"), "selection.open-with-other-app");
                     open_with_submenu.append_section (null, other_app_menu);
                 }
             }
@@ -2168,7 +2190,7 @@ namespace FM {
                     templates_menu.append_item (submenu);
                     templates_submenu = new GLib.Menu ();
                 } else {
-                    templates_submenu.append (label, "background.create_from::" + index.to_string ());
+                    templates_submenu.append (label, "background.create-from::" + index.to_string ());
                     count ++;
                 }
 
@@ -2229,21 +2251,21 @@ namespace FM {
             can_open = can_open_file (file);
             can_show_properties = !(in_recent && more_than_one_selected);
 
-            action_set_enabled (common_actions, "paste_into", can_paste_into);
-            action_set_enabled (common_actions, "open_in", only_folders);
+            action_set_enabled (common_actions, "paste-into", can_paste_into);
+            action_set_enabled (common_actions, "open-in", only_folders);
             action_set_enabled (selection_actions, "rename", is_selected && !more_than_one_selected && can_rename);
-            action_set_enabled (selection_actions, "view_in_location", is_selected);
+            action_set_enabled (selection_actions, "view-in-location", is_selected);
             action_set_enabled (selection_actions, "open", is_selected && !more_than_one_selected && can_open);
-            action_set_enabled (selection_actions, "open_with_app", can_open);
-            action_set_enabled (selection_actions, "open_with_default", can_open);
-            action_set_enabled (selection_actions, "open_with_other_app", can_open);
+            action_set_enabled (selection_actions, "open-with-app", can_open);
+            action_set_enabled (selection_actions, "open-with-default", can_open);
+            action_set_enabled (selection_actions, "open-with-other-app", can_open);
             action_set_enabled (selection_actions, "cut", is_writable && is_selected);
             action_set_enabled (selection_actions, "trash", is_writable && slot.directory.has_trash_dirs);
             action_set_enabled (selection_actions, "delete", is_writable);
             action_set_enabled (common_actions, "properties", can_show_properties);
             action_set_enabled (common_actions, "bookmark", can_bookmark);
             action_set_enabled (common_actions, "copy", !in_trash && can_copy);
-            action_set_enabled (common_actions, "copy_link", !in_trash && !in_recent && can_copy);
+            action_set_enabled (common_actions, "copy-link", !in_trash && !in_recent && can_copy);
             action_set_enabled (common_actions, "bookmark", !more_than_one_selected);
 
             update_default_app (selection);
@@ -2256,11 +2278,11 @@ namespace FM {
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 GLib.Variant val = new GLib.Variant.string (get_string_from_column_id (sort_column_id));
-                action_set_state (background_actions, "sort_by", val);
+                action_set_state (background_actions, "sort-by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
                 action_set_state (background_actions, "reverse", val);
                 val = new GLib.Variant.boolean (GOF.Preferences.get_default ().sort_directories_first);
-                action_set_state (background_actions, "folders_first", val);
+                action_set_state (background_actions, "folders-first", val);
             }
         }
 
@@ -2433,6 +2455,7 @@ namespace FM {
 
             if (thumbnail_source_id != 0 ||
                 (!slot.directory.is_local && !show_remote_thumbnails) ||
+                (slot.directory.is_local && hide_local_thumbnails) ||
                  !slot.directory.can_open_files ||
                  slot.directory.is_loading ()) {
 
@@ -2490,10 +2513,10 @@ namespace FM {
                     /* iterate over the range to collect all files */
                     valid_iter = model.get_iter (out iter, start_path);
                     while (valid_iter && thumbnail_source_id > 0) {
-                        file = model.file_for_iter (iter); // Maybe null if dummy row
+                        file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
                         path = model.get_path (iter);
 
-                        if (file != null) {
+                        if (file != null && !file.is_gone) {
                             file.query_thumbnail_update (); // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
                             if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
@@ -2896,7 +2919,7 @@ namespace FM {
                         var cap_c = keyval == Gdk.Key.C;
 
                         if (caps_on != cap_c) { /* Shift key pressed */
-                            common_actions.activate_action ("copy_link", null);
+                            common_actions.activate_action ("copy-link", null);
                         } else {
                         /* Should not copy files in the trash - cut instead */
                             if (in_trash) {
@@ -2920,9 +2943,9 @@ namespace FM {
                     if (only_control_pressed) {
                         if (!in_recent && is_writable) {
                             /* Will drop any existing selection and paste into current directory */
-                            action_set_enabled (common_actions, "paste_into", true);
+                            action_set_enabled (common_actions, "paste-into", true);
                             unselect_all ();
-                            common_actions.activate_action ("paste_into", null);
+                            common_actions.activate_action ("paste-into", null);
                         } else {
                             PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
                                                             _("You do not have permission to change this location"),

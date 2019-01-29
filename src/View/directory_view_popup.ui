@@ -14,7 +14,7 @@
     <menu id='view-in-location'>
         <item>
             <attribute name='label' translatable='yes'>Open Parent Folder</attribute>
-            <attribute name='action'>selection.view_in_location</attribute>
+            <attribute name='action'>selection.view-in-location</attribute>
         </item>
     </menu>
 
@@ -65,23 +65,27 @@
     <menu id='show'>
         <item>
             <attribute name='label' translatable='yes'>Show Hidden Files</attribute>
-            <attribute name='action'>background.show_hidden</attribute>
+            <attribute name='action'>background.show-hidden</attribute>
         </item>
         <item>
             <attribute name='label' translatable='yes'>Show Remote Thumbnails</attribute>
-            <attribute name='action'>background.show_remote_thumbnails</attribute>
+            <attribute name='action'>background.show-remote-thumbnails</attribute>
+        </item>
+        <item>
+            <attribute name='label' translatable='yes'>Hide Local Thumbnails</attribute>
+            <attribute name='action'>background.hide-local-thumbnails</attribute>
         </item>
     </menu>
 
     <menu id='open-in'>
         <item>
             <attribute name='label' translatable='yes'>New Tab</attribute>
-            <attribute name='action'>common.open_in</attribute>
+            <attribute name='action'>common.open-in</attribute>
             <attribute name="target">TAB</attribute>
         </item>
         <item>
             <attribute name='label' translatable='yes'>New Window</attribute>
-            <attribute name='action'>common.open_in</attribute>
+            <attribute name='action'>common.open-in</attribute>
             <attribute name="target">WINDOW</attribute>
         </item>
     </menu>
@@ -103,13 +107,13 @@
     <menu id='paste'>
         <item>
             <attribute name='label' translatable='yes'>Paste</attribute>
-            <attribute name='action'>common.paste_into</attribute>
+            <attribute name='action'>common.paste-into</attribute>
         </item>
     </menu>
     <menu id='paste-link'>
         <item>
             <attribute name='label' translatable='yes'>Paste Link</attribute>
-            <attribute name='action'>common.paste_into</attribute>
+            <attribute name='action'>common.paste-into</attribute>
         </item>
     </menu>
 
@@ -124,15 +128,15 @@
         </item>
         <item>
             <attribute name='label' translatable='yes'>Copy as Link</attribute>
-            <attribute name='action'>common.copy_link</attribute>
+            <attribute name='action'>common.copy-link</attribute>
         </item>
         <item>
             <attribute name='label' translatable='yes'>Paste into Folder</attribute>
-            <attribute name='action'>common.paste_into</attribute>
+            <attribute name='action'>common.paste-into</attribute>
         </item>
         <item>
             <attribute name='label' translatable='yes'>Paste Link into Folder</attribute>
-            <attribute name='action'>common.paste_into</attribute>
+            <attribute name='action'>common.paste-into</attribute>
         </item>
     </menu>
 
@@ -142,22 +146,22 @@
             <section>
                 <item>
                     <attribute name='label' translatable='yes'>Name</attribute>
-                    <attribute name='action'>background.sort_by</attribute>
+                    <attribute name='action'>background.sort-by</attribute>
                     <attribute name="target">name</attribute>
                 </item>
                 <item>
                     <attribute name='label' translatable='yes'>Size</attribute>
-                    <attribute name='action'>background.sort_by</attribute>
+                    <attribute name='action'>background.sort-by</attribute>
                     <attribute name="target">size</attribute>
                 </item>
                 <item>
                     <attribute name='label' translatable='yes'>Type</attribute>
-                    <attribute name='action'>background.sort_by</attribute>
+                    <attribute name='action'>background.sort-by</attribute>
                     <attribute name="target">type</attribute>
                 </item>
                 <item>
                     <attribute name='label' translatable='yes'>Date</attribute>
-                    <attribute name='action'>background.sort_by</attribute>
+                    <attribute name='action'>background.sort-by</attribute>
                     <attribute name="target">modified</attribute>
                 </item>
             </section>
@@ -168,7 +172,7 @@
                 </item>
                 <item>
                     <attribute name='label' translatable='yes'>Folders Before Files</attribute>
-                    <attribute name='action'>background.folders_first</attribute>
+                    <attribute name='action'>background.folders-first</attribute>
                 </item>
             </section>
         </submenu>

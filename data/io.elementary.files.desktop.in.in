@@ -4,6 +4,7 @@ Comment=Browse your files
 Keywords=folder;manager;explore;disk;filesystem;
 GenericName=File Manager
 Exec=@exec_name@ %U
+#TRANSLATORS This string is an icon name and should not be translated.
 Icon=system-file-manager
 Terminal=false
 StartupNotify=true

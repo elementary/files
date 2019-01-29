@@ -119,7 +119,7 @@ public class MarlinTags : Object {
         return true;
     }
 
-    public async bool record_uris (Variant[] locations, string directory) throws GLib.DBusError, GLib.IOError {
+    public async bool record_uris (Variant[] locations) throws GLib.DBusError, GLib.IOError {
         var sql = "";
         var cmd = "INSERT OR REPLACE INTO tags (uri, content_type, color, modified_time, dir) VALUES ('%s', '%s', %s, %s, '%s');\n";
 
@@ -127,6 +127,7 @@ public class MarlinTags : Object {
             VariantIter iter = location_variant.iterator ();
 
             var uri = iter.next_value ().get_string ();
+            var directory = PF.FileUtils.escape_uri (PF.FileUtils.get_parent_path_from_path (uri));
             var content_type = iter.next_value ().get_string ();
             var modified_time = iter.next_value ().get_string ();
             var color = iter.next_value ().get_string ();
@@ -136,7 +137,7 @@ public class MarlinTags : Object {
         int rc = db.exec (sql, null, null);
 
         if (rc != Sqlite.OK) {
-            warning ("[record_uri: SQL error]  %d, %s\n", rc, db.errmsg ());
+            warning ("[record_uri: SQL error]  %d, %s, %s\n", rc, sql, db.errmsg ());
             return false;
         }
 

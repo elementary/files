@@ -126,6 +126,10 @@ namespace Marlin.View.Chrome {
             primary_icon_pixbuf = null;
         }
 
+        protected override void set_default_entry_tooltip () {
+            set_tooltip_markup (_("Search or Type Path"));
+        }
+
     /** Completion related functions
       * Implementing interface virtual functions **/
     /****************************/
@@ -464,22 +468,21 @@ namespace Marlin.View.Chrome {
             foreach (AppInfo app_info in app_info_list) {
                 if (app_info != null && app_info.get_executable () != Environment.get_application_name ()) {
                     at_least_one = true;
-                    var menu_item = new Gtk.ImageMenuItem.with_label (app_info.get_name ());
+                     var item_grid = new Gtk.Grid ();
+                    var img = new Gtk.Image.from_gicon (app_info.get_icon (), Gtk.IconSize.MENU);
+                    img.pixel_size = 16;
+                    item_grid.add (img);
+                    item_grid.add (new Gtk.Label (app_info.get_name ()));
+                     var menu_item = new Gtk.MenuItem ();
+                    menu_item.add (item_grid);
                     menu_item.set_data ("appinfo", app_info);
-                    Icon icon;
-                    icon = app_info.get_icon ();
-                    if (icon == null) {
-                        icon = new ThemedIcon ("application-x-executable");
-                    }
-
-                    menu_item.set_image (new Gtk.Image.from_gicon (icon, Gtk.IconSize.MENU));
-                    menu_item.always_show_image = true;
                     menu_item.activate.connect (() => {
                         open_with_request (loc, app_info);
                     });
                     submenu_open_with.append (menu_item);
                 }
             }
+
             if (at_least_one) {
                 /* Then the "Open with" menuitem is added to the menu. */
                 var menu_open_with = new Gtk.MenuItem.with_label (_("Open with"));
