@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-13 13:46+0000\n"
+"POT-Creation-Date: 2019-01-26 17:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "File Manager"
 msgstr ""
 
-#. TRANSLATORS Do not translate icon name
+#. TRANSLATORS This string is an icon name and should not be translated.
 #: data/io.elementary.files.desktop.in.in:9
 msgid "system-file-manager"
 msgstr ""
@@ -61,4 +61,12 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:217
 msgid "elementary LLC."
+msgstr ""
+
+#: data/io.elementary.files.policy.in.in:10
+msgid "Run Pantheon Files as Administrator"
+msgstr ""
+
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
 msgstr ""
