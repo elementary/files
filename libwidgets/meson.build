@@ -30,7 +30,6 @@ pantheon_files_widgets_library = shared_library(
     install: true,
     install_dir: [true, true, true],
     version: meson.project_version(),
-    soversion: '0',
 )
 
 pantheon_files_widgets_dep = declare_dependency(
