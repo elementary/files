@@ -58,6 +58,25 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="4.1.4" date="2019-01-31" urgency="medium">
+      <description>
+        <ul>
+          <li>Meson: fix soversion names</li>
+          <li>Remove CMake build system</li>
+          <li>Fix missing File System properties menu</li>
+          <li>Drop intltool dependency</li>
+          <li>Fix default file type handler logic</li>
+          <li>Fix initial search window size too small</li>
+          <li>Add option to disable local file thumbnails</li>
+          <li>Fix crash when opening multiple video files</li>
+          <li>Fix some timing issues around adding and removing files</li>
+          <li>Meson: fix missing library headers</li>
+          <li>Fix color tag display</li>
+          <li>Show reserved space in Properties window</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="4.1.3" date="2019-01-09" urgency="medium">
       <description>
         <ul>
