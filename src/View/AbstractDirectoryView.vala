@@ -2514,11 +2514,12 @@ namespace FM {
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
                             if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
                                 visible_files.prepend (file);
+                                if (plugins != null) {
+                                    plugins.update_file_info (file);
+                                }
+
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                     actually_visible++;
-                                    if (plugins != null) {
-                                        plugins.update_file_info (file);
-                                    }
                                 }
                             }
                         }
