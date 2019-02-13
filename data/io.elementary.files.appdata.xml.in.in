@@ -58,6 +58,15 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
+    <release version="4.1.5" date="2019-02-13" urgency="medium">
+      <description>
+        <ul>
+          <li>Fix high CPU regression in version 4.1.4</li>
+          <li>File sorting fixes</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="4.1.4" date="2019-01-31" urgency="medium">
       <description>
         <ul>
