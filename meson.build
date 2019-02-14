@@ -102,6 +102,7 @@ project_config_dep = declare_dependency(
 
 subdir('libcore')
 subdir('libwidgets')
+subdir('libwidgetgrid')
 subdir('src')
 subdir('data')
 subdir('pantheon-files-daemon')
