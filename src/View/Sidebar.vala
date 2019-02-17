@@ -905,9 +905,8 @@ namespace Marlin.Places {
             }
         }
 
-        private async bool get_filesystem_space_and_type (GLib.File root, out uint64 fs_capacity,
-                                                          out uint64 fs_free, out string type,
-                                                          Cancellable update_cancellable) {
+        private async bool get_filesystem_space_and_type (GLib.File root, Cancellable update_cancellable,
+                                                          out uint64 fs_capacity, out uint64 fs_free, out string type) {
             fs_capacity = 0;
             fs_free = 0;
             type = "";
@@ -973,9 +972,8 @@ namespace Marlin.Places {
             string fs_type;
             var rowref = new Gtk.TreeRowReference (store, store.get_path (iter));
 
-            if (yield get_filesystem_space_and_type (root,
-                                                     out fs_capacity, out fs_free, out fs_type,
-                                                     update_cancellable)) {
+            if (yield get_filesystem_space_and_type (root, update_cancellable,
+                                                     out fs_capacity, out fs_free, out fs_type)) {
 
                 var tooltip = get_tooltip_for_device (root, fs_capacity, fs_free, fs_type);
                 if (rowref != null && rowref.valid ()) {
@@ -1610,7 +1608,7 @@ namespace Marlin.Places {
                                     ((uri == Marlin.TrashMonitor.URI) ||
                                     Marlin.FileOperations.has_trash_files (mount));
 
-            bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
+            bool show_properties = show_mount || show_unmount || show_eject || uri == Marlin.ROOT_FS_URI;
 
             if (is_plugin) {
                 var menu = new PopupMenuBuilder ()
@@ -1650,7 +1648,7 @@ namespace Marlin.Places {
                     menu.add_item (popupmenu_empty_trash_item, empty_trash_cb);
                 }
 
-                if (show_property) {
+                if (show_properties) {
                     menu.add_property (show_drive_info_cb);
                 }
 
@@ -2296,7 +2294,7 @@ namespace Marlin.Places {
                         // Already handled
                     }
                 });
-            } else if (mount != null || uri == "file:///") {
+            } else if (mount != null || uri == Marlin.ROOT_FS_URI) {
                 new Marlin.View.VolumePropertiesWindow (mount, window);
             }
         }

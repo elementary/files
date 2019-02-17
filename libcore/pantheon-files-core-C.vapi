@@ -78,19 +78,6 @@ namespace Marlin
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void add_rename_action (GLib.File renamed_file, string original_name);
     }
-
-//    [CCode (cprefix = "MarlinConnectServer", lower_case_cprefix = "marlin_connect_server_")]
-//    namespace ConnectServer {
-//        [CCode (cheader_filename = "marlin-connect-server-dialog.h")]
-//        public class Dialog : Gtk.Dialog {
-//            public Dialog (Gtk.Window window);
-//            public async bool display_location_async (GLib.File location) throws GLib.Error;
-//            public async bool fill_details_async (GLib.MountOperation operation,
-//                                                 string default_user,
-//                                                 string default_domain,
-//                                                 GLib.AskPasswordFlags flags);
-//        }
-//    }
 }
 
 [CCode (cprefix = "MarlinFile", lower_case_cprefix = "marlin_file_", cheader_filename = "marlin-file-changes-queue.h")]

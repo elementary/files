@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2019-01-01 20:02+0000\n"
-"Last-Translator: Ciarán Ainsworth <ciaranainsworth@outlook.com>\n"
+"POT-Creation-Date: 2019-01-09 09:21-0600\n"
+"PO-Revision-Date: 2019-01-28 08:10+0000\n"
+"Last-Translator: Ciarán Ainsworth <ciaranainsworth@posteo.net>\n"
 "Language-Team: English (United Kingdom) <https://weblate.elementary.io/"
 "projects/files/files/en_GB/>\n"
 "Language: en_GB\n"
@@ -290,7 +290,7 @@ msgstr "Could not open URIs"
 msgid "Could not open files or URIs with this app"
 msgstr "Could not open files or URIs with this app"
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
 msgstr "(as Administrator)"
 
@@ -378,7 +378,7 @@ msgid "Open in"
 msgstr "Open in"
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr "Open with"
 
@@ -526,22 +526,22 @@ msgstr "Connect Server"
 msgid "Connect to a network server"
 msgstr "Connect to a network server"
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(%s Free of %s)"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Error mounting volume %s"
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Unable to start %s"
 
-#: src/View/Sidebar.vala:1645 libcore/marlin-file-operations.c:1312
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "Empty _Rubbish Bin"
 
@@ -705,26 +705,26 @@ msgstr "Reversed Order"
 msgid "Folders Before Files"
 msgstr "Folders Before Files"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr "Search or Type Path"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr "Open in New Tab"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr "Open in New Window"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr "Open in Other Application…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
 msgstr "Reload this folder"
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
-msgstr "Search or Type Path"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
@@ -2168,6 +2168,10 @@ msgstr "Navigate to %s"
 #, c-format
 msgid "Go to %s"
 msgstr "Go to %s"
+
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+msgid "Type Path"
+msgstr "Type Path"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-20 11:06-0800\n"
-"PO-Revision-Date: 2018-12-25 00:06+0000\n"
+"POT-Creation-Date: 2019-01-09 09:21-0600\n"
+"PO-Revision-Date: 2019-01-23 18:04+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://weblate.elementary.io/projects/files/files/"
 "fi/>\n"
@@ -25,7 +25,6 @@ msgid "Show the version of the program"
 msgstr "Näytä ohjelman versio"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Avaa yksi tai useampi URI, jokainen omaan välilehteensä"
 
@@ -293,7 +292,7 @@ msgstr "URI:en avaaminen ei onnistunut"
 msgid "Could not open files or URIs with this app"
 msgstr "Tiedostojen tai URI:en avaaminen tällä sovelluksella ei onnistu"
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
 msgstr "(ylläpitäjänä)"
 
@@ -381,7 +380,7 @@ msgid "Open in"
 msgstr "Avaa sovelluksella"
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr "Avaa sovelluksella"
 
@@ -529,22 +528,22 @@ msgstr "Yhdistä palvelimeen"
 msgid "Connect to a network server"
 msgstr "Yhdistä verkkopalvelimeen"
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr "(vapaana %s, kokonaistila %s)"
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr "Virhe liittäessä taltiota %s"
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr "Asemaa %s ei voi käynnistää"
 
-#: src/View/Sidebar.vala:1645 libcore/marlin-file-operations.c:1312
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr "Tyhjennä _roskakori"
 
@@ -708,26 +707,26 @@ msgstr "Käänteinen järjestys"
 msgid "Folders Before Files"
 msgstr "Kansiot ennen tiedostoja"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr "Etsi tai kirjoita polku"
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr "Avaa uudessa välilehdessä"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr "Avaa uudessa ikkunassa"
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr "Avaa muussa sovelluksessa…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
 msgstr "Päivitä tämä kansio"
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
-msgstr "Etsi tai kirjoita polku"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
@@ -1579,8 +1578,8 @@ msgstr "%S / %S"
 #: libcore/marlin-file-operations.c:2887
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S / %S - %T jäljellä (%S/s)"
-msgstr[1] "%S / %S - %T jäljellä (%S/s)"
+msgstr[0] "%S / %S — %T jäljellä (%S/s)"
+msgstr[1] "%S / %S — %T jäljellä (%S/s)"
 
 #: libcore/marlin-file-operations.c:3265
 msgid ""
@@ -2165,6 +2164,10 @@ msgstr "Siirry kohteeseen %s"
 #, c-format
 msgid "Go to %s"
 msgstr "Siirry kohteeseen %s"
+
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+msgid "Type Path"
+msgstr "Kirjoita polku"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"

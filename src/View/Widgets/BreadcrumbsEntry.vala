@@ -126,6 +126,10 @@ namespace Marlin.View.Chrome {
             primary_icon_pixbuf = null;
         }
 
+        protected override void set_default_entry_tooltip () {
+            set_tooltip_markup (_("Search or Type Path"));
+        }
+
     /** Completion related functions
       * Implementing interface virtual functions **/
     /****************************/

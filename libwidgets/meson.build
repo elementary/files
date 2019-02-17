@@ -30,7 +30,6 @@ pantheon_files_widgets_library = shared_library(
     install: true,
     install_dir: [true, true, true],
     version: meson.project_version(),
-    soversion: '0',
 )
 
 pantheon_files_widgets_dep = declare_dependency(
@@ -41,6 +40,7 @@ pantheon_files_widgets_dep = declare_dependency(
 
 pkg.generate(
     libraries: pantheon_files_widgets_library,
+    subdirs:  pantheon_files_widgets_name,
     filebase: pantheon_files_widgets_name,
     name: 'elementary Files Widgets Library',
     description: 'Common widgets for io.elementary.files and io.elementary.filechooser',

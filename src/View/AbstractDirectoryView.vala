@@ -73,7 +73,8 @@ namespace FM {
             {"reverse", on_background_action_reverse_changed, null, "false"},
             {"folders-first", on_background_action_folders_first_changed, null, "true"},
             {"show-hidden", null, null, "false", change_state_show_hidden},
-            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails}
+            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails},
+            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
         const GLib.ActionEntry [] common_entries = {
@@ -229,7 +230,6 @@ namespace FM {
                      * of selected files (e.g. OverlayBar critical errors)
                      */
                     disconnect_tree_signals ();
-                    size_allocate.disconnect (on_size_allocate);
                     clipboard.changed.disconnect (on_clipboard_changed);
                     view.key_press_event.disconnect (on_view_key_press_event);
                 } else if (!value && _is_frozen) {
@@ -237,7 +237,6 @@ namespace FM {
                     connect_tree_signals ();
                     on_view_selection_changed ();
 
-                    size_allocate.connect (on_size_allocate);
                     clipboard.changed.connect (on_clipboard_changed);
                     view.key_press_event.connect (on_view_key_press_event);
                 }
@@ -258,6 +257,7 @@ namespace FM {
         protected bool is_loading;
         protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = false;}
+        protected bool hide_local_thumbnails {get; set; default = false;}
         protected bool is_admin {
             get {
                 return (uint)Posix.getuid () == 0;
@@ -307,6 +307,7 @@ namespace FM {
 
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
+            Preferences.settings.bind ("hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET);
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "activate on blank" is enabled, matching existing UI
@@ -358,8 +359,6 @@ namespace FM {
             set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
             set_shadow_type (Gtk.ShadowType.NONE);
 
-            size_allocate.connect_after (on_size_allocate);
-
             popup_menu.connect (on_popup_menu);
 
             unrealize.connect (() => {
@@ -373,11 +372,14 @@ namespace FM {
 
             scroll_event.connect (on_scroll_event);
 
-            get_vadjustment ().value_changed.connect_after (schedule_thumbnail_timeout);
+            get_vadjustment ().value_changed.connect_after (() => {
+                schedule_thumbnail_timeout ();
+            });
 
             var prefs = (GOF.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
+            prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
             model.sort_directories_first = (GOF.Preferences.get_default ().sort_directories_first);
@@ -404,6 +406,9 @@ namespace FM {
 
             action_set_state (background_actions, "show-remote-thumbnails",
                               Preferences.settings.get_boolean ("show-remote-thumbnails"));
+
+            action_set_state (background_actions, "hide-local-thumbnails",
+                              Preferences.settings.get_boolean ("hide-local-thumbnails"));
         }
 
         public void zoom_in () {
@@ -559,8 +564,10 @@ namespace FM {
                         }
                     }
                 } else if (default_app != null) {
+                    /* Because this is in another thread we need to copy the selection to ensure it remains valid */
+                    var files_to_open = selection.copy_deep ((GLib.CopyFunc)(GLib.Object.ref));
                     GLib.Idle.add (() => {
-                        open_files_with (default_app, selection);
+                        open_files_with (default_app, files_to_open);
                         return GLib.Source.REMOVE;
                     });
                 }
@@ -1113,8 +1120,13 @@ namespace FM {
         private void change_state_show_hidden (GLib.SimpleAction action) {
             window.change_state_show_hidden (action);
         }
+
         private void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
             window.change_state_show_remote_thumbnails (action);
+        }
+
+        private void change_state_hide_local_thumbnails (GLib.SimpleAction action) {
+            window.change_state_hide_local_thumbnails (action);
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1249,6 +1261,8 @@ namespace FM {
             if (file != null) {
                 add_file (file, dir);
                 handle_free_space_change ();
+            } else {
+                critical ("Null file added");
             }
         }
 
@@ -1263,10 +1277,9 @@ namespace FM {
                 is_writable = slot.directory.file.is_writable ();
             } else {
                 remove_marlin_icon_info_cache (file);
-//                model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
-                if (slot.directory.is_local || (show_remote_thumbnails && slot.directory.can_open_files)) {
+                if ((slot.directory.is_local && !hide_local_thumbnails) || (show_remote_thumbnails && slot.directory.can_open_files)) {
                     thumbnailer.queue_file (file, null, large_thumbnails);
                     if (plugins != null) {
                         plugins.update_file_info (file);
@@ -1278,7 +1291,6 @@ namespace FM {
         }
 
         private void on_directory_file_icon_changed (GOF.Directory.Async dir, GOF.File file) {
-//            model.file_changed (file, dir);
             draw_when_idle ();
         }
 
@@ -1306,6 +1318,7 @@ namespace FM {
                     slot.folder_deleted (file, file_dir);
                 }
             }
+
             handle_free_space_change ();
         }
 
@@ -1369,9 +1382,13 @@ namespace FM {
         private void on_show_remote_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             show_remote_thumbnails = (prefs as GOF.Preferences).show_remote_thumbnails;
             action_set_state (background_actions, "show-remote-thumbnails", show_remote_thumbnails);
-            if (show_remote_thumbnails) {
-                slot.reload ();
-            }
+            slot.reload ();
+        }
+
+        private void on_hide_local_thumbnails_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
+            hide_local_thumbnails = (prefs as GOF.Preferences).hide_local_thumbnails;
+            action_set_state (background_actions, "hide-local-thumbnails", hide_local_thumbnails);
+            slot.reload ();
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
@@ -1437,11 +1454,6 @@ namespace FM {
         private void on_clipboard_changed () {
             /* show possible change in appearance of cut items */
             queue_draw ();
-        }
-
-    /** Handle size allocation event */
-        private void on_size_allocate (Gtk.Allocation allocation) {
-            schedule_thumbnail_timeout ();
         }
 
 /** DRAG AND DROP */
@@ -2018,7 +2030,11 @@ namespace FM {
             if (slot.directory.is_local || !slot.directory.can_open_files) {
                 /* Do not show "Show Remote Thumbnails" option when in local folder or when not supported */
                 show_menu.remove (1);
+            } else if (!slot.directory.is_local) {
+                /* Do not show "Hide Local Thumbnails" option when in remote folder */
+                show_menu.remove (2);
             }
+
             return show_menu;
         }
 
@@ -2407,6 +2423,7 @@ namespace FM {
 
             if (thumbnail_source_id != 0 ||
                 (!slot.directory.is_local && !show_remote_thumbnails) ||
+                (slot.directory.is_local && hide_local_thumbnails) ||
                  !slot.directory.can_open_files ||
                  slot.directory.is_loading ()) {
 
@@ -2463,23 +2480,22 @@ namespace FM {
                     /* iterate over the range to collect all files */
                     valid_iter = model.get_iter (out iter, start_path);
                     while (valid_iter && thumbnail_source_id > 0) {
-                        file = model.file_for_iter (iter); // Maybe null if dummy row
+                        file = model.file_for_iter (iter); // Maybe null if dummy row or file being deleted
                         path = model.get_path (iter);
 
-                        if (file != null) {
+                        if (file != null && !file.is_gone) {
                             file.query_thumbnail_update (); // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
                             if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
                                 visible_files.prepend (file);
+                                if (plugins != null) {
+                                    plugins.update_file_info (file);
+                                }
+
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                     actually_visible++;
                                 }
                             }
-
-                            if (plugins != null) {
-                                plugins.update_file_info (file);
-                            }
-
                         }
                         /* check if we've reached the end of the visible range */
                         if (path.get_depth () > 0 && path.compare (end_path) != 0) {

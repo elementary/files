@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: io.elementary.files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-20 11:06-0800\n"
+"POT-Creation-Date: 2019-01-13 13:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,6 +57,7 @@ msgstr ""
 msgid "File Operations"
 msgstr ""
 
+#. TRANSLATORS: %s will be replaced by the title of the file operation
 #: src/ProgressUIHandler.vala:185
 #, c-format
 msgid "Completed %s"
@@ -86,26 +87,26 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:136
+#: src/Dialogs/AbstractPropertiesDialog.vala:135
 msgid "Device Usage"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:152
+#: src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Capacity:"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:153
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
+#: src/Dialogs/AbstractPropertiesDialog.vala:162
 #: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
 msgid "Unknown"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Available:"
 msgstr ""
 
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/AbstractPropertiesDialog.vala:161
 msgid "Used:"
 msgstr ""
 
@@ -228,6 +229,7 @@ msgid_plural "%u files"
 msgstr[0] ""
 msgstr[1] ""
 
+#. TRANSLATORS: folders, files
 #: src/Dialogs/PropertiesWindow.vala:1222
 #, c-format
 msgid "%s, %s"
@@ -247,6 +249,7 @@ msgid_plural "%u selected items"
 msgstr[0] ""
 msgstr[1] ""
 
+#. TRANSLATORS: total (folders, files)
 #: src/Dialogs/PropertiesWindow.vala:1246
 #, c-format
 msgid "%s (%s, %s)"
@@ -261,7 +264,7 @@ msgstr ""
 msgid "File System"
 msgstr ""
 
-#: src/Dialogs/VolumePropertiesWindow.vala:86
+#: src/Dialogs/VolumePropertiesWindow.vala:88
 msgid "Format:"
 msgstr ""
 
@@ -285,7 +288,7 @@ msgstr ""
 msgid "Could not open files or URIs with this app"
 msgstr ""
 
-#: src/View/Window.vala:493 src/View/Window.vala:503
+#: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
 msgstr ""
 
@@ -370,7 +373,7 @@ msgid "Open in"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2074
-#: src/View/Widgets/BreadcrumbsEntry.vala:484
+#: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
 msgstr ""
 
@@ -518,22 +521,22 @@ msgstr ""
 msgid "Connect to a network server"
 msgstr ""
 
-#: src/View/Sidebar.vala:964
+#: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
 msgstr ""
 
-#: src/View/Sidebar.vala:1458
+#: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1473
+#: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
 msgstr ""
 
-#: src/View/Sidebar.vala:1645 libcore/marlin-file-operations.c:1312
+#: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
 msgstr ""
 
@@ -697,25 +700,25 @@ msgstr ""
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:445
+#: src/View/Widgets/BreadcrumbsEntry.vala:130
+#: src/View/Widgets/LocationBar.vala:198
+msgid "Search or Type Path"
+msgstr ""
+
+#: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:452
+#: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
 msgstr ""
 
-#: src/View/Widgets/BreadcrumbsEntry.vala:491
+#: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr ""
-
-#: src/View/Widgets/LocationBar.vala:198
-#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:289
-msgid "Search or Type Path"
 msgstr ""
 
 #: src/View/Widgets/LocationBar.vala:207
@@ -746,6 +749,7 @@ msgstr ""
 msgid "%u items selected (%s)"
 msgstr ""
 
+#. TRANSLATORS: %u will be substituted by the number of sub folders
 #: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u sub-folder, "
@@ -756,6 +760,7 @@ msgstr ""
 msgid "%u sub-folders, "
 msgstr ""
 
+#. TRANSLATORS: %u will be substituted by the number of readable files
 #: src/View/Widgets/OverlayBar.vala:285
 #, c-format
 msgid "%u file, "
@@ -766,15 +771,18 @@ msgstr ""
 msgid "%u files, "
 msgstr ""
 
+#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%s approx."
 msgstr ""
 
+#. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:298
 msgid "unknown size"
 msgstr ""
 
+#. TRANSLATORS: %u will be substituted by the number of unreadable files
 #: src/View/Widgets/OverlayBar.vala:302
 #, c-format
 msgid "%u file not readable"
@@ -933,41 +941,47 @@ msgstr ""
 msgid "Link Here"
 msgstr ""
 
-#: libcore/FileUtils.vala:86
+#: libcore/FileUtils.vala:87
 #, c-format
 msgid "Could not determine original location of \"%s\" "
 msgstr ""
 
-#: libcore/FileUtils.vala:87
+#: libcore/FileUtils.vala:88
 msgid "The item cannot be restored from trash"
 msgstr ""
 
-#: libcore/FileUtils.vala:429
+#: libcore/FileUtils.vala:430
 #, c-format
 msgid "Could not rename to '%s'"
 msgstr ""
 
-#: libcore/FileUtils.vala:518
+#. TRANSLATORS Used when 24h clock has been selected
+#: libcore/FileUtils.vala:520
 msgid "Today at %-H:%M"
 msgstr ""
 
-#: libcore/FileUtils.vala:520
+#. TRANSLATORS Used when 12h clock has been selected
+#: libcore/FileUtils.vala:523
 msgid "Today at %-I:%M %p"
 msgstr ""
 
-#: libcore/FileUtils.vala:526
+#. TRANSLATORS Used when 24h clock has been selected
+#: libcore/FileUtils.vala:530
 msgid "Yesterday at %-H:%M"
 msgstr ""
 
-#: libcore/FileUtils.vala:528
+#. TRANSLATORS Used when 12h clock has been selected
+#: libcore/FileUtils.vala:533
 msgid "Yesterday at %-I:%M %p"
 msgstr ""
 
-#: libcore/FileUtils.vala:535
+#. TRANSLATORS Used when 24h clock has been selected
+#: libcore/FileUtils.vala:541
 msgid "%A at %-H:%M"
 msgstr ""
 
-#: libcore/FileUtils.vala:537
+#. TRANSLATORS Used when 12h clock has been selected
+#: libcore/FileUtils.vala:544
 msgid "%A at %-I:%M %p"
 msgstr ""
 
@@ -1259,6 +1273,8 @@ msgstr[1] ""
 msgid "Deleting files"
 msgstr ""
 
+#. TRANSLATORS: %T will expand to a time like "2 minutes".
+#. The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
 #: libcore/marlin-file-operations.c:1404
 msgid "%T left"
 msgid_plural "%T left"
@@ -1530,11 +1546,15 @@ msgid_plural "Duplicating %'d files"
 msgstr[0] ""
 msgstr[1] ""
 
+#. TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
 #: libcore/marlin-file-operations.c:2877
 #, c-format
 msgid "%S of %S"
 msgstr ""
 
+#. TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
+#. "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
+#. The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
 #: libcore/marlin-file-operations.c:2887
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
@@ -1717,394 +1737,385 @@ msgstr ""
 msgid "Emptying Trash"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:580
+#: libcore/marlin-undostack-manager.c:579
 msgid "Original location could not be determined"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:581
+#: libcore/marlin-undostack-manager.c:580
 msgid "Open trash folder and restore manually"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1118
+#: libcore/marlin-undostack-manager.c:1117
 #, c-format
 msgid "Delete %d copied items"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1121
-#: libcore/marlin-undostack-manager.c:1131
-#: libcore/marlin-undostack-manager.c:1162
+#: libcore/marlin-undostack-manager.c:1120
+#: libcore/marlin-undostack-manager.c:1130
+#: libcore/marlin-undostack-manager.c:1161
 #, c-format
 msgid "Delete '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1128
+#: libcore/marlin-undostack-manager.c:1127
 #, c-format
 msgid "Delete %d duplicated items"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1139
+#: libcore/marlin-undostack-manager.c:1138
 #, c-format
 msgid "Move %d items back to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1143
+#: libcore/marlin-undostack-manager.c:1142
 #, c-format
 msgid "Move '%s' back to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1152
-#: libcore/marlin-undostack-manager.c:1319
+#: libcore/marlin-undostack-manager.c:1151
+#: libcore/marlin-undostack-manager.c:1318
 #, c-format
 msgid "Rename '%s' as '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1171
-#: libcore/marlin-undostack-manager.c:1366
+#: libcore/marlin-undostack-manager.c:1170
+#: libcore/marlin-undostack-manager.c:1365
 #, c-format
 msgid "Restore %d items from trash"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1179
+#: libcore/marlin-undostack-manager.c:1178
 #, c-format
 msgid "Restore '%s' to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1190
+#: libcore/marlin-undostack-manager.c:1189
 #, c-format
 msgid "Move %d items back to trash"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1193
+#: libcore/marlin-undostack-manager.c:1192
 #, c-format
 msgid "Move '%s' back to trash"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1202
+#: libcore/marlin-undostack-manager.c:1201
 #, c-format
 msgid "Delete links to %d items"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1205
+#: libcore/marlin-undostack-manager.c:1204
 #, c-format
 msgid "Delete link to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1215
+#: libcore/marlin-undostack-manager.c:1214
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1223
+#: libcore/marlin-undostack-manager.c:1222
 #, c-format
 msgid "Restore original permissions of '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1232
+#: libcore/marlin-undostack-manager.c:1231
 #, c-format
 msgid "Restore group of '%s' to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1242
+#: libcore/marlin-undostack-manager.c:1241
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1281
+#: libcore/marlin-undostack-manager.c:1280
 #, c-format
 msgid "Copy %d items to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1285
+#: libcore/marlin-undostack-manager.c:1284
 #, c-format
 msgid "Copy '%s' to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1293
+#: libcore/marlin-undostack-manager.c:1292
 #, c-format
 msgid "Duplicate of %d items in '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1298
+#: libcore/marlin-undostack-manager.c:1297
 #, c-format
 msgid "Duplicate '%s' in '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1306
+#: libcore/marlin-undostack-manager.c:1305
 #, c-format
 msgid "Move %d items to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1310
+#: libcore/marlin-undostack-manager.c:1309
 #, c-format
 msgid "Move '%s' to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1328
+#: libcore/marlin-undostack-manager.c:1327
 #, c-format
 msgid "Create new file '%s' from template "
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1335
+#: libcore/marlin-undostack-manager.c:1334
 #, c-format
 msgid "Create an empty file '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1342
+#: libcore/marlin-undostack-manager.c:1341
 #, c-format
 msgid "Create a new folder '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1350
+#: libcore/marlin-undostack-manager.c:1349
 #, c-format
 msgid "Move %d items to trash"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1356
+#: libcore/marlin-undostack-manager.c:1355
 #, c-format
 msgid "Move '%s' to trash"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1369
+#: libcore/marlin-undostack-manager.c:1368
 #, c-format
 msgid "Restore '%s' from trash"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1378
+#: libcore/marlin-undostack-manager.c:1377
 #, c-format
 msgid "Create links to %d items"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1381
+#: libcore/marlin-undostack-manager.c:1380
 #, c-format
 msgid "Create link to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1390
+#: libcore/marlin-undostack-manager.c:1389
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1398
+#: libcore/marlin-undostack-manager.c:1397
 #, c-format
 msgid "Set permissions of '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1407
+#: libcore/marlin-undostack-manager.c:1406
 #, c-format
 msgid "Set group of '%s' to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1417
+#: libcore/marlin-undostack-manager.c:1416
 #, c-format
 msgid "Set owner of '%s' to '%s'"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1449
+#: libcore/marlin-undostack-manager.c:1448
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1454
+#: libcore/marlin-undostack-manager.c:1453
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1459
+#: libcore/marlin-undostack-manager.c:1458
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1464
+#: libcore/marlin-undostack-manager.c:1463
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1468
+#: libcore/marlin-undostack-manager.c:1467
 msgid "_Undo creation of an empty file"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1471
+#: libcore/marlin-undostack-manager.c:1470
 msgid "_Undo creation of a file from template"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1475
+#: libcore/marlin-undostack-manager.c:1474
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1480
+#: libcore/marlin-undostack-manager.c:1479
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1485
+#: libcore/marlin-undostack-manager.c:1484
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1490
+#: libcore/marlin-undostack-manager.c:1489
 #, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1495
+#: libcore/marlin-undostack-manager.c:1494
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1500
+#: libcore/marlin-undostack-manager.c:1499
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1506
+#: libcore/marlin-undostack-manager.c:1505
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1511
+#: libcore/marlin-undostack-manager.c:1510
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1516
+#: libcore/marlin-undostack-manager.c:1515
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1544
+#: libcore/marlin-undostack-manager.c:1543
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1549
+#: libcore/marlin-undostack-manager.c:1548
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1554
+#: libcore/marlin-undostack-manager.c:1553
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1559
+#: libcore/marlin-undostack-manager.c:1558
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1563
+#: libcore/marlin-undostack-manager.c:1562
 msgid "_Redo creation of an empty file"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1566
+#: libcore/marlin-undostack-manager.c:1565
 msgid "_Redo creation of a file from template"
 msgstr ""
 
-#: libcore/marlin-undostack-manager.c:1570
+#: libcore/marlin-undostack-manager.c:1569
 #, c-format
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1575
+#: libcore/marlin-undostack-manager.c:1574
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1580
+#: libcore/marlin-undostack-manager.c:1579
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1585
+#: libcore/marlin-undostack-manager.c:1584
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1590
+#: libcore/marlin-undostack-manager.c:1589
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1595
+#: libcore/marlin-undostack-manager.c:1594
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1601
+#: libcore/marlin-undostack-manager.c:1600
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1606
+#: libcore/marlin-undostack-manager.c:1605
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: libcore/marlin-undostack-manager.c:1611
+#: libcore/marlin-undostack-manager.c:1610
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
 msgstr[0] ""
 msgstr[1] ""
-
-#: libcore/gof-file.c:332 libcore/gof-file.c:506
-msgid "Inaccessible"
-msgstr ""
-
-#: libcore/gof-file.c:347
-#, c-format
-msgid "link to %s"
-msgstr ""
 
 #: libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
@@ -2118,6 +2129,10 @@ msgstr ""
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
 #, c-format
 msgid "Go to %s"
+msgstr ""
+
+#: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
+msgid "Type Path"
 msgstr ""
 
 #: libwidgets/View/SearchResults.vala:222

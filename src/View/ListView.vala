@@ -106,10 +106,10 @@ namespace FM {
         }
 
         private void set_file_data (Gtk.CellRenderer cell, Gtk.TreeModel model, Gtk.TreeIter iter, FM.ColumnID col_id) {
-            string text = "??????";
+            string text = "";
             GOF.File? file = null;
             model.@get(iter, FM.ColumnID.FILE_COLUMN, out file);
-            if (file != null) {
+            if (file != null && !file.is_null) {
                 switch (col_id) {
                     case FM.ColumnID.SIZE:
                         text = file.format_size;
