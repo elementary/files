@@ -204,3 +204,51 @@ namespace Marlin {
         NETSCAPE_URL
     }
 }
+
+namespace FM {
+    public enum ColumnID {
+        FILE_COLUMN, /* gof file */
+        COLOR,  /* string */
+        FILENAME,  /* string */
+        SIZE,  /* string */
+        TYPE,  /* string */
+        MODIFIED,  /* string */
+        NUM_COLUMNS,
+        INVALID;
+
+        public static ColumnID from_string (string? col_id) {
+            if (col_id == null) {
+                return ColumnID.INVALID;
+            }
+
+            switch (col_id) {
+                case "name":
+                    return ColumnID.FILENAME;
+                case "size":
+                    return ColumnID.SIZE;
+                case "type":
+                    return ColumnID.TYPE;
+                case "modified":
+                    return ColumnID.MODIFIED;
+                default:
+                    return ColumnID.FILENAME;
+            }
+        }
+
+        public unowned string to_string () {
+            switch (this) {
+                case ColumnID.FILENAME:
+                    return "name";
+                case ColumnID.SIZE:
+                    return "size";
+                case ColumnID.TYPE:
+                    return "type";
+                case ColumnID.MODIFIED:
+                    return "modified";
+                default:
+                    critical ("COLUMN id %u unsupported", this);
+                    return "";
+            }
+        }
+    }
+}

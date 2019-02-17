@@ -18,21 +18,29 @@
 
 namespace FM {
     public class ListView : AbstractTreeView {
-
         /* We wait two seconds after row is collapsed to unload the subdirectory */
         const int COLLAPSE_TO_UNLOAD_DELAY = 2;
-
-        static string [] column_titles = {
-            _("Filename"),
-            _("Size"),
-            _("Type"),
-            _("Modified")
-        };
 
         /* ListView manages the loading and unloading of subdirectories displayed */
         private uint unload_file_timeout_id = 0;
         private GLib.List<Gtk.TreeRowReference> subdirectories_to_unload = null;
         private GLib.List<GOF.Directory.Async> loaded_subdirectories = null;
+
+        construct {
+            model.sort_order_changed.connect ((new_, reversed, old_) => {
+                foreach (Gtk.TreeViewColumn col in tree.get_columns ()) {
+                    FM.ColumnID id = col.get_data ("id");
+                    if (id == old_) {
+                        col.sort_indicator = false;
+                    }
+
+                    if (id == new_) {
+                        col.sort_indicator = true;
+                        col.sort_order = reversed ? Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
+                    }
+                }
+            });
+        }
 
         public ListView (Marlin.View.Slot _slot) {
             base (_slot);
@@ -41,41 +49,88 @@ namespace FM {
         private void connect_additional_signals () {
             tree.row_expanded.connect (on_row_expanded);
             tree.row_collapsed.connect (on_row_collapsed);
+            tree.model.row_inserted.connect ((path,iter) => {
+            });
             model.subdirectory_unloaded.connect (on_model_subdirectory_unloaded);
+
+            slot.notify["directory"].connect (() => {
+                model.root_dir = slot.directory;
+            });
         }
 
         private void append_extra_tree_columns () {
-            int fnc = FM.ListModel.ColumnID.FILENAME;
-
             int preferred_column_width = Preferences.marlin_column_view_settings.get_int ("preferred-column-width");
-            for (int k = fnc; k < FM.ListModel.ColumnID.NUM_COLUMNS; k++) {
-                if (k == fnc) {
-                    /* name_column already created by AbstractTreeVIew */
-                    name_column.set_title (column_titles [0]);
-                    name_column.min_width = preferred_column_width;
-                } else {
-                    var renderer = new Gtk.CellRendererText ();
-                    var col = new Gtk.TreeViewColumn.with_attributes (column_titles [k - fnc],
-                                                                      renderer,
-                                                                      "text", k);
-                    col.set_sort_column_id (k);
-                    col.set_resizable (false);
-                    col.set_expand (false);
-                    col.min_width = 24;
-                    if (k == FM.ListModel.ColumnID.SIZE || k == FM.ListModel.ColumnID.MODIFIED) {
-                        renderer.@set ("xalign", 1.0f);
-                    } else {
-                        renderer.@set ("xalign", 0.0f);
-                    }
+            name_column.title = _("Filename");
+            name_column.min_width = preferred_column_width;
+            name_column.clickable = true;
+            name_column.expand = true;
+            name_column.clicked.connect (on_column_clicked);
+            name_column.sort_indicator = true;
+            name_column.set_data ("id", FM.ColumnID.FILENAME);
 
-                    tree.append_column (col);
+            make_extra_column (FM.ColumnID.SIZE, _("Size"));
+            make_extra_column (FM.ColumnID.TYPE, _("Type"));
+            make_extra_column (FM.ColumnID.MODIFIED, ("_Modified"));
+        }
+
+        private void make_extra_column (FM.ColumnID id, string title) {
+            var renderer = new Gtk.CellRendererText ();
+            var col = new Gtk.TreeViewColumn ();
+            col.pack_end (renderer, true);
+            col.title = title;
+            col.set_data ("id", id);
+            col.set_cell_data_func (renderer,
+                                    (layout, renderer, model, iter) => {
+                                        set_file_data (renderer, model, iter, id);
+                                    });
+
+            col.clickable = true;
+            col.clicked.connect (on_column_clicked);
+            col.sort_indicator = false;
+            col.set_resizable (false);
+            col.set_expand (false);
+            col.min_width = 24;
+
+            if (id == FM.ColumnID.SIZE || id == FM.ColumnID.MODIFIED) {
+                renderer.xalign = 1.0f;
+            } else {
+                renderer.xalign = 0.0f;
+            }
+
+            tree.append_column (col);
+        }
+
+        private void on_column_clicked (Gtk.TreeViewColumn col) {
+            FM.ColumnID col_id = col.get_data ("id");;
+            model.set_order (col_id);
+        }
+
+        private void set_file_data (Gtk.CellRenderer cell, Gtk.TreeModel model, Gtk.TreeIter iter, FM.ColumnID col_id) {
+            string text = "??????";
+            GOF.File? file = null;
+            model.@get(iter, FM.ColumnID.FILE_COLUMN, out file);
+            if (file != null) {
+                switch (col_id) {
+                    case FM.ColumnID.SIZE:
+                        text = file.format_size;
+                        break;
+                    case FM.ColumnID.TYPE:
+                        text = file.formated_type;
+                        break;
+                    case FM.ColumnID.MODIFIED:
+                        text = file.formated_modified;
+                        break;
+                    default:
+                        break;
                 }
             }
+
+            ((Gtk.CellRendererText)(cell)).text = text;
         }
 
         private void on_row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
-            set_path_expanded (path, true);
             add_subdirectory_at_path (path);
+            set_path_expanded (path, true);
         }
 
         private void on_row_collapsed (Gtk.TreeIter iter, Gtk.TreePath path) {
@@ -111,23 +166,8 @@ namespace FM {
 
         private bool unload_directories () {
             foreach (unowned Gtk.TreeRowReference rowref in subdirectories_to_unload) {
-                Gtk.TreeIter? iter = null;
-                Gtk.TreePath path;
-                if (rowref.valid ()) {
-                    path = rowref.get_path ();
-                } else {
-                    warning ("TreeRowRef invalid when unloading subdirectory");
-                    continue;
-                }
-
-                if (((Gtk.TreeView)tree).is_row_expanded (path)) {
-                    continue;
-                }
-
-                if (model.get_iter (out iter, path) && iter != null) {
-                        model.unload_subdirectory (iter);
-                } else {
-                    warning ("Subdirectory to unload not found in model");
+                if (!tree.is_row_expanded (rowref.get_path ())) {
+                    model.unload_subdirectory (rowref);
                 }
             }
 
@@ -186,6 +226,7 @@ namespace FM {
 
         protected override Gtk.Widget? create_view () {
             model.set_property ("has-child", true);
+            model.root_dir = slot.directory;
             base.create_view ();
             tree.set_show_expanders (true);
             tree.set_headers_visible (true);
@@ -222,18 +263,21 @@ namespace FM {
         }
 
         private void add_subdirectory_at_path (Gtk.TreePath path) {
-            /* If a new subdirectory is loaded, connect it, load it
+            /* If a new subdirectory is to be loaded, connect it, load it
              * and add it to the list of subdirectories */
-            GOF.Directory.Async? dir = null;
-            if (model.load_subdirectory (path, out dir)) {
-                if (dir != null) {
-                    connect_directory_handlers (dir);
-                    dir.init ();
-                    /* Maintain our own reference on dir, independent of the model */
-                    /* Also needed for updating show hidden status */
-                    loaded_subdirectories.prepend (dir);
-                }
+            GOF.File file = model.file_for_path (path);
+            assert (file.is_directory);
+            var dir = GOF.Directory.Async.from_file (file);
+
+            if (loaded_subdirectories.find (dir) != null) {
+                return;
             }
+
+            connect_directory_handlers (dir);
+            Idle.add (() => {dir.init (); return Source.REMOVE;});
+            /* Maintain our own reference on dir, independent of the model */
+            /* Also needed for updating show hidden status */
+            loaded_subdirectories.prepend (dir);
         }
 
         private void remove_subdirectory (GOF.Directory.Async? dir) {
@@ -291,5 +335,7 @@ namespace FM {
                 remove_subdirectory (dir);
             });
         }
+
+
     }
 }

@@ -46,12 +46,10 @@ namespace FM {
             set_up_icon_renderer ();
 
             (tree as Gtk.CellLayout).pack_start (icon_renderer, false);
-            (tree as Gtk.CellLayout).pack_end (name_renderer, false);
+            (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ColumnID.FILE_COLUMN);
 
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "text", FM.ListModel.ColumnID.FILENAME);
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
-            (tree as Gtk.CellLayout).add_attribute (name_renderer, "background", FM.ListModel.ColumnID.COLOR);
-            (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ListModel.ColumnID.FILE_COLUMN);
+            (tree as Gtk.CellLayout).pack_end (name_renderer, false);
+            (tree as Gtk.CellLayout).add_attribute (name_renderer, "file", FM.ColumnID.FILE_COLUMN);
 
             connect_tree_signals ();
             tree.realize.connect ((w) => {
@@ -180,6 +178,15 @@ namespace FM {
             }
         }
 
+        public override Gtk.TreePath? get_single_selection () {
+            var selected_paths = tree.get_selected_items ();
+            if (selected_paths.data != null && selected_paths.next == null) {
+                return selected_paths.data;
+            } else {
+                return null;
+            }
+        }
+
         public override bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path) {
             start_path = null;
             end_path = null;
@@ -196,7 +203,7 @@ namespace FM {
                     list.prepend ((owned)file);
                     count++;
                 } else {
-                    critical ("Null file in model");
+                    critical ("Null file in model path %s", path.to_string ());
                 }
             });
 
@@ -234,13 +241,6 @@ namespace FM {
                      * for vertical scrolling in order to accurately detect which area of TextRenderer was
                      * clicked on */
                     y -= (int)(get_vadjustment ().value);
-                    Gtk.TreeIter iter;
-                    model.get_iter (out iter, path);
-                    string? text = null;
-                    model.@get (iter,
-                            FM.ListModel.ColumnID.FILENAME, out text);
-
-                    (r as Marlin.TextRenderer).set_up_layout (text, area.width);
 
                     if (x >= rect.x &&
                         x <= rect.x + rect.width &&
@@ -387,6 +387,7 @@ namespace FM {
             tree_frozen = true;
             tree.freeze_child_notify ();
             tree.set_model (null);
+            model.unset_order ();
         }
 
         protected override void thaw_tree () {

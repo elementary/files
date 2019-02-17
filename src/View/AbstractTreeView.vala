@@ -33,7 +33,6 @@ namespace FM {
 
         protected virtual void create_and_set_up_name_column () {
             name_column = new Gtk.TreeViewColumn ();
-            name_column.set_sort_column_id (FM.ListModel.ColumnID.FILENAME);
             name_column.set_expand (true);
             name_column.set_resizable (true);
 
@@ -43,16 +42,13 @@ namespace FM {
             set_up_icon_renderer ();
 
             name_column.pack_start (icon_renderer, false);
-            name_column.set_attributes (icon_renderer,
-                                        "file", FM.ListModel.ColumnID.FILE_COLUMN);
+            name_column.set_attributes (icon_renderer, "file", FM.ColumnID.FILE_COLUMN);
 
-            name_column.pack_start (name_renderer, true);
-            name_column.set_attributes (name_renderer,
-                                        "text", FM.ListModel.ColumnID.FILENAME,
-                                        "file", FM.ListModel.ColumnID.FILE_COLUMN,
-                                        "background", FM.ListModel.ColumnID.COLOR);
+            name_column.pack_end (name_renderer, false);
+            name_column.set_attributes (name_renderer, "file", FM.ColumnID.FILE_COLUMN);
 
             tree.append_column (name_column);
+            tree.set_expander_column (name_column);
         }
 
         protected void set_up_icon_renderer () {
@@ -130,6 +126,15 @@ namespace FM {
             tree.get_selection ().unselect_all ();
         }
 
+        public override Gtk.TreePath? get_single_selection () {
+            var selected_paths = tree.get_selection ().get_selected_rows (null);
+            if (selected_paths != null && selected_paths.next == null) {
+                return selected_paths.data;
+            } else {
+                return null;
+            }
+        }
+
         /* Avoid using this function with "cursor_follows = true" to select large numbers of files one by one
          * It would take an exponentially long time. Use "select_files" function in parent class.
          */
@@ -180,7 +185,7 @@ namespace FM {
             GLib.List<GOF.File> list = null;
             tree.get_selection ().selected_foreach ((model, path, iter) => {
                 GOF.File? file; /* can be null if click on blank row in list view */
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file, -1);
+                model.@get (iter, FM.ColumnID.FILE_COLUMN, out file, -1);
                 if (file != null) {
                     list.prepend ((owned) file);
                     count++;

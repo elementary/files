@@ -44,7 +44,9 @@ namespace Marlin {
             }
         }
 
-        public GOF.File? file {set; private get;}
+        public GOF.File? file { set; get; }
+
+        public new string text { get { return file != null ? file.get_display_name () : ""; } }
         private int _item_width = -1;
         public int item_width {
             set {
@@ -96,6 +98,11 @@ namespace Marlin {
                                      Gdk.Rectangle background_area,
                                      Gdk.Rectangle cell_area,
                                      Gtk.CellRendererState flags) {
+            if (file == null) {
+                critical ("Attempt to render null in TextRenderer");
+                return;
+            }
+
             set_widget (widget);
             Gtk.StateFlags state = widget.get_state_flags ();
 
@@ -264,6 +271,7 @@ namespace Marlin {
                 string path = entry.get_data ("marlin-text-renderer-path");
                 edited (path, text);
             }
+
             file = null;
         }
 
@@ -302,7 +310,7 @@ namespace Marlin {
                 if (selected) {
                     data = "* {border-radius: 5px;}";
                 } else {
-                    data = "* {border-radius: 5px; background-color: %s;}".printf (background_rgba.to_string ());
+                    data = "* {border-radius: 5px; background-color: %s;}".printf (GOF.Preferences.TAGS_COLORS[file.color]);
                 }
 
                 try {

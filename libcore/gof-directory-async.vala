@@ -801,24 +801,27 @@ public class Async : Object {
         file_hash.insert (gof.location, gof);
     }
 
-    public GOF.File file_cache_find_or_insert (GLib.File file, bool update_hash = false) {
+    public bool file_cache_find_or_insert (GLib.File file, out GOF.File? result, bool update_hash = false) {
         assert (file != null);
-        GOF.File? result = file_hash.lookup (file);
+        result = file_hash.lookup (file);
+        bool found = true;
         /* Although file_hash.lookup returns an unowned value, Vala will add a reference
          * as the return value is owned.  This matches the behaviour of GOF.File.cache_lookup */
         if (result == null) {
+            found = false;
             result = GOF.File.cache_lookup (file);
 
-            if (result == null) {
-                result = new GOF.File (file, location);
-                file_hash.insert (file, result);
-            } else if (update_hash) {
-                file_hash.insert (file, result);
+            if (update_hash) {
+                if (result == null) {
+                    result = new GOF.File (file, location);
+                    file_hash.insert (file, result);
+                } else {
+                    file_hash.insert (file, result);
+                }
             }
         }
 
-        result.is_gone = false;
-        return (!) result;
+        return found;
     }
 
     /**TODO** move this to GOF.File */
@@ -984,7 +987,7 @@ public class Async : Object {
             Async? parent_dir = cache_lookup_parent (loc);
             GOF.File? gof = null;
             if (parent_dir != null) {
-                gof = parent_dir.file_cache_find_or_insert (loc);
+                parent_dir.file_cache_find_or_insert (loc, out gof, true);
                 parent_dir.notify_file_changed (gof);
             }
 
@@ -1001,8 +1004,10 @@ public class Async : Object {
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                GOF.File gof = dir.file_cache_find_or_insert (loc, true);
-                dir.notify_file_added (gof);
+                GOF.File? gof = null;
+                if (!dir.file_cache_find_or_insert (loc, out gof, true)) {
+                    dir.notify_file_added (gof);
+                }
             }
         }
     }
@@ -1019,8 +1024,11 @@ public class Async : Object {
             Async? dir = cache_lookup_parent (loc);
 
             if (dir != null) {
-                GOF.File gof = dir.file_cache_find_or_insert (loc);
-                dir.notify_file_removed (gof);
+                GOF.File? gof = null;
+                if (dir.file_cache_find_or_insert (loc, out gof)) {
+                    dir.notify_file_removed (gof);
+                }
+
                 found = false;
 
                 foreach (var d in dirs) {
@@ -1091,6 +1099,7 @@ public class Async : Object {
         Async? dir = cache_lookup (gof.directory);
         if (dir != null) {
             dir.file_hash.remove (gof.location);
+            dir.file_deleted (gof);
         }
     }
 

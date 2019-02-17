@@ -268,7 +268,7 @@ namespace FM {
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
-        protected FM.ListModel model;
+        protected FM.DirectoryModel model;
         protected Marlin.IconRenderer icon_renderer;
         protected unowned Marlin.View.Slot slot;
         protected unowned Marlin.View.Window window; /*For convenience - this can be derived from slot */
@@ -279,6 +279,10 @@ namespace FM {
         public signal void path_change_request (GLib.File location, Marlin.OpenFlag flag, bool new_root);
         public signal void item_hovered (GOF.File? file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
+
+        construct {
+            model = new FM.DirectoryModel ();
+        }
 
         public AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
@@ -300,7 +304,7 @@ namespace FM {
 
                 draw_when_idle ();
             });
-            model = GLib.Object.@new (FM.ListModel.get_type (), null) as FM.ListModel;
+
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
             Preferences.settings.bind ("show-remote-thumbnails", this, "show_remote_thumbnails", SettingsBindFlags.GET);
             Preferences.settings.bind ("hide-local-thumbnails", this, "hide_local_thumbnails", SettingsBindFlags.GET);
@@ -378,10 +382,10 @@ namespace FM {
             prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
 
-            model.set_should_sort_directories_first (GOF.Preferences.get_default ().sort_directories_first);
+            model.sort_directories_first = (GOF.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
-            model.sort_column_changed.connect (on_sort_column_changed);
+            model.sort_order_changed.connect (on_sort_order_changed);
         }
 
         private void set_up__menu_actions () {
@@ -439,7 +443,7 @@ namespace FM {
         }
 
         public void select_glib_files_when_thawed (GLib.List<GLib.File> location_list, GLib.File? focus_location) {
-            GLib.List<GOF.File>? file_list = null;
+            var file_list =  new GLib.Sequence<GOF.File> ();
 
             location_list.@foreach ((loc) => {
                 file_list.prepend (GOF.File.@get (loc));
@@ -459,20 +463,17 @@ namespace FM {
             });
         }
 
-        private void select_file_paths (GLib.List<GOF.File> files, GLib.File? focus) {
-            Gtk.TreeIter iter;
+        private void select_file_paths (GLib.Sequence<GOF.File> files, GLib.File? focus) {
             disconnect_tree_signals (); /* Avoid unnecessary signal processing */
             unselect_all ();
-
+            GLib.List<Gtk.TreeRowReference> rows = model.find_file_rows (files);
             uint count = 0;
-
-            foreach (GOF.File f in files) {
-                /* Not all files selected in previous view  (e.g. expanded tree view) may appear in this one. */
-                if (model.get_first_iter_for_file (f, out iter)) {
-                    count++;
-                    var path = model.get_path (iter);
-                    /* Cursor follows if matches focus location*/
+            foreach (Gtk.TreeRowReference row in rows) {
+                var path = row.get_path ();
+                GOF.File? f = model.file_for_path (path);
+                if (f != null) {
                     select_path (path, focus != null && focus.equal (f.location));
+                    count++;
                 }
             }
 
@@ -576,34 +577,24 @@ namespace FM {
         }
 
         public void select_gof_file (GOF.File file) {
-            var iter = Gtk.TreeIter ();
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
+            var row_ref = model.find_file_row (file);
+            if (row_ref != null) {
+                set_cursor (row_ref.get_path (), false, true, false);
             }
-
-            var path = model.get_path (iter);
-            set_cursor (path, false, true, false);
         }
 
         protected void select_and_scroll_to_gof_file (GOF.File file) {
-            var iter = Gtk.TreeIter ();
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
+            var row_ref = model.find_file_row (file);
+            if (row_ref != null) {
+                set_cursor (row_ref.get_path (), false, true, true);
             }
-
-            var path = model.get_path (iter);
-            set_cursor (path, false, true, true);
         }
 
         protected void add_gof_file_to_selection (GOF.File file) {
-            var iter = Gtk.TreeIter ();
-
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                return; /* file not in model */
+            var row_ref = model.find_file_row (file);
+            if (row_ref != null) {
+                select_path (row_ref.get_path ()); /* Cursor does not follow */
             }
-
-            var path = model.get_path (iter);
-            select_path (path); /* Cursor does not follow */
         }
 
     /** Directory signal handlers. */
@@ -877,9 +868,7 @@ namespace FM {
                 });
             }
 
-            Gtk.TreeIter? iter = null;
-            model.get_first_iter_for_file (file_list.first ().data, out iter);
-            deleted_path = model.get_path (iter);
+            deleted_path = get_selected_paths ().data;
 
             if (locations != null) {
                 locations.reverse ();
@@ -903,6 +892,7 @@ namespace FM {
         }
 
         private void add_file (GOF.File file, GOF.Directory.Async dir) {
+            assert (file != null);
             model.add_file (file, dir);
 
             if (select_added_files) {
@@ -1160,7 +1150,7 @@ namespace FM {
         }
 
         private void on_background_action_sort_by_changed (GLib.SimpleAction action, GLib.Variant? val) {
-            string sort = val.get_string ();
+            var sort = FM.ColumnID.from_string (val.get_string ());
             set_sort (sort, false);
         }
 
@@ -1173,25 +1163,13 @@ namespace FM {
             prefs.sort_directories_first = !prefs.sort_directories_first;
         }
 
-        private void set_sort (string? col_name, bool reverse) {
-            int sort_column_id;
-            Gtk.SortType sort_order;
-
-            if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-                if (col_name != null) {
-                    sort_column_id = get_column_id_from_string (col_name);
-                }
-
-                if (reverse) {
-                    if (sort_order == Gtk.SortType.ASCENDING) {
-                        sort_order = Gtk.SortType.DESCENDING;
-                    } else {
-                        sort_order = Gtk.SortType.ASCENDING;
-                    }
-                }
-
-                model.set_sort_column_id (sort_column_id, sort_order);
+        private void set_sort (FM.ColumnID? col_id, bool? reverse) {
+            if (col_id == null) {
+                bool dummy;
+                model.get_order (out col_id, out dummy);
             }
+
+            model.set_order (col_id, reverse);
         }
 
         /** Common actions */
@@ -1299,7 +1277,6 @@ namespace FM {
                 is_writable = slot.directory.file.is_writable ();
             } else {
                 remove_marlin_icon_info_cache (file);
-                model.file_changed (file, dir);
                 /* 2nd parameter is for returned request id if required - we do not use it? */
                 /* This is required if we need to dequeue the request */
                 if ((slot.directory.is_local && !hide_local_thumbnails) || (show_remote_thumbnails && slot.directory.can_open_files)) {
@@ -1314,7 +1291,6 @@ namespace FM {
         }
 
         private void on_directory_file_icon_changed (GOF.Directory.Async dir, GOF.File file) {
-            model.file_changed (file, dir);
             draw_when_idle ();
         }
 
@@ -1357,10 +1333,10 @@ namespace FM {
 
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
-                if (in_recent) {
-                    model.set_sort_column_id (get_column_id_from_string ("modified"), Gtk.SortType.DESCENDING);
-                } else if (slot.directory.file.info != null) {
-                    model.set_sort_column_id (slot.directory.file.sort_column_id, slot.directory.file.sort_order);
+                if (in_recent)
+                    model.set_order (FM.ColumnID.MODIFIED, false);
+                else if (slot.directory.file.info != null) {
+                    model.set_order ((FM.ColumnID)(slot.directory.file.sort_column_id), slot.directory.file.reversed);
                 }
             } else {
                 is_writable = false;
@@ -1378,7 +1354,7 @@ namespace FM {
                 slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
             }
 
-            model.set_property ("size", icon_size);
+            model.icon_size = icon_size;
             change_zoom_level ();
         }
 
@@ -1416,8 +1392,7 @@ namespace FM {
         }
 
         private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            var sort_directories_first = (prefs as GOF.Preferences).sort_directories_first;
-            model.set_should_sort_directories_first (sort_directories_first);
+            model.sort_directories_first = (prefs as GOF.Preferences).sort_directories_first;
         }
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
@@ -2266,14 +2241,14 @@ namespace FM {
         }
 
         private void update_menu_actions_sort () {
-            int sort_column_id;
-            Gtk.SortType sort_order;
+            FM.ColumnID sort_column_id;
+            bool reversed;
 
-            if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-                GLib.Variant val = new GLib.Variant.string (get_string_from_column_id (sort_column_id));
+            if (model.get_order (out sort_column_id, out reversed)) {
+                var column_name = sort_column_id.to_string ();
+                GLib.Variant val = new GLib.Variant.string (column_name);
                 action_set_state (background_actions, "sort-by", val);
-                val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
-                action_set_state (background_actions, "reverse", val);
+                action_set_state (background_actions, "reverse", reversed);
                 val = new GLib.Variant.boolean (GOF.Preferences.get_default ().sort_directories_first);
                 action_set_state (background_actions, "folders-first", val);
             }
@@ -2488,7 +2463,6 @@ namespace FM {
                 if (get_visible_range (out start_path, out end_path)) {
                     sp = start_path;
                     ep = end_path;
-
                     /* To improve performance for large folders we thumbnail files on either side of visible region
                      * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
                      * redraws necessary when scrolling */
@@ -2524,7 +2498,7 @@ namespace FM {
                             }
                         }
                         /* check if we've reached the end of the visible range */
-                        if (path.compare (end_path) != 0) {
+                        if (path.get_depth () > 0 && path.compare (end_path) != 0) {
                             valid_iter = get_next_visible_iter (ref iter);
                         } else {
                             valid_iter = false;
@@ -2546,7 +2520,6 @@ namespace FM {
                 return GLib.Source.REMOVE;
             });
         }
-
 
 /** HELPER AND CONVENIENCE FUNCTIONS */
         /** This helps ensure that file item updates are reflected on screen without too many redraws **/
@@ -3084,7 +3057,7 @@ namespace FM {
                 Gtk.TreeIter? iter = null;
                 model.get_iter (out iter, path);
                 GOF.File? file = null;
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
+                model.@get (iter, FM.ColumnID.FILE_COLUMN, out file);
                 int start_offset= 0, end_offset = -1;
                 /* Select whole name if the file is a folder, otherwise do not select the extension */
                 if (!file.is_folder ()) {
@@ -3118,7 +3091,7 @@ namespace FM {
                 model.get_iter (out iter, path);
 
                 GOF.File? file = null;
-                model.@get (iter, FM.ListModel.ColumnID.FILE_COLUMN, out file);
+                model.@get (iter, FM.ColumnID.FILE_COLUMN, out file);
 
                 /* Only rename if name actually changed */
                 /* Because GOF.File.rename does not work correctly for remote files we handle ourselves */
@@ -3450,15 +3423,14 @@ namespace FM {
                 warning ("Trying to rename when frozen");
                 return;
             }
-            Gtk.TreeIter? iter = null;
-            if (!model.get_first_iter_for_file (file, out iter)) {
-                critical ("Failed to find rename file in model");
-                return;
-            }
 
             /* Freeze updates to the view to prevent losing rename focus when the tree view updates */
             is_frozen = true;
-            Gtk.TreePath path = model.get_path (iter);
+            Gtk.TreePath? path = get_single_selection ();
+
+            if (path == null) {
+                return;
+            }
 
             uint count = 0;
             bool ok_next_time = false;
@@ -3493,51 +3465,7 @@ namespace FM {
 
         }
 
-        protected string get_string_from_column_id (int id) {
-            switch (id) {
-                case FM.ListModel.ColumnID.FILENAME:
-                    return "name";
-
-                case FM.ListModel.ColumnID.SIZE:
-                    return "size";
-
-                case FM.ListModel.ColumnID.TYPE:
-                    return "type";
-
-                case FM.ListModel.ColumnID.MODIFIED:
-                    return "modified";
-
-                default:
-                    warning ("column id not recognised - using 'name'");
-                    return "name";
-            }
-        }
-
-        protected int get_column_id_from_string (string col_name) {
-            switch (col_name) {
-                case "name":
-                    return FM.ListModel.ColumnID.FILENAME;
-
-                case "size":
-                    return FM.ListModel.ColumnID.SIZE;
-
-                case "type":
-                    return FM.ListModel.ColumnID.TYPE;
-
-                case "modified":
-                    return FM.ListModel.ColumnID.MODIFIED;
-
-                default:
-                    warning ("column name not recognised - using FILENAME");
-
-                return FM.ListModel.ColumnID.FILENAME;
-            }
-        }
-
-        protected void on_sort_column_changed () {
-            int sort_column_id = 0;
-            Gtk.SortType sort_order = 0;
-
+        protected void on_sort_order_changed () {
             /* Setting file attributes fails when root */
             if (Posix.getuid () == 0) {
                 return;
@@ -3546,22 +3474,22 @@ namespace FM {
             /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
              * the directory file metadata incorrectly (bug 1511307).
              */
-            if (tree_frozen || !model.get_sort_column_id (out sort_column_id, out sort_order)) {
+            FM.ColumnID sort_column_id = FM.ColumnID.FILENAME;
+            bool reversed = false;
+            if (tree_frozen ||
+                !model.get_order (out sort_column_id, out reversed)) {
                 return;
             }
 
             var info = new GLib.FileInfo ();
             var dir = slot.directory;
-            string sort_col_s = get_string_from_column_id (sort_column_id);
-            string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
-            info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
-            info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
+            info.set_attribute_string ("metadata::marlin-sort-column-id", sort_column_id.to_string ());
+            info.set_attribute_string ("metadata::marlin-sort-reversed", reversed.to_string ());
 
             /* Make sure directory file info matches metadata (bug 1511307).*/
-            dir.file.info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
-            dir.file.info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
+            dir.file.info.set_attribute_string ("metadata::marlin-sort-column-id", sort_column_id.to_string ());
+            dir.file.info.set_attribute_string ("metadata::marlin-sort-reversed", reversed.to_string ());
             dir.file.sort_column_id = sort_column_id;
-            dir.file.sort_order = sort_order;
 
             if (!is_admin) {
                 dir.location.set_attributes_async.begin (info,
@@ -3713,6 +3641,7 @@ namespace FM {
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
          * invokes the default widget handler.  IconView requires special handler */
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
+        protected abstract Gtk.TreePath? get_single_selection ();
 
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();

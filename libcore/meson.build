@@ -26,6 +26,7 @@ pantheon_files_core_vala_files = files(
     'gof-callwhenready.vala',
     'gof-directory-async.vala',
     'gof-preferences.vala',
+    'ListModel.vala',
     'PluginManager.vala',
     'Plugin.vala',
     'ProgressInfo.vala',
@@ -44,7 +45,6 @@ pantheon_files_core_c_files = files(
     'marlin-file-operations.c',
     'marlin-undostack-manager.c',
     'marlin-file-changes-queue.c',
-    'fm-list-model.c',
 )
 
 pantheon_files_core_h_files = files(
@@ -52,7 +52,6 @@ pantheon_files_core_h_files = files(
     'marlin-file-operations.h',
     'marlin-undostack-manager.h',
     'marlin-file-changes-queue.h',
-    'fm-list-model.h',
 )
 
 pantheon_files_core_files = [

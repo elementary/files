@@ -51,7 +51,7 @@ namespace Marlin {
             }
             set {
                 _file = value;
-                if (_file != null) {
+                if (_file != null && !file.is_null) {
                     _file.update_icon (icon_size, icon_scale);
                 }
             }
@@ -64,7 +64,7 @@ namespace Marlin {
         private int icon_scale = 1;
         private unowned Gdk.Pixbuf? pixbuf {
             get {
-                return _file != null ? _file.pix : null;
+                return (_file != null && !file.is_null) ? _file.pix : null;
             }
         }
 
@@ -132,8 +132,9 @@ namespace Marlin {
             if (special_icon_name != null) {
                 special_icon_name = special_icon_name + suffix;
                 var nicon = Marlin.IconInfo.lookup_from_name (special_icon_name, icon_size, icon_scale);
-                if (nicon != null) {
-                    pb = nicon.get_pixbuf_nodefault ();
+                var modified_pb = nicon != null ? nicon.get_pixbuf_nodefault () : null;
+                if (modified_pb != null) {
+                    pb = modified_pb;
                 } else {
                     special_icon_name = null;
                 }

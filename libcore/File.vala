@@ -61,8 +61,9 @@ public class GOF.File : GLib.Object {
     public int pix_scale = -1;
     public int width = 0;
     public int height = 0;
-    public int sort_column_id = FM.ListModel.ColumnID.FILENAME;
+    public int sort_column_id = FM.ColumnID.FILENAME;
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
+    public bool reversed = false;
     public GLib.FileType file_type;
     public bool is_hidden = false;
     public bool is_directory = false;
@@ -74,6 +75,7 @@ public class GOF.File : GLib.Object {
     public string thumbnail_path = null;
     public bool is_mounted = true;
     public bool exists = true;
+    public bool is_null = false;
     public uint32 uid;
     public uint32 gid;
     public string owner = null;
@@ -427,7 +429,7 @@ public class GOF.File : GLib.Object {
         /* metadata */
         if (is_directory) {
             if (info.has_attribute ("metadata::marlin-sort-column-id")) {
-                sort_column_id = FM.ListModel.get_column_id_from_string (info.get_attribute_string ("metadata::marlin-sort-column-id"));
+                sort_column_id = FM.ColumnID.from_string (info.get_attribute_string ("metadata::marlin-sort-column-id"));
             }
 
             if (info.has_attribute ("metadata::marlin-sort-reversed")) {
@@ -880,24 +882,24 @@ public class GOF.File : GLib.Object {
 
         int result = 0;
         switch (sort_type) {
-            case FM.ListModel.ColumnID.FILENAME:
+            case FM.ColumnID.FILENAME:
                 result = compare_by_display_name (other);
                 break;
-            case FM.ListModel.ColumnID.SIZE:
+            case FM.ColumnID.SIZE:
                 result = compare_by_size (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
                 }
 
                 break;
-            case FM.ListModel.ColumnID.TYPE:
+            case FM.ColumnID.TYPE:
                 result = compare_by_type (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
                 }
 
                 break;
-            case FM.ListModel.ColumnID.MODIFIED:
+            case FM.ColumnID.MODIFIED:
                 result = compare_by_time (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
