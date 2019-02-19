@@ -38,8 +38,6 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     private int set_max_width_request = 0;
     private int total_padding;
 
-    public int id { get; set; default = -1;}
-
     public WidgetGrid.WidgetData? data { get; set; default = null; }
 
     public Gdk.Pixbuf? pix {
@@ -55,7 +53,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     }
 
     public bool is_selected { get {return data != null ? data.is_selected : false;} }
-    public int data_id { get {return data != null ? data.data_id : -1;} }
+    public uint64 data_id { get {return data != null ? data.data_id : -1;} }
     public GOF.File? file { get { return data != null ? (GOF.File)data : null; } }
 
     construct {

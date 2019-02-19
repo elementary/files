@@ -3554,7 +3554,14 @@ namespace FM {
 
         }
 
-        protected abstract void add_file (GOF.File file, GOF.Directory.Async dir);
+        protected virtual void add_file (GOF.File file, GOF.Directory.Async dir) {
+            assert (file != null);
+            model.add_file (file, dir);
+
+            if (select_added_files) {
+                add_gof_file_to_selection (file);
+            }
+        }
 
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
          * invokes the default widget handler.  IconView requires special handler */

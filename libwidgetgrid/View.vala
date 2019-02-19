@@ -214,12 +214,6 @@ public class View : Gtk.Overlay, ViewInterface {
         );
     }
 
-    public void add_data (WidgetData data) {
-        data.data_id = View.total_items_added;
-        model.add (data);
-        View.total_items_added++;
-    }
-
     public void sort (CompareDataFunc? func) {
         model.sort (func);
         queue_draw ();

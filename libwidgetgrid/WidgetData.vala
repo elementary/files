@@ -29,10 +29,14 @@ public class WidgetData : Object {
         return data1.compare (data2);
     }
 
-    public int data_id;
+    public uint64 data_id { get; construct; }
     public bool is_selected { get; set; default = false; }
     public virtual bool equal (WidgetData b) {return data_id == b.data_id;}
     public virtual int compare (WidgetData b) {return 0;}
+
+    construct {
+        data_id = get_monotonic_time ();
+    }
 }
 }
 

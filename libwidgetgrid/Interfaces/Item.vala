@@ -53,7 +53,7 @@ public interface Item : Gtk.Widget {
         }
     }
 
-    public int data_id {
+    public uint64 data_id {
         get {
             return data != null ? data.data_id : -1;
         }

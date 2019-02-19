@@ -428,16 +428,6 @@ namespace FM {
                 adj.set_value (val);
             }
         }
-
-        protected override void add_file (GOF.File file, GOF.Directory.Async dir) {
-            assert (file != null);
-            model.add_file (file, dir);
-
-            if (select_added_files) {
-                add_gof_file_to_selection (file);
-            }
-        }
-
     }
 
     protected class TreeView : Gtk.TreeView {
