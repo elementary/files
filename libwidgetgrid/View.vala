@@ -28,7 +28,23 @@
 ***/
 namespace WidgetGrid {
 
-public class View : Gtk.Overlay {
+public interface ViewInterface : Gtk.Widget {
+    public abstract int minimum_item_width { get; set; }
+    public abstract int maximum_item_width { get; set; }
+    public abstract int item_width_index { get; set; }
+    public abstract int width_increment { get; set; }
+    public abstract bool fixed_item_widths { get; set; }
+    public abstract int item_width { get; set; }
+    public abstract int hpadding { get; set; }
+    public abstract int vpadding { get; set; }
+
+    public signal void selection_changed ();
+    public signal void item_clicked (Item item, Gdk.EventButton event);
+    public signal void background_clicked (Gdk.EventButton event);
+
+}
+
+public class View : Gtk.Overlay : ViewInterface {
     private static int total_items_added = 0; /* Used to ID data; only ever increases */
     private const int DEFAULT_HPADDING = 12;
     private const int DEFAULT_VPADDING = 24;
@@ -101,9 +117,9 @@ public class View : Gtk.Overlay {
     public int hpadding { get; set; }
     public int vpadding { get; set; }
 
-    public signal void selection_changed ();
-    public signal void item_clicked (Item item, Gdk.EventButton event);
-    public signal void background_clicked (Gdk.EventButton event);
+//    public signal void selection_changed ();
+//    public signal void item_clicked (Item item, Gdk.EventButton event);
+//    public signal void background_clicked (Gdk.EventButton event);
 
     construct {
         item_width_index = 3;
@@ -371,6 +387,14 @@ public class View : Gtk.Overlay {
 
             item_width = item_width - 1;
         }
+    }
+
+    public void select_all () {
+        layout_handler.select_all_data ();
+    }
+
+    public void unselect_all () {
+        layout_handler.reset_selected_data ();
     }
 }
 }

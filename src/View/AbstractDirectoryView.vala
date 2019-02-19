@@ -316,6 +316,7 @@ namespace FM {
 
             set_up__menu_actions ();
             set_up_directory_view ();
+            model = new FM.DirectoryModel ();
             view = create_view ();
 
             if (view != null) {
@@ -3596,26 +3597,19 @@ namespace FM {
             update_selected_files_and_menu ();
         }
 
+        protected bool is_on_icon (int x, int y, ref bool on_helper) {
+            /* x and y must be in same coordinate system as used by the IconRenderer */
+            Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
+            bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
+            on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
+            return on_icon;
+        }
+
+/** Virtual methods - may be overridden*/
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
-
-/** Abstract methods - must be overridden*/
-        public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
-        public abstract Gtk.TreePath? get_path_at_pos (int x, int win);
-        public abstract Gtk.TreePath? get_path_at_cursor ();
-        public abstract void tree_select_all ();
-        public abstract void tree_unselect_all ();
         public virtual void tree_unselect_others () {}
-        public abstract void select_path (Gtk.TreePath? path, bool cursor_follows = false);
-        public abstract void unselect_path (Gtk.TreePath? path);
-        public abstract bool path_is_selected (Gtk.TreePath? path);
-        public abstract bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
-        public abstract void set_cursor (Gtk.TreePath? path,
-                                         bool start_editing,
-                                         bool select,
-                                         bool scroll_to_top);
-
         /* By default use the native widget cursor handling by returning false */
         protected virtual bool move_cursor (uint keyval, bool only_shift_pressed) {
             return false;
@@ -3630,18 +3624,26 @@ namespace FM {
             }
         }
 
-        protected bool is_on_icon (int x, int y, ref bool on_helper) {
-            /* x and y must be in same coordinate system as used by the IconRenderer */
-            Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
-            bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
-            on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
-            return on_icon;
-        }
-
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
          * invokes the default widget handler.  IconView requires special handler */
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
         protected abstract Gtk.TreePath? get_single_selection ();
+
+/** Abstract methods - must be overridden*/
+        public abstract GLib.List<Gtk.TreePath> get_selected_paths () ;
+        public abstract Gtk.TreePath? get_path_at_pos (int x, int win);
+        public abstract Gtk.TreePath? get_path_at_cursor ();
+        public abstract void tree_select_all ();
+        public abstract void tree_unselect_all ();
+
+        public abstract void select_path (Gtk.TreePath? path, bool cursor_follows = false);
+        public abstract void unselect_path (Gtk.TreePath? path);
+        public abstract bool path_is_selected (Gtk.TreePath? path);
+        public abstract bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
+        public abstract void set_cursor (Gtk.TreePath? path,
+                                         bool start_editing,
+                                         bool select,
+                                         bool scroll_to_top);
 
         protected abstract Gtk.Widget? create_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();

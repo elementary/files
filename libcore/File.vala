@@ -16,7 +16,7 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class GOF.File : GLib.Object {
+public class GOF.File : WidgetGrid.WidgetData {
     private static GLib.HashTable<GLib.File, GOF.File> file_cache;
 
     public enum IconFlags {
@@ -127,6 +127,18 @@ public class GOF.File : GLib.Object {
     public static GOF.File? get_by_commandline_arg (string arg) {
         var location = GLib.File.new_for_commandline_arg (arg);
         return GOF.File.get (location);
+    }
+
+    public static GOF.File get_null () {
+        var location = GLib.File.new_for_path ("");
+        var file = GOF.File.get (location);
+        file.is_null = true;
+        file.basename = "";
+        file.format_size = "";
+        file.formated_modified = "";
+        file.formated_type = "";
+
+        return file;
     }
 
     public static File cache_lookup (GLib.File file) {

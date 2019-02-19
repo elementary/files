@@ -36,7 +36,7 @@ public interface FM.DirectoryViewInterface : Object {
     public abstract ColumnID sort_file_property { get; set; }
     public abstract bool reversed { get; set; }
 
-    public abstract bool add_file (GOF.File file, GOF.Directory.Async dir);
+    public abstract bool add_file (GOF.File file, GOF.Directory.Async? dir = null);
     public abstract bool remove_file (GOF.File file, GOF.Directory.Async? dir = null);
     public abstract bool remove_files (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null);
     public abstract Gtk.TreeRowReference? find_file_row (GOF.File file, GOF.Directory.Async? dir = null);
@@ -51,7 +51,7 @@ public interface FM.DirectoryViewInterface : Object {
     public abstract void set_order (FM.ColumnID sort_file_property, bool? reversed = null);
 }
 
-public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface {
+public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface, WidgetGrid.Model<GOF.File> {
     public GOF.Directory.Async? root_dir { get; set; }
     public bool has_child { get; set; default = false; }
     public int icon_size { get; set; default = 32; }
@@ -59,6 +59,7 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface {
     public bool reversed { get; set; }
     public bool sort_directories_first { get; set; default = true;}
     private bool unsorted = false;
+    private int n_first_level_rows = 0; /* Number of first level rows */
 
     private GLib.HashTable<string, Gtk.TreeRowReference> loaded_subdirectories;
 
@@ -70,6 +71,20 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface {
 
         sort_file_property = ColumnID.FILENAME;
         set_sort_func (ColumnID.FILE_COLUMN, directory_view_sort_func);
+
+        row_inserted.connect ((path) => {
+            if (path.get_depth () == 0) {
+                n_first_level_rows++;
+                n_items_changed (1);  /* WidgetGrid.Model interface */
+            }
+        });
+
+        row_deleted.connect ((path) => {
+            if (path.get_depth () == 0) {
+                n_first_level_rows--;
+                n_items_changed (-1); /* WidgetGrid.Model interface */
+            }
+        });
     }
 
     private int directory_view_sort_func (Gtk.TreeModel model, Gtk.TreeIter iter_a, Gtk.TreeIter iter_b) {
@@ -167,7 +182,7 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface {
         return true;
     }
 
-    public bool add_file (GOF.File file, GOF.Directory.Async dir) {
+    public bool add_file (GOF.File file, GOF.Directory.Async? dir = null) {
         Gtk.TreeIter? iter = null;
         Gtk.TreeIter? parent_iter = null;
         Gtk.TreeIter? blank_iter = null;
@@ -320,6 +335,58 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface {
         Gtk.TreeIter? iter = null;
         append (out iter, parent_iter);
         @set (iter, ColumnID.FILE_COLUMN, null, -1);
-        row_inserted (get_path (iter), iter);
+    }
+
+    /** Implement WidgetGrid.Model<GOF.File> interface **/
+    /** This interface is for a flat store (i.e. no subdirectories) **/
+    public bool add (GOF.File data) {
+        return add_file (data);
+    }
+
+    public bool remove_index (int index) {
+        var path = new Gtk.TreePath.from_indices (index);
+        Gtk.TreeIter? iter;
+        get_iter (out iter, path);
+        return remove (ref iter);
+    }
+
+    public bool remove_data (GOF.File data) {
+        return remove_file (data);
+    }
+
+    public GOF.File lookup_index (int index) {
+        var path = new Gtk.TreePath.from_indices (index);
+        Gtk.TreeIter? iter;
+        GOF.File? file;
+
+        get_iter (out iter, path);
+        @get (iter, FM.ColumnID.FILE_COLUMN, out file);
+
+        if (file == null) {
+            file = GOF.File.get_null ();
+        }
+
+        return file;
+    }
+
+    public int lookup_data (GOF.File data) {
+        var row_ref = find_file_row (data);
+        var path = row_ref.get_path ();
+        return path.get_indices ()[0];
+    }
+
+    public bool sort (CompareDataFunc func) {
+        set_sort_func (FM.ColumnID.FILE_COLUMN,  ((model, iter_a, iter_b) => {
+        GOF.File file_a, file_b;
+            model.@get (iter_a, ColumnID.FILE_COLUMN, out file_a);
+            model.@get (iter_b, ColumnID.FILE_COLUMN, out file_b);
+            return func (file_a, file_b);
+        }));
+
+        return true;
+    }
+
+    public int get_n_items () {
+        return n_first_level_rows;
     }
 }

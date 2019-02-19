@@ -134,5 +134,19 @@ public interface SelectionHandler : Object, PositionHandler {
             widget_pool[i].set_state_flags (Gtk.StateFlags.NORMAL, true);
         }
     }
+
+    protected virtual void select_all_data () {
+        /* Slow for large numbers? Maybe use flag and select on the fly */
+        selected_data.clear ();
+        for (int i = 0; i < model.get_n_items (); i++) {
+            var data = model.lookup_index (i);
+            data.is_selected = true;
+            selected_data.add (data);
+        }
+
+        for (int i = 0; i < widget_pool.size; i++) {
+            widget_pool[i].set_state_flags (Gtk.StateFlags.SELECTED, true);
+        }
+    }
 }
 }

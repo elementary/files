@@ -8,6 +8,7 @@ pantheon_files_core_deps = [
     pango_dep,
     sqlite3_dep,
     libcanberra_dep,
+    widgetgrid_dep
 ]
 
 pantheon_files_core_vala_files = files(
