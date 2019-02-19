@@ -3563,25 +3563,6 @@ namespace FM {
             unselect_all ();
         }
 
-        protected void invert_selection () {
-            GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
-
-            foreach (Gtk.TreePath p in get_selected_paths ()) {
-                selected_row_refs.prepend (new Gtk.TreeRowReference (model, p));
-            }
-
-            select_all ();
-
-            if (selected_row_refs != null) {
-                foreach (Gtk.TreeRowReference r in selected_row_refs) {
-                    var p = r.get_path ();
-                    if (p != null) {
-                        unselect_path (p);
-                    }
-                }
-            }
-        }
-
         public void select_all () {
             tree_select_all ();
             update_selected_files_and_menu ();
@@ -3621,6 +3602,25 @@ namespace FM {
                 return false;
             } else {
                 return true;
+            }
+        }
+
+        protected virtual void invert_selection () {
+            GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
+
+            foreach (Gtk.TreePath p in get_selected_paths ()) {
+                selected_row_refs.prepend (new Gtk.TreeRowReference (model, p));
+            }
+
+            select_all ();
+
+            if (selected_row_refs != null) {
+                foreach (Gtk.TreeRowReference r in selected_row_refs) {
+                    var p = r.get_path ();
+                    if (p != null) {
+                        unselect_path (p);
+                    }
+                }
             }
         }
 

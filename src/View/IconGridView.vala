@@ -18,7 +18,7 @@
 
 namespace FM {
     /* Gtk.IconView functions used in Grid view mode needing to be emulated using libwidgetgrid (prior to possible refactoring) */
-    public interface GtkIconViewInterface : Widget {
+    public interface GtkIconViewInterface : Gtk.Widget {
         public abstract void set_item_width (int item_width);
         public abstract void set_row_spacing (int row_spacing);
         public abstract void set_column_spacing (int column_spacing);
@@ -33,11 +33,110 @@ namespace FM {
         public abstract void scroll_to_path (Gtk.TreePath path, bool use_align, float xalign, float yalign);
         public abstract void set_cursor (Gtk.TreePath path, Gtk.CellRenderer? cell, bool start_editing);
         public abstract bool get_cursor (out Gtk.TreePath path, out unowned Gtk.CellRenderer cell);
-        public abstract bool valid_path (Gtk.TreePath path);
-        public abstract int get_n_columns ();
     }
 
     public class IconGridView : WidgetGrid.View, GtkIconViewInterface {
+        public IconGridView (WidgetGrid.AbstractItemFactory _factory, WidgetGrid.Model<WidgetGrid.WidgetData>? _model = null) {
+            base (_factory, _model);
+        }
+
+        public void set_item_width (int _item_width) {
+            this.item_width = _item_width;
+        }
+
+        public void set_row_spacing (int row_spacing) {
+            this.vpadding = row_spacing / 2;
+        }
+
+        public void set_column_spacing (int col_spacing) {
+            this.hpadding = col_spacing / 2;
+        }
+
+        public GLib.List<Gtk.TreePath> get_selected_items () {
+            var selected_data_indices = this.layout_handler.get_selected_indices ();
+            var selected = new GLib.List<Gtk.TreePath> ();
+            foreach (int i in selected_data_indices) {
+                selected.prepend (new Gtk.TreePath.from_indices (i));
+            }
+
+            selected.reverse ();
+
+            return selected;
+        }
+
+        public void set_drag_dest_item (Gtk.TreePath? path, Gtk.IconViewDropPosition pos) {
+            /* TODO */
+        }
+
+        public Gtk.TreePath? get_path_at_pos (int x, int y) {
+            int row = 0;
+            int col = 0;
+
+            layout_handler.get_row_col_at_pos (x, y, out row, out col);
+
+            var index = row * layout_handler.cols + col;
+
+            return new Gtk.TreePath.from_indices (index);
+        }
+
+        public void select_path (Gtk.TreePath path) {
+            var index = path.get_indices ()[0];
+            var data = model.lookup_index (index);
+            data.is_selected = true;
+        }
+
+        public void unselect_path (Gtk.TreePath path) {
+            var index = path.get_indices ()[0];
+            var data = model.lookup_index (index);
+            data.is_selected = false;
+        }
+
+        public bool path_is_selected (Gtk.TreePath path) {
+            var index = path.get_indices ()[0];
+            var data = model.lookup_index (index);
+            return data.is_selected;
+        }
+
+        public bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path) {
+            int first = 0;
+            int last = 0;
+
+            bool valid_paths = get_visible_range_indices (out first, out last);
+
+            start_path = new Gtk.TreePath.from_indices (first);
+            end_path = new Gtk.TreePath.from_indices (last);
+
+            return valid_paths;
+        }
+
+        public uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
+            var selected_data = get_selected ();
+
+            uint count = 0;
+            foreach (WidgetGrid.WidgetData data in selected_data) {
+                selected_files.prepend ((GOF.File)data);
+                count++;
+            }
+
+            return count;
+        }
+
+        public void scroll_to_path (Gtk.TreePath path, bool use_align, float xalign, float yalign) {
+            var index = path.get_indices ()[0];
+            layout_handler.show_data_index (index, use_align, yalign);
+        }
+
+        public void set_cursor (Gtk.TreePath path, Gtk.CellRenderer? cell, bool start_editing) {
+            /* TODO */
+        }
+
+        public bool get_cursor (out Gtk.TreePath path, out weak Gtk.CellRenderer cell) {
+            /* TODO */
+            return false;
+        }
+
+//        public bool valid_path (Gtk.TreePath path);
+//        public int get_n_columns ();
 
     }
 }

@@ -29,6 +29,9 @@
 namespace WidgetGrid {
 
 public interface ViewInterface : Gtk.Widget {
+    public abstract Model<WidgetData>model {get; set construct; }
+//    public abstract LayoutHandler layout {get; set construct; }
+
     public abstract int minimum_item_width { get; set; }
     public abstract int maximum_item_width { get; set; }
     public abstract int item_width_index { get; set; }
@@ -38,13 +41,15 @@ public interface ViewInterface : Gtk.Widget {
     public abstract int hpadding { get; set; }
     public abstract int vpadding { get; set; }
 
+    public abstract bool get_visible_range_indices (out int first, out int last);
+
     public signal void selection_changed ();
     public signal void item_clicked (Item item, Gdk.EventButton event);
     public signal void background_clicked (Gdk.EventButton event);
 
 }
 
-public class View : Gtk.Overlay : ViewInterface {
+public class View : Gtk.Overlay, ViewInterface {
     private static int total_items_added = 0; /* Used to ID data; only ever increases */
     private const int DEFAULT_HPADDING = 12;
     private const int DEFAULT_VPADDING = 24;
@@ -54,7 +59,6 @@ public class View : Gtk.Overlay : ViewInterface {
 
     private Gtk.Layout layout;
     private Gtk.EventBox event_box;
-    private LayoutHandler layout_handler;
 
     public int minimum_item_width { get; set; default = 16; }
     public int maximum_item_width { get; set; default = 512; }
@@ -79,6 +83,7 @@ public class View : Gtk.Overlay : ViewInterface {
 
     public Model<WidgetData>model {get; set construct; }
     public AbstractItemFactory factory { get; construct; }
+    public LayoutHandler layout_handler {get; set construct; }
 
     private int[] allowed_item_widths = {16, 24, 32, 48, 64, 96, 128, 256, 512};
     public int width_increment { get; set; default = 6; }
@@ -253,6 +258,13 @@ public class View : Gtk.Overlay : ViewInterface {
         }
 
         return false;
+    }
+
+    public bool get_visible_range_indices (out int first, out int last) {
+        first = layout_handler.first_displayed_data_index;
+        last = layout_handler.last_displayed_data_index;
+
+        return first >= 0 && last >= 0;
     }
 
     private double total_delta_y = 0.0;

@@ -127,7 +127,7 @@ namespace FM {
         }
 
         public override GLib.List<Gtk.TreePath> get_selected_paths () {
-            return tree.get_selected_items ();
+            return tree.get_selected_item_paths ();
         }
 
         public override void highlight_path (Gtk.TreePath? path) {
@@ -423,9 +423,9 @@ namespace FM {
                 return;
             }
 
-            var selected_paths = tree.get_selected_items ();
+            var selected_paths = tree.get_selected_item_paths ();
             /* Ensure the order of the selected files list matches the visible order */
-            selected_paths.sort (Gtk.TreePath.compare);
+//            selected_paths.sort (Gtk.TreePath.compare);
 
             var first_selected = selected_paths.first ().data;
             var last_selected = selected_paths.last ().data;
@@ -479,8 +479,8 @@ namespace FM {
 
             previous_selection_was_linear = true;
 
-            selected_paths = tree.get_selected_items ();
-            selected_paths.sort (Gtk.TreePath.compare);
+            selected_paths = tree.get_selected_item_paths ();
+//            selected_paths.sort (Gtk.TreePath.compare);
 
             first_selected = selected_paths.first ().data;
             last_selected = selected_paths.last ().data;

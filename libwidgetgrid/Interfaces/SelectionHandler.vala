@@ -125,7 +125,7 @@ public interface SelectionHandler : Object, PositionHandler {
         reset_selected_data ();
     }
 
-    protected virtual void reset_selected_data () {
+    public virtual void reset_selected_data () {
         for (int i = 0; i < model.get_n_items (); i++) {
             model.lookup_index (i).is_selected = false;
         }
@@ -135,7 +135,7 @@ public interface SelectionHandler : Object, PositionHandler {
         }
     }
 
-    protected virtual void select_all_data () {
+    public virtual void select_all_data () {
         /* Slow for large numbers? Maybe use flag and select on the fly */
         selected_data.clear ();
         for (int i = 0; i < model.get_n_items (); i++) {
@@ -147,6 +147,18 @@ public interface SelectionHandler : Object, PositionHandler {
         for (int i = 0; i < widget_pool.size; i++) {
             widget_pool[i].set_state_flags (Gtk.StateFlags.SELECTED, true);
         }
+    }
+
+    public virtual int[] get_selected_indices () {
+        var indices = new Gee.LinkedList<int> ();
+        for (int i = 0; i < model.get_n_items (); i++) {
+            var data = model.lookup_index (i);
+            if (data.is_selected) {
+                indices.add (i);
+            }
+        }
+
+        return indices.to_array ();
     }
 }
 }
