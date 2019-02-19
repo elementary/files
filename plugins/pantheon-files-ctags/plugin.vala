@@ -26,7 +26,6 @@ interface MarlinDaemon : Object {
 public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     /* May be used by more than one directory simultaneously so do not make assumptions */
     private MarlinDaemon daemon;
-    private bool is_user_dir;
     private bool ignore_dir;
 
     private Queue<GOF.File> unknowns;
@@ -119,7 +118,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             add_entry (gof, entries);
         }
 
-        if (entries != null) {
+        if (entries.length > 0) {
             debug ("--- known entries %d", entries.length);
             try {
                 yield daemon.record_uris (entries.data);
@@ -293,14 +292,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void set_color (GLib.List<GOF.File> files, int n) throws IOError {
-        GenericArray<Variant> entries = null;
-        GOF.File target_file = null;
-
+        var entries = new GenericArray<Variant> ();
         foreach (unowned GOF.File file in files) {
             if (!(file is GOF.File)) {
                 continue;
             }
 
+            GOF.File target_file;
             if (file.location.has_uri_scheme ("recent")) {
                 target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
             } else {
