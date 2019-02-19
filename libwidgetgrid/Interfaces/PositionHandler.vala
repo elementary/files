@@ -44,6 +44,10 @@ public interface PositionHandler : Object {
         row = 0;
         col = 0;
 
+        if (row_data.size < 1) {
+            return false;
+        }
+
         double cc = (double)(x - hpadding) / (double)column_width;
         double x_offset;
         if (cc > (double)(cols)) {
@@ -67,6 +71,7 @@ public interface PositionHandler : Object {
             index--;
         }
 
+warning ("rc at pos index %i, row_data size %i", index, row_data.size);
         var y_offset = y - row_data[index].y;
         if (y_offset < 0 || y_offset > row_data[index].height) {
             on_item = false;

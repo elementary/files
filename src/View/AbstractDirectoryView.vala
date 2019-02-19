@@ -33,7 +33,8 @@ namespace FM {
         INVALID
     }
 
-    public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
+//    public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
+    public abstract class AbstractDirectoryView : Gtk.Container {
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
@@ -329,6 +330,7 @@ namespace FM {
                 view.button_press_event.connect (on_view_button_press_event);
                 view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
+                view.scroll_event.connect (on_scroll_event);
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -346,9 +348,6 @@ namespace FM {
         }
 
         private void set_up_directory_view () {
-            set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
-            set_shadow_type (Gtk.ShadowType.NONE);
-
             popup_menu.connect (on_popup_menu);
 
             unrealize.connect (() => {
@@ -358,12 +357,6 @@ namespace FM {
             realize.connect (() => {
                 clipboard.changed.connect (on_clipboard_changed);
                 on_clipboard_changed ();
-            });
-
-            scroll_event.connect (on_scroll_event);
-
-            get_vadjustment ().value_changed.connect_after (() => {
-                schedule_thumbnail_timeout ();
             });
 
             var prefs = (GOF.Preferences.get_default ());
@@ -2382,7 +2375,7 @@ namespace FM {
 
 
 /** Thumbnail handling */
-        private void schedule_thumbnail_timeout () {
+        protected void schedule_thumbnail_timeout () {
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
              * all items have been added and we've perhaps scrolled to the file remembered
@@ -2545,30 +2538,10 @@ namespace FM {
                 window.get_device_position (pointer, out x, out y, null);
                 window.get_geometry (null, null, out w, out h);
 
-                scroll_if_near_edge (y, h, 20, get_vadjustment ());
-                scroll_if_near_edge (x, w, 20, get_hadjustment ());
+                scroll_if_near_edge (y, h, 20, Gtk.Orientation.VERTICAL);
+                scroll_if_near_edge (x, w, 20, Gtk.Orientation.HORIZONTAL);
                 return GLib.Source.CONTINUE;
             });
-        }
-
-        private void scroll_if_near_edge (int pos, int dim, int threshold, Gtk.Adjustment adj) {
-                /* check if we are near the edge */
-                int band = 2 * threshold;
-                int offset = pos - band;
-                if (offset > 0) {
-                    offset = int.max (band - (dim - pos), 0);
-                }
-
-                if (offset != 0) {
-                    /* change the adjustment appropriately */
-                    var val = adj.get_value ();
-                    var lower = adj.get_lower ();
-                    var upper = adj.get_upper ();
-                    var page = adj.get_page_size ();
-
-                    val = (val + 2 * offset).clamp (lower, upper - page);
-                    adj.set_value (val);
-                }
         }
 
         private void remove_marlin_icon_info_cache (GOF.File file) {
@@ -3589,6 +3562,10 @@ namespace FM {
         }
 
         protected virtual void set_drop_file (GOF.File? file) {
+
+        }
+
+        protected virtual void scroll_if_near_edge (int pos, int dim, int threshold, Gtk.Orientation orientation) {
 
         }
 

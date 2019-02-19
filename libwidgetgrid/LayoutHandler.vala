@@ -102,6 +102,8 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
     }
 
     public void show_data_index (int index, bool use_align, float yalign) { /* Only align rows */
+        return_if_fail (cols > 0);
+
         var row_containing_index = index / cols;
         var n_displayed_items_approx = last_displayed_data_index - first_displayed_data_index + 1;
         var n_rows_displayed_approx = n_displayed_items_approx / cols + 1;

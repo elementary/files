@@ -100,9 +100,7 @@ namespace FM {
         }
 
         public override Gtk.TreePath? get_path_at_pos (int win_x, int win_y) {
-            /* Supplied coords are drag coords - need IconView bin window coords */
-            /* Icon view does not scroll horizontally so no adjustment needed for x coord*/
-            return tree.get_path_at_pos (win_x, win_y + (int)(get_vadjustment ().get_value ()));
+            return tree.get_path_at_pos (win_x, win_y);
         }
 
         public override void tree_select_all () {

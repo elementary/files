@@ -22,12 +22,22 @@ namespace FM {
         protected Marlin.TextRenderer? name_renderer = null;
         protected Marlin.IconRenderer? icon_renderer = null;
 
+        protected Gtk.ScrolledWindow scrolled_window;
         protected FM.TreeView tree;
         protected Gtk.TreeViewColumn name_column;
 
         construct {
             icon_renderer = new Marlin.IconRenderer ();
             name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
+            scrolled_window = new Gtk.ScrolledWindow (null, null);
+            scrolled_window.set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
+            scrolled_window.set_shadow_type (Gtk.ShadowType.NONE);
+
+            scrolled_window.get_vadjustment ().value_changed.connect_after (() => {
+                schedule_thumbnail_timeout ();
+            });
+
+            add (scrolled_window);
         }
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
@@ -62,6 +72,21 @@ namespace FM {
             icon_renderer.set_property ("follow-state", true);
         }
 
+        protected override Gtk.Widget? create_view () {
+            tree = new FM.TreeView ();
+            tree.set_model (model);
+            tree.set_headers_visible (false);
+            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
+            tree.set_rubber_banding (true);
+
+            create_and_set_up_name_column ();
+            set_up_view ();
+
+            scrolled_window.add (tree);
+
+            return tree as Gtk.Widget;
+        }
+
         protected void set_up_view () {
             connect_tree_signals ();
             tree.realize.connect ((w) => {
@@ -88,19 +113,6 @@ namespace FM {
         }
         protected override void disconnect_tree_signals () {
             tree.get_selection ().changed.disconnect (on_view_selection_changed);
-        }
-
-        protected override Gtk.Widget? create_view () {
-            tree = new FM.TreeView ();
-            tree.set_model (model);
-            tree.set_headers_visible (false);
-            tree.get_selection ().set_mode (Gtk.SelectionMode.MULTIPLE);
-            tree.set_rubber_banding (true);
-
-            create_and_set_up_name_column ();
-            set_up_view ();
-
-            return tree as Gtk.Widget;
         }
 
         public override void change_zoom_level () {
@@ -370,7 +382,7 @@ namespace FM {
             name_renderer.editable = false;
         }
 
-        protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
+        protected override bool on_view_button_press_event (Gdk.EventButton event) {
             if (renaming) {
                 /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
                 name_renderer.end_editing (false);
@@ -395,6 +407,27 @@ namespace FM {
             bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
             on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
             return on_icon;
+        }
+
+        protected override void scroll_if_near_edge (int pos, int dim, int threshold, Gtk.Orientation orientation) {
+            Gtk.Adjustment adj = orientation == Gtk.Orientation.VERTICAL ? scrolled_window.get_vadjustment () : scrolled_window.get_hadjustment ();
+            /* check if we are near the edge */
+            int band = 2 * threshold;
+            int offset = pos - band;
+            if (offset > 0) {
+                offset = int.max (band - (dim - pos), 0);
+            }
+
+            if (offset != 0) {
+                /* change the adjustment appropriately */
+                var val = adj.get_value ();
+                var lower = adj.get_lower ();
+                var upper = adj.get_upper ();
+                var page = adj.get_page_size ();
+
+                val = (val + 2 * offset).clamp (lower, upper - page);
+                adj.set_value (val);
+            }
         }
     }
 
