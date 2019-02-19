@@ -49,10 +49,11 @@ namespace FM {
             tree.selection_changed.disconnect (on_view_selection_changed);
         }
 
-        protected override Gtk.Widget? create_view () {
+        protected override Gtk.Widget? create_and_add_view () {
             var factory = new IconGridItemFactory ();
             tree = new FM.IconGridView (factory, model);
             set_up_view ();
+            add (tree);
 
             return tree as Gtk.Widget;
         }
@@ -441,6 +442,15 @@ namespace FM {
         protected override bool is_on_icon (int x, int y, ref bool on_helper) {
             /* TODO */
             return false;
+        }
+
+        protected override void add_file (GOF.File file, GOF.Directory.Async dir) {
+            assert (file != null);
+            tree.add_data (file);
+
+            if (select_added_files) {
+                add_gof_file_to_selection (file);
+            }
         }
     }
 }

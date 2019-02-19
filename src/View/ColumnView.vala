@@ -80,9 +80,9 @@ namespace FM {
             return (Marlin.ZoomLevel)zoom;
         }
 
-        protected override Gtk.Widget? create_view () {
+        protected override Gtk.Widget? create_and_add_view () {
             model.set_property ("has-child", false);
-            base.create_view ();
+            base.create_and_add_view ();
             tree.show_expanders = false;
             return tree as Gtk.Widget;
         }

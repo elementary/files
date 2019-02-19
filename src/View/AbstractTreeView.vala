@@ -36,8 +36,6 @@ namespace FM {
             scrolled_window.get_vadjustment ().value_changed.connect_after (() => {
                 schedule_thumbnail_timeout ();
             });
-
-            add (scrolled_window);
         }
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
@@ -72,7 +70,7 @@ namespace FM {
             icon_renderer.set_property ("follow-state", true);
         }
 
-        protected override Gtk.Widget? create_view () {
+        protected override Gtk.Widget? create_and_add_view () {
             tree = new FM.TreeView ();
             tree.set_model (model);
             tree.set_headers_visible (false);
@@ -83,6 +81,7 @@ namespace FM {
             set_up_view ();
 
             scrolled_window.add (tree);
+            add (scrolled_window);
 
             return tree as Gtk.Widget;
         }
@@ -429,6 +428,16 @@ namespace FM {
                 adj.set_value (val);
             }
         }
+
+        protected override void add_file (GOF.File file, GOF.Directory.Async dir) {
+            assert (file != null);
+            model.add_file (file, dir);
+
+            if (select_added_files) {
+                add_gof_file_to_selection (file);
+            }
+        }
+
     }
 
     protected class TreeView : Gtk.TreeView {

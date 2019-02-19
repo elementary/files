@@ -224,10 +224,10 @@ namespace FM {
             return base.on_view_key_press_event (event);
         }
 
-        protected override Gtk.Widget? create_view () {
+        protected override Gtk.Widget? create_and_add_view () {
             model.set_property ("has-child", true);
             model.root_dir = slot.directory;
-            base.create_view ();
+            base.create_and_add_view ();
             tree.set_show_expanders (true);
             tree.set_headers_visible (true);
             tree.set_rubber_banding (true);

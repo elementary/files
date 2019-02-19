@@ -33,8 +33,7 @@ namespace FM {
         INVALID
     }
 
-//    public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
-    public abstract class AbstractDirectoryView : Gtk.Container {
+    public abstract class AbstractDirectoryView : Gtk.Bin {
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
@@ -200,10 +199,6 @@ namespace FM {
         private Gdk.Cursor selectable_cursor;
 
         private GLib.List<GLib.AppInfo> open_with_apps;
-
-        /*  Selected files are originally obtained with
-            gtk_tree_model_get(): this function increases the reference
-            count of the file object.*/
         protected GLib.List<GOF.File> selected_files = null;
         private bool selected_files_invalid = true;
 
@@ -314,10 +309,9 @@ namespace FM {
             set_up__menu_actions ();
             set_up_directory_view ();
             model = new FM.DirectoryModel ();
-            view = create_view ();
+            view = create_and_add_view ();
 
             if (view != null) {
-                add (view);
                 show_all ();
                 connect_drag_drop_signals (view);
                 view.add_events (Gdk.EventMask.POINTER_MOTION_MASK |
@@ -871,15 +865,6 @@ namespace FM {
             /* If in recent "folder" we need to refresh the view. */
             if (in_recent) {
                 slot.reload ();
-            }
-        }
-
-        private void add_file (GOF.File file, GOF.Directory.Async dir) {
-            assert (file != null);
-            model.add_file (file, dir);
-
-            if (select_added_files) {
-                add_gof_file_to_selection (file);
             }
         }
 
@@ -3569,6 +3554,8 @@ namespace FM {
 
         }
 
+        protected abstract void add_file (GOF.File file, GOF.Directory.Async dir);
+
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
          * invokes the default widget handler.  IconView requires special handler */
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
@@ -3590,7 +3577,7 @@ namespace FM {
                                          bool select,
                                          bool scroll_to_top);
 
-        protected abstract Gtk.Widget? create_view ();
+        protected abstract Gtk.Widget? create_and_add_view ();
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();
