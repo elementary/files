@@ -27,7 +27,7 @@ public interface PositionHandler : Object {
 
     public abstract int vpadding { get; set; }
     public abstract int hpadding { get; set; }
-    public abstract int cols { get; set; }
+    public abstract int cols { get; protected set; }
     public abstract int item_width { get; set; }
     public int column_width {
         get {
@@ -79,6 +79,28 @@ public interface PositionHandler : Object {
 
     public virtual WidgetData get_data_at_row_col (int row, int col) {
        return model.lookup_index (row_data[row].first_data_index + col);
+    }
+
+    public virtual int get_index_at_pos (Gdk.Point p) {
+        int row = 0;
+        int col = 0;
+
+        if (get_row_col_at_pos (p.x, p.y, out row, out col)) {
+            return row_data[row].first_data_index + col;
+        } else {
+            return -1;
+        }
+    }
+
+    public virtual WidgetData? get_data_at_pos (Gdk.Point p) {
+        int row = 0;
+        int col = 0;
+
+        if (get_row_col_at_pos (p.x, p.y, out row, out col)) {
+            return get_data_at_row_col (row, col);
+        } else {
+            return null;
+        }
     }
 
     public virtual Item get_item_at_row_col (int row, int col) {

@@ -32,13 +32,11 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
     private int previous_first_displayed_row_height = 0;
     private int n_widgets = 0;
 
+    private int total_rows = 0;
     private int first_displayed_widget_index = 0;
     private int highest_displayed_widget_index = 0;
     public int first_displayed_data_index { get; private set; default = 0; }
     public int last_displayed_data_index { get; private set; default = 0; }
-
-    private int total_rows = 0;
-    private int n_items = 0;
 
     public Gtk.Adjustment vadjustment { get; construct; }
     public AbstractItemFactory factory { get; construct; }
@@ -48,7 +46,9 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
     public int vpadding { get; set; }
     public int hpadding { get; set; }
     public int item_width { get; set; }
-    public int cols { get; set; }
+    public int cols { get; protected set; }
+    public int n_items { get; private set; default = 0; }
+
     public WidgetGrid.Model<WidgetData> model { get; construct; }
     public Gee.AbstractList<Item> widget_pool { get; construct; }
     public Gee.AbstractList<RowData> row_data { get; set; }
@@ -107,6 +107,8 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
         var n_rows_displayed_approx = n_displayed_items_approx / cols + 1;
         var rows_to_offset = (int)((double)n_rows_displayed_approx * (double)yalign);
         var first_row = row_containing_index - rows_to_offset;
+
+        vadjustment.set_value ((double)first_row);
     }
 
     protected void position_items (int first_displayed_row, double offset) {

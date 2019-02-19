@@ -29,10 +29,7 @@ namespace FM {
         public abstract void unselect_path (Gtk.TreePath path);
         public abstract bool path_is_selected (Gtk.TreePath path);
         public abstract bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path);
-        public abstract uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files);
         public abstract void scroll_to_path (Gtk.TreePath path, bool use_align, float xalign, float yalign);
-        public abstract void set_cursor (Gtk.TreePath path, Gtk.CellRenderer? cell, bool start_editing);
-        public abstract bool get_cursor (out Gtk.TreePath path, out unowned Gtk.CellRenderer cell);
     }
 
     public class IconGridView : WidgetGrid.View, GtkIconViewInterface {
@@ -109,7 +106,7 @@ namespace FM {
             return valid_paths;
         }
 
-        public uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
+        public uint get_selected_files_from_model (GLib.List<GOF.File> selected_files) {
             var selected_data = get_selected ();
 
             uint count = 0;
@@ -126,17 +123,14 @@ namespace FM {
             layout_handler.show_data_index (index, use_align, yalign);
         }
 
-        public void set_cursor (Gtk.TreePath path, Gtk.CellRenderer? cell, bool start_editing) {
+        public void set_cursor (Gtk.TreePath path, bool start_editing) {
             /* TODO */
         }
 
-        public bool get_cursor (out Gtk.TreePath path, out weak Gtk.CellRenderer cell) {
+        public bool get_cursor (out Gtk.TreePath path) {
             /* TODO */
+            path = null;
             return false;
         }
-
-//        public bool valid_path (Gtk.TreePath path);
-//        public int get_n_columns ();
-
     }
 }

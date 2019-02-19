@@ -19,8 +19,16 @@
 namespace FM {
     /* Implement common features of ColumnView and ListView */
     public abstract class AbstractTreeView : AbstractDirectoryView {
+        protected Marlin.TextRenderer? name_renderer = null;
+        protected Marlin.IconRenderer? icon_renderer = null;
+
         protected FM.TreeView tree;
         protected Gtk.TreeViewColumn name_column;
+
+        construct {
+            icon_renderer = new Marlin.IconRenderer ();
+            name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
+        }
 
         public AbstractTreeView (Marlin.View.Slot _slot) {
             assert (_slot != null);
@@ -36,7 +44,6 @@ namespace FM {
             name_column.set_expand (true);
             name_column.set_resizable (true);
 
-            name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.LIST);
             set_up_name_renderer ();
 
             set_up_icon_renderer ();
@@ -63,8 +70,11 @@ namespace FM {
             });
         }
 
-        protected override void set_up_name_renderer () {
-            base.set_up_name_renderer ();
+        protected void set_up_name_renderer () {
+            name_renderer.editable = false;
+            name_renderer.edited.connect (on_name_edited);
+            name_renderer.editing_canceled.connect (on_name_editing_canceled);
+            name_renderer.editing_started.connect (on_name_editing_started);
             name_renderer.@set ("wrap-width", -1);
             name_renderer.@set ("zoom-level", Marlin.ZoomLevel.NORMAL);
             name_renderer.@set ("ellipsize-set", true);
@@ -95,7 +105,9 @@ namespace FM {
 
         public override void change_zoom_level () {
             if (tree != null) {
-                base.change_zoom_level ();
+                icon_renderer.set_property ("zoom-level", zoom_level);
+                name_renderer.set_property ("zoom-level", zoom_level);
+                tree.style_updated ();
                 tree.columns_autosize ();
             }
         }
@@ -286,11 +298,13 @@ namespace FM {
         }
 
         protected override void set_cursor_on_cell (Gtk.TreePath path,
-                                                    Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top) {
             scroll_to_cell (path, scroll_to_top);
-            tree.set_cursor_on_cell (path, name_column, renderer, start_editing);
+            tree.set_cursor_on_cell (path, name_column, name_renderer, start_editing);
+            if (start_editing) {
+                name_renderer.editable = true;
+            }
         }
 
         public override void set_cursor (Gtk.TreePath? path,
@@ -310,7 +324,7 @@ namespace FM {
                 select_path (path);
             }
 
-            set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
+            set_cursor_on_cell (path, start_editing, scroll_to_top);
 
             if (!select) {
                 /* When just focusing first for empty selection we do not want the row selected.
@@ -349,6 +363,38 @@ namespace FM {
 
         protected override void thaw_child_notify () {
             tree.thaw_child_notify ();
+        }
+
+        protected override void on_name_editing_canceled () {
+            base.on_name_editing_canceled ();
+            name_renderer.editable = false;
+        }
+
+        protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
+            if (renaming) {
+                /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
+                name_renderer.end_editing (false);
+            }
+
+            return base.on_view_button_press_event (event);
+        }
+
+        protected override void on_drag_leave (Gdk.DragContext context, uint timestamp) {
+            /* reset the drop-file for the icon renderer */
+            icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
+            base.on_drag_leave (context, timestamp);
+        }
+
+        protected override void set_drop_file (GOF.File? file) {
+            icon_renderer.@set ("drop-file", file);
+        }
+
+        protected override bool is_on_icon (int x, int y, ref bool on_helper) {
+            /* x and y must be in same coordinate system as used by the IconRenderer */
+            Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
+            bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
+            on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
+            return on_icon;
         }
     }
 

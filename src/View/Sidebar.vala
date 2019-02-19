@@ -128,7 +128,7 @@ namespace Marlin.Places {
 
         public Sidebar (Marlin.View.Window window, bool local_only = false) {
             init (); /* creates the Gtk.TreeModel store. */
-            plugins.sidebar_loaded ((Gtk.Widget)this);
+//            plugins.sidebar_loaded ((Gtk.Widget)this);
             this.last_selected_uri = null;
             this.set_policy (Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC);
             this.window = window;
@@ -825,7 +825,7 @@ namespace Marlin.Places {
                                         new ThemedIcon.with_default_fallbacks ("network-server"),
                                         side_bar_connect_server);
 
-                plugins.update_sidebar ((Gtk.Widget)this);
+//                plugins.update_sidebar ((Gtk.Widget)this);
             }
 
             expander_init_pref_state (tree_view);

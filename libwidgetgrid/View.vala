@@ -30,7 +30,6 @@ namespace WidgetGrid {
 
 public interface ViewInterface : Gtk.Widget {
     public abstract Model<WidgetData>model {get; set construct; }
-//    public abstract LayoutHandler layout {get; set construct; }
 
     public abstract int minimum_item_width { get; set; }
     public abstract int maximum_item_width { get; set; }
@@ -121,10 +120,6 @@ public class View : Gtk.Overlay, ViewInterface {
 
     public int hpadding { get; set; }
     public int vpadding { get; set; }
-
-//    public signal void selection_changed ();
-//    public signal void item_clicked (Item item, Gdk.EventButton event);
-//    public signal void background_clicked (Gdk.EventButton event);
 
     construct {
         item_width_index = 3;
@@ -407,6 +402,40 @@ public class View : Gtk.Overlay, ViewInterface {
 
     public void unselect_all () {
         layout_handler.reset_selected_data ();
+    }
+
+    public Item? get_item_at_pos (Gdk.Point p) {
+        return layout_handler.get_item_at_pos (p);
+    }
+
+    public int get_index_at_pos (Gdk.Point p) {
+        return layout_handler.get_index_at_pos (p);
+    }
+
+    public WidgetData? get_data_at_pos (Gdk.Point p) {
+        return layout_handler.get_data_at_pos (p);
+    }
+
+    public int get_n_columns () {
+        return layout_handler.cols;
+    }
+
+    public int index_below (int index) {
+        index += layout_handler.cols;
+        if (index < 0 || index > layout_handler.n_items) {
+            return -1;
+        } else {
+            return index;
+        }
+    }
+
+    public int index_above (int index) {
+        index -= layout_handler.cols;
+        if (index < 0 || index > layout_handler.n_items) {
+            return -1;
+        } else {
+            return index;
+        }
     }
 }
 }

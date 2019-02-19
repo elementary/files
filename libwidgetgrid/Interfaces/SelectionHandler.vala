@@ -149,6 +149,7 @@ public interface SelectionHandler : Object, PositionHandler {
         }
     }
 
+    /* Not efficient - try to avoid - use selected_data if possible */
     public virtual int[] get_selected_indices () {
         var indices = new Gee.LinkedList<int> ();
         for (int i = 0; i < model.get_n_items (); i++) {

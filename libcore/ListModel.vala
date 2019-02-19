@@ -24,7 +24,6 @@
  *      Traversing model to find/remove file sets will be fast enough for general use
  * If these assumptions prove false, then will have to add mechanisms for mapping files to rows and detecting duplicates
  */
-//namespace FM {
 public interface FM.DirectoryViewInterface : Object {
     public signal void subdirectory_unloaded (GOF.Directory.Async dir);
     public signal void sort_order_changed (FM.ColumnID new_sort_property, bool reversed, FM.ColumnID old_sort_property);

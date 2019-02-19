@@ -23,18 +23,17 @@
 */
 
 namespace FM {
+    public enum ClickZone {
+        EXPANDER,
+        HELPER,
+        ICON,
+        NAME,
+        BLANK_PATH,
+        BLANK_NO_PATH,
+        INVALID
+    }
+
     public abstract class AbstractDirectoryView : Gtk.ScrolledWindow {
-
-        protected enum ClickZone {
-            EXPANDER,
-            HELPER,
-            ICON,
-            NAME,
-            BLANK_PATH,
-            BLANK_NO_PATH,
-            INVALID
-        }
-
         const int MAX_TEMPLATES = 32;
 
         const Gtk.TargetEntry [] drag_targets = {
@@ -174,7 +173,6 @@ namespace FM {
         bool signal_free_space_change = false;
 
         /* Rename support */
-        protected Marlin.TextRenderer? name_renderer = null;
         public string original_name = "";
         public string proposed_name = "";
 
@@ -269,7 +267,6 @@ namespace FM {
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
         protected FM.DirectoryModel model;
-        protected Marlin.IconRenderer icon_renderer;
         protected unowned Marlin.View.Slot slot;
         protected unowned Marlin.View.Window window; /*For convenience - this can be derived from slot */
         protected static Marlin.DndHandler dnd_handler = new Marlin.DndHandler ();
@@ -295,7 +292,6 @@ namespace FM {
             clipboard = app.get_clipboard_manager ();
             recent = app.get_recent_manager ();
 
-            icon_renderer = new Marlin.IconRenderer ();
             thumbnailer = Marlin.Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
                 if (req == thumbnail_request) {
@@ -347,13 +343,6 @@ namespace FM {
 
         public bool is_in_recent () {
             return in_recent;
-        }
-
-        protected virtual void set_up_name_renderer () {
-            name_renderer.editable = false;
-            name_renderer.edited.connect (on_name_edited);
-            name_renderer.editing_canceled.connect (on_name_editing_canceled);
-            name_renderer.editing_started.connect (on_name_editing_started);
         }
 
         private void set_up_directory_view () {
@@ -1209,8 +1198,8 @@ namespace FM {
                 return;
             }
 
-            var view = pointer as FM.AbstractDirectoryView;
-            if (view == null) {
+            var dir_view = pointer as FM.AbstractDirectoryView;
+            if (dir_view == null) {
                 warning ("view no longer valid after pasting files");
                 return;
             }
@@ -1228,7 +1217,7 @@ namespace FM {
                     }
                 });
 
-                view.select_glib_files_when_thawed (pasted_files_list, pasted_files_list.first ().data);
+                dir_view.select_glib_files_when_thawed (pasted_files_list, pasted_files_list.first ().data);
                 return GLib.Source.REMOVE;
             });
         }
@@ -1283,7 +1272,7 @@ namespace FM {
                 if ((slot.directory.is_local && !hide_local_thumbnails) || (show_remote_thumbnails && slot.directory.can_open_files)) {
                     thumbnailer.queue_file (file, null, large_thumbnails);
                     if (plugins != null) {
-                        plugins.update_file_info (file);
+//                        plugins.update_file_info (file);
                     }
                 }
             }
@@ -1308,7 +1297,7 @@ namespace FM {
             }
 
             if (plugins != null) {
-                plugins.update_file_info (file);
+//                plugins.update_file_info (file);
             }
 
             if (file.is_folder ()) {
@@ -1639,26 +1628,6 @@ namespace FM {
             }
         }
 
-        private void on_drag_leave (Gdk.DragContext context, uint timestamp) {
-            /* reset the drop-file for the icon renderer */
-            icon_renderer.set_property ("drop-file", GLib.Value (typeof (Object)));
-            /* stop any running drag autoscroll timer */
-            cancel_timeout (ref drag_scroll_timer_id);
-            cancel_timeout (ref drag_enter_timer_id);
-
-            /* disable the drop highlighting around the view */
-            if (drop_highlight) {
-                drop_highlight = false;
-                queue_draw ();
-            }
-
-            /* disable the highlighting of the items in the view */
-            highlight_path (null);
-
-            /* Prepare to receive another drop */
-            drop_data_ready = false;
-        }
-
 /** DnD helpers */
 
         private GOF.File? get_drop_target_file (int win_x, int win_y, out Gtk.TreePath? path_return) {
@@ -1708,7 +1677,7 @@ namespace FM {
                     file.is_folder () &&
                     file.is_writable ()) {
 
-                    icon_renderer.@set ("drop-file", file);
+                    set_drop_file (file);
                     highlight_path (path);
                     drop_data_ready = true;
                     result = true;
@@ -1781,10 +1750,9 @@ namespace FM {
                 queue_draw ();
             }
 
-            /* Set the icon_renderer drop-file if there is an action */
+            /* Set the drop-file if there is an action */
             drop_file = can_drop ? drop_file : null;
-            icon_renderer.set_property ("drop-file", drop_file);
-
+            set_drop_file (drop_file);
             highlight_path (can_drop ? path : null);
         }
 
@@ -1838,7 +1806,7 @@ namespace FM {
                 var menu = new Gtk.Menu.from_model (model);
 
                 if (!in_trash) {
-                    plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
+//                    plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
                 }
 
                 menu.set_screen (null);
@@ -2490,7 +2458,7 @@ namespace FM {
                             if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
                                 visible_files.prepend (file);
                                 if (plugins != null) {
-                                    plugins.update_file_info (file);
+//                                    plugins.update_file_info (file);
                                 }
 
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
@@ -3043,7 +3011,6 @@ namespace FM {
             return handle_scroll_event (event);
         }
 
-    /** name renderer signals */
         protected void on_name_editing_started (Gtk.CellEditable? editable, string path_string) {
             if (renaming) { /* Ignore duplicate editing-started signal*/
                 return;
@@ -3069,14 +3036,6 @@ namespace FM {
                 warning ("Editable widget is null");
                 on_name_editing_canceled ();
             }
-        }
-
-        protected void on_name_editing_canceled () {
-            renaming = false;
-            name_renderer.editable = false;
-            proposed_name = "";
-            is_frozen = false;
-            grab_focus ();
         }
 
         protected void on_name_edited (string path_string, string new_name) {
@@ -3191,11 +3150,6 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
-            if (renaming) {
-                /* Commit any change if renaming (https://github.com/elementary/files/issues/641) */
-                name_renderer.end_editing (false);
-            }
-
             cancel_hover (); /* cancel overlay statusbar cancellables */
 
             /* Ignore if second button pressed before first released - not permitted during rubberbanding.
@@ -3413,12 +3367,6 @@ namespace FM {
             return false;
         }
 
-        public virtual void change_zoom_level () {
-            icon_renderer.set_property ("zoom-level", zoom_level);
-            name_renderer.set_property ("zoom-level", zoom_level);
-            view.style_updated ();
-        }
-
         private void start_renaming_file (GOF.File file) {
             if (is_frozen) {
                 warning ("Trying to rename when frozen");
@@ -3439,7 +3387,7 @@ namespace FM {
             /* Scroll to row to be renamed and then start renaming after a delay
              * so that file to be renamed is on screen.  This avoids the renaming being
              * cancelled */
-            set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, false, false);
+            set_cursor_on_cell (path, false, false);
             GLib.Timeout.add (50, () => {
                 /* Wait until view stops scrolling before starting to rename (up to 1 second)
                  * Scrolling is deemed to have stopped when the starting visible path is stable
@@ -3459,8 +3407,7 @@ namespace FM {
                 }
 
                 /* set cursor_on_cell also triggers editing-started */
-                name_renderer.editable = true;
-                set_cursor_on_cell (path, name_renderer as Gtk.CellRenderer, true, false);
+                set_cursor_on_cell (path, true, false);
                 return GLib.Source.REMOVE;
             });
 
@@ -3578,14 +3525,6 @@ namespace FM {
             update_selected_files_and_menu ();
         }
 
-        protected bool is_on_icon (int x, int y, ref bool on_helper) {
-            /* x and y must be in same coordinate system as used by the IconRenderer */
-            Gdk.Rectangle pointer_rect = {x - 2, y - 2, 4, 4}; /* Allow slight inaccuracy */
-            bool on_icon = pointer_rect.intersect (icon_renderer.hover_rect, null);
-            on_helper = pointer_rect.intersect (icon_renderer.hover_helper_rect, null);
-            return on_icon;
-        }
-
 /** Virtual methods - may be overridden*/
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
@@ -3624,6 +3563,35 @@ namespace FM {
             }
         }
 
+        protected virtual void on_name_editing_canceled () {
+            renaming = false;
+            proposed_name = "";
+            is_frozen = false;
+            grab_focus ();
+        }
+
+        protected virtual void on_drag_leave (Gdk.DragContext context, uint timestamp) {
+            /* stop any running drag autoscroll timer */
+            cancel_timeout (ref drag_scroll_timer_id);
+            cancel_timeout (ref drag_enter_timer_id);
+
+            /* disable the drop highlighting around the view */
+            if (drop_highlight) {
+                drop_highlight = false;
+                queue_draw ();
+            }
+
+            /* disable the highlighting of the items in the view */
+            highlight_path (null);
+
+            /* Prepare to receive another drop */
+            drop_data_ready = false;
+        }
+
+        protected virtual void set_drop_file (GOF.File? file) {
+
+        }
+
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
          * invokes the default widget handler.  IconView requires special handler */
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
@@ -3657,7 +3625,6 @@ namespace FM {
         protected abstract void scroll_to_cell (Gtk.TreePath? path,
                                                 bool scroll_to_top);
         protected abstract void set_cursor_on_cell (Gtk.TreePath path,
-                                                    Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top);
         protected abstract void freeze_tree ();
@@ -3666,6 +3633,8 @@ namespace FM {
         protected new abstract void thaw_child_notify ();
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
+        public abstract void change_zoom_level ();
+        protected abstract bool is_on_icon (int x, int y, ref bool on_helper);
 
 /** Unimplemented methods
  *  fm_directory_view_parent_set ()  - purpose unclear

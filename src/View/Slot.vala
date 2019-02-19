@@ -287,7 +287,7 @@ namespace Marlin.View {
                     break;
 
                 case Marlin.ViewMode.ICON:
-                    dir_view = new FM.IconView (this);
+                    dir_view = new FM.GridDirectoryView (this);
                     break;
 
                 default:

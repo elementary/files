@@ -25,7 +25,7 @@ namespace FM {
         protected int previous_linear_selection_direction = 0;
         protected bool linear_select_required = false;
 
-        public IconGridView (Marlin.View.Slot _slot) {
+        public GridDirectoryView (Marlin.View.Slot _slot) {
             assert (_slot != null);
             base (_slot);
         }
@@ -35,41 +35,11 @@ namespace FM {
         }
 
         private void set_up_view () {
-//            tree.set_model (model);
-//            tree.set_selection_mode (Gtk.SelectionMode.MULTIPLE);
-//            tree.set_columns (-1);
-//            tree.set_reorderable (false);
-
-//            name_renderer = new Marlin.TextRenderer (Marlin.ViewMode.ICON);
-//            set_up_name_renderer ();
-
-//            set_up_icon_renderer ();
-
-//            (tree as Gtk.CellLayout).pack_start (icon_renderer, false);
-//            (tree as Gtk.CellLayout).pack_end (name_renderer, false);
-
-//            (tree as Gtk.CellLayout).add_attribute (name_renderer, "text", FM.ColumnID.FILENAME);
-//            (tree as Gtk.CellLayout).add_attribute (name_renderer, "file", FM.ColumnID.FILE_COLUMN);
-//            (tree as Gtk.CellLayout).add_attribute (name_renderer, "background", FM.ColumnID.COLOR);
-//            (tree as Gtk.CellLayout).add_attribute (icon_renderer, "file", FM.ColumnID.FILE_COLUMN);
-
             connect_tree_signals ();
             tree.realize.connect ((w) => {
                 tree.grab_focus ();
             });
         }
-
-//        protected override void set_up_name_renderer () {
-//            base.set_up_name_renderer ();
-//            name_renderer.wrap_mode = Pango.WrapMode.WORD_CHAR;
-//            name_renderer.xalign = 0.5f;
-//            name_renderer.yalign = 0.0f;
-//        }
-
-//        protected void set_up_icon_renderer () {
-//            icon_renderer.set_property ("follow-state", true);
-//        }
-
 
         protected override void connect_tree_signals () {
             tree.selection_changed.connect (on_view_selection_changed);
@@ -80,7 +50,6 @@ namespace FM {
         }
 
         protected override Gtk.Widget? create_view () {
-//            tree = new Gtk.IconView ();
             var factory = new IconGridItemFactory ();
             tree = new FM.IconGridView (factory, model);
             set_up_view ();
@@ -120,14 +89,10 @@ namespace FM {
                 tree.set_column_spacing (spacing);
                 tree.set_item_width (item_width);
             }
-
-//            name_renderer.item_width = item_width;
-
-            base.change_zoom_level (); /* Sets name_renderer zoom_level */
         }
 
         public override GLib.List<Gtk.TreePath> get_selected_paths () {
-            return tree.get_selected_item_paths ();
+            return tree.get_selected_items ();
         }
 
         public override void highlight_path (Gtk.TreePath? path) {
@@ -150,7 +115,7 @@ namespace FM {
 
         public override void tree_unselect_others () {
             Gtk.TreePath path = null;
-            tree.get_cursor (out path, null);
+            tree.get_cursor (out path);
             tree.unselect_all ();
             select_path (path, true);
         }
@@ -163,7 +128,7 @@ namespace FM {
                 tree.select_path (path); /* This selects path but does not unselect the rest (unlike TreeView) */
 
                 if (cursor_follows) {
-                    tree.set_cursor (path, null, false);
+                    tree.set_cursor (path, false);
                 }
             }
         }
@@ -189,20 +154,11 @@ namespace FM {
         }
 
         protected override uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
-            GLib.List<GOF.File> list = null;
-            uint count = 0;
-
-            tree.selected_foreach ((tree, path) => {
-                GOF.File? file = model.file_for_path (path);
-                if (file != null) {
-                    list.prepend ((owned)file);
-                    count++;
-                } else {
-                    critical ("Null file in model");
-                }
-            });
+            var list = new GLib.List<GOF.File> ();
+            uint count = tree.get_selected_files_from_model (list);
 
             selected_files = (owned)list;
+
             return count;
         }
 
@@ -213,72 +169,23 @@ namespace FM {
         protected override uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
-            Gtk.TreePath? p = null;
-            Gtk.CellRenderer? r;
-            uint zone;
-            int x, y;
+
             path = null;
-
-            x = (int)event.x;
-            y = (int)event.y;
-
-            tree.get_item_at_pos (x, y, out p, out r);
-            path = p;
-            zone = (p != null ? ClickZone.BLANK_PATH : ClickZone.BLANK_NO_PATH);
-
-            if (r != null) {
-                Gdk.Rectangle rect, area;
-                tree.get_cell_rect (p, r, out rect);
-                area = r.get_aligned_area (tree, Gtk.CellRendererState.PRELIT, rect);
-
-                if (r is Marlin.TextRenderer) {
-                    /* rectangles are in bin window coordinates - need to adjust event y coordinate
-                     * for vertical scrolling in order to accurately detect which area of TextRenderer was
-                     * clicked on */
-                    y -= (int)(get_vadjustment ().value);
-                    Gtk.TreeIter iter;
-                    model.get_iter (out iter, path);
-                    string? text = null;
-                    model.@get (iter,
-                            FM.ColumnID.FILENAME, out text);
-
-                    (r as Marlin.TextRenderer).set_up_layout (text, area.width);
-
-                    if (x >= rect.x &&
-                        x <= rect.x + rect.width &&
-                        y >= rect.y &&
-                        y <= rect.y + (r as Marlin.TextRenderer).text_height) {
-
-                        zone = ClickZone.NAME;
-                    } else if (rubberband) {
-                        /* Fake location outside centre bottom of item for rubberbanding */
-                        event.x = rect.x + rect.width / 2;
-                        event.y = rect.y + rect.height + 10 + (int)(get_vadjustment ().value);
-                        zone = ClickZone.BLANK_NO_PATH;
-                    }
-                } else {
-                    bool on_helper = false;
-                    GOF.File? file = model.file_for_path (p);
-                    if (file != null) {
-                        bool on_icon = is_on_icon (x, y, ref on_helper);
-
-                        if (on_helper) {
-                            zone = ClickZone.HELPER;
-                        } else if (on_icon) {
-                            zone = ClickZone.ICON;
-                        } else if (rubberband) {
-                            /* Fake location outside centre top of item for rubberbanding */
-                            event.x = rect.x + rect.width / 2;
-                            event.y = rect.y - 10 + (int)(get_vadjustment ().value);
-                            zone = ClickZone.BLANK_NO_PATH;
-                        }
-                    } else {
-                        zone = ClickZone.INVALID;
-                    }
-                }
+            var p = Gdk.Point () {x = (int)event.x, y = (int)event.y};
+            var item = tree.get_item_at_pos (p);
+            if (item == null || item.data == null) {
+                return FM.ClickZone.BLANK_NO_PATH;
             }
 
-            return zone;
+            path = new Gtk.TreePath.from_indices (tree.get_index_at_pos (p));
+
+            int x = 0;
+            int y = 0;
+            item.get_window ().get_position (out x, out y);
+            var widget_pos = Gdk.Point () {x = p.x - x, y = p.y - y};
+            var griditem = (IconGridItem)item;
+
+            return griditem.get_zone (widget_pos);
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
@@ -291,11 +198,10 @@ namespace FM {
         }
 
         protected override void set_cursor_on_cell (Gtk.TreePath path,
-                                                    Gtk.CellRenderer renderer,
                                                     bool start_editing,
                                                     bool scroll_to_top) {
             scroll_to_cell (path, scroll_to_top);
-            tree.set_cursor (path, renderer, start_editing);
+            tree.set_cursor (path, start_editing);
         }
 
         protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed,
@@ -370,7 +276,7 @@ namespace FM {
                 select_path (path);
             }
 
-            set_cursor_on_cell (path, name_renderer, start_editing, scroll_to_top);
+            set_cursor_on_cell (path, start_editing, scroll_to_top);
 
             if (!select) {
                 tree.selection_changed.connect (on_view_selection_changed);
@@ -379,7 +285,7 @@ namespace FM {
 
         public override Gtk.TreePath? get_path_at_cursor () {
             Gtk.TreePath? path;
-            tree.get_cursor (out path, null);
+            tree.get_cursor (out path);
             return path;
         }
 
@@ -388,12 +294,10 @@ namespace FM {
         protected override void freeze_tree () {
             tree_frozen = true;
             tree.freeze_child_notify ();
-//            tree.set_model (null);
         }
 
         protected override void thaw_tree () {
             if (tree_frozen) {
-//                tree.set_model (model);
                 tree.thaw_child_notify ();
                 tree_frozen = false;
             }
@@ -423,10 +327,8 @@ namespace FM {
                 return;
             }
 
-            var selected_paths = tree.get_selected_item_paths ();
+            var selected_paths = tree.get_selected_items ();
             /* Ensure the order of the selected files list matches the visible order */
-//            selected_paths.sort (Gtk.TreePath.compare);
-
             var first_selected = selected_paths.first ().data;
             var last_selected = selected_paths.last ().data;
             bool before_first = path.compare (first_selected) <= 0;
@@ -479,8 +381,7 @@ namespace FM {
 
             previous_selection_was_linear = true;
 
-            selected_paths = tree.get_selected_item_paths ();
-//            selected_paths.sort (Gtk.TreePath.compare);
+            selected_paths = tree.get_selected_items ();
 
             first_selected = selected_paths.first ().data;
             last_selected = selected_paths.last ().data;
@@ -496,53 +397,52 @@ namespace FM {
 
             previous_linear_selection_path = path.copy ();
             /* Ensure cursor in correct place, regardless of any selections made in this function */
-            tree.set_cursor (path, null, false);
+            tree.set_cursor (path, false);
             tree.scroll_to_path (path, false, 0.5f, 0.5f);
         }
 
         protected override Gtk.TreePath up (Gtk.TreePath path) {
-            int item_row = tree.get_item_row (path);
-            if (item_row == 0) {
-                return path;
-            }
-            int cols = get_n_cols ();
-            int index = path.get_indices ()[0];
-            Gtk.TreePath new_path;
-            Gtk.TreeIter? iter = null;
-            new_path = new Gtk.TreePath.from_indices (index - cols, -1);
-            if (tree.model.get_iter (out iter, new_path)) {
-                return new_path;
+            var index = path.get_indices ()[0];
+            var index_above = tree.index_above (index);
+
+            if (index_above >= 0) {
+                return new Gtk.TreePath.from_indices (index_above);
             } else {
                 return path;
             }
         }
 
         protected override Gtk.TreePath down (Gtk.TreePath path) {
-            int cols = get_n_cols ();
-            int index = path.get_indices ()[0];
+            var index = path.get_indices ()[0];
+            var index_below = tree.index_below (index);
 
-            Gtk.TreePath new_path;
-            Gtk.TreeIter? iter = null;
-            new_path = new Gtk.TreePath.from_indices (index + cols, -1);
-            if (tree.model.get_iter (out iter, new_path)) {
-                return new_path;
+            if (index_below >= 0) {
+                return new Gtk.TreePath.from_indices (index_below);
             } else {
                 return path;
             }
         }
 
-        /* When Icon View is automatically adjusting column number it does not expose the actual number of
-         * columns (get_columns () returns -1). So we have to write our own method. This is the only way
-         * (I can think of) that works on row 0.
-         */
-        private int get_n_cols () {
-            var path = new Gtk.TreePath.from_indices (0, -1);
-            int index = 0;
-            while (tree.get_item_row (path) == 0) {
-                index++;
-                path.next ();
+        /* Not efficient - try to avoid */
+        public override Gtk.TreePath? get_single_selection () {
+            Gtk.TreePath? result = null;
+            for (int i = 0; i < tree.model.get_n_items (); i++) {
+                var data = tree.model.lookup_index (i);
+                if (data.is_selected) {
+                    if (result == null) {
+                        result = new Gtk.TreePath.from_indices (i);
+                    } else {
+                        return null;
+                    }
+                }
             }
-            return index;
+
+            return result;
+        }
+
+        protected override bool is_on_icon (int x, int y, ref bool on_helper) {
+            /* TODO */
+            return false;
         }
     }
 }

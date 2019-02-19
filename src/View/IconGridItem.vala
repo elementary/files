@@ -28,36 +28,6 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     private static int _min_height;
     public static int min_height { get { return _min_height; } set { _min_height = value; } default = 16;}
 
-//    public abstract void get_preferred_height_for_width (int width, out int min_height, out int nat_height);
-//    public abstract void update_item (WidgetGrid.WidgetData? new_data = null);
-
-//    public virtual bool equal (WidgetGrid.Item b) {
-//        if (data != null && b.data != null) {
-//            return data.equal (b.data);
-//        } else {
-//            return false;
-//        }
-//    }
-
-//    public bool is_selected {
-//        get {
-//            return data != null ? data.is_selected : false;
-//        }
-
-//        set {
-//            if (data != null) {
-//                data.is_selected = value;
-//                update_item (data);
-//            }
-//        }
-//    }
-
-//    public int data_id {
-//        get {
-//            return data != null ? data.data_id : -1;
-//        }
-//    }
-
     static construct {
         WidgetGrid.Item.min_height = 16;
         WidgetGrid.Item.max_height = 256;
@@ -172,6 +142,11 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
         label.label = item_name;
         set_max_width_request = 0;
+    }
+
+    public ClickZone get_zone (Gdk.Point p) {
+        /* TODO */
+        return ClickZone.ICON;
     }
 }
 }
