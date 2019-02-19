@@ -21,8 +21,6 @@
 ***/
 namespace FM {
 public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
-//    public abstract bool set_max_width (int width);
-
     private static int _max_height;
     public static int max_height { get { return _max_height; } set { _max_height = value; } default = 256;}
     private static int _min_height;
@@ -90,7 +88,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
         button_press_event.connect (() => {
             warning ("button press %s", item_name);
-        return false;
+            return false;
         });
 
         show_all ();
@@ -134,10 +132,9 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         return true;
     }
 
-    public void update_item (WidgetGrid.WidgetData? data) {
-        assert (data is GOF.File);
-        data = (GOF.File)data;
-
+    public void update_item (WidgetGrid.WidgetData? _data) {
+        assert (_data is GOF.File);
+        data = _data;
         label.label = item_name;
         set_max_width_request = 0;
     }
