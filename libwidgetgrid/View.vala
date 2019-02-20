@@ -166,13 +166,14 @@ public class View : Gtk.Overlay, ViewInterface {
             } else {
                 return handle_zoom (event);
             }
+
+            return false;
         });
 
         event_box.key_press_event.connect (on_key_press_event);
 
         event_box.button_press_event.connect ((event) => {
-
-
+            layout.grab_focus ();
             var item = layout_handler.get_item_at_pos (get_corrected_event_position (event));
             var on_item = item != null;
 
@@ -186,10 +187,13 @@ public class View : Gtk.Overlay, ViewInterface {
             } else {
                 background_clicked (event);
             }
+
+            return false;
         });
 
         event_box.button_release_event.connect ((event) => {
             layout_handler.end_rubber_banding ();
+            return false;
         });
 
         delete_event.connect (() => {
@@ -429,6 +433,12 @@ public class View : Gtk.Overlay, ViewInterface {
             return -1;
         } else {
             return index;
+        }
+    }
+
+    public new bool has_focus {
+        get {
+            return layout.has_focus;
         }
     }
 }

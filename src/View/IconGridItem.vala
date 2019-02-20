@@ -141,6 +141,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
     public ClickZone get_zone (Gdk.Point p) {
         /* TODO */
+//warning ("Item get zone");
         return ClickZone.ICON;
     }
 }

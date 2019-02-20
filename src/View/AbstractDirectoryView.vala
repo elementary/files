@@ -3563,6 +3563,11 @@ namespace FM {
             }
         }
 
+        protected virtual void freeze_tree () {}
+        protected virtual void thaw_tree () {}
+        protected new virtual void freeze_child_notify () {}
+        protected new virtual void thaw_child_notify () {}
+
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
          * invokes the default widget handler.  IconView requires special handler */
         protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
@@ -3598,10 +3603,7 @@ namespace FM {
         protected abstract void set_cursor_on_cell (Gtk.TreePath path,
                                                     bool start_editing,
                                                     bool scroll_to_top);
-        protected abstract void freeze_tree ();
-        protected abstract void thaw_tree ();
-        protected new abstract void freeze_child_notify ();
-        protected new abstract void thaw_child_notify ();
+
         protected abstract void connect_tree_signals ();
         protected abstract void disconnect_tree_signals ();
         public abstract void change_zoom_level ();

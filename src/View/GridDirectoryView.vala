@@ -168,6 +168,7 @@ namespace FM {
         protected override uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
+//warning ("get event position info");
 
             path = null;
             var p = Gdk.Point () {x = (int)event.x, y = (int)event.y};
@@ -288,34 +289,7 @@ namespace FM {
             return path;
         }
 
-        /* These two functions accelerate the loading of Views especially for large folders
-         * Views are not displayed until fully loaded */
-        protected override void freeze_tree () {
-            tree_frozen = true;
-            tree.freeze_child_notify ();
-        }
-
-        protected override void thaw_tree () {
-            if (tree_frozen) {
-                tree.thaw_child_notify ();
-                tree_frozen = false;
-            }
-        }
-
-        protected override void freeze_child_notify () {
-            tree.freeze_child_notify ();
-        }
-
-        protected override void thaw_child_notify () {
-            tree.thaw_child_notify ();
-        }
-
         protected void linear_select_path (Gtk.TreePath path) {
-            /* We override the native Gtk.IconView behaviour when selecting files with Shift-Click */
-            /* We wish to emulate the behaviour of ListView and ColumnView. This depends on whether the */
-            /* the previous selection was made with the Shift key pressed */
-            /* Note: 'first' and 'last' refer to position in selection, not the time selected */
-
             if (path == null) {
                 critical ("Ignoring attempt to select null path in linear_select_path");
                 return;
