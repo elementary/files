@@ -81,8 +81,8 @@ public interface PositionHandler : Object {
         return on_item;
     }
 
-    public virtual WidgetData get_data_at_row_col (int row, int col) {
-       return model.lookup_index (row_data[row].first_data_index + col);
+    public virtual int get_index_at_row_col (int row, int col) {
+        return row_data[row].first_data_index + col;
     }
 
     public virtual int get_index_at_pos (Gdk.Point p) {
@@ -94,6 +94,10 @@ public interface PositionHandler : Object {
         } else {
             return -1;
         }
+    }
+
+    public virtual WidgetData get_data_at_row_col (int row, int col) {
+       return model.lookup_index (row_data[row].first_data_index + col);
     }
 
     public virtual WidgetData? get_data_at_pos (Gdk.Point p) {

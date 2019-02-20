@@ -32,7 +32,15 @@ public class WidgetData : Object {
     public uint64 data_id { get; construct; }
     public bool is_selected { get; set; default = false; }
     public virtual bool equal (WidgetData b) {return data_id == b.data_id;}
-    public virtual int compare (WidgetData b) {return 0;}
+    public virtual int compare (WidgetData b) {
+        if (data_id > b.data_id) {
+            return 1;
+        } else if (b.data_id > data_id) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
 
     construct {
         data_id = get_monotonic_time ();

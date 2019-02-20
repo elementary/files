@@ -141,8 +141,17 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
     public ClickZone get_zone (Gdk.Point p) {
         /* TODO */
-//warning ("Item get zone");
         return ClickZone.ICON;
+    }
+
+    public override bool draw (Cairo.Context cr) {
+        if (is_selected) {
+            set_state_flags (Gtk.StateFlags.SELECTED, false);
+        } else {
+            unset_state_flags (Gtk.StateFlags.SELECTED);
+        }
+
+        return base.draw (cr);
     }
 }
 }

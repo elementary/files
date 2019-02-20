@@ -29,7 +29,7 @@ public interface SelectionHandler : Object, PositionHandler {
     public abstract bool rubber_banding { get; set; default = false; }
     public abstract bool can_rubber_band { get; set; default = true; }
     public abstract bool deselect_before_rubber_band { get; set; default = true; }
-    public abstract Gee.TreeSet<WidgetData> selected_data { get; construct; }
+    public abstract Gee.TreeSet<WidgetData> selected_data { get; set; }
 
     public abstract Gtk.Widget get_widget ();
 
@@ -50,9 +50,9 @@ public interface SelectionHandler : Object, PositionHandler {
         }
     }
 
-    public virtual void do_rubber_banding (Gdk.EventMotion event) {
+    public virtual bool do_rubber_banding (Gdk.EventMotion event) {
         if (!rubber_banding) {
-            return;
+            return false;
         }
 
         var x = (int)(event.x);
@@ -62,8 +62,9 @@ public interface SelectionHandler : Object, PositionHandler {
         var new_height = y - frame.y;
 
         frame.update_size (new_width, new_height);
-        mark_selected_in_rectangle (get_framed_rectangle ());
+        var res = mark_selected_in_rectangle (get_framed_rectangle ());
         get_widget ().queue_draw ();
+        return res;
     }
 
     public virtual void end_rubber_banding () {
@@ -79,7 +80,7 @@ public interface SelectionHandler : Object, PositionHandler {
         return frame.get_rectangle ();
     }
 
-    protected virtual void mark_selected_in_rectangle (Gdk.Rectangle rect) {
+    protected virtual bool mark_selected_in_rectangle (Gdk.Rectangle rect) {
         int first_row, first_col;
         int previous_last_row = SelectionHandler.previous_last_rubberband_row;
         int previous_last_col = SelectionHandler.previous_last_rubberband_col;
@@ -91,25 +92,33 @@ public interface SelectionHandler : Object, PositionHandler {
         get_row_col_at_pos (rect.x + rect.width - hpadding, rect.y + rect.height - vpadding,
                             out last_row, out last_col);
 
+        bool res = false;
         for (int r = first_row; r <= int.max (last_row, previous_last_row); r++) {
             for (int c = first_col; c <= int.max (last_col, previous_last_col); c++) {
-                var data = get_data_at_row_col (r, c);
                 var to_select = (r <= last_row && c <= last_col);
-                if (data.is_selected != to_select) {
-                    var item = get_item_at_row_col (r, c);
-                    data.is_selected = to_select;
-                    item.update_item (data);
-                    if (to_select) {
-                        selected_data.add (data);
-                    } else {
-                        selected_data.remove (data);
-                    }
+                var index = get_index_at_row_col (r, c);
+                if (to_select) {
+                    res |= select_index (index);
+                } else {
+                    res |= unselect_index (index);
                 }
+//                if (data.is_selected != to_select) {
+//                    var item = get_item_at_row_col (r, c);
+//                    data.is_selected = to_select;
+//                    item.update_item (data);
+//                    if (to_select) {
+//                        selected_data.add (data);
+//                    } else {
+//                        selected_data.remove (data);
+//                    }
+//                }
             }
         }
 
         previous_last_rubberband_col = last_col;
         previous_last_rubberband_row = last_row;
+
+        return res;
     }
 
     public virtual bool draw_rubberband (Cairo.Context ctx) {
@@ -120,33 +129,29 @@ public interface SelectionHandler : Object, PositionHandler {
         return false;
     }
 
-    public virtual void clear_selection () {
+    public virtual bool clear_selection () {
         selected_data.clear ();
         reset_selected_data ();
+        return true;
     }
 
-    public virtual void reset_selected_data () {
+    protected virtual bool reset_selected_data () {
+        bool res = false;
         for (int i = 0; i < model.get_n_items (); i++) {
-            model.lookup_index (i).is_selected = false;
+            res |= unselect_index (i);
         }
 
-        for (int i = 0; i < widget_pool.size; i++) {
-            widget_pool[i].set_state_flags (Gtk.StateFlags.NORMAL, true);
-        }
+        return res;
     }
 
-    public virtual void select_all_data () {
+    public virtual bool select_all_data () {
         /* Slow for large numbers? Maybe use flag and select on the fly */
-        selected_data.clear ();
+        bool res = false;
         for (int i = 0; i < model.get_n_items (); i++) {
-            var data = model.lookup_index (i);
-            data.is_selected = true;
-            selected_data.add (data);
+            res |= select_index (i);
         }
 
-        for (int i = 0; i < widget_pool.size; i++) {
-            widget_pool[i].set_state_flags (Gtk.StateFlags.SELECTED, true);
-        }
+        return false;
     }
 
     /* Not efficient - try to avoid - use selected_data if possible */
@@ -160,6 +165,28 @@ public interface SelectionHandler : Object, PositionHandler {
         }
 
         return indices.to_array ();
+    }
+
+    public virtual bool select_index (int index) {
+        var data = model.lookup_index (index);
+        if (!data.is_selected) {
+            data.is_selected = true;
+            selected_data.add (data);
+            return true;
+        }
+
+        return false;
+    }
+
+    public virtual bool unselect_index (int index) {
+        var data = model.lookup_index (index);
+        if (data.is_selected) {
+            data.is_selected = false;
+            selected_data.remove (data);
+            return true;
+        }
+
+        return false;
     }
 }
 }

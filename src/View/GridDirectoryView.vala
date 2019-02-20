@@ -153,11 +153,11 @@ namespace FM {
         }
 
         protected override uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
+
             var list = new GLib.List<GOF.File> ();
-            uint count = tree.get_selected_files_from_model (list);
+            uint count = tree.get_selected_files_from_model (ref list);
 
             selected_files = (owned)list;
-
             return count;
         }
 
@@ -168,7 +168,6 @@ namespace FM {
         protected override uint get_event_position_info (Gdk.EventButton event,
                                                          out Gtk.TreePath? path,
                                                          bool rubberband = false) {
-//warning ("get event position info");
 
             path = null;
             var p = Gdk.Point () {x = (int)event.x, y = (int)event.y};

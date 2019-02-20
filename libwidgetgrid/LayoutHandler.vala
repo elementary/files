@@ -55,7 +55,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
 
     /* SelectionHandler interface properties */
     public SelectionFrame frame { get; construct; }
-    public Gee.TreeSet<WidgetData> selected_data { get; construct; }
+    public Gee.TreeSet<WidgetData> selected_data { get; set; }
     public bool rubber_banding { get; set; default = false; }
     public bool can_rubber_band { get; set; default = true; }
     public bool deselect_before_rubber_band { get; set; default = true; }

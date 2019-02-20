@@ -41,6 +41,8 @@ public interface ViewInterface : Gtk.Widget {
     public abstract int vpadding { get; set; }
 
     public abstract bool get_visible_range_indices (out int first, out int last);
+    public abstract void select_index (int index);
+    public abstract void unselect_index (int index);
 
     public signal void selection_changed ();
     public signal void item_clicked (Item item, Gdk.EventButton event);
@@ -203,7 +205,9 @@ public class View : Gtk.Overlay, ViewInterface {
 
         event_box.motion_notify_event.connect ((event) => {
             if ((event.state & Gdk.ModifierType.BUTTON1_MASK) > 0) {
-                layout_handler.do_rubber_banding (event);
+                if (layout_handler.do_rubber_banding (event)) {
+                    selection_changed ();
+                }
             }
 
             return false;
@@ -399,7 +403,7 @@ public class View : Gtk.Overlay, ViewInterface {
     }
 
     public void unselect_all () {
-        layout_handler.reset_selected_data ();
+        layout_handler.clear_selection ();
     }
 
     public Item? get_item_at_pos (Gdk.Point p) {
@@ -439,6 +443,20 @@ public class View : Gtk.Overlay, ViewInterface {
     public new bool has_focus {
         get {
             return layout.has_focus;
+        }
+    }
+
+    public void select_index (int index) {
+
+        if (layout_handler.select_index (index)) {
+            selection_changed ();
+        }
+    }
+
+    public void unselect_index (int index) {
+
+        if (layout_handler.unselect_index (index)) {
+            selection_changed ();
         }
     }
 }

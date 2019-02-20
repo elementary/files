@@ -78,8 +78,7 @@ namespace FM {
 
         public void select_path (Gtk.TreePath path) {
             var index = path.get_indices ()[0];
-            var data = model.lookup_index (index);
-            data.is_selected = true;
+            select_index (index);
         }
 
         public void unselect_path (Gtk.TreePath path) {
@@ -106,9 +105,8 @@ namespace FM {
             return valid_paths;
         }
 
-        public uint get_selected_files_from_model (GLib.List<GOF.File> selected_files) {
+        public uint get_selected_files_from_model (ref GLib.List<GOF.File> selected_files) {
             var selected_data = get_selected ();
-
             uint count = 0;
             foreach (WidgetGrid.WidgetData data in selected_data) {
                 selected_files.prepend ((GOF.File)data);
