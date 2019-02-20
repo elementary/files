@@ -139,9 +139,16 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         set_max_width_request = 0;
     }
 
+    /** The point supplied must be in *widget* coordinates **/
     public ClickZone get_zone (Gdk.Point p) {
-        /* TODO */
-        return ClickZone.ICON;
+        var p_rect = Gdk.Rectangle () {x = p.x, y = p.y, width = 1, height = 1};
+        if (image.intersect (p_rect, null)) {
+            return FM.ClickZone.ICON;
+        } else if (label.intersect (p_rect, null)) {
+            return FM.ClickZone.NAME;
+        } else {
+            return FM.ClickZone.BLANK_PATH;
+        }
     }
 
     public override bool draw (Cairo.Context cr) {

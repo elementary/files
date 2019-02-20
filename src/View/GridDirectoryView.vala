@@ -184,7 +184,8 @@ namespace FM {
             var widget_pos = Gdk.Point () {x = p.x - x, y = p.y - y};
             var griditem = (IconGridItem)item;
 
-            return griditem.get_zone (widget_pos);
+            var zone = griditem.get_zone (widget_pos);
+            return zone;
         }
 
         protected override void scroll_to_cell (Gtk.TreePath? path, bool scroll_to_top) {
