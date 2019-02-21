@@ -176,7 +176,8 @@ public class View : Gtk.Overlay, ViewInterface {
 
         event_box.button_press_event.connect ((event) => {
             layout.grab_focus ();
-            var item = layout_handler.get_item_at_pos (get_corrected_event_position (event));
+            Gdk.Point wp = {0, 0};
+            var item = layout_handler.get_item_at_pos (get_corrected_event_position (event), out wp);
             var on_item = item != null;
 
             if (event.button == Gdk.BUTTON_PRIMARY &&
@@ -341,9 +342,17 @@ public class View : Gtk.Overlay, ViewInterface {
     }
 
     private Gdk.Point get_corrected_event_position (Gdk.EventButton event) {
+        return get_corrected_position ((int)(event.x), (int)(event.y));
+    }
+
+    private Gdk.Point get_corrected_p (Gdk.Point p) {
+        return get_corrected_position (p.x, p.y);
+    }
+
+    private Gdk.Point get_corrected_position (int x, int y) {
         var point = Gdk.Point ();
-        point.x = (int)(event.x) - layout.margin_start;
-        point.y = (int)(event.y);
+        point.x = x - layout.margin_start;
+        point.y = y - layout.margin_top;
 
         return point;
     }
@@ -406,16 +415,39 @@ public class View : Gtk.Overlay, ViewInterface {
         layout_handler.clear_selection ();
     }
 
-    public Item? get_item_at_pos (Gdk.Point p) {
-        return layout_handler.get_item_at_pos (p);
+    public Item? get_item_at_coords (int x, int y, out Gdk.Point corrected_p) {
+        Gdk.Point wp = {0, 0};
+        Gdk.Point p = {x, y};
+        var item = layout_handler.get_item_at_pos (get_corrected_p (p), out wp);
+
+        corrected_p = wp;
+
+        return item;
+    }
+
+    public Item? get_item_at_pos (Gdk.Point p, out Gdk.Point corrected_p) {
+        Gdk.Point wp = {0, 0};
+        var item = layout_handler.get_item_at_pos (get_corrected_p (p), out wp);
+        corrected_p = wp;
+
+        return item;
     }
 
     public int get_index_at_pos (Gdk.Point p) {
-        return layout_handler.get_index_at_pos (p);
+        return layout_handler.get_index_at_pos (get_corrected_p (p));
+    }
+
+    public int get_index_at_coords (int x, int y) {
+        return get_index_at_pos ({x, y});
     }
 
     public WidgetData? get_data_at_pos (Gdk.Point p) {
-        return layout_handler.get_data_at_pos (p);
+        return layout_handler.get_data_at_pos (get_corrected_p (p));
+    }
+
+    public WidgetData? get_data_coords (int x, int y) {
+        Gdk.Point p = {x, y};
+        return get_data_at_pos (get_corrected_p (p));
     }
 
     public int get_n_columns () {

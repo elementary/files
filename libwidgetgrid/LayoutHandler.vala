@@ -47,7 +47,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
     public int hpadding { get; set; }
     public int item_width { get; set; }
     public int cols { get; protected set; }
-    public int n_items { get; private set; default = 0; }
+    public int n_items { get; protected set; default = 0; }
 
     public WidgetGrid.Model<WidgetData> model { get; construct; }
     public Gee.AbstractList<Item> widget_pool { get; construct; }

@@ -42,10 +42,12 @@ namespace FM {
         }
 
         public void set_row_spacing (int row_spacing) {
+            this.vpadding = 0;
             this.vpadding = row_spacing / 2;
         }
 
         public void set_column_spacing (int col_spacing) {
+            this.hpadding = 0;
             this.hpadding = col_spacing / 2;
         }
 
@@ -68,8 +70,9 @@ namespace FM {
         public Gtk.TreePath? get_path_at_pos (int x, int y) {
             int row = 0;
             int col = 0;
+            Gdk.Point wp = {0, 0};
 
-            layout_handler.get_row_col_at_pos (x, y, out row, out col);
+            layout_handler.get_row_col_at_pos (x, y, out row, out col, out wp);
 
             var index = row * layout_handler.cols + col;
 

@@ -24,6 +24,7 @@ public interface PositionHandler : Object {
     public abstract Gee.AbstractList<RowData> row_data { get; set; }
     public abstract Gee.AbstractList<Item> widget_pool { get; construct; }
     public abstract WidgetGrid.Model<WidgetData> model { get; construct; }
+    public abstract int n_items { get; protected set; default = 0; }
 
     public abstract int vpadding { get; set; }
     public abstract int hpadding { get; set; }
@@ -39,10 +40,13 @@ public interface PositionHandler : Object {
     protected abstract void update_item_with_data (Item item, WidgetData data);
     protected abstract int next_widget_index (int current_index);
 
-    public bool get_row_col_at_pos (int x, int y, out int row, out int col) {
+    public bool get_row_col_at_pos (int x, int y, out int row, out int col, out Gdk.Point widget_p) {
         bool on_item = true;
         row = 0;
         col = 0;
+        int wx = -1;
+        int wy = -1;
+        widget_p = {0, 0};
 
         if (row_data.size < 1) {
             return false;
@@ -59,6 +63,8 @@ public interface PositionHandler : Object {
 
         if (x_offset < 0 || x_offset > item_width) {
             on_item = false;
+        } else {
+            wx = (int)x_offset;
         }
 
         int index = 0;
@@ -74,10 +80,14 @@ public interface PositionHandler : Object {
         var y_offset = y - row_data[index].y;
         if (y_offset < 0 || y_offset > row_data[index].height) {
             on_item = false;
+        } else {
+            wy = (int)y_offset;
         }
 
         row = index;
         col = (int)cc;
+        widget_p = {wx, wy};
+
         return on_item;
     }
 
@@ -88,8 +98,9 @@ public interface PositionHandler : Object {
     public virtual int get_index_at_pos (Gdk.Point p) {
         int row = 0;
         int col = 0;
+        Gdk.Point wp = {0, 0};
 
-        if (get_row_col_at_pos (p.x, p.y, out row, out col)) {
+        if (get_row_col_at_pos (p.x, p.y, out row, out col, out wp)) {
             return row_data[row].first_data_index + col;
         } else {
             return -1;
@@ -103,26 +114,36 @@ public interface PositionHandler : Object {
     public virtual WidgetData? get_data_at_pos (Gdk.Point p) {
         int row = 0;
         int col = 0;
+        Gdk.Point wp = {0, 0};
 
-        if (get_row_col_at_pos (p.x, p.y, out row, out col)) {
+        if (get_row_col_at_pos (p.x, p.y, out row, out col, out wp)) {
             return get_data_at_row_col (row, col);
         } else {
             return null;
         }
     }
 
-    public virtual Item get_item_at_row_col (int row, int col) {
-       return widget_pool[(row_data[row].first_widget_index + col)];
+    public virtual Item? get_item_at_row_col (int row, int col) {
+        var data_index = row_data[row].first_data_index + col;
+        if (data_index >= n_items) {
+            return null;
+        }
+
+        return widget_pool[row_data[row].first_widget_index + col];
     }
 
-    public virtual Item? get_item_at_pos (Gdk.Point p) {
+    public virtual Item? get_item_at_pos (Gdk.Point p, out Gdk.Point corrected_p) {
         int r = 0;
         int c = 0;
+        Gdk.Point wp = {0, 0};
+
         Item? item = null;
 
-        if (get_row_col_at_pos (p.x, p.y, out r, out c)) {
+        if (get_row_col_at_pos (p.x, p.y, out r, out c, out wp)) {
             item = get_item_at_row_col (r, c);
         }
+
+        corrected_p = wp;
 
         return item;
     }

@@ -2885,7 +2885,6 @@ namespace FM {
             }
 
             click_zone = get_event_position_info ((Gdk.EventButton)event, out path, false);
-
             if (click_zone != previous_click_zone) {
                 var win = view.get_window ();
                 switch (click_zone) {
@@ -3179,7 +3178,6 @@ namespace FM {
                         case ClickZone.BLANK_NO_PATH:
                             break;
 
-                        case ClickZone.BLANK_PATH:
                         case ClickZone.ICON:
                         case ClickZone.NAME:
                             bool double_click_event = (event.type == Gdk.EventType.@2BUTTON_PRESS);
@@ -3205,6 +3203,7 @@ namespace FM {
 
                             break;
 
+                        case ClickZone.BLANK_PATH:
                         case ClickZone.HELPER:
                             bool multi_select = only_control_pressed || only_shift_pressed;
                             if (multi_select) { /* Treat like modified click on icon */

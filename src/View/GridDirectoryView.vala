@@ -170,21 +170,15 @@ namespace FM {
                                                          bool rubberband = false) {
 
             path = null;
-            var p = Gdk.Point () {x = (int)event.x, y = (int)event.y};
-            var item = tree.get_item_at_pos (p);
+            Gdk.Point p = {(int)(event.x), (int)(event.y)};
+            Gdk.Point wp = {0, 0};
+            var item = tree.get_item_at_pos (p, out wp);
             if (item == null || item.data == null) {
                 return FM.ClickZone.BLANK_NO_PATH;
             }
 
             path = new Gtk.TreePath.from_indices (tree.get_index_at_pos (p));
-
-            int x = 0;
-            int y = 0;
-            item.get_window ().get_position (out x, out y);
-            var widget_pos = Gdk.Point () {x = p.x - x, y = p.y - y};
-            var griditem = (IconGridItem)item;
-
-            var zone = griditem.get_zone (widget_pos);
+            var zone = ((IconGridItem)item).get_zone (wp);
             return zone;
         }
 
@@ -194,6 +188,7 @@ namespace FM {
 
                 return;
             }
+
             tree.scroll_to_path (path, scroll_to_top, 0.5f, 0.5f);
         }
 
@@ -414,7 +409,20 @@ namespace FM {
         }
 
         protected override bool is_on_icon (int x, int y, ref bool on_helper) {
-            /* TODO */
+            on_helper = false;
+            var p = Gdk.Point () {x = x, y = y};
+            Gdk.Point wp = {0, 0};
+            var item = tree.get_item_at_pos (p, out wp);
+            if (item == null || item.data == null) {
+                return false;
+            } else {
+                var zone = ((IconGridItem)item).get_zone (wp);
+                on_helper = zone == FM.ClickZone.HELPER;
+                if (on_helper || zone == FM.ClickZone.ICON) {
+                    return true;
+                }
+            }
+
             return false;
         }
     }

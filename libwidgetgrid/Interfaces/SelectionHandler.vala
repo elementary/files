@@ -85,12 +85,13 @@ public interface SelectionHandler : Object, PositionHandler {
         int previous_last_row = SelectionHandler.previous_last_rubberband_row;
         int previous_last_col = SelectionHandler.previous_last_rubberband_col;
         int last_row, last_col;
+        Gdk.Point wp = {0, 0};
 
         get_row_col_at_pos (rect.x + hpadding, rect.y + vpadding,
-                            out first_row, out first_col);
+                            out first_row, out first_col, out wp);
 
         get_row_col_at_pos (rect.x + rect.width - hpadding, rect.y + rect.height - vpadding,
-                            out last_row, out last_col);
+                            out last_row, out last_col, out wp);
 
         bool res = false;
         for (int r = first_row; r <= int.max (last_row, previous_last_row); r++) {
@@ -102,16 +103,6 @@ public interface SelectionHandler : Object, PositionHandler {
                 } else {
                     res |= unselect_index (index);
                 }
-//                if (data.is_selected != to_select) {
-//                    var item = get_item_at_row_col (r, c);
-//                    data.is_selected = to_select;
-//                    item.update_item (data);
-//                    if (to_select) {
-//                        selected_data.add (data);
-//                    } else {
-//                        selected_data.remove (data);
-//                    }
-//                }
             }
         }
 
