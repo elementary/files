@@ -23,7 +23,7 @@ namespace WidgetGrid {
 public interface PositionHandler : Object {
     public abstract Gee.AbstractList<RowData> row_data { get; set; }
     public abstract Gee.AbstractList<Item> widget_pool { get; construct; }
-    public abstract WidgetGrid.Model<WidgetData> model { get; construct; }
+    public abstract WidgetGrid.Model<DataInterface> model { get; construct; }
     public abstract int n_items { get; protected set; default = 0; }
 
     public abstract int vpadding { get; set; }
@@ -37,7 +37,7 @@ public interface PositionHandler : Object {
     }
 
     protected abstract void position_items (int first_displayed_row, double offset);
-    protected abstract void update_item_with_data (Item item, WidgetData data);
+    protected abstract void update_item_with_data (Item item, DataInterface data);
     protected abstract int next_widget_index (int current_index);
 
     public bool get_row_col_at_pos (int x, int y, out int row, out int col, out Gdk.Point widget_p) {
@@ -92,6 +92,10 @@ public interface PositionHandler : Object {
     }
 
     public virtual int get_index_at_row_col (int row, int col) {
+        if (row < 0 || row >= row_data.size) {
+            return -1;
+        }
+
         return row_data[row].first_data_index + col;
     }
 
@@ -107,11 +111,11 @@ public interface PositionHandler : Object {
         }
     }
 
-    public virtual WidgetData get_data_at_row_col (int row, int col) {
+    public virtual DataInterface get_data_at_row_col (int row, int col) {
        return model.lookup_index (row_data[row].first_data_index + col);
     }
 
-    public virtual WidgetData? get_data_at_pos (Gdk.Point p) {
+    public virtual DataInterface? get_data_at_pos (Gdk.Point p) {
         int row = 0;
         int col = 0;
         Gdk.Point wp = {0, 0};
@@ -157,6 +161,10 @@ public interface PositionHandler : Object {
         for (int c = 0; c < cols && data_index < model.get_n_items (); c++) {
             var item = widget_pool[widget_index];
             var data = model.lookup_index (data_index);
+            if (data == null) {
+                break;
+            }
+
             update_item_with_data (item, data);
 
             int min_h, nat_h, min_w, nat_w;

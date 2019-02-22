@@ -33,7 +33,7 @@ namespace FM {
     }
 
     public class IconGridView : WidgetGrid.View, GtkIconViewInterface {
-        public IconGridView (WidgetGrid.AbstractItemFactory _factory, WidgetGrid.Model<WidgetGrid.WidgetData>? _model = null) {
+        public IconGridView (WidgetGrid.AbstractItemFactory _factory, WidgetGrid.Model<WidgetGrid.DataInterface>? _model = null) {
             base (_factory, _model);
         }
 
@@ -111,7 +111,7 @@ namespace FM {
         public uint get_selected_files_from_model (ref GLib.List<GOF.File> selected_files) {
             var selected_data = get_selected ();
             uint count = 0;
-            foreach (WidgetGrid.WidgetData data in selected_data) {
+            foreach (WidgetGrid.DataInterface data in selected_data) {
                 selected_files.prepend ((GOF.File)data);
                 count++;
             }

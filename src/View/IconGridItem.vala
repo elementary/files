@@ -41,7 +41,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     private int set_max_width_request = 0;
     private int total_padding;
 
-    public WidgetGrid.WidgetData? data { get; set; default = null; }
+    public WidgetGrid.DataInterface? data { get; set; default = null; }
 
     public Gdk.Pixbuf? pix {
         get {
@@ -122,7 +122,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         show_all ();
     }
 
-    public IconGridItem (WidgetGrid.WidgetData? data = null) {
+    public IconGridItem (WidgetGrid.DataInterface? data = null) {
         Object (data: data);
     }
 
@@ -173,7 +173,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         return true;
     }
 
-    public void update_item (WidgetGrid.WidgetData? _data) {
+    public void update_item (WidgetGrid.DataInterface? _data) {
         assert (_data is GOF.File);
         data = _data;
         label.label = item_name;

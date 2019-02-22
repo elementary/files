@@ -49,20 +49,20 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
     public int cols { get; protected set; }
     public int n_items { get; protected set; default = 0; }
 
-    public WidgetGrid.Model<WidgetData> model { get; construct; }
+    public WidgetGrid.Model<DataInterface> model { get; construct; }
     public Gee.AbstractList<Item> widget_pool { get; construct; }
     public Gee.AbstractList<RowData> row_data { get; set; }
 
     /* SelectionHandler interface properties */
     public SelectionFrame frame { get; construct; }
-    public Gee.TreeSet<WidgetData> selected_data { get; set; }
+    public Gee.TreeSet<DataInterface> selected_data { get; set; }
     public bool rubber_banding { get; set; default = false; }
     public bool can_rubber_band { get; set; default = true; }
     public bool deselect_before_rubber_band { get; set; default = true; }
 
     construct {
         widget_pool = new Gee.ArrayList<Item> ();
-        selected_data = new Gee.TreeSet<WidgetData> ((CompareDataFunc?)(WidgetData.compare_data_func));
+        selected_data = new Gee.TreeSet<DataInterface> ((CompareDataFunc?)(DataInterface.compare_data_func));
 
         row_data = new Gee.ArrayList<RowData> ();
         vadjustment = new Gtk.Adjustment (0.0, 0.0, 10.0, 1.0, 1.0, 1.0);
@@ -93,7 +93,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
         });
     }
 
-    public LayoutHandler (Gtk.Layout _layout, AbstractItemFactory _factory, WidgetGrid.Model _model) {
+    public LayoutHandler (Gtk.Layout _layout, AbstractItemFactory _factory, WidgetGrid.Model<DataInterface> _model) {
         Object (
             layout: _layout,
             factory: _factory,
@@ -328,7 +328,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
         }
     }
 
-    private void update_item_with_data (Item item, WidgetData data) {
+    private void update_item_with_data (Item item, DataInterface data) {
         if (item.data_id != data.data_id) {
             item.update_item (data);
         }

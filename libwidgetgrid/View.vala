@@ -29,7 +29,7 @@
 namespace WidgetGrid {
 
 public interface ViewInterface : Gtk.Widget {
-    public abstract Model<WidgetData>model {get; set construct; }
+    public abstract Model<DataInterface> model {get; set construct; }
 
     public abstract int minimum_item_width { get; set; }
     public abstract int maximum_item_width { get; set; }
@@ -82,7 +82,7 @@ public class View : Gtk.Overlay, ViewInterface {
         }
     }
 
-    public Model<WidgetData>model {get; set construct; }
+    public Model<DataInterface> model {get; set construct; }
     public AbstractItemFactory factory { get; construct; }
     public LayoutHandler layout_handler {get; set construct; }
 
@@ -217,7 +217,7 @@ public class View : Gtk.Overlay, ViewInterface {
         show_all ();
     }
 
-    public View (AbstractItemFactory _factory, Model<WidgetData>? _model = null) {
+    public View (AbstractItemFactory _factory, Model? _model = null) {
         Object (factory: _factory,
                 model: _model != null ? _model : new SimpleModel ()
         );
@@ -362,7 +362,7 @@ public class View : Gtk.Overlay, ViewInterface {
         return layout_handler.draw_rubberband (ctx);
     }
 
-    public WidgetData[] get_selected () {
+    public DataInterface[] get_selected () {
         return layout_handler.selected_data.to_array ();
     }
 
@@ -441,11 +441,11 @@ public class View : Gtk.Overlay, ViewInterface {
         return get_index_at_pos ({x, y});
     }
 
-    public WidgetData? get_data_at_pos (Gdk.Point p) {
+    public DataInterface? get_data_at_pos (Gdk.Point p) {
         return layout_handler.get_data_at_pos (get_corrected_p (p));
     }
 
-    public WidgetData? get_data_coords (int x, int y) {
+    public DataInterface? get_data_coords (int x, int y) {
         Gdk.Point p = {x, y};
         return get_data_at_pos (get_corrected_p (p));
     }

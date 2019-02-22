@@ -22,14 +22,14 @@
 ***/
 
 namespace WidgetGrid {
-public class SimpleModel : Object, Model<WidgetData> {
-    private Vala.ArrayList<WidgetData> list;
+public class SimpleModel : Object, Model<DataInterface> {
+    private Vala.ArrayList<DataInterface> list;
 
     construct {
-        list = new Vala.ArrayList<WidgetData> (WidgetData.equal);
+        list = new Vala.ArrayList<DataInterface> ();
     }
 
-    public bool add (WidgetData data) {
+    public bool add (DataInterface data) {
         var res = list.add (data);
         if (res) {
             n_items_changed (1);
@@ -38,7 +38,7 @@ public class SimpleModel : Object, Model<WidgetData> {
         return res;
     }
 
-    public bool remove_data (WidgetData data) {
+    public bool remove_data (DataInterface data) {
         var res = list.remove (data);
         if (res) {
             n_items_changed (-1);
@@ -56,11 +56,15 @@ public class SimpleModel : Object, Model<WidgetData> {
         return res;
     }
 
-    public WidgetData lookup_index (int index) {
+    public DataInterface lookup_index (int index) {
+        if (index < 0 || index >= list.size) {
+            return null;
+        }
+
         return list[index];
     }
 
-    public int lookup_data (WidgetData data) {
+    public int lookup_data (DataInterface data) {
         return list.index_of (data);
     }
 
