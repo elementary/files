@@ -33,6 +33,10 @@ namespace FM {
     }
 
     public class IconGridView : WidgetGrid.View, GtkIconViewInterface {
+        construct {
+            handle_cursor_keys = true;
+        }
+
         public IconGridView (WidgetGrid.AbstractItemFactory _factory, WidgetGrid.Model<WidgetGrid.DataInterface>? _model = null) {
             base (_factory, _model);
         }
@@ -140,6 +144,10 @@ namespace FM {
             }
 
             return false;
+        }
+
+        public void linear_select_path (Gtk.TreePath path) {
+            linear_select_index (path.get_indices()[0]);
         }
     }
 }

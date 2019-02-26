@@ -74,6 +74,9 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     public bool rubber_banding { get; set; default = false; }
     public bool can_rubber_band { get; set; default = true; }
     public bool deselect_before_rubber_band { get; set; default = true; }
+    public int initial_linear_selection_index {get; set; default = -1; }
+    public int previous_linear_selection_index {get; set; default = -1; }
+    public int last_selected_index {get; set; default = -1;}
 
     construct {
         widget_pool = new Gee.ArrayList<Item> ();
@@ -108,6 +111,10 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         });
 
         notify["cursor-index"].connect (() => {
+            refresh ();
+        });
+
+        selection_changed.connect (() => {
             refresh ();
         });
     }

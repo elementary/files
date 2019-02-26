@@ -30,10 +30,15 @@ public interface SelectionHandler : Object, PositionHandler {
     public abstract bool can_rubber_band { get; set; default = true; }
     public abstract bool deselect_before_rubber_band { get; set; default = true; }
     public abstract Gee.TreeSet<DataInterface> selected_data { get; set; }
+    public abstract int initial_linear_selection_index {get; set; default = -1; }
+    public abstract int previous_linear_selection_index {get; set; default = -1; }
+    public abstract int last_selected_index {get; set; default = -1;}
 
     public abstract Gtk.Widget get_widget ();
     public abstract void refresh ();
     public abstract void apply_to_visible_items (WidgetFunc func);
+
+    public signal void selection_changed ();
 
     public virtual void start_rubber_banding (Gdk.EventButton event) {
         if (!can_rubber_band) {
@@ -153,11 +158,16 @@ public interface SelectionHandler : Object, PositionHandler {
 
     public virtual bool select_data_index (int index) {
         var data = model.lookup_index (index);
+        last_selected_index = index;
         return select_data (data, true);
     }
 
     public virtual bool unselect_data_index (int index) {
         var data = model.lookup_index (index);
+        if (last_selected_index == index){
+            last_selected_index = -1;
+        }
+
         return select_data (data, false);
     }
 
@@ -174,6 +184,7 @@ public interface SelectionHandler : Object, PositionHandler {
     public virtual bool select_data (DataInterface? data, bool select) {
         if (data != null && data.is_selected != select) {
             data.is_selected = select;
+            selection_changed ();
             if (select) {
                 selected_data.add (data);
             } else {
@@ -185,5 +196,51 @@ public interface SelectionHandler : Object, PositionHandler {
 
         return false;
     }
+
+    public void linear_select_index (int index, int previous_index = -1) {
+        if (index < 0) {
+            critical ("Ignoring attempt to select null path in linear_select_path");
+            return;
+        }
+
+        if (previous_index < 0) {
+            if (last_selected_index >= 0) {
+                previous_index = last_selected_index;
+            } else {
+                previous_index = index;
+            }
+        }
+
+        if (initial_linear_selection_index < 0) {
+            initial_linear_selection_index = previous_index;
+            previous_linear_selection_index = previous_index;
+        }
+
+        if (previous_linear_selection_index == index) {
+            /* Ignore if repeat click on same file as before. We keep the previous linear selection direction. */
+            return;
+        }
+
+        bool direction = previous_linear_selection_index - index >= 0;
+        int i = previous_linear_selection_index;
+        while (i != index) {
+            unselect_data_index (i);
+            i += direction ? -1 : 1;
+        }
+
+
+        direction = index - initial_linear_selection_index >= 0;
+        i = initial_linear_selection_index;
+        while (i != index) {
+            select_data_index (i);
+            i += direction ? 1 : -1;
+        }
+
+        select_data_index (i);
+
+
+        previous_linear_selection_index = index;
+    }
+
 }
 }

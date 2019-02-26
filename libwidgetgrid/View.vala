@@ -30,6 +30,7 @@ namespace WidgetGrid {
 
 public interface ViewInterface : Gtk.Widget {
     public abstract Model<DataInterface> model {get; set construct; }
+    public abstract LayoutHandler layout_handler {protected get; set construct; }
 
     public abstract int minimum_item_width { get; set; }
     public abstract int maximum_item_width { get; set; }
@@ -39,17 +40,19 @@ public interface ViewInterface : Gtk.Widget {
     public abstract int item_width { get; set; }
     public abstract int hpadding { get; set; }
     public abstract int vpadding { get; set; }
+    public abstract bool handle_cursor_keys { get; set; default = true; }
 
     public abstract bool get_visible_range_indices (out int first, out int last);
     public abstract void select_index (int index);
     public abstract void unselect_index (int index);
+
+
 
     public signal void selection_changed ();
     public signal void item_clicked (Item item, Gdk.EventButton event);
     public signal void item_leave (Item item);
     public signal void item_hovered (Item item, Gdk.EventMotion event);
     public signal void background_clicked (Gdk.EventButton event);
-
 }
 
 public class View : Gtk.Overlay, ViewInterface {
@@ -96,6 +99,7 @@ public class View : Gtk.Overlay, ViewInterface {
     private int[] allowed_item_widths = {16, 24, 32, 48, 64, 96, 128, 256, 512};
     public int width_increment { get; set; default = 6; }
     public bool fixed_item_widths { get; set; default = true;}
+    public bool handle_cursor_keys { get; set; default = true; }
 
     public int item_width {
         get {
@@ -233,9 +237,7 @@ public class View : Gtk.Overlay, ViewInterface {
             var item = layout_handler.get_item_at_pos (cp, out wp);
             var on_item = item != null;
             if ((!on_item || layout_handler.rubber_banding) && (event.state & Gdk.ModifierType.BUTTON1_MASK) > 0) {
-                if (layout_handler.do_rubber_banding (event)) {
-                    selection_changed ();
-                }
+                layout_handler.do_rubber_banding (event);
             } else {
                 if (item != hovered_item) {
                     if (hovered_item != null) {
@@ -260,8 +262,8 @@ public class View : Gtk.Overlay, ViewInterface {
             return false;
         });
 
-        selection_changed.connect (() => {
-            layout_handler.refresh ();
+        layout_handler.selection_changed.connect (() => {
+            selection_changed ();
         });
 
         show_all ();
@@ -281,6 +283,8 @@ public class View : Gtk.Overlay, ViewInterface {
 
     private bool on_key_press_event (Gdk.EventKey event) {
         var control_pressed = (event.state & Gdk.ModifierType.CONTROL_MASK) != 0;
+        var shift_pressed = (event.state & Gdk.ModifierType.SHIFT_MASK) != 0;
+
         if (control_pressed) {
             switch (event.keyval) {
                 case Gdk.Key.plus:
@@ -295,22 +299,28 @@ public class View : Gtk.Overlay, ViewInterface {
                 default:
                     break;
             }
-        } else if (false) {
-            switch (event.keyval) {
-                case Gdk.Key.Escape:
-                    layout_handler.clear_selection ();
-                    break;
+        }
 
-                case Gdk.Key.Up:
-                case Gdk.Key.Down:
-                case Gdk.Key.Left:
-                case Gdk.Key.Right:
-                    layout_handler.handle_cursor_keys (event.keyval);
-                    break;
+        switch (event.keyval) {
+            case Gdk.Key.Escape:
+                layout_handler.clear_selection ();
+                break;
 
-                default:
-                    break;
-            }
+            case Gdk.Key.Up:
+            case Gdk.Key.Down:
+            case Gdk.Key.Left:
+            case Gdk.Key.Right:
+                if (handle_cursor_keys) {
+                    bool linear_select = shift_pressed && !control_pressed;
+                    bool deselect = !control_pressed;
+                    layout_handler.move_cursor (event.keyval, linear_select, deselect);
+                    return true;
+                }
+
+                break;
+
+            default:
+                break;
         }
 
         return false;
@@ -525,31 +535,34 @@ public class View : Gtk.Overlay, ViewInterface {
     }
 
     public void select_index (int index) {
-        if (layout_handler.select_data_index (index)) {
-            selection_changed ();
-        }
+        layout_handler.select_data_index (index);
     }
 
     public void unselect_index (int index) {
-        if (layout_handler.unselect_data_index (index)) {
-            selection_changed ();
-        }
+        layout_handler.unselect_data_index (index);
     }
 
     public int index_at_cursor () {
         return layout_handler.get_index_at_cursor ();
     }
 
-    public bool set_cursor_index (int index, bool select = false) {
-        if (layout_handler.set_cursor (index)) {
-            if (select) {
-                layout_handler.select_data_index (index);
-            }
-
-            return true;
+    public void set_cursor_index (int index, bool select = false) {
+        layout_handler.set_cursor (index);
+        if (select) {
+            layout_handler.select_data_index (index);
         }
+    }
 
-        return false;
+    public void linear_select_index (int index) {
+        layout_handler.linear_select_index (index);
+    }
+
+    public new void grab_focus () {
+        layout.grab_focus ();
+    }
+
+    public void move_cursor (uint keyval, bool linear_select, bool deselect) {
+        layout_handler.move_cursor (keyval, linear_select, deselect);
     }
 }
 }

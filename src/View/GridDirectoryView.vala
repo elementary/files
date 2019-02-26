@@ -54,7 +54,6 @@ namespace FM {
         protected override Gtk.Widget? create_and_add_view () {
             var factory = new IconGridItemFactory ();
             tree = new FM.IconGridView (factory, model);
-            tree.can_focus = false;
             set_up_view ();
             add (tree);
 
@@ -222,39 +221,9 @@ namespace FM {
             }
         }
 
-        /* Override native Gtk.IconView cursor handling */
-        protected override bool move_cursor (uint keyval, bool only_shift_pressed) {
-            Gtk.TreePath? path = get_path_at_cursor ();
-            if (path != null) {
-                if (path_is_selected (path)) {
-                    if (keyval == Gdk.Key.Right) {
-                        path.next (); /* Does not check if path is valid */
-                    } else if (keyval == Gdk.Key.Left) {
-                        path.prev ();
-                    } else if (keyval == Gdk.Key.Up) {
-                        path = up (path);
-                    } else if (keyval == Gdk.Key.Down) {
-                        path = down (path);
-                    }
-
-                    if (only_shift_pressed && selected_files != null) {
-                        linear_select_path (path);
-                    } else {
-                        unselect_all ();
-                        set_cursor (path, false, true, false);
-                        previous_linear_selection_path = path;
-                    }
-                } else {
-                    set_cursor (path, false, true, false); /* Select without moving if only focussed */
-                }
-            } else {
-                path = new Gtk.TreePath.from_indices (0);
-                set_cursor (path, false, true, false);
-                previous_linear_selection_path = path;
-            }
-
-            return true;
-        }
+//        protected override bool move_cursor (uint keyval, bool only_shift_pressed) {
+//            tree.move_cursor (keyval, !only_shift_pressed);
+//        }
 
         public override void set_cursor (Gtk.TreePath? path,
                                          bool start_editing,
@@ -284,88 +253,7 @@ namespace FM {
         }
 
         protected void linear_select_path (Gtk.TreePath path) {
-            if (path == null) {
-                critical ("Ignoring attempt to select null path in linear_select_path");
-                return;
-            }
-
-            if (previous_linear_selection_path != null && path.compare (previous_linear_selection_path) == 0) {
-                /* Ignore if repeat click on same file as before. We keep the previous linear selection direction. */
-                return;
-            }
-
-            var selected_paths = tree.get_selected_items ();
-            /* Ensure the order of the selected files list matches the visible order */
-            var first_selected = selected_paths.first ().data;
-            var last_selected = selected_paths.last ().data;
-            bool before_first = path.compare (first_selected) <= 0;
-            bool after_last = path.compare (last_selected) >= 0;
-            bool direction_change = false;
-
-            direction_change = (before_first && previous_linear_selection_direction > 0) ||
-                               (after_last && previous_linear_selection_direction < 0);
-
-            var p = path.copy ();
-            Gtk.TreePath p2 = null;
-
-            unselect_all ();
-            Gtk.TreePath? end_path = null;
-            if (!previous_selection_was_linear && previous_linear_selection_path != null) {
-                end_path = previous_linear_selection_path;
-            } else if (before_first) {
-                end_path = direction_change ? first_selected : last_selected;
-            } else {
-                end_path = direction_change ? last_selected : first_selected;
-            }
-
-            /* Cursor follows when selecting path */
-            if (before_first) {
-                do {
-                    p2 = p.copy ();
-                    select_path (p, true);
-                    p.next ();
-                } while (p.compare (p2) != 0 && p.compare (end_path) <= 0);
-            } else if (after_last) {
-                do {
-                    select_path (p, true);
-                    p2 = p.copy ();
-                    p.prev ();
-                } while (p.compare (p2) != 0 && p.compare (end_path) >= 0);
-            } else {/* between first and last */
-                do {
-                    p2 = p.copy ();
-                    select_path (p, true);
-                    p.prev ();
-                } while (p.compare (p2) != 0 && p.compare (first_selected) >= 0);
-
-                p = path.copy ();
-                do {
-                    p2 = p.copy ();
-                    p.next ();
-                    unselect_path (p);
-                } while (p.compare (p2) != 0 && p.compare (last_selected) <= 0);
-            }
-
-            previous_selection_was_linear = true;
-
-            selected_paths = tree.get_selected_items ();
-
-            first_selected = selected_paths.first ().data;
-            last_selected = selected_paths.last ().data;
-
-            if (path.compare (last_selected) == 0) {
-                previous_linear_selection_direction = 1; /* clicked after the (visually) first selection */
-            } else if (path.compare (first_selected) == 0) {
-                previous_linear_selection_direction = -1; /* clicked before the (visually) first selection */
-            } else {
-                critical ("Linear selection did not become end point - this should not happen!");
-                previous_linear_selection_direction = 0;
-            }
-
-            previous_linear_selection_path = path.copy ();
-            /* Ensure cursor in correct place, regardless of any selections made in this function */
-            tree.set_cursor (path, false);
-            tree.scroll_to_path (path, false, 0.5f, 0.5f);
+            tree.linear_select_path (path);
         }
 
         protected override Gtk.TreePath up (Gtk.TreePath path) {

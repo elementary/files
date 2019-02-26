@@ -20,7 +20,7 @@
      including handling rubberband selection and storing the selected items.
 ***/
 namespace WidgetGrid {
-public interface CursorHandler : Object, PositionHandler {
+public interface CursorHandler : Object, SelectionHandler {
     public abstract Gtk.Layout layout { get; construct; }
     public abstract DataInterface data_at_cursor { get; set; }
     public abstract int cursor_index { get; set; }
@@ -35,40 +35,32 @@ public interface CursorHandler : Object, PositionHandler {
 
     public virtual int cursor_back () {
         var new_cursor = cursor_index;
-        if (cursor_index > 0) {
-            new_cursor--;
-            update_cursor (new_cursor);
-        }
+        new_cursor--;
+        update_cursor (new_cursor);
 
         return new_cursor;
     }
 
     public virtual int cursor_forward () {
         var new_cursor = cursor_index;
-        if (cursor_index < n_items - 1) {
-            new_cursor++;
-            update_cursor (new_cursor);
-        }
+        new_cursor++;
+        update_cursor (new_cursor);
 
         return cursor_index;
     }
 
     public virtual int cursor_up () {
         var new_cursor = cursor_index;
-        if (cursor_index >= cols) {
-            new_cursor -= cols;
-            update_cursor (new_cursor);
-        }
+        new_cursor -= cols;
+        update_cursor (new_cursor);
 
         return cursor_index;
     }
 
     public virtual int cursor_down () {
         var new_cursor = cursor_index;
-        if (cursor_index < n_items - cols - 1) {
-            new_cursor += cols;
-            update_cursor (new_cursor);
-        }
+        new_cursor += cols;
+        update_cursor (new_cursor);
 
         return cursor_index;
     }
@@ -80,16 +72,15 @@ public interface CursorHandler : Object, PositionHandler {
             res = true;
         }
 
-        if (new_cursor >= 0 && new_cursor < n_items) {
-            data_at_cursor = model.lookup_index (new_cursor);
-        }
+        int cursor = new_cursor.clamp (0, n_items - 1);
+        data_at_cursor = model.lookup_index (cursor);
 
         if (data_at_cursor != null) {
             data_at_cursor.is_cursor_position = true;
             res = true;
-            cursor_index = new_cursor;
         }
 
+        cursor_index = cursor;
         return false;
     }
 
@@ -118,14 +109,48 @@ public interface CursorHandler : Object, PositionHandler {
         layout.queue_draw ();
     }
 
-    public bool set_cursor (int index) {
-        return update_cursor (index);
+    public void set_cursor (int index, bool select = false) {
+        if (update_cursor (index) && select) {
+            select_data_index (index);
+        }
     }
 
     public virtual void initialize_cursor () {
         if (n_items > 0) {
             update_cursor (0);
         }
+    }
+
+    public virtual bool move_cursor (uint keyval, bool linear_select = false, bool deselect = true) {
+        var previous_cursor_index = cursor_index;
+
+        if (keyval == Gdk.Key.Right) {
+            cursor_forward ();
+        } else if (keyval == Gdk.Key.Left) {
+            cursor_back ();
+        } else if (keyval == Gdk.Key.Up) {
+            cursor_up ();
+        } else if (keyval == Gdk.Key.Down) {
+            cursor_down ();
+        }
+
+        if (linear_select) {
+            linear_select_index (cursor_index, previous_cursor_index);
+        } else {
+            if (deselect) {
+                clear_selection ();
+            }
+
+            set_cursor (cursor_index, true);
+            end_linear_select ();
+        }
+
+        return true;
+    }
+
+    protected void end_linear_select () {
+        initial_linear_selection_index = -1;
+        previous_linear_selection_index = -1;
     }
 }
 }
