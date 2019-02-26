@@ -91,7 +91,7 @@ public class View : Gtk.Overlay, ViewInterface {
 
     public Model<DataInterface> model {get; set construct; }
     public AbstractItemFactory factory { get; construct; }
-    public LayoutHandler layout_handler {get; set construct; }
+    public LayoutHandler layout_handler {protected get; set construct; }
 
     private int[] allowed_item_widths = {16, 24, 32, 48, 64, 96, 128, 256, 512};
     public int width_increment { get; set; default = 6; }
@@ -260,6 +260,10 @@ public class View : Gtk.Overlay, ViewInterface {
             return false;
         });
 
+        selection_changed.connect (() => {
+            layout_handler.refresh ();
+        });
+
         show_all ();
     }
 
@@ -291,7 +295,7 @@ public class View : Gtk.Overlay, ViewInterface {
                 default:
                     break;
             }
-        } else {
+        } else if (false) {
             switch (event.keyval) {
                 case Gdk.Key.Escape:
                     layout_handler.clear_selection ();
@@ -530,6 +534,22 @@ public class View : Gtk.Overlay, ViewInterface {
         if (layout_handler.unselect_data_index (index)) {
             selection_changed ();
         }
+    }
+
+    public int index_at_cursor () {
+        return layout_handler.get_index_at_cursor ();
+    }
+
+    public bool set_cursor_index (int index, bool select = false) {
+        if (layout_handler.set_cursor (index)) {
+            if (select) {
+                layout_handler.select_data_index (index);
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }
 }

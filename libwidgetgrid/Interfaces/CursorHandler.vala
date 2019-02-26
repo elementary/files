@@ -73,9 +73,11 @@ public interface CursorHandler : Object, PositionHandler {
         return cursor_index;
     }
 
-    private void update_cursor (int new_cursor) {
+    private bool update_cursor (int new_cursor) {
+        bool res = false;
         if (data_at_cursor != null) {
             data_at_cursor.is_cursor_position = false;
+            res = true;
         }
 
         if (new_cursor >= 0 && new_cursor < n_items) {
@@ -84,8 +86,11 @@ public interface CursorHandler : Object, PositionHandler {
 
         if (data_at_cursor != null) {
             data_at_cursor.is_cursor_position = true;
+            res = true;
             cursor_index = new_cursor;
         }
+
+        return false;
     }
 
     public virtual void handle_cursor_keys (uint keyval) {
@@ -113,8 +118,8 @@ public interface CursorHandler : Object, PositionHandler {
         layout.queue_draw ();
     }
 
-    public void set_cursor (int index) {
-        update_cursor (index);
+    public bool set_cursor (int index) {
+        return update_cursor (index);
     }
 
     public virtual void initialize_cursor () {

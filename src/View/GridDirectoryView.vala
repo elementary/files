@@ -54,6 +54,7 @@ namespace FM {
         protected override Gtk.Widget? create_and_add_view () {
             var factory = new IconGridItemFactory ();
             tree = new FM.IconGridView (factory, model);
+            tree.can_focus = false;
             set_up_view ();
             add (tree);
 
@@ -236,16 +237,12 @@ namespace FM {
                         path = down (path);
                     }
 
-                    Gtk.TreeIter? iter = null;
-                    /* Do not try to select invalid path */
-                    if (model.get_iter (out iter, path)) {
-                        if (only_shift_pressed && selected_files != null) {
-                            linear_select_path (path);
-                        } else {
-                            unselect_all ();
-                            set_cursor (path, false, true, false);
-                            previous_linear_selection_path = path;
-                        }
+                    if (only_shift_pressed && selected_files != null) {
+                        linear_select_path (path);
+                    } else {
+                        unselect_all ();
+                        set_cursor (path, false, true, false);
+                        previous_linear_selection_path = path;
                     }
                 } else {
                     set_cursor (path, false, true, false); /* Select without moving if only focussed */
@@ -281,7 +278,7 @@ namespace FM {
         }
 
         public override Gtk.TreePath? get_path_at_cursor () {
-            Gtk.TreePath? path;
+            Gtk.TreePath? path = null;
             tree.get_cursor (out path);
             return path;
         }

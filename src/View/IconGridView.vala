@@ -123,13 +123,22 @@ namespace FM {
             layout_handler.show_data_index (index, use_align, yalign);
         }
 
-        public void set_cursor (Gtk.TreePath path, bool start_editing) {
-            /* TODO */
+        public void set_cursor (Gtk.TreePath path, bool start_editing, bool select = false) {
+            var index = path.get_indices ()[0];
+            set_cursor_index (index, select);
+            if (start_editing) {
+                /* TODO - Obtain item and signal it to enter editing mode */
+            }
         }
 
         public bool get_cursor (out Gtk.TreePath path) {
-            /* TODO */
             path = null;
+            var index = index_at_cursor ();
+            if (index >=0 ) {
+                path = new Gtk.TreePath.from_indices (index);
+                return true;
+            }
+
             return false;
         }
     }
