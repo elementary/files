@@ -47,7 +47,6 @@ namespace FM {
         }
 
         public void set_column_spacing (int col_spacing) {
-            this.hpadding = 0;
             this.hpadding = col_spacing / 2;
         }
 

@@ -26,7 +26,7 @@ public interface SelectionFrame : Object {
     public abstract int height { get; set; }
 
     public abstract void initialize (int x, int y);
-    public abstract void update_size (int width, int height);
+    public abstract bool update_size (int width, int height);
     public abstract void close ();
     public abstract bool draw (Cairo.Context ctx);
 

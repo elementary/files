@@ -43,6 +43,8 @@ namespace FM {
 
         protected override void connect_tree_signals () {
             tree.selection_changed.connect (on_view_selection_changed);
+            tree.item_leave.connect ((item) => {item.leave ();});
+            tree.item_hovered.connect ((item, event) => {item.hovered (event);});
         }
 
         protected override void disconnect_tree_signals () {

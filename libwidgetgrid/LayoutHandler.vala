@@ -23,7 +23,7 @@
      the SelectionHandler interface
 ***/
 namespace WidgetGrid {
-public class LayoutHandler : Object, PositionHandler, SelectionHandler {
+public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHandler {
     private const int REFLOW_DELAY_MSEC = 100;
     private const int MAX_WIDGETS = 1000;
 
@@ -33,8 +33,21 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
     private int n_widgets = 0;
 
     private int total_rows = 0;
-    private int first_displayed_widget_index = 0;
-    private int highest_displayed_widget_index = 0;
+    public int first_displayed_widget_index { get; set; default = 0;}
+    public int last_displayed_widget_index { get; set; default = 0;}
+
+
+    private uint32 last_event_time = 0;
+    private double accel = 0.0;
+    private uint scroll_accel_timeout_id = 0;
+    private bool wait = false;
+    private const double MAX_ACCEL = 128.0;
+    private const double ACCEL_RATE = 1.3;
+    private const int SCROLL_ACCEL_DELAY_MSEC = 100;
+    private double previous_adjustment_val;
+
+    private uint reflow_timeout_id = 0;
+
     public int first_displayed_data_index { get; private set; default = 0; }
     public int last_displayed_data_index { get; private set; default = 0; }
 
@@ -48,10 +61,12 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
     public int item_width { get; set; }
     public int cols { get; protected set; }
     public int n_items { get; protected set; default = 0; }
+    public DataInterface data_at_cursor { get; set; }
+    public int cursor_index { get; set; default = -1;}
 
     public WidgetGrid.Model<DataInterface> model { get; construct; }
-    public Gee.AbstractList<Item> widget_pool { get; construct; }
-    public Gee.AbstractList<RowData> row_data { get; set; }
+    public Gee.ArrayList<Item> widget_pool { get; construct; }
+    public Gee.ArrayList<RowData> row_data { get; set; }
 
     /* SelectionHandler interface properties */
     public SelectionFrame frame { get; construct; }
@@ -91,6 +106,10 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
         notify["item-width"].connect (() => {
             configure ();
         });
+
+        notify["cursor-index"].connect (() => {
+            refresh ();
+        });
     }
 
     public LayoutHandler (Gtk.Layout _layout, AbstractItemFactory _factory, WidgetGrid.Model<DataInterface> _model) {
@@ -113,6 +132,26 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
         vadjustment.set_value ((double)first_row);
     }
 
+    public void apply_to_visible_items (WidgetFunc func) {
+        Item item;
+        int index = first_displayed_widget_index;
+        do {
+            item = widget_pool[index];
+            func (item);
+            if (index == last_displayed_widget_index) {
+                break;
+            } else {
+                index = next_widget_index (index);
+            }
+        } while (true);
+    }
+
+    public void refresh () {
+        apply_to_visible_items ((item) => {
+            item.update_item ();
+        });
+    }
+
     protected void position_items (int first_displayed_row, double offset) {
         int data_index, widget_index, row_height;
 
@@ -128,12 +167,15 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
         if (previous_first_displayed_data_index != data_index) {
             clear_layout ();
             previous_first_displayed_data_index = data_index;
-            first_displayed_widget_index = data_index % (highest_displayed_widget_index + 1);
+            first_displayed_widget_index = data_index % (last_displayed_widget_index + 1);
         }
 
         first_displayed_data_index = data_index;
         last_displayed_data_index = data_index;
+
+        /* This puts data in widgets */
         row_height = get_row_height (first_displayed_widget_index, data_index);
+
         previous_first_displayed_row_height = row_height;
         widget_index = first_displayed_widget_index;
 
@@ -161,7 +203,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
                 x += item_width + hpadding;
 
                 last_displayed_data_index = data_index;
-                highest_displayed_widget_index = int.max (highest_displayed_widget_index, widget_index);
+                last_displayed_widget_index = widget_index;
                 widget_index = next_widget_index (widget_index);
                 data_index++;
             }
@@ -184,64 +226,51 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
     }
 
     /* Reflow at most 1000 / REFLOW_DELAY_MSEC times a second */
-    private uint reflow_timeout_id = 0;
     public void configure () {
         if (reflow_timeout_id > 0) {
             return;
         } else {
             reflow_timeout_id = Timeout.add (REFLOW_DELAY_MSEC, () => {
-                reflow ();
+                if (column_width > 0) {
+                    cols = (layout.get_allocated_width ()) / column_width;
+                    if (cols > 0) {
+                        if (cursor_index < 0) {
+                           initialize_cursor ();
+                        }
+
+                        var first_displayed_row = previous_first_displayed_data_index / cols;
+                        var val = first_displayed_row;
+
+                        var min_val = 0.0;
+                        var max_val = (double)(total_rows + 1);
+                        var step_increment = 0.05;
+                        var page_increment = 1.0;
+                        var page_size = 5.0;
+
+                        var new_total_rows = (n_items) / cols + 1;
+                        if (total_rows != new_total_rows) {
+                            clear_layout ();
+                            total_rows = new_total_rows;
+                            last_displayed_widget_index = 0;
+                            pool_size = 0;
+                            max_val = (double)(total_rows + 1);
+                            vadjustment.configure (val, min_val, max_val, step_increment, page_increment, page_size);
+                        }
+
+                        on_adjustment_value_changed ();
+                    }
+                }
+
                 reflow_timeout_id = 0;
                 return Source.REMOVE;
             });
         }
     }
 
-    private void reflow (Gtk.Allocation? alloc = null) {
-        if (column_width == 0) {
-            return;
-        }
-
-        cols = (layout.get_allocated_width ()) / column_width;
-
-        if (cols == 0) {
-            return;
-        }
-
-        var first_displayed_row = previous_first_displayed_data_index / cols;
-        var val = first_displayed_row;
-
-        var min_val = 0.0;
-        var max_val = (double)(total_rows + 1);
-        var step_increment = 0.05;
-        var page_increment = 1.0;
-        var page_size = 5.0;
-
-        var new_total_rows = (n_items) / cols + 1;
-        if (total_rows != new_total_rows) {
-            clear_layout ();
-            total_rows = new_total_rows;
-            highest_displayed_widget_index = 0;
-            pool_size = 0;
-            max_val = (double)(total_rows + 1);
-            vadjustment.configure (val, min_val, max_val, step_increment, page_increment, page_size);
-        }
-
-        on_adjustment_value_changed ();
-    }
-
     /* This implements an accelerating scroll rate during a continuous smooth scroll with touchpad
      * so that small movements have low sensitivity but can also make large movements easily.
      * TODO: implement kinetic scrolling.
      */
-    uint32 last_event_time = 0;
-    double accel = 0.0;
-    uint scroll_accel_timeout_id = 0;
-    bool wait = false;
-    private const double MAX_ACCEL = 128.0;
-    private const double ACCEL_RATE = 1.3;
-    private const int SCROLL_ACCEL_DELAY_MSEC = 100;
-    double previous_adjustment_val;
     private void on_adjustment_value_changed () {
         var now = Gtk.get_current_event_time ();
         uint32 rate = now - last_event_time;  /* min about 24, typical 50 - 150 */
@@ -287,9 +316,11 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
             offset = row_fraction * previous_first_displayed_row_height;
         }
 
-        /* Reposition items when idle */
+        position_items (first_displayed_row, offset);
         Idle.add (() => {
-            position_items (first_displayed_row, offset);
+            if (rubber_banding) {
+                mark_selected_in_rectangle (false);
+            }
             return false;
         });
 
@@ -327,15 +358,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler {
             Source.remove (reflow_timeout_id);
         }
     }
-
-    private void update_item_with_data (Item item, DataInterface data) {
-        if (item.data_id != data.data_id) {
-            item.update_item (data);
-        }
-
-        item.set_max_width (item_width);
-    }
-
 
     private int next_widget_index (int widget_index) {
         widget_index++;

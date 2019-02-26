@@ -24,6 +24,7 @@ namespace WidgetGrid {
 public class WidgetData : Object, DataInterface {
     public uint64 data_id { get; construct; }
     public bool is_selected { get; set; default = false; }
+    public bool is_cursor_position { get; set; default = false; }
 
     construct {
         data_id = get_monotonic_time ();

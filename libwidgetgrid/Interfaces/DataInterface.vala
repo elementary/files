@@ -53,6 +53,7 @@ public interface DataInterface : Object {
     }
 
     public abstract bool is_selected { get; set; default = false; }
+    public abstract bool is_cursor_position { get; set; default = false; }
     public abstract uint64 data_id { get; construct; } /* Implementations must ensure a unique id is assigned */
 
     public virtual bool equal (DataInterface b) {return data_id == b.data_id;}

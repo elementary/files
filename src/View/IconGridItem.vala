@@ -26,6 +26,9 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     private static int _min_height;
     public static int min_height { get { return _min_height; } set { _min_height = value; } default = 16;}
 
+    private const Gtk.IconSize default_helper_size = Gtk.IconSize.SMALL_TOOLBAR;
+    private const Gtk.IconSize focused_helper_size = Gtk.IconSize.LARGE_TOOLBAR;
+
     static construct {
         WidgetGrid.Item.min_height = 16;
         WidgetGrid.Item.max_height = 256;
@@ -41,7 +44,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     private int set_max_width_request = 0;
     private int total_padding;
 
-    public WidgetGrid.DataInterface? data { get; set; default = null; }
+    public WidgetGrid.DataInterface data { get; set; default = null; }
 
     public Gdk.Pixbuf? pix {
         get {
@@ -56,6 +59,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     }
 
     public bool is_selected { get {return data != null ? data.is_selected : false;} }
+    public bool is_cursor_position { get {return data != null ? data.is_cursor_position : false;} }
     public uint64 data_id { get {return data != null ? data.data_id : -1;} }
     public GOF.File? file { get { return data != null ? (GOF.File)data : null; } }
 
@@ -67,7 +71,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         frame.show_all ();
 
         grid = new Gtk.Grid ();
-        grid.margin_start = grid.margin_end = 24;
+        grid.margin = 2;
         grid.orientation = Gtk.Orientation.VERTICAL;
         grid.halign = Gtk.Align.CENTER;
         grid.valign = Gtk.Align.CENTER;
@@ -79,6 +83,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
         label = new Gtk.Label (item_name);
         label.halign = Gtk.Align.CENTER;
+        label.vexpand = true;
         label.margin_top = label.margin_bottom = 6;
         label.set_line_wrap (true);
         label.set_line_wrap_mode (Pango.WrapMode.WORD_CHAR);
@@ -103,8 +108,18 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
         add (frame);
 
-        button_press_event.connect (() => {
-            warning ("button press %s", item_name);
+        add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
+
+        button_press_event.connect ((event) => {
+            int x = (int)(event.x);
+            int y = (int)(event.y);
+            var zone = get_zone  ({x, y});
+
+            if (zone == FM.ClickZone.HELPER) {
+                data.is_selected = !data.is_selected;
+                update_state ();
+            }
+
             return false;
         });
 
@@ -132,24 +147,25 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         frame.get_allocation (out w_alloc);
         allocation.x = w_alloc.x;
         allocation.y = w_alloc.y;
-        allocation.width = 16;
-        allocation.height = 16;
+        allocation.width = 24;
+        allocation.height = 24;
 
         helper_allocation = (Gdk.Rectangle)allocation;
         return true;
     }
 
     public bool get_new_pix (int size) {
+        if (size < 16) {
+            size = 16;
+        }
+
+        icon.set_size_request (size, size);
+
         if (file != null) {
             file.update_icon (size, 1);
         }
 
-        /* Temporary */
-        if (pix == null) {
-            icon.set_from_icon_name ("icon-missing", Gtk.IconSize.SMALL_TOOLBAR);
-        } else {
-            icon.set_from_pixbuf (pix);
-        }
+        icon.set_from_pixbuf (pix);
 
         return true;
     }
@@ -162,8 +178,8 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         }
     }
 
-    public bool set_max_width (int width) {
-        if (width != set_max_width_request) {
+    public bool set_max_width (int width, bool force = false) {
+        if (width != set_max_width_request || force) {
             get_new_pix (width - total_padding);
             set_max_width_request = width;
         }
@@ -173,15 +189,18 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         return true;
     }
 
-    public void update_item (WidgetGrid.DataInterface? _data) {
-        assert (_data is GOF.File);
-        data = _data;
+    /** Call with null to refresh from existing data **/
+    public void update_item (WidgetGrid.DataInterface? _data = null) {
+        if (_data != null) {
+            data = _data;
+        }
+        update_state ();
         label.label = item_name;
-        set_max_width_request = 0;
+        set_max_width (set_max_width_request, true);
     }
 
     /** The point supplied must be in widget coordinates **/
-    public ClickZone get_zone (Gdk.Point p) {
+    public FM.ClickZone get_zone (Gdk.Point p) {
         var p_rect = Gdk.Rectangle () {x = p.x, y = p.y, width = 1, height = 1};
         FM.ClickZone result = FM.ClickZone.BLANK_NO_PATH;
 
@@ -198,14 +217,30 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         return result;
     }
 
-    public override bool draw (Cairo.Context cr) {
+    private void update_state () {
         if (is_selected) {
             grid.set_state_flags (Gtk.StateFlags.SELECTED, false);
+            helper.set_from_icon_name ("selection-checked", default_helper_size);
         } else {
             grid.unset_state_flags (Gtk.StateFlags.SELECTED);
         }
 
-        return base.draw (cr);
+        if (is_cursor_position) {
+            grid.set_state_flags (Gtk.StateFlags.PRELIGHT, false);
+            helper.set_from_icon_name (is_selected ? "selection-remove" : "selection-add", focused_helper_size);
+        } else {
+            grid.unset_state_flags (Gtk.StateFlags.PRELIGHT);
+        }
+
+        helper.visible = is_cursor_position || is_selected;
+    }
+
+    public void leave () {
+        update_state ();
+    }
+
+    public void hovered (Gdk.EventMotion event) {
+        update_state ();
     }
 }
 }

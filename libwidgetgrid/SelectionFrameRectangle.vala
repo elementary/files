@@ -35,9 +35,14 @@ public class SelectionFrameRectangle : Object, SelectionFrame {
         this.y = y;
     }
 
-    public void update_size (int width, int height) {
-        this.width = width;
-        this.height = height;
+    public bool update_size (int _width, int _height) {
+        if (width != _width || _height != height) {
+            width = _width;
+            height = _height;
+            return true;
+        }
+
+        return false;
     }
 
     public void close () {

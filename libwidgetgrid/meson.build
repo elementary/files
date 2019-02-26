@@ -16,6 +16,7 @@ widgetgrid_lib = shared_library (
     'Interfaces/SelectionHandler.vala',
     'Interfaces/SelectionFrame.vala',
     'Interfaces/PositionHandler.vala',
+    'Interfaces/CursorHandler.vala',
     'Interfaces/Item.vala',
     'Interfaces/Model.vala',
     'Interfaces/DataInterface.vala',
