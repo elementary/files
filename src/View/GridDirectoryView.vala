@@ -16,14 +16,11 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
+/** A subclass of AbstractDirectoryView that uses WidgetGrid (adapted) **/
+
 namespace FM {
     public class GridDirectoryView : AbstractDirectoryView {
         protected new FM.IconGridView tree;
-        /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
-        protected bool previous_selection_was_linear = false;
-        protected Gtk.TreePath? previous_linear_selection_path = null;
-        protected int previous_linear_selection_direction = 0;
-        protected bool linear_select_required = false;
 
         public GridDirectoryView (Marlin.View.Slot _slot) {
             assert (_slot != null);
@@ -204,8 +201,7 @@ namespace FM {
         protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed,
                                                           bool only_shift_pressed) {
 
-            linear_select_required = only_shift_pressed;
-            if (linear_select_required) {
+            if (only_shift_pressed) {/* Linear select */
                 return true;
             } else {
                 return base.will_handle_button_press (no_mods, only_control_pressed, only_shift_pressed);

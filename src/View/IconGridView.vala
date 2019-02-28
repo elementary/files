@@ -16,6 +16,7 @@
     Authors : Jeremy Wootten <jeremy@elementaryos.org>
 ***/
 
+/** This is a wrapper for WidgetGrid to make it substitute for Gtk.IconView in the Files application **/
 namespace FM {
     /* Gtk.IconView functions used in Grid view mode needing to be emulated using libwidgetgrid (prior to possible refactoring) */
     public interface GtkIconViewInterface : Gtk.Widget {
