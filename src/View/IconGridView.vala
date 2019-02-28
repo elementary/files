@@ -75,11 +75,12 @@ namespace FM {
             int col = 0;
             Gdk.Point wp = {0, 0};
 
-            layout_handler.get_row_col_at_pos (x, y, out row, out col, out wp);
-
-            var index = row * layout_handler.cols + col;
-
-            return new Gtk.TreePath.from_indices (index);
+            if (layout_handler.get_row_col_at_pos (x, y, out row, out col, out wp)) {
+                var index = row * layout_handler.cols + col;
+                return new Gtk.TreePath.from_indices (index);
+            } else {
+                return null;
+            }
         }
 
         public void select_path (Gtk.TreePath path) {
@@ -89,8 +90,7 @@ namespace FM {
 
         public void unselect_path (Gtk.TreePath path) {
             var index = path.get_indices ()[0];
-            var data = model.lookup_index (index);
-            data.is_selected = false;
+            unselect_index (index);
         }
 
         public bool path_is_selected (Gtk.TreePath path) {

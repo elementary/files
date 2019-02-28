@@ -93,11 +93,12 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             if (change > 0 && n_widgets < MAX_WIDGETS) {
                 widget_pool.add (factory.new_item ());
                 n_widgets++;
-            } else if (change < 0) {
-                clear_layout (); /* Ensure deleted items are not displayed */
             }
 
+            clear_layout (); /* Ensure deleted items are not displayed */
+            refresh ();
             configure ();
+
         });
 
         notify["hpadding"].connect (() => {
@@ -130,9 +131,12 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     }
 
     public void show_data_index (int index, bool use_align, float yalign) { /* Only align rows */
-        return_if_fail (cols > 0);
+        if (cols <= 0) {
+            return;
+        }
 
-        var row_containing_index = index / cols;
+        var idx = index.clamp (0, n_items);
+        var row_containing_index = idx / cols;
         var n_displayed_items_approx = last_displayed_data_index - first_displayed_data_index + 1;
         var n_rows_displayed_approx = n_displayed_items_approx / cols + 1;
         var rows_to_offset = (int)((double)n_rows_displayed_approx * (double)yalign);

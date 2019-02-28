@@ -108,21 +108,6 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
         add (frame);
 
-        add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
-
-        button_press_event.connect ((event) => {
-            int x = (int)(event.x);
-            int y = (int)(event.y);
-            var zone = get_zone  ({x, y});
-
-            if (zone == FM.ClickZone.HELPER) {
-                data.is_selected = !data.is_selected;
-                update_state ();
-            }
-
-            return false;
-        });
-
         overlay.get_child_position.connect (on_get_child_position);
 
         total_padding += margin_start;

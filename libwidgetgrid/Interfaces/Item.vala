@@ -51,13 +51,6 @@ public interface Item : Gtk.Widget {
         get {
             return data != null ? data.is_selected : false;
         }
-
-        set {
-            if (data != null) {
-                data.is_selected = value;
-                update_item (data);
-            }
-        }
     }
 
     public uint64 data_id {

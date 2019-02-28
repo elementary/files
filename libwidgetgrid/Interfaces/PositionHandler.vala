@@ -108,7 +108,7 @@ public interface PositionHandler : Object {
         col = (int)cc;
         widget_p = {wx, wy};
 
-        return on_item_cell;
+        return row * cols + col < n_items && on_item_cell;
     }
 
     public virtual int get_index_at_row_col (int row, int col) {

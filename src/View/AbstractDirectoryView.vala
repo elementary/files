@@ -1618,7 +1618,9 @@ namespace FM {
                     /* must be on expanded empty folder, use the folder path instead */
                     Gtk.TreePath folder_path = path.copy ();
                     folder_path.up ();
-                    file = model.file_for_path (folder_path);
+                    if (folder_path.get_depth () > 0) {
+                        file = model.file_for_path (folder_path);
+                    }
                 } else {
                     /* can only drop onto folders and executables */
                     if (!file.is_folder () && !file.is_executable ()) {

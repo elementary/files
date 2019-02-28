@@ -221,10 +221,6 @@ namespace FM {
             }
         }
 
-//        protected override bool move_cursor (uint keyval, bool only_shift_pressed) {
-//            tree.move_cursor (keyval, !only_shift_pressed);
-//        }
-
         public override void set_cursor (Gtk.TreePath? path,
                                          bool start_editing,
                                          bool select,
