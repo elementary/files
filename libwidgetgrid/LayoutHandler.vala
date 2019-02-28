@@ -93,6 +93,8 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             if (change > 0 && n_widgets < MAX_WIDGETS) {
                 widget_pool.add (factory.new_item ());
                 n_widgets++;
+            } else if (change < 0) {
+                clear_layout (); /* Ensure deleted items are not displayed */
             }
 
             configure ();
@@ -254,7 +256,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                         var page_increment = 1.0;
                         var page_size = 5.0;
 
-                        var new_total_rows = (n_items) / cols + 1;
+                        var new_total_rows = n_items / cols + 1;
                         if (total_rows != new_total_rows) {
                             clear_layout ();
                             total_rows = new_total_rows;
