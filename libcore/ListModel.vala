@@ -354,12 +354,18 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface, Widge
     }
 
     public GOF.File lookup_index (int index) {
+        if (index < 0) {
+            return GOF.File.get_null ();
+        }
+
         var path = new Gtk.TreePath.from_indices (index);
         Gtk.TreeIter? iter;
-        GOF.File? file;
+        GOF.File? file = null;
 
         get_iter (out iter, path);
-        @get (iter, FM.ColumnID.FILE_COLUMN, out file);
+        if (iter != null) {
+            @get (iter, FM.ColumnID.FILE_COLUMN, out file);
+        }
 
         if (file == null) {
             file = GOF.File.get_null ();

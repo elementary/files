@@ -78,9 +78,12 @@ public interface CursorHandler : Object, SelectionHandler {
         if (data_at_cursor != null) {
             data_at_cursor.is_cursor_position = true;
             res = true;
+            cursor_index = cursor;
+        } else {
+            cursor_index = -1;
         }
 
-        cursor_index = cursor;
+
         return false;
     }
 

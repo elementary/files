@@ -148,15 +148,17 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     public void apply_to_visible_items (WidgetFunc func) {
         Item item;
         int index = first_displayed_widget_index;
-        do {
-            item = widget_pool[index];
-            func (item);
-            if (index == last_displayed_widget_index) {
-                break;
-            } else {
-                index = next_widget_index (index);
-            }
-        } while (true);
+        if (index > 0) {
+            do {
+                item = widget_pool[index];
+                func (item);
+                if (index == last_displayed_widget_index) {
+                    break;
+                } else {
+                    index = next_widget_index (index);
+                }
+            } while (true);
+        }
     }
 
     public void refresh () {
