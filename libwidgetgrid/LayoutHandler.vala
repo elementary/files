@@ -25,6 +25,7 @@
 namespace WidgetGrid {
 public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHandler {
     private const int REFLOW_DELAY_MSEC = 100;
+    private const int REFRESH_DELAY_MSEC = 100;
     private const int MAX_WIDGETS = 1000;
 
     private int pool_size = 0;
@@ -148,23 +149,45 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     public void apply_to_visible_items (WidgetFunc func) {
         Item item;
         int index = first_displayed_widget_index;
-        if (index > 0) {
+        if (index >= 0) {
             do {
                 item = widget_pool[index];
+                if (item == null) {
+                    break;
+                }
+
                 func (item);
                 if (index == last_displayed_widget_index) {
                     break;
                 } else {
                     index = next_widget_index (index);
                 }
+
             } while (true);
         }
     }
 
+    uint refresh_timeout_id = 0;
+    bool refresh_wait = false;
     public void refresh () {
-        apply_to_visible_items ((item) => {
-            item.update_item ();
-        });
+        if (refresh_timeout_id > 0) {
+            refresh_wait = true;
+            return;
+        } else {
+            refresh_timeout_id = Timeout.add (REFRESH_DELAY_MSEC, () => {
+                refresh_wait = false;
+                apply_to_visible_items ((item) => {
+                    item.update_item ();
+                });
+
+                if (refresh_wait) {
+                    return Source.CONTINUE;
+                } else {
+                    refresh_timeout_id = 0;
+                    return Source.REMOVE;
+                }
+            });
+        }
     }
 
     protected void position_items (int first_displayed_row, double offset) {
@@ -386,6 +409,24 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
     protected Gtk.Widget get_widget () {
         return layout;
+    }
+
+    public Item? get_item_for_data_index (int data_index) {
+        if (data_index < 0 || row_data.is_empty) {
+            return null;
+        }
+
+        var offset = data_index - row_data[0].first_data_index;
+        if (offset < 0 || offset > (last_displayed_data_index - first_displayed_data_index)) {
+            return null;
+        } else {
+            var widget_index = first_displayed_widget_index + offset;
+            if (widget_index >= pool_size) {
+                widget_index -= pool_size;
+            }
+
+            return widget_pool[widget_index];
+        }
     }
 }
 }

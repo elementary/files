@@ -63,16 +63,10 @@ public interface Item : Gtk.Widget {
         get {
             return data != null ? data.is_cursor_position : false;
         }
-
-        set {
-            if (data != null) {
-                data.is_cursor_position = value;
-                update_item (data);
-            }
-        }
     }
 
     public virtual void leave () {}
     public virtual void hovered (Gdk.EventMotion event) {}
+    public virtual void enter () {}
 }
 }

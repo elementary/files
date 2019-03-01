@@ -25,6 +25,8 @@ public interface CursorHandler : Object, SelectionHandler {
     public abstract DataInterface data_at_cursor { get; set; }
     public abstract int cursor_index { get; set; }
 
+    public signal void cursor_moved (int previous_index, int current_index);
+
     public virtual int get_index_at_cursor () {
         return cursor_index;
     }
@@ -65,26 +67,31 @@ public interface CursorHandler : Object, SelectionHandler {
         return cursor_index;
     }
 
-    private bool update_cursor (int new_cursor) {
-        bool res = false;
+    private void update_cursor (int new_cursor) {
+        int cursor = -1;
+        int prev_cursor_index = cursor_index;
+
         if (data_at_cursor != null) {
             data_at_cursor.is_cursor_position = false;
-            res = true;
         }
 
-        int cursor = new_cursor.clamp (0, n_items - 1);
-        data_at_cursor = model.lookup_index (cursor);
+        if (new_cursor >= 0) {
+            cursor = new_cursor.clamp (0, n_items - 1);
+            data_at_cursor = model.lookup_index (cursor);
+        } else {
+            data_at_cursor = null;
+        }
 
         if (data_at_cursor != null) {
             data_at_cursor.is_cursor_position = true;
-            res = true;
             cursor_index = cursor;
         } else {
             cursor_index = -1;
         }
 
-
-        return false;
+        if (prev_cursor_index != cursor_index) {
+            cursor_moved (prev_cursor_index, cursor_index);
+        }
     }
 
     public virtual void handle_cursor_keys (uint keyval) {
@@ -113,7 +120,8 @@ public interface CursorHandler : Object, SelectionHandler {
     }
 
     public void set_cursor (int index, bool select = false) {
-        if (update_cursor (index) && select) {
+        update_cursor (index);
+        if (index >= 0 && select) {
             select_data_index (index);
         }
     }
@@ -126,6 +134,10 @@ public interface CursorHandler : Object, SelectionHandler {
 
     public virtual bool move_cursor (uint keyval, bool linear_select = false, bool deselect = true) {
         var previous_cursor_index = cursor_index;
+
+        if (!linear_select && deselect) {
+            clear_selection ();
+        }
 
         if (keyval == Gdk.Key.Right) {
             cursor_forward ();
@@ -140,10 +152,6 @@ public interface CursorHandler : Object, SelectionHandler {
         if (linear_select) {
             linear_select_index (cursor_index, previous_cursor_index);
         } else {
-            if (deselect) {
-                clear_selection ();
-            }
-
             set_cursor (cursor_index, true);
             end_linear_select ();
         }

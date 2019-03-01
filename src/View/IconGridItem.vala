@@ -179,12 +179,15 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         if (_data != null) {
             data = _data;
         }
-        update_state ();
-        label.label = item_name;
-        set_max_width (set_max_width_request, true);
+
+        if (file != null) {
+            update_state ();
+            label.label = item_name;
+            set_max_width (set_max_width_request, true);
+        }
     }
 
-    /** The point supplied must be in widget coordinates **/
+    /** The point supplied must be in IconGridItem coordinates **/
     public FM.ClickZone get_zone (Gdk.Point p) {
         var p_rect = Gdk.Rectangle () {x = p.x, y = p.y, width = 1, height = 1};
         FM.ClickZone result = FM.ClickZone.BLANK_NO_PATH;
@@ -225,6 +228,10 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     }
 
     public void hovered (Gdk.EventMotion event) {
+        update_state ();
+    }
+
+    public void enter () {
         update_state ();
     }
 }

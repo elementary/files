@@ -222,6 +222,5 @@ public interface PositionHandler : Object {
             item.update_item (data);
         }
     }
-
 }
 }

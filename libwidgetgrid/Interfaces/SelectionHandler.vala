@@ -121,6 +121,7 @@ public interface SelectionHandler : Object, PositionHandler {
     public virtual bool clear_selection () {
         selected_data.clear ();
         reset_selected_data ();
+        refresh ();
         return true;
     }
 
@@ -139,6 +140,8 @@ public interface SelectionHandler : Object, PositionHandler {
         for (int i = 0; i < model.get_n_items (); i++) {
             res |= select_data_index (i);
         }
+
+        refresh ();
 
         return false;
     }

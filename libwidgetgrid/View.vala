@@ -50,8 +50,6 @@ public interface ViewInterface : Gtk.Widget {
 
     public signal void selection_changed ();
     public signal void item_clicked (Item item, Gdk.EventButton event);
-    public signal void item_leave (Item item);
-    public signal void item_hovered (Item item, Gdk.EventMotion event);
     public signal void background_clicked (Gdk.EventButton event);
 }
 
@@ -240,20 +238,20 @@ public class View : Gtk.Overlay, ViewInterface {
                 layout_handler.do_rubber_banding (event);
             } else {
                 if (item != hovered_item) {
+                    int index = layout_handler.get_index_at_pos (cp);
+                    layout_handler.set_cursor (index);
                     if (hovered_item != null) {
-                        item_leave (hovered_item);
+                        hovered_item.leave ();
                     }
 
                     hovered_item = item;
-                    int index = layout_handler.get_index_at_pos (cp);
-                    layout_handler.set_cursor (index);
                 }
 
                 if (hovered_item != null) {
                     var w_event = (Gdk.EventMotion)(event.copy ());
                     w_event.x = (double)wp.x;
                     w_event.y = (double)wp.y;
-                    item_hovered (hovered_item, w_event);
+                    hovered_item.hovered (w_event);
                 }
 
                 layout_handler.refresh ();
@@ -264,6 +262,18 @@ public class View : Gtk.Overlay, ViewInterface {
 
         layout_handler.selection_changed.connect (() => {
             selection_changed ();
+        });
+
+        layout_handler.cursor_moved.connect ((prev, current) => {
+            var prev_item = layout_handler.get_item_for_data_index (prev);
+            if (prev_item != null) {
+                prev_item.leave ();
+            }
+
+            var current_item = layout_handler.get_item_for_data_index (current);
+            if (current_item != null) {
+                current_item.enter ();
+            }
         });
 
         show_all ();
@@ -563,6 +573,12 @@ public class View : Gtk.Overlay, ViewInterface {
 
     public void move_cursor (uint keyval, bool linear_select, bool deselect) {
         layout_handler.move_cursor (keyval, linear_select, deselect);
+    }
+
+    public new void queue_draw () {
+warning ("NEW queue draw");
+        layout_handler.refresh ();
+        base.queue_draw ();
     }
 }
 }
