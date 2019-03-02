@@ -924,12 +924,13 @@ public class GOF.File : GLib.Object {
         bool sort_last1 = ((name1[0] == SORT_LAST_CHAR1) || (name1[0] == SORT_LAST_CHAR2));
         bool sort_last2 = ((name2[0] == SORT_LAST_CHAR1) || (name2[0] == SORT_LAST_CHAR2));
 
-        if (!sort_last1 && !sort_last2) {
-            return GLib.strcmp (utf8_collation_key, other.utf8_collation_key);
-        } else if (sort_last1 && !sort_last2) {
+
+        if (sort_last1 && !sort_last2) {
             return 1;
-        } else {
+        } else if (!sort_last1 && sort_last2) {
             return -1;
+        } else {
+            return GLib.strcmp (utf8_collation_key, other.utf8_collation_key);
         }
     }
 

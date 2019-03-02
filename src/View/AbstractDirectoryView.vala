@@ -230,7 +230,6 @@ namespace FM {
                      * of selected files (e.g. OverlayBar critical errors)
                      */
                     disconnect_tree_signals ();
-                    size_allocate.disconnect (on_size_allocate);
                     clipboard.changed.disconnect (on_clipboard_changed);
                     view.key_press_event.disconnect (on_view_key_press_event);
                 } else if (!value && _is_frozen) {
@@ -238,7 +237,6 @@ namespace FM {
                     connect_tree_signals ();
                     on_view_selection_changed ();
 
-                    size_allocate.connect (on_size_allocate);
                     clipboard.changed.connect (on_clipboard_changed);
                     view.key_press_event.connect (on_view_key_press_event);
                 }
@@ -357,8 +355,6 @@ namespace FM {
             set_policy (Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC);
             set_shadow_type (Gtk.ShadowType.NONE);
 
-            size_allocate.connect_after (on_size_allocate);
-
             popup_menu.connect (on_popup_menu);
 
             unrealize.connect (() => {
@@ -372,7 +368,9 @@ namespace FM {
 
             scroll_event.connect (on_scroll_event);
 
-            get_vadjustment ().value_changed.connect_after (schedule_thumbnail_timeout);
+            get_vadjustment ().value_changed.connect_after (() => {
+                schedule_thumbnail_timeout ();
+            });
 
             var prefs = (GOF.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
@@ -1483,11 +1481,6 @@ namespace FM {
             queue_draw ();
         }
 
-    /** Handle size allocation event */
-        private void on_size_allocate (Gtk.Allocation allocation) {
-            schedule_thumbnail_timeout ();
-        }
-
 /** DRAG AND DROP */
 
     /** Handle Drag source signals*/
@@ -2521,15 +2514,14 @@ namespace FM {
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
                             if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
                                 visible_files.prepend (file);
+                                if (plugins != null) {
+                                    plugins.update_file_info (file);
+                                }
+
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
                                     actually_visible++;
                                 }
                             }
-
-                            if (plugins != null) {
-                                plugins.update_file_info (file);
-                            }
-
                         }
                         /* check if we've reached the end of the visible range */
                         if (path.compare (end_path) != 0) {

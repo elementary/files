@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-01-02 06:05+0000\n"
+"PO-Revision-Date: 2019-02-28 22:26+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://weblate.elementary.io/projects/files/files/"
-"mr/>\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: src/Application.vala:120
@@ -357,34 +357,34 @@ msgstr "अवैध फाइल नाव प्रदान केले"
 
 #: src/View/AbstractDirectoryView.vala:2052
 msgid "Invalid"
-msgstr ""
+msgstr "अवैध"
 
 #: src/View/AbstractDirectoryView.vala:2058
 msgid "Run"
-msgstr ""
+msgstr "चालवा"
 
 #: src/View/AbstractDirectoryView.vala:2062
 #, c-format
 msgid "Open in %s"
-msgstr ""
+msgstr "%s मध्ये उघडा"
 
 #: src/View/AbstractDirectoryView.vala:2072
 msgid "Open in"
-msgstr ""
+msgstr "मध्ये उघडा"
 
 #: src/View/AbstractDirectoryView.vala:2074
 #: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
-msgstr ""
+msgstr "उघडण्यासाठी वापरा"
 
 #: src/View/AbstractDirectoryView.vala:2161
 msgid "Templates"
-msgstr ""
+msgstr "नमुने"
 
 #: src/View/AbstractDirectoryView.vala:2408
 #, c-format
 msgid "Untitled %s"
-msgstr ""
+msgstr "शीर्षकविरहित"
 
 #: src/View/AbstractDirectoryView.vala:2756
 #: src/View/AbstractDirectoryView.vala:2940
