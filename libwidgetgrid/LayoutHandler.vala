@@ -280,18 +280,18 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                         var val = first_displayed_row;
 
                         var min_val = 0.0;
-                        var max_val = (double)(total_rows + 1);
+                        var max_val = (double)(total_rows + 2);
                         var step_increment = 0.05;
                         var page_increment = 1.0;
                         var page_size = 5.0;
 
-                        var new_total_rows = n_items / cols + 1;
+                        var new_total_rows = n_items / cols + 2;
                         if (total_rows != new_total_rows) {
                             clear_layout ();
                             total_rows = new_total_rows;
                             last_displayed_widget_index = 0;
                             pool_size = 0;
-                            max_val = (double)(total_rows + 1);
+                            max_val = (double)(total_rows + 2); /* Ensure bottom row fully exposed */
                             vadjustment.configure (val, min_val, max_val, step_increment, page_increment, page_size);
                         }
 
