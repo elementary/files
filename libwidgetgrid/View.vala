@@ -575,10 +575,5 @@ public class View : Gtk.Overlay, ViewInterface {
         layout_handler.move_cursor (keyval, linear_select, deselect);
     }
 
-    public new void queue_draw () {
-warning ("NEW queue draw");
-        layout_handler.refresh ();
-        base.queue_draw ();
-    }
 }
 }

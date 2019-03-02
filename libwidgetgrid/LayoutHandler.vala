@@ -34,8 +34,8 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     private int n_widgets = 0;
 
     private int total_rows = 0;
-    public int first_displayed_widget_index { get; set; default = -1;}
-    public int last_displayed_widget_index { get; set; default = -1;}
+    public int first_displayed_widget_index { get; set; default = 0;}
+    public int last_displayed_widget_index { get; set; default = 0;}
 
 
     private uint32 last_event_time = 0;
@@ -97,21 +97,24 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             }
 
             clear_layout (); /* Ensure deleted items are not displayed */
-            refresh ();
             configure ();
+            refresh ();
 
         });
 
         notify["hpadding"].connect (() => {
             configure ();
+            refresh ();
         });
 
         notify["vpadding"].connect (() => {
             configure ();
+            refresh ();
         });
 
         notify["item-width"].connect (() => {
             configure ();
+            refresh ();
         });
 
         notify["cursor-index"].connect (() => {
@@ -149,7 +152,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     public void apply_to_visible_items (WidgetFunc func) {
         Item item;
         int index = first_displayed_widget_index;
-        if (index >= 0) {
+        if (index >= 0 && !widget_pool.is_empty) {
             do {
                 item = widget_pool[index];
                 if (item == null) {
@@ -194,18 +197,20 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         int data_index, widget_index, row_height;
 
         data_index = first_displayed_row * cols;
-
         if (n_items == 0 || data_index >= n_items) {
             return;
         } else if (data_index < 0) {
             return;
         }
 
-        if (previous_first_displayed_data_index != data_index) {
-            clear_layout ();
-            previous_first_displayed_data_index = data_index;
-            first_displayed_widget_index = data_index % (last_displayed_widget_index + 1);
+        if (previous_first_displayed_data_index >= 0) {
+            if (previous_first_displayed_data_index != data_index) {
+                clear_layout ();
+                first_displayed_widget_index = 0;
+            }
         }
+
+        previous_first_displayed_data_index = data_index;
 
         first_displayed_data_index = data_index;
         last_displayed_data_index = data_index;
@@ -383,6 +388,8 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                 layout.move (w, -1000, -1000);
                 moved++;
             }
+
+            ((Item)w).data = null;
         }
     }
 

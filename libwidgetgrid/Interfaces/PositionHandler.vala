@@ -181,13 +181,15 @@ public interface PositionHandler : Object {
         The row height is the largest height request of the widgets in the row
     **/
     protected virtual int get_row_height (int widget_index, int data_index) { /* widgets previous updated */
-        var max_h = 0;
         if (widget_index < 0 || data_index < 0) {
+            critical ("invalid index");
             return -1;
         }
 
+        var max_h = 0;
+        var windex = widget_index;
         for (int c = 0; c < cols && data_index < model.get_n_items (); c++) {
-            var item = widget_pool[widget_index];
+            var item = widget_pool[windex];
             var data = model.lookup_index (data_index);
             if (data == null) {
                 break;
@@ -208,13 +210,15 @@ public interface PositionHandler : Object {
                 item_width = min_w - hpadding;
             }
 
-            widget_index = next_widget_index (widget_index);
+            windex = next_widget_index (windex);
             data_index++;
         }
 
+        windex = widget_index;
         for (int c = 0; c < cols && data_index < model.get_n_items (); c++) {
             var item = widget_pool[widget_index];
             item.set_size_request (-1, max_h);
+            windex = next_widget_index (windex);
         }
 
         return max_h;
