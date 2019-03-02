@@ -182,6 +182,9 @@ public interface PositionHandler : Object {
     **/
     protected virtual int get_row_height (int widget_index, int data_index) { /* widgets previous updated */
         var max_h = 0;
+        if (widget_index < 0 || data_index < 0) {
+            return -1;
+        }
 
         for (int c = 0; c < cols && data_index < model.get_n_items (); c++) {
             var item = widget_pool[widget_index];

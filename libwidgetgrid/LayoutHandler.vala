@@ -29,13 +29,13 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     private const int MAX_WIDGETS = 1000;
 
     private int pool_size = 0;
-    private int previous_first_displayed_data_index = 0;
-    private int previous_first_displayed_row_height = 0;
+    private int previous_first_displayed_data_index = -1;
+    private int previous_first_displayed_row_height = -1;
     private int n_widgets = 0;
 
     private int total_rows = 0;
-    public int first_displayed_widget_index { get; set; default = 0;}
-    public int last_displayed_widget_index { get; set; default = 0;}
+    public int first_displayed_widget_index { get; set; default = -1;}
+    public int last_displayed_widget_index { get; set; default = -1;}
 
 
     private uint32 last_event_time = 0;
@@ -49,8 +49,8 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
     private uint reflow_timeout_id = 0;
 
-    public int first_displayed_data_index { get; private set; default = 0; }
-    public int last_displayed_data_index { get; private set; default = 0; }
+    public int first_displayed_data_index { get; private set; default = -1; }
+    public int last_displayed_data_index { get; private set; default = -1; }
 
     public Gtk.Adjustment vadjustment { get; construct; }
     public AbstractItemFactory factory { get; construct; }
@@ -198,8 +198,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         if (n_items == 0 || data_index >= n_items) {
             return;
         } else if (data_index < 0) {
-            data_index = 0;
-            offset = 0;
+            return;
         }
 
         if (previous_first_displayed_data_index != data_index) {
