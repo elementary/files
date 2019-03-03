@@ -289,12 +289,12 @@ namespace FM {
             recent = app.get_recent_manager ();
 
             thumbnailer = Marlin.Thumbnailer.get ();
-            thumbnailer.finished.connect ((req) => {
+            thumbnailer.finished.connect_after ((req) => {
                 if (req == thumbnail_request) {
                     thumbnail_request = -1;
                 }
 
-                draw_when_idle ();
+                thumbnails_updated ();
             });
 
             Preferences.settings.bind ("single-click", this, "single_click_mode", SettingsBindFlags.GET);
@@ -325,6 +325,10 @@ namespace FM {
                 view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
                 view.scroll_event.connect (on_scroll_event);
+                window.configure_event.connect (() => {
+                    schedule_thumbnail_timeout ();
+                    return false;
+                });
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -721,6 +725,8 @@ namespace FM {
                     default:
                         break;
                 }
+            } else {
+                schedule_thumbnail_timeout ();
             }
 
             return false;
@@ -1310,7 +1316,10 @@ namespace FM {
                 is_writable = false;
             }
 
-            schedule_thumbnail_timeout ();
+            Idle.add (() => {
+                schedule_thumbnail_timeout ();
+                return Source.REMOVE;
+            });
         }
 
     /** Handle zoom level change */
@@ -2361,6 +2370,7 @@ namespace FM {
 
 
 /** Thumbnail handling */
+        GLib.List<unowned GOF.File> visible_files;
         protected void schedule_thumbnail_timeout () {
             /* delay creating the idle until the view has finished loading.
              * this is done because we only can tell the visible range reliably after
@@ -2405,7 +2415,7 @@ namespace FM {
                 Gtk.TreeIter iter;
                 bool valid_iter;
                 GOF.File? file;
-                GLib.List<GOF.File> visible_files = null;
+                visible_files = null;
                 uint actually_visible = 0;
 
                 if (get_visible_range (out start_path, out end_path)) {
@@ -2966,6 +2976,7 @@ namespace FM {
                     slot.horizontal_scroll_event (increment);
                 }
             }
+
             return handle_scroll_event (event);
         }
 
@@ -3568,6 +3579,10 @@ namespace FM {
         protected virtual void thaw_tree () {}
         protected new virtual void freeze_child_notify () {}
         protected new virtual void thaw_child_notify () {}
+
+        protected virtual void thumbnails_updated () {
+            draw_when_idle ();
+        }
 
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
          * invokes the default widget handler.  IconView requires special handler */

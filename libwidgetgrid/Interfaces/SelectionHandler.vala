@@ -96,10 +96,11 @@ public interface SelectionHandler : Object, PositionHandler {
         var rect = get_framed_rectangle ();
         bool res = false;
         int count = 0;
+        /* Closure is only applied to valid items */
         apply_to_visible_items ((item) => {
             count++;
-            var in_rect = item != null && item.intersect (rect);
-            if (item == null || (!in_rect && !deselect)) {
+            var in_rect = item.intersect (rect);
+            if (!in_rect && !deselect) {
                 return;
             } else if (in_rect || deselect) {
                 res |= select_data (item.data, in_rect);

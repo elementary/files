@@ -47,9 +47,12 @@ public interface ViewInterface : Gtk.Widget {
     public abstract void unselect_index (int index);
     public abstract void clear_selection ();
 
+    public abstract void refresh_layout ();
+
     public signal void selection_changed ();
     public signal void item_clicked (Item item, Gdk.EventButton event);
     public signal void background_clicked (Gdk.EventButton event);
+    public signal void adjustment_value_changed (double val);
 }
 
 public class View : Gtk.Overlay, ViewInterface {
@@ -171,6 +174,14 @@ public class View : Gtk.Overlay, ViewInterface {
         add (event_box);
         add_overlay (scrollbar);
 
+        event_box.add_events (
+            Gdk.EventMask.SCROLL_MASK |
+            Gdk.EventMask.SMOOTH_SCROLL_MASK |
+            Gdk.EventMask.BUTTON_PRESS_MASK |
+            Gdk.EventMask.BUTTON_RELEASE_MASK |
+            Gdk.EventMask.POINTER_MOTION_MASK
+        );
+
         event_box.size_allocate.connect ((alloc) => {
             if (last_width != alloc.width || last_height != alloc.height) {
                 last_width = alloc.width;
@@ -179,13 +190,8 @@ public class View : Gtk.Overlay, ViewInterface {
             }
         });
 
-        event_box.add_events (Gdk.EventMask.SCROLL_MASK |
-                    Gdk.EventMask.SMOOTH_SCROLL_MASK |
-                    Gdk.EventMask.BUTTON_PRESS_MASK |
-                    Gdk.EventMask.BUTTON_RELEASE_MASK |
-                    Gdk.EventMask.POINTER_MOTION_MASK
-        );
 
+        add_events (Gdk.EventMask.SCROLL_MASK);
         event_box.scroll_event.connect ((event) => {
             if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0) { /* Control key not pressed */
                 return handle_scroll (event);
@@ -252,8 +258,6 @@ public class View : Gtk.Overlay, ViewInterface {
                     w_event.y = (double)wp.y;
                     hovered_item.hovered (w_event);
                 }
-
-                layout_handler.refresh ();
             }
 
             return false;
@@ -273,6 +277,10 @@ public class View : Gtk.Overlay, ViewInterface {
             if (current_item != null) {
                 current_item.enter ();
             }
+        });
+
+        layout_handler.vadjustment.value_changed.connect ((adj) => {
+            adjustment_value_changed (adj.get_value ());
         });
 
         show_all ();
@@ -360,11 +368,12 @@ public class View : Gtk.Overlay, ViewInterface {
                     layout_handler.scroll_steps (-1);
                 }
 
-                return true;
-
+                break;
             default:
-                return false;
+                break;
         }
+
+        return true;
     }
 
     private bool handle_zoom (Gdk.EventScroll event) {
@@ -391,6 +400,7 @@ public class View : Gtk.Overlay, ViewInterface {
                     total_delta_y = 0;
                     zoom_in ();
                 }
+
                 return true;
 
             default:
@@ -585,6 +595,10 @@ public class View : Gtk.Overlay, ViewInterface {
 
     public void clear_selection () {
         layout_handler.clear_selection ();
+    }
+
+    public void refresh_layout () {
+        layout_handler.refresh ();
     }
 }
 }

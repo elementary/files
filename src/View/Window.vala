@@ -155,7 +155,7 @@ namespace Marlin.View {
             tabs.allow_new_window = true;
             tabs.group_name = Config.APP_NAME;
 
-            this.configure_event.connect_after ((e) => {
+            this.configure_event.connect ((e) => {
                 tabs.set_size_request (e.width / 2, -1);
                 return false;
             });

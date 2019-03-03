@@ -52,6 +52,10 @@ namespace FM {
             set_up_view ();
             add (tree);
 
+            tree.adjustment_value_changed.connect_after (() => {
+                schedule_thumbnail_timeout ();
+            });
+
             return tree as Gtk.Widget;
         }
 
@@ -310,6 +314,11 @@ namespace FM {
 
         protected override void thaw_tree () {
             tree.thaw_child_notify ();
+        }
+
+        protected override void thumbnails_updated () {
+            tree.refresh_layout ();
+            base.thumbnails_updated ();
         }
     }
 }

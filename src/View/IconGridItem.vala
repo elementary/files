@@ -50,12 +50,6 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
     public WidgetGrid.DataInterface data { get; set; default = null; }
 
-    public Gdk.Pixbuf? pix {
-        get {
-            return file != null ? file.pix : null;
-        }
-    }
-
     public string item_name {
         get {
             return file != null ? file.get_display_name () : "";
@@ -83,7 +77,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         grid.valign = Gtk.Align.CENTER;
         grid.hexpand = true;
 
-        icon = new Gtk.Image.from_pixbuf (pix);
+        icon = new Gtk.Image.from_pixbuf (null);
         icon.margin_top = icon.margin_bottom = 6;
         icon.halign = Gtk.Align.CENTER;
 
@@ -153,10 +147,11 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         icon.set_size_request (size, size);
 
         if (file != null) {
+            file.query_thumbnail_update ();
             file.update_icon (size, 1);
+            icon.set_from_pixbuf (file.pix);
+            icon.queue_draw ();
         }
-
-        icon.set_from_pixbuf (pix);
 
         return true;
     }
@@ -171,11 +166,10 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
     public bool set_max_width (int width, bool force = false) {
         if (width != set_max_width_request || force) {
-            get_new_pix (width - total_padding);
             set_max_width_request = width;
+            set_size_request (width, -1);
+            get_new_pix (width - total_padding);
         }
-
-        set_size_request (width, -1);
 
         return true;
     }

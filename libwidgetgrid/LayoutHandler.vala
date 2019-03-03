@@ -98,6 +98,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                 if (change > 0 && n_widgets < MAX_WIDGETS) {
                     widget_pool.add (factory.new_item ());
                     n_widgets++;
+                    pool_size = 0;
                 }
 
                 clear_layout (); /* Ensure deleted items are not displayed */
@@ -165,11 +166,10 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         if (index >= 0 && !widget_pool.is_empty) {
             do {
                 item = widget_pool[index];
-                if (item == null) {
-                    break;
+                if (item != null && item.data_id != -1) {
+                    func (item);
                 }
 
-                func (item);
                 if (index == last_displayed_widget_index) {
                     break;
                 } else {
@@ -274,6 +274,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             row_data[r].update (int.MAX, int.MAX, int.MAX, int.MAX);
         }
 
+        last_displayed_data_index = data_index - 1;
         var items_displayed = last_displayed_data_index - first_displayed_data_index + 1;
         pool_size = (items_displayed + 2 * cols - items_displayed % cols).clamp (0, n_widgets - 1);
         layout.queue_draw ();
@@ -477,6 +478,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         first_displayed_data_index = 0;
         first_displayed_widget_index = 0;
         last_selected_index = 0;
+        pool_size = 0;
 
         row_data = new Gee.ArrayList<RowData> ();
         total_rows = 0;
