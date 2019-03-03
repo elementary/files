@@ -29,31 +29,16 @@ public class SimpleModel : Object, Model<DataInterface> {
         list = new Vala.ArrayList<DataInterface> ();
     }
 
-    public bool add (DataInterface data) {
-        var res = list.add (data);
-        if (res) {
-            n_items_changed (1);
-        }
-
-        return res;
+    protected bool real_add (DataInterface data) {
+        return list.add (data);
     }
 
-    public bool remove_data (DataInterface data) {
-        var res = list.remove (data);
-        if (res) {
-            n_items_changed (-1);
-        }
-
-        return res;
+    protected bool real_remove_data (DataInterface data) {
+        return list.remove (data);
     }
 
-    public bool remove_index (int index) {
-        var res = list.remove_at (index) != null;
-        if (res) {
-            n_items_changed (-1);
-        }
-
-        return res;
+    protected bool real_remove_index (int index) {
+        return list.remove_at (index) != null;
     }
 
     public DataInterface lookup_index (int index) {

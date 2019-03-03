@@ -19,10 +19,20 @@
 /*** WidgetGrid.Model<G> interface defines the requirements for a model usable with WidgetGrid.View.
 ***/
 namespace WidgetGrid {
-
+[GenericAccessors]
 public interface Model<G> : Object {
-    public abstract bool add (G data); /* Returns position inserted at (or -1 if not implemented) */
-    public virtual int add_array (G[] data_array) { /* Returns positions inserted at */
+    public bool add (G data) {/* Returns position inserted at (or -1 if not implemented) */
+        if (real_add (data)) {
+            n_items_changed (1);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    protected abstract bool real_add (G data);
+
+    public int add_array (G[] data_array) { /* Returns positions inserted at */
         int added = 0;
         var n_items = data_array.length;
         for (int index = 0; index < n_items; index++) {
@@ -34,8 +44,30 @@ public interface Model<G> : Object {
         return added;
     }
 
-    public abstract bool remove_index (int index);
-    public abstract bool remove_data (G data);
+    public bool remove_index (int index) {
+        var data = lookup_index (index);
+        if (real_remove_index (index)) {
+            data_removed (data);
+            n_items_changed (-1);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    protected abstract bool real_remove_index (int index);
+
+    public bool remove_data (G data) {
+        if (real_remove_data (data)) {
+            data_removed (data);
+            n_items_changed (-1);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    protected abstract bool real_remove_data (G data);
 
     public abstract G lookup_index (int index);
     public abstract int lookup_data (G data);
@@ -47,5 +79,6 @@ public interface Model<G> : Object {
     public abstract int get_n_items ();
 
     public signal void n_items_changed (int n_changed);
+    public signal void data_removed (G data);
 }
 }

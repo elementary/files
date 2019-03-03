@@ -28,11 +28,11 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     private const int REFRESH_DELAY_MSEC = 100;
     private const int MAX_WIDGETS = 1000;
 
+    private int n_widgets = 0;
+
     private int pool_size = 0;
     private int previous_first_displayed_data_index = -1;
     private int previous_first_displayed_row_height = -1;
-    private int n_widgets = 0;
-
     private int total_rows = 0;
     public int first_displayed_widget_index { get; set; default = 0;}
     public int last_displayed_widget_index { get; set; default = 0;}
@@ -79,27 +79,37 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     public int previous_linear_selection_index {get; set; default = -1; }
     public int last_selected_index {get; set; default = -1;}
 
+    public bool ignore_model_changes { get; set; default = false;}
+
     construct {
         widget_pool = new Gee.ArrayList<Item> ();
         selected_data = new Gee.TreeSet<DataInterface> ((CompareDataFunc?)(DataInterface.compare_data_func));
-
         row_data = new Gee.ArrayList<RowData> ();
         vadjustment = new Gtk.Adjustment (0.0, 0.0, 10.0, 1.0, 1.0, 1.0);
         frame = new SelectionFrameRectangle ();
 
+        initialize_layout_data ();
+
         vadjustment.value_changed.connect (on_adjustment_value_changed);
 
         model.n_items_changed.connect ((change) => {
-            n_items += change;
-            if (change > 0 && n_widgets < MAX_WIDGETS) {
-                widget_pool.add (factory.new_item ());
-                n_widgets++;
+            if (!ignore_model_changes) {
+                n_items += change;
+                if (change > 0 && n_widgets < MAX_WIDGETS) {
+                    widget_pool.add (factory.new_item ());
+                    n_widgets++;
+                }
+
+                clear_layout (); /* Ensure deleted items are not displayed */
+                configure ();
+                refresh ();
             }
+        });
 
-            clear_layout (); /* Ensure deleted items are not displayed */
-            configure ();
-            refresh ();
-
+        model.data_removed.connect ((data) => {
+            if (!ignore_model_changes && data.is_selected) {
+                selected_data.remove (data);
+            }
         });
 
         notify["hpadding"].connect (() => {
@@ -203,6 +213,10 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             return;
         }
 
+        if (pool_size == 0) {
+            pool_size = n_widgets - 1;
+        }
+
         if (previous_first_displayed_data_index >= 0) {
             if (previous_first_displayed_data_index != data_index) {
                 clear_layout ();
@@ -233,14 +247,13 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             int x = hpadding;
             for (int c = 0; c < cols && data_index < n_items; c++) {
                 var item = widget_pool[widget_index];
+                item.set_size_request (item_width, row_height - 2 * vpadding);
 
                 if (item.get_parent () != null) {
                     layout.move (item, x, y);
                 } else {
                     layout.put (item, x, y);
                 }
-
-                item.set_size_request (item_width, row_height - 2 * vpadding);
 
                 x += item_width + hpadding;
 
@@ -255,15 +268,14 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         }
 
         if (r > row_data.size - 1) {
+            assert (r == row_data.size);
             row_data.add (new RowData ());
         } else {
             row_data[r].update (int.MAX, int.MAX, int.MAX, int.MAX);
         }
 
         var items_displayed = last_displayed_data_index - first_displayed_data_index + 1;
-        pool_size = int.max (pool_size, items_displayed + 2 * cols - items_displayed % cols);
-        pool_size = pool_size.clamp (0, n_widgets - 1);
-
+        pool_size = (items_displayed + 2 * cols - items_displayed % cols).clamp (0, n_widgets - 1);
         layout.queue_draw ();
     }
 
@@ -433,6 +445,43 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
             return widget_pool[widget_index];
         }
+    }
+
+    public void update_from_model () {
+        var new_n_items = model.get_n_items ();
+
+        if (new_n_items != n_items) {
+            if (n_widgets < new_n_items && n_widgets < MAX_WIDGETS) {
+                var count = new_n_items - n_widgets;
+                for (int i = 0; i < count; i++) {
+                    if (i > MAX_WIDGETS) {
+                        break;
+                    }
+
+                    widget_pool.add (factory.new_item ());
+                    n_widgets++;
+                }
+            }
+        }
+
+        clear_selection ();
+        n_items = new_n_items;
+        initialize_layout_data ();
+        configure ();
+        refresh ();
+    }
+
+    private void initialize_layout_data () {
+        previous_first_displayed_data_index = 0;
+        previous_first_displayed_row_height = 0;
+        first_displayed_data_index = 0;
+        first_displayed_widget_index = 0;
+        last_selected_index = 0;
+
+        row_data = new Gee.ArrayList<RowData> ();
+        total_rows = 0;
+
+        clear_layout ();
     }
 }
 }

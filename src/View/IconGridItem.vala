@@ -21,6 +21,10 @@
 ***/
 namespace FM {
 public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
+    private static uint64 get_new_id () {
+        return get_monotonic_time ();
+    }
+
     private static int _max_height;
     public static int max_height { get { return _max_height; } set { _max_height = value; } default = 256;}
     private static int _min_height;
@@ -61,9 +65,11 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     public bool is_selected { get {return data != null ? data.is_selected : false;} }
     public bool is_cursor_position { get {return data != null ? data.is_cursor_position : false;} }
     public uint64 data_id { get {return data != null ? data.data_id : -1;} }
+    public uint64 widget_id { get; construct; }
     public GOF.File? file { get { return data != null ? (GOF.File)data : null; } }
 
     construct {
+        widget_id = IconGridItem.get_new_id ();
         overlay = new Gtk.Overlay ();
         frame = new Gtk.Frame (null);
         frame.shadow_type = Gtk.ShadowType.OUT;

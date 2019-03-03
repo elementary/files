@@ -188,6 +188,7 @@ public interface PositionHandler : Object {
 
         var max_h = 0;
         var windex = widget_index;
+        int update_count = 0;
         for (int c = 0; c < cols && data_index < model.get_n_items (); c++) {
             var item = widget_pool[windex];
             var data = model.lookup_index (data_index);
@@ -195,7 +196,10 @@ public interface PositionHandler : Object {
                 break;
             }
 
-            update_item_with_data (item, data);
+            if (update_item_with_data (item, data) ) {
+                update_count++;
+            }
+
             item.set_max_width (item_width);
 
             int min_h, nat_h, min_w, nat_w;
@@ -224,9 +228,12 @@ public interface PositionHandler : Object {
         return max_h;
     }
 
-    private void update_item_with_data (Item item, DataInterface data) {
+    private bool update_item_with_data (Item item, DataInterface data) {
         if (item.data_id != data.data_id) {
             item.update_item (data);
+            return true;
+        } else {
+            return false;
         }
     }
 }

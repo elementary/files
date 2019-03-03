@@ -29,15 +29,12 @@ public interface FM.DirectoryViewInterface : Object {
     public signal void sort_order_changed (FM.ColumnID new_sort_property, bool reversed, FM.ColumnID old_sort_property);
 
     public abstract GOF.Directory.Async? root_dir { get; set; }
-    public abstract int icon_size { get; set; }
     public abstract bool has_child { get; set; }
     public abstract bool sort_directories_first { get; set; }
     public abstract ColumnID sort_file_property { get; set; }
     public abstract bool reversed { get; set; }
 
     public abstract bool add_file (GOF.File file, GOF.Directory.Async? dir = null);
-    public abstract bool remove_file (GOF.File file, GOF.Directory.Async? dir = null);
-    public abstract bool remove_files (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null);
     public abstract Gtk.TreeRowReference? find_file_row (GOF.File file, GOF.Directory.Async? dir = null);
     public abstract GLib.List<Gtk.TreeRowReference> find_file_rows (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null);
     public abstract GOF.File? file_for_path (Gtk.TreePath path);
@@ -53,7 +50,6 @@ public interface FM.DirectoryViewInterface : Object {
 public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface, WidgetGrid.Model<GOF.File> {
     public GOF.Directory.Async? root_dir { get; set; }
     public bool has_child { get; set; default = false; }
-    public int icon_size { get; set; default = 32; }
     public ColumnID sort_file_property { get; set; default = FM.ColumnID.FILENAME;}
     public bool reversed { get; set; }
     public bool sort_directories_first { get; set; default = true;}
@@ -224,13 +220,13 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface, Widge
         return true;
     }
 
-    public bool remove_file (GOF.File file_a, GOF.Directory.Async? directory = null) {
-        var files = new GLib.Sequence<GOF.File> ();
-        files.append (file_a);
-        return remove_files (files, directory);
+    private bool remove_file (GOF.File file_a, GOF.Directory.Async? directory = null) {
+        var files_to_remove = new GLib.Sequence<GOF.File> ();
+        files_to_remove.append (file_a);
+        return remove_files (files_to_remove);
     }
 
-    public bool remove_files (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null) {
+    private bool remove_files (GLib.Sequence<GOF.File> files, GOF.Directory.Async? dir = null) {
         files.sort (file_match_func);  /* Sort in same order as model */
         /* Should only need to pass through model once (or less) if all files are in model */
         GLib.List<Gtk.TreeRowReference> rows_to_remove = null;
@@ -338,18 +334,18 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface, Widge
 
     /** Implement WidgetGrid.Model<GOF.File> interface **/
     /** This interface is for a flat store (i.e. no subdirectories) **/
-    public bool add (GOF.File data) {
+    protected bool real_add (GOF.File data) {
         return add_file (data);
     }
 
-    public bool remove_index (int index) {
+    protected bool real_remove_index (int index) {
         var path = new Gtk.TreePath.from_indices (index);
         Gtk.TreeIter? iter;
         get_iter (out iter, path);
         return remove (ref iter);
     }
 
-    public bool remove_data (GOF.File data) {
+    protected bool real_remove_data (GOF.File data) {
         return remove_file (data);
     }
 

@@ -45,8 +45,7 @@ public interface ViewInterface : Gtk.Widget {
     public abstract bool get_visible_range_indices (out int first, out int last);
     public abstract void select_index (int index);
     public abstract void unselect_index (int index);
-
-
+    public abstract void clear_selection ();
 
     public signal void selection_changed ();
     public signal void item_clicked (Item item, Gdk.EventButton event);
@@ -575,5 +574,17 @@ public class View : Gtk.Overlay, ViewInterface {
         layout_handler.move_cursor (keyval, linear_select, deselect);
     }
 
+    public void freeze_child_notify () {
+        layout_handler.ignore_model_changes = true;
+    }
+
+    public void thaw_child_notify () {
+        layout_handler.ignore_model_changes = false;
+        layout_handler.update_from_model ();
+    }
+
+    public void clear_selection () {
+        layout_handler.clear_selection ();
+    }
 }
 }

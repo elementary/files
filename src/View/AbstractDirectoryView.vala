@@ -635,6 +635,7 @@ namespace FM {
             freeze_tree ();
             block_model ();
             model.clear ();
+            selected_files = null;
             all_selected = false;
             unblock_model ();
         }
@@ -1266,8 +1267,7 @@ namespace FM {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;
-            model.remove_file (file, dir);
-
+            model.remove_data (file);
             remove_marlin_icon_info_cache (file);
 
             if (file.get_thumbnail_path () != null) {
@@ -1322,7 +1322,6 @@ namespace FM {
                 slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
             }
 
-            model.icon_size = icon_size;
             change_zoom_level ();
         }
 
@@ -3426,6 +3425,7 @@ namespace FM {
                 selected_files = null;
 
                 var selected_count = get_selected_files_from_model (out selected_files);
+                assert (selected_count <= slot.displayed_files_count);
                 all_selected = selected_count == slot.displayed_files_count;
                 selected_files.reverse ();
                 selected_files_invalid = false;

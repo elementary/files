@@ -302,5 +302,14 @@ namespace FM {
 
             return false;
         }
+
+        protected override void freeze_tree () {
+            tree.clear_selection ();
+            tree.freeze_child_notify ();
+        }
+
+        protected override void thaw_tree () {
+            tree.thaw_child_notify ();
+        }
     }
 }
