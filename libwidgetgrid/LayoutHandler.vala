@@ -151,12 +151,14 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         }
 
         var idx = index.clamp (0, n_items);
-        var row_containing_index = idx / cols;
+        var row_containing_index = idx / cols + 1;
         var n_displayed_items_approx = last_displayed_data_index - first_displayed_data_index + 1;
         var n_rows_displayed_approx = n_displayed_items_approx / cols + 1;
         var rows_to_offset = (int)((double)n_rows_displayed_approx * (double)yalign) + 1;
-        var first_row = row_containing_index - rows_to_offset;
-        vadjustment.set_value ((double)first_row);
+        var first_displayed_row = row_containing_index - rows_to_offset;
+        vadjustment.set_value ((double)first_displayed_row);
+        /* Must set this now */
+        previous_first_displayed_data_index = first_displayed_row * cols;
     }
 
     public void apply_to_visible_items (WidgetFunc func) {

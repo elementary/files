@@ -1303,8 +1303,6 @@ namespace FM {
             in_recent = slot.directory.is_recent;
             in_network_root = slot.directory.file.is_root_network_folder ();
 
-            thaw_tree ();
-
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
                 if (in_recent)
@@ -1317,6 +1315,7 @@ namespace FM {
             }
 
             Idle.add (() => {
+                thaw_tree ();
                 schedule_thumbnail_timeout ();
                 return Source.REMOVE;
             });
