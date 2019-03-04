@@ -87,6 +87,7 @@ namespace FM {
         public override void change_zoom_level () {
             int spacing = (int)((double)icon_size * (0.3 - zoom_level * 0.03));
             int item_width = (int)((double)icon_size * (2.5 - zoom_level * 0.2));
+
             if (tree != null) {
                 tree.set_column_spacing (spacing);
                 tree.set_item_width (item_width);

@@ -41,6 +41,7 @@ public interface ViewInterface : Gtk.Widget {
     public abstract int hpadding { get; set; }
     public abstract int vpadding { get; set; }
     public abstract bool handle_cursor_keys { get; set; default = true; }
+    public abstract bool handle_zoom { get; set; default = true; }
 
     public abstract bool get_visible_range_indices (out int first, out int last);
     public abstract void select_index (int index);
@@ -100,6 +101,7 @@ public class View : Gtk.Overlay, ViewInterface {
     public int width_increment { get; set; default = 6; }
     public bool fixed_item_widths { get; set; default = true;}
     public bool handle_cursor_keys { get; set; default = true; }
+    public bool handle_zoom { get; set; default = true; }
 
     public int item_width {
         get {
@@ -195,8 +197,8 @@ public class View : Gtk.Overlay, ViewInterface {
         event_box.scroll_event.connect ((event) => {
             if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0) { /* Control key not pressed */
                 return handle_scroll (event);
-            } else {
-                return handle_zoom (event);
+            } else if (handle_zoom) {
+                return handle_zoom_event (event);
             }
 
             return false;
@@ -244,9 +246,12 @@ public class View : Gtk.Overlay, ViewInterface {
             } else {
                 if (item != hovered_item) {
                     int index = layout_handler.get_index_at_pos (cp);
-                    layout_handler.set_cursor (index);
                     if (hovered_item != null) {
                         hovered_item.leave ();
+                    }
+
+                    if (on_item) {
+                        item.enter ();
                     }
 
                     hovered_item = item;
@@ -376,7 +381,7 @@ public class View : Gtk.Overlay, ViewInterface {
         return true;
     }
 
-    private bool handle_zoom (Gdk.EventScroll event) {
+    public virtual bool handle_zoom_event (Gdk.EventScroll event) {
        switch (event.direction) {
             case Gdk.ScrollDirection.UP:
                 zoom_in ();
@@ -584,11 +589,11 @@ public class View : Gtk.Overlay, ViewInterface {
         layout_handler.move_cursor (keyval, linear_select, deselect);
     }
 
-    public void freeze_child_notify () {
+    public new void freeze_child_notify () {
         layout_handler.ignore_model_changes = true;
     }
 
-    public void thaw_child_notify () {
+    public new void thaw_child_notify () {
         layout_handler.ignore_model_changes = false;
         layout_handler.update_from_model ();
     }

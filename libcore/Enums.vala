@@ -137,6 +137,44 @@ namespace Marlin {
         }
     }
 
+    /** Get standard IconSize no larger than requested size **/
+    public static IconSize icon_size_get_nearest_from_value (int size) {
+        if (size >= IconSize.LARGEST) {
+            return IconSize.LARGEST;
+        }
+
+
+        if (size >= IconSize.HUGER) {
+            return IconSize.HUGER;
+        }
+
+        if (size >= IconSize.HUGE) {
+            return IconSize.HUGE;
+        }
+
+        if (size >= IconSize.LARGER) {
+            return IconSize.LARGER;
+        }
+
+        if (size >= IconSize.LARGE) {
+            return IconSize.LARGE;
+        }
+
+        if (size >= IconSize.NORMAL) {
+            return IconSize.NORMAL;
+        }
+
+        if (size >= IconSize.SMALL) {
+            return IconSize.SMALL;
+        }
+
+        if (size >= IconSize.SMALLER) {
+            return IconSize.SMALLER;
+        }
+
+        return IconSize.SMALLEST;
+    }
+
     public static ZoomLevel zoom_level_get_nearest_from_value (int size) {
         if (size <= IconSize.SMALLEST) {
             return ZoomLevel.SMALLEST;

@@ -188,7 +188,6 @@ public interface PositionHandler : Object {
 
         var max_h = 0;
         var windex = widget_index;
-        int update_count = 0;
         for (int c = 0; c < cols && data_index < model.get_n_items (); c++) {
             var item = widget_pool[windex];
             var data = model.lookup_index (data_index);

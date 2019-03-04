@@ -36,6 +36,8 @@ namespace FM {
     public class IconGridView : WidgetGrid.View, GtkIconViewInterface {
         construct {
             handle_cursor_keys = true;
+            handle_zoom = false;
+            fixed_item_widths = false;
         }
 
         public IconGridView (WidgetGrid.AbstractItemFactory _factory, WidgetGrid.Model<WidgetGrid.DataInterface>? _model = null) {
@@ -47,12 +49,11 @@ namespace FM {
         }
 
         public void set_row_spacing (int row_spacing) {
-            this.vpadding = 0;
-            this.vpadding = row_spacing / 2;
+            this.vpadding = row_spacing;
         }
 
         public void set_column_spacing (int col_spacing) {
-            this.hpadding = col_spacing / 2;
+            this.hpadding = col_spacing;
         }
 
         public GLib.List<Gtk.TreePath> get_selected_items () {

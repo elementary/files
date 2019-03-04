@@ -27,6 +27,7 @@ public delegate void WidgetFunc (Item item);
 
 public interface Item : Gtk.Widget {
     public abstract DataInterface data { get; set; default = null; }
+    public abstract bool is_hovered { get; set; default = false; }
 
     /** After calling this, the correct height request for the widget is expected to be available **/
     public abstract bool set_max_width (int width, bool force = false);

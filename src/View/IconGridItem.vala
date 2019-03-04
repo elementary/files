@@ -49,6 +49,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     private int total_padding;
 
     public WidgetGrid.DataInterface data { get; set; default = null; }
+    public bool is_hovered { get; set; default = false; }
 
     public string item_name {
         get {
@@ -71,7 +72,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         frame.show_all ();
 
         grid = new Gtk.Grid ();
-        grid.margin = 2;
+        grid.margin = 3;
         grid.orientation = Gtk.Orientation.VERTICAL;
         grid.halign = Gtk.Align.CENTER;
         grid.valign = Gtk.Align.CENTER;
@@ -79,6 +80,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
         icon = new Gtk.Image.from_pixbuf (null);
         icon.margin_top = icon.margin_bottom = 6;
+        icon.margin_start = icon.margin_end = 3;
         icon.halign = Gtk.Align.CENTER;
 
         label = new Gtk.Label (item_name);
@@ -140,15 +142,12 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     }
 
     public bool get_new_pix (int size) {
-        if (size < 16) {
-            size = 16;
-        }
-
-        icon.set_size_request (size, size);
+        var pix_size = Marlin.icon_size_get_nearest_from_value (size);
+        icon.set_size_request (pix_size, pix_size);
 
         if (file != null) {
             file.query_thumbnail_update ();
-            file.update_icon (size, 1);
+            file.update_icon (pix_size, 1);
             icon.set_from_pixbuf (file.pix);
             icon.queue_draw ();
         }
@@ -220,10 +219,11 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
             grid.unset_state_flags (Gtk.StateFlags.PRELIGHT);
         }
 
-        helper.visible = is_cursor_position || is_selected;
+        helper.visible = is_cursor_position || is_selected || is_hovered;
     }
 
     public void leave () {
+        is_hovered = false;
         update_state ();
     }
 
@@ -232,6 +232,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     }
 
     public void enter () {
+        is_hovered = true;
         update_state ();
     }
 }

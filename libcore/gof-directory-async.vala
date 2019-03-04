@@ -44,7 +44,6 @@ public class Async : Object {
     public GLib.File location {get; private set;}
     public GLib.File? selected_file {get; private set;}
     public GOF.File file {get; private set;}
-    public int icon_size = 32;
 
     public enum State {
         NOT_LOADED,
