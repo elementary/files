@@ -155,7 +155,6 @@ namespace FM {
         }
 
         protected override uint get_selected_files_from_model (out GLib.List<GOF.File> selected_files) {
-
             var list = new GLib.List<GOF.File> ();
             uint count = tree.get_selected_files_from_model (ref list);
 

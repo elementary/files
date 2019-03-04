@@ -145,7 +145,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         );
     }
 
-    public void show_data_index (int index, bool use_align, float yalign) { /* Only align rows */
+    public void show_data_index (int index, bool use_align = false, float yalign = 0.5f) { /* Only align rows */
         if (cols <= 0) {
             return;
         }
@@ -154,9 +154,8 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         var row_containing_index = idx / cols;
         var n_displayed_items_approx = last_displayed_data_index - first_displayed_data_index + 1;
         var n_rows_displayed_approx = n_displayed_items_approx / cols + 1;
-        var rows_to_offset = (int)((double)n_rows_displayed_approx * (double)yalign);
+        var rows_to_offset = (int)((double)n_rows_displayed_approx * (double)yalign) + 1;
         var first_row = row_containing_index - rows_to_offset;
-
         vadjustment.set_value ((double)first_row);
     }
 
@@ -484,6 +483,10 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         total_rows = 0;
 
         clear_layout ();
+    }
+
+    public void queue_draw () {
+        layout.queue_draw ();
     }
 }
 }

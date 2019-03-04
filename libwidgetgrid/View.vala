@@ -572,6 +572,7 @@ public class View : Gtk.Overlay, ViewInterface {
 
     public void set_cursor_index (int index, bool select = false) {
         layout_handler.set_cursor (index);
+
         if (select) {
             layout_handler.select_data_index (index);
         }

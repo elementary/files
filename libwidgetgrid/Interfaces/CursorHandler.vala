@@ -24,6 +24,8 @@ public interface CursorHandler : Object, SelectionHandler {
     public abstract Gtk.Layout layout { get; construct; }
     public abstract DataInterface data_at_cursor { get; set; }
     public abstract int cursor_index { get; set; }
+    public abstract void show_data_index (int index, bool use_align = false, float yalign = 0.5f);
+    public abstract void queue_draw ();
 
     public signal void cursor_moved (int previous_index, int current_index);
 
@@ -116,11 +118,13 @@ public interface CursorHandler : Object, SelectionHandler {
                 break;
         }
 
-        layout.queue_draw ();
+        queue_draw ();
     }
 
     public void set_cursor (int index, bool select = false) {
         update_cursor (index);
+        show_data_index (index);
+
         if (index >= 0 && select) {
             select_data_index (index);
         }
