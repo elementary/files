@@ -1376,6 +1376,7 @@ namespace FM {
             if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
                 large_thumbnails = size > 128;
                 slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
+                schedule_thumbnail_timeout ();
             }
 
             model.set_property ("size", icon_size);
