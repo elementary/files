@@ -542,11 +542,7 @@ namespace Marlin.View {
         }
 
         public override string get_tip_uri () {
-            if (slot_list.length () > 1) { /* Length is small */
-                return slot_list.last ().data.uri;
-            } else {
-                return "";
-            }
+            return slot_list.length () > 1 ? slot_list.last ().data.uri : "";
         }
 
         public override string get_root_uri () {

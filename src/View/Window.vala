@@ -439,12 +439,10 @@ namespace Marlin.View {
 
             content.loading.connect ((is_loading) => {
                 tab.working = is_loading;
-                on_loading_or_active (content);
+                on_content_active_or_loading (content);
             });
 
-            content.active.connect (() => {
-                on_loading_or_active (content);
-            });
+            content.active.connect (on_content_active_or_loading);
 
             content.add_view (mode, location);
 
@@ -453,7 +451,8 @@ namespace Marlin.View {
             tabs.current = tab;
         }
 
-        private void on_loading_or_active (ViewContainer content) {
+        /** Update the topmenu to reflect the current view when content signals a change **/
+        private void on_content_active_or_loading (ViewContainer content) {
             if (restoring_tabs || current_tab == null || content != current_tab) {
                 return;
             }
