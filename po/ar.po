@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
 "PO-Revision-Date: 2019-03-12 15:26+0000\n"
-"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -239,20 +239,28 @@ msgstr[5] "%u مجلدات فرعية"
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u صفر ملف"
+msgstr[1] "%u ملف واحد"
+msgstr[2] "%u ملفين"
+msgstr[3] "%u ملفات"
+msgstr[4] "%u ملفات"
+msgstr[5] "%u ملفات"
 
 #: src/Dialogs/PropertiesWindow.vala:1222
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s، %s"
 
 #: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u صفر ملف"
+msgstr[1] "%u ملف واحد"
+msgstr[2] "%u ملفين"
+msgstr[3] "%u ملفات"
+msgstr[4] "%u ملفات"
+msgstr[5] "%u ملفات"
 
 #: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
