@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-03-11 15:09+0000\n"
-"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
+"PO-Revision-Date: 2019-03-12 15:26+0000\n"
+"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -228,7 +228,7 @@ msgstr "الكل:"
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u صفر مجلد فرعي"
-msgstr[1] "%u  مجلد فرعي واحد"
+msgstr[1] "%u مجلد فرعي واحد"
 msgstr[2] "%u مجلدين فرعيين"
 msgstr[3] "%u مجلدات فرعية"
 msgstr[4] "%u مجلدات فرعية"
@@ -326,7 +326,7 @@ msgstr ""
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr "لا يمكن العثور على المجلد \"%s\""
+msgstr "لا يمكن العثور على المجلد \"%s\"."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -445,7 +445,7 @@ msgstr ""
 
 #: src/View/ViewContainer.vala:418
 msgid "You don't have permission to view this folder."
-msgstr "أنت لا تملك الصلاحية لتعديل الملف"
+msgstr "أنت لا تملك الصلاحية للإطلاع على الملف."
 
 #: src/View/ViewContainer.vala:420
 msgid "Unable to Mount Folder"
@@ -530,7 +530,7 @@ msgstr "تصفّح محتويات الشبكة"
 #: src/View/Sidebar.vala:823
 #, fuzzy
 msgid "Connect Server"
-msgstr "اتصل بالخادوم"
+msgstr "اتصل بالخادم"
 
 #: src/View/Sidebar.vala:824
 #, fuzzy
