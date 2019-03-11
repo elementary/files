@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
 "PO-Revision-Date: 2019-03-11 14:50+0000\n"
-"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
+"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: src/Application.vala:120
 msgid "Show the version of the program"
-msgstr "أعرض إصدار البرنامج"
+msgstr "اعرض إصدار البرنامج"
 
 #: src/Application.vala:122
 #, fuzzy
