@@ -18,8 +18,9 @@
 ***/
 
 namespace Marlin {
-
+    [CCode (has_target = false)]
     public delegate void PluginCallbackFunc (Gtk.Widget widget);
+
     public enum PlaceType {
         BUILT_IN,
         MOUNTED_VOLUME,

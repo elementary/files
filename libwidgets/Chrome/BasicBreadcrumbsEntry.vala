@@ -40,10 +40,10 @@ namespace Marlin.View.Chrome {
         }
 
         public bool hide_breadcrumbs { get; set; default = false; }
-        public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
+        public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 16;
         public const double MINIMUM_BREADCRUMB_WIDTH = 12;
         public const double COMPLETION_ALPHA = 0.5;
-        public const int ICON_WIDTH = 48;
+        public const int ICON_WIDTH = 32;
         protected string placeholder = ""; /*Note: This is not the same as the Gtk.Entry placeholder_text */
         protected BreadcrumbElement? clicked_element = null;
         protected string? current_dir_path = null;
@@ -286,7 +286,7 @@ namespace Marlin.View.Chrome {
                 set_entry_cursor (new Gdk.Cursor.from_name (Gdk.Display.get_default (), "default"));
             } else {
                 set_entry_cursor (null);
-                set_tooltip_markup (_("Search or Type Path"));
+                set_default_entry_tooltip ();
             }
 
             if (tip != null) {
@@ -357,6 +357,10 @@ namespace Marlin.View.Chrome {
     /****************************/
         public void set_entry_cursor (Gdk.Cursor? cursor) {
             entry_window.set_cursor (cursor ?? new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text"));
+        }
+
+        protected virtual void set_default_entry_tooltip () {
+            set_tooltip_markup (_("Type Path"));
         }
 
 

@@ -1,4 +1,4 @@
-ctags_plugin_dir = join_paths(plugin_dir, 'ctags')
+ctags_plugin_dir = join_paths(plugin_dir, 'core')
 
 shared_module(
     'pantheon-files-ctags',

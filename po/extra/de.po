@@ -6,9 +6,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2017-05-26 14:33-0500\n"
-"PO-Revision-Date: 2018-08-19 00:02+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"PO-Revision-Date: 2019-01-02 18:39+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://weblate.elementary.io/projects/files/extra/de/"
 ">\n"
@@ -20,30 +20,40 @@ msgstr ""
 "X-Generator: Weblate 3.0.1\n"
 "X-Launchpad-Export-Date: 2017-06-14 06:05+0000\n"
 
+#: data/io.elementary.files.desktop.in.in:3
+#: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
 msgstr "Dateien"
 
+#: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
 msgstr "Dateien und Ordner durchsuchen"
 
+#: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "Verzeichnis;Ordner;Verwaltung;Durchsuchen;Festplatte;Dateisystem;"
 
+#: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
 msgstr "Dateiverwaltung"
 
+#: data/io.elementary.files.desktop.in.in:8
+msgid "system-file-manager"
+msgstr "system-file-manager"
+
+#: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
 msgstr "Neues Fenster"
 
+#: data/io.elementary.files.desktop.in.in:23
 msgid "New Window As Administrator"
 msgstr "Neues Fenster als Systemverwalter öffnen"
 
-msgid "About Files"
-msgstr "Info zu Dateien"
-
+#: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
 msgstr "Dateien und Ordner durchsuchen und verwalten"
 
+#: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
 "Easily copy, move, and rename your files, or use folders to stay organized. "
 "Whether you like files in lists, grids or columns, you can always find them "
@@ -55,83 +65,91 @@ msgstr ""
 "Überblick behalten zu können. Egal, ob Sie Dateien in Listen, Rastern oder "
 "Spalten anzeigen lassen wollen: Sie finden immer sofort die richtige. Sie "
 "können auf alle Dateien zugreifen, unabhängig davon, wo sie gespeichert "
-"sind: auf einem internen oder externen Datenträger oder auf einem FTP-, SFTP-"
-", AFP-, WebDAV- oder Windows-Freigabe-Server."
+"sind: auf einem internen oder externen Datenträger oder auf einem FTP-, "
+"SFTP-, AFP-, WebDAV- oder Windows-Freigabe-Server."
 
-msgid "Improved networking support"
-msgstr "Bessere Netzwerkunterstützung"
+#: data/io.elementary.files.appdata.xml.in.in:166
+msgid "elementary LLC."
+msgstr "elementary LLC."
 
-msgid "Correct window geometry when snapping to left or right"
-msgstr "Korrigierte Fenstergeometrie beim Einrasten nach links oder rechts"
+#~ msgid "About Files"
+#~ msgstr "Info zu Dateien"
 
-msgid ""
-"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-"setting is active"
-msgstr ""
-"Durch das Drücken von Strg wird das Umbenennen nicht mehr abgebrochen, "
-"während in den Einstellungen \"Mauszeiger hervorheben\" aktiv ist"
+#~ msgid "Improved networking support"
+#~ msgstr "Bessere Netzwerkunterstützung"
 
-msgid "Switching input language cancels actions"
-msgstr "Der Wechsel der Eingabesprache verwirft Aktionen"
+#~ msgid "Correct window geometry when snapping to left or right"
+#~ msgstr "Korrigierte Fenstergeometrie beim Einrasten nach links oder rechts"
 
-msgid "Various crash fixes"
-msgstr "Verschiedene Absturzprobleme wurden behoben"
+#~ msgid ""
+#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+#~ "setting is active"
+#~ msgstr ""
+#~ "Durch das Drücken von Strg wird das Umbenennen nicht mehr abgebrochen, "
+#~ "während in den Einstellungen \"Mauszeiger hervorheben\" aktiv ist"
 
-msgid "New translations"
-msgstr "Neue Übersetzungen"
+#~ msgid "Switching input language cancels actions"
+#~ msgstr "Der Wechsel der Eingabesprache verwirft Aktionen"
 
-msgid "Minor bug fixes"
-msgstr "Kleinere Fehlerbehebungen"
+#~ msgid "Various crash fixes"
+#~ msgstr "Verschiedene Absturzprobleme wurden behoben"
 
-msgid ""
-"Web browsers like Firefox now remember the most recently used downloads "
-"directory"
-msgstr ""
-"Internetbrowser wie Firefox merken sich nun den zuletzt für Downloads "
-"genutzten Ordner"
+#~ msgid "New translations"
+#~ msgstr "Neue Übersetzungen"
 
-msgid "Remember preferred zoom level"
-msgstr "Bevorzugte Vergrößerung wird gespeichert"
+#~ msgid "Minor bug fixes"
+#~ msgstr "Kleinere Fehlerbehebungen"
 
-msgid "Improved input method support"
-msgstr "Verbesserte Unterstützung von Eingabemethoden"
+#~ msgid ""
+#~ "Web browsers like Firefox now remember the most recently used downloads "
+#~ "directory"
+#~ msgstr ""
+#~ "Internetbrowser wie Firefox merken sich nun den zuletzt für Downloads "
+#~ "genutzten Ordner"
 
-msgid "910x640 minimum window size"
-msgstr "Minimale Fenstergröße von 910 × 640 Pixeln"
+#~ msgid "Remember preferred zoom level"
+#~ msgstr "Bevorzugte Vergrößerung wird gespeichert"
 
-msgid "Security fixes"
-msgstr "Sicherheitsrelevante Fehlerkorrekturen"
+#~ msgid "Improved input method support"
+#~ msgstr "Verbesserte Unterstützung von Eingabemethoden"
 
-msgid "Enable drag and drop tabs between windows"
-msgstr "Reiter können mit Ziehen-und-ablegen zwischen Fenstern bewegt werden"
+#~ msgid "910x640 minimum window size"
+#~ msgstr "Minimale Fenstergröße von 910 × 640 Pixeln"
 
-msgid "Merge search functionality into Ctrl+F"
-msgstr "Tastenkürzel Strg+F ruft immer die Suchfunktion auf"
+#~ msgid "Security fixes"
+#~ msgstr "Sicherheitsrelevante Fehlerkorrekturen"
 
-msgid "Improved translation support"
-msgstr "Verbesserte Unterstützung von Lokalisierungen"
+#~ msgid "Enable drag and drop tabs between windows"
+#~ msgstr ""
+#~ "Reiter können mit Ziehen-und-ablegen zwischen Fenstern bewegt werden"
 
-msgid "Fix appdata release dates"
-msgstr "Fehlerhafte appdata-Veröffentlichungsdaten behoben"
+#~ msgid "Merge search functionality into Ctrl+F"
+#~ msgstr "Tastenkürzel Strg+F ruft immer die Suchfunktion auf"
 
-msgid "Improve file opening over Samba shares"
-msgstr "Öffnen von Dateien auf Samba-Freigaben verbessert"
+#~ msgid "Improved translation support"
+#~ msgstr "Verbesserte Unterstützung von Lokalisierungen"
 
-msgid "Fix a crash when restoring items from the Trash"
-msgstr ""
-"Anwendungsabsturz beim Wiederherstellen von Dateien aus dem Papierkorb "
-"behoben"
+#~ msgid "Fix appdata release dates"
+#~ msgstr "Fehlerhafte appdata-Veröffentlichungsdaten behoben"
 
-msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Ausschneiden/Kopieren/Einfügen-Funktionen im Kontextmenü verbessert"
+#~ msgid "Improve file opening over Samba shares"
+#~ msgstr "Öffnen von Dateien auf Samba-Freigaben verbessert"
 
-msgid "Translation updates"
-msgstr "Übersetzungsaktualisierungen"
+#~ msgid "Fix a crash when restoring items from the Trash"
+#~ msgstr ""
+#~ "Anwendungsabsturz beim Wiederherstellen von Dateien aus dem Papierkorb "
+#~ "behoben"
 
-msgid "Run Pantheon Files as Administrator"
-msgstr "Pantheon-Dateien als Systemverwalter ausführen"
+#~ msgid "Improve cut/copy/paste sensitivity in context menu"
+#~ msgstr "Ausschneiden/Kopieren/Einfügen-Funktionen im Kontextmenü verbessert"
 
-msgid "Authentication is required to run Files as Administrator"
-msgstr ""
-"Damit Dateien als Systemverwalter ausgeführt werden kann, ist eine "
-"Legitimierung nötig"
+#~ msgid "Translation updates"
+#~ msgstr "Übersetzungsaktualisierungen"
+
+#~ msgid "Run Pantheon Files as Administrator"
+#~ msgstr "Pantheon-Dateien als Systemverwalter ausführen"
+
+#~ msgid "Authentication is required to run Files as Administrator"
+#~ msgstr ""
+#~ "Damit Dateien als Systemverwalter ausgeführt werden kann, ist eine "
+#~ "Legitimierung nötig"

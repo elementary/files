@@ -1,4 +1,4 @@
-project('io.elementary.files', 'vala', 'c', version: '0.4.0', meson_version: '>= 0.42.0')
+project('io.elementary.files', 'vala', 'c', version: '4.1.5', meson_version: '>= 0.42.0')
 
 #
 # Meson module imports

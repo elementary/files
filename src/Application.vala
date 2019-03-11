@@ -258,6 +258,8 @@ public class Marlin.Application : Gtk.Application {
         Preferences.settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("show-remote-thumbnails",
                                    prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
+        Preferences.settings.bind ("hide-local-thumbnails",
+                                   prefs, "hide-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("confirm-trash", prefs, "confirm-trash", GLib.SettingsBindFlags.DEFAULT);
         Preferences.settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
         Preferences.gnome_interface_settings.bind ("clock-format",
