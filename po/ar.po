@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
 "PO-Revision-Date: 2019-03-11 15:06+0000\n"
-"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -141,19 +141,19 @@ msgstr[5] "%i لم يتم التمكن من قراءة الملفات بسبب �
 
 #: src/Dialogs/PropertiesWindow.vala:248
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "الحجم الحالي يمكن أن يكون أكبر"
 
 #: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
 msgid "unknown"
-msgstr ""
+msgstr "مجهول"
 
 #: src/Dialogs/PropertiesWindow.vala:448
 msgid "Loading…"
-msgstr ""
+msgstr "تحميل …"
 
 #: src/Dialogs/PropertiesWindow.vala:482
 msgid "Could not be determined"
-msgstr ""
+msgstr "لم يكن من الممكن تحديده"
 
 #: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
@@ -167,23 +167,23 @@ msgstr "النوع:"
 
 #: src/Dialogs/PropertiesWindow.vala:518
 msgid "Contains:"
-msgstr ""
+msgstr "يحتوي:"
 
 #: src/Dialogs/PropertiesWindow.vala:541
 msgid "Created:"
-msgstr ""
+msgstr "مُنشأ:"
 
 #: src/Dialogs/PropertiesWindow.vala:551
 msgid "Modified:"
-msgstr ""
+msgstr "مُعدَّل:"
 
 #: src/Dialogs/PropertiesWindow.vala:563
 msgid "Deleted:"
-msgstr ""
+msgstr "محذوف:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
 msgid "MIME type:"
-msgstr ""
+msgstr "نوع إ ب إ م م:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
