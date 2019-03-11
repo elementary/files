@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
 "PO-Revision-Date: 2019-03-11 15:01+0000\n"
-"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -66,11 +66,11 @@ msgstr "عمليات الملف"
 #: src/ProgressUIHandler.vala:185
 #, c-format
 msgid "Completed %s"
-msgstr ""
+msgstr "إنتهى %s"
 
 #: src/ProgressUIHandler.vala:188
 msgid "All file operations have ended"
-msgstr ""
+msgstr "كل المهام على الملفات إنتهت"
 
 #: src/ProgressUIHandler.vala:236
 msgid "Show Copy Dialog"
@@ -82,7 +82,7 @@ msgstr "ألغ كل الإجراءات قيد التنفيذ"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "معلومات"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
@@ -90,43 +90,43 @@ msgstr "عامّ"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:76
 msgid "Close"
-msgstr ""
+msgstr "أغلق"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:136
 msgid "Device Usage"
-msgstr ""
+msgstr "إستخدام الجهاز"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 msgid "Capacity:"
-msgstr ""
+msgstr "السعة:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:153
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
 msgid "Unknown"
-msgstr ""
+msgstr "مجهول"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Available:"
-msgstr ""
+msgstr "متاح:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Used:"
-msgstr ""
+msgstr "مُستعمَل:"
 
 #: src/Dialogs/ChooseAppDialog.vala:42
 msgid "Set as default"
-msgstr "عيّن كافتراضي"
+msgstr "عيّن كإفتراضي"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
 #: src/View/directory_view_popup.ui:91
 msgid "Properties"
-msgstr "الخصائص"
+msgstr "خصائص"
 
 #: src/Dialogs/PropertiesWindow.vala:223
 msgid "Permissions"
-msgstr ""
+msgstr "أُذون"
 
 #: src/Dialogs/PropertiesWindow.vala:244
 #, c-format
