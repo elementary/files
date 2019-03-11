@@ -835,7 +835,8 @@ public class GOF.File : GLib.Object {
             }
         } else {
             try {
-                app_info = GLib.AppInfo.create_from_commandline (location.get_path (), null, GLib.AppInfoCreateFlags.NONE);
+                var path = location.get_path ();
+                app_info = GLib.AppInfo.create_from_commandline (Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE);
             } catch (GLib.Error e) {
                 GLib.Error prefixed_error;
                 GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
