@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-03-11 14:52+0000\n"
-"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
+"PO-Revision-Date: 2019-03-11 15:01+0000\n"
+"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "نافذة جديدة"
 
 #: src/Application.vala:126
 msgid "Quit Files"
-msgstr "أخرج من ملفات"
+msgstr "اخرج من الملفات"
 
 #: src/Application.vala:128
 msgid "Enable debug logging"
