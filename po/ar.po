@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
 "PO-Revision-Date: 2019-03-11 15:09+0000\n"
-"Last-Translator: nasserbinlaboun <nasser1990com@gmail.com>\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -187,48 +187,52 @@ msgstr "نوع MIME:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
-msgstr ""
+msgstr "الدقة:"
 
 #: src/Dialogs/PropertiesWindow.vala:588
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
-msgstr ""
+msgstr "المكان:"
 
 #: src/Dialogs/PropertiesWindow.vala:598
 msgid "Target:"
-msgstr ""
+msgstr "الهدف:"
 
 #: src/Dialogs/PropertiesWindow.vala:606
 msgid "Original Location:"
-msgstr ""
+msgstr "المكان اﻷصلي:"
 
 #: src/Dialogs/PropertiesWindow.vala:629
 #: src/View/AbstractDirectoryView.vala:2132
 msgid "Other Application…"
-msgstr ""
+msgstr "تطبيقات أخرى …"
 
 #: src/Dialogs/PropertiesWindow.vala:649
 msgid "Open with:"
-msgstr "افتح باستخدام:"
+msgstr "إفتح باستخدام:"
 
 #: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
 msgid "Owner:"
-msgstr ""
+msgstr "المالك:"
 
 #: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
 msgid "Group:"
-msgstr ""
+msgstr "مجموعة:"
 
 #: src/Dialogs/PropertiesWindow.vala:932
 msgid "Everyone:"
-msgstr ""
+msgstr "الكل:"
 
 #: src/Dialogs/PropertiesWindow.vala:1213
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u صفر مجلد فرعي"
+msgstr[1] "%u  مجلد فرعي واحد"
+msgstr[2] "%u مجلدين فرعيين"
+msgstr[3] "%u مجلدات فرعية"
+msgstr[4] "%u مجلدات فرعية"
+msgstr[5] "%u مجلدات فرعية"
 
 #: src/Dialogs/PropertiesWindow.vala:1217
 #: src/Dialogs/PropertiesWindow.vala:1239
