@@ -184,24 +184,9 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     uint refresh_timeout_id = 0;
     bool refresh_wait = false;
     public void refresh () {
-        if (refresh_timeout_id > 0) {
-            refresh_wait = true;
-            return;
-        } else {
-            refresh_timeout_id = Timeout.add (REFRESH_DELAY_MSEC, () => {
-                refresh_wait = false;
-                apply_to_visible_items ((item) => {
-                    item.update_item ();
-                });
-
-                if (refresh_wait) {
-                    return Source.CONTINUE;
-                } else {
-                    refresh_timeout_id = 0;
-                    return Source.REMOVE;
-                }
-            });
-        }
+        apply_to_visible_items ((item) => {
+            item.update_item ();
+        });
     }
 
     protected void position_items (int first_displayed_row, double offset) {
@@ -283,43 +268,34 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
     /* Reflow at most 1000 / REFLOW_DELAY_MSEC times a second */
     public void configure () {
-        if (reflow_timeout_id > 0) {
-            return;
-        } else {
-            reflow_timeout_id = Timeout.add (REFLOW_DELAY_MSEC, () => {
-                if (column_width > 0) {
-                    cols = (layout.get_allocated_width ()) / column_width;
-                    if (cols > 0) {
-                        if (cursor_index < 0) {
-                           initialize_cursor ();
-                        }
-
-                        var first_displayed_row = previous_first_displayed_data_index / cols;
-                        var val = first_displayed_row;
-
-                        var min_val = 0.0;
-                        var max_val = (double)(total_rows + 2);
-                        var step_increment = 0.05;
-                        var page_increment = 1.0;
-                        var page_size = 5.0;
-
-                        var new_total_rows = n_items / cols + 2;
-                        if (total_rows != new_total_rows) {
-                            clear_layout ();
-                            total_rows = new_total_rows;
-                            last_displayed_widget_index = 0;
-                            pool_size = 0;
-                            max_val = (double)(total_rows + 2); /* Ensure bottom row fully exposed */
-                            vadjustment.configure (val, min_val, max_val, step_increment, page_increment, page_size);
-                        }
-
-                        on_adjustment_value_changed ();
-                    }
+        if (column_width > 0) {
+            cols = (layout.get_allocated_width ()) / column_width;
+            if (cols > 0) {
+                if (cursor_index < 0) {
+                   initialize_cursor ();
                 }
 
-                reflow_timeout_id = 0;
-                return Source.REMOVE;
-            });
+                var first_displayed_row = previous_first_displayed_data_index / cols;
+                var val = first_displayed_row;
+
+                var min_val = 0.0;
+                var max_val = (double)(total_rows + 2);
+                var step_increment = 0.05;
+                var page_increment = 1.0;
+                var page_size = 5.0;
+
+                var new_total_rows = n_items / cols + 2;
+                if (total_rows != new_total_rows) {
+                    clear_layout ();
+                    total_rows = new_total_rows;
+                    last_displayed_widget_index = 0;
+                    pool_size = 0;
+                    max_val = (double)(total_rows + 2); /* Ensure bottom row fully exposed */
+                    vadjustment.configure (val, min_val, max_val, step_increment, page_increment, page_size);
+                }
+
+                on_adjustment_value_changed ();
+            }
         }
     }
 
