@@ -90,7 +90,9 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
         initialize_layout_data ();
 
-        vadjustment.value_changed.connect (on_adjustment_value_changed);
+        vadjustment.value_changed.connect (() => {
+            on_adjustment_value_changed (false);
+        });
 
         model.n_items_changed.connect ((change) => {
             if (!ignore_model_changes) {
@@ -103,7 +105,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
                 clear_layout (); /* Ensure deleted items are not displayed */
                 configure ();
-                refresh ();
             }
         });
 
@@ -115,17 +116,14 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
         notify["hpadding"].connect (() => {
             configure ();
-            refresh ();
         });
 
         notify["vpadding"].connect (() => {
             configure ();
-            refresh ();
         });
 
         notify["item-width"].connect (() => {
             configure ();
-            refresh ();
         });
 
         notify["cursor-index"].connect (() => {
@@ -294,7 +292,8 @@ warning ("configure %llu", get_monotonic_time ());
                     vadjustment.configure (val, min_val, max_val, step_increment, page_increment, page_size);
                 }
 
-                on_adjustment_value_changed ();
+                on_adjustment_value_changed (true);
+                refresh ();
             }
         }
     }
@@ -302,8 +301,9 @@ warning ("configure %llu", get_monotonic_time ());
     /* This implements an accelerating scroll rate during a continuous smooth scroll with touchpad
      * so that small movements have low sensitivity but can also make large movements easily.
      * TODO: implement kinetic scrolling.
+     * If @force is true, then items are positioned immediately.
      */
-    private void on_adjustment_value_changed () {
+    private void on_adjustment_value_changed (bool force = false) {
         var now = Gtk.get_current_event_time ();
         uint32 rate = now - last_event_time;  /* min about 24, typical 50 - 150 */
         last_event_time = now;
@@ -315,7 +315,7 @@ warning ("configure %llu", get_monotonic_time ());
             accel += (ACCEL_RATE / 300 * (300 - rate));
         }
 
-        if (scroll_accel_timeout_id > 0) {
+        if (scroll_accel_timeout_id > 0 || force) {
             wait = true;
         } else {
             wait = false;
@@ -426,6 +426,7 @@ warning ("configure %llu", get_monotonic_time ());
     }
 
     public void update_from_model () {
+warning ("update from model");
         var new_n_items = model.get_n_items ();
 
         if (new_n_items != n_items) {
@@ -444,9 +445,9 @@ warning ("configure %llu", get_monotonic_time ());
 
         clear_selection ();
         n_items = new_n_items;
+warning ("n items now %i", n_items);
         initialize_layout_data ();
         configure ();
-        refresh ();
     }
 
     private void initialize_layout_data () {
