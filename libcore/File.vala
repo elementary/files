@@ -18,6 +18,7 @@
 
 public class GOF.File : WidgetGrid.WidgetData {
     private static GLib.HashTable<GLib.File, GOF.File> file_cache;
+    private bool updating;
 
     public enum IconFlags {
         NONE,
@@ -429,9 +430,13 @@ public class GOF.File : WidgetGrid.WidgetData {
 
     public void update () {
         GLib.return_if_fail (info != null);
+        if (updating) {
+            return;
+        } else {
+            updating = true;
+        }
 
         /* free previously allocated */
-        clear_info ();
         is_hidden = info.get_is_hidden () || info.get_is_backup ();
         size = info.get_size ();
         file_type = info.get_file_type ();
@@ -577,6 +582,8 @@ public class GOF.File : WidgetGrid.WidgetData {
 
         update_trash_info ();
         update_emblem ();
+
+        updating = false;
     }
 
     public void update_type () {

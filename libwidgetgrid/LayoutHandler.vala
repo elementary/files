@@ -96,7 +96,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
         model.n_items_changed.connect ((change) => {
             if (!ignore_model_changes) {
-                n_items += change;
+                n_items = model.get_n_items ();
                 if (change > 0 && n_widgets < MAX_WIDGETS) {
                     widget_pool.add (factory.new_item ());
                     n_widgets++;
@@ -184,6 +184,8 @@ warning ("refresh first item %i, last item %i", index, last_displayed_widget_ind
         apply_to_visible_items ((item) => {
             item.update_item ();
         });
+
+        layout.queue_draw ();
     }
 
     protected void position_items (int first_displayed_row, double offset) {
@@ -242,6 +244,7 @@ warning ("position items %llu", get_monotonic_time ());
                 x += item_width + hpadding;
 
                 last_displayed_data_index = data_index;
+
                 last_displayed_widget_index = widget_index;
                 widget_index = next_widget_index (widget_index);
                 data_index++;
@@ -293,7 +296,7 @@ warning ("configure %llu", get_monotonic_time ());
                 }
 
                 on_adjustment_value_changed (true);
-                refresh ();
+                Idle.add (() => {refresh (); return Source.REMOVE;});
             }
         }
     }

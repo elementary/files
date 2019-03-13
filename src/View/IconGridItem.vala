@@ -146,8 +146,10 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         icon.set_size_request (pix_size, pix_size);
 
         if (file != null) {
+            file.update_type ();
             file.query_thumbnail_update ();
             file.update_icon (pix_size, 1);
+
             icon.set_from_pixbuf (file.pix);
             icon.queue_draw ();
         }

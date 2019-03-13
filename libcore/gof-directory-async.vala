@@ -828,6 +828,7 @@ public class Async : Object {
 
     private async bool query_info_async (GOF.File gof, func_query_info? f = null, Cancellable? cancellable = null) {
         gof.info = null;
+
         try {
             gof.info = yield gof.location.query_info_async (gio_attrs,
                                                             FileQueryInfoFlags.NONE,
@@ -843,6 +844,7 @@ public class Async : Object {
                 gof.exists = false;
             }
         }
+
         return gof.info != null;
     }
 
