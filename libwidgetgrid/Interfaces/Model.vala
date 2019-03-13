@@ -48,7 +48,6 @@ public interface Model<G> : Object {
         var data = lookup_index (index);
         if (real_remove_index (index)) {
             data_removed (data);
-            n_items_changed (-1);
             return true;
         } else {
             return false;
@@ -60,7 +59,6 @@ public interface Model<G> : Object {
     public bool remove_data (G data) {
         if (real_remove_data (data)) {
             data_removed (data);
-            n_items_changed (-1);
             return true;
         } else {
             return false;

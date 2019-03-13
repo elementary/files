@@ -164,6 +164,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     public void apply_to_visible_items (WidgetFunc func) {
         Item item;
         int index = first_displayed_widget_index;
+warning ("refresh first item %i, last item %i", index, last_displayed_widget_index);
         if (index >= 0 && !widget_pool.is_empty) {
             do {
                 item = widget_pool[index];
@@ -181,8 +182,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         }
     }
 
-    uint refresh_timeout_id = 0;
-    bool refresh_wait = false;
     public void refresh () {
         apply_to_visible_items ((item) => {
             item.update_item ();
@@ -190,6 +189,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     }
 
     protected void position_items (int first_displayed_row, double offset) {
+warning ("position items %llu", get_monotonic_time ());
         int data_index, widget_index, row_height;
 
         data_index = first_displayed_row * cols;
@@ -266,8 +266,8 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         layout.queue_draw ();
     }
 
-    /* Reflow at most 1000 / REFLOW_DELAY_MSEC times a second */
     public void configure () {
+warning ("configure %llu", get_monotonic_time ());
         if (column_width > 0) {
             cols = (layout.get_allocated_width ()) / column_width;
             if (cols > 0) {
