@@ -226,6 +226,7 @@ namespace FM {
                     disconnect_tree_signals ();
                     clipboard.changed.disconnect (on_clipboard_changed);
                     view.key_press_event.disconnect (on_view_key_press_event);
+                    freeze_tree ();
                 } else if (!value && _is_frozen) {
                     /* Ensure selected files and menu actions will be updated */
                     connect_tree_signals ();
@@ -233,6 +234,7 @@ namespace FM {
 
                     clipboard.changed.connect (on_clipboard_changed);
                     view.key_press_event.connect (on_view_key_press_event);
+                    thaw_tree ();
                 }
 
                 _is_frozen = value;
@@ -3477,7 +3479,6 @@ namespace FM {
         public void close () {
             is_frozen = true; /* stop signal handlers running during destruction */
             cancel ();
-            unselect_all ();
         }
 
         public void select_all () {

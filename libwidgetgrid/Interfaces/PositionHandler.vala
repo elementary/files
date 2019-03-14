@@ -39,7 +39,7 @@ public interface PositionHandler : Object {
         }
     }
 
-    protected abstract void position_items (int first_displayed_row, double offset);
+    protected abstract void position_items ();
     protected abstract int next_widget_index (int current_index);
 
     public int index_below (int index) {
@@ -191,7 +191,6 @@ public interface PositionHandler : Object {
         for (int c = 0; c < cols && data_index < model.get_n_items (); c++) {
             var item = widget_pool[windex];
             var data = model.lookup_index (data_index);
-            assert (data != null);
 
             item.update_item (data);
             item.set_max_width (item_width);

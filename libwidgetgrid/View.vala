@@ -232,11 +232,6 @@ public class View : Gtk.Overlay, ViewInterface {
             return false;
         });
 
-        delete_event.connect (() => {
-            layout_handler.close ();
-            return false;
-        });
-
         event_box.motion_notify_event.connect ((event) => {
             var cp = get_corrected_position ((int)(event.x), (int)(event.y));
             var item = layout_handler.get_item_at_pos (cp, out wp);
@@ -591,12 +586,16 @@ public class View : Gtk.Overlay, ViewInterface {
     }
 
     public new void freeze_child_notify () {
-        layout_handler.ignore_model_changes = true;
+        if (!layout_handler.ignore_model_changes) {
+            layout_handler.ignore_model_changes = true;
+        }
     }
 
     public new void thaw_child_notify () {
-        layout_handler.ignore_model_changes = false;
-        layout_handler.update_from_model ();
+        if (layout_handler.ignore_model_changes) {
+            layout_handler.ignore_model_changes = false;
+            layout_handler.update_from_model ();
+        }
     }
 
     public void clear_selection () {

@@ -78,6 +78,8 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     public int initial_linear_selection_index {get; set; default = -1; }
     public int previous_linear_selection_index {get; set; default = -1; }
     public int last_selected_index {get; set; default = -1;}
+    public int first_displayed_row {get; set; default = 0;}
+    public double display_offset {get; set; default = 0.0;}
 
     public bool ignore_model_changes { get; set; default = false;}
 
@@ -162,7 +164,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     public void apply_to_visible_items (WidgetFunc func) {
         Item item;
         int index = first_displayed_widget_index;
-warning ("refresh first item %i, last item %i", index, last_displayed_widget_index);
+
         if (index >= 0 && !widget_pool.is_empty) {
             do {
                 item = widget_pool[index];
@@ -181,23 +183,25 @@ warning ("refresh first item %i, last item %i", index, last_displayed_widget_ind
     }
 
     public void refresh () {
+        if (ignore_model_changes) {
+            return;
+        }
+
         apply_to_visible_items ((item) => {
             item.update_item ();
         });
 
-        layout.queue_draw ();
+        position_items ();
     }
 
-    protected void position_items (int first_displayed_row, double offset) {
-warning ("position items %llu", get_monotonic_time ());
+    protected void position_items () {
         int data_index, widget_index, row_height;
-
-        data_index = first_displayed_row * cols;
-        if (n_items == 0 || data_index >= n_items) {
-            return;
-        } else if (data_index < 0) {
+        if (n_items == 0) {
             return;
         }
+
+        data_index = first_displayed_row * cols;
+        return_if_fail (data_index < n_items && data_index >= 0);
 
         if (pool_size == 0) {
             pool_size = n_widgets - 1;
@@ -221,9 +225,9 @@ warning ("position items %llu", get_monotonic_time ());
         previous_first_displayed_row_height = row_height;
         widget_index = first_displayed_widget_index;
 
-        int y = vpadding - (int)offset;
+        int y = vpadding - (int)display_offset;
         int r;
-        for (r = 0; y < layout.get_allocated_height () + offset && data_index < n_items; r++) {
+        for (r = 0; y < layout.get_allocated_height () + display_offset && data_index < n_items; r++) {
             if (r > row_data.size - 1) {
                 row_data.add (new RowData ());
             }
@@ -268,7 +272,6 @@ warning ("position items %llu", get_monotonic_time ());
     }
 
     public void configure () {
-warning ("configure %llu", get_monotonic_time ());
         if (column_width > 0) {
             cols = (layout.get_allocated_width ()) / column_width;
             if (cols > 0) {
@@ -337,21 +340,21 @@ warning ("configure %llu", get_monotonic_time ());
 
         /* Prepare to reposition widgets according to new adjustment value (which is in row units) */
         var new_val = vadjustment.get_value ();
-        var first_displayed_row = (int)(new_val);
-        double offset = 0.0;
+        first_displayed_row = (int)(new_val);
+
         var row_fraction = new_val - (double)first_displayed_row;
 
         /* Calculate fraction of first row hidden */
         if (new_val < previous_adjustment_val) { /* Scroll up */
             var first_displayed_data_index = first_displayed_row * cols;
             var row_height = get_row_height (first_displayed_widget_index, first_displayed_data_index);
-            offset = row_fraction * row_height;
+            display_offset = row_fraction * row_height;
 
         } else {
-            offset = row_fraction * previous_first_displayed_row_height;
+            display_offset = row_fraction * previous_first_displayed_row_height;
         }
 
-        position_items (first_displayed_row, offset);
+        position_items ();
         Idle.add (() => {
             if (rubber_banding) {
                 mark_selected_in_rectangle (false);
@@ -429,7 +432,6 @@ warning ("configure %llu", get_monotonic_time ());
     }
 
     public void update_from_model () {
-warning ("update from model");
         var new_n_items = model.get_n_items ();
 
         if (new_n_items != n_items) {
@@ -448,17 +450,16 @@ warning ("update from model");
 
         clear_selection ();
         n_items = new_n_items;
-warning ("n items now %i", n_items);
         initialize_layout_data ();
         configure ();
     }
 
     private void initialize_layout_data () {
-        previous_first_displayed_data_index = 0;
-        previous_first_displayed_row_height = 0;
         first_displayed_data_index = 0;
         first_displayed_widget_index = 0;
-        last_selected_index = 0;
+        previous_first_displayed_data_index = -1;
+        previous_first_displayed_row_height = -1;
+        last_selected_index = -1;
         pool_size = 0;
 
         row_data = new Gee.ArrayList<RowData> ();

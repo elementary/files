@@ -827,13 +827,13 @@ public class Async : Object {
     private delegate void func_query_info (GOF.File gof);
 
     private async bool query_info_async (GOF.File gof, func_query_info? f = null, Cancellable? cancellable = null) {
-        gof.info = null;
-
+        FileInfo info;
         try {
-            gof.info = yield gof.location.query_info_async (gio_attrs,
+            info = yield gof.location.query_info_async (gio_attrs,
                                                             FileQueryInfoFlags.NONE,
                                                             Priority.DEFAULT,
                                                             cancellable);
+            gof.info = info;
             if (f != null) {
                 f (gof);
             }

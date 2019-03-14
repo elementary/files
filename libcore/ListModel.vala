@@ -71,7 +71,6 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface, Widge
 
             if (path.get_depth () == 1) {
                 n_first_level_rows++;
-warning ("List Model row inserted %s n rows %i", path.to_string (), n_first_level_rows);
                 n_items_changed (1);
             }
         });
@@ -79,7 +78,6 @@ warning ("List Model row inserted %s n rows %i", path.to_string (), n_first_leve
         row_deleted.connect ((path) => {
 
             if (path.get_depth () == 1) {
-warning ("List Model row deleted %s, n rows %i", path.to_string (), n_first_level_rows);
                 n_first_level_rows--;
                 n_items_changed (-1);
             }
@@ -358,7 +356,7 @@ warning ("List Model row deleted %s, n rows %i", path.to_string (), n_first_leve
     }
 
     public GOF.File lookup_index (int index) {
-        if (index < 0) {
+        if (index < 0 || n_first_level_rows == 0) {
             return GOF.File.get_null ();
         }
 
