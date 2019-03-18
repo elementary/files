@@ -33,7 +33,7 @@ protected abstract class Marlin.View.AbstractPropertiesDialog : Gtk.Dialog {
         PERMISSIONS
     }
 
-    public AbstractPropertiesDialog (string _title, Gtk.Window parent) {
+    protected AbstractPropertiesDialog (string _title, Gtk.Window parent) {
         Object (title: _title,
                 transient_for: parent,
                 resizable: false,
