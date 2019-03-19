@@ -105,7 +105,10 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                     pool_size = 0;
                 }
 
-                clear_layout (); /* Ensure deleted items are not displayed */
+                if (change < 0) {
+                    clear_layout (); /* Ensure deleted items are not displayed */
+                }
+
                 configure ();
             }
         });
@@ -196,7 +199,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
     protected void position_items () {
         int data_index, widget_index, row_height;
-        if (n_items == 0) {
+        if (n_items == 0 || cols == 0) {
             return;
         }
 
@@ -235,7 +238,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             row_data[r].update (data_index, widget_index, y, row_height);
 
             int x = hpadding;
-            for (int c = 0; c < cols && data_index < n_items; c++) {
+            for (int c = 0; c < cols && data_index < n_items && row_height > 2 * vpadding; c++) {
                 var item = widget_pool[widget_index];
                 item.set_size_request (item_width, row_height - 2 * vpadding);
 
