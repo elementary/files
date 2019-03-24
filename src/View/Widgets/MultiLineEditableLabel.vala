@@ -18,8 +18,6 @@
 
 namespace Marlin {
     public class MultiLineEditableLabel : AbstractEditableLabel {
-
-        protected Gtk.ScrolledWindow scrolled_window;
         protected Gtk.TextView textview;
 
         public MultiLineEditableLabel () {}
@@ -28,10 +26,7 @@ namespace Marlin {
             textview = new Gtk.TextView ();
             /* Block propagation of button press event to view as this would cause renaming to end */
             textview.button_press_event.connect_after (() => {return true;});
-
-            scrolled_window = new Gtk.ScrolledWindow (null, null);
-            scrolled_window.add (textview);
-            return scrolled_window as Gtk.Widget;
+            return textview as Gtk.Widget;
         }
 
         public override Gtk.Widget get_real_editable () {

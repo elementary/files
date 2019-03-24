@@ -50,6 +50,8 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
     public WidgetGrid.DataInterface data { get; set; default = null; }
     public bool is_hovered { get; set; default = false; }
+    private bool renaming = false;
+    private int renaming_index = -1;
 
     public string item_name {
         get {
@@ -63,7 +65,12 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     public uint64 widget_id { get; construct; }
     public GOF.File? file { get { return data != null ? (GOF.File)data : null; } }
 
+    public signal void edited (int data_index, string new_name);
+    public signal void editing_canceled ();
+
     construct {
+        above_child = false;
+        hexpand = false;
         widget_id = IconGridItem.get_new_id ();
         overlay = new Gtk.Overlay ();
         frame = new Gtk.Frame (null);
@@ -76,7 +83,6 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         grid.orientation = Gtk.Orientation.VERTICAL;
         grid.halign = Gtk.Align.CENTER;
         grid.valign = Gtk.Align.CENTER;
-        grid.hexpand = true;
 
         icon = new Gtk.Image.from_pixbuf (null);
         icon.margin_top = icon.margin_bottom = 6;
@@ -122,6 +128,8 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         total_padding += icon.margin_end;
 
         show_all ();
+
+        add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
     }
 
     public IconGridItem (WidgetGrid.DataInterface? data = null) {
@@ -233,6 +241,79 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     public void enter () {
         is_hovered = true;
         update_state ();
+    }
+
+    public Gtk.CellEditable rename (int data_index) {
+        renaming = true;
+        renaming_index = data_index;
+        var entry = new Marlin.MultiLineEditableLabel ();
+        entry.hexpand = false;
+        entry.set_line_wrap (true);
+        entry.set_line_wrap_mode (Pango.WrapMode.WORD_CHAR);
+        entry.set_text (item_name);
+
+        entry.editing_done.connect (() => {
+            if (entry.editing_canceled) {
+                editing_canceled ();
+            } else {
+                edited (renaming_index, entry.get_text ());
+            }
+        });
+
+        entry.remove_widget.connect (() => {
+            grid.remove (entry);
+            grid.add (label);
+            entry.destroy ();
+        });
+
+        entry.key_press_event.connect (on_entry_key_press_event);
+
+        Gtk.Allocation alloc;
+        label.get_allocation (out alloc);
+        entry.size_allocate (alloc);
+
+        grid.remove (label);
+        grid.add (entry);
+        grid.show_all ();
+        entry.start_editing (null);
+        return entry;
+    }
+
+    public virtual bool on_entry_key_press_event (Gtk.Widget widget, Gdk.EventKey event) {
+        var entry = (Marlin.MultiLineEditableLabel)widget;
+        var mods = event.state & Gtk.accelerator_get_default_mod_mask ();
+        bool only_control_pressed = (mods == Gdk.ModifierType.CONTROL_MASK);
+
+        switch (event.keyval) {
+            case Gdk.Key.Return:
+            case Gdk.Key.KP_Enter:
+                /*  Only end rename with unmodified Enter. This is to allow use of Ctrl-Enter
+                 *  to commit Chinese/Japanese characters when using some input methods, without ending rename.
+                 */
+                if (mods == 0) {
+                    entry.activate ();
+                    return true;
+                }
+
+                break;
+
+            case Gdk.Key.Escape:
+                editing_canceled ();
+                entry.remove_widget ();
+                return true;
+
+            case Gdk.Key.z:
+                /* Undo with Ctrl-Z only */
+                if (only_control_pressed) {
+                    entry.set_text (entry.original_name);
+                    return true;
+                }
+                break;
+
+            default:
+                break;
+        }
+        return false;
     }
 }
 }

@@ -129,12 +129,9 @@ namespace FM {
             layout_handler.show_data_index (index, use_align, yalign);
         }
 
-        public void set_cursor (Gtk.TreePath path, bool start_editing, bool select = false) {
+        public void set_cursor (Gtk.TreePath path, bool select = false) {
             var index = path.get_indices ()[0];
             set_cursor_index (index, select);
-            if (start_editing) {
-                /* TODO - Obtain item and signal it to enter editing mode */
-            }
         }
 
         public bool get_cursor (out Gtk.TreePath path) {

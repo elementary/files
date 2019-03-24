@@ -72,8 +72,8 @@ namespace Marlin {
 
         public void end_editing (bool cancelled) {
             editing_canceled = cancelled;
-            remove_widget ();
             editing_done ();
+            remove_widget ();
         }
 
         public virtual void set_text (string text) {

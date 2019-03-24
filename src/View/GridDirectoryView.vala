@@ -197,7 +197,39 @@ namespace FM {
                                                     bool start_editing,
                                                     bool scroll_to_top) {
             scroll_to_cell (path, scroll_to_top);
-            tree.set_cursor (path, start_editing);
+            tree.set_cursor (path);
+
+            if (start_editing) {
+                tree.handle_events_first = false;
+                    var index = path.get_indices ()[0];
+                var item = (IconGridItem)(tree.get_item_for_data_index (index));
+                if (item != null) {
+                    connect_editing_signals (item);
+                    var editable = item.rename (index);
+                    on_name_editing_started (editable, index.to_string ());
+                }
+            }
+
+        }
+
+        private void connect_editing_signals (IconGridItem item) {
+            item.edited.connect (on_item_edited);
+            item.editing_canceled.connect (on_item_editing_canceled);
+        }
+
+        private void disconnect_editing_signals (IconGridItem item) {
+            item.edited.disconnect (on_item_edited);
+            item.editing_canceled.disconnect (on_item_editing_canceled);
+        }
+
+        private void on_item_editing_canceled (IconGridItem item) {
+            disconnect_editing_signals (item);
+            on_name_editing_canceled ();
+        }
+
+        private void on_item_edited (IconGridItem item, int data_index, string new_name) {
+            disconnect_editing_signals (item);
+            on_name_edited (data_index.to_string (), new_name);
         }
 
         protected override bool will_handle_button_press (bool no_mods, bool only_control_pressed,
@@ -272,21 +304,20 @@ namespace FM {
             }
         }
 
-        /* Not efficient - try to avoid */
         public override Gtk.TreePath? get_single_selection () {
-            Gtk.TreePath? result = null;
-            for (int i = 0; i < tree.model.get_n_items (); i++) {
-                var data = tree.model.lookup_index (i);
-                if (data.is_selected) {
-                    if (result == null) {
-                        result = new Gtk.TreePath.from_indices (i);
-                    } else {
-                        return null;
-                    }
+            var selected = tree.get_selected_data ();
+
+            if (selected.size == 1) {
+                var index = tree.get_index_for_data (selected.first ());
+                if (index >= 0) {
+                    return new Gtk.TreePath.from_indices (index);
                 }
+
+                critical ("selected data not found in model");
             }
 
-            return result;
+            warning ("More or less than one item selected selected size %u", selected.size);
+            return null;
         }
 
         protected override bool is_on_icon (int x, int y, ref bool on_helper) {
@@ -308,12 +339,13 @@ namespace FM {
         }
 
         protected override void freeze_tree () {
-            tree.clear_selection ();
             tree.freeze_child_notify ();
+            tree.handle_events_first = false;
         }
 
         protected override void thaw_tree () {
             tree.thaw_child_notify ();
+            tree.handle_events_first = true;
         }
 
         protected override void thumbnails_updated () {

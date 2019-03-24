@@ -3349,6 +3349,7 @@ namespace FM {
             Gtk.TreePath? path = get_single_selection ();
 
             if (path == null) {
+                is_frozen = false;
                 return;
             }
 

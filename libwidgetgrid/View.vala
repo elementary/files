@@ -42,6 +42,7 @@ public interface ViewInterface : Gtk.Widget {
     public abstract int vpadding { get; set; }
     public abstract bool handle_cursor_keys { get; set; default = true; }
     public abstract bool handle_zoom { get; set; default = true; }
+    public abstract bool handle_events_first { get; set; }
 
     public abstract bool get_visible_range_indices (out int first, out int last);
     public abstract void select_index (int index);
@@ -102,6 +103,15 @@ public class View : Gtk.Overlay, ViewInterface {
     public bool fixed_item_widths { get; set; default = true;}
     public bool handle_cursor_keys { get; set; default = true; }
     public bool handle_zoom { get; set; default = true; }
+    public bool handle_events_first {
+        get {
+            return event_box.above_child;
+        }
+
+        set {
+            event_box.above_child = value;
+        }
+    }
 
     public int item_width {
         get {
@@ -195,10 +205,12 @@ public class View : Gtk.Overlay, ViewInterface {
 
         add_events (Gdk.EventMask.SCROLL_MASK);
         event_box.scroll_event.connect ((event) => {
-            if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0) { /* Control key not pressed */
-                return handle_scroll (event);
-            } else if (handle_zoom) {
-                return handle_zoom_event (event);
+            if (handle_events_first) {
+                if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0) { /* Control key not pressed */
+                    return handle_scroll (event);
+                } else if (handle_zoom) {
+                    return handle_zoom_event (event);
+                }
             }
 
             return false;
@@ -207,6 +219,10 @@ public class View : Gtk.Overlay, ViewInterface {
         event_box.key_press_event.connect (on_key_press_event);
 
         event_box.button_press_event.connect ((event) => {
+            if (!handle_events_first) {
+                return false;
+            }
+
             layout.grab_focus ();
             var on_item = hovered_item != null;
 
@@ -233,6 +249,10 @@ public class View : Gtk.Overlay, ViewInterface {
         });
 
         event_box.motion_notify_event.connect ((event) => {
+            if (!handle_events_first) {
+                return false;
+            }
+
             var cp = get_corrected_position ((int)(event.x), (int)(event.y));
             var item = layout_handler.get_item_at_pos (cp, out wp);
             var on_item = item != null;
@@ -299,6 +319,10 @@ public class View : Gtk.Overlay, ViewInterface {
     }
 
     private bool on_key_press_event (Gdk.EventKey event) {
+        if (!handle_events_first) {
+            return false;
+        }
+
         var control_pressed = (event.state & Gdk.ModifierType.CONTROL_MASK) != 0;
         var shift_pressed = (event.state & Gdk.ModifierType.SHIFT_MASK) != 0;
 
@@ -604,6 +628,19 @@ public class View : Gtk.Overlay, ViewInterface {
 
     public void refresh_layout () {
         layout_handler.refresh ();
+    }
+
+    public unowned Gee.TreeSet<DataInterface> get_selected_data () {
+        return layout_handler.selected_data;
+    }
+
+    public int get_index_for_data (DataInterface data) {
+        return model.lookup_data (data);
+    }
+
+    public Item? get_item_for_data_index (int index) {
+        return layout_handler.get_item_for_data_index (index);
+
     }
 }
 }
