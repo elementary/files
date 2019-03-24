@@ -66,6 +66,7 @@ public class View : Gtk.Overlay, ViewInterface {
 
     private Gtk.Layout layout;
     private Gtk.EventBox event_box;
+    private Gtk.Scrollbar scrollbar;
 
     private int last_width = 0;
     private int last_height = 0;
@@ -110,6 +111,7 @@ public class View : Gtk.Overlay, ViewInterface {
 
         set {
             event_box.above_child = value;
+            scrollbar.visible = value;
         }
     }
 
@@ -178,7 +180,7 @@ public class View : Gtk.Overlay, ViewInterface {
         hpadding = DEFAULT_HPADDING;
         vpadding = DEFAULT_VPADDING;
 
-        var scrollbar = new Gtk.Scrollbar (Gtk.Orientation.VERTICAL, layout_handler.vadjustment);
+        scrollbar = new Gtk.Scrollbar (Gtk.Orientation.VERTICAL, layout_handler.vadjustment);
         scrollbar.set_slider_size_fixed (true);
         scrollbar.halign = Gtk.Align.END;
 
@@ -211,9 +213,9 @@ public class View : Gtk.Overlay, ViewInterface {
                 } else if (handle_zoom) {
                     return handle_zoom_event (event);
                 }
+            } else {
+                return true;
             }
-
-            return false;
         });
 
         event_box.key_press_event.connect (on_key_press_event);
