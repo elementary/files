@@ -635,17 +635,6 @@ namespace FM {
             connect_directory_loading_handlers (dir);
         }
 
-        private void clear () {
-            /* after calling this (prior to reloading), the directory must be re-initialised so
-             * we reconnect the file_loaded and done_loading signals */
-            freeze_tree ();
-            block_model ();
-            model.clear ();
-            selected_files = null;
-            all_selected = false;
-            unblock_model ();
-        }
-
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
             /* Set up as drop site */
             Gtk.drag_dest_set (widget, Gtk.DestDefaults.MOTION, drop_targets, Gdk.DragAction.ASK | file_drag_actions);
@@ -3575,6 +3564,17 @@ namespace FM {
             if (select_added_files) {
                 add_gof_file_to_selection (file);
             }
+        }
+
+        protected virtual void clear () {
+            /* after calling this (prior to reloading), the directory must be re-initialised so
+             * we reconnect the file_loaded and done_loading signals */
+            freeze_tree ();
+            block_model ();
+            model.clear ();
+            selected_files = null;
+            all_selected = false;
+            unblock_model ();
         }
 
         protected virtual void freeze_tree () {}

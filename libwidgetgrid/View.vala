@@ -30,7 +30,6 @@ namespace WidgetGrid {
 
 public interface ViewInterface : Gtk.Widget {
     public abstract Model<DataInterface> model {get; set construct; }
-    public abstract LayoutHandler layout_handler {protected get; set construct; }
 
     public abstract int minimum_item_width { get; set; }
     public abstract int maximum_item_width { get; set; }
@@ -643,6 +642,10 @@ public class View : Gtk.Overlay, ViewInterface {
     public Item? get_item_for_data_index (int index) {
         return layout_handler.get_item_for_data_index (index);
 
+    }
+
+    public void initialize_layout () {
+        layout_handler.initialize_layout_data ();
     }
 }
 }

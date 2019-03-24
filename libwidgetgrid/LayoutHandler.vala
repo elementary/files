@@ -159,7 +159,10 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         var n_rows_displayed_approx = n_displayed_items_approx / cols + 1;
         var rows_to_offset = (int)((double)n_rows_displayed_approx * (double)yalign) + 1;
         var first_displayed_row = row_containing_index - rows_to_offset;
-        vadjustment.set_value ((double)first_displayed_row);
+        if ((int)(vadjustment.get_value ()) != first_displayed_row) {
+            vadjustment.set_value ((double)first_displayed_row);
+        }
+
         /* Must set this now */
         previous_first_displayed_data_index = first_displayed_row * cols;
     }
@@ -453,11 +456,9 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
         clear_selection ();
         n_items = new_n_items;
-        initialize_layout_data ();
-        configure ();
     }
 
-    private void initialize_layout_data () {
+    public void initialize_layout_data () {
         first_displayed_data_index = 0;
         first_displayed_widget_index = 0;
         previous_first_displayed_data_index = -1;

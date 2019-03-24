@@ -352,5 +352,10 @@ namespace FM {
             tree.refresh_layout ();
             base.thumbnails_updated ();
         }
+
+        protected override void clear () {
+            base.clear ();
+            tree.initialize_layout ();
+        }
     }
 }
