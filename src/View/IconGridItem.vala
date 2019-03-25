@@ -128,8 +128,6 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         total_padding += icon.margin_end;
 
         show_all ();
-
-        add_events (Gdk.EventMask.BUTTON_PRESS_MASK);
     }
 
     public IconGridItem (WidgetGrid.DataInterface? data = null) {
@@ -264,6 +262,12 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
             grid.remove (entry);
             grid.add (label);
             entry.destroy ();
+        });
+
+        entry.get_real_editable ().focus_out_event.connect_after (() => {
+            editing_canceled ();
+            entry.remove_widget ();
+            return true;
         });
 
         entry.key_press_event.connect (on_entry_key_press_event);

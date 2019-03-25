@@ -220,10 +220,6 @@ public class View : Gtk.Overlay, ViewInterface {
         event_box.key_press_event.connect (on_key_press_event);
 
         event_box.button_press_event.connect ((event) => {
-            if (!handle_events_first) {
-                return false;
-            }
-
             layout.grab_focus ();
             var on_item = hovered_item != null;
 
