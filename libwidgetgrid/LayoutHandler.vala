@@ -464,12 +464,13 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         previous_first_displayed_data_index = -1;
         previous_first_displayed_row_height = -1;
         last_selected_index = -1;
-        pool_size = 0;
+
+        clear_layout ();
 
         row_data = new Gee.ArrayList<RowData> ();
         total_rows = 0;
-
-        clear_layout ();
+        pool_size = 0;
+        n_items = 0;
     }
 
     public void queue_draw () {
