@@ -64,7 +64,11 @@ public class GOF.File : WidgetGrid.WidgetData {
     public int height = 0;
     public int sort_column_id = FM.ColumnID.FILENAME;
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
-    public bool reversed = false;
+    public bool reversed {
+        get {
+            return sort_order == Gtk.SortType.DESCENDING;
+        }
+    }
     public GLib.FileType file_type;
     public bool is_hidden = false;
     public bool is_directory = false;
