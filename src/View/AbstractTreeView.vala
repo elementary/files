@@ -38,7 +38,7 @@ namespace FM {
             });
         }
 
-        public AbstractTreeView (Marlin.View.Slot _slot) {
+        protected AbstractTreeView (Marlin.View.Slot _slot) {
             assert (_slot != null);
             base (_slot);
         }

@@ -28,7 +28,7 @@ namespace Marlin {
 
         private Gtk.Widget editable_widget;
 
-        public AbstractEditableLabel () {
+        protected AbstractEditableLabel () {
             editable_widget = create_editable_widget ();
             add (editable_widget);
             show_all ();

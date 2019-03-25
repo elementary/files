@@ -279,7 +279,7 @@ namespace FM {
             model = new FM.DirectoryModel ();
         }
 
-        public AbstractDirectoryView (Marlin.View.Slot _slot) {
+        protected AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
