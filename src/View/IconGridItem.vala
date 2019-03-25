@@ -265,7 +265,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         });
 
         entry.get_real_editable ().focus_out_event.connect_after (() => {
-            editing_canceled ();
+            entry.editing_done ();
             entry.remove_widget ();
             return true;
         });
