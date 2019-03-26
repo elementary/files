@@ -1,3 +1,9 @@
+pantheon-files (4.1.6) bionic; urgency=medium
+
+  * New upstream release.
+
+ -- Cody Garver <codygarver@gmail.com>  Tue, 26 Mar 2019 04:58:49 -0500
+
 pantheon-files (4.1.5) bionic; urgency=medium
 
   * New upstream release.
