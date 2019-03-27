@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-03-20 23:57+0000\n"
+"PO-Revision-Date: 2019-03-29 02:49+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
 "\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.4\n"
+"X-Generator: Weblate 3.5.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: src/Application.vala:120
@@ -996,11 +996,11 @@ msgstr "रीसेट करा"
 
 #: libcore/FileConflictDialog.vala:181
 msgid "_Select a new name for the destination"
-msgstr ""
+msgstr "(_S)गंतव्यस्थानासाठी एक नवीन नाव निवडा"
 
 #: libcore/FileConflictDialog.vala:184
 msgid "Apply this action to all files"
-msgstr ""
+msgstr "ही क्रिया सर्व फायलींवर लागू करा"
 
 #: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:160
 msgid "_Skip"
@@ -1008,11 +1008,11 @@ msgstr "(_S)वगळा"
 
 #: libcore/FileConflictDialog.vala:187
 msgid "Re_name"
-msgstr ""
+msgstr "(_n)पुनर्नामित करा"
 
 #: libcore/FileConflictDialog.vala:191
 msgid "Keep Newest"
-msgstr ""
+msgstr "नवीनतम ठेवा"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Skip if original was modified more recently"
