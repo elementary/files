@@ -58,9 +58,8 @@ namespace Marlin.View.Chrome {
         }
 
         construct {
-            margin_top = 4;
-            margin_bottom = 4;
-            margin_start = 3;
+            margin_start = 24;
+            margin_end = 6;
         }
 
         public BasicLocationBar (Navigatable? _bread = null) {
