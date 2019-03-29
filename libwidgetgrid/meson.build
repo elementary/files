@@ -32,7 +32,7 @@ widgetgrid_lib = shared_library (
         libwidgetgrid_deps
     ],
 
-    install: false,
+    install: true,
     version: libver,
     soversion: '0'
 )
