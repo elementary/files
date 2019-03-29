@@ -302,7 +302,7 @@ namespace Marlin {
             get_offsets (cell_area, focus_rect_width, focus_rect_height, out x_offset, out y_offset);
 
             /* render the background if selected or colorized */
-            if (selected || this.background_set) {
+            if (selected || file.color > 0) {
                 int x0 = cell_area.x + x_offset;
                 int y0 = cell_area.y + y_offset;
                 var provider = new Gtk.CssProvider ();

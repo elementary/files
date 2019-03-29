@@ -78,7 +78,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private bool f_ignore_dir (GLib.File dir) {
         return_val_if_fail (dir != null, true);
         var uri = dir.get_uri ();
-
         if (uri == "file:///tmp") {
             return true;
         }
@@ -167,7 +166,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private void add_to_unknowns_queue (GOF.File file) {
-        return_if_fail (file != null);
+        return_if_fail (file != null && !file.is_null);
 
         if (file.get_ftype () == "application/octet-stream") {
             unknowns.push_head (file);
@@ -183,7 +182,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void rreal_update_file_info (GOF.File file) {
-        return_if_fail (file != null);
+        return_if_fail (file != null && !file.is_null);
 
         try {
             if (!file.exists) {
@@ -226,7 +225,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 add_to_unknowns_queue (file);
             }
         } catch (Error err) {
-            warning ("%s", err.message);
+            warning ("color tag update failed %s", err.message);
         }
     }
 
@@ -235,7 +234,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             return;
         }
 
-        return_if_fail (file != null);
+        return_if_fail (file != null && !file.is_null);
 
         try {
             var rc = yield daemon.get_uri_infos (target_uri);
@@ -256,8 +255,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void update_file_info (GOF.File file) {
-
-        return_if_fail (file != null);
+        return_if_fail (file != null && !file.is_null);
 
         if (file.info != null && !f_ignore_dir (file.directory) &&
             (!file.is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
