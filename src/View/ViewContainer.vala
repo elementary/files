@@ -454,7 +454,7 @@ namespace Marlin.View {
 
                 /* Notify plugins */
                 /* infobars are added to the view, not the active slot */
-//                plugins.directory_loaded (window, view, directory);
+                plugins.directory_loaded (window, view, directory);
             } else {
                 /* Save previous uri but do not record current one */
                 browser.record_uri (null);

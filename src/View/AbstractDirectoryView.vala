@@ -1248,7 +1248,7 @@ namespace FM {
                 if ((slot.directory.is_local && !hide_local_thumbnails) || (show_remote_thumbnails && slot.directory.can_open_files)) {
                     thumbnailer.queue_file (file, null, large_thumbnails);
                     if (plugins != null) {
-//                        plugins.update_file_info (file);
+                        plugins.update_file_info (file);
                     }
                 }
             }
@@ -1272,7 +1272,7 @@ namespace FM {
             }
 
             if (plugins != null) {
-//                plugins.update_file_info (file);
+                plugins.update_file_info (file);
             }
 
             if (file.is_folder ()) {
@@ -1785,7 +1785,7 @@ namespace FM {
                 var menu = new Gtk.Menu.from_model (model);
 
                 if (!in_trash) {
-//                    plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
+                    plugins.hook_context_menu (menu as Gtk.Widget, get_files_for_action ());
                 }
 
                 menu.set_screen (null);
@@ -2438,7 +2438,7 @@ namespace FM {
                             if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
                                 visible_files.prepend (file);
                                 if (plugins != null) {
-//                                    plugins.update_file_info (file);
+                                    plugins.update_file_info (file);
                                 }
 
                                 if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
