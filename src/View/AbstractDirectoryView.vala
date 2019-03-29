@@ -1257,6 +1257,7 @@ namespace FM {
         }
 
         private void on_directory_file_icon_changed (GOF.Directory.Async dir, GOF.File file) {
+            thumbnails_updated ();
             draw_when_idle ();
         }
 

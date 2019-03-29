@@ -47,6 +47,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     private Gtk.Label label;
     private int set_max_width_request = 0;
     private int total_padding;
+    private Gtk.CssProvider provider;
 
     public WidgetGrid.DataInterface data { get; set; default = null; }
     public bool is_hovered { get; set; default = false; }
@@ -69,6 +70,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     public signal void editing_canceled ();
 
     construct {
+        provider =  new Gtk.CssProvider ();
         above_child = false;
         hexpand = false;
         widget_id = IconGridItem.get_new_id ();
@@ -98,6 +100,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         label.set_ellipsize (Pango.EllipsizeMode.END);
         label.set_lines (5);
         label.set_justify (Gtk.Justification.CENTER);
+        label.get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
         helper = new Gtk.Image ();
         helper.margin = 0;
@@ -222,6 +225,22 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
             helper.set_from_icon_name (is_selected ? "selection-remove" : "selection-add", focused_helper_size);
         } else {
             grid.unset_state_flags (Gtk.StateFlags.PRELIGHT);
+        }
+
+        /* set label background if color tagged */
+        if (file.color > 0) {
+            string data;
+            if (is_selected) {
+                data = "* {border-radius: 5px;}";
+            } else {
+                data = "* {border-radius: 5px; background-color: %s;}".printf (GOF.Preferences.TAGS_COLORS[file.color]);
+            }
+
+            try {
+                provider.load_from_data (data);
+            } catch (Error e) {
+                critical (e.message);
+            }
         }
 
         helper.visible = is_cursor_position || is_selected || is_hovered;

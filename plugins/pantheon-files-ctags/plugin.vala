@@ -248,6 +248,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 row_iter.next_value ();
                 row_iter.next_value ();
                 file.color = int.parse (row_iter.next_value ().get_string ());
+                file.icon_changed ();
             }
         } catch (Error err) {
             warning ("%s", err.message);
