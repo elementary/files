@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-03-29 02:49+0000\n"
+"PO-Revision-Date: 2019-03-31 22:52+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
 "\n"
@@ -1016,11 +1016,11 @@ msgstr "नवीनतम ठेवा"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "मूळ फाईल अलीकडे सुधारित केली असल्यास वगळा"
 
 #: libcore/FileConflictDialog.vala:194
 msgid "Replace"
-msgstr ""
+msgstr "बदला"
 
 #: libcore/FileConflictDialog.vala:310
 #, c-format

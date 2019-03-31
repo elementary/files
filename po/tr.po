@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2018-11-07 00:06+0000\n"
-"Last-Translator: Sinan Decron <intenfinitia@gmail.com>\n"
-"Language-Team: Turkish <https://weblate.elementary.io/projects/files/files/"
-"tr/>\n"
+"PO-Revision-Date: 2019-03-31 22:52+0000\n"
+"Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
+"Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
+"\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.5.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: src/Application.vala:120
@@ -25,9 +25,8 @@ msgid "Show the version of the program"
 msgstr "Uygulamanın sürümünü göster"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Bir veya daha fazla URI aç, her biri kendi sekmesinde"
+msgstr "Her biri kendi sekmesinde olmak üzere bir veya daha fazla URI aç"
 
 #: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
@@ -39,7 +38,7 @@ msgstr "Dosyalar'dan çık"
 
 #: src/Application.vala:128
 msgid "Enable debug logging"
-msgstr "Hata ayıklama günlüğünü etkin kıl"
+msgstr "Hata ayıklama günlüğünü etkinleştir"
 
 #: src/Application.vala:131
 msgid "[URI…]"
@@ -70,11 +69,11 @@ msgstr "%s Tamamlandı"
 
 #: src/ProgressUIHandler.vala:188
 msgid "All file operations have ended"
-msgstr "Tüm dosya operasyonları sona erdi"
+msgstr "Tüm dosya işlemleri sona erdi"
 
 #: src/ProgressUIHandler.vala:236
 msgid "Show Copy Dialog"
-msgstr "Kopyalama Diyaloğunu Göster"
+msgstr "Kopyalama İletişim Kutusunu Göster"
 
 #: src/ProgressUIHandler.vala:248
 msgid "Cancel All In-progress Actions"
@@ -149,7 +148,7 @@ msgstr "Yükleniyor…"
 
 #: src/Dialogs/PropertiesWindow.vala:482
 msgid "Could not be determined"
-msgstr "Tespit edilemez"
+msgstr "Belirlenemedi"
 
 #: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
@@ -196,7 +195,7 @@ msgstr "Hedef:"
 
 #: src/Dialogs/PropertiesWindow.vala:606
 msgid "Original Location:"
-msgstr "Orjinal Konum:"
+msgstr "Özgün Konum:"
 
 #: src/Dialogs/PropertiesWindow.vala:629
 #: src/View/AbstractDirectoryView.vala:2132
@@ -269,7 +268,7 @@ msgstr "Dosya Sistemi"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:86
 msgid "Format:"
-msgstr "Format:"
+msgstr "Biçim:"
 
 #: src/Utils/MimeActions.vala:285
 msgid "Multiple file types selected"
@@ -285,7 +284,7 @@ msgstr "Dosyalar açılamadı"
 
 #: src/Utils/MimeActions.vala:323
 msgid "Could not open URIs"
-msgstr "URIlar açılamadı"
+msgstr "URI açılamadı"
 
 #: src/Utils/MimeActions.vala:326
 msgid "Could not open files or URIs with this app"
@@ -342,9 +341,8 @@ msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
-#, fuzzy
 msgid "Cannot execute this file"
-msgstr "Bu dosya açılamıyor"
+msgstr "Bu dosya çalıştırılamıyor"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
@@ -434,7 +432,7 @@ msgstr "Bu klasöre ulaşmak için çalışan bir ağ bağlantısı gerekiyor"
 
 #: src/View/ViewContainer.vala:417
 msgid "This Folder Does Not Belong to You"
-msgstr "Bu Dizin Sana Ait Değil"
+msgstr "Bu Dizin Size Ait Değil"
 
 #: src/View/ViewContainer.vala:418
 msgid "You don't have permission to view this folder."
@@ -442,15 +440,15 @@ msgstr "Bu klasörü görüntüleme iznine sahip değilsiniz."
 
 #: src/View/ViewContainer.vala:420
 msgid "Unable to Mount Folder"
-msgstr "Klasörü Bağlama Başarısız"
+msgstr "Klasör Bağlanamıyor"
 
 #: src/View/ViewContainer.vala:421
 msgid "Could not connect to the server for this folder."
-msgstr "Bu klasör için sunucuya bağlanılamaz."
+msgstr "Bu klasör için sunucuya bağlanamadı."
 
 #: src/View/ViewContainer.vala:424
 msgid "Unable to Display Folder Contents"
-msgstr "Klasör içeriği gösterilemiyor"
+msgstr "Klasör İçeriği Gösterilemiyor"
 
 #: src/View/ViewContainer.vala:425
 msgid "The operation timed out."
@@ -510,7 +508,7 @@ msgstr "Ağ"
 
 #: src/View/Sidebar.vala:781
 msgid "Your network places"
-msgstr "Ağ bağlantılarım"
+msgstr "Ağ bağlantılarınız"
 
 #: src/View/Sidebar.vala:813
 msgid "Entire Network"
@@ -565,19 +563,19 @@ msgstr "Erişim Rededildi"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Gizlilik modu etkin"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Hiçbir yeni dosya hatırlanmıyor"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Güvenlik ayarlarını değiştirin"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Sistem güvenlik ve gizlilik ayarlarını açın"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
@@ -649,7 +647,7 @@ msgstr "Gizli Dosyaları Göster"
 
 #: src/View/directory_view_popup.ui:71
 msgid "Show Remote Thumbnails"
-msgstr "Uzaktan Küçük Resim Kontrolünü Göster"
+msgstr "Uzak Küçük Resimleri Göster"
 
 #: src/View/directory_view_popup.ui:78
 msgid "New Tab"
@@ -740,7 +738,7 @@ msgstr "%u klasör"
 #: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr " ve %u diğer obje (%s) seçildi"
+msgstr " ve %u diğer öğe (%s) seçildi"
 
 #: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
 #, c-format
@@ -764,7 +762,7 @@ msgstr "%u alt klasör, "
 #: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u sub-folders, "
-msgstr "%u alt klasörler, "
+msgstr "%u alt klasör, "
 
 #: src/View/Widgets/OverlayBar.vala:285
 #, c-format
@@ -819,7 +817,7 @@ msgstr "Sonraki"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
-msgstr "Halka Açık FTP"
+msgstr "Genel FTP"
 
 #: libcore/ConnectServerDialog.vala:52
 msgid "FTP (with login)"
@@ -899,11 +897,11 @@ msgstr "Kullanıcı adı:"
 
 #: libcore/ConnectServerDialog.vala:184
 msgid "Password:"
-msgstr "Şifre:"
+msgstr "Parola:"
 
 #: libcore/ConnectServerDialog.vala:186
 msgid "Remember this password"
-msgstr "Bu şifreyi hatırla"
+msgstr "Bu parolayı hatırla"
 
 #: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:101
 #: libcore/FileConflictDialog.vala:189
@@ -946,7 +944,7 @@ msgstr "Bağlantı oluştur"
 #: libcore/FileUtils.vala:86
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr "\"%s\" özgün konumu belirlenemedi "
+msgstr "\"%s\" özgün konumu belirlenemedi. "
 
 #: libcore/FileUtils.vala:87
 msgid "The item cannot be restored from trash"
@@ -975,11 +973,11 @@ msgstr "Dün %-I:%M %p"
 
 #: libcore/FileUtils.vala:535
 msgid "%A at %-H:%M"
-msgstr "%A %-H:%M zamanında"
+msgstr "%A %-H:%M"
 
 #: libcore/FileUtils.vala:537
 msgid "%A at %-I:%M %p"
-msgstr "%A at %-I:%M %p"
+msgstr "%A %-I:%M %p"
 
 #: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
@@ -1019,7 +1017,7 @@ msgstr "Ye_niden Adlandır"
 
 #: libcore/FileConflictDialog.vala:191
 msgid "Keep Newest"
-msgstr "En yenisini tut"
+msgstr "En Yenisini Tut"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Skip if original was modified more recently"
@@ -1225,9 +1223,11 @@ msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
 msgstr[0] ""
-"%'d seçili öğeyi kalıcı olarak çöpten silmek istediğinizden emin misiniz?"
+"Seçili %'d ögeyi çöp kutusundan kalıcı olarak silmek istediğinizden emin "
+"misiniz?"
 msgstr[1] ""
-"Seçili %'d ögeyi çöp kutusundan kalıcı olarak silmek istiyor musunuz?"
+"Seçili %'d  ögeyi çöp kutusundan kalıcı olarak silmek istediğinizden emin "
+"misiniz?"
 
 #: libcore/marlin-file-operations.c:1271 libcore/marlin-file-operations.c:1351
 msgid "If you delete an item, it will be permanently lost."
@@ -1235,13 +1235,15 @@ msgstr "Eğer bir öğeyi silerseniz, o kalıcı olarak kaybolur."
 
 #: libcore/marlin-file-operations.c:1296
 msgid "Permanently delete all items from Trash?"
-msgstr "Bütün ögeler kalıcı olarak çöp kutusundan silinecek?"
+msgstr "Bütün ögeler kalıcı olarak çöp kutusundan silinsin mi?"
 
 #: libcore/marlin-file-operations.c:1297
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
-msgstr "Çöp dizinindeki ve takılı sürücülerdeki dosyalar tamamen silinecek."
+msgstr ""
+"Bağlanmış harici sürücülerdekiler de dahil olmak üzere tüm çöp "
+"dizinlerindeki öğeler kalıcı olarak silinecek."
 
 #: libcore/marlin-file-operations.c:1300
 msgid "Permanently delete all items from Trash on this mount?"
@@ -1362,7 +1364,7 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:1811
 msgid "Cannot move file to trash. Try to delete it immediately?"
-msgstr "Dosya çöpe taşınamıyor. Hızlı silmeyi denemek ister misiniz?"
+msgstr "Dosya çöpe taşınamıyor. Hemen silmeyi denemek ister misiniz?"
 
 #: libcore/marlin-file-operations.c:1812
 msgid ""
@@ -1451,7 +1453,7 @@ msgstr "Taşınırken hata oluştu."
 
 #: libcore/marlin-file-operations.c:2377
 msgid "Error while moving files to trash."
-msgstr "Dosyalar çöpe taşınırken hata."
+msgstr "Dosyalar çöpe taşınırken hata oluştu."
 
 #: libcore/marlin-file-operations.c:2431
 msgid ""
@@ -1482,7 +1484,7 @@ msgstr "\"%B\" hakkında bilgi alırken bir hata oluştu."
 #: libcore/marlin-file-operations.c:2649 libcore/marlin-file-operations.c:2691
 #: libcore/marlin-file-operations.c:2724 libcore/marlin-file-operations.c:2754
 msgid "Error while copying to \"%B\"."
-msgstr "\"%B\" hedefine kopyalanırken hata."
+msgstr "\"%B\" hedefine kopyalanırken hata oluştu."
 
 #: libcore/marlin-file-operations.c:2653
 msgid "You do not have permissions to access the destination folder."
@@ -1777,7 +1779,7 @@ msgstr "Sil: '%s'"
 #: libcore/marlin-undostack-manager.c:1128
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr "Kopyalanmış %d öğeyi sil"
+msgstr "Yinelenen %d öğeyi sil"
 
 #: libcore/marlin-undostack-manager.c:1139
 #, c-format
@@ -2155,7 +2157,7 @@ msgstr "%s'e git"
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
 #, c-format
 msgid "Go to %s"
-msgstr "%s git"
+msgstr "Git: %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
 #, fuzzy
@@ -2164,11 +2166,11 @@ msgstr "Bir yol belirle"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
-msgstr "Bu klasörde"
+msgstr "Bu Klasörde"
 
 #: libwidgets/View/SearchResults.vala:227
 msgid "Below This Folder"
-msgstr "Bu Klasörde"
+msgstr "Bu Klasörün Altında"
 
 #: libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
@@ -2180,7 +2182,7 @@ msgstr "Son kullanılanlar"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr "Izgara olarak görüntüle"
+msgstr "Izgara Olarak Görüntüle"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
