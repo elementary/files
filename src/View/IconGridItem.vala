@@ -155,7 +155,6 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         icon.set_size_request (pix_size, pix_size);
 
         if (file != null) {
-            file.query_thumbnail_update ();
             file.update_icon (pix_size, 1);
             icon.set_from_pixbuf (file.pix);
         }
@@ -183,14 +182,18 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
     /** Call with null to refresh from existing data **/
     public void update_item (WidgetGrid.DataInterface? _data = null) {
-        if (_data != null) {
+        var prev_data_id = data_id;
+        var current_data_id = _data != null ? _data.data_id : -1;
+        var new_data = (prev_data_id != current_data_id || prev_data_id < 0);
+
+        if (_data != null && new_data) {
             data = _data;
         }
 
         if (file != null) {
             update_state ();
             label.label = item_name;
-            set_max_width (set_max_width_request, true);
+            set_max_width (set_max_width_request, new_data);
         }
     }
 

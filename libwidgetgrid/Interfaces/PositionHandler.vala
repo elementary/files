@@ -23,8 +23,8 @@ namespace WidgetGrid {
 public interface PositionHandler : Object {
     public abstract Gee.ArrayList<RowData> row_data { get; set; }
     public abstract Gee.ArrayList<Item> widget_pool { get; construct; }
-    public abstract int first_displayed_widget_index { get; set; default = 0;}
-    public abstract int last_displayed_widget_index { get; set; default = 0;}
+    public abstract int first_displayed_widget_index { get;}
+    public abstract int last_displayed_widget_index { get; }
 
     public abstract WidgetGrid.Model<DataInterface> model { get; construct; }
     public abstract int n_items { get; protected set; default = 0; }
@@ -40,7 +40,7 @@ public interface PositionHandler : Object {
     }
 
     protected abstract void position_items ();
-    protected abstract int next_widget_index (int current_index);
+    protected abstract Item widget_for_data_index (int data_index);
 
     public int index_below (int index) {
         index += cols;
@@ -180,17 +180,17 @@ public interface PositionHandler : Object {
     /** @index is the index of the last item on the previous row (or -1 for the first row).
         The row height is the largest height request of the widgets in the row
     **/
-    protected virtual int get_row_height (int widget_index, int data_index) { /* widgets previous updated */
-        if (widget_index < 0 || data_index < 0) {
+    protected virtual int get_row_height (int data_index) { /* widgets previous updated */
+        if (data_index < 0) {
             critical ("invalid index");
             return -1;
         }
 
         var max_h = 0;
-        var windex = widget_index;
-        for (int c = 0; c < cols && data_index < model.get_n_items (); c++) {
-            var item = widget_pool[windex];
-            var data = model.lookup_index (data_index);
+        var d_index = data_index;
+        for (int c = 0; c < cols && d_index < model.get_n_items (); c++) {
+            var item = widget_for_data_index (d_index);
+            var data = model.lookup_index (d_index);
 
             item.update_item (data);
             item.set_max_width (item_width);
@@ -207,15 +207,14 @@ public interface PositionHandler : Object {
                 item_width = min_w - hpadding;
             }
 
-            windex = next_widget_index (windex);
-            data_index++;
+            d_index++;
         }
 
-        windex = widget_index;
-        for (int c = 0; c < cols && data_index < model.get_n_items (); c++) {
-            var item = widget_pool[widget_index];
+        d_index = data_index;
+        for (int c = 0; c < cols && d_index < model.get_n_items (); c++) {
+            var item = widget_for_data_index (d_index);
             item.set_size_request (-1, max_h);
-            windex = next_widget_index (windex);
+            d_index++;
         }
 
         return max_h;

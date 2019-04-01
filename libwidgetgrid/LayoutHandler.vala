@@ -30,12 +30,20 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
     private int n_widgets = 0;
 
-    private int pool_size = 0;
     private int previous_first_displayed_data_index = -1;
     private int previous_first_displayed_row_height = -1;
     private int total_rows = 0;
-    public int first_displayed_widget_index { get; set; default = 0;}
-    public int last_displayed_widget_index { get; set; default = 0;}
+    public int first_displayed_widget_index {
+        get {
+            return widget_index_for_data_index (first_displayed_data_index);
+        }
+    }
+
+    public int last_displayed_widget_index {
+        get {
+            return widget_index_for_data_index (last_displayed_data_index);
+        }
+    }
 
 
     private uint32 last_event_time = 0;
@@ -102,7 +110,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                 if (change > 0 && n_widgets < MAX_WIDGETS) {
                     widget_pool.add (factory.new_item ());
                     n_widgets++;
-                    pool_size = 0;
                 }
 
                 if (change < 0) {
@@ -169,19 +176,19 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
     public void apply_to_visible_items (WidgetFunc func) {
         Item item;
-        int index = first_displayed_widget_index;
+        int index = first_displayed_data_index;
 
         if (index >= 0 && !widget_pool.is_empty) {
             do {
-                item = widget_pool[index];
+                item = widget_for_data_index (index);
                 if (item != null && item.data_id != -1) {
                     func (item);
                 }
 
-                if (index == last_displayed_widget_index) {
+                if (index >= last_displayed_data_index) {
                     break;
                 } else {
-                    index = next_widget_index (index);
+                    index++;
                 }
 
             } while (true);
@@ -201,6 +208,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     }
 
     protected void position_items () {
+
         int data_index, widget_index, row_height;
         if (n_items == 0 || cols == 0) {
             return;
@@ -209,14 +217,9 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         data_index = first_displayed_row * cols;
         return_if_fail (data_index < n_items && data_index >= 0);
 
-        if (pool_size == 0) {
-            pool_size = n_widgets - 1;
-        }
-
         if (previous_first_displayed_data_index >= 0) {
             if (previous_first_displayed_data_index != data_index) {
                 clear_layout ();
-                first_displayed_widget_index = 0;
             }
         }
 
@@ -226,10 +229,9 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         last_displayed_data_index = data_index;
 
         /* This puts data in widgets */
-        row_height = get_row_height (first_displayed_widget_index, data_index);
+        row_height = get_row_height (data_index);
 
         previous_first_displayed_row_height = row_height;
-        widget_index = first_displayed_widget_index;
 
         int y = vpadding - (int)display_offset;
         int r;
@@ -238,11 +240,12 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                 row_data.add (new RowData ());
             }
 
+            widget_index = widget_index_for_data_index (data_index);
             row_data[r].update (data_index, widget_index, y, row_height);
 
             int x = hpadding;
             for (int c = 0; c < cols && data_index < n_items && row_height > 2 * vpadding; c++) {
-                var item = widget_pool[widget_index];
+                var item = widget_for_data_index (data_index);
                 item.set_size_request (item_width, row_height - 2 * vpadding);
 
                 if (item.get_parent () != null) {
@@ -254,14 +257,11 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                 x += item_width + hpadding;
 
                 last_displayed_data_index = data_index;
-
-                last_displayed_widget_index = widget_index;
-                widget_index = next_widget_index (widget_index);
                 data_index++;
             }
 
             y += row_height + vpadding;
-            row_height = get_row_height (widget_index, data_index);
+            row_height = get_row_height (data_index);
         }
 
         if (r > row_data.size - 1) {
@@ -271,9 +271,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             row_data[r].update (int.MAX, int.MAX, int.MAX, int.MAX);
         }
 
-        last_displayed_data_index = data_index - 1;
         var items_displayed = last_displayed_data_index - first_displayed_data_index + 1;
-        pool_size = (items_displayed + 2 * cols - items_displayed % cols).clamp (0, n_widgets - 1);
         layout.queue_draw ();
     }
 
@@ -298,8 +296,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                 if (total_rows != new_total_rows) {
                     clear_layout ();
                     total_rows = new_total_rows;
-                    last_displayed_widget_index = 0;
-                    pool_size = 0;
                     max_val = (double)(total_rows + 2); /* Ensure bottom row fully exposed */
                     vadjustment.configure (val, min_val, max_val, step_increment, page_increment, page_size);
                 }
@@ -353,7 +349,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         /* Calculate fraction of first row hidden */
         if (new_val < previous_adjustment_val) { /* Scroll up */
             var first_displayed_data_index = first_displayed_row * cols;
-            var row_height = get_row_height (first_displayed_widget_index, first_displayed_data_index);
+            var row_height = get_row_height (first_displayed_data_index);
             display_offset = row_fraction * row_height;
 
         } else {
@@ -390,8 +386,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                 layout.move (w, -1000, -1000);
                 moved++;
             }
-
-            ((Item)w).data = null;
         }
     }
 
@@ -405,14 +399,12 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         }
     }
 
-    private int next_widget_index (int widget_index) {
-        widget_index++;
+    private int widget_index_for_data_index (int data_index) {
+        return data_index % n_widgets;
+    }
 
-        if (widget_index > (pool_size > 0 ? pool_size : n_widgets - 1)) {
-            widget_index = 0;
-        }
-
-        return widget_index;
+    private Item widget_for_data_index (int data_index) {
+        return widget_pool[widget_index_for_data_index (data_index)];
     }
 
     protected Gtk.Widget get_widget () {
@@ -428,12 +420,7 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         if (offset < 0 || offset > (last_displayed_data_index - first_displayed_data_index)) {
             return null;
         } else {
-            var widget_index = first_displayed_widget_index + offset;
-            if (widget_index >= pool_size) {
-                widget_index -= pool_size;
-            }
-
-            return widget_pool[widget_index];
+            return widget_for_data_index (data_index);
         }
     }
 
@@ -460,7 +447,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
     public void initialize_layout_data () {
         first_displayed_data_index = 0;
-        first_displayed_widget_index = 0;
         previous_first_displayed_data_index = -1;
         previous_first_displayed_row_height = -1;
         last_selected_index = -1;
@@ -469,7 +455,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
 
         row_data = new Gee.ArrayList<RowData> ();
         total_rows = 0;
-        pool_size = 0;
         n_items = 0;
     }
 
