@@ -272,6 +272,13 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         entry.set_line_wrap_mode (Pango.WrapMode.WORD_CHAR);
         entry.set_text (item_name);
 
+        Gtk.Allocation alloc;
+        label.get_allocation (out alloc);
+        entry.size_allocate (alloc);
+        grid.remove (label);
+        grid.add (entry);
+        grid.show_all ();
+
         entry.editing_done.connect (() => {
             if (entry.editing_canceled) {
                 editing_canceled ();
@@ -281,26 +288,17 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         });
 
         entry.remove_widget.connect (() => {
-            grid.remove (entry);
             grid.add (label);
             entry.destroy ();
         });
 
         entry.get_real_editable ().focus_out_event.connect_after (() => {
-            entry.editing_done ();
-            entry.remove_widget ();
+            entry.editing_done (); /* This generates remove widget signal */
             return true;
         });
 
         entry.key_press_event.connect (on_entry_key_press_event);
 
-        Gtk.Allocation alloc;
-        label.get_allocation (out alloc);
-        entry.size_allocate (alloc);
-
-        grid.remove (label);
-        grid.add (entry);
-        grid.show_all ();
         entry.start_editing (null);
         return entry;
     }

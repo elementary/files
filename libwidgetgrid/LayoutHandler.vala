@@ -45,7 +45,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         }
     }
 
-
     private uint32 last_event_time = 0;
     private double accel = 0.0;
     private uint scroll_accel_timeout_id = 0;
