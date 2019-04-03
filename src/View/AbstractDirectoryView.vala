@@ -280,7 +280,7 @@ namespace FM {
         public signal void item_hovered (GOF.File? file);
         public signal void selection_changed (GLib.List<GOF.File> gof_file);
 
-        public AbstractDirectoryView (Marlin.View.Slot _slot) {
+        protected AbstractDirectoryView (Marlin.View.Slot _slot) {
             slot = _slot;
             window = _slot.window;
             editable_cursor = new Gdk.Cursor.from_name (Gdk.Display.get_default (), "text");
@@ -452,6 +452,8 @@ namespace FM {
             Idle.add_full (GLib.Priority.LOW, () => {
                 if (!tree_frozen) {
                     select_file_paths (file_list, focus);
+                    /* Update menu and selected file list now in case autoselected */
+                    update_selected_files_and_menu ();
                     return GLib.Source.REMOVE;
                 } else {
                     return GLib.Source.CONTINUE;
@@ -481,7 +483,7 @@ namespace FM {
             }
 
             connect_tree_signals ();
-            on_view_selection_changed (); /* Update selected files and menu actions */
+            on_view_selection_changed (); /* Mark selected_file list as invalid */
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
@@ -1376,6 +1378,7 @@ namespace FM {
             if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
                 large_thumbnails = size > 128;
                 slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
+                schedule_thumbnail_timeout ();
             }
 
             model.set_property ("size", icon_size);
