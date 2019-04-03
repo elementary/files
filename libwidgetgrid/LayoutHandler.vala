@@ -53,6 +53,8 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
     private const double ACCEL_RATE = 1.3;
     private const int SCROLL_ACCEL_DELAY_MSEC = 100;
     private double previous_adjustment_val;
+    private int last_width = 0;
+    private int last_height = 0;
 
     private uint reflow_timeout_id = 0;
 
@@ -125,6 +127,18 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             }
         });
 
+        layout.size_allocate.connect ((alloc) => {
+            if (last_width != alloc.width || last_height != alloc.height) {
+                last_width = alloc.width;
+                last_height = alloc.height;
+                configure ();
+            }
+        });
+
+        selection_changed.connect (() => {
+            refresh ();
+        });
+
         notify["hpadding"].connect (() => {
             configure ();
         });
@@ -138,10 +152,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         });
 
         notify["cursor-index"].connect (() => {
-            refresh ();
-        });
-
-        selection_changed.connect (() => {
             refresh ();
         });
     }
@@ -202,12 +212,9 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         apply_to_visible_items ((item) => {
             item.update_item ();
         });
-
-        position_items ();
     }
 
-    protected void position_items () {
-
+    private void position_items () {
         int data_index, widget_index, row_height;
         if (n_items == 0 || cols == 0) {
             return;
@@ -274,7 +281,20 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         layout.queue_draw ();
     }
 
-    public void configure () {
+    uint configure_timeout = 0;
+    private void configure () {
+        if (configure_timeout > 0) {
+            return;
+        }
+
+        configure_timeout = Timeout.add (100, () => {
+            do_configure ();
+            configure_timeout = 0;
+            return Source.REMOVE;
+        });
+    }
+
+    private void do_configure () {
         if (column_width > 0) {
             cols = (layout.get_allocated_width ()) / column_width;
             if (cols > 0) {
@@ -300,7 +320,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
                 }
 
                 on_adjustment_value_changed (true);
-                Idle.add (() => {refresh (); return Source.REMOVE;});
             }
         }
     }

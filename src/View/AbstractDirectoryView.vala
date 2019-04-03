@@ -1331,19 +1331,8 @@ namespace FM {
             bool show = (prefs as GOF.Preferences).show_hidden_files;
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
-            unselect_all ();
-
-            if (!show) {
-                block_model ();
-                model.clear ();
-            }
-
+            clear ();
             directory_hidden_changed (slot.directory, show);
-
-            if (!show) {
-                unblock_model ();
-            }
-
             action_set_state (background_actions, "show-hidden", show);
         }
 
@@ -1365,7 +1354,7 @@ namespace FM {
 
         private void directory_hidden_changed (GOF.Directory.Async dir, bool show) {
             /* May not be slot.directory - could be subdirectory */
-            dir.file_loaded.connect (on_directory_file_loaded); /* disconnected by on_done_loading callback.*/
+            connect_directory_loading_handlers (dir);
             dir.load_hiddens ();
         }
 

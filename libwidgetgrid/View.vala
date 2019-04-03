@@ -67,9 +67,6 @@ public class View : Gtk.Overlay, ViewInterface {
     private Gtk.EventBox event_box;
     private Gtk.Scrollbar scrollbar;
 
-    private int last_width = 0;
-    private int last_height = 0;
-
     private Item? hovered_item = null;
     private Gdk.Point wp; /* Item relative pointer position */
 
@@ -195,16 +192,8 @@ public class View : Gtk.Overlay, ViewInterface {
             Gdk.EventMask.POINTER_MOTION_MASK
         );
 
-        event_box.size_allocate.connect ((alloc) => {
-            if (last_width != alloc.width || last_height != alloc.height) {
-                last_width = alloc.width;
-                last_height = alloc.height;
-                layout_handler.configure ();
-            }
-        });
-
-
         add_events (Gdk.EventMask.SCROLL_MASK);
+
         event_box.scroll_event.connect ((event) => {
             if (handle_events_first) {
                 if ((event.state & Gdk.ModifierType.CONTROL_MASK) == 0) { /* Control key not pressed */

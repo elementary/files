@@ -190,7 +190,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
             data = _data;
         }
 
-        if (file != null) {
+        if (file != null && !file.is_null) {
             update_state ();
             label.label = item_name;
             set_max_width (set_max_width_request, new_data);
@@ -231,19 +231,17 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         }
 
         /* set label background if color tagged */
-        if (file.color > 0) {
-            string data;
-            if (is_selected) {
-                data = "* {border-radius: 5px;}";
-            } else {
-                data = "* {border-radius: 5px; background-color: %s;}".printf (GOF.Preferences.TAGS_COLORS[file.color]);
-            }
+        string data;
+        data = "* {border-radius: 5px;}";
 
-            try {
-                provider.load_from_data (data);
-            } catch (Error e) {
-                critical (e.message);
-            }
+        if (file.color > 0 && !is_selected) {
+            data = "* {border-radius: 5px; background-color: %s;}".printf (GOF.Preferences.TAGS_COLORS[file.color]);
+        }
+
+        try {
+            provider.load_from_data (data);
+        } catch (Error e) {
+            critical (e.message);
         }
 
         helper.visible = is_cursor_position || is_selected || is_hovered;

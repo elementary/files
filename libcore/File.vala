@@ -138,10 +138,12 @@ public class GOF.File : WidgetGrid.WidgetData {
         var location = GLib.File.new_for_path ("");
         var file = GOF.File.get (location);
         file.is_null = true;
+        file.exists = false;
         file.basename = "";
         file.format_size = "";
         file.formated_modified = "";
         file.formated_type = "";
+        file.info = null;
 
         return file;
     }
@@ -591,6 +593,7 @@ public class GOF.File : WidgetGrid.WidgetData {
     }
 
     public void update_type () {
+        GLib.return_if_fail (info != null);
         unowned string? ftype = get_ftype ();
         update_formated_type ();
 
@@ -602,6 +605,7 @@ public class GOF.File : WidgetGrid.WidgetData {
     }
 
     public void update_icon (int size, int scale) {
+        GLib.return_if_fail (info != null);
         if (size <= 1) {
             return;
         }
@@ -614,6 +618,7 @@ public class GOF.File : WidgetGrid.WidgetData {
     }
 
     public void update_desktop_file () {
+        GLib.return_if_fail (info != null);
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
         update_formated_type ();
         update_size ();
@@ -621,6 +626,7 @@ public class GOF.File : WidgetGrid.WidgetData {
     }
 
     public void query_update () {
+        GLib.return_if_fail (!is_null);
         var _info = query_info ();
         if (_info != null) {
             info = _info;
@@ -629,6 +635,7 @@ public class GOF.File : WidgetGrid.WidgetData {
     }
 
     public void query_thumbnail_update () {
+        GLib.return_if_fail (!is_null);
         /* Silently ignore invalid requests */
         if (pix_size <= 1 || pix_scale <= 0)
             return;
@@ -655,6 +662,7 @@ public class GOF.File : WidgetGrid.WidgetData {
     }
 
     public bool ensure_query_info () {
+        GLib.return_val_if_fail (!is_null, false);
         if (info == null) {
             query_update ();
         }
@@ -1037,7 +1045,7 @@ public class GOF.File : WidgetGrid.WidgetData {
     }
 
     private GLib.FileInfo? query_info () {
-        GLib.return_val_if_fail (location is GLib.File, null);
+        GLib.return_val_if_fail (!is_null && location is GLib.File, null);
         is_mounted = true;
         exists = true;
         is_connected = true;
