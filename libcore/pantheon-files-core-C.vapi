@@ -39,6 +39,7 @@ namespace FM
         public bool get_first_iter_for_file (GOF.File file, out Gtk.TreeIter iter);
         public bool get_tree_iter_from_file (GOF.File file, GOF.Directory.Async directory, out Gtk.TreeIter iter);
         public bool get_directory_file (Gtk.TreePath path, out unowned GOF.Directory.Async directory, out unowned GOF.File file);
+        public uint get_length ();
         public GOF.File? file_for_iter (Gtk.TreeIter iter);
         public void clear ();
         public void set_should_sort_directories_first (bool directories_first);

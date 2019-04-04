@@ -2905,7 +2905,15 @@ namespace FM {
                     break;
 
                 case Gdk.Key.Home:
-                    res = only_shift_pressed && handle_multi_select (new Gtk.TreePath.from_indices (0));
+                    res = only_shift_pressed &&
+                          handle_multi_select (new Gtk.TreePath.from_indices (0));
+
+                    break;
+
+                case Gdk.Key.End:
+                    res = only_shift_pressed &&
+                          handle_multi_select (new Gtk.TreePath.from_indices (model.get_length ()));
+
                     break;
 
                 case Gdk.Key.c:
