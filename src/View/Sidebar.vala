@@ -516,7 +516,9 @@ namespace Marlin.Places {
                 Column.FREE_SPACE, item.free_space,
                 Column.DISK_SIZE, item.disk_size,
                 Column.PLUGIN_CALLBACK, item.cb,
-                Column.MENU_MODEL, item.menu_model
+                Column.MENU_MODEL, item.menu_model,
+                Column.ACTION_GROUP_NAMESPACE, item.action_group_namespace,
+                Column.ACTION_GROUP, item.action_group
             );
         }
 
@@ -1611,9 +1613,27 @@ namespace Marlin.Places {
             bool show_properties = show_mount || show_unmount || show_eject || uri == Marlin.ROOT_FS_URI;
 
             if (is_plugin) {
+                MenuModel model;
+                string action_group_namespace;
+                ActionGroup action_group;
+
+                store.get (iter, Column.MENU_MODEL, out model);
+                store.get (iter, Column.ACTION_GROUP_NAMESPACE, out action_group_namespace);
+                store.get (iter, Column.ACTION_GROUP, out action_group);
+
                 var menu = new PopupMenuBuilder ()
                 .add_open (open_shortcut_cb);
-                menu.build ().popup_at_pointer (event);
+                if (model == null) {
+                    menu.build ().popup_at_pointer (event);
+                } else {
+                    menu
+                    .add_separator ()
+                    .add_open_tab (open_shortcut_in_new_tab_cb)
+                    .add_open_window (open_shortcut_in_new_window_cb)
+                    .add_separator ()
+                    .build_from_model (model, action_group_namespace, action_group)
+                    .popup_at_pointer (event);
+                }
             } else {
                 var menu = new PopupMenuBuilder ()
                 .add_open (open_shortcut_cb)
@@ -1783,10 +1803,12 @@ namespace Marlin.Places {
             var crt = renderer as Gtk.CellRendererText;
             string text;
             bool is_category, show_eject_button;
+            Icon? action_icon;
             uint64 disk_size = 0;
             model.@get (iter, Column.NAME, out text,
                               Column.IS_CATEGORY, out is_category,
                               Column.DISK_SIZE, out disk_size,
+                              Column.ACTION_ICON, out action_icon,
                               Column.SHOW_EJECT, out show_eject_button, -1);
 
             if (is_category) {
@@ -1798,7 +1820,7 @@ namespace Marlin.Places {
                 if (disk_size > 0) {
                     /* Make disk space graphic same length whether or not eject button displayed */
                     var crd = renderer as Marlin.CellRendererDisk;
-                    if (!show_eject_button) {
+                    if (!show_eject_button || action_icon == null) {
                         crd.rpad = eject_button_size + ICON_XPAD * 2;
                     } else {
                         crd.rpad = 0;
