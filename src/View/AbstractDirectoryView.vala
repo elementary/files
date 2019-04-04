@@ -2902,8 +2902,10 @@ namespace FM {
                         break;
                     }
 
-                    res = move_cursor (keyval, only_shift_pressed, control_pressed);
+                    break;
 
+                case Gdk.Key.Home:
+                    res = only_shift_pressed && handle_multi_select (new Gtk.TreePath.from_indices (0));
                     break;
 
                 case Gdk.Key.c:
