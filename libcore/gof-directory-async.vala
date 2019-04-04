@@ -817,6 +817,7 @@ public class Async : Object {
             }
         }
 
+        result.is_gone = false;
         return (!) result;
     }
 
@@ -844,11 +845,6 @@ public class Async : Object {
     }
 
     private void changed_and_refresh (GOF.File gof) {
-        if (gof.is_gone) {
-            critical ("File marked as gone when refreshing change");
-            return;
-        }
-
         gof.update ();
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
@@ -858,11 +854,6 @@ public class Async : Object {
     }
 
     private void add_and_refresh (GOF.File gof) {
-        if (gof.is_gone) {
-            critical ("Add and refresh file which is gone");
-            return;
-        }
-
         if (gof.info == null) {
             critical ("FILE INFO null");
         }
@@ -891,6 +882,8 @@ public class Async : Object {
     }
 
     private void notify_file_removed (GOF.File gof) {
+        remove_file_from_cache (gof);
+
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
             file_deleted (gof);
         }
@@ -1093,7 +1086,7 @@ public class Async : Object {
         return from_gfile (gof.get_target_location ());
     }
 
-    public static void remove_file_from_cache (GOF.File gof) {
+    private static void remove_file_from_cache (GOF.File gof) {
         assert (gof != null);
         Async? dir = cache_lookup (gof.directory);
         if (dir != null) {

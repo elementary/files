@@ -1608,7 +1608,7 @@ namespace Marlin.Places {
                                     ((uri == Marlin.TrashMonitor.URI) ||
                                     Marlin.FileOperations.has_trash_files (mount));
 
-            bool show_property = show_mount || show_unmount || show_eject || uri == "file:///";
+            bool show_properties = show_mount || show_unmount || show_eject || uri == Marlin.ROOT_FS_URI;
 
             if (is_plugin) {
                 var menu = new PopupMenuBuilder ()
@@ -1648,7 +1648,7 @@ namespace Marlin.Places {
                     menu.add_item (popupmenu_empty_trash_item, empty_trash_cb);
                 }
 
-                if (show_property) {
+                if (show_properties) {
                     menu.add_property (show_drive_info_cb);
                 }
 
@@ -2294,7 +2294,7 @@ namespace Marlin.Places {
                         // Already handled
                     }
                 });
-            } else if (mount != null || uri == "file:///") {
+            } else if (mount != null || uri == Marlin.ROOT_FS_URI) {
                 new Marlin.View.VolumePropertiesWindow (mount, window);
             }
         }
