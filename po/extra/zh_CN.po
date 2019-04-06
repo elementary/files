@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
-"PO-Revision-Date: 2017-07-04 08:41+0000\n"
+"PO-Revision-Date: 2019-04-05 11:52+0000\n"
 "Last-Translator: colindemian <colindemian@outlook.com>\n"
 "Language-Team: Chinese (Simplified) <https://l10n.elementary.io/projects/"
-"files/extra/zh_CN/>\n"
+"files/extra/zh_Hans/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.14\n"
+"X-Generator: Weblate 3.5.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -39,7 +39,7 @@ msgstr "文件管理器"
 
 #: data/io.elementary.files.desktop.in.in:8
 msgid "system-file-manager"
-msgstr ""
+msgstr "系统文件管理器"
 
 #: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
@@ -66,7 +66,7 @@ msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:166
 msgid "elementary LLC."
-msgstr ""
+msgstr "elementary LLC."
 
 #~ msgid "About Files"
 #~ msgstr "关于 文件"
