@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-03-31 22:52+0000\n"
+"PO-Revision-Date: 2019-04-08 11:53+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
 "\n"
@@ -1032,44 +1032,46 @@ msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
+"कॉपी केलेल्या फायलींशी संघर्ष करणार्या फोल्डरमधील कोणत्याही फायली पुनर्स्थित "
+"करण्यापूर्वी विलीनीकरण पुष्टीकरण विचारेल."
 
 #: libcore/FileConflictDialog.vala:313
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" मध्ये समान नावाचे जुने फोल्डर आधीपासूनच विद्यमान आहे."
 
 #: libcore/FileConflictDialog.vala:315
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" मध्ये समान नावाचे एक नवीन फोल्डर आधीपासून विद्यमान आहे."
 
 #: libcore/FileConflictDialog.vala:317
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" मध्ये समान नावाचे दुसरे फोल्डर आधीपासूनच विद्यमान आहे."
 
 #: libcore/FileConflictDialog.vala:320
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr ""
+msgstr "\"%s\" फोल्डर पुनर्स्थित करायचे?"
 
 #: libcore/FileConflictDialog.vala:321
 msgid "Replacing it will remove all files in the folder."
-msgstr ""
+msgstr "यास पुनर्स्थित केल्याने फोल्डर मधील सर्व फायली काढून टाकल्या जातील."
 
 #: libcore/FileConflictDialog.vala:322
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" मध्ये समान नावाचे फोल्डर आधीपासूनच विद्यमान आहे."
 
 #: libcore/FileConflictDialog.vala:325
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr ""
+msgstr "\"%s\" फाइल पुनर्स्थित करायची?"
 
 #: libcore/FileConflictDialog.vala:326
 msgid "Replacing it will overwrite its content."
-msgstr ""
+msgstr "त्यास पुनर्स्थित केल्याने त्याची सामग्री अधिलिखित होईल."
 
 #: libcore/FileConflictDialog.vala:329
 #, c-format
