@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-04-08 11:53+0000\n"
+"PO-Revision-Date: 2019-04-11 22:53+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
 "\n"
@@ -611,7 +611,7 @@ msgstr "_Çıkart"
 
 #: src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr "Çöpten Geri Al"
+msgstr "Çöpten Geri Yükle"
 
 #: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
 msgid "Delete permanently"
@@ -786,12 +786,12 @@ msgstr "bilinmeyen boyut"
 #: src/View/Widgets/OverlayBar.vala:302
 #, c-format
 msgid "%u file not readable"
-msgstr "%u dosya okunabilir değil"
+msgstr "%u dosya okunamıyor"
 
 #: src/View/Widgets/OverlayBar.vala:302
 #, c-format
 msgid "%u files not readable"
-msgstr "%u dosya okunabilir değil"
+msgstr "%u dosya okunamıyor"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
@@ -948,7 +948,7 @@ msgstr "\"%s\" özgün konumu belirlenemedi. "
 
 #: libcore/FileUtils.vala:87
 msgid "The item cannot be restored from trash"
-msgstr "Öğe çöpten geri getirilemedi"
+msgstr "Öğe çöpten geri yüklenemez"
 
 #: libcore/FileUtils.vala:429
 #, c-format
@@ -1292,7 +1292,7 @@ msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
-"\"%B\" dizinindeki dosyalar silinemiyor çünkü onları görmek için yeterli "
+"\"%B\" klasöründeki dosyalar silinemiyor çünkü onları görmek için yeterli "
 "erişim hakkınız yok."
 
 #: libcore/marlin-file-operations.c:1478 libcore/marlin-file-operations.c:2434
@@ -1728,7 +1728,7 @@ msgstr "Çöp kutusuna kopyalanamıyor."
 
 #: libcore/marlin-file-operations.c:5574
 msgid "It is not permitted to copy files into the trash"
-msgstr "Dosyaları çöp kutusuna kopyalamak için izin verilmiyor"
+msgstr "Dosyaları çöp kutusuna kopyalamaya izin verilmiyor"
 
 #: libcore/marlin-file-operations.c:5712
 msgid "untitled folder"
@@ -1761,7 +1761,7 @@ msgstr "Özgün konum tespit edilemedi"
 
 #: libcore/marlin-undostack-manager.c:581
 msgid "Open trash folder and restore manually"
-msgstr "Çöp kutusunu aç ve el ile geri getir"
+msgstr "Çöp kutusunu aç ve el ile geri yükle"
 
 #: libcore/marlin-undostack-manager.c:1118
 #, c-format
