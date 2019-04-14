@@ -111,6 +111,8 @@ namespace Marlin.View {
             folder_deleted.connect ((file, dir) => {
                ((Marlin.Application)(window.application)).folder_deleted (file.location);
             });
+
+            handle_activate_selected_items.connect (() => { return false; });
         }
 
         private void connect_dir_view_signals () {
@@ -358,6 +360,12 @@ namespace Marlin.View {
         public override void grab_focus () {
             if (dir_view != null) {
                 dir_view.grab_focus ();
+            }
+        }
+
+        public override void new_folder () {
+            if (dir_view != null) {
+                dir_view.new_empty_folder ();
             }
         }
 

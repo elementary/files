@@ -121,7 +121,7 @@ namespace Marlin.View {
         }
 
         /* Initial location now set by Window.make_tab after connecting signals */
-        public ViewContainer (Marlin.View.Window win) {
+        public ViewContainer (Marlin.View.Window? win) {
             window = win;
             browser = new Browser ();
 
@@ -161,7 +161,10 @@ namespace Marlin.View {
             if (deleted.equal (this.location)) {
                 if (!go_up ()) {
                     close ();
-                    window.remove_tab (this);
+
+                    if (window != null) {
+                        window.remove_tab (this);
+                    }
                 }
             }
         }
@@ -325,11 +328,17 @@ namespace Marlin.View {
 
             switch ((Marlin.OpenFlag)flag) {
                 case Marlin.OpenFlag.NEW_TAB:
-                    window.open_single_tab (loc, view_mode);
+                    if (window != null) {
+                        window.open_single_tab (loc, view_mode);
+                    }
+
                     break;
 
                 case Marlin.OpenFlag.NEW_WINDOW:
-                    window.add_window (loc, view_mode);
+                    if (window != null) {
+                        window.add_window (loc, view_mode);
+                    }
+
                     break;
 
                 default:
@@ -359,7 +368,9 @@ namespace Marlin.View {
 
         private void refresh_slot_info (GLib.File loc) {
             update_tab_name ();
-            window.loading_uri (loc.get_uri ()); /* Updates labels as well */
+            if (window != null) {
+                window.loading_uri (loc.get_uri ()); /* Updates labels as well */
+            }
             /* Do not update top menu (or record uri) unless folder loads successfully */
         }
 
@@ -454,7 +465,9 @@ namespace Marlin.View {
 
                 /* Notify plugins */
                 /* infobars are added to the view, not the active slot */
-                plugins.directory_loaded (window, view, directory);
+                if (window != null) {
+                    plugins.directory_loaded (window, view, directory);
+                }
             } else {
                 /* Save previous uri but do not record current one */
                 browser.record_uri (null);

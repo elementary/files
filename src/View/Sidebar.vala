@@ -44,7 +44,7 @@ namespace Marlin.Places {
         Gtk.CellRendererText name_renderer;
         Gtk.CellRenderer eject_spinner_cell_renderer;
         Gtk.CellRenderer expander_renderer;
-        Marlin.View.Window window;
+        Marlin.View.Window? window;
         Marlin.BookmarkList bookmarks;
         VolumeMonitor volume_monitor;
         unowned Marlin.TrashMonitor monitor;
@@ -126,7 +126,7 @@ namespace Marlin.Places {
             }
         }
 
-        public Sidebar (Marlin.View.Window window, bool local_only = false) {
+        public Sidebar (Marlin.View.Window? window, bool local_only = false) {
             init (); /* creates the Gtk.TreeModel store. */
             plugins.sidebar_loaded ((Gtk.Widget)this);
             this.last_selected_uri = null;
@@ -134,8 +134,10 @@ namespace Marlin.Places {
             this.window = window;
             this.local_only = local_only;
 
-            window.loading_uri.connect (loading_uri_callback);
-            window.free_space_change.connect (reload);
+            if (window != null) {
+                window.loading_uri.connect (loading_uri_callback);
+                window.free_space_change.connect (reload);
+            }
 
             construct_tree_view ();
             configure_tree_view ();
@@ -1247,7 +1249,7 @@ namespace Marlin.Places {
         }
 
         private bool can_accept_file_as_bookmark (GLib.File file) {
-            return file.query_exists (null) && window.can_bookmark_uri (file.get_uri ());
+            return file.query_exists (null) && (window == null || window.can_bookmark_uri (file.get_uri ()));
         }
 
         private bool can_accept_files_as_bookmarks (List<GLib.File> items) {
@@ -1443,13 +1445,15 @@ namespace Marlin.Places {
                     Mount mount = volume.get_mount ();
                     if (mount != null) {
                         var location = mount.get_root ();
-                        if (flags == Marlin.OpenFlag.NEW_WINDOW) {
-                            var app = (Marlin.Application)(GLib.Application.get_default ());
-                            app.create_window (location);
-                        } else if (flags == Marlin.OpenFlag.NEW_TAB) {
-                            window.open_single_tab (location, Marlin.ViewMode.CURRENT);
-                        } else {
-                            window.uri_path_change_request (location.get_uri ());
+                        if (window != null) {
+                            if (flags == Marlin.OpenFlag.NEW_WINDOW) {
+                                var app = (Marlin.Application)(GLib.Application.get_default ());
+                                app.create_window (location);
+                            } else if (flags == Marlin.OpenFlag.NEW_TAB) {
+                                window.open_single_tab (location, Marlin.ViewMode.CURRENT);
+                            } else {
+                                window.uri_path_change_request (location.get_uri ());
+                            }
                         }
                     }
                 } catch (GLib.Error error) {

@@ -40,8 +40,7 @@ public class Marlin.Application : Gtk.Application {
         this.flags |= ApplicationFlags.HANDLES_COMMAND_LINE;
     }
 
-    public override void startup () {
-        base.startup ();
+    public void initialize () {
 
         if (Granite.Services.Logger.DisplayLevel != Granite.Services.LogLevel.DEBUG) {
             Granite.Services.Logger.DisplayLevel = Granite.Services.LogLevel.INFO;
@@ -85,6 +84,11 @@ public class Marlin.Application : Gtk.Application {
         this.window_removed.connect (() => {
             window_count--;
         });
+    }
+
+    public override void startup () {
+        base.startup ();
+        initialize ();
     }
 
     public unowned Marlin.ClipboardManager get_clipboard_manager () {

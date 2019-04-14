@@ -7,9 +7,8 @@ pantheon_files_deps = [
     project_config_dep,
 ]
 
-pantheon_files_exec = executable (
+pantheon_files_lib = shared_library (
     meson.project_name (),
-    'main.vala',
 
     'Application.vala',
     'marlin-deep-count.vala',
@@ -61,6 +60,12 @@ pantheon_files_exec = executable (
         vala.find_library('marlin', dirs: meson.current_source_dir ()),
     ],
     install: true,
+)
+
+pantheon_files_lib_dep = declare_dependency(
+    link_with: pantheon_files_lib,
+    include_directories: include_directories('.'),
+    dependencies : [pantheon_files_deps],
 )
 
 install_data (

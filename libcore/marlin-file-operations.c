@@ -912,7 +912,7 @@ static void
 finalize_common (CommonJob *common)
 {
     pf_progress_info_finish (common->progress);
-    if (common->inhibit_cookie != -1) {
+    if (g_application_get_default () && common->inhibit_cookie != -1) {
         gtk_application_uninhibit (GTK_APPLICATION (g_application_get_default ()),
                                    common->inhibit_cookie);
     }

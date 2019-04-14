@@ -256,6 +256,7 @@ namespace Marlin.View {
             slot.path_changed.connect (on_slot_path_changed);
             slot.directory_loaded.connect (on_slot_directory_loaded);
             slot.item_hovered.connect (on_slot_item_hovered);
+            slot.handle_activate_selected_items.connect (on_activate_selected_items);
         }
 
         private void disconnect_slot_signals (Slot slot) {
@@ -270,7 +271,11 @@ namespace Marlin.View {
             slot.path_changed.disconnect (on_slot_path_changed);
             slot.directory_loaded.disconnect (on_slot_directory_loaded);
             slot.item_hovered.disconnect (on_slot_item_hovered);
+            slot.handle_activate_selected_items.disconnect (on_activate_selected_items);
+        }
 
+        private bool on_activate_selected_items (GLib.List<GOF.File> selection) {
+            return false;
         }
 
         private void on_miller_slot_request (Marlin.View.Slot slot, GLib.File loc, bool make_root) {
@@ -574,6 +579,10 @@ namespace Marlin.View {
 
         public override void grab_focus () {
             ((Marlin.View.Slot)(current_slot)).grab_focus ();
+        }
+
+        public override void new_folder () {
+            ((Marlin.View.Slot)(current_slot)).new_folder ();
         }
 
         public override void initialize_directory () {

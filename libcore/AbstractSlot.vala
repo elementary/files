@@ -66,6 +66,7 @@ namespace GOF {
         public signal void selection_changed (GLib.List<GOF.File> files);
         public signal void directory_loaded (GOF.Directory.Async dir);
         public signal void item_hovered (GOF.File? file);
+        public signal bool handle_activate_selected_items (GLib.List<GOF.File> selection);
 
         public void add_extra_widget (Gtk.Widget widget) {
             extra_location_widgets.pack_start (widget);
@@ -98,6 +99,7 @@ namespace GOF {
         public abstract void reload (bool non_local_only = false);
         public abstract void grab_focus ();
         public abstract void user_path_change_request (GLib.File loc, bool make_root);
+        public abstract void new_folder ();
 
         public abstract void focus_first_for_empty_selection (bool select);
         public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);

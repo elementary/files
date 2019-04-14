@@ -527,7 +527,7 @@ namespace FM {
         protected void activate_selected_items (Marlin.OpenFlag flag = Marlin.OpenFlag.DEFAULT,
                                                 GLib.List<GOF.File> selection = get_selected_files ()) {
 
-            if (is_frozen || selection == null) {
+            if (is_frozen || selection == null || slot.handle_activate_selected_items (selection)) {
                 return;
             }
 
@@ -947,7 +947,7 @@ namespace FM {
                                             create_file_done);
         }
 
-        private void new_empty_folder () {
+        public void new_empty_folder () {
             /* Block the async directory file monitor to avoid generating unwanted "add-file" events */
             slot.directory.block_monitor ();
             Marlin.FileOperations.new_folder (null, null, slot.location, create_file_done);

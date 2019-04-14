@@ -284,19 +284,20 @@ namespace Marlin.View.Chrome {
             check_home ();
         }
 
+        /* For some reason crashes ATM */
         private void check_home () {
-            try {
-                bread.hide_breadcrumbs = GLib.Filename.from_uri (displayed_path) == Environment.get_home_dir ();
-            } catch (Error e) {
-                bread.hide_breadcrumbs = false;
-            }
+            //  try {
+            //      bread.hide_breadcrumbs = GLib.Filename.from_uri (displayed_path) == Environment.get_home_dir ();
+            //  } catch (Error e) {
+            //      bread.hide_breadcrumbs = false;
+            //  }
 
-            if (bread.hide_breadcrumbs) {
-                show_placeholder ();
-                show_search_icon ();
-            } else {
-                hide_search_icon ();
-            }
+            //  if (bread.hide_breadcrumbs) {
+            //      show_placeholder ();
+            //      show_search_icon ();
+            //  } else {
+            //      hide_search_icon ();
+            //  }
         }
     }
 }
