@@ -81,7 +81,6 @@ libcore/marlin-file-operations.c
 libcore/marlin-undostack-manager.c
 libcore/marlin-file-changes-queue.c
 libcore/fm-list-model.c
-libcore/gof-file.c
 
 libwidgets/Interfaces/LocatableInterface.vala
 libwidgets/Interfaces/NavigatableInterface.vala
