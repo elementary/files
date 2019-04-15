@@ -40,10 +40,10 @@ namespace Marlin.View.Chrome {
         }
 
         public bool hide_breadcrumbs { get; set; default = false; }
-        public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 36;
+        public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 16;
         public const double MINIMUM_BREADCRUMB_WIDTH = 12;
         public const double COMPLETION_ALPHA = 0.5;
-        public const int ICON_WIDTH = 48;
+        public const int ICON_WIDTH = 32;
         protected string placeholder = ""; /*Note: This is not the same as the Gtk.Entry placeholder_text */
         protected BreadcrumbElement? clicked_element = null;
         protected string? current_dir_path = null;
