@@ -70,7 +70,6 @@ pantheon_files_core_library = shared_library(
     install: true,
     install_dir: [true, join_paths(get_option('prefix'), get_option('includedir'), pantheon_files_core_name), true],
     version: meson.project_version(),
-    soversion: '0',
 )
 
 install_headers(
