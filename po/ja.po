@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-01-11 00:39+0000\n"
+"PO-Revision-Date: 2019-03-03 14:26+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://weblate.elementary.io/projects/files/files/"
-"ja/>\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: src/Application.vala:120
@@ -233,7 +233,7 @@ msgstr[0] "%u 個のファイル"
 #: src/Dialogs/PropertiesWindow.vala:1222
 #, c-format
 msgid "%s, %s"
-msgstr "%s, %s"
+msgstr "%s、%s"
 
 #: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
 #, c-format
@@ -245,12 +245,12 @@ msgstr[0] "%u 個のフォルダー"
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] "%u 個の選択されたアイテム"
+msgstr[0] "%u 個の選択項目"
 
 #: src/Dialogs/PropertiesWindow.vala:1246
 #, c-format
 msgid "%s (%s, %s)"
-msgstr "%s (%s, %s)"
+msgstr "%s (%s、%s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
@@ -626,7 +626,7 @@ msgstr "ゴミ箱に移動"
 
 #: src/View/directory_view_popup.ui:51
 msgid "New"
-msgstr "新規"
+msgstr "新規作成"
 
 #: src/View/directory_view_popup.ui:53
 msgid "Folder"
@@ -733,21 +733,21 @@ msgstr "%u 個のフォルダー"
 #: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr " と他の %u 個のアイテムが選択されています (%s)"
+msgstr " と %u 個の他の項目を選択 (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr " と他の %u 個のアイテムが選択されています (%s)"
+msgstr " と %u 個の他の項目を選択 (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
 msgid " selected"
-msgstr " が選択されています"
+msgstr " を選択"
 
 #: src/View/Widgets/OverlayBar.vala:235
 #, c-format
 msgid "%u items selected (%s)"
-msgstr "%u 個のアイテムが選択されています (%s)"
+msgstr "%u 個の項目を選択 (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:279
 #, c-format
@@ -943,7 +943,7 @@ msgstr "\"%s\" があった元の場所を特定できませんでした "
 
 #: libcore/FileUtils.vala:87
 msgid "The item cannot be restored from trash"
-msgstr "ゴミ箱からアイテムを復元できません"
+msgstr "ゴミ箱から項目を復元できません"
 
 #: libcore/FileUtils.vala:429
 #, c-format
@@ -1212,36 +1212,29 @@ msgid ""
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items from the "
 "trash?"
-msgstr[0] ""
-"選択された %'d 個のアイテムをゴミ箱から完全に削除してもよろしいですか？"
+msgstr[0] "選択中の %'d 個の項目をゴミ箱から完全に削除してもよろしいですか？"
 
 #: libcore/marlin-file-operations.c:1271 libcore/marlin-file-operations.c:1351
 msgid "If you delete an item, it will be permanently lost."
-msgstr "アイテムを完全に削除すると、元に戻すことはできません。"
+msgstr "項目を完全に削除すると、元に戻すことはできません。"
 
 #: libcore/marlin-file-operations.c:1296
 msgid "Permanently delete all items from Trash?"
-msgstr "ゴミ箱からすべてのアイテムを完全に削除しますか？"
+msgstr "ゴミ箱からすべての項目を完全に削除しますか？"
 
 #: libcore/marlin-file-operations.c:1297
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
-msgstr ""
-"マウントされたすべての外付けドライブ上のものも含め、ゴミ箱にあるすべてのアイ"
-"テムは、完全に削除されます。"
+msgstr "マウントされたすべての外付けドライブ上のものも含め、ゴミ箱にあるすべての項目は、完全に削除されます。"
 
 #: libcore/marlin-file-operations.c:1300
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr ""
-"このマウントされたドライブ上のゴミ箱にある、すべてのアイテムを完全に削除しま"
-"すか？"
+msgstr "このマウントされたドライブ上のゴミ箱にある、すべての項目を完全に削除しますか？"
 
 #: libcore/marlin-file-operations.c:1301
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
-"このマウントされたドライブ上のゴミ箱にあるすべてのアイテムは、完全に削除され"
-"ます。"
+msgstr "このマウントされたドライブ上のゴミ箱にあるすべての項目は、完全に削除されます。"
 
 #: libcore/marlin-file-operations.c:1339
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1252,7 +1245,7 @@ msgstr "\"%B\" を完全に削除してもよろしいですか？"
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "選択された %'d 個のアイテムを完全に削除してもよろしいですか？"
+msgstr[0] "選択中の %'d 個の項目を完全に削除してもよろしいですか？"
 
 #: libcore/marlin-file-operations.c:1385
 #, c-format
@@ -1729,12 +1722,12 @@ msgstr "元の場所が判別できませんでした"
 
 #: libcore/marlin-undostack-manager.c:581
 msgid "Open trash folder and restore manually"
-msgstr "ゴミ箱フォルダーを開き手動で復元してください"
+msgstr "ゴミ箱フォルダーを開いて、手動で復元してください"
 
 #: libcore/marlin-undostack-manager.c:1118
 #, c-format
 msgid "Delete %d copied items"
-msgstr "コピーした %d 個のアイテムの削除"
+msgstr "コピーした %d 個の項目を削除"
 
 #: libcore/marlin-undostack-manager.c:1121
 #: libcore/marlin-undostack-manager.c:1131
@@ -1746,12 +1739,12 @@ msgstr "'%s' を削除"
 #: libcore/marlin-undostack-manager.c:1128
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr "複製した %d 個のアイテムの削除"
+msgstr "複製した %d 個の項目の削除"
 
 #: libcore/marlin-undostack-manager.c:1139
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr "%d 個のアイテムを '%s' へ戻す"
+msgstr "%d 個の項目を '%s' へ戻す"
 
 #: libcore/marlin-undostack-manager.c:1143
 #, c-format
@@ -1768,7 +1761,7 @@ msgstr "'%s' を '%s' へ名前を変更"
 #: libcore/marlin-undostack-manager.c:1366
 #, c-format
 msgid "Restore %d items from trash"
-msgstr "%d 個のアイテムをゴミ箱から元の場所に戻す"
+msgstr "%d 個の項目をゴミ箱から元の場所へ戻す"
 
 #: libcore/marlin-undostack-manager.c:1179
 #, c-format
@@ -1778,7 +1771,7 @@ msgstr "'%s' を '%s' へ元に戻す"
 #: libcore/marlin-undostack-manager.c:1190
 #, c-format
 msgid "Move %d items back to trash"
-msgstr "%d 個のアイテムをゴミ箱に戻す"
+msgstr "%d 個の項目をゴミ箱へ戻す"
 
 #: libcore/marlin-undostack-manager.c:1193
 #, c-format
@@ -1788,7 +1781,7 @@ msgstr "'%s' をゴミ箱へ戻す"
 #: libcore/marlin-undostack-manager.c:1202
 #, c-format
 msgid "Delete links to %d items"
-msgstr "%d 個のアイテムへのリンクを削除"
+msgstr "%d 個の項目へのリンクを削除"
 
 #: libcore/marlin-undostack-manager.c:1205
 #, c-format
@@ -1798,7 +1791,7 @@ msgstr "'%s' へのリンクを削除"
 #: libcore/marlin-undostack-manager.c:1215
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr "'%s' 内のアイテムの権限を元に戻す"
+msgstr "'%s' 内の項目の権限を元に戻す"
 
 #: libcore/marlin-undostack-manager.c:1223
 #, c-format
@@ -1818,7 +1811,7 @@ msgstr "'%s' の所有者を '%s' へ戻す"
 #: libcore/marlin-undostack-manager.c:1281
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr "%d 個のアイテムを '%s' へコピー"
+msgstr "%d 個の項目を '%s' へコピー"
 
 #: libcore/marlin-undostack-manager.c:1285
 #, c-format
@@ -1828,7 +1821,7 @@ msgstr "'%s' を '%s' へコピー"
 #: libcore/marlin-undostack-manager.c:1293
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr "%d 個の '%s' にあるアイテムの複製"
+msgstr "'%s' にある %d 個の項目を複製"
 
 #: libcore/marlin-undostack-manager.c:1298
 #, c-format
@@ -1838,7 +1831,7 @@ msgstr "'%s' を '%s' へ複製"
 #: libcore/marlin-undostack-manager.c:1306
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr "%d 個のアイテムを '%s' へ移動"
+msgstr "%d 個の項目を '%s' へ移動"
 
 #: libcore/marlin-undostack-manager.c:1310
 #, c-format
@@ -1863,7 +1856,7 @@ msgstr "新しいフォルダー '%s' を作成"
 #: libcore/marlin-undostack-manager.c:1350
 #, c-format
 msgid "Move %d items to trash"
-msgstr "%d 個のアイテムをゴミ箱に移動"
+msgstr "%d 個の項目をゴミ箱に移動"
 
 #: libcore/marlin-undostack-manager.c:1356
 #, c-format
@@ -1873,12 +1866,12 @@ msgstr "'%s' をゴミ箱に移動"
 #: libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr "'%s' をゴミ箱から元の場所に戻す"
+msgstr "'%s' をゴミ箱から元の場所へ戻す"
 
 #: libcore/marlin-undostack-manager.c:1378
 #, c-format
 msgid "Create links to %d items"
-msgstr "%d 個のアイテムへのリンクを作成"
+msgstr "%d 個の項目へのリンクを作成"
 
 #: libcore/marlin-undostack-manager.c:1381
 #, c-format
@@ -1888,7 +1881,7 @@ msgstr "'%s' へのリンクを作成"
 #: libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr "'%s' 内のアイテムの権限を設定"
+msgstr "'%s' 内の項目の権限を設定"
 
 #: libcore/marlin-undostack-manager.c:1398
 #, c-format
@@ -1909,25 +1902,25 @@ msgstr "'%s' の所有者を '%s' に設定"
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] "%d 個のアイテムのコピーを元に戻す(_U)"
+msgstr[0] "%d 個の項目のコピーを元に戻す(_U)"
 
 #: libcore/marlin-undostack-manager.c:1454
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] "%d 個のアイテムの複製を元に戻す(_U)"
+msgstr[0] "%d 個の項目の複製を元に戻す(_U)"
 
 #: libcore/marlin-undostack-manager.c:1459
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] "%d 個のアイテムの移動を元に戻す(_U)"
+msgstr[0] "%d 個の項目の移動を元に戻す(_U)"
 
 #: libcore/marlin-undostack-manager.c:1464
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] "%d 個のアイテムの名前の変更を元に戻す(_U)"
+msgstr[0] "%d 個の項目の名前の変更を元に戻す(_U)"
 
 #: libcore/marlin-undostack-manager.c:1468
 msgid "_Undo creation of an empty file"
@@ -1947,13 +1940,13 @@ msgstr[0] "%d 個のフォルダーの作成を元に戻す(_U)"
 #, c-format
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
-msgstr[0] "%d 個のアイテムのゴミ箱への移動を元に戻す(_U)"
+msgstr[0] "%d 個の項目のゴミ箱への移動を元に戻す(_U)"
 
 #: libcore/marlin-undostack-manager.c:1485
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] "%d 個のアイテムのゴミ箱からの復元を元に戻す(_U)"
+msgstr[0] "%d 個の項目のゴミ箱からの復元を元に戻す(_U)"
 
 #: libcore/marlin-undostack-manager.c:1490
 #, c-format
@@ -1965,55 +1958,55 @@ msgstr[0] "%d 個へのリンクの作成を元に戻す(_U)"
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] "%d 個のアイテムの削除を元に戻す(_U)"
+msgstr[0] "%d 個の項目の削除を元に戻す(_U)"
 
 #: libcore/marlin-undostack-manager.c:1500
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] "%d 個のアイテムの再帰的な権限の変更を元に戻す"
+msgstr[0] "%d 個の項目の再帰的な権限の変更を元に戻す"
 
 #: libcore/marlin-undostack-manager.c:1506
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] "%d 個のアイテムの権限の変更を元に戻す"
+msgstr[0] "%d 個の項目の権限の変更を元に戻す"
 
 #: libcore/marlin-undostack-manager.c:1511
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] "%d 個のアイテムのグループ変更を元に戻す"
+msgstr[0] "%d 個の項目のグループ変更を元に戻す"
 
 #: libcore/marlin-undostack-manager.c:1516
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] "%d 個のアイテムの所有者変更を元に戻す"
+msgstr[0] "%d 個の項目の所有者変更を元に戻す"
 
 #: libcore/marlin-undostack-manager.c:1544
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] "%d 個のアイテムのコピーをやり直す(_R)"
+msgstr[0] "%d 個の項目のコピーをやり直す(_R)"
 
 #: libcore/marlin-undostack-manager.c:1549
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] "%d 個のアイテムの複製をやり直す(_R)"
+msgstr[0] "%d 個の項目の複製をやり直す(_R)"
 
 #: libcore/marlin-undostack-manager.c:1554
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] "%d 個のアイテムの移動をやり直す(_R)"
+msgstr[0] "%d 個の項目の移動をやり直す(_R)"
 
 #: libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] "%d 個のアイテムの名前の変更をやり直す(_R)"
+msgstr[0] "%d 個の項目の名前の変更をやり直す(_R)"
 
 #: libcore/marlin-undostack-manager.c:1563
 msgid "_Redo creation of an empty file"
@@ -2033,49 +2026,49 @@ msgstr[0] "%d 個のフォルダーの作成をやり直す(_R)"
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
-msgstr[0] "%d 個のアイテムのゴミ箱への移動をやり直す(_R)"
+msgstr[0] "%d 個の項目のゴミ箱への移動をやり直す(_R)"
 
 #: libcore/marlin-undostack-manager.c:1580
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] "%d 個のアイテムのゴミ箱からの復元をやり直す(_R)"
+msgstr[0] "%d 個の項目のゴミ箱からの復元をやり直す(_R)"
 
 #: libcore/marlin-undostack-manager.c:1585
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] "%d 個のアイテムへのリンク作成をやり直す(_R)"
+msgstr[0] "%d 個の項目へのリンク作成をやり直す(_R)"
 
 #: libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] "%d 個のアイテムの削除をやり直す(_R)"
+msgstr[0] "%d 個の項目の削除をやり直す(_R)"
 
 #: libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] "%d 個のアイテムの再帰的な権限の変更をやり直す"
+msgstr[0] "%d 個の項目の再帰的な権限の変更をやり直す"
 
 #: libcore/marlin-undostack-manager.c:1601
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] "%d 個のアイテムの権限の変更をやり直す"
+msgstr[0] "%d 個の項目の権限の変更をやり直す"
 
 #: libcore/marlin-undostack-manager.c:1606
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] "%d 個のアイテムのグループ変更をやり直す"
+msgstr[0] "%d 個の項目のグループ変更をやり直す"
 
 #: libcore/marlin-undostack-manager.c:1611
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] "%d 個のアイテムの所有者変更をやり直す"
+msgstr[0] "%d 個の項目の所有者変更をやり直す"
 
 #: libcore/gof-file.c:332 libcore/gof-file.c:506
 msgid "Inaccessible"
@@ -2118,7 +2111,7 @@ msgstr "ブックマーク"
 
 #: libwidgets/View/SearchResults.vala:237
 msgid "Recently used"
-msgstr "最近使用したアイテム"
+msgstr "最近使用した項目"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
@@ -2162,7 +2155,7 @@ msgstr "SMB"
 
 #: libwidgets/Resources.vala:66
 msgid "Recent"
-msgstr "最近使用したアイテム"
+msgstr "最近使用した項目"
 
 #: libwidgets/Resources.vala:67
 msgid "MTP"

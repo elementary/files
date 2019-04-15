@@ -8,34 +8,33 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2016-07-02 19:55+0000\n"
-"Last-Translator: Daniel Fore <Unknown>\n"
-"Language-Team: Arabic <ar@li.org>\n"
+"PO-Revision-Date: 2019-03-12 15:26+0000\n"
+"Last-Translator: Mohamad Alchehabi <alchehabi@protonmail.com>\n"
+"Language-Team: Arabic <https://l10n.elementary.io/projects/files/files/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
-"3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 3.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:24+0000\n"
-"X-Generator: Launchpad (build 18402)\n"
 
 #: src/Application.vala:120
 msgid "Show the version of the program"
-msgstr "اعرض إصدارة البرنامج."
+msgstr "اعرض إصدار البرنامج"
 
 #: src/Application.vala:122
-#, fuzzy
 msgid "Open one or more URIs, each in their own tab"
-msgstr "إفتح الروابط في علامة تبويب جديدة"
+msgstr "إفتح الرابط أو الروابط في علامة أو علامات تبويب جديدة"
 
 #: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr ""
+msgstr "نافذة جديدة"
 
 #: src/Application.vala:126
 msgid "Quit Files"
-msgstr "الخروج من فيلز."
+msgstr "اخرج من الملفات"
 
 #: src/Application.vala:128
 msgid "Enable debug logging"
@@ -67,11 +66,11 @@ msgstr "عمليات الملف"
 #: src/ProgressUIHandler.vala:185
 #, c-format
 msgid "Completed %s"
-msgstr ""
+msgstr "إنتهى %s"
 
 #: src/ProgressUIHandler.vala:188
 msgid "All file operations have ended"
-msgstr ""
+msgstr "كل المهام على الملفات إنتهت"
 
 #: src/ProgressUIHandler.vala:236
 msgid "Show Copy Dialog"
@@ -83,7 +82,7 @@ msgstr "ألغ كل الإجراءات قيد التنفيذ"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "معلومات"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
@@ -91,66 +90,70 @@ msgstr "عامّ"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:76
 msgid "Close"
-msgstr ""
+msgstr "أغلق"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:136
 msgid "Device Usage"
-msgstr ""
+msgstr "إستخدام الجهاز"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 msgid "Capacity:"
-msgstr ""
+msgstr "السعة:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:153
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
 msgid "Unknown"
-msgstr ""
+msgstr "مجهول"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Available:"
-msgstr ""
+msgstr "متاح:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Used:"
-msgstr ""
+msgstr "مُستعمَل:"
 
 #: src/Dialogs/ChooseAppDialog.vala:42
 msgid "Set as default"
-msgstr "عيّن كافتراضي"
+msgstr "عيّن كإفتراضي"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
 #: src/View/directory_view_popup.ui:91
 msgid "Properties"
-msgstr "الخصائص"
+msgstr "خصائص"
 
 #: src/Dialogs/PropertiesWindow.vala:223
 msgid "Permissions"
-msgstr ""
+msgstr "الصلاحيات"
 
 #: src/Dialogs/PropertiesWindow.vala:244
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i لم يتم التمكن من قراءة الملف بسبب الصلاحيات أو أخطاء أخرى."
+msgstr[1] "%i لم يتم التمكن من قراءة الملف بسبب الصلاحيات أو أخطاء أخرى."
+msgstr[2] "%i لم يتم التمكن من قراءة الملفين بسبب الصلاحيات أو أخطاء أخرى."
+msgstr[3] "%i لم يتم التمكن من قراءة الملفات بسبب الصلاحيات أو أخطاء أخرى."
+msgstr[4] "%i لم يتم التمكن من قراءة الملفات بسبب الصلاحيات أو أخطاء أخرى."
+msgstr[5] "%i لم يتم التمكن من قراءة الملفات بسبب الصلاحيات أو أخطاء أخرى."
 
 #: src/Dialogs/PropertiesWindow.vala:248
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "الحجم الحالي يمكن أن يكون أكبر"
 
 #: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
 msgid "unknown"
-msgstr ""
+msgstr "مجهول"
 
 #: src/Dialogs/PropertiesWindow.vala:448
 msgid "Loading…"
-msgstr ""
+msgstr "تحميل …"
 
 #: src/Dialogs/PropertiesWindow.vala:482
 msgid "Could not be determined"
-msgstr ""
+msgstr "لم يكن من الممكن تحديده"
 
 #: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
@@ -164,88 +167,100 @@ msgstr "النوع:"
 
 #: src/Dialogs/PropertiesWindow.vala:518
 msgid "Contains:"
-msgstr ""
+msgstr "يحتوي:"
 
 #: src/Dialogs/PropertiesWindow.vala:541
 msgid "Created:"
-msgstr ""
+msgstr "مُنشأ:"
 
 #: src/Dialogs/PropertiesWindow.vala:551
 msgid "Modified:"
-msgstr ""
+msgstr "مُعدَّل:"
 
 #: src/Dialogs/PropertiesWindow.vala:563
 msgid "Deleted:"
-msgstr ""
+msgstr "محذوف:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
 msgid "MIME type:"
-msgstr ""
+msgstr "نوع MIME:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
-msgstr ""
+msgstr "الدقة:"
 
 #: src/Dialogs/PropertiesWindow.vala:588
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
-msgstr ""
+msgstr "المكان:"
 
 #: src/Dialogs/PropertiesWindow.vala:598
 msgid "Target:"
-msgstr ""
+msgstr "الهدف:"
 
 #: src/Dialogs/PropertiesWindow.vala:606
 msgid "Original Location:"
-msgstr ""
+msgstr "المكان اﻷصلي:"
 
 #: src/Dialogs/PropertiesWindow.vala:629
 #: src/View/AbstractDirectoryView.vala:2132
 msgid "Other Application…"
-msgstr ""
+msgstr "تطبيقات أخرى …"
 
 #: src/Dialogs/PropertiesWindow.vala:649
 msgid "Open with:"
-msgstr "افتح باستخدام:"
+msgstr "إفتح باستخدام:"
 
 #: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
 msgid "Owner:"
-msgstr ""
+msgstr "المالك:"
 
 #: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
 msgid "Group:"
-msgstr ""
+msgstr "مجموعة:"
 
 #: src/Dialogs/PropertiesWindow.vala:932
 msgid "Everyone:"
-msgstr ""
+msgstr "الكل:"
 
 #: src/Dialogs/PropertiesWindow.vala:1213
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u صفر مجلد فرعي"
+msgstr[1] "%u مجلد فرعي واحد"
+msgstr[2] "%u مجلدين فرعيين"
+msgstr[3] "%u مجلدات فرعية"
+msgstr[4] "%u مجلدات فرعية"
+msgstr[5] "%u مجلدات فرعية"
 
 #: src/Dialogs/PropertiesWindow.vala:1217
 #: src/Dialogs/PropertiesWindow.vala:1239
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u صفر ملف"
+msgstr[1] "%u ملف واحد"
+msgstr[2] "%u ملفين"
+msgstr[3] "%u ملفات"
+msgstr[4] "%u ملفات"
+msgstr[5] "%u ملفات"
 
 #: src/Dialogs/PropertiesWindow.vala:1222
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s، %s"
 
 #: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u صفر ملف"
+msgstr[1] "%u ملف واحد"
+msgstr[2] "%u ملفين"
+msgstr[3] "%u ملفات"
+msgstr[4] "%u ملفات"
+msgstr[5] "%u ملفات"
 
 #: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
@@ -319,7 +334,7 @@ msgstr ""
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr "لا يمكن العثور على المجلد \"%s\""
+msgstr "لا يمكن العثور على المجلد \"%s\"."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -438,7 +453,7 @@ msgstr ""
 
 #: src/View/ViewContainer.vala:418
 msgid "You don't have permission to view this folder."
-msgstr "أنت لا تملك الصلاحية لتعديل الملف"
+msgstr "أنت لا تملك الصلاحية للإطلاع على الملف."
 
 #: src/View/ViewContainer.vala:420
 msgid "Unable to Mount Folder"
@@ -523,7 +538,7 @@ msgstr "تصفّح محتويات الشبكة"
 #: src/View/Sidebar.vala:823
 #, fuzzy
 msgid "Connect Server"
-msgstr "اتصل بالخادوم"
+msgstr "اتصل بالخادم"
 
 #: src/View/Sidebar.vala:824
 #, fuzzy
