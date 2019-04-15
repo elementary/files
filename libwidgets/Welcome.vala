@@ -21,16 +21,6 @@
 ***/
 
 namespace Marlin.View {
-    public static int show_dialog (string message, Gtk.MessageType type, Gtk.ButtonsType buttons) {
-        var dialog = new Gtk.MessageDialog (null, Gtk.DialogFlags.MODAL,
-                                            type, buttons, "%s", message);
-
-        dialog.set_position (Gtk.WindowPosition.MOUSE);
-        var response = dialog.run ();
-        dialog.destroy ();
-        return response;
-    }
-
     public class Welcome : Granite.Widgets.Welcome {
 
         public Welcome (string primary, string secondary) {

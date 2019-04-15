@@ -18,15 +18,14 @@
 [DBus (name = "io.elementary.files.db")]
 interface MarlinDaemon : Object {
     public abstract async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError;
-    public abstract async bool record_uris (Variant[] entries, string directory) throws GLib.DBusError, GLib.IOError;
+    public abstract async bool record_uris (Variant[] entries) throws GLib.DBusError, GLib.IOError;
     public abstract async bool deleteEntry (string uri) throws GLib.DBusError, GLib.IOError;
 
 }
 
 public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
+    /* May be used by more than one directory simultaneously so do not make assumptions */
     private MarlinDaemon daemon;
-    GOF.File directory;
-    private bool is_user_dir;
     private bool ignore_dir;
 
     private Queue<GOF.File> unknowns;
@@ -63,8 +62,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         "davs"
     };
 
-    private bool f_is_user_dir (string uri) {
-        return_val_if_fail (uri != null, false);
+    private bool f_is_user_dir (GLib.File dir) {
+        return_val_if_fail (dir != null, false);
+        var uri = dir.get_uri ();
+
         foreach (var duri in users_dirs) {
             if (Posix.strncmp (uri, duri, duri.length) == 0) {
                 return true;
@@ -74,8 +75,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         return false;
     }
 
-    private bool f_ignore_dir (string uri) {
-        return_val_if_fail (uri != null, true);
+    private bool f_ignore_dir (GLib.File dir) {
+        return_val_if_fail (dir != null, true);
+        var uri = dir.get_uri ();
 
         if (uri == "file:///tmp") {
             return true;
@@ -92,21 +94,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void directory_loaded (Gtk.ApplicationWindow window, GOF.AbstractSlot view, GOF.File directory) {
-        cancellable.cancel ();
-
-        if (idle_consume_unknowns > 0) {
-            Source.remove (idle_consume_unknowns);
-            idle_consume_unknowns = 0;
-        }
-
-        unknowns.clear ();
-        cancellable = new Cancellable ();
-
-        this.directory = directory;
-        assert (directory != null);
-        debug ("CTags Plugin dir %s", directory.uri);
-        is_user_dir = f_is_user_dir (directory.uri);
-        ignore_dir = f_ignore_dir (directory.uri);
+        /* It is possible more than one directory will call this simultaneously so do not cancel */
     }
 
     private void add_entry (GOF.File gof, GenericArray<Variant> entries) {
@@ -124,21 +112,16 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void consume_knowns_queue () {
-        if (directory == null) {
-            warning ("Color tag plugin consume knowns queue called with null directory");
-            return;
-        }
-
         var entries = new GenericArray<Variant> ();
         GOF.File gof;
         while ((gof = knowns.pop_head ()) != null) {
             add_entry (gof, entries);
         }
 
-        if (entries != null) {
+        if (entries.length > 0) {
             debug ("--- known entries %d", entries.length);
             try {
-                yield daemon.record_uris (entries.data, directory.uri);
+                yield daemon.record_uris (entries.data);
             } catch (Error err) {
                 warning ("%s", err.message);
             }
@@ -146,11 +129,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void consume_unknowns_queue () {
-        if (directory == null) {
-            warning ("Color tag plugin consume unknowns queue called with null directory");
-            return;
-        }
-
         GOF.File gof = null;
         /* Length of unknowns queue limited to visible files by AbstractDirectoryView.
          * Avoid querying whole directory in case very large. */
@@ -222,16 +200,22 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             if (row_iter.n_children () == 3) {
                 uint64 modified = int64.parse (row_iter.next_value ().get_string ());
                 unowned string type = row_iter.next_value ().get_string ();
-                file.color = int.parse (row_iter.next_value ().get_string ());
+                var color = int.parse (row_iter.next_value ().get_string ());
+                if (file.color != color) {
+                    file.color = color;
+                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
+                }
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
-                file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
 
-                if (is_user_dir &&
-                    file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified) {
+                /* Is this necessary ? */
+                if (file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified &&
+                    f_is_user_dir (file.directory)) {
+
                     add_to_unknowns_queue (file);
                     return;
                 }
+
                 if (type.length > 0 && file.get_ftype () == "application/octet-stream") {
                     if (type != "application/octet-stream") {
                         file.tagstype = type;
@@ -272,9 +256,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void update_file_info (GOF.File file) {
+
         return_if_fail (file != null);
 
-        if (!ignore_dir && file.info != null &&
+        if (file.info != null && !f_ignore_dir (file.directory) &&
             (!file.is_hidden || GOF.Preferences.get_default ().show_hidden_files)) {
 
             if (file.location.has_uri_scheme ("recent")) {
@@ -307,33 +292,32 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void set_color (GLib.List<GOF.File> files, int n) throws IOError {
-        GenericArray<Variant> entries = null;
-        GOF.File target_file = null;
-
+        var entries = new GenericArray<Variant> ();
         foreach (unowned GOF.File file in files) {
             if (!(file is GOF.File)) {
                 continue;
             }
 
+            GOF.File target_file;
             if (file.location.has_uri_scheme ("recent")) {
                 target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
             } else {
                 target_file = file;
             }
 
-            target_file.color = n;
-            entries = new GenericArray<Variant> ();
-            add_entry (target_file, entries);
+            if (target_file.color != n) {
+                target_file.color = n;
+                add_entry (target_file, entries);
+            }
         }
 
         if (entries != null) {
             try {
-                unowned GOF.File first = files.first ().data;
-                yield daemon.record_uris (entries.data, first.uri);
+                yield daemon.record_uris (entries.data);
                 /* If the color of the target is set while in recent view, we have to
                  * update the recent view to reflect this */
-                if (first.location.has_uri_scheme ("recent")) {
-                    foreach (unowned GOF.File file in files) {
+                foreach (unowned GOF.File file in files) {
+                    if (file.location.has_uri_scheme ("recent")) {
                         update_file_info (file);
                         file.icon_changed (); /* Just need to trigger redraw */
                     }

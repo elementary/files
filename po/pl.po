@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-01-07 00:02+0000\n"
+"PO-Revision-Date: 2019-02-09 11:12+0000\n"
 "Last-Translator: Piotr Strebski <strebski@gmail.com>\n"
 "Language-Team: Polish <https://weblate.elementary.io/projects/files/files/pl/"
 ">\n"
@@ -2228,9 +2228,8 @@ msgid "Go to %s"
 msgstr "Przechodzi do położenia „%s”"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
-msgstr "Podaj ścieżkę"
+msgstr "Wpisz ścieżkę"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
