@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-01-02 19:23+0000\n"
+"PO-Revision-Date: 2019-02-03 10:30+0000\n"
 "Last-Translator: Jörg Arnold <j.ar@mailbox.org>\n"
 "Language-Team: German <https://weblate.elementary.io/projects/files/files/de/"
 ">\n"
@@ -2202,7 +2202,6 @@ msgid "Go to %s"
 msgstr "Gehe zu %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
 msgstr "Pfad eingeben"
 

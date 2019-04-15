@@ -26,7 +26,6 @@ interface MarlinDaemon : Object {
 public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     /* May be used by more than one directory simultaneously so do not make assumptions */
     private MarlinDaemon daemon;
-    private bool is_user_dir;
     private bool ignore_dir;
 
     private Queue<GOF.File> unknowns;
@@ -119,7 +118,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             add_entry (gof, entries);
         }
 
-        if (entries != null) {
+        if (entries.length > 0) {
             debug ("--- known entries %d", entries.length);
             try {
                 yield daemon.record_uris (entries.data);
@@ -201,10 +200,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             if (row_iter.n_children () == 3) {
                 uint64 modified = int64.parse (row_iter.next_value ().get_string ());
                 unowned string type = row_iter.next_value ().get_string ();
-                file.color = int.parse (row_iter.next_value ().get_string ());
+                var color = int.parse (row_iter.next_value ().get_string ());
+                if (file.color != color) {
+                    file.color = color;
+                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
+                }
                 /* check modified time field only on user dirs. We don't want to query again and
                  * again system directories */
-                file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
 
                 /* Is this necessary ? */
                 if (file.info.get_attribute_uint64 (FileAttribute.TIME_MODIFIED) > modified &&
@@ -254,6 +256,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     public override void update_file_info (GOF.File file) {
+
         return_if_fail (file != null);
 
         if (file.info != null && !f_ignore_dir (file.directory) &&
@@ -289,23 +292,23 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private async void set_color (GLib.List<GOF.File> files, int n) throws IOError {
-        GenericArray<Variant> entries = null;
-        GOF.File target_file = null;
-
+        var entries = new GenericArray<Variant> ();
         foreach (unowned GOF.File file in files) {
             if (!(file is GOF.File)) {
                 continue;
             }
 
+            GOF.File target_file;
             if (file.location.has_uri_scheme ("recent")) {
                 target_file = GOF.File.get_by_uri (file.get_display_target_uri ());
             } else {
                 target_file = file;
             }
 
-            target_file.color = n;
-            entries = new GenericArray<Variant> ();
-            add_entry (target_file, entries);
+            if (target_file.color != n) {
+                target_file.color = n;
+                add_entry (target_file, entries);
+            }
         }
 
         if (entries != null) {
