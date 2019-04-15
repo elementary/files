@@ -70,7 +70,6 @@ pantheon_files_core_library = shared_library(
     install: true,
     install_dir: [true, join_paths(get_option('prefix'), get_option('includedir'), pantheon_files_core_name), true],
     version: meson.project_version(),
-    soversion: '0',
 )
 
 install_headers(
@@ -86,6 +85,7 @@ pantheon_files_core_dep = declare_dependency(
 
 pantheon_files_core_pkgconfig = pkg.generate(
     libraries: pantheon_files_core_library,
+    subdirs: pantheon_files_core_name,
     filebase: pantheon_files_core_name,
     name: 'elementary Files Core Library',
     description: 'Core library io.elementary.files and io.elementary.filechooser',
