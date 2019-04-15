@@ -835,7 +835,8 @@ public class GOF.File : GLib.Object {
             }
         } else {
             try {
-                app_info = GLib.AppInfo.create_from_commandline (location.get_path (), null, GLib.AppInfoCreateFlags.NONE);
+                var path = location.get_path ();
+                app_info = GLib.AppInfo.create_from_commandline (Shell.quote (path), null, GLib.AppInfoCreateFlags.NONE);
             } catch (GLib.Error e) {
                 GLib.Error prefixed_error;
                 GLib.Error.propagate_prefixed (out prefixed_error, e, _("Failed to create command from file: "));
@@ -924,12 +925,13 @@ public class GOF.File : GLib.Object {
         bool sort_last1 = ((name1[0] == SORT_LAST_CHAR1) || (name1[0] == SORT_LAST_CHAR2));
         bool sort_last2 = ((name2[0] == SORT_LAST_CHAR1) || (name2[0] == SORT_LAST_CHAR2));
 
-        if (!sort_last1 && !sort_last2) {
-            return GLib.strcmp (utf8_collation_key, other.utf8_collation_key);
-        } else if (sort_last1 && !sort_last2) {
+
+        if (sort_last1 && !sort_last2) {
             return 1;
-        } else {
+        } else if (!sort_last1 && sort_last2) {
             return -1;
+        } else {
+            return GLib.strcmp (utf8_collation_key, other.utf8_collation_key);
         }
     }
 
