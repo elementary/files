@@ -103,7 +103,6 @@ project_config_dep = declare_dependency(
 subdir('libcore')
 subdir('libwidgets')
 subdir('src')
-subdir('filechooser-portal')
 subdir('main')
 subdir('data')
 subdir('pantheon-files-daemon')
