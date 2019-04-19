@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-04-08 11:53+0000\n"
+"PO-Revision-Date: 2019-04-16 12:31+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
 "\n"
@@ -218,7 +218,7 @@ msgstr "प्रत्येकजण:"
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u सबफोल्डर"
-msgstr[1] "%u सबफोल्डर"
+msgstr[1] "%u  सबफोल्डर"
 
 #: src/Dialogs/PropertiesWindow.vala:1217
 #: src/Dialogs/PropertiesWindow.vala:1239
@@ -238,7 +238,7 @@ msgstr "%s, %s"
 msgid "%u folder"
 msgid_plural "%u folders"
 msgstr[0] "%u फोल्डर"
-msgstr[1] "%u फोल्डर"
+msgstr[1] "%u  फोल्डर"
 
 #: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
@@ -1076,7 +1076,7 @@ msgstr "त्यास पुनर्स्थित केल्याने 
 #: libcore/FileConflictDialog.vala:329
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" मध्ये समान नावाची जुनी फाइल आधीपासूनच विद्यमान आहे."
 
 #: libcore/FileConflictDialog.vala:331
 #, c-format
@@ -1142,7 +1142,7 @@ msgstr "(_A)तरीही कॉपी करा"
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d सेकंद"
-msgstr[1] "%'d सेकंद"
+msgstr[1] "%'d  सेकंद"
 
 #: libcore/marlin-file-operations.c:254 libcore/marlin-file-operations.c:265
 #, c-format
@@ -1156,14 +1156,14 @@ msgstr[1] "%'d  मिनिटे"
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d तास"
-msgstr[1] "%'d तास"
+msgstr[1] "%'d  तास"
 
 #: libcore/marlin-file-operations.c:272
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] "अंदाजे %'d तास"
-msgstr[1] "अंदाजे %'d तास"
+msgstr[1] "अंदाजे  %'d तास"
 
 #: libcore/marlin-file-operations.c:348
 #, c-format
@@ -1270,7 +1270,7 @@ msgstr "फाइल्स हटवित आहे"
 msgid "%T left"
 msgid_plural "%T left"
 msgstr[0] "%T बाकी"
-msgstr[1] "%T बाकी"
+msgstr[1] "%T  बाकी"
 
 #: libcore/marlin-file-operations.c:1471 libcore/marlin-file-operations.c:1505
 #: libcore/marlin-file-operations.c:1544 libcore/marlin-file-operations.c:1621
@@ -1970,7 +1970,7 @@ msgstr[1] ""
 msgid "_Undo move to trash of %d item"
 msgid_plural "_Undo move to trash of %d items"
 msgstr[0] "कचऱ्यामध्ये हलविलेले %d आयटम पूर्ववत करा"
-msgstr[1] "कचऱ्यामध्ये हलविलेले %d आयटम पूर्ववत करा"
+msgstr[1] "कचऱ्यामध्ये हलविलेले %d  आयटम पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1485
 #, c-format
@@ -2062,14 +2062,14 @@ msgstr ""
 msgid "_Redo creation of %d folder"
 msgid_plural "_Redo creation of %d folders"
 msgstr[0] "%d फोल्डरची निर्मिती पुन्हा करा"
-msgstr[1] "%d फोल्डरची निर्मिती पुन्हा करा"
+msgstr[1] "%d फोल्डरची  निर्मिती पुन्हा करा"
 
 #: libcore/marlin-undostack-manager.c:1575
 #, c-format
 msgid "_Redo move to trash of %d item"
 msgid_plural "_Redo move to trash of %d items"
 msgstr[0] "%d आयटम पुन्हा कचऱ्यात हलवा"
-msgstr[1] "%d आयटम पुन्हा कचऱ्यात हलवा"
+msgstr[1] "%d आयटम  पुन्हा कचऱ्यात हलवा"
 
 #: libcore/marlin-undostack-manager.c:1580
 #, c-format
