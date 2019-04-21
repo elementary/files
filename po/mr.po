@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-04-16 12:31+0000\n"
+"PO-Revision-Date: 2019-04-20 18:31+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
 "\n"
@@ -1081,29 +1081,29 @@ msgstr "\"%s\" मध्ये समान नावाची जुनी फ�
 #: libcore/FileConflictDialog.vala:331
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" मध्ये समान नावाची एक नवीन फाइल आधीपासूनच विद्यमान आहे."
 
 #: libcore/FileConflictDialog.vala:333
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr ""
+msgstr "\"%s\" मध्ये समान नावाची दुसरी फाइल आधीपासूनच विद्यमान आहे."
 
 #: libcore/FileConflictDialog.vala:359
 msgid "Merge"
-msgstr ""
+msgstr "विलीन करा"
 
 #: libcore/gof-directory-async.vala:683
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "सर्व्हरने वेळ मर्यादेत प्रतिसाद दिला नाही"
 
 #: libcore/ProgressInfo.vala:63 libcore/ProgressInfo.vala:71
 #: libcore/ProgressInfo.vala:79
 msgid "Preparing"
-msgstr ""
+msgstr "तयार करीत आहे"
 
 #: libcore/StockDialogs.vala:52
 msgid "Show more _details"
-msgstr ""
+msgstr "(_d)अधिक तपशील दाखवा"
 
 #: libcore/marlin-file-operations.c:161
 msgid "S_kip All"
@@ -1360,6 +1360,7 @@ msgid ""
 "This file could not be moved to trash. See details below for further "
 "information."
 msgstr ""
+"ही फाइल कचर्यामध्ये हलविली जाऊ शकली नाही. अधिक माहितीसाठी खालील तपशील पहा."
 
 #: libcore/marlin-file-operations.c:1816
 msgid "Cannot move file to trash.  Try to delete it?"
@@ -1369,13 +1370,15 @@ msgstr "फाइल कचऱ्यात टाकू शकत नाही. 
 msgid ""
 "This file could not be moved to trash. You may not be able to delete it "
 "either."
-msgstr ""
+msgstr "ही फाइल कचर्यामध्ये हलविली जाऊ शकली नाही. आपण ते हटवूही शकणार नाही."
 
 #: libcore/marlin-file-operations.c:1822
 msgid ""
 "\n"
 " Deleting a file removes it permanently"
 msgstr ""
+"\n"
+" फाइल हटविणे फाइल कायमस्वरूपी काढून टाकते"
 
 #: libcore/marlin-file-operations.c:2012
 msgid "Trashing Files"
@@ -1488,6 +1491,7 @@ msgid ""
 "There is not enough space on the destination. Try to remove files to make "
 "space."
 msgstr ""
+"गंतव्यस्थानावर पुरेशी जागा नाही. जागा करण्यासाठी फायली काढण्याचा प्रयत्न करा."
 
 #: libcore/marlin-file-operations.c:2727
 #, c-format
@@ -1550,13 +1554,13 @@ msgstr[1] "%'d फायली डुप्लिकेट करीत आह�
 #: libcore/marlin-file-operations.c:2877
 #, c-format
 msgid "%S of %S"
-msgstr ""
+msgstr "%S चे %S"
 
 #: libcore/marlin-file-operations.c:2887
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%S पैकी %S   — %T बाकी (%S/sec)"
+msgstr[1] "%S पैकी %S   —  %T बाकी (%S/sec)"
 
 #: libcore/marlin-file-operations.c:3265
 msgid ""
@@ -1613,7 +1617,7 @@ msgstr "फोल्डर %B काढू शकत नाही."
 
 #: libcore/marlin-file-operations.c:3891 libcore/marlin-file-operations.c:4562
 msgid "You cannot copy a folder into itself."
-msgstr ""
+msgstr "आपण स्वत: मध्ये फोल्डर कॉपी करू शकत नाही."
 
 #: libcore/marlin-file-operations.c:3892 libcore/marlin-file-operations.c:4563
 msgid "The destination folder is inside the source folder."
@@ -1625,20 +1629,20 @@ msgstr "फाइल कचर्यामध्ये हलवू शकत �
 
 #: libcore/marlin-file-operations.c:3924
 msgid "You cannot copy a file over itself."
-msgstr ""
+msgstr "आपण फाइल त्याच फाईलवर कॉपी करू शकत नाही."
 
 #: libcore/marlin-file-operations.c:3925
 msgid "The source file would be overwritten by the destination."
-msgstr ""
+msgstr "स्त्रोत फाइल गंतव्यस्थानाद्वारे अधिलिखित केली जाईल."
 
 #: libcore/marlin-file-operations.c:4156
 #, c-format
 msgid "Could not remove the already existing file with the same name in %F."
-msgstr ""
+msgstr "%F मध्ये समान नावाची आधीपासून अस्तित्वात असलेली फाइल काढू शकली नाही."
 
 #: libcore/marlin-file-operations.c:4221
 msgid "Cannot copy \"%B\" here."
-msgstr ""
+msgstr "येथे \"%B\" कॉपी करू शकत नाही."
 
 #: libcore/marlin-file-operations.c:4222
 msgid "There was an error copying the file into %B."
@@ -1675,7 +1679,7 @@ msgstr "फाइल्स कचऱ्यात टाकत आहे"
 
 #: libcore/marlin-file-operations.c:5007
 msgid "Creating links in \"%B\""
-msgstr ""
+msgstr "\"%B\" मधील दुवे तयार करणे"
 
 #: libcore/marlin-file-operations.c:5011
 #, c-format
@@ -1690,11 +1694,11 @@ msgstr "\"%B\" वर कॉपी करताना त्रुटी आल�
 
 #: libcore/marlin-file-operations.c:5153
 msgid "Symbolic links only supported for local files"
-msgstr ""
+msgstr "सिंबलिक दुवे केवळ स्थानिक फायलींसाठी समर्थित आहेत"
 
 #: libcore/marlin-file-operations.c:5156
 msgid "The target doesn't support symbolic links."
-msgstr ""
+msgstr "लक्ष्य सिंबलिक दुवे समर्थित नाही."
 
 #: libcore/marlin-file-operations.c:5159
 #, c-format
@@ -1703,11 +1707,11 @@ msgstr "%F मध्ये सिमलिंक तयार करताना
 
 #: libcore/marlin-file-operations.c:5477
 msgid "Setting permissions"
-msgstr ""
+msgstr "परवानगी सेटिंग"
 
 #: libcore/marlin-file-operations.c:5573
 msgid "Cannot copy into trash."
-msgstr ""
+msgstr "कचर्यामध्ये कॉपी करू शकत नाही."
 
 #: libcore/marlin-file-operations.c:5574
 msgid "It is not permitted to copy files into the trash"
@@ -1717,11 +1721,11 @@ msgstr ""
 
 #: libcore/marlin-file-operations.c:5712
 msgid "untitled folder"
-msgstr ""
+msgstr "शीर्षक नसलेले फोल्डर"
 
 #: libcore/marlin-file-operations.c:5720
 msgid "new file"
-msgstr ""
+msgstr "नवीन फाइल"
 
 #: libcore/marlin-file-operations.c:5891
 msgid "Error while creating directory %B."
@@ -1742,16 +1746,16 @@ msgstr "कचरापेटी (_T)रिकामी करा"
 
 #: libcore/marlin-undostack-manager.c:580
 msgid "Original location could not be determined"
-msgstr ""
+msgstr "मूळ स्थान निर्धारित केले जाऊ शकत नाही"
 
 #: libcore/marlin-undostack-manager.c:581
 msgid "Open trash folder and restore manually"
-msgstr ""
+msgstr "कचरा फोल्डर उघडा आणि व्यक्तिचलितरित्या पुनर्संचयित करा"
 
 #: libcore/marlin-undostack-manager.c:1118
 #, c-format
 msgid "Delete %d copied items"
-msgstr ""
+msgstr "कॉपी केलेले %d आयटम हटवा"
 
 #: libcore/marlin-undostack-manager.c:1121
 #: libcore/marlin-undostack-manager.c:1131
@@ -1763,23 +1767,23 @@ msgstr "'%s' हटवा"
 #: libcore/marlin-undostack-manager.c:1128
 #, c-format
 msgid "Delete %d duplicated items"
-msgstr ""
+msgstr "डुप्लिकेट केलेले %d आयटम हटवा"
 
 #: libcore/marlin-undostack-manager.c:1139
 #, c-format
 msgid "Move %d items back to '%s'"
-msgstr ""
+msgstr "%d आयटम परत '%s' वर हलवा"
 
 #: libcore/marlin-undostack-manager.c:1143
 #, c-format
 msgid "Move '%s' back to '%s'"
-msgstr ""
+msgstr "'%s'  परत '%s' वर हलवा"
 
 #: libcore/marlin-undostack-manager.c:1152
 #: libcore/marlin-undostack-manager.c:1319
 #, c-format
 msgid "Rename '%s' as '%s'"
-msgstr ""
+msgstr "'%s' चे नाव '%s' म्हणून पुनर्नामित करा"
 
 #: libcore/marlin-undostack-manager.c:1171
 #: libcore/marlin-undostack-manager.c:1366
@@ -1790,7 +1794,7 @@ msgstr "%d आयटम कचर्यामधून पुनर्संच�
 #: libcore/marlin-undostack-manager.c:1179
 #, c-format
 msgid "Restore '%s' to '%s'"
-msgstr ""
+msgstr "'%s' वर '%s' पुनर्संचयित करा"
 
 #: libcore/marlin-undostack-manager.c:1190
 #, c-format
@@ -1815,37 +1819,37 @@ msgstr "%s चा दुसरा दुवा"
 #: libcore/marlin-undostack-manager.c:1215
 #, c-format
 msgid "Restore original permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "'%s' मध्ये संलग्न केलेल्या आयटमच्या मूळ परवानग्या पुनर्संचयित करा"
 
 #: libcore/marlin-undostack-manager.c:1223
 #, c-format
 msgid "Restore original permissions of '%s'"
-msgstr ""
+msgstr "'%s' च्या मूळ परवानग्या पुनर्संचयित करा"
 
 #: libcore/marlin-undostack-manager.c:1232
 #, c-format
 msgid "Restore group of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' च्या गटास '%s' वर पुनर्संचयित करा"
 
 #: libcore/marlin-undostack-manager.c:1242
 #, c-format
 msgid "Restore owner of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' च्या मालकास '%s' वर पुनर्संचयित करा"
 
 #: libcore/marlin-undostack-manager.c:1281
 #, c-format
 msgid "Copy %d items to '%s'"
-msgstr ""
+msgstr "'%s'  वर %d आयटम कॉपी करा"
 
 #: libcore/marlin-undostack-manager.c:1285
 #, c-format
 msgid "Copy '%s' to '%s'"
-msgstr ""
+msgstr "'%s' वर '%s' कॉपी"
 
 #: libcore/marlin-undostack-manager.c:1293
 #, c-format
 msgid "Duplicate of %d items in '%s'"
-msgstr ""
+msgstr "'%s' मधील %d आयटमचे डुप्लिकेट"
 
 #: libcore/marlin-undostack-manager.c:1298
 #, c-format
@@ -1855,27 +1859,27 @@ msgstr "'%s' '%s' मध्ये डुप्लिकेट करीत आ�
 #: libcore/marlin-undostack-manager.c:1306
 #, c-format
 msgid "Move %d items to '%s'"
-msgstr ""
+msgstr "%d आयटम '%s' वर हलवा"
 
 #: libcore/marlin-undostack-manager.c:1310
 #, c-format
 msgid "Move '%s' to '%s'"
-msgstr ""
+msgstr "'%s', '%s' वर हलवा"
 
 #: libcore/marlin-undostack-manager.c:1328
 #, c-format
 msgid "Create new file '%s' from template "
-msgstr ""
+msgstr "टेम्पलेटमधून नवीन फाइल '%s' तयार करा "
 
 #: libcore/marlin-undostack-manager.c:1335
 #, c-format
 msgid "Create an empty file '%s'"
-msgstr ""
+msgstr "रिक्त फाइल '%s' तयार करा"
 
 #: libcore/marlin-undostack-manager.c:1342
 #, c-format
 msgid "Create a new folder '%s'"
-msgstr ""
+msgstr "नवीन फोल्डर '%s' तयार करा"
 
 #: libcore/marlin-undostack-manager.c:1350
 #, c-format
@@ -1890,7 +1894,7 @@ msgstr "'%s' कचर्यामध्ये टाकत आहे"
 #: libcore/marlin-undostack-manager.c:1369
 #, c-format
 msgid "Restore '%s' from trash"
-msgstr ""
+msgstr "कचर्यामधून '%s' पुनर्संचयित करा"
 
 #: libcore/marlin-undostack-manager.c:1378
 #, c-format
@@ -1905,12 +1909,12 @@ msgstr "%s चा दुसरा दुवा"
 #: libcore/marlin-undostack-manager.c:1390
 #, c-format
 msgid "Set permissions of items enclosed in '%s'"
-msgstr ""
+msgstr "'%s' मध्ये संलग्न केलेल्या आयटमची परवानगी सेट करा"
 
 #: libcore/marlin-undostack-manager.c:1398
 #, c-format
 msgid "Set permissions of '%s'"
-msgstr ""
+msgstr "'%s' च्या परवानग्या सेट करा"
 
 #: libcore/marlin-undostack-manager.c:1407
 #, c-format
