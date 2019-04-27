@@ -899,7 +899,7 @@ public class GOF.File : GLib.Object {
 
                 break;
             case FM.ListModel.ColumnID.MODIFIED:
-                result = compare_by_time (other);
+                result = compare_files_by_time (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
                 }
@@ -1117,15 +1117,6 @@ public class GOF.File : GLib.Object {
         return 0;
     }
 
-    private int compare_by_time (GOF.File other) {
-        if (is_folder () && !other.is_folder ())
-            return -1;
-        if (other.is_folder () && !is_folder ())
-            return 1;
-
-        return compare_files_by_time (other);
-    }
-
     private int compare_by_type (GOF.File other) {
         /* Directories go first. Then, if mime types are identical,
          * don't bother getting strings (for speed). This assumes
@@ -1154,11 +1145,23 @@ public class GOF.File : GLib.Object {
     }
 
     private int compare_by_size (GOF.File other) {
-        if (is_folder () && !other.is_folder ())
-            return -1;
-        if (other.is_folder () && !is_folder ())
-            return 1;
+        /* As folder files have a fixed standard size (4K) assign them a virtual size of -1 for now
+         * so always sorts first. */
 
+        /* TODO Sort folders according to number of files inside like Dolphin? */
+        if (is_folder ()&& !other.is_folder ()) {
+            return -1;
+        }
+
+        if (other.is_folder () && !is_folder ()) {
+            return 1;
+        }
+
+        if (is_folder () && other.is_folder ()) {
+            return 0;
+        }
+
+        /* Only compare sizes for regular files */
         return compare_files_by_size (other);
     }
 
