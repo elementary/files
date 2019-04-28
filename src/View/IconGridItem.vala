@@ -45,7 +45,9 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     private Gtk.Image helper;
     private Gdk.Rectangle helper_allocation;
     private Gtk.Label label;
+    private Gtk.Label id_label;
     private int set_max_width_request = 0;
+    private int pix_size = 0;
     private int total_padding;
     private Gtk.CssProvider provider;
 
@@ -102,6 +104,8 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         label.set_justify (Gtk.Justification.CENTER);
         label.get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
+        id_label = new Gtk.Label (widget_id.to_string ());
+
         helper = new Gtk.Image ();
         helper.margin = 0;
         helper.set_from_icon_name ("selection-add", Gtk.IconSize.LARGE_TOOLBAR);
@@ -111,6 +115,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
         grid.add (icon);
         grid.add (label);
+        grid.add (id_label);
 
         overlay.add (grid);
         overlay.add_overlay (helper);
@@ -150,14 +155,21 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         return true;
     }
 
+    private uint last_thumbstate = -1;
     public bool get_new_pix (int size) {
-        var pix_size = Marlin.icon_size_get_nearest_from_value (size);
-        icon.set_size_request (pix_size, pix_size);
+        var px_size = Marlin.icon_size_get_nearest_from_value (size);
+        icon.set_size_request (px_size, px_size);
 
-        if (file != null) {
-            file.update_icon (pix_size, 1);
-            icon.set_from_pixbuf (file.pix);
+        if (file == null || file.is_null) {
+            return false;
+        } else {
+            pix_size = px_size;
+            last_thumbstate = file.flags;
         }
+
+
+        file.update_icon (pix_size, 1);
+        icon.set_from_pixbuf (file.pix);
 
         return true;
     }
@@ -171,6 +183,10 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
     }
 
     public bool set_max_width (int width, bool force = false) {
+        if (force) {
+            file.query_thumbnail_update ();
+        }
+
         if (width != set_max_width_request || force) {
             set_max_width_request = width;
             set_size_request (width, -1);
@@ -193,7 +209,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         if (file != null && !file.is_null) {
             update_state ();
             label.label = item_name;
-            set_max_width (set_max_width_request, new_data);
+            set_max_width (set_max_width_request, new_data || file.flags != last_thumbstate);
         }
     }
 

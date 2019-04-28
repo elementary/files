@@ -105,6 +105,15 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             on_adjustment_value_changed (false);
         });
 
+        layout.size_allocate.connect_after ((alloc) => {
+            /* Reduce unnecessary configuration */
+            if ((last_width - alloc.width).abs () > 8 || (last_height - alloc.height).abs () > 8) {
+                last_width = alloc.width;
+                last_height = alloc.height;
+                configure ();
+            }
+        });
+
         model.n_items_changed.connect ((change) => {
             if (!ignore_model_changes) {
                 n_items = model.get_n_items ();
@@ -124,14 +133,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
         model.data_removed.connect ((data) => {
             if (!ignore_model_changes && data.is_selected) {
                 selected_data.remove (data);
-            }
-        });
-
-        layout.size_allocate.connect ((alloc) => {
-            if (last_width != alloc.width || last_height != alloc.height) {
-                last_width = alloc.width;
-                last_height = alloc.height;
-                configure ();
             }
         });
 
