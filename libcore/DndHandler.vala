@@ -27,7 +27,7 @@ namespace Marlin {
     public const string TEXT_PLAIN = "text/plain";
 
     public class DndHandler : GLib.Object {
-        public Gdk.Atom XDND_DIRECT_SAVE_ATOM = Gdk.Atom.intern_static_string (XDND_DIRECT_SAVE, false);
+        public Gdk.Atom XDND_DIRECT_SAVE_ATOM = Gdk.Atom.intern_static_string (XDND_DIRECT_SAVE);
         public Gdk.Atom RAW_ATOM = Gdk.Atom.intern (RAW, false);
         public Gdk.Atom NETSCAPE_URL_ATOM = Gdk.Atom.intern (NETSCAPE_URL, false);
         public Gdk.Atom TEXT_URI_LIST_ATOM = Gdk.Atom.intern (TEXT_URI_LIST, false);
