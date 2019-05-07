@@ -3,6 +3,8 @@ config_data.set('install_prefix', get_option('prefix'))
 config_data.set('bin_dir', get_option('bindir'))
 config_data.set('exec_name', meson.project_name())
 
+icon_test_script = find_program(join_paths(meson.source_root(), 'meson', 'test_icon_translations.py'))
+
 configure_file(
     input: meson.project_name() + '.service.in',
     output: meson.project_name() + '.service',
@@ -69,6 +71,8 @@ i18n.merge_file(
     po_dir: join_paths(meson.source_root(), 'po', 'extra'),
     type: 'desktop'
 )
+
+test('check icons haven\'t been translated', icon_test_script, args: join_paths(meson.current_build_dir(), meson.project_name() + '.desktop'))
 
 i18n.merge_file(
     'appdata',
