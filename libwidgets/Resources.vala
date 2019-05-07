@@ -102,6 +102,7 @@ namespace Marlin {
             case "mtp":
                 return _(Marlin.PROTOCOL_NAME_MTP);
             case "file":
+            case "":
                 return _(Marlin.PROTOCOL_NAME_FILE);
             default:
                 return protocol;
