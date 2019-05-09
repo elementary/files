@@ -165,7 +165,6 @@ namespace FM {
         /* support for generating thumbnails */
         int thumbnail_request = -1;
         uint thumbnail_source_id = 0;
-        uint freeze_source_id = 0;
         Marlin.Thumbnailer thumbnailer = null;
 
         /* Free space signal support */
@@ -1320,10 +1319,14 @@ namespace FM {
             if (!large_thumbnails && size > 128 || large_thumbnails && size <= 128) {
                 large_thumbnails = size > 128;
                 slot.refresh_files (); /* Force GOF files to switch between normal and large thumbnails */
-                schedule_thumbnail_timeout ();
             }
 
             change_zoom_level ();
+            /* Ensure any newly revealed items are thumbnailed */
+            Idle.add (() => {
+                schedule_thumbnail_timeout ();
+                return Source.REMOVE;
+            });
         }
 
     /** Handle Preference changes */
@@ -2392,12 +2395,12 @@ namespace FM {
                     /* To improve performance for large folders we thumbnail files on either side of visible region
                      * as well.  The delay is mainly in redrawing the view and this reduces the number of updates and
                      * redraws necessary when scrolling */
-                    int count = 50;
+                    int count = 10;
                     while (start_path.prev () && count > 0) {
                         count--;
                     }
 
-                    count = 50;
+                    count = 10;
                     while (count > 0) {
                         end_path.next ();
                         count--;
