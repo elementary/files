@@ -2371,19 +2371,6 @@ namespace FM {
 
             /* Do not cancel existing requests to avoid missing thumbnails */
             cancel_timeout (ref thumbnail_source_id);
-            /* In order to improve performance of the Icon View when there are a large number of files,
-             * we freeze child notifications while the view is being scrolled or resized.
-             * The timeout is restarted for each scroll or size allocate event */
-            cancel_timeout (ref freeze_source_id);
-            freeze_child_notify ();
-            freeze_source_id = Timeout.add (100, () => {
-                if (thumbnail_source_id > 0) {
-                    return GLib.Source.CONTINUE;
-                }
-                thaw_child_notify ();
-                freeze_source_id = 0;
-                return GLib.Source.REMOVE;
-            });
 
             /* Views with a large number of files take longer to redraw (especially IconView) so
              * we wait longer for scrolling to stop before updating the thumbnails */
@@ -2397,7 +2384,7 @@ namespace FM {
                 bool valid_iter;
                 GOF.File? file;
                 visible_files = null;
-                uint actually_visible = 0;
+                bool some_visible = false;
 
                 if (get_visible_range (out start_path, out end_path)) {
                     sp = start_path;
@@ -2425,14 +2412,11 @@ namespace FM {
                         if (file != null && !file.is_gone) {
                             file.query_thumbnail_update (); // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
+                            if ((GOF.File.ThumbState)(file.flags) == GOF.File.ThumbState.UNKNOWN) {
                                 visible_files.prepend (file);
+                                some_visible = true;
                                 if (plugins != null) {
                                     plugins.update_file_info (file);
-                                }
-
-                                if (path.compare (sp) >= 0 && path.compare (ep) <= 0) {
-                                    actually_visible++;
                                 }
                             }
                         }
@@ -2448,7 +2432,7 @@ namespace FM {
                 /* This is the only place that new thumbnail files are created */
                 /* Do not trigger a thumbnail request unless there are unthumbnailed files actually visible
                  * and there has not been another event (which would zero the thumbnail_source_id) */
-                if (actually_visible > 0 && thumbnail_source_id > 0) {
+                if (some_visible && thumbnail_source_id > 0) {
                     thumbnailer.queue_files (visible_files, out thumbnail_request, large_thumbnails);
                 } else {
                     draw_when_idle ();
