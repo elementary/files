@@ -365,33 +365,21 @@ namespace Marlin.View {
 
        private void update_tab_name () {
             string? slot_path = Uri.unescape_string (this.uri);
-            string? tab_name = null;
+            string tab_name = Marlin.INVALID_TAB_NAME;
 
             if (slot_path != null) {
-                if (this.location.get_path () == null) {
-                    tab_name = Marlin.protocol_to_name (this.uri);
+                string protocol, path;
+                PF.FileUtils.split_protocol_from_path (slot_path, out protocol, out path);
+                if (path == "" || path == Path.DIR_SEPARATOR_S) {
+                    tab_name = Marlin.protocol_to_name (protocol);
+                } else if (protocol == "" && path == Environment.get_home_dir ()) {
+                    tab_name = _("Home");
                 } else {
-                    try {
-                        var fn = Filename.from_uri (slot_path);
-                        if (fn == Environment.get_home_dir ()) {
-                            tab_name = _("Home");
-                        } else if (fn == "/") {
-                            tab_name = _("File System");
-                        }
-                    } catch (ConvertError e) {}
-
-                    if (tab_name == null) {
-                        tab_name = Uri.unescape_string (location.get_parse_name ());
-                    }
+                    tab_name = Path.get_basename (path);
                 }
             }
 
-            if (tab_name == null) {
-                tab_name = Marlin.INVALID_TAB_NAME;
-            }
-
             this.tab_name = tab_name;
-
             overlay_statusbar.hide ();
         }
 
@@ -460,6 +448,8 @@ namespace Marlin.View {
                 browser.record_uri (null);
             }
 
+            /* Slot info was updated on starting to load but if target was not a directory
+             * the loaded location may be different. */
             refresh_slot_info (slot.location);
             loading (false); /* Will cause topmenu to update */
             overlay_statusbar.update_hovered (null); /* Prevent empty statusbar showing */

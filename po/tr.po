@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-04-13 22:53+0000\n"
+"PO-Revision-Date: 2019-04-25 22:38+0000\n"
 "Last-Translator: Ozgur Baskin <bebeto_baskin@yahoo.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/>"
 "\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.5.1\n"
+"X-Generator: Weblate 3.6\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: src/Application.vala:120
@@ -529,7 +529,7 @@ msgstr "Ağ sunucusuna bağlan"
 #: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
-msgstr "(Boş alan: %s - Toplam alan: %s)"
+msgstr "(%2$s / %1$s Boş)"
 
 #: src/View/Sidebar.vala:1456
 #, c-format
@@ -1565,13 +1565,13 @@ msgstr[1] "%'d dosya çoğaltılıyor"
 #: libcore/marlin-file-operations.c:2877
 #, c-format
 msgid "%S of %S"
-msgstr "%S / %S"
+msgstr "%2$S / %1$S"
 
 #: libcore/marlin-file-operations.c:2887
 msgid "%S of %S — %T left (%S/sec)"
 msgid_plural "%S of %S — %T left (%S/sec)"
-msgstr[0] "%S / %S — %T kaldı (%S/sn)"
-msgstr[1] "%S / %S — %T kaldı (%S/sn)"
+msgstr[0] "%2$S / %1$S — %T kaldı (%3$S/sn)"
+msgstr[1] "%2$S / %1$S — %T kaldı (%3$S/sn)"
 
 #: libcore/marlin-file-operations.c:3265
 msgid ""
