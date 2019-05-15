@@ -25,10 +25,10 @@ public class GOF.File : GLib.Object {
     }
 
     public enum ThumbState {
-        UNKNOWN = 0x00,
-        NONE = 0x01,
-        READY = 0x02,
-        LOADING = 0x03
+        UNKNOWN,
+        NONE,
+        READY,
+        LOADING
     }
 
     public const string GIO_DEFAULT_ATTRIBUTES = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::content-type,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed";
@@ -70,7 +70,7 @@ public class GOF.File : GLib.Object {
     public bool is_expanded = false;
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;
-    public uint flags = GOF.File.ThumbState.UNKNOWN;
+    public uint thumbstate = GOF.File.ThumbState.UNKNOWN;
     public string thumbnail_path = null;
     public bool is_mounted = true;
     public bool exists = true;
@@ -395,7 +395,7 @@ public class GOF.File : GLib.Object {
         }
 
         GLib.Icon? gicon = null;
-        if (GOF.File.IconFlags.USE_THUMBNAILS in flags && this.flags == GOF.File.ThumbState.LOADING) {
+        if (GOF.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == GOF.File.ThumbState.LOADING) {
             gicon = new GLib.ThemedIcon ("image-loading");
         } else {
             gicon = this.icon;
@@ -527,7 +527,7 @@ public class GOF.File : GLib.Object {
         /* mark the thumb flags as state none, we'll load the thumbs once the directory
          * would be loaded on a thread */
         if (get_thumbnail_path () != null) {
-            flags = GOF.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
+            thumbstate = GOF.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
         }
 
         /* formated type */
@@ -1183,7 +1183,7 @@ public class GOF.File : GLib.Object {
             }
         }
 
-        if (GOF.File.IconFlags.USE_THUMBNAILS in flags && this.flags == GOF.File.ThumbState.READY) {
+        if (GOF.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == GOF.File.ThumbState.READY) {
             unowned string? thumb_path = get_thumbnail_path ();
             if (thumb_path != null) {
                 return Marlin.IconInfo.lookup_from_path (thumb_path, size, scale);
