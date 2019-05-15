@@ -132,8 +132,15 @@ public class Async : Object {
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
-        can_open_files = !("mtp".contains (scheme));
-        can_stream_files = !("ftp sftp mtp".contains (scheme));
+        /* Previously, mtp protocol had problems launching files but this currently works
+         * using newer devices such as Android phones so this restriction is lifted. The flag is
+         * retained in case it needs reinstating or using for another protocol.
+         */
+        can_open_files = true;
+        /* Previously, mtp protocol had problems streaming files but this currently works
+         * using newer devices such as Android phones so this restriction is lifted.
+         */
+        can_stream_files = !("ftp sftp".contains (scheme));
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
 

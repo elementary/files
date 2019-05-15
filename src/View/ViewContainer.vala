@@ -381,7 +381,7 @@ namespace Marlin.View {
                     } catch (ConvertError e) {}
 
                     if (tab_name == null) {
-                        tab_name = location.get_parse_name ();
+                        tab_name = Uri.unescape_string (location.get_parse_name ());
                     }
                 }
             }
