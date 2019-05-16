@@ -86,15 +86,29 @@ public class Marlin.Application : Gtk.Application {
             window_count--;
         });
 
-        const string DESKTOP_SCHEMA = "io.elementary.desktop";
-        const string DARK_KEY = "prefer-dark";
+        const string DESKTOP_SCHEMA = "org.freedesktop";
+        const string PREFERS_KEY = "prefers-color-scheme";
 
         var lookup = SettingsSchemaSource.get_default ().lookup (DESKTOP_SCHEMA, false);
 
         if (lookup != null) {
-            var desktop_settings = new GLib.Settings (DESKTOP_SCHEMA);
+            var desktop_settings = new Settings (DESKTOP_SCHEMA);
             var gtk_settings = Gtk.Settings.get_default ();
-            desktop_settings.bind (DARK_KEY, gtk_settings, "gtk_application_prefer_dark_theme", SettingsBindFlags.DEFAULT);
+            desktop_settings.bind_with_mapping (
+                PREFERS_KEY,
+                gtk_settings,
+                "gtk_application_prefer_dark_theme",
+                SettingsBindFlags.DEFAULT,
+                (value, variant) => {
+                    value.set_boolean (variant.get_string () == "dark");
+                    return true;
+                },
+                (value, expected_type) => {
+                    return new Variant.string(value.get_boolean() ? "dark" : "no-preference");
+                },
+                null,
+                null
+            );
         }
     }
 
