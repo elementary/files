@@ -931,14 +931,14 @@ public class Async : Object {
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         switch (event) {
         case FileMonitorEvent.CREATED:
-            MarlinFile.changes_queue_file_added (_file);
+            Marlin.FileChanges.queue_file_added (_file);
             break;
         case FileMonitorEvent.DELETED:
-            MarlinFile.changes_queue_file_removed (_file);
+            Marlin.FileChanges.queue_file_removed (_file);
             break;
         case FileMonitorEvent.CHANGES_DONE_HINT: /* test  last to avoid unnecessary action when file renamed */
         case FileMonitorEvent.ATTRIBUTE_CHANGED:
-            MarlinFile.changes_queue_file_changed (_file);
+            Marlin.FileChanges.queue_file_changed (_file);
             break;
         }
 
@@ -948,7 +948,7 @@ public class Async : Object {
              * TODO: Have GOF.Directory.Async control renaming.
              */
             idle_consume_changes_id = Timeout.add (10, () => {
-                MarlinFile.changes_consume_changes (true);
+                Marlin.FileChanges.consume_changes (true);
                 idle_consume_changes_id = 0;
                 return GLib.Source.REMOVE;
             });

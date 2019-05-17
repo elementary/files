@@ -2515,7 +2515,7 @@ namespace FM {
                         if (file != null && !file.is_gone) {
                             file.query_thumbnail_update (); // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
+                            if (file.thumbstate == GOF.File.ThumbState.UNKNOWN) {
                                 visible_files.prepend (file);
                                 if (plugins != null) {
                                     plugins.update_file_info (file);
@@ -2902,7 +2902,7 @@ namespace FM {
                         break;
                     }
 
-                    res = move_cursor (keyval, only_shift_pressed);
+                    res = move_cursor (keyval, only_shift_pressed, control_pressed);
 
                     break;
 
@@ -3692,7 +3692,7 @@ namespace FM {
                                          bool scroll_to_top);
 
         /* By default use the native widget cursor handling by returning false */
-        protected virtual bool move_cursor (uint keyval, bool only_shift_pressed) {
+        protected virtual bool move_cursor (uint keyval, bool only_shift_pressed, bool control_pressed) {
             return false;
         }
 
