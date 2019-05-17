@@ -42,7 +42,6 @@ namespace Marlin.View.Chrome {
         public bool hide_breadcrumbs { get; set; default = false; }
         public const double MINIMUM_LOCATION_BAR_ENTRY_WIDTH = 16;
         public const double MINIMUM_BREADCRUMB_WIDTH = 12;
-        public const double COMPLETION_ALPHA = 0.5;
         public const int ICON_WIDTH = 32;
         protected string placeholder = ""; /*Note: This is not the same as the Gtk.Entry placeholder_text */
         protected BreadcrumbElement? clicked_element = null;
@@ -715,7 +714,15 @@ namespace Marlin.View.Chrome {
                 Pango.Layout layout;
                 /** TODO - Get offset due to margins from style context **/
                 int icon_width = primary_icon_pixbuf != null ? primary_icon_pixbuf.width + 8 : 0;
-                cr.set_source_rgba (0, 0, 0, COMPLETION_ALPHA);
+
+                Gdk.RGBA rgba;
+                var colored = get_style_context ().lookup_color ("placeholder_text_color", out rgba);
+                if (colored) {
+                    cr.set_source_rgba (rgba.red, rgba.green, rgba.blue, 1);
+                } else {
+                    cr.set_source_rgba (0, 0, 0, 0.5);
+                }
+
                 if (is_RTL) {
                     layout = create_pango_layout (text + placeholder);
                 } else {
