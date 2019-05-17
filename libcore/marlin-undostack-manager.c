@@ -28,7 +28,6 @@
 #include <glib/gi18n.h>
 #include <locale.h>
 #include <gdk/gdk.h>
-#include "marlin-file-changes-queue.h"
 #include "pantheon-files-core.h"
 
 struct _MarlinUndoActionData

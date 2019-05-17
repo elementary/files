@@ -181,10 +181,10 @@ namespace Marlin {
             foreach (var file in files) {
                 if (is_supported (file)) {
                     supported_files.prepend (file);
-                    file.flags = GOF.File.ThumbState.LOADING;
+                    file.thumbstate = GOF.File.ThumbState.LOADING;
                     file_count++;
                 } else {
-                    file.flags = GOF.File.ThumbState.NONE;
+                    file.thumbstate = GOF.File.ThumbState.NONE;
                 }
             }
 
@@ -354,7 +354,7 @@ namespace Marlin {
         private static void update_file_thumbstate (string uri, GOF.File.ThumbState state) {
             var goffile = GOF.File.get_by_uri (uri);
             if (goffile != null) {
-                goffile.flags = state;
+                goffile.thumbstate = state;
                 goffile.query_thumbnail_update ();
             }
         }

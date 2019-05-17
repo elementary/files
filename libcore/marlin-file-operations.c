@@ -42,7 +42,6 @@
 
 #include "eel-string.h"
 
-#include "marlin-file-changes-queue.h"
 #include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
