@@ -130,12 +130,3 @@ namespace Marlin
 //        }
 //    }
 }
-
-[CCode (cprefix = "MarlinFile", lower_case_cprefix = "marlin_file_", cheader_filename = "marlin-file-changes-queue.h")]
-namespace MarlinFile {
-    public void changes_queue_file_added (GLib.File location);
-    public void changes_queue_file_changed (GLib.File location);
-    public void changes_queue_file_removed (GLib.File location);
-    public void changes_queue_file_moved (GLib.File location);
-    public void changes_consume_changes (bool consume_all);
-}

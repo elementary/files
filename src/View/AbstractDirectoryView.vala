@@ -2091,7 +2091,7 @@ namespace FM {
                         if (file != null && !file.is_gone) {
                             file.query_thumbnail_update (); // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
+                            if (file.thumbstate == GOF.File.ThumbState.UNKNOWN) {
                                 visible_files.prepend (file);
                                 if (plugins != null) {
                                     plugins.update_file_info (file);
