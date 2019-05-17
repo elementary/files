@@ -25,10 +25,10 @@ public class GOF.File : GLib.Object {
     }
 
     public enum ThumbState {
-        UNKNOWN = 0x00,
-        NONE = 0x01,
-        READY = 0x02,
-        LOADING = 0x03
+        UNKNOWN,
+        NONE,
+        READY,
+        LOADING
     }
 
     public const string GIO_DEFAULT_ATTRIBUTES = "standard::is-hidden,standard::is-backup,standard::is-symlink,standard::type,standard::name,standard::display-name,standard::content-type,standard::fast-content-type,standard::size,standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem,thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed";
@@ -70,7 +70,7 @@ public class GOF.File : GLib.Object {
     public bool is_expanded = false;
     [CCode (cname = "can_unmount")]
     public bool _can_unmount;
-    public uint flags = GOF.File.ThumbState.UNKNOWN;
+    public uint thumbstate = GOF.File.ThumbState.UNKNOWN;
     public string thumbnail_path = null;
     public bool is_mounted = true;
     public bool exists = true;
@@ -395,7 +395,7 @@ public class GOF.File : GLib.Object {
         }
 
         GLib.Icon? gicon = null;
-        if (GOF.File.IconFlags.USE_THUMBNAILS in flags && this.flags == GOF.File.ThumbState.LOADING) {
+        if (GOF.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == GOF.File.ThumbState.LOADING) {
             gicon = new GLib.ThemedIcon ("image-loading");
         } else {
             gicon = this.icon;
@@ -527,7 +527,7 @@ public class GOF.File : GLib.Object {
         /* mark the thumb flags as state none, we'll load the thumbs once the directory
          * would be loaded on a thread */
         if (get_thumbnail_path () != null) {
-            flags = GOF.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
+            thumbstate = GOF.File.ThumbState.UNKNOWN;  /* UNKNOWN means thumbnail not known to be unobtainable */
         }
 
         /* formated type */
@@ -899,7 +899,7 @@ public class GOF.File : GLib.Object {
 
                 break;
             case FM.ListModel.ColumnID.MODIFIED:
-                result = compare_by_time (other);
+                result = compare_files_by_time (other);
                 if (result == 0) {
                     result = compare_by_display_name (other);
                 }
@@ -1117,15 +1117,6 @@ public class GOF.File : GLib.Object {
         return 0;
     }
 
-    private int compare_by_time (GOF.File other) {
-        if (is_folder () && !other.is_folder ())
-            return -1;
-        if (other.is_folder () && !is_folder ())
-            return 1;
-
-        return compare_files_by_time (other);
-    }
-
     private int compare_by_type (GOF.File other) {
         /* Directories go first. Then, if mime types are identical,
          * don't bother getting strings (for speed). This assumes
@@ -1154,11 +1145,23 @@ public class GOF.File : GLib.Object {
     }
 
     private int compare_by_size (GOF.File other) {
-        if (is_folder () && !other.is_folder ())
-            return -1;
-        if (other.is_folder () && !is_folder ())
-            return 1;
+        /* As folder files have a fixed standard size (4K) assign them a virtual size of -1 for now
+         * so always sorts first. */
 
+        /* TODO Sort folders according to number of files inside like Dolphin? */
+        if (is_folder ()&& !other.is_folder ()) {
+            return -1;
+        }
+
+        if (other.is_folder () && !is_folder ()) {
+            return 1;
+        }
+
+        if (is_folder () && other.is_folder ()) {
+            return 0;
+        }
+
+        /* Only compare sizes for regular files */
         return compare_files_by_size (other);
     }
 
@@ -1180,7 +1183,7 @@ public class GOF.File : GLib.Object {
             }
         }
 
-        if (GOF.File.IconFlags.USE_THUMBNAILS in flags && this.flags == GOF.File.ThumbState.READY) {
+        if (GOF.File.IconFlags.USE_THUMBNAILS in flags && this.thumbstate == GOF.File.ThumbState.READY) {
             unowned string? thumb_path = get_thumbnail_path ();
             if (thumb_path != null) {
                 return Marlin.IconInfo.lookup_from_path (thumb_path, size, scale);
