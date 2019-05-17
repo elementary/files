@@ -39,7 +39,8 @@ namespace Marlin.View {
             {"info", action_info, "s"},
             {"view-mode", action_view_mode, "s", "'MILLER'"},
             {"show-hidden", null, null, "false", change_state_show_hidden},
-            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails}
+            {"show-remote-thumbnails", null, null, "false", change_state_show_remote_thumbnails},
+            {"hide-local-thumbnails", null, null, "false", change_state_hide_local_thumbnails}
         };
 
         const string [] mode_strings = {
@@ -788,6 +789,12 @@ namespace Marlin.View {
             bool state = !action.state.get_boolean ();
             action.set_state (new GLib.Variant.boolean (state));
             Preferences.settings.set_boolean ("show-remote-thumbnails", state);
+        }
+
+        public void change_state_hide_local_thumbnails (GLib.SimpleAction action) {
+            bool state = !action.state.get_boolean ();
+            action.set_state (new GLib.Variant.boolean (state));
+            Preferences.settings.set_boolean ("hide-local-thumbnails", state);
         }
 
         private void connect_to_server () {

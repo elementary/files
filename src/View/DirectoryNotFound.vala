@@ -41,8 +41,14 @@ namespace Marlin.View {
                     if (e is IOError.EXISTS) {
                         success = true;
                     } else {
-                        show_dialog (_("Failed to create the folder\n\n%s").printf (e.message),
-                                     Gtk.MessageType.ERROR, Gtk.ButtonsType.CLOSE);
+                        var dialog = new Granite.MessageDialog (
+                            _("Failed to create the folder"),
+                            e.message,
+                            new ThemedIcon ("dialog-error"),
+                            Gtk.ButtonsType.CLOSE
+                        );
+                        dialog.run ();
+                        dialog.destroy ();
                     }
                 }
 

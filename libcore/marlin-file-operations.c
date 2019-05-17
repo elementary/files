@@ -42,7 +42,6 @@
 
 #include "eel-string.h"
 
-#include "marlin-file-changes-queue.h"
 #include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
@@ -1255,6 +1254,8 @@ confirm_delete_from_trash (CommonJob *job,
     g_assert (file_count > 0);
 
     if (file_count == 1) {
+        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         prompt = f (_("Are you sure you want to permanently delete \"%B\" "
                       "from the trash?"), files->data);
     } else {
@@ -1336,6 +1337,8 @@ confirm_delete_directly (CommonJob *job,
     }
 
     if (file_count == 1) {
+        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         prompt = f (_("Are you sure you want to permanently delete \"%B\"?"),
                     files->data);
     } else {
@@ -1399,7 +1402,7 @@ report_delete_progress (CommonJob *job,
         transfer_rate = transfer_info->num_files / elapsed;
         remaining_time = files_left / transfer_rate;
 
-        /// TRANSLATORS: %T will expand to a time like "2 minutes".
+        /// TRANSLATORS: %T will expand to a time like "2 minutes". It must not be translated or removed.
         /// The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
         time_left_s = f (ngettext ("%T left",
                                    "%T left",
@@ -1472,9 +1475,13 @@ retry:
             details = NULL;
 
             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 secondary = f (_("Files in the folder \"%B\" cannot be deleted because you do "
                                  "not have permissions to see them."), dir);
             } else {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 secondary = f (_("There was an error getting information about the files in the folder \"%B\"."), dir);
                 details = error->message;
             }
@@ -1505,9 +1512,13 @@ retry:
         primary = f (_("Error while deleting."));
         details = NULL;
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             secondary = f (_("The folder \"%B\" cannot be deleted because you do not have "
                              "permissions to read it."), dir);
         } else {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             secondary = f (_("There was an error reading the folder \"%B\"."), dir);
             details = error->message;
         }
@@ -1542,6 +1553,7 @@ retry:
                 goto skip;
             }
             primary = f (_("Error while deleting."));
+            /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
             secondary = f (_("Could not remove the folder %B."), dir);
             details = error->message;
 
@@ -1619,6 +1631,7 @@ delete_file (CommonJob *job, GFile *file,
             goto skip;
         }
         primary = f (_("Error while deleting."));
+        /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
         secondary = f (_("There was an error deleting %B."), file);
         details = error->message;
 
@@ -2080,6 +2093,7 @@ unmount_mount_callback (GObject *source_object,
     if (! unmounted) {
         if (error->code != G_IO_ERROR_FAILED_HANDLED) {
             if (data->eject) {
+                /// TRANSLATORS: %V is a placeholder for the name of a volume. It may change position but it must not be translated or removed.
                 primary = f (_("Unable to eject %V"), source_object);
             } else {
                 primary = f (_("Unable to unmount %V"), source_object);
@@ -2319,18 +2333,30 @@ report_count_progress (CommonJob *job,
     switch (source_info->op) {
     default:
     case OP_KIND_COPY:
+        /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+        /// %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+        /// So this represents something like "Preparing to copy 100 files (200 MB)"
+        /// The order in which %'d and %S appear must not change.
         s = f (ngettext("Preparing to copy %'d file (%S)",
                         "Preparing to copy %'d files (%S)",
                         source_info->num_files),
                source_info->num_files, source_info->num_bytes);
         break;
     case OP_KIND_MOVE:
+        /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+        /// %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+        /// So this represents something like "Preparing to move 100 files (200 MB)"
+        /// The order in which %'d and %S appear must not change.
         s = f (ngettext("Preparing to move %'d file (%S)",
                         "Preparing to move %'d files (%S)",
                         source_info->num_files),
                source_info->num_files, source_info->num_bytes);
         break;
     case OP_KIND_DELETE:
+        /// TRANSLATORS: %'d is a placeholder for a number. It must be translated or removed.
+        /// %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+        /// So this represents something like "Preparing to delete 100 files (200 MB)"
+        /// The order in which %'d and %S appear must not change.
         s = f (ngettext("Preparing to delete %'d file (%S)",
                         "Preparing to delete %'d files (%S)",
                         source_info->num_files),
@@ -2428,9 +2454,13 @@ retry:
             details = NULL;
 
             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 secondary = f (_("Files in the folder \"%B\" cannot be handled because you do "
                                  "not have permissions to see them."), dir);
             } else {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 secondary = f (_("There was an error getting information about the files in the folder \"%B\"."), dir);
                 details = error->message;
             }
@@ -2467,9 +2497,13 @@ retry:
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             secondary = f (_("The folder \"%B\" cannot be handled because you do not have "
                              "permissions to read it."), dir);
         } else {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             secondary = f (_("There was an error reading the folder \"%B\"."), dir);
             details = error->message;
         }
@@ -2543,9 +2577,13 @@ retry:
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             secondary = f (_("The file \"%B\" cannot be handled because you do not have "
                              "permissions to read it."), file);
         } else {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             secondary = f (_("There was an error getting information about \"%B\"."), file);
             details = error->message;
         }
@@ -2645,7 +2683,8 @@ retry:
             g_error_free (error);
             return;
         }
-
+        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = f (_("Error while copying to \"%B\"."), dest);
         details = NULL;
 
@@ -2688,6 +2727,8 @@ retry:
     g_object_unref (info);
 
     if (file_type != G_FILE_TYPE_DIRECTORY) {
+        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = f (_("Error while copying to \"%B\"."), dest);
         secondary = f (_("The destination is not a folder."));
 
@@ -2721,9 +2762,13 @@ retry:
                                                       G_FILE_ATTRIBUTE_FILESYSTEM_FREE);
 
         if (free_size < required_size) {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             primary = f (_("Error while copying to \"%B\"."), dest);
             secondary = f(_("There is not enough space on the destination. Try to remove files to make space."));
 
+            /// TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
+            /// So this represents something like "There is 100 MB available, but 150 MB is required".
             details = f (_("There is %S available, but %S is required."), free_size, required_size);
 
             response = run_warning (job,
@@ -2751,6 +2796,8 @@ retry:
     if (!job_aborted (job) &&
         g_file_info_get_attribute_boolean (fsinfo,
                                            G_FILE_ATTRIBUTE_FILESYSTEM_READONLY)) {
+        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = f (_("Error while copying to \"%B\"."), dest);
         secondary = f (_("The destination is read-only."));
 
@@ -2811,15 +2858,21 @@ report_copy_progress (CopyMoveJob *copy_job,
 
         if (source_info->num_files == 1) {
             if (copy_job->destination != NULL) {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 s = f (is_move ? _("Moving \"%B\" to \"%B\"") :
                        _("Copying \"%B\" to \"%B\""),
                        (GFile *)copy_job->files->data,
                        copy_job->destination);
             } else {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 s = f (_("Duplicating \"%B\""), (GFile *)copy_job->files->data);
             }
         } else if (copy_job->files != NULL && copy_job->files->next == NULL) {
             if (copy_job->destination != NULL) {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 s = f (is_move ? ngettext ("Moving %'d file (in \"%B\") to \"%B\"",
                                            "Moving %'d files (in \"%B\") to \"%B\"",
                                            files_left) :
@@ -2830,6 +2883,8 @@ report_copy_progress (CopyMoveJob *copy_job,
                        (GFile *)copy_job->files->data,
                        copy_job->destination);
             } else {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 s = f (ngettext ("Duplicating %'d file (in \"%B\")",
                                  "Duplicating %'d files (in \"%B\")",
                                  files_left),
@@ -2838,6 +2893,8 @@ report_copy_progress (CopyMoveJob *copy_job,
             }
         } else {
             if (copy_job->destination != NULL) {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 s = f (is_move?
                        ngettext ("Moving %'d file to \"%B\"",
                                  "Moving %'d files to \"%B\"",
@@ -2873,7 +2930,7 @@ report_copy_progress (CopyMoveJob *copy_job,
     if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
         transfer_rate > 0) {
         char *s;
-        /// TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", so something like "4 kb of 4 MB"
+        /// TRANSLATORS: %S is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
         s = f (_("%S of %S"), transfer_info->num_bytes, total_size);
         pf_progress_info_take_details (job->progress, s);
     } else {
@@ -2882,8 +2939,10 @@ report_copy_progress (CopyMoveJob *copy_job,
 
 
         /// TRANSLATORS: %S will expand to a size like "2 bytes" or "3 MB", %T to a time duration like
-        /// "2 minutes". So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
+        /// "2 minutes". It must not be translated or removed.
+        /// So the whole thing will be something like "2 kb of 4 MB -- 2 hours left (4kb/sec)"
         /// The singular/plural form will be used depending on the remaining time (i.e. the %T argument).
+        /// The order in which %S and %T appear must not change.
         s = f (ngettext ("%S of %S \xE2\x80\x94 %T left (%S/sec)",
                  "%S of %S \xE2\x80\x94 %T left (%S/sec)",
                  seconds_count_format_time_units (remaining_time)),
@@ -3262,9 +3321,13 @@ retry:
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             secondary = f (_("The folder \"%B\" cannot be copied because you do not have "
                              "permissions to create it in the destination."), src);
         } else {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             secondary = f (_("There was an error creating the folder \"%B\"."), src);
             details = error->message;
         }
@@ -3395,9 +3458,13 @@ retry:
             details = NULL;
 
             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 secondary = f (_("Files in the folder \"%B\" cannot be copied because you do "
                                  "not have permissions to see them."), src);
             } else {
+                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                 secondary = f (_("There was an error getting information about the files in the folder \"%B\"."), src);
                 details = error->message;
             }
@@ -3440,9 +3507,13 @@ retry:
         details = NULL;
 
         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             secondary = f (_("The folder \"%B\" cannot be copied because you do not have "
                              "permissions to read it."), src);
         } else {
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             secondary = f (_("There was an error reading the folder \"%B\"."), src);
             details = error->message;
         }
@@ -3485,6 +3556,8 @@ retry:
             if (job->skip_all_error) {
                 goto skip;
             }
+            /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
             primary = f (_("Error while moving \"%B\"."), src);
             secondary = f (_("Could not remove the source folder."));
             details = error->message;
@@ -3570,8 +3643,10 @@ remove_target_recursively (CommonJob *job,
         if (job->skip_all_error) {
             goto skip1;
         }
-
+        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = f (_("Error while copying \"%B\"."), src);
+        /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
         secondary = f (_("Could not remove files from the already existing folder %F."), file);
         details = error->message;
 
@@ -3612,7 +3687,10 @@ skip1:
             IS_IO_ERROR (error, CANCELLED)) {
             goto skip2;
         }
+        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = f (_("Error while copying \"%B\"."), src);
+        /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
         secondary = f (_("Could not remove the already existing file %F."), file);
         details = error->message;
 
@@ -4149,10 +4227,15 @@ retry:
                     goto out;
                 }
                 if (copy_job->is_move) {
+                    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                     primary = f (_("Error while moving \"%B\"."), src);
                 } else {
+                    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
                     primary = f (_("Error while copying \"%B\"."), src);
                 }
+                /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
                 secondary = f (_("Could not remove the already existing file with the same name in %F."), dest_dir);
                 details = error->message;
 
@@ -4218,7 +4301,10 @@ retry:
             goto out;
         }
 
+        /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = f (_("Cannot copy \"%B\" here."), src);
+        /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
         secondary = f (_("There was an error copying the file into %B."), dest_dir);
         details = error->message;
 
@@ -4467,6 +4553,8 @@ report_move_progress (CopyMoveJob *move_job, int total, int left)
     gchar *s;
 
     job = (CommonJob *)move_job;
+    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
     s = f (_("Preparing to move to \"%B\""), move_job->destination);
 
     pf_progress_info_take_status (job->progress, s);
@@ -4717,7 +4805,10 @@ retry:
         if (job->skip_all_error) {
             goto out;
         }
+        /// TRANSLATORS: \"%F\" is a placeholder for the quoted full path of a file.  It may change position but must not be translated or removed
+        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
         primary = f (_("Error while moving \"%F\"."), src);
+        /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
         secondary = f (_("There was an error moving the file into %F."), dest_dir);
         details = error->message;
 
@@ -5004,6 +5095,8 @@ report_link_progress (CopyMoveJob *link_job, int total, int left)
     gchar *s;
 
     job = (CommonJob *)link_job;
+    /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
     s = f (_("Creating links in \"%B\""), link_job->destination);
 
     pf_progress_info_take_status (job->progress, s);
@@ -5148,6 +5241,7 @@ retry:
         if (common->skip_all_error) {
             goto out;
         }
+        /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
         primary = f (_("Error while creating link to %B."), src);
         if (not_local) {
             secondary = f (_("Symbolic links only supported for local files"));
@@ -5156,6 +5250,7 @@ retry:
             secondary = f (_("The target doesn't support symbolic links."));
             details = NULL;
         } else {
+            /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
             secondary = f (_("There was an error creating the symlink in %F."), dest_dir);
             details = error->message;
         }
@@ -5888,10 +5983,13 @@ retry:
         /* Other error */
         else {
             if (job->make_dir) {
+                /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
                 primary = f (_("Error while creating directory %B."), dest);
             } else {
+                /// TRANSLATORS: %B is a placeholder for the basename of a file.  It may change position but must not be translated or removed
                 primary = f (_("Error while creating file %B."), dest);
             }
+            /// TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
             secondary = f (_("There was an error creating the directory in %F."), job->dest_dir);
             details = error->message;
 
