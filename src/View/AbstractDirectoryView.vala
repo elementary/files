@@ -452,6 +452,8 @@ namespace FM {
             Idle.add_full (GLib.Priority.LOW, () => {
                 if (!tree_frozen) {
                     select_file_paths (file_list, focus);
+                    /* Update menu and selected file list now in case autoselected */
+                    update_selected_files_and_menu ();
                     return GLib.Source.REMOVE;
                 } else {
                     return GLib.Source.CONTINUE;
@@ -481,7 +483,7 @@ namespace FM {
             }
 
             connect_tree_signals ();
-            on_view_selection_changed (); /* Update selected files and menu actions */
+            on_view_selection_changed (); /* Mark selected_file list as invalid */
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
@@ -2513,7 +2515,7 @@ namespace FM {
                         if (file != null && !file.is_gone) {
                             file.query_thumbnail_update (); // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
+                            if (file.thumbstate == GOF.File.ThumbState.UNKNOWN) {
                                 visible_files.prepend (file);
                                 if (plugins != null) {
                                     plugins.update_file_info (file);
@@ -2900,7 +2902,7 @@ namespace FM {
                         break;
                     }
 
-                    res = move_cursor (keyval, only_shift_pressed);
+                    res = move_cursor (keyval, only_shift_pressed, control_pressed);
 
                     break;
 
@@ -3690,7 +3692,7 @@ namespace FM {
                                          bool scroll_to_top);
 
         /* By default use the native widget cursor handling by returning false */
-        protected virtual bool move_cursor (uint keyval, bool only_shift_pressed) {
+        protected virtual bool move_cursor (uint keyval, bool only_shift_pressed, bool control_pressed) {
             return false;
         }
 
