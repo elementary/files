@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-18 09:20-0800\n"
-"PO-Revision-Date: 2018-02-13 09:30+0000\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
-"files/extra/zh_TW/>\n"
+"PO-Revision-Date: 2019-05-22 16:03+0000\n"
+"Last-Translator: P.-H. Lin <cypressyew@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
+"files/extra/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -39,8 +39,9 @@ msgid "File Manager"
 msgstr "檔案管理員"
 
 #: data/io.elementary.files.desktop.in.in:8
+#, fuzzy
 msgid "system-file-manager"
-msgstr ""
+msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:19
 msgid "New Window"
@@ -67,8 +68,9 @@ msgstr ""
 "您的所有檔案。"
 
 #: data/io.elementary.files.appdata.xml.in.in:166
+#, fuzzy
 msgid "elementary LLC."
-msgstr ""
+msgstr "elementary LLC."
 
 #~ msgid "About Files"
 #~ msgstr "關於《檔案》"
