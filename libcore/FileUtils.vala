@@ -308,7 +308,7 @@ namespace PF.FileUtils {
                     /* If path is being manually edited there may not be "]" so explode_path[1] may be null*/
                     new_path = explode_path [1] ?? "";
                 } else {
-                    warning ("Invalid mtp path");
+                    warning ("Invalid mtp path %s", path);
                     protocol = new_path.dup ();
                     new_path = "/";
                 }
