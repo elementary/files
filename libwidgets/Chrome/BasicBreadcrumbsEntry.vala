@@ -101,8 +101,9 @@ namespace Marlin.View.Chrome {
         public void set_breadcrumbs_path (string path) {
             string protocol;
             string newpath;
+            string sanitized_path = PF.FileUtils.sanitize_path (path);
 
-            PF.FileUtils.split_protocol_from_path (path, out protocol, out newpath);
+            PF.FileUtils.split_protocol_from_path (sanitized_path, out protocol, out newpath);
             var newelements = new Gee.ArrayList<BreadcrumbElement> ();
             make_element_list_from_protocol_and_path (protocol, newpath, newelements);
             GLib.List<BreadcrumbElement> displayed_breadcrumbs = null;
