@@ -3759,9 +3759,13 @@ test_dir_is_parent (GFile *child, GFile *root)
 {
     GFile *f = child;
     GFile *prev = NULL;
+    GFileInfo *info;
+    GFile *target;
+    gboolean result = FALSE;
 
-    if (g_file_equal (child, root))
+    if (g_file_equal (child, root)) {
         return TRUE;
+    }
 
     while ((f = g_file_get_parent (f))) {
         if (prev) g_object_unref (prev);
@@ -3770,11 +3774,47 @@ test_dir_is_parent (GFile *child, GFile *root)
             g_object_unref (f);
             return TRUE;
         }
+
         prev = f;
     }
+
+    /* Check if child is a symlink to root or one of its descendants */
+    info = g_file_query_info (child,
+                              "standard::*",
+                              G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                              g_cancellable_get_current (),
+                              NULL);
+
+    if (g_file_info_get_is_symlink (info)) {
+        target = g_file_new_for_path (
+                    g_file_info_get_attribute_byte_string (info, G_FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET)
+                 );
+
+        if (g_file_equal (target, root)) {
+            result = TRUE;
+        } else {
+            f = target;
+            while ((f = g_file_get_parent (f))) {
+                if (prev) g_object_unref (prev);
+
+                if (g_file_equal (f, root)) {
+                    g_object_unref (f);
+                    result = TRUE;
+                    break;
+                }
+
+                prev = f;
+            }
+        }
+
+        g_object_unref (target);
+    }
+
     if (prev) g_object_unref (prev);
 
-    return FALSE;
+    g_object_unref (info);
+
+    return result;
 }
 
 static char *
