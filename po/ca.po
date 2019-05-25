@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-01-14 16:28+0000\n"
+"PO-Revision-Date: 2019-05-25 14:03+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
-"Language-Team: Catalan <https://weblate.elementary.io/projects/files/files/"
-"ca/>\n"
+"Language-Team: Catalan <https://l10n.elementary.io/projects/files/files/ca/>"
+"\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: src/Application.vala:120
@@ -2170,7 +2170,7 @@ msgstr "Navega a %s"
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
 #, c-format
 msgid "Go to %s"
-msgstr "Vés a %s"
+msgstr "Ves a %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
 msgid "Type Path"

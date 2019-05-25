@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-05-13 13:14+0000\n"
+"PO-Revision-Date: 2019-05-15 00:14+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
 "\n"
@@ -2107,22 +2107,22 @@ msgstr[1] "%d आयटम्सची पुनरावृत्ती बद�
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमचा परवानगी बदल पुन्हा करा"
+msgstr[1] "%d आयटम्सचा परवानगी बदल पुन्हा करा"
 
 #: libcore/marlin-undostack-manager.c:1606
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमचा  गट बदल पुन्हा करा"
+msgstr[1] "%d आयटम्सचा गट बदल पुन्हा करा"
 
 #: libcore/marlin-undostack-manager.c:1611
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमचा मालक बदल पुन्हा करा"
+msgstr[1] "%d आयटम्सचा मालक बदल पुन्हा करा"
 
 #: libcore/gof-file.c:332 libcore/gof-file.c:506
 msgid "Inaccessible"
@@ -2135,17 +2135,17 @@ msgstr "%s ची लिंक"
 
 #: libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "एक पाथ टाइप करा"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
 #, c-format
 msgid "Navigate to %s"
-msgstr ""
+msgstr "%s वर नेव्हिगेट करा"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "%sला जा"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
 msgid "Type Path"
@@ -2153,31 +2153,31 @@ msgstr "प्रकार"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
-msgstr ""
+msgstr "या फोल्डरमध्ये"
 
 #: libwidgets/View/SearchResults.vala:227
 msgid "Below This Folder"
-msgstr ""
+msgstr "या फोल्डर खाली"
 
 #: libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
-msgstr ""
+msgstr "बुकमार्क"
 
 #: libwidgets/View/SearchResults.vala:237
 msgid "Recently used"
-msgstr ""
+msgstr "अलीकडे वापरलेले"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr ""
+msgstr "ग्रिड म्हणून पहा"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "यादी म्हणून पहा"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr ""
+msgstr "स्तंभात पहा"
 
 #: libwidgets/Resources.vala:22
 msgid "Files"
@@ -2185,51 +2185,51 @@ msgstr "फायली"
 
 #: libwidgets/Resources.vala:58
 msgid "AFP"
-msgstr ""
+msgstr "एएफपी"
 
 #: libwidgets/Resources.vala:59
 msgid "DAV"
-msgstr ""
+msgstr "डीएव्ही"
 
 #: libwidgets/Resources.vala:60
 msgid "DAVS"
-msgstr ""
+msgstr "डीएव्हीएस"
 
 #: libwidgets/Resources.vala:61
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: libwidgets/Resources.vala:63
 msgid "SFTP"
-msgstr ""
+msgstr "एसएफटीपी"
 
 #: libwidgets/Resources.vala:64
 msgid "SMB"
-msgstr ""
+msgstr "एसएमबी"
 
 #: libwidgets/Resources.vala:66
 msgid "Recent"
-msgstr ""
+msgstr "अलीकडील"
 
 #: libwidgets/Resources.vala:67
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
-msgstr ""
+msgstr "सर्व पुनर्संचयित करा"
 
 #: plugins/pantheon-files-trash/plugin.vala:20
 msgid "Empty the Trash"
-msgstr ""
+msgstr "कचरा रिक्त करा"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
 msgid "Restore Selected"
-msgstr ""
+msgstr "निवडलेले पुनर्संचयित करा"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
-msgstr ""
+msgstr "निवडलेले हटवा"
 
 #~ msgid "Failed to parse the desktop file: %s"
 #~ msgstr "डेस्कटॉप फाईल :%s पार्स होऊ शकली नाही"
