@@ -1121,7 +1121,7 @@ namespace FM {
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 if (col_name != null) {
-                    sort_column_id = get_column_id_from_string (col_name);
+                    sort_column_id = FM.ListModel.ColumnID.from_string (col_name);
                 }
 
                 if (reverse) {
@@ -1849,7 +1849,7 @@ namespace FM {
             Gtk.SortType sort_order;
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-                GLib.Variant val = new GLib.Variant.string (get_string_from_column_id (sort_column_id));
+                GLib.Variant val = new GLib.Variant.string (((FM.ListModel.ColumnID)sort_column_id).to_string ());
                 action_set_state (background_actions, "sort-by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
                 action_set_state (background_actions, "reverse", val);

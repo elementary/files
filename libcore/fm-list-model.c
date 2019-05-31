@@ -1289,7 +1289,7 @@ fm_list_model_set_property (GObject      *object,
 }
 
 const gchar *
-fm_list_model_get_string_from_column_id (gint id)
+fm_list_model_column_id_to_string (FMListModelColumnID id)
 {
     switch (id) {
     case FM_LIST_MODEL_FILENAME:
@@ -1307,29 +1307,18 @@ fm_list_model_get_string_from_column_id (gint id)
     g_return_val_if_reached ("name");
 }
 
-typedef struct {
-    const gchar *name;
-    gint        value;
-} ColumnsEnum;
-
-static const ColumnsEnum columnsview[] = {
-    { "name", FM_LIST_MODEL_FILENAME },
-    { "size", FM_LIST_MODEL_SIZE },
-    { "type", FM_LIST_MODEL_TYPE },
-    { "modified", FM_LIST_MODEL_MODIFIED},
-};
-
-gint
-fm_list_model_get_column_id_from_string (const gchar *colstr)
+FMListModelColumnID
+fm_list_model_column_id_from_string (const gchar *colstr)
 {
-    static GHashTable *hash;
-    int i;
-
-    if (hash == NULL) {
-        hash = g_hash_table_new (g_str_hash, g_str_equal);
-        for (i = 0; i < 4; i++)
-            g_hash_table_insert (hash, (gpointer) columnsview[i].name, GINT_TO_POINTER (columnsview[i].value));
+    if (g_strcmp0 (colstr, "name") == 0) {
+        return FM_LIST_MODEL_FILENAME;
+    } else if (g_strcmp0 (colstr, "size") == 0) {
+        return FM_LIST_MODEL_SIZE;
+    } else if (g_strcmp0 (colstr, "type") == 0) {
+        return FM_LIST_MODEL_TYPE;
+    } else if (g_strcmp0 (colstr, "modified") == 0) {
+        return FM_LIST_MODEL_MODIFIED;
     }
 
-    return GPOINTER_TO_INT (g_hash_table_lookup (hash, colstr));
+    g_return_val_if_reached (FM_LIST_MODEL_FILENAME);
 }
