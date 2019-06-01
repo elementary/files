@@ -2161,7 +2161,11 @@ namespace FM {
         private GLib.MenuModel? build_menu_templates () {
             /* Potential optimisation - do just once when app starts or view created */
             templates = null;
-            var template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            if (template_path == null) {
+                return null;
+            }
+
             var template_folder = GLib.File.new_for_path (template_path);
             load_templates_from_folder (template_folder);
 
