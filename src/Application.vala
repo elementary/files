@@ -110,7 +110,11 @@ public class Marlin.Application : Gtk.Application {
     private int _command_line (ApplicationCommandLine cmd) {
         /* Setup the argument parser */
         bool version = false;
-        bool open_in_tab = false;
+        /* The -t option is redundant but is retained for backward compatability
+         * Locations are always opened in tabs unless -n option specified,
+         * in the active window, if present, or after opening a window if not.
+         */
+        bool open_in_tab = true;
         bool create_new_window = false;
         bool kill_shell = false;
         bool debug = false;
@@ -184,16 +188,24 @@ public class Marlin.Application : Gtk.Application {
         }
 
         /* Open application */
-        if (open_in_tab || files == null) {
-             create_windows (files);
-        } else {
-            /* Open windows with tab at each requested location. */
-            foreach (var file in files) {
-                create_window (file);
+        if (files != null) {
+            if (create_new_window || window_count == 0) {
+                /* Open window with tabs at each requested location. */
+                create_windows (files);
+            } else {
+                var win = (Marlin.View.Window)(get_active_window ());
+                win.open_tabs (files, Marlin.ViewMode.PREFERRED);
             }
+        } else if (window_count == 0) {
+            create_windows ();
         }
 
-        return get_windows ().length () > 0 ? Posix.EXIT_SUCCESS : Posix.EXIT_FAILURE;
+        if (window_count > 0) {
+            get_active_window ().present ();
+            return Posix.EXIT_SUCCESS;
+        } else {
+            return Posix.EXIT_FAILURE;
+        }
     }
 
     public override void quit_mainloop () {
