@@ -196,7 +196,7 @@ public class Marlin.Application : Gtk.Application {
                 var win = (Marlin.View.Window)(get_active_window ());
                 win.open_tabs (files, Marlin.ViewMode.PREFERRED);
             }
-        } else if (window_count == 0) {
+        } else if (create_new_window || window_count == 0) {
             create_window_with_tabs ();
         }
 
