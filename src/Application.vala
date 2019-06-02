@@ -191,13 +191,13 @@ public class Marlin.Application : Gtk.Application {
         if (files != null) {
             if (create_new_window || window_count == 0) {
                 /* Open window with tabs at each requested location. */
-                create_windows (files);
+                create_window_with_tabs (files);
             } else {
                 var win = (Marlin.View.Window)(get_active_window ());
                 win.open_tabs (files, Marlin.ViewMode.PREFERRED);
             }
         } else if (window_count == 0) {
-            create_windows ();
+            create_window_with_tabs ();
         }
 
         if (window_count > 0) {
@@ -275,11 +275,11 @@ public class Marlin.Application : Gtk.Application {
                                               Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
                                               int x = -1, int y = -1) {
 
-        return create_windows ({location}, viewmode, x, y);
+        return create_window_with_tabs ({location}, viewmode, x, y);
     }
 
     /* All window creation should be done via this function */
-    public Marlin.View.Window? create_windows (File[] locations = {},
+    private Marlin.View.Window? create_window_with_tabs (File[] locations = {},
                                                Marlin.ViewMode viewmode = Marlin.ViewMode.PREFERRED,
                                                int x = -1, int y = -1) {
         if (this.get_windows ().length () >= MAX_WINDOWS) {
