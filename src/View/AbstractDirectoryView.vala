@@ -1181,7 +1181,7 @@ namespace FM {
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
                 if (col_name != null) {
-                    sort_column_id = get_column_id_from_string (col_name);
+                    sort_column_id = FM.ListModel.ColumnID.from_string (col_name);
                 }
 
                 if (reverse) {
@@ -2161,7 +2161,11 @@ namespace FM {
         private GLib.MenuModel? build_menu_templates () {
             /* Potential optimisation - do just once when app starts or view created */
             templates = null;
-            var template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            if (template_path == null) {
+                return null;
+            }
+
             var template_folder = GLib.File.new_for_path (template_path);
             load_templates_from_folder (template_folder);
 
@@ -2273,7 +2277,7 @@ namespace FM {
             Gtk.SortType sort_order;
 
             if (model.get_sort_column_id (out sort_column_id, out sort_order)) {
-                GLib.Variant val = new GLib.Variant.string (get_string_from_column_id (sort_column_id));
+                GLib.Variant val = new GLib.Variant.string (((FM.ListModel.ColumnID)sort_column_id).to_string ());
                 action_set_state (background_actions, "sort-by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
                 action_set_state (background_actions, "reverse", val);
@@ -2515,7 +2519,7 @@ namespace FM {
                         if (file != null && !file.is_gone) {
                             file.query_thumbnail_update (); // Ensure thumbstate up to date
                             /* Ask thumbnailer only if ThumbState UNKNOWN */
-                            if ((GOF.File.ThumbState.UNKNOWN in (GOF.File.ThumbState)(file.flags))) {
+                            if (file.thumbstate == GOF.File.ThumbState.UNKNOWN) {
                                 visible_files.prepend (file);
                                 if (plugins != null) {
                                     plugins.update_file_info (file);
@@ -2902,6 +2906,7 @@ namespace FM {
                         break;
                     }
 
+                    res = move_cursor (keyval, only_shift_pressed, control_pressed);
                     break;
 
                 case Gdk.Key.Home:

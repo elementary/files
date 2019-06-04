@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-04-20 18:31+0000\n"
+"PO-Revision-Date: 2019-05-15 00:14+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
 "\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5.1\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: src/Application.vala:120
@@ -1685,8 +1685,8 @@ msgstr "\"%B\" मधील दुवे तयार करणे"
 #, c-format
 msgid "Making link to %'d file"
 msgid_plural "Making links to %'d files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d फाइलचा दुवा बनवित आहे"
+msgstr[1] "%'d फायलींचा दुवा बनवित आहे"
 
 #: libcore/marlin-file-operations.c:5151
 msgid "Error while creating link to %B."
@@ -1919,55 +1919,55 @@ msgstr "'%s' च्या परवानग्या सेट करा"
 #: libcore/marlin-undostack-manager.c:1407
 #, c-format
 msgid "Set group of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' च्या गटास '%s' सेट करा"
 
 #: libcore/marlin-undostack-manager.c:1417
 #, c-format
 msgid "Set owner of '%s' to '%s'"
-msgstr ""
+msgstr "'%s' चे मालक '%s' सेट करा"
 
 #: libcore/marlin-undostack-manager.c:1449
 #, c-format
 msgid "_Undo copy of %d item"
 msgid_plural "_Undo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(U) %d आयटमची कॉपी करणे पूर्ववत करा"
+msgstr[1] "_(U) %d आयटम्सची कॉपी करणे पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1454
 #, c-format
 msgid "_Undo duplicate of %d item"
 msgid_plural "_Undo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(U) %d आयटमची डुप्लिकेट करणे पूर्ववत करा"
+msgstr[1] "_(U) %d आयटम्सची डुप्लिकेट करणे पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1459
 #, c-format
 msgid "_Undo move of %d item"
 msgid_plural "_Undo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(U) %d आयटम हलवणे पूर्ववत करा"
+msgstr[1] "_(U) %d आयटम्स हलवणे पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1464
 #, c-format
 msgid "_Undo rename of %d item"
 msgid_plural "_Undo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(U) %d आयटम पुनर्नामित करणे पूर्ववत करा"
+msgstr[1] "_(U) %d आयटम्स पुनर्नामित करणे पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1468
 msgid "_Undo creation of an empty file"
-msgstr ""
+msgstr "_(U) रिक्त फाइल तयार करणे पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1471
 msgid "_Undo creation of a file from template"
-msgstr ""
+msgstr "_(U) टेम्पलेटमधून फाइल तयार करणे पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1475
 #, c-format
 msgid "_Undo creation of %d folder"
 msgid_plural "_Undo creation of %d folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(U) %d फोल्डर तयार करणे पूर्ववत करा"
+msgstr[1] "_(U) %d फोल्डर्स तयार करणे पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1480
 #, c-format
@@ -1980,8 +1980,8 @@ msgstr[1] "कचऱ्यामध्ये हलविलेले %d  आय
 #, c-format
 msgid "_Undo restore from trash of %d item"
 msgid_plural "_Undo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(U)%d आयटम कचर्यामधून पुनर्संचयित करणे पूर्ववत करा"
+msgstr[1] "_(U) %d आयटम्स कचर्यामधून पुनर्संचयित करणे पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1490
 #, c-format
@@ -1994,72 +1994,72 @@ msgstr[1] "%d आयटमवर तयार केलेले दुवे �
 #, c-format
 msgid "_Undo delete of %d item"
 msgid_plural "_Undo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(U) %d आयटम हटवणे पूर्ववत करा"
+msgstr[1] "_(U) %d आयटम्स हटवणे पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1500
 #, c-format
 msgid "Undo recursive change permissions of %d item"
 msgid_plural "Undo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमच्या रिकर्सिव्ह बदल परवानग्या पूर्ववत करा"
+msgstr[1] "%d आयटम्सच्या रिकर्सिव्ह बदल परवानग्या पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1506
 #, c-format
 msgid "Undo change permissions of %d item"
 msgid_plural "Undo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमच्या बदलेल्या परवानग्या पूर्ववत करा"
+msgstr[1] "%d आयटम्सच्या बदलेल्या परवानग्या पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1511
 #, c-format
 msgid "Undo change group of %d item"
 msgid_plural "Undo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमचा समूह बदलणे पूर्ववत करा"
+msgstr[1] "%d आयटम्सचा समूह बदलणे पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1516
 #, c-format
 msgid "Undo change owner of %d item"
 msgid_plural "Undo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमचा मालक बदल पूर्ववत करा"
+msgstr[1] "%d आयटम्सचा मालक बदल पूर्ववत करा"
 
 #: libcore/marlin-undostack-manager.c:1544
 #, c-format
 msgid "_Redo copy of %d item"
 msgid_plural "_Redo copy of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(R) %d आयटमची कॉपी पुन्हा करा"
+msgstr[1] "_(R)%d आयटम्सची कॉपी पुन्हा करा"
 
 #: libcore/marlin-undostack-manager.c:1549
 #, c-format
 msgid "_Redo duplicate of %d item"
 msgid_plural "_Redo duplicate of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(R) %d आयटमची डुप्लिकेट पुन्हा करा"
+msgstr[1] "_(R) %d आयटम्सची डुप्लिकेट पुन्हा करा"
 
 #: libcore/marlin-undostack-manager.c:1554
 #, c-format
 msgid "_Redo move of %d item"
 msgid_plural "_Redo move of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(R) %d आयटम पुन्हा हलवा"
+msgstr[1] "_(R) %d आयटम्स पुन्हा हलवा"
 
 #: libcore/marlin-undostack-manager.c:1559
 #, c-format
 msgid "_Redo rename of %d item"
 msgid_plural "_Redo rename of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "_(R) %d आयटम पुन्हा पुनर्नामित करा"
+msgstr[1] "_(R) %d आयटम्स पुन्हा पुनर्नामित करा"
 
 #: libcore/marlin-undostack-manager.c:1563
 msgid "_Redo creation of an empty file"
-msgstr ""
+msgstr "_(R)रिक्त फाइल तयार करणे पुन्हा करा"
 
 #: libcore/marlin-undostack-manager.c:1566
 msgid "_Redo creation of a file from template"
-msgstr ""
+msgstr "_(R)टेम्पलेटमधून फाइल तयार करणे पुन्हा करा"
 
 #: libcore/marlin-undostack-manager.c:1570
 #, c-format
@@ -2079,50 +2079,50 @@ msgstr[1] "%d आयटम  पुन्हा कचऱ्यात हलव�
 #, c-format
 msgid "_Redo restore from trash of %d item"
 msgid_plural "_Redo restore from trash of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(_R)%d  आयटम कचर्यामधून पुन्हा पुनर्संचयित करा"
+msgstr[1] "(_R)%d आयटम्स कचर्यामधून पुन्हा पुनर्संचयित करा"
 
 #: libcore/marlin-undostack-manager.c:1585
 #, c-format
 msgid "_Redo create link to %d item"
 msgid_plural "_Redo create link to %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(_R) %d आयटमचा दुवा पुन्हा तयार करा"
+msgstr[1] "(_R) %d आयटम्सचा दुवा पुन्हा तयार करा"
 
 #: libcore/marlin-undostack-manager.c:1590
 #, c-format
 msgid "_Redo delete of %d item"
 msgid_plural "_Redo delete of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "(_R) %d आयटम हटवणे  पुन्हा करा"
+msgstr[1] "(_R) %d आयटम्स हटवणे  पुन्हा करा"
 
 #: libcore/marlin-undostack-manager.c:1595
 #, c-format
 msgid "Redo recursive change permissions of %d item"
 msgid_plural "Redo recursive change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमची पुनरावृत्ती बदलण्याची परवानगी पुन्हा द्या"
+msgstr[1] "%d आयटम्सची पुनरावृत्ती बदलण्याची परवानगी पुन्हा द्या"
 
 #: libcore/marlin-undostack-manager.c:1601
 #, c-format
 msgid "Redo change permissions of %d item"
 msgid_plural "Redo change permissions of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमचा परवानगी बदल पुन्हा करा"
+msgstr[1] "%d आयटम्सचा परवानगी बदल पुन्हा करा"
 
 #: libcore/marlin-undostack-manager.c:1606
 #, c-format
 msgid "Redo change group of %d item"
 msgid_plural "Redo change group of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमचा  गट बदल पुन्हा करा"
+msgstr[1] "%d आयटम्सचा गट बदल पुन्हा करा"
 
 #: libcore/marlin-undostack-manager.c:1611
 #, c-format
 msgid "Redo change owner of %d item"
 msgid_plural "Redo change owner of %d items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%d आयटमचा मालक बदल पुन्हा करा"
+msgstr[1] "%d आयटम्सचा मालक बदल पुन्हा करा"
 
 #: libcore/gof-file.c:332 libcore/gof-file.c:506
 msgid "Inaccessible"
@@ -2135,17 +2135,17 @@ msgstr "%s ची लिंक"
 
 #: libwidgets/Chrome/BasicLocationBar.vala:89
 msgid "Type a path"
-msgstr ""
+msgstr "एक पाथ टाइप करा"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:171
 #, c-format
 msgid "Navigate to %s"
-msgstr ""
+msgstr "%s वर नेव्हिगेट करा"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:285
 #, c-format
 msgid "Go to %s"
-msgstr ""
+msgstr "%sला जा"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
 msgid "Type Path"
@@ -2153,31 +2153,31 @@ msgstr "प्रकार"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
-msgstr ""
+msgstr "या फोल्डरमध्ये"
 
 #: libwidgets/View/SearchResults.vala:227
 msgid "Below This Folder"
-msgstr ""
+msgstr "या फोल्डर खाली"
 
 #: libwidgets/View/SearchResults.vala:232
 msgid "Bookmarks"
-msgstr ""
+msgstr "बुकमार्क"
 
 #: libwidgets/View/SearchResults.vala:237
 msgid "Recently used"
-msgstr ""
+msgstr "अलीकडे वापरलेले"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:80
 msgid "View as Grid"
-msgstr ""
+msgstr "ग्रिड म्हणून पहा"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:85
 msgid "View as List"
-msgstr ""
+msgstr "यादी म्हणून पहा"
 
 #: libwidgets/Chrome/ViewSwitcher.vala:90
 msgid "View in Columns"
-msgstr ""
+msgstr "स्तंभात पहा"
 
 #: libwidgets/Resources.vala:22
 msgid "Files"
@@ -2185,51 +2185,51 @@ msgstr "फायली"
 
 #: libwidgets/Resources.vala:58
 msgid "AFP"
-msgstr ""
+msgstr "एएफपी"
 
 #: libwidgets/Resources.vala:59
 msgid "DAV"
-msgstr ""
+msgstr "डीएव्ही"
 
 #: libwidgets/Resources.vala:60
 msgid "DAVS"
-msgstr ""
+msgstr "डीएव्हीएस"
 
 #: libwidgets/Resources.vala:61
 msgid "FTP"
-msgstr ""
+msgstr "FTP"
 
 #: libwidgets/Resources.vala:63
 msgid "SFTP"
-msgstr ""
+msgstr "एसएफटीपी"
 
 #: libwidgets/Resources.vala:64
 msgid "SMB"
-msgstr ""
+msgstr "एसएमबी"
 
 #: libwidgets/Resources.vala:66
 msgid "Recent"
-msgstr ""
+msgstr "अलीकडील"
 
 #: libwidgets/Resources.vala:67
 msgid "MTP"
-msgstr ""
+msgstr "MTP"
 
 #: plugins/pantheon-files-trash/plugin.vala:19
 msgid "Restore All"
-msgstr ""
+msgstr "सर्व पुनर्संचयित करा"
 
 #: plugins/pantheon-files-trash/plugin.vala:20
 msgid "Empty the Trash"
-msgstr ""
+msgstr "कचरा रिक्त करा"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
 msgid "Restore Selected"
-msgstr ""
+msgstr "निवडलेले पुनर्संचयित करा"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
-msgstr ""
+msgstr "निवडलेले हटवा"
 
 #~ msgid "Failed to parse the desktop file: %s"
 #~ msgstr "डेस्कटॉप फाईल :%s पार्स होऊ शकली नाही"
