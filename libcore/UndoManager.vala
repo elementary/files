@@ -172,7 +172,13 @@ public class Marlin.UndoManagerData {
     }
 
     private string get_uri_parent_path (string uri) {
-        return GLib.File.new_for_uri (uri).get_parent ().get_path ();
+        var file = GLib.File.new_for_uri (uri);
+        GLib.File? parent = file.get_parent ();
+        if (parent != null) {
+            return parent.get_path ();
+        }
+
+        return file.get_path ();
     }
 
     public unowned string get_undo_description () {
