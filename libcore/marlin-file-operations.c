@@ -40,7 +40,6 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "marlin-undostack-manager.h"
 #include "pantheon-files-core.h"
 
 typedef void (* MarlinCopyCallback)      (gpointer    callback_data);
@@ -63,7 +62,7 @@ typedef struct {
     gboolean replace_all;
     gboolean keep_all_newest;
     gboolean delete_all;
-    MarlinUndoActionData *undo_redo_data;
+    MarlinUndoManagerData *undo_redo_data;
 } CommonJob;
 
 typedef struct {
@@ -1901,7 +1900,7 @@ marlin_file_operations_delete (GList                    *files,
     }
 
     if (try_trash && !marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_ACTION_TYPE_MOVETOTRASH, g_list_length(files));
         GFile* src_dir = g_file_get_parent (files->data);
         marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
     }
@@ -4470,7 +4469,7 @@ marlin_file_operations_copy (GList *files,
 
     // Start UNDO-REDO
     if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_COPY, g_list_length(files));
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_ACTION_TYPE_COPY, g_list_length(files));
         GFile* src_dir = g_file_get_parent (files->data);
         marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
         g_object_ref (target_dir);
@@ -5017,9 +5016,9 @@ marlin_file_operations_move (GList *files,
     // Start UNDO-REDO
     if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
         if (g_file_has_uri_scheme (g_list_first(files)->data, "trash")) {
-            job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_RESTOREFROMTRASH, g_list_length(files));
+            job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_ACTION_TYPE_RESTOREFROMTRASH, g_list_length(files));
         } else {
-            job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_MOVE, g_list_length(files));
+            job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_ACTION_TYPE_MOVE, g_list_length(files));
         }
         GFile* src_dir = g_file_get_parent (files->data);
         marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
@@ -5348,7 +5347,7 @@ marlin_file_operations_link (GList *files,
 
     // Start UNDO-REDO
     if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATELINK, g_list_length(files));
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_ACTION_TYPE_CREATELINK, g_list_length(files));
         GFile* src_dir = g_file_get_parent (files->data);
         marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
         g_object_ref (target_dir);
@@ -5389,7 +5388,7 @@ marlin_file_operations_duplicate (GList *files,
 
     // Start UNDO-REDO
     if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_DUPLICATE, g_list_length(files));
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_ACTION_TYPE_DUPLICATE, g_list_length(files));
         GFile* src_dir = g_file_get_parent (files->data);
         marlin_undo_manager_data_set_src_dir (job->common.undo_redo_data, src_dir);
         g_object_ref (src_dir);
@@ -5553,7 +5552,7 @@ marlin_file_set_permissions_recursive (const char *directory,
 
     // Start UNDO-REDO
     if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_RECURSIVESETPERMISSIONS, 1);
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_ACTION_TYPE_RECURSIVESETPERMISSIONS, 1);
         g_object_ref (job->file);
         marlin_undo_manager_data_set_dest_dir (job->common.undo_redo_data, job->file);
         marlin_undo_manager_data_set_recursive_permissions(job->common.undo_redo_data, file_permissions, file_mask, dir_permissions, dir_mask);
@@ -6005,7 +6004,7 @@ marlin_file_operations_new_folder (GtkWidget           *parent_view,
 
     // Start UNDO-REDO
     if (!marlin_undo_manager_is_undo_redo (marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEFOLDER, 1);
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_ACTION_TYPE_CREATEFOLDER, 1);
     }
     // End UNDO-REDO
 
@@ -6060,7 +6059,7 @@ marlin_file_operations_new_file_from_template (GtkWidget           *parent_view,
 
     // Start UNDO-REDO
     if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEFILEFROMTEMPLATE, 1);
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_ACTION_TYPE_CREATEFILEFROMTEMPLATE, 1);
     }
     // End UNDO-REDO
 
@@ -6110,7 +6109,7 @@ marlin_file_operations_new_file (GtkWidget           *parent_view,
 
     // Start UNDO-REDO
     if (!marlin_undo_manager_is_undo_redo(marlin_undo_manager_instance())) {
-        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_CREATEEMPTYFILE, 1);
+        job->common.undo_redo_data = marlin_undo_manager_data_new (MARLIN_UNDO_ACTION_TYPE_CREATEEMPTYFILE, 1);
     }
     // End UNDO-REDO
 

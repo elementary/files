@@ -76,9 +76,9 @@ libcore/StockDialogs.vala
 libcore/Thumbnailer.vala
 libcore/TrashMonitor.vala
 libcore/UserUtils.vala
+libcore/UndoManager.vala
 
 libcore/marlin-file-operations.c
-libcore/marlin-undostack-manager.c
 libcore/fm-list-model.c
 
 libwidgets/Interfaces/LocatableInterface.vala
