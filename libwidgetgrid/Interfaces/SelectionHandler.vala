@@ -151,8 +151,9 @@ public interface SelectionHandler : Object, PositionHandler {
     public virtual int[] get_selected_indices () {
         var indices = new Gee.LinkedList<int> ();
         for (int i = 0; i < model.get_n_items (); i++) {
-            var data = model.lookup_index (i);
-            if (data.is_selected) {
+            DataInterface data;
+
+            if (model.lookup_index (i, out data) && data.is_selected) {
                 indices.add (i);
             }
         }
@@ -161,18 +162,23 @@ public interface SelectionHandler : Object, PositionHandler {
     }
 
     public virtual bool select_data_index (int index) {
-        var data = model.lookup_index (index);
-        last_selected_index = index;
-        return select_data (data, true);
+        DataInterface data;
+        if (model.lookup_index (index, out data)) {
+            last_selected_index = index;
+            return select_data (data, true);
+        } else {
+            return false;
+        }
     }
 
     public virtual bool unselect_data_index (int index) {
-        var data = model.lookup_index (index);
-        if (last_selected_index == index){
+        DataInterface data;
+        if (model.lookup_index (index, out data) && last_selected_index == index){
             last_selected_index = -1;
+            return select_data (data, false);
         }
 
-        return select_data (data, false);
+        return false;
     }
 
     protected virtual bool select_item_index (Item item) {

@@ -1024,26 +1024,6 @@ public class GOF.File : WidgetGrid.WidgetData {
         target_gof.query_update ();
     }
 
-    private void clear_info () {
-        target_location = null;
-        mount = null;
-        utf8_collation_key = null;
-        formated_type = null;
-        format_size = null;
-        formated_modified = null;
-        icon = null;
-        custom_display_name = null;
-        custom_icon_name = null;
-
-        uid = -1;
-        gid = -1;
-        has_permissions = false;
-        permissions = 0;
-        owner = null;
-        group = null;
-        _can_unmount = false;
-    }
-
     private GLib.FileInfo? query_info () {
         GLib.return_val_if_fail (!is_null && location is GLib.File, null);
         is_mounted = true;

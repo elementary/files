@@ -536,13 +536,19 @@ public class View : Gtk.Overlay, ViewInterface {
         return get_index_at_pos ({x, y});
     }
 
-    public DataInterface get_data_at_pos (Gdk.Point p) {
-        return layout_handler.get_data_at_pos (get_corrected_p (p));
+    public bool get_data_at_pos (Gdk.Point p, out DataInterface data) {
+        data = null;
+        return layout_handler.get_data_at_pos (get_corrected_p (p), out data);
     }
 
-    public DataInterface get_data_coords (int x, int y) {
+    public DataInterface? get_data_coords (int x, int y) {
         Gdk.Point p = {x, y};
-        return get_data_at_pos (get_corrected_p (p));
+        DataInterface data;
+        if (get_data_at_pos (get_corrected_p (p), out data)) {
+            return data;
+        } else {
+            return null;
+        }
     }
 
     public int get_n_columns () {

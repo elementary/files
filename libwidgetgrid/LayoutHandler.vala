@@ -278,7 +278,6 @@ public class LayoutHandler : Object, PositionHandler, SelectionHandler, CursorHa
             row_data[r].update (int.MAX, int.MAX, int.MAX, int.MAX);
         }
 
-        var items_displayed = last_displayed_data_index - first_displayed_data_index + 1;
         layout.queue_draw ();
     }
 

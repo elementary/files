@@ -355,25 +355,28 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface, Widge
         return remove_file (data);
     }
 
-    public GOF.File lookup_index (int index) {
+    public bool lookup_index (int index, out GOF.File file) {
+        file = GOF.File.get_null ();
+
         if (index < 0 || n_first_level_rows == 0) {
-            return GOF.File.get_null ();
+            return false;
         }
 
         var path = new Gtk.TreePath.from_indices (index);
         Gtk.TreeIter? iter;
-        GOF.File? file = null;
+        GOF.File? file_out = null;
 
         get_iter (out iter, path);
         if (iter != null) {
-            @get (iter, FM.ColumnID.FILE_COLUMN, out file);
+            @get (iter, FM.ColumnID.FILE_COLUMN, out file_out);
         }
 
-        if (file == null) {
-            file = GOF.File.get_null ();
+        if (file_out == null) {
+            return false;
+        } else {
+            file = file_out;
+            return true;
         }
-
-        return file;
     }
 
     public int lookup_data (GOF.File data) {

@@ -30,10 +30,12 @@ public class SimpleModel : Object, Model<DataInterface> {
     }
 
     protected bool real_add (DataInterface data) {
+        assert (data != null);
         return list.add (data);
     }
 
     protected bool real_remove_data (DataInterface data) {
+        assert (data != null);
         return list.remove (data);
     }
 
@@ -41,15 +43,19 @@ public class SimpleModel : Object, Model<DataInterface> {
         return list.remove_at (index) != null;
     }
 
-    public DataInterface lookup_index (int index) {
-        if (index < 0 || index >= list.size) {
-            return null;
-        }
+    public bool lookup_index (int index, out DataInterface data) {
+        data = null;
 
-        return list[index];
+        if (index < 0 || index >= list.size) {
+            return false;
+        } else {
+            data = list[index];
+            return true;
+        }
     }
 
     public int lookup_data (DataInterface data) {
+        assert (data != null);
         return list.index_of (data);
     }
 

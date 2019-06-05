@@ -20,8 +20,9 @@
 ***/
 namespace WidgetGrid {
 [GenericAccessors]
-public interface Model<G> : Object {
-    public bool add (G data) {/* Returns position inserted at (or -1 if not implemented) */
+public interface Model<DataInterface> : Object {
+    public bool add (DataInterface data) {/* Returns position inserted at (or -1 if not implemented) */
+        assert (data != null);
         if (real_add (data)) {
             n_items_changed (1);
             return true;
@@ -30,9 +31,9 @@ public interface Model<G> : Object {
         }
     }
 
-    protected abstract bool real_add (G data);
+    protected abstract bool real_add (DataInterface data);
 
-    public int add_array (G[] data_array) { /* Returns positions inserted at */
+    public int add_array (DataInterface[] data_array) { /* Returns positions inserted at */
         int added = 0;
         var n_items = data_array.length;
         for (int index = 0; index < n_items; index++) {
@@ -45,8 +46,9 @@ public interface Model<G> : Object {
     }
 
     public bool remove_index (int index) {
-        var data = lookup_index (index);
-        if (real_remove_index (index)) {
+        DataInterface data;
+        lookup_index (index, out data);
+        if (data != null && real_remove_index (index)) {
             data_removed (data);
             return true;
         } else {
@@ -56,7 +58,8 @@ public interface Model<G> : Object {
 
     protected abstract bool real_remove_index (int index);
 
-    public bool remove_data (G data) {
+    public bool remove_data (DataInterface data) {
+        assert (data != null);
         if (real_remove_data (data)) {
             data_removed (data);
             return true;
@@ -65,10 +68,11 @@ public interface Model<G> : Object {
         }
     }
 
-    protected abstract bool real_remove_data (G data);
+    protected abstract bool real_remove_data (DataInterface data);
 
-    public abstract G lookup_index (int index);
-    public abstract int lookup_data (G data);
+    public abstract bool lookup_index (int index, out DataInterface data);
+
+    public abstract int lookup_data (DataInterface data);
 
     public virtual bool sort (CompareDataFunc func) {
         return false;
@@ -77,6 +81,6 @@ public interface Model<G> : Object {
     public abstract int get_n_items ();
 
     public signal void n_items_changed (int n_changed);
-    public signal void data_removed (G data);
+    public signal void data_removed (DataInterface data);
 }
 }

@@ -97,8 +97,13 @@ namespace FM {
 
         public bool path_is_selected (Gtk.TreePath path) {
             var index = path.get_indices ()[0];
-            var data = model.lookup_index (index);
-            return data.is_selected;
+            WidgetGrid.DataInterface data;
+
+            if (model.lookup_index (index, out data)) {
+                return data.is_selected;
+            } else {
+                return false;
+            }
         }
 
         public bool get_visible_range (out Gtk.TreePath? start_path, out Gtk.TreePath? end_path) {

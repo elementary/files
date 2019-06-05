@@ -77,9 +77,13 @@ public interface CursorHandler : Object, SelectionHandler {
             data_at_cursor.is_cursor_position = false;
         }
 
+        data_at_cursor = null;
         if (new_cursor >= 0) {
             cursor = new_cursor.clamp (0, n_items - 1);
-            data_at_cursor = model.lookup_index (cursor);
+            DataInterface data;
+            if (model.lookup_index (cursor, out data)) {
+                data_at_cursor = data;
+            }
         } else {
             data_at_cursor = null;
         }

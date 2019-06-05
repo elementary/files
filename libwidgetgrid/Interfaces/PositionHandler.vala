@@ -131,19 +131,26 @@ public interface PositionHandler : Object {
         }
     }
 
-    public virtual DataInterface get_data_at_row_col (int row, int col) {
-       return model.lookup_index (row_data[row].first_data_index + col);
+    public virtual DataInterface? get_data_at_row_col (int row, int col) {
+        DataInterface data;
+        if (model.lookup_index (row_data[row].first_data_index + col, out data)) {
+            return data;
+        } else {
+            return null;
+        }
     }
 
-    public virtual DataInterface get_data_at_pos (Gdk.Point p) {
+    public virtual bool get_data_at_pos (Gdk.Point p, out DataInterface data) {
         int row = 0;
         int col = 0;
         Gdk.Point wp = {0, 0};
+        data = null;
 
         if (get_row_col_at_pos (p.x, p.y, out row, out col, out wp)) {
-            return get_data_at_row_col (row, col);
+            data = get_data_at_row_col (row, col);
+            return true;
         } else {
-            return null;
+            return false;
         }
     }
 
@@ -190,9 +197,11 @@ public interface PositionHandler : Object {
         var d_index = data_index;
         for (int c = 0; c < cols && d_index < model.get_n_items (); c++) {
             var item = widget_for_data_index (d_index);
-            var data = model.lookup_index (d_index);
+            DataInterface data;
+            if (model.lookup_index (d_index, out data)) {
+                item.update_item (data);
+            }
 
-            item.update_item (data);
             item.set_max_width (item_width);
 
             int min_h, nat_h, min_w, nat_w;
