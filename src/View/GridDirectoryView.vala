@@ -209,7 +209,6 @@ namespace FM {
                     on_name_editing_started (editable, index.to_string ());
                 }
             }
-
         }
 
         private void connect_editing_signals (IconGridItem item) {

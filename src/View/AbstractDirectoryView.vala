@@ -1008,17 +1008,18 @@ namespace FM {
         }
 
         private void rename_selected_file () {
-            if (selected_files == null) {
+            unowned GLib.List<GOF.File> selection = get_selected_files ();
+            if (selection == null) {
                 return;
             }
 
-            if (selected_files.next != null) {
+            if (selection.next != null) {
                 warning ("Cannot rename multiple files (yet) - renaming first only");
             }
 
             /**TODO** invoke batch renamer see bug #1014122*/
 
-            rename_file (selected_files.first ().data);
+            rename_file (selection.first ().data);
         }
 
         private void on_selection_action_cut (GLib.SimpleAction action, GLib.Variant? param) {
