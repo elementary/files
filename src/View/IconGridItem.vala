@@ -40,12 +40,13 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
     private Gtk.Grid grid;
     private Gtk.Overlay overlay;
-    private Gtk.Frame frame;
+//    private Gtk.Frame frame;
+    private Gtk.Box frame;
     private Gtk.Image icon;
     private Gtk.Image helper;
     private Gdk.Rectangle helper_allocation;
     private Gtk.Label label;
-    private Gtk.Label id_label;
+//    private Gtk.Label id_label;
     private int set_max_width_request = 0;
     private int pix_size = 0;
     private int total_padding;
@@ -77,8 +78,9 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         hexpand = false;
         widget_id = IconGridItem.get_new_id ();
         overlay = new Gtk.Overlay ();
-        frame = new Gtk.Frame (null);
-        frame.shadow_type = Gtk.ShadowType.OUT;
+//        frame = new Gtk.Frame (null);
+        frame = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
+//        frame.shadow_type = Gtk.ShadowType.NONE;
         frame.halign = Gtk.Align.CENTER;
         frame.show_all ();
 
@@ -104,7 +106,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         label.set_justify (Gtk.Justification.CENTER);
         label.get_style_context ().add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
 
-        id_label = new Gtk.Label (widget_id.to_string ());
+//        id_label = new Gtk.Label (widget_id.to_string ());
 
         helper = new Gtk.Image ();
         helper.margin = 0;
@@ -115,7 +117,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
 
         grid.add (icon);
         grid.add (label);
-        grid.add (id_label);
+//        grid.add (id_label);
 
         overlay.add (grid);
         overlay.add_overlay (helper);
