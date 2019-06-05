@@ -248,7 +248,6 @@ namespace FM {
         private bool in_recent = false;
         private bool in_network_root = false;
         protected bool is_writable = false;
-        protected bool is_loading;
         protected bool helpers_shown;
         protected bool show_remote_thumbnails {get; set; default = false;}
         protected bool hide_local_thumbnails {get; set; default = false;}
@@ -259,6 +258,7 @@ namespace FM {
         }
 
         private bool all_selected = false;
+        private uint thumbnail_timeout_id = 0;
 
         private Gtk.Widget view;
         private unowned Marlin.ClipboardManager clipboard;
@@ -325,13 +325,6 @@ namespace FM {
                 view.button_release_event.connect (on_view_button_release_event);
                 view.draw.connect (on_view_draw);
                 view.scroll_event.connect (on_scroll_event);
-                /* Rather crude solution but simpler method to make sure thumbnails are actually drawn
-                 * even if loading is delayed. Can lose other calls.
-                 */
-                Timeout.add (500, () => {
-                    schedule_thumbnail_timeout ();
-                    return Source.CONTINUE;
-                });
             }
 
             freeze_tree (); /* speed up loading of icon view. Thawed when directory loaded */
@@ -662,6 +655,8 @@ namespace FM {
                 thumbnailer.dequeue (thumbnail_request);
                 thumbnail_request = -1;
             }
+
+            cancel_timeout (ref thumbnail_timeout_id);
         }
 
         protected bool is_drag_pending () {
@@ -1302,6 +1297,16 @@ namespace FM {
             } else {
                 is_writable = false;
             }
+
+            /* Rather crude solution but simpler method to make sure thumbnails are actually drawn
+             * even if loading is delayed. Can lose other calls.
+             */
+            thumbnail_timeout_id = Timeout.add (500, () => {
+                if (!slot.directory.is_loading ()) {
+                    schedule_thumbnail_timeout ();
+                }
+                return Source.CONTINUE;
+            });
 
             Idle.add (() => {
                 thaw_tree ();
@@ -2353,8 +2358,7 @@ namespace FM {
              * all items have been added and we've perhaps scrolled to the file remembered
              * the last time */
 
-            assert (slot is GOF.AbstractSlot && slot.directory != null);
-
+            return_if_fail (slot != null && slot.directory != null);
             if ((!slot.directory.is_local && !show_remote_thumbnails) ||
                 (slot.directory.is_local && hide_local_thumbnails) ||
                  !slot.directory.can_open_files ||
