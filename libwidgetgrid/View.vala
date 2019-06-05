@@ -100,13 +100,14 @@ public class View : Gtk.Overlay, ViewInterface {
     public bool fixed_item_widths { get; set; default = true;}
     public bool handle_cursor_keys { get; set; default = true; }
     public bool handle_zoom { get; set; default = true; }
+    private bool _handle_events_first = true;
     public bool handle_events_first {
         get {
-            return scrollbar.visible;
+            return _handle_events_first;
         }
 
         set {
-            scrollbar.visible = value;
+            _handle_events_first = value;
         }
     }
 
@@ -209,6 +210,10 @@ public class View : Gtk.Overlay, ViewInterface {
         event_box.key_press_event.connect (on_key_press_event);
 
         event_box.button_press_event.connect ((event) => {
+            if (!handle_events_first) {
+                return true;
+            }
+
             layout.grab_focus ();
             var on_item = hovered_item != null;
 
@@ -362,6 +367,10 @@ public class View : Gtk.Overlay, ViewInterface {
 
     private double total_delta_y = 0.0;
     private bool handle_scroll (Gdk.EventScroll event) {
+        if (!handle_events_first) {
+            return true;
+        }
+
         switch (event.direction) {
             case Gdk.ScrollDirection.SMOOTH:
                 double delta_x, delta_y;
@@ -387,7 +396,11 @@ public class View : Gtk.Overlay, ViewInterface {
     }
 
     public virtual bool handle_zoom_event (Gdk.EventScroll event) {
-       switch (event.direction) {
+        if (!handle_events_first) {
+            return true;
+        }
+
+        switch (event.direction) {
             case Gdk.ScrollDirection.UP:
                 zoom_in ();
                 return true;
