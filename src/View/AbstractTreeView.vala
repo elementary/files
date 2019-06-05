@@ -89,9 +89,13 @@ namespace FM {
         protected void set_up_view () {
             connect_tree_signals ();
             tree.realize.connect ((w) => {
-                tree.grab_focus ();
+                tree_grab_focus ();
                 tree.columns_autosize ();
             });
+        }
+
+        protected override void tree_grab_focus () {
+            tree.grab_focus ();
         }
 
         protected void set_up_name_renderer () {

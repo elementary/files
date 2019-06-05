@@ -102,11 +102,10 @@ public class View : Gtk.Overlay, ViewInterface {
     public bool handle_zoom { get; set; default = true; }
     public bool handle_events_first {
         get {
-            return event_box.above_child;
+            return scrollbar.visible;
         }
 
         set {
-            event_box.above_child = value;
             scrollbar.visible = value;
         }
     }
@@ -165,6 +164,7 @@ public class View : Gtk.Overlay, ViewInterface {
 
         layout = new Gtk.Layout ();
         layout.margin_start = 24; /* So that background always available */
+
         layout.can_focus = true;
 
         layout_handler = new LayoutHandler (layout, factory, model);
@@ -594,6 +594,7 @@ public class View : Gtk.Overlay, ViewInterface {
     }
 
     public new void grab_focus () {
+        event_box.grab_focus ();
         layout.grab_focus ();
     }
 

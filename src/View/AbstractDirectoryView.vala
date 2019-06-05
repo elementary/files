@@ -477,9 +477,11 @@ namespace FM {
                     set_active_slot ();
                 }
 
-                view.grab_focus ();
+                tree_grab_focus ();
             }
         }
+
+        protected virtual void tree_grab_focus () {}
 
         public unowned GLib.List<GOF.File> get_selected_files () {
             update_selected_files_and_menu ();

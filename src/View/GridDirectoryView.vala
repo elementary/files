@@ -33,8 +33,8 @@ namespace FM {
 
         private void set_up_view () {
             connect_tree_signals ();
-            tree.realize.connect ((w) => {
-                tree.grab_focus ();
+            realize.connect (() => {
+                tree_grab_focus ();
             });
         }
 
@@ -201,7 +201,7 @@ namespace FM {
 
             if (start_editing) {
                 tree.handle_events_first = false;
-                    var index = path.get_indices ()[0];
+                var index = path.get_indices ()[0];
                 var item = (IconGridItem)(tree.get_item_for_data_index (index));
                 if (item != null) {
                     connect_editing_signals (item);
@@ -356,6 +356,10 @@ namespace FM {
         protected override void clear () {
             base.clear ();
             tree.initialize_layout ();
+        }
+
+        protected override void tree_grab_focus () {
+            tree.grab_focus ();
         }
     }
 }

@@ -172,9 +172,12 @@ public interface SelectionHandler : Object, PositionHandler {
     }
 
     public virtual bool unselect_data_index (int index) {
-        DataInterface data;
-        if (model.lookup_index (index, out data) && last_selected_index == index){
+        if (last_selected_index == index) {
             last_selected_index = -1;
+        }
+
+        DataInterface data;
+        if (model.lookup_index (index, out data)) {
             return select_data (data, false);
         }
 
@@ -251,6 +254,5 @@ public interface SelectionHandler : Object, PositionHandler {
 
         previous_linear_selection_index = index;
     }
-
 }
 }
