@@ -166,7 +166,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
             return false;
         } else {
             pix_size = px_size;
-            last_thumbstate = file.flags;
+            last_thumbstate = file.thumbstate;
         }
 
 
@@ -211,7 +211,7 @@ public class IconGridItem : Gtk.EventBox, WidgetGrid.Item {
         if (file != null && !file.is_null) {
             update_state ();
             label.label = item_name;
-            set_max_width (set_max_width_request, new_data || file.flags != last_thumbstate);
+            set_max_width (set_max_width_request, new_data || file.thumbstate != last_thumbstate);
         }
     }
 

@@ -131,8 +131,15 @@ public class Async : Object {
         is_no_info = ("cdda mtp ssh sftp afp dav davs".contains (scheme));
         is_local = is_trash || is_recent || (scheme == "file");
         is_network = !is_local && ("ftp sftp afp dav davs".contains (scheme));
-        can_open_files = !("mtp".contains (scheme));
-        can_stream_files = !("ftp sftp mtp".contains (scheme));
+        /* Previously, mtp protocol had problems launching files but this currently works
+         * using newer devices such as Android phones so this restriction is lifted. The flag is
+         * retained in case it needs reinstating or using for another protocol.
+         */
+        can_open_files = true;
+        /* Previously, mtp protocol had problems streaming files but this currently works
+         * using newer devices such as Android phones so this restriction is lifted.
+         */
+        can_stream_files = !("ftp sftp".contains (scheme));
 
         file_hash = new HashTable<GLib.File, GOF.File> (GLib.File.hash, GLib.File.equal);
 
@@ -935,14 +942,14 @@ public class Async : Object {
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         switch (event) {
         case FileMonitorEvent.CREATED:
-            MarlinFile.changes_queue_file_added (_file);
+            Marlin.FileChanges.queue_file_added (_file);
             break;
         case FileMonitorEvent.DELETED:
-            MarlinFile.changes_queue_file_removed (_file);
+            Marlin.FileChanges.queue_file_removed (_file);
             break;
         case FileMonitorEvent.CHANGES_DONE_HINT: /* test  last to avoid unnecessary action when file renamed */
         case FileMonitorEvent.ATTRIBUTE_CHANGED:
-            MarlinFile.changes_queue_file_changed (_file);
+            Marlin.FileChanges.queue_file_changed (_file);
             break;
         }
 
@@ -952,7 +959,7 @@ public class Async : Object {
              * TODO: Have GOF.Directory.Async control renaming.
              */
             idle_consume_changes_id = Timeout.add (10, () => {
-                MarlinFile.changes_consume_changes (true);
+                Marlin.FileChanges.consume_changes (true);
                 idle_consume_changes_id = 0;
                 return GLib.Source.REMOVE;
             });

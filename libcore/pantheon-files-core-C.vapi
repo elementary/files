@@ -36,23 +36,6 @@ namespace Marlin {
     public delegate void CopyCallback ();
 }
 
-[CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_window_", cheader_filename = "eel-gtk-extensions.h")]
-namespace EelGtk.Window {
-    public string get_geometry_string (Gtk.Window win);
-    public void set_initial_geometry_from_string (Gtk.Window win, string geometry, uint w, uint h, bool ignore_position, int left_offset, int top_offset);
-}
-
-[CCode (cprefix = "EelGtk", lower_case_cprefix = "eel_gtk_widget_", cheader_filename = "eel-gtk-extensions.h")]
-namespace EelGtk.Widget {
-    public Gdk.Screen get_screen ();
-}
-
-[CCode (cprefix = "Eel", lower_case_cprefix = "eel_")]
-namespace Eel {
-    [CCode (cheader_filename = "eel-string.h")]
-    public string? str_double_underscores (string? str);
-}
-
 [CCode (cprefix = "Marlin", lower_case_cprefix = "marlin_")]
 namespace Marlin
 {
@@ -78,13 +61,4 @@ namespace Marlin
         public void redo (Gtk.Widget widget, UndoFinishCallback? cb);
         public void add_rename_action (GLib.File renamed_file, string original_name);
     }
-}
-
-[CCode (cprefix = "MarlinFile", lower_case_cprefix = "marlin_file_", cheader_filename = "marlin-file-changes-queue.h")]
-namespace MarlinFile {
-    public void changes_queue_file_added (GLib.File location);
-    public void changes_queue_file_changed (GLib.File location);
-    public void changes_queue_file_removed (GLib.File location);
-    public void changes_queue_file_moved (GLib.File location);
-    public void changes_consume_changes (bool consume_all);
 }

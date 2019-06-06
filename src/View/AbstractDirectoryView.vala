@@ -433,6 +433,8 @@ namespace FM {
             Idle.add_full (GLib.Priority.LOW, () => {
                 if (!tree_frozen) {
                     select_file_paths (file_list, focus);
+                    /* Update menu and selected file list now in case autoselected */
+                    update_selected_files_and_menu ();
                     return GLib.Source.REMOVE;
                 } else {
                     return GLib.Source.CONTINUE;
@@ -459,7 +461,7 @@ namespace FM {
             }
 
             connect_tree_signals ();
-            on_view_selection_changed (); /* Update selected files and menu actions */
+            on_view_selection_changed (); /* Mark selected_file list as invalid */
         }
 
         public unowned GLib.List<GLib.AppInfo> get_open_with_apps () {
@@ -2074,7 +2076,11 @@ namespace FM {
         private GLib.MenuModel? build_menu_templates () {
             /* Potential optimisation - do just once when app starts or view created */
             templates = null;
-            var template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
+            if (template_path == null) {
+                return null;
+            }
+
             var template_folder = GLib.File.new_for_path (template_path);
             load_templates_from_folder (template_folder);
 
@@ -2405,7 +2411,7 @@ namespace FM {
                     if (file != null && !file.is_gone) {
                         file.query_thumbnail_update (); // Ensure thumbstate up to date
                         /* Ask thumbnailer only if ThumbState UNKNOWN */
-                        if ((GOF.File.ThumbState)(file.flags) == GOF.File.ThumbState.UNKNOWN) {
+                        if (file.thumbstate == GOF.File.ThumbState.UNKNOWN) {
                             visible_files.prepend (file);
                             some_visible = true;
                             if (plugins != null) {
@@ -2763,7 +2769,7 @@ namespace FM {
                         break;
                     }
 
-                    res = move_cursor (keyval, only_shift_pressed);
+                    res = move_cursor (keyval, only_shift_pressed, control_pressed);
 
                     break;
 
@@ -3453,19 +3459,6 @@ namespace FM {
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
         public virtual void tree_unselect_others () {}
-        /* By default use the native widget cursor handling by returning false */
-        protected virtual bool move_cursor (uint keyval, bool only_shift_pressed) {
-            return false;
-        }
-
-        protected virtual bool will_handle_button_press (bool no_mods, bool only_control_pressed,
-                                                         bool only_shift_pressed) {
-            if (!no_mods && !only_control_pressed) {
-                return false;
-            } else {
-                return true;
-            }
-        }
 
         protected virtual void invert_selection () {
             GLib.List<Gtk.TreeRowReference> selected_row_refs = null;
@@ -3550,7 +3543,6 @@ namespace FM {
 
         /* Multi-select could be by rubberbanding or modified clicking. Returning false
          * invokes the default widget handler.  IconView requires special handler */
-        protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
         protected abstract Gtk.TreePath? get_single_selection ();
 
 /** Abstract methods - must be overridden*/
@@ -3570,6 +3562,23 @@ namespace FM {
                                          bool scroll_to_top);
 
         protected abstract Gtk.Widget? create_and_add_view ();
+        /* By default use the native widget cursor handling by returning false */
+        protected virtual bool move_cursor (uint keyval, bool only_shift_pressed, bool control_pressed) {
+            return false;
+        }
+
+        protected virtual bool will_handle_button_press (bool no_mods, bool only_control_pressed,
+                                                         bool only_shift_pressed) {
+            if (!no_mods && !only_control_pressed) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        /* Multi-select could be by rubberbanding or modified clicking. Returning false
+         * invokes the default widget handler.  IconView requires special handler */
+        protected virtual bool handle_multi_select (Gtk.TreePath path) {return false;}
         protected abstract Marlin.ZoomLevel get_set_up_zoom_level ();
         protected abstract Marlin.ZoomLevel get_normal_zoom_level ();
         protected abstract bool view_has_focus ();

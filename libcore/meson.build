@@ -22,6 +22,7 @@ pantheon_files_core_vala_files = files(
     'Enums.vala',
     'File.vala',
     'PixbufUtils.vala',
+    'FileChanges.vala',
     'FileUtils.vala',
     'FileConflictDialog.vala',
     'gof-callwhenready.vala',
@@ -45,14 +46,12 @@ pantheon_files_core_c_files = files(
     'eel-string.c',
     'marlin-file-operations.c',
     'marlin-undostack-manager.c',
-    'marlin-file-changes-queue.c',
 )
 
 pantheon_files_core_h_files = files(
     'eel-string.h',
     'marlin-file-operations.h',
     'marlin-undostack-manager.h',
-    'marlin-file-changes-queue.h',
 )
 
 pantheon_files_core_files = [

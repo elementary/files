@@ -92,7 +92,7 @@ void loadable_cache_and_ref_test () {
     /* file.pix might exist if tests run while Files instance was recently run and displayed test image */
     file.pix = null;
     file.query_update ();
-    file.flags = GOF.File.ThumbState.READY;
+    file.thumbstate = GOF.File.ThumbState.READY;
     /* We need to provide our own thumbnail and path for CI */
     file.thumbnail_path = Path.build_filename (Config.TESTDATA_DIR, "images", "testimage.jpg.thumb.png");
     file.update_icon (128, 1);
