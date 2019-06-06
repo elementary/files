@@ -23,10 +23,10 @@
 
 namespace WidgetGrid {
 public class SimpleModel : Object, Model<DataInterface> {
-    private Vala.ArrayList<DataInterface> list;
+    private Gee.ArrayList<DataInterface> list;
 
     construct {
-        list = new Vala.ArrayList<DataInterface> ();
+        list = new Gee.ArrayList<DataInterface> ();
     }
 
     protected bool real_add (DataInterface data) {
