@@ -7,8 +7,7 @@ pantheon_files_core_deps = [
     math_dep,
     pango_dep,
     sqlite3_dep,
-    libcanberra_dep,
-    widgetgrid_dep
+    libcanberra_dep
 ]
 
 pantheon_files_core_vala_files = files(
@@ -40,6 +39,21 @@ pantheon_files_core_vala_files = files(
     'UserUtils.vala',
     'IconInfo.vala',
     'Thumbnailer.vala',
+    'libwidgetgrid/Interfaces/SelectionHandler.vala',
+    'libwidgetgrid/Interfaces/SelectionFrame.vala',
+    'libwidgetgrid/Interfaces/PositionHandler.vala',
+    'libwidgetgrid/Interfaces/CursorHandler.vala',
+    'libwidgetgrid/Interfaces/Item.vala',
+    'libwidgetgrid/Interfaces/Model.vala',
+    'libwidgetgrid/Interfaces/DataInterface.vala',
+    'libwidgetgrid/View.vala',
+    'libwidgetgrid/AbstractItemFactory.vala',
+    'libwidgetgrid/SimpleModel.vala',
+    'libwidgetgrid/LayoutHandler.vala',
+    'libwidgetgrid/SelectionFrameRectangle.vala',
+    'libwidgetgrid/RowData.vala',
+    'libwidgetgrid/WidgetData.vala',
+
 )
 
 pantheon_files_core_c_files = files(
