@@ -182,8 +182,12 @@ namespace PF.FileUtils {
         return file.get_parent () != null;
     }
 
-    public string? escape_uri (string uri, bool allow_utf8 = true) {
+    public string? escape_uri (string uri, bool allow_utf8 = true, bool allow_single_quote = true) {
         string rc = reserved_chars.replace ("#", "").replace ("*","");
+        if (!allow_single_quote) {
+            rc = rc.replace ("'", "");
+        }
+
         return Uri.escape_string ((Uri.unescape_string (uri) ?? uri), rc , allow_utf8);
     }
 
