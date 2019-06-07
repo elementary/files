@@ -109,7 +109,10 @@ public class View : Gtk.Overlay, ViewInterface {
         set {
             _handle_events_first = value;
             event_box.set_above_child (value);
-            layout.grab_focus ();
+
+            if (value){
+                layout.grab_focus ();
+            }
         }
     }
 

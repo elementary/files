@@ -38,6 +38,9 @@ public interface CursorHandler : Object, SelectionHandler {
     }
 
     public virtual int cursor_back () {
+        if (cursor_index == 0) {
+            return 0;
+        }
         var new_cursor = cursor_index;
         new_cursor--;
         update_cursor (new_cursor);
@@ -46,8 +49,13 @@ public interface CursorHandler : Object, SelectionHandler {
     }
 
     public virtual int cursor_forward () {
-        var new_cursor = cursor_index;
+        var new_cursor = int.min (cursor_index, n_items - 1);
         new_cursor++;
+
+        if (new_cursor >= n_items - 1) {
+            return cursor_index;
+        }
+
         update_cursor (new_cursor);
 
         return cursor_index;

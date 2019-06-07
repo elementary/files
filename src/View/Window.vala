@@ -242,9 +242,10 @@ namespace Marlin.View {
                 if (event.state == 0 || event.state == Gdk.ModifierType.SHIFT_MASK) {
                     /* Use printable characters to initiate search */
                     if (((unichar)(Gdk.keyval_to_unicode (event.keyval))).isprint ()) {
-                        activate_action ("find", null);
-                        key_press_event (event);
-                        return true;
+                        if (top_menu.enter_search_mode ()) {
+                            key_press_event (event);
+                            return true;
+                        }
                     }
                 }
 

@@ -229,6 +229,7 @@ namespace Marlin.View.Chrome {
                 /* repeat search with new settings */
                 search_results.search (bread.get_entry_text (), search_location);
             }
+
             return true;
         }
 
