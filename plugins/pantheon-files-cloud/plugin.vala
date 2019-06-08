@@ -1,5 +1,5 @@
 /***
-    Copyright (c) 2018 elementary LLC <https://elementary.io>
+    Copyright (c) 2019 elementary LLC <https://elementary.io>
 
     Pantheon Files is free software; you can redistribute it and/or
     modify it under the terms of the GNU General Public License as
@@ -94,7 +94,7 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
     /**
      * Generate a SidebarPluginItem from provider and account informations
      */
-    Marlin.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider, CloudProviders.Account account) {
+    static Marlin.SidebarPluginItem adapt_plugin_item (CloudProviders.Provider provider, CloudProviders.Account account) {
         var item = new Marlin.SidebarPluginItem ();
         item.name = account.name;
         item.tooltip = account.path;
@@ -115,7 +115,7 @@ public class Marlin.Plugins.Cloud.Plugin : Marlin.Plugins.Base {
      *
      * @return a error icon if status is error else returns null
      */
-    Icon? get_icon (CloudProviders.AccountStatus status) {
+    static Icon? get_icon (CloudProviders.AccountStatus status) {
         return status == CloudProviders.AccountStatus.ERROR ?
                          new ThemedIcon.with_default_fallbacks ("dialog-error-symbolic") :
                          null;

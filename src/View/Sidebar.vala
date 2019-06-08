@@ -1626,24 +1626,22 @@ namespace Marlin.Places {
                 if (model == null) {
                     menu.build ().popup_at_pointer (event);
                 } else {
-                    menu
-                    .add_separator ()
-                    .add_open_tab (open_shortcut_in_new_tab_cb)
-                    .add_open_window (open_shortcut_in_new_window_cb)
-                    .add_separator ()
-                    .build_from_model (model, action_group_namespace, action_group)
-                    .popup_at_pointer (event);
+                    menu.add_separator ()
+                        .add_open_tab (open_shortcut_in_new_tab_cb)
+                        .add_open_window (open_shortcut_in_new_window_cb)
+                        .add_separator ()
+                        .build_from_model (model, action_group_namespace, action_group)
+                        .popup_at_pointer (event);
                 }
             } else {
-                var menu = new PopupMenuBuilder ()
-                .add_open (open_shortcut_cb)
-                .add_separator ()
-                .add_open_tab (open_shortcut_in_new_tab_cb)
-                .add_open_window (open_shortcut_in_new_window_cb);
+                var menu = new PopupMenuBuilder ().add_open (open_shortcut_cb)
+                                                  .add_separator ()
+                                                  .add_open_tab (open_shortcut_in_new_tab_cb)
+                                                  .add_open_window (open_shortcut_in_new_window_cb);
 
                 if (is_bookmark) {
                     menu.add_separator ().add_remove (remove_shortcut_cb)
-                    .add_rename (rename_shortcut_cb);
+                                         .add_rename (rename_shortcut_cb);
                 }
 
                 if (show_mount) {
