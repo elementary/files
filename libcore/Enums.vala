@@ -288,5 +288,21 @@ namespace FM {
                     return "";
             }
         }
+
+        public int to_sort_col () {
+            switch (this) {
+                case ColumnID.FILENAME:
+                    return 0;
+                case ColumnID.SIZE:
+                    return 1;
+                case ColumnID.TYPE:
+                    return 3;
+                case ColumnID.MODIFIED:
+                    return 4;
+                default:
+                    critical ("COLUMN id %u unsupported", this);
+                    return 0;
+            }
+        }
     }
 }

@@ -309,6 +309,10 @@ namespace FM {
             set_up__menu_actions ();
             set_up_directory_view ();
             model = new FM.DirectoryModel ();
+            model.row_deleted.connect (on_row_deleted);
+            /* Sort order of model is set after loading */
+            model.sort_order_changed.connect (on_sort_order_changed);
+
             view = create_and_add_view ();
 
             if (view != null) {
@@ -358,11 +362,6 @@ namespace FM {
             prefs.notify["show-remote-thumbnails"].connect (on_show_remote_thumbnails_changed);
             prefs.notify["hide-local-thumbnails"].connect (on_hide_local_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
-
-            model.sort_directories_first = (GOF.Preferences.get_default ().sort_directories_first);
-            model.row_deleted.connect (on_row_deleted);
-            /* Sort order of model is set after loading */
-            model.sort_order_changed.connect (on_sort_order_changed);
         }
 
         private void set_up__menu_actions () {
@@ -1294,6 +1293,8 @@ namespace FM {
 
             if (slot.directory.can_load) {
                 is_writable = slot.directory.file.is_writable ();
+                model.sort_directories_first = (GOF.Preferences.get_default ().sort_directories_first);
+
                 if (in_recent)
                     model.set_order (FM.ColumnID.MODIFIED, false);
                 else if (slot.directory.file.info != null) {
@@ -3342,7 +3343,7 @@ namespace FM {
 
         }
 
-        protected void on_sort_order_changed () {
+        protected virtual void on_sort_order_changed (FM.ColumnID sort_column_id, bool reversed, FM.ColumnID previous_sort_col) {
             /* Setting file attributes fails when root */
             if (Posix.getuid () == 0) {
                 return;
@@ -3351,10 +3352,8 @@ namespace FM {
             /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
              * the directory file metadata incorrectly (bug 1511307).
              */
-            FM.ColumnID sort_column_id = FM.ColumnID.FILENAME;
-            bool reversed = false;
-            if (tree_frozen ||
-                !model.get_order (out sort_column_id, out reversed)) {
+
+            if (tree_frozen) {
                 return;
             }
 

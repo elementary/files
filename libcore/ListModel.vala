@@ -68,7 +68,6 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface, Widge
         set_sort_func (ColumnID.FILE_COLUMN, directory_view_sort_func);
 
         row_inserted.connect ((path) => {
-
             if (path.get_depth () == 1) {
                 n_first_level_rows++;
                 n_items_changed (1);
@@ -85,6 +84,10 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface, Widge
 
         rows_reordered.connect ((path) => {
             n_items_changed (0);
+        });
+
+        notify["sort-directories-first"].connect (() => {
+            set_order (sort_file_property, reversed);
         });
     }
 
@@ -119,7 +122,7 @@ public class FM.DirectoryModel : Gtk.TreeStore, FM.DirectoryViewInterface, Widge
 
     public new void set_sort_column_id (int sort_col, Gtk.SortType sort_type) {
         /* We do not want the normal method to be called externally */
-        /* Externally, 'get_order ()' should be called */
+        /* Externally, 'set_order ()' should be called */
         assert (false);
     }
 

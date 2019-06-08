@@ -26,22 +26,6 @@ namespace FM {
         private GLib.List<Gtk.TreeRowReference> subdirectories_to_unload = null;
         private GLib.List<GOF.Directory.Async> loaded_subdirectories = null;
 
-        construct {
-            model.sort_order_changed.connect ((new_, reversed, old_) => {
-                foreach (Gtk.TreeViewColumn col in tree.get_columns ()) {
-                    FM.ColumnID id = col.get_data ("id");
-                    if (id == old_) {
-                        col.sort_indicator = false;
-                    }
-
-                    if (id == new_) {
-                        col.sort_indicator = true;
-                        col.sort_order = reversed ? Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
-                    }
-                }
-            });
-        }
-
         public ListView (Marlin.View.Slot _slot) {
             base (_slot);
         }
@@ -51,6 +35,7 @@ namespace FM {
             tree.row_collapsed.connect (on_row_collapsed);
             tree.model.row_inserted.connect ((path,iter) => {
             });
+
             model.subdirectory_unloaded.connect (on_model_subdirectory_unloaded);
 
             slot.notify["directory"].connect (() => {
@@ -336,6 +321,20 @@ namespace FM {
             });
         }
 
+        protected override void on_sort_order_changed (FM.ColumnID new_, bool reversed_, FM.ColumnID old_) {
+            foreach (Gtk.TreeViewColumn col in tree.get_columns ()) {
+                FM.ColumnID id = col.get_data ("id");
+                if (id == old_) {
+                    col.sort_indicator = false;
+                }
 
+                if (id == new_) {
+                    col.sort_indicator = true;
+                    col.sort_order = reversed_ ? Gtk.SortType.DESCENDING : Gtk.SortType.ASCENDING;
+                }
+            }
+
+            base.on_sort_order_changed (new_, reversed_, old_);
+        }
     }
 }
