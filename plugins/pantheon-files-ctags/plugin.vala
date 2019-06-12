@@ -376,21 +376,41 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             int i;
             int btnw = 10;
             int btnh = 10;
-            int y0 = (height - btnh) /2;
-            int x0 = btnw+5;
-            int xpad = 9;
+            int y0 = (height - btnh) / 2;
 
-            for (i = 1; i <= 10; i++) {
-                if (i == 1) {
-                    DrawCross (cr, xpad + x0 * i, y0 + 1, btnw - 2, btnh - 2);
-                } else {
-                    DrawRoundedRectangle (cr, xpad + x0 * i, y0, btnw, btnh, "stroke", i - 1);
-                    DrawRoundedRectangle (cr, xpad + x0 * i, y0, btnw, btnh, "fill", i - 1);
-                    DrawGradientOverlay (cr, xpad + x0 * i, y0, btnw, btnh);
+            /* Set start margin to match other menuitems. Is there a way to determine
+             * this programmatically?  */
+            int margin_start = 27;
+            int spacing = 15;
+            int x0 = btnw + spacing;
+
+            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+                var width = get_allocated_width ();
+                int x = width - margin_start - btnw;
+                for (i = 0; i <= 9; i++) {
+                    /* The order of colors is not reversed */
+                    draw_item (cr, x, y0, btnw, btnh, i);
+                    x -= x0;
+                }
+            } else {
+                int x = margin_start;
+                for (i = 0; i <= 9; i++) {
+                    draw_item (cr, x, y0, btnw, btnh, i);
+                    x += x0;
                 }
             }
 
             return true;
+        }
+
+        private void draw_item (Cairo.Context cr, int x, int y, int width, int height, int index) {
+            if (index == 0) {
+                DrawCross (cr, x, y + 1, width - 2, height - 2);
+            } else {
+                DrawRoundedRectangle (cr, x, y, width, height, "stroke", index);
+                DrawRoundedRectangle (cr, x, y, width, height, "fill", index);
+                DrawGradientOverlay (cr, x, y, width, height);
+            }
         }
 
         private void DrawCross (Cairo.Context cr, int x, int y, int w, int h) {
