@@ -504,9 +504,8 @@ namespace FM {
             }
             int cols = get_n_cols ();
             int index = path.get_indices ()[0];
-            Gtk.TreePath new_path;
             Gtk.TreeIter? iter = null;
-            new_path = new Gtk.TreePath.from_indices (index - cols, -1);
+            var new_path = new Gtk.TreePath.from_indices (index - cols, -1);
             if (tree.model.get_iter (out iter, new_path)) {
                 return new_path;
             } else {
@@ -517,10 +516,9 @@ namespace FM {
         protected override Gtk.TreePath down (Gtk.TreePath path) {
             int cols = get_n_cols ();
             int index = path.get_indices ()[0];
-
-            Gtk.TreePath new_path;
+            var idx = (index + cols).clamp (0, (int)(model.get_length () - 1));
             Gtk.TreeIter? iter = null;
-            new_path = new Gtk.TreePath.from_indices (index + cols, -1);
+            var new_path = new Gtk.TreePath.from_indices (idx, -1);
             if (tree.model.get_iter (out iter, new_path)) {
                 return new_path;
             } else {
