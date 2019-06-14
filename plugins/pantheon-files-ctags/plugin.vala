@@ -330,12 +330,17 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
     private class ColorWidget : Gtk.MenuItem {
         private new bool has_focus;
-        private int height;
+        private const int BUTTON_WIDTH = 10;
+        private const int BUTTON_HEIGHT = 10;
+        /* Set start margin to match other menuitems. Is there a way to determine
+         * this programmatically?  */
+        private const int MARGIN_START = 27;
+        private const int SPACING = 15;
+
         public signal void color_changed (int ncolor);
 
         public ColorWidget () {
             set_size_request (150, 20);
-            height = 20;
 
             button_press_event.connect (button_pressed_cb);
             draw.connect (on_draw);
@@ -350,51 +355,56 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
-            determine_button_pressed_event (event);
-            return true;
-        }
+            /* Determine whether a color button was clicked on */
+            int y0 = (get_allocated_height () - BUTTON_HEIGHT) /2;
+            int x0 = BUTTON_WIDTH + SPACING;
 
-        private void determine_button_pressed_event (Gdk.EventButton event) {
-            int i;
-            int btnw = 10;
-            int btnh = 10;
-            int y0 = (height - btnh) /2;
-            int x0 = btnw+5;
-            int xpad = 9;
-
-            if (event.y >= y0 && event.y <= y0+btnh) {
-                for (i=1; i<=10; i++) {
-                    if (event.x>= xpad+x0*i && event.x <= xpad+x0*i+btnw) {
-                        color_changed (i-1);
-                        break;
-                    }
-                }
+            if (event.y < y0 || event.y > y0 + BUTTON_HEIGHT) {
+                return true;
             }
-        }
-
-        protected bool on_draw (Cairo.Context cr) {
-            int btnw = 10;
-            int btnh = 10;
-            int y0 = (height - btnh) / 2;
-
-            /* Set start margin to match other menuitems. Is there a way to determine
-             * this programmatically?  */
-            int margin_start = 27;
-            int spacing = 15;
-            int x0 = btnw + spacing;
 
             if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
                 var width = get_allocated_width ();
-                int x = width - margin_start - btnw;
+                int x = width - MARGIN_START;
                 for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
-                    /* The order of colors is not reversed */
-                    draw_item (cr, x, y0, btnw, btnh, i);
+                    if (event.x <= x && event.x >= x - BUTTON_WIDTH) {
+                        color_changed (i);
+                        break;
+                    }
+
                     x -= x0;
                 }
             } else {
-                int x = margin_start;
+                int x = MARGIN_START;
                 for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
-                    draw_item (cr, x, y0, btnw, btnh, i);
+                    if (event.x >= x && event.x <= x + BUTTON_WIDTH) {
+                        color_changed (i);
+                        break;
+                    }
+
+                    x += x0;
+                }
+            }
+
+            return true;
+        }
+
+        protected bool on_draw (Cairo.Context cr) {
+            int y0 = (get_allocated_height () - BUTTON_HEIGHT) / 2;
+            int x0 = BUTTON_WIDTH + SPACING;
+
+            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+                var width = get_allocated_width ();
+                int x = width - MARGIN_START - BUTTON_WIDTH;
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                    /* The order of colors is not reversed */
+                    draw_item (cr, x, y0, BUTTON_WIDTH, BUTTON_HEIGHT, i);
+                    x -= x0;
+                }
+            } else {
+                int x = MARGIN_START;
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                    draw_item (cr, x, y0, BUTTON_WIDTH, BUTTON_HEIGHT, i);
                     x += x0;
                 }
             }
