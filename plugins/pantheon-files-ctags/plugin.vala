@@ -373,7 +373,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         protected bool on_draw (Cairo.Context cr) {
-            int i;
             int btnw = 10;
             int btnh = 10;
             int y0 = (height - btnh) / 2;
@@ -387,14 +386,14 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
                 var width = get_allocated_width ();
                 int x = width - margin_start - btnw;
-                for (i = 0; i <= 9; i++) {
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
                     /* The order of colors is not reversed */
                     draw_item (cr, x, y0, btnw, btnh, i);
                     x -= x0;
                 }
             } else {
                 int x = margin_start;
-                for (i = 0; i <= 9; i++) {
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
                     draw_item (cr, x, y0, btnw, btnh, i);
                     x += x0;
                 }
