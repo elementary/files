@@ -330,12 +330,17 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
     private class ColorWidget : Gtk.MenuItem {
         private new bool has_focus;
-        private int height;
+        private const int BUTTON_WIDTH = 10;
+        private const int BUTTON_HEIGHT = 10;
+        /* Set start margin to match other menuitems. Is there a way to determine
+         * this programmatically?  */
+        private const int MARGIN_START = 27;
+        private const int SPACING = 15;
+
         public signal void color_changed (int ncolor);
 
         public ColorWidget () {
             set_size_request (150, 20);
-            height = 20;
 
             button_press_event.connect (button_pressed_cb);
             draw.connect (on_draw);
@@ -350,47 +355,71 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
-            determine_button_pressed_event (event);
-            return true;
-        }
+            /* Determine whether a color button was clicked on */
+            int y0 = (get_allocated_height () - BUTTON_HEIGHT) /2;
+            int x0 = BUTTON_WIDTH + SPACING;
 
-        private void determine_button_pressed_event (Gdk.EventButton event) {
-            int i;
-            int btnw = 10;
-            int btnh = 10;
-            int y0 = (height - btnh) /2;
-            int x0 = btnw+5;
-            int xpad = 9;
+            if (event.y < y0 || event.y > y0 + BUTTON_HEIGHT) {
+                return true;
+            }
 
-            if (event.y >= y0 && event.y <= y0+btnh) {
-                for (i=1; i<=10; i++) {
-                    if (event.x>= xpad+x0*i && event.x <= xpad+x0*i+btnw) {
-                        color_changed (i-1);
+            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+                var width = get_allocated_width ();
+                int x = width - MARGIN_START;
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                    if (event.x <= x && event.x >= x - BUTTON_WIDTH) {
+                        color_changed (i);
                         break;
                     }
+
+                    x -= x0;
+                }
+            } else {
+                int x = MARGIN_START;
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                    if (event.x >= x && event.x <= x + BUTTON_WIDTH) {
+                        color_changed (i);
+                        break;
+                    }
+
+                    x += x0;
                 }
             }
+
+            return true;
         }
 
         protected bool on_draw (Cairo.Context cr) {
-            int i;
-            int btnw = 10;
-            int btnh = 10;
-            int y0 = (height - btnh) /2;
-            int x0 = btnw+5;
-            int xpad = 9;
+            int y0 = (get_allocated_height () - BUTTON_HEIGHT) / 2;
+            int x0 = BUTTON_WIDTH + SPACING;
 
-            for (i = 1; i <= 10; i++) {
-                if (i == 1) {
-                    DrawCross (cr, xpad + x0 * i, y0 + 1, btnw - 2, btnh - 2);
-                } else {
-                    DrawRoundedRectangle (cr, xpad + x0 * i, y0, btnw, btnh, "stroke", i - 1);
-                    DrawRoundedRectangle (cr, xpad + x0 * i, y0, btnw, btnh, "fill", i - 1);
-                    DrawGradientOverlay (cr, xpad + x0 * i, y0, btnw, btnh);
+            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+                var width = get_allocated_width ();
+                int x = width - MARGIN_START - BUTTON_WIDTH;
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                    /* The order of colors is not reversed */
+                    draw_item (cr, x, y0, BUTTON_WIDTH, BUTTON_HEIGHT, i);
+                    x -= x0;
+                }
+            } else {
+                int x = MARGIN_START;
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                    draw_item (cr, x, y0, BUTTON_WIDTH, BUTTON_HEIGHT, i);
+                    x += x0;
                 }
             }
 
             return true;
+        }
+
+        private void draw_item (Cairo.Context cr, int x, int y, int width, int height, int index) {
+            if (index == 0) {
+                DrawCross (cr, x, y + 1, width - 2, height - 2);
+            } else {
+                DrawRoundedRectangle (cr, x, y, width, height, "stroke", index);
+                DrawRoundedRectangle (cr, x, y, width, height, "fill", index);
+                DrawGradientOverlay (cr, x, y, width, height);
+            }
         }
 
         private void DrawCross (Cairo.Context cr, int x, int y, int w, int h) {

@@ -21,8 +21,8 @@ namespace GOF {
 
     public class Preferences : Object {
 
-        public const string TAGS_COLORS[10] = { null, "#fff394", "#ffc27d", "#a3907c", "#d1ff82", "#8cd5ff", "#e4c6fa",
-                                                "#ff8c82", "#d4d4d4", "#95a3ab" };
+        /* First color not actually used but for safety make non-null */
+        public const string[] TAGS_COLORS = { "#ffffff", "#fff394", "#ffc27d", "#a3907c", "#d1ff82", "#8cd5ff", "#e4c6fa", "#ff8c82", "#d4d4d4", "#95a3ab" };
 
         public bool show_hidden_files {get; set; default=false;}
         public bool show_remote_thumbnails {set; get; default=false;}
