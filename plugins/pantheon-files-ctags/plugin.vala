@@ -334,7 +334,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         /* Set start margin to match other menuitems. Is there a way to determine
          * this programmatically?  */
         private const int MARGIN_START = 27;
-        private const int SPACING = 10;
+        // SPACING = geometric center of each of the color buttons.
+        private const int SPACING = 5;
 
         public signal void color_changed (int ncolor);
 
