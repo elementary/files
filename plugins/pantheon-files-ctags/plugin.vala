@@ -329,29 +329,264 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private class ColorWidget : Gtk.MenuItem {
-        private new bool has_focus;
-        private const int BUTTON_WIDTH = 10;
-        private const int BUTTON_HEIGHT = 10;
+        private const int BUTTON_WIDTH = 16;
+        private const int BUTTON_HEIGHT = 16;
         /* Set start margin to match other menuitems. Is there a way to determine
          * this programmatically?  */
         private const int MARGIN_START = 27;
-        private const int SPACING = 15;
+        private const int SPACING = 10;
 
         public signal void color_changed (int ncolor);
 
         public ColorWidget () {
             set_size_request (150, 20);
 
+            var css_provider = new Gtk.CssProvider();
+            string style = """
+            .color-button {
+                border-bottom-left-radius: 16px;
+                border-top-left-radius: 16px;
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+                text-shadow: 1px 1px transparent;
+                padding: 3px;
+            }
+            .color-red {
+                background-color: @STRAWBERRY_300;
+                border: 1px solid @STRAWBERRY_500;
+                box-shadow:
+                inset 0 0 0 1px alpha (shade (@STRAWBERRY_700, 1.4), 0.05),
+                    inset 0 1px 0 0 alpha (@STRAWBERRY_700, 0.45),
+                    inset 0 -1px 0 0 alpha (#cccccc, 0.15);
+                    background-image:
+                    linear-gradient(
+                        to bottom,
+                        transparent,
+                        transparent 50%,
+                        alpha (
+                            #000,
+                            0.04
+                        )
+                    );
+            }
+            .color-red:active {
+                border-color: @STRAWBERRY_300;
+                box-shadow:
+                    inset 0 1px 0 0 alpha (@STRAWBERRY_700, 0.45),
+                    inset 0 -1px 0 0 alpha (@STRAWBERRY_700, 0.15),
+                    0 0 0 1px alpha (#eeeeee, 0.25);
+                transition: all 100ms ease-out;
+            }
+            .color-orange {
+                background-color: @ORANGE_300;
+                border: 1px solid @ORANGE_500;
+                box-shadow:
+                inset 0 0 0 1px alpha (shade (@ORANGE_700, 1.4), 0.05),
+                    inset 0 1px 0 0 alpha (@ORANGE_700, 0.45),
+                    inset 0 -1px 0 0 alpha (#cccccc, 0.15);
+                    background-image:
+                    linear-gradient(
+                        to bottom,
+                        transparent,
+                        transparent 50%,
+                        alpha (
+                            #000,
+                            0.04
+                        )
+                    );
+            }
+            .color-orange:active {
+                border-color: @ORANGE_300;
+                box-shadow:
+                    inset 0 1px 0 0 alpha (@ORANGE_700, 0.45),
+                    inset 0 -1px 0 0 alpha (@ORANGE_700, 0.15),
+                    0 0 0 1px alpha (#eeeeee, 0.25);
+                transition: all 100ms ease-out;
+            }
+            .color-yellow {
+                background-color: @BANANA_300;
+                border: 1px solid @BANANA_500;
+                box-shadow:
+                inset 0 0 0 1px alpha (shade (@BANANA_700, 1.4), 0.05),
+                    inset 0 1px 0 0 alpha (@BANANA_700, 0.45),
+                    inset 0 -1px 0 0 alpha (#cccccc, 0.15);
+                    background-image:
+                    linear-gradient(
+                        to bottom,
+                        transparent,
+                        transparent 50%,
+                        alpha (
+                            #000,
+                            0.04
+                        )
+                    );
+            }
+            .color-yellow:active {
+                border-color: @BANANA_300;
+                box-shadow:
+                    inset 0 1px 0 0 alpha (@BANANA_700, 0.45),
+                    inset 0 -1px 0 0 alpha (@BANANA_700, 0.15),
+                    0 0 0 1px alpha (#eeeeee, 0.25);
+                transition: all 100ms ease-out;
+            }
+            .color-green {
+                background-color: @LIME_300;
+                border: 1px solid @LIME_500;
+                box-shadow:
+                inset 0 0 0 1px alpha (shade (@LIME_700, 1.4), 0.05),
+                    inset 0 1px 0 0 alpha (@LIME_700, 0.45),
+                    inset 0 -1px 0 0 alpha (#cccccc, 0.15);
+                    background-image:
+                    linear-gradient(
+                        to bottom,
+                        transparent,
+                        transparent 50%,
+                        alpha (
+                            #000,
+                            0.04
+                        )
+                    );
+            }
+            .color-green:active {
+                border-color: @LIME_300;
+                box-shadow:
+                    inset 0 1px 0 0 alpha (@LIME_700, 0.45),
+                    inset 0 -1px 0 0 alpha (@LIME_700, 0.15),
+                    0 0 0 1px alpha (#eeeeee, 0.25);
+                transition: all 100ms ease-out;
+            }
+            .color-blue {
+                background-color: @BLUEBERRY_300;
+                border: 1px solid @BLUEBERRY_500;
+                box-shadow:
+                inset 0 0 0 1px alpha (shade (@BLUEBERRY_700, 1.4), 0.05),
+                    inset 0 1px 0 0 alpha (@BLUEBERRY_700, 0.45),
+                    inset 0 -1px 0 0 alpha (#cccccc, 0.15);
+                    background-image:
+                    linear-gradient(
+                        to bottom,
+                        transparent,
+                        transparent 50%,
+                        alpha (
+                            #000,
+                            0.04
+                        )
+                    );
+            }
+            .color-blue:active {
+                border-color: @BLUEBERRY_300;
+                box-shadow:
+                    inset 0 1px 0 0 alpha (@BLUEBERRY_700, 0.45),
+                    inset 0 -1px 0 0 alpha (@BLUEBERRY_700, 0.15),
+                    0 0 0 1px alpha (#eeeeee, 0.25);
+                transition: all 100ms ease-out;
+            }
+            .color-violet {
+                background-color: @GRAPE_300;
+                border: 1px solid @GRAPE_500;
+                box-shadow:
+                inset 0 0 0 1px alpha (shade (@GRAPE_700, 1.4), 0.05),
+                    inset 0 1px 0 0 alpha (@GRAPE_700, 0.45),
+                    inset 0 -1px 0 0 alpha (#cccccc, 0.15);
+                    background-image:
+                    linear-gradient(
+                        to bottom,
+                        transparent,
+                        transparent 50%,
+                        alpha (
+                            #000,
+                            0.04
+                        )
+                    );
+            }
+            .color-violet:active {
+                border-color: @GRAPE_300;
+                box-shadow:
+                    inset 0 1px 0 0 alpha (@GRAPE_700, 0.45),
+                    inset 0 -1px 0 0 alpha (@GRAPE_700, 0.15),
+                    0 0 0 1px alpha (#eeeeee, 0.25);
+                transition: all 100ms ease-out;
+            }
+            """;
+            try {
+                css_provider.load_from_data(style, -1);
+            } catch (GLib.Error e) {
+                warning ("Failed to parse css style : %s", e.message);
+            }
+            Gtk.StyleContext.add_provider_for_screen (
+                Gdk.Screen.get_default (),
+                css_provider,
+                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+            );
+
+            var color_button_red = new Gtk.Button ();
+            color_button_red.halign = Gtk.Align.CENTER;
+            color_button_red.height_request = BUTTON_WIDTH;
+            color_button_red.width_request = BUTTON_HEIGHT;
+            var color_button_red_context = color_button_red.get_style_context ();
+            color_button_red_context.add_class ("color-button");
+            color_button_red_context.add_class ("color-red");
+
+            var color_button_orange = new Gtk.Button ();
+            color_button_orange.halign = Gtk.Align.CENTER;
+            color_button_orange.height_request = BUTTON_WIDTH;
+            color_button_orange.width_request = BUTTON_HEIGHT;
+            var color_button_orange_context = color_button_orange.get_style_context ();
+            color_button_orange_context.add_class ("color-button");
+            color_button_orange_context.add_class ("color-orange");
+
+            var color_button_yellow = new Gtk.Button ();
+            color_button_yellow.halign = Gtk.Align.CENTER;
+            color_button_yellow.height_request = BUTTON_WIDTH;
+            color_button_yellow.width_request = BUTTON_HEIGHT;
+            var color_button_yellow_context = color_button_yellow.get_style_context ();
+            color_button_yellow_context.add_class ("color-button");
+            color_button_yellow_context.add_class ("color-yellow");
+
+            var color_button_green = new Gtk.Button ();
+            color_button_green.halign = Gtk.Align.CENTER;
+            color_button_green.height_request = BUTTON_WIDTH;
+            color_button_green.width_request = BUTTON_HEIGHT;
+            var color_button_green_context = color_button_green.get_style_context ();
+            color_button_green_context.add_class ("color-button");
+            color_button_green_context.add_class ("color-green");
+
+            var color_button_blue = new Gtk.Button ();
+            color_button_blue.halign = Gtk.Align.CENTER;
+            color_button_blue.height_request = BUTTON_WIDTH;
+            color_button_blue.width_request = BUTTON_HEIGHT;
+            var color_button_blue_context = color_button_blue.get_style_context ();
+            color_button_blue_context.add_class ("color-button");
+            color_button_blue_context.add_class ("color-blue");
+
+            var color_button_violet = new Gtk.Button ();
+            color_button_violet.halign = Gtk.Align.CENTER;
+            color_button_violet.height_request = BUTTON_WIDTH;
+            color_button_violet.width_request = BUTTON_HEIGHT;
+            var color_button_violet_context = color_button_violet.get_style_context ();
+            color_button_violet_context.add_class ("color-button");
+            color_button_violet_context.add_class ("color-violet");
+
+            var color_button_remove = new Gtk.Button ();
+            color_button_remove.halign = Gtk.Align.CENTER;
+            color_button_remove.height_request = BUTTON_WIDTH;
+            color_button_remove.width_request = BUTTON_HEIGHT;
+            var color_button_remove_context = color_button_remove.get_style_context ();
+            color_button_remove_context.add_class ("color-button");
+
+            var colorbox = new Gtk.Box (Gtk.Orientation.HORIZONTAL, -1);
+            colorbox.pack_start (color_button_remove, true, true, 0);
+            colorbox.pack_start (color_button_red, true, true, 0);
+            colorbox.pack_start (color_button_orange, true, true, 0);
+            colorbox.pack_start (color_button_yellow, true, true, 0);
+            colorbox.pack_start (color_button_green, true, true, 0);
+            colorbox.pack_start (color_button_blue, true, true, 0);
+            colorbox.pack_start (color_button_violet, true, true, 0);
+
             button_press_event.connect (button_pressed_cb);
-            draw.connect (on_draw);
 
-            select.connect (() => {
-                has_focus = true;
-            });
-
-            deselect.connect (() => {
-                has_focus = false;
-            });
+            this.add (colorbox);
+            this.show_all ();
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
@@ -388,120 +623,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
             return true;
         }
-
-        protected bool on_draw (Cairo.Context cr) {
-            int y0 = (get_allocated_height () - BUTTON_HEIGHT) / 2;
-            int x0 = BUTTON_WIDTH + SPACING;
-
-            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
-                var width = get_allocated_width ();
-                int x = width - MARGIN_START - BUTTON_WIDTH;
-                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
-                    /* The order of colors is not reversed */
-                    draw_item (cr, x, y0, BUTTON_WIDTH, BUTTON_HEIGHT, i);
-                    x -= x0;
-                }
-            } else {
-                int x = MARGIN_START;
-                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
-                    draw_item (cr, x, y0, BUTTON_WIDTH, BUTTON_HEIGHT, i);
-                    x += x0;
-                }
-            }
-
-            return true;
-        }
-
-        private void draw_item (Cairo.Context cr, int x, int y, int width, int height, int index) {
-            if (index == 0) {
-                DrawCross (cr, x, y + 1, width - 2, height - 2);
-            } else {
-                DrawRoundedRectangle (cr, x, y, width, height, "stroke", index);
-                DrawRoundedRectangle (cr, x, y, width, height, "fill", index);
-                DrawGradientOverlay (cr, x, y, width, height);
-            }
-        }
-
-        private void DrawCross (Cairo.Context cr, int x, int y, int w, int h) {
-            cr.new_path ();
-            cr.set_line_width (2.0);
-            cr.move_to (x, y);
-            cr.rel_line_to (w, h);
-            cr.move_to (x, y+h);
-            cr.rel_line_to (w, -h);
-            cr.set_source_rgba (0,0,0,0.6);
-            cr.stroke ();
-
-            cr.close_path ();
-        }
-
-        /*
-         * Create a rounded rectangle using the Bezier curve.
-         * Adapted from http://cairographics.org/cookbook/roundedrectangles/
-         */
-        private void DrawRoundedRectangle (Cairo.Context cr, int x, int y, int w, int h, string style, int color) {
-            int radius_x=2;
-            int radius_y=2;
-            double ARC_TO_BEZIER = 0.55228475;
-
-            if (radius_x > w - radius_x) {
-                radius_x = w / 2;
-            }
-
-            if (radius_y > h - radius_y) {
-                radius_y = h / 2;
-            }
-
-            /* approximate (quite close) the arc using a bezier curve */
-            double ca = ARC_TO_BEZIER * radius_x;
-            double cb = ARC_TO_BEZIER * radius_y;
-
-            cr.new_path ();
-            cr.set_line_width (0.7);
-            cr.set_tolerance (0.1);
-            cr.move_to (x + radius_x, y);
-            cr.rel_line_to (w - 2 * radius_x, 0.0);
-            cr.rel_curve_to (ca, 0.0, radius_x, cb, radius_x, radius_y);
-            cr.rel_line_to (0, h - 2 * radius_y);
-            cr.rel_curve_to (0.0, cb, ca - radius_x, radius_y, -radius_x, radius_y);
-            cr.rel_line_to (-w + 2 * radius_x, 0);
-            cr.rel_curve_to (-ca, 0, -radius_x, -cb, -radius_x, -radius_y);
-            cr.rel_line_to (0, -h + 2 * radius_y);
-            cr.rel_curve_to (0.0, -cb, radius_x - ca, -radius_y, radius_x, -radius_y);
-
-            switch (style) {
-            default:
-            case "fill":
-                Gdk.RGBA rgba = Gdk.RGBA ();
-                rgba.parse (GOF.Preferences.TAGS_COLORS[color]);
-                Gdk.cairo_set_source_rgba (cr, rgba);
-                cr.fill ();
-                break;
-            case "stroke":
-                cr.set_source_rgba (0,0,0,0.5);
-                cr.stroke ();
-                break;
-            }
-
-            cr.close_path ();
-        }
-
-        /*
-         * Draw the overlaying gradient
-         */
-        private void DrawGradientOverlay (Cairo.Context cr, int x, int y, int w, int h) {
-            var radial = new Cairo.Pattern.radial (w, h, 1, 0.0, 0.0, 0.0);
-            radial.add_color_stop_rgba (0, 0.3, 0.3, 0.3,0.0);
-            radial.add_color_stop_rgba (1, 0.0, 0.0, 0.0,0.5);
-
-            cr.set_source (radial);
-            cr.rectangle (x,y,w,h);
-            cr.fill ();
-        }
     }
 }
 
 public Marlin.Plugins.Base module_init () {
     return new Marlin.Plugins.CTags ();
 }
-

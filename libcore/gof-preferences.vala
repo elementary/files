@@ -21,8 +21,10 @@ namespace GOF {
 
     public class Preferences : Object {
 
-        /* First color not actually used but for safety make non-null */
-        public const string[] TAGS_COLORS = { "#ffffff", "#fff394", "#ffc27d", "#a3907c", "#d1ff82", "#8cd5ff", "#e4c6fa", "#ff8c82", "#d4d4d4", "#95a3ab" };
+        /*  Colors not actually used but for safety made non-null are #fff now.
+         *  Color order is #ROYGBIV###. (# = #fff)
+         */
+        public const string[] TAGS_COLORS = { "#fff", "#ff8c82", "#ffc27d", "#ffe16b", "#9bdb4d", "#64baff", "#cd9ef7", "#fff", "#fff", "#fff" };
 
         public bool show_hidden_files {get; set; default=false;}
         public bool show_remote_thumbnails {set; get; default=false;}
