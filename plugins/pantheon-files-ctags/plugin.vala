@@ -328,50 +328,24 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    private class ColorButton : Gtk.Image {
-        private const int BUTTON_WIDTH = 16;
-        private const int BUTTON_HEIGHT = 16;
+    private class ColorButton : Gtk.Grid {
+        private static Gtk.CssProvider css_provider;
         public string color_name { get; construct; }
-        public string palette_name { get; construct; }
-        public int id { get; construct; }
 
-        public ColorButton (int id, string color_name, string palette_name) {
-            Object (
-                color_name: color_name,
-                id: id,
-                palette_name: palette_name
-            );
+        static construct {
+            css_provider = new Gtk.CssProvider ();
+            css_provider.load_from_resource ("io/elementary/files/ColorButton.css");
+        }
 
-            var css_provider = new Gtk.CssProvider ();
+        public ColorButton (string color_name) {
+            Object (color_name: color_name);
+        }
 
-            string style = """
-            .color-button {
-                border-radius: 16px;
-                text-shadow: 1px 1px transparent;
-                padding: 0;
-            }
-            .color-%s {
-                background-color: @%s\_300;
-                border: 1px solid @%s\_500;
-            }
-            .color-%s:hover {
-                background-color: @%s\_100;
-                transition: all 100ms ease-out;
-            }
-            """.printf (color_name, palette_name, palette_name, color_name, palette_name);
-
-            try {
-                css_provider.load_from_data (style, -1);
-                Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            } catch (GLib.Error e) {
-                warning ("Failed to parse css style : %s", e.message);
-            }
-
-            height_request = BUTTON_WIDTH;
-            width_request = BUTTON_HEIGHT;
-            var thiscontext = get_style_context ();
-            thiscontext.add_class ("color-button");
-            thiscontext.add_class ("color-%s".printf (color_name));
+        construct {
+            var style_context = get_style_context ();
+            style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            style_context.add_class ("color-button");
+            style_context.add_class (color_name);
         }
     }
 
@@ -406,13 +380,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             color_button_remove.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             color_button_remove.get_style_context ().add_class ("cross-fix");
 
-            var color_button_red = new ColorButton (1, "red", "STRAWBERRY");
-            var color_button_orange = new ColorButton (2, "orange", "ORANGE");
-            var color_button_yellow = new ColorButton (3, "yellow", "BANANA");
-            var color_button_green = new ColorButton (4, "green", "LIME");
-            var color_button_blue = new ColorButton (5, "blue", "BLUEBERRY");
-            var color_button_violet = new ColorButton (6, "violet", "GRAPE");
-            var color_button_slate = new ColorButton (7, "slate", "SLATE");
+            var color_button_red = new ColorButton ("red");
+            var color_button_orange = new ColorButton ("orange");
+            var color_button_yellow = new ColorButton ("yellow");
+            var color_button_green = new ColorButton ("green");
+            var color_button_blue = new ColorButton ("blue");
+            var color_button_violet = new ColorButton ("purple");
+            var color_button_slate = new ColorButton ("slate");
 
             var colorbox = new Gtk.Grid ();
             colorbox.set_size_request (150, 10);
