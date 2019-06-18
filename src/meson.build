@@ -9,6 +9,7 @@ pantheon_files_deps = [
 
 pantheon_files_exec = executable (
     meson.project_name (),
+    resources,
     'main.vala',
 
     'Application.vala',

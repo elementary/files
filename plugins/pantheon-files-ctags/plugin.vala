@@ -328,56 +328,24 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    private class ColorButton : Gtk.Image {
-        private const int BUTTON_WIDTH = 16;
-        private const int BUTTON_HEIGHT = 16;
-        private string color_name = "";
-        private string palette_name = "";
+    private class ColorButton : Gtk.Grid {
+        private static Gtk.CssProvider css_provider;
+        public string color_name { get; construct; }
 
-        public ColorButton (int id, string color_name, string palette_name) {
-            this.palette_name = palette_name;
-            this.color_name = color_name;
+        static construct {
+            css_provider = new Gtk.CssProvider ();
+            css_provider.load_from_resource ("io/elementary/files/ColorButton.css");
+        }
 
-            var css_provider = new Gtk.CssProvider ();
+        public ColorButton (int id, string color_name) {
+            Object (color_name: color_name);
+        }
 
-            string style = """
-            .color-button {
-                border-bottom-left-radius: 16px;
-                border-top-left-radius: 16px;
-                border-top-right-radius: 16px;
-                border-bottom-right-radius: 16px;
-                text-shadow: 1px 1px transparent;
-                padding: 0;
-            }
-            .color-%s {
-                background-color: @%s\_300;
-                border: 1px solid @%s\_500;
-            }
-            .color-%s:hover {
-                background-color: @%s\_100;
-                transition: all 100ms ease-out;
-            }
-            .nohover:hover {
-                background: @bg_color;
-            }
-            """.printf(color_name, palette_name, palette_name, color_name, palette_name);
-
-            try {
-                css_provider.load_from_data(style, -1);
-            } catch (GLib.Error e) {
-                warning ("Failed to parse css style : %s", e.message);
-            }
-
-            Gtk.StyleContext.add_provider_for_screen (
-                Gdk.Screen.get_default (),
-                css_provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            );
-
-            this.height_request = BUTTON_WIDTH;
-            this.width_request = BUTTON_HEIGHT;
-            this.get_style_context ().add_class ("color-button");
-            this.get_style_context ().add_class ("color-%s".printf(color_name));
+        construct {
+            var style_context = get_style_context ();
+            style_context.add_provider (css_provider,   Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            style_context.add_class ("color-button");
+            style_context.add_class (color_name);
         }
     }
 
@@ -414,13 +382,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             color_button_remove.get_style_context ().add_class ("flat");
             color_button_remove.get_style_context ().add_class ("cross-fix");
 
-            var color_button_red = new ColorButton (1, "red", "STRAWBERRY");
-            var color_button_orange = new ColorButton (2, "orange", "ORANGE");
-            var color_button_yellow = new ColorButton (3, "yellow", "BANANA");
-            var color_button_green = new ColorButton (4, "green", "LIME");
-            var color_button_blue = new ColorButton (5, "blue", "BLUEBERRY");
-            var color_button_violet = new ColorButton (6, "violet", "GRAPE");
-            var color_button_slate = new ColorButton (7, "slate", "SLATE");
+            var color_button_red = new ColorButton (1, "red");
+            var color_button_orange = new ColorButton (2, "orange");
+            var color_button_yellow = new ColorButton (3, "yellow");
+            var color_button_green = new ColorButton (4, "green");
+            var color_button_blue = new ColorButton (5, "blue");
+            var color_button_violet = new ColorButton (6, "purple");
+            var color_button_slate = new ColorButton (7, "slate");
 
             var colorbox = new Gtk.Grid ();
             colorbox.set_size_request (150, 10);
