@@ -337,7 +337,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             css_provider.load_from_resource ("io/elementary/files/ColorButton.css");
         }
 
-        public ColorButton (int id, string color_name) {
+        public ColorButton (string color_name) {
             Object (color_name: color_name);
         }
 
@@ -382,13 +382,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             color_button_remove.get_style_context ().add_class ("flat");
             color_button_remove.get_style_context ().add_class ("cross-fix");
 
-            var color_button_red = new ColorButton (1, "red");
-            var color_button_orange = new ColorButton (2, "orange");
-            var color_button_yellow = new ColorButton (3, "yellow");
-            var color_button_green = new ColorButton (4, "green");
-            var color_button_blue = new ColorButton (5, "blue");
-            var color_button_violet = new ColorButton (6, "purple");
-            var color_button_slate = new ColorButton (7, "slate");
+            var color_button_red = new ColorButton ("red");
+            var color_button_orange = new ColorButton ("orange");
+            var color_button_yellow = new ColorButton ("yellow");
+            var color_button_green = new ColorButton ("green");
+            var color_button_blue = new ColorButton ("blue");
+            var color_button_violet = new ColorButton ("purple");
+            var color_button_slate = new ColorButton ("slate");
 
             var colorbox = new Gtk.Grid ();
             colorbox.set_size_request (150, 10);
