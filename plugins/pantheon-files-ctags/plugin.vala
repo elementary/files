@@ -374,7 +374,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             );
 
-            this.halign = Gtk.Align.CENTER;
             this.height_request = BUTTON_WIDTH;
             this.width_request = BUTTON_HEIGHT;
             this.get_style_context ().add_class ("color-button");
@@ -392,6 +391,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             .nohover:hover {
                 background: @bg_color;
             }
+            .cross-fix {
+                margin: 0;
+                padding: 1px;
+                margin-right: -8px;
+                margin-left: 1px;
+            }
             """;
 
             try {
@@ -406,7 +411,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             );
 
-            var color_button_remove = new ColorButton ("remove", "WHITE");
+            var color_button_remove = new Gtk.Button ();
+            color_button_remove.height_request = 8;
+            color_button_remove.width_request = 16;
+            color_button_remove.get_style_context ().add_class ("flat");
+            color_button_remove.get_style_context ().add_class ("cross-fix");
+            color_button_remove.set_image (new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU));
+
             var color_button_red = new ColorButton ("red", "STRAWBERRY");
             var color_button_orange = new ColorButton ("orange", "ORANGE");
             var color_button_yellow = new ColorButton ("yellow", "BANANA");
