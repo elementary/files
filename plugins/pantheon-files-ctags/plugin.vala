@@ -354,7 +354,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
         construct {
             set_size_request (150, 10);
+
             var css_provider = new Gtk.CssProvider ();
+            var style_context = new Gtk.StyleContext ();
+
             string css = """
             .nohover:hover {
                 background: @bg_color;
@@ -366,20 +369,15 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             """;
 
             try {
-                css_provider.load_from_data(css, -1);
+                css_provider.load_from_data (css, -1);
+                Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             } catch (GLib.Error e) {
                 warning ("Failed to parse css style : %s", e.message);
             }
 
-            Gtk.StyleContext.add_provider_for_screen (
-                Gdk.Screen.get_default (),
-                css_provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            );
-
             var color_button_remove = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
             color_button_remove.width_request = 16;
-            color_button_remove.get_style_context ().add_class ("flat");
+            color_button_remove.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             color_button_remove.get_style_context ().add_class ("cross-fix");
 
             var color_button_red = new ColorButton (1, "red");
@@ -407,10 +405,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             // Cannot use this for every button due to this being a MenuItem
             button_press_event.connect (button_pressed_cb);
 
-            this.add (colorbox);
+            add (colorbox);
             // Remove pesky hover state coloring
-            this.get_style_context ().add_class ("nohover");
-            this.show_all ();
+            get_style_context ().add_class ("nohover");
+            show_all ();
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
