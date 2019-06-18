@@ -343,7 +343,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
         construct {
             var style_context = get_style_context ();
-            style_context.add_provider (css_provider,   Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             style_context.add_class ("color-button");
             style_context.add_class (color_name);
         }
