@@ -412,7 +412,14 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
-            /* Determine whether a color button was clicked on */
+            /*
+             * Determines whether a color button was clicked on.
+             * The button's height and width is assumed to be 16.
+             * And the calculated center point is 27.
+             * As such, these values are used to calculate the
+             * area of actuation for the color changing process,
+             * via the button's area press.
+             */
             int y0 = (get_allocated_height () - 16) / 2;
 
             if (event.y < y0 || event.y > y0 + 16) {
