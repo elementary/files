@@ -333,46 +333,34 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         private const int BUTTON_HEIGHT = 16;
         private string color_name = "";
         private string palette_name = "";
-        private int ncolor;
 
-        public ColorButton (string color_name, string palette_name, int ncolor) {
+        public ColorButton (string color_name, string palette_name) {
             this.palette_name = palette_name;
             this.color_name = color_name;
-            this.ncolor = ncolor;
 
             var css_provider = new Gtk.CssProvider ();
 
             string style = """
+            .color-button {
+                border-bottom-left-radius: 16px;
+                border-top-left-radius: 16px;
+                border-top-right-radius: 16px;
+                border-bottom-right-radius: 16px;
+                text-shadow: 1px 1px transparent;
+                padding: 3px;
+            }
             .color-%s {
                 background-color: @%s\_300;
                 border: 1px solid @%s\_500;
-                box-shadow:
-                inset 0 0 0 1px alpha (shade (@%s\_500, 1.4), 0.05),
-                    inset 0 1px 0 0 alpha (@%s\_500, 0.45),
-                    inset 0 -1px 0 0 alpha (#cccccc, 0.15);
-                    background-image:
-                    linear-gradient(
-                        to bottom,
-                        transparent,
-                        transparent 50%,
-                        alpha (
-                            #000,
-                            0.04
-                        )
-                    );
             }
             .color-%s:hover {
-                border-color: @%s\_300;
-                box-shadow:
-                    inset 0 1px 0 0 alpha (@%s\_500, 0.45),
-                    inset 0 -1px 0 0 alpha (@%s\_500, 0.15),
-                    0 0 0 1px alpha (#eeeeee, 0.25);
+                background-color: @%s\_100;
                 transition: all 100ms ease-out;
             }
             .nohover:hover {
                 background: @bg_color;
             }
-            """.printf(color_name, palette_name, palette_name, palette_name, palette_name, color_name, palette_name, palette_name, palette_name);
+            """.printf(color_name, palette_name, palette_name, color_name, palette_name);
 
             try {
                 css_provider.load_from_data(style, -1);
@@ -391,10 +379,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             this.width_request = BUTTON_HEIGHT;
             this.get_style_context ().add_class ("color-button");
             this.get_style_context ().add_class ("color-%s".printf(color_name));
-
-            this.clicked.connect (() => {
-                button_pressed_cb (ncolor);
-            });
         }
     }
 
@@ -422,14 +406,14 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             );
 
-            var color_button_remove = new ColorButton ("remove", "WHITE", 0);
-            var color_button_red = new ColorButton ("red", "STRAWBERRY", 1);
-            var color_button_orange = new ColorButton ("orange", "ORANGE", 2);
-            var color_button_yellow = new ColorButton ("yellow", "BANANA", 3);
-            var color_button_green = new ColorButton ("green", "LIME", 4);
-            var color_button_blue = new ColorButton ("blue", "BLUEBERRY", 5);
-            var color_button_violet = new ColorButton ("violet", "GRAPE", 6);
-            var color_button_slate = new ColorButton ("slate", "SLATE", 7);
+            var color_button_remove = new ColorButton ("remove", "WHITE");
+            var color_button_red = new ColorButton ("red", "STRAWBERRY");
+            var color_button_orange = new ColorButton ("orange", "ORANGE");
+            var color_button_yellow = new ColorButton ("yellow", "BANANA");
+            var color_button_green = new ColorButton ("green", "LIME");
+            var color_button_blue = new ColorButton ("blue", "BLUEBERRY");
+            var color_button_violet = new ColorButton ("violet", "GRAPE");
+            var color_button_slate = new ColorButton ("slate", "SLATE");
 
             var colorbox = new Gtk.Grid ();
             colorbox.set_column_spacing (9);
@@ -444,14 +428,35 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             colorbox.add (color_button_violet);
             colorbox.add (color_button_slate);
 
+            color_button_remove.clicked.connect (() => {
+                color_changed (0);
+            });
+            color_button_red.clicked.connect (() => {
+                color_changed (1);
+            });
+            color_button_orange.clicked.connect (() => {
+                color_changed (2);
+            });
+            color_button_yellow.clicked.connect (() => {
+                color_changed (3);
+            });
+            color_button_green.clicked.connect (() => {
+                color_changed (4);
+            });
+            color_button_blue.clicked.connect (() => {
+                color_changed (5);
+            });
+            color_button_violet.clicked.connect (() => {
+                color_changed (6);
+            });
+            color_button_slate.clicked.connect (() => {
+                color_changed (7);
+            });
+
             this.add (colorbox);
             // Remove pesky hover state coloring
             this.get_style_context ().add_class ("nohover");
             this.show_all ();
-        }
-
-        private void button_pressed_cb (int i) {
-            color_changed (i);
         }
     }
 }
