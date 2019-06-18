@@ -508,6 +508,32 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                     0 0 0 1px alpha (#eeeeee, 0.25);
                 transition: all 100ms ease-out;
             }
+            .color-slate {
+                background-color: @SLATE_300;
+                border: 1px solid @SLATE_500;
+                box-shadow:
+                inset 0 0 0 1px alpha (shade (@SLATE_500, 1.4), 0.05),
+                    inset 0 1px 0 0 alpha (@SLATE_500, 0.45),
+                    inset 0 -1px 0 0 alpha (#cccccc, 0.15);
+                    background-image:
+                    linear-gradient(
+                        to bottom,
+                        transparent,
+                        transparent 50%,
+                        alpha (
+                            #000,
+                            0.04
+                        )
+                    );
+            }
+            .color-slate:active {
+                border-color: @SLATE_300;
+                box-shadow:
+                    inset 0 1px 0 0 alpha (@SLATE_500, 0.45),
+                    inset 0 -1px 0 0 alpha (@SLATE_500, 0.15),
+                    0 0 0 1px alpha (#eeeeee, 0.25);
+                transition: all 100ms ease-out;
+            }
             """;
             try {
                 css_provider.load_from_data(style, -1);
@@ -568,6 +594,14 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             color_button_violet_context.add_class ("color-button");
             color_button_violet_context.add_class ("color-violet");
 
+            var color_button_slate = new Gtk.Button ();
+            color_button_slate.halign = Gtk.Align.CENTER;
+            color_button_slate.height_request = BUTTON_WIDTH;
+            color_button_slate.width_request = BUTTON_HEIGHT;
+            var color_button_slate_context = color_button_slate.get_style_context ();
+            color_button_slate_context.add_class ("color-button");
+            color_button_slate_context.add_class ("color-slate");
+
             var color_button_remove = new Gtk.Button ();
             color_button_remove.halign = Gtk.Align.CENTER;
             color_button_remove.height_request = BUTTON_WIDTH;
@@ -583,6 +617,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             colorbox.pack_start (color_button_green, true, true, 0);
             colorbox.pack_start (color_button_blue, true, true, 0);
             colorbox.pack_start (color_button_violet, true, true, 0);
+            colorbox.pack_start (color_button_slate, true, true, 0);
 
             button_press_event.connect (button_pressed_cb);
 
