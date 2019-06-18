@@ -331,21 +331,22 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private class ColorButton : Gtk.Image {
         private const int BUTTON_WIDTH = 16;
         private const int BUTTON_HEIGHT = 16;
-        private string color_name = "";
-        private string palette_name = "";
+        public string color_name { get; construct; }
+        public string palette_name { get; construct; }
+        public int id { get; construct; }
 
         public ColorButton (int id, string color_name, string palette_name) {
-            this.palette_name = palette_name;
-            this.color_name = color_name;
+            Object (
+                color_name: color_name,
+                id: id,
+                palette_name: palette_name
+            );
 
             var css_provider = new Gtk.CssProvider ();
 
             string style = """
             .color-button {
-                border-bottom-left-radius: 16px;
-                border-top-left-radius: 16px;
-                border-top-right-radius: 16px;
-                border-bottom-right-radius: 16px;
+                border-radius: 16px;
                 text-shadow: 1px 1px transparent;
                 padding: 0;
             }
@@ -357,27 +358,20 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 background-color: @%s\_100;
                 transition: all 100ms ease-out;
             }
-            .nohover:hover {
-                background: @bg_color;
-            }
-            """.printf(color_name, palette_name, palette_name, color_name, palette_name);
+            """.printf (color_name, palette_name, palette_name, color_name, palette_name);
 
             try {
-                css_provider.load_from_data(style, -1);
+                css_provider.load_from_data (style, -1);
+                Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             } catch (GLib.Error e) {
                 warning ("Failed to parse css style : %s", e.message);
             }
 
-            Gtk.StyleContext.add_provider_for_screen (
-                Gdk.Screen.get_default (),
-                css_provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            );
-
-            this.height_request = BUTTON_WIDTH;
-            this.width_request = BUTTON_HEIGHT;
-            this.get_style_context ().add_class ("color-button");
-            this.get_style_context ().add_class ("color-%s".printf(color_name));
+            height_request = BUTTON_WIDTH;
+            width_request = BUTTON_HEIGHT;
+            var thiscontext = get_style_context ();
+            thiscontext.add_class ("color-button");
+            thiscontext.add_class ("color-%s".printf (color_name));
         }
     }
 
@@ -386,7 +380,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
         construct {
             set_size_request (150, 10);
+
             var css_provider = new Gtk.CssProvider ();
+            var style_context = new Gtk.StyleContext ();
+
             string css = """
             .nohover:hover {
                 background: @bg_color;
@@ -398,20 +395,15 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             """;
 
             try {
-                css_provider.load_from_data(css, -1);
+                css_provider.load_from_data (css, -1);
+                Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             } catch (GLib.Error e) {
                 warning ("Failed to parse css style : %s", e.message);
             }
 
-            Gtk.StyleContext.add_provider_for_screen (
-                Gdk.Screen.get_default (),
-                css_provider,
-                Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
-            );
-
             var color_button_remove = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
             color_button_remove.width_request = 16;
-            color_button_remove.get_style_context ().add_class ("flat");
+            color_button_remove.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             color_button_remove.get_style_context ().add_class ("cross-fix");
 
             var color_button_red = new ColorButton (1, "red", "STRAWBERRY");
@@ -439,10 +431,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             // Cannot use this for every button due to this being a MenuItem
             button_press_event.connect (button_pressed_cb);
 
-            this.add (colorbox);
+            add (colorbox);
             // Remove pesky hover state coloring
-            this.get_style_context ().add_class ("nohover");
-            this.show_all ();
+            get_style_context ().add_class ("nohover");
+            show_all ();
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
