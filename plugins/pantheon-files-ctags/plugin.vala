@@ -328,7 +328,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    private class ColorButton : Gtk.Button {
+    private class ColorButton : Gtk.Image {
         private const int BUTTON_WIDTH = 16;
         private const int BUTTON_HEIGHT = 16;
         private string color_name = "";
@@ -347,7 +347,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 border-top-right-radius: 16px;
                 border-bottom-right-radius: 16px;
                 text-shadow: 1px 1px transparent;
-                padding: 3px;
+                padding: 0;
             }
             .color-%s {
                 background-color: @%s\_300;
@@ -385,7 +385,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         public signal void color_changed (int ncolor);
 
         construct {
-            set_size_request (150, 20);
+            set_size_request (150, 10);
             var css_provider = new Gtk.CssProvider ();
             string css = """
             .nohover:hover {
@@ -393,9 +393,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             }
             .cross-fix {
                 margin: 0;
-                padding: 1px;
-                margin-right: -8px;
-                margin-left: 1px;
+                padding: 0;
             }
             """;
 
@@ -411,12 +409,10 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
             );
 
-            var color_button_remove = new Gtk.Button ();
-            color_button_remove.height_request = 8;
+            var color_button_remove = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
             color_button_remove.width_request = 16;
             color_button_remove.get_style_context ().add_class ("flat");
             color_button_remove.get_style_context ().add_class ("cross-fix");
-            color_button_remove.set_image (new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU));
 
             var color_button_red = new ColorButton (1, "red", "STRAWBERRY");
             var color_button_orange = new ColorButton (2, "orange", "ORANGE");
@@ -427,6 +423,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             var color_button_slate = new ColorButton (7, "slate", "SLATE");
 
             var colorbox = new Gtk.Grid ();
+            colorbox.set_size_request (150, 10);
             colorbox.set_column_spacing (9);
             colorbox.margin_start = 3;
             colorbox.halign = Gtk.Align.START;
