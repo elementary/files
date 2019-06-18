@@ -334,7 +334,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         private string color_name = "";
         private string palette_name = "";
 
-        public ColorButton (string color_name, string palette_name) {
+        public ColorButton (int id, string color_name, string palette_name) {
             this.palette_name = palette_name;
             this.color_name = color_name;
 
@@ -418,13 +418,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             color_button_remove.get_style_context ().add_class ("cross-fix");
             color_button_remove.set_image (new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU));
 
-            var color_button_red = new ColorButton ("red", "STRAWBERRY");
-            var color_button_orange = new ColorButton ("orange", "ORANGE");
-            var color_button_yellow = new ColorButton ("yellow", "BANANA");
-            var color_button_green = new ColorButton ("green", "LIME");
-            var color_button_blue = new ColorButton ("blue", "BLUEBERRY");
-            var color_button_violet = new ColorButton ("violet", "GRAPE");
-            var color_button_slate = new ColorButton ("slate", "SLATE");
+            var color_button_red = new ColorButton (1, "red", "STRAWBERRY");
+            var color_button_orange = new ColorButton (2, "orange", "ORANGE");
+            var color_button_yellow = new ColorButton (3, "yellow", "BANANA");
+            var color_button_green = new ColorButton (4, "green", "LIME");
+            var color_button_blue = new ColorButton (5, "blue", "BLUEBERRY");
+            var color_button_violet = new ColorButton (6, "violet", "GRAPE");
+            var color_button_slate = new ColorButton (7, "slate", "SLATE");
 
             var colorbox = new Gtk.Grid ();
             colorbox.set_column_spacing (9);
