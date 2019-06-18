@@ -329,13 +329,14 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private class ColorWidget : Gtk.MenuItem {
+        private new bool has_focus;
         private const int BUTTON_WIDTH = 16;
         private const int BUTTON_HEIGHT = 16;
         /* Set start margin to match other menuitems. Is there a way to determine
          * this programmatically?  */
         private const int MARGIN_START = 27;
         // SPACING = geometric center of each of the color buttons.
-        private const int SPACING = 5;
+        private const int SPACING = 3;
 
         public signal void color_changed (int ncolor);
 
@@ -370,7 +371,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         )
                     );
             }
-            .color-red:active {
+            .color-red:hover {
                 border-color: @STRAWBERRY_300;
                 box-shadow:
                     inset 0 1px 0 0 alpha (@STRAWBERRY_700, 0.45),
@@ -396,7 +397,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         )
                     );
             }
-            .color-orange:active {
+            .color-orange:hover {
                 border-color: @ORANGE_300;
                 box-shadow:
                     inset 0 1px 0 0 alpha (@ORANGE_700, 0.45),
@@ -422,7 +423,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         )
                     );
             }
-            .color-yellow:active {
+            .color-yellow:hover {
                 border-color: @BANANA_300;
                 box-shadow:
                     inset 0 1px 0 0 alpha (@BANANA_700, 0.45),
@@ -448,7 +449,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         )
                     );
             }
-            .color-green:active {
+            .color-green:hover {
                 border-color: @LIME_300;
                 box-shadow:
                     inset 0 1px 0 0 alpha (@LIME_700, 0.45),
@@ -474,7 +475,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         )
                     );
             }
-            .color-blue:active {
+            .color-blue:hover {
                 border-color: @BLUEBERRY_300;
                 box-shadow:
                     inset 0 1px 0 0 alpha (@BLUEBERRY_700, 0.45),
@@ -500,7 +501,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         )
                     );
             }
-            .color-violet:active {
+            .color-violet:hover {
                 border-color: @GRAPE_300;
                 box-shadow:
                     inset 0 1px 0 0 alpha (@GRAPE_700, 0.45),
@@ -526,13 +527,16 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         )
                     );
             }
-            .color-slate:active {
+            .color-slate:hover {
                 border-color: @SLATE_300;
                 box-shadow:
                     inset 0 1px 0 0 alpha (@SLATE_500, 0.45),
                     inset 0 -1px 0 0 alpha (@SLATE_500, 0.15),
                     0 0 0 1px alpha (#eeeeee, 0.25);
                 transition: all 100ms ease-out;
+            }
+            .nohover:hover {
+                background: @bg_color;
             }
             """;
             try {
@@ -621,7 +625,18 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
             button_press_event.connect (button_pressed_cb);
 
+            select.connect (() => {
+                has_focus = true;
+            });
+
+            deselect.connect (() => {
+                has_focus = false;
+            });
+
             this.add (colorbox);
+            // Remove pesky hover state coloring
+            var thiscontext = this.get_style_context ();
+            thiscontext.add_class ("nohover");
             this.show_all ();
         }
 
