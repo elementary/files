@@ -428,35 +428,47 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             colorbox.add (color_button_violet);
             colorbox.add (color_button_slate);
 
-            color_button_remove.clicked.connect (() => {
-                color_changed (0);
-            });
-            color_button_red.clicked.connect (() => {
-                color_changed (1);
-            });
-            color_button_orange.clicked.connect (() => {
-                color_changed (2);
-            });
-            color_button_yellow.clicked.connect (() => {
-                color_changed (3);
-            });
-            color_button_green.clicked.connect (() => {
-                color_changed (4);
-            });
-            color_button_blue.clicked.connect (() => {
-                color_changed (5);
-            });
-            color_button_violet.clicked.connect (() => {
-                color_changed (6);
-            });
-            color_button_slate.clicked.connect (() => {
-                color_changed (7);
-            });
+            // Cannot use this for every button due to this being a MenuItem
+            button_press_event.connect (button_pressed_cb);
 
             this.add (colorbox);
             // Remove pesky hover state coloring
             this.get_style_context ().add_class ("nohover");
             this.show_all ();
+        }
+
+        private bool button_pressed_cb (Gdk.EventButton event) {
+            /* Determine whether a color button was clicked on */
+            int y0 = (get_allocated_height () - 16) / 2;
+
+            if (event.y < y0 || event.y > y0 + 16) {
+                return true;
+            }
+
+            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+                var width = get_allocated_width ();
+                int x = width - 27;
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                    if (event.x <= x && event.x >= x - 16) {
+                        color_changed (i);
+                        break;
+                    }
+
+                    x -= 25;
+                }
+            } else {
+                int x = 27;
+                for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
+                    if (event.x >= x && event.x <= x + 16) {
+                        color_changed (i);
+                        break;
+                    }
+
+                    x += 25;
+                }
+            }
+
+            return true;
         }
     }
 }
