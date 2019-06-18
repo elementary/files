@@ -428,7 +428,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         break;
                     }
 
-                    x -= 25;
+                    x -= 27;
                 }
             } else {
                 int x = 27;
@@ -438,7 +438,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         break;
                     }
 
-                    x += 25;
+                    x += 27;
                 }
             }
 
