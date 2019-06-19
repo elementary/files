@@ -299,7 +299,7 @@ namespace Marlin {
                 int y0 = cell_area.y + y_offset;
                 var provider = new Gtk.CssProvider ();
                 string data;
-                if (selected) {
+                if (selected && !background_set) {
                     data = "* {border-radius: 5px;}";
                 } else {
                     data = "* {border-radius: 5px; background-color: %s;}".printf (background_rgba.to_string ());
