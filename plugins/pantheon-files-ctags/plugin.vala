@@ -371,7 +371,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         public signal void color_changed (int ncolor);
 
         private Gee.ArrayList<ColorButton> color_buttons;
-
         private ColorButton color_button_red;
         private const int COLORBOX_SPACING = 3;
 
