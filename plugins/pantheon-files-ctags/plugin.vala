@@ -379,36 +379,25 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             var color_button_remove = new ColorButton ("white");
 
             color_button_red = new ColorButton ("red");
-            var color_button_orange = new ColorButton ("orange");
-            var color_button_yellow = new ColorButton ("yellow");
-            var color_button_green = new ColorButton ("green");
-            var color_button_blue = new ColorButton ("blue");
-            var color_button_violet = new ColorButton ("purple");
-            var color_button_brown = new ColorButton ("brown");
-            var color_button_slate = new ColorButton ("slate");
 
             color_buttons = new Gee.ArrayList<ColorButton> ();
             color_buttons.add (color_button_red);
-            color_buttons.add (color_button_orange);
-            color_buttons.add (color_button_yellow);
-            color_buttons.add (color_button_green);
-            color_buttons.add (color_button_blue);
-            color_buttons.add (color_button_violet);
-            color_buttons.add (color_button_brown);
-            color_buttons.add (color_button_slate);
+            color_buttons.add (new ColorButton ("orange"));
+            color_buttons.add (new ColorButton ("yellow"));
+            color_buttons.add (new ColorButton ("green"));
+            color_buttons.add (new ColorButton ("blue"));
+            color_buttons.add (new ColorButton ("purple"));
+            color_buttons.add (new ColorButton ("brown"));
+            color_buttons.add (new ColorButton ("slate"));
 
             var colorbox = new Gtk.Grid ();
             colorbox.column_spacing = COLORBOX_SPACING;
             colorbox.margin_start = 3;
             colorbox.halign = Gtk.Align.START;
             colorbox.add (color_button_remove);
-            for (int i = 0; i < color_buttons.size; i++) {
-	                colorbox.add (color_buttons[i]);
-	            }
 
-            color_buttons = new Gee.ArrayList<ColorButton> ();
-            foreach (Gtk.Widget? button in colorbox.get_children ()) {
-                color_buttons.add ((ColorButton) button);
+            for (int i = 0; i < color_buttons.size; i++) {
+                colorbox.add (color_buttons[i]);
             }
 
             add (colorbox);
