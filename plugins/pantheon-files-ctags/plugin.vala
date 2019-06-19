@@ -386,6 +386,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             var color_button_green = new ColorButton ("green");
             var color_button_blue = new ColorButton ("blue");
             var color_button_violet = new ColorButton ("purple");
+            var color_button_brown = new ColorButton ("brown");
             var color_button_slate = new ColorButton ("slate");
 
             var colorbox = new Gtk.Grid ();
@@ -400,6 +401,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             colorbox.add (color_button_green);
             colorbox.add (color_button_blue);
             colorbox.add (color_button_violet);
+            colorbox.add (color_button_brown);
             colorbox.add (color_button_slate);
 
             // Cannot use this for every button due to this being a MenuItem
