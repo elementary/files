@@ -278,6 +278,24 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         var menu = widget as Gtk.Menu;
         var color_menu_item = new ColorWidget ();
         current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
+
+        /* Check the color currently set (if there is only one color amongst the selection) */
+        int current_color = 0;
+
+        foreach (GOF.File gof in current_selected_files) {
+            if (current_color == 0 && gof.color > 0 ) {
+                current_color = gof.color;
+            }
+
+            if (gof.color > 0 && current_color > 0 && current_color != gof.color) {
+                current_color = -1;
+            }
+        }
+
+        if (current_color > 0) {
+            color_menu_item.set_current_color (current_color);
+        }
+
         color_menu_item.color_changed.connect ((ncolor) => {
             set_color.begin (current_selected_files, ncolor);
         });
@@ -328,7 +346,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    private class ColorButton : Gtk.RadioButton {
+    private class ColorButton : Gtk.CheckButton {
         private static Gtk.CssProvider css_provider;
         public string color_name { get; construct; }
 
@@ -352,49 +370,46 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private class ColorWidget : Gtk.MenuItem {
         public signal void color_changed (int ncolor);
 
+        private Gee.ArrayList<ColorButton> color_buttons;
+
         private ColorButton color_button_red;
-        private const int COLORBOX_SPACING = 6;
+        private const int COLORBOX_SPACING = 3;
 
         construct {
             var color_button_remove = new ColorButton ("white");
 
             color_button_red = new ColorButton ("red");
-            color_button_red.group = color_button_remove;
-
             var color_button_orange = new ColorButton ("orange");
-            color_button_orange.group = color_button_remove;
-
             var color_button_yellow = new ColorButton ("yellow");
-            color_button_yellow.group = color_button_remove;
-
             var color_button_green = new ColorButton ("green");
-            color_button_green.group = color_button_remove;
-
             var color_button_blue = new ColorButton ("blue");
-            color_button_blue.group = color_button_remove;
-
             var color_button_violet = new ColorButton ("purple");
-            color_button_violet.group = color_button_remove;
-
             var color_button_brown = new ColorButton ("brown");
-            color_button_brown.group = color_button_remove;
-
             var color_button_slate = new ColorButton ("slate");
-            color_button_slate.group = color_button_remove;
+
+            color_buttons = new Gee.ArrayList<ColorButton> ();
+            color_buttons.add (color_button_red);
+            color_buttons.add (color_button_orange);
+            color_buttons.add (color_button_yellow);
+            color_buttons.add (color_button_green);
+            color_buttons.add (color_button_blue);
+            color_buttons.add (color_button_violet);
+            color_buttons.add (color_button_brown);
+            color_buttons.add (color_button_slate);
 
             var colorbox = new Gtk.Grid ();
             colorbox.column_spacing = COLORBOX_SPACING;
             colorbox.margin_start = 3;
             colorbox.halign = Gtk.Align.START;
             colorbox.add (color_button_remove);
-            colorbox.add (color_button_red);
-            colorbox.add (color_button_orange);
-            colorbox.add (color_button_yellow);
-            colorbox.add (color_button_green);
-            colorbox.add (color_button_blue);
-            colorbox.add (color_button_violet);
-            colorbox.add (color_button_brown);
-            colorbox.add (color_button_slate);
+            for (int i = 0; i < color_buttons.size; i++) {
+	                colorbox.add (color_buttons[i]);
+	            }
+
+            color_buttons = new Gee.ArrayList<ColorButton> ();
+            foreach (Gtk.Widget? button in colorbox.get_children ()) {
+                color_buttons.add ((ColorButton) button);
+            }
 
             add (colorbox);
 
@@ -405,7 +420,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 css_provider.load_from_data (css, -1);
 
                 var style_context = get_style_context ();
-
                 style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
                 style_context.add_class ("nohover");
             } catch (GLib.Error e) {
@@ -416,6 +430,18 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
 
             // Cannot use this for every button due to this being a MenuItem
             button_press_event.connect (button_pressed_cb);
+        }
+
+        public void set_current_color (int color) {
+            if (color == 0 || color > color_buttons.size) {
+                return;
+            }
+
+            foreach (ColorButton cb in color_buttons) {
+                cb.active = false;
+            }
+
+            color_buttons[color - 1].active = true;
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {

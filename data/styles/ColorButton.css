@@ -1,18 +1,18 @@
-.color-button radio,
-.color-button radio:checked {
+.color-button check,
+.color-button check:checked {
     border: 1px solid @border_color;
     border-radius: 12px;
     box-shadow:
         inset 0 1px 0 0 alpha (@inset_dark_color, 0.7),
         inset 0 0 0 1px alpha (@inset_dark_color, 0.3),
         0 1px 0 0 alpha (@bg_highlight_color, 0.3);
-    min-height: 11px;
-    min-width: 11px;
+    min-height: 10px;
+    min-width: 10px;
     padding: 3px;
     -gtk-icon-shadow: none;
 }
 
-.color-button.white radio {
+.color-button.white check {
     background: @base_color;
     color: mix (@text_color, @base_color, 0.5);
     min-height: 16px;
@@ -21,34 +21,34 @@
     -gtk-icon-source: -gtk-icontheme("close-symbolic");
 }
 
-.color-button.red radio {
+.color-button.red check {
     background: @STRAWBERRY_300;
 }
 
-.color-button.orange radio {
+.color-button.orange check {
     background: @ORANGE_300;
 }
 
-.color-button.yellow radio {
+.color-button.yellow check {
     background: @BANANA_500;
 }
 
-.color-button.green radio {
+.color-button.green check {
     background: @LIME_500;
 }
 
-.color-button.blue radio {
+.color-button.blue check {
     background: @BLUEBERRY_500;
 }
 
-.color-button.purple radio {
+.color-button.purple check {
     background: @GRAPE_500;
 }
 
-.color-button.brown radio {
+.color-button.brown check {
     background: @COCOA_300;
 }
 
-.color-button.slate radio {
+.color-button.slate check {
     background: @SLATE_300;
 }
