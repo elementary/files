@@ -376,6 +376,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             var color_button_violet = new ColorButton ("purple");
             color_button_violet.group = color_button_remove;
 
+            var color_button_brown = new ColorButton ("brown");
+            color_button_brown.group = color_button_remove;
+
             var color_button_slate = new ColorButton ("slate");
             color_button_slate.group = color_button_remove;
 
@@ -390,6 +393,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             colorbox.add (color_button_green);
             colorbox.add (color_button_blue);
             colorbox.add (color_button_violet);
+            colorbox.add (color_button_brown);
             colorbox.add (color_button_slate);
 
             add (colorbox);
