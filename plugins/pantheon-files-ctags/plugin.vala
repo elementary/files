@@ -328,7 +328,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
     }
 
-    private class ColorButton : Gtk.Grid {
+    private class ColorButton : Gtk.RadioButton {
         private static Gtk.CssProvider css_provider;
         public string color_name { get; construct; }
 
@@ -352,45 +352,35 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private class ColorWidget : Gtk.MenuItem {
         public signal void color_changed (int ncolor);
 
+        private ColorButton color_button_red;
+        private const int COLORBOX_SPACING = 6;
+
         construct {
-            set_size_request (150, 10);
+            var color_button_remove = new ColorButton ("white");
 
-            var css_provider = new Gtk.CssProvider ();
-            var style_context = new Gtk.StyleContext ();
+            color_button_red = new ColorButton ("red");
+            color_button_red.group = color_button_remove;
 
-            string css = """
-            .nohover:hover {
-                background: @bg_color;
-            }
-            .cross-fix {
-                margin: 0;
-                padding: 0;
-            }
-            """;
-
-            try {
-                css_provider.load_from_data (css, -1);
-                Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
-            } catch (GLib.Error e) {
-                warning ("Failed to parse css style : %s", e.message);
-            }
-
-            var color_button_remove = new Gtk.Image.from_icon_name ("window-close-symbolic", Gtk.IconSize.MENU);
-            color_button_remove.width_request = 16;
-            color_button_remove.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
-            color_button_remove.get_style_context ().add_class ("cross-fix");
-
-            var color_button_red = new ColorButton ("red");
             var color_button_orange = new ColorButton ("orange");
+            color_button_orange.group = color_button_remove;
+
             var color_button_yellow = new ColorButton ("yellow");
+            color_button_yellow.group = color_button_remove;
+
             var color_button_green = new ColorButton ("green");
+            color_button_green.group = color_button_remove;
+
             var color_button_blue = new ColorButton ("blue");
+            color_button_blue.group = color_button_remove;
+
             var color_button_violet = new ColorButton ("purple");
+            color_button_violet.group = color_button_remove;
+
             var color_button_slate = new ColorButton ("slate");
+            color_button_slate.group = color_button_remove;
 
             var colorbox = new Gtk.Grid ();
-            colorbox.set_size_request (150, 10);
-            colorbox.set_column_spacing (9);
+            colorbox.column_spacing = COLORBOX_SPACING;
             colorbox.margin_start = 3;
             colorbox.halign = Gtk.Align.START;
             colorbox.add (color_button_remove);
@@ -402,27 +392,35 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             colorbox.add (color_button_violet);
             colorbox.add (color_button_slate);
 
+            add (colorbox);
+
+            try {
+                string css = ".nohover { background: none; }";
+
+                var css_provider = new Gtk.CssProvider ();
+                css_provider.load_from_data (css, -1);
+
+                var style_context = get_style_context ();
+
+                style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                style_context.add_class ("nohover");
+            } catch (GLib.Error e) {
+                warning ("Failed to parse css style : %s", e.message);
+            }
+
+            show_all ();
+
             // Cannot use this for every button due to this being a MenuItem
             button_press_event.connect (button_pressed_cb);
-
-            add (colorbox);
-            // Remove pesky hover state coloring
-            get_style_context ().add_class ("nohover");
-            show_all ();
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
-            /*
-             * Determines whether a color button was clicked on.
-             * The button's height and width is assumed to be 16.
-             * And the calculated center point is 27.
-             * As such, these values are used to calculate the
-             * area of actuation for the color changing process,
-             * via the button's area press.
-             */
-            int y0 = (get_allocated_height () - 16) / 2;
+            var color_button_width = color_button_red.get_allocated_width ();
 
-            if (event.y < y0 || event.y > y0 + 16) {
+            int y0 = (get_allocated_height () - color_button_width) / 2;
+            int x0 = COLORBOX_SPACING + color_button_width;
+
+            if (event.y < y0 || event.y > y0 + color_button_width) {
                 return true;
             }
 
@@ -430,12 +428,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 var width = get_allocated_width ();
                 int x = width - 27;
                 for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
-                    if (event.x <= x && event.x >= x - 16) {
+                    if (event.x <= x && event.x >= x - color_button_width) {
                         color_changed (i);
                         break;
                     }
 
-                    x -= 27;
+                    x -= x0;
                 }
             } else {
                 int x = 27;
@@ -445,7 +443,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                         break;
                     }
 
-                    x += 27;
+                    x += x0;
                 }
             }
 
