@@ -278,6 +278,24 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         var menu = widget as Gtk.Menu;
         var color_menu_item = new ColorWidget ();
         current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
+
+        /* Check the color currently set (if there is only one color amongst the selection) */
+        int current_color = 0;
+
+        foreach (GOF.File gof in current_selected_files) {
+            if (current_color == 0 && gof.color > 0 ) {
+                current_color = gof.color;
+            }
+
+            if (gof.color > 0 && current_color > 0 && current_color != gof.color) {
+                current_color = -1;
+            }
+        }
+
+        if (current_color > 0) {
+            color_menu_item.set_current_color (current_color);
+        }
+
         color_menu_item.color_changed.connect ((ncolor) => {
             set_color.begin (current_selected_files, ncolor);
         });
@@ -331,6 +349,20 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     private class ColorButton : Gtk.Grid {
         private static Gtk.CssProvider css_provider;
         public string color_name { get; construct; }
+        public bool checked {
+            get {
+                return get_style_context ().has_class ("checked");
+            }
+
+            set {
+                var sc = get_style_context ();
+                if (value) {
+                    sc.add_class ("checked");
+                } else if (sc.has_class ("checked")) {
+                    sc.remove_class ("checked");
+                }
+            }
+        }
 
         static construct {
             css_provider = new Gtk.CssProvider ();
@@ -350,6 +382,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
     }
 
     private class ColorWidget : Gtk.MenuItem {
+        Gee.ArrayList<ColorButton> color_buttons;
         public signal void color_changed (int ncolor);
 
         construct {
@@ -380,27 +413,26 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             color_button_remove.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             color_button_remove.get_style_context ().add_class ("cross-fix");
 
-            var color_button_red = new ColorButton ("red");
-            var color_button_orange = new ColorButton ("orange");
-            var color_button_yellow = new ColorButton ("yellow");
-            var color_button_green = new ColorButton ("green");
-            var color_button_blue = new ColorButton ("blue");
-            var color_button_violet = new ColorButton ("purple");
-            var color_button_slate = new ColorButton ("slate");
+            color_buttons = new Gee.ArrayList<ColorButton> ();
+            color_buttons.add (new ColorButton ("red"));
+            color_buttons.add (new ColorButton ("orange"));
+            color_buttons.add (new ColorButton ("yellow"));
+            color_buttons.add (new ColorButton ("green"));
+            color_buttons.add (new ColorButton ("blue"));
+            color_buttons.add (new ColorButton ("purple"));
+            color_buttons.add (new ColorButton ("slate"));
 
             var colorbox = new Gtk.Grid ();
             colorbox.set_size_request (150, 10);
             colorbox.set_column_spacing (9);
             colorbox.margin_start = 3;
             colorbox.halign = Gtk.Align.START;
+
             colorbox.add (color_button_remove);
-            colorbox.add (color_button_red);
-            colorbox.add (color_button_orange);
-            colorbox.add (color_button_yellow);
-            colorbox.add (color_button_green);
-            colorbox.add (color_button_blue);
-            colorbox.add (color_button_violet);
-            colorbox.add (color_button_slate);
+
+            for (int i = 0; i < 7; i++) {
+                colorbox.add (color_buttons[i]);
+            }
 
             // Cannot use this for every button due to this being a MenuItem
             button_press_event.connect (button_pressed_cb);
@@ -409,6 +441,18 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             // Remove pesky hover state coloring
             get_style_context ().add_class ("nohover");
             show_all ();
+        }
+
+        public void set_current_color (int color) {
+            if (color == 0 || color > color_buttons.size) {
+                return;
+            }
+
+            foreach (ColorButton cb in color_buttons) {
+                cb.checked = false;
+            }
+
+            color_buttons[color - 1].checked = true;
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
