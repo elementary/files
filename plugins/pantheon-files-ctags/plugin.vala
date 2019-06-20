@@ -409,7 +409,6 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         private void clear_checks () {
-warning ("clear checks");
             color_buttons.foreach ((b) => { b.active = false; return true;});
         }
 
@@ -422,7 +421,6 @@ warning ("clear checks");
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
-warning ("button press call back");
             var color_button_width = color_button_red.get_allocated_width ();
 
             int y0 = (get_allocated_height () - color_button_width) / 2;
