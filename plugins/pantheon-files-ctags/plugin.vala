@@ -279,21 +279,9 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         var color_menu_item = new ColorWidget ();
         current_selected_files = selected_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
 
-        /* Check the color currently set (if there is only one color amongst the selection) */
-        int current_color = 0;
-
+        /* Check the colors currently set */
         foreach (GOF.File gof in current_selected_files) {
-            if (current_color == 0 && gof.color > 0 ) {
-                current_color = gof.color;
-            }
-
-            if (gof.color > 0 && current_color > 0 && current_color != gof.color) {
-                current_color = -1;
-            }
-        }
-
-        if (current_color > 0) {
-            color_menu_item.set_current_color (current_color);
+            color_menu_item.check_color (gof.color);
         }
 
         color_menu_item.color_changed.connect ((ncolor) => {
@@ -420,13 +408,13 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             button_press_event.connect (button_pressed_cb);
         }
 
-        public void set_current_color (int color) {
+        private void clear_checks () {
+            color_buttons.foreach ((b) => { b.active = false; return true;});
+        }
+
+        public void check_color (int color) {
             if (color == 0 || color > color_buttons.size) {
                 return;
-            }
-
-            foreach (ColorButton cb in color_buttons) {
-                cb.active = false;
             }
 
             color_buttons[color - 1].active = true;
@@ -448,6 +436,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
                     if (event.x <= x && event.x >= x - color_button_width) {
                         color_changed (i);
+                        clear_checks ();
+                        check_color (i);
                         break;
                     }
 
@@ -458,6 +448,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
                 for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
                     if (event.x >= x && event.x <= x + 16) {
                         color_changed (i);
+                        clear_checks ();
+                        check_color (i);
                         break;
                     }
 
