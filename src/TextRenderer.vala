@@ -126,12 +126,24 @@ namespace Marlin {
                 x_offset += border_radius;
             }
 
+            var provider = new Gtk.CssProvider ();
+            if (background_set) {
+                string data = "* {color: %s;}".printf (Granite.contrasting_foreground_color (background_rgba).to_string ());
+                try {
+                    provider.load_from_data (data);
+                    style_context.add_provider (provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+                } catch (Error e) {
+                    critical (e.message);
+                }
+            }
+
             style_context.render_layout (cr,
                                          cell_area.x + x_offset,
                                          cell_area.y + y_offset,
                                          layout);
 
-            style_context.restore ();
+            style_context.restore (); /* NOTE: This does not remove added classes */
+            style_context.remove_provider (provider); /* No error if provider not added */
 
             /* The render call should always be preceded by a set_property call
                from GTK. It should be safe to unreference or free the allocated
