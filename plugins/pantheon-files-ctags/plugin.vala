@@ -340,7 +340,8 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         public signal void color_changed (int ncolor);
 
         public ColorWidget () {
-            set_size_request (150, 20);
+            set_size_request (MARGIN_START + (GOF.Preferences.TAGS_COLORS.length - 1) * (BUTTON_WIDTH + SPACING),
+                              BUTTON_HEIGHT * 2);
 
             button_press_event.connect (button_pressed_cb);
             draw.connect (on_draw);
