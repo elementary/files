@@ -570,7 +570,7 @@ public class PropertiesWindow : AbstractPropertiesDialog {
 
         var ftype = filetype (file);
 
-        var mimetype_key = new KeyLabel (_("MIME type:"));
+        var mimetype_key = new KeyLabel (_("Media type:"));
         var mimetype_value = new ValueLabel (ftype);
         info_grid.attach (mimetype_key, 0, n, 1, 1);
         info_grid.attach_next_to (mimetype_value, mimetype_key, Gtk.PositionType.RIGHT, 3, 1);
