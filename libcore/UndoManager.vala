@@ -540,7 +540,7 @@ public class Marlin.UndoManager : GLib.Object {
 
     public async void undo (Gtk.Widget widget, GLib.Cancellable? cancellable = null) throws GLib.Error {
         mutex.lock ();
-        weak Marlin.UndoManagerData? action = stack_scroll_right ();
+        unowned Marlin.UndoManagerData? action = stack_scroll_right ();
         if (action != null) {
             action.locked = true;
         }
@@ -836,7 +836,7 @@ public class Marlin.UndoManager : GLib.Object {
         return data;
     }
 
-    private void undo_redo_done_transfer_callback (owned Marlin.UndoManagerData action) {
+    private void undo_redo_done_transfer_callback (Marlin.UndoManagerData action) {
         /* If the action needed to be freed but was locked, free now */
         if (!action.freed) {
             action.locked = false;
