@@ -20,9 +20,8 @@ namespace GOF {
     public static Preferences? preferences = null;
 
     public class Preferences : Object {
-
         /* First element set to null in order that the text renderer background is not set */
-        public const string?[] TAGS_COLORS = { null, "#fff394", "#ffc27d", "#a3907c", "#d1ff82", "#8cd5ff", "#e4c6fa", "#ff8c82", "#d4d4d4", "#95a3ab" };
+        public const string?[] TAGS_COLORS = { null, "#ff8c82", "#ffc27d", "#ffe16b", "#9bdb4d", "#64baff", "#cd9ef7", "#a3907c", "#95a3ab", null };
 
         public bool show_hidden_files {get; set; default=false;}
         public bool show_remote_thumbnails {set; get; default=false;}
