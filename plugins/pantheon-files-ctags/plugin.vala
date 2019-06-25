@@ -363,7 +363,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         private const int COLORBOX_SPACING = 3;
 
         construct {
-            var color_button_remove = new ColorButton ("white");
+            var color_button_remove = new ColorButton ("none");
 
             color_button_red = new ColorButton ("red");
 
