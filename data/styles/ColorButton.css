@@ -12,7 +12,7 @@
     -gtk-icon-shadow: none;
 }
 
-.color-button.white check {
+.color-button.none check {
     background: @base_color;
     color: mix (@text_color, @base_color, 0.5);
     min-height: 16px;

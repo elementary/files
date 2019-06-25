@@ -359,16 +359,12 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         public signal void color_changed (int ncolor);
 
         private Gee.ArrayList<ColorButton> color_buttons;
-        private ColorButton color_button_red;
         private const int COLORBOX_SPACING = 3;
 
         construct {
-            var color_button_remove = new ColorButton ("white");
-
-            color_button_red = new ColorButton ("red");
-
+            var color_button_remove = new ColorButton ("none");
             color_buttons = new Gee.ArrayList<ColorButton> ();
-            color_buttons.add (color_button_red);
+            color_buttons.add (new ColorButton ("red"));
             color_buttons.add (new ColorButton ("orange"));
             color_buttons.add (new ColorButton ("yellow"));
             color_buttons.add (new ColorButton ("green"));
@@ -421,7 +417,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
-            var color_button_width = color_button_red.get_allocated_width ();
+            var color_button_width = color_buttons[0].get_allocated_width ();
 
             int y0 = (get_allocated_height () - color_button_width) / 2;
             int x0 = COLORBOX_SPACING + color_button_width;
@@ -446,7 +442,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             } else {
                 int x = 27;
                 for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
-                    if (event.x >= x && event.x <= x + 16) {
+                    if (event.x >= x && event.x <= x + color_button_width) {
                         color_changed (i);
                         clear_checks ();
                         check_color (i);
