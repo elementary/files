@@ -446,7 +446,7 @@ public class Marlin.Plugins.CTags : Marlin.Plugins.Base {
             } else {
                 int x = 27;
                 for (int i = 0; i < GOF.Preferences.TAGS_COLORS.length; i++) {
-                    if (event.x >= x && event.x <= x + 16) {
+                    if (event.x >= x && event.x <= x + color_button_width) {
                         color_changed (i);
                         clear_checks ();
                         check_color (i);
