@@ -1,41 +1,33 @@
-# Hungarian translation for pantheon-files
-# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
-# This file is distributed under the same license as the pantheon-files package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-26 22:42+0200\n"
-"PO-Revision-Date: 2018-06-15 00:00+0000\n"
-"Last-Translator: Majer Tamás <mtamas@disroot.org>\n"
-"Language-Team: Hungarian <https://weblate.elementary.io/projects/files/extra/"
-"hu/>\n"
-"Language: hu\n"
+"PO-Revision-Date: 2019-06-26 18:53+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: szl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
-"X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #: data/io.elementary.files.desktop.in.in:3
 #: data/io.elementary.files.appdata.xml.in.in:8
 msgid "Files"
-msgstr "Fájlkezelő"
+msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:4
 msgid "Browse your files"
-msgstr "Tallózzon a fájlok között"
+msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:5
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr "mappa;kezelő;felfedező;tárhely;fájlrendszer;"
+msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:6
 msgid "File Manager"
-msgstr "Fájlkezelő"
+msgstr ""
 
 #. TRANSLATORS This string is an icon name and should not be translated.
 #: data/io.elementary.files.desktop.in.in:9
@@ -44,15 +36,15 @@ msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
-msgstr "Új ablak"
+msgstr ""
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
-msgstr "Új ablak rendszergazdaként"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:9
 msgid "Browse and manage files and folders"
-msgstr "Fájlok és mappák böngészése és kezelése"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:11
 msgid ""
@@ -61,11 +53,6 @@ msgid ""
 "right away. Access all your files, whether locally, on an external device or "
 "remotely using FTP, SFTP, AFP, Webdav, or Windows share."
 msgstr ""
-"Könnyedén másolhat, áthelyezhet és átnevezhet fájlokat, vagy használhat "
-"mappákat a szervezéshez. Könnyen megtalálhatja fájljait akár a lista-, rács- "
-"vagy oszlopnézetet választja. Elérheti adatait akár helyi, akár külső "
-"eszközön vagy FTP, SFTP, AFP, Webdav vagy Windows share szolgáltatáson "
-"keresztül is."
 
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
@@ -83,9 +70,8 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:125
 #: data/io.elementary.files.appdata.xml.in.in:133
 #: data/io.elementary.files.appdata.xml.in.in:165
-#, fuzzy
 msgid "Updated translations"
-msgstr "Új fordítások"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Minor spacing adjustments to location bar"
@@ -118,9 +104,8 @@ msgid "Fix high CPU regression in version 4.1.4"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:94
-#, fuzzy
 msgid "File sorting fixes"
-msgstr "Kisebb hibajavítások"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Meson: fix soversion names"
@@ -151,9 +136,8 @@ msgid "Add option to disable local file thumbnails"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:109
-#, fuzzy
 msgid "Fix crash when opening multiple video files"
-msgstr "Javítva a Kukában visszaállítás művelet közben összeomlást okozó hiba"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Fix some timing issues around adding and removing files"
@@ -184,14 +168,12 @@ msgid "New pathbar tooltips"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:124
-#, fuzzy
 msgid "Build fixes"
-msgstr "Biztonsági javítások"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:132
-#, fuzzy
 msgid "Plugin build fixes"
-msgstr "Kisebb hibajavítások"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:140
 msgid "Fix Ctrl+Tab behavior"
@@ -254,14 +236,12 @@ msgid "Tooltip fixes"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:161
-#, fuzzy
 msgid "Memory leak fixes"
-msgstr "Kisebb hibajavítások"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:162
-#, fuzzy
 msgid "Crash fixes"
-msgstr "Különbőző összeomlásos hibák javítása"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:163
 msgid "Trash: respect sound setting"
@@ -293,7 +273,7 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:219
 #: data/io.elementary.files.appdata.xml.in.in:230
 msgid "New translations"
-msgstr "Új fordítások"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:183
 #: data/io.elementary.files.appdata.xml.in.in:196
@@ -304,90 +284,86 @@ msgstr "Új fordítások"
 #: data/io.elementary.files.appdata.xml.in.in:245
 #: data/io.elementary.files.appdata.xml.in.in:269
 msgid "Minor bug fixes"
-msgstr "Kisebb hibajavítások"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:190
 msgid "Improved networking support"
-msgstr "Továbbfejlesztett hálózati támogatás"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:191
 msgid "Correct window geometry when snapping to left or right"
-msgstr "Javított ablak geometria, balra vagy jobbra ugrásnál"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:192
 msgid ""
 "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
 "setting is active"
 msgstr ""
-"A Ctrl megnyomása már nem szakítja meg az átnevezést ha a \"Mutató kijelzése"
-"\" opció aktív"
 
 #: data/io.elementary.files.appdata.xml.in.in:193
 msgid "Switching input language cancels actions"
-msgstr "A bemeneti nyelv váltása megszakít műveleteket"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:194
 #: data/io.elementary.files.appdata.xml.in.in:208
 #: data/io.elementary.files.appdata.xml.in.in:218
 #: data/io.elementary.files.appdata.xml.in.in:229
 msgid "Various crash fixes"
-msgstr "Különbőző összeomlásos hibák javítása"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:203
 msgid ""
 "Web browsers like Firefox now remember the most recently used downloads "
 "directory"
 msgstr ""
-"Webböngészők, mint a Firefox most már emlékeznek a legutóbb használt "
-"letöltési könyvtárra"
 
 #: data/io.elementary.files.appdata.xml.in.in:204
 msgid "Remember preferred zoom level"
-msgstr "Az előnyben részesített nagyítási szint megőrződik"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:205
 msgid "Improved input method support"
-msgstr "Javított beviteli mód támogatás"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:206
 msgid "910x640 minimum window size"
-msgstr "910x640 a minimum ablakméret"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:207
 msgid "Security fixes"
-msgstr "Biztonsági javítások"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:217
 msgid "Enable drag and drop tabs between windows"
-msgstr "Engedélyezve a húzd és ejtsd fülek az ablakok között"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:227
 msgid "Merge search functionality into Ctrl+F"
-msgstr "A keresési lehetőségek egyesítése a Ctrl+F funkcióba"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:228
 msgid "Improved translation support"
-msgstr "Javított fordítási támogatás"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:252
 msgid "Fix appdata release dates"
-msgstr "Javítva az alkalmazás kiadási dátumai"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:259
 msgid "Improve file opening over Samba shares"
-msgstr "Javított fájlmegnyitási lehetőség Samba megosztáson keresztül"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:260
 msgid "Fix a crash when restoring items from the Trash"
-msgstr "Javítva a Kukában visszaállítás művelet közben összeomlást okozó hiba"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:261
 msgid "Improve cut/copy/paste sensitivity in context menu"
-msgstr "Javított vágás/másolás/beillesztés érzékenység a helyi menüben"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:262
 msgid "Translation updates"
-msgstr "Fordítási frissítések"
+msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:274
 msgid "elementary LLC."
@@ -395,12 +371,8 @@ msgstr ""
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
-msgstr "Pantheon Fájlkezelő futtatása rendszergazdaként"
+msgstr ""
 
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr ""
-"A Fájlkezelő rendszergazdaként történő futtatásához hitelesítés szükséges"
-
-#~ msgid "About Files"
-#~ msgstr "A Fájlkezelőről"

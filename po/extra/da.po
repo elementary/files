@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"POT-Creation-Date: 2019-06-26 22:42+0200\n"
 "PO-Revision-Date: 2019-02-03 11:55+0000\n"
 "Last-Translator: Kaj Printz Madsen <kajprintz@gmail.com>\n"
 "Language-Team: Danish <https://weblate.elementary.io/projects/files/extra/da/"
@@ -37,15 +37,16 @@ msgstr "mappe;håndtering;udforsk;gennemse;disk;filsystem;"
 msgid "File Manager"
 msgstr "Filhåndtering"
 
-#: data/io.elementary.files.desktop.in.in:8
+#. TRANSLATORS This string is an icon name and should not be translated.
+#: data/io.elementary.files.desktop.in.in:9
 msgid "system-file-manager"
 msgstr "system-file-manager"
 
-#: data/io.elementary.files.desktop.in.in:19
+#: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
 msgstr "Nyt vindue"
 
-#: data/io.elementary.files.desktop.in.in:23
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
 msgstr "Nyt vindue som administrator"
 
@@ -66,82 +67,337 @@ msgstr ""
 "lokale eller på en ekstern enhed eller fjernt ve brug af FTP, SFTP, AFP, "
 "Webdav eller Windows-share."
 
-#: data/io.elementary.files.appdata.xml.in.in:166
+#: data/io.elementary.files.appdata.xml.in.in:64
+msgid "Keyboard navigation fix for cherry picking select files in icon view"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:65
+msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:66
+#: data/io.elementary.files.appdata.xml.in.in:75
+#: data/io.elementary.files.appdata.xml.in.in:86
+#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:114
+#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:133
+#: data/io.elementary.files.appdata.xml.in.in:165
+#, fuzzy
+msgid "Updated translations"
+msgstr "Nye oversættelser"
+
+#: data/io.elementary.files.appdata.xml.in.in:73
+msgid "Minor spacing adjustments to location bar"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:74
+msgid "Fix F2 renaming behavior"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:82
+msgid "Minor spacing adjustments to location breadcrumbs"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:83
+msgid "Consistently remember color tags"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:84
+msgid ""
+"Reload thumbnails when changing zoom level to avoid showing placeholder "
+"unnecessarily"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:85
+msgid "Fix running scripts with spaces in filename"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:93
+msgid "Fix high CPU regression in version 4.1.4"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:94
+#, fuzzy
+msgid "File sorting fixes"
+msgstr "Mindre fejlrettelser"
+
+#: data/io.elementary.files.appdata.xml.in.in:102
+msgid "Meson: fix soversion names"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:103
+msgid "Remove CMake build system"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:104
+msgid "Fix missing File System properties menu"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:105
+msgid "Drop intltool dependency"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:106
+msgid "Fix default file type handler logic"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:107
+msgid "Fix initial search window size too small"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:108
+msgid "Add option to disable local file thumbnails"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:109
+#, fuzzy
+msgid "Fix crash when opening multiple video files"
+msgstr "Ret et nedbrud ved gendannelse af elementer fra papirkurven"
+
+#: data/io.elementary.files.appdata.xml.in.in:110
+msgid "Fix some timing issues around adding and removing files"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:111
+msgid "Meson: fix missing library headers"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:112
+msgid "Fix color tag display"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:113
+msgid "Show reserved space in Properties window"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:121
+msgid "Add border radius to text background"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:122
+msgid "Fix file mimetype association regression"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:123
+msgid "New pathbar tooltips"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:124
+#, fuzzy
+msgid "Build fixes"
+msgstr "Sikkerhedsrettelser"
+
+#: data/io.elementary.files.appdata.xml.in.in:132
+#, fuzzy
+msgid "Plugin build fixes"
+msgstr "Mindre fejlrettelser"
+
+#: data/io.elementary.files.appdata.xml.in.in:140
+msgid "Fix Ctrl+Tab behavior"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:141
+msgid "Fix building without Unity library"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:148
+msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:149
+msgid "Style error dialogs"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:150
+msgid "Right click fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:151
+msgid "Reload recent view when privacy setting changes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:152
+msgid "`Connect Server` fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:153
+msgid "Do not activate multiple files with single click"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:154
+msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:155
+msgid "Delete color tag database entries for trashed files"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:156
+msgid "Throttle tab closing"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:157
+msgid "`Ctrl` key fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:158
+msgid "Drag and drop fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:159
+msgid "Show icons in `Open with` menus"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:160
+msgid "Tooltip fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:161
+#, fuzzy
+msgid "Memory leak fixes"
+msgstr "Mindre fejlrettelser"
+
+#: data/io.elementary.files.appdata.xml.in.in:162
+#, fuzzy
+msgid "Crash fixes"
+msgstr "Diverse rettelser af nebrud"
+
+#: data/io.elementary.files.appdata.xml.in.in:163
+msgid "Trash: respect sound setting"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:164
+msgid "Localization fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:172
+msgid "Over 100 major and minor bug fixes and improvements"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:179
+msgid "Honor 12/24hr system setting"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:180
+msgid "Distinguish between tabs with the same name"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:181
+msgid "Support launching from other applications with a target file selected"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:182
+#: data/io.elementary.files.appdata.xml.in.in:195
+#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:219
+#: data/io.elementary.files.appdata.xml.in.in:230
+msgid "New translations"
+msgstr "Nye oversættelser"
+
+#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:196
+#: data/io.elementary.files.appdata.xml.in.in:210
+#: data/io.elementary.files.appdata.xml.in.in:220
+#: data/io.elementary.files.appdata.xml.in.in:231
+#: data/io.elementary.files.appdata.xml.in.in:238
+#: data/io.elementary.files.appdata.xml.in.in:245
+#: data/io.elementary.files.appdata.xml.in.in:269
+msgid "Minor bug fixes"
+msgstr "Mindre fejlrettelser"
+
+#: data/io.elementary.files.appdata.xml.in.in:190
+msgid "Improved networking support"
+msgstr "Forbedret netværkssupport"
+
+#: data/io.elementary.files.appdata.xml.in.in:191
+msgid "Correct window geometry when snapping to left or right"
+msgstr "Korrekt vinduesgeometri, når du snapper til venstre eller højre"
+
+#: data/io.elementary.files.appdata.xml.in.in:192
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+"Hvis du trykker på Ctrl, annullerer du ikke længere navneændring, mens "
+"indstillingen \"Reveal Pointer\" er aktiv"
+
+#: data/io.elementary.files.appdata.xml.in.in:193
+msgid "Switching input language cancels actions"
+msgstr "Skift af input sprog annullerer handlinger"
+
+#: data/io.elementary.files.appdata.xml.in.in:194
+#: data/io.elementary.files.appdata.xml.in.in:208
+#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:229
+msgid "Various crash fixes"
+msgstr "Diverse rettelser af nebrud"
+
+#: data/io.elementary.files.appdata.xml.in.in:203
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr "Webbrowsere såsom Firefox husker nu den seneste brugte downloadsmappe"
+
+#: data/io.elementary.files.appdata.xml.in.in:204
+msgid "Remember preferred zoom level"
+msgstr "Huske foretrukne zoomniveau"
+
+#: data/io.elementary.files.appdata.xml.in.in:205
+msgid "Improved input method support"
+msgstr "Forbedret inputmetode-understøttelse"
+
+#: data/io.elementary.files.appdata.xml.in.in:206
+msgid "910x640 minimum window size"
+msgstr "910x640 minimum vinduesstørrelse"
+
+#: data/io.elementary.files.appdata.xml.in.in:207
+msgid "Security fixes"
+msgstr "Sikkerhedsrettelser"
+
+#: data/io.elementary.files.appdata.xml.in.in:217
+msgid "Enable drag and drop tabs between windows"
+msgstr "Aktivér træk-og-slip af faneblade mellem vinduer"
+
+#: data/io.elementary.files.appdata.xml.in.in:227
+msgid "Merge search functionality into Ctrl+F"
+msgstr "Før søgefaciliteter sammen i Ctrl+F"
+
+#: data/io.elementary.files.appdata.xml.in.in:228
+msgid "Improved translation support"
+msgstr "Forbedret understøttelse af oversættelser"
+
+#: data/io.elementary.files.appdata.xml.in.in:252
+msgid "Fix appdata release dates"
+msgstr "Ret programdata-udgivelsesdatoer"
+
+#: data/io.elementary.files.appdata.xml.in.in:259
+msgid "Improve file opening over Samba shares"
+msgstr "Forbedr filåbning over Samba-shares"
+
+#: data/io.elementary.files.appdata.xml.in.in:260
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "Ret et nedbrud ved gendannelse af elementer fra papirkurven"
+
+#: data/io.elementary.files.appdata.xml.in.in:261
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr "Forbedr klip-/kopiér-/indsæt-følsomhed i genvejsmenu"
+
+#: data/io.elementary.files.appdata.xml.in.in:262
+msgid "Translation updates"
+msgstr "Opdatering af oversættelse"
+
+#: data/io.elementary.files.appdata.xml.in.in:274
 msgid "elementary LLC."
 msgstr "elementary ApS."
 
+#: data/io.elementary.files.policy.in.in:10
+msgid "Run Pantheon Files as Administrator"
+msgstr "Kør Pantheon Filer som administrator"
+
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
+msgstr "Godkendelse er påkrævet for at køre Filer som administrator"
+
 #~ msgid "About Files"
 #~ msgstr "Om Filer"
-
-#~ msgid "Improved networking support"
-#~ msgstr "Forbedret netværkssupport"
-
-#~ msgid "Correct window geometry when snapping to left or right"
-#~ msgstr "Korrekt vinduesgeometri, når du snapper til venstre eller højre"
-
-#~ msgid ""
-#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-#~ "setting is active"
-#~ msgstr ""
-#~ "Hvis du trykker på Ctrl, annullerer du ikke længere navneændring, mens "
-#~ "indstillingen \"Reveal Pointer\" er aktiv"
-
-#~ msgid "Switching input language cancels actions"
-#~ msgstr "Skift af input sprog annullerer handlinger"
-
-#~ msgid "Various crash fixes"
-#~ msgstr "Diverse rettelser af nebrud"
-
-#~ msgid "New translations"
-#~ msgstr "Nye oversættelser"
-
-#~ msgid "Minor bug fixes"
-#~ msgstr "Mindre fejlrettelser"
-
-#~ msgid ""
-#~ "Web browsers like Firefox now remember the most recently used downloads "
-#~ "directory"
-#~ msgstr ""
-#~ "Webbrowsere såsom Firefox husker nu den seneste brugte downloadsmappe"
-
-#~ msgid "Remember preferred zoom level"
-#~ msgstr "Huske foretrukne zoomniveau"
-
-#~ msgid "Improved input method support"
-#~ msgstr "Forbedret inputmetode-understøttelse"
-
-#~ msgid "910x640 minimum window size"
-#~ msgstr "910x640 minimum vinduesstørrelse"
-
-#~ msgid "Security fixes"
-#~ msgstr "Sikkerhedsrettelser"
-
-#~ msgid "Enable drag and drop tabs between windows"
-#~ msgstr "Aktivér træk-og-slip af faneblade mellem vinduer"
-
-#~ msgid "Merge search functionality into Ctrl+F"
-#~ msgstr "Før søgefaciliteter sammen i Ctrl+F"
-
-#~ msgid "Improved translation support"
-#~ msgstr "Forbedret understøttelse af oversættelser"
-
-#~ msgid "Fix appdata release dates"
-#~ msgstr "Ret programdata-udgivelsesdatoer"
-
-#~ msgid "Improve file opening over Samba shares"
-#~ msgstr "Forbedr filåbning over Samba-shares"
-
-#~ msgid "Fix a crash when restoring items from the Trash"
-#~ msgstr "Ret et nedbrud ved gendannelse af elementer fra papirkurven"
-
-#~ msgid "Improve cut/copy/paste sensitivity in context menu"
-#~ msgstr "Forbedr klip-/kopiér-/indsæt-følsomhed i genvejsmenu"
-
-#~ msgid "Translation updates"
-#~ msgstr "Opdatering af oversættelse"
-
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "Kør Pantheon Filer som administrator"
-
-#~ msgid "Authentication is required to run Files as Administrator"
-#~ msgstr "Godkendelse er påkrævet for at køre Filer som administrator"

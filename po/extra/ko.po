@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-18 09:20-0800\n"
+"POT-Creation-Date: 2019-06-26 22:42+0200\n"
 "PO-Revision-Date: 2018-12-22 10:49+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://weblate.elementary.io/projects/files/extra/ko/"
@@ -37,15 +37,16 @@ msgstr "폴더;관리자;찾아보기;디스크;파일시스템;"
 msgid "File Manager"
 msgstr "파일 관리자"
 
-#: data/io.elementary.files.desktop.in.in:8
+#. TRANSLATORS This string is an icon name and should not be translated.
+#: data/io.elementary.files.desktop.in.in:9
 msgid "system-file-manager"
 msgstr "system-file-manager"
 
-#: data/io.elementary.files.desktop.in.in:19
+#: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
 msgstr "새 창"
 
-#: data/io.elementary.files.desktop.in.in:23
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window As Administrator"
 msgstr "관리자 권한으로 새 창 열기"
 
@@ -65,83 +66,339 @@ msgstr ""
 "저장장치에 있던, 외부에서 원격으로 접속하는 FTP, SFTP, Webdav, 또는 윈도우 공"
 "유이던 찾고자 하는 모든 파일을 찾아볼 수 있습니다."
 
-#: data/io.elementary.files.appdata.xml.in.in:166
+#: data/io.elementary.files.appdata.xml.in.in:64
+msgid "Keyboard navigation fix for cherry picking select files in icon view"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:65
+msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:66
+#: data/io.elementary.files.appdata.xml.in.in:75
+#: data/io.elementary.files.appdata.xml.in.in:86
+#: data/io.elementary.files.appdata.xml.in.in:95
+#: data/io.elementary.files.appdata.xml.in.in:114
+#: data/io.elementary.files.appdata.xml.in.in:125
+#: data/io.elementary.files.appdata.xml.in.in:133
+#: data/io.elementary.files.appdata.xml.in.in:165
+#, fuzzy
+msgid "Updated translations"
+msgstr "새 번역"
+
+#: data/io.elementary.files.appdata.xml.in.in:73
+msgid "Minor spacing adjustments to location bar"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:74
+msgid "Fix F2 renaming behavior"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:82
+msgid "Minor spacing adjustments to location breadcrumbs"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:83
+msgid "Consistently remember color tags"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:84
+msgid ""
+"Reload thumbnails when changing zoom level to avoid showing placeholder "
+"unnecessarily"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:85
+msgid "Fix running scripts with spaces in filename"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:93
+msgid "Fix high CPU regression in version 4.1.4"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:94
+#, fuzzy
+msgid "File sorting fixes"
+msgstr "자잘한 버그 해결"
+
+#: data/io.elementary.files.appdata.xml.in.in:102
+msgid "Meson: fix soversion names"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:103
+msgid "Remove CMake build system"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:104
+msgid "Fix missing File System properties menu"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:105
+msgid "Drop intltool dependency"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:106
+msgid "Fix default file type handler logic"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:107
+msgid "Fix initial search window size too small"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:108
+msgid "Add option to disable local file thumbnails"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:109
+#, fuzzy
+msgid "Fix crash when opening multiple video files"
+msgstr "휴지통에서 항목 복구할 때 생기던 오류 수정"
+
+#: data/io.elementary.files.appdata.xml.in.in:110
+msgid "Fix some timing issues around adding and removing files"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:111
+msgid "Meson: fix missing library headers"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:112
+msgid "Fix color tag display"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:113
+msgid "Show reserved space in Properties window"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:121
+msgid "Add border radius to text background"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:122
+msgid "Fix file mimetype association regression"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:123
+msgid "New pathbar tooltips"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:124
+#, fuzzy
+msgid "Build fixes"
+msgstr "보안 이슈 수정"
+
+#: data/io.elementary.files.appdata.xml.in.in:132
+#, fuzzy
+msgid "Plugin build fixes"
+msgstr "자잘한 버그 해결"
+
+#: data/io.elementary.files.appdata.xml.in.in:140
+msgid "Fix Ctrl+Tab behavior"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:141
+msgid "Fix building without Unity library"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:148
+msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:149
+msgid "Style error dialogs"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:150
+msgid "Right click fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:151
+msgid "Reload recent view when privacy setting changes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:152
+msgid "`Connect Server` fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:153
+msgid "Do not activate multiple files with single click"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:154
+msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:155
+msgid "Delete color tag database entries for trashed files"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:156
+msgid "Throttle tab closing"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:157
+msgid "`Ctrl` key fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:158
+msgid "Drag and drop fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:159
+msgid "Show icons in `Open with` menus"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:160
+msgid "Tooltip fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:161
+#, fuzzy
+msgid "Memory leak fixes"
+msgstr "자잘한 버그 해결"
+
+#: data/io.elementary.files.appdata.xml.in.in:162
+#, fuzzy
+msgid "Crash fixes"
+msgstr "여러 가지 크래시 문제 해결"
+
+#: data/io.elementary.files.appdata.xml.in.in:163
+msgid "Trash: respect sound setting"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:164
+msgid "Localization fixes"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:172
+msgid "Over 100 major and minor bug fixes and improvements"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:179
+msgid "Honor 12/24hr system setting"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:180
+msgid "Distinguish between tabs with the same name"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:181
+msgid "Support launching from other applications with a target file selected"
+msgstr ""
+
+#: data/io.elementary.files.appdata.xml.in.in:182
+#: data/io.elementary.files.appdata.xml.in.in:195
+#: data/io.elementary.files.appdata.xml.in.in:209
+#: data/io.elementary.files.appdata.xml.in.in:219
+#: data/io.elementary.files.appdata.xml.in.in:230
+msgid "New translations"
+msgstr "새 번역"
+
+#: data/io.elementary.files.appdata.xml.in.in:183
+#: data/io.elementary.files.appdata.xml.in.in:196
+#: data/io.elementary.files.appdata.xml.in.in:210
+#: data/io.elementary.files.appdata.xml.in.in:220
+#: data/io.elementary.files.appdata.xml.in.in:231
+#: data/io.elementary.files.appdata.xml.in.in:238
+#: data/io.elementary.files.appdata.xml.in.in:245
+#: data/io.elementary.files.appdata.xml.in.in:269
+msgid "Minor bug fixes"
+msgstr "자잘한 버그 해결"
+
+#: data/io.elementary.files.appdata.xml.in.in:190
+msgid "Improved networking support"
+msgstr "향상된 네트워킹 지원"
+
+#: data/io.elementary.files.appdata.xml.in.in:191
+msgid "Correct window geometry when snapping to left or right"
+msgstr "왼쪽이나 오른쪽으로 스내핑 할 때 창 위치 수정"
+
+#: data/io.elementary.files.appdata.xml.in.in:192
+msgid ""
+"Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
+"setting is active"
+msgstr ""
+"\"포인터 보이기\"설정이 활성화되어있을 때 Ctrl을 누르면 더 이상 이름 바꾸기"
+"가 취소되지 않습니다"
+
+#: data/io.elementary.files.appdata.xml.in.in:193
+msgid "Switching input language cancels actions"
+msgstr "입력 언어를 바꾸면 작업이 취소됩니다"
+
+#: data/io.elementary.files.appdata.xml.in.in:194
+#: data/io.elementary.files.appdata.xml.in.in:208
+#: data/io.elementary.files.appdata.xml.in.in:218
+#: data/io.elementary.files.appdata.xml.in.in:229
+msgid "Various crash fixes"
+msgstr "여러 가지 크래시 문제 해결"
+
+#: data/io.elementary.files.appdata.xml.in.in:203
+msgid ""
+"Web browsers like Firefox now remember the most recently used downloads "
+"directory"
+msgstr ""
+"이제 파이어 폭스 같은 웹 브라우저에서 가장 최근에 다운로드한 폴더를 기억합니"
+"다"
+
+#: data/io.elementary.files.appdata.xml.in.in:204
+msgid "Remember preferred zoom level"
+msgstr "즐겨 사용하는 줌 레벨을 기억합니다"
+
+#: data/io.elementary.files.appdata.xml.in.in:205
+msgid "Improved input method support"
+msgstr "향상된 입력기 사용 지원"
+
+#: data/io.elementary.files.appdata.xml.in.in:206
+msgid "910x640 minimum window size"
+msgstr "최소 창 크기 910x640"
+
+#: data/io.elementary.files.appdata.xml.in.in:207
+msgid "Security fixes"
+msgstr "보안 이슈 수정"
+
+#: data/io.elementary.files.appdata.xml.in.in:217
+msgid "Enable drag and drop tabs between windows"
+msgstr "창 사이에 탭 끌어다 놓기 사용"
+
+#: data/io.elementary.files.appdata.xml.in.in:227
+msgid "Merge search functionality into Ctrl+F"
+msgstr "검색 기능 Ctrl+F와 통합"
+
+#: data/io.elementary.files.appdata.xml.in.in:228
+msgid "Improved translation support"
+msgstr "향상된 번역 제공"
+
+#: data/io.elementary.files.appdata.xml.in.in:252
+msgid "Fix appdata release dates"
+msgstr "앱데이터 출시일 수정"
+
+#: data/io.elementary.files.appdata.xml.in.in:259
+msgid "Improve file opening over Samba shares"
+msgstr "삼바로 공유할 때 파일 여는 기능 향상"
+
+#: data/io.elementary.files.appdata.xml.in.in:260
+msgid "Fix a crash when restoring items from the Trash"
+msgstr "휴지통에서 항목 복구할 때 생기던 오류 수정"
+
+#: data/io.elementary.files.appdata.xml.in.in:261
+msgid "Improve cut/copy/paste sensitivity in context menu"
+msgstr "콘텍스트 메뉴의 잘라내기/복사/붙여넣기 기능 향상"
+
+#: data/io.elementary.files.appdata.xml.in.in:262
+msgid "Translation updates"
+msgstr "번역 업데이트"
+
+#: data/io.elementary.files.appdata.xml.in.in:274
 msgid "elementary LLC."
 msgstr "elementary LLC."
 
+#: data/io.elementary.files.policy.in.in:10
+msgid "Run Pantheon Files as Administrator"
+msgstr "관리자 권한으로 실행하기"
+
+#: data/io.elementary.files.policy.in.in:11
+msgid "Authentication is required to run Files as Administrator"
+msgstr "관리자 권한으로 실행하려면 인증이 필요합니다"
+
 #~ msgid "About Files"
 #~ msgstr "파일스 소개"
-
-#~ msgid "Improved networking support"
-#~ msgstr "향상된 네트워킹 지원"
-
-#~ msgid "Correct window geometry when snapping to left or right"
-#~ msgstr "왼쪽이나 오른쪽으로 스내핑 할 때 창 위치 수정"
-
-#~ msgid ""
-#~ "Pressing Ctrl no longer cancels renaming while the \"Reveal Pointer\" "
-#~ "setting is active"
-#~ msgstr ""
-#~ "\"포인터 보이기\"설정이 활성화되어있을 때 Ctrl을 누르면 더 이상 이름 바꾸"
-#~ "기가 취소되지 않습니다"
-
-#~ msgid "Switching input language cancels actions"
-#~ msgstr "입력 언어를 바꾸면 작업이 취소됩니다"
-
-#~ msgid "Various crash fixes"
-#~ msgstr "여러 가지 크래시 문제 해결"
-
-#~ msgid "New translations"
-#~ msgstr "새 번역"
-
-#~ msgid "Minor bug fixes"
-#~ msgstr "자잘한 버그 해결"
-
-#~ msgid ""
-#~ "Web browsers like Firefox now remember the most recently used downloads "
-#~ "directory"
-#~ msgstr ""
-#~ "이제 파이어 폭스 같은 웹 브라우저에서 가장 최근에 다운로드한 폴더를 기억합"
-#~ "니다"
-
-#~ msgid "Remember preferred zoom level"
-#~ msgstr "즐겨 사용하는 줌 레벨을 기억합니다"
-
-#~ msgid "Improved input method support"
-#~ msgstr "향상된 입력기 사용 지원"
-
-#~ msgid "910x640 minimum window size"
-#~ msgstr "최소 창 크기 910x640"
-
-#~ msgid "Security fixes"
-#~ msgstr "보안 이슈 수정"
-
-#~ msgid "Enable drag and drop tabs between windows"
-#~ msgstr "창 사이에 탭 끌어다 놓기 사용"
-
-#~ msgid "Merge search functionality into Ctrl+F"
-#~ msgstr "검색 기능 Ctrl+F와 통합"
-
-#~ msgid "Improved translation support"
-#~ msgstr "향상된 번역 제공"
-
-#~ msgid "Fix appdata release dates"
-#~ msgstr "앱데이터 출시일 수정"
-
-#~ msgid "Improve file opening over Samba shares"
-#~ msgstr "삼바로 공유할 때 파일 여는 기능 향상"
-
-#~ msgid "Fix a crash when restoring items from the Trash"
-#~ msgstr "휴지통에서 항목 복구할 때 생기던 오류 수정"
-
-#~ msgid "Improve cut/copy/paste sensitivity in context menu"
-#~ msgstr "콘텍스트 메뉴의 잘라내기/복사/붙여넣기 기능 향상"
-
-#~ msgid "Translation updates"
-#~ msgstr "번역 업데이트"
-
-#~ msgid "Run Pantheon Files as Administrator"
-#~ msgstr "관리자 권한으로 실행하기"
-
-#~ msgid "Authentication is required to run Files as Administrator"
-#~ msgstr "관리자 권한으로 실행하려면 인증이 필요합니다"
