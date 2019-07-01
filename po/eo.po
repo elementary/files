@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2018-03-26 00:08+0000\n"
-"Last-Translator: gpl34 <gpl@mac.com>\n"
-"Language-Team: Esperanto <https://weblate.elementary.io/projects/files/files/"
-"eo/>\n"
+"PO-Revision-Date: 2019-07-03 01:28+0000\n"
+"Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
+"Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
+">\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: src/Application.vala:120
@@ -77,11 +77,11 @@ msgstr ""
 
 #: src/ProgressUIHandler.vala:248
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Rezigni ĉiujn aktivajn agojn"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "Informoj"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
@@ -918,12 +918,11 @@ msgstr "Memo_ri tiun pasvorton"
 #: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:101
 #: libcore/FileConflictDialog.vala:189
 msgid "Cancel"
-msgstr "Nuligi"
+msgstr "Rezigni"
 
 #: libcore/ConnectServerDialog.vala:193
-#, fuzzy
 msgid "Connect"
-msgstr "K_onekti"
+msgstr "Konekti"
 
 #: libcore/ConnectServerDialog.vala:200
 msgid "Continue"
