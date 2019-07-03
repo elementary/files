@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-07-03 01:28+0000\n"
+"PO-Revision-Date: 2019-07-05 20:46+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
 ">\n"
@@ -22,27 +22,27 @@ msgstr ""
 
 #: src/Application.vala:120
 msgid "Show the version of the program"
-msgstr ""
+msgstr "Montri la version de la programo"
 
 #: src/Application.vala:122
 msgid "Open one or more URIs, each in their own tab"
-msgstr ""
+msgstr "Malfermi unu aŭ plurajn URI-adresojn, en propraj langetoj"
 
 #: src/Application.vala:124 src/View/directory_view_popup.ui:83
 msgid "New Window"
-msgstr ""
+msgstr "Nova fenestro"
 
 #: src/Application.vala:126
 msgid "Quit Files"
-msgstr ""
+msgstr "Eliri el Dosieroj"
 
 #: src/Application.vala:128
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Ebligi senciman protokolon"
 
 #: src/Application.vala:131
 msgid "[URI…]"
-msgstr ""
+msgstr "[URI…]"
 
 #: src/Application.vala:134
 msgid ""
@@ -52,11 +52,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Foliumi dosiersistemon per dosieradministrilo"
+"Foliumi dosiersistemon per dosiermastrumilo"
 
 #: src/Application.vala:162
 msgid "--quit cannot be used with URIs."
-msgstr "--quit ne uzeblas kun URI."
+msgstr "--quit ne uzeblas kun URI-adresoj."
 
 #: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:191
 msgid "File Operations"
@@ -65,15 +65,15 @@ msgstr "Dosieraj operacioj"
 #: src/ProgressUIHandler.vala:185
 #, c-format
 msgid "Completed %s"
-msgstr ""
+msgstr "Finis %s"
 
 #: src/ProgressUIHandler.vala:188
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Ĉiuj dosieraj operacioj finiĝis"
 
 #: src/ProgressUIHandler.vala:236
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Montri kopian dialogon"
 
 #: src/ProgressUIHandler.vala:248
 msgid "Cancel All In-progress Actions"
@@ -89,34 +89,34 @@ msgstr "Ĝenerala"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:76
 msgid "Close"
-msgstr ""
+msgstr "Fermi"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:136
 msgid "Device Usage"
-msgstr ""
+msgstr "Aparata uzo"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 msgid "Capacity:"
-msgstr ""
+msgstr "Kapacito:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:153
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
 msgid "Unknown"
-msgstr ""
+msgstr "Nekonata"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Available:"
-msgstr ""
+msgstr "Disponebla:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Used:"
-msgstr ""
+msgstr "Uzita:"
 
 #: src/Dialogs/ChooseAppDialog.vala:42
 msgid "Set as default"
-msgstr ""
+msgstr "Difini kiel apriora"
 
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
 #: src/View/directory_view_popup.ui:91
@@ -125,30 +125,30 @@ msgstr "Atributoj"
 
 #: src/Dialogs/PropertiesWindow.vala:223
 msgid "Permissions"
-msgstr ""
+msgstr "Permesoj"
 
 #: src/Dialogs/PropertiesWindow.vala:244
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%i dosiero ne legeblas pro permeso aŭ alia eraro."
+msgstr[1] "%i dosieroj ne legeblas pro permeso aŭ alia eraro."
 
 #: src/Dialogs/PropertiesWindow.vala:248
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Tio povas esti efektive pli granda"
 
 #: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
 msgid "unknown"
-msgstr ""
+msgstr "nekonata"
 
 #: src/Dialogs/PropertiesWindow.vala:448
 msgid "Loading…"
-msgstr ""
+msgstr "Ŝargiĝanta…"
 
 #: src/Dialogs/PropertiesWindow.vala:482
 msgid "Could not be determined"
-msgstr ""
+msgstr "Ne eblis determini"
 
 #: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
@@ -162,45 +162,45 @@ msgstr "Tipo:"
 
 #: src/Dialogs/PropertiesWindow.vala:518
 msgid "Contains:"
-msgstr ""
+msgstr "Entenas:"
 
 #: src/Dialogs/PropertiesWindow.vala:541
 msgid "Created:"
-msgstr ""
+msgstr "Kreita:"
 
 #: src/Dialogs/PropertiesWindow.vala:551
 msgid "Modified:"
-msgstr ""
+msgstr "Modifita:"
 
 #: src/Dialogs/PropertiesWindow.vala:563
 msgid "Deleted:"
-msgstr ""
+msgstr "Forigita:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
 msgid "MIME type:"
-msgstr ""
+msgstr "MIME-tipo:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
-msgstr ""
+msgstr "Distingivo:"
 
 #: src/Dialogs/PropertiesWindow.vala:588
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
-msgstr ""
+msgstr "Loko:"
 
 #: src/Dialogs/PropertiesWindow.vala:598
 msgid "Target:"
-msgstr ""
+msgstr "Celo:"
 
 #: src/Dialogs/PropertiesWindow.vala:606
 msgid "Original Location:"
-msgstr ""
+msgstr "Devena loko:"
 
 #: src/Dialogs/PropertiesWindow.vala:629
 #: src/View/AbstractDirectoryView.vala:2132
 msgid "Other Application…"
-msgstr ""
+msgstr "Alia aplikaĵo…"
 
 #: src/Dialogs/PropertiesWindow.vala:649
 msgid "Open with:"
@@ -208,58 +208,58 @@ msgstr "Malfermi per:"
 
 #: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
 msgid "Owner:"
-msgstr ""
+msgstr "Posedanto:"
 
 #: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
 msgid "Group:"
-msgstr ""
+msgstr "Grupo:"
 
 #: src/Dialogs/PropertiesWindow.vala:932
 msgid "Everyone:"
-msgstr ""
+msgstr "Ĉiuj:"
 
 #: src/Dialogs/PropertiesWindow.vala:1213
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u subdosierujo"
+msgstr[1] "%u subdosierujoj"
 
 #: src/Dialogs/PropertiesWindow.vala:1217
 #: src/Dialogs/PropertiesWindow.vala:1239
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u dosiero"
+msgstr[1] "%u dosieroj"
 
 #: src/Dialogs/PropertiesWindow.vala:1222
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u dosierujo"
+msgstr[1] "%u dosierujoj"
 
 #: src/Dialogs/PropertiesWindow.vala:1244
 #, c-format
 msgid "%u selected item"
 msgid_plural "%u selected items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u elektita elemento"
+msgstr[1] "%u elektitaj elementoj"
 
 #: src/Dialogs/PropertiesWindow.vala:1246
 #, c-format
 msgid "%s (%s, %s)"
-msgstr ""
+msgstr "%s (%s, %s)"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:28
 msgid "Disk Properties"
-msgstr ""
+msgstr "Diskaj atributoj"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:44 src/View/ViewContainer.vala:379
 #: src/View/Sidebar.vala:658 libwidgets/Resources.vala:68
@@ -268,31 +268,31 @@ msgstr "Dosiersistemo"
 
 #: src/Dialogs/VolumePropertiesWindow.vala:86
 msgid "Format:"
-msgstr ""
+msgstr "Formato:"
 
 #: src/Utils/MimeActions.vala:285
 msgid "Multiple file types selected"
-msgstr ""
+msgstr "Pluraj dosiertipoj elektitaj"
 
 #: src/Utils/MimeActions.vala:286
 msgid "No single app can open all these types of file"
-msgstr ""
+msgstr "Ne unu aplikaĵo kapablas malfermi ĉiujn dosiertipojn"
 
 #: src/Utils/MimeActions.vala:313
 msgid "Failed to open files"
-msgstr ""
+msgstr "Neeblis malfermi la dosierojn"
 
 #: src/Utils/MimeActions.vala:323
 msgid "Could not open URIs"
-msgstr ""
+msgstr "Ne eblis malfermi la URI-adresojn"
 
 #: src/Utils/MimeActions.vala:326
 msgid "Could not open files or URIs with this app"
-msgstr ""
+msgstr "Neeblis malfermi la dosierojn aŭ URI-adresojn per ĉi aplikaĵo"
 
 #: src/View/Window.vala:495 src/View/Window.vala:505
 msgid "(as Administrator)"
-msgstr ""
+msgstr "(kiel administranto)"
 
 #: src/View/ListView.vala:26
 msgid "Filename"
@@ -304,7 +304,7 @@ msgstr "Grando"
 
 #: src/View/ListView.vala:28 src/View/directory_view_popup.ui:154
 msgid "Type"
-msgstr "Speco"
+msgstr "Tipo"
 
 #: src/View/ListView.vala:29
 msgid "Modified"
@@ -312,12 +312,12 @@ msgstr "Modifita"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:409
 msgid "This Folder Does Not Exist"
-msgstr ""
+msgstr "La dosierujo ne ekzistas"
 
 #: src/View/DirectoryNotFound.vala:28
 #, c-format
 msgid "The folder \"%s\" can't be found."
-msgstr ""
+msgstr "La dosiero „%s“ ne troveblas."
 
 #: src/View/DirectoryNotFound.vala:30
 msgid "Create"
@@ -326,7 +326,7 @@ msgstr "Krei"
 #: src/View/DirectoryNotFound.vala:30
 #, c-format
 msgid "Create the folder \"%s\""
-msgstr ""
+msgstr "Krei la dosieron „%s“"
 
 #: src/View/DirectoryNotFound.vala:44
 #, c-format
@@ -335,81 +335,84 @@ msgid ""
 "\n"
 "%s"
 msgstr ""
+"Neeblis krei la dosierujon\n"
+"\n"
+"%s"
 
 #: src/View/AbstractDirectoryView.vala:807
 #: src/View/AbstractDirectoryView.vala:1092
 msgid "Cannot execute this file"
-msgstr ""
+msgstr "Neeblas ruli la dosieron"
 
 #: src/View/AbstractDirectoryView.vala:828
 msgid "Cannot open this file"
-msgstr ""
+msgstr "Neeblas malfermi ĉi dosieron"
 
 #: src/View/AbstractDirectoryView.vala:841
 msgid "Cannot identify file type to open"
-msgstr ""
+msgstr "Neeblas identigi la dosiertipon malfermota"
 
 #: src/View/AbstractDirectoryView.vala:1571
 msgid "Cannot drop this file"
-msgstr ""
+msgstr "Neeblas demeti la dosieron"
 
 #: src/View/AbstractDirectoryView.vala:1572
 msgid "Invalid file name provided"
-msgstr ""
+msgstr "Nevalida provizita dosiernomo"
 
 #: src/View/AbstractDirectoryView.vala:2052
 msgid "Invalid"
-msgstr ""
+msgstr "Nevalida"
 
 #: src/View/AbstractDirectoryView.vala:2058
 msgid "Run"
-msgstr ""
+msgstr "Ruli"
 
 #: src/View/AbstractDirectoryView.vala:2062
 #, c-format
 msgid "Open in %s"
-msgstr ""
+msgstr "Malfermi per %s"
 
 #: src/View/AbstractDirectoryView.vala:2072
 msgid "Open in"
-msgstr ""
+msgstr "Malfermi per"
 
 #: src/View/AbstractDirectoryView.vala:2074
 #: src/View/Widgets/BreadcrumbsEntry.vala:488
 msgid "Open with"
-msgstr ""
+msgstr "Malfermi per"
 
 #: src/View/AbstractDirectoryView.vala:2161
 msgid "Templates"
-msgstr ""
+msgstr "Ŝablonoj"
 
 #: src/View/AbstractDirectoryView.vala:2408
 #, c-format
 msgid "Untitled %s"
-msgstr ""
+msgstr "Sentitola %s"
 
 #: src/View/AbstractDirectoryView.vala:2756
 #: src/View/AbstractDirectoryView.vala:2940
 msgid "Cannot remove files from here"
-msgstr ""
+msgstr "Neeblas forigi dosierojn de ĉi tie"
 
 #: src/View/AbstractDirectoryView.vala:2757
 #: src/View/AbstractDirectoryView.vala:2925
 #: src/View/AbstractDirectoryView.vala:2941
 msgid "You do not have permission to change this location"
-msgstr ""
+msgstr "Vi ne havas la permeson modifi la lokon"
 
 #: src/View/AbstractDirectoryView.vala:2900
 msgid "Cannot copy files that are in the trash"
-msgstr ""
+msgstr "Neeblas kopii dosierojn en la rubujo"
 
 #: src/View/AbstractDirectoryView.vala:2901
 msgid "Cutting the selection instead"
-msgstr ""
+msgstr "Eltondi la elektaĵon anstataŭe"
 
 #: src/View/AbstractDirectoryView.vala:2924
 msgid "Cannot paste files here"
-msgstr ""
+msgstr "Neeblas alglui dosierojn ĉi tien"
 
 #: src/View/ViewContainer.vala:377 src/View/Sidebar.vala:591
 msgid "Home"
@@ -417,87 +420,87 @@ msgstr "Hejmo"
 
 #: src/View/ViewContainer.vala:410
 msgid "You cannot create a folder here."
-msgstr ""
+msgstr "Neeblas krei dosierujon ĉi tie."
 
 #: src/View/ViewContainer.vala:413
 msgid "The network is unavailable"
-msgstr ""
+msgstr "La reto ne disponeblas"
 
 #: src/View/ViewContainer.vala:414
 msgid "A working network is needed to reach this folder"
-msgstr ""
+msgstr "Funkcianta reto necesas por atingi ĉi dosierujon"
 
 #: src/View/ViewContainer.vala:417
 msgid "This Folder Does Not Belong to You"
-msgstr ""
+msgstr "Ĉi dosierujo ne apartenas al vi"
 
 #: src/View/ViewContainer.vala:418
 msgid "You don't have permission to view this folder."
-msgstr ""
+msgstr "Vi ne havas permeson vidi ĉi dosierujon."
 
 #: src/View/ViewContainer.vala:420
 msgid "Unable to Mount Folder"
-msgstr ""
+msgstr "Neeblas munti la dosierujon"
 
 #: src/View/ViewContainer.vala:421
 msgid "Could not connect to the server for this folder."
-msgstr ""
+msgstr "Neeblis konekti al la servilo de tiu ĉi dosierujo."
 
 #: src/View/ViewContainer.vala:424
 msgid "Unable to Display Folder Contents"
-msgstr ""
+msgstr "Neeblas montri la dosierujan enhavon"
 
 #: src/View/ViewContainer.vala:425
 msgid "The operation timed out."
-msgstr ""
+msgstr "La operacio eltempiĝis."
 
 #: src/View/ViewContainer.vala:427
 msgid "Unable to Show Folder"
-msgstr ""
+msgstr "Neeblas montri la dosierujon"
 
 #: src/View/ViewContainer.vala:428
 msgid "The server for this folder could not be located."
-msgstr ""
+msgstr "Neeblas lokigi la servilon de ĉi dosierujo."
 
 #: src/View/ViewContainer.vala:439
 msgid "File not Found"
-msgstr ""
+msgstr "Netrovita dosiero"
 
 #: src/View/ViewContainer.vala:440
 msgid "The file selected no longer exists."
-msgstr ""
+msgstr "La elektita dosiero ne plu ekzistas."
 
 #: src/View/Sidebar.vala:578
 msgid "Personal"
-msgstr ""
+msgstr "Persona"
 
 #: src/View/Sidebar.vala:579
 msgid "Your common places and bookmarks"
-msgstr ""
+msgstr "Viaj komunaj lokoj kaj paĝosignoj"
 
 #: src/View/Sidebar.vala:598
 msgid "Open your personal folder"
-msgstr ""
+msgstr "Malfermi vian personan dosierujon"
 
 #: src/View/Sidebar.vala:613
 msgid "View the list of recently used files"
-msgstr ""
+msgstr "Vidi liston de freŝe uzitaj dosieroj"
 
 #: src/View/Sidebar.vala:639 libwidgets/Resources.vala:65
 msgid "Trash"
-msgstr ""
+msgstr "Rubujo"
 
 #: src/View/Sidebar.vala:646
 msgid "Open the Trash"
-msgstr ""
+msgstr "Malfermi la rubujon"
 
 #: src/View/Sidebar.vala:651
 msgid "Devices"
-msgstr ""
+msgstr "Aparatoj"
 
 #: src/View/Sidebar.vala:652
 msgid "Your local partitions and devices"
-msgstr ""
+msgstr "Viaj lokaj submemorujoj kaj aparatoj"
 
 #: src/View/Sidebar.vala:780 libwidgets/Resources.vala:62
 msgid "Network"
@@ -505,318 +508,312 @@ msgstr "Reto"
 
 #: src/View/Sidebar.vala:781
 msgid "Your network places"
-msgstr ""
+msgstr "Viaj retaj lokoj"
 
 #: src/View/Sidebar.vala:813
 msgid "Entire Network"
-msgstr ""
+msgstr "Tuta Reto"
 
 #: src/View/Sidebar.vala:820
 msgid "Browse the contents of the network"
-msgstr ""
+msgstr "Foliumi la enhavon de la reto"
 
 #: src/View/Sidebar.vala:823
-#, fuzzy
 msgid "Connect Server"
 msgstr "Konekti al servilo"
 
 #: src/View/Sidebar.vala:824
-#, fuzzy
 msgid "Connect to a network server"
-msgstr "Konekti al servilo"
+msgstr "Konekti al reta servilo"
 
 #: src/View/Sidebar.vala:963
 #, c-format
 msgid "(%s Free of %s)"
-msgstr ""
+msgstr "(%s liberaj el %s)"
 
 #: src/View/Sidebar.vala:1456
 #, c-format
 msgid "Error mounting volume %s"
-msgstr ""
+msgstr "Eraris munto de la portilo %s"
 
 #: src/View/Sidebar.vala:1471
 #, c-format
 msgid "Unable to start %s"
-msgstr ""
+msgstr "Neeblas startigi %s"
 
 #: src/View/Sidebar.vala:1643 libcore/marlin-file-operations.c:1312
 msgid "Empty _Trash"
-msgstr ""
+msgstr "Malplenigi _Rubujon"
 
 #: src/View/Slot.vala:31
 msgid "This Folder Is Empty"
-msgstr ""
+msgstr "Ĉi dosierujo malplenas"
 
 #: src/View/Slot.vala:32
 msgid "Trash Is Empty"
-msgstr ""
+msgstr "Rubujo malplenas"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
-msgstr ""
+msgstr "Estas neniu freŝuzata dosiero"
 
 #: src/View/Slot.vala:34
 msgid "Access Denied"
-msgstr ""
+msgstr "Aliro malpermesita"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "Privacy mode is on"
-msgstr ""
+msgstr "Privata reĝimo ŝaltita"
 
 #: src/View/PrivacyModeOn.vala:28
 msgid "No recent files are remembered"
-msgstr ""
+msgstr "Neniu freŝuzata dosiero memorita"
 
 #: src/View/PrivacyModeOn.vala:30
 msgid "Change security settings"
-msgstr ""
+msgstr "Ŝanĝi sekurecajn agordojn"
 
 #: src/View/PrivacyModeOn.vala:31
 msgid "Open the system security and privacy settings app"
-msgstr ""
+msgstr "Malfermi la aplikaĵon pri sistem-sekureca kaj privateca agordoj"
 
 #: src/View/PopupMenuBuilder.vala:34
 msgid "Open"
-msgstr ""
+msgstr "Malfermi"
 
 #: src/View/PopupMenuBuilder.vala:38
 msgid "Open in New _Tab"
-msgstr ""
+msgstr "Malfermi en nova _Langeto"
 
 #: src/View/PopupMenuBuilder.vala:42
 msgid "Open in New _Window"
-msgstr ""
+msgstr "Malfermi en _Nova Fenestro"
 
 #: src/View/PopupMenuBuilder.vala:46
 msgid "Remove"
-msgstr ""
+msgstr "Forigi"
 
 #: src/View/PopupMenuBuilder.vala:50 src/View/directory_view_popup.ui:30
 msgid "Rename"
-msgstr ""
+msgstr "Renomi"
 
 #: src/View/PopupMenuBuilder.vala:54
 msgid "_Mount"
-msgstr ""
+msgstr "_Munti"
 
 #: src/View/PopupMenuBuilder.vala:58
 msgid "_Unmount"
-msgstr ""
+msgstr "_Malmunti"
 
 #: src/View/PopupMenuBuilder.vala:62
 msgid "_Eject"
-msgstr ""
+msgstr "_Elĵeti"
 
 #: src/View/directory_view_popup.ui:5
 msgid "Restore from Trash"
-msgstr ""
+msgstr "Restaŭri el rubujo"
 
 #: src/View/directory_view_popup.ui:9 src/View/directory_view_popup.ui:44
-#, fuzzy
 msgid "Delete permanently"
-msgstr "_Forigi ĉiujn"
+msgstr "Forigi definitive"
 
 #: src/View/directory_view_popup.ui:16
 msgid "Open Parent Folder"
-msgstr ""
+msgstr "Malfermi parencan dosierujon"
 
 #: src/View/directory_view_popup.ui:23
 msgid "Remove from History"
-msgstr ""
+msgstr "Forigi el historio"
 
 #: src/View/directory_view_popup.ui:37
 msgid "Move to Trash"
-msgstr ""
+msgstr "Movi rubujen"
 
 #: src/View/directory_view_popup.ui:51
-#, fuzzy
 msgid "New"
-msgstr "Reto"
+msgstr "Nova"
 
 #: src/View/directory_view_popup.ui:53
-#, fuzzy
 msgid "Folder"
-msgstr "Dosierujo:"
+msgstr "Dosierujo"
 
 #: src/View/directory_view_popup.ui:58
 msgid "Empty File"
-msgstr ""
+msgstr "Malplena dosiero"
 
 #: src/View/directory_view_popup.ui:67
 msgid "Show Hidden Files"
-msgstr ""
+msgstr "Montri kaŝitajn dosierojn"
 
 #: src/View/directory_view_popup.ui:71
-#, fuzzy
 msgid "Show Remote Thumbnails"
-msgstr "Montri pli da _detaloj"
+msgstr "Montri forajn miniaturojn"
 
 #: src/View/directory_view_popup.ui:78
 msgid "New Tab"
-msgstr ""
+msgstr "Nova langeto"
 
 #: src/View/directory_view_popup.ui:98
 msgid "Bookmark"
-msgstr ""
+msgstr "Paĝosigno"
 
 #: src/View/directory_view_popup.ui:105
 msgid "Paste"
-msgstr ""
+msgstr "Alglui"
 
 #: src/View/directory_view_popup.ui:111
 msgid "Paste Link"
-msgstr ""
+msgstr "Alglui ligilon"
 
 #: src/View/directory_view_popup.ui:118
 msgid "Cut"
-msgstr ""
+msgstr "Tondi"
 
 #: src/View/directory_view_popup.ui:122
 msgid "Copy"
-msgstr ""
+msgstr "Kopii"
 
 #: src/View/directory_view_popup.ui:126
 msgid "Copy as Link"
-msgstr ""
+msgstr "Kopii kiel ligilo"
 
 #: src/View/directory_view_popup.ui:130
 msgid "Paste into Folder"
-msgstr ""
+msgstr "Alglui en dosierujon"
 
 #: src/View/directory_view_popup.ui:134
 msgid "Paste Link into Folder"
-msgstr ""
+msgstr "Alglui ligilon en dosierujon"
 
 #: src/View/directory_view_popup.ui:141
 msgid "Sort by"
-msgstr ""
+msgstr "Ordigi laŭ"
 
 #: src/View/directory_view_popup.ui:144
 msgid "Name"
-msgstr ""
+msgstr "Nomo"
 
 #: src/View/directory_view_popup.ui:159
 msgid "Date"
-msgstr ""
+msgstr "Dato"
 
 #: src/View/directory_view_popup.ui:166
 msgid "Reversed Order"
-msgstr ""
+msgstr "Inversa ordigo"
 
 #: src/View/directory_view_popup.ui:170
 msgid "Folders Before Files"
-msgstr ""
+msgstr "Dosierujoj antaŭ dosieroj"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:130
 #: src/View/Widgets/LocationBar.vala:198
 msgid "Search or Type Path"
-msgstr ""
+msgstr "Serĉi aŭ tajpi dosierindikon"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:449
 msgid "Open in New Tab"
-msgstr ""
+msgstr "Malfermi en nova langeto"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:456
 msgid "Open in New Window"
-msgstr ""
+msgstr "Malfermi en nova fenestro"
 
 #: src/View/Widgets/BreadcrumbsEntry.vala:495
 msgid "Open in Other Application…"
-msgstr ""
+msgstr "Malfermi en alia aplikaĵo…"
 
 #: src/View/Widgets/LocationBar.vala:194
 msgid "Reload this folder"
-msgstr ""
+msgstr "Reŝargi la dosierujon"
 
 #: src/View/Widgets/LocationBar.vala:207
 msgid "Searching…"
-msgstr ""
+msgstr "Serĉanta…"
 
 #: src/View/Widgets/OverlayBar.vala:216
 #, c-format
 msgid "%u folders"
-msgstr ""
+msgstr "%u dosierujoj"
 
 #: src/View/Widgets/OverlayBar.vala:218 src/View/Widgets/OverlayBar.vala:228
 #, c-format
 msgid " and %u other item (%s) selected"
-msgstr ""
+msgstr " kaj %u alia elemento (%s) elektita(j)"
 
 #: src/View/Widgets/OverlayBar.vala:219 src/View/Widgets/OverlayBar.vala:229
 #, c-format
 msgid " and %u other items (%s) selected"
-msgstr ""
+msgstr " kaj %u aliaj elementoj (%s) elektitaj"
 
 #: src/View/Widgets/OverlayBar.vala:222 src/View/Widgets/OverlayBar.vala:232
 msgid " selected"
-msgstr ""
+msgstr " elektita(j)"
 
 #: src/View/Widgets/OverlayBar.vala:235
 #, c-format
 msgid "%u items selected (%s)"
-msgstr ""
+msgstr "%u elementoj elektitaj (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u sub-folder, "
-msgstr ""
+msgstr "%u subdosierujo, "
 
 #: src/View/Widgets/OverlayBar.vala:279
 #, c-format
 msgid "%u sub-folders, "
-msgstr ""
+msgstr "%u subdosierujoj, "
 
 #: src/View/Widgets/OverlayBar.vala:285
 #, c-format
 msgid "%u file, "
-msgstr ""
+msgstr "%u dosiero, "
 
 #: src/View/Widgets/OverlayBar.vala:285
 #, c-format
 msgid "%u files, "
-msgstr ""
+msgstr "%u dosieroj, "
 
 #: src/View/Widgets/OverlayBar.vala:295
 #, c-format
 msgid "%s approx."
-msgstr ""
+msgstr "%s proksim."
 
 #: src/View/Widgets/OverlayBar.vala:298
 msgid "unknown size"
-msgstr ""
+msgstr "nekonata grando"
 
 #: src/View/Widgets/OverlayBar.vala:302
 #, c-format
 msgid "%u file not readable"
-msgstr ""
+msgstr "%u dosiero nelegebla"
 
 #: src/View/Widgets/OverlayBar.vala:302
 #, c-format
 msgid "%u files not readable"
-msgstr ""
+msgstr "%u dosieroj nelegeblaj"
 
 #: src/View/Widgets/PermissionButton.vala:38
 msgid "Read"
-msgstr ""
+msgstr "Legi"
 
 #: src/View/Widgets/PermissionButton.vala:42
 msgid "Write"
-msgstr ""
+msgstr "Skribi"
 
 #: src/View/Widgets/PermissionButton.vala:46
 msgid "Execute"
-msgstr ""
+msgstr "Ruli"
 
 #: src/View/Widgets/TopMenu.vala:63
 #: filechooser-module/FileChooserDialog.vala:75
 msgid "Previous"
-msgstr ""
+msgstr "Antaŭa"
 
 #: src/View/Widgets/TopMenu.vala:68
 #: filechooser-module/FileChooserDialog.vala:79
 msgid "Next"
-msgstr ""
+msgstr "Sekvanta"
 
 #: libcore/ConnectServerDialog.vala:46
 msgid "Public FTP"
@@ -827,17 +824,16 @@ msgid "FTP (with login)"
 msgstr "FTP (necesas ensaluti)"
 
 #: libcore/ConnectServerDialog.vala:59
-#, fuzzy
 msgid "SSH"
 msgstr "SSH"
 
 #: libcore/ConnectServerDialog.vala:65
 msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (ret-komunika protokolo el Apple)"
+msgstr "AFP (ret-komunika protokolo de Apple)"
 
 #: libcore/ConnectServerDialog.vala:71
 msgid "Windows share"
-msgstr ""
+msgstr "Vindoza kunhavigo"
 
 #: libcore/ConnectServerDialog.vala:77
 msgid "WebDAV (HTTP)"
@@ -853,33 +849,29 @@ msgstr "Servilaj detaloj"
 
 #: libcore/ConnectServerDialog.vala:132
 msgid "Server name or IP address"
-msgstr ""
+msgstr "Servila nomo aŭ IP-adreso"
 
 #: libcore/ConnectServerDialog.vala:135
-#, fuzzy
 msgid "Server:"
-msgstr "_Servilo:"
+msgstr "Servilo:"
 
 #: libcore/ConnectServerDialog.vala:142
-#, fuzzy
 msgid "Port:"
-msgstr "_Pordo:"
+msgstr "Pordo:"
 
 #: libcore/ConnectServerDialog.vala:167
 msgid "Name of share on server"
-msgstr ""
+msgstr "Servila nomo de la kunhavigo"
 
 #: libcore/ConnectServerDialog.vala:168
-#, fuzzy
 msgid "Share:"
-msgstr "Retdividejo:"
+msgstr "Kunhavigi:"
 
 #: libcore/ConnectServerDialog.vala:170
 msgid "Path of shared folder on server"
-msgstr ""
+msgstr "Servila dosierindiko de kunhaviga dosierujo"
 
 #: libcore/ConnectServerDialog.vala:171
-#, fuzzy
 msgid "Folder:"
 msgstr "Dosierujo:"
 
@@ -889,31 +881,27 @@ msgstr "Uzanto-detaloj"
 
 #: libcore/ConnectServerDialog.vala:175
 msgid "Name of Windows domain"
-msgstr ""
+msgstr "Nomo de vindoza retregiono"
 
 #: libcore/ConnectServerDialog.vala:176
-#, fuzzy
 msgid "Domain name:"
-msgstr "_Domajna nomo:"
+msgstr "Retregiona nomo:"
 
 #: libcore/ConnectServerDialog.vala:178
 msgid "Name of user on server"
-msgstr ""
+msgstr "Servila uzantonomo"
 
 #: libcore/ConnectServerDialog.vala:179
-#, fuzzy
 msgid "User name:"
-msgstr "_Uzantonomo:"
+msgstr "Uzantonomo:"
 
 #: libcore/ConnectServerDialog.vala:184
-#, fuzzy
 msgid "Password:"
 msgstr "Pasvorto:"
 
 #: libcore/ConnectServerDialog.vala:186
-#, fuzzy
 msgid "Remember this password"
-msgstr "Memo_ri tiun pasvorton"
+msgstr "Memori ĉi pasvorton"
 
 #: libcore/ConnectServerDialog.vala:189 libcore/DndHandler.vala:101
 #: libcore/FileConflictDialog.vala:189
@@ -929,9 +917,8 @@ msgid "Continue"
 msgstr "Daŭrigi"
 
 #: libcore/ConnectServerDialog.vala:245
-#, fuzzy
 msgid "Connecting…"
-msgstr "Konektante..."
+msgstr "Konektanta…"
 
 #: libcore/ConnectServerDialog.vala:364
 msgid "Please verify your user details."
@@ -940,57 +927,57 @@ msgstr "Bonvolu kontroli viajn uzanto-detalojn."
 #: libcore/DndHandler.vala:47
 #, c-format
 msgid "Failed to execute \"%s\""
-msgstr ""
+msgstr "Neeblis ruli „%s“"
 
 #: libcore/DndHandler.vala:96
 msgid "Move Here"
-msgstr ""
+msgstr "Movi ĉi tien"
 
 #: libcore/DndHandler.vala:97
 msgid "Copy Here"
-msgstr ""
+msgstr "Kopii ĉi tien"
 
 #: libcore/DndHandler.vala:98
 msgid "Link Here"
-msgstr ""
+msgstr "Ligi ĉi tien"
 
 #: libcore/FileUtils.vala:86
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "Neeblis difini la devenan lokon de „%s“ "
 
 #: libcore/FileUtils.vala:87
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Neeblas restaŭri la elementon el rubujo"
 
 #: libcore/FileUtils.vala:429
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Neeblis renomi al „%s“"
 
 #: libcore/FileUtils.vala:518
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Hodiaŭ je %-H:%M"
 
 #: libcore/FileUtils.vala:520
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Hodiaŭ je %-I:%M %p"
 
 #: libcore/FileUtils.vala:526
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Hieraŭ je %-H:%M"
 
 #: libcore/FileUtils.vala:528
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Hieraŭ je %-I:%M %p"
 
 #: libcore/FileUtils.vala:535
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A je %-H:%M"
 
 #: libcore/FileUtils.vala:537
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A je %-I:%M %p"
 
 #: libcore/FileConflictDialog.vala:64
 msgid "File conflict"
@@ -1010,7 +997,7 @@ msgstr "Anstataŭigi per"
 
 #: libcore/FileConflictDialog.vala:171
 msgid "Reset"
-msgstr "Reagordi"
+msgstr "Restarigi"
 
 #: libcore/FileConflictDialog.vala:181
 msgid "_Select a new name for the destination"
@@ -1022,19 +1009,19 @@ msgstr "Apliki tion al ĉiuj dosieroj"
 
 #: libcore/FileConflictDialog.vala:186 libcore/marlin-file-operations.c:160
 msgid "_Skip"
-msgstr "Preterpa_si"
+msgstr "_Preterpasi"
 
 #: libcore/FileConflictDialog.vala:187
 msgid "Re_name"
-msgstr "Ali_nomi"
+msgstr "_Alinomi"
 
 #: libcore/FileConflictDialog.vala:191
 msgid "Keep Newest"
-msgstr ""
+msgstr "Konservi la plej freŝdatan"
 
 #: libcore/FileConflictDialog.vala:192
 msgid "Skip if original was modified more recently"
-msgstr ""
+msgstr "Preterpasi originalan pli freŝdata"
 
 #: libcore/FileConflictDialog.vala:194
 msgid "Replace"
@@ -1043,35 +1030,35 @@ msgstr "Anstataŭigi"
 #: libcore/FileConflictDialog.vala:310
 #, c-format
 msgid "Merge folder \"%s\"?"
-msgstr "Ĉu kunigi dosierujon \"%s\"?"
+msgstr "Ĉu kunigi dosierujon „%s“?"
 
 #: libcore/FileConflictDialog.vala:311
 msgid ""
 "Merging will ask for confirmation before replacing any files in the folder "
 "that conflict with the files being copied."
 msgstr ""
-"Kunfando demandas konfirmon antaŭ ol ajna dosiero en la dosierujo estas "
-"anstataŭigata per konfliktanta dosiero."
+"Kunfando petas konfirmon pri anstataŭigo konflikta je kopio de dosiero en la "
+"dosierujo."
 
 #: libcore/FileConflictDialog.vala:313
 #, c-format
 msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli malnova dosierujo kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas pli malnova samnoma dosierujo en „%s“."
 
 #: libcore/FileConflictDialog.vala:315
 #, c-format
 msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli nova dosierujo kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas pli nova samnoma dosierujo en „%s“."
 
 #: libcore/FileConflictDialog.vala:317
 #, c-format
 msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas alia dosierujo kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas samnoma dosierujo en „%s“."
 
 #: libcore/FileConflictDialog.vala:320
 #, c-format
 msgid "Replace folder \"%s\"?"
-msgstr "Ĉu anstataŭigi dosierujon \"%s\"?"
+msgstr "Ĉu anstataŭigi dosierujon „%s“?"
 
 #: libcore/FileConflictDialog.vala:321
 msgid "Replacing it will remove all files in the folder."
@@ -1080,12 +1067,12 @@ msgstr "Anstataŭo de ĝi kaŭzas forigon de ĉiuj dosieroj en la dosierujo."
 #: libcore/FileConflictDialog.vala:322
 #, c-format
 msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas dosierujo kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas samnoma dosierujo en „%s“."
 
 #: libcore/FileConflictDialog.vala:325
 #, c-format
 msgid "Replace file \"%s\"?"
-msgstr "Ĉu anstataŭigi dosieron\"%s\"?"
+msgstr "Ĉu anstataŭigi dosieron „%s“?"
 
 #: libcore/FileConflictDialog.vala:326
 msgid "Replacing it will overwrite its content."
@@ -1256,30 +1243,25 @@ msgid ""
 msgstr ""
 
 #: libcore/marlin-file-operations.c:1300
-#, fuzzy
 msgid "Permanently delete all items from Trash on this mount?"
-msgstr "Definitive forigi ĉiujn elementojn el la rubujo?"
+msgstr "Ĉu definitive forigi ĉiujn elementojn el ĉi muntaĵa rubujo?"
 
 #: libcore/marlin-file-operations.c:1301
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr ""
 
 #: libcore/marlin-file-operations.c:1339
-#, fuzzy
 msgid "Are you sure you want to permanently delete \"%B\"?"
-msgstr "Ĉu vi certas, ke vi volas definitive forigi „%B“ el la rubujo?"
+msgstr "Ĉu vi certas, ke vi volas definitive forigi „%B“?"
 
 #: libcore/marlin-file-operations.c:1342
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] ""
-"Ĉu vi certas, ke vi volas definitive forigi la elektitan elementon el la "
-"rubujo?"
+msgstr[0] "Ĉu vi certas, ke vi volas definitive forigi la %'d elektitan elementon?"
 msgstr[1] ""
-"Ĉu vi certas, ke vi volas definitive forigi la %'d elektitajn elementojn el "
-"la rubujo?"
+"Ĉu vi certas, ke vi volas definitive forigi la %'d elektitajn elementojn?"
 
 #: libcore/marlin-file-operations.c:1385
 #, c-format
@@ -1317,9 +1299,8 @@ msgid ""
 msgstr ""
 
 #: libcore/marlin-file-operations.c:1487 libcore/marlin-file-operations.c:3410
-#, fuzzy
 msgid "_Skip files"
-msgstr "Preterpa_si"
+msgstr "Ignori dosierojn"
 
 #: libcore/marlin-file-operations.c:1508
 msgid ""
@@ -1415,9 +1396,9 @@ msgid "Unable to unmount %V"
 msgstr ""
 
 #: libcore/marlin-file-operations.c:2299
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to mount %s"
-msgstr "Analizado de labortabla dosiero fiaskis: %s"
+msgstr "Maleblas munti %s"
 
 #: libcore/marlin-file-operations.c:2322
 #, c-format
@@ -1616,9 +1597,9 @@ msgid "Could not remove files from the already existing folder %F."
 msgstr ""
 
 #: libcore/marlin-file-operations.c:3616
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file %F."
-msgstr "Jam ekzistas dosierujo kun la sama nomo en \"%s\"."
+msgstr "Maleblis forigi la jam ekzistantan dosieron %F."
 
 #: libcore/marlin-file-operations.c:3890 libcore/marlin-file-operations.c:4561
 msgid "You cannot move a folder into itself."
@@ -1767,9 +1748,9 @@ msgstr ""
 #: libcore/marlin-undostack-manager.c:1121
 #: libcore/marlin-undostack-manager.c:1131
 #: libcore/marlin-undostack-manager.c:1162
-#, fuzzy, c-format
+#, c-format
 msgid "Delete '%s'"
-msgstr "_Forigi ĉiujn"
+msgstr "Forigi „%s“"
 
 #: libcore/marlin-undostack-manager.c:1128
 #, c-format
@@ -1794,9 +1775,9 @@ msgstr ""
 
 #: libcore/marlin-undostack-manager.c:1171
 #: libcore/marlin-undostack-manager.c:1366
-#, fuzzy, c-format
+#, c-format
 msgid "Restore %d items from trash"
-msgstr "Definitive forigi ĉiujn elementojn el la rubujo?"
+msgstr "Restaŭri %d elementojn el la rubujo"
 
 #: libcore/marlin-undostack-manager.c:1179
 #, c-format
@@ -1814,14 +1795,14 @@ msgid "Move '%s' back to trash"
 msgstr ""
 
 #: libcore/marlin-undostack-manager.c:1202
-#, fuzzy, c-format
+#, c-format
 msgid "Delete links to %d items"
-msgstr "Alia ligo al %s"
+msgstr "Forigi ligilojn al %d elementoj"
 
 #: libcore/marlin-undostack-manager.c:1205
-#, fuzzy, c-format
+#, c-format
 msgid "Delete link to '%s'"
-msgstr "Alia ligo al %s"
+msgstr "Forigi ligon al „%s“"
 
 #: libcore/marlin-undostack-manager.c:1215
 #, c-format
@@ -1904,14 +1885,14 @@ msgid "Restore '%s' from trash"
 msgstr ""
 
 #: libcore/marlin-undostack-manager.c:1378
-#, fuzzy, c-format
+#, c-format
 msgid "Create links to %d items"
-msgstr "Alia ligo al %s"
+msgstr "Krei ligojn al %d elementoj"
 
 #: libcore/marlin-undostack-manager.c:1381
-#, fuzzy, c-format
+#, c-format
 msgid "Create link to '%s'"
-msgstr "Alia ligo al %s"
+msgstr "Krei ligon al „%s“"
 
 #: libcore/marlin-undostack-manager.c:1390
 #, c-format
@@ -1991,11 +1972,11 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: libcore/marlin-undostack-manager.c:1490
-#, fuzzy, c-format
+#, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
-msgstr[0] "Alia ligo al %s"
-msgstr[1] "Alia ligo al %s"
+msgstr[0] "Malfari kreadon de ligo al %d elemento"
+msgstr[1] "Malfari kreadon de ligo al %d elementoj"
 
 #: libcore/marlin-undostack-manager.c:1495
 #, c-format
@@ -2155,9 +2136,8 @@ msgid "Go to %s"
 msgstr "Iri al %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
-msgstr "Speco"
+msgstr "Tajpu dosierindikon"
 
 #: libwidgets/View/SearchResults.vala:222
 msgid "In This Folder"
@@ -2236,9 +2216,8 @@ msgid "Restore Selected"
 msgstr ""
 
 #: plugins/pantheon-files-trash/plugin.vala:22
-#, fuzzy
 msgid "Delete Selected"
-msgstr "_Forigi ĉiujn"
+msgstr "Forigi elektitojn"
 
 #~ msgid "Failed to parse the desktop file: %s"
 #~ msgstr "Analizado de labortabla dosiero fiaskis: %s"
