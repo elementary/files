@@ -811,8 +811,6 @@ static char *
 custom_basename_to_string (char *format, va_list va)
 {
     GFile *file;
-    GFileInfo *info;
-    char *name, *basename, *tmp;
 
     file = va_arg (va, GFile *);
 
