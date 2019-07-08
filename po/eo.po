@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-09 09:21-0600\n"
-"PO-Revision-Date: 2019-07-05 20:46+0000\n"
+"PO-Revision-Date: 2019-07-09 19:49+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
 ">\n"
@@ -1076,22 +1076,22 @@ msgstr "Ĉu anstataŭigi dosieron „%s“?"
 
 #: libcore/FileConflictDialog.vala:326
 msgid "Replacing it will overwrite its content."
-msgstr "Anstataŭo de ĝi kaŭzas anstataŭigon de ĝia enhavo."
+msgstr "Anstataŭigo surskribos la enhavon."
 
 #: libcore/FileConflictDialog.vala:329
 #, c-format
 msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli malnova dosiero kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas pli malnova dosiero kun la sama nomo en „%s“."
 
 #: libcore/FileConflictDialog.vala:331
 #, c-format
 msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli nova dosiero kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas pli nova dosiero kun la sama nomo en „%s“."
 
 #: libcore/FileConflictDialog.vala:333
 #, c-format
 msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas alia dosiero kun la sama nomo en \"%s\"."
+msgstr "Jam ekzistas alia dosiero kun la sama nomo en „%s“."
 
 #: libcore/FileConflictDialog.vala:359
 msgid "Merge"
@@ -1099,12 +1099,12 @@ msgstr "Kunfandi"
 
 #: libcore/gof-directory-async.vala:683
 msgid "Server did not respond within time limit"
-msgstr ""
+msgstr "Servilo ne respondis en la tempolimo"
 
 #: libcore/ProgressInfo.vala:63 libcore/ProgressInfo.vala:71
 #: libcore/ProgressInfo.vala:79
 msgid "Preparing"
-msgstr ""
+msgstr "Pretiganta"
 
 #: libcore/StockDialogs.vala:52
 msgid "Show more _details"
@@ -1234,13 +1234,15 @@ msgstr "Se vi forigas elementon, ĝi definitive perdiĝos."
 
 #: libcore/marlin-file-operations.c:1296
 msgid "Permanently delete all items from Trash?"
-msgstr "Definitive forigi ĉiujn elementojn el la rubujo?"
+msgstr "Ĉu definitive forigi ĉiujn elementojn el la rubujo?"
 
 #: libcore/marlin-file-operations.c:1297
 msgid ""
 "All items in all trash directories, including those on any mounted external "
 "drives, will be permanently deleted."
 msgstr ""
+"Ĉiuj elementoj en ĉiuj rubujaj dosierujoj, inkluzive en muntitaj eksteraj "
+"memorujoj, estos definitive forigitaj."
 
 #: libcore/marlin-file-operations.c:1300
 msgid "Permanently delete all items from Trash on this mount?"
@@ -1248,7 +1250,7 @@ msgstr "Ĉu definitive forigi ĉiujn elementojn el ĉi muntaĵa rubujo?"
 
 #: libcore/marlin-file-operations.c:1301
 msgid "All items in the trash on this mount, will be permanently deleted."
-msgstr ""
+msgstr "Ĉiuj elementoj en la muntaĵa rubujo estos definitive forigitaj."
 
 #: libcore/marlin-file-operations.c:1339
 msgid "Are you sure you want to permanently delete \"%B\"?"
@@ -1267,59 +1269,61 @@ msgstr[1] ""
 #, c-format
 msgid "%'d file left to delete"
 msgid_plural "%'d files left to delete"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%'d dosiero forigota"
+msgstr[1] "%'d dosieroj forigotaj"
 
 #: libcore/marlin-file-operations.c:1391
 msgid "Deleting files"
-msgstr ""
+msgstr "Foriganta dosierojn"
 
 #: libcore/marlin-file-operations.c:1404
 msgid "%T left"
 msgid_plural "%T left"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%T restanta"
+msgstr[1] "%T restantaj"
 
 #: libcore/marlin-file-operations.c:1471 libcore/marlin-file-operations.c:1505
 #: libcore/marlin-file-operations.c:1544 libcore/marlin-file-operations.c:1621
 #: libcore/marlin-file-operations.c:2375
 msgid "Error while deleting."
-msgstr ""
+msgstr "Eraro dum forigado."
 
 #: libcore/marlin-file-operations.c:1475
 msgid ""
 "Files in the folder \"%B\" cannot be deleted because you do not have "
 "permissions to see them."
 msgstr ""
+"Neeblas forigi dosierojn en la dosierujo „%B“, pro manko de la permesoj vidi "
+"ilin."
 
 #: libcore/marlin-file-operations.c:1478 libcore/marlin-file-operations.c:2434
 #: libcore/marlin-file-operations.c:3401
 msgid ""
 "There was an error getting information about the files in the folder \"%B\"."
-msgstr ""
+msgstr "Okazis eraro akirante informojn pri dosieroj en la dosierujo „%B“."
 
 #: libcore/marlin-file-operations.c:1487 libcore/marlin-file-operations.c:3410
 msgid "_Skip files"
-msgstr "Ignori dosierojn"
+msgstr "_Ignori dosierojn"
 
 #: libcore/marlin-file-operations.c:1508
 msgid ""
 "The folder \"%B\" cannot be deleted because you do not have permissions to "
 "read it."
-msgstr ""
+msgstr "Neeblas forigi la dosieron „%B“, pro manko de la permeso legi ĝin."
 
 #: libcore/marlin-file-operations.c:1511 libcore/marlin-file-operations.c:2473
 #: libcore/marlin-file-operations.c:3446
 msgid "There was an error reading the folder \"%B\"."
-msgstr ""
+msgstr "Okazis eraro dum legado de la dosierujo „%B“."
 
 #: libcore/marlin-file-operations.c:1545
 msgid "Could not remove the folder %B."
-msgstr ""
+msgstr "Neeblas forigi la dosierujon „%B“."
 
 #: libcore/marlin-file-operations.c:1622
 msgid "There was an error deleting %B."
-msgstr ""
+msgstr "Okazis eraro dum forigo de „%B“."
 
 #: libcore/marlin-file-operations.c:1706
 msgid "Moving files to trash"
