@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-06-26 22:42+0200\n"
-"PO-Revision-Date: 2018-12-20 21:50+0000\n"
+"PO-Revision-Date: 2019-07-03 01:28+0000\n"
 "Last-Translator: Fabio Zaramella <fabiozaramella@hotmail.it>\n"
-"Language-Team: Italian <https://weblate.elementary.io/projects/files/files/"
-"it/>\n"
+"Language-Team: Italian <https://l10n.elementary.io/projects/files/files/it/>"
+"\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: src/Application.vala:124
@@ -2266,7 +2266,6 @@ msgid "Go to %s"
 msgstr "Vai a %s"
 
 #: libwidgets/Chrome/BasicBreadcrumbsEntry.vala:363
-#, fuzzy
 msgid "Type Path"
 msgstr "Digita un percorso"
 
