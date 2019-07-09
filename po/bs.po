@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 22:42+0200\n"
+"POT-Creation-Date: 2019-07-09 12:47-0700\n"
 "PO-Revision-Date: 2018-11-11 00:08+0000\n"
 "Last-Translator: Elvis Mujanović <elvis.mujanovic@gmail.com>\n"
 "Language-Team: Bosnian <https://weblate.elementary.io/projects/files/files/"
@@ -60,25 +60,25 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--zatvori ne može biti korišćeno sa URI-jevima."
 
-#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:191
+#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr "Operacije sa datotekama"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:185
+#: src/ProgressUIHandler.vala:192
 #, c-format
 msgid "Completed %s"
 msgstr "%s završeno"
 
-#: src/ProgressUIHandler.vala:188
+#: src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
 msgstr "Sve operacije datoteke su okončane"
 
-#: src/ProgressUIHandler.vala:236
+#: src/ProgressUIHandler.vala:243
 msgid "Show Copy Dialog"
 msgstr "Prikaži dijalog za kopiranje"
 
-#: src/ProgressUIHandler.vala:248
+#: src/ProgressUIHandler.vala:255
 msgid "Cancel All In-progress Actions"
 msgstr "Prekini sve akcije koje se trenutno izvršavaju"
 

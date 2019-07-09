@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 22:42+0200\n"
+"POT-Creation-Date: 2019-07-09 12:47-0700\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -60,25 +60,25 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit nu poate fi folosit cu URI-uri."
 
-#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:191
+#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr "Operații cu fișiere"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:185
+#: src/ProgressUIHandler.vala:192
 #, c-format
 msgid "Completed %s"
 msgstr "Complet %s"
 
-#: src/ProgressUIHandler.vala:188
+#: src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
 msgstr "Toate operațiunile s-au terminat"
 
-#: src/ProgressUIHandler.vala:236
+#: src/ProgressUIHandler.vala:243
 msgid "Show Copy Dialog"
 msgstr "Arată dialogul de copiere"
 
-#: src/ProgressUIHandler.vala:248
+#: src/ProgressUIHandler.vala:255
 msgid "Cancel All In-progress Actions"
 msgstr "Anuleaza toate actiunile in desfasurare"
 

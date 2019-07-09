@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 22:42+0200\n"
+"POT-Creation-Date: 2019-07-09 12:47-0700\n"
 "PO-Revision-Date: 2019-01-14 00:08+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://weblate.elementary.io/projects/files/files/fr/"
@@ -59,25 +59,25 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit ne peut pas être utilisé avec des URI."
 
-#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:191
+#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr "Opérations sur les fichiers"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:185
+#: src/ProgressUIHandler.vala:192
 #, c-format
 msgid "Completed %s"
 msgstr "Terminé %s"
 
-#: src/ProgressUIHandler.vala:188
+#: src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
 msgstr "Toutes les opérations sur les fichiers sont terminées"
 
-#: src/ProgressUIHandler.vala:236
+#: src/ProgressUIHandler.vala:243
 msgid "Show Copy Dialog"
 msgstr "Afficher la fenêtre de copie"
 
-#: src/ProgressUIHandler.vala:248
+#: src/ProgressUIHandler.vala:255
 msgid "Cancel All In-progress Actions"
 msgstr "Annuler toutes les actions en cours"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 22:42+0200\n"
+"POT-Creation-Date: 2019-07-09 12:47-0700\n"
 "PO-Revision-Date: 2019-07-05 20:46+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -58,25 +58,25 @@ msgstr ""
 msgid "--quit cannot be used with URIs."
 msgstr "--quit ne uzeblas kun URI-adresoj."
 
-#: src/ProgressUIHandler.vala:131 src/ProgressUIHandler.vala:191
+#: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
 msgid "File Operations"
 msgstr "Dosieraj operacioj"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
-#: src/ProgressUIHandler.vala:185
+#: src/ProgressUIHandler.vala:192
 #, c-format
 msgid "Completed %s"
 msgstr "Finis %s"
 
-#: src/ProgressUIHandler.vala:188
+#: src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
 msgstr "Ĉiuj dosieraj operacioj finiĝis"
 
-#: src/ProgressUIHandler.vala:236
+#: src/ProgressUIHandler.vala:243
 msgid "Show Copy Dialog"
 msgstr "Montri kopian dialogon"
 
-#: src/ProgressUIHandler.vala:248
+#: src/ProgressUIHandler.vala:255
 msgid "Cancel All In-progress Actions"
 msgstr "Rezigni ĉiujn aktivajn agojn"
 
@@ -331,12 +331,9 @@ msgstr "Krei"
 msgid "Create the folder \"%s\""
 msgstr "Krei la dosieron „%s“"
 
-#: src/View/DirectoryNotFound.vala:44
-#, c-format
-msgid ""
-"Failed to create the folder\n"
-"\n"
-"%s"
+#: src/View/DirectoryNotFound.vala:45
+#, fuzzy
+msgid "Failed to create the folder"
 msgstr ""
 "Neeblis krei la dosierujon\n"
 "\n"
@@ -1075,46 +1072,46 @@ msgstr "Kunfandi"
 #: libcore/FileUtils.vala:87
 #, c-format
 msgid "Could not determine original location of \"%s\" "
-msgstr ""
+msgstr "Neeblis difini la devenan lokon de „%s“ "
 
 #: libcore/FileUtils.vala:88
 msgid "The item cannot be restored from trash"
-msgstr ""
+msgstr "Neeblas restaŭri la elementon el rubujo"
 
 #: libcore/FileUtils.vala:430
 #, c-format
 msgid "Could not rename to '%s'"
-msgstr ""
+msgstr "Neeblis renomi al „%s“"
 
 #. TRANSLATORS Used when 24h clock has been selected
 #: libcore/FileUtils.vala:520
 msgid "Today at %-H:%M"
-msgstr ""
+msgstr "Hodiaŭ je %-H:%M"
 
 #. TRANSLATORS Used when 12h clock has been selected
 #: libcore/FileUtils.vala:523
 msgid "Today at %-I:%M %p"
-msgstr ""
+msgstr "Hodiaŭ je %-I:%M %p"
 
 #. TRANSLATORS Used when 24h clock has been selected
 #: libcore/FileUtils.vala:530
 msgid "Yesterday at %-H:%M"
-msgstr ""
+msgstr "Hieraŭ je %-H:%M"
 
 #. TRANSLATORS Used when 12h clock has been selected
 #: libcore/FileUtils.vala:533
 msgid "Yesterday at %-I:%M %p"
-msgstr ""
+msgstr "Hieraŭ je %-I:%M %p"
 
 #. TRANSLATORS Used when 24h clock has been selected
 #: libcore/FileUtils.vala:541
 msgid "%A at %-H:%M"
-msgstr ""
+msgstr "%A je %-H:%M"
 
 #. TRANSLATORS Used when 12h clock has been selected
 #: libcore/FileUtils.vala:544
 msgid "%A at %-I:%M %p"
-msgstr ""
+msgstr "%A je %-I:%M %p"
 
 #: libcore/gof-directory-async.vala:690
 msgid "Server did not respond within time limit"
@@ -1275,16 +1272,16 @@ msgstr ""
 #. TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
 #. '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
 #: libcore/marlin-file-operations.c:1342
-#, fuzzy
 msgid "Are you sure you want to permanently delete \"%B\"?"
 msgstr "Ĉu vi certas, ke vi volas definitive forigi „%B“?"
 
 #: libcore/marlin-file-operations.c:1345
-#, fuzzy, c-format
+#, c-format
 msgid "Are you sure you want to permanently delete the %'d selected item?"
 msgid_plural ""
 "Are you sure you want to permanently delete the %'d selected items?"
-msgstr[0] "Ĉu vi certas, ke vi volas definitive forigi la %'d elektitan elementon?"
+msgstr[0] ""
+"Ĉu vi certas, ke vi volas definitive forigi la %'d elektitan elementon?"
 msgstr[1] ""
 "Ĉu vi certas, ke vi volas definitive forigi la %'d elektitajn elementojn?"
 
@@ -1330,7 +1327,6 @@ msgid ""
 msgstr ""
 
 #: libcore/marlin-file-operations.c:1494 libcore/marlin-file-operations.c:3477
-#, fuzzy
 msgid "_Skip files"
 msgstr "Ignori dosierojn"
 
@@ -1435,7 +1431,7 @@ msgid "Unable to unmount %V"
 msgstr ""
 
 #: libcore/marlin-file-operations.c:2313
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to mount %s"
 msgstr "Maleblas munti %s"
 
@@ -1688,7 +1684,7 @@ msgstr ""
 
 #. TRANSLATORS: %F is a placeholder for the full path of a file.  It may change position but must not be translated or removed
 #: libcore/marlin-file-operations.c:3694
-#, fuzzy, c-format
+#, c-format
 msgid "Could not remove the already existing file %F."
 msgstr "Maleblis forigi la jam ekzistantan dosieron %F."
 
@@ -1855,7 +1851,7 @@ msgstr ""
 #: libcore/marlin-undostack-manager.c:1119
 #: libcore/marlin-undostack-manager.c:1129
 #: libcore/marlin-undostack-manager.c:1160
-#, fuzzy, c-format
+#, c-format
 msgid "Delete '%s'"
 msgstr "Forigi „%s“"
 
@@ -1882,7 +1878,7 @@ msgstr ""
 
 #: libcore/marlin-undostack-manager.c:1169
 #: libcore/marlin-undostack-manager.c:1364
-#, fuzzy, c-format
+#, c-format
 msgid "Restore %d items from trash"
 msgstr "Restaŭri %d elementojn el la rubujo"
 
@@ -1902,12 +1898,12 @@ msgid "Move '%s' back to trash"
 msgstr ""
 
 #: libcore/marlin-undostack-manager.c:1200
-#, fuzzy, c-format
+#, c-format
 msgid "Delete links to %d items"
 msgstr "Forigi ligilojn al %d elementoj"
 
 #: libcore/marlin-undostack-manager.c:1203
-#, fuzzy, c-format
+#, c-format
 msgid "Delete link to '%s'"
 msgstr "Forigi ligon al „%s“"
 
@@ -1992,12 +1988,12 @@ msgid "Restore '%s' from trash"
 msgstr ""
 
 #: libcore/marlin-undostack-manager.c:1376
-#, fuzzy, c-format
+#, c-format
 msgid "Create links to %d items"
 msgstr "Krei ligojn al %d elementoj"
 
 #: libcore/marlin-undostack-manager.c:1379
-#, fuzzy, c-format
+#, c-format
 msgid "Create link to '%s'"
 msgstr "Krei ligon al „%s“"
 
@@ -2079,7 +2075,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: libcore/marlin-undostack-manager.c:1488
-#, fuzzy, c-format
+#, c-format
 msgid "_Undo create link to %d item"
 msgid_plural "_Undo create link to %d items"
 msgstr[0] "Malfari kreadon de ligo al %d elemento"
