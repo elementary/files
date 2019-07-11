@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-09 12:47-0700\n"
-"PO-Revision-Date: 2019-01-18 05:00+0000\n"
+"PO-Revision-Date: 2019-07-14 20:28+0000\n"
 "Last-Translator: Rodrigo Oliveira <rod.oliveira@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) <https://weblate.elementary.io/projects/"
+"Language-Team: Portuguese (Brazil) <https://l10n.elementary.io/projects/"
 "files/files/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: src/Application.vala:124
@@ -181,9 +181,8 @@ msgid "Deleted:"
 msgstr "Removido:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
-#, fuzzy
 msgid "Media type:"
-msgstr "Tipo MIME:"
+msgstr "Tipo de mídia:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
@@ -337,12 +336,8 @@ msgid "Create the folder \"%s\""
 msgstr "Criar uma pasta \"%s\""
 
 #: src/View/DirectoryNotFound.vala:45
-#, fuzzy
 msgid "Failed to create the folder"
-msgstr ""
-"Falha ao criar a pasta\n"
-"\n"
-"%s"
+msgstr "Falha ao criar a pasta"
 
 #: src/View/AbstractDirectoryView.vala:816
 #: src/View/AbstractDirectoryView.vala:1101
@@ -656,9 +651,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Mostra miniaturas remotas"
 
 #: src/View/directory_view_popup.ui:75
-#, fuzzy
 msgid "Hide Local Thumbnails"
-msgstr "Mostra miniaturas remotas"
+msgstr "Ocultar miniaturas locais"
 
 #: src/View/directory_view_popup.ui:82
 msgid "New Tab"
