@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-09 12:47-0700\n"
-"PO-Revision-Date: 2019-05-26 17:29+0000\n"
+"PO-Revision-Date: 2019-07-14 20:28+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
 "Language: ko\n"
@@ -176,9 +176,8 @@ msgid "Deleted:"
 msgstr "제거:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
-#, fuzzy
 msgid "Media type:"
-msgstr "MIME 형식:"
+msgstr "미디어 형식:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
@@ -327,12 +326,8 @@ msgid "Create the folder \"%s\""
 msgstr "\"%s\" 폴더를 생성합니다"
 
 #: src/View/DirectoryNotFound.vala:45
-#, fuzzy
 msgid "Failed to create the folder"
-msgstr ""
-"폴더 생성에 실패하였습니다:\n"
-"\n"
-"%s"
+msgstr "폴더를 만들지 못했습니다"
 
 #: src/View/AbstractDirectoryView.vala:816
 #: src/View/AbstractDirectoryView.vala:1101
@@ -645,9 +640,8 @@ msgid "Show Remote Thumbnails"
 msgstr "원격 썸네일 보이기"
 
 #: src/View/directory_view_popup.ui:75
-#, fuzzy
 msgid "Hide Local Thumbnails"
-msgstr "원격 썸네일 보이기"
+msgstr "내장 썸네일 감추기"
 
 #: src/View/directory_view_popup.ui:82
 msgid "New Tab"
