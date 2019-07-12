@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-09 12:47-0700\n"
-"PO-Revision-Date: 2019-05-15 00:14+0000\n"
+"PO-Revision-Date: 2019-07-14 20:28+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
-"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
-">\n"
+"Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/>"
+"\n"
 "Language: mr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -173,9 +173,8 @@ msgid "Deleted:"
 msgstr "हटविले:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
-#, fuzzy
 msgid "Media type:"
-msgstr "MIME प्रकार:"
+msgstr "मीडिया प्रकार:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
@@ -328,12 +327,8 @@ msgid "Create the folder \"%s\""
 msgstr "\"%s\" फोल्डर तयार करा"
 
 #: src/View/DirectoryNotFound.vala:45
-#, fuzzy
 msgid "Failed to create the folder"
-msgstr ""
-"फोल्डर तयार करण्यात अयशस्वी\n"
-"\n"
-"%s"
+msgstr "फोल्डर तयार करण्यात अयशस्वी"
 
 #: src/View/AbstractDirectoryView.vala:816
 #: src/View/AbstractDirectoryView.vala:1101
@@ -646,9 +641,8 @@ msgid "Show Remote Thumbnails"
 msgstr "रिमोट थंबनेल्स दाखवा"
 
 #: src/View/directory_view_popup.ui:75
-#, fuzzy
 msgid "Hide Local Thumbnails"
-msgstr "रिमोट थंबनेल्स दाखवा"
+msgstr "स्थानीय थंबनेल्स लपवा"
 
 #: src/View/directory_view_popup.ui:82
 msgid "New Tab"
