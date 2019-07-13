@@ -448,16 +448,19 @@ namespace FM {
             GLib.File? focus = focus_location != null ? focus_location.dup () : null;
 
             /* Because the Icon View disconnects the model while loading, we need to wait until
-             * the tree is thawed and the model reconnected before selecting the files */
-            Idle.add_full (GLib.Priority.LOW, () => {
+             * the tree is thawed and the model reconnected before selecting the files.
+             * Using a timeout helps ensure that the files appear in the model before selecting. Using an Idle
+             * sometimes results in the pasted file not being selected because it is not found yet in the model. */
+
+            Timeout.add (20, () => {
                 if (!tree_frozen) {
                     select_file_paths (file_list, focus);
                     /* Update menu and selected file list now in case autoselected */
                     update_selected_files_and_menu ();
                     return GLib.Source.REMOVE;
-                } else {
-                    return GLib.Source.CONTINUE;
                 }
+
+                return GLib.Source.CONTINUE;
             });
         }
 
