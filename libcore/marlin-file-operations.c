@@ -743,6 +743,10 @@ custom_full_name_to_string (char *format, va_list va)
     GFile *file;
 
     file = va_arg (va, GFile *);
+    if (!G_IS_FILE (file)) {
+        g_critical ("Invalid file");
+        return strdup ("");
+    }
 
     return g_file_get_parse_name (file);
 }
@@ -754,13 +758,14 @@ custom_full_name_skip (va_list *va)
 }
 
 static char *
-custom_basename_to_string (char *format, va_list va)
-{
-    GFile *file;
+custom_basename_from_file (GFile *file) {
     GFileInfo *info;
     char *name, *basename, *tmp;
 
-    file = va_arg (va, GFile *);
+    if (!G_IS_FILE (file)) {
+        g_critical ("Invalid file");
+        return strdup ("");
+    }
 
     info = g_file_query_info (file,
                               G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME,
@@ -800,6 +805,16 @@ custom_basename_to_string (char *format, va_list va)
 
 
     return name;
+}
+
+static char *
+custom_basename_to_string (char *format, va_list va)
+{
+    GFile *file;
+
+    file = va_arg (va, GFile *);
+
+    return custom_basename_from_file (file);
 }
 
 static void
@@ -844,6 +859,10 @@ custom_mount_to_string (char *format, va_list va)
     GMount *mount;
 
     mount = va_arg (va, GMount *);
+    if (!G_IS_MOUNT (mount)) {
+        g_critical ("Invalid mount");
+        return strdup ("");
+    }
     return g_mount_get_name (mount);
 }
 
@@ -1769,6 +1788,10 @@ trash_files (CommonJob *job, GList *files, int *files_skipped)
         file = l->data;
 
         error = NULL;
+        if (!G_IS_FILE (file)) {
+            (*files_skipped)++;
+            goto skip;
+        }
 
         mtime = marlin_undo_manager_get_file_modification_time (file);
 
@@ -2552,12 +2575,16 @@ scan_file (GFile *file,
     dirs = g_queue_new ();
 retry:
     error = NULL;
-    info = g_file_query_info (file,
-                              G_FILE_ATTRIBUTE_STANDARD_TYPE","
-                              G_FILE_ATTRIBUTE_STANDARD_SIZE,
-                              G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                              job->cancellable,
-                              &error);
+    info = NULL;
+
+    if (G_IS_FILE (file)) {
+        info = g_file_query_info (file,
+                                  G_FILE_ATTRIBUTE_STANDARD_TYPE","
+                                  G_FILE_ATTRIBUTE_STANDARD_SIZE,
+                                  G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+                                  job->cancellable,
+                                  &error);
+    }
 
     if (info) {
         count_file (info, job, source_info);
@@ -2830,6 +2857,8 @@ report_copy_progress (CopyMoveJob *copy_job,
     int remaining_time;
     guint64 now;
     gchar *s = NULL;
+    gchar *srcname = NULL;
+    gchar *destname = NULL;
 
     job = (CommonJob *)copy_job;
 
@@ -2842,13 +2871,22 @@ report_copy_progress (CopyMoveJob *copy_job,
         return;
     }
 
+    /* See https://github.com/elementary/files/issues/464. The job data may become invalid, possibly
+     * due to a race. */
+    if (!G_IS_FILE (copy_job->files->data) || ! G_IS_FILE (copy_job->destination)) {
+        return;
+    } else {
+        srcname = custom_basename_from_file ((GFile *)copy_job->files->data);
+        destname = custom_basename_from_file (copy_job->destination);
+    }
+
     transfer_info->last_report_time = now;
 
     files_left = source_info->num_files - transfer_info->num_files;
 
     /* Races and whatnot could cause this to be negative... */
     if (files_left < 0) {
-        files_left = 1;
+        return;
     }
 
     if (files_left != transfer_info->last_reported_files_left ||
@@ -2858,57 +2896,59 @@ report_copy_progress (CopyMoveJob *copy_job,
 
         if (source_info->num_files == 1) {
             if (copy_job->destination != NULL) {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                s = f (is_move ? _("Moving \"%B\" to \"%B\"") :
-                       _("Copying \"%B\" to \"%B\""),
-                       (GFile *)copy_job->files->data,
-                       copy_job->destination);
+                /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
+                /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
+                s = g_strdup_printf (is_move ? _("Moving \"%s\" to \"%s\"") :
+                       _("Copying \"%s\" to \"%s\""), srcname, destname);
             } else {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                s = f (_("Duplicating \"%B\""), (GFile *)copy_job->files->data);
+                /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
+                /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
+                s = g_strdup_printf (_("Duplicating \"%s\""), srcname);
             }
         } else if (copy_job->files != NULL && copy_job->files->next == NULL) {
             if (copy_job->destination != NULL) {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                s = f (is_move ? ngettext ("Moving %'d file (in \"%B\") to \"%B\"",
-                                           "Moving %'d files (in \"%B\") to \"%B\"",
-                                           files_left) :
-                       ngettext ("Copying %'d file (in \"%B\") to \"%B\"",
-                                 "Copying %'d files (in \"%B\") to \"%B\"",
-                                 files_left),
-                       files_left,
-                       (GFile *)copy_job->files->data,
-                       copy_job->destination);
+                /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
+                /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
+                /// %'d is a placeholder for a number. It must not be translated or removed.
+                /// Placeholders must appear in the same order but otherwise may change position.
+                s = g_strdup_printf (is_move ? ngettext ("Moving %'d file (in \"%s\") to \"%s\"",
+                                                         "Moving %'d files (in \"%s\") to \"%s\"",
+                                                          files_left) :
+                                               ngettext ("Copying %'d file (in \"%s\") to \"%s\"",
+                                                         "Copying %'d files (in \"%s\") to \"%s\"",
+                                                         files_left),
+                                     files_left,
+                                     srcname,
+                                     destname);
             } else {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                s = f (ngettext ("Duplicating %'d file (in \"%B\")",
-                                 "Duplicating %'d files (in \"%B\")",
-                                 files_left),
-                       files_left,
-                       (GFile *)copy_job->files->data);
+                /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
+                /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
+                s = g_strdup_printf (ngettext ("Duplicating %'d file (in \"%s\")",
+                                               "Duplicating %'d files (in \"%s\")",
+                                               files_left),
+                                     files_left,
+                                     srcname,
+                                     destname);
             }
         } else {
             if (copy_job->destination != NULL) {
-                /// TRANSLATORS: '\"%B\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                s = f (is_move?
-                       ngettext ("Moving %'d file to \"%B\"",
-                                 "Moving %'d files to \"%B\"",
-                                 files_left)
-                       :
-                       ngettext ("Copying %'d file to \"%B\"",
-                                 "Copying %'d files to \"%B\"",
-                                 files_left),
-                       files_left, copy_job->destination);
+                /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
+                /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
+                /// %'d is a placeholder for a number. It must not be translated or removed.
+                /// Placeholders must appear in the same order but otherwise may change position.
+                s = g_strdup_printf (is_move ? ngettext ("Moving %'d file to \"%s\"",
+                                                         "Moving %'d files to \"%s\"",
+                                                         files_left) :
+                                               ngettext ("Copying %'d file to \"%s\"",
+                                                         "Copying %'d files to \"%s\"",
+                                                         files_left),
+                                     files_left,
+                                     destname);
             } else {
-                s = f (ngettext ("Duplicating %'d file",
-                                 "Duplicating %'d files",
-                                 files_left),
-                       files_left);
+                s = g_strdup_printf (ngettext ("Duplicating %'d file",
+                                               "Duplicating %'d files",
+                                               files_left),
+                                     files_left);
             }
         }
     }
@@ -2918,6 +2958,8 @@ report_copy_progress (CopyMoveJob *copy_job,
         pf_progress_info_take_status (job->progress, s);
     }
 
+    g_free (srcname);
+    g_free (destname);
 
     total_size = MAX (source_info->num_bytes, transfer_info->num_bytes);
 
@@ -3058,6 +3100,11 @@ get_unique_target_file (GFile *src,
     GFile *dest;
     int max_length;
 
+    if (!G_IS_FILE (src) || !G_IS_FILE (dest_dir)) {
+        g_critical ("get_unique_target_file:  %s %s is not a file", !G_IS_FILE (src) ? "src" : "",  !G_IS_FILE (dest) ? "dest" : "");
+        return NULL;
+    }
+
     max_length = get_max_name_length (dest_dir);
 
     dest = NULL;
@@ -3175,6 +3222,12 @@ get_target_file (GFile *src,
     char *copyname;
 
     dest = NULL;
+
+    if (!G_IS_FILE (src) || !G_IS_FILE (dest_dir)) {
+        g_critical ("get_target_file: %s %s is not a file", !G_IS_FILE (src) ? "src" : "",  G_IS_FILE (src) ? "dest" : "");
+        return NULL;
+    }
+
     if (!same_fs) {
         info = g_file_query_info (src,
                                   G_FILE_ATTRIBUTE_STANDARD_COPY_NAME,
@@ -3286,6 +3339,10 @@ create_dest_dir (CommonJob *job,
 retry:
     /* First create the directory, then copy stuff to it before
        copying the attributes, because we need to be sure we can write to it */
+
+    if (!G_IS_FILE (*dest)) {
+        return CREATE_DEST_DIR_FAILED;
+    }
 
     error = NULL;
     if (!g_file_make_directory (*dest, job->cancellable, &error)) {
@@ -3995,6 +4052,10 @@ copy_move_file (CopyMoveJob *copy_job,
         dest = get_target_file (src, dest_dir, *dest_fs_type, same_fs);
     }
 
+    if (dest == NULL) {
+        *skipped_file = TRUE; /* Or aborted, but same-same */
+        return;
+    }
 
     /* Don't allow recursive move/copy into itself.
      * (We would get a file system error if we proceeded but it is nicer to
@@ -4411,7 +4472,7 @@ copy_files (CopyMoveJob *job,
         g_object_unref (source_dir);
     }
 
-    unique_names = (job->destination == NULL);
+    unique_names = (job->destination == NULL); /* Duplicating files */
     i = 0;
     for (l = job->files;
          l != NULL && !job_aborted (common);
@@ -4436,6 +4497,7 @@ copy_files (CopyMoveJob *job,
             dest = g_file_get_parent (src);
 
         }
+
         if (dest) {
             skipped_file = FALSE;
             copy_move_file (job, src, dest,
@@ -4551,6 +4613,7 @@ marlin_file_operations_copy (GList *files,
                              MarlinCopyCallback  done_callback,
                              gpointer done_callback_data)
 {
+
     CopyMoveJob *job;
     job = op_job_new (JOB_COPY, CopyMoveJob, parent_window);
     //job->desktop_location = marlin_get_desktop_location ();
@@ -5090,6 +5153,7 @@ marlin_file_operations_move (GList *files,
                              MarlinCopyCallback  done_callback,
                              gpointer done_callback_data)
 {
+
     CopyMoveJob *job;
     job = op_job_new (JOB_MOVE, CopyMoveJob, parent_window);
     job->is_move = TRUE;
