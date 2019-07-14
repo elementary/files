@@ -3213,14 +3213,18 @@ namespace FM {
         }
 
         protected void block_drag_and_drop () {
-            drag_data = view.get_data ("gtk-site-data");
-            GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
-            dnd_disabled = true;
+            if (!dnd_disabled) {
+                drag_data = view.get_data ("gtk-site-data");
+                GLib.SignalHandler.block_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
+                dnd_disabled = true;
+            }
         }
 
         protected void unblock_drag_and_drop () {
-            GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
-            dnd_disabled = false;
+            if (dnd_disabled) {
+                GLib.SignalHandler.unblock_matched (view, GLib.SignalMatchType.DATA, 0, 0, null, null, drag_data);
+                dnd_disabled = false;
+            }
         }
 
         protected virtual bool on_view_button_press_event (Gdk.EventButton event) {
@@ -3399,9 +3403,7 @@ namespace FM {
         }
 
         protected virtual bool on_view_button_release_event (Gdk.EventButton event) {
-            if (dnd_disabled) {
-                unblock_drag_and_drop ();
-            }
+            unblock_drag_and_drop ();
 
             /* Ignore button release from click that started renaming.
              * View may lose focus during a drag if another tab is hovered, in which case
