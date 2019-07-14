@@ -8,16 +8,15 @@ msgstr ""
 "Project-Id-Version: marlin 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-09 12:47-0700\n"
-"PO-Revision-Date: 2019-01-14 00:08+0000\n"
+"PO-Revision-Date: 2019-07-14 20:28+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
-"Language-Team: French <https://weblate.elementary.io/projects/files/files/fr/"
-">\n"
+"Language-Team: French <https://l10n.elementary.io/projects/files/files/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 "X-Poedit-SourceCharset: utf-8\n"
 
@@ -183,9 +182,8 @@ msgid "Deleted:"
 msgstr "Supprimé :"
 
 #: src/Dialogs/PropertiesWindow.vala:573
-#, fuzzy
 msgid "Media type:"
-msgstr "Type MIME :"
+msgstr "Type de média :"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
@@ -338,12 +336,8 @@ msgid "Create the folder \"%s\""
 msgstr "Créer le dossier « %s »"
 
 #: src/View/DirectoryNotFound.vala:45
-#, fuzzy
 msgid "Failed to create the folder"
-msgstr ""
-"Impossible de créer le dossier\n"
-"\n"
-"%s"
+msgstr "Impossible de créer le dossier"
 
 #: src/View/AbstractDirectoryView.vala:816
 #: src/View/AbstractDirectoryView.vala:1101
@@ -656,9 +650,8 @@ msgid "Show Remote Thumbnails"
 msgstr "Afficher les miniatures distantes"
 
 #: src/View/directory_view_popup.ui:75
-#, fuzzy
 msgid "Hide Local Thumbnails"
-msgstr "Afficher les miniatures distantes"
+msgstr "Masquer les miniatures locales"
 
 #: src/View/directory_view_popup.ui:82
 msgid "New Tab"

@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-09 12:47-0700\n"
-"PO-Revision-Date: 2019-03-03 14:26+0000\n"
+"PO-Revision-Date: 2019-07-14 20:28+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
-"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/"
-">\n"
+"Language-Team: Japanese <https://l10n.elementary.io/projects/files/files/ja/>"
+"\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 3.4\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: src/Application.vala:124
@@ -177,9 +177,8 @@ msgid "Deleted:"
 msgstr "削除日時:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
-#, fuzzy
 msgid "Media type:"
-msgstr "MIME タイプ:"
+msgstr "メディアタイプ:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
@@ -328,12 +327,8 @@ msgid "Create the folder \"%s\""
 msgstr "フォルダー \"%s\" を作成します"
 
 #: src/View/DirectoryNotFound.vala:45
-#, fuzzy
 msgid "Failed to create the folder"
-msgstr ""
-"フォルダーを作成できませんでした\n"
-"\n"
-"%s"
+msgstr "フォルダーを作成できませんでした"
 
 #: src/View/AbstractDirectoryView.vala:816
 #: src/View/AbstractDirectoryView.vala:1101
@@ -646,9 +641,8 @@ msgid "Show Remote Thumbnails"
 msgstr "リモートのサムネイルを表示"
 
 #: src/View/directory_view_popup.ui:75
-#, fuzzy
 msgid "Hide Local Thumbnails"
-msgstr "リモートのサムネイルを表示"
+msgstr "ローカルのサムネイルを非表示"
 
 #: src/View/directory_view_popup.ui:82
 msgid "New Tab"
