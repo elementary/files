@@ -24,6 +24,7 @@ namespace FM {
         protected Gtk.TreePath? previous_linear_selection_path = null;
         protected int previous_linear_selection_direction = 0;
         protected bool linear_select_required = false;
+        protected Gtk.TreePath? most_recently_selected = null;
 
         public IconView (Marlin.View.Slot _slot) {
             assert (_slot != null);
@@ -144,6 +145,8 @@ namespace FM {
 
         public override void tree_unselect_all () {
             tree.unselect_all ();
+            previous_linear_selection_path = null;
+            previous_linear_selection_direction = 0;
         }
 
         public override void tree_unselect_others () {
@@ -159,7 +162,7 @@ namespace FM {
         public override void select_path (Gtk.TreePath? path, bool cursor_follows = false) {
             if (path != null) {
                 tree.select_path (path); /* This selects path but does not unselect the rest (unlike TreeView) */
-
+                most_recently_selected = path.copy ();
                 if (cursor_follows) {
                     tree.set_cursor (path, null, false);
                 }
@@ -169,6 +172,7 @@ namespace FM {
         public override void unselect_path (Gtk.TreePath? path) {
             if (path != null) {
                 tree.unselect_path (path);
+                most_recently_selected = null;
             }
         }
 
@@ -421,30 +425,36 @@ namespace FM {
             }
 
             var selected_paths = tree.get_selected_items ();
+
             /* Ensure the order of the selected files list matches the visible order */
             selected_paths.sort (Gtk.TreePath.compare);
 
-            var first_selected = selected_paths.first ().data;
-            var last_selected = selected_paths.last ().data;
-            bool before_first = path.compare (first_selected) <= 0;
-            bool after_last = path.compare (last_selected) >= 0;
-            bool direction_change = false;
+            var first_selected = selected_paths.first ().data.copy ();
+            var last_selected = selected_paths.last ().data.copy ();
 
-            direction_change = (before_first && previous_linear_selection_direction > 0) ||
-                               (after_last && previous_linear_selection_direction < 0);
+            var recent_selected = most_recently_selected != null ? most_recently_selected : first_selected;
+
+            bool before_first = path.compare (first_selected) < 0;
+            bool after_last = path.compare (last_selected) > 0;
+            bool between = !before_first && !after_last;
 
             var p = path.copy ();
             Gtk.TreePath p2 = null;
-
-            unselect_all ();
             Gtk.TreePath? end_path = null;
-            if (!previous_selection_was_linear && previous_linear_selection_path != null) {
-                end_path = previous_linear_selection_path;
-            } else if (before_first) {
-                end_path = direction_change ? first_selected : last_selected;
+
+            if (before_first) {
+                end_path = last_selected;
+            } else if (after_last) {
+                end_path = first_selected;
+            } else if (previous_linear_selection_direction != 0) {/* between */
+                end_path = previous_linear_selection_direction > 0 ? last_selected : first_selected;
+                before_first = previous_linear_selection_direction > 0;
+                after_last = previous_linear_selection_direction < 0;
             } else {
-                end_path = direction_change ? last_selected : first_selected;
+                end_path = recent_selected;
             }
+
+            unselect_all (); /* This clears previous linear selection details */
 
             /* Cursor follows when selecting path */
             if (before_first) {
@@ -460,18 +470,33 @@ namespace FM {
                     p.prev ();
                 } while (p.compare (p2) != 0 && p.compare (end_path) >= 0);
             } else {/* between first and last */
-                do {
+                bool after_recent = p.compare (recent_selected) >= 0;
+                select_path (p, true);
+
+                p2 = p.copy ();
+                p.prev ();
+                while (p.compare (p2) != 0 && p.compare (first_selected) >= 0) {
+                    if (after_recent) {
+                        select_path (p, true);
+                    } else {
+                        unselect_path (p);
+                    }
                     p2 = p.copy ();
-                    select_path (p, true);
                     p.prev ();
-                } while (p.compare (p2) != 0 && p.compare (first_selected) >= 0);
+                }
 
                 p = path.copy ();
-                do {
+                p2 = p.copy ();
+                p.next ();
+                while (p.compare (p2) != 0 && p.compare (last_selected) <= 0) {
+                    if (after_recent) {
+                        unselect_path (p);
+                    } else {
+                        select_path (p, true);
+                    }
                     p2 = p.copy ();
                     p.next ();
-                    unselect_path (p);
-                } while (p.compare (p2) != 0 && p.compare (last_selected) <= 0);
+                }
             }
 
             previous_selection_was_linear = true;
@@ -482,13 +507,10 @@ namespace FM {
             first_selected = selected_paths.first ().data;
             last_selected = selected_paths.last ().data;
 
-            if (path.compare (last_selected) == 0) {
+            if (path.compare (last_selected) <= 0) {
                 previous_linear_selection_direction = 1; /* clicked after the (visually) first selection */
-            } else if (path.compare (first_selected) == 0) {
+            } else if (path.compare (first_selected) >= 0) {
                 previous_linear_selection_direction = -1; /* clicked before the (visually) first selection */
-            } else {
-                critical ("Linear selection did not become end point - this should not happen!");
-                previous_linear_selection_direction = 0;
             }
 
             previous_linear_selection_path = path.copy ();
