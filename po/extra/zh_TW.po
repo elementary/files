@@ -7,17 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-26 22:42+0200\n"
-"PO-Revision-Date: 2018-02-13 09:30+0000\n"
-"Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
-"Language-Team: Chinese (Traditional) <https://weblate.elementary.io/projects/"
-"files/extra/zh_TW/>\n"
+"POT-Creation-Date: 2019-07-15 10:30-0700\n"
+"PO-Revision-Date: 2019-05-22 16:03+0000\n"
+"Last-Translator: P.-H. Lin <cypressyew@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://l10n.elementary.io/projects/"
+"files/extra/zh_Hant/>\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.6.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -41,7 +41,7 @@ msgstr "檔案管理員"
 #. TRANSLATORS This string is an icon name and should not be translated.
 #: data/io.elementary.files.desktop.in.in:9
 msgid "system-file-manager"
-msgstr ""
+msgstr "system-file-manager"
 
 #: data/io.elementary.files.desktop.in.in:20
 msgid "New Window"
@@ -386,8 +386,9 @@ msgid "Translation updates"
 msgstr "翻譯更新"
 
 #: data/io.elementary.files.appdata.xml.in.in:274
+#, fuzzy
 msgid "elementary LLC."
-msgstr ""
+msgstr "elementary LLC."
 
 #: data/io.elementary.files.policy.in.in:10
 msgid "Run Pantheon Files as Administrator"
