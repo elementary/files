@@ -425,18 +425,18 @@ namespace FM {
             }
 
             var selected_paths = tree.get_selected_items ();
-
             /* Ensure the order of the selected files list matches the visible order */
             selected_paths.sort (Gtk.TreePath.compare);
+            Gtk.TreePath? first_selected, last_selected;
+            get_first_and_last_selected (out first_selected, out last_selected);
+            if (first_selected == null) {
+                warning ("Linear select called with no initial selection");
+                select_path (path, true);
+                return;
+            }
 
-            var first_selected = selected_paths.first ().data.copy ();
-            var last_selected = selected_paths.last ().data.copy ();
-
-            var recent_selected = most_recently_selected != null ? most_recently_selected : first_selected;
-
-            bool before_first = path.compare (first_selected) < 0;
-            bool after_last = path.compare (last_selected) > 0;
-            bool between = !before_first && !after_last;
+            bool before_first = path.compare (first_selected) <= 0;
+            bool after_last = path.compare (last_selected) >= 0;
 
             var p = path.copy ();
             Gtk.TreePath p2 = null;
@@ -450,8 +450,8 @@ namespace FM {
                 end_path = previous_linear_selection_direction > 0 ? last_selected : first_selected;
                 before_first = previous_linear_selection_direction > 0;
                 after_last = previous_linear_selection_direction < 0;
-            } else {
-                end_path = recent_selected;
+            } else { /* fallback to most recent selection or if that is invalid, the first selected in the view */
+                end_path =  most_recently_selected != null ? most_recently_selected : first_selected;
             }
 
             unselect_all (); /* This clears previous linear selection details */
@@ -470,13 +470,13 @@ namespace FM {
                     p.prev ();
                 } while (p.compare (p2) != 0 && p.compare (end_path) >= 0);
             } else {/* between first and last */
-                bool after_recent = p.compare (recent_selected) >= 0;
+                bool after = p.compare (end_path) >= 0;
                 select_path (p, true);
 
                 p2 = p.copy ();
                 p.prev ();
                 while (p.compare (p2) != 0 && p.compare (first_selected) >= 0) {
-                    if (after_recent) {
+                    if (after) {
                         select_path (p, true);
                     } else {
                         unselect_path (p);
@@ -489,7 +489,7 @@ namespace FM {
                 p2 = p.copy ();
                 p.next ();
                 while (p.compare (p2) != 0 && p.compare (last_selected) <= 0) {
-                    if (after_recent) {
+                    if (after) {
                         unselect_path (p);
                     } else {
                         select_path (p, true);
@@ -501,11 +501,11 @@ namespace FM {
 
             previous_selection_was_linear = true;
 
-            selected_paths = tree.get_selected_items ();
-            selected_paths.sort (Gtk.TreePath.compare);
-
-            first_selected = selected_paths.first ().data;
-            last_selected = selected_paths.last ().data;
+            get_first_and_last_selected (out first_selected, out last_selected);
+            if (first_selected == null) {
+                critical ("Linear select unselected all");
+                return;
+            }
 
             if (path.compare (last_selected) <= 0) {
                 previous_linear_selection_direction = 1; /* clicked after the (visually) first selection */
@@ -517,6 +517,18 @@ namespace FM {
             /* Ensure cursor in correct place, regardless of any selections made in this function */
             tree.set_cursor (path, null, false);
             tree.scroll_to_path (path, false, 0.5f, 0.5f);
+        }
+
+        private void get_first_and_last_selected (out Gtk.TreePath? first, out Gtk.TreePath? last) {
+            first = last = null;
+            var selected_paths = tree.get_selected_items ();
+            if (selected_paths.length () < 1) {
+                return;
+            }
+
+            selected_paths.sort (Gtk.TreePath.compare);
+            first = selected_paths.first ().data;
+            last = selected_paths.last ().data;
         }
 
         protected override Gtk.TreePath up (Gtk.TreePath path) {
