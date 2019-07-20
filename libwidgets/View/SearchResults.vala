@@ -57,6 +57,7 @@ namespace Marlin.View.Chrome {
             public Icon icon { get; construct; }
             public File? file { get; construct; }
             public string sortkey { get; construct; }
+            public Category category { get; construct; }
 
             public Match (FileInfo info, string path_string, File parent, SearchResults.Category category) {
                 var _name = info.get_display_name ();
@@ -78,12 +79,12 @@ namespace Marlin.View.Chrome {
             }
 
             public Match.ellipsis (SearchResults.Category category) {
-                Object (name: "…",
+                Object (name: _("More Results …"),
                         mime: "",
                         icon: null,
                         path_string: "",
                         file: null,
-                        sortkey: category.to_string ());
+                        sortkey: category.to_string () + "ELLIPSIS");
             }
         }
 
@@ -817,7 +818,7 @@ namespace Marlin.View.Chrome {
             }
 
             File? file = null;
-            string name = "";
+            string sortkey = "";
             /* It is important that the next line is not put into an if clause.
              * For reasons unknown, doing so causes a segmentation fault on some systems but not
              * others.  Any changes to the format and content of the accept () function should be
@@ -827,9 +828,9 @@ namespace Marlin.View.Chrome {
 
 
             list.@get (accepted, 3, out file);
-            list.@get (accepted, 0, out name);
+            list.@get (accepted, 5, out sortkey);
             if (file == null) {
-                if (name == "…") {
+                if (sortkey.contains ("ELLIPSIS")) {
                     max_results += MAX_RESULTS;
                     max_depth += 1;
                     search (search_term, current_root);
