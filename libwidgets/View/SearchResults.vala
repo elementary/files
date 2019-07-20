@@ -79,7 +79,7 @@ namespace Marlin.View.Chrome {
             }
 
             public Match.ellipsis (SearchResults.Category category) {
-                Object (name: _("More Results …"),
+                Object (name: "<b>" + _("More Results …") + "</b>",
                         mime: "",
                         icon: null,
                         path_string: "",
