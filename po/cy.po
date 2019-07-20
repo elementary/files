@@ -3,42 +3,41 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-09 12:47-0700\n"
-"PO-Revision-Date: 2018-05-01 00:03+0000\n"
-"Last-Translator: Ciaran Ainsworth <cda@whistlingkappa.com>\n"
-"Language-Team: Welsh <https://weblate.elementary.io/projects/files/files/cy/"
-">\n"
+"PO-Revision-Date: 2019-07-21 00:09+0000\n"
+"Last-Translator: Christopher Griffiths <chris@cgriff.co.uk>\n"
+"Language-Team: Welsh <https://l10n.elementary.io/projects/files/files/cy/>\n"
 "Language: cy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=(n==0) ? 0 : (n==1) ? 1 : (n==2) ? 2 : "
 "(n==3) ? 3 :(n==6) ? 4 : 5;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: src/Application.vala:124
 msgid "Show the version of the program"
-msgstr ""
+msgstr "Dangos fersiwn y rhaglen"
 
 #: src/Application.vala:126
 msgid "Open one or more URIs, each in their own tab"
-msgstr ""
+msgstr "Agor un neu fwy o URIs, pob un yn eu tab eu hunain"
 
 #: src/Application.vala:128 src/View/directory_view_popup.ui:87
 msgid "New Window"
-msgstr ""
+msgstr "Ffenestr Newydd"
 
 #: src/Application.vala:130
 msgid "Quit Files"
-msgstr ""
+msgstr "Cau Ffeiliau"
 
 #: src/Application.vala:132
 msgid "Enable debug logging"
-msgstr ""
+msgstr "Galluogi confnodion datfygio"
 
 #: src/Application.vala:135
 msgid "[URI…]"
-msgstr ""
+msgstr "[URI…]"
 
 #: src/Application.vala:138
 msgid ""
@@ -46,67 +45,70 @@ msgid ""
 "\n"
 "Browse the file system with the file manager"
 msgstr ""
+"\n"
+"\n"
+"Pori'r system ffeiliau gyda'r rheolwr ffeiliau"
 
 #: src/Application.vala:166
 msgid "--quit cannot be used with URIs."
-msgstr ""
+msgstr "Nid yw'n bosib defnyddio --quit gydag URIs."
 
 #: src/ProgressUIHandler.vala:137 src/ProgressUIHandler.vala:198
 msgid "File Operations"
-msgstr ""
+msgstr "Gweithrediadau Ffeiliau"
 
 #. TRANSLATORS: %s will be replaced by the title of the file operation
 #: src/ProgressUIHandler.vala:192
 #, c-format
 msgid "Completed %s"
-msgstr ""
+msgstr "Cwblhawyd %s"
 
 #: src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
-msgstr ""
+msgstr "Daeth pob gweithrediad ffeiliau i ben"
 
 #: src/ProgressUIHandler.vala:243
 msgid "Show Copy Dialog"
-msgstr ""
+msgstr "Dangos Deialog Copïo"
 
 #: src/ProgressUIHandler.vala:255
 msgid "Cancel All In-progress Actions"
-msgstr ""
+msgstr "Canslo Pob Gweithrediad ar Waith"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:49
 msgid "Info"
-msgstr ""
+msgstr "Gwybodaeth"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:57
 msgid "General"
-msgstr ""
+msgstr "Cyffredinol"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:76
 msgid "Close"
-msgstr ""
+msgstr "Cau"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:135
 msgid "Device Usage"
-msgstr ""
+msgstr "Defnydd y Ddyfais"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 msgid "Capacity:"
-msgstr ""
+msgstr "Maint:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:156
 #: src/Dialogs/AbstractPropertiesDialog.vala:159
 #: src/Dialogs/AbstractPropertiesDialog.vala:162
 #: src/Dialogs/PropertiesWindow.vala:437 src/Dialogs/PropertiesWindow.vala:476
 msgid "Unknown"
-msgstr ""
+msgstr "Anhysbys"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 msgid "Available:"
-msgstr ""
+msgstr "Ar Gael:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:161
 msgid "Used:"
-msgstr ""
+msgstr "Defnyddiwyd:"
 
 #: src/Dialogs/ChooseAppDialog.vala:42
 msgid "Set as default"
@@ -115,123 +117,141 @@ msgstr ""
 #: src/Dialogs/PropertiesWindow.vala:123 src/View/PopupMenuBuilder.vala:66
 #: src/View/directory_view_popup.ui:95
 msgid "Properties"
-msgstr ""
+msgstr "Priodweddau"
 
 #: src/Dialogs/PropertiesWindow.vala:223
 msgid "Permissions"
-msgstr ""
+msgstr "Caniatadau"
 
 #: src/Dialogs/PropertiesWindow.vala:244
 #, c-format
 msgid "%i file could not be read due to permissions or other errors."
 msgid_plural "%i files could not be read due to permissions or other errors."
 msgstr[0] ""
+"Ni allai %i ffeiliau gael eu darllen oherwydd caniatiadau neu wallau eraill."
 msgstr[1] ""
+"Ni allai %i ffeil gael ei darllen oherwydd caniatiadau neu wallau eraill."
+msgstr[2] ""
+"Ni allai %i ffeiliau gael eu darllen oherwydd caniatiadau neu wallau eraill."
+msgstr[3] ""
+"Ni allai %i ffeiliau gael eu darllen oherwydd caniatiadau neu wallau eraill."
+msgstr[4] ""
+"Ni allai %i ffeiliau gael eu darllen oherwydd caniatiadau neu wallau eraill."
+msgstr[5] ""
+"Ni allai %i ffeiliau gael eu darllen oherwydd caniatiadau neu wallau eraill."
 
 #: src/Dialogs/PropertiesWindow.vala:248
 msgid "Actual Size Could Be Larger"
-msgstr ""
+msgstr "Gallai'r Maint Go Iawn Fod yn Fwy"
 
 #: src/Dialogs/PropertiesWindow.vala:268 src/Dialogs/PropertiesWindow.vala:287
 msgid "unknown"
-msgstr ""
+msgstr "anhysbys"
 
 #: src/Dialogs/PropertiesWindow.vala:448
 msgid "Loading…"
-msgstr ""
+msgstr "Wrthi'n llwytho…"
 
 #: src/Dialogs/PropertiesWindow.vala:482
 msgid "Could not be determined"
-msgstr ""
+msgstr "Doedd dim modd ei bennu"
 
 #: src/Dialogs/PropertiesWindow.vala:508 libcore/FileConflictDialog.vala:120
 #: libcore/FileConflictDialog.vala:148
 msgid "Size:"
-msgstr ""
+msgstr "Maint:"
 
 #: src/Dialogs/PropertiesWindow.vala:515 libcore/ConnectServerDialog.vala:164
 #: libcore/FileConflictDialog.vala:128 libcore/FileConflictDialog.vala:156
 msgid "Type:"
-msgstr ""
+msgstr "Math:"
 
 #: src/Dialogs/PropertiesWindow.vala:518
 msgid "Contains:"
-msgstr ""
+msgstr "Cynnwys:"
 
 #: src/Dialogs/PropertiesWindow.vala:541
 msgid "Created:"
-msgstr ""
+msgstr "Crëwyd:"
 
 #: src/Dialogs/PropertiesWindow.vala:551
 msgid "Modified:"
-msgstr ""
+msgstr "Addaswyd:"
 
 #: src/Dialogs/PropertiesWindow.vala:563
 msgid "Deleted:"
-msgstr ""
+msgstr "Dilëwyd:"
 
 #: src/Dialogs/PropertiesWindow.vala:573
 msgid "Media type:"
-msgstr ""
+msgstr "Math o gyfrwng:"
 
 #: src/Dialogs/PropertiesWindow.vala:580
 msgid "Resolution:"
-msgstr ""
+msgstr "Cydraniad:"
 
 #: src/Dialogs/PropertiesWindow.vala:588
 #: src/Dialogs/VolumePropertiesWindow.vala:78
 msgid "Location:"
-msgstr ""
+msgstr "Lleoliad:"
 
 #: src/Dialogs/PropertiesWindow.vala:598
 msgid "Target:"
-msgstr ""
+msgstr "Targed:"
 
 #: src/Dialogs/PropertiesWindow.vala:606
 msgid "Original Location:"
-msgstr ""
+msgstr "Lleoliad Gwreiddiol:"
 
 #: src/Dialogs/PropertiesWindow.vala:629
 #: src/View/AbstractDirectoryView.vala:2153
 msgid "Other Application…"
-msgstr ""
+msgstr "Rhaglen Arall…"
 
 #: src/Dialogs/PropertiesWindow.vala:649
 msgid "Open with:"
-msgstr ""
+msgstr "Agor gyda:"
 
 #: src/Dialogs/PropertiesWindow.vala:916 src/Dialogs/PropertiesWindow.vala:926
 msgid "Owner:"
-msgstr ""
+msgstr "Perchennog:"
 
 #: src/Dialogs/PropertiesWindow.vala:920 src/Dialogs/PropertiesWindow.vala:929
 msgid "Group:"
-msgstr ""
+msgstr "Grŵp:"
 
 #: src/Dialogs/PropertiesWindow.vala:932
 msgid "Everyone:"
-msgstr ""
+msgstr "Pawb:"
 
 #: src/Dialogs/PropertiesWindow.vala:1213
 #, c-format
 msgid "%u subfolder"
 msgid_plural "%u subfolders"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u is-blygellau"
+msgstr[1] "%u is-blygell"
+msgstr[2] "%u is-blygellau"
+msgstr[3] "%u is-blygellau"
+msgstr[4] "%u is-blygellau"
+msgstr[5] "%u is-blygellau"
 
 #: src/Dialogs/PropertiesWindow.vala:1217
 #: src/Dialogs/PropertiesWindow.vala:1239
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u ffeiliau"
+msgstr[1] "%u ffeil"
+msgstr[2] "%u ffeiliau"
+msgstr[3] "%u ffeiliau"
+msgstr[4] "%u ffeiliau"
+msgstr[5] "%u ffeiliau"
 
 #. TRANSLATORS: folders, files
 #: src/Dialogs/PropertiesWindow.vala:1222
 #, c-format
 msgid "%s, %s"
-msgstr ""
+msgstr "%s, %s"
 
 #: src/Dialogs/PropertiesWindow.vala:1235 src/View/Widgets/OverlayBar.vala:225
 #, c-format
