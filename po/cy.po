@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-09 12:47-0700\n"
-"PO-Revision-Date: 2019-07-21 00:09+0000\n"
+"PO-Revision-Date: 2019-07-22 01:24+0000\n"
 "Last-Translator: Christopher Griffiths <chris@cgriff.co.uk>\n"
 "Language-Team: Welsh <https://l10n.elementary.io/projects/files/files/cy/>\n"
 "Language: cy\n"
@@ -21,7 +21,7 @@ msgstr "Dangos fersiwn y rhaglen"
 
 #: src/Application.vala:126
 msgid "Open one or more URIs, each in their own tab"
-msgstr "Agor un neu fwy o URIs, pob un yn eu tab eu hunain"
+msgstr "Agor un neu fwy URI, pob un yn eu tab eu hunain"
 
 #: src/Application.vala:128 src/View/directory_view_popup.ui:87
 msgid "New Window"
@@ -33,7 +33,7 @@ msgstr "Cau Ffeiliau"
 
 #: src/Application.vala:132
 msgid "Enable debug logging"
-msgstr "Galluogi confnodion datfygio"
+msgstr "Galluogi cofnodion dadfygio"
 
 #: src/Application.vala:135
 msgid "[URI…]"
@@ -61,7 +61,7 @@ msgstr "Gweithrediadau Ffeiliau"
 #: src/ProgressUIHandler.vala:192
 #, c-format
 msgid "Completed %s"
-msgstr "Cwblhawyd %s"
+msgstr "%s wedi dod i ben"
 
 #: src/ProgressUIHandler.vala:195
 msgid "All file operations have ended"
@@ -132,13 +132,17 @@ msgstr[0] ""
 msgstr[1] ""
 "Ni allai %i ffeil gael ei darllen oherwydd caniatiadau neu wallau eraill."
 msgstr[2] ""
-"Ni allai %i ffeiliau gael eu darllen oherwydd caniatiadau neu wallau eraill."
+"Ni allai %i o ffeiliau gael eu darllen oherwydd caniatiadau neu wallau "
+"eraill."
 msgstr[3] ""
-"Ni allai %i ffeiliau gael eu darllen oherwydd caniatiadau neu wallau eraill."
+"Ni allai %i o ffeiliau gael eu darllen oherwydd caniatiadau neu wallau "
+"eraill."
 msgstr[4] ""
-"Ni allai %i ffeiliau gael eu darllen oherwydd caniatiadau neu wallau eraill."
+"Ni allai %i o ffeiliau gael eu darllen oherwydd caniatiadau neu wallau "
+"eraill."
 msgstr[5] ""
-"Ni allai %i ffeiliau gael eu darllen oherwydd caniatiadau neu wallau eraill."
+"Ni allai %i o ffeiliau gael eu darllen oherwydd caniatiadau neu wallau "
+"eraill."
 
 #: src/Dialogs/PropertiesWindow.vala:248
 msgid "Actual Size Could Be Larger"
@@ -230,10 +234,10 @@ msgid "%u subfolder"
 msgid_plural "%u subfolders"
 msgstr[0] "%u is-blygellau"
 msgstr[1] "%u is-blygell"
-msgstr[2] "%u is-blygellau"
-msgstr[3] "%u is-blygellau"
-msgstr[4] "%u is-blygellau"
-msgstr[5] "%u is-blygellau"
+msgstr[2] "%u o is-blygellau"
+msgstr[3] "%u o is-blygellau"
+msgstr[4] "%u o is-blygellau"
+msgstr[5] "%u o is-blygellau"
 
 #: src/Dialogs/PropertiesWindow.vala:1217
 #: src/Dialogs/PropertiesWindow.vala:1239
@@ -242,10 +246,10 @@ msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u ffeiliau"
 msgstr[1] "%u ffeil"
-msgstr[2] "%u ffeiliau"
-msgstr[3] "%u ffeiliau"
-msgstr[4] "%u ffeiliau"
-msgstr[5] "%u ffeiliau"
+msgstr[2] "%u o ffeiliau"
+msgstr[3] "%u o ffeiliau"
+msgstr[4] "%u o ffeiliau"
+msgstr[5] "%u o ffeiliau"
 
 #. TRANSLATORS: folders, files
 #: src/Dialogs/PropertiesWindow.vala:1222
