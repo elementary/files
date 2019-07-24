@@ -8,16 +8,15 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2019-01-01 15:52+0000\n"
-"Last-Translator: Corentin Noël <corentin@elementary.io>\n"
-"Language-Team: French <https://weblate.elementary.io/projects/files/extra/fr/"
-">\n"
+"PO-Revision-Date: 2019-07-25 12:24+0000\n"
+"Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
+"Language-Team: French <https://l10n.elementary.io/projects/files/extra/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 3.0.1\n"
+"X-Generator: Weblate 3.7.1\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:3
@@ -70,10 +69,14 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:64
 msgid "Keyboard navigation fix for cherry picking select files in icon view"
 msgstr ""
+"Correction de la navigation au clavier pour la sélection de fichiers dans la "
+"vue en icônes"
 
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
+"Ne recherche pas le style de texte des caractères génériques en code brut, "
+"corrige les problèmes de thème sombre"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:75
@@ -83,25 +86,24 @@ msgstr ""
 #: data/io.elementary.files.appdata.xml.in.in:125
 #: data/io.elementary.files.appdata.xml.in.in:133
 #: data/io.elementary.files.appdata.xml.in.in:165
-#, fuzzy
 msgid "Updated translations"
-msgstr "Nouvelles traductions"
+msgstr "Mise à jour des traductions"
 
 #: data/io.elementary.files.appdata.xml.in.in:73
 msgid "Minor spacing adjustments to location bar"
-msgstr ""
+msgstr "Ajustements mineurs de l'espacement de la barre de localisation"
 
 #: data/io.elementary.files.appdata.xml.in.in:74
 msgid "Fix F2 renaming behavior"
-msgstr ""
+msgstr "Correction du comportement de renommage avec la touche F2"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr ""
+msgstr "Ajustements mineurs de l'espacement du fil d'Ariane de localisation"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Consistently remember color tags"
-msgstr ""
+msgstr "Mémorisation constante des étiquettes de couleur"
 
 #: data/io.elementary.files.appdata.xml.in.in:84
 msgid ""
