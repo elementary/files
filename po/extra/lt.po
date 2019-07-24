@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2019-07-22 01:24+0000\n"
+"PO-Revision-Date: 2019-07-25 12:24+0000\n"
 "Last-Translator: Moo <hazap@hotmail.com>\n"
 "Language-Team: Lithuanian <https://l10n.elementary.io/projects/files/extra/"
 "lt/>\n"
@@ -76,6 +76,8 @@ msgstr "Naršymo klaviatūra pataisymas, išrenkant failus piktogramų rodinyje"
 #: data/io.elementary.files.appdata.xml.in.in:65
 msgid "Don't hardcode search placeholder text style, fixes dark theme issue"
 msgstr ""
+"Neužkoduoti paieškos vietaženklio teksto stiliaus, pataiso tamsios temos "
+"problemą"
 
 #: data/io.elementary.files.appdata.xml.in.in:66
 #: data/io.elementary.files.appdata.xml.in.in:75
@@ -98,7 +100,7 @@ msgstr "Pataisyta F2 pervadinimo elgsena"
 
 #: data/io.elementary.files.appdata.xml.in.in:82
 msgid "Minor spacing adjustments to location breadcrumbs"
-msgstr ""
+msgstr "Nežymūs tarpų reguliavimai vietos juostoje"
 
 #: data/io.elementary.files.appdata.xml.in.in:83
 msgid "Consistently remember color tags"
@@ -109,10 +111,12 @@ msgid ""
 "Reload thumbnails when changing zoom level to avoid showing placeholder "
 "unnecessarily"
 msgstr ""
+"Keičiant mastelio lygį, iš naujo įkelti miniatiūras, kad būtų išvengta "
+"bereikalingo vietaženklio rodymo"
 
 #: data/io.elementary.files.appdata.xml.in.in:85
 msgid "Fix running scripts with spaces in filename"
-msgstr ""
+msgstr "Pataisytas scenarijų, kurių pavadinime yra tarpai, paleidimas"
 
 #: data/io.elementary.files.appdata.xml.in.in:93
 msgid "Fix high CPU regression in version 4.1.4"
@@ -124,7 +128,7 @@ msgstr "Failų rikiavimo pataisymai"
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Meson: fix soversion names"
-msgstr ""
+msgstr "Meson: pataisyti soversion pavadinimai"
 
 #: data/io.elementary.files.appdata.xml.in.in:103
 msgid "Remove CMake build system"
@@ -148,7 +152,7 @@ msgstr "Pataisytas per mažas pradinės paieškos lango dydis"
 
 #: data/io.elementary.files.appdata.xml.in.in:108
 msgid "Add option to disable local file thumbnails"
-msgstr ""
+msgstr "Pridėtas parametras, skirtas išjungti vietinių failų miniatiūras"
 
 #: data/io.elementary.files.appdata.xml.in.in:109
 msgid "Fix crash when opening multiple video files"
@@ -174,7 +178,7 @@ msgstr "Rodyti rezervuotą vietą savybių lange"
 
 #: data/io.elementary.files.appdata.xml.in.in:121
 msgid "Add border radius to text background"
-msgstr ""
+msgstr "Teksto fonui pridėtas rėmelio spindulys"
 
 #: data/io.elementary.files.appdata.xml.in.in:122
 msgid "Fix file mimetype association regression"
@@ -203,6 +207,8 @@ msgstr "Pataisytas sudarymas be Unity bibliotekos"
 #: data/io.elementary.files.appdata.xml.in.in:148
 msgid "Hide breadcrumbs and show placeholder and search icon in home folder"
 msgstr ""
+"Slėpti namų aplanke vietos juostą ir rodyti vietaženklį bei paieškos "
+"piktogramą"
 
 #: data/io.elementary.files.appdata.xml.in.in:149
 msgid "Style error dialogs"
@@ -218,7 +224,7 @@ msgstr "Iš naujo įkelti paskiausią rodinį, kai pasikeičia privatumo nustaty
 
 #: data/io.elementary.files.appdata.xml.in.in:152
 msgid "`Connect Server` fixes"
-msgstr ""
+msgstr "\"Prisijungti prie serverio\" pataisymai"
 
 #: data/io.elementary.files.appdata.xml.in.in:153
 msgid "Do not activate multiple files with single click"
@@ -227,6 +233,8 @@ msgstr "Neaktyvuoti kelių failų vienu spustelėjimu"
 #: data/io.elementary.files.appdata.xml.in.in:154
 msgid "Use `Tab` to toggle View and Sidebar keyboard focus"
 msgstr ""
+"Naudoti \"Tab\", norint perjungti rodinio ir šoninės juostos klaviatūros "
+"fokusavimą"
 
 #: data/io.elementary.files.appdata.xml.in.in:155
 msgid "Delete color tag database entries for trashed files"
@@ -234,11 +242,11 @@ msgstr "Ištrinti spalvotų žymių duomenų bazės įrašus šiukšlinės faila
 
 #: data/io.elementary.files.appdata.xml.in.in:156
 msgid "Throttle tab closing"
-msgstr ""
+msgstr "Slopinti kortelės užvėrimą"
 
 #: data/io.elementary.files.appdata.xml.in.in:157
 msgid "`Ctrl` key fixes"
-msgstr ""
+msgstr "\"Vald(Ctrl)\" klavišo pataisymai"
 
 #: data/io.elementary.files.appdata.xml.in.in:158
 msgid "Drag and drop fixes"
@@ -282,7 +290,7 @@ msgstr "Atskirti tarp to paties pavadinimo kortelių"
 
 #: data/io.elementary.files.appdata.xml.in.in:181
 msgid "Support launching from other applications with a target file selected"
-msgstr ""
+msgstr "Palaikomas paleidimas iš kitų programų su pasirinktu paskirties failu"
 
 #: data/io.elementary.files.appdata.xml.in.in:182
 #: data/io.elementary.files.appdata.xml.in.in:195
