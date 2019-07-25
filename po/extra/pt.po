@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-15 10:30-0700\n"
-"PO-Revision-Date: 2019-07-22 01:24+0000\n"
+"PO-Revision-Date: 2019-07-26 23:57+0000\n"
 "Last-Translator: Hugo Carvalho <hugokarvalho@hotmail.com>\n"
 "Language-Team: Portuguese <https://l10n.elementary.io/projects/files/extra/"
 "pt/>\n"
@@ -117,9 +117,8 @@ msgid "Fix high CPU regression in version 4.1.4"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:94
-#, fuzzy
 msgid "File sorting fixes"
-msgstr "Pequenas correções de erros"
+msgstr "Correções de classificação de ficheiros"
 
 #: data/io.elementary.files.appdata.xml.in.in:102
 msgid "Meson: fix soversion names"
@@ -150,9 +149,8 @@ msgid "Add option to disable local file thumbnails"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:109
-#, fuzzy
 msgid "Fix crash when opening multiple video files"
-msgstr "Corrigida falha ao restaurar do Lixo"
+msgstr "Corrigir falha ao abrir vários ficheiros de vídeo"
 
 #: data/io.elementary.files.appdata.xml.in.in:110
 msgid "Fix some timing issues around adding and removing files"
@@ -183,9 +181,8 @@ msgid "New pathbar tooltips"
 msgstr ""
 
 #: data/io.elementary.files.appdata.xml.in.in:124
-#, fuzzy
 msgid "Build fixes"
-msgstr "Correções de segurança"
+msgstr "Correções de criação"
 
 #: data/io.elementary.files.appdata.xml.in.in:132
 #, fuzzy
