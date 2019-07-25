@@ -24,6 +24,7 @@ namespace Marlin {
         private int double_border_radius;
         private Gtk.CssProvider text_css;
         private Gdk.RGBA previous_background_rgba;
+        private Gdk.RGBA previous_contrasting_rgba;
 
         private Marlin.ZoomLevel _zoom_level;
         public Marlin.ZoomLevel zoom_level {
@@ -73,6 +74,7 @@ namespace Marlin {
             this.mode = Gtk.CellRendererMode.EDITABLE;
             text_css = new Gtk.CssProvider ();
             previous_background_rgba = { 0, 0, 0, 0 };
+            previous_contrasting_rgba = { 0, 0, 0, 0 };
         }
 
         public TextRenderer (Marlin.ViewMode viewmode) {
@@ -138,11 +140,19 @@ namespace Marlin {
                     previous_background_rgba.blue = background_rgba.blue;
                     previous_background_rgba.alpha = background_rgba.alpha;
 
-                    string data = "* {color: %s;}".printf (Granite.contrasting_foreground_color (background_rgba).to_string ());
-                    try {
-                        text_css.load_from_data (data);
-                    } catch (Error e) {
-                        critical (e.message);
+                    var contrasting_foreground_rgba = Granite.contrasting_foreground_color (background_rgba);
+                    if (!contrasting_foreground_rgba.equal (previous_contrasting_rgba)) {
+                    /* Using Gdk.RGBA copy () causes a segfault for some reason */
+                        previous_contrasting_rgba.red = contrasting_foreground_rgba.red;
+                        previous_contrasting_rgba.green = contrasting_foreground_rgba.green;
+                        previous_contrasting_rgba.blue = contrasting_foreground_rgba.blue;
+                        previous_contrasting_rgba.alpha = contrasting_foreground_rgba.alpha;
+                        string data = "* {color: %s;}".printf (contrasting_foreground_rgba.to_string ());
+                        try {
+                            text_css.load_from_data (data);
+                        } catch (Error e) {
+                            critical (e.message);
+                        }
                     }
                 }
 
